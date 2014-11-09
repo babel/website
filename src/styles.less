@@ -1,0 +1,29 @@
+@import (inline) "../node_modules/normalize.css/normalize.css";
+@import (inline) "../node_modules/github-markdown-css/github-markdown.css";
+@import (inline) "../node_modules/highlight.js/styles/github.css";
+
+*,
+::before,
+::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 20px 0 100px;
+}
+
+.container {
+  max-width: 800px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+.markdown-body h1 .anchor,
+.markdown-body h2 .anchor,
+.markdown-body h3 .anchor,
+.markdown-body h4 .anchor,
+.markdown-body h5 .anchor,
+.markdown-body h6 .anchor {
+  top: 0.3em;
+}
