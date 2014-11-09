@@ -1,0 +1,551 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>6to5 · Turn ES6 code into readable vanilla ES5 with source maps</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container markdown-body">
+    <p align="center">
+  <img alt="6to5" src="https://raw.githubusercontent.com/6to5/logo/master/logo.png" width="546">
+</p>
+
+<p align="center">
+  <a href="https://travis-ci.org/6to5/6to5">
+    <img alt="Travis Status" src="http://img.shields.io/travis/6to5/6to5.svg?branch=master&amp;style=flat&amp;label=travis">
+  </a>
+
+  <a href="https://codeclimate.com/github/6to5/6to5">
+    <img alt="Code Climate Score" src="http://img.shields.io/codeclimate/github/6to5/6to5.svg?style=flat">
+  </a>
+
+  <a href="https://codeclimate.com/github/6to5/6to5">
+    <img alt="Coverage" src="http://img.shields.io/codeclimate/coverage/github/6to5/6to5.svg?style=flat">
+  </a>
+
+  <a href="https://david-dm.org/6to5/6to5">
+    <img alt="Dependency Status" src="http://img.shields.io/david/6to5/6to5.svg?style=flat">
+  </a>
+</p>
+
+<p><strong>6to5</strong> turns ES6 code into vanilla ES5, so you can use ES6 features <strong>today.</strong></p>
+<ul>
+<li><strong>Readable</strong> - formatting is retained if possible so your generated code is as similar as possible.</li>
+<li><strong>Extensible</strong> - with a large range of <a href="#plugins">plugins</a> and <strong>browser support</strong>.</li>
+<li><strong>Lossless</strong> - <strong>source map support</strong> so you can debug your compiled code with ease.</li>
+<li><strong>Compact</strong> - maps directly to the equivalent ES5 with <strong>no runtime</strong><a href="#generators">*</a>.</li>
+</ul>
+<h2 id="installation"><a class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+<p>It&#39;s as easy as:</p>
+<pre><code>$ npm <span class="hljs-keyword">install</span> -g <span class="hljs-number">6</span>to5
+</code></pre><h2 id="table-of-contents"><a class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of Contents</h2>
+<ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#usage">Usage</a><ul>
+<li><a href="#plugins">Plugins</a></li>
+<li><a href="#cli">CLI</a></li>
+<li><a href="#node-1">Node</a></li>
+<li><a href="#browser">Browser</a></li>
+</ul>
+</li>
+<li><a href="#modules">Modules</a></li>
+<li><a href="#caveats">Caveats</a></li>
+<li><a href="#polyfill">Polyfill</a></li>
+<li><a href="#optional-runtime">Optional runtime</a></li>
+<li><a href="#differences">Differences</a></li>
+</ul>
+<h2 id="-features-features-md"><a class="anchor" href="#-features-features-md" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="features.html">Features</a></h2>
+<ul>
+<li><a href="features.html#array-comprehension">Array comprehension</a></li>
+<li><a href="features.html#arrow-functions">Arrow functions</a></li>
+<li><a href="features.html#classes">Classes</a></li>
+<li><a href="features.html#computed-property-names">Computed property names</a></li>
+<li><a href="features.html#constants">Constants</a></li>
+<li><a href="features.html#default-parameters">Default parameters</a></li>
+<li><a href="features.html#destructuring">Destructuring</a></li>
+<li><a href="features.html#for-of">For-of</a></li>
+<li><a href="features.html#generators">Generators</a> via <a href="https://github.com/facebook/regenerator">regenerator</a></li>
+<li><a href="features.html#let-scoping">Let scoping</a></li>
+<li><a href="features.html#modules">Modules</a></li>
+<li><a href="features.html#numeric-literals">Numeric literals</a></li>
+<li><a href="features.html#property-method-assignment">Property method assignment</a></li>
+<li><a href="features.html#property-name-shorthand">Property name shorthand</a></li>
+<li><a href="features.html#rest-parameters">Rest parameters</a></li>
+<li><a href="features.html#spread">Spread</a></li>
+<li><a href="features.html#template-literals">Template literals</a></li>
+<li><a href="features.html#unicode-regex">Unicode regex</a></li>
+</ul>
+<h2 id="usage"><a class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<h3 id="plugins"><a class="anchor" href="#plugins" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plugins</h3>
+<ul>
+<li><a href="https://github.com/very-geek/broccoli-6to5-transpiler">Broccoli</a></li>
+<li><a href="https://github.com/6to5/6to5-browserify">Browserify</a></li>
+<li><a href="https://github.com/es128/6to5-brunch">Brunch</a></li>
+<li><a href="https://github.com/bdo-labs/duo6to5">Duo</a></li>
+<li><a href="https://github.com/6to5/6to5-connect">Connect</a></li>
+<li><a href="https://github.com/sindresorhus/gulp-6to5">Gulp</a></li>
+<li><a href="https://github.com/sindresorhus/grunt-6to5">Grunt</a></li>
+<li><a href="https://github.com/apoxx/jade-6to5">Jade</a></li>
+<li><a href="https://github.com/shuhei/karma-6to5-preprocessor">Karma</a></li>
+<li><a href="https://github.com/couto/6to5-loader">webpack</a></li>
+</ul>
+<h3 id="cli"><a class="anchor" href="#cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h3>
+<p>Compile the file <code>script.js</code> and output it to stdout.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-keyword">script</span>.js
+</code></pre><p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code>.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-keyword">script</span>.js <span class="hljs-comment">--out-file script-compiled.js</span>
+</code></pre><p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code> and save a
+source map to <code>script-compiled.js.map</code>.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-keyword">script</span>.js <span class="hljs-comment">--source-maps --out-file script-compiled.js</span>
+</code></pre><p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code> with a source
+map embedded in a comment at the bottom.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 script.js --source-maps-<span class="hljs-keyword">inline</span> --<span class="hljs-keyword">out</span>-<span class="hljs-keyword">file</span> script-compiled.js
+</code></pre><p>Compile the entire <code>src</code> directory and output it to the <code>lib</code> directory.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 src <span class="hljs-comment">--out-dir lib</span>
+</code></pre><p>Compile the entire <code>src</code> directory and output it to the one concatenated file.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 src --<span class="hljs-keyword">out</span>-<span class="hljs-keyword">file</span> script-compiled.js
+</code></pre><p>Pipe a file in via stdin and output it to <code>script-compiled.js</code></p>
+<pre><code>$ <span class="hljs-number">6</span>to5 --<span class="hljs-keyword">out</span>-<span class="hljs-keyword">file</span> script-compiled.js &lt; script.js
+</code></pre><h4 id="node"><a class="anchor" href="#node" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h4>
+<p>Launch a repl.</p>
+<pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5-node
+</code></pre><p>Evaluate code.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5-node <span class="hljs-operator">-e</span> <span class="hljs-string">"class Test { }"</span>
+</code></pre><p>Compile and run <code>test.js</code>.</p>
+<pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5-node test
+</code></pre><h3 id="node"><a class="anchor" href="#node" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> to5 = <span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5"</span>);
+
+<span class="hljs-keyword">var</span> result = to5.transform(<span class="hljs-string">"code();"</span>, options);
+result.code;
+result.map;
+result.ast;
+
+to5.transformFileSync(<span class="hljs-string">"filename.js"</span>, options).code;
+
+to5.transformFile(<span class="hljs-string">"filename.js"</span>, options, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, result)</span> </span>{
+
+});
+</code></pre>
+<h5 id="options"><a class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h5>
+<pre><code class="lang-javascript">{
+  <span class="hljs-comment">// Filename for use in errors etc.</span>
+  <span class="hljs-comment">// Default: "unknown"</span>
+  filename: <span class="hljs-string">"filename"</span>,
+
+  <span class="hljs-comment">// List of transformers to EXCLUDE.</span>
+  <span class="hljs-comment">// Run `6to5 --help` to see a full list of transformers.</span>
+  blacklist: [],
+
+  <span class="hljs-comment">// List of transformers to ONLY use.</span>
+  <span class="hljs-comment">// Run `6to5 --help` to see a full list of transformers.</span>
+  whitelist: [],
+
+  <span class="hljs-comment">// Module formatter to use</span>
+  <span class="hljs-comment">// Run `6to5 --help` to see a full list of module formatters.</span>
+  <span class="hljs-comment">// Default: "common"</span>
+  modules: <span class="hljs-string">"common"</span>,
+
+  <span class="hljs-comment">// If truthy, adds a `map` property to returned output.</span>
+  <span class="hljs-comment">// If set to "inline", a comment with a sourceMappingURL directive is added to</span>
+  <span class="hljs-comment">// the bottom of the returned code.</span>
+  <span class="hljs-comment">// Default: false</span>
+  sourceMap: <span class="hljs-literal">true</span>,
+
+  <span class="hljs-comment">// Set `file` on returned source map.</span>
+  <span class="hljs-comment">// Default: `filename` option.</span>
+  sourceMapName: <span class="hljs-string">"filename"</span>,
+
+  <span class="hljs-comment">// Set `sources[0]` on returned source map.</span>
+  <span class="hljs-comment">// Default: `filename` option.</span>
+  sourceFileName: <span class="hljs-string">"filename"</span>,
+
+  <span class="hljs-comment">// Optionally replace all 6to5 helper declarations with a referenece to this</span>
+  <span class="hljs-comment">// variable. If set to `true` then the default namespace is used "to5Runtime".</span>
+  <span class="hljs-comment">// Default: false</span>
+  runtime: <span class="hljs-literal">true</span>
+}
+</code></pre>
+<h4 id="require-hook"><a class="anchor" href="#require-hook" aria-hidden="true"><span class="octicon octicon-link"></span></a>Require hook</h4>
+<p>All subsequent files required by node with the extensions <code>.es6</code> and <code>.js</code> will
+be transformed by 6to5. The polyfill specified in <a href="#polyfill">Polyfill</a> is also
+required.</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/register"</span>);
+</code></pre>
+<p><strong>NOTE:</strong> By default all requires to <code>node_modules</code> will be ignored. You can
+override this by passing an ignore regex via:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/register"</span>)({
+  <span class="hljs-comment">// This will override `node_modules` ignoring - you can alternatively pass</span>
+  <span class="hljs-comment">// a regex</span>
+  ignore: <span class="hljs-literal">false</span>
+});
+</code></pre>
+<h5 id="options"><a class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h5>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/register"</span>)({
+  <span class="hljs-comment">// Optional ignore regex - if any filenames **do** match this regex then they</span>
+  <span class="hljs-comment">// aren't compiled</span>
+  ignore: <span class="hljs-regexp">/regex/</span>,
+
+  <span class="hljs-comment">// Optional only regex - if any filenames **don't** match this regex then they</span>
+  <span class="hljs-comment">// aren't compiled</span>
+  only: <span class="hljs-regexp">/my_es6_folder/</span>,
+
+  <span class="hljs-comment">// See options above for usage</span>
+  whitelist: [],
+  blacklist: [],
+
+  <span class="hljs-comment">// This will remove the currently hooked extensions of .es6 and .js so you'll</span>
+  <span class="hljs-comment">// have to add them back if you want them to be used again.</span>
+  extensions: [<span class="hljs-string">".js"</span>, <span class="hljs-string">".es6"</span>]
+});
+</code></pre>
+<h3 id="browser"><a class="anchor" href="#browser" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser</h3>
+<p>A browser version of 6to5 is available from <code>browser.js</code> inside the 6to5
+directory in an npm release.</p>
+<h4 id="scripts"><a class="anchor" href="#scripts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scripts</h4>
+<p>While it&#39;s not recommended for serious use, when the browser version is included
+all scripts with the type <code>text/ecmascript-6</code> and <code>text/6to5</code> are automatically
+compiled and ran.</p>
+<p>For example:</p>
+<pre><code class="lang-html"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"node_modules/6to5/browser.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/6to5"</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">class</span> Test {
+  test() {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"test"</span>;
+  }
+}
+
+<span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> Test;
+test.test();
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span>
+</code></pre>
+<h4 id="build"><a class="anchor" href="#build" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build</h4>
+<p>You can build a browser version of the compiler by running the following in the
+6to5 directory:</p>
+<pre><code class="lang-sh">$ make build
+</code></pre>
+<p>This will output the files <code>dist/6to5.js</code> and <code>dist/6to5.min.js</code>.</p>
+<h4 id="api"><a class="anchor" href="#api" aria-hidden="true"><span class="octicon octicon-link"></span></a>API</h4>
+<pre><code class="lang-javascript">to5.transform(<span class="hljs-string">"class Test {}"</span>).code;
+</code></pre>
+<h4 id="test"><a class="anchor" href="#test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test</h4>
+<p>To test 6to5 in your browser run:</p>
+<pre><code><span class="hljs-variable">$ </span>make test-browser
+</code></pre><p>And open <code>test/browser.html</code> in your browser if it doesn&#39;t open automatically.</p>
+<h2 id="-modules-modules-md"><a class="anchor" href="#-modules-modules-md" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="modules.html">Modules</a></h2>
+<p>See <a href="modules.html#common-default">Modules - Common</a> for documentation on the
+default module formatting.</p>
+<p>Alternatively see <a href="modules.html">Modules</a> for all other supported module formatting types.</p>
+<h2 id="caveats"><a class="anchor" href="#caveats" aria-hidden="true"><span class="octicon octicon-link"></span></a>Caveats</h2>
+<h3 id="for-of"><a class="anchor" href="#for-of" aria-hidden="true"><span class="octicon octicon-link"></span></a>For-of</h3>
+<p>A polyfill is required for for-of functionality that implements <code>Symbol</code> and
+adds <code>prototype[Symbol.iterator]</code> behaviour to built-ins. Using the polyfills
+specified in <a href="#polyfill">polyfill</a> suffices.</p>
+<h3 id="classes"><a class="anchor" href="#classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes</h3>
+<p>Built-in classes such as <code>Date</code>, <code>Array</code> and <code>DOM</code> cannot be subclassed due to
+limitations in ES5 implementations.</p>
+<p>If you&#39;re inheriting from a class then static properties are inherited from it
+via <a href="https://developer.mozilla.org/en-us/docs/web/javascript/reference/global_objects/object/proto">__proto__</a>,
+this is widely supported but you may run into problems with much older browsers.</p>
+<p><strong>NOTE:</strong> <code>__proto__</code> is not supported on IE &lt;= 9 so static properties
+<strong>will not</strong> be inherited. A possible workaround is to use <code>super();</code>:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">class</span> Foo {
+  static foo() {
+
+  }
+}
+
+<span class="hljs-keyword">class</span> Bar extends Foo {
+  static foo() {
+    super();
+  }
+}
+</code></pre>
+<h3 id="generators"><a class="anchor" href="#generators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generators</h3>
+<p>The <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a>
+and an <a href="#polyfill">ES6 polyfill</a> are required in order for generators to work.</p>
+<h2 id="polyfill"><a class="anchor" href="#polyfill" aria-hidden="true"><span class="octicon octicon-link"></span></a>Polyfill</h2>
+<p>6to5 includes a polyfill that includes the
+<a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a> and the
+<a href="https://github.com/paulmillr/es6-shim">es6-shim</a> and
+<a href="https://github.com/medikoo/es6-symbol">es6-symbol</a> polyfills.</p>
+<h3 id="node"><a class="anchor" href="#node" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/polyfill"</span>);
+</code></pre>
+<h3 id="browser"><a class="anchor" href="#browser" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser</h3>
+<p>Available from the <code>polyfill.js</code> file within the 6to5 directory of an npm
+release.</p>
+<h2 id="optional-runtime"><a class="anchor" href="#optional-runtime" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optional runtime</h2>
+<p>6to5 has a few helper functions that&#39;ll be placed at the top of the generated
+code if needed so it&#39;s not inlined multiple times throughout that file. This may
+become an issue if you have multiple files, especially when you&#39;re sending them
+to the browser. gzip alleviates most of this concern but it&#39;s still not ideal.</p>
+<p>You can tell 6to5 to not place any declarations at the top of your files and
+instead just point them to a reference contained within the runtime.</p>
+<p>Simply use the following option if you&#39;re using the <a href="#node-1">Node API</a>:</p>
+<pre><code class="lang-javascript">{
+  runtime: <span class="hljs-literal">true</span>
+}
+</code></pre>
+<p>or the following flag if you&#39;re using the <a href="#cli">CLI</a>:</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-comment">--runtime</span>
+</code></pre><p>Then just include the runtime before your generated code.</p>
+<h3 id="getting-the-runtime"><a class="anchor" href="#getting-the-runtime" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting the runtime</h3>
+<p>You can get the runtime via either:</p>
+<pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5-runtime
+</code></pre><p>or</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5"</span>).runtime();
+</code></pre>
+<p>or from an npm release in <code>runtime.js</code> from the 6to5 directory.</p>
+<h3 id="customising-namespace"><a class="anchor" href="#customising-namespace" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customising namespace</h3>
+<p>You can also customise the runtime namespace by passing an optional namespace
+argument:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5"</span>).runtime(<span class="hljs-string">"myCustomNamespace"</span>);
+</code></pre>
+<pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5-runtime myCustomNamespace
+</code></pre><p>See <a href="#options">Options - runtime</a> for documentation on changing the reference in
+generated code.</p>
+<h2 id="differences"><a class="anchor" href="#differences" aria-hidden="true"><span class="octicon octicon-link"></span></a>Differences</h2>
+<h3 id="philosophy"><a class="anchor" href="#philosophy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Philosophy</h3>
+<p>The fundamental concept behind 6to5 is that the generated code must be close as
+possible to the original, retaining all the same formatting and readability.</p>
+<p>Many other transpilers are just concerned with making the code work while 6to5
+is concerned with making sure it works <strong>and</strong> is readable at the same time.</p>
+<p>For example, given the following array comprehension:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> seattlers = [<span class="hljs-keyword">for</span> (c of customers) <span class="hljs-keyword">if</span> (c.city == <span class="hljs-string">"Seattle"</span>) { name: c.name, age: c.age }];
+</code></pre>
+<p>is generated to the following with 6to5:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> seattlers = customers.filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(c)</span> </span>{
+  <span class="hljs-keyword">return</span> c.city == <span class="hljs-string">"Seattle"</span>;
+}).map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(c)</span> </span>{
+  <span class="hljs-keyword">return</span> {
+    name: c.name,
+    age: c.age
+  };
+});
+</code></pre>
+<p>The following is what Traceur generates:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> seattlers = (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">var</span> c;
+  <span class="hljs-keyword">var</span> $__20 = <span class="hljs-number">0</span>,
+      $__21 = [];
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> $__22 = customers[$traceurRuntime.toProperty(Symbol.iterator)](),
+      $__23; !($__23 = $__22.next()).done; ) {
+    c = $__23.value;
+    <span class="hljs-keyword">if</span> (c.city == <span class="hljs-string">"Seattle"</span>)
+      $traceurRuntime.setProperty($__21, $__20++, {
+        name: c.name,
+        age: c.age
+      });
+  }
+  <span class="hljs-keyword">return</span> $__21;
+}());
+</code></pre>
+<p>As you can tell, it&#39;s not very pretty, unreadable even. Instead of mapping
+directly to a runtime, like other transpilers, 6to5 maps directly to the
+equivalent ES5.</p>
+<p>I&#39;m not saying 6to5 is for everyone or even suited for everything. Traceur is
+better suited if you&#39;d like a full ES6 environment with polyfills and all.</p>
+<h3 id="comparison-to-other-transpilers"><a class="anchor" href="#comparison-to-other-transpilers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparison to other transpilers</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>6to5</th>
+<th>Traceur</th>
+<th>esnext</th>
+<th>es6now</th>
+<th>es6-transpiler</th>
+<th>jstransform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No runtime</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Source maps</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>No compiler global pollution</td>
+<td>✓</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Arrow functions</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Classes</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Computed property names</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td>Constants</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td>Default parameters</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td>Destructuring</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>For-of</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td>Generators</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Let scoping</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td>Modules</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Property method assignment</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Property name shorthand</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Rest parameters</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Spread</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td>Template literals</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Unicode regex</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-traceur-https-github-com-google-traceur-compiler"><a class="anchor" href="#-traceur-https-github-com-google-traceur-compiler" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/google/traceur-compiler">Traceur</a></h4>
+<p>Traceur requires quite a bulky runtime (~75KB) and produces quite verbose code.
+While this can be trimmed down by selectively building the runtime, it&#39;s an
+unneccesary step when a runtime can be eliminated entirely.</p>
+<h4 id="-es6now-https-github-com-zenparsing-es6now"><a class="anchor" href="#-es6now-https-github-com-zenparsing-es6now" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/zenparsing/es6now">es6now</a></h4>
+<p>es6now doesn&#39;t output sourcemaps. This is cited as a positive as line-to-line
+mapping is the goal. This however obviously doesn&#39;t retain column mapping
+resulting in the output code not being very pleasant.</p>
+<h4 id="-es6-transpiler-https-github-com-termi-es6-transpiler"><a class="anchor" href="#-es6-transpiler-https-github-com-termi-es6-transpiler" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/termi/es6-transpiler">es6-transpiler</a></h4>
+<p>The es6-transpiler compiler requires shims to operate which pollutes the global
+scope resulting in possible collisions.</p>
+<p>es6-transpiler maps line-by-line, just like es6now, this results in the same
+issues such as lack of column information and unpleasant code output.</p>
+
+  </div>
+</body>
+</html>

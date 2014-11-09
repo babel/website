@@ -1,0 +1,140 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>6to5 · Turn ES6 code into readable vanilla ES5 with source maps</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container markdown-body">
+    <h1 id="modules"><a class="anchor" href="#modules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modules</h1>
+<h2 id="usage"><a class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<h3 id="cli"><a class="anchor" href="#cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h3>
+<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-comment">--modules common script.js</span>
+</code></pre><h3 id="node"><a class="anchor" href="#node" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> to5 = <span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5"</span>);
+to5.transform(<span class="hljs-string">'import "foo";'</span>, { modules: <span class="hljs-string">"common"</span> });
+</code></pre>
+<h2 id="formats"><a class="anchor" href="#formats" aria-hidden="true"><span class="octicon octicon-link"></span></a>Formats</h2>
+<h3 id="common-default"><a class="anchor" href="#common-default" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common (Default)</h3>
+<p><strong>In</strong></p>
+<pre><code class="lang-javascript">import <span class="hljs-string">"foo"</span>;
+
+import foo from <span class="hljs-string">"foo"</span>;
+import * as foo from <span class="hljs-string">"foo"</span>;
+
+import {bar} from <span class="hljs-string">"foo"</span>;
+import {foo as bar} from <span class="hljs-string">"foo"</span>;
+
+export {test};
+export <span class="hljs-keyword">var</span> test = <span class="hljs-number">5</span>;
+
+export <span class="hljs-keyword">default</span> test;
+</code></pre>
+<p><strong>Out</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>);
+
+<span class="hljs-keyword">var</span> foo = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>).default;
+<span class="hljs-keyword">var</span> foo = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>);
+
+<span class="hljs-keyword">var</span> bar = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>).bar;
+<span class="hljs-keyword">var</span> bar = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>).foo;
+
+exports.test = test;
+<span class="hljs-keyword">var</span> test = <span class="hljs-number">5</span>; exports.test = test;
+
+exports.default = test;
+</code></pre>
+<h3 id="amd"><a class="anchor" href="#amd" aria-hidden="true"><span class="octicon octicon-link"></span></a>AMD</h3>
+<p><strong>In</strong></p>
+<pre><code class="lang-javascript">import foo from <span class="hljs-string">"foo"</span>;
+
+export <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> foo(<span class="hljs-string">"foobar"</span>);
+}
+</code></pre>
+<p><strong>Out</strong></p>
+<pre><code class="lang-javascript">define([<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exports, _foo)</span> </span>{
+  exports.bar = bar;
+
+  <span class="hljs-keyword">var</span> foo = _foo.default;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> foo(<span class="hljs-string">"foobar"</span>);
+  }
+});
+</code></pre>
+<h3 id="umd"><a class="anchor" href="#umd" aria-hidden="true"><span class="octicon octicon-link"></span></a>UMD</h3>
+<p><strong>In</strong></p>
+<pre><code class="lang-javascript">import foo from <span class="hljs-string">"foo"</span>;
+
+export <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> foo(<span class="hljs-string">"foobar"</span>);
+}
+</code></pre>
+<p><strong>Out</strong></p>
+<pre><code class="lang-javascript">(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(factory)</span> </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> define === <span class="hljs-string">"function"</span> &amp;&amp; define.amd) {
+    define([<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], factory);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> exports !== <span class="hljs-string">"undefined"</span>) {
+    factory(exports, <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>));
+  }
+})(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exports)</span> </span>{
+  exports.bar = bar;
+
+  <span class="hljs-keyword">var</span> foo = _foo.default;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> foo(<span class="hljs-string">"foobar"</span>);
+  }
+});
+</code></pre>
+<h3 id="ignore"><a class="anchor" href="#ignore" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ignore</h3>
+<p><strong>In</strong></p>
+<pre><code class="lang-javascript">import foo from <span class="hljs-string">"foo"</span>;
+
+export <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> foo(<span class="hljs-string">"foobar"</span>);
+}
+</code></pre>
+<p><strong>Out</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> foo(<span class="hljs-string">"foobar"</span>);
+}
+</code></pre>
+<h2 id="custom"><a class="anchor" href="#custom" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom</h2>
+<p>You can alternatively specify module names instead of one of the built-in types.</p>
+<pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5 --modules custom-<span class="hljs-class"><span class="hljs-keyword">module</span>-<span class="hljs-title">formatter</span></span>
+</code></pre><p><strong>node_modules/custom-module-formatter/index.js</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = ModuleFormatter;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ModuleFormatter</span><span class="hljs-params">()</span> </span>{
+
+}
+
+ModuleFormatter.prototype.transform = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ast)</span> </span>{
+  <span class="hljs-comment">// this is ran after all transformers have had their turn at modifying the ast</span>
+  <span class="hljs-comment">// feel free to modify this however</span>
+};
+
+ModuleFormatter.prototype.import = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(node, nodes)</span> </span>{
+  <span class="hljs-comment">// node is an ImportDeclaration</span>
+};
+
+ModuleFormatter.prototype.importSpecifier = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(specifier, node, nodes)</span> </span>{
+  <span class="hljs-comment">// specifier is an ImportSpecifier</span>
+  <span class="hljs-comment">// node is an ImportDeclaration</span>
+};
+
+ModuleFormatter.prototype.export = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(node, nodes)</span> </span>{
+  <span class="hljs-comment">// node is an ExportDeclaration</span>
+};
+
+ModuleFormatter.prototype.exportSpecifier = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(specifier, node, nodes)</span> </span>{
+  <span class="hljs-comment">// specifier is an ExportSpecifier</span>
+  <span class="hljs-comment">// node is an ExportDeclaration</span>
+};
+</code></pre>
+
+  </div>
+</body>
+</html>

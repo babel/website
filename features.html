@@ -1,0 +1,123 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>6to5 · Turn ES6 code into readable vanilla ES5 with source maps</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container markdown-body">
+    <h1 id="features"><a class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h1>
+<h2 id="array-comprehension"><a class="anchor" href="#array-comprehension" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array comprehension</h2>
+<pre><code class="lang-javascript">[<span class="hljs-keyword">for</span> (i of [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) i * i]; <span class="hljs-comment">// [1, 4, 9]</span>
+</code></pre>
+<h2 id="arrow-functions"><a class="anchor" href="#arrow-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arrow functions</h2>
+<pre><code class="lang-javascript">arr.map(x =&gt; x * x);
+</code></pre>
+<h2 id="let-scoping"><a class="anchor" href="#let-scoping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Let scoping</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> arr) {
+  <span class="hljs-keyword">let</span> v = arr[i];
+}
+</code></pre>
+<h2 id="classes"><a class="anchor" href="#classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">class</span> Foo extends Bar {
+  constructor() { }
+
+  foo() { }
+
+  get bar() { }
+
+  set bar() { }
+}
+</code></pre>
+<h2 id="computed-property-names"><a class="anchor" href="#computed-property-names" aria-hidden="true"><span class="octicon octicon-link"></span></a>Computed property names</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> foo = <span class="hljs-string">"foo"</span>;
+<span class="hljs-keyword">var</span> bar = <span class="hljs-string">"bar"</span>;
+<span class="hljs-keyword">var</span> obj = {
+  [<span class="hljs-string">"foo"</span> + bar]: <span class="hljs-string">"heh"</span>,
+  [<span class="hljs-string">"bar"</span> + foo]: <span class="hljs-string">"noo"</span>,
+  foo: <span class="hljs-string">"foo"</span>,
+  bar: <span class="hljs-string">"bar"</span>
+};
+</code></pre>
+<h2 id="constants"><a class="anchor" href="#constants" aria-hidden="true"><span class="octicon octicon-link"></span></a>Constants</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> MULTIPLIER = <span class="hljs-number">5</span>;
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span> * MULTIPLIER);
+
+MULTIPLIER = <span class="hljs-number">6</span>; <span class="hljs-comment">// error</span>
+<span class="hljs-keyword">var</span> MULTIPLIER; <span class="hljs-comment">// error</span>
+</code></pre>
+<h2 id="default-parameters"><a class="anchor" href="#default-parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Default parameters</h2>
+<pre><code class="lang-javascript">function foo(bar = &quot;foo&quot;) {
+  return bar + &quot;bar&quot;;
+}
+</code></pre>
+<h2 id="destructuring"><a class="anchor" href="#destructuring" aria-hidden="true"><span class="octicon octicon-link"></span></a>Destructuring</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> [a, [b], c, d] = [<span class="hljs-string">"hello"</span>, [<span class="hljs-string">", "</span>, <span class="hljs-string">"junk"</span>], [<span class="hljs-string">"world"</span>]];
+<span class="hljs-built_in">console</span>.log(a + b + c); <span class="hljs-comment">// hello, world</span>
+</code></pre>
+<h2 id="for-of"><a class="anchor" href="#for-of" aria-hidden="true"><span class="octicon octicon-link"></span></a>For-of</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i of [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) {
+  <span class="hljs-built_in">console</span>.log(i * i);
+}
+</code></pre>
+<h2 id="generators"><a class="anchor" href="#generators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generators</h2>
+<pre><code class="lang-javascript">```
+
+## Modules
+
+```javascript
+</code></pre>
+<h2 id="numeric-literals"><a class="anchor" href="#numeric-literals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Numeric literals</h2>
+<pre><code class="lang-javascript"><span class="hljs-number">0</span>b111110111 === <span class="hljs-number">503</span>; <span class="hljs-comment">// true</span>
+<span class="hljs-number">0</span>o767 === <span class="hljs-number">503</span>; <span class="hljs-comment">// true</span>
+</code></pre>
+<h2 id="property-method-assignment"><a class="anchor" href="#property-method-assignment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Property method assignment</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {
+  foo() {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"foobar"</span>;
+  },
+
+  get bar() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._bar;
+  },
+
+  set bar(val) {
+    <span class="hljs-keyword">this</span>._bar = val;
+  }
+};
+</code></pre>
+<h2 id="property-name-shorthand"><a class="anchor" href="#property-name-shorthand" aria-hidden="true"><span class="octicon octicon-link"></span></a>Property name shorthand</h2>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span><span class="hljs-params">(x, y)</span> </span>{
+  <span class="hljs-keyword">return</span> { x, y };
+}
+</code></pre>
+<h2 id="rest-parameters"><a class="anchor" href="#rest-parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rest parameters</h2>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printList</span><span class="hljs-params">(name, ...items)</span> </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"list %s has the following items"</span>, name);
+  items.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item)</span> </span>{
+    <span class="hljs-built_in">console</span>.log(item);
+  });
+}
+</code></pre>
+<h2 id="spread"><a class="anchor" href="#spread" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spread</h2>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span><span class="hljs-params">(x, y)</span> </span>{
+  <span class="hljs-keyword">return</span> x + y;
+}
+
+<span class="hljs-keyword">var</span> numbers = [<span class="hljs-number">5</span>, <span class="hljs-number">10</span>];
+add(...numbers); <span class="hljs-comment">// 15</span>
+</code></pre>
+<h2 id="template-literals"><a class="anchor" href="#template-literals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Template literals</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> x = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">var</span> y = <span class="hljs-number">10</span>;
+<span class="hljs-built_in">console</span>.log(`${x} + ${y} = ${x + y}`); <span class="hljs-comment">// "5 + 10 = 15"</span>
+</code></pre>
+<h2 id="unicode-regex"><a class="anchor" href="#unicode-regex" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unicode regex</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> string = <span class="hljs-string">'foo💩bar'</span>;
+<span class="hljs-keyword">var</span> match = string.match(<span class="hljs-regexp">/foo(.)bar/u</span>);
+<span class="hljs-built_in">console</span>.log(match[<span class="hljs-number">1</span>]);
+</code></pre>
+
+  </div>
+</body>
+</html>
