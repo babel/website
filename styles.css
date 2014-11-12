@@ -7189,6 +7189,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
 header {
   margin: 30px 0;
 }
