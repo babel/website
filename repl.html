@@ -1,0 +1,158 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>6to5 &middot; Turn ES6 code into readable vanilla ES5 with source maps</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+  </head>
+  <body>
+    <a href="https://github.com/6to6/6to5">
+      <img class="ribbon" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub">
+    </a>
+
+    <header>
+      <div class="container">
+        <a href="index.html" class="logo">
+          <img alt="6to5" src="https://raw.githubusercontent.com/6to5/logo/master/logo.png">
+        </a>
+
+        <ul class="nav nav-pills nav-justified" role="tablist">
+          <li><a href="features.html">Features</a></li>
+          <li><a href="usage.html">Usage</a></li>
+          <li><a href="plugins.html">Plugins</a></li>
+          <li><a href="browser.html">Browser</a></li>
+          <li><a href="caveats.html">Caveats</a></li>
+          <li><a href="differences.html">Differences</a></li>
+          <li><a href="repl.html">REPL</a></li>
+
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Misc <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="polyfill.html">Polyfill</a></li>
+              <li><a href="react.html">React/JSX</a></li>
+              <li><a href="modules.html">Modules</a></li>
+              <li><a href="optional-runtime.html">Optional runtime</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+    
+    <div class="container markdown-body">
+      <h1>REPL</h1>
+
+<noscript>
+  <p>JavaScript is required for this demo.</p>
+</noscript>
+
+<div id="repl">
+  <div id="input" class="editor">function foo(items) {
+  var x = "All this is syntax highlighted";
+  return x;
+}</div>
+  <div id="output" class="editor"></div>
+  <div class="clearfix"></div>
+
+  <h3>Options</h3>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="option-evaluate" checked>
+      Evaluate
+    </label>
+  </div>
+
+  <h3>Console</h3>
+
+  <pre id="console"><code></code></pre>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+<script>
+  var get = function (id) {
+    var editor = ace.edit(id);
+
+    var session = editor.getSession();
+    session.setMode("ace/mode/javascript");
+    session.setUseSoftTabs(true);
+    session.setTabSize(2);
+
+    return editor;
+  };
+
+  var input = get("input");
+
+  var output = get("output");
+  output.setReadOnly(true);
+  output.setHighlightActiveLine(false);
+  output.setHighlightGutterLine(false);
+  
+  var $consoleCode = $("#console code");
+  var $optionEval  = $("#option-evaluate");
+  var $console     = $("#console");
+
+  var compile = function () {
+    var code = input.getValue();
+    var _log = console.log;
+
+    try {
+      var transformed = to5.transform(code, { filename: "repl" });
+
+      $consoleCode.text("");
+      $console.removeClass("error");
+      output.setValue(transformed.code, -1);
+
+      if ($optionEval.is(":checked")) {
+        var buf = "";
+
+        console.log = function () {
+          if (arguments.length > 1) {
+            for (var i in arguments) {
+              var arg = arguments[i];
+              buf += JSON.stringify(arg) + " ";
+            }
+          } else if (arguments.length === 1) {
+            var arg = arguments[0];
+            if (typeof arg === "string") {
+              buf += arg;
+            } else {
+              buf += JSON.stringify(arg);
+            }
+          }
+          buf += "\n";
+        };
+
+        new Function(transformed.code)();
+
+        $consoleCode.text(buf);
+      }
+    } catch (err) {
+      $consoleCode.text(err.stack);
+      $console.addClass("error");
+      throw err;
+    }
+
+    console.log = _log;
+  };
+
+  var timeout;
+  var queue = function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(compile, 500);
+  };
+
+  input.on("change", queue);
+</script>
+
+    </div>
+
+    <footer>
+      <div class="container">
+        <hr>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.4</p>
+      </div>
+    </footer>
+  </body>
+</html>

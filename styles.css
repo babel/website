@@ -7220,6 +7220,17 @@ body {
 footer {
   margin-top: 20px;
 }
+#repl .editor {
+  float: left;
+  width: 50%;
+  height: 300px;
+}
+#repl #console {
+  margin-bottom: 0;
+}
+#repl #console.error {
+  color: red;
+}
 .container {
   width: 850px;
   padding: 0 30px;

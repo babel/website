@@ -1,0 +1,101 @@
+<h1>REPL</h1>
+
+<noscript>
+  <p>JavaScript is required for this demo.</p>
+</noscript>
+
+<div id="repl">
+  <div id="input" class="editor"></div>
+  <div id="output" class="editor"></div>
+  <div class="clearfix"></div>
+
+  <h3>Options</h3>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="option-evaluate" checked>
+      Evaluate
+    </label>
+  </div>
+
+  <h3>Console</h3>
+
+  <pre id="console"><code></code></pre>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+<script>
+  var get = function (id) {
+    var editor = ace.edit(id);
+
+    var session = editor.getSession();
+    session.setMode("ace/mode/javascript");
+    session.setUseSoftTabs(true);
+    session.setTabSize(2);
+
+    return editor;
+  };
+
+  var input = get("input");
+
+  var output = get("output");
+  output.setReadOnly(true);
+  output.setHighlightActiveLine(false);
+  output.setHighlightGutterLine(false);
+  
+  var $consoleCode = $("#console code");
+  var $optionEval  = $("#option-evaluate");
+  var $console     = $("#console");
+
+  var compile = function () {
+    var code = input.getValue();
+    var _log = console.log;
+
+    try {
+      var transformed = to5.transform(code, { filename: "repl" });
+
+      $consoleCode.text("");
+      $console.removeClass("error");
+      output.setValue(transformed.code, -1);
+
+      if ($optionEval.is(":checked")) {
+        var buf = "";
+
+        console.log = function () {
+          if (arguments.length > 1) {
+            for (var i in arguments) {
+              var arg = arguments[i];
+              buf += JSON.stringify(arg) + " ";
+            }
+          } else if (arguments.length === 1) {
+            var arg = arguments[0];
+            if (typeof arg === "string") {
+              buf += arg;
+            } else {
+              buf += JSON.stringify(arg);
+            }
+          }
+          buf += "\n";
+        };
+
+        new Function(transformed.code)();
+
+        $consoleCode.text(buf);
+      }
+    } catch (err) {
+      $consoleCode.text(err.stack);
+      $console.addClass("error");
+      throw err;
+    }
+
+    console.log = _log;
+  };
+
+  var timeout;
+  var queue = function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(compile, 500);
+  };
+
+  input.on("change", queue);
+</script>

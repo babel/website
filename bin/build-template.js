@@ -52,16 +52,22 @@ var to5Loc = path.normalize(pkgLoc + "/..");
 var pkg     = require(pkgLoc);
 var version = pkg.version;
 
-var pagesLoc = to5Loc + "/doc";
+var renderPages = function (pagesLoc) {
+  _.each(fs.readdirSync(pagesLoc), function (filename) {
+    var input  = path.join(pagesLoc, filename);
+    var ext    = path.extname(filename);
+    var name   = path.basename(filename, ext);
+    var output = __dirname + "/../" + name + ".html";
 
-_.each(fs.readdirSync(pagesLoc), function (filename) {
-  var input  = path.join(pagesLoc, filename);
-  var name   = path.basename(filename, ".md");
-  var output = __dirname + "/../" + name + ".html";
+    var raw     = fs.readFileSync(input, "utf8");
+    var content = ext === ".md" ? marked(raw) : raw;
+    var html    = template({ content: content, version: version });
 
-  var markdown = fs.readFileSync(input, "utf8");
-  var content  = marked(markdown);
-  var html     = template({ content: content, version: version });
+    fs.writeFileSync(output, html);
+  });
+};
 
-  fs.writeFileSync(output, html);
-});
+renderPages(to5Loc + "/doc");
+renderPages(__dirname + "/../src/pages");
+
+

@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/6to5/6to5.github.io",
   "devDependencies": {
-    "6to5": "6to5/6to5",
+    "6to5": "^1.12.4",
     "github-markdown-css": "^1.2.0",
     "handlebars": "^2.0.0",
     "highlight.js": "^8.3.0",
@@ -25,6 +25,8 @@
     "lodash": "^2.4.1",
     "marked": "^0.3.2",
     "bootstrap": "^3.3.0",
-    "underscore.string": "^2.3.3"
+    "underscore.string": "^2.3.3",
+    "jquery": "^2.1.1",
+    "uglify-js": "^2.4.15"
   }
 }
