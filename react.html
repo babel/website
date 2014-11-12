@@ -39,13 +39,22 @@
     </header>
     
     <div class="container markdown-body">
-      {{{content}}}
+      <h1 id="react-jsx"><a class="anchor" href="#react/jsx" aria-hidden="true"><span class="octicon octicon-link"></span></a>React/JSX</h1>
+<p>6to5 has built-in support for React v0.12. Tags are automatically transformed to
+their equivalent <code>React.createElement(...)</code> and <code>displayName</code> is automatically
+inferred and added to all <code>React.createClass</code> calls.</p>
+<h2 id="blacklist"><a class="anchor" href="#blacklist" aria-hidden="true"><span class="octicon octicon-link"></span></a>Blacklist</h2>
+<p>To disable this behaviour add <code>react</code> to your blacklist:</p>
+<pre><code class="lang-javascript">to5.transform(<span class="hljs-string">"code"</span>, { blacklist: [<span class="hljs-string">"react"</span>] });
+</code></pre>
+<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-comment">--blacklist react</span>
+</code></pre>
     </div>
 
     <footer>
       <div class="container">
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v{{{version}}}</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.3</p>
       </div>
     </footer>
   </body>

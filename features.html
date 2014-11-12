@@ -1,14 +1,54 @@
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>6to5 · Turn ES6 code into readable vanilla ES5 with source maps</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container markdown-body">
-    <h1 id="features"><a class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h1>
+  <head>
+    <meta charset="UTF-8">
+    <title>6to5 &middot; Turn ES6 code into readable vanilla ES5 with source maps</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header>
+      <div class="container">
+        <a href="index.html" class="logo">
+          <img alt="6to5" src="https://raw.githubusercontent.com/6to5/logo/master/logo.png">
+        </a>
+
+        <ul class="nav nav-pills nav-justified" role="tablist">
+          <li><a href="features.html">Features</a></li>
+          <li><a href="usage.html">Usage</a></li>
+          <li><a href="plugins.html">Plugins</a></li>
+          <li><a href="browser.html">Browser</a></li>
+          <li><a href="caveats.html">Caveats</a></li>
+          <li><a href="differences.html">Differences</a></li>
+
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Misc <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="polyfill.html">Polyfill</a></li>
+              <li><a href="react.html">React/JSX</a></li>
+              <li><a href="modules.html">Modules</a></li>
+              <li><a href="optional-runtime.html">Optional runtime</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+    
+    <div class="container markdown-body">
+      <h1 id="features"><a class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h1>
 <h2 id="array-comprehension"><a class="anchor" href="#array-comprehension" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array comprehension</h2>
 <pre><code class="lang-javascript">[<span class="hljs-keyword">for</span> (i of [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) i * i]; <span class="hljs-comment">// [1, 4, 9]</span>
+</code></pre>
+<h2 id="async-functions"><a class="anchor" href="#async-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async functions</h2>
+<pre><code class="lang-javascript">async <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chainAnimationsAsync</span><span class="hljs-params">(elem, animations)</span> </span>{
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> anim of animations) {
+    await anim(elem);
+  }
+}
 </code></pre>
 <h2 id="arrow-functions"><a class="anchor" href="#arrow-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arrow functions</h2>
 <pre><code class="lang-javascript">arr.map(x =&gt; x * x);
@@ -18,7 +58,7 @@
   <span class="hljs-keyword">let</span> v = arr[i];
 }
 </code></pre>
-<h2 id="classes"><a class="anchor" href="#classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes</h2>
+<h2 id="classes-1"><a class="anchor" href="#classes-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">class</span> Foo extends Bar {
   constructor() { }
 
@@ -55,20 +95,25 @@ MULTIPLIER = <span class="hljs-number">6</span>; <span class="hljs-comment">// e
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> [a, [b], c, d] = [<span class="hljs-string">"hello"</span>, [<span class="hljs-string">", "</span>, <span class="hljs-string">"junk"</span>], [<span class="hljs-string">"world"</span>]];
 <span class="hljs-built_in">console</span>.log(a + b + c); <span class="hljs-comment">// hello, world</span>
 </code></pre>
-<h2 id="for-of"><a class="anchor" href="#for-of" aria-hidden="true"><span class="octicon octicon-link"></span></a>For-of</h2>
+<h2 id="for-of-1"><a class="anchor" href="#for-of-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>For-of</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i of [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) {
   <span class="hljs-built_in">console</span>.log(i * i);
 }
 </code></pre>
-<h2 id="generators"><a class="anchor" href="#generators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generators</h2>
+<h2 id="generators-1"><a class="anchor" href="#generators-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generators</h2>
 <pre><code class="lang-javascript">```
 
-## Modules
+## Generator comprehension
 
 ```javascript
 </code></pre>
-<h2 id="numeric-literals"><a class="anchor" href="#numeric-literals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Numeric literals</h2>
-<pre><code class="lang-javascript"><span class="hljs-number">0</span>b111110111 === <span class="hljs-number">503</span>; <span class="hljs-comment">// true</span>
+<h2 id="modules"><a class="anchor" href="#modules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modules</h2>
+<pre><code class="lang-javascript">```
+
+## Numeric literals
+
+```javascript
+<span class="hljs-number">0</span>b111110111 === <span class="hljs-number">503</span>; <span class="hljs-comment">// true</span>
 <span class="hljs-number">0</span>o767 === <span class="hljs-number">503</span>; <span class="hljs-comment">// true</span>
 </code></pre>
 <h2 id="property-method-assignment"><a class="anchor" href="#property-method-assignment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Property method assignment</h2>
@@ -99,7 +144,7 @@ MULTIPLIER = <span class="hljs-number">6</span>; <span class="hljs-comment">// e
   });
 }
 </code></pre>
-<h2 id="spread"><a class="anchor" href="#spread" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spread</h2>
+<h2 id="spread-1"><a class="anchor" href="#spread-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spread</h2>
 <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span><span class="hljs-params">(x, y)</span> </span>{
   <span class="hljs-keyword">return</span> x + y;
 }
@@ -118,6 +163,13 @@ add(...numbers); <span class="hljs-comment">// 15</span>
 <span class="hljs-built_in">console</span>.log(match[<span class="hljs-number">1</span>]);
 </code></pre>
 
-  </div>
-</body>
+    </div>
+
+    <footer>
+      <div class="container">
+        <hr>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.3</p>
+      </div>
+    </footer>
+  </body>
 </html>

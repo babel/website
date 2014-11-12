@@ -1,4 +1,4 @@
-@import (inline) "../node_modules/normalize.css/normalize.css";
+@import (inline) "../node_modules/bootstrap/dist/css/bootstrap.css";
 @import (inline) "../node_modules/github-markdown-css/github-markdown.css";
 @import (inline) "../node_modules/highlight.js/styles/github.css";
 
@@ -10,15 +10,44 @@
   box-sizing: border-box;
 }
 
+header {
+  margin: 30px 0;
+
+  .logo {
+    display: block;
+    margin-bottom: 20px;
+
+    img {
+      width: 400px;
+      height: 182px;
+    }
+  }
+
+  .nav {
+    float: center;
+  }
+}
+
+header,
+footer {
+  text-align: center;
+}
+
 body {
-  margin: 20px 0 100px;
+  margin: 20px 0 30px;
+  background-color: #fefefe;
+}
+
+footer {
+  margin-top: 20px;
 }
 
 .container {
-  max-width: 800px;
+  width: 850px;
   padding: 0 30px;
   margin: 0 auto;
 }
+
 .markdown-body h1 .anchor,
 .markdown-body h2 .anchor,
 .markdown-body h3 .anchor,

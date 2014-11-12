@@ -39,13 +39,24 @@
     </header>
     
     <div class="container markdown-body">
-      {{{content}}}
+      <h1 id="polyfill"><a class="anchor" href="#polyfill" aria-hidden="true"><span class="octicon octicon-link"></span></a>Polyfill</h1>
+<p>6to5 includes a polyfill that includes the
+<a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a> and the
+<a href="https://github.com/paulmillr/es6-shim">es6-shim</a> and
+<a href="https://github.com/medikoo/es6-symbol">es6-symbol</a> polyfills.</p>
+<h2 id="node-1"><a class="anchor" href="#node-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h2>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/polyfill"</span>);
+</code></pre>
+<h2 id="browser-1"><a class="anchor" href="#browser-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser</h2>
+<p>Available from the <code>browser-polyfill.js</code> file within the 6to5 directory of an
+npm release.</p>
+
     </div>
 
     <footer>
       <div class="container">
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v{{{version}}}</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.3</p>
       </div>
     </footer>
   </body>

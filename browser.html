@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>6to5 &middot; Turn ES6 code into readable vanilla ES5 with source maps</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header>
+      <div class="container">
+        <a href="index.html" class="logo">
+          <img alt="6to5" src="https://raw.githubusercontent.com/6to5/logo/master/logo.png">
+        </a>
+
+        <ul class="nav nav-pills nav-justified" role="tablist">
+          <li><a href="features.html">Features</a></li>
+          <li><a href="usage.html">Usage</a></li>
+          <li><a href="plugins.html">Plugins</a></li>
+          <li><a href="browser.html">Browser</a></li>
+          <li><a href="caveats.html">Caveats</a></li>
+          <li><a href="differences.html">Differences</a></li>
+
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Misc <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="polyfill.html">Polyfill</a></li>
+              <li><a href="react.html">React/JSX</a></li>
+              <li><a href="modules.html">Modules</a></li>
+              <li><a href="optional-runtime.html">Optional runtime</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+    
+    <div class="container markdown-body">
+      <h1 id="browser"><a class="anchor" href="#browser" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser</h1>
+<p>A browser version of 6to5 is available from <code>browser.js</code> inside the 6to5
+directory in an npm release.</p>
+<h2 id="api"><a class="anchor" href="#api" aria-hidden="true"><span class="octicon octicon-link"></span></a>API</h2>
+<pre><code class="lang-javascript">to5.transform(<span class="hljs-string">"class Test {}"</span>).code;
+</code></pre>
+<h2 id="scripts"><a class="anchor" href="#scripts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scripts</h2>
+<p>While it&#39;s not recommended for serious use, when the browser version is included
+all scripts with the type <code>text/ecmascript-6</code> and <code>text/6to5</code> are automatically
+compiled and ran.</p>
+<p>For example:</p>
+<pre><code class="lang-html"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"node_modules/6to5/browser.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/6to5"</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">class</span> Test {
+  test() {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"test"</span>;
+  }
+}
+
+<span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> Test;
+test.test();
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span>
+</code></pre>
+<h2 id="build"><a class="anchor" href="#build" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build</h2>
+<p>You can build a browser version of the compiler by running the following in the
+6to5 directory:</p>
+<pre><code><span class="hljs-variable">$ </span>make build
+</code></pre><p>This will output the files <code>dist/6to5.js</code> and <code>dist/6to5.min.js</code>.</p>
+<h2 id="test"><a class="anchor" href="#test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test</h2>
+<p>To test 6to5 in your browser run:</p>
+<pre><code><span class="hljs-variable">$ </span>make test-browser
+</code></pre><p>And open <code>test/browser.html</code> in your browser if it doesn&#39;t open automatically.</p>
+
+    </div>
+
+    <footer>
+      <div class="container">
+        <hr>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.3</p>
+      </div>
+    </footer>
+  </body>
+</html>

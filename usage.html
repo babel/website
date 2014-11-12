@@ -1,0 +1,163 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>6to5 &middot; Turn ES6 code into readable vanilla ES5 with source maps</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <header>
+      <div class="container">
+        <a href="index.html" class="logo">
+          <img alt="6to5" src="https://raw.githubusercontent.com/6to5/logo/master/logo.png">
+        </a>
+
+        <ul class="nav nav-pills nav-justified" role="tablist">
+          <li><a href="features.html">Features</a></li>
+          <li><a href="usage.html">Usage</a></li>
+          <li><a href="plugins.html">Plugins</a></li>
+          <li><a href="browser.html">Browser</a></li>
+          <li><a href="caveats.html">Caveats</a></li>
+          <li><a href="differences.html">Differences</a></li>
+
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Misc <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="polyfill.html">Polyfill</a></li>
+              <li><a href="react.html">React/JSX</a></li>
+              <li><a href="modules.html">Modules</a></li>
+              <li><a href="optional-runtime.html">Optional runtime</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+    
+    <div class="container markdown-body">
+      <h1 id="usage-1"><a class="anchor" href="#usage-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+<h2 id="cli-1"><a class="anchor" href="#cli-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h2>
+<p>Compile the file <code>script.js</code> and output it to stdout.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-keyword">script</span>.js
+</code></pre><p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code>.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-keyword">script</span>.js <span class="hljs-comment">--out-file script-compiled.js</span>
+</code></pre><p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code> and save a
+source map to <code>script-compiled.js.map</code>.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-keyword">script</span>.js <span class="hljs-comment">--source-maps --out-file script-compiled.js</span>
+</code></pre><p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code> with a source
+map embedded in a comment at the bottom.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 script.js --source-maps-<span class="hljs-keyword">inline</span> --<span class="hljs-keyword">out</span>-<span class="hljs-keyword">file</span> script-compiled.js
+</code></pre><p>Compile the entire <code>src</code> directory and output it to the <code>lib</code> directory.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 src <span class="hljs-comment">--out-dir lib</span>
+</code></pre><p>Compile the entire <code>src</code> directory and output it to the one concatenated file.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5 src --<span class="hljs-keyword">out</span>-<span class="hljs-keyword">file</span> script-compiled.js
+</code></pre><p>Pipe a file in via stdin and output it to <code>script-compiled.js</code></p>
+<pre><code>$ <span class="hljs-number">6</span>to5 --<span class="hljs-keyword">out</span>-<span class="hljs-keyword">file</span> script-compiled.js &lt; script.js
+</code></pre><h3 id="node-2"><a class="anchor" href="#node-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
+<p>Launch a repl.</p>
+<pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5-node
+</code></pre><p>Evaluate code.</p>
+<pre><code>$ <span class="hljs-number">6</span>to5-node <span class="hljs-operator">-e</span> <span class="hljs-string">"class Test { }"</span>
+</code></pre><p>Compile and run <code>test.js</code>.</p>
+<pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5-node test
+</code></pre><h2 id="node-3"><a class="anchor" href="#node-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> to5 = <span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5"</span>);
+
+<span class="hljs-keyword">var</span> result = to5.transform(<span class="hljs-string">"code();"</span>, options);
+result.code;
+result.map;
+result.ast;
+
+to5.transformFileSync(<span class="hljs-string">"filename.js"</span>, options).code;
+
+to5.transformFile(<span class="hljs-string">"filename.js"</span>, options, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, result)</span> </span>{
+
+});
+</code></pre>
+<h4 id="options"><a class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h4>
+<pre><code class="lang-javascript">{
+  <span class="hljs-comment">// Filename for use in errors etc.</span>
+  <span class="hljs-comment">// Default: "unknown"</span>
+  filename: <span class="hljs-string">"filename"</span>,
+
+  <span class="hljs-comment">// List of transformers to EXCLUDE.</span>
+  <span class="hljs-comment">// Run `6to5 --help` to see a full list of transformers.</span>
+  blacklist: [],
+
+  <span class="hljs-comment">// List of transformers to ONLY use.</span>
+  <span class="hljs-comment">// Run `6to5 --help` to see a full list of transformers.</span>
+  whitelist: [],
+
+  <span class="hljs-comment">// Module formatter to use</span>
+  <span class="hljs-comment">// Run `6to5 --help` to see a full list of module formatters.</span>
+  <span class="hljs-comment">// Default: "common"</span>
+  modules: <span class="hljs-string">"common"</span>,
+
+  <span class="hljs-comment">// If truthy, adds a `map` property to returned output.</span>
+  <span class="hljs-comment">// If set to "inline", a comment with a sourceMappingURL directive is added to</span>
+  <span class="hljs-comment">// the bottom of the returned code.</span>
+  <span class="hljs-comment">// Default: false</span>
+  sourceMap: <span class="hljs-literal">true</span>,
+
+  <span class="hljs-comment">// Set `file` on returned source map.</span>
+  <span class="hljs-comment">// Default: `filename` option.</span>
+  sourceMapName: <span class="hljs-string">"filename"</span>,
+
+  <span class="hljs-comment">// Set `sources[0]` on returned source map.</span>
+  <span class="hljs-comment">// Default: `filename` option.</span>
+  sourceFileName: <span class="hljs-string">"filename"</span>,
+
+  <span class="hljs-comment">// Optionally replace all 6to5 helper declarations with a referenece to this</span>
+  <span class="hljs-comment">// variable. If set to `true` then the default namespace is used "to5Runtime".</span>
+  <span class="hljs-comment">// Default: false</span>
+  runtime: <span class="hljs-literal">true</span>
+}
+</code></pre>
+<h3 id="require-hook"><a class="anchor" href="#require-hook" aria-hidden="true"><span class="octicon octicon-link"></span></a>Require hook</h3>
+<p>All subsequent files required by node with the extensions <code>.es6</code> and <code>.js</code> will
+be transformed by 6to5. The polyfill specified in <a href="polyfill.html">Polyfill</a> is
+also required.</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/register"</span>);
+</code></pre>
+<p><strong>NOTE:</strong> By default all requires to <code>node_modules</code> will be ignored. You can
+override this by passing an ignore regex via:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/register"</span>)({
+  <span class="hljs-comment">// This will override `node_modules` ignoring - you can alternatively pass</span>
+  <span class="hljs-comment">// a regex</span>
+  ignore: <span class="hljs-literal">false</span>
+});
+</code></pre>
+<h4 id="options-1"><a class="anchor" href="#options-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h4>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/register"</span>)({
+  <span class="hljs-comment">// Optional ignore regex - if any filenames **do** match this regex then they</span>
+  <span class="hljs-comment">// aren't compiled</span>
+  ignore: <span class="hljs-regexp">/regex/</span>,
+
+  <span class="hljs-comment">// Optional only regex - if any filenames **don't** match this regex then they</span>
+  <span class="hljs-comment">// aren't compiled</span>
+  only: <span class="hljs-regexp">/my_es6_folder/</span>,
+
+  <span class="hljs-comment">// See options above for usage</span>
+  whitelist: [],
+  blacklist: [],
+
+  <span class="hljs-comment">// This will remove the currently hooked extensions of .es6 and .js so you'll</span>
+  <span class="hljs-comment">// have to add them back if you want them to be used again.</span>
+  extensions: [<span class="hljs-string">".js"</span>, <span class="hljs-string">".es6"</span>]
+});
+</code></pre>
+
+    </div>
+
+    <footer>
+      <div class="container">
+        <hr>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.3</p>
+      </div>
+    </footer>
+  </body>
+</html>
