@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>6to5 &middot; Turn ES6 code into readable vanilla ES5 with source maps</title>
+    <title>6to5 &middot; Turn ES6+ code into readable vanilla ES5</title>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js"></script>
   </head>
@@ -66,16 +66,19 @@ map embedded in a comment at the bottom.</p>
 <pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5-node test
 </code></pre><h2 id="node-3"><a class="anchor" href="#node-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> to5 = <span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5"</span>);
-
-<span class="hljs-keyword">var</span> result = to5.transform(<span class="hljs-string">"code();"</span>, options);
+</code></pre>
+<h3 id="to5-transform-code-opts-"><a class="anchor" href="#to5.transform(code,-[opts]);" aria-hidden="true"><span class="octicon octicon-link"></span></a>to5.transform(code, [opts]);</h3>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> result = to5.transform(<span class="hljs-string">"code();"</span>, options);
 result.code;
 result.map;
 result.ast;
-
-to5.transformFileSync(<span class="hljs-string">"filename.js"</span>, options).code;
-
-to5.transformFile(<span class="hljs-string">"filename.js"</span>, options, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, result)</span> </span>{
-
+</code></pre>
+<h3 id="to5-transformfilesync-filename-opts-"><a class="anchor" href="#to5.transformfilesync(filename,-[opts])" aria-hidden="true"><span class="octicon octicon-link"></span></a>to5.transformFileSync(filename, [opts])</h3>
+<pre><code class="lang-javascript">to5.transformFileSync(<span class="hljs-string">"filename.js"</span>, options).code;
+</code></pre>
+<h3 id="to5-transformfile-filename-opts-callback-"><a class="anchor" href="#to5.transformfile(filename,-[opts],-callback)" aria-hidden="true"><span class="octicon octicon-link"></span></a>to5.transformFile(filename, [opts], callback)</h3>
+<pre><code class="lang-javascript">to5.transformFile(<span class="hljs-string">"filename.js"</span>, options, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, result)</span> </span>{
+  result.code;
 });
 </code></pre>
 <h4 id="options"><a class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h4>

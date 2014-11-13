@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>6to5 &middot; Turn ES6 code into readable vanilla ES5 with source maps</title>
+    <title>6to5 &middot; Turn ES6+ code into readable vanilla ES5</title>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js"></script>
   </head>
@@ -41,7 +41,29 @@
         <div class="col-sm-9 markdown-body">
           <h1 id="features"><a class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h1>
 <h2 id="array-comprehension"><a class="anchor" href="#array-comprehension" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array comprehension</h2>
-<pre><code class="lang-javascript">[<span class="hljs-keyword">for</span> (i of [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) i * i]; <span class="hljs-comment">// [1, 4, 9]</span>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> results = [<span class="hljs-keyword">for</span> (c of customers) <span class="hljs-keyword">if</span> (c.city == <span class="hljs-string">"Seattle"</span>) { name: c.name, age: c.age }]
+</code></pre>
+<h2 id="arrow-functions"><a class="anchor" href="#arrow-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arrow functions</h2>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Expression bodies</span>
+<span class="hljs-keyword">var</span> odds = evens.map(v =&gt; v + <span class="hljs-number">1</span>);
+<span class="hljs-keyword">var</span> nums = evens.map((v, i) =&gt; v + i);
+
+<span class="hljs-comment">// Statement bodies</span>
+nums.forEach(v =&gt; {
+  <span class="hljs-keyword">if</span> (v % <span class="hljs-number">5</span> === <span class="hljs-number">0</span>)
+    fives.push(v);
+});
+
+<span class="hljs-comment">// Lexical this</span>
+<span class="hljs-keyword">var</span> bob = {
+  _name: <span class="hljs-string">"Bob"</span>,
+  _friends: [],
+  printFriends() {
+    <span class="hljs-keyword">this</span>._friends.forEach(f =&gt; {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>._name + <span class="hljs-string">" knows "</span> + f);
+    });
+  }
+};
 </code></pre>
 <h2 id="async-functions"><a class="anchor" href="#async-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async functions</h2>
 <pre><code class="lang-javascript">async <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chainAnimationsAsync</span><span class="hljs-params">(elem, animations)</span> </span>{
@@ -50,23 +72,25 @@
   }
 }
 </code></pre>
-<h2 id="arrow-functions"><a class="anchor" href="#arrow-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arrow functions</h2>
-<pre><code class="lang-javascript">arr.map(x =&gt; x * x);
-</code></pre>
-<h2 id="let-scoping"><a class="anchor" href="#let-scoping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Let scoping</h2>
-<pre><code class="lang-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> arr) {
-  <span class="hljs-keyword">let</span> v = arr[i];
-}
-</code></pre>
 <h2 id="classes-1"><a class="anchor" href="#classes-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes</h2>
-<pre><code class="lang-javascript"><span class="hljs-keyword">class</span> Foo extends Bar {
-  constructor() { }
+<pre><code class="lang-javascript"><span class="hljs-keyword">class</span> SkinnedMesh extends THREE.Mesh {
+  constructor(geometry, materials) {
+    super(geometry, materials);
 
-  foo() { }
+    <span class="hljs-keyword">this</span>.idMatrix = SkinnedMesh.defaultMatrix();
+    <span class="hljs-keyword">this</span>.bones = [];
+    <span class="hljs-keyword">this</span>.boneMatrices = [];
+    <span class="hljs-comment">//...</span>
+  }
 
-  get bar() { }
+  update(camera) {
+    <span class="hljs-comment">//...</span>
+    super.update();
+  }
 
-  set bar() { }
+  static defaultMatrix() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> THREE.Matrix4();
+  }
 }
 </code></pre>
 <h2 id="computed-property-names"><a class="anchor" href="#computed-property-names" aria-hidden="true"><span class="octicon octicon-link"></span></a>Computed property names</h2>
@@ -87,13 +111,32 @@ MULTIPLIER = <span class="hljs-number">6</span>; <span class="hljs-comment">// e
 <span class="hljs-keyword">var</span> MULTIPLIER; <span class="hljs-comment">// error</span>
 </code></pre>
 <h2 id="default-parameters"><a class="anchor" href="#default-parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Default parameters</h2>
-<pre><code class="lang-javascript">function foo(bar = &quot;foo&quot;) {
-  return bar + &quot;bar&quot;;
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span><span class="hljs-params">(x, y = 12)</span> </span>{
+  <span class="hljs-comment">// y is 12 if not passed (or passed as undefined)</span>
+  <span class="hljs-keyword">return</span> x + y;
 }
+f(<span class="hljs-number">3</span>) == <span class="hljs-number">15</span>
 </code></pre>
 <h2 id="destructuring"><a class="anchor" href="#destructuring" aria-hidden="true"><span class="octicon octicon-link"></span></a>Destructuring</h2>
-<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> [a, [b], c, d] = [<span class="hljs-string">"hello"</span>, [<span class="hljs-string">", "</span>, <span class="hljs-string">"junk"</span>], [<span class="hljs-string">"world"</span>]];
-<span class="hljs-built_in">console</span>.log(a + b + c); <span class="hljs-comment">// hello, world</span>
+<pre><code class="lang-javascript"><span class="hljs-comment">// list matching</span>
+<span class="hljs-keyword">var</span> [a, , b] = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+
+<span class="hljs-comment">// object matching</span>
+<span class="hljs-keyword">var</span> { op: a, lhs: { op: b }, rhs: c } = getASTNode();
+
+<span class="hljs-comment">// object matching shorthand</span>
+<span class="hljs-comment">// binds `op`, `lhs` and `rhs` in scope</span>
+<span class="hljs-keyword">var</span> { op, lhs, rhs } = getASTNode();
+
+<span class="hljs-comment">// Can be used in parameter position</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span><span class="hljs-params">({ name: x })</span> </span>{
+  <span class="hljs-built_in">console</span>.log(x);
+}
+g({ name: <span class="hljs-number">5</span> });
+
+<span class="hljs-comment">// Fail-soft destructuring</span>
+<span class="hljs-keyword">var</span> [a] = [];
+a === <span class="hljs-literal">undefined</span>;
 </code></pre>
 <h2 id="for-of-1"><a class="anchor" href="#for-of-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>For-of</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i of [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) {
@@ -106,6 +149,11 @@ MULTIPLIER = <span class="hljs-number">6</span>; <span class="hljs-comment">// e
 ## Generator comprehension
 
 ```javascript
+</code></pre>
+<h2 id="let-scoping"><a class="anchor" href="#let-scoping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Let scoping</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> arr) {
+  <span class="hljs-keyword">let</span> v = arr[i];
+}
 </code></pre>
 <h2 id="modules"><a class="anchor" href="#modules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modules</h2>
 <pre><code class="lang-javascript">```
@@ -137,20 +185,18 @@ MULTIPLIER = <span class="hljs-number">6</span>; <span class="hljs-comment">// e
 }
 </code></pre>
 <h2 id="rest-parameters"><a class="anchor" href="#rest-parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rest parameters</h2>
-<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printList</span><span class="hljs-params">(name, ...items)</span> </span>{
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"list %s has the following items"</span>, name);
-  items.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item)</span> </span>{
-    <span class="hljs-built_in">console</span>.log(item);
-  });
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span><span class="hljs-params">(x, ...y)</span> </span>{
+  <span class="hljs-comment">// y is an Array</span>
+  <span class="hljs-keyword">return</span> x * y.length;
 }
+f(<span class="hljs-number">3</span>, <span class="hljs-string">"hello"</span>, <span class="hljs-literal">true</span>) == <span class="hljs-number">6</span>
 </code></pre>
 <h2 id="spread-1"><a class="anchor" href="#spread-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spread</h2>
-<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span><span class="hljs-params">(x, y)</span> </span>{
-  <span class="hljs-keyword">return</span> x + y;
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span><span class="hljs-params">(x, y, z)</span> </span>{
+  <span class="hljs-keyword">return</span> x + y + z;
 }
-
-<span class="hljs-keyword">var</span> numbers = [<span class="hljs-number">5</span>, <span class="hljs-number">10</span>];
-add(...numbers); <span class="hljs-comment">// 15</span>
+<span class="hljs-comment">// Pass each elem of array as argument</span>
+f(...[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]) == <span class="hljs-number">6</span>
 </code></pre>
 <h2 id="template-literals"><a class="anchor" href="#template-literals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Template literals</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> x = <span class="hljs-number">5</span>;
