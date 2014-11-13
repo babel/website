@@ -1,4 +1,4 @@
-@import (inline) "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../node_modules/bootstrap/less/bootstrap.less";
 @import (inline) "../node_modules/github-markdown-css/github-markdown.css";
 @import (inline) "../node_modules/highlight.js/styles/github.css";
 
@@ -15,23 +15,19 @@
   top: 0;
   right: 0;
   border: 0;
+  z-index: 10;
 }
 
-header {
-  margin: 30px 0;
-
+.sidebar {
   .logo {
     display: block;
     margin-bottom: 20px;
+    position: relative;
+    z-index: 9;
 
     img {
-      width: 400px;
-      height: 182px;
+      width: 100%;
     }
-  }
-
-  .nav {
-    float: center;
   }
 }
 
@@ -41,7 +37,7 @@ footer {
 }
 
 body {
-  margin: 20px 0 30px;
+  margin: 40px 0 30px;
   background-color: #fefefe;
 }
 
@@ -63,12 +59,6 @@ footer {
       color: red;
     }
   }
-}
-
-.container {
-  width: 850px;
-  padding: 0 30px;
-  margin: 0 auto;
 }
 
 .markdown-body h1 .anchor,

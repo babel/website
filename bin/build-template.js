@@ -42,6 +42,21 @@ marked.setOptions({
   }
 });
 
+Handlebars.registerHelper("list_link", function(text, url) {
+  text = Handlebars.Utils.escapeExpression(text);
+  url  = Handlebars.Utils.escapeExpression(url);
+
+  var result = "<li";
+
+  if (url === this.filename) {
+    result += ' class="active"';
+  }
+
+  result += '><a href="' + url + '">' + text + "</a></li>";
+
+  return new Handlebars.SafeString(result);
+});
+
 var template = Handlebars.compile(
   fs.readFileSync(path.resolve(__dirname, "../src/template.hbs"), "utf8")
 );
@@ -54,14 +69,19 @@ var version = pkg.version;
 
 var renderPages = function (pagesLoc) {
   _.each(fs.readdirSync(pagesLoc), function (filename) {
-    var input  = path.join(pagesLoc, filename);
-    var ext    = path.extname(filename);
-    var name   = path.basename(filename, ext);
-    var output = __dirname + "/../" + name + ".html";
+    var input    = path.join(pagesLoc, filename);
+    var ext      = path.extname(filename);
+    var name     = path.basename(filename, ext);
+    var filename = name + ".html";
+    var output   = __dirname + "/../" + filename;
 
     var raw     = fs.readFileSync(input, "utf8");
     var content = ext === ".md" ? marked(raw) : raw;
-    var html    = template({ content: content, version: version });
+    var html    = template({
+      filename: filename,
+      content:  content,
+      version:  version
+    });
 
     fs.writeFileSync(output, html);
   });

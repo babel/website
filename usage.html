@@ -10,38 +10,35 @@
       <img class="ribbon" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub">
     </a>
 
-    <header>
-      <div class="container">
-        <a href="index.html" class="logo">
-          <img alt="6to5" src="https://raw.githubusercontent.com/6to5/logo/master/logo.png">
-        </a>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 sidebar">
+          <a href="index.html" class="logo">
+            <img alt="6to5" src="https://raw.githubusercontent.com/6to5/logo/master/logo.png">
+          </a>
 
-        <ul class="nav nav-pills nav-justified" role="tablist">
-          <li><a href="features.html">Features</a></li>
-          <li><a href="usage.html">Usage</a></li>
-          <li><a href="plugins.html">Plugins</a></li>
-          <li><a href="browser.html">Browser</a></li>
-          <li><a href="caveats.html">Caveats</a></li>
-          <li><a href="differences.html">Differences</a></li>
-          <li><a href="repl.html">REPL</a></li>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="features.html">Features</a></li>
+            <li class="active"><a href="usage.html">Usage</a></li>
+            <li><a href="plugins.html">Plugins</a></li>
+            <li><a href="differences.html">Differences</a></li>
+          </ul>
 
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              Misc <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="polyfill.html">Polyfill</a></li>
-              <li><a href="react.html">React/JSX</a></li>
-              <li><a href="modules.html">Modules</a></li>
-              <li><a href="optional-runtime.html">Optional runtime</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </header>
-    
-    <div class="container markdown-body">
-      <h1 id="usage-1"><a class="anchor" href="#usage-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+          <hr>
+
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="repl.html">REPL</a></li></a>
+            <li><a href="browser.html">Browser</a></li></a>
+            <li><a href="polyfill.html">Polyfill</a></li></a>
+            <li><a href="react.html">React/JSX</a></li></a>
+            <li><a href="modules.html">Modules</a></li></a>
+            <li><a href="optional-runtime.html">Optional runtime</a></li></a>
+            <li><a href="caveats.html">Caveats</a></li></a>
+          </ul>
+        </div>
+
+        <div class="col-sm-9 markdown-body">
+          <h1 id="usage-1"><a class="anchor" href="#usage-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
 <h2 id="cli-1"><a class="anchor" href="#cli-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h2>
 <p>Compile the file <code>script.js</code> and output it to stdout.</p>
 <pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-keyword">script</span>.js
@@ -153,13 +150,13 @@ override this by passing an ignore regex via:</p>
 });
 </code></pre>
 
-    </div>
-
-    <footer>
-      <div class="container">
-        <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.4</p>
+        </div>
       </div>
-    </footer>
+
+      <footer>
+        <hr>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.6</p>
+      </footer>
+    </div>
   </body>
 </html>
