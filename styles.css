@@ -7181,6 +7181,9 @@ footer {
 #repl #console.error {
   color: red;
 }
+.markdown-body {
+  overflow: visible !important;
+}
 .markdown-body h1 .anchor,
 .markdown-body h2 .anchor,
 .markdown-body h3 .anchor,
