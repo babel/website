@@ -40,6 +40,9 @@
 
         <div class="col-sm-9 markdown-body">
           <h1 id="caveats"><a class="anchor" href="#caveats" aria-hidden="true"><span class="octicon octicon-link"></span></a>Caveats</h1>
+<h2 id="async-generators"><a class="anchor" href="#async/generators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async/Generators</h2>
+<p>The <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a>
+and an <a href="polyfill.html">ES6 polyfill</a> are required in order for generators to work.</p>
 <h2 id="classes"><a class="anchor" href="#classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes</h2>
 <p>Built-in classes such as <code>Date</code>, <code>Array</code> and <code>DOM</code> cannot be subclassed due to
 limitations in ES5 implementations.</p>
@@ -64,9 +67,6 @@ this is widely supported but you may run into problems with much older browsers.
 <p>A polyfill is required for for-of functionality that implements <code>Symbol</code> and
 adds <code>prototype[Symbol.iterator]</code> behaviour to built-ins. Using the polyfills
 specified in <a href="polyfill.html">polyfill</a> suffices.</p>
-<h2 id="generators"><a class="anchor" href="#generators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generators</h2>
-<p>The <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a>
-and an <a href="polyfill.html">ES6 polyfill</a> are required in order for generators to work.</p>
 <h2 id="spread"><a class="anchor" href="#spread" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spread</h2>
 <p>An <a href="polyfill.html">ES6 polyfill</a> is required in order for spread to work. More
 specifically a polyfill for <code>Array.from</code>.</p>
