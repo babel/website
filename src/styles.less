@@ -61,6 +61,39 @@ footer {
   }
 }
 
+#code-contributors {
+  a {
+    &:hover {
+      text-decoration: none;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+
+    span {
+      padding-left: 10px;
+    }
+  }
+}
+
+#issue-contributors {
+  -webkit-columns: 100px 3;
+  -moz-columns: 100px 3;
+  columns: 100px 3;
+
+  p {
+    margin-bottom: 0;
+
+    a {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
 .markdown-body {
   overflow: visible !important;
 }

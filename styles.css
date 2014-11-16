@@ -7181,6 +7181,29 @@ footer {
 #repl #console.error {
   color: red;
 }
+#code-contributors a:hover {
+  text-decoration: none;
+}
+#code-contributors a:hover span {
+  text-decoration: underline;
+}
+#code-contributors a span {
+  padding-left: 10px;
+}
+#issue-contributors {
+  -webkit-columns: 100px 3;
+  -moz-columns: 100px 3;
+  columns: 100px 3;
+}
+#issue-contributors p {
+  margin-bottom: 0;
+}
+#issue-contributors p a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .markdown-body {
   overflow: visible !important;
 }

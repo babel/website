@@ -1,5 +1,6 @@
 var Handlebars = require("handlebars");
 var highlight  = require("highlight.js");
+var request    = require("request");
 var marked     = require("marked");
 var path       = require("path");
 var fs         = require("fs");
@@ -67,7 +68,57 @@ var to5Loc = path.normalize(pkgLoc + "/..");
 var pkg     = require(pkgLoc);
 var version = pkg.version;
 
-var renderPages = function (pagesLoc) {
+var get = function (url, callback) {
+  console.log("get", url);
+  request.get({
+    url: url,
+    json: true,
+    headers: {
+      "User-Agent": "6to5-website"
+    }
+  }, function (err, res, body) {
+    if (err) throw err;
+    if (body.message) throw new Error(body.message);
+    callback(body);
+  });
+};
+
+var getCodeContributors = function (callback) {
+  get("https://api.github.com/repos/6to5/6to5/contributors", callback);
+};
+
+var getIssueContributors = function (callback) {
+  var page = 0;
+  var issues = [];
+
+  var next = function () {
+    getIssueContributorsPage(++page, function (_issues) {
+      if (_issues.length) {
+        issues = issues.concat(_issues);
+        next();
+      } else {
+        var users = {};
+
+        _.each(issues, function (issue) {
+          var username = issue.user.login;
+          var user = users[username] = users[username] || issue.user;
+          user.count = user.count || 0;
+          user.count++;
+        });
+
+        callback(_.sortBy(_.values(users), "count").reverse());
+      }
+    });
+  };
+
+  next();
+};
+
+var getIssueContributorsPage = function (page, callback) {
+  get("https://api.github.com/repos/6to5/6to5/issues?state=all&per_page=100&page=" + page, callback);
+};
+
+var renderPages = function (pagesLoc, codeContributors, issueContributors) {
   _.each(fs.readdirSync(pagesLoc), function (filename) {
     var input    = path.join(pagesLoc, filename);
     var ext      = path.extname(filename);
@@ -76,18 +127,33 @@ var renderPages = function (pagesLoc) {
     var output   = __dirname + "/../" + filename;
 
     var raw     = fs.readFileSync(input, "utf8");
-    var content = ext === ".md" ? marked(raw) : raw;
-    var html    = template({
-      filename: filename,
-      content:  content,
-      version:  version
-    });
+    var content = raw;
+
+    var opts = {
+      issueContributors: issueContributors,
+      codeContributors:  codeContributors,
+      filename:          filename,
+      version:           version
+    };
+
+    if (ext === ".md") {
+      content = marked(raw);
+    } else if (ext === ".hbs") {
+      content = Handlebars.compile(raw)(opts);
+    }
+
+    opts.content = content;
+
+    var html = template(opts);
 
     fs.writeFileSync(output, html);
   });
 };
 
-renderPages(to5Loc + "/doc");
-renderPages(__dirname + "/../src/pages");
-
-
+getCodeContributors(function (codeContributors) {
+  getIssueContributors(function (issueContributors) {
+    _.each([to5Loc + "/doc", __dirname + "/../src/pages"], function (loc) {
+      renderPages(loc, codeContributors, issueContributors);
+    });
+  });
+});
