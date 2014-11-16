@@ -88,6 +88,10 @@ result.ast;
   <span class="hljs-comment">// Default: "unknown"</span>
   filename: <span class="hljs-string">"filename"</span>,
 
+  <span class="hljs-comment">// Filename relative to `sourceRoot`</span>
+  <span class="hljs-comment">// Default: `filename` option.</span>
+  filenameRelative: <span class="hljs-string">""</span>,
+
   <span class="hljs-comment">// List of transformers to EXCLUDE.</span>
   <span class="hljs-comment">// Run `6to5 --help` to see a full list of transformers.</span>
   blacklist: [],
@@ -108,12 +112,19 @@ result.ast;
   sourceMap: <span class="hljs-literal">true</span>,
 
   <span class="hljs-comment">// Set `file` on returned source map.</span>
-  <span class="hljs-comment">// Default: `filename` option.</span>
+  <span class="hljs-comment">// Default: `filenameRelative` option.</span>
   sourceMapName: <span class="hljs-string">"filename"</span>,
 
   <span class="hljs-comment">// Set `sources[0]` on returned source map.</span>
-  <span class="hljs-comment">// Default: `filename` option.</span>
+  <span class="hljs-comment">// Default: `filenameRelative` option.</span>
   sourceFileName: <span class="hljs-string">"filename"</span>,
+
+  <span class="hljs-comment">// The root from which all sources are relative</span>
+  sourceRoot: <span class="hljs-string">"assets/scripts"</span>,
+
+  <span class="hljs-comment">// Optional prefix for the AMD module formatter that will be prepend to the</span>
+  <span class="hljs-comment">// filename on module definitions</span>
+  moduleRoot: <span class="hljs-string">"my-app"</span>,
 
   <span class="hljs-comment">// Optionally replace all 6to5 helper declarations with a referenece to this</span>
   <span class="hljs-comment">// variable. If set to `true` then the default namespace is used "to5Runtime".</span>
@@ -160,7 +171,7 @@ override this by passing an ignore regex via:</p>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.16</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.17</p>
       </footer>
     </div>
   </body>

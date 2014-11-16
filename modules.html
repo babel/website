@@ -87,7 +87,7 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
 }
 </code></pre>
 <p><strong>Out</strong></p>
-<pre><code class="lang-javascript">define([<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exports, _foo)</span> </span>{
+<pre><code class="lang-javascript">define(<span class="hljs-string">"filename"</span>, [<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exports, _foo)</span> </span>{
   exports.bar = bar;
 
   <span class="hljs-keyword">var</span> foo = _foo.default;
@@ -108,7 +108,7 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
 <p><strong>Out</strong></p>
 <pre><code class="lang-javascript">(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(factory)</span> </span>{
   <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> define === <span class="hljs-string">"function"</span> &amp;&amp; define.amd) {
-    define([<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], factory);
+    define(<span class="hljs-string">"filename"</span>, [<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], factory);
   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> exports !== <span class="hljs-string">"undefined"</span>) {
     factory(exports, <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>));
   }
@@ -174,7 +174,7 @@ ModuleFormatter.prototype.exportSpecifier = <span class="hljs-function"><span cl
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.16</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.17</p>
       </footer>
     </div>
   </body>
