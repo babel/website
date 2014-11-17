@@ -82,35 +82,27 @@ equivalent ES5.</p>
 <p>I&#39;m not saying 6to5 is for everyone or even suited for everything. Traceur is
 better suited if you&#39;d like a full ES6 environment with polyfills and all.</p>
 <h2 id="comparison-to-other-transpilers"><a class="anchor" href="#comparison-to-other-transpilers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparison to other transpilers</h2>
+<h3 id="features"><a class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h3>
 <table>
 <thead>
 <tr>
 <th></th>
 <th>6to5</th>
 <th>Traceur</th>
+<th>es6-transpiler</th>
 <th>esnext</th>
 <th>es6now</th>
-<th>es6-transpiler</th>
 <th>jstransform</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>No runtime</td>
-<td>✓</td>
-<td></td>
-<td></td>
-<td></td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr>
 <td>Source maps</td>
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
-<td></td>
 <td>✓</td>
+<td></td>
 <td>✓</td>
 </tr>
 <tr>
@@ -118,26 +110,50 @@ better suited if you&#39;d like a full ES6 environment with polyfills and all.</
 <td>✓</td>
 <td></td>
 <td>✓</td>
+<td>✓</td>
 <td></td>
 <td>✓</td>
+</tr>
+<tr>
+<td>No runtime</td>
+<td>✓</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td></td>
 <td>✓</td>
 </tr>
 <tr>
 <td>Browser support</td>
 <td>✓</td>
 <td>✓</td>
+<td></td>
 <td>✓</td>
 <td></td>
-<td></td>
-<td></td>
 </tr>
+</tbody>
+</table>
+<h3 id="language-support"><a class="anchor" href="#language-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Language Support</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>6to5</th>
+<th>Traceur</th>
+<th>es6-transpiler</th>
+<th>esnext</th>
+<th>es6now</th>
+<th>jstransform</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Array comprehension</td>
 <td>✓</td>
 <td>✓</td>
-<td></td>
-<td></td>
 <td>✓</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -153,8 +169,8 @@ better suited if you&#39;d like a full ES6 environment with polyfills and all.</
 <td>Async functions</td>
 <td>✓</td>
 <td>✓</td>
-<td>✓</td>
 <td></td>
+<td>✓</td>
 <td></td>
 <td></td>
 </tr>
@@ -180,9 +196,9 @@ better suited if you&#39;d like a full ES6 environment with polyfills and all.</
 <td>Constants</td>
 <td>✓</td>
 <td>✓</td>
-<td></td>
-<td></td>
 <td>✓</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -216,8 +232,8 @@ better suited if you&#39;d like a full ES6 environment with polyfills and all.</
 <td>Generators</td>
 <td>✓</td>
 <td>✓</td>
-<td>✓</td>
 <td></td>
+<td>✓</td>
 <td></td>
 <td></td>
 </tr>
@@ -234,9 +250,9 @@ better suited if you&#39;d like a full ES6 environment with polyfills and all.</
 <td>Let scoping</td>
 <td>✓</td>
 <td>✓</td>
-<td></td>
-<td></td>
 <td>✓</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -244,8 +260,8 @@ better suited if you&#39;d like a full ES6 environment with polyfills and all.</
 <td>✓</td>
 <td>✓</td>
 <td></td>
-<td>✓</td>
 <td></td>
+<td>✓</td>
 <td></td>
 </tr>
 <tr>
@@ -297,9 +313,9 @@ better suited if you&#39;d like a full ES6 environment with polyfills and all.</
 <td>Unicode regex</td>
 <td>✓</td>
 <td>✓</td>
-<td></td>
-<td></td>
 <td>✓</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
