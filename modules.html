@@ -30,12 +30,12 @@
 
           <ul class="nav nav-pills nav-stacked">
             <li><a href="repl.html">REPL</a></li></a>
-            <li><a href="browser.html">Browser</a></li></a>
+            <li><a href="caveats.html">Caveats</a></li></a>
             <li><a href="polyfill.html">Polyfill</a></li></a>
+            <li><a href="browser.html">Browser</a></li></a>
             <li><a href="react.html">React/JSX</a></li></a>
             <li class="active"><a href="modules.html">Modules</a></li></a>
             <li><a href="optional-runtime.html">Optional runtime</a></li></a>
-            <li><a href="caveats.html">Caveats</a></li></a>
           </ul>
         </div>
 
@@ -87,7 +87,7 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
 }
 </code></pre>
 <p><strong>Out</strong></p>
-<pre><code class="lang-javascript">define(<span class="hljs-string">"filename"</span>, [<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exports, _foo)</span> </span>{
+<pre><code class="lang-javascript">define([<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exports, _foo)</span> </span>{
   exports.bar = bar;
 
   <span class="hljs-keyword">var</span> foo = _foo.default;
@@ -96,6 +96,9 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
     <span class="hljs-keyword">return</span> foo(<span class="hljs-string">"foobar"</span>);
   }
 });
+</code></pre>
+<p>You can optionally specify to include the module id (using the <code>--amd-module-id</code> argument):</p>
+<pre><code class="lang-javascript">define(<span class="hljs-string">"filename"</span>, [<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exports, _foo)</span> </span>{})
 </code></pre>
 <h3 id="umd"><a class="anchor" href="#umd" aria-hidden="true"><span class="octicon octicon-link"></span></a>UMD</h3>
 <p><strong>In</strong></p>
@@ -108,7 +111,7 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
 <p><strong>Out</strong></p>
 <pre><code class="lang-javascript">(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(factory)</span> </span>{
   <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> define === <span class="hljs-string">"function"</span> &amp;&amp; define.amd) {
-    define(<span class="hljs-string">"filename"</span>, [<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], factory);
+    define([<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], factory);
   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> exports !== <span class="hljs-string">"undefined"</span>) {
     factory(exports, <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>));
   }
@@ -174,7 +177,7 @@ ModuleFormatter.prototype.exportSpecifier = <span class="hljs-function"><span cl
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.21</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.22</p>
       </footer>
     </div>
   </body>

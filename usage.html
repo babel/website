@@ -30,12 +30,12 @@
 
           <ul class="nav nav-pills nav-stacked">
             <li><a href="repl.html">REPL</a></li></a>
-            <li><a href="browser.html">Browser</a></li></a>
+            <li><a href="caveats.html">Caveats</a></li></a>
             <li><a href="polyfill.html">Polyfill</a></li></a>
+            <li><a href="browser.html">Browser</a></li></a>
             <li><a href="react.html">React/JSX</a></li></a>
             <li><a href="modules.html">Modules</a></li></a>
             <li><a href="optional-runtime.html">Optional runtime</a></li></a>
-            <li><a href="caveats.html">Caveats</a></li></a>
           </ul>
         </div>
 
@@ -128,6 +128,11 @@ result.ast;
   <span class="hljs-comment">// Default: `sourceRoot` option.</span>
   moduleRoot: <span class="hljs-string">"my-app"</span>,
 
+  <span class="hljs-comment">// If truthy, insert an explicit id for each defined AMD module.</span>
+  <span class="hljs-comment">// By default, AMD modules are anonymous.</span>
+  <span class="hljs-comment">// Default: false</span>
+  amdModuleIds: <span class="hljs-literal">true</span>,
+
   <span class="hljs-comment">// Optionally replace all 6to5 helper declarations with a referenece to this</span>
   <span class="hljs-comment">// variable. If set to `true` then the default namespace is used "to5Runtime".</span>
   <span class="hljs-comment">// Default: false</span>
@@ -177,7 +182,7 @@ override this by passing an ignore regex via:</p>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.21</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.22</p>
       </footer>
     </div>
   </body>

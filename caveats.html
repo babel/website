@@ -30,12 +30,12 @@
 
           <ul class="nav nav-pills nav-stacked">
             <li><a href="repl.html">REPL</a></li></a>
-            <li><a href="browser.html">Browser</a></li></a>
+            <li class="active"><a href="caveats.html">Caveats</a></li></a>
             <li><a href="polyfill.html">Polyfill</a></li></a>
+            <li><a href="browser.html">Browser</a></li></a>
             <li><a href="react.html">React/JSX</a></li></a>
             <li><a href="modules.html">Modules</a></li></a>
             <li><a href="optional-runtime.html">Optional runtime</a></li></a>
-            <li class="active"><a href="caveats.html">Caveats</a></li></a>
           </ul>
         </div>
 
@@ -68,16 +68,16 @@ this is widely supported but you may run into problems with much older browsers.
 <p>A polyfill is required for for-of functionality that implements <code>Symbol</code> and
 adds <code>prototype[Symbol.iterator]</code> behaviour to built-ins. Using the polyfills
 specified in <a href="polyfill.html">polyfill</a> suffices.</p>
-<h2 id="spread"><a class="anchor" href="#spread" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spread</h2>
-<p>An <a href="polyfill.html">ES6 polyfill</a> is required in order for spread to work. More
-specifically a polyfill for <code>Array.from</code>.</p>
+<h3 id="array-destructuring-spread"><a class="anchor" href="#array-destructuring-/-spread" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array destructuring / Spread</h3>
+<p>An <a href="polyfill.html">ES6 polyfill</a> is required for spread and array destructuring.
+More specifically a polyfill for <code>Array.from</code>.</p>
 
         </div>
       </div>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.21</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.22</p>
       </footer>
     </div>
   </body>
