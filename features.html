@@ -145,12 +145,28 @@ a === <span class="hljs-literal">undefined</span>;
 }
 </code></pre>
 <h2 id="generators"><a class="anchor" href="#generators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generators</h2>
-<pre><code class="lang-javascript">
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">fibonacci</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">var</span> pre = <span class="hljs-number">0</span>, cur = <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">for</span> (;;) {
+    <span class="hljs-keyword">var</span> temp = pre;
+    pre = cur;
+    cur += temp;
+    <span class="hljs-keyword">yield</span> cur;
+  }
+}
 
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> n of fibonacci()) {
+  <span class="hljs-comment">// truncate the sequence at 1000</span>
+  <span class="hljs-keyword">if</span> (n &gt; <span class="hljs-number">1000</span>) <span class="hljs-keyword">break</span>;
+  <span class="hljs-built_in">console</span>.log(n);
+}
 </code></pre>
 <h2 id="generator-comprehension"><a class="anchor" href="#generator-comprehension" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generator comprehension</h2>
-<pre><code class="lang-javascript">
-
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> nums = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];
+<span class="hljs-keyword">var</span> multiples = (<span class="hljs-keyword">for</span> (i of nums) <span class="hljs-keyword">if</span> (i % <span class="hljs-number">2</span>) i * i);
+assert.equal(multiples.next().value, <span class="hljs-number">1</span>);
+assert.equal(multiples.next().value, <span class="hljs-number">9</span>);
+assert.equal(multiples.next().value, <span class="hljs-number">25</span>);
 </code></pre>
 <h2 id="let-scoping"><a class="anchor" href="#let-scoping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Let scoping</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> arr) {
@@ -158,8 +174,17 @@ a === <span class="hljs-literal">undefined</span>;
 }
 </code></pre>
 <h2 id="modules"><a class="anchor" href="#modules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modules</h2>
-<pre><code class="lang-javascript">
+<pre><code class="lang-javascript">import <span class="hljs-string">"foo"</span>;
+import foo from <span class="hljs-string">"foo"</span>;
+import * as foo from <span class="hljs-string">"foo"</span>;
+import {bar} from <span class="hljs-string">"foo"</span>;
+import {foo as bar} from <span class="hljs-string">"foo"</span>;
 
+export { test };
+export <span class="hljs-keyword">var</span> test = <span class="hljs-number">5</span>;
+export <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span><span class="hljs-params">()</span> </span>{}
+
+export <span class="hljs-keyword">default</span> test;
 </code></pre>
 <h2 id="numeric-literals"><a class="anchor" href="#numeric-literals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Numeric literals</h2>
 <pre><code class="lang-javascript"><span class="hljs-number">0</span>b111110111 === <span class="hljs-number">503</span>; <span class="hljs-comment">// true</span>
@@ -215,7 +240,7 @@ f(...[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<spa
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.22</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.23</p>
       </footer>
     </div>
   </body>
