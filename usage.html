@@ -140,7 +140,11 @@ result.ast;
 
   <span class="hljs-comment">// Output comments in generated output</span>
   <span class="hljs-comment">// Default: true</span>
-  comments: <span class="hljs-literal">false</span>
+  comments: <span class="hljs-literal">false</span>,
+
+  <span class="hljs-comment">// Enable support for experimental ES7 features</span>
+  <span class="hljs-comment">// Default: false</span>
+  experimental: <span class="hljs-literal">true</span>
 }
 </code></pre>
 <h3 id="require-hook"><a class="anchor" href="#require-hook" aria-hidden="true"><span class="octicon octicon-link"></span></a>Require hook</h3>
@@ -176,13 +180,18 @@ override this by passing an ignore regex via:</p>
   extensions: [<span class="hljs-string">".js"</span>, <span class="hljs-string">".es6"</span>]
 });
 </code></pre>
+<h2 id="experimental"><a class="anchor" href="#experimental" aria-hidden="true"><span class="octicon octicon-link"></span></a>Experimental</h2>
+<p>6to5 also has experimental support for ES7 proposals. You can enable this with
+the <code>experimental: true</code> option when using the <a href="#node">Node API</a> or
+<code>--experimental</code> when using the <a href="#cli">CLI</a>.</p>
+<p><strong>NOTE:</strong> That these are subject to change as their proposal status progresses.</p>
 
         </div>
       </div>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.24</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.13.0</p>
       </footer>
     </div>
   </body>

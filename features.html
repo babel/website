@@ -41,7 +41,7 @@
 
         <div class="col-sm-9 markdown-body">
           <h1 id="features-1"><a class="anchor" href="#features-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h1>
-<h2 id="array-comprehension"><a class="anchor" href="#array-comprehension" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array comprehension</h2>
+<h2 id="array-comprehension-experimental-usage-md-experimental-"><a class="anchor" href="#array-comprehension-([experimental](usage.md#experimental))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array comprehension (<a href="usage.html#experimental">experimental</a>)</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> results = [<span class="hljs-keyword">for</span> (c of customers) <span class="hljs-keyword">if</span> (c.city == <span class="hljs-string">"Seattle"</span>) { name: c.name, age: c.age }]
 </code></pre>
 <h2 id="arrow-functions"><a class="anchor" href="#arrow-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arrow functions</h2>
@@ -66,7 +66,7 @@ nums.forEach(v =&gt; {
   }
 };
 </code></pre>
-<h2 id="async-functions"><a class="anchor" href="#async-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async functions</h2>
+<h2 id="async-functions-experimental-usage-md-experimental-"><a class="anchor" href="#async-functions-([experimental](usage.md#experimental))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async functions (<a href="usage.html#experimental">experimental</a>)</h2>
 <pre><code class="lang-javascript">async <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chainAnimationsAsync</span><span class="hljs-params">(elem, animations)</span> </span>{
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> anim of animations) {
     await anim(elem);
@@ -161,7 +161,7 @@ a === <span class="hljs-literal">undefined</span>;
   <span class="hljs-built_in">console</span>.log(n);
 }
 </code></pre>
-<h2 id="generator-comprehension"><a class="anchor" href="#generator-comprehension" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generator comprehension</h2>
+<h2 id="generator-comprehension-experimental-usage-md-experimental-"><a class="anchor" href="#generator-comprehension-([experimental](usage.md#experimental))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generator comprehension (<a href="usage.html#experimental">experimental</a>)</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> nums = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];
 <span class="hljs-keyword">var</span> multiples = (<span class="hljs-keyword">for</span> (i of nums) <span class="hljs-keyword">if</span> (i % <span class="hljs-number">2</span>) i * i);
 assert.equal(multiples.next().value, <span class="hljs-number">1</span>);
@@ -240,7 +240,7 @@ f(...[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<spa
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.12.24</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.13.0</p>
       </footer>
     </div>
   </body>
