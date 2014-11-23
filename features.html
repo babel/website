@@ -202,6 +202,10 @@ export <span class="hljs-keyword">default</span> test;
 <pre><code class="lang-javascript"><span class="hljs-number">0</span>b111110111 === <span class="hljs-number">503</span>; <span class="hljs-comment">// true</span>
 <span class="hljs-number">0</span>o767 === <span class="hljs-number">503</span>; <span class="hljs-comment">// true</span>
 </code></pre>
+<h2 id="object-spread-rest-experimental-usage-md-experimental-spec-https-github-com-sebmarkbage-ecmascript-rest-spread-"><a class="anchor" href="#object-spread/rest-([experimental](usage.md#experimental))-([spec](https://github.com/sebmarkbage/ecmascript-rest-spread))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object spread/rest (<a href="usage.html#experimental">experimental</a>) (<a href="https://github.com/sebmarkbage/ecmascript-rest-spread">spec</a>)</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> n = { x, y, ...z };
+<span class="hljs-keyword">var</span> { x, y, ...z } = { x: <span class="hljs-number">1</span>, y: <span class="hljs-number">2</span>, a: <span class="hljs-number">3</span>, b: <span class="hljs-number">4</span> };
+</code></pre>
 <h2 id="property-method-assignment"><a class="anchor" href="#property-method-assignment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Property method assignment</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {
   foo() {
@@ -241,10 +245,6 @@ f(...[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<spa
 <span class="hljs-keyword">var</span> y = <span class="hljs-number">10</span>;
 <span class="hljs-built_in">console</span>.log(`${x} + ${y} = ${x + y}`); <span class="hljs-comment">// "5 + 10 = 15"</span>
 </code></pre>
-<h2 id="object-spread-rest-experimental-usage-md-experimental-spec-https-github-com-sebmarkbage-ecmascript-rest-spread-"><a class="anchor" href="#object-spread/rest-([experimental](usage.md#experimental))-([spec](https://github.com/sebmarkbage/ecmascript-rest-spread))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object spread/rest (<a href="usage.html#experimental">experimental</a>) (<a href="https://github.com/sebmarkbage/ecmascript-rest-spread">spec</a>)</h2>
-<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> n = { x, y, ...z };
-<span class="hljs-keyword">var</span> { x, y, ...z } = { x: <span class="hljs-number">1</span>, y: <span class="hljs-number">2</span>, a: <span class="hljs-number">3</span>, b: <span class="hljs-number">4</span> };
-</code></pre>
 <h2 id="unicode-regex"><a class="anchor" href="#unicode-regex" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unicode regex</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> string = <span class="hljs-string">'foo💩bar'</span>;
 <span class="hljs-keyword">var</span> match = string.match(<span class="hljs-regexp">/foo(.)bar/u</span>);
@@ -256,7 +256,7 @@ f(...[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<spa
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.13.7</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.13.8</p>
       </footer>
     </div>
   </body>
