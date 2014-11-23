@@ -50,6 +50,14 @@
 to5.transform(<span class="hljs-string">'import "foo";'</span>, { modules: <span class="hljs-string">"common"</span> });
 </code></pre>
 <h2 id="formats"><a class="anchor" href="#formats" aria-hidden="true"><span class="octicon octicon-link"></span></a>Formats</h2>
+<ul>
+<li><a href="#amd">AMD</a></li>
+<li><a href="#common-default">Common (Default)</a></li>
+<li><a href="#common">Common</a></li>
+<li><a href="#ignore">Ignore</a></li>
+<li><a href="#system">System</a></li>
+<li><a href="#umd">UMD</a></li>
+</ul>
 <h3 id="common-default-"><a class="anchor" href="#common-(default)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common (Default)</h3>
 <p><strong>In</strong></p>
 <pre><code class="lang-javascript">import <span class="hljs-string">"foo"</span>;
@@ -187,7 +195,7 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
   <span class="hljs-keyword">return</span> foo(<span class="hljs-string">"foobar"</span>);
 }
 </code></pre>
-<h3 id="register"><a class="anchor" href="#register" aria-hidden="true"><span class="octicon octicon-link"></span></a>Register</h3>
+<h3 id="system"><a class="anchor" href="#system" aria-hidden="true"><span class="octicon octicon-link"></span></a>System</h3>
 <p><strong>In</strong></p>
 <pre><code class="lang-javascript">import foo from <span class="hljs-string">"foo"</span>;
 
@@ -196,7 +204,7 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
 }
 </code></pre>
 <p><strong>Out</strong></p>
-<pre><code class="lang-javascript">System.register(<span class="hljs-string">"bar"</span>, [<span class="hljs-string">"foo"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($__export)</span> </span>{
+<pre><code class="lang-javascript">System.register(<span class="hljs-string">"bar"</span>, [<span class="hljs-string">"foo"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(_export)</span> </span>{
 <span class="hljs-pi">  "use strict"</span>;
 
   <span class="hljs-keyword">var</span> __moduleName = <span class="hljs-string">"bar"</span>;
@@ -210,7 +218,7 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
       foo = m.default;
     }],
     execute: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-      $__export(<span class="hljs-string">"bar"</span>, bar);
+      _export(<span class="hljs-string">"bar"</span>, bar);
     }
   };
 });
