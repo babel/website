@@ -24,18 +24,19 @@
             <li><a href="plugins.html">Plugins</a></li>
             <li><a href="differences.html">Differences</a></li>
             <li><a href="contributors.html">Contributors</a></li>
+            <li><a href="https://gitter.im/6to5/6to5">Support</a></li>
           </ul>
 
           <hr>
 
           <ul class="nav nav-pills nav-stacked">
             <li><a href="repl.html">REPL</a></li></a>
-            <li><a href="caveats.html">Caveats</a></li></a>
-            <li class="active"><a href="polyfill.html">Polyfill</a></li></a>
-            <li><a href="browser.html">Browser</a></li></a>
-            <li><a href="react.html">React/JSX</a></li></a>
-            <li><a href="modules.html">Modules</a></li></a>
-            <li><a href="optional-runtime.html">Optional runtime</a></li></a>
+            <li><a href="caveats.html">Caveats</a></li>
+            <li class="active"><a href="polyfill.html">Polyfill</a></li>
+            <li><a href="browser.html">Browser</a></li>
+            <li><a href="react.html">React/JSX</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="optional-runtime.html">Optional runtime</a></li>
           </ul>
         </div>
 
@@ -45,12 +46,19 @@
 <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a> and the
 <a href="https://github.com/paulmillr/es6-shim">es6-shim</a> and
 <a href="https://github.com/medikoo/es6-symbol">es6-symbol</a> polyfills.</p>
-<h2 id="node-1"><a class="anchor" href="#node-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h2>
+<p>This will emulate a full ES6 environment. This polyfill is automatically loaded
+when using <a href="usage.html#node">6to5-node</a>.</p>
+<h2 id="usage-2"><a class="anchor" href="#usage-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<h3 id="node-1"><a class="anchor" href="#node-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
+<p>You need to include the polyfill require at the top the <strong>entry point</strong> to your
+application.</p>
 <pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/polyfill"</span>);
 </code></pre>
-<h2 id="browser-1"><a class="anchor" href="#browser-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser</h2>
+<h3 id="browser-1"><a class="anchor" href="#browser-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser</h3>
 <p>Available from the <code>browser-polyfill.js</code> file within the 6to5 directory of an
-npm release.</p>
+npm release. This needs to be included <strong>before</strong> all your compiled 6to5 code.
+You can either prepend it to your compiled code or include it in a <code>&lt;script&gt;</code>
+before it.</p>
 
         </div>
       </div>

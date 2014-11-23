@@ -24,32 +24,53 @@
             <li><a href="plugins.html">Plugins</a></li>
             <li><a href="differences.html">Differences</a></li>
             <li><a href="contributors.html">Contributors</a></li>
+            <li><a href="https://gitter.im/6to5/6to5">Support</a></li>
           </ul>
 
           <hr>
 
           <ul class="nav nav-pills nav-stacked">
             <li><a href="repl.html">REPL</a></li></a>
-            <li class="active"><a href="caveats.html">Caveats</a></li></a>
-            <li><a href="polyfill.html">Polyfill</a></li></a>
-            <li><a href="browser.html">Browser</a></li></a>
-            <li><a href="react.html">React/JSX</a></li></a>
-            <li><a href="modules.html">Modules</a></li></a>
-            <li><a href="optional-runtime.html">Optional runtime</a></li></a>
+            <li class="active"><a href="caveats.html">Caveats</a></li>
+            <li><a href="polyfill.html">Polyfill</a></li>
+            <li><a href="browser.html">Browser</a></li>
+            <li><a href="react.html">React/JSX</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="optional-runtime.html">Optional runtime</a></li>
           </ul>
         </div>
 
         <div class="col-sm-9 markdown-body">
           <h1 id="caveats"><a class="anchor" href="#caveats" aria-hidden="true"><span class="octicon octicon-link"></span></a>Caveats</h1>
-<h2 id="async-generators"><a class="anchor" href="#async/generators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async/Generators</h2>
-<p>The <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a>
-and an <a href="polyfill.html">ES6 polyfill</a> are required in order for generators to work.</p>
-<h3 id="async-comprehensions"><a class="anchor" href="#async/comprehensions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async/Comprehensions</h3>
-<p><a href="usage.html#experimental">Experimental support</a> must be enabled for these proposed
-ES7 features to work.</p>
-<h3 id="array-comprehension-array-destructuring-spread"><a class="anchor" href="#array-comprehension/array-destructuring/spread" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array comprehension/Array destructuring/Spread</h3>
-<p>An <a href="polyfill.html">ES6 polyfill</a> is required. More specifically a polyfill for
-<code>Array.isArray</code> and <code>Array.from</code>.</p>
+<p>In order for certain features to work they require certain polyfills. You can
+satisfy <strong>all</strong> 6to5 feature requirements by using the included
+<a href="polyfill.html">polyfill</a>. You may alternatively selectively include what you need:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Array destructuring</td>
+<td><code>Array.isArray</code>, <code>Array.from</code></td>
+</tr>
+<tr>
+<td>Async functions, Generators</td>
+<td><a href="usage.html#experimental">experimental option</a>, <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a></td>
+</tr>
+<tr>
+<td>Comprehensions</td>
+<td><a href="usage.html#experimental">experimental option</a>, <code>Array.isArray</code>, <code>Array.from</code></td>
+</tr>
+<tr>
+<td>Spread</td>
+<td><code>Array.isArray</code>, <code>Array.from</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="classes"><a class="anchor" href="#classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes</h2>
 <p>Built-in classes such as <code>Date</code>, <code>Array</code> and <code>DOM</code> cannot be subclassed due to
 limitations in ES5 implementations.</p>
