@@ -18,6 +18,13 @@
     </label>
   </div>
 
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="option-experimental" checked>
+      Experimental
+    </label>
+  </div>
+
   <h3>Console</h3>
 
   <pre id="console"><code></code></pre>
@@ -44,6 +51,7 @@
   output.setHighlightGutterLine(false);
   
   var $consoleCode = $("#console code");
+  var $optionExper = $("#option-experimental");
   var $optionEval  = $("#option-evaluate");
   var $console     = $("#console");
 
@@ -52,7 +60,10 @@
     var _log = console.log;
 
     try {
-      var transformed = to5.transform(code, { filename: "repl" });
+      var transformed = to5.transform(code, {
+        experimental: $optionExper.is(":checked"),
+        filename: "repl"
+      });
 
       $consoleCode.text("");
       $console.removeClass("error");
