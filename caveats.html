@@ -54,6 +54,10 @@ satisfy <strong>all</strong> 6to5 feature requirements by using the included
 </thead>
 <tbody>
 <tr>
+<td>Abstract References</td>
+<td><code>Symbol</code></td>
+</tr>
+<tr>
 <td>Array destructuring</td>
 <td><code>Array.isArray</code>, <code>Array.from</code></td>
 </tr>
@@ -64,6 +68,10 @@ satisfy <strong>all</strong> 6to5 feature requirements by using the included
 <tr>
 <td>Comprehensions</td>
 <td><a href="usage.html#experimental">experimental option</a>, <code>Array.isArray</code>, <code>Array.from</code></td>
+</tr>
+<tr>
+<td>For..Of</td>
+<td><code>Symbol</code>, <code>prototype[Symbol.iterator]</code></td>
 </tr>
 <tr>
 <td>Spread</td>
@@ -91,20 +99,13 @@ this is widely supported but you may run into problems with much older browsers.
   }
 }
 </code></pre>
-<h2 id="constructor-spread"><a class="anchor" href="#constructor-spread" aria-hidden="true"><span class="octicon octicon-link"></span></a>Constructor spread</h2>
-<p>Constructor spreads do not currently support built-ins. ie.
-<code>new Array(...items)</code>.</p>
-<h2 id="for-of"><a class="anchor" href="#for-of" aria-hidden="true"><span class="octicon octicon-link"></span></a>For-of</h2>
-<p>A polyfill is required for for-of functionality that implements <code>Symbol</code> and
-adds <code>prototype[Symbol.iterator]</code> behaviour to built-ins. Using the polyfills
-specified in <a href="polyfill.html">polyfill</a> suffices.</p>
 
         </div>
       </div>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.13.2</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.13.3</p>
       </footer>
     </div>
   </body>

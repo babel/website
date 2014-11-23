@@ -42,6 +42,11 @@
 
         <div class="col-sm-9 markdown-body">
           <h1 id="features-1"><a class="anchor" href="#features-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h1>
+<h2 id="abstract-references-experimental-usage-md-experimental-spec-https-github-com-zenparsing-es-abstract-refs-"><a class="anchor" href="#abstract-references-([experimental](usage.md#experimental))-([spec](https://github.com/zenparsing/es-abstract-refs))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Abstract references (<a href="usage.html#experimental">experimental</a>) (<a href="https://github.com/zenparsing/es-abstract-refs">spec</a>)</h2>
+<pre><code class="lang-javascript">foo::bar;
+foo::bar = baz;
+<span class="hljs-keyword">delete</span> foo::bar;
+</code></pre>
 <h2 id="array-comprehension-experimental-usage-md-experimental-"><a class="anchor" href="#array-comprehension-([experimental](usage.md#experimental))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array comprehension (<a href="usage.html#experimental">experimental</a>)</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> results = [<span class="hljs-keyword">for</span> (c of customers) <span class="hljs-keyword">if</span> (c.city == <span class="hljs-string">"Seattle"</span>) { name: c.name, age: c.age }]
 </code></pre>
@@ -67,7 +72,7 @@ nums.forEach(v =&gt; {
   }
 };
 </code></pre>
-<h2 id="async-functions-experimental-usage-md-experimental-"><a class="anchor" href="#async-functions-([experimental](usage.md#experimental))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async functions (<a href="usage.html#experimental">experimental</a>)</h2>
+<h2 id="async-functions-experimental-usage-md-experimental-spec-https-github-com-lukehoban-ecmascript-asyncawait-"><a class="anchor" href="#async-functions-([experimental](usage.md#experimental))-([spec](https://github.com/lukehoban/ecmascript-asyncawait))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async functions (<a href="usage.html#experimental">experimental</a>) (<a href="https://github.com/lukehoban/ecmascript-asyncawait">spec</a>)</h2>
 <pre><code class="lang-javascript">async <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chainAnimationsAsync</span><span class="hljs-params">(elem, animations)</span> </span>{
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> anim of animations) {
     await anim(elem);
@@ -140,7 +145,7 @@ g({ name: <span class="hljs-number">5</span> });
 <span class="hljs-keyword">var</span> [a] = [];
 a === <span class="hljs-literal">undefined</span>;
 </code></pre>
-<h2 id="for-of-1"><a class="anchor" href="#for-of-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>For-of</h2>
+<h2 id="for-of"><a class="anchor" href="#for-of" aria-hidden="true"><span class="octicon octicon-link"></span></a>For-of</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i of [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) {
   <span class="hljs-built_in">console</span>.log(i * i);
 }
@@ -241,7 +246,7 @@ f(...[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<spa
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.13.2</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.13.3</p>
       </footer>
     </div>
   </body>
