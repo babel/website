@@ -25,6 +25,13 @@
     </label>
   </div>
 
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="option-playground" checked>
+      Playground
+    </label>
+  </div>
+
   <h3>Console</h3>
 
   <pre id="console"><code></code></pre>
@@ -52,6 +59,7 @@
   
   var $consoleCode = $("#console code");
   var $optionExper = $("#option-experimental");
+  var $optionPlay  = $("#option-playground");
   var $optionEval  = $("#option-evaluate");
   var $console     = $("#console");
 
@@ -62,6 +70,7 @@
     try {
       var transformed = to5.transform(code, {
         experimental: $optionExper.is(":checked"),
+        playground: $optionPlay.is(":checked"),
         filename: "repl"
       });
 
