@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>6to5 &middot; Turn ES6+ code into readable vanilla ES5</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+  </head>
+  <body>
+    <a href="https://github.com/6to5/6to5">
+      <img class="ribbon" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub">
+    </a>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 sidebar">
+          <a href="index.html" class="logo">
+            <img alt="6to5" src="https://raw.githubusercontent.com/6to5/logo/master/logo.png">
+          </a>
+
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="features.html">Features</a></li>
+            <li><a href="usage.html">Usage</a></li>
+            <li><a href="plugins.html">Plugins</a></li>
+            <li><a href="differences.html">Differences</a></li>
+            <li><a href="contributors.html">Contributors</a></li>
+            <li><a href="https://gitter.im/6to5/6to5">Support</a></li>
+          </ul>
+
+          <hr>
+
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="repl.html">REPL</a></li></a>
+            <li><a href="caveats.html">Caveats</a></li>
+            <li><a href="polyfill.html">Polyfill</a></li>
+            <li><a href="browser.html">Browser</a></li>
+            <li><a href="react.html">React/JSX</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="optional-runtime.html">Optional runtime</a></li>
+            <li class="active"><a href="playground.html">Playground</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-9 markdown-body">
+          <h1 id="playground"><a class="anchor" href="#playground" aria-hidden="true"><span class="octicon octicon-link"></span></a>Playground</h1>
+<p>Playground is a proving ground for <strong>possible</strong> ES7 proposals.</p>
+<p><strong>NOTE: These features are in no way endorsed by Ecma International and are not a part of ES6. They might become a part of ECMAScript in the future.</strong></p>
+<h2 id="usage-2"><a class="anchor" href="#usage-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-comment">--playground</span>
+</code></pre><pre><code class="lang-javascript">to5.transform(<span class="hljs-string">"code"</span>, { playground: <span class="hljs-literal">true</span> });
+</code></pre>
+<p><strong>NOTE:</strong> Enabling <code>playground</code> also enables <a href="usage.html#experimental">experimental support</a>.</p>
+<h2 id="features-2"><a class="anchor" href="#features-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+<ul>
+<li><a href="#memoization-operator">Memoization operator</a></li>
+<li><a href="#method-binding">Method binding</a></li>
+</ul>
+<h3 id="memoization-assignment-operator"><a class="anchor" href="#memoization-assignment-operator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Memoization assignment operator</h3>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {};
+obj.x ?= <span class="hljs-number">2</span>;
+obj.x; <span class="hljs-comment">// 2</span>
+
+obj = { x: <span class="hljs-number">1</span> };
+obj.x ?= <span class="hljs-number">2</span>;
+obj.x; <span class="hljs-comment">// 1</span>
+
+obj = { x: <span class="hljs-literal">undefined</span> }
+obj.x ?= <span class="hljs-number">2</span>;
+obj.x; <span class="hljs-comment">// undefined</span>
+</code></pre>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {};
+obj.x ?= <span class="hljs-number">2</span>;
+</code></pre>
+<p>equivalent to:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {};
+<span class="hljs-keyword">if</span> (<span class="hljs-built_in">Object</span>.prototype.hasOwnProperty.call(obj, <span class="hljs-string">"x"</span>)) obj.x = <span class="hljs-number">2</span>;
+</code></pre>
+<h3 id="method-binding-expression-"><a class="anchor" href="#method-binding-expression." aria-hidden="true"><span class="octicon octicon-link"></span></a>Method binding expression.</h3>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> fn = obj:method;
+<span class="hljs-keyword">var</span> fn = obj:method(<span class="hljs-string">"foob"</span>);
+</code></pre>
+<p>equivalent to:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> fn = obj.method.bind(obj);
+<span class="hljs-keyword">var</span> fn = obj.method.bind(obj, <span class="hljs-string">"foob"</span>);
+</code></pre>
+<p><strong>NOTE:</strong> Method binding can <strong>only</strong> be used as an <strong>expression</strong> and not as
+statement.</p>
+
+        </div>
+      </div>
+
+      <footer>
+        <hr>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.0</p>
+      </footer>
+    </div>
+  </body>
+</html>
