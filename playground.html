@@ -73,7 +73,7 @@ obj.x ?= <span class="hljs-number">2</span>;
 </code></pre>
 <p>equivalent to:</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {};
-<span class="hljs-keyword">if</span> (<span class="hljs-built_in">Object</span>.prototype.hasOwnProperty.call(obj, <span class="hljs-string">"x"</span>)) obj.x = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">if</span> (!<span class="hljs-built_in">Object</span>.prototype.hasOwnProperty.call(obj, <span class="hljs-string">"x"</span>)) obj.x = <span class="hljs-number">2</span>;
 </code></pre>
 <h3 id="method-binding-expression"><a class="anchor" href="#method-binding-expression" aria-hidden="true"><span class="octicon octicon-link"></span></a>Method binding expression</h3>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> fn = obj:method;
@@ -91,7 +91,7 @@ statement.</p>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.0</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.2</p>
       </footer>
     </div>
   </body>
