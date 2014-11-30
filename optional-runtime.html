@@ -55,12 +55,14 @@ instead just point them to a reference contained within the runtime.</p>
 }
 </code></pre>
 <p>or the following flag if you&#39;re using the <a href="usage.html#cli">CLI</a>:</p>
-<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-comment">--runtime</span>
-</code></pre><p>Then just include the runtime before your generated code.</p>
+<pre><code class="lang-ssh">$ 6to5 --runtime
+</code></pre>
+<p>Then just include the runtime before your generated code.</p>
 <h2 id="getting-the-runtime"><a class="anchor" href="#getting-the-runtime" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting the runtime</h2>
 <p>You can get the runtime via either:</p>
-<pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5-runtime
-</code></pre><p>or</p>
+<pre><code class="lang-sh">$ 6to5-runtime
+</code></pre>
+<p>or</p>
 <pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5"</span>).runtime();
 </code></pre>
 <p>or from an npm release in <code>runtime.js</code> from the 6to5 directory.</p>
@@ -69,8 +71,9 @@ instead just point them to a reference contained within the runtime.</p>
 argument:</p>
 <pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5"</span>).runtime(<span class="hljs-string">"myCustomNamespace"</span>);
 </code></pre>
-<pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5-runtime myCustomNamespace
-</code></pre><p>See <a href="usage.html#options">Options - runtime</a> for documentation on changing the
+<pre><code class="lang-sh">$ 6to5-runtime myCustomNamespace
+</code></pre>
+<p>See <a href="usage.html#options">Options - runtime</a> for documentation on changing the
 reference in generated code.</p>
 
         </div>
@@ -78,7 +81,7 @@ reference in generated code.</p>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.4</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.5</p>
       </footer>
     </div>
   </body>

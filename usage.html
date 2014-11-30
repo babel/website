@@ -45,29 +45,39 @@
           <h1 id="usage-4"><a class="anchor" href="#usage-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
 <h2 id="cli-1"><a class="anchor" href="#cli-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h2>
 <p>Compile the file <code>script.js</code> and output it to stdout.</p>
-<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-keyword">script</span>.js
-</code></pre><p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code>.</p>
-<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-keyword">script</span>.js <span class="hljs-comment">--out-file script-compiled.js</span>
-</code></pre><p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code> and save a
+<pre><code class="lang-sh">$ 6to5 script.js
+</code></pre>
+<p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code>.</p>
+<pre><code class="lang-sh">$ 6to5 script.js --out-file script-compiled.js
+</code></pre>
+<p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code> and save a
 source map to <code>script-compiled.js.map</code>.</p>
-<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-keyword">script</span>.js <span class="hljs-comment">--source-maps --out-file script-compiled.js</span>
-</code></pre><p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code> with a source
+<pre><code class="lang-sh">$ 6to5 script.js --source-maps --out-file script-compiled.js
+</code></pre>
+<p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code> with a source
 map embedded in a comment at the bottom.</p>
-<pre><code>$ <span class="hljs-number">6</span>to5 script.js --source-maps-<span class="hljs-keyword">inline</span> --<span class="hljs-keyword">out</span>-<span class="hljs-keyword">file</span> script-compiled.js
-</code></pre><p>Compile the entire <code>src</code> directory and output it to the <code>lib</code> directory.</p>
-<pre><code>$ <span class="hljs-number">6</span>to5 src <span class="hljs-comment">--out-dir lib</span>
-</code></pre><p>Compile the entire <code>src</code> directory and output it to the one concatenated file.</p>
-<pre><code>$ <span class="hljs-number">6</span>to5 src --<span class="hljs-keyword">out</span>-<span class="hljs-keyword">file</span> script-compiled.js
-</code></pre><p>Pipe a file in via stdin and output it to <code>script-compiled.js</code></p>
-<pre><code>$ <span class="hljs-number">6</span>to5 --<span class="hljs-keyword">out</span>-<span class="hljs-keyword">file</span> script-compiled.js &lt; script.js
-</code></pre><h3 id="node-2"><a class="anchor" href="#node-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
+<pre><code class="lang-sh">$ 6to5 script.js --source-maps-inline --out-file script-compiled.js
+</code></pre>
+<p>Compile the entire <code>src</code> directory and output it to the <code>lib</code> directory.</p>
+<pre><code class="lang-sh">$ 6to5 src --out-dir lib
+</code></pre>
+<p>Compile the entire <code>src</code> directory and output it to the one concatenated file.</p>
+<pre><code class="lang-sh">$ 6to5 src --out-file script-compiled.js
+</code></pre>
+<p>Pipe a file in via stdin and output it to <code>script-compiled.js</code></p>
+<pre><code class="lang-sh">$ 6to5 --out-file script-compiled.js &lt; script.js
+</code></pre>
+<h3 id="node-2"><a class="anchor" href="#node-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
 <p>Launch a repl.</p>
-<pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5-node
-</code></pre><p>Evaluate code.</p>
-<pre><code>$ <span class="hljs-number">6</span>to5-node <span class="hljs-operator">-e</span> <span class="hljs-string">"class Test { }"</span>
-</code></pre><p>Compile and run <code>test.js</code>.</p>
-<pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5-node test
-</code></pre><h2 id="node-3"><a class="anchor" href="#node-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h2>
+<pre><code class="lang-sh">$ 6to5-node
+</code></pre>
+<p>Evaluate code.</p>
+<pre><code class="lang-sh">$ 6to5-node -e &quot;class Test { }&quot;
+</code></pre>
+<p>Compile and run <code>test.js</code>.</p>
+<pre><code class="lang-sh">$ 6to5-node test
+</code></pre>
+<h2 id="node-3"><a class="anchor" href="#node-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> to5 = <span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5"</span>);
 </code></pre>
 <h3 id="to5-transform-code-opts-"><a class="anchor" href="#to5.transform(code,-[opts]);" aria-hidden="true"><span class="octicon octicon-link"></span></a>to5.transform(code, [opts]);</h3>
@@ -194,7 +204,7 @@ the <code>experimental: true</code> option when using the <a href="#node">Node A
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.4</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.5</p>
       </footer>
     </div>
   </body>

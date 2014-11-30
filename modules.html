@@ -45,8 +45,9 @@
           <h1 id="modules-1"><a class="anchor" href="#modules-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modules</h1>
 <h2 id="usage-1"><a class="anchor" href="#usage-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 <h3 id="cli"><a class="anchor" href="#cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h3>
-<pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-comment">--modules common script.js</span>
-</code></pre><h3 id="node"><a class="anchor" href="#node" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
+<pre><code class="lang-sh">$ 6to5 --modules common script.js
+</code></pre>
+<h3 id="node"><a class="anchor" href="#node" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> to5 = <span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5"</span>);
 to5.transform(<span class="hljs-string">'import "foo";'</span>, { modules: <span class="hljs-string">"common"</span> });
 </code></pre>
@@ -54,12 +55,14 @@ to5.transform(<span class="hljs-string">'import "foo";'</span>, { modules: <span
 <ul>
 <li><a href="#amd">AMD</a></li>
 <li><a href="#common-default">Common (Default)</a></li>
-<li><a href="#common">Common</a></li>
+<li><a href="#common-interop">Common Interop</a></li>
 <li><a href="#ignore">Ignore</a></li>
 <li><a href="#system">System</a></li>
 <li><a href="#umd">UMD</a></li>
 </ul>
 <h3 id="common-default-"><a class="anchor" href="#common-(default)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common (Default)</h3>
+<pre><code class="lang-sh">$ 6to5 --modules common
+</code></pre>
 <p><strong>In</strong></p>
 <pre><code class="lang-javascript">import <span class="hljs-string">"foo"</span>;
 
@@ -89,6 +92,8 @@ exports.test = test;
 exports.default = test;
 </code></pre>
 <h3 id="common-interop"><a class="anchor" href="#common-interop" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common interop</h3>
+<pre><code class="lang-sh">$ 6to5 --modules commonInterop
+</code></pre>
 <p><strong>In</strong></p>
 <pre><code class="lang-javascript">import <span class="hljs-string">"foo"</span>;
 
@@ -137,6 +142,8 @@ exported as <code>module.exports</code> instead of <code>exports.default</code>.
 }
 </code></pre>
 <h3 id="amd"><a class="anchor" href="#amd" aria-hidden="true"><span class="octicon octicon-link"></span></a>AMD</h3>
+<pre><code class="lang-sh">$ 6to5 --modules amd
+</code></pre>
 <p><strong>In</strong></p>
 <pre><code class="lang-javascript">import foo from <span class="hljs-string">"foo"</span>;
 
@@ -159,6 +166,8 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
 <pre><code class="lang-javascript">define(<span class="hljs-string">"filename"</span>, [<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exports, _foo)</span> </span>{})
 </code></pre>
 <h3 id="umd"><a class="anchor" href="#umd" aria-hidden="true"><span class="octicon octicon-link"></span></a>UMD</h3>
+<pre><code class="lang-sh">$ 6to5 --modules umd
+</code></pre>
 <p><strong>In</strong></p>
 <pre><code class="lang-javascript">import foo from <span class="hljs-string">"foo"</span>;
 
@@ -184,6 +193,8 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
 });
 </code></pre>
 <h3 id="ignore"><a class="anchor" href="#ignore" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ignore</h3>
+<pre><code class="lang-sh">$ 6to5 --modules ignore
+</code></pre>
 <p><strong>In</strong></p>
 <pre><code class="lang-javascript">import foo from <span class="hljs-string">"foo"</span>;
 
@@ -197,6 +208,8 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
 }
 </code></pre>
 <h3 id="system"><a class="anchor" href="#system" aria-hidden="true"><span class="octicon octicon-link"></span></a>System</h3>
+<pre><code class="lang-sh">$ 6to5 --modules system
+</code></pre>
 <p><strong>In</strong></p>
 <pre><code class="lang-javascript">import foo from <span class="hljs-string">"foo"</span>;
 
@@ -226,8 +239,9 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
 </code></pre>
 <h2 id="custom"><a class="anchor" href="#custom" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom</h2>
 <p>You can alternatively specify module names instead of one of the built-in types.</p>
-<pre><code><span class="hljs-variable">$ </span><span class="hljs-number">6</span>to5 --modules custom-<span class="hljs-class"><span class="hljs-keyword">module</span>-<span class="hljs-title">formatter</span></span>
-</code></pre><p><strong>node_modules/custom-module-formatter/index.js</strong></p>
+<pre><code class="lang-sh">$ 6to5 --modules custom-module-formatter
+</code></pre>
+<p><strong>node_modules/custom-module-formatter/index.js</strong></p>
 <pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = ModuleFormatter;
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ModuleFormatter</span><span class="hljs-params">()</span> </span>{
@@ -263,7 +277,7 @@ ModuleFormatter.prototype.exportSpecifier = <span class="hljs-function"><span cl
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.4</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.5</p>
       </footer>
     </div>
   </body>
