@@ -218,7 +218,7 @@
   $optionExper.prop('checked', query.experimental !== 'false');
   $optionPlay.prop('checked', query.playground !== 'false');
   $optionEval.prop('checked', query.evaluate !== 'false');
-  input.setValue(decodeURIComponent(query.code));
+  input.setValue(decodeURIComponent(query.code || ''));
 </script>
 
         </div>
@@ -226,7 +226,7 @@
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.7</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.10</p>
       </footer>
     </div>
   </body>
