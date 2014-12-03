@@ -39,6 +39,43 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
 <script>
+  var getQuery = function() {
+    var query = window.location.hash.replace('#?', '').split('&');
+    var result = {};
+
+    if (query[0] === '') {
+      return result;
+    }
+
+    [].forEach.call(query, function(val) {
+      val = val.split('=');
+      result[val[0]] = val[1];
+    });
+
+    return result;
+  };
+
+  var setQuery = function (params) {
+    var query = getQuery();
+    var result = [];
+
+    Object.keys(params).forEach(function(key) {
+      query[key] = params[key];
+    });
+
+    Object.keys(query).forEach(function(key) {
+      result.push(key + '=' + query[key]);
+    });
+
+    console.log(params, query, result);
+
+    if (!result.length) {
+      return;
+    }
+
+    window.location.hash = '?' + result.join('&');
+  };
+
   var get = function (id) {
     var editor = ace.edit(id);
 
@@ -56,7 +93,7 @@
   output.setReadOnly(true);
   output.setHighlightActiveLine(false);
   output.setHighlightGutterLine(false);
-  
+
   var $consoleCode = $("#console code");
   var $optionExper = $("#option-experimental");
   var $optionPlay  = $("#option-playground");
@@ -65,12 +102,22 @@
 
   var compile = function () {
     var code = input.getValue();
+    var experimental = $optionExper.is(":checked");
+    var playground = $optionPlay.is(":checked");
+    var evaluate = $optionEval.is(":checked");
     var _log = console.log;
+
+    setQuery({
+      code: encodeURIComponent(code),
+      experimental: experimental,
+      playground: playground,
+      evaluate: evaluate
+    });
 
     try {
       var transformed = to5.transform(code, {
-        experimental: $optionExper.is(":checked"),
-        playground: $optionPlay.is(":checked"),
+        experimental: experimental,
+        playground: playground,
         filename: "repl"
       });
 
@@ -78,7 +125,7 @@
       $console.removeClass("error");
       output.setValue(transformed.code, -1);
 
-      if ($optionEval.is(":checked")) {
+      if (evaluate) {
         var buf = "";
 
         console.log = function () {
@@ -118,4 +165,14 @@
   };
 
   input.on("change", queue);
+  $optionExper.on("change", queue);
+  $optionPlay.on("change", queue);
+  $optionEval.on("change", queue);
+
+  var query = getQuery();
+
+  $optionExper.prop('checked', query.experimental !== 'false');
+  $optionPlay.prop('checked', query.playground !== 'false');
+  $optionEval.prop('checked', query.evaluate !== 'false');
+  input.setValue(decodeURIComponent(query.code));
 </script>
