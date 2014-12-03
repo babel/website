@@ -174,5 +174,5 @@
   $optionExper.prop('checked', query.experimental !== 'false');
   $optionPlay.prop('checked', query.playground !== 'false');
   $optionEval.prop('checked', query.evaluate !== 'false');
-  input.setValue(decodeURIComponent(query.code));
+  input.setValue(decodeURIComponent(query.code || ''));
 </script>
