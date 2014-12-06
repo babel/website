@@ -52,7 +52,7 @@ is concerned with making sure it works <strong>and</strong> is readable at the s
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> seattlers = [<span class="hljs-keyword">for</span> (c of customers) <span class="hljs-keyword">if</span> (c.city == <span class="hljs-string">"Seattle"</span>) { name: c.name, age: c.age }];
 </code></pre>
 <p>is generated to the following with 6to5:</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> seattlers = customers.filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(c)</span> </span>{
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> seattlers = <span class="hljs-built_in">Array</span>.from(customers).filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(c)</span> </span>{
   <span class="hljs-keyword">return</span> c.city == <span class="hljs-string">"Seattle"</span>;
 }).map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(c)</span> </span>{
   <span class="hljs-keyword">return</span> {
@@ -81,8 +81,7 @@ is concerned with making sure it works <strong>and</strong> is readable at the s
 <p>As you can tell, it&#39;s not very pretty, unreadable even. Instead of mapping
 directly to a runtime, like other transpilers, 6to5 maps directly to the
 equivalent ES5.</p>
-<p>I&#39;m not saying 6to5 is for everyone or even suited for everything. Traceur is
-better suited if you&#39;d like a full ES6 environment with polyfills and all.</p>
+<p>Sometimes there are little things that 6to5 needs</p>
 <h2 id="comparison-to-other-transpilers"><a class="anchor" href="#comparison-to-other-transpilers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparison to other transpilers</h2>
 <h3 id="features"><a class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h3>
 <table>
@@ -367,7 +366,7 @@ issues such as lack of column information and unpleasant code output.</p>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.14</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.16</p>
       </footer>
     </div>
 

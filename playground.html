@@ -54,6 +54,8 @@
 <ul>
 <li><a href="#memoization-operator">Memoization operator</a></li>
 <li><a href="#method-binding">Method binding</a></li>
+<li><a href="#object-getter-memoisation">Object getter memoisation</a></li>
+<li><a href="#this-shorthand">This shorthand</a></li>
 </ul>
 <h3 id="memoization-assignment-operator"><a class="anchor" href="#memoization-assignment-operator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Memoization assignment operator</h3>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {};
@@ -89,13 +91,50 @@ obj.x ?= <span class="hljs-number">2</span>;
 [<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>].map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(val)</span> </span>{ <span class="hljs-keyword">return</span> val.toUpperCase(); });
 [<span class="hljs-number">1.1234</span>, <span class="hljs-number">23.53245</span>, <span class="hljs-number">3</span>].map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(val)</span> </span>{ <span class="hljs-keyword">return</span> val.toFixed(<span class="hljs-number">2</span>); });
 </code></pre>
+<h3 id="object-getter-memoisation"><a class="anchor" href="#object-getter-memoisation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object getter memoisation</h3>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> foo = {
+  memo bar() {
+    <span class="hljs-keyword">return</span> complex();
+  }
+};
+
+<span class="hljs-keyword">class</span> Foo {
+  memo bar() {
+    <span class="hljs-keyword">return</span> complex();
+  }
+}
+</code></pre>
+<p>equivalent to</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> foo = {
+  get bar() {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._barRan) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._bar;
+    <span class="hljs-keyword">this</span>._barRan = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._bar = complex();
+  }
+};
+
+<span class="hljs-keyword">class</span> Foo {
+  get bar() {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._barRan) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._bar;
+    <span class="hljs-keyword">this</span>._barRan = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._bar = complex();
+  }
+}
+</code></pre>
+<p><strong>NOTE:</strong> Memoised functions will return the result of the <strong>first</strong> execution, regardless of arguments.</p>
+<h3 id="this-shorthand"><a class="anchor" href="#this-shorthand" aria-hidden="true"><span class="octicon octicon-link"></span></a>This shorthand</h3>
+<pre><code class="lang-javascript">@foo
+</code></pre>
+<p>equivalent to</p>
+<pre><code class="lang-javascirpt">this.foo
+</code></pre>
 
         </div>
       </div>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.14</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.14.16</p>
       </footer>
     </div>
 
