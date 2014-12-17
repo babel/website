@@ -1,0 +1,218 @@
+extends ../partials/layout.jade
+
+block settings
+  - var pageTitle = 'Plugins';
+  - var pageClass = 'plugins';
+
+block content
+  .page-header
+    .container
+      .row
+        .col-md-8.col-md-push-2
+          h1 Plugins
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+
+  .container
+    .row
+      .col-md-8.col-md-push-2
+        form(role="form")
+          .form-group
+            label(for="search") Search
+            input.form-control.input-lg#search(type="search" placeholder="Enter search term")
+
+        hr
+
+        mixin plugin(options)
+          .panel.panel-default
+            .panel-heading.clearfix
+              .pull-left
+                .page-title= options.title
+              .pull-right
+                = options.stars + " "
+                i.glyphicon.glyphicon-star
+                span.sr-only Stars
+            .panel-body
+              :markdown= options.description
+            .panel-footer
+              .plugin-labels
+                each label in options.labels
+                  span.label.label-default= label
+
+        +plugin({
+          title: 'gulp-6to5',
+          stars: 77,
+          description: (
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae' +
+            'dolores, error excepturi, explicabo fugiat incidunt laborum' +
+            'libero neque nisi, obcaecati odio odit optio quam repudiandae' +
+            'saepe sequi sunt velit veritatis?'
+          ),
+          labels: [
+            'gulpplugin',
+            'rewriting',
+            'transformation',
+            'syntax',
+            'codegen',
+            'desugaring',
+            'javascript',
+            'ecmascript',
+            'language',
+            'es5',
+            'es6',
+            'ES.next',
+            'harmony',
+            'compiler',
+            'transpiler',
+            '6to5'
+          ]
+        })
+
+        +plugin({
+          title: 'grunt-6to5',
+          stars: 35,
+          description: (
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet' +
+            'asperiores aut autem cumque delectus eos est et eum fugiat illum' +
+            'laborum minus officiis perferendis quaerat qui sequi, ut' +
+            'voluptatem voluptatum.'
+          ),
+          labels: []
+        })
+
+        +plugin({
+          title: '6to5-mocha',
+          stars: 35,
+          description: (
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
+          'Aliquid amet architecto asperiores commodi delectus' +
+          'deserunt dolor est et eum illum minus mollitia nobis,' +
+          'numquam odio, quod, recusandae soluta suscipit tenetur?'
+          ),
+          labels: []
+        })
+
+        +plugin({
+          title: '6to5-browserify',
+          stars: 30,
+          description: (
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
+            'Doloribus quidem quis reiciendis repudiandae voluptate. Cumque' +
+            'eveniet maiores tempora voluptatibus. A accusamus, deleniti' +
+            'eaque ipsa iste molestias officia quasi quo quod.'
+          ),
+          labels: []
+        })
+
+        +plugin({
+          title: '6to5-loader',
+          stars: 14,
+          description: (
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
+          'Amet quam vitae voluptas. Cupiditate labore laboriosam' +
+          'molestiae nam nobis quaerat quo totam! A cupiditate eaque' +
+          'excepturi itaque magnam, quod sit tempore.'
+          ),
+          labels: []
+        })
+
+        +plugin({
+          title: 'sprockets-es6',
+          stars: 8,
+          description: (
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
+          'A adipisci architecto at beatae dignissimos earum ipsum' +
+          'iure magni molestias, mollitia odit officiis perspiciatis' +
+          'possimus quaerat reprehenderit rerum soluta veritatis' +
+          'voluptas?'
+          ),
+          labels: []
+        })
+
+        +plugin({
+          title: '6to5-connect',
+          stars: 4,
+          description: (
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
+          'Animi consectetur corporis doloremque praesentium sapiente.' +
+          'Ad architecto asperiores dicta, dignissimos, dolore dolorem' +
+          'exercitationem ipsum, laboriosam nobis obcaecati perspiciatis' +
+          'voluptate. Ex, obcaecati.'
+          ),
+          labels: []
+        })
+
+        +plugin({
+          title: 'karma-6to5-preprocessor',
+          stars: 2,
+          description: (
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
+          'Aperiam assumenda blanditiis deleniti dolorum, ducimus ea,' +
+          'earum eligendi exercitationem expedita facilis fugit ipsum' +
+          'iste laborum maxime officia ratione tempora veniam' +
+          'veritatis?'
+          ),
+          labels: []
+        })
+
+        +plugin({
+          title: 'broccoli-6to5-transpiler',
+          stars: 1,
+          description: (
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
+            'Commodi distinctio ex hic id, illo impedit nemo nesciunt' +
+            'praesentium provident quibusdam quisquam quos similique sint' +
+            'suscipit voluptatem. Accusantium consectetur pariatur quis.'
+          ),
+          labels: []
+        })
+
+        +plugin({
+          title: '6to5-brunch',
+          stars: 1,
+          description: (
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque' +
+            'aut beatae corporis, deserunt, dignissimos exercitationem fuga' +
+            'hic id ipsam maxime modi placeat quis recusandae sequi similique' +
+            'voluptate voluptates! Eaque, voluptates!'
+          ),
+          labels: []
+        })
+
+        +plugin({
+          title: 'gobble-6to5',
+          stars: 1,
+          description: (
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad' +
+            'adipisci alias animi aut cupiditate distinctio dolor dolorem' +
+            'est ex explicabo fugiat laborum libero nobis nulla odio,' +
+            'quae quas quod repudiandae.'
+          ),
+          labels: []
+        })
+
+        +plugin({
+          title: 'jade-6to5',
+          stars: 1,
+          description: (
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
+            'Animi aut blanditiis eligendi hic maxime, molestiae' +
+            'molestias omnis quaerat quam? Assumenda doloribus et hic' +
+            'laudantium maxime modi nemo, nobis perspiciatis sit.'
+          ),
+          labels: []
+        })
+
+        +plugin({
+          title: '6to5-jest',
+          stars: 1,
+          description: (
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
+            'Alias asperiores consectetur corporis cumque, deleniti,' +
+            'dolor dolore, dolores fuga in inventore nulla omnis' +
+            'placeat recusandae reprehenderit sequi soluta sunt vel' +
+            'veniam.'
+          ),
+          labels: []
+        })
+
+

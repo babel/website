@@ -2,32 +2,23 @@
   "name": "6to5.github.io",
   "version": "1.0.0",
   "description": "",
-  "main": "build.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/6to5/6to5.github.io.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/6to5/6to5.github.io/issues"
-  },
-  "homepage": "https://github.com/6to5/6to5.github.io",
-  "devDependencies": {
-    "6to5": "^1.12.4",
-    "github-markdown-css": "^1.2.0",
-    "handlebars": "^2.0.0",
-    "highlight.js": "^8.3.0",
-    "less": "^2.0.0",
-    "lodash": "^2.4.1",
-    "marked": "^0.3.2",
-    "bootstrap": "^3.3.0",
-    "underscore.string": "^2.3.3",
+  "dependencies": {
+    "bootstrap": "^3.3.1",
     "jquery": "^2.1.1",
-    "uglify-js": "^2.4.15",
-    "request": "^2.48.0"
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.0.0",
+    "gulp-jade": "^0.10.0",
+    "gulp-less": "^2.0.1",
+    "less": "^2.1.1",
+    "marked": "^0.3.2"
   }
 }

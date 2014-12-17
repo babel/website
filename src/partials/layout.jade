@@ -1,0 +1,45 @@
+block settings
+doctype html
+html(lang="en" class='page-' + pageClass)
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    block title
+    if pageTitle
+      title= pageTitle + ' · 6to5'
+    else
+      title 6to5 · Next generation JavaScript, today.
+    meta(name="description" content="")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet" type="text/css" href="styles.css")
+  body
+    nav(class="navbar navbar-default navbar-fixed-top" role="navigation" id="header")
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target="#navigation")
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.logo(href="index.html")
+            span.logo-six 6
+            | to
+            span.logo-five 5
+        .collapse.navbar-collapse#navigation
+          ul.nav.navbar-nav
+            li(class=pageClass === 'tour' ? 'active' : ''): a(href="tour.html") Tour
+            li(class=pageClass === 'features' ? 'active' : ''): a(href="features.html") Features
+            li(class=pageClass === 'usage' ? 'active' : ''): a(href="usage.html") Usage
+            li(class=pageClass === 'compare' ? 'active' : ''): a(href="compare.html") Compare
+            li(class=pageClass === 'plugins' ? 'active' : ''): a(href="plugins.html") Plugins
+            li(class=pageClass === 'repl' ? 'active' : ''): a(href="repl.html") REPL
+            li: a(href="https://gitter.im/6to5/6to5") Support
+          ul.nav.navbar-nav.navbar-right
+            li: a(href="https://github.com/6to5/6to5") Github
+    block content
+    .footer.text-center
+      :markdown
+        [6to5](https://github.com/6to5/6to5) v1.15.0 · Distributed under MIT License
+    script(src="../node_modules/jquery/dist/jquery.js")
+    script(src="../node_modules/bootstrap/dist/js/bootstrap.js")
+    script(src="scripts.js")

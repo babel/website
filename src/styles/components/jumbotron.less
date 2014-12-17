@@ -1,0 +1,32 @@
+.jumbotron {
+  border-radius: 0;
+  padding: 10em 0;
+  position: relative;
+  overflow: hidden;
+
+  & &-brand {
+    position: absolute;
+    z-index: 0;
+    top: 15%;
+    left: 8%;
+    display: block;
+    font-size: 30em;
+    line-height: 1;
+    color: darken(@jumbotron-bg, 5%);
+  }
+
+  * {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    font-size: 28px;
+    font-weight: 600;
+  }
+}

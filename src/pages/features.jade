@@ -1,0 +1,110 @@
+extends ../partials/layout.jade
+
+block settings
+  - var pageTitle = 'Features';
+  - var pageClass = 'features';
+
+block content
+  .page-header
+    .container
+      .row
+        .col-md-12
+          h1 Features
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+
+  .container
+    .row.featurette
+      .col-md-4
+        :markdown
+          ## Readable
+
+          Formatting is retained if possible so your generated code is as similar as possible.
+
+      .col-md-4
+        pre: code.
+          class User extends Model {
+            constructor() {
+              super();
+              this.sayHello();
+            }
+
+            sayHello() {
+              alert("Hello World!");
+            }
+          }
+      .col-md-4
+        pre: code.
+          var User = function User() {
+            Model.call(this);
+            this.sayHello();
+          };
+
+          _extends(User, Model);
+
+          User.prototype.sayHello = function () {
+            alert("Hello World!");
+          };
+
+    hr.featurette-divider
+
+    .row.featurette
+      .col-md-4.col-md-push-8
+        :markdown
+          ## Extensible
+
+          With a large range of [plugins](plugins.html) and browser support.
+
+      .col-md-4.col-md-pull-4
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+
+      .col-md-4.col-md-pull-4
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+
+    hr.featurette-divider
+
+    .row.featurette
+      .col-md-4
+        :markdown
+          ## Lossless
+
+          **Source map** support so you can debug your compiled code with ease.
+
+      .col-md-4
+        pre: code.
+          class User extends Model {
+            constructor() {
+              super();
+              this.sayHello();
+            }
+
+            sayHello() {
+              alert("Hello World!");
+            }
+          }
+      .col-md-4
+        pre: code.
+          var User = function User() {
+            Model.call(this);
+            this.sayHello();
+          };
+
+          _extends(User, Model);
+
+          User.prototype.sayHello = function () {
+            alert("Hello World!");
+          };
+
+    hr.featurette-divider
+
+    .row.featurette
+      .col-md-4.col-md-push-8
+        :markdown
+          ## Compact
+
+          Maps directly to the equivalent ES5 with no runtime.*
+
+      .col-md-4.col-md-pull-4
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+
+      .col-md-4.col-md-pull-4
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")

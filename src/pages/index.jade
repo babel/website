@@ -1,0 +1,71 @@
+extends ../partials/layout.jade
+
+block settings
+  - var pageClass = 'index';
+
+block content
+  div.jumbotron.text-center
+    span.jumbotron-brand.logo
+      span.logo-six 6
+      | to
+      span.logo-five 5
+    .container-fluid
+      h1 Next generation JavaScript, today.
+      p Turn ES6+ code into readable vanilla ES5 with source maps and more!
+
+  .container
+    .row.featurette
+      .col-md-12
+        :markdown
+          ## Introduction
+          
+          ECMAScript 6 is the upcoming version of the ECMAScript standard.
+          This standard is targeting ratification in June 2015. ES6 is a
+          significant update to the language, and the first update to the
+          language since ES5 was standardized in 2009. Implementation of
+          these features in major JavaScript engines is
+          [underway now](http://kangax.github.io/compat-table/es6/).
+          
+          [Get a tour of all the new features in ES6 &rarr;](tour.html)
+      
+    hr.featurette-divider
+    
+    a.row.featurette(href="usage.html#browsers")
+      .col-md-8
+        :markdown
+          ## Browsers
+          
+          Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id
+          ligula porta felis euismod semper. Praesent commodo cursus magna,
+          vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
+          commodo.
+      .col-md-4
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+    
+    hr.featurette-divider
+    
+    a.row.featurette(href="usage.html#node")
+      .col-md-8.col-md-push-4
+        :markdown
+          ## Node.js
+
+          Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id
+          ligula porta felis euismod semper. Praesent commodo cursus magna,
+          vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
+          commodo.
+      .col-md-4.col-md-pull-8
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+
+    hr.featurette-divider
+
+    a.row.featurette(href="usage.html#rails")
+      .col-md-8
+        :markdown
+          ## Rails
+
+          Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id
+          ligula porta felis euismod semper. Praesent commodo cursus magna,
+          vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
+          commodo.
+      .col-md-4
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")

@@ -1,0 +1,56 @@
+.page-repl,
+.page-repl body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.repl {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  + .footer {
+    margin-top: 0;
+  }
+
+  &-options {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background: @to5-dark-gray;
+    color: white;
+
+    .form-group {
+      display: inline-block;
+      padding: @navbar-padding-vertical @navbar-padding-horizontal;
+    }
+  }
+
+  &-input,
+  &-output {
+    position: absolute;
+    width: 50%;
+    top: 50px;
+    bottom: 0;
+
+    border: none;
+    background: lighten(@gray-lighter, 3%);
+    margin: 0;
+    padding: 10px;
+    border-radius: 0;
+
+    white-space: nowrap;
+  }
+
+  &-input {
+    left: 0;
+    border-right: 1px solid darken(@gray-lighter, 5%);
+  }
+
+  &-output {
+    right: 0;
+    background: lighten(@gray-lighter, 1%);
+  }
+}

@@ -1,0 +1,34 @@
+.featurette {
+  display: block;
+
+  &,
+  &:hover,
+  &:active {
+    color: inherit;
+  }
+
+  h2 {
+    font-weight: 600;
+    line-height: 1;
+
+    @media (min-width: @screen-sm) {
+      font-size: 50px;
+    }
+
+    @media (min-width: @screen-md) {
+      margin-top: 30px;
+    }
+  }
+
+  &:link:hover h2 {
+    text-decoration: underline;
+  }
+
+  p {
+    &:extend(.lead);
+  }
+
+  &-divider {
+    margin: 40px 0;
+  }
+}

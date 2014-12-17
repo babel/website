@@ -1,0 +1,45 @@
+extends ../partials/layout.jade
+
+block settings
+  - var pageTitle = 'Tour';
+  - var pageClass = 'tour';
+
+block content
+  .page-header
+    .container
+      h1 Tour
+      p Overview of ECMAScript 6 features.
+
+  .container
+    .row
+      .col-md-3.col-md-push-9
+        .sidebar
+          ul.nav
+            li: a(href="#arrows") Arrows
+            li: a(href="#classes") Classes
+            li: a(href="#enhanced-object-literals") Enhanced Object Literals
+            li: a(href="#template-strings") Template Strings
+            li: a(href="#destructuring") Destructuring
+            li: a(href="#default-rest-spread") Default + Rest + Spread
+            li: a(href="#let-const") Let + Const
+            li: a(href="#iterators-for-of") Iterators + For..Of
+            li: a(href="#generators") Generators
+            li: a(href="#comprehensions") Comprehensions
+            li: a(href="#unicode") Unicode
+            li: a(href="#modules") Modules
+            li: a(href="#module-loaders") Module Loaders
+            li: a(href="#map-set-weakmap-weakset") Map + Set + WeakMap + WeakSet
+            li: a(href="#proxies") Proxies
+            li: a(href="#symbols") Symbols
+            li: a(href="#subclassable-built-ins") Subclassable Built-ins
+            li: a(href="#math-number-string-object-apis") Math + Number + String + Object APIs
+            li: a(href="#binary-and-octal-literals") Binary and Octal Literals
+            li: a(href="#promises") Promises
+            li: a(href="#reflect-api") Reflect Api
+            li: a(href="#tail-calls") Tail Calls
+
+      .col-md-9.col-md-pull-3.page-content
+        :markdown
+          > This document is taken from Luke Hoban's excellent
+          > [es6features](http://git.io/es6features) repo. Go give it a star on GitHub!
+        include:markdown ../content/tour.md
