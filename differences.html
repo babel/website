@@ -44,7 +44,8 @@
 
         <div class="col-sm-9 markdown-body">
           <h1 id="differences"><a class="anchor" href="#differences" aria-hidden="true"><span class="octicon octicon-link"></span></a>Differences</h1>
-<h2 id="philosophy"><a class="anchor" href="#philosophy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Philosophy</h2>
+<p>There are three main points that separate 6to5 from all other transpilers.</p>
+<h3 id="readable-code"><a class="anchor" href="#readable-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Readable code</h3>
 <p>The fundamental concept behind 6to5 is that the generated code must be close as
 possible to the original, retaining all the same formatting and readability.</p>
 <p>Many other transpilers are just concerned with making the code work while 6to5
@@ -82,7 +83,23 @@ is concerned with making sure it works <strong>and</strong> is readable at the s
 <p>As you can tell, it&#39;s not very pretty, unreadable even. Instead of mapping
 directly to a runtime, like other transpilers, 6to5 maps directly to the
 equivalent ES5.</p>
-<p>Sometimes there are little things that 6to5 needs</p>
+<p>Sometimes there are little inline functions that 6to5 needs. These are
+placed at the top of your file much like coffee-script does. If these
+are bother you then you can use the <a href="optional-runtime.html">optional runtime</a>.
+We promise that these inline functions will never be significant and will
+always be used as little as possible.</p>
+<h3 id="static-analysis"><a class="anchor" href="#static-analysis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Static analysis</h3>
+<p>6to5 uses a lot of static analysis to simplify code as much as possible.
+Not many other transpilers do this, and those that do don&#39;t do it nearly
+as much as 6to5. This process is pretty intensive but it leads to higher
+quality code.</p>
+<h3 id="spec-compliancy"><a class="anchor" href="#spec-compliancy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spec compliancy</h3>
+<p>6to5 prides itself on
+<a href="https://kangax.github.io/compat-table/es6/">spec compliancy</a>. We have
+excellent support for edgecases, something that many other transpilers
+suffer from, including Traceur. When you use 6to5 you can be confident
+that when you turn it off and use your code in a full ES6 environment
+<strong>it&#39;ll just work</strong>.</p>
 <h2 id="comparison-to-other-transpilers"><a class="anchor" href="#comparison-to-other-transpilers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparison to other transpilers</h2>
 <h3 id="features"><a class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h3>
 <table>
@@ -126,7 +143,7 @@ equivalent ES5.</p>
 <td>✓</td>
 </tr>
 <tr>
-<td>Browser support</td>
+<td>Browser compiler</td>
 <td>✓</td>
 <td>✓</td>
 <td></td>
@@ -186,6 +203,15 @@ equivalent ES5.</p>
 <td></td>
 </tr>
 <tr>
+<td>Async generator functions</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Classes</td>
 <td>✓</td>
 <td>✓</td>
@@ -240,6 +266,15 @@ equivalent ES5.</p>
 <td></td>
 </tr>
 <tr>
+<td>Flow types</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
 <td>For-of</td>
 <td>✓</td>
 <td>✓</td>
@@ -261,6 +296,15 @@ equivalent ES5.</p>
 <td>Generator comprehension</td>
 <td>✓</td>
 <td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>JSX</td>
+<td>✓</td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -321,6 +365,15 @@ equivalent ES5.</p>
 <td>✓</td>
 </tr>
 <tr>
+<td>React</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>Spread</td>
 <td>✓</td>
 <td>✓</td>
@@ -351,7 +404,7 @@ equivalent ES5.</p>
 <h3 id="-traceur-https-github-com-google-traceur-compiler-"><a class="anchor" href="#[traceur](https://github.com/google/traceur-compiler)" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/google/traceur-compiler">Traceur</a></h3>
 <p>Traceur requires quite a bulky runtime (~75KB) and produces quite verbose code.
 While this can be trimmed down by selectively building the runtime, it&#39;s an
-unneccesary step when a large runtime can be eliminated entirely.</p>
+unnecessary step when a large runtime can be eliminated entirely.</p>
 <h3 id="-es6now-https-github-com-zenparsing-es6now-"><a class="anchor" href="#[es6now](https://github.com/zenparsing/es6now)" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/zenparsing/es6now">es6now</a></h3>
 <p>es6now doesn&#39;t output sourcemaps. This is cited as a positive as line-to-line
 mapping is the goal. This however obviously doesn&#39;t retain column mapping
@@ -367,7 +420,7 @@ issues such as lack of column information and unpleasant code output.</p>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.15.0</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.0.0</p>
       </footer>
     </div>
   </body>

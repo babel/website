@@ -44,30 +44,33 @@
 
         <div class="col-sm-9 markdown-body">
           <h1 id="polyfill"><a class="anchor" href="#polyfill" aria-hidden="true"><span class="octicon octicon-link"></span></a>Polyfill</h1>
-<p>6to5 includes a polyfill that includes the
-<a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a> and the
-<a href="https://github.com/paulmillr/es6-shim">es6-shim</a> and
-<a href="https://github.com/medikoo/es6-symbol">es6-symbol</a> polyfills.</p>
+<p>6to5 includes a polyfill that includes a custom
+<a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a> and
+<a href="https://github.com/zloirock/core-js">core.js</a>.</p>
 <p>This will emulate a full ES6 environment. This polyfill is automatically loaded
-when using <a href="usage.html#node">6to5-node</a>.</p>
+when using <a href="usage.html#node">6to5-node</a> and <a href="usage.html#register-hook">6to5/register</a>.</p>
 <h2 id="usage-3"><a class="anchor" href="#usage-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
-<h3 id="node-1"><a class="anchor" href="#node-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
+<h3 id="node-browserify"><a class="anchor" href="#node/browserify" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node/Browserify</h3>
 <p>You need to include the polyfill require at the top the <strong>entry point</strong> to your
 application.</p>
 <pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/polyfill"</span>);
+</code></pre>
+<p>Fortunately, this is automatically loaded when using:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/register"</span>);
 </code></pre>
 <h3 id="browser-1"><a class="anchor" href="#browser-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser</h3>
 <p>Available from the <code>browser-polyfill.js</code> file within the 6to5 directory of an
 npm release. This needs to be included <strong>before</strong> all your compiled 6to5 code.
 You can either prepend it to your compiled code or include it in a <code>&lt;script&gt;</code>
 before it.</p>
+<p><strong>NOTE:</strong> Do not <code>require</code> this via browserify etc, use <code>6to5/polyfill</code>.</p>
 
         </div>
       </div>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.15.0</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.0.0</p>
       </footer>
     </div>
   </body>

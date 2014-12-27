@@ -50,7 +50,7 @@
 <pre><code>$ <span class="hljs-number">6</span>to5 <span class="hljs-comment">--playground</span>
 </code></pre><pre><code class="lang-javascript">to5.transform(<span class="hljs-string">"code"</span>, { playground: <span class="hljs-literal">true</span> });
 </code></pre>
-<p><strong>NOTE:</strong> Enabling <code>playground</code> also enables <a href="usage.html#experimental">experimental support</a>.</p>
+<p><strong>NOTE:</strong> Enabling <code>playground</code> also enables <a href="experimental.html">experimental support</a>.</p>
 <h2 id="features-2"><a class="anchor" href="#features-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
 <ul>
 <li><a href="#memoization-operator">Memoization operator</a></li>
@@ -79,11 +79,11 @@ obj.x ?= <span class="hljs-number">2</span>;
 <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">Object</span>.prototype.hasOwnProperty.call(obj, <span class="hljs-string">"x"</span>)) obj.x = <span class="hljs-number">2</span>;
 </code></pre>
 <h3 id="method-binding"><a class="anchor" href="#method-binding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Method binding</h3>
-<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> fn = obj:method;
-<span class="hljs-keyword">var</span> fn = obj:method(<span class="hljs-string">"foob"</span>);
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> fn = obj#method;
+<span class="hljs-keyword">var</span> fn = obj#method(<span class="hljs-string">"foob"</span>);
 
-[<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>].map(:toUpperCase); <span class="hljs-comment">// ["FOO", "BAR"]</span>
-[<span class="hljs-number">1.1234</span>, <span class="hljs-number">23.53245</span>, <span class="hljs-number">3</span>].map(:toFixed(<span class="hljs-number">2</span>)); <span class="hljs-comment">// ["1.12", "23.53", "3.00"]</span>
+[<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>].map(#toUpperCase); <span class="hljs-comment">// ["FOO", "BAR"]</span>
+[<span class="hljs-number">1.1234</span>, <span class="hljs-number">23.53245</span>, <span class="hljs-number">3</span>].map(#toFixed(<span class="hljs-number">2</span>)); <span class="hljs-comment">// ["1.12", "23.53", "3.00"]</span>
 </code></pre>
 <p>equivalent to:</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> fn = obj.method.bind(obj);
@@ -135,7 +135,7 @@ obj.x ?= <span class="hljs-number">2</span>;
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.15.0</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.0.0</p>
       </footer>
     </div>
   </body>

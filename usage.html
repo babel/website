@@ -68,7 +68,7 @@ map embedded in a comment at the bottom.</p>
 <p>Pipe a file in via stdin and output it to <code>script-compiled.js</code></p>
 <pre><code class="lang-sh">$ 6to5 --out-file script-compiled.js &lt; script.js
 </code></pre>
-<h3 id="node-2"><a class="anchor" href="#node-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
+<h3 id="node-1"><a class="anchor" href="#node-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
 <p>Launch a repl.</p>
 <pre><code class="lang-sh">$ 6to5-node
 </code></pre>
@@ -78,7 +78,7 @@ map embedded in a comment at the bottom.</p>
 <p>Compile and run <code>test.js</code>.</p>
 <pre><code class="lang-sh">$ 6to5-node test
 </code></pre>
-<h2 id="node-3"><a class="anchor" href="#node-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h2>
+<h2 id="node-2"><a class="anchor" href="#node-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> to5 = <span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5"</span>);
 </code></pre>
 <h3 id="to5-transform-code-opts-"><a class="anchor" href="#to5.transform(code,-[opts]);" aria-hidden="true"><span class="octicon octicon-link"></span></a>to5.transform(code, [opts]);</h3>
@@ -94,6 +94,12 @@ result.ast;
 <pre><code class="lang-javascript">to5.transformFile(<span class="hljs-string">"filename.js"</span>, options, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, result)</span> </span>{
   result.code;
 });
+</code></pre>
+<h3 id="to5-transform-fromast-ast-code-opts-"><a class="anchor" href="#to5.transform.fromast(ast,-[code],-[opts])" aria-hidden="true"><span class="octicon octicon-link"></span></a>to5.transform.fromAst(ast, [code], [opts])</h3>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> result = to5.transform.fromAst(ast, <span class="hljs-string">"var a = 2;"</span>, opts);
+result.code;
+result.map;
+result.ast;
 </code></pre>
 <h4 id="options"><a class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h4>
 <pre><code class="lang-javascript">{
@@ -151,19 +157,55 @@ result.ast;
   <span class="hljs-comment">// Default: false</span>
   runtime: <span class="hljs-literal">true</span>,
 
-  <span class="hljs-comment">// Output comments in generated output</span>
-  <span class="hljs-comment">// Default: true</span>
-  comments: <span class="hljs-literal">false</span>,
-
   <span class="hljs-comment">// Enable support for experimental ES7 features</span>
   <span class="hljs-comment">// Default: false</span>
-  experimental: <span class="hljs-literal">true</span>
+  experimental: <span class="hljs-literal">true</span>,
+
+  <span class="hljs-comment">// Set this to `false` if you don't want the transformed AST in the returned</span>
+  <span class="hljs-comment">// result</span>
+  <span class="hljs-comment">// Default: true</span>
+  ast: <span class="hljs-literal">true</span>,
+
+  <span class="hljs-comment">// Set this to `false` if you don't want the transformed code in the returned</span>
+  <span class="hljs-comment">// result</span>
+  <span class="hljs-comment">// Default: true</span>
+  code: <span class="hljs-literal">true</span>,
+
+  format: {
+    <span class="hljs-comment">// Output comments in generated output</span>
+    <span class="hljs-comment">// Default: true</span>
+    comments: <span class="hljs-literal">true</span>,
+
+    <span class="hljs-comment">// Do not include superfluous whitespace characters and line terminators</span>
+    <span class="hljs-comment">// Default: false</span>
+    compact: <span class="hljs-literal">false</span>,
+
+    indent: {
+      <span class="hljs-comment">// Preserve parentheses in new expressions that have no arguments</span>
+      <span class="hljs-comment">// Default: true</span>
+      parentheses: <span class="hljs-literal">true</span>,
+
+      <span class="hljs-comment">// Adjust the indentation of multiline comments to keep asterisks vertically aligned</span>
+      <span class="hljs-comment">// Default: true</span>
+      adjustMultilineComment: <span class="hljs-literal">true</span>,
+
+      <span class="hljs-comment">// Indent string</span>
+      <span class="hljs-comment">// Default: "  "</span>
+      style: <span class="hljs-string">"  "</span>,
+
+      <span class="hljs-comment">// Base indent level</span>
+      <span class="hljs-comment">// Default: 0</span>
+      base: <span class="hljs-number">0</span>
+    }
+  }
 }
 </code></pre>
 <h3 id="require-hook"><a class="anchor" href="#require-hook" aria-hidden="true"><span class="octicon octicon-link"></span></a>Require hook</h3>
 <p>All subsequent files required by node with the extensions <code>.es6</code> and <code>.js</code> will
 be transformed by 6to5. The polyfill specified in <a href="polyfill.html">Polyfill</a> is
-also required.</p>
+also required; but this is automatically loaded when using:</p>
+<p>Source maps are automatically configured so if any errors a thrown then line
+number info is mapped and you&#39;ll get the correct source location.</p>
 <pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/register"</span>);
 </code></pre>
 <p><strong>NOTE:</strong> By default all requires to <code>node_modules</code> will be ignored. You can
@@ -174,6 +216,7 @@ override this by passing an ignore regex via:</p>
   ignore: <span class="hljs-literal">false</span>
 });
 </code></pre>
+<p><strong>NOTE:</strong> Using 6to5-node or <code>require(&quot;6to5/register&quot;)</code>, 6to5 will check what features are available in the current environment and blacklists them if they&#39;re supported.</p>
 <h4 id="options-1"><a class="anchor" href="#options-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h4>
 <pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"6to5/register"</span>)({
   <span class="hljs-comment">// Optional ignore regex - if any filenames **do** match this regex then they</span>
@@ -193,19 +236,13 @@ override this by passing an ignore regex via:</p>
   extensions: [<span class="hljs-string">".js"</span>, <span class="hljs-string">".es6"</span>]
 });
 </code></pre>
-<h2 id="experimental"><a class="anchor" href="#experimental" aria-hidden="true"><span class="octicon octicon-link"></span></a>Experimental</h2>
-<p>6to5 also has experimental support for ES7 proposals. You can enable this with
-the <code>experimental: true</code> option when using the <a href="#node">Node API</a> or
-<code>--experimental</code> when using the <a href="#cli">CLI</a>.</p>
-<p><strong>WARNING:</strong> These proposals are subject to change so use with
-<strong>extreme caution</strong>.</p>
 
         </div>
       </div>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.15.0</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.0.0</p>
       </footer>
     </div>
   </body>

@@ -46,7 +46,8 @@
           <h1 id="caveats"><a class="anchor" href="#caveats" aria-hidden="true"><span class="octicon octicon-link"></span></a>Caveats</h1>
 <p>In order for certain features to work they require certain polyfills. You can
 satisfy <strong>all</strong> 6to5 feature requirements by using the included
-<a href="polyfill.html">polyfill</a>. You may alternatively selectively include what you need:</p>
+<a href="polyfill.html">polyfill</a>.</p>
+<p>You may alternatively selectively include what you need:</p>
 <table>
 <thead>
 <tr>
@@ -57,7 +58,7 @@ satisfy <strong>all</strong> 6to5 feature requirements by using the included
 <tbody>
 <tr>
 <td>Abstract References</td>
-<td><a href="usage.html#experimental">experimental</a>, <code>Symbol</code></td>
+<td><a href="experimental.html">experimental</a>, <code>Symbol</code></td>
 </tr>
 <tr>
 <td>Array destructuring</td>
@@ -65,11 +66,11 @@ satisfy <strong>all</strong> 6to5 feature requirements by using the included
 </tr>
 <tr>
 <td>Async functions, Generators</td>
-<td><a href="usage.html#experimental">experimental</a>, <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a></td>
+<td><a href="experimental.html">experimental</a>, <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a></td>
 </tr>
 <tr>
 <td>Comprehensions</td>
-<td><a href="usage.html#experimental">experimental</a>, <code>Array.isArray</code>, <code>Array.from</code></td>
+<td><a href="experimental.html">experimental</a>, <code>Array.isArray</code>, <code>Array.from</code></td>
 </tr>
 <tr>
 <td>For Of</td>
@@ -77,7 +78,7 @@ satisfy <strong>all</strong> 6to5 feature requirements by using the included
 </tr>
 <tr>
 <td>Object spread/rest</td>
-<td><a href="usage.html#experimental">experimental</a>, <code>Object.assign</code></td>
+<td><a href="experimental.html">experimental</a>, <code>Object.assign</code></td>
 </tr>
 <tr>
 <td>Spread</td>
@@ -85,9 +86,14 @@ satisfy <strong>all</strong> 6to5 feature requirements by using the included
 </tr>
 </tbody>
 </table>
-<h2 id="classes"><a class="anchor" href="#classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes</h2>
-<p>Built-in classes such as <code>Date</code>, <code>Array</code> and <code>DOM</code> cannot be subclassed due to
-limitations in ES5 implementations.</p>
+<h2 id="es5"><a class="anchor" href="#es5" aria-hidden="true"><span class="octicon octicon-link"></span></a>ES5</h2>
+<p>Since 6to5 assumes that your code will be ran in an ES5 environment it uses ES5
+functions. So if you&#39;re using an environment that has limited or no support for
+ES5 such as lower versions of IE then using the
+<a href="https://github.com/es-shims/es5-shim">es5-shim</a> along with the
+<a href="polyfill.html">6to5 polyfill</a> will add support for these methods.</p>
+<h2 id="internet-explorer"><a class="anchor" href="#internet-explorer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Internet Explorer</h2>
+<h3 id="classes-9-and-below-"><a class="anchor" href="#classes-(9-and-below)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes (9 and below)</h3>
 <p>If you&#39;re inheriting from a class then static properties are inherited from it
 via <a href="https://developer.mozilla.org/en-us/docs/web/javascript/reference/global_objects/object/proto">__proto__</a>,
 this is widely supported but you may run into problems with much older browsers.</p>
@@ -105,13 +111,19 @@ this is widely supported but you may run into problems with much older browsers.
   }
 }
 </code></pre>
+<h2 id="getters-setters-8-and-below-"><a class="anchor" href="#getters/setters-(8-and-below)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getters/setters (8 and below)</h2>
+<p>In IE8 <code>Object.defineProperty</code> can only be used on DOM objects. This is
+unfortunate as it&#39;s required to set getters and setters. Due to this if
+you plan on supporting IE8 or below then the user of getters and setters
+isn&#39;t recommended.</p>
+<p>Reference: <a href="https://developer.mozilla.org/en/docs/web/javascript/reference/global_objects/object/defineproperty#internet_explorer_8_specific_notes">MDN</a>.</p>
 
         </div>
       </div>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.15.0</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.0.0</p>
       </footer>
     </div>
   </body>

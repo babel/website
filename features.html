@@ -44,12 +44,12 @@
 
         <div class="col-sm-9 markdown-body">
           <h1 id="features-1"><a class="anchor" href="#features-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h1>
-<h2 id="abstract-references-experimental-usage-md-experimental-spec-https-github-com-zenparsing-es-abstract-refs-"><a class="anchor" href="#abstract-references-([experimental](usage.md#experimental))-([spec](https://github.com/zenparsing/es-abstract-refs))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Abstract references (<a href="usage.html#experimental">experimental</a>) (<a href="https://github.com/zenparsing/es-abstract-refs">spec</a>)</h2>
+<h2 id="abstract-references-experimental-experimental-md-spec-https-github-com-zenparsing-es-abstract-refs-"><a class="anchor" href="#abstract-references-([experimental](experimental.md))-([spec](https://github.com/zenparsing/es-abstract-refs))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Abstract references (<a href="experimental.html">experimental</a>) (<a href="https://github.com/zenparsing/es-abstract-refs">spec</a>)</h2>
 <pre><code class="lang-javascript">foo::bar;
 foo::bar = baz;
 <span class="hljs-keyword">delete</span> foo::bar;
 </code></pre>
-<h2 id="array-comprehensions-experimental-usage-md-experimental-"><a class="anchor" href="#array-comprehensions-([experimental](usage.md#experimental))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array comprehensions (<a href="usage.html#experimental">experimental</a>)</h2>
+<h2 id="array-comprehensions-experimental-experimental-md-"><a class="anchor" href="#array-comprehensions-([experimental](experimental.md))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array comprehensions (<a href="experimental.html">experimental</a>)</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> results = [<span class="hljs-keyword">for</span> (c of customers) <span class="hljs-keyword">if</span> (c.city == <span class="hljs-string">"Seattle"</span>) { name: c.name, age: c.age }]
 </code></pre>
 <h2 id="arrow-functions"><a class="anchor" href="#arrow-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arrow functions</h2>
@@ -74,14 +74,18 @@ nums.forEach(v =&gt; {
   }
 };
 </code></pre>
-<h2 id="async-functions-experimental-usage-md-experimental-spec-https-github-com-lukehoban-ecmascript-asyncawait-"><a class="anchor" href="#async-functions-([experimental](usage.md#experimental))-([spec](https://github.com/lukehoban/ecmascript-asyncawait))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async functions (<a href="usage.html#experimental">experimental</a>) (<a href="https://github.com/lukehoban/ecmascript-asyncawait">spec</a>)</h2>
+<h2 id="async-functions-experimental-experimental-md-spec-https-github-com-lukehoban-ecmascript-asyncawait-"><a class="anchor" href="#async-functions-([experimental](experimental.md))-([spec](https://github.com/lukehoban/ecmascript-asyncawait))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async functions (<a href="experimental.html">experimental</a>) (<a href="https://github.com/lukehoban/ecmascript-asyncawait">spec</a>)</h2>
 <pre><code class="lang-javascript">async <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chainAnimationsAsync</span><span class="hljs-params">(elem, animations)</span> </span>{
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> anim of animations) {
     await anim(elem);
   }
 }
 </code></pre>
-<h2 id="classes-1"><a class="anchor" href="#classes-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes</h2>
+<h2 id="async-generator-functions-experimental-experimental-md-spec-https-github-com-jhusain-asyncgenerator-"><a class="anchor" href="#async-generator-functions-([experimental](experimental.md))-([spec](https://github.com/jhusain/asyncgenerator))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async generator functions (<a href="experimental.html">experimental</a>) (<a href="https://github.com/jhusain/asyncgenerator">spec</a>)</h2>
+<pre><code class="lang-javascript">
+
+</code></pre>
+<h2 id="classes"><a class="anchor" href="#classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">class</span> SkinnedMesh extends THREE.Mesh {
   constructor(geometry, materials) {
     super(geometry, materials);
@@ -147,7 +151,7 @@ g({ name: <span class="hljs-number">5</span> });
 <span class="hljs-keyword">var</span> [a] = [];
 a === <span class="hljs-literal">undefined</span>;
 </code></pre>
-<h2 id="exponentiation-operator-experimental-usage-md-experimental-spec-https-github-com-rwaldron-exponentiation-operator-"><a class="anchor" href="#exponentiation-operator-([experimental](usage.md#experimental))-([spec](https://github.com/rwaldron/exponentiation-operator))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exponentiation operator (<a href="usage.html#experimental">experimental</a>) (<a href="https://github.com/rwaldron/exponentiation-operator">spec</a>)</h2>
+<h2 id="exponentiation-operator-experimental-experimental-md-spec-https-github-com-rwaldron-exponentiation-operator-"><a class="anchor" href="#exponentiation-operator-([experimental](experimental.md))-([spec](https://github.com/rwaldron/exponentiation-operator))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exponentiation operator (<a href="experimental.html">experimental</a>) (<a href="https://github.com/rwaldron/exponentiation-operator">spec</a>)</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span>;
 a **= <span class="hljs-number">2</span>;
 
@@ -175,7 +179,7 @@ a **= <span class="hljs-number">2</span>;
   <span class="hljs-built_in">console</span>.log(n);
 }
 </code></pre>
-<h2 id="generator-comprehensions-experimental-usage-md-experimental-"><a class="anchor" href="#generator-comprehensions-([experimental](usage.md#experimental))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generator comprehensions (<a href="usage.html#experimental">experimental</a>)</h2>
+<h2 id="generator-comprehensions-experimental-experimental-md-"><a class="anchor" href="#generator-comprehensions-([experimental](experimental.md))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generator comprehensions (<a href="experimental.html">experimental</a>)</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> nums = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];
 <span class="hljs-keyword">var</span> multiples = (<span class="hljs-keyword">for</span> (i of nums) <span class="hljs-keyword">if</span> (i % <span class="hljs-number">2</span>) i * i);
 assert.equal(multiples.next().value, <span class="hljs-number">1</span>);
@@ -204,7 +208,7 @@ export <span class="hljs-keyword">default</span> test;
 <pre><code class="lang-javascript"><span class="hljs-number">0</span>b111110111 === <span class="hljs-number">503</span>; <span class="hljs-comment">// true</span>
 <span class="hljs-number">0</span>o767 === <span class="hljs-number">503</span>; <span class="hljs-comment">// true</span>
 </code></pre>
-<h2 id="object-spread-rest-experimental-usage-md-experimental-spec-https-github-com-sebmarkbage-ecmascript-rest-spread-"><a class="anchor" href="#object-spread/rest-([experimental](usage.md#experimental))-([spec](https://github.com/sebmarkbage/ecmascript-rest-spread))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object spread/rest (<a href="usage.html#experimental">experimental</a>) (<a href="https://github.com/sebmarkbage/ecmascript-rest-spread">spec</a>)</h2>
+<h2 id="object-spread-rest-experimental-experimental-md-spec-https-github-com-sebmarkbage-ecmascript-rest-spread-"><a class="anchor" href="#object-spread/rest-([experimental](experimental.md))-([spec](https://github.com/sebmarkbage/ecmascript-rest-spread))" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object spread/rest (<a href="experimental.html">experimental</a>) (<a href="https://github.com/sebmarkbage/ecmascript-rest-spread">spec</a>)</h2>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> n = { x, y, ...z };
 <span class="hljs-keyword">var</span> { x, y, ...z } = { x: <span class="hljs-number">1</span>, y: <span class="hljs-number">2</span>, a: <span class="hljs-number">3</span>, b: <span class="hljs-number">4</span> };
 </code></pre>
@@ -258,7 +262,7 @@ f(...[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<spa
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.15.0</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.0.0</p>
       </footer>
     </div>
   </body>

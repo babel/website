@@ -56,91 +56,47 @@ to5.transform(<span class="hljs-string">'import "foo";'</span>, { modules: <span
 <ul>
 <li><a href="#amd">AMD</a></li>
 <li><a href="#common-default">Common (Default)</a></li>
-<li><a href="#common-interop">Common Interop</a></li>
 <li><a href="#ignore">Ignore</a></li>
 <li><a href="#system">System</a></li>
 <li><a href="#umd">UMD</a></li>
 </ul>
-<h3 id="common-default-"><a class="anchor" href="#common-(default)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common (Default)</h3>
+<h3 id="common"><a class="anchor" href="#common" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common</h3>
 <pre><code class="lang-sh">$ 6to5 --modules common
 </code></pre>
 <p><strong>In</strong></p>
-<pre><code class="lang-javascript">import <span class="hljs-string">"foo"</span>;
+<pre><code class="lang-javascript">export <span class="hljs-keyword">default</span> test;
+
+export {test};
+export <span class="hljs-keyword">var</span> test = <span class="hljs-number">5</span>;
+
+import <span class="hljs-string">"foo"</span>;
 
 import foo from <span class="hljs-string">"foo"</span>;
 import * as foo from <span class="hljs-string">"foo"</span>;
 
 import {bar} from <span class="hljs-string">"foo"</span>;
 import {foo as bar} from <span class="hljs-string">"foo"</span>;
-
-export {test};
-export <span class="hljs-keyword">var</span> test = <span class="hljs-number">5</span>;
-
-export <span class="hljs-keyword">default</span> test;
 </code></pre>
 <p><strong>Out</strong></p>
-<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>);
+<pre><code class="lang-javascript"><span class="hljs-pi">"use strict"</span>;
 
-<span class="hljs-keyword">var</span> foo = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>).default;
-<span class="hljs-keyword">var</span> foo = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>);
-
-<span class="hljs-keyword">var</span> bar = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>).bar;
-<span class="hljs-keyword">var</span> bar = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>).foo;
-
-exports.test = test;
-<span class="hljs-keyword">var</span> test = <span class="hljs-number">5</span>; exports.test = test;
-
-exports.default = test;
-</code></pre>
-<h3 id="common-interop"><a class="anchor" href="#common-interop" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common interop</h3>
-<pre><code class="lang-sh">$ 6to5 --modules commonInterop
-</code></pre>
-<p><strong>In</strong></p>
-<pre><code class="lang-javascript">import <span class="hljs-string">"foo"</span>;
-
-import foo from <span class="hljs-string">"foo"</span>;
-import * as foo from <span class="hljs-string">"foo"</span>;
-
-import {bar} from <span class="hljs-string">"foo"</span>;
-import {foo as bar} from <span class="hljs-string">"foo"</span>;
-
-export {test};
-export <span class="hljs-keyword">var</span> test = <span class="hljs-number">5</span>;
-
-export <span class="hljs-keyword">default</span> test;
-</code></pre>
-<p><strong>Out</strong></p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> _interopRequire = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(obj)</span> </span>{
+<span class="hljs-keyword">var</span> _interopRequire = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(obj)</span> </span>{
   <span class="hljs-keyword">return</span> obj &amp;&amp; (obj[<span class="hljs-string">"default"</span>] || obj);
 };
 
-<span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>);
-
-<span class="hljs-keyword">var</span> foo = _interopRequire(<span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>));
-<span class="hljs-keyword">var</span> foo = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>);
-
-<span class="hljs-keyword">var</span> bar = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>).bar;
-<span class="hljs-keyword">var</span> bar = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>).foo;
+exports = <span class="hljs-built_in">module</span>.exports = test;
 
 exports.test = test;
 <span class="hljs-keyword">var</span> test = exports.test = <span class="hljs-number">5</span>;
 
-exports[<span class="hljs-string">"default"</span>] = test;
-</code></pre>
-<h4 id="module-exports-behaviour"><a class="anchor" href="#module.exports-behaviour" aria-hidden="true"><span class="octicon octicon-link"></span></a>module.exports behaviour</h4>
-<p>If there exist no other non-default <code>export</code>s then <code>default exports</code> are
-exported as <code>module.exports</code> instead of <code>exports.default</code>.</p>
-<p><strong>In</strong></p>
-<pre><code class="lang-javascript">export <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span> </span>{
+<span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>);
 
-}
-</code></pre>
-<p><strong>Out</strong></p>
-<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = foo;
+<span class="hljs-keyword">var</span> foo = _interopRequire(<span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>));
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span> </span>{
+<span class="hljs-keyword">var</span> foo = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>);
 
-}
+<span class="hljs-keyword">var</span> bar = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>).bar;
+<span class="hljs-keyword">var</span> bar = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>).foo;
 </code></pre>
 <h3 id="amd"><a class="anchor" href="#amd" aria-hidden="true"><span class="octicon octicon-link"></span></a>AMD</h3>
 <pre><code class="lang-sh">$ 6to5 --modules amd
@@ -154,9 +110,14 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
 </code></pre>
 <p><strong>Out</strong></p>
 <pre><code class="lang-javascript">define([<span class="hljs-string">"exports"</span>, <span class="hljs-string">"foo"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exports, _foo)</span> </span>{
-  exports.bar = bar;
+<span class="hljs-pi">  "use strict"</span>;
 
-  <span class="hljs-keyword">var</span> foo = _foo.default;
+  <span class="hljs-keyword">var</span> _interopRequire = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(obj)</span> </span>{
+    <span class="hljs-keyword">return</span> obj &amp;&amp; (obj[<span class="hljs-string">"default"</span>] || obj);
+  };
+
+  exports.bar = bar;
+  <span class="hljs-keyword">var</span> foo = _interopRequire(_foo);
 
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">return</span> foo(<span class="hljs-string">"foobar"</span>);
@@ -183,10 +144,15 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> exports !== <span class="hljs-string">"undefined"</span>) {
     factory(exports, <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>));
   }
-})(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exports)</span> </span>{
-  exports.bar = bar;
+})(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exports, _foo)</span> </span>{
+<span class="hljs-pi">  "use strict"</span>;
 
-  <span class="hljs-keyword">var</span> foo = _foo.default;
+  <span class="hljs-keyword">var</span> _interopRequire = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(obj)</span> </span>{
+    <span class="hljs-keyword">return</span> obj &amp;&amp; (obj[<span class="hljs-string">"default"</span>] || obj);
+  };
+
+  exports.bar = bar;
+  <span class="hljs-keyword">var</span> foo = _interopRequire(_foo);
 
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">return</span> foo(<span class="hljs-string">"foobar"</span>);
@@ -254,7 +220,7 @@ ModuleFormatter.prototype.transform = <span class="hljs-function"><span class="h
   <span class="hljs-comment">// feel free to modify this however</span>
 };
 
-ModuleFormatter.prototype.import = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(node, nodes)</span> </span>{
+ModuleFormatter.prototype.importDeclaration = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(node, nodes)</span> </span>{
   <span class="hljs-comment">// node is an ImportDeclaration</span>
 };
 
@@ -263,7 +229,7 @@ ModuleFormatter.prototype.importSpecifier = <span class="hljs-function"><span cl
   <span class="hljs-comment">// node is an ImportDeclaration</span>
 };
 
-ModuleFormatter.prototype.export = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(node, nodes)</span> </span>{
+ModuleFormatter.prototype.exportDeclaration = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(node, nodes)</span> </span>{
   <span class="hljs-comment">// node is an ExportDeclaration</span>
 };
 
@@ -278,7 +244,7 @@ ModuleFormatter.prototype.exportSpecifier = <span class="hljs-function"><span cl
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v1.15.0</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.0.0</p>
       </footer>
     </div>
   </body>
