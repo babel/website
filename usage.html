@@ -233,7 +233,11 @@ override this by passing an ignore regex via:</p>
 
   <span class="hljs-comment">// This will remove the currently hooked extensions of .es6 and .js so you'll</span>
   <span class="hljs-comment">// have to add them back if you want them to be used again.</span>
-  extensions: [<span class="hljs-string">".js"</span>, <span class="hljs-string">".es6"</span>]
+  extensions: [<span class="hljs-string">".js"</span>, <span class="hljs-string">".es6"</span>],
+
+  <span class="hljs-comment">// Enables `roadrunner` cache that will save to a `.roadrunner.json` file in your cwd</span>
+  <span class="hljs-comment">// Do not check this into git as it's user-specific</span>
+  cache: <span class="hljs-literal">true</span>
 });
 </code></pre>
 
@@ -242,7 +246,7 @@ override this by passing an ignore regex via:</p>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.0.4</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.1.0</p>
       </footer>
     </div>
   </body>
