@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" class="page-tour">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tour · 6to5</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <nav role="navigation" id="header" class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="index.html" class="navbar-brand logo"><span class="logo-six">6</span>to<span class="logo-five">5</span></a>
+        </div>
+        <div id="navigation" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="tour.html">Tour</a></li>
+            <li><a href="usage.html">Usage</a></li>
+            <li><a href="compare.html">Compare</a></li>
+            <li><a href="caveats.html">Caveats</a></li>
+            <li><a href="plugins.html">Plugins</a></li>
+            <li><a href="repl.html">REPL</a></li>
+            <li><a href="https://gitter.im/6to5/6to5">Support</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/6to5/6to5">Github</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="page-header">
+      <div class="container">
+        <h1>Tour</h1>
+        <p>A detailed overview of ECMAScript 6 features.</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-md-push-9">
+          <div class="sidebar">
+            <ul class="nav">
+              <li><a href="#arrows">Arrows</a></li>
+              <li><a href="#classes">Classes</a></li>
+              <li><a href="#enhanced-object-literals">Enhanced Object Literals</a></li>
+              <li><a href="#template-strings">Template Strings</a></li>
+              <li><a href="#destructuring">Destructuring</a></li>
+              <li><a href="#default-rest-spread">Default + Rest + Spread</a></li>
+              <li><a href="#let-const">Let + Const</a></li>
+              <li><a href="#iterators-for-of">Iterators + For..Of</a></li>
+              <li><a href="#generators">Generators</a></li>
+              <li><a href="#comprehensions">Comprehensions</a></li>
+              <li><a href="#unicode">Unicode</a></li>
+              <li><a href="#modules">Modules</a></li>
+              <li><a href="#module-loaders">Module Loaders</a></li>
+              <li><a href="#map-set-weakmap-weakset">Map + Set + WeakMap + WeakSet</a></li>
+              <li><a href="#proxies">Proxies</a></li>
+              <li><a href="#symbols">Symbols</a></li>
+              <li><a href="#subclassable-built-ins">Subclassable Built-ins</a></li>
+              <li><a href="#math-number-string-object-apis">Math + Number + String + Object APIs</a></li>
+              <li><a href="#binary-and-octal-literals">Binary and Octal Literals</a></li>
+              <li><a href="#promises">Promises</a></li>
+              <li><a href="#reflect-api">Reflect Api</a></li>
+              <li><a href="#tail-calls">Tail Calls</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9 col-md-pull-3 page-content"><blockquote>
+<p>This document is taken from Luke Hoban&#39;s excellent
+<a href="http://git.io/es6features">es6features</a> repo. Go give it a star on GitHub!</p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>ECMAScript 6 is the upcoming version of the ECMAScript standard.  This standard is targeting ratification in June 2015.  ES6 is a significant update to the language, and the first update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is <a href="http://kangax.github.io/es5-compat-table/es6/">underway now</a>.</p>
+<p>See the <a href="https://people.mozilla.org/~jorendorff/es6-draft.html">draft ES6 standard</a> for full specification of the ECMAScript 6 language.</p>
+<h2 id="ecmascript-6-features">ECMAScript 6 Features</h2>
+<h3 id="arrows">Arrows</h3>
+<p>Arrows are a function shorthand using the <code>=&gt;</code> syntax.  They are syntactically similar to the related feature in C#, Java 8 and CoffeeScript.  They support both expression and statement bodies.  Unlike functions, arrows share the same lexical <code>this</code> as their surrounding code.</p>
+<pre><code class="lang-JavaScript">// Expression bodies
+var odds = evens.map(v =&gt; v + 1);
+var nums = evens.map((v, i) =&gt; v + i);
+
+// Statement bodies
+nums.forEach(v =&gt; {
+  if (v % 5 === 0)
+    fives.push(v);
+});
+
+// Lexical this
+var bob = {
+  _name: &quot;Bob&quot;,
+  _friends: [],
+  printFriends() {
+    this._friends.forEach(f =&gt;
+      console.log(this._name + &quot; knows &quot; + f));
+  }
+}
+</code></pre>
+<h3 id="classes">Classes</h3>
+<p>ES6 classes are a simple sugar over the prototype-based OO pattern.  Having a single convenient declarative form makes class patterns easier to use, and encourages interoperability.  Classes support prototype-based inheritance, super calls, instance and static methods and constructors.</p>
+<pre><code class="lang-JavaScript">class SkinnedMesh extends THREE.Mesh {
+  constructor(geometry, materials) {
+    super(geometry, materials);
+
+    this.idMatrix = SkinnedMesh.defaultMatrix();
+    this.bones = [];
+    this.boneMatrices = [];
+    //...
+  }
+  update(camera) {
+    //...
+    super.update();
+  }
+  static defaultMatrix() {
+    return new THREE.Matrix4();
+  }
+}
+</code></pre>
+<h3 id="enhanced-object-literals">Enhanced Object Literals</h3>
+<p>Object literals are extended to support setting the prototype at construction, shorthand for <code>foo: foo</code> assignments, defining methods and making super calls.  Together, these also bring object literals and class declarations closer together, and let object-based design benefit from some of the same conveniences.</p>
+<pre><code class="lang-JavaScript">var obj = {
+    // __proto__
+    __proto__: theProtoObj,
+    // Shorthand for ‘handler: handler’
+    handler,
+    // Methods
+    toString() {
+     // Super calls
+     return &quot;d &quot; + super.toString();
+    },
+    // Computed (dynamic) property names
+    [ &#39;prop_&#39; + (() =&gt; 42)() ]: 42
+};
+</code></pre>
+<h3 id="template-strings">Template Strings</h3>
+<p>Template strings provide syntactic sugar for constructing strings.  This is similar to string interpolation features in Perl, Python and more.  Optionally, a tag can be added to allow the string construction to be customized, avoiding injection attacks or constructing higher level data structures from string contents.</p>
+<pre><code class="lang-JavaScript">// Basic literal string creation
+`In JavaScript &#39;\n&#39; is a line-feed.`
+
+// Multiline strings
+`In JavaScript this is
+ not legal.`
+
+// Construct a DOM query
+var name = &quot;Bob&quot;, time = &quot;today&quot;;
+`Hello ${name}, how are you ${time}?`
+
+// Construct an HTTP request prefix is used to interpret the replacements and construction
+GET`http://foo.org/bar?a=${a}&amp;b=${b}
+    Content-Type: application/json
+    X-Credentials: ${credentials}
+    { &quot;foo&quot;: ${foo},
+      &quot;bar&quot;: ${bar}}`(myOnReadyStateChangeHandler);
+</code></pre>
+<h3 id="destructuring">Destructuring</h3>
+<p>Destructuring allows binding using pattern matching, with support for matching arrays and objects.  Destructuring is fail-soft, similar to standard object lookup <code>foo[&quot;bar&quot;]</code>, producing <code>undefined</code> values when not found.</p>
+<pre><code class="lang-JavaScript">// list matching
+var [a, , b] = [1,2,3];
+
+// object matching
+var { op: a, lhs: { op: b }, rhs: c }
+       = getASTNode()
+
+// object matching shorthand
+// binds `op`, `lhs` and `rhs` in scope
+var {op, lhs, rhs} = getASTNode()
+
+// Can be used in parameter position
+function g({name: x}) {
+  console.log(x);
+}
+g({name: 5})
+
+// Fail-soft destructuring
+var [a] = [];
+a === undefined;
+
+// Fail-soft destructuring with defaults
+var [a = 1] = [];
+a === 1;
+</code></pre>
+<h3 id="default-rest-spread">Default + Rest + Spread</h3>
+<p>Callee-evaluated default parameter values.  Turn an array into consecutive arguments in a function call.  Bind trailing parameters to an array.  Rest replaces the need for <code>arguments</code> and addresses common cases more directly.</p>
+<pre><code class="lang-JavaScript">function f(x, y=12) {
+  // y is 12 if not passed (or passed as undefined)
+  return x + y;
+}
+f(3) == 15
+</code></pre>
+<pre><code class="lang-JavaScript">function f(x, ...y) {
+  // y is an Array
+  return x * y.length;
+}
+f(3, &quot;hello&quot;, true) == 6
+</code></pre>
+<pre><code class="lang-JavaScript">function f(x, y, z) {
+  return x + y + z;
+}
+// Pass each elem of array as argument
+f(...[1,2,3]) == 6
+</code></pre>
+<h3 id="let-const">Let + Const</h3>
+<p>Block-scoped binding constructs.  <code>let</code> is the new <code>var</code>.  <code>const</code> is single-assignment.  Static restrictions prevent use before assignment.</p>
+<pre><code class="lang-JavaScript">function f() {
+  {
+    let x;
+    {
+      // okay, block scoped name
+      const x = &quot;sneaky&quot;;
+      // error, const
+      x = &quot;foo&quot;;
+    }
+    // error, already declared in block
+    let x = &quot;inner&quot;;
+  }
+}
+</code></pre>
+<h3 id="iterators-for-of">Iterators + For..Of</h3>
+<p>Iterator objects enable custom iteration like CLR IEnumerable or Java Iteratable.  Generalize <code>for..in</code> to custom iterator-based iteration with <code>for..of</code>.  Don’t require realizing an array, enabling lazy design patterns like LINQ.</p>
+<pre><code class="lang-JavaScript">let fibonacci = {
+  [Symbol.iterator]() {
+    let pre = 0, cur = 1;
+    return {
+      next() {
+        [pre, cur] = [cur, pre + cur];
+        return { done: false, value: cur }
+      }
+    }
+  }
+}
+
+for (var n of fibonacci) {
+  // truncate the sequence at 1000
+  if (n &gt; 1000)
+    break;
+  print(n);
+}
+</code></pre>
+<p>Iteration is based on these duck-typed interfaces (using <a href="http://typescriptlang.org">TypeScript</a> type syntax for exposition only):</p>
+<pre><code class="lang-TypeScript">interface IteratorResult {
+  done: boolean;
+  value: any;
+}
+interface Iterator {
+  next(): IteratorResult;
+}
+interface Iterable {
+  [Symbol.iterator](): Iterator
+}
+</code></pre>
+<h3 id="generators">Generators</h3>
+<p>Generators simplify iterator-authoring using <code>function*</code> and <code>yield</code>.  A function declared as function* returns a Generator instance.  Generators are subtypes of iterators which include additional  <code>next</code> and <code>throw</code>.  These enable values to flow back into the generator, so <code>yield</code> is an expression form which returns a value (or throws).</p>
+<p>Note: Can also be used to enable ‘await’-like async programming, see also ES7 <code>await</code> proposal.</p>
+<pre><code class="lang-JavaScript">var fibonacci = {
+  [Symbol.iterator]: function*() {
+    var pre = 0, cur = 1;
+    for (;;) {
+      var temp = pre;
+      pre = cur;
+      cur += temp;
+      yield cur;
+    }
+  }
+}
+
+for (var n of fibonacci) {
+  // truncate the sequence at 1000
+  if (n &gt; 1000)
+    break;
+  print(n);
+}
+</code></pre>
+<p>The generator interface is (using <a href="http://typescriptlang.org">TypeScript</a> type syntax for exposition only):</p>
+<pre><code class="lang-TypeScript">interface Generator extends Iterator {
+    next(value?: any): IteratorResult;
+    throw(exception: any);
+}
+</code></pre>
+<h3 id="comprehensions">Comprehensions</h3>
+<p>Array and generator comprehensions provide simple declarative list processing similar as used in many functional programming patterns.</p>
+<pre><code class="lang-JavaScript">// Array comprehensions
+var results = [
+  for(c of customers)
+    if (c.city == &quot;Seattle&quot;)
+      { name: c.name, age: c.age }
+]
+
+// Generator comprehensions
+var results = (
+  for(c of customers)
+    if (c.city == &quot;Seattle&quot;)
+      { name: c.name, age: c.age }
+)
+</code></pre>
+<h3 id="unicode">Unicode</h3>
+<p>Non-breaking additions to support full Unicode, including new unicode literal form in strings and new RegExp <code>u</code> mode to handle code points, as well as new APIs to process strings at the 21bit code points level.  These additions support building global apps in JavaScript.</p>
+<pre><code class="lang-JavaScript">// same as ES5.1
+&quot;𠮷&quot;.length == 2
+
+// new RegExp behaviour, opt-in ‘u’
+&quot;𠮷&quot;.match(/./u)[0].length == 2
+
+// new form
+&quot;\u{20BB7}&quot;==&quot;𠮷&quot;==&quot;\uD842\uDFB7&quot;
+
+// new String ops
+&quot;𠮷&quot;.codePointAt(0) == 0x20BB7
+
+// for-of iterates code points
+for(var c of &quot;𠮷&quot;) {
+  console.log(c);
+}
+</code></pre>
+<h3 id="modules">Modules</h3>
+<p>Language-level support for modules for component definition.  Codifies patterns from popular JavaScript module loaders (AMD, CommonJS). Runtime behaviour defined by a host-defined default loader.  Implicitly async model – no code executes until requested modules are available and processed.</p>
+<pre><code class="lang-JavaScript">// lib/math.js
+export function sum(x, y) {
+  return x + y;
+}
+export var pi = 3.141593;
+</code></pre>
+<pre><code class="lang-JavaScript">// app.js
+module math from &quot;lib/math&quot;;
+alert(&quot;2π = &quot; + math.sum(math.pi, math.pi));
+</code></pre>
+<pre><code class="lang-JavaScript">// otherApp.js
+import {sum, pi} from &quot;lib/math&quot;;
+alert(&quot;2π = &quot; + sum(pi, pi));
+</code></pre>
+<p>Some additional features include <code>export default</code> and <code>export *</code>:</p>
+<pre><code class="lang-JavaScript">// lib/mathplusplus.js
+export * from &quot;lib/math&quot;;
+export var e = 2.71828182846;
+export default function(x) {
+    return Math.exp(x);
+}
+</code></pre>
+<pre><code class="lang-JavaScript">// app.js
+module math from &quot;lib/mathplusplus&quot;;
+import exp from &quot;lib/mathplusplus&quot;;
+alert(&quot;2π = &quot; + exp(math.pi, math.e));
+</code></pre>
+<h3 id="module-loaders">Module Loaders</h3>
+<p>Module loaders support:</p>
+<ul>
+<li>Dynamic loading</li>
+<li>State isolation</li>
+<li>Global namespace isolation</li>
+<li>Compilation hooks</li>
+<li>Nested virtualization</li>
+</ul>
+<p>The default module loader can be configured, and new loaders can be constructed to evaluated and load code in isolated or constrained contexts.</p>
+<pre><code class="lang-JavaScript">// Dynamic loading – ‘System’ is default loader
+System.import(&#39;lib/math&#39;).then(function(m) {
+  alert(&quot;2π = &quot; + m.sum(m.pi, m.pi));
+});
+
+// Create execution sandboxes – new Loaders
+var loader = new Loader({
+  global: fixup(window) // replace ‘console.log’
+});
+loader.eval(&quot;console.log(&#39;hello world!&#39;);&quot;);
+
+// Directly manipulate module cache
+System.get(&#39;jquery&#39;);
+System.set(&#39;jquery&#39;, Module({$: $})); // WARNING: not yet finalized
+</code></pre>
+<h3 id="map-set-weakmap-weakset">Map + Set + WeakMap + WeakSet</h3>
+<p>Efficient data structures for common algorithms.  WeakMaps provides leak-free object-key’d side tables.</p>
+<pre><code class="lang-JavaScript">// Sets
+var s = new Set();
+s.add(&quot;hello&quot;).add(&quot;goodbye&quot;).add(&quot;hello&quot;);
+s.size === 2;
+s.has(&quot;hello&quot;) === true;
+
+// Maps
+var m = new Map();
+m.set(&quot;hello&quot;, 42);
+m.set(s, 34);
+m.get(s) == 34;
+
+// Weak Maps
+var wm = new WeakMap();
+wm.set(s, { extra: 42 });
+wm.size === undefined
+
+// Weak Sets
+var ws = new WeakSet();
+ws.add({ data: 42 });
+// Because the added object has no other references, it will not be held in the set
+</code></pre>
+<h3 id="proxies">Proxies</h3>
+<p>Proxies enable creation of objects with the full range of behaviors available to host objects.  Can be used for interception, object virtualization, logging/profiling, etc.</p>
+<pre><code class="lang-JavaScript">// Proxying a normal object
+var target = {};
+var handler = {
+  get: function (receiver, name) {
+    return `Hello, ${name}!`;
+  }
+};
+
+var p = new Proxy(target, handler);
+p.world === &#39;Hello, world!&#39;;
+</code></pre>
+<pre><code class="lang-JavaScript">// Proxying a function object
+var target = function () { return &#39;I am the target&#39;; };
+var handler = {
+  apply: function (receiver, ...args) {
+    return &#39;I am the proxy&#39;;
+  }
+};
+
+var p = new Proxy(target, handler);
+p() === &#39;I am the proxy&#39;;
+</code></pre>
+<p>There are traps available for all of the runtime-level meta-operations:</p>
+<pre><code class="lang-JavaScript">var handler =
+{
+  get:...,
+  set:...,
+  has:...,
+  deleteProperty:...,
+  apply:...,
+  construct:...,
+  getOwnPropertyDescriptor:...,
+  defineProperty:...,
+  getPrototypeOf:...,
+  setPrototypeOf:...,
+  enumerate:...,
+  ownKeys:...,
+  preventExtensions:...,
+  isExtensible:...
+}
+</code></pre>
+<h3 id="symbols">Symbols</h3>
+<p>Symbols enable access control for object state.  Symbols allow properties to be keyed by either <code>string</code> (as in ES5) or <code>symbol</code>.  Symbols are a new primitive type. Optional <code>name</code> parameter used in debugging - but is not part of identity.  Symbols are unique (like gensym), but not private since they are exposed via reflection features like <code>Object.getOwnPropertySymbols</code>.</p>
+<pre><code class="lang-JavaScript">(function() {
+
+  // module scoped symbol
+  var key = Symbol(&quot;key&quot;);
+
+  function MyClass(privateData) {
+    this[key] = privateData;
+  }
+
+  MyClass.prototype = {
+    doStuff: function() {
+      ... this[key] ...
+    }
+  };
+
+})();
+
+var c = new MyClass(&quot;hello&quot;)
+c[&quot;key&quot;] === undefined
+</code></pre>
+<h3 id="subclassable-built-ins">Subclassable Built-ins</h3>
+<p>In ES6, built-ins like <code>Array</code>, <code>Date</code> and DOM <code>Element</code>s can be subclassed.</p>
+<p>Object construction for a function named <code>Ctor</code> now uses two-phases (both virtually dispatched):</p>
+<ul>
+<li>Call <code>Ctor[@@create]</code> to allocate the object, installing any special behavior</li>
+<li>Invoke constructor on new instance to initialize</li>
+</ul>
+<p>The known <code>@@create</code> symbol is available via <code>Symbol.create</code>.  Built-ins now expose their <code>@@create</code> explicitly.</p>
+<pre><code class="lang-JavaScript">// Pseudo-code of Array
+class Array {
+    constructor(...args) { /* ... */ }
+    static [Symbol.create]() {
+        // Install special [[DefineOwnProperty]]
+        // to magically update &#39;length&#39;
+    }
+}
+
+// User code of Array subclass
+class MyArray extends Array {
+    constructor(...args) { super(...args); }
+}
+
+// Two-phase &#39;new&#39;:
+// 1) Call @@create to allocate object
+// 2) Invoke constructor on new instance
+var arr = new MyArray();
+arr[1] = 12;
+arr.length == 2
+</code></pre>
+<h3 id="math-number-string-object-apis">Math + Number + String + Object APIs</h3>
+<p>Many new library additions, including core Math libraries, Array conversion helpers, and Object.assign for copying.</p>
+<pre><code class="lang-JavaScript">Number.EPSILON
+Number.isInteger(Infinity) // false
+Number.isNaN(&quot;NaN&quot;) // false
+
+Math.acosh(3) // 1.762747174039086
+Math.hypot(3, 4) // 5
+Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2) // 2
+
+&quot;abcde&quot;.contains(&quot;cd&quot;) // true
+&quot;abc&quot;.repeat(3) // &quot;abcabcabc&quot;
+
+Array.from(document.querySelectorAll(&#39;*&#39;)) // Returns a real Array
+Array.of(1, 2, 3) // Similar to new Array(...), but without special one-arg behavior
+[0, 0, 0].fill(7, 1) // [0,7,7]
+[1,2,3].findIndex(x =&gt; x == 2) // 1
+[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].entries() // iterator [0, &quot;a&quot;], [1,&quot;b&quot;], [2,&quot;c&quot;]
+[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].keys() // iterator 0, 1, 2
+[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].values() // iterator &quot;a&quot;, &quot;b&quot;, &quot;c&quot;
+
+Object.assign(Point, { origin: new Point(0,0) })
+</code></pre>
+<h3 id="binary-and-octal-literals">Binary and Octal Literals</h3>
+<p>Two new numeric literal forms are added for binary (<code>b</code>) and octal (<code>o</code>).</p>
+<pre><code class="lang-JavaScript">0b111110111 === 503 // true
+0o767 === 503 // true
+</code></pre>
+<h3 id="promises">Promises</h3>
+<p>Promises are a library for asynchronous programming.  Promises are a first class representation of a value that may be made available in the future.  Promises are used in many existing JavaScript libraries.</p>
+<pre><code class="lang-JavaScript">function timeout(duration = 0) {
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(resolve, duration);
+    })
+}
+
+var p = timeout(1000).then(() =&gt; {
+    return timeout(2000);
+}).then(() =&gt; {
+    throw new Error(&quot;hmm&quot;);
+}).catch(err =&gt; {
+    return Promise.all([timeout(100), timeout(200)]);
+})
+</code></pre>
+<h3 id="reflect-api">Reflect API</h3>
+<p>Full reflection API exposing the runtime-level meta-operations on objects.  This is effectively the inverse of the Proxy API, and allows making calls corresponding to the same meta-operations as the proxy traps.  Especially useful for implementing proxies.</p>
+<pre><code class="lang-JavaScript">// No sample yet
+</code></pre>
+<h3 id="tail-calls">Tail Calls</h3>
+<p>Calls in tail-position are guaranteed to not grow the stack unboundedly.  Makes recursive algorithms safe in the face of unbounded inputs.</p>
+<pre><code class="lang-JavaScript">function factorial(n, acc = 1) {
+    &#39;use strict&#39;;
+    if (n &lt;= 1) return acc;
+    return factorial(n - 1, n * acc);
+}
+
+// Stack overflow in most implementations today,
+// but safe on arbitrary inputs in eS6
+factorial(100000)
+</code></pre>
+
+        </div>
+      </div>
+    </div>
+    <div class="footer text-center"><p><a href="https://github.com/6to5/6to5">6to5</a> v1.15.0 · Distributed under MIT License</p>
+
+    </div>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="scripts.js"></script>
+  </body>
+</html>
