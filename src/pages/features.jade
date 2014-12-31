@@ -20,30 +20,32 @@ block content
 
           Formatting is retained if possible so your generated code is as similar as possible.
 
-      .col-md-4
-        pre: code.
-          class User extends Model {
-            constructor() {
-              super();
+      .col-md-4.col-sm-6
+        pre: code
+          :highlight
+            class User extends Model {
+              constructor() {
+                super();
+                this.sayHello();
+              }
+
+              sayHello() {
+                alert("Hello World!");
+              }
+            }
+      .col-md-4.col-sm-6
+        pre: code
+          :highlight
+            var User = function User() {
+              Model.call(this);
               this.sayHello();
-            }
+            };
 
-            sayHello() {
+            _extends(User, Model);
+
+            User.prototype.sayHello = function () {
               alert("Hello World!");
-            }
-          }
-      .col-md-4
-        pre: code.
-          var User = function User() {
-            Model.call(this);
-            this.sayHello();
-          };
-
-          _extends(User, Model);
-
-          User.prototype.sayHello = function () {
-            alert("Hello World!");
-          };
+            };
 
     hr.featurette-divider
 
@@ -54,10 +56,10 @@ block content
 
           With a large range of [plugins](plugins.html) and browser support.
 
-      .col-md-4.col-md-pull-4
+      .col-md-4.col-md-pull-4.col-sm-6
         img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
 
-      .col-md-4.col-md-pull-4
+      .col-md-4.col-md-pull-4.col-sm-6
         img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
 
     hr.featurette-divider
@@ -69,30 +71,8 @@ block content
 
           **Source map** support so you can debug your compiled code with ease.
 
-      .col-md-4
-        pre: code.
-          class User extends Model {
-            constructor() {
-              super();
-              this.sayHello();
-            }
-
-            sayHello() {
-              alert("Hello World!");
-            }
-          }
-      .col-md-4
-        pre: code.
-          var User = function User() {
-            Model.call(this);
-            this.sayHello();
-          };
-
-          _extends(User, Model);
-
-          User.prototype.sayHello = function () {
-            alert("Hello World!");
-          };
+      .col-md-8
+        img.featurette-image.img-responsive(src="http://placehold.it/1000x300" alt="Generic placeholder image")
 
     hr.featurette-divider
 
@@ -101,10 +81,32 @@ block content
         :markdown
           ## Compact
 
-          Maps directly to the equivalent ES5 with no runtime.*
+          Maps directly to the equivalent ES5 with no runtime.<a href="caveats.html">*</a>
 
-      .col-md-4.col-md-pull-4
-        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+      .col-md-4.col-md-pull-4.col-sm-6
+        pre: code
+          :highlight
+            class User extends Model {
+              constructor() {
+                super();
+                this.sayHello();
+              }
 
-      .col-md-4.col-md-pull-4
-        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+              sayHello() {
+                alert("Hello World!");
+              }
+            }
+
+      .col-md-4.col-md-pull-4.col-sm-6
+        pre: code
+          :highlight
+            var User = function User() {
+              Model.call(this);
+              this.sayHello();
+            };
+
+            _extends(User, Model);
+
+            User.prototype.sayHello = function () {
+              alert("Hello World!");
+            };
