@@ -29,4 +29,17 @@
     font-size: 28px;
     font-weight: 600;
   }
+  
+  &-inverse {
+    background: @to5-yellow;
+    color: @to5-dark-gray;
+
+    h1 {
+      color: inherit;
+    }
+  }
+
+  &-inverse &-brand {
+    color: darken(@to5-yellow, 10%);
+  }
 }

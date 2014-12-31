@@ -4,7 +4,7 @@ block settings
   - var pageClass = 'index';
 
 block content
-  div.jumbotron.text-center
+  .jumbotron.text-center
     span.jumbotron-brand.logo
       span.logo-six 6
       | to
@@ -31,19 +31,113 @@ block content
     hr.featurette-divider
 
     .row.featurette
-      .col-md-12
+      .col-md-4
         :markdown
-          ## Features
+          ## Readable
 
-          Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id
-          ligula porta felis euismod semper. Praesent commodo cursus magna,
-          vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-          commodo.
+          Formatting is retained if possible so your generated code is as similar as possible.
 
-          [Check out all the great features of 6to5 &rarr;](features.html)
+      .col-md-4.col-sm-6
+        pre: code
+          :highlight
+            class User extends Model {
+              constructor() {
+                super();
+                this.sayHello();
+              }
+
+              sayHello() {
+                alert("Hello World!");
+              }
+            }
+      .col-md-4.col-sm-6
+        pre: code
+          :highlight
+            var User = function User() {
+              Model.call(this);
+              this.sayHello();
+            };
+
+            _extends(User, Model);
+
+            User.prototype.sayHello = function () {
+              alert("Hello World!");
+            };
 
     hr.featurette-divider
 
+    .row.featurette
+      .col-md-4.col-md-push-8
+        :markdown
+          ## Extensible
+
+          With a large range of [plugins](plugins.html) and browser support.
+
+      .col-md-4.col-md-pull-4.col-sm-6
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+
+      .col-md-4.col-md-pull-4.col-sm-6
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+
+    hr.featurette-divider
+
+    .row.featurette
+      .col-md-4
+        :markdown
+          ## Lossless
+
+          **Source map** support so you can debug your compiled code with ease.
+
+      .col-md-8
+        img.featurette-image.img-responsive(src="http://placehold.it/1000x300" alt="Generic placeholder image")
+
+    hr.featurette-divider
+
+    .row.featurette
+      .col-md-4.col-md-push-8
+        :markdown
+          ## Compact
+
+          Maps directly to the equivalent ES5 with no runtime.<a href="caveats.html">*</a>
+
+      .col-md-4.col-md-pull-4.col-sm-6
+        pre: code
+          :highlight
+            class User extends Model {
+              constructor() {
+                super();
+                this.sayHello();
+              }
+
+              sayHello() {
+                alert("Hello World!");
+              }
+            }
+
+      .col-md-4.col-md-pull-4.col-sm-6
+        pre: code
+          :highlight
+            var User = function User() {
+              Model.call(this);
+              this.sayHello();
+            };
+
+            _extends(User, Model);
+
+            User.prototype.sayHello = function () {
+              alert("Hello World!");
+            };
+
+  .jumbotron.jumbotron-inverse.text-center
+    span.jumbotron-brand.logo
+      span.logo-six 6
+      | to
+      span.logo-five 5
+    .container-fluid
+      h1 It's time to make the switch.
+      p ES6 is available wherever you JavaScript. So stop making excuses.
+
+  .container
     .row.featurette
       .col-md-8
         :markdown

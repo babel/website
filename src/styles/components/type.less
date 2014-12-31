@@ -1,0 +1,16 @@
+pre {
+  border: none;
+  background: lighten(@gray-lighter, 4%);
+  .box-shadow(none);
+  color: @to5-dark-gray;
+  padding: 1em;
+}
+
+table {
+  &:extend(.table);
+  .table();
+  &:extend(.table-bordered);
+  .table-bordered();
+  &:extend(.table-striped);
+  .table-striped();
+}
