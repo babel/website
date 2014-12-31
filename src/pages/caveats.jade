@@ -1,0 +1,29 @@
+extends ../partials/layout.jade
+
+block settings
+  - var pageTitle = 'Caveats';
+  - var pageClass = 'caveats';
+
+block content
+  .page-header
+    .container
+      .row
+        .col-md-12
+          h1 Caveats
+          p Just some things to keep in mind when using 6to5.
+
+  .container
+    .row
+      .col-md-3.col-md-push-9
+        .sidebar
+          ul.nav
+            li: a(href="#polyfills") Polyfills
+            li: a(href="#es5") ES5
+            li
+              a(href="#internet-explorer") Internet Explorer
+              ul.nav
+                li: a(href="#classes-9-and-below-") Classes (9 and below)
+                li: a(href="#getters-setters-8-and-below-") Getters/setters (8 and below)
+
+      .col-md-9.col-md-pull-3.page-content
+        include:markdown ../content/caveats.md
