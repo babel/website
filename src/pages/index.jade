@@ -29,43 +29,72 @@ block content
           [Get a tour of all the new features in ES6 &rarr;](tour.html)
       
     hr.featurette-divider
-    
-    a.row.featurette(href="usage.html#browsers")
+
+    .row.featurette
+      .col-md-12
+        :markdown
+          ## Features
+
+          Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id
+          ligula porta felis euismod semper. Praesent commodo cursus magna,
+          vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
+          commodo.
+
+          [Check out all the great features of 6to5 &rarr;](features.html)
+
+    hr.featurette-divider
+
+    .row.featurette
       .col-md-8
         :markdown
-          ## Browsers
+          ## [Browsers](usage.html#browsers)
           
           Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id
           ligula porta felis euismod semper. Praesent commodo cursus magna,
           vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
           commodo.
       .col-md-4
-        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300&text=Browsers" alt="Browsers")
     
     hr.featurette-divider
     
-    a.row.featurette(href="usage.html#node")
+    .row.featurette
       .col-md-8.col-md-push-4
         :markdown
-          ## Node.js
+          ## [Node.js](usage.html#node)
 
           Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id
           ligula porta felis euismod semper. Praesent commodo cursus magna,
           vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
           commodo.
       .col-md-4.col-md-pull-8
-        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300&text=Node.js" alt="Node.js")
 
     hr.featurette-divider
 
-    a.row.featurette(href="usage.html#rails")
+    .row.featurette
       .col-md-8
         :markdown
-          ## Rails
+          ## [Rails](usage.html#rails)
+
+          Sprockets 4 will [ship with 6to5 by default](https://github.com/sstephenson/sprockets/pull/682)
+          using the `.es6` file extension. Until then you can use the
+          [Sprockets ES6 Plugin](https://github.com/josh/sprockets-es6) or
+          the [6to5 Ruby Gem](https://github.com/6to5/6to5-ruby).
+
+      .col-md-4
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300&text=Rails" alt="Rails")
+
+    hr.featurette-divider
+
+    .row.featurette
+      .col-md-8.col-md-push-4
+        :markdown
+          ## [Browserify](usage.html#browserify)
 
           Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id
           ligula porta felis euismod semper. Praesent commodo cursus magna,
           vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
           commodo.
-      .col-md-4
-        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+      .col-md-4.col-md-pull-8
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300&text=Browserify" alt="Browserify")
