@@ -27,9 +27,17 @@ block content
           [underway now](http://kangax.github.io/compat-table/es6/).
           
           [Get a tour of all the new features in ES6 &rarr;](tour.html)
-      
-    hr.featurette-divider
 
+  .jumbotron.jumbotron-inverse.text-center
+    span.jumbotron-brand.logo
+      span.logo-six 6
+      | to
+      span.logo-five 5
+    .container-fluid
+      h1 Say Hello to 6to5.
+      p 6to5 turns ES6+ code into vanilla ES5, so you can use next generation features today.
+
+  .container
     .row.featurette
       .col-md-4
         :markdown
@@ -73,11 +81,8 @@ block content
 
           With a large range of [plugins](plugins.html) and browser support.
 
-      .col-md-4.col-md-pull-4.col-sm-6
-        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
-
-      .col-md-4.col-md-pull-4.col-sm-6
-        img.featurette-image.img-responsive(src="http://placehold.it/500x300" alt="Generic placeholder image")
+      .col-md-8.col-md-pull-4
+        img.featurette-image.img-responsive(src="images/benefits-extensible.png" alt="Plugins and Browsers")
 
     hr.featurette-divider
 
@@ -89,7 +94,7 @@ block content
           **Source map** support so you can debug your compiled code with ease.
 
       .col-md-8
-        img.featurette-image.img-responsive(src="http://placehold.it/1000x300" alt="Generic placeholder image")
+        img.featurette-image.img-responsive(src="images/benefits-lossless.png" alt="Lossless Sourcemaps")
 
     hr.featurette-divider
 
@@ -128,6 +133,12 @@ block content
               alert("Hello World!");
             };
 
+    hr.featurette-divider
+
+    .text-center
+      .btn-wrapper
+        a.btn.btn-featured(href="usage.html") Install 6to5
+
   .jumbotron.jumbotron-inverse.text-center
     span.jumbotron-brand.logo
       span.logo-six 6
@@ -139,21 +150,28 @@ block content
 
   .container
     .row.featurette
-      .col-md-8
+      .col-md-4.col-md-push-8.col-sm-6.col-sm-push-6
+        img.featurette-image.img-responsive(src="http://placehold.it/500x300&text=Browsers" alt="Browsers")
+
+      .col-md-8.col-md-pull-4.col-sm-6.col-sm-pull-6
         :markdown
           ## [Browsers](usage.html#browsers)
           
-          Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id
-          ligula porta felis euismod semper. Praesent commodo cursus magna,
-          vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-          commodo.
-      .col-md-4
-        img.featurette-image.img-responsive(src="http://placehold.it/500x300&text=Browsers" alt="Browsers")
+          6to5 has plugins for all of your favorite build systems. Check
+          out the official plugins for [Gulp](https://github.com/6to5/gulp-6to5),
+          [Grunt](https://github.com/6to5/grunt-6to5),
+          [Browserify](https://github.com/6to5/6to5ify),
+          [Webpack](https://github.com/6to5/6to5-loader),
+          [Brocolli](https://github.com/6to5/broccoli-6to5-transpiler),
+          and [many more](plugins.html). You can also use the [built-in CLI](usage.html#cli).
     
     hr.featurette-divider
     
     .row.featurette
-      .col-md-8.col-md-push-4
+      .col-md-4.col-sm-6
+        img.featurette-image.img-responsive(src="images/uses-nodejs.png" alt="Node.js")
+
+      .col-md-8.col-sm-6
         :markdown
           ## [Node.js](usage.html#node)
 
@@ -161,34 +179,40 @@ block content
           ligula porta felis euismod semper. Praesent commodo cursus magna,
           vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
           commodo.
-      .col-md-4.col-md-pull-8
-        img.featurette-image.img-responsive(src="http://placehold.it/500x300&text=Node.js" alt="Node.js")
 
     hr.featurette-divider
 
     .row.featurette
-      .col-md-8
+      .col-md-4.col-md-push-8.col-sm-6.col-sm-push-6
+        img.featurette-image.img-responsive(src="images/uses-rails.png" alt="Rails")
+
+      .col-md-8.col-md-pull-4.col-sm-6.col-sm-pull-6
         :markdown
           ## [Rails](usage.html#rails)
 
           Sprockets 4 will [ship with 6to5 by default](https://github.com/sstephenson/sprockets/pull/682)
           using the `.es6` file extension. Until then you can use the
-          [Sprockets ES6 Plugin](https://github.com/josh/sprockets-es6) or
-          the [6to5 Ruby Gem](https://github.com/6to5/6to5-ruby).
-
-      .col-md-4
-        img.featurette-image.img-responsive(src="http://placehold.it/500x300&text=Rails" alt="Rails")
+          [Sprockets ES6 transform](https://github.com/josh/sprockets-es6) or
+          the [official 6to5 Ruby Gem](https://github.com/6to5/6to5-ruby).
 
     hr.featurette-divider
 
     .row.featurette
-      .col-md-8.col-md-push-4
+      .col-md-4.col-sm-6
+        img.featurette-image.img-responsive(src="images/uses-browserify.png" alt="Browserify")
+
+      .col-md-8.col-sm-6
         :markdown
           ## [Browserify](usage.html#browserify)
 
-          Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id
-          ligula porta felis euismod semper. Praesent commodo cursus magna,
-          vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-          commodo.
-      .col-md-4.col-md-pull-8
-        img.featurette-image.img-responsive(src="http://placehold.it/500x300&text=Browserify" alt="Browserify")
+          6to5 and Browserify get along wonderfully with the
+          [official 6to5ify transform](https://github.com/6to5/6to5ify).
+          6to5 transforms the module syntax to browserify-compatible
+          Common.js modules by default.
+
+    hr.featurette-divider
+
+    .text-center
+      .btn-wrapper.btn-wrapper-lg
+        a.btn.btn-featured(href="tour.html") Learn ES6
+        a.btn.btn-featured(href="usage.html") Install 6to5

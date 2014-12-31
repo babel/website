@@ -1,0 +1,35 @@
+extends ../partials/layout.jade
+
+block settings
+  - var pageTitle = '2015 · The Year of ES6';
+
+block content
+  div.jumbotron.text-center
+    span.jumbotron-brand.logo
+      span.logo-six 6
+      | to
+      span.logo-five 5
+    .container-fluid
+      h1 2015, The Year of ES6.
+      p It's time to hop onto the band wagon for a better web.
+
+  .container
+    .row.featurette
+      .col-md-12
+        :markdown
+          ## Introduction
+
+          ECMAScript 6 is the upcoming version of the ECMAScript standard.
+          This standard is targeting ratification in June 2015. ES6 is a
+          significant update to the language, and the first update to the
+          language since ES5 was standardized in 2009. Implementation of
+          these features in major JavaScript engines is
+          [underway now](http://kangax.github.io/compat-table/es6/).
+
+          [Get a tour of all the new features in ES6 &rarr;](tour.html)
+
+          ## Transpiling
+
+          ES6 will be an excellent upgrade, but browsers and JavaScript
+          Engines have limited support. The solution is to transpile your
+          source code.

@@ -1,18 +1,27 @@
 .jumbotron {
+  margin: 20px 0;
   border-radius: 0;
-  padding: 10em 0;
+  padding: 5em 0;
   position: relative;
   overflow: hidden;
+  
+  .navbar + & {
+    margin-top: 0;
+  }
 
   & &-brand {
     position: absolute;
     z-index: 0;
-    top: 15%;
-    left: 8%;
-    display: block;
-    font-size: 30em;
-    line-height: 1;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) rotate(-9deg);
+    -moz-transform: translate(-50%, -50%) rotate(-9deg);
+    transform: translate(-50%, -50%) rotate(-9deg);
+    margin-top: 0.1em;
+    font-size: 20em;
     color: darken(@jumbotron-bg, 5%);
+    .user-select(none);
+    cursor: default;
   }
 
   * {
@@ -41,5 +50,14 @@
 
   &-inverse &-brand {
     color: darken(@to5-yellow, 10%);
+  }
+
+  @media (min-width: @screen-md-min) {
+    margin: 60px 0;
+    padding: 10em 0;
+
+    & &-brand {
+      font-size: 30em;
+    }
   }
 }

@@ -1,6 +1,5 @@
 .featurette {
   display: block;
-  padding: 20px 0;
 
   h2 {
     font-weight: 600;
@@ -27,7 +26,15 @@
     &:extend(.lead);
   }
 
-  &-divider {
-    margin: 20px 0;
+  img {
+    border-radius: @border-radius-base;
+  }
+
+  @media (min-width: @screen-md-min) {
+    padding: 20px 0;
+
+    &-divider {
+      margin: 20px 0;
+    }
   }
 }

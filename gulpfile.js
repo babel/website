@@ -21,10 +21,16 @@ gulp.task('pages', function() {
     .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('build', ['styles', 'scripts', 'pages']);
+gulp.task('images', function() {
+  return gulp.src('./src/images/**')
+    .pipe(gulp.dest('./dist/images'));
+});
+
+gulp.task('build', ['styles', 'scripts', 'pages', 'images']);
 
 gulp.task('watch', ['build'], function() {
   gulp.watch('./src/**/**.less', ['styles']);
   gulp.watch('./src/**/**.js', ['scripts']);
   gulp.watch('./src/**/**.jade', ['pages']);
+  gulp.watch('./src/images/**', ['images']);
 });
