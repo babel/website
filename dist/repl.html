@@ -55,27 +55,28 @@
           </div>
         </div>
       </form>
-      <pre class="repl-input"><code><span class="hljs-preprocessor"><span class="hljs-keyword">import</span> * as _ from 'lodash';</span>
+      <div class="repl-input">
+        <pre class="editor"><code>import * as _ from 'lodash';
 
 /**
- * @<span class="hljs-keyword">module</span> namespace
- * @<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">namespace</span></span>
+ * @module namespace
+ * @class namespace
  */
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Namespace</span>(</span>) {}
+function Namespace() {}
 
 /**
- * Regex <span class="hljs-keyword">for</span> splitting keypaths into arrays.
+ * Regex for splitting keypaths into arrays.
  *
- * @<span class="hljs-keyword">private</span>
- * @<span class="hljs-keyword">const</span> {RegExp}
+ * @private
+ * @const {RegExp}
  * @type
  */
 var KEYPATH_SPLITTER = /\./g;
 
 /**
- * An internal cache <span class="hljs-keyword">to</span> avoid calculating a keypath more than once.
+ * An internal cache to avoid calculating a keypath more than once.
  *
- * @<span class="hljs-keyword">private</span>
+ * @private
  * @type {Object}
  */
 
@@ -84,90 +85,6 @@ var _keypaths = {};
 _.extend(Namespace.prototype, {
 
   /**
-   * Adds a definition <span class="hljs-keyword">to</span> the namespace object.
-   *
-   * @<span class="hljs-keyword">public</span>
-   * @instance
-   * @<span class="hljs-function"><span class="hljs-keyword">method</span> <span class="hljs-title">add</span></span>
-   * @param {String} keypath - The keypath <span class="hljs-keyword">for</span> the definition <span class="hljs-keyword">to</span> be added at.
-   * @param {<span class="hljs-function"><span class="hljs-keyword">Function</span>|<span class="hljs-title">Object</span>} <span class="hljs-title">definition</span> - <span class="hljs-title">The</span> <span class="hljs-title">definition</span> <span class="hljs-title">to</span> <span class="hljs-title">be</span> <span class="hljs-title">added</span>.</span>
-   * @<span class="hljs-keyword">return</span> {<span class="hljs-function"><span class="hljs-keyword">Function</span>|<span class="hljs-title">Object</span>} - <span class="hljs-title">The</span> <span class="hljs-title">definition</span>.</span>
-   */
-  add(keypath, definition) {
-    <span class="hljs-keyword">return</span> this._walk(keypath, <span class="hljs-function"><span class="hljs-keyword">function</span>(</span>memo, name, index, keypath) {
-      <span class="hljs-keyword">if</span> (index + <span class="hljs-number">1</span> === keypath.length) {
-        memo[name] = _.extend(definition, memo[name]);
-      }
-      <span class="hljs-keyword">return</span> memo[name] || (memo[name] = {});
-    });
-  },
-
-  /**
-   * Retrieves a definition from the namespace safely.
-   *
-   * @<span class="hljs-keyword">public</span>
-   * @instance
-   * @<span class="hljs-function"><span class="hljs-keyword">method</span> <span class="hljs-title">get</span></span>
-   * @param {String} keypath - The keypath <span class="hljs-keyword">to</span> lookup a definition <span class="hljs-keyword">for</span>.
-   * @returns {<span class="hljs-function"><span class="hljs-keyword">Function</span>|<span class="hljs-title">Object</span>|<span class="hljs-title">undefined</span>} - <span class="hljs-title">The</span> <span class="hljs-title">definition</span> <span class="hljs-title">if</span> <span class="hljs-title">it</span> <span class="hljs-title">exists</span>, <span class="hljs-title">otherwise</span> `<span class="hljs-title">undefined</span>`.</span>
-   */
-  get(keypath) {
-    <span class="hljs-keyword">return</span> this._walk(keypath);
-  },
-
-  /**
-   * An internal <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">for</span> <span class="hljs-title">walking</span> <span class="hljs-title">a</span> <span class="hljs-title">keypath</span>.</span>
-   *
-   * @<span class="hljs-keyword">private</span>
-   * @instance
-   * @<span class="hljs-function"><span class="hljs-keyword">method</span> <span class="hljs-title">_walk</span></span>
-   * @param {String} keypath - The keypath <span class="hljs-keyword">to</span> walk through.
-   * @param {<span class="hljs-function"><span class="hljs-keyword">Function</span>} [<span class="hljs-title">callback</span>] - <span class="hljs-title">An</span> <span class="hljs-title">optional</span> <span class="hljs-title">callback</span> <span class="hljs-title">to</span> <span class="hljs-title">be</span> <span class="hljs-title">called</span> <span class="hljs-title">at</span> <span class="hljs-title">each</span> <span class="hljs-title">item</span> <span class="hljs-title">in</span> <span class="hljs-title">the</span> <span class="hljs-title">path</span>.</span>
-   * @returns {<span class="hljs-function"><span class="hljs-keyword">function</span>|<span class="hljs-title">Object</span>|<span class="hljs-title">undefined</span>} - <span class="hljs-title">The</span> <span class="hljs-title">reduced</span> <span class="hljs-title">keypath</span>.</span>
-   */
-  _walk(keypath, callback) {
-    <span class="hljs-keyword">return</span> _.reduce(
-      _keypaths[keypath] || (_keypaths[keypath] = keypath.split(KEYPATH_SPLITTER)),
-      callback || <span class="hljs-function"><span class="hljs-keyword">function</span>(</span>memo, name) {
-        <span class="hljs-keyword">return</span> memo &amp;&amp; memo[name];
-      },
-      this
-    );
-  }
-});
-
-export <span class="hljs-keyword">default</span> Namespace;
-</code></pre>
-      <pre class="repl-output"><code><span class="hljs-pi">'use strict'</span>;
-
-<span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'lodash'</span>);
-
-<span class="hljs-comment">/**
- * @module namespace
- * @class namespace
- */</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Namespace</span><span class="hljs-params">()</span> </span>{}
-
-<span class="hljs-comment">/**
- * Regex for splitting keypaths into arrays.
- *
- * @private
- * @const {RegExp}
- * @type
- */</span>
-<span class="hljs-keyword">var</span> KEYPATH_SPLITTER = <span class="hljs-regexp">/\./g</span>;
-
-<span class="hljs-comment">/**
- * An internal cache to avoid calculating a keypath more than once.
- *
- * @private
- * @type {Object}
- */</span>
-<span class="hljs-keyword">var</span> _keypaths = {};
-
-_.extend(Namespace.prototype, {
-
-  <span class="hljs-comment">/**
    * Adds a definition to the namespace object.
    *
    * @public
@@ -176,17 +93,17 @@ _.extend(Namespace.prototype, {
    * @param {String} keypath - The keypath for the definition to be added at.
    * @param {Function|Object} definition - The definition to be added.
    * @return {Function|Object} - The definition.
-   */</span>
-  add: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(keypath, definition)</span> </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._walk(keypath, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(memo, name, index, keypath)</span> </span>{
-      <span class="hljs-keyword">if</span> (index + <span class="hljs-number">1</span> === keypath.length) {
+   */
+  add(keypath, definition) {
+    return this._walk(keypath, function(memo, name, index, keypath) {
+      if (index + 1 === keypath.length) {
         memo[name] = _.extend(definition, memo[name]);
       }
-      <span class="hljs-keyword">return</span> memo[name] || (memo[name] = {});
+      return memo[name] || (memo[name] = {});
     });
   },
 
-  <span class="hljs-comment">/**
+  /**
    * Retrieves a definition from the namespace safely.
    *
    * @public
@@ -194,12 +111,12 @@ _.extend(Namespace.prototype, {
    * @method get
    * @param {String} keypath - The keypath to lookup a definition for.
    * @returns {Function|Object|undefined} - The definition if it exists, otherwise `undefined`.
-   */</span>
-  get: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(keypath)</span> </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._walk(keypath);
+   */
+  get(keypath) {
+    return this._walk(keypath);
   },
 
-  <span class="hljs-comment">/**
+  /**
    * An internal function for walking a keypath.
    *
    * @private
@@ -208,25 +125,112 @@ _.extend(Namespace.prototype, {
    * @param {String} keypath - The keypath to walk through.
    * @param {Function} [callback] - An optional callback to be called at each item in the path.
    * @returns {function|Object|undefined} - The reduced keypath.
-   */</span>
-  _walk: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(keypath, callback)</span> </span>{
-    <span class="hljs-keyword">return</span> _.reduce(
+   */
+  _walk(keypath, callback) {
+    return _.reduce(
       _keypaths[keypath] || (_keypaths[keypath] = keypath.split(KEYPATH_SPLITTER)),
-      callback || <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(memo, name)</span> </span>{
-        <span class="hljs-keyword">return</span> memo &amp;&amp; memo[name];
+      callback || function(memo, name) {
+        return memo && memo[name];
       },
-      <span class="hljs-keyword">this</span>
+      this
     );
   }
 });
 
-<span class="hljs-built_in">module</span>.exports = Namespace;</code></pre>
+export default Namespace;
+</code></pre>
+      </div>
+      <div class="repl-output">
+        <pre class="editor"><code>'use strict';
+
+var _ = require('lodash');
+
+/**
+ * @module namespace
+ * @class namespace
+ */
+function Namespace() {}
+
+/**
+ * Regex for splitting keypaths into arrays.
+ *
+ * @private
+ * @const {RegExp}
+ * @type
+ */
+var KEYPATH_SPLITTER = /\./g;
+
+/**
+ * An internal cache to avoid calculating a keypath more than once.
+ *
+ * @private
+ * @type {Object}
+ */
+var _keypaths = {};
+
+_.extend(Namespace.prototype, {
+
+  /**
+   * Adds a definition to the namespace object.
+   *
+   * @public
+   * @instance
+   * @method add
+   * @param {String} keypath - The keypath for the definition to be added at.
+   * @param {Function|Object} definition - The definition to be added.
+   * @return {Function|Object} - The definition.
+   */
+  add: function(keypath, definition) {
+    return this._walk(keypath, function(memo, name, index, keypath) {
+      if (index + 1 === keypath.length) {
+        memo[name] = _.extend(definition, memo[name]);
+      }
+      return memo[name] || (memo[name] = {});
+    });
+  },
+
+  /**
+   * Retrieves a definition from the namespace safely.
+   *
+   * @public
+   * @instance
+   * @method get
+   * @param {String} keypath - The keypath to lookup a definition for.
+   * @returns {Function|Object|undefined} - The definition if it exists, otherwise `undefined`.
+   */
+  get: function(keypath) {
+    return this._walk(keypath);
+  },
+
+  /**
+   * An internal function for walking a keypath.
+   *
+   * @private
+   * @instance
+   * @method _walk
+   * @param {String} keypath - The keypath to walk through.
+   * @param {Function} [callback] - An optional callback to be called at each item in the path.
+   * @returns {function|Object|undefined} - The reduced keypath.
+   */
+  _walk: function(keypath, callback) {
+    return _.reduce(
+      _keypaths[keypath] || (_keypaths[keypath] = keypath.split(KEYPATH_SPLITTER)),
+      callback || function(memo, name) {
+        return memo && memo[name];
+      },
+      this
+    );
+  }
+});
+
+module.exports = Namespace;
+</code></pre>
+      </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
     <div class="footer text-center"><p><a href="https://github.com/6to5/6to5">6to5</a> v1.15.0 · Distributed under MIT License</p>
 
     </div>
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>

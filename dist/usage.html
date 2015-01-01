@@ -30,7 +30,7 @@
         </div>
       </div>
     </nav>
-    <div class="page-header">
+    <div class="docs-header">
       <div class="container">
         <h1>Usage</h1>
         <p>All of the built-in ways to use 6to5.</p>
@@ -40,51 +40,48 @@
       <div class="row">
         <div class="col-md-3 col-md-push-9">
           <div class="sidebar">
-            <ul class="nav">
-              <li><a href="#cli">CLI</a>
-                <ul class="nav">
-                  <li><a href="#node">Node</a></li>
-                </ul>
-              </li>
-              <li><a href="#node">Node</a>
-                <ul class="nav">
-                  <li><a href="#to5-transform-code-opts-">transform</a></li>
-                  <li><a href="#to5-transformfilesync-filename-opts-">transformFileSync</a></li>
-                  <li><a href="#to5-transformfile-filename-opts-callback-">transformFile</a></li>
-                  <li><a href="#options">Options</a></li>
-                  <li><a href="#require-hook">Require hook</a></li>
-                </ul>
-              </li>
-              <li><a href="#experimental">Experimental</a></li>
-            </ul>
+            <ul class="nav"></ul>
           </div>
         </div>
-        <div class="col-md-9 col-md-pull-3 page-content"><h2 id="cli">CLI</h2>
-<p>Compile the file <code>script.js</code> and output it to stdout.</p>
+        <div class="col-md-9 col-md-pull-3 docs-content"><h2 id="using-the-cli">Using the CLI</h2>
+<blockquote>
+<p>6to5 comes with a built-in CLI which can be used to compile files from the command line.</p>
+</blockquote>
+<h3 id="install">Install</h3>
+<p>Using <a href="https://www.npmjs.com/">npm</a> you can install 6to5 globally, making it available from the
+command line.</p>
+<pre><code class="lang-sh">$ npm install --global 6to5
+</code></pre>
+<h3 id="compile-files">Compile Files</h3>
+<p>Compile the file <code>script.js</code> and <strong>output to stdout</strong>.</p>
 <pre><code class="lang-sh">$ 6to5 script.js
+# output...
 </code></pre>
-<p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code>.</p>
-<pre><code class="lang-sh">$ 6to5 script.js --out-file script-compiled.js
+<p>If you would like to <strong>output to a file</strong> you may use <code>--out-file</code> or <code>-o</code>.</p>
+<pre><code class="lang-js">$ 6to5 script.js --out-file script-compiled.js
 </code></pre>
-<p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code> and save a
-source map to <code>script-compiled.js.map</code>.</p>
-<pre><code class="lang-sh">$ 6to5 script.js --source-maps --out-file script-compiled.js
+<h3 id="compile-with-source-maps">Compile with Source Maps</h3>
+<p>If you would then like to add a <strong>source map file</strong> you can use <code>--source-maps</code> or <code>-s</code>. <a href="http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/">Learn more about
+source maps</a>.</p>
+<pre><code class="lang-js">$ 6to5 script.js --out-file script-compiled.js --source-maps
 </code></pre>
-<p>Compile the file <code>script.js</code> and output it to <code>script-compiled.js</code> with a source
-map embedded in a comment at the bottom.</p>
-<pre><code class="lang-sh">$ 6to5 script.js --source-maps-inline --out-file script-compiled.js
+<p>If you would rather have <strong>inline source maps</strong>, you may use <code>--source-maps-inline</code> or <code>-t</code>.</p>
+<pre><code class="lang-js">$ 6to5 script.js --out-file script-compiled.js --source-maps-inline
 </code></pre>
+<h3 id="compile-directories">Compile Directories</h3>
 <p>Compile the entire <code>src</code> directory and output it to the <code>lib</code> directory.</p>
 <pre><code class="lang-sh">$ 6to5 src --out-dir lib
 </code></pre>
 <p>Compile the entire <code>src</code> directory and output it to the one concatenated file.</p>
 <pre><code class="lang-sh">$ 6to5 src --out-file script-compiled.js
 </code></pre>
+<h3 id="piping-files">Piping Files</h3>
 <p>Pipe a file in via stdin and output it to <code>script-compiled.js</code></p>
-<pre><code class="lang-sh">$ 6to5 --out-file script-compiled.js &lt; script.js
-</code></pre>
-<h3 id="node">Node</h3>
-<p>Launch a repl.</p>
+<pre><code>$ 6to5 --out-file script-compiled.js &lt; script.js
+</code></pre><h3 id="6to5-node">6to5-node</h3>
+<p>6to5 comes with a second CLI which works exactly the same as Node.js&#39;s CLI, only it will compile
+ES6 code before running it.</p>
+<p>Launch a REPL (Read-Eval-Print-Loop).</p>
 <pre><code class="lang-sh">$ 6to5-node
 </code></pre>
 <p>Evaluate code.</p>
@@ -93,88 +90,8 @@ map embedded in a comment at the bottom.</p>
 <p>Compile and run <code>test.js</code>.</p>
 <pre><code class="lang-sh">$ 6to5-node test
 </code></pre>
-<h2 id="node">Node</h2>
-<pre><code class="lang-javascript">var to5 = require(&quot;6to5&quot;);
-</code></pre>
-<h3 id="to5-transform-code-opts-">to5.transform(code, [opts]);</h3>
-<pre><code class="lang-javascript">var result = to5.transform(&quot;code();&quot;, options);
-result.code;
-result.map;
-result.ast;
-</code></pre>
-<h3 id="to5-transformfilesync-filename-opts-">to5.transformFileSync(filename, [opts])</h3>
-<pre><code class="lang-javascript">to5.transformFileSync(&quot;filename.js&quot;, options).code;
-</code></pre>
-<h3 id="to5-transformfile-filename-opts-callback-">to5.transformFile(filename, [opts], callback)</h3>
-<pre><code class="lang-javascript">to5.transformFile(&quot;filename.js&quot;, options, function (err, result) {
-  result.code;
-});
-</code></pre>
-<h4 id="options">Options</h4>
-<pre><code class="lang-javascript">{
-  // Filename for use in errors etc.
-  // Default: &quot;unknown&quot;
-  filename: &quot;filename&quot;,
-
-  // Filename relative to `sourceRoot`
-  // Default: `filename` option.
-  filenameRelative: &quot;&quot;,
-
-  // List of transformers to EXCLUDE.
-  // Run `6to5 --help` to see a full list of transformers.
-  blacklist: [],
-
-  // List of transformers to ONLY use.
-  // Run `6to5 --help` to see a full list of transformers.
-  whitelist: [],
-
-  // Module formatter to use
-  // Run `6to5 --help` to see a full list of module formatters.
-  // Default: &quot;common&quot;
-  modules: &quot;common&quot;,
-
-  // If truthy, adds a `map` property to returned output.
-  // If set to &quot;inline&quot;, a comment with a sourceMappingURL directive is added to
-  // the bottom of the returned code.
-  // Default: false
-  sourceMap: true,
-
-  // Set `file` on returned source map.
-  // Default: `filenameRelative` option.
-  sourceMapName: &quot;filename&quot;,
-
-  // Set `sources[0]` on returned source map.
-  // Default: `filenameRelative` option.
-  sourceFileName: &quot;filename&quot;,
-
-  // The root from which all sources are relative
-  // Default: `moduleRoot` option.
-  sourceRoot: &quot;assets/scripts&quot;,
-
-  // Optional prefix for the AMD module formatter that will be prepend to the
-  // filename on module definitions
-  // Default: `sourceRoot` option.
-  moduleRoot: &quot;my-app&quot;,
-
-  // If truthy, insert an explicit id for each defined AMD module.
-  // By default, AMD modules are anonymous.
-  // Default: false
-  amdModuleIds: true,
-
-  // Optionally replace all 6to5 helper declarations with a referenece to this
-  // variable. If set to `true` then the default namespace is used &quot;to5Runtime&quot;.
-  // Default: false
-  runtime: true,
-
-  // Output comments in generated output
-  // Default: true
-  comments: false,
-
-  // Enable support for experimental ES7 features
-  // Default: false
-  experimental: true
-}
-</code></pre>
+<h2 id="using-in-node-js">Using in Node.js</h2>
+<p>&gt;</p>
 <h3 id="require-hook">Require hook</h3>
 <p>All subsequent files required by node with the extensions <code>.es6</code> and <code>.js</code> will
 be transformed by 6to5. The polyfill specified in <a href="polyfill.md">Polyfill</a> is
@@ -189,7 +106,7 @@ override this by passing an ignore regex via:</p>
   ignore: false
 });
 </code></pre>
-<h4 id="options">Options</h4>
+<h3 id="register-options">Register Options</h3>
 <pre><code class="lang-javascript">require(&quot;6to5/register&quot;)({
   // Optional ignore regex - if any filenames **do** match this regex then they
   // aren&#39;t compiled
@@ -208,12 +125,112 @@ override this by passing an ignore regex via:</p>
   extensions: [&quot;.js&quot;, &quot;.es6&quot;]
 });
 </code></pre>
+<h2 id="api">API</h2>
+<pre><code class="lang-javascript">var to5 = require(&quot;6to5&quot;);
+</code></pre>
+<h3 id="to5-transform-code-options-transform-options-">to5.transform(code, [<a href="#transform-options">options</a>]);</h3>
+<pre><code class="lang-javascript">var result = to5.transform(&quot;code();&quot;, options);
+result.code;
+result.map;
+result.ast;
+</code></pre>
+<h3 id="to5-transformfilesync-filename-options-transform-options-">to5.transformFileSync(filename, [<a href="#transform-options">options</a>])</h3>
+<pre><code class="lang-javascript">to5.transformFileSync(&quot;filename.js&quot;, options).code;
+</code></pre>
+<h3 id="to5-transformfile-filename-options-transform-options-callback-">to5.transformFile(filename, [<a href="#transform-options">options</a>], callback)</h3>
+<pre><code class="lang-javascript">to5.transformFile(&quot;filename.js&quot;, options, function (err, result) {
+  result.code;
+});
+</code></pre>
+<h3 id="transform-options">Transform Options</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filename</code></td>
+<td><code>&quot;unknown&quot;</code></td>
+<td>Filename for use in errors etc.</td>
+</tr>
+<tr>
+<td><code>fileNameRelative</code></td>
+<td><code>(filename)</code></td>
+<td>Filename relative to <code>sourceRoot</code>.</td>
+</tr>
+<tr>
+<td><code>blacklist</code></td>
+<td><code>[]</code></td>
+<td>Array of transformers to <strong>exclude</strong>. Run <code>6to5 --help</code> to see a full list of transformers.</td>
+</tr>
+<tr>
+<td><code>whitelist</code></td>
+<td><code>[]</code></td>
+<td>Array of transformers to <strong>only</strong> use. Run <code>6to5 --help</code> to see a full list of transformers.</td>
+</tr>
+<tr>
+<td><code>modules</code></td>
+<td><code>&quot;common&quot;</code></td>
+<td>Which module formatter to use. Run <code>6to5 --help</code> to see a full list of module formatters.</td>
+</tr>
+<tr>
+<td><code>sourceMap</code></td>
+<td><code>false</code></td>
+<td>If truthy, adds a <code>map</code> property to returned output. If set to <code>&quot;inline&quot;</code>, a comment with a sourceMappingURL directive is added to the bottom of the returned code.</td>
+</tr>
+<tr>
+<td><code>sourceMapName</code></td>
+<td><code>(filenameRelative)</code></td>
+<td>Set <code>file</code> on returned source map.</td>
+</tr>
+<tr>
+<td><code>sourceFileName</code></td>
+<td><code>(filenameRelative)</code></td>
+<td>Set <code>sources[0]</code> on returned source map.</td>
+</tr>
+<tr>
+<td><code>sourceRoot</code></td>
+<td><code>(moduleRoot)</code></td>
+<td>The root from which all sources are relative.</td>
+</tr>
+<tr>
+<td><code>moduleRoot</code></td>
+<td><code>(sourceRoot)</code></td>
+<td>Optional prefix for the AMD module formatter that will be prepend to the filename on module definitions.</td>
+</tr>
+<tr>
+<td><code>amdModuleIds</code></td>
+<td><code>false</code></td>
+<td>If truthy, insert an explicit id for each defined AMD module. By default, AMD modules are anonymous.</td>
+</tr>
+<tr>
+<td><code>runtime</code></td>
+<td><code>false</code></td>
+<td>Optionally replace all 6to5 helper declarations with a referenece to this variable. If set to <code>true</code> then the default namespace is used <code>to5Runtime</code>.</td>
+</tr>
+<tr>
+<td><code>comments</code></td>
+<td><code>true</code></td>
+<td>Output comments in generated output.</td>
+</tr>
+<tr>
+<td><code>experimental</code></td>
+<td><code>false</code></td>
+<td>Enable support for experimental ES7 features.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="experimental">Experimental</h2>
 <p>6to5 also has experimental support for ES7 proposals. You can enable this with
 the <code>experimental: true</code> option when using the <a href="#node">Node API</a> or
 <code>--experimental</code> when using the <a href="#cli">CLI</a>.</p>
 <p><strong>WARNING:</strong> These proposals are subject to change so use with
 <strong>extreme caution</strong>.</p>
+<h2 id="playground">Playground</h2>
 
         </div>
       </div>
@@ -221,8 +238,6 @@ the <code>experimental: true</code> option when using the <a href="#node">Node A
     <div class="footer text-center"><p><a href="https://github.com/6to5/6to5">6to5</a> v1.15.0 · Distributed under MIT License</p>
 
     </div>
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>

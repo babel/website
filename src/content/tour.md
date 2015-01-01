@@ -1,3 +1,18 @@
+<blockquote class="to5-callout to5-callout-info">
+  <h4>es6features</h4>
+  <p>
+    This document is taken from Luke Hoban's excellent [es6features](http://git.io/es6features)
+    repo. Go give it a star on GitHub!
+  </p>
+</blockquote>
+
+<blockquote class="to5-callout to5-callout-info">
+  <h4>REPL</h4>
+  <p>
+    Be sure to try these features out in the online [REPL](repl.html).
+  </p>
+</blockquote>
+
 ## Introduction
 ECMAScript 6 is the upcoming version of the ECMAScript standard.  This standard is targeting ratification in June 2015.  ES6 is a significant update to the language, and the first update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is [underway now](http://kangax.github.io/es5-compat-table/es6/).
 
@@ -71,6 +86,13 @@ var obj = {
     [ 'prop_' + (() => 42)() ]: 42
 };
 ```
+
+<blockquote class="to5-callout to5-callout-warning">
+  <p>
+    `__proto__` support comes from the JavaScript engine running your program. Although most support
+    the now standard property, [some do not](http://kangax.github.io/compat-table/es6/#__proto___in_object_literals).
+  </p>
+</blockquote>
 
 ### Template Strings
 Template strings provide syntactic sugar for constructing strings.  This is similar to string interpolation features in Perl, Python and more.  Optionally, a tag can be added to allow the string construction to be customized, avoiding injection attacks or constructing higher level data structures from string contents.
@@ -322,6 +344,14 @@ import exp from "lib/mathplusplus";
 alert("2π = " + exp(math.pi, math.e));
 ```
 
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Module Formatters</h4>
+  <p>
+    6to5 can transpile ES6 Modules to several different formats including Common.js, AMD, System,
+    and UMD. You can even create your own. For more details see the [modules docs](modules.html).
+  </p>
+</blockquote>
+
 ### Module Loaders
 Module loaders support:
 - Dynamic loading
@@ -349,6 +379,23 @@ System.get('jquery');
 System.set('jquery', Module({$: $})); // WARNING: not yet finalized
 ```
 
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Additional polyfill needed</h4>
+  <p>
+    Since 6to5 defaults to using common.js modules, it does not include the polyfill for the
+    module loader api. Get it [here](https://github.com/ModuleLoader/es6-module-loader).
+  </p>
+</blockquote>
+
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Using Module Loader</h4>
+  <p>
+    In order to use this, you'll need to tell 6to5 to use the `system` module formatter.
+    Also be sure to check out <a href="https://github.com/systemjs/systemjs">System.js</a>
+  </p>
+</blockquote>
+
+
 ### Map + Set + WeakMap + WeakSet
 Efficient data structures for common algorithms.  WeakMaps provides leak-free object-key’d side tables.
 
@@ -375,6 +422,13 @@ var ws = new WeakSet();
 ws.add({ data: 42 });
 // Because the added object has no other references, it will not be held in the set
 ```
+
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Support via polyfill</h4>
+  <p>
+    In order to support Promises you must include the 6to5 Polyfill.
+  </p>
+</blockquote>
 
 ### Proxies
 Proxies enable creation of objects with the full range of behaviors available to host objects.  Can be used for interception, object virtualization, logging/profiling, etc.
@@ -427,6 +481,14 @@ var handler =
 }
 ```
 
+<blockquote class="to5-callout to5-callout-danger">
+  <h4>Unsupported feature</h4>
+  <p>
+    Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support from
+    various [JavaScript engines](http://kangax.github.io/compat-table/es6/#Proxy).
+  </p>
+</blockquote>
+
 ### Symbols
 Symbols enable access control for object state.  Symbols allow properties to be keyed by either `string` (as in ES5) or `symbol`.  Symbols are a new primitive type. Optional `name` parameter used in debugging - but is not part of identity.  Symbols are unique (like gensym), but not private since they are exposed via reflection features like `Object.getOwnPropertySymbols`.
 
@@ -452,6 +514,13 @@ Symbols enable access control for object state.  Symbols allow properties to be 
 var c = new MyClass("hello")
 c["key"] === undefined
 ```
+
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Support via polyfill</h4>
+  <p>
+    In order to support Promises you must include the 6to5 Polyfill.
+  </p>
+</blockquote>
 
 ### Subclassable Built-ins
 In ES6, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
@@ -511,6 +580,15 @@ Array.of(1, 2, 3) // Similar to new Array(...), but without special one-arg beha
 Object.assign(Point, { origin: new Point(0,0) })
 ```
 
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Limited support from polyfill</h4>
+  <p>
+    Most of these APIs are supported by the 6to5 Polyfill. However, certain features are omitted for
+    various reasons (ie. `String.prototype.normalize` needs a lot of additional code to
+    support). You can find more polyfills [here](https://github.com/addyosmani/es6-tools#polyfills).
+  </p>
+</blockquote>
+
 ### Binary and Octal Literals
 Two new numeric literal forms are added for binary (`b`) and octal (`o`).
 
@@ -518,6 +596,14 @@ Two new numeric literal forms are added for binary (`b`) and octal (`o`).
 0b111110111 === 503 // true
 0o767 === 503 // true
 ```
+
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Only supports literal form</h4>
+  <p>
+    6to5 is only able to transform `0o767` and not `Number('0o767')`.
+  </p>
+</blockquote>
+
 
 ### Promises
 Promises are a library for asynchronous programming.  Promises are a first class representation of a value that may be made available in the future.  Promises are used in many existing JavaScript libraries.
@@ -538,12 +624,28 @@ var p = timeout(1000).then(() => {
 })
 ```
 
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Support via polyfill</h4>
+  <p>
+    In order to support Promises you must include the 6to5 Polyfill.
+  </p>
+</blockquote>
+
 ### Reflect API
 Full reflection API exposing the runtime-level meta-operations on objects.  This is effectively the inverse of the Proxy API, and allows making calls corresponding to the same meta-operations as the proxy traps.  Especially useful for implementing proxies.
 
 ```JavaScript
 // No sample yet
 ```
+
+<blockquote class="to5-callout to5-callout-danger">
+  <h4>Limited support from polyfill</h4>
+  <p>
+    Core.js only currently supports `Reflect.ownKeys`,
+    if you would like a much more complete Reflect API, include another polyfill such as
+    [Harmony Reflect](https://github.com/tvcutsem/harmony-reflect).
+  </p>
+</blockquote>
 
 ### Tail Calls
 Calls in tail-position are guaranteed to not grow the stack unboundedly.  Makes recursive algorithms safe in the face of unbounded inputs.
@@ -559,3 +661,11 @@ function factorial(n, acc = 1) {
 // but safe on arbitrary inputs in eS6
 factorial(100000)
 ```
+
+<blockquote class="to5-callout to5-callout-danger">
+  <h4>Unsupported feature</h4>
+  <p>
+    Due to high complexity of transpiling Tail Calls, 6to5 does not currently have them implemented.
+    See [#256](https://github.com/6to5/6to5/issues/256).
+  </p>
+</blockquote>

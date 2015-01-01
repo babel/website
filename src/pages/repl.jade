@@ -24,8 +24,8 @@ block content
             option Bar
             option Baz
 
-    pre.repl-input: code
-      :highlight
+    .repl-input: pre.editor: code
+      :js
         import * as _ from 'lodash';
 
         /**
@@ -109,8 +109,8 @@ block content
 
         export default Namespace;
 
-    pre.repl-output: code
-      :highlight
+    .repl-output: pre.editor: code
+      :js
         'use strict';
 
         var _ = require('lodash');
@@ -194,3 +194,5 @@ block content
         });
 
         module.exports = Namespace;
+
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js")

@@ -5,7 +5,7 @@ block settings
   - var pageClass = 'compare';
 
 block content
-  .page-header
+  .docs-header
     .container
       .row
         .col-md-12
@@ -15,22 +15,6 @@ block content
   .container
     .row
       .col-md-3.col-md-push-9
-        .sidebar
-          ul.nav
-            li
-              a(href="#differences") Differences
-              ul.nav
-                li: a(href="#readable-code") Readable code
-                li: a(href="#static-analysis") Static analysis
-                li: a(href="#spec-compliancy") Spec Compliancy
-            li
-              a(href="#comparison-to-other-transpilers") Comparison to other transpilers
-              ul.nav
-                li: a(href="#features") Features
-                li: a(href="#language-support") Language Support
-                li: a(href="#-traceur-https-github-com-google-traceur-compiler-") Traceur
-                li: a(href="#-es6now-https-github-com-zenparsing-es6now-") es6now
-                li: a(href="#-es6-transpiler-https-github-com-termi-es6-transpiler-") es6-transpiler
-
-      .col-md-9.col-md-pull-3.page-content
+        .sidebar: ul.nav
+      .col-md-9.col-md-pull-3.docs-content
         include:markdown ../content/compare.md

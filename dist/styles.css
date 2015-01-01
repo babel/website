@@ -979,7 +979,7 @@ h6,
 .h5,
 .h6 {
   font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.1;
   color: inherit;
 }
@@ -1085,7 +1085,8 @@ p {
   margin: 0 0 10px;
 }
 .lead,
-.featurette p {
+.featurette p,
+.docs-content h2 + blockquote {
   margin-bottom: 20px;
   font-size: 16px;
   font-weight: 300;
@@ -1093,7 +1094,8 @@ p {
 }
 @media (min-width: 768px) {
   .lead,
-  .featurette p {
+  .featurette p,
+  .docs-content h2 + blockquote {
     font-size: 21px;
   }
 }
@@ -1194,7 +1196,9 @@ a.bg-warning:hover {
 a.bg-danger:hover {
   background-color: #e4b9b9;
 }
-.page-header {
+.page-header,
+.docs-header,
+.docs-content h2 {
   padding-bottom: 9px;
   margin: 40px 0 20px;
   border-bottom: 1px solid #eeeeee;
@@ -6396,6 +6400,54 @@ body {
     margin-left: 0;
   }
 }
+/*
+ * Callouts
+ *
+ * Not quite alerts, but custom and helpful notes for folks reading the docs.
+ * Requires a base and modifier class.
+ */
+.to5-callout {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eeeeee;
+  border-left-width: 5px;
+  border-radius: 3px;
+  font: inherit;
+  /* Common styles for all types */
+  /* Tighten up space between multiple callouts */
+  /* Variations */
+}
+.to5-callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.to5-callout p:last-child {
+  margin-bottom: 0;
+}
+.to5-callout code {
+  border-radius: 3px;
+}
+.to5-callout + .to5-callout {
+  margin-top: -5px;
+}
+.to5-callout-danger {
+  border-left-color: #d9534f;
+}
+.to5-callout-danger h4 {
+  color: #ce4844;
+}
+.to5-callout-warning {
+  border-left-color: #f0ad4e;
+}
+.to5-callout-warning h4 {
+  color: #aa6708;
+}
+.to5-callout-info {
+  border-left-color: #5bc0de;
+}
+.to5-callout-info h4 {
+  color: #1b809e;
+}
 .page-content h1::before,
 .page-content h2::before,
 .page-content h3::before,
@@ -6463,6 +6515,9 @@ body {
   padding: 40px 0;
   background: #eeeeee;
   border-top: 1px solid #e2e2e2;
+}
+.repl ~ .footer {
+  margin-top: 0;
 }
 .jumbotron {
   margin: 20px 0;
@@ -6547,21 +6602,6 @@ body {
 }
 .navbar-brand {
   font-size: 1.5em;
-}
-.page-header {
-  margin-top: 0;
-  padding: 2em 0;
-  background: #323330;
-  border-bottom: #252624;
-  color: #f5da55;
-}
-.page-header h1 {
-  font-size: 3em;
-  font-weight: 700;
-}
-.page-header p {
-  font-size: 1.5em;
-  color: white;
 }
 .sidebar {
   /* Show and affix the side nav when space allows it */
@@ -6761,7 +6801,6 @@ table > tbody > tr:nth-child(odd) {
   border: none;
   background: #f6f6f6;
   margin: 0;
-  padding: 10px;
   border-radius: 0;
   white-space: nowrap;
 }
@@ -6773,3 +6812,32 @@ table > tbody > tr:nth-child(odd) {
   right: 0;
   background: #f1f1f1;
 }
+.repl .editor {
+  width: 100%;
+  height: 100%;
+  border-radius: none;
+}
+.repl .ace_scroller.ace_scroll-left {
+  box-shadow: none;
+}
+.docs-header {
+  margin-top: 0;
+  padding: 2em 0;
+  background: #323330;
+  border-bottom: #252624;
+  color: #f5da55;
+}
+.docs-header h1 {
+  font-size: 3em;
+  font-weight: 700;
+}
+.docs-header p {
+  font-size: 1.5em;
+  color: white;
+}
+.docs-content h2 + blockquote {
+  padding: 0;
+  border-left: none;
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,30 +1,47 @@
-## CLI
+## Using the CLI
 
-Compile the file `script.js` and output it to stdout.
+> 6to5 comes with a built-in CLI which can be used to compile files from the command line.
+
+### Install
+
+Using [npm](https://www.npmjs.com/) you can install 6to5 globally, making it available from the
+command line.
+
+```sh
+$ npm install --global 6to5
+```
+
+### Compile Files
+
+Compile the file `script.js` and **output to stdout**.
 
 ```sh
 $ 6to5 script.js
+# output...
 ```
 
-Compile the file `script.js` and output it to `script-compiled.js`.
+If you would like to **output to a file** you may use `--out-file` or `-o`.
 
-```sh
+```js
 $ 6to5 script.js --out-file script-compiled.js
 ```
 
-Compile the file `script.js` and output it to `script-compiled.js` and save a
-source map to `script-compiled.js.map`.
+### Compile with Source Maps
 
-```sh
-$ 6to5 script.js --source-maps --out-file script-compiled.js
+If you would then like to add a **source map file** you can use `--source-maps` or `-s`. [Learn more about
+source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/).
+
+```js
+$ 6to5 script.js --out-file script-compiled.js --source-maps
 ```
 
-Compile the file `script.js` and output it to `script-compiled.js` with a source
-map embedded in a comment at the bottom.
+If you would rather have **inline source maps**, you may use `--source-maps-inline` or `-t`.
 
-```sh
-$ 6to5 script.js --source-maps-inline --out-file script-compiled.js
+```js
+$ 6to5 script.js --out-file script-compiled.js --source-maps-inline
 ```
+
+### Compile Directories
 
 Compile the entire `src` directory and output it to the `lib` directory.
 
@@ -38,15 +55,20 @@ Compile the entire `src` directory and output it to the one concatenated file.
 $ 6to5 src --out-file script-compiled.js
 ```
 
+### Piping Files
+
 Pipe a file in via stdin and output it to `script-compiled.js`
 
-```sh
+```
 $ 6to5 --out-file script-compiled.js < script.js
 ```
 
-### Node
+### 6to5-node
 
-Launch a repl.
+6to5 comes with a second CLI which works exactly the same as Node.js's CLI, only it will compile
+ES6 code before running it.
+
+Launch a REPL (Read-Eval-Print-Loop).
 
 ```sh
 $ 6to5-node
@@ -64,102 +86,9 @@ Compile and run `test.js`.
 $ 6to5-node test
 ```
 
-## Node
+## Using in Node.js
 
-```javascript
-var to5 = require("6to5");
-```
-
-### to5.transform(code, [opts]);
-
-```javascript
-var result = to5.transform("code();", options);
-result.code;
-result.map;
-result.ast;
-```
-
-### to5.transformFileSync(filename, [opts])
-
-```javascript
-to5.transformFileSync("filename.js", options).code;
-```
-
-### to5.transformFile(filename, [opts], callback)
-
-```javascript
-to5.transformFile("filename.js", options, function (err, result) {
-  result.code;
-});
-```
-
-#### Options
-
-```javascript
-{
-  // Filename for use in errors etc.
-  // Default: "unknown"
-  filename: "filename",
-
-  // Filename relative to `sourceRoot`
-  // Default: `filename` option.
-  filenameRelative: "",
-
-  // List of transformers to EXCLUDE.
-  // Run `6to5 --help` to see a full list of transformers.
-  blacklist: [],
-
-  // List of transformers to ONLY use.
-  // Run `6to5 --help` to see a full list of transformers.
-  whitelist: [],
-
-  // Module formatter to use
-  // Run `6to5 --help` to see a full list of module formatters.
-  // Default: "common"
-  modules: "common",
-
-  // If truthy, adds a `map` property to returned output.
-  // If set to "inline", a comment with a sourceMappingURL directive is added to
-  // the bottom of the returned code.
-  // Default: false
-  sourceMap: true,
-
-  // Set `file` on returned source map.
-  // Default: `filenameRelative` option.
-  sourceMapName: "filename",
-
-  // Set `sources[0]` on returned source map.
-  // Default: `filenameRelative` option.
-  sourceFileName: "filename",
-
-  // The root from which all sources are relative
-  // Default: `moduleRoot` option.
-  sourceRoot: "assets/scripts",
-
-  // Optional prefix for the AMD module formatter that will be prepend to the
-  // filename on module definitions
-  // Default: `sourceRoot` option.
-  moduleRoot: "my-app",
-
-  // If truthy, insert an explicit id for each defined AMD module.
-  // By default, AMD modules are anonymous.
-  // Default: false
-  amdModuleIds: true,
-
-  // Optionally replace all 6to5 helper declarations with a referenece to this
-  // variable. If set to `true` then the default namespace is used "to5Runtime".
-  // Default: false
-  runtime: true,
-
-  // Output comments in generated output
-  // Default: true
-  comments: false,
-
-  // Enable support for experimental ES7 features
-  // Default: false
-  experimental: true
-}
-```
+>
 
 ### Require hook
 
@@ -182,7 +111,7 @@ require("6to5/register")({
 });
 ```
 
-#### Options
+### Register Options
 
 ```javascript
 require("6to5/register")({
@@ -204,6 +133,57 @@ require("6to5/register")({
 });
 ```
 
+## API
+
+
+```javascript
+var to5 = require("6to5");
+```
+
+### to5.transform(code, [[options](#transform-options)]);
+
+```javascript
+var result = to5.transform("code();", options);
+result.code;
+result.map;
+result.ast;
+```
+
+### to5.transformFileSync(filename, [[options](#transform-options)])
+
+```javascript
+to5.transformFileSync("filename.js", options).code;
+```
+
+### to5.transformFile(filename, [[options](#transform-options)], callback)
+
+```javascript
+to5.transformFile("filename.js", options, function (err, result) {
+  result.code;
+});
+```
+
+### Transform Options
+
+| Option | Default | Description |
+| ------ | ------- | ----------- |
+| `filename` | `"unknown"` | Filename for use in errors etc. |
+| `fileNameRelative` | `(filename)` | Filename relative to `sourceRoot`. |
+| `blacklist` | `[]` | Array of transformers to **exclude**. Run `6to5 --help` to see a full list of transformers. |
+| `whitelist` | `[]` | Array of transformers to **only** use. Run `6to5 --help` to see a full list of transformers. |
+| `modules` | `"common"` | Which module formatter to use. Run `6to5 --help` to see a full list of module formatters. |
+| `sourceMap` | `false` | If truthy, adds a `map` property to returned output. If set to `"inline"`, a comment with a sourceMappingURL directive is added to the bottom of the returned code. |
+| `sourceMapName` | `(filenameRelative)` | Set `file` on returned source map. |
+| `sourceFileName` | `(filenameRelative)` | Set `sources[0]` on returned source map. |
+| `sourceRoot` | `(moduleRoot)` | The root from which all sources are relative. |
+| `moduleRoot` | `(sourceRoot)` | Optional prefix for the AMD module formatter that will be prepend to the filename on module definitions. |
+| `amdModuleIds` | `false` | If truthy, insert an explicit id for each defined AMD module. By default, AMD modules are anonymous. |
+| `runtime` | `false` | Optionally replace all 6to5 helper declarations with a referenece to this variable. If set to `true` then the default namespace is used `to5Runtime`. |
+| `comments` | `true` | Output comments in generated output. |
+| `experimental` | `false` | Enable support for experimental ES7 features. |
+
+
+
 ## Experimental
 
 6to5 also has experimental support for ES7 proposals. You can enable this with
@@ -212,3 +192,6 @@ the `experimental: true` option when using the [Node API](#node) or
 
 **WARNING:** These proposals are subject to change so use with
 **extreme caution**.
+
+## Playground
+

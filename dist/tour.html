@@ -30,7 +30,7 @@
         </div>
       </div>
     </nav>
-    <div class="page-header">
+    <div class="docs-header">
       <div class="container">
         <h1>Tour</h1>
         <p>A detailed overview of ECMAScript 6 features.</p>
@@ -40,36 +40,24 @@
       <div class="row">
         <div class="col-md-3 col-md-push-9">
           <div class="sidebar">
-            <ul class="nav">
-              <li><a href="#arrows">Arrows</a></li>
-              <li><a href="#classes">Classes</a></li>
-              <li><a href="#enhanced-object-literals">Enhanced Object Literals</a></li>
-              <li><a href="#template-strings">Template Strings</a></li>
-              <li><a href="#destructuring">Destructuring</a></li>
-              <li><a href="#default-rest-spread">Default + Rest + Spread</a></li>
-              <li><a href="#let-const">Let + Const</a></li>
-              <li><a href="#iterators-for-of">Iterators + For..Of</a></li>
-              <li><a href="#generators">Generators</a></li>
-              <li><a href="#comprehensions">Comprehensions</a></li>
-              <li><a href="#unicode">Unicode</a></li>
-              <li><a href="#modules">Modules</a></li>
-              <li><a href="#module-loaders">Module Loaders</a></li>
-              <li><a href="#map-set-weakmap-weakset">Map + Set + WeakMap + WeakSet</a></li>
-              <li><a href="#proxies">Proxies</a></li>
-              <li><a href="#symbols">Symbols</a></li>
-              <li><a href="#subclassable-built-ins">Subclassable Built-ins</a></li>
-              <li><a href="#math-number-string-object-apis">Math + Number + String + Object APIs</a></li>
-              <li><a href="#binary-and-octal-literals">Binary and Octal Literals</a></li>
-              <li><a href="#promises">Promises</a></li>
-              <li><a href="#reflect-api">Reflect Api</a></li>
-              <li><a href="#tail-calls">Tail Calls</a></li>
-            </ul>
+            <ul class="nav"></ul>
           </div>
         </div>
-        <div class="col-md-9 col-md-pull-3 page-content"><blockquote>
-<p>This document is taken from Luke Hoban&#39;s excellent
-<a href="http://git.io/es6features">es6features</a> repo. Go give it a star on GitHub!</p>
+        <div class="col-md-9 col-md-pull-3 docs-content"><blockquote class="to5-callout to5-callout-info">
+  <h4>es6features</h4>
+  <p>
+    This document is taken from Luke Hoban&#39;s excellent <a href="http://git.io/es6features">es6features</a>
+    repo. Go give it a star on GitHub!
+  </p>
 </blockquote>
+
+<blockquote class="to5-callout to5-callout-info">
+  <h4>REPL</h4>
+  <p>
+    Be sure to try these features out in the online <a href="repl.html">REPL</a>.
+  </p>
+</blockquote>
+
 <h2 id="introduction">Introduction</h2>
 <p>ECMAScript 6 is the upcoming version of the ECMAScript standard.  This standard is targeting ratification in June 2015.  ES6 is a significant update to the language, and the first update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is <a href="http://kangax.github.io/es5-compat-table/es6/">underway now</a>.</p>
 <p>See the <a href="https://people.mozilla.org/~jorendorff/es6-draft.html">draft ES6 standard</a> for full specification of the ECMAScript 6 language.</p>
@@ -132,6 +120,13 @@ var bob = {
     [ &#39;prop_&#39; + (() =&gt; 42)() ]: 42
 };
 </code></pre>
+<blockquote class="to5-callout to5-callout-warning">
+  <p>
+    <code>__proto__</code> support comes from the JavaScript engine running your program. Although most support
+    the now standard property, <a href="http://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>.
+  </p>
+</blockquote>
+
 <h3 id="template-strings">Template Strings</h3>
 <p>Template strings provide syntactic sugar for constructing strings.  This is similar to string interpolation features in Perl, Python and more.  Optionally, a tag can be added to allow the string construction to be customized, avoiding injection attacks or constructing higher level data structures from string contents.</p>
 <pre><code class="lang-JavaScript">// Basic literal string creation
@@ -340,6 +335,14 @@ module math from &quot;lib/mathplusplus&quot;;
 import exp from &quot;lib/mathplusplus&quot;;
 alert(&quot;2π = &quot; + exp(math.pi, math.e));
 </code></pre>
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Module Formatters</h4>
+  <p>
+    6to5 can transpile ES6 Modules to several different formats including Common.js, AMD, System,
+    and UMD. You can even create your own. For more details see the <a href="modules.html">modules docs</a>.
+  </p>
+</blockquote>
+
 <h3 id="module-loaders">Module Loaders</h3>
 <p>Module loaders support:</p>
 <ul>
@@ -365,6 +368,23 @@ loader.eval(&quot;console.log(&#39;hello world!&#39;);&quot;);
 System.get(&#39;jquery&#39;);
 System.set(&#39;jquery&#39;, Module({$: $})); // WARNING: not yet finalized
 </code></pre>
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Additional polyfill needed</h4>
+  <p>
+    Since 6to5 defaults to using common.js modules, it does not include the polyfill for the
+    module loader api. Get it <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
+  </p>
+</blockquote>
+
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Using Module Loader</h4>
+  <p>
+    In order to use this, you&#39;ll need to tell 6to5 to use the <code>system</code> module formatter.
+    Also be sure to check out <a href="https://github.com/systemjs/systemjs">System.js</a>
+  </p>
+</blockquote>
+
+
 <h3 id="map-set-weakmap-weakset">Map + Set + WeakMap + WeakSet</h3>
 <p>Efficient data structures for common algorithms.  WeakMaps provides leak-free object-key’d side tables.</p>
 <pre><code class="lang-JavaScript">// Sets
@@ -389,6 +409,13 @@ var ws = new WeakSet();
 ws.add({ data: 42 });
 // Because the added object has no other references, it will not be held in the set
 </code></pre>
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Support via polyfill</h4>
+  <p>
+    In order to support Promises you must include the 6to5 Polyfill.
+  </p>
+</blockquote>
+
 <h3 id="proxies">Proxies</h3>
 <p>Proxies enable creation of objects with the full range of behaviors available to host objects.  Can be used for interception, object virtualization, logging/profiling, etc.</p>
 <pre><code class="lang-JavaScript">// Proxying a normal object
@@ -432,6 +459,14 @@ p() === &#39;I am the proxy&#39;;
   isExtensible:...
 }
 </code></pre>
+<blockquote class="to5-callout to5-callout-danger">
+  <h4>Unsupported feature</h4>
+  <p>
+    Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support from
+    various <a href="http://kangax.github.io/compat-table/es6/#Proxy">JavaScript engines</a>.
+  </p>
+</blockquote>
+
 <h3 id="symbols">Symbols</h3>
 <p>Symbols enable access control for object state.  Symbols allow properties to be keyed by either <code>string</code> (as in ES5) or <code>symbol</code>.  Symbols are a new primitive type. Optional <code>name</code> parameter used in debugging - but is not part of identity.  Symbols are unique (like gensym), but not private since they are exposed via reflection features like <code>Object.getOwnPropertySymbols</code>.</p>
 <pre><code class="lang-JavaScript">(function() {
@@ -454,6 +489,13 @@ p() === &#39;I am the proxy&#39;;
 var c = new MyClass(&quot;hello&quot;)
 c[&quot;key&quot;] === undefined
 </code></pre>
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Support via polyfill</h4>
+  <p>
+    In order to support Promises you must include the 6to5 Polyfill.
+  </p>
+</blockquote>
+
 <h3 id="subclassable-built-ins">Subclassable Built-ins</h3>
 <p>In ES6, built-ins like <code>Array</code>, <code>Date</code> and DOM <code>Element</code>s can be subclassed.</p>
 <p>Object construction for a function named <code>Ctor</code> now uses two-phases (both virtually dispatched):</p>
@@ -506,11 +548,28 @@ Array.of(1, 2, 3) // Similar to new Array(...), but without special one-arg beha
 
 Object.assign(Point, { origin: new Point(0,0) })
 </code></pre>
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Limited support from polyfill</h4>
+  <p>
+    Most of these APIs are supported by the 6to5 Polyfill. However, certain features are omitted for
+    various reasons (ie. <code>String.prototype.normalize</code> needs a lot of additional code to
+    support). You can find more polyfills <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
+  </p>
+</blockquote>
+
 <h3 id="binary-and-octal-literals">Binary and Octal Literals</h3>
 <p>Two new numeric literal forms are added for binary (<code>b</code>) and octal (<code>o</code>).</p>
 <pre><code class="lang-JavaScript">0b111110111 === 503 // true
 0o767 === 503 // true
 </code></pre>
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Only supports literal form</h4>
+  <p>
+    6to5 is only able to transform <code>0o767</code> and not <code>Number(&#39;0o767&#39;)</code>.
+  </p>
+</blockquote>
+
+
 <h3 id="promises">Promises</h3>
 <p>Promises are a library for asynchronous programming.  Promises are a first class representation of a value that may be made available in the future.  Promises are used in many existing JavaScript libraries.</p>
 <pre><code class="lang-JavaScript">function timeout(duration = 0) {
@@ -527,10 +586,26 @@ var p = timeout(1000).then(() =&gt; {
     return Promise.all([timeout(100), timeout(200)]);
 })
 </code></pre>
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Support via polyfill</h4>
+  <p>
+    In order to support Promises you must include the 6to5 Polyfill.
+  </p>
+</blockquote>
+
 <h3 id="reflect-api">Reflect API</h3>
 <p>Full reflection API exposing the runtime-level meta-operations on objects.  This is effectively the inverse of the Proxy API, and allows making calls corresponding to the same meta-operations as the proxy traps.  Especially useful for implementing proxies.</p>
 <pre><code class="lang-JavaScript">// No sample yet
 </code></pre>
+<blockquote class="to5-callout to5-callout-danger">
+  <h4>Limited support from polyfill</h4>
+  <p>
+    Core.js only currently supports <code>Reflect.ownKeys</code>,
+    if you would like a much more complete Reflect API, include another polyfill such as
+    <a href="https://github.com/tvcutsem/harmony-reflect">Harmony Reflect</a>.
+  </p>
+</blockquote>
+
 <h3 id="tail-calls">Tail Calls</h3>
 <p>Calls in tail-position are guaranteed to not grow the stack unboundedly.  Makes recursive algorithms safe in the face of unbounded inputs.</p>
 <pre><code class="lang-JavaScript">function factorial(n, acc = 1) {
@@ -543,15 +618,19 @@ var p = timeout(1000).then(() =&gt; {
 // but safe on arbitrary inputs in eS6
 factorial(100000)
 </code></pre>
-
+<blockquote class="to5-callout to5-callout-danger">
+  <h4>Unsupported feature</h4>
+  <p>
+    Due to high complexity of transpiling Tail Calls, 6to5 does not currently have them implemented.
+    See <a href="https://github.com/6to5/6to5/issues/256">#256</a>.
+  </p>
+</blockquote>
         </div>
       </div>
     </div>
     <div class="footer text-center"><p><a href="https://github.com/6to5/6to5">6to5</a> v1.15.0 · Distributed under MIT License</p>
 
     </div>
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>
