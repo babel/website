@@ -108,21 +108,26 @@ obj.x ?= <span class="hljs-number">2</span>;
 <p>equivalent to</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> foo = {
   get bar() {
-    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._barRan) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._bar;
-    <span class="hljs-keyword">this</span>._barRan = <span class="hljs-literal">true</span>;
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._bar = complex();
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-keyword">this</span>, <span class="hljs-string">"bar"</span>, {
+      value: complex(),
+      enumerable: <span class="hljs-literal">true</span>,
+      configurable: <span class="hljs-literal">true</span>,
+      writable: <span class="hljs-literal">true</span>
+    }).bar;
   }
 };
 
 <span class="hljs-keyword">class</span> Foo {
   get bar() {
-    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._barRan) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._bar;
-    <span class="hljs-keyword">this</span>._barRan = <span class="hljs-literal">true</span>;
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._bar = complex();
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-keyword">this</span>, <span class="hljs-string">"bar"</span>, {
+      value: complex(),
+      enumerable: <span class="hljs-literal">true</span>,
+      configurable: <span class="hljs-literal">true</span>,
+      writable: <span class="hljs-literal">true</span>
+    }).bar;
   }
 }
 </code></pre>
-<p><strong>NOTE:</strong> Memoised functions will return the result of the <strong>first</strong> execution, regardless of arguments.</p>
 <h3 id="this-shorthand"><a class="anchor" href="#this-shorthand" aria-hidden="true"><span class="octicon octicon-link"></span></a>This shorthand</h3>
 <pre><code class="lang-javascript">@foo
 </code></pre>
