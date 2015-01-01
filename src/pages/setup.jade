@@ -1,0 +1,15 @@
+extends ../partials/layout.jade
+block settings
+  - var pageTitle = 'Setup';
+  - var pageClass = 'setup';
+block content
+  .docs-header
+    .container
+      h1 Setup
+      p Guides on how to setup 6to5 in whatever environment you might be working in.
+  .container
+    .row
+      .col-md-3.col-md-push-9
+        .sidebar: ul.nav
+      .col-md-9.col-md-pull-3.docs-content
+        include:markdown ../content/setup.md

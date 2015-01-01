@@ -135,32 +135,43 @@ require("6to5/register")({
 
 ## API
 
-
 ```javascript
-var to5 = require("6to5");
+var to5 = require('6to5');
 ```
 
-### to5.transform(code, [[options](#transform-options)]);
+### `to5.transform(code, [options])`
 
-```javascript
-var result = to5.transform("code();", options);
+Transforms the passed in `code`.
+
+**Example**
+
+```js
+var result = to5.transform('code();', options);
 result.code;
 result.map;
 result.ast;
 ```
 
-### to5.transformFileSync(filename, [[options](#transform-options)])
+### `to5.transformFile(filename, [options], callback)`
 
-```javascript
-to5.transformFileSync("filename.js", options).code;
-```
+Asynchronously transforms the entire contents of a file.
 
-### to5.transformFile(filename, [[options](#transform-options)], callback)
+**Example**
 
-```javascript
-to5.transformFile("filename.js", options, function (err, result) {
+```js
+to5.transformFile('filename.js', options, function (err, result) {
   result.code;
 });
+```
+
+### `to5.transformFileSync(filename, [options])`
+
+Synchronous version of `to5.transformFile`. Returns the transformed contents of the `filename`.
+
+**Example**
+
+```js
+to5.transformFileSync('filename.js', options).code;
 ```
 
 ### Transform Options

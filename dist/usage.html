@@ -17,10 +17,10 @@
         <div id="navigation" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="tour.html">Tour</a></li>
+            <li><a href="setup.html">Setup</a></li>
             <li class="active"><a href="usage.html">Usage</a></li>
             <li><a href="compare.html">Compare</a></li>
             <li><a href="caveats.html">Caveats</a></li>
-            <li><a href="plugins.html">Plugins</a></li>
             <li><a href="repl.html">REPL</a></li>
             <li><a href="https://gitter.im/6to5/6to5">Support</a></li>
           </ul>
@@ -126,21 +126,27 @@ override this by passing an ignore regex via:</p>
 });
 </code></pre>
 <h2 id="api">API</h2>
-<pre><code class="lang-javascript">var to5 = require(&quot;6to5&quot;);
+<pre><code class="lang-javascript">var to5 = require(&#39;6to5&#39;);
 </code></pre>
-<h3 id="to5-transform-code-options-transform-options-">to5.transform(code, [<a href="#transform-options">options</a>]);</h3>
-<pre><code class="lang-javascript">var result = to5.transform(&quot;code();&quot;, options);
+<h3 id="-to5-transform-code-options-"><code>to5.transform(code, [options])</code></h3>
+<p>Transforms the passed in <code>code</code>.</p>
+<p><strong>Example</strong></p>
+<pre><code class="lang-js">var result = to5.transform(&#39;code();&#39;, options);
 result.code;
 result.map;
 result.ast;
 </code></pre>
-<h3 id="to5-transformfilesync-filename-options-transform-options-">to5.transformFileSync(filename, [<a href="#transform-options">options</a>])</h3>
-<pre><code class="lang-javascript">to5.transformFileSync(&quot;filename.js&quot;, options).code;
-</code></pre>
-<h3 id="to5-transformfile-filename-options-transform-options-callback-">to5.transformFile(filename, [<a href="#transform-options">options</a>], callback)</h3>
-<pre><code class="lang-javascript">to5.transformFile(&quot;filename.js&quot;, options, function (err, result) {
+<h3 id="-to5-transformfile-filename-options-callback-"><code>to5.transformFile(filename, [options], callback)</code></h3>
+<p>Asynchronously transforms the entire contents of a file.</p>
+<p><strong>Example</strong></p>
+<pre><code class="lang-js">to5.transformFile(&#39;filename.js&#39;, options, function (err, result) {
   result.code;
 });
+</code></pre>
+<h3 id="-to5-transformfilesync-filename-options-"><code>to5.transformFileSync(filename, [options])</code></h3>
+<p>Synchronous version of <code>to5.transformFile</code>. Returns the transformed contents of the <code>filename</code>.</p>
+<p><strong>Example</strong></p>
+<pre><code class="lang-js">to5.transformFileSync(&#39;filename.js&#39;, options).code;
 </code></pre>
 <h3 id="transform-options">Transform Options</h3>
 <table>
