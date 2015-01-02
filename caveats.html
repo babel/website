@@ -77,6 +77,10 @@ satisfy <strong>all</strong> 6to5 feature requirements by using the included
 <td><code>Symbol</code>, <code>prototype[Symbol.iterator]</code></td>
 </tr>
 <tr>
+<td>Modules</td>
+<td><code>Object.assign</code>*</td>
+</tr>
+<tr>
 <td>Object spread/rest</td>
 <td><a href="experimental.html">experimental</a>, <code>Object.assign</code></td>
 </tr>
@@ -86,6 +90,7 @@ satisfy <strong>all</strong> 6to5 feature requirements by using the included
 </tr>
 </tbody>
 </table>
+<p>*Only required for exporting a non-function <code>default</code> with additional <code>export</code>s.</p>
 <h2 id="es5"><a class="anchor" href="#es5" aria-hidden="true"><span class="octicon octicon-link"></span></a>ES5</h2>
 <p>Since 6to5 assumes that your code will be ran in an ES5 environment it uses ES5
 functions. So if you&#39;re using an environment that has limited or no support for
@@ -123,7 +128,7 @@ isn&#39;t recommended.</p>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.4.5</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.4.6</p>
       </footer>
     </div>
   </body>
