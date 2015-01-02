@@ -1,8 +1,8 @@
-## Using the CLI
+##  CLI
 
 > 6to5 comes with a built-in CLI which can be used to compile files from the command line.
 
-### Install
+#### Install
 
 Using [npm](https://www.npmjs.com/) you can install 6to5 globally, making it available from the
 command line.
@@ -11,7 +11,9 @@ command line.
 $ npm install --global 6to5
 ```
 
-### Compile Files
+### 6to5
+
+#### Compile Files
 
 Compile the file `script.js` and **output to stdout**.
 
@@ -26,7 +28,7 @@ If you would like to **output to a file** you may use `--out-file` or `-o`.
 $ 6to5 script.js --out-file script-compiled.js
 ```
 
-### Compile with Source Maps
+#### Compile with Source Maps
 
 If you would then like to add a **source map file** you can use `--source-maps` or `-s`. [Learn more about
 source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/).
@@ -41,7 +43,7 @@ If you would rather have **inline source maps**, you may use `--source-maps-inli
 $ 6to5 script.js --out-file script-compiled.js --source-maps-inline
 ```
 
-### Compile Directories
+#### Compile Directories
 
 Compile the entire `src` directory and output it to the `lib` directory.
 
@@ -55,7 +57,7 @@ Compile the entire `src` directory and output it to the one concatenated file.
 $ 6to5 src --out-file script-compiled.js
 ```
 
-### Piping Files
+#### Piping Files
 
 Pipe a file in via stdin and output it to `script-compiled.js`
 
@@ -86,35 +88,38 @@ Compile and run `test.js`.
 $ 6to5-node test
 ```
 
-## Using in Node.js
+## Require Hook
 
->
+All subsequent files required by node with the extensions `.es6` and `.js` will be transformed by
+6to5. The polyfill specified in Polyfill is also required.
 
-### Require hook
+#### Install
 
-All subsequent files required by node with the extensions `.es6` and `.js` will
-be transformed by 6to5. The polyfill specified in [Polyfill](polyfill.md) is
-also required.
-
-```javascript
-require("6to5/register");
+```sh
+$ npm install 6to5
 ```
 
-**NOTE:** By default all requires to `node_modules` will be ignored. You can
-override this by passing an ignore regex via:
+#### Usage
 
-```javascript
-require("6to5/register")({
+```js
+require('6to5/register');
+```
+
+**NOTE:** By default all requires to node_modules will be ignored. You can override this by passing
+an ignore regex via:
+
+```js
+require('6to5/register')({
   // This will override `node_modules` ignoring - you can alternatively pass
   // a regex
   ignore: false
 });
 ```
 
-### Register Options
+#### Register Options
 
 ```javascript
-require("6to5/register")({
+require('6to5/register')({
   // Optional ignore regex - if any filenames **do** match this regex then they
   // aren't compiled
   ignore: /regex/,
@@ -129,7 +134,7 @@ require("6to5/register")({
 
   // This will remove the currently hooked extensions of .es6 and .js so you'll
   // have to add them back if you want them to be used again.
-  extensions: [".js", ".es6"]
+  extensions: ['.js', '.es6']
 });
 ```
 
@@ -174,7 +179,7 @@ Synchronous version of `to5.transformFile`. Returns the transformed contents of 
 to5.transformFileSync('filename.js', options).code;
 ```
 
-### Transform Options
+## Options
 
 | Option | Default | Description |
 | ------ | ------- | ----------- |
@@ -193,16 +198,201 @@ to5.transformFileSync('filename.js', options).code;
 | `comments` | `true` | Output comments in generated output. |
 | `experimental` | `false` | Enable support for experimental ES7 features. |
 
+## Polyfill
 
+> 6to5 includes a polyfill that includes a custom
+> [regenerator runtime](https://github.com/facebook/regenerator/blob/master/runtime.js) and
+> [core.js](https://github.com/zloirock/core-js).
+
+This will emulate a full ES6 environment. This polyfill is automatically loaded when using
+`6to5-node` and `6to5/register`.
+
+
+#### Usage in Node/Browserify
+
+You need to include the polyfill require at the top the **entry point** to your application.
+
+```js
+require('6to5/polyfill');
+```
+
+Fortunately, this is automatically loaded when using:
+
+```js
+require('6to5/register');
+```
+
+#### Usage in Browser
+
+Available from the `browser-polyfill.js` file within the 6to5 directory of an npm release. This needs
+to be included **before** all your compiled 6to5 code. You can either prepend it to your compiled
+code or include it in a `<script>` before it.
+
+**NOTE:** Do not `require` this via browserify etc, use `6to5/polyfill`.
+
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Polyfills are not perfect</h4>
+  <p>
+    Due to limitations in various ES5 environments not every polyfill will work in every
+    environment.
+  </p>
+</blockquote>
+
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Certain polyfills not included</h4>
+  <p>
+    Certain polyfills are too large/complex for their implemented features to justify including them
+    for all builds. You may have to include additional polyfills for a subset of ES6 features.
+  </p>
+</blockquote>
 
 ## Experimental
 
-6to5 also has experimental support for ES7 proposals. You can enable this with
-the `experimental: true` option when using the [Node API](#node) or
+> 6to5 also has experimental support for ES7 proposals.
+
+You can enable this with the `experimental: true` option when using the [Node API](#node) or
 `--experimental` when using the [CLI](#cli).
 
-**WARNING:** These proposals are subject to change so use with
-**extreme caution**.
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Subject to change</h4>
+  <p>
+    These proposals are subject to change so use with **extreme caution**. 6to5 may update without
+    warning in order to track spec changes.
+  </p>
+</blockquote>
 
 ## Playground
 
+> Playground is a proving ground for **possible** ES7 proposals.
+
+<blockquote class="to5-callout to5-callout-danger">
+  <h4>Unofficial</h4>
+  <p>
+    These features are in no way endorsed by Ecma International and are not a part of ES6. They
+    might become a part of ECMAScript in the future.
+  </p>
+</blockquote>
+
+#### Usage
+
+```js
+$ 6to5 --playground
+```
+
+```js
+to5.transform('code', { playground: true });
+```
+
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Enables experimental</h4>
+  <p>
+    Enabling playground also enables experimental support.
+  </p>
+</blockquote>
+
+### Memoization assignment operator
+
+**Uses**
+
+```js
+var obj = {};
+obj.x ?= 2;
+obj.x; // 2
+
+obj = { x: 1 };
+obj.x ?= 2;
+obj.x; // 1
+
+obj = { x: undefined }
+obj.x ?= 2;
+obj.x; // undefined
+```
+
+**Example**
+
+```js
+var obj = {};
+obj.x ?= 2;
+```
+
+is equivalent to:
+
+```js
+var obj = {};
+if (!Object.prototype.hasOwnProperty.call(obj, 'x')) obj.x = 2;
+```
+
+### Method binding
+
+
+```js
+var fn = obj#method;
+var fn = obj#method('foob');
+
+['foo', 'bar'].map(#toUpperCase); // ['FOO', 'BAR']
+[1.1234, 23.53245, 3].map(#toFixed(2)); // ['1.12', '23.53', '3.00']
+```
+
+is equivalent to:
+
+```
+var fn = obj.method.bind(obj);
+var fn = obj.method.bind(obj, 'foob');
+
+['foo', 'bar'].map(function (val) { return val.toUpperCase(); });
+[1.1234, 23.53245, 3].map(function (val) { return val.toFixed(2); });
+```
+
+### Object getter memoization
+
+```js
+var foo = {
+  memo bar() {
+    return complex();
+  }
+};
+
+class Foo {
+  memo bar() {
+    return complex();
+  }
+}
+```
+
+is equivalent to
+
+```js
+var foo = {
+  get bar() {
+    return Object.defineProperty(this, "bar", {
+      value: complex(),
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }).bar;
+  }
+};
+
+class Foo {
+  get bar() {
+    return Object.defineProperty(this, "bar", {
+      value: complex(),
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }).bar;
+  }
+}
+```
+
+### This shorthand
+
+```js
+@foo
+```
+
+is equivalent to
+
+```
+this.foo
+```

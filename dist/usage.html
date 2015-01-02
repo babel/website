@@ -43,16 +43,17 @@
             <ul class="nav"></ul>
           </div>
         </div>
-        <div class="col-md-9 col-md-pull-3 docs-content"><h2 id="using-the-cli">Using the CLI</h2>
+        <div class="col-md-9 col-md-pull-3 docs-content"><h2 id="cli">CLI</h2>
 <blockquote>
 <p>6to5 comes with a built-in CLI which can be used to compile files from the command line.</p>
 </blockquote>
-<h3 id="install">Install</h3>
+<h4 id="install">Install</h4>
 <p>Using <a href="https://www.npmjs.com/">npm</a> you can install 6to5 globally, making it available from the
 command line.</p>
 <pre><code class="lang-sh">$ npm install --global 6to5
 </code></pre>
-<h3 id="compile-files">Compile Files</h3>
+<h3 id="6to5">6to5</h3>
+<h4 id="compile-files">Compile Files</h4>
 <p>Compile the file <code>script.js</code> and <strong>output to stdout</strong>.</p>
 <pre><code class="lang-sh">$ 6to5 script.js
 # output...
@@ -60,7 +61,7 @@ command line.</p>
 <p>If you would like to <strong>output to a file</strong> you may use <code>--out-file</code> or <code>-o</code>.</p>
 <pre><code class="lang-js">$ 6to5 script.js --out-file script-compiled.js
 </code></pre>
-<h3 id="compile-with-source-maps">Compile with Source Maps</h3>
+<h4 id="compile-with-source-maps">Compile with Source Maps</h4>
 <p>If you would then like to add a <strong>source map file</strong> you can use <code>--source-maps</code> or <code>-s</code>. <a href="http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/">Learn more about
 source maps</a>.</p>
 <pre><code class="lang-js">$ 6to5 script.js --out-file script-compiled.js --source-maps
@@ -68,14 +69,14 @@ source maps</a>.</p>
 <p>If you would rather have <strong>inline source maps</strong>, you may use <code>--source-maps-inline</code> or <code>-t</code>.</p>
 <pre><code class="lang-js">$ 6to5 script.js --out-file script-compiled.js --source-maps-inline
 </code></pre>
-<h3 id="compile-directories">Compile Directories</h3>
+<h4 id="compile-directories">Compile Directories</h4>
 <p>Compile the entire <code>src</code> directory and output it to the <code>lib</code> directory.</p>
 <pre><code class="lang-sh">$ 6to5 src --out-dir lib
 </code></pre>
 <p>Compile the entire <code>src</code> directory and output it to the one concatenated file.</p>
 <pre><code class="lang-sh">$ 6to5 src --out-file script-compiled.js
 </code></pre>
-<h3 id="piping-files">Piping Files</h3>
+<h4 id="piping-files">Piping Files</h4>
 <p>Pipe a file in via stdin and output it to <code>script-compiled.js</code></p>
 <pre><code>$ 6to5 --out-file script-compiled.js &lt; script.js
 </code></pre><h3 id="6to5-node">6to5-node</h3>
@@ -90,24 +91,25 @@ ES6 code before running it.</p>
 <p>Compile and run <code>test.js</code>.</p>
 <pre><code class="lang-sh">$ 6to5-node test
 </code></pre>
-<h2 id="using-in-node-js">Using in Node.js</h2>
-<p>&gt;</p>
-<h3 id="require-hook">Require hook</h3>
-<p>All subsequent files required by node with the extensions <code>.es6</code> and <code>.js</code> will
-be transformed by 6to5. The polyfill specified in <a href="polyfill.md">Polyfill</a> is
-also required.</p>
-<pre><code class="lang-javascript">require(&quot;6to5/register&quot;);
+<h2 id="require-hook">Require Hook</h2>
+<p>All subsequent files required by node with the extensions <code>.es6</code> and <code>.js</code> will be transformed by
+6to5. The polyfill specified in Polyfill is also required.</p>
+<h4 id="install">Install</h4>
+<pre><code class="lang-sh">$ npm install 6to5
 </code></pre>
-<p><strong>NOTE:</strong> By default all requires to <code>node_modules</code> will be ignored. You can
-override this by passing an ignore regex via:</p>
-<pre><code class="lang-javascript">require(&quot;6to5/register&quot;)({
+<h4 id="usage">Usage</h4>
+<pre><code class="lang-js">require(&#39;6to5/register&#39;);
+</code></pre>
+<p><strong>NOTE:</strong> By default all requires to node_modules will be ignored. You can override this by passing
+an ignore regex via:</p>
+<pre><code class="lang-js">require(&#39;6to5/register&#39;)({
   // This will override `node_modules` ignoring - you can alternatively pass
   // a regex
   ignore: false
 });
 </code></pre>
-<h3 id="register-options">Register Options</h3>
-<pre><code class="lang-javascript">require(&quot;6to5/register&quot;)({
+<h4 id="register-options">Register Options</h4>
+<pre><code class="lang-javascript">require(&#39;6to5/register&#39;)({
   // Optional ignore regex - if any filenames **do** match this regex then they
   // aren&#39;t compiled
   ignore: /regex/,
@@ -122,7 +124,7 @@ override this by passing an ignore regex via:</p>
 
   // This will remove the currently hooked extensions of .es6 and .js so you&#39;ll
   // have to add them back if you want them to be used again.
-  extensions: [&quot;.js&quot;, &quot;.es6&quot;]
+  extensions: [&#39;.js&#39;, &#39;.es6&#39;]
 });
 </code></pre>
 <h2 id="api">API</h2>
@@ -148,7 +150,7 @@ result.ast;
 <p><strong>Example</strong></p>
 <pre><code class="lang-js">to5.transformFileSync(&#39;filename.js&#39;, options).code;
 </code></pre>
-<h3 id="transform-options">Transform Options</h3>
+<h2 id="options">Options</h2>
 <table>
 <thead>
 <tr>
@@ -230,14 +232,157 @@ result.ast;
 </tr>
 </tbody>
 </table>
-<h2 id="experimental">Experimental</h2>
-<p>6to5 also has experimental support for ES7 proposals. You can enable this with
-the <code>experimental: true</code> option when using the <a href="#node">Node API</a> or
-<code>--experimental</code> when using the <a href="#cli">CLI</a>.</p>
-<p><strong>WARNING:</strong> These proposals are subject to change so use with
-<strong>extreme caution</strong>.</p>
-<h2 id="playground">Playground</h2>
+<h2 id="polyfill">Polyfill</h2>
+<blockquote>
+<p>6to5 includes a polyfill that includes a custom
+<a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a> and
+<a href="https://github.com/zloirock/core-js">core.js</a>.</p>
+</blockquote>
+<p>This will emulate a full ES6 environment. This polyfill is automatically loaded when using
+<code>6to5-node</code> and <code>6to5/register</code>.</p>
+<h4 id="usage-in-node-browserify">Usage in Node/Browserify</h4>
+<p>You need to include the polyfill require at the top the <strong>entry point</strong> to your application.</p>
+<pre><code class="lang-js">require(&#39;6to5/polyfill&#39;);
+</code></pre>
+<p>Fortunately, this is automatically loaded when using:</p>
+<pre><code class="lang-js">require(&#39;6to5/register&#39;);
+</code></pre>
+<h4 id="usage-in-browser">Usage in Browser</h4>
+<p>Available from the <code>browser-polyfill.js</code> file within the 6to5 directory of an npm release. This needs
+to be included <strong>before</strong> all your compiled 6to5 code. You can either prepend it to your compiled
+code or include it in a <code>&lt;script&gt;</code> before it.</p>
+<p><strong>NOTE:</strong> Do not <code>require</code> this via browserify etc, use <code>6to5/polyfill</code>.</p>
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Polyfills are not perfect</h4>
+  <p>
+    Due to limitations in various ES5 environments not every polyfill will work in every
+    environment.
+  </p>
+</blockquote>
 
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Certain polyfills not included</h4>
+  <p>
+    Certain polyfills are too large/complex for their implemented features to justify including them
+    for all builds. You may have to include additional polyfills for a subset of ES6 features.
+  </p>
+</blockquote>
+
+<h2 id="experimental">Experimental</h2>
+<blockquote>
+<p>6to5 also has experimental support for ES7 proposals.</p>
+</blockquote>
+<p>You can enable this with the <code>experimental: true</code> option when using the <a href="#node">Node API</a> or
+<code>--experimental</code> when using the <a href="#cli">CLI</a>.</p>
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Subject to change</h4>
+  <p>
+    These proposals are subject to change so use with <strong>extreme caution</strong>. 6to5 may update without
+    warning in order to track spec changes.
+  </p>
+</blockquote>
+
+<h2 id="playground">Playground</h2>
+<blockquote>
+<p>Playground is a proving ground for <strong>possible</strong> ES7 proposals.</p>
+</blockquote>
+<blockquote class="to5-callout to5-callout-danger">
+  <h4>Unofficial</h4>
+  <p>
+    These features are in no way endorsed by Ecma International and are not a part of ES6. They
+    might become a part of ECMAScript in the future.
+  </p>
+</blockquote>
+
+<h4 id="usage">Usage</h4>
+<pre><code class="lang-js">$ 6to5 --playground
+</code></pre>
+<pre><code class="lang-js">to5.transform(&#39;code&#39;, { playground: true });
+</code></pre>
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Enables experimental</h4>
+  <p>
+    Enabling playground also enables experimental support.
+  </p>
+</blockquote>
+
+<h3 id="memoization-assignment-operator">Memoization assignment operator</h3>
+<p><strong>Uses</strong></p>
+<pre><code class="lang-js">var obj = {};
+obj.x ?= 2;
+obj.x; // 2
+
+obj = { x: 1 };
+obj.x ?= 2;
+obj.x; // 1
+
+obj = { x: undefined }
+obj.x ?= 2;
+obj.x; // undefined
+</code></pre>
+<p><strong>Example</strong></p>
+<pre><code class="lang-js">var obj = {};
+obj.x ?= 2;
+</code></pre>
+<p>is equivalent to:</p>
+<pre><code class="lang-js">var obj = {};
+if (!Object.prototype.hasOwnProperty.call(obj, &#39;x&#39;)) obj.x = 2;
+</code></pre>
+<h3 id="method-binding">Method binding</h3>
+<pre><code class="lang-js">var fn = obj#method;
+var fn = obj#method(&#39;foob&#39;);
+
+[&#39;foo&#39;, &#39;bar&#39;].map(#toUpperCase); // [&#39;FOO&#39;, &#39;BAR&#39;]
+[1.1234, 23.53245, 3].map(#toFixed(2)); // [&#39;1.12&#39;, &#39;23.53&#39;, &#39;3.00&#39;]
+</code></pre>
+<p>is equivalent to:</p>
+<pre><code>var fn = obj.method.bind(obj);
+var fn = obj.method.bind(obj, &#39;foob&#39;);
+
+[&#39;foo&#39;, &#39;bar&#39;].map(function (val) { return val.toUpperCase(); });
+[1.1234, 23.53245, 3].map(function (val) { return val.toFixed(2); });
+</code></pre><h3 id="object-getter-memoization">Object getter memoization</h3>
+<pre><code class="lang-js">var foo = {
+  memo bar() {
+    return complex();
+  }
+};
+
+class Foo {
+  memo bar() {
+    return complex();
+  }
+}
+</code></pre>
+<p>is equivalent to</p>
+<pre><code class="lang-js">var foo = {
+  get bar() {
+    return Object.defineProperty(this, &quot;bar&quot;, {
+      value: complex(),
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }).bar;
+  }
+};
+
+class Foo {
+  get bar() {
+    return Object.defineProperty(this, &quot;bar&quot;, {
+      value: complex(),
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }).bar;
+  }
+}
+</code></pre>
+<h3 id="this-shorthand">This shorthand</h3>
+<pre><code class="lang-js">@foo
+</code></pre>
+<p>is equivalent to</p>
+<pre><code>this.foo
+</code></pre>
         </div>
       </div>
     </div>

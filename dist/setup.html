@@ -54,10 +54,35 @@
 </blockquote>
 
 <h2 id="node-js">Node.js</h2>
+<h3 id="cli">CLI</h3>
 <p><strong>Install</strong></p>
 <pre><code class="lang-sh">$ npm install --global 6to5
 </code></pre>
+<p><strong>Usage</strong></p>
+<pre><code class="lang-sh">$ 6to5 script.js
+</code></pre>
+<blockquote class="to5-callout to5-callout-info">
+  <p>
+    For full documentation on the 6to5 CLI see the <a href="usage.html">usage docs</a>.
+  </p>
+</blockquote>
+
 <h3 id="require-hook">Require Hook</h3>
+<p><strong>Install</strong></p>
+<pre><code class="lang-sh">$ npm install 6to5
+</code></pre>
+<p><strong>Usage</strong></p>
+<p>All subsequent files required by node with the extensions <code>.es6</code> and <code>.js</code> will
+be transformed by 6to5. The polyfill specified in <a href="polyfill.md">Polyfill</a> is
+also required.</p>
+<pre><code class="lang-javascript">require(&#39;6to5/register&#39;);
+</code></pre>
+<blockquote class="to5-callout to5-callout-info">
+  <p>
+    For full documentation on the 6to5 require hook see the <a href="usage.html">usage docs</a>.
+  </p>
+</blockquote>
+
 <h2 id="rails">Rails</h2>
 <h2 id="build-systems">Build Systems</h2>
 <h3 id="brocolli">Brocolli</h3>

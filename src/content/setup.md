@@ -10,13 +10,49 @@
 
 ## Node.js
 
+### CLI
+
 **Install**
 
 ```sh
 $ npm install --global 6to5
 ```
 
+**Usage**
+
+```sh
+$ 6to5 script.js
+```
+
+<blockquote class="to5-callout to5-callout-info">
+  <p>
+    For full documentation on the 6to5 CLI see the [usage docs](usage.html).
+  </p>
+</blockquote>
+
 ### Require Hook
+
+**Install**
+
+```sh
+$ npm install 6to5
+```
+
+**Usage**
+
+All subsequent files required by node with the extensions `.es6` and `.js` will
+be transformed by 6to5. The polyfill specified in [Polyfill](polyfill.md) is
+also required.
+
+```javascript
+require('6to5/register');
+```
+
+<blockquote class="to5-callout to5-callout-info">
+  <p>
+    For full documentation on the 6to5 require hook see the [usage docs](usage.html).
+  </p>
+</blockquote>
 
 ## Rails
 
