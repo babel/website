@@ -62,7 +62,7 @@ satisfy <strong>all</strong> 6to5 feature requirements by using the included
 </tr>
 <tr>
 <td>Array destructuring</td>
-<td><code>Array.isArray</code>, <code>Array.from</code></td>
+<td><code>Array.from</code></td>
 </tr>
 <tr>
 <td>Async functions, Generators</td>
@@ -70,7 +70,7 @@ satisfy <strong>all</strong> 6to5 feature requirements by using the included
 </tr>
 <tr>
 <td>Comprehensions</td>
-<td><a href="experimental.html">experimental</a>, <code>Array.isArray</code>, <code>Array.from</code></td>
+<td><a href="experimental.html">experimental</a>, <code>Array.from</code></td>
 </tr>
 <tr>
 <td>For Of</td>
@@ -82,7 +82,7 @@ satisfy <strong>all</strong> 6to5 feature requirements by using the included
 </tr>
 <tr>
 <td>Spread</td>
-<td><code>Array.isArray</code>, <code>Array.from</code></td>
+<td><code>Array.from</code></td>
 </tr>
 </tbody>
 </table>
@@ -93,11 +93,11 @@ ES5 such as lower versions of IE then using the
 <a href="https://github.com/es-shims/es5-shim">es5-shim</a> along with the
 <a href="polyfill.html">6to5 polyfill</a> will add support for these methods.</p>
 <h2 id="internet-explorer"><a class="anchor" href="#internet-explorer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Internet Explorer</h2>
-<h3 id="classes-9-and-below-"><a class="anchor" href="#classes-(9-and-below)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes (9 and below)</h3>
+<h3 id="classes-10-and-below-"><a class="anchor" href="#classes-(10-and-below)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes (10 and below)</h3>
 <p>If you&#39;re inheriting from a class then static properties are inherited from it
 via <a href="https://developer.mozilla.org/en-us/docs/web/javascript/reference/global_objects/object/proto">__proto__</a>,
 this is widely supported but you may run into problems with much older browsers.</p>
-<p><strong>NOTE:</strong> <code>__proto__</code> is not supported on IE &lt;= 9 so static properties
+<p><strong>NOTE:</strong> <code>__proto__</code> is not supported in IE &lt;= 10 so static properties
 <strong>will not</strong> be inherited. A possible workaround is to use <code>super();</code>:</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">class</span> Foo {
   static foo() {
@@ -116,14 +116,14 @@ this is widely supported but you may run into problems with much older browsers.
 unfortunate as it&#39;s required to set getters and setters. Due to this if
 you plan on supporting IE8 or below then the user of getters and setters
 isn&#39;t recommended.</p>
-<p>Reference: <a href="https://developer.mozilla.org/en/docs/web/javascript/reference/global_objects/object/defineproperty#internet_explorer_8_specific_notes">MDN</a>.</p>
+<p><strong>Reference</strong>: <a href="https://developer.mozilla.org/en/docs/web/javascript/reference/global_objects/object/defineproperty#internet_explorer_8_specific_notes">MDN</a>.</p>
 
         </div>
       </div>
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.4.3</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.4.4</p>
       </footer>
     </div>
   </body>

@@ -55,10 +55,16 @@
 <ul>
 <li><a href="#memoization-operator">Memoization operator</a></li>
 <li><a href="#method-binding">Method binding</a></li>
+<li><a href="#method-binding-function-shorthand">Method binding function shorthand</a></li>
 <li><a href="#object-getter-memoization">Object getter memoization</a></li>
 <li><a href="#this-shorthand">This shorthand</a></li>
 </ul>
 <h3 id="memoization-assignment-operator"><a class="anchor" href="#memoization-assignment-operator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Memoization assignment operator</h3>
+<p>The memoization assignment operator allows you to lazily set an object property.
+It checks whether there&#39;s a property defined on the object and if there isn&#39;t then
+the right hand value is set.</p>
+<p>This means that <code>obj.x</code> in the following <code>var x = { x: undefined }; obj.x ?= 2;</code>
+will still be <code>undefined</code> because it&#39;s already been defined on the object.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {};
 obj.x ?= <span class="hljs-number">2</span>;
 obj.x; <span class="hljs-comment">// 2</span>
@@ -74,22 +80,24 @@ obj.x; <span class="hljs-comment">// undefined</span>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {};
 obj.x ?= <span class="hljs-number">2</span>;
 </code></pre>
-<p>equivalent to:</p>
+<p>equivalent to</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {};
 <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">Object</span>.prototype.hasOwnProperty.call(obj, <span class="hljs-string">"x"</span>)) obj.x = <span class="hljs-number">2</span>;
 </code></pre>
 <h3 id="method-binding"><a class="anchor" href="#method-binding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Method binding</h3>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> fn = obj#method;
 <span class="hljs-keyword">var</span> fn = obj#method(<span class="hljs-string">"foob"</span>);
-
-[<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>].map(#toUpperCase); <span class="hljs-comment">// ["FOO", "BAR"]</span>
-[<span class="hljs-number">1.1234</span>, <span class="hljs-number">23.53245</span>, <span class="hljs-number">3</span>].map(#toFixed(<span class="hljs-number">2</span>)); <span class="hljs-comment">// ["1.12", "23.53", "3.00"]</span>
 </code></pre>
-<p>equivalent to:</p>
+<p>equivalent to</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> fn = obj.method.bind(obj);
 <span class="hljs-keyword">var</span> fn = obj.method.bind(obj, <span class="hljs-string">"foob"</span>);
-
-[<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>].map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(val)</span> </span>{ <span class="hljs-keyword">return</span> val.toUpperCase(); });
+</code></pre>
+<h3 id="method-binding-function-shorthand"><a class="anchor" href="#method-binding-function-shorthand" aria-hidden="true"><span class="octicon octicon-link"></span></a>Method binding function shorthand</h3>
+<pre><code class="lang-javascript">[<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>].map(#toUpperCase); <span class="hljs-comment">// ["FOO", "BAR"]</span>
+[<span class="hljs-number">1.1234</span>, <span class="hljs-number">23.53245</span>, <span class="hljs-number">3</span>].map(#toFixed(<span class="hljs-number">2</span>)); <span class="hljs-comment">// ["1.12", "23.53", "3.00"]</span>
+</code></pre>
+<p>equivalent to</p>
+<pre><code class="lang-javascript">[<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>].map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(val)</span> </span>{ <span class="hljs-keyword">return</span> val.toUpperCase(); });
 [<span class="hljs-number">1.1234</span>, <span class="hljs-number">23.53245</span>, <span class="hljs-number">3</span>].map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(val)</span> </span>{ <span class="hljs-keyword">return</span> val.toFixed(<span class="hljs-number">2</span>); });
 </code></pre>
 <h3 id="object-getter-memoization"><a class="anchor" href="#object-getter-memoization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object getter memoization</h3>
@@ -140,7 +148,7 @@ obj.x ?= <span class="hljs-number">2</span>;
 
       <footer>
         <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.4.3</p>
+        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.4.4</p>
       </footer>
     </div>
   </body>
