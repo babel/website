@@ -6759,12 +6759,57 @@ table > thead > tr > td {
 table > tbody > tr:nth-child(odd) {
   background-color: #f9f9f9;
 }
-.plugin-labels {
-  color: white;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-bottom: 4px;
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  position: relative;
+}
+h1:target::after,
+.h1:target::after,
+h2:target::after,
+.h2:target::after,
+h3:target::after,
+.h3:target::after,
+h4:target::after,
+.h4:target::after,
+h5:target::after,
+.h5:target::after,
+h6:target::after,
+.h6:target::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  height: 1em;
+  width: 10px;
+  background: #f5da55;
+  margin-left: -20px;
+}
+h1::before,
+.h1::before,
+h2::before,
+.h2::before,
+h3::before,
+.h3::before,
+h4::before,
+.h4::before,
+h5::before,
+.h5::before,
+h6::before,
+.h6::before {
+  content: "";
+  display: block;
+  margin-top: -70px;
+  height: 70px;
 }
 .page-repl,
 .page-repl body {

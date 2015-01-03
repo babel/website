@@ -14,3 +14,30 @@ table {
   &:extend(.table-striped);
   .table-striped();
 }
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  position: relative;
+
+  &:target::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    height: 1em;
+    width: 10px;
+    background: @to5-yellow;
+    margin-left: -20px;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    margin-top: -70px;
+    height: 70px;
+  }
+}
