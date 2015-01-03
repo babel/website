@@ -1,16 +1,10 @@
 .logo {
-  position: relative;
-  font-family: "True Lies";
-  .rotate(-9deg);
+  background: url(images/logo.svg) no-repeat center;
+  background-size: auto @navbar-height - @navbar-padding-vertical;
+  width: 90px;
+  height: @navbar-height;
 
-  &-six {
-    position: relative;
-    top: -0.2em;
-    .rotate(-3deg);
-    font-size: 1.06em;
-  }
-
-  &-five {
-    font-size: 1.06em;
+  &.navbar-brand {
+    .hide-text();
   }
 }

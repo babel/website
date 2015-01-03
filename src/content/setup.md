@@ -56,6 +56,26 @@ require('6to5/register');
 
 ## Rails
 
+### Sprockets
+
+**Install**
+
+```sh
+$ gem install sprockets-es6
+```
+
+**Usage**
+
+```rb
+# Gemfile
+gem 'sprockets'
+gem 'sprockets-es6'
+```
+
+```rb
+require 'sprockets/es6'
+```
+
 ## Build Systems
 
 ### Brocolli

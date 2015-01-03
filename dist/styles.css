@@ -6529,22 +6529,17 @@ body {
 .navbar + .jumbotron {
   margin-top: 0;
 }
-.jumbotron .jumbotron-brand {
+.jumbotron::before {
+  content: "";
+  display: block;
   position: absolute;
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%) rotate(-9deg);
-  -ms-transform: translate(-50%, -50%) rotate(-9deg);
-      transform: translate(-50%, -50%) rotate(-9deg);
-  margin-top: 0.1em;
-  font-size: 20em;
-  color: #252624;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: default;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: url(images/logo.svg) no-repeat;
+  background-position: center center;
+  background-size: 150% auto;
+  opacity: 0.3;
 }
 .jumbotron * {
   position: relative;
@@ -6562,6 +6557,9 @@ body {
   background: #f5da55;
   color: #323330;
 }
+.jumbotron-inverse::before {
+  opacity: 0.05;
+}
 .jumbotron-inverse h1 {
   color: inherit;
 }
@@ -6573,27 +6571,23 @@ body {
     margin: 60px 0;
     padding: 10em 0;
   }
-  .jumbotron .jumbotron-brand {
-    font-size: 30em;
+  .jumbotron::before {
+    background-size: 110%;
+    background-position: 0% center;
   }
 }
 .logo {
-  position: relative;
-  font-family: "True Lies";
-  -webkit-transform: rotate(-9deg);
-  -ms-transform: rotate(-9deg);
-  transform: rotate(-9deg);
+  background: url(images/logo.svg) no-repeat center;
+  background-size: auto 35px;
+  width: 90px;
+  height: 50px;
 }
-.logo-six {
-  position: relative;
-  top: -0.2em;
-  -webkit-transform: rotate(-3deg);
-  -ms-transform: rotate(-3deg);
-  transform: rotate(-3deg);
-  font-size: 1.06em;
-}
-.logo-five {
-  font-size: 1.06em;
+.logo.navbar-brand {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
 }
 .navbar {
   font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
