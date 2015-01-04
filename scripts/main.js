@@ -233,9 +233,9 @@
 
   var Router = Backbone.Router.extend({
     routes: {
-      ''            : 'index',
-      'repl/'       : 'repl',
-      'docs/:name/' : 'docs'
+      '6to5.github.io'             : 'index',
+      '6to5.github.io/repl/'       : 'repl',
+      '6to5.github.io/docs/:name/' : 'docs'
     },
 
     index: function() {
