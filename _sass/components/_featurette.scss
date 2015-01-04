@@ -29,12 +29,14 @@
   img {
     border-radius: $border-radius-base;
   }
+}
 
-  @media (min-width: $screen-md-min) {
+@media (min-width: $screen-md-min) {
+  .featurette {
     padding: 20px 0;
+  }
 
-    &-divider {
-      margin: 20px 0;
-    }
+  .featurette-divider {
+    margin: 20px 0;
   }
 }

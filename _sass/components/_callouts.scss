@@ -28,24 +28,24 @@
   & + & {
     margin-top: -($line-height-computed / 4);
   }
+}
 
-  /* Variations */
-  &-danger {
-    border-left-color: $brand-danger;
-    h4 {
-      color: #ce4844;
-    }
+/* Variations */
+.to5-callout-danger {
+  border-left-color: $brand-danger;
+  h4 {
+    color: #ce4844;
   }
-  &-warning {
-    border-left-color: $brand-warning;
-    h4 {
-      color: #aa6708;
-    }
+}
+.to5-callout-warning {
+  border-left-color: $brand-warning;
+  h4 {
+    color: #aa6708;
   }
-  &-info {
-    border-left-color: $brand-info;
-    h4 {
-      color: #1b809e;
-    }
+}
+.to5-callout-info {
+  border-left-color: $brand-info;
+  h4 {
+    color: #1b809e;
   }
 }

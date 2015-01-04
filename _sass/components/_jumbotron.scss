@@ -38,23 +38,6 @@
     font-weight: 600;
   }
 
-  &-inverse {
-    background: $to5-yellow;
-    color: $to5-dark-gray;
-
-    &::before {
-      opacity: 0.05;
-    }
-
-    h1 {
-      color: inherit;
-    }
-  }
-
-  &-inverse &-brand {
-    color: darken($to5-yellow, 10%);
-  }
-
   @media (min-width: $screen-md-min) {
     margin: 60px 0;
     padding: 10em 0;
@@ -63,5 +46,22 @@
       background-size: 110%;
       background-position: 0% center;
     }
+  }
+}
+
+.jumbotron-inverse {
+  background: $to5-yellow;
+  color: $to5-dark-gray;
+
+  &::before {
+    opacity: 0.05;
+  }
+
+  h1 {
+    color: inherit;
+  }
+
+  .jumbotron-brand {
+    color: darken($to5-yellow, 10%);
   }
 }
