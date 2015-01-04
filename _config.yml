@@ -10,7 +10,8 @@ url: "https://6to5.org" # the base hostname & protocol for your site
 # github_username:  jekyll
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
+highlighter: pygments
 kramdown:
   input: GFM
 # header navigation
