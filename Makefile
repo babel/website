@@ -16,3 +16,11 @@ build:
 	fi
 
 	cat ./_6to5/dist/6to5.min.js ./_6to5/dist/polyfill.min.js > ./scripts/6to5.js;
+
+	if [ ! -d ./node_modules]; \
+	then npm install; \
+	fi
+
+	if [ ! -d ./_sass/bootstrap ]; \
+	then cp -r ./node_modules/bootstrap-sass/assets/stylesheets/bootstrap ./_sass/bootstrap; \
+	fi
