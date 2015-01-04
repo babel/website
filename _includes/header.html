@@ -1,0 +1,26 @@
+<nav role="navigation" id="header" class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggle collapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="{{ site.baseurl }}/" class="navbar-brand logo">6to5</a>
+    </div>
+    <div id="navigation" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        {% for link in site.navigation %}
+          <li {% if page.url == link.url %}class="active"{% endif %}>
+            <a href="{{ link.url | prepend: site.baseurl }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+        <li><a href="https://gitter.im/6to5/6to5">Support</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://github.com/6to5/6to5">Github</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
