@@ -10,6 +10,7 @@ table {
   @extend .table;
   @extend .table-bordered;
   @extend .table-striped;
+  @extend .table-hover;
 }
 
 h1, .h1,
@@ -31,7 +32,7 @@ h6, .h6 {
     margin-left: -20px;
   }
 
-  &::before {
+  &:target::before {
     content: "";
     display: block;
     margin-top: -70px;

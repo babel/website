@@ -117,7 +117,7 @@ $ npm install 6to5
 require('6to5/register');
 ```
 
-**NOTE:** By default all requires to node_modules will be ignored. You can
+**NOTE:** By default all requires to `node_modules` will be ignored. You can
 override this by passing an ignore regex via:
 
 ```js
@@ -211,6 +211,32 @@ to5.transformFileSync('filename.js', options).code;
 | `comments` | `true` | Output comments in generated output. |
 | `experimental` | `false` | Enable support for experimental ES7 features. |
 
+## Modules
+
+6to5 has the ability to transpile ES6 modules to the module system of your
+choice. You can even easily create your own.
+
+**Usage**
+
+```sh
+$ 6to5 --modules common script.js
+```
+
+```js
+to5.transform('import "foo";', { modules: "common" });
+```
+
+**Formats**
+
+- [Common (Default)](../modules/#common-default-)
+- [AMD](../modules/#amd)
+- [System](../modules/#system)
+- [UMD](../modules/#umd)
+- [Ignore](../modules/#ignore)
+- [Custom](../modules/#custom)
+
+For more, please see the [module documentation](../modules).
+
 ## Polyfill
 
 > 6to5 includes a polyfill that includes a custom
@@ -261,31 +287,156 @@ before it.
   </p>
 </blockquote>
 
+## Optional Runtime
+
+6to5 has a few helper functions that'll be placed at the top of the generated
+code if needed so it's not inlined multiple times throughout that file. This may
+become an issue if you have multiple files, especially when you're sending them
+to the browser. gzip alleviates most of this concern but it's still not ideal.
+
+You can tell 6to5 to not place any declarations at the top of your files and
+instead just point them to a reference contained within the runtime.
+
+**Usage**
+
+```js
+$ 6to5 --runtime
+```
+
+```js
+to5.transform('code', { runtime: true });
+```
+
+**Getting the runtime**
+
+```sh
+$ 6to5-runtime
+```
+
+or
+
+```js
+require('6to5').runtime();
+```
+
+or from an npm release in `runtime.js` from the 6to5 directory.
+
+**Customising namespace**
+
+You can also customise the runtime namespace by passing an optional namespace
+argument:
+
+```sh
+$ 6to5-runtime myCustomNamespace
+```
+
+```js
+require("6to5").runtime('myCustomNamespace');
+```
+
+See [Options - runtime](#options) for documentation on changing the reference in
+generated code.
+
+## Compiling in the Browser
+
+A browser version of 6to5 is available from `browser.js` inside the 6to5
+directory in an npm release.
+
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Not intended for serious use</h4>
+  <p>
+    Compiling in the browser has a fairly limited use case, so if you are
+    working on a production site you should be precompiling your scripts
+    server-side. See <a href="../setup/#build-systems">setup build systems</a>
+    for more information.
+  </p>
+</blockquote>
+
+#### Script tags
+
+When the `browser.js` file is included all scripts with the type
+`text/ecmascript-6` and `text/6to5` are automatically compiled and ran.
+
+```html
+<script src="node_modules/6to5/browser.js"></script>
+<script type="text/6to5">
+class Test {
+  test() {
+    return 'test';
+  }
+}
+
+var test = new Test;
+test.test(); // "test"
+</script>
+```
+
+#### API
+
+Programmatically transpile and execute strings of ES6 code.
+
+See [options](#options) for additional documentation.
+
+##### `to5.transform(code, [opts])`
+
+```js
+to5.transform('class Test {}').code;
+```
+
+##### `to5.run(code, [opts])`
+
+````js
+to5.run('class Test {}');
+````
+
 ## Experimental
 
 > 6to5 also has experimental support for ES7 proposals.
 
-You can enable this with the `experimental: true` option when using the
-[Node API](#node) or `--experimental` when using the [CLI](#cli).
-
 <blockquote class="to5-callout to5-callout-danger">
   <h4>Subject to change</h4>
   <p>
-    These proposals are subject to change so use with <strong>extreme
-    caution</strong>. 6to5 may update without warning in order to track spec
-    changes.
+    These proposals are subject to change so <strong><em>use with extreme
+    caution</em></strong>. 6to5 may update without warning in order to track spec
+    changes. Please do not use them in production applications.
   </p>
 </blockquote>
 
+#### Usage
+
+```js
+$ 6to5 --experimental
+```
+
+```js
+to5.transform('code', { experimental: true });
+```
+
 ## Playground
 
-> Playground is a proving ground for **possible** ES7 proposals.
+> Playground is a proving ground for language ideas.
 
 <blockquote class="to5-callout to5-callout-danger">
   <h4>Unofficial</h4>
   <p>
     These features are in no way endorsed by Ecma International and are not a
-    part of ES6. They might become a part of ECMAScript in the future.
+    part of any ECMAScript standard, nor are they necessarily on track to become
+    part of any standard. <strong><em>Use with extreme caution</em></strong>.
+  </p>
+</blockquote>
+
+<blockquote class="to5-callout to5-callout-info">
+  <h4>Proposal Authors</h4>
+  <p>
+    If you are actively working on an
+    <a href="https://github.com/tc39/ecma262">ECMAScript proposal</a>, this is a
+    good place to get your ideas implemented with so that they may be tested
+    with all of the latest language and API features.
+  </p>
+  <p>
+    Please feel free to <a href="https://github.com/6to5/6to5/issues/new">open
+    an issue</a> on the 6to5 repository with your WIP spec, and we can discuss
+    getting it implemented. Be sure to include as much information as possible.
   </p>
 </blockquote>
 

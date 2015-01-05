@@ -82,7 +82,9 @@
 
   $body.scrollspy({
     target: '.sidebar',
-    offset: 50
+    offset: 100
   });
+
+  $('td:contains("✓")').addClass('bg-success');
 
 }());
