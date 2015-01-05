@@ -3,6 +3,10 @@ layout: docs
 title: Usage
 description: All of the built-in ways to use 6to5.
 permalink: /docs/usage/
+redirect_from:
+  - /usage.html
+  - /experimental.html
+  - /playground.html
 ---
 
 ##  CLI
@@ -31,7 +35,7 @@ $ 6to5 script.js
 
 If you would like to **output to a file** you may use `--out-file` or `-o`.
 
-```js
+```sh
 $ 6to5 script.js --out-file script-compiled.js
 ```
 
@@ -40,14 +44,14 @@ $ 6to5 script.js --out-file script-compiled.js
 If you would then like to add a **source map file** you can use
 `--source-maps` or `-s`. [Learn more about source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/).
 
-```js
+```sh
 $ 6to5 script.js --out-file script-compiled.js --source-maps
 ```
 
 If you would rather have **inline source maps**, you may use
 `--source-maps-inline` or `-t`.
 
-```js
+```sh
 $ 6to5 script.js --out-file script-compiled.js --source-maps-inline
 ```
 
@@ -69,7 +73,7 @@ $ 6to5 src --out-file script-compiled.js
 
 Pipe a file in via stdin and output it to `script-compiled.js`
 
-```
+```sh
 $ 6to5 --out-file script-compiled.js < script.js
 ```
 

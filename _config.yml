@@ -7,13 +7,20 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "/6to5.github.io" # the subpath of your site, e.g. /blog/
 url: "https://6to5.org" # the base hostname & protocol for your site
 # twitter_username: jekyllrb
-# github_username:  jekyll
+github_username:  6to5
 
 # Build settings
 markdown: redcarpet
+# markdown: kramdown
 highlighter: pygments
-kramdown:
-  input: GFM
+
+redcarpet:
+  extensions: ['tables', 'no_intra_emphasis', 'autolink', 'with_toc_data']
+
+# kramdown:
+#   input: GFM
+#   hard_wrap: false
+
 # header navigation
 navigation:
 - title: Tour
@@ -28,3 +35,10 @@ navigation:
   url: /docs/caveats/
 - title: REPL
   url: /repl/
+
+# Blog Settings
+permalink: /blog/:year/:month/:day/:title
+paginate: 1
+
+gems:
+  - jekyll-redirect-from

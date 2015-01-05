@@ -3,6 +3,7 @@ layout: docs
 title: Compare
 description: Differences between 6to5 and other ES6 transpilers.
 permalink: /docs/compare/
+redirect_from: /differences.html
 ---
 
 ## Differences
@@ -17,13 +18,13 @@ is concerned with making sure it works **and** is readable at the same time.
 
 For example, given the following array comprehension:
 
-```javascript
+```js
 var seattlers = [for (c of customers) if (c.city == "Seattle") { name: c.name, age: c.age }];
 ```
 
 is generated to the following with 6to5:
 
-```javascript
+```js
 var seattlers = Array.from(customers).filter(function (c) {
   return c.city == "Seattle";
 }).map(function (c) {
@@ -36,7 +37,7 @@ var seattlers = Array.from(customers).filter(function (c) {
 
 The following is what Traceur generates:
 
-```javascript
+```js
 var seattlers = (function() {
   var c;
   var $__20 = 0,

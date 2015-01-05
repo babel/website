@@ -5,7 +5,7 @@
   height: 100%;
 }
 
-.repl {
+.to5-repl {
   position: relative;
   width: 100%;
   height: 100%;
@@ -13,8 +13,31 @@
   + .footer {
     margin-top: 0;
   }
+}
 
-  .editor {
+.to5-repl-toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  background: $to5-dark-gray;
+  color: white;
+
+  .form-group {
+    display: inline-block;
+    padding: $navbar-padding-vertical $navbar-padding-horizontal;
+  }
+}
+
+.to5-repl-editor {
+  position: absolute;
+  top: 50px;
+  bottom: 30px;
+  width: 50%;
+  background: lighten($gray-lighter, 3%);
+
+  .ace_editor {
     width: 100%;
     height: 100%;
     border-radius: none;
@@ -25,41 +48,37 @@
   }
 }
 
-.repl-options {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 50px;
-  background: $to5-dark-gray;
-  color: white;
-
-  .form-group {
-    display: inline-block;
-    padding: $navbar-padding-vertical $navbar-padding-horizontal;
-  }
-}
-
-.repl-input,
-.repl-output {
-  position: absolute;
-  width: 50%;
-  top: 50px;
-  bottom: 0;
-
-  border: none;
-  background: lighten($gray-lighter, 3%);
-  margin: 0;
-  border-radius: 0;
-
-  white-space: nowrap;
-}
-
-.repl-input {
+.to5-repl-input {
   left: 0;
   border-right: 1px solid darken($gray-lighter, 5%);
 }
 
-.repl-output {
+.to5-repl-output {
   right: 0;
+  background: #f9f9f9;
+}
+
+.to5-repl-reporter {
+  position: absolute;
+  z-index: 4;
+  bottom: 0;
+  min-height: 30px;
+  max-height: 30%;
+  overflow: auto;
+  width: 50%;
+  padding: $padding-base-vertical $padding-base-horizontal;
+  border-top: 1px solid darken($gray-lighter, 5%);
   background: lighten($gray-lighter, 1%);
+  white-space: pre;
+  @extend code;
+  border-radius: 0;
+}
+
+.to5-repl-errors {
+  left: 0;
+  border-right: 1px solid darken($gray-lighter, 5%);
+}
+
+.to5-repl-console {
+  right: 0;
 }

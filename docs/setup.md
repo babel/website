@@ -3,6 +3,7 @@ layout: docs
 title: Setup
 description: Guides on how to setup 6to5 in whatever environment you might be working in.
 permalink: /docs/setup/
+redirect_from: /plugins.html
 ---
 
 <blockquote class="to5-callout to5-callout-info">

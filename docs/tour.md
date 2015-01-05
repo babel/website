@@ -3,6 +3,7 @@ layout: docs
 title: Tour
 description: A detailed overview of ECMAScript 6 features.
 permalink: /docs/tour/
+redirect_from: /features.html
 ---
 
 <blockquote class="to5-callout to5-callout-info">

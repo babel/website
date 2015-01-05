@@ -3,6 +3,7 @@ layout: docs
 title: Caveats
 description: Just some things to keep in mind when using 6to5.
 permalink: /docs/caveats/
+redirect_from: /caveats.html
 ---
 
 ## Polyfills
@@ -42,7 +43,7 @@ this is widely supported but you may run into problems with much older browsers.
 **NOTE:** `__proto__` is not supported on IE <= 9 so static properties
 **will not** be inherited. A possible workaround is to use `super();`:
 
-```javascript
+```js
 class Foo {
   static foo() {
 

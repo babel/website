@@ -19,7 +19,12 @@
         <li><a href="https://gitter.im/6to5/6to5">Support</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="https://github.com/6to5/6to5">Github</a></li>
+        <li {% if page.url == "/blog/" %}class="active"{% endif %}>
+          <a href="{{ site.baseurl }}/blog/">Blog</a>
+        </li>
+        <li>
+          <a href="https://github.com/6to5/6to5">Github</a>
+        </li>
       </ul>
     </div>
   </div>
