@@ -5,6 +5,11 @@ description: How to use the require hook.
 permalink: /docs/usage/require/
 ---
 
+One of the ways you can use 6to5 is through the require hook. The require hook
+will bind itself to node's `require` and automatically transpile files on the
+fly. This is equivalent to CoffeeScript's
+[coffee-script/register](http://coffeescript.org/documentation/docs/register.html).
+
 ## Install
 
 ```sh
@@ -18,8 +23,8 @@ require("6to5/register");
 ```
 
 All subsequent files required by node with the extensions `.es6`, `.es`, and
-`.js` will be transformed by 6to5. The polyfill specified in Polyfill is also
-required.
+`.js` will be transformed by 6to5. The polyfill specified in
+[/docs/usage/polyfill](polyfill) is also required.
 
 **NOTE:** By default all requires to `node_modules` will be ignored. You can
 override this by passing an ignore regex via:
