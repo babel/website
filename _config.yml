@@ -1,5 +1,6 @@
 # Site settings
 title: 6to5
+tagline: Turn ES6+ code into readable vanilla ES5
 description: 6to5 turns ES6+ code into vanilla ES5, so you can use next generation features today.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://6to5.org" # the base hostname & protocol for your site
