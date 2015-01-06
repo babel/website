@@ -23,9 +23,6 @@ build:
 
 	cat ./_6to5/dist/6to5.min.js ./_6to5/dist/polyfill.min.js > ./scripts/6to5.js;
 
-	rm -rf ./docs/**
-	cp -r ./_6to5/doc/** ./docs/
-
 	if [ ! -d ./node_modules]; \
 	then npm install; \
 	fi
