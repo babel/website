@@ -17,6 +17,10 @@ build:
 	then touch ./scripts/6to5.js; \
 	fi
 
+	rm -f ./_includes/version.html
+	touch ./_includes/version.html
+	node -e "console.log(require('./_6to5/package.json').version)" > ./_includes/version.html
+
 	cat ./_6to5/dist/6to5.min.js ./_6to5/dist/polyfill.min.js > ./scripts/6to5.js;
 
 	rm -rf ./docs/**
