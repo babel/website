@@ -29,6 +29,29 @@ navigation:
   url: /docs/setup/
 - title: Usage
   url: /docs/usage/
+  subnav:
+  - title: CLI
+    url: /docs/usage/cli/
+  - title: Require Hook
+    url: /docs/usage/require/
+  - title: API
+    url: /docs/usage/api/
+  - title: Options
+    url: /docs/usage/options/
+  - title: Modules
+    url: /docs/usage/modules/
+  - title: Polyfill
+    url: /docs/usage/polyfill
+  - title: Runtime
+    url: /docs/usage/runtime
+  - title: Browser
+    url: /docs/usage/browser
+  - title: Experimental
+    url: /docs/usage/experimental
+  - title: Playground
+    url: /docs/usage/playground
+  - title: JSX
+    url: /docs/usage/jsx/
 - title: Compare
   url: /docs/compare/
 - title: Caveats

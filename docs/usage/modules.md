@@ -1,10 +1,15 @@
 ---
 layout: docs
 title: Modules
-description: Details on module formatters.
-permalink: /docs/modules/
+description: How to use module formatters.
+permalink: /docs/usage/modules/
 redirect_from: /modules.html
 ---
+
+<p class="lead">
+  6to5 has the ability to transpile ES6 modules to the module system of your
+  choice. You can even easily create your own.
+</p>
 
 ## Usage
 

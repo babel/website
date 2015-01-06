@@ -35,7 +35,7 @@ $ 6to5 script.js
 <blockquote class="to5-callout to5-callout-info">
   <p>
     For full documentation on the 6to5 CLI see the
-    <a href="/docs/usage/">usage docs</a>.
+    <a href="/docs/usage/cli/">usage docs</a>.
   </p>
 </blockquote>
 
@@ -60,7 +60,7 @@ require('6to5/register');
 <blockquote class="to5-callout to5-callout-info">
   <p>
     For full documentation on the 6to5 require hook see the
-    <a href="/docs/usage/">usage docs</a>.
+    <a href="/docs/usage/require/">usage docs</a>.
   </p>
 </blockquote>
 
