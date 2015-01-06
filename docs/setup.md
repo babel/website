@@ -674,19 +674,6 @@ module.exports = function(config) {
 
 ### Mocha
 
-<blockquote class="to5-callout to5-callout-info">
-  <p>
-    See <strong>6to5-mocha</strong>'s
-    <a href="https://github.com/6to5/6to5-mocha">repo</a> for more info. If you
-    find any bugs please
-    <a href="https://github.com/6to5/6to5-mocha/issues">report them</a>.
-  </p>
-  <p>
-    <em>Issues with the output should be reported on the 6to5
-    <a href="https://github.com/6to5/6to5/issues">issue tracker</a></em>.
-  </p>
-</blockquote>
-
 **Install**
 
 ```sh
@@ -698,7 +685,7 @@ $ npm install --save-dev 6to5
 ```js
 {
   "scripts": {
-    "test": "mocha --require 6to5/register"
+    "test": "mocha --compilers js:6to5/register"
   },
   "devDependencies": {
     "6to5": "*",
