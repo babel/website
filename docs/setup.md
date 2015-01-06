@@ -408,6 +408,23 @@ gulp.task("default", function () {
 });
 ```
 
+## Make
+**Install**
+```
+$ npm install --global 6to5
+```
+
+**Usage**
+```Makefile
+SRC      = $(wildcard src/*.js)
+LIB      = $(SRC:src/%.js=lib/%.js)
+
+lib: $(LIB)
+lib/%.js: src/%.js
+  mkdir -p $(@D)
+  6to5 $< -o $@
+```
+
 ### Webpack
 
 <blockquote class="to5-callout to5-callout-info">
