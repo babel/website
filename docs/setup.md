@@ -301,7 +301,7 @@ $ npm install --save-dev gobble-6to5
 
 The `options` argument, if specified, is passed to 6to5.
 
-```
+```js
 var gobble = require("gobble");
 module.exports = gobble("src").transform("6to5", options);
 ```
@@ -412,13 +412,13 @@ gulp.task("default", function () {
 
 **Install**
 
-```
+```sh
 $ npm install --global 6to5
 ```
 
 **Usage**
 
-```Makefile
+```make
 SRC      = $(wildcard src/*.js)
 LIB      = $(SRC:src/%.js=lib/%.js)
 
@@ -613,7 +613,7 @@ $ npm install --save-dev 6to5-jest
 
 In your `package.json` file please make the following changes:
 
-```
+```json
 {
   "dependencies": {
     "6to5-jest": "*",
