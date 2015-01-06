@@ -5,27 +5,6 @@ description: Frequently Asked Questions and Answers
 permalink: /docs/faq/
 ---
 
-## What is a transformer?
-
-A transformer is a module that is ran against your code that transforms it. For example,
-the `arrowFunctions` transformer has the very specific goal of transforming
-[ES6 Arrow Functions](/docs/tour#arrows) to the equivalent ES3. This allows transformers to be disabled and enabled at will which is critical in the
-current fast paced development environment.
-
-## Why are there `Array.from` and `Object.assign` calls in my code?! These functions don't exist!
-
-This is a known [caveat](/docs/caveats). This is because 6to5 compiles to ES3 syntax but with
-ES5 and ES6 methods. This is essential to emulate a complete ES6 environment so your code
-wont break! You see, ES6 features such as [iterators](/docs/tour#iterators) and
-[symbols](/docs/tour#symbols) require a lot of logic to work, and to accurately support these
-it would mean **a lot** of boilerplate smoshed into your codebase. This is the approach taken
-by other transpilers but 6to5 approaches it quite differently.
-
-You have two options, depending on your use case:
-
- - Use the wonderful [core aliasing optional transformer](/docs/usage/transformers#core-aliasing). This is recommended if you're writing a library.
- - Or use the bundled 6to5 [polyfill](/docs/usage/polyfill). This is recommended if you're writing an entire application.
-
 ## How does 6to5 differ from other transpilers?
 
 Many issues plague current transpilers, 6to5 takes a unique approach to many aspects.
@@ -61,3 +40,24 @@ As you can tell by the [comparison page](/docs/compare#comparison-to-other-trans
 the 6to5 featureset is very comprehensive, supporting every ES6 syntactic feature. With
 built-in support for emerging standards such as [Flow](http://flowtype.org) and
 [JSX/React](/docs/usage/jsx) it makes it extremely to integrate.
+
+## What is a transformer?
+
+A transformer is a module that is ran against your code that transforms it. For example,
+the `arrowFunctions` transformer has the very specific goal of transforming
+[ES6 Arrow Functions](/docs/tour#arrows) to the equivalent ES3. This allows transformers to be disabled and enabled at will which is critical in the
+current fast paced development environment.
+
+## Why are there `Array.from` and `Object.assign` calls in my code?! These functions don't exist!
+
+This is a known [caveat](/docs/caveats). This is because 6to5 compiles to ES3 syntax but with
+ES5 and ES6 methods. This is essential to emulate a complete ES6 environment so your code
+wont break! You see, ES6 features such as [iterators](/docs/tour#iterators) and
+[symbols](/docs/tour#symbols) require a lot of logic to work, and to accurately support these
+it would mean **a lot** of boilerplate smoshed into your codebase. This is the approach taken
+by other transpilers but 6to5 approaches it quite differently.
+
+You have two options, depending on your use case:
+
+ - Use the wonderful [core aliasing optional transformer](/docs/usage/transformers#core-aliasing). This is recommended if you're writing a library.
+ - Or use the bundled 6to5 [polyfill](/docs/usage/polyfill). This is recommended if you're writing an entire application.
