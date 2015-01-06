@@ -342,6 +342,13 @@ var results = (
 )
 ```
 
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Disabled by default</h4>
+  <p>
+    These are only available if you enable experimental support. See <a href="/docs/usage/playground">experimental usage</a> for more information.
+  </p>
+</blockquote>
+
 ### Unicode
 
 Non-breaking additions to support full Unicode, including new unicode literal
