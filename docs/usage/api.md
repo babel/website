@@ -7,7 +7,7 @@ permalink: /docs/usage/api/
 
 
 ```javascript
-var to5 = require('6to5');
+var to5 = require("6to5");
 ```
 
 ## to5.transform
@@ -21,7 +21,7 @@ to5.transform(code, [options])
 **Example**
 
 ```js
-var result = to5.transform('code();', options);
+var result = to5.transform("code();", options);
 result.code;
 result.map;
 result.ast;
@@ -38,7 +38,7 @@ to5.transformFile(filename, [options], callback)
 **Example**
 
 ```js
-to5.transformFile('filename.js', options, function (err, result) {
+to5.transformFile("filename.js", options, function (err, result) {
   result.code;
 });
 ```
@@ -55,5 +55,5 @@ to5.transformFileSync(filename, [options])
 **Example**
 
 ```js
-to5.transformFileSync('filename.js', options).code;
+to5.transformFileSync("filename.js", options).code;
 ```

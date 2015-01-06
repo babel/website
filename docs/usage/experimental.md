@@ -24,5 +24,5 @@ $ 6to5 --experimental
 ```
 
 ```js
-to5.transform('code', { experimental: true });
+to5.transform("code", { experimental: true });
 ```

@@ -39,7 +39,7 @@ $ 6to5 --playground
 ```
 
 ```js
-to5.transform('code', { playground: true });
+to5.transform("code", { playground: true });
 ```
 
 <blockquote class="to5-callout to5-callout-info">
@@ -87,7 +87,7 @@ is equivalent to
 
 ```js
 var obj = {};
-if (!Object.prototype.hasOwnProperty.call(obj, 'x')) obj.x = 2;
+if (!Object.prototype.hasOwnProperty.call(obj, "x")) obj.x = 2;
 ```
 
 ### Method binding

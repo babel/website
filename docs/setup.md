@@ -54,7 +54,7 @@ be transformed by 6to5. The polyfill specified in [Polyfill](polyfill.md) is
 also required.
 
 ```javascript
-require('6to5/register');
+require("6to5/register");
 ```
 
 <blockquote class="to5-callout to5-callout-info">
@@ -91,12 +91,12 @@ $ gem install sprockets-es6
 
 ```rb
 # Gemfile
-gem 'sprockets'
-gem 'sprockets-es6'
+gem "sprockets"
+gem "sprockets-es6"
 ```
 
 ```rb
-require 'sprockets/es6'
+require "sprockets/es6"
 ```
 
 ## Build Systems
@@ -126,7 +126,7 @@ $ npm install --save-dev broccoli-6to5-transpiler
 **Usage**
 
 ```js
-var to5Transpiler = require('broccoli-6to5-transpiler');
+var to5Transpiler = require("broccoli-6to5-transpiler");
 var scriptTree = to5Transpiler(inputTree, options);
 ```
 
@@ -175,15 +175,15 @@ browserify({ debug: true })
 Or a more complete example:
 
 ```js
-var fs = require('fs');
-var browserify = require('browserify');
-var to5ify = require('6to5ify');
+var fs = require("fs");
+var browserify = require("browserify");
+var to5ify = require("6to5ify");
 
 browserify({ debug: true })
   .transform(to5ify)
-  .require('./script.js', { entry: true })
+  .require("./script.js", { entry: true })
   .bundle()
-  .on('error', function (err) { console.log('Error: ' + err.message); })
+  .on("error", function (err) { console.log("Error: " + err.message); })
   .pipe(fs.createWriteStream("bundle.js"));
 ```
 **Passing Options**
@@ -194,7 +194,7 @@ $ browserify -d -e script.js -t [ 6to5ify --blacklist generators ]
 
 ```js
 browserify().transform(to5ify.configure({
-  blacklist: ['generators']
+  blacklist: ["generators"]
 }))
 ```
 
@@ -235,7 +235,7 @@ for `filename` and `sourceMap` which are handled internally.
 ```coffee
 plugins:
   ES6to5:
-    whitelist: ['arrowFunctions']
+    whitelist: ["arrowFunctions"]
     format:
       semicolons: false
 ```
@@ -302,8 +302,8 @@ $ npm install --save-dev gobble-6to5
 The `options` argument, if specified, is passed to 6to5.
 
 ```
-var gobble = require('gobble');
-module.exports = gobble('src').transform('6to5', options);
+var gobble = require("gobble");
+module.exports = gobble("src").transform("6to5", options);
 ```
 
 **Source maps**
@@ -336,22 +336,22 @@ $ npm install --save-dev grunt-6to5
 **Usage**
 
 ```js
-require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
+require("load-grunt-tasks")(grunt); // npm install --save-dev load-grunt-tasks
 
 grunt.initConfig({
-  '6to5': {
+  "6to5": {
     options: {
       sourceMap: true
     },
     dist: {
       files: {
-        'dist/app.js': 'src/app.js'
+        "dist/app.js": "src/app.js"
       }
     }
   }
 });
 
-grunt.registerTask('default', ['6to5']);
+grunt.registerTask("default", ["6to5"]);
 ```
 
 ### Gulp
@@ -378,13 +378,13 @@ $ npm install --save-dev gulp-6to5
 **Usage**
 
 ```js
-var gulp = require('gulp');
-var to5 = require('gulp-6to5');
+var gulp = require("gulp");
+var to5 = require("gulp-6to5");
 
-gulp.task('default', function () {
-  return gulp.src('src/app.js')
+gulp.task("default", function () {
+  return gulp.src("src/app.js")
     .pipe(to5())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest("dist"));
 });
 ```
 
@@ -393,18 +393,18 @@ gulp.task('default', function () {
 Use [gulp-sourcemaps](https://github.com/floridoo/gulp-sourcemaps) like this:
 
 ```js
-var gulp = require('gulp');
-var sourcemaps = require('gulp-sourcemaps');
-var to5 = require('gulp-6to5');
-var concat = require('gulp-concat');
+var gulp = require("gulp");
+var sourcemaps = require("gulp-sourcemaps");
+var to5 = require("gulp-6to5");
+var concat = require("gulp-concat");
 
-gulp.task('default', function () {
-  return gulp.src('src/**/*.js')
+gulp.task("default", function () {
+  return gulp.src("src/**/*.js")
     .pipe(sourcemaps.init())
     .pipe(to5())
-    .pipe(concat('all.js'))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist'));
+    .pipe(concat("all.js"))
+    .pipe(sourcemaps.write("."))
+    .pipe(gulp.dest("dist"));
 });
 ```
 
@@ -432,18 +432,18 @@ $ npm install --save-dev 6to5-loader
 **Usage via loader**
 
 ```js
-import Animal from '6to5!./Animal.js';
+import Animal from "6to5!./Animal.js";
 
 class Person extends Animal {
-  constructor(arg='default') {
-    this.eat = 'Happy Meal';
+  constructor(arg="default") {
+    this.eat = "Happy Meal";
   }
 }
 
 export default Person;
 ```
 ```js
-var Person = require('6to5!./Person.js').default;
+var Person = require("6to5!./Person.js").default;
 new Person();
 ```
 
@@ -452,7 +452,7 @@ new Person();
 ```js
 module: {
   loaders: [
-    { test: /\.js$/, exclude: /node_modules/, loader: '6to5-loader'}
+    { test: /\.js$/, exclude: /node_modules/, loader: "6to5-loader"}
   ]
 }
 ```
@@ -460,7 +460,7 @@ module: {
 and then import normally:
 
 ```js
-import Person from './Person.js';
+import Person from "./Person.js";
 ```
 
 <blockquote class="to5-callout to5-callout-warning">
@@ -498,17 +498,17 @@ $ npm install 6to5-connect
 **Usage**
 
 ```js
-var to5Middleware = require('6to5-connect');
+var to5Middleware = require("6to5-connect");
 
 app.use(to5Middleware({
   options: {
     // options to use when transforming files
   },
-  src: 'assets',
-  dest: 'cache'
+  src: "assets",
+  dest: "cache"
 }));
 
-app.use(connect.static('cache'));
+app.use(connect.static("cache"));
 ```
 
 ### Jade
@@ -535,8 +535,8 @@ $ npm install jade-6to5
 **Usage**
 
 ```js
-var jade = require('jade');
-var to5 = require('jade-6to5');
+var jade = require("jade");
+var to5 = require("jade-6to5");
 
 jade.filters.to5 = to5({});
 ```
@@ -544,8 +544,8 @@ jade.filters.to5 = to5({});
 OR
 
 ```js
-var jade = require('jade');
-var to5 = require('jade-6to5');
+var jade = require("jade");
+var to5 = require("jade-6to5");
 
 jade = to5({}, jade);
 ```
@@ -555,7 +555,7 @@ Now you can use ES6 in your jade templates as following.
 ```jade
 script
   :to5
-    console.log('Hello World !!!');
+    console.log("Hello World !!!");
     class Person {
       constructor(name) {
         this.name = name;
@@ -564,7 +564,7 @@ script
         console.log(`Hello, my name is ${this.name}`);
       }
     }
-    var person = new Person('Apoxx');
+    var person = new Person("Apoxx");
     person.sayName();
 ```
 
@@ -650,19 +650,19 @@ For example, inline sourcemap configuration would look like the following.
 module.exports = function(config) {
   config.set({
     files: [
-      'src/**/*.js',
-      'test/**/*.js'
+      "src/**/*.js",
+      "test/**/*.js"
     ],
     preprocessors: {
-      'src/**/*.js': ['6to5'],
-      'test/**/*.js': ['6to5']
+      "src/**/*.js": ["6to5"],
+      "test/**/*.js": ["6to5"]
     },
-    '6to5Preprocessor': {
+    "6to5Preprocessor": {
       options: {
-        sourceMap: 'inline'
+        sourceMap: "inline"
       },
       filename: function(file) {
-        return file.originalPath.replace(/\.js$/, '.es5.js');
+        return file.originalPath.replace(/\.js$/, ".es5.js");
       },
       sourceFileName: function(file) {
         return file.originalPath;

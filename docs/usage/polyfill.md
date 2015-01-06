@@ -20,13 +20,13 @@ You need to include the polyfill require at the top the **entry point** to
 your application.
 
 ```js
-require('6to5/polyfill');
+require("6to5/polyfill");
 ```
 
 Fortunately, this is automatically loaded when using:
 
 ```js
-require('6to5/register');
+require("6to5/register");
 ```
 
 ## Usage in Browser

@@ -22,7 +22,7 @@ $ 6to5 --runtime
 ```
 
 ```js
-to5.transform('code', { runtime: true });
+to5.transform("code", { runtime: true });
 ```
 
 ### Getting the runtime
@@ -34,7 +34,7 @@ $ 6to5-runtime
 or
 
 ```js
-require('6to5').runtime();
+require("6to5").runtime();
 ```
 
 or from an npm release in `runtime.js` from the 6to5 directory.
@@ -49,7 +49,7 @@ $ 6to5-runtime myCustomNamespace
 ```
 
 ```js
-require("6to5").runtime('myCustomNamespace');
+require("6to5").runtime("myCustomNamespace");
 ```
 
 See [Options - runtime](../options) for documentation on changing the reference in

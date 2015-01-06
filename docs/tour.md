@@ -112,7 +112,7 @@ var obj = {
      return "d " + super.toString();
     },
     // Computed (dynamic) property names
-    [ 'prop_' + (() => 42)() ]: 42
+    [ "prop_" + (() => 42)() ]: 42
 };
 ```
 
@@ -134,7 +134,7 @@ contents.
 
 ```js
 // Basic literal string creation
-`In JavaScript '\n' is a line-feed.`
+`In JavaScript "\n" is a line-feed.`
 
 // Multiline strings
 `In JavaScript this is
@@ -433,7 +433,7 @@ to evaluated and load code in isolated or constrained contexts.
 
 ```js
 // Dynamic loading – ‘System’ is default loader
-System.import('lib/math').then(function(m) {
+System.import("lib/math").then(function(m) {
   alert("2π = " + m.sum(m.pi, m.pi));
 });
 
@@ -441,11 +441,11 @@ System.import('lib/math').then(function(m) {
 var loader = new Loader({
   global: fixup(window) // replace ‘console.log’
 });
-loader.eval("console.log('hello world!');");
+loader.eval("console.log("hello world!");");
 
 // Directly manipulate module cache
-System.get('jquery');
-System.set('jquery', Module({$: $})); // WARNING: not yet finalized
+System.get("jquery");
+System.set("jquery", Module({$: $})); // WARNING: not yet finalized
 ```
 
 <blockquote class="to5-callout to5-callout-warning">
@@ -519,20 +519,20 @@ var handler = {
 };
 
 var p = new Proxy(target, handler);
-p.world === 'Hello, world!';
+p.world === "Hello, world!";
 ```
 
 ```js
 // Proxying a function object
-var target = function () { return 'I am the target'; };
+var target = function () { return "I am the target"; };
 var handler = {
   apply: function (receiver, ...args) {
-    return 'I am the proxy';
+    return "I am the proxy";
   }
 };
 
 var p = new Proxy(target, handler);
-p() === 'I am the proxy';
+p() === "I am the proxy";
 ```
 
 There are traps available for all of the runtime-level meta-operations:
@@ -622,7 +622,7 @@ class Array {
     constructor(...args) { /* ... */ }
     static [Symbol.create]() {
         // Install special [[DefineOwnProperty]]
-        // to magically update 'length'
+        // to magically update "length"
     }
 }
 
@@ -631,7 +631,7 @@ class MyArray extends Array {
     constructor(...args) { super(...args); }
 }
 
-// Two-phase 'new':
+// Two-phase "new":
 // 1) Call @@create to allocate object
 // 2) Invoke constructor on new instance
 var arr = new MyArray();
@@ -656,7 +656,7 @@ Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2) // 2
 "abcde".contains("cd") // true
 "abc".repeat(3) // "abcabcabc"
 
-Array.from(document.querySelectorAll('*')) // Returns a real Array
+Array.from(document.querySelectorAll("*")) // Returns a real Array
 Array.of(1, 2, 3) // Similar to new Array(...), but without special one-arg behavior
 [0, 0, 0].fill(7, 1) // [0,7,7]
 [1,2,3].findIndex(x => x == 2) // 1
@@ -690,7 +690,7 @@ Two new numeric literal forms are added for binary (`b`) and octal (`o`).
   <h4>Only supports literal form</h4>
   <p>
     6to5 is only able to transform <code>0o767</code> and not
-    <code>Number('0o767')</code>.
+    <code>Number("0o767")</code>.
   </p>
 </blockquote>
 
@@ -751,7 +751,7 @@ recursive algorithms safe in the face of unbounded inputs.
 
 ```js
 function factorial(n, acc = 1) {
-    'use strict';
+    "use strict";
     if (n <= 1) return acc;
     return factorial(n - 1, n * acc);
 }

@@ -31,7 +31,7 @@ When the `browser.js` file is included all scripts with the type
 <script type="text/6to5">
 class Test {
   test() {
-    return 'test';
+    return "test";
   }
 }
 
@@ -49,11 +49,11 @@ See [options](#options) for additional documentation.
 ### `to5.transform(code, [opts])`
 
 ```js
-to5.transform('class Test {}').code;
+to5.transform("class Test {}").code;
 ```
 
 ### `to5.run(code, [opts])`
 
 ````js
-to5.run('class Test {}');
+to5.run("class Test {}");
 ````
