@@ -409,12 +409,15 @@ gulp.task("default", function () {
 ```
 
 ## Make
+
 **Install**
+
 ```
 $ npm install --global 6to5
 ```
 
 **Usage**
+
 ```Makefile
 SRC      = $(wildcard src/*.js)
 LIB      = $(SRC:src/%.js=lib/%.js)
