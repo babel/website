@@ -5,6 +5,8 @@ build:
 	then git clone git@github.com:6to5/6to5.git _6to5; \
 	fi
 
+	cd _6to5 && git pull
+
 	if [ ! -d ./_6to5/node_modules ]; \
 	then cd _6to5 && npm install; \
 	fi
@@ -16,6 +18,9 @@ build:
 	fi
 
 	cat ./_6to5/dist/6to5.min.js ./_6to5/dist/polyfill.min.js > ./scripts/6to5.js;
+
+	rm -rf ./docs/**
+	cp -r ./_6to5/doc/** ./docs/
 
 	if [ ! -d ./node_modules]; \
 	then npm install; \
