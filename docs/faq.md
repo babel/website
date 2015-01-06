@@ -35,7 +35,7 @@ Many issues plague current transpilers, 6to5 takes a unique approach to many asp
 Many transpilers require a globally polluting polyfill and runtime. 6to5 has various ways
 to avoid this, including concise code that utilises minimal inline helpers as well as
 features such as [coreAliasing](/docs/usage/transformers#core-aliasing) that enable library
-authors to utilise all 6to5 features without the aforementioned polyfill.
+authors to utilise ES6 methods without the aforementioned polyfill.
 
 ### Readable output
 
