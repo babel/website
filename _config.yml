@@ -6,6 +6,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://6to5.org" # the base hostname & protocol for your site
 # twitter_username: jekyllrb
 github_username:  6to5
+exclude: ["node_modules"]
 
 # Build settings
 markdown: redcarpet
@@ -42,6 +43,8 @@ navigation:
     url: /docs/usage/polyfill
   - title: Runtime
     url: /docs/usage/runtime
+  - title: Transformers
+    url: /docs/usage/transformers
   - title: Browser
     url: /docs/usage/browser
   - title: Experimental
@@ -56,6 +59,8 @@ navigation:
   url: /docs/caveats/
 - title: REPL
   url: /repl/
+- title: FAQ
+  url: /docs/faq/
 
 # Blog Settings
 permalink: /blog/:year/:month/:day/:title
