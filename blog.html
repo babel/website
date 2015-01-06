@@ -13,8 +13,6 @@ permalink: /blog/
       <p>Posted by: {{ post.author }}</p>
 
       <p>{{ post.excerpt | remove: '<p>' | remove: '</p>' }}</p>
-
-      <pre><code>{{ post }}</code></pre>
     </div>
   {% endfor %}
 </div>
