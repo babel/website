@@ -5,6 +5,9 @@ description: What are the various transformers?
 permalink: /docs/usage/transformers/
 ---
 
+See [FAQ - What is a transformer?](/docs/faq#what-is-a-transformer)
+for transformer terminology.
+
 ## Standard
 
  - [arrowFunctions](/docs/tour#arrows)
