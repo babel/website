@@ -7,12 +7,9 @@ permalink: /docs/faq/
 
 ## What is a transformer?
 
-A transformer is a module that is ran against your code that transforms it.
-
-For example, the `arrowFunctions` transformer has the very specific goal of transforming
-[ES6 Arrow Functions](/docs/tour#arrows) to the equivalent ES3.
-
-This allows transformers to be disabled and enabled at will which is critical in the
+A transformer is a module that is ran against your code that transforms it. For example,
+the `arrowFunctions` transformer has the very specific goal of transforming
+[ES6 Arrow Functions](/docs/tour#arrows) to the equivalent ES3. This allows transformers to be disabled and enabled at will which is critical in the
 current fast paced development environment.
 
 ## Why are there `Array.from` and `Object.assign` calls in my code?! These functions don't exist!
@@ -33,32 +30,32 @@ You have two options, depending on your use case:
 
 Many issues plague current transpilers, 6to5 takes a unique approach to many aspects.
 
-##### No runtime dependency
+### No runtime dependency
 
 Many transpilers require a globally polluting polyfill and runtime. 6to5 has various ways
 to avoid this, including concise code that utilises minimal inline helpers as well as
 features such as [coreAliasing](/docs/usage/transformers#core-aliasing) that enable library
 authors to utilise all 6to5 features without the aforementioned polyfill.
 
-##### Readable output
+### Readable output
 
 6to5 cares immensely about your output code. Not only should it not be bound to a bulky
 runtime but it should always retain as much of the source formatting as possible
 (newlines and comments).
 
-##### Source maps
+### Source maps
 
 Source maps are critical in the context of transpiled languages. This enables you to
 seamlessly write and debug your code without worrying about what it turns into.
 
-##### Toggleable transformers
+### Toggleable transformers
 
 With support for ES6 being implemented into engines at a rapid rate it's critical that
 certain transformations have the ability to be turned off. With 6to5 **every single**
 transformation can be turned off. Classes get supported in your target environment?
 Simply disable it and reap the benefits of all the other transformers.
 
-##### Feature-rich
+### Feature-rich
 
 As you can tell by the [comparison page](/docs/compare#comparison-to-other-transpilers),
 the 6to5 featureset is very comprehensive, supporting every ES6 syntactic feature.
