@@ -58,8 +58,6 @@ Simply disable it and reap the benefits of all the other transformers.
 ### Feature-rich
 
 As you can tell by the [comparison page](/docs/compare#comparison-to-other-transpilers),
-the 6to5 featureset is very comprehensive, supporting every ES6 syntactic feature.
-
-With built-in support for emerging standards such as [flow](http://flowtype.org) and
-[JSX/React](/docs/usage/jsx) it makes it extremely easy to integrate into
-your workflow if you already use them.
+the 6to5 featureset is very comprehensive, supporting every ES6 syntactic feature. With
+built-in support for emerging standards such as [Flow](http://flowtype.org) and
+[JSX/React](/docs/usage/jsx) it makes it extremely to integrate.
