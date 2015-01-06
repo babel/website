@@ -1,0 +1,18 @@
+---
+layout: docs
+title: Blog
+description: Foo bar.
+permalink: /blog/
+---
+
+<div class="to5-blog">
+  {% for post in site.posts %}
+    <div class="to5-blog-post">
+      <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+
+      <p>Posted by: {{ post.author }}</p>
+
+      <p>{{ post.excerpt | remove: '<p>' | remove: '</p>' }}</p>
+    </div>
+  {% endfor %}
+</div>

@@ -1,107 +1,241 @@
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>6to5 &middot; Turn ES6+ code into readable vanilla ES5</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js"></script>
-  </head>
-  <body>
-    <a href="https://github.com/6to5/6to5">
-      <img class="ribbon" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub">
-    </a>
+---
+layout: default
+---
 
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3 sidebar">
-          <a href="index.html" class="logo">
-            <img alt="6to5" src="https://raw.githubusercontent.com/6to5/logo/master/logo.png">
-          </a>
+<div class="jumbotron text-center">
+  <div class="container-fluid">
+    <h1>Next generation JavaScript, today.</h1>
+    <p>Turn ES6+ code into readable vanilla ES5 with source maps and more!</p>
+  </div>
+</div>
 
-          <ul class="nav nav-pills nav-stacked">
-            <li><a href="features.html">Features</a></li>
-            <li><a href="usage.html">Usage</a></li>
-            <li><a href="plugins.html">Plugins</a></li>
-            <li><a href="differences.html">Differences</a></li>
-            <li><a href="react.html">React/JSX</a></li>
-            <li><a href="contributors.html">Contributors</a></li>
-            <li><a href="experimental.html">Experimental</a></li>
-            <li><a href="playground.html">Playground</a></li>
-            <li><a href="https://gitter.im/6to5/6to5">Support</a></li>
-          </ul>
-
-          <hr>
-
-          <ul class="nav nav-pills nav-stacked">
-            <li><a href="repl.html">REPL</a></li></a>
-            <li><a href="caveats.html">Caveats</a></li>
-            <li><a href="polyfill.html">Polyfill</a></li>
-            <li><a href="browser.html">Browser</a></li>
-            <li><a href="modules.html">Modules</a></li>
-            <li><a href="optional-runtime.html">Optional runtime</a></li>
-          </ul>
-        </div>
-
-        <div class="col-sm-9 markdown-body">
-          <p><strong>6to5</strong> turns ES6+ code into vanilla ES5, so you can use next generation features <strong>today.</strong></p>
-<ul>
-<li><strong>Readable</strong> - formatting is retained if possible so your generated code is as similar as possible.</li>
-<li><strong>Extensible</strong> - with a large range of <a href="plugins.html">plugins</a> and <strong>browser support</strong>.</li>
-<li><strong>Lossless</strong> - <strong>source map support</strong> so you can debug your compiled code with ease.</li>
-<li><strong>Compact</strong> - maps directly to the equivalent ES5 with <strong>no runtime</strong><a href="caveats.html">*</a>.</li>
-</ul>
-<h2 id="installation"><a class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
-<p>It&#39;s as easy as:</p>
-<pre><code>$ npm <span class="hljs-keyword">install</span> -g <span class="hljs-number">6</span>to5
-</code></pre><h2 id="usage"><a class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
-<p>Once you&#39;ve installed 6to5, there are multiple paths you can take depending on
-how you want to use it.</p>
-<p>6to5 will simply compile your ES6+ script to ES5 if you pass it as an argument
-to the command-line tool <code>6to5</code>:</p>
-<pre><code class="lang-sh">$ 6to5 script.js
-</code></pre>
-<p>If you have a file written using ES6+ and you just want to run it, <code>6to5-node</code>
-has you covered:</p>
-<pre><code class="lang-sh">$ 6to5-node script.js
-</code></pre>
-<p>And it doesn&#39;t end here! To see all the ways you can use 6to5, check out the
-<a href="http://6to5.github.io/usage.html">Usage</a> page.</p>
-<h2 id="-features-features-md-"><a class="anchor" href="#[features](features.md)" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="features.html">Features</a></h2>
-<ul>
-<li><a href="features.html#abstract-references">Abstract references</a> (<a href="experimental.html">experimental</a>)</li>
-<li><a href="features.html#array-comprehension">Array comprehension</a> (<a href="experimental.html">experimental</a>)</li>
-<li><a href="features.html#async-functions">Async functions</a> (<a href="experimental.html">experimental</a>)</li>
-<li><a href="features.html#async-generator-functions">Async generator functions</a> (<a href="experimental.html">experimental</a>)</li>
-<li><a href="features.html#arrow-functions">Arrow functions</a></li>
-<li><a href="features.html#classes">Classes</a></li>
-<li><a href="features.html#computed-property-names">Computed property names</a></li>
-<li><a href="features.html#constants">Constants</a></li>
-<li><a href="features.html#default-parameters">Default parameters</a></li>
-<li><a href="features.html#destructuring">Destructuring</a></li>
-<li><a href="features.html#exponentiation-operator">Exponentiation operator</a> (<a href="experimental.html">experimental</a>)</li>
-<li><a href="features.html#for-of">For-of</a></li>
-<li><a href="features.html#generators">Generators</a></li>
-<li><a href="features.html#generator-comprehension">Generator comprehension</a> (<a href="experimental.html">experimental</a>)</li>
-<li><a href="features.html#let-scoping">Let scoping</a></li>
-<li><a href="features.html#modules">Modules</a></li>
-<li><a href="features.html#numeric-literals">Numeric literals</a></li>
-<li><a href="features.html#object-rest-spread">Object rest/spread</a> (<a href="experimental.html">experimental</a>)</li>
-<li><a href="features.html#property-method-assignment">Property method assignment</a></li>
-<li><a href="features.html#property-name-shorthand">Property name shorthand</a></li>
-<li><a href="react.html">React/JSX</a></li>
-<li><a href="features.html#rest-parameters">Rest parameters</a></li>
-<li><a href="features.html#spread">Spread</a></li>
-<li><a href="features.html#template-literals">Template literals</a></li>
-<li><a href="features.html#unicode-regex">Unicode regex</a></li>
-</ul>
-
-        </div>
-      </div>
-
-      <footer>
-        <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.6.0</p>
-      </footer>
+<div class="container">
+  <div class="row featurette">
+    <div class="col-md-12">
+      <h2>Introduction</h2>
+      <p>
+        ECMAScript 6 is the upcoming version of the ECMAScript standard.
+        This standard is targeting ratification in June 2015. ES6 is a
+        significant update to the language, and the first update to the
+        language since ES5 was standardized in 2009. Implementation of
+        these features in major JavaScript engines is
+        <a href="http://kangax.github.io/compat-table/es6/">underway now</a>.
+      </p>
+      <p>
+        <a href="{{ site.baseurl }}/docs/tour/">Get a tour of all the new features in ES6 &rarr;</a>
+      </p>
     </div>
-  </body>
-</html>
+  </div>
+</div>
+
+<div class="jumbotron jumbotron-inverse text-center">
+  <div class="container-fluid">
+    <h1>Say Hello to 6to5.</h1>
+    <p>
+      6to5 turns ES6+ code into vanilla ES5, so you can use next generation
+      features today.
+    </p>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="row featurette">
+    <div class="col-md-4">
+      <h2>Readable</h2>
+      <p>
+        Formatting is retained if possible so your generated code is as similar
+        as possible.
+      </p>
+    </div>
+    <div class="col-md-4 col-sm-6">
+{% highlight javascript %}
+class User extends Model {
+  constructor() {
+    super();
+    this.sayHello();
+  }
+
+  sayHello() {
+    alert("Hello World!");
+  }
+}
+{% endhighlight %}
+      </div>
+      <div class="col-md-4 col-sm-6">
+{% highlight javascript %}
+var User = function User() {
+  Model.call(this);
+  this.sayHello();
+};
+
+_extends(User, Model);
+
+User.prototype.sayHello = function () {
+  alert("Hello World!");
+};
+{% endhighlight %}
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-4 col-md-push-8">
+      <h2>Extensible</h2>
+      <p>With a large range of <a href="{{ site.baseurl }}/docs/setup/">plugins</a> and browser support.</p>
+    </div>
+    <div class="col-md-8 col-md-pull-4">
+      <img src="{{ site.baseurl }}/images/benefits-extensible.png" alt="Plugins and Browsers" class="featurette-image img-responsive">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-4">
+      <h2>Lossless</h2>
+      <p><strong>Source map</strong> support so you can debug your compiled code with ease.</p>
+    </div>
+    <div class="col-md-8">
+      <img src="{{ site.baseurl }}/images/benefits-lossless.png" alt="Lossless Sourcemaps" class="featurette-image img-responsive">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-4 col-md-push-8">
+      <h2>Compact</h2>
+      <p>Maps directly to the equivalent ES5 with no runtime.<a href="{{ site.baseurl }}/docs/caveats/">*</a></p>
+    </div>
+    <div class="col-md-4 col-md-pull-4 col-sm-6">
+{% highlight javascript %}
+class User extends Model {
+  constructor() {
+    super();
+    this.sayHello();
+  }
+
+  sayHello() {
+    alert("Hello World!");
+  }
+}
+{% endhighlight %}
+    </div>
+    <div class="col-md-4 col-md-pull-4 col-sm-6">
+{% highlight javascript %}
+var User = function User() {
+  Model.call(this);
+  this.sayHello();
+};
+
+_extends(User, Model);
+
+User.prototype.sayHello = function () {
+  alert("Hello World!");
+};
+{% endhighlight %}
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="text-center">
+    <div class="btn-wrapper">
+      <a href="{{ site.baseurl }}/docs/setup/" class="btn btn-featured">Install 6to5</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="jumbotron jumbotron-inverse text-center">
+  <div class="container-fluid">
+    <h1>It's time to make the switch.</h1>
+    <p>ES6 is available wherever you use JavaScript. So stop making excuses.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="row featurette">
+    <div class="col-md-4 col-md-push-8 col-sm-6 col-sm-push-6">
+      <img src="{{ site.baseurl }}/images/uses-browsers.png" alt="Browsers" class="featurette-image img-responsive">
+    </div>
+    <div class="col-md-8 col-md-pull-4 col-sm-6 col-sm-pull-6">
+      <h2><a href="{{ site.baseurl }}/docs/setup/#build-systems">Browsers</a></h2>
+      <p>
+        6to5 has plugins for all of your favorite build systems. Check
+        out the official plugins for <a href="/docs/setup/#gulp">Gulp</a>,
+        <a href="{{ site.baseurl }}/docs/setup/#grunt">Grunt</a>,
+        <a href="{{ site.baseurl }}/docs/setup/#browserify">Browserify</a>,
+        <a href="{{ site.baseurl }}/docs/setup/#webpack">Webpack</a>,
+        <a href="{{ site.baseurl }}/docs/setup/#brocolli">Brocolli</a>,
+        and <a href="{{ site.baseurl }}/docs/setup/#build-systems">many more</a>. You can also use
+        the <a href="{{ site.baseurl }}/docs/usage/cli/">built-in CLI</a>.
+      </p>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-4 col-sm-6">
+      <img src="{{ site.baseurl }}/images/uses-nodejs.png" alt="Node.js" class="featurette-image img-responsive">
+    </div>
+    <div class="col-md-8 col-sm-6">
+      <h2><a href="{{ site.baseurl }}/docs/setup/#nodejs">Node.js</a></h2>
+      <p>
+        Using either the <a href="{{ site.baseurl }}/docs/setup/#cli">CLI</a> or
+        <a href="{{ site.baseurl }}/docs/setup/#require-hook">require hook</a>,
+        you can easily setup 6to5 to work with your Node.js app. Module authors
+        can also easily precompile their assets before publishing to npm.
+      </p>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-4 col-md-push-8 col-sm-6 col-sm-push-6">
+      <img src="{{ site.baseurl }}/images/uses-rails.png" alt="Rails" class="featurette-image img-responsive">
+    </div>
+    <div class="col-md-8 col-md-pull-4 col-sm-6 col-sm-pull-6">
+      <h2><a href="{{ site.baseurl }}/docs/setup/#rails">Rails</a></h2>
+      <p>
+        Sprockets 4 will
+        <a href="https://github.com/sstephenson/sprockets/pull/682">ship with
+        6to5 by default</a> using the `.es6` file extension. Until then you can
+        use the <a href="{{ site.baseurl }}/docs/setup/#sprockets">Sprockets ES6 transform</a> or
+        the <a href="https://github.com/6to5/6to5-ruby">official 6to5 Ruby
+        Gem</a>.
+      </p>
+    </div>
+  </div>
+
+  <hr class="featurette-divider"/>
+
+  <div class="row featurette">
+    <div class="col-md-4 col-sm-6">
+      <img src="{{ site.baseurl }}/images/uses-browserify.png" alt="Browserify" class="featurette-image img-responsive">
+    </div>
+    <div class="col-md-8 col-sm-6">
+      <h2><a href="{{ site.baseurl }}/docs/setup/#browserify">Browserify</a></h2>
+      <p>
+        6to5 and Browserify get along wonderfully with the
+        <a href="{{ site.baseurl }}/docs/setup/#browserify">official 6to5ify transform</a> 6to5
+        transforms the module syntax to browserify-compatible Common.js modules
+        by default.
+      </p>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="text-center">
+    <div class="btn-wrapper btn-wrapper-lg">
+      <a href="{{ site.baseurl }}/docs/tour/" class="btn btn-featured">Learn ES6</a>
+      <a href="{{ site.baseurl }}/docs/setup/" class="btn btn-featured">Install 6to5</a>
+    </div>
+  </div>
+</div>

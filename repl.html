@@ -1,235 +1,75 @@
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>6to5 &middot; Turn ES6+ code into readable vanilla ES5</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js"></script>
-  </head>
-  <body>
-    <a href="https://github.com/6to5/6to5">
-      <img class="ribbon" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub">
-    </a>
+---
+layout: default
+permalink: /repl/
+fullscreen: true
+redirect_from: "/repl.html"
+---
 
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3 sidebar">
-          <a href="index.html" class="logo">
-            <img alt="6to5" src="https://raw.githubusercontent.com/6to5/logo/master/logo.png">
-          </a>
+<div class="to5-repl">
+  <form class="form to5-repl-toolbar">
+    <div class="pull-left">
 
-          <ul class="nav nav-pills nav-stacked">
-            <li><a href="features.html">Features</a></li>
-            <li><a href="usage.html">Usage</a></li>
-            <li><a href="plugins.html">Plugins</a></li>
-            <li><a href="differences.html">Differences</a></li>
-            <li><a href="react.html">React/JSX</a></li>
-            <li><a href="contributors.html">Contributors</a></li>
-            <li><a href="experimental.html">Experimental</a></li>
-            <li><a href="playground.html">Playground</a></li>
-            <li><a href="https://gitter.im/6to5/6to5">Support</a></li>
-          </ul>
-
-          <hr>
-
-          <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="repl.html">REPL</a></li></a>
-            <li><a href="caveats.html">Caveats</a></li>
-            <li><a href="polyfill.html">Polyfill</a></li>
-            <li><a href="browser.html">Browser</a></li>
-            <li><a href="modules.html">Modules</a></li>
-            <li><a href="optional-runtime.html">Optional runtime</a></li>
-          </ul>
-        </div>
-
-        <div class="col-sm-9 markdown-body">
-          <h1>REPL</h1>
-
-<noscript>
-  <p>JavaScript is required for this demo.</p>
-</noscript>
-
-<div id="repl">
-  <div id="input" class="editor"></div>
-  <div id="output" class="editor"></div>
-  <div class="clearfix"></div>
-
-  <h3>Options</h3>
-
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" id="option-evaluate" checked>
-      Evaluate
-    </label>
-  </div>
-
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" id="option-experimental" checked>
-      Experimental
-    </label>
-  </div>
-
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" id="option-playground" checked>
-      Playground
-    </label>
-  </div>
-
-  <h3>Console</h3>
-
-  <pre id="console"><code></code></pre>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
-<script>
-  var getQuery = function() {
-    var query = window.location.hash.replace('#?', '').split('&');
-    var result = {};
-
-    if (query[0] === '') {
-      return result;
-    }
-
-    [].forEach.call(query, function(val) {
-      val = val.split('=');
-      result[val[0]] = val[1];
-    });
-
-    return result;
-  };
-
-  var setQuery = function (params) {
-    var query = getQuery();
-    var result = [];
-
-    Object.keys(params).forEach(function(key) {
-      query[key] = params[key];
-    });
-
-    Object.keys(query).forEach(function(key) {
-      result.push(key + '=' + query[key]);
-    });
-
-    console.log(params, query, result);
-
-    if (!result.length) {
-      return;
-    }
-
-    window.location.hash = '?' + result.join('&');
-  };
-
-  var get = function (id) {
-    var editor = ace.edit(id);
-
-    var session = editor.getSession();
-    session.setMode("ace/mode/javascript");
-    session.setUseSoftTabs(true);
-    session.setTabSize(2);
-    session.setUseWorker(false);
-
-    return editor;
-  };
-
-  var input = get("input");
-
-  var output = get("output");
-  output.setReadOnly(true);
-  output.setHighlightActiveLine(false);
-  output.setHighlightGutterLine(false);
-
-  var $consoleCode = $("#console code");
-  var $optionExper = $("#option-experimental");
-  var $optionPlay  = $("#option-playground");
-  var $optionEval  = $("#option-evaluate");
-  var $console     = $("#console");
-
-  var compile = function () {
-    var code = input.getValue();
-    var experimental = $optionExper.is(":checked");
-    var playground = $optionPlay.is(":checked");
-    var evaluate = $optionEval.is(":checked");
-    var _log = console.log;
-
-    setQuery({
-      code: encodeURIComponent(code),
-      experimental: experimental,
-      playground: playground,
-      evaluate: evaluate
-    });
-
-    try {
-      var transformed = to5.transform(code, {
-        experimental: experimental,
-        playground: playground,
-        filename: "repl"
-      });
-
-      $consoleCode.text("");
-      $console.removeClass("error");
-      output.setValue(transformed.code, -1);
-
-      if (evaluate) {
-        var buf = "";
-
-        console.log = function () {
-          if (arguments.length > 1) {
-            for (var i in arguments) {
-              var arg = arguments[i];
-              buf += JSON.stringify(arg) + " ";
-            }
-          } else if (arguments.length === 1) {
-            var arg = arguments[0];
-            if (typeof arg === "string") {
-              buf += arg;
-            } else {
-              buf += JSON.stringify(arg);
-            }
-          }
-          buf += "\n";
-        };
-
-        new Function(transformed.code)();
-
-        $consoleCode.text(buf);
-      }
-    } catch (err) {
-      $consoleCode.text(err.stack);
-      $console.addClass("error");
-      throw err;
-    }
-
-    console.log = _log;
-  };
-
-  var timeout;
-  var queue = function () {
-    clearTimeout(timeout);
-    timeout = setTimeout(compile, 500);
-  };
-
-  input.on("change", queue);
-  $optionExper.on("change", queue);
-  $optionPlay.on("change", queue);
-  $optionEval.on("change", queue);
-
-  var query = getQuery();
-
-  $optionExper.prop('checked', query.experimental !== 'false');
-  $optionPlay.prop('checked', query.playground !== 'false');
-  $optionEval.prop('checked', query.evaluate !== 'false');
-  input.setValue(decodeURIComponent(query.code || ''));
-</script>
-
-        </div>
+      <div class="form-group">
+        <label for="option-experimental">
+          <input id="option-experimental" type="checkbox">
+          Experimental
+        </label>
       </div>
 
-      <footer>
-        <hr>
-        <p><a href="https://github.com/6to5/6to5">6to5</a> v2.6.0</p>
-      </footer>
+      <div class="form-group">
+        <label for="option-playground">
+          <input id="option-playground" type="checkbox">
+          Playground
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="option-evaluate">
+          <input id="option-evaluate" type="checkbox">
+          Evaluate
+        </label>
+      </div>
     </div>
-  </body>
-</html>
+
+    <div class="pull-right">
+      <div class="form-group hidden">
+        <label for="examples">Examples:</label>
+        <select id="examples">
+          <optgroup label="ES6 Features">
+            <option>Arrows</option>
+            <option>Classes</option>
+            <option>Enhanced Object Literals</option>
+            <option>Template Strings</option>
+            <option>Destructuring</option>
+            <option>Default + Rest + Spread</option>
+            <option>Let + Const</option>
+            <option>Iterators + For..Of</option>
+            <option>Generators</option>
+            <option>Comprehensions</option>
+            <option>Unicode</option>
+            <option>Modules</option>
+            <option>Module Loaders</option>
+            <option>Map + Set + WeakMap + WeakSet</option>
+            <option>Proxies</option>
+            <option>Symbols</option>
+            <option>Subclassable Built-ins</option>
+            <option>Math + Number + String + Object APIs</option>
+            <option>Binary and Octal Literals</option>
+            <option>Promises</option>
+            <option>Reflect API</option>
+            <option>Tail Calls</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+  </form>
+
+  <div class="to5-repl-editor to5-repl-input"><div class="ace_editor"></div></div>
+  <div class="to5-repl-editor to5-repl-output"><div class="ace_editor"></div></div>
+  <div class="to5-repl-reporter to5-repl-errors"></div>
+  <div class="to5-repl-reporter to5-repl-console"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+  <script src="{{ "/scripts/6to5.js" | prepend: site.baseurl }}"></script>
+  <script src="{{ "/scripts/repl.js" | prepend: site.baseurl }}"></script>
+</div>

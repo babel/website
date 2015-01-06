@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" {% if page.fullscreen %}class="to5-fullscreen"{% endif %}>
+
+  {% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+
+    {{ content }}
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

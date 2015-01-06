@@ -1,33 +1,16 @@
 {
   "name": "6to5.github.io",
+  "private": true,
   "version": "1.0.0",
   "description": "",
-  "main": "build.js",
+  "main": "",
   "scripts": {
+    "build": "make build",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/6to5/6to5.github.io.git"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/6to5/6to5.github.io/issues"
-  },
-  "homepage": "https://github.com/6to5/6to5.github.io",
   "devDependencies": {
-    "6to5": "^1.12.4",
-    "github-markdown-css": "^1.2.0",
-    "handlebars": "^2.0.0",
-    "highlight.js": "^8.3.0",
-    "less": "^2.0.0",
-    "lodash": "^2.4.1",
-    "marked": "^0.3.2",
-    "bootstrap": "^3.3.0",
-    "underscore.string": "^2.3.3",
-    "jquery": "^2.1.1",
-    "uglify-js": "^2.4.15",
-    "request": "^2.48.0"
+    "bootstrap-sass": "^3.3.1"
   }
 }

@@ -1,2 +1,5 @@
+_6to5
+_site
+.sass-cache
 node_modules
 .DS_Store

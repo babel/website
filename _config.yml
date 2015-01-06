@@ -1,0 +1,64 @@
+# Site settings
+title: 6to5
+description: 6to5 turns ES6+ code into vanilla ES5, so you can use next generation features today.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://6to5.org" # the base hostname & protocol for your site
+# twitter_username: jekyllrb
+github_username:  6to5
+
+# Build settings
+markdown: redcarpet
+# markdown: kramdown
+highlighter: pygments
+
+redcarpet:
+  extensions: ['tables', 'no_intra_emphasis', 'autolink', 'with_toc_data']
+
+# kramdown:
+#   input: GFM
+#   hard_wrap: false
+
+# header navigation
+navigation:
+- title: Tour
+  url: /docs/tour/
+- title: Setup
+  url: /docs/setup/
+- title: Usage
+  url: /docs/usage/
+  subnav:
+  - title: CLI
+    url: /docs/usage/cli/
+  - title: Require Hook
+    url: /docs/usage/require/
+  - title: API
+    url: /docs/usage/api/
+  - title: Options
+    url: /docs/usage/options/
+  - title: Modules
+    url: /docs/usage/modules/
+  - title: Polyfill
+    url: /docs/usage/polyfill
+  - title: Runtime
+    url: /docs/usage/runtime
+  - title: Browser
+    url: /docs/usage/browser
+  - title: Experimental
+    url: /docs/usage/experimental
+  - title: Playground
+    url: /docs/usage/playground
+  - title: JSX
+    url: /docs/usage/jsx/
+- title: Compare
+  url: /docs/compare/
+- title: Caveats
+  url: /docs/caveats/
+- title: REPL
+  url: /repl/
+
+# Blog Settings
+permalink: /blog/:year/:month/:day/:title
+paginate: 1
+
+gems:
+  - jekyll-redirect-from

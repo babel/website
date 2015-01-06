@@ -1,17 +1,31 @@
-LESS_COMMAND = node_modules/less/bin/lessc
-UGLIFY_CMD = node_modules/uglify-js/bin/uglifyjs
-
-.PHONY: build
+.PHONY: clone build
 
 build:
-	# pages
-	rm -rf *.html
-	node bin/build-template.js
+	if [ ! -d ./_6to5 ]; \
+	then git clone git@github.com:6to5/6to5.git _6to5; \
+	fi
 
-	# stylesheets
-	node $(LESS_COMMAND) src/styles.less styles.css
+	cd _6to5 && git pull
 
-	# scripts
-	node bin/build-scripts.js >_scripts.js
-	node $(UGLIFY_CMD) _scripts.js >scripts.js
-	rm -rf _scripts.js
+	if [ ! -d ./_6to5/node_modules ]; \
+	then cd _6to5 && npm install; \
+	fi
+
+	cd _6to5 && make build
+
+	if [ ! -f ./scripts/6to5.js ]; \
+	then touch ./scripts/6to5.js; \
+	fi
+
+	cat ./_6to5/dist/6to5.min.js ./_6to5/dist/polyfill.min.js > ./scripts/6to5.js;
+
+	rm -rf ./docs/**
+	cp -r ./_6to5/doc/** ./docs/
+
+	if [ ! -d ./node_modules]; \
+	then npm install; \
+	fi
+
+	if [ ! -d ./_sass/bootstrap ]; \
+	then cp -r ./node_modules/bootstrap-sass/assets/stylesheets/bootstrap ./_sass/bootstrap; \
+	fi
