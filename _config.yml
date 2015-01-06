@@ -53,6 +53,11 @@ navigation:
     url: /docs/usage/playground
   - title: JSX
     url: /docs/usage/jsx/
+#- title: Guides
+#  url: /docs/guides/
+#  subnav:
+#  - title: Writing a library
+#    url: /docs/guides/writing-a-library/
 - title: Compare
   url: /docs/compare/
 - title: Caveats
