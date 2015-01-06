@@ -41,6 +41,12 @@ the 6to5 featureset is very comprehensive, supporting every ES6 syntactic featur
 built-in support for emerging standards such as [Flow](http://flowtype.org) and
 [JSX/React](/docs/usage/jsx) it makes it extremely to integrate.
 
+### Flexible
+
+The 6to5 compiler is very flexible in it's usage, it has support for an extensive range
+of [build systems](/docs/setup#build-systems) as well as for the
+[browser](/docs/usage/browser), [node](/docs/setup#node-js) and [more!](/docs/setup#misc).
+
 ## What is a transformer?
 
 A transformer is a module that is ran against your code that transforms it. For example,
