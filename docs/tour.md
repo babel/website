@@ -19,7 +19,7 @@ redirect_from: /features.html
   <h4>REPL</h4>
   <p>
     Be sure to try these features out in the online
-    <a href="repl.html">REPL</a>.
+    <a href="/repl">REPL</a>.
   </p>
 </blockquote>
 
@@ -422,7 +422,7 @@ alert("2π = " + exp(math.pi, math.e));
   <p>
     6to5 can transpile ES6 Modules to several different formats including
     Common.js, AMD, System, and UMD. You can even create your own. For more
-    details see the <a href="modules.html">modules docs</a>.
+    details see the <a href="/docs/usage/modules">modules docs</a>.
   </p>
 </blockquote>
 
