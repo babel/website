@@ -17,8 +17,9 @@ $ npm install 6to5
 require('6to5/register');
 ```
 
-All subsequent files required by node with the extensions `.es6` and `.js` will
-be transformed by 6to5. The polyfill specified in Polyfill is also required.
+All subsequent files required by node with the extensions `.es6`, `.es`, and
+`.js` will be transformed by 6to5. The polyfill specified in Polyfill is also
+required.
 
 **NOTE:** By default all requires to `node_modules` will be ignored. You can
 override this by passing an ignore regex via:

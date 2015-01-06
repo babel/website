@@ -53,6 +53,13 @@ to5.transform('code', { playground: true });
 
 ### Memoization assignment operator
 
+The memoization assignment operator allows you to lazily set an object property.
+It checks whether there's a property defined on the object and if there isn't
+then the right hand value is set.
+
+This means that `obj.x` in the following `var x = { x: undefined }; obj.x ?= 2;``
+will still be `undefined` because it's already been defined on the object.
+
 **Uses**
 
 ```js
@@ -76,7 +83,7 @@ var obj = {};
 obj.x ?= 2;
 ```
 
-is equivalent to:
+is equivalent to
 
 ```js
 var obj = {};
@@ -85,22 +92,29 @@ if (!Object.prototype.hasOwnProperty.call(obj, 'x')) obj.x = 2;
 
 ### Method binding
 
-
-```js
+```javascript
 var fn = obj#method;
-var fn = obj#method('foob');
-
-['foo', 'bar'].map(#toUpperCase); // ['FOO', 'BAR']
-[1.1234, 23.53245, 3].map(#toFixed(2)); // ['1.12', '23.53', '3.00']
+var fn = obj#method("foob");
 ```
 
-is equivalent to:
+is equivalent to
 
-```
+```javascript
 var fn = obj.method.bind(obj);
-var fn = obj.method.bind(obj, 'foob');
+var fn = obj.method.bind(obj, "foob");
+```
 
-['foo', 'bar'].map(function (val) { return val.toUpperCase(); });
+### Method binding function shorthand
+
+```javascript
+["foo", "bar"].map(#toUpperCase); // ["FOO", "BAR"]
+[1.1234, 23.53245, 3].map(#toFixed(2)); // ["1.12", "23.53", "3.00"]
+```
+
+equivalent to
+
+```javascript
+["foo", "bar"].map(function (val) { return val.toUpperCase(); });
 [1.1234, 23.53245, 3].map(function (val) { return val.toFixed(2); });
 ```
 
