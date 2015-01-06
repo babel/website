@@ -419,8 +419,8 @@ $ npm install --global 6to5
 **Usage**
 
 ```make
-SRC      = $(wildcard src/*.js)
-LIB      = $(SRC:src/%.js=lib/%.js)
+SRC = $(wildcard src/*.js)
+LIB = $(SRC:src/%.js=lib/%.js)
 
 lib: $(LIB)
 lib/%.js: src/%.js
