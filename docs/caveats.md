@@ -14,15 +14,14 @@ satisfy **all** 6to5 feature requirements by using the included
 
 You may alternatively selectively include what you need:
 
-| Feature                     | Requirements                                                                                                                    |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Abstract References         | [experimental](/docs/usage/experimental), `Symbol`                                                                              |
-| Array destructuring         | `Array.from`                                                                                                                    |
-| Async functions, Generators | [experimental](/docs/usage/experimental), [regenerator runtime](https://github.com/facebook/regenerator/blob/master/runtime.js) |
-| Comprehensions              | [experimental](/docs/usage/experimental), `Array.from`                                                                          |
-| For Of                      | `Symbol`, `prototype[Symbol.iterator]`                                                                                          |
-| Object spread/rest          | [experimental](/docs/usage/experimental)                                                                                        |
-| Spread                      | `Array.from`                                                                                                                    |
+| Feature                     | Requirements                                                                          |
+| --------------------------- | ------------------------------------------------------------------------------------- |
+| Abstract References         | `Symbol`                                                                              |
+| Array destructuring         | `Array.from`                                                                          |
+| Async functions, Generators | [regenerator runtime](https://github.com/facebook/regenerator/blob/master/runtime.js) |
+| Comprehensions              | `Array.from`                                                                          |
+| For Of                      | `Symbol`, `prototype[Symbol.iterator]`                                                |
+| Spread                      | `Array.from`                                                                          |
 
 ## Destructuring defaults
 
