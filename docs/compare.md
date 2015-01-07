@@ -88,7 +88,7 @@ that when you turn it off and use your code in a full ES6 environment
 | ---------------------------- | ---- | ------- | ---------- | -------------- | ------ | ----------- |
 | Source maps                  | ✓    | ✓       | ✓          |                |        | ✓           |
 | No compiler global pollution | ✓    |         | ✓          | ✓              |        | ✓           |
-| Optional/no runtime          | ✓    |         |            | ✓              |        | ✓           |
+| Optional/no runtime          | ✓    |         | ✓          | ✓              |        | ✓           |
 | Browser compiler             | ✓    | ✓       | ✓          |                |        |             |
 
 ### Language Support
