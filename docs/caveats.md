@@ -14,18 +14,15 @@ satisfy **all** 6to5 feature requirements by using the included
 
 You may alternatively selectively include what you need:
 
-| Feature                     | Requirements                                                                                                           |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Feature                     | Requirements                                                                                                                    |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | Abstract References         | [experimental](/docs/usage/experimental), `Symbol`                                                                              |
-| Array destructuring         | `Array.from`                                                                                                           |
+| Array destructuring         | `Array.from`                                                                                                                    |
 | Async functions, Generators | [experimental](/docs/usage/experimental), [regenerator runtime](https://github.com/facebook/regenerator/blob/master/runtime.js) |
 | Comprehensions              | [experimental](/docs/usage/experimental), `Array.from`                                                                          |
-| For Of                      | `Symbol`, `prototype[Symbol.iterator]`                                                                                 |
-| Modules                     | `Object.assign`*                                                                                                       |
-| Object spread/rest          | [experimental](/docs/usage/experimental), `Object.assign`                                                                       |
-| Spread                      | `Array.from`                                                                                                           |
-
-*Only required for exporting a non-function `default` with additional `export`s.
+| For Of                      | `Symbol`, `prototype[Symbol.iterator]`                                                                                          |
+| Object spread/rest          | [experimental](/docs/usage/experimental)                                                                                        |
+| Spread                      | `Array.from`                                                                                                                    |
 
 ## Destructuring defaults
 

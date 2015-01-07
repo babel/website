@@ -54,7 +54,7 @@ the `arrowFunctions` transformer has the very specific goal of transforming
 [ES6 Arrow Functions](/docs/tour#arrows) to the equivalent ES3. This allows transformers to be disabled and enabled at will which is critical in the
 current fast paced development environment.
 
-## Why are there `Array.from` and `Object.assign` calls in my code?! These functions don't exist!
+## Why are there `Array.from` and `Symbol` in my code?! These don't exist!
 
 This is a known [caveat](/docs/caveats). This is because 6to5 compiles to ES3 syntax but with
 ES5 and ES6 methods. This is essential to emulate a complete ES6 environment so your code
