@@ -83,6 +83,7 @@
     capturingConsole.log = function() {
       if (this !== capturingConsole) { return; }
 
+      console.log.apply(console, arguments);
       var result = _.transform(arguments, function(result, val, i) {
         result[i] = typeof val === 'string' ? val : JSON.stringify(val);
       }, []).join(' ');
