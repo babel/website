@@ -34,3 +34,4 @@ $ 6to5 --name=value
 | `runtime`          | `false`              | Optionally replace all 6to5 helper declarations with a referenece to this variable. If set to `true` then the default namespace is used `to5Runtime`. |
 | `comments`         | `true`               | Output comments in generated output. |
 | `experimental`     | `false`              | Enable support for experimental ES7 features. |
+| `reactCompat`      | `false`              | Makes the `react` transformer produce pre-v0.12 code |
