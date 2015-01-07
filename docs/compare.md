@@ -106,7 +106,6 @@ that when you turn it off and use your code in a full ES6 environment
 | Default parameters           | ✓    | ✓       | ✓          | ✓              | ✓      |             |
 | Destructuring                | ✓    | ✓       |            | ✓              | ✓      | ✓           |
 | Exponentiation operator      | ✓    | ✓       |            |                |        |             |
-| Flow types                   | ✓    |         |            |                |        | ✓           |
 | For-of                       | ✓    | ✓       |            | ✓              | ✓      |             |
 | Generators                   | ✓    | ✓       |            |                |        |             |
 | Generator comprehension      | ✓    | ✓       |            |                |        |             |
@@ -120,4 +119,5 @@ that when you turn it off and use your code in a full ES6 environment
 | React                        | ✓    |         |            |                |        |             |
 | Spread                       | ✓    | ✓       |            | ✓              | ✓      |             |
 | Template literals            | ✓    | ✓       |            | ✓              | ✓      | ✓           |
+| Types                        | ✓    | ✓       | ✓          |                |        | ✓           |
 | Unicode regex                | ✓    | ✓       |            | ✓              |        |             |
