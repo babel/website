@@ -63,29 +63,43 @@
 
   var $errorReporter = $('.to5-repl-errors');
   var $consoleReporter = $('.to5-repl-console');
+  var capturingConsole;
 
   var evaluate = function(code) {
     var buffer = [];
     var error;
-    var prevConsoleLog = console.log;
+    var done = false;
 
-    console.log = function() {
+    function write(data) {
+      buffer.push(data);
+      if (done) flush();
+    }
+
+    function flush() {
+      $consoleReporter.text(buffer.join('\n'));
+    }
+
+    capturingConsole = Object.create(console);
+    capturingConsole.log = function() {
+      if (this !== capturingConsole) { return; }
+
       var result = _.transform(arguments, function(result, val, i) {
         result[i] = typeof val === 'string' ? val : JSON.stringify(val);
       }, []).join(' ');
 
-      buffer.push(result);
+      write(result);
     };
 
     try {
-      new Function(code)();
+      new Function('console', code)(capturingConsole);
     } catch (err) {
       error = err;
       buffer.push(err.message);
     }
 
-    $consoleReporter.text(buffer.join('\n'));
-    console.log = prevConsoleLog;
+    done = true;
+    flush();
+
     if (error) throw error;
   };
 
