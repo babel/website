@@ -27,6 +27,38 @@ You may alternatively selectively include what you need:
 
 *Only required for exporting a non-function `default` with additional `export`s.
 
+## Destructuring defaults
+
+Currently destructuring defaults is currently only supported in their long form.
+
+The following **will** work:
+
+```javascript
+var { a: a = 1 } = {};
+a; // 1
+
+function b({ c: c = 2 }){
+  c; // 2
+}
+b({});
+```
+
+however the following will not
+
+```javascript
+var { a = 1 } = {};
+a; // 1
+
+function b({ c = 2 }){
+  c; // 2
+}
+b({});
+```
+
+See [6to5/6to5#230](https://github.com/6to5/6to5/issues/230) and
+[marijnh/acorn#181](https://github.com/marijnh/acorn/issues/181) for updates and
+progress.
+
 ## ES5
 
 Since 6to5 assumes that your code will be ran in an ES5 environment it uses ES5
