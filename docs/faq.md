@@ -5,20 +5,6 @@ description: Frequently Asked Questions and Answers
 permalink: /docs/faq/
 ---
 
-## Can 6to5 be installed on Windows?
-
-Yes it can.
-During `npm install 6to5`, you might get some errors regarding a module called `kexec`, this module is optional and it's perfectly fine to simply ignore these errors.
-
-Alternativly, you can invoke npm with `--no-optional`
-```sh
-npm install 6to5 --no-optional
-```
-
-```
-npm install 6to5 --no-optional
-```
-
 ## How does 6to5 differ from other transpilers?
 
 Many issues plague current transpilers, 6to5 takes a unique approach to many aspects.
@@ -81,3 +67,15 @@ You have two options, depending on your use case:
 
  - Use the wonderful [core aliasing optional transformer](/docs/usage/transformers#core-aliasing). This is recommended if you're writing a library.
  - Or use the bundled 6to5 [polyfill](/docs/usage/polyfill). This is recommended if you're writing an entire application.
+
+## Can 6to5 be installed on Windows?
+
+Yes! During `npm install 6to5`, you might get some errors regarding a module
+called `kexec`, this module is optional and it's perfectly fine to simply ignore these
+errors.
+
+Alternativly, you can invoke npm with `--no-optional`:
+
+```sh
+$ npm install 6to5 --no-optional
+```
