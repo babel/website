@@ -391,7 +391,7 @@ export var pi = 3.141593;
 ```
 ```js
 // app.js
-module math from "lib/math";
+import * as math from "lib/math";
 alert("2π = " + math.sum(math.pi, math.pi));
 ```
 ```js
@@ -412,9 +412,8 @@ export default function(x) {
 ```
 ```js
 // app.js
-import math from "lib/mathplusplus";
-import exp from "lib/mathplusplus";
-alert("2π = " + exp(math.pi, math.e));
+import exp, {pi, e} from "lib/mathplusplus";
+alert("2π = " + exp(pi, e));
 ```
 
 <blockquote class="to5-callout to5-callout-info">
