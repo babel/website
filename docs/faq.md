@@ -5,6 +5,20 @@ description: Frequently Asked Questions and Answers
 permalink: /docs/faq/
 ---
 
+## Can 6to5 be installed on Windows?
+
+Yes it can.
+During `npm install 6to5`, you might get some errors regarding a module called `kexec`, this module is optional and it's perfectly fine to simply ignore these errors.
+
+Alternativly, you can invoke npm with `--no-optional`
+```sh
+npm install 6to5 --no-optional
+```
+
+```
+npm install 6to5 --no-optional
+```
+
 ## How does 6to5 differ from other transpilers?
 
 Many issues plague current transpilers, 6to5 takes a unique approach to many aspects.
