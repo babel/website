@@ -428,6 +428,10 @@ lib/%.js: src/%.js
   6to5 $< -o $@
 ```
 
+```sh
+$ make
+```
+
 ### Webpack
 
 <blockquote class="to5-callout to5-callout-info">
