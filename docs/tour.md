@@ -412,7 +412,7 @@ export default function(x) {
 ```
 ```js
 // app.js
-module math from "lib/mathplusplus";
+import math from "lib/mathplusplus";
 import exp from "lib/mathplusplus";
 alert("2π = " + exp(math.pi, math.e));
 ```
