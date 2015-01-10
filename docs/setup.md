@@ -50,7 +50,7 @@ $ npm install 6to5
 **Usage**
 
 All subsequent files required by node with the extensions `.es6`, `.es` and `.js` will
-be transformed by 6to5. The polyfill specified in [Polyfill](polyfill.md) is
+be transformed by 6to5. The polyfill specified in [Polyfill](/docs/usage/polyfill) is
 also required.
 
 ```javascript

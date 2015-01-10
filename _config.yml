@@ -27,7 +27,6 @@ navigation:
 - title: Setup
   url: /docs/setup/
 - title: Usage
-  url: /docs/usage/
   subnav:
   - title: CLI
     url: /docs/usage/cli/
