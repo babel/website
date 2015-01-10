@@ -447,7 +447,7 @@ System.import("lib/math").then(function(m) {
 var loader = new Loader({
   global: fixup(window) // replace ‘console.log’
 });
-loader.eval("console.log("hello world!");");
+loader.eval("console.log(\"hello world!\");");
 
 // Directly manipulate module cache
 System.get("jquery");
