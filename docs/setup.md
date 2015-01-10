@@ -101,7 +101,7 @@ require "sprockets/es6"
 
 ## Build Systems
 
-### Brocolli
+### Broccoli
 
 <blockquote class="to5-callout to5-callout-info">
   <p>
