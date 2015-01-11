@@ -57,8 +57,8 @@ The memoization assignment operator allows you to lazily set an object property.
 It checks whether there's a property defined on the object and if there isn't
 then the right hand value is set.
 
-This means that `obj.x` in the following `var x = { x: undefined }; obj.x ?= 2;``
-will still be `undefined` because it's already been defined on the object.
+This means that `obj.x` in the following case `var obj = { x: undefined }; obj.x ?= 2;`
+will still be `undefined` because it's already been defined within object `obj`.
 
 **Uses**
 
