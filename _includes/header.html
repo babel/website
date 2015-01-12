@@ -13,16 +13,18 @@
       <ul class="nav navbar-nav">
         {% for item in site.navigation %}
           {% if item.subnav %}
-            <li class="dropdown">
+            <li class="dropdown {% if page.url contains item.url %}active{% endif %}">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ item.title }} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 {% for item in item.subnav %}
-                  <li><a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a></li>
+                  <li {% if page.url contains item.url %}class="active"{% endif %}>
+                    <a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
+                  </li>
                 {% endfor %}
               </ul>
             </li>
           {% else %}
-            <li {% if page.url == item.url %}class="active"{% endif %}>
+            <li {% if page.url contains item.url %}class="active"{% endif %}>
               <a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
             </li>
           {% endif %}
@@ -30,9 +32,9 @@
         <li><a href="https://gitter.im/6to5/6to5">Support</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <!-- <li {% if page.url == "/blog/" %}class="active"{% endif %}>
+        <li {% if page.url contains "/blog/" %}class="active"{% endif %}>
           <a href="{{ site.baseurl }}/blog/">Blog</a>
-        </li> -->
+        </li>
         <li>
           <a href="https://twitter.com/6to5js">Twitter</a>
         </li>

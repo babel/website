@@ -1,0 +1,36 @@
+.twitter-tweet {
+  margin: 1em auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.to5-blog-content,
+.to5-blog-excerpt {
+  font-size: 1.2em;
+}
+
+.to5-blog-content {
+  margin-top: 2em;
+
+  p {
+    margin-bottom: $line-height-computed;
+  }
+
+  img {
+    @extend .img-responsive;
+  }
+}
+
+
+.to5-share-buttons {
+  font-size: 10px;
+
+  .fb-share-button,
+  .twitter-share-button {
+    vertical-align: top;
+  }
+
+  .fb-share-button {
+    margin-right: 10px;
+  }
+}
