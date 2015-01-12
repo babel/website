@@ -54,6 +54,12 @@ the `arrowFunctions` transformer has the very specific goal of transforming
 [ES6 Arrow Functions](/docs/tour#arrows) to the equivalent ES3. This allows transformers to be disabled and enabled at will which is critical in the
 current fast paced development environment.
 
+## What is a module formatter?
+
+A module formatter is a transformer that turns exports and imports into their equivalent
+target format. For example, the `common` module formatter transforms
+`import { foo } from "bar";` into the CommonJS `var foo = require("bar").foo;`
+
 ## Why are there `Array.from` and `Symbol` in my code?! These don't exist!
 
 This is a known [caveat](/docs/caveats). This is because 6to5 compiles to ES3 syntax but with

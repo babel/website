@@ -6,6 +6,9 @@ permalink: /docs/usage/modules/
 redirect_from: /modules.html
 ---
 
+See [FAQ - What is a module formatter?](/docs/faq#what-is-a-transformer)
+for module formatter terminology.
+
 <p class="lead">
   6to5 has the ability to transpile ES6 modules to the module system of your
   choice. You can even easily create your own.
