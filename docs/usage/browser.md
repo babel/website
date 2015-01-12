@@ -44,7 +44,7 @@ test.test(); // "test"
 
 Programmatically transpile and execute strings of ES6 code.
 
-See [options](http://6to5.org/docs/usage/options/) for additional documentation.
+See [options](/docs/usage/options/) for additional documentation.
 
 ### `to5.transform(code, [opts])`
 
