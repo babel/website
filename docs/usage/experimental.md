@@ -26,3 +26,9 @@ $ 6to5 --experimental
 ```js
 to5.transform("code", { experimental: true });
 ```
+
+
+#### Transformers
+
+See [Transformers - Experimental](/docs/usage/transformers#experimental)
+for transformers.
