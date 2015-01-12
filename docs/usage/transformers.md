@@ -38,7 +38,7 @@ for transformer terminology.
 <blockquote class="to5-callout to5-callout-warning">
   <h4>Disabled by default</h4>
   <p>
-    These are only usable if you enable experimental support. See <a href="/docs/usage/playground">experimental usage</a> for information.
+    These are only usable if you enable experimental support. See <a href="/docs/usage/experimental">experimental usage</a> for information.
   </p>
 </blockquote>
 
