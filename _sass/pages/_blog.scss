@@ -4,9 +4,13 @@
   max-width: 100% !important;
 }
 
+.to5-blog-content,
+.to5-blog-excerpt {
+  font-size: 1.2em;
+}
+
 .to5-blog-content {
   margin-top: 2em;
-  font-size: 1.2em;
 
   p {
     margin-bottom: $line-height-computed;

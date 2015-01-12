@@ -39,17 +39,17 @@ navigation:
   - title: Modules
     url: /docs/usage/modules/
   - title: Polyfill
-    url: /docs/usage/polyfill
+    url: /docs/usage/polyfill/
   - title: Runtime
-    url: /docs/usage/runtime
+    url: /docs/usage/runtime/
   - title: Transformers
-    url: /docs/usage/transformers
+    url: /docs/usage/transformers/
   - title: Browser
-    url: /docs/usage/browser
+    url: /docs/usage/browser/
   - title: Experimental
-    url: /docs/usage/experimental
+    url: /docs/usage/experimental/
   - title: Playground
-    url: /docs/usage/playground
+    url: /docs/usage/playground/
   - title: JSX
     url: /docs/usage/jsx/
 #- title: Guides
