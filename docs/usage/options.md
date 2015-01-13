@@ -57,4 +57,4 @@ to5.transform(code, { format: formattingOptions });
 | `indent`                        | `{...}`              | Indent options |
 | `indent.adjustMultilineComment` | `true`               | Adjust the indentation of multiline comments to keep asterisks vertically aligned |
 | `indent.style`                  | `'  '`               | Indent string |
-| `indent.base`                   | 0                    | Base indent level |
+| `indent.base`                   | `0`                  | Base indent level |
