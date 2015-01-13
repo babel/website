@@ -23,11 +23,8 @@ your application.
 require("6to5/polyfill");
 ```
 
-Fortunately, this is automatically loaded when using:
-
-```js
-require("6to5/register");
-```
+Fortunately, this is also automatically loaded when using the
+[require hook](/docs/usage/require).
 
 ## Usage in Browser
 
