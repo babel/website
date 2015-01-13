@@ -12,10 +12,11 @@ var to5 = require("6to5");
 
 ## to5.transform
 
-Transforms the passed in `code`.
+Transforms the passed in `code`. Returning an object with the generated code,
+source map, and AST.
 
-```
-to5.transform(code, [options])
+```js
+to5.transform(code, [options]) // => { code, map, ast }
 ```
 
 **Example**
@@ -39,7 +40,7 @@ to5.transformFile(filename, [options], callback)
 
 ```js
 to5.transformFile("filename.js", options, function (err, result) {
-  result.code;
+  result; // => { code, map, ast }
 });
 ```
 
@@ -49,7 +50,7 @@ Synchronous version of `to5.transformFile`. Returns the transformed contents of
 the `filename`.
 
 ```js
-to5.transformFileSync(filename, [options])
+to5.transformFileSync(filename, [options]) // => { code, map, ast }
 ```
 
 **Example**
