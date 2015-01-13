@@ -140,7 +140,7 @@ contents.
 `In JavaScript this is
  not legal.`
 
-// Construct a DOM query
+// Interpolate variable bindings
 var name = "Bob", time = "today";
 `Hello ${name}, how are you ${time}?`
 
@@ -238,7 +238,7 @@ function f() {
 ### Iterators + For..Of
 
 Iterator objects enable custom iteration like CLR IEnumerable or Java
-Iteratable. Generalize `for..in` to custom iterator-based iteration with
+Iterable. Generalize `for..in` to custom iterator-based iteration with
 `for..of`. Don’t require realizing an array, enabling lazy design patterns like
 LINQ.
 
