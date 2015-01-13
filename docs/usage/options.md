@@ -18,7 +18,7 @@ $ 6to5 --name=value
 ## Options
 
 | Option                   | Default              | Description                     |
-| -------------------- | -------------------- | ------------------------------- |
+| ------------------------ | -------------------- | ------------------------------- |
 | `filename`               | `"unknown"`          | Filename for use in errors etc. |
 | `fileNameRelative`       | `(filename)`         | Filename relative to `sourceRoot`. |
 | `blacklist`              | `[]`                 | Array of transformers to **exclude**. Run `6to5 --help` to see a full list of transformers. |
@@ -37,3 +37,24 @@ $ 6to5 --name=value
 | `reactCompat`            | `false`              | Makes the `react` transformer produce pre-v0.12 code |
 | `includeRegenerator`     | `false`              | Include the regenerator runtime if necessary |
 | `keepModuleIdExtensions` | `false`              | Keep extensions in module ids |
+| `code`                   | `true`               | Enable code generation |
+| `ast`                    | `true`               | Include the ÅST in the returned object |
+| `format`                 | [(See Formatting Options)](#formatting-options) | Formatting options for code generation |
+
+## Formatting Options
+
+**Usage**
+
+```js
+to5.transform(code, { format: formattingOptions });
+```
+
+| Option                          | Default              | Description                     |
+| ------------------------------- | -------------------- | ------------------------------- |
+| `parentheses`                   | `true`               | Preserve parentheses in new expressions that have no arguments |
+| `comments`                      | `true`               | Output comments in generated output |
+| `compact`                       | `false`              | Do not include superfluous whitespace characters and line terminators |
+| `indent`                        | `{...}`              | Indent options |
+| `indent.adjustMultilineComment` | `true`               | Adjust the indentation of multiline comments to keep asterisks vertically aligned |
+| `indent.style`                  | `'  '`               | Indent string |
+| `indent.base`                   | 0                    | Base indent level |
