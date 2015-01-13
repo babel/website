@@ -180,7 +180,7 @@ var foo = Bluebird.coroutine(function* () {
 ### coreAliasing
 
 6to5 will uses various ES6 methods around your code such as `Array.from` and
-`Sybmol`. This usually means that the use of a global polluting polyfill is
+`Symbol`. This usually means that the use of a global polluting polyfill is
 required, fortunately there's the `coreAliasing` transformer.
 
 This transformer transforms code such as
