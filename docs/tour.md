@@ -505,7 +505,7 @@ ws.add({ data: 42 });
 <blockquote class="to5-callout to5-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support Promises you must include the 6to5 Polyfill.
+    In order to support WeakMaps you must include the 6to5 Polyfill.
   </p>
 </blockquote>
 
