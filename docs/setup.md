@@ -717,3 +717,17 @@ $ npm install --save-dev 6to5
   }
 }
 ```
+
+### Nodemon
+
+**Install**
+
+```sh
+$ npm install --global 6to5
+```
+
+**Usage**
+
+```sh
+$ nodemon --exec 6to5-node --experimental path/to/script.js
+```
