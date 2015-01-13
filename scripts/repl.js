@@ -85,7 +85,13 @@
 
       console.log.apply(console, arguments);
       var result = _.transform(arguments, function(result, val, i) {
-        result[i] = typeof val === 'string' ? val : JSON.stringify(val);
+        if (typeof val === 'string') {
+          result[i] = val;
+        } else if (val instanceof Function) {
+          result[i] = val.toString();
+        } else {
+          result[i] = JSON.stringify(val);
+        }
       }, []).join(' ');
 
       write(result);
