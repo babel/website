@@ -108,7 +108,7 @@ define(["exports", "foo"], function (exports, _foo) {
 });
 ```
 
-You can optionally specify to include the module id (using the `--amd-module-ids`
+You can optionally specify to include the module id (using the `--module-ids`
 argument):
 
 ```js
