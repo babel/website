@@ -50,12 +50,19 @@ $ npm install 6to5
 **Usage**
 
 All subsequent files required by node with the extensions `.es6`, `.es` and `.js` will
-be transformed by 6to5. The polyfill specified in [Polyfill](/docs/usage/polyfill) is
-also required.
+be transformed by 6to5. The polyfill specified in [polyfill](/docs/usage/polyfill) is
+also automatically required.
 
 ```javascript
 require("6to5/register");
 ```
+
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Not suitable for libraries</h4>
+  <p>
+    The require hook automatically hooks itself into <strong>all</strong> node requires. This will pollute the global scope and introduce conflicts. Because of this it's not suitable for libraries, if however you're writing an application then it's completely fine to use.
+  </p>
+</blockquote>
 
 <blockquote class="to5-callout to5-callout-info">
   <p>

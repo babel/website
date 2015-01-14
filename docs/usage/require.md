@@ -10,6 +10,13 @@ will bind itself to node's `require` and automatically transpile files on the
 fly. This is equivalent to CoffeeScript's
 [coffee-script/register](http://coffeescript.org/documentation/docs/register.html).
 
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Not suitable for libraries</h4>
+  <p>
+    The require hook automatically hooks itself into <strong>all</strong> node requires. This will pollute the global scope and introduce conflicts. Because of this it's not suitable for libraries, if however you're writing an application then it's completely fine to use.
+  </p>
+</blockquote>
+
 ## Install
 
 ```sh
@@ -22,9 +29,9 @@ $ npm install 6to5
 require("6to5/register");
 ```
 
-All subsequent files required by node with the extensions `.es6`, `.es`, and
-`.js` will be transformed by 6to5. The polyfill specified in
-[/docs/usage/polyfill](polyfill) is also required.
+All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`
+and `.js` will be transformed by 6to5. The polyfill specified in
+[/docs/usage/polyfill](polyfill) is also automatically required.
 
 **NOTE:** By default all requires to `node_modules` will be ignored. You can
 override this by passing an ignore regex via:
@@ -53,8 +60,8 @@ require("6to5/register")({
   whitelist: [],
   blacklist: [],
 
-  // This will remove the currently hooked extensions of .es6 and .js so you'll
-  // have to add them back if you want them to be used again.
-  extensions: [".js", ".es6"]
+  // Setting this will remove the currently hooked extensions of .es6, `.es`, `.jsx`
+  // and .js so you'll have to add them back if you want them to be used again.
+  extensions: [".es6", ".es", ".jsx", ".js"]
 });
 ```
