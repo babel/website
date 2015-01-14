@@ -490,7 +490,7 @@ import Person from "./Person.js";
 <blockquote class="to5-callout to5-callout-warning">
   <h4>Troubleshooting</h4>
   <p>
-    For additional information on how to troubleshoot **6to5-loader** please
+    For additional information on how to troubleshoot <strong>6to5-loader</strong> please
     see the
     <a href="https://github.com/6to5/6to5-loader#troubleshooting">README</a>.
   </p>
