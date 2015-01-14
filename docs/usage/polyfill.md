@@ -16,8 +16,8 @@ when using `6to5-node` and `6to5/register`.
 
 ## Usage in Node/Browserify
 
-You need to include the polyfill require at the top the **entry point** to
-your application.
+To include the polyfill you need to require it at the top of the **entry point**
+to your application.
 
 ```js
 require("6to5/polyfill");
@@ -34,20 +34,3 @@ You can either prepend it to your compiled code or include it in a `<script>`
 before it.
 
 **NOTE:** Do not `require` this via browserify etc, use `6to5/polyfill`.
-
-<blockquote class="to5-callout to5-callout-warning">
-<h4>Polyfills are not perfect</h4>
-<p>
-Due to limitations in various ES5 environments not every polyfill will work
-in every environment.
-</p>
-</blockquote>
-
-<blockquote class="to5-callout to5-callout-warning">
-<h4>Certain polyfills not included</h4>
-<p>
-Certain polyfills are too large/complex for their implemented features to
-justify including them for all builds. You may have to include additional
-polyfills for a subset of ES6 features.
-</p>
-</blockquote>
