@@ -47,7 +47,7 @@ this is widely supported but you may run into problems with much older browsers.
 
 In IE8 `Object.defineProperty` can only be used on DOM objects. This is
 unfortunate as it's required to set getters and setters. Due to this if
-you plan on supporting IE8 or below then the user of getters and setters
+you plan on supporting IE8 or below then the usage of getters and setters
 isn't recommended.
 
 **Reference**: [MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty#Internet_Explorer_8_specific_notes).
