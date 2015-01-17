@@ -1,4 +1,5 @@
 # 6to5.github.io
 
-See [6to5/doc](https://github.com/6to5/6to5/tree/master/doc) for source
-documentation.
+This is the source for [6to5.org](https://6to5.org) website, powered by [Jekyll](http://www.jekyllrb.com/).
+
+This repo also contains 6to5's [source documentation](https://github.com/6to5/6to5.github.io/tree/master/docs).
