@@ -46,12 +46,14 @@
   var $optionExperimental = $('#option-experimental');
   var $optionPlayground = $('#option-playground');
   var $optionEvaluate = $('#option-evaluate');
+  var $optionLoose = $('#option-loose-mode');
 
   var getOptions = function() {
     return {
       experimental: $optionExperimental.is(':checked'),
       playground: $optionPlayground.is(':checked'),
-      evaluate: $optionEvaluate.is(':checked')
+      evaluate: $optionEvaluate.is(':checked'),
+      loose: $optionLoose.is(':checked')
     };
   };
 
@@ -59,6 +61,7 @@
     $optionExperimental.prop('checked', query.experimental !== 'false');
     $optionPlayground.prop('checked', query.playground !== 'false');
     $optionEvaluate.prop('checked', query.evaluate !== 'false');
+    $optionLoose.prop('checked', query.loose !== 'false');
   };
 
   var $errorReporter = $('.to5-repl-errors');
@@ -124,6 +127,7 @@
       transformed = to5.transform(code, {
         experimental: options.experimental,
         playground: options.playground,
+        loose: options.loose && "all",
         filename: 'repl'
       });
     } catch (err) {

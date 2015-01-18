@@ -45,6 +45,8 @@ navigation:
     url: /docs/usage/runtime/
   - title: Transformers
     url: /docs/usage/transformers/
+  - title: Loose mode
+    url: /docs/usage/loose/
   - title: Browser
     url: /docs/usage/browser/
   - title: Experimental
