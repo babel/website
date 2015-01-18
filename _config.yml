@@ -68,7 +68,7 @@ navigation:
   url: /docs/compare/
 - title: Caveats
   url: /docs/caveats/
-- title: REPL
+- title: Try it out
   url: /repl/
 - title: FAQ
   url: /docs/faq/
