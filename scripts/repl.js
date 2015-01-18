@@ -61,7 +61,7 @@
     $optionExperimental.prop('checked', query.experimental !== 'false');
     $optionPlayground.prop('checked', query.playground !== 'false');
     $optionEvaluate.prop('checked', query.evaluate !== 'false');
-    $optionLoose.prop('checked', query.loose !== 'false');
+    $optionLoose.prop('checked', query.loose === 'true');
   };
 
   var $errorReporter = $('.to5-repl-errors');
