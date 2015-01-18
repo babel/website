@@ -145,6 +145,7 @@
   input.editor.on('change', compile);
   $optionExperimental.on('change', compile);
   $optionPlayground.on('change', compile);
+  $optionLoose.on('change', compile);
   $optionEvaluate.on('change', compile);
 
   var query = getQuery();
