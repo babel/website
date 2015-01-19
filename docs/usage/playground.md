@@ -90,6 +90,46 @@ var obj = {};
 if (!Object.prototype.hasOwnProperty.call(obj, "x")) obj.x = 2;
 ```
 
+### Mallet assignment operator
+
+The mallet assignment operator allows you to lazily initialize a value.
+It checks whether the value is falsey, if it is then the right hand value is set.
+
+While simplistically equivalent to `a = a || b`, it will never set an already truthy value.
+It also optimizes deep object lookups and computed keys.
+
+**Uses**
+
+```js
+var a;
+a ||= 2;
+a; // 2
+
+obj = { x: 1 };
+obj.x ||= 2;
+obj.x; // 1
+
+obj = { x: undefined }
+obj.x ||= 2;
+obj.x; // 2
+```
+
+**Example**
+
+```js
+var obj = { deep: {} };
+obj.deep.x ||= 2;
+```
+
+is equivalent to
+
+```js
+var obj = {};
+
+var _o = obj.deep;
+if (!_o.x) _o.x = 2;
+```
+
 ### Method binding
 
 ```javascript
