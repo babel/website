@@ -5,7 +5,7 @@ description: A detailed overview of ECMAScript 6 features.
 permalink: /docs/learn-es6/
 redirect_from:
  - /features.html
- - /docs/tour
+ - /docs/tour/
 ---
 
 <blockquote class="to5-callout to5-callout-info">
