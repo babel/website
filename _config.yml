@@ -26,7 +26,7 @@ navigation:
   url: /docs/learn-es6/
 - title: Using 6to5
   url: /docs/using-6to5/
-- title: Usage
+- title: Docs
   url: /docs/usage/
   subnav:
   - title: CLI
