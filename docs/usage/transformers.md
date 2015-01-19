@@ -177,53 +177,14 @@ var foo = Bluebird.coroutine(function* () {
 });
 ```
 
-### coreAliasing
+### selfContained
 
-6to5 will uses various ES6 methods around your code such as `Array.from` and
-`Symbol`. This usually means that the use of a global polluting polyfill is
-required, fortunately there's the `coreAliasing` transformer.
-
-This transformer transforms code such as
-
-```javascript
-var arr = Array.from("foobar"); // ["f", "o", "o", "b", "a", "r"]
-```
-
-into
-
-```javascript
-var core = require("core-js");
-
-var arr = core.Array.from("foobar");
-```
-
-Not only that but it can also transform iterator construction so
-
-```javascript
-var iterator = "foobar"[Symbol.iterator]();
-iterator.next(); // { done: false, value: "f" }
-```
-
-becomes
-
-```javascript
-var core = require("core-js");
-
-var iterator = core.$for.getIterator("foobar");
-```
-
-This means that you can use **every** single 6to5 feature without a
-globally polluting polyfill, minus [caveats](/docs/caveats) and all.
-
-This is fantastic for library authors as it means that you can write
-your libraries with 6to5 and utilise all ES6 methods and syntax
-without polluting your users global scope that may lead to collisions
-and nasty bugs.
+todo
 
 <blockquote class="to5-callout to5-callout-info">
   <h4></h4>
   <p>
-    If you use this transformer then the package <code>core-js</code> is required. Run <code>npm install core-js --save</code> to add it to your current node/browserify project.
+    If you use this transformer then the package <code>6to5-runtime</code> is required. Run <code>npm install 6to5-runtime --save</code> to add it to your current node/browserify project.
   </p>
 </blockquote>
 
