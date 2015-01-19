@@ -43,8 +43,6 @@ navigation:
     url: /docs/usage/modules/
   - title: Polyfill
     url: /docs/usage/polyfill/
-  - title: Runtime
-    url: /docs/usage/runtime/
   - title: Transformers
     url: /docs/usage/transformers/
   - title: Loose mode
