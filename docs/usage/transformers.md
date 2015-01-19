@@ -10,28 +10,28 @@ for transformer terminology.
 
 ## Standard
 
- - [arrowFunctions](/docs/tour#arrows)
- - [classes](/docs/tour#classes)
- - [computedPropertyNames](/docs/tour#enhanced-object-literals)
- - [constants](/docs/tour#let-const)
- - [defaultParameters](/docs/tour#default-spread-rest)
- - [destructuring](/docs/tour#destructuring)
- - [forOf](/docs/tour#iterators-for-of)
- - [generators](/docs/tour#generators)
- - [letScoping](/docs/tour#let-const)
- - [modules](/docs/tour#modules)
- - [propertyMethodAssignment](/docs/tour#enhanced-object-literals)
- - [propertyNameShorthand](/docs/tour#enhanced-object-literals)
- - [restParameters](/docs/tour#default-spread-rest)
- - [spread](/docs/tour#default-spread-rest)
- - [templateLiterals](/docs/tour#template-strings)
- - [unicodeRegex](/docs/tour#unicode)
+ - [arrowFunctions](/docs/learn-es6#arrows)
+ - [classes](/docs/learn-es6#classes)
+ - [computedPropertyNames](/docs/learn-es6#enhanced-object-literals)
+ - [constants](/docs/learn-es6#let-const)
+ - [defaultParameters](/docs/learn-es6#default-spread-rest)
+ - [destructuring](/docs/learn-es6#destructuring)
+ - [forOf](/docs/learn-es6#iterators-for-of)
+ - [generators](/docs/learn-es6#generators)
+ - [letScoping](/docs/learn-es6#let-const)
+ - [modules](/docs/learn-es6#modules)
+ - [propertyMethodAssignment](/docs/learn-es6#enhanced-object-literals)
+ - [propertyNameShorthand](/docs/learn-es6#enhanced-object-literals)
+ - [restParameters](/docs/learn-es6#default-spread-rest)
+ - [spread](/docs/learn-es6#default-spread-rest)
+ - [templateLiterals](/docs/learn-es6#template-strings)
+ - [unicodeRegex](/docs/learn-es6#unicode)
 
 ## Experimental
 
 - [abstractReferences](https://github.com/zenparsing/es-abstract-refs)
-- [arrayComprehension](/docs/tour#comprehensions)
-- [generatorComprehension](/docs/tour#comprehensions)
+- [arrayComprehension](/docs/learn-es6#comprehensions)
+- [generatorComprehension](/docs/learn-es6#comprehensions)
 - [exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
 - [objectSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
 
@@ -258,7 +258,7 @@ transformer.
 
 ### typeofSymbol
 
-ES6 introduces a new native type called [symbols](/docs/tour#symbols).
+ES6 introduces a new native type called [symbols](/docs/learn-es6#symbols).
 This transformer wraps all `typeof` expressions with a method that
 replicates native behaviour. (ie. returning "symbol" for symbols)
 
