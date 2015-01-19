@@ -5,7 +5,7 @@ description: Just some things to keep in mind when using 6to5.
 permalink: /docs/usage/caveats/
 redirect_from:
  - /caveats.html
- - /docs/caveats
+ - /docs/caveats/
 ---
 
 ## Polyfills
