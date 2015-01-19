@@ -1,9 +1,11 @@
 ---
 layout: docs
-title: Tour
+title: Learn ES6
 description: A detailed overview of ECMAScript 6 features.
-permalink: /docs/tour/
-redirect_from: /features.html
+permalink: /docs/learn-es6/
+redirect_from:
+ - /features.html
+ - /docs/tour
 ---
 
 <blockquote class="to5-callout to5-callout-info">

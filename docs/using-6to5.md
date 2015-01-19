@@ -1,9 +1,11 @@
 ---
 layout: docs
-title: Setup
+title: Using 6to5
 description: Guides on how to setup 6to5 in whatever environment you might be working in.
-permalink: /docs/setup/
-redirect_from: /plugins.html
+permalink: /docs/using-6to5/
+redirect_from:
+ - /plugins.html
+ - /docs/setup
 ---
 
 <blockquote class="to5-callout to5-callout-info">
