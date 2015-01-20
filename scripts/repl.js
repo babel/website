@@ -86,7 +86,7 @@
     capturingConsole.log = function() {
       if (this !== capturingConsole) { return; }
 
-      console.log.apply(console, arguments);
+      Function.prototype.apply.call(console.log, console, arguments);
       var result = _.transform(arguments, function(result, val, i) {
         if (typeof val === 'string') {
           result[i] = val;
