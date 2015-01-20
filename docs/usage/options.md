@@ -33,13 +33,13 @@ $ 6to5 --name=value
 | `moduleIds`              | `false`              | If truthy, insert an explicit id for modules. By default, all modules are anonymous. (Not available for `common` modules) |
 | `runtime`                | `false`              | Optionally replace all 6to5 helper declarations with a referenece to this variable. If set to `true` then the default namespace is used `to5Runtime`. |
 | `comments`               | `true`               | Output comments in generated output. |
-| `experimental`           | `false`              | Enable support for experimental ES7 features. |
 | `reactCompat`            | `false`              | Makes the `react` transformer produce pre-v0.12 code |
-| `includeRegenerator`     | `false`              | Include the regenerator runtime if necessary |
 | `keepModuleIdExtensions` | `false`              | Keep extensions in module ids |
 | `code`                   | `true`               | Enable code generation |
 | `ast`                    | `true`               | Include the ÅST in the returned object |
 | `format`                 | [(See Formatting Options)](#formatting-options) | Formatting options for code generation |
+| `playground`             | `false`              | Enable [playground](/docs/usage/playground) support. |
+| `experimental`           | `false`              | Enable support for [experimental](/docs/usage/experimental) ES7 features. |
 
 ## Formatting Options
 

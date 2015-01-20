@@ -5,10 +5,11 @@ description: How to use the Node.js API.
 permalink: /docs/usage/api/
 ---
 
-
 ```javascript
 var to5 = require("6to5");
 ```
+
+See [Options](/docs/usage/options) for relevant documentation.
 
 ## to5.transform
 
