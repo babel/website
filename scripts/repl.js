@@ -65,7 +65,8 @@
         return $element.is(":checked"); 
       } ,
       set: function (value) {
-        $element.prop('checked', value !== 'false');
+        var setting = value !== 'false' && value !== false;
+        $element.prop('checked', setting);
       },
       enumerable: true,
       configurable: false
@@ -85,6 +86,13 @@
       'evaluate': $checkbox($evaluate),
       'loose': $checkbox($loose)
     });
+
+    // Defaults
+    options.experimental = true;
+    options.playground = true;
+    options.loose = false;
+    options.evaluate = true;
+
 
     return options;
   }
