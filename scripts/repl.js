@@ -135,7 +135,6 @@
     
     try {
       transformed = to5.transform(code, {
-        sourceMap : 'inline',
         experimental: this.options.experimental,
         playground: this.options.playground,
         loose: this.options.loose && "all",
