@@ -31,8 +31,10 @@
   var getQuery = function() {
     var query = window.location.hash.replace(/^\#\?/, '');
     return _.transform(query ? query.split('&') : null, function(result, val) {
-      val = val.split('=');
-      result[val[0]] = decodeURIComponent('' + val[1]);
+      var equalsIndex = val.indexOf('=');
+      var name = val.substring(0, equalsIndex);
+      var value = val.substring(equalsIndex + 2);
+      result[name] = decodeURIComponent(value);
     }, {});
   };
 
