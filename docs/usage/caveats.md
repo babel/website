@@ -19,7 +19,7 @@ You may alternatively selectively include what you need:
 | Feature                     | Requirements                                                                          |
 | --------------------------- | ------------------------------------------------------------------------------------- |
 | Abstract References         | `Symbol`                                                                              |
-| Array destructuring         | `Array.from`                                                                          |
+| Array destructuring         | `Symbol`                                                                             |
 | Async functions, Generators | [regenerator runtime](https://github.com/facebook/regenerator/blob/master/runtime.js) |
 | Comprehensions              | `Array.from`                                                                          |
 | For Of                      | `Symbol`, `prototype[Symbol.iterator]`                                                |
