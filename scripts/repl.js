@@ -102,8 +102,7 @@
    */
   function REPL () {
     var state = UriUtils.parseQuery();
-    this.options = new Options();
-    Object.assign(this.options, state);
+    this.options = _.assign(new Options(), state);
 
     this.input = new Editor('.to5-repl-input .ace_editor').editor;
     this.input.setValue(UriUtils.decode(state.code || ''));
@@ -221,7 +220,7 @@
   function onSourceChange () {
     repl.compile();
     var code = repl.getSource();
-    var state = Object.assign(repl.options, {
+    var state = _.assign(repl.options, {
       code: code
     });
     repl.persistState(state);
