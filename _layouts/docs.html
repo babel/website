@@ -16,4 +16,4 @@ layout: page
   </div>
 </div>
 
-<script src={{ "/scripts/docs.js" | prepend: site.baseurl }}></script>
+<script src="{{ "/scripts/docs.js" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
