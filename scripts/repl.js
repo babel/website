@@ -16,10 +16,15 @@
   UriUtils.parseQuery = function () {
     var query = window.location.hash.replace(/^\#\?/, '');
   
-    return query.split('&').map(function(parm){
-      return parm.split('=');
-    }).reduce(function(parms, parts){
-      parms[parts[0]] = UriUtils.decode(parts[1]);
+    return query.split('&').map(function(parm) {
+      var splitPoint = parm.indexOf('=');
+      
+      return {
+        key : parm.substring(0, splitPoint),
+        value : parm.substring(splitPoint + 1)
+      };
+    }).reduce(function(parms, parm){
+      parms[parm.key] = UriUtils.decode(parm.value);
       return parms;
     }, {});
   };
