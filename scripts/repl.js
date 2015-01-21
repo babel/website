@@ -107,11 +107,12 @@
    */
   function REPL () {
     var state = UriUtils.parseQuery();
-    this.options = _.assign(new Options(), state);
-
+    
     if (window.localStorage) {
         state = JSON.parse(localStorage.getItem('replState'));
     }
+
+    this.options = _.assign(new Options(), state);
 
     this.input = new Editor('.to5-repl-input .ace_editor').editor;
     this.input.setValue(UriUtils.decode(state.code || ''));
