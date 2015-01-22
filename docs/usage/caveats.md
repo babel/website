@@ -25,6 +25,11 @@ You may alternatively selectively include what you need:
 | For Of                      | `Symbol`, `prototype[Symbol.iterator]`                                                |
 | Spread                      | `Array.from`                                                                          |
 
+## Classes
+
+Built-in classes such as `Date`, `Array`, `DOM` etc cannot be properly subclassed
+due to limitations in ES5.
+
 ## ES5
 
 Since 6to5 assumes that your code will be ran in an ES5 environment it uses ES5
