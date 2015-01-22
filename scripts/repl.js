@@ -4,7 +4,7 @@
    * Utils for working with the browser's URI (e.g. the query parms)
    */
   function UriUtils () {}
-  
+
   UriUtils.encode = function (value) {
     return window.encodeURIComponent(value);
   };
@@ -15,10 +15,10 @@
 
   UriUtils.parseQuery = function () {
     var query = window.location.hash.replace(/^\#\?/, '');
-  
+
     return query.split('&').map(function(parm) {
       var splitPoint = parm.indexOf('=');
-      
+
       return {
         key : parm.substring(0, splitPoint),
         value : parm.substring(splitPoint + 1)
@@ -66,8 +66,8 @@
    */
   function $checkbox($element){
     return {
-      get: function () { 
-        return $element.is(":checked"); 
+      get: function () {
+        return $element.is(":checked");
       } ,
       set: function (value) {
         var setting = value !== 'false' && value !== false;
@@ -140,11 +140,11 @@
   };
 
   REPL.prototype.compile = function () {
-    
+
     var transformed;
     var code = this.getSource();
     this.clearOutput();
-    
+
     try {
       transformed = to5.transform(code, {
         experimental: this.options.experimental,
@@ -223,18 +223,24 @@
   var repl = new REPL();
 
   function onSourceChange () {
-    repl.compile();
+    var error;
+    try {
+      repl.compile();
+    } catch(err) {
+      error = err;
+    }
     var code = repl.getSource();
     var state = _.assign(repl.options, {
       code: code
     });
     repl.persistState(state);
+    if (error) throw error;
   }
-  
+
   repl.input.on('change', _.debounce(onSourceChange, 500));
   repl.$toolBar.on('change', onSourceChange);
 
   repl.compile();
 
-  
+
 }(to5, $, _, ace, window));
