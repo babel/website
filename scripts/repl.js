@@ -109,7 +109,11 @@
     var state = UriUtils.parseQuery();
     
     if (window.localStorage) {
-        state = JSON.parse(localStorage.getItem('replState'));
+        try {
+          state = JSON.parse(localStorage.getItem('replState'));
+        } catch(err) {
+          console.error("Can't fetch repl state from local storage.");
+        }
     }
 
     this.options = _.assign(new Options(), state);
@@ -221,7 +225,11 @@
   REPL.prototype.persistState = function (state) {
     UriUtils.updateQuery(state);
     if (window.localStorage) {
-        window.localStorage.setItem('replState', JSON.stringify(state));
+        try {
+          window.localStorage.setItem('replState', JSON.stringify(state));
+        } catch(err) {
+          console.error("Can't set repl state to local storage.");
+        }
     }
   };
 
