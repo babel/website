@@ -20,7 +20,7 @@ $ 6to5 --name=value
 | Option                   | Default              | Description                     |
 | ------------------------ | -------------------- | ------------------------------- |
 | `filename`               | `"unknown"`          | Filename for use in errors etc. |
-| `fileNameRelative`       | `(filename)`         | Filename relative to `sourceRoot`. |
+| `filenameRelative`       | `(filename)`         | Filename relative to `sourceRoot`. |
 | `blacklist`              | `[]`                 | Array of transformers to **exclude**. Run `6to5 --help` to see a full list of transformers. |
 | `whitelist`              | `[]`                 | Array of transformers to **only** use. Run `6to5 --help` to see a full list of transformers. |
 | `optional`               | `[]`                 | Array of transformers to [optionally](/docs/usage/transformers#optional-transformers) use. Run `6to5 --help` to see a full list of module formatters. |
