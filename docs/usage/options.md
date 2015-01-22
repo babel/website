@@ -20,7 +20,7 @@ $ 6to5 --name=value
 | Option                   | Default              | Description                     |
 | ------------------------ | -------------------- | ------------------------------- |
 | `filename`               | `"unknown"`          | Filename for use in errors etc. |
-| `fileNameRelative`       | `(filename)`         | Filename relative to `sourceRoot`. |
+| `filenameRelative`       | `(filename)`         | Filename relative to `sourceRoot`. |
 | `blacklist`              | `[]`                 | Array of transformers to **exclude**. Run `6to5 --help` to see a full list of transformers. |
 | `whitelist`              | `[]`                 | Array of transformers to **only** use. Run `6to5 --help` to see a full list of transformers. |
 | `optional`               | `[]`                 | Array of transformers to [optionally](/docs/usage/transformers#optional-transformers) use. Run `6to5 --help` to see a full list of module formatters. |
@@ -32,13 +32,13 @@ $ 6to5 --name=value
 | `moduleRoot`             | `(sourceRoot)`       | Optional prefix for the AMD module formatter that will be prepend to the filename on module definitions. |
 | `moduleIds`              | `false`              | If truthy, insert an explicit id for modules. By default, all modules are anonymous. (Not available for `common` modules) |
 | `comments`               | `true`               | Output comments in generated output. |
-| `experimental`           | `false`              | Enable support for experimental ES7 features. |
 | `reactCompat`            | `false`              | Makes the `react` transformer produce pre-v0.12 code |
-| `includeRegenerator`     | `false`              | Include the regenerator runtime if necessary |
 | `keepModuleIdExtensions` | `false`              | Keep extensions in module ids |
 | `code`                   | `true`               | Enable code generation |
 | `ast`                    | `true`               | Include the ÅST in the returned object |
 | `format`                 | [(See Formatting Options)](#formatting-options) | Formatting options for code generation |
+| `playground`             | `false`              | Enable [playground](/docs/usage/playground) support. |
+| `experimental`           | `false`              | Enable support for [experimental](/docs/usage/experimental) ES7 features. |
 
 ## Formatting Options
 

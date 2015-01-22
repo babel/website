@@ -1,5 +1,45 @@
-(function() {
+(function(to5, $, _, ace, window) {
 
+  /*
+   * Utils for working with the browser's URI (e.g. the query parms)
+   */
+  function UriUtils () {}
+
+  UriUtils.encode = function (value) {
+    return window.encodeURIComponent(value);
+  };
+
+  UriUtils.decode = function (value) {
+    return window.decodeURIComponent('' + value);
+  };
+
+  UriUtils.parseQuery = function () {
+    var query = window.location.hash.replace(/^\#\?/, '');
+
+    return query.split('&').map(function(parm) {
+      var splitPoint = parm.indexOf('=');
+
+      return {
+        key : parm.substring(0, splitPoint),
+        value : parm.substring(splitPoint + 1)
+      };
+    }).reduce(function(parms, parm){
+      parms[parm.key] = UriUtils.decode(parm.value);
+      return parms;
+    }, {});
+  };
+
+  UriUtils.updateQuery = function (object) {
+    var query = Object.keys(object).map(function(key){
+      return key + '=' + UriUtils.encode(object[key]);
+    }).join('&');
+
+    window.location.hash = '?' + query;
+  };
+
+  /*
+   * Decorating the ACE editor
+   */
   function Editor(selector) {
     this.$el = $(selector);
     this.editor = ace.edit(this.$el[0]);
@@ -21,83 +61,143 @@
     this.editor.setOption('scrollPastEnd', 0.33);
   }
 
-  var input = new Editor('.to5-repl-input .ace_editor');
-  var output = new Editor('.to5-repl-output .ace_editor');
-
-  output.editor.setReadOnly(true);
-  output.editor.setHighlightActiveLine(false);
-  output.editor.setHighlightGutterLine(false);
-
-  var getQuery = function() {
-    var query = window.location.hash.replace(/^\#\?/, '');
-    return _.transform(query ? query.split('&') : null, function(result, val) {
-      val = val.split('=');
-      result[val[0]] = decodeURIComponent('' + val[1]);
-    }, {});
-  };
-
-  var setQuery = function(params) {
-    var result = _(getQuery()).assign(params).map(function(val, key) {
-      return key + '=' + encodeURIComponent(val);
-    }).join('&');
-    window.location.hash = '?' + result;
-  };
-
-  var $optionExperimental = $('#option-experimental');
-  var $optionPlayground = $('#option-playground');
-  var $optionEvaluate = $('#option-evaluate');
-  var $optionLoose = $('#option-loose-mode');
-
-  var getOptions = function() {
+  /*
+   * Options exposed for the REPL that will influence 6to5's transpiling
+   */
+  function $checkbox($element){
     return {
-      experimental: $optionExperimental.is(':checked'),
-      playground: $optionPlayground.is(':checked'),
-      evaluate: $optionEvaluate.is(':checked'),
-      loose: $optionLoose.is(':checked')
+      get: function () {
+        return $element.is(":checked");
+      } ,
+      set: function (value) {
+        var setting = value !== 'false' && value !== false;
+        $element.prop('checked', setting);
+      },
+      enumerable: true,
+      configurable: false
     };
+  }
+
+  function Options () {
+    var $experimental = $('#option-experimental');
+    var $playground = $('#option-playground');
+    var $evaluate = $('#option-evaluate');
+    var $loose = $('#option-loose-mode');
+
+    var options = {};
+    Object.defineProperties(options, {
+      'experimental': $checkbox($experimental),
+      'playground': $checkbox($playground),
+      'evaluate': $checkbox($evaluate),
+      'loose': $checkbox($loose)
+    });
+
+    // Defaults
+    options.experimental = true;
+    options.playground = true;
+    options.loose = false;
+    options.evaluate = true;
+
+
+    return options;
+  }
+
+  /*
+   * 6to5 Web REPL
+   */
+  function REPL () {
+    var state = UriUtils.parseQuery();
+    this.options = _.assign(new Options(), state);
+
+    this.input = new Editor('.to5-repl-input .ace_editor').editor;
+    this.input.setValue(UriUtils.decode(state.code || ''));
+
+    this.output = new Editor('.to5-repl-output .ace_editor').editor;
+    this.output.setReadOnly(true);
+    this.output.setHighlightActiveLine(false);
+    this.output.setHighlightGutterLine(false);
+
+    this.$errorReporter = $('.to5-repl-errors');
+    this.$consoleReporter = $('.to5-repl-console');
+    this.$toolBar = $('.to5-repl-toolbar');
+  }
+
+  REPL.prototype.clearOutput = function () {
+    this.$errorReporter.text('');
+    this.$consoleReporter.text('');
   };
 
-  var setOptions = function(options) {
-    $optionExperimental.prop('checked', query.experimental !== 'false');
-    $optionPlayground.prop('checked', query.playground !== 'false');
-    $optionEvaluate.prop('checked', query.evaluate !== 'false');
-    $optionLoose.prop('checked', query.loose === 'true');
+  REPL.prototype.setOutput = function (output) {
+    this.output.setValue(output, -1);
   };
 
-  var $errorReporter = $('.to5-repl-errors');
-  var $consoleReporter = $('.to5-repl-console');
-  var capturingConsole;
+  REPL.prototype.printError = function (message) {
+    this.$errorReporter.text(message);
+  };
 
-  var evaluate = function(code) {
+  REPL.prototype.getSource = function () {
+    return this.input.getValue();
+  };
+
+  REPL.prototype.compile = function () {
+
+    var transformed;
+    var code = this.getSource();
+    this.clearOutput();
+
+    try {
+      transformed = to5.transform(code, {
+        experimental: this.options.experimental,
+        playground: this.options.playground,
+        loose: this.options.loose && "all",
+        filename: 'repl'
+      });
+    } catch (err) {
+      this.printError(err.message);
+      throw err;
+    }
+
+    this.setOutput(transformed.code);
+
+    if (this.options.evaluate) {
+      this.evaluate(transformed.code);
+    }
+  };
+
+  REPL.prototype.evaluate = function(code) {
+    var capturingConsole = Object.create(console);
+    var $consoleReporter = this.$consoleReporter;
     var buffer = [];
     var error;
     var done = false;
+
+    function flush() {
+      $consoleReporter.text(buffer.join('\n'));
+    }
 
     function write(data) {
       buffer.push(data);
       if (done) flush();
     }
 
-    function flush() {
-      $consoleReporter.text(buffer.join('\n'));
-    }
-
-    capturingConsole = Object.create(console);
     capturingConsole.log = function() {
       if (this !== capturingConsole) { return; }
 
-      console.log.apply(console, arguments);
-      var result = _.transform(arguments, function(result, val, i) {
-        if (typeof val === 'string') {
-          result[i] = val;
-        } else if (val instanceof Function) {
-          result[i] = val.toString();
-        } else {
-          result[i] = JSON.stringify(val);
-        }
-      }, []).join(' ');
+      var args = Array.prototype.slice.call(arguments);
+      Function.prototype.apply.call(console.log, console, args);
 
-      write(result);
+      var logs = args.reduce(function (logs, log) {
+        if (typeof item === 'string') {
+          logs.push(log);
+        } else if (log instanceof Function) {
+          logs.push(log.toString());
+        } else {
+          logs.push(JSON.stringify(log));
+        }
+        return logs;
+      }, []);
+
+      write(logs.join(' '));
     };
 
     try {
@@ -113,44 +213,34 @@
     if (error) throw error;
   };
 
-  var compile = _.debounce(function() {
-    var options = getOptions();
-    var code = options.code = input.editor.getValue();
-    var transformed;
+  REPL.prototype.persistState = function (state) {
+    UriUtils.updateQuery(state);
+  };
 
-    setQuery(options);
+  /*
+   * Initialize the REPL
+   */
+  var repl = new REPL();
 
-    $errorReporter.text('');
-    $consoleReporter.text('');
-
+  function onSourceChange () {
+    var error;
     try {
-      transformed = to5.transform(code, {
-        experimental: options.experimental,
-        playground: options.playground,
-        loose: options.loose && "all",
-        filename: 'repl'
-      });
-    } catch (err) {
-      $errorReporter.text(err.message);
-      throw err;
+      repl.compile();
+    } catch(err) {
+      error = err;
     }
+    var code = repl.getSource();
+    var state = _.assign(repl.options, {
+      code: code
+    });
+    repl.persistState(state);
+    if (error) throw error;
+  }
 
-    output.editor.setValue(transformed.code, -1);
+  repl.input.on('change', _.debounce(onSourceChange, 500));
+  repl.$toolBar.on('change', onSourceChange);
 
-    if (options.evaluate) {
-      evaluate(transformed.code);
-    }
-  }, 500);
+  repl.compile();
 
-  input.editor.on('change', compile);
-  $optionExperimental.on('change', compile);
-  $optionPlayground.on('change', compile);
-  $optionLoose.on('change', compile);
-  $optionEvaluate.on('change', compile);
 
-  var query = getQuery();
-
-  setOptions(query);
-  input.editor.setValue(decodeURIComponent(query.code || ''));
-
-}());
+}(to5, $, _, ace, window));
