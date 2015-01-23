@@ -106,11 +106,14 @@
    * 6to5 Web REPL
    */
   function REPL () {
-    var state = UriUtils.parseQuery();
+    var state = UriUtils.parseQuery() || {};
     
     if (window.localStorage) {
         try {
-          state = JSON.parse(localStorage.getItem('replState'));
+          var storedState = localStorage.getItem('replState');
+          if (storedState) {
+            state = JSON.parse(storedState);  
+          }
         } catch(e) {}
     }
 
