@@ -107,6 +107,13 @@
    */
   function REPL () {
     var state = UriUtils.parseQuery();
+    
+    if (window.localStorage) {
+        try {
+          state = JSON.parse(localStorage.getItem('replState'));
+        } catch(e) {}
+    }
+
     this.options = _.assign(new Options(), state);
 
     this.input = new Editor('.to5-repl-input .ace_editor').editor;
@@ -215,6 +222,11 @@
 
   REPL.prototype.persistState = function (state) {
     UriUtils.updateQuery(state);
+    if (window.localStorage) {
+        try {
+          window.localStorage.setItem('replState', JSON.stringify(state));
+        } catch(e) {}
+    }
   };
 
   /*
