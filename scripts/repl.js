@@ -116,27 +116,9 @@
   }
 
   /*
-   * Soft merge assigns non-undefined values in a source 
-   * object into the destination object.  However, objects are only
-   * assigned if they already exist in the destination object (
-   * otherwise they are dropped);
-   */
-  function softMerge (dest, source) {
-    return Object.keys(dest).reduce(function (dest, key) {
-      var sourceVal = source[key];
-      
-      if (!_.isUndefined(sourceVal)) {
-        dest[key] = sourceVal;
-      }
-      
-      return dest;
-    }, dest);
-  }
-
-  /*
    * 6to5 options for transpilation as used by the REPL
    */
-  function Options (initial) {
+  function Options () {
     var $experimental = $('#option-experimental');
     var $playground = $('#option-playground');
     var $evaluate = $('#option-evaluate');
@@ -150,7 +132,7 @@
       'loose': $checkbox($loose)
     });
 
-    // Merge in defaults and initial options
+    // Merge in defaults
     var defaults = {
       experimental : true,
       playground : true,
@@ -158,9 +140,8 @@
       evaluate : true
     };
     
-    softMerge(options, defaults);
-    softMerge(options, initial);
-            
+    _.assign(options, defaults);
+                
     return options;
   }
 
@@ -174,7 +155,7 @@
     }
     _.assign(state, UriUtils.parseQuery());
         
-    this.options = new Options(state);
+    this.options = _.assign(new Options(), state);
 
     this.input = new Editor('.to5-repl-input .ace_editor').editor;
     this.input.setValue(UriUtils.decode(state.code || ''));
