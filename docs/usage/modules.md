@@ -58,7 +58,7 @@ var _interopRequire = function (obj) {
   return obj && (obj["default"] || obj);
 };
 
-exports = module.exports = test;
+module.exports = test;
 
 exports.test = test;
 var test = exports.test = 5;
