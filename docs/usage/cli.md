@@ -114,7 +114,5 @@ $ 6to5-node [options] [ -e script | script.js ] [arguments]
 | `-x, --extensions`       | `".js",".jsx",".es6",".es"` | List of extensions to hook into |
 | `-r, --experimental`     | `false`              | Enable experimental support for proposed ES7 features |
 | `-g, --playground`       | `false`              | Enable playground support       |
-| `-c, --cache`            | `false`              | Cache compiled files and require paths |
 | `-w, --whitelist`        |                      | Whitelist of transformers to ONLY use |
 | `-b, --blacklist`        |                      | Blacklist of transformers to NOT use |
-
