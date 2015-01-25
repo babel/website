@@ -8,32 +8,30 @@ permalink: /docs/usage/transformers/
 See [FAQ - What is a transformer?](/docs/faq#what-is-a-transformer)
 for transformer terminology.
 
-## Standard
+## ES6
 
- - [arrowFunctions](/docs/learn-es6#arrows)
- - [classes](/docs/learn-es6#classes)
- - [computedPropertyNames](/docs/learn-es6#enhanced-object-literals)
- - [constants](/docs/learn-es6#let-const)
- - [defaultParameters](/docs/learn-es6#default-spread-rest)
- - [destructuring](/docs/learn-es6#destructuring)
- - [forOf](/docs/learn-es6#iterators-for-of)
- - [generators](/docs/learn-es6#generators)
- - [letScoping](/docs/learn-es6#let-const)
- - [modules](/docs/learn-es6#modules)
- - [propertyMethodAssignment](/docs/learn-es6#enhanced-object-literals)
- - [propertyNameShorthand](/docs/learn-es6#enhanced-object-literals)
- - [restParameters](/docs/learn-es6#default-spread-rest)
- - [spread](/docs/learn-es6#default-spread-rest)
- - [templateLiterals](/docs/learn-es6#template-strings)
- - [unicodeRegex](/docs/learn-es6#unicode)
+ - [es6.arrowFunctions](/docs/learn-es6#arrows)
+ - [es6.blockScoping](/docs/learn-es6#let-const)
+ - [es6.classes](/docs/learn-es6#classes)
+ - [es6.constants](/docs/learn-es6#let-const)
+ - [es6.destructuring](/docs/learn-es6#destructuring)
+ - [es6.forOf](/docs/learn-es6#iterators-for-of)
+ - [es6.modules](/docs/learn-es6#modules)
+ - [es6.parameters.default](/docs/learn-es6#default-spread-rest)
+ - [es6.parameters.rest](/docs/learn-es6#default-spread-rest)
+ - [es6.properties.computed](/docs/learn-es6#enhanced-object-literals)
+ - [es6.properties.shorthand](/docs/learn-es6#enhanced-object-literals)
+ - [es6.spread](/docs/learn-es6#default-spread-rest)
+ - [es6.templateLiterals](/docs/learn-es6#template-strings)
+ - [es6.unicodeRegex](/docs/learn-es6#unicode)
 
-## Experimental
+## ES7 (Experimental)
 
-- [abstractReferences](https://github.com/zenparsing/es-abstract-refs)
-- [arrayComprehension](/docs/learn-es6#comprehensions)
-- [generatorComprehension](/docs/learn-es6#comprehensions)
-- [exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
-- [objectSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
+- [es7.abstractReferences](https://github.com/zenparsing/es-abstract-refs)
+- [es7.arrayComprehension](/docs/learn-es6#comprehensions)
+- [es7.generatorComprehension](/docs/learn-es6#comprehensions)
+- [es7.exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
+- [es7.objectSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
 
 <blockquote class="to5-callout to5-callout-warning">
   <h4>Disabled by default</h4>
@@ -42,9 +40,22 @@ for transformer terminology.
   </p>
 </blockquote>
 
+## Playground
+
+ - [playground.memoizationOperator](/docs/usage/playground#memoization-assignment-operator)
+ - [playground.methodBinding](/docs/usage/playground#method-binding)
+ - [playground.objectGetterMemoization](/docs/usage/playground#object-getter-memoization)
+
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Disabled by default</h4>
+  <p>
+    These are only usable if you enable playground support. See <a href="/docs/usage/playground">playground usage</a> for information.
+  </p>
+</blockquote>
+
 ## Other
 
-### specMemberExpressionLiterals
+### `minification.memberExpressionLiterals`
 
 Transform keywords and reserved word properties in member expressions into string literals:
 
@@ -64,7 +75,7 @@ obj["case"] = "";
 obj["delete"] = "";
 ```
 
-### specPropertyLiterals
+### `minification.propertyLiterals`
 
 Transforms keywords and reserved word property keys into string literals:
 
@@ -88,7 +99,7 @@ var obj = {
 };
 ```
 
-### useStrict
+### `useStrict`
 
 ES6 modules are strict mode by default, this is a restricted variant of JavaScript
 that enables more optimisations and better errors.
@@ -104,22 +115,9 @@ for more information.
   </p>
 </blockquote>
 
-## Playground
+#### `react`
 
- - [memoizationOperator](/docs/usage/playground#memoization-assignment-operator)
- - [methodBinding](/docs/usage/playground#method-binding)
- - [objectGetterMemoization](/docs/usage/playground#object-getter-memoization)
-
-<blockquote class="to5-callout to5-callout-warning">
-  <h4>Disabled by default</h4>
-  <p>
-    These are only usable if you enable playground support. See <a href="/docs/usage/playground">playground usage</a> for information.
-  </p>
-</blockquote>
-
-### Other
-
-#### react
+#### `regenerator`
 
 ## Optional transformers
 
@@ -134,7 +132,144 @@ require("6to5").transform("code", { optional: ["transformerName"] });
 6to5 --optional transformerName
 ```
 
-### asyncToGenerator
+### `selfContained`
+
+The `selfContained` optional transformer does three things:
+
+ - Automatically requires `regenerator/runtime-module` when you use generators/async functions.
+ - Automatically maps ES6 methods and types.
+ - Removes the inline 6to5 helpers and uses a module instead.
+
+### Regenerator aliasing
+
+Whenever you use a generator function or async function:
+
+```javascript
+function* foo() {
+
+}
+
+async function bar() {
+
+}
+```
+
+the following is generated:
+
+```javascript
+"use strict";
+
+var foo = regeneratorRuntime.mark(function foo() {
+  ...
+});
+
+function bar() {
+  return regeneratorRuntime.async(function bar$(context$1$0) {
+    ...
+  }, null, this);
+}
+```
+
+This isn't ideal as then you have to include the regenerator runtime which
+pollutes the global scope.
+
+Instead what the `selfContained` transformer does it transpile that to:
+
+```javascript
+"use strict";
+
+var _regeneratorRuntime = require("6to5-runtime/regenerator");
+
+var foo = _regeneratorRuntime.mark(function foo() {
+  ...
+});
+
+function bar() {
+  return _regeneratorRuntime.async(function bar$(context$1$0) {
+    ...
+  }, null, this);
+}
+```
+
+This means that you can use the regenerator runtime without polluting your current environment.
+
+### `core-js` aliasing
+
+Sometimes you may want to use new built-ins such as `Map`, `Set`, `Promise` etc. Your only way
+to use these is usually to include a globally polluting polyfill.
+
+What the `coreAliasing` transformer does is transform the following:
+
+```javascript
+var sym = Symbol();
+
+var promise = new Promise;
+
+console.log(arr[Symbol.iterator]());
+```
+
+into the following:
+
+```javascript
+"use strict";
+
+var _core = require("6to5-runtime/core-js");
+
+var sym = _core.Symbol();
+
+var promise = new _core.Promise();
+
+console.log(_core.$for.getIterator(arr));
+```
+
+This means is that you can seamlessly use these native built-ins and static methods
+without worrying about where they come from.
+
+**NOTE:** Instance methods such as `"foobar".contains("foo")` will **not** work.
+
+### Helper aliasing
+
+Usually 6to5 will place helpers at the top of your file to do common tasks to avoid
+duplicating the code around in the current file. Sometimes these helpers can get a
+little bulky and add unneccessary duplication across files. The `selfContained`
+transformer replaces all the helper calls to a module.
+
+That means that the following code:
+
+```javascript
+import foo from "bar";
+```
+
+usually turns into:
+
+```javascript
+"use strict";
+
+var _interopRequire = function (obj) {
+  return obj && obj.__esModule ? obj["default"] : obj;
+};
+
+var foo = _interopRequire(require("bar"));
+```
+
+the `selfContained` transformer however turns this into:
+
+```javascript
+"use strict";
+
+var _to5Helpers = require("6to5-runtime/helpers");
+
+var foo = _to5Helpers.interopRequire(require("bar"));
+```
+
+<blockquote class="to5-callout to5-callout-info">
+  <h4></h4>
+  <p>
+    If you use this transformer then the package <code>6to5-runtime</code> is required. Run <code>npm install 6to5-runtime --save</code> to add it to your current node/browserify project.
+  </p>
+</blockquote>
+
+### `asyncToGenerator`
 
 Transforms async functions to a generator that uses a helper.
 This is useful if you don't want to use `regenerator` or `bluebird`.
@@ -157,7 +292,7 @@ var foo = _asyncToGenerator(function* () {
 });
 ```
 
-### bluebirdCoroutines
+### `bluebirdCoroutines`
 
 Transforms async functions to their equivalent bluebird method.
 
@@ -177,18 +312,7 @@ var foo = Bluebird.coroutine(function* () {
 });
 ```
 
-### selfContained
-
-todo
-
-<blockquote class="to5-callout to5-callout-info">
-  <h4></h4>
-  <p>
-    If you use this transformer then the package <code>6to5-runtime</code> is required. Run <code>npm install 6to5-runtime --save</code> to add it to your current node/browserify project.
-  </p>
-</blockquote>
-
-### protoToAssign
+### `spec.protoToAssign`
 
 The `protoToAssign` optional transformer will transform all `__proto__`
 assignments to a method that will do a shallow copy of all properties.
@@ -217,7 +341,7 @@ bar.a; // 1 - should be 2 but remember that nothing is bound and it's a straight
 This is a case that you have to be aware of if you intend to use this
 transformer.
 
-### typeofSymbol
+### `spec.typeofSymbol`
 
 ES6 introduces a new native type called [symbols](/docs/learn-es6#symbols).
 This transformer wraps all `typeof` expressions with a method that
@@ -237,7 +361,7 @@ var _typeof = function (obj) {
 _typeof(Symbol()) === "symbol";
 ```
 
-### undefinedToVoid
+### `spec.undefinedToVoid`
 
 Some JavaScript implementations allow `undefined` to be overwritten, this
 may lead to peculiar bugs that are extremely hard to track down.
@@ -254,3 +378,7 @@ to
 ```javascript
 foo === void 0;
 ```
+
+### `validation.undeclaredVariableCheck`
+
+Throws errors on references to undeclared variables.
