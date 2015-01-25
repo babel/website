@@ -1,7 +1,7 @@
 (function(to5, $, _, ace, window) {
 
   /*
-   * Utils for working with the browser's URI (e.g. the query parms)
+   * Utils for working with the browser's URI (e.g. the query params)
    */
   function UriUtils () {}
 
@@ -15,17 +15,19 @@
 
   UriUtils.parseQuery = function () {
     var query = window.location.hash.replace(/^\#\?/, '');
-
-    return query.split('&').map(function(parm) {
-      var splitPoint = parm.indexOf('=');
+  
+    return query.split('&').map(function(param) {
+      var splitPoint = param.indexOf('=');
 
       return {
-        key : parm.substring(0, splitPoint),
-        value : parm.substring(splitPoint + 1)
+        key : param.substring(0, splitPoint),
+        value : param.substring(splitPoint + 1)
       };
-    }).reduce(function(parms, parm){
-      parms[parm.key] = UriUtils.decode(parm.value);
-      return parms;
+    }).reduce(function(params, param){
+      if (param.key && param.value) {
+        params[param.key] = UriUtils.decode(param.value);
+      }
+      return params;
     }, {});
   };
 
@@ -106,7 +108,17 @@
    * 6to5 Web REPL
    */
   function REPL () {
-    var state = UriUtils.parseQuery();
+    var state = UriUtils.parseQuery() || {};
+    
+    if (window.localStorage) {
+        try {
+          var storedState = localStorage.getItem('replState');
+          if (storedState) {
+            state = JSON.parse(storedState);  
+          }
+        } catch(e) {}
+    }
+
     this.options = _.assign(new Options(), state);
 
     this.input = new Editor('.to5-repl-input .ace_editor').editor;
@@ -215,6 +227,11 @@
 
   REPL.prototype.persistState = function (state) {
     UriUtils.updateQuery(state);
+    if (window.localStorage) {
+        try {
+          window.localStorage.setItem('replState', JSON.stringify(state));
+        } catch(e) {}
+    }
   };
 
   /*

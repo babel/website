@@ -23,7 +23,8 @@ $ 6to5 --name=value
 | `filenameRelative`       | `(filename)`         | Filename relative to `sourceRoot`. |
 | `blacklist`              | `[]`                 | Array of transformers to **exclude**. Run `6to5 --help` to see a full list of transformers. |
 | `whitelist`              | `[]`                 | Array of transformers to **only** use. Run `6to5 --help` to see a full list of transformers. |
-| `optional`               | `[]`                 | Array of transformers to [optionally](/docs/usage/transformers#optional-transformers) use. Run `6to5 --help` to see a full list of module formatters. |
+| `loose`                  | `[]`                 | Array of transformers to enable [loose mode](/docs/usage/loose) on. |
+| `optional`               | `[]`                 | Array of transformers to [optionally](/docs/usage/transformers#optional-transformers) use. Run `6to5 --help` to see a full list of transformers. Optional transformers displayed inside square brackets. |
 | `modules`                | `"common"`           | Which module formatter to use. Run `6to5 --help` to see a full list of module formatters. |
 | `sourceMap`              | `false`              | If truthy, adds a `map` property to returned output. If set to `"inline"`, a comment with a sourceMappingURL directive is added to the bottom of the returned code. |
 | `sourceMapName`          | `(filenameRelative)` | Set `file` on returned source map. |

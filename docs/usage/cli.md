@@ -97,3 +97,22 @@ Compile and run `test.js`.
 ```sh
 $ 6to5-node test
 ```
+
+### Usage
+
+```sh
+$ 6to5-node [options] [ -e script | script.js ] [arguments]
+```
+
+### Options
+
+| Option                   | Default              | Description                     |
+| ------------------------ | -------------------- | ------------------------------- |
+| `-e, --eval [script]`    |                      | Evaluate script                 |
+| `-p, --print`            |                      | Evaluate script and print result |
+| `-i, --ignore [regex]`   | `node_modules`       | Ignore all files that match this regex when using the require hook |
+| `-x, --extensions`       | `".js",".jsx",".es6",".es"` | List of extensions to hook into |
+| `-r, --experimental`     | `false`              | Enable experimental support for proposed ES7 features |
+| `-g, --playground`       | `false`              | Enable playground support       |
+| `-c, --cache`            | `false`              | Cache compiled files and require paths |
+
