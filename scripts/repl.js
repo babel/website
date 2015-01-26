@@ -1,5 +1,13 @@
 (function(to5, $, _, ace, window) {
 
+  // 6to5 Help Output > //
+  // < 6to5 Help Output //
+
+  var ignoredOptions = [
+    'help', 'source-maps-inline', 'source-maps', 'filename', 'watch',
+    'runtime', 'out-file', 'out-dir', 'include-regenerator', 'version'
+  ];
+
   /*
    * Utils for working with the browser's URI (e.g. the query params)
    */
@@ -15,7 +23,7 @@
 
   UriUtils.parseQuery = function () {
     var query = window.location.hash.replace(/^\#\?/, '');
-  
+
     return query.split('&').map(function(param) {
       var splitPoint = param.indexOf('=');
 
@@ -109,12 +117,12 @@
    */
   function REPL () {
     var state = UriUtils.parseQuery() || {};
-    
+
     if (window.localStorage) {
         try {
           var storedState = localStorage.getItem('replState');
           if (storedState) {
-            state = JSON.parse(storedState);  
+            state = JSON.parse(storedState);
           }
         } catch(e) {}
     }
