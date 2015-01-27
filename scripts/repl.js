@@ -19,7 +19,7 @@
     if (!query) {
       return null;
     }
-  
+
     return query.split('&').map(function(param) {
       var splitPoint = param.indexOf('=');
 
@@ -46,32 +46,20 @@
   /*
    * Long term storage for persistence of state/etc
    */
-  function StorageService () {}
+  function StorageService () {
+    this.store = window.localStorage;
+  }
 
   StorageService.prototype.get = function (key) {
-    var value;
-    var storage = window.localStorage;
-    var object;
-
-    if (storage) {
-      try {
-        value = storage.getItem(key);
-        object = JSON.parse(value);
-      } catch(e) {}
-    }
-    return object;
+    try {
+      return JSON.parse(this.store.getItem(key));
+    } catch(e) {}
   };
 
   StorageService.prototype.set = function (key, value) {
-    var storage = window.localStorage;
-    var json;
-
-    if (storage) {
-      try {
-        json = JSON.stringify(value);
-        storage.setItem(key, json);
-      } catch(e) {}
-    }
+    try {
+      this.store.setItem(key, JSON.stringify(value));
+    } catch(e) {}
   };
 
   /*
@@ -139,22 +127,20 @@
       loose : false,
       evaluate : true
     };
-    
+
     _.assign(options, defaults);
-                
+
     return options;
   }
 
   /*
    * 6to5 Web REPL
    */
-  function REPL (storage) {
-    var state = {};
-    if (storage) {
-      _.assign(state, storage.get('replState'));
-    }
+  function REPL () {
+    this.storage = new StorageService();
+    var state = this.storage.get('replState') || {};
     _.assign(state, UriUtils.parseQuery());
-        
+
     this.options = _.assign(new Options(), state);
 
     this.input = new Editor('.to5-repl-input .ace_editor').editor;
@@ -263,14 +249,13 @@
 
   REPL.prototype.persistState = function (state) {
     UriUtils.updateQuery(state);
-    storage.set('replState', state);
+    this.storage.set('replState', state);
   };
 
   /*
    * Initialize the REPL
    */
-  var storage = new StorageService();
-  var repl = new REPL(storage);
+  var repl = new REPL();
 
   function onSourceChange () {
     var error;
