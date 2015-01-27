@@ -15,7 +15,11 @@
 
   UriUtils.parseQuery = function () {
     var query = window.location.hash.replace(/^\#\?/, '');
-  
+
+    if (!query) {
+      return null;
+    }
+
     return query.split('&').map(function(param) {
       var splitPoint = param.indexOf('=');
 
@@ -37,6 +41,25 @@
     }).join('&');
 
     window.location.hash = '?' + query;
+  };
+
+  /*
+   * Long term storage for persistence of state/etc
+   */
+  function StorageService () {
+    this.store = window.localStorage;
+  }
+
+  StorageService.prototype.get = function (key) {
+    try {
+      return JSON.parse(this.store.getItem(key));
+    } catch(e) {}
+  };
+
+  StorageService.prototype.set = function (key, value) {
+    try {
+      this.store.setItem(key, JSON.stringify(value));
+    } catch(e) {}
   };
 
   /*
@@ -80,6 +103,9 @@
     };
   }
 
+  /*
+   * 6to5 options for transpilation as used by the REPL
+   */
   function Options () {
     var $experimental = $('#option-experimental');
     var $playground = $('#option-playground');
@@ -94,12 +120,15 @@
       'loose': $checkbox($loose)
     });
 
-    // Defaults
-    options.experimental = true;
-    options.playground = true;
-    options.loose = false;
-    options.evaluate = true;
+    // Merge in defaults
+    var defaults = {
+      experimental : true,
+      playground : true,
+      loose : false,
+      evaluate : true
+    };
 
+    _.assign(options, defaults);
 
     return options;
   }
@@ -108,16 +137,9 @@
    * 6to5 Web REPL
    */
   function REPL () {
-    var state = UriUtils.parseQuery() || {};
-    
-    if (window.localStorage) {
-        try {
-          var storedState = localStorage.getItem('replState');
-          if (storedState) {
-            state = JSON.parse(storedState);  
-          }
-        } catch(e) {}
-    }
+    this.storage = new StorageService();
+    var state = this.storage.get('replState') || {};
+    _.assign(state, UriUtils.parseQuery());
 
     this.options = _.assign(new Options(), state);
 
@@ -227,11 +249,7 @@
 
   REPL.prototype.persistState = function (state) {
     UriUtils.updateQuery(state);
-    if (window.localStorage) {
-        try {
-          window.localStorage.setItem('replState', JSON.stringify(state));
-        } catch(e) {}
-    }
+    this.storage.set('replState', state);
   };
 
   /*
