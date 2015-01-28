@@ -40,19 +40,6 @@ for transformer terminology.
   </p>
 </blockquote>
 
-## Playground
-
- - [playground.memoizationOperator](/docs/usage/playground#memoization-assignment-operator)
- - [playground.methodBinding](/docs/usage/playground#method-binding)
- - [playground.objectGetterMemoization](/docs/usage/playground#object-getter-memoization)
-
-<blockquote class="to5-callout to5-callout-warning">
-  <h4>Disabled by default</h4>
-  <p>
-    These are only usable if you enable playground support. See <a href="/docs/usage/playground">playground usage</a> for information.
-  </p>
-</blockquote>
-
 ## Optional
 
 6to5 provides various optional transformers for those of you who want
@@ -317,69 +304,15 @@ foo === void 0;
 
 Throws errors on references to undeclared variables.
 
+## Playground
 
-## Other
+ - [playground.memoizationOperator](/docs/usage/playground#memoization-assignment-operator)
+ - [playground.methodBinding](/docs/usage/playground#method-binding)
+ - [playground.objectGetterMemoization](/docs/usage/playground#object-getter-memoization)
 
-### `minification.memberExpressionLiterals`
-
-Transform keywords and reserved word properties in member expressions into string literals:
-
-```javascript
-obj.default = "";
-obj.throw = "";
-obj.case = "";
-obj.delete = "";
-```
-
-to
-
-```javascript
-obj["default"] = "";
-obj["throw"] = "";
-obj["case"] = "";
-obj["delete"] = "";
-```
-
-### `minification.propertyLiterals`
-
-Transforms keywords and reserved word property keys into string literals:
-
-```javascript
-var obj = {
-  default: "",
-  throw: "",
-  case: "",
-  delete: ""
-};
-```
-
-to
-
-```javascript
-var obj = {
-  "default": "",
-  "throw": "",
-  "case": "",
-  "delete": ""
-};
-```
-
-### `useStrict`
-
-ES6 modules are strict mode by default, this is a restricted variant of JavaScript
-that enables more optimisations and better errors.
-
-See the MDN article
-[Strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
-for more information.
-
-<blockquote class="to5-callout to5-callout-danger">
-  <h4>Not recommended</h4>
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Disabled by default</h4>
   <p>
-    It's highly recommended not to disable this transformer.
+    These are only usable if you enable playground support. See <a href="/docs/usage/playground">playground usage</a> for information.
   </p>
 </blockquote>
-
-#### `react`
-
-#### `regenerator`
