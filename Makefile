@@ -5,13 +5,10 @@ build:
 	then git clone git@github.com:6to5/6to5.git _6to5; \
 	fi
 
-	cd _6to5 && git pull
-
-	if [ ! -d ./_6to5/node_modules ]; \
-	then cd _6to5 && npm install; \
-	fi
-
-	cd _6to5 && make build
+	cd _6to5; \
+	git pull; \
+	npm install; \
+	make build
 
 	if [ ! -f ./scripts/6to5.js ]; \
 	then touch ./scripts/6to5.js; \
