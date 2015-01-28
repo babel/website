@@ -57,9 +57,9 @@ require("6to5").transform("code", { optional: ["transformerName"] });
 
 The `selfContained` optional transformer does three things:
 
- - Automatically requires `regenerator/runtime-module` when you use generators/async functions.
- - Automatically requires `core-js` and maps ES6 static methods and built-ins.
- - Removes the inline 6to5 helpers and uses a module instead.
+ - Automatically requires `6to5-runtime/regenerator` when you use generators/async functions.
+ - Automatically requires `6to5-runtime/core-js` and maps ES6 static methods and built-ins.
+ - Removes the inline 6to5 helpers and uses the module `6to5-runtime/helpers` instead.
 
 #### Regenerator aliasing
 
@@ -119,7 +119,7 @@ This means that you can use the regenerator runtime without polluting your curre
 Sometimes you may want to use new built-ins such as `Map`, `Set`, `Promise` etc. Your only way
 to use these is usually to include a globally polluting polyfill.
 
-What the `coreAliasing` transformer does is transform the following:
+What the `selfContained` transformer does is transform the following:
 
 ```javascript
 var sym = Symbol();
