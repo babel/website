@@ -140,7 +140,7 @@ The `selfContained` optional transformer does three things:
  - Automatically requires `core-js` and maps ES6 static methods and built-ins.
  - Removes the inline 6to5 helpers and uses a module instead.
 
-### Regenerator aliasing
+#### Regenerator aliasing
 
 Whenever you use a generator function or async function:
 
@@ -193,7 +193,7 @@ function bar() {
 
 This means that you can use the regenerator runtime without polluting your current environment.
 
-### `core-js` aliasing
+#### `core-js` aliasing
 
 Sometimes you may want to use new built-ins such as `Map`, `Set`, `Promise` etc. Your only way
 to use these is usually to include a globally polluting polyfill.
@@ -227,7 +227,7 @@ without worrying about where they come from.
 
 **NOTE:** Instance methods such as `"foobar".contains("foo")` will **not** work.
 
-### Helper aliasing
+#### Helper aliasing
 
 Usually 6to5 will place helpers at the top of your file to do common tasks to avoid
 duplicating the code around in the current file. Sometimes these helpers can get a
