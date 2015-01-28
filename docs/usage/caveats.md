@@ -50,6 +50,9 @@ this is widely supported but you may run into problems with much older browsers.
 **will not** be inherited. See the
 [protoToAssign](/docs/usage/transformers#proto-to-assign) for a possible work around.
 
+For classes that have `super`s, the super class wont resolve correctly. You can
+get around this by enabling [loose mode](/docs/usage/loose) for classes.
+
 ### Getters/setters (8 and below)
 
 In IE8 `Object.defineProperty` can only be used on DOM objects. This is
