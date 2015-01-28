@@ -137,7 +137,7 @@ require("6to5").transform("code", { optional: ["transformerName"] });
 The `selfContained` optional transformer does three things:
 
  - Automatically requires `regenerator/runtime-module` when you use generators/async functions.
- - Automatically maps ES6 methods and types.
+ - Automatically requires `core-js` and maps ES6 static methods and built-ins.
  - Removes the inline 6to5 helpers and uses a module instead.
 
 ### Regenerator aliasing
