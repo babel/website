@@ -140,7 +140,7 @@ for (var _iterator = foo, _isArray = Array.isArray(_iterator), _i = 0, _iterator
 }
 ```
 
-The result is that are put in a fast path, heavily increasing performance.
+The result is that arrays are put in a fast path, heavily increasing performance.
 All other iterables will continue to work fine but array iteration will be
 significantly faster.
 
