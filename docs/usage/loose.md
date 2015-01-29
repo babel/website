@@ -46,6 +46,11 @@ require("6to5").transform("code", { loose: "all" });
 
 ### classes
 
+#### Method enumerability
+
+Please note that in loose mode class methods **are** enumerable. This is not in line
+with the spec and you may run into issues.
+
 #### Super behaviour
 
 When using loose mode, `super` access is inlined using your defined super name. This
