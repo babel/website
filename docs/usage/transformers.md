@@ -53,6 +53,13 @@ require("6to5").transform("code", { optional: ["transformerName"] });
 6to5 --optional transformerName
 ```
 
+<blockquote class="to5-callout to5-callout-info">
+  <h4>External package required</h4>
+  <p>
+    The package <code>6to5-runtime</code> is required for this transformer. Run <code>npm install 6to5-runtime --save</code> to add it to your current node/webpack/browserify project.
+  </p>
+</blockquote>
+
 ### `selfContained`
 
 The `selfContained` optional transformer does three things:
@@ -182,13 +189,6 @@ var _to5Helpers = require("6to5-runtime/helpers");
 
 var foo = _to5Helpers.interopRequire(require("bar"));
 ```
-
-<blockquote class="to5-callout to5-callout-info">
-  <h4></h4>
-  <p>
-    If you use this transformer then the package <code>6to5-runtime</code> is required. Run <code>npm install 6to5-runtime --save</code> to add it to your current node/browserify project.
-  </p>
-</blockquote>
 
 ### `asyncToGenerator`
 
