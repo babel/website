@@ -221,7 +221,7 @@
       Function.prototype.apply.call(console.log, console, args);
 
       var logs = args.reduce(function (logs, log) {
-        if (typeof item === 'string') {
+        if (typeof log === 'string') {
           logs.push(log);
         } else if (log instanceof Function) {
           logs.push(log.toString());
