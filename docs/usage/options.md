@@ -35,6 +35,7 @@ $ 6to5 --name=value
 | `comments`               | `true`               | Output comments in generated output. |
 | `reactCompat`            | `false`              | Makes the `react` transformer produce pre-v0.12 code |
 | `keepModuleIdExtensions` | `false`              | Keep extensions in module ids |
+| `runtime`                | `false`              | Uses a reference to `to5Runtime` instead of placing helpers at the top of your code. Meant to be used in conjunction with the [optional runtime](/docs/usage/runtime). |
 | `code`                   | `true`               | Enable code generation |
 | `ast`                    | `true`               | Include the ÅST in the returned object |
 | `format`                 | [(See Formatting Options)](#formatting-options) | Formatting options for code generation |

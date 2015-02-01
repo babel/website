@@ -55,6 +55,8 @@ navigation:
     url: /docs/usage/playground/
   - title: JSX
     url: /docs/usage/jsx/
+  - title: Optional runtime
+    url: /docs/usage/runtime/
 #- title: Guides
 #  url: /docs/guides/
 #  subnav:
