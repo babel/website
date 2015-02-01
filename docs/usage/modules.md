@@ -28,6 +28,8 @@ to5.transform("import "foo";", { modules: "common" });
 
 ### Common (Default)
 
+[CommonJS (CJS) Modules/1.1](http://wiki.commonjs.org/wiki/Modules/1.1)
+
 **Usage**
 
 ```sh
@@ -74,6 +76,8 @@ var bar = require("foo").foo;
 ```
 
 ### AMD
+
+[Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api)
 
 **Usage**
 
@@ -155,6 +159,8 @@ System.register("bar", ["foo"], function (_export) {
 ```
 
 ### UMD
+
+[Universal Module Definition (UMD)](https://github.com/umdjs/umd)
 
 **Usage**
 
