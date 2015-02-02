@@ -16,7 +16,7 @@ possible to the original, retaining all the same formatting and readability.
 Many other transpilers are just concerned with making the code work while 6to5
 is concerned with making sure it works **and** is readable at the same time.
 
-For example, given the following:
+For example, the following code:
 
 ```js
 var node = {
@@ -25,7 +25,7 @@ var node = {
 };
 ```
 
-is generated to the following with 6to5:
+is generated to this with 6to5:
 
 ```js
 var _defineProperty = ...; // inline helper
@@ -35,7 +35,7 @@ var node = _defineProperty({
 }, "is" + type, true);
 ```
 
-The following is what Traceur generates:
+However the following is what Traceur generates:
 
 ```js
 var node = ($__0 = {}, Object.defineProperty($__0, "type", {
