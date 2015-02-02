@@ -16,43 +16,40 @@ possible to the original, retaining all the same formatting and readability.
 Many other transpilers are just concerned with making the code work while 6to5
 is concerned with making sure it works **and** is readable at the same time.
 
-For example, given the following array comprehension:
+For example, given the following:
 
 ```js
-var seattlers = [for (c of customers) if (c.city == "Seattle") { name: c.name, age: c.age }];
+var node = {
+  type: type,
+  ["is" + type]: true
+};
 ```
 
 is generated to the following with 6to5:
 
 ```js
-var seattlers = Array.from(customers).filter(function (c) {
-  return c.city == "Seattle";
-}).map(function (c) {
-  return {
-    name: c.name,
-    age: c.age
-  };
-});
+var _defineProperty = ...; // inline helper
+
+var node = _defineProperty({
+  type: type
+}, "is" + type, true);
 ```
 
 The following is what Traceur generates:
 
 ```js
-var seattlers = (function() {
-  var c;
-  var $__20 = 0,
-      $__21 = [];
-  for (var $__22 = customers[$traceurRuntime.toProperty(Symbol.iterator)](),
-      $__23; !($__23 = $__22.next()).done; ) {
-    c = $__23.value;
-    if (c.city == "Seattle")
-      $traceurRuntime.setProperty($__21, $__20++, {
-        name: c.name,
-        age: c.age
-      });
-  }
-  return $__21;
-}());
+var node = ($__0 = {}, Object.defineProperty($__0, "type", {
+    value: type,
+    configurable: true,
+    enumerable: true,
+    writable: true
+  }), Object.defineProperty($__0, "is" + type, {
+    value: true,
+    configurable: true,
+    enumerable: true,
+    writable: true
+  }), $__0);
+  return {}
 ```
 
 As you can tell, it's not very pretty. Instead of mapping directly to a runtime,
