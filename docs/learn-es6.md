@@ -615,33 +615,12 @@ c["key"] === undefined
 ### Subclassable Built-ins
 In ES6, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
 
-Object construction for a function named `Ctor` now uses two-phases (both
-virtually dispatched):
-
-- Call `Ctor[@@create]` to allocate the object, installing any special behavior
-- Invoke constructor on new instance to initialize
-
-The known `@@create` symbol is available via `Symbol.create`. Built-ins now
-expose their `@@create` explicitly.
-
 ```js
-// Pseudo-code of Array
-class Array {
-    constructor(...args) { /* ... */ }
-    static [Symbol.create]() {
-        // Install special [[DefineOwnProperty]]
-        // to magically update "length"
-    }
-}
-
 // User code of Array subclass
 class MyArray extends Array {
     constructor(...args) { super(...args); }
 }
 
-// Two-phase "new":
-// 1) Call @@create to allocate object
-// 2) Invoke constructor on new instance
 var arr = new MyArray();
 arr[1] = 12;
 arr.length == 2
@@ -661,7 +640,7 @@ Math.acosh(3) // 1.762747174039086
 Math.hypot(3, 4) // 5
 Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2) // 2
 
-"abcde".contains("cd") // true
+"abcde".includes("cd") // true
 "abc".repeat(3) // "abcabcabc"
 
 Array.from(document.querySelectorAll("*")) // Returns a real Array
@@ -740,17 +719,18 @@ corresponding to the same meta-operations as the proxy traps. Especially useful
 for implementing proxies.
 
 ```js
-// No sample yet
-```
+var O = {a: 1};
+Object.defineProperty(O, 'b', {value: 2});
+O[Symbol('c')] = 3;
 
-<blockquote class="to5-callout to5-callout-danger">
-  <h4>Limited support from polyfill</h4>
-  <p>
-    Core.js only currently supports <code>Reflect.ownKeys</code>, if you would
-    like a much more complete Reflect API, include another polyfill such as
-    <a href="https://github.com/tvcutsem/harmony-reflect">Harmony Reflect</a>.
-  </p>
-</blockquote>
+Reflect.ownKeys(O); // ['a', 'b', Symbol(c)]
+
+function C(a, b){
+  this.c = a + b;
+}
+var instance = Reflect.construct(C, [20, 22]);
+instance.c; // 42
+```
 
 ### Tail Calls
 

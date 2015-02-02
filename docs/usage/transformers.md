@@ -153,7 +153,7 @@ console.log(_core.$for.getIterator(arr));
 This means is that you can seamlessly use these native built-ins and static methods
 without worrying about where they come from.
 
-**NOTE:** Instance methods such as `"foobar".contains("foo")` will **not** work.
+**NOTE:** Instance methods such as `"foobar".includes("foo")` will **not** work.
 
 #### Helper aliasing
 
