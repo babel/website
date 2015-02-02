@@ -39,17 +39,17 @@ However the following is what Traceur generates:
 
 ```js
 var node = ($__0 = {}, Object.defineProperty($__0, "type", {
-    value: type,
-    configurable: true,
-    enumerable: true,
-    writable: true
-  }), Object.defineProperty($__0, "is" + type, {
-    value: true,
-    configurable: true,
-    enumerable: true,
-    writable: true
-  }), $__0);
-  return {}
+  value: type,
+  configurable: true,
+  enumerable: true,
+  writable: true
+}), Object.defineProperty($__0, "is" + type, {
+  value: true,
+  configurable: true,
+  enumerable: true,
+  writable: true
+}), $__0);
+return {};
 ```
 
 As you can tell, it's not very pretty. Instead of mapping directly to a runtime,
