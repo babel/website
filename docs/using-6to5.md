@@ -524,7 +524,7 @@ import Person from "./Person.js";
 
 **Install**
 
-```js
+```sh
 $ npm install 6to5-connect
 ```
 
@@ -561,7 +561,7 @@ app.use(connect.static("cache"));
 
 **Install**
 
-```js
+```sh
 $ npm install jade-6to5
 ```
 
@@ -660,8 +660,8 @@ In your `package.json` file please make the following changes:
 
 **Install**
 
-```js
-npm install --save-dev karma-6to5-preprocessor
+```sh
+$ npm install --save-dev karma-6to5-preprocessor
 ```
 
 **Usage**

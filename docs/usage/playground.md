@@ -34,7 +34,7 @@ redirect_from: /playground.html
 
 ## Usage
 
-```js
+```sh
 $ 6to5 --playground
 ```
 

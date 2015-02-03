@@ -26,7 +26,7 @@ require("6to5").transform("code", { loose: ["classes", "computedPropertyNames"] 
 ```
 
 ```sh
-6to5 --loose classes,computedPropertyNames script.js
+$ 6to5 --loose classes,computedPropertyNames script.js
 ```
 
 ### All
@@ -39,7 +39,7 @@ require("6to5").transform("code", { loose: "all" });
 ```
 
 ```sh
-6to5 --loose all script.js
+$ 6to5 --loose all script.js
 ```
 
 ## Caveats

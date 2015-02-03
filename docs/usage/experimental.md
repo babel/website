@@ -19,7 +19,7 @@ redirect_from: /experimental.html
 
 #### Usage
 
-```js
+```sh
 $ 6to5 --experimental
 ```
 
