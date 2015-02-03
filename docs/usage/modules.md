@@ -6,7 +6,7 @@ permalink: /docs/usage/modules/
 redirect_from: /modules.html
 ---
 
-See [FAQ - What is a module formatter?](/docs/faq#what-is-a-transformer)
+See [FAQ - What is a module formatter?](/docs/faq#what-is-a-transformer-)
 for module formatter terminology.
 
 <p class="lead">
