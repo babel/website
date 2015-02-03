@@ -73,11 +73,8 @@ var bar = require("foo").foo;
 
 #### Interop
 
-In order to encourage the use of CommonJS and ES6 modules, interop has been added
-where exporting a default export that will set `module.exports` instead of
-`exports.default` when it's the only export in the file.
-
-If you don't want this behave then you can use the `commonStrict` module formatter.
+In order to encourage the use of CommonJS and ES6 modules, when exporting a default
+export with **no** other exports `module.exports` will be set instead of `exports.default`.
 
 ```javascript
 export default test;
@@ -86,6 +83,8 @@ export default test;
 ```javascript
 module.exports = test;
 ```
+
+If you don't want this behaviour then you can use the `commonStrict` module formatter.
 
 ### AMD
 
