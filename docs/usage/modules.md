@@ -21,7 +21,7 @@ $ 6to5 --modules common script.js
 ```
 
 ```js
-to5.transform("import "foo";", { modules: "common" });
+to5.transform('import "foo";', { modules: "common" });
 ```
 
 ## Formats
