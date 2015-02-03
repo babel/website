@@ -39,8 +39,6 @@ $ 6to5 --modules common
 **Example**
 
 ```js
-export default test;
-
 export {test};
 export var test = 5;
 
@@ -60,8 +58,6 @@ var _interopRequire = function (obj) {
   return obj && (obj["default"] || obj);
 };
 
-module.exports = test;
-
 exports.test = test;
 var test = exports.test = 5;
 
@@ -73,6 +69,22 @@ var foo = require("foo");
 
 var bar = require("foo").bar;
 var bar = require("foo").foo;
+```
+
+#### Interop
+
+In order to encourage the use of CommonJS and ES6 modules, interop has been added
+where exporting a default export that will set `module.exports` instead of
+`exports.default` when it's the only export in the file.
+
+If you don't want this behave then you can use the `commonStrict` module formatter.
+
+```javascript
+export default test;
+```
+
+```javascript
+module.exports = test;
 ```
 
 ### AMD
