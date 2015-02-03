@@ -661,7 +661,7 @@ In your `package.json` file please make the following changes:
 **Install**
 
 ```sh
-npm install --save-dev karma-6to5-preprocessor
+$ npm install --save-dev karma-6to5-preprocessor
 ```
 
 **Usage**
