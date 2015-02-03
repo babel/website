@@ -242,7 +242,7 @@ You can alternatively specify module names instead of one of the built-in types.
 
 **Usage**
 
-```js
+```sh
 $ 6to5 --modules custom-module-formatter
 ```
 

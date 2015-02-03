@@ -50,7 +50,7 @@ require("6to5").transform("code", { optional: ["transformerName"] });
 ```
 
 ```sh
-6to5 --optional transformerName
+$ 6to5 --optional transformerName
 ```
 
 <blockquote class="to5-callout to5-callout-info">
