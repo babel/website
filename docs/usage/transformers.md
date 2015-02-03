@@ -5,7 +5,7 @@ description: What are the various transformers?
 permalink: /docs/usage/transformers/
 ---
 
-See [FAQ - What is a transformer?](/docs/faq#what-is-a-transformer)
+See [FAQ - What is a transformer?](/docs/faq#what-is-a-transformer-)
 for transformer terminology.
 
 ## ES6
@@ -17,11 +17,11 @@ for transformer terminology.
  - [es6.destructuring](/docs/learn-es6#destructuring)
  - [es6.forOf](/docs/learn-es6#iterators-for-of)
  - [es6.modules](/docs/learn-es6#modules)
- - [es6.parameters.default](/docs/learn-es6#default-spread-rest)
- - [es6.parameters.rest](/docs/learn-es6#default-spread-rest)
+ - [es6.parameters.default](/docs/learn-es6#default-rest-spread)
+ - [es6.parameters.rest](/docs/learn-es6#default-rest-spread)
  - [es6.properties.computed](/docs/learn-es6#enhanced-object-literals)
  - [es6.properties.shorthand](/docs/learn-es6#enhanced-object-literals)
- - [es6.spread](/docs/learn-es6#default-spread-rest)
+ - [es6.spread](/docs/learn-es6#default-rest-spread)
  - [es6.templateLiterals](/docs/learn-es6#template-strings)
  - [es6.unicodeRegex](/docs/learn-es6#unicode)
 
