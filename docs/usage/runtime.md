@@ -17,7 +17,7 @@ instead just point them to a reference contained within the runtime.
 
 ## Usage
 
-```js
+```sh
 $ 6to5 --runtime
 ```
 
