@@ -30,5 +30,5 @@ to5.transform("code", { experimental: true });
 
 #### Transformers
 
-See [Transformers - Experimental](/docs/usage/transformers#experimental)
+See [Transformers - Experimental](/docs/usage/transformers#es7-experimental-)
 for transformers.
