@@ -20,3 +20,7 @@ To disable this behaviour add react to your blacklist:
 to5.transform("code", { blacklist: ["react"] });
 $ 6to5 --blacklist react
 ```
+
+## Additional changes
+
+ - When doing `export default React.createClass({});` the `displayName` is inferred from the current filename.
