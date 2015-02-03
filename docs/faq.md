@@ -71,7 +71,7 @@ by other transpilers but 6to5 approaches it quite differently.
 
 You have two options, depending on your use case:
 
- - Use the wonderful [core aliasing optional transformer](/docs/usage/transformers#core-aliasing). This is recommended if you're writing a library.
+ - Use the wonderful [core aliasing optional transformer](/docs/usage/transformers#core-js-aliasing). This is recommended if you're writing a library.
  - Or use the bundled 6to5 [polyfill](/docs/usage/polyfill). This is recommended if you're writing an entire application.
 
 ## Can 6to5 be installed on Windows?
