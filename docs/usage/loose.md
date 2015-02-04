@@ -51,37 +51,6 @@ $ 6to5 --loose all script.js
 Please note that in loose mode class methods **are** enumerable. This is not in line
 with the spec and you may run into issues.
 
-#### Super behaviour
-
-When using loose mode, `super` access is inlined using your defined super name. This
-means that super calls will be as fast as possible but results in prototype
-reassignment not being reflected in instances. For example:
-
-```javascript
-class Foo {
-  bar() {
-    return "foo";
-  }
-}
-
-class Bar extends Foo {
-  foo() {
-    return "foo" + super.bar();
-  }
-}
-
-var bar = new Bar;
-bar.__proto__ = {
-  bar: function () {
-    return "bar";
-  }
-};
-bar.foo(); // "foofoo", should be "foobar"
-```
-
-Not only this but due to super references being inlined it removes the ability to
-use `super` on getters.
-
 #### Method assignment
 
 Under loose mode, methods are defined on the class prototype with simple assignments
