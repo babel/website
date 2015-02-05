@@ -24,7 +24,7 @@ redirect_from: /browser.html
 ## Script tags
 
 When the `browser.js` file is included all scripts with the type
-`text/ecmascript-6` and `text/6to5` are automatically compiled and ran.
+`text/ecmascript-6` and `text/6to5` are automatically compiled and run.
 
 ```html
 <script src="node_modules/6to5/browser.js"></script>
