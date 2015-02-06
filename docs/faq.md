@@ -5,6 +5,11 @@ description: Frequently Asked Questions and Answers
 permalink: /docs/faq/
 ---
 
+## What is the browser compatibility?
+
+As a rule of thumb, IE9+. You can support IE8 by limiting yourself to a subset of ES6 features. The
+[Caveats](/docs/usage/caveats) page goes into the details of supporting legacy browsers.
+
 ## How does 6to5 differ from other transpilers?
 
 Many issues plague current transpilers, 6to5 takes a unique approach to many aspects.
