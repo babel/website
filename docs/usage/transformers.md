@@ -68,13 +68,6 @@ require("6to5").transform("code", { optional: ["transformerName"] });
 $ 6to5 --optional transformerName
 ```
 
-<blockquote class="to5-callout to5-callout-info">
-  <h4>External package required</h4>
-  <p>
-    The package <code>6to5-runtime</code> is required for this transformer. Run <code>npm install 6to5-runtime --save</code> to add it to your current node/webpack/browserify project.
-  </p>
-</blockquote>
-
 ### `selfContained`
 
 The `selfContained` optional transformer does three things:
@@ -86,6 +79,13 @@ The `selfContained` optional transformer does three things:
 What does this actually mean though? Basically, you can use built-ins such as `Promise`,
 `Set`, `Map`, `Symbol` as well as all the 6to5 features that require a polyfill seamlessly,
 without global pollution making it great for libraries.
+
+<blockquote class="to5-callout to5-callout-info">
+  <h4>External package required</h4>
+  <p>
+    The package <code>6to5-runtime</code> is required for this transformer. Run <code>npm install 6to5-runtime --save</code> to add it to your current node/webpack/browserify project.
+  </p>
+</blockquote>
 
 #### Regenerator aliasing
 
