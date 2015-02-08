@@ -40,7 +40,7 @@ $ 6to5 script.js --out-file script-compiled.js
 To compile a file **every time that you change it**, use the `--watch` or `-w` option:
 
 ```sh
-$ 6to5 script.es6 -wo script.js
+$ 6to5 script.js --watch --out-file script-compiled.js
 ```
 
 ### Compile with Source Maps
