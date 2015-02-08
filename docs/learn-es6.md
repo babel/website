@@ -748,12 +748,3 @@ function factorial(n, acc = 1) {
 // but safe on arbitrary inputs in eS6
 factorial(100000)
 ```
-
-<blockquote class="to5-callout to5-callout-danger">
-  <h4>Unsupported feature</h4>
-  <p>
-    Due to high complexity of transpiling Tail Calls, 6to5 does not currently
-    have them implemented. See
-    <a href="https://github.com/6to5/6to5/issues/256">#256</a>.
-  </p>
-</blockquote>

@@ -31,6 +31,7 @@ for transformer terminology.
  - [es6.properties.computed](/docs/learn-es6#enhanced-object-literals)
  - [es6.properties.shorthand](/docs/learn-es6#enhanced-object-literals)
  - [es6.spread](/docs/learn-es6#default-rest-spread)
+ - [es6.tailCall](/docs/learn-es6#tail-calls)
  - [es6.templateLiterals](/docs/learn-es6#template-strings)
  - [es6.unicodeRegex](/docs/learn-es6#unicode)
 
