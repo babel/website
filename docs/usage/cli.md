@@ -37,7 +37,7 @@ If you would like to **output to a file** you may use `--out-file` or `-o`.
 $ 6to5 script.js --out-file script-compiled.js
 ```
 
-To compile a file **every time that change it**, use the `--watch` or `-w` option:
+To compile a file **every time that you change it**, use the `--watch` or `-w` option:
 
 ```sh
 $ 6to5 script.es6 -wo script.js
