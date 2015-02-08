@@ -33,7 +33,6 @@ $ 6to5 --name=value
 | `moduleRoot`             | `(sourceRoot)`       | Optional prefix for the AMD module formatter that will be prepend to the filename on module definitions. |
 | `moduleIds`              | `false`              | If truthy, insert an explicit id for modules. By default, all modules are anonymous. (Not available for `common` modules) |
 | `comments`               | `true`               | Output comments in generated output. |
-| `reactCompat`            | `false`              | Makes the `react` transformer produce pre-v0.12 code |
 | `keepModuleIdExtensions` | `false`              | Keep extensions in module ids |
 | `runtime`                | `false`              | Uses a reference to `to5Runtime` instead of placing helpers at the top of your code. Meant to be used in conjunction with the [optional runtime](/docs/usage/runtime). |
 | `code`                   | `true`               | Enable code generation |

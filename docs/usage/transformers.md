@@ -8,6 +8,15 @@ permalink: /docs/usage/transformers/
 See [FAQ - What is a transformer?](/docs/faq#what-is-a-transformer-)
 for transformer terminology.
 
+## ES3
+
+ - [es3.memberExpressionLiterals](#)
+ - [es3.propertyLiterals](#)
+
+## ES5
+
+ - [es5.properties.mutators](#)
+
 ## ES6
 
  - [es6.arrowFunctions](/docs/learn-es6#arrows)
@@ -40,6 +49,11 @@ for transformer terminology.
   </p>
 </blockquote>
 
+## Other
+
+ - [react](/docs/usage/jsx)
+ - [regenerator](https://github.com/facebook/regenerator) (generators/async functions)
+
 ## Optional
 
 6to5 provides various optional transformers for those of you who want
@@ -67,6 +81,10 @@ The `selfContained` optional transformer does three things:
  - Automatically requires `6to5-runtime/regenerator` when you use generators/async functions.
  - Automatically requires `6to5-runtime/core-js` and maps ES6 static methods and built-ins.
  - Removes the inline 6to5 helpers and uses the module `6to5-runtime/helpers` instead.
+
+What does this actually mean though? Basically, you can use built-ins such as `Promise`,
+`Set`, `Map`, `Symbol` as well as all the 6to5 features that require a polyfill seamlessly,
+without global pollution making it great for libraries.
 
 #### Regenerator aliasing
 
