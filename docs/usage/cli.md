@@ -37,6 +37,12 @@ If you would like to **output to a file** you may use `--out-file` or `-o`.
 $ 6to5 script.js --out-file script-compiled.js
 ```
 
+To compile a file **every time that change it**, use the `--watch` or `-w` option:
+
+```sh
+$ 6to5 script.es6 -wo script.js
+```
+
 ### Compile with Source Maps
 
 If you would then like to add a **source map file** you can use
