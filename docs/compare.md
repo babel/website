@@ -115,6 +115,7 @@ that when you turn it off and use your code in a full ES6 environment
 | Rest parameters              | ✓    | ✓       | ✓          | ✓              | ✓      | ✓           |
 | React                        | ✓    |         |            |                |        |             |
 | Spread                       | ✓    | ✓       |            | ✓              | ✓      |             |
+| Tail call optimisation       | ✓    |         |            |                |        |             |
 | Template literals            | ✓    | ✓       |            | ✓              | ✓      | ✓           |
 | Types                        | ✓    | ✓       | ✓          |                |        | ✓           |
 | Unicode regex                | ✓    | ✓       |            | ✓              |        |             |
