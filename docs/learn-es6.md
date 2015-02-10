@@ -748,3 +748,11 @@ function factorial(n, acc = 1) {
 // but safe on arbitrary inputs in eS6
 factorial(100000)
 ```
+
+<blockquote class="to5-callout to5-callout-warning">
+  <h4>Partial support</h4>
+  <p>
+    Currently only self referencing tail recursion is supported due to the
+    complexity of supporting tail calls globally.
+  </p>
+</blockquote>
