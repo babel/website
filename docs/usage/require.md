@@ -30,8 +30,7 @@ require("6to5/register");
 ```
 
 All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`
-and `.js` will be transformed by 6to5. The polyfill specified in
-[/docs/usage/polyfill](/docs/usage/polyfill) is also automatically required.
+and `.js` will be transformed by 6to5. The [polyfill](/docs/usage/polyfill) is also automatically required.
 
 **NOTE:** By default all requires to `node_modules` will be ignored. You can
 override this by passing an ignore regex via:
