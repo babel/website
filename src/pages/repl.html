@@ -32,6 +32,13 @@
     </label>
   </div>
 
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="option-spec">
+      Spec
+    </label>
+  </div>
+
   <h3>Console</h3>
 
   <pre id="console"><code></code></pre>
@@ -99,6 +106,7 @@
   var $optionExper = $("#option-experimental");
   var $optionPlay  = $("#option-playground");
   var $optionEval  = $("#option-evaluate");
+  var $optionSpec  = $("#option-spec");
   var $console     = $("#console");
 
   var compile = function () {
@@ -106,19 +114,22 @@
     var experimental = $optionExper.is(":checked");
     var playground = $optionPlay.is(":checked");
     var evaluate = $optionEval.is(":checked");
+    var spec = $optionSpec.is(":checked");
     var _log = console.log;
 
     setQuery({
       code: encodeURIComponent(code),
       experimental: experimental,
       playground: playground,
-      evaluate: evaluate
+      evaluate: evaluate,
+      spec: spec
     });
 
     try {
       var transformed = to5.transform(code, {
         experimental: experimental,
         playground: playground,
+        optional: spec && ["spec.typeofSymbol", "es6.blockScopingTDZ"],
         filename: "repl"
       });
 
@@ -175,5 +186,6 @@
   $optionExper.prop('checked', query.experimental !== 'false');
   $optionPlay.prop('checked', query.playground !== 'false');
   $optionEval.prop('checked', query.evaluate !== 'false');
+  $optionSpec.prop('checked', query.spec !== 'false');
   input.setValue(decodeURIComponent(query.code || ''));
 </script>
