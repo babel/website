@@ -111,13 +111,15 @@
     var $playground = $('#option-playground');
     var $evaluate = $('#option-evaluate');
     var $loose = $('#option-loose-mode');
+    var $spec = $('#option-spec');
 
     var options = {};
     Object.defineProperties(options, {
       'experimental': $checkbox($experimental),
       'playground': $checkbox($playground),
       'evaluate': $checkbox($evaluate),
-      'loose': $checkbox($loose)
+      'loose': $checkbox($loose),
+      'spec': $checkbox($spec)
     });
 
     // Merge in defaults
@@ -125,6 +127,7 @@
       experimental : true,
       playground : true,
       loose : false,
+      spec : false,
       evaluate : true
     };
 
@@ -184,6 +187,7 @@
         experimental: this.options.experimental,
         playground: this.options.playground,
         loose: this.options.loose && "all",
+        optional: this.options.spec && ["spec.typeofSymbol", "es6.blockScopingTDZ"],
         filename: 'repl'
       });
     } catch (err) {
