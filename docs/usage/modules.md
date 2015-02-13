@@ -38,36 +38,65 @@ $ 6to5 --modules common
 
 **Example**
 
+Exports:
+
 ```js
 export {test};
 export var test = 5;
+```
 
+```javascript
+exports.test = test;
+var test = exports.test = 5;
+```
+
+Bare import:
+
+```javascript
 import "foo";
+```
 
+```javascript
+require("foo");
+```
+
+Default import:
+
+```javascript
 import foo from "foo";
-import * as foo from "foo";
+```
 
+```javascript
+var foo = _interopRequire(require("foo"));
+```
+
+Wildcard import:
+
+```javascript
+import * as foo from "foo";
+```
+
+```javascript
+var foo = _interopRequireWildcard(require("foo"));
+```
+
+Named import:
+
+```javascript
 import {bar} from "foo";
+```
+
+```javascript
+var bar = require("foo").bar;
+```
+
+Named alias import:
+
+```javascript
 import {foo as bar} from "foo";
 ```
 
-```js
-"use strict";
-
-var _interopRequire = function (obj) {
-  return obj && (obj["default"] || obj);
-};
-
-exports.test = test;
-var test = exports.test = 5;
-
-require("foo");
-
-var foo = _interopRequire(require("foo"));
-
-var foo = require("foo");
-
-var bar = require("foo").bar;
+```javascript
 var bar = require("foo").foo;
 ```
 
