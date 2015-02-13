@@ -410,8 +410,8 @@ var concat = require("gulp-concat");
 gulp.task("default", function () {
   return gulp.src("src/**/*.js")
     .pipe(sourcemaps.init())
-    .pipe(to5())
     .pipe(concat("all.js"))
+    .pipe(to5())
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest("dist"));
 });
