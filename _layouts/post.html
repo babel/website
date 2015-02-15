@@ -14,14 +14,14 @@ layout: default
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-push-3 to5-blog-content">
+    <div class="col-md-6 col-md-push-3 babel-blog-content">
       <p class="small text-center text-muted">Posted {{ page.date | date: "%b %-d, %Y" }} by {{ page.author }}{% if page.meta %} · {{ page.meta }}{% endif %}</p>
 
       {{content}}
 
       <hr>
 
-      <div class="to5-share-buttons">
+      <div class="babel-share-buttons">
         <div class="fb-share-button" data-layout="button_count"></div>
         <a class="twitter-share-button" href="https://twitter.com/share" data-via="babeljs" data-text="{% if page.share_text %}{{page.share_text}}{% else %}{{page.title}}{% endif %}">Tweet</a>
       </div>
