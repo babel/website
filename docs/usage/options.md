@@ -34,7 +34,7 @@ $ babel --name=value
 | `moduleIds`              | `false`              | If truthy, insert an explicit id for modules. By default, all modules are anonymous. (Not available for `common` modules) |
 | `comments`               | `true`               | Output comments in generated output. |
 | `keepModuleIdExtensions` | `false`              | Keep extensions in module ids |
-| `runtime`                | `false`              | Uses a reference to `babelRuntime` instead of placing helpers at the top of your code. Meant to be used in conjunction with the [optional runtime](/docs/usage/runtime). |
+| `externalHelpers`        | `false`              | Uses a reference to `babelHelpers` instead of placing helpers at the top of your code. Meant to be used in conjunction with [external helpers](/docs/usage/external-helpers). |
 | `code`                   | `true`               | Enable code generation |
 | `ast`                    | `true`               | Include the ÅST in the returned object |
 | `format`                 | [(See Formatting Options)](#formatting-options) | Formatting options for code generation |
