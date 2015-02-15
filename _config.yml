@@ -57,15 +57,6 @@ navigation:
     url: /docs/usage/jsx/
   - title: Optional runtime
     url: /docs/usage/runtime/
-#- title: Guides
-#  url: /docs/guides/
-#  subnav:
-#  - title: Writing a library
-#    url: /docs/guides/writing-a-library/
-#  - title: Code coverage
-#    url: /docs/guides/code-coverage/
-#  - title: Testing
-#    url: /docs/guides/testing/
 - title: Compare
   url: /docs/compare/
 - title: Try it out
