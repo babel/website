@@ -30,16 +30,15 @@ layout: default
 
 <div class="jumbotron jumbotron-inverse text-center">
   <div class="container-fluid">
-    <h1>Say Hello to 6to5.</h1>
+    <h1>Say Hello to Babel.</h1>
     <p>
-      6to5 turns ES6+ code into vanilla ES5, so you can use next generation
+      Babel turns ES6+ code into vanilla ES5, so you can use next generation
       features today.
     </p>
   </div>
 </div>
 
 <div class="container">
-
   <div class="row featurette">
     <div class="col-md-4">
       <h2>Readable</h2>
@@ -84,7 +83,7 @@ User.prototype.sayHello = function () {
   <div class="row featurette">
     <div class="col-md-4 col-md-push-8">
       <h2>Extensible</h2>
-      <p>With a large range of <a href="{{ site.baseurl }}/docs/using-6to5/">plugins</a> and browser support.</p>
+      <p>With a large range of <a href="{{ site.baseurl }}/docs/using-babel/">plugins</a> and browser support.</p>
     </div>
     <div class="col-md-8 col-md-pull-4">
       <img src="{{ site.baseurl }}/images/benefits-extensible.png?t={{ site.time | date_to_xmlschema }}" alt="Plugins and Browsers" class="featurette-image img-responsive">
@@ -144,7 +143,7 @@ User.prototype.sayHello = function () {
 
   <div class="text-center">
     <div class="btn-wrapper">
-      <a href="{{ site.baseurl }}/docs/using-6to5/" class="btn btn-featured">Install 6to5</a>
+      <a href="{{ site.baseurl }}/docs/using-babel/" class="btn btn-featured">Install Babel</a>
     </div>
   </div>
 
@@ -164,15 +163,15 @@ User.prototype.sayHello = function () {
       <img src="{{ site.baseurl }}/images/uses-browsers.png?t={{ site.time | date_to_xmlschema }}" alt="Browsers" class="featurette-image img-responsive">
     </div>
     <div class="col-md-8 col-md-pull-4 col-sm-6 col-sm-pull-6">
-      <h2><a href="{{ site.baseurl }}/docs/using-6to5/#build-systems">Browsers</a></h2>
+      <h2><a href="{{ site.baseurl }}/docs/using-babel/#build-systems">Browsers</a></h2>
       <p>
-        6to5 has plugins for all of your favorite build systems. Check
-        out the official plugins for <a href="/docs/using-6to5/#gulp">Gulp</a>,
-        <a href="{{ site.baseurl }}/docs/using-6to5/#grunt">Grunt</a>,
-        <a href="{{ site.baseurl }}/docs/using-6to5/#browserify">Browserify</a>,
-        <a href="{{ site.baseurl }}/docs/using-6to5/#webpack">Webpack</a>,
-        <a href="{{ site.baseurl }}/docs/using-6to5/#broccoli">Broccoli</a>,
-        and <a href="{{ site.baseurl }}/docs/using-6to5/#build-systems">many more</a>. You can also use
+        Babel has plugins for all of your favorite build systems. Check
+        out the official plugins for <a href="/docs/using-babel/#gulp">Gulp</a>,
+        <a href="{{ site.baseurl }}/docs/using-babel/#grunt">Grunt</a>,
+        <a href="{{ site.baseurl }}/docs/using-babel/#browserify">Browserify</a>,
+        <a href="{{ site.baseurl }}/docs/using-babel/#webpack">Webpack</a>,
+        <a href="{{ site.baseurl }}/docs/using-babel/#broccoli">Broccoli</a>,
+        and <a href="{{ site.baseurl }}/docs/using-babel/#build-systems">many more</a>. You can also use
         the <a href="{{ site.baseurl }}/docs/usage/cli/">built-in CLI</a>.
       </p>
     </div>
@@ -185,11 +184,11 @@ User.prototype.sayHello = function () {
       <img src="{{ site.baseurl }}/images/uses-nodejs.png?t={{ site.time | date_to_xmlschema }}" alt="Node.js" class="featurette-image img-responsive">
     </div>
     <div class="col-md-8 col-sm-6">
-      <h2><a href="{{ site.baseurl }}/docs/using-6to5/#nodejs">Node.js</a></h2>
+      <h2><a href="{{ site.baseurl }}/docs/using-babel/#nodejs">Node.js</a></h2>
       <p>
-        Using either the <a href="{{ site.baseurl }}/docs/using-6to5/#cli">CLI</a> or
-        <a href="{{ site.baseurl }}/docs/using-6to5/#require-hook">require hook</a>,
-        you can easily setup 6to5 to work with your Node.js app. Module authors
+        Using either the <a href="{{ site.baseurl }}/docs/using-babel/#cli">CLI</a> or
+        <a href="{{ site.baseurl }}/docs/using-babel/#require-hook">require hook</a>,
+        you can easily setup babel to work with your Node.js app. Module authors
         can also easily precompile their assets before publishing to npm.
       </p>
     </div>
@@ -202,13 +201,13 @@ User.prototype.sayHello = function () {
       <img src="{{ site.baseurl }}/images/uses-rails.png?t={{ site.time | date_to_xmlschema }}" alt="Rails" class="featurette-image img-responsive">
     </div>
     <div class="col-md-8 col-md-pull-4 col-sm-6 col-sm-pull-6">
-      <h2><a href="{{ site.baseurl }}/docs/using-6to5/#rails">Rails</a></h2>
+      <h2><a href="{{ site.baseurl }}/docs/using-babel/#rails">Rails</a></h2>
       <p>
         Sprockets 4 will
         <a href="https://github.com/sstephenson/sprockets/pull/682">ship with
-        6to5 by default</a> using the `.es6` file extension. Until then you can
-        use the <a href="{{ site.baseurl }}/docs/using-6to5/#sprockets">Sprockets ES6 transform</a> or
-        the <a href="https://github.com/6to5/6to5-ruby">official 6to5 Ruby
+        babel by default</a> using the `.es6` file extension. Until then you can
+        use the <a href="{{ site.baseurl }}/docs/using-babel/#sprockets">Sprockets ES6 transform</a> or
+        the <a href="https://github.com/babel/babel-ruby">official babel Ruby
         Gem</a>.
       </p>
     </div>
@@ -221,10 +220,10 @@ User.prototype.sayHello = function () {
       <img src="{{ site.baseurl }}/images/uses-browserify.png?t={{ site.time | date_to_xmlschema }}" alt="Browserify" class="featurette-image img-responsive">
     </div>
     <div class="col-md-8 col-sm-6">
-      <h2><a href="{{ site.baseurl }}/docs/using-6to5/#browserify">Browserify</a></h2>
+      <h2><a href="{{ site.baseurl }}/docs/using-babel/#browserify">Browserify</a></h2>
       <p>
-        6to5 and Browserify get along wonderfully with the
-        <a href="{{ site.baseurl }}/docs/using-6to5/#browserify">official 6to5ify transform</a> 6to5
+        Babel and Browserify get along wonderfully with the
+        <a href="{{ site.baseurl }}/docs/using-babel/#browserify">official babelify transform</a> babel
         transforms the module syntax to browserify-compatible Common.js modules
         by default.
       </p>
@@ -236,7 +235,7 @@ User.prototype.sayHello = function () {
   <div class="text-center">
     <div class="btn-wrapper btn-wrapper-lg">
       <a href="{{ site.baseurl }}/docs/learn-es6/" class="btn btn-featured">Learn ES6</a>
-      <a href="{{ site.baseurl }}/docs/using-6to5/" class="btn btn-featured">Install 6to5</a>
+      <a href="{{ site.baseurl }}/docs/using-babel/" class="btn btn-featured">Install Babel</a>
     </div>
   </div>
 </div>

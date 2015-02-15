@@ -1,11 +1,11 @@
 # Site settings
-title: 6to5
-tagline: Turn ES6+ code into readable vanilla ES5
-description: 6to5 turns ES6+ code into vanilla ES5, so you can use next generation features today.
+title: Babel
+tagline: The transpiler for writing next generation JavaScript
+description: The transpiler for writing next generation JavaScript
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://6to5.org" # the base hostname & protocol for your site
+url: "https://babeljs.io" # the base hostname & protocol for your site
 # twitter_username: jekyllrb
-github_username:  6to5
+github_username: babel
 exclude: ["node_modules"]
 
 # Build settings
@@ -24,8 +24,8 @@ redcarpet:
 navigation:
 - title: Learn ES6
   url: /docs/learn-es6/
-- title: Using 6to5
-  url: /docs/using-6to5/
+- title: Using Babel
+  url: /docs/using-babel/
 - title: Docs
   url: /docs/usage/
   subnav:
@@ -55,17 +55,8 @@ navigation:
     url: /docs/usage/playground/
   - title: JSX
     url: /docs/usage/jsx/
-  - title: Optional runtime
-    url: /docs/usage/runtime/
-#- title: Guides
-#  url: /docs/guides/
-#  subnav:
-#  - title: Writing a library
-#    url: /docs/guides/writing-a-library/
-#  - title: Code coverage
-#    url: /docs/guides/code-coverage/
-#  - title: Testing
-#    url: /docs/guides/testing/
+  - title: External helpers
+    url: /docs/usage/external-helpers/
 - title: Compare
   url: /docs/compare/
 - title: Try it out

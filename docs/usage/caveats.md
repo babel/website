@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Caveats
-description: Just some things to keep in mind when using 6to5.
+description: Just some things to keep in mind when using babel.
 permalink: /docs/usage/caveats/
 redirect_from:
  - /caveats.html
@@ -11,7 +11,7 @@ redirect_from:
 ## Polyfills
 
 In order for certain features to work they require certain polyfills. You can
-satisfy **all** 6to5 feature requirements by using the included
+satisfy **all** babel feature requirements by using the included
 [polyfill](/docs/usage/polyfill).
 
 You may alternatively selectively include what you need:
@@ -32,11 +32,11 @@ due to limitations in ES5.
 
 ## ES5
 
-Since 6to5 assumes that your code will be ran in an ES5 environment it uses ES5
+Since babel assumes that your code will be ran in an ES5 environment it uses ES5
 functions. So if you're using an environment that has limited or no support for
 ES5 such as lower versions of IE then using the
 [es5-shim](https://github.com/es-shims/es5-shim) along with the
-[6to5 polyfill](/docs/usage/polyfill) will add support for these methods.
+[babel polyfill](/docs/usage/polyfill) will add support for these methods.
 
 ## Internet Explorer
 

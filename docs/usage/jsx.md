@@ -6,7 +6,7 @@ permalink: /docs/usage/jsx/
 ---
 
 <p class="lead">
-  6to5 has built-in support for React v0.12. Tags are automatically transformed
+  babel has built-in support for React v0.12. Tags are automatically transformed
   to their equivalent <code>React.createElement(...)</code> and
   <code>displayName</code> is automatically inferred and added to all
   <code>React.createClass</code> calls. Completely compatible with the official
@@ -18,11 +18,11 @@ permalink: /docs/usage/jsx/
 To disable this behaviour add the `react` transformer to your blacklist:
 
 ````js
-to5.transform("code", { blacklist: ["react"] });
+babel.transform("code", { blacklist: ["react"] });
 ```
 
 ```sh
-$ 6to5 --blacklist react
+$ babel --blacklist react
 ```
 
 ## Pre-v0.12
@@ -30,11 +30,11 @@ $ 6to5 --blacklist react
 You can enable the pre-v0.12 syntax with the optional `reactCompat` transformer:
 
 ````js
-to5.transform("code", { optional: ["reactCompat"] });
+babel.transform("code", { optional: ["reactCompat"] });
 ```
 
 ```sh
-$ 6to5 --optional reactCompat
+$ babel --optional reactCompat
 ```
 
 ## Additional changes

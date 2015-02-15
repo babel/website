@@ -19,15 +19,15 @@
       display: block;
       padding: 4px 20px;
       font-size: 13px;
-      color: lighten($to5-dark-gray, 35%);
+      color: lighten($babel-dark-gray, 35%);
 
       &:hover,
       &:focus {
         padding-left: 19px;
-        color: $to5-dark-gray;
+        color: $babel-dark-gray;
         text-decoration: none;
         background-color: transparent;
-        border-left: 1px solid $to5-yellow;
+        border-left: 1px solid $babel-yellow;
       }
     }
 
@@ -35,9 +35,9 @@
     > .active:hover > a,
     > .active:focus > a {
       padding-left: 18px;
-      color: $to5-dark-gray;
+      color: $babel-dark-gray;
       background-color: transparent;
-      border-left: 2px solid $to5-yellow;
+      border-left: 2px solid $babel-yellow;
     }
 
     .nav {

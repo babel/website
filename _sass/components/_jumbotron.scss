@@ -50,8 +50,8 @@
 }
 
 .jumbotron-inverse {
-  background: $to5-yellow;
-  color: $to5-dark-gray;
+  background: $babel-yellow;
+  color: $babel-dark-gray;
 
   &::before {
     opacity: 0.05;
@@ -62,6 +62,6 @@
   }
 
   .jumbotron-brand {
-    color: darken($to5-yellow, 10%);
+    color: darken($babel-yellow, 10%);
   }
 }

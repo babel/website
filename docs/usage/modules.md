@@ -10,18 +10,18 @@ See [FAQ - What is a module formatter?](/docs/faq#what-is-a-transformer-)
 for module formatter terminology.
 
 <p class="lead">
-  6to5 has the ability to transpile ES6 modules to the module system of your
+  babel has the ability to transpile ES6 modules to the module system of your
   choice. You can even easily create your own.
 </p>
 
 ## Usage
 
 ```sh
-$ 6to5 --modules common script.js
+$ babel --modules common script.js
 ```
 
 ```js
-to5.transform('import "foo";', { modules: "common" });
+babel.transform('import "foo";', { modules: "common" });
 ```
 
 ## Formats
@@ -33,7 +33,7 @@ to5.transform('import "foo";', { modules: "common" });
 **Usage**
 
 ```sh
-$ 6to5 --modules common
+$ babel --modules common
 ```
 
 **Example**
@@ -122,7 +122,7 @@ If you don't want this behaviour then you can use the `commonStrict` module form
 **Usage**
 
 ```sh
-$ 6to5 --modules amd
+$ babel --modules amd
 ```
 
 **Example**
@@ -164,7 +164,7 @@ define("filename", ["exports", "foo"], function (exports, _foo) {})
 **Usage**
 
 ```sh
-$ 6to5 --modules system
+$ babel --modules system
 ```
 
 **Example**
@@ -205,7 +205,7 @@ System.register("bar", ["foo"], function (_export) {
 **Usage**
 
 ```sh
-$ 6to5 --modules umd
+$ babel --modules umd
 ```
 
 **Example**
@@ -246,7 +246,7 @@ export function bar() {
 **Usage**
 
 ```sh
-$ 6to5 --modules ignore
+$ babel --modules ignore
 ```
 
 **Example**
@@ -272,7 +272,7 @@ You can alternatively specify module names instead of one of the built-in types.
 **Usage**
 
 ```sh
-$ 6to5 --modules custom-module-formatter
+$ babel --modules custom-module-formatter
 ```
 
 **Example**

@@ -1,24 +1,24 @@
 .PHONY: clone build
 
 build:
-	if [ ! -d ./_6to5 ]; \
-	then git clone git@github.com:6to5/6to5.git _6to5; \
+	if [ ! -d ./_babel ]; \
+	then git clone git@github.com:babel/babel.git _babel; \
 	fi
 
-	cd _6to5; \
+	cd _babel; \
 	git pull; \
 	npm install; \
 	make build
 
-	if [ ! -f ./scripts/6to5.js ]; \
-	then touch ./scripts/6to5.js; \
+	if [ ! -f ./scripts/babel.js ]; \
+	then touch ./scripts/babel.js; \
 	fi
 
 	rm -f ./_includes/version.html
 	touch ./_includes/version.html
-	node -e "console.log(require('./_6to5/package.json').version)" > ./_includes/version.html
+	node -e "console.log(require('./_babel/package.json').version)" > ./_includes/version.html
 
-	cat ./_6to5/dist/6to5.min.js ./_6to5/dist/polyfill.min.js > ./scripts/6to5.js;
+	cat ./_babel/dist/babel.min.js ./_babel/dist/polyfill.min.js > ./scripts/babel.js;
 
 	if [ ! -d ./node_modules]; \
 	then npm install; \

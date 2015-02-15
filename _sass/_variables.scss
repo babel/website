@@ -1,6 +1,6 @@
 // Core variables and mixins
-$to5-dark-gray:             #323330;
-$to5-yellow:                #f5da55;
+$babel-dark-gray:             #323330;
+$babel-yellow:                #f5da55;
 
 //
 // Variables
@@ -358,16 +358,16 @@ $navbar-padding-horizontal:        floor(($grid-gutter-width / 2));
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2);
 $navbar-collapse-max-height:       340px;
 
-$navbar-default-color:             $to5-dark-gray;
-$navbar-default-bg:                $to5-yellow;
-$navbar-default-border:            $to5-dark-gray;
+$navbar-default-color:             $babel-dark-gray;
+$navbar-default-bg:                $babel-yellow;
+$navbar-default-border:            $babel-dark-gray;
 
 // Navbar links
 $navbar-default-link-color:                $navbar-default-color;
 $navbar-default-link-hover-color:          darken($navbar-default-color, 6.5%);
 $navbar-default-link-hover-bg:             transparent;
-$navbar-default-link-active-color:         $to5-yellow;
-$navbar-default-link-active-bg:            $to5-dark-gray;
+$navbar-default-link-active-color:         $babel-yellow;
+$navbar-default-link-active-bg:            $babel-dark-gray;
 $navbar-default-link-disabled-color:       #ccc;
 $navbar-default-link-disabled-bg:          transparent;
 
@@ -480,8 +480,8 @@ $pager-disabled-color:                 $pagination-disabled-color;
 
 $jumbotron-padding:              60px;
 $jumbotron-color:                white;
-$jumbotron-bg:                   $to5-dark-gray;
-$jumbotron-heading-color:        $to5-yellow;
+$jumbotron-bg:                   $babel-dark-gray;
+$jumbotron-heading-color:        $babel-yellow;
 $jumbotron-font-size:            ceil(($font-size-base * 1.5));
 
 
@@ -705,9 +705,9 @@ $panel-border-radius:         $border-radius-base;
 $panel-inner-border:          #ddd;
 $panel-footer-bg:             #f5f5f5;
 
-$panel-default-text:          $to5-yellow;
-$panel-default-border:        $to5-dark-gray;
-$panel-default-heading-bg:    $to5-dark-gray;
+$panel-default-text:          $babel-yellow;
+$panel-default-border:        $babel-dark-gray;
+$panel-default-heading-bg:    $babel-dark-gray;
 
 $panel-primary-text:          #fff;
 $panel-primary-border:        $brand-primary;

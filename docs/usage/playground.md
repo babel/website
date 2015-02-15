@@ -8,7 +8,7 @@ redirect_from: /playground.html
 
 > Playground is a proving ground for language ideas.
 
-<blockquote class="to5-callout to5-callout-danger">
+<blockquote class="babel-callout babel-callout-danger">
   <h4>Unofficial</h4>
   <p>
     These features are in no way endorsed by Ecma International and are not a
@@ -17,7 +17,7 @@ redirect_from: /playground.html
   </p>
 </blockquote>
 
-<blockquote class="to5-callout to5-callout-info">
+<blockquote class="babel-callout babel-callout-info">
   <h4>Proposal Authors</h4>
   <p>
     If you are actively working on an
@@ -26,8 +26,8 @@ redirect_from: /playground.html
     with all of the latest language and API features.
   </p>
   <p>
-    Please feel free to <a href="https://github.com/6to5/6to5/issues/new">open
-    an issue</a> on the 6to5 repository with your WIP spec, and we can discuss
+    Please feel free to <a href="https://github.com/babel/babel/issues/new">open
+    an issue</a> on the babel repository with your WIP spec, and we can discuss
     getting it implemented. Be sure to include as much information as possible.
   </p>
 </blockquote>
@@ -35,14 +35,14 @@ redirect_from: /playground.html
 ## Usage
 
 ```sh
-$ 6to5 --playground
+$ babel --playground
 ```
 
 ```js
-to5.transform("code", { playground: true });
+babel.transform("code", { playground: true });
 ```
 
-<blockquote class="to5-callout to5-callout-info">
+<blockquote class="babel-callout babel-callout-info">
   <h4>Enables experimental</h4>
   <p>
     Enabling playground also enables experimental support.
