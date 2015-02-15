@@ -1,11 +1,11 @@
-.to5-fullscreen,
-.to5-fullscreen body {
+.babel-fullscreen,
+.babel-fullscreen body {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.to5-repl {
+.babel-repl {
   position: relative;
   width: 100%;
   height: 100%;
@@ -15,13 +15,13 @@
   }
 }
 
-.to5-repl-toolbar {
+.babel-repl-toolbar {
   position: absolute;
   top: 0;
   left: 0;
   height: 50px;
   width: 100%;
-  background: $to5-dark-gray;
+  background: $babel-dark-gray;
   color: white;
 
   .form-group {
@@ -30,7 +30,7 @@
   }
 }
 
-.to5-repl-editor {
+.babel-repl-editor {
   position: absolute;
   top: 50px;
   bottom: 30px;
@@ -48,17 +48,17 @@
   }
 }
 
-.to5-repl-input {
+.babel-repl-input {
   left: 0;
   border-right: 1px solid darken($gray-lighter, 5%);
 }
 
-.to5-repl-output {
+.babel-repl-output {
   right: 0;
   background: #f9f9f9;
 }
 
-.to5-repl-reporter {
+.babel-repl-reporter {
   position: absolute;
   z-index: 4;
   bottom: 0;
@@ -74,11 +74,11 @@
   border-radius: 0;
 }
 
-.to5-repl-errors {
+.babel-repl-errors {
   left: 0;
   border-right: 1px solid darken($gray-lighter, 5%);
 }
 
-.to5-repl-console {
+.babel-repl-console {
   right: 0;
 }

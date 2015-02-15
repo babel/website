@@ -2,7 +2,7 @@ pre {
   border: none;
   background: lighten($gray-lighter, 4%);
   @include box-shadow(none);
-  color: $to5-dark-gray;
+  color: $babel-dark-gray;
   padding: 1em;
 }
 
@@ -28,7 +28,7 @@ h6, .h6 {
     left: 0;
     height: 1em;
     width: 10px;
-    background: $to5-yellow;
+    background: $babel-yellow;
     margin-left: -20px;
   }
 

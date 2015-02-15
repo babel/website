@@ -7,16 +7,16 @@ redirect_from: /browser.html
 ---
 
 <p class="lead">
-  A browser version of 6to5 is available from `browser.js` inside the 6to5
+  A browser version of babel is available from `browser.js` inside the babel
   directory in an npm release.
 </p>
 
-<blockquote class="to5-callout to5-callout-warning">
+<blockquote class="babel-callout babel-callout-warning">
   <h4>Not intended for serious use</h4>
   <p>
     Compiling in the browser has a fairly limited use case, so if you are
     working on a production site you should be precompiling your scripts
-    server-side. See <a href="/docs/using-6to5/#build-systems">setup build systems</a>
+    server-side. See <a href="/docs/using-babel/#build-systems">setup build systems</a>
     for more information.
   </p>
 </blockquote>
@@ -24,11 +24,11 @@ redirect_from: /browser.html
 ## Script tags
 
 When the `browser.js` file is included all scripts with the type
-`text/ecmascript-6` and `text/6to5` are automatically compiled and run.
+`text/ecmascript-6` and `text/babel` are automatically compiled and run.
 
 ```html
-<script src="node_modules/6to5/browser.js"></script>
-<script type="text/6to5">
+<script src="node_modules/babel/browser.js"></script>
+<script type="text/babel">
 class Test {
   test() {
     return "test";
@@ -46,14 +46,14 @@ Programmatically transpile and execute strings of ES6 code.
 
 See [options](/docs/usage/options/) for additional documentation.
 
-### `to5.transform(code, [opts])`
+### `babel.transform(code, [opts])`
 
 ```js
-to5.transform("class Test {}").code;
+babel.transform("class Test {}").code;
 ```
 
-### `to5.run(code, [opts])`
+### `babel.run(code, [opts])`
 
 ````js
-to5.run("class Test {}");
+babel.run("class Test {}");
 ````

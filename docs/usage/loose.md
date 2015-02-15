@@ -12,7 +12,7 @@ code or the inclusion of them introduces signifcant overhead.
 As a result of loose mode code will execute faster and be much readable and
 comparable to the original but will deviate from the spec in slight ways.
 
-<blockquote class="to5-callout to5-callout-warning">
+<blockquote class="babel-callout babel-callout-warning">
   <h4>WARNING</h4>
   <p>
     Please be aware of <strong>all</strong> possible caveats when enabling loose mode.
@@ -22,11 +22,11 @@ comparable to the original but will deviate from the spec in slight ways.
 ## Usage
 
 ```javascript
-require("6to5").transform("code", { loose: ["classes", "computedPropertyNames"] });
+require("babel").transform("code", { loose: ["classes", "computedPropertyNames"] });
 ```
 
 ```sh
-$ 6to5 --loose classes,computedPropertyNames script.js
+$ babel --loose classes,computedPropertyNames script.js
 ```
 
 ### All
@@ -35,11 +35,11 @@ You can optionally choose to enable fast mode across all transformers instead of
 manually specifying each one:
 
 ```javascript
-require("6to5").transform("code", { loose: "all" });
+require("babel").transform("code", { loose: "all" });
 ```
 
 ```sh
-$ 6to5 --loose all script.js
+$ babel --loose all script.js
 ```
 
 ## Caveats

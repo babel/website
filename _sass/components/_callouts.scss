@@ -4,7 +4,7 @@
 * Not quite alerts, but custom and helpful notes for folks reading the docs.
 * Requires a base and modifier class.
 */
-.to5-callout {
+.babel-callout {
   padding: $line-height-computed;
   margin: $line-height-computed 0;
   border: 1px solid $gray-lighter;
@@ -31,19 +31,19 @@
 }
 
 /* Variations */
-.to5-callout-danger {
+.babel-callout-danger {
   border-left-color: $brand-danger;
   h4 {
     color: #ce4844;
   }
 }
-.to5-callout-warning {
+.babel-callout-warning {
   border-left-color: $brand-warning;
   h4 {
     color: #aa6708;
   }
 }
-.to5-callout-info {
+.babel-callout-info {
   border-left-color: $brand-info;
   h4 {
     color: #1b809e;

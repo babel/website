@@ -8,7 +8,7 @@ redirect_from:
  - /docs/tour/
 ---
 
-<blockquote class="to5-callout to5-callout-info">
+<blockquote class="babel-callout babel-callout-info">
   <h4>es6features</h4>
   <p>
     This document is taken from Luke Hoban's excellent
@@ -17,7 +17,7 @@ redirect_from:
   </p>
 </blockquote>
 
-<blockquote class="to5-callout to5-callout-info">
+<blockquote class="babel-callout babel-callout-info">
   <h4>REPL</h4>
   <p>
     Be sure to try these features out in the online
@@ -118,7 +118,7 @@ var obj = {
 };
 ```
 
-<blockquote class="to5-callout to5-callout-warning">
+<blockquote class="babel-callout babel-callout-warning">
   <p>
     <code>__proto__</code> support comes from the JavaScript engine running
     your program. Although most support the now standard property,
@@ -344,7 +344,7 @@ var results = (
 )
 ```
 
-<blockquote class="to5-callout to5-callout-warning">
+<blockquote class="babel-callout babel-callout-warning">
   <h4>Disabled by default</h4>
   <p>
     These are only available if you enable experimental support. See <a href="/docs/usage/playground">experimental usage</a> for more information.
@@ -418,10 +418,10 @@ import exp, {pi, e} from "lib/mathplusplus";
 alert("2π = " + exp(pi, e));
 ```
 
-<blockquote class="to5-callout to5-callout-info">
+<blockquote class="babel-callout babel-callout-info">
   <h4>Module Formatters</h4>
   <p>
-    6to5 can transpile ES6 Modules to several different formats including
+    babel can transpile ES6 Modules to several different formats including
     Common.js, AMD, System, and UMD. You can even create your own. For more
     details see the <a href="/docs/usage/modules">modules docs</a>.
   </p>
@@ -456,19 +456,19 @@ System.get("jquery");
 System.set("jquery", Module({$: $})); // WARNING: not yet finalized
 ```
 
-<blockquote class="to5-callout to5-callout-warning">
+<blockquote class="babel-callout babel-callout-warning">
   <h4>Additional polyfill needed</h4>
   <p>
-    Since 6to5 defaults to using common.js modules, it does not include the
+    Since babel defaults to using common.js modules, it does not include the
     polyfill for the module loader api. Get it
     <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
   </p>
 </blockquote>
 
-<blockquote class="to5-callout to5-callout-info">
+<blockquote class="babel-callout babel-callout-info">
   <h4>Using Module Loader</h4>
   <p>
-    In order to use this, you'll need to tell 6to5 to use the
+    In order to use this, you'll need to tell babel to use the
     <code>system</code> module formatter. Also be sure to check out
     <a href="https://github.com/systemjs/systemjs">System.js</a>
   </p>
@@ -504,10 +504,10 @@ ws.add({ data: 42 });
 // Because the added object has no other references, it will not be held in the set
 ```
 
-<blockquote class="to5-callout to5-callout-info">
+<blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support WeakMaps you must include the 6to5 Polyfill.
+    In order to support WeakMaps you must include the babel Polyfill.
   </p>
 </blockquote>
 
@@ -565,7 +565,7 @@ var handler =
 }
 ```
 
-<blockquote class="to5-callout to5-callout-danger">
+<blockquote class="babel-callout babel-callout-danger">
   <h4>Unsupported feature</h4>
   <p>
     Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled.
@@ -605,10 +605,10 @@ var c = new MyClass("hello")
 c["key"] === undefined
 ```
 
-<blockquote class="to5-callout to5-callout-info">
+<blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support Symbols you must include the 6to5 Polyfill.
+    In order to support Symbols you must include the babel Polyfill.
   </p>
 </blockquote>
 
@@ -654,10 +654,10 @@ Array.of(1, 2, 3) // Similar to new Array(...), but without special one-arg beha
 Object.assign(Point, { origin: new Point(0,0) })
 ```
 
-<blockquote class="to5-callout to5-callout-warning">
+<blockquote class="babel-callout babel-callout-warning">
   <h4>Limited support from polyfill</h4>
   <p>
-    Most of these APIs are supported by the 6to5 Polyfill. However, certain
+    Most of these APIs are supported by the babel Polyfill. However, certain
     features are omitted for various reasons (ie.
     <code>String.prototype.normalize</code> needs a lot of additional code to
     support). You can find more polyfills
@@ -673,10 +673,10 @@ Two new numeric literal forms are added for binary (`b`) and octal (`o`).
 0o767 === 503 // true
 ```
 
-<blockquote class="to5-callout to5-callout-warning">
+<blockquote class="babel-callout babel-callout-warning">
   <h4>Only supports literal form</h4>
   <p>
-    6to5 is only able to transform <code>0o767</code> and not
+    babel is only able to transform <code>0o767</code> and not
     <code>Number("0o767")</code>.
   </p>
 </blockquote>
@@ -704,10 +704,10 @@ var p = timeout(1000).then(() => {
 })
 ```
 
-<blockquote class="to5-callout to5-callout-info">
+<blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support Promises you must include the 6to5 Polyfill.
+    In order to support Promises you must include the babel Polyfill.
   </p>
 </blockquote>
 
@@ -749,7 +749,7 @@ function factorial(n, acc = 1) {
 factorial(100000)
 ```
 
-<blockquote class="to5-callout to5-callout-warning">
+<blockquote class="babel-callout babel-callout-warning">
   <h4>Partial support</h4>
   <p>
     Currently only self referencing tail recursion is supported due to the

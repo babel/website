@@ -146,17 +146,17 @@
 
     this.options = _.assign(new Options(), state);
 
-    this.input = new Editor('.to5-repl-input .ace_editor').editor;
+    this.input = new Editor('.babel-repl-input .ace_editor').editor;
     this.input.setValue(UriUtils.decode(state.code || ''));
 
-    this.output = new Editor('.to5-repl-output .ace_editor').editor;
+    this.output = new Editor('.babel-repl-output .ace_editor').editor;
     this.output.setReadOnly(true);
     this.output.setHighlightActiveLine(false);
     this.output.setHighlightGutterLine(false);
 
-    this.$errorReporter = $('.to5-repl-errors');
-    this.$consoleReporter = $('.to5-repl-console');
-    this.$toolBar = $('.to5-repl-toolbar');
+    this.$errorReporter = $('.babel-repl-errors');
+    this.$consoleReporter = $('.babel-repl-console');
+    this.$toolBar = $('.babel-repl-toolbar');
   }
 
   REPL.prototype.clearOutput = function () {

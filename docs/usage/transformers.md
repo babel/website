@@ -43,7 +43,7 @@ for transformer terminology.
 - [es7.exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
 - [es7.objectSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
 
-<blockquote class="to5-callout to5-callout-warning">
+<blockquote class="babel-callout babel-callout-warning">
   <h4>Disabled by default</h4>
   <p>
     These are only usable if you enable experimental support. See <a href="/docs/usage/experimental">experimental usage</a> for information.
@@ -54,36 +54,37 @@ for transformer terminology.
 
  - [react](/docs/usage/jsx)
  - [regenerator](https://github.com/facebook/regenerator) (generators/async functions)
+ - [useStrict](#)
 
 ## Optional
 
-6to5 provides various optional transformers for those of you who want
+babel provides various optional transformers for those of you who want
 to take your code that extra mile.
 
 ```javascript
-require("6to5").transform("code", { optional: ["transformerName"] });
+require("babel").transform("code", { optional: ["transformerName"] });
 ```
 
 ```sh
-$ 6to5 --optional transformerName
+$ babel --optional transformerName
 ```
 
 ### `selfContained`
 
 The `selfContained` optional transformer does three things:
 
- - Automatically requires `6to5-runtime/regenerator` when you use generators/async functions.
- - Automatically requires `6to5-runtime/core-js` and maps ES6 static methods and built-ins.
- - Removes the inline 6to5 helpers and uses the module `6to5-runtime/helpers` instead.
+ - Automatically requires `babel-runtime/regenerator` when you use generators/async functions.
+ - Automatically requires `babel-runtime/core-js` and maps ES6 static methods and built-ins.
+ - Removes the inline babel helpers and uses the module `babel-runtime/helpers` instead.
 
 What does this actually mean though? Basically, you can use built-ins such as `Promise`,
-`Set`, `Map`, `Symbol` as well as all the 6to5 features that require a polyfill seamlessly,
+`Set`, `Map`, `Symbol` as well as all the babel features that require a polyfill seamlessly,
 without global pollution making it great for libraries.
 
-<blockquote class="to5-callout to5-callout-info">
+<blockquote class="babel-callout babel-callout-info">
   <h4>External package required</h4>
   <p>
-    The package <code>6to5-runtime</code> is required for this transformer. Run <code>npm install 6to5-runtime --save</code> to add it to your current node/webpack/browserify project.
+    The package <code>babel-runtime</code> is required for this transformer. Run <code>npm install babel-runtime --save</code> to add it to your current node/webpack/browserify project.
   </p>
 </blockquote>
 
@@ -125,7 +126,7 @@ Instead what the `selfContained` transformer does it transpile that to:
 ```javascript
 "use strict";
 
-var _regeneratorRuntime = require("6to5-runtime/regenerator");
+var _regeneratorRuntime = require("babel-runtime/regenerator");
 
 var foo = _regeneratorRuntime.mark(function foo() {
   ...
@@ -160,7 +161,7 @@ into the following:
 ```javascript
 "use strict";
 
-var _core = require("6to5-runtime/core-js");
+var _core = require("babel-runtime/core-js");
 
 var sym = _core.Symbol();
 
@@ -176,7 +177,7 @@ without worrying about where they come from.
 
 #### Helper aliasing
 
-Usually 6to5 will place helpers at the top of your file to do common tasks to avoid
+Usually babel will place helpers at the top of your file to do common tasks to avoid
 duplicating the code around in the current file. Sometimes these helpers can get a
 little bulky and add unneccessary duplication across files. The `selfContained`
 transformer replaces all the helper calls to a module.
@@ -204,9 +205,9 @@ the `selfContained` transformer however turns this into:
 ```javascript
 "use strict";
 
-var _to5Helpers = require("6to5-runtime/helpers");
+var _babelHelpers = require("babel-runtime/helpers");
 
-var foo = _to5Helpers.interopRequire(require("bar"));
+var foo = _babelHelpers.interopRequire(require("bar"));
 ```
 
 ### `asyncToGenerator`
@@ -329,7 +330,7 @@ Throws errors on references to undeclared variables.
  - [playground.methodBinding](/docs/usage/playground#method-binding)
  - [playground.objectGetterMemoization](/docs/usage/playground#object-getter-memoization)
 
-<blockquote class="to5-callout to5-callout-warning">
+<blockquote class="babel-callout babel-callout-warning">
   <h4>Disabled by default</h4>
   <p>
     These are only usable if you enable playground support. See <a href="/docs/usage/playground">playground usage</a> for information.
