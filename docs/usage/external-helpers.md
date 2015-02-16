@@ -42,11 +42,16 @@ or from an npm release in `external-helpers.js` from the babel directory.
 
 ### Injecting the external helpers
 
+
+#### Node
+
 ```js
 require("babel/external-helpers");
 ```
 
 This injects the external helpers into `global`.
+
+#### Browser
 
 ```html
 <script type="application/javascript" src="your-path-to/babel/external-helpers.js"></script>
