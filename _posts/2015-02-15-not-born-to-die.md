@@ -31,7 +31,7 @@ I guess it’d be a good idea to rename the project then!
 
 6to5 is now Babel.
 
-Babel will continue to serve as a JavaScript transpiler for using the very latest standards, but will also begin to open up it’s API for other tools. Anyone who has worked on the project internally knows that Babel is incredibly easy to work with.
+Babel will continue to serve as a JavaScript transpiler for using the very latest standards, but will also begin to open up its API for other tools. Anyone who has worked on the project internally knows that Babel is incredibly easy to work with.
 
 We’re incredibly excited for the future and we hope that we can make an even bigger impact on the JavaScript community.
 
