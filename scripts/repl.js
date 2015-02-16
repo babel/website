@@ -87,7 +87,7 @@
   }
 
   /*
-   * Options exposed for the REPL that will influence 6to5's transpiling
+   * Options exposed for the REPL that will influence Babel's transpiling
    */
   function $checkbox($element){
     return {
@@ -104,7 +104,7 @@
   }
 
   /*
-   * 6to5 options for transpilation as used by the REPL
+   * Babel options for transpilation as used by the REPL
    */
   function Options () {
     var $experimental = $('#option-experimental');
@@ -137,7 +137,7 @@
   }
 
   /*
-   * 6to5 Web REPL
+   * Babel Web REPL
    */
   function REPL () {
     this.storage = new StorageService();

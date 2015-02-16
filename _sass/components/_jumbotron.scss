@@ -38,6 +38,27 @@
     font-weight: 600;
   }
 
+  &-callout {
+    display: block;
+    color: inherit;
+    padding: $line-height-computed;
+    margin: $line-height-computed 0;
+    border: 1px solid $gray-lighter;
+    border-radius: $border-radius-small;
+
+    &:hover {
+      color: $gray-lighter;
+    }
+
+    p {
+      font-size: $font-size-base;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   @media (min-width: $screen-md-min) {
     margin: 60px 0;
     padding: 10em 0;
