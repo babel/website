@@ -33,7 +33,7 @@ redirect_from: /differences.html
 | For-of                       | ✓     | ✓       |            | ✓              | ✓      |             |
 | Generators                   | ✓     | ✓       |            |                |        |             |
 | Generator comprehension      | ✓     | ✓       |            |                |        |             |
-| JSX                          | ✓     |         |            |                |        |             |
+| JSX                          | ✓     |         |            |                |        | ✓           |
 | Let scoping                  | ✓     | ✓       |            | ✓              |        |             |
 | Modules                      | ✓     | ✓       |            |                | ✓      |             |
 | Object rest/spread           | ✓     |         |            |                |        | ✓           |
