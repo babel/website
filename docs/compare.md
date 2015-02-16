@@ -8,7 +8,7 @@ redirect_from: /differences.html
 
 ## Features
 
-|                              | Babel | Traceur | Typescript | es6-transpiler | es6now | jstransform |
+|                              | Babel | Traceur | Typescript | es6-transpiler | es6now | react-tools |
 | ---------------------------- | ----- | ------- | ---------- | -------------- | ------ | ----------- |
 | Source maps                  | ✓     | ✓       | ✓          |                |        | ✓           |
 | No compiler global pollution | ✓     |         | ✓          | ✓              |        | ✓           |
@@ -17,7 +17,7 @@ redirect_from: /differences.html
 
 ## Language Support
 
-|                              | Babel | Traceur | Typescript | es6-transpiler | es6now | jstransform |
+|                              | Babel | Traceur | Typescript | es6-transpiler | es6now | react-tools |
 | ---------------------------- | ----- | ------- | ---------- | -------------- | ------ | ----------- |
 | Abstract references          | ✓     |         |            |                |        |             |
 | Array comprehension          | ✓     | ✓       |            | ✓              |        |             |
