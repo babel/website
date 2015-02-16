@@ -6,7 +6,7 @@ permalink: /docs/using-babel/
 redirect_from:
  - /plugins.html
  - /docs/setup/
- - /docs/using-6babel/
+ - /docs/using-6to5/
 ---
 
 <blockquote class="babel-callout babel-callout-info">
