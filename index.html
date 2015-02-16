@@ -73,7 +73,7 @@ layout: default
     <div class="col-md-5">
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">export</span> <span class="k">default</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
   <span class="nx">getInitialState</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">{</span> <span class="nx">num</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRandomNumber</span><span class="p">();</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="nx">num</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRandomNumber</span><span class="p">()</span> <span class="p">};</span>
   <span class="p">},</span>
 
   <span class="nx">getRandomNumber</span><span class="p">()</span><span class="o">:</span> <span class="nx">number</span> <span class="p">{</span>
@@ -83,7 +83,7 @@ layout: default
   <span class="nx">render</span><span class="p">()</span><span class="o">:</span> <span class="nx">any</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">&lt;div&gt;</span>
       <span class="s2">Your dice roll:</span>
-      <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">number</span><span class="p">}</span>
+      <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">num</span><span class="p">}</span>
     <span class="nx">&lt;/div&gt;;</span>
   <span class="p">}</span>
 <span class="p">});</span></code></pre></div>
