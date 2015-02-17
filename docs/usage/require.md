@@ -68,9 +68,11 @@ require("babel/register")({
 ## Environment variables
 
 By default `babel-node` and `babel/register` will save to a json cache in your
-temporary directory. This will heavily improve with the startup and compilation of
-your files. There are however scenarios where you want to change this behaviour
-and there are environment varaibles exposed.
+temporary directory.
+
+This will heavily improve with the startup and compilation of your files. There
+are however scenarios where you want to change this behaviour and there are
+environment varaibles exposed to allow you to do this.
 
 ### BABEL_CACHE_PATH
 
