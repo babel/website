@@ -1,4 +1,4 @@
-(function(to5, $, _, ace, window) {
+(function(babel, $, _, ace, window) {
 
   /*
    * Utils for working with the browser's URI (e.g. the query params)
@@ -183,7 +183,7 @@
     this.clearOutput();
 
     try {
-      transformed = to5.transform(code, {
+      transformed = babel.transform(code, {
         experimental: this.options.experimental,
         playground: this.options.playground,
         loose: this.options.loose && "all",
@@ -282,4 +282,4 @@
   repl.compile();
 
 
-}(to5, $, _, ace, window));
+}(babel, $, _, ace, window));
