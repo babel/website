@@ -22,11 +22,11 @@ comparable to the original but will deviate from the spec in slight ways.
 ## Usage
 
 ```javascript
-require("babel").transform("code", { loose: ["classes", "computedPropertyNames"] });
+require("babel").transform("code", { loose: ["es6.classes", "es6.properties.computed"] });
 ```
 
 ```sh
-$ babel --loose classes,computedPropertyNames script.js
+$ babel --loose es6.classes,es6.properties.computed script.js
 ```
 
 ### All
@@ -44,7 +44,7 @@ $ babel --loose all script.js
 
 ## Caveats
 
-### classes
+### es6.classes
 
 #### Method enumerability
 
@@ -74,13 +74,13 @@ When `Bar.prototype.foo` is defined it triggers the setter on `Foo`. This is a
 case that is very unlikely to appear in production code however it's something
 to keep in mind.
 
-### computedPropertyNames
+### es6.properties.computed
 
 Just like method assignment in classes, in loose mode, computed property names
 use simple assignments instead of being defined. This is unlikely to be an issue
 in production code.
 
-### forOf
+### es6.forOf
 
 Under loose mode the `forOf` transformer will output more verbose iteration code.
 
@@ -118,11 +118,11 @@ The result is that arrays are put in a fast path, heavily increasing performance
 All other iterables will continue to work fine but array iteration will be
 significantly faster.
 
-### modules
+### es6.modules
 
 As per the spec, `import` and `export` are only allowed to be used at the top
 level. When in loose mode these are allowed to be used anywhere.
 
-### templateLiterals
+### es6.templateLiterals
 
 In loose mode, tagged template literal objects aren't frozen.
