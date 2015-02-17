@@ -43,7 +43,7 @@ require("babel/register")({
 });
 ```
 
-## Register Options
+## Specifying options
 
 ```javascript
 require("babel/register")({
@@ -63,4 +63,27 @@ require("babel/register")({
   // and .js so you'll have to add them back if you want them to be used again.
   extensions: [".es6", ".es", ".jsx", ".js"]
 });
+```
+
+## Environment variables
+
+By default `babel-node` and `babel/register` will save to a json cache in your
+temporary directory. This will heavily improve with the startup and compilation of
+your files. There are however scenarios where you want to change this behaviour
+and there are environment varaibles exposed.
+
+### BABEL_CACHE_PATH
+
+Specify a different cache location.
+
+```sh
+$ BABEL_CACHE_PATH=/foo/my-cache.json babel-node script.js
+```
+
+### BABEL_DISABLE_CACHE
+
+Disable the cache.
+
+```sh
+$ BABEL_DISABLE_CACHE=1 babel-node script.js
 ```
