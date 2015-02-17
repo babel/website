@@ -51,7 +51,7 @@ this is widely supported but you may run into problems with much older browsers.
 [protoToAssign](/docs/usage/transformers#spec-proto-to-assign) for a possible work
 around.
 
-For classes that have `super`s, the super class wont resolve correctly. You can
+For classes that have `super`s, the super class won't resolve correctly. You can
 get around this by enabling [loose mode](/docs/usage/loose) for classes.
 
 ### Getters/setters (8 and below)
