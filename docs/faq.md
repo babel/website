@@ -69,7 +69,7 @@ target format. For example, the `common` module formatter transforms
 
 This is a known [caveat](/docs/caveats). This is because babel compiles to ES3 syntax but with
 ES5 and ES6 methods. This is essential to emulate a complete ES6 environment so your code
-wont break! You see, ES6 features such as [iterators](/docs/learn-es6#iterators-for-of) and
+won't break! You see, ES6 features such as [iterators](/docs/learn-es6#iterators-for-of) and
 [symbols](/docs/learn-es6#symbols) require a lot of logic to work, and to accurately support these
 it would mean **a lot** of boilerplate smoshed into your codebase. This is the approach taken
 by other transpilers but babel approaches it quite differently.
