@@ -62,3 +62,10 @@ you plan on supporting IE8 or below then the usage of getters and setters
 isn't recommended.
 
 **Reference**: [MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty#Internet_Explorer_8_specific_notes).
+
+#### Modules
+
+By default, when using modules with babel a non-enumerable `__esModule` property
+is exported. This is done through the use of `Object.defineProperty` which is
+unsupported in IE8 and below. A workaround for this is to enable
+[loose mode - modules](6to5.org/docs/usage/loose/#modules).

@@ -80,6 +80,27 @@ Just like method assignment in classes, in loose mode, computed property names
 use simple assignments instead of being defined. This is unlikely to be an issue
 in production code.
 
+### es6.modules
+
+By default, when using exports with babel a non-enumerable `__esModule` property
+is exported.
+
+```javascript
+var foo = exports.foo = 5;
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+```
+
+In environments that don't support this you can enable loose mode on `es6.modules`
+and instead of using `Object.defineProperty` an assignment will be used instead.
+
+```javascript
+var foo = exports.foo = 5;
+exports.__esModule = true;
+```
+
 ### es6.forOf
 
 Under loose mode the `forOf` transformer will output more verbose iteration code.
