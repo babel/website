@@ -4,8 +4,8 @@
   ["module", "exports", "require"].forEach(function(commonVar){
     Object.defineProperty(window, commonVar, { 
       get: function () { 
-      throw new Error(commonVar + " aren’t supported in the browser,\
-        you need a commonjs environment such as node/io, browserify/webpack etc");
+      throw new Error(commonVar + " is not supported in the browser,\
+        you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
       }
     });
   });
