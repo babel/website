@@ -10,7 +10,11 @@
   };
 
   UriUtils.decode = function (value) {
-    return window.decodeURIComponent('' + value);
+    try {
+      return window.decodeURIComponent('' + value);
+    } catch (err) {
+      return value;
+    }
   };
 
   UriUtils.parseQuery = function () {
