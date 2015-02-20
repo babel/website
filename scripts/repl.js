@@ -1,5 +1,14 @@
 (function(babel, $, _, ace, window) {
 
+  /* Throw meaningful errors for getters of commonjs. */
+  ["module", "exports", "require"].forEach(function(commonVar){
+    Object.defineProperty(window, commonVar, { 
+      get: function () { 
+        throw new Error(commonVar + " is not supported in the browser, you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
+      }
+    });
+  });
+  
   /*
    * Utils for working with the browser's URI (e.g. the query params)
    */
@@ -284,6 +293,7 @@
   repl.$toolBar.on('change', onSourceChange);
 
   repl.compile();
+
 
 
 }(babel, $, _, ace, window));
