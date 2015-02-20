@@ -78,8 +78,15 @@ require("babel/register");
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    <em>Issues should be reported on the <a href="https://atmospherejs.com/grigio/babel">grigio:babel</a> issue
-    <a href="https://github.com/grigio/meteor-babel/issues">tracker</a></em>.
+    See <strong>meteor-babel</strong>'s
+    <a href="https://github.com/grigio/meteor-babel">repo</a> for more
+    info. If you find any bugs please
+    <a href="https://github.com/grigio/meteor-babel/issues">report
+    them</a>.
+  </p>
+  <p>
+    <em>Issues with the output should be reported on the babel
+    <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
 
@@ -92,7 +99,7 @@ $ meteor add grigio:babel
 ```
 **Usage**
 
-Any supported extension will be precompiled in ES5 by babel. Some features may be not available, here [some tests](https://github.com/grigio/meteor-babel/blob/master/tests/basic_test.es6.js) of the supported features in the [Meteor](https://www.meteor.com/) platform.
+Any files with these extensions will be precompiled with Babel: `.es6.js`, `.es6`, `.es`, `.jsx`.
 
 ## Rails
 
