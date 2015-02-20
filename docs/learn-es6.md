@@ -347,7 +347,7 @@ var results = (
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Disabled by default</h4>
   <p>
-    These are only available if you enable experimental support. See <a href="/docs/usage/playground">experimental usage</a> for more information.
+    These are only available if you enable experimental support. See <a href="/docs/usage/experimental">experimental usage</a> for more information.
   </p>
 </blockquote>
 
