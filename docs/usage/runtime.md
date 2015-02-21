@@ -26,7 +26,7 @@ how this works and the types of transformations that occur.
 <blockquote class="babel-callout babel-callout-info">
   <h4>External package required</h4>
   <p>
-    The package <code>babel-runtime</code> is required for. Run <code>npm install babel-runtime --save</code> to add it to your current node/webpack/browserify project.
+    The package <code>babel-runtime</code> is required for this transformer. Run <code>npm install babel-runtime --save</code> to add it to your current node/webpack/browserify project.
   </p>
 </blockquote>
 
@@ -52,7 +52,7 @@ What does this actually mean though? Basically, you can use built-ins such as `P
 `Set`, `Map`, `Symbol` as well as all the babel features that require a polyfill seamlessly,
 without global pollution making it great for libraries.
 
-#### Regenerator aliasing
+### Regenerator aliasing
 
 Whenever you use a generator function or async function:
 
@@ -105,7 +105,7 @@ function bar() {
 
 This means that you can use the regenerator runtime without polluting your current environment.
 
-#### `core-js` aliasing
+### `core-js` aliasing
 
 Sometimes you may want to use new built-ins such as `Map`, `Set`, `Promise` etc. Your only way
 to use these is usually to include a globally polluting polyfill.
@@ -139,7 +139,7 @@ without worrying about where they come from.
 
 **NOTE:** Instance methods such as `"foobar".includes("foo")` will **not** work.
 
-#### Helper aliasing
+### Helper aliasing
 
 Usually babel will place helpers at the top of your file to do common tasks to avoid
 duplicating the code around in the current file. Sometimes these helpers can get a
