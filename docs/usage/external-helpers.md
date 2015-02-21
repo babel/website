@@ -3,7 +3,6 @@ layout: docs
 title: External helpers
 description: How to use the external helpers.
 permalink: /docs/usage/external-helpers/
-redirect_from: /docs/usage/runtime/
 ---
 
 ## Details
