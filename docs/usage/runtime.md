@@ -5,13 +5,23 @@ description: How to use the optional `runtime` transformer.
 permalink: /docs/usage/runtime/
 ---
 
-```javascript
-require("babel").transform("code", { optional: ["runtime"] });
-```
+Babel uses very small helpers for common functions such as `_extend`. By default
+this will be added to every file that requires it. This duplication is sometimes
+unnecessary, especially when your application is spread out over multiple files.
 
-```sh
-$ babel --optional runtime script.js
-```
+This is where the `runtime` optional transformer comes in. All of the helpers
+will reference the module `babel-runtime` to avoid duplication across your
+compiled output.
+
+Another purpose of this transformer is to create a sandboxed environment for your
+code. Built-ins such as `Promise`, `Set` and `Map` are aliased to `core-js` so
+you can use them seamlessly without having to require a globally polluting
+[polyfill](/docs/usage/polyfill). This is fantastic for libraries as you can
+write your code without the cognitive overhead of worrying about the environment
+that it's going to be ran in.
+
+See the [technical details](#technical-details) section for more information on
+how this works and the types of transformations that occur.
 
 <blockquote class="babel-callout babel-callout-info">
   <h4>External package required</h4>
@@ -19,6 +29,16 @@ $ babel --optional runtime script.js
     The package <code>babel-runtime</code> is required for. Run <code>npm install babel-runtime --save</code> to add it to your current node/webpack/browserify project.
   </p>
 </blockquote>
+
+## Usage
+
+```javascript
+require("babel").transform("code", { optional: ["runtime"] });
+```
+
+```sh
+$ babel --optional runtime script.js
+```
 
 ## Technical details
 
