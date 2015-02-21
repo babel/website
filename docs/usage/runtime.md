@@ -49,8 +49,8 @@ The `runtime` optional transformer does three things:
  - Removes the inline babel helpers and uses the module `babel-runtime/helpers` instead.
 
 What does this actually mean though? Basically, you can use built-ins such as `Promise`,
-`Set`, `Map`, `Symbol` as well as all the babel features that require a polyfill seamlessly,
-without global pollution making it great for libraries.
+`Set`, `Symbol` etc as well use as all the babel features that require a polyfill seamlessly,
+without global pollution, making it extremely suitable for libraries.
 
 ### Regenerator aliasing
 
