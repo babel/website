@@ -1,20 +1,28 @@
 ---
 layout: docs
 title: Runtime
-description: How to use the `selfContained` transformer.
+description: How to use the optional `runtime` transformer.
 permalink: /docs/usage/runtime/
 ---
+
+```javascript
+require("babel").transform("code", { optional: ["runtime"] });
+```
+
+```sh
+$ babel --optional runtime script.js
+```
 
 <blockquote class="babel-callout babel-callout-info">
   <h4>External package required</h4>
   <p>
-    The package <code>babel-runtime</code> is required for this transformer. Run <code>npm install babel-runtime --save</code> to add it to your current node/webpack/browserify project.
+    The package <code>babel-runtime</code> is required for. Run <code>npm install babel-runtime --save</code> to add it to your current node/webpack/browserify project.
   </p>
 </blockquote>
 
-### Technical details
+## Technical details
 
-The `selfContained` optional transformer does three things:
+The `runtime` optional transformer does three things:
 
  - Automatically requires `babel-runtime/regenerator` when you use generators/async functions.
  - Automatically requires `babel-runtime/core-js` and maps ES6 static methods and built-ins.
@@ -57,7 +65,7 @@ function bar() {
 This isn't ideal as then you have to include the regenerator runtime which
 pollutes the global scope.
 
-Instead what the `selfContained` transformer does it transpile that to:
+Instead what the `runtime` transformer does it transpile that to:
 
 ```javascript
 "use strict";
@@ -82,7 +90,7 @@ This means that you can use the regenerator runtime without polluting your curre
 Sometimes you may want to use new built-ins such as `Map`, `Set`, `Promise` etc. Your only way
 to use these is usually to include a globally polluting polyfill.
 
-What the `selfContained` transformer does is transform the following:
+What the `runtime` transformer does is transform the following:
 
 ```javascript
 var sym = Symbol();
@@ -115,7 +123,7 @@ without worrying about where they come from.
 
 Usually babel will place helpers at the top of your file to do common tasks to avoid
 duplicating the code around in the current file. Sometimes these helpers can get a
-little bulky and add unneccessary duplication across files. The `selfContained`
+little bulky and add unneccessary duplication across files. The `runtime`
 transformer replaces all the helper calls to a module.
 
 That means that the following code:
@@ -136,7 +144,7 @@ var _interopRequire = function (obj) {
 var foo = _interopRequire(require("bar"));
 ```
 
-the `selfContained` transformer however turns this into:
+the `runtime` transformer however turns this into:
 
 ```javascript
 "use strict";
