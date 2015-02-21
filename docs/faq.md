@@ -18,7 +18,7 @@ Many issues plague current transpilers, babel takes a unique approach to many as
 
 Many transpilers require a globally polluting polyfill and runtime. babel has various ways
 to avoid this, including concise code that utilises minimal inline helpers as well as
-features such as [selfContained](/docs/usage/transformers#self-contained) that enable
+features such as [selfContained](/docs/usage/runtime) that enable
 library authors to utilise ES6 methods without the aforementioned polyfill.
 
 ### Readable output
@@ -64,17 +64,3 @@ current fast paced development environment.
 A module formatter is a transformer that turns exports and imports into their equivalent
 target format. For example, the `common` module formatter transforms
 `import { foo } from "bar";` into the CommonJS `var foo = require("bar").foo;`
-
-## Why are there `Array.from` and `Symbol` in my code?! These don't exist!
-
-This is a known [caveat](/docs/caveats). This is because babel compiles to ES3 syntax but with
-ES5 and ES6 methods. This is essential to emulate a complete ES6 environment so your code
-won't break! You see, ES6 features such as [iterators](/docs/learn-es6#iterators-for-of) and
-[symbols](/docs/learn-es6#symbols) require a lot of logic to work, and to accurately support these
-it would mean **a lot** of boilerplate smoshed into your codebase. This is the approach taken
-by other transpilers but babel approaches it quite differently.
-
-You have two options, depending on your use case:
-
- - Use the wonderful [core aliasing optional transformer](/docs/usage/transformers#core-js-aliasing). This is recommended if you're writing a library.
- - Or use the bundled babel [polyfill](/docs/usage/polyfill). This is recommended if you're writing an entire application.

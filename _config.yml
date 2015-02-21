@@ -37,6 +37,8 @@ navigation:
     url: /docs/usage/api/
   - title: Options
     url: /docs/usage/options/
+  - title: Runtime
+    url: /docs/usage/runtime/
   - title: Caveats
     url: /docs/usage/caveats/
   - title: Modules

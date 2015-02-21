@@ -1,0 +1,147 @@
+---
+layout: docs
+title: Runtime
+description: How to use the `selfContained` transformer.
+permalink: /docs/usage/runtime/
+---
+
+<blockquote class="babel-callout babel-callout-info">
+  <h4>External package required</h4>
+  <p>
+    The package <code>babel-runtime</code> is required for this transformer. Run <code>npm install babel-runtime --save</code> to add it to your current node/webpack/browserify project.
+  </p>
+</blockquote>
+
+### Technical details
+
+The `selfContained` optional transformer does three things:
+
+ - Automatically requires `babel-runtime/regenerator` when you use generators/async functions.
+ - Automatically requires `babel-runtime/core-js` and maps ES6 static methods and built-ins.
+ - Removes the inline babel helpers and uses the module `babel-runtime/helpers` instead.
+
+What does this actually mean though? Basically, you can use built-ins such as `Promise`,
+`Set`, `Map`, `Symbol` as well as all the babel features that require a polyfill seamlessly,
+without global pollution making it great for libraries.
+
+#### Regenerator aliasing
+
+Whenever you use a generator function or async function:
+
+```javascript
+function* foo() {
+
+}
+
+async function bar() {
+
+}
+```
+
+the following is generated:
+
+```javascript
+"use strict";
+
+var foo = regeneratorRuntime.mark(function foo() {
+  ...
+});
+
+function bar() {
+  return regeneratorRuntime.async(function bar$(context$1$0) {
+    ...
+  }, null, this);
+}
+```
+
+This isn't ideal as then you have to include the regenerator runtime which
+pollutes the global scope.
+
+Instead what the `selfContained` transformer does it transpile that to:
+
+```javascript
+"use strict";
+
+var _regeneratorRuntime = require("babel-runtime/regenerator");
+
+var foo = _regeneratorRuntime.mark(function foo() {
+  ...
+});
+
+function bar() {
+  return _regeneratorRuntime.async(function bar$(context$1$0) {
+    ...
+  }, null, this);
+}
+```
+
+This means that you can use the regenerator runtime without polluting your current environment.
+
+#### `core-js` aliasing
+
+Sometimes you may want to use new built-ins such as `Map`, `Set`, `Promise` etc. Your only way
+to use these is usually to include a globally polluting polyfill.
+
+What the `selfContained` transformer does is transform the following:
+
+```javascript
+var sym = Symbol();
+
+var promise = new Promise;
+
+console.log(arr[Symbol.iterator]());
+```
+
+into the following:
+
+```javascript
+"use strict";
+
+var _core = require("babel-runtime/core-js");
+
+var sym = _core.Symbol();
+
+var promise = new _core.Promise();
+
+console.log(_core.$for.getIterator(arr));
+```
+
+This means is that you can seamlessly use these native built-ins and static methods
+without worrying about where they come from.
+
+**NOTE:** Instance methods such as `"foobar".includes("foo")` will **not** work.
+
+#### Helper aliasing
+
+Usually babel will place helpers at the top of your file to do common tasks to avoid
+duplicating the code around in the current file. Sometimes these helpers can get a
+little bulky and add unneccessary duplication across files. The `selfContained`
+transformer replaces all the helper calls to a module.
+
+That means that the following code:
+
+```javascript
+import foo from "bar";
+```
+
+usually turns into:
+
+```javascript
+"use strict";
+
+var _interopRequire = function (obj) {
+  return obj && obj.__esModule ? obj["default"] : obj;
+};
+
+var foo = _interopRequire(require("bar"));
+```
+
+the `selfContained` transformer however turns this into:
+
+```javascript
+"use strict";
+
+var _babelHelpers = require("babel-runtime/helpers");
+
+var foo = _babelHelpers.interopRequire(require("bar"));
+```
