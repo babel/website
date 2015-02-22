@@ -44,5 +44,5 @@ redirect_from: /differences.html
 | Spread                       | ✓     | ✓       |            |             |
 | Tail call optimisation       | ✓     | ✓       |            |             |
 | Template literals            | ✓     | ✓       |            | ✓           |
-| Types                        | ✓     | ✓       | ✓          | ✓           |
+| Type annotations             | ✓     | ✓       | ✓          | ✓           |
 | Unicode regex                | ✓     | ✓       |            |             |
