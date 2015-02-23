@@ -38,7 +38,6 @@ $ babel --name=value
 | `externalHelpers`        | `false`              | Uses a reference to `babelHelpers` instead of placing helpers at the top of your code. Meant to be used in conjunction with [external helpers](/docs/usage/external-helpers). |
 | `code`                   | `true`               | Enable code generation |
 | `ast`                    | `true`               | Include the ÅST in the returned object |
-| `format`                 | [(See Formatting Options)](#formatting-options) | Formatting options for code generation |
 | `playground`             | `false`              | Enable [playground](/docs/usage/playground) support. |
 | `experimental`           | `false`              | Enable support for [experimental](/docs/usage/experimental) ES7 features. |
 | `compact`                | `"auto"`             | Do not include superfluous whitespace characters and line terminators. When set to `"auto"` compact is set to `true` on input sizes of >100KB. |
