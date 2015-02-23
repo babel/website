@@ -52,7 +52,7 @@ this is widely supported but you may run into problems with much older browsers.
 around.
 
 For classes that have `super`s, the super class won't resolve correctly. You can
-get around this by enabling [loose mode](/docs/usage/loose) for classes.
+get around this by enabling [loose mode](/docs/usage/loose/) for classes.
 
 ### Getters/setters (8 and below)
 
@@ -68,4 +68,4 @@ isn't recommended.
 By default, when using modules with babel a non-enumerable `__esModule` property
 is exported. This is done through the use of `Object.defineProperty` which is
 unsupported in IE8 and below. A workaround for this is to enable
-[loose mode - modules](6to5.org/docs/usage/loose/#modules).
+[loose mode - modules](/docs/usage/loose/#es6-modules).
