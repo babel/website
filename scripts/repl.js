@@ -138,7 +138,7 @@
     // Merge in defaults
     var defaults = {
       experimental : true,
-      playground : true,
+      playground : false,
       loose : false,
       spec : false,
       evaluate : true
