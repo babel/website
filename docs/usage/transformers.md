@@ -38,8 +38,7 @@ for transformer terminology.
 ## ES7 (Experimental)
 
 - [es7.abstractReferences](https://github.com/zenparsing/es-abstract-refs)
-- [es7.arrayComprehension](/docs/learn-es6#comprehensions)
-- [es7.generatorComprehension](/docs/learn-es6#comprehensions)
+- [es7.comprehensions](/docs/learn-es6#comprehensions)
 - [es7.exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
 - [es7.objectSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
 
