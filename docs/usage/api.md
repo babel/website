@@ -57,3 +57,9 @@ babel.transformFileSync(filename, [options]) // => { code, map, ast }
 ```js
 babel.transformFileSync("filename.js", options).code;
 ```
+
+## `require("babel-core")`
+
+While the regular `babel` package includes the CLI, we also published a
+`babel-core` package that does not come with the CLI and has fewer dependencies
+for API-only users. The API itself is identical to the `babel` package.
