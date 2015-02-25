@@ -26,7 +26,7 @@ how this works and the types of transformations that occur.
 <blockquote class="babel-callout babel-callout-info">
   <h4>External package required</h4>
   <p>
-    The package <code>babel-runtime</code> is required for this transformer. Run <code>npm install babel-runtime --save</code> to add it to your current node/webpack/browserify project.
+    The package <code>babel-runtime</code> is required for this transformer. Run <code>npm install babel-runtime --save</code> to add it to your current node/webpack/browserify project. <code>babel-runtime</code> does not support AMD module loaders like RequireJS.
   </p>
 </blockquote>
 
