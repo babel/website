@@ -41,7 +41,6 @@ or from an npm release in `external-helpers.js` from the babel directory.
 
 ### Injecting the external helpers
 
-
 #### Node
 
 ```js
@@ -57,3 +56,19 @@ This injects the external helpers into `global`.
 ```
 
 In a browser environment you can use a `<script>` tag to inject the `babelHelpers` into the `window` object.
+
+### Selective builds
+
+You can pass the option `returnUsedHelpers` to `babel.transform()` in order to
+get a list of helpers that were used for that file:
+
+```javascript
+require("babel").transform("code", { returnUsedHelpers: true }).usedHelpers;
+```
+
+This will be an array of helpers that you can then pass to
+`buildExternalHelpers` like so:
+
+```javascript
+require("babel").buildExternalHelpers(usedHelpers);
+```
