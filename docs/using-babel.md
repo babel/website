@@ -74,6 +74,33 @@ require("babel/register");
   </p>
 </blockquote>
 
+## Meteor
+
+<blockquote class="babel-callout babel-callout-info">
+  <p>
+    See <strong>meteor-babel</strong>'s
+    <a href="https://github.com/grigio/meteor-babel">repo</a> for more
+    info. If you find any bugs please
+    <a href="https://github.com/grigio/meteor-babel/issues">report
+    them</a>.
+  </p>
+  <p>
+    <em>Issues with the output should be reported on the babel
+    <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
+  </p>
+</blockquote>
+
+**Install**
+
+Inside your Meteor app directory
+
+```sh
+$ meteor add grigio:babel
+```
+**Usage**
+
+Any files with these extensions will be precompiled with Babel: `.es6.js`, `.es6`, `.es`, `.jsx`.
+
 ## Rails
 
 ### Sprockets
