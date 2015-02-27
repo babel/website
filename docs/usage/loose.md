@@ -103,6 +103,15 @@ exports.__esModule = true;
 
 ### es6.forOf
 
+#### Abrupt completions
+
+In loose mode an iterators `return` method will not be called on abrupt completions caused by thrown errors.
+
+Please see [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) and
+[babel/babel/#838](https://github.com/babel/babel/issues/838) for more information.
+
+#### Arrays
+
 Under loose mode the `forOf` transformer will output more verbose iteration code.
 
 For example the following:

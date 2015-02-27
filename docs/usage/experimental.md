@@ -27,7 +27,6 @@ $ babel --experimental
 babel.transform("code", { experimental: true });
 ```
 
-
 #### Transformers
 
 See [Transformers - Experimental](/docs/usage/transformers#es7-experimental-)
