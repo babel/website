@@ -24,7 +24,7 @@ require("babel/polyfill");
 ```
 
 Fortunately, this is also automatically loaded when using the
-[require hook](/docs/usage/require).
+[require hook](/docs/usage/require.md).
 
 ## Usage in Browser
 
