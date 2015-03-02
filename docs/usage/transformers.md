@@ -219,7 +219,7 @@ var foo = 5 * 5;
 becomes
 
 ```javascript
-var foo = 10;
+var foo = 25;
 ```
 
 ### `utility.removeConsole`
