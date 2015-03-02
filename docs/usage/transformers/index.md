@@ -61,17 +61,8 @@ so that you can easily chain them together.
 
 ## Optional
 
-### Usage
-
-```javascript
-require("babel").transform("code", { optional: ["transformerName"] });
-```
-
-```sh
-$ babel --optional transformerName script.js
-```
-
-### Transformers
+Babel also includes some optional transformer for those who want to take their code that extra mile.
+These are disabled by default, see [usage](#usage) for how to enable them.
 
  - [asyncToGenerator](/docs/usage/transformers/other/async-to-generator)
  - [bluebirdCoroutines](/docs/usage/transformers/other/bluebird-coroutines)
@@ -86,6 +77,16 @@ $ babel --optional transformerName script.js
  - [spec.undefinedToVoid](/docs/usage/transformers/spec/undefined-to-void)
  - [validation.undeclaredVariableCheck](/docs/usage/transformers/validation/undeclared-variable-check)
  - [validation.react](/docs/usage/transformers/validation/react)
+
+### Usage
+
+```javascript
+require("babel").transform("code", { optional: ["transformerName"] });
+```
+
+```sh
+$ babel --optional transformerName script.js
+```
 
 ## Playground
 
