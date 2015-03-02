@@ -68,9 +68,167 @@ require("babel").transform("code", { optional: ["transformerName"] });
 $ babel --optional transformerName
 ```
 
-### `selfContained`
+### `runtime`
 
 See [runtime](/docs/usage/runtime) for more info.
+
+### `utility.deadCodeElimination`
+
+Remove dead code.
+
+Expressions are statically evaluated so **any** expression that contains only
+mutable values will work.
+
+#### Always truthy if statements
+
+```javascript
+if (true) {
+  foo();
+} else {
+  bar();
+}
+```
+
+becomes
+
+```javascript
+foo();
+```
+
+#### Always falsey if statements
+
+```javascript
+if (false) {
+  foo();
+} else {
+  bar();
+}
+```
+
+becomes
+
+```javascript
+bar();
+```
+
+#### Empty alternate blocks
+
+```javascript
+if (foo) {
+} else {
+  bar();
+}
+```
+
+becomes
+
+```javascript
+if (!foo) {
+  foo();
+}
+```
+
+#### Empty consequent blocks
+
+```javascript
+if (foo) {
+  bar();
+} else {
+}
+```
+
+becomes
+
+```javascript
+if (foo) {
+  foo();
+}
+```
+
+#### Truthy conditional expressions
+
+```javascript
+true ? foo : bar
+```
+
+becomes
+
+```javascript
+foo
+```
+
+#### Falsy conditional expressions
+
+```javascript
+false ? foo : bar
+```
+
+becomes
+
+```javascript
+bar
+```
+
+### `utility.inlineEnvironmentVariables`
+
+Inlines environment variables.
+
+For example compiling the following file:
+
+**script.js**
+
+```javascript
+if (process.env.NODE_ENV === "development") {
+  development();
+} else {
+  production();
+}
+```
+
+with the command:
+
+```sh
+$ NODE_ENV=development babel --optional utility.inlineEnvironmentVariables script.js
+```
+
+outputs:
+
+```javascript
+if ("development" === "development") {
+  development();
+} else {
+  production();
+}
+```
+
+Use this in conjunction with the [utility.deadCodeElimination](#utility-dead-code-elimination)
+transformer to output:
+
+```javascript
+development();
+```
+
+### `utility.inlineExpressions`
+
+Inline expressions that we can statically evaluate. ie.
+
+```javascript
+var foo = 5 * 5;
+```
+
+becomes
+
+```javascript
+var foo = 10;
+```
+
+### `utility.removeConsole`
+
+Remove all calls to `console.*` functions.
+
+### `utility.removeDebugger`
+
+Remove all `debugger;` statements.
 
 ### `asyncToGenerator`
 
