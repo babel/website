@@ -37,16 +37,16 @@ navigation:
     url: /docs/usage/api/
   - title: Options
     url: /docs/usage/options/
+  - title: Transformers
+    url: /docs/usage/transformers/
+  - title: Polyfill
+    url: /docs/usage/polyfill/
   - title: Runtime
     url: /docs/usage/runtime/
   - title: Caveats
     url: /docs/usage/caveats/
   - title: Modules
     url: /docs/usage/modules/
-  - title: Polyfill
-    url: /docs/usage/polyfill/
-  - title: Transformers
-    url: /docs/usage/transformers/
   - title: Loose mode
     url: /docs/usage/loose/
   - title: Browser
