@@ -13,6 +13,8 @@ permalink: /docs/usage/jsx/
   JSX/React transformer even down to whitespace handling.
 </p>
 
+See the [react transformer docs](/docs/usage/transformers/other/react) for more info.
+
 ## Blacklist
 
 To disable this behaviour add the `react` transformer to your blacklist:
@@ -36,6 +38,8 @@ babel.transform("code", { optional: ["reactCompat"] });
 ```sh
 $ babel --optional reactCompat
 ```
+
+See the [reactCompat transformer docs](/docs/usage/transformers/other/react-compat) for more info.
 
 ## Additional changes
 

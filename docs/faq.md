@@ -49,20 +49,20 @@ more information.
 Babel assumes that all input code is an ES6 module. ES6 modules are implicitly strict mode so this means
 that top-level `this` is not `window` in the browser nor is it `exports` in node.
 
-If you don't want this behaviour then you have the option of disabling the `useStrict` transformer:
+If you don't want this behaviour then you have the option of disabling the `strict` transformer:
 
 ```sh
-$ babel --blacklist useStrict script.js
+$ babel --blacklist strict script.js
 ```
 
-```json
-{
-  "blacklist": ["useStrict"]
-}
+```javascript
+require("babel").transform("code", { blacklist: ["strict"] });
 ```
 
-**PLEASE NOTE:** If you do this you're willingly deviating from the spec and this may cause you future
+**PLEASE NOTE:** If you do this you're willingly deviating from the spec and this may cause future
 interop issues.
+
+See the [strict transformer docs](/docs/usage/transformers/other/strict) for more info.
 
 ## How does babel differ from other transpilers?
 
@@ -105,13 +105,6 @@ built-in support for emerging standards such as [Flow](http://flowtype.org) and
 Babel is very flexible in it's usage, it has support for an extensive range of
 [build systems](/docs/using-babel#build-systems) as well as for the
 [browser](/docs/usage/browser), [node](/docs/using-babel#node-js) and [more!](/docs/using-babel#misc).
-
-## What is a transformer?
-
-A transformer is a module that is ran against your code that transforms it. For example,
-the `arrowFunctions` transformer has the very specific goal of transforming
-[ES6 Arrow Functions](/docs/learn-es6#arrows) to the equivalent ES3. This allows transformers to be disabled and enabled at will which is critical in the
-current fast paced development environment.
 
 ## What is a module formatter?
 
