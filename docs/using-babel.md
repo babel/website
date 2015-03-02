@@ -226,12 +226,12 @@ browserify({ debug: true })
 **Passing Options**
 
 ```sh
-$ browserify -d -e script.js -t [ babelify --blacklist generators ]
+$ browserify -d -e script.js -t [ babelify --blacklist regenerator ]
 ```
 
 ```js
 browserify().transform(babelify.configure({
-  blacklist: ["generators"]
+  blacklist: ["regenerator"]
 }))
 ```
 
@@ -784,4 +784,3 @@ Calling nodemon with babel-node may lead to arguments getting parsed incorrectly
 ```sh
 $ nodemon --exec babel-node --experimental --ignore='foo\|bar\|baz' -- path/to/script.js
 ```
-
