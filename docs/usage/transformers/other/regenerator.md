@@ -2,7 +2,7 @@
 layout: docs
 title: regenerator
 description: How to use the regenerator transformer.
-permalink: /docs/usage/transformers/other/regenerator
+permalink: /docs/usage/transformers/other/regenerator/
 ---
 
 The `regenerator` transformer uses the [regenerator](https://github.com/facebook/regenerator)

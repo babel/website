@@ -2,7 +2,7 @@
 layout: docs
 title: utility.deadCodeElimination
 description: How to use the utility.deadCodeElimination transformer.
-permalink: /docs/usage/transformers/utility/dead-code-elimination
+permalink: /docs/usage/transformers/utility/dead-code-elimination/
 ---
 
 Remove dead code.

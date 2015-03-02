@@ -2,7 +2,7 @@
 layout: docs
 title: utility.inlineEnvironmentVariables
 description: How to use the utility.inlineEnvironmentVariables transformer.
-permalink: /docs/usage/transformers/utility/inline-environment-variables
+permalink: /docs/usage/transformers/utility/inline-environment-variables/
 ---
 
 Inlines environment variables.

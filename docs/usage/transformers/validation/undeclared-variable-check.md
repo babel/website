@@ -2,7 +2,7 @@
 layout: docs
 title: validation.undeclaredVariableCheck
 description: How to use the validation.undeclaredVariableCheck transformer.
-permalink: /docs/usage/transformers/validation/undeclared-variable-check
+permalink: /docs/usage/transformers/validation/undeclared-variable-check/
 ---
 
 Throws errors on references to undeclared variables.

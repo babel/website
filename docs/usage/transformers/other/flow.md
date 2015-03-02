@@ -2,7 +2,7 @@
 layout: docs
 title: flow
 description: How to use the flow transformer.
-permalink: /docs/usage/transformers/other/flow
+permalink: /docs/usage/transformers/other/flow/
 ---
 
 The `flow` transformer is responsible for stripping flow nodes and type annotations from

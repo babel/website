@@ -2,7 +2,7 @@
 layout: docs
 title: validation.react
 description: How to use the validation.react transformer.
-permalink: /docs/usage/transformers/validation/react
+permalink: /docs/usage/transformers/validation/react/
 ---
 
 The `validation.react` transformer validates your `react` imports for a non-capitalised module source.

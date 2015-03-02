@@ -2,7 +2,7 @@
 layout: docs
 title: es5.properties.mutators
 description: How to use the es5.properties.mutators transformer.
-permalink: /docs/usage/transformers/es5/properties-mutators
+permalink: /docs/usage/transformers/es5/properties-mutators/
 ---
 
 Turn [object initializer mutators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Method_definitions) into `Object.defineProperties`.

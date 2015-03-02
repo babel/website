@@ -2,7 +2,7 @@
 layout: docs
 title: bluebirdCoroutines
 description: How to use the bluebirdCoroutines transformer.
-permalink: /docs/usage/transformers/other/bluebird-coroutines
+permalink: /docs/usage/transformers/other/bluebird-coroutines/
 ---
 
 Transforms async functions to their equivalent bluebird method.

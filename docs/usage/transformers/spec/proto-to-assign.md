@@ -2,7 +2,7 @@
 layout: docs
 title: spec.protoToAssign
 description: How to use the spec.protoToAssign transformer.
-permalink: /docs/usage/transformers/spec/proto-to-assign
+permalink: /docs/usage/transformers/spec/proto-to-assign/
 ---
 
 The `protoToAssign` optional transformer will transform all `__proto__`

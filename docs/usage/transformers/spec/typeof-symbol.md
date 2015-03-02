@@ -2,7 +2,7 @@
 layout: docs
 title: spec.typeofSymbol
 description: How to use the spec.typeofSymbol transformer.
-permalink: /docs/usage/transformers/spec/typeof-symbol
+permalink: /docs/usage/transformers/spec/typeof-symbol/
 ---
 
 ES6 introduces a new native type called [symbols](/docs/learn-es6#symbols).

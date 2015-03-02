@@ -2,7 +2,7 @@
 layout: docs
 title: utility.inlineExpressions
 description: How to use the utility.inlineExpressions transformer.
-permalink: /docs/usage/transformers/utility/inline-expressions
+permalink: /docs/usage/transformers/utility/inline-expressions/
 ---
 
 Inline expressions that we can statically evaluate. ie.

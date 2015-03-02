@@ -2,7 +2,7 @@
 layout: docs
 title: utility.removeConsole
 description: How to use the utility.removeConsole transformer.
-permalink: /docs/usage/transformers/utility/remove-console
+permalink: /docs/usage/transformers/utility/remove-console/
 ---
 
 Remove all calls to `console.*` functions.

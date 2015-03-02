@@ -2,7 +2,7 @@
 layout: docs
 title: spec.undefinedToVoid
 description: How to use the spec.undefinedToVoid transformer.
-permalink: /docs/usage/transformers/spec/undefinedToVoid
+permalink: /docs/usage/transformers/spec/undefinedToVoid/
 ---
 
 Some JavaScript implementations allow `undefined` to be overwritten, this

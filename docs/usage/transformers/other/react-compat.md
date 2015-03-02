@@ -2,7 +2,7 @@
 layout: docs
 title: reactCompat
 description: How to use the reactCompat transformer.
-permalink: /docs/usage/transformers/other/react-compat
+permalink: /docs/usage/transformers/other/react-compat/
 ---
 
 Output JSX into pre-v0.12 React syntax.

@@ -2,7 +2,7 @@
 layout: docs
 title: strict
 description: How to use the strict transformer.
-permalink: /docs/usage/transformers/other/strict
+permalink: /docs/usage/transformers/other/strict/
 ---
 
 The `strict` transformer automatically places a `"use strict";` directive at the top of your

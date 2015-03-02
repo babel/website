@@ -2,7 +2,7 @@
 layout: docs
 title: asyncToGenerator
 description: How to use the asyncToGenerator transformer.
-permalink: /docs/usage/transformers/other/async-to-generator
+permalink: /docs/usage/transformers/other/async-to-generator/
 ---
 
 Transforms async functions to a generator that uses a helper. This is useful if

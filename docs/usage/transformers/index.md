@@ -62,6 +62,7 @@ so that you can easily chain them together.
 ## Optional
 
 Babel also includes some optional transformer for those who want to take their code that extra mile.
+
 These are disabled by default, see [usage](#usage) for how to enable them.
 
  - [asyncToGenerator](/docs/usage/transformers/other/async-to-generator)

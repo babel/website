@@ -2,7 +2,7 @@
 layout: docs
 title: es3.memberExpressionLiterals
 description: How to use the es3.memberExpressionLiterals transformer.
-permalink: /docs/usage/transformers/es3/member-expression-literals
+permalink: /docs/usage/transformers/es3/member-expression-literals/
 ---
 
 Turn member expression reserved word properties into literals.

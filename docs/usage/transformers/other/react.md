@@ -2,7 +2,7 @@
 layout: docs
 title: react
 description: How to use the react transformer.
-permalink: /docs/usage/transformers/other/react
+permalink: /docs/usage/transformers/other/react/
 ---
 
 ## Example
