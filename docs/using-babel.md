@@ -656,7 +656,7 @@ In your `package.json` file please make the following changes:
 {
   "dependencies": {
     "babel-jest": "*",
-    "jest": "*"
+    "jest-cli": "*"
   },
   "scripts": {
     "test": "jest"
