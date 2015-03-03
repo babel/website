@@ -5,7 +5,7 @@ description: What are the various transformers?
 permalink: /docs/usage/transformers/
 ---
 
-A transformer is a module with a specific goal that iis ran against your code to transform it. For example,
+A transformer is a module with a specific goal that is ran against your code to transform it. For example,
 the `es6.arrowFunctions` transformer has the very specific goal of transforming [ES6 Arrow Functions](https://babeljs.io/docs/learn-es6#arrows)
 to the equivalent ES3. This allows transformers to be completely unaware of the other transformations happening
 so that you can easily chain them together.
@@ -61,9 +61,9 @@ so that you can easily chain them together.
 
 ## Optional
 
-Babel also includes some optional transformer for those who want to take their code that extra mile.
+Babel also includes some optional transformers for those who want to take their code that extra mile.
 
-These are disabled by default, see [usage](#usage) for how to enable them.
+These are disabled by default, see [usage](#usage) for instructions on how to enable them.
 
  - [asyncToGenerator](/docs/usage/transformers/other/async-to-generator)
  - [bluebirdCoroutines](/docs/usage/transformers/other/bluebird-coroutines)
