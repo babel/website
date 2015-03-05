@@ -28,7 +28,7 @@ foo();
 ## Blacklisting
 
 There *may* be scenarios where you don't want this directive places at the top of your files, you
-can avoid this behaviour
+can avoid this behaviour by blacklisting the `strict` transformer.
 
 **PLEASE NOTE:** If you do this you're willingly deviating from the spec and this may cause future
 interop issues.

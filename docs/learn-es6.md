@@ -421,7 +421,7 @@ alert("2π = " + exp(pi, e));
 <blockquote class="babel-callout babel-callout-info">
   <h4>Module Formatters</h4>
   <p>
-    babel can transpile ES6 Modules to several different formats including
+    Babel can transpile ES6 Modules to several different formats including
     Common.js, AMD, System, and UMD. You can even create your own. For more
     details see the <a href="/docs/usage/modules">modules docs</a>.
   </p>
