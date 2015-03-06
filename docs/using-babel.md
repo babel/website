@@ -241,6 +241,44 @@ browserify().transform(babelify.configure({
   </p>
 </blockquote>
 
+### AMD (requirejs)
+
+<blockquote class="babel-callout babel-callout-info">
+  <p>
+    See <strong>requirejs-babel</strong>'s
+    <a href="https://github.com/mikach/requirejs-babel">repo</a> for more info. If you
+    find any bugs please
+    <a href="https://github.com/mikach/requirejs-babel/issues">report them</a>.
+  </p>
+  <p>
+    <em>Issues with the output should be reported on the babel
+    <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
+  </p>
+</blockquote>
+
+**Install**
+
+```sh
+$ bower install requirejs-babel
+```
+
+**Usage**
+
+Add the paths to configuration:
+```javascript
+  paths: {
+    es6: '...path_to_bower/requirejse-babel/es6',
+    babel: '...path_to_bower/requirejse-babel/babel-4.6.6.min'
+  }
+```
+Reference files via the es6! plugin name:
+```javascript
+  define(['es6!your-es6-module'], function(module) {
+    // ...
+  });
+```
+Also it can be optimized by r.js tool.
+
 ### Brunch
 
 <blockquote class="babel-callout babel-callout-info">
