@@ -27,6 +27,7 @@ $ babel --name=value
 | `optional`               | `[]`                 | Array of transformers to [optionally](/docs/usage/transformers#optional) use. Run `babel --help` to see a full list of transformers. Optional transformers displayed inside square brackets. |
 | `modules`                | `"common"`           | Which module formatter to use. Run `babel --help` to see a full list of module formatters. |
 | `sourceMap`              | `false`              | If truthy, adds a `map` property to returned output. If set to `"inline"`, a comment with a sourceMappingURL directive is added to the bottom of the returned code. |
+| `inputSourceMap`         | `null`               | A source map object that the output source map will be based on. |
 | `sourceMapName`          | `(filenameRelative)` | Set `file` on returned source map. |
 | `sourceFileName`         | `(filenameRelative)` | Set `sources[0]` on returned source map. |
 | `sourceRoot`             | `(moduleRoot)`       | The root from which all sources are relative. |
