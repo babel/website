@@ -231,7 +231,14 @@
       if (done) flush();
     }
 
-    capturingConsole.log = function() {
+    capturingConsole.clear = fucntion() {
+      buffer = [];
+      flush();
+    };
+
+    capturingConsole.log = 
+    capturingConsole.info = 
+    capturingConsole.debug = function() {
       if (this !== capturingConsole) { return; }
 
       var args = Array.prototype.slice.call(arguments);
