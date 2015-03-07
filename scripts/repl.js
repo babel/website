@@ -231,7 +231,7 @@
       if (done) flush();
     }
 
-    capturingConsole.clear = fucntion() {
+    capturingConsole.clear = function() {
       buffer = [];
       flush();
     };
