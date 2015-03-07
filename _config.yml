@@ -20,48 +20,6 @@ redcarpet:
 #   input: GFM
 #   hard_wrap: false
 
-# header navigation
-navigation:
-- title: Learn ES6
-  url: /docs/learn-es6/
-- title: Using Babel
-  url: /docs/using-babel/
-- title: Docs
-  url: /docs/usage/
-  subnav:
-  - title: CLI
-    url: /docs/usage/cli/
-  - title: Require Hook
-    url: /docs/usage/require/
-  - title: API
-    url: /docs/usage/api/
-  - title: Options
-    url: /docs/usage/options/
-  - title: Transformers
-    url: /docs/usage/transformers/
-  - title: Polyfill
-    url: /docs/usage/polyfill/
-  - title: Runtime
-    url: /docs/usage/runtime/
-  - title: Caveats
-    url: /docs/usage/caveats/
-  - title: Modules
-    url: /docs/usage/modules/
-  - title: Loose mode
-    url: /docs/usage/loose/
-  - title: Browser
-    url: /docs/usage/browser/
-  - title: Experimental
-    url: /docs/usage/experimental/
-  - title: JSX
-    url: /docs/usage/jsx/
-  - title: External helpers
-    url: /docs/usage/external-helpers/
-- title: Try it out
-  url: /repl/
-- title: FAQ
-  url: /docs/faq/
-
 # Blog Settings
 permalink: /blog/:year/:month/:day/:title
 paginate: 1

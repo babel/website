@@ -1,0 +1,45 @@
+---
+layout: default
+title: See who's using Babel
+description: See who's using Babel.
+permalink: /users/
+---
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="page-header text-center">
+        <h1>See who's using <!--Ember-->Babel</h1>
+        <p class="lead" data-title="Great artists steal">
+          Logos are added by company representatives. These companies may or may
+          not be using <!--Ember-->Babel on their main web properties, but they're
+          definitely using it somewhere in their organizations :)
+        </p>
+      </div>
+
+      <div class="container-fluid babel-user-container">
+        <div class="row">
+          {% for user in site.data.users %}
+            <div class="col-md-4 col-sm-6">
+              <a class="babel-user" href="{{user.url}}" title="{{user.name}}">
+                <img class="img-responsive" src="/images/users/{{user.logo}}" alt="{{user.name}}">
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="text-center">
+        <p>
+          Logos are submitted by company and project representatives.
+        </p>
+        <p>
+          To add your company or project to this page,
+          <a href="https://github.com/babel/babel.github.io/issues/new?title={{site.data.text.users.submit.title | cgi_escape }}&body={{site.data.text.users.submit.body | cgi_escape }}">please open an issue</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

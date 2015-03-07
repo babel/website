@@ -255,4 +255,64 @@ layout: default
       <a href="{{ site.baseurl }}/docs/using-babel/" class="btn btn-featured">Install Babel</a>
     </div>
   </div>
+
+  <hr class="featurette-divider">
+
+  <div class="featurette">
+    <h2 class="text-center">
+      <a href="{{ site.baseurl }}/users/">
+        Who's using Babel?
+      </a>
+    </h2>
+
+    <div class="babel-user-container babel-slider">
+      {% for user in site.data.users limit:18 %}
+        <div class="col-md-4 col-sm-6">
+          <a class="babel-user" href="{{user.url}}" title="{{user.name}}">
+            <img class="img-responsive" data-lazy="/images/users/{{user.logo}}" alt="{{user.name}}">
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center">
+      <div class="btn-wrapper">
+        <a href="{{ site.baseurl }}/users/" class="btn btn-sm btn-featured">Meet more Users</a>
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.4.1/slick.css">
+  <script src="//rawgit.com/thejameskyle/slick/lazy-load-responsive-2/slick/slick.min.js"></script>
+  <script>
+    $('.babel-slider').slick({
+      lazyLoad: 'ondemand',
+      arrows: false,
+      infinite: true,
+      speed: 500,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      responsive: [{
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3
+        }
+      }, {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      }, {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }]
+    });
+  </script>
 </div>
