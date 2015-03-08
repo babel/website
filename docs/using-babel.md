@@ -259,7 +259,7 @@ browserify().transform(babelify.configure({
 **Install**
 
 ```sh
-$ bower install requirejs-babel
+$ npm install requirejs-babel
 ```
 
 **Usage**
@@ -267,8 +267,8 @@ $ bower install requirejs-babel
 Add the paths to configuration:
 ```javascript
   paths: {
-    es6: '...path_to_bower/requirejse-babel/es6',
-    babel: '...path_to_bower/requirejse-babel/babel-4.6.6.min'
+    es6: 'node_modules/requirejse-babel/es6',
+    babel: 'node_modules/requirejse-babel/babel-4.6.6.min'
   }
 ```
 Reference files via the es6! plugin name:
