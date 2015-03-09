@@ -10,11 +10,11 @@ Transforms async functions to their equivalent bluebird method.
 ## Usage
 
 ```javascript
-require("babel").transform("code", { optional: ["asyncToGenerator"] });
+require("babel").transform("code", { optional: ["bluebirdCoroutines"] });
 ```
 
 ```sh
-$ babel --optional asyncToGenerator script.js
+$ babel --optional bluebirdCoroutines script.js
 ```
 
 ## Example
