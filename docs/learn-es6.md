@@ -460,7 +460,7 @@ System.set("jquery", Module({$: $})); // WARNING: not yet finalized
   <h4>Additional polyfill needed</h4>
   <p>
     Since babel defaults to using common.js modules, it does not include the
-    polyfill for the module loader api. Get it
+    polyfill for the module loader API. Get it
     <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
   </p>
 </blockquote>
@@ -507,7 +507,7 @@ ws.add({ data: 42 });
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support WeakMaps you must include the babel Polyfill.
+    In order to support WeakMaps you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
   </p>
 </blockquote>
 
@@ -608,7 +608,7 @@ c["key"] === undefined
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support Symbols you must include the babel Polyfill.
+    In order to support Symbols you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
   </p>
 </blockquote>
 
@@ -657,8 +657,8 @@ Object.assign(Point, { origin: new Point(0,0) })
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Limited support from polyfill</h4>
   <p>
-    Most of these APIs are supported by the babel Polyfill. However, certain
-    features are omitted for various reasons (ie.
+    Most of these APIs are supported by the babel <a href="/docs/usage/polyfill">polyfill</a>. However, certain
+    features are omitted for various reasons (e.g.
     <code>String.prototype.normalize</code> needs a lot of additional code to
     support). You can find more polyfills
     <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
@@ -707,7 +707,7 @@ var p = timeout(1000).then(() => {
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support Promises you must include the babel Polyfill.
+    In order to support Promises you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
   </p>
 </blockquote>
 
