@@ -507,7 +507,7 @@ ws.add({ data: 42 });
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support WeakMaps you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to support Maps, Sets, WeakMaps, and WeakSets in all environments you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
   </p>
 </blockquote>
 
