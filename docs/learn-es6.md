@@ -430,6 +430,7 @@ alert("2π = " + exp(pi, e));
 ### Module Loaders
 
 Module loaders support:
+
 - Dynamic loading
 - State isolation
 - Global namespace isolation
