@@ -2,13 +2,103 @@
 
   /* Throw meaningful errors for getters of commonjs. */
   ["module", "exports", "require"].forEach(function(commonVar){
-    Object.defineProperty(window, commonVar, { 
-      get: function () { 
+    Object.defineProperty(window, commonVar, {
+      get: function () {
         throw new Error(commonVar + " is not supported in the browser, you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
       }
     });
   });
-  
+
+  /**
+   * Pretty Printing
+   */
+
+  function indentLines(str) {
+    return str.split('\n').join('\n  ');
+  }
+
+  var printTypes = [{
+    test: _.isArray,
+    print: function(arr) {
+      var result = '[';
+      if (arr.length) {
+        result += '\n';
+        for (var i = 0; i < arr.length; i++) {
+          result += '  ' + indentLines(print(arr[i]));
+          if (i < arr.length - 1) {
+            result += ',\n';
+          }
+        }
+        result += '\n';
+      }
+      result += ']';
+      return result;
+    }
+  }, {
+    test: _.isFunction,
+    print: function(fn) {
+      return Function.prototype.toString.call(fn);
+    }
+  }, {
+    test: _.isObject,
+    print: function(obj) {
+      var result = '{';
+      var keys = _.keys(obj).concat(Object.getOwnPropertySymbols(obj));
+      if (keys.length) {
+        result += '\n';
+        for (var i = 0; i < keys.length; i++) {
+          var key = print(keys[i]);
+          var val = indentLines(print(obj[keys[i]]));
+          result += '  ' + key + ': ' + val;
+          if (i < keys.length - 1) {
+            result += ',\n';
+          }
+        }
+        result += '\n';
+      }
+      return result + '}';
+    }
+  }, {
+    test: _.isString,
+    print: function(str) {
+      return '"' + str + '"';
+    }
+  }, {
+    test: function(val) {
+      return val && val.toString && /^Symbol\(.*\)$/.test(val.toString());
+    },
+    print: function(sym) {
+      return Symbol.prototype.toString.call(sym);
+    }
+  }, {
+    test: function(val) {
+      return (
+        _.isNumber(val) ||
+        _.isBoolean(val) ||
+        _.isUndefined(val)
+      );
+    },
+    print: function(lit) {
+      return '' + lit;
+    }
+  }];
+
+  var printCache = [];
+  function print(val, indent) {
+    if (_.isObject(val)) {
+      if (_.indexOf(printCache, val) > -1) {
+        return '[Circular]';
+      }
+      printCache.push(val);
+    }
+
+    var type = _.find(printTypes, function(type) {
+      return type.test(val);
+    });
+
+    return type.print(val);
+  }
+
   /*
    * Utils for working with the browser's URI (e.g. the query params)
    */
@@ -236,24 +326,16 @@
       flush();
     };
 
-    capturingConsole.log = 
-    capturingConsole.info = 
+    capturingConsole.log =
+    capturingConsole.info =
     capturingConsole.debug = function() {
       if (this !== capturingConsole) { return; }
 
-      var args = Array.prototype.slice.call(arguments);
-      Function.prototype.apply.call(console.log, console, args);
+      console.log.apply(console, arguments);
 
-      var logs = args.reduce(function (logs, log) {
-        if (typeof log === 'string') {
-          logs.push(log);
-        } else if (log instanceof Function) {
-          logs.push(log.toString());
-        } else {
-          logs.push(JSON.stringify(log));
-        }
-        return logs;
-      }, []);
+      var logs = _.map(arguments, function(log) {
+        return print(log);
+      });
 
       write(logs.join(' '));
     };
