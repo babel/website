@@ -28,7 +28,7 @@ babel.transform("code", { externalHelpers: true });
 ### Getting the external helpers
 
 ```sh
-$ babel-external-helpers
+$ babel-external-helpers [options]
 ```
 
 or
@@ -38,6 +38,27 @@ require("babel").buildExternalHelpers();
 ```
 
 or from an npm release in `external-helpers.js` from the babel directory.
+
+#### Options
+
+| Option                     | Default              | Description                                 |
+| -------------------------- | -------------------- | ------------------------------------------- |
+| `-t, --output-type [type]` | `global`             | Set output format: `global`, `umd` or `var` |
+| `-l, --whitelist`          |                      | Whitelist of helpers to ONLY include        |
+
+### Output formats
+
+#### global
+
+`global` output format sets helpers as global variable by adding `babelHeleprs` to `global` or `this`.
+
+#### umd
+
+`umd` output format wraps helpers in UMD compatible with browsers, CommonJS and AMD.
+
+#### var
+
+`var` outputs variable `babelHelpers` (`var babelHelpers = {}`) and helpers are assigned to it. This output format is suitable for additional processing.
 
 ### Injecting the external helpers
 
