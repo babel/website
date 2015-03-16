@@ -236,6 +236,11 @@
       flush();
     };
 
+    capturingConsole.error = function () {
+      error = true;
+      capturingConsole.log.apply(capturingConsole, arguments);
+    };
+
     capturingConsole.log = 
     capturingConsole.info = 
     capturingConsole.debug = function() {
