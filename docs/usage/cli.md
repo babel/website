@@ -110,6 +110,12 @@ $ babel-node test
 $ babel-node [options] [ -e script | script.js ] [arguments]
 ```
 
+When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
+
+```sh
+$ babel-node --debug --experimental -- script.js --debug --experimental
+```
+
 ### Options
 
 | Option                   | Default              | Description                     |
