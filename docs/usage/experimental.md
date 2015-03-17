@@ -12,7 +12,7 @@ redirect_from: /experimental.html
   <h4>Subject to change</h4>
   <p>
     These proposals are subject to change so <strong><em>use with extreme
-    caution</em></strong>. babel may update without warning in order to track spec
+    caution</em></strong>. Babel may update without warning in order to track spec
     changes. Please do not use them in production applications.
   </p>
 </blockquote>
