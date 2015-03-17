@@ -53,8 +53,6 @@ navigation:
     url: /docs/usage/browser/
   - title: Experimental
     url: /docs/usage/experimental/
-  - title: Playground
-    url: /docs/usage/playground/
   - title: JSX
     url: /docs/usage/jsx/
   - title: External helpers
