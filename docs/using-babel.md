@@ -267,21 +267,19 @@ $ npm install requirejs-babel
 Add the paths to configuration:
 
 ```js
-  paths: {
-    es6: 'node_modules/requirejse-babel/es6',
-    babel: 'node_modules/requirejse-babel/babel-4.6.6.min'
-  }
+paths: {
+  es6: 'node_modules/requirejse-babel/es6',
+  babel: 'node_modules/requirejse-babel/babel-4.6.6.min'
+}
 ```
-
 
 Reference files via the es6! plugin name:
 
 ```js
-  define(['es6!your-es6-module'], function(module) {
-    // ...
-  });
+define(['es6!your-es6-module'], function(module) {
+  // ...
+});
 ```
-
 
 Also it can be optimized by r.js tool.
 
