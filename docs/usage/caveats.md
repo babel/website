@@ -48,7 +48,7 @@ this is widely supported but you may run into problems with much older browsers.
 
 **NOTE:** `__proto__` is not supported on IE <= 10 so static properties
 **will not** be inherited. See the
-[protoToAssign](/docs/usage/transformers#spec-proto-to-assign) for a possible work
+[protoToAssign](/docs/usage/transformers/spec/proto-to-assign) for a possible work
 around.
 
 For classes that have `super`s, the super class won't resolve correctly. You can
