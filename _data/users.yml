@@ -37,6 +37,9 @@
 - name: Skylight
   url: https://www.skylight.io/
   logo: skylight.png
+- name: SmugMug
+  url: http://www.smugmug.com/
+  logo: smugmug.png
 - name: Hailo
   url: https://www.hailoapp.com/
   logo: hailo.png
