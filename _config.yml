@@ -57,8 +57,6 @@ navigation:
     url: /docs/usage/jsx/
   - title: External helpers
     url: /docs/usage/external-helpers/
-- title: Compare
-  url: /docs/compare/
 - title: Try it out
   url: /repl/
 - title: FAQ
