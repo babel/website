@@ -61,6 +61,9 @@
 - name: TipRanks
   url: http://www.tipranks.com/
   logo: tipranks.png
+- name: BoomTown
+  url: http://www.boomtownroi.com
+  logo: boomtown.svg
 - name: Autoprefixer
   url: https://github.com/postcss/autoprefixer/
   logo: autoprefixer.svg
