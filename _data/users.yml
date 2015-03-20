@@ -40,6 +40,9 @@
 - name: SmugMug
   url: http://www.smugmug.com/
   logo: smugmug.png
+- name: Kindling
+  url: https://www.kindlingapp.com/
+  logo: kindling.png
 - name: Hailo
   url: https://www.hailoapp.com/
   logo: hailo.png
