@@ -67,6 +67,9 @@
 - name: TipRanks
   url: http://www.tipranks.com/
   logo: tipranks.png
+- name: HZDG
+  url: http://www.hzdg.com/
+  logo: hzdg.svg
 - name: BoomTown
   url: http://www.boomtownroi.com
   logo: boomtown.svg
