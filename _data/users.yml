@@ -19,6 +19,9 @@
 - name: Ember
   url: http://emberjs.com/
   logo: ember.png
+- name: Slack
+  url: https://slack.com/
+  logo: slack.svg
 - name: Atom
   url: https://atom.io/
   logo: atom.png
