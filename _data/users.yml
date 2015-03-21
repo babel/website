@@ -94,6 +94,9 @@
 - name: WebbyLab
   url: http://webbylab.com
   logo: webby-lab.svg
+- name: REA Group
+  url: http://www.realestate.com.au
+  logo: rea-group.svg
 - name: Harmonic
   url: https://github.com/es6rocks/harmonic/
   logo: harmonic.png
