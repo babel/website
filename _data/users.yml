@@ -91,6 +91,9 @@
 - name: Windsor Circle
   url: http://www.windsorcircle.com/
   logo: windsor-circle.png
+- name: WebbyLab
+  url: http://webbylab.com
+  logo: webby-lab.svg
 - name: Harmonic
   url: https://github.com/es6rocks/harmonic/
   logo: harmonic.png
