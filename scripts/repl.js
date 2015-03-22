@@ -420,14 +420,26 @@
       code: repl.getSource()
     });
 
+    repl.$shortenUrlButton.prop('disabled', true);
+    repl.$shortenUrlButton.css({opacity: 0.2});
+
     repl.shortener.save(state, function (err, id){
+      repl.$shortenUrlButton.prop('disabled', false);
+      repl.$shortenUrlButton.css({opacity: 1});
+
       if (err) {
         console.error('It seems saving isn\'t working for you.  Please report it here: https://github.com/babel/babel.github.io/issues/new');
         console.error(err);
         alert('Could not shorten url, see developer console console.');
         return;
       }
+
       UriUtils.updateQuery({short: id});
+
+      repl.$shortenUrlButton.css({color: '#70ff70'});
+      setTimeout(function (){
+        repl.$shortenUrlButton.css({color: ''});
+      }, 1500);
     });
   }
 
