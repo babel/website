@@ -79,6 +79,9 @@
 - name: BoomTown
   url: http://www.boomtownroi.com
   logo: boomtown.svg
+- name: Codecademy
+  url: http://www.codecademy.com
+  logo: codecademy.svg
 - name: Autoprefixer
   url: https://github.com/postcss/autoprefixer/
   logo: autoprefixer.svg
