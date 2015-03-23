@@ -22,6 +22,9 @@
 - name: Slack
   url: https://slack.com/
   logo: slack.svg
+- name: Ghost
+  url: https://ghost.org/
+  logo: ghost.svg
 - name: Atom
   url: https://atom.io/
   logo: atom.png
