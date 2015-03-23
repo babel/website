@@ -112,6 +112,9 @@
 - name: REA Group
   url: http://www.realestate.com.au
   logo: rea-group.svg
+- name: Adfinis SyGroup AG
+  url: https://adfinis-sygroup.ch/
+  logo: adfinis-sygroup-ag.png
 - name: Harmonic
   url: https://github.com/es6rocks/harmonic/
   logo: harmonic.png
