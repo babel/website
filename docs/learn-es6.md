@@ -614,6 +614,7 @@ c["key"] === undefined
 </blockquote>
 
 ### Subclassable Built-ins
+
 In ES6, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
 
 ```js
@@ -626,6 +627,14 @@ var arr = new MyArray();
 arr[1] = 12;
 arr.length == 2
 ```
+
+<blockquote class="babel-callout babel-callout-warning">
+  <h4>Partial support</h4>
+  <p>
+    Many built-ins such as <code>Date</code>, <code>Array</code> and <code>Error</code> cannot be subclassed due to limitations in ES5 engines.
+    Built-in subclassability should be evaluated on a case-by-case basis as classes such as `HTMLElement` <strong>can</strong> be subclassed.
+  </p>
+</blockquote>
 
 ### Math + Number + String + Object APIs
 
