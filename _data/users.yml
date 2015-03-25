@@ -1,6 +1,9 @@
 - name: CloudFlare
   url: https://cloudflare.com/
   logo: cloudflare.png
+- name: Netflix
+  url: https://www.netflix.com/
+  logo: netflix.svg
 - name: Yahoo!
   url: https://yahoo.com/
   logo: yahoo.png
