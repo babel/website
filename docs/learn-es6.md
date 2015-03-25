@@ -631,7 +631,8 @@ arr.length == 2
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Partial support</h4>
   <p>
-    Built-in subclassability should be evaluated on a case-by-case basis as classes such as <code>HTMLElement</code> <strong>can</strong> be subclassed while many such as <code>Date</code>, <code>Array</code> and <code>Error</code> <strong>cannot</strong> be due to ES5 engine limitations.
+    Many built-ins such as <code>Date</code>, <code>Array</code> and <code>Error</code> cannot be subclassed due to limitations in ES5 engines.
+    Built-in subclassability should be evaluated on a case-by-case basis as classes such as `HTMLElement` <strong>can</strong> be subclassed.
   </p>
 </blockquote>
 
