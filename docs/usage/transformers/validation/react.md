@@ -29,7 +29,7 @@ SyntaxError: stdin: Line 1: Did you mean "react"?
 
 ## Blacklisting
 
-For one reason or another you may want to use the module name `React. You can do this
+For one reason or another you may want to use the module name `React`. You can do this
 by blacklisting the `validation.react` transformer:
 
 ```javascript
