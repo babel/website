@@ -19,6 +19,12 @@
 - name: Ember
   url: http://emberjs.com/
   logo: ember.png
+- name: Slack
+  url: https://slack.com/
+  logo: slack.svg
+- name: Ghost
+  url: https://ghost.org/
+  logo: ghost.svg
 - name: Atom
   url: https://atom.io/
   logo: atom.png
@@ -37,6 +43,9 @@
 - name: Skylight
   url: https://www.skylight.io/
   logo: skylight.png
+- name: Discourse
+  url: http://www.discourse.org/
+  logo: discourse.png
 - name: SmugMug
   url: http://www.smugmug.com/
   logo: smugmug.png
@@ -67,9 +76,15 @@
 - name: TipRanks
   url: http://www.tipranks.com/
   logo: tipranks.png
+- name: HZDG
+  url: http://www.hzdg.com/
+  logo: hzdg.svg
 - name: BoomTown
   url: http://www.boomtownroi.com
   logo: boomtown.svg
+- name: Codecademy
+  url: http://www.codecademy.com
+  logo: codecademy.svg
 - name: Autoprefixer
   url: https://github.com/postcss/autoprefixer/
   logo: autoprefixer.svg
@@ -91,6 +106,15 @@
 - name: Windsor Circle
   url: http://www.windsorcircle.com/
   logo: windsor-circle.png
+- name: WebbyLab
+  url: http://webbylab.com
+  logo: webby-lab.svg
+- name: REA Group
+  url: http://www.realestate.com.au
+  logo: rea-group.svg
+- name: Adfinis SyGroup AG
+  url: https://adfinis-sygroup.ch/
+  logo: adfinis-sygroup-ag.png
 - name: Harmonic
   url: https://github.com/es6rocks/harmonic/
   logo: harmonic.png

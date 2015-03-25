@@ -13,7 +13,7 @@ redirect_from:
   <h4>Find your guide</h4>
   <p>
     It doesn't matter if you're using Node.js or Rails, Gulp or Grunt, there's likely a guide on
-    this page to help guide you. Go ahead and <span class="label label-info">&#8984; + F</span>
+    this page to help guide you. Go ahead and <span class="label label-info">Ctrl + F</span> or <span class="label label-info">&#8984; + F</span>
     whatever you're looking for. If it doesn't happen to be on this page you might want to stop by
     our <a href="https://gitter.im/babel/babel">support chat</a>.
   </p>
