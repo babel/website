@@ -4,6 +4,9 @@
 - name: Netflix
   url: https://www.netflix.com/
   logo: netflix.svg
+- name: Mozilla
+  url: https://www.mozilla.org/
+  logo: mozilla.svg
 - name: Yahoo!
   url: https://yahoo.com/
   logo: yahoo.png
