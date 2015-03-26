@@ -284,7 +284,7 @@ interface Iterable {
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support Iterators you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to use Iterators you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
   </p>
 </blockquote>
 
@@ -333,7 +333,7 @@ interface Generator extends Iterator {
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support Generators you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to use Generators you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
   </p>
 </blockquote>
 
@@ -474,7 +474,7 @@ System.set("jquery", Module({$: $})); // WARNING: not yet finalized
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Additional polyfill needed</h4>
   <p>
-    Since babel defaults to using common.js modules, it does not include the
+    Since Babel defaults to using common.js modules, it does not include the
     polyfill for the module loader API. Get it
     <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
   </p>
@@ -483,7 +483,7 @@ System.set("jquery", Module({$: $})); // WARNING: not yet finalized
 <blockquote class="babel-callout babel-callout-info">
   <h4>Using Module Loader</h4>
   <p>
-    In order to use this, you'll need to tell babel to use the
+    In order to use this, you'll need to tell Babel to use the
     <code>system</code> module formatter. Also be sure to check out
     <a href="https://github.com/systemjs/systemjs">System.js</a>
   </p>
@@ -522,7 +522,7 @@ ws.add({ data: 42 });
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support Maps, Sets, WeakMaps, and WeakSets in all environments you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to support Maps, Sets, WeakMaps, and WeakSets in all environments you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
   </p>
 </blockquote>
 
@@ -623,7 +623,7 @@ c["key"] === undefined
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support Symbols you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to support Symbols you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
   </p>
 </blockquote>
 
@@ -680,7 +680,7 @@ Object.assign(Point, { origin: new Point(0,0) })
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Limited support from polyfill</h4>
   <p>
-    Most of these APIs are supported by the babel <a href="/docs/usage/polyfill">polyfill</a>. However, certain
+    Most of these APIs are supported by the Babel <a href="/docs/usage/polyfill">polyfill</a>. However, certain
     features are omitted for various reasons (e.g.
     <code>String.prototype.normalize</code> needs a lot of additional code to
     support). You can find more polyfills
@@ -699,7 +699,7 @@ Two new numeric literal forms are added for binary (`b`) and octal (`o`).
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Only supports literal form</h4>
   <p>
-    babel is only able to transform <code>0o767</code> and not
+    Babel is only able to transform <code>0o767</code> and not
     <code>Number("0o767")</code>.
   </p>
 </blockquote>
@@ -730,7 +730,7 @@ var p = timeout(1000).then(() => {
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support Promises you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to support Promises you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
   </p>
 </blockquote>
 
@@ -758,7 +758,7 @@ instance.c; // 42
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support the Reflect API you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to use the Reflect API you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
   </p>
 </blockquote>
 
