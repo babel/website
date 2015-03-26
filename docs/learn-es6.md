@@ -281,6 +281,13 @@ interface Iterable {
 }
 ```
 
+<blockquote class="babel-callout babel-callout-info">
+  <h4>Support via polyfill</h4>
+  <p>
+    In order to support Iterators you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
+  </p>
+</blockquote>
+
 ### Generators
 
 Generators simplify iterator-authoring using `function*` and `yield`. A function
@@ -322,6 +329,13 @@ interface Generator extends Iterator {
     throw(exception: any);
 }
 ```
+
+<blockquote class="babel-callout babel-callout-info">
+  <h4>Support via polyfill</h4>
+  <p>
+    In order to support Generators you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
+  </p>
+</blockquote>
 
 ### Comprehensions
 
@@ -740,6 +754,13 @@ function C(a, b){
 var instance = Reflect.construct(C, [20, 22]);
 instance.c; // 42
 ```
+
+<blockquote class="babel-callout babel-callout-info">
+  <h4>Support via polyfill</h4>
+  <p>
+    In order to support the Reflect API you must include the babel <a href="/docs/usage/polyfill">polyfill</a>.
+  </p>
+</blockquote>
 
 ### Tail Calls
 
