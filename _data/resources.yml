@@ -1,0 +1,568 @@
+- title: "ECMAScript 6 Draft"
+  creator: Ecma International
+  url: https://people.mozilla.org/~jorendorff/es6-draft.html
+  description: |
+    This is not the official ECMAScript Language Specification. This is a draft
+    of the next edition of the standard.
+  tags:
+    - spec
+    - draft
+    - es6
+- title: "ECMAScript 6 compatibility table"
+  creator: Kangax, Webbedspace, and other contributors
+  url: https://kangax.github.io/compat-table/es6/
+  description: |
+    Compatibility table covering ES6 support of browsers, transpilers, and
+    others.
+  tags:
+    - tool
+    - table
+    - chart
+    - es6
+    - compatibility
+    - support
+- title: "Babel: Beyond the Basics"
+  creator: Sebastian McKenzie
+  url: https://www.youtube.com/watch?v=F1BIeVe99EQ
+  description: |
+    A talk from the creator of Babel explaining some of the more advanced topics
+    in Babel, and some of the magical things it can do.
+  tags:
+    - babel
+    - talk
+    - video
+    - advanced
+    - transpiler
+- title: "Using the ES6 transpiler Babel on Node.js"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2015/03/babel-on-node.html
+  description: |
+    This blog post explains how to use the ES6 transpiler Babel with Node.js.
+    You can download the code shown in this post on GitHub. For further
+    information on ECMAScript 6, consult the ebook “Exploring ES6”.
+  tags:
+    - babel
+    - article
+    - blog post
+    - how to
+    - node
+    - es6
+- title: "The destructuring algorithm in ECMAScript 6"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2015/03/destructuring-algorithm.html
+  description: |
+    This blog post looks at destructuring from a different angle: as a recursive
+    matching algorithm. At the end, I’ll use this new knowledge to explain one
+    especially tricky case of destructuring.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - destructuring
+- title: "No promises: asynchronous JavaScript with only generators"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2015/03/no-promises.html
+  description: |
+    Two ECMAScript 6 features enable an intriguing new style of asynchronous
+    JavaScript code: promises and generators. This blog post explains this new
+    style and presents a way of using it without promises.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - generators
+    - async
+- title: "Iterables and iterators in ECMAScript 6"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2015/02/es6-iteration.html
+  description: |
+    ECMAScript 6 introduces a new interface for iteration, Iterable. This blog
+    post explains how it works, which language constructs consume data via it
+    (e.g., the new for-of loop) and which sources provide data via it (e.g.,
+    arrays).
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - iterators
+    - iterable
+    - arrays
+- title: "Classes in ECMAScript 6 (final semantics)"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2015/02/es6-classes-final.html
+  description: |
+    Recently, TC39 decided on the final semantics of classes in ECMAScript 6.
+    This blog post explains how their final incarnation works. The most
+    significant recent changes were related to how subclassing is handled.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - classes
+    - inheritance
+- title: "Variables and scoping in ECMAScript 6"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2015/02/es6-scoping.html
+  description: |
+    This blog post examines how variables and scoping are handled in
+    ECMAScript 6.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - variables
+    - let
+    - const
+    - scoping
+    - tdz
+    - temporal dead zone
+- title: "New string features in ECMAScript 6"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2015/01/es6-strings.html
+  description: |
+    The blog post covers new features of strings in ECMAScript 6 (ES6).
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - string
+    - template
+    - unicode
+    - interpolation
+- title: "Destructuring and parameter handling in ECMAScript 6"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2015/01/es6-destructuring.html
+  description: |
+    ECMAScript 6 (ES6) supports destructuring, a convenient way to extract
+    values from data stored in (possibly nested) objects and arrays. This blog
+    post describes how it works and gives examples of its usefulness.
+    Additionally, parameter handling receives a significant upgrade in ES6: it
+    becomes similar to and supports destructuring, which is why it is explained
+    here, too.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - destructuring
+- title: "HTML templating with ES6 template strings"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2015/01/template-strings-html.html
+  description: |
+    Despite their name, template strings in ECMAScript 6 (ES6) are more like a
+    different kind of function call than a mechanism for defining templates.
+    This blog post explains how you can still use them for HTML templating. It
+    is based on an idea by Claus Reinke.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - string
+    - template
+    - html
+    - tagged
+- title: "ECMAScript 6 sets: union, intersection, difference"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2015/01/es6-set-operations.html
+  description: |
+    A recent question by Dmitry Moskowski reminded me: ECMAScript 6 sets have no
+    methods for computing the union (e.g. addAll), intersection (e.g. retainAll)
+    or difference (e.g. removeAll). This blog post explains how to work around
+    that limitation.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - set
+- title: "ECMAScript 6: maps and sets"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2015/01/es6-maps-sets.html
+  description: |
+    Among others, the following four data structures are new in ECMAScript 6:
+    Map, WeakMap, Set and WeakSet. This blog post explains how they work.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - map
+    - set
+    - weakmap
+    - weakset
+- title: "Symbols in ECMAScript 6"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2014/12/es6-symbols.html
+  description: |
+    Symbols are a new primitive type in ECMAScript 6. This blog post explains
+    how they work.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - symbols
+- title: "ECMAScript 6: new OOP features besides classes"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2014/12/es6-oop.html
+  description: |
+    Classes are the major new OOP feature in ECMAScript 6. However, it also
+    includes new features for object literals and new utility methods in Object.
+    This blog post describes them.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - classes
+    - oop
+    - objects
+    - symbols
+    - iterators
+- title: "One JavaScript: avoiding versioning in ECMAScript 6"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2014/12/one-javascript.html
+  description: |
+    What is the best way to add new features to a language? This blog post
+    describes the approach taken by ECMAScript 6, the next version of
+    JavaScript. It is called One JavaScript, because it avoids versioning.
+  tags:
+    - article
+    - blog post
+    - es6
+    - strict mode
+    - modules
+- title: "Meta programming with ECMAScript 6 proxies"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2014/12/es6-proxies.html
+  description: |
+    This blog post explains the ECMAScript 6 (ES6) feature proxies. Proxies
+    enable you to intercept and customize operations performed on objects (such
+    as getting properties). They are a meta programming feature.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - proxies
+    - meta programming
+- title: "ECMAScript 6 promises (1/2): foundations"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2014/09/es6-promises-foundations.html
+  description: |
+    This blog post is an introduction to asynchronous programming via promises
+    in general and the ECMAScript 6 (ES6) promise API in particular. It is
+    second in a series of two posts – part one explains foundations of
+    asynchronous programming (which you may need to learn in order to fully
+    understand this post).
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - promises
+    - asynchronous
+- title: "ECMAScript 6 promises (2/2): the API"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2014/10/es6-promises-api.html
+  description: |
+    This blog post is an introduction to asynchronous programming via promises
+    in general and the ECMAScript 6 (ES6) promise API in particular. It is
+    second in a series of two posts – part one explains foundations of
+    asynchronous programming (which you may need to learn in order to fully
+    understand this post).
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - promises
+    - asynchronous
+- title: "ECMAScript 6 modules: the final syntax"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2014/09/es6-modules-final.html
+  description: |
+    At the end of July 2014, TC39 had another meeting, during which the last
+    details of the ECMAScript 6 (ES6) module syntax were finalized. This blog
+    post gives an overview of the complete ES6 module system.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - modules
+- title: "How should I format the ECMAScript 6 generator asterisk?"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2014/08/formatting-generator-asterisk.html
+  description: |
+    The asterisk (*) is used by ECMAScript 6 to mark generator-related
+    constructs. In each case, you have considerable freedom w.r.t. adding or
+    omitting whitespace before and after this character. This blog post explains
+    how to best format the asterisk and why.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - generators
+- title: "Using ECMAScript 6 today"
+  creator: Axel Rauschmayer
+  url: http://www.2ality.com/2014/08/es6-today.html
+  description: |
+    This blog post is an early draft of my upcoming book “Exploring ES6”. It is
+    a TOC-like overview, with links leading to “chapters” with more material.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - babel
+    - traceur
+- title: "Replace CoffeeScript with ES6"
+  creator: Blake Williams
+  url: https://robots.thoughtbot.com/replace-coffeescript-with-es6
+  description: |
+    I’ve been looking into ES6, the next version of JavaScript, and finally got
+    a chance to use it on a project. In the brief amount of time I was able to
+    use it I’ve found that it solves a lot of the problems that CoffeeScript is
+    trying to solve without drastic syntax changes.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - coffeescript
+- title: "ES6 on io.js"
+  creator: io.js
+  url: https://iojs.org/en/es6.html
+  description: |
+    io.js is built against modern versions of V8. By keeping up-to-date with the
+    latest releases of this engine we ensure new features from the JavaScript
+    ECMA-262 specification are brought to io.js developers in a timely manner,
+    as well as continued performance and stability improvements.
+  tags:
+    - article
+    - blog post
+    - es6
+    - iojs
+- title: "ES6: The Awesome Parts"
+  creator: Domenic Denicola
+  url: http://www.slideshare.net/domenicdenicola/es6-the-awesome-parts
+  description: |
+    The next version of JavaScript, ES6, is starting to arrive. Many of its
+    features are simple enhancements to the language we already have: things
+    like arrow functions, class syntax, and destructuring. But other features
+    will change the way we program JavaScript, fundamentally expanding the
+    capabilities of the language and reshaping our future codebases. In this
+    talk we'll focus on two of these, discovering the the myriad possibilities
+    of generators and the many tricks you can pull of with template strings.
+  tags:
+    - slides
+    - es6
+    - overview
+- title: "Getting Literal With ES6 Template Strings"
+  creator: Addy Osmani
+  url: http://updates.html5rocks.com/2015/01/ES6-Template-Strings
+  description: |
+    Strings in JavaScript have been historically limited, lacking the
+    capabilities one might expect coming from languages like Python or Ruby. ES6
+    Template Strings (available in Chrome 41+), fundamentally change that. They
+    introduce a way to define strings with domain-specific languages (DSLs).
+  tags:
+    - article
+    - blog post
+    - es6
+    - template strings
+- title: "JavaScript Modules the ES6 Way"
+  creator: Jack Franklin
+  url: http://24ways.org/2014/javascript-modules-the-es6-way/
+  description: |
+    JavaScript admittedly has plenty of flaws, but one of the largest and most
+    prominent is the lack of a module system: a way to split up your application
+    into a series of smaller files that can depend on each other to function
+    correctly.
+  tags:
+    - article
+    - blog post
+    - es6
+    - modules
+- title: "Practical Workflows for ES6 Modules"
+  creator: Guy Bedford
+  url: http://guybedford.com/practical-workflows-for-es6-modules
+  description: |
+    ES6 modules are set to become the future replacement for the AMD and
+    CommonJS module formats. They are defined by the current ES6 Specification
+    and will be implemented in JavaScript engines in the future in both the
+    browser and the server. This article covers a variety of practical workflows
+    for implementing ES6 modules. These approaches are very new, and there will
+    still be edge cases, but these principles provide a path forward towards ES6
+    for use in both new and existing projects today.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - modules
+    - workflow
+- title: ES6 Tools
+  creator: Addy Osmani
+  url: https://github.com/addyosmani/es6-tools
+  description: |
+    An aggregation of tooling for using ES6 today
+  tags:
+    - list
+    - es6
+    - tooling
+    - transpilers
+    - build tools
+    - boilerplates
+- title: JavaScript Modules and Dependencies with jspm
+  creator: Jack Franklin
+  url: http://javascriptplayground.com/blog/2014/11/js-modules-jspm-systemjs/
+  description: |
+    jspm is a package manager for JavaScript applications that sits on top of
+    the SystemJS. Both were written and are maintained by Guy Bedford. SystemJS
+    builds on top of the es6-module-loader and adds the capability to load in
+    modules that are defined using a variety of syntaxes
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - modules
+    - jspm
+    - systemjs
+    - build tools
+- title: "Using ES6 Modules Today"
+  creator: Guy Bedford
+  url: http://guybedford.com/es6-modules-today
+  description: |
+    ES6 modules are set to form the standard module format for the web. Instead
+    of waiting around for browsers to support the new syntax, it is now possible
+    to use them directly in all browsers today using the ES6 loader polyfill.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - modules
+    - loaders
+    - polyfill
+- title: "JavaScript Fundamentals for ES6"
+  creator: Pluralsight Training
+  url: http://www.pluralsight.com/courses/javascript-fundamentals-es6
+  description: |
+    This course covers the features of ECMAScript 6, the next version of
+    JavaScript, and how you can use them today.
+  tags:
+    - course
+    - es6
+- title: Writing AngularJS Apps Using ES6
+  creator: Ravi Kiran
+  url: http://www.sitepoint.com/writing-angularjs-apps-using-es6/
+  description: |
+    As many of you are aware, ECMAScript 6 is in its draft state now and is
+    expected to be finalized some time this year. But it already caught a lot of
+    attention in the community and browsers have already started implementing
+    it. We also have a number of transpilers like Traceur, 6to5, and many that
+    convert ES6 code to ES5 compatible code. Community members have started
+    playing around ES6 and many of them are blogging what they learn.
+    SitePoint’s JavaScript channel also has a good number of articles describing
+    different features of ES6.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - angular
+- title: "ES6 and ES7 the future of Javascript"
+  creator: Brendan Eich
+  url: https://www.youtube.com/watch?v=6AytbSdWBKg
+  description: |
+    In this talk, I will dive into the extensions to the JavaScript language on
+    track for inclusion in ES6, and then delve into the post-ES6 proposals
+    slated for ES7 and beyond. Classes, modules, arrow functions, destructuring,
+    lexical binding, rest and default parameters, promises, generators, proxies
+    and more are coming to browser-based JS Virtual Machines soon, and of course
+    to Node.js via V8. Async functions, async generators, typed objects, value
+    objects, SIMD intrinsics, and more are likely in ES7 or a follow-on release.
+  tags:
+    - talk
+    - video
+    - es6
+    - es7
+- title: "ECMAscript 6 Lessons"
+  creator: Egghead.io
+  url: https://egghead.io/technologies/es6
+  description: |
+    ECMAscript 6 is the next generation JavaScript standard. While it isn't the
+    official standard yet, it is seeing support on several platforms.
+  tags:
+    - course
+    - es6
+- title: Scratch JS
+  creator: Rich Gilbank
+  url: https://chrome.google.com/webstore/detail/scratch-js/alploljligeomonipppgaahpkenfnfkn?hl=en-US
+  description: |
+    Run JS in Chrome from your transpiler of choice! It's a Chrome DevTools
+    extension that allows you to execute ES6/ESNext/ES2015 code in the context
+    of the page you're viewing, as though it were the standard DevTools console.
+  tags:
+    - chrome extension
+    - babel
+    - traceur
+- title: "JavaScript ES6 Variable Declarations with let and const"
+  creator: Jordan Kasper
+  url: https://strongloop.com/strongblog/es6-variable-declarations/
+  description: |
+    In this article I wanted to cover these two new keywords for declaring
+    variables and differentiate them from var. And possibly more importantly, I
+    want to identify what some folks are considering the new standard for
+    declaring variables in ES6. The basic idea here is that let should, in time,
+    replace var as the default declaration keyword. In fact, according to some,
+    var should simply not be used at all in new code. The const keyword should
+    be used for any variable where the reference should never be changed, and
+    let for anything else.
+  tags:
+    - article
+    - blog post
+    - guide
+    - es6
+    - let
+    - const
+    - variables
+- title: "ES6 JavaScript: The less weird parts"
+  creator: David Luecke
+  url: https://medium.com/@daffl/es6-javascript-the-less-weird-parts-3103a9c821ae
+  description: |
+    A couple of months ago I wrote about “JavaScript — The weird parts”. It was
+    very well received and I thank everybody who recommended, shared and
+    commented. In this short follow-up I’d like to go over some of those weird
+    parts and how ES6 — the next version of JavaScript — makes some of those
+    things easier.
+  tags:
+    - article
+    - blog post
+    - opinion
+    - es6
+- title: Ember CLI
+  creator: EmberJS
+  url: http://www.ember-cli.com/
+  description: |
+    The command line interface for ambitious web applications. Ember CLI is an
+    Ember.js command line utility which provides a fast asset pipeline powered
+    by Broccoli and strong conventional project structure.
+  tags:
+    - tool
+    - build tool
+    - scafolding
+    - es6
+    - babel
+    - ember
