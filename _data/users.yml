@@ -100,6 +100,9 @@
 - name: SassDoc
   url: http://sassdoc.com/
   logo: sassdoc.svg
+- name: Trunk Club
+  url: https://trunkclub.com
+  logo: trunk-club.svg
 - name: DotLabel
   url: http://dotlabel.co.uk/
   logo: dotlabel.png
