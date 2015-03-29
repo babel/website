@@ -6,7 +6,7 @@ permalink: /docs/usage/jsx/
 ---
 
 <p class="lead">
-  babel has built-in support for React v0.12. Tags are automatically transformed
+  babel has built-in support for React v0.12 and v0.13. Tags are automatically transformed
   to their equivalent <code>React.createElement(...)</code> and
   <code>displayName</code> is automatically inferred and added to all
   <code>React.createClass</code> calls. Completely compatible with the official
