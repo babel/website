@@ -296,8 +296,7 @@ iterators which include additional `next` and `throw`. These enable values to
 flow back into the generator, so `yield` is an expression form which returns a
 value (or throws).
 
-Note: Can also be used to enable ‘await’-like async programming, see also ES7
-`await` proposal.
+Note: Can also be used to enable ‘await’-like async programming, see also ES7 `await` [proposal](https://github.com/lukehoban/ecmascript-asyncawait).
 
 ```js
 var fibonacci = {
