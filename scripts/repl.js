@@ -1,9 +1,14 @@
 (function(babel, $, _, ace, window) {
 
+  // we load it async, and it's a UMD so it checks for module/exports
+  // it would require automation or dialup internet for this to potentially affect a user
+  var hackToAllowCommonVarWhileLoadingParse = false;
+
   /* Throw meaningful errors for getters of commonjs. */
   ["module", "exports", "require"].forEach(function(commonVar){
     Object.defineProperty(window, commonVar, { 
-      get: function () { 
+      get: function () {
+        if (hackToAllowCommonVarWhileLoadingParse) return undefined;
         throw new Error(commonVar + " is not supported in the browser, you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
       }
     });
@@ -54,6 +59,86 @@
     }).join('&');
 
     window.location.hash = '?' + query;
+  };
+
+  /*
+   * Utils for working with parse.com for persistence
+   */
+  function ParseUtils () {}
+
+  var __parseLoadingCallbacks = null;
+  ParseUtils.prototype.load = function () {
+    if (__parseLoadingCallbacks) return;
+    __parseLoadingCallbacks = [];
+
+    var url = '//www.parsecdn.com/js/parse-1.3.5.min.js';
+    var script = document.createElement('script');
+    script.src = url;
+
+    hackToAllowCommonVarWhileLoadingParse = true;
+    script.addEventListener('load', function () {
+      Parse.initialize("ao4bnVLH8mmU1VUxDRFMzDDljabE0zJKhKJGQkZi", "1GnvnA6s9YgHVMUCyyQDxwJLkcnhRjhXvgnY6DGV");
+      hackToAllowCommonVarWhileLoadingParse = false;
+
+      __parseLoadingCallbacks.forEach(function (cb) {
+        cb();
+      });
+
+      __parseLoadingCallbacks = 'DONE';
+    });
+    document.head.appendChild(script);
+  };
+
+  ParseUtils.prototype.addLoadCallback = function (cb) {
+    __parseLoadingCallbacks.push(cb);
+  };
+
+  ParseUtils.prototype.afterLoad = function (cb) {
+    var self = this;
+
+    var callCb = function(){
+      var ReplItem = Parse.Object.extend("ReplItem");
+      cb.call(self, ReplItem);
+    };
+
+    if (__parseLoadingCallbacks === 'DONE') {
+      setTimeout(callCb, 0);
+    }
+    else {
+      self.load();
+      self.addLoadCallback(callCb);
+    }
+  };
+
+  ParseUtils.prototype.save = function (data, cb) {
+    this.afterLoad(function(ReplItem){
+      var obj = new ReplItem();
+
+      obj.save(data).then(function (obj) {
+        cb(null, obj.id);
+      }, function (err) {
+        cb(err);
+      });
+    });
+  };
+
+  ParseUtils.prototype.get = function (id, cb) {
+    this.afterLoad(function(ReplItem){
+      var query = new Parse.Query(ReplItem);
+      query.get(id)
+        .then(function (data) {
+        // give us a plain object without anything parse specific, making
+        // .get's output the same as .save's input
+        var cleanData = data.toJSON();
+        delete cleanData.objectId;
+        delete cleanData.createdAt;
+        delete cleanData.updatedAt;
+
+        cb(null, cleanData);
+      }, function (err) {
+        cb(err);
+      })
+    });
   };
 
   /*
@@ -154,6 +239,7 @@
    */
   function REPL () {
     this.storage = new StorageService();
+    this.shortener = new ParseUtils();
     var state = this.storage.get('replState') || {};
     _.assign(state, UriUtils.parseQuery());
 
@@ -170,6 +256,7 @@
     this.$errorReporter = $('.babel-repl-errors');
     this.$consoleReporter = $('.babel-repl-console');
     this.$toolBar = $('.babel-repl-toolbar');
+    this.$shortenUrlButton = $('#button-shorten-url');
   }
 
   REPL.prototype.clearOutput = function () {
@@ -215,7 +302,7 @@
     }
   };
 
-  REPL.prototype.evaluate = function(code) {
+  REPL.prototype.evaluate = function (code)  {
     var capturingConsole = Object.create(console);
     var $consoleReporter = this.$consoleReporter;
     var buffer = [];
@@ -231,7 +318,7 @@
       if (done) flush();
     }
 
-    capturingConsole.clear = function() {
+    capturingConsole.clear = function () {
       buffer = [];
       flush();
     };
@@ -243,7 +330,7 @@
 
     capturingConsole.log = 
     capturingConsole.info = 
-    capturingConsole.debug = function() {
+    capturingConsole.debug = function () {
       if (this !== capturingConsole) { return; }
 
       var args = Array.prototype.slice.call(arguments);
@@ -284,7 +371,34 @@
   /*
    * Initialize the REPL
    */
-  var repl = new REPL();
+  var initialQuery = UriUtils.parseQuery();
+  if (initialQuery && initialQuery.short) {
+    new ParseUtils().get(initialQuery.short, function (err, data) {
+      if (err) {
+        alert('Could not load an item with that id');
+        window.location.hash = '';
+        initRepl();
+        return;
+      }
+
+      UriUtils.updateQuery(data);
+      initRepl();
+    });
+  }
+  else {
+    initRepl();
+  }
+
+  var repl;
+  function initRepl(){
+    repl = new REPL();
+
+    repl.input.on('change', _.debounce(onSourceChange, 500));
+    repl.$toolBar.on('change', onSourceChange);
+    repl.$shortenUrlButton.on('click', onRequestShorten);
+
+    repl.compile();
+  }
 
   function onSourceChange () {
     var error;
@@ -301,10 +415,33 @@
     if (error) throw error;
   }
 
-  repl.input.on('change', _.debounce(onSourceChange, 500));
-  repl.$toolBar.on('change', onSourceChange);
+  function onRequestShorten () {
+    var state = _.assign(repl.options, {
+      code: repl.getSource()
+    });
 
-  repl.compile();
+    repl.$shortenUrlButton.prop('disabled', true);
+    repl.$shortenUrlButton.css({opacity: 0.2});
+
+    repl.shortener.save(state, function (err, id){
+      repl.$shortenUrlButton.prop('disabled', false);
+      repl.$shortenUrlButton.css({opacity: 1});
+
+      if (err) {
+        console.error('It seems saving isn\'t working for you.  Please report it here: https://github.com/babel/babel.github.io/issues/new');
+        console.error(err);
+        alert('Could not shorten url, see developer console console.');
+        return;
+      }
+
+      UriUtils.updateQuery({short: id});
+
+      repl.$shortenUrlButton.css({color: '#70ff70'});
+      setTimeout(function (){
+        repl.$shortenUrlButton.css({color: ''});
+      }, 1500);
+    });
+  }
 
 
 

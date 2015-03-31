@@ -15,6 +15,14 @@
   }
 }
 
+.babel-repl-button-shorten-url {
+  background: transparent;
+  outline: none;
+  border: none;
+  border-radius: 0;
+  transition: color 0.5s, opacity 0.5s;
+}
+
 .babel-repl-toolbar {
   position: absolute;
   top: 0;
