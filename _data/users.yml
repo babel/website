@@ -31,6 +31,9 @@
 - name: Ghost
   url: https://ghost.org/
   logo: ghost.svg
+- name: Flipboard
+  url: https://flipboard.com/
+  logo: flipboard.svg
 - name: Atom
   url: https://atom.io/
   logo: atom.png
