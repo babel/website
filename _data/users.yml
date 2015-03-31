@@ -64,6 +64,9 @@
 - name: Hailo
   url: https://www.hailoapp.com/
   logo: hailo.png
+- name: Mapbox
+  url: https://www.mapbox.com/
+  logo: mapbox.svg
 - name: Stampsy
   url: http://stampsy.com/
   logo: stampsy.svg
