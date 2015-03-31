@@ -143,7 +143,7 @@ without worrying about where they come from.
 
 Usually babel will place helpers at the top of your file to do common tasks to avoid
 duplicating the code around in the current file. Sometimes these helpers can get a
-little bulky and add unneccessary duplication across files. The `runtime`
+little bulky and add unnecessary duplication across files. The `runtime`
 transformer replaces all the helper calls to a module.
 
 That means that the following code:
