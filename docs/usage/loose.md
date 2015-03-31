@@ -7,9 +7,9 @@ permalink: /docs/usage/loose/
 
 Loose mode enables certain transformers to generate cleaner output that lacks
 specific ES6 edgecases. These edgecases are either unlikely to appear in your
-code or the inclusion of them introduces signifcant overhead.
+code or the inclusion of them introduces significant overhead.
 
-As a result of loose mode code will execute faster and be much readable and
+As a result of loose mode code will execute faster and be much more readable and
 comparable to the original but will deviate from the spec in slight ways.
 
 <blockquote class="babel-callout babel-callout-warning">

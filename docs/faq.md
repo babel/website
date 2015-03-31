@@ -95,7 +95,7 @@ Simply disable it and reap the benefits of all the other transformers.
 
 ### Feature-rich
 
-The babel featureset is very comprehensive, supporting every ES6 syntactic feature. With
+The babel feature set is very comprehensive, supporting every ES6 syntactic feature. With
 built-in support for emerging standards such as [Flow](http://flowtype.org) and
 [JSX/React](/docs/usage/jsx) it makes it extremely easy to integrate.
 

@@ -72,7 +72,7 @@ temporary directory.
 
 This will heavily improve with the startup and compilation of your files. There
 are however scenarios where you want to change this behaviour and there are
-environment varaibles exposed to allow you to do this.
+environment variables exposed to allow you to do this.
 
 ### BABEL_CACHE_PATH
 
