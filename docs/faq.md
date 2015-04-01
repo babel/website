@@ -24,7 +24,7 @@ to be spec incompliant.
 Please see [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) and
 [babel/babel/#838](https://github.com/babel/babel/issues/838) for more information.
 
-## Why is `this` and `arguments` being remapped in arrow functions?
+## Why are `this` and `arguments` being remapped in arrow functions?
 
 Arrow functions **are not** synonymous with normal functions. `arguments` and `this` inside arrow functions
 reference their *outer function* for example:
