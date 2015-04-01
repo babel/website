@@ -118,6 +118,9 @@
 - name: ProAppSoft
   url: http://proappsoft.com/
   logo: proappsoft.png
+- name: Front End TV
+  url: http://www.frontend.tv
+  logo: frontend-tv.svg
 - name: Windsor Circle
   url: http://www.windsorcircle.com/
   logo: windsor-circle.png
