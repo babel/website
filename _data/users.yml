@@ -55,6 +55,9 @@
 - name: Discourse
   url: http://www.discourse.org/
   logo: discourse.png
+- name: HubSpot
+  url: http://www.hubspot.com/
+  logo: hubspot.png
 - name: SmugMug
   url: http://www.smugmug.com/
   logo: smugmug.png
