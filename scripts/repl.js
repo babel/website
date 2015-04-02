@@ -122,7 +122,6 @@
    */
   function Options () {
     var $experimental = $('#option-experimental');
-    var $playground = $('#option-playground');
     var $evaluate = $('#option-evaluate');
     var $loose = $('#option-loose-mode');
     var $spec = $('#option-spec');
@@ -130,7 +129,6 @@
     var options = {};
     Object.defineProperties(options, {
       'experimental': $checkbox($experimental),
-      'playground': $checkbox($playground),
       'evaluate': $checkbox($evaluate),
       'loose': $checkbox($loose),
       'spec': $checkbox($spec)
@@ -139,7 +137,6 @@
     // Merge in defaults
     var defaults = {
       experimental : true,
-      playground : false,
       loose : false,
       spec : false,
       evaluate : true
@@ -198,10 +195,8 @@
 
     try {
       transformed = babel.transform(code, {
-        experimental: this.options.experimental,
-        playground: this.options.playground,
+        stage: this.options.experimental ? 0 : 2,
         loose: this.options.loose && "all",
-        optional: this.options.spec && ["spec.typeofSymbol", "es6.blockScopingTDZ"],
         filename: 'repl'
       });
     } catch (err) {
