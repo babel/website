@@ -80,11 +80,11 @@ In a browser environment you can use a `<script>` tag to inject the `babelHelper
 
 ### Selective builds
 
-You can pass the option `returnUsedHelpers` to `babel.transform()` in order to
+You can pass the option `metadataUsedHelpers` to `babel.transform()` in order to
 get a list of helpers that were used for that file:
 
 ```javascript
-require("babel").transform("code", { returnUsedHelpers: true }).usedHelpers;
+require("babel").transform("code", { metadataUsedHelpers: true }).metadata.usedHelpers;
 ```
 
 This will be an array of helpers that you can then pass to

@@ -48,4 +48,4 @@ $ babel --name=value
 | `stage`                  | `2`                  | Set the [experimental](/docs/usage/experimental) proposal stage. |
 | `compact`                | `"auto"`             | Do not include superfluous whitespace characters and line terminators. When set to `"auto"` compact is set to `true` on input sizes of >100KB. |
 | `comments`               | `true`               | Output comments in generated output. |
-| `returnUsedHelpers`      | `false`              | See [external helpers - selective builds](/docs/usage/external-helpers#selective-builds) for more information. |
+| `metadataUsedHelpers`    | `false`              | See [external helpers - selective builds](/docs/usage/external-helpers#selective-builds) for more information. |
