@@ -16,6 +16,9 @@
 - name: Airbnb
   url: https://www.airbnb.com/
   logo: airbnb.svg
+- name: Reddit
+  url: https://www.reddit.com
+  logo: reddit.png
 - name: Bocoup
   url: http://bocoup.com/
   logo: bocoup.png
