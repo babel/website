@@ -40,6 +40,19 @@ require("babel").transform("code", { optional: ["runtime"] });
 $ babel --optional runtime script.js
 ```
 
+### ES3 version
+
+There's also an `es3` verison of the `runtime` transformer that uses `core-js/client` instead of `core-js`
+which means methods like `Array.isArray` are aliased and included too. This is necessary for IE8 support.
+
+```javascript
+require("babel").transform("code", { optional: ["es3.runtime"] });
+```
+
+```sh
+$ babel --optional es3.runtime script.js
+```
+
 ## Technical details
 
 The `runtime` optional transformer does three things:
@@ -49,7 +62,7 @@ The `runtime` optional transformer does three things:
  - Removes the inline babel helpers and uses the module `babel-runtime/helpers` instead.
 
 What does this actually mean though? Basically, you can use built-ins such as `Promise`,
-`Set`, `Symbol` etc as well use as all the babel features that require a polyfill seamlessly,
+`Set`, `Symbol` etc as well use as all the Babel features that require a polyfill seamlessly,
 without global pollution, making it extremely suitable for libraries.
 
 ### Regenerator aliasing
@@ -85,7 +98,7 @@ function bar() {
 This isn't ideal as then you have to include the regenerator runtime which
 pollutes the global scope.
 
-Instead what the `runtime` transformer does it transpile that to:
+Instead what the `runtime` transformer does it compile that to:
 
 ```javascript
 "use strict";

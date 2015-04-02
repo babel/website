@@ -7,12 +7,12 @@ permalink: /docs/usage/external-helpers/
 
 ## Details
 
-babel has a few helper functions that'll be placed at the top of the generated
+Babel has a few helper functions that'll be placed at the top of the generated
 code if needed so it's not inlined multiple times throughout that file. This may
 become an issue if you have multiple files, especially when you're sending them
 to the browser. gzip alleviates most of this concern but it's still not ideal.
 
-You can tell babel to not place any declarations at the top of your files and
+You can tell Babel to not place any declarations at the top of your files and
 instead just point them to a reference contained within the external helpers.
 
 ## Usage
@@ -80,11 +80,11 @@ In a browser environment you can use a `<script>` tag to inject the `babelHelper
 
 ### Selective builds
 
-You can pass the option `returnUsedHelpers` to `babel.transform()` in order to
+You can pass the option `metadataUsedHelpers` to `babel.transform()` in order to
 get a list of helpers that were used for that file:
 
 ```javascript
-require("babel").transform("code", { returnUsedHelpers: true }).usedHelpers;
+require("babel").transform("code", { metadataUsedHelpers: true }).metadata.usedHelpers;
 ```
 
 This will be an array of helpers that you can then pass to

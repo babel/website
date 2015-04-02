@@ -1,8 +1,8 @@
 ---
 layout: docs
-title: spec.typeofSymbol
-description: How to use the spec.typeofSymbol transformer.
-permalink: /docs/usage/transformers/spec/typeof-symbol/
+title: es6.spec.symbols
+description: How to use the es6.spec.symbols transformer.
+permalink: /docs/usage/transformers/es6/spec-symbols/
 ---
 
 ES6 introduces a new native type called [symbols](/docs/learn-es6#symbols).
@@ -12,11 +12,11 @@ replicates native behaviour. (ie. returning "symbol" for symbols)
 ## Usage
 
 ```javascript
-require("babel").transform("code", { optional: ["spec.typeofSymbol"] });
+require("babel").transform("code", { optional: ["es6.spec.symbols"] });
 ```
 
 ```sh
-$ babel --optional spec.typeofSymbol script.js
+$ babel --optional es6.spec.symbols script.js
 ```
 
 ## Example

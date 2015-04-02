@@ -19,8 +19,30 @@
   img {
     @extend .img-responsive;
   }
+
+  h1, .h1,
+  h2, .h2,
+  h3, .h3 {
+    margin-top: $line-height-computed * 2;
+  }
+
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
+    margin-top: ($line-height-computed / 2) * 2;
+  }
+
+  .babel-callout h4 {
+    margin-top: 0;
+  }
 }
 
+.babel-blog-section-title {
+  margin-top: $line-height-computed * 2;
+  padding-bottom: $line-height-computed;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
 
 .babel-share-buttons {
   font-size: 10px;

@@ -10,9 +10,8 @@ redirect_from:
 
 ## Polyfills
 
-In order for certain features to work they require certain polyfills. You can
-satisfy **all** babel feature requirements by using the included
-[polyfill](/docs/usage/polyfill).
+In order for certain features to work they require certain polyfills. You can satisfy **all**
+Babel feature requirements by using the included [polyfill](/docs/usage/polyfill).
 
 You may alternatively selectively include what you need:
 
@@ -32,11 +31,11 @@ due to limitations in ES5.
 
 ## ES5
 
-Since babel assumes that your code will be ran in an ES5 environment it uses ES5
+Since Babel assumes that your code will be ran in an ES5 environment it uses ES5
 functions. So if you're using an environment that has limited or no support for
 ES5 such as lower versions of IE then using the
 [es5-shim](https://github.com/es-shims/es5-shim) along with the
-[babel polyfill](/docs/usage/polyfill) will add support for these methods.
+[Babel polyfill](/docs/usage/polyfill) will add support for these methods.
 
 ## Internet Explorer
 
@@ -65,7 +64,7 @@ isn't recommended.
 
 #### Modules
 
-By default, when using modules with babel a non-enumerable `__esModule` property
+By default, when using modules with Babel a non-enumerable `__esModule` property
 is exported. This is done through the use of `Object.defineProperty` which is
 unsupported in IE8 and below. A workaround for this is to enable
 [loose mode - modules](/docs/usage/loose/#es6-modules).

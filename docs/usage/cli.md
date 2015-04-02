@@ -7,13 +7,13 @@ redirect_from: /usage.html
 ---
 
 <p class="lead">
-  babel comes with a built-in CLI which can be used to compile files from the
+  Babel comes with a built-in CLI which can be used to compile files from the
   command line.
 </p>
 
 ## Install
 
-Using [npm](https://www.npmjs.com/) you can install babel globally, making it
+Using [npm](https://www.npmjs.com/) you can install Babel globally, making it
 available from the command line.
 
 ```sh

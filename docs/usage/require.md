@@ -5,8 +5,8 @@ description: How to use the require hook.
 permalink: /docs/usage/require/
 ---
 
-One of the ways you can use babel is through the require hook. The require hook
-will bind itself to node's `require` and automatically transpile files on the
+One of the ways you can use Babel is through the require hook. The require hook
+will bind itself to node's `require` and automatically compile files on the
 fly. This is equivalent to CoffeeScript's
 [coffee-script/register](http://coffeescript.org/documentation/docs/register.html).
 
@@ -30,7 +30,7 @@ require("babel/register");
 ```
 
 All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`
-and `.js` will be transformed by babel. The [polyfill](/docs/usage/polyfill) is also automatically required.
+and `.js` will be transformed by Babel. The [polyfill](/docs/usage/polyfill) is also automatically required.
 
 **NOTE:** By default all requires to `node_modules` will be ignored. You can
 override this by passing an ignore regex via:

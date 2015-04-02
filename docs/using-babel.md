@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Using Babel
-description: Guides on how to setup babel in whatever environment you might be working in.
+description: Guides on how to setup Babel in whatever environment you might be working in.
 permalink: /docs/using-babel/
 redirect_from:
  - /plugins.html
@@ -37,8 +37,7 @@ $ babel script.js
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For full documentation on the babel CLI see the
-    <a href="/docs/usage/cli/">usage docs</a>.
+    For full documentation on the Babel CLI see the <a href="/docs/usage/cli/">usage docs</a>.
   </p>
 </blockquote>
 
@@ -53,7 +52,7 @@ $ npm install babel
 **Usage**
 
 All subsequent files required by node with the extensions `.es6`, `.es` and `.js` will
-be transformed by babel. The polyfill specified in [polyfill](/docs/usage/polyfill) is
+be transformed by Babel. The polyfill specified in [polyfill](/docs/usage/polyfill) is
 also automatically required.
 
 ```javascript
@@ -69,8 +68,7 @@ require("babel/register");
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For full documentation on the babel require hook see the
-    <a href="/docs/usage/require/">usage docs</a>.
+    For full documentation on the Babel require hook see the <a href="/docs/usage/require/">usage docs</a>.
   </p>
 </blockquote>
 
@@ -111,7 +109,7 @@ Any files with the extensions `.es6.js`, `.es6`, `.es` and `.jsx` will be precom
     <a href="https://github.com/josh/sprockets-es6/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -147,7 +145,7 @@ require "sprockets/es6"
     them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -183,7 +181,7 @@ var scriptTree = babelTranspiler(inputTree, options);
     <a href="https://github.com/babel/babelify/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -251,7 +249,7 @@ browserify().transform(babelify.configure({
     <a href="https://github.com/mikach/requirejs-babel/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -293,7 +291,7 @@ Also it can be optimized by r.js tool.
     <a href="https://github.com/babel/babel-brunch/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -327,7 +325,7 @@ plugins:
     <a href="https://github.com/babel/duo-babel/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -363,7 +361,7 @@ Duo(root)
     <a href="https://github.com/babel/gobble-babel/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -376,7 +374,7 @@ $ npm install --save-dev gobble-babel
 
 **Usage**
 
-The `options` argument, if specified, is passed to babel.
+The `options` argument, if specified, is passed to Babel.
 
 ```js
 var gobble = require("gobble");
@@ -399,7 +397,7 @@ want that, pass `sourceMap: false`.
     <a href="https://github.com/babel/grunt-babel/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -441,7 +439,7 @@ grunt.registerTask("default", ["babel"]);
     <a href="https://github.com/babel/gulp-babel/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -519,7 +517,7 @@ $ make
     <a href="https://github.com/babel/babel-loader/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -585,7 +583,7 @@ import Person from "./Person.js";
     <a href="https://github.com/babel/babel-connect/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -622,7 +620,7 @@ app.use(connect.static("cache"));
     <a href="https://github.com/babel/jade-babel/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -679,7 +677,7 @@ script
     <a href="https://github.com/babel/babel-jest/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -721,7 +719,7 @@ In your `package.json` file please make the following changes:
     <a href="https://github.com/babel/karma-babel-preprocessor/issues">report them</a>.
   </p>
   <p>
-    <em>Issues with the output should be reported on the babel
+    <em>Issues with the output should be reported on the Babel
     <a href="https://github.com/babel/babel/issues">issue tracker</a></em>.
   </p>
 </blockquote>
@@ -734,9 +732,9 @@ $ npm install --save-dev karma-babel-preprocessor
 
 **Usage**
 
-See babel options for more details.
+See Babel options for more details.
 
-Given `options` properties are passed to babel with no change except:
+Given `options` properties are passed to Babel with no change except:
 
 - `filename`
 - `sourceMapName`
