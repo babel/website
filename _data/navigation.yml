@@ -19,6 +19,10 @@
     url: /docs/usage/polyfill/
   - title: Runtime
     url: /docs/usage/runtime/
+  - title: babelrc
+    url: /docs/usage/babelrc/
+  - title: Plugins
+    url: /docs/usage/plugins/
   - title: Caveats
     url: /docs/usage/caveats/
   - title: Modules

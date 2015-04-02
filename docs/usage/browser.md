@@ -1,13 +1,13 @@
 ---
 layout: docs
 title: Browser
-description: How to transpile in the browser.
+description: How to compile in the browser.
 permalink: /docs/usage/browser/
 redirect_from: /browser.html
 ---
 
 <p class="lead">
-  A browser version of babel is available from `browser.js` inside the babel
+  A browser version of Babel is available from `browser.js` inside the babel
   directory in an npm release.
 </p>
 
@@ -42,7 +42,7 @@ test.test(); // "test"
 
 ## API
 
-Programmatically transpile and execute strings of ES6 code.
+Programmatically compile and execute strings of ES6 code.
 
 See [options](/docs/usage/options/) for additional documentation.
 

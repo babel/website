@@ -6,7 +6,7 @@ permalink: /docs/usage/polyfill/
 ---
 
 <p class="lead">
-  babel includes a polyfill that includes a custom
+  Babel includes a polyfill that includes a custom
   <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a>
   and <a href="https://github.com/zloirock/core-js">core.js</a>.
 </p>
@@ -28,8 +28,8 @@ Fortunately, this is also automatically loaded when using the
 
 ## Usage in Browser
 
-Available from the `browser-polyfill.js` file within the babel directory of an
-npm release. This needs to be included **before** all your compiled babel code.
+Available from the `browser-polyfill.js` file within the Babel directory of an
+npm release. This needs to be included **before** all your compiled Babel code.
 You can either prepend it to your compiled code or include it in a `<script>`
 before it.
 

@@ -10,7 +10,7 @@ See [FAQ - What is a module formatter?](/docs/faq#what-is-a-module-formatter-)
 for module formatter terminology.
 
 <p class="lead">
-  babel has the ability to transpile ES6 modules to the module system of your
+  Babel has the ability to compile ES6 modules to the module system of your
   choice. You can even easily create your own.
 </p>
 

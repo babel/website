@@ -39,15 +39,17 @@ so that you can easily chain them together.
 
 ## ES7 (Experimental)
 
-- [es7.abstractReferences](https://github.com/zenparsing/es-abstract-refs)
 - [es7.comprehensions](/docs/learn-es6#comprehensions)
+- [es7.classProperties](https://gist.github.com/jeffmo/054df782c05639da2adb)
+- [es7.decorators](https://github.com/wycats/javascript-decorators)
+- [es7.exportExtensions](https://github.com/leebyron/ecmascript-more-export-from)
 - [es7.exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
 - [es7.objectSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
 
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Disabled by default</h4>
   <p>
-    These are only usable if you enable experimental support. See <a href="/docs/usage/experimental">experimental usage</a> for information.
+    These are only usable if you enable staged support. See <a href="/docs/usage/experimental">experimental usage</a> for information.
   </p>
 </blockquote>
 
@@ -65,6 +67,10 @@ Babel also includes some optional transformers for those who want to take their 
 
 These are disabled by default, see [usage](#usage) for instructions on how to enable them.
 
+ - [es3.runtime](/docs/usage/runtime#es3-version)
+ - [es6.spec.blockScoping](/docs/usage/transformers/es6/block-scoping)
+ - [es6.spec.symbols](/docs/usage/transformers/es6/spec-symbols)
+ - [es6.spec.templateLiterals](/docs/usage/transformers/es6/spec-templat=e-literals)
  - [asyncToGenerator](/docs/usage/transformers/other/async-to-generator)
  - [bluebirdCoroutines](/docs/usage/transformers/other/bluebird-coroutines)
  - [runtime](/docs/usage/runtime)
@@ -74,7 +80,6 @@ These are disabled by default, see [usage](#usage) for instructions on how to en
  - [utility.removeConsole](/docs/usage/transformers/utility/remove-console)
  - [utility.removeDebugger](/docs/usage/transformers/utility/remove-debugger)
  - [spec.protoToAssign](/docs/usage/transformers/spec/proto-to-assign)
- - [spec.typeofSymbol](/docs/usage/transformers/spec/typeof-symbol)
  - [spec.undefinedToVoid](/docs/usage/transformers/spec/undefined-to-void)
  - [validation.undeclaredVariableCheck](/docs/usage/transformers/validation/undeclared-variable-check)
  - [validation.react](/docs/usage/transformers/validation/react)
