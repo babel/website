@@ -125,6 +125,5 @@ $ babel-node --debug --experimental -- script.js --debug --experimental
 | `-i, --ignore [regex]`   | `node_modules`       | Ignore all files that match this regex when using the require hook |
 | `-x, --extensions`       | `".js",".jsx",".es6",".es"` | List of extensions to hook into |
 | `-r, --experimental`     | `false`              | Enable experimental support for proposed ES7 features |
-| `-g, --playground`       | `false`              | Enable playground support       |
 | `-w, --whitelist`        |                      | Whitelist of transformers to ONLY use |
 | `-b, --blacklist`        |                      | Blacklist of transformers to NOT use |

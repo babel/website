@@ -93,16 +93,3 @@ require("babel").transform("code", { optional: ["transformerName"] });
 ```sh
 $ babel --optional transformerName script.js
 ```
-
-## Playground
-
- - [playground.memoizationOperator](/docs/usage/playground#memoization-assignment-operator)
- - [playground.methodBinding](/docs/usage/playground#method-binding)
- - [playground.objectGetterMemoization](/docs/usage/playground#object-getter-memoization)
-
-<blockquote class="babel-callout babel-callout-warning">
-  <h4>Disabled by default</h4>
-  <p>
-    These are only usable if you enable playground support. See <a href="/docs/usage/playground">playground usage</a> for information.
-  </p>
-</blockquote>
