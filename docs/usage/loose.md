@@ -74,6 +74,14 @@ When `Bar.prototype.foo` is defined it triggers the setter on `Foo`. This is a
 case that is very unlikely to appear in production code however it's something
 to keep in mind.
 
+### es6.spread
+
+All iterables are assumed to be arrays.
+
+### es6.destructuring
+
+All iterable destructuring are assumed to be arrays.
+
 ### es6.properties.computed
 
 Just like method assignment in classes, in loose mode, computed property names
