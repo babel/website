@@ -7,8 +7,7 @@ redirect_from: /browser.html
 ---
 
 <p class="lead">
-  A browser version of Babel is available from `browser.js` inside the babel
-  directory in an npm release.
+  A browser version of Babel is available from `browser.js` inside a <code>babel-core</code> npm release
 </p>
 
 <blockquote class="babel-callout babel-callout-warning">
