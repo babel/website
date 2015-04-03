@@ -44,7 +44,7 @@ so that you can easily chain them together.
 - [es7.decorators](https://github.com/wycats/javascript-decorators)
 - [es7.exportExtensions](https://github.com/leebyron/ecmascript-more-export-from)
 - [es7.exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
-- [es7.objectSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
+- [es7.objectRestSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
 
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Disabled by default</h4>
