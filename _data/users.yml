@@ -25,6 +25,9 @@
 - name: SoundCloud
   url: https://soundcloud.com
   logo: soundcloud.png
+- name: Vimeo
+  url: https://vimeo.com
+  logo: vimeo.svg
 - name: Ember
   url: http://emberjs.com/
   logo: ember.png
