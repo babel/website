@@ -76,6 +76,9 @@
 - name: Mapbox
   url: https://www.mapbox.com/
   logo: mapbox.svg
+- name: Lodash
+  url: https://lodash.com
+  logo: lodash.svg
 - name: Stampsy
   url: http://stampsy.com/
   logo: stampsy.svg
