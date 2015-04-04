@@ -13,7 +13,7 @@ your code.
 **In**
 
 ```javascript
-function foo(one: any, two: number, ?three): string {}
+function foo(one: any, two: number, three?): string {}
 ```
 
 **Out**
