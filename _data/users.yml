@@ -61,6 +61,9 @@
 - name: Discourse
   url: http://www.discourse.org/
   logo: discourse.png
+- name: AddThis
+  url: http://www.addthis.com
+  logo: addthis.svg
 - name: HubSpot
   url: http://www.hubspot.com/
   logo: hubspot.png
