@@ -85,6 +85,9 @@
 - name: Stampsy
   url: http://stampsy.com/
   logo: stampsy.svg
+- name: 201 Created
+  url: http://www.201-created.com/
+  logo: 201-created.svg
 - name: Ninja Squad
   url: http://ninja-squad.fr/
   logo: ninja-squad.png
