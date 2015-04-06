@@ -68,9 +68,9 @@ Babel also includes some optional transformers for those who want to take their 
 These are disabled by default, see [usage](#usage) for instructions on how to enable them.
 
  - [es3.runtime](/docs/usage/runtime#es3-version)
- - [es6.spec.blockScoping](/docs/usage/transformers/es6/block-scoping)
+ - [es6.spec.blockScoping](/docs/usage/transformers/es6/spec-block-scoping)
  - [es6.spec.symbols](/docs/usage/transformers/es6/spec-symbols)
- - [es6.spec.templateLiterals](/docs/usage/transformers/es6/spec-templat=e-literals)
+ - [es6.spec.templateLiterals](/docs/usage/transformers/es6/spec-template-literals)
  - [asyncToGenerator](/docs/usage/transformers/other/async-to-generator)
  - [bluebirdCoroutines](/docs/usage/transformers/other/bluebird-coroutines)
  - [runtime](/docs/usage/runtime)
