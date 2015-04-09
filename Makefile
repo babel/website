@@ -20,7 +20,7 @@ build:
 
 	cat ./_babel/dist/babel.min.js ./_babel/dist/polyfill.min.js > ./scripts/babel.js;
 
-	if [ ! -d ./node_modules]; \
+	if [ ! -d ./node_modules ]; \
 	then npm install; \
 	fi
 
