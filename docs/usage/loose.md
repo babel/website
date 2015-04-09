@@ -156,11 +156,6 @@ The result is that arrays are put in a fast path, heavily increasing performance
 All other iterables will continue to work fine but array iteration will be
 significantly faster.
 
-### es6.modules
-
-As per the spec, `import` and `export` are only allowed to be used at the top
-level. When in loose mode these are allowed to be used anywhere.
-
 ### es6.templateLiterals
 
 In loose mode, tagged template literal objects aren't frozen.
