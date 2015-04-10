@@ -46,6 +46,9 @@
 - name: WebStorm
   url: https://www.jetbrains.com/webstorm/
   logo: webstorm.svg
+- name: Evernote
+  url: https://evernote.com/
+  logo: evernote.svg
 - name: NodeSource
   url: https://nodesource.com/
   logo: nodesource.svg
