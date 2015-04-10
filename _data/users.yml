@@ -64,6 +64,9 @@
 - name: Discourse
   url: http://www.discourse.org/
   logo: discourse.png
+- name: Sprout Social
+  url: http://sproutsocial.com
+  logo: sprout-social.svg
 - name: AddThis
   url: http://www.addthis.com
   logo: addthis.svg
