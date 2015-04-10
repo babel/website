@@ -46,6 +46,9 @@
 - name: WebStorm
   url: https://www.jetbrains.com/webstorm/
   logo: webstorm.svg
+- name: Evernote
+  url: https://evernote.com/
+  logo: evernote.svg
 - name: NodeSource
   url: https://nodesource.com/
   logo: nodesource.svg
@@ -61,6 +64,9 @@
 - name: Discourse
   url: http://www.discourse.org/
   logo: discourse.png
+- name: Sprout Social
+  url: http://sproutsocial.com
+  logo: sprout-social.svg
 - name: AddThis
   url: http://www.addthis.com
   logo: addthis.svg
@@ -124,12 +130,21 @@
 - name: SassDoc
   url: http://sassdoc.com/
   logo: sassdoc.svg
+- name: Portfolium
+  url: https://portfolium.com
+  logo: portfolium.png
+- name: Trapit
+  url: http://trap.it/
+  logo: trapit.png
 - name: Trunk Club
   url: https://trunkclub.com
   logo: trunk-club.svg
 - name: DotLabel
   url: http://dotlabel.co.uk/
   logo: dotlabel.png
+- name: Uken Games
+  url: http://www.uken.com
+  logo: uken-games.png
 - name: Spoqa
   url: https://spoqa.com/
   logo: spoqa.png
