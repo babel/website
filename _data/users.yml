@@ -133,6 +133,9 @@
 - name: DotLabel
   url: http://dotlabel.co.uk/
   logo: dotlabel.png
+- name: Uken Games
+  url: http://www.uken.com
+  logo: uken-games.png
 - name: Spoqa
   url: https://spoqa.com/
   logo: spoqa.png
