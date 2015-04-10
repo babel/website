@@ -781,7 +781,7 @@ factorial(100000)
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Partial support</h4>
   <p>
-    Currently only self referencing tail recursion is supported due to the
-    complexity of supporting tail calls globally.
+    Only explicit self referencing tail recursion is supported due to the
+    complexity and performance impact of supporting tail calls globally.
   </p>
 </blockquote>
