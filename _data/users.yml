@@ -133,6 +133,9 @@
 - name: Portfolium
   url: https://portfolium.com
   logo: portfolium.png
+- name: Trapit
+  url: http://trap.it/
+  logo: trapit.png
 - name: Trunk Club
   url: https://trunkclub.com
   logo: trunk-club.svg
