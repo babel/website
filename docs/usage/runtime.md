@@ -40,19 +40,6 @@ require("babel").transform("code", { optional: ["runtime"] });
 $ babel --optional runtime script.js
 ```
 
-### ES3 version
-
-There's also an `es3` verison of the `runtime` transformer that uses `core-js/client` instead of `core-js`
-which means methods like `Array.isArray` are aliased and included too. This is necessary for IE8 support.
-
-```javascript
-require("babel").transform("code", { optional: ["es3.runtime"] });
-```
-
-```sh
-$ babel --optional es3.runtime script.js
-```
-
 ## Technical details
 
 The `runtime` optional transformer does three things:
