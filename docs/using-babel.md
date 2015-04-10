@@ -822,3 +822,9 @@ Calling nodemon with babel-node may lead to arguments getting parsed incorrectly
 ```sh
 $ nodemon --exec babel-node --experimental --ignore='foo\|bar\|baz' -- path/to/script.js
 ```
+
+**Another Usage**
+
+```sh
+$ nodemon node_modules/babel/bin/babel-node --experimental --ignore='foo\|bar\|baz' path/to/script.js
+```
