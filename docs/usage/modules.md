@@ -103,14 +103,15 @@ var bar = require("foo").foo;
 #### Interop
 
 In order to encourage the use of CommonJS and ES6 modules, when exporting a default
-export with **no** other exports `module.exports` will be set instead of `exports.default`.
+export with **no** other exports `module.exports` will be set in addtion to `exports["default"]`.
 
 ```javascript
 export default test;
 ```
 
 ```javascript
-module.exports = test;
+exports["default"] = test;
+module.exports = exports["default"];
 ```
 
 If you don't want this behaviour then you can use the `commonStrict` module formatter.
