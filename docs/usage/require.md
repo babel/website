@@ -17,6 +17,13 @@ fly. This is equivalent to CoffeeScript's
   </p>
 </blockquote>
 
+<blockquote class="babel-callout babel-callout-warning">
+  <h4><code>utility.inlineEnvironmentVariables</code> use</h4>
+  <p>
+    Please note the <a href="/docs/usage/transformers/utility/inline-environment-variales#require-hook"> when used in conjunction.
+  </p>
+</blockquote>
+
 ## Install
 
 ```sh

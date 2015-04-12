@@ -53,3 +53,8 @@ transformer to output:
 ```javascript
 development();
 ```
+
+## Require hook
+
+**NOTE:** When used in conjunction with the require hook, the require cache will **not** respond to changes
+in environment variables.
