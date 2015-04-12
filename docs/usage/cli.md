@@ -113,7 +113,7 @@ $ babel-node [options] [ -e script | script.js ] [arguments]
 When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
 
 ```sh
-$ babel-node --debug --experimental -- script.js --debug --experimental
+$ babel-node --debug --stage 0 -- script.js --debug
 ```
 
 ### Options
@@ -124,6 +124,6 @@ $ babel-node --debug --experimental -- script.js --debug --experimental
 | `-p, --print`            |                      | Evaluate script and print result |
 | `-i, --ignore [regex]`   | `node_modules`       | Ignore all files that match this regex when using the require hook |
 | `-x, --extensions`       | `".js",".jsx",".es6",".es"` | List of extensions to hook into |
-| `-r, --experimental`     | `false`              | Enable experimental support for proposed ES7 features |
+| `-r, --stage [stage]`    | `2`                  | Set the [experimental](/docs/usage/experimental) proposal stage |
 | `-w, --whitelist`        |                      | Whitelist of transformers to ONLY use |
 | `-b, --blacklist`        |                      | Blacklist of transformers to NOT use |
