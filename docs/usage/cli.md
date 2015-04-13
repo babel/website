@@ -52,11 +52,10 @@ If you would then like to add a **source map file** you can use
 $ babel script.js --out-file script-compiled.js --source-maps
 ```
 
-If you would rather have **inline source maps**, you may use
-`--source-maps-inline` or `-t`.
+If you would rather have **inline source maps**, you may use `--source-maps inline`.
 
 ```sh
-$ babel script.js --out-file script-compiled.js --source-maps-inline
+$ babel script.js --out-file script-compiled.js --source-maps inline
 ```
 
 ### Compile Directories
