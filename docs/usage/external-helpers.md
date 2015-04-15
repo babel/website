@@ -37,7 +37,7 @@ or
 require("babel").buildExternalHelpers();
 ```
 
-or from an npm release in `external-helpers.js` from the babel directory.
+or from `external-helpers.js` inside an npm release of `babel-core`.
 
 #### Options
 
