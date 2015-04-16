@@ -83,21 +83,25 @@ var foo = _interopRequireWildcard(require("foo"));
 Named import:
 
 ```javascript
-import {bar} from "foo";
+import {bar, baz} from "foo";
+let x = bar() + baz();
 ```
 
 ```javascript
-var bar = require("foo").bar;
+var _bar$baz = require("foo");
+var x = _bar$baz.bar() + _bar$baz.baz();
 ```
 
 Named alias import:
 
 ```javascript
-import {foo as bar} from "foo";
+import {bar as baz} from "foo";
+let x = baz();
 ```
 
 ```javascript
-var bar = require("foo").foo;
+var _baz = require("foo");
+var x = _baz.bar();
 ```
 
 #### Interop
