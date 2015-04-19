@@ -44,7 +44,7 @@ $ babel --name=value
 | `keepModuleIdExtensions` | `false`              | Keep extensions in module ids |
 | `externalHelpers`        | `false`              | Uses a reference to `babelHelpers` instead of placing helpers at the top of your code. Meant to be used in conjunction with [external helpers](/docs/usage/external-helpers). |
 | `code`                   | `true`               | Enable code generation |
-| `ast`                    | `true`               | Include the ÅST in the returned object |
+| `ast`                    | `true`               | Include the AST in the returned object |
 | `stage`                  | `2`                  | Set the [experimental](/docs/usage/experimental) proposal stage. |
 | `compact`                | `"auto"`             | Do not include superfluous whitespace characters and line terminators. When set to `"auto"` compact is set to `true` on input sizes of >100KB. |
 | `comments`               | `true`               | Output comments in generated output. |
