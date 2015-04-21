@@ -187,3 +187,6 @@
 - name: PowerReviews
   url: http://www.powerreviews.com
   logo: power-reviews.png
+- name: angular-formly
+  url: http://angular-formly.com
+  logo: angular-formly.png
