@@ -19,6 +19,9 @@
 - name: Reddit
   url: https://www.reddit.com
   logo: reddit.png
+- name: NFL
+  url: http://www.nfl.com
+  logo: nfl.svg
 - name: Bocoup
   url: http://bocoup.com/
   logo: bocoup.png
