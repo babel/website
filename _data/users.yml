@@ -175,3 +175,6 @@
 - name: Snakeskin
   url: https://github.com/kobezzza/Snakeskin/
   logo: snakeskin.svg
+- name: angular-formly
+  url: http://angular-formly.com
+  logo: angular-formly.png
