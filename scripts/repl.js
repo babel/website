@@ -302,6 +302,25 @@
 
   repl.compile();
 
-
+  // drag and drop file
+  $("body").on("dragover", function(e) {
+    e.preventDefault();
+    e.originalEvent.dataTransfer.dropEffect = "copy";
+  }).on("drop", function(e) {
+    e.preventDefault();
+    // just use on file
+    var file = e.originalEvent.dataTransfer.files[0];
+    var reader = new FileReader();
+    
+    // update repl input with text from file
+    reader.onload = function(e) {
+      var text = e.target.result;
+      
+      repl.input.setValue(text);
+    }
+    
+    // read file
+    reader.readAsText(file);
+  });
 
 }(babel, $, _, ace, window));
