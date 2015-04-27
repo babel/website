@@ -19,6 +19,9 @@
 - name: Reddit
   url: https://www.reddit.com
   logo: reddit.png
+- name: Atlassian
+  url: https://www.atlassian.com/
+  logo: atlassian.svg
 - name: NFL
   url: http://www.nfl.com
   logo: nfl.svg
