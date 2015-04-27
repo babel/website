@@ -27,7 +27,7 @@ $ babel --name=value
 | `optional`               | `[]`                 | Array of transformers to [optionally](/docs/usage/transformers#optional) use. Run `babel --help` to see a full list of transformers. Optional transformers displayed inside square brackets. |
 | `nonStandard`            | `true`               | Enable support for JSX and Flow. |
 | `highlightCode`          | `true`               | ANSI highlight syntax error code frames |
-| `only`                   | `null`               | An array of [glob](https://github.com/isaacs/minimatch) paths to **only** compile. When attempting to compile a non-matching file it's returned verbatim. |
+| `only`                   | `null`               | A [glob](https://github.com/isaacs/minimatch), regex, or mixed array of both, matching paths to **only** compile. Can also be an array of arrays containing paths to explicitly match. When attempting to compile a non-matching file it's returned verbatim. |
 | `ignore`                 | `null`               | Opposite to the `only` option. |
 | `jsxPragma`              | `null`               | Custom pragma to use for JSX elements |
 | `auxiliaryComment`       | `null`               | Attach a comment before all helper declarations and auxiliary code. eg. `"istanbul ignore next"` |

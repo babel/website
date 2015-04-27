@@ -45,7 +45,7 @@ override this by passing an ignore regex via:
 ```js
 require("babel/register")({
   // This will override `node_modules` ignoring - you can alternatively pass
-  // a regex
+  // an array of strings to be explicitly matched or a regex / glob
   ignore: false
 });
 ```
