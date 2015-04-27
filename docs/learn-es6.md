@@ -136,10 +136,10 @@ contents.
 
 ```js
 // Basic literal string creation
-`In JavaScript "\n" is a line-feed.`
+`In ES5 "\n" is a line-feed.`
 
 // Multiline strings
-`In JavaScript this is
+`In ES5 this is
  not legal.`
 
 // Interpolate variable bindings
