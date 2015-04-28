@@ -17,14 +17,26 @@ permalink: /docs/usage/plugins/
 
 Plugins are resolved relative to the current working directory.
 
+[Node API](/docs/usage/api/):
+
 ```javascript
 require("babel").transform("code", {
   plugins: ["foo-bar"]
 });
 ```
 
+[CLI](/docs/usage/cli/):
+
 ```sh
 $ babel --plugins foo-bar script.js
+```
+
+[babelrc](/docs/usage/babelrc/):
+
+```javascript
+{
+  "plugins": ["foo-bar"]
+}
 ```
 
 ### Specifying position
