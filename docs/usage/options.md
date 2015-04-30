@@ -49,3 +49,4 @@ $ babel --name=value
 | `compact`                | `"auto"`             | Do not include superfluous whitespace characters and line terminators. When set to `"auto"` compact is set to `true` on input sizes of >100KB. |
 | `comments`               | `true`               | Output comments in generated output. |
 | `metadataUsedHelpers`    | `false`              | See [external helpers - selective builds](/docs/usage/external-helpers#selective-builds) for more information. |
+| `retainLines`            | `false`              | Retain line numbers. This will lead to wacky code but is handy for scenarios where you can't use source maps. **NOTE:** This will obviously not retain the columns. |

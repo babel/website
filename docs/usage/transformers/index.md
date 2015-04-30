@@ -61,6 +61,7 @@ so that you can easily chain them together.
  - [reactCompat](/docs/usage/transformers/other/react-compat)
  - [regenerator](/docs/usage/transformers/other/regenerator)
  - [strict](/docs/usage/transformers/other/strict)
+ - [jscript](/docs/usage/transformers/other/jscript)
 
 ## Optional
 
