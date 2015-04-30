@@ -136,10 +136,10 @@ contents.
 
 ```js
 // Basic literal string creation
-`In JavaScript "\n" is a line-feed.`
+`In ES5 "\n" is a line-feed.`
 
 // Multiline strings
-`In JavaScript this is
+`In ES5 this is
  not legal.`
 
 // Interpolate variable bindings
@@ -533,25 +533,25 @@ logging/profiling, etc.
 
 ```js
 // Proxying a normal object
-var target = {};
-var handler = {
-  get: function (receiver, name) {
+var target = {};
+var handler = {
+  get: function (receiver, name) {
     return `Hello, ${name}!`;
-  }
-};
+  }
+};
 
-var p = new Proxy(target, handler);
+var p = new Proxy(target, handler);
 p.world === "Hello, world!";
 ```
 
 ```js
 // Proxying a function object
-var target = function () { return "I am the target"; };
+var target = function () { return "I am the target"; };
 var handler = {
   apply: function (receiver, ...args) {
     return "I am the proxy";
-  }
-};
+  }
+};
 
 var p = new Proxy(target, handler);
 p() === "I am the proxy";

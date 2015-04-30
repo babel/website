@@ -65,7 +65,7 @@ or from `external-helpers.js` inside an npm release of `babel-core`.
 #### Node
 
 ```js
-require("babel/external-helpers");
+require("babel-core/external-helpers");
 ```
 
 This injects the external helpers into `global`.

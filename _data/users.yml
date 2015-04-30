@@ -19,6 +19,12 @@
 - name: Reddit
   url: https://www.reddit.com
   logo: reddit.png
+- name: Atlassian
+  url: https://www.atlassian.com/
+  logo: atlassian.svg
+- name: NFL
+  url: http://www.nfl.com
+  logo: nfl.svg
 - name: Bocoup
   url: http://bocoup.com/
   logo: bocoup.png
@@ -175,3 +181,12 @@
 - name: Snakeskin
   url: https://github.com/kobezzza/Snakeskin/
   logo: snakeskin.svg
+- name: Alianza Inc
+  url: http://www.alianza.com/
+  logo: alianza.png
+- name: PowerReviews
+  url: http://www.powerreviews.com
+  logo: power-reviews.png
+- name: angular-formly
+  url: http://angular-formly.com
+  logo: angular-formly.png
