@@ -13,6 +13,13 @@ permalink: /docs/usage/plugins/
   </p>
 </blockquote>
 
+<blockquote class="babel-callout babel-callout-info">
+  <h4>Incomplete</h4>
+  <p>
+    <a href="https://github.com/babel/babel.github.io">Pull requests</a> expanding on existing or adding additional documentation are <strong>extremely</strong> appreciated.
+  </p>
+</blockquote>
+
 ## Usage
 
 Plugins are resolved relative to the current working directory.
@@ -89,13 +96,6 @@ module.exports = function (babel) {
 You can find a simple plugin example as well as usage in the [sebmck/babel-plugin-example](https://github.com/sebmck/babel-plugin-example) repo.
 
 ## Plugin API
-
-<blockquote class="babel-callout babel-callout-info">
-  <h4>Incomplete</h4>
-  <p>
-    <a href="https://github.com/babel/babel.github.io">Pull requests</a> expanding on existing or adding additional documentation are <strong>extremely</strong> appreciated.
-  </p>
-</blockquote>
 
 ### Visitor overview
 
