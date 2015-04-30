@@ -1,0 +1,23 @@
+{% if page.layout_external_scripts %}
+  {% for script_path in page.layout_external_scripts %}
+  <script src="{{ script_path }}"></script>
+  {% endfor %}
+{% endif %}
+
+{% if page.page_external_scripts %}
+  {% for script_path in page.page_external_scripts %}
+  <script src="{{ script_path }}"></script>
+  {% endfor %}
+{% endif %}
+
+{% if page.layout_scripts %}
+  {% for script_path in page.layout_scripts %}
+  <script src="{{ script_path | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
+  {% endfor %}
+{% endif %}
+
+{% if page.page_scripts %}
+  {% for script_path in page.page_scripts %}
+  <script src="{{ script_path | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
+  {% endfor %}
+{% endif %}
