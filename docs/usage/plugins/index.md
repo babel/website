@@ -120,11 +120,13 @@ module.exports = function (babel) {
 If you only have an `enter` handler then you can simplify it to:
 
 ```javascript
-export default new Transformer("foo-bar", {
-  FunctionDeclaration(node, parent) {
-  
-  }
-});
+module.exports = function (babel) {
+  return new babel.Transformer("foo-bar", {
+    FunctionDeclaration(node, parent) {
+    
+    }
+  });
+};
 ```
 
 ### Check if a node is of a certain type
