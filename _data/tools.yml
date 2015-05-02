@@ -1,0 +1,40 @@
+- name: Babel built-ins
+  items:
+    babel_cli: CLI
+    babel_register: Require hook
+    babel_in_browser: Browser
+- name: Build systems
+  items:
+    broccoli: Broccoli
+    browserify: Browserify
+    brunch: Brunch
+    duo: Duo
+    gobble: Gobble
+    grunt: Grunt
+    gulp: Gulp
+    make: Make
+    requirejs: RequireJS
+    sprockets: Sprockets
+    webpack: Webpack
+- name: Frameworks
+  items:
+    ember: Ember
+    meteor: Meteor
+    rails: Rails
+    sails: Sails
+- name: Test frameworks
+  items:
+    mocha: Mocha
+    jest: Jest
+    karma: Karma
+- name: Utilities
+  items:
+    connect: Connect
+    nodemon: Nodemon
+- name: Language APIs
+  items:
+    node: Node
+    ruby: Ruby
+- name: Template engines
+  items:
+    jade: Jade
