@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Plugins - Scope
+title: Plugins - Visiting
 description: How to visit nodes
 permalink: /docs/usage/plugins/visiting/
 ---

@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Plugins - Scope
+title: Plugins - Manipulation
 description: How to remove and replace nodes
 permalink: /docs/usage/plugins/manipulation/
 ---

@@ -81,3 +81,50 @@ function foo() {
   _bar = bar();
 }
 ```
+
+## Rename a binding and it's references
+
+```javascript
+module.exports = function (babel) {
+  var t = babel.types;
+  
+  return new babel.Transformer("foo-bar", {
+    Program(node, parent, scope) {
+      // no second argument passed so this will generate a uid based on `foo`
+      scope.rename("foo");
+
+      // rename bar to foobar
+      scope.rename("bar", "foobar");
+    }
+  });
+};
+```
+
+
+Will transform:
+
+```javascript
+function bar() {
+  return "foo!";
+}
+
+function foo() {
+  bar();
+}
+
+foo();
+```
+
+into:
+
+```javascript
+function foobar() {
+  return "foo!";
+}
+
+function _foo() {
+  foobar();
+}
+
+_foo();
+```
