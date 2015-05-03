@@ -205,6 +205,22 @@ module.exports = function (babel) {
 Babel uses heuristics extensively when replacing nodes which means that you can do some pretty crazy
 transformations that would be extremely verbose otherwise.
 
+## Replacing a node with a source string
+
+```javascript
+module.exports = function (babel) {
+  return new babel.Transformer("foo-bar", {
+    FunctionExpression(node, parent) {
+      // this is shorthand for `this.replaceWithSourceString(str)`
+      return "function (a, b) { return a * b; }";
+    }
+  });
+};
+```
+
+**NOTE:** It's not recommended to use this API unless you're dealing with dynamic source strings, otherwise
+it's more efficient to parse the code outside of the visitor.
+
 ### Inserting a sibling node
 
 ```javascript

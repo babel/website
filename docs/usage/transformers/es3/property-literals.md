@@ -7,6 +7,16 @@ permalink: /docs/usage/transformers/es3/property-literals/
 
 Turn reserved word properties into literals.
 
+## Usage
+
+```javascript
+require("babel").transform("code", { optional: ["minification.propertyLiterals"] });
+```
+
+```sh
+$ babel --optional minification.propertyLiterals script.js
+```
+
 ## Example
 
 **In**

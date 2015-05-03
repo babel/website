@@ -123,7 +123,7 @@ layout: default
   <div class="row featurette">
     <div class="col-md-4 col-md-push-8">
       <h2>Extensible</h2>
-      <p>With a large range of <a href="{{ site.baseurl }}/docs/using-babel/">plugins</a> and browser support.</p>
+      <p>With a large range of <a href="{{ site.baseurl }}/docs/using-babel/">integrations</a> and browser support.</p>
     </div>
     <div class="col-md-8 col-md-pull-4">
       <img src="{{ site.baseurl }}/images/featurettes/extensible.png?t={{ site.time | date_to_xmlschema }}" alt="Plugins and Browsers" class="featurette-image img-responsive">
@@ -178,76 +178,16 @@ layout: default
 
 <div class="container">
 
-  <div class="row featurette">
-    <div class="col-md-4 col-md-push-8 col-sm-6 col-sm-push-6">
-      <img src="{{ site.baseurl }}/images/featurettes/browsers.png?t={{ site.time | date_to_xmlschema }}" alt="Browsers" class="featurette-image img-responsive">
-    </div>
-    <div class="col-md-8 col-md-pull-4 col-sm-6 col-sm-pull-6">
-      <h2><a href="{{ site.baseurl }}/docs/using-babel/#build-systems">Browsers</a></h2>
-      <p>
-        Babel has plugins for all of your favorite build systems. Check
-        out the official plugins for <a href="/docs/using-babel/#gulp">Gulp</a>,
-        <a href="{{ site.baseurl }}/docs/using-babel/#grunt">Grunt</a>,
-        <a href="{{ site.baseurl }}/docs/using-babel/#browserify">Browserify</a>,
-        <a href="{{ site.baseurl }}/docs/using-babel/#webpack">Webpack</a>,
-        <a href="{{ site.baseurl }}/docs/using-babel/#broccoli">Broccoli</a>,
-        and <a href="{{ site.baseurl }}/docs/using-babel/#build-systems">many more</a>. You can also use
-        the <a href="{{ site.baseurl }}/docs/usage/cli/">built-in CLI</a>.
-      </p>
-    </div>
-  </div>
+  <div class="featurette text-center">
+    {% for tool in site.data.tools %}
+      <h4>{{tool.name}}</h4>
 
-  <hr class="featurette-divider">
-
-  <div class="row featurette">
-    <div class="col-md-4 col-sm-6">
-      <img src="{{ site.baseurl }}/images/featurettes/nodejs.png?t={{ site.time | date_to_xmlschema }}" alt="Node.js" class="featurette-image img-responsive">
-    </div>
-    <div class="col-md-8 col-sm-6">
-      <h2><a href="{{ site.baseurl }}/docs/using-babel/#node-js">Node.js</a></h2>
-      <p>
-        Using either the <a href="{{ site.baseurl }}/docs/using-babel/#cli">CLI</a> or
-        <a href="{{ site.baseurl }}/docs/using-babel/#require-hook">require hook</a>,
-        you can easily setup babel to work with your Node.js app. Module authors
-        can also easily precompile their assets before publishing to npm.
-      </p>
-    </div>
-  </div>
-
-  <hr class="featurette-divider">
-
-  <div class="row featurette">
-    <div class="col-md-4 col-md-push-8 col-sm-6 col-sm-push-6">
-      <img src="{{ site.baseurl }}/images/featurettes/rails.png?t={{ site.time | date_to_xmlschema }}" alt="Rails" class="featurette-image img-responsive">
-    </div>
-    <div class="col-md-8 col-md-pull-4 col-sm-6 col-sm-pull-6">
-      <h2><a href="{{ site.baseurl }}/docs/using-babel/#rails">Rails</a></h2>
-      <p>
-        Sprockets 4 will
-        <a href="https://github.com/sstephenson/sprockets/pull/682">ship with
-        babel by default</a> using the <code>.es6</code> file extension. Until then you can
-        use the <a href="{{ site.baseurl }}/docs/using-babel/#sprockets">Sprockets ES6 transform</a> or
-        the <a href="https://github.com/babel/ruby-babel-transpiler">official babel Ruby
-        Gem</a>.
-      </p>
-    </div>
-  </div>
-
-  <hr class="featurette-divider"/>
-
-  <div class="row featurette">
-    <div class="col-md-4 col-sm-6">
-      <img src="{{ site.baseurl }}/images/featurettes/browserify.png?t={{ site.time | date_to_xmlschema }}" alt="Browserify" class="featurette-image img-responsive">
-    </div>
-    <div class="col-md-8 col-sm-6">
-      <h2><a href="{{ site.baseurl }}/docs/using-babel/#browserify">Browserify</a></h2>
-      <p>
-        Babel and Browserify get along wonderfully with the
-        <a href="{{ site.baseurl }}/docs/using-babel/#browserify">official babelify transform</a> babel
-        transforms the module syntax to browserify-compatible CommonJS modules
-        by default.
-      </p>
-    </div>
+      <div class="btn-group btn-group-lg">
+        {% for item in tool.items %}
+          <div class="btn btn-default" data-name="{{item[0]}}">{{item[1]}}</div>
+        {% endfor %}
+      </div>
+    {% endfor %}
   </div>
 
   <hr class="featurette-divider">

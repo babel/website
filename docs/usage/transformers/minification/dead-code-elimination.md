@@ -1,8 +1,8 @@
 ---
 layout: docs
-title: utility.deadCodeElimination
-description: How to use the utility.deadCodeElimination transformer.
-permalink: /docs/usage/transformers/utility/dead-code-elimination/
+title: minification.deadCodeElimination
+description: How to use the minification.deadCodeElimination transformer.
+permalink: /docs/usage/transformers/minification/dead-code-elimination/
 ---
 
 Remove dead code.
@@ -10,11 +10,11 @@ Remove dead code.
 ## Usage
 
 ```javascript
-require("babel").transform("code", { optional: ["utility.deadCodeElimination"] });
+require("babel").transform("code", { optional: ["minification.deadCodeElimination"] });
 ```
 
 ```sh
-$ babel --optional utility.deadCodeElimination script.js
+$ babel --optional minification.deadCodeElimination script.js
 ```
 
 ## Examples
@@ -119,4 +119,53 @@ false ? foo : bar
 
 ```javascript
 bar
+```
+
+### Unused class declarations
+
+**In**
+
+```javascript
+class Foo {}
+class Bar {}
+new Foo;
+```
+
+**Out**
+
+```javascript
+class Foo {}
+new Foo;
+```
+
+### Unused function declarations
+
+**In**
+
+```javascript
+function foo() {}
+function bar() {}
+foo();
+```
+
+**Out**
+
+```javascript
+function foo() {}
+foo();
+```
+
+### Pure values used only once
+
+**In**
+
+```javascript
+var foo = "bar";
+bar(foo);
+```
+
+**Out**
+
+```javascript
+bar("bar");
 ```
