@@ -2,7 +2,7 @@
 layout: docs
 title: Plugins - Scope
 description: How to use scoping and track variables
-permalink: /docs/usage/plugins/scope
+permalink: /docs/usage/plugins/scope/
 ---
 
 ### Checking if a local variable is bound

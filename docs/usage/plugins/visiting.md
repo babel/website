@@ -2,7 +2,7 @@
 layout: docs
 title: Plugins - Scope
 description: How to visit nodes
-permalink: /docs/usage/plugins/visiting
+permalink: /docs/usage/plugins/visiting/
 ---
 
 ### Visitor overview

@@ -2,7 +2,7 @@
 layout: docs
 title: Plugins - Scope
 description: How to remove and replace nodes
-permalink: /docs/usage/plugins/manipulation
+permalink: /docs/usage/plugins/manipulation/
 ---
 
 ### Replacing a node

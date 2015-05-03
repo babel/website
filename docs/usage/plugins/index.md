@@ -97,6 +97,15 @@ You can find a simple plugin example as well as usage in the [sebmck/babel-plugi
 
 ## Plugin API
 
- - [Visiting](/docs/usage/plugins/visiting) - How to visit nodes
- - [Manipulation](/docs/usage/plugins/manipulation) - How to remove and replace nodes
- - [Scope](/docs/usage/plugins/scope) - How to use scoping and track variables
+### [Visiting](/docs/usage/plugins/visiting)
+
+How to visit nodes
+
+### [Manipulation](/docs/usage/plugins/manipulation)
+
+How to remove and replace nodes
+
+### [Scope](/docs/usage/plugins/scope)
+
+How to use scoping and track variables
+
