@@ -5,7 +5,7 @@ description: How to visit nodes
 permalink: /docs/usage/plugins/visiting/
 ---
 
-### Visitor overview
+## Visitor overview
 
 Visitor objects contain functions of the node types they intend to visit. eg.
 
@@ -37,7 +37,7 @@ module.exports = function (babel) {
 };
 ```
 
-### Check if a node is of a certain type
+## Check if a node is of a certain type
 
 ```javascript
 module.exports = function (babel) {
@@ -75,7 +75,7 @@ if (node.callee.type === "Identifier" && node.callee.name === "require") {
 }
 ```
 
-### Checking if an `Identifier` is referenced
+## Checking if an `Identifier` is referenced
 
 ```javascript
 module.exports = function (babel) {
@@ -87,7 +87,7 @@ module.exports = function (babel) {
 };
 ```
 
-### Visitor aliases
+## Visitor aliases
 
 Sometimes you may want to visit similar nodes, eg. `FunctionDeclaration` and `FunctionExpression`,
 Babel has a bunch of built-in aliases for nodes to make this easier. A full list can be found at

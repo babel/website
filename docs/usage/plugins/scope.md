@@ -5,7 +5,7 @@ description: How to use scoping and track variables
 permalink: /docs/usage/plugins/scope/
 ---
 
-### Checking if a local variable is bound
+## Checking if a local variable is bound
 
 ```javascript
 module.exports = function (babel) {
@@ -31,7 +31,7 @@ module.exports = function (babel) {
 };
 ```
 
-### Generating a UID
+## Generating a UID
 
 ```javascript
 module.exports = function (babel) {
@@ -45,7 +45,7 @@ module.exports = function (babel) {
 
 This will generate an identifier that doesn't collide with any locally defined variables.
 
-### Pushing a variable declaration to a parent scope
+## Pushing a variable declaration to a parent scope
 
 Sometimes you may want to push a `VariableDeclaration` so you can assign to it inside of an expression.
 

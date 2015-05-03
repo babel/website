@@ -5,7 +5,7 @@ description: How to remove and replace nodes
 permalink: /docs/usage/plugins/manipulation/
 ---
 
-### Replacing a node
+## Replacing a node
 
 ```javascript
 module.exports = function (babel) {
@@ -20,7 +20,7 @@ module.exports = function (babel) {
 };
 ```
 
-### Replacing with multiple nodes
+## Replacing with multiple nodes
 
 ```javascript
 module.exports = function (babel) {
@@ -43,7 +43,7 @@ module.exports = function (babel) {
 Babel uses heuristics extensively when replacing nodes which means that you can do some pretty crazy
 transformations that would be extremely verbose otherwise.
 
-### Replacing a node with a source string
+## Replacing a node with a source string
 
 ```javascript
 module.exports = function (babel) {
@@ -59,7 +59,7 @@ module.exports = function (babel) {
 **NOTE:** It's not recommended to use this API unless you're dealing with dynamic source strings, otherwise
 it's more efficient to parse the code outside of the visitor.
 
-### Inserting a sibling node
+## Inserting a sibling node
 
 ```javascript
 module.exports = function (babel) {
@@ -74,7 +74,7 @@ module.exports = function (babel) {
 **NOTE:** This should **always** be a statement or an array of statements. This uses the same heuristics
 mentioned in [replacing with multiple nodes](#replacing-with-multiple-nodes).
 
-### Removing a node
+## Removing a node
 
 ```javascript
 module.exports = function (babel) {
@@ -89,7 +89,7 @@ module.exports = function (babel) {
 You don't need to worry about the contexts where you can remove a node as it'll be cleaned up for you.
 ie. if you remove the `LEFT` node in `LEFT || RIGHT` then Babel will automatically turn it into just `RIGHT`.
 
-### Replacing a parent
+## Replacing a parent
 
 ```javascript
 module.exports = function (babel) {
@@ -105,7 +105,7 @@ module.exports = function (babel) {
 };
 ```
 
-### Removing a parent
+## Removing a parent
 
 ```javascript
 module.exports = function (babel) {
