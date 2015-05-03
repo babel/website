@@ -35,7 +35,8 @@ so that you can easily chain them together.
  - [es6.spread](/docs/learn-es6#default-rest-spread)
  - [es6.tailCall](/docs/learn-es6#tail-calls)
  - [es6.templateLiterals](/docs/learn-es6#template-strings)
- - [es6.unicodeRegex](/docs/learn-es6#unicode)
+ - [es6.regex.unicode](/docs/learn-es6#unicode)
+ - es6.regex.sticky
 
 ## ES7 (Experimental)
 
