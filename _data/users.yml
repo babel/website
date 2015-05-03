@@ -64,6 +64,9 @@
 - name: Thinkmill
   url: http://thinkmill.com.au
   logo: thinkmill.png
+- name: &yet
+  url: http://andyet.com
+  logo: andyet.svg
 - name: Skylight
   url: https://www.skylight.io/
   logo: skylight.png
