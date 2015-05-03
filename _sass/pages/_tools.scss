@@ -1,12 +1,22 @@
-.js .step-wizard {
-  .step-install,
-  .step-setup,
-  .item,
-  .item h3 {
+.js .babel-tools-item {
+  display: none;
+}
+.js .babel-tools-item:target {
+  display: block;
+}
+
+.babel-tools {
+  &-item {
     display: none;
+
+    &:target, .no-js & {
+      display: block;
+    }
   }
 
-  .step-no {
+
+
+  &-step-number {
     display: block;
     float: left;
     width: 30px;
@@ -18,9 +28,5 @@
     border-radius: 20px;
     background-color: #f5da55;
     margin-right: 10px;
-  }
-
-  .step:first-child > h2 {
-    margin-top: 0;
   }
 }

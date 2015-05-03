@@ -1,33 +1,26 @@
 (function () {
-  var $currentItem;
-  var $currentNav;
-  var $steps = $(".step");
+  var $selector = $('.babel-tools-selector');
+  var $default = $selector.find('option[value=""]');
+  var $window = $(window);
+  var scrollTop = $window.scrollTop();
+  var $prev;
 
-  function reset() {
-    if ($currentItem) $currentItem.hide();
-    if ($currentNav) $currentNav.removeClass("active");
-    $currentItem = $currentNav = null;
-    $steps.removeAttr("style");
-  }
+  $selector.on('change', function() {
+    var name = $(this).val();
+    if (!name) return;
 
-  $(".btn-group .btn").click(function () {
-    if ($currentNav && $currentNav[0] === this) {
-      return reset();
-    } else {
-      reset();
+    if ($default) {
+      $default.remove();
+      $default = false;
     }
 
-    $currentNav = $(this);
-    $currentNav.addClass("active");
-
-    var name = $currentNav.attr("data-name");
+    scrollTop = $window.scrollTop();
     location.hash = name;
-
-    $currentItem = $("[data-name=" + name + "]:not(.btn)").show();
-    $steps.show();
+    $window.scrollTop(scrollTop);
   });
 
-  if (location.hash && location.hash !== "#") {
-    $(".btn[data-name=" + location.hash.slice(1) + "]").click();
+  if (location.hash && location.hash !== '#') {
+    $selector.val(location.hash.slice(1)).trigger('change');
+    $window.scrollTop(scrollTop);
   }
 })();

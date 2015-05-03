@@ -10,30 +10,49 @@ redirect_from:
 ---
 
 <div class="container docs-content">
-  <div class="step-wizard">
-    <div class="step">
-      <h2><span class="step-no">1</span> Choose your tool</h2>
+  <div>
+    <h2><span class="babel-tools-step-number">1</span> Choose your tool</h2>
+
+    <select class="babel-tools-selector form-control input-lg">
+      <option value="">Please choose a tool</option>
 
       {% for tool in site.data.tools %}
-        <h5>{{tool.name}}</h5>
+        <optgroup label="{{tool.name}}">
 
-        <div class="btn-group">
           {% for item in tool.items %}
-            <div class="btn btn-default" data-name="{{item[0]}}">{{item[1]}}</div>
+            <option value="{{item[0]}}">
+              {{item[1]}}
+            </option>
           {% endfor %}
+
+        </optgroup>
+      {% endfor %}
+
+    </select>
+
+    {% for tool in site.data.tools %}
+      {% for item in tool.items %}
+        <div class="babel-tools-item" id="{{item[0]}}">
+          <h2>
+            <span class="babel-tools-step-number">2</span>
+            Install
+          </h2>
+
+          {% capture template_name %}tools/{{item[0]}}/install.md{% endcapture %}
+          {% capture template %}{% include {{template_name}} %}{% endcapture %}
+          {{ template | markdownify }}
+
+          <h2>
+            <span class="babel-tools-step-number">3</span>
+            Usage
+          </h2>
+
+          {% capture template_name %}tools/{{item[0]}}/usage.md{% endcapture %}
+          {% capture template %}{% include {{template_name}} %}{% endcapture %}
+          {{ template | markdownify }}
         </div>
       {% endfor %}
-    </div>
-
-    <div class="step step-install">
-      <h2><span class="step-no">2</span> Install</h2>
-      {% include tools/items.md name="install" %}
-    </div>
-
-    <div class="step step-setup">
-      <h2><span class="step-no">3</span> Usage</h2>
-      {% include tools/items.md name="usage" %}
-    </div>
+    {% endfor %}
   </div>
 </div>
 
