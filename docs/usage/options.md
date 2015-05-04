@@ -40,6 +40,7 @@ $ babel --name=value
 | `modules`                | `"common"`           | Which module formatter to use. Run `babel --help` to see a full list of module formatters. |
 | `moduleIds`              | `false`              | If truthy, insert an explicit id for modules. By default, all modules are anonymous. (Not available for `common` modules) |
 | `moduleId`               | `null`               | Specify a custom name for module ids. |
+| `getModuleId`            | `null`               | Specify a custom callback to generate a module id with. Called as `getModuleId(moduleName)`. If falsy value is returned then the generated module id is used. |
 | `resolveModuleSource`    | `null`               | Resolve a module source ie. `import "SOURCE";` to a custom value. Called as `resolveModuleSource(source, filename)`. |
 | `keepModuleIdExtensions` | `false`              | Keep extensions in module ids |
 | `externalHelpers`        | `false`              | Uses a reference to `babelHelpers` instead of placing helpers at the top of your code. Meant to be used in conjunction with [external helpers](/docs/usage/external-helpers). |
