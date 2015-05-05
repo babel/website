@@ -178,20 +178,6 @@ layout: default
 
 <div class="container">
 
-  <div class="featurette text-center">
-    {% for tool in site.data.tools %}
-      <h4>{{tool.name}}</h4>
-
-      <div class="btn-group btn-group-lg">
-        {% for item in tool.items %}
-          <div class="btn btn-default" data-name="{{item[0]}}">{{item[1]}}</div>
-        {% endfor %}
-      </div>
-    {% endfor %}
-  </div>
-
-  <hr class="featurette-divider">
-
   <div class="text-center">
     <div class="btn-wrapper btn-wrapper-lg">
       <a href="{{ site.baseurl }}/docs/learn-es6/" class="btn btn-featured">Learn ES6</a>
