@@ -34,6 +34,9 @@
 - name: Vimeo
   url: https://vimeo.com
   logo: vimeo.svg
+- name: npm
+  url: https://www.npmjs.com
+  logo: npm.svg
 - name: Ember
   url: http://emberjs.com/
   logo: ember.png
