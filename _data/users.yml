@@ -196,3 +196,6 @@
 - name: angular-formly
   url: http://angular-formly.com
   logo: angular-formly.png
+- name: QuizUp
+  url: https://quizup.com
+  logo: quizup.svg
