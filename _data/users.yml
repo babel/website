@@ -199,3 +199,6 @@
 - name: QuizUp
   url: https://quizup.com
   logo: quizup.svg
+- name: Getable
+  url: https://getable.com
+  logo: getable.svg
