@@ -133,6 +133,9 @@
 - name: Codecademy
   url: http://www.codecademy.com
   logo: codecademy.svg
+- name: KeystoneJS
+  url: http://www.keystonejs.com
+  logo: keystonejs.svg
 - name: Autoprefixer
   url: https://github.com/postcss/autoprefixer/
   logo: autoprefixer.svg
