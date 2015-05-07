@@ -301,15 +301,8 @@
   repl.$toolBar.on('change', onSourceChange);
 
   repl.compile();
-
-  // drag and drop file
-  $("body").on("dragover", function(e) {
-    e.preventDefault();
-    e.originalEvent.dataTransfer.dropEffect = "copy";
-  }).on("drop", function(e) {
-    e.preventDefault();
-    // just use on file
-    var file = e.originalEvent.dataTransfer.files[0];
+  
+  function fileToREPL(file) {
     var reader = new FileReader();
     
     // update repl input with text from file
@@ -321,6 +314,30 @@
     
     // read file
     reader.readAsText(file);
+  }
+
+  // drag and drop file
+  $("body").on("dragover", function(e) {
+    e.preventDefault();
+    e.originalEvent.dataTransfer.dropEffect = "copy";
+  }).on("drop", function(e) {
+    e.preventDefault();
+    // just use one file
+    fileToREPL(e.originalEvent.dataTransfer.files[0]);
   });
+  
+  var $uploader = $("#upload-file");
+  
+  $uploader.on("change", function(e) {
+    e.preventDefault();
+    // just use one file
+    fileToREPL(this.files[0]);
+  });
+  
+  // upload button
+  // plus tool tip that explain the drag and drop
+  $("#upload-button").on("click", function() {
+    $uploader.trigger("click");
+  }).tooltip();
 
 }(babel, $, _, ace, window));
