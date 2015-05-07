@@ -339,5 +339,18 @@
   $("#upload-button").on("click", function() {
     $uploader.trigger("click");
   }).tooltip();
+  
+  //download button
+  $("#download-button").on("click", function(e) {
+    e.preventDefault();
+    
+    var blob = new Blob([repl.input.getValue()], {type: "text/javascript"});
+    var href = URL.createObjectURL(blob);
+    // create and click a download link
+    $("<a>", {
+      href: href,
+      download: "babel-download.js"
+    })[0].click();
+  });
 
 }(babel, $, _, ace, window));
