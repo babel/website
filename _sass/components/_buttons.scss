@@ -25,6 +25,7 @@
   font-family: $headings-font-family;
   font-size: $font-size-h1;
   padding: $padding-large-vertical $padding-large-horizontal * 2;
+  white-space: normal;
 
   &:not(:first-child) {
     margin-left: $padding-base-horizontal;
