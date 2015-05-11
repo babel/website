@@ -40,6 +40,7 @@ so that you can easily chain them together.
 
 ## ES7 (Experimental)
 
+- [es7.asyncFunctions](https://github.com/lukehoban/ecmascript-asyncawait)
 - [es7.comprehensions](/docs/learn-es6#comprehensions)
 - [es7.classProperties](https://gist.github.com/jeffmo/054df782c05639da2adb)
 - [es7.decorators](https://github.com/wycats/javascript-decorators)
