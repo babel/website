@@ -74,6 +74,25 @@ When `Bar.prototype.foo` is defined it triggers the setter on `Foo`. This is a
 case that is very unlikely to appear in production code however it's something
 to keep in mind.
 
+#### Decorators
+
+Another result of the simplified method definition process is the nullification
+of class method decorators if you opt to use `es7.decorators`:
+
+```javascript
+function f(target, key, descriptor) {
+  descriptor.value = () => 100;
+}
+
+class person {
+  @f age() {
+    return 10;
+  }
+}
+
+console.log(new person().age()); // 10, not 100
+```
+
 ### es6.spread
 
 All iterables are assumed to be arrays.
