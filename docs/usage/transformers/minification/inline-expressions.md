@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: utility.inlineExpressions
-description: How to use the utility.inlineExpressions transformer.
+title: minification.inlineExpressions
+description: How to use the minification.inlineExpressions transformer.
 permalink: /docs/usage/transformers/utility/inline-expressions/
 ---
 
@@ -10,11 +10,11 @@ Inline expressions that we can statically evaluate. ie.
 ## Usage
 
 ```javascript
-require("babel").transform("code", { optional: ["utility.inlineExpressions"] });
+require("babel").transform("code", { optional: ["minification.inlineExpressions"] });
 ```
 
 ```sh
-$ babel --optional utility.inlineExpressions script.js
+$ babel --optional minification.inlineExpressions script.js
 ```
 
 ## Example
