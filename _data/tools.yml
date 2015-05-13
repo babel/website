@@ -12,6 +12,7 @@
     gobble: Gobble
     grunt: Grunt
     gulp: Gulp
+    jspm: jspm
     make: Make
     requirejs: RequireJS
     sprockets: Sprockets
