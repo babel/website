@@ -15,6 +15,7 @@
     make: Make
     requirejs: RequireJS
     sprockets: Sprockets
+    jspm: jspm
     webpack: Webpack
 - name: Frameworks
   items:
