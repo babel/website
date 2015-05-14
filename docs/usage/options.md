@@ -51,3 +51,4 @@ $ babel --name=value
 | `comments`               | `true`               | Output comments in generated output. |
 | `metadataUsedHelpers`    | `false`              | See [external helpers - selective builds](/docs/usage/external-helpers#selective-builds) for more information. |
 | `retainLines`            | `false`              | Retain line numbers. This will lead to wacky code but is handy for scenarios where you can't use source maps. **NOTE:** This will obviously not retain the columns. |
+| `env`                    | `{}                  | This is an object of keys that represent different environments. ie. you may have `{ env: { production: { optional: ["optimisation", "minification"] } } }` which will use those options when `process.env.BABEL_ENV === "production"`. If `process.env.BABEL_ENV` isn't set then `process.env.NODE_ENV` will be used, if it's not set then it defaults to `"development"`. |
