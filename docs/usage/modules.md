@@ -144,9 +144,9 @@ export function bar() {
 define(["exports", "foo"], function (exports, _foo) {
   "use strict";
 
-  var _interopRequire = function (obj) {
-    return obj && (obj["default"] || obj);
-  };
+  function _interopRequire(obj) {
+    return obj && obj.__esModule ? obj["default"] : obj;
+  }
 
   exports.bar = bar;
   var foo = _interopRequire(_foo);
@@ -233,9 +233,9 @@ export function bar() {
 })(function (exports, _foo) {
   "use strict";
 
-  var _interopRequire = function (obj) {
-    return obj && (obj["default"] || obj);
-  };
+  function _interopRequire(obj) {
+    return obj && obj.__esModule ? obj["default"] : obj;
+  }
 
   exports.bar = bar;
   var foo = _interopRequire(_foo);
