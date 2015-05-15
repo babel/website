@@ -35,6 +35,17 @@
   .babel-callout h4 {
     margin-top: 0;
   }
+
+  pre {
+    overflow: auto;
+
+    &,
+    & code {
+      white-space: pre;
+      word-break: normal;
+      word-wrap: normal;
+    }
+  }
 }
 
 .babel-blog-section-title {
