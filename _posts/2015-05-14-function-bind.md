@@ -8,12 +8,14 @@ share_text: "New in Babel 5.4: Function Bind Syntax"
 ---
 
 Babel 5.4 was just released and with it comes support for a new
-[experimental ES7 syntax](https://github.com/zenparsing/es-function-bind) designed by
-Kevin Smith ([@zenparsing](https://github.com/zenparsing)) and implemented in
-Babel by Ingvar Stepanyan ([@RReverser](https://github.com/RReverser)).
+[experimental ES7 syntax](https://github.com/zenparsing/es-function-bind)
+proposed by Kevin Smith ([@zenparsing](https://github.com/zenparsing)) and
+implemented in Babel by Ingvar Stepanyan
+([@RReverser](https://github.com/RReverser)).
 
 > ***Warning: This syntax is highly experimental and you should not use
-> it for anything serious (yet).***
+> it for anything serious (yet).*** If you do use this syntax, feel free to
+> provide feedback on [GitHub](https://github.com/zenparsing/es-function-bind).
 
 The function bind syntax introduces a new operator `::` which performs function
 binding and method extraction.
