@@ -40,8 +40,8 @@ import { map, takeWhile, forEach } from "iterlib";
 let _val;
 _val = getPlayers();
 _val = map.call(_val, x => x.character());
-_val = takeWhile.call(val, x => x.strength > 100);
-_val = forEach.call(vall, x => console.log(x));
+_val = takeWhile.call(_val, x => x.strength > 100);
+_val = forEach.call(_val, x => console.log(x));
 ```
 
 > **Note:** Babel's [output](/repl/#?experimental=true&evaluate=false&loose=false&spec=false&playground=false&code=import%20%7B%20map%2C%20takeWhile%2C%20forEach%20%7D%20from%20%22iterlib%22%3B%0A%0AgetPlayers()%0A%3A%3Amap(x%20%3D%3E%20x.character())%0A%3A%3AtakeWhile(x%20%3D%3E%20x.strength%20%3E%20100)%0A%3A%3AforEach(x%20%3D%3E%20console.log(x))%3B)
