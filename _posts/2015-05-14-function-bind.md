@@ -14,7 +14,7 @@ implemented in Babel by Ingvar Stepanyan
 ([@RReverser](https://github.com/RReverser)).
 
 > ***Warning: This syntax is highly experimental and you should not use
-> it for anything serious (yet).*** If you do use this syntax, feel free to
+> it for anything serious (yet).*** If you do use this syntax, please
 > provide feedback on [GitHub](https://github.com/zenparsing/es-function-bind).
 
 The function bind syntax introduces a new operator `::` which performs function
@@ -109,6 +109,11 @@ $ babel --optional es7.functionBind
 ```
 
 ---
+
+The function bind syntax will only make it into ES7 if there is enough interest.
+If you would like to see this syntax make it in, please give it a star on
+[GitHub](https://github.com/zenparsing/es-function-bind) and provide any
+feedback you have on [GitHub issues](https://github.com/zenparsing/es-function-bind/issues).
 
 Special thanks to Ingvar Stepanyan ([@RReverser](https://github.com/RReverser))
 for the [implementation](https://github.com/babel/babel/pull/1518) in Babel.
