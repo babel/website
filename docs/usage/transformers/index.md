@@ -41,11 +41,12 @@ so that you can easily chain them together.
 ## ES7 (Experimental)
 
 - [es7.asyncFunctions](https://github.com/lukehoban/ecmascript-asyncawait)
-- [es7.comprehensions](/docs/learn-es6#comprehensions)
 - [es7.classProperties](https://gist.github.com/jeffmo/054df782c05639da2adb)
+- [es7.comprehensions](/docs/learn-es6#comprehensions)
 - [es7.decorators](https://github.com/wycats/javascript-decorators)
-- [es7.exportExtensions](https://github.com/leebyron/ecmascript-more-export-from)
 - [es7.exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
+- [es7.exportExtensions](https://github.com/leebyron/ecmascript-more-export-from)
+- [es7.functionBind](https://github.com/zenparsing/es-function-bind)
 - [es7.objectRestSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
 - [es7.trailingFunctionCommas](https://github.com/jeffmo/es-trailing-function-commas)
 
