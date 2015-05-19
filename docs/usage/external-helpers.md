@@ -73,7 +73,7 @@ This injects the external helpers into `global`.
 #### Browser
 
 ```html
-<script type="application/javascript" src="your-path-to/babel/external-helpers.js"></script>
+<script src="your-path-to/babel/external-helpers.js"></script>
 ```
 
 In a browser environment you can use a `<script>` tag to inject the `babelHelpers` into the `window` object.
