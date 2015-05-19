@@ -50,7 +50,7 @@ or from `external-helpers.js` inside an npm release of `babel-core`.
 
 #### global
 
-`global` output format sets helpers as global variable by adding `babelHeleprs` to `global` or `this`.
+`global` output format sets helpers as global variable by adding `babelHelpers` to `global` or `this`.
 
 #### umd
 
