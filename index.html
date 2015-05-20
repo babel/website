@@ -22,15 +22,29 @@ layout: default
 </div>
 
 <div class="container">
-  <div class="row featurette">
-    <div class="col-md-5">
-      <h2>ES6 and beyond</h2>
-      <p>
-        Babel will turn your ES6+ code into ES5 friendly code, so you can start using it <strong>right now</strong> without waiting for browser support. <a href="/docs/learn-es6/">Learn more &rarr;</a>
-      </p>
+  <div class="row featurette text-center">
+    <h2 class="text-center">Babel transforms your JavaScript into... JavaScript</h2>
+
+    <div class="col-lg-6">
+      <h3>You put JavaScript in</h3>
+      <pre><code>myOldWeirdJavaScript("foobar");</code></pre>
     </div>
 
-    <div class="col-md-7">
+    <div class="col-lg-6">
+      <h3>And get JavaScript out</h3>
+      <pre><code>myNewTransformedJavaScript("yay!"");</code></pre>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-6">
+      <h2>ES2015 and beyond</h2>
+      <p>By default, Babel ships with a set of ES2015 syntax transformers. These allow you to use new syntax, <strong>right now</strong> without waiting for browser support. <a href="/docs/learn-es2015/">Learn more &rarr;</a></p>
+    </div>
+
+    <div class="col-md-6">
       <div class="col-md-6">
         <ul class="babel-tick-list">
           <li>Array comprehensions</li>
@@ -46,12 +60,13 @@ layout: default
           <li>Destructuring</li>
           <li>Exponentiation operator</li>
           <li>For-of</li>
-          <li>Generators</li>
+          <li>Function bind</li>
         </ul>
       </div>
 
       <div class="col-md-6">
         <ul class="babel-tick-list">
+          <li>Generators</li>
           <li>Generator comprehensions</li>
           <li>Let scoping</li>
           <li>Modules</li>
@@ -94,7 +109,19 @@ layout: default
 
     <div class="col-md-7">
       <h2>JSX and React</h2>
-      <p>Babel works perfectly with React, featuring a built-in JSX transformer. Use it together with the <a href="https://github.com/babel/babel-sublime">babel-sublime</a> package to bring syntax highlighting to a whole new level.</p>
+      <p>Babel ships with built-in support for JSX. Use it together with the <a href="https://github.com/babel/babel-sublime">babel-sublime</a> package to bring syntax highlighting to a whole new level.</p>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-4 col-md-push-8">
+      <h2>Pluggable</h2>
+      <p>Babel supports user plugins. These allow you to plug into the powerful Babel transformation layer. <a href="/docs/plugins/">Learn more &rarr;</a></p>
+    </div>
+    <div class="col-md-8 col-md-pull-4">
+      <img src="{{ site.baseurl }}/images/featurettes/extensible.png?t={{ site.time | date_to_xmlschema }}" alt="Plugins and Browsers" class="featurette-image img-responsive">
     </div>
   </div>
 
@@ -119,16 +146,6 @@ layout: default
   </div>
 
   <hr class="featurette-divider">-->
-
-  <div class="row featurette">
-    <div class="col-md-4 col-md-push-8">
-      <h2>Extensible</h2>
-      <p>With a large range of <a href="{{ site.baseurl }}/docs/using-babel/">integrations</a> and browser support.</p>
-    </div>
-    <div class="col-md-8 col-md-pull-4">
-      <img src="{{ site.baseurl }}/images/featurettes/extensible.png?t={{ site.time | date_to_xmlschema }}" alt="Plugins and Browsers" class="featurette-image img-responsive">
-    </div>
-  </div>
 
   <!--<hr class="featurette-divider">
 
@@ -159,29 +176,10 @@ layout: default
     </div>
   </div>-->
 
-  <hr class="featurette-divider">
-
-  <div class="text-center">
-    <div class="btn-wrapper">
-      <a href="{{ site.baseurl }}/docs/using-babel/" class="btn btn-featured">Install Babel</a>
-    </div>
-  </div>
-
-</div>
-
-<div class="jumbotron jumbotron-inverse text-center">
-  <div class="container-fluid">
-    <h1>It's time to make the switch.</h1>
-    <p>Babel is available wherever you use JavaScript - so start using it today!</p>
-  </div>
-</div>
-
-<div class="container">
-
   <div class="text-center">
     <div class="btn-wrapper btn-wrapper-lg">
-      <a href="{{ site.baseurl }}/docs/learn-es6/" class="btn btn-featured">Learn ES6</a>
-      <a href="{{ site.baseurl }}/docs/using-babel/" class="btn btn-featured">Install Babel</a>
+      <a href="{{ site.baseurl }}/docs/learn-es2015/" class="btn btn-featured">Learn ES2015</a>
+      <a href="{{ site.baseurl }}/docs/setup/" class="btn btn-featured">Setup Babel</a>
     </div>
   </div>
 
