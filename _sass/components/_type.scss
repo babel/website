@@ -39,3 +39,7 @@ h6, .h6 {
     height: 70px;
   }
 }
+
+.lead pre {
+  @extend .lead;
+}

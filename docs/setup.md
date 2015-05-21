@@ -6,7 +6,6 @@ permalink: /docs/setup/
 redirect_from:
  - /docs/using-babel/
  - /plugins.html
- - /docs/setup/
  - /docs/using-6to5/
 ---
 

@@ -23,16 +23,24 @@ layout: default
 
 <div class="container">
   <div class="row featurette text-center">
-    <h2 class="text-center">Babel transforms your JavaScript into... JavaScript</h2>
+    <h2 class="text-center">Babel transforms your JavaScript</h2>
 
     <div class="col-lg-6">
       <h3>You put JavaScript in</h3>
-      <pre><code>myOldWeirdJavaScript("foobar");</code></pre>
+      <div class="lead">
+{% highlight javascript %}
+myOldWeirdJavaScript("foobar");
+{% endhighlight %}
+      </div>
     </div>
 
     <div class="col-lg-6">
       <h3>And get JavaScript out</h3>
-      <pre><code>myNewTransformedJavaScript("yay!"");</code></pre>
+      <div class="lead">
+{% highlight javascript %}
+myNewTransformedJavaScript("yay!");
+{% endhighlight %}
+      </div>
     </div>
   </div>
 
@@ -118,7 +126,7 @@ layout: default
   <div class="row featurette">
     <div class="col-md-4 col-md-push-8">
       <h2>Pluggable</h2>
-      <p>Babel supports user plugins. These allow you to plug into the powerful Babel transformation layer. <a href="/docs/plugins/">Learn more &rarr;</a></p>
+      <p>Babel supports user plugins. These allow you to plug into the powerful Babel transformation layer. <a href="/docs/advanced/plugins/">Learn more &rarr;</a></p>
     </div>
     <div class="col-md-8 col-md-pull-4">
       <img src="{{ site.baseurl }}/images/featurettes/extensible.png?t={{ site.time | date_to_xmlschema }}" alt="Plugins and Browsers" class="featurette-image img-responsive">
