@@ -20,7 +20,7 @@ fly. This is equivalent to CoffeeScript's
 <blockquote class="babel-callout babel-callout-warning">
   <h4><code>utility.inlineEnvironmentVariables</code> use</h4>
   <p>
-    Please note the <a href="/docs/usage/transformers/utility/inline-environment-variables#require-hook"> when used in conjunction.</a>
+    Please note the <a href="/docs/advanced/transformers/utility/inline-environment-variables#require-hook"> when used in conjunction.</a>
   </p>
 </blockquote>
 

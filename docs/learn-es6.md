@@ -1,9 +1,10 @@
 ---
 layout: docs
-title: Learn ES6
+title: Learn ES2015
 description: A detailed overview of ECMAScript 6 features.
-permalink: /docs/learn-es6/
+permalink: /docs/learn-es2015/
 redirect_from:
+ - /docs/learn-es6/
  - /features.html
  - /docs/tour/
 ---
@@ -28,12 +29,12 @@ redirect_from:
 ## Introduction
 
 > ECMAScript 6 is the upcoming version of the ECMAScript standard.  This
-standard is targeting ratification in June 2015.  ES6 is a significant update to
+standard is targeting ratification in June 2015.  ES2015 is a significant update to
 the language, and the first update to the language since ES5 was standardized in
 2009. Implementation of these features in major JavaScript engines is
 [underway now](http://kangax.github.io/es5-compat-table/es6/).
 
-See the [draft ES6 standard](https://people.mozilla.org/~jorendorff/es6-draft.html)
+See the [draft ES2015 standard](https://people.mozilla.org/~jorendorff/es6-draft.html)
 for full specification of the ECMAScript 6 language.
 
 ## ECMAScript 6 Features
@@ -69,7 +70,7 @@ var bob = {
 
 ### Classes
 
-ES6 classes are a simple sugar over the prototype-based OO pattern.  Having a
+ES2015 classes are a simple sugar over the prototype-based OO pattern.  Having a
 single convenient declarative form makes class patterns easier to use, and
 encourages interoperability.  Classes support prototype-based inheritance, super
 calls, instance and static methods and constructors.
@@ -434,7 +435,7 @@ alert("2π = " + exp(pi, e));
 <blockquote class="babel-callout babel-callout-info">
   <h4>Module Formatters</h4>
   <p>
-    Babel can transpile ES6 Modules to several different formats including
+    Babel can transpile ES2015 Modules to several different formats including
     Common.js, AMD, System, and UMD. You can even create your own. For more
     details see the <a href="/docs/usage/modules">modules docs</a>.
   </p>
@@ -628,7 +629,7 @@ c["key"] === undefined
 
 ### Subclassable Built-ins
 
-In ES6, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
+In ES2015, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
 
 ```js
 // User code of Array subclass
@@ -774,7 +775,7 @@ function factorial(n, acc = 1) {
 }
 
 // Stack overflow in most implementations today,
-// but safe on arbitrary inputs in eS6
+// but safe on arbitrary inputs in ES2015
 factorial(100000)
 ```
 
