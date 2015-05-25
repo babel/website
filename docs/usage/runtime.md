@@ -177,11 +177,11 @@ var _bar2 = _interopRequireDefault(_bar);
 the `runtime` transformer however turns this into:
 
 ```javascript
-"use strict";
+'use strict';
 
-var _interopRequireDefault = require("babel-runtime/helpers/interop-require-default").default;
+var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
 
-var _bar = require("bar");
+var _bar = require('bar');
 
 var _bar2 = _interopRequireDefault(_bar);
 ```
