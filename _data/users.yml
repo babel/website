@@ -82,6 +82,9 @@
 - name: Discourse
   url: http://www.discourse.org/
   logo: discourse.png
+- name: thoughtbot
+  url: https://thoughtbot.com/
+  logo: thoughtbot.svg
 - name: Sprout Social
   url: http://sproutsocial.com
   logo: sprout-social.svg
