@@ -205,3 +205,6 @@
 - name: Getable
   url: https://getable.com
   logo: getable.svg
+- name: Billogram
+  url: https://billogram.com
+  logo: billogram.png
