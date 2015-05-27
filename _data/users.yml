@@ -130,6 +130,9 @@
 - name: Mango
   url: https://getmango.com/
   logo: mango.png
+- name: Auth0
+  url: https://auth0.com/
+  logo: auth0.png
 - name: Broadly
   url: https://broadly.com/
   logo: broadly.svg
