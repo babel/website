@@ -217,3 +217,6 @@
 - name: HumongouS.io
   url: https://www.humongous.io
   logo: humongous.png
+- name: Product Health
+  url: http://producthealth.com/
+  logo: product-health.svg
