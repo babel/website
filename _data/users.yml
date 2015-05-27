@@ -211,3 +211,6 @@
 - name: Billogram
   url: https://billogram.com
   logo: billogram.png
+- name: Cinema6
+  url: http://cinema6.com/
+  logo: cinema6.png
