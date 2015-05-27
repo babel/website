@@ -67,6 +67,9 @@
 - name: NodeSource
   url: https://nodesource.com/
   logo: nodesource.svg
+- name: Envato
+  url: http://www.envato.com/
+  logo: envato.png
 - name: Impraise
   url: http://impraise.com/
   logo: impraise.svg
