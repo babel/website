@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 A transformer is a module with a specific goal that is ran against your code to transform it. For example,
-the `es6.arrowFunctions` transformer has the very specific goal of transforming [ES6 Arrow Functions](https://babeljs.io/docs/learn-es6#arrows)
+the `es6.arrowFunctions` transformer has the very specific goal of transforming [ES6 Arrow Functions](https://babeljs.io/docs/learn-es2015#arrows)
 to the equivalent ES3. This allows transformers to be completely unaware of the other transformations happening
 so that you can easily chain them together.
 
@@ -23,28 +23,28 @@ so that you can easily chain them together.
 
 ## ES6
 
- - [es6.arrowFunctions](/docs/learn-es6#arrows)
- - [es6.blockScoping](/docs/learn-es6#let-const)
- - [es6.classes](/docs/learn-es6#classes)
- - [es6.constants](/docs/learn-es6#let-const)
- - [es6.destructuring](/docs/learn-es6#destructuring)
- - [es6.forOf](/docs/learn-es6#iterators-for-of)
- - [es6.modules](/docs/learn-es6#modules)
- - [es6.parameters.default](/docs/learn-es6#default-rest-spread)
- - [es6.parameters.rest](/docs/learn-es6#default-rest-spread)
- - [es6.properties.computed](/docs/learn-es6#enhanced-object-literals)
- - [es6.properties.shorthand](/docs/learn-es6#enhanced-object-literals)
- - [es6.spread](/docs/learn-es6#default-rest-spread)
- - [es6.tailCall](/docs/learn-es6#tail-calls)
- - [es6.templateLiterals](/docs/learn-es6#template-strings)
- - [es6.regex.unicode](/docs/learn-es6#unicode)
+ - [es6.arrowFunctions](/docs/learn-es2015#arrows)
+ - [es6.blockScoping](/docs/learn-es2015#let-const)
+ - [es6.classes](/docs/learn-es2015#classes)
+ - [es6.constants](/docs/learn-es2015#let-const)
+ - [es6.destructuring](/docs/learn-es2015#destructuring)
+ - [es6.forOf](/docs/learn-es2015#iterators-for-of)
+ - [es6.modules](/docs/learn-es2015#modules)
+ - [es6.parameters.default](/docs/learn-es2015#default-rest-spread)
+ - [es6.parameters.rest](/docs/learn-es2015#default-rest-spread)
+ - [es6.properties.computed](/docs/learn-es2015#enhanced-object-literals)
+ - [es6.properties.shorthand](/docs/learn-es2015#enhanced-object-literals)
+ - [es6.spread](/docs/learn-es2015#default-rest-spread)
+ - [es6.tailCall](/docs/learn-es2015#tail-calls)
+ - [es6.templateLiterals](/docs/learn-es2015#template-strings)
+ - [es6.regex.unicode](/docs/learn-es2015#unicode)
  - es6.regex.sticky
 
 ## ES7 (Experimental)
 
 - [es7.asyncFunctions](https://github.com/lukehoban/ecmascript-asyncawait)
 - [es7.classProperties](https://gist.github.com/jeffmo/054df782c05639da2adb)
-- [es7.comprehensions](/docs/learn-es6#comprehensions)
+- [es7.comprehensions](/docs/learn-es2015#comprehensions)
 - [es7.decorators](https://github.com/wycats/javascript-decorators)
 - [es7.exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
 - [es7.exportExtensions](https://github.com/leebyron/ecmascript-more-export-from)

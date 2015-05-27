@@ -7,7 +7,7 @@ redirect_from:
  - /docs/usage/transformers/es6/spec-symbols/
 ---
 
-ES6 introduces a new native type called [symbols](/docs/learn-es6#symbols).
+ES6 introduces a new native type called [symbols](/docs/learn-es2015#symbols).
 This transformer wraps all `typeof` expressions with a method that
 replicates native behaviour. (ie. returning "symbol" for symbols)
 
