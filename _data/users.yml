@@ -31,6 +31,9 @@
 - name: SoundCloud
   url: https://soundcloud.com
   logo: soundcloud.png
+- name: Zendesk
+  url: http://www.zendesk.com
+  logo: zendesk.svg
 - name: Vimeo
   url: https://vimeo.com
   logo: vimeo.svg
