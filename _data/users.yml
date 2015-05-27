@@ -220,3 +220,6 @@
 - name: Product Health
   url: http://producthealth.com/
   logo: product-health.svg
+- name: SPHERE.IO
+  url: http://sphere.io/
+  logo: sphereio.svg
