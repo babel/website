@@ -247,3 +247,6 @@
 - name: EveryDollar
   url: https://www.everydollar.com
   logo: everydollar.svg
+- name: Grove Labs
+  url: https://grovelabs.io/
+  logo: grove.svg
