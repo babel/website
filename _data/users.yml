@@ -139,6 +139,9 @@
 - name: Broadly
   url: https://broadly.com/
   logo: broadly.svg
+- name: Vivaldi
+  url: https://vivaldi.com
+  logo: vivaldi.png
 - name: TipRanks
   url: http://www.tipranks.com/
   logo: tipranks.png
