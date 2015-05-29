@@ -19,6 +19,9 @@
 - name: Reddit
   url: https://www.reddit.com
   logo: reddit.png
+- name: Spotify
+  url: https://www.spotify.com
+  logo: spotify.png
 - name: Atlassian
   url: https://www.atlassian.com/
   logo: atlassian.svg
