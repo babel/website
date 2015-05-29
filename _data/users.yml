@@ -235,3 +235,6 @@
 - name: SPHERE.IO
   url: http://sphere.io/
   logo: sphereio.svg
+- name: Impero
+  url: http://weareimpero.com
+  logo: impero.svg
