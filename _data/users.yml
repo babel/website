@@ -244,3 +244,6 @@
 - name: Ticketmaster
   url: http://www.ticketmaster.com/
   logo: ticketmaster.svg
+- name: EveryDollar
+  url: https://www.everydollar.com
+  logo: everydollar.svg
