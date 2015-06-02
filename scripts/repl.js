@@ -340,17 +340,28 @@
     $uploader.trigger("click");
   }).tooltip();
   
-  //download button
-  $("#download-button").on("click", function(e) {
-    e.preventDefault();
-    
-    var blob = new Blob([repl.input.getValue()], {type: "text/javascript"});
-    var href = URL.createObjectURL(blob);
-    // create and click a download link
-    $("<a>", {
-      href: href,
-      download: "babel-download.js"
-    })[0].click();
-  });
+  // handle download of file in browsers that support a[download]
+  var $download = $("#download-button");
+  var $a = $("<a>");
+  
+  if ("download" in $a[0] && (window.URL && window.URL.createObjectURL )) {
+  
+    //download button
+    $download.on("click", function(e) {
+      e.preventDefault();
+      
+      var blob = new Blob([repl.input.getValue()], {type: "text/javascript"});
+      var href = window.URL.createObjectURL(blob);
+      
+      // download attribute supported
+      $a.attr({
+        href: href,
+        download: "babel-download.js"
+      })[0].click();
+    });
+  } else {
+    // download not supported
+    $download.hide();
+  }
 
 }(babel, $, _, ace, window));
