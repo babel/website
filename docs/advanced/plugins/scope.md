@@ -59,7 +59,7 @@ module.exports = function (babel) {
   
   return new babel.Transformer("foo-bar", {
     CallExpression(node, parent, scope) {
-      var id = scope.generateUidBasedOnNode(node);
+      var id = scope.generateUidIdentifierBasedOnNode(node);
       scope.push({ id });
       return t.assignmentExpression("=", id, node);
     }

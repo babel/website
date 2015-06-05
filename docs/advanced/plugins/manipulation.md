@@ -82,14 +82,11 @@ mentioned in [replacing with multiple nodes](#replacing-with-multiple-nodes).
 module.exports = function (babel) {
   return new babel.Transformer("foo-bar", {
     FunctionDeclaration(node, parent) {
-      this.remove();
+      this.dangerouslyRemove();
     }
   });
 };
 ```
-
-You don't need to worry about the contexts where you can remove a node as it'll be cleaned up for you.
-ie. if you remove the `LEFT` node in `LEFT || RIGHT` then Babel will automatically turn it into just `RIGHT`.
 
 ## Replacing a parent
 

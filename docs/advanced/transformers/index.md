@@ -81,7 +81,7 @@ These are disabled by default, see [usage](#usage) for instructions on how to en
  - [bluebirdCoroutines](/docs/advanced/transformers/other/bluebird-coroutines)
  - [runtime](/docs/advanced/runtime)
  - [minification.deadCodeElimination](/docs/advanced/transformers/minification/dead-code-elimination)
- - [minification.inlineExpressions](/docs/advanced/transformers/utility/inline-expressions)
+ - [minification.constantFolding](/docs/advanced/transformers/minification/constant-folding)
  - [minification.memberExpressionLiterals](/docs/advanced/transformers/minification/member-expression-literals)
  - [minification.propertyLiterals](/docs/advanced/transformers/minification/property-literals)
  - [minification.removeConsole](/docs/advanced/transformers/utility/remove-console)
