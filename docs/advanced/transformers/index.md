@@ -79,7 +79,7 @@ These are disabled by default, see [usage](#usage) for instructions on how to en
  - [es6.spec.templateLiterals](/docs/advanced/transformers/es6/spec-template-literals)
  - [asyncToGenerator](/docs/advanced/transformers/other/async-to-generator)
  - [bluebirdCoroutines](/docs/advanced/transformers/other/bluebird-coroutines)
- - [runtime](/docs/advanced/runtime)
+ - [runtime](/docs/usage/runtime)
  - [minification.deadCodeElimination](/docs/advanced/transformers/minification/dead-code-elimination)
  - [minification.constantFolding](/docs/advanced/transformers/minification/constant-folding)
  - [minification.memberExpressionLiterals](/docs/advanced/transformers/minification/member-expression-literals)
