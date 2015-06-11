@@ -44,7 +44,7 @@ so that you can easily chain them together.
 
 - [es7.asyncFunctions](https://github.com/lukehoban/ecmascript-asyncawait)
 - [es7.classProperties](https://gist.github.com/jeffmo/054df782c05639da2adb)
-- [es7.comprehensions](/docs/learn-es2015/#comprehensions)
+- [es7.comprehensions](/docs/advanced/transformers/comprehensions)
 - [es7.decorators](https://github.com/wycats/javascript-decorators)
 - [es7.exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
 - [es7.exportExtensions](https://github.com/leebyron/ecmascript-more-export-from)

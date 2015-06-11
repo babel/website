@@ -32,7 +32,7 @@ point for inclusion by default in Babel due to their relative maturity and need 
 
 ### Stage 0
 
-- [es7.comprehensions](/docs/learn-es2015/#comprehensions)
+- [es7.comprehensions](/docs/advanced/transformers/comprehensions)
 - [es7.classProperties](https://gist.github.com/jeffmo/054df782c05639da2adb)
 - [es7.functionBind](https://github.com/zenparsing/es-function-bind)
 
