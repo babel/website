@@ -339,29 +339,13 @@ interface Generator extends Iterator {
 
 ### Comprehensions
 
-Array and generator comprehensions provide simple declarative list processing
-similar as used in many functional programming patterns.
-
-```js
-// Array comprehensions
-var results = [
-  for(c of customers)
-    if (c.city == "Seattle")
-      { name: c.name, age: c.age }
-]
-
-// Generator comprehensions
-var results = (
-  for(c of customers)
-    if (c.city == "Seattle")
-      { name: c.name, age: c.age }
-)
-```
+See [this page](/docs/advanced/transformers/other/comprehensions) for details.
+It is now an [ES7 Strawman proposal](/docs/usage/experimental).
 
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Disabled by default</h4>
   <p>
-    These are only available if you enable experimental support. See <a href="/docs/usage/experimental">experimental usage</a> for more information.
+    This is only available if you enable experimental support. See <a href="/docs/usage/experimental">experimental usage</a> for more information.
   </p>
 </blockquote>
 
