@@ -72,7 +72,7 @@ if (foo) {
 
 ```javascript
 if (!foo) {
-  foo();
+  bar();
 }
 ```
 
@@ -91,7 +91,7 @@ if (foo) {
 
 ```javascript
 if (foo) {
-  foo();
+  bar();
 }
 ```
 
