@@ -197,6 +197,7 @@
       transformed = babel.transform(code, {
         stage: this.options.experimental ? 0 : 2,
         loose: this.options.loose && "all",
+        optional: this.options.spec && ["es6.spec.templateLiterals", "es6.spec.blockScoping", "es6.spec.symbols"],
         filename: 'repl'
       });
     } catch (err) {
