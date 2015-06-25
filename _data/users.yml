@@ -265,3 +265,6 @@
 - name: YPlan
   url: https://yplanapp.com
   logo: yplan.svg
+- name: Marionette
+  url: http://marionettejs.com/
+  logo: marionette.svg
