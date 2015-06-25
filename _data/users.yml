@@ -25,6 +25,9 @@
 - name: Spotify
   url: https://www.spotify.com
   logo: spotify.png
+- name: Flipkart
+  url: http://www.flipkart.com
+  logo: flipkart.png
 - name: Atlassian
   url: https://www.atlassian.com/
   logo: atlassian.svg
