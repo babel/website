@@ -13,6 +13,9 @@
 - name: PayPal
   url: https://paypal.com
   logo: paypal.svg
+- name: LinkedIn
+  url: https://linkedin.com
+  logo: linkedin.png
 - name: Airbnb
   url: https://www.airbnb.com/
   logo: airbnb.svg
