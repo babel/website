@@ -274,3 +274,6 @@
 - name: Cyfrowy Polsat
   url: http://www.cyfrowypolsat.pl/
   logo: cyfrowy-polsat.png
+- name: React Bootstrap
+  url: http://react-bootstrap.github.io/
+  logo: react-bootstrap.png
