@@ -280,3 +280,6 @@
 - name: React Bootstrap
   url: http://react-bootstrap.github.io/
   logo: react-bootstrap.png
+- name: YACHT
+  url: http://www.yacht.nl
+  logo: yacht.png
