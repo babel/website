@@ -268,3 +268,6 @@
 - name: Canopy
   url: https://www.canopytax.com
   logo: canopy.svg
+- name: Cyfrowy Polsat
+  url: http://www.cyfrowypolsat.pl/
+  logo: cyfrowy-polsat.png
