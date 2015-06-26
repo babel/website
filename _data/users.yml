@@ -13,6 +13,9 @@
 - name: PayPal
   url: https://paypal.com
   logo: paypal.svg
+- name: LinkedIn
+  url: https://linkedin.com
+  logo: linkedin.png
 - name: Airbnb
   url: https://www.airbnb.com/
   logo: airbnb.svg
@@ -22,6 +25,9 @@
 - name: Spotify
   url: https://www.spotify.com
   logo: spotify.png
+- name: Flipkart
+  url: http://www.flipkart.com
+  logo: flipkart.png
 - name: Atlassian
   url: https://www.atlassian.com/
   logo: atlassian.svg
@@ -256,3 +262,33 @@
 - name: SEEK
   url: http://www.seek.com.au
   logo: seek.svg
+- name: YPlan
+  url: https://yplanapp.com
+  logo: yplan.svg
+- name: Marionette
+  url: http://marionettejs.com/
+  logo: marionette.svg
+- name: Brigade
+  url: https://www.brigade.com
+  logo: brigade.svg
+- name: Cyfrowy Polsat
+  url: http://www.cyfrowypolsat.pl/
+  logo: cp.png
+- name: Indivirtual
+  url: http://www.indivirtual.com
+  logo: indivirtual.png
+- name: YACHT
+  url: http://www.yacht.nl
+  logo: yacht.png
+- name: React-Bootstrap
+  url: http://react-bootstrap.github.io/
+  logo: reactbootstrap.png
+- name: ATTN
+  url: http://www.attn.com
+  logo: attn.svg
+- name: Bench
+  url: https://bench.co
+  logo: bench.svg
+- name: DockYard
+  url: https://dockyard.com
+  logo: dockyard.png
