@@ -274,3 +274,6 @@
 - name: Cyfrowy Polsat
   url: http://www.cyfrowypolsat.pl/
   logo: cp.png
+- name: Indivirtual
+  url: http://www.indivirtual.com
+  logo: indivirtual.png
