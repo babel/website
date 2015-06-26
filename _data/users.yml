@@ -91,6 +91,9 @@
 - name: thoughtbot
   url: https://thoughtbot.com/
   logo: thoughtbot.svg
+- name: Segment
+  url: https://www.segment.com
+  logo: segment.svg
 - name: Flipkart
   url: http://www.flipkart.com
   logo: flipkart.png
