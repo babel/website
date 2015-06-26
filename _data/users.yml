@@ -283,3 +283,6 @@
 - name: YACHT
   url: http://www.yacht.nl
   logo: yacht.png
+- name: YPlan
+  url: https://yplanapp.com
+  logo: yplan.svg
