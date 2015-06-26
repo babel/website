@@ -289,3 +289,6 @@
 - name: Bench
   url: https://bench.co
   logo: bench.svg
+- name: DockYard
+  url: https://dockyard.com
+  logo: dockyard.png
