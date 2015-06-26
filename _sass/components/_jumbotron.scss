@@ -45,6 +45,32 @@
     margin: $line-height-computed 0;
     border: 1px solid $gray-lighter;
     border-radius: $border-radius-small;
+    width: 360px;
+    height: 130px;
+    margin: 0 auto;
+    padding: 15px;
+    font-size: 13px;
+    line-height: 16px;
+    margin-top: 20px;
+
+    .carbon-text,
+    .carbon-poweredby {
+      padding-left: 15px;
+      text-align: left !important;
+    }
+
+    .carbon-poweredby {
+      display: block;
+    }
+
+    .carbon-img {
+      display: block;
+      float: left;
+    }
+
+    a {
+      color: inherit;
+    }
 
     &:hover {
       color: $gray-lighter;

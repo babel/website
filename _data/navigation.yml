@@ -29,8 +29,6 @@
     url: /docs/usage/jsx/
 - title: Advanced
   subnav:
-  - title: Plugins
-    url: /docs/advanced/plugins/
   - title: Transformers
     url: /docs/advanced/transformers/
   - title: Caveats
@@ -39,6 +37,12 @@
     url: /docs/advanced/loose/
   - title: External helpers
     url: /docs/advanced/external-helpers/
+- title: Plugins
+  subnav:
+  - title: Using
+    url: /docs/plugins/usage
+  - title: Developing
+    url: /docs/plugins/developing
 - title: Try it out
   url: /repl/
 - title: FAQ

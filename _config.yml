@@ -1,7 +1,7 @@
 # Site settings
 title: Babel
-tagline: The compiler for writing next generation JavaScript
-description: The compiler for writing next generation JavaScript
+tagline: The compiler for next generation JavaScript
+description: The compiler for next generation JavaScript
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://babeljs.io" # the base hostname & protocol for your site
 # twitter_username: jekyllrb
