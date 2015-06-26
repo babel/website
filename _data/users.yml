@@ -286,3 +286,6 @@
 - name: ATTN
   url: http://www.attn.com
   logo: attn.svg
+- name: Bench
+  url: https://bench.co
+  logo: bench.svg
