@@ -22,6 +22,8 @@ redirect_from:
   </p>
 </blockquote>
 
+You can also find official plugins at https://github.com/babel-plugins and other community plugins by searching [npm](https://www.npmjs.com/search?q=babel-plugin-).
+
 ## Usage
 
 Plugins are resolved relative to the current working directory.
