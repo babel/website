@@ -22,7 +22,12 @@ redirect_from:
   </p>
 </blockquote>
 
-You can also find official plugins at https://github.com/babel-plugins and other community plugins by searching [npm](https://www.npmjs.com/search?q=babel-plugin-).
+<blockquote class="babel-callout babel-callout-info">
+  <h4>Official and Community Plugins</h4>
+  <p>
+    Checkout official plugins in the babel-plugins <a href="https://github.com/babel-plugins">repo</a>! Other community plugins can be found on <a href="https://www.npmjs.com/search?q=babel-plugin-">npm</a>.
+  </p>
+</blockquote>
 
 ## Usage
 
