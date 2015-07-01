@@ -12,45 +12,49 @@ redirect_from:
 Visitor objects contain functions of the node types they intend to visit. eg.
 
 ```javascript
-module.exports = function (babel) {
-  return new babel.Transformer("foo-bar", {
-    FunctionDeclaration: {
-      enter(node, parent) {
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      FunctionDeclaration: {
+        enter(node, parent) {
 
-      },
+        },
 
-      exit(node, parent) {
+        exit(node, parent) {
 
+        }
       }
     }
   });
-};
+}
 ```
 
 If you only have an `enter` handler then you can simplify it to:
 
 ```javascript
-module.exports = function (babel) {
-  return new babel.Transformer("foo-bar", {
-    FunctionDeclaration(node, parent) {
-    
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      FunctionDeclaration(node, parent) {
+      
+      }
     }
   });
-};
+}
 ```
 
 ## Check if a node is of a certain type
 
 ```javascript
-module.exports = function (babel) {
-  var t = babel.types;
-
-  return new babel.Transformer("foo-bar", {
-    CallExpression(node, parent) {
-      return t.isIdentifier(node.callee); 
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      CallExpression(node, parent) {
+        return t.isIdentifier(node.callee); 
+      }
     }
-  })
-});
+  });
+}
 ```
 
 **NOTE:** [Visitor aliases](#visitor-aliases) are also honored so you can use `babel.types.isFunction`.
@@ -58,15 +62,15 @@ module.exports = function (babel) {
 You can alternatively pass an object that will be shallowly checked against the node. ie:
 
 ```javascript
-module.exports = function (babel) {
-  var t = babel.types;
-  
-  return new babel.Transformer("foo-bar", {
-    CallExpression(node, parent) {
-      return t.isIdentifier(node.callee, { name: "require" }); // found a require call!
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      CallExpression(node, parent) {
+        return t.isIdentifier(node.callee, { name: "require" }); // found a require call!
+      }
     }
   });
-};
+}
 ```
 
 This is far nicer than doing:
@@ -80,13 +84,15 @@ if (node.callee.type === "Identifier" && node.callee.name === "require") {
 ## Checking if an `Identifier` is referenced
 
 ```javascript
-module.exports = function (babel) {
-  return new babel.Transformer("foo-bar", {
-    Identifier(node, parent) {
-      this.isReferenced(); // equivalent to babel.types.isReferenced(node, parent);
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      Identifier(node, parent) {
+        this.isReferenced(); // equivalent to babel.types.isReferenced(node, parent);
+      }
     }
   });
-};
+}
 ```
 
 ## Visitor aliases
@@ -98,11 +104,13 @@ Babel has a bunch of built-in aliases for nodes to make this easier. A full list
 For example if you wanted to visit all functions (meaing `FunctionDeclaration`, `FunctionExpression` and `ArrowFunctionExpression`) then you can use the following:
 
 ```javascript
-module.exports = function (babel) {
-  return new babel.Transformer("foo-bar", {
-    Function(node, parent) {
-    
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      Function(node, parent) {
+      
+      }
     }
   });
-};
+}
 ```
