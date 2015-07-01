@@ -22,6 +22,13 @@ redirect_from:
   </p>
 </blockquote>
 
+<blockquote class="babel-callout babel-callout-info">
+  <h4>Official and Community Plugins</h4>
+  <p>
+    Checkout official plugins in the babel-plugins <a href="https://github.com/babel-plugins">repo</a>! Other community plugins can be found on <a href="https://www.npmjs.com/search?q=babel-plugin-">npm</a>.
+  </p>
+</blockquote>
+
 ## Usage
 
 Plugins are resolved relative to the current working directory.
