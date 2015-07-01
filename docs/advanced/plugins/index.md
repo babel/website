@@ -80,7 +80,7 @@ extremely common and versatile [ESTree](https://github.com/estree/estree) AST fo
   "name": "babel-plugin-foo",
   "version": "1.0.0",
   "dependencies": {
-    "babel-core": "^5.0.0"
+    "babel-core": "^5.6.0"
   }
 }
 ```
@@ -88,11 +88,13 @@ extremely common and versatile [ESTree](https://github.com/estree/estree) AST fo
 **index.js**
 
 ```javascript
-module.exports = function (babel) {
-  return new babel.Transformer("foo-bar", {
-    // visitors
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      // visitors
+    }
   });
-};
+}
 ```
 
 You can find a simple plugin example as well as usage in the [sebmck/babel-plugin-example](https://github.com/sebmck/babel-plugin-example) repo.

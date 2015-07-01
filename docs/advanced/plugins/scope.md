@@ -10,13 +10,15 @@ redirect_from:
 ## Checking if a local variable is bound
 
 ```javascript
-module.exports = function (babel) {
-  return new babel.Transformer("foo-bar", {
-    FunctionDeclaration(node, parent, scope) {
-      scope.hasBinding("name");
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      FunctionDeclaration(node, parent, scope) {
+        scope.hasBinding("name");
+      }
     }
   });
-};
+}
 ```
 
 This will walk up the scope tree and check for that particular binding.
@@ -24,26 +26,30 @@ This will walk up the scope tree and check for that particular binding.
 You can also check if a scope has it's **own** binding:
 
 ```javascript
-module.exports = function (babel) {
-  return new babel.Transformer("foo-bar", {
-    FunctionDeclaration(node, parent, scope) {
-      scope.hasOwnBinding("name");
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      FunctionDeclaration(node, parent, scope) {
+        scope.hasOwnBinding("name");
+      }
     }
   });
-};
+}
 ```
 
 ## Generating a UID
 
 ```javascript
-module.exports = function (babel) {
-  return new babel.Transformer("foo-bar", {
-    FunctionDeclaration(node, parent, scope) {
-      scope.generateUidIdentifier("foo");
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      FunctionDeclaration(node, parent, scope) {
+        scope.generateUidIdentifier("foo");
+      }
     }
   });
-};
-````
+}
+```
 
 This will generate an identifier that doesn't collide with any locally defined variables.
 
@@ -54,17 +60,17 @@ Sometimes you may want to push a `VariableDeclaration` so you can assign to it i
 For example the following transformer:
 
 ```javascript
-module.exports = function (babel) {
-  var t = babel.types;
-  
-  return new babel.Transformer("foo-bar", {
-    CallExpression(node, parent, scope) {
-      var id = scope.generateUidIdentifierBasedOnNode(node);
-      scope.push({ id });
-      return t.assignmentExpression("=", id, node);
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      CallExpression(node, parent, scope) {
+        var id = scope.generateUidIdentifierBasedOnNode(node);
+        scope.push({ id });
+        return t.assignmentExpression("=", id, node);
+      }
     }
   });
-};
+}
 ```
 
 Will transform:
@@ -87,19 +93,19 @@ function foo() {
 ## Rename a binding and it's references
 
 ```javascript
-module.exports = function (babel) {
-  var t = babel.types;
-  
-  return new babel.Transformer("foo-bar", {
-    Program(node, parent, scope) {
-      // no second argument passed so this will generate a uid based on `foo`
-      scope.rename("foo");
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      Program(node, parent, scope) {
+        // no second argument passed so this will generate a uid based on `foo`
+        scope.rename("foo");
 
-      // rename bar to foobar
-      scope.rename("bar", "foobar");
+        // rename bar to foobar
+        scope.rename("bar", "foobar");
+      }
     }
   });
-};
+}
 ```
 
 
