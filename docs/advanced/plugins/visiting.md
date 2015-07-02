@@ -36,7 +36,7 @@ export default function ({ Plugin, types: t }) {
   return new Plugin("foo-bar", {
     visitor: {
       FunctionDeclaration(node, parent) {
-      
+
       }
     }
   });
@@ -50,7 +50,7 @@ export default function ({ Plugin, types: t }) {
   return new Plugin("foo-bar", {
     visitor: {
       CallExpression(node, parent) {
-        return t.isIdentifier(node.callee); 
+        return t.isIdentifier(node.callee);
       }
     }
   });
@@ -108,7 +108,21 @@ export default function ({ Plugin, types: t }) {
   return new Plugin("foo-bar", {
     visitor: {
       Function(node, parent) {
-      
+
+      }
+    }
+  });
+}
+```
+
+**NOTE:**: You can also list multiple visitors together in a string with `|` like the following:
+
+```javascript
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      "ClassDeclaration|FunctionDeclaration"(node, parent) {
+
       }
     }
   });
