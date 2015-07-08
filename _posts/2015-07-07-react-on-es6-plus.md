@@ -2,9 +2,16 @@
 layout: post
 title:  "React on ES6+"
 author: Steven Luscher
-date:   2015-06-XX XX:XX:XX
+date:   2015-06-07 17:00:00
 categories: announcements
 share_text: "React on ES6+"
+guest_post: true
+guest_description: |
+  This is a guest post from Steven Luscher. Steven works on Relay at Facebook –
+  a JavaScript framework for building applications using React and GraphQL.
+  Follow Steven on <a href="https://instagram.com/steveluscher/">Instagram</a>,
+  <a href="https://github.com/steveluscher">GitHub</a>,
+  and <a href="https://twitter.com/steveluscher">Twitter</a>.
 ---
 
 While redesigning [Instagram Web](https://instagram.com/instagram/) from the inside out this year, we enjoyed using a number of ES6+ features to write our React components. Allow me to highlight some of the ways that these new language features can change the way you write a React app, making it easier and more fun than ever.
@@ -217,6 +224,3 @@ This element will regularly have the `className` “base” unless there exists 
 ## Thanks for reading
 
 I hope that you enjoy using ES6+ language features to write React code as much as we do. Thanks to my colleagues for their contributions to this post, and thanks especially to the Babel team for making the future available to all of us, today.
-
-*This has been a guest post by Steven Luscher from Instagram's web team ([Instagram](https://instagram.com/steveluscher/), [GitHub](https://github.com/steveluscher), [Twitter](https://twitter.com/steveluscher)).*
-
