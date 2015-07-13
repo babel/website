@@ -3,6 +3,7 @@
 build:
 	if [ ! -d ./_babel ]; \
 	then git clone git@github.com:babel/babel.git _babel; \
+	make bootstrap; \
 	fi
 
 	cd _babel; \
