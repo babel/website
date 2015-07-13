@@ -101,7 +101,7 @@ built-in support for emerging standards such as [Flow](http://flowtype.org) and
 
 ### Flexible
 
-Babel is very flexible in it's usage, it has support for an extensive range of
+Babel is very flexible in its usage, it has support for an extensive range of
 [build systems](/docs/setup#build-systems) as well as for the
 [browser](/docs/usage/browser), [node](/docs/setup#node-js) and [more!](/docs/setup#misc).
 

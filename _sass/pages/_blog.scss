@@ -67,3 +67,15 @@
     margin-right: 10px;
   }
 }
+
+.babel-blog-title-label {
+  border-radius: 3px;
+  font-weight: 600;
+  text-transform: uppercase;
+  vertical-align: top;
+  margin-top: 0.6em;
+  padding: 0.25em 0.5em;
+  display: inline-block;
+  background: $babel-yellow;
+  color: $babel-dark-gray;
+}

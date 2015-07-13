@@ -22,6 +22,13 @@ redirect_from:
   </p>
 </blockquote>
 
+<blockquote class="babel-callout babel-callout-info">
+  <h4>Official and Community Plugins</h4>
+  <p>
+    Checkout official plugins in the babel-plugins <a href="https://github.com/babel-plugins">repo</a>! Other community plugins can be found on <a href="https://www.npmjs.com/search?q=babel-plugin-">npm</a>.
+  </p>
+</blockquote>
+
 ## Usage
 
 Plugins are resolved relative to the current working directory.
@@ -80,7 +87,7 @@ extremely common and versatile [ESTree](https://github.com/estree/estree) AST fo
   "name": "babel-plugin-foo",
   "version": "1.0.0",
   "dependencies": {
-    "babel-core": "^5.0.0"
+    "babel-core": "^5.6.0"
   }
 }
 ```
@@ -88,11 +95,13 @@ extremely common and versatile [ESTree](https://github.com/estree/estree) AST fo
 **index.js**
 
 ```javascript
-module.exports = function (babel) {
-  return new babel.Transformer("foo-bar", {
-    // visitors
+export default function ({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      // visitors
+    }
   });
-};
+}
 ```
 
 You can find a simple plugin example as well as usage in the [sebmck/babel-plugin-example](https://github.com/sebmck/babel-plugin-example) repo.
