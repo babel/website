@@ -18,7 +18,7 @@ build:
 	touch ./_includes/version.html
 	node -e "console.log(require('./_babel/package.json').version)" > ./_includes/version.html
 
-	cat ./_babel/dist/babel.min.js ./_babel/dist/polyfill.min.js > ./scripts/babel.js;
+	cat ./_babel/dist/browser.min.js ./_babel/dist/polyfill.min.js > ./scripts/babel.js;
 
 	if [ ! -d ./node_modules ]; \
 	then npm install; \
