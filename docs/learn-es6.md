@@ -12,7 +12,7 @@ redirect_from:
 <blockquote class="babel-callout babel-callout-info">
   <h4>es6features</h4>
   <p>
-    This document is taken from Luke Hoban's excellent
+    This document was originally taken from Luke Hoban's excellent
     <a href="http://git.io/es6features">es6features</a> repo. Go give it a star
     on GitHub!
   </p>
@@ -28,10 +28,10 @@ redirect_from:
 
 ## Introduction
 
-> ECMAScript 6 is the upcoming version of the ECMAScript standard.  This
-standard is targeting ratification in June 2015.  ES2015 is a significant update to
-the language, and the first update to the language since ES5 was standardized in
-2009. Implementation of these features in major JavaScript engines is
+> ECMAScript 6 is the newest version of the ECMAScript standard. This standard
+was ratified in June 2015.  ES2015 is a significant update to the language, and
+the first update to the language since ES5 was standardized in 2009.
+Implementation of these features in major JavaScript engines is
 [underway now](http://kangax.github.io/es5-compat-table/es6/).
 
 See the [draft ES2015 standard](https://people.mozilla.org/~jorendorff/es6-draft.html)
@@ -39,7 +39,9 @@ for full specification of the ECMAScript 6 language.
 
 ## ECMAScript 6 Features
 
-### Arrows
+<!-- To not break some existing links to here, just in case. -->
+<a id="arrows"></a>
+### Arrows and Lexical This
 
 Arrows are a function shorthand using the `=>` syntax.  They are syntactically
 similar to the related feature in C#, Java 8 and CoffeeScript.  They support
@@ -107,6 +109,8 @@ conveniences.
 var obj = {
     // __proto__
     __proto__: theProtoObj,
+    // Does not set internal prototype
+    '__proto__': somethingElse,
     // Shorthand for ‘handler: handler’
     handler,
     // Methods
@@ -124,6 +128,11 @@ var obj = {
     <code>__proto__</code> support comes from the JavaScript engine running
     your program. Although most support the now standard property,
     <a href="http://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>.
+    Also, note that as <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">
+    it's part of Annex B</a>,
+    <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">
+    it is not required to be implemented in non-web browser environments</a>,
+    even though it is implemented in Node.
   </p>
 </blockquote>
 
@@ -137,7 +146,7 @@ contents.
 
 ```js
 // Basic literal string creation
-`In ES5 "\n" is a line-feed.`
+`This is a pretty little template string.`
 
 // Multiline strings
 `In ES5 this is
@@ -146,6 +155,9 @@ contents.
 // Interpolate variable bindings
 var name = "Bob", time = "today";
 `Hello ${name}, how are you ${time}?`
+
+// Unescaped template strings
+String.raw`In ES5 "\n" is a line-feed.`
 
 // Construct an HTTP request prefix is used to interpret the replacements and construction
 GET`http://foo.org/bar?a=${a}&b=${b}
@@ -232,6 +244,8 @@ function f() {
       // error, const
       x = "foo";
     }
+    // okay, declared with `let`
+    x = "bar";
     // error, already declared in block
     let x = "inner";
   }
@@ -427,6 +441,18 @@ alert("2π = " + exp(pi, e));
 
 ### Module Loaders
 
+<blockquote class="babel-callout babel-callout-warning">
+  <h4>Not part of ES2015</h4>
+  <p>
+    This is left as implementation-defined within the ECMAScript 2015
+    specification. There is some beginning standardization work in WHATWG's
+    <a href="https://whatwg.github.io/loader/">Loader specification</a>, but
+    that is very highly unstable, and not yet complete. It is modeled after the
+    original ES6 proposal. What is below is from the original proposal, not the
+    current in-progress WHATWG specification.
+  </p>
+</blockquote>
+
 Module loaders support:
 
 - Dynamic loading
@@ -547,20 +573,35 @@ There are traps available for all of the runtime-level meta-operations:
 ```js
 var handler =
 {
-  get:...,
-  set:...,
-  has:...,
-  deleteProperty:...,
-  apply:...,
-  construct:...,
-  getOwnPropertyDescriptor:...,
-  defineProperty:...,
-  getPrototypeOf:...,
-  setPrototypeOf:...,
-  enumerate:...,
-  ownKeys:...,
-  preventExtensions:...,
-  isExtensible:...
+  // target.prop
+  get: ...,
+  // target.prop = value
+  set: ...,
+  // 'prop' in target
+  has: ...,
+  // delete target.prop
+  deleteProperty: ...,
+  // target(...args)
+  apply: ...,
+  // new target(...args)
+  construct: ...,
+  // Object.getOwnPropertyDescriptor(target, 'prop')
+  getOwnPropertyDescriptor: ...,
+  // Object.defineProperty(target, 'prop', descriptor)
+  defineProperty: ...,
+  // Object.getPrototypeOf(target), Reflect.getPrototypeOf(target),
+  // target.__proto__, object.isPrototypeOf(target), object instanceof target
+  getPrototypeOf: ...,
+  // Object.setPrototypeOf(target), Reflect.setPrototypeOf(target)
+  setPrototypeOf: ...,
+  // for (let i in target) {}
+  enumerate: ...,
+  // Object.keys(target)
+  ownKeys: ...,
+  // Object.preventExtensions(target)
+  preventExtensions: ...,
+  // Object.isExtensible(target)
+  isExtensible :...
 }
 ```
 
@@ -605,9 +646,16 @@ c["key"] === undefined
 ```
 
 <blockquote class="babel-callout babel-callout-info">
-  <h4>Support via polyfill</h4>
+  <h4>Partial Support via polyfill</h4>
   <p>
-    In order to support Symbols you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to partially support Symbols you must include the Babel
+    <a href="/docs/usage/polyfill">polyfill</a>. Also, it is not possible to
+    completely polyfill the Symbol type, because it is not possible to both
+    hide the keys and make them accessible on objects in ES5. See core.js's
+    <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">
+    caveats section regarding its Symbol polyfill regarding both this and other
+    limitations</a>. <code>typeof</code> is transpiled to return the correct
+    type for Symbols, though.
   </p>
 </blockquote>
 
