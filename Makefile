@@ -9,7 +9,7 @@ build:
 	cd _babel; \
 	git pull; \
 	npm install; \
-	make build
+	make build-dist
 
 	if [ ! -f ./scripts/babel.js ]; \
 	then touch ./scripts/babel.js; \
@@ -19,7 +19,7 @@ build:
 	touch ./_includes/version.html
 	cp ./_babel/VERSION ./_includes/version.html
 
-	cat ./_babel/dist/browser.min.js ./_babel/dist/polyfill.min.js > ./scripts/babel.js;
+	cat ./_babel/packages/babel/dist/browser.min.js ./_babel/packages/babel/dist/polyfill.min.js > ./scripts/babel.js;
 
 	if [ ! -d ./node_modules ]; \
 	then npm install; \
