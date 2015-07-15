@@ -56,3 +56,17 @@ $ YOUR_COMMAND_HERE
 $ SET BABEL_ENV=production
 $ YOUR_COMMAND_HERE
 ```
+
+## Use via `package.json`
+
+You can alternatively choose to specify your `.babelrc` config from within `package.json` like so:
+
+```javascript
+{
+  "name": "my-package",
+  "version": "1.0.0",
+  "babel": {
+    // my babel config here
+  }
+}
+```
