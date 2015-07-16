@@ -22,8 +22,8 @@ var concat = require("gulp-concat");
 gulp.task("default", function () {
   return gulp.src("src/**/*.js")
     .pipe(sourcemaps.init())
-    .pipe(concat("all.js"))
     .pipe(babel())
+    .pipe(concat("all.js"))
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest("dist"));
 });
