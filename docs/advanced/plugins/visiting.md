@@ -98,8 +98,9 @@ export default function ({ Plugin, types: t }) {
 ## Visitor aliases
 
 Sometimes you may want to visit similar nodes, eg. `FunctionDeclaration` and `FunctionExpression`,
-Babel has a bunch of built-in aliases for nodes to make this easier. A full list can be found at
-[alias-keys.json](https://github.com/babel/babel/blob/master/src/babel/types/alias-keys.json).
+Babel has a bunch of built-in aliases for nodes to make this easier. A full list can be found
+in [this directory](https://github.com/babel/babel/tree/master/packages/babel/src/types/definitions),
+in the `alias` option of each type definition.
 
 For example if you wanted to visit all functions (meaing `FunctionDeclaration`, `FunctionExpression` and `ArrowFunctionExpression`) then you can use the following:
 
