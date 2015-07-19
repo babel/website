@@ -60,7 +60,7 @@ $ babel script.js --out-file script-compiled.js --source-maps inline
 
 ### Compile Directories
 
-Compile the entire `src` directory and output it to the `lib` directory.
+Compile the entire `src` directory and output it to the `lib` directory. You may use `--out-dir` or `-d`.
 
 ```sh
 $ babel src --out-dir lib
