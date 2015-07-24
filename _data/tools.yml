@@ -17,6 +17,7 @@
     requirejs: RequireJS
     sprockets: Sprockets
     webpack: Webpack
+    fly: Fly
 - name: Frameworks
   items:
     ember: Ember
