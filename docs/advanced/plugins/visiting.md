@@ -88,7 +88,7 @@ export default function ({ Plugin, types: t }) {
   return new Plugin("foo-bar", {
     visitor: {
       Identifier(node, parent) {
-        this.isReferenced(); // equivalent to babel.types.isReferenced(node, parent);
+        this.isReferenced(); // equivalent to t.isReferenced(node, parent);
       }
     }
   });
@@ -98,10 +98,9 @@ export default function ({ Plugin, types: t }) {
 ## Visitor aliases
 
 Sometimes you may want to visit similar nodes, eg. `FunctionDeclaration` and `FunctionExpression`,
-Babel has a bunch of built-in aliases for nodes to make this easier. A full list can be found at
-[alias-keys.json](https://github.com/babel/babel/blob/master/src/babel/types/alias-keys.json).
+Babel has a bunch of built-in aliases for nodes to make this easier. A full list can be found in the files under the [definitions](https://github.com/babel/babel/tree/master/packages/babel/src/types/definitions) folder. Check the `aliases` key in the files.
 
-For example if you wanted to visit all functions (meaing `FunctionDeclaration`, `FunctionExpression` and `ArrowFunctionExpression`) then you can use the following:
+For example if you wanted to visit all functions (meaing `FunctionDeclaration`, `FunctionExpression` and `ArrowFunctionExpression`) then you can use `Function` like in the following example:
 
 ```javascript
 export default function ({ Plugin, types: t }) {
@@ -115,7 +114,7 @@ export default function ({ Plugin, types: t }) {
 }
 ```
 
-**NOTE:**: You can also list multiple visitors together in a string with `|` like the following:
+**NOTE**: You can also list multiple visitors together in a string with `|` like the following:
 
 ```javascript
 export default function ({ Plugin, types: t }) {
