@@ -23,7 +23,7 @@
     @extend .page-header;
   }
 
-  h2 + blockquote {
+  h2 + blockquote:not(.babel-callout) {
     @extend .lead;
     padding: 0;
     border-left: none;
