@@ -85,10 +85,9 @@ $ babel --out-file script-compiled.js < script.js
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Not meant for production use</h4>
   <p>
-    You really shouldn't be using babel-node in production as it's unnecessarily heavy.
-    Your memory usage is going to very high on large apps since the cache is always stored
-    in memory. You'll also always have that startup performance penalty as the entire app
-    needs to be compiled on the fly.
+    You should not be using <code>babel-node</code> in production. It is unnecessarily heavy,
+    with high memory usage due to the cache being stored in memory. You will also always
+    experience a startup performance penalty as the entire app needs to be compiled on the fly.
   </p>
 </blockquote>
 
