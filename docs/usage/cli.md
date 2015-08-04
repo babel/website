@@ -82,6 +82,15 @@ $ babel --out-file script-compiled.js < script.js
 
 ## babel-node
 
+<blockquote class="babel-callout babel-callout-warning">
+  <h4>Not meant for production use</h4>
+  <p>
+    You should not be using <code>babel-node</code> in production. It is unnecessarily heavy,
+    with high memory usage due to the cache being stored in memory. You will also always
+    experience a startup performance penalty as the entire app needs to be compiled on the fly.
+  </p>
+</blockquote>
+
 babel comes with a second CLI which works exactly the same as Node.js's CLI, only
 it will compile ES6 code before running it.
 
