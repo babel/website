@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Runtime
-description: How to use the optional `runtime` transformer.
+description: How to use the optional runtime transformer.
 permalink: /docs/usage/runtime/
 ---
 
