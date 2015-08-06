@@ -109,6 +109,9 @@
 - name: AddThis
   url: http://www.addthis.com
   logo: addthis.svg
+- name: LinkedIn
+  url: https://www.linkedin.com
+  logo: linkedin.png
 - name: HubSpot
   url: http://www.hubspot.com/
   logo: hubspot.png
