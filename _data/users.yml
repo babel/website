@@ -49,6 +49,9 @@
 - name: React
   url: https://facebook.github.io/react/
   logo: react.svg
+- name: Marionette
+  url: http://marionettejs.com/
+  logo: marionette.svg
 - name: Slack
   url: https://slack.com/
   logo: slack.svg
