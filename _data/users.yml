@@ -52,6 +52,9 @@
 - name: Marionette
   url: http://marionettejs.com/
   logo: marionette.svg
+- name: WalmartLabs
+  url: http://www.walmartlabs.com/
+  logo: walmartlabs.png
 - name: Slack
   url: https://slack.com/
   logo: slack.svg
