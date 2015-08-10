@@ -74,8 +74,13 @@ redirect_from: "/repl.html"
   <div class="babel-repl-editor babel-repl-output"><div class="ace_editor"></div></div>
   <div class="babel-repl-reporter babel-repl-errors"></div>
   <div class="babel-repl-reporter babel-repl-console"></div>
+  <div class="babel-repl-ast babel-repl-ast-input"><div id="babel-repl-ast-input"></div></div>
+  <div class="babel-repl-ast babel-repl-ast-output"><div id="babel-repl-ast-output"></div></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+  
   <script src="{{ "/scripts/babel.js" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
+  <script src="{{ "/scripts/react-object-inspector.js" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
   <script src="{{ "/scripts/repl.js" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
 </div>

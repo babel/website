@@ -1,4 +1,4 @@
-(function(babel, $, _, ace, window) {
+(function(babel, $, _, ace, window, React, TreeView, babylon) {
 
   /* Throw meaningful errors for getters of commonjs. */
   ["module", "exports", "require"].forEach(function(commonVar){
@@ -189,22 +189,37 @@
 
   REPL.prototype.compile = function () {
 
-    var transformed;
+    var transformed, inputAst, outputAst;
     var code = this.getSource();
     this.clearOutput();
 
     try {
+      inputAst = babylon.parse(code, {
+        stage: this.options.experimental ? 0 : 2,
+        loose: this.options.loose && "all",
+        optional: this.options.spec && ["es6.spec.templateLiterals", "es6.spec.blockScoping", "es6.spec.symbols"],
+        filename: 'repl'
+      });
       transformed = babel.transform(code, {
         stage: this.options.experimental ? 0 : 2,
         loose: this.options.loose && "all",
         optional: this.options.spec && ["es6.spec.templateLiterals", "es6.spec.blockScoping", "es6.spec.symbols"],
         filename: 'repl'
       });
+      outputAst = transformed.ast;
     } catch (err) {
       this.printError(err.message);
       throw err;
     }
 
+    React.render(
+      React.createElement(TreeView, {data: inputAst}),
+      document.querySelector('#babel-repl-ast-input')
+    );
+    React.render(
+      React.createElement(TreeView, {data: outputAst}),
+      document.querySelector('#babel-repl-ast-output')
+    );
     this.setOutput(transformed.code);
 
     if (this.options.evaluate) {
@@ -305,4 +320,4 @@
 
 
 
-}(babel, $, _, ace, window));
+}(babel, $, _, ace, window, React, TreeView, babylon));
