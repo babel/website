@@ -212,8 +212,9 @@
     }
   };
 
+  var capturingConsole;
   REPL.prototype.evaluate = function(code) {
-    var capturingConsole = Object.create(console);
+    capturingConsole = Object.create(console);
     var $consoleReporter = this.$consoleReporter;
     var buffer = [];
     var error;
