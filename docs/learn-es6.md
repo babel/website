@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Learn ES2015
-description: A detailed overview of ECMAScript 6 features.
+description: A detailed overview of ECMAScript 6 features based on original work by Luke Hoban.
 permalink: /docs/learn-es2015/
 redirect_from:
  - /docs/learn-es6/
@@ -10,11 +10,11 @@ redirect_from:
 ---
 
 <blockquote class="babel-callout babel-callout-info">
-  <h4>es6features</h4>
+  <h4>Credits</h4>
   <p>
-    This document is taken from Luke Hoban's excellent
-    <a href="http://git.io/es6features">es6features</a> repo. Go give it a star
-    on GitHub!
+    This document is taken from <a href="https://github.com/lukehoban">Luke Hoban's</a>
+    excellent <a href="http://git.io/es6features">es6features</a> repo. Go give it a
+    <a href="https://github.com/lukehoban/es6features/stargazers">star</a> on GitHub!
   </p>
 </blockquote>
 
