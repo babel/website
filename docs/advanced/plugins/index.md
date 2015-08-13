@@ -43,7 +43,7 @@ require("babel").transform("code", {
 
 ```javascript 
 require("babel").transform("code", {
-  plugins: [require("foo-bar")] // Useful for in browser environment
+  plugins: [require("foo-bar")]
 });
 ```
 
