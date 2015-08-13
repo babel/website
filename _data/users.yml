@@ -298,3 +298,6 @@
 - name: YPlan
   url: https://yplanapp.com
   logo: yplan.svg
+- name: freee
+  url: http://www.freee.co.jp
+  logo: freee.png
