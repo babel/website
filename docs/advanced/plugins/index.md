@@ -41,6 +41,12 @@ require("babel").transform("code", {
 });
 ```
 
+```javascript 
+require("babel").transform("code", {
+  plugins: [require("foo-bar")]
+});
+```
+
 [CLI](/docs/usage/cli/):
 
 ```sh
@@ -63,6 +69,12 @@ a colon after the plugin name. ie:
 ```javascript
 require("babel").transform("code", {
   plugins: ["foo-bar:after", "bar-foo:before"]
+});
+```
+
+```javascript 
+require("babel").transform("code", {
+  plugins: [{transformer: require("foo-bar"), position: 'after'}]
 });
 ```
 
