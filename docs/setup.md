@@ -7,6 +7,8 @@ redirect_from:
  - /docs/using-babel/
  - /plugins.html
  - /docs/using-6to5/
+custom_js_with_timestamps:
+- tools.js
 ---
 
 <div class="container docs-content">
@@ -36,5 +38,3 @@ redirect_from:
     </div>
   </div>
 </div>
-
-<script src="{{ "/scripts/tools.js" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
