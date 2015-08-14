@@ -1,3 +1,15 @@
 <div class="footer text-center">
   <a href="https://github.com/babel/babel">{{ site.title }}</a> · v{% include version.html %} · Distributed under MIT License
 </div>
+
+{% if page.third_party_js %}
+  {% for js_source in page.third_party_js %}
+    <script src='{{ js_source }}' type="text/javascript"></script>
+  {% endfor %}
+{% endif %}
+
+{% if page.custom_js %}
+  {% for js_file in page.custom_js %}
+    <script src='/scripts/{{ js_file }}.js' type="text/javascript"></script>
+  {% endfor %}
+{% endif %}

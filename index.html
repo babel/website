@@ -1,5 +1,9 @@
 ---
 layout: default
+custom_js:
+- index
+third_party_js:
+- //cdn.rawgit.com/thejameskyle/slick/lazy-load-responsive-2/slick/slick.min.js
 ---
 
 <div class="jumbotron text-center">
@@ -218,36 +222,4 @@ myNewTransformedJavaScript("yay!");
   </div>
 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.4.1/slick.css">
-  <script src="//cdn.rawgit.com/thejameskyle/slick/lazy-load-responsive-2/slick/slick.min.js"></script>
-  <script>
-    $('.babel-slider').slick({
-      lazyLoad: 'ondemand',
-      arrows: false,
-      infinite: true,
-      speed: 500,
-      autoplay: true,
-      autoplaySpeed: 4000,
-      slidesToShow: 3,
-      slidesToScroll: 3,
-      responsive: [{
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3
-        }
-      }, {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      }, {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }]
-    });
-  </script>
 </div>
