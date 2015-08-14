@@ -2,6 +2,11 @@
   <a href="https://github.com/babel/babel">{{ site.title }}</a> · v{% include version.html %} · Distributed under MIT License
 </div>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>$("html").removeClass("no-js").addClass("js");</script>
+
 {% if page.third_party_js %}
   {% for js_source in page.third_party_js %}
     <script src='{{ js_source }}' type="text/javascript"></script>
