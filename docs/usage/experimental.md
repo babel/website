@@ -38,7 +38,6 @@ point for inclusion by default in Babel due to their relative maturity and need 
 
 ### Stage 1
 
-- [es7.asyncFunctions](https://github.com/lukehoban/ecmascript-asyncawait)
 - [es7.decorators](https://github.com/wycats/javascript-decorators)
 - [es7.exportExtensions](https://github.com/leebyron/ecmascript-more-export-from)
 - [es7.objectRestSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
@@ -49,6 +48,7 @@ point for inclusion by default in Babel due to their relative maturity and need 
 **NOTE:** Stage 2 and above are enabled by default.
 
 - [es7.exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
+- [es7.asyncFunctions](https://github.com/lukehoban/ecmascript-asyncawait)
 
 ## Usage
 
