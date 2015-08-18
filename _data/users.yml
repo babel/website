@@ -1,3 +1,6 @@
+- name: Facebook
+  url: https://facebook.com/
+  logo: facebook.png
 - name: CloudFlare
   url: https://cloudflare.com/
   logo: cloudflare.png
