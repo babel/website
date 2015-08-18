@@ -40,7 +40,6 @@ point for inclusion by default in Babel due to their relative maturity and need 
 
 - [es7.decorators](https://github.com/wycats/javascript-decorators)
 - [es7.exportExtensions](https://github.com/leebyron/ecmascript-more-export-from)
-- [es7.objectRestSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
 - [es7.trailingFunctionCommas](https://github.com/jeffmo/es-trailing-function-commas)
 
 ### Stage 2
@@ -49,6 +48,7 @@ point for inclusion by default in Babel due to their relative maturity and need 
 
 - [es7.exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
 - [es7.asyncFunctions](https://github.com/lukehoban/ecmascript-asyncawait)
+- [es7.objectRestSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
 
 ## Usage
 
