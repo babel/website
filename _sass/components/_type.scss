@@ -20,6 +20,7 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
   position: relative;
+  z-index: -1;
 
   &:target::after {
     content: "";
