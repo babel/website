@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: External helpers
+title: External Helpers
 description: How to use the external helpers.
 permalink: /docs/advanced/external-helpers/
 redirect_from:
@@ -82,11 +82,11 @@ In a browser environment you can use a `<script>` tag to inject the `babelHelper
 
 ### Selective builds
 
-You can pass the option `metadataUsedHelpers` to `babel.transform()` in order to
-get a list of helpers that were used for that file:
+You can use the `usedHelpers` metadata property to get a list of helpers that 
+are required for a particular piece of code:
 
 ```javascript
-require("babel").transform("code", { metadataUsedHelpers: true }).metadata.usedHelpers;
+require("babel").transform("code").metadata.usedHelpers;
 ```
 
 This will be an array of helpers that you can then pass to
