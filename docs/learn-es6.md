@@ -30,7 +30,7 @@ redirect_from:
 
 > ECMAScript 6 is the newest version of the ECMAScript standard. This standard
 was ratified in June 2015.  ES2015 is a significant update to the language, and
-the first update to the language since ES5 was standardized in 2009.
+the first major update to the language since ES5 was standardized in 2009.
 Implementation of these features in major JavaScript engines is
 [underway now](http://kangax.github.io/es5-compat-table/es6/).
 
@@ -125,14 +125,7 @@ var obj = {
 
 <blockquote class="babel-callout babel-callout-warning">
   <p>
-    <code>__proto__</code> support comes from the JavaScript engine running
-    your program. Although most support the now standard property,
-    <a href="http://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>.
-    Also, note that as <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">
-    it's part of Annex B</a>,
-    <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">
-    it is not required to be implemented in non-web browser environments</a>,
-    even though it is implemented in Node.
+    The <code>__proto__</code> property requires native support, and was deprecated in previous ECMAScript versions. Most engines now support the property, but <a href="http://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>. Also, note that only <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">web browsers</a> are required to implement it, as it's in <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">Annex B</a>. It is available in Node.
   </p>
 </blockquote>
 
@@ -444,12 +437,7 @@ alert("2π = " + exp(pi, e));
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Not part of ES2015</h4>
   <p>
-    This is left as implementation-defined within the ECMAScript 2015
-    specification. There is some beginning standardization work in WHATWG's
-    <a href="https://whatwg.github.io/loader/">Loader specification</a>, but
-    that is very highly unstable, and not yet complete. It is modeled after the
-    original ES6 proposal. What is below is from the original proposal, not the
-    current in-progress WHATWG specification.
+    This is left as implementation-defined within the ECMAScript 2015 specification. The eventual standard will be in WHATWG's <a href="https://whatwg.github.io/loader/">Loader specification</a>, but that is currently a work in progress. What is below is from a previous ES2015 draft.
   </p>
 </blockquote>
 
@@ -608,10 +596,7 @@ var handler =
 <blockquote class="babel-callout babel-callout-danger">
   <h4>Unsupported feature</h4>
   <p>
-    Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled.
-    See support from various
-    <a href="http://kangax.github.io/compat-table/es6/#Proxy">JavaScript
-    engines</a>.
+    Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="http://kangax.github.io/compat-table/es6/#Proxy">various JavaScript engines</a>.
   </p>
 </blockquote>
 
@@ -639,6 +624,8 @@ reflection features like `Object.getOwnPropertySymbols`.
     }
   };
 
+  // Limited support from Babel, full support requires native implementation.
+  typeof key === "symbol"
 })();
 
 var c = new MyClass("hello")
@@ -646,16 +633,9 @@ c["key"] === undefined
 ```
 
 <blockquote class="babel-callout babel-callout-info">
-  <h4>Partial Support via polyfill</h4>
+  <h4>Limited support via polyfill</h4>
   <p>
-    In order to partially support Symbols you must include the Babel
-    <a href="/docs/usage/polyfill">polyfill</a>. Also, it is not possible to
-    completely polyfill the Symbol type, because it is not possible to both
-    hide the keys and make them accessible on objects in ES5. See core.js's
-    <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">
-    caveats section regarding its Symbol polyfill regarding both this and other
-    limitations</a>. <code>typeof</code> is transpiled to return the correct
-    type for Symbols, though.
+    Limited support requires the Babel <a href="/docs/usage/polyfill">polyfill</a>. Due to language limitations, some features can't be transpiled or polyfilled. See core.js's <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">caveats section</a> for more details.
   </p>
 </blockquote>
 
