@@ -19,18 +19,14 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  position: relative;
-  z-index: -1;
-
   &:target::after {
     content: "";
-    position: absolute;
-    z-index: -1;
-    left: 0;
+    display: block;
     height: 1em;
     width: 10px;
-    background: $babel-yellow;
     margin-left: -20px;
+    margin-top: -1em;
+    background: $babel-yellow;
   }
 
   &:target::before {
@@ -38,6 +34,7 @@ h6, .h6 {
     display: block;
     margin-top: -70px;
     height: 70px;
+    width: 1px;
   }
 }
 
