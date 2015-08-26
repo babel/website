@@ -65,7 +65,7 @@ var bob = {
     this._friends.forEach(f =>
       console.log(this._name + " knows " + f));
   }
-}
+};
 ```
 
 ### Classes
