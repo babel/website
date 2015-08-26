@@ -7,10 +7,9 @@ redirect_from:
  - /docs/usage/transformers/
 ---
 
-A transformer is a module with a specific goal that is ran against your code to transform it. For example,
-the `es6.arrowFunctions` transformer has the very specific goal of transforming [ES6 Arrow Functions](https://babeljs.io/docs/learn-es2015/#arrows)
-to the equivalent ES3. This allows transformers to be completely unaware of the other transformations happening
-so that you can easily chain them together.
+A transformer is a module that processes your code to perform a specific, focused transformation such that transformers can be completely unaware of each other and therefore easily chained together. For example, the `es6.arrowFunctions` transformer has the very specific goal of transforming [ES6 Arrow Functions](https://babeljs.io/docs/learn-es2015/#arrows) to the equivalent ES3.
+
+Custom (user-defined) transformers are implemented via [plugins](/docs/plugins/index.md).
 
 ## ES3
 
