@@ -290,7 +290,7 @@ module.exports = ModuleFormatter;
 function ModuleFormatter() {}
 
 ModuleFormatter.prototype.transform = function (ast) {
-  // this is ran after all transformers have had their turn at modifying the ast
+  // this runs after all transformers have had their turn at modifying the ast
   // feel free to modify this however
 };
 

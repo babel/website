@@ -7,7 +7,7 @@ redirect_from:
  - /docs/usage/transformers/
 ---
 
-A transformer is a module with a specific goal that is ran against your code to transform it. For example,
+A transformer is a module with a specific goal that is run against your code to transform it. For example,
 the `es6.arrowFunctions` transformer has the very specific goal of transforming [ES6 Arrow Functions](https://babeljs.io/docs/learn-es2015/#arrows)
 to the equivalent ES3. This allows transformers to be completely unaware of the other transformations happening
 so that you can easily chain them together.

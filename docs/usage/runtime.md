@@ -18,7 +18,7 @@ code. Built-ins such as `Promise`, `Set` and `Map` are aliased to `core-js` so
 you can use them seamlessly without having to require a globally polluting
 [polyfill](/docs/usage/polyfill). This is fantastic for libraries as you can
 write your code without the cognitive overhead of worrying about the environment
-that it's going to be ran in.
+in which your code will be run.
 
 See the [technical details](#technical-details) section for more information on
 how this works and the types of transformations that occur.
