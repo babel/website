@@ -42,3 +42,6 @@
 - name: Editors and IDEs
   items:
     webstorm: WebStorm
+- name: Debuggers
+  items:
+    babel_node_debug: Node Inspector
