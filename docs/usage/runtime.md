@@ -40,14 +40,6 @@ require("babel").transform("code", { optional: ["runtime"] });
 $ babel --optional runtime script.js
 ```
 
-In Webpack:
-
-```js
-loaders: [
-  { test: /\.js$/, loaders: ['babel?optional=runtime']}
-]
-```
-
 ## Technical details
 
 The `runtime` optional transformer does three things:
