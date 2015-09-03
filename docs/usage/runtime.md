@@ -11,7 +11,7 @@ unnecessary, especially when your application is spread out over multiple files.
 
 This is where the `runtime` optional transformer comes in. All of the helpers
 will reference the module `babel-runtime` to avoid duplication across your
-compiled output.
+compiled output. The runtime will be compiled into your build.
 
 Another purpose of this transformer is to create a sandboxed environment for your
 code. Built-ins such as `Promise`, `Set` and `Map` are aliased to `core-js` so
@@ -26,7 +26,7 @@ how this works and the types of transformations that occur.
 <blockquote class="babel-callout babel-callout-info">
   <h4>External package required</h4>
   <p>
-    The package <code>babel-runtime</code> is required for this transformer. Run <code>npm install babel-runtime --save</code> to add it to your current node/webpack/browserify project. <code>babel-runtime</code> does not support AMD module loaders like RequireJS.
+    The package <code>babel-runtime</code> is required for this transformer. Run <code>npm install babel-runtime --save-dev</code> to add it to your current node/webpack/browserify project. <code>babel-runtime</code> does not support AMD module loaders like RequireJS.
   </p>
 </blockquote>
 
@@ -49,7 +49,7 @@ The `runtime` optional transformer does three things:
  - Removes the inline babel helpers and uses the module `babel-runtime/helpers` instead.
 
 What does this actually mean though? Basically, you can use built-ins such as `Promise`,
-`Set`, `Symbol` etc as well use as all the Babel features that require a polyfill seamlessly,
+`Set`, `Symbol` etc as well use all the Babel features that require a polyfill seamlessly,
 without global pollution, making it extremely suitable for libraries.
 
 ### Regenerator aliasing
