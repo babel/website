@@ -3,6 +3,11 @@ layout: default
 permalink: /repl/
 fullscreen: true
 redirect_from: "/repl.html"
+custom_js_with_timestamps:
+- babel.js
+- repl.js
+third_party_js:
+- https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
 ---
 
 <div class="babel-repl">
@@ -74,8 +79,4 @@ redirect_from: "/repl.html"
   <div class="babel-repl-editor babel-repl-output"><div class="ace_editor"></div></div>
   <div class="babel-repl-reporter babel-repl-errors"></div>
   <div class="babel-repl-reporter babel-repl-console"></div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
-  <script src="{{ "/scripts/babel.js" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
-  <script src="{{ "/scripts/repl.js" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
 </div>
