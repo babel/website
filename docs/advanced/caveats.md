@@ -32,7 +32,7 @@ due to limitations in ES5.
 
 ## ES5
 
-Since Babel assumes that your code will be ran in an ES5 environment it uses ES5
+Since Babel assumes that your code will be run in an ES5 environment it uses ES5
 functions. So if you're using an environment that has limited or no support for
 ES5 such as lower versions of IE then using the
 [es5-shim](https://github.com/es-shims/es5-shim) along with the

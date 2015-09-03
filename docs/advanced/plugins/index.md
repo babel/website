@@ -63,7 +63,7 @@ $ babel --plugins foo-bar script.js
 
 ### Specifying position
 
-By default, plugins are ran **before** the internal ones. You can alternatively specify the position via
+By default, plugins are run **before** the internal ones. You can alternatively specify the position via
 a colon after the plugin name. ie:
 
 ```javascript
