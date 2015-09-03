@@ -45,6 +45,7 @@ so that you can easily chain them together.
 - [es7.classProperties](https://gist.github.com/jeffmo/054df782c05639da2adb)
 - [es7.comprehensions](/docs/advanced/transformers/comprehensions)
 - [es7.decorators](https://github.com/wycats/javascript-decorators)
+- [es7.doExpressions](http://wiki.ecmascript.org/doku.php?id=strawman:do_expressions)
 - [es7.exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
 - [es7.exportExtensions](https://github.com/leebyron/ecmascript-more-export-from)
 - [es7.functionBind](https://github.com/zenparsing/es-function-bind)
