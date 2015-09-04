@@ -41,7 +41,6 @@
     }
 
     .nav {
-      display: none; /* Hide by default, but at >768px, show it */
       padding-bottom: 10px;
 
       > li > a {
@@ -67,11 +66,6 @@
 
   /* Show and affix the side nav when space allows it */
   @media (min-width: $screen-md-min) {
-    .nav > .active > ul,
-    .nav > li:hover > ul {
-      display: block;
-    }
-
     /* Widen the fixed sidebar */
     &.affix,
     &.affix-bottom {
