@@ -25,7 +25,7 @@ $ babel --name=value
 | `whitelist`              | `[]`                 | Array of transformers to **only** use. Run `babel --help` to see a full list of transformers. |
 | `loose`                  | `[]`                 | Array of transformers to enable [loose mode](/docs/advanced/loose) on. |
 | `optional`               | `[]`                 | Array of transformers to [optionally](/docs/advanced/transformers#optional) use. Run `babel --help` to see a full list of transformers. Optional transformers displayed inside square brackets. |
-| `nonStandard`            | `true`               | Enable support for JSX and Flow. |
+| `nonStandard`            | `true`               | Enable support for JSX and Flow. **NOTE:** To enable support for non-standard file extensions such as .jsx when using Node.js `require('./Component')`, see [Customizing extensions](https://github.com/babel/babelify#customising-extensions). |
 | `highlightCode`          | `true`               | ANSI highlight syntax error code frames |
 | `only`                   | `null`               | A [glob](https://github.com/isaacs/minimatch), regex, or mixed array of both, matching paths to **only** compile. Can also be an array of arrays containing paths to explicitly match. When attempting to compile a non-matching file it's returned verbatim. |
 | `ignore`                 | `null`               | Opposite to the `only` option. |
