@@ -136,7 +136,7 @@
 
     // Merge in defaults
     var defaults = {
-      experimental : true,
+      experimental : false,
       loose : false,
       spec : false,
       evaluate : true
