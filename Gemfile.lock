@@ -1,6 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    algoliasearch (1.6.1)
+      httpclient (~> 2.4)
+      json (>= 1.5.1)
+    algoliasearch-jekyll (0.4.3)
+      algoliasearch (~> 1.4)
+      awesome_print (~> 1.6)
+      json (~> 1.8)
+      nokogiri (~> 1.6)
+    awesome_print (1.6.1)
     blankslate (2.1.2.4)
     celluloid (0.16.0)
       timers (~> 4.0.0)
@@ -15,6 +24,7 @@ GEM
     fast-stemmer (1.0.2)
     ffi (1.9.10)
     hitimes (1.2.2)
+    httpclient (2.6.0.1)
     jekyll (2.5.3)
       classifier-reborn (~> 2.0)
       colorator (~> 0.1)
@@ -40,6 +50,7 @@ GEM
       sass (~> 3.2)
     jekyll-watch (1.2.1)
       listen (~> 2.7)
+    json (1.8.3)
     kramdown (1.8.0)
     liquid (2.6.2)
     listen (2.10.1)
@@ -47,6 +58,9 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     mercenary (0.3.5)
+    mini_portile (0.6.2)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
     parslet (1.5.0)
       blankslate (~> 2.0)
     posix-spawn (0.3.11)
@@ -69,5 +83,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  jekyll
+  algoliasearch-jekyll (~> 0.4.3)
+  jekyll (~> 2.5.3)
   jekyll-redirect-from
+
+BUNDLED WITH
+   1.10.6

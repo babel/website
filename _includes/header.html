@@ -1,15 +1,24 @@
-<nav role="navigation" id="header" class="navbar navbar-default navbar-fixed-top">
+<input type="checkbox" id="babel-toggle-search" class="babel-toggle-search-checkbox" />
+<header class="navbar navbar-default navbar-fixed-top babel-nav" id="top" role="banner">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggle collapsed">
+
+    <a href="/" class="navbar-brand logo">Babel</a>
+
+    <div class="babel-navbar-toggles">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#babel-navbar" aria-controls="babel-navbar" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="{{ site.baseurl }}/" class="navbar-brand logo">Babel</a>
+
+      <label for="babel-toggle-search" class="navbar-toggle babel-toggle-search-open">
+        <span class="sr-only">Open search</span>
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      </label>
     </div>
-    <div id="navigation" class="collapse navbar-collapse">
+
+    <nav id="babel-navbar" class="collapse navbar-collapse babel-navbar">
       <ul class="nav navbar-nav">
         {% for item in site.data.navigation %}
           {% if item.subnav %}
@@ -42,6 +51,30 @@
           <a href="https://github.com/babel/babel">GitHub</a>
         </li>
       </ul>
-    </div>
+      <label for="babel-toggle-search" class="navbar-toggle babel-toggle-search-open">
+        <span class="sr-only">Open search</span>
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      </label>
+
+      <div class="navbar-form navbar-right babel-search" role="search">
+        <div class="input-group">
+          <label class="sr-only" aria-label="Search" for="babel-search-input">Search</label>
+          <div class="babel-search-input-wrapper">
+            <input type="text" class="form-control" id="babel-search-input" accesskey="s" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search the docs...">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </div>
+          </div>
+          <label for="babel-toggle-search" class="babel-toggle-search-close">
+            <span class="sr-only">Close search</span>
+            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </nav>
+
   </div>
-</nav>
+</header>
+

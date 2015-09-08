@@ -1,0 +1,305 @@
+// Hide every mention of search if JavaScript is disabled
+.no-js .babel-toggle-search-open,
+.no-js .babel-navbar .babel-search {
+  display: none;
+}
+
+// We revert the right/left padding because we changed the underlying markup
+.babel-nav .navbar-brand {
+  margin-left: -15px;
+}
+
+.babel-nav .babel-navbar-toggles {
+  margin-right: -15px;
+}
+
+// On small screens, the display of the search bar on top of the menu is toggled
+// through a checkbox, when clicking on the matching label. The checkbox is
+// hidden, and we have two labels (pointing to the same checkbox), for two
+// different RWD breakpoints.
+.babel-toggle-search-checkbox {
+  display: none;
+}
+
+// Magnifying glass label
+.babel-toggle-search-open {
+  color: $navbar-default-toggle-icon-bar-bg;
+  cursor: pointer;
+  margin: 6px 0 0;
+  &:hover {
+    background-color: $navbar-default-toggle-hover-bg;
+  }
+}
+// Hiding the second magnifying glass that will only be used on bigger screen
+.babel-navbar .babel-toggle-search-open {
+  display: none;
+}
+
+
+// When the checkbox is checked, we hide everything in the .babel-nav, except
+// the form input
+.babel-toggle-search-checkbox:checked + .babel-nav {
+  // Hide all
+  .navbar-brand,
+  .babel-navbar-toggles,
+  .navbar-nav {
+    display: none;
+  }
+  // Display search
+  .babel-navbar {
+    border-top: 0;
+    display: block;
+    visibility: visible;
+    .babel-search {
+      display: block;
+    }
+  }
+}
+
+// Search input for small screen
+.babel-navbar .babel-search {
+  border-color: transparent;
+  display: none;
+  margin: 0 -15px;
+  padding: 7px 15px;
+}
+// We need to play with display table to align the form element in the header
+.babel-search .babel-search-input-wrapper {
+  display: table-cell;
+  width: 100%;
+}
+
+.babel-search .babel-toggle-search-close {
+  cursor: pointer;
+  display: table-cell;
+  padding: 6px;
+  vertical-align: middle;
+}
+// We hide the submit button, so we need to round the corners of the input
+.babel-search .input-group-btn {
+  display: none;
+}
+
+.babel-nav .babel-search .form-control {
+  border-radius: 4px;
+  font-weight: normal;
+}
+
+// Fix display of nav elements in dropdown hamburger list
+.babel-nav .babel-navbar {
+  clear: both;
+}
+
+// Let the input still take all the available space
+@media (min-width: $screen-sm) {
+  .babel-nav .babel-search .form-control {
+    width: 100%;
+  }
+}
+
+// Enough room to display the links, but not the full search. We'll only add
+// a magnifying glass to toggle the search
+@media (min-width: $screen-md) {
+  .babel-nav .babel-navbar {
+    clear: none;
+  }
+  // Set less whitespace around elements
+  .babel-nav .navbar-nav > li > a {
+    padding: 15px 10px;
+  }
+  // Show magnifying glass
+  .babel-nav .babel-navbar .babel-toggle-search-open {
+    color: $navbar-default-link-color;
+    display: block;
+  }
+  // Hide the magnifying glass
+  .babel-toggle-search-checkbox:checked + .babel-nav {
+    .babel-toggle-search-open {
+      display: none;
+    }
+  }
+}
+
+// Enough room to display the input directly in the header
+@media (min-width: $screen-lg) {
+  // Hide magnifying glass and close button
+  .babel-nav .babel-search .babel-toggle-search-close,
+  .babel-nav .babel-navbar .babel-toggle-search-open {
+    display: none;
+  }
+  // Show search
+  .babel-nav .babel-search {
+    display: block;
+    .form-control {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      width: 240px;
+    }
+    .input-group-btn {
+      display: table-cell;
+    }
+    .btn-default {
+      // Fix icon alignement
+      line-height: 20px;
+    }
+  }
+  .babel-nav .babel-search-input-wrapper {
+    display: block;
+    width: auto;
+  }
+}
+
+
+// Markup added by autocomplete.js
+.babel-nav .algolia-autocomplete {
+  // Fix display (set it to display: inline-block in the plugin)
+  display: block !important;
+}
+
+// Main autocomplete wrapper
+.babel-nav .aa-dropdown-menu {
+  background-color: $body-bg;
+  border: 1px solid $babel-dark-gray;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 2px 0 0;
+  padding: 4px 4px 0 4px;
+  text-align: left;
+  width: 100%;
+}
+// Suggestions wrapper
+.babel-nav .aa-suggestions {
+  border-bottom: 1px solid $babel-yellow;
+  mark {
+    padding: 0;
+  }
+}
+
+// Sugestion footer
+.babel-nav .suggestion-footer {
+  background-image: url('/images/algolia-logo.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  display: block;
+  height: 24px;
+  margin: 6px;
+}
+@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  .babel-nav .suggestion-footer .suggestion-algolia-logo {
+    background-image: url('/images/algolia-logo-2x.jpg');
+    -webkit-background-size: 32px 10px;
+            background-size: 32px 10px;
+  }
+}
+
+
+// Suggestion category separator
+.babel-nav .suggestion-category {
+  border-top: 1px solid white;
+  background-color: $babel-yellow;
+  color: $navbar-default-color;
+  font-weight: 600;
+  padding: 5px 10px;
+  text-align: left;
+  font-size: 14px;
+  mark {
+    background-color: rgba(252, 248, 227, 0.3)
+  }
+}
+
+// Suggestion
+.babel-nav .suggestion {
+  color: $text-color;
+  cursor: pointer;
+  overflow: hidden;
+}
+// Selected one
+.babel-nav .aa-cursor .suggestion-content {
+  color: $link-color;
+  code, mark {
+    color: $link-color;
+  }
+}
+
+// Hide the subcategory from the left column but display it in the results
+.babel-nav .suggestion-subcategory-main {
+  display: none;
+}
+
+.babel-nav .suggestion-subcategory-secondary {
+  display: inline-block;
+  &:after {
+    content: ' › ';
+  }
+}
+
+// Right column
+.babel-nav .suggestion-content {
+  border-top: 1px solid $babel-yellow;
+  padding: 3px 5px;
+}
+// Do not add separators on first element of category
+.babel-nav .suggestion-is-category-header .suggestion-content {
+  border-top-color: transparent;
+}
+
+.babel-nav .suggestion-title {
+  display: inline-block;
+  padding: 2px;
+}
+
+.babel-nav .suggestion-text {
+  display: none;
+}
+
+// Screen big enough to display results in two columns
+@media (min-width: $screen-sm) {
+  // Use table display for the two columns
+  .babel-nav .suggestion {
+    display: table;
+    width: 100%;
+  }
+  .babel-nav .suggestion-subcategory-main {
+    background-color: lighten($navbar-default-bg, 30%);
+    border-right: 1px solid $babel-yellow;
+    color: #4E4726;
+    display: table-cell;
+    font-weight: 500;
+    max-width: 135px;
+    min-width: 135px;
+    overflow: hidden;
+    padding: 5px 7px 5px 5px;
+    text-align: right;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    width: 135px;
+  }
+  .babel-nav .suggestion-content {
+    display: table-cell;
+    padding: 5px 10px;
+  }
+  .babel-nav .suggestion-subcategory-secondary {
+    display: none;
+  }
+  .babel-nav .suggestion-text {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 2px;
+  }
+}
+
+// Enough room to display the autocomplete in the header directly
+@media (min-width: $screen-lg) {
+  // Fix autocomplete.js display
+  .babel-nav .algolia-autocomplete {
+    display: table-cell !important;
+  }
+  // Align autocomplete below the input
+  .babel-nav .aa-dropdown-menu {
+    left: -230px !important;
+    width: 510px;
+  }
+}
