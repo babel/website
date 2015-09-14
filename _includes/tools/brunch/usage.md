@@ -3,7 +3,7 @@ for `filename` and `sourceMap` which are handled internally.
 
 ```coffee
 plugins:
-  ESbabel:
+  babel:
     whitelist: ["arrowFunctions"]
     format:
       semicolons: false
