@@ -310,3 +310,6 @@
 - name: Money Forward
   url: http://corp.moneyforward.com/
   logo: moneyforward.png
+- name: Housing
+  url: https://housing.com/
+  logo: housing.png
