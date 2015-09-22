@@ -1,3 +1,3 @@
 ```sh
-$ meteor add grigio:babel
+$ meteor add ecmascript
 ```
