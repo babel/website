@@ -33,7 +33,7 @@ point for inclusion by default in Babel due to their relative maturity and need 
 ### Stage 0
 
 - [es7.comprehensions](/docs/advanced/transformers/other/comprehensions)
-- [es7.classProperties](https://gist.github.com/jeffmo/054df782c05639da2adb)
+- [es7.classProperties](https://github.com/jeffmo/es-class-properties)
 - [es7.doExpressions](http://wiki.ecmascript.org/doku.php?id=strawman:do_expressions)
 - [es7.functionBind](https://github.com/zenparsing/es-function-bind)
 
