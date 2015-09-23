@@ -33,12 +33,12 @@ point for inclusion by default in Babel due to their relative maturity and need 
 ### Stage 0
 
 - [es7.comprehensions](/docs/advanced/transformers/other/comprehensions)
-- [es7.classProperties](https://github.com/jeffmo/es-class-properties)
 - [es7.doExpressions](http://wiki.ecmascript.org/doku.php?id=strawman:do_expressions)
 - [es7.functionBind](https://github.com/zenparsing/es-function-bind)
 
 ### Stage 1
 
+- [es7.classProperties](https://github.com/jeffmo/es-class-properties)
 - [es7.decorators](https://github.com/wycats/javascript-decorators)
 - [es7.exportExtensions](https://github.com/leebyron/ecmascript-more-export-from)
 - [es7.trailingFunctionCommas](https://github.com/jeffmo/es-trailing-function-commas)
