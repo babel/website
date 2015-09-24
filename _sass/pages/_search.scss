@@ -112,43 +112,18 @@
     color: $navbar-default-link-color;
     display: block;
   }
-  // Hide the magnifying glass
+  // Search toggled on
   .babel-toggle-search-checkbox:checked + .babel-nav {
+    // Hide the magnifying glass
     .babel-toggle-search-open {
       display: none;
     }
+    // Fix header height
+    .babel-search {
+      height: 50px;
+    }
   }
 }
-
-// Enough room to display the input directly in the header
-@media (min-width: $screen-lg) {
-  // Hide magnifying glass and close button
-  .babel-nav .babel-search .babel-toggle-search-close,
-  .babel-nav .babel-navbar .babel-toggle-search-open {
-    display: none;
-  }
-  // Show search
-  .babel-nav .babel-search {
-    display: block;
-    .form-control {
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
-      width: 240px;
-    }
-    .input-group-btn {
-      display: table-cell;
-    }
-    .btn-default {
-      // Fix icon alignement
-      line-height: 20px;
-    }
-  }
-  .babel-nav .babel-search-input-wrapper {
-    display: block;
-    width: auto;
-  }
-}
-
 
 // Markup added by autocomplete.js
 .babel-nav .algolia-autocomplete {
@@ -291,15 +266,3 @@
   }
 }
 
-// Enough room to display the autocomplete in the header directly
-@media (min-width: $screen-lg) {
-  // Fix autocomplete.js display
-  .babel-nav .algolia-autocomplete {
-    display: table-cell !important;
-  }
-  // Align autocomplete below the input
-  .babel-nav .aa-dropdown-menu {
-    left: -230px !important;
-    width: 510px;
-  }
-}
