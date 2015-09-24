@@ -13,7 +13,7 @@
   margin-right: -15px;
 }
 
-// On small screens, the display of the search bar on top of the menu is toggled
+// The display of the search bar on top of the menu is toggled
 // through a checkbox, when clicking on the matching label. The checkbox is
 // hidden, and we have two labels (pointing to the same checkbox), for two
 // different RWD breakpoints.
@@ -42,59 +42,73 @@
   // Hide all
   .navbar-brand,
   .babel-navbar-toggles,
-  .navbar-nav {
+  .navbar-nav,
+  .babel-toggle-search-open {
     display: none;
   }
-  // Display search
+  // Counter the `.collapse`
   .babel-navbar {
-    border-top: 0;
     display: block;
     visibility: visible;
-    .babel-search {
-      display: block;
-    }
+    border-top: none;
+  }
+  // Display search
+  .babel-search {
+    display: block;
   }
 }
 
-// Search input for small screen
+// Search bar. Will only be displayed when toggled on
 .babel-navbar .babel-search {
   border-color: transparent;
   display: none;
-  margin: 0 -15px;
-  padding: 7px 15px;
+  margin: 0;
+  padding: 6px 0;
+  height: 50px;
+  width: 100%;
 }
-// We need to play with display table to align the form element in the header
+.babel-search .input-group {
+  display: block;
+}
+
+// Use a more modern style for the search input
 .babel-search .babel-search-input-wrapper {
+  border-bottom: 2px solid $navbar-default-border;
+  display: table;
+  width: 100%;
+  &:before {
+    content: "\e003";
+    display: table-cell;
+    vertical-align: middle;
+    font-family: 'Glyphicons Halflings';
+    text-align: center;
+    width: 30px;
+  }
+}
+.babel-nav .babel-search .form-control {
   display: table-cell;
   width: 100%;
+  padding-left: 6px;
+  font-weight: normal;
+  box-shadow: none;
+  background-color: transparent;
+  border-color: transparent;
+  @include placeholder($gray)
 }
 
 .babel-search .babel-toggle-search-close {
   cursor: pointer;
   display: table-cell;
-  padding: 6px;
   vertical-align: middle;
-}
-// We hide the submit button, so we need to round the corners of the input
-.babel-search .input-group-btn {
-  display: none;
+  text-align: center;
+  width: 30px;
+  line-height: 34px;
 }
 
-.babel-nav .babel-search .form-control {
-  border-radius: 4px;
-  font-weight: normal;
-}
 
 // Fix display of nav elements in dropdown hamburger list
 .babel-nav .babel-navbar {
   clear: both;
-}
-
-// Let the input still take all the available space
-@media (min-width: $screen-sm) {
-  .babel-nav .babel-search .form-control {
-    width: 100%;
-  }
 }
 
 // Enough room to display the links, but not the full search. We'll only add
@@ -118,9 +132,11 @@
     .babel-toggle-search-open {
       display: none;
     }
-    // Fix header height
-    .babel-search {
-      height: 50px;
+    .navbar-brand {
+      display: inline-block;
+    }
+    .babel-navbar {
+      margin-left: 105px;
     }
   }
 }
@@ -140,7 +156,9 @@
   margin: 2px 0 0;
   padding: 4px 4px 0 4px;
   text-align: left;
-  width: 100%;
+  top: 37px !important;
+  left: -30px !important;
+  right: -30px !important;
 }
 // Suggestions wrapper
 .babel-nav .aa-suggestions {

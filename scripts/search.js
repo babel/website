@@ -99,9 +99,6 @@
       e.preventDefault();
     });
 
-    // Fixing some default typeahead CSS not playing nicely with the navbar
-    var $autocompleteDropdown = $searchInput.nextAll('.aa-dropdown-menu');
-    $autocompleteDropdown.css('top', $searchInput.outerHeight() + 'px');
   });
 })(jQuery);
 
