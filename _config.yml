@@ -26,8 +26,39 @@ paginate: 1
 
 gems:
   - jekyll-redirect-from
+  - algoliasearch-jekyll
+
+algolia:
+  application_id: 'MXM0JWJNIW'
+  index_name:     'babeljs'
+  record_css_selector: p,li,tr,h1,h2,h3,h4,h5,h6
+  settings:
+    advancedSyntax: true
+    highlightPostTag: </mark>
+    highlightPreTag: <mark>
+    minWordSizefor1Typo: 3
+    minWordSizefor2Typos: 7
+    attributesToIndex:
+      - title
+      - text
+      - category,subcategory,display_title # Needed for the highlight
+    attributesToHighlight:
+      - category
+      - subcategory
+      - display_title
+      - text
+    customRanking:
+      - desc(posted_at)
+      - desc(weight_tag_name)
+      - asc(weight_order)
+    attributesToSnippet:
+      - text:20
 
 default_js:
   - "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
   - "//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"
   - "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"
+  - "//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.7.8/algoliasearch.min.js"
+  - "//cdnjs.cloudflare.com/ajax/libs/hogan.js/3.0.2/hogan.min.js"
+  - "//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.5.0/autocomplete.jquery.min.js"
+  - "/scripts/search.js"
