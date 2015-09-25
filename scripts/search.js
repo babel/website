@@ -94,9 +94,18 @@
     var $toggleCheckbox = $('#babel-toggle-search');
     var $toggleLabels = $('.babel-toggle-search-open');
     $toggleLabels.on('click', function (e) {
+      e.preventDefault();
       $toggleCheckbox.click();
       $searchInput.focus();
-      e.preventDefault();
+    });
+
+    // Hide the search when pressing Escape
+    $(document).on('keydown', function(event) {
+      if (event.keyCode !== 27) {
+        return;
+      }
+      $searchInput.autocomplete('val', '');
+      $toggleCheckbox.prop('checked', false);
     });
 
   });
