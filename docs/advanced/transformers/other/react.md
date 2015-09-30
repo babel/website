@@ -15,7 +15,7 @@ redirect_from:
 
 ```javascript
 var profile = <div>
-  <img src="avatar.png" class="profile" />
+  <img src="avatar.png" className="profile" />
   <h3>{[user.firstName, user.lastName].join(' ')}</h3>
 </div>;
 ```
@@ -24,7 +24,7 @@ var profile = <div>
 
 ```javascript
 var profile = React.createElement("div", null,
-  React.createElement("img", { src: "avatar.png", "class": "profile" }),
+  React.createElement("img", { src: "avatar.png", className: "profile" }),
   React.createElement("h3", null, [user.firstName, user.lastName].join(" "))
 );
 ```
@@ -39,7 +39,7 @@ var profile = React.createElement("div", null,
 var { dom } = require("deku");
 
 var profile = <div>
-  <img src="avatar.png" class="profile" />
+  <img src="avatar.png" className="profile" />
   <h3>{[user.firstName, user.lastName].join(' ')}</h3>
 </div>;
 ```
@@ -52,7 +52,7 @@ var profile = <div>
 var dom = require("deku").dom;
 
 var profile = dom( "div", null,
-  dom("img", { src: "avatar.png", "class": "profile" }),
+  dom("img", { src: "avatar.png", className: "profile" }),
   dom("h3", null, [user.firstName, user.lastName].join(" "))
 );
 ```
