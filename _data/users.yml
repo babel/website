@@ -313,3 +313,6 @@
 - name: Housing
   url: https://housing.com/
   logo: housing.png
+- name: MojoTech
+  url: https://mojotech.com
+  logo: mojotech.svg
