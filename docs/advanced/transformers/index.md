@@ -86,6 +86,8 @@ These are disabled by default, see [usage](#usage) for instructions on how to en
  - [minification.propertyLiterals](/docs/advanced/transformers/minification/property-literals)
  - [minification.removeConsole](/docs/advanced/transformers/minification/remove-console)
  - [minification.removeDebugger](/docs/advanced/transformers/minification/remove-debugger)
+ - [optimisation.react.inlineElements](/docs/advanced/transformers/optimisation/react/inline-elements)
+ - [optimisation.react.constantElements](/docs/advanced/transformers/optimisation/react/constant-elements)
  - [utility.inlineEnvironmentVariables](/docs/advanced/transformers/utility/inline-environment-variables)
  - [spec.protoToAssign](/docs/advanced/transformers/spec/proto-to-assign)
  - [spec.undefinedToVoid](/docs/advanced/transformers/spec/undefined-to-void)
