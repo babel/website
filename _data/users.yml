@@ -319,3 +319,6 @@
 - name: Paperless Post
   url: https://paperlesspost.com
   logo: paperlesspost.png
+- name: Squarespace
+  url: https://www.squarespace.com
+  logo: squarespace.svg
