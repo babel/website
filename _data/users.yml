@@ -322,3 +322,6 @@
 - name: Squarespace
   url: https://www.squarespace.com
   logo: squarespace.svg
+- name: Behance
+  url: https://www.myportfolio.com/
+  logo: behance.svg
