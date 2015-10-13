@@ -14,7 +14,7 @@ permalink: /docs/usage/polyfill/
 This will emulate a full ES6 environment. This polyfill is automatically loaded
 when using `babel-node` and `babel/register`.
 
-## Usage in Node/Browserify
+## Usage in Node / Browserify / Webpack
 
 To include the polyfill you need to require it at the top of the **entry point**
 to your application.
