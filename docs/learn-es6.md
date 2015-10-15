@@ -168,7 +168,9 @@ lookup `foo["bar"]`, producing `undefined` values when not found.
 
 ```js
 // list matching
-var [a, , b] = [1,2,3];
+var [a, ,b] = [1,2,3];
+a === 1;
+b === 3;
 
 // object matching
 var { op: a, lhs: { op: b }, rhs: c }
