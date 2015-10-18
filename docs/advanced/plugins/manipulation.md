@@ -117,7 +117,7 @@ export default function ({ Plugin, types: t }) {
   return new Plugin("foo-bar", {
     visitor: {
       FunctionDeclaration(node, parent) {
-        this.parentPath.remove();
+        this.parentPath.dangerouslyRemove();
       }
     }
   });
