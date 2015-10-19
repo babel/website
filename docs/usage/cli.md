@@ -91,9 +91,9 @@ $ babel --out-file script-compiled.js < script.js
   </p>
 </blockquote>
 <blockquote class="babel-callout babel-callout-info">
-  <h4>ES6-style module-loading is not supported</h4>
+  <h4>ES6-style module-loading may not function as expected</h4>
   <p>
-    Due to technical limitations ES6-style module-loading is not supported in <code>babel-node</code>.
+    Due to technical limitations ES6-style module-loading is not fully supported in a <code>babel-node REPL</code>.
   </p>
 </blockquote>
 
