@@ -28,7 +28,9 @@ You may alternatively selectively include what you need:
 ## Classes
 
 Built-in classes such as `Date`, `Array`, `DOM` etc cannot be properly subclassed
-due to limitations in ES5.
+due to limitations in ES5. This means, because Babel can't distinguish between 
+`(arr).includes()` and `(str).includes()` statically, you'll have to use [the
+polyfill](/docs/usage/polyfill/) to use these methods.
 
 ## ES5
 
