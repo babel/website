@@ -325,3 +325,6 @@
 - name: Behance
   url: https://www.myportfolio.com/
   logo: behance.svg
+- name: Targetprocess
+  url: https://www.targetprocess.com/
+  logo: targetprocess.svg
