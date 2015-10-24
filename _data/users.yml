@@ -328,3 +328,6 @@
 - name: Targetprocess
   url: https://www.targetprocess.com/
   logo: targetprocess.svg
+- name: GoDaddy
+  url: https://www.godaddy.com/
+  logo: godaddy.png
