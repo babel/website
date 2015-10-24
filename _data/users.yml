@@ -331,3 +331,6 @@
 - name: AutoLotto
   url: https://www.autolotto.com/
   logo: autolotto.png
+- name: GoDaddy
+  url: https://www.godaddy.com/
+  logo: godaddy.png
