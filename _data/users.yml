@@ -328,6 +328,9 @@
 - name: Targetprocess
   url: https://www.targetprocess.com/
   logo: targetprocess.svg
+- name: AutoLotto
+  url: https://www.autolotto.com/
+  logo: autolotto.png
 - name: GoDaddy
   url: https://www.godaddy.com/
   logo: godaddy.png
