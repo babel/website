@@ -48,8 +48,13 @@ point for inclusion by default in Babel due to their relative maturity and need 
 **NOTE:** Stage 2 and above are enabled by default.
 
 - [es7.exponentiationOperator](https://github.com/rwaldron/exponentiation-operator)
-- [es7.asyncFunctions](https://github.com/lukehoban/ecmascript-asyncawait)
 - [es7.objectRestSpread](https://github.com/sebmarkbage/ecmascript-rest-spread)
+
+### Stage 3
+
+**NOTE:** Stage 2 and above are enabled by default.
+
+- [es7.asyncFunctions](https://github.com/lukehoban/ecmascript-asyncawait)
 
 ## Usage
 
