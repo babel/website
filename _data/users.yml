@@ -328,3 +328,6 @@
 - name: Targetprocess
   url: https://www.targetprocess.com/
   logo: targetprocess.svg
+- name: Keymetrics
+  url: https://www.keymetrics.io/
+  logo: keymetrics.png
