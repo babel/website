@@ -331,3 +331,9 @@
 - name: Keymetrics
   url: https://www.keymetrics.io/
   logo: keymetrics.png
+- name: GoDaddy
+  url: https://www.godaddy.com/
+  logo: godaddy.png
+- name: AutoLotto
+  url: https://www.autolotto.com/
+  logo: autolotto.png

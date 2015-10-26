@@ -30,7 +30,7 @@ $ babel --name=value
 | `only`                   | `null`               | A [glob](https://github.com/isaacs/minimatch), regex, or mixed array of both, matching paths to **only** compile. Can also be an array of arrays containing paths to explicitly match. When attempting to compile a non-matching file it's returned verbatim. |
 | `ignore`                 | `null`               | Opposite to the `only` option. |
 | `jsxPragma`              | `null`               | Custom pragma to use for JSX elements |
-| `auxiliaryComment`       | `null`               | Attach a comment before all helper declarations and auxiliary code. eg. `"istanbul ignore next"` |
+| `auxiliaryCommentBefore` | `null`               | Attach a comment before all helper declarations and auxiliary code. eg. `"istanbul ignore next"` |
 | `sourceMaps`             | `false`              | If truthy, adds a `map` property to returned output. If set to `"inline"`, a comment with a sourceMappingURL directive is added to the bottom of the returned code. If set to `"both"` then a `map` property is returned as well as a source map comment appended. |
 | `inputSourceMap`         | `null`               | A source map object that the output source map will be based on. |
 | `sourceMapTarget`        | `(filenameRelative)` | Set `file` on returned source map. |
