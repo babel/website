@@ -26,9 +26,10 @@
     sails: Sails
 - name: Test frameworks
   items:
-    mocha: Mocha
+    jasmine: Jasmine
     jest: Jest
     karma: Karma
+    mocha: Mocha
 - name: Utilities
   items:
     connect: Connect
