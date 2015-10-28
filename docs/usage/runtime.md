@@ -71,13 +71,16 @@ the following is generated:
 ```javascript
 "use strict";
 
-var foo = regeneratorRuntime.mark(function foo() {
-  ...
-});
+var marked0$0 = [foo].map(regeneratorRuntime.mark);
+function foo() {
+  return regeneratorRuntime.wrap(function foo$(context$1$0) {
+    // ...
+  }, marked0$0[0], this);
+}
 
 function bar() {
   return regeneratorRuntime.async(function bar$(context$1$0) {
-    ...
+    // ...
   }, null, this);
 }
 ```
@@ -90,15 +93,18 @@ Instead what the `runtime` transformer does it compile that to:
 ```javascript
 "use strict";
 
-var _regeneratorRuntime = require("babel-runtime/regenerator");
+var _regeneratorRuntime = require("babel-runtime/regenerator")["default"];
 
-var foo = _regeneratorRuntime.mark(function foo() {
-  ...
-});
+var marked0$0 = [foo].map(_regeneratorRuntime.mark);
+function foo() {
+  return _regeneratorRuntime.wrap(function foo$(context$1$0) {
+    // ...
+  }, marked0$0[0], this);
+}
 
 function bar() {
   return _regeneratorRuntime.async(function bar$(context$1$0) {
-    ...
+    // ...
   }, null, this);
 }
 ```
@@ -125,13 +131,17 @@ into the following:
 ```javascript
 "use strict";
 
-var _core = require("babel-runtime/core-js");
+var _Symbol = require("babel-runtime/core-js/symbol")["default"];
 
-var sym = _core.Symbol();
+var _Promise = require("babel-runtime/core-js/promise")["default"];
 
-var promise = new _core.Promise();
+var _getIterator = require("babel-runtime/core-js/get-iterator")["default"];
 
-console.log(_core.$for.getIterator(arr));
+var sym = _Symbol();
+
+var promise = new _Promise();
+
+console.log(_getIterator(arr));
 ```
 
 This means is that you can seamlessly use these native built-ins and static methods
@@ -157,19 +167,21 @@ usually turns into:
 ```javascript
 "use strict";
 
-var _interopRequire = function (obj) {
-  return obj && obj.__esModule ? obj["default"] : obj;
-};
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var foo = _interopRequire(require("bar"));
+var _bar = require("bar");
+
+var _bar2 = _interopRequireDefault(_bar);
 ```
 
 the `runtime` transformer however turns this into:
 
 ```javascript
-"use strict";
+'use strict';
 
-var _babelHelpers = require("babel-runtime/helpers");
+var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
 
-var foo = _babelHelpers.interopRequire(require("bar"));
+var _bar = require('bar');
+
+var _bar2 = _interopRequireDefault(_bar);
 ```
