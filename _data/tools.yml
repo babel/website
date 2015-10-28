@@ -18,6 +18,7 @@
     rollup: Rollup
     sprockets: Sprockets
     webpack: Webpack
+    fly: Fly
 - name: Frameworks
   items:
     ember: Ember
