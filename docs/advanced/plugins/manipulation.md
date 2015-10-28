@@ -60,6 +60,8 @@ export default function ({ Plugin, types: t }) {
 }
 ```
 
+Currently, the source string must be only standard ES6 code, no JSX or Flow is accepted.
+
 **NOTE:** It's not recommended to use this API unless you're dealing with dynamic source strings, otherwise
 it's more efficient to parse the code outside of the visitor.
 
