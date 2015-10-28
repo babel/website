@@ -224,24 +224,32 @@ export function bar() {
 ```
 
 ```js
-(function (factory) {
+(function (global, factory) {
   if (typeof define === "function" && define.amd) {
     define(["exports", "foo"], factory);
   } else if (typeof exports !== "undefined") {
     factory(exports, require("foo"));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod.exports, global.foo);
+    global.test = mod.exports;
   }
-})(function (exports, _foo) {
+})(this, function (exports, _foo) {
   "use strict";
 
-  function _interopRequire(obj) {
-    return obj && obj.__esModule ? obj["default"] : obj;
-  }
-
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
   exports.bar = bar;
-  var foo = _interopRequire(_foo);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+  var _foo2 = _interopRequireDefault(_foo);
 
   function bar() {
-    return foo("foobar");
+    return (0, _foo2["default"])("foobar");
   }
 });
 ```
