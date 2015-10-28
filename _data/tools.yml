@@ -15,6 +15,7 @@
     jspm: jspm
     make: Make
     requirejs: RequireJS
+    rollup: Rollup
     sprockets: Sprockets
     webpack: Webpack
 - name: Frameworks
