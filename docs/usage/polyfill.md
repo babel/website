@@ -12,7 +12,7 @@ permalink: /docs/usage/polyfill/
 </p>
 
 This will emulate a full ES6 environment. This polyfill is automatically loaded
-when using `babel-node` and `babel/register`.
+when using `babel-node` and `babel-core/register`.
 
 ## Usage in Node / Browserify / Webpack
 
@@ -20,7 +20,7 @@ To include the polyfill you need to require it at the top of the **entry point**
 to your application.
 
 ```js
-require("babel/polyfill");
+require("babel-core/polyfill");
 ```
 
 Fortunately, this is also automatically loaded when using the
