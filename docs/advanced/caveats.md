@@ -23,7 +23,9 @@ You may alternatively selectively include what you need:
 | Async functions, Generators | [regenerator runtime](https://github.com/facebook/regenerator/blob/master/runtime.js) |
 | Comprehensions              | `Array.from`                                                                          |
 | For Of                      | `Symbol`, `prototype[Symbol.iterator]`                                                |
-| Spread                      | `Array.from`                                                                          |
+| Spread (on non-`Array`)     | `Array.from`                                                                          |
+
+Spreading an actual `Array`, including sparse arrays, does not require `Array.from`.
 
 ## Classes
 
