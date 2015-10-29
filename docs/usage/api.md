@@ -6,7 +6,7 @@ permalink: /docs/usage/api/
 ---
 
 ```javascript
-var babel = require("babel");
+var babel = require("babel-core");
 ```
 
 ## babel.transform(code, [[options](/docs/usage/options)])
@@ -58,8 +58,4 @@ babel.transformFileSync(filename, [options]) // => { code, map, ast }
 babel.transformFileSync("filename.js", options).code;
 ```
 
-## `require("babel-core")`
-
-While the regular `babel` package includes the CLI, we also publish a
-`babel-core` package that does not come with the CLI and has fewer dependencies
-for API-only users. The API itself is identical to the `babel` package.
+### babel.transformFromAst(ast, [code], [[options](/docs/usage/options)])

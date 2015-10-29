@@ -11,8 +11,7 @@ The entire range of Babel API [options](/docs/usage/options) are allowed.
 
 ```json
 {
-  "stage": 1,
-  "loose": ["es6.modules", "es6.classes"],
+  "plugins": ["transform-react-jsx"],
   "ignore": [
     "foo.js",
     "bar/**/*.js"
@@ -28,7 +27,7 @@ You can use the `env` option to set specific options when in a certain environme
 {
   "env": {
     "production": {
-      "optional": ["optimisation", "minification"]
+      "plugins": ["transform-react-constant-elements"]
     }
   }
 }

@@ -1,0 +1,29 @@
+---
+layout: docs
+title: React preset
+description: Strip flow types and transform JSX into createElement calls.
+permalink: /docs/plugins/preset-react/
+---
+
+This preset includes the following plugins:
+
+- [syntax-flow](/docs/plugins/syntax-flow)
+- [syntax-jsx](/docs/plugins/syntax-jsx)
+- [transform-flow-strip-types](/docs/plugins/transform-flow-strip-types)
+- [transform-react-jsx](/docs/plugins/transform-react-jsx)
+
+## Installation
+
+```sh
+$ npm install babel-preset-react
+```
+
+## Usage
+
+Add the following line to your `.babelrc` file:
+
+```json
+{
+  "presets": ["react"]
+}
+```

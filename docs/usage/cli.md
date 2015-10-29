@@ -11,13 +11,13 @@ redirect_from: /usage.html
   command line.
 </p>
 
-## Install
+## Installation
 
 Using [npm](https://www.npmjs.com/) you can install Babel globally, making it
 available from the command line.
 
 ```sh
-$ npm install --global babel
+$ npm install --global babel-cli
 ```
 
 ## babel
@@ -133,6 +133,5 @@ $ babel-node --debug --stage 0 -- script.js --debug
 | `-i, --ignore [regex]`   | `node_modules`       | Ignore all files that match this regex when using the require hook |
 | `-x, --extensions`       | `".js",".jsx",".es6",".es"` | List of extensions to hook into |
 | `-r, --stage [stage]`    | `2`                  | Set the [experimental](/docs/usage/experimental) proposal stage |
-| `-w, --whitelist`        |                      | Whitelist of transformers separated by comma to ONLY use |
-| `-b, --blacklist`        |                      | Blacklist of transformers separated by comma to NOT use |
-| `-o, --optional`         |                      | List of optional transformers separated by comma to enable | 
+| `presets`                |                      | Comma separated list of plugins to load and use. |
+| `plugins`                |                      | Comma separated list of presets to load and use. |

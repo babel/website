@@ -2,6 +2,8 @@
   url: /docs/learn-es2015/
 - title: Setup
   url: /docs/setup/
+- title: Plugins
+  url: /docs/plugins/
 - title: Usage
   url: /docs/usage/
   subnav:
@@ -17,29 +19,7 @@
     url: /docs/usage/api/
   - title: Polyfill
     url: /docs/usage/polyfill/
-  - title: Runtime
-    url: /docs/usage/runtime/
-  - title: Modules
-    url: /docs/usage/modules/
-  - title: Experimental
-    url: /docs/usage/experimental/
   - title: Browser
     url: /docs/usage/browser/
-  - title: JSX
-    url: /docs/usage/jsx/
-- title: Advanced
-  subnav:
-  - title: Plugins
-    url: /docs/advanced/plugins/
-  - title: Transformers
-    url: /docs/advanced/transformers/
-  - title: Caveats
-    url: /docs/advanced/caveats/
-  - title: Loose mode
-    url: /docs/advanced/loose/
-  - title: External helpers
-    url: /docs/advanced/external-helpers/
 - title: Try it out
   url: /repl/
-- title: FAQ
-  url: /docs/faq/
