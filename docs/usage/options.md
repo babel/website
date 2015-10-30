@@ -21,8 +21,8 @@ $ babel --name=value
 | ------------------------ | -------------------- | ------------------------------- |
 | `filename`               | `"unknown"`          | Filename for use in errors etc. |
 | `filenameRelative`       | `(filename)`         | Filename relative to `sourceRoot`. |
-| `presets`                | `[]`                 | List of plugins to load and use. |
-| `plugins`                | `[]`                 | List of presets to load and use. |
+| `presets`                | `[]`                 | List of presets to load and use. |
+| `plugins`                | `[]`                 | List of plugins to load and use. |
 | `highlightCode`          | `true`               | ANSI highlight syntax error code frames |
 | `only`                   | `null`               | A [glob](https://github.com/isaacs/minimatch), regex, or mixed array of both, matching paths to **only** compile. Can also be an array of arrays containing paths to explicitly match. When attempting to compile a non-matching file it's returned verbatim. |
 | `ignore`                 | `null`               | Opposite to the `only` option. |
