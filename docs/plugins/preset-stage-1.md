@@ -2,7 +2,7 @@
 layout: docs
 title: Stage 1 preset
 description: All you need to use stage 1 (and greater) plugins
-permalink: /docs/plugins/preset-es2015/
+permalink: /docs/plugins/preset-stage-1/
 ---
 
 This preset includes the following plugins:
