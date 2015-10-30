@@ -133,5 +133,5 @@ $ babel-node --debug --stage 0 -- script.js --debug
 | `-i, --ignore [regex]`   | `node_modules`       | Ignore all files that match this regex when using the require hook |
 | `-x, --extensions`       | `".js",".jsx",".es6",".es"` | List of extensions to hook into |
 | `-r, --stage [stage]`    | `2`                  | Set the [experimental](/docs/usage/experimental) proposal stage |
-| `presets`                |                      | Comma separated list of plugins to load and use. |
-| `plugins`                |                      | Comma separated list of presets to load and use. |
+| `presets`                |                      | Comma separated list of presets to load and use. |
+| `plugins`                |                      | Comma separated list of plugins to load and use. |
