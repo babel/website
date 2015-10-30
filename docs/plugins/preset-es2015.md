@@ -17,6 +17,7 @@ This preset includes the following plugins:
 - [transform-es2015-for-of](/docs/plugins/transform-es2015-for-of)
 - [transform-es2015-function-name](/docs/plugins/transform-es2015-function-name)
 - [transform-es2015-literals](/docs/plugins/transform-es2015-literals)
+- [transform-es2015-modules-commonjs](/docs/plugins/transform-es2015-modules-commonjs)
 - [transform-es2015-object-super](/docs/plugins/transform-es2015-object-super)
 - [transform-es2015-parameters](/docs/plugins/transform-es2015-parameters)
 - [transform-es2015-shorthand-properties](/docs/plugins/transform-es2015-shorthand-properties)
@@ -25,6 +26,7 @@ This preset includes the following plugins:
 - [transform-es2015-template-literals](/docs/plugins/transform-es2015-template-literals)
 - [transform-es2015-typeof-symbol](/docs/plugins/transform-es2015-typeof-symbol)
 - [transform-es2015-unicode-regex](/docs/plugins/transform-es2015-unicode-regex)
+- [transform-regenerator](/docs/plugins/transform-regenerator)
 
 ## Installation
 
