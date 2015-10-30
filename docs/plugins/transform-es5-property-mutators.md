@@ -31,6 +31,7 @@ var foo = Object.defineProperties({}, {
     configurable: true
   }
 });
+```
 
 ## Installation
 
