@@ -15,6 +15,10 @@ Don't want to assemble your own set of plugins? No problem! Presets are sharable
 We've assembled some for common environments:
 
  - [es2015](/docs/plugins/preset-es2015)
+ - [stage-0](/docs/plugins/preset-stage-0)
+ - [stage-1](/docs/plugins/preset-stage-1)
+ - [stage-2](/docs/plugins/preset-stage-2)
+ - [stage-3](/docs/plugins/preset-stage-3)
  - [react](/docs/plugins/preset-react)
 
 ## Misc
