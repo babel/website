@@ -50,6 +50,12 @@ These plugins allow Babel to parse specific types of syntax.
 
 These plugins apply transformations to your code.
 
+<blockquote class="babel-callout babel-callout-info">
+  <p>
+    Transform plugins will enable the corresponding syntax plugin so you don't have to specify both.
+  </p>
+</blockquote>
+
 <!-- - [async-functions](/docs/plugins/transform-async-functions) -->
  - [async-to-generator](/docs/plugins/transform-async-to-generator)
  - [async-to-module-method](/docs/plugins/transform-async-to-module-method)
