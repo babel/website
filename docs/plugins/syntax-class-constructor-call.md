@@ -13,7 +13,7 @@ permalink: /docs/plugins/syntax-class-constructor-call/
   </p>
 </blockquote>
 
-This plugin allows Babel to parse [callable class cosntructors](https://github.com/tc39/ecma262/blob/master/workingdocs/callconstructor.md).
+This plugin allows Babel to parse [callable class constructors](https://github.com/tc39/ecma262/blob/master/workingdocs/callconstructor.md).
 
 ## Installation
 
