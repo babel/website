@@ -21,6 +21,10 @@ async function foo() {
 var _asyncToGenerator = function (fn) {
   ...
 };
+var foo = _asyncToGenerator(function* () {
+  yield bar();
+});
+```
 
 ## Installation
 
@@ -36,9 +40,4 @@ Add the following line to your `.babelrc` file:
 {
   "plugins": ["transform-async-to-generator"]
 }
-```
-
-var foo = _asyncToGenerator(function* () {
-  yield bar();
-});
 ```
