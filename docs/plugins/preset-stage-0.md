@@ -2,7 +2,7 @@
 layout: docs
 title: Stage 0 preset
 description: All you need to use stage 0 (and greater) plugins
-permalink: /docs/plugins/preset-es2015/
+permalink: /docs/plugins/preset-stage-0/
 ---
 
 This preset includes the following plugins:
