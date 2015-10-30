@@ -67,7 +67,7 @@ You can pass in all other [options](/docs/usage/options/#options) as well.
 
 ## Environment variables
 
-By default `babel-node` and `babel/register` will save to a json cache in your
+By default `babel-node` and `babel-core/register` will save to a json cache in your
 temporary directory.
 
 This will heavily improve with the startup and compilation of your files. There
