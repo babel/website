@@ -3,6 +3,8 @@ layout: docs
 title: Plugins
 description:
 permalink: /docs/plugins/
+redirect_from:
+ - /docs/advanced/plugins/
 ---
 
 Out of the box Babel doesn't do anything. In order to actually do anything to your code
