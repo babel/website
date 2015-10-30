@@ -348,15 +348,7 @@ interface Generator extends Iterator {
 
 ### Comprehensions
 
-See [this page](/docs/advanced/transformers/other/comprehensions) for details.
-It is now an [ES7 Strawman proposal](/docs/usage/experimental).
-
-<blockquote class="babel-callout babel-callout-warning">
-  <h4>Disabled by default</h4>
-  <p>
-    This is only available if you enable experimental support. See <a href="/docs/usage/experimental">experimental usage</a> for more information.
-  </p>
-</blockquote>
+Removed in Babel 6.0
 
 ### Unicode
 
