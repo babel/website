@@ -19,13 +19,12 @@ get all the same transforms that were in Babel 5:
 
 ```json
 {
-  "presets": ["es2015", "react"],
-  "plugins": ["transform-es2015-modules-commonjs"]
+  "presets": ["es2015", "react", "stage-2"]
 }
 ```
 
 ```sh
-$ npm install babel-preset-es2015 babel-preset-react babel-plugin-transform-es2015-modules-commonjs
+$ npm install babel-preset-es2015 babel-preset-react babel-preset-stage-2
 ```
 
 ## Where did all the docs go?!
