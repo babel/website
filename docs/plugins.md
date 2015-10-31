@@ -131,3 +131,17 @@ These plugins apply transformations to your code.
  - [runtime](/docs/plugins/transform-runtime)
  - [strict-mode](/docs/plugins/transform-strict-mode)
  - [undefined-to-void](/docs/plugins/transform-undefined-to-void)
+
+## Options
+
+Plugins can specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
+
+```js
+{
+  "plugins": [
+    ["transform-async-to-module-method", {
+      module: 'bluebird',
+      method: 'coroutine'
+    }]
+  ]
+}
