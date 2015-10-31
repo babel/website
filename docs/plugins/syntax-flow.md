@@ -9,7 +9,7 @@ permalink: /docs/plugins/syntax-flow/
   <h4>Syntax only</h4>
   <p>
     This plugin only allows Babel to parse this syntax. If you want to transform it then
-    see <a href="/docs/plugins/transform-flow">transform-flow</a>.
+    see <a href="/docs/plugins/transform-flow-strip-types">transform-flow-strip-types</a>.
   </p>
 </blockquote>
 
