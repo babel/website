@@ -7,7 +7,7 @@ categories: announcements
 share_text: "Setting up Babel 6"
 ---
 
-Babel 6 is fresh off the press and we’re still getting a lot sorted out. In the past two days has seen more activity on GitHub and Slack than ever before. Everyone who has been helping out has been doing a great job.
+Babel 6 is fresh off the press and we’re still getting a lot sorted out. In the past two days we've seen more activity on GitHub and Slack than ever before. Everyone who has been helping out has been doing a great job.
 
 However, the documentation is still lacking at this point, I’m currently going through and creating an entirely new “Getting Started” section of the site.
 
