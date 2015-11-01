@@ -16,11 +16,7 @@ redirect_from: /browser.html
     Compiling in the browser has a fairly limited use case, so if you are
     working on a production site you should be precompiling your scripts
     server-side. See <a href="/docs/setup/#build-systems">setup build systems</a>
-    for more ## Usage
-
-Add the following line to your `.babelrc` file:
-
-```jsonrmation.
+    for more information.
   </p>
 </blockquote>
 
