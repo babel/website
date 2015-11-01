@@ -3,6 +3,7 @@ layout: docs
 title: Object.assign transform
 description:
 permalink: /docs/plugins/transform-object-assign/
+package: babel-plugin-transform-object-assign
 ---
 
 ## Installation

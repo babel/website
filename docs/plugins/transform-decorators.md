@@ -3,6 +3,7 @@ layout: docs
 title: Decorators transform
 description:
 permalink: /docs/plugins/transform-decorators/
+package: babel-plugin-transform-decorators
 ---
 
 ## Installation

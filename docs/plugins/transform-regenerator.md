@@ -3,6 +3,7 @@ layout: docs
 title: Regenerator transform
 description:
 permalink: /docs/plugins/transform-regenerator/
+package: babel-plugin-transform-regenerator
 ---
 
 This plugin uses the [regenerator](https://github.com/facebook/regenerator) module to

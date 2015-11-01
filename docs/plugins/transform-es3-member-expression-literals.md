@@ -3,6 +3,7 @@ layout: docs
 title: ES3 member expressions literals transform
 description:
 permalink: /docs/plugins/transform-es3-member-expression-literals/
+package: babel-plugin-transform-es3-member-expression-literals
 ---
 
 Turn member expression reserved word properties into literals.

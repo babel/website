@@ -12,8 +12,11 @@
     font-weight: 700;
   }
 
-  p {
+  p:not(.package-links) {
     font-size: 1.5em;
+  }
+
+  p, a {
     color: white;
   }
 }

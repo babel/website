@@ -3,6 +3,7 @@ layout: docs
 title: Class constructor call
 description:
 permalink: /docs/plugins/syntax-class-constructor-call/
+package: babel-plugin-syntax-class-constructor-call
 ---
 
 <blockquote class="babel-callout babel-callout-info">

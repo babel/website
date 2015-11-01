@@ -3,6 +3,7 @@ layout: docs
 title: Merge sibling variables transform
 description:
 permalink: /docs/plugins/transform-merge-sibling-variables/
+package: babel-plugin-transform-merge-sibling-variables
 ---
 
 Merge sibling variable declarations.

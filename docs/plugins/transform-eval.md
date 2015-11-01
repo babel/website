@@ -3,6 +3,7 @@ layout: docs
 title: Eval transform
 description:
 permalink: /docs/plugins/transform-eval/
+package: babel-plugin-transform-eval
 ---
 
 ## Installation

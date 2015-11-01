@@ -3,6 +3,7 @@ layout: docs
 title: Export extensions transform
 description:
 permalink: /docs/plugins/transform-export-extensions/
+package: babel-plugin-transform-export-extensions
 ---
 
 ## Installation

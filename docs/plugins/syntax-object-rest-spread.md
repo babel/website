@@ -3,6 +3,7 @@ layout: docs
 title: Syntax object rest spread
 description:
 permalink: /docs/plugins/syntax-object-rest-spread/
+package: babel-plugin-syntax-object-rest-spread
 ---
 
 

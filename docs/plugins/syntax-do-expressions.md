@@ -3,6 +3,7 @@ layout: docs
 title: Syntax do expressions
 description:
 permalink: /docs/plugins/syntax-do-expressions/
+package: babel-plugin-syntax-do-expressions
 ---
 
 <blockquote class="babel-callout babel-callout-info">

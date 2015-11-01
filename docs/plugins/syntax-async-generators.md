@@ -3,6 +3,7 @@ layout: docs
 title: Syntax async generators
 description:
 permalink: /docs/plugins/syntax-async-generators/
+package: babel-plugin-syntax-async-generators
 ---
 
 This plugin allows Babel to parse [async generators](https://github.com/zenparsing/async-iteration/).

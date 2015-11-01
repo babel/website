@@ -3,6 +3,7 @@ layout: docs
 title: Stage 3 preset
 description: All you need to use stage 3 plugins
 permalink: /docs/plugins/preset-stage-3/
+package: babel-preset-stage-3
 ---
 
 This preset includes the following plugins:

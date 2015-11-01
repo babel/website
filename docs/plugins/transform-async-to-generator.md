@@ -3,6 +3,7 @@ layout: docs
 title: Async to generator transform
 description:
 permalink: /docs/plugins/transform-async-to-generator/
+package: babel-plugin-transform-async-to-generator
 ---
 
 ## Example
