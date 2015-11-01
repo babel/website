@@ -87,7 +87,7 @@ $ npm install --save-dev babel-preset-react
 
 ```js
 {
-  "preset": ["react"]
+  "presets": ["react"]
 }
 ```
 
@@ -99,7 +99,7 @@ $ npm install --save-dev babel-preset-stage-2
 
 ```js
 {
-  "preset": ["stage-2"]
+  "presets": ["stage-2"]
 }
 ```
 
