@@ -2,7 +2,7 @@
 layout: docs
 title: ES3 property literals transform
 description:
-permalink: /docs/plugins/transform-property-literals/
+permalink: /docs/plugins/transform-es3-property-literals/
 ---
 
 Turn reserved word property keys into literals.
@@ -28,7 +28,7 @@ var foo = {
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-property-literals
+$ npm install babel-plugin-transform-es3-property-literals
 ```
 
 ## Usage
@@ -37,6 +37,6 @@ Add the following line to your `.babelrc` file:
 
 ```json
 {
-  "plugins": ["transform-property-literals"]
+  "plugins": ["transform-es3-property-literals"]
 }
 ```
