@@ -5,7 +5,7 @@ description:
 permalink: /docs/plugins/transform-react-display-name/
 ---
 
-Add displayName to React.createClass calls
+Add `displayName` to `React.createClass` calls
 
 ## Installation
 
