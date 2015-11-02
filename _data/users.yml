@@ -334,3 +334,6 @@
 - name: AutoLotto
   url: https://www.autolotto.com/
   logo: autolotto.png
+- name: hackerYou
+  url: http://hackeryou.com/
+  logo: hackeryou.svg
