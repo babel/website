@@ -72,12 +72,12 @@ Add the following line to your `.babelrc` file:
 }
 ```
 
-or optionally specify a `jsxPragma`:
+or optionally specify a `pragma` for jsx:
 
 ```json
 {
   "plugins": [
-    ["transform-react-jsx", { "jsxPragma": "dom" }]
+    ["transform-react-jsx", { "pragma": "dom" }]
   ]
 }
 ```
