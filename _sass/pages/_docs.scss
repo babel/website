@@ -12,12 +12,17 @@
     font-weight: 700;
   }
 
-  p:not(.package-links) {
-    font-size: 1.5em;
+  p {
+    color: white;
+
+    &:not(.package-links) {
+      font-size: 1.5em;
+    }
   }
 
-  p, a {
-    color: white;
+  a {
+    color: $babel-yellow;
+    text-decoration: underline;
   }
 }
 
