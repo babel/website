@@ -3,6 +3,7 @@ layout: docs
 title: Syntax trailing function commas
 description:
 permalink: /docs/plugins/syntax-trailing-function-commas/
+package: babel-plugin-syntax-trailing-function-commas
 ---
 
 

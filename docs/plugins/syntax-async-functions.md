@@ -3,6 +3,7 @@ layout: docs
 title: Syntax async functions
 description:
 permalink: /docs/plugins/syntax-async-functions/
+package: babel-plugin-syntax-async-functions
 ---
 
 This plugin allows Babel to parse [async functions](https://github.com/tc39/ecmascript-asyncawait).

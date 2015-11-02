@@ -3,6 +3,7 @@ layout: docs
 title: Class properties transform
 description:
 permalink: /docs/plugins/transform-class-properties/
+package: babel-plugin-transform-class-properties
 ---
 
 ## Installation

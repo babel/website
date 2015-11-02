@@ -3,6 +3,7 @@ layout: docs
 title: Simplfy comparison operator transform
 description:
 permalink: /docs/plugins/transform-simplify-comparison-operators/
+package: babel-plugin-transform-simplify-comparison-operators
 ---
 
 This plugin simplifies comparisons from strict `===` to `==` when each side is inferred

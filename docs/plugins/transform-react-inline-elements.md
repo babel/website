@@ -3,6 +3,7 @@ layout: docs
 title: React inline elements transform
 description:
 permalink: /docs/plugins/transform-react-inline-elements/
+package: babel-plugin-transform-react-inline-elements
 ---
 
 Converts JSX elements to object literals like `{type: 'div', props: ...}` instead of calls to `React.createElement`.

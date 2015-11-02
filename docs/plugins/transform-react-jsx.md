@@ -3,6 +3,7 @@ layout: docs
 title: React JSX transform
 description:
 permalink: /docs/plugins/transform-react-jsx/
+package: babel-plugin-transform-react-jsx
 ---
 
 ## Example

@@ -3,6 +3,7 @@ layout: docs
 title: Syntax JSX
 description:
 permalink: /docs/plugins/syntax-jsx/
+package: babel-plugin-syntax-jsx
 ---
 
 <blockquote class="babel-callout babel-callout-info">

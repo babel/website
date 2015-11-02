@@ -3,6 +3,7 @@ layout: docs
 title: Inline environment variables transform
 description:
 permalink: /docs/plugins/transform-inline-environment-variables/
+package: babel-plugin-transform-inline-environment-variables
 ---
 
 Inlines environment variables.

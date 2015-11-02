@@ -3,6 +3,7 @@ layout: docs
 title: JScript transform
 description:
 permalink: /docs/plugins/transform-jscript/
+package: babel-plugin-transform-jscript
 ---
 
 This transformer transforms named function expressions into function declarations to get around some

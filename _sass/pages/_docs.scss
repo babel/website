@@ -13,8 +13,16 @@
   }
 
   p {
-    font-size: 1.5em;
     color: white;
+
+    &:not(.package-links) {
+      font-size: 1.5em;
+    }
+  }
+
+  a {
+    color: $babel-yellow;
+    text-decoration: underline;
   }
 }
 

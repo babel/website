@@ -3,6 +3,7 @@ layout: docs
 title: Syntax function bind
 description:
 permalink: /docs/plugins/syntax-function-bind/
+package: babel-plugin-syntax-function-bind
 ---
 
 <blockquote class="babel-callout babel-callout-info">

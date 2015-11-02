@@ -3,6 +3,7 @@ layout: docs
 title: ES3 property literals transform
 description:
 permalink: /docs/plugins/transform-es3-property-literals/
+package: babel-plugin-transform-es3-property-literals
 ---
 
 Turn reserved word property keys into literals.

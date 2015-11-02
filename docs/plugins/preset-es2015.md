@@ -3,6 +3,7 @@ layout: docs
 title: ES2015 preset
 description: All you need to compile ES2015 to ES5
 permalink: /docs/plugins/preset-es2015/
+package: babel-preset-es2015
 ---
 
 This preset includes the following plugins:

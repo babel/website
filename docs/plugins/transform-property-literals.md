@@ -3,6 +3,7 @@ layout: docs
 title: Property literals transform
 description:
 permalink: /docs/plugins/transform-property-literals/
+package: babel-plugin-transform-property-literals
 ---
 
 Turn valid identifier property key literals into identifiers.

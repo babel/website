@@ -3,6 +3,7 @@ layout: docs
 title: Runtime transform
 description:
 permalink: /docs/plugins/transform-runtime/
+package: babel-plugin-transform-runtime
 ---
 
 ## Installation

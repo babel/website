@@ -3,6 +3,7 @@ layout: docs
 title: Object rest spread transform
 description:
 permalink: /docs/plugins/transform-object-rest-spread/
+package: babel-plugin-transform-object-rest-spread
 ---
 
 ## Installation

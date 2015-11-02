@@ -3,6 +3,7 @@ layout: docs
 title: Callable class constructor transform
 description:
 permalink: /docs/plugins/transform-class-constructor-call/
+package: babel-plugin-transform-class-constructor-call
 ---
 
 ## Installation

@@ -3,6 +3,7 @@ layout: docs
 title: Remove console transform
 description:
 permalink: /docs/plugins/transform-remove-console/
+package: babel-plugin-transform-remove-console
 ---
 
 This plugin removes all `console.*` calls.

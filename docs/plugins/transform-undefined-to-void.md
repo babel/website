@@ -3,6 +3,7 @@ layout: docs
 title: Undefined to void transform
 description:
 permalink: /docs/plugins/transform-undefined-to-void/
+package: babel-plugin-transform-undefined-to-void
 ---
 
 Some JavaScript implementations allow undefined to be overwritten, this may lead to peculiar bugs that are extremely hard to track down.
