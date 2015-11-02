@@ -337,3 +337,6 @@
 - name: hackerYou
   url: http://hackeryou.com/
   logo: hackeryou.svg
+- name: KongGe
+  url: http://kongge.com/
+  logo: kongge.png
