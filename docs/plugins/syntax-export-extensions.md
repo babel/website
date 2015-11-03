@@ -10,7 +10,7 @@ package: babel-plugin-syntax-export-extensions
   <h4>Syntax only</h4>
   <p>
     This plugin only allows Babel to parse this syntax. If you want to transform it then
-    see <a href="/docs/plugins/export-extensions">export-extensions</a>.
+    see <a href="/docs/plugins/transform-export-extensions/">export-extensions</a>.
   </p>
 </blockquote>
 
