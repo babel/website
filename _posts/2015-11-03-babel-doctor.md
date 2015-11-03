@@ -7,7 +7,7 @@ categories: announcements
 share_text: "Babel Doctor"
 ---
 
-> **NOTE:** Babel Doctor is <s>heavily inspired</s> ripped from the awesome
+> Babel Doctor is <s>heavily inspired</s> ripped from the awesome
 > [Yeoman Doctor](https://github.com/yeoman/doctor) by
 > [Sindre Sorhus](https://github.com/sindresorhus).
 
@@ -21,6 +21,8 @@ detects common problems with your Babel installation such as:
  - Missing `.babelrc`.
  - Duplicate Babel core modules
  - Outdated Babel core modules
+
+## Usage
 
 First, make sure you have the Babel CLI installed.
 
@@ -43,6 +45,8 @@ Running sanity checks on your system. This may take a few minutes...
 Everything looks all right!
 
 ```
+
+----
 
 We hope this makes it easier to setup and use Babel in your project.
 
