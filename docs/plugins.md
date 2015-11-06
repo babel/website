@@ -141,8 +141,8 @@ Plugins can specify options. You can do so in your config by wrapping it in an a
 {
   "plugins": [
     ["transform-async-to-module-method", {
-      module: 'bluebird',
-      method: 'coroutine'
+      "module": "bluebird",
+      "method": "coroutine"
     }]
   ]
 }

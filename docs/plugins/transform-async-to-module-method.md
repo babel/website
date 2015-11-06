@@ -20,8 +20,8 @@ Add the following line to your `.babelrc` file:
 {
   "plugins": [
     ["transform-async-to-module-method", {
-      module: "bluebird",
-      method: "coroutine"
+      "module": "bluebird",
+      "method": "coroutine"
     }]
   ]
 }
