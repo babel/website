@@ -15,12 +15,22 @@ This transform **should be enabled only in production** (e.g., just before minif
 **In**
 
 ```javascript
-debugger;
+<Baz foo="bar"></Baz>;
 ```
 
 **Out**
 
 ```javascript
+({
+  $$typeof: babelHelpers.typeofReactElement,
+  type: Baz,
+  key: null,
+  ref: null,
+  props: babelHelpers.defaultProps(Baz.defaultProps, {
+    foo: "bar"
+  }),
+  _owner: null
+});
 ```
 
 ## Installation
