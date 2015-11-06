@@ -18,6 +18,12 @@ Add the following line to your `.babelrc` file:
 
 ```json
 {
-  "plugins": ["transform-async-to-module-method"]
+  "plugins": [
+    ["transform-async-to-module-method", {
+      module: "bluebird",
+      method: "coroutine"
+    }]
+  ]
 }
 ```
+
