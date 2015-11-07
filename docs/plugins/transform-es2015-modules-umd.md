@@ -8,6 +8,8 @@ package: babel-plugin-transform-es2015-modules-umd
 
 This plugin transforms ES2015 modules to UMD.
 
+[Universal Module Definition (UMD)](https://github.com/umdjs/umd)
+
 ## Installation
 
 ```sh
