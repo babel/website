@@ -8,6 +8,8 @@ package: babel-plugin-transform-es2015-modules-amd
 
 This plugin transforms ES2015 modules to AMD.
 
+[Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api)
+
 ## Installation
 
 ```sh
