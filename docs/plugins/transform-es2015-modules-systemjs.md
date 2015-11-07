@@ -8,6 +8,8 @@ package: babel-plugin-transform-es2015-modules-systemjs
 
 This plugin transforms ES2015 modules to SystemJS.
 
+[SystemJS](https://github.com/systemjs/systemjs)
+
 ## Installation
 
 ```sh
