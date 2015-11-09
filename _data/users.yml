@@ -352,3 +352,6 @@
 - name: Nukomeet
   url: http://nukomeet.com/
   logo: nukomeet.png
+- name: Olapic
+  url: https://www.olapic.com/
+  logo: olapic.svg
