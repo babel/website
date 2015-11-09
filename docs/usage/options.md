@@ -34,7 +34,6 @@ $ babel --name=value
 | `sourceFileName`         | `(filenameRelative)` | Set `sources[0]` on returned source map. |
 | `sourceRoot`             | `(moduleRoot)`       | The root from which all sources are relative. |
 | `moduleRoot`             | `(sourceRoot)`       | Optional prefix for the AMD module formatter that will be prepend to the filename on module definitions. |
-| `modules`                | `"common"`           | Which module formatter to use. Run `babel --help` to see a full list of module formatters. |
 | `moduleIds`              | `false`              | If truthy, insert an explicit id for modules. By default, all modules are anonymous. (Not available for `common` modules) |
 | `moduleId`               | `null`               | Specify a custom name for module ids. |
 | `getModuleId`            | `null`               | Specify a custom callback to generate a module id with. Called as `getModuleId(moduleName)`. If falsy value is returned then the generated module id is used. |
