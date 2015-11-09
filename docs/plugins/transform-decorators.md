@@ -21,3 +21,7 @@ Add the following line to your `.babelrc` file:
   "plugins": ["transform-decorators"]
 }
 ```
+
+## References
+
+* [Proposal: Javascript Decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md)
