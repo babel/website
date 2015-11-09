@@ -340,6 +340,10 @@
 - name: KongGe
   url: http://kongge.com/
   logo: kongge.png
+- name: Olapic
+  url: http://www.olapic.com/
+  logo: olapic.svg
 - name: UrbanAirship
   url: https://www.urbanairship.com/
   logo: urbanairship.svg
+>>>>>>> master
