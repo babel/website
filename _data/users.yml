@@ -343,3 +343,6 @@
 - name: UrbanAirship
   url: https://www.urbanairship.com/
   logo: urbanairship.svg
+- name: Moneytree
+  url: https://moneytree.jp/
+  logo: moneytree.png
