@@ -355,3 +355,6 @@
 - name: Olapic
   url: https://www.olapic.com/
   logo: olapic.svg
+- name: Codinum
+  url: https://codinum.com/
+  logo: codinum.png
