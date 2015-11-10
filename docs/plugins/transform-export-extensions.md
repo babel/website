@@ -21,3 +21,7 @@ Add the following line to your `.babelrc` file:
   "plugins": ["transform-export-extensions"]
 }
 ```
+
+## References
+
+* [Proposal: Additional export-from statements in ES7](https://github.com/leebyron/ecmascript-more-export-from)
