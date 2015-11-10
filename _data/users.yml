@@ -343,3 +343,6 @@
 - name: UrbanAirship
   url: https://www.urbanairship.com/
   logo: urbanairship.svg
+- name: Social Tables
+  url: https://www.socialtables.com/
+  logo: socialtables.png
