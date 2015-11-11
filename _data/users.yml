@@ -358,3 +358,6 @@
 - name: Codinum
   url: https://codinum.com/
   logo: codinum.png
+- name: Wallaby.js
+  url: http://wallabyjs.com/
+  logo: wallaby.svg
