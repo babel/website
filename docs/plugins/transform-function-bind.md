@@ -21,3 +21,7 @@ Add the following line to your `.babelrc` file:
   "plugins": ["transform-function-bind"]
 }
 ```
+
+## References
+
+* [Babel Blog: Function Bind Syntax](/blog/2015/05/14/function-bind/)

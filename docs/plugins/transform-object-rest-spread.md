@@ -21,3 +21,7 @@ Add the following line to your `.babelrc` file:
   "plugins": ["transform-object-rest-spread"]
 }
 ```
+
+## References
+
+* [Proposal: Object Rest/Spread Properties for ECMAScript](https://github.com/sebmarkbage/ecmascript-rest-spread)
