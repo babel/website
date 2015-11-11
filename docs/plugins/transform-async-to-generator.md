@@ -42,3 +42,7 @@ Add the following line to your `.babelrc` file:
   "plugins": ["transform-async-to-generator"]
 }
 ```
+
+## References
+
+* [Proposal: Async Functions for ECMAScript](https://github.com/tc39/ecmascript-asyncawait)
