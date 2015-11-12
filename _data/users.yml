@@ -364,3 +364,6 @@
 - name: Schibsted Spain
   url: http://www.schibsted.es/
   logo: schibsted-spain.svg
+- name: pebble {code}
+  url: http://pebblecode.com
+  logo: pebblecode.png
