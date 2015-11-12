@@ -361,3 +361,6 @@
 - name: Wallaby.js
   url: http://wallabyjs.com/
   logo: wallaby.svg
+- name: Schibsted Spain
+  url: http://www.schibsted.es/
+  logo: schibsted-spain.svg
