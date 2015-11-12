@@ -361,3 +361,6 @@
 - name: Wallaby.js
   url: http://wallabyjs.com/
   logo: wallaby.svg
+- name: pebble {code}
+  url: http://pebblecode.com
+  logo: pebblecode.png
