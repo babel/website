@@ -49,6 +49,14 @@ custom_js_with_timestamps:
       <h2><span class="step-no">4</span> Create <code>.babelrc</code> configuration file</h2>
 
       <p>Great! You've configured Babel but you haven't made it actually <em>do</em> anything. Create a <a href="/docs/usage/babelrc">.babelrc</a> config in your project root and enable some <a href="/docs/plugins">plugins</a>.</p>
+
+      <p>For example you can enable the basic ES2015 features by using the <code>es2015</code> plugin in your <code>.babelrc</code>:</p>
+
+      <code>
+      {
+        "presets": ["es2015"]
+      }
+      </code>
     </div>
   </div>
 </div>
