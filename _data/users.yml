@@ -367,3 +367,6 @@
 - name: pebble {code}
   url: http://pebblecode.com
   logo: pebblecode.png
+- name: FINN.no
+  url: https://finn.no/
+  logo: finn.svg
