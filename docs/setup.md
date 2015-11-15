@@ -41,6 +41,7 @@ custom_js_with_timestamps:
         <h4>Warning!</h4>
         <p>
           <a href="/blog/2015/10/29/6.0.0/">Babel 6 was just released!</a> This means that it might take some time for all possible integrations to upgrade. Make sure to check the compatibility of your chosen integration.
+          <br><b>Note:</b> Pre-6.x, Babel enabled certain transformations by default. However, Babel 6.x does not ship with any transformations enabled. You need to tell it what transformations to run.
         </p>
       </blockquote>
     </div>
