@@ -14,6 +14,7 @@
     gulp: Gulp
     jspm: jspm
     make: Make
+    msbuild: MSBuild
     requirejs: RequireJS
     rollup: Rollup
     sprockets: Sprockets
@@ -37,6 +38,7 @@
     nodemon: Nodemon
 - name: Language APIs
   items:
+    dotnet: C# / .NET
     node: Node
     ruby: Ruby
 - name: Template engines
