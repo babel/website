@@ -1,7 +1,7 @@
 Add the `type="text/babel"` attribute to your `<script>` tags. For example:
 
 ```html
-<script src="node_modules/babel-core/browser.js"></script>
+<script src="node_modules/babel-browser/browser.js"></script>
 <script type="text/babel">
 class Test {
   test() {
