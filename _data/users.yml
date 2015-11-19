@@ -367,3 +367,6 @@
 - name: pebble {code}
   url: http://pebblecode.com
   logo: pebblecode.png
+- name: Blendle
+  url: https://blendle.com
+  logo: blendle.svg
