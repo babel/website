@@ -370,3 +370,6 @@
 - name: FINN.no
   url: https://finn.no/
   logo: finn.svg
+- name: TES Global
+  url: https://www.tes.com
+  logo: tesglobal.svg
