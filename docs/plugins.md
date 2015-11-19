@@ -43,6 +43,7 @@ These plugins allow Babel to parse specific types of syntax.
  - [export-extensions](/docs/plugins/syntax-export-extensions)
  - [flow](/docs/plugins/syntax-flow)
  - [function-bind](/docs/plugins/syntax-function-bind)
+ - [function-sent](/docs/plugins/syntax-function-sent)
  - [jsx](/docs/plugins/syntax-jsx)
  - [object-rest-spread](/docs/plugins/syntax-object-rest-spread)
  - [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
