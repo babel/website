@@ -373,3 +373,6 @@
 - name: TES Global
   url: https://www.tes.com
   logo: tesglobal.svg
+- name: Textalk
+  url: http://textalk.se
+  logo: textalk.svg
