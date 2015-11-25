@@ -13,13 +13,13 @@ fly. This is equivalent to CoffeeScript's
 ## Install
 
 ```sh
-$ npm install babel-core
+$ npm install babel-register
 ```
 
 ## Usage
 
 ```js
-require("babel-core/register");
+require("babel-register");
 ```
 
 All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`
@@ -29,7 +29,7 @@ and `.js` will be transformed by Babel. The [polyfill](/docs/usage/polyfill) is 
 override this by passing an ignore regex via:
 
 ```js
-require("babel-core/register")({
+require("babel-register")({
   // This will override `node_modules` ignoring - you can alternatively pass
   // an array of strings to be explicitly matched or a regex / glob
   ignore: false
@@ -39,7 +39,7 @@ require("babel-core/register")({
 ## Specifying options
 
 ```javascript
-require("babel-core/register")({
+require("babel-register")({
   // Optional ignore regex - if any filenames **do** match this regex then they
   // aren't compiled.
   ignore: /regex/,
@@ -67,7 +67,7 @@ You can pass in all other [options](/docs/usage/options/#options) as well.
 
 ## Environment variables
 
-By default `babel-node` and `babel-core/register` will save to a json cache in your
+By default `babel-node` and `babel-register` will save to a json cache in your
 temporary directory.
 
 This will heavily improve with the startup and compilation of your files. There
