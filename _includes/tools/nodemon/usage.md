@@ -3,7 +3,7 @@ In your `package.json` file make the following changes:
 ```js
 {
   "scripts": {
-    "babel-node": "babel-node --stage 0 --ignore='foo|bar|baz'"
+    "babel-node": "babel-node --stage-0 --ignore='foo|bar|baz'"
   }
 }
 ```
