@@ -2,7 +2,6 @@
   items:
     babel_cli: CLI
     babel_register: Require hook
-    babel_in_browser: Browser
 - name: Build systems
   items:
     broccoli: Broccoli
