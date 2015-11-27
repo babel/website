@@ -373,3 +373,6 @@
 - name: TES Global
   url: https://www.tes.com
   logo: tesglobal.svg
+- name: Cuvva
+  url: https://cuvva.co
+  logo: cuvva.svg
