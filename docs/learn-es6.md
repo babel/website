@@ -603,9 +603,9 @@ Symbols are unique (like gensym), but not private since they are exposed via
 reflection features like `Object.getOwnPropertySymbols`.
 
 ```js
-(function() {
-
-  // module scoped symbol
+var obj = {};   // Compatible node js and browser
+(function(obj,undefined) {
+  // // module scoped symbol
   var key = Symbol("key");
 
   function MyClass(privateData) {
@@ -614,15 +614,16 @@ reflection features like `Object.getOwnPropertySymbols`.
 
   MyClass.prototype = {
     doStuff: function() {
-      ... this[key] ...
+      return this[key]
     }
   };
 
   // Limited support from Babel, full support requires native implementation.
   typeof key === "symbol"
-})();
+  obj.MyClass = MyClass;
+})(obj,undefined);
 
-var c = new MyClass("hello")
+var c = new obj.MyClass("hello")
 c["key"] === undefined
 ```
 
