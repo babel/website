@@ -37,7 +37,7 @@ $ npm install babel-preset-es2015
 
 ## Usage
 
-Add the following line to your `.babelrc` file:
+Pass `--presets es2015` as a command line option or add the following line to your `.babelrc` file:
 
 ```json
 {
