@@ -7,3 +7,10 @@
 .navbar-brand {
   font-size: 1.5em;
 }
+
+@media (max-width: $screen-md-max) {
+  .navbar-nav > li > a {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
