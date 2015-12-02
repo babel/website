@@ -1,15 +1,18 @@
-(function(babel, $, _, ace, window) {
+  import ace from 'ace';
+  import {transform} from 'babel-core';
+  import $ from 'jquery';
+  import _ from 'lodash';
 
   /* Throw meaningful errors for getters of commonjs. */
   ["module", "exports", "require"].forEach(function(commonVar){
-    Object.defineProperty(window, commonVar, { 
+    Object.defineProperty(window, commonVar, {
       configurable: true,
       get: function () {
         throw new Error(commonVar + " is not supported in the browser, you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
       }
     });
   });
-  
+
   /*
    * Utils for working with the browser's URI (e.g. the query params)
    */
@@ -195,10 +198,11 @@
     this.clearOutput();
 
     try {
-      transformed = babel.transform(code, {
-        stage: this.options.experimental ? 0 : 2,
-        loose: this.options.loose && "all",
-        optional: this.options.spec && ["es6.spec.templateLiterals", "es6.spec.blockScoping", "es6.spec.symbols"],
+      transformed = transform(code, {
+        // TODO
+        //stage: this.options.experimental ? 0 : 2,
+        //loose: this.options.loose && "all",
+        //optional: this.options.spec && ["es6.spec.templateLiterals", "es6.spec.blockScoping", "es6.spec.symbols"],
         filename: 'repl'
       });
     } catch (err) {
@@ -304,7 +308,3 @@
   repl.$toolBar.on('change', onSourceChange);
 
   repl.compile();
-
-
-
-}(babel, $, _, ace, window));
