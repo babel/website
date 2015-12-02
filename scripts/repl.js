@@ -3,6 +3,8 @@
   import $ from 'jquery';
   import _ from 'lodash';
 
+  import {presets} from './repl-config';
+
   /* Throw meaningful errors for getters of commonjs. */
   ["module", "exports", "require"].forEach(function(commonVar){
     Object.defineProperty(window, commonVar, {
@@ -199,7 +201,8 @@
 
     try {
       transformed = transform(code, {
-        // TODO
+        // TODO: This should be configurable
+        presets: [presets.react, presets['stage-0'], presets.es2015],
         //stage: this.options.experimental ? 0 : 2,
         //loose: this.options.loose && "all",
         //optional: this.options.spec && ["es6.spec.templateLiterals", "es6.spec.blockScoping", "es6.spec.symbols"],
@@ -244,8 +247,8 @@
       capturingConsole.log.apply(capturingConsole, arguments);
     };
 
-    capturingConsole.log = 
-    capturingConsole.info = 
+    capturingConsole.log =
+    capturingConsole.info =
     capturingConsole.debug = function() {
       if (this !== capturingConsole) { return; }
 
