@@ -123,6 +123,29 @@
     };
   }
 
+  /**
+   * Options for selecting presets to use.
+   */
+  function presetOption() {
+    var $presets = Array.from(document.getElementsByName('preset'));
+    return {
+      get() {
+        return $presets
+          .filter($preset => $preset.checked)
+          .map($preset => $preset.value)
+          .join(',');
+      },
+      set(value) {
+        value = value.split(',');
+        $presets.forEach($preset => {
+          $preset.checked = value.indexOf($preset.value) > -1;
+        });
+      },
+      enumerable: true,
+      configurable: true,
+    };
+  }
+
   /*
    * Babel options for transpilation as used by the REPL
    */
@@ -134,18 +157,14 @@
 
     var options = {};
     Object.defineProperties(options, {
-      'experimental': $checkbox($experimental),
-      'evaluate': $checkbox($evaluate),
-      'loose': $checkbox($loose),
-      'spec': $checkbox($spec)
+      evaluate: $checkbox($evaluate),
+      presets: presetOption(),
     });
 
     // Merge in defaults
     var defaults = {
-      experimental : false,
-      loose : false,
-      spec : false,
-      evaluate : true
+      evaluate: true,
+      presets: 'es2015,stage-2,react'
     };
 
     _.assign(options, defaults);
@@ -201,11 +220,7 @@
 
     try {
       transformed = transform(code, {
-        // TODO: This should be configurable
-        presets: [presets.react, presets['stage-0'], presets.es2015],
-        //stage: this.options.experimental ? 0 : 2,
-        //loose: this.options.loose && "all",
-        //optional: this.options.spec && ["es6.spec.templateLiterals", "es6.spec.blockScoping", "es6.spec.symbols"],
+        presets: this.options.presets.split(',').map(preset => presets[preset]),
         filename: 'repl'
       });
     } catch (err) {

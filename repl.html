@@ -8,39 +8,58 @@ custom_js_with_timestamps:
 third_party_js:
 - https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
 ---
-
 <div class="babel-repl">
   <form class="form babel-repl-toolbar">
     <div class="pull-left">
-      <!--
-      <div class="form-group">
-        <label for="option-experimental">
-          <input id="option-experimental" type="checkbox">
-          Experimental
-        </label>
-      </div>
-
-      <div class="form-group">
-        <label for="option-loose-mode">
-          <input id="option-loose-mode" type="checkbox">
-          Loose mode
-        </label>
-      </div>
-
-      <div class="form-group">
-        <label for="option-spec">
-          <input id="option-spec" type="checkbox">
-          High compliancy
-        </label>
-      </div>
-
       <div class="form-group">
         <label for="option-evaluate">
           <input id="option-evaluate" type="checkbox">
           Evaluate
         </label>
       </div>
-    -->
+
+      Presets:
+      <div class="form-group">
+        <label for="option-es2015">
+          <input name="preset" value="es2015" id="option-es2015" type="checkbox">
+          es2015
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="option-stage0">
+          <input name="preset" value="stage-0" id="option-stage0" type="checkbox">
+          stage0
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="option-stage1">
+          <input name="preset" value="stage-1" id="option-stage1" type="checkbox">
+          stage1
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="option-stage2">
+          <input name="preset" value="stage-2" id="option-stage2" type="checkbox">
+          stage2
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="option-stage3">
+          <input name="preset" value="stage-3" id="option-stage3" type="checkbox">
+          stage3
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="option-react">
+          <input name="preset" value="react" id="option-react" type="checkbox">
+          react
+        </label>
+      </div>
     </div>
 
     <div class="pull-right">
