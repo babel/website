@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: {
     repl: './scripts/repl.js',
@@ -30,5 +32,9 @@ module.exports = {
     fs: 'empty',
     module: 'empty',
     net: 'empty',
-  }
+  },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
+  ]
 }
