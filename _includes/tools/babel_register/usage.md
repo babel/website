@@ -1,5 +1,5 @@
 ```javascript
-require("babel-core/register");
+require("babel-register");
 ```
 
 All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx` and `.js` will be transformed by Babel. The polyfill specified in [polyfill](/docs/usage/polyfill) is also automatically required.
