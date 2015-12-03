@@ -126,8 +126,30 @@
   /**
    * Options for selecting presets to use.
    */
-  function presetOption() {
-    var $presets = Array.from(document.getElementsByName('preset'));
+  function getPresetOptions() {
+    // Create the checkboxes for all available presets
+    var $presetContainer = document.getElementById('babel-repl-presets');
+    var $presets = [];
+    Object.keys(presets).forEach(presetName => {
+      var $group = document.createElement('div');
+      $group.className = 'form-group';
+
+      var $label = document.createElement('label');
+      $label.htmlFor = 'option-' + presetName;
+      $group.appendChild($label);
+
+      var $input = document.createElement('input');
+      $input.name = 'preset';
+      $input.value = presetName;
+      $input.id = 'option-' + presetName;
+      $input.type = 'checkbox';
+      $label.appendChild($input);
+      $label.appendChild(document.createTextNode(' ' + presetName));
+
+      $presetContainer.appendChild($group);
+      $presets.push($input);
+    });
+
     return {
       get() {
         return $presets
@@ -158,7 +180,7 @@
     var options = {};
     Object.defineProperties(options, {
       evaluate: $checkbox($evaluate),
-      presets: presetOption(),
+      presets: getPresetOptions(),
     });
 
     // Merge in defaults
