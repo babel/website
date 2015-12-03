@@ -3,7 +3,7 @@ In your `spec/support/jasmine.json` file make the following changes:
 ```json
 {
   "helpers": [
-    "../../node_modules/babel-core/register.js"
+    "../../node_modules/babel-register/lib/node.js"
   ]
 }
 ```
