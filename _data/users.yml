@@ -376,3 +376,6 @@
 - name: Cuvva
   url: https://cuvva.co
   logo: cuvva.svg
+- name: Textalk
+  url: http://textalk.se
+  logo: textalk.svg
