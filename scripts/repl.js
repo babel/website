@@ -1,8 +1,7 @@
   import ace from 'ace';
-  import {transform} from 'babel-core';
+  import {transform, version as babelVersion} from 'babel-core';
   import $ from 'jquery';
   import _ from 'lodash';
-  import {version as babelVersion} from 'babel-core/package.json';
 
   import {presets} from './repl-config';
 
