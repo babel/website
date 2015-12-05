@@ -2,6 +2,7 @@
   import {transform} from 'babel-core';
   import $ from 'jquery';
   import _ from 'lodash';
+  import {version as babelVersion} from 'babel-core/package.json';
 
   import {presets} from './repl-config';
 
@@ -215,6 +216,8 @@
     this.$errorReporter = $('.babel-repl-errors');
     this.$consoleReporter = $('.babel-repl-console');
     this.$toolBar = $('.babel-repl-toolbar');
+
+    document.getElementById('babel-repl-version').innerHTML = babelVersion;
   }
 
   REPL.prototype.clearOutput = function () {
