@@ -20,3 +20,6 @@ build: install-deps
 
 serve:
 	bundle exec jekyll serve
+
+publish: build
+	gulp publish
