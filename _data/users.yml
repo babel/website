@@ -379,3 +379,6 @@
 - name: Textalk
   url: http://textalk.se
   logo: textalk.svg
+- name: Avant
+  url: https://www.avant.com
+  logo: avant.svg
