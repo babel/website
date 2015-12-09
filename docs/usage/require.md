@@ -64,7 +64,7 @@ require("babel-register")({
 });
 ```
 
-You can pass in all other [options](/docs/usage/options/#options) as well.
+You can pass in all other [options](/docs/usage/options/#options) as well, including `plugins` and `presets`. But note that the closest [`.babelrc`](/docs/usage/babelrc/) to each file still applies, and takes precedence over any options you pass in here.
 
 ## Environment variables
 
