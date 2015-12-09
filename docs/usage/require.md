@@ -3,6 +3,7 @@ layout: docs
 title: Require Hook
 description: How to use the require hook.
 permalink: /docs/usage/require/
+package: babel-register
 ---
 
 One of the ways you can use Babel is through the require hook. The require hook

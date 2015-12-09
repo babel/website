@@ -3,6 +3,7 @@ layout: docs
 title: Polyfill
 description: How to use the Polyfill.
 permalink: /docs/usage/polyfill/
+package: babel-polyfill
 ---
 
 <p class="lead">
