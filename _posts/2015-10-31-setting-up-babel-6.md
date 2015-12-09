@@ -54,14 +54,14 @@ Babel plugins are designed to compile down incrementally. Say if you wanted to u
 This even happens within a single specification, for example ES2015 constants will be compiled to ES2015 `let` variables. So if you want it to go all the way down to ES5 you need to compile that as well.
 
 ```sh
-$ npm install --save-dev babel-plugin-transform-es2015-constants
+$ npm install --save-dev babel-plugin-check-es2015-constants
 $ npm install --save-dev babel-plugin-transform-es2015-block-scoping
 ```
 
 ```js
 {
   "plugins": [
-    "transform-es2015-constants",
+    "check-es2015-constants",
     "transform-es2015-block-scoping"
   ]
 }

@@ -3,6 +3,7 @@ layout: docs
 title: Syntax exponentiation operator
 description:
 permalink: /docs/plugins/syntax-exponentiation-operator/
+package: babel-plugin-syntax-exponentiation-operator
 ---
 
 <blockquote class="babel-callout babel-callout-info">

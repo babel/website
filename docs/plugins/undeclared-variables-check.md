@@ -3,6 +3,7 @@ layout: docs
 title: Undeclared variables check
 description:
 permalink: /docs/plugins/undeclared-variables-check/
+package: babel-plugin-undeclared-variables-check
 ---
 
 This plugin throws errors on references to undeclared variables.

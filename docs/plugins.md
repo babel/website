@@ -43,6 +43,7 @@ These plugins allow Babel to parse specific types of syntax.
  - [export-extensions](/docs/plugins/syntax-export-extensions)
  - [flow](/docs/plugins/syntax-flow)
  - [function-bind](/docs/plugins/syntax-function-bind)
+ - [function-sent](/docs/plugins/syntax-function-sent)
  - [jsx](/docs/plugins/syntax-jsx)
  - [object-rest-spread](/docs/plugins/syntax-object-rest-spread)
  - [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
@@ -70,7 +71,7 @@ These plugins apply transformations to your code.
  - [es2015-block-scoping](/docs/plugins/transform-es2015-block-scoping)
  - [es2015-classes](/docs/plugins/transform-es2015-classes)
  - [es2015-computed-properties](/docs/plugins/transform-es2015-computed-properties)
- - [es2015-constants](/docs/plugins/transform-es2015-constants)
+ - [es2015-constants](/docs/plugins/check-es2015-constants)
  - [es2015-destructuring](/docs/plugins/transform-es2015-destructuring)
  - [es2015-for-of](/docs/plugins/transform-es2015-for-of)
  - [es2015-function-name](/docs/plugins/transform-es2015-function-name)
@@ -141,8 +142,8 @@ Plugins can specify options. You can do so in your config by wrapping it in an a
 {
   "plugins": [
     ["transform-async-to-module-method", {
-      module: 'bluebird',
-      method: 'coroutine'
+      "module": "bluebird",
+      "method": "coroutine"
     }]
   ]
 }

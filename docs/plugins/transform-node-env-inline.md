@@ -3,6 +3,7 @@ layout: docs
 title: NODE_ENV inline transform
 description:
 permalink: /docs/plugins/transform-node-env-inline/
+package: babel-plugin-transform-node-env-inline
 ---
 
 ## Installation

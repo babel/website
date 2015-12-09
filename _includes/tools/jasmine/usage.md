@@ -3,12 +3,12 @@ In your `spec/support/jasmine.json` file make the following changes:
 ```json
 {
   "helpers": [
-    "../../node_modules/babel-core/register.js"
+    "../../node_modules/babel-register/lib/node.js"
   ]
 }
 ```
 
-This file is create when you setup project with `jasmine init` command.
+This file is created when you setup a project with the `jasmine init` command.
 
 <blockquote class="babel-callout babel-callout-info">
   <p>

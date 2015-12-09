@@ -121,7 +121,7 @@ $ babel-node [options] [ -e script | script.js ] [arguments]
 When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
 
 ```sh
-$ babel-node --debug --stage 0 -- script.js --debug
+$ babel-node --debug --presets es2015 -- script.js --debug
 ```
 
 ### Options
@@ -132,6 +132,5 @@ $ babel-node --debug --stage 0 -- script.js --debug
 | `-p, --print`            |                      | Evaluate script and print result |
 | `-i, --ignore [regex]`   | `node_modules`       | Ignore all files that match this regex when using the require hook |
 | `-x, --extensions`       | `".js",".jsx",".es6",".es"` | List of extensions to hook into |
-| `-r, --stage [stage]`    | `2`                  | Set the [experimental](/docs/usage/experimental) proposal stage |
-| `presets`                |                      | Comma separated list of presets to load and use. |
-| `plugins`                |                      | Comma separated list of plugins to load and use. |
+| `presets`                | `[]`                 | List of [presets](/docs/plugins/#presets) (a set of plugins) to load and use. |
+| `plugins`                | `[]`                 | List of [plugins](/docs/plugins/) to load and use. |

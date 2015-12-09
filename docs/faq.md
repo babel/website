@@ -34,7 +34,7 @@ lot of the docs are no longer applicable.
 
 For every removed option there should be a plugin for it. It's possible we may have missed
 something, if you think this is the case, please
-<a href="http://github.com/babel/babel/issues/new">open an issue</a>!
+<a href="https://phabricator.babeljs.io/maniphest/task/create/">open an issue</a>!
 
 Babel is an open source project and we appreciate any and all contributions we can get.
 Please help out with documentation if you can by submitting a pull request to the

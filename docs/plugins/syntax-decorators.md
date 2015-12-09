@@ -3,6 +3,7 @@ layout: docs
 title: Syntax decorators
 description:
 permalink: /docs/plugins/syntax-decorators/
+package: babel-plugin-syntax-decorators
 ---
 
 <blockquote class="babel-callout babel-callout-info">

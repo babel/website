@@ -26,14 +26,14 @@ $ babel --name=value
 | `highlightCode`          | `true`               | ANSI highlight syntax error code frames |
 | `only`                   | `null`               | A [glob](https://github.com/isaacs/minimatch), regex, or mixed array of both, matching paths to **only** compile. Can also be an array of arrays containing paths to explicitly match. When attempting to compile a non-matching file it's returned verbatim. |
 | `ignore`                 | `null`               | Opposite to the `only` option. |
-| `auxiliaryCommentBefore` | `null`               | Attach a comment before all helper declarations and auxiliary code. eg. `"istanbul ignore next"` |
+| `auxiliaryCommentBefore` | `null`               | Attach a comment before all non-user injected code. |
+| `auxiliaryCommentAfter`  | `null`                | Attach a comment after all non-user injected code. |
 | `sourceMaps`             | `false`              | If truthy, adds a `map` property to returned output. If set to `"inline"`, a comment with a sourceMappingURL directive is added to the bottom of the returned code. If set to `"both"` then a `map` property is returned as well as a source map comment appended. |
 | `inputSourceMap`         | `null`               | A source map object that the output source map will be based on. |
 | `sourceMapTarget`        | `(filenameRelative)` | Set `file` on returned source map. |
 | `sourceFileName`         | `(filenameRelative)` | Set `sources[0]` on returned source map. |
 | `sourceRoot`             | `(moduleRoot)`       | The root from which all sources are relative. |
 | `moduleRoot`             | `(sourceRoot)`       | Optional prefix for the AMD module formatter that will be prepend to the filename on module definitions. |
-| `modules`                | `"common"`           | Which module formatter to use. Run `babel --help` to see a full list of module formatters. |
 | `moduleIds`              | `false`              | If truthy, insert an explicit id for modules. By default, all modules are anonymous. (Not available for `common` modules) |
 | `moduleId`               | `null`               | Specify a custom name for module ids. |
 | `getModuleId`            | `null`               | Specify a custom callback to generate a module id with. Called as `getModuleId(moduleName)`. If falsy value is returned then the generated module id is used. |

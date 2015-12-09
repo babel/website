@@ -3,6 +3,7 @@ layout: docs
 title: ES2015 arrow functions transform
 description:
 permalink: /docs/plugins/transform-es2015-arrow-functions/
+package: babel-plugin-transform-es2015-arrow-functions
 ---
 
 ## Installation

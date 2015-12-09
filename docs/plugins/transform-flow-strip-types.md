@@ -3,9 +3,10 @@ layout: docs
 title: Strip flow types transform
 description:
 permalink: /docs/plugins/transform-flow-strip-types/
+package: babel-plugin-transform-flow-strip-types
 ---
 
-This plugin strips all flow type annotations and declarations.
+This plugin strips all [flow](http://flowtype.org) type annotations and declarations.
 
 ## Example
 

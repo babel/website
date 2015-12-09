@@ -334,3 +334,51 @@
 - name: AutoLotto
   url: https://www.autolotto.com/
   logo: autolotto.png
+- name: hackerYou
+  url: http://hackeryou.com/
+  logo: hackeryou.svg
+- name: KongGe
+  url: http://kongge.com/
+  logo: kongge.png
+- name: UrbanAirship
+  url: https://www.urbanairship.com/
+  logo: urbanairship.svg
+- name: Moneytree
+  url: https://moneytree.jp/
+  logo: moneytree.png
+- name: Social Tables
+  url: https://www.socialtables.com/
+  logo: socialtables.png
+- name: Nukomeet
+  url: http://nukomeet.com/
+  logo: nukomeet.png
+- name: Olapic
+  url: https://www.olapic.com/
+  logo: olapic.svg
+- name: Codinum
+  url: https://codinum.com/
+  logo: codinum.png
+- name: Wallaby.js
+  url: http://wallabyjs.com/
+  logo: wallaby.svg
+- name: Schibsted Spain
+  url: http://www.schibsted.es/
+  logo: schibsted-spain.svg
+- name: pebble {code}
+  url: http://pebblecode.com
+  logo: pebblecode.png
+- name: FINN.no
+  url: https://finn.no/
+  logo: finn.svg
+- name: TES Global
+  url: https://www.tes.com
+  logo: tesglobal.svg
+- name: Cuvva
+  url: https://cuvva.co
+  logo: cuvva.svg
+- name: Textalk
+  url: http://textalk.se
+  logo: textalk.svg
+- name: Avant
+  url: https://www.avant.com
+  logo: avant.svg

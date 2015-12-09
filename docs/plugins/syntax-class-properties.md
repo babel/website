@@ -3,6 +3,7 @@ layout: docs
 title: Syntax class properties
 description:
 permalink: /docs/plugins/syntax-class-properties/
+package: babel-plugin-syntax-class-properties
 ---
 
 <blockquote class="babel-callout babel-callout-info">

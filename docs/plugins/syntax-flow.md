@@ -3,6 +3,7 @@ layout: docs
 title: Syntax flow
 description:
 permalink: /docs/plugins/syntax-flow/
+package: babel-plugin-syntax-flow
 ---
 
 <blockquote class="babel-callout babel-callout-info">

@@ -3,6 +3,7 @@ layout: docs
 title: Exponentiation operator transform
 description:
 permalink: /docs/plugins/transform-exponentiation-operator/
+package: babel-plugin-transform-exponentiation-operator
 ---
 
 ## Installation
@@ -20,3 +21,8 @@ Add the following line to your `.babelrc` file:
   "plugins": ["transform-exponentiation-operator"]
 }
 ```
+
+## References
+
+* [Proposal: Exponentiation Operator](https://github.com/rwaldron/exponentiation-operator)
+* [Spec: Exponential Operator](http://rwaldron.github.io/exponentiation-operator/)

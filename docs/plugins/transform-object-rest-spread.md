@@ -3,6 +3,7 @@ layout: docs
 title: Object rest spread transform
 description:
 permalink: /docs/plugins/transform-object-rest-spread/
+package: babel-plugin-transform-object-rest-spread
 ---
 
 ## Installation
@@ -20,3 +21,7 @@ Add the following line to your `.babelrc` file:
   "plugins": ["transform-object-rest-spread"]
 }
 ```
+
+## References
+
+* [Proposal: Object Rest/Spread Properties for ECMAScript](https://github.com/sebmarkbage/ecmascript-rest-spread)

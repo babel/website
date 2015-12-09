@@ -3,6 +3,7 @@ layout: docs
 title: Remove debugger transform
 description:
 permalink: /docs/plugins/transform-remove-debugger/
+package: babel-plugin-transform-remove-debugger
 ---
 
 This plugin removes all `debugger;` statements.

@@ -3,6 +3,7 @@ layout: docs
 title: React JSX transform
 description:
 permalink: /docs/plugins/transform-react-jsx/
+package: babel-plugin-transform-react-jsx
 ---
 
 ## Example
@@ -71,12 +72,12 @@ Add the following line to your `.babelrc` file:
 }
 ```
 
-or optionally specify a `jsxPragma`:
+or optionally specify a `pragma` for jsx:
 
 ```json
 {
   "plugins": [
-    ["transform-react-jsx", { "jsxPragma": "dom" }]
+    ["transform-react-jsx", { "pragma": "dom" }]
   ]
 }
 ```

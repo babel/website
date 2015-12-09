@@ -3,6 +3,7 @@ layout: docs
 title: Member expression literals transform
 description:
 permalink: /docs/plugins/transform-member-expression-literals/
+package: babel-plugin-transform-member-expression-literals
 ---
 
 Turn member expression valid identifier literal properties into identifiers.
