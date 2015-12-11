@@ -382,3 +382,6 @@
 - name: Avant
   url: https://www.avant.com
   logo: avant.svg
+- name: FanDuel
+  url: https://www.fanduel.com
+  logo: fanduel.svg
