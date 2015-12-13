@@ -40,6 +40,7 @@ $ babel --name=value
 | `resolveModuleSource`    | `null`               | Resolve a module source ie. `import "SOURCE";` to a custom value. Called as `resolveModuleSource(source, filename)`. |
 | `keepModuleIdExtensions` | `false`              | Keep extensions in module ids |
 | `code`                   | `true`               | Enable code generation |
+| `babelrc`                | `true`               | Specify whether or not to use .babelrc and .babelignore files. |
 | `ast`                    | `true`               | Include the AST in the returned object |
 | `compact`                | `"auto"`             | Do not include superfluous whitespace characters and line terminators. When set to `"auto"` compact is set to `true` on input sizes of >100KB. |
 | `comments`               | `true`               | Output comments in generated output. |
