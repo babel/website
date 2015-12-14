@@ -81,6 +81,10 @@ Pipe a file in via stdin and output it to `script-compiled.js`
 $ babel --out-file script-compiled.js < script.js
 ```
 
+### Advanced Usage
+
+There are many more options available in the babel CLI, see [options](/docs/usage/options/), `babel --help` and other sections for more information.
+
 ## babel-node
 
 <blockquote class="babel-callout babel-callout-warning">
