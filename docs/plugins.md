@@ -24,6 +24,8 @@ We've assembled some for common environments:
  - [stage-3](/docs/plugins/preset-stage-3)
  - [react](/docs/plugins/preset-react)
 
+Many other community-maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)
+
 ## Misc
 
  - [external-helpers](/docs/plugins/external-helpers)
