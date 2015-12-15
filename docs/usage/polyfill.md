@@ -30,6 +30,13 @@ to your application.
 require("babel-polyfill");
 ```
 
+If you are using ES6's `import` syntax in your application's **entry point**, you
+should instead import the polyfill at the top of the **entry point** to ensure the
+polyfills are loaded first:
+```javascript
+import polyfill from "babel-polyfill";
+```
+
 ## Usage in Browser
 
 Available from the `dist/polyfill.js` file within a `babel-polyfill` npm release.
