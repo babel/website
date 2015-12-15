@@ -14,12 +14,7 @@ package: babel-cli
 
 ## Installation
 
-Using [npm](https://www.npmjs.com/) you can install Babel globally, making it
-available from the command line.
-
-```sh
-$ npm install --global babel-cli
-```
+{% include tools/babel_cli/install.md %}
 
 ## babel
 
