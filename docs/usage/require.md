@@ -24,7 +24,14 @@ require("babel-register");
 ```
 
 All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`
-and `.js` will be transformed by Babel. The [polyfill](/docs/usage/polyfill) is also automatically required.
+and `.js` will be transformed by Babel.
+
+<blockquote class="babel-callout babel-callout-info">
+  <h4>Polyfill not included</h4>
+  <p>
+    You must include the <a href="/docs/usage/polyfill">polyfill</a> separately.
+  </p>
+</blockquote>
 
 **NOTE:** By default all requires to `node_modules` will be ignored. You can
 override this by passing an ignore regex via:
