@@ -17,8 +17,8 @@ $ npm install --save-dev babel-cli
 <blockquote class="babel-callout babel-callout-info">
   <p>
     <strong>Note:</strong> Since it's generally a bad idea to run Babel globally
-    you may want to uninstall the global copy by running `npm uninstall --global
-    babel-cli`.
+    you may want to uninstall the global copy by running
+    <code>npm uninstall --global babel-cli</code>.
   </p>
 </blockquote>
 
