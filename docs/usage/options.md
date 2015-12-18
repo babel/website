@@ -38,7 +38,6 @@ $ babel --name=value
 | `moduleId`               | `null`               | Specify a custom name for module ids. |
 | `getModuleId`            | `null`               | Specify a custom callback to generate a module id with. Called as `getModuleId(moduleName)`. If falsy value is returned then the generated module id is used. |
 | `resolveModuleSource`    | `null`               | Resolve a module source ie. `import "SOURCE";` to a custom value. Called as `resolveModuleSource(source, filename)`. |
-| `keepModuleIdExtensions` | `false`              | Keep extensions in module ids |
 | `code`                   | `true`               | Enable code generation |
 | `babelrc`                | `true`               | Specify whether or not to use .babelrc and .babelignore files. |
 | `ast`                    | `true`               | Include the AST in the returned object |
