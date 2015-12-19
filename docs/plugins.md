@@ -124,7 +124,7 @@ These plugins apply transformations to your code.
 
 ### Other
  - [eval](/docs/plugins/transform-eval)
- - [flow-comments](/docs/plugins/flow-comments)
+ - [flow-comments](/docs/plugins/transform-flow-comments)
  - [flow-strip-types](/docs/plugins/transform-flow-strip-types)
  - [inline-environment-variables](/docs/plugins/transform-inline-environment-variables)
  - [jscript](/docs/plugins/transform-jscript)

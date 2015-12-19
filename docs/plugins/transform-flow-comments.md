@@ -2,8 +2,8 @@
 layout: docs
 title: Flow comments
 description:
-permalink: /docs/plugins/flow-comments/
-package: babel-plugin-flow-comments
+permalink: /docs/plugins/transform-flow-comments/
+package: babel-plugin-transform-flow-comments
 ---
 
 Turn flow type annotations into comments.
@@ -47,7 +47,7 @@ function foo(x /*: number*/) /*: string*/ {}
 ## Installation
 
 ```sh
-$ npm install babel-plugin-flow-comments
+$ npm install babel-plugin-transform-flow-comments
 ```
 
 ## Usage
@@ -58,20 +58,20 @@ $ npm install babel-plugin-flow-comments
 
 ```json
 {
-  "plugins": ["flow-comments"]
+  "plugins": ["transform-flow-comments"]
 }
 ```
 
 ### Via CLI
 
 ```sh
-$ babel --plugins flow-comments script.js
+$ babel --plugins transform-flow-comments script.js
 ```
 
 ### Via Node API
 
 ```javascript
 require("babel-core").transform("code", {
-  plugins: ["flow-comments"]
+  plugins: ["transform-flow-comments"]
 });
 ```
