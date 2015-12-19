@@ -34,7 +34,7 @@ If you are using ES6's `import` syntax in your application's **entry point**, yo
 should instead import the polyfill at the top of the **entry point** to ensure the
 polyfills are loaded first:
 
-```javascript
+```js
 import "babel-polyfill";
 ```
 
