@@ -10,6 +10,8 @@ redirect_from: /browser.html
 
 Use a bundler like [browserify](http://babeljs.io/docs/setup/#browserify)/[webpack](http://babeljs.io/docs/setup/#webpack) or just `require('babel-core')`.
 
+You can also checkout [babel-standalone](https://github.com/Daniel15/babel-standalone).
+
 <blockquote class="babel-callout babel-callout-warning">
   <p>
     
