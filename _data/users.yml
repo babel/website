@@ -385,3 +385,6 @@
 - name: FanDuel
   url: https://www.fanduel.com
   logo: fanduel.svg
+- name: Kogan.com
+  url: https://www.kogan.com
+  logo: kogan-com.svg 
