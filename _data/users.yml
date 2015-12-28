@@ -387,4 +387,7 @@
   logo: fanduel.svg
 - name: Kogan.com
   url: https://www.kogan.com
-  logo: kogan-com.svg 
+  logo: kogan-com.svg
+- name: SparkPost.com
+  url: https://www.sparkpost.com/
+  logo: sparkpost.svg
