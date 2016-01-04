@@ -391,3 +391,6 @@
 - name: SparkPost.com
   url: https://www.sparkpost.com/
   logo: sparkpost.svg
+- name: Under Armour
+  url: https://www.underarmour.com/
+  logo: ua.svg
