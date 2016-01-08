@@ -25,7 +25,7 @@
 - name: Spotify
   url: https://www.spotify.com
   logo: spotify.png
-- name: Version One
+- name: VersionOne
   url: https://www.versionone.com/
   logo: versionone.png
 - name: Atlassian
