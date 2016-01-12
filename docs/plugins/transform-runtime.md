@@ -70,10 +70,6 @@ Whenever you use a generator function or async function:
 function* foo() {
 
 }
-
-async function bar() {
-
-}
 ```
 
 the following is generated:
@@ -81,14 +77,16 @@ the following is generated:
 ```javascript
 "use strict";
 
-var foo = regeneratorRuntime.mark(function foo() {
-  ...
-});
+var _marked = [foo].map(regeneratorRuntime.mark);
 
-function bar() {
-  return regeneratorRuntime.async(function bar$(context$1$0) {
-    ...
-  }, null, this);
+function foo() {
+  return regeneratorRuntime.wrap(function foo$(_context) {
+    while (1) switch (_context.prev = _context.next) {
+      case 0:
+      case "end":
+        return _context.stop();
+    }
+  }, _marked[0], this);
 }
 ```
 
@@ -100,16 +98,22 @@ Instead what the `runtime` transformer does it compile that to:
 ```javascript
 "use strict";
 
-var _regeneratorRuntime = require("babel-runtime/regenerator");
+var _regenerator = require("babel-runtime/regenerator");
 
-var foo = _regeneratorRuntime.mark(function foo() {
-  ...
-});
+var _regenerator2 = _interopRequireDefault(_regenerator);
 
-function bar() {
-  return _regeneratorRuntime.async(function bar$(context$1$0) {
-    ...
-  }, null, this);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _marked = [foo].map(_regenerator2.default.mark);
+
+function foo() {
+  return regeneratorRuntime.wrap(function foo$(_context) {
+    while (1) switch (_context.prev = _context.next) {
+      case 0:
+      case "end":
+        return _context.stop();
+    }
+  }, _marked[0], this);
 }
 ```
 
@@ -135,13 +139,25 @@ into the following:
 ```javascript
 "use strict";
 
-var _core = require("babel-runtime/core-js");
+var _getIterator2 = require("babel-runtime/core-js/get-iterator");
 
-var sym = _core.Symbol();
+var _getIterator3 = _interopRequireDefault(_getIterator2);
 
-var promise = new _core.Promise();
+var _promise = require("babel-runtime/core-js/promise");
 
-console.log(_core.$for.getIterator(arr));
+var _promise2 = _interopRequireDefault(_promise);
+
+var _symbol = require("babel-runtime/core-js/symbol");
+
+var _symbol2 = _interopRequireDefault(_symbol);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var sym = (0, _symbol2.default)();
+
+var promise = new _promise2.default();
+
+console.log((0, _getIterator3.default)(arr));
 ```
 
 This means is that you can seamlessly use these native built-ins and static methods
@@ -159,7 +175,8 @@ transformer replaces all the helper calls to a module.
 That means that the following code:
 
 ```javascript
-import foo from "bar";
+class Person {
+}
 ```
 
 usually turns into:
@@ -167,11 +184,11 @@ usually turns into:
 ```javascript
 "use strict";
 
-var _interopRequire = function (obj) {
-  return obj && obj.__esModule ? obj["default"] : obj;
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var foo = _interopRequire(require("bar"));
+var Person = function Person() {
+  _classCallCheck(this, Person);
+};
 ```
 
 the `runtime` transformer however turns this into:
@@ -179,7 +196,13 @@ the `runtime` transformer however turns this into:
 ```javascript
 "use strict";
 
-var _babelHelpers = require("babel-runtime/helpers");
+var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
 
-var foo = _babelHelpers.interopRequire(require("bar"));
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Person = function Person() {
+  (0, _classCallCheck3.default)(this, Person);
+};
 ```
