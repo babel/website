@@ -40,7 +40,7 @@ custom_js_with_timestamps:
       <blockquote class="babel-callout babel-callout-info">
         <h4>Note</h4>
         <p>
-          Pre-6.x, Babel enabled certain transformations by default. However, Babel 6.x <i>does not</i> ship with any transformations enabled. You need to explicitly tell it what transformations to run. The simplest way to do this is by using a <a href="http://babeljs.io/docs/plugins/#presets">preset</a>, such as the <a href="https://babeljs.io/docs/plugins/preset-es2015/">ES2015 Preset</a>.
+          Pre-6.x, Babel enabled certain transformations by default. However, Babel 6.x <i>does not</i> ship with any transformations enabled. You need to explicitly tell it what transformations to run. The simplest way to do this is by using a <a href="http://babeljs.io/docs/plugins/#presets">preset</a>, such as the <a href="https://babeljs.io/docs/plugins/preset-es2015/">ES2015 Preset</a>. You can install it with <pre>npm install babel-preset-2015</pre> and then adding a .babelrc file specifiying it with <pre>echo '{ "presets": ["es2015"] }' >.babelrc</pre>
         </p>
       </blockquote>
 
