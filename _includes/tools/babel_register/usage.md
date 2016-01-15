@@ -11,6 +11,13 @@ All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx` 
   </p>
 </blockquote>
 
+<blockquote class="babel-callout babel-callout-warning">
+  <h4>Not meant for production use</h4>
+  <p>
+    The require hook is primarily recommended for simple cases.
+  </p>
+</blockquote>
+
 <blockquote class="babel-callout babel-callout-info">
   <p>
     For full documentation on the Babel require hook see the <a href="/docs/usage/require/">usage docs</a>.
