@@ -6,6 +6,8 @@ permalink: /docs/plugins/transform-runtime/
 package: babel-plugin-transform-runtime
 ---
 
+# babel-plugin-transform-runtime
+
 Externalise references to helpers and builtins, automatically polyfilling your code without polluting globals.
 
 ## Why?
@@ -14,9 +16,9 @@ Babel uses very small helpers for common functions such as `_extend`. By default
 
 This is where the runtime transformer plugin comes in: all of the helpers will reference the module babel-runtime to avoid duplication across your compiled output. The runtime will be compiled into your build.
 
-Another purpose of this transformer is to create a sandboxed environment for your code. Built-ins such as `Promise`, `Set` and `Map` are aliased to `core-js` so you can use them seamlessly without having to require a globally polluting [polyfill](https://babeljs.io/docs/usage/polyfill/).
+Another purpose of this transformer is to create a sandboxed environment for your code. If you use [babel-polyfill](https://github.com/contentful/contentful-space-sync/releases/tag/v3.0.0) and the built-ins it provides such as `Promise`, `Set` and `Map`, those will pollute the global scope. While this might be ok for an app or a command line tool, it becomes a problem if your code is a library which you intend to publish for others to use or if you can't exactly control the environment in which your code will run.
 
-This is specially useful for libraries as you can write your code without the cognitive overhead of worrying about the environment in which your code will be run, as you are not including a polyfill which can override existing globals.
+The transformer will alias these built-ins to `core-js` so you can use them seamlessly without having to require the polyfill.
 
 See the technical details section for more information on how this works and the types of transformations that occur.
 
@@ -25,6 +27,10 @@ See the technical details section for more information on how this works and the
 ```sh
 $ npm install babel-plugin-transform-runtime
 ```
+
+It is also recommended you install the `babel-runtime` package as a
+runtime dependency, if you haven't already, as the transformed code will
+require that package. See the examples below for more details.
 
 ## Usage
 
@@ -61,6 +67,8 @@ The `runtime` transformer plugin does three things:
 * Removes the inline babel helpers and uses the module `babel-runtime/helpers` instead.
 
 What does this actually mean though? Basically, you can use built-ins such as `Promise`, `Set`, `Symbol` etc as well use all the Babel features that require a polyfill seamlessly, without global pollution, making it extremely suitable for libraries.
+
+Make sure you include `babel-runtime` as a dependency.
 
 ### Regenerator aliasing
 
