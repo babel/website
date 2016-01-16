@@ -86,7 +86,7 @@ These plugins apply transformations to your code.
  - [es2015-template-literals](/docs/plugins/transform-es2015-template-literals)
  - [es2015-typeof-symbol](/docs/plugins/transform-es2015-typeof-symbol)
  - [es2015-unicode-regex](/docs/plugins/transform-es2015-unicode-regex)
- 
+
 ### Modules
  - [es2015-modules-amd](/docs/plugins/transform-es2015-modules-amd)
  - [es2015-modules-commonjs](/docs/plugins/transform-es2015-modules-commonjs)
@@ -105,7 +105,7 @@ These plugins apply transformations to your code.
  - [export-extensions](/docs/plugins/transform-export-extensions)
  - [function-bind](/docs/plugins/transform-function-bind)
  - [object-rest-spread](/docs/plugins/transform-object-rest-spread)
- 
+
 ### Minification
  - [member-expression-literals](/docs/plugins/transform-member-expression-literals)
  - [merge-sibling-variables](/docs/plugins/transform-merge-sibling-variables)
@@ -150,3 +150,9 @@ Plugins can specify options. You can do so in your config by wrapping it in an a
     }]
   ]
 }
+```
+
+## Development
+
+Please refer to the excellent [babel-plugin-handbook](https://github.com/thejameskyle/babel-plugin-handbook)
+to learn how to create your own plugins.
