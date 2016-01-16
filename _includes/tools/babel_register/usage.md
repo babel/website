@@ -1,5 +1,14 @@
+To include it you will need to require it at the top of the **entry point**
+to your application.
+
 ```javascript
 require("babel-register");
+```
+
+If you are using ES6's `import` syntax in your application's **entry point**, you
+should instead import at the top of the **entry point** to ensure it is loaded first:
+```javascript
+import "babel-register";
 ```
 
 All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx` and `.js` will be transformed by Babel. The polyfill specified in [polyfill](/docs/usage/polyfill) is also automatically required.
