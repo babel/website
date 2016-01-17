@@ -87,6 +87,7 @@
 
     this.editor.setTheme('ace/theme/tomorrow');
     this.editor.setShowPrintMargin(false);
+    this.editor.commands.removeCommands(['gotoline', 'find']);
     this.$el.css({
       fontFamily: 'Menlo, Monaco, Consolas, "Courier New", monospace',
       lineHeight: 'inherit'
