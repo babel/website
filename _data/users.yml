@@ -400,3 +400,6 @@
 - name: WIX
   url: https://www.wix.com/
   logo: wix.png
+- name: BestPrice
+  url: https://www.bestprice.gr/
+  logo: bestprice.svg
