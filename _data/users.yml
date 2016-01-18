@@ -397,3 +397,6 @@
 - name: Under Armour
   url: https://www.underarmour.com/
   logo: ua.svg
+- name: WIX
+  url: https://www.wix.com/
+  logo: wix.png
