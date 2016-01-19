@@ -414,7 +414,7 @@ export default function(x) {
 ```js
 // app.js
 import exp, {pi, e} from "lib/mathplusplus";
-alert("2π = " + exp(pi, e));
+alert("e^π = " + exp(pi));
 ```
 
 <blockquote class="babel-callout babel-callout-info">
