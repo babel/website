@@ -3,7 +3,7 @@ layout: docs
 title: External helpers
 description:
 permalink: /docs/plugins/external-helpers/
-package: babel-plugin-external-helpers-2
+package: babel-plugin-external-helpers
 ---
 
 ## Installation
