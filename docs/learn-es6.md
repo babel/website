@@ -686,7 +686,7 @@ Array.of(1, 2, 3) // Similar to new Array(...), but without special one-arg beha
 ["a", "b", "c"].keys() // iterator 0, 1, 2
 ["a", "b", "c"].values() // iterator "a", "b", "c"
 
-Object.assign(Point, { origin: new Point(0,0) })
+Object.assign(shape, { origin: new Point(0,0) })
 ```
 
 <blockquote class="babel-callout babel-callout-warning">
