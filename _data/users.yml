@@ -25,9 +25,6 @@
 - name: Spotify
   url: https://www.spotify.com
   logo: spotify.png
-- name: VersionOne
-  url: https://www.versionone.com/
-  logo: versionone.png
 - name: Atlassian
   url: https://www.atlassian.com/
   logo: atlassian.svg
@@ -406,3 +403,6 @@
 - name: Deezer
   url: https://www.deezer.com/
   logo: deezer.svg
+- name: VersionOne
+  url: https://www.versionone.com/
+  logo: versionone.png
