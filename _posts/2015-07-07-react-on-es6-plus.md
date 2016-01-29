@@ -113,7 +113,7 @@ class Video extends React.Component {
 }
 ```
 
-ES7 property initializers operate inside the class' constructor, where `this` refers to the the instance of the class under construction, so the initial state can still be made to depend on `this.props`. Notably, we no longer have to define prop defaults and the initial state object in terms of a getter function.
+ES7 property initializers operate inside the class' constructor, where `this` refers to the instance of the class under construction, so the initial state can still be made to depend on `this.props`. Notably, we no longer have to define prop defaults and the initial state object in terms of a getter function.
 
 ## Arrow functions
 
