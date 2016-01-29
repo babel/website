@@ -20,7 +20,7 @@ Adds source file and line number to JSX elements.
 **Out**
 
 ```javascript
-var _jsxFileName = "this/file.js";
+var _jsxFileName = "this/file.js"; // the output will be an absolute path
 var x = <sometag __source={{
   fileName: _jsxFileName,
   lineNumber: 1
