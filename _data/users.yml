@@ -406,3 +406,6 @@
 - name: VersionOne
   url: https://www.versionone.com/
   logo: versionone.png
+- name: HolidayCheck
+  url: https://www.holidaycheck.de/
+  logo: holidaycheck.svg
