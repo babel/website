@@ -12,6 +12,7 @@ This preset includes the following plugins:
 - [syntax-jsx](/docs/plugins/syntax-jsx)
 - [transform-flow-strip-types](/docs/plugins/transform-flow-strip-types)
 - [transform-react-jsx](/docs/plugins/transform-react-jsx)
+- [transform-react-display-name](/docs/plugins/transform-react-display-name)
 
 ## Installation
 
