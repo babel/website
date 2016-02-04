@@ -8,8 +8,7 @@ redirect_from:
  - /docs/usage/modules/
 ---
 
-Out of the box Babel doesn't do anything. In order to actually do anything to your code
-you need to enable plugins. Don't know where to start? Check out some of the
+Out of the box Babel doesn't do anything. You need to use plugins to transform your code. Don't know where to start? Check out some of the
 [presets](#presets).
 
 ## Presets
