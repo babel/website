@@ -70,7 +70,7 @@ You can alternatively choose to specify your `.babelrc` config from within `pack
 }
 ```
 
-## `passPerPreset` option
+## `passPerPreset` option (Experimental)
 
 You can use the `passPerPreset` option to change the normal merged single pass traversal into a traversal per preset.
 
