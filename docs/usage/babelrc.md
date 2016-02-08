@@ -69,25 +69,3 @@ You can alternatively choose to specify your `.babelrc` config from within `pack
   }
 }
 ```
-
-## `passPerPreset` option (Experimental)
-
-You can use the `passPerPreset` option to change the normal merged single pass traversal into a traversal per preset.
-
-```js
-{
-  passPerPreset: true,
-  presets: [
-    {
-      plugins: ['plugin-1']
-    },
-    'preset-2',
-    {
-      plugins: ['plugin-2']
-    }
-  ]
-}
-// this will create 3 traversals
-```
-This allows users to have control over the ordering of how presets/plugins are applied.
-It can also help avoid potential collisions between plugins (and probably some known issues).
