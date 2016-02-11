@@ -154,5 +154,5 @@ Plugins can specify options. You can do so in your config by wrapping it in an a
 
 ## Development
 
-Please refer to the excellent [babel-plugin-handbook](https://github.com/thejameskyle/babel-plugin-handbook)
+Please refer to the excellent [babel-handbook](https://github.com/thejameskyle/babel-handbook)
 to learn how to create your own plugins.
