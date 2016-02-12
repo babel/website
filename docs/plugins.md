@@ -23,33 +23,9 @@ We've assembled some for common environments:
  - [stage-3](/docs/plugins/preset-stage-3)
  - [react](/docs/plugins/preset-react)
 
-Many other community-maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)
+Many other community-maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
 
-## Misc
-
- - [external-helpers](/docs/plugins/external-helpers)
- - [undeclared-variables-check](/docs/plugins/undeclared-variables-check)
-
-## Syntax
-
-These plugins allow Babel to parse specific types of syntax.
-
- - [async-functions](/docs/plugins/syntax-async-functions)
- - [async-generators](/docs/plugins/syntax-async-generators)
- - [class-constructor-call](/docs/plugins/syntax-class-constructor-call)
- - [class-properties](/docs/plugins/syntax-class-properties)
- - [decorators](/docs/plugins/syntax-decorators)
- - [do-expressions](/docs/plugins/syntax-do-expressions)
- - [exponentiation-operator](/docs/plugins/syntax-exponentiation-operator)
- - [export-extensions](/docs/plugins/syntax-export-extensions)
- - [flow](/docs/plugins/syntax-flow)
- - [function-bind](/docs/plugins/syntax-function-bind)
- - [function-sent](/docs/plugins/syntax-function-sent)
- - [jsx](/docs/plugins/syntax-jsx)
- - [object-rest-spread](/docs/plugins/syntax-object-rest-spread)
- - [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
-
-## Transform
+## Transform Plugins
 
 These plugins apply transformations to your code.
 
@@ -137,7 +113,31 @@ These plugins apply transformations to your code.
  - [strict-mode](/docs/plugins/transform-strict-mode)
  - [undefined-to-void](/docs/plugins/transform-undefined-to-void)
 
-## Options
+## Misc Plugins
+
+ - [external-helpers](/docs/plugins/external-helpers)
+ - [undeclared-variables-check](/docs/plugins/undeclared-variables-check)
+
+## Syntax Plugins
+
+These plugins allow Babel to parse specific types of syntax.
+
+ - [async-functions](/docs/plugins/syntax-async-functions)
+ - [async-generators](/docs/plugins/syntax-async-generators)
+ - [class-constructor-call](/docs/plugins/syntax-class-constructor-call)
+ - [class-properties](/docs/plugins/syntax-class-properties)
+ - [decorators](/docs/plugins/syntax-decorators)
+ - [do-expressions](/docs/plugins/syntax-do-expressions)
+ - [exponentiation-operator](/docs/plugins/syntax-exponentiation-operator)
+ - [export-extensions](/docs/plugins/syntax-export-extensions)
+ - [flow](/docs/plugins/syntax-flow)
+ - [function-bind](/docs/plugins/syntax-function-bind)
+ - [function-sent](/docs/plugins/syntax-function-sent)
+ - [jsx](/docs/plugins/syntax-jsx)
+ - [object-rest-spread](/docs/plugins/syntax-object-rest-spread)
+ - [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
+
+## Plugin Options
 
 Plugins can specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
 
@@ -152,7 +152,7 @@ Plugins can specify options. You can do so in your config by wrapping it in an a
 }
 ```
 
-## Development
+## Plugin Development
 
 Please refer to the excellent [babel-handbook](https://github.com/thejameskyle/babel-handbook)
 to learn how to create your own plugins.
