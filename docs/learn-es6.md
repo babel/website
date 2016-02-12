@@ -792,9 +792,10 @@ factorial(100000)
 ```
 
 <blockquote class="babel-callout babel-callout-warning">
-  <h4>Partial support</h4>
+  <h4>Temporarily Removed in Babel 6</h4>
   <p>
-    Only explicit self referencing tail recursion is supported due to the
+    Only explicit self referencing tail recursion was supported due to the
     complexity and performance impact of supporting tail calls globally.
+    Removed due to other bugs and will be re-implemented.
   </p>
 </blockquote>
