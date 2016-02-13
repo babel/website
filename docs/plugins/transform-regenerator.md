@@ -24,10 +24,37 @@ $ npm install babel-plugin-transform-regenerator
 
 ## Usage
 
-Add the following line to your `.babelrc` file:
+### Via `.babelrc` (Recommended)
 
-```json
+**.babelrc**
+
+```js
+// without options
 {
   "plugins": ["transform-regenerator"]
 }
+// with options
+{
+  "plugins": [
+    ["transform-regenerator", {
+        asyncGenerators: false, // true by default
+        generators: false, // true by default
+        async: false // true by default
+    }]
+  ]
+}
+```
+
+### Via CLI
+
+```sh
+$ babel --plugins transform-regenerator script.js
+```
+
+### Via Node API
+
+```javascript
+require("babel-core").transform("code", {
+  plugins: ["transform-regenerator"]
+});
 ```

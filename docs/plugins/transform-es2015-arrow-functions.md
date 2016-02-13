@@ -6,6 +6,8 @@ permalink: /docs/plugins/transform-es2015-arrow-functions/
 package: babel-plugin-transform-es2015-arrow-functions
 ---
 
+Compile ES2015 arrow functions to ES5
+
 ## Installation
 
 ```sh
@@ -14,10 +16,34 @@ $ npm install babel-plugin-transform-es2015-arrow-functions
 
 ## Usage
 
-Add the following line to your `.babelrc` file:
+### Via `.babelrc` (Recommended)
 
-```json
+**.babelrc**
+
+```js
+// without options
 {
   "plugins": ["transform-es2015-arrow-functions"]
 }
+
+// with options
+{
+  "plugins": [
+    ["transform-es2015-arrow-functions", { "spec": true }]
+  ]
+}
+```
+
+### Via CLI
+
+```sh
+$ babel --plugins transform-es2015-arrow-functions script.js
+```
+
+### Via Node API
+
+```javascript
+require("babel-core").transform("code", {
+  plugins: ["transform-es2015-arrow-functions"]
+});
 ```
