@@ -7,6 +7,7 @@ require("babel-register");
 
 If you are using ES6's `import` syntax in your application's **entry point**, you
 should instead import at the top of the **entry point** to ensure it is loaded first:
+
 ```javascript
 import "babel-register";
 ```
