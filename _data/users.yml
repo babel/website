@@ -409,3 +409,6 @@
 - name: HolidayCheck
   url: https://www.holidaycheck.de/
   logo: holidaycheck.svg
+- name: Transloadit
+  url: https://transloadit.com
+  logo: transloadit.svg
