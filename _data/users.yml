@@ -412,3 +412,6 @@
 - name: Transloadit
   url: https://transloadit.com
   logo: transloadit.svg
+- name: BitMEX
+  url: https://www.bitmex.com
+  logo: bitmex.svg
