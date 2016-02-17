@@ -15,16 +15,20 @@ custom_js_with_timestamps:
   <div class="step-wizard">
     <div class="step">
       <h2><span class="step-no">1</span> Choose your tool</h2>
+      
+      <div class="row">
+        {% for tool in site.data.tools %}
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <h5>{{tool.name}}</h5>
 
-      {% for tool in site.data.tools %}
-        <h5>{{tool.name}}</h5>
-
-        <div class="btn-group">
-          {% for item in tool.items %}
-            <div class="btn btn-default" data-name="{{item[0]}}">{{item[1]}}</div>
-          {% endfor %}
-        </div>
-      {% endfor %}
+            <div class="btn-group">
+              {% for item in tool.items %}
+                <div class="btn btn-default" data-name="{{item[0]}}">{{item[1]}}</div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
 
     <div class="step step-install">
