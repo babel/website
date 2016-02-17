@@ -415,3 +415,6 @@
 - name: BitMEX
   url: https://www.bitmex.com
   logo: bitmex.svg
+- name: Discord
+  url: https://discordapp.com
+  logo: discord.svg
