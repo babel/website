@@ -6,6 +6,8 @@ permalink: /docs/plugins/transform-react-jsx/
 package: babel-plugin-transform-react-jsx
 ---
 
+Turn JSX into React function calls
+
 ## Example
 
 ### React
@@ -64,20 +66,35 @@ $ npm install babel-plugin-transform-react-jsx
 
 ## Usage
 
-Add the following line to your `.babelrc` file:
+### Via `.babelrc` (Recommended)
 
-```json
+**.babelrc**
+
+```js
+// without options
 {
   "plugins": ["transform-react-jsx"]
 }
-```
-
-or optionally specify a `pragma` for jsx:
-
-```json
+// with options
 {
   "plugins": [
-    ["transform-react-jsx", { "pragma": "dom" }]
+    ["transform-react-jsx", {
+      "pragma": "dom" // default pragma is React.createElement
+    }]
   ]
 }
+```
+
+### Via CLI
+
+```sh
+$ babel --plugins transform-react-jsx script.js
+```
+
+### Via Node API
+
+```javascript
+require("babel-core").transform("code", {
+  plugins: ["transform-react-jsx"]
+});
 ```

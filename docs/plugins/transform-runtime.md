@@ -6,6 +6,8 @@ permalink: /docs/plugins/transform-runtime/
 package: babel-plugin-transform-runtime
 ---
 
+Externalise references to helpers and builtins, automatically polyfilling your code without polluting globals
+
 ## Installation
 
 ```sh
@@ -14,10 +16,37 @@ $ npm install babel-plugin-transform-runtime
 
 ## Usage
 
-Add the following line to your `.babelrc` file:
+### Via `.babelrc` (Recommended)
 
-```json
+**.babelrc**
+
+```js
+// without options
 {
   "plugins": ["transform-runtime"]
 }
+
+// with options
+{
+  "plugins": [
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ]
+}
+```
+
+### Via CLI
+
+```sh
+$ babel --plugins transform-runtime script.js
+```
+
+### Via Node API
+
+```javascript
+require("babel-core").transform("code", {
+  plugins: ["transform-runtime"]
+});
 ```
