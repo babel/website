@@ -418,3 +418,6 @@
 - name: Discord
   url: https://discordapp.com
   logo: discord.svg
+- name: Grammarly
+  url: https://www.grammarly.com
+  logo: grammarly.svg
