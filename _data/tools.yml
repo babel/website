@@ -19,6 +19,7 @@
     sprockets: Sprockets
     webpack: Webpack
     fly: Fly
+    start: Start
 - name: Frameworks
   items:
     ember: Ember
