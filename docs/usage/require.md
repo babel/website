@@ -29,7 +29,7 @@ and `.js` will be transformed by Babel.
 <blockquote class="babel-callout babel-callout-info">
   <h4>Polyfill not included</h4>
   <p>
-    You must include the <a href="/docs/usage/polyfill">polyfill</a> separately.
+    You must include the <a href="/docs/usage/polyfill">polyfill</a> separately when using features that require it, like generators.
   </p>
 </blockquote>
 
