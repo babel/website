@@ -3,7 +3,7 @@ layout: docs
 title: Require Hook
 description: How to use the require hook.
 permalink: /docs/usage/require/
-package: babel-register
+package: babel-core
 ---
 
 One of the ways you can use Babel is through the require hook. The require hook
@@ -14,13 +14,13 @@ fly. This is equivalent to CoffeeScript's
 ## Install
 
 ```sh
-$ npm install babel-register
+$ npm install babel-core
 ```
 
 ## Usage
 
 ```js
-require("babel-register");
+require("babel-core/register");
 ```
 
 All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`
@@ -37,7 +37,7 @@ and `.js` will be transformed by Babel.
 override this by passing an ignore regex via:
 
 ```js
-require("babel-register")({
+require("babel-core/register")({
   // This will override `node_modules` ignoring - you can alternatively pass
   // an array of strings to be explicitly matched or a regex / glob
   ignore: false
@@ -47,7 +47,7 @@ require("babel-register")({
 ## Specifying options
 
 ```javascript
-require("babel-register")({
+require("babel-core/register")({
   // Optional ignore regex - if any filenames **do** match this regex then they
   // aren't compiled.
   ignore: /regex/,
