@@ -47,7 +47,7 @@ custom_js_with_timestamps:
       <blockquote class="babel-callout babel-callout-warning">
         <h4>Warning!</h4>
         <p>
-          <a href="/blog/2015/10/29/6.0.0/">Babel 6 was just released!</a> This means that it might take some time for all possible integrations to upgrade. Make sure to check the compatibility of your chosen integration.
+          <a href="/blog/2015/10/29/6.0.0">Babel 6 was just released!</a> This means that it might take some time for all possible integrations to upgrade. Make sure to check the compatibility of your chosen integration.
         </p>
       </blockquote>
     </div>
