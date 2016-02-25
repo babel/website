@@ -38,13 +38,6 @@ if ("development" === "development") {
 }
 ```
 
-Use this in conjunction with the [minification.deadCodeElimination](/docs/usage/transformers/minification/dead-code-elimination)
-transformer to output:
-
-```javascript
-development();
-```
-
 ## Installation
 
 ```sh
