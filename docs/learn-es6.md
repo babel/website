@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Learn ES2015
-description: A detailed overview of ECMAScript 6 features.
+description: A detailed overview of ECMAScript 2015 features.
 permalink: /docs/learn-es2015/
 redirect_from:
  - /docs/learn-es6/
@@ -28,16 +28,16 @@ redirect_from:
 
 ## Introduction
 
-> ECMAScript 6 is the newest version of the ECMAScript standard. This standard
+> ECMAScript 2015 is the newest version of the ECMAScript standard. This standard
 was ratified in June 2015.  ES2015 is a significant update to the language, and
 the first major update to the language since ES5 was standardized in 2009.
 Implementation of these features in major JavaScript engines is
 [underway now](http://kangax.github.io/es5-compat-table/es6/).
 
 See the [ES2015 standard](http://www.ecma-international.org/ecma-262/6.0/index.html)
-for full specification of the ECMAScript 6 language.
+for full specification of the ECMAScript 2015 language.
 
-## ECMAScript 6 Features
+## ECMAScript 2015 Features
 
 <!-- To not break some existing links to here, just in case. -->
 <a id="arrows"></a>
