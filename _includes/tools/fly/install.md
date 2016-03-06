@@ -1,3 +1,3 @@
 ```sh
-$ npm install -D fly-babel
+$ npm install -D fly-babel babel-preset-es2015
 ```
