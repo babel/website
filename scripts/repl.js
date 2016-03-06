@@ -1,9 +1,7 @@
-  import ace from 'ace';
-  import {transform, version as babelVersion} from 'babel-core';
-  import $ from 'jquery';
-  import _ from 'lodash';
+(function(babel, $, _, ace, window) {
+  'use strict';
 
-  import {presets} from './repl-config';
+  var presets = ['es2015', 'es2015-loose', 'react', 'stage-0', 'stage-1', 'stage-2', 'stage-3'];
 
   /* Throw meaningful errors for getters of commonjs. */
   ["module", "exports", "require"].forEach(function(commonVar){
@@ -130,7 +128,7 @@
     // Create the checkboxes for all available presets
     var $presetContainer = document.getElementById('babel-repl-presets');
     var $presets = [];
-    Object.keys(presets).forEach(presetName => {
+    presets.forEach(function(presetName) {
       var $group = document.createElement('div');
       $group.className = 'form-group';
 
@@ -153,13 +151,13 @@
     return {
       get() {
         return $presets
-          .filter($preset => $preset.checked)
-          .map($preset => $preset.value)
+          .filter(function($preset) { return $preset.checked; })
+          .map(function($preset) { return $preset.value; })
           .join(',');
       },
       set(value) {
         value = value.split(',');
-        $presets.forEach($preset => {
+        $presets.forEach(function($preset) {
           $preset.checked = value.indexOf($preset.value) > -1;
         });
       },
@@ -216,7 +214,7 @@
     this.$consoleReporter = $('.babel-repl-console');
     this.$toolBar = $('.babel-repl-toolbar');
 
-    document.getElementById('babel-repl-version').innerHTML = babelVersion;
+    document.getElementById('babel-repl-version').innerHTML = babel.version;
   }
 
   REPL.prototype.clearOutput = function () {
@@ -243,8 +241,8 @@
     this.clearOutput();
 
     try {
-      transformed = transform(code, {
-        presets: this.options.presets.split(',').map(preset => presets[preset]),
+      transformed = babel.transform(code, {
+        presets: this.options.presets.split(','),
         filename: 'repl'
       });
     } catch (err) {
@@ -350,3 +348,4 @@
   repl.$toolBar.on('change', onSourceChange);
 
   repl.compile();
+}(Babel, $, _, ace, window));
