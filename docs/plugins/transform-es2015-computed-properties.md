@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: ES2015 computed-properties transform
+title: ES2015 computed properties transform
 description:
 permalink: /docs/plugins/transform-es2015-computed-properties/
 package: babel-plugin-transform-es2015-computed-properties
