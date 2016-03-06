@@ -50,6 +50,7 @@ These plugins apply transformations to your code.
  - [es2015-computed-properties](/docs/plugins/transform-es2015-computed-properties)
  - [es2015-constants](/docs/plugins/check-es2015-constants)
  - [es2015-destructuring](/docs/plugins/transform-es2015-destructuring)
+ - [es2015-duplicate-keys](/docs/plugins/transform-es2015-duplicate-keys) 
  - [es2015-for-of](/docs/plugins/transform-es2015-for-of)
  - [es2015-function-name](/docs/plugins/transform-es2015-function-name)
  - [es2015-literals](/docs/plugins/transform-es2015-literals)

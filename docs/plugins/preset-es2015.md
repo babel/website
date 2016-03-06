@@ -15,6 +15,7 @@ This preset includes the following plugins:
 - [transform-es2015-classes](/docs/plugins/transform-es2015-classes)
 - [transform-es2015-computed-properties](/docs/plugins/transform-es2015-computed-properties)
 - [transform-es2015-destructuring](/docs/plugins/transform-es2015-destructuring)
+- [transform-es2015-duplicate-keys](/docs/plugins/transform-es2015-duplicate-keys) 
 - [transform-es2015-for-of](/docs/plugins/transform-es2015-for-of)
 - [transform-es2015-function-name](/docs/plugins/transform-es2015-function-name)
 - [transform-es2015-literals](/docs/plugins/transform-es2015-literals)
