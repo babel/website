@@ -149,13 +149,13 @@
     });
 
     return {
-      get() {
+      get: function() {
         return $presets
           .filter(function($preset) { return $preset.checked; })
           .map(function($preset) { return $preset.value; })
           .join(',');
       },
-      set(value) {
+      set: function(value) {
         value = value.split(',');
         $presets.forEach(function($preset) {
           $preset.checked = value.indexOf($preset.value) > -1;
