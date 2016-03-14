@@ -3,7 +3,7 @@ $ babel-node-debug path/to/script.js
 
 # Or use the alias
 
-$ bode-debug path/to/script.js
+$ node-debug path/to/script.js
 ```
 
 <blockquote class="babel-callout babel-callout-info">
