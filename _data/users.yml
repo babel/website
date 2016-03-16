@@ -421,3 +421,6 @@
 - name: Zillow Group
   url: http://www.zillowgroup.com/
   logo: zillowgroup.svg
+- name: Brightin
+  url: https://www.brightin.nl
+  logo: brightin.png
