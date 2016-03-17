@@ -421,3 +421,6 @@
 - name: Zillow Group
   url: http://www.zillowgroup.com/
   logo: zillowgroup.svg
+- name: Kascale
+  url: http://www.kascale.com/
+  logo: kascale.svg
