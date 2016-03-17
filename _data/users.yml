@@ -424,3 +424,6 @@
 - name: Brightin
   url: https://www.brightin.nl
   logo: brightin.png
+- name: Kascale
+  url: http://www.kascale.com/
+  logo: kascale.svg
