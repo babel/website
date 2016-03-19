@@ -1,8 +1,24 @@
-AVA comes with built-in support for Babel 6 and let you write your tests
-in ES2015 with no extra effort.
+AVA ships with ES2015 support built-in using Babel 6 under the hood, so
+you can write test using ES1025 syntax right away.
 
-You can customize Babel options for transpiling test files with the
-`babel` option in AVA's [`package.json` configuration](https://github.com/sindresorhus/ava#configuration).
+The AVA default Babel configuration includes the `"es2015"` and `"stage-2"`
+presets and the `"espower"` and `"transform-runtime"` plugins, corresponing to:
+
+```json
+{
+  "presets": [
+    "es2015",
+    "stage-2",
+  ],
+  "plugins": [
+    "espower",
+    "transform-runtime"
+  ]
+}
+```
+but you can customize any Babel option for transpiling test files with the
+`"babel"` option in AVA's
+[`package.json` configuration](https://github.com/sindresorhus/ava#configuration).
 
 For example:
 
@@ -20,8 +36,8 @@ For example:
 ```
 or you can simply `"inherit"` the Babel configuration from
 [`.babelrc`](/docs/usage/babelrc/) or Babel's
-[`package.json` configuration](/docs/usage/babelrc/) making test files
-use the same configuration as your source files like this:
+[`package.json` configuration](/docs/usage/babelrc/), making test files
+use the same configuration as your source files:
 
 ```json
 {
