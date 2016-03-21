@@ -14,6 +14,24 @@ Externalise references to helpers and builtins, automatically polyfilling your c
 $ npm install babel-plugin-transform-runtime
 ```
 
+You should also install [babel-runtime](https://www.npmjs.com/package/babel-runtime) itself:
+
+```sh
+$ npm install babel-runtime
+```
+
+<blockquote class="babel-callout babel-callout-info">
+  <h4>Production vs. development dependencies</h4>
+  <p>
+    In most cases, you should install babel-plugin-transform-runtime as a development dependency (with <code>--save-dev</code>) and babel-runtime as a production dependency (with <code>--save</code>).
+  </p>
+  <p>
+    The transformation plugin is typically used only in development, but the runtime itself will be depended on by your deployed/published code.
+  </p>
+</blockquote>
+
+
+
 ## Usage
 
 ### Via `.babelrc` (Recommended)
