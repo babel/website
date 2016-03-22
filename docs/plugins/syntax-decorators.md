@@ -6,6 +6,13 @@ permalink: /docs/plugins/syntax-decorators/
 package: babel-plugin-syntax-decorators
 ---
 
+<blockquote class="babel-callout babel-callout-warning">
+  <h4>Decorators are not currently supported</h4>
+  <p>
+    See <a href="/docs/plugins/transform-decorators">transform-decorators</a> for more information.
+  </p>
+</blockquote>
+
 <blockquote class="babel-callout babel-callout-info">
   <h4>Syntax only</h4>
   <p>
