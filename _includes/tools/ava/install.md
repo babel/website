@@ -1,3 +1,1 @@
-```sh
-$ npm install --save-dev babel-core
-```
+There is no need to install `babel-core`, AVA bundles it already.
