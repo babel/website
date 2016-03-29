@@ -28,6 +28,7 @@
     sails: Sails
 - name: Test frameworks
   items:
+    ava: AVA
     jasmine: Jasmine
     jest: Jest
     karma: Karma
