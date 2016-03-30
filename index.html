@@ -29,20 +29,31 @@ third_party_js:
   <div class="row featurette text-center">
     <h2 class="text-center">Babel transforms your JavaScript</h2>
 
+    <h3 class="lead text-center">
+{% highlight javascript %}
+npm install --save-dev babel-cli babel-preset-es2015
+./node_modules/.bin/babel index.js --presets es2015
+{% endhighlight %}
+    </h3>
+
     <div class="col-lg-6">
       <h3>You put JavaScript in</h3>
-      <div class="lead">
+      <div class="lead text-left">
 {% highlight javascript %}
-myJavaScript("foobar");
+// original index.js
+[1,2,3].map(n => n + 1);
 {% endhighlight %}
       </div>
     </div>
 
     <div class="col-lg-6">
       <h3>And get JavaScript out</h3>
-      <div class="lead">
+      <div class="lead text-left">
 {% highlight javascript %}
-myNewTransformedJavaScript("yay!");
+// transformed index.js
+[1,2,3].map(function(n) {
+  return n + 1;
+});
 {% endhighlight %}
       </div>
     </div>
