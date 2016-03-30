@@ -21,15 +21,8 @@ This transform **should be enabled only in production** (e.g., just before minif
 **Out**
 
 ```javascript
-({
-  $$typeof: babelHelpers.typeofReactElement,
-  type: Baz,
-  key: null,
-  ref: null,
-  props: babelHelpers.defaultProps(Baz.defaultProps, {
-    foo: "bar"
-  }),
-  _owner: null
+babelHelpers.jsx(Baz, {
+  foo: "bar"
 });
 ```
 
