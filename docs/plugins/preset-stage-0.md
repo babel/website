@@ -20,7 +20,7 @@ And all plugins from presets:
 ## Installation
 
 ```sh
-$ npm install babel-preset-stage-0
+$ npm install --save-dev babel-preset-stage-0
 ```
 
 ## Usage
