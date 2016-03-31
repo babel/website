@@ -427,3 +427,6 @@
 - name: Kascale
   url: http://www.kascale.com/
   logo: kascale.svg
+- name: Lyst
+  url: https://www.lyst.com/
+  logo: lyst.svg
