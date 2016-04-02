@@ -21,7 +21,7 @@ And all plugins from presets:
 ## Installation
 
 ```sh
-$ npm install babel-preset-stage-1
+$ npm install --save-dev babel-preset-stage-1
 ```
 
 ## Usage

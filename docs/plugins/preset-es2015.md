@@ -30,10 +30,28 @@ This preset includes the following plugins:
 - [transform-es2015-unicode-regex](/docs/plugins/transform-es2015-unicode-regex)
 - [transform-regenerator](/docs/plugins/transform-regenerator)
 
+## Basic Setup (with the CLI)
+
+> For more info, check out the setup page on the [cli](docs/setup) and the [usage](docs/usage/cli/) docs.
+
+```sh
+# install the cli and this preset
+npm install --save-dev babel-cli babel-preset-es2015
+
+# make a .babelrc (config file) with the preset
+echo '{ "presets": ["es2015"] }' > .babelrc
+
+# create a file to run on
+echo 'console.log([1, 2, 3].map(n => n + 1));' > index.js
+
+# run it
+./node_modules/.bin/babel-node index.js
+```
+
 ## Installation
 
 ```sh
-$ npm install babel-preset-es2015
+$ npm install --save-dev babel-preset-es2015
 ```
 
 ## Usage
@@ -45,3 +63,4 @@ Add the following line to your `.babelrc` file:
   "presets": ["es2015"]
 }
 ```
+

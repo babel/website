@@ -14,7 +14,7 @@ This preset includes the following plugins:
 ## Installation
 
 ```sh
-$ npm install babel-preset-stage-3
+$ npm install --save-dev babel-preset-stage-3
 ```
 
 ## Usage
