@@ -16,7 +16,7 @@ This preset includes the following plugins:
 
 ## Basic Setup (with the CLI)
 
-> Read the setup page for the [cli](docs/setup) and the [usage](docs/usage/cli/) docs for more information.
+> For more info, check out the setup page on the [cli](docs/setup) and the [usage](docs/usage/cli/) docs.
 > You can also check out the React [Getting Started page](http://facebook.github.io/react/docs/getting-started.html)
 
 ```sh
