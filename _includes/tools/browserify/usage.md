@@ -30,14 +30,14 @@ browserify({ debug: true })
 **CLI**
 
 ```sh
-$ browserify -d -e script.js -t [ babelify --blacklist regenerator ]
+$ browserify -d -e script.js -t [ babelify --comments false ]
 ```
 
 ##### Node API
 
 ```js
 browserify().transform(babelify.configure({
-  blacklist: ["regenerator"]
+  comments: false
 }))
 ```
 
@@ -45,7 +45,7 @@ browserify().transform(babelify.configure({
 
 ```json
 {
-  "transform": [["babelify", { "blacklist": ["regenerator"] }]]
+  "transform": [["babelify", { "comments": false }]]
 }
 ```
 
