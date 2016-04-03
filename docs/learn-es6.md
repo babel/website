@@ -399,12 +399,12 @@ export var pi = 3.141593;
 ```js
 // app.js
 import * as math from "lib/math";
-alert("2π = " + math.sum(math.pi, math.pi));
+console.log("2π = " + math.sum(math.pi, math.pi));
 ```
 ```js
 // otherApp.js
 import {sum, pi} from "lib/math";
-alert("2π = " + sum(pi, pi));
+console.log("2π = " + sum(pi, pi));
 ```
 
 Some additional features include `export default` and `export *`:
@@ -420,7 +420,7 @@ export default function(x) {
 ```js
 // app.js
 import exp, {pi, e} from "lib/mathplusplus";
-alert("e^π = " + exp(pi));
+console.log("e^π = " + exp(pi));
 ```
 
 <blockquote class="babel-callout babel-callout-info">
