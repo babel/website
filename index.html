@@ -29,19 +29,13 @@ third_party_js:
   <div class="row featurette text-center">
     <h2 class="text-center">Babel transforms your JavaScript</h2>
 
-    <h3 class="lead text-center">
-{% highlight javascript %}
-npm install --save-dev babel-cli babel-preset-es2015
-./node_modules/.bin/babel index.js --presets es2015
-{% endhighlight %}
-    </h3>
-
     <div class="col-lg-6">
       <h3>You put JavaScript in</h3>
       <div class="lead text-left">
 {% highlight javascript %}
-// original index.js
+//
 [1,2,3].map(n => n + 1);
+//
 {% endhighlight %}
       </div>
     </div>
@@ -50,13 +44,29 @@ npm install --save-dev babel-cli babel-preset-es2015
       <h3>And get JavaScript out</h3>
       <div class="lead text-left">
 {% highlight javascript %}
-// transformed index.js
 [1,2,3].map(function(n) {
   return n + 1;
 });
 {% endhighlight %}
       </div>
     </div>
+
+    <h3>Start by installing Babel</h3>
+    <div class="lead text-left">
+{% highlight javascript %}
+$ npm install --save-dev babel-cli
+{% endhighlight %}
+    </div>
+
+    <h3>Create a <a href="/docs/usage/babelrc"><code>.babelrc</code></a> file in your project</h3>
+    <div class="lead text-left">
+{% highlight javascript %}
+{
+  presets: []
+}
+{% endhighlight %}
+    </div>
+
   </div>
 
   <hr class="featurette-divider">
@@ -64,12 +74,13 @@ npm install --save-dev babel-cli babel-preset-es2015
   <div class="row featurette">
     <div class="col-md-6">
       <h2>ES2015 and beyond</h2>
-      <p>Babel has support for the latest version of JavaScript through syntax transformers. These allow you to use new syntax, <strong>right now</strong> without waiting for browser support. Check out our <a href="http://babeljs.io/docs/plugins/preset-es2015">ES2015 preset</a> to get started.</p>
+      <p>Babel has support for the latest version of JavaScript through syntax transformers. These plugins allow you to use new syntax, <strong>right now</strong> without waiting for browser support. Check out our <a href="http://babeljs.io/docs/plugins/preset-es2015">ES2015 preset</a> to get started.</p>
+
+      <p>You can install this preset with</p>
 {% highlight javascript %}
-// create a babel config with your presets
-echo '{ "presets": ["es2015"] }' > .babelrc
+$ npm install --save-dev babel-preset-es2015
 {% endhighlight %}
-      <p><a href="/docs/learn-es2015/">Learn about ES2015 &rarr;</a></p>
+      </p>and add <code>"es2015"</code> to your <code>.babelrc</code> presets array.</p>
     </div>
 
     <div class="col-md-6">
@@ -112,6 +123,9 @@ echo '{ "presets": ["es2015"] }' > .babelrc
           <li><a href="/docs/plugins/transform-es2015-unicode-regex">Unicode regex</a></li>
         </ul>
       </div>
+
+      <br>
+      <p class="text-center"><a href="/docs/learn-es2015/">Learn more about ES2015 &rarr;</a></p>
     </div>
   </div>
 
@@ -135,16 +149,19 @@ echo '{ "presets": ["es2015"] }' > .babelrc
     <span class="nx">&lt;/div&gt;;</span>
   <span class="p">}</span>
 <span class="p">});</span></code></pre></div>
+
+    <p class="text-center">Learn more about <a href="https://facebook.github.io/jsx/">JSX</a> and <a href="http://flowtype.org/">Flow</a></p>
     </div>
 
     <div class="col-md-7">
       <h2>JSX and Flow</h2>
       <p>Babel can convert JSX syntax and strip out type annotations. Check out our <a href="http://babeljs.io/docs/plugins/preset-react/">React preset</a> to get started. Use it together with the <a href="https://github.com/babel/babel-sublime">babel-sublime</a> package to bring syntax highlighting to a whole new level.</p>
+
+      <p>You can install this preset with</p>
 {% highlight javascript %}
-// create a babel config with your presets
-echo '{ "presets": ["es2015", "react"] }' > .babelrc
+$ npm install --save-dev babel-preset-react
 {% endhighlight %}
-      <p>Learn about <a href="https://facebook.github.io/react/docs/jsx-in-depth.html">JSX</a> and <a href="http://flowtype.org/">Flow</a>
+      </p>and add <code>"react"</code> to your <code>.babelrc</code> presets array.</p>
       </p>
     </div>
   </div>
@@ -158,7 +175,20 @@ echo '{ "presets": ["es2015", "react"] }' > .babelrc
       <p>Create a plugin on the fly with <a href="http://astexplorer.net/#/KJ8AjD6maa">astexplorer.net</a></p>
     </div>
     <div class="col-md-6">
-      <img src="{{ site.baseurl }}/images/featurettes/blueprint.png?t={{ site.time | date_to_xmlschema }}" alt="Plugins and Browsers" class="featurette-image img-responsive">
+{% highlight javascript %}
+// A plugin is just a function
+export default function ({types: t}) {
+  return {
+    visitor: {
+      Identifier(path) {
+        let name = path.node.name;
+        // reverse the name: JavaScript -> tpircSavaJ
+        path.node.name = name.split('').reverse().join('');
+      }
+    }
+  };
+}
+{% endhighlight %}
     </div>
   </div>
 
