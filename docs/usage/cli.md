@@ -90,6 +90,13 @@ There are many more options available in the babel CLI, see [options](/docs/usag
     experience a startup performance penalty as the entire app needs to be compiled on the fly.
   </p>
 </blockquote>
+<blockquote class="babel-callout babel-callout-info">
+  <h4>ES6-style module-loading may not function as expected</h4>
+  <p>
+    Due to technical limitations ES6-style module-loading is not fully supported in a <code>babel-node REPL</code>.
+  </p>
+</blockquote>
+
 
 babel comes with a second CLI which works exactly the same as Node.js's CLI, only
 it will compile ES6 code before running it.
