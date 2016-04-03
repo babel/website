@@ -21,14 +21,14 @@ custom_js_with_timestamps:
 
         <div class="btn-group">
           {% for item in tool.items %}
-            <div class="btn btn-default" data-name="{{item[0]}}">{{item[1]}}</div>
+            <a href="#installation" class="btn btn-default" data-name="{{item[0]}}">{{item[1]}}</a>
           {% endfor %}
         </div>
       {% endfor %}
     </div>
 
     <div class="step step-install">
-      <h2><span class="step-no">2</span> Installation</h2>
+      <h2 id="installation"><span class="step-no">2</span> Installation</h2>
       {% include tools/items.md name="install" %}
     </div>
 
@@ -57,7 +57,7 @@ custom_js_with_timestamps:
 
       <p>Great! You've configured Babel but you haven't made it actually <em>do</em> anything. Create a <a href="/docs/usage/babelrc">.babelrc</a> config in your project root and enable some <a href="/docs/plugins">plugins</a>.</p>
       <p>Assuming you installed the <a href="https://babeljs.io/docs/plugins/preset-es2015/">ES2015 Preset</a>, you can do this with <pre>echo '{ "presets": ["es2015"] }' > .babelrc</pre></p>
-  
+
       <p>
         <strong>Note</strong>: Running a Babel 6.x project using npm 2.x can cause performance problems because of the way npm 2.x installs dependencies. This problem can be eliminated by either switching to npm 3.x or running npm 2.x with the <a href="https://docs.npmjs.com/cli/dedupe">dedupe</a> flag. To check what version of npm you have run <pre>npm --version</pre>
       <p>
