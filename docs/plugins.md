@@ -25,6 +25,27 @@ We've assembled some for common environments:
 
 Many other community-maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
 
+### Stages (experimental plugins)
+
+<blockquote class="babel-callout babel-callout-danger">
+  <h4>Subject to change</h4>
+  <p>
+    These proposals are subject to change so <strong><em>use with extreme caution</em></strong>.
+  </p>
+</blockquote>
+
+The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
+
+ - Stage 0 - Strawman
+ - Stage 1 - Proposal
+ - Stage 2 - Draft
+ - Stage 3 - Candidate
+ - Stage 4 - Finished
+
+To learn about the current stage of all proposals, check out https://github.com/tc39/ecma262#current-proposals.
+
+To learn more about the TC39 Process, check out https://tc39.github.io/process-document.
+
 ## Transform Plugins
 
 These plugins apply transformations to your code.
