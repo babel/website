@@ -8,22 +8,43 @@ redirect_from:
  - /docs/usage/modules/
 ---
 
-Out of the box Babel doesn't do anything. You need to use plugins to transform your code. Don't know where to start? Check out some of the
-[presets](#presets).
+Out of the box Babel doesn't do anything. You need to use plugins to transform your code.
+
+Don't know where to start? Check out some of our [presets](#presets).
 
 ## Presets
 
 Don't want to assemble your own set of plugins? No problem! Presets are sharable [`.babelrc`](/docs/usage/babelrc) configs.
+
 We've assembled some for common environments:
 
  - [es2015](/docs/plugins/preset-es2015)
- - [stage-0](/docs/plugins/preset-stage-0)
- - [stage-1](/docs/plugins/preset-stage-1)
- - [stage-2](/docs/plugins/preset-stage-2)
- - [stage-3](/docs/plugins/preset-stage-3)
  - [react](/docs/plugins/preset-react)
 
 > Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
+
+### Stage-X (Experimental Presets)
+
+<blockquote class="babel-callout babel-callout-danger">
+  <h4>Subject to change</h4>
+  <p>
+    These proposals are subject to change so <strong><em>use with extreme caution</em></strong>.
+  </p>
+</blockquote>
+
+The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
+
+ - [stage-0](/docs/plugins/preset-stage-0) - Strawman
+ - [stage-1](/docs/plugins/preset-stage-1) - Proposal
+ - [stage-2](/docs/plugins/preset-stage-2) - Draft
+ - [stage-3](/docs/plugins/preset-stage-3) - Candidate
+ - stage-4 - Finished
+
+To learn about the current stage of all proposals, check out https://github.com/tc39/ecma262#current-proposals.
+
+To learn more about the TC39 Process, check out https://tc39.github.io/process-document.
+
+### Creating a Preset
 
 To make your own preset, you just need to export a config.
 
@@ -40,28 +61,7 @@ module.exports = {
 };
 ```
 
-Check out the [repo](https://github.com/babel/babel/tree/master/packages/babel-preset-es2015) of one of our built in presets for more information.
-
-### Stage-X (Experimental Presets)
-
-<blockquote class="babel-callout babel-callout-danger">
-  <h4>Subject to change</h4>
-  <p>
-    These proposals are subject to change so <strong><em>use with extreme caution</em></strong>.
-  </p>
-</blockquote>
-
-The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
-
- - Stage 0 - Strawman
- - Stage 1 - Proposal
- - Stage 2 - Draft
- - Stage 3 - Candidate
- - Stage 4 - Finished
-
-To learn about the current stage of all proposals, check out https://github.com/tc39/ecma262#current-proposals.
-
-To learn more about the TC39 Process, check out https://tc39.github.io/process-document.
+For more info, check out the [babel handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/user-handbook.md#making-your-own-preset) section on presets or just look at the [es2015](https://github.com/babel/babel/tree/master/packages/babel-preset-es2015) preset repo as an example.
 
 ## Transform Plugins
 
