@@ -13,7 +13,7 @@ Out of the box Babel doesn't do anything. You need to use plugins to transform y
 
 ## Presets
 
-Don't want to assemble your own set of plugins? No problem! Presets are sharable `.babelrc` configs.
+Don't want to assemble your own set of plugins? No problem! Presets are sharable [`.babelrc`](/docs/usage/babelrc) configs.
 We've assembled some for common environments:
 
  - [es2015](/docs/plugins/preset-es2015)
@@ -23,7 +23,7 @@ We've assembled some for common environments:
  - [stage-3](/docs/plugins/preset-stage-3)
  - [react](/docs/plugins/preset-react)
 
-Many other community-maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
+> Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
 
 To make your own preset, you just need to export a config.
 
