@@ -25,7 +25,7 @@ We've assembled some for common environments:
 
 Many other community-maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
 
-### Stages (experimental plugins)
+### Stage-X (Experimental Presets)
 
 <blockquote class="babel-callout babel-callout-danger">
   <h4>Subject to change</h4>
