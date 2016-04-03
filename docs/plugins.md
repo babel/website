@@ -13,7 +13,7 @@ Out of the box Babel doesn't do anything. You need to use plugins to transform y
 
 ## Presets
 
-Don't want to assemble your own set of plugins? No problem! Presets are sharable configs.
+Don't want to assemble your own set of plugins? No problem! Presets are sharable `.babelrc` configs.
 We've assembled some for common environments:
 
  - [es2015](/docs/plugins/preset-es2015)
@@ -24,6 +24,23 @@ We've assembled some for common environments:
  - [react](/docs/plugins/preset-react)
 
 Many other community-maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
+
+To make your own preset, you just need to export a config.
+
+```js
+// Presets can contain other presets, and plugins with options.
+module.exports = {
+  presets: [
+    require('babel-preset-es2015'),
+  ],
+  plugins: [
+    [require('babel-plugin-transform-es2015-template-literals'), { spec: true }],
+    require('babel-plugin-transform-es3-member-expression-literals'),
+  ],
+};
+```
+
+Check out the [repo](https://github.com/babel/babel/tree/master/packages/babel-preset-es2015) of one of our built in presets for more information.
 
 ### Stage-X (Experimental Presets)
 
