@@ -19,6 +19,20 @@ The entire range of Babel API [options](/docs/usage/options) are allowed.
 }
 ```
 
+## Use via `package.json`
+
+You can alternatively choose to specify your `.babelrc` config from within `package.json` like so:
+
+```javascript
+{
+  "name": "my-package",
+  "version": "1.0.0",
+  "babel": {
+    // my babel config here
+  }
+}
+```
+
 ## `env` option
 
 You can use the `env` option to set specific options when in a certain environment:
@@ -54,18 +68,4 @@ $ YOUR_COMMAND_HERE
 ```sh
 $ SET BABEL_ENV=production
 $ YOUR_COMMAND_HERE
-```
-
-## Use via `package.json`
-
-You can alternatively choose to specify your `.babelrc` config from within `package.json` like so:
-
-```javascript
-{
-  "name": "my-package",
-  "version": "1.0.0",
-  "babel": {
-    // my babel config here
-  }
-}
 ```
