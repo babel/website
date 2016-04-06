@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-react-inline-elements/
 package: babel-plugin-transform-react-inline-elements
 ---
 
-Converts JSX elements to object literals like `{type: 'div', props: ...}` instead of calls to `React.createElement`.
+Replaces the `React.createElement` function with a more optimized one for production: `babelHelpers.jsx`.
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
@@ -20,14 +20,14 @@ Converts JSX elements to object literals like `{type: 'div', props: ...}` instea
   </p>
 </blockquote>
 
-This transform **should be enabled only in production** (e.g., just before minifying your code) because although they improve runtime performance, they make warning messages more cryptic and skip important checks that happen in development mode, including propTypes.
+This transform **should be enabled only in production** (e.g., just before minifying your code) because although it improves runtime performance, it makes warning messages more cryptic and skip important checks that happen in development mode, including propTypes.
 
 ## Example
 
 **In**
 
 ```javascript
-<Baz foo="bar"></Baz>;
+<Baz foo="bar" key="1"></Baz>;
 ```
 
 **Out**
@@ -35,7 +35,16 @@ This transform **should be enabled only in production** (e.g., just before minif
 ```javascript
 babelHelpers.jsx(Baz, {
   foo: "bar"
-});
+}, '1');
+
+/**
+ * Instead of
+ *
+ * React.createElement(Baz, {
+ *   foo: 'bar',
+ *   key: '1',
+ * });
+ */
 ```
 
 ## Installation
