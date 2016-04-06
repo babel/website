@@ -10,8 +10,6 @@ Hoists element creation to the top level for subtrees that are fully static, whi
 
 This transform **should be enabled only in production** (e.g., just before minifying your code) because although it improves runtime performance, it makes warning messages more cryptic.
 
-**In**
-
 ```js
 const Hr = () => {
   return <hr className="hr" />;
@@ -26,6 +24,14 @@ const _ref = <hr className="hr" />;
 const Hr = () => {
   return _ref;
 };
+```
+
+**Deopts**
+
+```js
+// The plugin will not run on the use of `refs` or `object rest spread` 
+<foo {...foobar} />
+<foo ref="foobar" />;
 ```
 
 ## Installation
