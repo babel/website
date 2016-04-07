@@ -47,6 +47,14 @@ babelHelpers.jsx(Baz, {
  */
 ```
 
+**Deopt**
+
+```js
+// The plugin will still use React.createElement when `ref` or `object rest spread` is used
+<Foo ref="bar" />
+<Foo {...bar} />
+```
+
 ## Installation
 
 ```sh
