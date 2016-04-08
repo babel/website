@@ -48,6 +48,14 @@ polyfills are loaded first:
 import "babel-polyfill";
 ```
 
+### `webpack.config.js`
+```js
+// you can also include it in your config
+module.exports = {
+   entry: ['babel-polyfill', './app/js']
+};
+```
+
 ## Usage in Browser
 
 Available from the `dist/polyfill.js` file within a `babel-polyfill` npm release.
