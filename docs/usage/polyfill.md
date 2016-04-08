@@ -52,9 +52,8 @@ import "babel-polyfill";
 ```js
 // you can also include it in your config
 module.exports = {
-  entry: {
-    main: ['babel/polyfill', './app/js']
-  },
+   entry: ['babel-polyfill', './app/js']
+};
 ```
 
 ## Usage in Browser
