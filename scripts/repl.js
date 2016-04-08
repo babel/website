@@ -170,20 +170,20 @@
    * Babel options for transpilation as used by the REPL
    */
   function Options () {
-    var $experimental = $('#option-experimental');
     var $evaluate = $('#option-evaluate');
-    var $loose = $('#option-loose-mode');
-    var $spec = $('#option-spec');
+    var $lineWrap = $('#option-lineWrap');
 
     var options = {};
     Object.defineProperties(options, {
       evaluate: $checkbox($evaluate),
+      lineWrap: $checkbox($lineWrap),
       presets: getPresetOptions(),
     });
 
     // Merge in defaults
     var defaults = {
       evaluate: true,
+      lineWrap: false,
       presets: 'es2015,stage-2,react'
     };
 
@@ -235,6 +235,7 @@
   };
 
   REPL.prototype.compile = function () {
+    this.output.session.setUseWrapMode(this.options.lineWrap);
 
     var transformed;
     var code = this.getSource();
