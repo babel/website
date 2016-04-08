@@ -86,6 +86,8 @@ $ npm install --save-dev babel-preset-es2015
           <li><a href="/docs/plugins/transform-es2015-arrow-functions">Arrow functions</a></li>
           <li><a href="/docs/plugins/syntax-async-functions">Async functions</a></li>
           <li><a href="/docs/plugins/syntax-async-generators">Async generator functions</a></li>
+          <li><a href="/docs/plugins/transform-es2015-block-scoping">Block scoping</a></li>
+          <li><a href="/docs/plugins/transform-es2015-block-scoped-functions">Block scoped functions</a></li>
           <li><a href="/docs/plugins/transform-es2015-classes">Classes</a></li>
           <li><a href="/docs/plugins/transform-class-properties">Class properties</a></li>
           <li><a href="/docs/plugins/transform-es2015-computed-properties">Computed property names</a></li>
@@ -96,14 +98,13 @@ $ npm install --save-dev babel-preset-es2015
           <li><a href="/docs/plugins/transform-do-expressions">Do expressions</a></li>
           <li><a href="/docs/plugins/transform-exponentiation-operator">Exponentiation operator</a></li>
           <li><a href="/docs/plugins/transform-es2015-for-of">For-of</a></li>
-          <li><a href="/docs/plugins/transform-function-bind">Function bind</a></li>
-          <li><a href="/docs/plugins/transform-regenerator">Generators</a></li>
         </ul>
       </div>
 
       <div class="col-md-6">
         <ul class="babel-tick-list">
-          <li><a href="/docs/plugins/transform-es2015-block-scoping">Let scoping</a></li>
+          <li><a href="/docs/plugins/transform-function-bind">Function bind</a></li>
+          <li><a href="/docs/plugins/transform-regenerator">Generators</a></li>
           <li><a href="/docs/plugins/#modules">Modules</a></li>
           <li><a href="/docs/plugins/transform-export-extensions">Module export extensions</a></li>
           <li><a href="/docs/plugins/transform-es2015-literals">New literals</a></li>
@@ -111,7 +112,6 @@ $ npm install --save-dev babel-preset-es2015
           <li><a href="/docs/plugins/transform-es2015-shorthand-properties">Property method assignment</a></li>
           <li><a href="/docs/plugins/transform-es2015-shorthand-properties">Property name shorthand</a></li>
           <li><a href="/docs/plugins/transform-es2015-parameters">Rest parameters</a></li>
-          <li><a href="/docs/plugins/preset-react">React</a></li>
           <li><a href="/docs/plugins/transform-es2015-parameters">Spread</a></li>
           <li><a href="/docs/plugins/transform-es2015-sticky-regex">Sticky regex</a></li>
           <li><a href="/docs/plugins/transform-es2015-template-literals">Template literals</a></li>
@@ -125,6 +125,69 @@ $ npm install --save-dev babel-preset-es2015
       <p class="text-center"><a href="/docs/learn-es2015/">Learn more about ES2015 &rarr;</a></p>
     </div>
   </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-6">
+        <h2>Polyfill</h2>
+        <p>Since Babel only transforms syntax (like arrow functions), you can use babel-polyfill in order to support new globals such as Promise or new native methods like String.padStart (left-pad). It uses <a href="https://github.com/zloirock/core-js">core-js</a> and <a href="http://facebook.github.io/regenerator/">regenerator</a>. Check out our <a href="/docs/usage/polyfill">babel-polyfill</a> docs for more info.</p>
+
+        <p>You can install the polyfill with</p>
+  {% highlight javascript %}
+  $ npm install --save-dev babel-polyfill
+  {% endhighlight %}
+        <p>Use it by requiring it at the top of the entry point to your application or in your bundler config.</p>
+      </div>
+
+      <div class="col-md-6">
+        <div class="col-md-6">
+          <ul class="babel-tick-list">
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of">Array.of</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin">Array#copyWithin</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill">Array#fill</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Array#find</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">Array#findIndex</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name">Function#name</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/acosh">Math.acosh</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/hypot">Math.hypot</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/imul">Math.imul</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN">Number.isNaN</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger">Number.isInteger</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">Object.assign</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is">Object.is</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+          <ul class="babel-tick-list">
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries">Object#entries</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf">Object.setPrototypeOf</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect">Reflect</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/flags">RegExp#flags</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt">String#codePointAt</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith">String#endsWith</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCodePoint">String.fromCodePoint</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes">String#includes</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/raw">String.raw</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/repeat">String#repeat</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith">String#startsWith</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap">WeakMap</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet">WeakSet</a></li>
+          </ul>
+        </div>
+
+        <br>
+        <p class="text-center"><a href="https://github.com/zloirock/core-js#features">Learn about more features &rarr;</a></p>
+      </div>
+    </div>
+
 
   <hr class="featurette-divider">
 
