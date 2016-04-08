@@ -15,6 +15,13 @@ package: babel-polyfill
 This will emulate a full ES6 environment. This polyfill is automatically loaded
 when using `babel-node`.
 
+<blockquote class="babel-callout babel-callout-info">
+  <p>
+    If you are looking for something that won't modify globals to be used in a tool/library, checkout the <a href="/docs/plugins/transform-runtime"><code>transform-runtime</code></a> plugin
+  </p>
+</blockquote>
+
+
 ## Installation
 
 ```sh
