@@ -12,7 +12,7 @@ package: babel-polyfill
   and <a href="https://github.com/zloirock/core-js">core.js</a>.
 </p>
 
-This will emulate a full ES6 environment and is intended to be used in an application rather than a library/tool. This polyfill is automatically loaded
+This will emulate a full ES2015 environment and is intended to be used in an application rather than a library/tool. This polyfill is automatically loaded
 when using `babel-node`.
 
 This means you can use static methods like `Array.from`, `Object.assign`, instance methods like `Array.includes`, and generator functions (provided you use the [regenerator](/docs/plugins/transform-regenerator/) plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
@@ -23,6 +23,7 @@ This means you can use static methods like `Array.from`, `Object.assign`, instan
   </p>
 </blockquote>
 
+Note: Depending on what ES2015 methods you actually use, you may not need to use `babel-polyfill` or the runtime plugin. You may want to only load the specific polyfills you are using in the library (like `Object.assign`) or just document that the environment the library is being loaded in should include certain polyfills.
 
 ## Installation
 
