@@ -18,9 +18,9 @@ when using `babel-node`.
 This means you can use static methods like `Array.from`, `Object.assign`, instance methods like `Array.includes`, and generator functions (provided you use the [regenerator](/docs/plugins/transform-regenerator/) plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
 
 <blockquote class="babel-callout babel-callout-info">
-  <p>
-    If you are looking for something that won't modify globals to be used in a tool/library, checkout the <a href="/docs/plugins/transform-runtime"><code>transform-runtime</code></a> plugin
-  </p>
+  <h5>
+    If you are looking for something that won't modify globals to be used in a tool/library, checkout the <a href="/docs/plugins/transform-runtime"><code>transform-runtime</code></a> plugin. This means you won't be able to use the instance methods mentioned above like `Array.includes`.
+  </h5>
 </blockquote>
 
 Note: Depending on what ES2015 methods you actually use, you may not need to use `babel-polyfill` or the runtime plugin. You may want to only load the specific polyfills you are using in the library (like `Object.assign`) or just document that the environment the library is being loaded in should include certain polyfills.
