@@ -23,7 +23,7 @@ clownPuppiesEverywhere(
 
 ## Example
 ### Basic
-This is an example from the Proposal.
+This is an example from the [Proposal](https://github.com/jeffmo/es-trailing-function-commas).
 
 Let's say you have this function:
 
@@ -39,19 +39,21 @@ clownPuppiesEverywhere(
 );
 ```
 
-You want to have a new parameter called `param3`:
+If you want to have a new parameter called `param3`, the diff output would be like that:
 
-```js
+```diff
 function clownPuppiesEverywhere(
   param1,
-  param2, // Change this line to add a comma
-  param3  // Add param3
+- param2
++ param2, // Change this line to add a comma
++ param3  // Add param3
 ) { /* ... */ }
 
 clownPuppiesEverywhere(
   'foo',
-  'bar', // Change this line to add a comma
-  'baz'  // Add param3
+- 'bar'
++ 'bar', // Change this line to add a comma
++ 'baz'  // Add param3
 );
 ```
 In total, you have to change 2 lines for the function declaration and 2 lines for each usage.
@@ -71,20 +73,20 @@ clownPuppiesEverywhere(
 ```
 Adding a new parameter would only change one line in the function declaration and one line for each usage:
 
-```js
+```diff
 function clownPuppiesEverywhere(
   param1,
   param2,
-  param3, // Add param3
++ param3, // Add param3
 ) { /* ... */ }
 
 clownPuppiesEverywhere(
   'foo',
   'bar',
-  'baz', // Add param3
++ 'baz', // Add param3
 );
 ```
-In the end, it would be much quicker to add a new parameter to your functions, it also makes it easier to copy paste elements and move code around.
+In the end, your diff output will be cleaner and easier to read, it would be much quicker to add a new parameter to your functions, it also makes it easier to copy paste elements and move code around.
 
 ## Installation
 
@@ -106,3 +108,4 @@ Add the following line to your `.babelrc` file:
 
 * [Proposal](https://github.com/jeffmo/es-trailing-function-commas)
 * [Spec](http://jeffmo.github.io/es-trailing-function-commas/)
+* [Why you should enforce Dangling Commas for Multiline Statements](https://medium.com/@nikgraf/why-you-should-enforce-dangling-commas-for-multiline-statements-d034c98e36f8)
