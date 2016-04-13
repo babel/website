@@ -100,6 +100,7 @@
     this.session.setUseSoftTabs(true);
     this.session.setTabSize(2);
     this.session.setUseWorker(false);
+    this.session.setUseWrapMode(true);
 
     this.editor.setOption('scrollPastEnd', 0.33);
   }
