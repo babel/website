@@ -8,6 +8,12 @@ package: babel-plugin-transform-es2015-classes
 
 Compile ES2015 classes to ES5
 
+<blockquote class="babel-callout babel-callout-warning">
+  <p>
+    Note: Built-in classes such as Date, Array, DOM etc cannot be properly subclassed due to limitations in ES5.
+  </p>
+</blockquote>
+
 ## Installation
 
 ```sh
