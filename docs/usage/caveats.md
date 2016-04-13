@@ -15,10 +15,8 @@ You may alternatively/selectively include what you need:
 
 | Feature                     | Requirements                                                                          |
 | --------------------------- | ------------------------------------------------------------------------------------- |
-| Abstract References         | `Symbol`                                                                              |
 | Array destructuring         | `Symbol`                                                                              |
 | Async functions, Generators | [regenerator runtime](https://github.com/facebook/regenerator/blob/master/runtime.js) |
-| Comprehensions              | `Array.from`                                                                          |
 | For Of                      | `Symbol`, `prototype[Symbol.iterator]`                                                |
 | Spread                      | `Array.from`                                                                          |
 
@@ -28,14 +26,6 @@ There is also the `loose` option for some of these plugins.
 
 Built-in classes such as `Date`, `Array`, `DOM` etc cannot be properly subclassed
 due to limitations in ES5. (for the [es2015-classes](/docs/plugins/transform-es2015-classes) plugin)
-
-## ES5
-
-Since Babel assumes that your code will be run in an ES5 environment it uses ES5
-functions. So if you're using an environment that has limited or no support for
-ES5 such as lower versions of IE then using the
-[es5-shim](https://github.com/es-shims/es5-shim) along with the
-[babel-polyfill](/docs/usage/polyfill) will add support for these methods.
 
 ## Internet Explorer
 
