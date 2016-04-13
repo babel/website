@@ -9,16 +9,18 @@
   subnav:
   - title: Options
     url: /docs/usage/options/
+  - title: Caveats
+    url: /docs/usage/caveats/
   - title: babelrc
     url: /docs/usage/babelrc/
   - title: CLI
     url: /docs/usage/cli/
   - title: Require Hook
+  - title: Polyfill
+    url: /docs/usage/polyfill/
     url: /docs/usage/require/
   - title: API
     url: /docs/usage/api/
-  - title: Polyfill
-    url: /docs/usage/polyfill/
   - title: Browser
     url: /docs/usage/browser/
 - title: Try it out
