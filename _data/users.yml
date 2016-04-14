@@ -430,3 +430,6 @@
 - name: Lyst
   url: https://www.lyst.com/
   logo: lyst.svg
+- name: Redfin
+  url: https://www.redfin.com/
+  logo: redfin.svg
