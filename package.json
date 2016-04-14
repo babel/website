@@ -5,6 +5,7 @@
   "description": "",
   "main": "",
   "scripts": {
+    "start": "make serve",
     "build": "make build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

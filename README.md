@@ -7,4 +7,4 @@ This repo also contains babel's [source documentation](https://github.com/babel/
 ### Setup
 * [Please install ruby](https://www.ruby-lang.org/en/documentation/installation/), if not already installed.
   * Use `which ruby` or `ruby --version`, to verify if ruby is installed.
-* To start the web server on your machine, check out this repo and run `make serve`.
+* To start the web server on your machine, check out this repo and run `npm start`.
