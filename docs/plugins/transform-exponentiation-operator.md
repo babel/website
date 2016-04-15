@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-exponentiation-operator/
 package: babel-plugin-transform-exponentiation-operator
 ---
 
-Allows to use the exponentiation operator
+This plugin allows Babel to transform the exponentiation operator.
 
 ```js
 // x ** y

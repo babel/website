@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-merge-sibling-variables/
 package: babel-plugin-transform-merge-sibling-variables
 ---
 
-Merge sibling variable declarations.
+This plugin allows Babel to merge sibling variable declarations.
 
 ## Example
 

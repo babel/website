@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-async-to-module-method/
 package: babel-plugin-transform-async-to-module-method
 ---
 
-Turn async functions into a Bluebird coroutine
+This plugin allows Babel to transform async functions into a Bluebird coroutine.
 
 ## Installation
 

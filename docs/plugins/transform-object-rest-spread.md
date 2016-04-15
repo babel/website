@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-object-rest-spread/
 package: babel-plugin-transform-object-rest-spread
 ---
 
-Rest and spread object properties
+This plugin allows Babel to transform rest properties for object destructuring assignment and spread properties for object literals.
 
 ```js
 // Rest properties

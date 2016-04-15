@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-do-expressions/
 package: babel-plugin-transform-do-expressions
 ---
 
-Allows to use `do` expressions:
+This plugin allows Babel to transform `do` expressions.
 
 > The `do { .. }` expression executes a block (with one or many statements in it), and the final statement completion value inside the block becomes the completion value of the do expression.
 

@@ -11,7 +11,7 @@ package: babel-plugin-transform-class-constructor-call
   <p>Class constructor call proposal has been dropped (<a href="https://github.com/rwaldron/tc39-notes/blob/master/es7/2016-01/2016-01-28.md#progress-review-callable-class-constructors-allen">tc39 meeting notes</a>) and <a href="https://github.com/babel/babel/wiki/Babel-7">it will be removed in Babel 7</a>.</p>
 </blockquote>
 
-Allows to call a class constructor
+This plugin allows Babel to transform class constructors.
 
 It basically allows to use the [new.target](http://mdn.io/new.target) feature on ES2015 classes:
 

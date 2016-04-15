@@ -16,8 +16,11 @@ package: babel-plugin-transform-decorators
   </p>
 </blockquote>
 
+This plugin allows Babel to transform decorators.
+
 ## Example
 (examples are from proposal)
+
 ### Simple class decorator
 ```js
 @annotation

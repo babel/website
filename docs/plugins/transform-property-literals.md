@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-property-literals/
 package: babel-plugin-transform-property-literals
 ---
 
-Turn valid identifier property key literals into identifiers.
+This plugin allows Babel to transform valid identifier property key literals into identifiers.
 
 ## Example
 

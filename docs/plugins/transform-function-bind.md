@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-function-bind/
 package: babel-plugin-transform-function-bind
 ---
 
-Allows to use a new operator `::` which performs `this` binding and method extraction.
+This plugin allows Babel to transform the new operator `::` which performs `this` binding and method extraction.
 
 ```js
 obj::func

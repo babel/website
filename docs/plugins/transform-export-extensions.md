@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-export-extensions/
 package: babel-plugin-transform-export-extensions
 ---
 
-Allows more syntaxes to `export ... from ...`
+This plugin allows Babel to transform additional export-from statements.
 
 ```js
 export * as ns from 'mod';
@@ -32,4 +32,6 @@ Add the following line to your `.babelrc` file:
 
 ## References
 
-* [Proposal: Additional export-from statements in ES7](https://github.com/leebyron/ecmascript-more-export-from)
+* ~~[Proposal: Additional export-from statements in ES7](https://github.com/leebyron/ecmascript-more-export-from)~~ (Withdrawn)
+* [ECMAScript Proposal: export ns from](https://github.com/leebyron/ecmascript-export-ns-from)
+* [ECMAScript Proposal: export default from](https://github.com/leebyron/ecmascript-export-default-from)

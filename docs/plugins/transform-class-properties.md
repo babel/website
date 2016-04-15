@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-class-properties/
 package: babel-plugin-transform-class-properties
 ---
 
-Allows to use class properties
+This plugin allows Babel to transform class properties.
 
 ```js
 class MyClass {
