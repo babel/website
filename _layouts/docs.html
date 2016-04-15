@@ -16,4 +16,24 @@ custom_js_with_timestamps:
       </div>
     </div>
   </div>
+  <div id="disqus_thread"></div>
+  <script>
+    {% if page.package %}
+    {% assign identifier = page.package %}
+    {% else %}
+    {% assign identifier = page.permalink %}
+    {% endif %}
+    var disqus_config = function () {
+      var origin = window.location.protocol + "//" + window.location.hostname +
+        (window.location.port ? ':' + window.location.port : '');
+      this.page.url = origin + "{{page.permalink}}";
+      this.page.identifier = "{{identifier}}";
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//babeljs.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
 </div>
