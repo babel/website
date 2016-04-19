@@ -25,7 +25,7 @@ There is also the `loose` option for some of these plugins.
 
 Built-in classes such as `Date`, `Array`, `DOM` etc cannot be properly subclassed
 due to limitations in ES5 (for the [es2015-classes](/docs/plugins/transform-es2015-classes) plugin).
-You can try to use [babel-plugin-transform-builtin-extend](https://github.com/loganfsmyth/babel-plugin-transform-builtin-extend), but it has some limitations.
+You can try to use [babel-plugin-transform-builtin-extend](https://github.com/loganfsmyth/babel-plugin-transform-builtin-extend) based on `Object.setPrototypeOf` and `Reflect.construct`, but it also has some limitations.
 
 
 ## Internet Explorer
