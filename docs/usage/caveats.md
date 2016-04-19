@@ -15,9 +15,8 @@ You may alternatively/selectively include what you need:
 
 | Feature                     | Requirements                                                                          |
 | --------------------------- | ------------------------------------------------------------------------------------- |
-| Array destructuring         | `Symbol`                                                                              |
 | Async functions, Generators | [regenerator runtime](https://github.com/facebook/regenerator/blob/master/runtime.js) |
-| For Of                      | `Symbol`, `prototype[Symbol.iterator]`                                                |
+| Array destructuring, For Of | `Symbol`, `prototype[Symbol.iterator]`                                                |
 | Spread                      | `Array.from`                                                                          |
 
 There is also the `loose` option for some of these plugins. 
