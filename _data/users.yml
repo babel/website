@@ -433,3 +433,6 @@
 - name: Redfin
   url: https://www.redfin.com/
   logo: redfin.svg
+- name: cssnano
+  url: http://cssnano.co
+  logo: cssnano.svg
