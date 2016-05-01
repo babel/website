@@ -115,7 +115,7 @@ These plugins apply transformations to your code.
 <!-- - [async-functions](/docs/plugins/transform-async-functions) -->
  - [async-to-generator](/docs/plugins/transform-async-to-generator)
  - [async-to-module-method](/docs/plugins/transform-async-to-module-method)
- - [class-constructor-call](/docs/plugins/transform-class-constructor-call)
+ - [class-constructor-call](/docs/plugins/transform-class-constructor-call) (Deprecated)
  - [class-properties](/docs/plugins/transform-class-properties)
  - [decorators](/docs/plugins/transform-decorators)
  - [do-expressions](/docs/plugins/transform-do-expressions)
@@ -167,7 +167,7 @@ These plugins allow Babel to parse specific types of syntax.
 
  - [async-functions](/docs/plugins/syntax-async-functions)
  - [async-generators](/docs/plugins/syntax-async-generators)
- - [class-constructor-call](/docs/plugins/syntax-class-constructor-call)
+ - [class-constructor-call](/docs/plugins/syntax-class-constructor-call) (Deprecated)
  - [class-properties](/docs/plugins/syntax-class-properties)
  - [decorators](/docs/plugins/syntax-decorators)
  - [do-expressions](/docs/plugins/syntax-do-expressions)
