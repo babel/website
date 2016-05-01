@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-proto-to-assign/
 package: babel-plugin-transform-proto-to-assign
 ---
 
-This plugin will transform all `__proto__` assignments to a method that will do a shallow
+This plugin allows Babel to transform all `__proto__` assignments to a method that will do a shallow
 copy of all properties.
 
 This means that the following **will** work:

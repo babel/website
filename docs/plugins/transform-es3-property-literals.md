@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-es3-property-literals/
 package: babel-plugin-transform-es3-property-literals
 ---
 
-Turn reserved word property keys into literals.
+This plugin allows Babel to transform reserved word property keys into literals.
 
 ## Example
 

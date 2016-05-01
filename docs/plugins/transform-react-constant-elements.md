@@ -31,7 +31,7 @@ const Hr = () => {
 **Deopts**
 
 ```js
-// The plugin will not run on the use of `refs` or `object rest spread` 
+// The plugin will not run on the use of `refs` or `object rest spread`
 <foo {...foobar} />
 <foo ref="foobar" />;
 ```

@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-inline-environment-variables/
 package: babel-plugin-transform-inline-environment-variables
 ---
 
-Inlines environment variables.
+This plugin allows Babel to transform inlines environment variables.
 
 ## Example
 

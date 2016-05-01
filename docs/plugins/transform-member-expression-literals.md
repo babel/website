@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-member-expression-literals/
 package: babel-plugin-transform-member-expression-literals
 ---
 
-Turn member expression valid identifier literal properties into identifiers.
+This plugin allows Babel to transform member expression valid identifier literal properties into identifiers.
 
 ## Example
 
