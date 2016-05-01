@@ -38,11 +38,11 @@ Any transforms in stage-x presets are changes to the language that haven't been 
 
 The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
 
- - [stage-0](/docs/plugins/preset-stage-0) - Strawman
- - [stage-1](/docs/plugins/preset-stage-1) - Proposal
- - [stage-2](/docs/plugins/preset-stage-2) - Draft
- - [stage-3](/docs/plugins/preset-stage-3) - Candidate
- - stage-4 - Finished
+ - [stage-0](/docs/plugins/preset-stage-0) - Strawman (Just an idea, possible Babel implementation)
+ - [stage-1](/docs/plugins/preset-stage-1) - Proposal (This is worth working on)
+ - [stage-2](/docs/plugins/preset-stage-2) - Draft (Initial spec)
+ - [stage-3](/docs/plugins/preset-stage-3) - Candidate (Complete spec and browsers start implementing)
+ - stage-4 - Finished (Will be added to the next yearly release)
 
 To learn about the current stage of all proposals, check out https://github.com/tc39/ecma262#current-proposals.
 
