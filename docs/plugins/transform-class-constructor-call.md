@@ -8,7 +8,7 @@ package: babel-plugin-transform-class-constructor-call
 
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Class constructor call is a deprecated feature</h4>
-  <p>Class constructor call proposal has been dropped (<a href="https://github.com/rwaldron/tc39-notes/blob/master/es7/2016-01/2016-01-28.md#progress-review-callable-class-constructors-allen">tc39 meeting notes</a>) and <a href="https://github.com/babel/babel/wiki/Babel-7">it will be removed in Babel 7</a>.</p>
+  <p>The class constructor call proposal has been withdrawn (<a href="https://github.com/tc39/ecma262/blob/master/withdrawn-proposals.md#withdrawn-proposals">Withdrawn Proposals</a>) and <a href="https://github.com/babel/babel/wiki/Babel-7">it will be removed in Babel 7</a>.</p>
 </blockquote>
 
 This plugin allows Babel to transform class constructors.
