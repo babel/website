@@ -19,9 +19,11 @@ package: babel-plugin-transform-decorators
 This plugin allows Babel to transform decorators.
 
 ## Example
+
 (examples are from proposal)
 
 ### Simple class decorator
+
 ```js
 @annotation
 class MyClass { }
@@ -30,7 +32,9 @@ function annotation(target) {
    target.annotated = true;
 }
 ```
+
 ### Class decorator
+
 ```js
 @isTestable(true)
 class MyClass { }
@@ -41,7 +45,9 @@ function isTestable(value) {
    }
 }
 ```
+
 ### Class function decorator
+
 ```js
 class C {
   @enumerable(false)
