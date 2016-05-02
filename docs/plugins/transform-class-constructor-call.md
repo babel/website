@@ -35,6 +35,7 @@ let p2 = Point(3, 4); // OK
 [Try in REPL](/repl/#?evaluate=true&presets=es2015%2Cstage-0&code=class%20Point%20%7B%0A%0A%20%20constructor(x%2C%20y)%20%7B%0A%20%20%20%20this.x%20%3D%20x%3B%0A%20%20%20%20this.y%20%3D%20y%3B%0A%20%20%7D%0A%0A%20%20call%20constructor(x%2C%20y)%20%7B%0A%20%20%20%20return%20new%20Point(x%2C%20y)%3B%0A%20%20%7D%0A%0A%7D%0A%0Alet%20p1%20%3D%20new%20Point(1%2C%202)%3B%20%2F%2F%20OK%0Alet%20p2%20%3D%20Point(3%2C%204)%3B%20%2F%2F%20OK)
 
 ## Example
+
 ### Date example
 The javascript [Date](http://mdn.io/date) works this way:
 
