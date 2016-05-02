@@ -9,16 +9,12 @@ github_username: babel
 exclude: ["node_modules"]
 
 # Build settings
-markdown: redcarpet
-# markdown: kramdown
-highlighter: pygments
-
-redcarpet:
-  extensions: ['tables', 'no_intra_emphasis', 'autolink', 'with_toc_data']
-
-# kramdown:
-#   input: GFM
-#   hard_wrap: false
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
 
 # Blog Settings
 permalink: /blog/:year/:month/:day/:title
