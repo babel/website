@@ -32,21 +32,20 @@ Any transforms in stage-x presets are changes to the language that haven't been 
 <blockquote class="babel-callout babel-callout-danger">
   <h4>Subject to change</h4>
   <p>
-    These proposals are subject to change so <strong><em>use with extreme caution</em></strong>.
+    These proposals are subject to change so <strong><em>use with extreme caution</em></strong>, especially for anything pre stage-3.
   </p>
 </blockquote>
 
 The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
 
- - [stage-0](/docs/plugins/preset-stage-0) - Strawman (Just an idea, possible Babel implementation)
- - [stage-1](/docs/plugins/preset-stage-1) - Proposal (This is worth working on)
- - [stage-2](/docs/plugins/preset-stage-2) - Draft (Initial spec)
- - [stage-3](/docs/plugins/preset-stage-3) - Candidate (Complete spec and browsers start implementing)
- - stage-4 - Finished (Will be added to the next yearly release)
+ - [stage-0](/docs/plugins/preset-stage-0) - Strawman: just an idea, possible Babel plugin.
+ - [stage-1](/docs/plugins/preset-stage-1) - Proposal: this is worth working on.
+ - [stage-2](/docs/plugins/preset-stage-2) - Draft: initial spec.
+ - [stage-3](/docs/plugins/preset-stage-3) - Candidate: complete spec and initial browser implementations.
+ - stage-4 - Finished: will be added to the next yearly release.
 
-To learn about the current stage of all proposals, check out https://github.com/tc39/ecma262#current-proposals.
-
-To learn more about the TC39 Process, check out https://tc39.github.io/process-document.
+Check out the [current proposals](https://github.com/tc39/ecma262#current-proposals).
+Check out the TC39 [process document](https://tc39.github.io/process-document).
 
 ### Creating a Preset
 
