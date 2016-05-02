@@ -14,7 +14,9 @@ Don't know where to start? Check out some of our [presets](#presets).
 
 ## Presets
 
-Don't want to assemble your own set of plugins? No problem! Presets are sharable [`.babelrc`](/docs/usage/babelrc) configs.
+Don't want to assemble your own set of plugins? No problem! Presets are sharable [`.babelrc`](/docs/usage/babelrc) configs or simply an array of babel plugins.
+
+### Official Presets
 
 We've assembled some for common environments:
 
@@ -46,25 +48,6 @@ The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
 
 Check out the [current proposals](https://github.com/tc39/ecma262#current-proposals).
 Check out the TC39 [process document](https://tc39.github.io/process-document).
-
-### Creating a Preset
-
-To make your own preset, you just need to export a config.
-
-```js
-// Presets can contain other presets, and plugins with options.
-module.exports = {
-  presets: [
-    require('babel-preset-es2015'),
-  ],
-  plugins: [
-    [require('babel-plugin-transform-es2015-template-literals'), { spec: true }],
-    require('babel-plugin-transform-es3-member-expression-literals'),
-  ],
-};
-```
-
-For more info, check out the [babel handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/user-handbook.md#making-your-own-preset) section on presets or just look at the [es2015](https://github.com/babel/babel/tree/master/packages/babel-preset-es2015) preset repo as an example.
 
 ## Transform Plugins
 
@@ -198,3 +181,38 @@ Plugins can specify options. You can do so in your config by wrapping it in an a
 
 Please refer to the excellent [babel-handbook](https://github.com/thejameskyle/babel-handbook)
 to learn how to create your own plugins.
+
+The simple plugin that reverse's names (from the homepage):
+
+```js
+export default function ({types: t}) {
+  return {
+    visitor: {
+      Identifier(path) {
+        let name = path.node.name;
+        // reverse the name: JavaScript -> tpircSavaJ
+        path.node.name = name.split('').reverse().join('');
+      }
+    }
+  };
+}
+```
+
+## Creating a Preset
+
+To make your own preset, you just need to export a config.
+
+```js
+// Presets can contain other presets, and plugins with options.
+module.exports = {
+  presets: [
+    require('babel-preset-es2015'),
+  ],
+  plugins: [
+    [require('babel-plugin-transform-es2015-template-literals'), { spec: true }],
+    require('babel-plugin-transform-es3-member-expression-literals'),
+  ],
+};
+```
+
+For more info, check out the [babel handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/user-handbook.md#making-your-own-preset) section on presets or just look at the [es2015](https://github.com/babel/babel/tree/master/packages/babel-preset-es2015) preset repo as an example.
