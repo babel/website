@@ -8,6 +8,6 @@ Lastly, in **Languages & Frameworks | JavaScript | JavaScript language version**
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For more information see the <a href="http://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling#babelfilewatcher">post</a> in the WebStorm blog.
+    For more information see the <a href="https://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling#babelfilewatcher">post</a> in the WebStorm blog.
   </p>
 </blockquote>

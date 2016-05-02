@@ -13,7 +13,7 @@ redirect_from:
   <h3>es6features</h3>
   <p>
     This document was originally taken from Luke Hoban's excellent
-    <a href="http://git.io/es6features">es6features</a> repo. Go give it a star
+    <a href="https://git.io/es6features">es6features</a> repo. Go give it a star
     on GitHub!
   </p>
 </blockquote>
@@ -32,7 +32,7 @@ redirect_from:
 was ratified in June 2015.  ES2015 is a significant update to the language, and
 the first major update to the language since ES5 was standardized in 2009.
 Implementation of these features in major JavaScript engines is
-[underway now](http://kangax.github.io/es5-compat-table/es6/).
+[underway now](https://kangax.github.io/es5-compat-table/es6/).
 
 See the [ES2015 standard](http://www.ecma-international.org/ecma-262/6.0/index.html)
 for full specification of the ECMAScript 2015 language.
@@ -125,7 +125,7 @@ var obj = {
 
 <blockquote class="babel-callout babel-callout-warning">
   <p>
-    The <code>__proto__</code> property requires native support, and was deprecated in previous ECMAScript versions. Most engines now support the property, but <a href="http://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>. Also, note that only <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">web browsers</a> are required to implement it, as it's in <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">Annex B</a>. It is available in Node.
+    The <code>__proto__</code> property requires native support, and was deprecated in previous ECMAScript versions. Most engines now support the property, but <a href="https://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>. Also, note that only <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">web browsers</a> are required to implement it, as it's in <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">Annex B</a>. It is available in Node.
   </p>
 </blockquote>
 
@@ -596,7 +596,7 @@ var handler =
 <blockquote class="babel-callout babel-callout-danger">
   <h4>Unsupported feature</h4>
   <p>
-    Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="http://kangax.github.io/compat-table/es6/#Proxy">various JavaScript engines</a>.
+    Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="https://kangax.github.io/compat-table/es6/#Proxy">various JavaScript engines</a>.
   </p>
 </blockquote>
 

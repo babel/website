@@ -49,4 +49,4 @@ Add the following line to your `.babelrc` file:
 ## References
 
 * [Proposal: Exponentiation Operator](https://github.com/rwaldron/exponentiation-operator)
-* [Spec: Exponential Operator](http://rwaldron.github.io/exponentiation-operator/)
+* [Spec: Exponential Operator](https://rwaldron.github.io/exponentiation-operator/)
