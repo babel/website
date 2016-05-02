@@ -41,6 +41,7 @@ for full specification of the ECMAScript 2015 language.
 
 <!-- To not break some existing links to here, just in case. -->
 <a id="arrows"></a>
+
 ### Arrows and Lexical This
 
 Arrows are a function shorthand using the `=>` syntax.  They are syntactically
