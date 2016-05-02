@@ -77,7 +77,7 @@ sslUrls = filter.call(sslUrls, href => href.substring(0, 5) === 'https');
 console.log(sslUrls);
 ```
 
-### Auto self biding
+### Auto self binding
 When nothing is specified before the `::` operator, the function is bound to its object:
 
 ```js
