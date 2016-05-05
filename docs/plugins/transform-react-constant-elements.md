@@ -50,4 +50,4 @@ Add the following line to your `.babelrc`:
 {
   "plugins": ["transform-react-constant-elements"]
 }
-``
+```
