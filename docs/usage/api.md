@@ -59,4 +59,10 @@ babel.transformFileSync(filename, [options]) // => { code, map, ast }
 babel.transformFileSync("filename.js", options).code;
 ```
 
-### babel.transformFromAst(ast, [code], [[options](/docs/usage/options)])
+## babel.transformFromAst(ast, [code], [[options](/docs/usage/options)])
+
+```js
+const code = "if (true) return;";
+const ast = babylon.parse(code, { allowReturnOutsideFunction: true });
+const { code, map, ast } = babel.transformFromAst(ast, code, options);
+```
