@@ -14,6 +14,36 @@ Compile ES2015 classes to ES5
   </p>
 </blockquote>
 
+## Options `loose`
+
+#### Method enumerability
+
+Please note that in loose mode class methods **are** enumerable. This is not in line
+with the spec and you may run into issues.
+
+#### Method assignment
+
+Under loose mode, methods are defined on the class prototype with simple assignments
+instead of being defined. This can result in the following not working:
+
+```javascript
+class Foo {
+  set bar() {
+    throw new Error("foo!");
+  }
+}
+
+class Bar extends Foo {
+  bar() {
+    // will throw an error when this method is defined
+  }
+}
+```
+
+When `Bar.prototype.foo` is defined it triggers the setter on `Foo`. This is a
+case that is very unlikely to appear in production code however it's something
+to keep in mind.
+
 ## Installation
 
 ```sh
