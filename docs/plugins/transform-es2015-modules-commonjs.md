@@ -50,7 +50,9 @@ $ npm install babel-plugin-transform-es2015-modules-commonjs
 {
   "plugins": [
     ["transform-es2015-modules-commonjs", {
-      "allowTopLevelThis": true
+      "allowTopLevelThis": false,
+      "strict": false,
+      "loose": false
     }]
   ]
 }
