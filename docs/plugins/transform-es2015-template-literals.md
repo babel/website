@@ -14,6 +14,9 @@ Compile ES2015 template literals to ES5
 $ npm install babel-plugin-transform-es2015-template-literals
 ```
 
+### Options: `loose`
+
+In loose mode, tagged template literal objects aren't frozen.
 
 ### Options: `spec`
 
