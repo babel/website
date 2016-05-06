@@ -28,6 +28,27 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = 42;
 ```
 
+## Options `loose`
+
+By default, when using exports with babel a non-enumerable `__esModule` property
+is exported.
+
+```javascript
+var foo = exports.foo = 5;
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+```
+
+In environments that don't support this you can enable loose mode on `es6.modules`
+and instead of using `Object.defineProperty` an assignment will be used instead.
+
+```javascript
+var foo = exports.foo = 5;
+exports.__esModule = true;
+```
+
 ## Installation
 
 ```sh
