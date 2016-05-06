@@ -9,6 +9,13 @@ package: babel-plugin-transform-regenerator
 This plugin uses the [regenerator](https://github.com/facebook/regenerator) module to
 transform async and generator functions.
 
+<blockquote class="babel-callout babel-callout-info">
+  <h4>Runtime required</h4>
+  <p>
+    You need to use either the <a href="/docs/usage/polyfill">Babel polyfill</a> or the <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a>.
+  </p>
+</blockquote>
+
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Async functions</h4>
   <p>
