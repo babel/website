@@ -8,6 +8,26 @@ package: babel-plugin-transform-async-to-module-method
 
 This plugin allows Babel to transform async functions into a Bluebird coroutine.
 
+## Example
+
+**In**
+
+```javascript
+async function foo() {
+  await bar();
+}
+```
+
+**Out**
+
+```javascript
+var Bluebird = require("bluebird");
+
+var foo = Bluebird.coroutine(function* () {
+  yield bar();
+});
+```
+
 ## Installation
 
 ```sh
