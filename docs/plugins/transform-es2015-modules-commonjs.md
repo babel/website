@@ -30,7 +30,10 @@ exports.default = 42;
 
 ## Options `loose`
 
-By default, when using exports with babel a non-enumerable `__esModule` property
+As per the spec, `import` and `export` are only allowed to be used at the top
+level. When in loose mode these are allowed to be used anywhere.
+
+And by default, when using exports with babel a non-enumerable `__esModule` property
 is exported.
 
 ```javascript
