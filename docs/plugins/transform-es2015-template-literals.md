@@ -14,6 +14,23 @@ Compile ES2015 template literals to ES5
 $ npm install babel-plugin-transform-es2015-template-literals
 ```
 
+
+### Options: `spec`
+
+This option wraps all template literal expressions with `String`. See [Issue #1065](https://phabricator.babeljs.io/T1065) for more info.
+
+**In**
+
+```javascript
+`foo${bar}`;
+```
+
+**Out**
+
+```javascript
+"foo" + String(bar);
+```
+
 ## Usage
 
 ### Via `.babelrc` (Recommended)
