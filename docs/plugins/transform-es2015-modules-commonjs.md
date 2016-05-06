@@ -10,6 +10,24 @@ This plugin transforms ES2015 modules to CommonJS.
 
 [CommonJS (CJS) Modules/1.1](http://wiki.commonjs.org/wiki/Modules/1.1)
 
+## Example
+
+**In**
+
+```javascript
+export default 42;
+```
+
+**Out**
+
+```javascript
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = 42;
+```
+
 ## Installation
 
 ```sh
