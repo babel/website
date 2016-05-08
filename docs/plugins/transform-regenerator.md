@@ -7,12 +7,12 @@ package: babel-plugin-transform-regenerator
 ---
 
 This plugin uses the [regenerator](https://github.com/facebook/regenerator) module to
-transform async and generator functions.
+transform async and generator functions. `regeneratorRuntime` is not included.
 
 <blockquote class="babel-callout babel-callout-info">
   <h4>Runtime required</h4>
   <p>
-    You need to use either the <a href="/docs/usage/polyfill">Babel polyfill</a> or the <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a>.
+    You need to use either the <a href="/docs/usage/polyfill">Babel polyfill</a> or the <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a> so that <code>regeneratorRuntime</code> will be defined.
   </p>
 </blockquote>
 
