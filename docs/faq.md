@@ -46,12 +46,6 @@ Please help out with documentation if you can by submitting a pull request to th
 ## Why am I getting a Syntax Error/Unexpected Token?
 It's most likely the case that you didn't include a plugin/preset that supports that feature. (It's also possible it's a bug in the parser, or that it actually is a syntax error).
 
-## Why is babel-x's dependency on `babel-runtime` not updated?
-
-Babel 6 (all the packages themselves) use babel 5 to compile plugins.
-
-As an example, `babel-generator@6.x.x` itself is written in ES2015+ and transpiled with Babel 5.x. It uses `babel-runtime@5.x` for it's own code (and is not related to the a user's output code).
-
 ## Why isn't a certain babel-x package updated?
 
 When we do a release, the only packages that get updated are the packages that
