@@ -46,7 +46,7 @@ The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
  - [stage-3](/docs/plugins/preset-stage-3) - Candidate: complete spec and initial browser implementations.
  - stage-4 - Finished: will be added to the next yearly release.
 
-Also check out the [current tc39 proposals](https://github.com/tc39/ecma262#current-proposals) and it's [process document](https://tc39.github.io/process-document).
+Also check out the [current tc39 proposals](https://github.com/tc39/proposals) and it's [process document](https://tc39.github.io/process-document).
 
 ## Transform Plugins
 
