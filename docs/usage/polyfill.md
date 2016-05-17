@@ -48,9 +48,9 @@ polyfills are loaded first:
 import "babel-polyfill";
 ```
 
-With webpack.config.js, add 'babel-polyfill' to your entry array:
+With `webpack.config.js`, add `babel-polyfill` to your entry array:
+
 ```js
-// you can also include it in your config
 module.exports = {
    entry: ['babel-polyfill', './app/js']
 };
