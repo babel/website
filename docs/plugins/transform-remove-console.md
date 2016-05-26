@@ -36,4 +36,4 @@ Add the following line to your `.babelrc`:
 {
   "plugins": ["transform-remove-console"]
 }
-``
+```
