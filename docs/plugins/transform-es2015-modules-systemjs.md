@@ -51,7 +51,7 @@ Add the following line to your `.babelrc` file:
 {
   "plugins": [
     ["transform-es2015-modules-systemjs", {
-      // outputs `customSystemName.register(...`
+      // outputs `customSystemName.register(...` instead of `System.register(...`
       "systemGlobal": "customSystemName" 
     }]
   ]
