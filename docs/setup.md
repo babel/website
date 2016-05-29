@@ -56,7 +56,13 @@ custom_js_with_timestamps:
       <h2><span class="step-no">4</span> Create <code>.babelrc</code> configuration file</h2>
 
       <p>Great! You've configured Babel but you haven't made it actually <em>do</em> anything. Create a <a href="/docs/usage/babelrc">.babelrc</a> config in your project root and enable some <a href="/docs/plugins">plugins</a>.</p>
-      <p>Assuming you installed the <a href="https://babeljs.io/docs/plugins/preset-es2015/">ES2015 Preset</a>, you can do this with <pre>echo { "presets": ["es2015"] } > .babelrc</pre></p>
+      <p>Assuming you have installed the <a href="https://babeljs.io/docs/plugins/preset-es2015/">ES2015 Preset</a>, in order to enable it your <code>.babelrc</code> file should look like this:
+      
+      <code>
+      {
+          presets: [["es2015"]]
+      }
+      </code>
 
       <p>
         <strong>Note</strong>: Running a Babel 6.x project using npm 2.x can cause performance problems because of the way npm 2.x installs dependencies. This problem can be eliminated by either switching to npm 3.x or running npm 2.x with the <a href="https://docs.npmjs.com/cli/dedupe">dedupe</a> flag. To check what version of npm you have run <pre>npm --version</pre>
