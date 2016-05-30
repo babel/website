@@ -8,7 +8,13 @@ redirect_from:
  - /docs/usage/modules/
 ---
 
-Out of the box Babel doesn't do anything. You need to use plugins to transform your code.
+Babel is a compiler. At a high level, it has 3 stages that it runs code in: parsing, transforming, and generation (like many other compilers).
+
+> For an awesome/simple tutorial on compliers, check out [the-super-tiny-complier](https://github.com/thejameskyle/the-super-tiny-compiler), which also explains how Babel itself works on a high level.
+
+Now, out of the box Babel doesn't do anything. It basically acts like `const babel = code => code;` by parsing the code and then generating the same code back out again.
+
+You will need to add some plugins for Babel to do anything (they affect the 2nd stage, transformation).
 
 Don't know where to start? Check out some of our [presets](#presets).
 
