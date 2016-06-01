@@ -60,7 +60,7 @@ custom_js_with_timestamps:
       
       <code>
       {
-          presets: [["es2015"]]
+          presets: ["es2015"]
       }
       </code>
 
