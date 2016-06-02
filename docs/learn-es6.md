@@ -47,7 +47,8 @@ for full specification of the ECMAScript 2015 language.
 Arrows are a function shorthand using the `=>` syntax.  They are syntactically
 similar to the related feature in C#, Java 8 and CoffeeScript.  They support
 both expression and statement bodies.  Unlike functions, arrows share the same
-lexical `this` as their surrounding code.
+lexical `this` as their surrounding code. If an arrow is inside another function, 
+it shares the "arguments" variable of its parent function.
 
 ```js
 // Expression bodies
@@ -69,6 +70,22 @@ var bob = {
       console.log(this._name + " knows " + f));
   }
 };
+
+// Lexical arguments
+function square() {
+  let example = () => {
+    let numbers = [];
+    for (number of arguments) {
+      numbers.push(number * 2);
+    }
+
+    return numbers;
+  };
+
+  return example();
+}
+
+square(2, 4, 7.5, 8, 11.5, 21); // returns: [4, 8, 15, 16, 23, 42]
 ```
 
 ### Classes
