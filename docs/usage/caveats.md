@@ -1,41 +1,37 @@
 ---
 layout: docs
 title: Caveats
-description: Just some things to keep in mind when using babel.
+description: Just some things to keep in mind when using Babel.
 permalink: /docs/usage/caveats/
-redirect_from:
- - /caveats.html
- - /docs/caveats/
+redirect_from: /caveats.html
 ---
 
 ## Polyfills
 
 In order for certain features to work they require certain polyfills. You can satisfy **all**
-Babel feature requirements by using the included [polyfill](/docs/usage/polyfill).
+Babel feature requirements by using [babel-polyfill](/docs/usage/polyfill).
 
-You may alternatively selectively include what you need:
+You may alternatively/selectively include what you need:
 
 | Feature                     | Requirements                                                                          |
 | --------------------------- | ------------------------------------------------------------------------------------- |
-| Abstract References         | `Symbol`                                                                              |
-| Array destructuring         | `Symbol`                                                                             |
 | Async functions, Generators | [regenerator runtime](https://github.com/facebook/regenerator/blob/master/runtime.js) |
-| Comprehensions              | `Array.from`                                                                          |
-| For Of                      | `Symbol`, `prototype[Symbol.iterator]`                                                |
+| Array destructuring, For Of | `Symbol`, `prototype[Symbol.iterator]`                                                |
 | Spread                      | `Array.from`                                                                          |
+
+There is also the `loose` option for some of these plugins. 
 
 ## Classes
 
 Built-in classes such as `Date`, `Array`, `DOM` etc cannot be properly subclassed
-due to limitations in ES5.
+due to limitations in ES5 (for the [es2015-classes](/docs/plugins/transform-es2015-classes) plugin).
+You can try to use [babel-plugin-transform-builtin-extend](https://github.com/loganfsmyth/babel-plugin-transform-builtin-extend) based on `Object.setPrototypeOf` and `Reflect.construct`, but it also has some limitations.
 
 ## ES5
 
 Since Babel assumes that your code will be ran in an ES5 environment it uses ES5
 functions. So if you're using an environment that has limited or no support for
-ES5 such as lower versions of IE then using the
-[es5-shim](https://github.com/es-shims/es5-shim) along with the
-[Babel polyfill](/docs/usage/polyfill) will add support for these methods.
+ES5 such as lower versions of IE then using [babel-polyfill](/docs/usage/polyfill) will add support for these methods.
 
 ## Internet Explorer
 
@@ -47,11 +43,11 @@ this is widely supported but you may run into problems with much older browsers.
 
 **NOTE:** `__proto__` is not supported on IE <= 10 so static properties
 **will not** be inherited. See the
-[protoToAssign](/docs/usage/transformers/spec/proto-to-assign) for a possible work
+[protoToAssign](/docs/plugins/transform-proto-to-assign) for a possible work
 around.
 
 For classes that have `super`s, the super class won't resolve correctly. You can
-get around this by enabling [loose mode](/docs/usage/loose/) for classes.
+get around this by enabling the `loose` option in the [es2015-classes](/docs/plugins/transform-es2015-classes) plugin.
 
 ### Getters/setters (8 and below)
 
@@ -66,5 +62,4 @@ isn't recommended.
 
 By default, when using modules with Babel a non-enumerable `__esModule` property
 is exported. This is done through the use of `Object.defineProperty` which is
-unsupported in IE8 and below. A workaround for this is to enable
-[loose mode - modules](/docs/usage/loose/#es6-modules).
+unsupported in IE8 and below. A workaround for this is to enable the `loose` option in your corresponding module plugin.

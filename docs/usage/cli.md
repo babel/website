@@ -4,6 +4,7 @@ title: CLI
 description: How to use the CLI tools.
 permalink: /docs/usage/cli/
 redirect_from: /usage.html
+package: babel-cli
 ---
 
 <p class="lead">
@@ -11,14 +12,9 @@ redirect_from: /usage.html
   command line.
 </p>
 
-## Install
+## Installation
 
-Using [npm](https://www.npmjs.com/) you can install Babel globally, making it
-available from the command line.
-
-```sh
-$ npm install --global babel
-```
+{% include tools/babel_cli/install.md %}
 
 ## babel
 
@@ -60,7 +56,7 @@ $ babel script.js --out-file script-compiled.js --source-maps inline
 
 ### Compile Directories
 
-Compile the entire `src` directory and output it to the `lib` directory.
+Compile the entire `src` directory and output it to the `lib` directory. You may use `--out-dir` or `-d`.
 
 ```sh
 $ babel src --out-dir lib
@@ -80,7 +76,27 @@ Pipe a file in via stdin and output it to `script-compiled.js`
 $ babel --out-file script-compiled.js < script.js
 ```
 
+### Advanced Usage
+
+There are many more options available in the babel CLI, see [options](/docs/usage/options/), `babel --help` and other sections for more information.
+
 ## babel-node
+
+<blockquote class="babel-callout babel-callout-warning">
+  <h4>Not meant for production use</h4>
+  <p>
+    You should not be using <code>babel-node</code> in production. It is unnecessarily heavy,
+    with high memory usage due to the cache being stored in memory. You will also always
+    experience a startup performance penalty as the entire app needs to be compiled on the fly.
+  </p>
+</blockquote>
+<blockquote class="babel-callout babel-callout-info">
+  <h4>ES6-style module-loading may not function as expected</h4>
+  <p>
+    Due to technical limitations ES6-style module-loading is not fully supported in a <code>babel-node REPL</code>.
+  </p>
+</blockquote>
+
 
 babel comes with a second CLI which works exactly the same as Node.js's CLI, only
 it will compile ES6 code before running it.
@@ -112,7 +128,7 @@ $ babel-node [options] [ -e script | script.js ] [arguments]
 When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
 
 ```sh
-$ babel-node --debug --stage 0 -- script.js --debug
+$ babel-node --debug --presets es2015 -- script.js --debug
 ```
 
 ### Options
@@ -123,6 +139,5 @@ $ babel-node --debug --stage 0 -- script.js --debug
 | `-p, --print`            |                      | Evaluate script and print result |
 | `-i, --ignore [regex]`   | `node_modules`       | Ignore all files that match this regex when using the require hook |
 | `-x, --extensions`       | `".js",".jsx",".es6",".es"` | List of extensions to hook into |
-| `-r, --stage [stage]`    | `2`                  | Set the [experimental](/docs/usage/experimental) proposal stage |
-| `-w, --whitelist`        |                      | Whitelist of transformers to ONLY use |
-| `-b, --blacklist`        |                      | Blacklist of transformers to NOT use |
+| `presets`                | `[]`                 | List of [presets](/docs/plugins/#presets) (a set of plugins) to load and use. |
+| `plugins`                | `[]`                 | List of [plugins](/docs/plugins/) to load and use. |

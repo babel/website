@@ -3,62 +3,34 @@ layout: default
 permalink: /repl/
 fullscreen: true
 redirect_from: "/repl.html"
+custom_js_with_timestamps:
+- repl.js
+third_party_js:
+- https://npmcdn.com/babel-standalone@6/babel.min.js
+- https://npmcdn.com/babel-polyfill@6/dist/polyfill.min.js
+- https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
 ---
-
 <div class="babel-repl">
   <form class="form babel-repl-toolbar">
     <div class="pull-left">
-      <div class="form-group">
-        <label for="option-experimental">
-          <input id="option-experimental" type="checkbox">
-          Experimental
-        </label>
-      </div>
-
-      <div class="form-group">
-        <label for="option-loose-mode">
-          <input id="option-loose-mode" type="checkbox">
-          Loose mode
-        </label>
-      </div>
-
       <div class="form-group">
         <label for="option-evaluate">
           <input id="option-evaluate" type="checkbox">
           Evaluate
         </label>
       </div>
+
+      Presets:
+      <div id="babel-repl-presets"></div>
+      <label for="option-lineWrap">
+        <input id="option-lineWrap" type="checkbox">
+        Line Wrap
+      </label>
     </div>
 
     <div class="pull-right">
-      <div class="form-group hidden">
-        <label for="examples">Examples:</label>
-        <select id="examples">
-          <optgroup label="ES6 Features">
-            <option>Arrows</option>
-            <option>Classes</option>
-            <option>Enhanced Object Literals</option>
-            <option>Template Strings</option>
-            <option>Destructuring</option>
-            <option>Default + Rest + Spread</option>
-            <option>Let + Const</option>
-            <option>Iterators + For..Of</option>
-            <option>Generators</option>
-            <option>Comprehensions</option>
-            <option>Unicode</option>
-            <option>Modules</option>
-            <option>Module Loaders</option>
-            <option>Map + Set + WeakMap + WeakSet</option>
-            <option>Proxies</option>
-            <option>Symbols</option>
-            <option>Subclassable Built-ins</option>
-            <option>Math + Number + String + Object APIs</option>
-            <option>Binary and Octal Literals</option>
-            <option>Promises</option>
-            <option>Reflect API</option>
-            <option>Tail Calls</option>
-          </optgroup>
-        </select>
+      <div class="form-group">
+        <strong>Babel <span id="babel-repl-version"></span></strong>
       </div>
     </div>
   </form>
@@ -67,8 +39,4 @@ redirect_from: "/repl.html"
   <div class="babel-repl-editor babel-repl-output"><div class="ace_editor"></div></div>
   <div class="babel-repl-reporter babel-repl-errors"></div>
   <div class="babel-repl-reporter babel-repl-console"></div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
-  <script src="{{ "/scripts/babel.js" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
-  <script src="{{ "/scripts/repl.js" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
 </div>

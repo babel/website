@@ -1,18 +1,19 @@
 ---
 layout: docs
-title: Learn ES6
-description: A detailed overview of ECMAScript 6 features.
-permalink: /docs/learn-es6/
+title: Learn ES2015
+description: A detailed overview of ECMAScript 2015 features. Based on Luke Hoban's es6features repo.
+permalink: /docs/learn-es2015/
 redirect_from:
+ - /docs/learn-es6/
  - /features.html
  - /docs/tour/
 ---
 
 <blockquote class="babel-callout babel-callout-info">
-  <h4>es6features</h4>
+  <h3>es6features</h3>
   <p>
-    This document is taken from Luke Hoban's excellent
-    <a href="http://git.io/es6features">es6features</a> repo. Go give it a star
+    This document was originally taken from Luke Hoban's excellent
+    <a href="https://git.io/es6features">es6features</a> repo. Go give it a star
     on GitHub!
   </p>
 </blockquote>
@@ -27,18 +28,21 @@ redirect_from:
 
 ## Introduction
 
-> ECMAScript 6 is the upcoming version of the ECMAScript standard.  This
-standard is targeting ratification in June 2015.  ES6 is a significant update to
-the language, and the first update to the language since ES5 was standardized in
-2009. Implementation of these features in major JavaScript engines is
-[underway now](http://kangax.github.io/es5-compat-table/es6/).
+> ECMAScript 2015 is the newest version of the ECMAScript standard. This standard
+was ratified in June 2015.  ES2015 is a significant update to the language, and
+the first major update to the language since ES5 was standardized in 2009.
+Implementation of these features in major JavaScript engines is
+[underway now](https://kangax.github.io/es5-compat-table/es6/).
 
-See the [draft ES6 standard](https://people.mozilla.org/~jorendorff/es6-draft.html)
-for full specification of the ECMAScript 6 language.
+See the [ES2015 standard](http://www.ecma-international.org/ecma-262/6.0/index.html)
+for full specification of the ECMAScript 2015 language.
 
-## ECMAScript 6 Features
+## ECMAScript 2015 Features
 
-### Arrows
+<!-- To not break some existing links to here, just in case. -->
+<a id="arrows"></a>
+
+### Arrows and Lexical This
 
 Arrows are a function shorthand using the `=>` syntax.  They are syntactically
 similar to the related feature in C#, Java 8 and CoffeeScript.  They support
@@ -64,12 +68,12 @@ var bob = {
     this._friends.forEach(f =>
       console.log(this._name + " knows " + f));
   }
-}
+};
 ```
 
 ### Classes
 
-ES6 classes are a simple sugar over the prototype-based OO pattern.  Having a
+ES2015 classes are a simple sugar over the prototype-based OO pattern.  Having a
 single convenient declarative form makes class patterns easier to use, and
 encourages interoperability.  Classes support prototype-based inheritance, super
 calls, instance and static methods and constructors.
@@ -106,6 +110,8 @@ conveniences.
 var obj = {
     // __proto__
     __proto__: theProtoObj,
+    // Does not set internal prototype
+    '__proto__': somethingElse,
     // Shorthand for ‘handler: handler’
     handler,
     // Methods
@@ -120,9 +126,7 @@ var obj = {
 
 <blockquote class="babel-callout babel-callout-warning">
   <p>
-    <code>__proto__</code> support comes from the JavaScript engine running
-    your program. Although most support the now standard property,
-    <a href="http://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>.
+    The <code>__proto__</code> property requires native support, and was deprecated in previous ECMAScript versions. Most engines now support the property, but <a href="https://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>. Also, note that only <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">web browsers</a> are required to implement it, as it's in <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">Annex B</a>. It is available in Node.
   </p>
 </blockquote>
 
@@ -136,7 +140,7 @@ contents.
 
 ```js
 // Basic literal string creation
-`In ES5 "\n" is a line-feed.`
+`This is a pretty little template string.`
 
 // Multiline strings
 `In ES5 this is
@@ -145,6 +149,9 @@ contents.
 // Interpolate variable bindings
 var name = "Bob", time = "today";
 `Hello ${name}, how are you ${time}?`
+
+// Unescaped template strings
+String.raw`In ES5 "\n" is a line-feed.`
 
 // Construct an HTTP request prefix is used to interpret the replacements and construction
 GET`http://foo.org/bar?a=${a}&b=${b}
@@ -162,7 +169,9 @@ lookup `foo["bar"]`, producing `undefined` values when not found.
 
 ```js
 // list matching
-var [a, , b] = [1,2,3];
+var [a, ,b] = [1,2,3];
+a === 1;
+b === 3;
 
 // object matching
 var { op: a, lhs: { op: b }, rhs: c }
@@ -185,6 +194,12 @@ a === undefined;
 // Fail-soft destructuring with defaults
 var [a = 1] = [];
 a === 1;
+
+// Destructuring + defaults arguments
+function r({x, y, w = 10, h = 10}) {
+  return x + y + w + h;
+}
+r({x:1, y:2}) === 23
 ```
 
 ### Default + Rest + Spread
@@ -231,6 +246,8 @@ function f() {
       // error, const
       x = "foo";
     }
+    // okay, declared with `let`
+    x = "bar";
     // error, already declared in block
     let x = "inner";
   }
@@ -338,31 +355,7 @@ interface Generator extends Iterator {
 
 ### Comprehensions
 
-Array and generator comprehensions provide simple declarative list processing
-similar as used in many functional programming patterns.
-
-```js
-// Array comprehensions
-var results = [
-  for(c of customers)
-    if (c.city == "Seattle")
-      { name: c.name, age: c.age }
-]
-
-// Generator comprehensions
-var results = (
-  for(c of customers)
-    if (c.city == "Seattle")
-      { name: c.name, age: c.age }
-)
-```
-
-<blockquote class="babel-callout babel-callout-warning">
-  <h4>Disabled by default</h4>
-  <p>
-    These are only available if you enable experimental support. See <a href="/docs/usage/experimental">experimental usage</a> for more information.
-  </p>
-</blockquote>
+Removed in Babel 6.0
 
 ### Unicode
 
@@ -407,12 +400,12 @@ export var pi = 3.141593;
 ```js
 // app.js
 import * as math from "lib/math";
-alert("2π = " + math.sum(math.pi, math.pi));
+console.log("2π = " + math.sum(math.pi, math.pi));
 ```
 ```js
 // otherApp.js
 import {sum, pi} from "lib/math";
-alert("2π = " + sum(pi, pi));
+console.log("2π = " + sum(pi, pi));
 ```
 
 Some additional features include `export default` and `export *`:
@@ -428,19 +421,26 @@ export default function(x) {
 ```js
 // app.js
 import exp, {pi, e} from "lib/mathplusplus";
-alert("2π = " + exp(pi, e));
+console.log("e^π = " + exp(pi));
 ```
 
 <blockquote class="babel-callout babel-callout-info">
   <h4>Module Formatters</h4>
   <p>
-    Babel can transpile ES6 Modules to several different formats including
+    Babel can transpile ES2015 Modules to several different formats including
     Common.js, AMD, System, and UMD. You can even create your own. For more
     details see the <a href="/docs/usage/modules">modules docs</a>.
   </p>
 </blockquote>
 
 ### Module Loaders
+
+<blockquote class="babel-callout babel-callout-warning">
+  <h4>Not part of ES2015</h4>
+  <p>
+    This is left as implementation-defined within the ECMAScript 2015 specification. The eventual standard will be in WHATWG's <a href="https://whatwg.github.io/loader/">Loader specification</a>, but that is currently a work in progress. What is below is from a previous ES2015 draft.
+  </p>
+</blockquote>
 
 Module loaders support:
 
@@ -562,30 +562,42 @@ There are traps available for all of the runtime-level meta-operations:
 ```js
 var handler =
 {
-  get:...,
-  set:...,
-  has:...,
-  deleteProperty:...,
-  apply:...,
-  construct:...,
-  getOwnPropertyDescriptor:...,
-  defineProperty:...,
-  getPrototypeOf:...,
-  setPrototypeOf:...,
-  enumerate:...,
-  ownKeys:...,
-  preventExtensions:...,
-  isExtensible:...
+  // target.prop
+  get: ...,
+  // target.prop = value
+  set: ...,
+  // 'prop' in target
+  has: ...,
+  // delete target.prop
+  deleteProperty: ...,
+  // target(...args)
+  apply: ...,
+  // new target(...args)
+  construct: ...,
+  // Object.getOwnPropertyDescriptor(target, 'prop')
+  getOwnPropertyDescriptor: ...,
+  // Object.defineProperty(target, 'prop', descriptor)
+  defineProperty: ...,
+  // Object.getPrototypeOf(target), Reflect.getPrototypeOf(target),
+  // target.__proto__, object.isPrototypeOf(target), object instanceof target
+  getPrototypeOf: ...,
+  // Object.setPrototypeOf(target), Reflect.setPrototypeOf(target)
+  setPrototypeOf: ...,
+  // for (let i in target) {}
+  enumerate: ...,
+  // Object.keys(target)
+  ownKeys: ...,
+  // Object.preventExtensions(target)
+  preventExtensions: ...,
+  // Object.isExtensible(target)
+  isExtensible :...
 }
 ```
 
 <blockquote class="babel-callout babel-callout-danger">
   <h4>Unsupported feature</h4>
   <p>
-    Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled.
-    See support from various
-    <a href="http://kangax.github.io/compat-table/es6/#Proxy">JavaScript
-    engines</a>.
+    Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="https://kangax.github.io/compat-table/es6/#Proxy">various JavaScript engines</a>.
   </p>
 </blockquote>
 
@@ -613,6 +625,8 @@ reflection features like `Object.getOwnPropertySymbols`.
     }
   };
 
+  // Limited support from Babel, full support requires native implementation.
+  typeof key === "symbol"
 })();
 
 var c = new MyClass("hello")
@@ -620,15 +634,15 @@ c["key"] === undefined
 ```
 
 <blockquote class="babel-callout babel-callout-info">
-  <h4>Support via polyfill</h4>
+  <h4>Limited support via polyfill</h4>
   <p>
-    In order to support Symbols you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
+    Limited support requires the Babel <a href="/docs/usage/polyfill">polyfill</a>. Due to language limitations, some features can't be transpiled or polyfilled. See core.js's <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">caveats section</a> for more details.
   </p>
 </blockquote>
 
 ### Subclassable Built-ins
 
-In ES6, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
+In ES2015, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
 
 ```js
 // User code of Array subclass
@@ -774,14 +788,15 @@ function factorial(n, acc = 1) {
 }
 
 // Stack overflow in most implementations today,
-// but safe on arbitrary inputs in eS6
+// but safe on arbitrary inputs in ES2015
 factorial(100000)
 ```
 
 <blockquote class="babel-callout babel-callout-warning">
-  <h4>Partial support</h4>
+  <h4>Temporarily Removed in Babel 6</h4>
   <p>
-    Only explicit self referencing tail recursion is supported due to the
+    Only explicit self referencing tail recursion was supported due to the
     complexity and performance impact of supporting tail calls globally.
+    Removed due to other bugs and will be re-implemented.
   </p>
 </blockquote>

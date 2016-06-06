@@ -2,7 +2,6 @@
   items:
     babel_cli: CLI
     babel_register: Require hook
-    babel_in_browser: Browser
 - name: Build systems
   items:
     broccoli: Broccoli
@@ -14,9 +13,13 @@
     gulp: Gulp
     jspm: jspm
     make: Make
+    msbuild: MSBuild
     requirejs: RequireJS
+    rollup: Rollup
     sprockets: Sprockets
     webpack: Webpack
+    fly: Fly
+    start: Start
 - name: Frameworks
   items:
     ember: Ember
@@ -25,15 +28,19 @@
     sails: Sails
 - name: Test frameworks
   items:
-    mocha: Mocha
+    ava: AVA
+    jasmine: Jasmine
     jest: Jest
     karma: Karma
+    lab: Lab
+    mocha: Mocha
 - name: Utilities
   items:
     connect: Connect
     nodemon: Nodemon
 - name: Language APIs
   items:
+    dotnet: C# / .NET
     node: Node
     ruby: Ruby
 - name: Template engines
@@ -42,3 +49,6 @@
 - name: Editors and IDEs
   items:
     webstorm: WebStorm
+- name: Debuggers
+  items:
+    babel_node_debug: Node Inspector

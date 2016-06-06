@@ -1,15 +1,18 @@
 (function(babel, $, _, ace, window) {
+  'use strict';
+
+  var presets = ['es2015', 'es2015-loose', 'react', 'stage-0', 'stage-1', 'stage-2', 'stage-3'];
 
   /* Throw meaningful errors for getters of commonjs. */
   ["module", "exports", "require"].forEach(function(commonVar){
-    Object.defineProperty(window, commonVar, { 
+    Object.defineProperty(window, commonVar, {
       configurable: true,
       get: function () {
         throw new Error(commonVar + " is not supported in the browser, you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
       }
     });
   });
-  
+
   /*
    * Utils for working with the browser's URI (e.g. the query params)
    */
@@ -87,6 +90,7 @@
 
     this.editor.setTheme('ace/theme/tomorrow');
     this.editor.setShowPrintMargin(false);
+    this.editor.commands.removeCommands(['gotoline', 'find']);
     this.$el.css({
       fontFamily: 'Menlo, Monaco, Consolas, "Courier New", monospace',
       lineHeight: 'inherit'
@@ -117,29 +121,70 @@
     };
   }
 
+  /**
+   * Options for selecting presets to use.
+   */
+  function getPresetOptions() {
+    // Create the checkboxes for all available presets
+    var $presetContainer = document.getElementById('babel-repl-presets');
+    var $presets = [];
+    presets.forEach(function(presetName) {
+      var $group = document.createElement('div');
+      $group.className = 'form-group';
+
+      var $label = document.createElement('label');
+      $label.htmlFor = 'option-' + presetName;
+      $group.appendChild($label);
+
+      var $input = document.createElement('input');
+      $input.name = 'preset';
+      $input.value = presetName;
+      $input.id = 'option-' + presetName;
+      $input.type = 'checkbox';
+      $label.appendChild($input);
+      $label.appendChild(document.createTextNode(' ' + presetName));
+
+      $presetContainer.appendChild($group);
+      $presets.push($input);
+    });
+
+    return {
+      get: function() {
+        return $presets
+          .filter(function($preset) { return $preset.checked; })
+          .map(function($preset) { return $preset.value; })
+          .join(',');
+      },
+      set: function(value) {
+        value = value.split(',');
+        $presets.forEach(function($preset) {
+          $preset.checked = value.indexOf($preset.value) > -1;
+        });
+      },
+      enumerable: true,
+      configurable: true,
+    };
+  }
+
   /*
    * Babel options for transpilation as used by the REPL
    */
   function Options () {
-    var $experimental = $('#option-experimental');
     var $evaluate = $('#option-evaluate');
-    var $loose = $('#option-loose-mode');
-    var $spec = $('#option-spec');
+    var $lineWrap = $('#option-lineWrap');
 
     var options = {};
     Object.defineProperties(options, {
-      'experimental': $checkbox($experimental),
-      'evaluate': $checkbox($evaluate),
-      'loose': $checkbox($loose),
-      'spec': $checkbox($spec)
+      evaluate: $checkbox($evaluate),
+      lineWrap: $checkbox($lineWrap),
+      presets: getPresetOptions(),
     });
 
     // Merge in defaults
     var defaults = {
-      experimental : true,
-      loose : false,
-      spec : false,
-      evaluate : true
+      evaluate: true,
+      lineWrap: false,
+      presets: 'es2015,stage-2,react'
     };
 
     _.assign(options, defaults);
@@ -168,6 +213,8 @@
     this.$errorReporter = $('.babel-repl-errors');
     this.$consoleReporter = $('.babel-repl-console');
     this.$toolBar = $('.babel-repl-toolbar');
+
+    document.getElementById('babel-repl-version').innerHTML = babel.version;
   }
 
   REPL.prototype.clearOutput = function () {
@@ -188,6 +235,7 @@
   };
 
   REPL.prototype.compile = function () {
+    this.output.session.setUseWrapMode(this.options.lineWrap);
 
     var transformed;
     var code = this.getSource();
@@ -195,8 +243,7 @@
 
     try {
       transformed = babel.transform(code, {
-        stage: this.options.experimental ? 0 : 2,
-        loose: this.options.loose && "all",
+        presets: this.options.presets.split(','),
         filename: 'repl'
       });
     } catch (err) {
@@ -211,8 +258,9 @@
     }
   };
 
+  var capturingConsole;
   REPL.prototype.evaluate = function(code) {
-    var capturingConsole = Object.create(console);
+    capturingConsole = Object.create(console);
     var $consoleReporter = this.$consoleReporter;
     var buffer = [];
     var error;
@@ -237,8 +285,8 @@
       capturingConsole.log.apply(capturingConsole, arguments);
     };
 
-    capturingConsole.log = 
-    capturingConsole.info = 
+    capturingConsole.log =
+    capturingConsole.info =
     capturingConsole.debug = function() {
       if (this !== capturingConsole) { return; }
 
@@ -301,7 +349,4 @@
   repl.$toolBar.on('change', onSourceChange);
 
   repl.compile();
-
-
-
-}(babel, $, _, ace, window));
+}(Babel, $, _, ace, window));

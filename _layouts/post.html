@@ -1,12 +1,17 @@
 ---
 layout: default
+custom_js:
+- social.js
 ---
 
 <div class="docs-header">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-push-3">
-        <h1 class="text-center">{{page.title}}</h1>
+      <div class="col-md-6 col-md-push-3 text-center">
+        {% if page.guest_post %}
+          <span class="babel-blog-title-label">Guest Post</span>
+        {% endif %}
+        <h1>{{page.title}}</h1>
       </div>
     </div>
   </div>
@@ -16,6 +21,14 @@ layout: default
   <div class="row">
     <div class="col-md-6 col-md-push-3 babel-blog-content">
       <p class="small text-center text-muted">Posted {{ page.date | date: "%b %-d, %Y" }} by {{ page.author }}{% if page.meta %} · {{ page.meta }}{% endif %}</p>
+
+      {% if page.guest_post %}
+        <blockquote class="babel-callout babel-callout-info">
+          <p>
+            {{ page.guest_description }}
+          </p>
+        </blockquote>
+      {% endif %}
 
       {{content}}
 
@@ -31,39 +44,6 @@ layout: default
       <hr>
 
       <div id="disqus_thread"></div>
-
-      <script type="text/javascript">
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-      </script>
-
-      <script type="text/javascript">
-      window.twttr = (function(d, s, id) {
-        var t, js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src="https://platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
-        return window.twttr || (t = { _e: [], ready: function(f) { t._e.push(f) } })
-      }(document,"script","twitter-wjs"));
-      </script>
-
-      <script type="text/javascript">
-          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-          var disqus_shortname = '6to5'; // required: replace example with your forum shortname
-
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
       <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </div>

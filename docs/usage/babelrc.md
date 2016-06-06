@@ -11,12 +11,25 @@ The entire range of Babel API [options](/docs/usage/options) are allowed.
 
 ```json
 {
-  "stage": 1,
-  "loose": ["es6.modules", "es6.classes"],
+  "plugins": ["transform-react-jsx"],
   "ignore": [
     "foo.js",
     "bar/**/*.js"
   ]
+}
+```
+
+## Use via `package.json`
+
+You can alternatively choose to specify your `.babelrc` config from within `package.json` like so:
+
+```javascript
+{
+  "name": "my-package",
+  "version": "1.0.0",
+  "babel": {
+    // my babel config here
+  }
 }
 ```
 
@@ -28,7 +41,7 @@ You can use the `env` option to set specific options when in a certain environme
 {
   "env": {
     "production": {
-      "optional": ["optimisation", "minification"]
+      "plugins": ["transform-react-constant-elements"]
     }
   }
 }
@@ -56,3 +69,7 @@ $ YOUR_COMMAND_HERE
 $ SET BABEL_ENV=production
 $ YOUR_COMMAND_HERE
 ```
+
+## Lookup behavior
+
+Babel will look for a `.babelrc` in the current directory of the file being transpiled. If one does not exist, it will travel up the directory tree until it finds either a `.babelrc`, or a `package.json` with a `"babel": {}` hash within.

@@ -3,10 +3,11 @@ layout: docs
 title: API
 description: How to use the Node.js API.
 permalink: /docs/usage/api/
+package: babel-core
 ---
 
 ```javascript
-var babel = require("babel");
+var babel = require("babel-core");
 ```
 
 ## babel.transform(code, [[options](/docs/usage/options)])
@@ -58,8 +59,12 @@ babel.transformFileSync(filename, [options]) // => { code, map, ast }
 babel.transformFileSync("filename.js", options).code;
 ```
 
-## `require("babel-core")`
+## babel.transformFromAst(ast, [code], [[options](/docs/usage/options)])
 
-While the regular `babel` package includes the CLI, we also publish a
-`babel-core` package that does not come with the CLI and has fewer dependencies
-for API-only users. The API itself is identical to the `babel` package.
+Given, an [AST](https://astexplorer.net/), transform it.
+
+```js
+const code = "if (true) return;";
+const ast = babylon.parse(code, { allowReturnOutsideFunction: true });
+const { code, map, ast } = babel.transformFromAst(ast, code, options);
+```

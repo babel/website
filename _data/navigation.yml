@@ -1,43 +1,27 @@
-- title: Learn ES6
-  url: /docs/learn-es6/
-- title: Using Babel
-  url: /docs/using-babel/
-- title: Docs
+- title: Learn ES2015
+  url: /docs/learn-es2015/
+- title: Setup
+  url: /docs/setup/
+- title: Plugins
+  url: /docs/plugins/
+- title: Usage
   url: /docs/usage/
   subnav:
+  - title: Options
+    url: /docs/usage/options/
+  - title: Caveats
+    url: /docs/usage/caveats/
+  - title: babelrc
+    url: /docs/usage/babelrc/
   - title: CLI
     url: /docs/usage/cli/
+  - title: Polyfill
+    url: /docs/usage/polyfill/
   - title: Require Hook
     url: /docs/usage/require/
   - title: API
     url: /docs/usage/api/
-  - title: Options
-    url: /docs/usage/options/
-  - title: Transformers
-    url: /docs/usage/transformers/
-  - title: Polyfill
-    url: /docs/usage/polyfill/
-  - title: Runtime
-    url: /docs/usage/runtime/
-  - title: babelrc
-    url: /docs/usage/babelrc/
-  - title: Plugins
-    url: /docs/usage/plugins/
-  - title: Caveats
-    url: /docs/usage/caveats/
-  - title: Modules
-    url: /docs/usage/modules/
-  - title: Loose mode
-    url: /docs/usage/loose/
   - title: Browser
     url: /docs/usage/browser/
-  - title: Experimental
-    url: /docs/usage/experimental/
-  - title: JSX
-    url: /docs/usage/jsx/
-  - title: External helpers
-    url: /docs/usage/external-helpers/
 - title: Try it out
   url: /repl/
-- title: FAQ
-  url: /docs/faq/

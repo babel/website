@@ -21,6 +21,7 @@ permalink: /users/
         <div class="row">
           {% for user in site.data.users %}
             <div class="col-md-4 col-sm-6">
+              <div class="babel-user-target" id="{{user.name}}"></div>
               <a class="babel-user" href="{{user.url}}" title="{{user.name}}">
                 <img class="img-responsive" src="/images/users/{{user.logo}}" alt="{{user.name}}">
               </a>
@@ -37,7 +38,10 @@ permalink: /users/
         </p>
         <p>
           To add your company or project to this page,
-          <a href="https://github.com/babel/babel.github.io/issues/new?title={{site.data.text.users.submit.title | cgi_escape }}&body={{site.data.text.users.submit.body | cgi_escape }}">please open an issue</a>.
+          <a href="https://github.com/babel/babel.github.io/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aclosed+%22New+User%3A%22">open a PR</a>.
+        </p>
+        <p>
+          For your logo, a 500x200 svg run through <code>svgo</code> would be great.
         </p>
       </div>
     </div>

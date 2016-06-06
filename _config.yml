@@ -9,16 +9,12 @@ github_username: babel
 exclude: ["node_modules"]
 
 # Build settings
-markdown: redcarpet
-# markdown: kramdown
-highlighter: pygments
-
-redcarpet:
-  extensions: ['tables', 'no_intra_emphasis', 'autolink', 'with_toc_data']
-
-# kramdown:
-#   input: GFM
-#   hard_wrap: false
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
 
 # Blog Settings
 permalink: /blog/:year/:month/:day/:title
@@ -26,3 +22,9 @@ paginate: 1
 
 gems:
   - jekyll-redirect-from
+  - jekyll-paginate
+
+default_js:
+  - "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
+  - "//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"
+  - "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"

@@ -13,8 +13,16 @@
   }
 
   p {
-    font-size: 1.5em;
     color: white;
+
+    &:not(.package-links) {
+      font-size: 1.5em;
+    }
+  }
+
+  a {
+    color: $babel-yellow;
+    text-decoration: underline;
   }
 }
 
@@ -23,7 +31,7 @@
     @extend .page-header;
   }
 
-  h2 + blockquote {
+  h2 + blockquote:not(.babel-callout) {
     @extend .lead;
     padding: 0;
     border-left: none;

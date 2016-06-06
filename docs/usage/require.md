@@ -3,6 +3,7 @@ layout: docs
 title: Require Hook
 description: How to use the require hook.
 permalink: /docs/usage/require/
+package: babel-register
 ---
 
 One of the ways you can use Babel is through the require hook. The require hook
@@ -10,42 +11,35 @@ will bind itself to node's `require` and automatically compile files on the
 fly. This is equivalent to CoffeeScript's
 [coffee-script/register](http://coffeescript.org/documentation/docs/register.html).
 
-<blockquote class="babel-callout babel-callout-warning">
-  <h4>Not suitable for libraries</h4>
-  <p>
-    The require hook automatically hooks itself into <strong>all</strong> node requires. This will pollute the global scope and introduce conflicts. If you're writing an application, it's completely fine to use. If, however, you're writing a library then you should compile your library and depend on the <a href="/docs/usage/runtime">babel-runtime</a>.
-  </p>
-</blockquote>
-
-<blockquote class="babel-callout babel-callout-warning">
-  <h4><code>utility.inlineEnvironmentVariables</code> use</h4>
-  <p>
-    Please note the <a href="/docs/usage/transformers/utility/inline-environment-variables#require-hook"> when used in conjunction.</a>
-  </p>
-</blockquote>
-
 ## Install
 
 ```sh
-$ npm install babel
+$ npm install babel-register
 ```
 
 ## Usage
 
 ```js
-require("babel/register");
+require("babel-register");
 ```
 
 All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`
-and `.js` will be transformed by Babel. The [polyfill](/docs/usage/polyfill) is also automatically required.
+and `.js` will be transformed by Babel.
+
+<blockquote class="babel-callout babel-callout-info">
+  <h4>Polyfill not included</h4>
+  <p>
+    You must include the <a href="/docs/usage/polyfill">polyfill</a> separately when using features that require it, like generators.
+  </p>
+</blockquote>
 
 **NOTE:** By default all requires to `node_modules` will be ignored. You can
 override this by passing an ignore regex via:
 
 ```js
-require("babel/register")({
+require("babel-register")({
   // This will override `node_modules` ignoring - you can alternatively pass
-  // a regex
+  // an array of strings to be explicitly matched or a regex / glob
   ignore: false
 });
 ```
@@ -53,18 +47,23 @@ require("babel/register")({
 ## Specifying options
 
 ```javascript
-require("babel/register")({
+require("babel-register")({
   // Optional ignore regex - if any filenames **do** match this regex then they
-  // aren't compiled
+  // aren't compiled.
   ignore: /regex/,
+
+  // Ignore can also be specified as a function.
+  ignore: function(filename) {
+    if (filename === '/path/to/es6-file.js') {
+      return false;
+    } else {
+      return true;
+    }
+  },
 
   // Optional only regex - if any filenames **don't** match this regex then they
   // aren't compiled
   only: /my_es6_folder/,
-
-  // See options above for usage
-  whitelist: [],
-  blacklist: [],
 
   // Setting this will remove the currently hooked extensions of .es6, `.es`, `.jsx`
   // and .js so you'll have to add them back if you want them to be used again.
@@ -72,9 +71,11 @@ require("babel/register")({
 });
 ```
 
+You can pass in all other [options](/docs/usage/options/#options) as well, including `plugins` and `presets`. But note that the closest [`.babelrc`](/docs/usage/babelrc/) to each file still applies, and takes precedence over any options you pass in here.
+
 ## Environment variables
 
-By default `babel-node` and `babel/register` will save to a json cache in your
+By default `babel-node` and `babel-register` will save to a json cache in your
 temporary directory.
 
 This will heavily improve with the startup and compilation of your files. There

@@ -1,3 +1,3 @@
 ```sh
-$ npm install --save-dev babel
+$ npm install --save-dev babel-register
 ```
