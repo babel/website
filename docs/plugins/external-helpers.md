@@ -45,7 +45,7 @@ You need to import/inject this file before executing your own code (instructions
 
 #### global
 
-`global` output format sets helpers as global variable by adding `babelHeleprs` to `global` or `this`.
+`global` output format sets helpers as global variable by adding `babelHelpers` to `global` or `self`.
 
 #### umd
 
