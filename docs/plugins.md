@@ -152,6 +152,8 @@ These plugins apply transformations to your code.
 
 These plugins allow Babel to parse specific types of syntax.
 
+> NOTE: transform plugins automatically inherit/use the syntax plugins so you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
+
  - [async-functions](/docs/plugins/syntax-async-functions)
  - [async-generators](/docs/plugins/syntax-async-generators)
  - [class-constructor-call](/docs/plugins/syntax-class-constructor-call) (Deprecated)
