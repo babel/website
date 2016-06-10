@@ -1,10 +1,10 @@
-In **Preferences | Tools | File watchers**, click **+** button and select Babel file watcher from the list.
+In **Preferences - Tools - File watchers**, click **+** button and select Babel file watcher from the list.
 
 Specify the path to Babel executable and click Ok.
 
-By default all files with `.js` and `.jsx` extensions will be automatically compiled with Babel upon change. The generated ES5 files and source maps will be saved next to original files.
+By default all files with a `.js` extension will be automatically compiled with Babel upon change. The generated ES5 files and source maps will be saved next to original files.
 
-Lastly, in **Languages & Frameworks | JavaScript | JavaScript language version**, choose ECMAScript 6.
+Lastly, in **Languages & Frameworks - JavaScript - JavaScript** language version, choose ECMAScript 6.
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
