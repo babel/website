@@ -442,3 +442,6 @@
 - name: GeekPark
   url: http://www.geekpark.net
   logo: geekpark.svg
+- name: Phoenix Robotix
+  url: http://phoenixrobotix.com
+  logo: phoenixrobotix.png
