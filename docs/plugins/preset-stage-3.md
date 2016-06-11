@@ -8,6 +8,7 @@ package: babel-preset-stage-3
 
 This preset includes the following plugins:
 
+- [syntax-trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
 - [transform-async-to-generator](/docs/plugins/transform-async-to-generator)
 - [transform-exponentiation-operator](/docs/plugins/transform-exponentiation-operator)
 
