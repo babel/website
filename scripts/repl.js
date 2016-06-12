@@ -137,10 +137,10 @@
       $group.appendChild($label);
 
       var $input = document.createElement('input');
+      $input.type = 'checkbox';
       $input.name = 'preset';
       $input.value = presetName;
       $input.id = 'option-' + presetName;
-      $input.type = 'checkbox';
       $label.appendChild($input);
       $label.appendChild(document.createTextNode(' ' + presetName));
 
