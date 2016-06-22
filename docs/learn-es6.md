@@ -108,10 +108,11 @@ conveniences.
 
 ```js
 var obj = {
-    // __proto__
+    // Sets the prototype. "__proto__" or '__proto__' would also work.
     __proto__: theProtoObj,
-    // Does not set internal prototype
-    '__proto__': somethingElse,
+    // Computed property name does not set prototype or trigger early error for
+    // duplicate __proto__ properties.
+    ['__proto__']: somethingElse,
     // Shorthand for ‘handler: handler’
     handler,
     // Methods
