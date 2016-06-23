@@ -32,7 +32,7 @@ This preset includes the following plugins:
 
 ## Basic Setup (with the CLI)
 
-> For more info, check out the setup page on the [cli](docs/setup) and the [usage](docs/usage/cli/) docs.
+> For more info, check out the setup page on the [cli](/docs/setup/) and the [usage](/docs/usage/cli/) docs.
 
 ```sh
 # install the cli and this preset
