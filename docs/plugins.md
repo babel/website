@@ -27,6 +27,7 @@ Don't want to assemble your own set of plugins? No problem! Presets are sharable
 We've assembled some for common environments:
 
  - [es2016](/docs/plugins/preset-es2016)
+   - [exponentiation-operator](/docs/plugins/transform-exponentiation-operator) 
  - [es2015](/docs/plugins/preset-es2015)
  - [react](/docs/plugins/preset-react)
 
@@ -107,7 +108,6 @@ These plugins apply transformations to your code.
  - [class-properties](/docs/plugins/transform-class-properties)
  - [decorators](/docs/plugins/transform-decorators)
  - [do-expressions](/docs/plugins/transform-do-expressions)
- - [exponentiation-operator](/docs/plugins/transform-exponentiation-operator)
  - [export-extensions](/docs/plugins/transform-export-extensions)
  - [function-bind](/docs/plugins/transform-function-bind)
  - [object-rest-spread](/docs/plugins/transform-object-rest-spread)
