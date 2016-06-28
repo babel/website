@@ -18,7 +18,7 @@ package: babel-cli
 
 ## babel
 
-#### Compile Files
+### Compile Files
 
 Compile the file `script.js` and **output to stdout**.
 
@@ -66,6 +66,14 @@ Compile the entire `src` directory and output it to the one concatenated file.
 
 ```sh
 $ babel src --out-file script-compiled.js
+```
+
+### Ignore files
+
+Ignore spec and test files
+
+```sh
+$ babel src --out-dir lib --ignore spec.js,test.js
 ```
 
 ### Piping Files
