@@ -8,7 +8,6 @@ package: babel-preset-stage-2
 
 This preset includes the following plugins:
 
-- [syntax-trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
 - [transform-object-rest-spread](/docs/plugins/transform-object-rest-spread)
 
 And all plugins from presets:
