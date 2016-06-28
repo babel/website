@@ -127,6 +127,7 @@ These plugins apply transformations to your code.
  - [react-inline-elements](/docs/plugins/transform-react-inline-elements)
  - [react-jsx](/docs/plugins/transform-react-jsx)
  - [react-jsx-compat](/docs/plugins/transform-react-jsx-compat)
+ - [react-jsx-self](/docs/plugins/transform-react-jsx-self)
  - [react-jsx-source](/docs/plugins/transform-react-jsx-source)
 
 ### Other
