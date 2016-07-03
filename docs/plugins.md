@@ -16,6 +16,56 @@ Now, out of the box Babel doesn't do anything. It basically acts like `const bab
 
 You will need to add some plugins for Babel to do anything (they affect the 2nd stage, transformation).
 
+## Plugin/Preset Paths
+
+If the plugin is on npm, you can pass in the name of the plugin and babel will check that it's installed in `node_modules`
+
+`"plugins": ["babel-plugin-myPlugin"]`
+
+If you prefix the plugin with `babel-plugin-`, you can use a shorthand to leave out that prefix
+
+`"plugins": ["myPlugin"]`
+
+You can also specify an relative/absolute path to your plugin/preset.
+
+`"plugins": ["./node_modules/asdf/plugin"]`
+
+## Plugin Options
+
+Plugins can specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
+
+```js
+{
+  "plugins": [
+    ["transform-async-to-module-method", {
+      "module": "bluebird",
+      "method": "coroutine"
+    }]
+  ]
+}
+```
+
+## Plugin Development
+
+Please refer to the excellent [babel-handbook](https://github.com/thejameskyle/babel-handbook)
+to learn how to create your own plugins.
+
+The simple plugin that reverse's names (from the homepage):
+
+```js
+export default function ({types: t}) {
+  return {
+    visitor: {
+      Identifier(path) {
+        let name = path.node.name;
+        // reverse the name: JavaScript -> tpircSavaJ
+        path.node.name = name.split('').reverse().join('');
+      }
+    }
+  };
+}
+```
+
 Don't know where to start? Check out some of our [presets](#presets).
 
 ## Presets
@@ -55,6 +105,25 @@ The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
  - stage-4 - Finished: will be added to the next yearly release.
 
 Also check out the [current tc39 proposals](https://github.com/tc39/proposals) and it's [process document](https://tc39.github.io/process-document).
+
+## Creating a Preset
+
+To make your own preset, you just need to export a config.
+
+```js
+// Presets can contain other presets, and plugins with options.
+module.exports = {
+  presets: [
+    require('babel-preset-es2015'),
+  ],
+  plugins: [
+    [require('babel-plugin-transform-es2015-template-literals'), { spec: true }],
+    require('babel-plugin-transform-es3-member-expression-literals'),
+  ],
+};
+```
+
+For more info, check out the [babel handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/user-handbook.md#making-your-own-preset) section on presets or just look at the [es2015](https://github.com/babel/babel/tree/master/packages/babel-preset-es2015) preset repo as an example.
 
 ## Transform Plugins
 
@@ -170,58 +239,3 @@ These plugins allow Babel to parse specific types of syntax.
  - [jsx](/docs/plugins/syntax-jsx)
  - [object-rest-spread](/docs/plugins/syntax-object-rest-spread)
  - [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
-
-## Plugin Options
-
-Plugins can specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
-
-```js
-{
-  "plugins": [
-    ["transform-async-to-module-method", {
-      "module": "bluebird",
-      "method": "coroutine"
-    }]
-  ]
-}
-```
-
-## Plugin Development
-
-Please refer to the excellent [babel-handbook](https://github.com/thejameskyle/babel-handbook)
-to learn how to create your own plugins.
-
-The simple plugin that reverse's names (from the homepage):
-
-```js
-export default function ({types: t}) {
-  return {
-    visitor: {
-      Identifier(path) {
-        let name = path.node.name;
-        // reverse the name: JavaScript -> tpircSavaJ
-        path.node.name = name.split('').reverse().join('');
-      }
-    }
-  };
-}
-```
-
-## Creating a Preset
-
-To make your own preset, you just need to export a config.
-
-```js
-// Presets can contain other presets, and plugins with options.
-module.exports = {
-  presets: [
-    require('babel-preset-es2015'),
-  ],
-  plugins: [
-    [require('babel-plugin-transform-es2015-template-literals'), { spec: true }],
-    require('babel-plugin-transform-es3-member-expression-literals'),
-  ],
-};
-```
-
-For more info, check out the [babel handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/user-handbook.md#making-your-own-preset) section on presets or just look at the [es2015](https://github.com/babel/babel/tree/master/packages/babel-preset-es2015) preset repo as an example.
