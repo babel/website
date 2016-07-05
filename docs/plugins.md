@@ -54,7 +54,7 @@ The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
  - [stage-3](/docs/plugins/preset-stage-3) - Candidate: complete spec and initial browser implementations.
  - stage-4 - Finished: will be added to the next yearly release.
 
-Also check out the [current tc39 proposals](https://github.com/tc39/proposals) and it's [process document](https://tc39.github.io/process-document).
+Also check out the [current tc39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
 
 ## Transform Plugins
 
@@ -154,7 +154,7 @@ These plugins apply transformations to your code.
 
 These plugins allow Babel to parse specific types of syntax.
 
-> NOTE: transform plugins automatically inherit/use the syntax plugins so you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
+> NOTE: Transform plugins automatically inherit/use the syntax plugins so you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
 
  - [async-functions](/docs/plugins/syntax-async-functions)
  - [async-generators](/docs/plugins/syntax-async-generators)
@@ -191,7 +191,7 @@ Plugins can specify options. You can do so in your config by wrapping it in an a
 Please refer to the excellent [babel-handbook](https://github.com/thejameskyle/babel-handbook)
 to learn how to create your own plugins.
 
-The simple plugin that reverse's names (from the homepage):
+The simple plugin that reverses names (from the homepage):
 
 ```js
 export default function ({types: t}) {
