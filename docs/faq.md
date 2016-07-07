@@ -8,7 +8,7 @@ permalink: /docs/faq/
 ## Help?! I just want to use Babel like it was in 5.x! Everything is too complicated now!
 
 We hear you! Babel 6 requires a tiny bit of configuration in order to get going.
-[We think this is for the best](/blog/2015/10/29/6.0.0/) and have added
+[We think this is for the best](/blog/2015/10/29/6.0.0) and have added
 [presets](/docs/plugins#presets) to ease this transition.
 
 ## Upgrading from Babel 5.x to Babel 6
