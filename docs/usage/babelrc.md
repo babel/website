@@ -47,6 +47,8 @@ You can use the `env` option to set specific options when in a certain environme
 }
 ```
 
+Options specific to a certain environment are merged into and overwrite non-env specific options.
+
 The `env` key will be taken from `process.env.BABEL_ENV`, when this is not available then it uses
 `process.env.NODE_ENV` if even that is not available then it defaults to `"development"`.
 
