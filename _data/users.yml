@@ -448,3 +448,6 @@
 - name: CaiFuPai
   url: https://www.caifupai.com
   logo: caifupai.svg
+- name: FiveStars
+  url: http://www.fivestars.com
+  logo: fivestars.png
