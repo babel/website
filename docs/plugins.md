@@ -171,9 +171,9 @@ These plugins allow Babel to parse specific types of syntax.
  - [object-rest-spread](/docs/plugins/syntax-object-rest-spread)
  - [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
 
-## Plugin Options
+## Plugin/Presets Options
 
-Plugins can specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
+Plugins and Presets can both specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
 
 ```js
 {
@@ -184,8 +184,13 @@ Plugins can specify options. You can do so in your config by wrapping it in an a
     }]
   ]
 }
-```
 
+{
+  presets: [
+    ["es2015", {loose: true, modules: false}]
+  ]
+}
+```
 ## Plugin Development
 
 Please refer to the excellent [babel-handbook](https://github.com/thejameskyle/babel-handbook)
