@@ -9,6 +9,8 @@ package: babel-preset-stage-2
 This preset includes the following plugins:
 
 - [transform-object-rest-spread](/docs/plugins/transform-object-rest-spread)
+- <del>[transform-decorators](/docs/plugins/transform-decorators)</del> – *disabled pending proposal update*
+- [transform-class-properties](/docs/plugins/transform-class-properties)
 
 And all plugins from presets:
 
