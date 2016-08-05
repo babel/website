@@ -187,7 +187,7 @@ Plugins and Presets can both specify options. You can do so in your config by wr
 
 {
   presets: [
-    ["es2015", {loose: true, modules: false}]
+    ["es2015", { "loose": true, "modules": false}]
   ]
 }
 ```
