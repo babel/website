@@ -10,6 +10,7 @@ This preset includes the following plugins:
 
 - [transform-object-rest-spread](/docs/plugins/transform-object-rest-spread)
 - [transform-decorators](/docs/plugins/transform-decorators)
+- [transform-class-properties](/docs/plugins/transform-class-properties)
 
 And all plugins from presets:
 
