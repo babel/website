@@ -73,12 +73,12 @@ Add the following line to your `.babelrc` file:
 ```
 {
   presets: [
-    ["es2015", {loose: true, modules: "amd"}]
+    ["es2015", {"loose": true, "modules": "amd"}]
   ]
 }
 {
   presets: [
-    ["es2015", {loose: true, modules: false}]
+    ["es2015", {"loose": true, "modules": false}]
   ]
 }
 ```
