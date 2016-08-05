@@ -10,7 +10,6 @@ This preset includes the following plugins:
 
 - [transform-class-constructor-call](/docs/plugins/transform-class-constructor-call) (Deprecated)
 - [transform-class-properties](/docs/plugins/transform-class-properties)
-- <del>[transform-decorators](/docs/plugins/transform-decorators)</del> – *disabled pending proposal update*
 - [transform-export-extensions](/docs/plugins/transform-export-extensions)
 
 And all plugins from presets:

@@ -9,6 +9,7 @@ package: babel-preset-stage-2
 This preset includes the following plugins:
 
 - [transform-object-rest-spread](/docs/plugins/transform-object-rest-spread)
+- [transform-decorators](/docs/plugins/transform-decorators)
 
 And all plugins from presets:
 
