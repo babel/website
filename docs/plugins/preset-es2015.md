@@ -58,7 +58,7 @@ $ npm install --save-dev babel-preset-es2015
 
 Add the following line to your `.babelrc` file:
 
-```json
+```js
 {
   "presets": ["es2015"]
 }
@@ -70,15 +70,15 @@ Add the following line to your `.babelrc` file:
 * `modules` - Enable transformation of ES6 module syntax to another module type (Enabled by default to "commonjs").
   * Can be `false` to not transform modules, or one of `["amd", "umd", "systemjs", "commonjs"]`
 
-```
+```js
 {
   presets: [
-    ["es2015", {"loose": true, "modules": "amd"}]
+    ["es2015", { "loose": true }]
   ]
 }
 {
   presets: [
-    ["es2015", {"loose": true, "modules": false}]
+    ["es2015", { "modules": false }]
   ]
 }
 ```
