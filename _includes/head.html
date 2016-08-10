@@ -36,4 +36,10 @@
   <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <meta name="twitter:image:src" content="https://babeljs.io/images/share-image.png">
   <meta name="twitter:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+  {% if page.prefetch %}
+    {% for resource in page.prefetch %}
+      <link rel="prefetch" href="{{ resource }}"/>
+    {% endfor %}
+  {% endif %}
 </head>

@@ -1,4 +1,4 @@
-(function(babel, $, _, ace, window) {
+(function($, _, ace, window) {
   'use strict';
 
   var presets = ['es2015', 'es2015-loose', 'react', 'stage-0', 'stage-1', 'stage-2', 'stage-3'];
@@ -12,6 +12,8 @@
       }
     });
   });
+
+  var worker = new Worker("../scripts/worker.js");
 
   /*
    * Utils for working with the browser's URI (e.g. the query params)
@@ -209,12 +211,15 @@
     this.output.setReadOnly(true);
     this.output.setHighlightActiveLine(false);
     this.output.setHighlightGutterLine(false);
+    this.setOutput('Loading...');
 
     this.$errorReporter = $('.babel-repl-errors');
     this.$consoleReporter = $('.babel-repl-console');
     this.$toolBar = $('.babel-repl-toolbar');
+  }
 
-    document.getElementById('babel-repl-version').innerHTML = babel.version;
+  REPL.prototype.setBabelVersion = function (version) {
+    document.getElementById('babel-repl-version').innerHTML = version;
   }
 
   REPL.prototype.clearOutput = function () {
@@ -241,20 +246,35 @@
     var code = this.getSource();
     this.clearOutput();
 
-    try {
-      transformed = babel.transform(code, {
-        presets: this.options.presets.split(','),
-        filename: 'repl'
-      });
-    } catch (err) {
-      this.printError(err.message);
-      throw err;
+    if (this.loaderTimer) {
+      clearTimeout(this.loaderTimer);
     }
 
-    this.setOutput(transformed.code);
+    this.loaderTimer = setTimeout(function () {
+      this.setOutput('Compiling...');
+    }.bind(this), 300);
+
+    worker.postMessage({
+      input: code,
+      options: {
+        presets: this.options.presets.split(','),
+        filename: 'repl'
+      }
+    });
+  };
+
+  REPL.prototype.onCompileComplete = function (data) {
+    clearTimeout(this.loaderTimer);
+
+    if (data.error) {
+      this.printError(data.error);
+      this.setOutput('');
+      return;
+    }
+    this.setOutput(data.code);
 
     if (this.options.evaluate) {
-      this.evaluate(transformed.code);
+      this.evaluate(data.code);
     }
   };
 
@@ -348,5 +368,12 @@
   repl.input.on('change', _.debounce(onSourceChange, 500));
   repl.$toolBar.on('change', onSourceChange);
 
-  repl.compile();
-}(Babel, $, _, ace, window));
+  worker.addEventListener('message', function (e) {
+    if (e.data.ready) {
+      repl.setBabelVersion(e.data.version);
+      repl.compile();
+      return;
+    }
+    repl.onCompileComplete(e.data);
+  });
+}($, _, ace, window));
