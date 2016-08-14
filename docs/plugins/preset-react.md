@@ -13,6 +13,7 @@ This preset includes the following plugins:
 - [transform-flow-strip-types](/docs/plugins/transform-flow-strip-types)
 - [transform-react-jsx](/docs/plugins/transform-react-jsx)
 - [transform-react-display-name](/docs/plugins/transform-react-display-name)
+- [transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/)
 
 ## Basic Setup (with the CLI)
 
