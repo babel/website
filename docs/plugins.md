@@ -171,6 +171,34 @@ These plugins allow Babel to parse specific types of syntax.
  - [object-rest-spread](/docs/plugins/syntax-object-rest-spread)
  - [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
 
+## Plugin/Preset Ordering
+
+Ordering matters.
+
+Plugin order is first to last.
+
+```js
+"plugins": [
+  "transform-decorators-legacy", // will run first
+  "transform-class-properties" // will run second
+]
+```
+
+Preset Ordering is reversed (last to first).
+
+> Yes this is confusing, see [babel/notes #2](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal).
+
+> I believe the reason why (for backwards compatability) is that most users had listed "es2015" first and "stage-0" second.
+> And stage-0 would run before es2015.
+
+```js
+"plugins": [
+  "es2015", // will run third
+  "react", // will run second
+  "stage-2" // will run first
+]
+```
+
 ## Plugin/Presets Options
 
 Plugins and Presets can both specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
@@ -191,6 +219,7 @@ Plugins and Presets can both specify options. You can do so in your config by wr
   ]
 }
 ```
+
 ## Plugin Development
 
 Please refer to the excellent [babel-handbook](https://github.com/thejameskyle/babel-handbook)
