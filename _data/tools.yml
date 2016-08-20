@@ -45,7 +45,7 @@
     ruby: Ruby
 - name: Template engines
   items:
-    jade: Jade
+    pug: Pug
 - name: Editors and IDEs
   items:
     webstorm: WebStorm
