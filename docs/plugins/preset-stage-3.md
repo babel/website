@@ -8,6 +8,8 @@ package: babel-preset-stage-3
 
 This preset includes the following plugins:
 
+> trailing-commas, async, exponentiation will be removed in the next major since they are stage 4
+
 - [syntax-trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
 - [transform-async-to-generator](/docs/plugins/transform-async-to-generator)
 - [transform-exponentiation-operator](/docs/plugins/transform-exponentiation-operator)
