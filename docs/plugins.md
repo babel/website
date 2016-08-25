@@ -30,8 +30,8 @@ We've assembled some for common environments:
 
  - [latest](/docs/plugins/preset-latest)
  - [es2017](/docs/plugins/preset-es2017)
-  - [syntax-trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
-  - [transform-async-to-generator](/docs/plugins/transform-async-to-generator)
+   - [syntax-trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
+   - [transform-async-to-generator](/docs/plugins/transform-async-to-generator)
  - [es2016](/docs/plugins/preset-es2016)
    - [exponentiation-operator](/docs/plugins/transform-exponentiation-operator)
  - [es2015](/docs/plugins/preset-es2015)
