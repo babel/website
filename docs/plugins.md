@@ -30,10 +30,7 @@ We've assembled some for common environments:
 
  - [latest](/docs/plugins/preset-latest)
  - [es2017](/docs/plugins/preset-es2017)
-   - [syntax-trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
-   - [transform-async-to-generator](/docs/plugins/transform-async-to-generator)
  - [es2016](/docs/plugins/preset-es2016)
-   - [exponentiation-operator](/docs/plugins/transform-exponentiation-operator)
  - [es2015](/docs/plugins/preset-es2015)
  - [react](/docs/plugins/preset-react)
 
@@ -100,6 +97,12 @@ These plugins apply transformations to your code.
  - [es2015-typeof-symbol](/docs/plugins/transform-es2015-typeof-symbol)
  - [es2015-unicode-regex](/docs/plugins/transform-es2015-unicode-regex)
 
+### ES2016
+ - [exponentiation-operator](/docs/plugins/transform-exponentiation-operator)
+
+### ES2017
+ - [async-to-generator](/docs/plugins/transform-async-to-generator)
+
 ### Modules
  - [es2015-modules-amd](/docs/plugins/transform-es2015-modules-amd)
  - [es2015-modules-commonjs](/docs/plugins/transform-es2015-modules-commonjs)
@@ -108,7 +111,6 @@ These plugins apply transformations to your code.
 
 ### Experimental
 <!-- - [async-functions](/docs/plugins/transform-async-functions) -->
- - [async-to-generator](/docs/plugins/transform-async-to-generator)
  - [async-to-module-method](/docs/plugins/transform-async-to-module-method)
  - [class-constructor-call](/docs/plugins/transform-class-constructor-call) (Deprecated)
  - [class-properties](/docs/plugins/transform-class-properties)
@@ -162,20 +164,28 @@ These plugins allow Babel to parse specific types of syntax.
 
 > NOTE: Transform plugins automatically inherit/use the syntax plugins so you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
 
- - [async-functions](/docs/plugins/syntax-async-functions)
+### Experimental
  - [async-generators](/docs/plugins/syntax-async-generators)
- - [class-constructor-call](/docs/plugins/syntax-class-constructor-call) (Deprecated)
  - [class-properties](/docs/plugins/syntax-class-properties)
  - [decorators](/docs/plugins/syntax-decorators)
  - [do-expressions](/docs/plugins/syntax-do-expressions)
- - [exponentiation-operator](/docs/plugins/syntax-exponentiation-operator)
  - [export-extensions](/docs/plugins/syntax-export-extensions)
  - [flow](/docs/plugins/syntax-flow)
  - [function-bind](/docs/plugins/syntax-function-bind)
  - [function-sent](/docs/plugins/syntax-function-sent)
  - [jsx](/docs/plugins/syntax-jsx)
  - [object-rest-spread](/docs/plugins/syntax-object-rest-spread)
- - [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
+
+### Enabled by default
+
+These plugins have no effect anymore, as a newer babylon version enabled them by default
+
+ - [async-functions](/docs/plugins/syntax-async-functions) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+ - [exponentiation-operator](/docs/plugins/syntax-exponentiation-operator) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+ - [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+
+### Deprecated
+ - [class-constructor-call](/docs/plugins/syntax-class-constructor-call)
 
 ## Plugin/Presets Options
 
