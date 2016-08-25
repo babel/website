@@ -96,7 +96,7 @@ var bob = {
     this._friends.forEach(function (f) {
        _newArrowCheck(this, _this);
 
-      console.log(this._name + " knows " + f)
+      console.log(this._name + " knows " + f);
     }.bind(this));
   }
 };
