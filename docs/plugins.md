@@ -26,8 +26,9 @@ Don't want to assemble your own set of plugins? No problem! Presets are sharable
 
 We've assembled some for common environments:
 
-> Each yearly preset only compiles what was ratified in that year. Use latest to transform all yearly presets
+> Each yearly preset only compiles what was ratified in that year. Use `preset-latest` to transform all yearly presets
 
+ - [latest](/docs/plugins/preset-latest)
  - [es2017](/docs/plugins/preset-es2017)
   - [syntax-trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
   - [transform-async-to-generator](/docs/plugins/transform-async-to-generator)
