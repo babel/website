@@ -65,6 +65,43 @@ console.log(bob.printFriends());
 $ npm install babel-plugin-transform-es2015-arrow-functions
 ```
 
+### Options: `spec`
+
+This option wraps the generated function in `.bind(this)` and keeps uses of `this` inside the function as-is, instead of using a renamed `this`. It also adds a runtime check to ensure the functions are not instantiated.
+
+**In**
+
+```js
+var bob = {
+  _name: "Bob",
+  _friends: ["Sally", "Tom"],
+  printFriends() {
+    this._friends.forEach(f =>
+      console.log(this._name + " knows " + f));
+  }
+};
+```
+
+**Out**
+
+```js
+function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { throw new TypeError("Cannot instantiate an arrow function"); } }
+
+var bob = {
+  _name: "Bob",
+  _friends: ["Sally", "Tom"],
+  printFriends() {
+    var _this = this;
+
+    this._friends.forEach(function (f) {
+       _newArrowCheck(this, _this);
+
+      console.log(this._name + " knows " + f);
+    }.bind(this));
+  }
+};
+```
+
 ## Usage
 
 ### Via `.babelrc` (Recommended)
