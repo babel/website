@@ -86,3 +86,16 @@
 #babel-repl-presets {
   display: inline-block;
 }
+
+.babel-repl-preset-container {
+  position: relative;
+
+  .dropdown-toggle {
+    cursor: pointer;
+  }
+}
+
+#babel-repl-preset-dropdown {
+  margin-left: 10px;
+  margin-top: -3px;
+}
