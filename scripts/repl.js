@@ -15,11 +15,14 @@
   ];
 
   /* Throw meaningful errors for getters of commonjs. */
+  var enableCommonJSError = true;
   ["module", "exports", "require"].forEach(function(commonVar){
     Object.defineProperty(window, commonVar, {
       configurable: true,
       get: function () {
-        throw new Error(commonVar + " is not supported in the browser, you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
+        if (enableCommonJSError) {
+          throw new Error(commonVar + " is not supported in the browser, you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
+        }
       }
     });
   });
@@ -202,15 +205,46 @@
     };
   }
 
+  var isBabiliLoading = false;
+  /**
+   * Checks if Babili has been loaded. If not, kicks off a load (if it hasn't
+   * already started) and returns false. Returns true if Babili is ready to use.
+   */
+  function hasBabiliLoaded() {
+    if (window.Babili) {
+      return true;
+    }
+    if (isBabiliLoading) {
+      return false;
+    }
+    // Babili-standalone is exported as a UMD script, and thus hits the CommonJS
+    // error ("is not supported in the browser..."), temporarily disable it
+    // while loading.
+    enableCommonJSError = false;
+
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://npmcdn.com/babili-standalone@0/babili.min.js';
+    script.onload = function() {
+      enableCommonJSError = true;
+      onSourceChange();
+    };
+    document.head.appendChild(script);
+    isBabiliLoading = true;
+    return false;
+  }
+
   /*
    * Babel options for transpilation as used by the REPL
    */
   function Options () {
     var $evaluate = $('#option-evaluate');
     var $lineWrap = $('#option-lineWrap');
+    var $babili = $('#option-babili');
 
     var options = {};
     Object.defineProperties(options, {
+      babili: $checkbox($babili),
       evaluate: $checkbox($evaluate),
       lineWrap: $checkbox($lineWrap),
       presets: getPresetOptions(),
@@ -218,6 +252,7 @@
 
     // Merge in defaults
     var defaults = {
+      babili: false,
       evaluate: true,
       lineWrap: false,
       presets: 'es2015,stage-2,react'
@@ -277,9 +312,19 @@
     var code = this.getSource();
     this.clearOutput();
 
+    if (this.options.babili && !hasBabiliLoaded()) {
+      this.setOutput('// Babili is loading, please wait...');
+      return;
+    }
+
+    var presets = this.options.presets.split(',');
+    if (this.options.babili) {
+      presets.push('babili');
+    }
+
     try {
       transformed = babel.transform(code, {
-        presets: this.options.presets.split(','),
+        presets: presets,
         filename: 'repl'
       });
     } catch (err) {
