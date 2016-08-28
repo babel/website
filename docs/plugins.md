@@ -173,9 +173,9 @@ These plugins allow Babel to parse specific types of syntax.
 
 ## Plugin/Preset Ordering
 
-Ordering matters.
+Ordering matters for each visitor in the plugin. This means if two transforms both visit "Program", the transforms will run in either plugin or preset order.
 
-Plugin order is first to last.
+Plugin ordering is first to last.
 
 ```js
 "plugins": [
@@ -184,7 +184,7 @@ Plugin order is first to last.
 ]
 ```
 
-Preset Ordering is reversed (last to first).
+Preset ordering is reversed (last to first).
 
 > Yes this is confusing, see [babel/notes #2](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal).
 
