@@ -187,6 +187,20 @@ These plugins have no effect anymore, as a newer babylon version enabled them by
 ### Deprecated
  - [class-constructor-call](/docs/plugins/syntax-class-constructor-call)
 
+## Plugin/Preset Paths
+
+If the plugin is on npm, you can pass in the name of the plugin and babel will check that it's installed in `node_modules`
+
+`"plugins": ["babel-plugin-myPlugin"]`
+
+If you prefix the plugin with `babel-plugin-`, you can use a shorthand to leave out that prefix
+
+`"plugins": ["myPlugin"]`
+
+You can also specify an relative/absolute path to your plugin/preset.
+
+`"plugins": ["./node_modules/asdf/plugin"]`
+
 ## Plugin/Presets Options
 
 Plugins and Presets can both specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
