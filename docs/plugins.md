@@ -192,7 +192,7 @@ Preset Ordering is reversed (last to first).
 > And stage-0 would run before es2015.
 
 ```js
-"plugins": [
+"presets": [
   "es2015", // will run third
   "react", // will run second
   "stage-2" // will run first
