@@ -201,6 +201,34 @@ You can also specify an relative/absolute path to your plugin/preset.
 
 `"plugins": ["./node_modules/asdf/plugin"]`
 
+## Plugin/Preset Ordering
+
+Ordering matters for each visitor in the plugin. This means if two transforms both visit "Program", the transforms will run in either plugin or preset order.
+
+Plugin ordering is first to last.
+
+```js
+"plugins": [
+  "transform-decorators-legacy", // will run first
+  "transform-class-properties" // will run second
+]
+```
+
+Preset ordering is reversed (last to first).
+
+> Yes this is confusing, see [babel/notes #2](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal).
+
+> I believe the reason why (for backwards compatability) is that most users had listed "es2015" first and "stage-0" second.
+> And stage-0 would run before es2015.
+
+```js
+"presets": [
+  "es2015", // will run third
+  "react", // will run second
+  "stage-2" // will run first
+]
+```
+
 ## Plugin/Presets Options
 
 Plugins and Presets can both specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
@@ -221,6 +249,7 @@ Plugins and Presets can both specify options. You can do so in your config by wr
   ]
 }
 ```
+
 ## Plugin Development
 
 Please refer to the excellent [babel-handbook](https://github.com/thejameskyle/babel-handbook)
