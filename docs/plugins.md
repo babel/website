@@ -205,6 +205,8 @@ You can also specify an relative/absolute path to your plugin/preset.
 
 Ordering matters for each visitor in the plugin. This means if two transforms both visit "Program", the transforms will run in either plugin or preset order.
 
+Plugins run before Presets.
+
 Plugin ordering is first to last.
 
 ```js
