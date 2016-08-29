@@ -451,3 +451,6 @@
 - name: FiveStars
   url: http://www.fivestars.com
   logo: fivestars.png
+- name: NodeXperts
+  url: http://www.nodexperts.com
+  logo: nodexperts.svg
