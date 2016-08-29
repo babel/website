@@ -8,13 +8,14 @@ package: babel-preset-stage-1
 
 This preset includes the following plugins:
 
-- [transform-class-constructor-call](/docs/plugins/transform-class-constructor-call) (Deprecated)
-- [transform-export-extensions](/docs/plugins/transform-export-extensions)
+- [transform-class-constructor-call](/docs/plugins/transform-class-constructor-call/) (Deprecated)
+- [transform-export-extensions](/docs/plugins/transform-export-extensions/)
+- [transform-unicode-property-regex](/docs/plugins/transform-unicode-property-regex/)
 
 And all plugins from presets:
 
-- [preset-stage-2](/docs/plugins/preset-stage-2)
-- [preset-stage-3](/docs/plugins/preset-stage-3)
+- [preset-stage-2](/docs/plugins/preset-stage-2/)
+- [preset-stage-3](/docs/plugins/preset-stage-3/)
 
 ## Installation
 
