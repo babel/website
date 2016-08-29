@@ -67,7 +67,7 @@ Add the following line to your `.babelrc` file:
 ## Options
 
 * `loose` - Enable "loose" transformations for any plugins in this preset that allow them (Disabled by default).
-* `modules` - Enable transformation of ES6 module syntax to another module type (Enabled by default to "commonjs").
+* `modules` - Enable transformation of ES6 module syntax to another module type (Enabled by default to `"commonjs"`).
   * Can be `false` to not transform modules, or one of `["amd", "umd", "systemjs", "commonjs"]`
 * `spec` - Enable "spec" transformations for any plugins in this preset that allow them (Disabled by default)
 
