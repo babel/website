@@ -25,7 +25,7 @@ npm install --save-dev babel-cli babel-preset-es2017
 echo '{ "presets": ["es2017"] }' > .babelrc
 
 # create a file to run on
-echo '1 ** 2' > index.js
+echo 'async function foo() { await bar(); }' > index.js
 
 # run it
 ./node_modules/.bin/babel-node index.js
