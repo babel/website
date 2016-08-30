@@ -197,6 +197,14 @@ If you prefix the plugin with `babel-plugin-`, you can use a shorthand to leave 
 
 `"plugins": ["myPlugin"]`
 
+Same with presets
+
+`"plugins": ["babel-preset-myPreset"]`
+
+vs
+
+`"presets": ["myPreset"]`
+
 You can also specify an relative/absolute path to your plugin/preset.
 
 `"plugins": ["./node_modules/asdf/plugin"]`
