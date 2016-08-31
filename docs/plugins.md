@@ -121,6 +121,11 @@ These plugins apply transformations to your code.
  - [object-rest-spread](/docs/plugins/transform-object-rest-spread)
 
 ### Minification
+
+Check out our [minifier based on Babel](https://github.com/babel/babili)!
+
+These plugins are in the minify repo.
+
  - [member-expression-literals](/docs/plugins/transform-member-expression-literals)
  - [merge-sibling-variables](/docs/plugins/transform-merge-sibling-variables)
  - [minify-booleans](/docs/plugins/transform-minify-booleans)
@@ -128,6 +133,9 @@ These plugins apply transformations to your code.
  - [remove-console](/docs/plugins/transform-remove-console)
  - [remove-debugger](/docs/plugins/transform-remove-debugger)
  - [simplify-comparison-operators](/docs/plugins/transform-simplify-comparison-operators)
+ - [undefined-to-void](/docs/plugins/transform-undefined-to-void)
+ - [inline-environment-variables](/docs/plugins/transform-inline-environment-variables)
+ - [node-env-inline](/docs/plugins/transform-node-env-inline)
 
 ### React
  - [react-constant-elements](/docs/plugins/transform-react-constant-elements)
@@ -142,16 +150,13 @@ These plugins apply transformations to your code.
  - [eval](/docs/plugins/transform-eval)
  - [flow-comments](/docs/plugins/transform-flow-comments)
  - [flow-strip-types](/docs/plugins/transform-flow-strip-types)
- - [inline-environment-variables](/docs/plugins/transform-inline-environment-variables)
  - [jscript](/docs/plugins/transform-jscript)
- - [node-env-inline](/docs/plugins/transform-node-env-inline)
  - [object-assign](/docs/plugins/transform-object-assign)
  - [object-set-prototype-of-to-assign](/docs/plugins/transform-object-set-prototype-of-to-assign)
  - [proto-to-assign](/docs/plugins/transform-proto-to-assign)
  - [regenerator](/docs/plugins/transform-regenerator)
  - [runtime](/docs/plugins/transform-runtime)
  - [strict-mode](/docs/plugins/transform-strict-mode)
- - [undefined-to-void](/docs/plugins/transform-undefined-to-void)
 
 ## Misc Plugins
 
