@@ -356,23 +356,10 @@
       if (done) flush();
     }
 
-    capturingConsole.clear = function() {
-      buffer = [];
-      flush();
-    };
-
-    capturingConsole.error = function () {
-      error = true;
-      capturingConsole.log.apply(capturingConsole, arguments);
-    };
-
-    capturingConsole.log =
-    capturingConsole.info =
-    capturingConsole.debug = function() {
+    function capture() {
       if (this !== capturingConsole) { return; }
 
       var args = Array.prototype.slice.call(arguments);
-      Function.prototype.apply.call(console.log, console, args);
 
       var logs = args.reduce(function (logs, log) {
         if (typeof log === 'string') {
@@ -386,6 +373,24 @@
       }, []);
 
       write(logs.join(' '));
+    }
+
+    capturingConsole.clear = function() {
+      buffer = [];
+      flush();
+      console.clear();
+    };
+
+    capturingConsole.error = function() {
+      Function.prototype.apply.call(console.error, console, arguments);
+      capture.apply(this, arguments);
+    };
+
+    capturingConsole.log =
+    capturingConsole.info =
+    capturingConsole.debug = function() {
+      Function.prototype.apply.call(console.log, console, arguments);
+      capture.apply(this, arguments);
     };
 
     try {
@@ -397,8 +402,6 @@
 
     done = true;
     flush();
-
-    if (error) throw error;
   };
 
   REPL.prototype.persistState = function (state) {
