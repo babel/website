@@ -14,6 +14,7 @@
 
   <link rel="icon" href="{{ "/favicon.ico" | prepend: site.baseurl }}" type="image/x-icon">
 
+  {% if page.permalink != '/repl/' %}
   <link rel="apple-touch-icon" href="{{ "/apple-touch-icon.png" | prepend: site.baseurl }}">
 
   <link rel="icon" type="image/png" href="{{ "/favicon-192x192.png" | prepend: site.baseurl }}" sizes="192x192">
@@ -23,6 +24,7 @@
   <link rel="icon" type="image/png" href="{{ "/favicon-32x32.png" | prepend: site.baseurl }}" sizes="32x32">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="msapplication-TileImage" content="{{ "/mstile-144x144.png" | prepend: site.baseurl }}">
+  {% endif %}
 
   <meta name="og:url" content="https://babeljs.io/">
   <meta name="og:image" content="website">
