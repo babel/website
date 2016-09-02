@@ -372,17 +372,12 @@
       console.clear();
     };
 
-    capturingConsole.error = function() {
-      Function.prototype.apply.call(console.error, console, arguments);
-      capture.apply(this, arguments);
-    };
-
-    capturingConsole.log =
-    capturingConsole.info =
-    capturingConsole.debug = function() {
-      Function.prototype.apply.call(console.log, console, arguments);
-      capture.apply(this, arguments);
-    };
+    ['error', 'log', 'info', 'debug'].forEach(function(key) {
+      capturingConsole[key] = function() {
+        Function.prototype.apply.call(console[key], console, arguments);
+        capture.apply(this, arguments);
+      };
+    });
 
     try {
       new Function('console', code)(capturingConsole);
