@@ -33,6 +33,6 @@ default_js:
 compress_html:
   clippings: all
   comments: all
-  endings: all
+  # endings: all
   profile: false
   startings: [head, body]
