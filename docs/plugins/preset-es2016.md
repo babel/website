@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: ES2016 preset
-description: All you need to compile what's in ES2016 to ES6 (for compiling to ES5 you need es2015 as well)
+description: All you need to compile what's in ES2016 to ES2015
 permalink: /docs/plugins/preset-es2016/
 package: babel-preset-es2016
 ---
