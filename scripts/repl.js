@@ -359,18 +359,11 @@
     function capture() {
       if (this !== capturingConsole) { return; }
 
-      var args = Array.prototype.slice.call(arguments);
+      console.log.apply(console, arguments);
 
-      var logs = args.reduce(function (logs, log) {
-        if (typeof log === 'string') {
-          logs.push(log);
-        } else if (log instanceof Function) {
-          logs.push(log.toString());
-        } else {
-          logs.push(JSON.stringify(log));
-        }
-        return logs;
-      }, []);
+      var logs = _.map(arguments, function(log) {
+        return window.prettyFormat(log);
+      });
 
       write(logs.join(' '));
     }
