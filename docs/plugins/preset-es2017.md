@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: ES2017 preset
-description: All you need to compile what's in ES2017 to ES5
+description: All you need to compile what's in ES2017 to ES2016
 permalink: /docs/plugins/preset-es2017/
 package: babel-preset-es2017
 ---
