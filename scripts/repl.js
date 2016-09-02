@@ -359,8 +359,6 @@
     function capture() {
       if (this !== capturingConsole) { return; }
 
-      console.log.apply(console, arguments);
-
       var logs = _.map(arguments, function(log) {
         return window.prettyFormat(log);
       });
