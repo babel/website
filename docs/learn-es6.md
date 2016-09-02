@@ -240,17 +240,16 @@ single-assignment. Static restrictions prevent use before assignment.
 ```js
 function f() {
   {
-    // okay, use `let` to define
     let x;
     {
-      // okay, block scoped name
+      // this is ok since it's a block scoped name
       const x = "sneaky";
-      // error, define with `const`
+      // error, was just defined with `const` above
       x = "foo";
     }
-    // okay, change value
+    // this is ok since it was declared with `let`
     x = "bar";
-    // error, already declared above
+    // error, already declared above in this block
     let x = "inner";
   }
 }
