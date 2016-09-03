@@ -59,9 +59,15 @@ $ npm install --save-dev babel-cli
     <div class="lead text-left">
 {% highlight javascript %}
 {
-  presets: []
+  "presets": ["es2015"]
 }
 {% endhighlight %}
+    </div>
+
+    <div class="text-center">
+      <div class="btn-wrapper btn-wrapper-lg">
+        <a href="http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=true&presets=es2015%2Ces2015-loose%2Ces2017&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true" class="btn btn-featured">Try it Out</a>
+      </div>
     </div>
 
   </div>
@@ -311,6 +317,7 @@ export default function ({types: t}) {
     <div class="btn-wrapper btn-wrapper-lg">
       <a href="{{ site.baseurl }}/docs/learn-es2015/" class="btn btn-featured">Learn ES2015</a>
       <a href="{{ site.baseurl }}/docs/setup/" class="btn btn-featured">Setup Babel</a>
+      <a href="https://github.com/thejameskyle/babel-handbook" class="btn btn-featured">Babel Handbook</a>
     </div>
   </div>
 
