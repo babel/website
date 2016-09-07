@@ -20,7 +20,7 @@ In loose mode, tagged template literal objects aren't frozen.
 
 ### Options: `spec`
 
-This option wraps all template literal expressions with `String`. See [Issue #1065](https://phabricator.babeljs.io/T1065) for more info.
+This option wraps all template literal expressions with `String`. See [babel/babel#1065](https://github.com/babel/babel/issues/1065) for more info.
 
 **In**
 
