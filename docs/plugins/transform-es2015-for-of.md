@@ -15,7 +15,7 @@ Compile ES2015 for...of to ES5
 In loose mode an iterators `return` method will not be called on abrupt completions caused by thrown errors.
 
 Please see [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) and
-[babel/babel#838](phabricator.babeljs.io/T838) for more information.
+[babel/babel#838](https://github.com/babel/babel/issues/838) for more information.
 
 #### Arrays
 
