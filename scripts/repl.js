@@ -224,7 +224,7 @@
 
     var script = document.createElement('script');
     script.async = true;
-    script.src = 'https://npmcdn.com/babili-standalone@0/babili.min.js';
+    script.src = 'https://unpkg.com/babili-standalone@0/babili.min.js';
     script.onload = function() {
       enableCommonJSError = true;
       onSourceChange();
