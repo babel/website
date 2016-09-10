@@ -20,6 +20,8 @@ $ npm install babel-plugin-transform-es2015-spread
 
 **.babelrc**
 
+* `loose`: All iterables are assumed to be arrays.
+
 ```js
 // without options
 {
