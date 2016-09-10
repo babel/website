@@ -320,6 +320,5 @@
     return printComplexValue(val, indent, prevIndent, refs, opts.maxDepth, currentDepth, opts.plugins);
   }
 
-  console.log('hi')
   window.prettyFormat = prettyFormat;
 })();
