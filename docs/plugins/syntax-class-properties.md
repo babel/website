@@ -31,35 +31,3 @@ Add the following line to your `.babelrc` file:
   "plugins": ["syntax-class-properties"]
 }
 ```
-
-## Example
-This plugin transforms es2015 static class properties as
-well as properties declared with the es2016 property initializer syntax.
-Below is a class with four class properties which will be transformed.
-
-```js
-  class Bork {
-    //Property initilizer syntax
-    instanceProperty = "bork";
-    boundFunction = () => {
-      return this.instanceProperty;
-    }
-    
-    //Static class properties
-    static staticProperty = "babeliscool";
-    static staticFunction = function() {
-      return Bork.staticProperty;
-    }
-  }
-
-  let myBork = new Bork;
-
-  //Property initializers are not on the prototype.
-  myBork.prototype.boundFunction; // > undefined
-
-  //Bound functions are bound to the class instance.
-  myBork.boundFunction.call(undefined); // > "bork"
-
-  //Static function exists on the class.
-  Bork.staticFunction(); // > "babelIsCool"
-```
