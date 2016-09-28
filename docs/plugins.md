@@ -204,7 +204,7 @@ If you prefix the plugin with `babel-plugin-`, you can use a shorthand to leave 
 
 Same with presets
 
-`"plugins": ["babel-preset-myPreset"]`
+`"presets": ["babel-preset-myPreset"]`
 
 vs
 
