@@ -48,7 +48,9 @@ It's most likely the case that you didn't include a plugin/preset that supports 
 
 ## Why isn't a certain babel-x package updated?
 
-When we do a release, the only packages that get updated are the packages that
+We currently use [Lerna's fixed versioning](https://github.com/lerna/lerna#fixedlocked-mode-default) system. 
+
+We have a global version for all packages. When we do a release, the only packages that get updated are the packages that
 actually had changes (we do a `git diff` on that folder).
 
 If we only update `babel-plugin-transform-exponentiation-operator` to 6.x.x, currently we don't publish a new version for all packages since the other dependencies are using `^`.
