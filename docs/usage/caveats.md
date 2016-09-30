@@ -15,7 +15,7 @@ You may alternatively/selectively include what you need:
 
 | Feature                     | Requirements                                                                          |
 | --------------------------- | ------------------------------------------------------------------------------------- |
-| Async functions, Generators | [regenerator runtime](https://github.com/facebook/regenerator/blob/master/runtime.js) |
+| Async functions, Generators | [regenerator runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) |
 | Array destructuring, For Of | `Symbol`, `prototype[Symbol.iterator]`                                                |
 | Spread                      | `Array.from`                                                                          |
 
