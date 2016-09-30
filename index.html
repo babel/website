@@ -48,10 +48,16 @@ third_party_js:
       </div>
     </div>
 
-    <h3>Start by installing Babel</h3>
+    <div class="text-center">
+      <div class="btn-wrapper btn-wrapper-lg">
+        <a href="http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=latest%2Creact%2Cstage-2&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true" class="btn btn-featured">Try it Out</a>
+      </div>
+    </div>
+
+    <h3>Start by installing the Babel CLI and a preset</h3>
     <div class="lead text-left">
 {% highlight javascript %}
-$ npm install --save-dev babel-cli
+$ npm install --save-dev babel-cli babel-preset-latest
 {% endhighlight %}
     </div>
 
@@ -59,14 +65,14 @@ $ npm install --save-dev babel-cli
     <div class="lead text-left">
 {% highlight javascript %}
 {
-  "presets": ["es2015"]
+  "presets": ["latest"]
 }
 {% endhighlight %}
     </div>
 
     <div class="text-center">
       <div class="btn-wrapper btn-wrapper-lg">
-        <a href="http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=true&presets=es2015%2Ces2015-loose%2Ces2017&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true" class="btn btn-featured">Try it Out</a>
+        <a href="/docs/setup" class="btn btn-featured">Setup</a>
       </div>
     </div>
 
@@ -202,6 +208,18 @@ $ npm install --save-dev babel-preset-es2015
   <hr class="featurette-divider">
 
   <div class="row featurette">
+
+    <div class="col-md-7">
+      <h2 id="jsx"><a href="#jsx">JSX and Flow</a></h2>
+      <p>Babel can convert JSX syntax and strip out type annotations. Check out our <a href="https://babeljs.io/docs/plugins/preset-react/">React preset</a> to get started. Use it together with the <a href="https://github.com/babel/babel-sublime">babel-sublime</a> package to bring syntax highlighting to a whole new level.</p>
+
+      <p>You can install this preset with</p>
+{% highlight javascript %}
+$ npm install --save-dev babel-preset-react
+{% endhighlight %}
+      </p>and add <code>"react"</code> to your <code>.babelrc</code> presets array.</p>
+      </p>
+    </div>
     <div class="col-md-5">
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">export</span> <span class="k">default</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
   <span class="nx">getInitialState</span><span class="p">()</span> <span class="p">{</span>
@@ -221,18 +239,6 @@ $ npm install --save-dev babel-preset-es2015
 <span class="p">});</span></code></pre></div>
 
     <p class="text-center">Learn more about <a href="https://facebook.github.io/jsx/">JSX</a> and <a href="http://flowtype.org/">Flow</a></p>
-    </div>
-
-    <div class="col-md-7">
-      <h2 id="jsx"><a href="#jsx">JSX and Flow</a></h2>
-      <p>Babel can convert JSX syntax and strip out type annotations. Check out our <a href="https://babeljs.io/docs/plugins/preset-react/">React preset</a> to get started. Use it together with the <a href="https://github.com/babel/babel-sublime">babel-sublime</a> package to bring syntax highlighting to a whole new level.</p>
-
-      <p>You can install this preset with</p>
-{% highlight javascript %}
-$ npm install --save-dev babel-preset-react
-{% endhighlight %}
-      </p>and add <code>"react"</code> to your <code>.babelrc</code> presets array.</p>
-      </p>
     </div>
   </div>
 
@@ -264,6 +270,16 @@ export default function ({types: t}) {
 
   <hr class="featurette-divider">
 
+  <div class="row featurette">
+    <div class="col-md-4">
+      <h2>Debuggable</h2>
+      <p><strong>Source map</strong> support so you can debug your compiled code with ease.</p>
+    </div>
+    <div class="col-md-8">
+      <img src="{{ site.baseurl }}/images/featurettes/debuggable.png?t={{ site.time | date_to_xmlschema }}" alt="Debuggable Sourcemaps" class="featurette-image img-responsive">
+    </div>
+  </div>
+
   <!--<div class="row featurette">
     <div class="col-md-4">
       <h2>Readable</h2>
@@ -281,20 +297,6 @@ export default function ({types: t}) {
 {% endhighlight %}
     </div>
   </div>
-
-  <hr class="featurette-divider">-->
-
-  <!--<hr class="featurette-divider">
-
-  <div class="row featurette">
-    <div class="col-md-4">
-      <h2>Debuggable</h2>
-      <p><strong>Source map</strong> support so you can debug your compiled code with ease.</p>
-    </div>
-    <div class="col-md-8">
-      <img src="{{ site.baseurl }}/images/featurettes/debuggable.png?t={{ site.time | date_to_xmlschema }}" alt="Debuggable Sourcemaps" class="featurette-image img-responsive">
-    </div>
-  </div>-->
 
   <!--<hr class="featurette-divider">
 
