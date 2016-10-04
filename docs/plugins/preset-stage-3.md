@@ -13,6 +13,7 @@ This preset includes the following plugins:
 - [syntax-trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
 - [transform-async-to-generator](/docs/plugins/transform-async-to-generator)
 - [transform-exponentiation-operator](/docs/plugins/transform-exponentiation-operator)
+- [transform-object-rest-spread](/docs/plugins/transform-object-rest-spread)
 
 ## Installation
 
