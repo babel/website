@@ -324,7 +324,7 @@
 
     try {
       transformed = babel.transform(code, {
-        presets: presets,
+        presets: presets.filter(Boolean),
         filename: 'repl'
       });
     } catch (err) {
