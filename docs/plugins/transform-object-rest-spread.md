@@ -42,6 +42,25 @@ Add the following line to your `.babelrc` file:
 }
 ```
 
+## Options
+
+This plugin will use babel's `extends` helper, which will polyfill `Object.assign` by default.
+
+* `useBuiltIns` - Do not use Babel's helper's and just transform to use the built-in method (Disabled by default).
+
+```js
+{
+  "plugins": [
+    ["transform-object-rest-spread", { "useBuiltIns": true }]
+  ]
+}
+
+// source
+z = { x, ...y };
+// compiled
+z = Object.assign({ x }, y);
+```
+
 ## References
 
 * [Proposal: Object Rest/Spread Properties for ECMAScript](https://github.com/sebmarkbage/ecmascript-rest-spread)

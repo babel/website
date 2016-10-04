@@ -198,6 +198,12 @@ If the plugin is on npm, you can pass in the name of the plugin and babel will c
 
 `"plugins": ["babel-plugin-myPlugin"]`
 
+You can also specify an relative/absolute path to your plugin/preset.
+
+`"plugins": ["./node_modules/asdf/plugin"]`
+
+### Preset/Plugin Shorthand
+
 If you prefix the plugin with `babel-plugin-`, you can use a shorthand to leave out that prefix
 
 `"plugins": ["myPlugin"]`
@@ -210,9 +216,14 @@ vs
 
 `"presets": ["myPreset"]`
 
-You can also specify an relative/absolute path to your plugin/preset.
+This also works with scoped packages
 
-`"plugins": ["./node_modules/asdf/plugin"]`
+```js
+{
+  presets: ["@org/babel-preset-name"], // actual package
+  presets: ["@org/name"] // shorthand name
+}
+```
 
 ## Plugin/Preset Ordering
 
