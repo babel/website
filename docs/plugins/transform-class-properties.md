@@ -12,7 +12,7 @@ Below is a class with four class properties which will be transformed.
 
 ```js
   class Bork {
-    //Property initilizer syntax
+    //Property initializer syntax
     instanceProperty = "bork";
     boundFunction = () => {
       return this.instanceProperty;
