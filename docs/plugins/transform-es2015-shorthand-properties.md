@@ -6,6 +6,14 @@ permalink: /docs/plugins/transform-es2015-shorthand-properties/
 package: babel-plugin-transform-es2015-shorthand-properties
 ---
 
+Compile ES2015 shorthand properties to ES5
+
+ES2015
+var o = { a, b, c };
+ES5
+var o = { a: a, b: b, c:c };
+
+
 ## Installation
 
 ```sh
