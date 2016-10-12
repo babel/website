@@ -457,3 +457,6 @@
 - name: AdPushup
   url: https://www.adpushup.com/
   logo: adpushup.png
+- name: clearTax
+  url: https://cleartax.in 
+  logo: cleartax.svg
