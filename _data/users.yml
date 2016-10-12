@@ -451,3 +451,6 @@
 - name: FiveStars
   url: http://www.fivestars.com
   logo: fivestars.png
+- name: TradingView
+  url: https://www.tradingview.com/
+  logo: tradingview.svg
