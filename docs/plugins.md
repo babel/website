@@ -28,6 +28,7 @@ We've assembled some for common environments:
 
 > Each yearly preset only compiles what was ratified in that year. Use `preset-latest` to transform all yearly presets
 
+ - [env (new)](https://github.com/babel/babel-preset-env)
  - [latest](/docs/plugins/preset-latest)
  - [es2017](/docs/plugins/preset-es2017)
  - [es2016](/docs/plugins/preset-es2016)
