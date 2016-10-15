@@ -166,9 +166,20 @@ These plugins are in the minify repo.
 
 ## Syntax Plugins
 
-These plugins allow Babel to parse specific types of syntax.
+These plugins allow Babel to **parse** specific types of syntax (not transform).
 
 > NOTE: Transform plugins automatically inherit/use the syntax plugins so you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
+
+You can also provide any [`plugins` option](https://github.com/babel/babylon/#plugins) from babylon:
+
+```js
+// .babelrc
+{
+  "parserOpts": {
+    "plugins": ["jsx", "flow"]
+  }
+}
+```
 
 ### Experimental
  - [async-generators](/docs/plugins/syntax-async-generators)
