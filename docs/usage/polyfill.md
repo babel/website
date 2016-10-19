@@ -15,11 +15,11 @@ package: babel-polyfill
 This will emulate a full ES2015 environment and is intended to be used in an application rather than a library/tool. This polyfill is automatically loaded
 when using `babel-node`.
 
-This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.includes`, and generator functions (provided you use the [regenerator](/docs/plugins/transform-regenerator/) plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
+This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (provided you use the [regenerator](/docs/plugins/transform-regenerator/) plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
 
 <blockquote class="babel-callout babel-callout-info">
   <h5>
-    If you are looking for something that won't modify globals to be used in a tool/library, checkout the <a href="/docs/plugins/transform-runtime"><code>transform-runtime</code></a> plugin. This means you won't be able to use the instance methods mentioned above like <code>Array.includes</code>.
+    If you are looking for something that won't modify globals to be used in a tool/library, checkout the <a href="/docs/plugins/transform-runtime"><code>transform-runtime</code></a> plugin. This means you won't be able to use the instance methods mentioned above like <code>Array.prototype.includes</code>.
   </h5>
 </blockquote>
 
