@@ -8,7 +8,7 @@ package: babel-preset-stage-2
 
 This preset includes the following plugins:
 
-- <del>[transform-decorators](/docs/plugins/transform-decorators)</del> – *disabled pending proposal update*
+- <del>[transform-decorators](/docs/plugins/transform-decorators)</del> – *disabled pending proposal update* (can use the [legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) transform in the meantime)
 - [transform-class-properties](/docs/plugins/transform-class-properties)
 
 And all plugins from presets:
