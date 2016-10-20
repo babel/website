@@ -46,7 +46,7 @@ Any transforms in stage-x presets are changes to the language that haven't been 
 <blockquote class="babel-callout babel-callout-danger">
   <h4>Subject to change</h4>
   <p>
-    These proposals are subject to change so <strong><em>use with extreme caution</em></strong>, especially for anything pre stage-3.
+    These proposals are subject to change so <strong><em>use with extreme caution</em></strong>, especially for anything pre stage-3. We plan to update stage-x presets when proposals change after each TC39 meeting when possible.
   </p>
 </blockquote>
 
@@ -58,7 +58,7 @@ The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
  - [stage-3](/docs/plugins/preset-stage-3) - Candidate: complete spec and initial browser implementations.
  - stage-4 - Finished: will be added to the next yearly release.
 
-Also check out the [current tc39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
+Also check out the [current TC39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
 
 ## Transform Plugins
 
