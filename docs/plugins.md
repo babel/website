@@ -111,9 +111,9 @@ These plugins apply transformations to your code.
  - [es2015-modules-umd](/docs/plugins/transform-es2015-modules-umd)
 
 ### Experimental
-<!-- - [async-functions](/docs/plugins/transform-async-functions) -->
+ - [async-generator-functions](/docs/plugins/transform-async-generator-functions)
  - [async-to-module-method](/docs/plugins/transform-async-to-module-method)
- - [class-constructor-call](/docs/plugins/transform-class-constructor-call) (Deprecated)
+ - [class-constructor-call](/docs/plugins/transform-class-constructor-call) (deprecated)
  - [class-properties](/docs/plugins/transform-class-properties)
  - [decorators](/docs/plugins/transform-decorators)
  - [do-expressions](/docs/plugins/transform-do-expressions)
