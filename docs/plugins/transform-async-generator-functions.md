@@ -45,6 +45,7 @@ async function f() {
 ```
 
 **Example Usage**
+
 ```js
 async function* genAnswers() {
   var stream = [ Promise.resolve(4), Promise.resolve(9), Promise.resolve(12) ];
