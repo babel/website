@@ -10,11 +10,11 @@ package: babel-plugin-syntax-async-generators
   <h4>Syntax only</h4>
   <p>
     This plugin only allows Babel to parse this syntax. If you want to transform it then
-    see <a href="/docs/plugins/transform-regenerator">transform-regenerator</a>, <a href="/docs/plugins/transform-async-to-generator">transform-async-to-generator</a>, or <a href="/docs/plugins/transform-async-to-module-method">transform-async-to-module-method</a>.
+    see <a href="/docs/plugins/transform-async-generator-functions/">async-generator-functions</a> and <a href="/docs/plugins/transform-regenerator">transform-regenerator</a> if generator support is not supported natively.
   </p>
 </blockquote>
 
-This plugin allows Babel to parse [async generators](https://github.com/zenparsing/async-iteration/).
+This plugin allows Babel to parse [async generators](https://github.com/zenparsing/async-iteration/) only.
 
 ## Installation
 
