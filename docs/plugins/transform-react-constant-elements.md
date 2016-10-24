@@ -30,11 +30,24 @@ const Hr = () => {
 
 **Deopts**
 
-```js
-// The plugin will not run on the use of `refs` or `object rest spread`
-<foo {...foobar} />
-<foo ref="foobar" />;
-```
+- **Spread Operator**
+
+  ```js
+  <div {...foobar} />
+  ```
+
+- **Refs**
+
+  ```js
+  <div ref="foobar" />
+  <div ref={node => this.node = node} />
+  ```
+
+- **Composite Components**
+
+  ```js
+  const ComponentA = () => <div><MyCustomComponent /></div>;
+  ```
 
 ## Installation
 
