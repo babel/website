@@ -43,12 +43,18 @@ Babel is an open source project and we appreciate any and all contributions we c
 Please help out with documentation if you can by submitting a pull request to the
 [babel.github.io](https://github.com/babel/babel.github.io) repo.
 
+## How do I build babel from sources?
+See [build instructions](https://github.com/babel/babel/blob/master/CONTRIBUTING.md#developing).
+
+## How do I contribute to Babel?
+See [contributing](https://github.com/babel/babel/blob/master/CONTRIBUTING.md).
+
 ## Why am I getting a Syntax Error/Unexpected Token?
 It's most likely the case that you didn't include a plugin/preset that supports that feature. (It's also possible it's a bug in the parser, or that it actually is a syntax error).
 
 ## Why isn't a certain babel-x package updated?
 
-We currently use [Lerna's fixed versioning](https://github.com/lerna/lerna#fixedlocked-mode-default) system. 
+We currently use [Lerna's fixed versioning](https://github.com/lerna/lerna#fixedlocked-mode-default) system.
 
 We have a global version for all packages. When we do a release, the only packages that get updated are the packages that
 actually had changes (we do a `git diff` on that folder).
