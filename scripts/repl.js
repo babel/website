@@ -325,7 +325,8 @@
     try {
       transformed = babel.transform(code, {
         presets: presets.filter(Boolean),
-        filename: 'repl'
+        filename: 'repl',
+        babelrc: false,
       });
     } catch (err) {
       this.printError(err.message);
