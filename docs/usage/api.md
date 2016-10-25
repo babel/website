@@ -6,65 +6,71 @@ permalink: /docs/usage/api/
 package: babel-core
 ---
 
-```javascript
+[API : How to use the Node.js API.](https://babeljs.io/docs/usage/api/)  
+
+[Options : Options for babel transpiling.](http://babeljs.io/docs/usage/options/)  
+
+[AST : ?](https://astexplorer.net/)  
+
+[ES2015 preset : All you need to compile ES2015 to ES5](https://babeljs.io/docs/plugins/preset-es2015/)  
+
+[npm : babel-preset-es2015 ](https://www.npmjs.com/package/babel-preset-es2015)
+
+## babel.transform(code, [options])
+
+```js
 var babel = require("babel-core");
-```
 
-## babel.transform(code, [[options](/docs/usage/options)])
+// babel.transform("code();", options);
+// => { code, map, ast }
 
-Transforms the passed in `code`. Returning an object with the generated code,
-source map, and AST.
-
-```js
-babel.transform(code, [options]) // => { code, map, ast }
-```
-
-**Example**
-
-```js
 var result = babel.transform("code();", options);
+
 result.code;
 result.map;
 result.ast;
-```
 
-## babel.transformFile(filename, [[options](/docs/usage/options)], callback)
+``` 
 
-Asynchronously transforms the entire contents of a file.
-
-```js
-babel.transformFile(filename, [options], callback)
-```
-
-**Example**
+## babel.transformFile(filename, [options], callback)
 
 ```js
+var babel = require("babel-core");
+
+// babel.transformFile(filename, [options], callback)
+// // => { code, map, ast }
+
 babel.transformFile("filename.js", options, function (err, result) {
-  result; // => { code, map, ast }
+    result;
 });
-```
 
-## babel.transformFileSync(filename, [[options](/docs/usage/options)])
+``` 
 
-Synchronous version of `babel.transformFile`. Returns the transformed contents of
-the `filename`.
+## babel.transformFileSync(filename, [options])
 
 ```js
-babel.transformFileSync(filename, [options]) // => { code, map, ast }
-```
+var babel = require("babel-core");
 
-**Example**
+// babel.transformFileSync(filename, [options]) 
+// => { code, map, ast }
 
-```js
 babel.transformFileSync("filename.js", options).code;
+
 ```
 
-## babel.transformFromAst(ast, [code], [[options](/docs/usage/options)])
-
-Given, an [AST](https://astexplorer.net/), transform it.
+# babel.transformFromAst(ast, [code], [options])
 
 ```js
+var babel = require("babel-core");
+
+// babel.transformFromAst(ast, [code], [options])
+// ?
+
 const code = "if (true) return;";
+
 const ast = babylon.parse(code, { allowReturnOutsideFunction: true });
+
 const { code, map, ast } = babel.transformFromAst(ast, code, options);
+
 ```
+
