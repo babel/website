@@ -84,6 +84,22 @@ Pipe a file in via stdin and output it to `script-compiled.js`
 $ babel --out-file script-compiled.js < script.js
 ```
 
+### Using Plugins
+
+Use the `--plugins` option to specify plugins to use in compilation
+
+```sh
+$ babel script.js --out-file script-compiled.js --plugins=es2015,react
+```
+
+### Using Presets
+
+Use the `--presets` option to specify plugins to use in compilation
+
+```sh
+$ babel script.js --out-file script-compiled.js --presets=add-module-exports,transform-es2015-modules-amd
+```
+
 ### Advanced Usage
 
 There are many more options available in the babel CLI, see [options](/docs/usage/options/), `babel --help` and other sections for more information.
@@ -147,5 +163,6 @@ $ babel-node --debug --presets es2015 -- script.js --debug
 | `-p, --print`            |                      | Evaluate script and print result |
 | `-i, --ignore [regex]`   | `node_modules`       | Ignore all files that match this regex when using the require hook |
 | `-x, --extensions`       | `".js",".jsx",".es6",".es"` | List of extensions to hook into |
+| `--no-babelrc`           |                      | Ignore config defined in .babelrc/package.json |
 | `--presets`                | `[]`                 | Comma-separated list of [presets](/docs/plugins/#presets) (a set of plugins) to load and use. |
 | `--plugins`                | `[]`                 | Comma-separated list of [plugins](/docs/plugins/) to load and use. |
