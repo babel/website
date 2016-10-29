@@ -5,6 +5,47 @@ description: Frequently Asked Questions and Answers
 permalink: /docs/faq/
 ---
 
+
+## Why is the output of `for...of` so verbose and ugly?
+
+This is necessary in order to comply with the spec as an iterators `return` method must be called on
+errors. An alternative is to enable [loose mode](/docs/plugins/transform-es2015-for-of/#options-loose) but please note
+that there are **many** caveats to be aware of if you enable loose mode and that you're willingly choosing
+to be spec incompliant.
+
+Please see [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) and
+[babel/babel/#838](https://github.com/babel/babel/issues/838) for more information.
+
+## Why are `this` and `arguments` being remapped in arrow functions?
+
+Arrow functions **are not** synonymous with normal functions. `arguments` and `this` inside arrow functions
+reference their *outer function* for example:
+
+```javascript
+var user = {
+  firstName: "Sebastian",
+  lastName: "McKenzie",
+  getFullName: () => {
+    // whoops! `this` doesn't actually reference `user` here
+    return this.firstName + " " + this.lastName;
+  }
+};
+```
+
+Please see [#842](https://github.com/babel/babel/issues/842), [#814](https://github.com/babel/babel/issues/814),
+[#733](https://github.com/babel/babel/issues/733) and [#730](https://github.com/babel/babel/issues/730) for
+more information.
+
+## Why is `this` being remapped to `undefined`?
+
+Babel assumes that all input code is an ES2015 module. ES2015 modules are implicitly strict mode so this means
+that top-level `this` is not `window` in the browser nor is it `exports` in node.
+
+If you don't want this behaviour then you have the option of disabling `strict` in the [es2015-modules-transform](http://babeljs.io/docs/plugins/transform-es2015-modules-commonjs/#usage).
+
+**PLEASE NOTE:** If you do this you're willingly deviating from the spec and this may cause future
+interop issues.
+
 ## Help?! I just want to use Babel like it was in 5.x! Everything is too complicated now!
 
 We hear you! Babel 6 requires a tiny bit of configuration in order to get going.
