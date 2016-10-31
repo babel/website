@@ -14,7 +14,7 @@ custom_js_with_timestamps:
 <div class="container docs-content">
   <div class="step-wizard">
     <div class="step">
-      <h2><span class="step-no">1</span> Choose your tool</h2>
+      <h2><span class="step-no">1</span> Choose your tool (try CLI)</h2>
 
       {% for tool in site.data.tools %}
         <h5>{{tool.name}}</h5>

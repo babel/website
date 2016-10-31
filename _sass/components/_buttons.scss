@@ -50,3 +50,18 @@
     }
   }
 }
+
+.jumbotron {
+  .btn-featured {
+    background: $babel-dark-gray;
+    color: $babel-yellow;
+    border-color: $babel-dark-gray;
+
+    &:hover {
+      background: $babel-yellow;
+      color: $babel-dark-gray;
+      border-color: $babel-yellow;
+    }
+  }
+
+}
