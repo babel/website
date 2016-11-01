@@ -28,7 +28,7 @@ $ babel --name=value
 | `ignore`                 | `null`               | Opposite to the `only` option. |
 | `auxiliaryCommentBefore` | `null`               | Attach a comment before all non-user injected code. |
 | `auxiliaryCommentAfter`  | `null`                | Attach a comment after all non-user injected code. |
-| `sourceMaps`             | `false`              | If truthy, adds a `map` property to returned output. If set to `"inline"`, a comment with a sourceMappingURL directive is added to the bottom of the returned code. If set to `"both"` then a `map` property is returned as well as a source map comment appended. |
+| `sourceMaps`             | `false`              | If truthy, adds a `map` property to returned output. If set to `"inline"`, a comment with a sourceMappingURL directive is added to the bottom of the returned code. If set to `"both"` then a `map` property is returned as well as a source map comment appended. **This does not emit sourcemap files by itself!** To have sourcemaps emitted using the CLI, you must pass it the `--source-maps` option. |
 | `inputSourceMap`         | `null`               | A source map object that the output source map will be based on. |
 | `sourceMapTarget`        | `(filenameRelative)` | Set `file` on returned source map. |
 | `sourceFileName`         | `(filenameRelative)` | Set `sources[0]` on returned source map. |
