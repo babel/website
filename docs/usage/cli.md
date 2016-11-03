@@ -76,6 +76,14 @@ Ignore spec and test files
 $ babel src --out-dir lib --ignore spec.js,test.js
 ```
 
+### Copy files
+
+Copy files that will not be compiled
+
+```sh
+$ babel src --out-dir lib --copy-files
+```
+
 ### Piping Files
 
 Pipe a file in via stdin and output it to `script-compiled.js`
