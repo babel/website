@@ -41,10 +41,21 @@ custom_js:
 
       <div id="fb-root"></div>
 
-      <hr>
+      <!-- Discourse Embed -->
+      <h2 id="community-discussion" class="page-header">Community Discussion</h2>
 
-      <div id="disqus_thread"></div>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <div id="discourse-comments"></div>
+
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://discuss.babeljs.io/',
+                           discourseEmbedUrl: 'https://babeljs.io{{page.permalink}}'};
+
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
 
     </div>
   </div>
