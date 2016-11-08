@@ -214,7 +214,7 @@ You can also specify an relative/absolute path to your plugin/preset.
 
 `"plugins": ["./node_modules/asdf/plugin"]`
 
-### Preset/Plugin Shorthand
+### Plugin/Preset Shorthand
 
 If you prefix the plugin with `babel-plugin-`, you can use a shorthand to leave out that prefix
 
@@ -267,7 +267,7 @@ Preset ordering is reversed (last to first).
 ]
 ```
 
-## Plugin/Presets Options
+## Plugin/Preset Options
 
 Plugins and Presets can both specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
 
@@ -280,6 +280,8 @@ Plugins and Presets can both specify options. You can do so in your config by wr
     }]
   ]
 }
+
+// notice the wrapping array around the preset and option
 
 {
   "presets": [
