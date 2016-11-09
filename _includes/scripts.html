@@ -16,6 +16,13 @@
   {% endfor %}
 {% endif %}
 
+{% if layout.custom_js_with_timestamps %}
+  {% for js_file in layout.custom_js_with_timestamps %}
+    <script src="/scripts/{{ js_file | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"
+            type="text/javascript"></script>
+  {% endfor %}
+{% endif %}
+
 {% if page.custom_js_with_timestamps %}
   {% for js_file in page.custom_js_with_timestamps %}
     <script src="/scripts/{{ js_file | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"
