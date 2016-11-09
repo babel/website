@@ -17,6 +17,7 @@
   });
 
   var headings = [];
+  var current;
 
   $('h2, h3').each(function(index, heading) {
     var textContent = heading.textContent;
@@ -35,7 +36,7 @@
       headings.push(value);
       current = value;
     } else {
-      current.children.push(value);
+      current && current.children.push(value);
     }
   });
 
