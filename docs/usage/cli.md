@@ -98,7 +98,7 @@ There are many more options available in the babel CLI, see [options](/docs/usag
     experience a startup performance penalty as the entire app needs to be compiled on the fly.
   </p>
   <p>
-    Check out the [example Node.js server with Babel](https://github.com/babel/example-node-server)
+    Check out the <a href="https://github.com/babel/example-node-server">example Node.js server with Babel</a>
     for an idea of how to use Babel in a production deployment.
   </p>
 </blockquote>
