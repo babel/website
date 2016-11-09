@@ -60,6 +60,12 @@ a {
   }
 }
 
+h2,
+h3 {
+  a {
+    color: $gray-dark;
+  }
+}
 
 // Figures
 //
