@@ -3,7 +3,7 @@ In your `package.json` file make the following changes:
 ```js
 {
   "scripts": {
-    "babel-node": "babel-node --presets=es2015 --ignore='foo|bar|baz'"
+    "babel-node": "babel-node --presets=/*a*/ --ignore='foo|bar|baz'"
   }
 }
 ```

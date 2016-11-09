@@ -79,6 +79,18 @@ $ npm install --save-dev babel-preset-es2015
 }
 ```
 
+To Include all Javascript versions:
+
+```sh
+$ npm install --save-dev babel-preset-latest
+```
+
+```js
+{
+  "presets": ["latest"]
+}
+```
+
 React also has it’s own preset:
 
 ```sh

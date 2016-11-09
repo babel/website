@@ -1,3 +1,3 @@
 ```sh
-$ npm install babel-cli babel-preset-es2015 --save-dev
+$ npm install babel-cli babel-preset-latest --save-dev
 ```
