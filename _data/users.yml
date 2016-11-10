@@ -454,3 +454,6 @@
 - name: QuickSearch
   url: http://www.quicksearch.in
   logo: quicksearch.svg
+- name: AdPushup
+  url: https://www.adpushup.com/
+  logo: adpushup.png
