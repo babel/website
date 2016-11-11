@@ -1,3 +1,6 @@
+- name: Prototyping
+  items:
+    browser: In the browser
 - name: Babel built-ins
   items:
     babel_cli: CLI
