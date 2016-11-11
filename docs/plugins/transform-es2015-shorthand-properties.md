@@ -9,15 +9,19 @@ package: babel-plugin-transform-es2015-shorthand-properties
 Compile ES2015 shorthand properties and methods to ES5
 
 ES2015
+
 ```js
 var o = { a, b, c };
 ```
+
 ES5
+
 ```js
 var o = { a: a, b: b, c:c };
 ```
 
 ES2015
+
 ```js
 var cat = {
   getName(){
@@ -25,7 +29,9 @@ var cat = {
   }
 };
 ```
+
 ES5
+
 ```js
 var cat = {
   getName: function () {
