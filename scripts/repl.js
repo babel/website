@@ -106,7 +106,7 @@
     this.editor.setShowPrintMargin(false);
     this.editor.commands.removeCommands(['gotoline', 'find']);
     this.$el.css({
-      fontFamily: 'Menlo, Monaco, Consolas, "Courier New", monospace',
+      fontFamily: '"Operator Mono", "Fira Code", "Ubuntu Mono", "Droid Sans Mono", "Liberation Mono", "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace',
       lineHeight: 'inherit'
     });
 
