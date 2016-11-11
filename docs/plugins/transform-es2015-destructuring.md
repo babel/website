@@ -12,6 +12,12 @@ package: babel-plugin-transform-es2015-destructuring
 $ npm install babel-plugin-transform-es2015-destructuring
 ```
 
+## Options `loose`
+
+All iterable destructuring are assumed to be arrays.
+
+Example: `[...mySet]` for casting a Set as an Array will have issues.
+
 ## Usage
 
 Add the following line to your `.babelrc` file:
