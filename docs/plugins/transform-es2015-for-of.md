@@ -8,6 +8,12 @@ package: babel-plugin-transform-es2015-for-of
 
 Compile ES2015 for...of to ES5
 
+## Installation
+
+```sh
+$ npm install babel-plugin-transform-es2015-for-of
+```
+
 ## Options `loose`
 
 #### Abrupt completions
@@ -70,12 +76,6 @@ var _arr = [1, 2, 3];
 for (var _i = 0; _i < _arr.length; _i++) {
   var a = _arr[_i];
 }
-```
-
-## Installation
-
-```sh
-$ npm install babel-plugin-transform-es2015-for-of
 ```
 
 ## Usage
