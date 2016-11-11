@@ -5,7 +5,6 @@ description: Frequently Asked Questions and Answers
 permalink: /docs/faq/
 ---
 
-
 ## Why is the output of `for...of` so verbose and ugly?
 
 This is necessary in order to comply with the spec as an iterators `return` method must be called on
@@ -27,6 +26,10 @@ var user = {
   lastName: "McKenzie",
   getFullName: () => {
     // whoops! `this` doesn't actually reference `user` here
+    return this.firstName + " " + this.lastName;
+  },
+  // use the method shorthand in objects
+  getFullName2() {
     return this.firstName + " " + this.lastName;
   }
 };
@@ -84,7 +87,7 @@ Babel is an open source project and we appreciate any and all contributions we c
 Please help out with documentation if you can by submitting a pull request to the
 [babel.github.io](https://github.com/babel/babel.github.io) repo.
 
-## How do I build babel from sources?
+## How do I build babel from source?
 See [build instructions](https://github.com/babel/babel/blob/master/CONTRIBUTING.md#developing).
 
 ## How do I contribute to Babel?
