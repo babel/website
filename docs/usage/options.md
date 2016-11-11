@@ -23,6 +23,8 @@ $ babel --name=value
 | `filenameRelative`       | `(filename)`         | Filename relative to `sourceRoot`. |
 | `presets`                | `[]`                 | List of [presets](/docs/plugins/#presets) (a set of plugins) to load and use. |
 | `plugins`                | `[]`                 | List of [plugins](/docs/plugins/) to load and use. |
+| `parserOpts`             | `{}`                 | An object containing the options to be passed down to the babel parser, babylon |
+| `generatorOpts`          | `{}`                 | An object containing the options to be passed down to the babel code generator, babel-generator |
 | `highlightCode`          | `true`               | ANSI highlight syntax error code frames |
 | `only`                   | `null`               | A [glob](https://github.com/isaacs/minimatch), regex, or mixed array of both, matching paths to **only** compile. Can also be an array of arrays containing paths to explicitly match. When attempting to compile a non-matching file it's returned verbatim. |
 | `ignore`                 | `null`               | Opposite to the `only` option. |
