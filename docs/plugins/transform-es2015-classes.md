@@ -8,11 +8,17 @@ package: babel-plugin-transform-es2015-classes
 
 Compile ES2015 classes to ES5
 
-<blockquote class="babel-callout babel-callout-warning">
-  <p>
-    Note: Built-in classes such as Date, Array, DOM etc cannot be properly subclassed due to limitations in ES5.
-  </p>
-</blockquote>
+## Installation
+
+```sh
+$ npm install babel-plugin-transform-es2015-classes
+```
+
+## Caveats
+
+Built-in classes such as `Date`, `Array`, `DOM` etc cannot be properly subclassed
+due to limitations in ES5 (for the [es2015-classes](/docs/plugins/transform-es2015-classes) plugin).
+You can try to use [babel-plugin-transform-builtin-extend](https://github.com/loganfsmyth/babel-plugin-transform-builtin-extend) based on `Object.setPrototypeOf` and `Reflect.construct`, but it also has some limitations.
 
 ## Options `loose`
 
@@ -43,12 +49,6 @@ class Bar extends Foo {
 When `Bar.prototype.foo` is defined it triggers the setter on `Foo`. This is a
 case that is very unlikely to appear in production code however it's something
 to keep in mind.
-
-## Installation
-
-```sh
-$ npm install babel-plugin-transform-es2015-classes
-```
 
 ## Usage
 
