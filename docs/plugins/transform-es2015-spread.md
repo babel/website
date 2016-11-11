@@ -14,13 +14,15 @@ Compile ES2015 spread to ES5
 $ npm install babel-plugin-transform-es2015-spread
 ```
 
+## Options `loose`
+
+All iterables are assumed to be arrays.
+
 ## Usage
 
 ### Via `.babelrc` (Recommended)
 
 **.babelrc**
-
-* `loose`: All iterables are assumed to be arrays.
 
 ```js
 // without options
