@@ -10,9 +10,9 @@ This is a special preset that will contain all yearly presets so user's won't ne
 
 It currently includes:
 
- - [es2017](/docs/plugins/preset-es2017)
- - [es2016](/docs/plugins/preset-es2016)
- - [es2015](/docs/plugins/preset-es2015)
+- [es2017](/docs/plugins/preset-es2017)
+- [es2016](/docs/plugins/preset-es2016)
+- [es2015](/docs/plugins/preset-es2015)
 
 ## Basic Setup (with the CLI)
 

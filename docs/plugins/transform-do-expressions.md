@@ -107,4 +107,4 @@ Add the following line to your `.babelrc` file:
 ## References
 - [Proposal](http://wiki.ecmascript.org/doku.php?id=strawman:do_expressions)
 - [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch5.md#statement-completion-values)
-- Very handy for conditions inside JSX: https://github.com/reactjs/react-future/issues/35#issuecomment-120009203
+- Very handy for conditions inside JSX: [reactjs/react-future#35](https://github.com/reactjs/react-future/issues/35#issuecomment-120009203)

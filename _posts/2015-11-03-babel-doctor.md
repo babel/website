@@ -20,9 +20,9 @@ potential environment issues.
 In order to combat this we now include a `babel-doctor` command with the `babel-cli` that
 detects common problems with your Babel installation such as:
 
- - Missing `.babelrc`.
- - Duplicate Babel core modules
- - Outdated Babel core modules
+- Missing `.babelrc`.
+- Duplicate Babel core modules
+- Outdated Babel core modules
 
 ## Usage
 

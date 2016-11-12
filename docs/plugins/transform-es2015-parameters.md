@@ -8,9 +8,9 @@ package: babel-plugin-transform-es2015-parameters
 
 This plugin transforms ES2015 parameters to ES5, this includes:
 
- - Destructuring parameters
- - Default parameters
- - Rest parameters
+- Destructuring parameters
+- Default parameters
+- Rest parameters
 
 ## Installation
 

@@ -40,7 +40,7 @@ custom_js_with_timestamps:
       <blockquote class="babel-callout babel-callout-info">
         <h4>Note</h4>
         <p>
-          Pre-6.x, Babel enabled certain transformations by default. However, Babel 6.x <i>does not</i> ship with any transformations enabled. You need to explicitly tell it what transformations to run. The simplest way to do this is by using a <a href="https://babeljs.io/docs/plugins/#presets">preset</a>, such as the <a href="https://babeljs.io/docs/plugins/preset-es2015/">ES2015 Preset</a>. You can install it with <pre>npm install babel-preset-es2015 --save-dev</pre> (In order to emulate a full ES2015+ environment, you will need to use a polyfill (one option is <a href="/docs/usage/polyfill/">babel-polyfill</a>) for things like Promise, Set, Map, or instance methods like String.repeat or Array.includes since Babel only does syntax transformations.
+          Pre-6.x, Babel enabled certain transformations by default. However, Babel 6.x <i>does not</i> ship with any transformations enabled. You need to explicitly tell it what transformations to run. The simplest way to do this is by using a <a href="https://babeljs.io/docs/plugins/#presets">preset</a>, such as the <a href="https://babeljs.io/docs/plugins/preset-latest/">latest Preset</a>. You can install it with <pre>npm install babel-preset-latest --save-dev</pre> (In order to emulate a full ES2015+ environment, you will need to use a polyfill (one option is <a href="/docs/usage/polyfill/">babel-polyfill</a>) for things like Promise, Set, Map, or instance methods like String.repeat or Array.includes since Babel only does syntax transformations.
         </p>
       </blockquote>
     </div>
@@ -53,14 +53,16 @@ custom_js_with_timestamps:
       </p>
 
       <p>
-        Assuming you have installed the <a href="https://babeljs.io/docs/plugins/preset-es2015/">ES2015 Preset</a>, in order to enable it you have to define it in your <code>.babelrc</code> file, like this:
+        Assuming you have installed the <a href="https://babeljs.io/docs/plugins/preset-latest/">latest preset</a>, in order to enable it you have to define it in your <code>.babelrc</code> file, like this:
       </p>
 
-      {% highlight json %}
+<!--lint disable no-shortcut-reference-link, no-undefined-references-->
+{% highlight json %}
 {
-  "presets": ["es2015"]
+  "presets": ["latest"]
 }
-      {% endhighlight %}
+{% endhighlight %}
+<!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
       <p>
         <strong>Note</strong>: Running a Babel 6.x project using npm 2.x can cause performance problems because of the way npm 2.x installs dependencies. This problem can be eliminated by either switching to npm 3.x or running npm 2.x with the <a href="https://docs.npmjs.com/cli/dedupe">dedupe</a> flag. To check what version of npm you have run <pre>npm --version</pre>
