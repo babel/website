@@ -8,11 +8,11 @@ package: babel-preset-react
 
 This preset includes the following plugins:
 
-- [syntax-flow](/docs/plugins/syntax-flow)
-- [syntax-jsx](/docs/plugins/syntax-jsx)
-- [transform-flow-strip-types](/docs/plugins/transform-flow-strip-types)
-- [transform-react-jsx](/docs/plugins/transform-react-jsx)
-- [transform-react-display-name](/docs/plugins/transform-react-display-name)
+- [syntax-flow](/docs/plugins/syntax-flow/)
+- [syntax-jsx](/docs/plugins/syntax-jsx/)
+- [transform-flow-strip-types](/docs/plugins/transform-flow-strip-types/)
+- [transform-react-jsx](/docs/plugins/transform-react-jsx/)
+- [transform-react-display-name](/docs/plugins/transform-react-display-name/)
 
 ## Basic Setup (with the CLI)
 
