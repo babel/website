@@ -1,0 +1,19 @@
+a.panel {
+  display: block;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    color: $text-color;
+    text-decoration: none;
+  }
+
+  &:hover .panel-title {
+    text-decoration: underline;
+  }
+}
+
+.panel-heading small {
+  color: $gray;
+}

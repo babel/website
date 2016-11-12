@@ -26,3 +26,38 @@ users:
       > Brand Guidelines/Licensing: https://www.cloudflare.com/logo
 
       > Logo: https://www.cloudflare.com/media/downloads/cloudflare-logo-kit.zip
+resources:
+  submit:
+    title: >
+      New Resource: [insert name]
+    body: >
+      Please fill the following out:
+
+
+      > Note: This is the text that will be used to search from, so be sure
+      it is descriptive.
+
+
+      - Title of Work: (should be the same title of content at url)
+
+      - Creator/Author: (Full names are preferred, company/usernames are acceptable)
+
+      - Description: (Description or intro paragraph will do)
+
+      - Tags: (Please look at existing tags, try to be consistent)
+
+
+      > Example:
+
+      >
+
+      > Name: "Babel: Beyond the Basics"
+
+      > Creator: Sebastian McKenzie
+
+      > Description: A talk from the creator of Babel explaining some of the
+      more advanced topics in Babel, and some of the magical things it can do.
+
+      > Url: https://www.youtube.com/watch?v=F1BIeVe99EQ
+
+      > Tags: babel, talk, video, advanced, transpiler
