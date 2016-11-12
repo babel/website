@@ -4,7 +4,7 @@ This is the source for the [babeljs.io](https://babeljs.io) website, powered by 
 
 This repo also contains babel's [source documentation](https://github.com/babel/babel.github.io/tree/master/docs).
 
-> The babel repo is https://github.com/babel/babel
+> The babel repo is [babel/babel](https://github.com/babel/babel)
 
 Feel free to suggest changes to our docs, or add new content!
 
