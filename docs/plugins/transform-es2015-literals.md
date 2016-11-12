@@ -24,7 +24,7 @@ var o = 7; // octal integer literal
 const u = 'Hello\n\t!'; // unicode string literals, newline and tab
 ```
 
-For template literals transformation see [transform-es2015-template-literals](/docs/plugins/transform-es2015-template-literals)
+For template literals transformation see [transform-es2015-template-literals](/docs/plugins/transform-es2015-template-literals/)
 
 ## Installation
 

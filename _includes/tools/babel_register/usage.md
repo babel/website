@@ -12,7 +12,7 @@ should instead import at the top of the **entry point** to ensure it is loaded f
 import "babel-register";
 ```
 
-All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx` and `.js` will be transformed by Babel. The polyfill specified in [polyfill](/docs/usage/polyfill) is also automatically required.
+All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx` and `.js` will be transformed by Babel. The polyfill specified in [polyfill](/docs/usage/polyfill/) is also automatically required.
 
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Not suitable for libraries</h4>

@@ -10,8 +10,8 @@ package: babel-preset-es2017
 
 This preset includes the following plugins:
 
-- [syntax-trailing-function-commas](/docs/plugins/syntax-trailing-function-commas)
-- [transform-async-to-generator](/docs/plugins/transform-async-to-generator)
+- [syntax-trailing-function-commas](/docs/plugins/syntax-trailing-function-commas/)
+- [transform-async-to-generator](/docs/plugins/transform-async-to-generator/)
 
 ## Basic Setup (with the CLI)
 
