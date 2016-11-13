@@ -27,7 +27,7 @@ $ babel --name=value
 | `generatorOpts`          | `{}`                 | An object containing the options to be passed down to the babel code generator, babel-generator |
 | `highlightCode`          | `true`               | ANSI highlight syntax error code frames |
 | `only`                   | `null`               | A [glob](https://github.com/isaacs/minimatch), regex, or mixed array of both, matching paths to **only** compile. Can also be an array of arrays containing paths to explicitly match. When attempting to compile a non-matching file it's returned verbatim. |
-| `ignore`                 | `null`               | Opposite to the `only` option. |
+| `ignore`                 | `null`               | Opposite to the `only` option. `ignore` is disregarded if `only` is specified. |
 | `auxiliaryCommentBefore` | `null`               | Attach a comment before all non-user injected code. |
 | `auxiliaryCommentAfter`  | `null`                | Attach a comment after all non-user injected code. |
 | `sourceMaps`             | `false`              | If truthy, adds a `map` property to returned output. If set to `"inline"`, a comment with a sourceMappingURL directive is added to the bottom of the returned code. If set to `"both"` then a `map` property is returned as well as a source map comment appended. **This does not emit sourcemap files by itself!** To have sourcemaps emitted using the CLI, you must pass it the `--source-maps` option. |
