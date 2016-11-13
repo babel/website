@@ -73,8 +73,8 @@ var bob = {
 function square() {
   let example = () => {
     let numbers = [];
-    for (number of arguments) {
-      numbers.push(number * 2);
+    for (let number of arguments) {
+      numbers.push(number * number);
     }
 
     return numbers;
