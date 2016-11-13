@@ -8,6 +8,8 @@ package: babel-core
 
 ```javascript
 var babel = require("babel-core");
+import { transform } from 'babel-core';
+import * as babel from 'babel-core';
 ```
 
 ## babel.transform(code: string, [options?](/docs/usage/options): Object)
