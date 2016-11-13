@@ -89,7 +89,10 @@
   $('td:contains("✓")').addClass('bg-success');
 
   $('h2,h3').filter('[id]').each(function () {
-    $(this).html('<a href="#'+$(this).attr('id')+'">' + $(this).text() + '</a>');
+    // check if existing link
+    if (!$(this).children(0) || $(this).children(0).prop('tagName') !== 'A') {
+      $(this).html('<a href="#'+$(this).attr('id')+'">' + $(this).text() + '</a>');
+    }
   });
 
 }());
