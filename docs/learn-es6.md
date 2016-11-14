@@ -73,8 +73,8 @@ var bob = {
 function square() {
   let example = () => {
     let numbers = [];
-    for (number of arguments) {
-      numbers.push(number * 2);
+    for (let number of arguments) {
+      numbers.push(number * number);
     }
 
     return numbers;
@@ -83,7 +83,7 @@ function square() {
   return example();
 }
 
-square(2, 4, 7.5, 8, 11.5, 21); // returns: [4, 8, 15, 16, 23, 42]
+square(2, 4, 7.5, 8, 11.5, 21); // returns: [4, 16, 56.25, 64, 132.25, 441]
 ```
 
 ### Classes
