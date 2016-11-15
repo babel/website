@@ -13,7 +13,7 @@ Feel free to suggest changes to our docs, or add new content!
 ```bash
 $ git clone git@github.com:babel/babel.github.io.git
 $ cd babel.github.io
-``
+```
 
 * [Please install ruby](https://www.ruby-lang.org/en/documentation/installation/), if not already installed.
   * Use `which ruby` or `ruby --version`, to verify if ruby is installed.
