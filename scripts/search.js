@@ -5,6 +5,7 @@
     var $selector = '#babel-search-input';
     var $searchInput = $($selector);
 
+    // config is https://github.com/algolia/docsearch-configs/blob/master/configs/babeljs.json
     var $search = docsearch({
         apiKey: 'd42906b043c5422ea07b44fd49c40a0d',
         indexName: 'babeljs',
