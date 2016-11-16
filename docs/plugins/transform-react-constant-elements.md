@@ -64,3 +64,7 @@ Add the following line to your `.babelrc`:
   "plugins": ["transform-react-constant-elements"]
 }
 ```
+
+## References
+
+* [[facebook/react#3226] Optimizing Compiler: Reuse Constant Value Types like ReactElement](https://github.com/facebook/react/issues/3226)
