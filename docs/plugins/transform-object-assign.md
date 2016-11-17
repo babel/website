@@ -38,14 +38,3 @@ Add the following line to your `.babelrc` file:
 {
   "plugins": ["transform-object-assign"]
 }
-```
-## Example
-In
-```
-Object.assign(a, b);
-```
-Out
-```
-var _extends = ...;
-_extends(a, b);
-```
