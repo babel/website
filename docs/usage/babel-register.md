@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: babel-register (Require hook)
+title: babel-register (require hook)
 description: How to use babel-register, the require hook.
 permalink: /docs/usage/babel-register/
 redirect_from:
