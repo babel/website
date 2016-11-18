@@ -1,8 +1,10 @@
 ---
 layout: docs
-title: Require Hook
-description: How to use the require hook.
-permalink: /docs/usage/require/
+title: babel-register (require hook)
+description: How to use babel-register, the require hook.
+permalink: /docs/usage/babel-register/
+redirect_from:
+ - /docs/usage/require/
 package: babel-register
 ---
 
@@ -14,7 +16,7 @@ fly. This is equivalent to CoffeeScript's
 ## Install
 
 ```sh
-$ npm install babel-register
+$ npm install babel-register --save-dev
 ```
 
 ## Usage
@@ -32,6 +34,8 @@ and `.js` will be transformed by Babel.
     You must include the <a href="/docs/usage/polyfill">polyfill</a> separately when using features that require it, like generators.
   </p>
 </blockquote>
+
+### Ignores `node_modules` by default
 
 **NOTE:** By default all requires to `node_modules` will be ignored. You can
 override this by passing an ignore regex via:
