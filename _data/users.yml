@@ -460,3 +460,6 @@
 - name: clearTax
   url: https://cleartax.in 
   logo: cleartax.svg
+- name: TradingView
+  url: https://www.tradingview.com/
+  logo: tradingview.svg
