@@ -451,3 +451,6 @@
 - name: FiveStars
   url: http://www.fivestars.com
   logo: fivestars.png
+- name: QuickSearch
+  url: http://www.quicksearch.in
+  logo: quicksearch.svg
