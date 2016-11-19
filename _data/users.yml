@@ -466,3 +466,6 @@
 - name: NodeXperts
   url: http://www.nodexperts.com
   logo: nodexperts.svg
+- name: ResearchGate
+  url: https://www.researchgate.net
+  logo: researchgate.svg
