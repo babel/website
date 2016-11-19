@@ -44,7 +44,7 @@
     var template = '';
 
     _.each(headings, function(heading) {
-      template += '<li><a href="#' + heading.id + '">' + heading.text + '</a>';
+      template += '<li><a class="smooth-scroll" href="#' + heading.id + '">' + heading.text + '</a>';
 
       if (heading.children.length) {
         template += '<ul class="nav">';
@@ -91,8 +91,15 @@
   $('h2,h3').filter('[id]').each(function () {
     // check if existing link
     if (!$(this).children(0) || $(this).children(0).prop('tagName') !== 'A') {
-      $(this).html('<a href="#'+$(this).attr('id')+'">' + $(this).text() + '</a>');
+      $(this).html('<a class="smooth-scroll" href="#'+$(this).attr('id')+'">' + $(this).text() + '</a>');
     }
   });
 
+  $('a.smooth-scroll').on('click', function(event) {
+      event.preventDefault();
+      var $anchor = $(this);
+      $('html, body').stop().animate({
+        scrollTop: $($anchor.attr('href')).offset().top - 60
+      }, 400);
+  });
 }());
