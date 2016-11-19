@@ -20,7 +20,7 @@ This plugin allows Babel to parse [object rest spread syntax](https://github.com
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-object-rest-spread
+$ npm install --save-dev babel-plugin-syntax-object-rest-spread
 ```
 
 ## Usage

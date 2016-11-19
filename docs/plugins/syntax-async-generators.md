@@ -19,7 +19,7 @@ This plugin allows Babel to parse [async generators](https://github.com/zenparsi
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-async-generators
+$ npm install --save-dev babel-plugin-syntax-async-generators
 ```
 
 ## Usage

@@ -11,7 +11,7 @@ Compile ES2015 spread to ES5
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-es2015-spread
+$ npm install --save-dev babel-plugin-transform-es2015-spread
 ```
 
 ## Options `loose`

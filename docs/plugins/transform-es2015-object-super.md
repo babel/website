@@ -9,7 +9,7 @@ package: babel-plugin-transform-es2015-object-super
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-es2015-object-super
+$ npm install --save-dev babel-plugin-transform-es2015-object-super
 ```
 
 ## Usage

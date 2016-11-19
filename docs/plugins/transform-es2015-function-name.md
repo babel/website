@@ -9,7 +9,7 @@ package: babel-plugin-transform-es2015-function-name
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-es2015-function-name
+$ npm install --save-dev babel-plugin-transform-es2015-function-name
 ```
 
 ## Usage

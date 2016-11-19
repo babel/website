@@ -19,7 +19,7 @@ This plugin allows Babel to parse [JSX](https://facebook.github.io/react/docs/js
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-jsx
+$ npm install --save-dev babel-plugin-syntax-jsx
 ```
 
 ## Usage

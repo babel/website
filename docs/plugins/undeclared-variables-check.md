@@ -32,7 +32,7 @@ ReferenceError: stdin: Line 3: Reference to undeclared variable "bar" - did you 
 ## Installation
 
 ```sh
-$ npm install babel-plugin-undeclared-variables-check
+$ npm install --save-dev babel-plugin-undeclared-variables-check
 ```
 
 ## Usage

@@ -52,7 +52,7 @@ const Hr = () => {
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-react-constant-elements
+$ npm install --save-dev babel-plugin-transform-react-constant-elements
 ```
 
 ## Usage

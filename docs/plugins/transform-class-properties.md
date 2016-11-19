@@ -42,7 +42,7 @@ Below is a class with four class properties which will be transformed.
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-class-properties
+$ npm install --save-dev babel-plugin-transform-class-properties
 ```
 
 ## Usage

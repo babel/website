@@ -41,7 +41,7 @@ if ("development" === "development") {
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-inline-environment-variables
+$ npm install --save-dev babel-plugin-transform-inline-environment-variables
 ```
 
 ## Usage

@@ -89,7 +89,7 @@ $('.some-link').on('click', view.reset.bind(view));
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-function-bind
+$ npm install --save-dev babel-plugin-transform-function-bind
 ```
 
 ## Usage

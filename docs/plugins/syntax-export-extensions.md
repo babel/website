@@ -19,7 +19,7 @@ This plugin allows Babel to parse [export extensions](https://github.com/leebyro
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-export-extensions
+$ npm install --save-dev babel-plugin-syntax-export-extensions
 ```
 
 ## Usage

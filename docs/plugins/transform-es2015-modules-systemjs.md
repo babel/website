@@ -34,7 +34,7 @@ System.register([], function (_export, _context) {
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-es2015-modules-systemjs
+$ npm install --save-dev babel-plugin-transform-es2015-modules-systemjs
 ```
 
 ## Usage

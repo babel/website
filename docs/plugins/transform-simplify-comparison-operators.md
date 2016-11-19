@@ -26,7 +26,7 @@ to always be the same type.
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-simplify-comparison-operators
+$ npm install --save-dev babel-plugin-transform-simplify-comparison-operators
 ```
 
 ## Usage
