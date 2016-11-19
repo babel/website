@@ -11,7 +11,7 @@ Compile ES2015 for...of to ES5
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-es2015-for-of
+$ npm install --save-dev babel-plugin-transform-es2015-for-of
 ```
 
 ## Options `loose`

@@ -24,7 +24,7 @@ This plugin allows Babel to parse [callable class constructors](https://github.c
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-class-constructor-call
+$ npm install --save-dev babel-plugin-syntax-class-constructor-call
 ```
 
 ## Usage

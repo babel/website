@@ -26,7 +26,7 @@ This plugin allows Babel to parse [decorators](https://github.com/wycats/javascr
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-decorators
+$ npm install --save-dev babel-plugin-syntax-decorators
 ```
 
 ## Usage

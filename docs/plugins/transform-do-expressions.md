@@ -91,7 +91,7 @@ const Component = props =>
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-do-expressions
+$ npm install --save-dev babel-plugin-transform-do-expressions
 ```
 
 ## Usage

@@ -19,7 +19,7 @@ This plugin allows Babel to parse [function bind syntax](https://github.com/zenp
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-function-bind
+$ npm install --save-dev babel-plugin-syntax-function-bind
 ```
 
 ## Usage

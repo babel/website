@@ -19,7 +19,7 @@ This plugin allows Babel to parse [class properties](https://github.com/jeffmo/e
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-class-properties
+$ npm install --save-dev babel-plugin-syntax-class-properties
 ```
 
 ## Usage

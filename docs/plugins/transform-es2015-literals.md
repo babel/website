@@ -29,7 +29,7 @@ For template literals transformation see [transform-es2015-template-literals](/d
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-es2015-literals
+$ npm install --save-dev babel-plugin-transform-es2015-literals
 ```
 
 ## Usage

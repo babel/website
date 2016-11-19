@@ -31,7 +31,7 @@ _typeof(Symbol()) === "symbol";
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-es2015-typeof-symbol
+$ npm install --save-dev babel-plugin-transform-es2015-typeof-symbol
 ```
 
 ## Usage

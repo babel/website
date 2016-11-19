@@ -9,7 +9,7 @@ package: babel-plugin-transform-es2015-destructuring
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-es2015-destructuring
+$ npm install --save-dev babel-plugin-transform-es2015-destructuring
 ```
 
 ## Options `loose`

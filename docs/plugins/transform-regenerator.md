@@ -60,7 +60,7 @@ function a() {
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-regenerator
+$ npm install --save-dev babel-plugin-transform-regenerator
 ```
 
 ## Usage

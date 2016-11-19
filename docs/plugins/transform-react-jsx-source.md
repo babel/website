@@ -32,7 +32,7 @@ var x = <sometag __source={{
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-react-jsx-source
+$ npm install --save-dev babel-plugin-transform-react-jsx-source
 ```
 
 ## Usage

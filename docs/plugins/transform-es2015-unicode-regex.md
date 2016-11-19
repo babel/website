@@ -9,7 +9,7 @@ package: babel-plugin-transform-es2015-unicode-regex
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-es2015-unicode-regex
+$ npm install --save-dev babel-plugin-transform-es2015-unicode-regex
 ```
 
 ## Usage

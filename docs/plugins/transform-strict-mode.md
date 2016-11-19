@@ -32,7 +32,7 @@ foo();
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-strict-mode
+$ npm install --save-dev babel-plugin-transform-strict-mode
 ```
 
 ## Usage

@@ -19,7 +19,7 @@ This plugin allows Babel to parse [exponentiation operators](https://github.com/
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-exponentiation-operator
+$ npm install --save-dev babel-plugin-syntax-exponentiation-operator
 ```
 
 ## Usage

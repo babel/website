@@ -35,7 +35,7 @@ var y = {
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-es2015-duplicate-keys
+$ npm install --save-dev babel-plugin-transform-es2015-duplicate-keys
 ```
 
 ## Usage
