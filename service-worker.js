@@ -3,9 +3,9 @@
 
 importScripts('/scripts/sw-toolbox.js');
 
-var swOptions = {
-  debug: true
-}
+const VERSION = 1;
+
+toolbox.cache.name = "Babel-Cache-" + VERSION;
 
 var preCachedRessources = [
   {% for page in site.pages %}
@@ -15,7 +15,7 @@ var preCachedRessources = [
 
 toolbox.precache(preCachedRessources);
 
-toolbox.router.get('/*', toolbox.cacheFirst, swOptions);
+toolbox.router.get('/*', toolbox.cacheFirst);
 toolbox.router.get('/*', toolbox.cacheFirst, { origin: "cdnjs.cloudflare.com" });
 toolbox.router.get('/*', toolbox.cacheFirst, { origin: "cdn.jsdelivr.net" });
 toolbox.router.get('/*', toolbox.cacheFirst, { origin: "unpkg.com" }); // for repl
