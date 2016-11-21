@@ -38,3 +38,4 @@ Add the following line to your `.babelrc` file:
 {
   "plugins": ["transform-object-assign"]
 }
+```
