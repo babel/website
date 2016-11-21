@@ -8,7 +8,6 @@ var swOptions = {
 }
 
 var preCachedRessources = [
-  '{{ "/css/main.css" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"',
   {% for page in site.pages %}
   '{{ page.url }}',
   {% endfor %}
