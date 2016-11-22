@@ -5,7 +5,7 @@
 {{ readme
     | newline_to_br
     | split: "<br />"
-    | slice: 4, 1000
+    | shift | shift | shift | shift
     | join: "<br />"
     | strip_html
     | markdownify
