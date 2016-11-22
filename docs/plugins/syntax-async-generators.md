@@ -14,20 +14,4 @@ package: babel-plugin-syntax-async-generators
   </p>
 </blockquote>
 
-This plugin allows Babel to parse [async generators](https://github.com/zenparsing/async-iteration/) only.
-
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-syntax-async-generators
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-async-generators"]
-}
-```
+{% include package_readme.html %}

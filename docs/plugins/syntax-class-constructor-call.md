@@ -19,20 +19,4 @@ package: babel-plugin-syntax-class-constructor-call
   </p>
 </blockquote>
 
-This plugin allows Babel to parse [callable class constructors](https://github.com/tc39/ecma262/blob/master/workingdocs/callconstructor.md).
-
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-syntax-class-constructor-call
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-class-constructor-call"]
-}
-```
+{% include package_readme.html %}
