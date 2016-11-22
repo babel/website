@@ -1,0 +1,51 @@
+plugins:
+  - name: babel-plugin-add-module-exports
+    url: https://github.com/59naga/babel-plugin-add-module-exports
+    description: Fix babel/babel#2212 - Follow the babel@5 behavior for babel@6
+  - name: babel-plugin-transform-decorators-legacy
+    url: https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy
+    description: A plugin for Babel 6 that (mostly) replicates the old decorator behavior from Babel 5
+  - name: babel-plugin-react-transform
+    url: https://github.com/gaearon/babel-plugin-react-transform
+    description: Babel plugin to instrument React components with custom transforms
+  - name: babel-plugin-lodash
+    url: https://github.com/lodash/babel-plugin-lodash
+    description: Modular Lodash builds without the hassle.
+  - name: babel-plugin-webpack-loaders
+    url: https://github.com/istarkov/babel-plugin-webpack-loaders
+    description: babel 6 plugin which allows to use webpack loaders
+  - name: babel-plugin-react-remove-prop-types
+    url: https://github.com/nkt/babel-plugin-react-remove-prop-types
+    description: Deprecated, use babel-plugin-transform-react-remove-prop-types https://nkt.github.io/babel-plugin-react-remove-prop-types/
+  - name: babel-plugin-incremental-dom
+    url: https://github.com/jridgewell/babel-plugin-incremental-dom
+    description:
+  - name: guides-babel-plugin.html
+    url: https://facebook.github.io/relay/docs/guides-babel-plugin.html
+    description:
+  - name: babel-plugin-react-intl
+    url: https://github.com/yahoo/babel-plugin-react-intl
+    description:
+  - name: babel-plugin-__coverage__
+    url: https://github.com/dtinth/babel-plugin-__coverage__
+    description:
+  - name: babel-plugin-rewire
+    url: https://github.com/speedskater/babel-plugin-rewire
+    description:
+  - name: babel-plugin-typecheck
+    url: https://github.com/codemix/babel-plugin-typecheck
+    description:
+  - name: babel-plugin-closure-elimination
+    url: https://github.com/codemix/babel-plugin-closure-elimination
+    description:
+  - name: babel-plugin-module-alias
+    url: https://github.com/tleunen/babel-plugin-module-alias
+    description:
+  - name: babel-plugin-webpack-alias
+    url: https://github.com/trayio/babel-plugin-webpack-alias
+    description:
+
+tools:
+  - name: kneden
+    url: https://github.com/marten-de-vries/kneden
+    description: 'Transpile ES7 async/await to vanilla ES6 Promise chains: a Babel plugin'
