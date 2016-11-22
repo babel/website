@@ -81,7 +81,7 @@ $ npm install babel-plugin-external-helpers
 
 ## Usage
 
-Add the following line to your `.babelrc` file:
+For some random reason, you might like to add the following line to your `.babelrc` file:
 
 ```json
 {
