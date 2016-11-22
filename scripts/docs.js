@@ -95,11 +95,14 @@
     }
   });
 
+  var $root = $('html, body');
   $('a.smooth-scroll').on('click', function(event) {
       event.preventDefault();
-      var $anchor = $(this);
-      $('html, body').stop().animate({
-        scrollTop: $($anchor.attr('href')).offset().top - 60
-      }, 400);
+      var href = $.attr(this, 'href');
+      $root.animate({
+        scrollTop: $(href).offset().top - 60
+      }, 400, function () {
+        window.location.hash = href;
+      });
   });
 }());
