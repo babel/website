@@ -17,5 +17,4 @@ And all plugins from presets:
 - [preset-stage-2](/docs/plugins/preset-stage-2/)
 - [preset-stage-3](/docs/plugins/preset-stage-3/)
 
-{% include_package_readme %}
-
+{% include package_readme.html %}
