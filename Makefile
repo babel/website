@@ -15,5 +15,7 @@ serve:
 	exit 1; \
 	fi
 
+	git submodule init
+	git submodule update
 	bundle check || bundle install; \
 	bundle exec jekyll serve
