@@ -2,7 +2,7 @@
 layout: docs
 title: babel-plugin-add-module-exports
 description: Fix babel/babel#2212
-permalink: /docs/awesome-babel/babel-plugin-add-module-exports
+permalink: /community-plugins/babel-plugin-add-module-exports
 community_plugin: yes
 ---
 
