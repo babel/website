@@ -51,6 +51,23 @@
   }
 }
 
+.btn-icon {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  svg {
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+  }
+
+  &__label {
+    vertical-align: top;
+    text-transform: uppercase;
+  }
+}
+
 .highlight {
   position: relative;
 
@@ -58,7 +75,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: 1rem .5rem;
+    padding: 1rem;
   }
 }
 

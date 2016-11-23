@@ -9,6 +9,7 @@
     var button = $(
       '<button class="btn btn-link btn-icon btn-clipboard" aria-label="Copy code to clipboard">'
       + clipboardIcon
+      + '<strong class="btn-icon__label small">Copy</strong>'
       + '</button>'
     );
 
