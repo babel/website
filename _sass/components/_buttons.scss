@@ -51,6 +51,17 @@
   }
 }
 
+.highlight {
+  position: relative;
+
+  .btn-clipboard {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 1rem .5rem;
+  }
+}
+
 .jumbotron {
   .btn-featured {
     background: $babel-dark-gray;
