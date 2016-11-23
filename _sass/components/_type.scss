@@ -1,4 +1,5 @@
-pre {
+pre,
+pre.highlight {
   border: none;
   background: desaturate(lighten($babel-yellow, 31%), 10%);
   @include box-shadow(none);
