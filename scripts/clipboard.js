@@ -15,9 +15,18 @@
 
     $(selector).append(button);
 
-    new Clipboard('.btn-clipboard', {
+    var clipboard = new Clipboard('.btn-clipboard', {
       target: function(trigger) {
         return $(trigger).prev()[0]; // Get adjacent code element
       }
+    });
+
+    clipboard.on('success', function(event) {
+      event.clearSelection();
+      var textEl = $(event.trigger).find('.btn-icon__label');
+      textEl.text('Copied');
+      setTimeout(function() {
+        textEl.text('Copy');
+      }, 2000);
     });
 })(jQuery);
