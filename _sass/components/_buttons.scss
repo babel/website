@@ -76,6 +76,11 @@
     bottom: 0;
     right: 0;
     padding: 1rem;
+
+    &:focus,
+    &:active {
+      outline: 2px solid $link-color;
+    }
   }
 }
 
