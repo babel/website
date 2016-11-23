@@ -1,6 +1,6 @@
 pre {
   border: none;
-  background: lighten($gray-lighter, 4%);
+  background: desaturate(lighten($babel-yellow, 31%), 10%);
   @include box-shadow(none);
   color: $babel-dark-gray;
   padding: 1em;
