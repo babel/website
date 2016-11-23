@@ -4,6 +4,7 @@ title: babel-plugin-add-module-exports
 description: Fix babel/babel#2212
 permalink: /community-plugins/babel-plugin-add-module-exports
 community_plugin: yes
+package: 59naga/babel-plugin-add-module-exports
 ---
 
 <p align="right">
