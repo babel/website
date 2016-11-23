@@ -77,7 +77,7 @@ forEach(genAnswers(), function(val) { output += val.value })
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-async-generator-functions
+$ npm install --save-dev babel-plugin-transform-async-generator-functions
 ```
 
 ## Usage

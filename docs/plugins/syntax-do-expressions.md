@@ -19,7 +19,7 @@ This plugin allows Babel to parse [do-expressions](http://wiki.ecmascript.org/do
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-do-expressions
+$ npm install --save-dev babel-plugin-syntax-do-expressions
 ```
 
 ## Usage

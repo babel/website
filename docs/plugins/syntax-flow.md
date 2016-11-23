@@ -19,7 +19,7 @@ This plugin allows Babel to parse [flow syntax](http://flowtype.org/docs/quick-r
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-flow
+$ npm install --save-dev babel-plugin-syntax-flow
 ```
 
 ## Usage

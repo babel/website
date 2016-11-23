@@ -11,7 +11,7 @@ This plugin allows Babel to parse the [`function.sent` meta property](https://gi
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-function-sent
+$ npm install --save-dev babel-plugin-syntax-function-sent
 ```
 
 ## Usage

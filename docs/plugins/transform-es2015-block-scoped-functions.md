@@ -11,7 +11,7 @@ Ensure function declarations at the block level are block scoped
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-es2015-block-scoped-functions
+$ npm install --save-dev babel-plugin-transform-es2015-block-scoped-functions
 ```
 
 ## Usage

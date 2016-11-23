@@ -27,7 +27,7 @@ var foo = "bar",
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-merge-sibling-variables
+$ npm install --save-dev babel-plugin-transform-merge-sibling-variables
 ```
 
 ## Usage

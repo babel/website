@@ -6,7 +6,7 @@ permalink: /docs/plugins/transform-object-assign/
 package: babel-plugin-transform-object-assign
 ---
 
-Replace `Object.assign` with an inline helper.
+Replace `Object.assign` with an inline helper. If you are authoring an application, rather than a library, it is recommended that you use the `Object.assign` polyfill instead.
 
 ## Example
 
@@ -24,10 +24,19 @@ var _extends = ...;
 _extends(a, b);
 ```
 
+## Caveats
+
+- Will only work with code of the form `Object.assign` or `Object['assign']`. The following patterns are not supported:
+
+  ```javascript
+  var { assign } = Object;
+  var assign = Object.assign;
+  ```
+
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-object-assign
+$ npm install --save-dev babel-plugin-transform-object-assign
 ```
 
 ## Usage
@@ -38,14 +47,4 @@ Add the following line to your `.babelrc` file:
 {
   "plugins": ["transform-object-assign"]
 }
-```
-## Example
-In
-```
-Object.assign(a, b);
-```
-Out
-```
-var _extends = ...;
-_extends(a, b);
 ```

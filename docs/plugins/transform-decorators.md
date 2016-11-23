@@ -65,7 +65,7 @@ function enumerable(value) {
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-decorators
+$ npm install --save-dev babel-plugin-transform-decorators
 ```
 
 ## Usage

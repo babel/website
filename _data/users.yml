@@ -451,3 +451,21 @@
 - name: FiveStars
   url: http://www.fivestars.com
   logo: fivestars.png
+- name: QuickSearch
+  url: http://www.quicksearch.in
+  logo: quicksearch.svg
+- name: AdPushup
+  url: https://www.adpushup.com/
+  logo: adpushup.png
+- name: clearTax
+  url: https://cleartax.in 
+  logo: cleartax.svg
+- name: TradingView
+  url: https://www.tradingview.com/
+  logo: tradingview.svg
+- name: NodeXperts
+  url: http://www.nodexperts.com
+  logo: nodexperts.svg
+- name: ResearchGate
+  url: https://www.researchgate.net
+  logo: researchgate.svg

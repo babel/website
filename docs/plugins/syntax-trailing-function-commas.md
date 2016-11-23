@@ -93,7 +93,7 @@ In the end, your diff output will be cleaner and easier to read, it would be muc
 ## Installation
 
 ```sh
-$ npm install babel-plugin-syntax-trailing-function-commas
+$ npm install --save-dev babel-plugin-syntax-trailing-function-commas
 ```
 
 ## Usage

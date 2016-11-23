@@ -15,18 +15,4 @@ And all plugins from presets:
 
 - [preset-stage-3](/docs/plugins/preset-stage-3/)
 
-## Installation
-
-```sh
-$ npm install --save-dev babel-preset-stage-2
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "presets": ["stage-2"]
-}
-```
+{% include package_readme.html %}

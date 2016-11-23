@@ -31,7 +31,7 @@ var foo = Bluebird.coroutine(function* () {
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-async-to-module-method
+$ npm install --save-dev babel-plugin-transform-async-to-module-method
 ```
 
 ## Usage

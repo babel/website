@@ -17,7 +17,7 @@ export v from 'mod';
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-export-extensions
+$ npm install --save-dev babel-plugin-transform-export-extensions
 ```
 
 ## Usage

@@ -25,7 +25,7 @@ console.error("bar");
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-remove-console
+$ npm install --save-dev babel-plugin-transform-remove-console
 ```
 
 ## Usage

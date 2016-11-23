@@ -58,7 +58,7 @@ babelHelpers.jsx(Baz, {
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-react-inline-elements
+$ npm install --save-dev babel-plugin-transform-react-inline-elements
 ```
 
 ## Usage
@@ -70,3 +70,7 @@ Add the following line to your `.babelrc`:
   "plugins": ["transform-react-inline-elements"]
 }
 ```
+
+## References
+
+* [[facebook/react#3228] Optimizing Compiler: Inline React Elements](https://github.com/facebook/react/issues/3228)
