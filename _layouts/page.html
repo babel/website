@@ -6,7 +6,13 @@ layout: default
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>{{page.title}}</h1>
+        <h1>
+            {% if page.community_plugin %}
+              <span class="community-flag">community</span>
+            {% endif %}
+
+            {{page.title}}
+        </h1>
         <p>{{page.description}}</p>
         <p class="package-links">
           {% if page.package %}
