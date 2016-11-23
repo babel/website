@@ -285,6 +285,9 @@
     this.$consoleReporter = $('.babel-repl-console');
     this.$toolBar = $('.babel-repl-toolbar');
 
+    this.$inputBar = $('.babel-repl-input');
+    this.$outputBar = $('.babel-repl-output');
+
     document.getElementById('babel-repl-version').innerHTML = babel.version;
   }
 
@@ -427,5 +430,45 @@
   repl.input.on('change', _.debounce(onSourceChange, 500));
   repl.$toolBar.on('change', onSourceChange);
 
+
+  /*
+   * Make REPL editors resizable by width
+   * Returns a function to disable feature
+   */
+  function initResizable(resizeSelector) {
+    var offsetX;
+
+    function onResize(e) {
+      var containerWidth = $('.babel-repl').width();
+      var curPos = e.pageX - offsetX;
+      var inputWidth = curPos / containerWidth * 100;
+      var outputWidth = 100 - inputWidth;
+      if (inputWidth < 20 || inputWidth > 80) {
+        return;
+      }
+      repl.$inputBar.width(inputWidth + '%');
+      repl.$outputBar.width(outputWidth + '%');
+    }
+
+    function onResizeStart(e) {
+      e.preventDefault();
+      offsetX = e.offsetX;
+      $(document).on('mousemove', onResize);
+      $(document).on('mouseup', onResizeStop);
+    }
+
+    function onResizeStop(e) {
+      $(document).off('mousemove', onResize);
+      $(document).off('mouseup', onResizeStop);
+    }
+
+    $(resizeSelector).on('mousedown', onResizeStart);
+
+    return function() {
+      $(resizeSelector).off('mousedown', onResizeStart);
+    };
+  }
+
+  initResizable('.babel-repl-resize');
   onPresetChange();
 }(Babel, $, _, ace, window));

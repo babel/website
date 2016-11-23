@@ -58,6 +58,14 @@
   background: #f9f9f9;
 }
 
+.babel-repl-resize {
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 10;
+}
+
 .babel-repl-reporter {
   position: absolute;
   z-index: 4;
