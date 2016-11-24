@@ -285,9 +285,6 @@
     this.$consoleReporter = $('.babel-repl-console');
     this.$toolBar = $('.babel-repl-toolbar');
 
-    this.$inputBar = $('.babel-repl-input');
-    this.$outputBar = $('.babel-repl-output');
-
     document.getElementById('babel-repl-version').innerHTML = babel.version;
   }
 
@@ -436,18 +433,22 @@
    * Returns a function to disable feature
    */
   function initResizable(resizeSelector) {
+    var $container = $('.babel-repl');
+    var $leftPanels = $('.babel-repl-input, .babel-repl-errors');
+    var $rightPanels = $('.babel-repl-output, .babel-repl-console');
+    var activeClass = 'babel-repl-resize-active';
     var offsetX;
 
     function onResize(e) {
-      var containerWidth = $('.babel-repl').width();
       var curPos = e.pageX - offsetX;
-      var inputWidth = curPos / containerWidth * 100;
+      var inputWidth = curPos / $container.width() * 100;
       var outputWidth = 100 - inputWidth;
-      if (inputWidth < 20 || inputWidth > 80) {
+      if (inputWidth < 10 || inputWidth > 90) {
         return;
       }
-      repl.$inputBar.width(inputWidth + '%');
-      repl.$outputBar.width(outputWidth + '%');
+
+      $leftPanels.outerWidth(inputWidth + '%');
+      $rightPanels.outerWidth(outputWidth + '%');
     }
 
     function onResizeStart(e) {
@@ -455,11 +456,13 @@
       offsetX = e.offsetX;
       $(document).on('mousemove', onResize);
       $(document).on('mouseup', onResizeStop);
+      $container.addClass(activeClass);
     }
 
     function onResizeStop(e) {
       $(document).off('mousemove', onResize);
       $(document).off('mouseup', onResizeStop);
+      $container.removeClass(activeClass);
     }
 
     $(resizeSelector).on('mousedown', onResizeStart);

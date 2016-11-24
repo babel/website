@@ -50,7 +50,6 @@
 
 .babel-repl-input {
   left: 0;
-  border-right: 1px solid darken($gray-lighter, 5%);
 }
 
 .babel-repl-output {
@@ -60,10 +59,16 @@
 
 .babel-repl-resize {
   position: absolute;
-  width: 10px;
+  width: 5px;
   height: 100%;
   cursor: col-resize;
+  background: darken($gray-lighter, 5%);
   z-index: 10;
+}
+
+.babel-repl-resize-active .babel-repl-resize,
+.babel-repl-resize:hover {
+  background: darken($gray-lighter, 10%);
 }
 
 .babel-repl-reporter {
