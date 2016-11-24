@@ -19,4 +19,3 @@ toolbox.router.get('/*', toolbox.cacheFirst);
 toolbox.router.get('/*', toolbox.cacheFirst, { origin: "cdnjs.cloudflare.com" });
 toolbox.router.get('/*', toolbox.cacheFirst, { origin: "cdn.jsdelivr.net" });
 toolbox.router.get('/*', toolbox.cacheFirst, { origin: "unpkg.com" }); // for repl
-toolbox.router.post('/*', toolbox.cacheFirst, { origin: "algolia.net" }); // Cache Algolia search response
