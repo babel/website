@@ -16,6 +16,14 @@ package: babel-cli
 
 {% include tools/babel_cli/install.md %}
 
+Out of the box, Babel (since v6) doesn't perform any transformation, it only validates the syntax. You may want to install [plugins](/docs/plugins) or more likely whole [presets](/docs/plugins/#presets) before going further. For the sake of the example, we'll use the [es2015](/docs/plugins/preset-es2015/) preset.
+
+```sh
+$ npm install babel-preset-es2015
+```
+
+For Babel to use the preset you must either pass it in the command line as `--presets es2015` (omitted in the rest of the page for readability) or add it to the [`.babelrc`](/docs/usage/babelrc/) file, in the `"presets"` section.
+
 ## babel
 
 ### Compile Files
