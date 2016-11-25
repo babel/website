@@ -3,11 +3,15 @@
 
 importScripts('/scripts/sw-toolbox.js');
 
-const VERSION = '{{ site.time }}';
+var VERSION = '{{ site.time }}';
 
-toolbox.cache.name = "Babel-Cache-" + VERSION;
-toolbox.cache.maxEntries = 150;
-toolbox.cache.maxAgeSeconds = 604800;
+var contentCacheOptions = {
+  cache: {
+    name: "Babel-Cache-" + VERSION,
+    maxEntries: 150,
+    maxAgeSeconds: 604800
+  }
+}
 
 var preCachedRessources = [
   {% for page in site.pages %}
@@ -17,7 +21,7 @@ var preCachedRessources = [
 
 toolbox.precache(preCachedRessources);
 
-toolbox.router.get('/*', toolbox.cacheFirst);
-toolbox.router.get('/*', toolbox.cacheFirst, { origin: "cdnjs.cloudflare.com" });
-toolbox.router.get('/*', toolbox.cacheFirst, { origin: "cdn.jsdelivr.net" });
+toolbox.router.get('/*', toolbox.cacheFirst, contentCacheOptions);
+toolbox.router.get('/*', toolbox.cacheFirst, { origin: "cdnjs.cloudflare.com", name: "cdn" });
+toolbox.router.get('/*', toolbox.cacheFirst, { origin: "cdn.jsdelivr.net", name: "cdn" });
 toolbox.router.get('/*', toolbox.cacheFirst, { origin: "unpkg.com" }); // for repl
