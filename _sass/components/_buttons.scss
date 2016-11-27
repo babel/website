@@ -51,6 +51,39 @@
   }
 }
 
+.btn-icon {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  svg {
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+  }
+
+  &__label {
+    vertical-align: top;
+    text-transform: uppercase;
+  }
+}
+
+.highlight {
+  position: relative;
+
+  .btn-clipboard {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 1rem;
+
+    &:focus,
+    &:active {
+      outline: 2px solid $link-color;
+    }
+  }
+}
+
 .jumbotron {
   .btn-featured {
     background: $babel-dark-gray;

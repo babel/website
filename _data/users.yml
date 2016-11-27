@@ -469,3 +469,6 @@
 - name: ResearchGate
   url: https://www.researchgate.net
   logo: researchgate.svg
+- name: EVO.company
+  url: https://evo.company
+  logo: evocompany.svg
