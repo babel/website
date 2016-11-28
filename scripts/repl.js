@@ -434,8 +434,8 @@
    */
   function initResizable(resizeSelector) {
     var $container = $('.babel-repl');
-    var $leftPanels = $('.babel-repl-input, .babel-repl-errors');
-    var $rightPanels = $('.babel-repl-output, .babel-repl-console');
+    var $leftPanels = $('.babel-repl-left-panel');
+    var $rightPanels = $('.babel-repl-right-panel');
     var activeClass = 'babel-repl-resize-active';
     var offsetX;
 
