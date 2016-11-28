@@ -434,21 +434,21 @@
    */
   function initResizable(resizeSelector) {
     var $container = $('.babel-repl');
-    var $leftPanels = $('.babel-repl-left-panel');
-    var $rightPanels = $('.babel-repl-right-panel');
+    var $leftPanel = $('.babel-repl-left-panel');
+    var $rightPanel = $('.babel-repl-right-panel');
     var activeClass = 'babel-repl-resize-active';
     var offsetX;
 
     function onResize(e) {
       var curPos = e.pageX - offsetX;
-      var inputWidth = curPos / $container.width() * 100;
-      var outputWidth = 100 - inputWidth;
-      if (inputWidth < 10 || inputWidth > 90) {
+      var leftWidth = curPos / $container.width() * 100;
+      var rightWidth = 100 - leftWidth;
+      if (leftWidth < 10 || leftWidth > 90) {
         return;
       }
 
-      $leftPanels.outerWidth(inputWidth + '%');
-      $rightPanels.outerWidth(outputWidth + '%');
+      $leftPanel.outerWidth(leftWidth + '%');
+      $rightPanel.outerWidth(rightWidth + '%');
     }
 
     function onResizeStart(e) {
