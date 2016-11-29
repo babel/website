@@ -2,7 +2,7 @@
 layout: page
 title: Babel types
 description: Babel Types is a Lodash-esque utility library for AST nodes
-permalink: /docs/internals/types
+permalink: /docs/core-packages/types
 package: babel-types
 ---
 
