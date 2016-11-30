@@ -1,12 +1,12 @@
 ---
 layout: docs
 title: ES2016 preset
-description: All you need to compile what's in ES2016 to ES2015
+description: Only compiles what's in ES2016 to ES2015
 permalink: /docs/plugins/preset-es2016/
 package: babel-preset-es2016
 ---
 
-> If you need to compile ES6/ES2015, use the [es2015 preset](/docs/plugins/preset-es2015/)
+> If you want to stay up to date, use the [latest preset](/docs/plugins/preset-latest/)
 
 This preset includes the following plugins:
 
@@ -16,33 +16,32 @@ This preset includes the following plugins:
 
 > For more info, check out the setup page on the [cli](/docs/setup/) and the [usage](/docs/usage/cli/) docs.
 
+## Basic Setup (with the CLI)
+
+> For more info, check out the setup page on the [cli](/docs/setup/) and the [usage](/docs/usage/cli/) docs.
+
+Install the CLI and this preset
+
 ```sh
-# install the cli and this preset
-npm install --save-dev babel-cli babel-preset-es2016
+npm install --save-dev babel-cli babel-preset-es2017
+```
 
-# make a .babelrc (config file) with the preset
-echo '{ "presets": ["es2016"] }' > .babelrc
+Make a .babelrc config file with the preset
 
-# create a file to run on
-echo '1 ** 2' > index.js
+```sh
+echo '{ "presets": ["es2017"] }' > .babelrc
+```
 
-# run it
+Create a file to run on
+
+```sh
+echo 'console.log(2 ** 3)' > index.js
+```
+
+Run it
+
+```sh
 ./node_modules/.bin/babel-node index.js
 ```
 
-## Installation
-
-```sh
-$ npm install --save-dev babel-preset-es2016
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "presets": ["es2016"]
-}
-```
-
+{% include package_readme.html %}

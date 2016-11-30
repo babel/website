@@ -23,18 +23,4 @@ package: babel-plugin-syntax-decorators
 
 This plugin allows Babel to parse [decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md).
 
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-syntax-decorators
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-decorators"]
-}
-```
+{% include package_readme.html %}

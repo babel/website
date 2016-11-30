@@ -16,18 +16,4 @@ package: babel-plugin-syntax-do-expressions
 
 This plugin allows Babel to parse [do-expressions](http://wiki.ecmascript.org/doku.php?id=strawman:do_expressions).
 
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-syntax-do-expressions
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-do-expressions"]
-}
-```
+{% include package_readme.html %}

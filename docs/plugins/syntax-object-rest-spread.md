@@ -6,7 +6,6 @@ permalink: /docs/plugins/syntax-object-rest-spread/
 package: babel-plugin-syntax-object-rest-spread
 ---
 
-
 <blockquote class="babel-callout babel-callout-info">
   <h4>Syntax only</h4>
   <p>
@@ -17,18 +16,4 @@ package: babel-plugin-syntax-object-rest-spread
 
 This plugin allows Babel to parse [object rest spread syntax](https://github.com/sebmarkbage/ecmascript-rest-spread).
 
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-syntax-object-rest-spread
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-object-rest-spread"]
-}
-```
+{% include package_readme.html %}

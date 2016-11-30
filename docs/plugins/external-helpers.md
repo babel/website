@@ -73,18 +73,4 @@ This injects the external helpers into `global`.
 
 In a browser environment you can use a `<script>` tag to inject the `babelHelpers` into the `window` object.
 
-## Installation
-
-```sh
-$ npm install babel-plugin-external-helpers
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["external-helpers"]
-}
-```
+{% include package_readme.html %}
