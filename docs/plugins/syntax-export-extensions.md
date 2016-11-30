@@ -16,18 +16,4 @@ package: babel-plugin-syntax-export-extensions
 
 This plugin allows Babel to parse [export extensions](https://github.com/leebyron/ecmascript-more-export-from).
 
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-syntax-export-extensions
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-export-extensions"]
-}
-```
+{% include package_readme.html %}

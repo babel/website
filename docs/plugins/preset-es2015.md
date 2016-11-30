@@ -1,10 +1,12 @@
 ---
 layout: docs
 title: ES2015 preset
-description: All you need to compile ES2015 to ES5
+description: Only compiles ES2015 to ES5
 permalink: /docs/plugins/preset-es2015/
 package: babel-preset-es2015
 ---
+
+> If you want to stay up to date, use the [latest preset](/docs/plugins/preset-latest/)
 
 This preset includes the following plugins:
 
@@ -32,64 +34,32 @@ This preset includes the following plugins:
 
 ## Basic Setup (with the CLI)
 
+> You can also check out the React [Getting Started page](https://facebook.github.io/react/docs/hello-world.html)
+
 > For more info, check out the setup page on the [cli](/docs/setup/) and the [usage](/docs/usage/cli/) docs.
 
+Install the CLI and this preset
+
 ```sh
-# install the cli and this preset
 npm install --save-dev babel-cli babel-preset-es2015
-
-# make a .babelrc (config file) with the preset
-echo '{ "presets": ["es2015"] }' > .babelrc
-
-# create a file to run on
-echo 'console.log([1, 2, 3].map(n => n + 1));' > index.js
-
-# run it
-./node_modules/.bin/babel-node index.js
 ```
 
-## Installation
+Make a .babelrc config file with the preset
 
 ```sh
-$ npm install --save-dev babel-preset-es2015
+echo '{ "presets": ["es2015"] }' > .babelrc
 ```
 
-## Usage
+Create a file to run on
 
-Add the following line to your `.babelrc` file:
-
-```js
-{
-  "presets": ["es2015"]
-}
+```sh
+echo 'console.log([1, 2, 3].map(n => n + 1))' > index.js
 ```
 
-## Options
+Run it
 
-* `loose` - Enable "loose" transformations for any plugins in this preset that allow them (Disabled by default).
-* `modules` - Enable transformation of ES6 module syntax to another module type (Enabled by default to `"commonjs"`).
-  * Can be `false` to not transform modules, or one of `["amd", "umd", "systemjs", "commonjs"]`
-* `spec` - Enable "spec" transformations for any plugins in this preset that allow them (Disabled by default)
-
-```js
-{
-  presets: [
-    ["es2015", { "loose": true }]
-  ]
-}
-{
-  presets: [
-    ["es2015", { "modules": false }]
-  ]
-}
-{
-  presets: [
-    ["es2015", { "loose": true, "modules": false }]
-  ]
-}
-{
-  presets: [
-    ["es2015", { "spec": true }]
-  ]
-}
+```sh
+./node_modules/.bin/babel index.js
 ```
+
+{% include package_readme.html %}
