@@ -1,3 +1,3 @@
 ```sh
-$ npm install --save-dev babel-brunch
+npm install --save-dev babel-brunch
 ```

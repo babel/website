@@ -1,3 +1,3 @@
 ```sh
-$ gem install sprockets-es6
+gem install sprockets-es6
 ```

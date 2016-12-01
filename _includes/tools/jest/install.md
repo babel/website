@@ -1,3 +1,3 @@
 ```sh
-$ npm install --save-dev babel-jest
+npm install --save-dev babel-jest
 ```

@@ -28,7 +28,7 @@ Note: Depending on what ES2015 methods you actually use, you may not need to use
 ## Installation
 
 ```sh
-$ npm install --save-dev babel-polyfill
+npm install --save-dev babel-polyfill
 ```
 
 ## Usage in Node / Browserify / Webpack

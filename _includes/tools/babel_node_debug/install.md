@@ -1,3 +1,3 @@
 ```sh
-$ npm install -g babel-node-debug
+npm install -g babel-node-debug
 ```
