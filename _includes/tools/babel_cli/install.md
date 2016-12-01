@@ -11,7 +11,7 @@ There are two primary reasons for this.
 We can install Babel CLI locally by running:
 
 ```sh
-$ npm install --save-dev babel-cli
+npm install --save-dev babel-cli
 ```
 
 <blockquote class="babel-callout babel-callout-info">

@@ -1,3 +1,3 @@
 ```sh
-$ npm install --save-dev broccoli-babel-transpiler
+npm install --save-dev broccoli-babel-transpiler
 ```

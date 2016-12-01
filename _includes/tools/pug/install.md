@@ -1,3 +1,3 @@
 ```sh
-$ npm install jstransformer-babel
+npm install jstransformer-babel
 ```

@@ -9,5 +9,5 @@ lib/%.js: src/%.js .babelrc
 ```
 
 ```sh
-$ make
+make
 ```

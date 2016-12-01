@@ -16,7 +16,7 @@ fly. This is equivalent to CoffeeScript's
 ## Install
 
 ```sh
-$ npm install babel-register --save-dev
+npm install babel-register --save-dev
 ```
 
 ## Usage
@@ -91,7 +91,7 @@ environment variables exposed to allow you to do this.
 Specify a different cache location.
 
 ```sh
-$ BABEL_CACHE_PATH=/foo/my-cache.json babel-node script.js
+BABEL_CACHE_PATH=/foo/my-cache.json babel-node script.js
 ```
 
 ### BABEL_DISABLE_CACHE
@@ -99,5 +99,5 @@ $ BABEL_CACHE_PATH=/foo/my-cache.json babel-node script.js
 Disable the cache.
 
 ```sh
-$ BABEL_DISABLE_CACHE=1 babel-node script.js
+BABEL_DISABLE_CACHE=1 babel-node script.js
 ```
