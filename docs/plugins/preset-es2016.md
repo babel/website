@@ -23,13 +23,13 @@ This preset includes the following plugins:
 Install the CLI and this preset
 
 ```sh
-npm install --save-dev babel-cli babel-preset-es2017
+npm install --save-dev babel-cli babel-preset-es2016
 ```
 
 Make a .babelrc config file with the preset
 
 ```sh
-echo '{ "presets": ["es2017"] }' > .babelrc
+echo '{ "presets": ["es2016"] }' > .babelrc
 ```
 
 Create a file to run on
