@@ -1,6 +1,6 @@
 In your `package.json` file make the following changes:
 
-```js
+```json
 {
   "scripts": {
     "test": "mocha --compilers js:babel-register"
@@ -10,11 +10,11 @@ In your `package.json` file make the following changes:
 
 Some features will require a polyfill:
 
-```bash
-$ npm install --save-dev babel-polyfill
+```sh
+npm install --save-dev babel-polyfill
 ```
 
-```js
+```json
 {
   "scripts": {
     "test": "mocha --require babel-polyfill --compilers js:babel-register"

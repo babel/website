@@ -23,20 +23,20 @@ package: babel-cli
 Compile the file `script.js` and **output to stdout**.
 
 ```sh
-$ babel script.js
+babel script.js
 # output...
 ```
 
 If you would like to **output to a file** you may use `--out-file` or `-o`.
 
 ```sh
-$ babel script.js --out-file script-compiled.js
+babel script.js --out-file script-compiled.js
 ```
 
 To compile a file **every time that you change it**, use the `--watch` or `-w` option:
 
 ```sh
-$ babel script.js --watch --out-file script-compiled.js
+babel script.js --watch --out-file script-compiled.js
 ```
 
 ### Compile with Source Maps
@@ -45,13 +45,13 @@ If you would then like to add a **source map file** you can use
 `--source-maps` or `-s`. [Learn more about source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/).
 
 ```sh
-$ babel script.js --out-file script-compiled.js --source-maps
+babel script.js --out-file script-compiled.js --source-maps
 ```
 
 If you would rather have **inline source maps**, you may use `--source-maps inline`.
 
 ```sh
-$ babel script.js --out-file script-compiled.js --source-maps inline
+babel script.js --out-file script-compiled.js --source-maps inline
 ```
 
 ### Compile Directories
@@ -59,13 +59,13 @@ $ babel script.js --out-file script-compiled.js --source-maps inline
 Compile the entire `src` directory and output it to the `lib` directory. You may use `--out-dir` or `-d`. This doesn't overwrite any other files or directories in `lib`.
 
 ```sh
-$ babel src --out-dir lib
+babel src --out-dir lib
 ```
 
 Compile the entire `src` directory and output it to the one concatenated file.
 
 ```sh
-$ babel src --out-file script-compiled.js
+babel src --out-file script-compiled.js
 ```
 
 ### Ignore files
@@ -73,7 +73,7 @@ $ babel src --out-file script-compiled.js
 Ignore spec and test files
 
 ```sh
-$ babel src --out-dir lib --ignore spec.js,test.js
+babel src --out-dir lib --ignore spec.js,test.js
 ```
 
 ### Copy files
@@ -81,7 +81,7 @@ $ babel src --out-dir lib --ignore spec.js,test.js
 Copy files that will not be compiled
 
 ```sh
-$ babel src --out-dir lib --copy-files
+babel src --out-dir lib --copy-files
 ```
 
 ### Piping Files
@@ -89,7 +89,7 @@ $ babel src --out-dir lib --copy-files
 Pipe a file in via stdin and output it to `script-compiled.js`
 
 ```sh
-$ babel --out-file script-compiled.js < script.js
+babel --out-file script-compiled.js < script.js
 ```
 
 ### Using Plugins
@@ -97,7 +97,7 @@ $ babel --out-file script-compiled.js < script.js
 Use the `--plugins` option to specify plugins to use in compilation
 
 ```sh
-$ babel script.js --out-file script-compiled.js --plugins=es2015,react
+babel script.js --out-file script-compiled.js --plugins=es2015,react
 ```
 
 ### Using Presets
@@ -105,7 +105,7 @@ $ babel script.js --out-file script-compiled.js --plugins=es2015,react
 Use the `--presets` option to specify plugins to use in compilation
 
 ```sh
-$ babel script.js --out-file script-compiled.js --presets=add-module-exports,transform-es2015-modules-amd
+babel script.js --out-file script-compiled.js --presets=add-module-exports,transform-es2015-modules-amd
 ```
 
 ### Ignoring .babelrc
@@ -113,7 +113,7 @@ $ babel script.js --out-file script-compiled.js --presets=add-module-exports,tra
 Ignore the configuration from the projects .babelrc file and use the cli options e.g. for a custom build
 
 ```sh
-$ babel --no-babelrc script.js --out-file script-compiled.js --presets=add-module-exports,transform-es2015-modules-amd
+babel --no-babelrc script.js --out-file script-compiled.js --presets=add-module-exports,transform-es2015-modules-amd
 ```
 
 ### Advanced Usage
@@ -148,31 +148,31 @@ it will compile ES6 code before running it.
 Launch a REPL (Read-Eval-Print-Loop).
 
 ```sh
-$ babel-node
+babel-node
 ```
 
 Evaluate code.
 
 ```sh
-$ babel-node -e "class Test { }"
+babel-node -e "class Test { }"
 ```
 
 Compile and run `test.js`.
 
 ```sh
-$ babel-node test
+babel-node test
 ```
 
 ### Usage
 
 ```sh
-$ babel-node [options] [ -e script | script.js ] [arguments]
+babel-node [options] [ -e script | script.js ] [arguments]
 ```
 
 When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
 
 ```sh
-$ babel-node --debug --presets es2015 -- script.js --debug
+babel-node --debug --presets es2015 -- script.js --debug
 ```
 
 ### Options

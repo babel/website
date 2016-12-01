@@ -1,3 +1,3 @@
 ```sh
-$ npm install --save-dev duo-babel
+npm install --save-dev duo-babel
 ```

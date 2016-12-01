@@ -1,3 +1,3 @@
 ```sh
-$ npm install requirejs-babel
+npm install requirejs-babel
 ```

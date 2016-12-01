@@ -1,3 +1,3 @@
 ```sh
-$ npm install babel-register
+npm install babel-register
 ```
