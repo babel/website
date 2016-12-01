@@ -6,18 +6,6 @@ permalink: /docs/plugins/transform-es2015-sticky-regex/
 package: babel-plugin-transform-es2015-sticky-regex
 ---
 
-## Installation
+Compile ES2015 sticky regex to an ES5 RegExp constructor
 
-```sh
-$ npm install --save-dev babel-plugin-transform-es2015-sticky-regex
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["transform-es2015-sticky-regex"]
-}
-```
+{% include package_readme.html %}
