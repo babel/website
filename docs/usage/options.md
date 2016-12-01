@@ -12,7 +12,7 @@ babel.transform(code, options);
 ```
 
 ```sh
-$ babel --name=value
+babel --name=value
 ```
 
 ## Options

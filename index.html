@@ -57,8 +57,8 @@ third_party_js:
 
     <h3>Start by installing the Babel CLI and a preset</h3>
     <div class="lead text-left">
-{% highlight javascript %}
-$ npm install --save-dev babel-cli babel-preset-latest
+{% highlight shell %}
+npm install --save-dev babel-cli babel-preset-latest
 {% endhighlight %}
     </div>
 
@@ -85,8 +85,8 @@ $ npm install --save-dev babel-cli babel-preset-latest
       </p>
 
       <p>You can install this preset with</p>
-{% highlight javascript %}
-$ npm install --save-dev babel-preset-latest
+{% highlight shell %}
+npm install --save-dev babel-preset-latest
 {% endhighlight %}
       </p>and add <code>"latest"</code> to your <code>.babelrc</code> presets array.</p>
     </div>
@@ -145,8 +145,8 @@ $ npm install --save-dev babel-preset-latest
         <p>Since Babel only transforms syntax (like arrow functions), you can use babel-polyfill in order to support new globals such as Promise or new native methods like String.padStart (left-pad). It uses <a href="https://github.com/zloirock/core-js">core-js</a> and <a href="https://facebook.github.io/regenerator/">regenerator</a>. Check out our <a href="/docs/usage/polyfill">babel-polyfill</a> docs for more info.</p>
 
         <p>You can install the polyfill with</p>
-{% highlight javascript %}
-$ npm install --save-dev babel-polyfill
+{% highlight shell %}
+npm install --save-dev babel-polyfill
 {% endhighlight %}
         <p>Use it by requiring it at the top of the entry point to your application or in your bundler config.</p>
       </div>
@@ -213,8 +213,8 @@ $ npm install --save-dev babel-polyfill
       <p>Babel can convert JSX syntax and strip out type annotations. Check out our <a href="https://babeljs.io/docs/plugins/preset-react/">React preset</a> to get started. Use it together with the <a href="https://github.com/babel/babel-sublime">babel-sublime</a> package to bring syntax highlighting to a whole new level.</p>
 
       <p>You can install this preset with</p>
-{% highlight javascript %}
-$ npm install --save-dev babel-preset-react
+{% highlight shell %}
+npm install --save-dev babel-preset-react
 {% endhighlight %}
       </p>and add <code>"react"</code> to your <code>.babelrc</code> presets array.</p>
       </p>

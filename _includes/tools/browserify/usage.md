@@ -1,7 +1,7 @@
 #### Via CLI
 
 ```sh
-$ browserify script.js -t babelify --outfile bundle.js
+browserify script.js -t babelify --outfile bundle.js
 ```
 
 #### Via Node API
@@ -30,7 +30,7 @@ browserify({ debug: true })
 **CLI**
 
 ```sh
-$ browserify -d -e script.js -t [ babelify --comments false ]
+browserify -d -e script.js -t [ babelify --comments false ]
 ```
 
 ##### Node API

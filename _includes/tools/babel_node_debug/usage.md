@@ -1,9 +1,11 @@
 ```sh
-$ babel-node-debug path/to/script.js
+babel-node-debug path/to/script.js
+```
 
-# Or use the alias
+Or use the alias:
 
-$ bode-debug path/to/script.js
+```sh
+bode-debug path/to/script.js
 ```
 
 <blockquote class="babel-callout babel-callout-info">
