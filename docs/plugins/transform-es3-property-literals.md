@@ -6,38 +6,6 @@ permalink: /docs/plugins/transform-es3-property-literals/
 package: babel-plugin-transform-es3-property-literals
 ---
 
-This plugin allows Babel to transform reserved word property keys into literals.
+Ensure that reserved words are quoted in object property keys
 
-## Example
-
-**In**
-
-```javascript
-var foo = {
-  catch: function () {}
-};
-```
-
-**Out**
-
-```javascript
-var foo = {
-  "catch": function () {}
-};
-```
-
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-transform-es3-property-literals
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["transform-es3-property-literals"]
-}
-```
+{% include package_readme.html %}
