@@ -62,3 +62,7 @@ git submodule foreach git pull origin master
 ```
 
 You can safely push them once updated. Note that the website will during deployement fetch all latest submodule versions.
+
+#### Looking for support?
+
+For questions and support please join our [Slack community](https://slack.babeljs.io/), channel #website.
