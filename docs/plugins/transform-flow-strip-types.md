@@ -1,12 +1,10 @@
 ---
 layout: docs
 title: Strip flow types transform
-description:
+description: Strip all flow type annotations and declarations from your output code
 permalink: /docs/plugins/transform-flow-strip-types/
 package: babel-plugin-transform-flow-strip-types
 ---
-
-Strip all [flow](http://flowtype.org) type annotations and declarations from your output code.
 
 <blockquote class="babel-callout babel-callout-info">
   <h4>Syntax only</h4>

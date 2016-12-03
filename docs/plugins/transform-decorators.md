@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Decorators transform
-description:
+description: Compile class and object decorators to ES5
 permalink: /docs/plugins/transform-decorators/
 package: babel-plugin-transform-decorators
 ---
@@ -15,7 +15,5 @@ package: babel-plugin-transform-decorators
     Until Babel officially supports decorators again, you might want to try the third-party <a href="https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy">transform-decorators-legacy</a> plugin, or use Babel v5.
   </p>
 </blockquote>
-
-Compile class and object decorators to ES5
 
 {% include package_readme.html %}
