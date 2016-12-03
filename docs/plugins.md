@@ -186,6 +186,7 @@ You can also provide any [`plugins` option](https://github.com/babel/babylon/#pl
 - [class-properties](/docs/plugins/syntax-class-properties/)
 - [decorators](/docs/plugins/syntax-decorators/)
 - [do-expressions](/docs/plugins/syntax-do-expressions/)
+- [dynamic-import](/docs/plugins/syntax-dynamic-import/)
 - [export-extensions](/docs/plugins/syntax-export-extensions/)
 - [flow](/docs/plugins/syntax-flow/)
 - [function-bind](/docs/plugins/syntax-function-bind/)
