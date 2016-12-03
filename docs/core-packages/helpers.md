@@ -2,7 +2,7 @@
 layout: docs
 title: Babel helpers
 description: Collection of helper functions used by Babel transforms
-permalink: /docs/core-packages/helpers
+permalink: /docs/core-packages/babel-helpers
 package: babel-helpers
 ---
 
