@@ -1,6 +1,6 @@
 importScripts('/scripts/sw-toolbox.js');
 
-var VERSION = '{{ site.time }}';
+var VERSION = 1;
 
 var contentCacheOptions = {
   name: 'Babel-Cache-' + VERSION,
