@@ -24,9 +24,7 @@ $ cd babel.github.io
 
 ### Contributing to the website
 
-Babel is composed with multiple packages. Their documentations aren't hosted in this repository.
-
-To update their documentation you will need to refers to its repository ([Babel's packages](https://github.com/babel/babel/tree/master/packages), [Babili's packages](https://github.com/babel/babili/tree/master/packages), ...).
+To keep documentation in sync across all of Babel's packages and plugins, the majority of the website is sourced directly from the README files located inside their respective repositories ([Babel's packages](https://github.com/babel/babel/tree/master/packages), [Babili's packages](https://github.com/babel/babili/tree/master/packages), ...).
 
 If you want to create a new page, you need to consider the following.
 
@@ -61,8 +59,9 @@ For example [babel.github.io/docs/plugins/preset-stage-0.md](/docs/plugins/prese
 git submodule foreach git pull origin master
 ```
 
-You can safely push them once updated. Note that the website will during deployement fetch all latest submodule versions.
+You can safely push them once updated.
+Note, the website will fetch all latest submodule versions during deployment.
 
 #### Looking for support?
 
-For questions and support please join our [Slack community](https://slack.babeljs.io/), channel #website.
+For questions and support please join our [Slack community](https://slack.babeljs.io/), channel #website or directly [here](https://babeljs.slack.com/messages/website/).
