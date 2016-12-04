@@ -29,6 +29,18 @@
             $searchInput.focus();
         });
 
+        // Open the search when pressing / or ?
+        // Use 'keypress' events to handle key combos
+        $(document).on('keypress', function(event) {
+            if (event.keyCode !== 47 && event.keyCode !== 63) {
+                return;
+            }
+
+            event.preventDefault();
+            $toggleCheckbox.click();
+            $searchInput.focus();
+        });
+
         // Hide the search when pressing Escape
         $(document).on('keydown', function(event) {
             if (event.keyCode !== 27) {
