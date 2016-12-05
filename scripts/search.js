@@ -5,6 +5,10 @@
     var $selector = '#babel-search-input';
     var $searchInput = $($selector);
 
+    var KEYBOARD_ESCAPE = 27;
+    var KEYBOARD_SLASH = 47;
+    var KEYBOARD_QUESTION_MARK = 63;
+
     // config is https://github.com/algolia/docsearch-configs/blob/master/configs/babeljs.json
     var $search = docsearch({
         apiKey: 'd42906b043c5422ea07b44fd49c40a0d',
@@ -31,9 +35,11 @@
 
         // Open the search when pressing / or ?
         // Use 'keypress' events to handle key combos
+        // (e.g. en: '?' = Shift + '/')
         $(document).on('keypress', function(event) {
-            if (event.keyCode !== 47 && event.keyCode !== 63) {
-                return;
+            if (event.keyCode !== KEYBOARD_SLASH &&
+                event.keyCode !== KEYBOARD_QUESTION_MARK) {
+                    return;
             }
 
             event.preventDefault();
@@ -43,7 +49,7 @@
 
         // Hide the search when pressing Escape
         $(document).on('keydown', function(event) {
-            if (event.keyCode !== 27) {
+            if (event.keyCode !== KEYBOARD_ESCAPE) {
                 return;
             }
             $toggleCheckbox.prop('checked', false);
