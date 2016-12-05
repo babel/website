@@ -52,8 +52,10 @@
             if (event.keyCode !== KEYBOARD_ESCAPE) {
                 return;
             }
+
+            // clear search input and close the search box
+            $searchInput.val('');
             $toggleCheckbox.prop('checked', false);
         });
-
     });
 })(jQuery);
