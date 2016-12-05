@@ -42,8 +42,14 @@
                     return;
             }
 
-            event.preventDefault();
-            $toggleCheckbox.click();
+            // don't type '/' or '?', if the search box is closed or it's not
+            // focused (i.e. to regain focus, without typing the character)
+            if (!$toggleCheckbox.prop('checked') ||
+                !$searchInput.is(':focus')) {
+                    event.preventDefault();
+            }
+
+            $toggleCheckbox.prop('checked', true);
             $searchInput.focus();
         });
 
