@@ -118,7 +118,7 @@ babel --no-babelrc script.js --out-file script-compiled.js --presets=add-module-
 
 ### Advanced Usage
 
-There are many more options available in the babel CLI, see [options](/docs/usage/options/), `babel --help` and other sections for more information.
+There are many more options available in the babel CLI, see [options](/docs/usage/api/#options), `babel --help` and other sections for more information.
 
 ## babel-node
 
