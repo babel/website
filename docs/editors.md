@@ -1,22 +1,38 @@
 ---
 layout: docs
 title: Editors
-description: How to get syntax highlighting to work
+description: Learn how to use Babel in the editor of choice
 permalink: /docs/editors
 ---
 
-## Atom
+## Syntax Highlighting
 
-TBD
+Most popular editors these days do support ES2015+ syntax highlighting.
+Some of them require installing additional extensions while some others
+don't. This guide should help you get the syntax highlighting to work.
 
-## Sublime Text 3
+If you're looking for more advanced integrations, you may want to
+take a look at the [Setup](/docs/setup) guide.
 
-TBD
+### Atom
 
-## Visual Studio Code
+Install [language-babel](https://atom.io/packages/language-babel) package
+and follow the [instructions](https://github.com/gandm/language-babel#installation).
 
-TBD
+### Sublime Text 3
 
-## WebStorm
+First, [install Package Control](https://packagecontrol.io/installation).
+Then install [Babel](https://packagecontrol.io/packages/Babel) package
+from the Package Control menu and follow
+the [instructions](https://github.com/babel/babel-sublime#installation).
 
-TBD
+### Visual Studio Code
+
+Install [Babel ES6/ES7](https://marketplace.visualstudio.com/items?itemName=dzannotti.vscode-babel-coloring)
+extension and follow the instructions.
+
+### WebStorm
+
+Seems like WebStorm now ships with support for ES2015+ without requiring you
+to install additional extensions. You might need to
+[enable it](https://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling/) though.
