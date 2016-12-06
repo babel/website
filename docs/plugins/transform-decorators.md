@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Decorators transform
-description:
+description: Compile class and object decorators to ES5
 permalink: /docs/plugins/transform-decorators/
 package: babel-plugin-transform-decorators
 ---
@@ -16,68 +16,4 @@ package: babel-plugin-transform-decorators
   </p>
 </blockquote>
 
-This plugin allows Babel to transform decorators.
-
-## Example
-
-(examples are from proposal)
-
-### Simple class decorator
-
-```js
-@annotation
-class MyClass { }
-
-function annotation(target) {
-   target.annotated = true;
-}
-```
-
-### Class decorator
-
-```js
-@isTestable(true)
-class MyClass { }
-
-function isTestable(value) {
-   return function decorator(target) {
-      target.isTestable = value;
-   }
-}
-```
-
-### Class function decorator
-
-```js
-class C {
-  @enumerable(false)
-  method() { }
-}
-
-function enumerable(value) {
-  return function (target, key, descriptor) {
-     descriptor.enumerable = value;
-     return descriptor;
-  }
-}
-```
-
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-transform-decorators
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["transform-decorators"]
-}
-```
-
-## References
-
-* [Proposal: Javascript Decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md)
+{% include package_readme.html %}
