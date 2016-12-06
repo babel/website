@@ -7,9 +7,9 @@ permalink: /docs/editors
 
 ## Syntax Highlighting
 
-Most popular editors these days do support ES2015+ syntax highlighting.
-Some of them require installing additional extensions while some others
-don't. This guide should help you get the syntax highlighting to work.
+These days, many popular editors support ES2015+ syntax highlighting
+out of the box, while some require installing additional extensions.
+This guide should help you get the syntax highlighting to work.
 
 If you're looking for more advanced integrations, you may want to
 take a look at the [Setup](/docs/setup) guide.
