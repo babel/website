@@ -1,3 +1,14 @@
+<blockquote class="babel-callout babel-callout-warning">
+  <p>
+
+  </p>
+  <p>
+    Compiling in the browser has a fairly limited use case, so if you are
+    working on a production site you should be precompiling your scripts
+    server-side. See <a href="/docs/setup/#build-systems">setup build systems</a>
+    for more information.
+  </p>
+</blockquote>
 
 You can use [babel/babel-standalone](https://github.com/babel/babel-standalone#usage) as a precompiled version of babel or run a bundler on babel yourself.
 
