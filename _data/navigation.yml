@@ -17,8 +17,8 @@
     url: /docs/usage/cli/
   - title: Polyfill
     url: /docs/usage/polyfill/
-  - title: Require Hook
-    url: /docs/usage/require/
+  - title: babel-register
+    url: /docs/usage/babel-register/
   - title: API
     url: /docs/usage/api/
   - title: Browser

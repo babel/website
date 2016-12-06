@@ -12,4 +12,4 @@ Use it:
 
 This will transform every `.js` and `.jsx` file in the directory, and output a `.generated.js` file alongside it.
 
-See http://reactjs.net/guides/msbuild.html for more information
+See the [guide](http://reactjs.net/guides/msbuild.html) for more information

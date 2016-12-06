@@ -14,20 +14,6 @@ package: babel-plugin-syntax-class-properties
   </p>
 </blockquote>
 
-This plugin allows Babel to parse [class properties](https://github.com/jeffmo/es-class-static-properties-and-fields).
+This plugin allows Babel to parse [class properties](https://github.com/tc39/proposal-class-public-fields).
 
-## Installation
-
-```sh
-$ npm install babel-plugin-syntax-class-properties
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-class-properties"]
-}
-```
+{% include package_readme.html %}

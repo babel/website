@@ -24,7 +24,7 @@ debugger;
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-remove-debugger
+$ npm install --save-dev babel-plugin-transform-remove-debugger
 ```
 
 ## Usage

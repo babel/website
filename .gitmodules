@@ -1,0 +1,6 @@
+[submodule "_includes/babel"]
+	path = _includes/babel
+	url = https://github.com/babel/babel.git
+[submodule "_includes/babili"]
+	path = _includes/babili
+	url = https://github.com/babel/babili.git

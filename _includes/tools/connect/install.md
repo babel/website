@@ -1,3 +1,3 @@
 ```sh
-$ npm install babel-connect
+npm install babel-connect
 ```

@@ -25,7 +25,7 @@ foo.bar;
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-member-expression-literals
+$ npm install --save-dev babel-plugin-transform-member-expression-literals
 ```
 
 ## Usage

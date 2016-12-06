@@ -34,7 +34,7 @@ third_party_js:
 
 <div class="container">
   <div class="row featurette text-center">
-    <h2 id="babel-transforms"class="text-center"><a href="#babel-transforms">Babel transforms your JavaScript</a></h2>
+    <h2 class="text-center">Babel transforms your JavaScript</h2>
 
     <div class="col-lg-6">
       <h3>You put JavaScript in</h3>
@@ -57,8 +57,8 @@ third_party_js:
 
     <h3>Start by installing the Babel CLI and a preset</h3>
     <div class="lead text-left">
-{% highlight javascript %}
-$ npm install --save-dev babel-cli babel-preset-latest
+{% highlight shell %}
+npm install --save-dev babel-cli babel-preset-latest
 {% endhighlight %}
     </div>
 
@@ -77,12 +77,16 @@ $ npm install --save-dev babel-cli babel-preset-latest
 
   <div class="row featurette">
     <div class="col-md-6">
-      <h2 id="es2015"><a href="#es2015">ES2015 and beyond</a></h2>
-      <p>Babel has support for the latest version of JavaScript through syntax transformers. These plugins allow you to use new syntax, <strong>right now</strong> without waiting for browser support. Check out our <a href="https://babeljs.io/docs/plugins/preset-latest">Latest preset</a> to get started.</p>
+      <h2 id="es2015-and-beyond">ES2015 and beyond</h2>
+      <p>
+        Babel has support for the latest version of JavaScript through syntax transformers.
+        These <a href="https://babeljs.io/docs/plugins/">plugins</a> allow you to use new syntax, <strong>right now</strong> without waiting for browser support.
+        Check out our <a href="https://babeljs.io/docs/plugins/preset-latest">latest preset</a> to get started.
+      </p>
 
       <p>You can install this preset with</p>
-{% highlight javascript %}
-$ npm install --save-dev babel-preset-latest
+{% highlight shell %}
+npm install --save-dev babel-preset-latest
 {% endhighlight %}
       </p>and add <code>"latest"</code> to your <code>.babelrc</code> presets array.</p>
     </div>
@@ -137,13 +141,13 @@ $ npm install --save-dev babel-preset-latest
 
     <div class="row featurette">
       <div class="col-md-6">
-        <h2 id="polyfill"><a href="#polyfill">Polyfill</a></h2>
+        <h2 id="polyfill">Polyfill</h2>
         <p>Since Babel only transforms syntax (like arrow functions), you can use babel-polyfill in order to support new globals such as Promise or new native methods like String.padStart (left-pad). It uses <a href="https://github.com/zloirock/core-js">core-js</a> and <a href="https://facebook.github.io/regenerator/">regenerator</a>. Check out our <a href="/docs/usage/polyfill">babel-polyfill</a> docs for more info.</p>
 
         <p>You can install the polyfill with</p>
-  {% highlight javascript %}
-  $ npm install --save-dev babel-polyfill
-  {% endhighlight %}
+{% highlight shell %}
+npm install --save-dev babel-polyfill
+{% endhighlight %}
         <p>Use it by requiring it at the top of the entry point to your application or in your bundler config.</p>
       </div>
 
@@ -205,12 +209,12 @@ $ npm install --save-dev babel-preset-latest
   <div class="row featurette">
 
     <div class="col-md-7">
-      <h2 id="jsx"><a href="#jsx">JSX and Flow</a></h2>
+      <h2 id="jsx-and-flow">JSX and Flow</h2>
       <p>Babel can convert JSX syntax and strip out type annotations. Check out our <a href="https://babeljs.io/docs/plugins/preset-react/">React preset</a> to get started. Use it together with the <a href="https://github.com/babel/babel-sublime">babel-sublime</a> package to bring syntax highlighting to a whole new level.</p>
 
       <p>You can install this preset with</p>
-{% highlight javascript %}
-$ npm install --save-dev babel-preset-react
+{% highlight shell %}
+npm install --save-dev babel-preset-react
 {% endhighlight %}
       </p>and add <code>"react"</code> to your <code>.babelrc</code> presets array.</p>
       </p>
@@ -241,7 +245,7 @@ $ npm install --save-dev babel-preset-react
 
   <div class="row featurette">
     <div class="col-md-6">
-      <h2 id="pluggable"><a href="#pluggable">Pluggable</a></h2>
+      <h2 id="pluggable">Pluggable</h2>
       <p>Babel is built out of plugins. Compose your own transformation pipeline using existing plugins or write your own. Easily use a set of plugins by using or creating a <a href="/docs/plugins/#presets">preset</a>. <a href="/docs/plugins/">Learn more &rarr;</a></p>
       <p>Create a plugin on the fly with <a href="https://astexplorer.net/#/KJ8AjD6maa">astexplorer.net</a></p>
     </div>
@@ -267,7 +271,7 @@ export default function ({types: t}) {
 
   <div class="row featurette">
     <div class="col-md-4">
-      <h2>Debuggable</h2>
+      <h2 id="debuggable">Debuggable</h2>
       <p><strong>Source map</strong> support so you can debug your compiled code with ease.</p>
     </div>
     <div class="col-md-8">

@@ -34,8 +34,7 @@ use the same configuration as your source files:
 ```
 
 Note that AVA _always_ adds a few custom Babel plugins when transpiling
-your plugins see <a
-href="https://github.com/sindresorhus/ava/blob/master/docs/recipes/babelrc.md#notes">notes</a>.
+your plugins see <a href="https://github.com/sindresorhus/ava/blob/master/docs/recipes/babelrc.md#notes">notes</a>.
 
 <blockquote class="babel-callout babel-callout-info">
   <p>

@@ -106,7 +106,7 @@
     this.editor.setShowPrintMargin(false);
     this.editor.commands.removeCommands(['gotoline', 'find']);
     this.$el.css({
-      fontFamily: 'Menlo, Monaco, Consolas, "Courier New", monospace',
+      fontFamily: '"Operator Mono", "Fira Code", "Ubuntu Mono", "Droid Sans Mono", "Liberation Mono", "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace',
       lineHeight: 'inherit'
     });
 
@@ -427,5 +427,51 @@
   repl.input.on('change', _.debounce(onSourceChange, 500));
   repl.$toolBar.on('change', onSourceChange);
 
+
+  /*
+   * Make REPL editors resizable by width
+   * Returns a function to disable feature
+   */
+  function initResizable(resizeSelector) {
+    var $container = $('.babel-repl');
+    var $leftPanel = $('.babel-repl-left-panel');
+    var $rightPanel = $('.babel-repl-right-panel');
+    var activeClass = 'babel-repl-resize-active';
+    var offsetX;
+
+    function onResize(e) {
+      var curPos = e.pageX - offsetX;
+      var leftWidth = curPos / $container.width() * 100;
+      var rightWidth = 100 - leftWidth;
+      if (leftWidth < 10 || leftWidth > 90) {
+        return;
+      }
+
+      $leftPanel.outerWidth(leftWidth + '%');
+      $rightPanel.outerWidth(rightWidth + '%');
+    }
+
+    function onResizeStart(e) {
+      e.preventDefault();
+      offsetX = e.offsetX;
+      $(document).on('mousemove', onResize);
+      $(document).on('mouseup', onResizeStop);
+      $container.addClass(activeClass);
+    }
+
+    function onResizeStop(e) {
+      $(document).off('mousemove', onResize);
+      $(document).off('mouseup', onResizeStop);
+      $container.removeClass(activeClass);
+    }
+
+    $(resizeSelector).on('mousedown', onResizeStart);
+
+    return function() {
+      $(resizeSelector).off('mousedown', onResizeStart);
+    };
+  }
+
+  initResizable('.babel-repl-resize');
   onPresetChange();
 }(Babel, $, _, ace, window));

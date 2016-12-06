@@ -1,3 +1,3 @@
 ```sh
-$ gem install babel-transpiler
+gem install babel-transpiler
 ```

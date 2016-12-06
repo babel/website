@@ -14,31 +14,4 @@ package: babel-plugin-syntax-async-functions
   </p>
 </blockquote>
 
-This plugin allows Babel to parse [async functions](https://github.com/tc39/ecmascript-asyncawait).
-
-## Example
-
-**Syntax**
-
-```javascript
-(async function() {
-  await loadStory();
-  console.log("Yey, story successfully loaded!");
-}());
-```
-
-## Installation
-
-```sh
-$ npm install babel-plugin-syntax-async-functions
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-async-functions"]
-}
-```
+{% include package_readme.html %}

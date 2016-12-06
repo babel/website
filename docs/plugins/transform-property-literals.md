@@ -29,7 +29,7 @@ var foo = {
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-property-literals
+$ npm install --save-dev babel-plugin-transform-property-literals
 ```
 
 ## Usage

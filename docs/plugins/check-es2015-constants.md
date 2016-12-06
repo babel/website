@@ -17,18 +17,4 @@ Validate ES2015 constants
   </p>
 </blockquote>
 
-## Installation
-
-```sh
-$ npm install babel-plugin-check-es2015-constants
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["check-es2015-constants"]
-}
-```
+{% include package_readme.html %}

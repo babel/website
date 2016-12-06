@@ -10,54 +10,36 @@ This is a special preset that will contain all yearly presets so user's won't ne
 
 It currently includes:
 
- - [es2017](/docs/plugins/preset-es2017)
- - [es2016](/docs/plugins/preset-es2016)
- - [es2015](/docs/plugins/preset-es2015)
+- [es2017](/docs/plugins/preset-es2017/)
+- [es2016](/docs/plugins/preset-es2016/)
+- [es2015](/docs/plugins/preset-es2015/)
 
 ## Basic Setup (with the CLI)
 
 > For more info, check out the setup page on the [cli](/docs/setup/) and the [usage](/docs/usage/cli/) docs.
 
+Install the CLI and this preset
+
 ```sh
-# install the cli and this preset
 npm install --save-dev babel-cli babel-preset-latest
+```
 
-# make a .babelrc (config file) with the preset
+Make a .babelrc config file with the preset
+
+```sh
 echo '{ "presets": ["latest"] }' > .babelrc
+```
 
-# create a file to run on
-echo '1 ** 2' > index.js
+Create a file to run on
 
-# run it
+```sh
+echo 'console.log(1 ** 2)' > index.js
+```
+
+Run it
+
+```sh
 ./node_modules/.bin/babel-node index.js
 ```
 
-## Installation
-
-```sh
-$ npm install --save-dev babel-preset-latest
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "presets": ["latest"]
-}
-```
-
-### Options
-
-You can also pass options down to the `es2015` preset.
-
-```js
-{ "presets": [
-  ["latest", {
-    "es2015": {
-      "modules": false 
-    }
-  }]
-] }
-```
+{% include package_readme.html %}

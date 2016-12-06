@@ -16,18 +16,4 @@ package: babel-plugin-syntax-function-bind
 
 This plugin allows Babel to parse [function bind syntax](https://github.com/zenparsing/es-function-bind).
 
-## Installation
-
-```sh
-$ npm install babel-plugin-syntax-function-bind
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-function-bind"]
-}
-```
+{% include package_readme.html %}
