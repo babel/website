@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Editors
-description: Learn how to use Babel in the editor of choice
+description: Learn how to use Babel in your editor of choice
 permalink: /docs/editors
 ---
 
