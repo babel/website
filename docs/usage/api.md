@@ -14,7 +14,7 @@ import { transform } from 'babel-core';
 import * as babel from 'babel-core';
 ```
 
-## babel.transform(code: string, [options?](/docs/usage/options): Object)
+## babel.transform(code: string, [options?](/docs/usage/api/#options): Object)
 
 Transforms the passed in `code`. Returning an object with the generated code,
 source map, and AST.
@@ -32,7 +32,7 @@ result.map;
 result.ast;
 ```
 
-## babel.transformFile(filename: string, [options?](/docs/usage/options): Object, callback: Function)
+## babel.transformFile(filename: string, [options?](/docs/usage/api/#options): Object, callback: Function)
 
 Asynchronously transforms the entire contents of a file.
 
@@ -48,7 +48,7 @@ babel.transformFile("filename.js", options, function (err, result) {
 });
 ```
 
-## babel.transformFileSync(filename: string, [options?](/docs/usage/options): Object)
+## babel.transformFileSync(filename: string, [options?](/docs/usage/api/#options): Object)
 
 Synchronous version of `babel.transformFile`. Returns the transformed contents of
 the `filename`.
@@ -63,7 +63,7 @@ babel.transformFileSync(filename, options) // => { code, map, ast }
 babel.transformFileSync("filename.js", options).code;
 ```
 
-## babel.transformFromAst(ast: Object, code?: string, [options?](/docs/usage/options): Object)
+## babel.transformFromAst(ast: Object, code?: string, [options?](/docs/usage/api/#options): Object)
 
 Given, an [AST](https://astexplorer.net/), transform it.
 
