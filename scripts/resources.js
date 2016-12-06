@@ -9,7 +9,11 @@ function Search(resources) {
     this.ref('id');
   });
 
-  _.each(this.resources, this.index.add, this.index);
+  this.resources.forEach(function(r) {
+    this.index.add(r);
+  }.bind(this))
+
+  // _.each(this.resources, this.index.add, this.index);
 
   this.$search = document.getElementById('babel-resource-search');
   this.$resources = document.getElementsByClassName('babel-resource-list-item');
@@ -46,5 +50,9 @@ Search.prototype.updateResource = function(el, index) {
     el.style.order = matchIndex;
   }
 };
+
+_.each(window.RESOURCES, function(resource, index) {
+  resource.id = index;
+});
 
 var search = new Search(window.RESOURCES);
