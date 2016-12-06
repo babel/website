@@ -1,3 +1,6 @@
+HTMLCollection.prototype.forEach = Array.prototype.forEach;
+NodeList.prototype.forEach = Array.prototype.forEach;
+
 function Search(resources) {
   this.resources = resources;
 
@@ -13,8 +16,6 @@ function Search(resources) {
     this.index.add(r);
   }.bind(this))
 
-  // _.each(this.resources, this.index.add, this.index);
-
   this.$search = document.getElementById('babel-resource-search');
   this.$resources = document.getElementsByClassName('babel-resource-list-item');
 
@@ -28,7 +29,10 @@ Search.prototype.onChange = _.debounce(function() {
 }, 30);
 
 Search.prototype.update = function() {
-  _.each(this.$resources, this.updateResource, this);
+
+  this.$resources.forEach(function(resource, k) {
+    this.updateResource(resource, k);
+  }.bind(this))
 };
 
 Search.prototype.updateResource = function(el, index) {
