@@ -6,6 +6,8 @@ permalink: /docs/plugins/preset-latest/
 package: babel-preset-latest
 ---
 
+> Also check out [preset-env](https://github.com/babel/babel-preset-env)!
+
 This is a special preset that will contain all yearly presets so user's won't need to specify each one individually.
 
 It currently includes:
