@@ -3,6 +3,10 @@ layout: page
 title: Resources
 description: Guides, articles, talks, books, and more.
 permalink: /resources/
+third_party_js:
+  - //cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.7/lunr.min.js
+custom_js:
+  - resources.js
 ---
 
 <div class="container">
@@ -44,12 +48,6 @@ permalink: /resources/
   </div>
 </div>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.7/lunr.min.js"></script>
 <script>
   window.RESOURCES = {{ site.data.resources | jsonify }};
-
-  _.each(window.RESOURCES, function(resource, index) {
-    resource.id = index;
-  });
 </script>
-<script src="{{ "/scripts/resources.js" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
