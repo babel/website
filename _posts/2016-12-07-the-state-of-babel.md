@@ -22,7 +22,7 @@ custom_js_with_timestamps:
 
 [Sebastian](https://github.com/kittens) created "6to5" in September of 2014. Interestingly enough, he made it to scratch an itch he had with understanding programming languages and how they work. You might have assumed whoever created the project already knew how compilers worked and understood JavaScript perfectly... but you would be wrong! Check out his post for a great read of his story: [~2015 in Review](https://medium.com/@sebmck/2015-in-review-51ac7035e272#.jdoo279bl).
 
-6to5 did exactly that: easily turn ES6 code into ES5 codee. When 6to5 became Babel as mentioned in [Not Born to Die](https://babeljs.io/blog/2015/02/15/not-born-to-die), it became a platform: a suite of tools designed to create the next generation of JavaScript tooling. No longer did it just compile ES6 to ES5, it allowed developers to build tools on top of it.
+6to5 did exactly that: easily turn ES6 code into ES5 code. When 6to5 became Babel as mentioned in [Not Born to Die](https://babeljs.io/blog/2015/02/15/not-born-to-die), it became a platform: a suite of tools designed to create the next generation of JavaScript tooling. No longer did it just compile ES6 to ES5, it allowed developers to build tools on top of it.
 
 Here are some of our milestones:
 
