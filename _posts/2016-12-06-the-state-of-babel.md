@@ -449,6 +449,12 @@ Old Issues:
 
 You might think that as [a project gets more widely used](https://npm-stat.com/charts.html?package=babel-core&from=2015-02-07&to=2016-12-07) that more people show up to help out. But like most OSS projects that aren't backed by a company, there is a constant issue with maintenance and sustainability; people get burned out, move on to other cool projects, or get busy with work/family/etc.
 
+### How can I contact the team?
+
+- For bug reports/PRs you can check our [repos](https://github.com/babel/)
+- You can ping us on twitter with [@babeljs](https://twitter.com/babeljs) - or mention us individually.
+- Join at [http://slack.babeljs.io/](slack.babeljs.io).
+
 ### What issues should I look at or contribute to?
 
 Many of our projects have both [`beginner-friendly`](https://github.com/babel/babel/labels/beginner-friendly) and [`help-wanted`](https://github.com/babel/babel/labels/help-wanted) labels. You can also check out [`discussion`](https://github.com/babel/babel/labels/discussion). It's not always 
