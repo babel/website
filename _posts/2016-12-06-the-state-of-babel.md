@@ -131,8 +131,10 @@ Targeting the current Node.js version (uses `process.versions.node`)
 
 Relevant Issues:
 
-- [Using browserslist](https://github.com/babel/babel-preset-env/issues/26) and [PR](https://github.com/babel/babel-preset-env/pull/51)
 - Next big feature: apply the same idea of preset-env to polyfills as well [babel/babel-preset-env#20](https://github.com/babel/babel-preset-env/issues/20) with corresponding PR in [babel/babel-preset-env#56](https://github.com/babel/babel-preset-env/pull/56).
+- [Using browserslist](https://github.com/babel/babel-preset-env/issues/26) and [PR](https://github.com/babel/babel-preset-env/pull/51)
+- ["Node.js versions support" in Browserlist](https://github.com/ai/browserslist/issues/75)
+- [Publish runnable tests & browser data to npm](https://github.com/kangax/compat-table/issues/711)
 
 Chrome 55 `useBuiltIns` + webpack 2
 
@@ -466,14 +468,32 @@ Old Issues:
 
 You might think that as [a project gets more widely used](https://npm-stat.com/charts.html?package=babel-core&from=2015-02-07&to=2016-12-07) that more people show up to help out. But like most OSS projects that aren't backed by a company, there is a constant issue with maintenance and sustainability; people get burned out, move on to other cool projects, or get busy with work/family/etc.
 
+Like James describes in [Dear Javascript](https://medium.com/@thejameskyle/dear-javascript-7e14ffcae36c), the current Babel team is pretty small. We're looking to grow our contributors in all the projects I mentioned above!
+
+Babel isn't a company, a special team at Facebook, or corporate-funded OSS project. It's a community-driven effort currently held up by a few people and we want that to grow.
+
 ### How can I contact the team?
 
-- For bug reports/PRs you can check our [repos](https://github.com/babel/)
-- You can ping us on twitter with [@babeljs](https://twitter.com/babeljs) - or mention us individually.
-- Join at [http://slack.babeljs.io/](slack.babeljs.io).
+#### GitHub
+
+For bug reports/PRs you can check our [repositories](https://github.com/babel/).
+
+#### Twitter
+
+You can ping us on Twitter with [@babeljs](https://twitter.com/babeljs) - or mention us individually.
+
+I joined Twitter to be able to talk with users and help out. Being able to post new features and changelogs is really useful and can help give us feedback! 
+
+#### Slack
+
+We have a relatively active community on there:
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">If you haven&#39;t joined our slack yet: please join at <a href="https://t.co/h3m7l9jkrg">https://t.co/h3m7l9jkrg</a>. Check out development/plugins to see what&#39;s up! <a href="https://t.co/f1CKaV8G6G">pic.twitter.com/f1CKaV8G6G</a></p>&mdash; Babel (@babeljs) <a href="https://twitter.com/babeljs/status/793223871080136705">October 31, 2016</a></blockquote>
+
+If you just have questions join [#discussion](https://babeljs.slack.com/messages/discussion/) and if you want to help or listen in check out [#development].
+
+We try not to discuss in private if there's no need to: I myself usually post the issues/PRs I'm working on for people to review and talk about.
 
 ### What issues should I look at or contribute to?
 
 Many of our projects have both [`beginner-friendly`](https://github.com/babel/babel/labels/beginner-friendly) and [`help-wanted`](https://github.com/babel/babel/labels/help-wanted) labels. You can also check out [`discussion`](https://github.com/babel/babel/labels/discussion).
-
-TODO
