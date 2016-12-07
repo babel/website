@@ -16,6 +16,8 @@ This guide should help you get the syntax highlighting to work.
 If you're looking for more advanced integrations, you may want to
 take a look at the [Setup](/docs/setup) guide.
 
+**Tip:** The font used on the screenshot above is [FiraCode](https://github.com/tonsky/FiraCode).
+
 ### Atom
 
 Install [language-babel](https://atom.io/packages/language-babel) package
@@ -32,6 +34,9 @@ the [instructions](https://github.com/babel/babel-sublime#installation).
 
 Install [Babel ES6/ES7](https://marketplace.visualstudio.com/items?itemName=dzannotti.vscode-babel-coloring)
 extension and follow the instructions.
+
+There seems to be one other way to get the syntax highlighting working and you can learn
+more about it in the [Visual Studio Code docs](https://code.visualstudio.com/Docs/languages/javascript#_writing-jsconfigjson).
 
 ### WebStorm
 
