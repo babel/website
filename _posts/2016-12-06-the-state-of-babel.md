@@ -7,12 +7,14 @@ categories: announcements
 share_text: "The State of Babel"
 third_party_js:
 - https://platform.twitter.com/widgets.js
+custom_js_with_timestamps:
+- docs.js
 ---
 
-- Some History
-- Current Status
-- Future
-- Community
+- [Some History](#some-history)
+- [Current Status](#current-status)
+- [The Future](#the-future)
+- [Community](#community)
 
 > Previous issues: [Babel Roadmap #4130](https://github.com/babel/babel/issues/4130), [6.0 #2168](https://github.com/babel/babel/issues/2168)
 
@@ -26,8 +28,10 @@ Some other milestones:
 
 - In [5.0.0](https://babeljs.io/blog/2015/03/31/5.0.0), Babel aligned more with the [TC39 process](https://tc39.github.io/process-document/) by introducing `stages`, added a `.babelrc` config option, and created a plugin system for custom transforms.
 - In [6.0.0](https://babeljs.io/blog/2015/10/29/6.0.0), Babel became modular (a pretty controversial idea at the time). This was a huge change that led to opt-in functionality (no defaults) and the concept of `Presets` and Plugin Options.
+- [6.3.13](https://github.com/babel/babel/blob/master/CHANGELOG.md#638-6313) Sebastian extracted our [monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) build/publish tools into what is now [Lerna](https://github.com/lerna/lerna). (What's funny is [James](https://github.com/thejameskyle) rewrote it 3 times and I had to review everything)
+  - After this was around when both Sebastian and James got burned out on Babel, and a few contributors tried to stepped up
+  - We struggled to find direction and deal with the bugs/requests coming in but we got a lot of stuff done!
 - [6.13.0](https://github.com/babel/babel/releases/tag/v6.13.0) finally added [Preset Options](http://babeljs.io/docs/plugins/#plugin-preset-options).
-- [6.13.3](https://github.com/babel/babel/releases/tag/v6.13.3) Sebastian extracted our [monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) build/publish tools into what is now [Lerna](https://github.com/lerna/lerna). (What's funny is [James](https://github.com/thejameskyle) rewrote it 3 times and I had to review everything)
 - [6.14.0](http://babeljs.io/blog/2016/08/24/6.14.0) added a [latest-preset](http://babeljs.io/docs/plugins/preset-latest/) that keeps up to date with the yearly JavaScript specification.
 - [6.16.0](http://babeljs.io/blog/2016/09/28/6.16.0) allowed changing out the parser or code-generator.
 - In August, we released [Babili, a minifier based on Babel](https://babeljs.io/blog/2016/08/30/babili).
@@ -46,6 +50,10 @@ Thanks everyone for your continued support! We want to continue acting as the fo
 If you're interested in helping out please check out the issues linked below!
 
 ### Maintaining Babel plugins [for each proposal in TC39](https://github.com/tc39/proposals) starting from Stage 0
+
+[TC39](https://github.com/tc39) stands for Ecma International, Technical Committee 39: it's the committee that makes JavaScript.
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/b0rk">@b0rk</a> Short answers:<br><br>Who&#39;s there? Engine implementors, developers, a handful of academics and theorists, and <a href="https://twitter.com/BrendanEich">@BrendanEich</a>.</p>&mdash; Yehuda Katz (@wycats) <a href="https://twitter.com/wycats/status/803821500394598401">November 30, 2016</a></blockquote>
 
 Babel uses [TC39's concept of stages](http://babeljs.io/docs/plugins/#stage-x-experimental-presets-) to categorize its experimental plugins. Users should be able to easily use features before they are all implemented in browsers in [stage 4 of the TC39 process](https://tc39.github.io/process-document/).
 
@@ -77,6 +85,8 @@ Relevant Issues:
 - Should we create a codemod for Stage X proposals at the same time as creating the actual transform?
 - [Private Fields](https://github.com/babel/babel/issues/4408)
 - [Decorators Proposal](https://github.com/babel/babel/issues/2645)
+
+> Check out [thefeedbackloop.xyz](https://thefeedbackloop.xyz/tc39-november-2016-day-1/) for more info on TC39!
 
 ### Maintaining other ecosystem plugins: JSX/Flow
 
@@ -168,6 +178,8 @@ Relevant Issues:
 
 ### Linting via [babel-eslint](https://github.com/babel/babel-eslint)
 
+<img class="img-responsive" alt="example of eslint" src="/images/blog/2016-12-06-the-state-of-babel/eslint.png">
+
 ESLint doesn't support new language features until they reach Stage 4 of the proposals process. For this reason we maintain [babel-eslint](https://github.com/babel/babel-eslint) (a custom ESLint parser) so you can continue to lint JavaScript with experimental syntax.
 
 This project was one of the hardest projects to work on: because it is just a compatibility layer between Babel and ESLint there is inherently a constant need for updates when either projects update and a high risk of unexpected changes due to monkey-patching. It was unfortunate to get issues like [babel/babel-eslint#243](https://github.com/babel/babel-eslint/issues/243) or [babel/babel-eslint#267](https://github.com/babel/babel-eslint/issues/267).
@@ -252,7 +264,9 @@ Relevant Issues:
 
 ### Code Coverage / Instrumentation
 
-We want to support tools like [nyc](https://github.com/istanbuljs/nyc) and [babel-plugin-instanbul](https://github.com/istanbuljs/babel-plugin-istanbul).
+![](https://istanbul.js.org/assets/browser.png)
+
+We want to support tools like [nyc](https://github.com/istanbuljs/nyc) and [babel-plugin-istanbul](https://github.com/istanbuljs/babel-plugin-istanbul).
 
 ### Plugin Ecosystem
 
@@ -263,6 +277,8 @@ Thanks to our vibrant community, new plugins are constantly being created: wheth
 We've had some interesting discussions on how we can grow and support the plugin ecosystem. We could try to watch all the repos but that is obviously overwhelming.
 
 It might be interesting to create some bots to automate a few tasks: create specific Babel plugins/ESLint rules for babel-plugins, write codemods to update API changes, and integrate plugins into our smoke test.
+
+- Should we create a newsletter for new/useful plugins?
 
 ### Documentation/Website
 
@@ -298,7 +314,7 @@ Relevant Issues:
 - [REPL: Use ASTexplorer](https://github.com/fkling/astexplorer/issues/70)
 - [ASTexplorer: Real Time collaboration](https://github.com/fkling/astexplorer/issues/166)
 
-## Future
+## The Future
 
 > NOTE: Everything below can be changed or dropped. Some might be already in the works and others are just suggestions that need a proper discussion/champion.
 
@@ -427,7 +443,7 @@ The general idea is that we have a lot of tools to help us write code but not a 
 
 A program slice basically cuts away from the source code the code that isn't used for a test case that you run. If there are lots of if statements and loops that aren't run during your usecase then it won't show up in the program slice.
 
-- Semantic (AST aware) Grepping tool
+- Semantic (AST aware) Grepping tool?
 
 Similar to [graspjs](http://www.graspjs.com/), I think it would be interesting to be able to do a find-replace with the input being an AST. It would allow us to create other analysis tools: the ability to find all IIFE's in our code, the number of times a method is called, or even how many Classes we have in our codebase.
 
@@ -435,7 +451,7 @@ Similar to [graspjs](http://www.graspjs.com/), I think it would be interesting t
 
 This command would print out all info (also when erroring). It would also include performance metrics on how long each plugin takes.
 
-- [`babel --settings`](https://github.com/babel/babel/issues/2960)
+- [Discussion Issue](https://github.com/babel/babel/issues/2960)
 
 ### Parser Unity
 
@@ -443,7 +459,7 @@ There have also been some discussions around parser/AST unity, in [TheLarkInn/js
 
 Unfortunately with Babel 6, we have "forked" and have a few differences in [our AST](https://github.com/babel/babylon#output) than ESTree. Babel aims to support stage x features while other parsers may only want to support stage 4 features. We all might prioritize certain things more than others regarding spec compliancy, performance, stage x features, error messages, extensibility, releases, etc. However it's important for us to be open to breaking changes that may lead to better interop and a better community.
 
-### Sweet.js Interop
+### Sweet.js Interop?
 
 Previous [issue](https://github.com/babel/babel/issues/568#issuecomment-71716260). Maybe we can just figure out how to have better interop instead?
 
@@ -466,7 +482,7 @@ There are still [a good amount of users on Babel 5](https://libraries.io/npm/bab
 
 Relevant Issues:
 
-- [ember-cli Babel 6.0 Issue](https://github.com/ember-cli/ember-cli/issues/5015)
+- [ember-cli Babel 6.0 Issue](https://github.com/ember-cli/ember-cli/issues/5015) needs help!
 - Any others?
 
 ### What else?
@@ -486,7 +502,7 @@ You might think that as [a project gets more widely used](https://npm-stat.com/c
 
 Like James describes in [Dear Javascript](https://medium.com/@thejameskyle/dear-javascript-7e14ffcae36c), the current Babel team is pretty small.
 
-Babel isn't a company, a special team at Facebook, or corporate-funded OSS project. It's a community-driven effort currently held up by a few people and we want that to grow.
+> Babel isn't a company, a special team at Facebook, or corporate-funded OSS project. It's a community-driven effort currently held up by a few people and we want that to grow.
 
 So if you're interested in contributing to a tool you use, we're hoping this could be the one!
 
@@ -553,3 +569,13 @@ You'll find a lot of awesome community members willing to help such as [Jordan H
 If you just have questions join [#discussion](https://babeljs.slack.com/messages/discussion/) and if you want to help or listen in check out [#development](https://babeljs.slack.com/messages/development/).
 
 We try not to discuss in private if there's no need to: I myself usually post the issues/PRs I'm working on for people to review and talk about.
+
+---
+
+> If you find anyone typos/issues please send a PR or comment on [babel/babel.github.io#1014](https://github.com/babel/babel.github.io/pull/1014)
+
+Thanks for reading!
+
+Henry Zhu ([@hzoo](https://github.com/hzoo))
+
+> Thanks to way too many folks for their review and thoughts: @DrewML, @mrjoelkemp, @kentcdodds, @existentialism, @jdalton, @gaearon, @nolanlawson, @jayphelps, @montogeek, @TheLarkInn, @jasonLaster, @benjamn, @addyosmani, @Daniel15, @loganfsmyth, @gr2m, @mathiasbynes, @chicoxyzzy, @bvaughn, @bcoe
