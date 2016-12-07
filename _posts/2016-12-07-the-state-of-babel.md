@@ -2,7 +2,7 @@
 layout: post
 title:  "The State of Babel"
 author: Henry Zhu
-date:   2016-12-06 11:00:00
+date:   2016-12-07 14:30:00
 categories: announcements
 share_text: "The State of Babel"
 third_party_js:
