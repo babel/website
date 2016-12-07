@@ -458,9 +458,22 @@ Should we drop support according to the EOL of Node.js versions? How long should
 
 - [Discussion Issue](https://github.com/babel/babel/issues/4315)
 
-### Others?
+### Babel 5 to 6 transition / Upgrade Paths
 
-Anything not already brought up here? Please send us a tweet [@babeljs](https://twitter.com/babeljs), a message on our slack (join at [http://slack.babeljs.io/](slack.babeljs.io), comment on this post, or create an discussion issue in our repo!)
+Babel 6 was really difficult for the community to upgrade to. The initial release was a bit rushed. Although we did have a [6.0 release post](http://babeljs.io/blog/2015/10/29/6.0.0), a [setup guide](http://babeljs.io/blog/2015/10/31/setting-up-babel-6) soon after, a even a [tool (now deprecated)](http://babeljs.io/blog/2015/11/03/babel-doctor) to help with the transition it was still difficult for users to understand the changes.
+
+There are still [a good amount of users on Babel 5](https://libraries.io/npm/babel-core/usage) that we don't want to leave behind. What can we do to help them upgrade? What steps do we need to take in the future to make sure the same thing doesn't happen with a Babel 7? Are there other projects/communities we should be reaching out to and helping?
+
+Relevant Issues:
+
+- [ember-cli Babel 6.0 Issue](https://github.com/ember-cli/ember-cli/issues/5015)
+- Any others?
+
+### What else?
+
+Anything else not already brought up here? Please send us a tweet [@babeljs](https://twitter.com/babeljs), a message on our slack (join at [http://slack.babeljs.io/](slack.babeljs.io), comment on this post, or create an discussion issue in our repo!)
+
+Are there projects or communities we should partner with more? How can we make the contributing experience more welcome? What can we do to make the development process more transparent?
 
 ## Community
 
