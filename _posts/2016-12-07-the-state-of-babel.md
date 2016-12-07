@@ -182,7 +182,7 @@ Relevant Issues:
 
 ### Linting via [babel-eslint](https://github.com/babel/babel-eslint)
 
-<img class="img-responsive" alt="example of eslint" src="/images/blog/2016-12-06-the-state-of-babel/eslint.png">
+<img class="img-responsive" alt="example of eslint" src="/images/blog/2016-12-07-the-state-of-babel/eslint.png">
 
 ESLint doesn't support new language features until they reach Stage 4 of the proposals process. For this reason we maintain [babel-eslint](https://github.com/babel/babel-eslint) (a custom ESLint parser) so you can continue to lint JavaScript with experimental syntax.
 
