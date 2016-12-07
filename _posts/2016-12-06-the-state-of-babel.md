@@ -468,9 +468,40 @@ Old Issues:
 
 You might think that as [a project gets more widely used](https://npm-stat.com/charts.html?package=babel-core&from=2015-02-07&to=2016-12-07) that more people show up to help out. But like most OSS projects that aren't backed by a company, there is a constant issue with maintenance and sustainability; people get burned out, move on to other cool projects, or get busy with work/family/etc.
 
-Like James describes in [Dear Javascript](https://medium.com/@thejameskyle/dear-javascript-7e14ffcae36c), the current Babel team is pretty small. We're looking to grow our contributors in all the projects I mentioned above!
+Like James describes in [Dear Javascript](https://medium.com/@thejameskyle/dear-javascript-7e14ffcae36c), the current Babel team is pretty small.
 
 Babel isn't a company, a special team at Facebook, or corporate-funded OSS project. It's a community-driven effort currently held up by a few people and we want that to grow.
+
+So if you're interested in contributing to a tool you use, we're hoping this could be the one!
+
+### Team
+
+Our core team is:
+
+- [Henry Zhu, @hzoo](https://github.com/hzoo)
+- [Logan Smyth, @loganfsmyth](https://github.com/loganfsmyth)
+- [Daniel Tschinder, @danez](https://github.com/danez)
+
+And just in the last 3 months a lot more:
+
+- [Moti Zilberman, @motiz88](https://github.com/motiz88)
+- [Dan Harper, @danharper](https://github.com/danharper)
+- [Kai Cataldo, @kaicataldo](https://github.com/kaicataldo)
+- [Andrew Levine, @drewml](https://github.com/DrewML)
+- [Brian Ng, @existentialism](https://github.com/existentialism)
+
+for Babili:
+
+- [Juriy Zaytsev, @kangax](https://github.com/kangax)
+- [Boopathi Rajaa, @boopathi](https://github.com/boopathi)
+
+As mentioned above we have a lot of website collaborators:
+
+- [Daniel Lo Nigro, @daniel15](https://github.com/daniel15)
+- [Samuel Reed, @STRML](https://github.com/STRML)
+- [Sven SAULEAU, @xtuc](https://github.com/xtuc)
+- [Frederic Marx, @fredericmarx](https://github.com/fredericmarx)
+- [Igor Mozharovsky, @seedofjoy](https://github.com/seedofjoy)
 
 ### How can I contact the team?
 
@@ -486,7 +517,9 @@ I joined Twitter to be able to talk with users and help out. Being able to post 
 
 #### Slack
 
-We have a relatively active community on there:
+We have a relatively active community on there!
+
+You'll find a lot of awesome community members willing to help such as [Jordan Harband, @ljharb](https://github.com/ljharb), [Diogo Franco, @kovensky](https://github.com/kovensky), [Jimmy Jia, @taion](https://github.com/taion), [Denis Pushkarev, @zloirock](https://github.com/zloirock) and more!
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">If you haven&#39;t joined our slack yet: please join at <a href="https://t.co/h3m7l9jkrg">https://t.co/h3m7l9jkrg</a>. Check out development/plugins to see what&#39;s up! <a href="https://t.co/f1CKaV8G6G">pic.twitter.com/f1CKaV8G6G</a></p>&mdash; Babel (@babeljs) <a href="https://twitter.com/babeljs/status/793223871080136705">October 31, 2016</a></blockquote>
 
