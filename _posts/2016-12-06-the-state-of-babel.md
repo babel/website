@@ -34,15 +34,16 @@ Some other milestones:
 - In September, we released the first version of [babel-preset-env](https://github.com/babel/babel-preset-env).
 - After a year on [Phabricator](https://twitter.com/sebmck/status/667097915605708804), we moved back to to [GitHub issues](https://twitter.com/left_pad/status/773619871074648064) thanks solely to [@danez](https://github.com/danez) and his amazing (and underappreciated) work.
 
+> If you're using Babel, let us know with a [PR](https://github.com/babel/babel.github.io/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aclosed+%22New+User%3A%22) to our [users page](http://babeljs.io/users/)!
+
 Now `babel-core` is downloaded over 5 million times per month and almost 60 million times total and used at huge companies like Facebook/Netflix/Airbnb and other OSS projects like React/Yarn.
 
-> If you're using Babel, let us know with a [PR](https://github.com/babel/babel.github.io/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aclosed+%22New+User%3A%22)!
 
 Thanks everyone for your continued support! We want to continue acting as the foundation of the JavaScript toolchain: compilation, linting, minification, codemods, code coverage, etc.
 
 ## Current Status
 
-We understand that working on any of these could be its own project. If you're interested in helping out please check out the issues linked below!
+If you're interested in helping out please check out the issues linked below!
 
 ### Maintaining Babel plugins [for each proposal in TC39](https://github.com/tc39/proposals) starting from Stage 0
 
@@ -73,7 +74,7 @@ Next we're going to be working with:
 
 Relevant Issues:
 
-- Maybe we should think about creating a codemod for Stage x proposals at the same time as creating the actual transform.
+- Should we create a codemod for Stage X proposals at the same time as creating the actual transform?
 - [Private Fields](https://github.com/babel/babel/issues/4408)
 - [Decorators Proposal](https://github.com/babel/babel/issues/2645)
 
@@ -129,13 +130,6 @@ Targeting the current Node.js version (uses `process.versions.node`)
 }
 ```
 
-Relevant Issues:
-
-- Next big feature: apply the same idea of preset-env to polyfills as well [babel/babel-preset-env#20](https://github.com/babel/babel-preset-env/issues/20) with corresponding PR in [babel/babel-preset-env#56](https://github.com/babel/babel-preset-env/pull/56).
-- [Using browserslist](https://github.com/babel/babel-preset-env/issues/26) and [PR](https://github.com/babel/babel-preset-env/pull/51)
-- ["Node.js versions support" in Browserlist](https://github.com/ai/browserslist/issues/75)
-- [Publish runnable tests & browser data to npm](https://github.com/kangax/compat-table/issues/711)
-
 Chrome 55 `useBuiltIns` + webpack 2
 
 ```js
@@ -164,6 +158,13 @@ import "babel-polyfill";
 import "core-js/modules/es7.string.pad-start";
 import "core-js/modules/es7.string.pad-end";
 ```
+
+Relevant Issues:
+
+- Next big feature: apply the same idea of preset-env to polyfills as well [babel/babel-preset-env#20](https://github.com/babel/babel-preset-env/issues/20) with corresponding PR in [babel/babel-preset-env#56](https://github.com/babel/babel-preset-env/pull/56).
+- [Using browserslist](https://github.com/babel/babel-preset-env/issues/26) and [PR](https://github.com/babel/babel-preset-env/pull/51)
+- ["Node.js versions support" in Browserlist](https://github.com/ai/browserslist/issues/75)
+- [Publish runnable tests & browser data to npm](https://github.com/kangax/compat-table/issues/711)
 
 ### Linting via [babel-eslint](https://github.com/babel/babel-eslint)
 
@@ -255,7 +256,7 @@ We want to support tools like [nyc](https://github.com/istanbuljs/nyc) and [babe
 
 ### Plugin Ecosystem
 
-Thanks to our vibrant community, new plugins are constantly being created: whether it be a new way to write your [css in jsx](https://github.com/zeit/styled-jsx) or [emojification](https://twitter.com/babeljs/status/604367341380616192).
+Thanks to our vibrant community, new plugins are constantly being created: whether it be a new way to write your [css in jsx](https://github.com/zeit/styled-jsx) or [rewire your tests](https://github.com/speedskater/babel-plugin-rewire).
 
 > Currently there are > 1200 [babel-plugins on npm](https://www.npmjs.com/search?q=babel-plugin-). 
 
@@ -272,7 +273,7 @@ However just recently we've done a lot of awesome stuff:
 - [@Daniel15](https://github.com/Daniel15) has been maintaining [babel-standalone](https://github.com/babel/babel-standalone) which we use in the REPL and has some automation when new releases get out.
 - [@maxiloc](https://github.com/maxiloc) added search functionality via Algolia via [#977](https://github.com/babel/babel.github.io/pull/977)
 
-and added some new collaborators: 
+We've also added new collaborators: 
 
 - [@STRML](https://github.com/STRML): Added Discourse to all github pages via [#875](https://github.com/babel/babel.github.io/pull/875)
 - [@xtuc](https://github.com/xtuc): Added support for reading the README from the babel repo so we don't have to sync 2 copies of docs via [#990](https://github.com/babel/babel.github.io/pull/990)
@@ -299,7 +300,9 @@ Relevant Issues:
 
 ## Future
 
-> NOTE: These are all things that can be changed or dropped. Some might be already in the works and others are just ideas that need a proper discussion/champion.
+> NOTE: Everything below can be changed or dropped. Some might be already in the works and others are just suggestions that need a proper discussion/champion.
+
+> Priority should be determined on what the community needs: not because it would be nice to have.
 
 ### [Plugin API Changes](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal)
 
@@ -414,9 +417,9 @@ It would be useful to either have a reverse [Greenkeeper](https://greenkeeper.io
 
 ### Program Analysis
 
-- [Program Slicing](https://en.wikipedia.org/wiki/Program_slicing) with [slice-js](http://slides.com/kentcdodds/faster-javascript#/)
+- [Program Slicing](https://en.wikipedia.org/wiki/Program_slicing)
 
-There was a great talk by [Alan Shreve](https://twitter.com/inconshreveable) called ["Idealized Commit Logs: Code Simplification via Program Slicing"](https://www.youtube.com/watch?v=dSqLt8BgbRQ) which inspired @kentcdodds to try it out in JavaScript.
+There was a great talk by [Alan Shreve](https://twitter.com/inconshreveable) called ["Idealized Commit Logs: Code Simplification via Program Slicing"](https://www.youtube.com/watch?v=dSqLt8BgbRQ) which inspired @kentcdodds to try it out in JavaScript via [slice-js](http://slides.com/kentcdodds/faster-javascript#/).
 
 The general idea is that we have a lot of tools to help us write code but not a lot for helping us understand/read code. You can think of code-slicing as a form of targeted dead-code elimination.
 
