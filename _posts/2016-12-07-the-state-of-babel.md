@@ -588,7 +588,9 @@ Let us know your thoughts! What do you want out of Babel?
 
 ---
 
-> If you find anyone typos/issues please send a PR or comment on [babel/babel.github.io#1014](https://github.com/babel/babel.github.io/pull/1014)
+> See typos/issues? Please send a PR or comment on [babel/babel.github.io#1014](https://github.com/babel/babel.github.io/pull/1014)
+
+If anything we want to let you know that many of us got our start with Babel in order to learn JavaScript rather than helping because we already knew it. Personally, I knew nothing about compilers and had just learned what ES6 was when I found the project. I got here because of a tiny bit of curiosity and [some encouragement from a lot of people](https://medium.com/@hzoo/ossthanks-some-thoughts-d0267706c2c6#.lcga2ggrw). I want to carry that forward and hope that we can all succeed together.
 
 Thanks so much for reading!
 
