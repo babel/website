@@ -34,7 +34,9 @@ Some other milestones:
 - In September, we released the first version of [babel-preset-env](https://github.com/babel/babel-preset-env).
 - After a year on [Phabricator](https://twitter.com/sebmck/status/667097915605708804), we moved back to to [GitHub issues](https://twitter.com/left_pad/status/773619871074648064) thanks solely to [@danez](https://github.com/danez) and his amazing (and underappreciated) work.
 
-Now `babel-core` is downloaded over 5 million times per month and almost 60 million times total.
+Now `babel-core` is downloaded over 5 million times per month and almost 60 million times total and used at huge companies like Facebook/Netflix/Airbnb and other OSS projects like React/Yarn.
+
+> If you're using Babel, let us know with a [PR](https://github.com/babel/babel.github.io/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aclosed+%22New+User%3A%22)!
 
 Thanks everyone for your continued support! We want to continue acting as the foundation of the JavaScript toolchain: compilation, linting, minification, codemods, code coverage, etc.
 
@@ -449,13 +451,11 @@ Should we drop support according to the EOL of Node.js versions? How long should
 - Many other build-time projects like ESLint have done so already.
 - Are we going to make a major version just for this or plan out other changes in addition?
 
-Relevant Issues:
-
-- [Drop support for Node.js v0.10 and v0.12](https://github.com/babel/babel/issues/4315)
+- [Discussion Issue](https://github.com/babel/babel/issues/4315)
 
 ### Others?
 
-Anything not already brought up here? Please send us a tweet [@babeljs](https://twitter.com/babeljs), a message on our slack (join at [http://slack.babeljs.io/](slack.babeljs.io), comment on this post, or create an discussion issue in our repo!
+Anything not already brought up here? Please send us a tweet [@babeljs](https://twitter.com/babeljs), a message on our slack (join at [http://slack.babeljs.io/](slack.babeljs.io), comment on this post, or create an discussion issue in our repo!)
 
 ## Community
 
@@ -475,3 +475,5 @@ You might think that as [a project gets more widely used](https://npm-stat.com/c
 ### What issues should I look at or contribute to?
 
 Many of our projects have both [`beginner-friendly`](https://github.com/babel/babel/labels/beginner-friendly) and [`help-wanted`](https://github.com/babel/babel/labels/help-wanted) labels. You can also check out [`discussion`](https://github.com/babel/babel/labels/discussion).
+
+TODO
