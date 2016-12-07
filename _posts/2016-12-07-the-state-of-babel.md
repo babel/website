@@ -20,7 +20,7 @@ custom_js_with_timestamps:
 
 ## Some History
 
-[Sebastian](https://github.com/kittens) created Babel in September of 2015. Interestingly enough, he made it to scratch an itch he had with understanding programming languages and how they work. You might have assumed whoever created the project already knew how compilers worked and understood JavaScript perfectly! Check out his post for a great read of his story: [~2015 in Review](https://medium.com/@sebmck/2015-in-review-51ac7035e272#.jdoo279bl).
+[Sebastian](https://github.com/kittens) created Babel in September of 2014. Interestingly enough, he made it to scratch an itch he had with understanding programming languages and how they work. You might have assumed whoever created the project already knew how compilers worked and understood JavaScript perfectly! Check out his post for a great read of his story: [~2015 in Review](https://medium.com/@sebmck/2015-in-review-51ac7035e272#.jdoo279bl).
 
 When 6to5 became Babel as mentioned in [Not Born to Die](https://babeljs.io/blog/2015/02/15/not-born-to-die), it became a platform: a suite of tools designed to create the next generation of JavaScript tooling. No longer did it just compile ES6 to ES5, it allowed developers to build tools on top of it.
 
