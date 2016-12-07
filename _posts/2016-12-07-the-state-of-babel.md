@@ -20,22 +20,22 @@ custom_js_with_timestamps:
 
 ## Some History
 
-[Sebastian](https://github.com/kittens) created Babel in September of 2014. Interestingly enough, he made it to scratch an itch he had with understanding programming languages and how they work. You might have assumed whoever created the project already knew how compilers worked and understood JavaScript perfectly! Check out his post for a great read of his story: [~2015 in Review](https://medium.com/@sebmck/2015-in-review-51ac7035e272#.jdoo279bl).
+[Sebastian](https://github.com/kittens) created "6to5" in September of 2014. Interestingly enough, he made it to scratch an itch he had with understanding programming languages and how they work. You might have assumed whoever created the project already knew how compilers worked and understood JavaScript perfectly... but you would be wrong! Check out his post for a great read of his story: [~2015 in Review](https://medium.com/@sebmck/2015-in-review-51ac7035e272#.jdoo279bl).
 
-When 6to5 became Babel as mentioned in [Not Born to Die](https://babeljs.io/blog/2015/02/15/not-born-to-die), it became a platform: a suite of tools designed to create the next generation of JavaScript tooling. No longer did it just compile ES6 to ES5, it allowed developers to build tools on top of it.
+6to5 did exactly that: easily turn ES6 code into ES5 codee. When 6to5 became Babel as mentioned in [Not Born to Die](https://babeljs.io/blog/2015/02/15/not-born-to-die), it became a platform: a suite of tools designed to create the next generation of JavaScript tooling. No longer did it just compile ES6 to ES5, it allowed developers to build tools on top of it.
 
 Here are some of our milestones:
 
 - In [5.0.0](https://babeljs.io/blog/2015/03/31/5.0.0), Babel aligned more with the [TC39 process](https://tc39.github.io/process-document/) by introducing `stages`, added a `.babelrc` config option, and created a plugin system for custom transforms.
 - In [6.0.0](https://babeljs.io/blog/2015/10/29/6.0.0), Babel became modular (a pretty controversial idea at the time). This was a huge change that led to opt-in functionality (no defaults) and the concept of `Presets` and Plugin Options.
 - [6.3.13](https://github.com/babel/babel/blob/master/CHANGELOG.md#638-6313) Sebastian extracted our [monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) build/publish tools into what is now [Lerna](https://github.com/lerna/lerna). (What's funny is [James](https://github.com/thejameskyle) rewrote it 3 times and I had to review everything)
-  - After this was around when both Sebastian and James got burned out on Babel, and a few contributors tried to stepped up
+  - After this was around when both Sebastian and James got burned out on Babel, and a few contributors stepped up
   - We struggled to find direction and deal with the bugs/requests coming in but we got a lot of stuff done!
 - [6.13.0](https://github.com/babel/babel/releases/tag/v6.13.0) finally added [Preset Options](http://babeljs.io/docs/plugins/#plugin-preset-options).
 - [6.14.0](http://babeljs.io/blog/2016/08/24/6.14.0) added a [latest-preset](http://babeljs.io/docs/plugins/preset-latest/) that keeps up to date with the yearly JavaScript specification.
 - [6.16.0](http://babeljs.io/blog/2016/09/28/6.16.0) allowed changing out the parser or code-generator.
 - In August, we released [Babili, a minifier based on Babel](https://babeljs.io/blog/2016/08/30/babili).
-- In September, we released the first version of [babel-preset-env](https://github.com/babel/babel-preset-env).
+- In September, we released the first version of [babel-preset-env](https://github.com/babel/babel-preset-env) (read on for details).
 - After a year on [Phabricator](https://twitter.com/sebmck/status/667097915605708804), we moved back to to [GitHub issues](https://twitter.com/left_pad/status/773619871074648064) thanks solely to [@danez](https://github.com/danez) and his amazing (and underappreciated) work.
 
 > If you're using Babel, let us know with a [PR](https://github.com/babel/babel.github.io/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aclosed+%22New+User%3A%22) to our [users page](http://babeljs.io/users/)!
