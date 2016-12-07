@@ -472,3 +472,6 @@
 - name: EVO.company
   url: https://evo.company
   logo: evocompany.svg
+- name: Nine Entertainment Co
+  url: http://www.nineentertainmentco.com.au/
+  logo: nec.png
