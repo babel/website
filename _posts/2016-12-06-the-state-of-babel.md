@@ -477,6 +477,10 @@ Babel isn't a company, a special team at Facebook, or corporate-funded OSS proje
 
 So if you're interested in contributing to a tool you use, we're hoping this could be the one!
 
+### What issues should I look at or contribute to?
+
+Many of our projects have both [`beginner-friendly`](https://github.com/babel/babel/labels/beginner-friendly) and [`help-wanted`](https://github.com/babel/babel/labels/help-wanted) labels. You can also check out [`discussion`](https://github.com/babel/babel/labels/discussion).
+
 ### Team
 
 Our core team is:
@@ -485,7 +489,7 @@ Our core team is:
 - [Logan Smyth, @loganfsmyth](https://github.com/loganfsmyth)
 - [Daniel Tschinder, @danez](https://github.com/danez)
 
-And just in the last 3 months a lot more:
+And just in the last 3 months a lot more collaborators:
 
 - [Moti Zilberman, @motiz88](https://github.com/motiz88)
 - [Dan Harper, @danharper](https://github.com/danharper)
@@ -493,7 +497,7 @@ And just in the last 3 months a lot more:
 - [Andrew Levine, @drewml](https://github.com/DrewML)
 - [Brian Ng, @existentialism](https://github.com/existentialism)
 
-for Babili:
+Babili core team:
 
 - [Juriy Zaytsev, @kangax](https://github.com/kangax)
 - [Boopathi Rajaa, @boopathi](https://github.com/boopathi)
@@ -506,6 +510,13 @@ As mentioned above we have a lot of website collaborators:
 - [Frederic Marx, @fredericmarx](https://github.com/fredericmarx)
 - [Igor Mozharovsky, @seedofjoy](https://github.com/seedofjoy)
 
+Inactive but still a resource:
+
+- [Sebastian McKenzie, @kittens](https://github.com/kittens) - Yarn
+- [James Kyle, @thejameskyle](https://github.com/thejameskyle) - Flow/Yarn
+- [Amjad Masad, @amasad](https://github.com/amasad) - [repl.it](https://repl.it/)
+- [Jesse McCarthy, @jmm](https://github.com/jmm)
+
 ### How can I contact the team?
 
 #### GitHub
@@ -516,7 +527,7 @@ For bug reports/PRs you can check our [repositories](https://github.com/babel/).
 
 You can ping us on Twitter with [@babeljs](https://twitter.com/babeljs) - or mention us individually.
 
-I joined Twitter to be able to talk with users and help out. Being able to post new features and changelogs is really useful and can help give us feedback! 
+I myself joined Twitter to be able to talk with users and help out. Being able to post new features and changelogs is really useful and can help give us feedback!
 
 #### Slack
 
@@ -526,10 +537,6 @@ You'll find a lot of awesome community members willing to help such as [Jordan H
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">If you haven&#39;t joined our slack yet: please join at <a href="https://t.co/h3m7l9jkrg">https://t.co/h3m7l9jkrg</a>. Check out development/plugins to see what&#39;s up! <a href="https://t.co/f1CKaV8G6G">pic.twitter.com/f1CKaV8G6G</a></p>&mdash; Babel (@babeljs) <a href="https://twitter.com/babeljs/status/793223871080136705">October 31, 2016</a></blockquote>
 
-If you just have questions join [#discussion](https://babeljs.slack.com/messages/discussion/) and if you want to help or listen in check out [#development].
+If you just have questions join [#discussion](https://babeljs.slack.com/messages/discussion/) and if you want to help or listen in check out [#development](https://babeljs.slack.com/messages/development/).
 
 We try not to discuss in private if there's no need to: I myself usually post the issues/PRs I'm working on for people to review and talk about.
-
-### What issues should I look at or contribute to?
-
-Many of our projects have both [`beginner-friendly`](https://github.com/babel/babel/labels/beginner-friendly) and [`help-wanted`](https://github.com/babel/babel/labels/help-wanted) labels. You can also check out [`discussion`](https://github.com/babel/babel/labels/discussion).
