@@ -18,7 +18,7 @@ third_party_js:
 
 ## Some History
 
-[Sebastian](https://github.com/kittens) created Babel in September of 2015. Interestingly enough, he made it to scratch an itch he had with understanding programming languages and how they work. You might of assumed whoever created the project already knew how compilers worked and understood JavaScript perfectly! Check out his post for a great read of his story: [~2015 in Review](https://medium.com/@sebmck/2015-in-review-51ac7035e272#.jdoo279bl).
+[Sebastian](https://github.com/kittens) created Babel in September of 2015. Interestingly enough, he made it to scratch an itch he had with understanding programming languages and how they work. You might have assumed whoever created the project already knew how compilers worked and understood JavaScript perfectly! Check out his post for a great read of his story: [~2015 in Review](https://medium.com/@sebmck/2015-in-review-51ac7035e272#.jdoo279bl).
 
 When 6to5 became Babel as mentioned in [Not Born to Die](https://babeljs.io/blog/2015/02/15/not-born-to-die), it became a platform: a suite of tools designed to create the next generation of JavaScript tooling. No longer did it just compile ES6 to ES5, it allowed developers to build tools on top of it.
 
@@ -27,12 +27,12 @@ Some other milestones:
 - In [5.0.0](https://babeljs.io/blog/2015/03/31/5.0.0), Babel aligned more with the [TC39 process](https://tc39.github.io/process-document/) by introducing `stages`, added a `.babelrc` config option, and created a plugin system for custom transforms.
 - In [6.0.0](https://babeljs.io/blog/2015/10/29/6.0.0), Babel became modular (a pretty controversial idea at the time). This was a huge change that led to opt-in functionality (no defaults) and the concept of `Presets` and Plugin Options.
 - [6.13.0](https://github.com/babel/babel/releases/tag/v6.13.0) finally added [Preset Options](http://babeljs.io/docs/plugins/#plugin-preset-options).
-- [6.3.13](https://github.com/babel/babel/releases/tag/v6.13.3) Sebastian extracted our [monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) build/publish tools into what is now [Lerna](https://github.com/lerna/lerna). (What's funny is [James](https://github.com/thejameskyle) rewrote it 3 times and I had to review everything)
+- [6.13.3](https://github.com/babel/babel/releases/tag/v6.13.3) Sebastian extracted our [monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) build/publish tools into what is now [Lerna](https://github.com/lerna/lerna). (What's funny is [James](https://github.com/thejameskyle) rewrote it 3 times and I had to review everything)
 - [6.14.0](http://babeljs.io/blog/2016/08/24/6.14.0) added a [latest-preset](http://babeljs.io/docs/plugins/preset-latest/) that keeps up to date with the yearly JavaScript specification.
 - [6.16.0](http://babeljs.io/blog/2016/09/28/6.16.0) allowed changing out the parser or code-generator.
-- In August, we released a [minifier based on Babel](https://babeljs.io/blog/2016/08/30/babili).
+- In August, we released [Babili, a minifier based on Babel](https://babeljs.io/blog/2016/08/30/babili).
 - In September, we released the first version of [babel-preset-env](https://github.com/babel/babel-preset-env).
-- After a year on Phabricator, we moved back to to GitHub issues thanks solely to [@danez](https://github.com/danez) and his amazing (and underappreciated) work.
+- After a year on [Phabricator](https://twitter.com/sebmck/status/667097915605708804), we moved back to to [GitHub issues](https://twitter.com/left_pad/status/773619871074648064) thanks solely to [@danez](https://github.com/danez) and his amazing (and underappreciated) work.
 
 Now `babel-core` is downloaded over 5 million times per month and almost 60 million times total.
 
@@ -63,7 +63,11 @@ from stage 2 to stage 3.
 
 ---
 
-Next we're going to be working with [Daniel Ehrenberg](https://github.com/littledan) on [Private Fields (Stage 2)](https://github.com/tc39/proposal-private-fields) and [Yehuda Katz](https://github.com/wycats) on [Class and Property Decorators (Stage 2)](http://tc39.github.io/proposal-decorators/).
+Next we're going to be working with:
+
+- [Daniel Ehrenberg](https://github.com/littledan) on [Private Fields (Stage 2)](https://github.com/tc39/proposal-private-fields)
+- [Yehuda Katz](https://github.com/wycats) on [Class and Property Decorators (Stage 2)](http://tc39.github.io/proposal-decorators/)
+- [Mathias Bynens](https://mathiasbynens.be/) on [Unicode Property Escapes in Regular Expressions (Stage 2)](https://github.com/tc39/proposal-regexp-unicode-property-escapes) via [babel/babel#3683](https://github.com/babel/babel/pull/3683)
 
 Relevant Issues:
 
@@ -90,11 +94,11 @@ JavaScript compilation is a moving target: There are yearly updates to the spec,
 
 This is where `babel-preset-env` comes in: it's a Babel preset that automatically determines the correct Babel plugins to use based on the provided environments.
 
-Its goal is both simplicity in use and efficiency in output: you only need to worry about your target environments to be able to take advantage of native code. The preset will decide for you when you need to add or remove a plugin.
+Its goal is both simplicity in use and efficiency in output: you only need to worry about your target environments to be able to take advantage of native code. The preset decides for you the required plugins.
 
-Some example configs
+#### Some example configs
 
-Targeting Chrome 55 + last 2 versions
+Targeting Chrome 55 + last 2 versions of other browsers via [browserslist](https://github.com/ai/browserslist)
 
 ```js
 {
@@ -109,7 +113,7 @@ Targeting Chrome 55 + last 2 versions
 }
 ```
 
-Targeting the current node version (uses `process.versions.node`)
+Targeting the current Node.js version (uses `process.versions.node`)
 
 ```js
 {
@@ -161,7 +165,7 @@ import "core-js/modules/es7.string.pad-end";
 
 ESLint doesn't support new language features until they reach Stage 4 of the proposals process. For this reason we maintain [babel-eslint](https://github.com/babel/babel-eslint) (a custom ESLint parser) so you can continue to lint JavaScript with experimental syntax.
 
-This project was one of the hardest projects to work on: because it is just a compatibility layer between Babel and ESLint there is inherently a constant need for updates when either projects update and a high risk of unexpected changes due to monkey-patching. It was unforunate to get issues like [babel/babel-eslint#243](https://github.com/babel/babel-eslint/issues/243) or [babel/babel-eslint#267](https://github.com/babel/babel-eslint/issues/267).
+This project was one of the hardest projects to work on: because it is just a compatibility layer between Babel and ESLint there is inherently a constant need for updates when either projects update and a high risk of unexpected changes due to monkey-patching. It was unfortunate to get issues like [babel/babel-eslint#243](https://github.com/babel/babel-eslint/issues/243) or [babel/babel-eslint#267](https://github.com/babel/babel-eslint/issues/267).
 
 To that end, we'd like to lessen the maintenance burden of this project by improving our scope and traversal interop with ESLint. It might even be interesting to be able to write ESLint rules using babel APIs or vice versa?
 
@@ -199,11 +203,11 @@ Since it was recently released, we're looking for some new contributors! There's
 
 ### Codemods / Refactoring / `eslint --fix`
 
-A `codemod` is a tool assisted code modification; a fancy find-and-replace.
+A `codemod` is a tool-assisted code modification; a fancy find-and-replace.
 
-If you wanted to change `merge({})` to `Object.assign({})` (and maybe later object rest) you might do a regex replace. But you don't want to replace the other parts of the code that also might be called `merge` such as imports/exports, strings, comments, and local variables. To do it safely you'll want something more powerful that only changes the specific code you need.
+If you wanted to change `merge({})` to `Object.assign({})` (and maybe later [object rest](https://github.com/sebmarkbage/ecmascript-rest-spread)) you might do a regex replace. But you don't want to replace the other parts of the code that also might be called `merge` such as imports/exports, strings, comments, and local variables. To do it safely you'll want something more powerful that only changes the specific code you need.
 
-Although Babel already handles transforming code into other code, being a compiler it doesn't really about the styling of the input code. By using Babel with it's default options to do a codemod you'll find that the `git diff` will look really messy.
+Although Babel already handles transforming code into other code, it doesn't really care about the styling of the input code as a compiler. After using Babel with its default options to do a codemod, `git diff` looks really messy.
 
 Enter [Recast](https://github.com/benjamn/recast): a tool that preserves the formatting of unmodified code while also pretty-printing any new AST nodes.
 
@@ -234,7 +238,7 @@ babel src -d src
 
 This feature was just made possible so we're looking forward to making it easier to use and seeing the transformations it can enable. Check out the [6.16.0 blog post](https://babeljs.io/blog/2016/09/28/6.16.0#new-feature) for more info!
 
-Other relevant projects: [JSCodeshift](https://github.com/facebook/jscodeshift), [Recast](https://github.com/benjamn/recast), [Lebab](https://github.com/lebab/lebab).
+Other relevant projects: [JSCodeshift](https://github.com/facebook/jscodeshift), [js-codemod](https://github.com/cpojer/js-codemod), [Lebab](https://github.com/lebab/lebab).
 
 Relevant Issues:
 
@@ -297,7 +301,7 @@ Relevant Issues:
 
 There is a lot of confusion around how plugins/presets interact regarding ordering. This results in bugs and issues with the config which require users to place plugins before/after others in a non-intuitive way.
 
-This is a fundamental change to the core of Babel which will take some work to figure out.
+We’re currently discussing API changes that could reduce the confusion. However, since this is a fundamental change to the core of Babel, it might take a while to figure out the best approach.
 
 ### Versioning
 
@@ -305,7 +309,7 @@ Since Babel 6 we've used a ["fixed" mode of versioning](https://github.com/lerna
 
 This is explained more in [babel/notes](https://github.com/babel/notes/blob/master/2016-07/july-31.md#future-of-babels-release-process-and-its-ecosystem) but we still need to figure out the best plan of action for the project.
 
-What happens when we need to update a Stage 0 spec to Stage 1 and it's a breaking change to the parser? Are we just going to bump the major version, wait a batch some changes up, or figure out how to do it via multiple versions of plugins?
+What happens when we need to update a Stage 0 spec to Stage 1 and it's a breaking change to the parser? Are we just going to bump the major version, wait to batch some changes up, or figure out how to do it via multiple versions of plugins?
 
 [Discussion Issue](https://github.com/babel/babel/issues/4950)
 
@@ -327,7 +331,7 @@ Performance is a feature! Other things can be more of a priority at times (bug f
 - How can we generate the transformed code faster?
 - How can we generate code that runs fast in the browser (https://fhinkel.github.io/six-speed/)?
 
-If you are one to read the compiled output and see issues, then report it and ask for help in making a PR!
+If you to read the compiled output and see issues, then report it and ask for help in making a PR!
 
 Previous Issues:
 
@@ -372,9 +376,9 @@ Relevant Issues:
 
 ### `babel-init`
 
-Basically a way to setup Babel easier like [create-react-app](https://github.com/facebookincubator/create-react-app) does.
+Basically a way to set up Babel more easily like [create-react-app](https://github.com/facebookincubator/create-react-app) does.
 
-- Setup a `.babelrc` from scratch, prompt with questions
+- Set up a `.babelrc` from scratch, prompt with questions
 
 Possible Idea:
 
@@ -391,7 +395,7 @@ Relevant Issues:
 
 > test262 tests conformance to the continually maintained draft future ECMAScript standard found at [tc39.github.io/ecma262](http://tc39.github.io/ecma262/), together with any Stage 3 or later TC39 proposals. It is maintained by Tom Care ([@tcare](https://github.com/tcare)) with significant contributions from many in the ECMAScript community.
 
-Running the official spec tests against Babel can make sure we comply to the spec or at least know when we don't. We'll want to figure out how to do filtering on things we can't compile (proxy, TCO, etc) and setup an easy way to check failing tests and file issues and PRs for them.
+Running the official spec tests against Babel can make sure we comply to the spec or at least know when we don't. We'll want to figure out how to do filtering on things we can't compile (proxy, TCO, etc) and set up an easy way to check failing tests and file issues and PRs for them.
 
 Relevant Issues:
 
@@ -430,11 +434,24 @@ This command would print out all info (also when erroring). It would also includ
 
 There have also been some discussions around parser/AST unity, in [TheLarkInn/js-parser-discussions](https://github.com/TheLarkInn/js-parser-discussions) and previously with [ESTree](https://github.com/estree/estree).
 
-Unfortunately with Babel 6, we have "forked" and have a few differences in [our AST](https://github.com/babel/babylon#output) than ESTree. Babel inherently will want to support stage x features while other parsers may only want to support stage 4 features. We all might prioritize certain things more than others regarding spec compliancy, performance, stage x features, error messages, extensibility, releases, etc. However it's important for us to be open to breaking changes that may lead to better interop and a better community.
+Unfortunately with Babel 6, we have "forked" and have a few differences in [our AST](https://github.com/babel/babylon#output) than ESTree. Babel aims to support stage x features while other parsers may only want to support stage 4 features. We all might prioritize certain things more than others regarding spec compliancy, performance, stage x features, error messages, extensibility, releases, etc. However it's important for us to be open to breaking changes that may lead to better interop and a better community.
 
 ### Sweet.js Interop
 
 Previous [issue](https://github.com/babel/babel/issues/568#issuecomment-71716260). Maybe we can just figure out how to have better interop instead?
+
+### Node.js Support
+
+Should we drop support according to the EOL of Node.js versions? How long should we wait to do this in general?
+
+- Do we want to continue to support our users who haven't updated yet?
+- There are certain transforms/PRs that are blocked by this, due to tools that have also dropped older versions.
+- Many other build-time projects like ESLint have done so already.
+- Are we going to make a major version just for this or plan out other changes in addition?
+
+Relevant Issues:
+
+- [Drop support for Node.js v0.10 and v0.12](https://github.com/babel/babel/issues/4315)
 
 ### Others?
 
@@ -457,4 +474,4 @@ You might think that as [a project gets more widely used](https://npm-stat.com/c
 
 ### What issues should I look at or contribute to?
 
-Many of our projects have both [`beginner-friendly`](https://github.com/babel/babel/labels/beginner-friendly) and [`help-wanted`](https://github.com/babel/babel/labels/help-wanted) labels. You can also check out [`discussion`](https://github.com/babel/babel/labels/discussion). It's not always 
+Many of our projects have both [`beginner-friendly`](https://github.com/babel/babel/labels/beginner-friendly) and [`help-wanted`](https://github.com/babel/babel/labels/help-wanted) labels. You can also check out [`discussion`](https://github.com/babel/babel/labels/discussion).
