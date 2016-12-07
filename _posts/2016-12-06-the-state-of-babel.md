@@ -24,7 +24,7 @@ custom_js_with_timestamps:
 
 When 6to5 became Babel as mentioned in [Not Born to Die](https://babeljs.io/blog/2015/02/15/not-born-to-die), it became a platform: a suite of tools designed to create the next generation of JavaScript tooling. No longer did it just compile ES6 to ES5, it allowed developers to build tools on top of it.
 
-Some other milestones:
+Here are some of our milestones:
 
 - In [5.0.0](https://babeljs.io/blog/2015/03/31/5.0.0), Babel aligned more with the [TC39 process](https://tc39.github.io/process-document/) by introducing `stages`, added a `.babelrc` config option, and created a plugin system for custom transforms.
 - In [6.0.0](https://babeljs.io/blog/2015/10/29/6.0.0), Babel became modular (a pretty controversial idea at the time). This was a huge change that led to opt-in functionality (no defaults) and the concept of `Presets` and Plugin Options.
@@ -90,7 +90,7 @@ Relevant Issues:
 
 ### Maintaining other ecosystem plugins: JSX/Flow
 
-Babel is vital to the React and Flow ecosystems, and we work closely with the relevant teams at Facebook.
+Babel is vital to the [React](reactjs.org) and [Flow](https://flowtype.org/) ecosystems, and we work closely with the relevant teams at Facebook.
 
 - [React plugins](https://babeljs.io/docs/plugins/#react), [React preset](https://babeljs.io/docs/plugins/preset-react/)
   - These cover the main `JSX` transform, development plugins, and optimizations.
@@ -104,6 +104,10 @@ Relevant Issue Labels:
 ### [babel-preset-env](https://github.com/babel/babel-preset-env) ("autoprefixer" for Babel)
 
 JavaScript compilation is a moving target: There are yearly updates to the spec, browser vendors are constantly updating to that spec, and users may drop support for earlier browsers. At first glance, there doesn't seem to be a fixed target for what we should compile our JavaScript down to.
+
+![](https://cloud.githubusercontent.com/assets/588473/19214029/58deebce-8d48-11e6-9004-ee3fbcb75d8b.png)
+
+> The [compat-table](https://github.com/kangax/) is updated constantly and is used for this preset.
 
 This is where `babel-preset-env` comes in: it's a Babel preset that automatically determines the correct Babel plugins to use based on the provided environments.
 
@@ -278,11 +282,15 @@ We've had some interesting discussions on how we can grow and support the plugin
 
 It might be interesting to create some bots to automate a few tasks: create specific Babel plugins/ESLint rules for babel-plugins, write codemods to update API changes, and integrate plugins into our smoke test.
 
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/jaredforsyth">@jaredforsyth</a> <a href="https://twitter.com/reactjs">@reactjs</a> My five minute POC ☺️ <a href="https://t.co/v74UFHsSJG">https://t.co/v74UFHsSJG</a> <a href="https://t.co/B3YwVWkH5g">pic.twitter.com/B3YwVWkH5g</a></p>&mdash; Henry Zhu (@left_pad) <a href="https://twitter.com/left_pad/status/805971589430968320">December 6, 2016</a></blockquote>
+
 - Should we create a newsletter for new/useful plugins?
+- How can we teach people about plugins and how to write them?
+- How can we make [ASTExplorer](http://astexplorer.net/) better?
 
-### Documentation/Website
+### Documentation (this website!)
 
-Docs contributions have definitely been lacking in the [last year](https://github.com/babel/babel.github.io/graphs/contributors?from=2015-11-29&to=2016-11-29&type=c).
+Docs contributions have definitely been lacking in the [last year](https://github.com/babel/babel.github.io/graphs/contributors).
 
 However just recently we've done a lot of awesome stuff:
 
@@ -570,12 +578,22 @@ If you just have questions join [#discussion](https://babeljs.slack.com/messages
 
 We try not to discuss in private if there's no need to: I myself usually post the issues/PRs I'm working on for people to review and talk about.
 
+#### Other
+
+How else can we interact with the community? Should we go and start meetups, go to conferences, or manage hackathons?
+
+How can we make Babel sustainable? Should we setup a [Open Collective](opencollective.com/opensource) or seek a foundation? Should we pay for a [project manager](https://medium.com/open-collective/wanted-a-product-manager-for-open-source-projects-bf19bcd680f5#.awwsg684n)?
+
+Let us know your thoughts! What do you want out of Babel?
+
 ---
 
 > If you find anyone typos/issues please send a PR or comment on [babel/babel.github.io#1014](https://github.com/babel/babel.github.io/pull/1014)
 
-Thanks for reading!
+Thanks so much for reading!
 
 Henry Zhu ([@hzoo](https://github.com/hzoo))
 
-> Thanks to way too many folks for their review and thoughts: @DrewML, @mrjoelkemp, @kentcdodds, @existentialism, @jdalton, @gaearon, @nolanlawson, @jayphelps, @montogeek, @TheLarkInn, @jasonLaster, @benjamn, @addyosmani, @Daniel15, @loganfsmyth, @gr2m, @mathiasbynes, @chicoxyzzy, @bvaughn, @bcoe
+> Thanks to way too many folks for their review and thoughts: @DrewML, @mrjoelkemp, @kentcdodds, @existentialism, @jdalton, @gaearon, @nolanlawson, @jayphelps, @montogeek, @TheLarkInn, @jasonLaster, @benjamn, @addyosmani, @Daniel15, @loganfsmyth, @gr2m, @mathiasbynes, @chicoxyzzy, @bvaughn, @bcoe. 
+
+Writing is hard.
