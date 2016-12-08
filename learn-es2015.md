@@ -2,9 +2,10 @@
 layout: docs
 title: Learn ES2015
 description: A detailed overview of ECMAScript 2015 features. Based on Luke Hoban's es6features repo.
-permalink: /docs/learn-es2015/
+permalink: /learn-es2015/
 redirect_from:
  - /docs/learn-es6/
+ - /docs/learn-es2015/
  - /features.html
  - /docs/tour/
 ---
@@ -45,7 +46,7 @@ for full specification of the ECMAScript 2015 language.
 Arrows are a function shorthand using the `=>` syntax.  They are syntactically
 similar to the related feature in C#, Java 8 and CoffeeScript.  They support
 both expression and statement bodies.  Unlike functions, arrows share the same
-lexical `this` as their surrounding code. If an arrow is inside another function, 
+lexical `this` as their surrounding code. If an arrow is inside another function,
 it shares the "arguments" variable of its parent function.
 
 ```js
