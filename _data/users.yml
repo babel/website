@@ -472,3 +472,6 @@
 - name: EVO.company
   url: https://evo.company
   logo: evocompany.svg
+- name: RentoMojo
+  url: https://www.rentomojo.com
+  logo: rentomojo.svg
