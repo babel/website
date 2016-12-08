@@ -484,3 +484,6 @@
 - name: Zimp
   url: https://zimp.me
   logo: zimp.svg
+- name: Disqus
+  url: https://www.disqus.com
+  logo: disqus.svg
