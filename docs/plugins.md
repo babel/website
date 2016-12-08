@@ -185,7 +185,7 @@ These plugins allow Babel to **parse** specific types of syntax (not transform).
 
 You can also provide any [`plugins` option](https://github.com/babel/babylon/#plugins) from babylon:
 
-```js
+```json
 // .babelrc
 {
   "parserOpts": {
@@ -244,10 +244,10 @@ vs
 
 This also works with scoped packages
 
-```js
+```json
 {
-  presets: ["@org/babel-preset-name"], // actual package
-  presets: ["@org/name"] // shorthand name
+  "presets": ["@org/babel-preset-name"], // actual package
+  "presets": ["@org/name"] // shorthand name
 }
 ```
 
@@ -261,7 +261,7 @@ This means if two transforms both visit the "Program" node, the transforms will 
 - Plugin ordering is first to last.
 - Preset ordering is reversed (last to first).
 
-```js
+```json
 "plugins": [
   "transform-decorators-legacy", // will run first
   "transform-class-properties" // will run second
@@ -271,7 +271,7 @@ This means if two transforms both visit the "Program" node, the transforms will 
 > Yes this is confusing, see [babel/notes #2](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal).
 > I believe the reason why (for backwards compatability) is that most users had listed "es2015" first and "stage-0" second. stage-0 would run before es2015.
 
-```js
+```json
 "presets": [
   "es2015", // will run third
   "react", // will run second
@@ -283,7 +283,7 @@ This means if two transforms both visit the "Program" node, the transforms will 
 
 Plugins and Presets can both specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
 
-```js
+```json
 {
   "plugins": [
     ["transform-async-to-module-method", {
