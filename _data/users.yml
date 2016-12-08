@@ -458,7 +458,7 @@
   url: https://www.adpushup.com/
   logo: adpushup.png
 - name: clearTax
-  url: https://cleartax.in 
+  url: https://cleartax.in
   logo: cleartax.svg
 - name: TradingView
   url: https://www.tradingview.com/
@@ -481,3 +481,6 @@
 - name: RentoMojo
   url: https://www.rentomojo.com
   logo: rentomojo.svg
+- name: Zimp
+  url: https://zimp.me
+  logo: zimp.svg
