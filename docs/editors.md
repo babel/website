@@ -30,9 +30,17 @@ Then install [Babel](https://packagecontrol.io/packages/Babel) package
 from the Package Control menu and follow
 the [instructions](https://github.com/babel/babel-sublime#installation).
 
+### vim
+
+Install the [vim-javascript](https://github.com/pangloss/vim-javascript) bundle, which brings both
+improved syntax highlighting and indention support for JavaScript to vim.
+
+Another option is to use [yajs.vim](https://github.com/othree/yajs.vim) with
+[es.next.syntax](https://github.com/othree/es.next.syntax.vim).
+
 ### Visual Studio Code
 
-Install [Babel ES6/ES7](https://marketplace.visualstudio.com/items?itemName=dzannotti.vscode-babel-coloring)
+Install the [Babel ES6/ES7](https://marketplace.visualstudio.com/items?itemName=dzannotti.vscode-babel-coloring)
 extension and follow the instructions.
 
 There seems to be one other way to get the syntax highlighting working and you can learn
@@ -40,6 +48,5 @@ more about it in the [Visual Studio Code docs](https://code.visualstudio.com/Doc
 
 ### WebStorm
 
-Seems like WebStorm now ships with support for ES2015+ without requiring you
-to install additional extensions. You might need to
-[enable it](https://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling/) though.
+WebStorm now ships with support for ES2015+ without requiring the installation of any additional
+extensions. You may, however, need to [enable it](https://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling/).
