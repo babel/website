@@ -582,7 +582,7 @@ We try not to discuss in private if there's no need to: I myself usually post th
 
 How else can we interact with the community? Should we go and start meetups, go to conferences, or manage hackathons?
 
-How can we make Babel sustainable? Should we setup a [Open Collective](opencollective.com/opensource) or seek a foundation? Should we pay for a [project manager](https://medium.com/open-collective/wanted-a-product-manager-for-open-source-projects-bf19bcd680f5#.awwsg684n)?
+How can we make Babel sustainable? Should we setup a [Open Collective](https://opencollective.com/opensource) or seek a foundation? Should we pay for a [project manager](https://medium.com/open-collective/wanted-a-product-manager-for-open-source-projects-bf19bcd680f5#.awwsg684n)?
 
 Let us know your thoughts! What do you want out of Babel?
 
