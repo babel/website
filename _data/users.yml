@@ -475,3 +475,6 @@
 - name: Streamroot
   url: https://www.streamroot.io
   logo: streamroot.svg
+- name: RentoMojo
+  url: https://www.rentomojo.com
+  logo: rentomojo.svg
