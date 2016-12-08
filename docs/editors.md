@@ -30,10 +30,10 @@ Then install [Babel](https://packagecontrol.io/packages/Babel) package
 from the Package Control menu and follow
 the [instructions](https://github.com/babel/babel-sublime#installation).
 
-### vim
+### Vim
 
-Install the [vim-javascript](https://github.com/pangloss/vim-javascript) bundle, which brings both
-improved syntax highlighting and indention support for JavaScript to vim.
+Install the [vim-javascript](https://github.com/pangloss/vim-javascript) plugin, which brings both
+improved syntax highlighting and indention support for JavaScript to Vim.
 
 Another option is to use [yajs.vim](https://github.com/othree/yajs.vim) with
 [es.next.syntax](https://github.com/othree/es.next.syntax.vim).
