@@ -495,7 +495,7 @@ Relevant Issues:
 
 ### What else?
 
-Anything else not already brought up here? Please send us a tweet [@babeljs](https://twitter.com/babeljs), a message on our slack (join at [http://slack.babeljs.io/](slack.babeljs.io), comment on this post, or create an discussion issue in our repo!)
+Anything else not already brought up here? Please send us a tweet [@babeljs](https://twitter.com/babeljs), a message on our slack (join at [https://slack.babeljs.io/](https://slack.babeljs.io), comment on this post, or create an discussion issue in our repo!)
 
 Are there projects or communities we should partner with more? How can we make the contributing experience more welcome? What can we do to make the development process more transparent?
 
