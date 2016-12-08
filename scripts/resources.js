@@ -1,8 +1,16 @@
+---
+---
+
 HTMLCollection.prototype.forEach = Array.prototype.forEach;
 NodeList.prototype.forEach = Array.prototype.forEach;
 
 function Search(resources) {
-  this.resources = resources;
+
+  this.resources = resources.map(function(resource, index) {
+    resource.id = index;
+
+    return resource;
+  });
 
   this.index = lunr(function() {
     this.field('title', { boost: 10 });
@@ -55,8 +63,4 @@ Search.prototype.updateResource = function(el, index) {
   }
 };
 
-_.each(window.RESOURCES, function(resource, index) {
-  resource.id = index;
-});
-
-var search = new Search(window.RESOURCES);
+new Search({{ site.data.resources | jsonify }});
