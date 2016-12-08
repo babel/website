@@ -481,3 +481,6 @@
 - name: RentoMojo
   url: https://www.rentomojo.com
   logo: rentomojo.svg
+- name: Disqus
+  url: https://www.disqus.com
+  logo: disqus.svg
