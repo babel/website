@@ -40,7 +40,7 @@ Another option is to use [yajs.vim](https://github.com/othree/yajs.vim) with
 
 ### Visual Studio Code
 
-Install the [Babel ES6/ES7](https://marketplace.visualstudio.com/items?itemName=dzannotti.vscode-babel-coloring)
+Install the [Sublime Babel](https://marketplace.visualstudio.com/items?itemName=joshpeng.sublime-babel-vscode)
 extension and follow the instructions.
 
 There seems to be one other way to get the syntax highlighting working and you can learn
