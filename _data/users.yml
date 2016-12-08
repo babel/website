@@ -472,6 +472,9 @@
 - name: EVO.company
   url: https://evo.company
   logo: evocompany.svg
+- name: pixiv
+  url: http://www.pixiv.net
+  logo: pixiv.svg
 - name: Streamroot
   url: https://www.streamroot.io
   logo: streamroot.svg
