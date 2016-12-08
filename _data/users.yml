@@ -458,7 +458,7 @@
   url: https://www.adpushup.com/
   logo: adpushup.png
 - name: clearTax
-  url: https://cleartax.in 
+  url: https://cleartax.in
   logo: cleartax.svg
 - name: TradingView
   url: https://www.tradingview.com/
@@ -472,6 +472,21 @@
 - name: EVO.company
   url: https://evo.company
   logo: evocompany.svg
+- name: pixiv
+  url: http://www.pixiv.net
+  logo: pixiv.svg
+- name: Streamroot
+  url: https://www.streamroot.io
+  logo: streamroot.svg
+- name: RentoMojo
+  url: https://www.rentomojo.com
+  logo: rentomojo.svg
+- name: Zimp
+  url: https://zimp.me
+  logo: zimp.svg
+- name: Disqus
+  url: https://www.disqus.com
+  logo: disqus.svg
 - name: 9Technology
   url: http://www.nineentertainmentco.com.au/brands/nine-digital
   logo: 9tech-logo.svg
