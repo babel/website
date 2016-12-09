@@ -487,3 +487,6 @@
 - name: Disqus
   url: https://www.disqus.com
   logo: disqus.svg
+- name: RTBF.be
+  url: https://www.rtbf.be
+  logo: rtbf.svg
