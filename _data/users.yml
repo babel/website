@@ -487,3 +487,6 @@
 - name: Disqus
   url: https://www.disqus.com
   logo: disqus.svg
+- name: Feedzai
+  url: https://feedzai.com/
+  logo: feedzai.svg
