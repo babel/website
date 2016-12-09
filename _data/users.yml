@@ -490,3 +490,6 @@
 - name: Feedzai
   url: https://feedzai.com/
   logo: feedzai.svg
+- name: Zesty.io
+  url: https://www.zesty.io/
+  logo: zestyio.svg
