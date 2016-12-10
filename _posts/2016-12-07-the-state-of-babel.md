@@ -11,10 +11,10 @@ custom_js_with_timestamps:
 - docs.js
 ---
 
-- [Some History](#some-history)
-- [Current Status](#current-status)
-- [The Future](#the-future)
-- [Community](#community)
+- [Some History](https://babeljs.io/blog/2016/12/07/the-state-of-babel#some-history)
+- [Current Status](https://babeljs.io/blog/2016/12/07/the-state-of-babel#current-status)
+- [The Future](https://babeljs.io/blog/2016/12/07/the-state-of-babel#the-future)
+- [Community](https://babeljs.io/blog/2016/12/07/the-state-of-babel#community)
 
 > Previous issues: [Babel Roadmap #4130](https://github.com/babel/babel/issues/4130), [6.0 #2168](https://github.com/babel/babel/issues/2168)
 
