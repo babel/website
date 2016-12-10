@@ -20,6 +20,8 @@ custom_js_with_timestamps:
 
 Please check out the [Community](#community) section if nothing else.
 
+> Also published as part of [Mariko Kosaka's](https://twitter.com/kosamari) 2016 [Web Advent Calendar](http://web.advent.today/)!
+
 ## Some History
 
 [Sebastian](https://github.com/kittens) created "6to5" in September of 2014. Interestingly enough, he made it to scratch an itch he had with understanding programming languages and how they work. You might have assumed whoever created the project already knew how compilers worked and understood JavaScript perfectly... but you would be wrong! Check out his post for a great read of his story: [~2015 in Review](https://medium.com/@sebmck/2015-in-review-51ac7035e272#.jdoo279bl).
