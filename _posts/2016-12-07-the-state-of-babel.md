@@ -18,6 +18,8 @@ custom_js_with_timestamps:
 
 > Previous issues: [Babel Roadmap #4130](https://github.com/babel/babel/issues/4130), [6.0 #2168](https://github.com/babel/babel/issues/2168)
 
+Please check out the [Community](#community) section if nothing else.
+
 ## Some History
 
 [Sebastian](https://github.com/kittens) created "6to5" in September of 2014. Interestingly enough, he made it to scratch an itch he had with understanding programming languages and how they work. You might have assumed whoever created the project already knew how compilers worked and understood JavaScript perfectly... but you would be wrong! Check out his post for a great read of his story: [~2015 in Review](https://medium.com/@sebmck/2015-in-review-51ac7035e272#.jdoo279bl).
@@ -534,6 +536,7 @@ And just in the last 3 months a lot more collaborators:
 - [Kai Cataldo, @kaicataldo](https://github.com/kaicataldo)
 - [Andrew Levine, @drewml](https://github.com/DrewML)
 - [Brian Ng, @existentialism](https://github.com/existentialism)
+- [Diogo Franco, @kovensky](https://github.com/Kovensky)
 
 Babili core team:
 
@@ -595,6 +598,6 @@ If anything we want to let you know that many of us got our start with Babel in 
 
 Thanks so much for reading!
 
-Henry Zhu ([@hzoo](https://github.com/hzoo))
+Henry Zhu ([@hzoo](https://github.com/hzoo)) ([@left_pad](https://github.com/left_pad))
 
 > Thanks to way too many folks for their review and thoughts: @DrewML, @mrjoelkemp, @kentcdodds, @existentialism, @jdalton, @gaearon, @nolanlawson, @jayphelps, @montogeek, @TheLarkInn, @jasonLaster, @benjamn, @addyosmani, @Daniel15, @loganfsmyth, @gr2m, @mathiasbynens, @chicoxyzzy, @bvaughn, @bcoe.
