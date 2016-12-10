@@ -490,3 +490,6 @@
 - name: RTBF.be
   url: https://www.rtbf.be
   logo: rtbf.svg
+- name: Feedzai
+  url: https://feedzai.com/
+  logo: feedzai.svg
