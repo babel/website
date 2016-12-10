@@ -3,24 +3,31 @@
 - title: Docs
   url: /docs
   subnav:
-  - title: Setup
-    url: /docs/setup/
-  - title: Plugins
-    url: /docs/plugins/
-  - title: Polyfill
-    url: /docs/usage/polyfill/
-  - title: Caveats
-    url: /docs/usage/caveats/
-  - title: Editors
-    url: /docs/editors
-  - title: API
-    url: /docs/usage/api/
-  - title: CLI
-    url: /docs/usage/cli/
-  - title: babel-register
-    url: /docs/usage/babel-register/
-  - title: .babelrc
-    url: /docs/usage/babelrc/
+    - items:
+        - title: Setup
+          url: /docs/setup/
+        - title: Editors
+          url: /docs/editors
+        - title: Caveats
+          url: /docs/usage/caveats/
+    - name: Packages
+      items:
+        - title: API
+          url: /docs/core-packages/
+        - title: Plugins
+          url: /docs/plugins/
+        - title: Polyfill
+          url: /docs/usage/polyfill/
+    - name: Usage
+      items:
+        - title: CLI
+          url: /docs/usage/cli/
+        - title: babel-register
+          url: /docs/usage/babel-register/
+        - title: .babelrc
+          url: /docs/usage/babelrc/
+        - title: Browser
+          url: /docs/usage/browser/
 - title: Try it out
   url: /repl/
 - title: Blog
