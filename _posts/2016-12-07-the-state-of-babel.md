@@ -600,6 +600,6 @@ If anything we want to let you know that many of us got our start with Babel in 
 
 Thanks so much for reading!
 
-Henry Zhu ([@hzoo](https://github.com/hzoo)) ([@left_pad](https://github.com/left_pad))
+Henry Zhu ([@hzoo](https://github.com/hzoo)) ([@left_pad](https://twitter.com/left_pad))
 
 > Thanks to way too many folks for their review and thoughts: @DrewML, @mrjoelkemp, @kentcdodds, @existentialism, @jdalton, @gaearon, @nolanlawson, @jayphelps, @montogeek, @TheLarkInn, @jasonLaster, @benjamn, @addyosmani, @Daniel15, @loganfsmyth, @gr2m, @mathiasbynens, @chicoxyzzy, @bvaughn, @bcoe.
