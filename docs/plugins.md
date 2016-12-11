@@ -242,14 +242,13 @@ vs
 
 `"presets": ["myPreset"]`
 
-This also works with scoped packages
+This also works with scoped packages:
 
-```json
-{
-  "presets": ["@org/babel-preset-name"], // actual package
-  "presets": ["@org/name"] // shorthand name
-}
-```
+`"presets": ["@org/babel-preset-name"]`
+
+shorthand
+
+`"presets": ["@org/name"]`
 
 ## Plugin/Preset Ordering
 
