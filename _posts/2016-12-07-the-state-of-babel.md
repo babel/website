@@ -11,12 +11,16 @@ custom_js_with_timestamps:
 - docs.js
 ---
 
-- [Some History](#some-history)
-- [Current Status](#current-status)
-- [The Future](#the-future)
-- [Community](#community)
+- [Some History](https://babeljs.io/blog/2016/12/07/the-state-of-babel#some-history)
+- [Current Status](https://babeljs.io/blog/2016/12/07/the-state-of-babel#current-status)
+- [The Future](https://babeljs.io/blog/2016/12/07/the-state-of-babel#the-future)
+- [Community](https://babeljs.io/blog/2016/12/07/the-state-of-babel#community)
 
 > Previous issues: [Babel Roadmap #4130](https://github.com/babel/babel/issues/4130), [6.0 #2168](https://github.com/babel/babel/issues/2168)
+
+Please check out the [Community](#community) section if nothing else.
+
+> Also published as part of [Mariko Kosaka's](https://twitter.com/kosamari) 2016 [Web Advent Calendar](http://web.advent.today/)!
 
 ## Some History
 
@@ -534,6 +538,7 @@ And just in the last 3 months a lot more collaborators:
 - [Kai Cataldo, @kaicataldo](https://github.com/kaicataldo)
 - [Andrew Levine, @drewml](https://github.com/DrewML)
 - [Brian Ng, @existentialism](https://github.com/existentialism)
+- [Diogo Franco, @kovensky](https://github.com/Kovensky)
 
 Babili core team:
 
@@ -595,6 +600,6 @@ If anything we want to let you know that many of us got our start with Babel in 
 
 Thanks so much for reading!
 
-Henry Zhu ([@hzoo](https://github.com/hzoo))
+Henry Zhu ([@hzoo](https://github.com/hzoo)) ([@left_pad](https://twitter.com/left_pad))
 
 > Thanks to way too many folks for their review and thoughts: @DrewML, @mrjoelkemp, @kentcdodds, @existentialism, @jdalton, @gaearon, @nolanlawson, @jayphelps, @montogeek, @TheLarkInn, @jasonLaster, @benjamn, @addyosmani, @Daniel15, @loganfsmyth, @gr2m, @mathiasbynens, @chicoxyzzy, @bvaughn, @bcoe.

@@ -128,6 +128,7 @@ Check out our [minifier based on Babel](https://github.com/babel/babili)!
 These plugins are in the minify repo.
 
 - [inline-environment-variables](/docs/plugins/transform-inline-environment-variables/)
+- [inline-consecutive-adds](/docs/plugins/transform-inline-consecutive-adds/)
 - [member-expression-literals](/docs/plugins/transform-member-expression-literals/)
 - [merge-sibling-variables](/docs/plugins/transform-merge-sibling-variables/)
 - [minify-booleans](/docs/plugins/transform-minify-booleans/)
@@ -144,15 +145,10 @@ These plugins are in the minify repo.
 - [minify-type-constructors](/docs/plugins/minify-type-constructors/)
 - [node-env-inline](/docs/plugins/transform-node-env-inline/)
 - [property-literals](/docs/plugins/transform-property-literals/)
+- [regexp-constructors](/docs/plugins/transform-regexp-constructors/)
 - [remove-console](/docs/plugins/transform-remove-console/)
 - [remove-debugger](/docs/plugins/transform-remove-debugger/)
 - [simplify-comparison-operators](/docs/plugins/transform-simplify-comparison-operators/)
-- [transform-inline-consecutive-adds](/docs/plugins/transform-inline-consecutive-adds/)
-- [transform-regexp-constructors](/docs/plugins/transform-regexp-constructors/)
-- [transform-remove-console](/docs/plugins/transform-remove-console/)
-- [transform-remove-debugger](/docs/plugins/transform-remove-debugger/)
-- [transform-simplify-comparison-operators](/docs/plugins/transform-simplify-comparison-operators/)
-- [transform-undefined-to-void](/docs/plugins/transform-undefined-to-void/)
 - [undefined-to-void](/docs/plugins/transform-undefined-to-void/)
 
 ### React

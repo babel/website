@@ -28,7 +28,10 @@ To keep documentation in sync across all of Babel's packages and plugins, the ma
 
 If you want to create a new page, you need to consider the following.
 
-The `package` configuration in the header needs to correspond to your package name.
+The `package` configuration in the header needs to correspond to your package name and `package_source` to its source repository. See [packages.yml](_data/packages.yml) for the current supported sources.
+
+Default value for `package_source` is `babel`.
+
 ```yaml
 layout: docs
 title: babel-register (require hook)
@@ -37,9 +40,10 @@ permalink: /docs/usage/babel-register/
 redirect_from:
  - /docs/usage/require/
 package: babel-register
+package_source: babel
 ```
 
-#### Publishing README from babel
+#### Publishing README
 
 ```
 {% include package_readme.html %}
@@ -47,11 +51,7 @@ package: babel-register
 
 For example [babel.github.io/docs/plugins/preset-stage-0.md](/docs/plugins/preset-stage-0.md) which then points to [babel/packages/babel-preset-stage-0/README.md](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-0/README.md)
 
-#### Publishing README from babili
-
-```
-{% include package_readme.html from="babili" %}
-```
+If you encounter an `Liquid Exception: Included file '_includes/.../packages/.../README.md' not found`, please double check your `package` and `package_source` configuration.
 
 #### Manually updating submodules
 
