@@ -487,6 +487,9 @@
 - name: Disqus
   url: https://www.disqus.com
   logo: disqus.svg
+- name: 9Technology
+  url: http://www.nineentertainmentco.com.au/brands/nine-digital
+  logo: 9tech-logo.svg
 - name: Feedzai
   url: https://feedzai.com/
   logo: feedzai.svg
