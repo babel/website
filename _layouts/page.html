@@ -2,6 +2,14 @@
 layout: default
 ---
 
+{% if page.package_source %}
+  {% assign package_source = page.package_source %}
+{% else %}
+  {% assign package_source = "babel" %}
+{% endif %}
+
+{% assign source = site.data.packages[package_source] %}
+
 <div class="docs-header">
   <div class="container">
     <div class="row">
@@ -10,12 +18,12 @@ layout: default
         <p>{{page.description}}</p>
         <p class="package-links">
           {% if page.package %}
-          <a href="https://github.com/babel/babel/tree/master/packages/{{page.package}}">GitHub</a>
+          <a href="{{source}}/tree/master/packages/{{page.package}}">GitHub</a>
           &nbsp; · &nbsp;
           <a href="https://www.npmjs.com/package/{{page.package}}">npm</a>
           &nbsp; · &nbsp;
           {% endif %}
-          <a href="https://github.com/babel/babel.github.io/blob/master/{{page.path}}">Edit this page</a>
+          <a href="{{source}}/blob/master/packages/{{page.package}}/README.md">Edit this page</a>
         </p>
       </div>
     </div>

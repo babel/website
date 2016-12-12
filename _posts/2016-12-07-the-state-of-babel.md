@@ -11,12 +11,16 @@ custom_js_with_timestamps:
 - docs.js
 ---
 
-- [Some History](#some-history)
-- [Current Status](#current-status)
-- [The Future](#the-future)
-- [Community](#community)
+- [Some History](https://babeljs.io/blog/2016/12/07/the-state-of-babel#some-history)
+- [Current Status](https://babeljs.io/blog/2016/12/07/the-state-of-babel#current-status)
+- [The Future](https://babeljs.io/blog/2016/12/07/the-state-of-babel#the-future)
+- [Community](https://babeljs.io/blog/2016/12/07/the-state-of-babel#community)
 
 > Previous issues: [Babel Roadmap #4130](https://github.com/babel/babel/issues/4130), [6.0 #2168](https://github.com/babel/babel/issues/2168)
+
+Please check out the [Community](#community) section if nothing else.
+
+> Also published as part of [Mariko Kosaka's](https://twitter.com/kosamari) 2016 [Web Advent Calendar](http://web.advent.today/)!
 
 ## Some History
 
@@ -28,8 +32,9 @@ Here are some of our milestones:
 
 - In [5.0.0](https://babeljs.io/blog/2015/03/31/5.0.0), Babel aligned more with the [TC39 process](https://tc39.github.io/process-document/) by introducing `stages`, added a `.babelrc` config option, and created a plugin system for custom transforms.
 - In [6.0.0](https://babeljs.io/blog/2015/10/29/6.0.0), Babel became modular (a pretty controversial idea at the time). This was a huge change that led to opt-in functionality (no defaults) and the concept of `Presets` and Plugin Options.
+  - As mentioned in his article, Sebastian joined Facebook in July 2015 and worked on the entire development of Babel 6 on company time.
 - [6.3.13](https://github.com/babel/babel/blob/master/CHANGELOG.md#638-6313) Sebastian extracted our [monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) build/publish tools into what is now [Lerna](https://github.com/lerna/lerna). (What's funny is [James](https://github.com/thejameskyle) rewrote it 3 times and I had to review everything)
-  - After this was around when both Sebastian and James got burned out on Babel, and a few contributors stepped up
+  - After this was around when both Sebastian and James got burned out on Babel, and a few contributors stepped up.
   - We struggled to find direction and deal with the bugs/requests coming in but we got a lot of stuff done!
 - [6.13.0](https://github.com/babel/babel/releases/tag/v6.13.0) finally added [Preset Options](http://babeljs.io/docs/plugins/#plugin-preset-options).
 - [6.14.0](http://babeljs.io/blog/2016/08/24/6.14.0) added a [latest-preset](http://babeljs.io/docs/plugins/preset-latest/) that keeps up to date with the yearly JavaScript specification.
@@ -533,6 +538,7 @@ And just in the last 3 months a lot more collaborators:
 - [Kai Cataldo, @kaicataldo](https://github.com/kaicataldo)
 - [Andrew Levine, @drewml](https://github.com/DrewML)
 - [Brian Ng, @existentialism](https://github.com/existentialism)
+- [Diogo Franco, @kovensky](https://github.com/Kovensky)
 
 Babili core team:
 
@@ -582,7 +588,7 @@ We try not to discuss in private if there's no need to: I myself usually post th
 
 How else can we interact with the community? Should we go and start meetups, go to conferences, or manage hackathons?
 
-How can we make Babel sustainable? Should we setup a [Open Collective](opencollective.com/opensource) or seek a foundation? Should we pay for a [project manager](https://medium.com/open-collective/wanted-a-product-manager-for-open-source-projects-bf19bcd680f5#.awwsg684n)?
+How can we make Babel sustainable? Should we setup a [Open Collective](https://opencollective.com/opensource) or seek a foundation? Should we pay for a [project manager](https://medium.com/open-collective/wanted-a-product-manager-for-open-source-projects-bf19bcd680f5#.awwsg684n)?
 
 Let us know your thoughts! What do you want out of Babel?
 
@@ -594,6 +600,6 @@ If anything we want to let you know that many of us got our start with Babel in 
 
 Thanks so much for reading!
 
-Henry Zhu ([@hzoo](https://github.com/hzoo))
+Henry Zhu ([@hzoo](https://github.com/hzoo)) ([@left_pad](https://twitter.com/left_pad))
 
 > Thanks to way too many folks for their review and thoughts: @DrewML, @mrjoelkemp, @kentcdodds, @existentialism, @jdalton, @gaearon, @nolanlawson, @jayphelps, @montogeek, @TheLarkInn, @jasonLaster, @benjamn, @addyosmani, @Daniel15, @loganfsmyth, @gr2m, @mathiasbynens, @chicoxyzzy, @bvaughn, @bcoe.
