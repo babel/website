@@ -12,7 +12,7 @@
           url: /docs/usage/caveats/
     - name: Packages
       items:
-        - title: API
+        - title: Core
           url: /docs/core-packages/
         - title: Plugins
           url: /docs/plugins/
