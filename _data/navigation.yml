@@ -12,22 +12,20 @@
           url: /docs/usage/caveats/
     - name: Packages
       items:
-        - title: Core
+        - title: babel-core
           url: /docs/core-packages/
+        - title: babel-polyfill
+          url: /docs/usage/polyfill/
         - title: Plugins
           url: /docs/plugins/
-        - title: Polyfill
-          url: /docs/usage/polyfill/
     - name: Usage
       items:
-        - title: CLI
+        - title: .babelrc
+          url: /docs/usage/babelrc/
+        - title: babel-cli
           url: /docs/usage/cli/
         - title: babel-register
           url: /docs/usage/babel-register/
-        - title: .babelrc
-          url: /docs/usage/babelrc/
-        - title: Browser
-          url: /docs/usage/browser/
 - title: Try it out
   url: /repl/
 - title: Blog
