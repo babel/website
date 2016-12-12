@@ -12,6 +12,15 @@ custom_js_with_timestamps:
 
     <div class="col-md-3">
       <div class="sidebar">
+
+          {% if page.community_plugin %}
+
+            <span class="text-right community-flag">
+              community plugin
+            </span>
+
+          {% endif %}
+
         <ul class="nav"></ul>
       </div>
     </div>

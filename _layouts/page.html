@@ -7,15 +7,39 @@ layout: default
     <div class="row">
       <div class="col-md-12">
         <h1>{{page.title}}</h1>
+
         <p>{{page.description}}</p>
         <p class="package-links">
-          {% if page.package %}
-          <a href="https://github.com/babel/babel/tree/master/packages/{{page.package}}">GitHub</a>
-          &nbsp; · &nbsp;
-          <a href="https://www.npmjs.com/package/{{page.package}}">npm</a>
-          &nbsp; · &nbsp;
+
+          {% if page.community_plugin %}
+
+            <span class="text-right community-flag">
+              community plugin
+            </span>
+
+            &nbsp; · &nbsp;
+
+            {% if page.package %}
+
+            <a href="https://github.com/{{page.package}}">GitHub</a>
+            &nbsp; · &nbsp;
+            <a href="https://www.npmjs.com/package/{{page.package}}">npm</a>
+            &nbsp; · &nbsp;
+            {% endif %}
+
+          {% else %}
+
+            {% if page.package %}
+            <a href="https://github.com/babel/babel/tree/master/packages/{{page.package}}">GitHub</a>
+            &nbsp; · &nbsp;
+            <a href="https://www.npmjs.com/package/{{page.package}}">npm</a>
+            &nbsp; · &nbsp;
+            {% endif %}
+
           {% endif %}
+
           <a href="https://github.com/babel/babel.github.io/blob/master/{{page.path}}">Edit this page</a>
+
         </p>
       </div>
     </div>
