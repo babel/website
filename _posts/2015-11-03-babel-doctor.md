@@ -13,6 +13,8 @@ share_text: "Babel Doctor"
 
 ---
 
+> babel-doctor has been removed as of v6.18.0 of `babel-cli`. If anyone needs it we will bring it back as a standalone npm module called `babel-doctor`.
+
 We launched [Babel 6](https://babeljs.io/blog/2015/10/29/6.0.0/) last week. This was a
 pretty big change from the previous batteries included Babel and with it came a host of
 potential environment issues.
