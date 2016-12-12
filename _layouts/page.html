@@ -10,7 +10,14 @@ layout: default
         <p>{{page.description}}</p>
         <p class="package-links">
           {% if page.package %}
-          <a href="https://github.com/babel/babel/tree/master/packages/{{page.package}}">GitHub</a>
+
+          {% if page.from %}
+            {% assign from = page.from %}
+          {% else %}
+            {% assign from = "babel" %}
+          {% endif %}
+
+          <a href="https://github.com/babel/{{from}}/tree/master/packages/{{page.package}}">GitHub</a>
           &nbsp; · &nbsp;
           <a href="https://www.npmjs.com/package/{{page.package}}">npm</a>
           &nbsp; · &nbsp;

@@ -1,9 +1,10 @@
 {% if include.from %}
   {% assign from = include.from %}
+{% elsif page.from %}
+  {% assign from = page.from %}
 {% else %}
   {% assign from = "babel" %}
 {% endif %}
-
 
 {% capture readme %}
     {% include {{ from }}/packages/{{ page.package }}/README.md %}
