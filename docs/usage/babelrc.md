@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: babelrc
-description: How to use the babelrc
+title: .babelrc
+description: How to use the .babelrc
 permalink: /docs/usage/babelrc/
 ---
 

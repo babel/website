@@ -7,6 +7,8 @@ redirect_from:
  - /docs/using-babel/
  - /plugins.html
  - /docs/using-6to5/
+ - /docs/usage/browser/
+ - browser.html
 custom_js_with_timestamps:
 - tools.js
 ---
