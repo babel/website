@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: CHANGELOG
+title: Changelog
 permalink: /docs/changelog/
 ---
 
