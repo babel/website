@@ -13,7 +13,7 @@ package: babel-preset-env
 {{ readme
     | newline_to_br
     | split: "<br />"
-    | shift | shift | shift
+    | shift | shift | shift | shift
     | join: "<br />"
     | remove: "<br />"
     | markdownify
