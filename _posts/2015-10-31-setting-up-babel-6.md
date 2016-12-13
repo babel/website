@@ -82,12 +82,12 @@ $ npm install --save-dev babel-preset-es2015
 To Include all Javascript versions:
 
 ```sh
-$ npm install --save-dev babel-preset-latest
+$ npm install --save-dev babel-preset-env
 ```
 
 ```js
 {
-  "presets": ["latest"]
+  "presets": ["env"]
 }
 ```
 

@@ -53,7 +53,7 @@ custom_js_with_timestamps:
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
 {% highlight shell %}
-npm install babel-preset-latest --save-dev
+npm install babel-preset-env --save-dev
 {% endhighlight %}
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
@@ -64,7 +64,7 @@ npm install babel-preset-latest --save-dev
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
 {% highlight json %}
 {
-  "presets": ["latest"]
+  "presets": ["env"]
 }
 {% endhighlight %}
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
