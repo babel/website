@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: babelrc
-description: How to use the babelrc
+title: .babelrc
+description: How to use the .babelrc
 permalink: /docs/usage/babelrc/
 ---
 
@@ -23,7 +23,7 @@ All Babel API [options](/docs/usage/options) except the callbacks are allowed (b
 
 You can alternatively choose to specify your `.babelrc` config from within `package.json` like so:
 
-```javascript
+```json
 {
   "name": "my-package",
   "version": "1.0.0",
@@ -56,20 +56,28 @@ You can set this environment variable with the following:
 
 **Unix**
 
-```sh
-# at the start of a command
-$ BABEL_ENV=production YOUR_COMMAND_HERE
+At the start of a command:
 
-# or as a separate command
-$ NODE_ENV=production
-$ YOUR_COMMAND_HERE
+```sh
+BABEL_ENV=production YOUR_COMMAND_HERE
+```
+
+Or as a separate command:
+
+```sh
+NODE_ENV=production
+```
+```sh
+YOUR_COMMAND_HERE
 ```
 
 **Windows**
 
 ```sh
-$ SET BABEL_ENV=production
-$ YOUR_COMMAND_HERE
+SET BABEL_ENV=production
+```
+```sh
+YOUR_COMMAND_HERE
 ```
 
 ## Lookup behavior

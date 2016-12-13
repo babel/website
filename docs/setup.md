@@ -7,6 +7,8 @@ redirect_from:
  - /docs/using-babel/
  - /plugins.html
  - /docs/using-6to5/
+ - /docs/usage/browser/
+ - browser.html
 custom_js_with_timestamps:
 - tools.js
 ---
@@ -50,7 +52,7 @@ custom_js_with_timestamps:
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
-{% highlight js %}
+{% highlight shell %}
 npm install babel-preset-latest --save-dev
 {% endhighlight %}
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
@@ -68,8 +70,15 @@ npm install babel-preset-latest --save-dev
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
       <p>
-        <strong>Note</strong>: Running a Babel 6.x project using npm 2.x can cause performance problems because of the way npm 2.x installs dependencies. This problem can be eliminated by either switching to npm 3.x or running npm 2.x with the <a href="https://docs.npmjs.com/cli/dedupe">dedupe</a> flag. To check what version of npm you have run <div class="highlight"><pre>npm --version</pre></div>
+        <strong>Note</strong>: Running a Babel 6.x project using npm 2.x can cause performance problems because of the way npm 2.x installs dependencies. This problem can be eliminated by either switching to npm 3.x or running npm 2.x with the <a href="https://docs.npmjs.com/cli/dedupe">dedupe</a> flag. To check what version of npm you have run
       </p>
+
+<!--lint disable no-shortcut-reference-link, no-undefined-references-->
+{% highlight shell %}
+npm --version
+{% endhighlight %}
+<!--lint enable no-shortcut-reference-link, no-undefined-references-->
+
     </div>
   </div>
 </div>

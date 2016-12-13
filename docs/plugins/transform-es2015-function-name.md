@@ -6,18 +6,6 @@ permalink: /docs/plugins/transform-es2015-function-name/
 package: babel-plugin-transform-es2015-function-name
 ---
 
-## Installation
+Apply ES2015 function.name semantics to all functions
 
-```sh
-$ npm install --save-dev babel-plugin-transform-es2015-function-name
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["transform-es2015-function-name"]
-}
-```
+{% include package_readme.html %}

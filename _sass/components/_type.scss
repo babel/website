@@ -6,6 +6,12 @@ pre.highlight {
   color: $babel-dark-gray;
   padding: 1em;
 }
+code.language-shell:before,
+.language-shell code:before,
+.language-sh code:before {
+  color: grey;
+  content: "$ ";
+}
 
 table {
   @extend .table;

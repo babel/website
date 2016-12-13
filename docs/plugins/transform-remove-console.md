@@ -1,39 +1,10 @@
 ---
 layout: docs
 title: Remove console transform
-description:
+description: This plugin removes all console.* calls
 permalink: /docs/plugins/transform-remove-console/
 package: babel-plugin-transform-remove-console
+package_source: babili
 ---
 
-This plugin removes all `console.*` calls.
-
-## Example
-
-**In**
-
-```javascript
-console.log("foo");
-console.error("bar");
-```
-
-**Out**
-
-```javascript
-```
-
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-transform-remove-console
-```
-
-## Usage
-
-Add the following line to your `.babelrc`:
-
-```json
-{
-  "plugins": ["transform-remove-console"]
-}
-```
+{% include package_readme.html %}

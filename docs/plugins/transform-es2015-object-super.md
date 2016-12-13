@@ -6,18 +6,6 @@ permalink: /docs/plugins/transform-es2015-object-super/
 package: babel-plugin-transform-es2015-object-super
 ---
 
-## Installation
+Compile ES2015 object super to ES5
 
-```sh
-$ npm install --save-dev babel-plugin-transform-es2015-object-super
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["transform-es2015-object-super"]
-}
-```
+{% include package_readme.html %}

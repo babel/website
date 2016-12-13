@@ -1,3 +1,3 @@
 ```sh
-$ meteor add ecmascript
+meteor add ecmascript
 ```

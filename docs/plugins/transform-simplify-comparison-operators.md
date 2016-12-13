@@ -1,40 +1,10 @@
 ---
 layout: docs
-title: Simplfy comparison operator transform
-description:
+title: Simplify comparison operator transform
+description: Convert === and !== to == and != if their types are inferred to be the same
 permalink: /docs/plugins/transform-simplify-comparison-operators/
 package: babel-plugin-transform-simplify-comparison-operators
+package_source: babili
 ---
 
-This plugin simplifies comparisons from strict `===` to `==` when each side is inferred
-to always be the same type.
-
-## Example
-
-**In**
-
-```javascript
-"foo" === "bar";
-```
-
-**Out**
-
-```javascript
-"foo" == "bar";
-```
-
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-transform-simplify-comparison-operators
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["transform-simplify-comparison-operators"]
-}
-```
+{% include package_readme.html %}

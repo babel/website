@@ -69,7 +69,7 @@ get all the same transforms that were in Babel 5:
 ```
 
 ```sh
-$ npm install babel-preset-es2015 babel-preset-react babel-preset-stage-2 --save-dev
+npm install babel-preset-es2015 babel-preset-react babel-preset-stage-2 --save-dev
 ```
 
 Also check out our [Setting up Babel 6](http://babeljs.io/blog/2015/10/31/setting-up-babel-6) blog post.

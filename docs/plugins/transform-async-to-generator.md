@@ -6,43 +6,6 @@ permalink: /docs/plugins/transform-async-to-generator/
 package: babel-plugin-transform-async-to-generator
 ---
 
-## Example
+Turn async functions into ES2015 generators
 
-**In**
-
-```javascript
-async function foo() {
-  await bar();
-}
-```
-
-**Out**
-
-```javascript
-var _asyncToGenerator = function (fn) {
-  ...
-};
-var foo = _asyncToGenerator(function* () {
-  yield bar();
-});
-```
-
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-transform-async-to-generator
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["transform-async-to-generator"]
-}
-```
-
-## References
-
-* [Proposal: Async Functions for ECMAScript](https://github.com/tc39/ecmascript-asyncawait)
+{% include package_readme.html %}

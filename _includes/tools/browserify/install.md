@@ -1,3 +1,3 @@
 ```sh
-$ npm install --save-dev babelify
+npm install --save-dev babelify
 ```

@@ -16,18 +16,4 @@ package: babel-plugin-syntax-exponentiation-operator
 
 This plugin allows Babel to parse [exponentiation operators](https://github.com/rwaldron/exponentiation-operator).
 
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-syntax-exponentiation-operator
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-exponentiation-operator"]
-}
-```
+{% include package_readme.html %}
