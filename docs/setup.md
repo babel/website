@@ -52,11 +52,11 @@ custom_js_with_timestamps:
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
-{% capture c %}
+<div markdown="1">
 ```shell
 npm install babel-preset-env --save-dev
 ```
-{% endcapture %}{{ c | markdownify }}
+</div>
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
       <p>
@@ -64,13 +64,13 @@ npm install babel-preset-env --save-dev
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
-{% capture c %}
+<div markdown="1">
 ```json
 {
   "presets": ["env"]
 }
 ```
-{% endcapture %}{{ c | markdownify }}
+</div>
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
       <p>
@@ -78,11 +78,11 @@ npm install babel-preset-env --save-dev
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
-{% capture c %}
+<div markdown="1">
 ```shell
 npm --version
 ```
-{% endcapture %}{{ c | markdownify }}
+</div>
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
     </div>
