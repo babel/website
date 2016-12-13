@@ -18,12 +18,16 @@ layout: default
         <p>{{page.description}}</p>
         <p class="package-links">
           {% if page.package %}
-          <a href="{{source}}/tree/master/packages/{{page.package}}">GitHub</a>
-          &nbsp; · &nbsp;
-          <a href="https://www.npmjs.com/package/{{page.package}}">npm</a>
-          &nbsp; · &nbsp;
+              <a href="{{source}}/tree/master/packages/{{page.package}}">GitHub</a>
+              &nbsp; · &nbsp;
+              <a href="https://www.npmjs.com/package/{{page.package}}">npm</a>
+              &nbsp; · &nbsp;
+
+              <a href="{{source}}/blob/master/packages/{{page.package}}/README.md">Edit this page</a>
+          {% else %}
+
+              <a href="https://github.com/babel/babel.github.io/blob/master/{{page.path}}">Edit this page</a>
           {% endif %}
-          <a href="{{source}}/blob/master/packages/{{page.package}}/README.md">Edit this page</a>
         </p>
       </div>
     </div>
