@@ -487,6 +487,9 @@
 - name: Disqus
   url: https://www.disqus.com
   logo: disqus.svg
+- name: 9Technology
+  url: http://www.nineentertainmentco.com.au/brands/nine-digital
+  logo: 9tech-logo.svg
 - name: Feedzai
   url: https://feedzai.com/
   logo: feedzai.svg
@@ -496,3 +499,9 @@
 - name: Shoes of Prey
   url: https://www.shoesofprey.com
   logo: shoesofprey.svg
+- name: Work & Co
+  url: https://work.co
+  logo: workandco.svg
+- name: Paralect
+  url: https://paralect.com
+  logo: paralect.svg
