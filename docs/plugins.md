@@ -304,7 +304,7 @@ Plugins and Presets can both specify options. You can do so in your config by wr
 
 ## Plugin Development
 
-Please refer to the excellent [babel-handbook](https://github.com/thejameskyle/babel-handbook)
+Please refer to the excellent [babel-handbook](/docs/handbook)
 to learn how to create your own plugins.
 
 The simple plugin that reverses names (from the homepage):
