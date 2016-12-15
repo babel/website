@@ -65,7 +65,7 @@ BABEL_ENV=production YOUR_COMMAND_HERE
 Or as a separate command:
 
 ```sh
-NODE_ENV=production
+export NODE_ENV=production
 ```
 ```sh
 YOUR_COMMAND_HERE
