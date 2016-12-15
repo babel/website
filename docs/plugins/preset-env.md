@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Autoprefixer for Babel
+title: Env preset
 description: Babel preset that automatically determines the Babel plugins you need based on your supported environments. Uses compat-table
 permalink: /docs/plugins/preset-env/
 package: babel-preset-env
