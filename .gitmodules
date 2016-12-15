@@ -6,4 +6,4 @@
 	url = https://github.com/babel/babili.git
 [submodule "_includes/babel-preset-env"]
 	path = _includes/babel-preset-env
-	url = git@github.com:babel/babel-preset-env.git
+	url = https://github.com/babel/babel-preset-env.git
