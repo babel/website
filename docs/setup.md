@@ -48,7 +48,7 @@ custom_js_with_timestamps:
       </p>
 
       <p>
-        To start, you can use the the <a href="https://babeljs.io/docs/plugins/preset-latest/">latest preset</a>, which enables transforms for ES2015+
+        To start, you can use the the <a href="https://babeljs.io/docs/plugins/preset-env/">env preset</a>, which enables transforms for ES2015+
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
