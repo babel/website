@@ -508,3 +508,6 @@
 - name: Just Eat
   url: https://www.just-eat.com
   logo: justeat.svg
+- name: Microsoft
+  url: https://www.microsoft.com
+  logo: microsoft.svg
