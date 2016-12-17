@@ -511,3 +511,6 @@
 - name: Snapdeal
   url: https://www.snapdeal.com
   logo: snapdeal.svg
+- name: Microsoft
+  url: https://www.microsoft.com
+  logo: microsoft.svg
