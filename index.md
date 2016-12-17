@@ -41,7 +41,9 @@ third_party_js:
       <div class="lead text-left">
 <div markdown="1">
 ```js
+
 [1,2,3].map(n => n + 1);
+
 ```
 </div>
       </div>
@@ -60,17 +62,19 @@ third_party_js:
       </div>
     </div>
 
-    <h3>Start by installing the Babel CLI and a preset</h3>
-    <div class="lead text-left">
+    <div class="col-lg-12">
+
+      <h3>Start by installing the Babel CLI and a preset</h3>
+      <div class="lead text-left">
 <div markdown="1">
 ```shell
 npm install --save-dev babel-cli babel-preset-env
 ```
 </div>
-    </div>
+      </div>
 
-    <h3>Create a <a href="/docs/usage/babelrc"><code>.babelrc</code></a> file in your project (or use your <a href="/docs/usage/babelrc#use-via-package-json">package.json</a>)</h3>
-    <div class="lead text-left">
+      <h3>Create a <a href="/docs/usage/babelrc"><code>.babelrc</code></a> file in your project (or use your <a href="/docs/usage/babelrc#use-via-package-json">package.json</a>)</h3>
+      <div class="lead text-left">
 <div markdown="1">
 ```json
 {
@@ -78,8 +82,8 @@ npm install --save-dev babel-cli babel-preset-env
 }
 ```
 </div>
+      </div>
     </div>
-
   </div>
 
   <hr class="featurette-divider">
