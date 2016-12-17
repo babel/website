@@ -19,6 +19,7 @@ kramdown:
 # Blog Settings
 permalink: /blog/:year/:month/:day/:title
 paginate: 1
+paginate_path: "/blog/page:num/"
 
 gems:
   - jekyll-redirect-from
