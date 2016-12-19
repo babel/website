@@ -514,3 +514,6 @@
 - name: Microsoft
   url: https://www.microsoft.com
   logo: microsoft.svg
+- name: Indigo
+  url: https://www.chapters.indigo.ca/
+  logo: indigo.svg
