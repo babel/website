@@ -88,7 +88,7 @@ npm install --save-dev babel-cli babel-preset-env
 {% highlight shell %}
 npm install --save-dev babel-preset-env
 {% endhighlight %}
-      </p>and add <code>"env"</code> to your <code>.babelrc</code> presets array.</p>
+      <p>and add <code>"env"</code> to your <code>.babelrc</code> presets array.</p>
     </div>
 
     <div class="col-md-6">
