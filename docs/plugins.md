@@ -260,27 +260,40 @@ This means if two transforms both visit the "Program" node, the transforms will 
 - Plugin ordering is first to last.
 - Preset ordering is reversed (last to first).
 
-```json
-"plugins": [
-  "transform-decorators-legacy", // will run first
-  "transform-class-properties" // will run second
-]
-```
-
-> Yes this is confusing, see [babel/notes #2](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal).
-> I believe the reason why (for backwards compatability) is that most users had listed "es2015" first and "stage-0" second. stage-0 would run before es2015.
+For example:
 
 ```json
-"presets": [
-  "es2015", // will run third
-  "react", // will run second
-  "stage-2" // will run first
-]
+{
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties"
+  ]
+}
 ```
+
+Will run `transform-decorators-legacy` then `transform-class-properties`.
+
+It is important to remember that with presets, the order is _reversed_. The following:
+
+```json
+{
+  "presets": [
+    "es2015",
+    "react",
+    "stage-2"
+  ]
+}
+```
+
+Will run in the following order: `stage-2`, `react`, then `es2015`.
+
+This is mostly for ensuring backwards compatibility, since most users list "es2015" before "stage-0". For more information, see [notes on potential traversal API changes](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal).
 
 ## Plugin/Preset Options
 
-Plugins and Presets can both specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
+Both plugins and presets can have options specified by wrapping the name and an options object in an array inside your config.
+
+For example:
 
 ```json
 {
@@ -291,12 +304,17 @@ Plugins and Presets can both specify options. You can do so in your config by wr
     }]
   ]
 }
+```
 
-// notice the wrapping array around the preset and option
+Settings options for presets works exactly the same:
 
+```json
 {
   "presets": [
-    ["es2015", { "loose": true, "modules": false }]
+    ["es2015", {
+      "loose": true,
+      "modules": false
+    }]
   ]
 }
 ```
