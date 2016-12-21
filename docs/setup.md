@@ -52,9 +52,11 @@ custom_js_with_timestamps:
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
-{% highlight shell %}
+<div markdown="1">
+```shell
 npm install babel-preset-env --save-dev
-{% endhighlight %}
+```
+</div>
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
       <p>
@@ -62,11 +64,13 @@ npm install babel-preset-env --save-dev
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
-{% highlight json %}
+<div markdown="1">
+```json
 {
   "presets": ["env"]
 }
-{% endhighlight %}
+```
+</div>
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
       <p>
@@ -74,9 +78,11 @@ npm install babel-preset-env --save-dev
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
-{% highlight shell %}
+<div markdown="1">
+```shell
 npm --version
-{% endhighlight %}
+```
+</div>
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
     </div>

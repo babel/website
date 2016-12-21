@@ -39,38 +39,51 @@ third_party_js:
     <div class="col-lg-6">
       <h3>You put JavaScript in</h3>
       <div class="lead text-left">
-        <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><br><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">n</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span><br>
-</code></pre></div>
+<div markdown="1">
+```js
+
+[1,2,3].map(n => n + 1);
+
+```
+</div>
       </div>
     </div>
 
     <div class="col-lg-6">
       <h3>And get JavaScript out</h3>
       <div class="lead text-left">
-{% highlight javascript %}
+<div markdown="1">
+```js
 [1,2,3].map(function(n) {
   return n + 1;
 });
-{% endhighlight %}
+```
+</div>
       </div>
     </div>
 
-    <h3>Start by installing the Babel CLI and a preset</h3>
-    <div class="lead text-left">
-{% highlight shell %}
-npm install --save-dev babel-cli babel-preset-env
-{% endhighlight %}
-    </div>
+    <div class="col-lg-12">
 
-    <h3>Create a <a href="/docs/usage/babelrc"><code>.babelrc</code></a> file in your project (or use your <a href="/docs/usage/babelrc#use-via-package-json">package.json</a>)</h3>
-    <div class="lead text-left">
-{% highlight javascript %}
+      <h3>Start by installing the Babel CLI and a preset</h3>
+      <div class="lead text-left">
+<div markdown="1">
+```shell
+npm install --save-dev babel-cli babel-preset-env
+```
+</div>
+      </div>
+
+      <h3>Create a <a href="/docs/usage/babelrc"><code>.babelrc</code></a> file in your project (or use your <a href="/docs/usage/babelrc#use-via-package-json">package.json</a>)</h3>
+      <div class="lead text-left">
+<div markdown="1">
+```json
 {
   "presets": ["env"]
 }
-{% endhighlight %}
+```
+</div>
+      </div>
     </div>
-
   </div>
 
   <hr class="featurette-divider">
@@ -85,9 +98,11 @@ npm install --save-dev babel-cli babel-preset-env
       </p>
 
       <p>You can install this preset with</p>
-{% highlight shell %}
+<div markdown="1">
+```shell
 npm install --save-dev babel-preset-env
-{% endhighlight %}
+```
+</div>
       <p>and add <code>"env"</code> to your <code>.babelrc</code> presets array.</p>
     </div>
 
@@ -145,9 +160,11 @@ npm install --save-dev babel-preset-env
         <p>Since Babel only transforms syntax (like arrow functions), you can use babel-polyfill in order to support new globals such as Promise or new native methods like String.padStart (left-pad). It uses <a href="https://github.com/zloirock/core-js">core-js</a> and <a href="https://facebook.github.io/regenerator/">regenerator</a>. Check out our <a href="/docs/usage/polyfill">babel-polyfill</a> docs for more info.</p>
 
         <p>You can install the polyfill with</p>
-{% highlight shell %}
+<div markdown="1">
+```shell
 npm install --save-dev babel-polyfill
-{% endhighlight %}
+```
+</div>
         <p>Use it by requiring it at the top of the entry point to your application or in your bundler config.</p>
       </div>
 
@@ -213,14 +230,15 @@ npm install --save-dev babel-polyfill
       <p>Babel can convert JSX syntax and strip out type annotations. Check out our <a href="https://babeljs.io/docs/plugins/preset-react/">React preset</a> to get started. Use it together with the <a href="https://github.com/babel/babel-sublime">babel-sublime</a> package to bring syntax highlighting to a whole new level.</p>
 
       <p>You can install this preset with</p>
-{% highlight shell %}
+<div markdown="1">
+```shell
 npm install --save-dev babel-preset-react
-{% endhighlight %}
-      </p>and add <code>"react"</code> to your <code>.babelrc</code> presets array.</p>
-      </p>
+```
+</div>
+      <p>and add <code>"react"</code> to your <code>.babelrc</code> presets array.</p>
     </div>
     <div class="col-md-5">
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">export</span> <span class="k">default</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">export</span> <span class="k">default</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
   <span class="nx">getInitialState</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">{</span> <span class="nx">num</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRandomNumber</span><span class="p">()</span> <span class="p">};</span>
   <span class="p">},</span>
@@ -237,7 +255,7 @@ npm install --save-dev babel-preset-react
   <span class="p">}</span>
 <span class="p">});</span></code></pre></div>
 
-    <p class="text-center">Learn more about <a href="https://facebook.github.io/jsx/">JSX</a> and <a href="http://flowtype.org/">Flow</a></p>
+      <p class="text-center">Learn more about <a href="https://facebook.github.io/jsx/">JSX</a> and <a href="http://flowtype.org/">Flow</a></p>
     </div>
   </div>
 
@@ -250,7 +268,8 @@ npm install --save-dev babel-preset-react
       <p>Create a plugin on the fly with <a href="https://astexplorer.net/#/KJ8AjD6maa">astexplorer.net</a></p>
     </div>
     <div class="col-md-6">
-{% highlight javascript %}
+<div markdown="1">
+```javascript
 // A plugin is just a function
 export default function ({types: t}) {
   return {
@@ -263,7 +282,8 @@ export default function ({types: t}) {
     }
   };
 }
-{% endhighlight %}
+```
+</div>
     </div>
   </div>
 
@@ -288,12 +308,18 @@ export default function ({types: t}) {
       </p>
     </div>
     <div class="col-md-4 col-sm-6">
-{% highlight javascript %}
-{% endhighlight %}
+<div markdown="1">
+```javascript
+
+```
+</div>
       </div>
       <div class="col-md-4 col-sm-6">
-{% highlight javascript %}
-{% endhighlight %}
+<div markdown="1">
+```javascript
+
+```
+</div>
     </div>
   </div>
 
@@ -305,12 +331,18 @@ export default function ({types: t}) {
       <p>Babel uses the least amount of code possible with no dependence on a bulky runtime.</p>
     </div>
     <div class="col-md-4 col-md-pull-4 col-sm-6">
-{% highlight javascript %}
-{% endhighlight %}
+<div markdown="1">
+```javascript
+
+```
+</div>
     </div>
     <div class="col-md-4 col-md-pull-4 col-sm-6">
-{% highlight javascript %}
-{% endhighlight %}
+<div markdown="1">
+```javascript
+
+```
+</div>
     </div>
   </div>-->
 
