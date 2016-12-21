@@ -20,8 +20,10 @@
   var current;
 
   $('h2, h3').each(function(index, heading) {
+    var isSubHeading = heading.tagName.toUpperCase() !== 'H2';
     var textContent = heading.textContent;
-    var id = dasherize(textContent);
+    var idPrefix = isSubHeading && current ? current.id : '';
+    var id = dasherize(idPrefix + textContent);
 
     heading.id = id;
 
@@ -32,7 +34,7 @@
       children: []
     };
 
-    if (heading.tagName.toUpperCase() === 'H2') {
+    if (!isSubHeading) {
       headings.push(value);
       current = value;
     } else {

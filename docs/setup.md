@@ -48,13 +48,15 @@ custom_js_with_timestamps:
       </p>
 
       <p>
-        To start, you can use the the <a href="https://babeljs.io/docs/plugins/preset-latest/">latest preset</a>, which enables transforms for ES2015+
+        To start, you can use the <a href="https://babeljs.io/docs/plugins/preset-env/">env preset</a>, which enables transforms for ES2015+
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
-{% highlight shell %}
-npm install babel-preset-latest --save-dev
-{% endhighlight %}
+<div markdown="1">
+```shell
+npm install babel-preset-env --save-dev
+```
+</div>
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
       <p>
@@ -62,11 +64,13 @@ npm install babel-preset-latest --save-dev
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
-{% highlight json %}
+<div markdown="1">
+```json
 {
-  "presets": ["latest"]
+  "presets": ["env"]
 }
-{% endhighlight %}
+```
+</div>
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
       <p>
@@ -74,9 +78,11 @@ npm install babel-preset-latest --save-dev
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
-{% highlight shell %}
+<div markdown="1">
+```shell
 npm --version
-{% endhighlight %}
+```
+</div>
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
     </div>

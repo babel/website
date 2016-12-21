@@ -28,7 +28,7 @@ We've assembled some for common environments:
 
 > Each yearly preset only compiles what was ratified in that year. Use `preset-latest` to transform all yearly presets
 
-- [env (new)](https://github.com/babel/babel-preset-env)
+- [env](/docs/plugins/preset-env/)
 - [latest](/docs/plugins/preset-latest/)
 - [es2017](/docs/plugins/preset-es2017/)
 - [es2016](/docs/plugins/preset-es2016/)
@@ -52,10 +52,10 @@ Any transforms in stage-x presets are changes to the language that haven't been 
 
 The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
 
-- [stage-0](/docs/plugins/preset-stage-0) - Strawman: just an idea, possible Babel plugin.
-- [stage-1](/docs/plugins/preset-stage-1) - Proposal: this is worth working on.
-- [stage-2](/docs/plugins/preset-stage-2) - Draft: initial spec.
-- [stage-3](/docs/plugins/preset-stage-3) - Candidate: complete spec and initial browser implementations.
+- [stage-0](/docs/plugins/preset-stage-0/) - Strawman: just an idea, possible Babel plugin.
+- [stage-1](/docs/plugins/preset-stage-1/) - Proposal: this is worth working on.
+- [stage-2](/docs/plugins/preset-stage-2/) - Draft: initial spec.
+- [stage-3](/docs/plugins/preset-stage-3/) - Candidate: complete spec and initial browser implementations.
 - stage-4 - Finished: will be added to the next yearly release.
 
 Also check out the [current TC39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
@@ -128,6 +128,7 @@ Check out our [minifier based on Babel](https://github.com/babel/babili)!
 These plugins are in the minify repo.
 
 - [inline-environment-variables](/docs/plugins/transform-inline-environment-variables/)
+- [inline-consecutive-adds](/docs/plugins/transform-inline-consecutive-adds/)
 - [member-expression-literals](/docs/plugins/transform-member-expression-literals/)
 - [merge-sibling-variables](/docs/plugins/transform-merge-sibling-variables/)
 - [minify-booleans](/docs/plugins/transform-minify-booleans/)
@@ -144,15 +145,10 @@ These plugins are in the minify repo.
 - [minify-type-constructors](/docs/plugins/minify-type-constructors/)
 - [node-env-inline](/docs/plugins/transform-node-env-inline/)
 - [property-literals](/docs/plugins/transform-property-literals/)
+- [regexp-constructors](/docs/plugins/transform-regexp-constructors/)
 - [remove-console](/docs/plugins/transform-remove-console/)
 - [remove-debugger](/docs/plugins/transform-remove-debugger/)
 - [simplify-comparison-operators](/docs/plugins/transform-simplify-comparison-operators/)
-- [transform-inline-consecutive-adds](/docs/plugins/transform-inline-consecutive-adds/)
-- [transform-regexp-constructors](/docs/plugins/transform-regexp-constructors/)
-- [transform-remove-console](/docs/plugins/transform-remove-console/)
-- [transform-remove-debugger](/docs/plugins/transform-remove-debugger/)
-- [transform-simplify-comparison-operators](/docs/plugins/transform-simplify-comparison-operators/)
-- [transform-undefined-to-void](/docs/plugins/transform-undefined-to-void/)
 - [undefined-to-void](/docs/plugins/transform-undefined-to-void/)
 
 ### React
@@ -189,7 +185,7 @@ These plugins allow Babel to **parse** specific types of syntax (not transform).
 
 You can also provide any [`plugins` option](https://github.com/babel/babylon/#plugins) from babylon:
 
-```js
+```json
 // .babelrc
 {
   "parserOpts": {
@@ -246,14 +242,13 @@ vs
 
 `"presets": ["myPreset"]`
 
-This also works with scoped packages
+This also works with scoped packages:
 
-```js
-{
-  presets: ["@org/babel-preset-name"], // actual package
-  presets: ["@org/name"] // shorthand name
-}
-```
+`"presets": ["@org/babel-preset-name"]`
+
+shorthand
+
+`"presets": ["@org/name"]`
 
 ## Plugin/Preset Ordering
 
@@ -265,29 +260,42 @@ This means if two transforms both visit the "Program" node, the transforms will 
 - Plugin ordering is first to last.
 - Preset ordering is reversed (last to first).
 
-```js
-"plugins": [
-  "transform-decorators-legacy", // will run first
-  "transform-class-properties" // will run second
-]
+For example:
+
+```json
+{
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties"
+  ]
+}
 ```
 
-> Yes this is confusing, see [babel/notes #2](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal).
-> I believe the reason why (for backwards compatability) is that most users had listed "es2015" first and "stage-0" second. stage-0 would run before es2015.
+Will run `transform-decorators-legacy` then `transform-class-properties`.
 
-```js
-"presets": [
-  "es2015", // will run third
-  "react", // will run second
-  "stage-2" // will run first
-]
+It is important to remember that with presets, the order is _reversed_. The following:
+
+```json
+{
+  "presets": [
+    "es2015",
+    "react",
+    "stage-2"
+  ]
+}
 ```
+
+Will run in the following order: `stage-2`, `react`, then `es2015`.
+
+This is mostly for ensuring backwards compatibility, since most users list "es2015" before "stage-0". For more information, see [notes on potential traversal API changes](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal).
 
 ## Plugin/Preset Options
 
-Plugins and Presets can both specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
+Both plugins and presets can have options specified by wrapping the name and an options object in an array inside your config.
 
-```js
+For example:
+
+```json
 {
   "plugins": [
     ["transform-async-to-module-method", {
@@ -296,12 +304,17 @@ Plugins and Presets can both specify options. You can do so in your config by wr
     }]
   ]
 }
+```
 
-// notice the wrapping array around the preset and option
+Settings options for presets works exactly the same:
 
+```json
 {
   "presets": [
-    ["es2015", { "loose": true, "modules": false }]
+    ["es2015", {
+      "loose": true,
+      "modules": false
+    }]
   ]
 }
 ```

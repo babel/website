@@ -490,6 +490,33 @@
 - name: RTBF.be
   url: https://www.rtbf.be
   logo: rtbf.svg
+- name: 9Technology
+  url: http://www.nineentertainmentco.com.au/brands/nine-digital
+  logo: 9tech-logo.svg
 - name: Feedzai
   url: https://feedzai.com/
   logo: feedzai.svg
+- name: Zesty.io
+  url: https://www.zesty.io/
+  logo: zestyio.svg
+- name: Shoes of Prey
+  url: https://www.shoesofprey.com
+  logo: shoesofprey.svg
+- name: Work & Co
+  url: https://work.co
+  logo: workandco.svg
+- name: Paralect
+  url: https://paralect.com
+  logo: paralect.svg
+- name: Just Eat
+  url: https://www.just-eat.com
+  logo: justeat.svg
+- name: Snapdeal
+  url: https://www.snapdeal.com
+  logo: snapdeal.svg
+- name: Microsoft
+  url: https://www.microsoft.com
+  logo: microsoft.svg
+- name: Indigo
+  url: https://www.chapters.indigo.ca/
+  logo: indigo.svg

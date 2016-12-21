@@ -2,6 +2,20 @@
 layout: default
 ---
 
+{% if page.package_source %}
+  {% assign package_source = page.package_source %}
+{% else %}
+  {% assign package_source = "babel" %}
+{% endif %}
+
+{% if site.data.packages[package_source].monorepo == false %}
+  {% assign source = site.data.packages[package_source].url %}
+{% else %}
+  {% assign source = site.data.packages[package_source] %}
+  {% assign packageLink = '/tree/master/packages/' | append: page.package %}
+  {% assign packageReadme = '/packages/' | append: page.package %}
+{% endif %}
+
 <div class="docs-header">
   <div class="container">
     <div class="row">
@@ -10,12 +24,14 @@ layout: default
         <p>{{page.description}}</p>
         <p class="package-links">
           {% if page.package %}
-          <a href="https://github.com/babel/babel/tree/master/packages/{{page.package}}">GitHub</a>
-          &nbsp; · &nbsp;
-          <a href="https://www.npmjs.com/package/{{page.package}}">npm</a>
-          &nbsp; · &nbsp;
+            <a href="{{source}}{{packageLink}}">GitHub</a>
+            &nbsp; · &nbsp;
+            <a href="https://www.npmjs.com/package/{{page.package}}">npm</a>
+            &nbsp; · &nbsp;
+            <a href="{{source}}/blob/master{{packageReadme}}/README.md">Edit this page</a>
+          {% else %}
+            <a href="https://github.com/babel/babel.github.io/blob/master/{{page.path}}">Edit this page</a>
           {% endif %}
-          <a href="https://github.com/babel/babel.github.io/blob/master/{{page.path}}">Edit this page</a>
         </p>
       </div>
     </div>

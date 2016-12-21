@@ -23,10 +23,19 @@
             <li class="dropdown {% if page.url contains item.url %}active{% endif %}">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ item.title }} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                {% for item in item.subnav %}
-                  <li {% if page.url contains item.url %}class="active"{% endif %}>
-                    <a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
-                  </li>
+                {% for group in item.subnav %}
+
+                  {% if group.name %}
+                    <li class="group-name">{{ group.name }}</li>
+                  {% endif %}
+
+                  {% for item in group.items %}
+
+                    <li {% if page.url contains item.url %}class="active"{% endif %}>
+                      <a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
+                    </li>
+                  {% endfor %}
+
                 {% endfor %}
               </ul>
             </li>
