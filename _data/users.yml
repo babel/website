@@ -487,6 +487,9 @@
 - name: Disqus
   url: https://www.disqus.com
   logo: disqus.svg
+- name: RTBF.be
+  url: https://www.rtbf.be
+  logo: rtbf.svg
 - name: 9Technology
   url: http://www.nineentertainmentco.com.au/brands/nine-digital
   logo: 9tech-logo.svg
