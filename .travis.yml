@@ -1,0 +1,22 @@
+language: ruby
+
+rvm:
+  - 2.2.5
+
+before_install:
+  - npm install
+
+  # Use https (public access) instead of git for git-submodules.
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
+
+script: npm test
+
+git:
+  submodules: false
+
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+
+sudo: false
