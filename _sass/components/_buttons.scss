@@ -80,6 +80,18 @@
   }
 }
 
+.btn-open-in-repl {
+  position: absolute;
+  bottom: 0;
+  padding: 1rem;
+  right: 55px; // size of the button.btn-clipboard
+
+  &:focus,
+  &:active {
+    outline: 2px solid $link-color;
+  }
+}
+
 .jumbotron {
   .btn-featured {
     background: $babel-dark-gray;

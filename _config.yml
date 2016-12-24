@@ -34,6 +34,7 @@ default_js:
   - "https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"
   - "/scripts/search.js"
   - "/scripts/clipboard.js"
+  - "/scripts/open-in-repl.js"
 
 # Compress HTML
 compress_html:
