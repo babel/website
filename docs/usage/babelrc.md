@@ -11,7 +11,7 @@ All Babel API [options](/docs/usage/options) except the callbacks are allowed (b
 
 ```json
 {
-  "plugins": ["transform-react-jsx"],
+  "presets": ["transform-react-jsx"],
   "ignore": [
     "foo.js",
     "bar/**/*.js"
@@ -41,7 +41,7 @@ You can use the `env` option to set specific options when in a certain environme
 {
   "env": {
     "production": {
-      "plugins": ["transform-react-constant-elements"]
+      "presets": ["transform-react-constant-elements"]
     }
   }
 }
