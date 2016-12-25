@@ -10,7 +10,7 @@ before_install:
   - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
   - git submodule update --init --recursive
 
-script: npm test
+script: npm test && bundle exec rake
 
 git:
   submodules: false
