@@ -95,7 +95,7 @@ Relevant Issues:
 
 ### Maintaining other ecosystem plugins: JSX/Flow
 
-Babel is vital to the [React](reactjs.org) and [Flow](https://flowtype.org/) ecosystems, and we work closely with the relevant teams at Facebook.
+Babel is vital to the [React](https://reactjs.org) and [Flow](https://flowtype.org/) ecosystems, and we work closely with the relevant teams at Facebook.
 
 - [React plugins](https://babeljs.io/docs/plugins/#react), [React preset](https://babeljs.io/docs/plugins/preset-react/)
   - These cover the main `JSX` transform, development plugins, and optimizations.
