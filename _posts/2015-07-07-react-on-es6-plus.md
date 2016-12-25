@@ -191,7 +191,7 @@ Often when composing components, we might want to pass down *most* of a parent c
 ```js
 class AutoloadingPostsGrid extends React.Component {
   render() {
-    var {
+    const {
       className,
       ...others,  // contains all properties of this.props except for className
     } = this.props;
