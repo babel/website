@@ -350,7 +350,6 @@ export default function ({types: t}) {
     <div class="btn-wrapper btn-wrapper-lg">
       <a href="{{ site.baseurl }}/docs/learn-es2015/" class="btn btn-featured">Learn ES2015</a>
       <a href="{{ site.baseurl }}/docs/setup/" class="btn btn-featured">Set up Babel</a>
-      <a href="/docs/handbook" class="btn btn-featured">Babel Handbook</a>
     </div>
   </div>
 
