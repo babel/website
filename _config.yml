@@ -43,3 +43,6 @@ compress_html:
   # endings: all
   profile: false
   startings: [head, body]
+
+# Get consistent pagination links with production
+timezone: "-0500"
