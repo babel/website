@@ -9,7 +9,13 @@ task :test do
     #:check_html => true,
     :disable_external => true,
     :empty_alt_ignore => true,
+    :file_ignore => [
+      %r{/blog/2015/},
+    ],
     :only_4xx => true,
+    :url_swap => {
+      /#.*$/ => "",
+    },
   }).run
 end
 

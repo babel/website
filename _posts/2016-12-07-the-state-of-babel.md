@@ -18,7 +18,7 @@ custom_js_with_timestamps:
 
 > Previous issues: [Babel Roadmap #4130](https://github.com/babel/babel/issues/4130), [6.0 #2168](https://github.com/babel/babel/issues/2168)
 
-Please check out the [Community](#community) section if nothing else.
+Please check out the [Community](https://babeljs.io/blog/2016/12/07/the-state-of-babel#community) section if nothing else.
 
 > Also published as part of [Mariko Kosaka's](https://twitter.com/kosamari) 2016 [Web Advent Calendar](http://web.advent.today/)!
 
@@ -74,7 +74,7 @@ But the proposals process involves significant iteration: proposals can change i
 There isn't enough time or resources to maintain each plugin, especially when there are spec updates.
 
 - Some transforms are simply out of date such as decorators. Logan had to port the previous spec [babel-plugin-transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) for Babel 6 and we haven't had anyone able to rewrite it for the updated spec.
-- [babel/babel#3473 - Async iteration proposal](https://github.com/babel/babel/pull/3473) wasn't merged for so long because we just didn't have time to review it. By the time it was merged it had already moved 
+- [babel/babel#3473 - Async iteration proposal](https://github.com/babel/babel/pull/3473) wasn't merged for so long because we just didn't have time to review it. By the time it was merged it had already moved
 from stage 2 to stage 3.
 
 ---
@@ -213,7 +213,7 @@ class Mangler {
     this.program = program;
   }
 }
-new Mangler(); 
+new Mangler();
 ```
 
 **Out**
@@ -259,7 +259,7 @@ By passing in [Recast](https://github.com/benjamn/recast) in the options, Babel 
 Run the relevant Babel transform(s) on the source code and overwrite it:
 
 ```sh
-babel src -d src 
+babel src -d src
 ```
 
 This feature was just made possible so we're looking forward to making it easier to use and seeing the transformations it can enable. Check out the [6.16.0 blog post](https://babeljs.io/blog/2016/09/28/6.16.0#new-feature) for more info!
@@ -281,7 +281,7 @@ We want to support tools like [nyc](https://github.com/istanbuljs/nyc) and [babe
 
 Thanks to our vibrant community, new plugins are constantly being created: whether it be a new way to write your [css in jsx](https://github.com/zeit/styled-jsx) or [rewire your tests](https://github.com/speedskater/babel-plugin-rewire).
 
-> Currently there are > 1200 [babel-plugins on npm](https://www.npmjs.com/search?q=babel-plugin-). 
+> Currently there are > 1200 [babel-plugins on npm](https://www.npmjs.com/search?q=babel-plugin-).
 
 We've had some interesting discussions on how we can grow and support the plugin ecosystem. We could try to watch all the repos but that is obviously overwhelming.
 
@@ -302,7 +302,7 @@ However just recently we've done a lot of awesome stuff:
 - [@Daniel15](https://github.com/Daniel15) has been maintaining [babel-standalone](https://github.com/babel/babel-standalone) which we use in the REPL and has some automation when new releases get out.
 - [@maxiloc](https://github.com/maxiloc) added search functionality via Algolia via [#977](https://github.com/babel/babel.github.io/pull/977)
 
-We've also added new collaborators: 
+We've also added new collaborators:
 
 - [@STRML](https://github.com/STRML): Added Discourse to all github pages via [#875](https://github.com/babel/babel.github.io/pull/875)
 - [@xtuc](https://github.com/xtuc): Added support for reading the README from the babel repo so we don't have to sync 2 copies of docs via [#990](https://github.com/babel/babel.github.io/pull/990)
