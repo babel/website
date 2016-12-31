@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Syntax JSX
-description:
+description: Allow parsing of JSX syntax
 permalink: /docs/plugins/syntax-jsx/
 package: babel-plugin-syntax-jsx
 ---
