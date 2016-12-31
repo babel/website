@@ -25,7 +25,7 @@
         - title: babel-cli
           url: /docs/usage/cli/
         - title: babel-register
-          url: /docs/core-packages/babel-register/
+          url: /docs/core-packages/babel-register
 - title: Try it out
   url: /repl/
 - title: Blog
