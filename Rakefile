@@ -6,11 +6,14 @@ task :test do
     :allow_hash_href => true,
     :alt_ignore => [/.+/],
     :assume_extension => true,
-    #:check_html => true,
+    :check_html => true,
     :disable_external => true,
     :empty_alt_ignore => true,
     :file_ignore => [
       %r{/blog/2015/},
+    ],
+    :internal_domains => [
+      "babeljs.io",
     ],
     :only_4xx => true,
     :url_swap => {

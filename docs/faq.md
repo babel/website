@@ -88,12 +88,15 @@ Please help out with documentation if you can by submitting a pull request to th
 [babel.github.io](https://github.com/babel/babel.github.io) repo.
 
 ## How do I build babel from source?
+
 See [build instructions](https://github.com/babel/babel/blob/master/CONTRIBUTING.md#developing).
 
 ## How do I contribute to Babel?
+
 See [contributing](https://github.com/babel/babel/blob/master/CONTRIBUTING.md).
 
 ## Why am I getting a Syntax Error/Unexpected Token?
+
 It's most likely the case that you didn't include a plugin/preset that supports that feature. (It's also possible it's a bug in the parser, or that it actually is a syntax error).
 
 ## Why isn't a certain babel-x package updated?

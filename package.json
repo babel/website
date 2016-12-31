@@ -16,9 +16,14 @@
     ],
     "plugins": {
       "remark-lint": {
+        "list-item-bullet-indent": false,
         "list-item-indent": "space",
         "no-blockquote-without-caret": false,
-        "no-literal-urls": false
+        "no-duplicate-headings-in-section": true,
+        "no-empty-url": true,
+        "no-literal-urls": false,
+        "no-shortcut-reference-link": false,
+        "no-undefined-references": false
       }
     }
   },
