@@ -13,6 +13,7 @@ package: babel-core
 * [Babel-template](babel-template): Generate an AST from a string template
 * [Babel-helpers](babel-helpers): Collection of helper functions used by Babel transforms
 * [Babel-code-frame](babel-code-frame): Generate errors that contain a code frame that point to source locations
+* [Babylon](babylon): Babylon is a JavaScript parser used in Babel
 
 ## Core
 
