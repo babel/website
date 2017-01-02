@@ -2,6 +2,7 @@
   'use strict';
 
   var presets = [
+    'env',
     'es2015',
     'es2015-loose',
     'es2016',
@@ -321,8 +322,17 @@
     if (this.options.babili) {
       presets.push('babili');
     }
+    if (presets.includes('env')) {
+      presets = presets.map((preset) => {
+        if (preset === 'env') {
+          preset = ["env", {"useBuiltIns": true, "targets": {"browsers": ['> 4%', 'ie 11', 'safari 8']}}];
+        }
+        return preset;
+      })
+    }
 
     try {
+      console.log(presets);
       transformed = babel.transform(code, {
         presets: presets.filter(Boolean),
         filename: 'repl',
