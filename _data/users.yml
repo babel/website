@@ -520,3 +520,6 @@
 - name: Indigo
   url: https://www.chapters.indigo.ca/
   logo: indigo.svg
+- name: Namely
+  url: https://www.namely.com/
+  logo: namely.svg
