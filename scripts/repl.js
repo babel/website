@@ -1,6 +1,5 @@
 (function(babel, $, _, ace, window) {
   'use strict';
-
   var presets = [
     'env',
     'es2015',
@@ -16,6 +15,8 @@
   ];
 
   /* Throw meaningful errors for getters of commonjs. */
+  Babel.registerPreset('env', babelPresetEnv.default);
+
   var enableCommonJSError = true;
   ["module", "exports", "require"].forEach(function(commonVar){
     Object.defineProperty(window, commonVar, {
@@ -122,11 +123,11 @@
   /*
    * Options exposed for the REPL that will influence Babel's transpiling
    */
-  function $checkbox($element){
+  function $checkboxValue($element) {
     return {
       get: function () {
         return $element.is(":checked");
-      } ,
+      },
       set: function (value) {
         var setting = value !== 'false' && value !== false;
         $element.prop('checked', setting);
@@ -134,6 +135,27 @@
       enumerable: true,
       configurable: false
     };
+  }
+
+  function $inputValue($element) {
+    return {
+      get: function () {
+        return $element.val();
+      },
+      set: function (value) {
+        var setting = value !== 'undefined' && value;
+        $element.val(setting);
+      },
+      enumerable: true,
+      configurable: false
+    };
+  }
+
+  /**
+   * Handle browsers input to update repl.
+  */
+  function handleBrowsersChange(evt) {
+    onSourceChange();
   }
 
   /**
@@ -242,13 +264,15 @@
     var $evaluate = $('#option-evaluate');
     var $lineWrap = $('#option-lineWrap');
     var $babili = $('#option-babili');
+    var $browsers = $('#option-browsers');
 
     var options = {};
     Object.defineProperties(options, {
-      babili: $checkbox($babili),
-      evaluate: $checkbox($evaluate),
-      lineWrap: $checkbox($lineWrap),
+      babili: $checkboxValue($babili),
+      evaluate: $checkboxValue($evaluate),
+      lineWrap: $checkboxValue($lineWrap),
       presets: getPresetOptions(),
+      browsers: $inputValue($browsers)
     });
 
     // Merge in defaults
@@ -256,7 +280,8 @@
       babili: false,
       evaluate: true,
       lineWrap: false,
-      presets: 'es2015,stage-2,react'
+      presets: 'es2015,stage-2,react',
+      browsers: ''
     };
 
     _.assign(options, defaults);
@@ -271,7 +296,6 @@
     this.storage = new StorageService();
     var state = this.storage.get('replState') || {};
     _.assign(state, UriUtils.parseQuery());
-
     this.options = _.assign(new Options(), state);
 
     this.input = new Editor('.babel-repl-input .ace_editor').editor;
@@ -285,6 +309,7 @@
     this.$errorReporter = $('.babel-repl-errors');
     this.$consoleReporter = $('.babel-repl-console');
     this.$toolBar = $('.babel-repl-toolbar');
+    this.$envBar = $('#option-browsers');
 
     document.getElementById('babel-repl-version').innerHTML = babel.version;
   }
@@ -319,20 +344,26 @@
     }
 
     var presets = this.options.presets.split(',');
+
     if (this.options.babili) {
       presets.push('babili');
     }
     if (presets.includes('env')) {
+
       presets = presets.map((preset) => {
         if (preset === 'env') {
-          preset = ["env", {"useBuiltIns": true, "targets": {"browsers": ['> 4%', 'ie 11', 'safari 8']}}];
+          var targets = {};
+
+          if (this.options.browsers) {
+            targets.browsers = this.options.browsers;
+          }
+          preset = ["env", {"useBuiltIns": true, "targets": targets}];
         }
         return preset;
       })
     }
 
     try {
-      console.log(presets);
       transformed = babel.transform(code, {
         presets: presets.filter(Boolean),
         filename: 'repl',
@@ -413,13 +444,17 @@
 
   function onPresetChange() {
     // Update the list of presets that are displayed on the dropdown list anchor
+    var $envBrowsers = document.getElementById('option-browsers-wrapper');
     var presetList = repl.options.presets.replace(/,/g, ', ');
+    var envIncluded = repl.options.presets.includes('env');
+
+    $envBrowsers.classList.toggle('hidden', !envIncluded);
     document.getElementById('babel-repl-selected-presets').innerHTML = presetList;
 
     onSourceChange();
   }
 
-  function onSourceChange () {
+  function onSourceChange() {
     var error;
     try {
       repl.compile();
@@ -435,6 +470,7 @@
   }
 
   repl.input.on('change', _.debounce(onSourceChange, 500));
+  repl.$envBar.on('keyup', _.debounce(handleBrowsersChange, 1000));
   repl.$toolBar.on('change', onSourceChange);
 
 
