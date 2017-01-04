@@ -133,5 +133,13 @@
 #option-browsers-wrapper input {
   color: black;
   margin-left: 5px;
-  font-size: 12px
+  font-size: 13px;
+  padding-left: 5px;
+  min-width: 175px;
+  border: none;
 }
+
+#option-builtIns-wrapper {
+  padding-right: 15px;
+}
+

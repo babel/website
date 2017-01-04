@@ -143,7 +143,7 @@
         return $element.val();
       },
       set: function (value) {
-        var setting = value !== 'undefined' && value;
+        var setting = value !== 'undefined' && value !== 'false' && value;
         $element.val(setting);
       },
       enumerable: true,
@@ -265,6 +265,7 @@
     var $lineWrap = $('#option-lineWrap');
     var $babili = $('#option-babili');
     var $browsers = $('#option-browsers');
+    var $builtIns = $('#option-builtIns');
 
     var options = {};
     Object.defineProperties(options, {
@@ -272,7 +273,8 @@
       evaluate: $checkboxValue($evaluate),
       lineWrap: $checkboxValue($lineWrap),
       presets: getPresetOptions(),
-      browsers: $inputValue($browsers)
+      browsers: $inputValue($browsers),
+      builtIns: $checkboxValue($builtIns)
     });
 
     // Merge in defaults
@@ -348,16 +350,18 @@
     if (this.options.babili) {
       presets.push('babili');
     }
-    if (presets.includes('env')) {
 
+    if (presets.includes('env')) {
       presets = presets.map((preset) => {
         if (preset === 'env') {
-          var targets = {};
+          var options = {
+            useBuiltIns: this.options.builtIns,
+            targets: {
+              browsers: this.options.browsers
+            }
+          };
 
-          if (this.options.browsers) {
-            targets.browsers = this.options.browsers;
-          }
-          preset = ["env", {"useBuiltIns": true, "targets": targets}];
+          preset = ["env", options];
         }
         return preset;
       })
@@ -445,10 +449,13 @@
   function onPresetChange() {
     // Update the list of presets that are displayed on the dropdown list anchor
     var $envBrowsers = document.getElementById('option-browsers-wrapper');
+    var $envBuiltIns = document.getElementById('option-builtIns-wrapper');
     var presetList = repl.options.presets.replace(/,/g, ', ');
     var envIncluded = repl.options.presets.includes('env');
 
     $envBrowsers.classList.toggle('hidden', !envIncluded);
+    $envBuiltIns.classList.toggle('hidden', !envIncluded);
+
     document.getElementById('babel-repl-selected-presets').innerHTML = presetList;
 
     onSourceChange();
@@ -512,6 +519,7 @@
     }
 
     $(resizeSelector).on('mousedown', onResizeStart);
+    autosizeInput(document.querySelector('#option-browsers'));
 
     return function() {
       $(resizeSelector).off('mousedown', onResizeStart);
