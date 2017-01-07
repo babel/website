@@ -1,0 +1,115 @@
+.hero {
+  align-items: center;
+  background: $babel-dark-gray;
+  color: #FFF;
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
+  overflow: hidden;
+  // Not ideal, but for now, match bootstrap's container side padding
+  padding: 7em 15px;
+  position: relative;
+
+  @media (min-width: $screen-md-min) {
+    padding: 11em 15px;
+  }
+
+  &::before {
+    background: url(../images/logo.svg) no-repeat center center;
+    background-size: cover;
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    opacity: 0.3;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  &__content {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 75px;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 28px;
+    }
+  }
+
+  h1 {
+    color: $babel-yellow;
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 63px;
+    }
+  }
+}
+
+.hero-actions {
+  margin: 0 auto;
+  max-width: 500px;
+
+  a,
+  a:visited {
+    border: 1px solid $babel-yellow;
+    border-radius: 4px;
+    display: block;
+    font-weight: bold;
+    font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 10px 32px;
+    text-decoration: none;
+    transition: all 0.25s ease-out;
+  }
+
+  &__links {
+    display: flex;
+    font-size: 20px;
+    margin-bottom: 20px;
+
+    @media (min-width: $screen-md-min) {
+      font-size: 36px;
+    }
+
+    a,
+    a:visited {
+      background: $babel-dark-gray;
+      color: $babel-yellow;
+      flex: 1 1 50%;
+
+      &:hover {
+        background: $babel-yellow;
+        color: $babel-dark-gray;
+        border-color: $babel-yellow;
+      }
+
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  &-blog {
+    a,
+    a:visited {
+      border-color: #FFF;
+      color: #FFF;
+      padding: 20px 32px;
+
+      &:hover {
+        background: #FFF;
+        color: $babel-dark-gray;
+      }
+    }
+  }
+}
