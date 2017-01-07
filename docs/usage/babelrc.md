@@ -5,7 +5,7 @@ description: How to use the .babelrc
 permalink: /docs/usage/babelrc/
 ---
 
-All Babel API [options](/docs/usage/options) except the callbacks are allowed (because `.babelrc` files are serializable JSON). Babel uses [JSON5](https://github.com/json5/json5).
+All Babel API [options](/docs/usage/options) except the callbacks are allowed (because `.babelrc` files are serialized as [JSON5](https://github.com/json5/json5)).
 
 **Example:**
 
