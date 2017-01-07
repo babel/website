@@ -52,27 +52,48 @@
 }
 
 .btn-icon {
+  color: #B0A673;
+  height: 34px;
+  transition: all 0.25s ease-out;
+
   &:hover,
   &:focus {
+    color: #000;
     text-decoration: none;
   }
 
+  &__body {
+    align-items: center;
+    display: flex;
+  }
+
   svg {
-    margin-left: 0.25em;
-    margin-right: 0.25em;
+    fill: currentColor;
+    margin-right: 0.4em;
   }
 
   &__label {
-    vertical-align: top;
-    text-transform: uppercase;
+    font-size: 11px;
   }
 }
 
 .btn-clipboard {
+  padding: 0;
   position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 1rem;
+  right: 10px;
+  top: 0;
+
+  &:focus,
+  &:active {
+    outline: 2px solid $link-color;
+  }
+}
+
+.btn-open-in-repl {
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 75px; // size of the button.btn-clipboard
 
   &:focus,
   &:active {

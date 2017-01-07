@@ -6,19 +6,20 @@ pre.highlight {
   @include box-shadow(none);
   color: $babel-dark-gray;
   padding: 1em;
-  position: relative;
 }
 
 div.highlighter-rouge {
+  position: relative;
+
   &:before {
     background: #FBF4D0;
     color: #B0A673;
     display: block;
     font-size: 11px;
     font-weight: bold;
-    height: 24px;
-    line-height: 18px;
-    padding: 3px 10px;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 10px;
   }
 
   &.language-js:before,
