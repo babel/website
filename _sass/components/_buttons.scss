@@ -68,11 +68,11 @@
   }
 
   svg {
-    fill: inherit;
+    fill: currentColor;
     margin-right: 0.4em;
   }
 
-  &__label {  
+  &__label {
     font-size: 11px;
   }
 }
