@@ -19,7 +19,7 @@
 
     var clipboard = new Clipboard('.btn-clipboard', {
       target: function(trigger) {
-        return $(trigger).prev()[0]; // Get adjacent code element
+        return $(trigger).parent().find("pre")[0];
       }
     });
 
