@@ -1,0 +1,18 @@
+.openIssues {
+
+  ul {
+    list-style:none;
+    padding-left:0;
+
+    li {
+      margin-bottom: 10px;
+
+      span.issueNumber {
+        color: #323330;
+        background-color: #f5da55;
+        padding: 3px 5px;
+        margin-right: 5px
+      }
+    }
+  }
+}
