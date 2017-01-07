@@ -27,3 +27,24 @@
   }
 }
 
+.nav-social {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  > li > a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  svg {
+    display: block;
+    fill: currentColor;
+    height: 16px;
+    width: 16px;
+  }
+}
