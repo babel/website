@@ -3,6 +3,8 @@ layout: page
 title: Babel Plugin Handbook
 description: This document covers how to create Babel plugins.
 permalink: /docs/handbook/
+package_source: babel-handbook
+package: babel-handbook
 ---
 
 {% capture readme %}
