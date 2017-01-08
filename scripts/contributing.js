@@ -9,7 +9,7 @@
             },
             success : function(data){
                 for(var i = 0; i < data.length; i++){
-                    $('.beginnerFriendlyIssues').append('<li><a href="' + data[i].html_url + '"><span class="issueNumber">#' + data[i].number +'</span></a><span>' + data[i].title + '</span></li>');
+                    $('.beginnerFriendlyIssues').append('<li><a href="' + data[i].html_url + '"><span class="issueNumber">#' + data[i].number +'</span><span>' + data[i].title + '</span></a></li>');
                 }
             },
             error : function(xhr, status, error){
@@ -24,7 +24,7 @@
             },
             success : function(data){
                 for(var i = 0; i < data.length; i++){
-                    $('.helpWantedIssues').append('<li><a href="' + data[i].html_url + '"><span class="issueNumber">#' + data[i].number +'</span></a><span>' + data[i].title + '</span></li>');
+                    $('.helpWantedIssues').append('<li><a href="' + data[i].html_url + '"><span class="issueNumber">#' + data[i].number +'</span><span>' + data[i].title + '</span></a></li>');
                 }
             },
             error : function(xhr, status, error){

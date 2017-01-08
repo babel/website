@@ -7,8 +7,11 @@
     li {
       margin-bottom: 10px;
 
-      span.issueNumber {
+      a {
         color: #323330;
+      }
+
+      span.issueNumber {
         background-color: #f5da55;
         padding: 3px 5px;
         margin-right: 5px
