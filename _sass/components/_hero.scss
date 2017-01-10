@@ -1,10 +1,10 @@
 .hero {
-  align-items: center;
+  @include align-items(center);
+  @include flexbox;
+  @include justify-content(center);
   background: $babel-dark-gray;
   color: #FFF;
-  display: flex;
   margin-bottom: 20px;
-  justify-content: center;
   overflow: hidden;
   // Not ideal, but for now, match bootstrap's container side padding
   padding: 7em 15px;
@@ -62,6 +62,7 @@
 
   a,
   a:visited {
+    @include transition(all 0.25s ease-out);
     border: 1px solid $babel-yellow;
     border-radius: 4px;
     display: block;
@@ -69,11 +70,10 @@
     font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 10px 32px;
     text-decoration: none;
-    transition: all 0.25s ease-out;
   }
 
   &__links {
-    display: flex;
+    @include flexbox;
     font-size: 20px;
     margin-bottom: 20px;
 
@@ -85,7 +85,7 @@
     a:visited {
       background: $babel-dark-gray;
       color: $babel-yellow;
-      flex: 1 1 50%;
+      @include flex(1 1 50%);
 
       &:hover {
         background: $babel-yellow;
