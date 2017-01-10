@@ -29,10 +29,10 @@
 
 .nav-social {
   @include align-items(center);
-  @include flex;
+  @include flexbox;
 
   > li > a {
-    @include flex;
+    @include flexbox;
   }
 
   svg {
