@@ -6,30 +6,24 @@ third_party_js:
 - //cdn.rawgit.com/thejameskyle/slick/lazy-load-responsive-2/slick/slick.min.js
 ---
 
-<div class="jumbotron text-center">
-  <div class="container-fluid">
+<div class="hero">
+  <div class="hero__content">
     <h1>Babel is a JavaScript compiler.</h1>
     <p>Use next generation JavaScript, today.</p>
-  </div>
 
-  <div class="text-center">
-    <a href="/docs/setup" class="btn btn-featured">Setup</a>
-    <a href="http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=latest%2Creact%2Cstage-2&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true" class="btn btn-featured">Try it Out</a>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <a class="jumbotron-callout" href="/blog/2016/12/07/the-state-of-babel">
-          <p>The State of Babel</p>
+    <div class="hero-actions">
+      <div class="hero-actions__links">
+        <a href="/docs/setup">Setup</a>
+        <a href="http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=latest%2Creact%2Cstage-2&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true">Try it Out</a>
+      </div>
+      <div class="hero-actions-blog">
+        <a href="/blog/2016/12/07/the-state-of-babel">
+          <span class="hero-actions-blog__label">Latest From Our Blog:</span>
+          <span class="hero-actions-blog__post">The State of Babel</span>
         </a>
       </div>
     </div>
   </div>
-
-  <iframe src="https://ghbtns.com/github-btn.html?user=babel&repo=babel&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
-  <br style="line-height: 24px">
-  <script async defer src="https://slack.babeljs.io/slackin.js"></script>
 </div>
 
 <div class="container">

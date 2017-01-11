@@ -100,18 +100,3 @@
     outline: 2px solid $link-color;
   }
 }
-
-.jumbotron {
-  .btn-featured {
-    background: $babel-dark-gray;
-    color: $babel-yellow;
-    border-color: $babel-yellow;
-
-    &:hover {
-      background: $babel-yellow;
-      color: $babel-dark-gray;
-      border-color: $babel-yellow;
-    }
-  }
-
-}
