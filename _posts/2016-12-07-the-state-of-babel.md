@@ -361,7 +361,7 @@ Relevant Issues:
 
 Performance is a feature! Other things can be more of a priority at times (bug fixes, spec compliancy, etc) but it's still important in a few different aspects.
 
-- How can we reduce the size/time of install, especially for a project with multiple packages? (this is helped by [yarn](yarnpkg.com))
+- How can we reduce the size/time of install, especially for a project with multiple packages? (this is helped by [yarn](https://yarnpkg.com))
 - How can we parse faster?
 - How can we make faster plugins (and measure them individually)?
 - How can we generate the transformed code faster?
