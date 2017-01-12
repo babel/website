@@ -1,0 +1,3 @@
+```sh
+meteor add ecmascript
+```

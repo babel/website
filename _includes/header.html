@@ -1,25 +1,41 @@
-<nav role="navigation" id="header" class="navbar navbar-default navbar-fixed-top">
+<input type="checkbox" id="babel-toggle-search" class="babel-toggle-search-checkbox" />
+<header class="navbar navbar-default navbar-fixed-top babel-nav" id="top" role="banner">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggle collapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="{{ site.baseurl }}/" class="navbar-brand logo">Babel</a>
+    <a href="/" class="navbar-brand logo">Babel</a>
+    <div class="babel-navbar-toggles">
+      <div class="navbar-header">
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#babel-navbar" aria-controls="babel-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <label for="babel-toggle-search" class="navbar-toggle babel-toggle-search-open">
+          <span class="sr-only">Open search</span>
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </label>
+      </div>
     </div>
-    <div id="navigation" class="collapse navbar-collapse">
+    <nav id="babel-navbar" class="collapse navbar-collapse babel-navbar">
       <ul class="nav navbar-nav">
         {% for item in site.data.navigation %}
           {% if item.subnav %}
             <li class="dropdown {% if page.url contains item.url %}active{% endif %}">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ item.title }} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                {% for item in item.subnav %}
-                  <li {% if page.url contains item.url %}class="active"{% endif %}>
-                    <a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
-                  </li>
+                {% for group in item.subnav %}
+
+                  {% if group.name %}
+                    <li class="group-name">{{ group.name }}</li>
+                  {% endif %}
+
+                  {% for item in group.items %}
+
+                    <li {% if page.url contains item.url %}class="active"{% endif %}>
+                      <a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
+                    </li>
+                  {% endfor %}
+
                 {% endfor %}
               </ul>
             </li>
@@ -30,18 +46,36 @@
           {% endif %}
         {% endfor %}
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="https://gitter.im/babel/babel">Support</a></li>
-        <li {% if page.url contains "/blog/" %}class="active"{% endif %}>
-          <a href="{{ site.baseurl }}/blog/">Blog</a>
+      <ul class="nav navbar-nav navbar-right nav-social">
+        <li>
+          <a href="https://discuss.babeljs.io">Forum</a>
         </li>
         <li>
-          <a href="https://twitter.com/babeljs">Twitter</a>
+          <a href="https://slack.babeljs.io/" title="Join us on Slack">{% include icons/slack.svg %}</a>
         </li>
         <li>
-          <a href="https://github.com/babel/babel">GitHub</a>
+          <a href="https://twitter.com/babeljs" title="Follow us on Twitter">{% include icons/twitter.svg %}</a>
+        </li>
+        <li>
+          <a href="https://github.com/babel/babel" title="Contribute on GitHub">{% include icons/github.svg %}</a>
         </li>
       </ul>
-    </div>
+      <label for="babel-toggle-search" class="navbar-toggle babel-toggle-search-open">
+        <span class="sr-only">Open search</span>
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      </label>
+      <div class="navbar-form navbar-right babel-search" role="search">
+        <div class="input-group">
+          <label class="sr-only" aria-label="Search" for="babel-search-input">Search</label>
+          <div class="babel-search-input-wrapper">
+            <input type="text" class="form-control" id="babel-search-input" accesskey="s" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search the docs...">
+            <label for="babel-toggle-search" class="babel-toggle-search-close">
+              <span class="sr-only">Close search</span>
+              <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
-</nav>
+</header>

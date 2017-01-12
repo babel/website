@@ -1,15 +1,32 @@
 (function(babel, $, _, ace, window) {
+  'use strict';
+
+  var presets = [
+    'es2015',
+    'es2015-loose',
+    'es2016',
+    'es2017',
+    'latest',
+    'react',
+    'stage-0',
+    'stage-1',
+    'stage-2',
+    'stage-3'
+  ];
 
   /* Throw meaningful errors for getters of commonjs. */
+  var enableCommonJSError = true;
   ["module", "exports", "require"].forEach(function(commonVar){
-    Object.defineProperty(window, commonVar, { 
+    Object.defineProperty(window, commonVar, {
       configurable: true,
       get: function () {
-        throw new Error(commonVar + " is not supported in the browser, you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
+        if (enableCommonJSError) {
+          throw new Error(commonVar + " is not supported in the browser, you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
+        }
       }
     });
   });
-  
+
   /*
    * Utils for working with the browser's URI (e.g. the query params)
    */
@@ -87,8 +104,9 @@
 
     this.editor.setTheme('ace/theme/tomorrow');
     this.editor.setShowPrintMargin(false);
+    this.editor.commands.removeCommands(['gotoline', 'find']);
     this.$el.css({
-      fontFamily: 'Menlo, Monaco, Consolas, "Courier New", monospace',
+      fontFamily: '"Operator Mono", "Fira Code", "Ubuntu Mono", "Droid Sans Mono", "Liberation Mono", "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace',
       lineHeight: 'inherit'
     });
 
@@ -117,32 +135,127 @@
     };
   }
 
+  /**
+   * By default, Bootstrap closes dropdown menus whenever an item in them is
+   * clicked. This function overrides that behaviour for the presets dropdown,
+   * and ensures the checkbox is selected correctly.
+   */
+  function handlePresetClick($input, evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    // Needs to run in a timeout to properly handle clicks directly on the
+    // checkbox.
+    setTimeout(function() {
+      $input.checked = !$input.checked;
+      onPresetChange();
+    }, 0);
+  }
+
+  /**
+   * Options for selecting presets to use.
+   */
+  function getPresetOptions() {
+    // Create the checkboxes for all available presets
+    var $presetContainer = document.getElementById('babel-repl-preset-dropdown');
+    var $presets = [];
+    presets.forEach(function(presetName) {
+      var $input = document.createElement('input');
+      $input.type = 'checkbox';
+      $input.name = 'preset';
+      $input.value = presetName;
+      $input.id = 'option-' + presetName;
+
+      // This should really be a <label>, but it *needs* to be an <a> to get the
+      // right styling. Thanks Bootstrap.
+      var $label = document.createElement('a');
+      $label.href = '#';
+      $label.className = 'small';
+      $label.tabIndex = -1;
+      $label.addEventListener(
+        'click',
+        handlePresetClick.bind(null, $input),
+        false
+      );
+
+      $label.appendChild($input);
+      $label.appendChild(document.createTextNode(' ' + presetName));
+
+      var $li = document.createElement('li');
+      $li.appendChild($label);
+      $presetContainer.appendChild($li);
+      $presets.push($input);
+    });
+
+    return {
+      get: function() {
+        return $presets
+          .filter(function($preset) { return $preset.checked; })
+          .map(function($preset) { return $preset.value; })
+          .join(',');
+      },
+      set: function(value) {
+        value = value.split(',');
+        $presets.forEach(function($preset) {
+          $preset.checked = value.indexOf($preset.value) > -1;
+        });
+      },
+      enumerable: true,
+      configurable: true,
+    };
+  }
+
+  var isBabiliLoading = false;
+  /**
+   * Checks if Babili has been loaded. If not, kicks off a load (if it hasn't
+   * already started) and returns false. Returns true if Babili is ready to use.
+   */
+  function hasBabiliLoaded() {
+    if (window.Babili) {
+      return true;
+    }
+    if (isBabiliLoading) {
+      return false;
+    }
+    // Babili-standalone is exported as a UMD script, and thus hits the CommonJS
+    // error ("is not supported in the browser..."), temporarily disable it
+    // while loading.
+    enableCommonJSError = false;
+
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://unpkg.com/babili-standalone@0/babili.min.js';
+    script.onload = function() {
+      enableCommonJSError = true;
+      onSourceChange();
+    };
+    document.head.appendChild(script);
+    isBabiliLoading = true;
+    return false;
+  }
+
   /*
    * Babel options for transpilation as used by the REPL
    */
   function Options () {
-    var $experimental = $('#option-experimental');
-    var $playground = $('#option-playground');
     var $evaluate = $('#option-evaluate');
-    var $loose = $('#option-loose-mode');
-    var $spec = $('#option-spec');
+    var $lineWrap = $('#option-lineWrap');
+    var $babili = $('#option-babili');
 
     var options = {};
     Object.defineProperties(options, {
-      'experimental': $checkbox($experimental),
-      'playground': $checkbox($playground),
-      'evaluate': $checkbox($evaluate),
-      'loose': $checkbox($loose),
-      'spec': $checkbox($spec)
+      babili: $checkbox($babili),
+      evaluate: $checkbox($evaluate),
+      lineWrap: $checkbox($lineWrap),
+      presets: getPresetOptions(),
     });
 
     // Merge in defaults
     var defaults = {
-      experimental : true,
-      playground : false,
-      loose : false,
-      spec : false,
-      evaluate : true
+      babili: false,
+      evaluate: true,
+      lineWrap: false,
+      presets: 'es2015,stage-2,react'
     };
 
     _.assign(options, defaults);
@@ -171,6 +284,8 @@
     this.$errorReporter = $('.babel-repl-errors');
     this.$consoleReporter = $('.babel-repl-console');
     this.$toolBar = $('.babel-repl-toolbar');
+
+    document.getElementById('babel-repl-version').innerHTML = babel.version;
   }
 
   REPL.prototype.clearOutput = function () {
@@ -191,18 +306,27 @@
   };
 
   REPL.prototype.compile = function () {
+    this.output.session.setUseWrapMode(this.options.lineWrap);
 
     var transformed;
     var code = this.getSource();
     this.clearOutput();
 
+    if (this.options.babili && !hasBabiliLoaded()) {
+      this.setOutput('// Babili is loading, please wait...');
+      return;
+    }
+
+    var presets = this.options.presets.split(',');
+    if (this.options.babili) {
+      presets.push('babili');
+    }
+
     try {
       transformed = babel.transform(code, {
-        experimental: this.options.experimental,
-        playground: this.options.playground,
-        loose: this.options.loose && "all",
-        optional: this.options.spec && ["spec.typeofSymbol", "es6.blockScopingTDZ"],
-        filename: 'repl'
+        presets: presets.filter(Boolean),
+        filename: 'repl',
+        babelrc: false,
       });
     } catch (err) {
       this.printError(err.message);
@@ -216,8 +340,9 @@
     }
   };
 
+  var capturingConsole;
   REPL.prototype.evaluate = function(code) {
-    var capturingConsole = Object.create(console);
+    capturingConsole = Object.create(console);
     var $consoleReporter = this.$consoleReporter;
     var buffer = [];
     var error;
@@ -232,37 +357,28 @@
       if (done) flush();
     }
 
+    function capture() {
+      if (this !== capturingConsole) { return; }
+
+      var logs = _.map(arguments, function(log) {
+        return window.prettyFormat(log);
+      });
+
+      write(logs.join(' '));
+    }
+
     capturingConsole.clear = function() {
       buffer = [];
       flush();
+      console.clear();
     };
 
-    capturingConsole.error = function () {
-      error = true;
-      capturingConsole.log.apply(capturingConsole, arguments);
-    };
-
-    capturingConsole.log = 
-    capturingConsole.info = 
-    capturingConsole.debug = function() {
-      if (this !== capturingConsole) { return; }
-
-      var args = Array.prototype.slice.call(arguments);
-      Function.prototype.apply.call(console.log, console, args);
-
-      var logs = args.reduce(function (logs, log) {
-        if (typeof log === 'string') {
-          logs.push(log);
-        } else if (log instanceof Function) {
-          logs.push(log.toString());
-        } else {
-          logs.push(JSON.stringify(log));
-        }
-        return logs;
-      }, []);
-
-      write(logs.join(' '));
-    };
+    ['error', 'log', 'info', 'debug'].forEach(function(key) {
+      capturingConsole[key] = function() {
+        Function.prototype.apply.call(console[key], console, arguments);
+        capture.apply(this, arguments);
+      };
+    });
 
     try {
       new Function('console', code)(capturingConsole);
@@ -273,8 +389,6 @@
 
     done = true;
     flush();
-
-    if (error) throw error;
   };
 
   REPL.prototype.persistState = function (state) {
@@ -286,6 +400,14 @@
    * Initialize the REPL
    */
   var repl = new REPL();
+
+  function onPresetChange() {
+    // Update the list of presets that are displayed on the dropdown list anchor
+    var presetList = repl.options.presets.replace(/,/g, ', ');
+    document.getElementById('babel-repl-selected-presets').innerHTML = presetList;
+
+    onSourceChange();
+  }
 
   function onSourceChange () {
     var error;
@@ -305,8 +427,51 @@
   repl.input.on('change', _.debounce(onSourceChange, 500));
   repl.$toolBar.on('change', onSourceChange);
 
-  repl.compile();
 
+  /*
+   * Make REPL editors resizable by width
+   * Returns a function to disable feature
+   */
+  function initResizable(resizeSelector) {
+    var $container = $('.babel-repl');
+    var $leftPanel = $('.babel-repl-left-panel');
+    var $rightPanel = $('.babel-repl-right-panel');
+    var activeClass = 'babel-repl-resize-active';
+    var offsetX;
 
+    function onResize(e) {
+      var curPos = e.pageX - offsetX;
+      var leftWidth = curPos / $container.width() * 100;
+      var rightWidth = 100 - leftWidth;
+      if (leftWidth < 10 || leftWidth > 90) {
+        return;
+      }
 
-}(babel, $, _, ace, window));
+      $leftPanel.outerWidth(leftWidth + '%');
+      $rightPanel.outerWidth(rightWidth + '%');
+    }
+
+    function onResizeStart(e) {
+      e.preventDefault();
+      offsetX = e.offsetX;
+      $(document).on('mousemove', onResize);
+      $(document).on('mouseup', onResizeStop);
+      $container.addClass(activeClass);
+    }
+
+    function onResizeStop(e) {
+      $(document).off('mousemove', onResize);
+      $(document).off('mouseup', onResizeStop);
+      $container.removeClass(activeClass);
+    }
+
+    $(resizeSelector).on('mousedown', onResizeStart);
+
+    return function() {
+      $(resizeSelector).off('mousedown', onResizeStart);
+    };
+  }
+
+  initResizable('.babel-repl-resize');
+  onPresetChange();
+}(Babel, $, _, ace, window));

@@ -25,6 +25,7 @@
   font-family: $headings-font-family;
   font-size: $font-size-h1;
   padding: $padding-large-vertical $padding-large-horizontal * 2;
+  white-space: normal;
 
   &:not(:first-child) {
     margin-left: $padding-base-horizontal;
@@ -47,5 +48,55 @@
       margin-top: $padding-large-vertical * 2;
       margin-left: 0;
     }
+  }
+}
+
+.btn-icon {
+  color: #B0A673;
+  height: 34px;
+  transition: all 0.25s ease-out;
+
+  &:hover,
+  &:focus {
+    color: #000;
+    text-decoration: none;
+  }
+
+  &__body {
+    align-items: center;
+    display: flex;
+  }
+
+  svg {
+    fill: currentColor;
+    margin-right: 0.4em;
+  }
+
+  &__label {
+    font-size: 11px;
+  }
+}
+
+.btn-clipboard {
+  padding: 0;
+  position: absolute;
+  right: 10px;
+  top: 0;
+
+  &:focus,
+  &:active {
+    outline: 2px solid $link-color;
+  }
+}
+
+.btn-open-in-repl {
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 75px; // size of the button.btn-clipboard
+
+  &:focus,
+  &:active {
+    outline: 2px solid $link-color;
   }
 }

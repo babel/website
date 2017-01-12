@@ -5,19 +5,10 @@ description: Frequently Asked Questions and Answers
 permalink: /docs/faq/
 ---
 
-## What is the browser compatibility?
-
-As a rule of thumb, IE9+. You can support IE8 by limiting yourself to a subset of ES6 features. The
-[Caveats](/docs/usage/caveats) page goes into the details of supporting legacy browsers.
-
-## Why am I getting a syntax error when using `{ ...props }` and `async function foo() {}`?
-
-You need to enable the [experimental option](/docs/usage/experimental).
-
 ## Why is the output of `for...of` so verbose and ugly?
 
 This is necessary in order to comply with the spec as an iterators `return` method must be called on
-errors. An alternative is to enable [loose mode](/docs/usage/loose#abrupt-completions) but please note
+errors. An alternative is to enable [loose mode](/docs/plugins/transform-es2015-for-of/#options-loose) but please note
 that there are **many** caveats to be aware of if you enable loose mode and that you're willingly choosing
 to be spec incompliant.
 
@@ -36,6 +27,10 @@ var user = {
   getFullName: () => {
     // whoops! `this` doesn't actually reference `user` here
     return this.firstName + " " + this.lastName;
+  },
+  // use the method shorthand in objects
+  getFullName2() {
+    return this.firstName + " " + this.lastName;
   }
 };
 ```
@@ -46,67 +41,70 @@ more information.
 
 ## Why is `this` being remapped to `undefined`?
 
-Babel assumes that all input code is an ES6 module. ES6 modules are implicitly strict mode so this means
+Babel assumes that all input code is an ES2015 module. ES2015 modules are implicitly strict mode so this means
 that top-level `this` is not `window` in the browser nor is it `exports` in node.
 
-If you don't want this behaviour then you have the option of disabling the `strict` transformer:
-
-```sh
-$ babel --blacklist strict script.js
-```
-
-```javascript
-require("babel").transform("code", { blacklist: ["strict"] });
-```
+If you don't want this behaviour then you have the option of disabling `strict` in the [es2015-modules-transform](http://babeljs.io/docs/plugins/transform-es2015-modules-commonjs/#usage).
 
 **PLEASE NOTE:** If you do this you're willingly deviating from the spec and this may cause future
 interop issues.
 
-See the [strict transformer docs](/docs/usage/transformers/other/strict) for more info.
+## Help?! I just want to use Babel like it was in 5.x! Everything is too complicated now!
 
-## How does Babel differ from other transpilers?
+We hear you! Babel 6 requires a tiny bit of configuration in order to get going.
+[We think this is for the best](/blog/2015/10/29/6.0.0) and have added
+[presets](/docs/plugins#presets) to ease this transition.
 
-Many issues plague current transpilers, Babel takes a unique approach to many aspects.
+## Upgrading from Babel 5.x to Babel 6
 
-### No runtime dependency
+At the heart of Babel 6 are [plugins](/docs/plugins). What plugins you need completely
+depends on your specific configuration but just add the following `.babelrc` file to
+get all the same transforms that were in Babel 5:
 
-Many transpilers require a globally polluting polyfill and runtime. Babel has various ways
-to avoid this, including concise code that utilises minimal inline helpers as well as
-features such as [runtime](/docs/usage/runtime) that enable library authors to utilise ES6
-methods without the aforementioned polyfill.
+```json
+// .babelrc
+{
+  "presets": ["es2015", "react", "stage-2"]
+}
+```
 
-### Readable output
+```sh
+npm install babel-preset-es2015 babel-preset-react babel-preset-stage-2 --save-dev
+```
 
-Babel cares immensely about your output code. Not only should it not be bound to a bulky
-runtime but it should always retain as much of the source formatting as possible
-(newlines and comments).
+Also check out our [Setting up Babel 6](http://babeljs.io/blog/2015/10/31/setting-up-babel-6) blog post.
 
-### Source maps
+## Where did all the docs go?!
 
-Source maps are critical in the context of transpiled languages. This enables you to
-seamlessly write and debug your code without worrying about what it turns into.
+Babel 6 removes a lot of the options in favor of <a href="/docs/plugins">plugins</a> so a
+lot of the docs are no longer applicable.
 
-### Toggleable transformers
+For every removed option there should be a plugin for it. It's possible we may have missed
+something, if you think this is the case, please
+<a href="https://github.com/babel/babel/issues">open an issue</a>!
 
-With support for ES6 being implemented into engines at a rapid rate it's critical that
-certain transformations have the ability to be turned off. With Babel **every single**
-transformation can be turned off. Classes get supported in your target environment?
-Simply disable it and reap the benefits of all the other transformers.
+Babel is an open source project and we appreciate any and all contributions we can get.
+Please help out with documentation if you can by submitting a pull request to the
+[babel.github.io](https://github.com/babel/babel.github.io) repo.
 
-### Feature-rich
+## How do I build babel from source?
+See [build instructions](https://github.com/babel/babel/blob/master/CONTRIBUTING.md#developing).
 
-The Babel feature set is very comprehensive, supporting every ES6 syntactic feature. With
-built-in support for emerging standards such as [Flow](http://flowtype.org) and
-[JSX/React](/docs/usage/jsx) it makes it extremely easy to integrate.
+## How do I contribute to Babel?
+See [contributing](https://github.com/babel/babel/blob/master/CONTRIBUTING.md).
 
-### Flexible
+## Why am I getting a Syntax Error/Unexpected Token?
+It's most likely the case that you didn't include a plugin/preset that supports that feature. (It's also possible it's a bug in the parser, or that it actually is a syntax error).
 
-Babel is very flexible in it's usage, it has support for an extensive range of
-[build systems](/docs/using-babel#build-systems) as well as for the
-[browser](/docs/usage/browser), [node](/docs/using-babel#node-js) and [more!](/docs/using-babel#misc).
+## Why isn't a certain babel-x package updated?
 
-## What is a module formatter?
+We currently use [Lerna's fixed versioning](https://github.com/lerna/lerna#fixedlocked-mode-default) system.
 
-A module formatter is a transformer that turns exports and imports into their equivalent
-target format. For example, the `common` module formatter transforms
-`import { foo } from "bar";` into the CommonJS `var foo = require("bar").foo;`
+We have a global version for all packages. When we do a release, the only packages that get updated are the packages that
+actually had changes (we do a `git diff` on that folder).
+
+If we only update `babel-plugin-transform-exponentiation-operator` to 6.x.x, currently we don't publish a new version for all packages since the other dependencies are using `^`.
+
+For example, the Babel [v6.6.0 release](https://github.com/babel/babel/releases/tag/v6.6.0) doesn't mean all packages are now 6.6.0.
+
+> To make sure you are using the latest package versions, you may need to remove `node_modules` and `npm install` again.

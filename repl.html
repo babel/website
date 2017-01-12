@@ -3,8 +3,14 @@ layout: default
 permalink: /repl/
 fullscreen: true
 redirect_from: "/repl.html"
+custom_js_with_timestamps:
+- pretty-format.js
+- repl.js
+third_party_js:
+- https://unpkg.com/babel-standalone@6/babel.min.js
+- https://unpkg.com/babel-polyfill@6/dist/polyfill.min.js
+- https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
 ---
-
 <div class="babel-repl">
   <form class="form babel-repl-toolbar">
     <div class="pull-left">
@@ -14,47 +20,42 @@ redirect_from: "/repl.html"
           Evaluate
         </label>
       </div>
+
+      <div class="form-group button-group babel-repl-preset-container">
+        <span class="dropdown-toggle" data-toggle="dropdown">
+          Presets: <span id="babel-repl-selected-presets"></span>
+          <span class="caret"></span>
+        </span>
+        <ul class="dropdown-menu" id="babel-repl-preset-dropdown"></ul>
+      </div>
+
+      <label for="option-lineWrap">
+        <input id="option-lineWrap" type="checkbox">
+        Line Wrap
+      </label>
+
+      <div class="form-group">
+        <label for="option-babili">
+          <input id="option-babili" type="checkbox">
+          Minify (Babili)
+        </label>
+      </div>
     </div>
 
     <div class="pull-right">
-      <div class="form-group hidden">
-        <label for="examples">Examples:</label>
-        <select id="examples">
-          <optgroup label="ES6 Features">
-            <option>Arrows</option>
-            <option>Classes</option>
-            <option>Enhanced Object Literals</option>
-            <option>Template Strings</option>
-            <option>Destructuring</option>
-            <option>Default + Rest + Spread</option>
-            <option>Let + Const</option>
-            <option>Iterators + For..Of</option>
-            <option>Generators</option>
-            <option>Comprehensions</option>
-            <option>Unicode</option>
-            <option>Modules</option>
-            <option>Module Loaders</option>
-            <option>Map + Set + WeakMap + WeakSet</option>
-            <option>Proxies</option>
-            <option>Symbols</option>
-            <option>Subclassable Built-ins</option>
-            <option>Math + Number + String + Object APIs</option>
-            <option>Binary and Octal Literals</option>
-            <option>Promises</option>
-            <option>Reflect API</option>
-            <option>Tail Calls</option>
-          </optgroup>
-        </select>
+      <div class="form-group">
+        <strong>Babel <span id="babel-repl-version"></span></strong>
       </div>
     </div>
   </form>
 
-  <div class="babel-repl-editor babel-repl-input"><div class="ace_editor"></div></div>
-  <div class="babel-repl-editor babel-repl-output"><div class="ace_editor"></div></div>
-  <div class="babel-repl-reporter babel-repl-errors"></div>
-  <div class="babel-repl-reporter babel-repl-console"></div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
-  <script src="{{ "/scripts/babel.js" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
-  <script src="{{ "/scripts/repl.js" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"></script>
+  <div class="babel-repl-left-panel">
+    <div class="babel-repl-editor babel-repl-input"><div class="ace_editor"></div></div>
+    <div class="babel-repl-reporter babel-repl-errors"></div>
+  </div>
+  <div class="babel-repl-right-panel">
+    <div class="babel-repl-resize"></div>
+    <div class="babel-repl-editor babel-repl-output"><div class="ace_editor"></div></div>
+    <div class="babel-repl-reporter babel-repl-console"></div>
+  </div>
 </div>
