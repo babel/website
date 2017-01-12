@@ -4,6 +4,7 @@ title: CLI
 description: How to use the CLI tools.
 permalink: /docs/usage/cli/
 redirect_from: /usage.html
+package: babel-cli
 ---
 
 <p class="lead">
@@ -11,36 +12,31 @@ redirect_from: /usage.html
   command line.
 </p>
 
-## Install
+## Installation
 
-Using [npm](https://www.npmjs.com/) you can install Babel globally, making it
-available from the command line.
-
-```sh
-$ npm install --global babel
-```
+{% include tools/babel_cli/install.md %}
 
 ## babel
 
-#### Compile Files
+### Compile Files
 
 Compile the file `script.js` and **output to stdout**.
 
 ```sh
-$ babel script.js
+babel script.js
 # output...
 ```
 
 If you would like to **output to a file** you may use `--out-file` or `-o`.
 
 ```sh
-$ babel script.js --out-file script-compiled.js
+babel script.js --out-file script-compiled.js
 ```
 
 To compile a file **every time that you change it**, use the `--watch` or `-w` option:
 
 ```sh
-$ babel script.js --watch --out-file script-compiled.js
+babel script.js --watch --out-file script-compiled.js
 ```
 
 ### Compile with Source Maps
@@ -49,28 +45,43 @@ If you would then like to add a **source map file** you can use
 `--source-maps` or `-s`. [Learn more about source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/).
 
 ```sh
-$ babel script.js --out-file script-compiled.js --source-maps
+babel script.js --out-file script-compiled.js --source-maps
 ```
 
-If you would rather have **inline source maps**, you may use
-`--source-maps-inline` or `-t`.
+If you would rather have **inline source maps**, you may use `--source-maps inline`.
 
 ```sh
-$ babel script.js --out-file script-compiled.js --source-maps-inline
+babel script.js --out-file script-compiled.js --source-maps inline
 ```
 
 ### Compile Directories
 
-Compile the entire `src` directory and output it to the `lib` directory.
+Compile the entire `src` directory and output it to the `lib` directory. You may use `--out-dir` or `-d`. This doesn't overwrite any other files or directories in `lib`.
 
 ```sh
-$ babel src --out-dir lib
+babel src --out-dir lib
 ```
 
 Compile the entire `src` directory and output it to the one concatenated file.
 
 ```sh
-$ babel src --out-file script-compiled.js
+babel src --out-file script-compiled.js
+```
+
+### Ignore files
+
+Ignore spec and test files
+
+```sh
+babel src --out-dir lib --ignore spec.js,test.js
+```
+
+### Copy files
+
+Copy files that will not be compiled
+
+```sh
+babel src --out-dir lib --copy-files
 ```
 
 ### Piping Files
@@ -78,10 +89,58 @@ $ babel src --out-file script-compiled.js
 Pipe a file in via stdin and output it to `script-compiled.js`
 
 ```sh
-$ babel --out-file script-compiled.js < script.js
+babel --out-file script-compiled.js < script.js
 ```
 
+### Using Plugins
+
+Use the `--plugins` option to specify plugins to use in compilation
+
+```sh
+babel script.js --out-file script-compiled.js --plugins=es2015,react
+```
+
+### Using Presets
+
+Use the `--presets` option to specify plugins to use in compilation
+
+```sh
+babel script.js --out-file script-compiled.js --presets=add-module-exports,transform-es2015-modules-amd
+```
+
+### Ignoring .babelrc
+
+Ignore the configuration from the projects .babelrc file and use the cli options e.g. for a custom build
+
+```sh
+babel --no-babelrc script.js --out-file script-compiled.js --presets=add-module-exports,transform-es2015-modules-amd
+```
+
+### Advanced Usage
+
+There are many more options available in the babel CLI, see [options](/docs/usage/api/#options), `babel --help` and other sections for more information.
+
 ## babel-node
+
+<blockquote class="babel-callout babel-callout-warning">
+  <h4>Not meant for production use</h4>
+  <p>
+    You should not be using <code>babel-node</code> in production. It is unnecessarily heavy,
+    with high memory usage due to the cache being stored in memory. You will also always
+    experience a startup performance penalty as the entire app needs to be compiled on the fly.
+  </p>
+  <p>
+    Check out the <a href="https://github.com/babel/example-node-server">example Node.js server with Babel</a>
+    for an idea of how to use Babel in a production deployment.
+  </p>
+</blockquote>
+<blockquote class="babel-callout babel-callout-info">
+  <h4>ES6-style module-loading may not function as expected</h4>
+  <p>
+    Due to technical limitations ES6-style module-loading is not fully supported in a <code>babel-node REPL</code>.
+  </p>
+</blockquote>
+
 
 babel comes with a second CLI which works exactly the same as Node.js's CLI, only
 it will compile ES6 code before running it.
@@ -89,31 +148,31 @@ it will compile ES6 code before running it.
 Launch a REPL (Read-Eval-Print-Loop).
 
 ```sh
-$ babel-node
+babel-node
 ```
 
 Evaluate code.
 
 ```sh
-$ babel-node -e "class Test { }"
+babel-node -e "class Test { }"
 ```
 
 Compile and run `test.js`.
 
 ```sh
-$ babel-node test
+babel-node test
 ```
 
 ### Usage
 
 ```sh
-$ babel-node [options] [ -e script | script.js ] [arguments]
+babel-node [options] [ -e script | script.js ] [arguments]
 ```
 
 When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
 
 ```sh
-$ babel-node --debug --experimental -- script.js --debug --experimental
+babel-node --debug --presets es2015 -- script.js --debug
 ```
 
 ### Options
@@ -124,7 +183,5 @@ $ babel-node --debug --experimental -- script.js --debug --experimental
 | `-p, --print`            |                      | Evaluate script and print result |
 | `-i, --ignore [regex]`   | `node_modules`       | Ignore all files that match this regex when using the require hook |
 | `-x, --extensions`       | `".js",".jsx",".es6",".es"` | List of extensions to hook into |
-| `-r, --experimental`     | `false`              | Enable experimental support for proposed ES7 features |
-| `-g, --playground`       | `false`              | Enable playground support       |
-| `-w, --whitelist`        |                      | Whitelist of transformers to ONLY use |
-| `-b, --blacklist`        |                      | Blacklist of transformers to NOT use |
+| `--presets`                | `[]`                 | Comma-separated list of [presets](/docs/plugins/#presets) (a set of plugins) to load and use. |
+| `--plugins`                | `[]`                 | Comma-separated list of [plugins](/docs/plugins/) to load and use. |
