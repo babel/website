@@ -526,3 +526,6 @@
 - name: Bevry
   url: https://bevry.me
   logo: bevry.svg
+- name: Concur
+  url: https://www.concur.com/
+  logo: concur.svg
