@@ -215,9 +215,6 @@ These plugins have no effect anymore, as a newer babylon version enabled them by
 - [exponentiation-operator](/docs/plugins/syntax-exponentiation-operator/) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
 - [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas/) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
 
-### Deprecated
-- [class-constructor-call](/docs/plugins/syntax-class-constructor-call/)
-
 ## Plugin/Preset Paths
 
 If the plugin is on npm, you can pass in the name of the plugin and babel will check that it's installed in `node_modules`
