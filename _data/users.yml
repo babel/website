@@ -529,3 +529,6 @@
 - name: Concur
   url: https://www.concur.com/
   logo: concur.svg
+- name: Tanda
+  url: https://www.tanda.co/
+  logo: tanda.svg
