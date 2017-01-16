@@ -1,7 +1,25 @@
 /* global jQuery*/
 
 (function($){
-    var githubIssuesEndpoint = 'https://api.github.com/repos/babel/babel/issues';
+    var githubIssuesEndpoint;
+
+    switch(window.location.pathname){
+        case "/docs/contributing/babel":
+            githubIssuesEndpoint = 'https://api.github.com/repos/babel/babel/issues';
+            break;
+        case "/docs/contributing/babili":
+            githubIssuesEndpoint = 'https://api.github.com/repos/babel/babili/issues';
+            break;
+        case "/docs/contributing/babylon":
+            githubIssuesEndpoint = 'https://api.github.com/repos/babel/babylon/issues';
+            break;
+        case "/docs/contributing/babel-preset-env":
+            githubIssuesEndpoint = 'https://api.github.com/repos/babel/babel-preset-env/issues';
+            break;
+        default:
+            throw "no github endpoint available for " + window.location.pathname;
+            break;
+    }
 
     $.ajax(githubIssuesEndpoint, {
             data : {
