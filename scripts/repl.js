@@ -77,19 +77,21 @@
   /*
    * Long term storage for persistence of state/etc
    */
-  function StorageService () {
-    this.store = window.localStorage;
+  function StorageService () {}
+
+  StorageService.prototype.getStore = function () {
+    return window.localStorage;
   }
 
   StorageService.prototype.get = function (key) {
     try {
-      return JSON.parse(this.store.getItem(key));
+      return JSON.parse(this.getStore().getItem(key));
     } catch(e) {}
   };
 
   StorageService.prototype.set = function (key, value) {
     try {
-      this.store.setItem(key, JSON.stringify(value));
+      this.getStore().setItem(key, JSON.stringify(value));
     } catch(e) {}
   };
 
