@@ -78,7 +78,12 @@
    * Long term storage for persistence of state/etc
    */
   function StorageService () {
-    this.store = window.localStorage;
+    try {
+      this.store = window.localStorage;
+    } catch (e) {
+      console.warn('Could not access localStorage. Disabling state persistence.');
+      this.store = null;
+    }
   }
 
   StorageService.prototype.get = function (key) {
