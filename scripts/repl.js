@@ -204,6 +204,30 @@
     evt.stopPropagation();
   }
 
+  function getEnvOptions(options) {
+    var origTargets = options.targets,
+    browsers = options.browsers,
+    builtIns = !options.evaluate && options.builtIns;
+
+    var arrayOfTargets = origTargets.split(',').filter(Boolean);
+    var targets = arrayOfTargets.reduce(function(objectOfTargets, target){
+      target = target.split('-');
+      var name = target[0].toLowerCase();
+      var version = parseFloat(target[1]);
+      objectOfTargets[name] = version;
+      return objectOfTargets;
+    }, {});
+
+    if (browsers) {
+      targets.browsers = browsers;
+    }
+
+    return {
+      useBuiltIns: builtIns,
+      targets: targets
+    };
+  };
+
   /**
    * Options for selecting presets to use.
    */
@@ -318,21 +342,23 @@
 
     return {
       get: function() {
-        console.log($targets.filter(function(target) { return target.$checkbox.checked && target.$input.value; }));
-        var t = $targets
+        return $targets
           .filter(function(target) { return target.$checkbox.checked && target.$input.value; })
-          .map(function(target) { return target.$checkbox.value + '(' + target.$input.value + ')' ; })
+          .map(function(target) { return target.$checkbox.value + '-' + target.$input.value; })
           .join(',');
-        return t;
       },
-      set: function(value) {
-        value = value.split(',');
-        $targets.forEach(function(target) {
-          var targetName = value.split('-')[0];
-          var targetVersion = value.split('-')[1];
-          target.$checkbox.checked = targetName && targetName.indexOf(target.$checkbox.value) > -1;
-          target.$input.value = targetVersion && targetName.indexOf(target.$checkbox.value) > -1 ? targetVersion : '';
-        });
+      set: function(valueStr) {
+        var values = valueStr.split(',');
+        values.forEach(function(value){
+          value = value.split('-');
+          $targets.forEach(function(target) {
+            var name = value[0],
+            version = value[1];
+
+            target.$checkbox.checked = name && name.indexOf(target.$checkbox.value) > -1;
+            target.$input.value = version && name.indexOf(target.$checkbox.value) > -1 ? version : target.$input.value;
+          });
+        })
       },
       enumerable: true,
       configurable: true,
@@ -467,14 +493,8 @@
     if (presets.includes('env')) {
       presets = presets.map((preset) => {
         if (preset === 'env') {
-          var options = {
-            useBuiltIns: this.options.builtIns,
-            targets: {
-              browsers: this.options.browsers
-            }
-          };
-
-          preset = ["env", options];
+          var envOptions = getEnvOptions(this.options);
+          return ["env", envOptions];
         }
         return preset;
       })
@@ -561,12 +581,12 @@
 
   function onPresetChange() {
     // Update the list of presets that are displayed on the dropdown list anchor
-    // var $envBrowsers = document.getElementById('option-browsers-wrapper');
+    var $envTargets = $('.babel-repl-targets-container');
     // var $envBuiltIns = document.getElementById('option-builtIns-wrapper');
     var presetList = repl.options.presets.replace(/,/g, ', ');
     var envIncluded = repl.options.presets.includes('env');
 
-    // $envBrowsers.classList.toggle('hidden', !envIncluded);
+    $envTargets.toggleClass('hidden', !envIncluded);
     // $envBuiltIns.classList.toggle('hidden', !envIncluded);
 
     document.getElementById('babel-repl-selected-presets').innerHTML = presetList;
@@ -666,4 +686,5 @@
 
   initResizable('.babel-repl-resize');
   onPresetChange();
+  onTargetChange();
 }(Babel, $, _, ace, window));
