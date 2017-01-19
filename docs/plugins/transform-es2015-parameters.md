@@ -1,15 +1,9 @@
 ---
 layout: docs
 title: ES2015 parameters transform
-description:
+description: Compile ES2015 default and rest parameters to ES5
 permalink: /docs/plugins/transform-es2015-parameters/
 package: babel-plugin-transform-es2015-parameters
 ---
-
-This plugin transforms ES2015 parameters to ES5, this includes:
-
-- Destructuring parameters
-- Default parameters
-- Rest parameters
 
 {% include package_readme.html %}

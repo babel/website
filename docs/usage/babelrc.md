@@ -5,7 +5,7 @@ description: How to use the .babelrc
 permalink: /docs/usage/babelrc/
 ---
 
-All Babel API [options](/docs/usage/options) except the callbacks are allowed (because `.babelrc` files are serializable JSON). Babel uses [JSON5](https://github.com/json5/json5).
+All Babel API [options](/docs/usage/options) except the callbacks are allowed (because `.babelrc` files are serialized as [JSON5](https://github.com/json5/json5)).
 
 **Example:**
 
@@ -84,4 +84,4 @@ YOUR_COMMAND_HERE
 
 Babel will look for a `.babelrc` in the current directory of the file being transpiled. If one does not exist, it will travel up the directory tree until it finds either a `.babelrc`, or a `package.json` with a `"babel": {}` hash within.
 
-Use `"babelrc": false` to stop lookup behavior.
+Use `"babelrc": false` in [options](/docs/usage/api/#options) to stop lookup behavior, or provide the [`--no-babelrc` CLI flag](/docs/usage/cli/#babel-ignoring-babelrc).

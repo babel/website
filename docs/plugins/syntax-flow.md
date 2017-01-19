@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Syntax flow
-description:
+description: Allow parsing of the flow syntax
 permalink: /docs/plugins/syntax-flow/
 package: babel-plugin-syntax-flow
 ---

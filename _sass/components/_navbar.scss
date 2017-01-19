@@ -27,3 +27,18 @@
   }
 }
 
+.nav-social {
+  @include align-items(center);
+  @include flexbox;
+
+  > li > a {
+    @include flexbox;
+  }
+
+  svg {
+    display: block;
+    fill: currentColor;
+    height: 16px;
+    width: 16px;
+  }
+}

@@ -520,3 +520,15 @@
 - name: Indigo
   url: https://www.chapters.indigo.ca/
   logo: indigo.svg
+- name: Namely
+  url: https://www.namely.com/
+  logo: namely.svg
+- name: Bevry
+  url: https://bevry.me
+  logo: bevry.svg
+- name: Concur
+  url: https://www.concur.com/
+  logo: concur.svg
+- name: Tanda
+  url: https://www.tanda.co/
+  logo: tanda.svg
