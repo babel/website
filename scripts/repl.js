@@ -1,5 +1,7 @@
 (function(babel, $, _, ace, window) {
   'use strict';
+  var UPDATE_DELAY = 500;
+
   var presets = [
     'env',
     'es2015',
@@ -26,9 +28,10 @@
     {name: "Node", label: "Node.js", min: '0.10', default: 7.4, step: 0.1}
   ];
 
-  /* Throw meaningful errors for getters of commonjs. */
+  /* Register standalone version of env preset. */
   Babel.registerPreset('env', babelPresetEnv.default);
 
+  /* Throw meaningful errors for getters of commonjs. */
   var enableCommonJSError = true;
   ["module", "exports", "require"].forEach(function(commonVar){
     Object.defineProperty(window, commonVar, {
@@ -161,13 +164,6 @@
       enumerable: true,
       configurable: false
     };
-  }
-
-  /**
-   * Handle browsers input to update repl.
-  */
-  function handleBrowsersChange(evt) {
-    onSourceChange();
   }
 
   /**
@@ -411,8 +407,8 @@
       lineWrap: $checkboxValue($lineWrap),
       presets: getPresetOptions(),
       targets: getTargetOptions(),
-      browsers: $inputValue($browsers)
-      // builtIns: $checkboxValue($builtIns)
+      browsers: $inputValue($browsers),
+      builtIns: $checkboxValue($builtIns)
     });
 
     // Merge in defaults
@@ -582,12 +578,14 @@
   function onPresetChange() {
     // Update the list of presets that are displayed on the dropdown list anchor
     var $envTargets = $('.babel-repl-targets-container');
-    // var $envBuiltIns = document.getElementById('option-builtIns-wrapper');
-    var presetList = repl.options.presets.replace(/,/g, ', ');
-    var envIncluded = repl.options.presets.includes('env');
+    var $envBuiltIns = $('#option-builtIns-wrapper');
 
+    var presetList = repl.options.presets.replace(/,/g, ', ');
+
+    // Hide targets anchor unless env preset is selected.
+    var envIncluded = repl.options.presets.includes('env');
     $envTargets.toggleClass('hidden', !envIncluded);
-    // $envBuiltIns.classList.toggle('hidden', !envIncluded);
+    $envBuiltIns.toggleClass('hidden', !envIncluded);
 
     document.getElementById('babel-repl-selected-presets').innerHTML = presetList;
 
@@ -595,28 +593,33 @@
   }
 
   function onTargetChange() {
-    // Update the list of presets that are displayed on the dropdown list anchor
-    // var $envBrowsers = document.getElementById('option-browsers-wrapper');
-    // var $envBuiltIns = document.getElementById('option-builtIns-wrapper');
+    // Update the list of targets that are displayed on the dropdown list anchor
+    var browsersList = repl.options.browsers;
     var targetList = repl.options.targets.replace(/,/g, ', ');
+    var targetsEl = document.getElementById('babel-repl-selected-targets');
 
-    // $envBrowsers.classList.toggle('hidden', !envIncluded);
-    // $envBuiltIns.classList.toggle('hidden', !envIncluded);
+    if (browsersList.length && targetList.length) {
+      browsersList += ', ';
+    }
 
-    document.getElementById('babel-repl-selected-targets').innerHTML = targetList;
+    targetsEl.innerHTML = browsersList + targetList;
 
     onSourceChange();
   }
 
-  function onTargetCheck(rule, evt) {
-    var value = evt.currentTarget.value;
-    var isUnder = rule.under && rule.under > value;
-    var isOver = rule.over && rule.over < value;
-    console.log(isUnder)
-    if ( isUnder || isOver ) {
-      // evt.currentTarget.step = 0.01;
-      evt.currentTarget.value = rule.value;
+  function onToolbarChange() {
+    var $envBuiltIns = $('#option-builtIns-wrapper');
+    var $envBuiltInsInput = $envBuiltIns.find('input[type=checkbox]');
+    var evaluate = repl.options.evaluate;
+    var title = evaluate ? 'Disabled in evaluate mode' : '';
+
+    $envBuiltIns.attr('title', title);
+    if (evaluate) {
+      $envBuiltInsInput.prop('checked', false);
     }
+    $envBuiltInsInput.attr('disabled', evaluate);
+
+    onSourceChange();
   }
 
   function onSourceChange() {
@@ -634,9 +637,9 @@
     if (error) throw error;
   }
 
-  repl.input.on('change', _.debounce(onSourceChange, 500));
-  repl.$envBar.on('keyup', _.debounce(handleBrowsersChange, 1000));
-  repl.$toolBar.on('change', onSourceChange);
+  repl.input.on('change', _.debounce(onSourceChange, UPDATE_DELAY));
+  repl.$envBar.on('keyup', _.debounce(onTargetChange, UPDATE_DELAY));
+  repl.$toolBar.on('change', onToolbarChange);
   repl.$textareaWrapper.on('click', function(e){e.stopPropagation();})
 
 
@@ -687,4 +690,5 @@
   initResizable('.babel-repl-resize');
   onPresetChange();
   onTargetChange();
+  onToolbarChange();
 }(Babel, $, _, ace, window));
