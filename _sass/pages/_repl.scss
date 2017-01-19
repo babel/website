@@ -143,22 +143,34 @@
         display: block;
         font-size: 12px;
         padding: 5px;
+        resize: vertical;
       }
     }
 
     .dropdown-menu-list {
       margin-top: 4px;
 
-      li a {
-        padding: 3px 10px;
+      li {
+        list-style: none;
+        a {
+          padding: 5px 10px;
+          min-height: 26px;
 
-        input {
-          float: right;
-        }
-        input[type='number'] {
-          width: 30%;
-          margin-right: 5px;
-          margin-top: -1px;
+          span {
+            float: left;
+          };
+
+          input {
+            float: right;
+          }
+          input[type='checkbox'] {
+            margin-top: 2px;
+          }
+          input[type='number'] {
+            width: 30%;
+            margin-right: 5px;
+            margin-top: -3px;
+          }
         }
       }
     }

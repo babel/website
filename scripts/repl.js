@@ -312,7 +312,10 @@
       $label.href = '#';
       $label.className = 'small';
       $label.tabIndex = -1;
-      $label.appendChild(document.createTextNode(targetLabel));
+
+      var $span = document.createElement('span');
+      $span.innerHTML = targetLabel;
+      $label.appendChild($span);
 
       $label.addEventListener(
         'click',
