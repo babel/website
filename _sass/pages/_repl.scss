@@ -138,6 +138,7 @@
         font-size: 12px;
         font-weight: 400;
       }
+
       #option-browsers {
         margin: auto;
         display: block;
@@ -152,6 +153,7 @@
 
       li {
         list-style: none;
+
         a {
           padding: 5px 10px;
           min-height: 26px;
@@ -163,9 +165,11 @@
           input {
             float: right;
           }
+
           input[type='checkbox'] {
             margin-top: 2px;
           }
+
           input[type='number'] {
             width: 30%;
             margin-right: 5px;
