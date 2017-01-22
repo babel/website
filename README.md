@@ -62,6 +62,22 @@ git submodule foreach git pull origin master
 You can safely push them once updated.
 Note, the website will fetch all latest submodule versions during deployment.
 
+#### Linting markdown
+
+```sh
+npm test
+```
+
+This will lint markdown documents inside both the website and the imported repositories (like babel, babili, etc).
+
+#### Testing compiled output
+
+```sh
+rake
+```
+
+Running this will check the compiled output for broken links and invalid markup.
+
 #### Looking for support?
 
 For questions and support please join our [Slack community](https://slack.babeljs.io/), channel #website or directly [here](https://babeljs.slack.com/messages/website/).
