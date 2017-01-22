@@ -25,6 +25,7 @@ browserify({ debug: true })
   .on("error", function (err) { console.log("Error: " + err.message); })
   .pipe(fs.createWriteStream("bundle.js"));
 ```
+
 #### Passing options
 
 **CLI**

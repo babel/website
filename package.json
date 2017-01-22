@@ -7,15 +7,23 @@
   "scripts": {
     "start": "make serve",
     "build": "make build",
-    "test": "remark _posts docs _includes README.md"
+    "test": "remark _posts docs _includes README.md --quiet"
   },
   "remarkConfig": {
+    "quiet": true,
     "presets": [
       "lint-recommended"
     ],
     "plugins": {
       "remark-lint": {
-        "list-item-indent": "space"
+        "list-item-bullet-indent": false,
+        "list-item-indent": "space",
+        "no-blockquote-without-caret": false,
+        "no-duplicate-headings-in-section": true,
+        "no-empty-url": true,
+        "no-literal-urls": false,
+        "no-shortcut-reference-link": false,
+        "no-undefined-references": false
       }
     }
   },

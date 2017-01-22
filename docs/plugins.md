@@ -71,13 +71,16 @@ These plugins apply transformations to your code.
 </blockquote>
 
 ### ES3
+
 - [es3-member-expression-literals](/docs/plugins/transform-es3-member-expression-literals/)
 - [es3-property-literals](/docs/plugins/transform-es3-property-literals/)
 
 ### ES5
+
 - [es5-property-mutators](/docs/plugins/transform-es5-property-mutators/)
 
 ### ES2015
+
 - [es2015-arrow-functions](/docs/plugins/transform-es2015-arrow-functions/)
 - [es2015-block-scoped-functions](/docs/plugins/transform-es2015-block-scoped-functions/)
 - [es2015-block-scoping](/docs/plugins/transform-es2015-block-scoping/)
@@ -99,18 +102,22 @@ These plugins apply transformations to your code.
 - [es2015-unicode-regex](/docs/plugins/transform-es2015-unicode-regex/)
 
 ### ES2016
+
 - [exponentiation-operator](/docs/plugins/transform-exponentiation-operator/)
 
 ### ES2017
+
 - [async-to-generator](/docs/plugins/transform-async-to-generator/)
 
 ### Modules
+
 - [es2015-modules-amd](/docs/plugins/transform-es2015-modules-amd/)
 - [es2015-modules-commonjs](/docs/plugins/transform-es2015-modules-commonjs/)
 - [es2015-modules-systemjs](/docs/plugins/transform-es2015-modules-systemjs/)
 - [es2015-modules-umd](/docs/plugins/transform-es2015-modules-umd/)
 
 ### Experimental
+
 - [async-generator-functions](/docs/plugins/transform-async-generator-functions/)
 - [async-to-module-method](/docs/plugins/transform-async-to-module-method/)
 - [class-constructor-call](/docs/plugins/transform-class-constructor-call/) (deprecated)
@@ -152,6 +159,7 @@ These plugins are in the minify repo.
 - [undefined-to-void](/docs/plugins/transform-undefined-to-void/)
 
 ### React
+
 - [react-constant-elements](/docs/plugins/transform-react-constant-elements/)
 - [react-display-name](/docs/plugins/transform-react-display-name/)
 - [react-inline-elements](/docs/plugins/transform-react-inline-elements/)
@@ -161,6 +169,7 @@ These plugins are in the minify repo.
 - [react-jsx-source](/docs/plugins/transform-react-jsx-source/)
 
 ### Other
+
 - [eval](/docs/plugins/transform-eval/)
 - [flow-comments](/docs/plugins/transform-flow-comments/)
 - [flow-strip-types](/docs/plugins/transform-flow-strip-types/)
@@ -195,6 +204,7 @@ You can also provide any [`plugins` option](https://github.com/babel/babylon/#pl
 ```
 
 ### Experimental
+
 - [async-generators](/docs/plugins/syntax-async-generators/)
 - [class-properties](/docs/plugins/syntax-class-properties/)
 - [decorators](/docs/plugins/syntax-decorators/)
@@ -216,6 +226,7 @@ These plugins have no effect anymore, as a newer babylon version enabled them by
 - [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas/) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
 
 ### Deprecated
+
 - [class-constructor-call](/docs/plugins/syntax-class-constructor-call/)
 
 ## Plugin/Preset Paths

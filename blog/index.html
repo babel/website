@@ -7,11 +7,11 @@ description: The official babel blog.
 <div class="babel-blog">
   {% for post in site.posts %}
     <div class="babel-blog-post">
-      <h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+      <h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a></h2>
 
       <p class="small text-muted">Posted {{ post.date | date: "%b %-d, %Y" }} by {{ post.author }}{% if post.meta %} · {{ post.meta }}{% endif %}</p>
 
-      <p class="babel-blog-excerpt">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}</p>
+      <div class="babel-blog-excerpt">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}</div>
     </div>
   {% endfor %}
 </div>

@@ -6,7 +6,10 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://babeljs.io" # the base hostname & protocol for your site
 # twitter_username: jekyllrb
 github_username: babel
-exclude: ["node_modules"]
+
+exclude:
+  - vendor
+  - node_modules
 
 # Build settings
 highlighter: rouge
@@ -43,3 +46,6 @@ compress_html:
   # endings: all
   profile: false
   startings: [head, body]
+
+# Get consistent pagination links with production
+timezone: "-0500"
