@@ -495,7 +495,7 @@
     }
 
     if (presets.includes('env')) {
-      presets = presets.map((preset) => {
+      presets = presets.map(function (preset) {
         if (preset === 'env') {
           var envOptions = getEnvOptions(this.options);
           return ["env", envOptions];
