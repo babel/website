@@ -15,10 +15,9 @@
         background-color: #f5da55;
         padding: 3px 5px;
         margin-right: 5px;
-      }
-
-      span.issueNumber.error {
-        background-color: #a54f51;
+        display:inline-block;
+        min-width: 48px;
+        text-align:right;
       }
     }
   }
