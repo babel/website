@@ -2,7 +2,7 @@
 layout: docs
 title: Contributing
 description: Contributing to Babili
-permalink: /docs/contributing/babili
+permalink: /contributing/babili
 custom_js_with_timestamps:
 - contributing.js
 ---

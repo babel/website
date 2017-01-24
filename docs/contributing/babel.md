@@ -2,7 +2,7 @@
 layout: docs
 title: Contributing
 description: Contributing to Babel
-permalink: /docs/contributing/babel
+permalink: /contributing/babel
 custom_js_with_timestamps:
 - contributing.js
 ---
