@@ -21,6 +21,7 @@ custom_js_with_timestamps:
 
 - add-module-exports - https://github.com/babel/babel/issues/5127
 - https://github.com/babel/babel/pull/5128
+- https://github.com/babel/babel/issues/5197
 
 ## babel
 
