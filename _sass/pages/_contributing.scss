@@ -14,7 +14,11 @@
       span.issueNumber {
         background-color: #f5da55;
         padding: 3px 5px;
-        margin-right: 5px
+        margin-right: 5px;
+      }
+
+      span.issueNumber.error {
+        background-color: #a54f51;
       }
     }
   }
