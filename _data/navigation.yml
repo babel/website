@@ -36,10 +36,10 @@
   subnav:
       - items:
           - title: Babel
-            url: /docs/contributing/babel
+            url: /contributing/babel
           - title: Babel Preset Env
-            url: /docs/contributing/babel-preset-env
+            url: /contributing/babel-preset-env
           - title: Babili
-            url: /docs/contributing/babili
+            url: /contributing/babili
           - title: Babylon
-            url: /docs/contributing/babylon
+            url: /contributing/babylon

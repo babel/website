@@ -6,22 +6,22 @@
     var githubHTMLHelpWantedURL;
 
     switch(window.location.pathname){
-        case "/docs/contributing/babel":
+        case "/contributing/babel":
             githubIssuesEndpoint = 'https://api.github.com/repos/babel/babel/issues';
             githubHTMLBeginnerFriendlyURL = "https://github.com/babel/babel/labels/beginner-friendly";
             githubHTMLHelpWantedURL = "https://github.com/babel/babel/labels/help%20wanted";
             break;
-        case "/docs/contributing/babili":
+        case "/contributing/babili":
             githubIssuesEndpoint = 'https://api.github.com/repos/babel/babili/issues';
             githubHTMLBeginnerFriendlyURL = "https://github.com/babel/babili/labels/beginner-friendly";
             githubHTMLHelpWantedURL = "https://github.com/babel/babili/labels/help%20wanted";
             break;
-        case "/docs/contributing/babylon":
+        case "/contributing/babylon":
             githubIssuesEndpoint = 'https://api.github.com/repos/babel/babylon/issues';
             githubHTMLBeginnerFriendlyURL = "https://github.com/babel/babylon/labels/beginner-friendly";
             githubHTMLHelpWantedURL = "https://github.com/babel/babylon/labels/help%20wanted";
             break;
-        case "/docs/contributing/babel-preset-env":
+        case "/contributing/babel-preset-env":
             githubIssuesEndpoint = 'https://api.github.com/repos/babel/babel-preset-env/issues';
             githubHTMLBeginnerFriendlyURL = "https://github.com/babel/babel-preset-env/labels/beginner-friendly";
             githubHTMLHelpWantedURL = "https://github.com/babel/babel-preset-env/labels/help%20wanted";

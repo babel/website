@@ -2,7 +2,7 @@
 layout: docs
 title: Contributing
 description: Contributing to Babel Preset Env
-permalink: /docs/contributing/babel-preset-env
+permalink: /contributing/babel-preset-env
 custom_js_with_timestamps:
 - contributing.js
 ---
