@@ -477,27 +477,28 @@
   };
 
   REPL.prototype.compile = function () {
-    this.output.session.setUseWrapMode(this.options.lineWrap);
+    var options = this.options;
+    this.output.session.setUseWrapMode(options.lineWrap);
 
     var transformed;
     var code = this.getSource();
     this.clearOutput();
 
-    if (this.options.babili && !hasBabiliLoaded()) {
+    if (options.babili && !hasBabiliLoaded()) {
       this.setOutput('// Babili is loading, please wait...');
       return;
     }
 
-    var presets = this.options.presets.split(',');
+    var presets = options.presets.split(',');
 
-    if (this.options.babili) {
+    if (options.babili) {
       presets.push('babili');
     }
 
     if (presets.includes('env')) {
       presets = presets.map(function (preset) {
         if (preset === 'env') {
-          var envOptions = getEnvOptions(this.options);
+          var envOptions = getEnvOptions(options);
           return ["env", envOptions];
         }
         return preset;
@@ -517,7 +518,7 @@
 
     this.setOutput(transformed.code);
 
-    if (this.options.evaluate) {
+    if (options.evaluate) {
       this.evaluate(transformed.code);
     }
   };
