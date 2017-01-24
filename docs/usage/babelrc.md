@@ -67,6 +67,7 @@ Or as a separate command:
 ```sh
 export NODE_ENV=production
 ```
+
 ```sh
 YOUR_COMMAND_HERE
 ```
@@ -76,6 +77,7 @@ YOUR_COMMAND_HERE
 ```sh
 SET BABEL_ENV=production
 ```
+
 ```sh
 YOUR_COMMAND_HERE
 ```

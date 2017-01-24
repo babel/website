@@ -20,6 +20,7 @@ For example:
   }
 }
 ```
+
 Or you can simply `"inherit"` the Babel configuration from
 [`.babelrc`](/docs/usage/babelrc/) or Babel's
 [`package.json` configuration](/docs/usage/babelrc/), making test files
@@ -43,4 +44,3 @@ your plugins see <a href="https://github.com/sindresorhus/ava/blob/master/docs/r
     how to configure</a> Babel.
   </p>
 </blockquote>
-

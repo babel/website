@@ -353,7 +353,7 @@ export default function ({types: t}) {
       {% for user in site.data.users limit:18 %}
         <div class="col-md-4 col-sm-6">
           <a class="babel-user" href="{{user.url}}" title="{{user.name}}">
-            <img class="img-responsive" data-lazy="/images/users/{{user.logo}}" alt="{{user.name}}">
+            <img class="img-responsive" data-lazy="/images/users/{{user.logo}}" alt="{{user.name}}" data-proofer-ignore>
           </a>
         </div>
       {% endfor %}
