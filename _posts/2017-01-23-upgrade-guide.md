@@ -75,7 +75,7 @@ to:
 mocha --compilers js:babel-register
 ```
 
-We need to add `babel-register` as a new dependecy:
+We need to add `babel-register` as a new dependency:
 
 ```sh
 npm install --save-dev babel-register
