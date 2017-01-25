@@ -11,11 +11,11 @@ custom_js_with_timestamps:
 - docs.js
 ---
 
-- [babel](#babel)
-- [babylon](#babylon)
-- [babel-core](#babel-core)
-- [babel-preset-stage-3](#babel-preset-stage-3)
-- [babel-plugin-syntax-class-constructor-call](#babel-plugin-syntax-class-constructor-call)
+- [babel]({{page.url}}#babel)
+- [babylon]({{page.url}}#babylon)
+- [babel-core]({{page.url}}#babel-core)
+- [babel-preset-stage-3]({{page.url}}#babel-preset-stage-3)
+- [babel-plugin-syntax-class-constructor-call]({{page.url}}#babel-plugin-syntax-class-constructor-call)
 
 # TODO
 
