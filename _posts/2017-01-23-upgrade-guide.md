@@ -29,10 +29,6 @@ custom_js_with_timestamps:
 
 We highly encourage you to use a newer version of Node.js since these versions are in end of maintenance.
 
-#### Yarn
-
-Along npm Babel supports Yarn. See [Yarn's documentation](https://yarnpkg.com/en/docs/usage) on how to use it.
-
 ## babylon
 
 #### Trailing comma after rest parameter in objects is not allowed anymore
