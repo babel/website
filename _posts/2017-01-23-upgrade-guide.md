@@ -19,6 +19,8 @@ Babel 7 is out! This document aims to help people with upgrading Babel.
 - [Babel-preset-stage-3]({{page.url}}#babel-preset-stage-3)
 - [Babel-plugin-syntax-class-constructor-call]({{page.url}}#babel-plugin-syntax-class-constructor-call)
 
+See [...](...) for the full changelog.
+
 # TODO
 
 - add-module-exports - https://github.com/babel/babel/issues/5127
@@ -174,3 +176,7 @@ let p2 = Point.secondConstructor(3, 4);
 ```
 
 See [/docs/plugins/transform-class-properties/](/docs/plugins/transform-class-properties/) for more informations.
+
+<blockquote class="babel-callout">
+  <small>We're Riding the Bus to Flavortown!</small>
+</blockquote>
