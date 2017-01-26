@@ -11,11 +11,13 @@ custom_js_with_timestamps:
 - docs.js
 ---
 
-- [babel]({{page.url}}#babel)
-- [babylon]({{page.url}}#babylon)
-- [babel-core]({{page.url}}#babel-core)
-- [babel-preset-stage-3]({{page.url}}#babel-preset-stage-3)
-- [babel-plugin-syntax-class-constructor-call]({{page.url}}#babel-plugin-syntax-class-constructor-call)
+Babel 7 is out! This document aims to help people with upgrading Babel.
+
+- [Babel]({{page.url}}#babel)
+- [Babylon]({{page.url}}#babylon)
+- [Babel-core]({{page.url}}#babel-core)
+- [Babel-preset-stage-3]({{page.url}}#babel-preset-stage-3)
+- [Babel-plugin-syntax-class-constructor-call]({{page.url}}#babel-plugin-syntax-class-constructor-call)
 
 # TODO
 
@@ -23,15 +25,21 @@ custom_js_with_timestamps:
 - https://github.com/babel/babel/pull/5128
 - https://github.com/babel/babel/issues/5197
 
-## babel
+## Babel
 
-#### Support for Node.js 0.10 and 0.12 has been dropped
+> Support for Node.js 0.10 and 0.12 has been dropped
 
 We highly encourage you to use a newer version of Node.js since these versions are in end of maintenance.
+See [nodejs/LTS](https://github.com/nodejs/LTS) for more informations.
 
-## babylon
+Note that the Babel compiler is only supported officially in these environments:
 
-#### Trailing comma after rest parameter in objects is not allowed anymore
+* Modern browsers such as Chrome, Firefox, Safari, Edge etc.
+* Node.js 4 and upper versions
+
+## Babylon
+
+> Trailing comma after rest parameter in objects is not allowed anymore
 
 Before:
 
@@ -53,9 +61,9 @@ or:
 var { ...y, b } = { a: 1};
 ```
 
-## babel-core
+## Babel-core
 
-#### `babel-core/register.js` has been removed
+> `babel-core/register.js` has been removed
 
 Relying on babel-core/register is deprecated and will be removed in Babel 7.
 
@@ -79,25 +87,47 @@ npm install --save-dev babel-register
 
 See [babel-register documentation](https://babeljs.io/docs/usage/babel-register/) for more informations.
 
-## babel-preset-stage-3
+## Babel-preset-stage-3
 
-#### `babel-plugin-syntax-trailing-function-commas`, `babel-plugin-transform-async-to-generator` and `babel-plugin-transform-exponentiation-operator` are moved into `babel-preset-stage-4`.
+> Presets moved
+
+Theses plugins were moved into `babel-preset-stage-4`:
+
+* `babel-plugin-syntax-trailing-function-commas`
+
+  Example:
+
+  ```js
+  clownPuppiesEverywhere(
+    'foo',
+    'bar', // Next parameter that's added only has to add a new line, not modify this line
+  );
+  ```
+
+* `babel-plugin-transform-async-to-generator`
+
+  Example:
+
+  ```js
+  async function foo() {
+      await bar();
+  }
+  ```
+
+* `babel-plugin-transform-exponentiation-operator`
+
+  Example:
+
+  ```js
+  let cubed = 2 ** 3;
+  ```
 
 Babel recently created `babel-preset-env` which based on your environment use the right presets. If you have issue with this changes we suggest you using the env preset.
+See [/docs/plugins/preset-env/](/docs/plugins/preset-env/) for more informations.
 
-#### `babel-plugin-transform-exponentiation-operator` has been removed from this preset
+## Babel-plugin-syntax-class-constructor-call
 
-Example:
-
-```js
-let cubed = 2 ** 3;
-```
-
-If you rely on this syntax, we suggest you using rather the env preset.
-
-## babel-plugin-syntax-class-constructor-call
-
-#### babel-plugin-syntax-class-constructor-call has been removed
+> babel-plugin-syntax-class-constructor-call has been removed
 
 TC39 decided to drop this proposal.
 
@@ -122,3 +152,25 @@ let p2 = Point(3, 4);
 ```
 
 You can move your logic into the constructor or into a static method.
+
+Example with a static method:
+
+```js
+class Point {
+
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  static secondConstructor(x, y) {
+    return new Point(x, y);
+  }
+
+}
+
+let p1 = new Point(1, 2);
+let p2 = Point.secondConstructor(3, 4);
+```
+
+See [/docs/plugins/transform-class-properties/](/docs/plugins/transform-class-properties/) for more informations.
