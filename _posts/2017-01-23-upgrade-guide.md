@@ -41,6 +41,14 @@ Note that the Babel compiler is only supported officially in these environments:
 
 ## Babylon
 
+> Removed `*` plugin switch
+
+This was removed and instead you should specificly deside which plugins you want to activate.
+
+> Removed `classConstructorCall` plugin
+
+See <below(link to the babel section about this)> for more information.
+
 > Trailing comma after rest parameter in objects is not allowed anymore
 
 Before:
@@ -62,6 +70,14 @@ or:
 ```js
 var { ...y, b } = { a: 1};
 ```
+
+### AST changes
+
+These changes are most probably not affecting you if you use babel. They will only affect you if you use our parser babylon directly and it's output.
+
+* Flow: Node renamed from ExistentialTypeParam to ExistsTypeAnnotation
+* Flow: Node renamed from NumericLiteralTypeAnnotation to NumberLiteralTypeAnnotation
+* Flow: New node `Variance` which replaces the string value of the `variance` field on several nodes (be more specific here)
 
 ## Babel-core
 
