@@ -45,6 +45,36 @@ Note that the Babel compiler is only supported officially in these environments:
 
 This was removed and instead you should specificly deside which plugins you want to activate.
 
+Before:
+
+```js
+babylon.parse(code, {
+  plugins: [ "*" ]
+})
+```
+
+While this is not recommended for performmance issues, you can get the old behavior using:
+
+```js
+babylon.parse(code, {
+  plugins: [
+    "asyncGenerators",
+    "classProperties",
+    "decorators",
+    "doExpressions",
+    "dynamicImport",
+    "exportExtensions",
+    "flow",
+    "functionBind",
+    "functionSent",
+    "jsx",
+    "objectRestSpread",
+  ]
+})
+```
+
+See [Babylon's plugins](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
+
 > Removed `classConstructorCall` plugin
 
 See <below(link to the babel section about this)> for more information.
@@ -73,11 +103,13 @@ var { ...y, b } = { a: 1};
 
 ### AST changes
 
-These changes are most probably not affecting you if you use babel. They will only affect you if you use our parser babylon directly and it's output.
+These changes are most probably not affecting you if you use babel. They will only affect you if you use our parser Babylon directly and it's output.
 
-* Flow: Node renamed from ExistentialTypeParam to ExistsTypeAnnotation
-* Flow: Node renamed from NumericLiteralTypeAnnotation to NumberLiteralTypeAnnotation
+* Flow: Node renamed from `ExistentialTypeParam` to `ExistsTypeAnnotation`
+* Flow: Node renamed from `NumericLiteralTypeAnnotation` to `NumberLiteralTypeAnnotation`
 * Flow: New node `Variance` which replaces the string value of the `variance` field on several nodes (be more specific here)
+
+See [TODO: Babel's AST documentation]() for more informations.
 
 ## Babel-core
 
