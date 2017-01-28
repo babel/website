@@ -53,7 +53,7 @@ babylon.parse(code, {
 })
 ```
 
-While this is not recommended for performmance issues, you can get the old behavior using:
+You can get the old behavior using:
 
 ```js
 babylon.parse(code, {
