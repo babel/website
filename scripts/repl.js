@@ -1,7 +1,9 @@
 (function(babel, $, _, ace, window) {
   'use strict';
+  var UPDATE_DELAY = 500;
 
   var presets = [
+    'env',
     'es2015',
     'es2015-loose',
     'es2016',
@@ -13,6 +15,21 @@
     'stage-2',
     'stage-3'
   ];
+
+  var targets = [
+    // {name: "Chrome", min: 4, default: 58},
+    // {name: "Opera", min: 10, default: 44},
+    // {name: "Edge", min: 12, default: 15},
+    // {name: "Firefox", min: 2, default: 53},
+    // {name: "Safari", min: 3, default: 10},
+    // {name: "IE", min: 6, default: 11},
+    // {name: "iOS", min: 3, default: 10},
+    {name: "Electron", min: 0.3, default: 1.5, step: 0.1},
+    {name: "Node", label: "Node.js", min: '0.10', default: 7.4, step: 0.1}
+  ];
+
+  /* Register standalone version of env preset. */
+  Babel.registerPreset('env', babelPresetEnv.default);
 
   /* Throw meaningful errors for getters of commonjs. */
   var enableCommonJSError = true;
@@ -126,14 +143,28 @@
   /*
    * Options exposed for the REPL that will influence Babel's transpiling
    */
-  function $checkbox($element){
+  function $checkboxValue($element) {
     return {
       get: function () {
         return $element.is(":checked");
-      } ,
+      },
       set: function (value) {
         var setting = value !== 'false' && value !== false;
         $element.prop('checked', setting);
+      },
+      enumerable: true,
+      configurable: false
+    };
+  }
+
+  function $inputValue($element) {
+    return {
+      get: function () {
+        return $element.val();
+      },
+      set: function (value) {
+        var setting = value !== 'undefined' && value !== 'false' && value;
+        $element.val(setting);
       },
       enumerable: true,
       configurable: false
@@ -156,6 +187,47 @@
       onPresetChange();
     }, 0);
   }
+
+  function handleTargetClick($input, evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    // Needs to run in a timeout to properly handle clicks directly on the
+    // checkbox.
+    setTimeout(function() {
+      $input.checked = !$input.checked;
+      onTargetChange();
+    }, 0);
+  }
+
+  function prevent(evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+  }
+
+  function getEnvOptions(options) {
+    var origTargets = options.targets,
+    browsers = options.browsers,
+    builtIns = !options.evaluate && options.builtIns;
+
+    var arrayOfTargets = origTargets.split(',').filter(Boolean);
+    var targets = arrayOfTargets.reduce(function(objectOfTargets, target){
+      target = target.split('-');
+      var name = target[0].toLowerCase();
+      var version = parseFloat(target[1]);
+      objectOfTargets[name] = version;
+      return objectOfTargets;
+    }, {});
+
+    if (browsers) {
+      targets.browsers = browsers;
+    }
+
+    return {
+      useBuiltIns: builtIns,
+      targets: targets
+    };
+  };
 
   /**
    * Options for selecting presets to use.
@@ -210,6 +282,93 @@
     };
   }
 
+  function getTargetOptions() {
+    // Create version + checkbox for all available targets
+    var $targetsListCointainer = document.querySelector('#babel-repl-targets-dropdown .dropdown-menu-list');
+    var $targets = [];
+
+    targets.forEach(function(target) {
+      var targetName = target.name,
+      targetLabel = target.label || targetName,
+      defaultVersion = target.default,
+      minVersion = target.min,
+      step = target.step || 1;
+
+      var $checkbox = document.createElement('input');
+      $checkbox.type = 'checkbox';
+      $checkbox.name = 'target';
+      $checkbox.value = targetName;
+      $checkbox.id = 'option-' + targetName;
+
+      var $input = document.createElement('input');
+      $input.type = 'number';
+      $input.min = minVersion;
+      $input.value = defaultVersion;
+      $input.step = step;
+      $input.name = 'version';
+      $input.id = 'option-target-' + targetName.toLowerCase();
+
+      var $label = document.createElement('a');
+      $label.href = '#';
+      $label.className = 'small';
+      $label.tabIndex = -1;
+
+      var $span = document.createElement('span');
+      $span.innerHTML = targetLabel;
+      $label.appendChild($span);
+
+      $label.addEventListener(
+        'click',
+        handleTargetClick.bind(null, $checkbox),
+        false
+      );
+
+      $input.addEventListener(
+        'click',
+        prevent,
+        false
+      );
+
+      $input.addEventListener(
+        'change',
+        _.debounce(onTargetChange, 500),
+        false
+      );
+
+      $label.appendChild($checkbox);
+      $label.appendChild($input);
+
+      var $li = document.createElement('li');
+      $li.appendChild($label);
+      $targetsListCointainer.appendChild($li);
+      $targets.push({$checkbox: $checkbox, $input: $input});
+    });
+
+    return {
+      get: function() {
+        return $targets
+          .filter(function(target) { return target.$checkbox.checked && target.$input.value; })
+          .map(function(target) { return target.$checkbox.value + '-' + target.$input.value; })
+          .join(',');
+      },
+      set: function(valueStr) {
+        var values = valueStr.split(',');
+        values.forEach(function(value){
+          value = value.split('-');
+          $targets.forEach(function(target) {
+            var name = value[0],
+            version = value[1];
+
+            target.$checkbox.checked = name && name.indexOf(target.$checkbox.value) > -1;
+            target.$input.value = version && name.indexOf(target.$checkbox.value) > -1 ? version : target.$input.value;
+          });
+        })
+      },
+      enumerable: true,
+      configurable: true,
+    };
+  }
+
   var isBabiliLoading = false;
   /**
    * Checks if Babili has been loaded. If not, kicks off a load (if it hasn't
@@ -246,13 +405,18 @@
     var $evaluate = $('#option-evaluate');
     var $lineWrap = $('#option-lineWrap');
     var $babili = $('#option-babili');
+    var $browsers = $('#option-browsers');
+    var $builtIns = $('#option-builtIns');
 
     var options = {};
     Object.defineProperties(options, {
-      babili: $checkbox($babili),
-      evaluate: $checkbox($evaluate),
-      lineWrap: $checkbox($lineWrap),
+      babili: $checkboxValue($babili),
+      evaluate: $checkboxValue($evaluate),
+      lineWrap: $checkboxValue($lineWrap),
       presets: getPresetOptions(),
+      targets: getTargetOptions(),
+      browsers: $inputValue($browsers),
+      builtIns: $checkboxValue($builtIns)
     });
 
     // Merge in defaults
@@ -260,7 +424,8 @@
       babili: false,
       evaluate: true,
       lineWrap: false,
-      presets: 'es2015,stage-2,react'
+      presets: 'es2015,stage-2,react',
+      browsers: ''
     };
 
     _.assign(options, defaults);
@@ -275,7 +440,6 @@
     this.storage = new StorageService();
     var state = this.storage.get('replState') || {};
     _.assign(state, UriUtils.parseQuery());
-
     this.options = _.assign(new Options(), state);
 
     this.input = new Editor('.babel-repl-input .ace_editor').editor;
@@ -289,6 +453,8 @@
     this.$errorReporter = $('.babel-repl-errors');
     this.$consoleReporter = $('.babel-repl-console');
     this.$toolBar = $('.babel-repl-toolbar');
+    this.$textareaWrapper = $('.dropdown-menu-container');
+    this.$envBar = $('#option-browsers');
 
     document.getElementById('babel-repl-version').innerHTML = babel.version;
   }
@@ -311,20 +477,32 @@
   };
 
   REPL.prototype.compile = function () {
-    this.output.session.setUseWrapMode(this.options.lineWrap);
+    var options = this.options;
+    this.output.session.setUseWrapMode(options.lineWrap);
 
     var transformed;
     var code = this.getSource();
     this.clearOutput();
 
-    if (this.options.babili && !hasBabiliLoaded()) {
+    if (options.babili && !hasBabiliLoaded()) {
       this.setOutput('// Babili is loading, please wait...');
       return;
     }
 
-    var presets = this.options.presets.split(',');
-    if (this.options.babili) {
+    var presets = options.presets.split(',');
+
+    if (options.babili) {
       presets.push('babili');
+    }
+
+    if (presets.includes('env')) {
+      presets = presets.map(function (preset) {
+        if (preset === 'env') {
+          var envOptions = getEnvOptions(options);
+          return ["env", envOptions];
+        }
+        return preset;
+      })
     }
 
     try {
@@ -340,7 +518,7 @@
 
     this.setOutput(transformed.code);
 
-    if (this.options.evaluate) {
+    if (options.evaluate) {
       this.evaluate(transformed.code);
     }
   };
@@ -408,13 +586,52 @@
 
   function onPresetChange() {
     // Update the list of presets that are displayed on the dropdown list anchor
+    var $envTargets = $('.babel-repl-targets-container');
+    var $envBuiltIns = $('#option-builtIns-wrapper');
+
     var presetList = repl.options.presets.replace(/,/g, ', ');
+
+    // Hide targets anchor unless env preset is selected.
+    var envIncluded = repl.options.presets.includes('env');
+    $envTargets.toggleClass('hidden', !envIncluded);
+    $envBuiltIns.toggleClass('hidden', !envIncluded);
+
     document.getElementById('babel-repl-selected-presets').innerHTML = presetList;
 
     onSourceChange();
   }
 
-  function onSourceChange () {
+  function onTargetChange() {
+    // Update the list of targets that are displayed on the dropdown list anchor
+    var browsersList = repl.options.browsers;
+    var targetList = repl.options.targets.replace(/,/g, ', ');
+    var targetsEl = document.getElementById('babel-repl-selected-targets');
+
+    if (browsersList.length && targetList.length) {
+      browsersList += ', ';
+    }
+
+    targetsEl.innerHTML = browsersList + targetList;
+
+    onSourceChange();
+  }
+
+  function onToolbarChange() {
+    var $envBuiltIns = $('#option-builtIns-wrapper');
+    var $envBuiltInsInput = $envBuiltIns.find('input[type=checkbox]');
+    var evaluate = repl.options.evaluate;
+    var title = evaluate ? 'Disabled in evaluate mode' : '';
+
+    $envBuiltIns.attr('title', title);
+    if (evaluate) {
+      $envBuiltInsInput.prop('checked', false);
+    }
+    $envBuiltInsInput.attr('disabled', evaluate);
+
+    onSourceChange();
+  }
+
+  function onSourceChange() {
     var error;
     try {
       repl.compile();
@@ -429,8 +646,10 @@
     if (error) throw error;
   }
 
-  repl.input.on('change', _.debounce(onSourceChange, 500));
-  repl.$toolBar.on('change', onSourceChange);
+  repl.input.on('change', _.debounce(onSourceChange, UPDATE_DELAY));
+  repl.$envBar.on('keyup', _.debounce(onTargetChange, UPDATE_DELAY));
+  repl.$toolBar.on('change', onToolbarChange);
+  repl.$textareaWrapper.on('click', function(e){e.stopPropagation();})
 
 
   /*
@@ -479,4 +698,6 @@
 
   initResizable('.babel-repl-resize');
   onPresetChange();
+  onTargetChange();
+  onToolbarChange();
 }(Babel, $, _, ace, window));

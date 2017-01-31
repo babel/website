@@ -46,6 +46,11 @@
   @include box-shadow(0 6px 12px rgba(0,0,0,.175));
   background-clip: padding-box;
 
+  & > .dropdown-menu-list {
+    padding: 5px 0;
+    margin: 2px 0 0;
+  }
+
   // Aligns the dropdown menu to right
   //
   // Deprecated as of 3.1.0 in favor of `.dropdown-menu-[dir]`
@@ -60,7 +65,7 @@
   }
 
   // Links within the dropdown menu
-  > li > a {
+  > li > a, & > .dropdown-menu-list > li > a {
     display: block;
     padding: 3px 20px;
     clear: both;
@@ -72,7 +77,7 @@
 }
 
 // Hover/Focus state
-.dropdown-menu > li > a {
+.dropdown-menu > li > a, .dropdown-menu > .dropdown-menu-list > li > a  {
   &:hover,
   &:focus {
     text-decoration: none;
