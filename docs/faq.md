@@ -13,7 +13,7 @@ that there are **many** caveats to be aware of if you enable loose mode and that
 to be spec incompliant.
 
 Please see [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) and
-[babel/babel/#838](https://github.com/babel/babel/issues/838) for more information.
+[babel/babel#838](https://github.com/babel/babel/issues/838) for more information.
 
 ## Why are `this` and `arguments` being remapped in arrow functions?
 
@@ -35,8 +35,8 @@ var user = {
 };
 ```
 
-Please see [#842](https://github.com/babel/babel/issues/842), [#814](https://github.com/babel/babel/issues/814),
-[#733](https://github.com/babel/babel/issues/733) and [#730](https://github.com/babel/babel/issues/730) for
+Please see [babel/babel#842](https://github.com/babel/babel/issues/842), [babel/babel#814](https://github.com/babel/babel/issues/814),
+[babel/babel#733](https://github.com/babel/babel/issues/733) and [babel/babel#730](https://github.com/babel/babel/issues/730) for
 more information.
 
 ## Why is `this` being remapped to `undefined`?
@@ -62,7 +62,6 @@ depends on your specific configuration but just add the following `.babelrc` fil
 get all the same transforms that were in Babel 5:
 
 ```json
-// .babelrc
 {
   "presets": ["es2015", "react", "stage-2"]
 }
