@@ -15,7 +15,7 @@ var BABEL_MINI_REPL = (function() {
 
   var debouncedUpdate = _.debounce(function() {
     compileCode(inEditor, outEditor);
-  }, 500);
+  }, 1000);
 
   function setupEditor(id, readOnly) {
     var editor = ace.edit(id);
@@ -41,6 +41,7 @@ var BABEL_MINI_REPL = (function() {
     });
 
     editor.renderer.setPadding(24);
+    editor.renderer.setScrollMargin(24, 24);
     editor.commands.removeCommands(['gotoline', 'find']);
 
     return editor;
@@ -93,6 +94,14 @@ var BABEL_MINI_REPL = (function() {
     simulateKey();
   }
 
+  function showError(babelError) {
+    $('.hero-repl__error').text(babelError).addClass('hero-repl__error--visible');
+  }
+
+  function hideError() {
+    $('.hero-repl__error').removeClass('hero-repl__error--visible');
+  }
+
   function compileCode(sourceEditor, targetEditor) {
     var transformed;
 
@@ -103,16 +112,18 @@ var BABEL_MINI_REPL = (function() {
         babelrc: false,
       });
     } catch (e) {
-      transformed = {
-        code: e.message,
-      };
+      showError(e.message);
     }
 
-    targetEditor.setValue(
-      // Remove 'use strict' just for demonstration purposes
-      transformed.code.replace(/[\'|\"]use strict[\'|\"];(\n\n)?/g, ''),
-      -1
-    );
+    if (transformed) {
+      hideError();
+
+      targetEditor.setValue(
+        // Remove 'use strict' just for demonstration purposes
+        transformed.code.replace(/[\'|\"]use strict[\'|\"];(\n\n)?/g, ''),
+        -1
+      );
+    }
   }
 
   return {

@@ -125,6 +125,27 @@
     opacity: 1;
   }
 
+  &__error {
+    background: rgb(112, 33, 65);
+    bottom: 0;
+    font-family: monospace;
+    font-size: 1.25rem;
+    left: 0;
+    opacity: 0;
+    overflow-y: scroll;
+    padding: 16px 24px;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    top: 40px;
+    white-space: pre;
+    @include transition(opacity .25s ease-out);
+
+    &--visible {
+      opacity: 1;
+    }
+  }
+
   &__footer {
     background: #353634;
     border: 1px solid #4F504D;
@@ -158,6 +179,7 @@
     @include flex(1 1 50%);
     background: #353634;
     border: 1px solid #4F504D;
+    position: relative;
 
     &--left {
       border-radius: 4px 0 0 0;
@@ -191,9 +213,5 @@
     @media (min-width: $screen-md-min) {
       text-align: left;
     }
-  }
-
-  .ace_scroller {
-    top: 24px;
   }
 }

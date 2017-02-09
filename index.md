@@ -23,6 +23,7 @@ third_party_js:
         <div class="hero-repl__pane hero-repl__pane--right">
           <h3>And get JavaScript out</h3>
           <div id="hero-repl-out" class="hero-repl__code"></div>
+          <div class="hero-repl__error"></div>
         </div>
       </div>
       <div class="hero-repl__footer">
