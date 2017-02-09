@@ -11,7 +11,7 @@
   position: relative;
 
   @media (min-width: $screen-md-min) {
-    padding: 11em 15px;
+    padding: 7em 15px;
   }
 
   &::before {
@@ -37,7 +37,7 @@
   p {
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 75px;
+    margin-bottom: 50px;
 
     @media (min-width: $screen-sm-min) {
       font-size: 28px;
@@ -111,5 +111,73 @@
         color: $babel-dark-gray;
       }
     }
+  }
+}
+
+.hero-repl {
+  border: 1px solid #4F504D;
+  border-radius: 8px;
+  margin-bottom: 32px;
+
+  &__footer {
+    background: #353634;
+    color: #B7B8B7;
+
+    a {
+      color: #B7B8B7;
+      display: block;
+      padding: 8px 0;
+      text-decoration: underline;
+      transition: all 0.25s ease-out;
+
+      &:hover {
+        background: #4F504D;
+        color: #FFF;
+      }
+    }
+  }
+
+  &__editor {
+    @include flexbox;
+    @include flex-direction(column);
+
+    @media (min-width: $screen-md-min) {
+      @include flex-direction(row);
+    }
+  }
+
+  &__pane {
+    @include flex(1 1 50%);
+    border: 1px solid #4F504D;
+  }
+
+  &__code {
+    background: #3F403E;
+    font-family: monospace;
+    font-size: 1.25rem;
+    min-height: 125px;
+    text-align: left;
+
+    @media (min-width: $screen-md-min) {
+      font-size: 1.5rem;
+      min-height: 200px;
+    }
+  }
+
+  h3 {
+    background: #353634;
+    color: #B7B8B7;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 12px 24px;
+    text-align: center;
+
+    @media (min-width: $screen-md-min) {
+      text-align: left;
+    }
+  }
+
+  .ace_scroller {
+    top: 24px;
   }
 }

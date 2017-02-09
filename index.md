@@ -4,6 +4,8 @@ custom_js:
 - index.js
 third_party_js:
 - //cdn.rawgit.com/thejameskyle/slick/lazy-load-responsive-2/slick/slick.min.js
+- //unpkg.com/babel-standalone@6/babel.min.js
+- //cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
 ---
 
 <div class="hero">
@@ -11,11 +13,26 @@ third_party_js:
     <h1>Babel is a JavaScript compiler.</h1>
     <p>Use next generation JavaScript, today.</p>
 
-    <div class="hero-actions">
-      <div class="hero-actions__links">
-        <a href="/docs/setup">Setup</a>
-        <a href="http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=latest%2Creact%2Cstage-2&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true">Try it Out</a>
+    <div class="hero-repl">
+      <div class="hero-repl__editor">
+        <div class="hero-repl__pane hero-repl__pane--left">
+          <h3>You put JavaScript in</h3>
+          <div id="hero-repl-in" class="hero-repl__code"></div>
+        </div>
+
+        <div class="hero-repl__pane hero-repl__pane--right">
+          <h3>And get JavaScript out</h3>
+          <div id="hero-repl-out" class="hero-repl__code"></div>
+        </div>
       </div>
+      <div class="hero-repl__footer">
+        <a href="http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=latest%2Creact%2Cstage-2&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true">
+          Check out our REPL to experiment more with Babel!
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-actions">
       <div class="hero-actions-blog">
         <a href="/blog/2017/02/13/6.23.0">
           <span class="hero-actions-blog__label">Latest From Our Blog:</span>
@@ -27,48 +44,22 @@ third_party_js:
 </div>
 
 <div class="container">
-  <div class="row featurette text-center">
-    <h2 class="text-center">Babel transforms your JavaScript</h2>
+  <div class="row featurette text-center featurette--get-started">
+    <h2>Ready to get started?</h2>
 
     <div class="col-lg-6">
-      <h3>You put JavaScript in</h3>
-      <div class="lead text-left">
-<div markdown="1">
-```js
-
-[1,2,3].map(n => n + 1);
-
-```
-</div>
-      </div>
-    </div>
-
-    <div class="col-lg-6">
-      <h3>And get JavaScript out</h3>
-      <div class="lead text-left">
-<div markdown="1">
-```js
-[1,2,3].map(function(n) {
-  return n + 1;
-});
-```
-</div>
-      </div>
-    </div>
-
-    <div class="col-lg-12">
-
-      <h3>Start by installing the Babel CLI and a preset</h3>
-      <div class="lead text-left">
+      <h3>Install the Babel CLI and a preset</h3>
+      <div class="text-left">
 <div markdown="1">
 ```shell
 npm install --save-dev babel-cli babel-preset-env
 ```
 </div>
       </div>
-
-      <h3>Create a <a href="/docs/usage/babelrc"><code>.babelrc</code></a> file in your project (or use your <a href="/docs/usage/babelrc#use-via-package-json">package.json</a>)</h3>
-      <div class="lead text-left">
+    </div>
+    <div class="col-lg-6">
+      <h3>Create a <a href="/docs/usage/babelrc"><code>.babelrc</code></a> file (or use your <a href="/docs/usage/babelrc#use-via-package-json">package.json</a>)</h3>
+      <div class="text-left">
 <div markdown="1">
 ```json
 {
@@ -78,6 +69,12 @@ npm install --save-dev babel-cli babel-preset-env
 </div>
       </div>
     </div>
+
+    <p>
+      For more information on setting up Babel with your build system, IDE,
+      and more, check out our <a href="/docs/setup">interactive setup
+      guide</a>.
+    </p>
   </div>
 
   <hr class="featurette-divider">
