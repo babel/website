@@ -101,13 +101,24 @@ or:
 var { ...y, b } = { a: 1};
 ```
 
-### AST changes
+> Flow AST changes
 
 These changes are most probably not affecting you if you use babel. They will only affect you if you use our parser Babylon directly and it's output.
 
 * Flow: Node renamed from `ExistentialTypeParam` to `ExistsTypeAnnotation`
 * Flow: Node renamed from `NumericLiteralTypeAnnotation` to `NumberLiteralTypeAnnotation`
 * Flow: New node `Variance` which replaces the string value of the `variance` field on several nodes (be more specific here)
+
+> `ForAwaitStatement` has been removed
+
+An `await` property is defined instead.
+
+```js
+interface ForOfStatement <: ForInStatement {
+  type: "ForOfStatement";
+  await: boolean;
+}
+```
 
 See [TODO: Babel's AST documentation]() for more informations.
 
