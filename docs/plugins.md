@@ -50,7 +50,7 @@ Any transforms in stage-x presets are changes to the language that haven't been 
   </p>
 </blockquote>
 
-The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
+The [TC39](https://github.com/tc39) categorizes proposals into the following stages:
 
 - [stage-0](/docs/plugins/preset-stage-0/) - Strawman: just an idea, possible Babel plugin.
 - [stage-1](/docs/plugins/preset-stage-1/) - Proposal: this is worth working on.

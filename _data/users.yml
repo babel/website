@@ -229,9 +229,6 @@
 - name: Harmonic
   url: https://github.com/es6rocks/harmonic/
   logo: harmonic.svg
-- name: Snakeskin
-  url: https://github.com/kobezzza/Snakeskin/
-  logo: snakeskin.svg
 - name: Alianza Inc
   url: http://www.alianza.com/
   logo: alianza.png
