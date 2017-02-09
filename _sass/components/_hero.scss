@@ -116,11 +116,19 @@
 
 .hero-repl {
   border: 1px solid #4F504D;
-  border-radius: 8px;
+  border-radius: 4px;
   margin-bottom: 32px;
+  opacity: 0;
+  @include transition(opacity .25s ease-out);
+
+  &--visible {
+    opacity: 1;
+  }
 
   &__footer {
     background: #353634;
+    border: 1px solid #4F504D;
+    border-radius: 0 0 4px 4px;
     color: #B7B8B7;
 
     a {
@@ -128,7 +136,7 @@
       display: block;
       padding: 8px 0;
       text-decoration: underline;
-      transition: all 0.25s ease-out;
+      @include transition(all 0.25s ease-out);
 
       &:hover {
         background: #4F504D;
@@ -148,7 +156,16 @@
 
   &__pane {
     @include flex(1 1 50%);
+    background: #353634;
     border: 1px solid #4F504D;
+
+    &--left {
+      border-radius: 4px 0 0 0;
+    }
+
+    &--right {
+      border-radius: 0 4px 0 0;
+    }
   }
 
   &__code {
@@ -165,7 +182,6 @@
   }
 
   h3 {
-    background: #353634;
     color: #B7B8B7;
     font-size: 1.5rem;
     margin: 0;
