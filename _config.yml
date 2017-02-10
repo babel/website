@@ -4,12 +4,22 @@ tagline: The compiler for writing next generation JavaScript
 description: The compiler for writing next generation JavaScript
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://babeljs.io" # the base hostname & protocol for your site
-# twitter_username: jekyllrb
+twitter_username: babeljs
 github_username: babel
 
 exclude:
   - vendor
   - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - CNAME
+  - Makefile
+  - Rakefile
+  - package.json
+  - learn-es2015.md
+  - index.md
 
 # Build settings
 highlighter: rouge
