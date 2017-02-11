@@ -94,7 +94,8 @@ var BABEL_MINI_REPL = (function() {
     simulateKey();
   }
 
-  function showError(babelError) {
+  function showError(editor, babelError) {
+    editor.setValue('');
     $('.hero-repl__error').text(babelError).addClass('hero-repl__error--visible');
   }
 
@@ -112,7 +113,7 @@ var BABEL_MINI_REPL = (function() {
         babelrc: false,
       });
     } catch (e) {
-      showError(e.message);
+      showError(targetEditor, e.message);
     }
 
     if (transformed) {
