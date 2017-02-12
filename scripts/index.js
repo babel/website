@@ -54,8 +54,8 @@ var BABEL_MINI_REPL = (function() {
 
     function simulateKey(changingText) {
       var delay = changingText
-        ? 6000
-        : Math.round(Math.random() * 250) + 30;
+        ? 4000
+        : Math.round(Math.random() * 125) + 30;
 
       timeout = setTimeout(function() {
         if (!runDemo) {
