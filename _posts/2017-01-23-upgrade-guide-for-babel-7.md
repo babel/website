@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Upgrade guide for Babel 7"
+title:  "Upgrade Guide for Babel 7"
 author: Sven SAULEAU
 date:   2017-01-23 12:00:00
 categories: announcements
-share_text: "Upgrade guide for Babel 7"
+share_text: "Upgrade Guide for Babel 7"
 third_party_js:
 - https://platform.twitter.com/widgets.js
 custom_js_with_timestamps:
@@ -24,7 +24,6 @@ See [...](...) for the full changelog.
 
 - add-module-exports - https://github.com/babel/babel/issues/5127
 - https://github.com/babel/babel/pull/5128
-- https://github.com/babel/babel/issues/5197
 
 ## Babel
 
@@ -103,27 +102,6 @@ or:
 ```js
 var { ...y, b } = { a: 1};
 ```
-
-> AST changes
-
-These changes only affect other tools such as Babel plugins.
-
-* Flow: Node renamed from `ExistentialTypeParam` to `ExistsTypeAnnotation`
-* Flow: Node renamed from `NumericLiteralTypeAnnotation` to `NumberLiteralTypeAnnotation`
-* Flow: New node `Variance` which replaces the string value of the `variance` field on several nodes (be more specific here)
-
-> Node `ForAwaitStatement` has been removed
-
-An `await` property is defined instead.
-
-```text
-interface ForOfStatement <: ForInStatement {
-  type: "ForOfStatement";
-  await: boolean;
-}
-```
-
-See [Babylon AST spec](https://github.com/babel/babylon/blob/7.0/ast/spec.md) for more information.
 
 ## babel-core
 
@@ -239,7 +217,3 @@ let p2 = Point.secondConstructor(3, 4);
 ```
 
 See [/docs/plugins/transform-class-properties/](/docs/plugins/transform-class-properties/) for more information.
-
-<blockquote class="babel-callout">
-  <small>We're Riding the Bus to Flavortown!</small>
-</blockquote>
