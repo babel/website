@@ -14,10 +14,10 @@ custom_js_with_timestamps:
 Babel 7 is out! This document aims to help people with upgrading Babel.
 
 - [Babel]({{page.url}}#babel)
-- [Babylon]({{page.url}}#babylon)
-- [Babel-core]({{page.url}}#babel-core)
-- [Babel-preset-stage-3]({{page.url}}#babel-preset-stage-3)
-- [Babel-plugin-syntax-class-constructor-call]({{page.url}}#babel-plugin-syntax-class-constructor-call)
+- [babylon]({{page.url}}#babylon)
+- [babel-core]({{page.url}}#babel-core)
+- [babel-preset-stage-3]({{page.url}}#babel-preset-stage-3)
+- [babel-plugin-syntax-class-constructor-call]({{page.url}}#babel-plugin-syntax-class-constructor-call)
 
 See [...](...) for the full changelog.
 
@@ -31,19 +31,21 @@ See [...](...) for the full changelog.
 
 > Support for Node.js 0.10 and 0.12 has been dropped
 
-We highly encourage you to use a newer version of Node.js since these versions are in end of maintenance.
-See [nodejs/LTS](https://github.com/nodejs/LTS) for more informations.
+We highly encourage you to use a newer version of Node.js (LTS v4, LTS v6) since the previous versions are not maintained.
+See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
 Note that the Babel compiler is only supported officially in these environments:
 
 * Modern browsers such as Chrome, Firefox, Safari, Edge etc.
 * Node.js 4 and upper versions
 
-## Babylon
+## babylon
 
-> Removed `*` plugin switch
+> Removed the `*` plugin option
 
 This was removed and instead you should specificly deside which plugins you want to activate.
+
+We thought it would be a good idea for tools so they wouldn't have to constantly update their config but it also means we can't easily make a breaking change.
 
 Before:
 
@@ -73,7 +75,7 @@ babylon.parse(code, {
 })
 ```
 
-See [Babylon's plugins](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
+See [babylon's plugins](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
 
 > Removed `classConstructorCall` plugin
 
@@ -113,22 +115,28 @@ These changes are most probably not affecting you if you use babel. They will on
 
 An `await` property is defined instead.
 
-```js
+```text
 interface ForOfStatement <: ForInStatement {
   type: "ForOfStatement";
   await: boolean;
 }
 ```
 
-See [TODO: Babel's AST documentation]() for more informations.
+See [TODO: Babylon AST documentation](https://github.com/babel/babylon/blob/master/ast/spec.md) for more information.
 
-## Babel-core
+## babel-core
 
 > `babel-core/register.js` has been removed
 
-Relying on babel-core/register is deprecated and will be removed in Babel 7.
+Relying on `babel-core/register` is deprecated and has been removed in Babel 7.
 
-Upgrade with Mocha:
+We need to add `babel-register` as a new dependency:
+
+```sh
+npm install --save-dev babel-register
+```
+
+Upgrading with Mocha:
 
 ```sh
 mocha --compilers js:babel-core/register
@@ -140,21 +148,17 @@ to:
 mocha --compilers js:babel-register
 ```
 
-We need to add `babel-register` as a new dependency:
+See [babel-register documentation](https://babeljs.io/docs/usage/babel-register/) for more information.
 
-```sh
-npm install --save-dev babel-register
-```
-
-See [babel-register documentation](https://babeljs.io/docs/usage/babel-register/) for more informations.
-
-## Babel-preset-stage-3
+## babel-preset-stage-3
 
 > Presets moved
 
-Theses plugins were moved into `babel-preset-stage-4`:
+We weren't able to remove presets out of stage-3 since it was a breaking change.
 
-* `babel-plugin-syntax-trailing-function-commas`
+These plugins were moved into the yearly presets:
+
+* `babel-plugin-syntax-trailing-function-commas` (babel-preset-es2017)
 
   Example:
 
@@ -165,7 +169,7 @@ Theses plugins were moved into `babel-preset-stage-4`:
   );
   ```
 
-* `babel-plugin-transform-async-to-generator`
+* `babel-plugin-transform-async-to-generator` (babel-preset-es2017)
 
   Example:
 
@@ -175,7 +179,7 @@ Theses plugins were moved into `babel-preset-stage-4`:
   }
   ```
 
-* `babel-plugin-transform-exponentiation-operator`
+* `babel-plugin-transform-exponentiation-operator` (babel-preset-es2016)
 
   Example:
 
@@ -183,10 +187,11 @@ Theses plugins were moved into `babel-preset-stage-4`:
   let cubed = 2 ** 3;
   ```
 
-Babel recently created `babel-preset-env` which based on your environment use the right presets. If you have issue with this changes we suggest you using the env preset.
-See [/docs/plugins/preset-env/](/docs/plugins/preset-env/) for more informations.
+We suggest that you use recently created `babel-preset-env` which uses the right plugins based on your environment instead of any yearly preset.
 
-## Babel-plugin-syntax-class-constructor-call
+See [/docs/plugins/preset-env/](/docs/plugins/preset-env/) for more information.
+
+## babel-plugin-syntax-class-constructor-call
 
 > babel-plugin-syntax-class-constructor-call has been removed
 
@@ -234,7 +239,7 @@ let p1 = new Point(1, 2);
 let p2 = Point.secondConstructor(3, 4);
 ```
 
-See [/docs/plugins/transform-class-properties/](/docs/plugins/transform-class-properties/) for more informations.
+See [/docs/plugins/transform-class-properties/](/docs/plugins/transform-class-properties/) for more information.
 
 <blockquote class="babel-callout">
   <small>We're Riding the Bus to Flavortown!</small>
