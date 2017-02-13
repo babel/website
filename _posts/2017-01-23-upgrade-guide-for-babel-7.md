@@ -25,7 +25,7 @@ See [...](...) for the full changelog.
 - add-module-exports - https://github.com/babel/babel/issues/5127
 - https://github.com/babel/babel/pull/5128
 
-## Babel
+## All of Babel
 
 > Support for Node.js 0.10 and 0.12 has been dropped
 
@@ -129,6 +129,12 @@ mocha --compilers js:babel-register
 
 See [babel-register documentation](https://babeljs.io/docs/usage/babel-register/) for more information.
 
+## babel-preset-stage-1/babel-preset-stage-2 (decorators)
+
+> [legacy-decorators](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) has been moved into the [transform-decorators](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-decorators) package
+
+We don't currently have a Stage 2 transform for decorators so instead of making it error, we are adding legacy-decorators as part of the Stage 1 preset as well as making legacy-decorators the official package again. (It still needs to be updated).
+
 ## babel-preset-stage-3
 
 > Plugins moved
@@ -217,3 +223,29 @@ let p2 = Point.secondConstructor(3, 4);
 ```
 
 See [/docs/plugins/transform-class-properties/](/docs/plugins/transform-class-properties/) for more information.
+
+## babel
+
+> Dropping the `babel` package
+
+This package currently gives you an error message to install `babel-cli` instead in v6. We will just not publish a v7 version. It also doesn't make sense if we switch to scoped package `babel` -> `@babel/babel`?
+
+## babel-generator
+
+> Dropping the `quotes` option
+
+If you want formatting for compiled output you can use recast/prettier/escodegen/fork babel-generator.
+
+This option was only available through `babel-generator` explicitly until v6.18.0 when we exposed `parserOpts` and `generatorOpts`. Because there was a bug in that release no one has used this option in Babel itself.
+
+> Dropping the `flowUsesCommas` option
+
+Currently there are 2 supported syntaxes (`,` and `;`) in Flow Object Types. 
+
+This change just makes babel-generator output `,` instead of `;`.
+
+## babel-core
+
+> Remove `babel-core/src/api/browser.js`
+
+`babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [babel-standalone](https://github.com/babel/babel-standalone)
