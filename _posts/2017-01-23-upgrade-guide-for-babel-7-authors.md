@@ -11,23 +11,29 @@ custom_js_with_timestamps:
 - docs.js
 ---
 
-This document is for developers that create tools that depend on Babel.
+This document is for developers that create tools that depend on Babel such as babel plugins and the relevant changes for upgrading to Babel 7.
 
-> Please refer to the [User Upgrade Guide](/blog/2017/01/23/upgrade-guide-for-babel-7) for other upgrade changes.
+> Also check out the [User Upgrade Guide](/blog/2017/01/23/upgrade-guide-for-babel-7) for other relevant changes.
 
 ## All Babel packages
 
 > Support for Node.js 0.10 and 0.12 has been dropped
 
-> Dropped use of `add-module-exports` plugin
+> Dropped use of `add-module-exports` plugin on Babel packages
 
-This had to be used to prevent a breaking change with our exports. Now if you import a babel package in a library you may need to use `.default` for commonjs.
+> Likelihood to break your CI: high
+
+This had to be used earlier to prevent a breaking change with our exports.
+
+Now if you import a babel package in a library you may need to use `.default` for commonjs.
 
 ## Babel Presets
 
 > Dropped support for exporting as an object [#5128](https://github.com/babel/babel/pull/5128)
 
-A preset needs to export a function as the default export or with module.exports.
+> Likelihood to break your CI: high
+
+A preset needs to export a function as the default export or with `module.exports`.
 
 Babel 6
 
@@ -39,7 +45,9 @@ module.exports = {
     };
   }
 };
+```
 
+```js
 export default {
   plugins: ['plugin-a']
 }
@@ -53,7 +61,9 @@ module.exports = function () {
     plugins: ['plugin-a']
   };
 };
+```
 
+```js
 export default function() {
   return {
     plugins: ['plugin-a']
@@ -64,6 +74,8 @@ export default function() {
 ## Babylon
 
 > AST changes
+
+> Likelihood to break your CI: low
 
 These changes only affect other tools such as Babel plugins.
 
@@ -84,3 +96,47 @@ interface ForOfStatement <: ForInStatement {
 ```
 
 See [Babylon AST spec](https://github.com/babel/babylon/blob/7.0/ast/spec.md) for more information.
+
+> Removed the `*` plugin option [babel/babylon#301](https://github.com/babel/babylon/pull/301)
+
+> Likelihood to break your CI: low
+
+This was first added in v6.14.1 (Nov 17, 2016) so it's unlikely anyone was using this.
+
+This catch-all option was removed; instead you should specifically decide which plugins you want to activate.
+
+We thought it would be a good idea for tools so they wouldn't have to constantly update their config but it also means we can't easily make a breaking change.
+
+Before:
+
+```js
+babylon.parse(code, {
+  plugins: [ "*" ]
+})
+```
+
+You can get the old behavior using:
+
+```js
+babylon.parse(code, {
+  plugins: [
+    "asyncGenerators",
+    "classProperties",
+    "decorators",
+    "doExpressions",
+    "dynamicImport",
+    "exportExtensions",
+    "flow",
+    "functionBind",
+    "functionSent",
+    "jsx",
+    "objectRestSpread",
+  ]
+})
+```
+
+See babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
+
+> Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291)
+
+> Likelihood to break your CI: low
