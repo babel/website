@@ -72,7 +72,7 @@ See babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#ap
 
 > Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291)
 
-See [below](#babel-plugin-transform-class-constructor-call) for more information.
+See the section below about the removal of `babel-plugin-transform-class-constructor-call` for more information.
 
 > A trailing comma cannot come after a RestElement in objects [#290](https://github.com/babel/babylon/pull/290)
 
