@@ -11,7 +11,9 @@ custom_js_with_timestamps:
 - docs.js
 ---
 
-Babel 7 is out! This document aims to help people with upgrading Babel.
+Babel 7 is out! Refer users this document when upgrading to Babel 7.
+
+Because not every breaking change will affect every project, we've sorted the sections by the likelihood of a change breaking tests when upgrading.
 
 TODO: Check here for the full changelog.
 
@@ -32,36 +34,61 @@ See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
 These plugins were moved into their yearly presets after moving to Stage 4:
 
-* `babel-plugin-syntax-trailing-function-commas` (babel-preset-es2017)
+`babel-plugin-syntax-trailing-function-commas` (babel-preset-es2017)
 
-  Example:
+Example:
 
-  ```js
-  clownPuppiesEverywhere(
-    'foo',
-    'bar', // Next parameter that's added only has to add a new line, not modify this line
-  );
-  ```
+```js
+clownPuppiesEverywhere(
+  'foo',
+  'bar', // Next parameter that's added only has to add a new line, not modify this line
+);
+```
 
-* `babel-plugin-transform-async-to-generator` (babel-preset-es2017)
+`babel-plugin-transform-async-to-generator` (babel-preset-es2017)
 
-  Example:
+Example:
 
-  ```js
-  async function foo() {
-      await bar();
-  }
-  ```
+```js
+async function foo() {
+    await bar();
+}
+```
 
-* `babel-plugin-transform-exponentiation-operator` (babel-preset-es2016)
+`babel-plugin-transform-exponentiation-operator` (babel-preset-es2016)
 
-  Example:
+Example:
 
-  ```js
-  let cubed = 2 ** 3;
-  ```
+```js
+let cubed = 2 ** 3;
+```
 
-We suggest that you use recently created `babel-preset-env` which uses the right plugins based on your environment instead of any yearly preset.
+Instead of any yearly preset, we suggest that you use newly created `babel-preset-env` which uses the correct plugins based on your environment.
+
+Before
+
+```json
+{
+  "presets": ["es2015", "es2016", "es2017"]
+}
+```
+
+After
+
+```json
+{
+  "presets": ["env"]
+}
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"]
+      }
+    }]
+  ]
+}
+```
 
 See [/docs/plugins/preset-env/](/docs/plugins/preset-env/) for more information.
 

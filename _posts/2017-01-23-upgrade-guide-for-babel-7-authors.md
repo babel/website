@@ -19,13 +19,15 @@ This document is for developers that create tools that depend on Babel such as b
 
 > Support for Node.js 0.10 and 0.12 has been dropped
 
+> Likelihood to break your CI: high
+ 
 > Dropped use of `add-module-exports` plugin on Babel packages
 
 > Likelihood to break your CI: high
 
 This had to be used earlier to prevent a breaking change with our exports.
 
-Now if you import a babel package in a library you may need to use `.default` for commonjs.
+If you import a Babel package in a library you may need to use `.default` when using require.
 
 ## Babel Presets
 
@@ -35,7 +37,7 @@ Now if you import a babel package in a library you may need to use `.default` fo
 
 A preset needs to export a function as the default export or with `module.exports`.
 
-Babel 6
+Before: Babel 6
 
 ```js
 module.exports = {
@@ -53,7 +55,7 @@ export default {
 }
 ```
 
-Babel 7
+After: Babel 7
 
 ```js
 module.exports = function () {
@@ -77,14 +79,34 @@ export default function() {
 
 > Likelihood to break your CI: low
 
-These changes only affect other tools such as Babel plugins.
+Flow: Node renamed from `ExistentialTypeParam` to `ExistsTypeAnnotation` [#322](https://github.com/babel/babylon/pull/322)
 
-* Flow: Node renamed from `ExistentialTypeParam` to `ExistsTypeAnnotation` [#322](https://github.com/babel/babylon/pull/322)
-* Flow: Node renamed from `NumericLiteralTypeAnnotation` to `NumberLiteralTypeAnnotation` [babel/babylon#332](https://github.com/babel/babylon/pull/332)
-* Flow: New node `Variance` which replaces the string value of the `variance` field on several nodes (TODO: be more specific here) [babel/babylon#333](https://github.com/babel/babylon/pull/333)
-* Flow: `ObjectTypeIndexer` location info matches Flow's better [babel/babylon#228](https://github.com/babel/babylon/pull/228)
+```js
+type Maybe<T> = _Maybe<T, *>;
+```
 
-> Node `ForAwaitStatement` has been removed [#349](https://github.com/babel/babylon/pull/349)
+Flow: Node renamed from `NumericLiteralTypeAnnotation` to `NumberLiteralTypeAnnotation` [babel/babylon#332](https://github.com/babel/babylon/pull/332)
+
+```js
+type T = 0;
+```
+
+Flow: New node `Variance` which replaces the string value of the `variance` field on several nodes (TODO: be more specific here) [babel/babylon#333](https://github.com/babel/babylon/pull/333)
+
+```js
+class A {+p:T}
+class A {-p:T}
+```
+
+Flow: `ObjectTypeIndexer` location info matches Flow's better [babel/babylon#228](https://github.com/babel/babylon/pull/228)
+
+Babylon was including the semicolon in the location, whereas Flow didn't.
+
+```js
+var a: { [a: number]: string; [b: number]: string; };
+```
+
+Node `ForAwaitStatement` has been removed [#349](https://github.com/babel/babylon/pull/349)
 
 An `await` property is defined instead.
 
@@ -92,6 +114,12 @@ An `await` property is defined instead.
 interface ForOfStatement <: ForInStatement {
   type: "ForOfStatement";
   await: boolean;
+}
+```
+
+```js
+async function f() {
+  for await (let x of y);
 }
 ```
 
