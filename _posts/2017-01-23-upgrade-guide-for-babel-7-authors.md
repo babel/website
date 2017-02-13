@@ -23,6 +23,44 @@ This document is for developers that create tools that depend on Babel.
 
 This had to be used to prevent a breaking change with our exports. Now if you import a babel package in a library you may need to use `.default` for commonjs.
 
+## Babel Presets
+
+> Dropped support for exporting as an object [#5128](https://github.com/babel/babel/pull/5128)
+
+A preset needs to export a function as the default export or with module.exports.
+
+Babel 6
+
+```js
+module.exports = {
+  buildPreset: function () {
+    return {
+      plugins: ['plugin-a']
+    };
+  }
+};
+
+export default {
+  plugins: ['plugin-a']
+}
+```
+
+Babel 7
+
+```js
+module.exports = function () {
+  return {
+    plugins: ['plugin-a']
+  };
+};
+
+export default function() {
+  return {
+    plugins: ['plugin-a']
+  };
+}
+```
+
 ## Babylon
 
 > AST changes
@@ -32,6 +70,7 @@ These changes only affect other tools such as Babel plugins.
 * Flow: Node renamed from `ExistentialTypeParam` to `ExistsTypeAnnotation` [#322](https://github.com/babel/babylon/pull/322)
 * Flow: Node renamed from `NumericLiteralTypeAnnotation` to `NumberLiteralTypeAnnotation` [babel/babylon#332](https://github.com/babel/babylon/pull/332)
 * Flow: New node `Variance` which replaces the string value of the `variance` field on several nodes (TODO: be more specific here) [babel/babylon#333](https://github.com/babel/babylon/pull/333)
+* Flow: `ObjectTypeIndexer` location info matches Flow's better [babel/babylon#228](https://github.com/babel/babylon/pull/228)
 
 > Node `ForAwaitStatement` has been removed [#349](https://github.com/babel/babylon/pull/349)
 

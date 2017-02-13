@@ -18,12 +18,7 @@ Babel 7 is out! This document aims to help people with upgrading Babel.
 - [babel-preset-stage-3]({{page.url}}#babel-preset-stage-3)
 - [babel-plugin-syntax-class-constructor-call]({{page.url}}#babel-plugin-syntax-class-constructor-call)
 
-See [...](...) for the full changelog.
-
-# TODO
-
-- add-module-exports - https://github.com/babel/babel/issues/5127
-- https://github.com/babel/babel/pull/5128
+TODO: See ... for the full changelog.
 
 ## All of Babel
 
@@ -77,7 +72,7 @@ See babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#ap
 
 > Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291)
 
-See [below](#babel-plugin-syntax-class-constructor-call) for more information.
+See [below](#babel-plugin-transform-class-constructor-call) for more information.
 
 > A trailing comma cannot come after a RestElement in objects [#290](https://github.com/babel/babylon/pull/290)
 
