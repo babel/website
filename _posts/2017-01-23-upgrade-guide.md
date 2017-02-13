@@ -10,7 +10,6 @@ third_party_js:
 custom_js_with_timestamps:
 - docs.js
 ---
-
 Babel 7 is out! This document aims to help people with upgrading Babel.
 
 - [Babel]({{page.url}}#babel)
@@ -43,7 +42,7 @@ Note that the Babel compiler is only supported officially in these environments:
 
 > Removed the `*` plugin option
 
-This was removed and instead you should specificly deside which plugins you want to activate.
+This catch-all option was removed; instead you should specifically decide which plugins you want to activate.
 
 We thought it would be a good idea for tools so they wouldn't have to constantly update their config but it also means we can't easily make a breaking change.
 
@@ -75,13 +74,15 @@ babylon.parse(code, {
 })
 ```
 
-See [babylon's plugins](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
+See babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
 
 > Removed `classConstructorCall` plugin
 
-See <below(link to the babel section about this)> for more information.
+See [below](#babel-plugin-syntax-class-constructor-call) for more information.
 
-> Trailing comma after rest parameter in objects is not allowed anymore
+> A trailing comma cannot come after a RestElement in objects.
+
+This is when you are using `babel-plugin-transform-object-rest-spread`
 
 Before:
 
@@ -103,15 +104,15 @@ or:
 var { ...y, b } = { a: 1};
 ```
 
-> Flow AST changes
+> AST changes
 
-These changes are most probably not affecting you if you use babel. They will only affect you if you use our parser Babylon directly and it's output.
+These changes only affect other tools such as Babel plugins.
 
 * Flow: Node renamed from `ExistentialTypeParam` to `ExistsTypeAnnotation`
 * Flow: Node renamed from `NumericLiteralTypeAnnotation` to `NumberLiteralTypeAnnotation`
 * Flow: New node `Variance` which replaces the string value of the `variance` field on several nodes (be more specific here)
 
-> `ForAwaitStatement` has been removed
+> Node `ForAwaitStatement` has been removed
 
 An `await` property is defined instead.
 
@@ -122,15 +123,15 @@ interface ForOfStatement <: ForInStatement {
 }
 ```
 
-See [TODO: Babylon AST documentation](https://github.com/babel/babylon/blob/master/ast/spec.md) for more information.
+See [Babylon AST spec](https://github.com/babel/babylon/blob/7.0/ast/spec.md) for more information.
 
 ## babel-core
 
 > `babel-core/register.js` has been removed
 
-Relying on `babel-core/register` is deprecated and has been removed in Babel 7.
+The deprecated usage of `babel-core/register` has been removed in Babel 7; instead use the standalone package `babel-register`.
 
-We need to add `babel-register` as a new dependency:
+Install `babel-register` as a new dependency:
 
 ```sh
 npm install --save-dev babel-register
@@ -152,11 +153,9 @@ See [babel-register documentation](https://babeljs.io/docs/usage/babel-register/
 
 ## babel-preset-stage-3
 
-> Presets moved
+> Plugins moved
 
-We weren't able to remove presets out of stage-3 since it was a breaking change.
-
-These plugins were moved into the yearly presets:
+These plugins were moved into their yearly presets after moving to Stage 4:
 
 * `babel-plugin-syntax-trailing-function-commas` (babel-preset-es2017)
 
