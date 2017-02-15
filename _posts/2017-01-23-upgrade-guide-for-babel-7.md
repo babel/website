@@ -126,7 +126,7 @@ var { ...y, b } = { a: 1};
 
 > Likelihood to break your CI: medium
 
-We don't currently have a Stage 2 transform for decorators so instead of making it error, we are adding legacy-decorators as part of the Stage 1 preset as well as making legacy-decorators the official package again. (It still needs to be updated).
+We don't currently have a Stage 2 transform for decorators so instead of making it error, we are adding what was legacy-decorators as part of the Stage 1 preset by merging it into the transform-decorators plugin.
 
 ## babel-core
 
