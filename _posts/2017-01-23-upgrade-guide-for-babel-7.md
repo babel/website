@@ -92,7 +92,7 @@ After
 
 See [/docs/plugins/preset-env/](/docs/plugins/preset-env/) for more information.
 
-## Spec Compilancy 
+## Spec Compliancy 
 
 > A trailing comma cannot come after a RestElement in objects [#290](https://github.com/babel/babylon/pull/290)
 
