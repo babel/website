@@ -17,9 +17,9 @@ third_party_js:
         <a href="http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=latest%2Creact%2Cstage-2&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true">Try it Out</a>
       </div>
       <div class="hero-actions-blog">
-        <a href="/blog/2016/12/07/the-state-of-babel">
+        <a href="/blog/2017/02/13/6.23.0">
           <span class="hero-actions-blog__label">Latest From Our Blog:</span>
-          <span class="hero-actions-blog__post">The State of Babel</span>
+          <span class="hero-actions-blog__post">6.23.0 Released</span>
         </a>
       </div>
     </div>
