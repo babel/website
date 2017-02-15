@@ -123,7 +123,7 @@ async function f() {
 }
 ```
 
-See [Babylon AST spec](https://github.com/babel/babylon/blob/7.0/ast/spec.md) for more information.
+See our [upgrade PR for Babel](https://github.com/babel/babel/pull/5317) and the [Babylon AST spec](https://github.com/babel/babylon/blob/7.0/ast/spec.md) for more information.
 
 > Removed the `*` plugin option [babel/babylon#301](https://github.com/babel/babylon/pull/301)
 
