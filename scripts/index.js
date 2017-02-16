@@ -2,7 +2,6 @@ var BABEL_MINI_REPL = (function() {
   var miniReplExamples = [
     '[1, 2, 3].map(n => n + 1);',
     'var [a,,b] = [1,2,3];',
-    'function f(x, y = 12) {\n  return x + y;\n}',
     'const x = [1, 2, 3];\nfoo([...x]);',
     'var obj = {\n  shorthand,\n  method() {\n    return "😀";\n  }\n};',
     'var name = "Guy Fieri";\nvar place = "Flavortown";\n\n`Hello ${name}, ready for ${place}?`',
