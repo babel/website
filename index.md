@@ -33,11 +33,13 @@ third_party_js:
       </div>
     </div>
 
+    {% assign latest_post = site.posts.first %}
+
     <div class="hero-actions">
       <div class="hero-actions-blog">
-        <a href="/blog/2017/02/13/6.23.0">
+        <a href="{{ latest_post.url }}">
           <span class="hero-actions-blog__label">Latest From Our Blog:</span>
-          <span class="hero-actions-blog__post">6.23.0 Released</span>
+          <span class="hero-actions-blog__post">{{ latest_post.title }}</span>
         </a>
       </div>
     </div>
