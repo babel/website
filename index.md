@@ -16,12 +16,12 @@ third_party_js:
     <div class="hero-repl">
       <div class="hero-repl__editor">
         <div class="hero-repl__pane hero-repl__pane--left">
-          <h3>You put JavaScript in</h3>
+          <h3>Put in next-gen JavaScript</h3>
           <div id="hero-repl-in" class="hero-repl__code"></div>
         </div>
 
         <div class="hero-repl__pane hero-repl__pane--right">
-          <h3>And get JavaScript out</h3>
+          <h3>Get browser-compatible JavaScript out</h3>
           <div id="hero-repl-out" class="hero-repl__code"></div>
           <div class="hero-repl__error"></div>
         </div>

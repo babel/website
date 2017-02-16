@@ -1,10 +1,12 @@
 var BABEL_MINI_REPL = (function() {
   var miniReplExamples = [
     '[1, 2, 3].map(n => n + 1);',
-    'var [a, ,b] = [1,2,3];',
+    'var [a,,b] = [1,2,3];',
     'function f(x, y = 12) {\n  return x + y;\n}',
-    'const x = {\n  ["i" + bar]: 5,\n};',
-    'async function foo() {\n  await bar();\n}',
+    'const x = [1, 2, 3];\nfoo([...x]);',
+    'var obj = {\n  shorthand,\n  method() {\n    return "😀";\n  }\n};',
+    'var name = "Guy Fieri";\nvar place = "Flavortown";\n\n`Hello ${name}, ready for ${place}?`',
+    '2 ** 3',
     'let yourTurn = "Type some code in here!"',
   ];
 
