@@ -4,8 +4,8 @@ var BABEL_MINI_REPL = (function() {
     'var [a,,b] = [1,2,3];',
     'const x = [1, 2, 3];\nfoo([...x]);',
     'var obj = {\n  shorthand,\n  method() {\n    return "😀";\n  }\n};',
-    'var name = "Guy Fieri";\nvar place = "Flavortown";\n\n`Hello ${name}, ready for ${place}?`',
-    'let yourTurn = "Type some code in here!"',
+    'var name = "Guy Fieri";\nvar place = "Flavortown";\n\n`Hello ${name}, ready for ${place}?`;',
+    'let yourTurn = "Type some code in here!";',
   ];
 
   var inEditor;
