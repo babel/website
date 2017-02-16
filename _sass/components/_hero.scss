@@ -194,12 +194,12 @@
     background: #3F403E;
     font-family: monospace;
     font-size: 1.25rem;
-    min-height: 125px;
+    height: 125px;
     text-align: left;
 
     @media (min-width: $screen-md-min) {
       font-size: 1.5rem;
-      min-height: 200px;
+      height: 200px;
     }
   }
 
