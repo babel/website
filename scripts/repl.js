@@ -164,7 +164,7 @@
       },
       set: function (value) {
         var setting = value !== 'undefined' && value !== 'false' && value;
-        $element.val(setting);
+        $element.val(_.trim(setting));
       },
       enumerable: true,
       configurable: false

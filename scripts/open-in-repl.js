@@ -45,7 +45,7 @@
     };
 
     var getEnvBrowsers = function (browsers) {
-      if (!browsers) return null;
+      if (!browsers) return "";
 
       return Array.isArray(browsers)
         ? browsers.join(', ') 
@@ -61,7 +61,7 @@
     };
 
     var normalizeEnvOptions = function (options) {
-      var envOptions = {};
+      var envOptions = {targets: [], browsers: ""};
       var targets = options.targets;
 
       if (targets) {
@@ -91,7 +91,7 @@
         normalized.presets.push(name);
 
         return normalized;
-      }, {presets: [], targets: []});
+      }, {presets: []});
     };
 
     var jsonToConfig = function(code) {
@@ -113,7 +113,6 @@
       + '</div>'
       + '</button>'
     );
-    // var jsonButton = jsButton.clone();
 
 
     button.on('click', function() {
@@ -139,7 +138,9 @@
 
       for (var key in options) {
         var value = options[key];
-        if (Array.isArray(value) && value.length === 0) {
+        var couldBeEmpty = Array.isArray(value) || typeof value === "string";
+        var isEmpty = couldBeEmpty && value.length === 0;
+        if (isEmpty) {
           value = " ";
         }
         url += serialize(key, value);
