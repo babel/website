@@ -4,7 +4,7 @@
     'use strict';
 
     var jsPresets = [ "es2015", "stage-0", "react" ];
-    var envOptions = ['useBuiltIns', 'modules', 'include', 'exclude'];
+    var validEnvOptions = ['useBuiltIns', 'modules', 'include', 'exclude'];
 
     var serialize = function (key, value) {
       return "&" + key + "=" + encodeURIComponent(value);
@@ -18,8 +18,62 @@
       });
     };
 
+    var getPresetsFromConfig = function (config) {
+      var presets = config.presets;
+      if (!presets) {
+        var env = config.env;
+        if (env) {
+          if (env.development) {
+            presets = env.development.presets;
+          } else if (env.production) {
+            presets = env.production.presets;
+          }
+        } else {
+          presets = [];
+        }
+      }
+      return presets;
+    }
+
+    var getEnvTargets = function (targets) {
+      return Object.keys(targets).reduce(function (envTargets, target) {
+        if (target !== 'browsers') {
+          var dashedTarget = key + '-' + targets[key];
+          envTargets.push(dashedTarget);
+        }
+      }, []);
+    };
+
+    var getEnvBrowsers = function (browsers) {
+      if (!browsers) return null;
+
+      return Array.isArray(browsers)
+        ? browsers.join(', ') 
+        : browsers;
+    };
+
+    var getEnvOptions = function (options) {
+      return Object.keys(options).reduce(function (envOptions, option) {
+        if (validEnvOptions.includes(option)) {
+          envOptions[key] = options[option];
+        }
+      }, {});
+    };
+
+    var normalizeEnvOptions = function (options) {
+      var envOptions = {};
+      var targets = options.targets;
+
+      if (targets) {
+        envOptions.targets = getEnvTargets(targets);
+        envOptions.browsers = getEnvBrowsers(targets.browsers);
+        _.extend(envOptions, getEnvOptions(options));
+      }
+      return envOptions;
+    };
+
     var normalizePresets = function (presets) {
-      if (!presets) return {};
+      if (!presets) return {presets: []};
 
       return presets.reduce(function(normalized, preset) {
         var name = preset;
@@ -31,45 +85,19 @@
         }
 
         if (name === 'env') {
-          normalized.presets.push(name);
-          var targets = options.targets;
-          if (targets) {
-            for (var key in targets) {
-              if (targets.hasOwnProperty(key) && key !== 'browsers') {
-                normalized.targets.push(key + '-' + targets[key]);
-              }
-            }
-            for (key in options) {
-              if (envOptions.includes(key)) {
-                normalized[key] = options[key];
-              }
-            }
-            targets.browsers && normalized.browsers.push(targets.browsers);
-          }
-        } else {
-          normalized.presets.push(name);
+          var envOpts = normalizeEnvOptions(options);
+          _.extend(normalized, envOpts);
         }
+        normalized.presets.push(name);
+
         return normalized;
-      }, {presets: [], browsers: [], targets: []});
+      }, {presets: [], targets: []});
     };
 
     var jsonToConfig = function(code) {
-      var parsed = JSON.parse(code.trim());
-      var presets = parsed.presets;
-      if (!presets) {
-        var env = parsed.env;
-        if (env) {
-          if (env.development) {
-            presets = env.development.presets;
-          } else if (env.development) {
-            presets = env.production.presets;
-          }
-        } else {
-          presets = [];
-        }
-      }
-      var normalized = normalizePresets(presets);
-      return normalized;
+      var config = JSON.parse(code.trim());
+      var presets = getPresetsFromConfig(config);
+      return normalizePresets(presets);
     };
 
     var jsSelector = '.language-js,.language-javascript';
@@ -110,7 +138,11 @@
               + "&lineWrap=true"
 
       for (var key in options) {
-        url += serialize(key, options[key]);
+        var value = options[key];
+        if (Array.isArray(value) && value.length === 0) {
+          value = " ";
+        }
+        url += serialize(key, value);
       }
 
       url += "&code=" + encodeURIComponent(code);
