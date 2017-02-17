@@ -338,13 +338,13 @@ to learn how to create your own plugins.
 The simple plugin that reverses names (from the homepage):
 
 ```js
-export default function ({types: t}) {
+export default function ({ types: t }) {
   return {
     visitor: {
       Identifier(path) {
-        let name = path.node.name;
+        const name = path.node.name;
         // reverse the name: JavaScript -> tpircSavaJ
-        path.node.name = name.split('').reverse().join('');
+        path.node.name = name.split("").reverse().join("");
       }
     }
   };
@@ -359,11 +359,11 @@ To make your own preset, you just need to export a config.
 // Presets can contain other presets, and plugins with options.
 module.exports = {
   presets: [
-    require('babel-preset-es2015'),
+    require("babel-preset-es2015"),
   ],
   plugins: [
-    [require('babel-plugin-transform-es2015-template-literals'), { spec: true }],
-    require('babel-plugin-transform-es3-member-expression-literals'),
+    [require("babel-plugin-transform-es2015-template-literals"), { spec: true }],
+    require("babel-plugin-transform-es3-member-expression-literals"),
   ],
 };
 ```
