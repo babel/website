@@ -12,7 +12,7 @@ before_install:
   - git submodule update --init --recursive
 
 script:
-  - npm test && bundle exec rake
+  - npm test && npm run lint && bundle exec rake
 
 git:
   submodules: false
