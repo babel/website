@@ -193,7 +193,7 @@ class AutoloadingPostsGrid extends React.Component {
   render() {
     const {
       className,
-      ...others,  // contains all properties of this.props except for className
+      ...others  // contains all properties of this.props except for className
     } = this.props;
     return (
       <div className={className}>

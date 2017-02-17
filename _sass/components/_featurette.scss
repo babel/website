@@ -1,9 +1,17 @@
 .featurette {
   display: block;
 
+  &--get-started {
+    .highlight {
+      margin-bottom: 32px;
+      min-height: 90px;
+    }
+  }
+
   h2 {
     font-weight: 600;
     line-height: 1;
+    margin-bottom: 32px;
 
     a {
       color: inherit;
@@ -11,10 +19,6 @@
 
     @media (min-width: $screen-sm) {
       font-size: 50px;
-    }
-
-    @media (min-width: $screen-md) {
-      margin-top: 30px;
     }
   }
 
