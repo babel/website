@@ -21,7 +21,7 @@ TODO: Check here for the full changelog.
 
 > Support for Node.js 0.10 and 0.12 has been dropped [#5025](https://github.com/babel/babel/pull/5025), [#5041](https://github.com/babel/babel/pull/5041), [#5186](https://github.com/babel/babel/pull/5186)
 
-> Likelihood to break your CI: high
+<blockquote class="babel-callout babel-callout-danger"><p>Project break risk: high</p></blockquote>
 
 We highly encourage you to use a newer version of Node.js (LTS v4, LTS v6) since the previous versions are not maintained.
 See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
@@ -30,7 +30,7 @@ See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
 > Remove Stage 4 plugins from Stage 3 [#5126](https://github.com/babel/babel/pull/5126)
 
-> Likelihood to break your CI: high
+<blockquote class="babel-callout babel-callout-danger"><p>Project break risk: high</p></blockquote>
 
 These plugins were moved into their yearly presets after moving to Stage 4:
 
@@ -96,7 +96,7 @@ See [/docs/plugins/preset-env/](/docs/plugins/preset-env/) for more information.
 
 > A trailing comma cannot come after a RestElement in objects [#290](https://github.com/babel/babylon/pull/290)
 
-> Likelihood to break your CI: medium
+<blockquote class="babel-callout babel-callout-warning"><p>Project break risk: medium</p></blockquote>
 
 This is when you are using `babel-plugin-transform-object-rest-spread`
 
@@ -124,7 +124,7 @@ var { ...y, b } = { a: 1};
 
 > [legacy-decorators](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) has been moved into the [transform-decorators](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-decorators) package [#5225](https://github.com/babel/babel/pull/5225)
 
-> Likelihood to break your CI: medium
+<blockquote class="babel-callout babel-callout-warning"><p>Project break risk: medium</p></blockquote>
 
 We don't currently have a Stage 2 transform for decorators so instead of making it error, we are adding what was legacy-decorators as part of the Stage 1 preset by merging it into the transform-decorators plugin.
 
@@ -132,7 +132,7 @@ We don't currently have a Stage 2 transform for decorators so instead of making 
 
 > `babel-core/register.js` has been removed [#5132](https://github.com/babel/babel/pull/5132)
 
-> Likelihood to break your CI: low
+<blockquote class="babel-callout babel-callout-info"><p>Project break risk: low</p></blockquote>
 
 The deprecated usage of `babel-core/register` has been removed in Babel 7; instead use the standalone package `babel-register`.
 
@@ -160,7 +160,7 @@ See [babel-register documentation](https://babeljs.io/docs/usage/babel-register/
 
 > babel-plugin-transform-class-constructor-call has been removed [#5119](https://github.com/babel/babel/pull/5119)
 
-> Likelihood to break your CI: low
+<blockquote class="babel-callout babel-callout-info"><p>Project break risk: low</p></blockquote>
 
 TC39 decided to drop this proposal.
 
@@ -218,7 +218,7 @@ This package currently gives you an error message to install `babel-cli` instead
 
 > Dropping the `quotes` option [#5154](https://github.com/babel/babel/pull/5154)]
 
-> Likelihood to break your CI: low
+<blockquote class="babel-callout babel-callout-info"><p>Project break risk: low</p></blockquote>
 
 If you want formatting for compiled output you can use recast/prettier/escodegen/fork babel-generator.
 
@@ -226,7 +226,7 @@ This option was only available through `babel-generator` explicitly until v6.18.
 
 > Dropping the `flowUsesCommas` option [#5123](https://github.com/babel/babel/pull/5123)
 
-> Likelihood to break your CI: low
+<blockquote class="babel-callout babel-callout-info"><p>Project break risk: low</p></blockquote>
 
 Currently there are 2 supported syntaxes (`,` and `;`) in Flow Object Types. 
 
@@ -236,6 +236,6 @@ This change just makes babel-generator output `,` instead of `;`.
 
 > Remove `babel-core/src/api/browser.js` [#5124](https://github.com/babel/babel/pull/5124)
 
-> Likelihood to break your CI: low
+<blockquote class="babel-callout babel-callout-info"><p>Project break risk: low</p></blockquote>
 
 `babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [babel-standalone](https://github.com/babel/babel-standalone)
