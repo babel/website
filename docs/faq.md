@@ -21,7 +21,7 @@ Arrow functions **are not** synonymous with normal functions. `arguments` and `t
 reference their *outer function* for example:
 
 ```javascript
-var user = {
+const user = {
   firstName: "Sebastian",
   lastName: "McKenzie",
   getFullName: () => {

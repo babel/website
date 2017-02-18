@@ -7,6 +7,7 @@
   "scripts": {
     "start": "make serve",
     "build": "make build",
+    "lint": "eslint --ext md docs",
     "test": "remark _posts docs _includes README.md --quiet"
   },
   "remarkConfig": {
@@ -30,7 +31,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-eslint": "^7.1.1",
     "bootstrap-sass": "^3.3.1",
+    "eslint": "^3.15.0",
+    "eslint-config-babel": "^6.0.0",
+    "eslint-plugin-flowtype": "^2.30.0",
+    "eslint-plugin-markdown": "^1.0.0-beta.3",
     "remark-cli": "^2.1.0",
     "remark-lint": "^5.2.0",
     "remark-preset-lint-recommended": "^1.0.0"

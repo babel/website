@@ -1,0 +1,13 @@
+{
+  "extends": "babel",
+  "rules": {
+    "no-unused-vars": 1
+  },
+  "plugins": [
+    "markdown"
+  ],
+  "env": {
+    "node": true,
+    "mocha": true
+  }
+}
