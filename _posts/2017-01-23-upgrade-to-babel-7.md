@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Upgrade Guide for Babel 7"
+title:  "Upgrade to Babel 7 (WIP)"
 author: Sven SAULEAU
 date:   2017-01-23 12:00:00
 categories: announcements
-share_text: "Upgrade Guide for Babel 7"
+share_text: "Upgrade to Babel 7"
 third_party_js:
 - https://platform.twitter.com/widgets.js
 custom_js_with_timestamps:
