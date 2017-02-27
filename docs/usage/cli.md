@@ -97,7 +97,7 @@ babel --out-file script-compiled.js < script.js
 Use the `--plugins` option to specify plugins to use in compilation
 
 ```sh
-babel script.js --out-file script-compiled.js --plugins=es2015,react
+babel script.js --out-file script-compiled.js --plugins=add-module-exports,transform-es2015-modules-amd
 ```
 
 ### Using Presets
@@ -105,7 +105,7 @@ babel script.js --out-file script-compiled.js --plugins=es2015,react
 Use the `--presets` option to specify plugins to use in compilation
 
 ```sh
-babel script.js --out-file script-compiled.js --presets=add-module-exports,transform-es2015-modules-amd
+babel script.js --out-file script-compiled.js --presets=es2015,react
 ```
 
 ### Ignoring .babelrc
