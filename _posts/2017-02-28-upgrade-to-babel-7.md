@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Upgrade to Babel 7 (WIP)"
-author: Sven SAULEAU
-date:   2017-01-23 12:00:00
+author: Sven SAULEAU, Henry Zhu
+date:   2017-02-28 12:00:00
 categories: announcements
 share_text: "Upgrade to Babel 7"
 third_party_js:

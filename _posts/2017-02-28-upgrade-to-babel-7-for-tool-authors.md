@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Upgrade to Babel 7 for Tool Authors (WIP)"
-author: Sven SAULEAU
-date:   2017-01-23 12:00:00
+author: Sven SAULEAU, Henry Zhu
+date:   2017-02-28 12:00:00
 categories: announcements
 share_text: "Upgrade to Babel 7 for Tool Authors"
 third_party_js:
@@ -13,7 +13,7 @@ custom_js_with_timestamps:
 
 This document is for developers that create tools that depend on Babel such as babel plugins and the relevant changes for upgrading to Babel 7.
 
-> Also check out the [User Upgrade Guide](/blog/2017/01/23/upgrade-guide-for-babel-7) for other relevant changes.
+> Also check out the [User Upgrade Guide](/blog/2017/02/28/upgrade-guide-for-babel-7) for other relevant changes.
 
 ## All Babel packages
 
