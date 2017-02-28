@@ -123,6 +123,10 @@ async function f() {
 }
 ```
 
+Nodes `RestProperty` and `SpreadProperty` are removed in favor of reusing `RestElement` and `SpreadElement` [#384](https://github.com/babel/babylon/pull/384)
+
+The actual syntax for both is the same: `...`. Before we differentiated the usage of them based on if it was used in an object or in an array.
+
 See our [upgrade PR for Babel](https://github.com/babel/babel/pull/5317) and the [Babylon AST spec](https://github.com/babel/babylon/blob/7.0/ast/spec.md) for more information.
 
 > Removed the `*` plugin option [babel/babylon#301](https://github.com/babel/babylon/pull/301)
