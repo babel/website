@@ -22,6 +22,8 @@ Because not every breaking change will affect every project, we've sorted the se
 We highly encourage you to use a newer version of Node.js (LTS v4, LTS v6) since the previous versions are not maintained.
 See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
+> This just means Babel *itself* won't run on older versions of Node. It can still *output* code that runs on old Node. 
+
 ## babel-preset-stage-3
 
 > Remove Stage 4 plugins from Stage 3 [#5126](https://github.com/babel/babel/pull/5126) ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
