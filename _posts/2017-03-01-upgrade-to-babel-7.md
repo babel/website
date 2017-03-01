@@ -113,12 +113,6 @@ After:
 var { ...y } = { a: 1};
 ```
 
-or:
-
-```js
-var { ...y, b } = { a: 1};
-```
-
 ## babel-preset-stage-1/babel-preset-stage-2 (decorators)
 
 > [legacy-decorators](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) has been moved into the [transform-decorators](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-decorators) package [#5225](https://github.com/babel/babel/pull/5225) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
