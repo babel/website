@@ -2,7 +2,7 @@
 layout: post
 title:  "Upgrade to Babel 7 (WIP)"
 author: Sven SAULEAU, Henry Zhu
-date:   2017-02-29 00:00:00
+date:   2017-02-29 11:00:00
 categories: announcements
 share_text: "Upgrade to Babel 7"
 third_party_js:
@@ -17,7 +17,7 @@ Because not every breaking change will affect every project, we've sorted the se
 
 ## All of Babel
 
-> Support for Node.js 0.10 and 0.12 has been dropped [#5025](https://github.com/babel/babel/pull/5025), [#5041](https://github.com/babel/babel/pull/5041), [#5186](https://github.com/babel/babel/pull/5186) ![high](https://img.shields.io/badge/level%20of%20awesome%3F-high-red.svg)
+> Support for Node.js 0.10 and 0.12 has been dropped [#5025](https://github.com/babel/babel/pull/5025), [#5041](https://github.com/babel/babel/pull/5041), [#5186](https://github.com/babel/babel/pull/5186) ![high](https://img.shields.io/badge/level%20of%20awesomeness%3F-high-red.svg)
 
 We highly encourage you to use a newer version of Node.js (LTS v4, LTS v6) since the previous versions are not maintained.
 See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
@@ -97,7 +97,7 @@ See [/docs/plugins/preset-env/](/docs/plugins/preset-env/) for more information.
 
 > A trailing comma cannot come after a RestElement in objects [#290](https://github.com/babel/babylon/pull/290) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-This is when you are using `babel-plugin-transform-object-rest-spread`
+This is when you are using `babel-plugin-transform-object-rest-spread`.
 
 Before:
 
@@ -225,4 +225,4 @@ This change just makes babel-generator output `,` instead of `;`.
 
 > Remove `babel-core/src/api/browser.js` [#5124](https://github.com/babel/babel/pull/5124) ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
-`babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [babel-standalone](https://github.com/babel/babel-standalone)
+`babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [babel-standalone](https://github.com/babel/babel-standalone).

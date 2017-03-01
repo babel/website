@@ -2,7 +2,7 @@
 layout: post
 title:  "Upgrade to Babel 7 for Tool Authors (WIP)"
 author: Sven SAULEAU, Henry Zhu
-date:   2017-02-29 00:00:00
+date:   2017-02-29 11:00:00
 categories: announcements
 share_text: "Upgrade to Babel 7 for Tool Authors"
 third_party_js:
@@ -17,7 +17,7 @@ This document is for developers that create tools that depend on Babel such as B
 
 ## All Babel packages
 
-> Support for Node.js 0.10 and 0.12 has been dropped ![high](https://img.shields.io/badge/level%20of%20awesome%3F-high-red.svg)
+> Support for Node.js 0.10 and 0.12 has been dropped ![high](https://img.shields.io/badge/level%20of%20awesomeness%3F-high-red.svg)
  
 > Dropped use of `add-module-exports` plugin on Babel packages ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
