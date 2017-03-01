@@ -13,12 +13,12 @@ custom_js_with_timestamps:
 
 Refer users to this document for those that create tools that depend on Babel (such as Babel plugins).
 
-> Also check out the [User Upgrade Guide](/blog/2017/02/29/upgrade-to-babel-7) for other relevant changes.
+> Also check out the [User Upgrade Guide]({% post_url 2017-03-01-upgrade-to-babel-7 %}) for other relevant changes.
 
 ## All Babel packages
 
 > Support for Node.js 0.10 and 0.12 has been dropped ![high](https://img.shields.io/badge/level%20of%20awesomeness%3F-high-red.svg)
- 
+
 > Dropped use of `add-module-exports` plugin on Babel packages ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 This had to be used earlier to prevent a breaking change with our exports.
