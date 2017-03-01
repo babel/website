@@ -82,7 +82,7 @@ SET BABEL_ENV=production
 YOUR_COMMAND_HERE
 ```
 
-> If you want your command to work across platforms, try using [`cross-env`](https://www.npmjs.com/package/cross-env)
+> If you want your command to work across platforms, you can use [`cross-env`](https://www.npmjs.com/package/cross-env)
 
 ## Lookup behavior
 
