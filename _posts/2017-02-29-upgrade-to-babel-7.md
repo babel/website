@@ -11,7 +11,7 @@ custom_js_with_timestamps:
 - docs.js
 ---
 
-Babel 7 is out! Refer users this document when upgrading to Babel 7.
+Babel 7 is out! Refer users to this document when upgrading to Babel 7.
 
 Because not every breaking change will affect every project, we've sorted the sections by the likelihood of a change breaking tests when upgrading.
 

@@ -11,7 +11,7 @@ custom_js_with_timestamps:
 - docs.js
 ---
 
-This document is for developers that create tools that depend on Babel such as Babel plugins and the relevant changes for upgrading to Babel 7.
+Refer users to this document for those that create tools that depend on Babel (such as Babel plugins).
 
 > Also check out the [User Upgrade Guide](/blog/2017/02/29/upgrade-to-babel-7) for other relevant changes.
 
