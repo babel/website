@@ -2,7 +2,7 @@
 layout: post
 title:  "Upgrade to Babel 7 for Tool Authors (WIP)"
 author: Sven SAULEAU, Henry Zhu
-date:   2017-02-28 12:00:00
+date:   2017-02-29 00:00:00
 categories: announcements
 share_text: "Upgrade to Babel 7 for Tool Authors"
 third_party_js:
@@ -13,71 +13,21 @@ custom_js_with_timestamps:
 
 This document is for developers that create tools that depend on Babel such as babel plugins and the relevant changes for upgrading to Babel 7.
 
-> Also check out the [User Upgrade Guide](/blog/2017/02/28/upgrade-guide-for-babel-7) for other relevant changes.
+> Also check out the [User Upgrade Guide](/blog/2017/02/29/upgrade-guide-for-babel-7) for other relevant changes.
 
 ## All Babel packages
 
-> Support for Node.js 0.10 and 0.12 has been dropped
-
-> Likelihood to break your CI: high
+> Support for Node.js 0.10 and 0.12 has been dropped ![high](https://img.shields.io/badge/level%20of%20awesome%3F-high-red.svg)
  
-> Dropped use of `add-module-exports` plugin on Babel packages
-
-> Likelihood to break your CI: high
+> Dropped use of `add-module-exports` plugin on Babel packages ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 This had to be used earlier to prevent a breaking change with our exports.
 
-If you import a Babel package in a library you may need to use `.default` when using require.
-
-## Babel Presets
-
-> Dropped support for exporting as an object [#5128](https://github.com/babel/babel/pull/5128)
-
-> Likelihood to break your CI: high
-
-A preset needs to export a function as the default export or with `module.exports`.
-
-Before: Babel 6
-
-```js
-module.exports = {
-  buildPreset: function () {
-    return {
-      plugins: ['plugin-a']
-    };
-  }
-};
-```
-
-```js
-export default {
-  plugins: ['plugin-a']
-}
-```
-
-After: Babel 7
-
-```js
-module.exports = function () {
-  return {
-    plugins: ['plugin-a']
-  };
-};
-```
-
-```js
-export default function() {
-  return {
-    plugins: ['plugin-a']
-  };
-}
-```
+If you import a Babel package in a library you may need to use `.default` when using `require` rather than `import`.
 
 ## Babylon
 
-> AST changes
-
-> Likelihood to break your CI: low
+> AST changes ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
 Flow: Node renamed from `ExistentialTypeParam` to `ExistsTypeAnnotation` [#322](https://github.com/babel/babylon/pull/322)
 
@@ -129,9 +79,7 @@ The actual syntax for both is the same: `...`. Before we differentiated the usag
 
 See our [upgrade PR for Babel](https://github.com/babel/babel/pull/5317) and the [Babylon AST spec](https://github.com/babel/babylon/blob/7.0/ast/spec.md) for more information.
 
-> Removed the `*` plugin option [babel/babylon#301](https://github.com/babel/babylon/pull/301)
-
-> Likelihood to break your CI: low
+> Removed the `*` plugin option [babel/babylon#301](https://github.com/babel/babylon/pull/301) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 This was first added in v6.14.1 (Nov 17, 2016) so it's unlikely anyone was using this.
 
@@ -169,6 +117,4 @@ babylon.parse(code, {
 
 See babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
 
-> Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291)
-
-> Likelihood to break your CI: low
+> Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)

@@ -2,7 +2,7 @@
 layout: post
 title:  "Upgrade to Babel 7 (WIP)"
 author: Sven SAULEAU, Henry Zhu
-date:   2017-02-28 12:00:00
+date:   2017-02-29 00:00:00
 categories: announcements
 share_text: "Upgrade to Babel 7"
 third_party_js:
@@ -15,22 +15,16 @@ Babel 7 is out! Refer users this document when upgrading to Babel 7.
 
 Because not every breaking change will affect every project, we've sorted the sections by the likelihood of a change breaking tests when upgrading.
 
-TODO: Check here for the full changelog.
-
 ## All of Babel
 
-> Support for Node.js 0.10 and 0.12 has been dropped [#5025](https://github.com/babel/babel/pull/5025), [#5041](https://github.com/babel/babel/pull/5041), [#5186](https://github.com/babel/babel/pull/5186)
-
-<blockquote class="babel-callout babel-callout-danger"><p>Project break risk: high</p></blockquote>
+> Support for Node.js 0.10 and 0.12 has been dropped [#5025](https://github.com/babel/babel/pull/5025), [#5041](https://github.com/babel/babel/pull/5041), [#5186](https://github.com/babel/babel/pull/5186) ![high](https://img.shields.io/badge/level%20of%20awesome%3F-high-red.svg)
 
 We highly encourage you to use a newer version of Node.js (LTS v4, LTS v6) since the previous versions are not maintained.
 See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
 ## babel-preset-stage-3
 
-> Remove Stage 4 plugins from Stage 3 [#5126](https://github.com/babel/babel/pull/5126)
-
-<blockquote class="babel-callout babel-callout-danger"><p>Project break risk: high</p></blockquote>
+> Remove Stage 4 plugins from Stage 3 [#5126](https://github.com/babel/babel/pull/5126) ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
 These plugins were moved into their yearly presets after moving to Stage 4:
 
@@ -63,6 +57,8 @@ Example:
 let cubed = 2 ** 3;
 ```
 
+---
+
 Instead of any yearly preset, we suggest that you use newly created `babel-preset-env` which uses the correct plugins based on your environment.
 
 Before
@@ -79,6 +75,9 @@ After
 {
   "presets": ["env"]
 }
+```
+
+```json
 {
   "presets": [
     ["env", {
@@ -94,9 +93,7 @@ See [/docs/plugins/preset-env/](/docs/plugins/preset-env/) for more information.
 
 ## Spec Compliancy 
 
-> A trailing comma cannot come after a RestElement in objects [#290](https://github.com/babel/babylon/pull/290)
-
-<blockquote class="babel-callout babel-callout-warning"><p>Project break risk: medium</p></blockquote>
+> A trailing comma cannot come after a RestElement in objects [#290](https://github.com/babel/babylon/pull/290) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 This is when you are using `babel-plugin-transform-object-rest-spread`
 
@@ -122,17 +119,13 @@ var { ...y, b } = { a: 1};
 
 ## babel-preset-stage-1/babel-preset-stage-2 (decorators)
 
-> [legacy-decorators](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) has been moved into the [transform-decorators](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-decorators) package [#5225](https://github.com/babel/babel/pull/5225)
-
-<blockquote class="babel-callout babel-callout-warning"><p>Project break risk: medium</p></blockquote>
+> [legacy-decorators](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) has been moved into the [transform-decorators](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-decorators) package [#5225](https://github.com/babel/babel/pull/5225) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 We don't currently have a Stage 2 transform for decorators so instead of making it error, we are adding what was legacy-decorators as part of the Stage 1 preset by merging it into the transform-decorators plugin.
 
 ## babel-core
 
-> `babel-core/register.js` has been removed [#5132](https://github.com/babel/babel/pull/5132)
-
-<blockquote class="babel-callout babel-callout-info"><p>Project break risk: low</p></blockquote>
+> `babel-core/register.js` has been removed [#5132](https://github.com/babel/babel/pull/5132) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 The deprecated usage of `babel-core/register` has been removed in Babel 7; instead use the standalone package `babel-register`.
 
@@ -158,9 +151,7 @@ See [babel-register documentation](https://babeljs.io/docs/usage/babel-register/
 
 ## babel-plugin-transform-class-constructor-call
 
-> babel-plugin-transform-class-constructor-call has been removed [#5119](https://github.com/babel/babel/pull/5119)
-
-<blockquote class="babel-callout babel-callout-info"><p>Project break risk: low</p></blockquote>
+> babel-plugin-transform-class-constructor-call has been removed [#5119](https://github.com/babel/babel/pull/5119) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 TC39 decided to drop this proposal.
 
@@ -210,23 +201,19 @@ See [/docs/plugins/transform-class-constructor-call/](/docs/plugins/transform-cl
 
 ## babel
 
-> Dropping the `babel` package [#5293](https://github.com/babel/babel/pull/5293)
+> Dropping the `babel` package [#5293](https://github.com/babel/babel/pull/5293) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 This package currently gives you an error message to install `babel-cli` instead in v6. We will just not publish a v7 version. It also doesn't make sense if we switch to scoped package `babel` -> `@babel/babel`?
 
 ## babel-generator
 
-> Dropping the `quotes` option [#5154](https://github.com/babel/babel/pull/5154)]
-
-<blockquote class="babel-callout babel-callout-info"><p>Project break risk: low</p></blockquote>
+> Dropping the `quotes` option [#5154](https://github.com/babel/babel/pull/5154)] ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
 If you want formatting for compiled output you can use recast/prettier/escodegen/fork babel-generator.
 
-This option was only available through `babel-generator` explicitly until v6.18.0 when we exposed `parserOpts` and `generatorOpts`. Because there was a bug in that release no one has used this option in Babel itself.
+This option was only available through `babel-generator` explicitly until v6.18.0 when we exposed `parserOpts` and `generatorOpts`. Because there was a bug in that release no one should've used this option in Babel itself.
 
-> Dropping the `flowUsesCommas` option [#5123](https://github.com/babel/babel/pull/5123)
-
-<blockquote class="babel-callout babel-callout-info"><p>Project break risk: low</p></blockquote>
+> Dropping the `flowUsesCommas` option [#5123](https://github.com/babel/babel/pull/5123) ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
 Currently there are 2 supported syntaxes (`,` and `;`) in Flow Object Types. 
 
@@ -234,8 +221,6 @@ This change just makes babel-generator output `,` instead of `;`.
 
 ## babel-core
 
-> Remove `babel-core/src/api/browser.js` [#5124](https://github.com/babel/babel/pull/5124)
-
-<blockquote class="babel-callout babel-callout-info"><p>Project break risk: low</p></blockquote>
+> Remove `babel-core/src/api/browser.js` [#5124](https://github.com/babel/babel/pull/5124) ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
 `babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [babel-standalone](https://github.com/babel/babel-standalone)
