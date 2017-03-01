@@ -30,7 +30,7 @@ See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
 These plugins were moved into their yearly presets after moving to Stage 4:
 
-`babel-plugin-syntax-trailing-function-commas` (babel-preset-es2017)
+`babel-plugin-syntax-trailing-function-commas` (`babel-preset-es2017`)
 
 Example:
 
@@ -41,7 +41,7 @@ clownPuppiesEverywhere(
 );
 ```
 
-`babel-plugin-transform-async-to-generator` (babel-preset-es2017)
+`babel-plugin-transform-async-to-generator` (`babel-preset-es2017`)
 
 Example:
 
@@ -61,9 +61,9 @@ let cubed = 2 ** 3;
 
 ---
 
-Instead of any yearly preset, we suggest that you use newly created `babel-preset-env` which uses the correct plugins based on your environment.
+Instead of any yearly preset, we suggest that you use the newly created `babel-preset-env` which uses the correct plugins based on your environment.
 
-Before
+Before:
 
 ```json
 {
@@ -71,7 +71,7 @@ Before
 }
 ```
 
-After
+After:
 
 ```json
 {
@@ -105,7 +105,7 @@ Before:
 var { ...y, } = { a: 1};
 ```
 
-This will now throw a SyntaxError.
+This will now throw a syntax error.
 
 After:
 
@@ -123,7 +123,7 @@ var { ...y, b } = { a: 1};
 
 > [legacy-decorators](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) has been moved into the [transform-decorators](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-decorators) package [#5225](https://github.com/babel/babel/pull/5225) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-We don't currently have a Stage 2 transform for decorators so instead of making it error, we are adding what was legacy-decorators as part of the Stage 1 preset by merging it into the transform-decorators plugin.
+Currently, we don't have a Stage 2 transform for decorators. Instead of making it error, we are adding legacy-decorators as part of the Stage 1 preset by merging it into the transform-decorators plugin.
 
 ## babel-core
 
