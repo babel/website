@@ -1,7 +1,8 @@
 {
   "extends": "babel",
   "rules": {
-    "no-unused-vars": 1
+    "no-unused-vars": 1,
+    "no-dupe-class-members": 1
   },
   "plugins": [
     "markdown"

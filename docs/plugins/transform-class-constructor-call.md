@@ -29,8 +29,8 @@ class Point {
 
 }
 
-let p1 = new Point(1, 2); // OK
-let p2 = Point(3, 4); // OK
+const p1 = new Point(1, 2); // OK
+const p2 = Point(3, 4); // OK
 ```
 
 ## Example
@@ -40,12 +40,12 @@ The javascript [Date](http://mdn.io/date) works this way:
 
 ```js
 // You can get a Date instance using the new keyword
-let now = new Date();
+const now = new Date();
 console.log(now.getMonth()); // Prints '3'
 console.log(now.toString()); // Prints 'Mon Apr 11 2016 13:26:07 GMT+0100 (BST)'
 
 // You can get a string of the current date using Date as a function:
-let nowStr = Date();
+const nowStr = Date();
 console.log(nowStr); // Prints 'Mon Apr 11 2016 13:26:07 GMT+0100 (BST)'
 ```
 
@@ -60,13 +60,13 @@ class Date {
   }
 
   call constructor() {
-    let date = new Date();
+    const date = new Date();
     return date.toString();
   }
 }
 
-let now = new Date(); // Get a Date instance
-let nowStr = Date(); // Use the 'call constructor()' part to get a string value of the current date
+const now = new Date(); // Get a Date instance
+const nowStr = Date(); // Use the 'call constructor()' part to get a string value of the current date
 ```
 
 ## References
