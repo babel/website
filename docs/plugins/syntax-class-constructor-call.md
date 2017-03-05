@@ -8,7 +8,7 @@ package: babel-plugin-syntax-class-constructor-call
 
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Class constructor call is a deprecated feature</h4>
-  <p>The class constructor call proposal has been withdrawn (<a href="https://github.com/tc39/ecma262/blob/master/withdrawn-proposals.md#withdrawn-proposals">Withdrawn Proposals</a>) and <a href="https://github.com/babel/babel/wiki/Babel-7">it will be removed in Babel 7</a>.</p>
+  <p>The class constructor call proposal has been withdrawn (<a href="https://github.com/tc39/ecma262/blob/master/withdrawn-proposals.md#withdrawn-proposals">Withdrawn Proposals</a>) and <a href="https://github.com/babel/babel/wiki/Babel-7">was removed in Babel 7</a>.</p>
 </blockquote>
 
 <blockquote class="babel-callout babel-callout-info">
@@ -19,4 +19,8 @@ package: babel-plugin-syntax-class-constructor-call
   </p>
 </blockquote>
 
-{% include package_readme.html %}
+## References
+
+* [Inactive Proposals](https://github.com/tc39/proposals/blob/master/inactive-proposals.md)
+* [Proposal: Call Constructor](https://github.com/tc39/ecma262/blob/master/workingdocs/callconstructor.md)
+* [Blog post: ECMAScript proposal: function-callable classes](http://www.2ality.com/2015/10/call-constructor-esprop.html)
