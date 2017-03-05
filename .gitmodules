@@ -1,6 +1,7 @@
 [submodule "_includes/babel"]
 	path = _includes/babel
 	url = https://github.com/babel/babel.git
+	branch = 7.0
 [submodule "_includes/babili"]
 	path = _includes/babili
 	url = https://github.com/babel/babili.git
