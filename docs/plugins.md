@@ -142,7 +142,6 @@ These plugins are in the minify repo.
 - [minify-booleans](/docs/plugins/transform-minify-booleans/)
 - [minify-constant-folding](/docs/plugins/minify-constant-folding/)
 - [minify-dead-code-elimination](/docs/plugins/minify-dead-code-elimination/)
-- [minify-empty-function](/docs/plugins/minify-empty-function/)
 - [minify-flip-comparisons](/docs/plugins/minify-flip-comparisons/)
 - [minify-guarded-expressions](/docs/plugins/minify-guarded-expressions/)
 - [minify-infinity](/docs/plugins/minify-infinity/)
