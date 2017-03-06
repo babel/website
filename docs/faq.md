@@ -5,6 +5,27 @@ description: Frequently Asked Questions and Answers
 permalink: /docs/faq/
 ---
 
+## Why doesn't `import` use the ES2015 object destructuring syntax?
+
+In four words: "because exports are live." 
+
+> The following is adapted from from http://exploringjs.com/es6/ch_modules.html#sec_imports-as-views-on-exports, 
+> which goes into much more detail.
+
+Imports work differently in CommonJS and ES6.
+
+- In CommonJS, imports are copies of exported values.
+    - You can use `const`, `let`, or `var` to define the binding type (`const x = require('foo')`)
+    - The properties of that imported value are mutable (`const foo = require('foo'); foo.thing = 5`) 
+- In ES6, imports are live read-only views on exported values.
+    - That means that unqualified imports (`import x from 'foo'`) are like const-declared variables.
+    - The properties of a module object `foo` (`import * as foo from 'foo'`) are essentially frozen – you cannot modify `foo` itself.
+    - Qualified imports (`import {thing} from foo`) are also like const-declared variables.
+
+Because the exports of a module are live, `import` required different syntax than object destructuring, as it does 
+not just destructure the imports.
+
+
 ## Why is the output of `for...of` so verbose and ugly?
 
 This is necessary in order to comply with the spec as an iterators `return` method must be called on
