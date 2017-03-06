@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: React JSX source transform
-description:
+description: Adds source file and line number to JSX elements.
 permalink: /docs/plugins/transform-react-jsx-source/
 package: babel-plugin-transform-react-jsx-source
 ---

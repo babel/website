@@ -14,6 +14,8 @@ package: babel-core
 * [Babel-helpers](babel-helpers/): Collection of helper functions used by Babel transforms
 * [Babel-code-frame](babel-code-frame/): Generate errors that contain a code frame that point to source locations
 * [Babylon](babylon/): Babylon is a JavaScript parser used in Babel
+* [Babel-traverse](traverse/): The Babel Traverse module maintains the overall tree state, and is responsible for 	replacing, removing, and adding nodes.
+* [Babel-generator](generator/): Turns an AST into code.
 
 ## Core
 
