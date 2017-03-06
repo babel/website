@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: React inline elements transform
-description:
+description: Replaces the React.createElement function with babelHelpers.jsx.
 permalink: /docs/plugins/transform-react-inline-elements/
 package: babel-plugin-transform-react-inline-elements
 ---

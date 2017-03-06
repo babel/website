@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: React constant elements transformer
-description:
+description: Treat React JSX elements as value types and hoist them to the highest scope.
 permalink: /docs/plugins/transform-react-constant-elements/
 package: babel-plugin-transform-react-constant-elements
 ---

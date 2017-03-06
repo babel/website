@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: React JSX self transform
-description:
+description: Adds __self prop to JSX elements, which React will use to generate some runtime warnings.
 permalink: /docs/plugins/transform-react-jsx-self/
 package: babel-plugin-transform-react-jsx-self
 ---
