@@ -37,10 +37,10 @@
         // Open the search when pressing / or ? or s
         // Use 'keypress' events to handle key combos
         // (e.g. en: '?' = Shift + '/')
-        $(document).on('keypress', function(event) {
-            if (event.keyCode !== KEYBOARD_SLASH &&
-                event.keyCode !== KEYBOARD_QUESTION_MARK &&
-                event.keyCode !== KEYBOARD_S) {
+        $(document).keypress(function(event) {
+            if (event.which !== KEYBOARD_SLASH &&
+                event.which !== KEYBOARD_QUESTION_MARK &&
+                event.which !== KEYBOARD_S) {
                     return;
             }
 
@@ -56,8 +56,8 @@
         });
 
         // Hide the search when pressing Escape
-        $(document).on('keydown', function(event) {
-            if (event.keyCode !== KEYBOARD_ESCAPE) {
+        $(document).keydown(function(event) {
+            if (event.which !== KEYBOARD_ESCAPE) {
                 return;
             }
 
