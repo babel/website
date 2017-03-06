@@ -115,7 +115,7 @@ var { ...y } = { a: 1};
 
 ## babel-preset-stage-1/babel-preset-stage-2 (decorators)
 
-> [legacy-decorators](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) has been moved into the [transform-decorators](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-decorators) package [#5225](https://github.com/babel/babel/pull/5225) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+> [legacy-decorators](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) has been moved into the [transform-decorators](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-decorators) package [#5290](https://github.com/babel/babel/pull/5290) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 Currently, we don't have a Stage 2 transform for decorators. Instead of making it error, we are adding legacy-decorators as part of the Stage 1 preset by merging it into the transform-decorators plugin.
 
