@@ -8,6 +8,7 @@
     var KEYBOARD_ESCAPE = 27;
     var KEYBOARD_SLASH = 47;
     var KEYBOARD_QUESTION_MARK = 63;
+    var KEYBOARD_S = 115;
 
     // config is https://github.com/algolia/docsearch-configs/blob/master/configs/babeljs.json
     var $search = docsearch({
@@ -33,12 +34,13 @@
             $searchInput.focus();
         });
 
-        // Open the search when pressing / or ?
+        // Open the search when pressing / or ? or s
         // Use 'keypress' events to handle key combos
         // (e.g. en: '?' = Shift + '/')
         $(document).on('keypress', function(event) {
             if (event.keyCode !== KEYBOARD_SLASH &&
-                event.keyCode !== KEYBOARD_QUESTION_MARK) {
+                event.keyCode !== KEYBOARD_QUESTION_MARK &&
+                event.keyCode !== KEYBOARD_S) {
                     return;
             }
 
