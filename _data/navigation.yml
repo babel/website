@@ -32,7 +32,7 @@
   url: /blog/
 - title: FAQ
   url: /faq
-- title: Contribute
+- title: Contributing
   subnav:
       - items:
           - title: Babel
