@@ -38,9 +38,12 @@
         // Use 'keypress' events to handle key combos
         // (e.g. en: '?' = Shift + '/')
         $(document).keypress(function(event) {
-            if (event.which !== KEYBOARD_SLASH &&
-                event.which !== KEYBOARD_QUESTION_MARK &&
-                event.which !== KEYBOARD_S) {
+            // omit functionality if another input-element is currently in
+            // focus or the input key is not in the list of accepted keys
+            if ($(document.activeElement).is(':input') ||
+                (event.which !== KEYBOARD_SLASH &&
+                 event.which !== KEYBOARD_QUESTION_MARK &&
+                 event.which !== KEYBOARD_S)) {
                     return;
             }
 
@@ -64,6 +67,11 @@
             // clear search input and close the search box
             $searchInput.val('');
             $toggleCheckbox.prop('checked', false);
+
+            // blur focus on the active element
+            // NOTE: this will also blur the focus of any other currently
+            //       active element
+            $(document.activeElement).blur();
         });
     });
 })(jQuery);
