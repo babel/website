@@ -1,0 +1,24 @@
+.openIssues {
+
+  ul {
+    list-style:none;
+    padding-left:0;
+
+    li {
+      margin-bottom: 10px;
+
+      a {
+        color: #323330;
+      }
+
+      span.issueNumber {
+        background-color: #f5da55;
+        padding: 3px 5px;
+        margin-right: 5px;
+        display:inline-block;
+        min-width: 48px;
+        text-align:right;
+      }
+    }
+  }
+}
