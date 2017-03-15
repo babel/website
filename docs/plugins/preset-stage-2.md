@@ -10,6 +10,7 @@ This preset includes the following plugins:
 
 - <del>[transform-decorators](/docs/plugins/transform-decorators/)</del> – *disabled pending proposal update* (can use the [legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) transform in the meantime)
 - [transform-class-properties](/docs/plugins/transform-class-properties/)
+- [syntax-dynamic-import](/docs/plugins/syntax-dynamic-import/)
 
 And all plugins from presets:
 
