@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Babel generator
+title: babel-generator
 description: Turns an AST into code.
 permalink: /docs/core-packages/generator/
 package: babel-generator
