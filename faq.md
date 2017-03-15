@@ -2,7 +2,9 @@
 layout: docs
 title: FAQ
 description: Frequently Asked Questions and Answers
-permalink: /docs/faq/
+permalink: /faq/
+redirect_from:
+  - /docs/faq/
 ---
 
 ## Why is the output of `for...of` so verbose and ugly?

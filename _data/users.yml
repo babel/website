@@ -538,3 +538,6 @@
 - name: Hooroo
   url: https://hooroo.com/
   logo: hooroo.svg
+- name: The New York Times
+  url: https://nytimes.com/
+  logo: nytimes.svg
