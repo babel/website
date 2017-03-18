@@ -541,3 +541,6 @@
 - name: The New York Times
   url: https://nytimes.com/
   logo: nytimes.svg
+- name: Wave
+  url: https://waveapps.com
+  logo: wave.svg
