@@ -544,3 +544,6 @@
 - name: Wave
   url: https://waveapps.com
   logo: wave.svg
+- name: Shelf.io
+  url: https://shelf.io/
+  logo: shelfio.svg
