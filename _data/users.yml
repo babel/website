@@ -547,3 +547,6 @@
 - name: Shelf.io
   url: https://shelf.io/
   logo: shelfio.svg
+- name: Nau Studio
+  url: https://naustud.io
+  logo: naustudio.svg
