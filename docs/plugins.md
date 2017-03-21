@@ -82,12 +82,12 @@ These plugins apply transformations to your code.
 
 ### ES2015
 
+- [check-es2015-constants](/docs/plugins/check-es2015-constants/)
 - [es2015-arrow-functions](/docs/plugins/transform-es2015-arrow-functions/)
 - [es2015-block-scoped-functions](/docs/plugins/transform-es2015-block-scoped-functions/)
 - [es2015-block-scoping](/docs/plugins/transform-es2015-block-scoping/)
 - [es2015-classes](/docs/plugins/transform-es2015-classes/)
 - [es2015-computed-properties](/docs/plugins/transform-es2015-computed-properties/)
-- [es2015-constants](/docs/plugins/check-es2015-constants/)
 - [es2015-destructuring](/docs/plugins/transform-es2015-destructuring/)
 - [es2015-duplicate-keys](/docs/plugins/transform-es2015-duplicate-keys/)
 - [es2015-for-of](/docs/plugins/transform-es2015-for-of/)
