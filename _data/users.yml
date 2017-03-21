@@ -550,3 +550,6 @@
 - name: Nau Studio
   url: https://naustud.io
   logo: naustudio.svg
+- name: Triip
+  url: https://triip.me
+  logo: triip.svg
