@@ -553,3 +553,6 @@
 - name: Triip
   url: https://triip.me
   logo: triip.svg
+- name: Overblog
+  url: https://over-blog.com
+  logo: overblog.svg
