@@ -562,3 +562,6 @@
 - name: Insider.pro
   url: https://insider.pro
   logo: insider.svg
+- name: JustWatch
+  url: https://www.justwatch.com
+  logo: justwatch.svg
