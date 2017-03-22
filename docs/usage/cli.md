@@ -163,6 +163,18 @@ Compile and run `test.js`.
 babel-node test
 ```
 
+> **Tip:** Use `rlwrap` to get a REPL with input history
+>
+> ```sh
+> rlwrap babel-node
+> ```
+>
+> On some platforms (like OSX), extra arguments may be required for `rlwrap` to function properly, eg:
+>
+> ```sh
+> NODE_NO_READLINE=1 rlwrap --always-readline babel-node
+> ```
+
 ### Usage
 
 ```sh
