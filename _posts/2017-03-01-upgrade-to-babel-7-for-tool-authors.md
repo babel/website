@@ -25,6 +25,16 @@ This had to be used earlier to prevent a breaking change with our exports.
 
 If you import a Babel package in a library you may need to use `.default` when using `require` rather than `import`.
 
+## `babel-core`
+
+The publicly exposed but undocumented `Pipeline` class has been removed. Best to use the transformation methods exposed from `babel-core` directly [babel/babel#5376](https://github.com/babel/babel/pull/5376).
+
+The `babel.util.*` helper methods have been removed, and `util.EXTENSIONS` has been moved to `babel.DEFAULT_EXTENSIONS` [babel/babel#5487](https://github.com/babel/babel/pull/5487).
+
+Calls to `babel.transform` or any other transform function may return `null` if the file matched an `ignore` pattern or failed to match an `only` pattern [babel/babel#5487](https://github.com/babel/babel/pull/5487).
+
+The `opts.basename` option exposed on `state.file.opts` has been removed. If you need it, best to build it from `opts.filename` yourself [babel/babel#5467](https://github.com/babel/babel/pull/5467).
+
 ## Babylon
 
 > AST changes ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
