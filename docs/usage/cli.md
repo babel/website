@@ -151,18 +151,6 @@ Launch a REPL (Read-Eval-Print-Loop).
 babel-node
 ```
 
-Using `rlwrap` to get a REPL with input history:
-
-```sh
-rlwrap babel-node
-```
-
-Note some platforms may require extra arguments for rlwrap to function properly, eg:
-
-```sh
-NODE_NO_READLINE=1 rlwrap --always-readline babel-node
-```
-
 Evaluate code.
 
 ```sh
@@ -174,6 +162,18 @@ Compile and run `test.js`.
 ```sh
 babel-node test
 ```
+
+> **Tip:** Use `rlwrap` to get a REPL with input history
+>
+> ```sh
+> rlwrap babel-node
+> ```
+>
+> On some platforms (like OSX), extra arguments may be required for `rlwrap` to function properly, eg:
+>
+> ```sh
+> NODE_NO_READLINE=1 rlwrap --always-readline babel-node
+> ```
 
 ### Usage
 
