@@ -1,7 +1,7 @@
 ```rb
 # Gemfile
-gem "sprockets"
-gem "sprockets-es6"
+gem 'sprockets'
+gem 'sprockets-es6'
 ```
 
 ```rb
