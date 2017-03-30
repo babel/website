@@ -26,15 +26,15 @@ Don't want to assemble your own set of plugins? No problem! Presets are sharable
 
 We've assembled some for common environments:
 
-> Each yearly preset only compiles what was ratified in that year. Use `preset-latest` to transform all yearly presets
+> Each yearly preset only compiles what was ratified in that year. Use `preset-env` to transform all yearly presets.
 
 - [env](/docs/plugins/preset-env/)
 - [es2015](/docs/plugins/preset-es2015/)
 - [es2016](/docs/plugins/preset-es2016/)
 - [es2017](/docs/plugins/preset-es2017/)
-- [flow](/docs/plugins/preset-flow/)
 - [latest](/docs/plugins/preset-latest/)
 - [react](/docs/plugins/preset-react/)
+- [flow](/docs/plugins/preset-flow/)
 
 > Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
 
