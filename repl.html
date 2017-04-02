@@ -65,6 +65,12 @@ third_party_js:
 
     <div class="pull-right">
       <div class="form-group">
+        <label for="examples">Examples:</label>
+        <select id="examples" style="color:#333;">
+          <option selected disabled hidden value="">Select an example</option>
+        </select>
+      </div>
+      <div class="form-group">
         <strong>Babel <span id="babel-repl-version"></span></strong>
       </div>
     </div>
@@ -78,5 +84,9 @@ third_party_js:
     <div class="babel-repl-resize"></div>
     <div class="babel-repl-editor babel-repl-output"><div class="ace_editor"></div></div>
     <div class="babel-repl-reporter babel-repl-console"></div>
+  </div>
+  <div class="hidden code_examples">
+    {% capture es2015 %}{% include es2015.md %}{% endcapture %}
+    {{ es2015 | markdownify }}
   </div>
 </div>
