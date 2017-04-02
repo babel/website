@@ -565,3 +565,6 @@
 - name: JustWatch
   url: https://www.justwatch.com
   logo: justwatch.svg
+- name: HIJUP
+  url: https://www.hijup.com
+  logo: hijup.svg
