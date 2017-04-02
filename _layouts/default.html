@@ -11,7 +11,9 @@ layout: compress
 
     {% include header.html %}
 
-    {% include guy.html %}
+    {% if page.permalink != '/repl/' %}
+      {% include guy.html %}
+    {% endif %}
 
     {{ content }}
 
