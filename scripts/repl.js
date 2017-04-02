@@ -8,7 +8,6 @@
     'es2015-loose',
     'es2016',
     'es2017',
-    'latest',
     'react',
     'stage-0',
     'stage-1',
