@@ -1,5 +1,5 @@
 var flavors = [
-  "Only a few days left to make a contribution to keep your node_modules huge. Please help pay our bills.",
+  "We're on Open Collective!",
   "Take me to flavortown!",
   "Null is actually my middle name. (•_•) ( •_•)>⌐■-■ (⌐■_■)",
   "A personal appeal from the mayor of Flavortown.",
