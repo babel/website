@@ -1,20 +1,23 @@
 var flavors = [
   "We're on Open Collective!",
   "Take me to flavortown!",
-  "Null is actually my middle name. (•_•) ( •_•)>⌐■-■ (⌐■_■)",
+  "Null is actually my middle name.\n(•_•) ( •_•)>⌐■-■ (⌐■_■)",
   "A personal appeal from the mayor of Flavortown.",
   "If everyone reading this donated $5 our fundraiser would be over today. Donate to keep all your modules transpiled for free.",
-  "Always bet on JS",
+  "Always bet on JS.",
   "Imagine you had a nickel for every time Babel transpiled your code. We need those nickels.",
   "We're almost to Flavortown. Thank you.",
-  "Remember arguments.callee? Man, what was that about.",
-  "I Peeked Into My Node_Modules Directory And You Won’t Believe What Happened Next",
+  "Remember arguments.caller? Man, what was that about.",
+  "I Peeked Into My Node_Modules Directory And You Won’t Believe What Happened Next!",
   "Wham! Bam! Hickory Ham! #HotPockets",
   "Each installation of Babel includes a picture of Guy Fieri, and there is nothing you can do about it.",
   "if (!flavortown) throw 'up'",
+  "In the UK, they call it \"flavourtown\".",
+  "export const guy = [ <redacted> ]",
+  "Babel 7 Changelog: \"Remove Guy Fieri\"",
+  "This would break my code that relies on being taken to flavortown.",
   // Guy quotes
   "Short of screaming-hot Thai food, everything can be suitable for kids too.",
-  "There are two different things: there's grilling, and there's barbecue. Grilling is when people say, 'We're going to turn up the heat, make it really hot and sear a steak, sear a burger, cook a chicken.' Barbecue is going low and slow.",
   "Some people are just born to cook and talk. And transpile code.",
   "Liver is my number one most hated food. Oh, God, I get sick talking about it!",
   "What you see is what you get with me. There's no show.",
@@ -27,7 +30,6 @@ var flavors = [
   "No one likes rubbery chicken.",
   "I look at a basketball laying on the ground, and it makes me think of something. Popcorn ball. How 'bout a spicy popcorn ball? That is how my mind is always working.",
   "If it tastes really good, and it's funky, it's funkalicous. If the guy making it is funky, he's funkintacious.",
-  "'Triple D' is not going anywhere. I enjoy highlighting my brothers and sisters in the business.",
   "I'm a stocky 210 pounds.",
   "I'm a collector, so I've got all kinds of sunglasses. I'd say I've got about a buck ten, buck twenty.",
   "The No. 1 thing I hear from people when I meet them in the airport is, 'Oh my gosh, you're just like you are on TV.' Well, I'm not an actor. I don't think anyone could figure out how to be this weird.",
@@ -35,8 +37,6 @@ var flavors = [
   "Howie Mandel is the real deal.",
   "I'm a culinary gangsta with a very spiritual side, so when I was introduced to the 'spiritual gangster' line, I had to have it.",
   "If I probably didn't have tattoos, or if I probably didn't bleach my hair, or if I probably didn't wear blue jeans and a T-shirt to fancy things, if I didn't do things that make me look like someone who's whacked out of their mind, it'd probably be different. But then again, that's how I wanna dress.",
-  "I cannot get enough farro.",
-  "If you're feeling adventurous, grill up some marinated octopus. It's so healthy.",
   "Look, the fame rocket is only on the upward trajectory for a limited time.",
   "I would ride my horse to school.",
   "I love everything from Enya to Pantera.",
@@ -50,9 +50,16 @@ document.addEventListener("DOMContentLoaded", function() {
     multiLine: true
   }
   textFitIt();
+  var shuffledFlavors = shuffle(flavors.slice());
+  var i = 0;
 
   setInterval(function() {
-    takeMeToFlavorTown(flavors[Math.floor(Math.random() * flavors.length)]);
+    if (i >= shuffledFlavors.length) {
+      // Re-shuffle
+      shuffledFlavors = shuffle(flavors.slice());
+      i = 0;
+    }
+    takeMeToFlavorTown(shuffledFlavors[i++]);
   }, 5000);
 
   function takeMeToFlavorTown(msg) {
@@ -74,5 +81,20 @@ document.addEventListener("DOMContentLoaded", function() {
     requestAnimationFrame(function() {
       window.textFit($appeal, textFitOptions);
     });
+  }
+
+  function shuffle(arr) {
+    var counter = arr.length;
+
+    while (counter > 0) {
+      var i = Math.floor(Math.random() * counter);
+      counter--;
+      // Man, if only we had some kind of destructuring syntax for swapping
+      var temp = arr[counter];
+      arr[counter] = arr[i];
+      arr[i] = temp;
+    }
+
+    return arr;
   }
 });
