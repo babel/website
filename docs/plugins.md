@@ -55,12 +55,14 @@ Any transforms in stage-x presets are changes to the language that haven't been 
 The [TC39](https://github.com/tc39) categorizes proposals into the following stages:
 
 - [stage-0](/docs/plugins/preset-stage-0/) - Strawman: just an idea, possible Babel plugin.
-- [stage-1](/docs/plugins/preset-stage-1/) - Proposal: this is worth working on [Article on Stage-0 and Stage-1](https://thefeedbackloop.xyz/tc39-a-process-sketch-stages-0-and-1/).
-- [stage-2](/docs/plugins/preset-stage-2/) - Draft: initial spec [Article on Stage-2](https://thefeedbackloop.xyz/tc39-process-sketch-stage-2/).
+- [stage-1](/docs/plugins/preset-stage-1/) - Proposal: this is worth working on.
+- [stage-2](/docs/plugins/preset-stage-2/) - Draft: initial spec.
 - [stage-3](/docs/plugins/preset-stage-3/) - Candidate: complete spec and initial browser implementations.
 - stage-4 - Finished: will be added to the next yearly release.
 
 Also check out the [current TC39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
+
+The TC39 stage process is also detailed across a few posts over at thefeedbackloop.xyz ([Stage 0 and 1](https://thefeedbackloop.xyz/tc39-a-process-sketch-stages-0-and-1/), [Stage 2](https://thefeedbackloop.xyz/tc39-process-sketch-stage-2/), [Stage 3](https://thefeedbackloop.xyz/tc39-process-sketch-stage-3/), Stage 4 coming soon).
 
 ## Transform Plugins
 
