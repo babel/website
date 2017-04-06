@@ -88,7 +88,7 @@
   z-index: 4;
   bottom: 0;
   min-height: 30px;
-  max-height: 30%;
+  max-height: 50%;
   overflow: auto;
   width: 100%;
   padding: $padding-base-vertical $padding-base-horizontal;
@@ -182,7 +182,7 @@
   }
 }
 
-#option-builtIns-wrapper {
+#option-builtIns-wrapper, #option-debug-wrapper {
   padding-right: 15px;
 
   input[disabled] + span {
