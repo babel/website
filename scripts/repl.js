@@ -160,7 +160,7 @@
   function $inputValue($element) {
     return {
       get: function () {
-        return $element.val();
+        return $element.val().trim();
       },
       set: function (value) {
         var setting = value !== 'undefined' && value !== 'false' && value;
