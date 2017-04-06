@@ -205,17 +205,25 @@
     evt.stopPropagation();
   }
 
+  function envItemToString(item) {
+    return item.name + ' ' + JSON.stringify(item.targets);
+  }
+
   function onEnvBuild(node, opts, envResult) {
     let buffer = '';
     buffer += 'Using targets:\n'
     buffer += JSON.stringify(envResult.targets, null, 2);
     buffer += '\n\n';
     buffer += 'Using plugins:\n'
-    buffer += envResult.transformations.join('\n');
+    buffer += envResult.transformationsWithTargets
+      .map(envItemToString)
+      .join('\n');
     if (opts.useBuiltIns) {
       buffer += '\n\n';
       buffer += 'Using polyfills:\n';
-      buffer += envResult.polyfills.join('\n');
+      buffer += envResult.polyfillsWithTargets
+        .map(envItemToString)
+        .join('\n');
     }
     node.text(buffer);
   }
