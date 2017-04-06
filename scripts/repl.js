@@ -1,4 +1,3 @@
-/* eslint-disable */
 (function(babel, $, _, ace, window) {
   'use strict';
   var UPDATE_DELAY = 500;
