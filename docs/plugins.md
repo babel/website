@@ -187,6 +187,7 @@ These plugins are in the minify repo.
 ## Misc Plugins
 
 - [external-helpers](/docs/plugins/external-helpers/)
+- [undeclared-variables-check](/docs/plugins/undeclared-variables-check/)
 
 ## Syntax Plugins
 
