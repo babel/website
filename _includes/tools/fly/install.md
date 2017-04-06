@@ -1,3 +1,3 @@
 ```sh
-npm install -D fly-babel babel-preset-latest
+npm install -D fly-babel babel-preset-env
 ```

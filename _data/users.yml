@@ -538,3 +538,33 @@
 - name: Hooroo
   url: https://hooroo.com/
   logo: hooroo.svg
+- name: The New York Times
+  url: https://nytimes.com/
+  logo: nytimes.svg
+- name: Wave
+  url: https://waveapps.com
+  logo: wave.svg
+- name: Shelf.io
+  url: https://shelf.io/
+  logo: shelfio.svg
+- name: Nau Studio
+  url: https://naustud.io
+  logo: naustudio.svg
+- name: Triip
+  url: https://triip.me
+  logo: triip.svg
+- name: Overblog
+  url: https://over-blog.com
+  logo: overblog.svg
+- name: EXANTE
+  url: https://exante.eu
+  logo: exante.svg
+- name: Insider.pro
+  url: https://insider.pro
+  logo: insider.svg
+- name: JustWatch
+  url: https://www.justwatch.com
+  logo: justwatch.svg
+- name: HIJUP
+  url: https://www.hijup.com
+  logo: hijup.svg

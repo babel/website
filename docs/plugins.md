@@ -26,15 +26,16 @@ Don't want to assemble your own set of plugins? No problem! Presets are sharable
 
 We've assembled some for common environments:
 
-> Each yearly preset only compiles what was ratified in that year. Use `preset-latest` to transform all yearly presets
+> Each yearly preset only compiles what was ratified in that year.
+> `babel-preset-env` replaces es2015, es2016, es2017, latest
 
 - [env](/docs/plugins/preset-env/)
 - [es2015](/docs/plugins/preset-es2015/)
 - [es2016](/docs/plugins/preset-es2016/)
 - [es2017](/docs/plugins/preset-es2017/)
-- [flow](/docs/plugins/preset-flow/)
-- [latest](/docs/plugins/preset-latest/)
+- [latest (deprecated in favor of env)](/docs/plugins/preset-latest/)
 - [react](/docs/plugins/preset-react/)
+- [flow](/docs/plugins/preset-flow/)
 
 > Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
 
@@ -53,13 +54,15 @@ Any transforms in stage-x presets are changes to the language that haven't been 
 
 The [TC39](https://github.com/tc39) categorizes proposals into the following stages:
 
-- [stage-0](/docs/plugins/preset-stage-0/) - Strawman: just an idea, possible Babel plugin.
-- [stage-1](/docs/plugins/preset-stage-1/) - Proposal: this is worth working on.
-- [stage-2](/docs/plugins/preset-stage-2/) - Draft: initial spec.
-- [stage-3](/docs/plugins/preset-stage-3/) - Candidate: complete spec and initial browser implementations.
-- stage-4 - Finished: will be added to the next yearly release.
+- [Stage 0](/docs/plugins/preset-stage-0/) - Strawman: just an idea, possible Babel plugin.
+- [Stage 1](/docs/plugins/preset-stage-1/) - Proposal: this is worth working on.
+- [Stage 2](/docs/plugins/preset-stage-2/) - Draft: initial spec.
+- [Stage 3](/docs/plugins/preset-stage-3/) - Candidate: complete spec and initial browser implementations.
+- Stage 4 - Finished: will be added to the next yearly release.
 
-Also check out the [current TC39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
+For more information, be sure to check out the [current TC39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
+
+The TC39 stage process is also explained in detail across a few posts by Yehuda Katz (@wycatz) over at [thefeedbackloop.xyz](https://thefeedbackloop.xyz): [Stage 0 and 1](https://thefeedbackloop.xyz/tc39-a-process-sketch-stages-0-and-1/), [Stage 2](https://thefeedbackloop.xyz/tc39-process-sketch-stage-2/), [Stage 3](https://thefeedbackloop.xyz/tc39-process-sketch-stage-3/), and Stage 4 coming soon.
 
 ## Transform Plugins
 
@@ -82,12 +85,12 @@ These plugins apply transformations to your code.
 
 ### ES2015
 
+- [check-es2015-constants](/docs/plugins/check-es2015-constants/)
 - [es2015-arrow-functions](/docs/plugins/transform-es2015-arrow-functions/)
 - [es2015-block-scoped-functions](/docs/plugins/transform-es2015-block-scoped-functions/)
 - [es2015-block-scoping](/docs/plugins/transform-es2015-block-scoping/)
 - [es2015-classes](/docs/plugins/transform-es2015-classes/)
 - [es2015-computed-properties](/docs/plugins/transform-es2015-computed-properties/)
-- [es2015-constants](/docs/plugins/check-es2015-constants/)
 - [es2015-destructuring](/docs/plugins/transform-es2015-destructuring/)
 - [es2015-duplicate-keys](/docs/plugins/transform-es2015-duplicate-keys/)
 - [es2015-for-of](/docs/plugins/transform-es2015-for-of/)
@@ -142,7 +145,6 @@ These plugins are in the minify repo.
 - [minify-booleans](/docs/plugins/transform-minify-booleans/)
 - [minify-constant-folding](/docs/plugins/minify-constant-folding/)
 - [minify-dead-code-elimination](/docs/plugins/minify-dead-code-elimination/)
-- [minify-empty-function](/docs/plugins/minify-empty-function/)
 - [minify-flip-comparisons](/docs/plugins/minify-flip-comparisons/)
 - [minify-guarded-expressions](/docs/plugins/minify-guarded-expressions/)
 - [minify-infinity](/docs/plugins/minify-infinity/)

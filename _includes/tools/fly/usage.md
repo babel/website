@@ -2,7 +2,7 @@
   export function* text () {
     yield this
       .source("src/**/*.js")
-      .babel({ presets: ["latest"] })
+      .babel({ presets: ["env"] })
       .target("dist/")
   }
 ```

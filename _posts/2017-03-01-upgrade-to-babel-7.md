@@ -11,7 +11,7 @@ custom_js_with_timestamps:
 - docs.js
 ---
 
-Refer users to this document when upgrading to Babel 7.
+Refer users to this document when upgrading to Babel 7 (currently alpha).
 
 Because not every breaking change will affect every project, we've sorted the sections by the likelihood of a change breaking tests when upgrading.
 
@@ -22,7 +22,42 @@ Because not every breaking change will affect every project, we've sorted the se
 We highly encourage you to use a newer version of Node.js (LTS v4, LTS v6) since the previous versions are not maintained.
 See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
-> This just means Babel *itself* won't run on older versions of Node. It can still *output* code that runs on old Node. 
+> This just means Babel *itself* won't run on older versions of Node. It can still *output* code that runs on old Node.
+
+
+## Option parsing
+
+Babel's config options are stricter than in Babel 6. Where a comma-separated list for presets, e.g. `presets: 'es2015,es2016'` technically worked before, it will now fail and need to be changed to an array [#5463](https://github.com/babel/babel/pull/5463). This does not apply to the CLI, where `--presets es2015,es2016` will certainly still work.
+
+
+## Resolving string-based config values
+
+In Babel 6, values passed to Babel directly (not from a config file), were resolved relative to the files being compiled, which led to lots of confusion. In Babel 7, values are resolved consistently either relative to the config file that loaded them, or relative to the working directory.
+
+For `presets` and `plugins` values, this change means that the CLI will behave nicely in cases such as
+
+```bash
+babel --presets es2015 ../file.js
+```
+
+Assuming your `node_modules` folder is in `.`, in Babel 6 this would fail because the preset could not be found.
+
+This change also affects `only` and `ignore` which will be expanded on next.
+
+
+## Path-based `only` and `ignore` patterns
+
+In Babel 6, `only` and `ignore` were treated as a general matching string, rather than a filepath glob. This meant that for instance `*.foo.js` would match `./**/*.foo.js`, which was confusing and surprising to most users.
+
+In Babel 7, these are now treated as path-based glob patterns which can either be relative or absolute paths. This means that if you were using these patterns, you'll probably need to at least add a `**/` prefix to them now to ensure that your patterns match deeply into directories.
+
+`only` and `ignore` patterns _do_ still also work for directories, so you could also use `only: './tests'` to only compile files in your `tests` directory, with no need to use `**/*.js` to match all nested files.
+
+
+## Babel's CLI commands
+
+The `--copy-files` argument for the `babel` command, which tells Babel to copy all files in a directory that Babel doesn't know how to handle, will also now copy files that failed an `only`/`ignore` check, where before it would silently skip all ignored files.
+
 
 ## babel-preset-stage-3
 
@@ -93,7 +128,7 @@ After:
 
 See [/docs/plugins/preset-env/](/docs/plugins/preset-env/) for more information.
 
-## Spec Compliancy 
+## Spec Compliancy
 
 > A trailing comma cannot come after a RestElement in objects [#290](https://github.com/babel/babylon/pull/290) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -115,9 +150,9 @@ var { ...y } = { a: 1};
 
 ## babel-preset-stage-1/babel-preset-stage-2 (decorators)
 
-> [legacy-decorators](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) has been moved into the [transform-decorators](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-decorators) package [#5225](https://github.com/babel/babel/pull/5225) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+> The [transform-decorators-legacy plugin](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) has been moved and merged into the [transform-decorators](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-decorators) package ([#5290](https://github.com/babel/babel/pull/5290)).
 
-Currently, we don't have a Stage 2 transform for decorators. Instead of making it error, we are adding legacy-decorators as part of the Stage 1 preset by merging it into the transform-decorators plugin.
+Currently, the transform-decorators plugin does little more than display an unsupported error. While we work to update decorator support, we've decided to replace it with the legacy decorator plugin and include it in the Stage 1 preset.
 
 ## babel-core
 
@@ -211,7 +246,7 @@ This option was only available through `babel-generator` explicitly until v6.18.
 
 > Dropping the `flowUsesCommas` option [#5123](https://github.com/babel/babel/pull/5123) ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
-Currently there are 2 supported syntaxes (`,` and `;`) in Flow Object Types. 
+Currently there are 2 supported syntaxes (`,` and `;`) in Flow Object Types.
 
 This change just makes babel-generator output `,` instead of `;`.
 

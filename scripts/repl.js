@@ -8,7 +8,6 @@
     'es2015-loose',
     'es2016',
     'es2017',
-    'latest',
     'react',
     'stage-0',
     'stage-1',
@@ -160,7 +159,7 @@
   function $inputValue($element) {
     return {
       get: function () {
-        return $element.val();
+        return $element.val().trim();
       },
       set: function (value) {
         var setting = value !== 'undefined' && value !== 'false' && value;
