@@ -4,6 +4,7 @@ title: Callable class constructor transform
 description:
 permalink: /docs/plugins/transform-class-constructor-call/
 package: babel-plugin-transform-class-constructor-call
+package_source: babel-archive
 ---
 
 <blockquote class="babel-callout babel-callout-warning">
@@ -11,66 +12,4 @@ package: babel-plugin-transform-class-constructor-call
   <p>The class constructor call proposal has been withdrawn (<a href="https://github.com/tc39/ecma262/blob/master/withdrawn-proposals.md#withdrawn-proposals">Withdrawn Proposals</a>) and <a href="https://github.com/babel/babel/wiki/Babel-7">was removed in Babel 7</a>.</p>
 </blockquote>
 
-This plugin allows Babel to transform class constructors.
-
-It basically allows to use the [new.target](http://mdn.io/new.target) feature on ES2015 classes:
-
-```js
-class Point {
-
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  call constructor(x, y) {
-    return new Point(x, y);
-  }
-
-}
-
-const p1 = new Point(1, 2); // OK
-const p2 = Point(3, 4); // OK
-```
-
-## Example
-
-### Date example
-The javascript [Date](http://mdn.io/date) works this way:
-
-```js
-// You can get a Date instance using the new keyword
-const now = new Date();
-console.log(now.getMonth()); // Prints '3'
-console.log(now.toString()); // Prints 'Mon Apr 11 2016 13:26:07 GMT+0100 (BST)'
-
-// You can get a string of the current date using Date as a function:
-const nowStr = Date();
-console.log(nowStr); // Prints 'Mon Apr 11 2016 13:26:07 GMT+0100 (BST)'
-```
-
-It is currently possible to implement something like that using [new.target](http://mdn.io/new.target) (see [example in proposal](https://github.com/tc39/ecma262/blob/master/workingdocs/callconstructor.md#motivating-example)) and this new feature makes it available for ES2015 classes.
-
-A date implementation could be:
-
-```js
-class Date {
-  constructor() {
-    // ...
-  }
-
-  call constructor() {
-    const date = new Date();
-    return date.toString();
-  }
-}
-
-const now = new Date(); // Get a Date instance
-const nowStr = Date(); // Use the 'call constructor()' part to get a string value of the current date
-```
-
-## References
-
-* [Inactive Proposals](https://github.com/tc39/proposals/blob/master/inactive-proposals.md)
-* [Proposal: Call Constructor](https://github.com/tc39/ecma262/blob/master/workingdocs/callconstructor.md)
-* [Blog post: ECMAScript proposal: function-callable classes](http://www.2ality.com/2015/10/call-constructor-esprop.html)
+{% include package_readme.html %}
