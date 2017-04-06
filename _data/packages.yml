@@ -1,4 +1,5 @@
 babel: https://github.com/babel/babel
+babel-archive: https://github.com/babel/babel-archive
 babili: https://github.com/babel/babili
 babel-preset-env:
   url: https://github.com/babel/babel-preset-env

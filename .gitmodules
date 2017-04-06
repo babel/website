@@ -11,3 +11,6 @@
 [submodule "_includes/babylon"]
 	path = _includes/babylon
 	url = https://github.com/babel/babylon
+[submodule "_includes/babel-archive"]
+	path = _includes/babel-archive
+	url = https://github.com/babel/babel-archive.git
