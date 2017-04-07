@@ -568,3 +568,6 @@
 - name: HIJUP
   url: https://www.hijup.com
   logo: hijup.svg
+- name: Jane
+  url: https://jane.com
+  logo: jane.svg
