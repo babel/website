@@ -26,6 +26,8 @@
           url: /docs/usage/cli/
         - title: babel-register
           url: /docs/usage/babel-register/
+        - title: API
+          url: /docs/usage/api/
 - title: Try it out
   url: /repl/
 - title: Blog
