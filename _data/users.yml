@@ -571,3 +571,6 @@
 - name: Jane
   url: https://jane.com
   logo: jane.svg
+- name: Jobtalk
+  url: https://jobtalk.jp/
+  logo: jobtalk.svg
