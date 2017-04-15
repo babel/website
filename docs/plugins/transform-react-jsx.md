@@ -13,8 +13,8 @@ Turn JSX into React function calls
 You can manually write `React.createElement`, or alias it to something like
 
 ```js
-var React = require("react");
-var ReactDOM = require("react-dom");
+const React = require("react");
+const ReactDOM = require("react-dom");
 const $ = React.createElement;
 
 ReactDOM.render(
