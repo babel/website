@@ -204,6 +204,29 @@
     evt.stopPropagation();
   }
 
+  function envItemToString(item) {
+    return item.name + ' ' + JSON.stringify(item.targets);
+  }
+
+  function onEnvBuild(node, opts, envResult) {
+    let buffer = '';
+    buffer += 'Using targets:\n'
+    buffer += JSON.stringify(envResult.targets, null, 2);
+    buffer += '\n\n';
+    buffer += 'Using plugins:\n'
+    buffer += envResult.transformationsWithTargets
+      .map(envItemToString)
+      .join('\n');
+    if (opts.useBuiltIns) {
+      buffer += '\n\n';
+      buffer += 'Using polyfills:\n';
+      buffer += envResult.polyfillsWithTargets
+        .map(envItemToString)
+        .join('\n');
+    }
+    node.text(buffer);
+  }
+
   function getEnvOptions(options) {
     var origTargets = options.targets,
     browsers = options.browsers,
@@ -406,6 +429,7 @@
     var $babili = $('#option-babili');
     var $browsers = $('#option-browsers');
     var $builtIns = $('#option-builtIns');
+    var $debug = $('#option-debug');
 
     var options = {};
     Object.defineProperties(options, {
@@ -415,7 +439,8 @@
       presets: getPresetOptions(),
       targets: getTargetOptions(),
       browsers: $inputValue($browsers),
-      builtIns: $checkboxValue($builtIns)
+      builtIns: $checkboxValue($builtIns),
+      debug: $checkboxValue($debug)
     });
 
     // Merge in defaults
@@ -495,9 +520,17 @@
     }
 
     if (presets.includes('env')) {
+      var $consoleReporter = this.$consoleReporter;
       presets = presets.map(function (preset) {
         if (preset === 'env') {
           var envOptions = getEnvOptions(options);
+          if (options.debug) {
+            envOptions.onPresetBuild = onEnvBuild.bind(
+              null,
+              $consoleReporter,
+              envOptions
+            );
+          }
           return ["env", envOptions];
         }
         return preset;
@@ -531,7 +564,11 @@
     var done = false;
 
     function flush() {
-      $consoleReporter.text(buffer.join('\n'));
+      var current = $consoleReporter.text();
+      if (current.length) {
+        current += '\n\n';
+      }
+      $consoleReporter.text(current + buffer.join('\n'));
     }
 
     function write(data) {
@@ -587,6 +624,7 @@
     // Update the list of presets that are displayed on the dropdown list anchor
     var $envTargets = $('.babel-repl-targets-container');
     var $envBuiltIns = $('#option-builtIns-wrapper');
+    var $envDebug = $('#option-debug-wrapper');
 
     var presetList = repl.options.presets.replace(/,/g, ', ');
 
@@ -594,6 +632,7 @@
     var envIncluded = repl.options.presets.includes('env');
     $envTargets.toggleClass('hidden', !envIncluded);
     $envBuiltIns.toggleClass('hidden', !envIncluded);
+    $envDebug.toggleClass('hidden', !envIncluded);
 
     document.getElementById('babel-repl-selected-presets').innerHTML = presetList;
 
