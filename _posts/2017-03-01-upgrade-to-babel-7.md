@@ -230,6 +230,26 @@ let p2 = Point.secondConstructor(3, 4);
 
 See [/docs/plugins/transform-class-constructor-call/](/docs/plugins/transform-class-constructor-call/) for more information.
 
+## babel-plugin-transform-es2015-template-literals
+
+>  Template Literals Revision updated [#5523](https://github.com/babel/babel/pull/5523) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+See the proposal for [Template Literals Revision](https://tc39.github.io/proposal-template-literal-revision/).
+
+```js
+tag`\unicode and \u{55}`;
+```
+
+It cause Babel 6 to throw `Bad character escape sequence (5:6)`.
+
+This has been fixed in Babel 7 and generate something like the following:
+
+```js
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+var _templateObject = _taggedTemplateLiteral([], ["\\unicode and \\u{55}"]);
+tag(_templateObject);
+```
+
 ## babel
 
 > Dropping the `babel` package [#5293](https://github.com/babel/babel/pull/5293) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
