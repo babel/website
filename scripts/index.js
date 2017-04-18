@@ -129,6 +129,11 @@ var BABEL_MINI_REPL = (function() {
 
   return {
     start: function() {
+      // don't init editor on mobile devices
+      if (window.screen.width < 760) return;
+
+      $('.hero-repl').attr('hidden', false);
+
       inEditor = setupEditor('hero-repl-in', true);
 
       outEditor = setupEditor('hero-repl-out', true);

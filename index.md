@@ -13,7 +13,7 @@ third_party_js:
     <h1>Babel is a JavaScript compiler.</h1>
     <p>Use next generation JavaScript, today.</p>
 
-    <div class="hero-repl">
+    <div class="hero-repl" hidden>
       <div class="hero-repl__editor">
         <div class="hero-repl__pane hero-repl__pane--left">
           <h3>Put in next-gen JavaScript</h3>
