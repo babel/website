@@ -17,6 +17,10 @@ var BABEL_MINI_REPL = (function() {
     compileCode(inEditor, outEditor);
   }, 1000);
 
+  function isMobile() {
+    return window.screen.width < 760;
+  }
+
   function setupEditor(id, readOnly) {
     var editor = ace.edit(id);
 
@@ -129,6 +133,11 @@ var BABEL_MINI_REPL = (function() {
 
   return {
     start: function() {
+      // don't init editor on mobile devices
+      if (isMobile()) return;
+
+      $('.hero-repl').prop('hidden', false);
+
       inEditor = setupEditor('hero-repl-in', true);
 
       outEditor = setupEditor('hero-repl-out', true);

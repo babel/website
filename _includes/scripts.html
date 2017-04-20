@@ -1,31 +1,33 @@
 {% for js_source in site.default_js %}
-  <script src='{{ js_source }}' type="text/javascript"></script>
+  <script src='{{ js_source }}' defer></script>
 {% endfor %}
 
-<script>$("html").removeClass("no-js").addClass("js");</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    $("html").removeClass("no-js").addClass("js");
+  });
+</script>
 
 {% if page.third_party_js %}
   {% for js_source in page.third_party_js %}
-    <script src='{{ js_source }}' type="text/javascript"></script>
+    <script src='{{ js_source }}' defer></script>
   {% endfor %}
 {% endif %}
 
 {% if page.custom_js %}
   {% for js_file in page.custom_js %}
-    <script src='/scripts/{{ js_file }}' type="text/javascript"></script>
+    <script src='/scripts/{{ js_file }}' defer></script>
   {% endfor %}
 {% endif %}
 
 {% if layout.custom_js_with_timestamps %}
   {% for js_file in layout.custom_js_with_timestamps %}
-    <script src="/scripts/{{ js_file | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"
-            type="text/javascript"></script>
+    <script src="/scripts/{{ js_file | prepend: site.baseurl }}?tloda={{ site.time | date_to_xmlschema }}" defer></script>
   {% endfor %}
 {% endif %}
 
 {% if page.custom_js_with_timestamps %}
   {% for js_file in page.custom_js_with_timestamps %}
-    <script src="/scripts/{{ js_file | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}"
-            type="text/javascript"></script>
+    <script src="/scripts/{{ js_file | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}" defer></script>
   {% endfor %}
 {% endif %}
