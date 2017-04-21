@@ -236,13 +236,13 @@ See [/docs/plugins/transform-class-constructor-call/](/docs/plugins/transform-cl
 
 See the proposal for [Template Literals Revision](https://tc39.github.io/proposal-template-literal-revision/).
 
+It cause Babel 6 to throw `Bad character escape sequence (5:6)`.
+
 ```js
 tag`\unicode and \u{55}`;
 ```
 
-It cause Babel 6 to throw `Bad character escape sequence (5:6)`.
-
-This has been fixed in Babel 7 and generate something like the following:
+This has been fixed in Babel 7 and generates something like the following:
 
 ```js
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
