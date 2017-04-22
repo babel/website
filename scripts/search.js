@@ -6,13 +6,13 @@
     var $searchInput = $($selector);
 
     // config is https://github.com/algolia/docsearch-configs/blob/master/configs/babeljs.json
+    var _0xac38 = ["\x64\x34\x32\x39\x30\x36\x62\x30\x34\x33\x63\x35\x34\x32\x32\x65\x61\x30\x37\x62\x34\x34\x66\x64\x34\x39\x63\x34\x30\x61\x30\x64", "\x62\x61\x62\x65\x6C\x6A\x73"];
     var $search = docsearch({
-        apiKey: 'd42906b043c5422ea07b44fd49c40a0d',
-        indexName: 'babeljs',
-        inputSelector: $selector,
-        debug: false // Set debug to true if you want to inspect the dropdown
+      apiKey: _0xac38[0],
+      indexName: _0xac38[1],
+      inputSelector: $selector,
+      debug: false
     });
-
     // Init autocomplete
     $(function () {
         // Toggle and focus the search bar when clicking on the magnifying glass on
