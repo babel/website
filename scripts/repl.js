@@ -209,7 +209,7 @@
   }
 
   function onEnvBuild(node, opts, envResult) {
-    let buffer = '';
+    var buffer = '';
     buffer += 'Using targets:\n'
     buffer += JSON.stringify(envResult.targets, null, 2);
     buffer += '\n\n';
@@ -224,6 +224,7 @@
         .map(envItemToString)
         .join('\n');
     }
+    buffer += '\n\n';
     node.text(buffer);
   }
 
@@ -475,7 +476,8 @@
     this.output.setHighlightGutterLine(false);
 
     this.$errorReporter = $('.babel-repl-errors');
-    this.$consoleReporter = $('.babel-repl-console');
+    this.$consoleDebug = $('.babel-repl-console-debug');
+    this.$consoleReporter = $('.babel-repl-console-output');
     this.$toolBar = $('.babel-repl-toolbar');
     this.$textareaWrapper = $('.dropdown-menu-container');
     this.$envBar = $('#option-browsers');
@@ -485,6 +487,7 @@
 
   REPL.prototype.clearOutput = function () {
     this.$errorReporter.text('');
+    this.$consoleDebug.text('');
     this.$consoleReporter.text('');
   };
 
@@ -520,14 +523,14 @@
     }
 
     if (presets.includes('env')) {
-      var $consoleReporter = this.$consoleReporter;
+      var $consoleDebug = this.$consoleDebug;
       presets = presets.map(function (preset) {
         if (preset === 'env') {
           var envOptions = getEnvOptions(options);
           if (options.debug) {
             envOptions.onPresetBuild = onEnvBuild.bind(
               null,
-              $consoleReporter,
+              $consoleDebug,
               envOptions
             );
           }
@@ -564,11 +567,7 @@
     var done = false;
 
     function flush() {
-      var current = $consoleReporter.text();
-      if (current.length) {
-        current += '\n\n';
-      }
-      $consoleReporter.text(current + buffer.join('\n'));
+      $consoleReporter.text(buffer.join('\n'));
     }
 
     function write(data) {
