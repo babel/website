@@ -12,7 +12,7 @@ transform async and generator functions. `regeneratorRuntime` is not included.
 <blockquote class="babel-callout babel-callout-info">
   <h4>Runtime required</h4>
   <p>
-    You need to use either the <a href="/docs/usage/polyfill">Babel polyfill</a> or the <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a> so that <code>regeneratorRuntime</code> will be defined.
+    You need to use either the <a href="/docs/usage/polyfill">Babel polyfill</a> or the <a href="https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js">regenerator runtime</a> so that <code>regeneratorRuntime</code> will be defined.
   </p>
 </blockquote>
 
