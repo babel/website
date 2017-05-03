@@ -2,7 +2,7 @@
   items:
     browser: In the browser
 - name: Babel built-ins
-  items:
+  items: 
     babel_cli: CLI
     babel_register: Require hook
 - name: Build systems
@@ -43,7 +43,7 @@
     connect: Connect
     nodemon: Nodemon
 - name: Language APIs
-  items:
+  items: 
     dotnet: C# / .NET
     node: Node
     ruby: Ruby
