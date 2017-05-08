@@ -33,7 +33,7 @@ the [instructions](https://github.com/babel/babel-sublime#installation).
 ### Vim
 
 Install the [vim-javascript](https://github.com/pangloss/vim-javascript) plugin, which brings both
-improved syntax highlighting and indention support for JavaScript to Vim.
+improved syntax highlighting and indentation support for JavaScript to Vim.
 
 Another option is to use [yajs.vim](https://github.com/othree/yajs.vim) with
 [es.next.syntax](https://github.com/othree/es.next.syntax.vim).
