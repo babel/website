@@ -8,7 +8,7 @@ package: babel-polyfill
 
 <p class="lead">
   Babel includes a polyfill that includes a custom
-  <a href="https://github.com/facebook/regenerator/blob/master/runtime.js">regenerator runtime</a>
+  <a href="https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js">regenerator runtime</a>
   and <a href="https://github.com/zloirock/core-js">core-js</a>.
 </p>
 
