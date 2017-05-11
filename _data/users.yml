@@ -580,3 +580,6 @@
 - name: Bitovi
   url: https://www.bitovi.com/
   logo: bitovi-logo.svg
+- name: Hootsuite
+  url: https://hootsuite.com/
+  logo: hootsuite.svg
