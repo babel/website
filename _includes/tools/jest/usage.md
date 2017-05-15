@@ -6,9 +6,9 @@ In your `package.json` file make the following changes:
     "test": "jest"
   },
   "jest": {
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "testFileExtensions": ["es6", "js"],
-    "moduleFileExtensions": ["js", "json", "es6"]
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   }
 }
 ```
