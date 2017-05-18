@@ -259,7 +259,7 @@ npm install --save-dev babel-preset-react
     <div class="col-md-6">
       <h2 id="pluggable">Pluggable</h2>
       <p>Babel is built out of plugins. Compose your own transformation pipeline using existing plugins or write your own. Easily use a set of plugins by using or creating a <a href="/docs/plugins/#presets">preset</a>. <a href="/docs/plugins/">Learn more &rarr;</a></p>
-      <p>Create a plugin on the fly with <a href="https://astexplorer.net/#/KJ8AjD6maa">astexplorer.net</a></p>
+      <p>Create a plugin on the fly with <a href="https://astexplorer.net/#/KJ8AjD6maa">astexplorer.net</a> or use <a href="https://github.com/babel/generator-babel-plugin">generator-babel-plugin</a> to generate a plugin template.</p>
     </div>
     <div class="col-md-6">
 <div markdown="1">
