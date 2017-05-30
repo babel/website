@@ -9,7 +9,7 @@ redirect_from:
 
 ## Why is the output of `for...of` so verbose and ugly?
 
-This is necessary in order to comply with the spec as an iterators `return` method must be called on
+This is necessary in order to comply with the spec as an iterator's `return` method must be called on
 errors. An alternative is to enable [loose mode](/docs/plugins/transform-es2015-for-of/#options-loose) but please note
 that there are **many** caveats to be aware of if you enable loose mode and that you're willingly choosing
 to be spec incompliant.
