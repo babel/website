@@ -9,10 +9,10 @@ redirect_from:
 
 ## Why is the output of `for...of` so verbose and ugly?
 
-This is necessary in order to comply with the spec as an iterator's `return` method must be called on
-errors. An alternative is to enable [loose mode](/docs/plugins/transform-es2015-for-of/#options-loose) but please note
-that there are **many** caveats to be aware of if you enable loose mode and that you're willingly choosing
-to be spec incompliant.
+In order to comply with the specification, the iterator's return method must be
+called on errors. An alternative is to enable [loose mode](/docs/plugins/transform-es2015-for-of/#options-loose)
+but please note that there are **many** caveats to be aware of if you enable
+loose mode and that you're willingly choosing to be spec incompliant.
 
 Please see [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) and
 [babel/babel#838](https://github.com/babel/babel/issues/838) for more information.
