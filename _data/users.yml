@@ -583,3 +583,6 @@
 - name: Hootsuite
   url: https://hootsuite.com/
   logo: hootsuite.svg
+- name: SeatGeek
+  url: https://seatgeek.com
+  logo: seatgeek.svg
