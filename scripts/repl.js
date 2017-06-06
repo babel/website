@@ -1,4 +1,4 @@
-(function(babel, $, _, ace, window) {
+(function(babel, $, _, ace, LZString, window) {
   'use strict';
   var UPDATE_DELAY = 500;
 
@@ -76,14 +76,45 @@
       };
     }).reduce(function(params, param){
       if (param.key && param.value) {
-        params[param.key] = UriUtils.decode(param.value);
+        if (param.key.slice(-3) === '_lz') {
+          params[param.key.slice(0, -3)] = UriUtils.decompress(param.value);
+        } else {
+          params[param.key] = UriUtils.decode(param.value);
+        }
       }
       return params;
     }, {});
   };
 
+  UriUtils.compress = function(string) {
+    return LZString.compressToBase64(string)
+      .replace(/\+/g, '-') // Convert '+' to '-'
+      .replace(/\//g, '_') // Convert '/' to '_'
+      .replace(/=+$/, ''); // Remove ending '='
+  };
+
+  UriUtils.decompress = function(string) {
+    var safe = string
+      .replace(/\-/g, '+') // Convert '-' to '+'
+      .replace(/\_/g, '/'); // Convert '_' to '/'
+    return LZString.decompressFromBase64(safe);
+  };
+
+  // `code` can get very long. A basic, fast LZW compression to base64
+  // saves significant bytes, especially considering the explosion in size
+  // when url-encoding common code characters (like ' ' to '%20')
+  var compressable = ['code'];
   UriUtils.updateQuery = function (object) {
-    var query = Object.keys(object).map(function(key){
+    var query = Object.keys(object)
+    .filter(function(key) {
+      // Prevents compressed keys from entering twice
+      return key.slice(-3) !== '_lz';
+    })
+    .map(function(key){
+      if (compressable.indexOf(key) !== -1) {
+        key += '_lz';
+        return key + '=' + UriUtils.compress(object.code);
+      }
       return key + '=' + UriUtils.encode(object[key]);
     }).join('&');
 
@@ -737,4 +768,4 @@
   onPresetChange();
   onTargetChange();
   onToolbarChange();
-}(Babel, $, _, ace, window));
+}(Babel, $, _, ace, LZString, window));
