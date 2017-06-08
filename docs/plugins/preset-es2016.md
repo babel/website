@@ -6,7 +6,7 @@ permalink: /docs/plugins/preset-es2016/
 package: babel-preset-es2016
 ---
 
-> If you want to stay up to date, use the [latest preset](/docs/plugins/preset-latest/)
+> If you want to stay up to date, use the [env preset](/docs/plugins/preset-env/)
 
 This preset includes the following plugins:
 
