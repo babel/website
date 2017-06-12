@@ -27,6 +27,10 @@
     {name: "Node", label: "Node.js", min: '0.10', default: 7.4, step: 0.1}
   ];
 
+  var examples = $('.code_examples h3').toArray().map(function (object) {
+    return object.id;
+  });
+
   /* Register standalone version of env preset. */
   Babel.registerPreset('env', babelPresetEnv.default);
 
@@ -305,6 +309,27 @@
     };
   }
 
+  /**
+   * Options for selecting example to use
+   */
+   function getExampleOptions() {
+     var $examples = $('#examples');
+
+     examples.forEach(function (example) {
+       var option = $('<option>', {
+         value: example,
+         text: example.toUpperCase()
+       });
+       $examples.append(option);
+     });
+
+     $examples.change(function () {
+       var selector = "#" + $examples.val();
+       var code = $(selector).next().next().children("pre").children("code").text();
+       repl.setSource(code);
+     });
+   }
+
   function getTargetOptions() {
     // Create version + checkbox for all available targets
     var $targetsListCointainer = document.querySelector('#babel-repl-targets-dropdown .dropdown-menu-list');
@@ -501,6 +526,10 @@
 
   REPL.prototype.getSource = function () {
     return this.input.getValue();
+  };
+
+  REPL.prototype.setSource = function (code) {
+    return this.input.setValue(code);
   };
 
   REPL.prototype.compile = function () {
@@ -737,4 +766,5 @@
   onPresetChange();
   onTargetChange();
   onToolbarChange();
+  getExampleOptions();
 }(Babel, $, _, ace, window));
