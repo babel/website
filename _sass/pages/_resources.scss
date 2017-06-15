@@ -1,0 +1,38 @@
+.babel-resource-list {
+  display: flex;
+  flex-flow: row wrap;
+  background: #eee;
+  border-radius: 5px;
+  padding: 20px 10px;
+}
+
+.babel-resource-list-item {
+  flex: auto 0;
+  width: 100%;
+  padding: 0 10px;
+
+  @media (min-width: $screen-md) {
+    width: 50%;
+  }
+
+  .panel-body p {
+    height: 6em;
+    overflow: hidden;
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      height: 20px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      @include gradient-vertical(transparent, white);
+    }
+  }
+}
+
+.babel-resource-labels {
+  @include text-overflow();
+}

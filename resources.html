@@ -1,0 +1,49 @@
+---
+layout: page
+title: Resources
+description: Guides, articles, talks, books, and more.
+permalink: /resources/
+third_party_js:
+  - //cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.7/lunr.min.js
+custom_js:
+  - resources.js
+---
+
+<div class="container">
+  <p class="lead text-center">
+    There's tons of material out there for learning ES6 and Babel. Here's a
+    handy searchable list of some of the best stuff.
+  </p>
+
+  <div class="form-group">
+    <input id="babel-resource-search" type="search" class="form-control input-lg"
+    placeholder="Search... (e.g. Babel, Generators, Video)">
+  </div>
+
+  <p class="text-center">
+    If you would like to have something added to this list, <a href="https://github.com/babel/babel.github.io/issues/new?title={{site.data.text.resources.submit.title | cgi_escape }}&body={{site.data.text.resources.submit.body | cgi_escape }}">please open an issue</a>.
+  </p>
+
+  <div class="babel-resource-list">
+    {% for resource in site.data.resources %}
+      <div class="babel-resource-list-item">
+        <a class="panel panel-default" href="{{ resource.url }}"
+          onclick="_gaq.push(['_trackEvent', 'Resources', 'Visit', '{{ resource.title }}']);">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{ resource.title }}</h3>
+            <small>{{ resource.creator }}</small>
+          </div>
+          <div class="panel-body">
+            <p>{{ resource.description }}</p>
+
+            <div class="babel-resource-labels">
+              {% for tag in resource.tags %}
+                <span class="label label-default">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
