@@ -48,13 +48,5 @@ default_js:
   - "/scripts/clipboard.js"
   - "/scripts/open-in-repl.js"
 
-# Compress HTML
-compress_html:
-  clippings: all
-  comments: all
-  # endings: all
-  profile: false
-  startings: [head, body]
-
 # Get consistent pagination links with production
 timezone: "-0500"
