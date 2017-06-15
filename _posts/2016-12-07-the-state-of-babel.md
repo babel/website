@@ -313,7 +313,7 @@ Some Ideas
 
 - All plugins should have examples. Can also embed [RunKit](https://runkit.com/home) or the REPL.
 - Update FAQ with common errors
-- API docs / make [babel-handbook](https://github.com/thejameskyle/babel-handbook) better
+- API docs / make [babel-handbook](/docs/handbook) better
 
 Relevant Issues:
 

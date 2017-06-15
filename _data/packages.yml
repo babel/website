@@ -6,3 +6,6 @@ babel-preset-env:
 babylon:
   url: https://github.com/babel/babylon
   monorepo: false
+babel-handbook:
+  url: https://github.com/thejameskyle/babel-handbook
+  monorepo: false

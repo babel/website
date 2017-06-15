@@ -335,7 +335,7 @@ Settings options for presets works exactly the same:
 
 ## Plugin Development
 
-Please refer to the excellent [babel-handbook](https://github.com/thejameskyle/babel-handbook)
+Please refer to the excellent [babel-handbook](/docs/handbook)
 to learn how to create your own plugins.
 
 The simple plugin that reverses names (from the homepage):
