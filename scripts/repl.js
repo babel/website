@@ -194,6 +194,9 @@
       },
       set: function (value) {
         var setting = value !== 'undefined' && value !== 'false' && value;
+        if (typeof setting === 'string') {
+          setting = _.trim(setting);
+        }
         $element.val(setting);
       },
       enumerable: true,
