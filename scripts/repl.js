@@ -1,15 +1,48 @@
-(function(babel, $, _, ace, window) {
+(function(babel, $, _, ace, LZString, window) {
+  'use strict';
+  var UPDATE_DELAY = 500;
+
+  var presets = [
+    'env',
+    'es2015',
+    'es2015-loose',
+    'es2016',
+    'es2017',
+    'react',
+    'stage-0',
+    'stage-1',
+    'stage-2',
+    'stage-3'
+  ];
+
+  var targets = [
+    // {name: "Chrome", min: 4, default: 58},
+    // {name: "Opera", min: 10, default: 44},
+    // {name: "Edge", min: 12, default: 15},
+    // {name: "Firefox", min: 2, default: 53},
+    // {name: "Safari", min: 3, default: 10},
+    // {name: "IE", min: 6, default: 11},
+    // {name: "iOS", min: 3, default: 10},
+    {name: "Electron", min: 0.3, default: 1.5, step: 0.1},
+    {name: "Node", label: "Node.js", min: '0.10', default: 7.4, step: 0.1}
+  ];
+
+  /* Register standalone version of env preset. */
+  Babel.registerPreset('env', babelPresetEnv.default);
 
   /* Throw meaningful errors for getters of commonjs. */
+  var enableCommonJSError = true;
   ["module", "exports", "require"].forEach(function(commonVar){
-    Object.defineProperty(window, commonVar, { 
+    Object.defineProperty(window, commonVar, {
       configurable: true,
       get: function () {
-        throw new Error(commonVar + " is not supported in the browser, you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
+        if (enableCommonJSError) {
+          throw new Error(commonVar + " is not supported in the browser, you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
+        }
       }
     });
   });
-  
+
   /*
    * Utils for working with the browser's URI (e.g. the query params)
    */
@@ -43,14 +76,45 @@
       };
     }).reduce(function(params, param){
       if (param.key && param.value) {
-        params[param.key] = UriUtils.decode(param.value);
+        if (param.key.slice(-3) === '_lz') {
+          params[param.key.slice(0, -3)] = UriUtils.decompress(param.value);
+        } else {
+          params[param.key] = UriUtils.decode(param.value);
+        }
       }
       return params;
     }, {});
   };
 
+  UriUtils.compress = function(string) {
+    return LZString.compressToBase64(string)
+      .replace(/\+/g, '-') // Convert '+' to '-'
+      .replace(/\//g, '_') // Convert '/' to '_'
+      .replace(/=+$/, ''); // Remove ending '='
+  };
+
+  UriUtils.decompress = function(string) {
+    var safe = string
+      .replace(/\-/g, '+') // Convert '-' to '+'
+      .replace(/\_/g, '/'); // Convert '_' to '/'
+    return LZString.decompressFromBase64(safe);
+  };
+
+  // `code` can get very long. A basic, fast LZW compression to base64
+  // saves significant bytes, especially considering the explosion in size
+  // when url-encoding common code characters (like ' ' to '%20')
+  var compressable = ['code'];
   UriUtils.updateQuery = function (object) {
-    var query = Object.keys(object).map(function(key){
+    var query = Object.keys(object)
+    .filter(function(key) {
+      // Prevents compressed keys from entering twice
+      return key.slice(-3) !== '_lz';
+    })
+    .map(function(key){
+      if (compressable.indexOf(key) !== -1) {
+        key += '_lz';
+        return key + '=' + UriUtils.compress(object.code);
+      }
       return key + '=' + UriUtils.encode(object[key]);
     }).join('&');
 
@@ -61,7 +125,12 @@
    * Long term storage for persistence of state/etc
    */
   function StorageService () {
-    this.store = window.localStorage;
+    try {
+      this.store = window.localStorage;
+    } catch (e) {
+      console.warn('Could not access localStorage. Disabling state persistence.');
+      this.store = null;
+    }
   }
 
   StorageService.prototype.get = function (key) {
@@ -87,8 +156,9 @@
 
     this.editor.setTheme('ace/theme/tomorrow');
     this.editor.setShowPrintMargin(false);
+    this.editor.commands.removeCommands(['gotoline', 'find']);
     this.$el.css({
-      fontFamily: 'Menlo, Monaco, Consolas, "Courier New", monospace',
+      fontFamily: '"Operator Mono", "Fira Code", "Ubuntu Mono", "Droid Sans Mono", "Liberation Mono", "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace',
       lineHeight: 'inherit'
     });
 
@@ -103,11 +173,11 @@
   /*
    * Options exposed for the REPL that will influence Babel's transpiling
    */
-  function $checkbox($element){
+  function $checkboxValue($element) {
     return {
       get: function () {
         return $element.is(":checked");
-      } ,
+      },
       set: function (value) {
         var setting = value !== 'false' && value !== false;
         $element.prop('checked', setting);
@@ -117,29 +187,301 @@
     };
   }
 
+  function $inputValue($element) {
+    return {
+      get: function () {
+        return $element.val().trim();
+      },
+      set: function (value) {
+        var setting = value !== 'undefined' && value !== 'false' && value;
+        $element.val(setting);
+      },
+      enumerable: true,
+      configurable: false
+    };
+  }
+
+  /**
+   * By default, Bootstrap closes dropdown menus whenever an item in them is
+   * clicked. This function overrides that behaviour for the presets dropdown,
+   * and ensures the checkbox is selected correctly.
+   */
+  function handlePresetClick($input, evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    // Needs to run in a timeout to properly handle clicks directly on the
+    // checkbox.
+    setTimeout(function() {
+      $input.checked = !$input.checked;
+      onPresetChange();
+    }, 0);
+  }
+
+  function handleTargetClick($input, evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    // Needs to run in a timeout to properly handle clicks directly on the
+    // checkbox.
+    setTimeout(function() {
+      $input.checked = !$input.checked;
+      onTargetChange();
+    }, 0);
+  }
+
+  function prevent(evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+  }
+
+  function envItemToString(item) {
+    return item.name + ' ' + JSON.stringify(item.targets);
+  }
+
+  function onEnvBuild(node, opts, envResult) {
+    var buffer = '';
+    buffer += 'Using targets:\n'
+    buffer += JSON.stringify(envResult.targets, null, 2);
+    buffer += '\n\n';
+    buffer += 'Using plugins:\n'
+    buffer += envResult.transformationsWithTargets
+      .map(envItemToString)
+      .join('\n');
+    if (opts.useBuiltIns) {
+      buffer += '\n\n';
+      buffer += 'Using polyfills:\n';
+      buffer += envResult.polyfillsWithTargets
+        .map(envItemToString)
+        .join('\n');
+    }
+    buffer += '\n\n';
+    node.text(buffer);
+  }
+
+  function getEnvOptions(options) {
+    var origTargets = options.targets,
+    browsers = options.browsers,
+    builtIns = !options.evaluate && options.builtIns;
+
+    var arrayOfTargets = origTargets.split(',').filter(Boolean);
+    var targets = arrayOfTargets.reduce(function(objectOfTargets, target){
+      target = target.split('-');
+      var name = target[0].toLowerCase();
+      var version = parseFloat(target[1]);
+      objectOfTargets[name] = version;
+      return objectOfTargets;
+    }, {});
+
+    if (browsers) {
+      targets.browsers = browsers;
+    }
+
+    return {
+      useBuiltIns: builtIns,
+      targets: targets
+    };
+  };
+
+  /**
+   * Options for selecting presets to use.
+   */
+  function getPresetOptions() {
+    // Create the checkboxes for all available presets
+    var $presetContainer = document.getElementById('babel-repl-preset-dropdown');
+    var $presets = [];
+    presets.forEach(function(presetName) {
+      var $input = document.createElement('input');
+      $input.type = 'checkbox';
+      $input.name = 'preset';
+      $input.value = presetName;
+      $input.id = 'option-' + presetName;
+
+      // This should really be a <label>, but it *needs* to be an <a> to get the
+      // right styling. Thanks Bootstrap.
+      var $label = document.createElement('a');
+      $label.href = '#';
+      $label.className = 'small';
+      $label.tabIndex = -1;
+      $label.addEventListener(
+        'click',
+        handlePresetClick.bind(null, $input),
+        false
+      );
+
+      $label.appendChild($input);
+      $label.appendChild(document.createTextNode(' ' + presetName));
+
+      var $li = document.createElement('li');
+      $li.appendChild($label);
+      $presetContainer.appendChild($li);
+      $presets.push($input);
+    });
+
+    return {
+      get: function() {
+        return $presets
+          .filter(function($preset) { return $preset.checked; })
+          .map(function($preset) { return $preset.value; })
+          .join(',');
+      },
+      set: function(value) {
+        value = value.split(',');
+        $presets.forEach(function($preset) {
+          $preset.checked = value.indexOf($preset.value) > -1;
+        });
+      },
+      enumerable: true,
+      configurable: true,
+    };
+  }
+
+  function getTargetOptions() {
+    // Create version + checkbox for all available targets
+    var $targetsListCointainer = document.querySelector('#babel-repl-targets-dropdown .dropdown-menu-list');
+    var $targets = [];
+
+    targets.forEach(function(target) {
+      var targetName = target.name,
+      targetLabel = target.label || targetName,
+      defaultVersion = target.default,
+      minVersion = target.min,
+      step = target.step || 1;
+
+      var $checkbox = document.createElement('input');
+      $checkbox.type = 'checkbox';
+      $checkbox.name = 'target';
+      $checkbox.value = targetName;
+      $checkbox.id = 'option-' + targetName;
+
+      var $input = document.createElement('input');
+      $input.type = 'number';
+      $input.min = minVersion;
+      $input.value = defaultVersion;
+      $input.step = step;
+      $input.name = 'version';
+      $input.id = 'option-target-' + targetName.toLowerCase();
+
+      var $label = document.createElement('a');
+      $label.href = '#';
+      $label.className = 'small';
+      $label.tabIndex = -1;
+
+      var $span = document.createElement('span');
+      $span.innerHTML = targetLabel;
+      $label.appendChild($span);
+
+      $label.addEventListener(
+        'click',
+        handleTargetClick.bind(null, $checkbox),
+        false
+      );
+
+      $input.addEventListener(
+        'click',
+        prevent,
+        false
+      );
+
+      $input.addEventListener(
+        'change',
+        _.debounce(onTargetChange, 500),
+        false
+      );
+
+      $label.appendChild($checkbox);
+      $label.appendChild($input);
+
+      var $li = document.createElement('li');
+      $li.appendChild($label);
+      $targetsListCointainer.appendChild($li);
+      $targets.push({$checkbox: $checkbox, $input: $input});
+    });
+
+    return {
+      get: function() {
+        return $targets
+          .filter(function(target) { return target.$checkbox.checked && target.$input.value; })
+          .map(function(target) { return target.$checkbox.value + '-' + target.$input.value; })
+          .join(',');
+      },
+      set: function(valueStr) {
+        var values = valueStr.split(',');
+        values.forEach(function(value){
+          value = value.split('-');
+          $targets.forEach(function(target) {
+            var name = value[0],
+            version = value[1];
+
+            target.$checkbox.checked = name && name.indexOf(target.$checkbox.value) > -1;
+            target.$input.value = version && name.indexOf(target.$checkbox.value) > -1 ? version : target.$input.value;
+          });
+        })
+      },
+      enumerable: true,
+      configurable: true,
+    };
+  }
+
+  var isBabiliLoading = false;
+  /**
+   * Checks if Babili has been loaded. If not, kicks off a load (if it hasn't
+   * already started) and returns false. Returns true if Babili is ready to use.
+   */
+  function hasBabiliLoaded() {
+    if (window.Babili) {
+      return true;
+    }
+    if (isBabiliLoading) {
+      return false;
+    }
+    // Babili-standalone is exported as a UMD script, and thus hits the CommonJS
+    // error ("is not supported in the browser..."), temporarily disable it
+    // while loading.
+    enableCommonJSError = false;
+
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://unpkg.com/babili-standalone@0/babili.min.js';
+    script.onload = function() {
+      enableCommonJSError = true;
+      onSourceChange();
+    };
+    document.head.appendChild(script);
+    isBabiliLoading = true;
+    return false;
+  }
+
   /*
    * Babel options for transpilation as used by the REPL
    */
   function Options () {
-    var $experimental = $('#option-experimental');
     var $evaluate = $('#option-evaluate');
-    var $loose = $('#option-loose-mode');
-    var $spec = $('#option-spec');
+    var $lineWrap = $('#option-lineWrap');
+    var $babili = $('#option-babili');
+    var $browsers = $('#option-browsers');
+    var $builtIns = $('#option-builtIns');
+    var $debug = $('#option-debug');
 
     var options = {};
     Object.defineProperties(options, {
-      'experimental': $checkbox($experimental),
-      'evaluate': $checkbox($evaluate),
-      'loose': $checkbox($loose),
-      'spec': $checkbox($spec)
+      babili: $checkboxValue($babili),
+      evaluate: $checkboxValue($evaluate),
+      lineWrap: $checkboxValue($lineWrap),
+      presets: getPresetOptions(),
+      targets: getTargetOptions(),
+      browsers: $inputValue($browsers),
+      builtIns: $checkboxValue($builtIns),
+      debug: $checkboxValue($debug)
     });
 
     // Merge in defaults
     var defaults = {
-      experimental : true,
-      loose : false,
-      spec : false,
-      evaluate : true
+      babili: false,
+      evaluate: true,
+      lineWrap: false,
+      presets: 'es2015,stage-2,react',
+      browsers: ''
     };
 
     _.assign(options, defaults);
@@ -154,7 +496,6 @@
     this.storage = new StorageService();
     var state = this.storage.get('replState') || {};
     _.assign(state, UriUtils.parseQuery());
-
     this.options = _.assign(new Options(), state);
 
     this.input = new Editor('.babel-repl-input .ace_editor').editor;
@@ -166,12 +507,18 @@
     this.output.setHighlightGutterLine(false);
 
     this.$errorReporter = $('.babel-repl-errors');
-    this.$consoleReporter = $('.babel-repl-console');
+    this.$consoleDebug = $('.babel-repl-console-debug');
+    this.$consoleReporter = $('.babel-repl-console-output');
     this.$toolBar = $('.babel-repl-toolbar');
+    this.$textareaWrapper = $('.dropdown-menu-container');
+    this.$envBar = $('#option-browsers');
+
+    document.getElementById('babel-repl-version').innerHTML = babel.version;
   }
 
   REPL.prototype.clearOutput = function () {
     this.$errorReporter.text('');
+    this.$consoleDebug.text('');
     this.$consoleReporter.text('');
   };
 
@@ -188,16 +535,47 @@
   };
 
   REPL.prototype.compile = function () {
+    var options = this.options;
+    this.output.session.setUseWrapMode(options.lineWrap);
 
     var transformed;
     var code = this.getSource();
     this.clearOutput();
 
+    if (options.babili && !hasBabiliLoaded()) {
+      this.setOutput('// Babili is loading, please wait...');
+      return;
+    }
+
+    var presets = options.presets.split(',');
+
+    if (options.babili) {
+      presets.push('babili');
+    }
+
+    if (presets.includes('env')) {
+      var $consoleDebug = this.$consoleDebug;
+      presets = presets.map(function (preset) {
+        if (preset === 'env') {
+          var envOptions = getEnvOptions(options);
+          if (options.debug) {
+            envOptions.onPresetBuild = onEnvBuild.bind(
+              null,
+              $consoleDebug,
+              envOptions
+            );
+          }
+          return ["env", envOptions];
+        }
+        return preset;
+      })
+    }
+
     try {
       transformed = babel.transform(code, {
-        stage: this.options.experimental ? 0 : 2,
-        loose: this.options.loose && "all",
-        filename: 'repl'
+        presets: presets.filter(Boolean),
+        filename: 'repl',
+        babelrc: false,
       });
     } catch (err) {
       this.printError(err.message);
@@ -206,13 +584,14 @@
 
     this.setOutput(transformed.code);
 
-    if (this.options.evaluate) {
+    if (options.evaluate) {
       this.evaluate(transformed.code);
     }
   };
 
+  var capturingConsole;
   REPL.prototype.evaluate = function(code) {
-    var capturingConsole = Object.create(console);
+    capturingConsole = Object.create(console);
     var $consoleReporter = this.$consoleReporter;
     var buffer = [];
     var error;
@@ -227,37 +606,28 @@
       if (done) flush();
     }
 
+    function capture() {
+      if (this !== capturingConsole) { return; }
+
+      var logs = _.map(arguments, function(log) {
+        return window.prettyFormat(log);
+      });
+
+      write(logs.join(' '));
+    }
+
     capturingConsole.clear = function() {
       buffer = [];
       flush();
+      console.clear();
     };
 
-    capturingConsole.error = function () {
-      error = true;
-      capturingConsole.log.apply(capturingConsole, arguments);
-    };
-
-    capturingConsole.log = 
-    capturingConsole.info = 
-    capturingConsole.debug = function() {
-      if (this !== capturingConsole) { return; }
-
-      var args = Array.prototype.slice.call(arguments);
-      Function.prototype.apply.call(console.log, console, args);
-
-      var logs = args.reduce(function (logs, log) {
-        if (typeof log === 'string') {
-          logs.push(log);
-        } else if (log instanceof Function) {
-          logs.push(log.toString());
-        } else {
-          logs.push(JSON.stringify(log));
-        }
-        return logs;
-      }, []);
-
-      write(logs.join(' '));
-    };
+    ['error', 'log', 'info', 'debug'].forEach(function(key) {
+      capturingConsole[key] = function() {
+        Function.prototype.apply.call(console[key], console, arguments);
+        capture.apply(this, arguments);
+      };
+    });
 
     try {
       new Function('console', code)(capturingConsole);
@@ -268,8 +638,6 @@
 
     done = true;
     flush();
-
-    if (error) throw error;
   };
 
   REPL.prototype.persistState = function (state) {
@@ -282,7 +650,56 @@
    */
   var repl = new REPL();
 
-  function onSourceChange () {
+  function onPresetChange() {
+    // Update the list of presets that are displayed on the dropdown list anchor
+    var $envTargets = $('.babel-repl-targets-container');
+    var $envBuiltIns = $('#option-builtIns-wrapper');
+    var $envDebug = $('#option-debug-wrapper');
+
+    var presetList = repl.options.presets.replace(/,/g, ', ');
+
+    // Hide targets anchor unless env preset is selected.
+    var envIncluded = repl.options.presets.includes('env');
+    $envTargets.toggleClass('hidden', !envIncluded);
+    $envBuiltIns.toggleClass('hidden', !envIncluded);
+    $envDebug.toggleClass('hidden', !envIncluded);
+
+    document.getElementById('babel-repl-selected-presets').innerHTML = presetList;
+
+    onSourceChange();
+  }
+
+  function onTargetChange() {
+    // Update the list of targets that are displayed on the dropdown list anchor
+    var browsersList = repl.options.browsers;
+    var targetList = repl.options.targets.replace(/,/g, ', ');
+    var targetsEl = document.getElementById('babel-repl-selected-targets');
+
+    if (browsersList.length && targetList.length) {
+      browsersList += ', ';
+    }
+
+    targetsEl.innerHTML = browsersList + targetList;
+
+    onSourceChange();
+  }
+
+  function onToolbarChange() {
+    var $envBuiltIns = $('#option-builtIns-wrapper');
+    var $envBuiltInsInput = $envBuiltIns.find('input[type=checkbox]');
+    var evaluate = repl.options.evaluate;
+    var title = evaluate ? 'Disabled in evaluate mode' : '';
+
+    $envBuiltIns.attr('title', title);
+    if (evaluate) {
+      $envBuiltInsInput.prop('checked', false);
+    }
+    $envBuiltInsInput.attr('disabled', evaluate);
+
+    onSourceChange();
+  }
+
+  function onSourceChange() {
     var error;
     try {
       repl.compile();
@@ -297,71 +714,127 @@
     if (error) throw error;
   }
 
-  repl.input.on('change', _.debounce(onSourceChange, 500));
-  repl.$toolBar.on('change', onSourceChange);
+  repl.input.on('change', _.debounce(onSourceChange, UPDATE_DELAY));
+  repl.$envBar.on('keyup', _.debounce(onTargetChange, UPDATE_DELAY));
+  repl.$toolBar.on('change', onToolbarChange);
+  repl.$textareaWrapper.on('click', function(e){e.stopPropagation();})
 
-  repl.compile();
-  
-  function fileToREPL(file) {
-    var reader = new FileReader();
-    
-    // update repl input with text from file
-    reader.onload = function(e) {
-      var text = e.target.result;
-      
-      repl.input.setValue(text);
+
+  /*
+   * Make REPL editors resizable by width
+   * Returns a function to disable feature
+   */
+  function initResizable(resizeSelector) {
+    var $container = $('.babel-repl');
+    var $leftPanel = $('.babel-repl-left-panel');
+    var $rightPanel = $('.babel-repl-right-panel');
+    var activeClass = 'babel-repl-resize-active';
+    var offsetX;
+
+    function onResize(e) {
+      var curPos = e.pageX - offsetX;
+      var leftWidth = curPos / $container.width() * 100;
+      var rightWidth = 100 - leftWidth;
+      if (leftWidth < 10 || leftWidth > 90) {
+        return;
+      }
+
+      $leftPanel.outerWidth(leftWidth + '%');
+      $rightPanel.outerWidth(rightWidth + '%');
     }
-    
-    // read file
-    reader.readAsText(file);
-  }
 
-  // drag and drop file
-  $("body").on("dragover", function(e) {
-    e.preventDefault();
-    e.originalEvent.dataTransfer.dropEffect = "copy";
-  }).on("drop", function(e) {
-    e.preventDefault();
-    // just use one file
-    fileToREPL(e.originalEvent.dataTransfer.files[0]);
-  });
-  
-  var $uploader = $("#upload-file");
-  
-  $uploader.on("change", function(e) {
-    e.preventDefault();
-    // just use one file
-    fileToREPL(this.files[0]);
-  });
-  
-  // upload button
-  // plus tool tip that explain the drag and drop
-  $("#upload-button").on("click", function() {
-    $uploader.trigger("click");
-  }).tooltip();
-  
-  // handle download of file in browsers that support a[download]
-  var $download = $("#download-button");
-  var $a = $("<a>");
-  
-  if ("download" in $a[0] && (window.URL && window.URL.createObjectURL )) {
-  
-    //download button
-    $download.on("click", function(e) {
+    function onResizeStart(e) {
       e.preventDefault();
-      
-      var blob = new Blob([repl.input.getValue()], {type: "text/javascript"});
-      var href = window.URL.createObjectURL(blob);
-      
-      // download attribute supported
-      $a.attr({
-        href: href,
-        download: "babel-download.js"
-      })[0].click();
-    });
-  } else {
-    // download not supported
-    $download.hide();
+      offsetX = e.offsetX;
+      $(document).on('mousemove', onResize);
+      $(document).on('mouseup', onResizeStop);
+      $container.addClass(activeClass);
+    }
+
+    function onResizeStop(e) {
+      $(document).off('mousemove', onResize);
+      $(document).off('mouseup', onResizeStop);
+      $container.removeClass(activeClass);
+    }
+
+    $(resizeSelector).on('mousedown', onResizeStart);
+
+    return function() {
+      $(resizeSelector).off('mousedown', onResizeStart);
+    };
   }
 
-}(babel, $, _, ace, window));
+  /**
+   * Enable file drop on the REPL editor
+   * and the ability to download the output
+   */
+  function initFileDropAndDownload() {
+    function fileToREPL(file) {
+      var reader = new FileReader();
+      
+      // update repl input with text from file
+      reader.onload = function(e) {
+        var text = e.target.result;
+        
+        repl.input.setValue(text);
+      }
+      
+      // read file
+      reader.readAsText(file);
+    }
+
+    // drag and drop file
+    $('body').on('dragover', function(e) {
+      e.preventDefault();
+      e.originalEvent.dataTransfer.dropEffect = 'copy';
+    }).on('drop', function(e) {
+      e.preventDefault();
+      // just use one file
+      fileToREPL(e.originalEvent.dataTransfer.files[0]);
+    });
+    
+    var $uploader = $('#upload-file');
+    
+    $uploader.on('change', function(e) {
+      e.preventDefault();
+      // just use one file
+      fileToREPL(this.files[0]);
+    });
+    
+    // upload button
+    // plus tool tip that explain the drag and drop
+    $('#upload-button').on('click', function() {
+      $uploader.trigger('click');
+    }).tooltip();
+    
+    // handle download of file in browsers that support a[download]
+    var $download = $('#download-button');
+    var $a = $('<a>');
+    
+    if ('download' in $a[0] && (window.URL && window.URL.createObjectURL )) {
+    
+      //download button
+      $download.on('click', function(e) {
+        e.preventDefault();
+        
+        var blob = new Blob([repl.input.getValue()], {type: 'text/javascript'});
+        var href = window.URL.createObjectURL(blob);
+        
+        // download attribute supported
+        $a.attr({
+          href: href,
+          download: 'babel-download.js'
+        })[0].click();
+      });
+    } else {
+      // download not supported
+      $download.hide();
+    }
+  }
+
+  initResizable('.babel-repl-resize');
+  initFileDropAndDownload();
+  onPresetChange();
+  onTargetChange();
+  onToolbarChange();
+}(Babel, $, _, ace, LZString, window));

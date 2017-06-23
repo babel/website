@@ -1,0 +1,18 @@
+{% if page.package_source %}
+  {% assign from = page.package_source %}
+{% else %}
+  {% assign from = "babel" %}
+{% endif %}
+
+{% capture readme %}
+  {% include {{ from }}/packages/{{ page.package }}/README.md %}
+{% endcapture %}
+
+{{ readme
+    | newline_to_br
+    | split: "<br />"
+    | shift | shift | shift | shift
+    | join: "<br />"
+    | remove: "<br />"
+    | markdownify
+}}

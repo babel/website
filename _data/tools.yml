@@ -1,0 +1,58 @@
+- name: Prototyping
+  items:
+    browser: In the browser
+- name: Babel built-ins
+  items:
+    babel_cli: CLI
+    babel_register: Require hook
+- name: Build systems
+  items:
+    broccoli: Broccoli
+    browserify: Browserify
+    brunch: Brunch
+    duo: Duo
+    gobble: Gobble
+    grunt: Grunt
+    gulp: Gulp
+    jspm: jspm
+    make: Make
+    msbuild: MSBuild
+    requirejs: RequireJS
+    rollup: Rollup
+    sprockets: Sprockets
+    webpack2: Webpack
+    webpack: Webpack 1
+    fly: Fly
+    start: Start
+- name: Frameworks
+  items:
+    ember: Ember
+    meteor: Meteor
+    rails: Rails
+    sails: Sails
+- name: Test frameworks
+  items:
+    ava: AVA
+    jasmine: Jasmine
+    jest: Jest
+    karma: Karma
+    lab: Lab
+    mocha: Mocha
+- name: Utilities
+  items:
+    connect: Connect
+    nodemon: Nodemon
+- name: Language APIs
+  items:
+    dotnet: C# / .NET
+    node: Node
+    ruby: Ruby
+- name: Template engines
+  items:
+    pug: Pug
+- name: Editors and IDEs
+  items:
+    webstorm: WebStorm
+- name: Debuggers
+  items:
+    babel_node_debug: Node Inspector

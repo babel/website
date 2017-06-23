@@ -1,43 +1,36 @@
-- title: Learn ES6
-  url: /docs/learn-es6/
-- title: Using Babel
-  url: /docs/using-babel/
+- title: Learn ES2015
+  url: /learn-es2015/
 - title: Docs
-  url: /docs/usage/
+  url: /docs
   subnav:
-  - title: CLI
-    url: /docs/usage/cli/
-  - title: Require Hook
-    url: /docs/usage/require/
-  - title: API
-    url: /docs/usage/api/
-  - title: Options
-    url: /docs/usage/options/
-  - title: Transformers
-    url: /docs/usage/transformers/
-  - title: Polyfill
-    url: /docs/usage/polyfill/
-  - title: Runtime
-    url: /docs/usage/runtime/
-  - title: babelrc
-    url: /docs/usage/babelrc/
-  - title: Plugins
-    url: /docs/usage/plugins/
-  - title: Caveats
-    url: /docs/usage/caveats/
-  - title: Modules
-    url: /docs/usage/modules/
-  - title: Loose mode
-    url: /docs/usage/loose/
-  - title: Browser
-    url: /docs/usage/browser/
-  - title: Experimental
-    url: /docs/usage/experimental/
-  - title: JSX
-    url: /docs/usage/jsx/
-  - title: External helpers
-    url: /docs/usage/external-helpers/
+    - items:
+        - title: Setup
+          url: /docs/setup/
+        - title: Editors
+          url: /docs/editors
+        - title: Caveats
+          url: /docs/usage/caveats/
+    - name: Packages
+      items:
+        - title: babel-core
+          url: /docs/core-packages/
+        - title: babel-polyfill
+          url: /docs/usage/polyfill/
+        - title: Plugins
+          url: /docs/plugins/
+    - name: Usage
+      items:
+        - title: .babelrc
+          url: /docs/usage/babelrc/
+        - title: babel-cli
+          url: /docs/usage/cli/
+        - title: babel-register
+          url: /docs/usage/babel-register/
+        - title: API
+          url: /docs/usage/api/
 - title: Try it out
   url: /repl/
+- title: Blog
+  url: /blog/
 - title: FAQ
-  url: /docs/faq/
+  url: /faq
