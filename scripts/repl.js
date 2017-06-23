@@ -817,7 +817,7 @@
       $download.on('click', function(e) {
         e.preventDefault();
         
-        var blob = new Blob([repl.input.getValue()], {type: 'text/javascript'});
+        var blob = new Blob([repl.output.getValue()], {type: 'text/javascript'});
         var href = window.URL.createObjectURL(blob);
         
         // download attribute supported
