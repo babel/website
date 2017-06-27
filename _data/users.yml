@@ -586,3 +586,6 @@
 - name: SeatGeek
   url: https://seatgeek.com
   logo: seatgeek.svg
+- name: Hux
+  url: https://hux.com
+  logo: hux.svg
