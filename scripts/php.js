@@ -1,5 +1,4 @@
 // polyfill
-window.echo = console.log.bind(console);
 window.global = window;
 
 (function(babel, $, _, ace, LZString, window) {
@@ -218,7 +217,7 @@ window.global = window;
     this.options = _.assign(new Options(), state);
 
     this.input = new Editor('.babel-repl-input .ace_editor').editor;
-    this.input.setValue(UriUtils.decode(state.code || '<?php\n$bar = [\n  \"foo\" => \"bar\",\n  \"x\" => [],\n];'));
+    this.input.setValue(UriUtils.decode(state.code || '<?php\n$bar = [\n  \"foo\" => \"bar\",\n  \"x\" => [],\n];\n\necho $bar;'));
 
     this.output = new Editor('.babel-repl-output .ace_editor').editor;
     this.output.setReadOnly(true);
@@ -263,6 +262,28 @@ window.global = window;
     try {
       transformed = babel.transform(code, {
         presets: ['php'],
+        plugins: [function() {
+          return {
+            visitor: {
+              CallExpression: function(path) {
+                if (path.node.callee.type === 'Identifier' &&
+                    (path.node.callee.name === 'echo' || path.node.callee.name === 'print')) {
+                  path.get('callee').replaceWith({
+                    type: 'MemberExpression',
+                    object: {
+                      type: 'Identifier',
+                      name: 'console'
+                    },
+                    property: {
+                      type: 'Identifier',
+                      name: 'log'
+                    }
+                  });
+                }
+              }
+            }
+          }
+        }],
         filename: 'repl',
         babelrc: false,
       });
