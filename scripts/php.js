@@ -267,7 +267,7 @@ window.global = window;
             visitor: {
               CallExpression: function(path) {
                 if (path.node.callee.type === 'Identifier' &&
-                    path.node.callee.name === 'echo') {
+                    (path.node.callee.name === 'echo' || path.node.callee.name === 'print')) {
                   path.get('callee').replaceWith({
                     type: 'MemberExpression',
                     object: {
