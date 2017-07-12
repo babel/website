@@ -1,0 +1,55 @@
+---
+layout: default
+permalink: /7/
+fullscreen: true
+redirect_from: "/7.html"
+custom_js_with_timestamps:
+- pretty-format.js
+- 7.js
+third_party_js:
+- https://packd.now.sh/babel-core@7.0.0-alpha.15
+- https://packd.now.sh/babel-preset-stage-0@7.0.0-alpha.15
+- https://packd.now.sh/babel-preset-es2015@7.0.0-alpha.15
+- https://packd.now.sh/babel-preset-es2016@7.0.0-alpha.15
+- https://packd.now.sh/babel-preset-es2017@7.0.0-alpha.15
+- https://unpkg.com/babel-polyfill@7.0.0-alpha.15/dist/polyfill.min.js
+- https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
+- https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/base64-string.min.js
+- https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js
+---
+<div class="babel-repl">
+  <form class="form babel-repl-toolbar">
+    <div class="pull-left">
+      <div class="form-group">
+        <label for="option-evaluate">
+          <input id="option-evaluate" type="checkbox">
+          Evaluate
+        </label>
+      </div>
+
+      <label for="option-lineWrap">
+        <input id="option-lineWrap" type="checkbox">
+        Line Wrap
+      </label>
+    </div>
+
+    <div class="pull-right">
+      <div class="form-group">
+        <strong>Babel <span id="babel-repl-version"></span></strong>
+      </div>
+    </div>
+  </form>
+
+  <div class="babel-repl-left-panel">
+    <div class="babel-repl-editor babel-repl-input"><div class="ace_editor"></div></div>
+    <div class="babel-repl-reporter babel-repl-errors"></div>
+  </div>
+  <div class="babel-repl-right-panel">
+    <div class="babel-repl-resize"></div>
+    <div class="babel-repl-editor babel-repl-output"><div class="ace_editor"></div></div>
+    <div class="babel-repl-reporter babel-repl-console">
+      <div class="babel-repl-console-debug"></div>
+      <div class="babel-repl-console-output"></div>
+    </div>
+  </div>
+</div>
