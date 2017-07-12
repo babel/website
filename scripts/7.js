@@ -1,6 +1,3 @@
-// polyfill
-window.global = window;
-
 (function(babel, $, _, ace, LZString, window) {
   'use strict';
   var UPDATE_DELAY = 500;
@@ -210,7 +207,7 @@ window.global = window;
    */
   function REPL () {
     this.storage = new StorageService();
-    var state = this.storage.get('replState') || {};
+    var state = this.storage.get('b7ReplState') || {};
     _.assign(state, UriUtils.parseQuery());
     this.options = _.assign(new Options(), state);
 

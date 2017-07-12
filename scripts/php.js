@@ -212,7 +212,7 @@ window.global = window;
    */
   function REPL () {
     this.storage = new StorageService();
-    var state = this.storage.get('replState') || {};
+    var state = this.storage.get('phpReplState') || {};
     _.assign(state, UriUtils.parseQuery());
     this.options = _.assign(new Options(), state);
 
