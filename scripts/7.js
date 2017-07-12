@@ -215,7 +215,7 @@ window.global = window;
     this.options = _.assign(new Options(), state);
 
     this.input = new Editor('.babel-repl-input .ace_editor').editor;
-    this.input.setValue(UriUtils.decode(state.code || '<?php\n$bar = [\n  \"foo\" => \"bar\",\n  \"x\" => [],\n];\n\necho $bar;'));
+    this.input.setValue(UriUtils.decode(state.code || ''));
 
     this.output = new Editor('.babel-repl-output .ace_editor').editor;
     this.output.setReadOnly(true);
