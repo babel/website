@@ -253,13 +253,15 @@
     var transformed;
     var code = this.getSource();
     this.clearOutput();
+    var envOptions = {
+      useBuiltIns: false,
+      targets: []
+    };
 
     try {
       transformed = babel.transform(code, {
         presets: [
-          babelPresetEs2015,
-          babelPresetEs2016,
-          babelPresetEs2017,
+          [babelPresetEnv, {}],
           babelPresetStage0
         ],
         filename: 'repl',
