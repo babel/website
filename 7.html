@@ -25,27 +25,19 @@ third_party_js:
         </label>
       </div>
 
-      <div class="form-group button-group babel-repl-targets-container hidden">
+      <div class="form-group button-group babel-repl-targets-container">
         <span class="dropdown-toggle" data-toggle="dropdown">
           Targets:
-          <span id="babel-repl-selected-targets"></span>
-          <span class="caret"></span>
+          <input type="text" id="option-browsers" placeholder="> 2%, ie 11, safari > 9">
         </span>
-        <div class="dropdown-menu" id="babel-repl-targets-dropdown">
-          <div class="dropdown-menu-container">
-            <label for="option-browsers">Browsers</label>
-            <textarea id="option-browsers" placeholder="> 2%, ie 11, safari > 9"></textarea>
-          </div>
-          <ul class="dropdown-menu-list"></ul>
-        </div>
       </div>
 
-      <label for="option-builtIns" id="option-builtIns-wrapper" class="hidden">
+      <label for="option-builtIns" id="option-builtIns-wrapper">
         <input id="option-builtIns" type="checkbox">
         <span>Built-ins</span>
       </label>
 
-      <label for="option-debug" id="option-debug-wrapper" class="hidden">
+      <label for="option-debug" id="option-debug-wrapper">
         <input id="option-debug" type="checkbox">
         <span>Debug</span>
       </label>

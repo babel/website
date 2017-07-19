@@ -183,12 +183,16 @@
    */
   function Options () {
     var $evaluate = $('#option-evaluate');
+    var $browsers = $('#option-browsers');
+    var $useBuiltIns = $('#option-browsers');
     var $lineWrap = $('#option-lineWrap');
 
     var options = {};
     Object.defineProperties(options, {
       evaluate: $checkboxValue($evaluate),
       lineWrap: $checkboxValue($lineWrap),
+      useBuiltIns: $checkboxValue($useBuiltIns),
+      browsers: $inputValue($browsers)
     });
 
     // Merge in defaults
