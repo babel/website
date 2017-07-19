@@ -173,10 +173,24 @@
     };
   }
 
-  function prevent(evt) {
-    evt.preventDefault();
-    evt.stopPropagation();
+  function $selectValue($element) {
+    return {
+      get: function () {
+        return $element.val();
+      },
+      set: function (value) {
+        var setting = value;
+        $element.val(setting);
+      },
+      enumerable: true,
+      configurable: false
+    };
   }
+
+  // function prevent(evt) {
+  //   evt.preventDefault();
+  //   evt.stopPropagation();
+  // }
 
   /*
    * Babel options for transpilation as used by the REPL
@@ -184,20 +198,22 @@
   function Options () {
     var $evaluate = $('#option-evaluate');
     var $browsers = $('#option-browsers');
-    var $useBuiltIns = $('#option-browsers');
+    var $useBuiltIns = $('#option-builtIns');
     var $lineWrap = $('#option-lineWrap');
 
     var options = {};
     Object.defineProperties(options, {
       evaluate: $checkboxValue($evaluate),
       lineWrap: $checkboxValue($lineWrap),
-      useBuiltIns: $checkboxValue($useBuiltIns),
+      useBuiltIns: $selectValue($useBuiltIns),
       browsers: $inputValue($browsers)
     });
 
     // Merge in defaults
     var defaults = {
       evaluate: true,
+      useBuiltIns: false,
+      browsers: [],
       lineWrap: false,
     };
 
@@ -228,6 +244,8 @@
     this.$consoleReporter = $('.babel-repl-console-output');
     this.$toolBar = $('.babel-repl-toolbar');
     this.$textareaWrapper = $('.dropdown-menu-container');
+    this.$browsers = $('#option-browsers');
+    this.$useBuiltIns = $('#option-builtIns');
 
     document.getElementById('babel-repl-version').innerHTML = babel.version;
   }
@@ -257,15 +275,19 @@
     var transformed;
     var code = this.getSource();
     this.clearOutput();
+    const builtInsValue = options.useBuiltIns === 'false' ? false : options.useBuiltIns;
+
     var envOptions = {
-      useBuiltIns: false,
-      targets: []
+      useBuiltIns: builtInsValue,
+      targets: {
+        browsers: options.browsers
+      }
     };
 
     try {
       transformed = babel.transform(code, {
         presets: [
-          [babelPresetEnv, {}],
+          [babelPresetEnv, envOptions],
           babelPresetStage0
         ],
         filename: 'repl',
@@ -364,6 +386,9 @@
   }
 
   repl.input.on('change', _.debounce(onSourceChange, UPDATE_DELAY));
+  repl.$useBuiltIns.on('change', _.debounce(onSourceChange, UPDATE_DELAY));
+  repl.$browsers.on('keyup', _.debounce(onSourceChange, UPDATE_DELAY));
+
   repl.$toolBar.on('change', onToolbarChange);
   repl.$textareaWrapper.on('click', function(e){e.stopPropagation();})
 

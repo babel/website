@@ -26,15 +26,17 @@ third_party_js:
       </div>
 
       <div class="form-group button-group babel-repl-targets-container">
-        <span class="dropdown-toggle" data-toggle="dropdown">
-          Targets:
-          <input type="text" id="option-browsers" placeholder="> 2%, ie 11, safari > 9">
-        </span>
+        Targets:
+        <input type="text" id="option-browsers" placeholder="> 2%, ie 11, safari > 9">
       </div>
 
-      <label for="option-builtIns" id="option-builtIns-wrapper">
-        <input id="option-builtIns" type="checkbox">
-        <span>Built-ins</span>
+      <label for="option-builtIns" id="option-builtIns-select-wrapper">
+        Built-ins:
+        <select id="option-builtIns">
+          <option>false</option>
+          <option>usage</option>
+          <option>entry</option>
+        </select>
       </label>
 
       <label for="option-debug" id="option-debug-wrapper">

@@ -127,6 +127,11 @@
     margin-top: -3px;
   }
 
+  input#option-browsers {
+    color: black;
+    margin-left: 5px;
+  }
+
   #babel-repl-targets-dropdown {
     width: 170px;
 
@@ -179,6 +184,15 @@
         }
       }
     }
+  }
+}
+
+#option-builtIns-select-wrapper {
+  margin-right: 14px;
+
+  select#option-builtIns {
+    color: black;
+    margin-left: 4px;
   }
 }
 
