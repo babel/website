@@ -589,3 +589,6 @@
 - name: Hux
   url: https://hux.com
   logo: hux.svg
+- name: LeSalon
+  url: https://lesalon.com
+  logo: lesalon.svg
