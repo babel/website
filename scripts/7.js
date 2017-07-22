@@ -2,6 +2,17 @@
   'use strict';
   var UPDATE_DELAY = 500;
 
+  var presets = [
+    'es2015',
+    'es2016',
+    'es2017',
+    'react',
+    'stage-0',
+    'stage-1',
+    'stage-2',
+    'stage-3'
+  ];
+
   /* Throw meaningful errors for getters of commonjs. */
   var enableCommonJSError = true;
   ["module", "exports", "require"].forEach(function(commonVar){
@@ -173,9 +184,79 @@
     };
   }
 
+  /**
+   * By default, Bootstrap closes dropdown menus whenever an item in them is
+   * clicked. This function overrides that behaviour for the presets dropdown,
+   * and ensures the checkbox is selected correctly.
+   */
+  function handlePresetClick($input, evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    // Needs to run in a timeout to properly handle clicks directly on the
+    // checkbox.
+    setTimeout(function() {
+      $input.checked = !$input.checked;
+      onPresetChange();
+    }, 0);
+  }
+
   function prevent(evt) {
     evt.preventDefault();
     evt.stopPropagation();
+  }
+
+  /**
+   * Options for selecting presets to use.
+   */
+  function getPresetOptions() {
+    // Create the checkboxes for all available presets
+    var $presetContainer = document.getElementById('babel-repl-preset-dropdown');
+    var $presets = [];
+    presets.forEach(function(presetName) {
+      var $input = document.createElement('input');
+      $input.type = 'checkbox';
+      $input.name = 'preset';
+      $input.value = presetName;
+      $input.id = 'option-' + presetName;
+
+      // This should really be a <label>, but it *needs* to be an <a> to get the
+      // right styling. Thanks Bootstrap.
+      var $label = document.createElement('a');
+      $label.href = '#';
+      $label.className = 'small';
+      $label.tabIndex = -1;
+      $label.addEventListener(
+        'click',
+        handlePresetClick.bind(null, $input),
+        false
+      );
+
+      $label.appendChild($input);
+      $label.appendChild(document.createTextNode(' ' + presetName));
+
+      var $li = document.createElement('li');
+      $li.appendChild($label);
+      $presetContainer.appendChild($li);
+      $presets.push($input);
+    });
+
+    return {
+      get: function() {
+        return $presets
+          .filter(function($preset) { return $preset.checked; })
+          .map(function($preset) { return $preset.value; })
+          .join(',');
+      },
+      set: function(value) {
+        value = value.split(',');
+        $presets.forEach(function($preset) {
+          $preset.checked = value.indexOf($preset.value) > -1;
+        });
+      },
+      enumerable: true,
+      configurable: true,
+    };
   }
 
   /*
@@ -189,12 +270,14 @@
     Object.defineProperties(options, {
       evaluate: $checkboxValue($evaluate),
       lineWrap: $checkboxValue($lineWrap),
+      presets: getPresetOptions()
     });
 
     // Merge in defaults
     var defaults = {
       evaluate: true,
       lineWrap: false,
+      presets: 'es2015,stage-2,react',
     };
 
     _.assign(options, defaults);
@@ -254,14 +337,11 @@
     var code = this.getSource();
     this.clearOutput();
 
+    var presets = options.presets.split(',');
+
     try {
       transformed = babel.transform(code, {
-        presets: [
-          babelPresetEs2015,
-          babelPresetEs2016,
-          babelPresetEs2017,
-          babelPresetStage0
-        ],
+        presets: presets.filter(Boolean),
         filename: 'repl',
         babelrc: false,
       });
@@ -338,7 +418,16 @@
    */
   var repl = new REPL();
 
+  function onPresetChange() {
+    // Update the list of presets that are displayed on the dropdown list anchor
+    var presetList = repl.options.presets.replace(/,/g, ', ');
+    document.getElementById('babel-repl-selected-presets').innerHTML = presetList;
+    onSourceChange();
+  }
+
   function onToolbarChange() {
+    var evaluate = repl.options.evaluate;
+    var title = evaluate ? 'Disabled in evaluate mode' : '';
     onSourceChange();
   }
 
@@ -407,5 +496,6 @@
   }
 
   initResizable('.babel-repl-resize');
+  onPresetChange();
   onToolbarChange();
-}(babelCore, $, _, ace, LZString, window));
+}(Babel, $, _, ace, LZString, window));
