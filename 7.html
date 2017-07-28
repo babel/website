@@ -7,11 +7,7 @@ custom_js_with_timestamps:
 - pretty-format.js
 - 7.js
 third_party_js:
-- https://packd.now.sh/babel-core@7.0.0-alpha.15
-- https://packd.now.sh/babel-preset-stage-0@7.0.0-alpha.15
-- https://packd.now.sh/babel-preset-es2015@7.0.0-alpha.15
-- https://packd.now.sh/babel-preset-es2016@7.0.0-alpha.15
-- https://packd.now.sh/babel-preset-es2017@7.0.0-alpha.15
+- https://unpkg.com/babel-standalone@7.0.0-alpha.15/babel.js
 - https://unpkg.com/babel-polyfill@7.0.0-alpha.15/dist/polyfill.min.js
 - https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
 - https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/base64-string.min.js
@@ -25,6 +21,14 @@ third_party_js:
           <input id="option-evaluate" type="checkbox">
           Evaluate
         </label>
+      </div>
+
+      <div class="form-group button-group babel-repl-preset-container">
+        <span class="dropdown-toggle" data-toggle="dropdown">
+          Presets: <span id="babel-repl-selected-presets"></span>
+          <span class="caret"></span>
+        </span>
+        <ul class="dropdown-menu" id="babel-repl-preset-dropdown"></ul>
       </div>
 
       <label for="option-lineWrap">

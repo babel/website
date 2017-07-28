@@ -341,7 +341,7 @@ to learn how to create your own plugins.
 The simple plugin that reverses names (from the homepage):
 
 ```js
-export default function ({ types: t }) {
+export default function () {
   return {
     visitor: {
       Identifier(path) {
