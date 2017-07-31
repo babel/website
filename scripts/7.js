@@ -1,4 +1,4 @@
-(function(babel, $, _, ace, LZString, window) {
+(function($, _, ace, LZString, window) {
   'use strict';
   var UPDATE_DELAY = 500;
 
@@ -12,6 +12,9 @@
     'stage-2',
     'stage-3'
   ];
+
+  // TODO HAX: Change "Daniel15" to "babel" once https://github.com/babel/babel/pull/6029 lands
+  var buildArtifactURL = 'https://circleci.com/api/v1.1/project/github/Daniel15/babel/{build}/artifacts';
 
   /* Throw meaningful errors for getters of commonjs. */
   var enableCommonJSError = true;
@@ -293,6 +296,7 @@
     var state = this.storage.get('b7ReplState') || {};
     _.assign(state, UriUtils.parseQuery());
     this.options = _.assign(new Options(), state);
+    loadBabel(this.options);
 
     this.input = new Editor('.babel-repl-input .ace_editor').editor;
     this.input.setValue(UriUtils.decode(state.code || ''));
@@ -307,8 +311,6 @@
     this.$consoleReporter = $('.babel-repl-console-output');
     this.$toolBar = $('.babel-repl-toolbar');
     this.$textareaWrapper = $('.dropdown-menu-container');
-
-    document.getElementById('babel-repl-version').innerHTML = babel.version;
   }
 
   REPL.prototype.clearOutput = function () {
@@ -337,10 +339,16 @@
     var code = this.getSource();
     this.clearOutput();
 
+    if (!hasBabelLoaded()) {
+      this.setOutput('// Babel is loading, please wait...');
+      return;
+    }
+
     var presets = options.presets.split(',');
 
     try {
-      transformed = babel.transform(code, {
+      document.getElementById('babel-repl-version').innerHTML = Babel.version;
+      transformed = Babel.transform(code, {
         presets: presets.filter(Boolean),
         filename: 'repl',
         babelrc: false,
@@ -495,7 +503,76 @@
     };
   }
 
+  var loadingScripts = {};
+  /**
+   * Checks if a script (such as Babel-standalone or Babili-standalone) has been
+   * loaded. If not, kicks off a load (if it hasn't already started) and returns
+   * false. Returns true if the script is ready to use.
+   */
+  function lazyLoadScript(name, checkFn, url) {
+    if (checkFn()) {
+      return true;
+    }
+    if (loadingScripts[name]) {
+      return false;
+    }
+
+    if (url) {
+      // Babili-standalone is exported as a UMD script, and thus hits the CommonJS
+      // error ("is not supported in the browser..."), temporarily disable it
+      // while loading.
+      enableCommonJSError = false;
+
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = url;
+      script.onload = function() {
+        enableCommonJSError = true;
+        onSourceChange();
+      };
+      document.head.appendChild(script);
+      loadingScripts[name] = true;
+    }
+    return false;
+  }
+
+  function hasBabelLoaded() {
+    return lazyLoadScript('Babel', () => !!window.Babel);
+  }
+
+  function loadBabel(options) {
+    function doLoad(url) {
+      lazyLoadScript('Babel', () => !!window.Babel, url);
+    }
+
+    if (options.circleci_build) {
+      // Loading a build from CircleCI (eg. for a pull request). We need to
+      // first call CircleCI's API to get the URL to the artifact.
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', buildArtifactURL.replace('{build}', options.circleci_build), true);
+      xhr.onload = function() {
+        var response = JSON.parse(xhr.responseText);
+        if (response.message) {
+          alert('Could not load Babel build #' + options.circleci_build + ': ' + response.message);
+          return;
+        }
+        var artifacts = response.filter(x => /babel-standalone\/babel.js$/.test(x.path));
+        if (!artifacts) {
+          alert('Could not find valid babel-standalone artifact in build #' + options.circleci_build);
+          return;
+        }
+        doLoad(artifacts[0].url);
+      };
+      xhr.onerror = function() {
+        alert('Could not load Babel build #' + options.circleci_build + ' :(');
+      }
+      xhr.send();
+    } else {
+      doLoad('https://unpkg.com/babel-standalone@next/babel.js');
+    }
+  }
+
   initResizable('.babel-repl-resize');
   onPresetChange();
   onToolbarChange();
-}(Babel, $, _, ace, LZString, window));
+}($, _, ace, LZString, window));
