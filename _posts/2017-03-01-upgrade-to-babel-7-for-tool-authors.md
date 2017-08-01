@@ -128,3 +128,9 @@ babylon.parse(code, {
 See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
 
 > Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+
+## `babel-traverse`
+
+`getFunctionParent` will no longer return `Program`, please use `getProgramParent` instead [babel/babel#5923](https://github.com/babel/babel/pull/5923).
+
