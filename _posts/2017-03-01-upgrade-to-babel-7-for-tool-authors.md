@@ -134,3 +134,11 @@ See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#ap
 
 `getFunctionParent` will no longer return `Program`, please use `getProgramParent` instead [babel/babel#5923](https://github.com/babel/babel/pull/5923). ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
+It doesn't make sense that a function named `getFunctionParent` also returns the Program, so that was removed.
+
+To get the equivalent behavior, you'll need to make a change like 
+
+```diff
+- path.scope.getFunctionParent()
++ path.scope.getFunctionParent() || path.scope.getProgramParent()
+```
