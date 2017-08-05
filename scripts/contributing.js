@@ -5,6 +5,8 @@
     var githubHTMLBeginnerFriendlyURL;
     var githubHTMLHelpWantedURL;
 
+    var ISSUES_LIMIT = 5;
+
     switch(window.location.pathname){
         case "/contributing/babel":
             githubIssuesEndpoint = 'https://api.github.com/repos/babel/babel/issues';
@@ -36,7 +38,8 @@
                 labels: 'beginner-friendly'
             },
             success: function(data){
-                for(var i = 0; i < data.length; i++){
+                var length = Math.min(data.length, ISSUES_LIMIT);
+                for(var i = 0; i < length; i++){
                     $('.open-issues-section--beginner .issues').append('<li class="issue"><a href="' + data[i].html_url + '"><span class="issue__number">#' + data[i].number +'</span><span class="issue__title">' + data[i].title + '</span></a></li>');
                 }
             },
@@ -52,7 +55,8 @@
                 labels: 'help wanted'
             },
             success: function(data){
-                for(var i = 0; i < data.length; i++){
+                var length = Math.min(data.length, ISSUES_LIMIT);
+                for(var i = 0; i < length; i++){
                     $('.open-issues-section--help-wanted .issues').append('<li class="issue"><a href="' + data[i].html_url + '"><span class="issue__number">#' + data[i].number +'</span><span class="issue__title">' + data[i].title + '</span></a></li>');
                 }
             },
