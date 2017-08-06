@@ -10,8 +10,8 @@ third_party_js:
 
 <div class="hero">
   <div class="hero__content">
-    <h1>Babel is a JavaScript compiler.</h1>
-    <p>Use next generation JavaScript, today.</p>
+    <h1>Babel is AWESOME.</h1>
+    <p>Take me to flavourtown!</p>
 
     <div class="hero-repl" hidden>
       <div class="hero-repl__editor">
