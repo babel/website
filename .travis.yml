@@ -7,11 +7,8 @@ before_install:
   - nvm install node
   - npm install
 
-  # Use https (public access) instead of git for git-submodules.
-  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
-  - git submodule update --init --recursive
-
 script:
+  - ./scripts/download-readmes.js
   - npm test && npm run lint && bundle exec rake
 
 git:
