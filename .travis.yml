@@ -7,8 +7,11 @@ before_install:
   - nvm install node
   - npm install
 
+  # Use https (public access) instead of git for git-submodules.
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
+
 script:
-  - ./scripts/download-readmes.js
   - npm test && npm run lint && bundle exec rake
 
 git:
@@ -17,7 +20,5 @@ git:
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-    - secure: TeVa/TXSlr2m6XqifSMtWMBjuAcbeUuZLpDpFp1JHoOmnA+oaOJ8/f2bz2JrzWw3Cz1Di1DkE1OLNA0+jO83eV4SUxhD4kXCUogH9vhQ4741tHyCVXZnGiPygoluOJFBIiz6juRQFyGN8vklQW+YHQzFS0Co/Qbyu1IJlK3e4rI=
-    - secure: D5xbAVxyp1H3Cr63Yb0pe1CeczMOP7w5TNvXlVEqAM2G7QI47PMwJIv1KYj51TzJwuK0qyfn2AGFFbIgy3HyODefdzyBA6ybDIVlKi1yrtqTlijjDINdYblZjIDgPARPlO+qjG/2453SEXMIc5hAr6iSxv+s2QqoDggGnddgViQ=
 
 sudo: false
