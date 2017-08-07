@@ -1,13 +1,11 @@
 {
   "name": "babel-repl",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
-  "homepage": "https://bvaughn.github.io/babel-repl",
   "dependencies": {
     "codemirror": "^5.28.0",
     "flow-bin": "^0.52.0",
     "glamor": "^2.20.39",
-    "husky": "^0.14.3",
     "lodash.camelcase": "^4.3.0",
     "lz-string": "^1.4.4",
     "prettier": "^1.5.3",
@@ -24,7 +22,5 @@
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   },
-  "devDependencies": {
-    "gh-pages": "^1.0.0"
-  }
+  "devDependencies": {}
 }
