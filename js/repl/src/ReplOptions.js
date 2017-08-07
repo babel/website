@@ -37,7 +37,6 @@ export default class ReplOptions extends Component {
       presetState,
       toggleSetting
     } = this.props;
-    console.log('<ReplOptions> lineWrap:', lineWrap, typeof lineWrap);
 
     return (
       <div className={`${styles.options} ${className}`}>

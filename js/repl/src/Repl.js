@@ -39,12 +39,6 @@ export default class Repl extends React.Component {
     super(props, context);
 
     const persistedState = this._loadState();
-    console.log(
-      'persistedState.lineWrap:',
-      persistedState.lineWrap,
-      typeof persistedState.lineWrap,
-      persistedState
-    );
 
     const defaultPlugins = {
       'babili-standalone': persistedState.babili,
@@ -74,12 +68,6 @@ export default class Repl extends React.Component {
       ...state,
       ...this._compile(persistedState.code, state)
     };
-    console.log(
-      'state.lineWrap:',
-      this.state.lineWrap,
-      typeof this.state.lineWrap,
-      persistedState
-    );
 
     // Load any plug-ins enabled by query params
     this._checkForUnloadedPlugins();

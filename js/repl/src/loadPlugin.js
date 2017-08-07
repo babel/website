@@ -17,12 +17,6 @@ export default function loadPlugin(state: PluginState, callback: Callback) {
   const base = config.baseUrl || 'https://bundle.run';
   const url = `${base}/${config.package}@${config.version}`;
 
-  const onError = event => {
-    console.log('window.error', event);
-  };
-
-  window.addEventListener('error', onError);
-
   const script = document.createElement('script');
   script.async = true;
   script.src = url;
