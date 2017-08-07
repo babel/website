@@ -90,13 +90,11 @@ export default class CodeMirror extends React.Component {
   }
 
   render() {
-    const { autoFocus, value } = this.props;
-
     return (
       <textarea
         autoComplete="off"
-        autoFocus={autoFocus}
-        defaultValue={value}
+        autoFocus={this.props.autoFocus}
+        defaultValue={this.props.value}
         ref={this._setTextAreaRef}
       />
     );

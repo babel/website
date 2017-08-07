@@ -74,44 +74,35 @@ export default class Repl extends React.Component {
   }
 
   render() {
-    const {
-      code,
-      compiled,
-      compileError,
-      evaluate,
-      evalError,
-      lineWrap,
-      plugins,
-      presets
-    } = this.state;
+    const state = this.state;
 
     const options = {
-      lineWrapping: lineWrap
+      lineWrapping: state.lineWrap
     };
 
     return (
       <div className={styles.repl}>
         <ReplOptions
           className={styles.optionsColumn}
-          evaluate={evaluate}
-          lineWrap={lineWrap}
-          pluginState={plugins}
-          presetState={presets}
+          evaluate={state.evaluate}
+          lineWrap={state.lineWrap}
+          pluginState={state.plugins}
+          presetState={state.presets}
           toggleSetting={this._toggleSetting}
         />
 
         <div className={styles.panels}>
           <CodeMirrorPanel
             className={styles.codeMirrorPanel}
-            code={code}
-            error={compileError}
+            code={state.code}
+            error={state.compileError}
             onChange={this._updateCode}
             options={options}
           />
           <CodeMirrorPanel
             className={styles.codeMirrorPanel}
-            code={compiled}
-            error={evalError}
+            code={state.compiled}
+            error={state.evalError}
             options={options}
           />
         </div>
@@ -150,12 +141,10 @@ export default class Repl extends React.Component {
   }
 
   _compile = (code: string, state: State) => {
-    const { evaluate, plugins } = state;
-
     return compile(code, {
-      evaluate: evaluate,
+      evaluate: state.evaluate,
       presets: this._presetsToArray(state),
-      prettify: plugins.prettier.isEnabled
+      prettify: state.plugins.prettier.isEnabled
     });
   };
 
@@ -213,10 +202,8 @@ export default class Repl extends React.Component {
         }
       },
       () => {
-        const { code } = this.state;
-
         this._checkForUnloadedPlugins();
-        this._updateCode(code);
+        this._updateCode(this.state.code);
       }
     );
   };
@@ -226,7 +213,7 @@ export default class Repl extends React.Component {
   };
 
   _persistState = () => {
-    const { code, evaluate, lineWrap, plugins } = this.state;
+    const plugins = this.state.plugins;
 
     const presetsArray = this._presetsToArray();
 
@@ -240,10 +227,10 @@ export default class Repl extends React.Component {
       babili: plugins['babili-standalone'].isEnabled,
       browsers: '', // TODO
       builtIns: false, // TODO
-      code,
+      code: this.state.code,
       debug: false, // TODO
-      evaluate,
-      lineWrap,
+      evaluate: this.state.evaluate,
+      lineWrap: this.state.lineWrap,
       presets: presetsArray.join(','),
       prettier: plugins.prettier.isEnabled,
       targets: '' // TODO
