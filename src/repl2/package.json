@@ -8,7 +8,6 @@
     "flow-bin": "^0.52.0",
     "glamor": "^2.20.39",
     "husky": "^0.14.3",
-    "lint-staged": "^4.0.2",
     "lodash.camelcase": "^4.3.0",
     "lz-string": "^1.4.4",
     "prettier": "^1.5.3",
@@ -18,20 +17,12 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "flow": "flow",
-    "precommit": "lint-staged",
-    "predeploy": "npm run build",
+    "postbuild": "cp -r ./build ../../_site/repl2",
     "prettier": "prettier --single-quote --write 'src/**/*.{js,jsx}'",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
   },
   "devDependencies": {
     "gh-pages": "^1.0.0"
