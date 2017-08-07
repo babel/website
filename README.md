@@ -24,13 +24,9 @@ $ cd babel.github.io
 
 ### Contributing to the website
 
-To keep documentation in sync across all of Babel's packages and plugins, the majority of the website is sourced directly from the README files located inside their respective repositories ([Babel's packages](https://github.com/babel/babel/tree/master/packages), [Babili's packages](https://github.com/babel/babili/tree/master/packages), ...).
+To keep documentation in sync across all of Babel's packages and plugins, the documentation for the plugins and presets is sourced directly from the README files located inside their respective repositories ([Babel's packages](https://github.com/babel/babel/tree/master/packages), [Babili's packages](https://github.com/babel/babili/tree/master/packages), ...).
 
-If you want to create a new page, you need to consider the following.
-
-The `package` configuration in the header needs to correspond to your package name and `package_source` to its source repository. See [packages.yml](_data/packages.yml) for the current supported sources.
-
-Default value for `package_source` is `babel`.
+For pages that are sourced from README files, the `package` field in the header needs to correspond to your package name. This package name also needs to be added to `scripts/download-readmes.js`.
 
 ```yaml
 layout: docs
@@ -40,7 +36,6 @@ permalink: /docs/usage/babel-register/
 redirect_from:
  - /docs/usage/require/
 package: babel-register
-package_source: babel
 ```
 
 #### Publishing README
@@ -51,16 +46,7 @@ package_source: babel
 
 For example [babel.github.io/docs/plugins/preset-stage-0.md](/docs/plugins/preset-stage-0.md) which then points to [babel/packages/babel-preset-stage-0/README.md](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-0/README.md)
 
-If you encounter an `Liquid Exception: Included file '_includes/.../packages/.../README.md' not found`, please double check your `package` and `package_source` configuration.
-
-#### Manually updating submodules
-
-```sh
-git submodule foreach git pull origin master
-```
-
-You can safely push them once updated.
-Note, the website will fetch all latest submodule versions during deployment.
+If you encounter an `Liquid Exception: Included file '_includes/.../packages/.../README.md' not found`, please double check your `package` configuration, and ensure you have ran `scripts/download-readmes.js` (`make build` will run this for you).
 
 #### Linting markdown
 

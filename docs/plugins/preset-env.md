@@ -8,7 +8,7 @@ package_source: babel-preset-env
 ---
 
 {% capture readme %}
-  {% include babel-preset-env/README.md %}
+  {% include readmes/babel-preset-env.md %}
 {% endcapture %}
 
 {{ readme
