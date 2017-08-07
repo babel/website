@@ -13,8 +13,8 @@ const compress = (string: string) =>
 const decompress = (string: string) =>
   LZString.decompressFromBase64(
     string
-      .replace(/\-/g, '+') // Convert '-' to '+'
-      .replace(/\_/g, '/') // Convert '_' to '/'
+      .replace(/-/g, '+') // Convert '-' to '+'
+      .replace(/_/g, '/') // Convert '_' to '/'
   );
 
 const encode = (value: any) => window.encodeURIComponent(value);
@@ -37,7 +37,7 @@ const mergeDefinedKeys = (raw: Object, keys: Array<string>, target: Object) => {
 
 const parseQuery = () => {
   const raw = document.location.hash
-    .replace(/^\#\?/, '')
+    .replace(/^#\?/, '')
     .split('&')
     .reduce((reduced: Object, pair: string) => {
       const pieces = pair.split('=');

@@ -162,7 +162,7 @@ export default class Repl extends React.Component {
   }
 
   _compile = (code: string, state: State) => {
-    const { evaluate, plugins, presets } = state;
+    const { evaluate, plugins } = state;
 
     return compile(code, {
       evaluate: evaluate,
