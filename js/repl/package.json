@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "codemirror": "^5.28.0",
     "flow-bin": "^0.52.0",
     "glamor": "^2.20.39",
     "lodash.camelcase": "^4.3.0",

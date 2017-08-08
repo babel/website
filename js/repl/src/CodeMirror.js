@@ -3,8 +3,6 @@
 import { css } from 'glamor';
 import React from 'react';
 
-import 'codemirror/lib/codemirror.css';
-
 const DEFAULT_CODE_MIRROR_OPTIONS = {
   autoCloseBrackets: true,
   keyMap: 'sublime',
