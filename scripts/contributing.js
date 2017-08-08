@@ -1,9 +1,11 @@
-/* global jQuery*/
+/* global jQuery */
 
 (function($){
     var githubIssuesEndpoint;
     var githubHTMLBeginnerFriendlyURL;
     var githubHTMLHelpWantedURL;
+
+    var ISSUES_LIMIT = 5;
 
     switch(window.location.pathname){
         case "/contributing/babel":
@@ -36,9 +38,11 @@
                 labels: 'beginner-friendly'
             },
             success: function(data){
-                for(var i = 0; i < data.length; i++){
-                    $('.open-issues-section--beginner .issues').append('<li class="issue"><a href="' + data[i].html_url + '"><span class="issue__number">#' + data[i].number +'</span><span class="issue__title">' + data[i].title + '</span></a></li>');
-                }
+                var limitedData = data.slice(0, ISSUES_LIMIT);
+
+                limitedData.forEach(function(issue) {
+                    $('.open-issues-section--beginner .issues').append(buildIssueRow(issue));
+                });
             },
             error : function(xhr, status, error){
                 $('.open-issues-section--beginner .issues').append('<li><a href="' + githubHTMLBeginnerFriendlyURL + '"><span>Failed to load issues. View Beginner-Friendly issues on Github.</span></a></li>');
@@ -52,9 +56,17 @@
                 labels: 'help wanted'
             },
             success: function(data){
-                for(var i = 0; i < data.length; i++){
-                    $('.open-issues-section--help-wanted .issues').append('<li class="issue"><a href="' + data[i].html_url + '"><span class="issue__number">#' + data[i].number +'</span><span class="issue__title">' + data[i].title + '</span></a></li>');
-                }
+                var filteredData = data.filter(function(issue) {
+                    return !_.find(issue.labels, function(label) {
+                        return label.name === "beginner-friendly";
+                    });
+                });
+
+                var limitedData = filteredData.slice(0, ISSUES_LIMIT);
+
+                limitedData.forEach(function(issue) {
+                    $('.open-issues-section--help-wanted .issues').append(buildIssueRow(issue));
+                });
             },
             error: function(xhr, status, error){
                 $('.open-issues-section--help-wanted .issues').append('<li><a href="' + githubHTMLHelpWantedURL + '"><span>Failed to load issues. View Help-Wanted issues on Github.</span></a></li>');
@@ -62,5 +74,13 @@
             }
         }
     );
+
+    function buildIssueRow(issue) {        
+        var a = $('<a/>').attr('href', issue.html_url);
+        $('<span/>').addClass('issue__number').text('#' + issue.number).appendTo(a);
+        $('<span/>').addClass('issue__title').text(issue.title).appendTo(a);
+
+        return $('<li/>').addClass('issue').append(a);
+    }
 
 })(jQuery);
