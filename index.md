@@ -10,8 +10,8 @@ third_party_js:
 
 <div class="hero">
   <div class="hero__content">
-    <h1>Take me to flavortown</h1>
-    <p>Yum yum yum.</p>
+    <h1>Take me to flavortown!!!</h1>
+    <p>Yum yum yum. - Guy Fieri</p>
 
     <div class="hero-repl" hidden>
       <div class="hero-repl__editor">
