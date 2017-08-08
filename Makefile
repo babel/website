@@ -1,5 +1,11 @@
 .PHONY: build serve
 
+bootstrap:
+	bundle install
+	npm install
+	make build
+	npm start
+
 build:
 	if [ ! -d ./node_modules ]; \
 	then npm install; \

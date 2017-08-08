@@ -10,17 +10,17 @@ Feel free to suggest changes to our docs, or add new content!
 
 ### Setup
 
-```bash
-$ git clone git@github.com:babel/babel.github.io.git
-$ cd babel.github.io
-```
-
 * [Please install ruby](https://www.ruby-lang.org/en/documentation/installation/), if not already installed.
   * Use `which ruby` or `ruby --version`, to verify if ruby is installed.
   * Make sure `bundler` is installed by running `gem install bundler`
-* Install `jekyll` dependencies by running `bundle install`
-* `npm i` to install this package's dependencies
-* To start the web server on your machine, check out this repo and run `npm start`.
+
+```bash
+$ git clone git@github.com:babel/babel.github.io.git
+$ cd babel.github.io
+$ make bootstrap
+```
+
+* Just run `npm start` next time.
 
 ### Contributing to the website
 
