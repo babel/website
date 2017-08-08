@@ -141,9 +141,16 @@ export default class Repl extends React.Component {
   }
 
   _compile = (code: string, state: State) => {
+    const presetsArray = this._presetsToArray(state);
+
+    const babili = state.plugins['babili-standalone'];
+    if (babili.isEnabled && babili.isLoaded) {
+      presetsArray.push('babili');
+    }
+
     return compile(code, {
       evaluate: state.evaluate,
-      presets: this._presetsToArray(state),
+      presets: presetsArray,
       prettify: state.plugins.prettier.isEnabled
     });
   };
