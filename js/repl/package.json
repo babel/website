@@ -8,8 +8,8 @@
     "lodash.camelcase": "^4.3.0",
     "lz-string": "^1.4.4",
     "prettier": "^1.5.3",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.0.0-beta.3",
+    "react-dom": "^16.0.0-beta.3",
     "react-scripts": "1.0.10"
   },
   "scripts": {
