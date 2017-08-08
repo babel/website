@@ -2,9 +2,10 @@
 
 export type PluginConfig = {
   baseUrl?: string,
+  isPreLoaded?: boolean,
   label: string,
   package: string,
-  version: string
+  version?: string
 };
 
 export type PluginConfigs = Array<PluginConfig>;

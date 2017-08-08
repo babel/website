@@ -27,47 +27,47 @@ const presetPluginConfigs: Array<PluginConfig> = [
   {
     label: 'es2015',
     package: 'babel-preset-es2015',
-    version: '6'
+    isPreLoaded: true
   },
   {
     label: 'es2015-loose',
     package: 'babel-preset-es2015-loose',
-    version: '7'
+    isPreLoaded: true
   },
   {
     label: 'es2016',
     package: 'babel-preset-es2016',
-    version: '6'
+    isPreLoaded: true
   },
   {
     label: 'es2017',
     package: 'babel-preset-es2017',
-    version: '6'
+    isPreLoaded: true
   },
   {
     label: 'react',
     package: 'babel-preset-react',
-    version: '6'
+    isPreLoaded: true
   },
   {
     label: 'stage-0',
     package: 'babel-preset-stage-0',
-    version: '6'
+    isPreLoaded: true
   },
   {
     label: 'stage-1',
     package: 'babel-preset-stage-1',
-    version: '6'
+    isPreLoaded: true
   },
   {
     label: 'stage-2',
     package: 'babel-preset-stage-2',
-    version: '6'
+    isPreLoaded: true
   },
   {
     label: 'stage-3',
     package: 'babel-preset-stage-3',
-    version: '6'
+    isPreLoaded: true
   }
 ];
 

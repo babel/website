@@ -15,7 +15,7 @@ export default function loadPlugin(state: PluginState, callback: Callback) {
 
   const { config } = state;
   const base = config.baseUrl || 'https://bundle.run';
-  const url = `${base}/${config.package}@${config.version}`;
+  const url = `${base}/${config.package}@${config.version || ''}`;
 
   const script = document.createElement('script');
   script.async = true;

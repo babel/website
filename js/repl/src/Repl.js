@@ -60,8 +60,8 @@ export default class Repl extends React.Component {
       evalError: null,
       evaluate: persistedState.evaluate,
       lineWrap: persistedState.lineWrap,
-      plugins: configToState(pluginConfigs, false, defaultPlugins),
-      presets: configToState(presetPluginConfigs, true, defaultPresets)
+      plugins: configToState(pluginConfigs, defaultPlugins),
+      presets: configToState(presetPluginConfigs, defaultPresets)
     };
 
     this.state = {
@@ -245,7 +245,6 @@ type DefaultPlugins = { [name: string]: boolean };
 
 const configToState = (
   pluginConfigs: PluginConfigs,
-  arePreLoaded: boolean,
   defaults: DefaultPlugins = {}
 ): PluginStateMap =>
   pluginConfigs.reduce((reduced, config) => {
@@ -253,7 +252,7 @@ const configToState = (
       config,
       didError: false,
       isEnabled: defaults[config.package] === true,
-      isLoaded: arePreLoaded,
+      isLoaded: config.isPreLoaded === true,
       isLoading: false,
       plugin: null
     };
