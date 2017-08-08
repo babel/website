@@ -38,10 +38,10 @@
                 labels: 'beginner-friendly'
             },
             success: function(data){
-                var limitedData = _.take(data, ISSUES_LIMIT);
+                var limitedData = data.slice(0, ISSUES_LIMIT);
 
-                _.forEach(limitedData, function(issue) {
-                    $('.open-issues-section--beginner .issues').append('<li class="issue"><a href="' + issue.html_url + '"><span class="issue__number">#' + issue.number +'</span><span class="issue__title">' + issue.title + '</span></a></li>');
+                limitedData.forEach(function(issue) {
+                    $('.open-issues-section--beginner .issues').append(buildIssueRow(issue));
                 });
             },
             error : function(xhr, status, error){
@@ -56,16 +56,16 @@
                 labels: 'help wanted'
             },
             success: function(data){
-                var filteredData = _.filter(data, function(issue) {
+                var filteredData = data.filter(function(issue) {
                     return !_.find(issue.labels, function(label) {
                         return label.name === "beginner-friendly";
                     });
                 });
 
-                var limitedData = _.take(filteredData, ISSUES_LIMIT);
+                var limitedData = filteredData.slice(0, ISSUES_LIMIT);
 
-                _.forEach(limitedData, function(issue) {
-                    $('.open-issues-section--help-wanted .issues').append('<li class="issue"><a href="' + issue.html_url + '"><span class="issue__number">#' + issue.number +'</span><span class="issue__title">' + issue.title + '</span></a></li>');
+                limitedData.forEach(function(issue) {
+                    $('.open-issues-section--help-wanted .issues').append(buildIssueRow(issue));
                 });
             },
             error: function(xhr, status, error){
@@ -74,5 +74,13 @@
             }
         }
     );
+
+    function buildIssueRow(issue) {        
+        var a = $('<a/>').attr('href', issue.html_url);
+        $('<span/>').addClass('issue__number').text('#' + issue.number).appendTo(a);
+        $('<span/>').addClass('issue__title').text(issue.title).appendTo(a);
+
+        return $('<li/>').addClass('issue').append(a);
+    }
 
 })(jQuery);
