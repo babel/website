@@ -79,8 +79,10 @@ Look at all the amazing work they've already done!
 
 ---
 
-Thanks to my company, Behance for allowing me to spend some time at work maintaing Babel and doing Summer of Code!
+Thanks to my team (Behance/Adobe) for allowing me to spend some time at work maintaing Babel and doing Summer of Code!
 
-Thanks to all the other helpers/maintainers on Slack and GitHub issues! It can be a lot of work managing all the parts of an open source project, so we are glad to have the extra help!
+Thanks to all the other helpers/maintainers ([Brian](https://github.com/existentialism), [Logan](https://github.com/loganfsmyth), [Diogo](https://github.com/Kovensky), [Sven](https://github.com/xtuc), [Justin](https://github.com/jridgewell), [Boopathi](https://github.com/boopathi)),  on Slack and GitHub issues! It can be a lot of work managing all the parts of an open source project, so we are glad to have the extra help!
 
 Huge shoutout to many [TC39](https://github.com/tc39) members like [@littledan](https://twitter.com/littledan), [@bakkoting](https://twitter.com/bakkoting), [@ljharb](https://twitter.com/ljharb) for helping review PRs, better inform/work on [babel/proposals](https://github.com/babel/proposals), and discuss implementation/spec details in our Slack rooms! I know it's a lot of work 🙂
+
+And thanks to [Brian](https://github.com/existentialism) again for help with editing!
