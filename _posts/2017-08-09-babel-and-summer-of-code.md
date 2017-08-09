@@ -62,7 +62,7 @@ They're currently working on some codemods! Ideally we would have codemods to co
 
 In the meantime, they've already done all the necessary work to implement the new [optional catch binding](https://github.com/tc39/proposal-optional-catch-binding) proposal as a plugin! It was really cool to see that we had already released the Babel plugin before the TC39 meeting a few weeks ago! You can follow this [issue](https://github.com/babel/proposals/issues/7) for more information.
 
-### Why?
+## Why?
 
 - Participating in these programs means more developer exposure to participating in open source!
 - Helps us as a project onboard and mentor new contributors in a more formal, structured way. It helps us identify any issues with our code setup, and more importantly with our process (multiple timezones, different backgrounds) and culture.
