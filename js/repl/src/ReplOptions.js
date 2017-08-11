@@ -11,10 +11,11 @@ type ToggleSetting = (name: string, isEnabled: boolean) => void;
 
 type Props = {
   className: string,
-  evaluate: boolean,
   lineWrap: boolean,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
+  runtimePolyfillConfig: PluginConfig,
+  runtimePolyfillState: PluginState,
   toggleSetting: ToggleSetting
 };
 
@@ -31,24 +32,22 @@ export default class ReplOptions extends Component {
   render() {
     const {
       className,
-      evaluate,
       lineWrap,
       pluginState,
       presetState,
+      runtimePolyfillConfig,
+      runtimePolyfillState,
       toggleSetting
     } = this.props;
 
     return (
       <div className={`${styles.options} ${className}`}>
-        <label className={styles.label}>
-          <input
-            checked={evaluate}
-            className={styles.input}
-            onChange={this._onEvaluateChange}
-            type="checkbox"
-          />{' '}
-          Evaluate
-        </label>
+        <PluginToggle
+          config={runtimePolyfillConfig}
+          label="Evaluate"
+          state={runtimePolyfillState}
+          toggleSetting={toggleSetting}
+        />
         <strong className={styles.strong}>Presets</strong>
         {presetPluginConfigs.map(config =>
           <PluginToggle
@@ -80,10 +79,6 @@ export default class ReplOptions extends Component {
     );
   }
 
-  _onEvaluateChange = (event: SyntheticInputEvent) => {
-    this.props.toggleSetting('evaluate', event.target.checked);
-  };
-
   _onLineWrappingChange = (event: SyntheticInputEvent) => {
     this.props.toggleSetting('lineWrap', event.target.checked);
   };
@@ -91,11 +86,17 @@ export default class ReplOptions extends Component {
 
 type PluginToggleProps = {
   config: PluginConfig,
+  label?: string,
   state: PluginState,
   toggleSetting: ToggleSetting
 };
 
-const PluginToggle = ({ config, state, toggleSetting }: PluginToggleProps) =>
+const PluginToggle = ({
+  config,
+  label,
+  state,
+  toggleSetting
+}: PluginToggleProps) =>
   <label key={config.package} className={styles.label}>
     <input
       checked={state.isEnabled && !state.didError}
@@ -105,7 +106,7 @@ const PluginToggle = ({ config, state, toggleSetting }: PluginToggleProps) =>
         toggleSetting(config.package, event.target.checked)}
       type="checkbox"
     />
-    {state.isLoading ? <LoadingAnimation /> : config.label}
+    {state.isLoading ? <LoadingAnimation /> : label || config.label}
   </label>;
 
 const LoadingAnimation = () =>

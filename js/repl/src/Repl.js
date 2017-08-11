@@ -8,10 +8,21 @@ import StorageService from './StorageService';
 import UriUtils from './UriUtils';
 import compile from './compile';
 import loadPlugin from './loadPlugin';
-import { pluginConfigs, presetPluginConfigs } from './PluginConfig';
+import loadScript from './loadScript';
+import {
+  pluginConfigs,
+  presetPluginConfigs,
+  runtimePolyfillConfig
+} from './PluginConfig';
 import { media } from './styles';
 
-import type { PersistedState, PluginConfigs, PluginStateMap } from './types';
+import type {
+  PersistedState,
+  PluginConfig,
+  PluginConfigs,
+  PluginState,
+  PluginStateMap
+} from './types';
 
 type Props = {};
 type State = {
@@ -19,10 +30,10 @@ type State = {
   compiled: ?string,
   compileError: ?Error,
   evalError: ?Error,
-  evaluate: boolean,
   lineWrap: boolean,
   plugins: PluginStateMap,
-  presets: PluginStateMap
+  presets: PluginStateMap,
+  runtimePolyfillState: PluginState
 };
 
 export default class Repl extends React.Component {
@@ -58,10 +69,13 @@ export default class Repl extends React.Component {
       compiled: null,
       compileError: null,
       evalError: null,
-      evaluate: persistedState.evaluate,
       lineWrap: persistedState.lineWrap,
-      plugins: configToState(pluginConfigs, defaultPlugins),
-      presets: configToState(presetPluginConfigs, defaultPresets)
+      plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
+      presets: configArrayToStateMap(presetPluginConfigs, defaultPresets),
+      runtimePolyfillState: configToState(
+        runtimePolyfillConfig,
+        persistedState.evaluate
+      )
     };
 
     this.state = {
@@ -84,10 +98,11 @@ export default class Repl extends React.Component {
       <div className={styles.repl}>
         <ReplOptions
           className={styles.optionsColumn}
-          evaluate={state.evaluate}
           lineWrap={state.lineWrap}
           pluginState={state.plugins}
           presetState={state.presets}
+          runtimePolyfillConfig={runtimePolyfillConfig}
+          runtimePolyfillState={state.runtimePolyfillState}
           toggleSetting={this._toggleSetting}
         />
 
@@ -111,10 +126,10 @@ export default class Repl extends React.Component {
   }
 
   _checkForUnloadedPlugins() {
-    const { plugins } = this.state;
+    const { plugins, runtimePolyfillState } = this.state;
 
-    // Assume all default presets are baked into babel-standalone
-    // We really only need to worry about plugins
+    // Assume all default presets are baked into babel-standalone.
+    // We really only need to worry about plugins.
     for (const key in plugins) {
       const plugin = plugins[key];
 
@@ -138,6 +153,27 @@ export default class Repl extends React.Component {
         });
       }
     }
+
+    // Babel (runtime) polyfill is large;
+    // It's only needed if we're actually executing the compiled code.
+    // Defer loading it unless "evaluate" is enabled.
+    if (runtimePolyfillState.isEnabled && !runtimePolyfillState.isLoaded) {
+      loadPlugin(runtimePolyfillState, () => {
+        let evalError = null;
+
+        // No need to recompile at this point;
+        // Just evaluate the most recently compiled code.
+        try {
+          // eslint-disable-next-line
+          eval(this.state.compiled);
+        } catch (error) {
+          evalError = error;
+        }
+
+        // Re-render (even if no error) to update the label loading-state.
+        this.setState({ evalError });
+      });
+    }
   }
 
   _compile = (code: string, state: State) => {
@@ -149,7 +185,9 @@ export default class Repl extends React.Component {
     }
 
     return compile(code, {
-      evaluate: state.evaluate,
+      evaluate:
+        state.runtimePolyfillState.isEnabled &&
+        state.runtimePolyfillState.isLoaded,
       presets: presetsArray,
       prettify: state.plugins.prettier.isEnabled
     });
@@ -188,9 +226,15 @@ export default class Repl extends React.Component {
   _toggleSetting = (name: string, isEnabled: boolean) => {
     this.setState(
       state => {
-        const { plugins, presets } = state;
+        const { plugins, presets, runtimePolyfillState } = state;
 
-        if (state.hasOwnProperty(name)) {
+        if (name === 'babel-polyfill') {
+          runtimePolyfillState.isEnabled = isEnabled;
+
+          return {
+            runtimePolyfillState
+          };
+        } else if (state.hasOwnProperty(name)) {
           return {
             [name]: isEnabled
           };
@@ -236,7 +280,7 @@ export default class Repl extends React.Component {
       builtIns: false, // TODO
       code: this.state.code,
       debug: false, // TODO
-      evaluate: this.state.evaluate,
+      evaluate: this.state.runtimePolyfillState.isEnabled,
       lineWrap: this.state.lineWrap,
       presets: presetsArray.join(','),
       prettier: plugins.prettier.isEnabled,
@@ -250,22 +294,29 @@ export default class Repl extends React.Component {
 
 type DefaultPlugins = { [name: string]: boolean };
 
-const configToState = (
+const configArrayToStateMap = (
   pluginConfigs: PluginConfigs,
   defaults: DefaultPlugins = {}
 ): PluginStateMap =>
   pluginConfigs.reduce((reduced, config) => {
-    reduced[config.package] = {
+    reduced[config.package] = configToState(
       config,
-      didError: false,
-      isEnabled: defaults[config.package] === true,
-      isLoaded: config.isPreLoaded === true,
-      isLoading: false,
-      plugin: null
-    };
-
+      defaults[config.package] === true
+    );
     return reduced;
   }, {});
+
+const configToState = (
+  config: PluginConfig,
+  isEnabled: boolean = false
+): PluginState => ({
+  config,
+  didError: false,
+  isEnabled,
+  isLoaded: config.isPreLoaded === true,
+  isLoading: false,
+  plugin: null
+});
 
 const styles = {
   codeMirrorPanel: css({

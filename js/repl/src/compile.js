@@ -27,7 +27,8 @@ export default function compile(code: string, config: CompileConfig): Return {
 
   try {
     compiled = window.Babel.transform(code, {
-      presets: config.presets
+      presets: config.presets,
+      plugins: ['transform-regenerator']
     }).code;
 
     if (config.prettify && window.prettier !== undefined) {

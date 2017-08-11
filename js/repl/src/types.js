@@ -1,5 +1,7 @@
 // @flow
 
+export type LoadScriptCallback = (success: boolean) => void;
+
 export type PluginConfig = {
   baseUrl?: string,
   isPreLoaded?: boolean,

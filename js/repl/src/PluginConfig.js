@@ -2,6 +2,12 @@
 
 import type { PluginConfig } from './types';
 
+const runtimePolyfillConfig: PluginConfig = {
+  label: 'Runtime Poylfill',
+  package: 'babel-polyfill',
+  version: '6'
+};
+
 const pluginConfigs: Array<PluginConfig> = [
   {
     baseUrl: 'https://unpkg.com',
@@ -71,4 +77,4 @@ const presetPluginConfigs: Array<PluginConfig> = [
   }
 ];
 
-export { pluginConfigs, presetPluginConfigs };
+export { pluginConfigs, presetPluginConfigs, runtimePolyfillConfig };
