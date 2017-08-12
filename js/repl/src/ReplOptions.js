@@ -73,18 +73,12 @@ class ExpandedContainer extends Component {
       <div className={styles.expandedContainer}>
         <div className={styles.section}>
           <div className={styles.sectionHeader}>Settings</div>
-          <div className={`${styles.secondaryHeader} ${styles.highlight}`}>
-            Input
-          </div>
           <PluginToggle
             config={runtimePolyfillConfig}
             label="Evaluate"
             state={runtimePolyfillState}
             toggleSetting={toggleSetting}
           />
-          <div className={`${styles.secondaryHeader} ${styles.highlight}`}>
-            Output
-          </div>
           <label className={styles.settingsLabel}>
             <input
               checked={lineWrap}
@@ -391,9 +385,6 @@ const styles = {
     fontWeight: 'bold',
     color: colors.inverseForegroundLight,
     marginBottom: '0.5rem'
-  }),
-  secondaryHeader: css({
-    margin: '1rem 0'
   }),
   settingsLabel: css({
     flex: '0 0 2rem',
