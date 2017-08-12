@@ -8,7 +8,6 @@ import StorageService from './StorageService';
 import UriUtils from './UriUtils';
 import compile from './compile';
 import loadPlugin from './loadPlugin';
-import loadScript from './loadScript';
 import {
   pluginConfigs,
   presetPluginConfigs,
@@ -323,18 +322,7 @@ const styles = {
     flex: '0 0 50%'
   }),
   optionsColumn: css({
-    flex: '0 0 auto',
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '0.5rem 0',
-    overflow: 'auto',
-
-    [media.small]: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      width: '100%',
-      padding: 0
-    }
+    flex: '0 0 auto'
   }),
   repl: css({
     height: '100%',
@@ -344,7 +332,7 @@ const styles = {
     justifyContent: 'stretch',
     overflow: 'auto',
 
-    [media.small]: {
+    [media.mediumAndDown]: {
       flexDirection: 'column'
     }
   }),

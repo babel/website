@@ -3,6 +3,7 @@
 import { css } from 'glamor';
 import CodeMirror from './CodeMirror';
 import React from 'react';
+import { colors } from './styles';
 
 type Props = {
   className?: string,
@@ -41,16 +42,16 @@ const styles = {
     display: 'block',
     height: '100%',
     width: '100%',
-    overflow: 'auto',
+    overflow: 'auto'
   }),
   error: css({
     order: 1,
     flex: '0 0 auto',
     maxHeight: '50%',
     overflow: 'auto',
-    backgroundColor: '#fff0f0',
-    borderTop: '1px solid #ffd6d6',
-    color: 'red',
+    backgroundColor: colors.errorBackground,
+    borderTop: `1px solid ${colors.errorBorder}`,
+    color: colors.errorForeground,
     margin: 0,
     padding: '0.25rem 0.5rem',
     whiteSpace: 'pre-wrap'
