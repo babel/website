@@ -41,17 +41,19 @@ const styles = {
     display: 'block',
     height: '100%',
     width: '100%',
-    overflow: 'auto'
+    overflow: 'auto',
   }),
   error: css({
     order: 1,
     flex: '0 0 auto',
     maxHeight: '50%',
     overflow: 'auto',
-    backgroundColor: '#FEE',
-    color: '#A00',
+    backgroundColor: '#fff0f0',
+    borderTop: '1px solid #ffd6d6',
+    color: 'red',
     margin: 0,
-    padding: '0.25rem 0.5rem'
+    padding: '0.25rem 0.5rem',
+    whiteSpace: 'pre-wrap'
   }),
   panel: css({
     height: '100%',
