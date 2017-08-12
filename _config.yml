@@ -19,6 +19,9 @@ exclude:
   - Rakefile
   - package.json
 
+include:
+  - _redirects
+
 # Build settings
 highlighter: rouge
 markdown: kramdown

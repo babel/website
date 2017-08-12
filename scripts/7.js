@@ -1,4 +1,4 @@
-(function(babel, $, _, ace, LZString, window) {
+(function($, _, ace, LZString, window) {
   'use strict';
   var UPDATE_DELAY = 500;
 
@@ -25,6 +25,8 @@
       }
     });
   });
+
+  var loadingScripts = {};
 
   /*
    * Utils for working with the browser's URI (e.g. the query params)
@@ -293,6 +295,7 @@
     var state = this.storage.get('b7ReplState') || {};
     _.assign(state, UriUtils.parseQuery());
     this.options = _.assign(new Options(), state);
+    loadBabel(this.options);
 
     this.input = new Editor('.babel-repl-input .ace_editor').editor;
     this.input.setValue(UriUtils.decode(state.code || ''));
@@ -307,8 +310,6 @@
     this.$consoleReporter = $('.babel-repl-console-output');
     this.$toolBar = $('.babel-repl-toolbar');
     this.$textareaWrapper = $('.dropdown-menu-container');
-
-    document.getElementById('babel-repl-version').innerHTML = babel.version;
   }
 
   REPL.prototype.clearOutput = function () {
@@ -337,10 +338,16 @@
     var code = this.getSource();
     this.clearOutput();
 
+    if (!hasBabelLoaded()) {
+      this.setOutput('// Babel is loading, please wait...');
+      return;
+    }
+
     var presets = options.presets.split(',');
 
     try {
-      transformed = babel.transform(code, {
+      document.getElementById('babel-repl-version').innerHTML = Babel.version;
+      transformed = Babel.transform(code, {
         presets: presets.filter(Boolean),
         filename: 'repl',
         babelrc: false,
@@ -495,7 +502,110 @@
     };
   }
 
+  /**
+   * Checks if a script (such as Babel-standalone or Babili-standalone) has been
+   * loaded. If not, kicks off a load (if it hasn't already started) and returns
+   * false. Returns true if the script is ready to use.
+   */
+  function lazyLoadScript(name, checkFn, url) {
+    if (checkFn()) {
+      return true;
+    }
+    if (loadingScripts[name]) {
+      return false;
+    }
+
+    if (url) {
+      // Babili-standalone is exported as a UMD script, and thus hits the CommonJS
+      // error ("is not supported in the browser..."), temporarily disable it
+      // while loading.
+      enableCommonJSError = false;
+
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = url;
+      script.onload = function() {
+        enableCommonJSError = true;
+        onSourceChange();
+      };
+      script.onerror = function() {
+        alert('Could not load ' + name + ' :(');
+      };
+      document.head.appendChild(script);
+      loadingScripts[name] = true;
+    }
+    return false;
+  }
+
+  function hasBabelLoaded() {
+    return lazyLoadScript('Babel', () => !!window.Babel);
+  }
+
+  function loadBabel(options) {
+    function doLoad(url) {
+      lazyLoadScript('Babel', () => !!window.Babel, url);
+    }
+
+    // See if a CircleCI build number was passed in the path
+    // Prod (with URL rewriting): /repl/build/12345/
+    // Dev: /repl/#?build=12345
+    var build = options.build;
+    var buildFromPath = window.location.pathname.match(/\/build\/([0-9]+)\/?$/);
+    if (buildFromPath) {
+      build = buildFromPath[1];
+    }
+    if (build) {
+      loadBuildArtifacts(options.circleci_repo, build, function(url) {
+        doLoad(url);
+      });
+      return;
+    }
+
+    // See if a released version of Babel was passed
+    // Prod (with URL rewriting): /repl/version/1.2.3/
+    // Dev: /repl/#?version=1.2.3
+    var version = options.version;
+    var versionFromPath = window.location.pathname.match(/\/version\/(.+)\/?$/);
+    if (versionFromPath) {
+      version = versionFromPath[1];
+    }
+
+    // No specific version passed, so just download the latest release.
+    if (!version) {
+      version = 'next'; // This should be changed to "latest" when Babel 7 is stable
+    }
+
+    doLoad('https://unpkg.com/babel-standalone@' + version + '/babel.js');
+  }
+
+  function loadBuildArtifacts(repo, build, cb) {
+    // Loading a build from CircleCI (eg. for a pull request). We need to
+    // first call CircleCI's API to get the URL to the artifact.
+    var buildURL = 'https://circleci.com/api/v1.1/project/github/{repo}/{build}/artifacts'
+      .replace('{repo}', repo || 'babel/babel')
+      .replace('{build}', build);
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', buildURL, true);
+    xhr.onload = function() {
+      var response = JSON.parse(xhr.responseText);
+      if (response.message) {
+        alert('Could not load Babel build #' + build + ': ' + response.message);
+        return;
+      }
+      var artifacts = response.filter(x => /babel-standalone\/babel.js$/.test(x.path));
+      if (!artifacts || artifacts.length === 0) {
+        alert('Could not find valid babel-standalone artifact in build #' + build);
+        return;
+      }
+      cb(artifacts[0].url);
+    };
+    xhr.onerror = function() {
+      alert('Could not load Babel build #' + build + ' :(');
+    }
+    xhr.send();
+  }
+
   initResizable('.babel-repl-resize');
   onPresetChange();
   onToolbarChange();
-}(Babel, $, _, ace, LZString, window));
+}($, _, ace, LZString, window));
