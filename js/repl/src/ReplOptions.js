@@ -2,20 +2,33 @@
 
 import { css } from 'glamor';
 import React, { Component } from 'react';
-import { pluginConfigs, presetPluginConfigs } from './PluginConfig';
+import {
+  envPresetDefaults,
+  pluginConfigs,
+  presetPluginConfigs
+} from './PluginConfig';
 import { colors, media } from './styles';
 
-import type { PluginConfig, PluginState, PluginStateMap } from './types';
+import type {
+  EnvConfig,
+  PluginConfig,
+  PluginState,
+  PluginStateMap
+} from './types';
 
+type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
 
 type Props = {
   className: string,
+  envConfig: EnvConfig,
+  envPresetState: PluginState,
   lineWrap: boolean,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
   runtimePolyfillState: PluginState,
+  toggleEnvPresetSetting: ToggleEnvPresetSetting,
   toggleSetting: ToggleSetting
 };
 
@@ -34,11 +47,14 @@ export default class ReplOptions extends Component {
   render() {
     const {
       className,
+      envConfig,
+      envPresetState,
       lineWrap,
       pluginState,
       presetState,
       runtimePolyfillConfig,
       runtimePolyfillState,
+      toggleEnvPresetSetting,
       toggleSetting
     } = this.props;
 
@@ -88,10 +104,17 @@ export default class ReplOptions extends Component {
         </div>
         <div className={`${styles.section} ${styles.sectionEnv}`}>
           <div className={styles.sectionHeader}>Env Preset</div>
-          {/* TODO ... */}
           <label className={styles.settingsLabel}>
-            <input checked type="checkbox" />
-            Enabled
+            <input
+              checked={envConfig.isEnvPresetEnabled}
+              type="checkbox"
+              onChange={(event: SyntheticInputEvent) =>
+                toggleEnvPresetSetting(
+                  'isEnvPresetEnabled',
+                  event.target.checked
+                )}
+            />
+            {envPresetState.isLoading ? <LoadingAnimation /> : 'Enabled'}
           </label>
           <div className={styles.envPresetColumn}>
             <label
@@ -99,9 +122,16 @@ export default class ReplOptions extends Component {
             >
               Browser
             </label>
-            <textarea className={styles.envPresetInput}>
-              > 2%, ie 11, safari > 9
-            </textarea>
+            <textarea
+              disabled={
+                !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled
+              }
+              className={styles.envPresetInput}
+              onChange={(event: SyntheticInputEvent) =>
+                toggleEnvPresetSetting('browsers', event.target.value)}
+              placeholder={envPresetDefaults.browsers.placeholder}
+              value={envConfig.browsers}
+            />
           </div>
           <label className={styles.envPresetRow}>
             <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
@@ -109,11 +139,35 @@ export default class ReplOptions extends Component {
             </span>
             <input
               className={`${styles.envPresetText} ${styles.envPresetInput}`}
-              type="text"
-              size="4"
-              value="1.4"
+              disabled={
+                !envPresetState.isLoaded ||
+                !envConfig.isEnvPresetEnabled ||
+                !envConfig.isElectronEnabled
+              }
+              type="number"
+              min={envPresetDefaults.electron.min}
+              max={999}
+              step={envPresetDefaults.electron.step}
+              onChange={(event: SyntheticInputEvent) =>
+                toggleEnvPresetSetting(
+                  'electron',
+                  parseFloat(event.target.value)
+                )}
+              value={envConfig.electron}
             />
-            <input className={styles.envPresetCheckbox} type="checkbox" />
+            <input
+              checked={envConfig.isElectronEnabled}
+              className={styles.envPresetCheckbox}
+              disabled={
+                !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled
+              }
+              onChange={(event: SyntheticInputEvent) =>
+                toggleEnvPresetSetting(
+                  'isElectronEnabled',
+                  event.target.checked
+                )}
+              type="checkbox"
+            />
           </label>
           <label className={styles.envPresetRow}>
             <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
@@ -121,13 +175,30 @@ export default class ReplOptions extends Component {
             </span>
             <input
               className={`${styles.envPresetText} ${styles.envPresetInput}`}
-              type="text"
-              size="4"
-              value="3"
+              disabled={
+                !envPresetState.isLoaded ||
+                !envConfig.isEnvPresetEnabled ||
+                !envConfig.isNodeEnabled
+              }
+              type="number"
+              min={envPresetDefaults.node.min}
+              max={999}
+              step={envPresetDefaults.node.step}
+              onChange={(event: SyntheticInputEvent) =>
+                toggleEnvPresetSetting('node', parseFloat(event.target.value))}
+              value={envConfig.node}
             />
-            <input className={styles.envPresetCheckbox} type="checkbox" />
+            <input
+              checked={envConfig.isNodeEnabled}
+              className={styles.envPresetCheckbox}
+              disabled={
+                !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled
+              }
+              onChange={(event: SyntheticInputEvent) =>
+                toggleEnvPresetSetting('isNodeEnabled', event.target.checked)}
+              type="checkbox"
+            />
           </label>
-          {/* TODO ^^^ */}
         </div>
       </div>
     );
@@ -284,7 +355,11 @@ const styles = {
   envPresetInput: css({
     WebkitAppearance: 'none',
     border: 'none',
-    borderRadius: '0.125rem'
+    borderRadius: '0.125rem',
+
+    '&:disabled': {
+      opacity: 0.5
+    }
   }),
   loadingAnimation: css({
     height: '2rem',
