@@ -33,8 +33,8 @@ const runtimePolyfillConfig: PluginConfig = {
 const pluginConfigs: Array<PluginConfig> = [
   {
     baseUrl: 'https://unpkg.com',
-    label: 'Minify (Babili)',
-    package: 'babili-standalone',
+    label: 'Minify',
+    package: 'babili-standalone', // TODO Switch to babel-minify-standalone
     version: '0'
   },
   {

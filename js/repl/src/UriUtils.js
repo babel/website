@@ -65,6 +65,7 @@ const parseQuery = () => {
       'lineWrap',
       'presets',
       'prettier',
+      'showSidebar',
       'targets'
     ],
     state

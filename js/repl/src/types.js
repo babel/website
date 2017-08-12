@@ -52,6 +52,7 @@ export type PersistedState = {
   loose: boolean,
   presets: string,
   prettier: boolean,
+  showSidebar: boolean,
   spec: boolean,
   targets: string
 };

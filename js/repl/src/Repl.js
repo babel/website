@@ -38,6 +38,7 @@ type State = {
   envConfig: EnvConfig,
   envPresetState: PluginState,
   evalError: ?Error,
+  isSidebarExpanded: boolean,
   lineWrap: boolean,
   plugins: PluginStateMap,
   presets: PluginStateMap,
@@ -85,6 +86,7 @@ export default class Repl extends React.Component {
         envConfig.isEnvPresetEnabled
       ),
       evalError: null,
+      isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
       presets: configArrayToStateMap(presetPluginConfigs, defaultPresets),
@@ -116,12 +118,14 @@ export default class Repl extends React.Component {
           className={styles.optionsColumn}
           envConfig={state.envConfig}
           envPresetState={state.envPresetState}
+          isExpanded={state.isSidebarExpanded}
           lineWrap={state.lineWrap}
           pluginState={state.plugins}
           presetState={state.presets}
           runtimePolyfillConfig={runtimePolyfillConfig}
           runtimePolyfillState={state.runtimePolyfillState}
           toggleEnvPresetSetting={this._toggleEnvPresetSetting}
+          toggleIsExpanded={this._toggleIsSidebarExpanded}
           toggleSetting={this._toggleSetting}
         />
 
@@ -266,6 +270,27 @@ export default class Repl extends React.Component {
       .map(key => presets[key].config.label);
   }
 
+  _toggleEnvPresetSetting = (name: string, value: any) => {
+    this.setState(
+      state => ({
+        envConfig: {
+          ...state.envConfig,
+          [name]: value
+        }
+      }),
+      this._presetsUpdatedSetStateCallback
+    );
+  };
+
+  _toggleIsSidebarExpanded = (isExpanded: boolean) => {
+    this.setState(
+      {
+        isSidebarExpanded: isExpanded
+      },
+      this._persistState
+    );
+  };
+
   _toggleSetting = (name: string, isEnabled: boolean) => {
     this.setState(state => {
       const { plugins, presets, runtimePolyfillState } = state;
@@ -294,18 +319,6 @@ export default class Repl extends React.Component {
         };
       }
     }, this._presetsUpdatedSetStateCallback);
-  };
-
-  _toggleEnvPresetSetting = (name: string, value: any) => {
-    this.setState(
-      state => ({
-        envConfig: {
-          ...state.envConfig,
-          [name]: value
-        }
-      }),
-      this._presetsUpdatedSetStateCallback
-    );
   };
 
   _updateCode = (code: string) => {
@@ -339,6 +352,7 @@ export default class Repl extends React.Component {
       presets: presetsArray.join(','),
       prettier: plugins.prettier.isEnabled,
       spec: false, // TODO Support this flag
+      showSidebar: this.state.isSidebarExpanded,
       targets: envConfigToTargetsString(envConfig)
     };
 

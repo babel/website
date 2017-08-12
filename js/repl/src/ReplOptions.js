@@ -7,6 +7,7 @@ import {
   pluginConfigs,
   presetPluginConfigs
 } from './PluginConfig';
+import Svg from './Svg';
 import { colors, media } from './styles';
 
 import type {
@@ -17,27 +18,37 @@ import type {
 } from './types';
 
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
+type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
 
 type Props = {
   className: string,
   envConfig: EnvConfig,
   envPresetState: PluginState,
+  isExpanded: boolean,
   lineWrap: boolean,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
   runtimePolyfillState: PluginState,
   toggleEnvPresetSetting: ToggleEnvPresetSetting,
+  toggleIsExpanded: ToggleExpanded,
   toggleSetting: ToggleSetting
 };
 
-// TODO Add collapse/expand button (including for mobile)
+const ReplOptions = (props: Props) =>
+  <div className={`${styles.wrapper} ${props.className}`}>
+    {props.isExpanded
+      ? <ExpandedContainer {...props} />
+      : <CollapsedContainer {...props} />}
+  </div>;
+
+export default ReplOptions;
 
 // The choice of Component over PureComponent is intentional here.
 // It simplifies the re-use of PluginState objects,
 // Without requiring gratuitous use of Object-spread.
-export default class ReplOptions extends Component {
+class ExpandedContainer extends Component {
   props: Props;
 
   static defaultProps = {
@@ -46,7 +57,6 @@ export default class ReplOptions extends Component {
 
   render() {
     const {
-      className,
       envConfig,
       envPresetState,
       lineWrap,
@@ -55,11 +65,12 @@ export default class ReplOptions extends Component {
       runtimePolyfillConfig,
       runtimePolyfillState,
       toggleEnvPresetSetting,
+      toggleIsExpanded,
       toggleSetting
     } = this.props;
 
     return (
-      <div className={`${styles.container} ${className}`}>
+      <div className={styles.expandedContainer}>
         <div className={styles.section}>
           <div className={styles.sectionHeader}>Settings</div>
           <div className={`${styles.secondaryHeader} ${styles.highlight}`}>
@@ -200,6 +211,16 @@ export default class ReplOptions extends Component {
             />
           </label>
         </div>
+
+        <div
+          className={styles.closeButton}
+          onClick={() => toggleIsExpanded(false)}
+        >
+          <Svg
+            className={styles.closeButtonIcon}
+            path="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"
+          />
+        </div>
       </div>
     );
   }
@@ -208,6 +229,16 @@ export default class ReplOptions extends Component {
     this.props.toggleSetting('lineWrap', event.target.checked);
   };
 }
+
+const CollapsedContainer = ({ toggleIsExpanded }) =>
+  <div className={styles.collapsedContainer}>
+    <div className={styles.closeButton} onClick={() => toggleIsExpanded(true)}>
+      <Svg
+        className={styles.closeButtonIcon}
+        path="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+      />
+    </div>
+  </div>;
 
 type PluginToggleProps = {
   config: PluginConfig,
@@ -235,21 +266,11 @@ const PluginToggle = ({
 
 const LoadingAnimation = () =>
   <div className={styles.loadingAnimation}>
-    <div
-      className={`${styles.loadingAnimationTick} ${styles.loadingAnimationTick1}`}
-    />
-    <div
-      className={`${styles.loadingAnimationTick} ${styles.loadingAnimationTick2}`}
-    />
-    <div
-      className={`${styles.loadingAnimationTick} ${styles.loadingAnimationTick3}`}
-    />
-    <div
-      className={`${styles.loadingAnimationTick} ${styles.loadingAnimationTick4}`}
-    />
-    <div
-      className={`${styles.loadingAnimationTick} ${styles.loadingAnimationTick5}`}
-    />
+    <div className={`${styles.loadingTick} ${styles.loadingTick1}`} />
+    <div className={`${styles.loadingTick} ${styles.loadingTick2}`} />
+    <div className={`${styles.loadingTick} ${styles.loadingTick3}`} />
+    <div className={`${styles.loadingTick} ${styles.loadingTick4}`} />
+    <div className={`${styles.loadingTick} ${styles.loadingTick5}`} />
   </div>;
 
 const bounce = css.keyframes({
@@ -260,25 +281,78 @@ const bounce = css.keyframes({
 });
 
 const styles = {
-  container: css({
+  wrapper: css({
+    position: 'relative',
+    overflow: 'visible',
+    zIndex: 6,
+    backgroundColor: colors.inverseBackground,
+    color: colors.inverseForegroundLight
+  }),
+  collapsedContainer: css({
+    backgroundColor: colors.inverseBackground,
+
+    [media.large]: {
+      width: '0.5rem',
+      height: '100%'
+    },
+
+    [media.mediumAndDown]: {
+      height: '0.5rem',
+      width: '100%'
+    }
+  }),
+  expandedContainer: css({
     minWidth: '150px',
     display: 'flex',
     overflow: 'auto',
-    backgroundColor: colors.inverseBackground,
-    color: colors.inverseForegroundLight,
     boxSshadow:
       'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.24) 0px 1px 4px',
 
     [media.large]: {
       flexDirection: 'column',
-      maxHeight: '100%'
+      height: '100%'
     },
 
     [media.mediumAndDown]: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       overflow: 'auto',
-      maxHeight: '50%'
+      maxHeight: '200px'
+    }
+  }),
+  closeButton: css({
+    position: 'absolute',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    cursor: 'pointer',
+    backgroundColor: colors.inverseBackground,
+    color: colors.inverseForegroundLight,
+
+    [media.large]: {
+      height: '4rem',
+      width: '2rem',
+      left: 'calc(100% - 0.5rem)',
+      top: 'calc(50% - 2rem)',
+      borderTopRightRadius: '4rem',
+      borderBottomRightRadius: '4rem'
+    },
+
+    [media.mediumAndDown]: {
+      height: '2rem',
+      width: '4rem',
+      left: 'calc(50% - 2rem)',
+      top: 'calc(100% - 0.5rem)',
+      borderBottomLeftRadius: '4rem',
+      borderBottomRightRadius: '4rem'
+    }
+  }),
+  closeButtonIcon: css({
+    width: '1.5rem',
+    height: '1.5rem',
+
+    [media.mediumAndDown]: {
+      transform: 'rotate(90deg)'
     }
   }),
   section: css({
@@ -289,18 +363,19 @@ const styles = {
     maxHeight: '100%',
     padding: '1rem',
     borderBottom: `1px solid ${colors.inverseBackgroundDark}`,
+    zIndex: 7,
 
     [media.mediumAndDown]: {
       flex: '1 0 100px',
-      borderRight: `1px solid ${colors.inverseBackgroundDark}`
-    },
-
-    '&:last-of-type': {
-      borderBottom: 'none',
-      borderRight: 'none'
+      borderRight: `1px solid ${colors.inverseBackgroundDark}`,
+      maxHeight: '100%',
+      overflow: 'auto'
     }
   }),
   sectionEnv: css({
+    borderBottom: 'none',
+    borderRight: 'none',
+
     [media.mediumAndDown]: {
       flex: '1 0 150px'
     }
@@ -367,7 +442,7 @@ const styles = {
     alignItems: 'center',
     marginLeft: '0.5rem'
   }),
-  loadingAnimationTick: css({
+  loadingTick: css({
     width: '4px',
     height: '100%',
     backgroundColor: 'rgba(255,255,255,0.25)',
@@ -378,20 +453,20 @@ const styles = {
     animationTimingFunction: 'ease-in-out',
     marginLeft: '6px'
   }),
-  loadingAnimationTick1: css({
+  loadingTick1: css({
     animationDelay: 0,
     marginLeft: 0
   }),
-  loadingAnimationTick2: css({
+  loadingTick2: css({
     animationDelay: '-1.1s'
   }),
-  loadingAnimationTick3: css({
+  loadingTick3: css({
     animationDelay: '-1.0s'
   }),
-  loadingAnimationTick4: css({
+  loadingTick4: css({
     animationDelay: '-0.9s'
   }),
-  loadingAnimationTick5: css({
+  loadingTick5: css({
     animationDelay: '-0.8s'
   })
 };
