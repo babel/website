@@ -95,18 +95,20 @@ export const persistedStateToEnvConfig = (
       const name = pieces[0].toLowerCase();
       const value = parseFloat(pieces[1]);
 
-      switch (name) {
-        case 'electron':
-          envConfig.electron = value;
-          envConfig.isElectronEnabled = true;
-          break;
-        case 'node':
-          envConfig.node = value;
-          envConfig.isNodeEnabled = true;
-          break;
-        default:
-          console.warn(`Unknown env target "${name}" specified`);
-          break;
+      if (name) {
+        switch (name) {
+          case 'electron':
+            envConfig.electron = value;
+            envConfig.isElectronEnabled = true;
+            break;
+          case 'node':
+            envConfig.node = value;
+            envConfig.isNodeEnabled = true;
+            break;
+          default:
+            console.warn(`Unknown env target "${name}" specified`);
+            break;
+        }
       }
     } catch (error) {
       console.error('Error parsing env preset configuration', error);

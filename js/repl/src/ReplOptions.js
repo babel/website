@@ -39,8 +39,6 @@ type Props = {
   toggleSetting: ToggleSetting
 };
 
-// TODO Debounce input from <textarea> and <input type="text"> below
-
 const ReplOptions = (props: Props) =>
   <div className={`${styles.wrapper} ${props.className}`}>
     {props.isExpanded
@@ -71,7 +69,6 @@ class ExpandedContainer extends Component {
       presetState,
       runtimePolyfillConfig,
       runtimePolyfillState,
-      toggleEnvPresetSetting,
       toggleIsExpanded,
       toggleSetting
     } = this.props;
@@ -129,11 +126,7 @@ class ExpandedContainer extends Component {
             <input
               checked={envConfig.isEnvPresetEnabled}
               type="checkbox"
-              onChange={(event: SyntheticInputEvent) =>
-                toggleEnvPresetSetting(
-                  'isEnvPresetEnabled',
-                  event.target.checked
-                )}
+              onChange={this._onEnvPresetEnabledChange}
             />
           </label>
           <div className={styles.envPresetColumn}>
@@ -145,8 +138,7 @@ class ExpandedContainer extends Component {
             <textarea
               disabled={disableEnvSettings}
               className={styles.envPresetInput}
-              onChange={(event: SyntheticInputEvent) =>
-                toggleEnvPresetSetting('browsers', event.target.value)}
+              onChange={this._onBrowsersChange}
               placeholder={envPresetDefaults.browsers.placeholder}
               value={envConfig.browsers}
             />
@@ -166,22 +158,14 @@ class ExpandedContainer extends Component {
               min={envPresetDefaults.electron.min}
               max={999}
               step={envPresetDefaults.electron.step}
-              onChange={(event: SyntheticInputEvent) =>
-                toggleEnvPresetSetting(
-                  'electron',
-                  parseFloat(event.target.value)
-                )}
+              onChange={this._onElectronChange}
               value={envConfig.electron}
             />
             <input
               checked={envConfig.isElectronEnabled}
               className={styles.envPresetCheckbox}
               disabled={disableEnvSettings}
-              onChange={(event: SyntheticInputEvent) =>
-                toggleEnvPresetSetting(
-                  'isElectronEnabled',
-                  event.target.checked
-                )}
+              onChange={this._onIsElectronEnabledChange}
               type="checkbox"
             />
           </label>
@@ -200,16 +184,14 @@ class ExpandedContainer extends Component {
               min={envPresetDefaults.node.min}
               max={999}
               step={envPresetDefaults.node.step}
-              onChange={(event: SyntheticInputEvent) =>
-                toggleEnvPresetSetting('node', parseFloat(event.target.value))}
+              onChange={this._onNodeChange}
               value={envConfig.node}
             />
             <input
               checked={envConfig.isNodeEnabled}
               className={styles.envPresetCheckbox}
               disabled={disableEnvSettings}
-              onChange={(event: SyntheticInputEvent) =>
-                toggleEnvPresetSetting('isNodeEnabled', event.target.checked)}
+              onChange={this._onIsNodeEnabledChange}
               type="checkbox"
             />
           </label>
@@ -248,6 +230,17 @@ class ExpandedContainer extends Component {
     );
   }
 
+  _onBrowsersChange = (event: SyntheticInputEvent) => {
+    this.props.toggleEnvPresetSetting('browsers', event.target.value);
+  };
+
+  _onEnvPresetEnabledChange = (event: SyntheticInputEvent) => {
+    this.props.toggleEnvPresetSetting(
+      'isEnvPresetEnabled',
+      event.target.checked
+    );
+  };
+
   _onBuiltInsChange = (event: SyntheticInputEvent) => {
     this.props.toggleSetting('builtIns', event.target.checked);
   };
@@ -256,8 +249,30 @@ class ExpandedContainer extends Component {
     this.props.toggleSetting('debugEnvPreset', event.target.checked);
   };
 
+  _onElectronChange = (event: SyntheticInputEvent) => {
+    this.props.toggleEnvPresetSetting(
+      'electron',
+      parseFloat(event.target.value)
+    );
+  };
+
+  _onIsElectronEnabledChange = (event: SyntheticInputEvent) => {
+    this.props.toggleEnvPresetSetting(
+      'isElectronEnabled',
+      event.target.checked
+    );
+  };
+
+  _onIsNodeEnabledChange = (event: SyntheticInputEvent) => {
+    this.props.toggleEnvPresetSetting('isNodeEnabled', event.target.checked);
+  };
+
   _onLineWrappingChange = (event: SyntheticInputEvent) => {
     this.props.toggleSetting('lineWrap', event.target.checked);
+  };
+
+  _onNodeChange = (event: SyntheticInputEvent) => {
+    this.props.toggleEnvPresetSetting('node', parseFloat(event.target.value));
   };
 }
 
