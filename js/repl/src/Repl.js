@@ -32,6 +32,7 @@ import type {
 
 type Props = {};
 type State = {
+  builtIns: boolean,
   code: string,
   compiled: ?string,
   compileError: ?Error,
@@ -77,6 +78,7 @@ export default class Repl extends React.Component {
     const envConfig = persistedStateToEnvConfig(persistedState);
 
     const state = {
+      builtIns: persistedState.builtIns,
       code: persistedState.code,
       compiled: null,
       compileError: null,
@@ -115,6 +117,7 @@ export default class Repl extends React.Component {
     return (
       <div className={styles.repl}>
         <ReplOptions
+          builtIns={state.builtIns}
           className={styles.optionsColumn}
           envConfig={state.envConfig}
           envPresetState={state.envPresetState}
@@ -242,7 +245,7 @@ export default class Repl extends React.Component {
       }
 
       const envOptions = {
-        useBuiltIns: false, // TODO evaluate && builtIns
+        useBuiltIns: !state.evaluate && state.builtIns,
         targets
       };
 
@@ -343,7 +346,7 @@ export default class Repl extends React.Component {
     const state = {
       babili: plugins['babili-standalone'].isEnabled,
       browsers: envConfig.browsers,
-      builtIns: false, // TODO Support this flag
+      builtIns: this.state.builtIns,
       code: this.state.code,
       debug: false, // TODO Support this flag
       evaluate: this.state.runtimePolyfillState.isEnabled,

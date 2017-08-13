@@ -23,6 +23,7 @@ type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
 
 type Props = {
+  builtIns: boolean,
   className: string,
   envConfig: EnvConfig,
   envPresetState: PluginState,
@@ -58,6 +59,7 @@ class ExpandedContainer extends Component {
 
   render() {
     const {
+      builtIns,
       envConfig,
       envPresetState,
       lineWrap,
@@ -88,6 +90,15 @@ class ExpandedContainer extends Component {
             />
             Line Wrap
           </label>
+          {envConfig.isEnvPresetEnabled &&
+            <label className={styles.settingsLabel}>
+              <input
+                checked={builtIns}
+                onChange={this._onBuiltInsChange}
+                type="checkbox"
+              />
+              Built-ins
+            </label>}
           {pluginConfigs.map(config =>
             <PluginToggle
               config={config}
@@ -219,6 +230,10 @@ class ExpandedContainer extends Component {
       </div>
     );
   }
+
+  _onBuiltInsChange = (event: SyntheticInputEvent) => {
+    this.props.toggleSetting('builtIns', event.target.checked);
+  };
 
   _onLineWrappingChange = (event: SyntheticInputEvent) => {
     this.props.toggleSetting('lineWrap', event.target.checked);
