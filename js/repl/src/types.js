@@ -47,7 +47,6 @@ export type PersistedState = {
   code: string,
   debug: boolean,
   evaluate: boolean,
-  experimental: boolean,
   lineWrap: boolean,
   loose: boolean,
   presets: string,

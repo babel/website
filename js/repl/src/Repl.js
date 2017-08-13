@@ -350,7 +350,6 @@ export default class Repl extends React.Component {
       code: this.state.code,
       debug: false, // TODO Support this flag
       evaluate: this.state.runtimePolyfillState.isEnabled,
-      experimental: false, // TODO Support this flag
       lineWrap: this.state.lineWrap,
       loose: false, // TODO Support this flag
       presets: presetsArray.join(','),
