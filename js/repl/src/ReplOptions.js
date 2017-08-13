@@ -30,13 +30,13 @@ type Props = {
   envPresetState: PluginState,
   isExpanded: boolean,
   lineWrap: boolean,
+  onEnvPresetSettingChange: ToggleEnvPresetSetting,
+  onIsExpandedChange: ToggleExpanded,
+  onSettingChange: ToggleSetting,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
-  runtimePolyfillState: PluginState,
-  toggleEnvPresetSetting: ToggleEnvPresetSetting,
-  toggleIsExpanded: ToggleExpanded,
-  toggleSetting: ToggleSetting
+  runtimePolyfillState: PluginState
 };
 
 const ReplOptions = (props: Props) =>
@@ -65,12 +65,12 @@ class ExpandedContainer extends Component {
       envConfig,
       envPresetState,
       lineWrap,
+      onIsExpandedChange,
+      onSettingChange,
       pluginState,
       presetState,
       runtimePolyfillConfig,
-      runtimePolyfillState,
-      toggleIsExpanded,
-      toggleSetting
+      runtimePolyfillState
     } = this.props;
 
     const disableEnvSettings =
@@ -83,8 +83,8 @@ class ExpandedContainer extends Component {
           <PluginToggle
             config={runtimePolyfillConfig}
             label="Evaluate"
+            onSettingChange={onSettingChange}
             state={runtimePolyfillState}
-            toggleSetting={toggleSetting}
           />
           <label className={styles.settingsLabel}>
             <input
@@ -99,8 +99,8 @@ class ExpandedContainer extends Component {
             <PluginToggle
               config={config}
               key={config.package}
+              onSettingChange={onSettingChange}
               state={pluginState[config.package]}
-              toggleSetting={toggleSetting}
             />
           )}
         </div>
@@ -110,8 +110,8 @@ class ExpandedContainer extends Component {
             <PluginToggle
               config={config}
               key={config.package}
+              onSettingChange={onSettingChange}
               state={presetState[config.package]}
-              toggleSetting={toggleSetting}
             />
           )}
         </div>
@@ -219,7 +219,7 @@ class ExpandedContainer extends Component {
 
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
-          onClick={() => toggleIsExpanded(false)}
+          onClick={() => onIsExpandedChange(false)}
         >
           <Svg
             className={styles.closeButtonIcon}
@@ -231,56 +231,56 @@ class ExpandedContainer extends Component {
   }
 
   _onBrowsersChange = (event: SyntheticInputEvent) => {
-    this.props.toggleEnvPresetSetting('browsers', event.target.value);
+    this.props.onEnvPresetSettingChange('browsers', event.target.value);
   };
 
   _onEnvPresetEnabledChange = (event: SyntheticInputEvent) => {
-    this.props.toggleEnvPresetSetting(
+    this.props.onEnvPresetSettingChange(
       'isEnvPresetEnabled',
       event.target.checked
     );
   };
 
   _onBuiltInsChange = (event: SyntheticInputEvent) => {
-    this.props.toggleSetting('builtIns', event.target.checked);
+    this.props.onSettingChange('builtIns', event.target.checked);
   };
 
   _onDebugChange = (event: SyntheticInputEvent) => {
-    this.props.toggleSetting('debugEnvPreset', event.target.checked);
+    this.props.onSettingChange('debugEnvPreset', event.target.checked);
   };
 
   _onElectronChange = (event: SyntheticInputEvent) => {
-    this.props.toggleEnvPresetSetting(
+    this.props.onEnvPresetSettingChange(
       'electron',
       parseFloat(event.target.value)
     );
   };
 
   _onIsElectronEnabledChange = (event: SyntheticInputEvent) => {
-    this.props.toggleEnvPresetSetting(
+    this.props.onEnvPresetSettingChange(
       'isElectronEnabled',
       event.target.checked
     );
   };
 
   _onIsNodeEnabledChange = (event: SyntheticInputEvent) => {
-    this.props.toggleEnvPresetSetting('isNodeEnabled', event.target.checked);
+    this.props.onEnvPresetSettingChange('isNodeEnabled', event.target.checked);
   };
 
   _onLineWrappingChange = (event: SyntheticInputEvent) => {
-    this.props.toggleSetting('lineWrap', event.target.checked);
+    this.props.onSettingChange('lineWrap', event.target.checked);
   };
 
   _onNodeChange = (event: SyntheticInputEvent) => {
-    this.props.toggleEnvPresetSetting('node', parseFloat(event.target.value));
+    this.props.onEnvPresetSettingChange('node', parseFloat(event.target.value));
   };
 }
 
-const CollapsedContainer = ({ toggleIsExpanded }) =>
+const CollapsedContainer = ({ onIsExpandedChange }) =>
   <div className={styles.collapsedContainer}>
     <div
       className={`${styles.closeButton} ${nestedCloseButton}`}
-      onClick={() => toggleIsExpanded(true)}
+      onClick={() => onIsExpandedChange(true)}
     >
       <Svg
         className={styles.closeButtonIcon}
@@ -293,14 +293,14 @@ type PluginToggleProps = {
   config: PluginConfig,
   label?: string,
   state: PluginState,
-  toggleSetting: ToggleSetting
+  onSettingChange: ToggleSetting
 };
 
 const PluginToggle = ({
   config,
   label,
   state,
-  toggleSetting
+  onSettingChange
 }: PluginToggleProps) =>
   <label key={config.package} className={styles.settingsLabel}>
     <input
@@ -308,7 +308,7 @@ const PluginToggle = ({
       className={styles.inputCheckboxLeft}
       disabled={state.isLoading || state.didError}
       onChange={(event: SyntheticInputEvent) =>
-        toggleSetting(config.package, event.target.checked)}
+        onSettingChange(config.package, event.target.checked)}
       type="checkbox"
     />
     {state.isLoading ? <PresetLoadingAnimation /> : label || config.label}

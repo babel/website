@@ -79,6 +79,8 @@ export default class Repl extends React.Component {
 
     const envConfig = persistedStateToEnvConfig(persistedState);
 
+    // A partial State is defined first b'c this._compile needs it.
+    // The compile helper will then populate the missing State values.
     const state = {
       builtIns: persistedState.builtIns,
       code: persistedState.code,
@@ -128,13 +130,13 @@ export default class Repl extends React.Component {
           envPresetState={state.envPresetState}
           isExpanded={state.isSidebarExpanded}
           lineWrap={state.lineWrap}
+          onEnvPresetSettingChange={this._onEnvPresetSettingChange}
+          onIsExpandedChange={this._onIsSidebarExpandedChange}
+          onSettingChange={this._onSettingChange}
           pluginState={state.plugins}
           presetState={state.presets}
           runtimePolyfillConfig={runtimePolyfillConfig}
           runtimePolyfillState={state.runtimePolyfillState}
-          toggleEnvPresetSetting={this._toggleEnvPresetSetting}
-          toggleIsExpanded={this._toggleIsSidebarExpanded}
-          toggleSetting={this._toggleSetting}
         />
 
         <div className={styles.panels}>
@@ -282,6 +284,57 @@ export default class Repl extends React.Component {
     };
   };
 
+  _onEnvPresetSettingChange = (name: string, value: any) => {
+    this.setState(
+      state => ({
+        envConfig: {
+          ...state.envConfig,
+          [name]: value
+        }
+      }),
+      this._presetsUpdatedSetStateCallback
+    );
+  };
+
+  _onIsSidebarExpandedChange = (isExpanded: boolean) => {
+    this.setState(
+      {
+        isSidebarExpanded: isExpanded
+      },
+      this._persistState
+    );
+  };
+
+  _onSettingChange = (name: string, isEnabled: boolean) => {
+    this.setState(state => {
+      const { plugins, presets, runtimePolyfillState } = state;
+
+      if (name === 'babel-polyfill') {
+        runtimePolyfillState.isEnabled = isEnabled;
+
+        return {
+          runtimePolyfillState
+        };
+      } else if (state.hasOwnProperty(name)) {
+        return {
+          [name]: isEnabled
+        };
+      } else if (plugins.hasOwnProperty(name)) {
+        plugins[name].isEnabled = isEnabled;
+
+        return {
+          plugins
+        };
+      } else if (presets.hasOwnProperty(name)) {
+        presets[name].isEnabled = isEnabled;
+
+        return {
+          presets
+        };
+      }
+    }, this._presetsUpdatedSetStateCallback);
+  };
+
   _persistState = () => {
     const { envConfig, plugins } = this.state;
 
@@ -326,57 +379,6 @@ export default class Repl extends React.Component {
       .filter(key => presets[key].isEnabled && presets[key].isLoaded)
       .map(key => presets[key].config.label);
   }
-
-  _toggleEnvPresetSetting = (name: string, value: any) => {
-    this.setState(
-      state => ({
-        envConfig: {
-          ...state.envConfig,
-          [name]: value
-        }
-      }),
-      this._presetsUpdatedSetStateCallback
-    );
-  };
-
-  _toggleIsSidebarExpanded = (isExpanded: boolean) => {
-    this.setState(
-      {
-        isSidebarExpanded: isExpanded
-      },
-      this._persistState
-    );
-  };
-
-  _toggleSetting = (name: string, isEnabled: boolean) => {
-    this.setState(state => {
-      const { plugins, presets, runtimePolyfillState } = state;
-
-      if (name === 'babel-polyfill') {
-        runtimePolyfillState.isEnabled = isEnabled;
-
-        return {
-          runtimePolyfillState
-        };
-      } else if (state.hasOwnProperty(name)) {
-        return {
-          [name]: isEnabled
-        };
-      } else if (plugins.hasOwnProperty(name)) {
-        plugins[name].isEnabled = isEnabled;
-
-        return {
-          plugins
-        };
-      } else if (presets.hasOwnProperty(name)) {
-        presets[name].isEnabled = isEnabled;
-
-        return {
-          presets
-        };
-      }
-    }, this._presetsUpdatedSetStateCallback);
-  };
 
   _updateCode = (code: string) => {
     this.setState(state => this._compile(code, state), this._persistState);

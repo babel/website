@@ -7,9 +7,9 @@ import { colors } from './styles';
 const DEFAULT_CODE_MIRROR_OPTIONS = {
   autoCloseBrackets: true,
   keyMap: 'sublime',
+  lineNumbers: true,
   matchBrackets: true,
   mode: 'text/jsx',
-  lineNumbers: true,
   showCursorWhenSelecting: true,
   styleActiveLine: true,
   tabWidth: 2
