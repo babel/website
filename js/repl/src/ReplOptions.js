@@ -86,6 +86,7 @@ class ExpandedContainer extends Component {
             <input
               checked={lineWrap}
               onChange={this._onLineWrappingChange}
+              className={styles.inputCheckboxLeft}
               type="checkbox"
             />
             Line Wrap
@@ -117,6 +118,7 @@ class ExpandedContainer extends Component {
             {envPresetState.isLoading
               ? <PresetLoadingAnimation />
               : 'Env Preset'}
+
             <input
               checked={envConfig.isEnvPresetEnabled}
               type="checkbox"
@@ -130,8 +132,9 @@ class ExpandedContainer extends Component {
           <label className={styles.settingsLabel}>
             <input
               checked={builtIns}
+              className={styles.inputCheckboxLeft}
               disabled={
-                !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled
+                runtimePolyfillState.isEnabled || !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled
               }
               onChange={this._onBuiltInsChange}
               type="checkbox"
@@ -274,6 +277,7 @@ const PluginToggle = ({
   <label key={config.package} className={styles.settingsLabel}>
     <input
       checked={state.isEnabled && !state.didError}
+      className={styles.inputCheckboxLeft}
       disabled={state.isLoading || state.didError}
       onChange={(event: SyntheticInputEvent) =>
         toggleSetting(config.package, event.target.checked)}
@@ -413,6 +417,9 @@ const styles = {
       flex: '1 0 150px'
     }
   }),
+  inputCheckboxLeft: css({
+    marginRight: '0.5rem',
+  }),
   highlight: css({
     textTransform: 'uppercase',
     fontSize: '0.8rem',
@@ -435,7 +442,13 @@ const styles = {
     flex: '0 0 2rem',
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    margin: '0 -1rem',
+    padding: '0 1rem',
+
+    '&:hover': {
+      backgroundColor: colors.inverseBackgroundDark
+    }
   }),
   envPresetColumn: css({
     display: 'flex',
