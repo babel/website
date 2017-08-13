@@ -148,7 +148,7 @@ class ExpandedContainer extends Component {
               Electron
             </span>
             <input
-              className={`${styles.envPresetText} ${styles.envPresetInput}`}
+              className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
               disabled={
                 !envPresetState.isLoaded ||
                 !envConfig.isEnvPresetEnabled ||
@@ -174,7 +174,7 @@ class ExpandedContainer extends Component {
               Node
             </span>
             <input
-              className={`${styles.envPresetText} ${styles.envPresetInput}`}
+              className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
               disabled={
                 !envPresetState.isLoaded ||
                 !envConfig.isEnvPresetEnabled ||
@@ -498,8 +498,9 @@ const styles = {
     flex: '0 0 auto',
     margin: '0.5rem 0'
   }),
-  envPresetText: css({
-    flex: '0 0 auto'
+  envPresetNumber: css({
+    flex: '0 0 2.5rem',
+    maxWidth: '2.5rem'
   }),
   envPresetCheckbox: css({
     flex: '0 0 auto',
