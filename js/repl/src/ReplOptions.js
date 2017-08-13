@@ -90,15 +90,6 @@ class ExpandedContainer extends Component {
             />
             Line Wrap
           </label>
-          {envConfig.isEnvPresetEnabled &&
-            <label className={styles.settingsLabel}>
-              <input
-                checked={builtIns}
-                onChange={this._onBuiltInsChange}
-                type="checkbox"
-              />
-              Built-ins
-            </label>}
           {pluginConfigs.map(config =>
             <PluginToggle
               config={config}
@@ -120,8 +111,12 @@ class ExpandedContainer extends Component {
           )}
         </div>
         <div className={`${styles.section} ${styles.sectionEnv}`}>
-          <div className={styles.sectionHeader}>Env Preset</div>
-          <label className={styles.settingsLabel}>
+          <label
+            className={`${styles.sectionHeader} ${styles.sectionEnvHeader}`}
+          >
+            {envPresetState.isLoading
+              ? <PresetLoadingAnimation />
+              : 'Env Preset'}
             <input
               checked={envConfig.isEnvPresetEnabled}
               type="checkbox"
@@ -131,7 +126,17 @@ class ExpandedContainer extends Component {
                   event.target.checked
                 )}
             />
-            {envPresetState.isLoading ? <PresetLoadingAnimation /> : 'Enabled'}
+          </label>
+          <label className={styles.settingsLabel}>
+            <input
+              checked={builtIns}
+              disabled={
+                !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled
+              }
+              onChange={this._onBuiltInsChange}
+              type="checkbox"
+            />
+            Built-ins
           </label>
           <div className={styles.envPresetColumn}>
             <label
@@ -415,10 +420,16 @@ const styles = {
     color: colors.inverseForeground
   }),
   sectionHeader: css({
+    flex: '0 0 2rem',
     fontSize: '1.25rem',
     fontWeight: 'bold',
-    color: colors.inverseForegroundLight,
-    marginBottom: '0.5rem'
+    color: colors.inverseForegroundLight
+  }),
+  sectionEnvHeader: css({
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
   }),
   settingsLabel: css({
     flex: '0 0 2rem',
@@ -429,7 +440,7 @@ const styles = {
   envPresetColumn: css({
     display: 'flex',
     flexDirection: 'column',
-    margin: '0.5rem 0',
+    margin: '0 0 0.5rem',
     flex: '0 0 auto'
   }),
   envPresetColumnLabel: css({
