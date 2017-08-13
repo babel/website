@@ -5,6 +5,7 @@ import StorageService from './StorageService';
 import UriUtils from './UriUtils';
 
 import type {
+  BabelPresetEnvResult,
   EnvConfig,
   PersistedState,
   PluginConfig,
@@ -43,11 +44,9 @@ export const loadPersistedState = (): PersistedState => {
     debug: merged.debug === true,
     evaluate: merged.evaluate === true,
     lineWrap: merged.lineWrap != null ? merged.lineWrap : true,
-    loose: merged.loose === true,
     presets: merged.presets || '',
     prettier: merged.prettier === true,
     showSidebar: merged.showSidebar === true,
-    spec: merged.spec === true,
     targets: merged.targets || ''
   };
 };
@@ -115,4 +114,37 @@ export const persistedStateToEnvConfig = (
   });
 
   return envConfig;
+};
+
+export const getDebugInfoFromEnvResult = (
+  result: BabelPresetEnvResult
+): string => {
+  const debugInfo = [];
+
+  const targetNames = Object.keys(result.targets);
+  if (targetNames.length) {
+    debugInfo.push(
+      'Using targets:\n' +
+        targetNames.map(name => `• ${name}: ${result.targets[name]}`).join('\n')
+    );
+  }
+
+  if (result.transformationsWithTargets.length) {
+    debugInfo.push(
+      'Using plugins:\n' +
+        result.transformationsWithTargets
+          .map(item => `• ${item.name}`)
+          .join('\n')
+    );
+  }
+
+  // This property will only be set if we compiled with useBuiltIns=true
+  if (result.polyfillsWithTargets && result.polyfillsWithTargets.length) {
+    debugInfo.push(
+      'Using polyfills:\n' +
+        result.polyfillsWithTargets.map(item => `• ${item.name}`).join('\n')
+    );
+  }
+
+  return debugInfo.join('\n\n');
 };

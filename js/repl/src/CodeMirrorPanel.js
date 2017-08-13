@@ -9,13 +9,14 @@ type Props = {
   className?: string,
   code: ?string,
   error: ?Error,
+  info?: ?string,
   onChange?: (value: string) => void,
   options: Object,
   placeholder?: string
 };
 
 export default function CodeMirrorPanel(props: Props) {
-  const { className = '', error, onChange } = props;
+  const { className = '', error, info, onChange } = props;
 
   return (
     <div className={`${styles.panel} ${className}`}>
@@ -31,6 +32,10 @@ export default function CodeMirrorPanel(props: Props) {
           value={props.code}
         />
       </div>
+      {info &&
+        <pre className={styles.info}>
+          {info}
+        </pre>}
       {error &&
         <pre className={styles.error}>
           {error.message}
@@ -38,6 +43,16 @@ export default function CodeMirrorPanel(props: Props) {
     </div>
   );
 }
+
+const sharedBoxStyles = {
+  flex: '0 0 auto',
+  maxHeight: '33%',
+  overflow: 'auto',
+  margin: 0,
+  padding: '0.25rem 0.5rem',
+  whiteSpace: 'pre-wrap',
+  '-webkit-overflow-scrolling': 'touch'
+};
 
 const styles = {
   codeMirror: css({
@@ -47,16 +62,18 @@ const styles = {
     overflow: 'auto'
   }),
   error: css({
-    order: 1,
-    flex: '0 0 auto',
-    maxHeight: '50%',
-    overflow: 'auto',
+    order: 2,
     backgroundColor: colors.errorBackground,
     borderTop: `1px solid ${colors.errorBorder}`,
     color: colors.errorForeground,
-    margin: 0,
-    padding: '0.25rem 0.5rem',
-    whiteSpace: 'pre-wrap'
+    ...sharedBoxStyles
+  }),
+  info: css({
+    order: 1,
+    backgroundColor: colors.infoBackground,
+    borderTop: `1px solid ${colors.infoBorder}`,
+    color: colors.infoForeground,
+    ...sharedBoxStyles
   }),
   panel: css({
     height: '100%',

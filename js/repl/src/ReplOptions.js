@@ -25,6 +25,7 @@ type ToggleSetting = (name: string, isEnabled: boolean) => void;
 type Props = {
   builtIns: boolean,
   className: string,
+  debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetState: PluginState,
   isExpanded: boolean,
@@ -37,6 +38,8 @@ type Props = {
   toggleIsExpanded: ToggleExpanded,
   toggleSetting: ToggleSetting
 };
+
+// TODO Debounce input from <textarea> and <input type="text"> below
 
 const ReplOptions = (props: Props) =>
   <div className={`${styles.wrapper} ${props.className}`}>
@@ -60,6 +63,7 @@ class ExpandedContainer extends Component {
   render() {
     const {
       builtIns,
+      debugEnvPreset,
       envConfig,
       envPresetState,
       lineWrap,
@@ -71,6 +75,9 @@ class ExpandedContainer extends Component {
       toggleIsExpanded,
       toggleSetting
     } = this.props;
+
+    const disableEnvSettings =
+      !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled;
 
     return (
       <div className={styles.expandedContainer}>
@@ -129,18 +136,6 @@ class ExpandedContainer extends Component {
                 )}
             />
           </label>
-          <label className={styles.settingsLabel}>
-            <input
-              checked={builtIns}
-              className={styles.inputCheckboxLeft}
-              disabled={
-                runtimePolyfillState.isEnabled || !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled
-              }
-              onChange={this._onBuiltInsChange}
-              type="checkbox"
-            />
-            Built-ins
-          </label>
           <div className={styles.envPresetColumn}>
             <label
               className={`${styles.envPresetColumnLabel} ${styles.highlight}`}
@@ -148,9 +143,7 @@ class ExpandedContainer extends Component {
               Browser
             </label>
             <textarea
-              disabled={
-                !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled
-              }
+              disabled={disableEnvSettings}
               className={styles.envPresetInput}
               onChange={(event: SyntheticInputEvent) =>
                 toggleEnvPresetSetting('browsers', event.target.value)}
@@ -183,9 +176,7 @@ class ExpandedContainer extends Component {
             <input
               checked={envConfig.isElectronEnabled}
               className={styles.envPresetCheckbox}
-              disabled={
-                !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled
-              }
+              disabled={disableEnvSettings}
               onChange={(event: SyntheticInputEvent) =>
                 toggleEnvPresetSetting(
                   'isElectronEnabled',
@@ -216,13 +207,31 @@ class ExpandedContainer extends Component {
             <input
               checked={envConfig.isNodeEnabled}
               className={styles.envPresetCheckbox}
-              disabled={
-                !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled
-              }
+              disabled={disableEnvSettings}
               onChange={(event: SyntheticInputEvent) =>
                 toggleEnvPresetSetting('isNodeEnabled', event.target.checked)}
               type="checkbox"
             />
+          </label>
+          <label className={styles.settingsLabel}>
+            <input
+              checked={builtIns}
+              className={styles.inputCheckboxLeft}
+              disabled={runtimePolyfillState.isEnabled || disableEnvSettings}
+              onChange={this._onBuiltInsChange}
+              type="checkbox"
+            />
+            Built-ins
+          </label>
+          <label className={styles.settingsLabel}>
+            <input
+              checked={debugEnvPreset}
+              className={styles.inputCheckboxLeft}
+              disabled={disableEnvSettings}
+              onChange={this._onDebugChange}
+              type="checkbox"
+            />
+            Debug
           </label>
         </div>
 
@@ -241,6 +250,10 @@ class ExpandedContainer extends Component {
 
   _onBuiltInsChange = (event: SyntheticInputEvent) => {
     this.props.toggleSetting('builtIns', event.target.checked);
+  };
+
+  _onDebugChange = (event: SyntheticInputEvent) => {
+    this.props.toggleSetting('debugEnvPreset', event.target.checked);
   };
 
   _onLineWrappingChange = (event: SyntheticInputEvent) => {
@@ -296,7 +309,11 @@ const styles = {
     zIndex: 6,
     backgroundColor: colors.inverseBackground,
     color: colors.inverseForegroundLight,
-    transition: 'transform 0.25s ease-in-out'
+    transition: 'transform 0.25s ease-in-out',
+
+    [media.large]: {
+      height: '100%' // Safari fix for scrolling/overflow
+    }
   }),
   collapsedContainer: css({
     backgroundColor: colors.inverseBackground,
@@ -418,7 +435,7 @@ const styles = {
     }
   }),
   inputCheckboxLeft: css({
-    marginRight: '0.5rem',
+    marginRight: '0.5rem'
   }),
   highlight: css({
     textTransform: 'uppercase',
@@ -453,7 +470,7 @@ const styles = {
   envPresetColumn: css({
     display: 'flex',
     flexDirection: 'column',
-    margin: '0 0 0.5rem',
+    margin: '0.5rem 0',
     flex: '0 0 auto'
   }),
   envPresetColumnLabel: css({

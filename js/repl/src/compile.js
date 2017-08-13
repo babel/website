@@ -27,6 +27,8 @@ export default function compile(code: string, config: CompileConfig): Return {
 
   try {
     const transformed = window.Babel.transform(code, {
+      babelrc: false,
+      filename: 'repl',
       presets: config.presets,
       plugins: ['transform-regenerator']
     });
