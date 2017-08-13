@@ -11,6 +11,7 @@ const DEFAULT_CODE_MIRROR_OPTIONS = {
   mode: 'text/jsx',
   lineNumbers: true,
   showCursorWhenSelecting: true,
+  styleActiveLine: true,
   tabWidth: 2
 };
 
