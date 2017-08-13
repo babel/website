@@ -10,11 +10,12 @@ type Props = {
   code: ?string,
   error: ?Error,
   onChange?: (value: string) => void,
-  options: Object
+  options: Object,
+  placeholder?: string
 };
 
 export default function CodeMirrorPanel(props: Props) {
-  const { className = '', code, error, onChange, options } = props;
+  const { className = '', error, onChange } = props;
 
   return (
     <div className={`${styles.panel} ${className}`}>
@@ -22,11 +23,12 @@ export default function CodeMirrorPanel(props: Props) {
         <CodeMirror
           onChange={onChange}
           options={{
-            ...options,
+            ...props.options,
             readOnly: onChange == null
           }}
+          placeholder={props.placeholder}
           preserveScrollPosition={onChange == null}
-          value={code}
+          value={props.code}
         />
       </div>
       {error &&

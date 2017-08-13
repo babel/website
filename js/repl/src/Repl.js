@@ -136,6 +136,7 @@ export default class Repl extends React.Component {
             error={state.compileError}
             onChange={this._updateCode}
             options={options}
+            placeholder="Write code here"
           />
           <CodeMirrorPanel
             className={styles.codeMirrorPanel}

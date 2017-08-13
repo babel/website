@@ -5,6 +5,8 @@ const colors = {
   errorBorder: '#ffd6d6',
   errorForeground: '#ff0000',
 
+  foregroundLight: '#aaaaaa',
+
   inverseBackground: '#21252b',
   inverseBackgroundDark: '#181a1f',
   inverseForeground: '#ffffff',
