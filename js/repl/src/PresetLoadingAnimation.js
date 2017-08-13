@@ -19,7 +19,7 @@ const bounce = css.keyframes({
   '100%': { transform: 'scaleY(0.25)' }
 });
 
-const styles = {  
+const styles = {
   loadingAnimation: css({
     height: '2rem',
     display: 'flex',
