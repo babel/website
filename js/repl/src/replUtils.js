@@ -46,7 +46,7 @@ export const loadPersistedState = (): PersistedState => {
     lineWrap: merged.lineWrap != null ? merged.lineWrap : true,
     presets: merged.presets || '',
     prettier: merged.prettier === true,
-    showSidebar: merged.showSidebar === true,
+    showSidebar: merged.showSidebar !== false, // Default to show
     targets: merged.targets || ''
   };
 };
