@@ -477,9 +477,11 @@ const styles = {
     alignItems: 'center',
     margin: '0 -1rem',
     padding: '0 1rem',
+    transition: 'background-color 250ms ease-in-out, color 250ms ease-in-out',
 
     '&:hover': {
-      backgroundColor: colors.inverseBackgroundDark
+      backgroundColor: colors.inverseBackgroundDark,
+      color: colors.inverseForeground
     }
   }),
   envPresetColumn: css({
