@@ -61,7 +61,7 @@ npm install --save-dev babel-cli babel-preset-env
       </div>
     </div>
     <div class="col-lg-6">
-      <h3>Create a <a href="/docs/usage/babelrc"><code>.babelrc</code></a> file (or use your <a href="/docs/usage/babelrc#use-via-package-json">package.json</a>)</h3>
+      <h3>Create a <a href="/docs/usage/babelrc"><code>.babelrc</code></a> file (or use your <a href="/docs/usage/babelrc#use-via-packagejson">package.json</a>)</h3>
       <div class="text-left">
 <div markdown="1">
 ```json

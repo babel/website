@@ -262,7 +262,7 @@ Run the relevant Babel transform(s) on the source code and overwrite it:
 babel src -d src
 ```
 
-This feature was just made possible so we're looking forward to making it easier to use and seeing the transformations it can enable. Check out the [6.16.0 blog post](https://babeljs.io/blog/2016/09/28/6.16.0#new-feature) for more info!
+This feature was just made possible so we're looking forward to making it easier to use and seeing the transformations it can enable. Check out the [6.16.0 blog post](https://babeljs.io/blog/2016/09/28/6.16.0#-new-feature) for more info!
 
 Other relevant projects: [JSCodeshift](https://github.com/facebook/jscodeshift), [js-codemod](https://github.com/cpojer/js-codemod), [Lebab](https://github.com/lebab/lebab).
 
