@@ -1,41 +1,49 @@
 // @flow
 
-import scopedEval from "./scopedEval";
+import scopedEval from './scopedEval';
 
-import type { CompileConfig } from "./types";
+import type { CompileConfig } from './types';
 
 type Return = {
   compiled: ?string,
   compileError: ?Error,
-  evalError: ?Error,
+  evalError: ?Error
 };
 
 const DEFAULT_PRETTIER_CONFIG = {
-  printWidth: 80,
-  tabWidth: 2,
-  useTabs: false,
-  semi: true,
-  singleQuote: false,
-  trailingComma: "none",
   bracketSpacing: true,
   jsxBracketSameLine: false,
-  parser: "babylon",
+  parser: 'babylon',
+  printWidth: 80,
+  semi: true,
+  singleQuote: false,
+  tabWidth: 2,
+  trailingComma: 'none',
+  useTabs: false
 };
 
 export default function compile(code: string, config: CompileConfig): Return {
   let compiled = null;
   let compileError = null;
   let evalError = null;
+  let sourceMap = null;
 
   try {
     const transformed = window.Babel.transform(code, {
       babelrc: false,
-      filename: "repl",
+      filename: 'repl',
       presets: config.presets,
-      plugins: ["transform-regenerator"],
+      plugins: ['transform-regenerator'],
+      sourceMap: true
     });
 
     compiled = transformed.code;
+
+    try {
+      sourceMap = JSON.stringify(transformed.map);
+    } catch (error) {
+      console.error(`Source Map generation failed: ${error}`);
+    }
 
     if (config.prettify && window.prettier !== undefined) {
       // TODO Don't re-parse; just pass Prettier the AST we already have.
@@ -54,7 +62,7 @@ export default function compile(code: string, config: CompileConfig): Return {
     if (config.evaluate) {
       try {
         // eslint-disable-next-line
-        scopedEval(compiled);
+        scopedEval(code, compiled, sourceMap);
       } catch (error) {
         evalError = error;
       }
@@ -62,6 +70,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   } catch (error) {
     compiled = null;
     compileError = error;
+    sourceMap = null;
   }
 
   return {
@@ -69,5 +78,6 @@ export default function compile(code: string, config: CompileConfig): Return {
     compiled,
     compileError,
     evalError,
+    sourceMap
   };
 }

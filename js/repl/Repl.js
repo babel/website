@@ -46,6 +46,7 @@ type State = {
   evalError: ?Error,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
+  map: ?string,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
@@ -97,6 +98,7 @@ export default class Repl extends React.Component {
       evalError: null,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
+      map: null,
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
       presets: configArrayToStateMap(presetPluginConfigs, defaultPresets),
       runtimePolyfillState: configToState(
@@ -120,6 +122,15 @@ export default class Repl extends React.Component {
     const options = {
       lineWrapping: state.lineWrap,
     };
+
+    let compiled = null;
+    if (state.code) {
+      compiled = state.compiled;
+      if (state.map) {
+        // $FlowFixMe
+        compiled += `\n\n// ${state.map}`;
+      }
+    }
 
     return (
       <div className={styles.repl}>
@@ -151,10 +162,11 @@ export default class Repl extends React.Component {
           />
           <CodeMirrorPanel
             className={styles.codeMirrorPanel}
-            code={state.compiled}
+            code={compiled}
             error={state.evalError}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
+            placeholder="Compiled output will be shown here"
           />
         </div>
       </div>
