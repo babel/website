@@ -1,0 +1,25 @@
+{
+  "name": "babel-repl",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "flow-bin": "^0.52.0",
+    "glamor": "^2.20.39",
+    "lodash.camelcase": "^4.3.0",
+    "lz-string": "^1.4.4",
+    "prettier": "^1.5.3",
+    "react": "^16.0.0-beta.3",
+    "react-dom": "^16.0.0-beta.3",
+    "react-scripts": "1.0.10"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "flow": "flow",
+    "postbuild": "cp -r ./build ../../_site/repl2",
+    "prettier": "prettier --single-quote --write 'src/**/*.{js,jsx}'",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
+  },
+  "devDependencies": {}
+}
