@@ -18,6 +18,7 @@ exclude:
   - Makefile
   - Rakefile
   - package.json
+  - js/repl/node_modules
 
 include:
   - _redirects
