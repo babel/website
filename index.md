@@ -142,7 +142,7 @@ npm install --save-dev babel-preset-env
       </div>
 
       <br>
-      <p class="text-center"><a href="/docs/learn-es2015/">Learn more about ES2015 &rarr;</a></p>
+      <p class="text-center"><a href="/learn-es2015/">Learn more about ES2015 &rarr;</a></p>
     </div>
   </div>
 

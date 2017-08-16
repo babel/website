@@ -441,7 +441,7 @@ console.log("e^π = " + exp(pi));
   <p>
     Babel can transpile ES2015 Modules to several different formats including
     Common.js, AMD, System, and UMD. You can even create your own. For more
-    details see the <a href="/docs/usage/modules">modules docs</a>.
+    details see the <a href="/docs/plugins/">modules docs</a>.
   </p>
 </blockquote>
 
