@@ -24,7 +24,13 @@
   "license": "ISC",
   "devDependencies": {
     "async": "^2.5.0",
+    "babel-core": "^6.25.0",
     "babel-eslint": "^7.1.1",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
     "bootstrap-sass": "^3.3.1",
     "eslint": "^3.15.0",
     "eslint-config-babel": "^6.0.0",
@@ -37,6 +43,15 @@
     "remark-lint-no-duplicate-headings-in-section": "^1.0.0",
     "remark-lint-no-empty-url": "^1.0.0",
     "remark-lint-no-literal-urls": "^1.0.0",
-    "remark-preset-lint-recommended": "^2.0.0"
+    "remark-preset-lint-recommended": "^2.0.0",
+    "webpack": "^3.5.4",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "glamor": "2.20.39",
+    "lodash.camelcase": "^4.3.0",
+    "lz-string": "^1.4.4",
+    "react": "16.0.0-beta.3",
+    "react-dom": "16.0.0-beta.3"
   }
 }
