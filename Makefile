@@ -12,7 +12,6 @@ bootstrap:
 	fi
 
 	./scripts/download-readmes.js
-	npm start
 
 build:
 	NODE_ENV=production ./node_modules/.bin/webpack -p
