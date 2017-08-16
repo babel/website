@@ -191,3 +191,11 @@
     cursor: not-allowed;
   }
 }
+
+.babel-repl-v2 {
+  height: 100%;
+
+  * {
+    box-sizing: content-box;
+  }
+}
