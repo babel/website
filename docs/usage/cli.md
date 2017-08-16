@@ -3,7 +3,6 @@ layout: docs
 title: CLI
 description: How to use the CLI tools.
 permalink: /docs/usage/cli/
-redirect_from: /usage.html
 package: babel-cli
 ---
 

@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 gem 'jekyll', '~> 3.5.2'
 gem 'jekyll-paginate', '~> 1.1.0'
-gem 'jekyll-redirect-from', '~> 0.12.1'
 gem 'jekyll-sass-converter', '~> 1.5.0'
 gem 'jekyll-sitemap', '~> 1.0.0'
 gem 'jemoji', '~> 0.8.0'

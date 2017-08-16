@@ -38,7 +38,6 @@ paginate_path: "/blog/page:num/"
 
 plugins:
   - jekyll-paginate
-  - jekyll-redirect-from
   - jekyll-sitemap
   - jemoji
 

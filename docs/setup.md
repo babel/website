@@ -3,12 +3,6 @@ layout: page
 title: Using Babel
 description: How to use Babel with your tool of choice
 permalink: /docs/setup/
-redirect_from:
- - /docs/using-babel/
- - /plugins.html
- - /docs/using-6to5/
- - /docs/usage/browser/
- - browser.html
 custom_js_with_timestamps:
 - tools.js
 ---

@@ -3,9 +3,6 @@ layout: docs
 title: Plugins
 description:
 permalink: /docs/plugins/
-redirect_from:
- - /docs/advanced/plugins/
- - /docs/usage/modules/
 ---
 
 Babel is a compiler. At a high level, it has 3 stages that it runs code in: parsing, transforming, and generation (like many other compilers).
