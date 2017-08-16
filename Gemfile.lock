@@ -87,13 +87,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  html-proofer
-  jekyll
-  jekyll-paginate
-  jekyll-redirect-from
-  jekyll-sass-converter
-  jekyll-sitemap
-  jemoji
+  html-proofer (~> 3.7.2)
+  jekyll (~> 3.5.2)
+  jekyll-paginate (~> 1.1.0)
+  jekyll-redirect-from (~> 0.12.1)
+  jekyll-sass-converter (~> 1.5.0)
+  jekyll-sitemap (~> 1.0.0)
+  jemoji (~> 0.8.0)
   rake
 
 BUNDLED WITH
