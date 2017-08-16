@@ -1,6 +1,7 @@
 // @flow
 
 import { css } from 'glamor';
+import CodeMirror from 'codemirror'
 import React from 'react';
 import { colors } from './styles';
 
@@ -24,7 +25,7 @@ type Props = {
   preserveScrollPosition: boolean
 };
 
-export default class CodeMirror extends React.Component {
+export default class ReactCodeMirror extends React.Component {
   static defaultProps = {
     autoFocus: false,
     preserveScrollPosition: false,
@@ -40,7 +41,7 @@ export default class CodeMirror extends React.Component {
   _textAreaRef: HTMLTextAreaElement;
 
   componentDidMount() {
-    this._codeMirror = window.CodeMirror.fromTextArea(this._textAreaRef, {
+    this._codeMirror = CodeMirror.fromTextArea(this._textAreaRef, {
       ...DEFAULT_CODE_MIRROR_OPTIONS,
       ...this.props.options
     });

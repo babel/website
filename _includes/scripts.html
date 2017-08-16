@@ -31,3 +31,23 @@
     <script src="/scripts/{{ js_file | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}" defer></script>
   {% endfor %}
 {% endif %}
+
+{% if page.webpack_js %}
+  {% if jekyll.environment == "development" %}
+    <script>
+    /* If the webpack dev server is not running, just load via Jekyll server */
+    function webpackNotAvailable(file) {
+      var script = document.createElement('script');
+      script.src = '/build/' + file + '.js';
+      document.head.appendChild(script);
+    }
+    </script>
+  {% endif %}
+  {% for js_file in page.webpack_js %}
+    {% if jekyll.environment == "development" %}
+      <script src="http://localhost:34512/{{ js_file }}.js" onerror="webpackNotAvailable('{{ js_file }}')" defer></script>
+    {% else %}
+      <script src="/build/{{ js_file }}.js?t={{ site.time | date_to_xmlschema }}" defer></script>
+    {% endif %}
+  {% endfor %}
+{% endif %}
