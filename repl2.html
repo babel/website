@@ -3,34 +3,21 @@ layout: default
 permalink: /repl2/
 fullscreen: true
 third_party_js:
+- https://unpkg.com/babel-standalone@^6
+- https://unpkg.com/react@16.0.0-beta.3/umd/react.production.min.js
+- https://unpkg.com/react-dom@16.0.0-beta.3/umd/react-dom.production.min.js
+- https://unpkg.com/codemirror@5.28.0/lib/codemirror.js
+- https://unpkg.com/codemirror@5.28.0/mode/javascript/javascript.js
+- https://unpkg.com/codemirror@5.28.0/mode/xml/xml.js
+- https://unpkg.com/codemirror@5.28.0/mode/jsx/jsx.js
+- https://unpkg.com/codemirror@5.28.0/keymap/sublime.js
+- https://unpkg.com/codemirror@5.28.0/addon/display/placeholder.js
+- https://unpkg.com/codemirror@5.28.0/addon/selection/active-line.js
+- https://unpkg.com/lz-string@1.4.4/libs/base64-string.js
+- https://unpkg.com/lz-string@1.4.4/libs/lz-string.min.js
+webpack_js:
+- repl
 ---
 <link rel="stylesheet" href="https://unpkg.com/codemirror@5.28.0/lib/codemirror.css">
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root" class="babel-repl-v2">Loading...</div>
-
-<script src="https://unpkg.com/babel-standalone@^6" defer></script>
-<script src="https://unpkg.com/react@16.0.0-beta.3/umd/react.production.min.js" defer></script>
-<script src="https://unpkg.com/react-dom@16.0.0-beta.3/umd/react-dom.production.min.js" defer></script>
-<script src="https://unpkg.com/codemirror@5.28.0/lib/codemirror.js" defer></script>
-<script src="https://unpkg.com/codemirror@5.28.0/mode/javascript/javascript.js" defer></script>
-<script src="https://unpkg.com/codemirror@5.28.0/mode/xml/xml.js" defer></script>
-<script src="https://unpkg.com/codemirror@5.28.0/mode/jsx/jsx.js" defer></script>
-<script src="https://unpkg.com/codemirror@5.28.0/keymap/sublime.js" defer></script>
-<script src="https://unpkg.com/codemirror@5.28.0/addon/display/placeholder.js" defer></script>
-<script src="https://unpkg.com/codemirror@5.28.0/addon/selection/active-line.js" defer></script>
-<script src="https://unpkg.com/lz-string@1.4.4/libs/base64-string.js" defer></script>
-<script src="https://unpkg.com/lz-string@1.4.4/libs/lz-string.min.js" defer></script>
-
-{% if jekyll.environment == "development" %}
-<script>
-/* Called if the webpack dev server is not running or inaccessible */
-function webpackNotAvailable() {
-  var script = document.createElement('script');
-  script.src = '/build/repl.js';
-  document.head.insertChild(script);
-}
-</script>
-<script src="http://localhost:34512/repl.js" onerror="webpackNotAvailable" defer></script>
-{% else %}
-<script src="/dist/repl.js?t={{ site.time | date_to_xmlschema }}" defer></script>
-{% endif %}
