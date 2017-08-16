@@ -23,6 +23,7 @@ layout: null
 /usage.html                         /docs/usage/cli/
 /docs/faq/                          /faq/
 /php.html                           /php/
+/repl.html                          /repl/
 /docs/learn-es6/                    /learn-es2015/
 /docs/learn-es2015/                 /learn-es2015/
 /features.html                      /learn-es2015/
