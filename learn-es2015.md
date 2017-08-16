@@ -3,11 +3,6 @@ layout: docs
 title: Learn ES2015
 description: A detailed overview of ECMAScript 2015 features. Based on Luke Hoban's es6features repo.
 permalink: /learn-es2015/
-redirect_from:
- - /docs/learn-es6/
- - /docs/learn-es2015/
- - /features.html
- - /docs/tour/
 ---
 
 <blockquote class="babel-callout babel-callout-info">

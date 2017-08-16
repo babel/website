@@ -4,8 +4,6 @@ title: ES2015 constants check
 description: Validate ES2015 constants
 permalink: /docs/plugins/check-es2015-constants/
 package: babel-plugin-check-es2015-constants
-redirect_from:
- - /docs/plugins/transform-es2015-constants/
 ---
 
 <blockquote class="babel-callout babel-callout-info">
