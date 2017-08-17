@@ -125,6 +125,7 @@ class ExpandedContainer extends Component {
 
             <input
               checked={envConfig.isEnvPresetEnabled}
+              className={styles.envPresetCheckbox}
               type="checkbox"
               onChange={this._onEnvPresetEnabledChange}
             />
@@ -403,24 +404,24 @@ const styles = {
     color: colors.inverseForegroundLight,
 
     [media.large]: {
-      height: '4rem',
-      width: '2rem',
-      top: 'calc(50% - 2rem)',
-      borderTopRightRadius: '4rem',
-      borderBottomRightRadius: '4rem'
+      height: '5rem',
+      width: '3rem',
+      top: 'calc(50% - 3rem)',
+      borderTopRightRadius: '5rem',
+      borderBottomRightRadius: '5rem'
     },
 
     [media.mediumAndDown]: {
-      height: '2rem',
-      width: '4rem',
-      left: 'calc(50% - 2rem)',
-      borderBottomLeftRadius: '4rem',
-      borderBottomRightRadius: '4rem'
+      height: '3rem',
+      width: '5rem',
+      left: 'calc(50% - 3rem)',
+      borderBottomLeftRadius: '5rem',
+      borderBottomRightRadius: '5rem'
     }
   }),
   closeButtonIcon: css({
-    width: '1.5rem',
-    height: '1.5rem',
+    width: '2rem',
+    height: '2rem',
 
     [media.mediumAndDown]: {
       transform: 'rotate(90deg)'
@@ -432,7 +433,7 @@ const styles = {
     overflow: 'auto',
     flex: '0 0 auto',
     maxHeight: '100%',
-    padding: '1rem',
+    padding: '1.5rem',
     zIndex: 7,
 
     [media.mediumAndDown]: {
@@ -450,17 +451,17 @@ const styles = {
     }
   }),
   inputCheckboxLeft: css({
-    marginRight: '0.5rem'
+    margin: '0 0.75rem 0 0 !important' // TODO (bvaughn) Override input[type="checkbox"] style in main.css
   }),
   highlight: css({
     textTransform: 'uppercase',
-    fontSize: '0.8rem',
+    fontSize: '1rem',
     fontWeight: 'bold',
     color: colors.inverseForeground
   }),
   sectionHeader: css({
-    flex: '0 0 2rem',
-    fontSize: '1.25rem',
+    flex: '0 0 2.5rem',
+    fontSize: '1.5rem',
     fontWeight: 'bold',
     color: colors.inverseForegroundLight
   }),
@@ -471,13 +472,14 @@ const styles = {
     justifyContent: 'space-between'
   }),
   settingsLabel: css({
-    flex: '0 0 2rem',
+    flex: '0 0 2.5rem',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    margin: '0 -1rem',
-    padding: '0 1rem',
+    margin: '0 -1.5rem',
+    padding: '0 1.5rem',
     transition: 'background-color 250ms ease-in-out, color 250ms ease-in-out',
+    fontWeight: 'normal',
 
     '&:hover': {
       backgroundColor: colors.inverseBackgroundDark,
@@ -487,26 +489,26 @@ const styles = {
   envPresetColumn: css({
     display: 'flex',
     flexDirection: 'column',
-    margin: '0.5rem 0',
+    margin: '0.75rem 0',
     flex: '0 0 auto'
   }),
   envPresetColumnLabel: css({
-    margin: '0.5rem 0'
+    margin: '0.75rem 0'
   }),
   envPresetRow: css({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     flex: '0 0 auto',
-    margin: '0.5rem 0'
+    margin: '0.75rem 0'
   }),
   envPresetNumber: css({
-    flex: '0 0 2.5rem',
-    maxWidth: '2.5rem'
+    flex: '0 0 4rem',
+    maxWidth: '4rem'
   }),
   envPresetCheckbox: css({
     flex: '0 0 auto',
-    marginLeft: '0.5rem'
+    margin: '0 0 0 0.75rem !important' // TODO (bvaughn) Override input[type="checkbox"] style in main.css
   }),
   envPresetLabel: css({
     flex: 1
@@ -514,7 +516,7 @@ const styles = {
   envPresetInput: css({
     WebkitAppearance: 'none',
     border: 'none',
-    borderRadius: '0.125rem',
+    borderRadius: '0.25rem',
 
     '&:disabled': {
       opacity: 0.5
