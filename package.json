@@ -7,8 +7,10 @@
   "scripts": {
     "start": "make serve",
     "build": "make build",
-    "lint": "eslint --ext md docs",
-    "test": "remark _posts docs _includes README.md --quiet"
+    "lint": "eslint --ext md --rule 'prettier/prettier: 0' docs",
+    "test": "remark _posts docs _includes README.md --quiet",
+    "flow": "flow",
+    "precommit": "flow && lint-staged"
   },
   "remarkConfig": {
     "plugins": {
@@ -34,9 +36,15 @@
     "bootstrap-sass": "^3.3.1",
     "eslint": "^3.15.0",
     "eslint-config-babel": "^6.0.0",
-    "eslint-plugin-flowtype": "^2.30.0",
+    "eslint-plugin-flowtype": "^2.35.0",
     "eslint-plugin-markdown": "^1.0.0-beta.3",
+    "eslint-plugin-prettier": "^2.2.0",
+    "eslint-plugin-react": "^7.2.1",
+    "flow-bin": "0.52",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.3",
     "node-fetch": "^1.7.1",
+    "prettier": "^1.5.3",
     "remark-cli": "^3.0.0",
     "remark-lint-list-item-indent": "^1.0.0",
     "remark-lint-no-blockquote-without-caret": "^1.0.0",
@@ -48,10 +56,18 @@
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
+    "codemirror": "5.28.0",
     "glamor": "2.20.39",
     "lodash.camelcase": "^4.3.0",
     "lz-string": "^1.4.4",
     "react": "16.0.0-beta.3",
     "react-dom": "16.0.0-beta.3"
+  },
+  "lint-staged": {
+    "js/**/*.js": [
+      "prettier --trailing-comma es5 --write",
+      "eslint --format=codeframe --fix",
+      "git add"
+    ]
   }
 }
