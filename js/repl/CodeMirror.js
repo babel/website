@@ -128,6 +128,6 @@ css.global('.CodeMirror', {
   '-webkit-overflow-scrolling': 'touch'
 });
 
-css.global('pre.CodeMirror-placeholder', {
+css.global('.CodeMirror-lines pre.CodeMirror-placeholder', {
   color: colors.foregroundLight
 });
