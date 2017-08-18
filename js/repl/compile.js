@@ -1,5 +1,7 @@
 // @flow
 
+import scopedEval from './scopedEval';
+
 import type { CompileConfig } from './types';
 
 type Return = {
@@ -52,7 +54,7 @@ export default function compile(code: string, config: CompileConfig): Return {
     if (config.evaluate) {
       try {
         // eslint-disable-next-line
-        eval(compiled);
+        scopedEval(compiled);
       } catch (error) {
         evalError = error;
       }
