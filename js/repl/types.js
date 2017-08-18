@@ -8,7 +8,7 @@ export type EnvConfig = {
   isEnvPresetEnabled: boolean,
   isElectronEnabled: boolean,
   isNodeEnabled: boolean,
-  node: ?number
+  node: ?number,
 };
 
 export type LoadScriptCallback = (success: boolean) => void;
@@ -18,7 +18,7 @@ export type PluginConfig = {
   isPreLoaded?: boolean,
   label: string,
   package: string,
-  version?: string
+  version?: string,
 };
 
 export type PluginConfigs = Array<PluginConfig>;
@@ -29,7 +29,7 @@ export type PluginState = {
   isEnabled: boolean,
   isLoaded: boolean,
   isLoading: boolean,
-  plugin: any
+  plugin: any,
 };
 
 export type PluginStateMap = { [name: string]: PluginState };
@@ -37,7 +37,7 @@ export type PluginStateMap = { [name: string]: PluginState };
 export type CompileConfig = {
   evaluate: boolean,
   presets: BabelPresets,
-  prettify: boolean
+  prettify: boolean,
 };
 
 export type PersistedState = {
@@ -51,16 +51,16 @@ export type PersistedState = {
   presets: string,
   prettier: boolean,
   showSidebar: boolean,
-  targets: string
+  targets: string,
 };
 
 type BabelPresetTargetsMap = {
-  [key: string]: number
+  [key: string]: number,
 };
 
 type BabelNamedPresetAndTarget = {
   name: string,
-  targets: BabelPresetTargetsMap
+  targets: BabelPresetTargetsMap,
 };
 
 export type BabelPresetEnvResult = {
@@ -69,5 +69,5 @@ export type BabelPresetEnvResult = {
   polyfillsWithTargets: ?Array<BabelNamedPresetAndTarget>,
   targets: BabelPresetTargetsMap,
   transformations: Array<string>,
-  transformationsWithTargets: Array<BabelNamedPresetAndTarget>
+  transformationsWithTargets: Array<BabelNamedPresetAndTarget>,
 };

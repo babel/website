@@ -1,13 +1,13 @@
 // @flow
 
-import scopedEval from './scopedEval';
+import scopedEval from "./scopedEval";
 
-import type { CompileConfig } from './types';
+import type { CompileConfig } from "./types";
 
 type Return = {
   compiled: ?string,
   compileError: ?Error,
-  evalError: ?Error
+  evalError: ?Error,
 };
 
 const DEFAULT_PRETTIER_CONFIG = {
@@ -16,10 +16,10 @@ const DEFAULT_PRETTIER_CONFIG = {
   useTabs: false,
   semi: true,
   singleQuote: false,
-  trailingComma: 'none',
+  trailingComma: "none",
   bracketSpacing: true,
   jsxBracketSameLine: false,
-  parser: 'babylon'
+  parser: "babylon",
 };
 
 export default function compile(code: string, config: CompileConfig): Return {
@@ -30,9 +30,9 @@ export default function compile(code: string, config: CompileConfig): Return {
   try {
     const transformed = window.Babel.transform(code, {
       babelrc: false,
-      filename: 'repl',
+      filename: "repl",
       presets: config.presets,
-      plugins: ['transform-regenerator']
+      plugins: ["transform-regenerator"],
     });
 
     compiled = transformed.code;
@@ -68,6 +68,6 @@ export default function compile(code: string, config: CompileConfig): Return {
     code,
     compiled,
     compileError,
-    evalError
+    evalError,
   };
 }

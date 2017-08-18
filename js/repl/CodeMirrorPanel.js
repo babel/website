@@ -1,9 +1,9 @@
 // @flow
 
-import { css } from 'glamor';
-import CodeMirror from './CodeMirror';
-import React from 'react';
-import { colors } from './styles';
+import { css } from "glamor";
+import CodeMirror from "./CodeMirror";
+import React from "react";
+import { colors } from "./styles";
 
 type Props = {
   className?: string,
@@ -12,11 +12,11 @@ type Props = {
   info?: ?string,
   onChange?: (value: string) => void,
   options: Object,
-  placeholder?: string
+  placeholder?: string,
 };
 
 export default function CodeMirrorPanel(props: Props) {
-  const { className = '', error, info, onChange } = props;
+  const { className = "", error, info, onChange } = props;
 
   return (
     <div className={`${styles.panel} ${className}`}>
@@ -25,7 +25,7 @@ export default function CodeMirrorPanel(props: Props) {
           onChange={onChange}
           options={{
             ...props.options,
-            readOnly: onChange == null
+            readOnly: onChange == null,
           }}
           placeholder={props.placeholder}
           preserveScrollPosition={onChange == null}
@@ -45,41 +45,41 @@ export default function CodeMirrorPanel(props: Props) {
 }
 
 const sharedBoxStyles = {
-  flex: '0 0 auto',
-  maxHeight: '33%',
-  overflow: 'auto',
+  flex: "0 0 auto",
+  maxHeight: "33%",
+  overflow: "auto",
   margin: 0,
-  padding: '0.5rem 0.75rem',
-  whiteSpace: 'pre-wrap',
-  '-webkit-overflow-scrolling': 'touch'
+  padding: "0.5rem 0.75rem",
+  whiteSpace: "pre-wrap",
+  "-webkit-overflow-scrolling": "touch",
 };
 
 const styles = {
   codeMirror: css({
-    display: 'block',
-    height: '100%',
-    width: '100%',
-    overflow: 'auto'
+    display: "block",
+    height: "100%",
+    width: "100%",
+    overflow: "auto",
   }),
   error: css({
     order: 2,
     backgroundColor: colors.errorBackground,
     borderTop: `1px solid ${colors.errorBorder}`,
     color: colors.errorForeground,
-    ...sharedBoxStyles
+    ...sharedBoxStyles,
   }),
   info: css({
     order: 1,
     backgroundColor: colors.infoBackground,
     borderTop: `1px solid ${colors.infoBorder}`,
     color: colors.infoForeground,
-    ...sharedBoxStyles
+    ...sharedBoxStyles,
   }),
   panel: css({
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'stretch',
-    overflow: 'auto'
-  })
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "stretch",
+    overflow: "auto",
+  }),
 };

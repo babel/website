@@ -1,19 +1,19 @@
 // @flow
 
-import { css } from 'glamor';
-import CodeMirror from 'codemirror'
-import React from 'react';
-import { colors } from './styles';
+import { css } from "glamor";
+import CodeMirror from "codemirror";
+import React from "react";
+import { colors } from "./styles";
 
 const DEFAULT_CODE_MIRROR_OPTIONS = {
   autoCloseBrackets: true,
-  keyMap: 'sublime',
+  keyMap: "sublime",
   lineNumbers: true,
   matchBrackets: true,
-  mode: 'text/jsx',
+  mode: "text/jsx",
   showCursorWhenSelecting: true,
   styleActiveLine: true,
-  tabWidth: 2
+  tabWidth: 2,
 };
 
 type Props = {
@@ -22,19 +22,20 @@ type Props = {
   options: Object,
   placeholder?: string,
   value: ?string,
-  preserveScrollPosition: boolean
+  preserveScrollPosition: boolean,
 };
 
 export default class ReactCodeMirror extends React.Component {
   static defaultProps = {
     autoFocus: false,
     preserveScrollPosition: false,
-    onChange: (value: string) => {}
+    // eslint-disable-next-line no-unused-vars
+    onChange: (value: string) => {},
   };
 
   props: Props;
   state = {
-    isFocused: false
+    isFocused: false,
   };
 
   _codeMirror: any;
@@ -43,10 +44,10 @@ export default class ReactCodeMirror extends React.Component {
   componentDidMount() {
     this._codeMirror = CodeMirror.fromTextArea(this._textAreaRef, {
       ...DEFAULT_CODE_MIRROR_OPTIONS,
-      ...this.props.options
+      ...this.props.options,
     });
-    this._codeMirror.on('change', this._onChange);
-    this._codeMirror.setValue(this.props.value || '');
+    this._codeMirror.on("change", this._onChange);
+    this._codeMirror.setValue(this.props.value || "");
   }
 
   componentWillUnmount() {
@@ -63,7 +64,7 @@ export default class ReactCodeMirror extends React.Component {
       this._codeMirror.getValue() !== nextProps.value
     ) {
       if (nextProps.preserveScrollPosition) {
-        var prevScrollPosition = this._codeMirror.getScrollInfo();
+        const prevScrollPosition = this._codeMirror.getScrollInfo();
         this._codeMirror.setValue(nextProps.value);
         this._codeMirror.scrollTo(
           prevScrollPosition.left,
@@ -73,11 +74,11 @@ export default class ReactCodeMirror extends React.Component {
         this._codeMirror.setValue(nextProps.value);
       }
     } else if (!nextProps.value) {
-      this._codeMirror.setValue('');
+      this._codeMirror.setValue("");
     }
 
-    if (typeof nextProps.options === 'object') {
-      for (let optionName in nextProps.options) {
+    if (typeof nextProps.options === "object") {
+      for (const optionName in nextProps.options) {
         if (nextProps.options.hasOwnProperty(optionName)) {
           this._updateOption(optionName, nextProps.options[optionName]);
         }
@@ -112,7 +113,7 @@ export default class ReactCodeMirror extends React.Component {
   }
 
   _onChange = (doc: any, change: any) => {
-    if (change.origin !== 'setValue') {
+    if (change.origin !== "setValue") {
       this.props.onChange(doc.getValue());
     }
   };
@@ -122,12 +123,12 @@ export default class ReactCodeMirror extends React.Component {
   };
 }
 
-css.global('.CodeMirror', {
-  height: '100% !important',
-  width: '100% !important',
-  '-webkit-overflow-scrolling': 'touch'
+css.global(".CodeMirror", {
+  height: "100% !important",
+  width: "100% !important",
+  "-webkit-overflow-scrolling": "touch",
 });
 
-css.global('.CodeMirror-lines pre.CodeMirror-placeholder', {
-  color: colors.foregroundLight
+css.global(".CodeMirror-lines pre.CodeMirror-placeholder", {
+  color: colors.foregroundLight,
 });

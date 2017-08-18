@@ -1,11 +1,11 @@
 // @flow
 
-import { css } from 'glamor';
-import React from 'react';
+import { css } from "glamor";
+import React from "react";
 
 type Props = {
   className: string,
-  path: string
+  path: string,
 };
 
 const Svg = ({ className, path, ...rest }: Props) =>
@@ -15,12 +15,12 @@ const Svg = ({ className, path, ...rest }: Props) =>
 
 const styles = {
   svg: css({
-    height: '1rem',
-    width: '1rem'
+    height: "1rem",
+    width: "1rem",
   }),
   path: css({
-    fill: 'currentColor'
-  })
+    fill: "currentColor",
+  }),
 };
 
 export default Svg;
