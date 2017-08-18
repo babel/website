@@ -598,3 +598,6 @@
 - name: Aha!
   url: https://www.aha.io
   logo: aha.svg
+- name: Hashnode
+  url: https://hashnode.com
+  logo: hashnode.svg
