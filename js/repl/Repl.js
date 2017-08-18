@@ -8,6 +8,7 @@ import StorageService from './StorageService';
 import UriUtils from './UriUtils';
 import compile from './compile';
 import loadPlugin from './loadPlugin';
+import scopedEval from './scopedEval';
 import {
   envPresetConfig,
   pluginConfigs,
@@ -204,7 +205,7 @@ export default class Repl extends React.Component {
         // Just evaluate the most recently compiled code.
         try {
           // eslint-disable-next-line
-          eval(this.state.compiled);
+          scopedEval(this.state.compiled);
         } catch (error) {
           evalError = error;
         }
