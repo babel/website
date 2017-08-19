@@ -1,36 +1,51 @@
 - title: Learn ES2015
   url: /learn-es2015/
+  match: /learn-es2015/
 - title: Docs
   url: /docs
+  match: /docs
   subnav:
     - items:
         - title: Setup
           url: /docs/setup/
+          match: /docs/setup/
         - title: Editors
           url: /docs/editors
+          match: /docs/editors
         - title: Caveats
           url: /docs/usage/caveats/
+          match: /docs/usage/caveats/
     - name: Packages
       items:
         - title: babel-core
           url: /docs/core-packages/
+          match: /docs/core-packages/
         - title: babel-polyfill
           url: /docs/usage/polyfill/
+          match: /docs/usage/polyfill/
         - title: Plugins
           url: /docs/plugins/
+          match: /docs/plugins/
     - name: Usage
       items:
         - title: .babelrc
           url: /docs/usage/babelrc/
+          match: /docs/usage/babelrc/
         - title: babel-cli
           url: /docs/usage/cli/
+          match: /docs/usage/cli/
         - title: babel-register
           url: /docs/usage/babel-register/
+          match: /docs/usage/babel-register/
         - title: API
           url: /docs/usage/api/
+          match: /docs/usage/api/
 - title: Try it out
   url: /repl/
+  match: ["/repl/", "/repl2/", "/php/"]
 - title: Blog
   url: /blog/
+  match: /blog/
 - title: FAQ
   url: /faq
+  match: /faq

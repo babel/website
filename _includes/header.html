@@ -20,7 +20,7 @@
       <ul class="nav navbar-nav">
         {% for item in site.data.navigation %}
           {% if item.subnav %}
-            <li class="dropdown {% if page.url contains item.url %}active{% endif %}">
+            <li class="dropdown {% if page.url contains item.match %}active{% endif %}">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ item.title }} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 {% for group in item.subnav %}
@@ -31,7 +31,7 @@
 
                   {% for item in group.items %}
 
-                    <li {% if page.url contains item.url %}class="active"{% endif %}>
+                    <li {% if item.match contains page.url %}class="active"{% endif %}>
                       <a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
                     </li>
                   {% endfor %}
@@ -40,7 +40,7 @@
               </ul>
             </li>
           {% else %}
-            <li {% if page.url contains item.url %}class="active"{% endif %}>
+            <li {% if item.match contains page.url %}class="active"{% endif %}>
               <a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
             </li>
           {% endif %}
