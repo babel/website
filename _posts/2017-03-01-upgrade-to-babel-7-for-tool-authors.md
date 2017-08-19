@@ -35,61 +35,175 @@ Calls to `babel.transform` or any other transform function may return `null` if 
 
 The `opts.basename` option exposed on `state.file.opts` has been removed. If you need it, best to build it from `opts.filename` yourself [babel/babel#5467](https://github.com/babel/babel/pull/5467).
 
-## Babylon
+## AST changes
 
-> AST changes ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
+> ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
-Flow: Node renamed from `ExistentialTypeParam` to `ExistsTypeAnnotation` [#322](https://github.com/babel/babylon/pull/322)
+### Renamed
 
-```js
-type Maybe<T> = _Maybe<T, *>;
+The following nodes have been renamed:
+
+| Name 6.x | Name 7.x | Example | PR |
+|----------|----------|---------|----|
+| ExistentialTypeParam | ExistsTypeAnnotation | ```type A = B<*>;``` | [#322](https://github.com/babel/babylon/pull/322) |
+| NumericLiteralTypeAnnotation | NumberLiteralTypeAnnotation | ```type T = 0;``` | [#332](https://github.com/babel/babylon/pull/332) |
+
+Besides the AST-Nodes also all the functions in `babel-type` have been renamed.
+
+```diff
+ import * as t from "babel-types";
+
+ return {
+-  ExistentialTypeParam(path) {
+-    const parent = path.findParent((path) => path.isExistentialTypeParam());
+-    t.isExistentialTypeParam(parent);
++  ExistsTypeAnnotation(path) {
++    const parent = path.findParent((path) => path.isExistsTypeAnnotation());
++    t.isExistsTypeAnnotation(parent);
+
+-    return t.existentialTypeParam();
++    return t.existsTypeAnnotation();
+   },
+-  NumericLiteralTypeAnnotation(path) {
+-    const parent = path.findParent((path) => path.isNumericLiteralTypeAnnotation());
+-    t.isNumericLiteralTypeAnnotation(parent);
++  NumberLiteralTypeAnnotation(path) {
++    const parent = path.findParent((path) => path.isNumberLiteralTypeAnnotation());
++    t.isNumberLiteralTypeAnnotation(parent);
+
+-    return t.numericLiteralTypeAnnotation();
++    return t.numberLiteralTypeAnnotation();
+   }
+ };
 ```
 
-Flow: Node renamed from `NumericLiteralTypeAnnotation` to `NumberLiteralTypeAnnotation` [babel/babylon#332](https://github.com/babel/babylon/pull/332)
+### Replaced
+
+On the following AST-Nodes the value of the field `variance` has been changed from a simple string value to be its own AST-Node called `Variance`. [#333](https://github.com/babel/babylon/pull/333)
+
+The field is only available when enabling the `flow` plugin in babylon.
+
+  * ObjectProperty
+  * ObjectMethod
+  * AssignmentProperty
+  * ClassMethod
+  * ClassProperty
+  * Property
+
+The type of the new `Variance` node looks like this:
 
 ```js
-type T = 0;
-```
-
-Flow: New node `Variance` which replaces the string value of the `variance` field on several nodes (TODO: be more specific here) [babel/babylon#333](https://github.com/babel/babylon/pull/333)
-
-```js
-class A {+p:T}
-class A {-p:T}
-```
-
-Flow: `ObjectTypeIndexer` location info matches Flow's better [babel/babylon#228](https://github.com/babel/babylon/pull/228)
-
-Babylon was including the semicolon in the location, whereas Flow didn't.
-
-```js
-var a: { [a: number]: string; [b: number]: string; };
-```
-
-Node `ForAwaitStatement` has been removed [#349](https://github.com/babel/babylon/pull/349)
-
-An `await` property is defined instead.
-
-```text
-interface ForOfStatement <: ForInStatement {
-  type: "ForOfStatement";
-  await: boolean;
+type VarianceNode = {
+  type: "Variance",
+  kind: "plus"|"minus",
 }
 ```
 
-```js
-async function f() {
-  for await (let x of y);
-}
+```diff
+ return {
+   Property({ node }) {
+-    if (node.variance === "plus") {
++    if (node.variance.kind === "plus") {
+       ...
+-    } else if (node.variance === "minus") {
++    } else if (node.variance.kind === "minus") {
+       ...
+     }
+   }
+ };
 ```
 
-Nodes `RestProperty` and `SpreadProperty` are removed in favor of reusing `RestElement` and `SpreadElement` [#384](https://github.com/babel/babylon/pull/384)
+### Location changes
 
-The actual syntax for both is the same: `...`. Before we differentiated the usage of them based on if it was used in an object or in an array.
+The location info of `ObjectTypeIndexer` has been changed to not include semicolons. This was done to align with the flow-parser and have the same location information. [#228](https://github.com/babel/babylon/pull/228)
+
+Example:
+
+```js
+var a: { [a: number]: string; };
+```
+
+```diff
+ {
+   "type": "ObjectTypeIndexer",
+   "start": 9,
+-  "end": 29,
++  "end": 28,
+   "loc": {
+     "start": {
+       "line": 1,
+       "column": 9,
+     },
+     "end": {
+       "line": 1,
+-      "column": 29
++      "column": 28
+     }
+   }
+ }
+```
+
+### Removal
+
+#### ForAwaitStatement
+
+The AST-Node `ForAwaitStatement` has been removed and is replace with the field `await` in the `ForOfStatement` node [#349](https://github.com/babel/babylon/pull/349)
+
+```diff
+ interface ForOfStatement <: ForInStatement {
+   type: "ForOfStatement";
++  await: boolean;
+ }
+```
+
+```diff
+ return {
+-  ForAwaitStatement(path) {
+-    ...
++  ForOfStatement(path) {
++    if (path.node.await) {
++      ...
++    }
+   }
+ };
+```
+
+#### RestProperty & SpreadProperty
+
+The two AST-Nodes `RestProperty` and `SpreadProperty` have been removed in favor of reusing `RestElement` and `SpreadElement` [#384](https://github.com/babel/babylon/pull/384)
+
+```diff
+ return {
+   SpreadElement(path) {
+-    ...
+-  },
+-  SpreadProperty(path) {
+-    ...
++    if (path.parentPath.isObjectExpression()) {
++      ...
++    } else if (path.parentPath.isArrayExpression()) {
++      ...
++    }
+   },
+   RestElement(path) {
+-    ...
+-  },
+-  RestProperty(path) {
+-    ...
++    if (path.parentPath.isObjectPattern()) {
++      ...
++    } else if (path.parentPath.isArrayPattern()) {
++      ...
++    }
+   }
+ };
+```
 
 See our [upgrade PR for Babel](https://github.com/babel/babel/pull/5317) and the [Babylon AST spec](https://github.com/babel/babylon/blob/7.0/ast/spec.md) for more information.
 
-> Removed the `*` plugin option [babel/babylon#301](https://github.com/babel/babylon/pull/301) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+## Babylon
+
+> TODO Removed the `*` plugin option [babel/babylon#301](https://github.com/babel/babylon/pull/301) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 This was first added in v6.14.1 (Nov 17, 2016) so it's unlikely anyone was using this.
 
@@ -127,7 +241,9 @@ babylon.parse(code, {
 
 See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
 
-> Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+> TODO: Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+> TODO: Tokens are not added to the AST by default anymore
 
 
 ## `babel-traverse`
@@ -136,7 +252,7 @@ See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#ap
 
 It doesn't make sense that a function named `getFunctionParent` also returns the Program, so that was removed.
 
-To get the equivalent behavior, you'll need to make a change like 
+To get the equivalent behavior, you'll need to make a change like
 
 ```diff
 - path.scope.getFunctionParent()
