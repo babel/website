@@ -38,6 +38,7 @@ export type CompileConfig = {
   evaluate: boolean,
   presets: BabelPresets,
   prettify: boolean,
+  sourceMap: boolean,
 };
 
 export type PersistedState = {

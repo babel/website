@@ -236,7 +236,7 @@ export default class Repl extends React.Component {
   }
 
   _compile = (code: string, state: State) => {
-    const { envConfig } = state;
+    const { envConfig, runtimePolyfillState } = state;
 
     const presetsArray = this._presetsToArray(state);
 
@@ -280,16 +280,13 @@ export default class Repl extends React.Component {
       presetsArray.push(["env", options]);
     }
 
-    // Only generate source maps if "Evaluate" is enabled.
-    const generateSourceMaps = state.runtimePolyfillState.isEnabled;
-
     return {
-      ...compile(code, generateSourceMaps, {
+      ...compile(code, {
         evaluate:
-          state.runtimePolyfillState.isEnabled &&
-          state.runtimePolyfillState.isLoaded,
+          runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
         presets: presetsArray,
         prettify: state.plugins.prettier.isEnabled,
+        sourceMap: runtimePolyfillState.isEnabled,
       }),
       envPresetDebugInfo,
     };
