@@ -1,22 +1,22 @@
 // @flow
 
-import { css } from 'glamor';
-import React, { Component } from 'react';
+import { css } from "glamor";
+import React, { Component } from "react";
 import {
   envPresetDefaults,
   pluginConfigs,
-  presetPluginConfigs
-} from './PluginConfig';
-import PresetLoadingAnimation from './PresetLoadingAnimation';
-import Svg from './Svg';
-import { colors, media } from './styles';
+  presetPluginConfigs,
+} from "./PluginConfig";
+import PresetLoadingAnimation from "./PresetLoadingAnimation";
+import Svg from "./Svg";
+import { colors, media } from "./styles";
 
 import type {
   EnvConfig,
   PluginConfig,
   PluginState,
-  PluginStateMap
-} from './types';
+  PluginStateMap,
+} from "./types";
 
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
@@ -36,7 +36,7 @@ type Props = {
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
-  runtimePolyfillState: PluginState
+  runtimePolyfillState: PluginState,
 };
 
 const ReplOptions = (props: Props) =>
@@ -55,7 +55,7 @@ class ExpandedContainer extends Component {
   props: Props;
 
   static defaultProps = {
-    className: ''
+    className: "",
   };
 
   render() {
@@ -70,7 +70,7 @@ class ExpandedContainer extends Component {
       pluginState,
       presetState,
       runtimePolyfillConfig,
-      runtimePolyfillState
+      runtimePolyfillState,
     } = this.props;
 
     const disableEnvSettings =
@@ -121,7 +121,7 @@ class ExpandedContainer extends Component {
           >
             {envPresetState.isLoading
               ? <PresetLoadingAnimation />
-              : 'Env Preset'}
+              : "Env Preset"}
 
             <input
               checked={envConfig.isEnvPresetEnabled}
@@ -232,52 +232,56 @@ class ExpandedContainer extends Component {
   }
 
   _onBrowsersChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange('browsers', event.target.value);
+    this.props.onEnvPresetSettingChange("browsers", event.target.value);
   };
 
   _onEnvPresetEnabledChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange(
-      'isEnvPresetEnabled',
+      "isEnvPresetEnabled",
       event.target.checked
     );
   };
 
   _onBuiltInsChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange('builtIns', event.target.checked);
+    this.props.onSettingChange("builtIns", event.target.checked);
   };
 
   _onDebugChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange('debugEnvPreset', event.target.checked);
+    this.props.onSettingChange("debugEnvPreset", event.target.checked);
   };
 
   _onElectronChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange(
-      'electron',
+      "electron",
       parseFloat(event.target.value)
     );
   };
 
   _onIsElectronEnabledChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange(
-      'isElectronEnabled',
+      "isElectronEnabled",
       event.target.checked
     );
   };
 
   _onIsNodeEnabledChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange('isNodeEnabled', event.target.checked);
+    this.props.onEnvPresetSettingChange("isNodeEnabled", event.target.checked);
   };
 
   _onLineWrappingChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange('lineWrap', event.target.checked);
+    this.props.onSettingChange("lineWrap", event.target.checked);
   };
 
   _onNodeChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange('node', parseFloat(event.target.value));
+    this.props.onEnvPresetSettingChange("node", parseFloat(event.target.value));
   };
 }
 
-const CollapsedContainer = ({ onIsExpandedChange }) =>
+type CollapsedContainerProps = {
+  onIsExpandedChange: boolean => any,
+};
+
+const CollapsedContainer = ({ onIsExpandedChange }: CollapsedContainerProps) =>
   <div className={styles.collapsedContainer}>
     <div
       className={`${styles.closeButton} ${nestedCloseButton}`}
@@ -294,14 +298,14 @@ type PluginToggleProps = {
   config: PluginConfig,
   label?: string,
   state: PluginState,
-  onSettingChange: ToggleSetting
+  onSettingChange: ToggleSetting,
 };
 
 const PluginToggle = ({
   config,
   label,
   state,
-  onSettingChange
+  onSettingChange,
 }: PluginToggleProps) =>
   <label key={config.package} className={styles.settingsLabel}>
     <input
@@ -320,206 +324,206 @@ const nestedCloseButton = css({});
 
 const styles = {
   wrapper: css({
-    position: 'relative',
-    overflow: 'visible',
+    position: "relative",
+    overflow: "visible",
     zIndex: 6,
     backgroundColor: colors.inverseBackground,
     color: colors.inverseForegroundLight,
-    transition: 'transform 0.25s ease-in-out',
+    transition: "transform 0.25s ease-in-out",
 
     [media.large]: {
-      height: '100%' // Safari fix for scrolling/overflow
-    }
+      height: "100%", // Safari fix for scrolling/overflow
+    },
   }),
   collapsedContainer: css({
     backgroundColor: colors.inverseBackground,
 
     [media.large]: {
-      width: '0.5rem',
-      height: '100%'
+      width: "0.5rem",
+      height: "100%",
     },
 
     [media.mediumAndDown]: {
-      height: '0.5rem',
-      width: '100%'
+      height: "0.5rem",
+      width: "100%",
     },
 
     [`& .${nestedCloseButton}`]: {
       [media.mediumAndDown]: {
-        transition: 'top 0.25s ease-in-out',
-        top: '-0.5rem'
+        transition: "top 0.25s ease-in-out",
+        top: "-0.5rem",
       },
 
       [media.large]: {
-        transition: 'left 0.25s ease-in-out',
-        left: '-0.5rem'
-      }
+        transition: "left 0.25s ease-in-out",
+        left: "-0.5rem",
+      },
     },
 
-    '&:hover': {
+    "&:hover": {
       [`& .${nestedCloseButton}`]: {
         [media.mediumAndDown]: {
-          top: 0
+          top: 0,
         },
 
         [media.large]: {
-          left: 0
-        }
-      }
-    }
+          left: 0,
+        },
+      },
+    },
   }),
   expandedContainer: css({
-    minWidth: '150px',
-    display: 'flex',
-    overflow: 'auto',
+    minWidth: "150px",
+    display: "flex",
+    overflow: "auto",
     boxSshadow:
-      'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.24) 0px 1px 4px',
+      "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.24) 0px 1px 4px",
 
     [media.large]: {
-      flexDirection: 'column',
-      height: '100%',
+      flexDirection: "column",
+      height: "100%",
 
       [`& .${nestedCloseButton}`]: {
-        right: '-1.5rem'
-      }
+        right: "-1.5rem",
+      },
     },
 
     [media.mediumAndDown]: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      overflow: 'auto',
+      flexDirection: "row",
+      flexWrap: "wrap",
+      overflow: "auto",
 
       [`& .${nestedCloseButton}`]: {
-        bottom: '-1.5rem'
-      }
-    }
+        bottom: "-1.5rem",
+      },
+    },
   }),
   closeButton: css({
-    position: 'absolute',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    cursor: 'pointer',
+    position: "absolute",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    cursor: "pointer",
     backgroundColor: colors.inverseBackground,
     color: colors.inverseForegroundLight,
 
     [media.large]: {
-      height: '5rem',
-      width: '3rem',
-      top: 'calc(50% - 3rem)',
-      borderTopRightRadius: '5rem',
-      borderBottomRightRadius: '5rem'
+      height: "5rem",
+      width: "3rem",
+      top: "calc(50% - 3rem)",
+      borderTopRightRadius: "5rem",
+      borderBottomRightRadius: "5rem",
     },
 
     [media.mediumAndDown]: {
-      height: '3rem',
-      width: '5rem',
-      left: 'calc(50% - 3rem)',
-      borderBottomLeftRadius: '5rem',
-      borderBottomRightRadius: '5rem'
-    }
+      height: "3rem",
+      width: "5rem",
+      left: "calc(50% - 3rem)",
+      borderBottomLeftRadius: "5rem",
+      borderBottomRightRadius: "5rem",
+    },
   }),
   closeButtonIcon: css({
-    width: '2rem',
-    height: '2rem',
+    width: "2rem",
+    height: "2rem",
 
     [media.mediumAndDown]: {
-      transform: 'rotate(90deg)'
-    }
+      transform: "rotate(90deg)",
+    },
   }),
   section: css({
-    display: 'flex',
-    flexDirection: 'column',
-    overflow: 'auto',
-    flex: '0 0 auto',
-    maxHeight: '100%',
-    padding: '1.5rem',
+    display: "flex",
+    flexDirection: "column",
+    overflow: "auto",
+    flex: "0 0 auto",
+    maxHeight: "100%",
+    padding: "1.5rem",
     zIndex: 7,
 
     [media.mediumAndDown]: {
-      flex: '1 0 100px',
-      maxHeight: '100%',
-      overflow: 'auto'
-    }
+      flex: "1 0 100px",
+      maxHeight: "100%",
+      overflow: "auto",
+    },
   }),
   sectionEnv: css({
-    borderBottom: 'none',
-    borderRight: 'none',
+    borderBottom: "none",
+    borderRight: "none",
 
     [media.mediumAndDown]: {
-      flex: '1 0 150px'
-    }
+      flex: "1 0 150px",
+    },
   }),
   inputCheckboxLeft: css({
-    margin: '0 0.75rem 0 0 !important' // TODO (bvaughn) Override input[type="checkbox"] style in main.css
+    margin: "0 0.75rem 0 0 !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
   }),
   highlight: css({
-    textTransform: 'uppercase',
-    fontSize: '1rem',
-    fontWeight: 'bold',
-    color: colors.inverseForeground
+    textTransform: "uppercase",
+    fontSize: "1rem",
+    fontWeight: "bold",
+    color: colors.inverseForeground,
   }),
   sectionHeader: css({
-    flex: '0 0 2.5rem',
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    color: colors.inverseForegroundLight
+    flex: "0 0 2.5rem",
+    fontSize: "1.5rem",
+    fontWeight: "bold",
+    color: colors.inverseForegroundLight,
   }),
   sectionEnvHeader: css({
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between'
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   }),
   settingsLabel: css({
-    flex: '0 0 2.5rem',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    margin: '0 -1.5rem',
-    padding: '0 1.5rem',
-    transition: 'background-color 250ms ease-in-out, color 250ms ease-in-out',
-    fontWeight: 'normal',
+    flex: "0 0 2.5rem",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    margin: "0 -1.5rem",
+    padding: "0 1.5rem",
+    transition: "background-color 250ms ease-in-out, color 250ms ease-in-out",
+    fontWeight: "normal",
 
-    '&:hover': {
+    "&:hover": {
       backgroundColor: colors.inverseBackgroundDark,
-      color: colors.inverseForeground
-    }
+      color: colors.inverseForeground,
+    },
   }),
   envPresetColumn: css({
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '0.75rem 0',
-    flex: '0 0 auto'
+    display: "flex",
+    flexDirection: "column",
+    margin: "0.75rem 0",
+    flex: "0 0 auto",
   }),
   envPresetColumnLabel: css({
-    margin: '0.75rem 0'
+    margin: "0.75rem 0",
   }),
   envPresetRow: css({
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: '0 0 auto',
-    margin: '0.75rem 0'
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    flex: "0 0 auto",
+    margin: "0.75rem 0",
   }),
   envPresetNumber: css({
-    flex: '0 0 4rem',
-    maxWidth: '4rem'
+    flex: "0 0 4rem",
+    maxWidth: "4rem",
   }),
   envPresetCheckbox: css({
-    flex: '0 0 auto',
-    margin: '0 0 0 0.75rem !important' // TODO (bvaughn) Override input[type="checkbox"] style in main.css
+    flex: "0 0 auto",
+    margin: "0 0 0 0.75rem !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
   }),
   envPresetLabel: css({
-    flex: 1
+    flex: 1,
   }),
   envPresetInput: css({
-    WebkitAppearance: 'none',
-    border: 'none',
-    borderRadius: '0.25rem',
+    WebkitAppearance: "none",
+    border: "none",
+    borderRadius: "0.25rem",
 
-    '&:disabled': {
-      opacity: 0.5
-    }
-  })
+    "&:disabled": {
+      opacity: 0.5,
+    },
+  }),
 };

@@ -1,10 +1,17 @@
 {
-  "extends": "babel",
+  "extends": [
+    "babel",
+    "plugin:react/recommended",
+  ],
   "rules": {
-    "no-unused-vars": 1
+    "arrow-parens": ["error", "as-needed"],
+    "no-unused-vars": 1,
+    "prettier/prettier": ["error", { "trailingComma": "es5" }]
   },
   "plugins": [
-    "markdown"
+    "markdown",
+    "react",
+    "prettier"
   ],
   "env": {
     "node": true,

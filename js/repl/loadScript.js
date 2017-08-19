@@ -1,12 +1,12 @@
 // @flow
 
-import type { LoadScriptCallback } from './types';
+import type { LoadScriptCallback } from "./types";
 
 export default function loadScript(url: string, callback: LoadScriptCallback) {
-  const script = document.createElement('script');
+  const script = document.createElement("script");
   script.async = true;
   script.src = url;
-  script.onerror = event => {
+  script.onerror = () => {
     callback(false);
   };
   script.onload = () => {

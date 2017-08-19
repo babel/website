@@ -1,9 +1,9 @@
 // @flow
 
-import camelCase from 'lodash.camelcase';
-import loadScript from './loadScript';
+import camelCase from "lodash.camelcase";
+import loadScript from "./loadScript";
 
-import type { LoadScriptCallback, PluginState } from './types';
+import type { LoadScriptCallback, PluginState } from "./types";
 
 export default function loadPlugin(
   state: PluginState,
@@ -16,8 +16,8 @@ export default function loadPlugin(
   state.isLoading = true;
 
   const { config } = state;
-  const base = config.baseUrl || 'https://bundle.run';
-  const url = `${base}/${config.package}@${config.version || ''}`;
+  const base = config.baseUrl || "https://bundle.run";
+  const url = `${base}/${config.package}@${config.version || ""}`;
 
   loadScript(url, success => {
     if (success) {

@@ -18,7 +18,7 @@ const StorageService = {
     } catch (error) {
       // Noop
     }
-  }
+  },
 };
 
 export default StorageService;

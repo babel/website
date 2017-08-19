@@ -1,37 +1,37 @@
 // @flow
 
-import { css } from 'glamor';
-import React from 'react';
-import CodeMirrorPanel from './CodeMirrorPanel';
-import ReplOptions from './ReplOptions';
-import StorageService from './StorageService';
-import UriUtils from './UriUtils';
-import compile from './compile';
-import loadPlugin from './loadPlugin';
-import scopedEval from './scopedEval';
+import { css } from "glamor";
+import React from "react";
+import CodeMirrorPanel from "./CodeMirrorPanel";
+import ReplOptions from "./ReplOptions";
+import StorageService from "./StorageService";
+import UriUtils from "./UriUtils";
+import compile from "./compile";
+import loadPlugin from "./loadPlugin";
+import scopedEval from "./scopedEval";
 import {
   envPresetConfig,
   pluginConfigs,
   presetPluginConfigs,
-  runtimePolyfillConfig
-} from './PluginConfig';
+  runtimePolyfillConfig,
+} from "./PluginConfig";
 import {
   envConfigToTargetsString,
   getDebugInfoFromEnvResult,
   loadPersistedState,
   configArrayToStateMap,
   configToState,
-  persistedStateToEnvConfig
-} from './replUtils';
-import { media } from './styles';
+  persistedStateToEnvConfig,
+} from "./replUtils";
+import { media } from "./styles";
 
 import type {
   BabelPresets,
   EnvConfig,
   PluginState,
   PluginStateMap,
-  BabelPresetEnvResult
-} from './types';
+  BabelPresetEnvResult,
+} from "./types";
 
 type Props = {};
 type State = {
@@ -48,12 +48,12 @@ type State = {
   lineWrap: boolean,
   plugins: PluginStateMap,
   presets: PluginStateMap,
-  runtimePolyfillState: PluginState
+  runtimePolyfillState: PluginState,
 };
 
 export default class Repl extends React.Component {
   static defaultProps = {
-    defaultValue: ''
+    defaultValue: "",
   };
 
   props: Props;
@@ -67,12 +67,12 @@ export default class Repl extends React.Component {
     const persistedState = loadPersistedState();
 
     const defaultPlugins = {
-      'babili-standalone': persistedState.babili,
-      prettier: persistedState.prettier
+      "babili-standalone": persistedState.babili,
+      prettier: persistedState.prettier,
     };
 
-    const defaultPresets = (persistedState.presets || 'es2015,react,stage-2')
-      .split(',')
+    const defaultPresets = (persistedState.presets || "es2015,react,stage-2")
+      .split(",")
       .reduce((reduced, key) => {
         reduced[`babel-preset-${key}`] = true;
         return reduced;
@@ -102,12 +102,12 @@ export default class Repl extends React.Component {
       runtimePolyfillState: configToState(
         runtimePolyfillConfig,
         persistedState.evaluate
-      )
+      ),
     };
 
     this.state = {
       ...state,
-      ...this._compile(persistedState.code, state)
+      ...this._compile(persistedState.code, state),
     };
 
     // Load any plug-ins enabled by query params
@@ -118,7 +118,7 @@ export default class Repl extends React.Component {
     const state = this.state;
 
     const options = {
-      lineWrapping: state.lineWrap
+      lineWrapping: state.lineWrap,
     };
 
     return (
@@ -166,7 +166,7 @@ export default class Repl extends React.Component {
       envConfig,
       envPresetState,
       plugins,
-      runtimePolyfillState
+      runtimePolyfillState,
     } = this.state;
 
     // Assume all default presets are baked into babel-standalone.
@@ -181,8 +181,8 @@ export default class Repl extends React.Component {
           this._numLoadingPlugins--;
 
           if (!success) {
-            this.setState(state => ({
-              plugins
+            this.setState(() => ({
+              plugins,
             }));
           }
 
@@ -200,6 +200,10 @@ export default class Repl extends React.Component {
     if (runtimePolyfillState.isEnabled && !runtimePolyfillState.isLoaded) {
       loadPlugin(runtimePolyfillState, () => {
         let evalError = null;
+
+        if (!this.state.compiled) {
+          return;
+        }
 
         // No need to recompile at this point;
         // Just evaluate the most recently compiled code.
@@ -221,7 +225,7 @@ export default class Repl extends React.Component {
       loadPlugin(envPresetState, () => {
         // This preset is not built into Babel standalone due to its size.
         // Before we can use it we need to explicitly register it.
-        window.Babel.registerPreset('env', envPresetState.plugin.default);
+        window.Babel.registerPreset("env", envPresetState.plugin.default);
 
         this._updateCode(this.state.code);
       });
@@ -233,9 +237,9 @@ export default class Repl extends React.Component {
 
     const presetsArray = this._presetsToArray(state);
 
-    const babili = state.plugins['babili-standalone'];
+    const babili = state.plugins["babili-standalone"];
     if (babili.isEnabled && babili.isLoaded) {
-      presetsArray.push('babili');
+      presetsArray.push("babili");
     }
 
     let envPresetDebugInfo = null;
@@ -244,7 +248,7 @@ export default class Repl extends React.Component {
       const targets = {};
       if (envConfig.browsers) {
         targets.browsers = envConfig.browsers
-          .split(',')
+          .split(",")
           .map(value => value.trim())
           .filter(value => value);
       }
@@ -267,10 +271,10 @@ export default class Repl extends React.Component {
       const options = {
         onPresetBuild,
         targets,
-        useBuiltIns: !state.evaluate && state.builtIns
+        useBuiltIns: !state.evaluate && state.builtIns,
       };
 
-      presetsArray.push(['env', options]);
+      presetsArray.push(["env", options]);
     }
 
     return {
@@ -279,9 +283,9 @@ export default class Repl extends React.Component {
           state.runtimePolyfillState.isEnabled &&
           state.runtimePolyfillState.isLoaded,
         presets: presetsArray,
-        prettify: state.plugins.prettier.isEnabled
+        prettify: state.plugins.prettier.isEnabled,
       }),
-      envPresetDebugInfo
+      envPresetDebugInfo,
     };
   };
 
@@ -290,8 +294,8 @@ export default class Repl extends React.Component {
       state => ({
         envConfig: {
           ...state.envConfig,
-          [name]: value
-        }
+          [name]: value,
+        },
       }),
       this._presetsUpdatedSetStateCallback
     );
@@ -300,7 +304,7 @@ export default class Repl extends React.Component {
   _onIsSidebarExpandedChange = (isExpanded: boolean) => {
     this.setState(
       {
-        isSidebarExpanded: isExpanded
+        isSidebarExpanded: isExpanded,
       },
       this._persistState
     );
@@ -310,27 +314,27 @@ export default class Repl extends React.Component {
     this.setState(state => {
       const { plugins, presets, runtimePolyfillState } = state;
 
-      if (name === 'babel-polyfill') {
+      if (name === "babel-polyfill") {
         runtimePolyfillState.isEnabled = isEnabled;
 
         return {
-          runtimePolyfillState
+          runtimePolyfillState,
         };
       } else if (state.hasOwnProperty(name)) {
         return {
-          [name]: isEnabled
+          [name]: isEnabled,
         };
       } else if (plugins.hasOwnProperty(name)) {
         plugins[name].isEnabled = isEnabled;
 
         return {
-          plugins
+          plugins,
         };
       } else if (presets.hasOwnProperty(name)) {
         presets[name].isEnabled = isEnabled;
 
         return {
-          presets
+          presets,
         };
       }
     }, this._presetsUpdatedSetStateCallback);
@@ -341,30 +345,30 @@ export default class Repl extends React.Component {
 
     const presetsArray = this._presetsToArray();
 
-    const babili = this.state.plugins['babili-standalone'];
+    const babili = this.state.plugins["babili-standalone"];
     if (babili.isEnabled) {
-      presetsArray.push('babili');
+      presetsArray.push("babili");
     }
 
     if (envConfig.isEnvPresetEnabled) {
-      presetsArray.push('env');
+      presetsArray.push("env");
     }
 
     const state = {
-      babili: plugins['babili-standalone'].isEnabled,
+      babili: plugins["babili-standalone"].isEnabled,
       browsers: envConfig.browsers,
       builtIns: this.state.builtIns,
       code: this.state.code,
       debug: this.state.debugEnvPreset,
       evaluate: this.state.runtimePolyfillState.isEnabled,
       lineWrap: this.state.lineWrap,
-      presets: presetsArray.join(','),
+      presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,
       showSidebar: this.state.isSidebarExpanded,
-      targets: envConfigToTargetsString(envConfig)
+      targets: envConfigToTargetsString(envConfig),
     };
 
-    StorageService.set('replState', state);
+    StorageService.set("replState", state);
     UriUtils.updateQuery(state);
   };
 
@@ -388,29 +392,29 @@ export default class Repl extends React.Component {
 
 const styles = {
   codeMirrorPanel: css({
-    flex: '0 0 50%'
+    flex: "0 0 50%",
   }),
   optionsColumn: css({
-    flex: '0 0 auto'
+    flex: "0 0 auto",
   }),
   repl: css({
-    height: '100%',
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'stretch',
-    overflow: 'auto',
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "stretch",
+    overflow: "auto",
 
     [media.mediumAndDown]: {
-      flexDirection: 'column'
-    }
+      flexDirection: "column",
+    },
   }),
   panels: css({
-    height: '100%',
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'stretch',
-    overflow: 'auto'
-  })
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "stretch",
+    overflow: "auto",
+  }),
 };
