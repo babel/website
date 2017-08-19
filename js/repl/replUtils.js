@@ -6,6 +6,7 @@ import UriUtils from "./UriUtils";
 
 import type {
   BabelPresetEnvResult,
+  BabelState,
   EnvConfig,
   PersistedState,
   PluginConfig,
@@ -39,7 +40,9 @@ export const loadPersistedState = (): PersistedState => {
   return {
     babili: merged.babili === true,
     browsers: merged.browsers || "",
+    build: merged.build || "",
     builtIns: merged.builtIns === true,
+    circleciRepo: merged.circleciRepo || "",
     code: merged.code || "",
     debug: merged.debug === true,
     evaluate: merged.evaluate === true,
@@ -48,10 +51,22 @@ export const loadPersistedState = (): PersistedState => {
     prettier: merged.prettier === true,
     showSidebar: merged.showSidebar !== false, // Default to show
     targets: merged.targets || "",
+    version: merged.version || "",
   };
 };
 
 type DefaultPlugins = { [name: string]: boolean };
+
+export const persistedStateToBabelState = (
+  persistedState: PersistedState
+): BabelState => ({
+  build: persistedState.build,
+  circleciRepo: persistedState.circleciRepo,
+  didError: false,
+  isLoaded: false,
+  isLoading: true,
+  version: persistedState.version,
+});
 
 export const configArrayToStateMap = (
   pluginConfigs: PluginConfigs,

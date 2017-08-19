@@ -8,8 +8,9 @@ import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
 import compile from "./compile";
+import loadBabel from "./loadBabel";
 import loadPlugin from "./loadPlugin";
-import scopedEval from "./scopedEval";
+import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import {
   envPresetConfig,
   pluginConfigs,
@@ -22,12 +23,15 @@ import {
   loadPersistedState,
   configArrayToStateMap,
   configToState,
+  persistedStateToBabelState,
   persistedStateToEnvConfig,
 } from "./replUtils";
-import { media } from "./styles";
+import scopedEval from "./scopedEval";
+import { colors, media } from "./styles";
 
 import type {
   BabelPresets,
+  BabelState,
   EnvConfig,
   PluginState,
   PluginStateMap,
@@ -36,6 +40,7 @@ import type {
 
 type Props = {};
 type State = {
+  babel: BabelState,
   builtIns: boolean,
   code: string,
   compiled: ?string,
@@ -86,7 +91,8 @@ export default class Repl extends React.Component {
 
     // A partial State is defined first b'c this._compile needs it.
     // The compile helper will then populate the missing State values.
-    const state = {
+    this.state = {
+      babel: persistedStateToBabelState(persistedState),
       builtIns: persistedState.builtIns,
       code: persistedState.code,
       compiled: null,
@@ -110,17 +116,27 @@ export default class Repl extends React.Component {
       sourceMap: null,
     };
 
-    this.state = {
-      ...state,
-      ...this._compile(persistedState.code, state),
-    };
-
-    // Load any plug-ins enabled by query params.
-    this._checkForUnloadedPlugins();
+    this._setupBabel();
   }
 
   render() {
     const state = this.state;
+
+    if (!state.babel.isLoaded) {
+      const message = state.babel.isLoading
+        ? "Loading Babel..."
+        : "An error occurred while loading Babel :(";
+
+      return (
+        <div className={styles.loader}>
+          <div className={styles.loaderContent}>
+            {message}
+            {state.babel.isLoading &&
+              <PresetLoadingAnimation className={styles.loadingAnimation} />}
+          </div>
+        </div>
+      );
+    }
 
     const options = {
       lineWrapping: state.lineWrap,
@@ -165,6 +181,30 @@ export default class Repl extends React.Component {
         </div>
       </div>
     );
+  }
+
+  _setupBabel() {
+    loadBabel(this.state.babel, success => {
+      this.setState(
+        state => {
+          const babelState = state.babel;
+
+          if (success) {
+            babelState.isLoaded = true;
+            babelState.isLoading = false;
+          } else {
+            babelState.didError = true;
+            babelState.isLoading = false;
+          }
+
+          return {
+            babel: babelState,
+            ...this._compile(state.code, state),
+          };
+        },
+        () => this._checkForUnloadedPlugins()
+      );
+    });
   }
 
   _checkForUnloadedPlugins() {
@@ -370,7 +410,9 @@ export default class Repl extends React.Component {
     const state = {
       babili: plugins["babili-standalone"].isEnabled,
       browsers: envConfig.browsers,
+      build: this.state.babel.build,
       builtIns: this.state.builtIns,
+      circleciRepo: this.state.babel.circleciRepo,
       code: this.state.code,
       debug: this.state.debugEnvPreset,
       evaluate: this.state.runtimePolyfillState.isEnabled,
@@ -379,6 +421,7 @@ export default class Repl extends React.Component {
       prettier: plugins.prettier.isEnabled,
       showSidebar: this.state.isSidebarExpanded,
       targets: envConfigToTargetsString(envConfig),
+      version: this.state.babel.version,
     };
 
     StorageService.set("replState", state);
@@ -408,6 +451,22 @@ export default class Repl extends React.Component {
 }
 
 const styles = {
+  loader: css({
+    alignItems: "center",
+    background: colors.inverseBackgroundDark,
+    color: colors.inverseForegroundLight,
+    display: "flex",
+    height: "100vh",
+    justifyContent: "center",
+  }),
+  loadingAnimation: css({
+    justifyContent: "center",
+    margin: "2rem 0 0 0",
+  }),
+  loaderContent: css({
+    margin: "auto",
+    textAlign: "center",
+  }),
   codeMirrorPanel: css({
     flex: "0 0 50%",
   }),

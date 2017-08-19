@@ -59,14 +59,18 @@ const parseQuery = () => {
     [
       "babili",
       "browsers",
+      "build",
       "builtIns",
       "debug",
+      "circleciRepo",
       "evaluate",
       "lineWrap",
       "presets",
       "prettier",
       "showSidebar",
       "targets",
+      "targets",
+      "version",
     ],
     state
   );

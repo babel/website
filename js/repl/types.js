@@ -23,12 +23,21 @@ export type PluginConfig = {
 
 export type PluginConfigs = Array<PluginConfig>;
 
-export type PluginState = {
-  config: PluginConfig,
+type LazyLoadedState = {
   didError: boolean,
-  isEnabled: boolean,
   isLoaded: boolean,
   isLoading: boolean,
+};
+
+export type BabelState = LazyLoadedState & {
+  build: string,
+  circleciRepo: string,
+  version: string,
+};
+
+export type PluginState = LazyLoadedState & {
+  config: PluginConfig,
+  isEnabled: boolean,
   plugin: any,
 };
 
@@ -44,7 +53,9 @@ export type CompileConfig = {
 export type PersistedState = {
   babili: boolean,
   browsers: string,
+  build: string,
   builtIns: boolean,
+  circleciRepo: string,
   code: string,
   debug: boolean,
   evaluate: boolean,
@@ -53,6 +64,7 @@ export type PersistedState = {
   prettier: boolean,
   showSidebar: boolean,
   targets: string,
+  version: string,
 };
 
 type BabelPresetTargetsMap = {
