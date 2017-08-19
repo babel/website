@@ -46,10 +46,10 @@ type State = {
   evalError: ?Error,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
-  map: ?string,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
+  sourceMap: ?string
 };
 
 export default class Repl extends React.Component {
@@ -98,13 +98,13 @@ export default class Repl extends React.Component {
       evalError: null,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
-      map: null,
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
       presets: configArrayToStateMap(presetPluginConfigs, defaultPresets),
       runtimePolyfillState: configToState(
         runtimePolyfillConfig,
         persistedState.evaluate
       ),
+      sourceMap: null
     };
 
     this.state = {
@@ -122,15 +122,6 @@ export default class Repl extends React.Component {
     const options = {
       lineWrapping: state.lineWrap,
     };
-
-    let compiled = null;
-    if (state.code) {
-      compiled = state.compiled;
-      if (state.map) {
-        // $FlowFixMe
-        compiled += `\n\n// ${state.map}`;
-      }
-    }
 
     return (
       <div className={styles.repl}>
@@ -162,7 +153,7 @@ export default class Repl extends React.Component {
           />
           <CodeMirrorPanel
             className={styles.codeMirrorPanel}
-            code={compiled}
+            code={state.compiled}
             error={state.evalError}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
@@ -221,7 +212,7 @@ export default class Repl extends React.Component {
         // Just evaluate the most recently compiled code.
         try {
           // eslint-disable-next-line
-          scopedEval(this.state.compiled);
+          scopedEval(this.state.compiled, this.state.sourceMap);
         } catch (error) {
           evalError = error;
         }

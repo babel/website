@@ -1,25 +1,25 @@
 // @flow
 
-import scopedEval from './scopedEval';
+import scopedEval from "./scopedEval";
 
-import type { CompileConfig } from './types';
+import type { CompileConfig } from "./types";
 
 type Return = {
   compiled: ?string,
   compileError: ?Error,
-  evalError: ?Error
+  evalError: ?Error,
 };
 
 const DEFAULT_PRETTIER_CONFIG = {
   bracketSpacing: true,
   jsxBracketSameLine: false,
-  parser: 'babylon',
+  parser: "babylon",
   printWidth: 80,
   semi: true,
   singleQuote: false,
   tabWidth: 2,
-  trailingComma: 'none',
-  useTabs: false
+  trailingComma: "none",
+  useTabs: false,
 };
 
 export default function compile(code: string, config: CompileConfig): Return {
@@ -31,9 +31,9 @@ export default function compile(code: string, config: CompileConfig): Return {
   try {
     const transformed = window.Babel.transform(code, {
       babelrc: false,
-      filename: 'repl',
+      filename: "repl",
       presets: config.presets,
-      plugins: ['transform-regenerator'],
+      plugins: ["transform-regenerator"],
       sourceMap: true
     });
 
@@ -62,7 +62,7 @@ export default function compile(code: string, config: CompileConfig): Return {
     if (config.evaluate) {
       try {
         // eslint-disable-next-line
-        scopedEval(code, compiled, sourceMap);
+        scopedEval(compiled, sourceMap);
       } catch (error) {
         evalError = error;
       }
