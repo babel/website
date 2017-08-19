@@ -49,7 +49,7 @@ type State = {
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
-  sourceMap: ?string
+  sourceMap: ?string,
 };
 
 export default class Repl extends React.Component {
@@ -104,7 +104,7 @@ export default class Repl extends React.Component {
         runtimePolyfillConfig,
         persistedState.evaluate
       ),
-      sourceMap: null
+      sourceMap: null,
     };
 
     this.state = {
@@ -280,8 +280,11 @@ export default class Repl extends React.Component {
       presetsArray.push(["env", options]);
     }
 
+    // Only generate source maps if "Evaluate" is enabled.
+    const generateSourceMaps = state.runtimePolyfillState.isEnabled;
+
     return {
-      ...compile(code, {
+      ...compile(code, generateSourceMaps, {
         evaluate:
           state.runtimePolyfillState.isEnabled &&
           state.runtimePolyfillState.isLoaded,

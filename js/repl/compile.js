@@ -22,7 +22,11 @@ const DEFAULT_PRETTIER_CONFIG = {
   useTabs: false,
 };
 
-export default function compile(code: string, config: CompileConfig): Return {
+export default function compile(
+  code: string,
+  generateSourceMaps: boolean,
+  config: CompileConfig
+): Return {
   let compiled = null;
   let compileError = null;
   let evalError = null;
@@ -34,15 +38,17 @@ export default function compile(code: string, config: CompileConfig): Return {
       filename: "repl",
       presets: config.presets,
       plugins: ["transform-regenerator"],
-      sourceMap: true
+      sourceMap: generateSourceMaps,
     });
 
     compiled = transformed.code;
 
-    try {
-      sourceMap = JSON.stringify(transformed.map);
-    } catch (error) {
-      console.error(`Source Map generation failed: ${error}`);
+    if (generateSourceMaps) {
+      try {
+        sourceMap = JSON.stringify(transformed.map);
+      } catch (error) {
+        console.error(`Source Map generation failed: ${error}`);
+      }
     }
 
     if (config.prettify && window.prettier !== undefined) {
@@ -78,6 +84,6 @@ export default function compile(code: string, config: CompileConfig): Return {
     compiled,
     compileError,
     evalError,
-    sourceMap
+    sourceMap,
   };
 }
