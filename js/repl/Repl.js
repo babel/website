@@ -1,6 +1,7 @@
 // @flow
 
 import { css } from "glamor";
+import debounce from "lodash.debounce";
 import React from "react";
 import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
@@ -51,6 +52,8 @@ type State = {
   runtimePolyfillState: PluginState,
   sourceMap: ?string,
 };
+
+const DEBOUNCE_DELAY = 500;
 
 export default class Repl extends React.Component {
   static defaultProps = {
@@ -112,8 +115,17 @@ export default class Repl extends React.Component {
       ...this._compile(persistedState.code, state),
     };
 
-    // Load any plug-ins enabled by query params
+    // Load any plug-ins enabled by query params.
     this._checkForUnloadedPlugins();
+
+    // Debounce certain expensive actions.
+    // This also avoids prematurely warning the user about invalid syntax,
+    // eg when in the middle of typing a variable name.
+    this._compileToState = debounce(this._compileToState, DEBOUNCE_DELAY);
+    this._presetsUpdatedSetStateCallback = debounce(
+      this._presetsUpdatedSetStateCallback,
+      DEBOUNCE_DELAY
+    );
   }
 
   render() {
@@ -292,6 +304,10 @@ export default class Repl extends React.Component {
     };
   };
 
+  _compileToState = (code: string) => {
+    this.setState(state => this._compile(code, state), this._persistState);
+  };
+
   _onEnvPresetSettingChange = (name: string, value: any) => {
     this.setState(
       state => ({
@@ -389,7 +405,11 @@ export default class Repl extends React.Component {
   }
 
   _updateCode = (code: string) => {
-    this.setState(state => this._compile(code, state), this._persistState);
+    this.setState({ code });
+
+    // Update state with compiled code, errors, etc after a small delay.
+    // This prevents frequent updates while a user is typing.
+    this._compileToState(code);
   };
 }
 
