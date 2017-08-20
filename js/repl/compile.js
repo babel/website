@@ -11,21 +11,22 @@ type Return = {
 };
 
 const DEFAULT_PRETTIER_CONFIG = {
-  printWidth: 80,
-  tabWidth: 2,
-  useTabs: false,
-  semi: true,
-  singleQuote: false,
-  trailingComma: "none",
   bracketSpacing: true,
   jsxBracketSameLine: false,
   parser: "babylon",
+  printWidth: 80,
+  semi: true,
+  singleQuote: false,
+  tabWidth: 2,
+  trailingComma: "none",
+  useTabs: false,
 };
 
 export default function compile(code: string, config: CompileConfig): Return {
   let compiled = null;
   let compileError = null;
   let evalError = null;
+  let sourceMap = null;
 
   try {
     const transformed = window.Babel.transform(code, {
@@ -33,9 +34,18 @@ export default function compile(code: string, config: CompileConfig): Return {
       filename: "repl",
       presets: config.presets,
       plugins: ["transform-regenerator"],
+      sourceMap: config.sourceMap,
     });
 
     compiled = transformed.code;
+
+    if (config.sourceMap) {
+      try {
+        sourceMap = JSON.stringify(transformed.map);
+      } catch (error) {
+        console.error(`Source Map generation failed: ${error}`);
+      }
+    }
 
     if (config.prettify && window.prettier !== undefined) {
       // TODO Don't re-parse; just pass Prettier the AST we already have.
@@ -54,7 +64,7 @@ export default function compile(code: string, config: CompileConfig): Return {
     if (config.evaluate) {
       try {
         // eslint-disable-next-line
-        scopedEval(compiled);
+        scopedEval(compiled, sourceMap);
       } catch (error) {
         evalError = error;
       }
@@ -62,6 +72,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   } catch (error) {
     compiled = null;
     compileError = error;
+    sourceMap = null;
   }
 
   return {
@@ -69,5 +80,6 @@ export default function compile(code: string, config: CompileConfig): Return {
     compiled,
     compileError,
     evalError,
+    sourceMap,
   };
 }

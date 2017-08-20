@@ -49,6 +49,7 @@ type State = {
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
+  sourceMap: ?string,
 };
 
 export default class Repl extends React.Component {
@@ -103,6 +104,7 @@ export default class Repl extends React.Component {
         runtimePolyfillConfig,
         persistedState.evaluate
       ),
+      sourceMap: null,
     };
 
     this.state = {
@@ -155,6 +157,7 @@ export default class Repl extends React.Component {
             error={state.evalError}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
+            placeholder="Compiled output will be shown here"
           />
         </div>
       </div>
@@ -209,7 +212,7 @@ export default class Repl extends React.Component {
         // Just evaluate the most recently compiled code.
         try {
           // eslint-disable-next-line
-          scopedEval(this.state.compiled);
+          scopedEval(this.state.compiled, this.state.sourceMap);
         } catch (error) {
           evalError = error;
         }
@@ -233,7 +236,7 @@ export default class Repl extends React.Component {
   }
 
   _compile = (code: string, state: State) => {
-    const { envConfig } = state;
+    const { envConfig, runtimePolyfillState } = state;
 
     const presetsArray = this._presetsToArray(state);
 
@@ -280,10 +283,10 @@ export default class Repl extends React.Component {
     return {
       ...compile(code, {
         evaluate:
-          state.runtimePolyfillState.isEnabled &&
-          state.runtimePolyfillState.isLoaded,
+          runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
         presets: presetsArray,
         prettify: state.plugins.prettier.isEnabled,
+        sourceMap: runtimePolyfillState.isEnabled,
       }),
       envPresetDebugInfo,
     };
