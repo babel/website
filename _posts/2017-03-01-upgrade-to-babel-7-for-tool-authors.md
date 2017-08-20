@@ -35,6 +35,61 @@ Calls to `babel.transform` or any other transform function may return `null` if 
 
 The `opts.basename` option exposed on `state.file.opts` has been removed. If you need it, best to build it from `opts.filename` yourself [babel/babel#5467](https://github.com/babel/babel/pull/5467).
 
+## Babylon
+
+> Removed the `*` plugin option [#301](https://github.com/babel/babylon/pull/301) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+This was first added in v6.14.1 (Nov 17, 2016) so it's unlikely anyone was using this.
+
+This catch-all option was removed; instead you should specifically decide which plugins you want to activate.
+
+We thought it would be a good idea for tools so they wouldn't have to constantly update their config but it also means we can't easily make a breaking change.
+
+Before:
+
+```js
+babylon.parse(code, {
+  plugins: [ "*" ]
+})
+```
+
+You can get the old behavior using:
+
+```js
+babylon.parse(code, {
+  plugins: [
+    "asyncGenerators",
+    "classProperties",
+    "decorators",
+    "doExpressions",
+    "dynamicImport",
+    "exportExtensions",
+    "flow",
+    "functionBind",
+    "functionSent",
+    "jsx",
+    "objectRestSpread",
+  ]
+})
+```
+
+See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
+
+> Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+## `babel-traverse`
+
+`getFunctionParent` will no longer return `Program`, please use `getProgramParent` instead [#5923](https://github.com/babel/babel/pull/5923). ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+It doesn't make sense that a function named `getFunctionParent` also returns the Program, so that was removed.
+
+To get the equivalent behavior, you'll need to make a change like
+
+```diff
+- path.scope.getFunctionParent()
++ path.scope.getFunctionParent() || path.scope.getProgramParent()
+```
+
 ## AST changes
 
 > ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
@@ -219,58 +274,3 @@ The two AST-Nodes `RestProperty` and `SpreadProperty` have been removed in favor
 ```
 
 See our [upgrade PR for Babel](https://github.com/babel/babel/pull/5317) and the [Babylon AST spec](https://github.com/babel/babylon/blob/7.0/ast/spec.md) for more information.
-
-## Babylon
-
-> TODO Removed the `*` plugin option [babel/babylon#301](https://github.com/babel/babylon/pull/301) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-This was first added in v6.14.1 (Nov 17, 2016) so it's unlikely anyone was using this.
-
-This catch-all option was removed; instead you should specifically decide which plugins you want to activate.
-
-We thought it would be a good idea for tools so they wouldn't have to constantly update their config but it also means we can't easily make a breaking change.
-
-Before:
-
-```js
-babylon.parse(code, {
-  plugins: [ "*" ]
-})
-```
-
-You can get the old behavior using:
-
-```js
-babylon.parse(code, {
-  plugins: [
-    "asyncGenerators",
-    "classProperties",
-    "decorators",
-    "doExpressions",
-    "dynamicImport",
-    "exportExtensions",
-    "flow",
-    "functionBind",
-    "functionSent",
-    "jsx",
-    "objectRestSpread",
-  ]
-})
-```
-
-See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
-
-> TODO: Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-## `babel-traverse`
-
-`getFunctionParent` will no longer return `Program`, please use `getProgramParent` instead [babel/babel#5923](https://github.com/babel/babel/pull/5923). ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-It doesn't make sense that a function named `getFunctionParent` also returns the Program, so that was removed.
-
-To get the equivalent behavior, you'll need to make a change like
-
-```diff
-- path.scope.getFunctionParent()
-+ path.scope.getFunctionParent() || path.scope.getProgramParent()
-```
