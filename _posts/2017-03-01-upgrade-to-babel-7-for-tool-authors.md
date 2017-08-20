@@ -17,12 +17,16 @@ Refer users to this document for those that create tools that depend on Babel (s
 
 ## All Babel packages
 
-> Support for Node.js 0.10 and 0.12 has been dropped ![high](https://img.shields.io/badge/level%20of%20awesomeness%3F-high-red.svg)
+### NodeJS support
+![high](https://img.shields.io/badge/level%20of%20awesomeness%3F-high-red.svg)
 
-> Dropped use of `add-module-exports` plugin on Babel packages ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+Support for Node.js 0.10 and 0.12 has been dropped as both of this versions are out of maintenance.
 
+### Export changes
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+Dropped use of `add-module-exports` plugin on Babel packages.
 This had to be used earlier to prevent a breaking change with our exports.
-
 If you import a Babel package in a library you may need to use `.default` when using `require` rather than `import`.
 
 ## `babel-core`
@@ -91,8 +95,6 @@ To get the equivalent behavior, you'll need to make a change like
 ```
 
 ## AST changes
-
-> ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
 ### Tokens removed
 
