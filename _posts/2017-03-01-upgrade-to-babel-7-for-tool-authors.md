@@ -39,6 +39,25 @@ The `opts.basename` option exposed on `state.file.opts` has been removed. If you
 
 > ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
+### Tokens removed
+
+In previous versions `tokens` were always attached to the AST on the top-level. In the latests version of babylon we removed this behavior and made it disabled by default to improve the performance of the parser. All usages in babel itself have been remove and `babel-generator` is not using the tokens anymore for pretty printing.
+
+If your babel-plugin uses `tokens` at the moment, evaluate if it is still necessary and try to remove the usage if possible. If your plugin really depends on getting tokens you can reactivate it but please only consider this if there is no other way as this will hurt users performance.
+
+To activate you need to set the `tokens` option of babylon to true. You can do this directly from your plugin.
+
+```js
+export default function() {
+  return {
+    manipulateOptions(opts, parserOpts) {
+      parserOpts.tokens = true;
+    },
+    ...
+  };
+}
+```
+
 ### Renamed
 
 The following nodes have been renamed:
@@ -242,9 +261,6 @@ babylon.parse(code, {
 See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
 
 > TODO: Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-> TODO: Tokens are not added to the AST by default anymore
-
 
 ## `babel-traverse`
 
