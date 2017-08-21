@@ -59,6 +59,7 @@
     "codemirror": "5.28.0",
     "glamor": "2.20.39",
     "lodash.camelcase": "^4.3.0",
+    "lodash.debounce": "^4.0.8",
     "lz-string": "^1.4.4",
     "react": "16.0.0-beta.3",
     "react-dom": "16.0.0-beta.3"
