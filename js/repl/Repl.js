@@ -123,9 +123,13 @@ export default class Repl extends React.Component {
     const state = this.state;
 
     if (!state.babel.isLoaded) {
-      const message = state.babel.isLoading
-        ? "Loading Babel..."
-        : "An error occurred while loading Babel :(";
+      let message = "Loading Babel...";
+
+      if (!state.babel.isLoading && state.babel.didError) {
+        message =
+          state.babel.errorMessage ||
+          "An error occurred while loading Babel :(";
+      }
 
       return (
         <div className={styles.loader}>
@@ -184,26 +188,15 @@ export default class Repl extends React.Component {
   }
 
   _setupBabel() {
-    loadBabel(this.state.babel, success => {
-      this.setState(
-        state => {
-          const babelState = state.babel;
+    loadBabel(this.state.babel, babelState => {
+      this.setState(state => ({
+        ...babelState,
+        ...(babelState.isLoaded ? this._compile(state.code, state) : null),
+      }));
 
-          if (success) {
-            babelState.isLoaded = true;
-            babelState.isLoading = false;
-          } else {
-            babelState.didError = true;
-            babelState.isLoading = false;
-          }
-
-          return {
-            babel: babelState,
-            ...this._compile(state.code, state),
-          };
-        },
-        () => this._checkForUnloadedPlugins()
-      );
+      if (babelState.isLoaded) {
+        this._checkForUnloadedPlugins();
+      }
     });
   }
 

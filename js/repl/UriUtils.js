@@ -69,7 +69,6 @@ const parseQuery = () => {
       "prettier",
       "showSidebar",
       "targets",
-      "targets",
       "version",
     ],
     state

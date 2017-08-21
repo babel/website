@@ -31,6 +31,7 @@ type LazyLoadedState = {
 
 export type BabelState = LazyLoadedState & {
   build: string,
+  errorMessage?: string,
   circleciRepo: string,
   version: string,
 };

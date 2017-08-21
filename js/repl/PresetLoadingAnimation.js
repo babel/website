@@ -5,7 +5,9 @@ type PresetLoadingAnimationProps = {
   className: ?string,
 };
 
-const PresetLoadingAnimation = ({ className }: PresetLoadingAnimationProps) =>
+const PresetLoadingAnimation = ({
+  className = "",
+}: PresetLoadingAnimationProps) =>
   <div className={`${className || ""} ${styles.loadingAnimation}`}>
     <div className={`${styles.loadingTick} ${styles.loadingTick1}`} />
     <div className={`${styles.loadingTick} ${styles.loadingTick2}`} />

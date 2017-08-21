@@ -2,9 +2,25 @@ import loadBuildArtifacts from "./loadBuildArtifacts";
 import loadScript from "./loadScript";
 import { BabelState, LoadScriptCallback } from "./types";
 
-export default function loadBabel(config: BabelState, cb: LoadScriptCallback) {
-  function doLoad(url) {
-    loadScript(url, cb);
+const DEFAULT_BABEL_VERSION = "6";
+
+export default function loadBabel(
+  config: BabelState,
+  cb: (config: BabelState) => void
+) {
+  function doLoad(url, error) {
+    loadScript(url, success => {
+      if (success) {
+        config.isLoaded = true;
+        config.isLoading = false;
+      } else {
+        config.didError = true;
+        config.errorMessage = error;
+        config.isLoading = false;
+      }
+
+      cb(config);
+    });
   }
 
   // See if a CircleCI build number was passed in the path
@@ -36,7 +52,7 @@ export default function loadBabel(config: BabelState, cb: LoadScriptCallback) {
 
   // No specific version passed, so just download the latest release.
   if (!version) {
-    version = "6"; // This should be changed to "latest" when Babel 7 is stable
+    version = DEFAULT_BABEL_VERSION;
   }
 
   doLoad(`https://unpkg.com/babel-standalone@${version}/babel.js`);
