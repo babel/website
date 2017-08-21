@@ -542,7 +542,7 @@ const styles = {
     paddingRight: "1.5rem",
 
     [media.large]: {
-      borderTop: "2px solid #121417",
+      background: "#181a1f",
       margin: 0,
       padding: "1rem 1.5rem",
     },
