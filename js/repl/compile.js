@@ -8,6 +8,7 @@ type Return = {
   compiled: ?string,
   compileError: ?Error,
   evalError: ?Error,
+  sourceMap: ?string,
 };
 
 const DEFAULT_PRETTIER_CONFIG = {
@@ -76,7 +77,6 @@ export default function compile(code: string, config: CompileConfig): Return {
   }
 
   return {
-    code,
     compiled,
     compileError,
     evalError,

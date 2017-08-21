@@ -117,15 +117,6 @@ export default class Repl extends React.Component {
 
     // Load any plug-ins enabled by query params.
     this._checkForUnloadedPlugins();
-
-    // Debounce certain expensive actions.
-    // This also avoids prematurely warning the user about invalid syntax,
-    // eg when in the middle of typing a variable name.
-    this._compileToState = debounce(this._compileToState, DEBOUNCE_DELAY);
-    this._presetsUpdatedSetStateCallback = debounce(
-      this._presetsUpdatedSetStateCallback,
-      DEBOUNCE_DELAY
-    );
   }
 
   render() {
@@ -304,9 +295,12 @@ export default class Repl extends React.Component {
     };
   };
 
-  _compileToState = (code: string) => {
+  // Debounce compilation since it's expensive.
+  // This also avoids prematurely warning the user about invalid syntax,
+  // eg when in the middle of typing a variable name.
+  _compileToState = debounce((code: string) => {
     this.setState(state => this._compile(code, state), this._persistState);
-  };
+  }, DEBOUNCE_DELAY);
 
   _onEnvPresetSettingChange = (name: string, value: any) => {
     this.setState(
