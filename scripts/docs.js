@@ -75,9 +75,19 @@
 
         return offsetTop - navbarOuterHeight - sidebarMargin;
       }),
-      bottom: _.memoize(function() {
-        return $('.footer').outerHeight(true);
-      })
+      bottom: _.throttle(function() {
+        return $('.footer').outerHeight(true) + $('#discourse-comments').outerHeight(true);
+      }, 1000)
+    }
+  });
+
+  $sidebar.on('affixed.bs.affix', function() {
+    var sidebarClientRect = $sidebar[0].getBoundingClientRect();
+
+    if (window.innerHeight - sidebarClientRect.top < sidebarClientRect.height) {
+      $sidebar.css({
+        maxHeight: window.innerHeight - $sidebar[0].getBoundingClientRect().top
+      });
     }
   });
 

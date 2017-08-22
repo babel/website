@@ -81,7 +81,6 @@
     &.affix {
       position: fixed; /* Undo the static from mobile first approach */
       top: 70px;
-      bottom: 0;
       overflow: auto;
     }
 
