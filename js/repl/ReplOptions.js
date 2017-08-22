@@ -78,146 +78,150 @@ class ExpandedContainer extends Component {
 
     return (
       <div className={styles.expandedContainer}>
-        <div className={styles.section}>
-          <div className={styles.sectionHeader}>Settings</div>
-          <PluginToggle
-            config={runtimePolyfillConfig}
-            label="Evaluate"
-            onSettingChange={onSettingChange}
-            state={runtimePolyfillState}
-          />
-          <label className={styles.settingsLabel}>
-            <input
-              checked={lineWrap}
-              onChange={this._onLineWrappingChange}
-              className={styles.inputCheckboxLeft}
-              type="checkbox"
-            />
-            Line Wrap
-          </label>
-          {pluginConfigs.map(config =>
+        <div className={styles.sectionsWrapper}>
+          <div className={styles.section}>
+            <div className={styles.sectionHeader}>Settings</div>
             <PluginToggle
-              config={config}
-              key={config.package}
+              config={runtimePolyfillConfig}
+              label="Evaluate"
               onSettingChange={onSettingChange}
-              state={pluginState[config.package]}
+              state={runtimePolyfillState}
             />
-          )}
-        </div>
-        <div className={styles.section}>
-          <div className={styles.sectionHeader}>Presets</div>
-          {presetPluginConfigs.map(config =>
-            <PluginToggle
-              config={config}
-              key={config.package}
-              onSettingChange={onSettingChange}
-              state={presetState[config.package]}
-            />
-          )}
-        </div>
-        <div className={`${styles.section} ${styles.sectionEnv}`}>
-          <label
-            className={`${styles.sectionHeader} ${styles.sectionEnvHeader}`}
-          >
-            {envPresetState.isLoading
-              ? <PresetLoadingAnimation />
-              : "Env Preset"}
-
-            <input
-              checked={envConfig.isEnvPresetEnabled}
-              className={styles.envPresetCheckbox}
-              type="checkbox"
-              onChange={this._onEnvPresetEnabledChange}
-            />
-          </label>
-          <div className={styles.envPresetColumn}>
-            <label
-              className={`${styles.envPresetColumnLabel} ${styles.highlight}`}
-            >
-              Browser
+            <label className={styles.settingsLabel}>
+              <input
+                checked={lineWrap}
+                onChange={this._onLineWrappingChange}
+                className={styles.inputCheckboxLeft}
+                type="checkbox"
+              />
+              Line Wrap
             </label>
-            <textarea
-              disabled={disableEnvSettings}
-              className={styles.envPresetInput}
-              onChange={this._onBrowsersChange}
-              placeholder={envPresetDefaults.browsers.placeholder}
-              value={envConfig.browsers}
-            />
+            {pluginConfigs.map(config =>
+              <PluginToggle
+                config={config}
+                key={config.package}
+                onSettingChange={onSettingChange}
+                state={pluginState[config.package]}
+              />
+            )}
           </div>
-          <label className={styles.envPresetRow}>
-            <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
-              Electron
-            </span>
-            <input
-              className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
-              disabled={
-                !envPresetState.isLoaded ||
-                !envConfig.isEnvPresetEnabled ||
-                !envConfig.isElectronEnabled
-              }
-              type="number"
-              min={envPresetDefaults.electron.min}
-              max={999}
-              step={envPresetDefaults.electron.step}
-              onChange={this._onElectronChange}
-              value={envConfig.electron}
-            />
-            <input
-              checked={envConfig.isElectronEnabled}
-              className={styles.envPresetCheckbox}
-              disabled={disableEnvSettings}
-              onChange={this._onIsElectronEnabledChange}
-              type="checkbox"
-            />
-          </label>
-          <label className={styles.envPresetRow}>
-            <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
-              Node
-            </span>
-            <input
-              className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
-              disabled={
-                !envPresetState.isLoaded ||
-                !envConfig.isEnvPresetEnabled ||
-                !envConfig.isNodeEnabled
-              }
-              type="number"
-              min={envPresetDefaults.node.min}
-              max={999}
-              step={envPresetDefaults.node.step}
-              onChange={this._onNodeChange}
-              value={envConfig.node}
-            />
-            <input
-              checked={envConfig.isNodeEnabled}
-              className={styles.envPresetCheckbox}
-              disabled={disableEnvSettings}
-              onChange={this._onIsNodeEnabledChange}
-              type="checkbox"
-            />
-          </label>
-          <label className={styles.settingsLabel}>
-            <input
-              checked={builtIns}
-              className={styles.inputCheckboxLeft}
-              disabled={runtimePolyfillState.isEnabled || disableEnvSettings}
-              onChange={this._onBuiltInsChange}
-              type="checkbox"
-            />
-            Built-ins
-          </label>
-          <label className={styles.settingsLabel}>
-            <input
-              checked={debugEnvPreset}
-              className={styles.inputCheckboxLeft}
-              disabled={disableEnvSettings}
-              onChange={this._onDebugChange}
-              type="checkbox"
-            />
-            Debug
-          </label>
-        </div>
+          <div className={styles.section}>
+            <div className={styles.sectionHeader}>Presets</div>
+            {presetPluginConfigs.map(config =>
+              <PluginToggle
+                config={config}
+                key={config.package}
+                onSettingChange={onSettingChange}
+                state={presetState[config.package]}
+              />
+            )}
+          </div>
+          <div className={`${styles.section} ${styles.sectionEnv}`}>
+            <label
+              className={`${styles.sectionHeader} ${styles.sectionEnvHeader}`}
+            >
+              {envPresetState.isLoading
+                ? <PresetLoadingAnimation />
+                : "Env Preset"}
 
+              <input
+                checked={envConfig.isEnvPresetEnabled}
+                className={styles.envPresetCheckbox}
+                type="checkbox"
+                onChange={this._onEnvPresetEnabledChange}
+              />
+            </label>
+            <div className={styles.envPresetColumn}>
+              <label
+                className={`${styles.envPresetColumnLabel} ${styles.highlight}`}
+              >
+                Browser
+              </label>
+              <textarea
+                disabled={disableEnvSettings}
+                className={styles.envPresetInput}
+                onChange={this._onBrowsersChange}
+                placeholder={envPresetDefaults.browsers.placeholder}
+                value={envConfig.browsers}
+              />
+            </div>
+            <label className={styles.envPresetRow}>
+              <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
+                Electron
+              </span>
+              <input
+                className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
+                disabled={
+                  !envPresetState.isLoaded ||
+                  !envConfig.isEnvPresetEnabled ||
+                  !envConfig.isElectronEnabled
+                }
+                type="number"
+                min={envPresetDefaults.electron.min}
+                max={999}
+                step={envPresetDefaults.electron.step}
+                onChange={this._onElectronChange}
+                value={envConfig.electron}
+              />
+              <input
+                checked={envConfig.isElectronEnabled}
+                className={styles.envPresetCheckbox}
+                disabled={disableEnvSettings}
+                onChange={this._onIsElectronEnabledChange}
+                type="checkbox"
+              />
+            </label>
+            <label className={styles.envPresetRow}>
+              <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
+                Node
+              </span>
+              <input
+                className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
+                disabled={
+                  !envPresetState.isLoaded ||
+                  !envConfig.isEnvPresetEnabled ||
+                  !envConfig.isNodeEnabled
+                }
+                type="number"
+                min={envPresetDefaults.node.min}
+                max={999}
+                step={envPresetDefaults.node.step}
+                onChange={this._onNodeChange}
+                value={envConfig.node}
+              />
+              <input
+                checked={envConfig.isNodeEnabled}
+                className={styles.envPresetCheckbox}
+                disabled={disableEnvSettings}
+                onChange={this._onIsNodeEnabledChange}
+                type="checkbox"
+              />
+            </label>
+            <label className={styles.settingsLabel}>
+              <input
+                checked={builtIns}
+                className={styles.inputCheckboxLeft}
+                disabled={runtimePolyfillState.isEnabled || disableEnvSettings}
+                onChange={this._onBuiltInsChange}
+                type="checkbox"
+              />
+              Built-ins
+            </label>
+            <label className={styles.settingsLabel}>
+              <input
+                checked={debugEnvPreset}
+                className={styles.inputCheckboxLeft}
+                disabled={disableEnvSettings}
+                onChange={this._onDebugChange}
+                type="checkbox"
+              />
+              Debug
+            </label>
+          </div>
+        </div>
+        <div className={styles.babelVersion}>
+          v{window.Babel.version}
+        </div>
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
           onClick={() => onIsExpandedChange(false)}
@@ -373,14 +377,14 @@ const styles = {
     },
   }),
   expandedContainer: css({
+    flexDirection: "column",
     minWidth: "150px",
     display: "flex",
     overflow: "auto",
-    boxSshadow:
+    boxShadow:
       "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.24) 0px 1px 4px",
 
     [media.large]: {
-      flexDirection: "column",
       height: "100%",
 
       [`& .${nestedCloseButton}`]: {
@@ -389,10 +393,6 @@ const styles = {
     },
 
     [media.mediumAndDown]: {
-      flexDirection: "row",
-      flexWrap: "wrap",
-      overflow: "auto",
-
       [`& .${nestedCloseButton}`]: {
         bottom: "-1.5rem",
       },
@@ -429,6 +429,15 @@ const styles = {
 
     [media.mediumAndDown]: {
       transform: "rotate(90deg)",
+    },
+  }),
+  sectionsWrapper: css({
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+
+    [media.large]: {
+      display: "block",
     },
   }),
   section: css({
@@ -524,6 +533,18 @@ const styles = {
 
     "&:disabled": {
       opacity: 0.5,
+    },
+  }),
+  babelVersion: css({
+    fontFamily: "monospace",
+    fontSize: "1.25rem",
+    marginLeft: "auto",
+    paddingRight: "1.5rem",
+
+    [media.large]: {
+      background: "#181a1f",
+      margin: 0,
+      padding: "1rem 1.5rem",
     },
   }),
 };
