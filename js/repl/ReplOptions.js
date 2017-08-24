@@ -21,6 +21,7 @@ import type {
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
+type UploadFile = (file: File) => void;
 
 type Props = {
   builtIns: boolean,
@@ -33,6 +34,8 @@ type Props = {
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
+  onFileUpload: UploadFile,
+  onDownload: () => void,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
@@ -53,6 +56,7 @@ export default ReplOptions;
 // Without requiring gratuitous use of Object-spread.
 class ExpandedContainer extends Component {
   props: Props;
+  _fileInput: ?HTMLElement;
 
   static defaultProps = {
     className: "",
@@ -218,6 +222,12 @@ class ExpandedContainer extends Component {
               Debug
             </label>
           </div>
+           <div className={styles.section}>
+            <div className={styles.sectionHeader}>Upload/Download</div>
+            <button className={styles.button} onClick={this._chooseFile}>Upload</button>
+            <input type="file" ref={(input) => this._fileInput = input} onChange={this._onFileUpload} style={{display: "none"}} />
+            <button className={styles.button} onClick={this._onDownload}>Download</button>
+          </div>
         </div>
         <div className={styles.babelVersion}>
           v{window.Babel.version}
@@ -279,6 +289,18 @@ class ExpandedContainer extends Component {
   _onNodeChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange("node", parseFloat(event.target.value));
   };
+
+  _chooseFile = (event: SyntheticInputEvent) => {
+    this._fileInput && this._fileInput.click();
+  };
+
+  _onFileUpload = (event: SyntheticInputEvent) => {
+    this.props.onFileUpload(event.target.files[0]);
+  };
+
+  _onDownload = (event: SyntheticInputEvent) => {
+    this.props.onDownload();
+  }
 }
 
 type CollapsedContainerProps = {
@@ -545,6 +567,20 @@ const styles = {
       background: "#181a1f",
       margin: 0,
       padding: "1rem 1.5rem",
+    },
+  }),
+  button: css({
+    backgroundColor: colors.inverseBackground,
+    color: "#fff",
+    marginBottom: "1em",
+    border: "1px solid",
+    borderRadius: "0.25em",
+    fontSize: "1.25rem",
+    fontWeight: "bold",
+    padding: "0.5em",
+
+    "&:hover": {
+      backgroundColor: colors.inverseBackgroundDark,
     },
   }),
 };

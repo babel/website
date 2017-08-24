@@ -4,6 +4,7 @@ import { css } from "glamor";
 import debounce from "lodash.debounce";
 import React from "react";
 import CodeMirrorPanel from "./CodeMirrorPanel";
+import FileDrop from "./FileDrop";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
@@ -147,7 +148,7 @@ export default class Repl extends React.Component {
     };
 
     return (
-      <div className={styles.repl}>
+      <FileDrop onFileDrop={this._readCodeFromFile} className={styles.repl}>
         <ReplOptions
           builtIns={state.builtIns}
           className={styles.optionsColumn}
@@ -159,6 +160,8 @@ export default class Repl extends React.Component {
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
+          onFileUpload={this._readCodeFromFile}
+          onDownload={this._downloadCode}
           pluginState={state.plugins}
           presetState={state.presets}
           runtimePolyfillConfig={runtimePolyfillConfig}
@@ -183,7 +186,7 @@ export default class Repl extends React.Component {
             placeholder="Compiled output will be shown here"
           />
         </div>
-      </div>
+      </FileDrop>
     );
   }
 
@@ -389,6 +392,16 @@ export default class Repl extends React.Component {
     }, this._presetsUpdatedSetStateCallback);
   };
 
+  _readCodeFromFile = (file: File) => {
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      this._updateCode(event.target.result);
+    };
+
+    reader.readAsText(file);
+  };
+
   _persistState = () => {
     const { envConfig, plugins } = this.state;
 
@@ -444,6 +457,16 @@ export default class Repl extends React.Component {
     // This prevents frequent updates while a user is typing.
     this._compileToState(code);
   };
+
+  _downloadCode = () => {
+    const anchor = document.createElement("a");
+    const blob = new Blob([this.state.compiled], {type: 'text/javascript'});
+    const href = window.URL.createObjectURL(blob);
+
+    anchor.href = href;
+    anchor.download = "babel-repl-output.js";
+    anchor.click();
+  }
 }
 
 const styles = {
