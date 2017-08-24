@@ -61,6 +61,7 @@ export type PersistedState = {
   debug: boolean,
   evaluate: boolean,
   lineWrap: boolean,
+  spec: boolean,
   presets: string,
   prettier: boolean,
   showSidebar: boolean,

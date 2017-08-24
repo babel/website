@@ -52,6 +52,7 @@ type State = {
   evalError: ?Error,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
+  spec: boolean,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
@@ -59,6 +60,7 @@ type State = {
 };
 
 const DEBOUNCE_DELAY = 500;
+const presetsSupportOptions = ["es2015"];
 
 export default class Repl extends React.Component {
   static defaultProps = {
@@ -104,6 +106,7 @@ export default class Repl extends React.Component {
         envPresetConfig,
         envConfig.isEnvPresetEnabled
       ),
+      spec: false,
       evalError: null,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
@@ -156,6 +159,7 @@ export default class Repl extends React.Component {
           envPresetState={state.envPresetState}
           isExpanded={state.isSidebarExpanded}
           lineWrap={state.lineWrap}
+          spec={state.spec}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
@@ -277,7 +281,7 @@ export default class Repl extends React.Component {
   _compile = (code: string, state: State) => {
     const { envConfig, runtimePolyfillState } = state;
 
-    const presetsArray = this._presetsToArray(state);
+    let presetsArray = this._presetsToArray(state);
 
     const babili = state.plugins["babili-standalone"];
     if (babili.isEnabled && babili.isLoaded) {
@@ -315,9 +319,16 @@ export default class Repl extends React.Component {
         targets,
         useBuiltIns: !state.evaluate && state.builtIns,
       };
-
       presetsArray.push(["env", options]);
     }
+
+    // transform "es2015" to array type to add "spec" option
+    presetsArray = presetsArray.map(preset => {
+      return presetsSupportOptions.includes(preset) &&
+      typeof preset === "string"
+        ? [preset, { spec: state.spec }]
+        : preset;
+    });
 
     return {
       ...compile(code, {
@@ -413,6 +424,7 @@ export default class Repl extends React.Component {
       debug: this.state.debugEnvPreset,
       evaluate: this.state.runtimePolyfillState.isEnabled,
       lineWrap: this.state.lineWrap,
+      spec: this.state.spec,
       presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,
       showSidebar: this.state.isSidebarExpanded,

@@ -47,6 +47,7 @@ export const loadPersistedState = (): PersistedState => {
     debug: merged.debug === true,
     evaluate: merged.evaluate === true,
     lineWrap: merged.lineWrap != null ? merged.lineWrap : true,
+    spec: merged.spec != null ? merged.spec : false,
     presets: merged.presets || "",
     prettier: merged.prettier === true,
     showSidebar: merged.showSidebar !== false, // Default to show

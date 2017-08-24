@@ -30,6 +30,7 @@ type Props = {
   envPresetState: PluginState,
   isExpanded: boolean,
   lineWrap: boolean,
+  spec: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
@@ -65,6 +66,7 @@ class ExpandedContainer extends Component {
       envConfig,
       envPresetState,
       lineWrap,
+      spec,
       onIsExpandedChange,
       onSettingChange,
       pluginState,
@@ -75,6 +77,10 @@ class ExpandedContainer extends Component {
 
     const disableEnvSettings =
       !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled;
+
+    const showSpecOption =
+      presetState["babel-preset-es2015"].isEnabled &&
+      !envConfig.isEnvPresetEnabled;
 
     return (
       <div className={styles.expandedContainer}>
@@ -104,6 +110,18 @@ class ExpandedContainer extends Component {
                 state={pluginState[config.package]}
               />
             )}
+
+            {showSpecOption
+              ? <label className={styles.settingsLabel}>
+                  <input
+                    checked={spec}
+                    onChange={this._onSpecChange}
+                    className={styles.inputCheckboxLeft}
+                    type="checkbox"
+                  />
+                  Spec
+                </label>
+              : null}
           </div>
           <div className={styles.section}>
             <div className={styles.sectionHeader}>Presets</div>
@@ -240,6 +258,11 @@ class ExpandedContainer extends Component {
   };
 
   _onEnvPresetEnabledChange = (event: SyntheticInputEvent) => {
+    // disable and hide spec option if Env preset is enabled
+    if (event.target.checked) {
+      this.setState({ spec: false });
+    }
+
     this.props.onEnvPresetSettingChange(
       "isEnvPresetEnabled",
       event.target.checked
@@ -274,6 +297,10 @@ class ExpandedContainer extends Component {
 
   _onLineWrappingChange = (event: SyntheticInputEvent) => {
     this.props.onSettingChange("lineWrap", event.target.checked);
+  };
+
+  _onSpecChange = (event: SyntheticInputEvent) => {
+    this.props.onSettingChange("spec", event.target.checked);
   };
 
   _onNodeChange = (event: SyntheticInputEvent) => {
