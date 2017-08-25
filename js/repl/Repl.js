@@ -264,10 +264,10 @@ export default class Repl extends React.Component {
       this._workerApi.loadPlugin(envPresetState, () => {
         // This preset is not built into Babel standalone due to its size.
         // Before we can use it we need to explicitly register it.
-        // TODO web worker:
-        //        window.Babel.registerPreset("env", envPresetState.plugin.default);
-
-        this._updateCode(this.state.code);
+        // Because it's loaded in a worker, we need to configure it there as well.
+        this._workerApi
+          .registerEnvPreset()
+          .then(success => this._updateCode(this.state.code));
       });
     }
   }
@@ -302,6 +302,8 @@ export default class Repl extends React.Component {
 
       // onPresetBuild is invoked synchronously during compilation.
       // But the env preset info calculated from the callback should be part of our state update.
+      // TODO Move this config to web worker.
+      // TODO Retrieve envPresetDebugInfo from web worker.
       let onPresetBuild = null;
       if (state.debugEnvPreset) {
         onPresetBuild = (result: BabelPresetEnvResult) => {

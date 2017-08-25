@@ -23,9 +23,7 @@ export default class WorkerApi {
       .postMessage({
         code,
         method: "compile",
-        presets: config.presets,
-        prettify: config.prettify,
-        sourceMap: config.sourceMap,
+        config,
       })
       .then(({ compiled, compileError, sourceMap }) => {
         let evalError = null;
@@ -79,5 +77,11 @@ export default class WorkerApi {
       .then(success => {
         callback(success);
       });
+  }
+
+  registerEnvPreset(): Promise<boolean> {
+    return this._worker.postMessage({
+      method: "registerEnvPreset",
+    });
   }
 }

@@ -2,6 +2,8 @@
 
 import compile from "./compile";
 
+declare var babelPresetEnvStandalone: any;
+declare var Babel: any;
 declare function importScripts(url: string): void;
 declare function registerPromiseWorker(handler: Function): void;
 
@@ -16,11 +18,20 @@ registerPromiseWorker(message => {
 
   switch (method) {
     case "compile":
-      return compile(message.code, message);
+      return compile(message.code, message.config);
 
     case "loadScript":
       try {
         importScripts(message.url);
+
+        return true;
+      } catch (error) {
+        return false;
+      }
+
+    case "registerEnvPreset":
+      try {
+        Babel.registerPreset("env", babelPresetEnvStandalone);
 
         return true;
       } catch (error) {
