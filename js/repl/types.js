@@ -23,7 +23,7 @@ export type PluginConfig = {
 
 export type PluginConfigs = Array<PluginConfig>;
 
-type LazyLoadedState = {
+export type LazyLoadedState = {
   didError: boolean,
   isLoaded: boolean,
   isLoading: boolean,

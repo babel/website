@@ -26,6 +26,7 @@ import {
   persistedStateToBabelState,
   persistedStateToEnvConfig,
 } from "./replUtils";
+import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
 import { colors, media } from "./styles";
 
@@ -69,6 +70,7 @@ export default class Repl extends React.Component {
   state: State;
 
   _numLoadingPlugins = 0;
+  _workerApi = new WorkerApi();
 
   constructor(props: Props, context: any) {
     super(props, context);
@@ -189,17 +191,11 @@ export default class Repl extends React.Component {
 
   _setupBabel() {
     loadBabel(this.state.babel, babelState => {
-      this.setState(
-        state => ({
-          ...babelState,
-          ...(babelState.isLoaded ? this._compile(state.code, state) : null),
-        }),
-        () => {
-          if (babelState.isLoaded) {
-            this._checkForUnloadedPlugins();
-          }
-        }
-      );
+      this.setState(babelState);
+
+      if (babelState.isLoaded) {
+        this._compile(this.state.code, this._checkForUnloadedPlugins);
+      }
     });
   }
 
@@ -219,13 +215,11 @@ export default class Repl extends React.Component {
       if (plugin.isEnabled && !plugin.isLoaded && !plugin.isLoading) {
         this._numLoadingPlugins++;
 
-        loadPlugin(plugin, success => {
+        this._workerApi.loadPlugin(plugin, success => {
           this._numLoadingPlugins--;
 
           if (!success) {
-            this.setState(() => ({
-              plugins,
-            }));
+            this.setState({ plugins });
           }
 
           // Once all plugins have been loaded, re-compile code.
@@ -240,6 +234,9 @@ export default class Repl extends React.Component {
     // It's only needed if we're actually executing the compiled code.
     // Defer loading it unless "evaluate" is enabled.
     if (runtimePolyfillState.isEnabled && !runtimePolyfillState.isLoaded) {
+      // Compilation is done in a web worker for performance reasons,
+      // But eval requires the UI thread so code can access globals like window.
+      // Because of this, the runtime polyfill must be loaded on the UI thread.
       loadPlugin(runtimePolyfillState, () => {
         let evalError = null;
 
@@ -264,7 +261,7 @@ export default class Repl extends React.Component {
     // Babel 'env' preset is large;
     // Only load it if it's been requested.
     if (envConfig.isEnvPresetEnabled && !envPresetState.isLoaded) {
-      loadPlugin(envPresetState, () => {
+      this._workerApi.loadPlugin(envPresetState, () => {
         // This preset is not built into Babel standalone due to its size.
         // Before we can use it we need to explicitly register it.
         window.Babel.registerPreset("env", envPresetState.plugin.default);
@@ -274,7 +271,8 @@ export default class Repl extends React.Component {
     }
   }
 
-  _compile = (code: string, state: State) => {
+  _compile = (code: string, setStateCallback: () => mixed) => {
+    const { state } = this;
     const { envConfig, runtimePolyfillState } = state;
 
     const presetsArray = this._presetsToArray(state);
@@ -319,24 +317,29 @@ export default class Repl extends React.Component {
       presetsArray.push(["env", options]);
     }
 
-    return {
-      ...compile(code, {
-        evaluate:
-          runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
-        presets: presetsArray,
-        prettify: state.plugins.prettier.isEnabled,
-        sourceMap: runtimePolyfillState.isEnabled,
-      }),
-      envPresetDebugInfo,
-    };
+    this._workerApi.compile(code, {
+      evaluate: runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
+      presets: presetsArray,
+      prettify: state.plugins.prettier.isEnabled,
+      sourceMap: runtimePolyfillState.isEnabled,
+    }).then(result => {
+      this.setState(
+        {
+          ...result,
+          envPresetDebugInfo,
+        },
+        setStateCallback
+      );
+    });
   };
 
   // Debounce compilation since it's expensive.
   // This also avoids prematurely warning the user about invalid syntax,
   // eg when in the middle of typing a variable name.
-  _compileToState = debounce((code: string) => {
-    this.setState(state => this._compile(code, state), this._persistState);
-  }, DEBOUNCE_DELAY);
+  _compileToState = debounce(
+    (code: string) => this._compile(code, this._persistState),
+    DEBOUNCE_DELAY
+  );
 
   _onEnvPresetSettingChange = (name: string, value: any) => {
     this.setState(

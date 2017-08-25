@@ -1,13 +1,14 @@
 // @flow
 
-import scopedEval from "./scopedEval";
+// Globals pre-loaded by Worker
+declare var Babel: any;
+declare var prettier: any;
 
 import type { CompileConfig } from "./types";
 
 type Return = {
   compiled: ?string,
   compileError: ?Error,
-  evalError: ?Error,
   sourceMap: ?string,
 };
 
@@ -26,11 +27,10 @@ const DEFAULT_PRETTIER_CONFIG = {
 export default function compile(code: string, config: CompileConfig): Return {
   let compiled = null;
   let compileError = null;
-  let evalError = null;
   let sourceMap = null;
 
   try {
-    const transformed = window.Babel.transform(code, {
+    const transformed = Babel.transform(code, {
       babelrc: false,
       filename: "repl",
       presets: config.presets,
@@ -48,27 +48,18 @@ export default function compile(code: string, config: CompileConfig): Return {
       }
     }
 
-    if (config.prettify && window.prettier !== undefined) {
+    if (config.prettify && prettier !== undefined) {
       // TODO Don't re-parse; just pass Prettier the AST we already have.
       // This will have to wait until we've updated to Babel 7 since Prettier uses it.
       // Prettier doesn't handle ASTs from Babel 6.
       // if (
-      //   window.prettier.__debug !== undefined &&
-      //   typeof window.prettier.__debug.formatAST === 'function'
+      //   prettier.__debug !== undefined &&
+      //   typeof prettier.__debug.formatAST === 'function'
       // ) {
-      //   compiled = window.prettier.__debug.formatAST(transformed.ast, DEFAULT_PRETTIER_CONFIG);
+      //   compiled = prettier.__debug.formatAST(transformed.ast, DEFAULT_PRETTIER_CONFIG);
       // } else {
-      compiled = window.prettier.format(compiled, DEFAULT_PRETTIER_CONFIG);
+      compiled = prettier.format(compiled, DEFAULT_PRETTIER_CONFIG);
       // }
-    }
-
-    if (config.evaluate) {
-      try {
-        // eslint-disable-next-line
-        scopedEval(compiled, sourceMap);
-      } catch (error) {
-        evalError = error;
-      }
     }
   } catch (error) {
     compiled = null;
@@ -79,7 +70,6 @@ export default function compile(code: string, config: CompileConfig): Return {
   return {
     compiled,
     compileError,
-    evalError,
     sourceMap,
   };
 }
