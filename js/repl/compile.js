@@ -8,7 +8,7 @@ import type { CompileConfig } from "./types";
 
 type Return = {
   compiled: ?string,
-  compileError: ?Error,
+  compileError: ?string,
   sourceMap: ?string,
 };
 
@@ -63,7 +63,7 @@ export default function compile(code: string, config: CompileConfig): Return {
     }
   } catch (error) {
     compiled = null;
-    compileError = error;
+    compileError = error.message;
     sourceMap = null;
   }
 

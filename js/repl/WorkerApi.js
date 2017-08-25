@@ -5,12 +5,8 @@ import scopedEval from "./scopedEval";
 
 import type { CompileConfig, PluginState, LoadScriptCallback } from "./types";
 
-type CompileCallback = ({
-  compiled: ?string,
-  compileError: ?string,
-  evalError: ?string,
-  sourceMap: ?string,
-}) => void;
+// $FlowFixMe
+const WorkerSource = require("worker-loader?inline=true!./Worker");
 
 type PromiseWorkerApi = {
   postMessage(message: Object): Promise<any>,
@@ -20,27 +16,7 @@ type PromiseWorkerApi = {
  * Interfaces with a web worker to lazy-loads plugins and compile code.
  */
 export default class WorkerApi {
-  _worker: PromiseWorkerApi;
-
-  constructor() {
-    // $FlowFixMe
-    const code = require("raw-loader!./Worker");
-
-    let blob;
-    try {
-      blob = new Blob([code], { type: "application/javascript" });
-    } catch (error) {
-      // Backwards-compatibility
-      const BlobBuilder =
-        window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
-
-      blob = new BlobBuilder();
-      blob.append(code);
-      blob = blob.getBlob();
-    }
-
-    this._worker = new PromiseWorker(new Worker(URL.createObjectURL(blob)));
-  }
+  _worker: PromiseWorkerApi = new PromiseWorker(new WorkerSource());
 
   compile(code: string, config: CompileConfig) {
     return this._worker
