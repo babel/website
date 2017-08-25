@@ -8,7 +8,7 @@ import { colors } from "./styles";
 type Props = {
   className?: string,
   code: ?string,
-  error: ?Error,
+  error: ?string,
   info?: ?string,
   onChange?: (value: string) => void,
   options: Object,
@@ -38,7 +38,7 @@ export default function CodeMirrorPanel(props: Props) {
         </pre>}
       {error &&
         <pre className={styles.error}>
-          {error.message}
+          {error}
         </pre>}
     </div>
   );

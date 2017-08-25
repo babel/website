@@ -1,15 +1,16 @@
 import loadBuildArtifacts from "./loadBuildArtifacts";
-import loadScript from "./loadScript";
 import { BabelState, LoadScriptCallback } from "./types";
+import WorkerApi from "./WorkerApi";
 
 const DEFAULT_BABEL_VERSION = "6";
 
 export default function loadBabel(
   config: BabelState,
+  workerApi: WorkerApi,
   cb: (config: BabelState) => void
 ) {
   function doLoad(url, error) {
-    loadScript(url, success => {
+    workerApi.loadScript(url, success => {
       if (success) {
         config.isLoaded = true;
         config.isLoading = false;
@@ -42,18 +43,15 @@ export default function loadBabel(
   // See if a released version of Babel was passed
   // Prod (with URL rewriting): /repl/version/1.2.3/
   // Dev: /repl/#?version=1.2.3
-  let version = config.version;
-
   const versionFromPath = window.location.pathname.match(/\/version\/(.+)\/?$/);
-
   if (versionFromPath) {
-    version = versionFromPath[1];
+    config.version = versionFromPath[1];
   }
 
   // No specific version passed, so just download the latest release.
-  if (!version) {
-    version = DEFAULT_BABEL_VERSION;
+  if (!config.version) {
+    config.version = DEFAULT_BABEL_VERSION;
   }
 
-  doLoad(`https://unpkg.com/babel-standalone@${version}/babel.js`);
+  doLoad(`https://unpkg.com/babel-standalone@${config.version}/babel.js`);
 }

@@ -7,7 +7,6 @@ import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
-import compile from "./compile";
 import loadBabel from "./loadBabel";
 import loadPlugin from "./loadPlugin";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
@@ -45,12 +44,12 @@ type State = {
   builtIns: boolean,
   code: string,
   compiled: ?string,
-  compileError: ?Error,
+  compileError: ?string,
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetDebugInfo: ?string,
   envPresetState: PluginState,
-  evalError: ?Error,
+  evalError: ?string,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
   plugins: PluginStateMap,
@@ -151,6 +150,7 @@ export default class Repl extends React.Component {
     return (
       <div className={styles.repl}>
         <ReplOptions
+          babelVersion={state.babel.version}
           builtIns={state.builtIns}
           className={styles.optionsColumn}
           debugEnvPreset={state.debugEnvPreset}
@@ -190,7 +190,7 @@ export default class Repl extends React.Component {
   }
 
   _setupBabel() {
-    loadBabel(this.state.babel, babelState => {
+    loadBabel(this.state.babel, this._workerApi, babelState => {
       this.setState(babelState);
 
       if (babelState.isLoaded) {
@@ -264,7 +264,8 @@ export default class Repl extends React.Component {
       this._workerApi.loadPlugin(envPresetState, () => {
         // This preset is not built into Babel standalone due to its size.
         // Before we can use it we need to explicitly register it.
-        window.Babel.registerPreset("env", envPresetState.plugin.default);
+        // TODO web worker:
+        //        window.Babel.registerPreset("env", envPresetState.plugin.default);
 
         this._updateCode(this.state.code);
       });
@@ -317,20 +318,23 @@ export default class Repl extends React.Component {
       presetsArray.push(["env", options]);
     }
 
-    this._workerApi.compile(code, {
-      evaluate: runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
-      presets: presetsArray,
-      prettify: state.plugins.prettier.isEnabled,
-      sourceMap: runtimePolyfillState.isEnabled,
-    }).then(result => {
-      this.setState(
-        {
-          ...result,
-          envPresetDebugInfo,
-        },
-        setStateCallback
-      );
-    });
+    this._workerApi
+      .compile(code, {
+        evaluate:
+          runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
+        presets: presetsArray,
+        prettify: state.plugins.prettier.isEnabled,
+        sourceMap: runtimePolyfillState.isEnabled,
+      })
+      .then(result => {
+        this.setState(
+          {
+            ...result,
+            envPresetDebugInfo,
+          },
+          setStateCallback
+        );
+      });
   };
 
   // Debounce compilation since it's expensive.
