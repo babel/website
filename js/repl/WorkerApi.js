@@ -47,6 +47,10 @@ export default class WorkerApi {
       });
   }
 
+  getBabelVersion() {
+    return this._worker.postMessage({ method: "getBabelVersion" });
+  }
+
   loadPlugin(state: PluginState, callback: LoadScriptCallback) {
     const { config } = state;
 

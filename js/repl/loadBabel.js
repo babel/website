@@ -14,13 +14,21 @@ export default function loadBabel(
       if (success) {
         config.isLoaded = true;
         config.isLoading = false;
+
+        // Incoming version might be unspecific (eg "6")
+        // Resolve to a more specific version to show in the UI.
+        workerApi.getBabelVersion().then(version => {
+          config.version = version;
+
+          cb(config);
+        });
       } else {
         config.didError = true;
         config.errorMessage = error;
         config.isLoading = false;
-      }
 
-      cb(config);
+        cb(config);
+      }
     });
   }
 
@@ -40,18 +48,20 @@ export default function loadBabel(
     return;
   }
 
+  let version = config.version;
+
   // See if a released version of Babel was passed
   // Prod (with URL rewriting): /repl/version/1.2.3/
   // Dev: /repl/#?version=1.2.3
   const versionFromPath = window.location.pathname.match(/\/version\/(.+)\/?$/);
   if (versionFromPath) {
-    config.version = versionFromPath[1];
+    version = versionFromPath[1];
   }
 
   // No specific version passed, so just download the latest release.
-  if (!config.version) {
-    config.version = DEFAULT_BABEL_VERSION;
+  if (!version) {
+    version = DEFAULT_BABEL_VERSION;
   }
 
-  doLoad(`https://unpkg.com/babel-standalone@${config.version}/babel.js`);
+  doLoad(`https://unpkg.com/babel-standalone@${version}/babel.js`);
 }
