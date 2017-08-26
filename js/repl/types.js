@@ -45,10 +45,13 @@ export type PluginState = LazyLoadedState & {
 export type PluginStateMap = { [name: string]: PluginState };
 
 export type CompileConfig = {
+  debugEnvPreset: boolean,
+  envConfig: ?EnvConfig,
   evaluate: boolean,
   presets: BabelPresets,
   prettify: boolean,
   sourceMap: boolean,
+  useBuiltIns: boolean,
 };
 
 export type PersistedState = {

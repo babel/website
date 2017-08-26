@@ -18,7 +18,6 @@ import {
 } from "./PluginConfig";
 import {
   envConfigToTargetsString,
-  getDebugInfoFromEnvResult,
   loadPersistedState,
   configArrayToStateMap,
   configToState,
@@ -35,7 +34,6 @@ import type {
   EnvConfig,
   PluginState,
   PluginStateMap,
-  BabelPresetEnvResult,
 } from "./types";
 
 type Props = {};
@@ -274,7 +272,7 @@ export default class Repl extends React.Component {
 
   _compile = (code: string, setStateCallback: () => mixed) => {
     const { state } = this;
-    const { envConfig, runtimePolyfillState } = state;
+    const { runtimePolyfillState } = state;
 
     const presetsArray = this._presetsToArray(state);
 
@@ -283,60 +281,18 @@ export default class Repl extends React.Component {
       presetsArray.push("babili");
     }
 
-    let envPresetDebugInfo = null;
-
-    if (envConfig.isEnvPresetEnabled && state.envPresetState.isLoaded) {
-      const targets = {};
-      if (envConfig.browsers) {
-        targets.browsers = envConfig.browsers
-          .split(",")
-          .map(value => value.trim())
-          .filter(value => value);
-      }
-      if (envConfig.isElectronEnabled) {
-        targets.electron = envConfig.electron;
-      }
-      if (envConfig.isNodeEnabled) {
-        targets.node = envConfig.node;
-      }
-
-      // onPresetBuild is invoked synchronously during compilation.
-      // But the env preset info calculated from the callback should be part of our state update.
-      // TODO Move this config to web worker.
-      // TODO Retrieve envPresetDebugInfo from web worker.
-      let onPresetBuild = null;
-      if (state.debugEnvPreset) {
-        onPresetBuild = (result: BabelPresetEnvResult) => {
-          envPresetDebugInfo = getDebugInfoFromEnvResult(result);
-        };
-      }
-
-      const options = {
-        onPresetBuild,
-        targets,
-        useBuiltIns: !state.evaluate && state.builtIns,
-      };
-
-      presetsArray.push(["env", options]);
-    }
-
     this._workerApi
       .compile(code, {
+        debugEnvPreset: state.debugEnvPreset,
+        envConfig: state.envPresetState.isLoaded ? state.envConfig : null,
         evaluate:
           runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
         presets: presetsArray,
         prettify: state.plugins.prettier.isEnabled,
         sourceMap: runtimePolyfillState.isEnabled,
+        useBuiltIns: state.builtIns,
       })
-      .then(result => {
-        this.setState(
-          {
-            ...result,
-            envPresetDebugInfo,
-          },
-          setStateCallback
-        );
-      });
+      .then(result => this.setState(result, setStateCallback));
   };
 
   // Debounce compilation since it's expensive.

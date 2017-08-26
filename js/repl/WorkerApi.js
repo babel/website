@@ -15,6 +15,7 @@ type PromiseWorkerApi = {
 type CompileResult = {
   compiled: ?string,
   compileError: ?string,
+  envPresetDebugInfo: ?string,
   evalError: ?string,
   sourceMap: ?string,
 };
@@ -32,7 +33,7 @@ export default class WorkerApi {
         method: "compile",
         config,
       })
-      .then(({ compiled, compileError, sourceMap }) => {
+      .then(({ compiled, compileError, envPresetDebugInfo, sourceMap }) => {
         let evalError = null;
 
         // Compilation is done in a web worker for performance reasons,
@@ -48,6 +49,7 @@ export default class WorkerApi {
         return {
           compiled,
           compileError,
+          envPresetDebugInfo,
           evalError,
           sourceMap,
         };

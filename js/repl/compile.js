@@ -4,11 +4,14 @@
 declare var Babel: any;
 declare var prettier: any;
 
-import type { CompileConfig } from "./types";
+import { getDebugInfoFromEnvResult } from "./replUtils";
+
+import type { BabelPresetEnvResult, CompileConfig } from "./types";
 
 type Return = {
   compiled: ?string,
   compileError: ?string,
+  envPresetDebugInfo: ?string,
   sourceMap: ?string,
 };
 
@@ -25,9 +28,45 @@ const DEFAULT_PRETTIER_CONFIG = {
 };
 
 export default function compile(code: string, config: CompileConfig): Return {
+  const { envConfig } = config;
+
   let compiled = null;
   let compileError = null;
+  let envPresetDebugInfo = null;
   let sourceMap = null;
+
+  if (envConfig && envConfig.isEnvPresetEnabled) {
+    const targets = {};
+    if (envConfig.browsers) {
+      targets.browsers = envConfig.browsers
+        .split(",")
+        .map(value => value.trim())
+        .filter(value => value);
+    }
+    if (envConfig.isElectronEnabled) {
+      targets.electron = envConfig.electron;
+    }
+    if (envConfig.isNodeEnabled) {
+      targets.node = envConfig.node;
+    }
+
+    // onPresetBuild is invoked synchronously during compilation.
+    // But the env preset info calculated from the callback should be part of our state update.
+    let onPresetBuild = null;
+    if (config.debugEnvPreset) {
+      onPresetBuild = (result: BabelPresetEnvResult) => {
+        envPresetDebugInfo = getDebugInfoFromEnvResult(result);
+      };
+    }
+
+    const options = {
+      onPresetBuild,
+      targets,
+      useBuiltIns: !config.evaluate && config.useBuiltIns,
+    };
+
+    config.presets.push(["env", options]);
+  }
 
   try {
     const transformed = Babel.transform(code, {
@@ -64,12 +103,14 @@ export default function compile(code: string, config: CompileConfig): Return {
   } catch (error) {
     compiled = null;
     compileError = error.message;
+    envPresetDebugInfo = null;
     sourceMap = null;
   }
 
   return {
     compiled,
     compileError,
+    envPresetDebugInfo,
     sourceMap,
   };
 }
