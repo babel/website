@@ -1,15 +1,11 @@
 // @flow
 
 import compile from "./compile";
+import registerPromiseWorker from "promise-worker/register";
 
-declare var babelPresetEnvStandalone: any;
 declare var Babel: any;
+declare var babelPresetEnvStandalone: any;
 declare function importScripts(url: string): void;
-declare function registerPromiseWorker(handler: Function): void;
-
-importScripts(
-  "https://npmcdn.com/promise-worker/dist/promise-worker.register.js"
-);
 
 // This script should be executed within a web-worker.
 // Values returned below will be automatically wrapped in Promises.
