@@ -3,7 +3,7 @@
 import PromiseWorker from "promise-worker";
 import scopedEval from "./scopedEval";
 
-import type { CompileConfig, PluginState, LoadScriptCallback } from "./types";
+import type { CompileConfig, PluginState } from "./types";
 
 // $FlowFixMe
 const WorkerSource = require("worker-loader?inline=true!./Worker");
@@ -12,13 +12,20 @@ type PromiseWorkerApi = {
   postMessage(message: Object): Promise<any>,
 };
 
+type CompileResult = {
+  compiled: ?string,
+  compileError: ?string,
+  evalError: ?string,
+  sourceMap: ?string,
+};
+
 /**
  * Interfaces with a web worker to lazy-loads plugins and compile code.
  */
 export default class WorkerApi {
   _worker: PromiseWorkerApi = new PromiseWorker(new WorkerSource());
 
-  compile(code: string, config: CompileConfig) {
+  compile(code: string, config: CompileConfig): Promise<CompileResult> {
     return this._worker
       .postMessage({
         code,
@@ -47,11 +54,11 @@ export default class WorkerApi {
       });
   }
 
-  getBabelVersion() {
+  getBabelVersion(): Promise<string> {
     return this._worker.postMessage({ method: "getBabelVersion" });
   }
 
-  loadPlugin(state: PluginState, callback: LoadScriptCallback) {
+  loadPlugin(state: PluginState): Promise<boolean> {
     const { config } = state;
 
     const base = config.baseUrl || "https://bundle.run";
@@ -59,7 +66,7 @@ export default class WorkerApi {
 
     state.isLoading = true;
 
-    this.loadScript(url, success => {
+    return this.loadScript(url).then(success => {
       if (success) {
         state.isLoaded = true;
         state.isLoading = false;
@@ -68,19 +75,15 @@ export default class WorkerApi {
         state.isLoading = false;
       }
 
-      callback(success);
+      return success;
     });
   }
 
-  loadScript(url: string, callback: LoadScriptCallback) {
-    this._worker
-      .postMessage({
-        method: "loadScript",
-        url,
-      })
-      .then(success => {
-        callback(success);
-      });
+  loadScript(url: string): Promise<boolean> {
+    return this._worker.postMessage({
+      method: "loadScript",
+      url,
+    });
   }
 
   registerEnvPreset(): Promise<boolean> {

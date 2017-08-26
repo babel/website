@@ -215,7 +215,7 @@ export default class Repl extends React.Component {
       if (plugin.isEnabled && !plugin.isLoaded && !plugin.isLoading) {
         this._numLoadingPlugins++;
 
-        this._workerApi.loadPlugin(plugin, success => {
+        this._workerApi.loadPlugin(plugin).then(success => {
           this._numLoadingPlugins--;
 
           if (!success) {
@@ -238,7 +238,7 @@ export default class Repl extends React.Component {
       // But eval requires the UI thread so code can access globals like window.
       // Because of this, the runtime polyfill must be loaded on the UI thread.
       loadPlugin(runtimePolyfillState, () => {
-        let evalError = null;
+        let evalError: ?string = null;
 
         if (!this.state.compiled) {
           return;
@@ -250,7 +250,7 @@ export default class Repl extends React.Component {
           // eslint-disable-next-line
           scopedEval(this.state.compiled, this.state.sourceMap);
         } catch (error) {
-          evalError = error;
+          evalError = error.message;
         }
 
         // Re-render (even if no error) to update the label loading-state.
@@ -261,7 +261,7 @@ export default class Repl extends React.Component {
     // Babel 'env' preset is large;
     // Only load it if it's been requested.
     if (envConfig.isEnvPresetEnabled && !envPresetState.isLoaded) {
-      this._workerApi.loadPlugin(envPresetState, () => {
+      this._workerApi.loadPlugin(envPresetState).then(() => {
         // This preset is not built into Babel standalone due to its size.
         // Before we can use it we need to explicitly register it.
         // Because it's loaded in a worker, we need to configure it there as well.

@@ -10,7 +10,7 @@ export default function loadBabel(
   cb: (config: BabelState) => void
 ) {
   function doLoad(url, error) {
-    workerApi.loadScript(url, success => {
+    workerApi.loadScript(url).then(success => {
       if (success) {
         config.isLoaded = true;
         config.isLoading = false;
