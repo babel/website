@@ -233,7 +233,7 @@ class ExpandedContainer extends Component {
             classic repl
           </a>
           {babelVersion &&
-            <div className={styles.babelVersion}>
+            <div className={styles.babelVersion} title={`v${babelVersion}`}>
               v{babelVersion}
             </div>}
         </div>
@@ -401,6 +401,7 @@ const styles = {
 
     [media.large]: {
       height: "100%",
+      maxWidth: "25rem",
 
       [`& .${nestedCloseButton}`]: {
         right: "-1.5rem",
@@ -590,5 +591,9 @@ const styles = {
   babelVersion: css({
     fontFamily: "monospace",
     fontSize: "1.25rem",
+    flex: "0 1 auto",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   }),
 };
