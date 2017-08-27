@@ -48,11 +48,11 @@ export default function loadBabel(
     return;
   }
 
-  let version = config.version;
-
   // See if a released version of Babel was passed
   // Prod (with URL rewriting): /repl/version/1.2.3/
   // Dev: /repl/#?version=1.2.3
+  let version = config.version;
+
   const versionFromPath = window.location.pathname.match(/\/version\/(.+)\/?$/);
   if (versionFromPath) {
     version = versionFromPath[1];
