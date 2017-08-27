@@ -34,7 +34,7 @@ registerPromiseWorker(message => {
 
     case "registerEnvPreset":
       try {
-        Babel.registerPreset("env", babelPresetEnvStandalone);
+        Babel.registerPreset("env", babelPresetEnvStandalone.default);
 
         return true;
       } catch (error) {
