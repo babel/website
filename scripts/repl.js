@@ -764,7 +764,76 @@
     };
   }
 
+  /**
+   * Enable file drop on the REPL editor
+   * and the ability to download the output
+   */
+  function initFileDropAndDownload() {
+    function fileToREPL(file) {
+      var reader = new FileReader();
+      
+      // update repl input with text from file
+      reader.onload = function(e) {
+        var text = e.target.result;
+        
+        repl.input.setValue(text);
+      }
+      
+      // read file
+      reader.readAsText(file);
+    }
+
+    // drag and drop file
+    $('body').on('dragover', function(e) {
+      e.preventDefault();
+      e.originalEvent.dataTransfer.dropEffect = 'copy';
+    }).on('drop', function(e) {
+      e.preventDefault();
+      // just use one file
+      fileToREPL(e.originalEvent.dataTransfer.files[0]);
+    });
+    
+    var $uploader = $('#upload-file');
+    
+    $uploader.on('change', function(e) {
+      e.preventDefault();
+      // just use one file
+      fileToREPL(this.files[0]);
+    });
+    
+    // upload button
+    // plus tool tip that explain the drag and drop
+    $('#upload-button').on('click', function() {
+      $uploader.trigger('click');
+    }).tooltip();
+    
+    // handle download of file in browsers that support a[download]
+    var $download = $('#download-button');
+    var $a = $('<a>');
+    
+    if ('download' in $a[0] && (window.URL && window.URL.createObjectURL )) {
+    
+      //download button
+      $download.on('click', function(e) {
+        e.preventDefault();
+        
+        var blob = new Blob([repl.output.getValue()], {type: 'text/javascript'});
+        var href = window.URL.createObjectURL(blob);
+        
+        // download attribute supported
+        $a.attr({
+          href: href,
+          download: 'babel-download.js'
+        })[0].click();
+      });
+    } else {
+      // download not supported
+      $download.hide();
+    }
+  }
+
   initResizable('.babel-repl-resize');
+  initFileDropAndDownload();
   onPresetChange();
   onTargetChange();
   onToolbarChange();

@@ -28,6 +28,11 @@
     display: inline-block;
     padding: $navbar-padding-vertical $navbar-padding-horizontal;
   }
+  
+  .btn {
+    margin-top: -6px;
+    font-weight: bold;
+  }
 }
 
 .babel-repl-left-panel,
