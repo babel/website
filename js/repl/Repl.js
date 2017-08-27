@@ -216,6 +216,7 @@ export default class Repl extends React.Component {
         this._workerApi.loadPlugin(plugin).then(success => {
           this._numLoadingPlugins--;
 
+          // If a plugin has failed to load, re-render to show a loading error.
           if (!success) {
             this.setState({ plugins });
           }
