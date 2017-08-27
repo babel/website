@@ -1,7 +1,7 @@
 // @flow
 
-import PromiseWorker from "promise-worker";
 import scopedEval from "./scopedEval";
+import { registerPromiseWorkerApi } from "./WorkerUtils";
 
 import type { CompileConfig, PluginState } from "./types";
 
@@ -24,7 +24,7 @@ type CompileResult = {
  * Interfaces with a web worker to lazy-loads plugins and compile code.
  */
 export default class WorkerApi {
-  _worker: PromiseWorkerApi = new PromiseWorker(new WorkerSource());
+  _worker: PromiseWorkerApi = registerPromiseWorkerApi(new WorkerSource());
 
   compile(code: string, config: CompileConfig): Promise<CompileResult> {
     return this._worker

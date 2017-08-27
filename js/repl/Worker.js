@@ -1,7 +1,7 @@
 // @flow
 
 import compile from "./compile";
-import registerPromiseWorker from "promise-worker/register";
+import { registerPromiseWorker } from "./WorkerUtils";
 
 declare var Babel: any;
 declare var babelPresetEnvStandalone: any;
