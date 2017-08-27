@@ -454,6 +454,13 @@ const styles = {
     [media.large]: {
       display: "block",
     },
+
+    [media.small]: {
+      maxHeight: "300px",
+      display: "block",
+      overflow: "auto",
+      "-webkit-overflow-scrolling": "touch",
+    },
   }),
   section: css({
     display: "flex",
