@@ -42,12 +42,12 @@ type State = {
   builtIns: boolean,
   code: string,
   compiled: ?string,
-  compileError: ?string,
+  compileErrorMessage: ?string,
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetDebugInfo: ?string,
   envPresetState: PluginState,
-  evalError: ?string,
+  evalErrorMessage: ?string,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
   plugins: PluginStateMap,
@@ -95,7 +95,7 @@ export default class Repl extends React.Component {
       builtIns: persistedState.builtIns,
       code: persistedState.code,
       compiled: null,
-      compileError: null,
+      compileErrorMessage: null,
       debugEnvPreset: persistedState.debug,
       envConfig,
       envPresetDebugInfo: null,
@@ -103,7 +103,7 @@ export default class Repl extends React.Component {
         envPresetConfig,
         envConfig.isEnvPresetEnabled
       ),
-      evalError: null,
+      evalErrorMessage: null,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
@@ -169,7 +169,7 @@ export default class Repl extends React.Component {
           <CodeMirrorPanel
             className={styles.codeMirrorPanel}
             code={state.code}
-            error={state.compileError}
+            errorMessage={state.compileErrorMessage}
             onChange={this._updateCode}
             options={options}
             placeholder="Write code here"
@@ -177,7 +177,7 @@ export default class Repl extends React.Component {
           <CodeMirrorPanel
             className={styles.codeMirrorPanel}
             code={state.compiled}
-            error={state.evalError}
+            errorMessage={state.evalErrorMessage}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
             placeholder="Compiled output will be shown here"
@@ -236,7 +236,7 @@ export default class Repl extends React.Component {
       // But eval requires the UI thread so code can access globals like window.
       // Because of this, the runtime polyfill must be loaded on the UI thread.
       loadPlugin(runtimePolyfillState, () => {
-        let evalError: ?string = null;
+        let evalErrorMessage: ?string = null;
 
         if (!this.state.compiled) {
           return;
@@ -248,11 +248,11 @@ export default class Repl extends React.Component {
           // eslint-disable-next-line
           scopedEval(this.state.compiled, this.state.sourceMap);
         } catch (error) {
-          evalError = error.message;
+          evalErrorMessage = error.message;
         }
 
         // Re-render (even if no error) to update the label loading-state.
-        this.setState({ evalError });
+        this.setState({ evalErrorMessage });
       });
     }
 

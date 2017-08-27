@@ -14,9 +14,9 @@ type PromiseWorkerApi = {
 
 type CompileResult = {
   compiled: ?string,
-  compileError: ?string,
+  compileErrorMessage: ?string,
   envPresetDebugInfo: ?string,
-  evalError: ?string,
+  evalErrorMessage: ?string,
   sourceMap: ?string,
 };
 
@@ -33,27 +33,29 @@ export default class WorkerApi {
         method: "compile",
         config,
       })
-      .then(({ compiled, compileError, envPresetDebugInfo, sourceMap }) => {
-        let evalError = null;
+      .then(
+        ({ compiled, compileErrorMessage, envPresetDebugInfo, sourceMap }) => {
+          let evalErrorMessage = null;
 
-        // Compilation is done in a web worker for performance reasons,
-        // But eval requires the UI thread so code can access globals like window.
-        if (config.evaluate) {
-          try {
-            scopedEval(compiled, sourceMap);
-          } catch (error) {
-            evalError = error.message;
+          // Compilation is done in a web worker for performance reasons,
+          // But eval requires the UI thread so code can access globals like window.
+          if (config.evaluate) {
+            try {
+              scopedEval(compiled, sourceMap);
+            } catch (error) {
+              evalErrorMessage = error.message;
+            }
           }
-        }
 
-        return {
-          compiled,
-          compileError,
-          envPresetDebugInfo,
-          evalError,
-          sourceMap,
-        };
-      });
+          return {
+            compiled,
+            compileErrorMessage,
+            envPresetDebugInfo,
+            evalErrorMessage,
+            sourceMap,
+          };
+        }
+      );
   }
 
   getBabelVersion(): Promise<string> {
