@@ -1,25 +1,34 @@
 import loadBuildArtifacts from "./loadBuildArtifacts";
-import loadScript from "./loadScript";
 import { BabelState, LoadScriptCallback } from "./types";
+import WorkerApi from "./WorkerApi";
 
 const DEFAULT_BABEL_VERSION = "6";
 
 export default function loadBabel(
   config: BabelState,
+  workerApi: WorkerApi,
   cb: (config: BabelState) => void
 ) {
   function doLoad(url, error) {
-    loadScript(url, success => {
+    workerApi.loadScript(url).then(success => {
       if (success) {
         config.isLoaded = true;
         config.isLoading = false;
+
+        // Incoming version might be unspecific (eg "6")
+        // Resolve to a more specific version to show in the UI.
+        workerApi.getBabelVersion().then(version => {
+          config.version = version;
+
+          cb(config);
+        });
       } else {
         config.didError = true;
         config.errorMessage = error;
         config.isLoading = false;
-      }
 
-      cb(config);
+        cb(config);
+      }
     });
   }
 
@@ -45,7 +54,6 @@ export default function loadBabel(
   let version = config.version;
 
   const versionFromPath = window.location.pathname.match(/\/version\/(.+)\/?$/);
-
   if (versionFromPath) {
     version = versionFromPath[1];
   }

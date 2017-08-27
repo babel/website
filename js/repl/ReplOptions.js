@@ -23,6 +23,7 @@ type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
 
 type Props = {
+  babelVersion: ?string,
   builtIns: boolean,
   className: string,
   debugEnvPreset: boolean,
@@ -60,6 +61,7 @@ class ExpandedContainer extends Component {
 
   render() {
     const {
+      babelVersion,
       builtIns,
       debugEnvPreset,
       envConfig,
@@ -219,9 +221,10 @@ class ExpandedContainer extends Component {
             </label>
           </div>
         </div>
-        <div className={styles.babelVersion}>
-          v{window.Babel.version}
-        </div>
+        {babelVersion &&
+          <div className={styles.babelVersion}>
+            v{babelVersion}
+          </div>}
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
           onClick={() => onIsExpandedChange(false)}
