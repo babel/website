@@ -3,9 +3,9 @@ layout: null
 ---
 
 # REPL builds, to preview pull requests
-/repl/build/:build /7/ 200
+/repl/build/:build /repl/ 200
 # Previous versions of the REPL
-/repl/version/:version /7/ 200
+/repl/version/:version /repl/ 200
 
 # Ported from redirect_from
 
