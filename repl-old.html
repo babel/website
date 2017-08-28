@@ -1,0 +1,91 @@
+---
+layout: default
+permalink: /repl-old/
+fullscreen: true
+custom_js_with_timestamps:
+- pretty-format.js
+- repl.js
+third_party_js:
+- https://unpkg.com/babel-standalone@6/babel.min.js
+- https://unpkg.com/babel-polyfill@6/dist/polyfill.min.js
+- https://unpkg.com/babel-preset-env-standalone@0.0.6/babel-preset-env.min.js
+- https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
+- https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/base64-string.min.js
+- https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js
+---
+<div class="babel-repl">
+  <form class="form babel-repl-toolbar">
+    <div class="pull-left">
+      <div class="form-group">
+        <label for="option-evaluate">
+          <input id="option-evaluate" type="checkbox">
+          Evaluate
+        </label>
+      </div>
+
+      <div class="form-group button-group babel-repl-preset-container">
+        <span class="dropdown-toggle" data-toggle="dropdown">
+          Presets: <span id="babel-repl-selected-presets"></span>
+          <span class="caret"></span>
+        </span>
+        <ul class="dropdown-menu" id="babel-repl-preset-dropdown"></ul>
+      </div>
+
+      <div class="form-group button-group babel-repl-targets-container hidden">
+        <span class="dropdown-toggle" data-toggle="dropdown">
+          Targets:
+          <span id="babel-repl-selected-targets"></span>
+          <span class="caret"></span>
+        </span>
+        <div class="dropdown-menu" id="babel-repl-targets-dropdown">
+          <div class="dropdown-menu-container">
+            <label for="option-browsers">Browsers</label>
+            <textarea id="option-browsers" placeholder="> 2%, ie 11, safari > 9"></textarea>
+          </div>
+          <ul class="dropdown-menu-list"></ul>
+        </div>
+      </div>
+
+      <label for="option-builtIns" id="option-builtIns-wrapper" class="hidden">
+        <input id="option-builtIns" type="checkbox">
+        <span>Built-ins</span>
+      </label>
+
+      <label for="option-debug" id="option-debug-wrapper" class="hidden">
+        <input id="option-debug" type="checkbox">
+        <span>Debug</span>
+      </label>
+
+      <label for="option-lineWrap">
+        <input id="option-lineWrap" type="checkbox">
+        Line Wrap
+      </label>
+
+      <div class="form-group">
+        <label for="option-babili">
+          <input id="option-babili" type="checkbox">
+          Minify (Babili)
+        </label>
+      </div>
+    </div>
+
+    <div class="pull-right">
+      <div class="form-group">
+        <strong>Babel <span id="babel-repl-version"></span></strong>
+      </div>
+    </div>
+  </form>
+
+  <div class="babel-repl-left-panel">
+    <div class="babel-repl-editor babel-repl-input"><div class="ace_editor"></div></div>
+    <div class="babel-repl-reporter babel-repl-errors"></div>
+  </div>
+  <div class="babel-repl-right-panel">
+    <div class="babel-repl-resize"></div>
+    <div class="babel-repl-editor babel-repl-output"><div class="ace_editor"></div></div>
+    <div class="babel-repl-reporter babel-repl-console">
+      <div class="babel-repl-console-debug"></div>
+      <div class="babel-repl-console-output"></div>
+    </div>
+  </div>
+</div>

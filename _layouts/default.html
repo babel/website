@@ -13,7 +13,11 @@ layout: compress
 
     {{ content }}
 
-    {% include footer.html %}
+    {% if page.hide_footer %}
+      {% include scripts.html %}
+    {% else %}
+      {% include footer.html %}
+    {% endif %}
 
   </body>
 
