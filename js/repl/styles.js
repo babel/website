@@ -23,7 +23,7 @@ const colors = {
 
 const media = {
   small: "@media(max-width: 600px)",
-  medium: "@media(min-width: 601px), (max-width: 1000px)",
+  medium: "@media(min-width: 601px) and (max-width: 1000px)",
   mediumAndDown: "@media(max-width: 1000px)",
   large: "@media(min-width: 1001px)",
 };
