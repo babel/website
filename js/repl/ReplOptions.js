@@ -398,7 +398,6 @@ const styles = {
   }),
   expandedContainer: css({
     flexDirection: "column",
-    minWidth: "150px",
     display: "flex",
     overflow: "auto",
     boxShadow:
@@ -406,7 +405,7 @@ const styles = {
 
     [media.large]: {
       height: "100%",
-      maxWidth: "25rem",
+      width: "20rem",
 
       [`& .${nestedCloseButton}`]: {
         right: "-2rem",
