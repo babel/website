@@ -1,5 +1,7 @@
 // @flow
 
+import "regenerator-runtime/runtime";
+
 import { css } from "glamor";
 import debounce from "lodash.debounce";
 import React from "react";
@@ -187,14 +189,13 @@ export default class Repl extends React.Component {
     );
   }
 
-  _setupBabel() {
-    loadBabel(this.state.babel, this._workerApi, babelState => {
-      this.setState(babelState);
+  async _setupBabel() {
+    const babelState = await loadBabel(this.state.babel, this._workerApi);
+    this.setState(babelState);
 
-      if (babelState.isLoaded) {
-        this._compile(this.state.code, this._checkForUnloadedPlugins);
-      }
-    });
+    if (babelState.isLoaded) {
+      this._compile(this.state.code, this._checkForUnloadedPlugins);
+    }
   }
 
   _checkForUnloadedPlugins() {
