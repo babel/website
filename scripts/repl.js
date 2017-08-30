@@ -8,11 +8,13 @@
     'es2015-loose',
     'es2016',
     'es2017',
+    'flow',
     'react',
     'stage-0',
     'stage-1',
     'stage-2',
-    'stage-3'
+    'stage-3',
+    'typescript'
   ];
 
   var targets = [

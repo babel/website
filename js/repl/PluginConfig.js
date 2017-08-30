@@ -71,6 +71,11 @@ const presetPluginConfigs: Array<PluginConfig> = [
     isPreLoaded: true,
   },
   {
+    label: "flow",
+    package: "babel-preset-flow",
+    isPreLoaded: true,
+  },
+  {
     label: "stage-0",
     package: "babel-preset-stage-0",
     isPreLoaded: true,
@@ -88,6 +93,11 @@ const presetPluginConfigs: Array<PluginConfig> = [
   {
     label: "stage-3",
     package: "babel-preset-stage-3",
+    isPreLoaded: true,
+  },
+  {
+    label: "typescript",
+    package: "babel-preset-typescript",
     isPreLoaded: true,
   },
 ];
