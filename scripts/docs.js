@@ -74,9 +74,6 @@
         var sidebarMargin = parseInt($sidebar.children(0).css('margin-top'), 10);
 
         return offsetTop - navbarOuterHeight - sidebarMargin;
-      }),
-      bottom: _.memoize(function() {
-        return $('.footer').outerHeight(true);
       })
     }
   });

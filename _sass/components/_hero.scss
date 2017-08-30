@@ -145,25 +145,25 @@
       opacity: 1;
     }
   }
-
-  &__footer {
-    background: #353634;
-    border: 1px solid #4F504D;
-    border-radius: 0 0 4px 4px;
-    color: #B7B8B7;
-
-    a {
-      color: #B7B8B7;
-      display: block;
-      padding: 8px 0;
-      text-decoration: underline;
-      @include transition(all 0.25s ease-out);
-
-      &:hover {
-        background: #4F504D;
-        color: #FFF;
-      }
-    }
+     
+  &__footer {   
+    background: #353634;    
+    border: 1px solid #4F504D;    
+    border-radius: 0 0 4px 4px;   
+    color: #B7B8B7;   
+    
+    a {   
+      color: #B7B8B7;   
+      display: block;   
+      padding: 8px 0;   
+      text-decoration: underline;   
+      @include transition(all 0.25s ease-out);    
+    
+      &:hover {   
+        background: #4F504D;    
+        color: #FFF;    
+      }   
+    }   
   }
 
   &__editor {

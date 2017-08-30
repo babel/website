@@ -15,7 +15,7 @@ package: babel-plugin-transform-es2015-modules-commonjs
     There are some caveats, but you can use <a href="https://www.npmjs.com/package/babel-plugin-add-module-exports">babel-plugin-add-module-exports</a>, so that updating to Babel 6 isn't a breaking change since users that don't use ES modules don't have to do <code>require("your-module").default</code>.
   </p>
   <p>
-    However, it may not match how Node eventually implements ES modules natively given the <a href="https://github.com/nodejs/node-eps/blob/master/002-es6-modules.md#55-commonjs-consuming-es">the current proposal</a>.
+    However, it may not match how Node eventually implements ES modules natively given the <a href="https://github.com/nodejs/node-eps/blob/master/002-es-modules.md#46-es-consuming-commonjs">the current proposal</a>.
   </p>
 </blockquote>
 

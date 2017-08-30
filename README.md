@@ -1,12 +1,10 @@
-# babel.github.io
+# [babel/website](https://babeljs.io)
 
 This is the source for the [babeljs.io](https://babeljs.io) website, powered by [Jekyll](https://jekyllrb.com/).
 
-This repo also contains babel's [source documentation](https://github.com/babel/babel.github.io/tree/master/docs).
+This repo also contains Babel's [source documentation](https://github.com/babel/website/tree/master/docs).
 
-> The babel repo is [babel/babel](https://github.com/babel/babel)
-
-Feel free to suggest changes to our docs, or add new content!
+Feel free to suggest changes to our docs, add new content, or new ideas!
 
 ### Setup
 
