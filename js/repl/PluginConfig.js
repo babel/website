@@ -76,6 +76,14 @@ const presetPluginConfigs: Array<PluginConfig> = [
     label: "stage-3",
     isPreLoaded: true,
   },
+  {
+    label: "flow",
+    isPreLoaded: true,
+  },
+  {
+    label: "typescript",
+    isPreLoaded: true,
+  },
 ];
 
 export {
