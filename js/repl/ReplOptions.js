@@ -596,7 +596,6 @@ const styles = {
   }),
   button: css({
     backgroundColor: colors.inverseBackground,
-    color: "#fff",
     marginBottom: "1em",
     border: "1px solid",
     borderRadius: "0.25em",
@@ -606,6 +605,7 @@ const styles = {
 
     "&:hover": {
       backgroundColor: colors.inverseBackgroundDark,
+      color: colors.inverseForeground,
     },
   }),
   classicReplLink: css({
