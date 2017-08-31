@@ -73,5 +73,5 @@ export default async function loadBabel(
     version = DEFAULT_BABEL_VERSION;
   }
 
-  return doLoad(`https://unpkg.com/babel-standalone@${version}/babel.js`);
+  return doLoad(`https://unpkg.com/babel-standalone@${version}/babel.min.js`);
 }
