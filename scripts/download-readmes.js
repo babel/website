@@ -7,8 +7,8 @@ const fs = require('fs');
 
 const CONCURRENT_REQUESTS = 20;
 
-function getDirectoryListing(repo) {
-  let url = `https://api.github.com/repos/babel/${repo}/contents/packages?ref=master`;
+function getDirectoryListing(repo, branch = 'master') {
+  let url = `https://api.github.com/repos/babel/${repo}/contents/packages?ref=${branch}`;
   if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
     // This is intentionally using client_id and client_secret rather than an access_token
     // so that accidental exposure of the access token does not expose API access.
@@ -30,7 +30,7 @@ function getReadmeURLsFromDirectoryListing(repo, dir) {
 }
 
 console.log('Retrieving package listing...');
-Promise.all([getDirectoryListing('babel'), getDirectoryListing('babili')])
+Promise.all([getDirectoryListing('babel', '6.x'), getDirectoryListing('babili')])
   .then(([babelPackages, babiliPackages]) => {
     const packages = [
       ...getReadmeURLsFromDirectoryListing('babel', babelPackages),
