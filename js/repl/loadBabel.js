@@ -1,25 +1,31 @@
-import loadBuildArtifacts from "./loadBuildArtifacts";
-import loadScript from "./loadScript";
+import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./CircleCI";
 import { BabelState, LoadScriptCallback } from "./types";
+import WorkerApi from "./WorkerApi";
 
 const DEFAULT_BABEL_VERSION = "6";
 
-export default function loadBabel(
+export default async function loadBabel(
   config: BabelState,
-  cb: (config: BabelState) => void
-) {
+  workerApi: WorkerApi
+): Promise<BabelState> {
   function doLoad(url, error) {
-    loadScript(url, success => {
+    return workerApi.loadScript(url).then(success => {
       if (success) {
         config.isLoaded = true;
         config.isLoading = false;
+
+        // Incoming version might be unspecific (eg "6")
+        // Resolve to a more specific version to show in the UI.
+        return workerApi.getBabelVersion().then(version => {
+          config.version = version;
+          return config;
+        });
       } else {
         config.didError = true;
         config.errorMessage = error;
         config.isLoading = false;
+        return config;
       }
-
-      cb(config);
     });
   }
 
@@ -28,15 +34,28 @@ export default function loadBabel(
   // Dev: /repl/#?build=12345
   let build = config.build;
 
-  const buildFromPath = window.location.pathname.match(/\/build\/([0-9]+)\/?$/);
+  const buildFromPath = window.location.pathname.match(/\/build\/([^/]+)\/?$/);
 
   if (buildFromPath) {
     build = buildFromPath[1];
   }
 
   if (build) {
-    loadBuildArtifacts(config.circleciRepo, build, doLoad);
-    return;
+    const isBuildNumeric = /^[0-9]+$/.test(build);
+    try {
+      if (!isBuildNumeric) {
+        // Build in URL is *not* numeric, assume it's a branch name
+        // Get the latest build number for this branch
+        build = await loadLatestBuildNumberForBranch(
+          config.circleciRepo,
+          build
+        );
+      }
+      const url = await loadBuildArtifacts(config.circleciRepo, build, doLoad);
+      return doLoad(url);
+    } catch (ex) {
+      return doLoad(null, ex.message);
+    }
   }
 
   // See if a released version of Babel was passed
@@ -45,7 +64,6 @@ export default function loadBabel(
   let version = config.version;
 
   const versionFromPath = window.location.pathname.match(/\/version\/(.+)\/?$/);
-
   if (versionFromPath) {
     version = versionFromPath[1];
   }
@@ -55,5 +73,5 @@ export default function loadBabel(
     version = DEFAULT_BABEL_VERSION;
   }
 
-  doLoad(`https://unpkg.com/babel-standalone@${version}/babel.js`);
+  return doLoad(`https://unpkg.com/babel-standalone@${version}/babel.min.js`);
 }

@@ -11,6 +11,7 @@ const colors = {
   // Inspired by: Nuclide's "One Dark" theme
   inverseBackground: "#21252b",
   inverseBackgroundDark: "#181a1f",
+  inverseBackgroundLight: "#292d36",
   inverseForeground: "#ffffff",
   inverseForegroundLight: "#9da5b4",
 
@@ -22,6 +23,7 @@ const colors = {
 
 const media = {
   small: "@media(max-width: 600px)",
+  medium: "@media(min-width: 601px) and (max-width: 1000px)",
   mediumAndDown: "@media(max-width: 1000px)",
   large: "@media(min-width: 1001px)",
 };

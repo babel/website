@@ -23,7 +23,7 @@ export type PluginConfig = {
 
 export type PluginConfigs = Array<PluginConfig>;
 
-type LazyLoadedState = {
+export type LazyLoadedState = {
   didError: boolean,
   isLoaded: boolean,
   isLoading: boolean,
@@ -45,10 +45,13 @@ export type PluginState = LazyLoadedState & {
 export type PluginStateMap = { [name: string]: PluginState };
 
 export type CompileConfig = {
+  debugEnvPreset: boolean,
+  envConfig: ?EnvConfig,
   evaluate: boolean,
   presets: BabelPresets,
   prettify: boolean,
   sourceMap: boolean,
+  useBuiltIns: boolean,
 };
 
 export type PersistedState = {

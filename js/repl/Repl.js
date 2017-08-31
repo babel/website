@@ -1,5 +1,7 @@
 // @flow
 
+import "regenerator-runtime/runtime";
+
 import { css } from "glamor";
 import debounce from "lodash.debounce";
 import React from "react";
@@ -7,7 +9,6 @@ import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
-import compile from "./compile";
 import loadBabel from "./loadBabel";
 import loadPlugin from "./loadPlugin";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
@@ -19,13 +20,13 @@ import {
 } from "./PluginConfig";
 import {
   envConfigToTargetsString,
-  getDebugInfoFromEnvResult,
   loadPersistedState,
   configArrayToStateMap,
   configToState,
   persistedStateToBabelState,
   persistedStateToEnvConfig,
 } from "./replUtils";
+import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
 import { colors, media } from "./styles";
 
@@ -35,7 +36,6 @@ import type {
   EnvConfig,
   PluginState,
   PluginStateMap,
-  BabelPresetEnvResult,
 } from "./types";
 
 type Props = {};
@@ -44,12 +44,12 @@ type State = {
   builtIns: boolean,
   code: string,
   compiled: ?string,
-  compileError: ?Error,
+  compileErrorMessage: ?string,
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetDebugInfo: ?string,
   envPresetState: PluginState,
-  evalError: ?Error,
+  evalErrorMessage: ?string,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
   spec: boolean,
@@ -71,6 +71,7 @@ export default class Repl extends React.Component {
   state: State;
 
   _numLoadingPlugins = 0;
+  _workerApi = new WorkerApi();
 
   constructor(props: Props, context: any) {
     super(props, context);
@@ -98,7 +99,7 @@ export default class Repl extends React.Component {
       builtIns: persistedState.builtIns,
       code: persistedState.code,
       compiled: null,
-      compileError: null,
+      compileErrorMessage: null,
       debugEnvPreset: persistedState.debug,
       envConfig,
       envPresetDebugInfo: null,
@@ -108,6 +109,7 @@ export default class Repl extends React.Component {
       ),
       spec: false,
       evalError: null,
+      evalErrorMessage: null,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
@@ -152,6 +154,7 @@ export default class Repl extends React.Component {
     return (
       <div className={styles.repl}>
         <ReplOptions
+          babelVersion={state.babel.version}
           builtIns={state.builtIns}
           className={styles.optionsColumn}
           debugEnvPreset={state.debugEnvPreset}
@@ -173,7 +176,7 @@ export default class Repl extends React.Component {
           <CodeMirrorPanel
             className={styles.codeMirrorPanel}
             code={state.code}
-            error={state.compileError}
+            errorMessage={state.compileErrorMessage}
             onChange={this._updateCode}
             options={options}
             placeholder="Write code here"
@@ -181,7 +184,7 @@ export default class Repl extends React.Component {
           <CodeMirrorPanel
             className={styles.codeMirrorPanel}
             code={state.compiled}
-            error={state.evalError}
+            errorMessage={state.evalErrorMessage}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
             placeholder="Compiled output will be shown here"
@@ -191,20 +194,13 @@ export default class Repl extends React.Component {
     );
   }
 
-  _setupBabel() {
-    loadBabel(this.state.babel, babelState => {
-      this.setState(
-        state => ({
-          ...babelState,
-          ...(babelState.isLoaded ? this._compile(state.code, state) : null),
-        }),
-        () => {
-          if (babelState.isLoaded) {
-            this._checkForUnloadedPlugins();
-          }
-        }
-      );
-    });
+  async _setupBabel() {
+    const babelState = await loadBabel(this.state.babel, this._workerApi);
+    this.setState(babelState);
+
+    if (babelState.isLoaded) {
+      this._compile(this.state.code, this._checkForUnloadedPlugins);
+    }
   }
 
   _checkForUnloadedPlugins() {
@@ -223,13 +219,12 @@ export default class Repl extends React.Component {
       if (plugin.isEnabled && !plugin.isLoaded && !plugin.isLoading) {
         this._numLoadingPlugins++;
 
-        loadPlugin(plugin, success => {
+        this._workerApi.loadPlugin(plugin).then(success => {
           this._numLoadingPlugins--;
 
+          // If a plugin has failed to load, re-render to show a loading error.
           if (!success) {
-            this.setState(() => ({
-              plugins,
-            }));
+            this.setState({ plugins });
           }
 
           // Once all plugins have been loaded, re-compile code.
@@ -244,8 +239,11 @@ export default class Repl extends React.Component {
     // It's only needed if we're actually executing the compiled code.
     // Defer loading it unless "evaluate" is enabled.
     if (runtimePolyfillState.isEnabled && !runtimePolyfillState.isLoaded) {
+      // Compilation is done in a web worker for performance reasons,
+      // But eval requires the UI thread so code can access globals like window.
+      // Because of this, the runtime polyfill must be loaded on the UI thread.
       loadPlugin(runtimePolyfillState, () => {
-        let evalError = null;
+        let evalErrorMessage: ?string = null;
 
         if (!this.state.compiled) {
           return;
@@ -257,29 +255,31 @@ export default class Repl extends React.Component {
           // eslint-disable-next-line
           scopedEval(this.state.compiled, this.state.sourceMap);
         } catch (error) {
-          evalError = error;
+          evalErrorMessage = error.message;
         }
 
         // Re-render (even if no error) to update the label loading-state.
-        this.setState({ evalError });
+        this.setState({ evalErrorMessage });
       });
     }
 
     // Babel 'env' preset is large;
     // Only load it if it's been requested.
     if (envConfig.isEnvPresetEnabled && !envPresetState.isLoaded) {
-      loadPlugin(envPresetState, () => {
+      this._workerApi.loadPlugin(envPresetState).then(() => {
         // This preset is not built into Babel standalone due to its size.
         // Before we can use it we need to explicitly register it.
-        window.Babel.registerPreset("env", envPresetState.plugin.default);
-
-        this._updateCode(this.state.code);
+        // Because it's loaded in a worker, we need to configure it there as well.
+        this._workerApi
+          .registerEnvPreset()
+          .then(success => this._updateCode(this.state.code));
       });
     }
   }
 
-  _compile = (code: string, state: State) => {
-    const { envConfig, runtimePolyfillState } = state;
+  _compile = (code: string, setStateCallback: () => mixed) => {
+    const { state } = this;
+    const { runtimePolyfillState } = state;
 
     let presetsArray = this._presetsToArray(state);
 
@@ -288,66 +288,27 @@ export default class Repl extends React.Component {
       presetsArray.push("babili");
     }
 
-    let envPresetDebugInfo = null;
-
-    if (envConfig.isEnvPresetEnabled && state.envPresetState.isLoaded) {
-      const targets = {};
-      if (envConfig.browsers) {
-        targets.browsers = envConfig.browsers
-          .split(",")
-          .map(value => value.trim())
-          .filter(value => value);
-      }
-      if (envConfig.isElectronEnabled) {
-        targets.electron = envConfig.electron;
-      }
-      if (envConfig.isNodeEnabled) {
-        targets.node = envConfig.node;
-      }
-
-      // onPresetBuild is invoked synchronously during compilation.
-      // But the env preset info calculated from the callback should be part of our state update.
-      let onPresetBuild = null;
-      if (state.debugEnvPreset) {
-        onPresetBuild = (result: BabelPresetEnvResult) => {
-          envPresetDebugInfo = getDebugInfoFromEnvResult(result);
-        };
-      }
-
-      const options = {
-        onPresetBuild,
-        targets,
-        useBuiltIns: !state.evaluate && state.builtIns,
-      };
-      presetsArray.push(["env", options]);
-    }
-
-    // transform "es2015" to array type to add "spec" option
-    presetsArray = presetsArray.map(preset => {
-      return presetsSupportOptions.includes(preset) &&
-      typeof preset === "string"
-        ? [preset, { spec: state.spec }]
-        : preset;
-    });
-
-    return {
-      ...compile(code, {
+    this._workerApi
+      .compile(code, {
+        debugEnvPreset: state.debugEnvPreset,
+        envConfig: state.envPresetState.isLoaded ? state.envConfig : null,
         evaluate:
           runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
         presets: presetsArray,
         prettify: state.plugins.prettier.isEnabled,
         sourceMap: runtimePolyfillState.isEnabled,
-      }),
-      envPresetDebugInfo,
-    };
+        useBuiltIns: state.builtIns,
+      })
+      .then(result => this.setState(result, setStateCallback));
   };
 
   // Debounce compilation since it's expensive.
   // This also avoids prematurely warning the user about invalid syntax,
   // eg when in the middle of typing a variable name.
-  _compileToState = debounce((code: string) => {
-    this.setState(state => this._compile(code, state), this._persistState);
-  }, DEBOUNCE_DELAY);
+  _compileToState = debounce(
+    (code: string) => this._compile(code, this._persistState),
+    DEBOUNCE_DELAY
+  );
 
   _onEnvPresetSettingChange = (name: string, value: any) => {
     this.setState(

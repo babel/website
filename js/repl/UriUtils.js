@@ -61,6 +61,7 @@ const parseQuery = () => {
       "browsers",
       "build",
       "builtIns",
+      "code",
       "debug",
       "circleciRepo",
       "evaluate",

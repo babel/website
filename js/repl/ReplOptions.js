@@ -7,6 +7,7 @@ import {
   pluginConfigs,
   presetPluginConfigs,
 } from "./PluginConfig";
+import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import Svg from "./Svg";
 import { colors, media } from "./styles";
@@ -23,6 +24,7 @@ type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
 
 type Props = {
+  babelVersion: ?string,
   builtIns: boolean,
   className: string,
   debugEnvPreset: boolean,
@@ -61,6 +63,7 @@ class ExpandedContainer extends Component {
 
   render() {
     const {
+      babelVersion,
       builtIns,
       debugEnvPreset,
       envConfig,
@@ -85,8 +88,11 @@ class ExpandedContainer extends Component {
     return (
       <div className={styles.expandedContainer}>
         <div className={styles.sectionsWrapper}>
-          <div className={styles.section}>
-            <div className={styles.sectionHeader}>Settings</div>
+          <AccordionTab
+            className={styles.section}
+            label="Settings"
+            defaultExpanded={true}
+          >
             <PluginToggle
               config={runtimePolyfillConfig}
               label="Evaluate"
@@ -110,7 +116,6 @@ class ExpandedContainer extends Component {
                 state={pluginState[config.package]}
               />
             )}
-
             {showSpecOption
               ? <label className={styles.settingsLabel}>
                   <input
@@ -125,6 +130,9 @@ class ExpandedContainer extends Component {
           </div>
           <div className={styles.section}>
             <div className={styles.sectionHeader}>Presets</div>
+          </AccordionTab>
+          <AccordionTab className={styles.section} label="Presets">
+
             {presetPluginConfigs.map(config =>
               <PluginToggle
                 config={config}
@@ -133,22 +141,24 @@ class ExpandedContainer extends Component {
                 state={presetState[config.package]}
               />
             )}
-          </div>
-          <div className={`${styles.section} ${styles.sectionEnv}`}>
-            <label
-              className={`${styles.sectionHeader} ${styles.sectionEnvHeader}`}
-            >
-              {envPresetState.isLoading
-                ? <PresetLoadingAnimation />
-                : "Env Preset"}
-
+          </AccordionTab>
+          <AccordionTab
+            className={`${styles.section} ${styles.sectionEnv}`}
+            label="Env Preset"
+          >
+            <label className={styles.settingsLabel}>
               <input
                 checked={envConfig.isEnvPresetEnabled}
-                className={styles.envPresetCheckbox}
+                className={styles.inputCheckboxLeft}
                 type="checkbox"
                 onChange={this._onEnvPresetEnabledChange}
               />
+
+              {envPresetState.isLoading
+                ? <PresetLoadingAnimation />
+                : "Enabled"}
             </label>
+
             <div className={styles.envPresetColumn}>
               <label
                 className={`${styles.envPresetColumnLabel} ${styles.highlight}`}
@@ -235,10 +245,23 @@ class ExpandedContainer extends Component {
               />
               Debug
             </label>
-          </div>
+          </AccordionTab>
         </div>
-        <div className={styles.babelVersion}>
-          v{window.Babel.version}
+        <div className={styles.versionAndClassicRow}>
+          <a className={styles.classicReplLink} href="/repl-old/">
+            <Svg
+              className={styles.classicReplSvg}
+              path={`
+                M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,
+                0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,
+                8.41L12.67,11H3V13H12.67L10.08,15.58Z`}
+            />
+            classic repl
+          </a>
+          {babelVersion &&
+            <div className={styles.babelVersion} title={`v${babelVersion}`}>
+              v{babelVersion}
+            </div>}
         </div>
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
@@ -405,7 +428,6 @@ const styles = {
   }),
   expandedContainer: css({
     flexDirection: "column",
-    minWidth: "150px",
     display: "flex",
     overflow: "auto",
     boxShadow:
@@ -413,9 +435,10 @@ const styles = {
 
     [media.large]: {
       height: "100%",
+      width: "20rem",
 
       [`& .${nestedCloseButton}`]: {
-        right: "-1.5rem",
+        right: "-2rem",
       },
     },
 
@@ -427,6 +450,7 @@ const styles = {
   }),
   closeButton: css({
     position: "absolute",
+    zIndex: 2,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -459,6 +483,7 @@ const styles = {
     },
   }),
   sectionsWrapper: css({
+    flex: "1 1 auto",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -466,15 +491,22 @@ const styles = {
     [media.large]: {
       display: "block",
     },
+
+    [media.small]: {
+      maxHeight: "300px",
+      display: "block",
+      overflow: "auto",
+      "-webkit-overflow-scrolling": "touch",
+    },
   }),
   section: css({
+    position: "relative",
+    zIndex: 7,
     display: "flex",
     flexDirection: "column",
     overflow: "auto",
     flex: "0 0 auto",
     maxHeight: "100%",
-    padding: "1.5rem",
-    zIndex: 7,
 
     [media.mediumAndDown]: {
       flex: "1 0 100px",
@@ -483,7 +515,6 @@ const styles = {
     },
   }),
   sectionEnv: css({
-    borderBottom: "none",
     borderRight: "none",
 
     [media.mediumAndDown]: {
@@ -498,18 +529,6 @@ const styles = {
     fontSize: "1rem",
     fontWeight: "bold",
     color: colors.inverseForeground,
-  }),
-  sectionHeader: css({
-    flex: "0 0 2.5rem",
-    fontSize: "1.5rem",
-    fontWeight: "bold",
-    color: colors.inverseForegroundLight,
-  }),
-  sectionEnvHeader: css({
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
   }),
   settingsLabel: css({
     flex: "0 0 2.5rem",
@@ -548,7 +567,7 @@ const styles = {
   }),
   envPresetCheckbox: css({
     flex: "0 0 auto",
-    margin: "0 0 0 0.75rem !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
+    margin: "0 0.75rem !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
   }),
   envPresetLabel: css({
     flex: 1,
@@ -562,16 +581,42 @@ const styles = {
       opacity: 0.5,
     },
   }),
-  babelVersion: css({
-    fontFamily: "monospace",
-    fontSize: "1.25rem",
-    marginLeft: "auto",
-    paddingRight: "1.5rem",
+  versionAndClassicRow: css({
+    flex: "0 0 2rem",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    padding: "0 1.5rem",
 
     [media.large]: {
-      background: "#181a1f",
+      backgroundColor: colors.inverseBackgroundDark,
       margin: 0,
       padding: "1rem 1.5rem",
     },
+  }),
+  classicReplLink: css({
+    flex: "1 0 auto",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    color: colors.inverseForegroundLight,
+    marginRight: "1rem",
+
+    "&:hover": {
+      color: colors.inverseForeground,
+    },
+  }),
+  classicReplSvg: css({
+    width: "1rem",
+    height: "1rem",
+    marginRight: "0.5rem",
+  }),
+  babelVersion: css({
+    fontFamily: "monospace",
+    fontSize: "1.25rem",
+    flex: "0 1 auto",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   }),
 };

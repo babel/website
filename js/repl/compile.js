@@ -1,13 +1,17 @@
 // @flow
 
-import scopedEval from "./scopedEval";
+// Globals pre-loaded by Worker
+declare var Babel: any;
+declare var prettier: any;
 
-import type { CompileConfig } from "./types";
+import { getDebugInfoFromEnvResult } from "./replUtils";
+
+import type { BabelPresetEnvResult, CompileConfig } from "./types";
 
 type Return = {
   compiled: ?string,
-  compileError: ?Error,
-  evalError: ?Error,
+  compileErrorMessage: ?string,
+  envPresetDebugInfo: ?string,
   sourceMap: ?string,
 };
 
@@ -24,13 +28,48 @@ const DEFAULT_PRETTIER_CONFIG = {
 };
 
 export default function compile(code: string, config: CompileConfig): Return {
+  const { envConfig } = config;
+
   let compiled = null;
-  let compileError = null;
-  let evalError = null;
+  let compileErrorMessage = null;
+  let envPresetDebugInfo = null;
   let sourceMap = null;
 
+  if (envConfig && envConfig.isEnvPresetEnabled) {
+    const targets = {};
+    if (envConfig.browsers) {
+      targets.browsers = envConfig.browsers
+        .split(",")
+        .map(value => value.trim())
+        .filter(value => value);
+    }
+    if (envConfig.isElectronEnabled) {
+      targets.electron = envConfig.electron;
+    }
+    if (envConfig.isNodeEnabled) {
+      targets.node = envConfig.node;
+    }
+
+    // onPresetBuild is invoked synchronously during compilation.
+    // But the env preset info calculated from the callback should be part of our state update.
+    let onPresetBuild = null;
+    if (config.debugEnvPreset) {
+      onPresetBuild = (result: BabelPresetEnvResult) => {
+        envPresetDebugInfo = getDebugInfoFromEnvResult(result);
+      };
+    }
+
+    const options = {
+      onPresetBuild,
+      targets,
+      useBuiltIns: !config.evaluate && config.useBuiltIns,
+    };
+
+    config.presets.push(["env", options]);
+  }
+
   try {
-    const transformed = window.Babel.transform(code, {
+    const transformed = Babel.transform(code, {
       babelrc: false,
       filename: "repl",
       presets: config.presets,
@@ -48,38 +87,30 @@ export default function compile(code: string, config: CompileConfig): Return {
       }
     }
 
-    if (config.prettify && window.prettier !== undefined) {
+    if (config.prettify && prettier !== undefined) {
       // TODO Don't re-parse; just pass Prettier the AST we already have.
       // This will have to wait until we've updated to Babel 7 since Prettier uses it.
       // Prettier doesn't handle ASTs from Babel 6.
       // if (
-      //   window.prettier.__debug !== undefined &&
-      //   typeof window.prettier.__debug.formatAST === 'function'
+      //   prettier.__debug !== undefined &&
+      //   typeof prettier.__debug.formatAST === 'function'
       // ) {
-      //   compiled = window.prettier.__debug.formatAST(transformed.ast, DEFAULT_PRETTIER_CONFIG);
+      //   compiled = prettier.__debug.formatAST(transformed.ast, DEFAULT_PRETTIER_CONFIG);
       // } else {
-      compiled = window.prettier.format(compiled, DEFAULT_PRETTIER_CONFIG);
+      compiled = prettier.format(compiled, DEFAULT_PRETTIER_CONFIG);
       // }
-    }
-
-    if (config.evaluate) {
-      try {
-        // eslint-disable-next-line
-        scopedEval(compiled, sourceMap);
-      } catch (error) {
-        evalError = error;
-      }
     }
   } catch (error) {
     compiled = null;
-    compileError = error;
+    compileErrorMessage = error.message;
+    envPresetDebugInfo = null;
     sourceMap = null;
   }
 
   return {
     compiled,
-    compileError,
-    evalError,
+    compileErrorMessage,
+    envPresetDebugInfo,
     sourceMap,
   };
 }

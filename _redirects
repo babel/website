@@ -3,9 +3,9 @@ layout: null
 ---
 
 # REPL builds, to preview pull requests
-/repl/build/:build /7/ 200
+/repl/build/:build /repl/ 200
 # Previous versions of the REPL
-/repl/version/:version /7/ 200
+/repl/version/:version /repl/ 200
 
 # Ported from redirect_from
 
@@ -24,6 +24,8 @@ layout: null
 /docs/faq/                          /faq/
 /php.html                           /php/
 /repl.html                          /repl/
+/7/                                 /repl/build/7.0/
+/7.html                             /repl/build/7.0/
 /docs/learn-es6/                    /learn-es2015/
 /docs/learn-es2015/                 /learn-es2015/
 /features.html                      /learn-es2015/
