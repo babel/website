@@ -127,20 +127,18 @@ class ExpandedContainer extends Component {
                   Spec
                 </label>
               : null}
-          </div>
-          <div className={styles.section}>
-            <div className={styles.sectionHeader}>Presets</div>
           </AccordionTab>
           <AccordionTab className={styles.section} label="Presets">
-
-            {presetPluginConfigs.map(config =>
-              <PluginToggle
-                config={config}
-                key={config.package}
-                onSettingChange={onSettingChange}
-                state={presetState[config.package]}
-              />
-            )}
+            <div className={styles.section}>
+              {presetPluginConfigs.map(config =>
+                <PluginToggle
+                  config={config}
+                  key={config.package}
+                  onSettingChange={onSettingChange}
+                  state={presetState[config.package]}
+                />
+              )}
+            </div>
           </AccordionTab>
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}

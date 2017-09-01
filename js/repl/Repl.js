@@ -288,6 +288,14 @@ export default class Repl extends React.Component {
       presetsArray.push("babili");
     }
 
+    // transform "es2015" to array type to add "spec" option
+    presetsArray = presetsArray.map(preset => {
+      return presetsSupportOptions.includes(preset) &&
+      typeof preset === "string"
+        ? [preset, { spec: state.spec }]
+        : preset;
+    });
+
     this._workerApi
       .compile(code, {
         debugEnvPreset: state.debugEnvPreset,
