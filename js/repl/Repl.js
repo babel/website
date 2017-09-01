@@ -237,25 +237,32 @@ export default class Repl extends React.Component {
       // Compilation is done in a web worker for performance reasons,
       // But eval requires the UI thread so code can access globals like window.
       // Because of this, the runtime polyfill must be loaded on the UI thread.
-      loadPlugin(runtimePolyfillState, () => {
-        let evalErrorMessage: ?string = null;
+      // We also eval in an iframe so the polyfills need to be accessible there.
+      // We could copy them from window to frame.contentWindow,
+      // But it's less error-prone to just load the polyfills into the iframe.
+      loadPlugin(
+        runtimePolyfillState,
+        () => {
+          let evalErrorMessage: ?string = null;
 
-        if (!this.state.compiled) {
-          return;
-        }
+          if (!this.state.compiled) {
+            return;
+          }
 
-        // No need to recompile at this point;
-        // Just evaluate the most recently compiled code.
-        try {
-          // eslint-disable-next-line
-          scopedEval(this.state.compiled, this.state.sourceMap);
-        } catch (error) {
-          evalErrorMessage = error.message;
-        }
+          // No need to recompile at this point;
+          // Just evaluate the most recently compiled code.
+          try {
+            // eslint-disable-next-line
+            scopedEval.execute(this.state.compiled, this.state.sourceMap);
+          } catch (error) {
+            evalErrorMessage = error.message;
+          }
 
-        // Re-render (even if no error) to update the label loading-state.
-        this.setState({ evalErrorMessage });
-      });
+          // Re-render (even if no error) to update the label loading-state.
+          this.setState({ evalErrorMessage });
+        },
+        scopedEval.getIframe().contentDocument
+      );
     }
 
     // Babel 'env' preset is large;

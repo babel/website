@@ -41,7 +41,7 @@ export default class WorkerApi {
           // But eval requires the UI thread so code can access globals like window.
           if (config.evaluate) {
             try {
-              scopedEval(compiled, sourceMap);
+              scopedEval.execute(compiled, sourceMap);
             } catch (error) {
               evalErrorMessage = error.message;
             }

@@ -2,8 +2,12 @@
 
 import type { LoadScriptCallback } from "./types";
 
-export default function loadScript(url: string, callback: LoadScriptCallback) {
-  const script = document.createElement("script");
+export default function loadScript(
+  url: string,
+  callback: LoadScriptCallback,
+  targetDocument: Document = document
+) {
+  const script = targetDocument.createElement("script");
   script.async = true;
   script.src = url;
   script.onerror = () => {
@@ -14,5 +18,5 @@ export default function loadScript(url: string, callback: LoadScriptCallback) {
   };
 
   // $FlowFixMe
-  document.head.appendChild(script);
+  targetDocument.head.appendChild(script);
 }

@@ -7,7 +7,8 @@ import type { LoadScriptCallback, PluginState } from "./types";
 
 export default function loadPlugin(
   state: PluginState,
-  callback: LoadScriptCallback
+  callback: LoadScriptCallback,
+  targetDocument: Document = document
 ) {
   if (state.isLoading) {
     return;
@@ -19,16 +20,19 @@ export default function loadPlugin(
   const base = config.baseUrl || "https://bundle.run";
   const url = `${base}/${config.package}@${config.version || ""}`;
 
-  loadScript(url, success => {
-    if (success) {
-      state.isLoaded = true;
-      state.isLoading = false;
-      state.plugin = window[camelCase(state.config.package)];
-    } else {
-      state.didError = true;
-      state.isLoading = false;
-    }
+  loadScript(
+    url,
+    success => {
+      if (success) {
+        state.isLoaded = true;
+        state.isLoading = false;
+      } else {
+        state.didError = true;
+        state.isLoading = false;
+      }
 
-    callback(success);
-  });
+      callback(success);
+    },
+    targetDocument
+  );
 }
