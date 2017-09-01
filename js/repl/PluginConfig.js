@@ -51,11 +51,6 @@ const presetPluginConfigs: Array<PluginConfig> = [
     isPreLoaded: true,
   },
   {
-    label: "es2015-loose",
-    package: "babel-preset-es2015-loose",
-    isPreLoaded: true,
-  },
-  {
     label: "es2016",
     package: "babel-preset-es2016",
     isPreLoaded: true,

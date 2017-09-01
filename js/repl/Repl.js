@@ -53,6 +53,7 @@ type State = {
   isSidebarExpanded: boolean,
   lineWrap: boolean,
   spec: boolean,
+  loose: boolean,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
@@ -108,6 +109,7 @@ export default class Repl extends React.Component {
         envConfig.isEnvPresetEnabled
       ),
       spec: false,
+      loose: true,
       evalError: null,
       evalErrorMessage: null,
       isSidebarExpanded: persistedState.showSidebar,
@@ -163,6 +165,7 @@ export default class Repl extends React.Component {
           isExpanded={state.isSidebarExpanded}
           lineWrap={state.lineWrap}
           spec={state.spec}
+          loose={state.loose}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
@@ -292,7 +295,7 @@ export default class Repl extends React.Component {
     presetsArray = presetsArray.map(preset => {
       return presetsSupportOptions.includes(preset) &&
       typeof preset === "string"
-        ? [preset, { spec: state.spec }]
+        ? [preset, { spec: state.spec, loose: state.loose }]
         : preset;
     });
 
@@ -394,6 +397,7 @@ export default class Repl extends React.Component {
       evaluate: this.state.runtimePolyfillState.isEnabled,
       lineWrap: this.state.lineWrap,
       spec: this.state.spec,
+      loose: this.state.loose,
       presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,
       showSidebar: this.state.isSidebarExpanded,

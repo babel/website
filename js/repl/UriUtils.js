@@ -66,6 +66,8 @@ const parseQuery = () => {
       "circleciRepo",
       "evaluate",
       "lineWrap",
+      "spec",
+      "loose",
       "presets",
       "prettier",
       "showSidebar",

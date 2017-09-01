@@ -33,6 +33,7 @@ type Props = {
   isExpanded: boolean,
   lineWrap: boolean,
   spec: boolean,
+  loose: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
@@ -70,6 +71,7 @@ class ExpandedContainer extends Component {
       envPresetState,
       lineWrap,
       spec,
+      loose,
       onIsExpandedChange,
       onSettingChange,
       pluginState,
@@ -81,9 +83,11 @@ class ExpandedContainer extends Component {
     const disableEnvSettings =
       !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled;
 
-    const showSpecOption =
+    const es2015Enabled =
       presetState["babel-preset-es2015"].isEnabled &&
       !envConfig.isEnvPresetEnabled;
+    const showSpecOption = !loose && es2015Enabled;
+    const showLooseOption = !spec && es2015Enabled;
 
     return (
       <div className={styles.expandedContainer}>
@@ -120,11 +124,24 @@ class ExpandedContainer extends Component {
               ? <label className={styles.settingsLabel}>
                   <input
                     checked={spec}
-                    onChange={this._onSpecChange}
+                    name="spec"
+                    onChange={this._onSpecLooseChange}
                     className={styles.inputCheckboxLeft}
                     type="checkbox"
                   />
                   Spec
+                </label>
+              : null}
+            {showLooseOption
+              ? <label className={styles.settingsLabel}>
+                  <input
+                    checked={loose}
+                    name="loose"
+                    onChange={this._onSpecLooseChange}
+                    className={styles.inputCheckboxLeft}
+                    type="checkbox"
+                  />
+                  Loose
                 </label>
               : null}
           </AccordionTab>
@@ -281,7 +298,7 @@ class ExpandedContainer extends Component {
   _onEnvPresetEnabledChange = (event: SyntheticInputEvent) => {
     // disable and hide spec option if Env preset is enabled
     if (event.target.checked) {
-      this.setState({ spec: false });
+      this.setState({ spec: false, loose: false });
     }
 
     this.props.onEnvPresetSettingChange(
@@ -320,8 +337,8 @@ class ExpandedContainer extends Component {
     this.props.onSettingChange("lineWrap", event.target.checked);
   };
 
-  _onSpecChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange("spec", event.target.checked);
+  _onSpecLooseChange = (event: SyntheticInputEvent) => {
+    this.props.onSettingChange(event.target.name, event.target.checked);
   };
 
   _onNodeChange = (event: SyntheticInputEvent) => {
