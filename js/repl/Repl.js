@@ -261,7 +261,7 @@ export default class Repl extends React.Component {
           // Re-render (even if no error) to update the label loading-state.
           this.setState({ evalErrorMessage });
         },
-        scopedEval.getIframe().contentDocument
+        scopedEval.getIframe()
       );
     }
 

@@ -8,7 +8,7 @@ import type { LoadScriptCallback, PluginState } from "./types";
 export default function loadPlugin(
   state: PluginState,
   callback: LoadScriptCallback,
-  targetDocument: Document = document
+  target: ?HTMLIFrameElement
 ) {
   if (state.isLoading) {
     return;
@@ -33,6 +33,6 @@ export default function loadPlugin(
 
       callback(success);
     },
-    targetDocument
+    target
   );
 }
