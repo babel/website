@@ -5,21 +5,20 @@ import type { LoadScriptCallback } from "./types";
 export default function loadScript(
   url: string,
   callback: LoadScriptCallback,
-  target: ?HTMLIFrameElement
+  maybeTarget: ?HTMLIFrameElement
 ) {
-  if (target != null) {
-    const targetDocument = target.contentDocument;
+  if (maybeTarget != null) {
+    const target = maybeTarget;
 
     // If we're loading this script into an iframe, wait for it to load,
     // Otherwise the script tag we insert will be removed on-load.
-    if (targetDocument.readyState !== "complete") {
+    if (target.contentDocument.readyState !== "complete") {
       target.addEventListener("load", () => {
         // Use the newly-loaded document.
-        // $FlowFixMe We know target isn't null at this point
         loadScriptIntoDocument(url, callback, target.contentDocument);
       });
     } else {
-      loadScriptIntoDocument(url, callback, targetDocument);
+      loadScriptIntoDocument(url, callback, target.contentDocument);
     }
   } else {
     loadScriptIntoDocument(url, callback, document);
