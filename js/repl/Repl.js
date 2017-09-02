@@ -12,6 +12,7 @@ import UriUtils from "./UriUtils";
 import loadBabel from "./loadBabel";
 import loadPlugin from "./loadPlugin";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
+import ReactTooltip from "react-tooltip";
 import {
   envPresetConfig,
   pluginConfigs,
@@ -155,6 +156,7 @@ export default class Repl extends React.Component {
 
     return (
       <div className={styles.repl}>
+        <ReactTooltip />
         <ReplOptions
           babelVersion={state.babel.version}
           builtIns={state.builtIns}
@@ -412,6 +414,9 @@ export default class Repl extends React.Component {
   _presetsUpdatedSetStateCallback = () => {
     this._checkForUnloadedPlugins();
     this._updateCode(this.state.code);
+
+    // The checkbox may disappear, rebuild tooltip in that case.
+    ReactTooltip.rebuild();
   };
 
   _presetsToArray(state: State = this.state): BabelPresets {

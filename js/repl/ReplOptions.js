@@ -89,6 +89,12 @@ class ExpandedContainer extends Component {
     const showSpecOption = !loose && es2015Enabled;
     const showLooseOption = !spec && es2015Enabled;
 
+    const tooltips = {
+      spec:
+        "Modify es2015 preset and enable “spec” transformations for any plugins that allow them.",
+      loose: "Modify es2015 preset and enable loose mode where available.",
+    };
+
     return (
       <div className={styles.expandedContainer}>
         <div className={styles.sectionsWrapper}>
@@ -121,7 +127,10 @@ class ExpandedContainer extends Component {
               />
             )}
             {showSpecOption
-              ? <label className={styles.settingsLabel}>
+              ? <label
+                  className={styles.settingsLabel}
+                  data-tip={tooltips.spec}
+                >
                   <input
                     checked={spec}
                     name="spec"
@@ -133,7 +142,10 @@ class ExpandedContainer extends Component {
                 </label>
               : null}
             {showLooseOption
-              ? <label className={styles.settingsLabel}>
+              ? <label
+                  className={styles.settingsLabel}
+                  data-tip={tooltips.loose}
+                >
                   <input
                     checked={loose}
                     name="loose"
