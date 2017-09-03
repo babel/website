@@ -4,6 +4,22 @@ import LZString from "lz-string";
 
 import type { PersistedState } from "./types";
 
+const URL_KEYS = [
+  "babili",
+  "browsers",
+  "build",
+  "builtIns",
+  "code",
+  "debug",
+  "circleciRepo",
+  "evaluate",
+  "lineWrap",
+  "presets",
+  "prettier",
+  "targets",
+  "version",
+];
+
 const compress = (string: string) =>
   LZString.compressToBase64(string)
     .replace(/\+/g, "-") // Convert '+' to '-'
@@ -54,26 +70,7 @@ const parseQuery = () => {
 
   const state = {};
 
-  mergeDefinedKeys(
-    raw,
-    [
-      "babili",
-      "browsers",
-      "build",
-      "builtIns",
-      "code",
-      "debug",
-      "circleciRepo",
-      "evaluate",
-      "lineWrap",
-      "presets",
-      "prettier",
-      "showSidebar",
-      "targets",
-      "version",
-    ],
-    state
-  );
+  mergeDefinedKeys(raw, URL_KEYS, state);
 
   if (raw.code_lz != null) {
     state.code = decompress(raw.code_lz || "");
@@ -83,12 +80,16 @@ const parseQuery = () => {
 };
 
 const updateQuery = (state: PersistedState) => {
-  const query = Object.keys(state)
-    .map(key => {
-      return key === "code"
-        ? `${key}_lz=` + compress(state.code)
-        : key + "=" + encode(state[key]);
-    })
+  const query = URL_KEYS.map(key => {
+    if (state[key] == null) {
+      return null;
+    } else if (key === "code") {
+      return `${key}_lz=` + compress(state.code);
+    } else {
+      return key + "=" + encode(state[key]);
+    }
+  })
+    .filter(value => value)
     .join("&");
 
   window.location.hash = "?" + query;
