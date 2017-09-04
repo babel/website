@@ -137,9 +137,8 @@ class Repl extends React.Component {
         <div className={styles.loader}>
           <div className={styles.loaderContent}>
             {message}
-            {state.babel.isLoading && (
-              <PresetLoadingAnimation className={styles.loadingAnimation} />
-            )}
+            {state.babel.isLoading &&
+              <PresetLoadingAnimation className={styles.loadingAnimation} />}
           </div>
         </div>
       );
