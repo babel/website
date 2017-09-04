@@ -8,49 +8,31 @@ import { colors, media } from "./styles";
 type Props = {
   children: React$Element<any>,
   className: ?any,
-  defaultExpanded?: boolean,
+  isExpanded?: boolean,
   label: string,
+  toggleIsExpanded: Function,
 };
 
-type State = {
-  expanded: boolean,
-};
-
-export default class AccordionTab extends Component {
-  props: Props;
-  state: State = {
-    expanded: !!this.props.defaultExpanded,
-  };
-
-  render() {
-    const { expanded } = this.state;
-
-    return (
-      <div className={`${styles.AccordionTab} ${this.props.className || ""}`}>
-        <div className={styles.HeaderRow} onClick={this._onClick}>
-          <div className={styles.Label}>
-            {this.props.label}
-          </div>
-          <Svg
-            className={`${styles.Arrow} ${expanded
-              ? styles.ArrowExpanded
-              : ""}`}
-            path="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"
-          />
+export default function AccordionTab(props: Props) {
+  return (
+    <div className={`${styles.AccordionTab} ${props.className || ""}`}>
+      <div className={styles.HeaderRow} onClick={props.toggleIsExpanded}>
+        <div className={styles.Label}>
+          {props.label}
         </div>
-        {expanded &&
-          <div className={styles.Content}>
-            {this.props.children}
-          </div>}
+        <Svg
+          className={`${styles.Arrow} ${props.isExpanded
+            ? styles.ArrowExpanded
+            : ""}`}
+          path="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"
+        />
       </div>
-    );
-  }
-
-  _onClick = () => {
-    this.setState(state => ({
-      expanded: !state.expanded,
-    }));
-  };
+      {props.isExpanded &&
+        <div className={styles.Content}>
+          {props.children}
+        </div>}
+    </div>
+  );
 }
 
 const styles = {

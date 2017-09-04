@@ -22,6 +22,7 @@ import type {
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
+type OnTabExpandedChange = (name: string, isExpanded: boolean) => void;
 
 type Props = {
   babelVersion: ?string,
@@ -30,11 +31,15 @@ type Props = {
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetState: PluginState,
+  isEnvPresetTabExpanded: boolean,
   isExpanded: boolean,
+  isPresetsTabExpanded: boolean,
+  isSettingsTabExpanded: boolean,
   lineWrap: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
+  onTabExpandedChange: OnTabExpandedChange,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
@@ -67,6 +72,9 @@ class ExpandedContainer extends Component {
       debugEnvPreset,
       envConfig,
       envPresetState,
+      isEnvPresetTabExpanded,
+      isPresetsTabExpanded,
+      isSettingsTabExpanded,
       lineWrap,
       onIsExpandedChange,
       onSettingChange,
@@ -84,8 +92,9 @@ class ExpandedContainer extends Component {
         <div className={styles.sectionsWrapper}>
           <AccordionTab
             className={styles.section}
+            isExpanded={isSettingsTabExpanded}
             label="Settings"
-            defaultExpanded={true}
+            toggleIsExpanded={this._toggleIsSettingsTabExpanded}
           >
             <PluginToggle
               config={runtimePolyfillConfig}
@@ -111,7 +120,12 @@ class ExpandedContainer extends Component {
               />
             )}
           </AccordionTab>
-          <AccordionTab className={styles.section} label="Presets">
+          <AccordionTab
+            className={styles.section}
+            isExpanded={isPresetsTabExpanded}
+            label="Presets"
+            toggleIsExpanded={this._toggleIsPresetsTabExpanded}
+          >
             {presetPluginConfigs.map(config =>
               <PluginToggle
                 config={config}
@@ -123,7 +137,9 @@ class ExpandedContainer extends Component {
           </AccordionTab>
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}
+            isExpanded={isEnvPresetTabExpanded}
             label="Env Preset"
+            toggleIsExpanded={this._toggleIsEnvPresetTabExpanded}
           >
             <label className={styles.settingsLabel}>
               <input
@@ -298,6 +314,27 @@ class ExpandedContainer extends Component {
 
   _onNodeChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange("node", parseFloat(event.target.value));
+  };
+
+  _toggleIsEnvPresetTabExpanded = () => {
+    this.props.onTabExpandedChange(
+      "isEnvPresetTabExpanded",
+      !this.props.isEnvPresetTabExpanded
+    );
+  };
+
+  _toggleIsPresetsTabExpanded = () => {
+    this.props.onTabExpandedChange(
+      "isPresetsTabExpanded",
+      !this.props.isPresetsTabExpanded
+    );
+  };
+
+  _toggleIsSettingsTabExpanded = () => {
+    this.props.onTabExpandedChange(
+      "isSettingsTabExpanded",
+      !this.props.isSettingsTabExpanded
+    );
   };
 }
 
