@@ -62,10 +62,6 @@ type State = {
 const DEBOUNCE_DELAY = 500;
 
 class Repl extends React.Component {
-  static defaultProps = {
-    defaultValue: "",
-  };
-
   props: Props;
   state: State;
 
