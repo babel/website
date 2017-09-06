@@ -7,7 +7,9 @@ categories: announcements
 share_text: "Planning for 7.0"
 ---
 
-If you didn't know already, we're planning on releasing a 7.0 version soon 🙌 ! Looks like work on 7.0 started back in Feburary when I just wanted to make a release to drop Node 0.10/0.12 support and remove babel-runtime and various other code. Since then we've done releases up to alpha.20. Since we're basically still just a volunteer project, it was difficult for most of the team to stay focused, motivated, and prepared to make all these changes and continue to maintain a project that so many companies, bootcamps, libraries/tools rely on so much. In the meantime however, we've tried doing [weekly meetings/notes](https://github.com/babel/notes), participated as invited guests at TC39 for the last few meetings, got involved in both [RGSoC](https://railsgirlssummerofcode.org/) and [GSoC](https://summerofcode.withgoogle.com), and have an [Open Collective](https://opencollective.com/babel).
+If you didn't know already, we're planning on releasing a 7.0 version soon 🙌 ! Looks like work on 7.0 started back in Feburary when I just wanted to make a release to drop Node 0.10/0.12 support and remove babel-runtime and various other code. Since then we've done releases up to `alpha.20`.
+
+Since we're basically still just a volunteer project, it was difficult for most of the team to stay focused, motivated, and prepared to make all these changes and continue to maintain a project that so many companies, bootcamps, libraries/tools rely on so much. In the meantime however, we've tried doing [weekly meetings/notes](https://github.com/babel/notes), participated as invited guests at TC39 for the last few meetings, got involved in both [RGSoC](https://railsgirlssummerofcode.org/) and [GSoC](https://summerofcode.withgoogle.com), and have an [Open Collective](https://opencollective.com/babel).
 
 > Upgrading for most projects should be as simple as updating your `package.json` deps to `7.0.0-beta.1`. (we will be pinning to exact versions until the official release). We've been using the 7.0 alpha when compiling Babel itself (so meta) at my workplace at Behance for the whole time we've been working on 7.0.
 
@@ -497,6 +499,12 @@ Can we combine/replace these packages and have an easier, default experience?
 ## What's next?
 
 We want the community to upgrade and provide their feedback/reports. There will probably be a lot of initial activity which can be overwhelming so please be patient with us. We'd appreciate the help in helping triage, write docs/upgrade guides/tips, and codemods to help others upgrade more seemlessly. Because Babel touches a lot of the JavaScript ecosystem, it may not be as simple as simply updating 1 package because it could depend on other community Babel plugins on npm. We're not going to just wait around for a month and hope people upgrade, there's a lot of work to be done to make this happen without half the community still staying on 6.x next year. I'd not like to leave projects (and people) behind. So let us know what we can do to help, and I'd ask that you'd do the same for us and the rest of the community.
+
+## Future
+
+After 7.0: there's a lot of potential avenues for us to explore (that we've all brought up years ago): separating traversal from plugins (async visitors?), immutable AST, syntax extensions? On the infra side: integrating with test262 and smoke tests, better github workflow to go from proposal to transform, codemod infrastructure for automatic upgrades, etc.
+
+Follow our meeting notes/discussions on [babel/notes](https://github.com/babel/notes) and get involved! 
 
 ## Thanks!
 
