@@ -24,7 +24,15 @@ export default function AccordionTab(props: Props) {
           className={`${styles.Arrow} ${props.isExpanded
             ? styles.ArrowExpanded
             : ""}`}
-          path="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"
+          path="
+            M15.41,16.58
+            L10.83,12
+            L15.41,7.41
+            L14,6
+            L8,12
+            L14,18
+            L15.41,16.58
+            Z"
         />
       </div>
       {props.isExpanded &&
