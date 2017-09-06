@@ -94,7 +94,7 @@ class ExpandedContainer extends Component {
             className={styles.section}
             isExpanded={isSettingsTabExpanded}
             label="Settings"
-            toggleIsExpanded={this._toggleIsSettingsTabExpanded}
+            toggleIsExpanded={this._toggleSettingsTab}
           >
             <PluginToggle
               config={runtimePolyfillConfig}
@@ -124,7 +124,7 @@ class ExpandedContainer extends Component {
             className={styles.section}
             isExpanded={isPresetsTabExpanded}
             label="Presets"
-            toggleIsExpanded={this._toggleIsPresetsTabExpanded}
+            toggleIsExpanded={this._togglePresetsTab}
           >
             {presetPluginConfigs.map(config =>
               <PluginToggle
@@ -139,7 +139,7 @@ class ExpandedContainer extends Component {
             className={`${styles.section} ${styles.sectionEnv}`}
             isExpanded={isEnvPresetTabExpanded}
             label="Env Preset"
-            toggleIsExpanded={this._toggleIsEnvPresetTabExpanded}
+            toggleIsExpanded={this._toggleEnvPresetTab}
           >
             <label className={styles.settingsLabel}>
               <input
@@ -316,21 +316,21 @@ class ExpandedContainer extends Component {
     this.props.onEnvPresetSettingChange("node", parseFloat(event.target.value));
   };
 
-  _toggleIsEnvPresetTabExpanded = () => {
+  _toggleEnvPresetTab = () => {
     this.props.onTabExpandedChange(
       "isEnvPresetTabExpanded",
       !this.props.isEnvPresetTabExpanded
     );
   };
 
-  _toggleIsPresetsTabExpanded = () => {
+  _togglePresetsTab = () => {
     this.props.onTabExpandedChange(
       "isPresetsTabExpanded",
       !this.props.isPresetsTabExpanded
     );
   };
 
-  _toggleIsSettingsTabExpanded = () => {
+  _toggleSettingsTab = () => {
     this.props.onTabExpandedChange(
       "isSettingsTabExpanded",
       !this.props.isSettingsTabExpanded
