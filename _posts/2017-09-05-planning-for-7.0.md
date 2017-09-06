@@ -9,8 +9,7 @@ share_text: "Planning for 7.0"
 
 If you didn't know already, we're planning on releasing a 7.0 version soon 🙌 ! Looks like work on 7.0 started back in Feburary when I just wanted to make a release to drop Node 0.10/0.12 support and remove babel-runtime and various other code. Since then we've done releases up to alpha.20. Since we're basically still just a volunteer project, it was difficult for most of the team to stay focused, motivated, and prepared to make all these changes and continue to maintain a project that so many companies, bootcamps, libraries/tools rely on so much. In the meantime however, we've tried doing [weekly meetings/notes](https://github.com/babel/notes), participated as invited guests at TC39 for the last few meetings, got involved in both [RGSoC](https://railsgirlssummerofcode.org/) and [GSoC](https://summerofcode.withgoogle.com), and have an [Open Collective](https://opencollective.com/babel).
 
-> Upgrading for most projects should be as simple as updating your `package.json` deps to `7.0.0-beta.1`. (we will be pinning to exact versions until the official release).
-> We've been using the 7.0 alpha when compiling Babel itself (so meta) at my workplace at Behance for the whole time we've been working on 7.0.
+> Upgrading for most projects should be as simple as updating your `package.json` deps to `7.0.0-beta.1`. (we will be pinning to exact versions until the official release). We've been using the 7.0 alpha when compiling Babel itself (so meta) at my workplace at Behance for the whole time we've been working on 7.0.
 
 Example:
 
@@ -26,13 +25,13 @@ I'd like to go over some notable changes for our first beta release (it's still 
 
 ## Re-iterating Project Goals
 
-Before we go into that, I just want to repeat again what the project does.
+Before we go into that, I just want to repeat again what the purpose of Babel is.
 
 As Babel as been transformed from 6to5, browsers have been implementing more of the spec, and users are more comfortable with using the latest syntax/build tooling, Babel's goals haven't changed too much.
 
 Our two goals are hand and hand: help developers transform new syntax into backwards compatible code (abstract browser support away), and be a bridge to help TC39 get feedback on new ECMAScript proposals and for the community to have a say in the future of the language.
 
-Thus, I think it's an understatement to say that Babel is an vital part of the JavaScript community and needs it's support. (The only talks I've tried to give are about this point: [JSConf EU](https://github.com/hzoo/maintaining-an-oss-project), [React Rally](https://github.com/hzoo/so-how-does-babel-even-work), [TC39](https://github.com/hzoo/role-of-babel-in-js)). I'll re-iterate a point I made recently: "What happens when Babel dies"? What happens when the current group of people interested in this project get bored/burned out/move on to other things? (What if it's already happened a lot). What are we going to do about it?
+Thus, I think it's an understatement to say that Babel is an vital part of the JavaScript community (almost 10 million downloads a month of `babel-core`) and needs it's support. (The only talks I've tried to give are about this point: [JSConf EU](https://github.com/hzoo/maintaining-an-oss-project), [React Rally](https://github.com/hzoo/so-how-does-babel-even-work), [TC39](https://github.com/hzoo/role-of-babel-in-js)). I'll re-iterate a point I made recently: "What happens when Babel dies"? What happens when the current group of people interested in this project get bored/burned out/move on to other things? (What if it's already happened a lot). What are we going to do about it?
 
 ## [#4315](https://github.com/babel/babel/issues/4315) Drop support for unmaintained Node versions: 0.10, 0.12, 5
 
@@ -365,6 +364,12 @@ We're working on a guide for how to setup Typescript and Babel with the Typescri
 This was important because we got a lot of complaints from users that weren't using any types/flow that they ended up writing invalid JS but there was no syntax error because they used the react preset.
 
 Also we have the typescript preset now, so it didn't make sense to include `flow` in the react preset itself anymore.
+
+### Integrations
+
+Packages like `grunt-babel`, `gulp-babel`, `rollup-plugin-babel`, etc all used to have `babel-core` as a dependency.
+
+After v7, we plan to move `babel-core` to be a peerDependency like `babel-loader` has. This lets all these packages not have to bump major versions when the `babel-core` API hasn't changed. Thus they are already published as `7.0.0` since we don't expect any further changes to those packages.
 
 ## Meta
 
