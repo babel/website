@@ -47,7 +47,7 @@ Progress in OSS projects often comes at the cost of upgrading for its users. Bec
 
 We've created a new repo: [babel/proposals](https://github.com/babel/proposals) to track our progress on the various [TC39 Proposals](https://github.com/tc39/proposals) and meetings.
 
-I also added a section about when we accept PRs and new proposals: https://github.com/babel/proposals#when-does-babel-implement-new-features. Our basic thinking is that we will start accepting PRs for anything a TC39 champion is going to present (Stage 0). And we will update (with the help of yall) them when the spec changes.
+I also added a [section](https://github.com/babel/proposals#when-does-babel-implement-new-features) about when we accept PRs and new proposals. Our basic thinking is that we will start accepting PRs for anything a TC39 champion is going to present (Stage 0). And we will update (with the help of yall) them when the spec changes.
 
 And naturally, we will take the opportunity to be as spec compliant as possible (within reasonable speed, etc) as the default behavior. This means if you need a faster/smaller build, you should use the `loose` option which will purposely disregard certain spec changes like runtime checks and other edge cases. The reason why it is opt-in is because we expect you should know what you are doing, while others should be able to seamlessly upgrade `babel-preset-env` to use the native version of each syntax or stop using Babel entirely and have no issues.
 
@@ -57,7 +57,7 @@ And naturally, we will take the opportunity to be as spec compliant as possible 
 
 > This currently has the effect of breaking the decorators plugin if you try to decorate a class property. You'll need to use the `loose` option to be compatible with the version of decorators in the transform until we release the Stage 2 decorators plugin.
 
-> Private fields are WIP: PR for transform is https://github.com/babel/babel/pull/6120
+> Private fields are WIP: [PR](https://github.com/babel/babel/pull/6120)
 
 Input
 
@@ -169,7 +169,7 @@ var regex = /[0-9A-Fa-f]/;
 
 ### Stage 3: BigInt (new, unfinished)
 
-> `babel-plugin-transform-bigint`: Work in Progress at https://github.com/babel/babel/pull/6015.
+> `babel-plugin-transform-bigint`: [PR](https://github.com/babel/babel/pull/6015).
 > This won't be included in the Stage presets because it would be slow to wrap all operators.
 
 Input
@@ -188,7 +188,7 @@ babelCheckBinaryExpressions(new BigInt("50000"), new BigInt("60"), "+");
 ### Stage 3: Dynamic Import (from Stage 2)
 
 > `babel-plugin-syntax-dynamic-import`: You only need to parse the syntax since tools like Webpack can handle the transformation in place of Babel.
-> There is also a plugin for node: https://github.com/airbnb/babel-plugin-dynamic-import-node
+> There is also a [plugin for Node](https://github.com/airbnb/babel-plugin-dynamic-import-node)
 
 Input
 
@@ -228,7 +228,7 @@ Output
 
 ### Stage 2: Decorators (from Stage 1), still WIP
 
-> `babel-plugin-transform-decorators`: PR is https://github.com/babel/babel/pull/6107
+> `babel-plugin-transform-decorators`: [PR](https://github.com/babel/babel/pull/6107)
 
 Disallowed
 
@@ -492,8 +492,7 @@ So although this issue has been fixed "upstream" by using npm >= 3/later Yarn, w
 
 ### [#5224](https://github.com/babel/babel/pull/5224) Independent Publishing of Experimental Packages
 
-> I mention this in [The State of Babel](http://babeljs.io/blog/2016/12/07/the-state-of-babel) in the `Versioning` section.
-> https://github.com/babel/babylon/issues/275
+> I mention this in [The State of Babel](http://babeljs.io/blog/2016/12/07/the-state-of-babel) in the `Versioning` section. [Github Issue](https://github.com/babel/babylon/issues/275)
 
 You might remember that after Babel 6, Babel became a set of npm packages with its own ecosystem of custom presets and plugins.
 
@@ -534,7 +533,7 @@ To eliminate the confusion (and help our power users), we're considering droppin
 
 ### Deprecate ES20xx presets
 
-> We already deprecated preset-latest a while ago, and ES2016/ES2017 in https://twitter.com/left_pad/status/897483806499885057
+> We already deprecated preset-latest a while ago, and ES2016/ES2017 [earlier](https://twitter.com/left_pad/status/897483806499885057)
 > It's annoying making a yearly preset (extra package/dependency, issues with npm package squatting unless we do scoped packages)
 
 Developers shouldn't even need to make the decision of what yearly preset to use? If we drop/deprecate these presets then everyone can use [babel-preset-env](https://github.com/babel/babel-preset-env) instead which will already update as the spec changes.
