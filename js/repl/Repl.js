@@ -5,6 +5,7 @@ import "regenerator-runtime/runtime";
 import { css } from "glamor";
 import debounce from "lodash.debounce";
 import React from "react";
+import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
@@ -60,7 +61,7 @@ type State = {
 
 const DEBOUNCE_DELAY = 500;
 
-export default class Repl extends React.Component {
+class Repl extends React.Component {
   props: Props;
   state: State;
 
@@ -414,6 +415,14 @@ export default class Repl extends React.Component {
     // This prevents frequent updates while a user is typing.
     this._compileToState(code);
   };
+}
+
+export default function ReplWithErrorBoundary() {
+  return (
+    <ErrorBoundary>
+      <Repl />
+    </ErrorBoundary>
+  );
 }
 
 const styles = {
