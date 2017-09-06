@@ -601,3 +601,6 @@
 - name: Hashnode
   url: https://hashnode.com
   logo: hashnode.svg
+- name: YSI Corporation
+  url: https://www.ysicorp.com
+  logo: ysicorp.svg
