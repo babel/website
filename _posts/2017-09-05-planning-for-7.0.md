@@ -11,7 +11,7 @@ If you didn't know already, we're planning on releasing a 7.0 version soon 🙌 
 
 Since we're basically still just a volunteer project, it was difficult for most of the team to stay focused, motivated, and prepared to make all these changes and continue to maintain a project that so many companies, bootcamps, libraries/tools rely on so much. In the meantime however, we've tried doing [weekly meetings/notes](https://github.com/babel/notes), participated as invited guests at TC39 for the last few meetings, got involved in both [RGSoC](https://railsgirlssummerofcode.org/) and [GSoC](https://summerofcode.withgoogle.com), and have an [Open Collective](https://opencollective.com/babel).
 
-> Upgrading for most projects should be as simple as updating your `package.json` deps to `7.0.0-beta.1`. (we will be pinning to exact versions until the official release). We've been using the 7.0 alpha when compiling Babel itself (so meta) at my workplace at Behance for the whole time we've been working on 7.0.
+> Upgrading for most projects should be as simple as updating your `package.json` deps to `7.0.0-beta.1`. (we will be pinning to exact versions until the official release). For the whole time we've been working on 7.0, we've been using it in Babel itself (so meta) and at my workplace at Behance.
 
 Example:
 
@@ -54,6 +54,8 @@ And naturally, we will take the opportunity to be as spec compliant as possible 
 ### Stage 3: Class Properties (from Stage 2)
 
 > `babel-plugin-transform-class-properties`: the default behavior is now what was previously the "spec" option, which uses `Object.defineProperty` instead of simple assignment.
+
+> This currently has the effect of breaking the decorators plugin if you try to decorate a class property. You'll need to use the `loose` option to be compatible with the version of decorators in the transform until we release the Stage 2 decorators plugin.
 
 Input
 
@@ -317,6 +319,63 @@ var _a;
 (_a = a) == null ? void 0 : _a.b = 42;
 ```
 
+### ES2015: `new.target`
+
+> `babel-plugin-transform-new-target`: we never got around to implementing `new.target` support earlier, so now there is a plugin for it that will be included in the ES2015/env presets.
+
+Example
+
+```js
+// with a function
+function Foo() {
+  console.log(new.target);
+}
+
+Foo(); // => undefined
+new Foo(); // => Foo
+
+// with classes
+class Foo {
+  constructor() {
+    console.log(new.target);
+  }
+}
+
+class Bar extends Foo {
+}
+
+new Foo(); // => Foo
+new Bar(); // => Bar
+```
+
+Input
+
+```js
+class Foo {
+  constructor() {
+    new.target;
+  }
+
+  test() {
+    new.target;
+  }
+}
+```
+
+Output
+
+```js
+class Foo {
+  constructor() {
+    this.constructor;
+  }
+
+  test() {
+    void 0;
+  }
+}
+```
+
 ## 🚀 New Feature
 
 ### `.babelrc.js`
@@ -455,7 +514,7 @@ While we want to have an easy to use tool, it turns out that many companies/deve
 
 Developers don't actually know what features are in what version of JavaScript (and they shouldn't have to know). However it is a problem when we all start thinking that "features" that are actually still proposals are in the spec already.
 
-Many open source projects (including Babel still 😝), tutorials, conference talks, etc all use `stage-0`. React promotes the use of JSX, class properties (currently Stage 2), object rest/spread (now Stage 3) and we all believe that it's just JavaScript because Babel compiled it for them. So maybe removing this abstraction would help people understand more about what is going on and the tradeoffs one is making when choosing to use Stage X plugins.
+Many open source projects (including Babel still 😝), tutorials, conference talks, etc all use `stage-0`. React promotes the use of JSX, class properties (now Stage 3), object rest/spread (now Stage 3) and we all believe that it's just JavaScript because Babel compiled it for them. So maybe removing this abstraction would help people understand more about what is going on and the tradeoffs one is making when choosing to use Stage X plugins.
 
 It also seems much easier to maintain your own preset than to have to update the Stage preset.
 
