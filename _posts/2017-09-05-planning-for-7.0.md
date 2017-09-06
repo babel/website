@@ -57,6 +57,8 @@ And naturally, we will take the opportunity to be as spec compliant as possible 
 
 > This currently has the effect of breaking the decorators plugin if you try to decorate a class property. You'll need to use the `loose` option to be compatible with the version of decorators in the transform until we release the Stage 2 decorators plugin.
 
+> Private fields are WIP: PR for transform is https://github.com/babel/babel/pull/6120
+
 Input
 
 ```js
@@ -99,7 +101,6 @@ class Bork {
 Bork.a = 'foo';
 ```
 
-> Private fields are WIP: https://github.com/babel/babel/pull/6120
 
 ### Stage 3: Object Rest Spread (from Stage 2)
 
@@ -225,18 +226,58 @@ Output
 0xA0B0C0
 ```
 
-### Stage 2: Decorators (TODO)
+### Stage 2: Decorators (from Stage 1), still WIP
 
-> `babel-plugin-transform-decorators`:
+> `babel-plugin-transform-decorators`: PR is https://github.com/babel/babel/pull/6107
 
-Input
+Disallowed
 
 ```js
+// no computed decorator keys
+@dec[foo]
+class A {}
+
+// no parameter decorators (a separate proposal)
+class Foo {
+  constructor(@foo x) {}
+}
+
+// no decorators on object methods
+var o = {
+  @baz
+  foo() {}
+}
+
+// decorator cannot be attached to the export
+@foo
+export default class {}
 ```
 
-Output
+Valid
 
 ```js
+// decorators with a call expression
+@foo('bar')
+class A {
+  // decorators on computed methods
+  @autobind
+  [method](arg) {}
+  // decorators on generator functions
+  @deco
+  *gen() {}
+  // decorators with a member expression
+  @a.b.c(e, f)
+  m() {}
+}
+```
+
+Unsupported (WIP)
+
+```js
+// decorated class properties
+class A {
+  @dec name = 0
+}
 ```
 
 ### Stage 2: `function.sent` (new)
@@ -563,7 +604,7 @@ We want the community to upgrade and provide their feedback/reports. There will 
 
 After 7.0: there's a lot of potential avenues for us to explore (that we've all brought up years ago): separating traversal from plugins (async visitors?), immutable AST, syntax extensions? On the infra side: integrating with test262 and smoke tests, better github workflow to go from proposal to transform, codemod infrastructure for automatic upgrades, etc.
 
-Follow our meeting notes/discussions on [babel/notes](https://github.com/babel/notes) and get involved! 
+Follow our meeting notes/discussions on [babel/notes](https://github.com/babel/notes) and get involved!
 
 ## Thanks!
 
