@@ -51,6 +51,9 @@ type State = {
   envPresetDebugInfo: ?string,
   envPresetState: PluginState,
   evalErrorMessage: ?string,
+  isEnvPresetTabExpanded: boolean,
+  isPresetsTabExpanded: boolean,
+  isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
   plugins: PluginStateMap,
@@ -103,6 +106,9 @@ class Repl extends React.Component {
         envConfig.isEnvPresetEnabled
       ),
       evalErrorMessage: null,
+      isEnvPresetTabExpanded: persistedState.isEnvPresetTabExpanded,
+      isPresetsTabExpanded: persistedState.isPresetsTabExpanded,
+      isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
@@ -153,11 +159,15 @@ class Repl extends React.Component {
           debugEnvPreset={state.debugEnvPreset}
           envConfig={state.envConfig}
           envPresetState={state.envPresetState}
+          isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
           isExpanded={state.isSidebarExpanded}
+          isPresetsTabExpanded={state.isPresetsTabExpanded}
+          isSettingsTabExpanded={state.isSettingsTabExpanded}
           lineWrap={state.lineWrap}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
+          onTabExpandedChange={this._onTabExpandedChange}
           pluginState={state.plugins}
           presetState={state.presets}
           runtimePolyfillConfig={runtimePolyfillConfig}
@@ -360,12 +370,22 @@ class Repl extends React.Component {
     }, this._presetsUpdatedSetStateCallback);
   };
 
+  _onTabExpandedChange = (name: string, isExpanded: boolean) => {
+    this.setState(
+      {
+        [name]: isExpanded,
+      },
+      this._presetsUpdatedSetStateCallback
+    );
+  };
+
   _persistState = () => {
-    const { envConfig, plugins } = this.state;
+    const { state } = this;
+    const { envConfig, plugins } = state;
 
     const presetsArray = this._presetsToArray();
 
-    const babili = this.state.plugins["babili-standalone"];
+    const babili = state.plugins["babili-standalone"];
     if (babili.isEnabled) {
       presetsArray.push("babili");
     }
@@ -374,25 +394,28 @@ class Repl extends React.Component {
       presetsArray.push("env");
     }
 
-    const state = {
+    const payload = {
       babili: plugins["babili-standalone"].isEnabled,
       browsers: envConfig.browsers,
-      build: this.state.babel.build,
-      builtIns: this.state.builtIns,
-      circleciRepo: this.state.babel.circleciRepo,
-      code: this.state.code,
-      debug: this.state.debugEnvPreset,
-      evaluate: this.state.runtimePolyfillState.isEnabled,
-      lineWrap: this.state.lineWrap,
+      build: state.babel.build,
+      builtIns: state.builtIns,
+      circleciRepo: state.babel.circleciRepo,
+      code: state.code,
+      debug: state.debugEnvPreset,
+      evaluate: state.runtimePolyfillState.isEnabled,
+      isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
+      isPresetsTabExpanded: state.isPresetsTabExpanded,
+      isSettingsTabExpanded: state.isSettingsTabExpanded,
+      lineWrap: state.lineWrap,
       presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,
-      showSidebar: this.state.isSidebarExpanded,
+      showSidebar: state.isSidebarExpanded,
       targets: envConfigToTargetsString(envConfig),
-      version: this.state.babel.version,
+      version: state.babel.version,
     };
 
-    StorageService.set("replState", state);
-    UriUtils.updateQuery(state);
+    StorageService.set("replState", payload);
+    UriUtils.updateQuery(payload);
   };
 
   _presetsUpdatedSetStateCallback = () => {
