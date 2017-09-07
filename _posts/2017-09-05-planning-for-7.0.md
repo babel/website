@@ -7,9 +7,9 @@ categories: announcements
 share_text: "Planning for 7.0"
 ---
 
-If you didn't know already, we're planning on releasing a 7.0 version soon 🙌 ! Looks like work on 7.0 started back in Feburary when I just wanted to make a release to drop Node 0.10/0.12 support and remove babel-runtime and various other code. Since then we've done releases up to `alpha.20`.
+If you didn't know already, we're planning on releasing a 7.0 version soon 🙌 ! Looks like work on 7.0 started back in February when I just wanted to make a release to drop Node 0.10/0.12 support and remove babel-runtime and various other code. Since then we've done releases up to `alpha.20`.
 
-Since we're basically still just a volunteer project, it was difficult for most of the team to stay focused, motivated, and prepared to make all these changes and continue to maintain a project that so many companies, bootcamps, libraries/tools rely on so much. In the meantime however, we've tried doing [weekly meetings/notes](https://github.com/babel/notes), participated as invited guests at TC39 for the last few meetings, got involved in both [RGSoC](https://railsgirlssummerofcode.org/) and [GSoC](https://summerofcode.withgoogle.com), and have an [Open Collective](https://opencollective.com/babel).
+Since we're basically still just a volunteer project, it was difficult for most of the team to stay focused, motivated, and prepared to make all these changes and continue to maintain a project that so many companies, bootcamps, libraries, and tools rely on so much. In the meantime however, we've tried doing [weekly meetings/notes](https://github.com/babel/notes), participated as invited guests at TC39 for the last few meetings, got involved in both [RGSoC](https://railsgirlssummerofcode.org/) and [GSoC](https://summerofcode.withgoogle.com), and have an [Open Collective](https://opencollective.com/babel).
 
 > Upgrading for most projects should be as simple as updating your `package.json` deps to `7.0.0-beta.1`. (we will be pinning to exact versions until the official release). For the whole time we've been working on 7.0, we've been using it in Babel itself (so meta) and at my workplace at Behance.
 
@@ -29,15 +29,15 @@ I'd like to go over some notable changes for our first beta release (it's still 
 
 Before we go into that, I just want to repeat again what the purpose of Babel is.
 
-As Babel as been transformed from 6to5, browsers have been implementing more of the spec, and users are more comfortable with using the latest syntax/build tooling, Babel's goals haven't changed too much.
+As Babel has been transformed from 6to5, browsers have been implementing more of the spec, and users are more comfortable with using the latest syntax/build tooling, Babel's goals haven't changed too much.
 
-Our two goals are hand and hand: help developers transform new syntax into backwards compatible code (abstract browser support away), and be a bridge to help TC39 get feedback on new ECMAScript proposals and for the community to have a say in the future of the language.
+Our two goals are hand in hand: help developers transform new syntax into backwards compatible code (abstract browser support away), and be a bridge to help TC39 get feedback on new ECMAScript proposals and for the community to have a say in the future of the language.
 
-Thus, I think it's an understatement to say that Babel is an vital part of the JavaScript community (almost 10 million downloads a month of `babel-core`) and needs it's support. (The only talks I've tried to give are about this point: [JSConf EU](https://github.com/hzoo/maintaining-an-oss-project), [React Rally](https://github.com/hzoo/so-how-does-babel-even-work), [TC39](https://github.com/hzoo/role-of-babel-in-js)). I'll re-iterate a point I made recently: "What happens when Babel dies"? What happens when the current group of people interested in this project get bored/burned out/move on to other things? (What if it's already happened a lot). What are we going to do about it?
+Thus, I think it's an understatement to say that Babel is a vital part of the JavaScript community (almost 10 million downloads a month of `babel-core`) and needs its support. (The only talks I've tried to give are about this point: [JSConf EU](https://github.com/hzoo/maintaining-an-oss-project), [React Rally](https://github.com/hzoo/so-how-does-babel-even-work), [TC39](https://github.com/hzoo/role-of-babel-in-js)). I'll re-iterate a point I made recently: "What happens when Babel dies"? What happens when the current group of people interested in this project get bored/burned out/move on to other things? (What if it's already happened a lot). What are we going to do about it?
 
 ## [#4315](https://github.com/babel/babel/issues/4315) Drop support for unmaintained Node versions: 0.10, 0.12, 5
 
-Progress in OSS projects often comes at the cost of upgrading for its users. Because of this, we've always been hesitant in making the choice to introduce a major version bump/breaking changes. But by dropping unsupported versions of Node, we can not only make a number of improvements to the codebase, but also upgrade dependencies and tools (ESLint, Yarn, Jest, Lerna, etc).
+Progress in OSS projects often comes at the cost of upgrading for its users. Because of this, we've always been hesitant in making the choice to introduce a major version bump/breaking changes. By dropping unsupported versions of Node, we can not only make a number of improvements to the codebase, but also upgrade dependencies and tools (ESLint, Yarn, Jest, Lerna, etc).
 
 ## 👓 Proposal Updates/Spec Compliancy
 
@@ -47,9 +47,9 @@ Progress in OSS projects often comes at the cost of upgrading for its users. Bec
 
 We've created a new repo: [babel/proposals](https://github.com/babel/proposals) to track our progress on the various [TC39 Proposals](https://github.com/tc39/proposals) and meetings.
 
-I also added a [section](https://github.com/babel/proposals#when-does-babel-implement-new-features) about when we accept PRs and new proposals. Our basic thinking is that we will start accepting PRs for anything a TC39 champion is going to present (Stage 0). And we will update (with the help of yall) them when the spec changes.
+I also added a [section](https://github.com/babel/proposals#when-does-babel-implement-new-features) about when we accept PRs and new proposals. Our basic thinking is that we will start accepting PRs for anything a TC39 champion is going to present (Stage 0). And we will update them (with your help!) when the spec changes.
 
-And naturally, we will take the opportunity to be as spec compliant as possible (within reasonable speed, etc) as the default behavior. This means if you need a faster/smaller build, you should use the `loose` option which will purposely disregard certain spec changes like runtime checks and other edge cases. The reason why it is opt-in is because we expect you should know what you are doing, while others should be able to seamlessly upgrade `babel-preset-env` to use the native version of each syntax or stop using Babel entirely and have no issues.
+Naturally, we will take the opportunity to be as spec compliant as possible (within reasonable speed, etc) as the default behavior. This means if you need a faster/smaller build, you should use the `loose` option which will purposely disregard certain spec changes like runtime checks and other edge cases. The reason why it is opt-in is because we expect you should know what you are doing, while others should be able to seamlessly upgrade `babel-preset-env` to use the native version of each syntax or stop using Babel entirely and have no issues.
 
 ### Stage 3: Class Properties (from Stage 2)
 
@@ -423,7 +423,7 @@ class Foo {
 
 > [babel/babel#4630](https://github.com/babel/babel/issues/4630)
 
-`*.js` configuration files are fairly common in the JavaScript ecosystem. ESlint and Webpack both allow for `.eslintrc.js` and `webpack.config.js` configuration files, respectively.
+`*.js` configuration files are fairly common in the JavaScript ecosystem. ESLint and Webpack both allow for `.eslintrc.js` and `webpack.config.js` configuration files, respectively.
 
 Writing configuration files in JavaScript allows for dynamic configuration, making it possible to write a single configuration file that can adapt to different environments programmatically.
 
@@ -447,7 +447,7 @@ module.exports = {
 
 This was previously done through the `env` configuration option, which is now deprecated. See [below](#deprecate-the-env-option-in-babelrc) for more details.
 
-### Typescript
+### TypeScript
 
 You can now use `babel-preset-typescript` to allow Babel to strip types similar to how `babel-preset-flow` works!
 
@@ -457,7 +457,7 @@ You can now use `babel-preset-typescript` to allow Babel to strip types similar 
 }
 ```
 
-We're working on a guide for how to setup Typescript and Babel with the Typescript team, which should be finished before the official 7.0 release.
+We're working on a guide for how to setup TypeScript and Babel with the TypeScript team, which should be finished before the official 7.0 release.
 
 ## 😎 Other Breaking Changes
 
@@ -465,7 +465,7 @@ We're working on a guide for how to setup Typescript and Babel with the Typescri
 
 This was important because we got a lot of complaints from users that weren't using any types/flow that they ended up writing invalid JS but there was no syntax error because they used the react preset.
 
-Also we have the typescript preset now, so it didn't make sense to include `flow` in the react preset itself anymore.
+Also we have the TypeScript preset now, so it didn't make sense to include `flow` in the react preset itself anymore.
 
 ### Integrations
 
@@ -597,7 +597,7 @@ Can we combine/replace these packages and have an easier, default experience?
 
 ## What's next?
 
-We want the community to upgrade and provide their feedback/reports. There will probably be a lot of initial activity which can be overwhelming so please be patient with us. We'd appreciate the help in helping triage, write docs/upgrade guides/tips, and codemods to help others upgrade more seemlessly. Because Babel touches a lot of the JavaScript ecosystem, it may not be as simple as simply updating 1 package because it could depend on other community Babel plugins on npm. We're not going to just wait around for a month and hope people upgrade, there's a lot of work to be done to make this happen without half the community still staying on 6.x next year. I'd not like to leave projects (and people) behind. So let us know what we can do to help, and I'd ask that you'd do the same for us and the rest of the community.
+We want the community to upgrade and provide their feedback/reports. There will probably be a lot of initial activity which can be overwhelming so please be patient with us. We'd appreciate the help in helping triage, write docs/upgrade guides/tips, and codemods to help others upgrade more seamlessly. Because Babel touches a lot of the JavaScript ecosystem, it may not be as simple as simply updating one package because it could depend on other community Babel plugins on npm. We're not going to just wait around for a month and hope people upgrade, there's a lot of work to be done to make this happen without half the community still staying on 6.x next year. I'd not like to leave projects (and people) behind. So let us know what we can do to help, and I'd ask that you'd do the same for us and the rest of the community.
 
 ## Future
 
@@ -607,4 +607,4 @@ Follow our meeting notes/discussions on [babel/notes](https://github.com/babel/n
 
 ## Thanks!
 
-I'm hopeful that we can do the official release soon, but I'd like to mention that open source is sustained by a consistent, day-to-day maintainence and not just a hyped-up release cycle where we just leave everyone else in the dust and move on.
+I'm hopeful that we can do the official release soon, but I'd like to mention that open source is sustained by consistent, day-to-day maintenance and not just a hyped-up release cycle where we just leave everyone else in the dust and move on.
