@@ -5,8 +5,6 @@ author: Kent C. Dodds
 date:   2017-09-08 11:00:00
 categories: who-knows
 share_text: "Zero-config code transformation with babel-macros"
-third_party_js:
-- https://platform.twitter.com/widgets.js
 custom_js_with_timestamps:
 - docs.js
 ---
@@ -67,7 +65,7 @@ There are already several [published `babel-macros`](https://www.npmjs.com/brows
 
 I think we've only begun to scratch the surface of what `babel-macros` can do. I'm hoping that we can land it in [create-react-app](https://github.com/facebookincubator/create-react-app/issues/2730) so folks using `create-react-app` can have even more power with zero configuration. I'm really excited to see more babel plugins expose a `macro` in addition to the existing plugin functionality they already have. I can't wait to see folks create macros that are specific to their project needs.
 
-**Creating a macros is even easier than a regular babel plugin**, but it does require a bit of knowledge around ASTs and Babel. If this is new to you, I've got [a](https://kentcdodds.com/talks/#writing-custom-babel-and-eslint-plugins-with-asts), [few](https://github.com/kentcdodds/asts-workshop), [resources](https://kentcdodds.com/workshops/#code-transformation-and-linting) for you 😀
+**Creating a macros is even easier than a regular babel plugin**, but it does require a bit of knowledge around ASTs and Babel. If this is new to you, I've got [a](https://kentcdodds.com/talks/#writing-custom-babel-and-eslint-plugins-with-asts), [few](https://github.com/thejameskyle/babel-handbook), [resources](https://kentcdodds.com/workshops/#code-transformation-and-linting) for you 😀
 
 Good luck to you all! 👋
 
