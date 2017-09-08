@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Zero-config transpilation with babel-macros"
+title:  "Zero-config code transformation with babel-macros"
 author: Kent C. Dodds
 date:   2017-09-08 11:00:00
 categories: who-knows
-share_text: "Zero-config transpilation with babel-macros"
+share_text: "Zero-config code transformation with babel-macros"
 third_party_js:
 - https://platform.twitter.com/widgets.js
 custom_js_with_timestamps:
