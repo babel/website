@@ -9,7 +9,7 @@ custom_js_with_timestamps:
 - docs.js
 ---
 
-["Compilers are the New Frameworks"](https://tomdale.net/2017/09/compilers-are-the-new-frameworks/) says [Tom Dale](https://twitter.com/tomdale) and I could not agree more. We're seeing more and more compile-time optimizations for libraries and frameworks. One of my favorite things about compiler plugins is that you can use them to optimize the user experience and developer experience at the same time. (Read more about ["How writing custom Babel & ESLint plugins can increase productivity & improve user experience"](https://medium.com/@kentcdodds/how-writing-custom-babel-and-eslint-plugins-can-increase-your-productivity-and-improve-user-fd6dd8076e26)).
+Babel started out as a transpiler to let you write the latest version of the ECMAScript specification but ship to environments that don't implement those features yet. But it has become much more than that. ["Compilers are the New Frameworks"](https://tomdale.net/2017/09/compilers-are-the-new-frameworks/) says [Tom Dale](https://twitter.com/tomdale) and I could not agree more. We're seeing more and more compile-time optimizations for libraries and frameworks. I'm not talking about syntax extensions to the language, but simple code transformations that enable patterns that would be difficult to accomplish otherwise. One of my favorite things about compiler plugins is that you can use them to optimize the user experience and developer experience at the same time. (Read more about ["How writing custom Babel & ESLint plugins can increase productivity & improve user experience"](https://medium.com/@kentcdodds/how-writing-custom-babel-and-eslint-plugins-can-increase-your-productivity-and-improve-user-fd6dd8076e26)).
 
 I have a few problems with babel plugins though:
 
@@ -58,6 +58,8 @@ By using `preval.macro` with `babel-macros`, we don't have any of those problems
 2. `babel-macros` needs to be added to your config, but only once, then you can use all the macros you'd like (even local macros!)
 3. No need to update ESLint config because it's explicit.
 4. If you misconfigure `babel-macros` then you'll get [a much more friendly error message](https://github.com/kentcdodds/babel-macros/blob/f7c9881ee22b19b3c53c93711af6a42895ba1c71/src/__tests__/__snapshots__/index.js.snap#L100) that indicates what the actual problem is pointing you to documentation.
+
+**So what is it really? The TL;DR is that `babel-macros` is a simpler way to write and use babel transforms.**
 
 There are already several [published `babel-macros`](https://www.npmjs.com/browse/keyword/babel-macros) you can use, including [`preval.macro`](https://github.com/kentcdodds/preval.macro), [`codegen.macro`](https://github.com/kentcdodds/codegen.macro), [`idx.macro`](https://github.com/dralletje/idx.macro), [`emotion/macro`](https://github.com/emotion-js/emotion/blob/master/docs/babel-macros.md), [`tagged-translations/macro`](https://github.com/vinhlh/tagged-translations#via-babel-macros), [`babel-plugin-console/scope.macro`](https://github.com/mattphillips/babel-plugin-console#macros), and [`glamor` 🔜](https://github.com/threepointone/glamor/pull/312).
 
