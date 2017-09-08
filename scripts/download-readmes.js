@@ -17,15 +17,18 @@ function getDirectoryListing(repo, branch = 'master') {
     url += `&client_id=${encodeURIComponent(process.env.GITHUB_CLIENT_ID)}`
     url += `&client_secret=${encodeURIComponent(process.env.GITHUB_CLIENT_SECRET)}`;
   }
-  return fetch(url).then(res => res.json());
+
+  return fetch(url)
+    .then(res => res.json())
+    .then(packages => ({ branch, packages, repo }));
 }
 
-function getReadmeURLsFromDirectoryListing(repo, dir) {
-  return dir
+function getReadmeURLsFromDirectoryListing({ branch, packages, repo }) {
+  return packages
     .filter(file => file.type === 'dir')
     .map(file => ({
       name: file.name,
-      uri: `/babel/${repo}/master/${file.path}/README.md`,
+      uri: `/babel/${repo}/${branch}/${file.path}/README.md`,
     }));
 }
 
@@ -33,8 +36,8 @@ console.log('Retrieving package listing...');
 Promise.all([getDirectoryListing('babel', '6.x'), getDirectoryListing('babili')])
   .then(([babelPackages, babiliPackages]) => {
     const packages = [
-      ...getReadmeURLsFromDirectoryListing('babel', babelPackages),
-      ...getReadmeURLsFromDirectoryListing('babili', babiliPackages),
+      ...getReadmeURLsFromDirectoryListing(babelPackages),
+      ...getReadmeURLsFromDirectoryListing(babiliPackages),
       // Special cases
       {
         name: 'babel-preset-env',
