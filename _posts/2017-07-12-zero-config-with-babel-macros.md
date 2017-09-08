@@ -25,7 +25,7 @@ Guess what! A tool like this exists! `babel-macros` is a new babel plugin that a
 
 So what does it look like? Whelp! There are already a few `babel-macros` packages out there you can try today!
 
-Here's a real-world example of using [`preval.macro`](https://github.com/kentcdodds/preval.macro) to inline an SVG in [a server-rendered project](https://github.com/kentcdodds/glamorous-website):
+Here's a real-world example of using [`preval.macro`](https://github.com/kentcdodds/preval.macro) to inline an SVG in [a universal application](https://github.com/kentcdodds/glamorous-website) built with [Next.js](https://github.com/zeit/next.js):
 
 ```javascript
 import preval from 'preval.macro'
