@@ -55,7 +55,7 @@ Naturally, we will take the opportunity to be as spec compliant as possible (wit
 
 > `babel-plugin-transform-class-properties`: the default behavior is now what was previously the "spec" option, which uses `Object.defineProperty` instead of simple assignment.
 
-> This currently has the effect of breaking the decorators plugin if you try to decorate a class property. You'll need to use the `loose` option to be compatible with the version of decorators in the transform until we release the Stage 2 decorators plugin.
+> This currently has the effect of breaking the legacy decorators plugin if you try to decorate a class property. You'll need to use the `loose` option to be compatible with the version of decorators in the transform until we release the Stage 2 decorators plugin.
 
 > Private fields are WIP: [PR](https://github.com/babel/babel/pull/6120)
 
@@ -269,6 +269,9 @@ class A {
   @a.b.c(e, f)
   m() {}
 }
+
+// exported decorator classes
+export default @foo class {}
 ```
 
 Unsupported (WIP)
@@ -447,6 +450,16 @@ module.exports = {
 
 This was previously done through the `env` configuration option, which is now deprecated. See [below](#deprecate-the-env-option-in-babelrc) for more details.
 
+---
+
+And I believe some people knew this already, but you could do something similar to this in 6.x by using a JavaScript file for your preset.
+
+```js
+{
+  "presets": ["./.babelrc.js"]
+}
+```
+
 ### TypeScript
 
 You can now use `babel-preset-typescript` to allow Babel to strip types similar to how `babel-preset-flow` works!
@@ -515,6 +528,8 @@ Say you are using preset-env (which keeps up to date and currently includes ever
 
 If the spec to an experimental proposal changes, we should be free to make a breaking change and make a major version bump for that plugin only. Because it only affects that plugin, it doesn't affect anything else and people are free to update when possible. We just want to make sure that users update to the latest version of any experimental proposal when possible and provide the tools to do so automatically if that is reasonable as well.
 
+### TODOs?
+
 > I believe the way we want to go about doing this is to move those packages into the `experimental/` folder in our [monorepo](https://github.com/babel/babel) instead of in `packages/`.
 > Then we should rename all proposals to `babel-plugin-proposal-` instead of `babel-plugin-transform-`
 > Change our publish process (probably through Lerna) to publish the packages in `experimental/` independently.
@@ -540,11 +555,9 @@ Developers shouldn't even need to make the decision of what yearly preset to use
 
 ## 🤔 Questions
 
-### ~~Deprecate Stage X presets~~
+### ~~Deprecate/Rename/Remove Stage X presets~~
 
-> Ok we'll probably keep these and just make major version bumps
-> [babel/babel#4914](https://github.com/babel/babel/issues/4914)
-> [babel/babel#5128](https://github.com/babel/babel/issues/5128)
+> We'll probably keep these and just make major version bumps.
 
 Many in the community (and TC39) have expressed concerns over the Stage X presets. I believe I just added them to have an easy migration path from Babel 5 to Babel 6 (used to be a "stage" option).
 
