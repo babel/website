@@ -10,10 +10,17 @@
 }
 
 .babel-blog-content {
+  line-height: $line-height-computed * 1.25;
   margin-top: 2em;
 
-  p {
+  ol,
+  p,
+  ul {
     margin-bottom: $line-height-computed;
+  }
+
+  li {
+    margin-bottom: $line-height-computed / 2;
   }
 
   img {
@@ -23,6 +30,7 @@
   h1, .h1,
   h2, .h2,
   h3, .h3 {
+    margin-bottom: $line-height-computed;
     margin-top: $line-height-computed * 2;
   }
 
