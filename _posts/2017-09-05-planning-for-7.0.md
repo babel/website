@@ -7,7 +7,9 @@ categories: announcements
 share_text: "Planning for 7.0"
 ---
 
-If you didn't know already, we're planning on releasing a 7.0 version soon 🙌 ! Looking back at the commit history it seems that on 7.0 actually started back in February, when I just wanted to make a release to drop Node 0.10/0.12 support and remove babel-runtime and various other code. And since then, we've done releases up to `alpha.20`.
+If you didn't know already, we're planning on releasing a 7.0 version soon 🙌 ! Work on it actually started back in February, when I just wanted to make a release to drop Node 0.10/0.12 support and remove babel-runtime and various other code. And since then, we've done releases up to `alpha.20`.
+
+> We're going to update this post throughout the beta releases
 
 Since we're still just a volunteer project, it's been difficult for most of the team to stay focused and motivated to make all these changes and continue to maintain a project that so many companies, bootcamps, and tools rely on so much. But in the meantime we've made a lot of progress: [weekly meetings/notes](https://github.com/babel/notes), participating as invited guests at TC39 for the last few meetings, facilitating in both [RGSoC](https://railsgirlssummerofcode.org/) and [GSoC](https://summerofcode.withgoogle.com), and creating an [Open Collective](https://opencollective.com/babel).
 
