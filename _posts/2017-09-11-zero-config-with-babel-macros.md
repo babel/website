@@ -9,7 +9,11 @@ custom_js_with_timestamps:
 - docs.js
 guest_post: true
 guest_description: |
-  This is a guest post from Kent C. Dodds. Kent works at PayPal.
+  This is a guest post from Kent C. Dodds. Kent works at PayPal and
+  teaches about JavaScript and
+  [writing Babel plugins](https://kentcdodds.com/workshops/#code-transformation-and-linting)
+  on [Egghead.io](http://kcd.im/egghead) and
+  [Frontend Masters](https://frontendmasters.com/courses/).
   Follow Kent on <a href="https://github.com/kentcdodds">GitHub</a>,
   and <a href="https://twitter.com/kentcdodds">Twitter</a>.
 ---
