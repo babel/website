@@ -2,11 +2,16 @@
 layout: post
 title:  "Zero-config code transformation with babel-macros"
 author: Kent C. Dodds
-date:   2017-09-08 11:00:00
-categories: who-knows
+date:   2017-09-11 11:00:00
+categories: announcements
 share_text: "Zero-config code transformation with babel-macros"
 custom_js_with_timestamps:
 - docs.js
+guest_post: true
+guest_description: |
+  This is a guest post from Kent C. Dodds. Kent works at PayPal.
+  Follow Kent on <a href="https://github.com/kentcdodds">GitHub</a>,
+  and <a href="https://twitter.com/kentcdodds">Twitter</a>.
 ---
 
 Babel started out as a transpiler to let you write the latest version of the ECMAScript specification but ship to environments that don't implement those features yet. But it has become much more than that. ["Compilers are the New Frameworks"](https://tomdale.net/2017/09/compilers-are-the-new-frameworks/) says [Tom Dale](https://twitter.com/tomdale) and I could not agree more. We're seeing more and more compile-time optimizations for libraries and frameworks. I'm not talking about syntax extensions to the language, but simple code transformations that enable patterns that would be difficult to accomplish otherwise. One of my favorite things about compiler plugins is that you can use them to optimize the user experience and developer experience at the same time. (Read more about ["How writing custom Babel & ESLint plugins can increase productivity & improve user experience"](https://medium.com/@kentcdodds/how-writing-custom-babel-and-eslint-plugins-can-increase-your-productivity-and-improve-user-fd6dd8076e26)).
