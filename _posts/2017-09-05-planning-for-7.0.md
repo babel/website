@@ -7,9 +7,9 @@ categories: announcements
 share_text: "Planning for 7.0"
 ---
 
-If you didn't know already, we're planning on releasing a 7.0 version soon 🙌 ! Looks like work on 7.0 started back in February when I just wanted to make a release to drop Node 0.10/0.12 support and remove babel-runtime and various other code. Since then we've done releases up to `alpha.20`.
+If you didn't know already, we're planning on releasing a 7.0 version soon 🙌 ! Looking back at the commit history it seems that on 7.0 actually started back in February, when I just wanted to make a release to drop Node 0.10/0.12 support and remove babel-runtime and various other code. And since then, we've done releases up to `alpha.20`.
 
-Since we're basically still just a volunteer project, it was difficult for most of the team to stay focused, motivated, and prepared to make all these changes and continue to maintain a project that so many companies, bootcamps, libraries, and tools rely on so much. In the meantime however, we've tried doing [weekly meetings/notes](https://github.com/babel/notes), participated as invited guests at TC39 for the last few meetings, got involved in both [RGSoC](https://railsgirlssummerofcode.org/) and [GSoC](https://summerofcode.withgoogle.com), and have an [Open Collective](https://opencollective.com/babel).
+Since we're still just a volunteer project, it's been difficult for most of the team to stay focused and motivated to make all these changes and continue to maintain a project that so many companies, bootcamps, and tools rely on so much. But in the meantime we've made a lot of progress: [weekly meetings/notes](https://github.com/babel/notes), participating as invited guests at TC39 for the last few meetings, facilitating in both [RGSoC](https://railsgirlssummerofcode.org/) and [GSoC](https://summerofcode.withgoogle.com), and creating an [Open Collective](https://opencollective.com/babel).
 
 > Upgrading for most projects should be as simple as updating your `package.json` deps to `7.0.0-beta.1`. (we will be pinning to exact versions until the official release). For the whole time we've been working on 7.0, we've been using it in Babel itself (so meta) and at my workplace at Behance.
 
@@ -612,6 +612,12 @@ Can we combine/replace these packages and have an easier, default experience?
 
 We want the community to upgrade and provide their feedback/reports. There will probably be a lot of initial activity which can be overwhelming so please be patient with us. We'd appreciate the help in helping triage, write docs/upgrade guides/tips, and codemods to help others upgrade more seamlessly. Because Babel touches a lot of the JavaScript ecosystem, it may not be as simple as simply updating one package because it could depend on other community Babel plugins on npm. We're not going to just wait around for a month and hope people upgrade, there's a lot of work to be done to make this happen without half the community still staying on 6.x next year. I'd not like to leave projects (and people) behind. So let us know what we can do to help, and I'd ask that you'd do the same for us and the rest of the community.
 
+## Project Sustainibility
+
+Shoutout to my team at Behance for allowing me to work on Babel part-time at work; we're still basically the only company working to sustain Babel in any capacity on work time. I'm really glad to be able to support the project at work instead of only after work/weekends, and hope this can be the case for more maintainers in the future. (I hope we've been a good example of how companies can support the open source projects they use and not necessarily "own").
+
+We don't have enough in our Open Colective still to pay someone full time: I believe the highest donation we've gotten is $750 from Webflow, and highest monthly donation is $100 from various individuals/companies, so either we some work there or we work on getting more companies involved like AMP/Google have done (@jridgewell who recently joined our team is able to spend work time as well, and it's made a big difference). 
+
 ## Future
 
 After 7.0: there's a lot of potential avenues for us to explore (that we've all brought up years ago): separating traversal from plugins (async visitors?), immutable AST, syntax extensions? On the infra side: integrating with test262 and smoke tests, better github workflow to go from proposal to transform, codemod infrastructure for automatic upgrades, etc.
@@ -620,4 +626,4 @@ Follow our meeting notes/discussions on [babel/notes](https://github.com/babel/n
 
 ## Thanks!
 
-I'm hopeful that we can do the official release soon, but I'd like to mention that open source is sustained by consistent, day-to-day maintenance and not just a hyped-up release cycle where we just leave everyone else in the dust and move on.
+I'm hopeful that we can do the official release soon, but I'd like to mention that open source is sustained by consistent, day-to-day maintenance and not just a hyped-up release cycle where we just leave everyone else in the dust and move on so it may take a little longer as we wait to fixup bugs and upgrade the ecoystem.
