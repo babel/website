@@ -616,7 +616,9 @@ We want the community to upgrade and provide their feedback/reports. There will 
 
 Shoutout to my team at Behance for allowing me to work on Babel part-time at work; we're still basically the only company working to sustain Babel in any capacity on work time. I'm really glad to be able to support the project at work instead of only after work/weekends, and hope this can be the case for more maintainers in the future. (I hope we've been a good example of how companies can support the open source projects they use and not necessarily "own").
 
-We don't have enough in our Open Colective still to pay someone full time: I believe the highest donation we've gotten is $750 from Webflow, and highest monthly donation is $100 from various individuals/companies, so either we some work there or we work on getting more companies involved like AMP/Google have done (@jridgewell who recently joined our team is able to spend work time as well, and it's made a big difference). 
+We don't have enough in our Open Colective still to pay someone full time: I believe the highest donation we've gotten is $750 from Webflow, and highest monthly donation is $100 from various individuals/companies, so either we some work there or we work on getting more companies involved like AMP/Google have done (@jridgewell who recently joined our team is able to spend work time as well, and it's made a big difference).
+
+Ask if your company can sponsor with our [Open Collective](https://opencollective.com/babel), let us know what's missing, how you can get involved. You don't even have to have a specific reason to get involved. If you simply care about sustaining a project for the forseable future, just get your team plugged in and get involved.
 
 ## Future
 
