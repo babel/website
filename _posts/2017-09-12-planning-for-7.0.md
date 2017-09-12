@@ -511,8 +511,13 @@ class C {
 Output
 
 ```js
-var C =/*#__PURE__*/ function () {
-  function C() {}
+var C = /*#__PURE__*/ function () {
+  function C() {
+    _classCallCheck(this, C)
+  }
+  C.prototype.m = function m(x) {
+    return 'a';
+  };
   return C;
 }();
 ```
