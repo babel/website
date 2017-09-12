@@ -49,11 +49,13 @@ I'd like to go over some notable changes for our first beta release (it's still 
 
 Before we go into that, I just want to repeat again what the purpose of Babel is.
 
-As Babel has been transformed from 6to5, browsers have been implementing more of the spec, and users are more comfortable with using the latest syntax/build tooling, Babel's goals haven't changed too much.
+Since Babel has been renamed from 6to5, browsers have been implementing more of the spec and users are more comfortable with using the latest syntax/build tooling. It shouldn't be surprisingly however that Babel's goals haven't changed much.
 
 Our two goals are hand in hand: help developers transform new syntax into backwards compatible code (abstract browser support away), and be a bridge to help TC39 get feedback on new ECMAScript proposals and for the community to have a say in the future of the language.
 
-Thus, I think it's an understatement to say that Babel is a vital part of the JavaScript community (almost 10 million downloads a month of `babel-core`) and needs its support. (The only talks I've tried to give are about this point: [JSConf EU](https://github.com/hzoo/maintaining-an-oss-project), [React Rally](https://github.com/hzoo/so-how-does-babel-even-work), [TC39](https://github.com/hzoo/role-of-babel-in-js)). I'll re-iterate a point I made recently: "What happens when Babel dies"? What happens when the current group of people interested in this project get bored/burned out/move on to other things? (What if it's already happened a lot). What are we going to do about it?
+Thus, I think it's an understatement to say that Babel is a vital part of the JavaScript community (almost 10 million downloads a month of `babel-core`) and sorely needs its support. (The only talks I've tried to give are about this point: [JSConf EU](https://github.com/hzoo/maintaining-an-oss-project), [React Rally](https://github.com/hzoo/so-how-does-babel-even-work), [TC39](https://github.com/hzoo/role-of-babel-in-js)). I made recently: "What happens if Babel dies"? What happens when the current group of people interested in this project get bored/burned out/move on to other things? (What if it's already happened?). Are we going to do something about it? I don't want to just ask you to help us, you already are us as users of the project.
+
+Ok then, let's talk about some changes!
 
 ## [#4315](https://github.com/babel/babel/issues/4315) Drop support for unmaintained Node versions: 0.10, 0.12, 5
 
