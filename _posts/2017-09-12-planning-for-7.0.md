@@ -30,12 +30,12 @@ Since we're still just a volunteer project, it's been difficult for most of the 
 Specific packages:
 
 <details>
-babel packages in the monorepo should all be >= 7.0.0-beta.0
-babel-preset-env should be at least 2.0.0-beta.0
-babel-eslint can be >= 8.0.0
-babel-loader should be >= 7.0.0 (out of beta since it uses babel-core as a peerDependency)
-grunt-babel can be >= 7.0.0
-gulp-babel can be >= 7.0.0
+babel packages in the monorepo should all be >= 7.0.0-beta.0 <br/>
+babel-preset-env should be at least 2.0.0-beta.0 <br/>
+babel-eslint can be >= 8.0.0 <br/>
+babel-loader should be >= 7.0.0 (out of beta since it uses babel-core as a peerDependency) <br/>
+grunt-babel can be >= 7.0.0 <br/>
+gulp-babel can be >= 7.0.0 <br/>
 rollup-plugin-babel can be >= 3.0.2
 </details>
 
