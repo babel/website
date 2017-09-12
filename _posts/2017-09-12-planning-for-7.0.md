@@ -2,7 +2,7 @@
 layout: post
 title:  "Planning for 7.0"
 author: Henry Zhu
-date:   2017-09-05 15:00:00
+date:   2017-09-12 10:00:00
 categories: announcements
 share_text: "Planning for 7.0"
 ---
