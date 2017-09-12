@@ -65,7 +65,7 @@ Progress in OSS projects often comes at the cost of upgrading for its users. Bec
 
 > AKA the only things most of you care about 😅
 
-### Philosophy
+### Philosophy (Proposals: spec, loose, default behavior)
 
 We've created a new repo: [babel/proposals](https://github.com/babel/proposals) to track our progress on the various [TC39 Proposals](https://github.com/tc39/proposals) and meetings.
 
@@ -494,6 +494,29 @@ You can now use `babel-preset-typescript` to allow Babel to strip types similar 
 
 We're working on a guide for how to setup TypeScript and Babel with the TypeScript team, which should be finished before the official 7.0 release.
 
+### "Pure" Annotation in specific transforms for minifiers
+
+After [#6209](https://github.com/babel/babel/pull/6209), ES6 classes that are transpiled will have a `/*#__PURE__*/` comment that minfiers like Uglify and babel-minify can use for dead code elimination. These annotations may expand to our helper functions as well.
+
+Input
+
+```js
+class C {
+  m(x) {
+    return 'a';
+  }
+}
+```
+
+Output
+
+```js
+var C =/*#__PURE__*/ function () {
+  function C() {}
+  return C;
+}();
+```
+
 ## 😎 Other Breaking Changes
 
 ### Removed `babel-preset-flow` from `babel-preset-react`
@@ -636,7 +659,7 @@ We want the community to upgrade and provide their feedback/reports. There will 
 
 ## Project Sustainibility
 
-Shoutout to my team at Behance for allowing me to work on Babel part-time at work; we're still basically the only company working to sustain Babel in any capacity on work time. I'm really glad to be able to support the project at work instead of only after work/weekends, and hope this can be the case for more maintainers in the future. (I hope we've been a good example of how companies can support the open source projects they use and not necessarily "own").
+Shoutout to my team at [Behance](https://www.behance.net) for allowing me to work on Babel part-time at work; we're still basically the only company working to sustain Babel in any capacity on work time. I'm really glad to be able to support the project at work instead of only after work/weekends, and hope this can be the case for more maintainers in the future. (I hope we've been a good example of how companies can support the open source projects they use and not necessarily "own").
 
 We don't have enough in our Open Colective still to pay someone full time: I believe the highest donation we've gotten is $750 from Webflow, and highest monthly donation is $100 from various individuals/companies, so either we some work there or we work on getting more companies involved like AMP/Google have done (@jridgewell who recently joined our team is able to spend work time as well, and it's made a big difference).
 
