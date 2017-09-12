@@ -13,17 +13,35 @@ If you didn't know already, we're planning on releasing a 7.0 version soon 🙌 
 
 Since we're still just a volunteer project, it's been difficult for most of the team to stay focused and motivated to make all these changes and continue to maintain a project that so many companies, bootcamps, and tools rely on so much. But in the meantime we've made a lot of progress: [weekly meetings/notes](https://github.com/babel/notes), participating as invited guests at TC39 for the last few meetings, facilitating in both [RGSoC](https://railsgirlssummerofcode.org/) and [GSoC](https://summerofcode.withgoogle.com), and creating an [Open Collective](https://opencollective.com/babel).
 
-> Upgrading for most projects should be as simple as updating your `package.json` deps to `7.0.0-beta.1`. (we will be pinning to exact versions until the official release). For the whole time we've been working on 7.0, we've been using it in Babel itself (so meta) and at my workplace at Behance.
+## Upgrading
 
-Example:
+> Upgrading for most projects should be as simple as updating your `package.json` deps to `7.0.0-beta.0`. For the whole time we've been working on 7.0, we've been using it in Babel itself (so meta) and at my workplace at Behance.
+
+> We will be pinning all dependencies to exact versions until the official release.
 
 ```
 {
   "devDependencies": {
-    "babel-cli": "7.0.0-beta.1"
+    "babel-cli": "7.0.0-beta.0"
   }
 }
 ```
+
+Specific packages:
+
+<details>
+babel packages in the monorepo should all be >= 7.0.0-beta.0
+babel-preset-env should be at least 2.0.0-beta.0
+babel-eslint can be >= 8.0.0
+babel-loader should be >= 7.0.0 (out of beta since it uses babel-core as a peerDependency)
+grunt-babel can be >= 7.0.0
+gulp-babel can be >= 7.0.0
+rollup-plugin-babel can be >= 3.0.2
+</details>
+
+---
+
+Please check out our [upgrade guide](https://babeljs.io/blog/2017/03/01/upgrade-to-babel-7) and other guide specifically for [tool authors](https://babeljs.io/blog/2017/03/01/upgrade-to-babel-7-for-tool-authors) which we will also be updating as necessary.
 
 I'd like to go over some notable changes for our first beta release (it's still a lot *smaller* in scope in terms of breaking changes than the previous 6.0 release).
 
