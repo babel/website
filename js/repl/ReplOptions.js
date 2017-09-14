@@ -100,7 +100,7 @@ class ExpandedContainer extends Component {
     const tooltips = {
       spec:
         "Modify es2015 preset and enable “spec” transformations for any plugins that allow them.",
-      loose: "Modify es2015 preset and enable loose mode where available.",
+      loose: "Modify es2015 preset and enable “loose” mode where available.",
     };
 
     return (

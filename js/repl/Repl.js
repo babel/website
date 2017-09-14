@@ -161,7 +161,7 @@ class Repl extends React.Component {
 
     return (
       <div className={styles.repl}>
-        <ReactTooltip />
+        <ReactTooltip effect="solid" />
         <ReplOptions
           babelVersion={state.babel.version}
           builtIns={state.builtIns}
