@@ -66,7 +66,9 @@ type State = {
 };
 
 const DEBOUNCE_DELAY = 500;
-const presetsSupportOptions = ["es2015"];
+const supportedOptions = {
+  es2015: ["spec", "loose"],
+};
 
 class Repl extends React.Component {
   props: Props;
@@ -296,6 +298,24 @@ class Repl extends React.Component {
     }
   }
 
+  _getPresetOptions = (preset: string | Array<string | Object>) => {
+    const { state } = this;
+    const options = {};
+
+    if (
+      !supportedOptions.hasOwnProperty(preset) ||
+      typeof preset !== "string"
+    ) {
+      return null;
+    }
+    ["spec", "loose"].forEach(option => {
+      if (supportedOptions[String(preset)].includes(option)) {
+        options[option] = state[option];
+      }
+    });
+    return options;
+  };
+
   _compile = (code: string, setStateCallback: () => mixed) => {
     const { state } = this;
     const { runtimePolyfillState } = state;
@@ -309,9 +329,9 @@ class Repl extends React.Component {
 
     // transform "es2015" to array type to add "spec" option
     presetsArray = presetsArray.map(preset => {
-      return presetsSupportOptions.includes(preset) &&
-      typeof preset === "string"
-        ? [preset, { spec: state.spec, loose: state.loose }]
+      const options = this._getPresetOptions(preset);
+      return options !== null && typeof preset === "string"
+        ? [preset, options]
         : preset;
     });
 
