@@ -66,33 +66,8 @@ The `--copy-files` argument for the `babel` command, which tells Babel to copy a
 These plugins were moved into their yearly presets after moving to Stage 4:
 
 `babel-plugin-syntax-trailing-function-commas` (`babel-preset-es2017`)
-
-Example:
-
-```js
-clownPuppiesEverywhere(
-  'foo',
-  'bar', // Next parameter that's added only has to add a new line, not modify this line
-);
-```
-
 `babel-plugin-transform-async-to-generator` (`babel-preset-es2017`)
-
-Example:
-
-```js
-async function foo() {
-    await bar();
-}
-```
-
 `babel-plugin-transform-exponentiation-operator` (babel-preset-es2016)
-
-Example:
-
-```js
-let cubed = 2 ** 3;
-```
 
 ---
 
@@ -147,12 +122,6 @@ After:
 ```js
 var { ...y } = { a: 1};
 ```
-
-## babel-preset-stage-1/babel-preset-stage-2 (decorators)
-
-> The [transform-decorators-legacy plugin](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) has been moved and merged into the [transform-decorators](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-decorators) package ([#5290](https://github.com/babel/babel/pull/5290)).
-
-Currently, the transform-decorators plugin does little more than display an unsupported error. While we work to update decorator support, we've decided to replace it with the legacy decorator plugin and include it in the Stage 1 preset.
 
 ## babel-core
 

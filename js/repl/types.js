@@ -39,7 +39,6 @@ export type BabelState = LazyLoadedState & {
 export type PluginState = LazyLoadedState & {
   config: PluginConfig,
   isEnabled: boolean,
-  plugin: any,
 };
 
 export type PluginStateMap = { [name: string]: PluginState };
@@ -63,6 +62,9 @@ export type PersistedState = {
   code: string,
   debug: boolean,
   evaluate: boolean,
+  isEnvPresetTabExpanded: boolean,
+  isPresetsTabExpanded: boolean,
+  isSettingsTabExpanded: boolean,
   lineWrap: boolean,
   spec: boolean,
   loose: boolean,

@@ -2,7 +2,7 @@
 
 let iframe = null;
 
-export default function scopedEval(code: string, sourceMap: ?string) {
+function getIframe() {
   if (iframe === null) {
     iframe = document.createElement("iframe");
     iframe.style.display = "none";
@@ -11,6 +11,10 @@ export default function scopedEval(code: string, sourceMap: ?string) {
     document.body.append(iframe);
   }
 
+  return iframe;
+}
+
+function scopedEval(code: string, sourceMap: ?string) {
   // Append source map footer so errors map to pre-compiled code.
   if (sourceMap) {
     code = `${code}\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,${btoa(
@@ -19,5 +23,10 @@ export default function scopedEval(code: string, sourceMap: ?string) {
   }
 
   // Eval code within an iframe so that it can't eg unmount the REPL.
-  iframe.contentWindow.eval(code);
+  getIframe().contentWindow.eval(code);
 }
+
+export default {
+  execute: scopedEval,
+  getIframe,
+};

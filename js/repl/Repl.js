@@ -5,6 +5,7 @@ import "regenerator-runtime/runtime";
 import { css } from "glamor";
 import debounce from "lodash.debounce";
 import React from "react";
+import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
@@ -51,6 +52,9 @@ type State = {
   envPresetDebugInfo: ?string,
   envPresetState: PluginState,
   evalErrorMessage: ?string,
+  isEnvPresetTabExpanded: boolean,
+  isPresetsTabExpanded: boolean,
+  isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
   spec: boolean,
@@ -64,11 +68,7 @@ type State = {
 const DEBOUNCE_DELAY = 500;
 const presetsSupportOptions = ["es2015"];
 
-export default class Repl extends React.Component {
-  static defaultProps = {
-    defaultValue: "",
-  };
-
+class Repl extends React.Component {
   props: Props;
   state: State;
 
@@ -113,6 +113,9 @@ export default class Repl extends React.Component {
       loose: true,
       evalError: null,
       evalErrorMessage: null,
+      isEnvPresetTabExpanded: persistedState.isEnvPresetTabExpanded,
+      isPresetsTabExpanded: persistedState.isPresetsTabExpanded,
+      isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
@@ -164,13 +167,17 @@ export default class Repl extends React.Component {
           debugEnvPreset={state.debugEnvPreset}
           envConfig={state.envConfig}
           envPresetState={state.envPresetState}
+          isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
           isExpanded={state.isSidebarExpanded}
+          isPresetsTabExpanded={state.isPresetsTabExpanded}
+          isSettingsTabExpanded={state.isSettingsTabExpanded}
           lineWrap={state.lineWrap}
           spec={state.spec}
           loose={state.loose}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
+          onTabExpandedChange={this._onTabExpandedChange}
           pluginState={state.plugins}
           presetState={state.presets}
           runtimePolyfillConfig={runtimePolyfillConfig}
@@ -247,25 +254,32 @@ export default class Repl extends React.Component {
       // Compilation is done in a web worker for performance reasons,
       // But eval requires the UI thread so code can access globals like window.
       // Because of this, the runtime polyfill must be loaded on the UI thread.
-      loadPlugin(runtimePolyfillState, () => {
-        let evalErrorMessage: ?string = null;
+      // We also eval in an iframe so the polyfills need to be accessible there.
+      // We could copy them from window to frame.contentWindow,
+      // But it's less error-prone to just load the polyfills into the iframe.
+      loadPlugin(
+        runtimePolyfillState,
+        () => {
+          let evalErrorMessage: ?string = null;
 
-        if (!this.state.compiled) {
-          return;
-        }
+          if (!this.state.compiled) {
+            return;
+          }
 
-        // No need to recompile at this point;
-        // Just evaluate the most recently compiled code.
-        try {
-          // eslint-disable-next-line
-          scopedEval(this.state.compiled, this.state.sourceMap);
-        } catch (error) {
-          evalErrorMessage = error.message;
-        }
+          // No need to recompile at this point;
+          // Just evaluate the most recently compiled code.
+          try {
+            // eslint-disable-next-line
+            scopedEval.execute(this.state.compiled, this.state.sourceMap);
+          } catch (error) {
+            evalErrorMessage = error.message;
+          }
 
-        // Re-render (even if no error) to update the label loading-state.
-        this.setState({ evalErrorMessage });
-      });
+          // Re-render (even if no error) to update the label loading-state.
+          this.setState({ evalErrorMessage });
+        },
+        scopedEval.getIframe()
+      );
     }
 
     // Babel 'env' preset is large;
@@ -374,12 +388,22 @@ export default class Repl extends React.Component {
     }, this._presetsUpdatedSetStateCallback);
   };
 
+  _onTabExpandedChange = (name: string, isExpanded: boolean) => {
+    this.setState(
+      {
+        [name]: isExpanded,
+      },
+      this._presetsUpdatedSetStateCallback
+    );
+  };
+
   _persistState = () => {
-    const { envConfig, plugins } = this.state;
+    const { state } = this;
+    const { envConfig, plugins } = state;
 
     const presetsArray = this._presetsToArray();
 
-    const babili = this.state.plugins["babili-standalone"];
+    const babili = state.plugins["babili-standalone"];
     if (babili.isEnabled) {
       presetsArray.push("babili");
     }
@@ -388,27 +412,30 @@ export default class Repl extends React.Component {
       presetsArray.push("env");
     }
 
-    const state = {
+    const payload = {
       babili: plugins["babili-standalone"].isEnabled,
       browsers: envConfig.browsers,
-      build: this.state.babel.build,
-      builtIns: this.state.builtIns,
-      circleciRepo: this.state.babel.circleciRepo,
-      code: this.state.code,
-      debug: this.state.debugEnvPreset,
-      evaluate: this.state.runtimePolyfillState.isEnabled,
-      lineWrap: this.state.lineWrap,
+      build: state.babel.build,
+      builtIns: state.builtIns,
+      circleciRepo: state.babel.circleciRepo,
+      code: state.code,
       spec: this.state.spec,
       loose: this.state.loose,
+      debug: state.debugEnvPreset,
+      evaluate: state.runtimePolyfillState.isEnabled,
+      isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
+      isPresetsTabExpanded: state.isPresetsTabExpanded,
+      isSettingsTabExpanded: state.isSettingsTabExpanded,
+      lineWrap: state.lineWrap,
       presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,
-      showSidebar: this.state.isSidebarExpanded,
+      showSidebar: state.isSidebarExpanded,
       targets: envConfigToTargetsString(envConfig),
-      version: this.state.babel.version,
+      version: state.babel.version,
     };
 
-    StorageService.set("replState", state);
-    UriUtils.updateQuery(state);
+    StorageService.set("replState", payload);
+    UriUtils.updateQuery(payload);
   };
 
   _presetsUpdatedSetStateCallback = () => {
@@ -434,6 +461,14 @@ export default class Repl extends React.Component {
     // This prevents frequent updates while a user is typing.
     this._compileToState(code);
   };
+}
+
+export default function ReplWithErrorBoundary() {
+  return (
+    <ErrorBoundary>
+      <Repl />
+    </ErrorBoundary>
+  );
 }
 
 const styles = {
