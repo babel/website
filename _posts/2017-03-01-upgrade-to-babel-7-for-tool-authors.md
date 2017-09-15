@@ -83,7 +83,7 @@ See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#ap
 
 ## `babel-traverse`
 
-`getFunctionParent` will no longer return `Program`, please use `getProgramParent` instead [#5923](https://github.com/babel/babel/pull/5923). ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+> `getFunctionParent` will no longer return `Program`, please use `getProgramParent` instead [#5923](https://github.com/babel/babel/pull/5923). ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 It doesn't make sense that a function named `getFunctionParent` also returns the Program, so that was removed.
 
@@ -92,6 +92,24 @@ To get the equivalent behavior, you'll need to make a change like
 ```diff
 - path.scope.getFunctionParent()
 + path.scope.getFunctionParent() || path.scope.getProgramParent()
+```
+
+> Path replacement/removal APIs now return an array of new paths ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+For instance, using `Path#insertBefore`, or `Path#replaceWith` will now always return an array of the newly inserted/replaced paths.
+
+```js
+const node = t.nullLiteral();
+const [replaced] = path.replaceWith(node);
+replace.node === node; // => true
+```
+
+This is especially useful when inserting serveral nodes into some higher-up scope, since you can immediately call the `Path` APIs on the node's new `Path`.
+
+```js
+const parent = path.findParent(() => /* some selection criteria */);
+const helperPaths = path.unshiftContainer("body", helpers);
+// helperPaths can now be referenced, manipulated, etc.
 ```
 
 ## AST changes

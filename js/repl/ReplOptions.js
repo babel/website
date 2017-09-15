@@ -23,6 +23,7 @@ type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
 type UploadFile = (file: File) => void;
+type OnTabExpandedChange = (name: string, isExpanded: boolean) => void;
 
 type Props = {
   babelVersion: ?string,
@@ -31,13 +32,18 @@ type Props = {
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetState: PluginState,
+  isEnvPresetTabExpanded: boolean,
   isExpanded: boolean,
+  isPresetsTabExpanded: boolean,
+  isSettingsTabExpanded: boolean,
+  isUploadTabExpanded: boolean,
   lineWrap: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
   onFileUpload: UploadFile,
   onDownload: () => void,
+  onTabExpandedChange: OnTabExpandedChange,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
@@ -71,6 +77,10 @@ class ExpandedContainer extends Component {
       debugEnvPreset,
       envConfig,
       envPresetState,
+      isEnvPresetTabExpanded,
+      isPresetsTabExpanded,
+      isSettingsTabExpanded,
+      isUploadTabExpanded,
       lineWrap,
       onIsExpandedChange,
       onSettingChange,
@@ -88,8 +98,9 @@ class ExpandedContainer extends Component {
         <div className={styles.sectionsWrapper}>
           <AccordionTab
             className={styles.section}
+            isExpanded={isSettingsTabExpanded}
             label="Settings"
-            defaultExpanded={true}
+            toggleIsExpanded={this._toggleSettingsTab}
           >
             <PluginToggle
               config={runtimePolyfillConfig}
@@ -115,7 +126,12 @@ class ExpandedContainer extends Component {
               />
             )}
           </AccordionTab>
-          <AccordionTab className={styles.section} label="Presets">
+          <AccordionTab
+            className={styles.section}
+            isExpanded={isPresetsTabExpanded}
+            label="Presets"
+            toggleIsExpanded={this._togglePresetsTab}
+          >
             {presetPluginConfigs.map(config =>
               <PluginToggle
                 config={config}
@@ -127,7 +143,9 @@ class ExpandedContainer extends Component {
           </AccordionTab>
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}
+            isExpanded={isEnvPresetTabExpanded}
             label="Env Preset"
+            toggleIsExpanded={this._toggleEnvPresetTab}
           >
             <label className={styles.settingsLabel}>
               <input
@@ -229,7 +247,12 @@ class ExpandedContainer extends Component {
               Debug
             </label>
           </AccordionTab>
-          <AccordionTab className={styles.section} label="Upload/Download">
+          <AccordionTab
+            className={styles.section}
+            isExpanded={isUploadTabExpanded}
+            label="Upload/Download"
+            toggleIsExpanded={this._toggleUploadTab}
+          >
             <button className={styles.button} onClick={this._chooseFile}>
               Upload
             </button>
@@ -328,6 +351,34 @@ class ExpandedContainer extends Component {
 
   _onDownload = (event: SyntheticInputEvent) => {
     this.props.onDownload();
+  };
+
+  _toggleEnvPresetTab = () => {
+    this.props.onTabExpandedChange(
+      "isEnvPresetTabExpanded",
+      !this.props.isEnvPresetTabExpanded
+    );
+  };
+
+  _togglePresetsTab = () => {
+    this.props.onTabExpandedChange(
+      "isPresetsTabExpanded",
+      !this.props.isPresetsTabExpanded
+    );
+  };
+
+  _toggleSettingsTab = () => {
+    this.props.onTabExpandedChange(
+      "isSettingsTabExpanded",
+      !this.props.isSettingsTabExpanded
+    );
+  };
+
+  _toggleUploadTab = () => {
+    this.props.onTabExpandedChange(
+      "isUploadTabExpanded",
+      !this.props.isUploadTabExpanded
+    );
   };
 }
 
