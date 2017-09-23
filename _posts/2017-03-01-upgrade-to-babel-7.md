@@ -68,6 +68,11 @@ In Babel 7, these are now treated as path-based glob patterns which can either b
 The `--copy-files` argument for the `babel` command, which tells Babel to copy all files in a directory that Babel doesn't know how to handle, will also now copy files that failed an `only`/`ignore` check, where before it would silently skip all ignored files.
 
 
+### `babel-node`
+
+The `babel-node` command in Babel 6 was part of the `babel-cli` package. In Babel 7, this command has been split out into its own `babel-node` package, so if you are using that command, you'll want to add this new dependency.
+
+
 ## babel-preset-stage-3
 
 > Remove Stage 4 plugins from Stage 3 [#5126](https://github.com/babel/babel/pull/5126) ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
