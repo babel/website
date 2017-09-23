@@ -25,6 +25,15 @@ See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 > This just means Babel *itself* won't run on older versions of Node. It can still *output* code that runs on old Node.
 
 
+## "use strict" and 'this' in CommonJS
+
+Babel 6's transformations for ES6 modules ran indiscriminantly on whatever files it was told to process, never taking into account if the file actually had ES6 imports/exports in them. This had the effect of rewriting file-scoped references to `this` to be `undefined` and inserting `"use strict"` at the top of all CommonJS modules that were processed by Babel.
+
+This behavior has been restricted in Babel 7 so that for the `transform-es2015-modules-commonjs` transform, the file is only changed if it has ES6 imports or exports in the file. (Editor's note: This may change again if we land https://github.com/babel/babel/issues/6242, so we'll want to revisit this before publishing).
+
+If you were relying on Babel to inject `"use strict"` into all of your CommonJS modules automatically, you'll want to explicitly use the `transform-strict-mode` plugin in your Babel config.
+
+
 ## Option parsing
 
 Babel's config options are stricter than in Babel 6. Where a comma-separated list for presets, e.g. `presets: 'es2015,es2016'` technically worked before, it will now fail and need to be changed to an array [#5463](https://github.com/babel/babel/pull/5463). This does not apply to the CLI, where `--presets es2015,es2016` will certainly still work.
