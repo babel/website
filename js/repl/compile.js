@@ -73,7 +73,6 @@ export default function compile(code: string, config: CompileConfig): Return {
       babelrc: false,
       filename: "repl",
       presets: config.presets,
-      plugins: ["transform-regenerator"],
       sourceMap: config.sourceMap,
     });
 
