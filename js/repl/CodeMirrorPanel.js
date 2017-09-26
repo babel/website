@@ -1,6 +1,6 @@
 // @flow
 
-import { css } from "glamor";
+import { css } from "emotion";
 import CodeMirror from "./CodeMirror";
 import React from "react";
 import { colors } from "./styles";
