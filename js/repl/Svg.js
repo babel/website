@@ -1,6 +1,6 @@
 // @flow
 
-import { css } from "glamor";
+import { css } from "emotion";
 import React from "react";
 
 type Props = {

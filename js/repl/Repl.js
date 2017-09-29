@@ -2,7 +2,7 @@
 
 import "regenerator-runtime/runtime";
 
-import { css } from "glamor";
+import { css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
 import ErrorBoundary from "./ErrorBoundary";

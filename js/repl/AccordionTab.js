@@ -1,6 +1,6 @@
 // @flow
 
-import { css } from "glamor";
+import { css } from "emotion";
 import React, { Component } from "react";
 import Svg from "./Svg";
 import { colors, media } from "./styles";

@@ -56,8 +56,9 @@
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
+    "babel-plugin-emotion": "^8.0.2-7",
     "codemirror": "5.28.0",
-    "glamor": "2.20.39",
+    "emotion": "^8.0.2-7",
     "lodash.camelcase": "^4.3.0",
     "lodash.debounce": "^4.0.8",
     "lz-string": "^1.4.4",

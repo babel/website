@@ -41,7 +41,7 @@ Promise.all([getDirectoryListing('babel', 'master'), getDirectoryListing('babili
       // Special cases
       {
         name: 'babel-preset-env',
-        uri: '/babel/babel-preset-env/master/README.md',
+        uri: '/babel/babel-preset-env/1.x/README.md',
       },
       {
         name: 'babylon',
