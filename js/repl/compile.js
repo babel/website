@@ -21,6 +21,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   let compileErrorMessage = null;
   let envPresetDebugInfo = null;
   let sourceMap = null;
+  let useBuiltIns = false;
 
   if (envConfig && envConfig.isEnvPresetEnabled) {
     const targets = {};
@@ -32,6 +33,9 @@ export default function compile(code: string, config: CompileConfig): Return {
     }
     if (envConfig.isElectronEnabled) {
       targets.electron = envConfig.electron;
+    }
+    if (envConfig.isBuiltInsEnabled) {
+      useBuiltIns = !config.evaluate && envConfig.builtIns;
     }
     if (envConfig.isNodeEnabled) {
       targets.node = envConfig.node;
@@ -49,7 +53,7 @@ export default function compile(code: string, config: CompileConfig): Return {
     const options = {
       onPresetBuild,
       targets,
-      useBuiltIns: !config.evaluate && config.useBuiltIns,
+      useBuiltIns: useBuiltIns,
     };
 
     config.presets.push(["env", options]);

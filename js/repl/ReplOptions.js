@@ -26,7 +26,6 @@ type OnTabExpandedChange = (name: string, isExpanded: boolean) => void;
 
 type Props = {
   babelVersion: ?string,
-  builtIns: boolean,
   className: string,
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
@@ -71,7 +70,6 @@ class ExpandedContainer extends Component {
   render() {
     const {
       babelVersion,
-      builtIns,
       debugEnvPreset,
       envConfig,
       envPresetState,
@@ -167,7 +165,7 @@ class ExpandedContainer extends Component {
               </label>
               <textarea
                 disabled={disableEnvSettings}
-                className={styles.envPresetInput}
+                className={`${styles.envPresetInput} ${styles.envPresetTextarea}`}
                 onChange={this._onBrowsersChange}
                 placeholder={envPresetDefaults.browsers.placeholder}
                 value={envConfig.browsers}
@@ -225,21 +223,37 @@ class ExpandedContainer extends Component {
                 type="checkbox"
               />
             </label>
-            <label className={styles.settingsLabel}>
-              <input
-                checked={builtIns}
-                className={styles.inputCheckboxLeft}
-                disabled={runtimePolyfillState.isEnabled || disableEnvSettings}
+            <label className={styles.envPresetRow}>
+              <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
+                Built-ins
+              </span>
+              <select
+                value={envConfig.builtIns}
+                className={styles.envPresetSelect}
                 onChange={this._onBuiltInsChange}
+                disabled={
+                  !envPresetState.isLoaded ||
+                  !envConfig.isEnvPresetEnabled ||
+                  !envConfig.isBuiltInsEnabled ||
+                  runtimePolyfillState.isEnabled
+                }
+              >
+                <option value="entry">Entry</option>
+                <option value="usage">Usage</option>
+              </select>
+              <input
+                checked={envConfig.isBuiltInsEnabled}
+                className={styles.envPresetCheckbox}
+                disabled={disableEnvSettings}
+                onChange={this._onIsBuiltInsEnabledChange}
                 type="checkbox"
               />
-              Built-ins
             </label>
             <label className={styles.settingsLabel}>
               <input
                 checked={debugEnvPreset}
                 className={styles.inputCheckboxLeft}
-                disabled={disableEnvSettings}
+                disabled={disableEnvSettings || runtimePolyfillState.isEnabled}
                 onChange={this._onDebugChange}
                 type="checkbox"
               />
@@ -277,7 +291,15 @@ class ExpandedContainer extends Component {
   };
 
   _onBuiltInsChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange("builtIns", event.target.checked);
+    const { value } = event.target;
+    this.props.onEnvPresetSettingChange("builtIns", value);
+  };
+
+  _onIsBuiltInsEnabledChange = (event: SyntheticInputEvent) => {
+    this.props.onEnvPresetSettingChange(
+      "isBuiltInsEnabled",
+      event.target.checked
+    );
   };
 
   _onDebugChange = (event: SyntheticInputEvent) => {
@@ -285,10 +307,7 @@ class ExpandedContainer extends Component {
   };
 
   _onElectronChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange(
-      "electron",
-      parseFloat(event.target.value)
-    );
+    this.props.onEnvPresetSettingChange("electron", event.target.value);
   };
 
   _onIsElectronEnabledChange = (event: SyntheticInputEvent) => {
@@ -298,16 +317,17 @@ class ExpandedContainer extends Component {
     );
   };
 
-  _onIsNodeEnabledChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange("isNodeEnabled", event.target.checked);
-  };
-
   _onLineWrappingChange = (event: SyntheticInputEvent) => {
     this.props.onSettingChange("lineWrap", event.target.checked);
   };
 
+  _onIsNodeEnabledChange = (event: SyntheticInputEvent) => {
+    this.props.onEnvPresetSettingChange("isNodeEnabled", event.target.checked);
+  };
+
   _onNodeChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange("node", parseFloat(event.target.value));
+    console.log(event.target.value);
+    this.props.onEnvPresetSettingChange("node", event.target.value);
   };
 
   _toggleEnvPresetTab = () => {
@@ -528,6 +548,10 @@ const styles = {
   }),
   inputCheckboxLeft: css({
     margin: "0 0.75rem 0 0 !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
+
+    "&:disabled": {
+      opacity: 0.5,
+    },
   }),
   highlight: css({
     textTransform: "uppercase",
@@ -569,18 +593,31 @@ const styles = {
   envPresetNumber: css({
     flex: "0 0 4rem",
     maxWidth: "4rem",
+    paddingLeft: "0.75rem",
   }),
   envPresetCheckbox: css({
     flex: "0 0 auto",
-    margin: "0 0.75rem !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
+    margin: "0 0 0 0.75rem !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
   }),
   envPresetLabel: css({
     flex: 1,
+  }),
+  envPresetSelect: css({
+    maxWidth: "7rem",
+    color: colors.textareaForeground,
+
+    "&:disabled": {
+      opacity: 0.5,
+    },
+  }),
+  envPresetTextarea: css({
+    resize: "vertical",
   }),
   envPresetInput: css({
     WebkitAppearance: "none",
     border: "none",
     borderRadius: "0.25rem",
+    color: colors.textareaForeground,
 
     "&:disabled": {
       opacity: 0.5,

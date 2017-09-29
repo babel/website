@@ -42,7 +42,6 @@ import type {
 type Props = {};
 type State = {
   babel: BabelState,
-  builtIns: boolean,
   code: string,
   compiled: ?string,
   compileErrorMessage: ?string,
@@ -96,7 +95,6 @@ class Repl extends React.Component {
     // The compile helper will then populate the missing State values.
     this.state = {
       babel: persistedStateToBabelState(persistedState),
-      builtIns: persistedState.builtIns,
       code: persistedState.code,
       compiled: null,
       compileErrorMessage: null,
@@ -157,7 +155,6 @@ class Repl extends React.Component {
       <div className={styles.repl}>
         <ReplOptions
           babelVersion={state.babel.version}
-          builtIns={state.builtIns}
           className={styles.optionsColumn}
           debugEnvPreset={state.debugEnvPreset}
           envConfig={state.envConfig}
@@ -299,7 +296,6 @@ class Repl extends React.Component {
     if (babili.isEnabled && babili.isLoaded) {
       presetsArray.push("babili");
     }
-
     this._workerApi
       .compile(code, {
         debugEnvPreset: state.debugEnvPreset,
@@ -308,7 +304,6 @@ class Repl extends React.Component {
           runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
         presets: presetsArray,
         sourceMap: runtimePolyfillState.isEnabled,
-        useBuiltIns: state.builtIns,
       })
       .then(result => this.setState(result, setStateCallback));
   };
@@ -396,11 +391,13 @@ class Repl extends React.Component {
       presetsArray.push("env");
     }
 
+    const builtIns = envConfig.isBuiltInsEnabled && envConfig.builtIns;
+
     const payload = {
       babili: plugins["babili-standalone"].isEnabled,
       browsers: envConfig.browsers,
       build: state.babel.build,
-      builtIns: state.builtIns,
+      builtIns: builtIns,
       circleciRepo: state.babel.circleciRepo,
       code: state.code,
       debug: state.debugEnvPreset,
@@ -414,7 +411,6 @@ class Repl extends React.Component {
       targets: envConfigToTargetsString(envConfig),
       version: state.babel.version,
     };
-
     StorageService.set("replState", payload);
     UriUtils.updateQuery(payload);
   };

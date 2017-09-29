@@ -4,11 +4,13 @@ export type BabelPresets = Array<string | Array<string | Object>>;
 
 export type EnvConfig = {
   browsers: string,
-  electron: ?number,
+  electron: ?string,
   isEnvPresetEnabled: boolean,
   isElectronEnabled: boolean,
+  isBuiltInsEnabled: boolean,
   isNodeEnabled: boolean,
-  node: ?number,
+  builtIns: string | false,
+  node: ?string,
 };
 
 export type LoadScriptCallback = (success: boolean) => void;
@@ -49,14 +51,13 @@ export type CompileConfig = {
   evaluate: boolean,
   presets: BabelPresets,
   sourceMap: boolean,
-  useBuiltIns: boolean,
 };
 
 export type PersistedState = {
   babili: boolean,
   browsers: string,
   build: string,
-  builtIns: boolean,
+  builtIns: boolean | string,
   circleciRepo: string,
   code: string,
   debug: boolean,
@@ -72,7 +73,7 @@ export type PersistedState = {
 };
 
 type BabelPresetTargetsMap = {
-  [key: string]: number,
+  [key: string]: string,
 };
 
 type BabelNamedPresetAndTarget = {

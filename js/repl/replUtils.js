@@ -41,7 +41,7 @@ export const loadPersistedState = (): PersistedState => {
     babili: merged.babili === true,
     browsers: merged.browsers || "",
     build: merged.build || "",
-    builtIns: merged.builtIns === true,
+    builtIns: merged.builtIns || false,
     circleciRepo: merged.circleciRepo || "",
     code: merged.code || "",
     debug: merged.debug === true,
@@ -107,7 +107,9 @@ export const persistedStateToEnvConfig = (
     isEnvPresetEnabled,
     isElectronEnabled: false,
     isNodeEnabled: false,
+    isBuiltInsEnabled: !!persistedState.builtIns,
     node: envPresetDefaults.node.default,
+    builtIns: envPresetDefaults.builtIns.default,
   };
 
   decodeURIComponent(persistedState.targets)
@@ -115,8 +117,9 @@ export const persistedStateToEnvConfig = (
     .forEach(component => {
       try {
         const pieces = component.split("-");
+
         const name = pieces[0].toLowerCase();
-        const value = parseFloat(pieces[1]);
+        const value = pieces[1];
 
         if (name) {
           switch (name) {

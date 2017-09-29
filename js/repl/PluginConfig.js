@@ -4,8 +4,9 @@ import type { PluginConfig } from "./types";
 
 const envPresetConfig: PluginConfig = {
   label: "Env Preset",
-  package: "babel-preset-env-standalone",
-  version: "0",
+  package: "babel-env-standalone",
+  version: "2.0.0-alpha.16",
+  baseUrl: "https://unpkg.com",
 };
 
 const envPresetDefaults = {
@@ -14,13 +15,16 @@ const envPresetDefaults = {
   },
   electron: {
     min: 0.3,
-    default: 1.5,
+    default: "1.5",
     step: 0.1,
   },
   node: {
     min: 0.1,
-    default: 7.4,
+    default: "7.4",
     step: 0.1,
+  },
+  builtIns: {
+    default: "usage",
   },
 };
 
