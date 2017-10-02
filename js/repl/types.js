@@ -66,7 +66,7 @@ export type PersistedState = {
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   lineWrap: boolean,
-  presets: string,
+  presets: ?string,
   prettier: boolean,
   showSidebar: boolean,
   targets: string,
