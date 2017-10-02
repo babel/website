@@ -81,12 +81,15 @@ class Repl extends React.Component {
       prettier: persistedState.prettier,
     };
 
-    const defaultPresets = (persistedState.presets || "es2015,react,stage-2")
-      .split(",")
-      .reduce((reduced, key) => {
-        reduced[`babel-preset-${key}`] = true;
-        return reduced;
-      }, {});
+    const presets =
+      typeof persistedState.presets === "string"
+        ? persistedState.presets.split(",")
+        : ["es2015", "react", "stage-2"];
+
+    const defaultPresets = presets.reduce((reduced, key) => {
+      if (key) reduced[`babel-preset-${key}`] = true;
+      return reduced;
+    }, {});
 
     const envConfig = persistedStateToEnvConfig(persistedState);
 

@@ -50,7 +50,7 @@ export const loadPersistedState = (): PersistedState => {
     isPresetsTabExpanded: merged.isPresetsTabExpanded === true,
     isSettingsTabExpanded: merged.isSettingsTabExpanded !== false, // Default to show
     lineWrap: merged.lineWrap != null ? merged.lineWrap : true,
-    presets: merged.presets || "",
+    presets: merged.hasOwnProperty("presets") ? merged.presets : null,
     prettier: merged.prettier === true,
     showSidebar: merged.showSidebar !== false, // Default to show
     targets: merged.targets || "",
@@ -98,10 +98,14 @@ export const configToState = (
 export const persistedStateToEnvConfig = (
   persistedState: PersistedState
 ): EnvConfig => {
+  const isEnvPresetEnabled =
+    Array.isArray(persistedState.presets) &&
+    persistedState.presets.indexOf("env") > 0;
+
   const envConfig: EnvConfig = {
     browsers: persistedState.browsers,
     electron: envPresetDefaults.electron.default,
-    isEnvPresetEnabled: persistedState.presets.indexOf("env") >= 0,
+    isEnvPresetEnabled,
     isElectronEnabled: false,
     isNodeEnabled: false,
     node: envPresetDefaults.node.default,
