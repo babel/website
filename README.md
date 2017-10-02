@@ -50,7 +50,7 @@ If you encounter an `Liquid Exception: Included file '_includes/.../packages/...
 npm test
 ```
 
-This will lint markdown documents inside both the website and the imported repositories (like babel, babili, etc).
+This will lint markdown documents inside both the website and the imported repositories (like babel, babel/minify, etc).
 
 #### Testing compiled output
 

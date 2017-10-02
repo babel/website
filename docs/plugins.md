@@ -131,7 +131,7 @@ These plugins apply transformations to your code.
 
 ### Minification
 
-Check out our [minifier based on Babel](https://github.com/babel/babili)!
+Check out our [minifier based on Babel](https://github.com/babel/minify)!
 
 These plugins are in the minify repo.
 
