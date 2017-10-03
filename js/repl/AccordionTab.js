@@ -1,7 +1,7 @@
 // @flow
 
 import { css } from "emotion";
-import React, { Component } from "react";
+import React from "react";
 import Svg from "./Svg";
 import { colors, media } from "./styles";
 
@@ -17,9 +17,7 @@ export default function AccordionTab(props: Props) {
   return (
     <div className={`${styles.AccordionTab} ${props.className || ""}`}>
       <div className={styles.HeaderRow} onClick={props.toggleIsExpanded}>
-        <div className={styles.Label}>
-          {props.label}
-        </div>
+        <div className={styles.Label}>{props.label}</div>
         <Svg
           className={`${styles.Arrow} ${props.isExpanded
             ? styles.ArrowExpanded
@@ -35,10 +33,9 @@ export default function AccordionTab(props: Props) {
             Z"
         />
       </div>
-      {props.isExpanded &&
-        <div className={styles.Content}>
-          {props.children}
-        </div>}
+      {props.isExpanded && (
+        <div className={styles.Content}>{props.children}</div>
+      )}
     </div>
   );
 }

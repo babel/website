@@ -110,31 +110,33 @@ export const persistedStateToEnvConfig = (
     node: envPresetDefaults.node.default,
   };
 
-  decodeURIComponent(persistedState.targets).split(",").forEach(component => {
-    try {
-      const pieces = component.split("-");
-      const name = pieces[0].toLowerCase();
-      const value = parseFloat(pieces[1]);
+  decodeURIComponent(persistedState.targets)
+    .split(",")
+    .forEach(component => {
+      try {
+        const pieces = component.split("-");
+        const name = pieces[0].toLowerCase();
+        const value = parseFloat(pieces[1]);
 
-      if (name) {
-        switch (name) {
-          case "electron":
-            envConfig.electron = value;
-            envConfig.isElectronEnabled = true;
-            break;
-          case "node":
-            envConfig.node = value;
-            envConfig.isNodeEnabled = true;
-            break;
-          default:
-            console.warn(`Unknown env target "${name}" specified`);
-            break;
+        if (name) {
+          switch (name) {
+            case "electron":
+              envConfig.electron = value;
+              envConfig.isElectronEnabled = true;
+              break;
+            case "node":
+              envConfig.node = value;
+              envConfig.isNodeEnabled = true;
+              break;
+            default:
+              console.warn(`Unknown env target "${name}" specified`);
+              break;
+          }
         }
+      } catch (error) {
+        console.error("Error parsing env preset configuration", error);
       }
-    } catch (error) {
-      console.error("Error parsing env preset configuration", error);
-    }
-  });
+    });
 
   return envConfig;
 };
