@@ -247,23 +247,11 @@ class ExpandedContainer extends Component {
             </label>
           </AccordionTab>
         </div>
-        <div className={styles.versionAndClassicRow}>
-          <a className={styles.classicReplLink} href="/repl-old/">
-            <Svg
-              className={styles.classicReplSvg}
-              path={`
-                M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,
-                0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,
-                8.41L12.67,11H3V13H12.67L10.08,15.58Z`}
-            />
-            classic repl
-          </a>
-          {babelVersion && (
-            <div className={styles.babelVersion} title={`v${babelVersion}`}>
-              v{babelVersion}
-            </div>
-          )}
-        </div>
+        {babelVersion && (
+          <div className={styles.versionRow} title={`v${babelVersion}`}>
+            v{babelVersion}
+          </div>
+        )}
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
           onClick={() => onIsExpandedChange(false)}
@@ -598,42 +586,21 @@ const styles = {
       opacity: 0.5,
     },
   }),
-  versionAndClassicRow: css({
-    flex: "0 0 2rem",
+  versionRow: css({
     display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
+    fontFamily: "monospace",
+    fontSize: "1.25rem",
+    justifyContent: "flex-end",
+    overflow: "hidden",
     padding: "0 1.5rem",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
 
     [media.large]: {
       backgroundColor: colors.inverseBackgroundDark,
+      justifyContent: "flex-start",
       margin: 0,
       padding: "1rem 1.5rem",
     },
-  }),
-  classicReplLink: css({
-    flex: "1 0 auto",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    color: colors.inverseForegroundLight,
-    marginRight: "1rem",
-
-    "&:hover": {
-      color: colors.inverseForeground,
-    },
-  }),
-  classicReplSvg: css({
-    width: "1rem",
-    height: "1rem",
-    marginRight: "0.5rem",
-  }),
-  babelVersion: css({
-    fontFamily: "monospace",
-    fontSize: "1.25rem",
-    flex: "0 1 auto",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
   }),
 };
