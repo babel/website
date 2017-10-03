@@ -7,7 +7,9 @@
   "scripts": {
     "start": "make serve",
     "build": "make build",
-    "lint": "eslint --ext md --rule 'prettier/prettier: 0' docs",
+    "lint": "npm run lint:docs && npm run lint:repl",
+    "lint:docs": "eslint --ext md --rule 'prettier/prettier: 0' docs",
+    "lint:repl": "eslint js/repl/*.js",
     "test": "remark _posts docs _includes README.md --quiet",
     "flow": "flow",
     "precommit": "flow && lint-staged"
@@ -68,7 +70,6 @@
   },
   "lint-staged": {
     "js/**/*.js": [
-      "prettier --trailing-comma es5 --write",
       "eslint --format=codeframe --fix",
       "git add"
     ]
