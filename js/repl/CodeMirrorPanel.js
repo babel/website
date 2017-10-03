@@ -32,14 +32,8 @@ export default function CodeMirrorPanel(props: Props) {
           value={props.code}
         />
       </div>
-      {info &&
-        <pre className={styles.info}>
-          {info}
-        </pre>}
-      {errorMessage &&
-        <pre className={styles.error}>
-          {errorMessage}
-        </pre>}
+      {info && <pre className={styles.info}>{info}</pre>}
+      {errorMessage && <pre className={styles.error}>{errorMessage}</pre>}
     </div>
   );
 }
