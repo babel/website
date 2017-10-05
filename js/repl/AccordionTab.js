@@ -45,6 +45,7 @@ const styles = {
     flex: "1 0 2.5rem",
     cursor: "default",
     borderBottom: `1px solid ${colors.inverseBackgroundDark}`,
+    userSelect: "none",
 
     [media.medium]: {
       borderRight: `1px solid ${colors.inverseBackgroundDark}`,
