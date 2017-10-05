@@ -73,6 +73,8 @@ export default function compile(code: string, config: CompileConfig): Return {
       }
     }
   } catch (error) {
+    console.error(error);
+
     compiled = null;
     compileErrorMessage = error.message;
     envPresetDebugInfo = null;
