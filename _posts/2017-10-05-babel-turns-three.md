@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Babel turns three"
+title: "Babel Turns Three"
 author: Henry Zhu
 author_url: "https://twitter.com/left_pad"
 date: 2017-10-05 13:00:00
 categories: announcements
-share_text: "Babel turns three"
+share_text: "Babel Turns Three"
 ---
 
 > Happy Birthday Babel! 🎂 (Sept 28)
