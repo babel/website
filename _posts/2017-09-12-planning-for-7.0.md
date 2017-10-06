@@ -2,6 +2,7 @@
 layout: post
 title:  "Planning for 7.0"
 author: Henry Zhu
+author_url: "https://twitter.com/left_pad"
 date:   2017-09-12 10:00:00
 categories: announcements
 share_text: "Planning for 7.0"

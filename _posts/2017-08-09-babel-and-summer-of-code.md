@@ -2,6 +2,7 @@
 layout: post
 title:  "Babel and Summer of Code 2017"
 author: Henry Zhu
+author_url: "https://twitter.com/left_pad"
 date:   2017-08-09 12:00:00
 categories: announcements
 share_text: "Babel and Summer of Code 2017"
