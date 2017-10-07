@@ -376,7 +376,7 @@ const PluginToggle = ({
     />
     {state.isLoading ? <PresetLoadingAnimation /> : label || config.label}
   </label>
-  );
+);
 
 
 // Defined separately from styles due to nesting.
