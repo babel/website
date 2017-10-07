@@ -132,9 +132,9 @@ class ExpandedContainer extends Component {
             {presetPluginConfigs.map(config => (
               <PluginToggle
                 config={config}
-                key={config.package}
+                key={config.label}
                 onSettingChange={onSettingChange}
-                state={presetState[config.package]}
+                state={presetState[config.label]}
               />
             ))}
           </AccordionTab>
@@ -365,18 +365,19 @@ const PluginToggle = ({
   state,
   onSettingChange,
 }: PluginToggleProps) => (
-  <label key={config.package} className={styles.settingsLabel}>
+  <label key={config.label} className={styles.settingsLabel}>
     <input
       checked={state.isEnabled && !state.didError}
       className={styles.inputCheckboxLeft}
       disabled={state.isLoading || state.didError}
       onChange={(event: SyntheticInputEvent) =>
-        onSettingChange(config.package, event.target.checked)}
+        onSettingChange(config.label, event.target.checked)}
       type="checkbox"
     />
     {state.isLoading ? <PresetLoadingAnimation /> : label || config.label}
   </label>
-);
+  );
+
 
 // Defined separately from styles due to nesting.
 const nestedCloseButton = css({});

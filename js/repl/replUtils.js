@@ -75,9 +75,9 @@ export const configArrayToStateMap = (
   defaults: DefaultPlugins = {}
 ): PluginStateMap =>
   pluginConfigs.reduce((reduced, config) => {
-    reduced[config.package] = configToState(
+    reduced[config.package || config.label] = configToState(
       config,
-      defaults[config.package] === true
+      defaults[config.package || config.label] === true
     );
     return reduced;
   }, {});

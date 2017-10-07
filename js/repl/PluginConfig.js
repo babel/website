@@ -78,10 +78,6 @@ const presetPluginConfigs: Array<PluginConfig> = [
   },
 ];
 
-presetPluginConfigs.forEach(config => {
-  config.package = `babel-preset-${config.label}`;
-});
-
 export {
   envPresetConfig,
   envPresetDefaults,
