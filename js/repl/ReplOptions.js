@@ -378,7 +378,6 @@ const PluginToggle = ({
   </label>
 );
 
-
 // Defined separately from styles due to nesting.
 const nestedCloseButton = css({});
 
