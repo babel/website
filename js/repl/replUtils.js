@@ -146,6 +146,10 @@ export const getDebugInfoFromEnvResult = (
 ): string => {
   const debugInfo = [];
 
+  if (result.modulePlugin) {
+    debugInfo.push(`Using modules transform:\n  ${result.modulePlugin}`);
+  }
+
   const targetNames = Object.keys(result.targets);
   if (targetNames.length) {
     debugInfo.push(
