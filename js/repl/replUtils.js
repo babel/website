@@ -98,8 +98,8 @@ export const persistedStateToEnvConfig = (
   persistedState: PersistedState
 ): EnvConfig => {
   const isEnvPresetEnabled =
-    Array.isArray(persistedState.presets) &&
-    persistedState.presets.indexOf("env") > 0;
+    typeof persistedState.presets === "string" &&
+    persistedState.presets.indexOf("env") >= 0;
 
   const envConfig: EnvConfig = {
     browsers: persistedState.browsers,

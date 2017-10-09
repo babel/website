@@ -220,7 +220,6 @@ class Repl extends React.Component {
 
       if (plugin.isEnabled && !plugin.isLoaded && !plugin.isLoading) {
         this._numLoadingPlugins++;
-
         this._workerApi.loadPlugin(plugin).then(success => {
           this._numLoadingPlugins--;
 
