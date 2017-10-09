@@ -4,8 +4,8 @@ import type { PluginConfig } from "./types";
 
 const envPresetConfig: PluginConfig = {
   label: "Env Preset",
-  package: "babel-env-standalone",
-  version: "2.0.0-alpha.16",
+  package: "babel-preset-env-standalone",
+  version: "2.0.0-beta.2",
   baseUrl: "https://unpkg.com",
 };
 
