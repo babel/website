@@ -203,7 +203,7 @@ Relevant Issues:
 
 ### Minification
 
-[Babili](https://github.com/babel/minify) is our new Babel-powered minifier, enabling you to produce minified code while targeting the latest browsers.
+[Babili](https://github.com/babel/babili) is our new Babel-powered minifier, enabling you to produce minified code while targeting the latest browsers.
 
 **In**
 
