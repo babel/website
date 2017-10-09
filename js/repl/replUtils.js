@@ -50,8 +50,7 @@ export const loadPersistedState = (): PersistedState => {
     isPresetsTabExpanded: merged.isPresetsTabExpanded === true,
     isSettingsTabExpanded: merged.isSettingsTabExpanded !== false, // Default to show
     lineWrap: merged.lineWrap != null ? merged.lineWrap : true,
-    presets: merged.presets || "",
-    prettier: merged.prettier === true,
+    presets: merged.hasOwnProperty("presets") ? merged.presets : null,
     showSidebar: merged.showSidebar !== false, // Default to show
     targets: merged.targets || "",
     version: merged.version || "",
@@ -98,40 +97,46 @@ export const configToState = (
 export const persistedStateToEnvConfig = (
   persistedState: PersistedState
 ): EnvConfig => {
+  const isEnvPresetEnabled =
+    Array.isArray(persistedState.presets) &&
+    persistedState.presets.indexOf("env") > 0;
+
   const envConfig: EnvConfig = {
     browsers: persistedState.browsers,
     electron: envPresetDefaults.electron.default,
-    isEnvPresetEnabled: persistedState.presets.indexOf("env") >= 0,
+    isEnvPresetEnabled,
     isElectronEnabled: false,
     isNodeEnabled: false,
     node: envPresetDefaults.node.default,
   };
 
-  decodeURIComponent(persistedState.targets).split(",").forEach(component => {
-    try {
-      const pieces = component.split("-");
-      const name = pieces[0].toLowerCase();
-      const value = parseFloat(pieces[1]);
+  decodeURIComponent(persistedState.targets)
+    .split(",")
+    .forEach(component => {
+      try {
+        const pieces = component.split("-");
+        const name = pieces[0].toLowerCase();
+        const value = parseFloat(pieces[1]);
 
-      if (name) {
-        switch (name) {
-          case "electron":
-            envConfig.electron = value;
-            envConfig.isElectronEnabled = true;
-            break;
-          case "node":
-            envConfig.node = value;
-            envConfig.isNodeEnabled = true;
-            break;
-          default:
-            console.warn(`Unknown env target "${name}" specified`);
-            break;
+        if (name) {
+          switch (name) {
+            case "electron":
+              envConfig.electron = value;
+              envConfig.isElectronEnabled = true;
+              break;
+            case "node":
+              envConfig.node = value;
+              envConfig.isNodeEnabled = true;
+              break;
+            default:
+              console.warn(`Unknown env target "${name}" specified`);
+              break;
+          }
         }
+      } catch (error) {
+        console.error("Error parsing env preset configuration", error);
       }
-    } catch (error) {
-      console.error("Error parsing env preset configuration", error);
-    }
-  });
+    });
 
   return envConfig;
 };

@@ -15,7 +15,6 @@ const URL_KEYS = [
   "evaluate",
   "lineWrap",
   "presets",
-  "prettier",
   "targets",
   "version",
 ];

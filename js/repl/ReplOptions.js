@@ -46,12 +46,15 @@ type Props = {
   runtimePolyfillState: PluginState,
 };
 
-const ReplOptions = (props: Props) =>
+const ReplOptions = (props: Props) => (
   <div className={`${styles.wrapper} ${props.className}`}>
-    {props.isExpanded
-      ? <ExpandedContainer {...props} />
-      : <CollapsedContainer {...props} />}
-  </div>;
+    {props.isExpanded ? (
+      <ExpandedContainer {...props} />
+    ) : (
+      <CollapsedContainer {...props} />
+    )}
+  </div>
+);
 
 export default ReplOptions;
 
@@ -111,14 +114,14 @@ class ExpandedContainer extends Component {
               />
               Line Wrap
             </label>
-            {pluginConfigs.map(config =>
+            {pluginConfigs.map(config => (
               <PluginToggle
                 config={config}
                 key={config.package}
                 onSettingChange={onSettingChange}
                 state={pluginState[config.package]}
               />
-            )}
+            ))}
           </AccordionTab>
           <AccordionTab
             className={styles.section}
@@ -126,14 +129,14 @@ class ExpandedContainer extends Component {
             label="Presets"
             toggleIsExpanded={this._togglePresetsTab}
           >
-            {presetPluginConfigs.map(config =>
+            {presetPluginConfigs.map(config => (
               <PluginToggle
                 config={config}
                 key={config.package}
                 onSettingChange={onSettingChange}
                 state={presetState[config.package]}
               />
-            )}
+            ))}
           </AccordionTab>
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}
@@ -149,9 +152,11 @@ class ExpandedContainer extends Component {
                 onChange={this._onEnvPresetEnabledChange}
               />
 
-              {envPresetState.isLoading
-                ? <PresetLoadingAnimation />
-                : "Enabled"}
+              {envPresetState.isLoading ? (
+                <PresetLoadingAnimation />
+              ) : (
+                "Enabled"
+              )}
             </label>
 
             <div className={styles.envPresetColumn}>
@@ -242,22 +247,11 @@ class ExpandedContainer extends Component {
             </label>
           </AccordionTab>
         </div>
-        <div className={styles.versionAndClassicRow}>
-          <a className={styles.classicReplLink} href="/repl-old/">
-            <Svg
-              className={styles.classicReplSvg}
-              path={`
-                M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,
-                0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,
-                8.41L12.67,11H3V13H12.67L10.08,15.58Z`}
-            />
-            classic repl
-          </a>
-          {babelVersion &&
-            <div className={styles.babelVersion} title={`v${babelVersion}`}>
-              v{babelVersion}
-            </div>}
-        </div>
+        {babelVersion && (
+          <div className={styles.versionRow} title={`v${babelVersion}`}>
+            v{babelVersion}
+          </div>
+        )}
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
           onClick={() => onIsExpandedChange(false)}
@@ -342,7 +336,9 @@ type CollapsedContainerProps = {
   onIsExpandedChange: boolean => any,
 };
 
-const CollapsedContainer = ({ onIsExpandedChange }: CollapsedContainerProps) =>
+const CollapsedContainer = ({
+  onIsExpandedChange,
+}: CollapsedContainerProps) => (
   <div className={styles.collapsedContainer}>
     <div
       className={`${styles.closeButton} ${nestedCloseButton}`}
@@ -353,7 +349,8 @@ const CollapsedContainer = ({ onIsExpandedChange }: CollapsedContainerProps) =>
         path="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
       />
     </div>
-  </div>;
+  </div>
+);
 
 type PluginToggleProps = {
   config: PluginConfig,
@@ -367,7 +364,7 @@ const PluginToggle = ({
   label,
   state,
   onSettingChange,
-}: PluginToggleProps) =>
+}: PluginToggleProps) => (
   <label key={config.package} className={styles.settingsLabel}>
     <input
       checked={state.isEnabled && !state.didError}
@@ -378,7 +375,8 @@ const PluginToggle = ({
       type="checkbox"
     />
     {state.isLoading ? <PresetLoadingAnimation /> : label || config.label}
-  </label>;
+  </label>
+);
 
 // Defined separately from styles due to nesting.
 const nestedCloseButton = css({});
@@ -588,42 +586,21 @@ const styles = {
       opacity: 0.5,
     },
   }),
-  versionAndClassicRow: css({
-    flex: "0 0 2rem",
+  versionRow: css({
     display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
+    fontFamily: "monospace",
+    fontSize: "1.25rem",
+    justifyContent: "flex-end",
+    overflow: "hidden",
     padding: "0 1.5rem",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
 
     [media.large]: {
       backgroundColor: colors.inverseBackgroundDark,
+      justifyContent: "flex-start",
       margin: 0,
       padding: "1rem 1.5rem",
     },
-  }),
-  classicReplLink: css({
-    flex: "1 0 auto",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    color: colors.inverseForegroundLight,
-    marginRight: "1rem",
-
-    "&:hover": {
-      color: colors.inverseForeground,
-    },
-  }),
-  classicReplSvg: css({
-    width: "1rem",
-    height: "1rem",
-    marginRight: "0.5rem",
-  }),
-  babelVersion: css({
-    fontFamily: "monospace",
-    fontSize: "1.25rem",
-    flex: "0 1 auto",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
   }),
 };

@@ -1,7 +1,7 @@
 {
   "extends": [
     "babel",
-    "plugin:react/recommended",
+    "plugin:react/recommended"
   ],
   "rules": {
     "arrow-parens": ["error", "as-needed"],

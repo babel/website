@@ -24,6 +24,8 @@ layout: null
 /docs/faq/                          /faq/
 /php.html                           /php/
 /repl.html                          /repl/
+/repl_old.html                      /repl/
+/repl_old                           /repl/
 /7/                                 /repl/build/7.0/
 /7.html                             /repl/build/7.0/
 /docs/learn-es6/                    /learn-es2015/

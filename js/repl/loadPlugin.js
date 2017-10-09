@@ -1,6 +1,5 @@
 // @flow
 
-import camelCase from "lodash.camelcase";
 import loadScript from "./loadScript";
 
 import type { LoadScriptCallback, PluginState } from "./types";

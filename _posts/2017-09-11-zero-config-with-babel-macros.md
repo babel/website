@@ -2,6 +2,7 @@
 layout: post
 title:  "Zero-config code transformation with babel-macros"
 author: Kent C. Dodds
+author_url: "https://twitter.com/kentcdodds"
 date:   2017-09-11 11:00:00
 categories: announcements
 share_text: "Zero-config code transformation with babel-macros"
@@ -59,7 +60,7 @@ const SearchBox = glamorous.input('algolia_searchbox', props => ({
 What's cool about this? Well, the alternative would look exactly like the example above except:
 
 1. It's less explicit because there would be no `import preval from 'preval.macro'` in the source code.
-2. Have to add `babel-plugin-preval` to your babel configuration. 
+2. Have to add `babel-plugin-preval` to your babel configuration.
 3. Need to update your ESLint config to allow for the `preval` variable as a global.
 4. If you misconfigured `babel-plugin-preval` you'd get a cryptic error like: `Uncaught ReferenceError: preval is not defined`.
 
