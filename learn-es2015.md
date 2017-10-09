@@ -609,7 +609,7 @@ var handler =
 <blockquote class="babel-callout babel-callout-danger">
   <h4>Unsupported feature</h4>
   <p>
-    Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="https://kangax.github.io/compat-table/es6/#Proxy">various JavaScript engines</a>.
+    Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="https://kangax.github.io/compat-table/es6/#test-Proxy">various JavaScript engines</a>.
   </p>
 </blockquote>
 
