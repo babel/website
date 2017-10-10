@@ -46,6 +46,22 @@ type Props = {
   runtimePolyfillState: PluginState,
 };
 
+type LinkProps = {
+  className?: string,
+  children: React$Element<any> | string,
+  section: string,
+};
+
+const LinkToDocs = ({ className, children, section }: LinkProps) => (
+  <a
+    className={className}
+    target="_blank"
+    href={`https://github.com/babel/babel/tree/master/experimental/babel-preset-env#${section}`}
+  >
+    {children}
+  </a>
+);
+
 const ReplOptions = (props: Props) => (
   <div className={`${styles.wrapper} ${props.className}`}>
     {props.isExpanded ? (
@@ -179,9 +195,12 @@ class ExpandedContainer extends Component {
               />
             </div>
             <label className={styles.envPresetRow}>
-              <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
+              <LinkToDocs
+                className={`${styles.envPresetLabel} ${styles.highlight}`}
+                section="targets"
+              >
                 Electron
-              </span>
+              </LinkToDocs>
               <input
                 className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
                 disabled={
@@ -205,9 +224,12 @@ class ExpandedContainer extends Component {
               />
             </label>
             <label className={styles.envPresetRow}>
-              <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
+              <LinkToDocs
+                className={`${styles.envPresetLabel} ${styles.highlight}`}
+                section="targetsnode"
+              >
                 Node
-              </span>
+              </LinkToDocs>
               <input
                 className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
                 disabled={
@@ -231,9 +253,12 @@ class ExpandedContainer extends Component {
               />
             </label>
             <label className={styles.envPresetRow}>
-              <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
+              <LinkToDocs
+                className={`${styles.envPresetLabel} ${styles.highlight}`}
+                section="usebuiltins"
+              >
                 Built-ins
-              </span>
+              </LinkToDocs>
               <select
                 value={envConfig.builtIns}
                 className={styles.envPresetSelect}
@@ -257,9 +282,12 @@ class ExpandedContainer extends Component {
               />
             </label>
             <label className={styles.envPresetRow}>
-              <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
+              <LinkToDocs
+                className={`${styles.envPresetLabel} ${styles.highlight}`}
+                section="forcealltransforms"
+              >
                 Force All Transforms
-              </span>
+              </LinkToDocs>
               <input
                 checked={envConfig.forceAllTransforms}
                 className={styles.envPresetCheckbox}
@@ -631,6 +659,12 @@ const styles = {
   }),
   envPresetLabel: css({
     flex: 1,
+    color: "#FFF",
+
+    ":hover": {
+      textDecoration: "none",
+      color: "#FFF",
+    },
   }),
   envPresetSelect: css({
     maxWidth: "7rem",
