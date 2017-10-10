@@ -17,7 +17,7 @@ export default async function loadBundle(
         // Incoming version might be unspecific (eg "6")
         // Resolve to a more specific version to show in the UI.
         return workerApi.getBundleVersion(config.instanceName).then(version => {
-          state[config.versionKey || "version"] = version;
+          state.version = version;
           return state;
         });
       } else {

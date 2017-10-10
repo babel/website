@@ -10,7 +10,6 @@ import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
-// import loadBabel from "./loadBabel";
 import loadBundle from "./loadBundle";
 import loadPlugin from "./loadPlugin";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
@@ -278,8 +277,6 @@ class Repl extends React.Component {
     // Babel 'env' preset is large;
     // Only load it if it's been requested.
     if (envConfig.isEnvPresetEnabled && !envPresetState.isLoaded) {
-      // this._workerApi.loadPlugin(envPresetState)
-      // const envVersion = this.state.envConfig.version;
       loadBundle(envPresetState, this._workerApi).then(() => {
         // This preset is not built into Babel standalone due to its size.
         // Before we can use it we need to explicitly register it.

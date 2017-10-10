@@ -42,7 +42,12 @@ export type BabelState = LazyLoadedState & {
   version: string,
 };
 
-export type EnvState = BabelState & {
+export type EnvState = {
+  build: string,
+  errorMessage?: string,
+  circleciRepo: string,
+  config: PluginConfig,
+  version: string,
   isEnabled: boolean,
 };
 

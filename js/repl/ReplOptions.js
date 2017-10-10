@@ -16,6 +16,7 @@ import type {
   EnvConfig,
   PluginConfig,
   PluginState,
+  EnvState,
   PluginStateMap,
 } from "./types";
 
@@ -29,7 +30,7 @@ type Props = {
   className: string,
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
-  envPresetState: PluginState,
+  envPresetState: EnvState,
   isEnvPresetTabExpanded: boolean,
   isExpanded: boolean,
   isPresetsTabExpanded: boolean,
@@ -84,7 +85,6 @@ class ExpandedContainer extends Component {
       runtimePolyfillConfig,
       runtimePolyfillState,
     } = this.props;
-
     const disableEnvSettings =
       !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled;
 
@@ -139,7 +139,14 @@ class ExpandedContainer extends Component {
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}
             isExpanded={isEnvPresetTabExpanded}
-            label="Env Preset"
+            label={
+              <span>
+                Env Preset{" "}
+                <small className={styles.accordionLabelVersion}>
+                  {envPresetState.version}
+                </small>
+              </span>
+            }
             toggleIsExpanded={this._toggleEnvPresetTab}
           >
             <label className={styles.settingsLabel}>
@@ -545,6 +552,11 @@ const styles = {
     [media.mediumAndDown]: {
       flex: "1 0 150px",
     },
+  }),
+  accordionLabelVersion: css({
+    fontSize: "1rem",
+    fontWeight: 400,
+    marginLeft: "2px",
   }),
   inputCheckboxLeft: css({
     margin: "0 0.75rem 0 0 !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
