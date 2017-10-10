@@ -10,6 +10,7 @@ export type EnvConfig = {
   isBuiltInsEnabled: boolean,
   isNodeEnabled: boolean,
   builtIns: string | false,
+  forceAllTransforms: boolean,
   version: string,
   node: ?string,
 };
@@ -78,6 +79,7 @@ export type PersistedState = {
   isEnvPresetTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
+  forceAllTransforms: boolean,
   lineWrap: boolean,
   presets: ?string,
   showSidebar: boolean,

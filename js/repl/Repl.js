@@ -403,6 +403,7 @@ class Repl extends React.Component {
       circleciRepo: state.babel.circleciRepo,
       code: state.code,
       debug: state.debugEnvPreset,
+      forceAllTransforms: envConfig.forceAllTransforms,
       evaluate: state.runtimePolyfillState.isEnabled,
       isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
       isPresetsTabExpanded: state.isPresetsTabExpanded,

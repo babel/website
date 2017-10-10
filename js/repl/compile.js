@@ -25,6 +25,8 @@ export default function compile(code: string, config: CompileConfig): Return {
 
   if (envConfig && envConfig.isEnvPresetEnabled) {
     const targets = {};
+    const { forceAllTransforms } = envConfig;
+
     if (envConfig.browsers) {
       targets.browsers = envConfig.browsers
         .split(",")
@@ -53,7 +55,8 @@ export default function compile(code: string, config: CompileConfig): Return {
     const options = {
       onPresetBuild,
       targets,
-      useBuiltIns: useBuiltIns,
+      forceAllTransforms,
+      useBuiltIns,
     };
 
     config.presets.push(["env", options]);

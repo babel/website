@@ -256,6 +256,18 @@ class ExpandedContainer extends Component {
                 type="checkbox"
               />
             </label>
+            <label className={styles.envPresetRow}>
+              <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
+                Force All Transforms
+              </span>
+              <input
+                checked={envConfig.forceAllTransforms}
+                className={styles.envPresetCheckbox}
+                disabled={disableEnvSettings}
+                onChange={this._onForceAllTransformsChange}
+                type="checkbox"
+              />
+            </label>
             <label className={styles.settingsLabel}>
               <input
                 checked={debugEnvPreset}
@@ -317,6 +329,13 @@ class ExpandedContainer extends Component {
     this.props.onEnvPresetSettingChange("electron", event.target.value);
   };
 
+  _onForceAllTransformsChange = (event: SyntheticInputEvent) => {
+    this.props.onEnvPresetSettingChange(
+      "forceAllTransforms",
+      event.target.checked
+    );
+  };
+
   _onIsElectronEnabledChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange(
       "isElectronEnabled",
@@ -333,7 +352,6 @@ class ExpandedContainer extends Component {
   };
 
   _onNodeChange = (event: SyntheticInputEvent) => {
-    console.log(event.target.value);
     this.props.onEnvPresetSettingChange("node", event.target.value);
   };
 

@@ -11,6 +11,7 @@ const URL_KEYS = [
   "builtIns",
   "code",
   "debug",
+  "forceAllTransforms",
   "circleciRepo",
   "evaluate",
   "lineWrap",
