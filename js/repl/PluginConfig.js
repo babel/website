@@ -2,11 +2,23 @@
 
 import type { PluginConfig } from "./types";
 
+const babelConfig: PluginConfig = {
+  label: "Babel",
+  package: "babel-standalone",
+  version: "6",
+  baseUrl: "https://unpkg.com",
+  fromMonorepo: true,
+  instanceName: "Babel",
+};
+
 const envPresetConfig: PluginConfig = {
   label: "Env Preset",
   package: "babel-preset-env-standalone",
   version: "2.0.0-beta.2",
   baseUrl: "https://unpkg.com",
+  versionKey: "envVersion",
+  fromMonorepo: true,
+  instanceName: "babelPresetEnv",
 };
 
 const envPresetDefaults = {
@@ -92,6 +104,7 @@ const presetPluginConfigs: Array<PluginConfig> = [
 ];
 
 export {
+  babelConfig,
   envPresetConfig,
   envPresetDefaults,
   pluginConfigs,

@@ -62,6 +62,10 @@ export default class WorkerApi {
     return this._worker.postMessage({ method: "getBabelVersion" });
   }
 
+  getBundleVersion(name: string): Promise<string> {
+    return this._worker.postMessage({ method: "getBundleVersion", name });
+  }
+
   loadPlugin(state: PluginState): Promise<boolean> {
     const { config } = state;
 

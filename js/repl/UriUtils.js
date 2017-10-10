@@ -17,6 +17,7 @@ const URL_KEYS = [
   "presets",
   "targets",
   "version",
+  "envVersion",
 ];
 
 const compress = (string: string) =>

@@ -10,10 +10,12 @@ import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
-import loadBabel from "./loadBabel";
+// import loadBabel from "./loadBabel";
+import loadBundle from "./loadBundle";
 import loadPlugin from "./loadPlugin";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import {
+  babelConfig,
   envPresetConfig,
   pluginConfigs,
   presetPluginConfigs,
@@ -25,6 +27,7 @@ import {
   configArrayToStateMap,
   configToState,
   persistedStateToBabelState,
+  persistedStateToEnvState,
   persistedStateToEnvConfig,
 } from "./replUtils";
 import WorkerApi from "./WorkerApi";
@@ -34,6 +37,7 @@ import { colors, media } from "./styles";
 import type {
   BabelPresets,
   BabelState,
+  EnvState,
   EnvConfig,
   PluginState,
   PluginStateMap,
@@ -48,7 +52,7 @@ type State = {
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetDebugInfo: ?string,
-  envPresetState: PluginState,
+  envPresetState: EnvState,
   evalErrorMessage: ?string,
   isEnvPresetTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
@@ -90,18 +94,18 @@ class Repl extends React.Component {
     }, {});
 
     const envConfig = persistedStateToEnvConfig(persistedState);
-
     // A partial State is defined first b'c this._compile needs it.
     // The compile helper will then populate the missing State values.
     this.state = {
-      babel: persistedStateToBabelState(persistedState),
+      babel: persistedStateToBabelState(persistedState, babelConfig),
       code: persistedState.code,
       compiled: null,
       compileErrorMessage: null,
       debugEnvPreset: persistedState.debug,
       envConfig,
       envPresetDebugInfo: null,
-      envPresetState: configToState(
+      envPresetState: persistedStateToEnvState(
+        persistedState,
         envPresetConfig,
         envConfig.isEnvPresetEnabled
       ),
@@ -197,7 +201,7 @@ class Repl extends React.Component {
   }
 
   async _setupBabel() {
-    const babelState = await loadBabel(this.state.babel, this._workerApi);
+    const babelState = await loadBundle(this.state.babel, this._workerApi);
     this.setState(babelState);
 
     if (babelState.isLoaded) {
@@ -274,7 +278,9 @@ class Repl extends React.Component {
     // Babel 'env' preset is large;
     // Only load it if it's been requested.
     if (envConfig.isEnvPresetEnabled && !envPresetState.isLoaded) {
-      this._workerApi.loadPlugin(envPresetState).then(() => {
+      // this._workerApi.loadPlugin(envPresetState)
+      // const envVersion = this.state.envConfig.version;
+      loadBundle(envPresetState, this._workerApi).then(() => {
         // This preset is not built into Babel standalone due to its size.
         // Before we can use it we need to explicitly register it.
         // Because it's loaded in a worker, we need to configure it there as well.
@@ -409,6 +415,7 @@ class Repl extends React.Component {
       showSidebar: state.isSidebarExpanded,
       targets: envConfigToTargetsString(envConfig),
       version: state.babel.version,
+      envVersion: state.envPresetState.version,
     };
     StorageService.set("replState", payload);
     UriUtils.updateQuery(payload);

@@ -10,6 +10,7 @@ export type EnvConfig = {
   isBuiltInsEnabled: boolean,
   isNodeEnabled: boolean,
   builtIns: string | false,
+  version: string,
   node: ?string,
 };
 
@@ -21,6 +22,8 @@ export type PluginConfig = {
   label: string,
   package: string,
   version?: string,
+  fromMonorepo?: boolean,
+  instanceName?: string,
 };
 
 export type PluginConfigs = Array<PluginConfig>;
@@ -35,7 +38,12 @@ export type BabelState = LazyLoadedState & {
   build: string,
   errorMessage?: string,
   circleciRepo: string,
+  config: PluginConfig,
   version: string,
+};
+
+export type EnvState = BabelState & {
+  isEnabled: boolean,
 };
 
 export type PluginState = LazyLoadedState & {
@@ -70,6 +78,7 @@ export type PersistedState = {
   showSidebar: boolean,
   targets: string,
   version: string,
+  envVersion: string,
 };
 
 type BabelPresetTargetsMap = {

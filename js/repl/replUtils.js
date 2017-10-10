@@ -7,6 +7,7 @@ import UriUtils from "./UriUtils";
 import type {
   BabelPresetEnvResult,
   BabelState,
+  EnvState,
   EnvConfig,
   PersistedState,
   PluginConfig,
@@ -54,13 +55,15 @@ export const loadPersistedState = (): PersistedState => {
     showSidebar: merged.showSidebar !== false, // Default to show
     targets: merged.targets || "",
     version: merged.version || "",
+    envVersion: merged.envVersion || "",
   };
 };
 
 type DefaultPlugins = { [name: string]: boolean };
 
 export const persistedStateToBabelState = (
-  persistedState: PersistedState
+  persistedState: PersistedState,
+  config: PluginConfig
 ): BabelState => ({
   build: persistedState.build,
   circleciRepo: persistedState.circleciRepo,
@@ -68,6 +71,18 @@ export const persistedStateToBabelState = (
   isLoaded: false,
   isLoading: true,
   version: persistedState.version,
+  config,
+});
+
+export const persistedStateToEnvState = (
+  persistedState: PersistedState,
+  config: PluginConfig,
+  isEnabled: boolean
+): EnvState => ({
+  ...persistedStateToBabelState(persistedState, config),
+  isLoading: false,
+  isEnabled,
+  version: persistedState.envVersion,
 });
 
 export const configArrayToStateMap = (
@@ -109,6 +124,7 @@ export const persistedStateToEnvConfig = (
     isNodeEnabled: false,
     isBuiltInsEnabled: !!persistedState.builtIns,
     node: envPresetDefaults.node.default,
+    version: persistedState.envVersion,
     builtIns: envPresetDefaults.builtIns.default,
   };
 
