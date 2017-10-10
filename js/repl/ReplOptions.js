@@ -74,6 +74,9 @@ const ReplOptions = (props: Props) => (
 
 export default ReplOptions;
 
+// Enable when onPresetBuild will be merged;
+const USE_PRESET_ENV_DEBUG = false;
+
 // The choice of Component over PureComponent is intentional here.
 // It simplifies the re-use of PluginState objects,
 // Without requiring gratuitous use of Object-spread.
@@ -181,11 +184,12 @@ class ExpandedContainer extends Component {
             </label>
 
             <div className={styles.envPresetColumn}>
-              <label
-                className={`${styles.envPresetColumnLabel} ${styles.highlight}`}
+              <LinkToDocs
+                className={`${styles.envPresetColumnLabel} ${styles.envPresetLabel} ${styles.highlight}`}
+                section="browserslist-support"
               >
-                Browser
-              </label>
+                Browsers
+              </LinkToDocs>
               <textarea
                 disabled={disableEnvSettings}
                 className={`${styles.envPresetInput} ${styles.envPresetTextarea}`}
@@ -296,16 +300,20 @@ class ExpandedContainer extends Component {
                 type="checkbox"
               />
             </label>
-            <label className={styles.settingsLabel}>
-              <input
-                checked={debugEnvPreset}
-                className={styles.inputCheckboxLeft}
-                disabled={disableEnvSettings || runtimePolyfillState.isEnabled}
-                onChange={this._onDebugChange}
-                type="checkbox"
-              />
-              Debug
-            </label>
+            {USE_PRESET_ENV_DEBUG && (
+              <label className={styles.settingsLabel}>
+                <input
+                  checked={debugEnvPreset}
+                  className={styles.inputCheckboxLeft}
+                  disabled={
+                    disableEnvSettings || runtimePolyfillState.isEnabled
+                  }
+                  onChange={this._onDebugChange}
+                  type="checkbox"
+                />
+                Debug
+              </label>
+            )}
           </AccordionTab>
         </div>
         {babelVersion && (
