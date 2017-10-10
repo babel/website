@@ -7,7 +7,6 @@ const babelConfig: PluginConfig = {
   package: "babel-standalone",
   version: "6",
   baseUrl: "https://unpkg.com",
-  fromMonorepo: true,
   instanceName: "Babel",
 };
 
@@ -17,7 +16,6 @@ const envPresetConfig: PluginConfig = {
   version: "2.0.0-beta.2",
   baseUrl: "https://unpkg.com",
   versionKey: "envVersion",
-  fromMonorepo: true,
   instanceName: "babelPresetEnv",
 };
 

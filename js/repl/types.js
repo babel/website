@@ -23,7 +23,6 @@ export type PluginConfig = {
   label: string,
   package: string,
   version?: string,
-  fromMonorepo?: boolean,
   instanceName?: string,
 };
 
