@@ -11,7 +11,7 @@ export type EnvConfig = {
   isNodeEnabled: boolean,
   builtIns: string | false,
   forceAllTransforms: boolean,
-  version: string,
+  version?: string,
   node: ?string,
 };
 
