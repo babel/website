@@ -1,6 +1,6 @@
 // @flow
 
-import { css } from "glamor";
+import { injectGlobal } from "emotion";
 import CodeMirror from "codemirror";
 import React from "react";
 import { colors } from "./styles";
@@ -123,12 +123,13 @@ export default class ReactCodeMirror extends React.Component {
   };
 }
 
-css.global(".CodeMirror", {
-  height: "100% !important",
-  width: "100% !important",
-  "-webkit-overflow-scrolling": "touch",
-});
-
-css.global(".CodeMirror-lines pre.CodeMirror-placeholder", {
-  color: colors.foregroundLight,
+injectGlobal({
+  ".CodeMirror": {
+    height: "100% !important",
+    width: "100% !important",
+    "-webkit-overflow-scrolling": "touch",
+  },
+  ".CodeMirror-lines pre.CodeMirror-placeholder": {
+    color: colors.foregroundLight,
+  },
 });

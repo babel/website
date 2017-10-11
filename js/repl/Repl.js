@@ -2,7 +2,7 @@
 
 import "regenerator-runtime/runtime";
 
-import { css } from "glamor";
+import { css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
 import ErrorBoundary from "./ErrorBoundary";
@@ -80,15 +80,17 @@ class Repl extends React.Component {
 
     const defaultPlugins = {
       "babili-standalone": persistedState.babili,
-      prettier: persistedState.prettier,
     };
 
-    const defaultPresets = (persistedState.presets || "es2015,react,stage-2")
-      .split(",")
-      .reduce((reduced, key) => {
-        reduced[`babel-preset-${key}`] = true;
-        return reduced;
-      }, {});
+    const presets =
+      typeof persistedState.presets === "string"
+        ? persistedState.presets.split(",")
+        : ["es2015", "react", "stage-2"];
+
+    const defaultPresets = presets.reduce((reduced, key) => {
+      if (key) reduced[`babel-preset-${key}`] = true;
+      return reduced;
+    }, {});
 
     const envConfig = persistedStateToEnvConfig(persistedState);
 
@@ -142,8 +144,9 @@ class Repl extends React.Component {
         <div className={styles.loader}>
           <div className={styles.loaderContent}>
             {message}
-            {state.babel.isLoading &&
-              <PresetLoadingAnimation className={styles.loadingAnimation} />}
+            {state.babel.isLoading && (
+              <PresetLoadingAnimation className={styles.loadingAnimation} />
+            )}
           </div>
         </div>
       );
@@ -310,7 +313,6 @@ class Repl extends React.Component {
         evaluate:
           runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
         presets: presetsArray,
-        prettify: state.plugins.prettier.isEnabled,
         sourceMap: runtimePolyfillState.isEnabled,
         useBuiltIns: state.builtIns,
       })
@@ -425,7 +427,6 @@ class Repl extends React.Component {
       isUploadTabExpanded: state.isUploadTabExpanded,
       lineWrap: state.lineWrap,
       presets: presetsArray.join(","),
-      prettier: plugins.prettier.isEnabled,
       showSidebar: state.isSidebarExpanded,
       targets: envConfigToTargetsString(envConfig),
       version: state.babel.version,

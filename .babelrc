@@ -1,4 +1,16 @@
 {
+  "env": {
+    "production": {
+      "plugins":[
+        "emotion"
+      ]
+    },
+    "development": {
+      "plugins": [
+        ["emotion", { sourceMap: true }]
+      ]
+    }
+  },
   "presets": [
     ["env", {
       "targets": {

@@ -1,4 +1,4 @@
-import { css } from "glamor";
+import { css, keyframes } from "emotion";
 import React from "react";
 
 type PresetLoadingAnimationProps = {
@@ -7,18 +7,19 @@ type PresetLoadingAnimationProps = {
 
 const PresetLoadingAnimation = ({
   className = "",
-}: PresetLoadingAnimationProps) =>
+}: PresetLoadingAnimationProps) => (
   <div className={`${className} ${styles.loadingAnimation}`}>
     <div className={`${styles.loadingTick} ${styles.loadingTick1}`} />
     <div className={`${styles.loadingTick} ${styles.loadingTick2}`} />
     <div className={`${styles.loadingTick} ${styles.loadingTick3}`} />
     <div className={`${styles.loadingTick} ${styles.loadingTick4}`} />
     <div className={`${styles.loadingTick} ${styles.loadingTick5}`} />
-  </div>;
+  </div>
+);
 
 export default PresetLoadingAnimation;
 
-const bounce = css.keyframes({
+const bounce = keyframes({
   "0%": { transform: "scaleY(0.25)" },
   "40%": { transform: "scaleY(0.75)" },
   "80%": { transform: "scaleY(0.25)" },

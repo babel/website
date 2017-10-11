@@ -1,5 +1,5 @@
 import React from "react";
-import { css } from "glamor";
+import { css } from "emotion";
 import { colors } from "./styles";
 
 type Props = {
