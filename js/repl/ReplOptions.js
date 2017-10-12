@@ -676,6 +676,7 @@ const styles = {
   }),
   envPresetSelect: css({
     maxWidth: "7rem",
+    fontWeight: 400,
     color: colors.textareaForeground,
 
     "&:disabled": {
@@ -688,6 +689,7 @@ const styles = {
   envPresetInput: css({
     WebkitAppearance: "none",
     border: "none",
+    fontWeight: 400,
     borderRadius: "0.25rem",
     color: colors.textareaForeground,
 
