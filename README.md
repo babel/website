@@ -13,8 +13,8 @@ Feel free to suggest changes to our docs, add new content, or new ideas!
   * Make sure `bundler` is installed by running `gem install bundler`
 
 ```bash
-$ git clone git@github.com:babel/babel.github.io.git
-$ cd babel.github.io
+$ git clone git@github.com:babel/website.git
+$ cd website
 $ make bootstrap
 ```
 
