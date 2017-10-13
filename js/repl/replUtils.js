@@ -3,6 +3,7 @@
 import { envPresetDefaults } from "./PluginConfig";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
+import { envPresetFeaturesSupport } from "./PluginConfig";
 
 import type {
   BabelPresetEnvResult,
@@ -193,4 +194,14 @@ export const getDebugInfoFromEnvResult = (
   }
 
   return debugInfo.join("\n\n");
+};
+
+export const isEnvFeatureSupported = (
+  version: ?string,
+  feature: string
+): boolean => {
+  if (!version) return false;
+  const parsedVersion = parseInt(version);
+  const [min, max] = envPresetFeaturesSupport[feature];
+  return parsedVersion >= min && parsedVersion <= max;
 };

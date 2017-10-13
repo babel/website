@@ -1,6 +1,6 @@
 // @flow
 
-import type { PluginConfig } from "./types";
+import type { PluginConfig, EnvFeatures } from "./types";
 
 const babelConfig: PluginConfig = {
   label: "Babel",
@@ -13,10 +13,17 @@ const babelConfig: PluginConfig = {
 const envPresetConfig: PluginConfig = {
   label: "Env Preset",
   package: "babel-preset-env-standalone",
-  version: "2.0.0-beta.2",
+  version: "1.6.2",
   baseUrl: "https://unpkg.com",
   versionKey: "envVersion",
   instanceName: "babelPresetEnv",
+};
+
+const envPresetFeaturesSupport: EnvFeatures = {
+  debug: [0, 1],
+  builtInsUsage: [2, 2],
+  forceAllTransforms: [2, 2],
+  stringifiedVersion: [2, 2],
 };
 
 const envPresetDefaults = {
@@ -105,6 +112,7 @@ export {
   babelConfig,
   envPresetConfig,
   envPresetDefaults,
+  envPresetFeaturesSupport,
   pluginConfigs,
   presetPluginConfigs,
   runtimePolyfillConfig,

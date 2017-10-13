@@ -25,7 +25,7 @@ registerPromiseWorker(message => {
 
     case "getBundleVersion":
       try {
-        const target = self[name].default || self[name];
+        const target = self[name];
         return target.version;
       } catch (error) {
         return null;

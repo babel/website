@@ -15,6 +15,10 @@ export type EnvConfig = {
   node: ?string,
 };
 
+export type EnvFeatures = {
+  [feature: string]: Array<number>,
+};
+
 export type LoadScriptCallback = (success: boolean) => void;
 
 export type PluginConfig = {

@@ -7,6 +7,7 @@ import {
   pluginConfigs,
   presetPluginConfigs,
 } from "./PluginConfig";
+import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import Svg from "./Svg";
@@ -104,6 +105,7 @@ class ExpandedContainer extends Component {
       runtimePolyfillConfig,
       runtimePolyfillState,
     } = this.props;
+
     const disableEnvSettings =
       !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled;
 
@@ -263,20 +265,22 @@ class ExpandedContainer extends Component {
               >
                 Built-ins
               </LinkToDocs>
-              <select
-                value={envConfig.builtIns}
-                className={styles.envPresetSelect}
-                onChange={this._onBuiltInsChange}
-                disabled={
-                  !envPresetState.isLoaded ||
-                  !envConfig.isEnvPresetEnabled ||
-                  !envConfig.isBuiltInsEnabled ||
-                  runtimePolyfillState.isEnabled
-                }
-              >
-                <option value="entry">Entry</option>
-                <option value="usage">Usage</option>
-              </select>
+              {isEnvFeatureSupported(envConfig.version, "builtInsUsage") && (
+                <select
+                  value={envConfig.builtIns}
+                  className={styles.envPresetSelect}
+                  onChange={this._onBuiltInsChange}
+                  disabled={
+                    !envPresetState.isLoaded ||
+                    !envConfig.isEnvPresetEnabled ||
+                    !envConfig.isBuiltInsEnabled ||
+                    runtimePolyfillState.isEnabled
+                  }
+                >
+                  <option value="entry">Entry</option>
+                  <option value="usage">Usage</option>
+                </select>
+              )}
               <input
                 checked={envConfig.isBuiltInsEnabled}
                 className={styles.envPresetCheckbox}
@@ -285,22 +289,24 @@ class ExpandedContainer extends Component {
                 type="checkbox"
               />
             </label>
-            <label className={styles.envPresetRow}>
-              <LinkToDocs
-                className={`${styles.envPresetLabel} ${styles.highlight}`}
-                section="forcealltransforms"
-              >
-                Force All Transforms
-              </LinkToDocs>
-              <input
-                checked={envConfig.forceAllTransforms}
-                className={styles.envPresetCheckbox}
-                disabled={disableEnvSettings}
-                onChange={this._onForceAllTransformsChange}
-                type="checkbox"
-              />
-            </label>
-            {USE_PRESET_ENV_DEBUG && (
+            {isEnvFeatureSupported(envConfig.version, "forceAllTransforms") && (
+              <label className={styles.envPresetRow}>
+                <LinkToDocs
+                  className={`${styles.envPresetLabel} ${styles.highlight}`}
+                  section="forcealltransforms"
+                >
+                  Force All Transforms
+                </LinkToDocs>
+                <input
+                  checked={envConfig.forceAllTransforms}
+                  className={styles.envPresetCheckbox}
+                  disabled={disableEnvSettings}
+                  onChange={this._onForceAllTransformsChange}
+                  type="checkbox"
+                />
+              </label>
+            )}
+            {isEnvFeatureSupported(envConfig.version, "debug") && (
               <label className={styles.settingsLabel}>
                 <input
                   checked={debugEnvPreset}
