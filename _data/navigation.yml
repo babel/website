@@ -10,6 +10,8 @@
           url: /docs/editors
         - title: Caveats
           url: /docs/usage/caveats/
+        - title: Videos
+          url: /docs/community/videos/
     - name: Packages
       items:
         - title: babel-core
