@@ -5,6 +5,8 @@ description: Videos and podcasts about Babel and its underlying concepts
 permalink: /docs/community/videos/
 ---
 
+> Check out [this issue](https://github.com/babel/website/issues/1418) to discuss making this page better!
+
 ## Conferences
 
 ### [React Rally 2017] So How Does Babel Even Work?
