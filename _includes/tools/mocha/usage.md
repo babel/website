@@ -37,8 +37,9 @@ npm install --save-dev babel-polyfill
     "test": "mocha --compilers js:babel-register"
   }
 }
+```
 
-with polyfill
+With polyfill:
 
 ```json
 {
