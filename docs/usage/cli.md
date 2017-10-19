@@ -21,7 +21,7 @@ package: babel-cli
   <p>
     <strong>Note:</strong> These instructions use the excellent
     <a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b">npx</a>
-    command to run the locally installed executables. You may instead execute
+    command to run the locally installed executables. You can drop it inside of an <a href="https://docs.npmjs.com/cli/run-script">npm run script</a> or you may instead execute
     with the relative path instead. <code>./node_modules/.bin/babel</code>
   </p>
 </blockquote>
