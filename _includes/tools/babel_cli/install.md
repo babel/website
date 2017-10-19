@@ -16,18 +16,16 @@ npm install --save-dev babel-cli
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    <strong>Note:</strong> Since it's generally a bad idea to run Babel globally
-    you may want to uninstall the global copy by running
-    <code>npm uninstall --global babel-cli</code>.
+    <strong>Note:</strong> If you do not have a <code>package.json</code>,
+    create one before installing. This will ensure proper interaction with the
+    <code>npx</code> command.
   </p>
 </blockquote>
 
-After that finishes installing, your `package.json` file should look like this:
+After that finishes installing, your `package.json` file should include:
 
 ```json
 {
-  "name": "my-project",
-  "version": "1.0.0",
   "devDependencies": {
     "babel-cli": "^6.0.0"
   }
