@@ -17,25 +17,34 @@ package: babel-cli
 
 ## babel
 
+<blockquote class="babel-callout babel-callout-info">
+  <p>
+    <strong>Note:</strong> These instructions use the excellent
+    <a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b">npx</a>
+    command to run the locally installed executables. You may instead execute
+    with the relative path instead. <code>./node_modules/.bin/babel</code>
+  </p>
+</blockquote>
+
 ### Compile Files
 
 Compile the file `script.js` and **output to stdout**.
 
 ```sh
-babel script.js
+npx babel script.js
 # output...
 ```
 
 If you would like to **output to a file** you may use `--out-file` or `-o`.
 
 ```sh
-babel script.js --out-file script-compiled.js
+npx babel script.js --out-file script-compiled.js
 ```
 
 To compile a file **every time that you change it**, use the `--watch` or `-w` option:
 
 ```sh
-babel script.js --watch --out-file script-compiled.js
+npx babel script.js --watch --out-file script-compiled.js
 ```
 
 ### Compile with Source Maps
@@ -44,13 +53,13 @@ If you would then like to add a **source map file** you can use
 `--source-maps` or `-s`. [Learn more about source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/).
 
 ```sh
-babel script.js --out-file script-compiled.js --source-maps
+npx babel script.js --out-file script-compiled.js --source-maps
 ```
 
 If you would rather have **inline source maps**, you may use `--source-maps inline`.
 
 ```sh
-babel script.js --out-file script-compiled.js --source-maps inline
+npx babel script.js --out-file script-compiled.js --source-maps inline
 ```
 
 ### Compile Directories
@@ -58,13 +67,13 @@ babel script.js --out-file script-compiled.js --source-maps inline
 Compile the entire `src` directory and output it to the `lib` directory. You may use `--out-dir` or `-d`. This doesn't overwrite any other files or directories in `lib`.
 
 ```sh
-babel src --out-dir lib
+npx babel src --out-dir lib
 ```
 
 Compile the entire `src` directory and output it to the one concatenated file.
 
 ```sh
-babel src --out-file script-compiled.js
+npx babel src --out-file script-compiled.js
 ```
 
 ### Ignore files
@@ -72,7 +81,7 @@ babel src --out-file script-compiled.js
 Ignore spec and test files
 
 ```sh
-babel src --out-dir lib --ignore spec.js,test.js
+npx babel src --out-dir lib --ignore spec.js,test.js
 ```
 
 ### Copy files
@@ -80,7 +89,7 @@ babel src --out-dir lib --ignore spec.js,test.js
 Copy files that will not be compiled
 
 ```sh
-babel src --out-dir lib --copy-files
+npx babel src --out-dir lib --copy-files
 ```
 
 ### Piping Files
@@ -88,7 +97,7 @@ babel src --out-dir lib --copy-files
 Pipe a file in via stdin and output it to `script-compiled.js`
 
 ```sh
-babel --out-file script-compiled.js < script.js
+npx babel --out-file script-compiled.js < script.js
 ```
 
 ### Using Plugins
@@ -96,7 +105,7 @@ babel --out-file script-compiled.js < script.js
 Use the `--plugins` option to specify plugins to use in compilation
 
 ```sh
-babel script.js --out-file script-compiled.js --plugins=transform-runtime,transform-es2015-modules-amd
+npx babel script.js --out-file script-compiled.js --plugins=transform-runtime,transform-es2015-modules-amd
 ```
 
 ### Using Presets
@@ -104,7 +113,7 @@ babel script.js --out-file script-compiled.js --plugins=transform-runtime,transf
 Use the `--presets` option to specify plugins to use in compilation
 
 ```sh
-babel script.js --out-file script-compiled.js --presets=es2015,react
+npx babel script.js --out-file script-compiled.js --presets=es2015,react
 ```
 
 ### Ignoring .babelrc
@@ -112,7 +121,7 @@ babel script.js --out-file script-compiled.js --presets=es2015,react
 Ignore the configuration from the projects .babelrc file and use the cli options e.g. for a custom build
 
 ```sh
-babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,react
+npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,react
 ```
 
 ### Advanced Usage
@@ -147,31 +156,31 @@ it will compile ES6 code before running it.
 Launch a REPL (Read-Eval-Print-Loop).
 
 ```sh
-babel-node
+npx babel-node
 ```
 
 Evaluate code.
 
 ```sh
-babel-node -e "class Test { }"
+npx babel-node -e "class Test { }"
 ```
 
 Compile and run `test.js`.
 
 ```sh
-babel-node test
+npx babel-node test
 ```
 
 > **Tip:** Use `rlwrap` to get a REPL with input history
 >
 > ```sh
-> rlwrap babel-node
+> npx rlwrap babel-node
 > ```
 >
 > On some platforms (like OSX), extra arguments may be required for `rlwrap` to function properly, eg:
 >
 > ```sh
-> NODE_NO_READLINE=1 rlwrap --always-readline babel-node
+> NODE_NO_READLINE=1 npx rlwrap --always-readline babel-node
 > ```
 
 ### Usage
@@ -183,7 +192,7 @@ babel-node [options] [ -e script | script.js ] [arguments]
 When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
 
 ```sh
-babel-node --debug --presets es2015 -- script.js --debug
+npx babel-node --debug --presets es2015 -- script.js --debug
 ```
 
 ### Options
