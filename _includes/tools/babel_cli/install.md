@@ -24,10 +24,10 @@ npm install --save-dev babel-cli
 
 After that finishes installing, your `package.json` file should include:
 
-```json
+```diff
 {
   "devDependencies": {
-    "babel-cli": "^6.0.0"
++   "babel-cli": "^6.0.0"
   }
 }
 ```
