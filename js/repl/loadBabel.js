@@ -45,10 +45,14 @@ export default async function loadBabel(
     try {
       if (!isBuildNumeric) {
         // Build in URL is *not* numeric, assume it's a branch name
-        // Get the latest build number for this branch
+        // Get the latest build number for this branch.
+        //
+        // NOTE:
+        // Since we switched the 7.0 branch to master, we map /build/7.0 to
+        // /build/master for backwards compatibility.
         build = await loadLatestBuildNumberForBranch(
           config.circleciRepo,
-          build
+          build === "7.0" ? "master" : build
         );
       }
       const url = await loadBuildArtifacts(config.circleciRepo, build, doLoad);
