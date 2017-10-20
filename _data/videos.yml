@@ -1,70 +1,76 @@
-- title: So How Does Babel Even Work?
-  author: Henry Zhu
-  event: React Rally 2017
-  link: https://www.youtube.com/embed/fntd0sPMOtQ
-  description: Henry Zhu explains Babel at React Rally EU.
-- title: Maintaining an OSS Project (Babel)
-  author: Henry Zhu
-  event: JSConf EU 2017
-  link: https://www.youtube.com/embed/_iToM2KC0QE
-  description: Henry Zhu talks about maintaining at JSConf EU.
-- title: How to Build a Compiler
-  author: James Kyle
-  event: EmberConf 2016
-  link: https://www.youtube.com/embed/Tar4WgAfMr4
-  description: James Kyle talks Compilers at EmberConf.
-- title: Closing Keynote, Babel 6.0
-  author: Sebastian McKenzie
-  event: EmberCamp London 2015
-  link: https://www.youtube.com/embed/Q_ncaTYEizc
-  description: Sebastian McKenzie talks Babel v6 at EmberCamp London 2015.
-- title: Improving Your Workflow With Code Transformation
-  author: Sebastian McKenzie
-  event: React Europe 2015
-  link: https://www.youtube.com/embed/OFuDvqZmUrE
-  description: Sebastian McKenzie talks Babel at React Europe 2015.
-- title: JavaScript Tooling in the Future
-  author: James Kyle
-  event: Forward 3 2015
-  link: https://www.youtube.com/embed/i1c0zV1jZfc
-  description: James Kyle talks Babel at Forward 3 Web Summit.
-- title: Compiling JavaScript
-  author: James Kyle
-  event: jQuerySF 2015
-  link: https://www.youtube.com/embed/Ku3AWp_-Qzs
-  description: James Kyle talks Babel at JQuerySF.
-- title: Consolidation of Tools
-  author: Sebastian McKenzie
-  event: BrazilJS 2015
-  link: https://www.youtube.com/embed/pqkdG1-FhHc
-  description: Sebastian McKenzie talks Babel at BrazilJS.
-- title: JavaScript Transformation
-  author: Sebastian McKenzie
-  event: JSConf US 2015
-  link: https://www.youtube.com/embed/rKuNbEwoQfQ
-  description: Sebastian McKenzie talks Babel at JSConf US.
-- title: Babel (May 2015)
-  author: Sebastian McKenzie
-  event: React London Meetup 2015
-  link: https://www.youtube.com/embed/xnx9Ft3QleI
-  description: Sebastian McKenzie talks Babel at React London Meetup.
-- title: Babel Sucks
-  author: James Kyle
-  event: Modern Web UI
-  link: https://www.youtube.com/embed/m-HjKwyQoQg
-  description: James Kyle talks Babel at Modern Web UI.
-- title: Babel - Beyond the Basics (March 2015)
-  author: Sebastian McKenzie
-  event: MelbJS
-  link: https://www.youtube.com/embed/F1BIeVe99EQ
-  description: Sebastian McKenzie explains Babel at MelbJS.
-- title: As Simple as an AST
-  author: Pavithra Kodmad
-  event: JSHeroes 2017
-  link: https://www.youtube.com/embed/LRKlqR6KY_E
-  description: Pavithra Kodmad talks ASTs at JSHeroes.
-- title: Harnessing The Power of Abstract Syntax Trees
-  author: Jamund Ferguson
-  event: UtahJS 2015
-  link: https://www.youtube.com/embed/8uOXIM4giH8
-  description: Jamund Ferguson talks ASTs at UtahJS.
+- category: Conferences
+  items:
+    - title: So How Does Babel Even Work?
+      author: Henry Zhu
+      event: React Rally 2017
+      link: https://www.youtube.com/embed/fntd0sPMOtQ
+      description: Henry Zhu explains Babel at React Rally EU.
+    - title: Maintaining an OSS Project (Babel)
+      author: Henry Zhu
+      event: JSConf EU 2017
+      link: https://www.youtube.com/embed/_iToM2KC0QE
+      description: Henry Zhu talks about maintaining at JSConf EU.
+    - title: How to Build a Compiler
+      author: James Kyle
+      event: EmberConf 2016
+      link: https://www.youtube.com/embed/Tar4WgAfMr4
+      description: James Kyle talks Compilers at EmberConf.
+    - title: Closing Keynote, Babel 6.0
+      author: Sebastian McKenzie
+      event: EmberCamp London 2015
+      link: https://www.youtube.com/embed/Q_ncaTYEizc
+      description: Sebastian McKenzie talks Babel v6 at EmberCamp London 2015.
+    - title: Improving Your Workflow With Code Transformation
+      author: Sebastian McKenzie
+      event: React Europe 2015
+      link: https://www.youtube.com/embed/OFuDvqZmUrE
+      description: Sebastian McKenzie talks Babel at React Europe 2015.
+    - title: JavaScript Tooling in the Future
+      author: James Kyle
+      event: Forward 3 2015
+      link: https://www.youtube.com/embed/i1c0zV1jZfc
+      description: James Kyle talks Babel at Forward 3 Web Summit.
+    - title: Compiling JavaScript
+      author: James Kyle
+      event: jQuerySF 2015
+      link: https://www.youtube.com/embed/Ku3AWp_-Qzs
+      description: James Kyle talks Babel at JQuerySF.
+    - title: Consolidation of Tools
+      author: Sebastian McKenzie
+      event: BrazilJS 2015
+      link: https://www.youtube.com/embed/pqkdG1-FhHc
+      description: Sebastian McKenzie talks Babel at BrazilJS.
+    - title: JavaScript Transformation
+      author: Sebastian McKenzie
+      event: JSConf US 2015
+      link: https://www.youtube.com/embed/rKuNbEwoQfQ
+      description: Sebastian McKenzie talks Babel at JSConf US.
+    - title: Babel (May 2015)
+      author: Sebastian McKenzie
+      event: React London Meetup 2015
+      link: https://www.youtube.com/embed/xnx9Ft3QleI
+      description: Sebastian McKenzie talks Babel at React London Meetup.
+- category: Meetups
+  items:
+    - title: Babel Sucks
+      author: James Kyle
+      event: Modern Web UI
+      link: https://www.youtube.com/embed/m-HjKwyQoQg
+      description: James Kyle talks Babel at Modern Web UI.
+    - title: Babel - Beyond the Basics (March 2015)
+      author: Sebastian McKenzie
+      event: MelbJS.......
+      link: https://www.youtube.com/embed/F1BIeVe99EQ
+      description: Sebastian McKenzie explains Babel at MelbJS.
+- category: ASTs
+  items:
+    - title: As Simple as an AST
+      author: Pavithra Kodmad
+      event: JSHeroes 2017
+      link: https://www.youtube.com/embed/LRKlqR6KY_E
+      description: Pavithra Kodmad talks ASTs at JSHeroes.
+    - title: Harnessing The Power of Abstract Syntax Trees
+      author: Jamund Ferguson
+      event: UtahJS 2015
+      link: https://www.youtube.com/embed/8uOXIM4giH8
+      description: Jamund Ferguson talks ASTs at UtahJS.

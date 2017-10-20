@@ -16,27 +16,30 @@ permalink: /docs/community/videos/
       </div>
 
       <div class="container-fluid">
-        <div class="babel-videos row">
-          {% for video in site.data.videos %}
-            <div class="babel-video-wrap col-lg-4 col-sm-6">
-              <div class="babel-video">
-                <div class="embed-responsive embed-responsive-16by9">
-                  <iframe class="embed-responsive-item" src="{{video.link}}" allowfullscreen></iframe>
-                </div>
-                <div class="babel-video-block">
-                  <h4 class="babel-video-title">{{video.title}}</h4>
-                  <p class="text-muted">
-                    <span>by {{video.author}}<span>
-                    {% if video.event %}
-                      <span>at {{video.event}}</span>
-                    {% endif %}
-                  </p>
-                  <p>{{video.description}}</p>
+        {% for category in site.data.videos %}
+          <h2>{{category.category}}</h2>
+          <div class="babel-videos row">
+            {% for video in category.items %}
+              <div class="babel-video-wrap col-lg-4 col-sm-6">
+                <div class="babel-video">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="{{video.link}}" allowfullscreen></iframe>
+                  </div>
+                  <div class="babel-video-block">
+                    <h4 class="babel-video-title">{{video.title}}</h4>
+                    <p class="text-muted">
+                      <span>by {{video.author}}<span>
+                      {% if video.event %}
+                        <span>at {{video.event}}</span>
+                      {% endif %}
+                    </p>
+                    <p>{{video.description}}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          {% endfor %}
-        </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
       </div>
     </div>
   </div>
