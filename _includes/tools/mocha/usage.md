@@ -1,7 +1,5 @@
 #### Mocha 4
 
-Updated in Mocha v4.0.0
-
 `--compilers` is deprecated as of Mocha v4.0.0. See [further explanation and workarounds](https://github.com/mochajs/mocha/wiki/compilers-deprecation).
 
 In your `package.json` file make the following changes:
