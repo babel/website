@@ -1,0 +1,15 @@
+- title: So How Does Babel Even Work?
+  author: Henry Zhu
+  event: React Rally 2017
+  link: https://www.youtube.com/embed/fntd0sPMOtQ
+  description: Henry Zhu explains Babel at React Rally EU.
+- title: Maintaining an OSS Project (Babel)
+  author: Henry Zhu
+  event: JSConf EU 2017
+  link: https://www.youtube.com/embed/_iToM2KC0QE
+  description: Henry Zhu talks about maintaining at JSConf EU.
+- title: How to Build a Compiler
+  author: James Kyle
+  event: EmberConf 2016
+  link: https://www.youtube.com/embed/Tar4WgAfMr4
+  description: James Kyle talks Compilers at EmberConf.
