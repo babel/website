@@ -1,0 +1,28 @@
+.babel-videos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.babel-video {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: .25rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  overflow: hidden;
+  position: relative;
+
+  &-wrap {
+    flex: 1 1 auto;
+  }
+
+  &-block {
+    flex: 1 0 auto;
+    padding: 1.25rem;
+  }
+
+  &-title {
+    margin-bottom: .75rem;
+  }
+}
