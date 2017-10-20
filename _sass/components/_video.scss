@@ -9,12 +9,13 @@
   border-radius: .25rem;
   display: flex;
   flex-direction: column;
-  margin-bottom: 3rem;
+  height: 100%;
   overflow: hidden;
   position: relative;
 
   &-wrap {
     flex: 1 1 auto;
+    margin-bottom: 3rem;
   }
 
   &-block {
