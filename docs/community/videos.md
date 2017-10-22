@@ -96,3 +96,9 @@ permalink: /docs/community/videos/
 [Jamund Ferguson](hhttps://twitter.com/xjamundx) talks ASTs at [UtahJS](https://conf.utahjs.com/).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8uOXIM4giH8" frameborder="0" allowfullscreen></iframe>
+
+### [Full Stack Fest 2017] Master the art of the AST (and take control of your JS)
+
+[Yonatan Mevorach](https://twitter.com/cowchimp) talks ASTs at [Full Stack Fest](https://2017.fullstackfest.com/).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2W9tUnALrLg" frameborder="0" allowfullscreen></iframe>
