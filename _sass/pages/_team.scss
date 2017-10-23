@@ -13,9 +13,12 @@
     &__info {
       float: left;
     }
+    &__name {
+      font-weight: 600;
+    }
     &__image {
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
       border-radius: 5px;
       float: left;
       margin-right: 20px;
