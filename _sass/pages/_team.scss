@@ -9,13 +9,19 @@
     vertical-align: top;
   }
 
+  p {
+    margin-bottom: 7px;
+  }
+
   .member{
     &__info {
       float: left;
     }
+
     &__name {
       font-weight: 600;
     }
+
     &__image {
       width: 70px;
       height: 70px;
