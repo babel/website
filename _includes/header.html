@@ -40,7 +40,14 @@
               </ul>
             </li>
           {% else %}
-            <li {% if page.url contains item.url %}class="active"{% endif %}>
+            {% assign match = item.match %}
+            {% if match == nil %}
+              {% assign match = item.url %}
+            {% endif %}
+            {% if page.url == "/" %}
+              {% assign match = nil %}
+            {% endif %}
+            <li {% if match contains page.url %}class="active"{% endif %}>
               <a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
             </li>
           {% endif %}

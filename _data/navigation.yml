@@ -32,7 +32,8 @@
           url: /docs/usage/api/
 - title: Try it out
   url: /repl/
+  match: ["/repl/", "/repl2/", "/php/"]
 - title: Blog
   url: /blog/
 - title: FAQ
-  url: /faq
+  url: /faq/
