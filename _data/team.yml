@@ -27,9 +27,17 @@ members:
 - name: Diogo Franco
   github: kovensky
   twitter: kovnsk
+- name: Justin Ridgewell
+  github: jridgewell
 - name: Kai Cataldo
   github: kaicataldo
   twitter: kai_cataldo
+- name: Mateusz Burzyński
+  github: Andarist
+  twitter: AndaristRake
+- name: Nicolò Ribaudo
+  github: nicolo-ribaudo
+  twitter: NicoloRibaudo
 - name: Samuel Reed
   github: STRML
   twitter: STRML_
