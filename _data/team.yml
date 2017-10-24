@@ -54,9 +54,6 @@ eslint:
   - name: James Henry
     github: JamesHenry
     twitter: MrJamesHenry
-  - name: Kent C. Dodds
-    github: kentcdodds
-    twitter: kentcdodds
   - name: Teddy Katz
     github: not-an-aardvark
   - name: Toru Nagashima
@@ -69,6 +66,40 @@ website:
   - name: Daniel Lo Nigro
     github: Daniel15
     twitter: Daniel15
+tc39:
+  - name: Ben Newman
+    github: benjamn
+    twitter: benjamn
+  - name: Daniel Ehrenberg
+    github: littledan
+    twitter: littledan
+  - name: Diego Ferreiro Val
+    github: diervo
+    twitter: diervo
+  - name: Gabe Isenberg
+    github: gisenberg
+    twitter: the_gisenberg
+  - name: Jordan Harband
+    github: ljharb  
+    twitter: ljharb
+  - name: Kent C. Dodds
+    github: kentcdodds
+    twitter: kentcdodds
+  - name: Kevin Gibbons
+    github: bakkot
+    twitter: bakkoting
+  - name: Leo Balter
+    github: leobalter
+    twitter: leobalter
+  - name: Mathias Bynens
+    github: mathiasbynens
+    twitter: mathias
+  - name: Rick Waldron
+    github: rwaldron
+    twitter: rwaldron
+  - name: Sathya Gunasekaran
+    github: gsathya
+    twitter: _gsathya
 summer-of-code:
   - name: Peeyush Kushwaha
     github: peey
