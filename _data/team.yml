@@ -15,6 +15,9 @@ members:
 - name: Andrew Levine
   github: drewml
   twitter: drewml
+- name: Artem Yavorsky
+  github: yavorsky
+  twitter: yavorsky_
 - name: Boopathi Rajaa
   github: boopathi
   twitter: heisenbugger
@@ -24,21 +27,20 @@ members:
 - name: Diogo Franco
   github: kovensky
   twitter: kovnsk
-- name: Artem Yavorsky
-  github: yavorsky
-  twitter: yavorsky_
 - name: Kai Cataldo
   github: kaicataldo
   twitter: kai_cataldo
-- name: Sven Sauleau
-  github: xtuc
-  twitter: svensauleau
 - name: Samuel Reed
   github: STRML
   twitter: STRML_
 - name: Sergey Rubanov
   github: chicoxyzzy
   twitter: chicoxyzzy
+- name: Sven Sauleau
+  github: xtuc
+  twitter: svensauleau
+summer-of-code:
+
 non-human-member:
   - name: Babel Bot
     github: babel-bot
