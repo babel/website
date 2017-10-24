@@ -39,6 +39,28 @@ members:
 - name: Sven Sauleau
   github: xtuc
   twitter: svensauleau
+eslint:
+  - name: Andres Suarez
+    github: zertosh
+    twitter: zertosh
+  - name: James Henry
+    github: JamesHenry
+    twitter: MrJamesHenry
+  - name: Kent C. Dodds
+    github: kentcdodds
+    twitter: kentcdodds
+  - name: Teddy Katz
+    github: not-an-aardvark
+  - name: Toru Nagashima
+    github: mysticatea
+    twitter: mysticatea
+website:
+  - name: Brian Vaughn
+    github: bvaughn
+    twitter: brian_d_vaughn
+  - name: Daniel Lo Nigro
+    github: Daniel15
+    twitter: Daniel15
 summer-of-code:
   - name: Peeyush Kushwaha
     github: peey
