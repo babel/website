@@ -24,6 +24,9 @@ members:
 - name: Brian Ng
   github: existentialism
   twitter: existentialism
+- name: Denis Pushkarev
+  github: zloirock
+  twitter: zloirock
 - name: Diogo Franco
   github: kovensky
   twitter: kovnsk
@@ -47,6 +50,9 @@ members:
 - name: Sven Sauleau
   github: xtuc
   twitter: svensauleau
+- name: Vignesh Shanmugam
+  github: vigneshshanmugam
+  twitter: _vigneshh
 eslint:
   - name: Andres Suarez
     github: zertosh
