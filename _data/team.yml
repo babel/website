@@ -40,7 +40,18 @@ members:
   github: xtuc
   twitter: svensauleau
 summer-of-code:
-
+  - name: Peeyush Kushwaha
+    github: peey
+    twitter: peeyFTW
+  - name: Karl Cheng
+    github: Qantas94Heavy
+    twitter: qantas94heavy
+  - name: Kara de la Marck
+    github: MarckK
+    twitter: KaraMarck
+  - name: Emma Deacon
+    github: EmmaMDeacon
+    twitter: EmmaDeacon
 non-human-member:
   - name: Babel Bot
     github: babel-bot
