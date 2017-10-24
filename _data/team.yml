@@ -1,0 +1,72 @@
+core:
+- name: Babel
+  github: babel
+  twitter: babeljs
+- name: Daniel Tschinder
+  github: danez
+  twitter: TschinderDaniel
+- name: Logan Smyth
+  github: loganfsmyth
+  twitter: loganfsmyth
+- name: Henry Zhu
+  github: hzoo
+  twitter: left_pad
+members:
+- name: Andrew Levine
+  github: drewml
+  twitter: drewml
+- name: Boopathi Rajaa
+  github: boopathi
+  twitter: heisenbugger
+- name: Brian Ng
+  github: existentialism
+  twitter: existentialism
+- name: Dan Harper
+  github: danharper
+  twitter: DanHarper7
+- name: Diogo Franco
+  github: kovensky
+  twitter: kovnsk
+- name: Aaron Ang
+  github: aaronang
+  twitter: _aaronang
+- name: Artem Yavorsky
+  github: yavorsky
+  twitter: yavorsky_
+- name: Juriy Zaytsev
+  github: kangax
+  twitter: kangax
+- name: Kai Cataldo
+  github: kaicataldo
+  twitter: kai_cataldo
+- name: Moti Zilberman
+  github: motiz88
+  twitter: motiz88
+- name: Sven Sauleau
+  github: xtuc
+  twitter: svensauleau
+- name: Samuel Reed
+  github: STRML
+  twitter: STRML_
+- name: Sergey Rubanov
+  github: chicoxyzzy
+  twitter: chicoxyzzy
+non-human-member:
+  - name: Babel Bot
+    github: babel-bot
+    twitter: babeljs
+alumnus:
+  - name: Amjad Masad
+    github: amasad
+    twitter: amasad
+  - name: James Kyle
+    github: thejameskyle
+    twitter: thejameskyle
+  - name: Jesse McCarthy
+    github: jmm
+    twitter: mccjm
+  - name: Sebastian McKenzie
+    github: kittens
+    twitter: sebmck
+
+
