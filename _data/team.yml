@@ -50,9 +50,21 @@ alumnus:
   - name: Amjad Masad
     github: amasad
     twitter: amasad
+  - name: Brian Donovan
+    github: eventualbuddha
+    twitter: eventualbuddha
+  - name: Christopher Monsanto
+    github: monsanto
+    twitter: cmmonsanto
+  - name: Dan Abramov
+    github: gaearon
+    twitter: dan_abramov
   - name: Dan Harper
     github: danharper
     twitter: DanHarper7
+  - name: Ingvar Stepanyan
+    github: RReverser
+    twitter: RReverser
   - name: James Kyle
     github: thejameskyle
     twitter: thejameskyle
@@ -68,3 +80,6 @@ alumnus:
   - name: Sebastian McKenzie
     github: kittens
     twitter: sebmck
+  - name: Stefan Penner
+    github: stefanpenner
+    twitter: stefanpenner
