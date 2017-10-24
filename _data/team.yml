@@ -21,27 +21,15 @@ members:
 - name: Brian Ng
   github: existentialism
   twitter: existentialism
-- name: Dan Harper
-  github: danharper
-  twitter: DanHarper7
 - name: Diogo Franco
   github: kovensky
   twitter: kovnsk
-- name: Aaron Ang
-  github: aaronang
-  twitter: _aaronang
 - name: Artem Yavorsky
   github: yavorsky
   twitter: yavorsky_
-- name: Juriy Zaytsev
-  github: kangax
-  twitter: kangax
 - name: Kai Cataldo
   github: kaicataldo
   twitter: kai_cataldo
-- name: Moti Zilberman
-  github: motiz88
-  twitter: motiz88
 - name: Sven Sauleau
   github: xtuc
   twitter: svensauleau
@@ -56,17 +44,27 @@ non-human-member:
     github: babel-bot
     twitter: babeljs
 alumnus:
+  - name: Aaron Ang
+    github: aaronang
+    twitter: _aaronang
   - name: Amjad Masad
     github: amasad
     twitter: amasad
+  - name: Dan Harper
+    github: danharper
+    twitter: DanHarper7
   - name: James Kyle
     github: thejameskyle
     twitter: thejameskyle
   - name: Jesse McCarthy
     github: jmm
     twitter: mccjm
+  - name: Juriy Zaytsev
+    github: kangax
+    twitter: kangax
+  - name: Moti Zilberman
+    github: motiz88 
+    twitter: motiz88
   - name: Sebastian McKenzie
     github: kittens
     twitter: sebmck
-
-
