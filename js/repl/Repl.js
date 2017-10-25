@@ -86,7 +86,7 @@ class Repl extends React.Component {
         : ["es2015", "react", "stage-2"];
 
     const defaultPresets = presets.reduce((reduced, key) => {
-      if (key) reduced[`babel-preset-${key}`] = true;
+      if (key) reduced[key] = true;
       return reduced;
     }, {});
 
