@@ -88,3 +88,9 @@
       event: UtahJS 2015
       event_link: https://conf.utahjs.com/
       link: https://www.youtube.com/embed/8uOXIM4giH8
+    - title: Master the art of the AST (and take control of your JS)
+      author: Yonatan Mevorach
+      author_link: https://twitter.com/cowchimp
+      event: Full Stack Fest 2018
+      event_link: https://2017.fullstackfest.com/
+      link: https://www.youtube.com/embed/2W9tUnALrLg
