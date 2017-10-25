@@ -1,6 +1,11 @@
 .babel-videos {
   @include flexbox;
   @include flex-wrap(wrap);
+
+  // fix bug in Safari
+  &:before {
+    display: inline;
+  }
 }
 
 .babel-video {
