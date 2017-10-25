@@ -60,6 +60,12 @@
       event: React London Meetup 2015
       event_link: https://meetup.react.london/
       link: https://www.youtube.com/embed/xnx9Ft3QleI
+    - title: Writing custom Babel and ESLint plugins with ASTs
+      author: Kent C. Dodds
+      author_link: https://twitter.com/kentcdodds
+      event: Open West (July 2017)
+      event_link: https://www.openwest.org/schedule/#talk-99
+      link: https://www.youtube.com/embed/VBscbcm2Mok
 - category: Meetups
   items:
     - title: Babel Sucks
@@ -94,3 +100,9 @@
       event: UtahJS 2015
       event_link: https://conf.utahjs.com/
       link: https://www.youtube.com/embed/8uOXIM4giH8
+    - title: Code Transformation and Linting with ASTs Workshop
+      author: Kent C. Dodds
+      author_link: https://twitter.com/kentcdodds
+      event: PayPal (practice run with coworkers)
+      event_link: https://kentcdodds.com/workshops/#code-transformation-and-linting
+      link: https://www.youtube.com/embed/-iA7TAUGn2Y
