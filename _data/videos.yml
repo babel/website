@@ -6,6 +6,12 @@
       event: React Rally 2017
       event_link: http://www.reactrally.com/
       link: https://www.youtube.com/embed/fntd0sPMOtQ
+    - title: Writing custom Babel and ESLint plugins with ASTs
+      author: Kent C. Dodds
+      author_link: https://twitter.com/kentcdodds
+      event: Open West (July 2017)
+      event_link: https://kentcdodds.com/talks/#writing-custom-babel-and-eslint-plugins-with-asts
+      link: https://www.youtube.com/embed/VBscbcm2Mok
     - title: Maintaining an OSS Project (Babel)
       author: Henry Zhu
       author_link: https://twitter.com/left_pad
@@ -94,3 +100,9 @@
       event: UtahJS 2015
       event_link: https://conf.utahjs.com/
       link: https://www.youtube.com/embed/8uOXIM4giH8
+    - title: Code Transformation and Linting with ASTs Workshop
+      author: Kent C. Dodds
+      author_link: https://twitter.com/kentcdodds
+      event: PayPal (practice run with coworkers)
+      event_link: https://kentcdodds.com/workshops/#code-transformation-and-linting
+      link: https://www.youtube.com/embed/-iA7TAUGn2Y
