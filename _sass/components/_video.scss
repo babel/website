@@ -11,7 +11,7 @@
   overflow: hidden;
 
   &-wrap {
-    @include flex(1 1 auto);
+    @include flex(0 0 100%);
     margin-bottom: 3rem;
   }
 
@@ -22,5 +22,17 @@
 
   &-title {
     margin-bottom: .75rem;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .babel-video-wrap {
+    @include flex(0 0 50%);
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .babel-video-wrap {
+    @include flex(0 0 33.33333%);
   }
 }
