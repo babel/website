@@ -6,6 +6,12 @@
       event: React Rally 2017
       event_link: http://www.reactrally.com/
       link: https://www.youtube.com/embed/fntd0sPMOtQ
+    - title: Writing custom Babel and ESLint plugins with ASTs
+      author: Kent C. Dodds
+      author_link: https://twitter.com/kentcdodds
+      event: Open West (July 2017)
+      event_link: https://kentcdodds.com/talks/#writing-custom-babel-and-eslint-plugins-with-asts
+      link: https://www.youtube.com/embed/VBscbcm2Mok
     - title: Maintaining an OSS Project (Babel)
       author: Henry Zhu
       author_link: https://twitter.com/left_pad
@@ -60,12 +66,6 @@
       event: React London Meetup 2015
       event_link: https://meetup.react.london/
       link: https://www.youtube.com/embed/xnx9Ft3QleI
-    - title: Writing custom Babel and ESLint plugins with ASTs
-      author: Kent C. Dodds
-      author_link: https://twitter.com/kentcdodds
-      event: Open West (July 2017)
-      event_link: https://kentcdodds.com/talks/#writing-custom-babel-and-eslint-plugins-with-asts
-      link: https://www.youtube.com/embed/VBscbcm2Mok
 - category: Meetups
   items:
     - title: Babel Sucks
