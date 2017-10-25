@@ -4,8 +4,12 @@
     <div class="col-md-3 col-sm-4 col-xs-12 team__member">
       <img class="member__image" alt="{{member.name}}" src="//avatars.githubusercontent.com/{{member.github}}" />
         <p class="member__name">{{ member.name }}</p>
-        <p>{% include icons/github.svg %}<a href="//www.github.com/{{member.github}}" target="_blank">{{member.github}}</a></p>
-        <p>{% include icons/twitter.svg %}<a href="//www.twitter.com/{{member.twitter}}" target="_blank">{{member.twitter}}</a></p>
+        {% if member.github %}
+          <p>{% include icons/github.svg %}<a href="//www.github.com/{{member.github}}" target="_blank">{{member.github}}</a></p>
+        {% endif %}
+        {% if member.twitter %}
+          <p>{% include icons/twitter.svg %}<a href="//www.twitter.com/{{member.twitter}}" target="_blank">{{member.twitter}}</a></p>
+        {% endif %}
     </div>
   {% endfor %}
 </div>
