@@ -1,0 +1,43 @@
+.babel-videos {
+  @include flexbox;
+  @include flex-wrap(wrap);
+
+  // fix bug in Safari
+  &:before {
+    display: inline;
+  }
+}
+
+.babel-video {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: .25rem;
+  height: 100%;
+  overflow: hidden;
+
+  &-wrap {
+    @include flex(0 0 100%);
+    margin-bottom: 3rem;
+  }
+
+  &-block {
+    @include flex(1 0 auto);
+    padding: 1.25rem;
+  }
+
+  &-title {
+    margin-bottom: .75rem;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .babel-video-wrap {
+    @include flex(0 0 50%);
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .babel-video-wrap {
+    @include flex(0 0 33.33333%);
+  }
+}

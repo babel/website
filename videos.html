@@ -1,0 +1,57 @@
+---
+layout: default
+title: Videos
+description: Videos and podcasts about Babel and its underlying concepts.
+permalink: /docs/community/videos/
+---
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-header text-center">
+        <h1>Videos</h1>
+        <p class="lead">
+          Videos and podcasts about Babel and its underlying concepts.
+        </p>
+      </div>
+
+      <div class="container-fluid">
+        {% for category in site.data.videos %}
+          <h2>{{category.category}}</h2>
+          <div class="babel-videos row">
+            {% for video in category.items %}
+              <div class="babel-video-wrap col-lg-4 col-sm-6">
+                <div class="babel-video">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="{{video.link}}" allowfullscreen></iframe>
+                  </div>
+                  <div class="babel-video-block">
+                    <h4 class="babel-video-title">{{video.title}}</h4>
+                    <p class="text-muted">
+                      {% if video.author %}
+                        by
+                        {% if video.author_link %}
+                          <a href="{{video.author_link}}" target="_blank" rel="noreferrer noopener">{{video.author}}</a>
+                        {% else %}
+                          {{video.author}}
+                        {% endif %}
+                      {% endif %}
+                      {% if video.event %}
+                        at
+                        {% if video.event_link %}
+                          <a href="{{video.event_link}}" target="_blank" rel="noreferrer noopener">{{video.event}}</a>
+                        {% else %}
+                          {{video.event}}
+                        {% endif %}
+                      {% endif %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
