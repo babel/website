@@ -64,7 +64,7 @@
       author: Kent C. Dodds
       author_link: https://twitter.com/kentcdodds
       event: Open West (July 2017)
-      event_link: https://www.openwest.org/schedule/#talk-99
+      event_link: https://kentcdodds.com/talks/#writing-custom-babel-and-eslint-plugins-with-asts
       link: https://www.youtube.com/embed/VBscbcm2Mok
 - category: Meetups
   items:
