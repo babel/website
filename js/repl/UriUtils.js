@@ -84,7 +84,7 @@ const updateQuery = (state: PersistedState) => {
       return null;
     } else if (key === "code") {
       return `${key}_lz=` + compress(state.code);
-    } else {
+    } else if(state[key]){
       return key + "=" + encode(state[key]);
     }
   })
