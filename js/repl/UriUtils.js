@@ -4,20 +4,22 @@ import LZString from "lz-string";
 
 import type { PersistedState } from "./types";
 
-const URL_KEYS = [
-  "babili",
-  "browsers",
-  "build",
-  "builtIns",
-  "code",
-  "debug",
-  "circleciRepo",
-  "evaluate",
-  "lineWrap",
-  "presets",
-  "targets",
-  "version",
-];
+const URL_DEFAULTS = {
+  babili: false,
+  browsers: "",
+  build: "",
+  builtIns: false,
+  circleciRepo: "",
+  code: "",
+  debug: false,
+  evaluate: false,
+  lineWrap: true,
+  presets: "",
+  targets: "",
+  version: ""
+}
+
+const URL_KEYS = Object.keys(URL_DEFAULTS);
 
 const compress = (string: string) =>
   LZString.compressToBase64(string)
@@ -84,7 +86,7 @@ const updateQuery = (state: PersistedState) => {
       return null;
     } else if (key === "code") {
       return `${key}_lz=` + compress(state.code);
-    } else if(state[key]){
+    } else if(state[key] !== URL_DEFAULTS[key]){
       return key + "=" + encode(state[key]);
     }
   })
