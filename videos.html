@@ -19,7 +19,8 @@ permalink: /docs/community/videos/
         {% for category in site.data.videos %}
           <h2>{{category.category}}</h2>
           <div class="babel-videos row">
-            {% for video in category.items %}
+            {% assign sorted = category.items | sort: "year" | reverse %}
+            {% for video in sorted %}
               <div class="babel-video-wrap col-lg-4 col-sm-6">
                 <div class="babel-video">
                   <div class="embed-responsive embed-responsive-16by9">
@@ -43,6 +44,9 @@ permalink: /docs/community/videos/
                         {% else %}
                           {{video.event}}
                         {% endif %}
+                      {% endif %}
+                      {% if video.year %}
+                        <time datetime="{{video.year}}">({{video.year}})</time>
                       {% endif %}
                     </p>
                   </div>
