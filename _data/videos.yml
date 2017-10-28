@@ -70,13 +70,6 @@
       event: JSConf US
       event_link: http://2015.jsconf.us/
       link: https://www.youtube.com/embed/rKuNbEwoQfQ
-    - title: Babel (May 2015)
-      author: Sebastian McKenzie
-      author_link: https://twitter.com/sebmck
-      year: 2015
-      event: React London Meetup
-      event_link: https://meetup.react.london/
-      link: https://www.youtube.com/embed/xnx9Ft3QleI
 - category: Meetups
   items:
     - title: Babel Sucks
@@ -86,7 +79,14 @@
       event: Modern Web UI
       event_link: http://www.modernwebui.org/
       link: https://www.youtube.com/embed/m-HjKwyQoQg
-    - title: Babel - Beyond the Basics (March 2015)
+    - title: Babel
+      author: Sebastian McKenzie
+      author_link: https://twitter.com/sebmck
+      year: 2015
+      event: React London Meetup
+      event_link: https://meetup.react.london/
+      link: https://www.youtube.com/embed/xnx9Ft3QleI
+    - title: Babel - Beyond the Basics
       author: Sebastian McKenzie
       author_link: https://twitter.com/sebmck
       year: 2015
