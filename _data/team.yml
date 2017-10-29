@@ -1,64 +1,64 @@
 core:
-- name: Babel
-  github: babel
-  twitter: babeljs
-- name: Daniel Tschinder
-  github: danez
-  twitter: TschinderDaniel
-- name: Logan Smyth
-  github: loganfsmyth
-  twitter: loganfsmyth
-- name: Henry Zhu
-  github: hzoo
-  twitter: left_pad
+  - name: Babel
+    github: babel
+    twitter: babeljs
+  - name: Daniel Tschinder
+    github: danez
+    twitter: TschinderDaniel
+  - name: Logan Smyth
+    github: loganfsmyth
+    twitter: loganfsmyth
+  - name: Henry Zhu
+    github: hzoo
+    twitter: left_pad
 members:
-- name: Andrew Levine
-  github: drewml
-  twitter: drewml
-- name: Artem Yavorsky
-  github: yavorsky
-  twitter: yavorsky_
-- name: Boopathi Rajaa
-  github: boopathi
-  twitter: heisenbugger
-- name: Brian Ng
-  github: existentialism
-  twitter: existentialism
-- name: Denis Pushkarev
-  github: zloirock
-  twitter: zloirock
-- name: Diogo Franco
-  github: kovensky
-  twitter: kovnsk
-- name: Justin Ridgewell
-  github: jridgewell
-- name: Kai Cataldo
-  github: kaicataldo
-  twitter: kai_cataldo
-- name: Mateusz Burzyński
-  github: Andarist
-  twitter: AndaristRake
-- name: Nicolò Ribaudo
-  github: nicolo-ribaudo
-  twitter: NicoloRibaudo
-- name: Samuel Reed
-  github: STRML
-  twitter: STRML_
-- name: Sergey Rubanov
-  github: chicoxyzzy
-  twitter: chicoxyzzy
-- name: Sven Sauleau
-  github: xtuc
-  twitter: svensauleau
-- name: Vignesh Shanmugam
-  github: vigneshshanmugam
-  twitter: _vigneshh
-- name: Keith Cirkel
-  github: keithamus
-  twitter: Keithamus
-- name: Lucas Azzola
-  github: azz
-  twitter: lucasazzola
+  - name: Andrew Levine
+    github: drewml
+    twitter: drewml
+  - name: Artem Yavorsky
+    github: yavorsky
+    twitter: yavorsky_
+  - name: Boopathi Rajaa
+    github: boopathi
+    twitter: heisenbugger
+  - name: Brian Ng
+    github: existentialism
+    twitter: existentialism
+  - name: Denis Pushkarev
+    github: zloirock
+    twitter: zloirock
+  - name: Diogo Franco
+    github: kovensky
+    twitter: kovnsk
+  - name: Justin Ridgewell
+    github: jridgewell
+  - name: Kai Cataldo
+    github: kaicataldo
+    twitter: kai_cataldo
+  - name: Mateusz Burzyński
+    github: Andarist
+    twitter: AndaristRake
+  - name: Nicolò Ribaudo
+    github: nicolo-ribaudo
+    twitter: NicoloRibaudo
+  - name: Samuel Reed
+    github: STRML
+    twitter: STRML_
+  - name: Sergey Rubanov
+    github: chicoxyzzy
+    twitter: chicoxyzzy
+  - name: Sven Sauleau
+    github: xtuc
+    twitter: svensauleau
+  - name: Vignesh Shanmugam
+    github: vigneshshanmugam
+    twitter: _vigneshh
+  - name: Keith Cirkel
+    github: keithamus
+    twitter: Keithamus
+  - name: Lucas Azzola
+    github: azz
+    twitter: lucasazzola
 eslint:
   - name: Andres Suarez
     github: zertosh
