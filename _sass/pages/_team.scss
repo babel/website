@@ -35,14 +35,7 @@
     }
 
     &__area {
-      background: $babel-yellow;
-      border-radius: 4px;
-      border: 1px solid $babel-dark-gray;
-      padding: 0 4px;
-      
-      & a {
-        color: $babel-dark-gray;
-      }
+      font-size: 1.2em;
     }
   }
 

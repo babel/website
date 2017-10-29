@@ -10,9 +10,10 @@
       {% if member.twitter %}
         <p>{% include icons/twitter.svg %}<a href="https://www.twitter.com/{{member.twitter}}" target="_blank">{{member.twitter}}</a></p>
       {% endif %}
-      {% for area in member.areas %}
+      {% for area_id in member.areas %}
+        {% assign area = site.data.areas[area_id] %}  
         <span class="member__area">
-          <a href="https://github.com/babel/{{ area }}" target="_blank">{{ area }}</a>
+          <a href="{{ area.url }}" title="{{ area.title }}" target="_blank">{{ area.text }}</a>
         </span>
       {% endfor %}
       {% for org in member.orgs %}
