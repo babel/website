@@ -79,7 +79,6 @@ class Repl extends React.Component {
     const defaultPlugins = {
       "babili-standalone": persistedState.babili,
     };
-
     const presets = persistedState.presets ? persistedState.presets.split(",") : [];
 
     const defaultPresets = presets.reduce((reduced, key) => {
