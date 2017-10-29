@@ -3,6 +3,10 @@
     margin-bottom: 30px;
   }
 
+  &__member {
+    height: 100px;
+  }
+
   svg {
     height: 16px;
     width: 16px;
@@ -13,7 +17,7 @@
     margin-bottom: 7px;
   }
 
-  .member{
+  .member {
     &__info {
       float: left;
     }
@@ -23,11 +27,28 @@
     }
 
     &__image {
-      width: 70px;
-      height: 70px;
+      width: 80px;
+      height: 80px;
       border-radius: 5px;
       float: left;
       margin-right: 20px;
     }
+
+    &__area {
+      background: $babel-yellow;
+      border-radius: 4px;
+      border: 1px solid $babel-dark-gray;
+      padding: 0 4px;
+      
+      & a {
+        color: $babel-dark-gray;
+      }
+    }
+  }
+
+  .org__image {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
   }
 }

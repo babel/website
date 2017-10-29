@@ -3,13 +3,25 @@
   {% for member in include.members %}
     <div class="col-md-3 col-sm-4 col-xs-12 team__member">
       <img class="member__image" alt="{{member.name}}" src="https://avatars.githubusercontent.com/{{member.github}}" />
-        <p class="member__name">{{ member.name }}</p>
-        {% if member.github %}
-          <p>{% include icons/github.svg %}<a href="https://github.com/{{member.github}}" target="_blank">{{member.github}}</a></p>
-        {% endif %}
-        {% if member.twitter %}
-          <p>{% include icons/twitter.svg %}<a href="https://twitter.com/{{member.twitter}}" target="_blank">{{member.twitter}}</a></p>
-        {% endif %}
+      <p class="member__name">{{ member.name }}</p>
+      {% if member.github %}
+        <p>{% include icons/github.svg %}<a href="https://www.github.com/{{member.github}}" target="_blank">{{member.github}}</a></p>
+      {% endif %}
+      {% if member.twitter %}
+        <p>{% include icons/twitter.svg %}<a href="https://www.twitter.com/{{member.twitter}}" target="_blank">{{member.twitter}}</a></p>
+      {% endif %}
+      {% for area in member.areas %}
+        <span class="member__area">
+          <a href="https://github.com/babel/{{ area }}" target="_blank">{{ area }}</a>
+        </span>
+      {% endfor %}
+      {% for org in member.orgs %}
+        <span class="member__org">
+          <a href="https://www.github.com/{{ org }}" target="_blank">
+            <img class="org__image" title="{{ org }}" alt="{{ org }}" src="https://avatars.githubusercontent.com/{{ org }}" />
+          </a>
+        </span>
+      {% endfor %}
     </div>
   {% endfor %}
 </div>

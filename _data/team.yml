@@ -53,62 +53,87 @@ members:
   - name: Vignesh Shanmugam
     github: vigneshshanmugam
     twitter: _vigneshh
+  - name: Andres Suarez
+    github: zertosh
+    twitter: zertosh
+    orgs: [eslint]
+  - name: James Henry
+    github: JamesHenry
+    twitter: MrJamesHenry
+    orgs: [eslint]    
+  - name: Teddy Katz
+    github: not-an-aardvark
+    orgs: [eslint]
+  - name: Toru Nagashima
+    github: mysticatea
+    twitter: mysticatea
+    orgs: [eslint]
+  - name: Ben Newman
+    github: benjamn
+    twitter: benjamn
+    orgs: [tc39]
+  - name: Daniel Ehrenberg
+    github: littledan
+    twitter: littledan
+    orgs: [tc39, v8]
+  - name: Diego Ferreiro Val
+    github: diervo
+    twitter: diervo
+    orgs: [tc39]
+  - name: Gabe Isenberg
+    github: gisenberg
+    twitter: the_gisenberg
+    orgs: [tc39]
+  - name: Jordan Harband
+    github: ljharb  
+    twitter: ljharb
+    orgs: [tc39]
+  - name: Kent C. Dodds
+    github: kentcdodds
+    twitter: kentcdodds
+    orgs: [tc39]
+  - name: Kevin Gibbons
+    github: bakkot
+    twitter: bakkoting
+    orgs: [tc39]
+  - name: Leo Balter
+    github: leobalter
+    twitter: leobalter
+    orgs: [tc39]
+  - name: Mathias Bynens
+    github: mathiasbynens
+    twitter: mathias
+    orgs: [tc39, v8]
+  - name: Rick Waldron
+    github: rwaldron
+    twitter: rwaldron
+    orgs: [tc39]
+  - name: Sathya Gunasekaran
+    github: gsathya
+    twitter: _gsathya
+    orgs: [tc39, v8]
+  - name: Franziska Hinkelmann
+    github: fhinkel
+    twitter: fhinkel
+    orgs: [v8]
+  - name: Benedikt Meurer
+    github: bmeurer
+    twitter: bmeurer
+    orgs: [v8]
+  - name: Brian Vaughn
+    github: bvaughn
+    twitter: brian_d_vaughn
+    areas: [website]
+  - name: Daniel Lo Nigro
+    github: Daniel15
+    twitter: Daniel15
+    areas: [website]
   - name: Keith Cirkel
     github: keithamus
     twitter: Keithamus
   - name: Lucas Azzola
     github: azz
     twitter: lucasazzola
-eslint:
-  - name: Andres Suarez
-    github: zertosh
-    twitter: zertosh
-  - name: James Henry
-    github: JamesHenry
-    twitter: MrJamesHenry
-  - name: Teddy Katz
-    github: not-an-aardvark
-  - name: Toru Nagashima
-    github: mysticatea
-    twitter: mysticatea
-website:
-  - name: Brian Vaughn
-    github: bvaughn
-    twitter: brian_d_vaughn
-  - name: Daniel Lo Nigro
-    github: Daniel15
-    twitter: Daniel15
-tc39:
-  - name: Ben Newman
-    github: benjamn
-    twitter: benjamn
-  - name: Daniel Ehrenberg
-    github: littledan
-    twitter: littledan
-  - name: Diego Ferreiro Val
-    github: diervo
-    twitter: diervo
-  - name: Gabe Isenberg
-    github: gisenberg
-    twitter: the_gisenberg
-  - name: Jordan Harband
-    github: ljharb  
-    twitter: ljharb
-  - name: Kent C. Dodds
-    github: kentcdodds
-    twitter: kentcdodds
-  - name: Kevin Gibbons
-    github: bakkot
-    twitter: bakkoting
-  - name: Leo Balter
-    github: leobalter
-    twitter: leobalter
-  - name: Mathias Bynens
-    github: mathiasbynens
-    twitter: mathias
-  - name: Rick Waldron
-    github: rwaldron
-    twitter: rwaldron
 summer-of-code:
   - name: Peeyush Kushwaha
     github: peey
@@ -166,13 +191,3 @@ alumnus:
   - name: Stefan Penner
     github: stefanpenner
     twitter: stefanpenner
-v8:
-  - name: Sathya Gunasekaran
-    github: gsathya
-    twitter: _gsathya
-  - name: Franziska Hinkelmann
-    github: fhinkel
-    twitter: fhinkel
-  - name: Benedikt Meurer
-    github: bmeurer
-    twitter: bmeurer
