@@ -53,6 +53,12 @@ members:
 - name: Vignesh Shanmugam
   github: vigneshshanmugam
   twitter: _vigneshh
+- name: Keith Cirkel
+  github: keithamus
+  twitter: Keithamus
+- name: Lucas Azzola
+  github: azz
+  twitter: lucasazzola
 eslint:
   - name: Andres Suarez
     github: zertosh
@@ -103,9 +109,6 @@ tc39:
   - name: Rick Waldron
     github: rwaldron
     twitter: rwaldron
-  - name: Sathya Gunasekaran
-    github: gsathya
-    twitter: _gsathya
 summer-of-code:
   - name: Peeyush Kushwaha
     github: peey
@@ -163,3 +166,13 @@ alumnus:
   - name: Stefan Penner
     github: stefanpenner
     twitter: stefanpenner
+v8:
+  - name: Sathya Gunasekaran
+    github: gsathya
+    twitter: _gsathya
+  - name: Franziska Hinkelmann
+    github: fhinkel
+    twitter: fhinkel
+  - name: Benedikt Meurer
+    github: bmeurer
+    twitter: bmeurer
