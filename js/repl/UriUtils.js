@@ -5,22 +5,20 @@ import LZString from "lz-string";
 import type { PersistedState } from "./types";
 import { persistedStateDefaults } from "./PluginConfig";
 
-const URL_DEFAULTS = {
-  babili: false,
-  browsers: "",
-  build: "",
-  builtIns: false,
-  circleciRepo: "",
-  code: "",
-  debug: false,
-  evaluate: false,
-  lineWrap: true,
-  presets: "",
-  targets: "",
-  version: ""
-}
-
-const URL_KEYS = Object.keys(URL_DEFAULTS);
+const URL_KEYS = [
+  "babili",
+  "browsers",
+  "build",
+  "builtIns",
+  "code",
+  "debug",
+  "circleciRepo",
+  "evaluate",
+  "lineWrap",
+  "presets",
+  "targets",
+  "version",
+];
 
 const compress = (string: string) =>
   LZString.compressToBase64(string)
