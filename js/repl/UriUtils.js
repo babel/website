@@ -85,7 +85,9 @@ const updateQuery = (state: PersistedState) => {
       return null;
     } else if (key === "code") {
       return `${key}_lz=` + compress(state.code);
-    } else if(state[key] && state[key] !== persistedStateDefaults[key]){
+      // Default state can be empty string or a boolean value
+      // URL State should not be empty string and default state
+    } else if(state[key] !== "" && state[key] !== persistedStateDefaults[key]){
       return key + "=" + encode(state[key]);
     }
   })
