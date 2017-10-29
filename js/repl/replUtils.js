@@ -1,6 +1,6 @@
 // @flow
 
-import { envPresetDefaults } from "./PluginConfig";
+import { envPresetDefaults, persistedStateDefaults } from "./PluginConfig";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
 
@@ -33,27 +33,28 @@ export const loadPersistedState = (): PersistedState => {
   const storageState = StorageService.get("replState");
   const queryState = UriUtils.parseQuery();
   const merged = {
+    ...persistedStateDefaults,
     ...storageState,
     ...queryState,
   };
-
+  
   return {
-    babili: merged.babili === true,
-    browsers: merged.browsers || "",
-    build: merged.build || "",
-    builtIns: merged.builtIns === true,
-    circleciRepo: merged.circleciRepo || "",
-    code: merged.code || "",
-    debug: merged.debug === true,
-    evaluate: merged.evaluate === true,
-    isEnvPresetTabExpanded: merged.isEnvPresetTabExpanded === true,
-    isPresetsTabExpanded: merged.isPresetsTabExpanded === true,
-    isSettingsTabExpanded: merged.isSettingsTabExpanded !== false, // Default to show
-    lineWrap: merged.lineWrap != null ? merged.lineWrap : true,
-    presets: merged.hasOwnProperty("presets") ? merged.presets : null,
-    showSidebar: merged.showSidebar !== false, // Default to show
-    targets: merged.targets || "",
-    version: merged.version || "",
+    babili: merged.babili,
+    browsers: merged.browsers,
+    build: merged.build,
+    builtIns: merged.builtIns,
+    circleciRepo: merged.circleciRepo,
+    code: merged.code,
+    debug: merged.debug,
+    evaluate: merged.evaluate,
+    isEnvPresetTabExpanded: merged.isEnvPresetTabExpanded,
+    isPresetsTabExpanded: merged.isPresetsTabExpanded,
+    isSettingsTabExpanded: merged.isSettingsTabExpanded,
+    lineWrap: merged.lineWrap,
+    presets: merged.presets,
+    showSidebar: merged.showSidebar,
+    targets: merged.targets,
+    version: merged.version,
   };
 };
 
