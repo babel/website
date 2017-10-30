@@ -8,7 +8,7 @@
         <p>{% include icons/github.svg %}<a href="https://www.github.com/{{member.github}}" target="_blank">{{member.github}}</a></p>
       {% endif %}
       {% if member.twitter %}
-        <p>{% include icons/twitter.svg %}<a href="https://www.twitter.com/{{member.twitter}}" target="_blank">{{member.twitter}}</a></p>
+        <p>{% include icons/twitter.svg %}<a href="https://twitter.com/{{member.twitter}}" target="_blank">{{member.twitter}}</a></p>
       {% endif %}
       {% for area_id in member.areas %}
         {% assign area = site.data.areas[area_id] %}  
