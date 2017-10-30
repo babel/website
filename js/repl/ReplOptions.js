@@ -371,7 +371,7 @@ const PluginToggle = ({
       className={styles.inputCheckboxLeft}
       disabled={state.isLoading || state.didError}
       onChange={(event: SyntheticInputEvent) =>
-        onSettingChange(config.label, event.target.checked)}
+        onSettingChange(config.package || config.label, event.target.checked)}
       type="checkbox"
     />
     {state.isLoading ? <PresetLoadingAnimation /> : label || config.label}
