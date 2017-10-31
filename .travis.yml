@@ -5,7 +5,6 @@ language: node_js
 node_js:
   - "6"
 script:
+  - npm run bootstrap
   - bash ./shell/deploy.sh
 sudo: required
-install:
-  - npm run bootstrap
