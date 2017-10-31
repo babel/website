@@ -1,6 +1,5 @@
 make build
 
-// deploy.sh 第二部份，用于与github鉴权
 REPO=`git config remote.origin.url`
 SSH_REPO=${REPO}
 git config --global user.name "Travis CI"
