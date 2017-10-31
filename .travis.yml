@@ -7,7 +7,3 @@ node_js:
 script:
   - bash ./shell/deploy.sh
 sudo: required
-install:
-  - bundle install
-  - npm install
-  - ./scripts/download-readmes.js
