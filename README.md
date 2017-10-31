@@ -1,65 +1,21 @@
-# [babel/website](https://babeljs.io)
+# babel 中文文档
+[![Travis CI](https://api.travis-ci.org/docschina/babeljs.io.svg?branch=cn)](https://travis-ci.org/docschina/babeljs.io/)
+### 中文站点
+中文站点是由 CI 自动构建并部署到 gh-pages 分支。
+### 参与翻译
+* babel 翻译任务认领说明 - 入口目录
+* babel 校对 + 审校任务认领说明 - 入口目录
 
-This is the source for the [babeljs.io](https://babeljs.io) website, powered by [Jekyll](https://jekyllrb.com/).
+### 配置
+* 安装 `ruby`，请参考 [ruby 官网](https://www.ruby-lang.org/en/documentation/installation/)。
+	* 	使用 `which ruby` 或者 `ruby --version` 来确认是否安装过 `ruby`
+	*  确保 `bundler` 已经安装，执行 `gem install bundler`
 
-This repo also contains Babel's [source documentation](https://github.com/babel/website/tree/master/docs).
+* 克隆当前仓库，并安装相关依赖
 
-Feel free to suggest changes to our docs, add new content, or new ideas!
-
-### Setup
-
-* [Please install ruby](https://www.ruby-lang.org/en/documentation/installation/), if not already installed.
-  * Use `which ruby` or `ruby --version`, to verify if ruby is installed.
-  * Make sure `bundler` is installed by running `gem install bundler`
-
-```bash
-$ git clone git@github.com:babel/website.git
-$ cd website
-$ make bootstrap
-```
-
-* Just run `npm start` next time.
-
-### Contributing to the website
-
-To keep documentation in sync across all of Babel's packages and plugins, the documentation for the plugins and presets is sourced directly from the README files located inside their respective repositories ([Babel's packages](https://github.com/babel/babel/tree/master/packages), [babel-minify's packages](https://github.com/babel/minify/tree/master/packages), ...).
-
-For pages that are sourced from README files, the `package` field in the header needs to correspond to your package name. This package name also needs to be added to `scripts/download-readmes.js`.
-
-```yaml
-layout: docs
-title: babel-register (require hook)
-description: How to use babel-register, the require hook.
-permalink: /docs/usage/babel-register/
-package: babel-register
-```
-
-#### Publishing README
-
-```
-{% include package_readme.html %}
-```
-
-For example [babel.github.io/docs/plugins/preset-stage-0.md](/docs/plugins/preset-stage-0.md) which then points to [babel/packages/babel-preset-stage-0/README.md](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-0/README.md)
-
-If you encounter an `Liquid Exception: Included file '_includes/.../packages/.../README.md' not found`, please double check your `package` configuration, and ensure you have ran `scripts/download-readmes.js` (`make build` will run this for you).
-
-#### Linting markdown
-
-```sh
-npm test
-```
-
-This will lint markdown documents inside both the website and the imported repositories (like babel, babel-minify, etc).
-
-#### Testing compiled output
-
-```sh
-rake
-```
-
-Running this will check the compiled output for broken links and invalid markup.
-
-#### Looking for support?
-
-For questions and support please join our [Slack community](https://slack.babeljs.io/), channel #website or directly [here](https://babeljs.slack.com/messages/website/).
+	```
+	git clone git@github.com:docschina/babeljs.io.git
+	cd babeljs.io
+	make bootstrap
+	```
+* 最后，执行 `npm start` 即可	
