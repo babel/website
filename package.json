@@ -12,7 +12,8 @@
     "lint:repl": "eslint js/repl/*.js",
     "test": "remark _posts docs _includes README.md --quiet",
     "flow": "flow",
-    "precommit": "flow && lint-staged"
+    "precommit": "flow && lint-staged",
+    "deploy": "gh-pages -d _site"
   },
   "remarkConfig": {
     "plugins": {
@@ -61,6 +62,7 @@
     "babel-plugin-emotion": "^8.0.2-11",
     "codemirror": "5.30.0",
     "emotion": "^8.0.2-12",
+    "gh-pages": "^1.0.0",
     "lodash.debounce": "^4.0.8",
     "lz-string": "^1.4.4",
     "react": "^16.0.0",
