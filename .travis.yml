@@ -7,3 +7,5 @@ node_js:
 script:
   - bash ./shell/deploy.sh
 sudo: required
+install:
+  - npm run bootstrap

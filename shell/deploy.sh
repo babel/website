@@ -1,5 +1,4 @@
-make bootstrap
-make build
+npm run build
 
 REPO=`git config remote.origin.url`
 SSH_REPO=${REPO}
