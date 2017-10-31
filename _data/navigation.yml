@@ -1,18 +1,18 @@
-- title: Learn ES2015
+- title: 学习 ES2015
   url: /learn-es2015/
-- title: Docs
+- title: 文档
   url: /docs
   subnav:
     - items:
-        - title: Setup
+        - title: 配置
           url: /docs/setup/
-        - title: Editors
+        - title: 编辑器
           url: /docs/editors
-        - title: Caveats
+        - title: 注意事项
           url: /docs/usage/caveats/
-        - title: Videos
+        - title: 视频
           url: /docs/community/videos/
-    - name: Packages
+    - name: 相关依赖
       items:
         - title: babel-core
           url: /docs/core-packages/
@@ -20,7 +20,7 @@
           url: /docs/usage/polyfill/
         - title: Plugins
           url: /docs/plugins/
-    - name: Usage
+    - name: 使用方式
       items:
         - title: .babelrc
           url: /docs/usage/babelrc/
@@ -30,11 +30,27 @@
           url: /docs/usage/babel-register/
         - title: API
           url: /docs/usage/api/
-- title: Try it out
+- title: 试用
   url: /repl/
 - title: Blog
   url: /blog/
-- title: FAQ
+- title: 常见问题
   url: /faq
-- title: Team
+- title: 团队
   url: /team
+- title: 友情链接
+  url: /doc-url
+  subnav:
+    - items:
+        - title: 印记中文
+          url: https://docschina.org/
+        - title: Vue.js 中文
+          url: https://vuefe.cn/
+        - title: React.js 中文
+          url: https://doc.react-china.org/
+        - title: Rollup.js 中文
+          url: https://rollupjs.org/zh
+        - title: Node.js 中文
+          url: http://nodejs.cn/
+        - title: Webpack 中文
+          url: https://doc.webpack-china.org/
