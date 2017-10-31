@@ -1,6 +1,6 @@
 // @flow
 
-import type { PluginConfig } from "./types";
+import type { PluginConfig, ReplState } from "./types";
 
 const envPresetConfig: PluginConfig = {
   label: "Env Preset",
@@ -44,9 +44,29 @@ const pluginConfigs: Array<PluginConfig> = [
   },
 ];
 
+const replDefaults: ReplState = {
+  babili: false,
+  browsers: "",
+  build: "",
+  builtIns: false,
+  circleciRepo: "",
+  code: "",
+  debug: false,
+  evaluate: false,
+  isEnvPresetTabExpanded: false,
+  isPresetsTabExpanded: false,
+  isSettingsTabExpanded: true,
+  lineWrap: true,
+  presets: "es2015,react,stage-2",
+  showSidebar: true,
+  targets: "",
+  version: "",
+};
+
 export {
   envPresetConfig,
   envPresetDefaults,
   pluginConfigs,
   runtimePolyfillConfig,
+  replDefaults,
 };
