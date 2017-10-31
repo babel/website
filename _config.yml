@@ -7,6 +7,11 @@ url: "https://babeljs.io" # the base hostname & protocol for your site
 twitter_username: babeljs
 github_username: babel
 
+deploy:
+  type: git
+  repository: git@github.com:docschina/babeljs.io.git
+  branch: cn
+
 exclude:
   - vendor
   - node_modules
