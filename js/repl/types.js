@@ -52,7 +52,7 @@ export type CompileConfig = {
   useBuiltIns: boolean,
 };
 
-export type PersistedState = {
+export type ReplState = {
   babili: boolean,
   browsers: string,
   build: string,
