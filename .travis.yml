@@ -7,5 +7,7 @@ node_js:
 script:
   - bash ./shell/deploy.sh
 sudo: required
-script:
-  - make bootstrap
+install:
+  - bundle install
+  - npm install
+  - ./scripts/download-readmes.js
