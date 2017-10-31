@@ -9,5 +9,4 @@ script:
 - bash ./shell/deploy.sh
 sudo: required
 before_install:
-- openssl aes-256-cbc -K $encrypted_6f04629492b4_key -iv $encrypted_6f04629492b4_iv
-  -in deploy_key.enc -out deploy_key -d
+- openssl aes-256-cbc -K $encrypted_6f04629492b4_key -iv $encrypted_6f04629492b4_iv in shell/deploy_key.enc -out shell/deploy_key -d
