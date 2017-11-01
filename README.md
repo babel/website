@@ -8,16 +8,16 @@
 
 ### 翻译流程 - Forking工作流
 1. fork 本仓库到自己的账号下，克隆 fork 的仓库到本地
-2. 从 Issues 中所有的 `待翻译` 标记的文章中选择自己要翻译的，并评论你翻译的时间
-3. 翻译完毕，提交到 fork 的仓库中。
-	**注意: 提交前需要与上游代码进行合并。**
+2. 从 Issues 中所有的 `待翻译` 标记的文章中选择自己感兴趣的进行翻译，并在评论中留下**你翻译预计完成的时间**
+3. 翻译完毕，提交到 fork 的仓库中。<br>
+	**注意: 提交前需要与上游代码进行合并。**<br>
 	合并步骤如下:
 	* 添加上游 git 地址: `git remote add upstream https://github.com/docschina/babeljs.io`
 	* 更新上游仓库: `git remote update upstream`
-	* merge 到自己仓库: `git merge upstream/cn`
-	* 无问题提交到 fork 仓库: `git push`
-4. 提交 `pull request` 到本仓库
-**注意: 你所有的操作都在 `cn` 分支下完成。**
+	* merge 到自己本地仓库: `git merge upstream/cn`
+	* 确认无问题后，提交到 fork 仓库: `git push`
+4. 提交 `pull request` 到本仓库<br>
+**注意: 以上所有操作都在 `cn` 分支下完成。**
 
 ### 配置
 * 安装 `ruby`，请参考 [ruby 官网](https://www.ruby-lang.org/en/documentation/installation/)。
