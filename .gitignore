@@ -2,9 +2,9 @@ _babel
 _site
 .sass-cache
 node_modules
-.DS_Store
-npm-debug.log
-_includes/readmes/*.md
+# .DS_Store
+# npm-debug.log
+# _includes/readmes/*.md
 
 # testing
 coverage

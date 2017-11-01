@@ -10,8 +10,7 @@ bootstrap:
 	if [ ! -d ./_sass/bootstrap ]; \
 	then cp -r ./node_modules/bootstrap-sass/assets/stylesheets/bootstrap ./_sass/bootstrap; \
 	fi
-
-	./scripts/download-readmes.js
+	
 
 build:
 	NODE_ENV=production ./node_modules/.bin/webpack -p
