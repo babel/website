@@ -79,7 +79,10 @@ class Repl extends React.Component {
       "babili-standalone": persistedState.babili,
     };
 
-    const presets = persistedState.presets ? persistedState.presets.split(",") : [];
+    const presets = persistedState.presets
+      ? persistedState.presets.split(",")
+      : [];
+
     const defaultPresets = presets.reduce((reduced, key) => {
       if (key) reduced[key] = true;
       return reduced;
@@ -279,7 +282,7 @@ class Repl extends React.Component {
         // Because it's loaded in a worker, we need to configure it there as well.
         this._workerApi
           .registerEnvPreset()
-          .then(success => this._updateCode(this.state.code));
+          .then(() => this._updateCode(this.state.code));
       });
     }
   }

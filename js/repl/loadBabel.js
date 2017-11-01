@@ -1,5 +1,5 @@
 import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./CircleCI";
-import { BabelState, LoadScriptCallback } from "./types";
+import { BabelState } from "./types";
 import WorkerApi from "./WorkerApi";
 
 const DEFAULT_BABEL_VERSION = "6";
