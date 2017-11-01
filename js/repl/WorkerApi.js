@@ -36,14 +36,12 @@ export default class WorkerApi {
       .then(
         ({ compiled, compileErrorMessage, envPresetDebugInfo, sourceMap }) => {
           let evalErrorMessage = null;
-          let result = null;
+
           // Compilation is done in a web worker for performance reasons,
           // But eval requires the UI thread so code can access globals like window.
           if (config.evaluate) {
             try {
               scopedEval.execute(compiled, sourceMap);
-              result = eval(compiled);
-              console.log(result);
             } catch (error) {
               evalErrorMessage = error.message;
             }
@@ -51,7 +49,6 @@ export default class WorkerApi {
 
           return {
             compiled,
-            result,
             compileErrorMessage,
             envPresetDebugInfo,
             evalErrorMessage,
