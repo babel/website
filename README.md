@@ -18,6 +18,7 @@
 	* 确认无问题后，提交到 fork 仓库: `git push`
 4. 提交 `pull request` 到本仓库<br>
 **注意: 以上所有操作都在 `cn` 分支下完成。**
+![](http://oypz34fc0.bkt.clouddn.com/image/png/babel%E7%BF%BB%E8%AF%91%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
 
 ### 配置
 * 安装 `ruby`，请参考 [ruby 官网](https://www.ruby-lang.org/en/documentation/installation/)。
