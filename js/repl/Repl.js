@@ -79,7 +79,10 @@ class Repl extends React.Component {
       prettier: persistedState.prettier,
     };
 
-    const presets = persistedState.presets ? persistedState.presets.split(",") : [];
+    const presets = persistedState.presets
+      ? persistedState.presets.split(",")
+      : [];
+
     const defaultPresets = presets.reduce((reduced, key) => {
       if (key) reduced[key] = true;
       return reduced;

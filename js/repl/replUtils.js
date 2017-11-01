@@ -39,12 +39,12 @@ const loadPersistedState = (): ReplState => {
 const urlState = (): ReplState => {
   const queryState = UriUtils.parseQuery();
   return { ...replDefaults, ...queryState };
-}
+};
 
 export const replState = (): ReplState => {
-  let hasQueryString = window.location.hash;
+  const hasQueryString = window.location.hash;
   return hasQueryString ? urlState() : loadPersistedState();
-}
+};
 
 type DefaultPlugins = { [name: string]: boolean };
 

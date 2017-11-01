@@ -21,8 +21,7 @@ async function sendRequest(repo: ?string, uri: string): Promise<Object> {
 
 export async function loadBuildArtifacts(
   repo: ?string,
-  build: string,
-  cb: (url: string, error?: string) => void // eslint-disable-line no-unused-vars
+  build: string
 ): Promise<string> {
   try {
     const response = await sendRequest(repo, `${build}/artifacts`);
