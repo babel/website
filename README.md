@@ -8,7 +8,7 @@
 
 ### 翻译流程 - Forking工作流
 1. fork 本仓库到自己的账号下，克隆 fork 的仓库到本地
-2. 从 Issues 中所有的 `待翻译` 标记的文章中选择自己感兴趣的进行翻译，并在评论中留下**你翻译预计完成的时间**
+2. 从 [Issues](https://github.com/docschina/babeljs.io/issues) 中所有由 [`待翻译`](https://github.com/docschina/babeljs.io/labels/%E5%BE%85%E7%BF%BB%E8%AF%91) 标记的文章中，选择一篇自己感兴趣的进行翻译，并在评论中留下**你翻译预计完成的时间**
 3. 翻译完毕，提交到 fork 的仓库中。<br>
 	**注意: 提交前需要与上游代码进行合并。**<br>
 	合并步骤如下:
