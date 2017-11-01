@@ -3,12 +3,11 @@
 ### 中文站点
 中文站点是由 CI 自动构建并部署到 gh-pages 分支。
 ### 参与翻译
-* babel 翻译任务认领说明 - 入口目录
-* babel 校对 + 审校任务认领说明 - 入口目录
+* [关于翻译/校对 - 任务认领](https://github.com/docschina/babeljs.io/issues/1)
 
 ### 翻译流程 - Forking工作流
 1. fork 本仓库到自己的账号下，克隆 fork 的仓库到本地
-2. 从 [Issues](https://github.com/docschina/babeljs.io/issues) 中所有由 [`待翻译`](https://github.com/docschina/babeljs.io/labels/%E5%BE%85%E7%BF%BB%E8%AF%91) 标记的文章中，选择一篇自己感兴趣的进行翻译，并在评论中留下**你翻译预计完成的时间**
+2. 从 [Projects](https://github.com/docschina/babeljs.io/projects/1) 中所有由 [`待翻译`](https://github.com/docschina/babeljs.io/projects/1?card_filter_query=label%3A%E5%BE%85%E7%BF%BB%E8%AF%91) 标记的文章中，选择一篇自己感兴趣的进行翻译，并在评论中留下**你翻译预计完成的时间**
 3. 翻译完毕，提交到 fork 的仓库中。<br>
 	**注意: 提交前需要与上游代码进行合并。**<br>
 	合并步骤如下:
