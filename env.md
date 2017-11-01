@@ -5,7 +5,7 @@ permalink: /env/
 ---
 
 > We're super 😸 excited that you're trying to use ES2015 syntax, but instead of continuing yearly presets, the team recommends using babel-preset-env. By default, it has the same behavior as previous presets to compile ES2015+ to ES5.
-> Please check out the [readme for more info](https://github.com/babel/babel-preset-env)
+> Please check out the [v1.x readme for more info](https://github.com/babel/babel-preset-env/tree/1.x). (For Babel 7, we have moved the preset into the [main babel repo](https://github.com/babel/babel/tree/master/experimental/babel-preset-env).
 
 ## Upgrading to `babel-preset-env`
 
