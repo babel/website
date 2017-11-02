@@ -3,20 +3,20 @@
 
   </p>
   <p>
-    Compiling in the browser has a fairly limited use case, so if you are
-    working on a production site you should be precompiling your scripts
-    server-side. See <a href="/docs/setup/#build-systems">setup build systems</a>
-    for more information.
+    在浏览器中编译的用例非常有限，
+    因此如果你在生产环境下工作，你应该使用服务端预编译脚本。 
+    请查看更多关于 <a href="/docs/setup/#build-systems">配置构建系统</a> 
+    的信息。
   </p>
 </blockquote>
 
-You can use [babel/babel-standalone](https://github.com/babel/babel-standalone#usage) as a precompiled version of babel or run a bundler on babel yourself.
+你可以使用 [babel/babel-standalone](https://github.com/babel/babel-standalone#usage) 作为 babel 的预编译版本，或者你自己在 babel 基础之上运行一个 bundler 。
 
-You can also use the many online tools to prototype a script:
+你还可以使用更多在线工具对脚本进行原型化:
 
-- [Babel's own REPL](https://babeljs.io/repl)
+- [Babel 官方提供的 REPL](/repl)
 
-Online Editors that run Babel for you:
+运行 Babel 于在线编辑器上:
 
 - [JSFiddle](https://jsfiddle.net/fh5whLfd/)
 - [JSBin](http://jsbin.com/rokimopuse/edit?html,js,console,output)
