@@ -1,48 +1,47 @@
 ---
 layout: docs
 title: Polyfill
-description: How to use the Polyfill.
+description: 如何使用 Polyfill.
 permalink: /docs/usage/polyfill/
 package: babel-polyfill
 ---
 
 <p class="lead">
-Babel includes a <a href="https://en.wikipedia.org/wiki/Polyfill">polyfill</a> that includes a custom
+Babel 包含一个可自定义
   <a href="https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js">regenerator runtime</a>
-  and <a href="https://github.com/zloirock/core-js">core-js</a>.
+  和 <a href="https://github.com/zloirock/core-js">core-js</a> 的 
+  <a href="https://en.wikipedia.org/wiki/Polyfill">polyfill</a>.
 </p>
 
-This will emulate a full ES2015+ environment and is intended to be used in an application rather than a library/tool. This polyfill is automatically loaded when using `babel-node`.
+它会仿效一个完整的 ES2015+ 环境，并意图运行于一个应用中而不是一个库/工具。这个 polyfill 会在使用 `babel-node` 时自动加载。
 
-This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (provided you use the [regenerator](/docs/plugins/transform-regenerator/) plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
+这意味着你可以使用新的内置对象比如 `Promise` 或者 `WeakMap`, 静态方法比如 `Array.from` 或者 `Object.assign`, 实例方法比如 `Array.prototype.includes` 和生成器函数（提供给你使用 [regenerator](/docs/plugins/transform-regenerator/) 插件）。为了达到这一点， polyfill 添加到了全局范围，就像原生类型比如 `String` 一样。
 
-## Installation
+## 安装
 
 ```sh
 npm install --save babel-polyfill
 ```
 
-> Because this is a polyfill (which will run before your source code), we need it to be a `dependency`, not a `devDependency`
+> 因为这是一个 polyfill （它需要在你的源代码之前运行），我们需要让它成为一个 `dependency`, 而不是一个 `devDependency`.
 
-## Usage in Node / Browserify / Webpack
+## 在 Node / Browserify / Webpack 中使用
 
-To include the polyfill you need to require it at the top of the **entry point** to your application.
+你需要在你的应用**入口**顶部通过 require 将 polyfill 引入进来。
 
-> Make sure it is called before all other code/require statements!
+> 确保它在任何其他代码/依赖声明之前被调用！
 
 ```js
 require("babel-polyfill");
 ```
 
-If you are using ES6's `import` syntax in your application's **entry point**, you
-should instead import the polyfill at the top of the **entry point** to ensure the
-polyfills are loaded first:
+如果你在你的应用**入口**使用 ES6 的 `import` 语法，你需要在**入口**顶部通过 import 将 polyfill 引入，以确保它能够最先加载：
 
 ```js
 import "babel-polyfill";
 ```
 
-With `webpack.config.js`, add `babel-polyfill` to your entry array:
+在 `webpack.config.js` 中，将 `babel-polyfill` 加到你的 entry 数组中：
 
 ```js
 module.exports = {
@@ -50,22 +49,20 @@ module.exports = {
 };
 ```
 
-## Usage in Browser
+## 在浏览器中使用
 
-Available from the `dist/polyfill.js` file within a `babel-polyfill` npm release.
-This needs to be included **before** all your compiled Babel code. You can either
-prepend it to your compiled code or include it in a `<script>`
-before it.
+可以在 `babel-polyfill` npm 发布版中的 `dist/polyfill.js` 文件中找到它。
+它需要在你编译过的 Babel 代码**之前**被包括进去。你可以将它追加到你编译过的代码中，或者在这些代码之前通过 `<script>` 引入它。
 
-**NOTE:** Do not `require` this via browserify etc, use `babel-polyfill`.
+**注意：** 不要通过类似 browserify 等手段来 `require` 它，用 `babel-polyfill`.
 
-## Details
+## 细节
 
 <blockquote class="babel-callout babel-callout-info">
   <h5>
-    If you are looking for something that won't modify globals to be used in a tool/library, checkout the <a href="/docs/plugins/transform-runtime"><code>transform-runtime</code></a> plugin. This means you won't be able to use the instance methods mentioned above like <code>Array.prototype.includes</code>.
+    如果你在寻找可以在工具/库中使用的不会修改全局内容的东西，请查看 <a href="/docs/plugins/transform-runtime"><code>transform-runtime</code></a> 插件。这意味着你将不能使用上文中提到的实例方法，比如 <code>Array.prototype.includes</code>.
   </h5>
 </blockquote>
 
-Note: Depending on what ES2015 methods you actually use, you may not need to use `babel-polyfill` or the runtime plugin. You may want to only [load the specific polyfills you are using](https://github.com/zloirock/core-js#commonjs) (like `Object.assign`) or just document that the environment the library is being loaded in should include certain polyfills.
+注意：你可能不需要 `babel-polyfill` 或者运行时插件，这取决于你实际想用 ES2015 中的哪个方法。你可能只想[载入某些你正在使用的特定 polyfills](https://github.com/zloirock/core-js#commonjs) (比如 `Object.assign`) ，或者只是记录加载 library 的环境应该包含特定的 polyfills.
 
