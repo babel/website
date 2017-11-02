@@ -16,7 +16,7 @@
 ├── _includes/                    // _includes  目录: 需要导入文件目录
 │   ├── readmes/                  // readmes    目录: 放置所有 工具/Plugins 的 README.md 文件 
 │   └── tools/                    // tools      目录: 所有工具的安装及使用说明
-├── docs/ 					      // docs       目录: 文档目录
+├── docs/ 					    
 │   ├── usage/                    // usage      目录: 使用指南
 │   ├── core-packages/            // core-packages 目录: 核心包文档
 │   └── plugins/                  // plugins    目录: 所有插件说明
