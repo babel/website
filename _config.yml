@@ -1,9 +1,9 @@
 # Site settings
 title: Babel
-tagline: The compiler for writing next generation JavaScript
-description: The compiler for writing next generation JavaScript
+tagline: 用于编写下一代 JavaScript 的编译器
+description: 用于编写下一代 JavaScript 的编译器
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://babeljs.io" # the base hostname & protocol for your site
+url: "https://babel.docschina.org/" # the base hostname & protocol for your site
 twitter_username: babeljs
 github_username: babel
 
@@ -37,7 +37,7 @@ kramdown:
   syntax_highlighter: rouge
 
 # Blog Settings
-permalink: /blog/:year/:month/:day/:title
+permalink: /blog/:year/:month/:day/:title.html
 paginate: 1
 paginate_path: "/blog/page:num/"
 
