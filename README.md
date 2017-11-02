@@ -50,6 +50,14 @@
 	```
 	sudo gem install bundler
 	```
+	**注意: `ruby` 版本需要大于等于 2.1.0，Mac 自带 ruby 版本是 2.0.0**
+	
+	查看 `ruby` 版本
+	
+	```
+	ruby --version
+	```
+	安装或更新 `ruby` ，请参考 [ruby 官网](https://www.ruby-lang.org/en/documentation/installation/#homebrew)
 
 3. 安装相关依赖
 
