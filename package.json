@@ -12,7 +12,6 @@
     "lint:repl": "eslint js/repl/*.js",
     "test": "remark _posts docs _includes README.md --quiet",
     "flow": "flow",
-    "precommit": "flow && lint-staged",
     "deploy": "gh-pages -d _site",
     "bootstrap": "make bootstrap"
   },
