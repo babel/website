@@ -3,7 +3,7 @@ layout: default
 custom_js:
 - index.js
 third_party_js:
-- //oypz34fc0.bkt.clouddn.com/js/slick.min.js
+- /scripts/slick.min.js
 - //unpkg.com/babel-standalone@6/babel.min.js
 - //cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
 ---
