@@ -5,47 +5,37 @@ description: Learn how to use Babel in your editor of choice
 permalink: /docs/editors
 ---
 
-## Syntax Highlighting
+## 语法高亮
 
-![Syntax Highlighting](/images/syntax-highlighting.png)
+![语法高亮](/images/syntax-highlighting.png)
 
-These days, many popular editors support ES2015+ syntax highlighting
-out of the box, while some require installing additional extensions.
-This guide should help you get the syntax highlighting to work.
+现在，很多流行的编辑器都直接支持 ES2015+ 语法高亮，而有些则需要安装额外的扩展程序。这个指南将帮助你支持语法高亮。
 
-If you're looking for more advanced integrations, you may want to
-take a look at the [Setup](/docs/setup) guide.
+如果你想要更高级的集成，你可以查看[安装](/docs/setup)指南。
 
-**Tip:** The font used on the screenshot above is [FiraCode](https://github.com/tonsky/FiraCode).
+**提示:** 上面截图中使用的字体是 [FiraCode](https://github.com/tonsky/FiraCode)。
 
 ### Atom
 
-Install [language-babel](https://atom.io/packages/language-babel) package
-and follow the [instructions](https://github.com/gandm/language-babel#installation).
+安装 [language-babel](https://atom.io/packages/language-babel) 组件和按照[说明](https://github.com/gandm/language-babel#installation)操作。
 
 ### Sublime Text 3
 
-First, [install Package Control](https://packagecontrol.io/installation).
-Then install [Babel](https://packagecontrol.io/packages/Babel) package
-from the Package Control menu and follow
-the [instructions](https://github.com/babel/babel-sublime#installation).
+首先，[安装 Package Control](https://packagecontrol.io/installation)。
+然后从 Package Control 菜单里安装 [Babel](https://packagecontrol.io/packages/Babel) 组件和按照[说明](https://github.com/babel/babel-sublime#installation)操作。
 
 ### Vim
 
-Install the [vim-javascript](https://github.com/pangloss/vim-javascript) plugin, which brings both
-improved syntax highlighting and indentation support for JavaScript to Vim.
+安装 [vim-javascript](https://github.com/pangloss/vim-javascript) 插件，它同时提供了语法高亮和 Vim 的 JavaScript 缩进支持。
 
-Another option is to use [yajs.vim](https://github.com/othree/yajs.vim) with
-[es.next.syntax](https://github.com/othree/es.next.syntax.vim).
+也可以使用 [yajs.vim](https://github.com/othree/yajs.vim) 和 [es.next.syntax](https://github.com/othree/es.next.syntax.vim)。
 
 ### Visual Studio Code
 
-Install the [sublime-babel-vscode](https://marketplace.visualstudio.com/items?itemName=joshpeng.sublime-babel-vscode) extension and follow the instructions.
+安装 [sublime-babel-vscode](https://marketplace.visualstudio.com/items?itemName=joshpeng.sublime-babel-vscode) 扩展程序和按照说明操作.
 
-There seems to be one other way to get the syntax highlighting working and you can learn
-more about it in the [Visual Studio Code docs](https://code.visualstudio.com/Docs/languages/javascript#_writing-jsconfigjson).
+还有其他方法可以支持语法高亮，你可以在 [Visual Studio Code 文档](https://code.visualstudio.com/Docs/languages/javascript#_writing-jsconfigjson)中了解更多。
 
 ### WebStorm
 
-WebStorm now ships with support for ES2015+ without requiring the installation of any additional
-extensions. You may, however, need to [enable it](https://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling/).
+WebStorm 现在支持 ES2015+ 而无需安装任何额外的扩展程序。但是，你可能需要[启用他](https://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling/)。
