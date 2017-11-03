@@ -10,6 +10,8 @@ share_text: "Nearing the 7.0 Release"
 
 > Please check out the previous [Planning for 7.0](https://babeljs.io/blog/2017/03/01/upgrade-to-babel-7) post for information up til the first beta release!
 
+# didn't start writing anything yet, so feel free to edit
+
 ### Integrations
 
 Packages like `grunt-babel`, `gulp-babel`, `rollup-plugin-babel`, etc all used to have `babel-core` as a dependency.
