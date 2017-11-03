@@ -1,7 +1,7 @@
 ---
-layout: docs
-title: Editors
-description: Learn how to use Babel in your editor of choice
+layout: 文档
+title: 编辑器
+description: 学习如何在你选择的编辑器中使用 Babel
 permalink: /docs/editors
 ---
 
