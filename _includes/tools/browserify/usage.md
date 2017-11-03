@@ -1,17 +1,17 @@
-#### Via CLI
+#### 通过 CLI 使用
 
 ```sh
 browserify script.js -t babelify --outfile bundle.js
 ```
 
-#### Via Node API
+#### 通过 Node API 使用
 
 ```js
 browserify({ debug: true })
   .transform(babelify);
 ```
 
-Or a more complete example:
+或者一个更完整的例子:
 
 ```js
 var fs = require("fs");
@@ -26,7 +26,7 @@ browserify({ debug: true })
   .pipe(fs.createWriteStream("bundle.js"));
 ```
 
-#### Passing options
+#### 传递选项
 
 **CLI**
 
@@ -52,7 +52,7 @@ browserify().transform(babelify.configure({
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For more information see the <a href="https://github.com/babel/babelify">babel/babelify repo</a>.
+    欲了解更多信息，请参阅 <a href="https://github.com/babel/babelify">babel/babelify 仓库</a>.
   </p>
 </blockquote>
 
