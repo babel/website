@@ -1,12 +1,11 @@
-使用它你需要在应用程序的**入口起点**顶部
-引入 Babel 。
+使用它你需要在应用程序的**入口起点**顶部引入 Babel 。
 
 ```javascript
 require("babel-register");
 ```
 
 如果你在应用程序中使用 ES6 的 `import` 语法，
-你则需要在**入口起点**的顶部引入 Babel，以确保它优先加载:
+你则需要在**入口起点**的顶部引入 Babel ，以确保它优先加载:
 
 ```javascript
 import "babel-register";
