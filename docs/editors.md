@@ -1,5 +1,5 @@
 ---
-layout: 文档
+layout: docs
 title: 编辑器
 description: 学习如何在你选择的编辑器中使用 Babel
 permalink: /docs/editors
