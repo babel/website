@@ -1,8 +1,8 @@
 ---
-布局: 文档
-标题: 编辑器
-描述: 学习如何在你选择的编辑器中使用 Babel
-链接: /docs/editors
+layout: docs
+title: Editors
+description: Learn how to use Babel in your editor of choice
+permalink: /docs/editors
 ---
 
 ## 语法高亮
