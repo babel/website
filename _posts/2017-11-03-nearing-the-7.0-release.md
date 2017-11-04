@@ -12,12 +12,11 @@ share_text: "Nearing the 7.0 Release"
 
 # Just started writing, so feel free to edit
 
-### Deprecate ES20xx presets
+### Deprecate yearly presets (babel-preset-es20xx)
 
-> We already deprecated preset-latest a while ago, and ES2016/ES2017 [earlier](https://twitter.com/left_pad/status/897483806499885057)
-> It's annoying making a yearly preset (extra package/dependency, issues with npm package squatting unless we do scoped packages)
+TL;DR is use `babel-preset-env` instead.
 
-Developers shouldn't even need to make the decision of what yearly preset to use? If we drop/deprecate these presets then everyone can use [babel-preset-env](https://github.com/babel/babel-preset-env) instead which will already update as the spec changes.
+What's better than having to decide for your what babel preset/plugin to use is if it was done for you, automatically. Although the amount of work that goes into maintaining the lists of data is humogous, it solves multiple issues: keeping users up to date with the spec, less configuration/package confusion, easier upgrade path, less issues about what is what. 
 
 ### Scoped Packages (`@babel/x`)
 
@@ -33,7 +32,10 @@ Back then, there weren't a lot of projects using scoped packages so most people 
 Since people will complain/wonder why we are doing this:
 
 - Naming is difficult: we don't have to check if someone else decided to use our naming convention for their own plugin
-- Similarly, package squatting. Sometimes people will create `babel-preset-20xx` or some other package because it's funny and then we have to make an issue/email them to ask for it back.
+- Similarly, package squatting
+  - Sometimes people will create `babel-preset-20xx` or some other package we will use because it's funny and then we have to make an issue/email them to ask for it back.
+  - People have a legit package but it happens to be the same name as what we wanted to call it.
+  - People see that a new proposal is merge (optional chaining, pipeline operator) and decide to fork and publish a version of it under the same name so that when we publish it errors saying it was already published 🤔. Then I had to find their email and email both them and npm support to get the package back and republish.
 - What is an "official" package and what is a user/community package with the same name. We can get issue reports of people using misnamed or unofficial packages because they assumed it was part of Babel. One example of this was a report that `babel-env` was rewriting their `.babelrc` file, and it took a while to realize they thought it was `babel-preset-env`.
 
 So it seems obvious we should do this, and if anything should of done it much earlier 🙂!
