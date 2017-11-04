@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Babel register
-description: The require hook will bind itself to node's require and automatically compile files on the fly.
+description: Require 钩子会把自己绑定到 node 的 require 上并自动编译文件。
 permalink: /docs/usage/babel-register/
 package: babel-register
 ---

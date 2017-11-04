@@ -6,21 +6,21 @@
       year: 2017
       event: React Rally
       event_link: http://www.reactrally.com/
-      link: https://www.youtube.com/embed/fntd0sPMOtQ
+      link: https://v.qq.com/iframe/player.html?vid=i0569tgoiec&tiny=0&auto=0
     - title: Writing custom Babel and ESLint plugins with ASTs
       author: Kent C. Dodds
       author_link: https://twitter.com/kentcdodds
       year: 2017
       event: Open West
       event_link: https://kentcdodds.com/talks/#writing-custom-babel-and-eslint-plugins-with-asts
-      link: https://www.youtube.com/embed/VBscbcm2Mok
+      link: https://v.qq.com/iframe/player.html?vid=f0568ce87m2&tiny=0&auto=0
     - title: Maintaining an OSS Project (Babel)
       author: Henry Zhu
       author_link: https://twitter.com/left_pad
       year: 2017
       event: JSConf EU
       event_link: https://2017.jsconf.eu/
-      link: https://www.youtube.com/embed/_iToM2KC0QE
+      link: https://v.qq.com/iframe/player.html?vid=h0568a0eskg&tiny=0&auto=0
     - title: How to Build a Compiler
       author: James Kyle
       author_link: https://twitter.com/thejameskyle

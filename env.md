@@ -4,18 +4,18 @@ title: babel-preset-es2015 -> babel-preset-env
 permalink: /env/
 ---
 
-> We're super 😸 excited that you're trying to use ES2015 syntax, but instead of continuing yearly presets, the team recommends using babel-preset-env. By default, it has the same behavior as previous presets to compile ES2015+ to ES5.
-> Please check out the [v1.x readme for more info](https://github.com/babel/babel-preset-env/tree/1.x). (For Babel 7, we have moved the preset into the [main babel repo](https://github.com/babel/babel/tree/master/experimental/babel-preset-env).
+> 我们非常 😸 高兴你正在使用 ES2015 语法，但不是继续每年度的 preset, 团队推荐使用 babel-preset-env. 默认情况下，他和之前的 preset 将 ES2015+ 编译到 ES5 具有相同的行为。
+> 查看 [v1.x readme 以获得更多信息](https://github.com/babel/babel-preset-env/tree/1.x)。 (对于 Babel 7, 我们将 preset 移动到了 [main babel repo](https://github.com/babel/babel/tree/master/experimental/babel-preset-env)).
 
-## Upgrading to `babel-preset-env`
+## 升级到 `babel-preset-env`
 
-### Install
+### 安装
 
 ```sh
 npm install babel-preset-env --save-dev
 ```
 
-#### Basic `.babelrc` change
+#### `.babelrc` 基本变化
 
 ```diff
 {
@@ -24,7 +24,7 @@ npm install babel-preset-env --save-dev
 }
 ```
 
-#### `.babelrc` change with options
+#### `.babelrc` 带选项的变化
 
 ```diff
 {
@@ -37,16 +37,16 @@ npm install babel-preset-env --save-dev
 }
 ```
 
-`babel-preset-env` is a new preset, first released over a year ago that replaces many presets that were previously used including:
+`babel-preset-env` 是一个新的 preset, 一年前首次发布，取代了之前用过的很多 preset, 其中包括：
 
 - `babel-preset-es2015`, `babel-preset-es2016`, `babel-preset-es2017`
 - `babel-preset-latest`
-- other community plugins involving `es20xx`:
-  - `babel-preset-node5`, `babel-preset-es2015-node`, etc
+- 其他社区插件涉及到 `es20xx`:
+  - `babel-preset-node5`, `babel-preset-es2015-node`, 等等
 
-## By targeting specific browsers, Babel can do less work so you can ship native ES2015+ 😎!
+## 针对特定浏览器，Babel 可以最更少的工作使你可以传输原生 ES2015+ 代码😎!
 
-#### `.babelrc` against a specific chrome version
+#### `.babelrc` 针对一个特定 chrome 版本
 
 ```json
 {
@@ -60,7 +60,7 @@ npm install babel-preset-env --save-dev
 }
 ```
 
-#### `.babelrc` against current node version
+#### `.babelrc` 针对当前 node 版本
 
 ```json
 {
@@ -74,10 +74,10 @@ npm install babel-preset-env --save-dev
 }
 ```
 
-## Some history on babel-preset-env
+## babel-preset-env 的一些历史
 
 - [https://twitter.com/samccone/status/722826060161617923](https://twitter.com/samccone/status/722826060161617923)
 - [https://gist.github.com/addyosmani/bb6e2939f943226e68e87396c4931040](https://gist.github.com/addyosmani/bb6e2939f943226e68e87396c4931040)
-- [Original PR](https://github.com/babel/babel/pull/3476)
+- [原始 PR](https://github.com/babel/babel/pull/3476)
 
-Can check the [readme](https://github.com/babel/babel-preset-env) for more information and further docs.
+查看 [readme](https://github.com/babel/babel-preset-env) 获得更多信息以及更详细的文档。
