@@ -74,15 +74,15 @@ Babel 6 移除了很多支持<a href="/docs/plugins">插件</a>的选项，所�
 
 Babel 是一个开源项目，我们很感激所有得到的贡献。请帮忙填写文档，你可以通过提交请求到 [babel.github.io](https://github.com/babel/babel.github.io) 仓库。
 
-## 我如何从源文件中构建 Babel？
+## 如何从源文件中构建 Babel？
 
 请查看[构建指南](https://github.com/babel/babel/blob/master/CONTRIBUTING.md#developing)。
 
-## 我如何为 Babel 做贡献？
+## 如何为 Babel 做贡献？
 
 请查看[贡献](https://github.com/babel/babel/blob/master/CONTRIBUTING.md)。
 
-## 为什么我会得到语法错误/意外标识？
+## 为什么会得到语法错误/意外标识？
 
 很可能你没有包含支持该功能的插件/预设。（也可能是解析器的Bug，或它实际上是语法错误）。
 
@@ -92,7 +92,7 @@ Babel 是一个开源项目，我们很感激所有得到的贡献。请帮忙�
 
 我们对所有包有一个全局版本。当我们发布一个版本的时候，唯一更新的包是实际上有更改的包（我们在那文件夹执行了 `git diff`）。
 
-如果我们只更新 `babel-plugin-transform-exponentiation-operator` 到 6.x.x，由于其他依赖使用 `^`，我们一般不用对所有包发布一个新的版本。
+如果只更新 `babel-plugin-transform-exponentiation-operator` 到 6.x.x，由于其他依赖使用 `^`，一般不用对所有包发布一个新的版本。
 
 例如，Babel [v6.6.0 版本](https://github.com/babel/babel/releases/tag/v6.6.0)并不意味着所有包现在都是 6.6.0。
 
