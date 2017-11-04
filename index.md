@@ -3,9 +3,9 @@ layout: default
 custom_js:
 - index.js
 third_party_js:
-- /scripts/slick.min.js
-- //unpkg.com/babel-standalone@6/babel.min.js
-- //cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
+- https://cdn.bootcss.com/slick-carousel/1.4.1/slick.min.js
+- https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js
+- https://cdn.bootcss.com/ace/1.1.3/ace.js
 ---
 
 <div class="hero">
@@ -364,5 +364,5 @@ export default function ({types: t}) {
     </div>
   </div>
 
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.4.1/slick.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/slick-carousel/1.4.1/slick.min.css">
 </div>
