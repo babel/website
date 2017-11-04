@@ -10,7 +10,42 @@ share_text: "Nearing the 7.0 Release"
 
 > Please check out the previous [Planning for 7.0](https://babeljs.io/blog/2017/03/01/upgrade-to-babel-7) post for information up til the first beta release!
 
-# didn't start writing anything yet, so feel free to edit
+# Just started writing, so feel free to edit
+
+### Deprecate ES20xx presets
+
+> We already deprecated preset-latest a while ago, and ES2016/ES2017 [earlier](https://twitter.com/left_pad/status/897483806499885057)
+> It's annoying making a yearly preset (extra package/dependency, issues with npm package squatting unless we do scoped packages)
+
+Developers shouldn't even need to make the decision of what yearly preset to use? If we drop/deprecate these presets then everyone can use [babel-preset-env](https://github.com/babel/babel-preset-env) instead which will already update as the spec changes.
+
+### Scoped Packages (`@babel/x`)
+
+Alright we only just changed every single package for Babel again 😂..
+
+Here's a poll I did almost a year ago:
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thoughts on <a href="https://twitter.com/babeljs">@babeljs</a> using npm scoped packages for 7.0?</p>&mdash; Henry Zhu (@left_pad) <a href="https://twitter.com/left_pad/status/821551189166878722">January 18, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Back then, there weren't a lot of projects using scoped packages so most people didn't even know they existed. I believe you also had to pay for a npm org account while now it's free (and supports non scoped packages too). The issues with searching for scoped packages are solved and download counts work. The only thing left is that some 3rd party registries still don't support scoped. I think we are at a point where it seems pretty unreasonable to wait on that, and maybe moving Babel itself to a scoped namespace will push that effort forward anyway?
+
+Since people will complain/wonder why we are doing this:
+
+- Naming is difficult: we don't have to check if someone else decided to use our naming convention for their own plugin
+- Similarly, package squatting. Sometimes people will create `babel-preset-20xx` or some other package because it's funny and then we have to make an issue/email them to ask for it back.
+- What is an "official" package and what is a user/community package with the same name. We can get issue reports of people using misnamed or unofficial packages because they assumed it was part of Babel. One example of this was a report that `babel-env` was rewriting their `.babelrc` file, and it took a while to realize they thought it was `babel-preset-env`.
+
+So it seems obvious we should do this, and if anything should of done it much earlier 🙂!
+
+Examples of the scoped name change:
+
+`babel-cli` -> `@babel/cli`
+`babel-core` -> `@babel/core`
+`babel-preset-es2015` -> `@babel/preset-es2015` (this is deprecated though, so use preset-env)
+`babel-preset-env` -> `@babel/preset-env`
+
+### TC39 Proposal Plugins (what isn't JS yet)
 
 ### Integrations
 
@@ -43,36 +78,7 @@ Say you are using preset-env (which keeps up to date and currently includes ever
 
 If the spec to an experimental proposal changes, we should be free to make a breaking change and make a major version bump for that plugin only. Because it only affects that plugin, it doesn't affect anything else and people are free to update when possible. We just want to make sure that users update to the latest version of any experimental proposal when possible and provide the tools to do so automatically if that is reasonable as well.
 
-### TODOs?
+### Release Process
 
 > I believe the way we want to go about doing this is to move those packages into the `experimental/` folder in our [monorepo](https://github.com/babel/babel) instead of in `packages/`.
-> Then we should rename all proposals to `babel-plugin-proposal-` instead of `babel-plugin-transform-`
 > Change our publish process (probably through Lerna) to publish the packages in `experimental/` independently.
-
-### Deprecate ES20xx presets
-
-> We already deprecated preset-latest a while ago, and ES2016/ES2017 [earlier](https://twitter.com/left_pad/status/897483806499885057)
-> It's annoying making a yearly preset (extra package/dependency, issues with npm package squatting unless we do scoped packages)
-
-Developers shouldn't even need to make the decision of what yearly preset to use? If we drop/deprecate these presets then everyone can use [babel-preset-env](https://github.com/babel/babel-preset-env) instead which will already update as the spec changes.
-
-### Using npm Scoped Packages
-
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thoughts on <a href="https://twitter.com/babeljs">@babeljs</a> using npm scoped packages for 7.0?</p>&mdash; Henry Zhu (@left_pad) <a href="https://twitter.com/left_pad/status/821551189166878722">January 18, 2017</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-Seems like most who understood what scoped packages are were in favor?
-
-Pros
-
-- Don't have to worry about getting a certain package name (the reason why this was brought up in the first place).
-
-> Many package names have been taken (preset-es2016, preset-es2017, 2020, 2040, etc). Can always ask to transfer but not always easy to do and can lead to users believing certain packages are official due to the naming.
-
-Cons
-
-- We need to migrate to new syntax
-- Still unsupported on certain non-npm tools (lock-in)
-- No download counts unless we alias back to old names
-
-Sounds like we may want to defer, and in the very least it's not a breaking change given it's a name change.
