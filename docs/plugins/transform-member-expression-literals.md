@@ -1,39 +1,10 @@
 ---
 layout: docs
 title: Member expression literals transform
-description:
+description: Turn valid member expression property literals into plain identifiers
 permalink: /docs/plugins/transform-member-expression-literals/
 package: babel-plugin-transform-member-expression-literals
+package_source: babel-minify
 ---
 
-This plugin allows Babel to transform member expression valid identifier literal properties into identifiers.
-
-## Example
-
-**In**
-
-```javascript
-foo["bar"];
-```
-
-**Out**
-
-```javascript
-foo.bar;
-```
-
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-transform-member-expression-literals
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["transform-member-expression-literals"]
-}
-```
+{% include package_readme.html %}

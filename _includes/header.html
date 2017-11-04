@@ -28,10 +28,19 @@
             <li class="dropdown {% if page.url contains item.url %}active{% endif %}">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ item.title }} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                {% for item in item.subnav %}
-                  <li {% if page.url contains item.url %}class="active"{% endif %}>
-                    <a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
-                  </li>
+                {% for group in item.subnav %}
+
+                  {% if group.name %}
+                    <li class="group-name">{{ group.name }}</li>
+                  {% endif %}
+
+                  {% for item in group.items %}
+
+                    <li {% if page.url contains item.url %}class="active"{% endif %}>
+                      <a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
+                    </li>
+                  {% endfor %}
+
                 {% endfor %}
               </ul>
             </li>
@@ -42,21 +51,21 @@
           {% endif %}
         {% endfor %}
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right nav-social">
         <li>
-          <a href="https://discuss.babeljs.io">Discourse</a>
+          <a href="https://opencollective.com/babel">Donate</a>
         </li>
         <li>
-          <a href="https://slack.babeljs.io/">Slack</a>
-        </li>
-        <li {% if page.url contains "/blog/" %}class="active"{% endif %}>
-          <a href="{{ site.baseurl }}/blog/">Blog</a>
+          <a href="https://discuss.babeljs.io">Forum</a>
         </li>
         <li>
-          <a href="https://twitter.com/babeljs">Twitter</a>
+          <a href="https://slack.babeljs.io/" title="Join us on Slack">{% include icons/slack.svg %}</a>
         </li>
         <li>
-          <a href="https://github.com/babel/babel">GitHub</a>
+          <a href="https://twitter.com/babeljs" title="Follow us on Twitter">{% include icons/twitter.svg %}</a>
+        </li>
+        <li>
+          <a href="https://github.com/babel/babel" title="Contribute on GitHub">{% include icons/github.svg %}</a>
         </li>
       </ul>
       <label for="babel-toggle-search" class="navbar-toggle babel-toggle-search-open">

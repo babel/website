@@ -20,8 +20,10 @@
   var current;
 
   $('h2, h3').each(function(index, heading) {
+    var isSubHeading = heading.tagName.toUpperCase() !== 'H2';
     var textContent = heading.textContent;
-    var id = dasherize(textContent);
+    var idPrefix = isSubHeading && current ? current.id : '';
+    var id = dasherize(idPrefix + textContent);
 
     heading.id = id;
 
@@ -32,7 +34,7 @@
       children: []
     };
 
-    if (heading.tagName.toUpperCase() === 'H2') {
+    if (!isSubHeading) {
       headings.push(value);
       current = value;
     } else {
@@ -72,9 +74,6 @@
         var sidebarMargin = parseInt($sidebar.children(0).css('margin-top'), 10);
 
         return offsetTop - navbarOuterHeight - sidebarMargin;
-      }),
-      bottom: _.memoize(function() {
-        return $('.footer').outerHeight(true);
       })
     }
   });

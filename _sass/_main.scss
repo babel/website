@@ -1,4 +1,5 @@
 @import "_variables.scss";
+@import "_mixins.scss";
 
 // Core variables and mixins
 @import "bootstrap/variables";
@@ -64,11 +65,12 @@ body {
 
 @import "components/_buttons.scss";
 @import "components/_callouts.scss";
+@import "components/_code.scss";
 @import "components/_content.scss";
 @import "components/_featurette.scss";
 @import "components/_footer.scss";
+@import "components/_hero.scss";
 @import "components/_highlight.scss";
-@import "components/_jumbotron.scss";
 @import "components/_logo.scss";
 @import "components/_navbar.scss";
 @import "components/_sidebar.scss";
@@ -76,6 +78,7 @@ body {
 @import "components/_type.scss";
 @import "components/_user.scss";
 @import "components/_offline-indicator.scss";
+@import "components/_video.scss";
 
 @import "pages/_404.scss";
 @import "pages/_blog.scss";
@@ -83,3 +86,4 @@ body {
 @import "pages/_repl.scss";
 @import "pages/_tools.scss";
 @import "pages/_search.scss";
+@import "pages/_team.scss";

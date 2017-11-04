@@ -1,21 +1,22 @@
 if ('serviceWorker' in navigator) {
 
-  navigator.serviceWorker.register('/service-worker.js').then(function() {
+  navigator.serviceWorker.register('/service-worker.js').then(function () {
     var offlineIndicator = $('#offline-indicator');
 
-    window.addEventListener('online',  function() {
-      offlineIndicator.addClass('hidden');
-    });
-
-    window.addEventListener('offline',  function() {
-      offlineIndicator.removeClass('hidden');
-    });
-
-    if (!navigator.onLine) {
-      offlineIndicator.removeClass('hidden');
+    function toggleOfflineIndicator() {
+      if (navigator.onLine)
+        offlineIndicator.addClass('hidden');
+      else
+        offlineIndicator.removeClass('hidden');
     }
 
-  }, function() {
+    window.addEventListener('online', toggleOfflineIndicator);
+
+    window.addEventListener('offline', toggleOfflineIndicator);
+
+    toggleOfflineIndicator();
+
+  }, function () {
     console.log('CLIENT: service worker registration failure.');
   });
 }

@@ -1,106 +1,28 @@
 ---
 layout: docs
 title: React JSX transform
-description:
+description: Turn JSX into React function calls.
 permalink: /docs/plugins/transform-react-jsx/
 package: babel-plugin-transform-react-jsx
 ---
 
 Turn JSX into React function calls
 
-## Example
+> You can also use React without using Babel: [React Without JSX](https://facebook.github.io/react/docs/react-without-jsx.html)
 
-### React
-
-**In**
-
-```javascript
-var profile = <div>
-  <img src="avatar.png" className="profile" />
-  <h3>{[user.firstName, user.lastName].join(' ')}</h3>
-</div>;
-```
-
-**Out**
-
-```javascript
-var profile = React.createElement("div", null,
-  React.createElement("img", { src: "avatar.png", className: "profile" }),
-  React.createElement("h3", null, [user.firstName, user.lastName].join(" "))
-);
-```
-
-### Custom
-
-**In**
-
-```javascript
-/** @jsx dom */
-
-var { dom } = require("deku");
-
-var profile = <div>
-  <img src="avatar.png" className="profile" />
-  <h3>{[user.firstName, user.lastName].join(' ')}</h3>
-</div>;
-```
-
-**Out**
-
-```javascript
-/** @jsx dom */
-
-var dom = require("deku").dom;
-
-var profile = dom( "div", null,
-  dom("img", { src: "avatar.png", className: "profile" }),
-  dom("h3", null, [user.firstName, user.lastName].join(" "))
-);
-```
-
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-transform-react-jsx
-```
-
-## Usage
-
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+One way to do this is by manually writing `React.createElement`, or aliasing it to something like `$`
 
 ```js
-// without options
-{
-  "plugins": ["transform-react-jsx"]
-}
-// with options
-{
-  "plugins": [
-    ["transform-react-jsx", {
-      "pragma": "dom" // default pragma is React.createElement
-    }]
-  ]
-}
+const React = require("react");
+const ReactDOM = require("react-dom");
+const $ = React.createElement;
+
+ReactDOM.render(
+  $("div", null, "Hello World"), // <div>Hello World</div>
+  document.getElementById("root")
+);
 ```
 
-### Via CLI
+Also checkout [WTF is JSX](https://jasonformat.com/wtf-is-jsx/) for an explanation of the syntax and how it's just a sugar for function calls.
 
-```sh
-$ babel --plugins transform-react-jsx script.js
-```
-
-### Via Node API
-
-```javascript
-require("babel-core").transform("code", {
-  plugins: ["transform-react-jsx"]
-});
-```
-
-## Options
-
-* `pragma` - Replace the function used when compiling JSX expressions (Defaults to `React.createElement`).
-  - Note that the `@jsx React.DOM` pragma has been deprecated as of React v0.12
-* `useBuiltIns` - When spreading props, use Object.assign instead of Babel's extend helper (Disabled by default).
+{% include package_readme.html %}

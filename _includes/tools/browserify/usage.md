@@ -1,7 +1,7 @@
 #### Via CLI
 
 ```sh
-$ browserify script.js -t babelify --outfile bundle.js
+browserify script.js -t babelify --outfile bundle.js
 ```
 
 #### Via Node API
@@ -25,12 +25,13 @@ browserify({ debug: true })
   .on("error", function (err) { console.log("Error: " + err.message); })
   .pipe(fs.createWriteStream("bundle.js"));
 ```
+
 #### Passing options
 
 **CLI**
 
 ```sh
-$ browserify -d -e script.js -t [ babelify --comments false ]
+browserify -d -e script.js -t [ babelify --comments false ]
 ```
 
 ##### Node API

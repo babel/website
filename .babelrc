@@ -1,0 +1,26 @@
+{
+  "env": {
+    "production": {
+      "plugins":[
+        "emotion"
+      ]
+    },
+    "development": {
+      "plugins": [
+        ["emotion", { sourceMap: true }]
+      ]
+    }
+  },
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 3 versions"]
+      }
+    }],
+    "react"
+  ],
+  "plugins": [
+    "transform-class-properties",
+    "transform-object-rest-spread"
+  ]
+}

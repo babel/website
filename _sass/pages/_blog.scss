@@ -10,10 +10,17 @@
 }
 
 .babel-blog-content {
+  line-height: $line-height-computed * 1.25;
   margin-top: 2em;
 
-  p {
+  ol,
+  p,
+  ul {
     margin-bottom: $line-height-computed;
+  }
+
+  li {
+    margin-bottom: $line-height-computed / 2;
   }
 
   img {
@@ -23,6 +30,7 @@
   h1, .h1,
   h2, .h2,
   h3, .h3 {
+    margin-bottom: $line-height-computed;
     margin-top: $line-height-computed * 2;
   }
 
@@ -53,19 +61,6 @@
   padding-bottom: $line-height-computed;
   border-bottom: 1px solid #eee;
   text-align: center;
-}
-
-.babel-share-buttons {
-  font-size: 10px;
-
-  .fb-share-button,
-  .twitter-share-button {
-    vertical-align: top;
-  }
-
-  .fb-share-button {
-    margin-right: 10px;
-  }
 }
 
 .babel-blog-title-label {

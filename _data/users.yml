@@ -229,9 +229,6 @@
 - name: Harmonic
   url: https://github.com/es6rocks/harmonic/
   logo: harmonic.svg
-- name: Snakeskin
-  url: https://github.com/kobezzza/Snakeskin/
-  logo: snakeskin.svg
 - name: Alianza Inc
   url: http://www.alianza.com/
   logo: alianza.png
@@ -458,7 +455,7 @@
   url: https://www.adpushup.com/
   logo: adpushup.png
 - name: clearTax
-  url: https://cleartax.in 
+  url: https://cleartax.in
   logo: cleartax.svg
 - name: TradingView
   url: https://www.tradingview.com/
@@ -472,3 +469,138 @@
 - name: EVO.company
   url: https://evo.company
   logo: evocompany.svg
+- name: pixiv
+  url: http://www.pixiv.net
+  logo: pixiv.svg
+- name: Streamroot
+  url: https://www.streamroot.io
+  logo: streamroot.svg
+- name: RentoMojo
+  url: https://www.rentomojo.com
+  logo: rentomojo.svg
+- name: Zimp
+  url: https://zimp.me
+  logo: zimp.svg
+- name: Disqus
+  url: https://www.disqus.com
+  logo: disqus.svg
+- name: RTBF.be
+  url: https://www.rtbf.be
+  logo: rtbf.svg
+- name: 9Technology
+  url: http://www.nineentertainmentco.com.au/brands/nine-digital
+  logo: 9tech-logo.svg
+- name: Feedzai
+  url: https://feedzai.com/
+  logo: feedzai.svg
+- name: Zesty.io
+  url: https://www.zesty.io/
+  logo: zestyio.svg
+- name: Shoes of Prey
+  url: https://www.shoesofprey.com
+  logo: shoesofprey.svg
+- name: Work & Co
+  url: https://work.co
+  logo: workandco.svg
+- name: Paralect
+  url: https://paralect.com
+  logo: paralect.svg
+- name: Just Eat
+  url: https://www.just-eat.com
+  logo: justeat.svg
+- name: Snapdeal
+  url: https://www.snapdeal.com
+  logo: snapdeal.svg
+- name: Microsoft
+  url: https://www.microsoft.com
+  logo: microsoft.svg
+- name: Indigo
+  url: https://www.chapters.indigo.ca/
+  logo: indigo.svg
+- name: Namely
+  url: https://www.namely.com/
+  logo: namely.svg
+- name: Bevry
+  url: https://bevry.me
+  logo: bevry.svg
+- name: Concur
+  url: https://www.concur.com/
+  logo: concur.svg
+- name: Tanda
+  url: https://www.tanda.co/
+  logo: tanda.svg
+- name: Directlyrics
+  url: http://www.directlyrics.com/join
+  logo: directlyrics.svg
+- name: Umanlife
+  url: http://us.umanlife.com
+  logo: umanlife.svg
+- name: Hooroo
+  url: https://hooroo.com/
+  logo: hooroo.svg
+- name: The New York Times
+  url: https://nytimes.com/
+  logo: nytimes.svg
+- name: Wave
+  url: https://waveapps.com
+  logo: wave.svg
+- name: Shelf.io
+  url: https://shelf.io/
+  logo: shelfio.svg
+- name: Nau Studio
+  url: https://naustud.io
+  logo: naustudio.svg
+- name: Triip
+  url: https://triip.me
+  logo: triip.svg
+- name: Overblog
+  url: https://over-blog.com
+  logo: overblog.svg
+- name: EXANTE
+  url: https://exante.eu
+  logo: exante.svg
+- name: Insider.pro
+  url: https://insider.pro
+  logo: insider.svg
+- name: JustWatch
+  url: https://www.justwatch.com
+  logo: justwatch.svg
+- name: HIJUP
+  url: https://www.hijup.com
+  logo: hijup.svg
+- name: Jane
+  url: https://jane.com
+  logo: jane.svg
+- name: Jobtalk
+  url: https://jobtalk.jp/
+  logo: jobtalk.svg
+- name: LIGADIGITAL
+  url: https://www.ligadigital.com/
+  logo: ligadigital.svg
+- name: Bitovi
+  url: https://www.bitovi.com/
+  logo: bitovi-logo.svg
+- name: Hootsuite
+  url: https://hootsuite.com/
+  logo: hootsuite.svg
+- name: SeatGeek
+  url: https://seatgeek.com
+  logo: seatgeek.svg
+- name: Hux
+  url: https://hux.com
+  logo: hux.svg
+- name: LeSalon
+  url: https://lesalon.com
+  logo: lesalon.svg
+- name: Refinery29
+  url: http://refinery29.com
+  logo: refinery29.svg
+- name: Aha!
+  url: https://www.aha.io
+  logo: aha.svg
+- name: Hashnode
+  url: https://hashnode.com
+  logo: hashnode.svg
+- name: Teachoo
+  url: https://www.teachoo.com
+  logo: teachoo.svg

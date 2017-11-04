@@ -3,7 +3,6 @@ layout: docs
 title: Caveats
 description: Just some things to keep in mind when using Babel.
 permalink: /docs/usage/caveats/
-redirect_from: /caveats.html
 ---
 
 ## Polyfills
@@ -19,7 +18,7 @@ You may alternatively/selectively include what you need:
 | Array destructuring, For Of | `Symbol`, `prototype[Symbol.iterator]`                                                |
 | Spread                      | `Array.from`                                                                          |
 
-There is also the `loose` option for some of these plugins. 
+There is also the `loose` option for some of these plugins.
 
 ## Classes
 

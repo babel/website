@@ -4,9 +4,24 @@ tagline: The compiler for writing next generation JavaScript
 description: The compiler for writing next generation JavaScript
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://babeljs.io" # the base hostname & protocol for your site
-# twitter_username: jekyllrb
+twitter_username: babeljs
 github_username: babel
-exclude: ["node_modules"]
+
+exclude:
+  - vendor
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - CNAME
+  - Makefile
+  - Rakefile
+  - package.json
+  - js/repl/node_modules
+
+include:
+  - _redirects
 
 # Build settings
 highlighter: rouge
@@ -19,10 +34,12 @@ kramdown:
 # Blog Settings
 permalink: /blog/:year/:month/:day/:title
 paginate: 1
+paginate_path: "/blog/page:num/"
 
-gems:
-  - jekyll-redirect-from
+plugins:
   - jekyll-paginate
+  - jekyll-sitemap
+  - jemoji
 
 default_js:
   - "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
@@ -33,6 +50,7 @@ default_js:
   - "/scripts/search.js"
   - "/scripts/service-worker.init.js"
   - "/scripts/clipboard.js"
+  - "/scripts/open-in-repl.js"
 
 # Compress HTML
 compress_html:
@@ -41,3 +59,6 @@ compress_html:
   # endings: all
   profile: false
   startings: [head, body]
+
+# Get consistent pagination links with production
+timezone: "-0500"

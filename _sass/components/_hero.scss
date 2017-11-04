@@ -1,0 +1,217 @@
+.hero {
+  @include align-items(center);
+  @include flexbox;
+  @include justify-content(center);
+  background: $babel-dark-gray;
+  color: #FFF;
+  margin-bottom: 20px;
+  overflow: hidden;
+  // Not ideal, but for now, match bootstrap's container side padding
+  padding: 4em 15px;
+  position: relative;
+
+  @media (min-width: $screen-md-min) {
+    padding: 6em 15px;
+  }
+
+  &::before {
+    background: url(../images/logo.svg) no-repeat center center;
+    background-size: cover;
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    opacity: 0.3;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  &__content {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 50px;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 28px;
+    }
+  }
+
+  h1 {
+    color: $babel-yellow;
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 63px;
+    }
+  }
+}
+
+.hero-actions {
+  margin: 0 auto;
+  max-width: 500px;
+
+  a,
+  a:visited {
+    @include transition(all 0.25s ease-out);
+    border: 1px solid $babel-yellow;
+    border-radius: 4px;
+    display: block;
+    font-weight: bold;
+    font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 10px 32px;
+    text-decoration: none;
+  }
+
+  &__links {
+    @include flexbox;
+    font-size: 20px;
+    margin-bottom: 20px;
+
+    @media (min-width: $screen-md-min) {
+      font-size: 36px;
+    }
+
+    a,
+    a:visited {
+      background: $babel-dark-gray;
+      color: $babel-yellow;
+      @include flex(1 1 50%);
+
+      &:hover {
+        background: $babel-yellow;
+        color: $babel-dark-gray;
+        border-color: $babel-yellow;
+      }
+
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  &-blog {
+    a,
+    a:visited {
+      border-color: #FFF;
+      color: #FFF;
+      padding: 20px 32px;
+
+      &:hover {
+        background: #FFF;
+        color: $babel-dark-gray;
+      }
+    }
+  }
+}
+
+.hero-repl {
+  border: 1px solid #4F504D;
+  border-radius: 4px;
+  margin-bottom: 32px;
+  opacity: 0;
+  @include transition(opacity .25s ease-out);
+
+  &--visible {
+    opacity: 1;
+  }
+
+  &__error {
+    background: rgb(112, 33, 65);
+    bottom: 0;
+    font-family: monospace;
+    font-size: 1.25rem;
+    left: 0;
+    opacity: 0;
+    overflow-y: scroll;
+    padding: 16px 24px;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    top: 40px;
+    white-space: pre;
+    @include transition(opacity .25s ease-out);
+
+    &--visible {
+      opacity: 1;
+    }
+  }
+     
+  &__footer {   
+    background: #353634;    
+    border: 1px solid #4F504D;    
+    border-radius: 0 0 4px 4px;   
+    color: #B7B8B7;   
+    
+    a {   
+      color: #B7B8B7;   
+      display: block;   
+      padding: 8px 0;   
+      text-decoration: underline;   
+      @include transition(all 0.25s ease-out);    
+    
+      &:hover {   
+        background: #4F504D;    
+        color: #FFF;    
+      }   
+    }   
+  }
+
+  &__editor {
+    @include flexbox;
+    @include flex-direction(column);
+
+    @media (min-width: $screen-md-min) {
+      @include flex-direction(row);
+    }
+  }
+
+  &__pane {
+    @include flex(1 1 50%);
+    background: #353634;
+    border: 1px solid #4F504D;
+    position: relative;
+
+    &--left {
+      border-radius: 4px 0 0 0;
+    }
+
+    &--right {
+      border-radius: 0 4px 0 0;
+    }
+  }
+
+  &__code {
+    background: #3F403E;
+    font-family: monospace;
+    font-size: 1.25rem;
+    height: 125px;
+    text-align: left;
+
+    @media (min-width: $screen-md-min) {
+      font-size: 1.5rem;
+      height: 200px;
+    }
+  }
+
+  h3 {
+    color: #B7B8B7;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 12px 24px;
+    text-align: center;
+
+    @media (min-width: $screen-md-min) {
+      text-align: left;
+    }
+  }
+}

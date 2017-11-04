@@ -8,18 +8,4 @@ package: babel-plugin-syntax-function-sent
 
 This plugin allows Babel to parse the [`function.sent` meta property](https://github.com/allenwb/ESideas/blob/master/Generator%20metaproperty.md)
 
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-syntax-function-sent
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-function-sent"]
-}
-```
+{% include package_readme.html %}

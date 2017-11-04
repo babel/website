@@ -28,9 +28,9 @@ gulp.task("default", function () {
     .pipe(gulp.dest("dist"));
 });
 ```
+
 <blockquote class="babel-callout babel-callout-info">
   <p>
     For more information see the <a href="https://github.com/babel/gulp-babel">babel/gulp-babel repo</a>.
   </p>
 </blockquote>
-

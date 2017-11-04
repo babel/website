@@ -1,12 +1,3 @@
-pre,
-pre.highlight {
-  border: none;
-  background: desaturate(lighten($babel-yellow, 31%), 10%);
-  @include box-shadow(none);
-  color: $babel-dark-gray;
-  padding: 1em;
-}
-
 table {
   @extend .table;
   @extend .table-bordered;

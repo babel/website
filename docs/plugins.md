@@ -3,9 +3,6 @@ layout: docs
 title: Plugins
 description:
 permalink: /docs/plugins/
-redirect_from:
- - /docs/advanced/plugins/
- - /docs/usage/modules/
 ---
 
 Babel is a compiler. At a high level, it has 3 stages that it runs code in: parsing, transforming, and generation (like many other compilers).
@@ -26,14 +23,16 @@ Don't want to assemble your own set of plugins? No problem! Presets are sharable
 
 We've assembled some for common environments:
 
-> Each yearly preset only compiles what was ratified in that year. Use `preset-latest` to transform all yearly presets
+> Each yearly preset only compiles what was ratified in that year.
+> `babel-preset-env` replaces es2015, es2016, es2017, latest
 
-- [env (new)](https://github.com/babel/babel-preset-env)
-- [latest](/docs/plugins/preset-latest/)
-- [es2017](/docs/plugins/preset-es2017/)
-- [es2016](/docs/plugins/preset-es2016/)
+- [env](/docs/plugins/preset-env/)
 - [es2015](/docs/plugins/preset-es2015/)
+- [es2016](/docs/plugins/preset-es2016/)
+- [es2017](/docs/plugins/preset-es2017/)
+- [latest (deprecated in favor of env)](/docs/plugins/preset-latest/)
 - [react](/docs/plugins/preset-react/)
+- [flow](/docs/plugins/preset-flow/)
 
 > Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
 
@@ -50,15 +49,17 @@ Any transforms in stage-x presets are changes to the language that haven't been 
   </p>
 </blockquote>
 
-The [TC39](https://github.com/tc39) categorises proposals into 4 stages:
+The [TC39](https://github.com/tc39) categorizes proposals into the following stages:
 
-- [stage-0](/docs/plugins/preset-stage-0) - Strawman: just an idea, possible Babel plugin.
-- [stage-1](/docs/plugins/preset-stage-1) - Proposal: this is worth working on.
-- [stage-2](/docs/plugins/preset-stage-2) - Draft: initial spec.
-- [stage-3](/docs/plugins/preset-stage-3) - Candidate: complete spec and initial browser implementations.
-- stage-4 - Finished: will be added to the next yearly release.
+- [Stage 0](/docs/plugins/preset-stage-0/) - Strawman: just an idea, possible Babel plugin.
+- [Stage 1](/docs/plugins/preset-stage-1/) - Proposal: this is worth working on.
+- [Stage 2](/docs/plugins/preset-stage-2/) - Draft: initial spec.
+- [Stage 3](/docs/plugins/preset-stage-3/) - Candidate: complete spec and initial browser implementations.
+- Stage 4 - Finished: will be added to the next yearly release.
 
-Also check out the [current TC39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
+For more information, be sure to check out the [current TC39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
+
+The TC39 stage process is also explained in detail across a few posts by Yehuda Katz (@wycatz) over at [thefeedbackloop.xyz](https://thefeedbackloop.xyz): [Stage 0 and 1](https://thefeedbackloop.xyz/tc39-a-process-sketch-stages-0-and-1/), [Stage 2](https://thefeedbackloop.xyz/tc39-process-sketch-stage-2/), [Stage 3](https://thefeedbackloop.xyz/tc39-process-sketch-stage-3/), and Stage 4 coming soon.
 
 ## Transform Plugins
 
@@ -71,19 +72,22 @@ These plugins apply transformations to your code.
 </blockquote>
 
 ### ES3
+
 - [es3-member-expression-literals](/docs/plugins/transform-es3-member-expression-literals/)
 - [es3-property-literals](/docs/plugins/transform-es3-property-literals/)
 
 ### ES5
+
 - [es5-property-mutators](/docs/plugins/transform-es5-property-mutators/)
 
 ### ES2015
+
+- [check-es2015-constants](/docs/plugins/check-es2015-constants/)
 - [es2015-arrow-functions](/docs/plugins/transform-es2015-arrow-functions/)
 - [es2015-block-scoped-functions](/docs/plugins/transform-es2015-block-scoped-functions/)
 - [es2015-block-scoping](/docs/plugins/transform-es2015-block-scoping/)
 - [es2015-classes](/docs/plugins/transform-es2015-classes/)
 - [es2015-computed-properties](/docs/plugins/transform-es2015-computed-properties/)
-- [es2015-constants](/docs/plugins/check-es2015-constants/)
 - [es2015-destructuring](/docs/plugins/transform-es2015-destructuring/)
 - [es2015-duplicate-keys](/docs/plugins/transform-es2015-duplicate-keys/)
 - [es2015-for-of](/docs/plugins/transform-es2015-for-of/)
@@ -99,18 +103,22 @@ These plugins apply transformations to your code.
 - [es2015-unicode-regex](/docs/plugins/transform-es2015-unicode-regex/)
 
 ### ES2016
+
 - [exponentiation-operator](/docs/plugins/transform-exponentiation-operator/)
 
 ### ES2017
+
 - [async-to-generator](/docs/plugins/transform-async-to-generator/)
 
 ### Modules
+
 - [es2015-modules-amd](/docs/plugins/transform-es2015-modules-amd/)
 - [es2015-modules-commonjs](/docs/plugins/transform-es2015-modules-commonjs/)
 - [es2015-modules-systemjs](/docs/plugins/transform-es2015-modules-systemjs/)
 - [es2015-modules-umd](/docs/plugins/transform-es2015-modules-umd/)
 
 ### Experimental
+
 - [async-generator-functions](/docs/plugins/transform-async-generator-functions/)
 - [async-to-module-method](/docs/plugins/transform-async-to-module-method/)
 - [class-constructor-call](/docs/plugins/transform-class-constructor-call/) (deprecated)
@@ -123,22 +131,35 @@ These plugins apply transformations to your code.
 
 ### Minification
 
-Check out our [minifier based on Babel](https://github.com/babel/babili)!
+Check out our [minifier based on Babel](https://github.com/babel/minify)!
 
 These plugins are in the minify repo.
 
+- [inline-environment-variables](/docs/plugins/transform-inline-environment-variables/)
+- [inline-consecutive-adds](/docs/plugins/transform-inline-consecutive-adds/)
 - [member-expression-literals](/docs/plugins/transform-member-expression-literals/)
 - [merge-sibling-variables](/docs/plugins/transform-merge-sibling-variables/)
 - [minify-booleans](/docs/plugins/transform-minify-booleans/)
+- [minify-constant-folding](/docs/plugins/minify-constant-folding/)
+- [minify-dead-code-elimination](/docs/plugins/minify-dead-code-elimination/)
+- [minify-flip-comparisons](/docs/plugins/minify-flip-comparisons/)
+- [minify-guarded-expressions](/docs/plugins/minify-guarded-expressions/)
+- [minify-infinity](/docs/plugins/minify-infinity/)
+- [minify-mangle-names](/docs/plugins/minify-mangle-names/)
+- [minify-numeric-literals](/docs/plugins/minify-numeric-literals/)
+- [minify-replace](/docs/plugins/minify-replace/)
+- [minify-simplify](/docs/plugins/minify-simplify/)
+- [minify-type-constructors](/docs/plugins/minify-type-constructors/)
+- [node-env-inline](/docs/plugins/transform-node-env-inline/)
 - [property-literals](/docs/plugins/transform-property-literals/)
+- [regexp-constructors](/docs/plugins/transform-regexp-constructors/)
 - [remove-console](/docs/plugins/transform-remove-console/)
 - [remove-debugger](/docs/plugins/transform-remove-debugger/)
 - [simplify-comparison-operators](/docs/plugins/transform-simplify-comparison-operators/)
 - [undefined-to-void](/docs/plugins/transform-undefined-to-void/)
-- [inline-environment-variables](/docs/plugins/transform-inline-environment-variables/)
-- [node-env-inline](/docs/plugins/transform-node-env-inline/)
 
 ### React
+
 - [react-constant-elements](/docs/plugins/transform-react-constant-elements/)
 - [react-display-name](/docs/plugins/transform-react-display-name/)
 - [react-inline-elements](/docs/plugins/transform-react-inline-elements/)
@@ -148,6 +169,7 @@ These plugins are in the minify repo.
 - [react-jsx-source](/docs/plugins/transform-react-jsx-source/)
 
 ### Other
+
 - [eval](/docs/plugins/transform-eval/)
 - [flow-comments](/docs/plugins/transform-flow-comments/)
 - [flow-strip-types](/docs/plugins/transform-flow-strip-types/)
@@ -162,7 +184,6 @@ These plugins are in the minify repo.
 ## Misc Plugins
 
 - [external-helpers](/docs/plugins/external-helpers/)
-- [undeclared-variables-check](/docs/plugins/undeclared-variables-check/)
 
 ## Syntax Plugins
 
@@ -172,7 +193,7 @@ These plugins allow Babel to **parse** specific types of syntax (not transform).
 
 You can also provide any [`plugins` option](https://github.com/babel/babylon/#plugins) from babylon:
 
-```js
+```json
 // .babelrc
 {
   "parserOpts": {
@@ -182,10 +203,12 @@ You can also provide any [`plugins` option](https://github.com/babel/babylon/#pl
 ```
 
 ### Experimental
+
 - [async-generators](/docs/plugins/syntax-async-generators/)
 - [class-properties](/docs/plugins/syntax-class-properties/)
 - [decorators](/docs/plugins/syntax-decorators/)
 - [do-expressions](/docs/plugins/syntax-do-expressions/)
+- [dynamic-import](/docs/plugins/syntax-dynamic-import/)
 - [export-extensions](/docs/plugins/syntax-export-extensions/)
 - [flow](/docs/plugins/syntax-flow/)
 - [function-bind](/docs/plugins/syntax-function-bind/)
@@ -202,6 +225,7 @@ These plugins have no effect anymore, as a newer babylon version enabled them by
 - [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas/) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
 
 ### Deprecated
+
 - [class-constructor-call](/docs/plugins/syntax-class-constructor-call/)
 
 ## Plugin/Preset Paths
@@ -228,14 +252,13 @@ vs
 
 `"presets": ["myPreset"]`
 
-This also works with scoped packages
+This also works with scoped packages:
 
-```js
-{
-  presets: ["@org/babel-preset-name"], // actual package
-  presets: ["@org/name"] // shorthand name
-}
-```
+`"presets": ["@org/babel-preset-name"]`
+
+shorthand
+
+`"presets": ["@org/name"]`
 
 ## Plugin/Preset Ordering
 
@@ -247,29 +270,42 @@ This means if two transforms both visit the "Program" node, the transforms will 
 - Plugin ordering is first to last.
 - Preset ordering is reversed (last to first).
 
-```js
-"plugins": [
-  "transform-decorators-legacy", // will run first
-  "transform-class-properties" // will run second
-]
+For example:
+
+```json
+{
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties"
+  ]
+}
 ```
 
-> Yes this is confusing, see [babel/notes #2](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal).
-> I believe the reason why (for backwards compatability) is that most users had listed "es2015" first and "stage-0" second. stage-0 would run before es2015.
+Will run `transform-decorators-legacy` then `transform-class-properties`.
 
-```js
-"presets": [
-  "es2015", // will run third
-  "react", // will run second
-  "stage-2" // will run first
-]
+It is important to remember that with presets, the order is _reversed_. The following:
+
+```json
+{
+  "presets": [
+    "es2015",
+    "react",
+    "stage-2"
+  ]
+}
 ```
+
+Will run in the following order: `stage-2`, `react`, then `es2015`.
+
+This is mostly for ensuring backwards compatibility, since most users list "es2015" before "stage-0". For more information, see [notes on potential traversal API changes](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal).
 
 ## Plugin/Preset Options
 
-Plugins and Presets can both specify options. You can do so in your config by wrapping it in an array and providing a options object. For example:
+Both plugins and presets can have options specified by wrapping the name and an options object in an array inside your config.
 
-```js
+For example:
+
+```json
 {
   "plugins": [
     ["transform-async-to-module-method", {
@@ -278,12 +314,17 @@ Plugins and Presets can both specify options. You can do so in your config by wr
     }]
   ]
 }
+```
 
-// notice the wrapping array around the preset and option
+Settings options for presets works exactly the same:
 
+```json
 {
   "presets": [
-    ["es2015", { "loose": true, "modules": false }]
+    ["es2015", {
+      "loose": true,
+      "modules": false
+    }]
   ]
 }
 ```
@@ -296,13 +337,13 @@ to learn how to create your own plugins.
 The simple plugin that reverses names (from the homepage):
 
 ```js
-export default function ({types: t}) {
+export default function () {
   return {
     visitor: {
       Identifier(path) {
-        let name = path.node.name;
+        const name = path.node.name;
         // reverse the name: JavaScript -> tpircSavaJ
-        path.node.name = name.split('').reverse().join('');
+        path.node.name = name.split("").reverse().join("");
       }
     }
   };
@@ -317,11 +358,11 @@ To make your own preset, you just need to export a config.
 // Presets can contain other presets, and plugins with options.
 module.exports = {
   presets: [
-    require('babel-preset-es2015'),
+    require("babel-preset-es2015"),
   ],
   plugins: [
-    [require('babel-plugin-transform-es2015-template-literals'), { spec: true }],
-    require('babel-plugin-transform-es3-member-expression-literals'),
+    [require("babel-plugin-transform-es2015-template-literals"), { spec: true }],
+    require("babel-plugin-transform-es3-member-expression-literals"),
   ],
 };
 ```

@@ -1,0 +1,28 @@
+<div class="row">
+  <h3 class="team__name col-md-12">{{ include.title }}</h3>
+  {% for member in include.members %}
+    <div class="col-md-3 col-sm-4 col-xs-12 team__member">
+      <img class="member__image" alt="{{member.name}}" src="https://avatars.githubusercontent.com/{{member.github}}" />
+      <p class="member__name">{{ member.name }}</p>
+      {% if member.github %}
+        <p>{% include icons/github.svg %}<a href="https://www.github.com/{{member.github}}" target="_blank">{{member.github}}</a></p>
+      {% endif %}
+      {% if member.twitter %}
+        <p>{% include icons/twitter.svg %}<a href="https://twitter.com/{{member.twitter}}" target="_blank">{{member.twitter}}</a></p>
+      {% endif %}
+      {% for area_id in member.areas %}
+        {% assign area = site.data.areas[area_id] %}  
+        <span class="member__area">
+          <a href="{{ area.url }}" title="{{ area.title }}" target="_blank">{{ area.text }}</a>
+        </span>
+      {% endfor %}
+      {% for org in member.orgs %}
+        <span class="member__org">
+          <a href="https://www.github.com/{{ org }}" target="_blank">
+            <img class="org__image" title="{{ org }}" alt="{{ org }}" src="https://avatars.githubusercontent.com/{{ org }}" />
+          </a>
+        </span>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>

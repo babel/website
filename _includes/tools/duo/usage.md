@@ -1,7 +1,7 @@
 #### Via CLI
 
 ```sh
-$ duo --use duo-babel
+duo --use duo-babel
 ```
 
 #### Via Node API

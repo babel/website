@@ -21,7 +21,7 @@ instead just point them to a reference contained within the external helpers.
 To build the helpers, you will need to use `babel-cli`. You can install `babel-cli` with:
 
 ```sh
-$ npm install babel-cli --save-dev
+npm install babel-cli --save-dev
 ```
 
 This will add `babel-external-helpers` to your .bin.
@@ -29,7 +29,7 @@ This will add `babel-external-helpers` to your .bin.
 You can output the file using
 
 ```sh
-$ ./node_modules/.bin/babel-external-helpers [options] > helpers.js 
+./node_modules/.bin/babel-external-helpers [options] > helpers.js
 ```
 
 You need to import/inject this file before executing your own code (instructions below).
@@ -73,18 +73,4 @@ This injects the external helpers into `global`.
 
 In a browser environment you can use a `<script>` tag to inject the `babelHelpers` into the `window` object.
 
-## Installation
-
-```sh
-$ npm install babel-plugin-external-helpers
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["external-helpers"]
-}
-```
+{% include package_readme.html %}

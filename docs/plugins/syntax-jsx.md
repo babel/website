@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Syntax JSX
-description:
+description: Allow parsing of JSX syntax
 permalink: /docs/plugins/syntax-jsx/
 package: babel-plugin-syntax-jsx
 ---
@@ -16,18 +16,4 @@ package: babel-plugin-syntax-jsx
 
 This plugin allows Babel to parse [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html).
 
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-syntax-jsx
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-jsx"]
-}
-```
+{% include package_readme.html %}

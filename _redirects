@@ -1,0 +1,35 @@
+---
+layout: null
+---
+
+# REPL builds, to preview pull requests
+/repl/build/:build /repl/ 200
+# Previous versions of the REPL
+/repl/version/:version /repl/ 200
+
+# Ported from redirect_from
+
+/docs/using-babel/                  /docs/setup/
+/plugins.html                       /docs/setup/
+/docs/using-6to5/                   /docs/setup/
+/docs/usage/browser/                /docs/setup/
+/browser.html                       /docs/setup/
+/docs/core-packages/babel-register/ /docs/usage/babel-register/
+/docs/usage/require/                /docs/usage/babel-register/
+/docs/usage/options/                /docs/usage/api/
+/docs/advanced/plugins/             /docs/plugins/
+/docs/usage/modules/                /docs/plugins/
+/caveats.html                       /docs/usage/caveats/
+/usage.html                         /docs/usage/cli/
+/docs/faq/                          /faq/
+/php.html                           /php/
+/repl.html                          /repl/
+/repl_old.html                      /repl/
+/repl_old                           /repl/
+/7/                                 /repl/build/7.0/
+/7.html                             /repl/build/7.0/
+/docs/learn-es6/                    /learn-es2015/
+/docs/learn-es2015/                 /learn-es2015/
+/features.html                      /learn-es2015/
+/docs/tour/                         /learn-es2015/
+/docs/plugins/transform-es2015-constants /docs/plugins/check-es2015-constants/

@@ -2,6 +2,7 @@
 layout: post
 title:  "Setting up Babel 6"
 author: James Kyle
+author_url: "https://twitter.com/thejameskyle"
 date:   2015-10-31 17:30:00
 categories: announcements
 share_text: "Setting up Babel 6"
@@ -82,12 +83,12 @@ $ npm install --save-dev babel-preset-es2015
 To Include all Javascript versions:
 
 ```sh
-$ npm install --save-dev babel-preset-latest
+$ npm install --save-dev babel-preset-env
 ```
 
 ```js
 {
-  "presets": ["latest"]
+  "presets": ["env"]
 }
 ```
 

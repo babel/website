@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Syntax flow
-description:
+description: Allow parsing of the flow syntax
 permalink: /docs/plugins/syntax-flow/
 package: babel-plugin-syntax-flow
 ---
@@ -16,18 +16,4 @@ package: babel-plugin-syntax-flow
 
 This plugin allows Babel to parse [flow syntax](http://flowtype.org/docs/quick-reference.html#_).
 
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-syntax-flow
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["syntax-flow"]
-}
-```
+{% include package_readme.html %}

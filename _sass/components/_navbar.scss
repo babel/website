@@ -14,3 +14,31 @@
     padding-right: 10px;
   }
 }
+
+.group-name {
+  border-bottom: 1px solid #E0E0E0;
+  padding: 0 0 8px;
+  margin: 17px 20px 8px;
+
+  @media (max-width: $grid-float-breakpoint-max) {
+    border-bottom-color: #BFAA42;
+    margin-left: 25px;
+    margin-right: 15px;
+  }
+}
+
+.nav-social {
+  @include align-items(center);
+  @include flexbox;
+
+  > li > a {
+    @include flexbox;
+  }
+
+  svg {
+    display: block;
+    fill: currentColor;
+    height: 16px;
+    width: 16px;
+  }
+}

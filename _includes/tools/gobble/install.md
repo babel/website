@@ -1,3 +1,3 @@
 ```sh
-$ npm install --save-dev gobble-babel
+npm install --save-dev gobble-babel
 ```

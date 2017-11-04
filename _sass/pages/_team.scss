@@ -1,0 +1,47 @@
+.team {
+  &__name, &__member {
+    margin-bottom: 30px;
+  }
+
+  &__member {
+    height: 100px;
+  }
+
+  svg {
+    height: 16px;
+    width: 16px;
+    vertical-align: top;
+  }
+
+  p {
+    margin-bottom: 7px;
+  }
+
+  .member {
+    &__info {
+      float: left;
+    }
+
+    &__name {
+      font-weight: 600;
+    }
+
+    &__image {
+      width: 80px;
+      height: 80px;
+      border-radius: 5px;
+      float: left;
+      margin-right: 20px;
+    }
+
+    &__area {
+      font-size: 1.2em;
+    }
+  }
+
+  .org__image {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+  }
+}

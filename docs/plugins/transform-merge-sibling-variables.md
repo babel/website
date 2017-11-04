@@ -1,41 +1,10 @@
 ---
 layout: docs
 title: Merge sibling variables transform
-description:
+description: Merge sibling variables into one
 permalink: /docs/plugins/transform-merge-sibling-variables/
 package: babel-plugin-transform-merge-sibling-variables
+package_source: babel-minify
 ---
 
-This plugin allows Babel to merge sibling variable declarations.
-
-## Example
-
-**In**
-
-```javascript
-var foo = "bar";
-var bar = "foo";
-```
-
-**Out**
-
-```javascript
-var foo = "bar",
-    bar = "foo";
-```
-
-## Installation
-
-```sh
-$ npm install --save-dev babel-plugin-transform-merge-sibling-variables
-```
-
-## Usage
-
-Add the following line to your `.babelrc` file:
-
-```json
-{
-  "plugins": ["transform-merge-sibling-variables"]
-}
-```
+{% include package_readme.html %}

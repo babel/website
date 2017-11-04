@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Class constructor call
-description:
+description: Allow parsing of call constructors.
 permalink: /docs/plugins/syntax-class-constructor-call/
 package: babel-plugin-syntax-class-constructor-call
 ---

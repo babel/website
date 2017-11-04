@@ -2,6 +2,7 @@
 layout: post
 title:  "Babel <3 React"
 author: James Kyle
+author_url: "https://twitter.com/thejameskyle"
 date:   2015-02-23 10:00:00
 categories: announcements
 share_text: "Babel <3 React"

@@ -2,6 +2,7 @@
 layout: post
 title:  "React on ES6+"
 author: Steven Luscher
+author_url: "https://twitter.com/steveluscher"
 date:   2015-06-07 17:00:00
 categories: announcements
 share_text: "React on ES6+"
@@ -191,9 +192,9 @@ Often when composing components, we might want to pass down *most* of a parent c
 ```js
 class AutoloadingPostsGrid extends React.Component {
   render() {
-    var {
+    const {
       className,
-      ...others,  // contains all properties of this.props except for className
+      ...others  // contains all properties of this.props except for className
     } = this.props;
     return (
       <div className={className}>

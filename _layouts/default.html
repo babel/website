@@ -3,7 +3,7 @@ layout: compress
 ---
 
 <!DOCTYPE html>
-<html lang="en" {% if page.fullscreen %}class="babel-fullscreen"{% endif %} class="no-js">
+<html lang="en" class="{% if page.fullscreen %}babel-fullscreen {% endif %}no-js">
 
   {% include head.html %}
 
@@ -13,7 +13,11 @@ layout: compress
 
     {{ content }}
 
-    {% include footer.html %}
+    {% if page.hide_footer %}
+      {% include scripts.html %}
+    {% else %}
+      {% include footer.html %}
+    {% endif %}
 
   </body>
 

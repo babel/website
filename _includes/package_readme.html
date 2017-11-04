@@ -1,12 +1,5 @@
-{% if include.from %}
-  {% assign from = include.from %}
-{% else %}
-  {% assign from = "babel" %}
-{% endif %}
-
-
 {% capture readme %}
-    {% include {{ from }}/packages/{{ page.package }}/README.md %}
+  {% include readmes/{{ page.package }}.md %}
 {% endcapture %}
 
 {{ readme
@@ -14,6 +7,6 @@
     | split: "<br />"
     | shift | shift | shift | shift
     | join: "<br />"
-    | strip_html
+    | remove: "<br />"
     | markdownify
 }}

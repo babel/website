@@ -20,7 +20,13 @@ custom_js:
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-push-2 babel-blog-content">
-      <p class="small text-center text-muted">Posted {{ page.date | date: "%b %-d, %Y" }} by {{ page.author }}{% if page.meta %} · {{ page.meta }}{% endif %}</p>
+      <p class="small text-center text-muted">Posted {{ page.date | date: "%b %-d, %Y" }} by
+      {% if page.author_url %}
+        <a href="{{page.author_url}}">{{page.author}}</a>
+      {% else %}
+        {{page.author}}
+      {% endif %}
+      {% if page.meta %} · {{ page.meta }}{% endif %}</p>
 
       {% if page.guest_post %}
         <blockquote class="babel-callout babel-callout-info">
@@ -32,23 +38,14 @@ custom_js:
 
       {{content}}
 
-      <hr>
-
-      <div class="babel-share-buttons">
-        <div class="fb-share-button" data-layout="button_count"></div>
-        <a class="twitter-share-button" href="https://twitter.com/share" data-via="babeljs" data-text="{% if page.share_text %}{{page.share_text}}{% else %}{{page.title}}{% endif %}">Tweet</a>
-      </div>
-
-      <div id="fb-root"></div>
-
       <!-- Discourse Embed -->
-      <h2 id="community-discussion" class="page-header">Community Discussion</h2>
+      <h2 id="community-discussion">Community Discussion</h2>
 
       <div id="discourse-comments"></div>
 
       <script type="text/javascript">
         DiscourseEmbed = { discourseUrl: 'https://discuss.babeljs.io/',
-                           discourseEmbedUrl: 'https://babeljs.io{{page.permalink}}'};
+                           discourseEmbedUrl: 'https://babeljs.io{{page.url}}'};
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;

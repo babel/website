@@ -3,10 +3,6 @@ layout: page
 title: Using Babel
 description: How to use Babel with your tool of choice
 permalink: /docs/setup/
-redirect_from:
- - /docs/using-babel/
- - /plugins.html
- - /docs/using-6to5/
 custom_js_with_timestamps:
 - tools.js
 ---
@@ -46,13 +42,15 @@ custom_js_with_timestamps:
       </p>
 
       <p>
-        To start, you can use the the <a href="https://babeljs.io/docs/plugins/preset-latest/">latest preset</a>, which enables transforms for ES2015+
+        To start, you can use the <a href="https://babeljs.io/docs/plugins/preset-env/">env preset</a>, which enables transforms for ES2015+
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
-{% highlight js %}
-npm install babel-preset-latest --save-dev
-{% endhighlight %}
+<div markdown="1">
+```shell
+npm install babel-preset-env --save-dev
+```
+</div>
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
       <p>
@@ -60,16 +58,27 @@ npm install babel-preset-latest --save-dev
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
-{% highlight json %}
+<div markdown="1">
+```json
 {
-  "presets": ["latest"]
+  "presets": ["env"]
 }
-{% endhighlight %}
+```
+</div>
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
       <p>
-        <strong>Note</strong>: Running a Babel 6.x project using npm 2.x can cause performance problems because of the way npm 2.x installs dependencies. This problem can be eliminated by either switching to npm 3.x or running npm 2.x with the <a href="https://docs.npmjs.com/cli/dedupe">dedupe</a> flag. To check what version of npm you have run <div class="highlight"><pre>npm --version</pre></div>
+        <strong>Note</strong>: Running a Babel 6.x project using npm 2.x can cause performance problems because of the way npm 2.x installs dependencies. This problem can be eliminated by either switching to npm 3.x or running npm 2.x with the <a href="https://docs.npmjs.com/cli/dedupe">dedupe</a> flag. To check what version of npm you have run
       </p>
+
+<!--lint disable no-shortcut-reference-link, no-undefined-references-->
+<div markdown="1">
+```shell
+npm --version
+```
+</div>
+<!--lint enable no-shortcut-reference-link, no-undefined-references-->
+
     </div>
   </div>
 </div>
