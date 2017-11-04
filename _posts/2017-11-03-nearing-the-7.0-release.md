@@ -18,6 +18,10 @@ TL;DR is use `babel-preset-env` instead.
 
 What's better than having to decide for your what babel preset/plugin to use is if it was done for you, automatically. Although the amount of work that goes into maintaining the lists of data is humogous, it solves multiple issues: keeping users up to date with the spec, less configuration/package confusion, easier upgrade path, less issues about what is what. 
 
+### Not removing Stage presets (babel-preset-stage-x)
+
+https://twitter.com/left_pad/status/873242704364306433
+
 ### Scoped Packages (`@babel/x`)
 
 Alright we only just changed every single package for Babel again 😂..
