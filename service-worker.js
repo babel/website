@@ -1,4 +1,4 @@
-importScripts('/scripts/sw-toolbox.js');
+importScripts('https://unpkg.com/sw-toolbox@3.6.0/sw-toolbox.js');
 
 var VERSION = 1;
 
