@@ -1,4 +1,4 @@
-In your `package.json` file make the following changes:
+在你的 `package.json` 文件中作出如下变化：
 
 ```json
 {
@@ -15,7 +15,7 @@ In your `package.json` file make the following changes:
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For more information see the <a href="https://github.com/babel/babel-jest">babel/babel-jest repo</a>.
+    欲了解更多信息，请参阅 <a href="https://github.com/babel/babel-jest">babel/babel-jest 项目</a>。
   </p>
 </blockquote>
 
