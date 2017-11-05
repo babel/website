@@ -1,10 +1,10 @@
-#### Via CLI
+#### 通过 CLI
 
 ```sh
 duo --use duo-babel
 ```
 
-#### Via Node API
+#### 通过 Node API
 
 ```js
 Duo(root)
@@ -15,7 +15,7 @@ Duo(root)
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For more information see the <a href="https://github.com/babel/duo-babel">babel/duo-babel repo</a>.
+    欲了解更多信息，请参阅 <a href="https://github.com/babel/duo-babel">babel/duo-babel 项目</a>。
   </p>
 </blockquote>
 
