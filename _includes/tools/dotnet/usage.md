@@ -1,9 +1,9 @@
 ```csharp
 var babel = ReactEnvironment.Current.Babel;
-// Transpiles a file
-// You can instead use `TransformFileWithSourceMap` if you want a source map too.
+// 转译一个文件
+// 如果你也想要 source map, 那么可以使用 `TransformFileWithSourceMap`.
 var result = babel.TransformFile("foo.js");
-// Transpiles a piece of code
+// 转译一段代码
 var result = babel.Transform("class Foo { }");
 
 ```
