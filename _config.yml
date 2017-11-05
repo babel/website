@@ -3,7 +3,7 @@ title: Babel
 tagline: 用于编写下一代 JavaScript 的编译器
 description: 用于编写下一代 JavaScript 的编译器
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://babel.docschina.org/" # the base hostname & protocol for your site
+url: "https://babeljs.cn/" # the base hostname & protocol for your site
 twitter_username: babeljs
 github_username: babel
 
@@ -47,11 +47,11 @@ plugins:
   - jemoji
 
 default_js:
-  - "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
-  - "//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.min.js"
-  - "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"
-  - "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"
-  - "https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"
+  - "https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"
+  - "https://cdn.bootcss.com/lodash.js/4.16.3/lodash.min.js"
+  - "https://cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js"
+  - "https://cdn.bootcss.com/clipboard.js/1.5.13/clipboard.min.js"
+  - "https://cdn.bootcss.com/docsearch.js/2.4.1/docsearch.min.js"
   - "/scripts/search.js"
   - "/scripts/clipboard.js"
   - "/scripts/open-in-repl.js"
