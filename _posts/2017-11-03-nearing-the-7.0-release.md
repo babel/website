@@ -38,9 +38,9 @@ Here's a poll I did almost a year ago:
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thoughts on <a href="https://twitter.com/babeljs">@babeljs</a> using npm scoped packages for 7.0?</p>&mdash; Henry Zhu (@left_pad) <a href="https://twitter.com/left_pad/status/821551189166878722">January 18, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Back then, there weren't a lot of projects using scoped packages so most people didn't even know they existed. I believe you also had to pay for a npm org account while now it's free (and supports non scoped packages too). The issues with searching for scoped packages are solved and download counts work. The only thing left is that some 3rd party registries still don't support scoped. I think we are at a point where it seems pretty unreasonable to wait on that, and maybe moving Babel itself to a scoped namespace will push that effort forward anyway?
+Back then, there weren't a lot of projects using scoped packages so most people didn't even know they existed. I believe you also had to pay for a npm org account while now it's free (and supports non scoped packages too). The issues with searching for scoped packages are solved and download counts work. The only thing left is that some 3rd party registries still don't support scoped. I think we are at a point where it seems pretty unreasonable to wait on that.
 
-Since people will complain/wonder why we are doing this:
+If you want reasons why:
 
 - Naming is difficult: we don't have to check if someone else decided to use our naming convention for their own plugin
 - Similarly, package squatting
