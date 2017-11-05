@@ -2,7 +2,7 @@
 babel-node-debug path/to/script.js
 ```
 
-Or use the alias:
+或者使用这个命令：
 
 ```sh
 bode-debug path/to/script.js
@@ -10,7 +10,7 @@ bode-debug path/to/script.js
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For more information see the <a href="https://github.com/crabdude/babel-node-debug">crabdude/babel-node-debug repo</a>.
+    欲了解更多信息，请参阅 <a href="https://github.com/crabdude/babel-node-debug">crabdude/babel-node-debug 项目</a>。
   </p>
 </blockquote>
 

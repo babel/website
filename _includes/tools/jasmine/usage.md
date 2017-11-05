@@ -1,4 +1,4 @@
-In your `spec/support/jasmine.json` file make the following changes:
+在你的 `spec/support/jasmine.json` 文件中作出如下变化：
 
 ```json
 {
@@ -8,10 +8,10 @@ In your `spec/support/jasmine.json` file make the following changes:
 }
 ```
 
-This file is created when you setup a project with the `jasmine init` command.
+这个文件在你通过 `jasmine init` 命令建立一个项目生成。
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For more information see the <a href="https://github.com/piecioshka/test-jasmine-babel">piecioshka/test-jasmine-babel repo</a>.
+    欲了解更多信息，请参阅 <a href="https://github.com/piecioshka/test-jasmine-babel">piecioshka/test-jasmine-babel 项目</a>。
   </p>
 </blockquote>
