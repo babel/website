@@ -1,4 +1,4 @@
-- category: Conferences
+- category: 会议
   items:
     - title: So How Does Babel Even Work?
       author: Henry Zhu
@@ -27,35 +27,35 @@
       year: 2016
       event: EmberConf
       event_link: http://2016.emberconf.com/
-      link: https://www.youtube.com/embed/Tar4WgAfMr4
+      link: https://v.qq.com/iframe/player.html?vid=d0500qf0ta2&tiny=0&auto=0
     - title: Closing Keynote, Babel 6.0
       author: Sebastian McKenzie
       author_link: https://twitter.com/sebmck
       year: 2015
       event: EmberCamp London
       event_link: http://embercamp.com/2015/
-      link: https://www.youtube.com/embed/Q_ncaTYEizc
+      link: https://v.qq.com/iframe/player.html?vid=h0500xdt54h&tiny=0&auto=0
     - title: Improving Your Workflow With Code Transformation
       author: Sebastian McKenzie
       author_link: https://twitter.com/sebmck
       year: 2015
       event: React Europe
       event_link: https://2015.react-europe.org/
-      link: https://www.youtube.com/embed/OFuDvqZmUrE
+      link: https://v.qq.com/iframe/player.html?vid=w0500xptt52&tiny=0&auto=0
     - title: JavaScript Tooling in the Future
       author: James Kyle
       author_link: https://twitter.com/thejameskyle
       year: 2015
       event: Forward 3
       event_link: https://forwardjs.com/
-      link: https://www.youtube.com/embed/i1c0zV1jZfc
+      link: https://v.qq.com/iframe/player.html?vid=f05008tdfmh&tiny=0&auto=0
     - title: Compiling JavaScript
       author: James Kyle
       author_link: https://twitter.com/thejameskyle
       year: 2015
       event: jQuerySF
       event_link: http://jquerysf.com/
-      link: https://www.youtube.com/embed/Ku3AWp_-Qzs
+      link: https://v.qq.com/iframe/player.html?vid=i05005fhbfh&tiny=0&auto=0
     - title: Consolidation of Tools
       author: Sebastian McKenzie
       author_link: https://twitter.com/sebmck
