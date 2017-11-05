@@ -10,9 +10,16 @@ share_text: "Nearing the 7.0 Release"
 
 > Please check out the previous [Planning for 7.0](https://babeljs.io/blog/2017/03/01/upgrade-to-babel-7) post for information up til the first beta release!
 
-# Just started writing, so feel free to edit
+## Project Updates
 
-### Deprecate yearly presets (babel-preset-es20xx)
+- We started a new [videos page](https://babeljs.io/docs/community/videos/)! Wanted to create this to provide a resource for people wanting to contribute to Babel.
+- We created a new [team page](https://babeljs.io/team)! I think we'll want to update this with more of what people work on and why they are involved!
+- Babel turned three years old on [Sept 28](https://babeljs.io/blog/2017/10/05/babel-turns-three)!
+- Daniel [moved](https://twitter.com/left_pad/status/926096965565370369) `babel/babylon` and `babel/babel-preset-env` into the main Babel monorepo: [babel/babel](https://github.com/babel/babel), including everything from git history, labels, issues.
+- We received a [$1k/month donation](https://twitter.com/left_pad/status/923696620935421953) from Facebook Open Source!
+  - We're looking to be able to fund our team full-time, but in the meantime will use our funds for sending people to TC39 meetings (every 2 months around the world). If someone wants to sponsor specifically for that we can create separate issues to track that so there are concrete/specific things a company can donate for.
+
+### Deprecated yearly presets (babel-preset-es20xx)
 
 TL;DR is use `babel-preset-env` instead.
 
