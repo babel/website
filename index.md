@@ -27,7 +27,7 @@ third_party_js:
         </div>
       </div>
       <div class="hero-repl__footer">
-        <a href="http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=latest%2Creact%2Cstage-2&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true">
+        <a href="https://babeljs.cn/repl/#?babili=false&evaluate=true&lineWrap=false&presets=latest%2Creact%2Cstage-2&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true">
           想了解关于 Babel 更多内容请使用我们提供的 REPL 进行实践！
         </a>
       </div>
