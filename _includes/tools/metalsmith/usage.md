@@ -1,12 +1,12 @@
 #### [CLI](https://github.com/segmentio/metalsmith#cli)
 
-Add the `metalsmith-babel` field to your `metalsmith.json`.
+在你的 `metalsmith.json` 中添加 `metalsmith-babel`.
 
 ```javascript
 {
   "plugins": {
     "metalsmith-babel": {
-      // babel options
+      // babel 选项
     }
   }
 }
@@ -19,7 +19,7 @@ var Metalsmith = require("metalsmith");
 var babel = require("metalsmith-babel");
 
 new Metalsmith("./source")
-  .use(babel({/* babel options */}));
+  .use(babel({/* babel 选项 */}));
   .build(function(err, files) {
     if (err) {
       throw err;
@@ -31,6 +31,6 @@ new Metalsmith("./source")
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For more information see the <a href="https://github.com/babel/metalsmith-babel">babel/metalsmith-babel repo</a>.
+    欲了解更多信息，请参阅 <a href="https://github.com/babel/metalsmith-babel">babel/metalsmith-babel 项目</a>。
   </p>
 </blockquote>
