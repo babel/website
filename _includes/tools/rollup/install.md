@@ -6,7 +6,7 @@ npm install --save-dev rollup
 npm install --save-dev rollup-plugin-babel
 ```
 
-Instead of the `es2015` preset:
+使用以下 preset 取代 `es2015` preset:
 
 ```sh
 npm install --save-dev babel-preset-es2015-rollup
