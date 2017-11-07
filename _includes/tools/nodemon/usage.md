@@ -1,4 +1,4 @@
-In your `package.json` file make the following changes:
+在你的 `package.json` 文件做出如下改动：
 
 ```json
 {
@@ -8,15 +8,15 @@ In your `package.json` file make the following changes:
 }
 ```
 
-Then call your script with:
+然后通过以下命令调用你的脚本：
 
 ```sh
 nodemon --exec npm run babel-node -- path/to/script.js
 ```
 
-#### Arguments caveat
+#### 参数警告
 
-Calling nodemon with babel-node may lead to arguments getting parsed incorrectly if you forget to use a double dash. Using npm-scripts helpers prevent this. If you chose to skip using npm-scripts, it can be expressed as:
+使用 babel-node 调用 nodemon 时如果忘记使用双短划线，可能会导致错误地分析参数。 使用npm-scripts 来防止这一点。 如果您选择跳过使用 npm-scripts 脚本，它可以表示为：
 
 ```sh
 nodemon --exec babel-node --presets=es2015 --ignore='foo\|bar\|baz' -- path/to/script.js
