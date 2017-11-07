@@ -28,6 +28,13 @@
       event: EmberConf
       event_link: http://2016.emberconf.com/
       link: https://v.qq.com/iframe/player.html?vid=d0500qf0ta2&tiny=0&auto=0
+    - title: Tuning Babel to Your Runtimes
+      author: Christophe Porteneuve
+      author_link: https://twitter.com/porteneuve
+      year: 2016
+      event: dotJS
+      event_link: https://2016.dotjs.io/
+      link: https://v.qq.com/iframe/player.html?vid=u0501k33zc1&tiny=0&auto=0
     - title: Closing Keynote, Babel 6.0
       author: Sebastian McKenzie
       author_link: https://twitter.com/sebmck
@@ -62,21 +69,14 @@
       year: 2015
       event: BrazilJS
       event_link: https://braziljs.org/
-      link: https://www.youtube.com/embed/pqkdG1-FhHc
+      link: https://v.qq.com/iframe/player.html?vid=n0501elpack&tiny=0&auto=0
     - title: JavaScript Transformation
       author: Sebastian McKenzie
       author_link: https://twitter.com/sebmck
       year: 2015
       event: JSConf US
       event_link: http://2015.jsconf.us/
-      link: https://www.youtube.com/embed/rKuNbEwoQfQ
-    - title: Tuning Babel to Your Runtimes
-      author: Christophe Porteneuve
-      author_link: https://twitter.com/porteneuve
-      year: 2016
-      event: dotJS
-      event_link: https://2016.dotjs.io/
-      link: https://www.youtube.com/embed/fb_1cqg8TKc
+      link: https://v.qq.com/iframe/player.html?vid=r0501x073z8&tiny=0&auto=0
 - category: Meetups
   items:
     - title: Babel Sucks
