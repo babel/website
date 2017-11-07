@@ -1,4 +1,4 @@
-#### 通过配置
+#### 通过 config 方式
 
 ```js
 module: {
@@ -8,7 +8,7 @@ module: {
 }
 ```
 
-#### 通过 loader
+#### 通过 loader 方式
 
 ```js
 var Person = require("babel!./Person.js").default;
