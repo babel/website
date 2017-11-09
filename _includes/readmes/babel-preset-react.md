@@ -1,47 +1,47 @@
 # babel-preset-react
 
-> Babel preset for all React plugins.
+> 为所有 React 插件服务的 Babel preset.
 
-This preset includes the following plugins/presets:
+这个 preset 包含如下插件/preset:
 
 - [preset-flow](https://babeljs.io/docs/plugins/preset-flow/)
 - [syntax-jsx](https://babeljs.io/docs/plugins/syntax-jsx/)
 - [transform-react-jsx](https://babeljs.io/docs/plugins/transform-react-jsx/)
 - [transform-react-display-name](https://babeljs.io/docs/plugins/transform-react-display-name/)
 
-## Install
+## 安装
 
-> You can also check out the React [Getting Started page](https://facebook.github.io/react/docs/hello-world.html)
+> 你也可以参阅 React [上手页面](https://facebook.github.io/react/docs/hello-world.html)
 
-> For more info, check out the setup page on the [cli](/docs/setup/) and the [usage](/docs/usage/cli/) docs.
+> 查看更多信息，请查阅 [cli](/docs/setup/) 的构建页面和[使用](/docs/usage/cli/)文档。
 
-Install the CLI and this preset
+安装 CLI 和该 preset
 
 ```sh
 npm install --save-dev babel-cli babel-preset-react
 ```
 
-Make a .babelrc config file with the preset
+用该 preset 生成一个 .babelrc 配置文件
 
 ```sh
 echo '{ "presets": ["react"] }' > .babelrc
 ```
 
-Create a file to run on
+运行如下代码生成一个文件：
 
 ```sh
 echo '<h1>Hello, world!</h1>' > index.js
 ```
 
-View the output
+查看输出
 
 ```sh
 ./node_modules/.bin/babel index.js
 ```
 
-## Usage
+## 使用方法
 
-### Via `.babelrc` (Recommended)
+### 通过 `.babelrc` 方式（推荐）
 
 **.babelrc**
 
@@ -51,13 +51,13 @@ View the output
 }
 ```
 
-### Via CLI
+### 通过 CLI 方式
 
 ```sh
 babel script.js --presets react 
 ```
 
-### Via Node API
+### 通过 Node API 方式
 
 ```javascript
 require("babel-core").transform("code", {
