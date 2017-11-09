@@ -4,6 +4,7 @@ import scopedEval from "./scopedEval";
 import { registerPromiseWorkerApi } from "./WorkerUtils";
 
 import type { CompileConfig, PluginState } from "./types";
+import Evaluator from "./evaluator";
 
 // $FlowFixMe
 const WorkerSource = require("worker-loader?inline=true!./Worker");
@@ -35,15 +36,18 @@ export default class WorkerApi {
       })
       .then(
         ({ compiled, compileErrorMessage, envPresetDebugInfo, sourceMap }) => {
-          let evalErrorMessage = null;
-
+          // let evalErrorMessage = null;
+          let logs = [];
           // Compilation is done in a web worker for performance reasons,
           // But eval requires the UI thread so code can access globals like window.
           if (config.evaluate) {
+            const evaluator = new Evaluator();
             try {
+              evaluator.evaluate(compiled);
+              logs = evaluator.getLogs();
               scopedEval.execute(compiled, sourceMap);
             } catch (error) {
-              evalErrorMessage = error.message;
+              // evalErrorMessage = error.message;
             }
           }
 
@@ -51,7 +55,7 @@ export default class WorkerApi {
             compiled,
             compileErrorMessage,
             envPresetDebugInfo,
-            evalErrorMessage,
+            logs,
             sourceMap,
           };
         }

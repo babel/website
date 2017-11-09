@@ -13,6 +13,7 @@ import UriUtils from "./UriUtils";
 import loadBabel from "./loadBabel";
 import loadPlugin from "./loadPlugin";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
+import Evaluator from "./evaluator";
 import {
   envPresetConfig,
   pluginConfigs,
@@ -60,6 +61,7 @@ type State = {
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
   sourceMap: ?string,
+  logs: ?Array<mixed>,
 };
 
 const DEBOUNCE_DELAY = 500;
@@ -108,6 +110,7 @@ class Repl extends React.Component {
         envConfig.isEnvPresetEnabled
       ),
       evalErrorMessage: null,
+      logs: [],
       isEnvPresetTabExpanded: persistedState.isEnvPresetTabExpanded,
       isPresetsTabExpanded: persistedState.isPresetsTabExpanded,
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
@@ -189,7 +192,7 @@ class Repl extends React.Component {
           <CodeMirrorPanel
             className={styles.codeMirrorPanel}
             code={state.compiled}
-            errorMessage={state.evalErrorMessage}
+            logs={state.logs}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
             placeholder="Compiled output will be shown here"
@@ -253,23 +256,26 @@ class Repl extends React.Component {
       loadPlugin(
         runtimePolyfillState,
         () => {
-          let evalErrorMessage: ?string = null;
+          // let evalErrorMessage: ?string = null;
 
           if (!this.state.compiled) {
             return;
           }
-
+          const evaluator = new Evaluator();
           // No need to recompile at this point;
           // Just evaluate the most recently compiled code.
           try {
             // eslint-disable-next-line
+            evaluator.evaluate(this.state.compiled);
+            const logs = evaluator.getLogs();
+            this.setState({ logs });
             scopedEval.execute(this.state.compiled, this.state.sourceMap);
           } catch (error) {
-            evalErrorMessage = error.message;
+            // evalErrorMessage = error.message;
           }
 
           // Re-render (even if no error) to update the label loading-state.
-          this.setState({ evalErrorMessage });
+          // this.setState({ evalErrorMessage });
         },
         scopedEval.getIframe()
       );

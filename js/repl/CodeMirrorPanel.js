@@ -4,6 +4,7 @@ import { css } from "emotion";
 import CodeMirror from "./CodeMirror";
 import React from "react";
 import { colors } from "./styles";
+import prettyFormat from "pretty-format";
 
 type Props = {
   className?: string,
@@ -13,14 +14,16 @@ type Props = {
   onChange?: (value: string) => void,
   options: Object,
   placeholder?: string,
+  evaluateOutput?: Boolean,
+  logs?: Array<mixed>,
 };
 
 export default function CodeMirrorPanel(props: Props) {
-  const { className = "", errorMessage, info, onChange } = props;
-
+  const { className = "", errorMessage, info, onChange, logs = [] } = props;
+  const hasLogs = logs.length > 0;
   return (
     <div className={`${styles.panel} ${className}`}>
-      <div className={styles.codeMirror}>
+      <div className={`${styles.codeMirror} ${hasLogs ? styles.hasLogs : ""}`}>
         <CodeMirror
           onChange={onChange}
           options={{
@@ -32,11 +35,22 @@ export default function CodeMirrorPanel(props: Props) {
           value={props.code}
         />
       </div>
+      {logs.length > 0 && (
+        <pre className={styles.evaluatedOp}>
+          <PrintLogs logs={logs} />
+        </pre>
+      )}
       {info && <pre className={styles.info}>{info}</pre>}
       {errorMessage && <pre className={styles.error}>{errorMessage}</pre>}
     </div>
   );
 }
+
+const PrintLogs = ({ logs }) => {
+  return logs.map((log, idx) => {
+    return <p key={idx}>{prettyFormat(log)}</p>;
+  });
+};
 
 const sharedBoxStyles = {
   flex: "0 0 auto",
@@ -55,6 +69,9 @@ const styles = {
     width: "100%",
     overflow: "auto",
   }),
+  hasLogs: css({
+    height: "calc(100% - 100px)",
+  }),
   error: css({
     order: 2,
     backgroundColor: colors.errorBackground,
@@ -69,7 +86,13 @@ const styles = {
     color: colors.infoForeground,
     ...sharedBoxStyles,
   }),
-  panel: css({
+  evaluatedOp: css({
+    backgroundColor: colors.evaluatedOpBackground,
+    color: colors.evaluatedOpForeground,
+    ...sharedBoxStyles,
+    height: "100px",
+  }),
+  output: css({
     height: "100%",
     display: "flex",
     flexDirection: "column",

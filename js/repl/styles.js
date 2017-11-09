@@ -19,6 +19,9 @@ const colors = {
   infoBackground: "#fffbe5",
   infoBorder: "#fff5c2",
   infoForeground: "#5c3c00",
+
+  evaluatedOpBackground: "#f1f1f1",
+  evaluatedOpForeground: "#c7254e",
 };
 
 const media = {

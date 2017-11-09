@@ -63,6 +63,7 @@
     "emotion": "^8.0.2-12",
     "lodash.debounce": "^4.0.8",
     "lz-string": "^1.4.4",
+    "pretty-format": "^21.2.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "unfetch": "^3.0.0",
