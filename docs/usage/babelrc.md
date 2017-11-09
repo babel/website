@@ -1,13 +1,13 @@
 ---
 layout: docs
 title: .babelrc
-description: How to use the .babelrc
+description: .babelrc 的使用方法
 permalink: /docs/usage/babelrc/
 ---
 
-All Babel API [options](/docs/usage/api/) except the callbacks are allowed (because `.babelrc` files are serialized as [JSON5](https://github.com/json5/json5)).
+所有的Babel API 的设置项都不接收回调方法，因为 `.babelrc` 文件会被序列化为 [JSON5](https://github.com/json5/json5)
 
-**Example:**
+**例子:**
 
 ```json
 {
@@ -19,9 +19,9 @@ All Babel API [options](/docs/usage/api/) except the callbacks are allowed (beca
 }
 ```
 
-## Use via `package.json`
+## 通过 `package.json` 使用 `.babelrc`
 
-You can alternatively choose to specify your `.babelrc` config from within `package.json` like so:
+您也能在 `package.json` 中如下指定 `.babelrc` 的配置：
 
 ```json
 {
@@ -33,9 +33,9 @@ You can alternatively choose to specify your `.babelrc` config from within `pack
 }
 ```
 
-## `env` option
+## `env` 选项
 
-You can use the `env` option to set specific options when in a certain environment:
+在特定环境的时候，您可以用 `env` 选项来设置特定的配置:
 
 ```json
 {
@@ -47,29 +47,28 @@ You can use the `env` option to set specific options when in a certain environme
 }
 ```
 
-Options specific to a certain environment are merged into and overwrite non-env specific options.
+特定情景的设置项会被合并、覆盖到没有特定环境的设置项中。
 
-The `env` key will be taken from `process.env.BABEL_ENV`, when this is not available then it uses
-`process.env.NODE_ENV` if even that is not available then it defaults to `"development"`.
+`env` 选项的值将从 `process.env.BABEL_ENV` 获取，如果没有的话，则获取 `process.env.NODE_ENV` 的值，它也无法获取时会设置为  `"development"` 。
 
-You can set this environment variable with the following:
+您可以通过下面的方法设置环境变量：
 
 **Unix**
 
-At the start of a command:
+命令的第一行：
 
 ```sh
 BABEL_ENV=production YOUR_COMMAND_HERE
 ```
 
-Or as a separate command:
+或者作为一个单独的命令
 
 ```sh
 export NODE_ENV=production
 ```
 
 ```sh
-YOUR_COMMAND_HERE
+您的命令
 ```
 
 **Windows**
@@ -79,13 +78,13 @@ SET BABEL_ENV=production
 ```
 
 ```sh
-YOUR_COMMAND_HERE
+您的命令
 ```
 
-> If you want your command to work across platforms, you can use [`cross-env`](https://www.npmjs.com/package/cross-env)
+> 如果想让命令跨平台工作，可以使用[`cross-env`](https://www.npmjs.com/package/cross-env)
 
-## Lookup behavior
+## 查找行为
 
-Babel will look for a `.babelrc` in the current directory of the file being transpiled. If one does not exist, it will travel up the directory tree until it finds either a `.babelrc`, or a `package.json` with a `"babel": {}` hash within.
+Babel 会在正在被转录的文件的当前目录中查找一个 `.babelrc` 文件。 如果不存在，它会遍历目录树，直到找到一个 `.babelrc` 文件，或一个 `package.json` 文件中有 `"babel": {}` 。
 
-Use `"babelrc": false` in [options](/docs/usage/api/#options) to stop lookup behavior, or provide the [`--no-babelrc` CLI flag](/docs/usage/cli/#babel-ignoring-babelrc).
+在[选项](/docs/usage/api/#options) 中使用 `"babelrc": false` 来停止查找行为，或者提供[`--no-babelrc` CLI 标志](/docs/usage/cli/#babel-ignoring-babelrc)。
