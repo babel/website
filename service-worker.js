@@ -1,18 +1,21 @@
 importScripts('https://unpkg.com/sw-toolbox@3.6.0/sw-toolbox.js');
 
-var VERSION = 1;
-
-var contentCacheOptions = {
+var VERSION = 1
+  , contentCacheOptions = {
   name: 'Babel-Cache-' + VERSION,
-  maxEntries: 150,
-  maxAgeSeconds: 604800
+  maxAgeSeconds: 60 * 60 * 6
 }
+  , cdnCacheOptions = {
+  name: 'cdn',
+  maxAgeSeconds: 60 * 60 * 6
+};
 
-var cdnCacheOptions = {
-  name: 'cdn'
-}
+toolbox.precache([
+  '/offline.html'
+]);
 
-toolbox.router.get('/*', toolbox.cacheFirst, { origin: 'cdnjs.cloudflare.com', cache: cdnCacheOptions });
-toolbox.router.get('/*', toolbox.cacheFirst, { origin: 'cdn.jsdelivr.net', cache: cdnCacheOptions });
+toolbox.router.get('/*', toolbox.networkFirst, {origin: 'cdnjs.cloudflare.com', cache: cdnCacheOptions});
 
-toolbox.router.get('/*', toolbox.fastest, { cache: contentCacheOptions });
+toolbox.router.get('/*', toolbox.networkFirst, {origin: 'cdn.jsdelivr.net', cache: cdnCacheOptions});
+
+toolbox.router.get('/*', toolbox.networkFirst, {cache: contentCacheOptions});
