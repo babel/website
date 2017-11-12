@@ -1,21 +1,21 @@
 # babel-cli
 
-> Babel command line.
- 
-In addition, various entry point scripts live in the top-level package at `babel-cli/bin`.
+> Babel 命令行。
 
-There are some shell-executable utility scripts, `babel-external-helpers.js` and `babel-node.js`, and the main Babel cli script, `babel.js`.
+此外，各种入口脚本都存在于`babel-cli/bin` 的最上层包中。
 
-## Install
+还有一些可命令行执行的实用工具，`babel-external-helpers.js` 和 `babel-node.js`, 以及主要的 Babel 命令行脚本， `babel.js`.
+
+## 安装
 
 ```sh
 npm install --save-dev babel-cli
 ```
 
-## Usage 
+## 用法 
 
 ```sh
 babel script.js
 ```
 
-For more in depth documentation see: http://babeljs.io/docs/usage/cli/
+更多深入文档请查阅： http://babeljs.io/docs/usage/cli/
