@@ -1,11 +1,13 @@
 importScripts('https://unpkg.com/sw-toolbox@3.6.0/sw-toolbox.js');
 
-var VERSION = 1
-  , contentCacheOptions = {
+var VERSION = 1;
+
+var contentCacheOptions = {
   name: 'Babel-Cache-' + VERSION,
   maxAgeSeconds: 60 * 60 * 6
-}
-  , cdnCacheOptions = {
+};
+
+var cdnCacheOptions = {
   name: 'cdn',
   maxAgeSeconds: 60 * 60 * 6
 };
