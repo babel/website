@@ -114,7 +114,8 @@ class Repl extends React.Component {
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
-      presets: configArrayToStateMap(presetPluginConfigs, defaultPresets),
+      // Filled in after Babel is loaded
+      presets: {},
       runtimePolyfillState: configToState(
         runtimePolyfillConfig,
         persistedState.evaluate
@@ -122,7 +123,7 @@ class Repl extends React.Component {
       sourceMap: null,
     };
 
-    this._setupBabel();
+    this._setupBabel(defaultPresets);
   }
 
   render() {
@@ -199,9 +200,22 @@ class Repl extends React.Component {
     );
   }
 
-  async _setupBabel() {
+  async _setupBabel(defaultPresets) {
     const babelState = await loadBabel(this.state.babel, this._workerApi);
-    this.setState(babelState);
+
+    // Filter the list of preloaded presets with those available with
+    // the loaded version of @babel/standalone.
+    const availablePresetConfigs = babelState.isLoaded
+      ? presetPluginConfigs.filter(
+          ({ label, isPreLoaded }) =>
+            !isPreLoaded || babelState.availablePresets.indexOf(label) > -1
+        )
+      : presetPluginConfigs;
+
+    this.setState({
+      babel: babelState,
+      presets: configArrayToStateMap(availablePresetConfigs, defaultPresets),
+    });
 
     if (babelState.isLoaded) {
       this._compile(this.state.code, this._checkForUnloadedPlugins);

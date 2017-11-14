@@ -23,6 +23,13 @@ registerPromiseWorker(message => {
         return null;
       }
 
+    case "getAvailablePresets":
+      try {
+        return Object.keys(Babel.availablePresets);
+      } catch (error) {
+        return null;
+      }
+
     case "loadScript":
       try {
         importScripts(message.url);

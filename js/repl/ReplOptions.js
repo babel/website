@@ -129,14 +129,17 @@ class ExpandedContainer extends Component {
             label="Presets"
             toggleIsExpanded={this._togglePresetsTab}
           >
-            {presetPluginConfigs.map(config => (
-              <PluginToggle
-                config={config}
-                key={config.label}
-                onSettingChange={onSettingChange}
-                state={presetState[config.label]}
-              />
-            ))}
+            {Object.keys(presetState).map(label => {
+              const state = presetState[label];
+              return (
+                <PluginToggle
+                  config={state.config}
+                  key={label}
+                  onSettingChange={onSettingChange}
+                  state={state}
+                />
+              );
+            })}
           </AccordionTab>
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}

@@ -39,6 +39,10 @@ const pluginConfigs: Array<PluginConfig> = [
   },
 ];
 
+// A list of presets available for use in the REPL.
+//
+// Items marked with `isPreLoaded` are checked against available presets
+// from the currently loaded @babel/standalone version.
 const presetPluginConfigs: Array<PluginConfig> = [
   {
     label: "es2015",
