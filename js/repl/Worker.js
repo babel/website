@@ -24,11 +24,12 @@ registerPromiseWorker(message => {
       }
 
     case "getAvailablePresets":
-      try {
-        return Object.keys(Babel.availablePresets);
-      } catch (error) {
-        return null;
-      }
+      if (!Babel) return [];
+
+      return Object.keys(Babel.availablePresets).map(p => ({
+        label: p,
+        isPreLoaded: true,
+      }));
 
     case "loadScript":
       try {

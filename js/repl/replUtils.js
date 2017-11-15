@@ -62,6 +62,7 @@ type DefaultPlugins = { [name: string]: boolean };
 export const persistedStateToBabelState = (
   persistedState: PersistedState
 ): BabelState => ({
+  availablePresets: [],
   build: persistedState.build,
   circleciRepo: persistedState.circleciRepo,
   didError: false,

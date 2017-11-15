@@ -16,7 +16,6 @@ import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import {
   envPresetConfig,
   pluginConfigs,
-  presetPluginConfigs,
   runtimePolyfillConfig,
 } from "./PluginConfig";
 import {
@@ -203,18 +202,12 @@ class Repl extends React.Component {
   async _setupBabel(defaultPresets) {
     const babelState = await loadBabel(this.state.babel, this._workerApi);
 
-    // Filter the list of preloaded presets with those available with
-    // the loaded version of @babel/standalone.
-    const availablePresetConfigs = babelState.isLoaded
-      ? presetPluginConfigs.filter(
-          ({ label, isPreLoaded }) =>
-            !isPreLoaded || babelState.availablePresets.indexOf(label) > -1
-        )
-      : presetPluginConfigs;
-
     this.setState({
       babel: babelState,
-      presets: configArrayToStateMap(availablePresetConfigs, defaultPresets),
+      presets: configArrayToStateMap(
+        babelState.availablePresets,
+        defaultPresets
+      ),
     });
 
     if (babelState.isLoaded) {

@@ -2,11 +2,7 @@
 
 import { css } from "emotion";
 import React, { Component } from "react";
-import {
-  envPresetDefaults,
-  pluginConfigs,
-  presetPluginConfigs,
-} from "./PluginConfig";
+import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import Svg from "./Svg";

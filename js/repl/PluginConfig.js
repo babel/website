@@ -39,61 +39,9 @@ const pluginConfigs: Array<PluginConfig> = [
   },
 ];
 
-// A list of presets available for use in the REPL.
-//
-// Items marked with `isPreLoaded` are checked against available presets
-// from the currently loaded @babel/standalone version.
-const presetPluginConfigs: Array<PluginConfig> = [
-  {
-    label: "es2015",
-    isPreLoaded: true,
-  },
-  {
-    label: "es2015-loose",
-    isPreLoaded: true,
-  },
-  {
-    label: "es2016",
-    isPreLoaded: true,
-  },
-  {
-    label: "es2017",
-    isPreLoaded: true,
-  },
-  {
-    label: "react",
-    isPreLoaded: true,
-  },
-  {
-    label: "stage-0",
-    isPreLoaded: true,
-  },
-  {
-    label: "stage-1",
-    isPreLoaded: true,
-  },
-  {
-    label: "stage-2",
-    isPreLoaded: true,
-  },
-  {
-    label: "stage-3",
-    isPreLoaded: true,
-  },
-  {
-    label: "flow",
-    isPreLoaded: true,
-  },
-  {
-    label: "typescript",
-    isPreLoaded: true,
-  },
-];
-
 export {
   envPresetConfig,
   envPresetDefaults,
   pluginConfigs,
-  presetPluginConfigs,
   runtimePolyfillConfig,
 };
