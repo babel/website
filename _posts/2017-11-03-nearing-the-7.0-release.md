@@ -45,7 +45,7 @@ TL;DR is use `babel-preset-env` instead.
 
 What's better than add new docs/messages/having you decide what babel preset to use? If it was done for you, automatically. 
 
-Even though the amount of work that goes into maintaining the lists of data is humogous (again why we need help), it solves multiple issues: making sure users are up to date with the spec, less configuration/package confusion, an easier upgrade path, and less issues about what is what.
+Even though the amount of work that goes into maintaining the lists of data is humongous (again why we need help), it solves multiple issues: making sure users are up to date with the spec, less configuration/package confusion, an easier upgrade path, and less issues about what is what.
 
 ### Not removing the Stage presets (babel-preset-stage-x)
 
