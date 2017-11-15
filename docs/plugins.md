@@ -5,69 +5,69 @@ description:
 permalink: /docs/plugins/
 ---
 
-Babel is a compiler. At a high level, it has 3 stages that it runs code in: parsing, transforming, and generation (like many other compilers).
+Babel 是一个编译器。 从宏观角度看，它将运行代码分为3个阶段: 解析，转换，及生成(与其他编译器相同).
 
-> For an awesome/simple tutorial on compilers, check out [the-super-tiny-compiler](https://github.com/thejameskyle/the-super-tiny-compiler), which also explains how Babel itself works on a high level.
+> 关于编译器的优秀/简单的教程，请查看 [the-super-tiny-compiler](https://github.com/thejameskyle/the-super-tiny-compiler)，同时它也从宏观角度上解释了 Babel 本身是如何工作的。
 
-Now, out of the box Babel doesn't do anything. It basically acts like `const babel = code => code;` by parsing the code and then generating the same code back out again.
+初始阶段，Babel 并没有做任何事情。它基本上就相当于 `const babel = code => code;`，先解析代码，然后再次生成相同的代码。
 
-You will need to add some plugins for Babel to do anything (they affect the 2nd stage, transformation).
+你可以为 Babel 添加一些插件让其去做任何事情(插件会影响 Babel 的第 2 阶段，转换)。
 
-Don't know where to start? Check out some of our [presets](#presets).
+不知如何下手? 请查看我们的一些 [presets](#presets) 。
 
 ## Presets
 
-Don't want to assemble your own set of plugins? No problem! Presets are sharable [`.babelrc`](/docs/usage/babelrc) configs or simply an array of babel plugins.
+不想定制你自己的插件? 没关系! Presets 是可共享的 [`.babelrc`](/docs/usage/babelrc) 配置或者只是一个 babel 插件的数组。
 
 ### Official Presets
 
-We've assembled some for common environments:
+我们已经组装了一些公用的插件:
 
-> Each yearly preset only compiles what was ratified in that year.
-> `babel-preset-env` replaces es2015, es2016, es2017, latest
+> 每年每个 preset 只编译当年批准的内容。
+> 而 `babel-preset-env` 相当于 es2015 ，es2016 ，es2017 及最新版本。
 
 - [env](/docs/plugins/preset-env/)
 - [es2015](/docs/plugins/preset-es2015/)
 - [es2016](/docs/plugins/preset-es2016/)
 - [es2017](/docs/plugins/preset-es2017/)
-- [latest (deprecated in favor of env)](/docs/plugins/preset-latest/)
+- [latest (不推荐使用 env)](/docs/plugins/preset-latest/)
 - [react](/docs/plugins/preset-react/)
 - [flow](/docs/plugins/preset-flow/)
 
-> Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
+> [在 npm 上](https://www.npmjs.com/search?q=babel-preset)可以找到许多由其他社区进行维护的 preset 进行使用!
 
-### Stage-X (Experimental Presets)
+### Stage-X (实验阶段 Presets)
 
-Any transforms in stage-x presets are changes to the language that haven't been approved to be part of a release of Javascript (such as ES6/ES2015).
+Stage-x preset 中的任何转换都是对未被批准为 JavaScript 版本一部分的语言的变化(如 es6 / es2015 )。
 
-> "Changes to the language are developed by way of a process which provides guidelines for evolving an addition from an idea to a fully specified feature"
+> "语言的变化需要一个过程来发展，该过程提供了将一个想法进化为一种完善规范的指导原则。"
 
 <blockquote class="babel-callout babel-callout-danger">
-  <h4>Subject to change</h4>
+  <h4>不稳定</h4>
   <p>
-    These proposals are subject to change so <strong><em>use with extreme caution</em></strong>, especially for anything pre stage-3. We plan to update stage-x presets when proposals change after each TC39 meeting when possible.
+    这些提案可能会有所改动，因此请<strong><em>谨慎使用</em></strong>，尤其是第 3 阶段以前的提案。我们计划会在每次 TC39 会议结束后更新对应的 stage-x preset。
   </p>
 </blockquote>
 
-The [TC39](https://github.com/tc39) categorizes proposals into the following stages:
+[TC39](https://github.com/tc39) 将提案分为以下几个阶段:
 
-- [Stage 0](/docs/plugins/preset-stage-0/) - Strawman: just an idea, possible Babel plugin.
-- [Stage 1](/docs/plugins/preset-stage-1/) - Proposal: this is worth working on.
-- [Stage 2](/docs/plugins/preset-stage-2/) - Draft: initial spec.
-- [Stage 3](/docs/plugins/preset-stage-3/) - Candidate: complete spec and initial browser implementations.
-- Stage 4 - Finished: will be added to the next yearly release.
+- [Stage 0](/docs/plugins/preset-stage-0/) - 稻草人: 只是一个想法，可能是 babel 插件。
+- [Stage 1](/docs/plugins/preset-stage-1/) - 提案: 初步尝试。
+- [Stage 2](/docs/plugins/preset-stage-2/) - 初稿: 完成初步规范。
+- [Stage 3](/docs/plugins/preset-stage-3/) - 候选: 完成规范和浏览器初步实现。
+- Stage 4 - 完成: 将被添加到下一年度发布。
 
-For more information, be sure to check out the [current TC39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
+欲了解更多信息，请务必查看[当前 TC39 提案](https://github.com/tc39/proposals)及其[文档流程](https://tc39.github.io/process-document).
 
-The TC39 stage process is also explained in detail across a few posts by Yehuda Katz (@wycatz) over at [thefeedbackloop.xyz](https://thefeedbackloop.xyz): [Stage 0 and 1](https://thefeedbackloop.xyz/tc39-a-process-sketch-stages-0-and-1/), [Stage 2](https://thefeedbackloop.xyz/tc39-process-sketch-stage-2/), [Stage 3](https://thefeedbackloop.xyz/tc39-process-sketch-stage-3/), and Stage 4 coming soon.
+Yehuda Katz (@wycatz) 在 [thefeedbackloop.xyz](https://thefeedbackloop.xyz) 中的几个帖子中也详细解释了 TC39 各阶段的流程: [Stage 0 和 1](https://thefeedbackloop.xyz/tc39-a-process-sketch-stages-0-and-1/)，[Stage 2](https://thefeedbackloop.xyz/tc39-process-sketch-stage-2/)，[Stage 3](https://thefeedbackloop.xyz/tc39-process-sketch-stage-3/) 以及最终的 Stage 4 。
 
-## Transform Plugins
+## 转译 Plugin
 
-These plugins apply transformations to your code.
+这些 Plugin 将用于转译您的代码。
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    Transform plugins will enable the corresponding syntax plugin so you don't have to specify both.
+    转译 plugin 将启用相应的语法 plugin ，因此你不必同时使用两者。
   </p>
 </blockquote>
 
@@ -110,18 +110,18 @@ These plugins apply transformations to your code.
 
 - [async-to-generator](/docs/plugins/transform-async-to-generator/)
 
-### Modules
+### 模块
 
 - [es2015-modules-amd](/docs/plugins/transform-es2015-modules-amd/)
 - [es2015-modules-commonjs](/docs/plugins/transform-es2015-modules-commonjs/)
 - [es2015-modules-systemjs](/docs/plugins/transform-es2015-modules-systemjs/)
 - [es2015-modules-umd](/docs/plugins/transform-es2015-modules-umd/)
 
-### Experimental
+### 实验阶段
 
 - [async-generator-functions](/docs/plugins/transform-async-generator-functions/)
 - [async-to-module-method](/docs/plugins/transform-async-to-module-method/)
-- [class-constructor-call](/docs/plugins/transform-class-constructor-call/) (deprecated)
+- [class-constructor-call](/docs/plugins/transform-class-constructor-call/) (不推荐)
 - [class-properties](/docs/plugins/transform-class-properties/)
 - [decorators](/docs/plugins/transform-decorators/)
 - [do-expressions](/docs/plugins/transform-do-expressions/)
@@ -131,9 +131,9 @@ These plugins apply transformations to your code.
 
 ### Minification
 
-Check out our [minifier based on Babel](https://github.com/babel/minify)!
+请查看基于 Babel 的 [minifier](https://github.com/babel/minify) !
 
-These plugins are in the minify repo.
+这些 plugin 都存在于 minify 项目中。
 
 - [inline-environment-variables](/docs/plugins/transform-inline-environment-variables/)
 - [inline-consecutive-adds](/docs/plugins/transform-inline-consecutive-adds/)
@@ -168,7 +168,7 @@ These plugins are in the minify repo.
 - [react-jsx-self](/docs/plugins/transform-react-jsx-self/)
 - [react-jsx-source](/docs/plugins/transform-react-jsx-source/)
 
-### Other
+### 其它
 
 - [eval](/docs/plugins/transform-eval/)
 - [flow-comments](/docs/plugins/transform-flow-comments/)
@@ -181,17 +181,17 @@ These plugins are in the minify repo.
 - [runtime](/docs/plugins/transform-runtime/)
 - [strict-mode](/docs/plugins/transform-strict-mode/)
 
-## Misc Plugins
+## 混合 Plugin
 
 - [external-helpers](/docs/plugins/external-helpers/)
 
-## Syntax Plugins
+## 语法 Plugins
 
-These plugins allow Babel to **parse** specific types of syntax (not transform).
+这些 plugin 允许 Babel **解析**特定类型的语法(不转译)。
 
-> NOTE: Transform plugins automatically inherit/use the syntax plugins so you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
+> 注意: 转译 plugin 会自动继承/使用语法插件，因此如果已经使用了相应的转译 plugin ，则不需要指定语法 plugin 。
 
-You can also provide any [`plugins` option](https://github.com/babel/babylon/#plugins) from babylon:
+你也可以从 babylon 中提供任意 [`plugin` 选项](https://github.com/babel/babylon/#plugins):
 
 ```json
 // .babelrc
@@ -202,7 +202,7 @@ You can also provide any [`plugins` option](https://github.com/babel/babylon/#pl
 }
 ```
 
-### Experimental
+### 实验性的
 
 - [async-generators](/docs/plugins/syntax-async-generators/)
 - [class-properties](/docs/plugins/syntax-class-properties/)
@@ -216,35 +216,35 @@ You can also provide any [`plugins` option](https://github.com/babel/babylon/#pl
 - [jsx](/docs/plugins/syntax-jsx/)
 - [object-rest-spread](/docs/plugins/syntax-object-rest-spread/)
 
-### Enabled by default
+### 默认启用
 
-These plugins have no effect anymore, as a newer babylon version enabled them by default
+这些 plugin 已经不起作用了，因为较新版本的 babylon 默认已经启用了它们。
 
-- [async-functions](/docs/plugins/syntax-async-functions/) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
-- [exponentiation-operator](/docs/plugins/syntax-exponentiation-operator/) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
-- [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas/) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+- [async-functions](/docs/plugins/syntax-async-functions/) (自 babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1) 起)
+- [exponentiation-operator](/docs/plugins/syntax-exponentiation-operator/) (自从 babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1) 起)
+- [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas/) (自从 babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1) 起)
 
-### Deprecated
+### 不推荐
 
 - [class-constructor-call](/docs/plugins/syntax-class-constructor-call/)
 
-## Plugin/Preset Paths
+## Plugin/Preset 路径
 
-If the plugin is on npm, you can pass in the name of the plugin and babel will check that it's installed in `node_modules`
+如果 plugin 是通过 npm 安装，你可以传入 plugin 名字给 babel，babel 将检查它是否安装在 `node_modules` 中
 
 `"plugins": ["babel-plugin-myPlugin"]`
 
-You can also specify an relative/absolute path to your plugin/preset.
+你也可以指定你的 plugin/preset 的相对或绝对路径。
 
 `"plugins": ["./node_modules/asdf/plugin"]`
 
-### Plugin/Preset Shorthand
+### Plugin/Preset 简写
 
-If you prefix the plugin with `babel-plugin-`, you can use a shorthand to leave out that prefix
+如果你使用 `babel-plugin-` 作为 plugin 的前缀，你可以使用简写的形式省略掉该前缀。
 
 `"plugins": ["myPlugin"]`
 
-Same with presets
+preset 与之相同
 
 `"presets": ["babel-preset-myPreset"]`
 
@@ -252,25 +252,25 @@ vs
 
 `"presets": ["myPreset"]`
 
-This also works with scoped packages:
+这也适用于包裹作用域:
 
 `"presets": ["@org/babel-preset-name"]`
 
-shorthand
+简写:
 
 `"presets": ["@org/name"]`
 
-## Plugin/Preset Ordering
+## Plugin/Preset 排序
 
-> Ordering matters for each visitor in the plugin.
+> 插件中每个访问者都有排序问题。
 
-This means if two transforms both visit the "Program" node, the transforms will run in either plugin or preset order.
+这意味着如果两次转译都访问相同的"程序"节点，则转译将按照 plugin 或 preset 的规则进行排序然后执行。
 
-- Plugins run before Presets.
-- Plugin ordering is first to last.
-- Preset ordering is reversed (last to first).
+- Plugin 会运行在 Preset 之前。
+- Plugin 会从第一个开始顺序执行。ordering is first to last.
+- Preset 的顺序则刚好相反(从最后一个逆序执行)。
 
-For example:
+例如:
 
 ```json
 {
@@ -281,9 +281,9 @@ For example:
 }
 ```
 
-Will run `transform-decorators-legacy` then `transform-class-properties`.
+将先执行 `transform-decorators-legacy` 再执行 `transform-class-properties`.
 
-It is important to remember that with presets, the order is _reversed_. The following:
+一定要记得 preset 的顺序是*反向*的。举个例子:
 
 ```json
 {
@@ -295,15 +295,15 @@ It is important to remember that with presets, the order is _reversed_. The foll
 }
 ```
 
-Will run in the following order: `stage-2`, `react`, then `es2015`.
+按以下顺序运行: `stage-2`， `react`， 最后 `es2015` 。
 
-This is mostly for ensuring backwards compatibility, since most users list "es2015" before "stage-0". For more information, see [notes on potential traversal API changes](https://github.com/babel/notes/blob/master/2016/2016-08/august-01.md#potential-api-changes-for-traversal).
+这主要是为了保证向后兼容，因为大多数用户会在 "stage-0" 之前列出 "es2015" 。欲了解相关更多信息，请查看 [关于隐式遍历 API 变化的说明](https://github.com/babel/notes/blob/master/2016/2016-08/august-01.md#potential-api-changes-for-traversal) 。
 
-## Plugin/Preset Options
+## Plugin/Preset 选项
 
-Both plugins and presets can have options specified by wrapping the name and an options object in an array inside your config.
+Plugin 和 Preset 均可以通过将名称和选项对象放置在同一个数组中来指定其选项。
 
-For example:
+例如:
 
 ```json
 {
@@ -316,7 +316,7 @@ For example:
 }
 ```
 
-Settings options for presets works exactly the same:
+Preset 的配置选项工作原理与 plugin 完全相同:
 
 ```json
 {
@@ -329,12 +329,11 @@ Settings options for presets works exactly the same:
 }
 ```
 
-## Plugin Development
+## Plugin 的开发
 
-Please refer to the excellent [babel-handbook](https://github.com/thejameskyle/babel-handbook)
-to learn how to create your own plugins.
+请参考 [babel-handbook](https://github.com/thejameskyle/babel-handbook) ，学习如何制作自己的 plugin 。
 
-The simple plugin that reverses names (from the homepage):
+一个简易逆转名字的插件 (首页中的示例):
 
 ```js
 export default function () {
@@ -350,12 +349,12 @@ export default function () {
 }
 ```
 
-## Creating a Preset
+## 创建 Preset
 
-To make your own preset, you just need to export a config.
+你只需导出一个 config ，就可以拥有自己的 preset 。
 
 ```js
-// Presets can contain other presets, and plugins with options.
+// Preset 中可以包含其他 preset 和 带有选项的 plugin 。
 module.exports = {
   presets: [
     require("babel-preset-es2015"),
@@ -367,4 +366,4 @@ module.exports = {
 };
 ```
 
-For more info, check out the [babel handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/user-handbook.md#making-your-own-preset) section on presets or just look at the [es2015](https://github.com/babel/babel/tree/master/packages/babel-preset-es2015) preset repo as an example.
+相关更多信息，请查阅 [babel handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/user-handbook.md#making-your-own-preset) 与 preset 相关部分或者只查看 [es2015](https://github.com/babel/babel/tree/master/packages/babel-preset-es2015) preset 项目相关的示例。

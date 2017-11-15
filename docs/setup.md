@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Using Babel
-description: How to use Babel with your tool of choice
+title: 使用 Babel
+description: 教你如何在使用 Babel 时选择工具
 permalink: /docs/setup/
 custom_js_with_timestamps:
 - tools.js
@@ -10,7 +10,7 @@ custom_js_with_timestamps:
 <div class="container docs-content">
   <div class="step-wizard">
     <div class="step">
-      <h2><span class="step-no">1</span> Choose your tool (try CLI)</h2>
+      <h2><span class="step-no">1</span> 选择你的工具 (尝试 CLI)</h2>
 
       {% for tool in site.data.tools %}
         <h5>{{tool.name}}</h5>
@@ -24,25 +24,25 @@ custom_js_with_timestamps:
     </div>
 
     <div class="step step-install">
-      <h2 id="installation"><span class="step-no">2</span> Installation</h2>
+      <h2 id="installation"><span class="step-no">2</span> 安装</h2>
       {% include tools/items.md name="install" %}
     </div>
 
     <div class="step step-setup">
-      <h2><span class="step-no">3</span> Usage</h2>
+      <h2><span class="step-no">3</span> 使用</h2>
 
       {% include tools/items.md name="usage" %}
     </div>
 
     <div class="step step-setup">
-      <h2><span class="step-no">4</span> Create <code>.babelrc</code> configuration file</h2>
+      <h2><span class="step-no">4</span> 创建 <code>.babelrc</code> 配置文件</h2>
 
       <p>
-        Great! You've configured Babel but you haven't made it actually <em>do</em> anything. Create a <a href="/docs/usage/babelrc">.babelrc</a> config in your project root and enable some <a href="/docs/plugins">plugins</a>.
+        虽然已经配置好了 Babel ，但并没有让它真正<em>生效</em>。在项目的根目录中创建一个 <a href="/docs/usage/babelrc">.babelrc</a> 的文件并启用一些 <a href="/docs/plugins">plugin</a> 。
       </p>
 
       <p>
-        To start, you can use the <a href="https://babeljs.io/docs/plugins/preset-env/">env preset</a>, which enables transforms for ES2015+
+        首先，你可以使用转换 ES2015+ 的 <a href="https://babeljs.io/docs/plugins/preset-env/">env preset</a> 。 
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
@@ -54,7 +54,7 @@ npm install babel-preset-env --save-dev
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
       <p>
-        In order to enable the preset you have to define it in your <code>.babelrc</code> file, like this:
+        为了让 preset 生效，你需要像下面这样定义你的 <code>.babelrc</code> 文件:
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->
@@ -68,7 +68,7 @@ npm install babel-preset-env --save-dev
 <!--lint enable no-shortcut-reference-link, no-undefined-references-->
 
       <p>
-        <strong>Note</strong>: Running a Babel 6.x project using npm 2.x can cause performance problems because of the way npm 2.x installs dependencies. This problem can be eliminated by either switching to npm 3.x or running npm 2.x with the <a href="https://docs.npmjs.com/cli/dedupe">dedupe</a> flag. To check what version of npm you have run
+        <strong>注意</strong>: 因为 npm 2.x 下载依赖的关系，在使用 npm 2.x 运行 Babel 6.x 的项目时，可能会引起性能问题。 你可以通过切换到 npm 3.x 或在 npm 2.x 上使用 <a href="https://docs.npmjs.com/cli/dedupe">dedupe</a> 选项来解决这个问题。查看 npm 版本你可以运行如下命令:
       </p>
 
 <!--lint disable no-shortcut-reference-link, no-undefined-references-->

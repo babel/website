@@ -3,32 +3,32 @@ layout: default
 custom_js:
 - index.js
 third_party_js:
-- //cdn.rawgit.com/thejameskyle/slick/lazy-load-responsive-2/slick/slick.min.js
-- //unpkg.com/babel-standalone@6/babel.min.js
-- //cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
+- https://cdn.bootcss.com/slick-carousel/1.4.1/slick.min.js
+- https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js
+- https://cdn.bootcss.com/ace/1.1.3/ace.js
 ---
 
 <div class="hero">
   <div class="hero__content">
-    <h1>Babel is a JavaScript compiler.</h1>
-    <p>Use next generation JavaScript, today.</p>
+    <h1>Babel 是一个 JavaScript 编译器。</h1>
+    <p>今天就开始使用下一代 JavaScript 语法吧！</p>
 
     <div class="hero-repl" hidden>
       <div class="hero-repl__editor">
         <div class="hero-repl__pane hero-repl__pane--left">
-          <h3>Put in next-gen JavaScript</h3>
+          <h3>输入下一代 JavaScript 代码</h3>
           <div id="hero-repl-in" class="hero-repl__code"></div>
         </div>
 
         <div class="hero-repl__pane hero-repl__pane--right">
-          <h3>Get browser-compatible JavaScript out</h3>
+          <h3>获取浏览器兼容的 JavaScript </h3>
           <div id="hero-repl-out" class="hero-repl__code"></div>
           <div class="hero-repl__error"></div>
         </div>
       </div>
       <div class="hero-repl__footer">
-        <a href="http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=latest%2Creact%2Cstage-2&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true">
-          Check out our REPL to experiment more with Babel!
+        <a href="https://babeljs.cn/repl/#?babili=false&evaluate=true&lineWrap=false&presets=latest%2Creact%2Cstage-2&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true">
+          想了解关于 Babel 更多内容请使用我们提供的 REPL 进行实践！
         </a>
       </div>
     </div>
@@ -38,7 +38,7 @@ third_party_js:
     <div class="hero-actions">
       <div class="hero-actions-blog">
         <a href="{{ latest_post.url }}">
-          <span class="hero-actions-blog__label">Latest From Our Blog:</span>
+          <span class="hero-actions-blog__label">最新的博客:</span>
           <span class="hero-actions-blog__post">{{ latest_post.title }}</span>
         </a>
       </div>
@@ -48,10 +48,10 @@ third_party_js:
 
 <div class="container">
   <div class="row featurette text-center featurette--get-started">
-    <h2>Ready to get started?</h2>
+    <h2>准备好开始了吗?</h2>
 
     <div class="col-lg-6">
-      <h3>Install the Babel CLI and a preset</h3>
+      <h3>安装 Babel CLI 和 preset</h3>
       <div class="text-left">
 <div markdown="1">
 ```shell
@@ -61,7 +61,7 @@ npm install --save-dev babel-cli babel-preset-env
       </div>
     </div>
     <div class="col-lg-6">
-      <h3>Create a <a href="/docs/usage/babelrc"><code>.babelrc</code></a> file (or use your <a href="/docs/usage/babelrc#use-via-packagejson">package.json</a>)</h3>
+      <h3>创建一个 <a href="/docs/usage/babelrc"><code>.babelrc</code></a> 文件 (或者使用你的 <a href="/docs/usage/babelrc#use-via-packagejson">package.json</a>)</h3>
       <div class="text-left">
 <div markdown="1">
 ```json
@@ -74,9 +74,7 @@ npm install --save-dev babel-cli babel-preset-env
     </div>
 
     <p>
-      For more information on setting up Babel with your build system, IDE,
-      and more, check out our <a href="/docs/setup">interactive setup
-      guide</a>.
+      有关在构建系统、IDE等设置 Babel 的更多信息，请查看我们的<a href="/docs/setup">交互设置指南</a>.
     </p>
   </div>
 
@@ -84,20 +82,20 @@ npm install --save-dev babel-cli babel-preset-env
 
   <div class="row featurette">
     <div class="col-md-6">
-      <h2 id="es2015-and-beyond">ES2015 and beyond</h2>
+      <h2 id="es2015-and-beyond">ES2015及更高版本</h2>
       <p>
-        Babel has support for the latest version of JavaScript through syntax transformers.
-        These <a href="https://babeljs.io/docs/plugins/">plugins</a> allow you to use new syntax, <strong>right now</strong> without waiting for browser support.
-        Check out our <a href="https://babeljs.io/docs/plugins/preset-env">env preset</a> to get started.
+        Babel通过语法转换器支持最新版本的 JavaScript 。
+        这些 <a href="https://babeljs.io/docs/plugins/">plugins</a> 允许你<strong>立刻</strong>使用语法，无需等待浏览器支持。
+        查看 <a href="https://babeljs.io/docs/plugins/preset-env">env preset</a> 开始使用 Babel 。
       </p>
 
-      <p>You can install this preset with</p>
+      <p>你可以通过以下方式安装 preset </p>
 <div markdown="1">
 ```shell
 npm install --save-dev babel-preset-env
 ```
 </div>
-      <p>and add <code>"env"</code> to your <code>.babelrc</code> presets array.</p>
+      <p>并添加 <code>"env"</code> 到你的 <code>.babelrc</code> 文件的 presets 数组中。</p>
     </div>
 
     <div class="col-md-6">
@@ -142,7 +140,7 @@ npm install --save-dev babel-preset-env
       </div>
 
       <br>
-      <p class="text-center"><a href="/learn-es2015/">Learn more about ES2015 &rarr;</a></p>
+      <p class="text-center"><a href="/learn-es2015/">了解更多关于 ES2015 &rarr;</a></p>
     </div>
   </div>
 
@@ -151,15 +149,15 @@ npm install --save-dev babel-preset-env
     <div class="row featurette">
       <div class="col-md-6">
         <h2 id="polyfill">Polyfill</h2>
-        <p>Since Babel only transforms syntax (like arrow functions), you can use babel-polyfill in order to support new globals such as Promise or new native methods like String.padStart (left-pad). It uses <a href="https://github.com/zloirock/core-js">core-js</a> and <a href="https://facebook.github.io/regenerator/">regenerator</a>. Check out our <a href="/docs/usage/polyfill">babel-polyfill</a> docs for more info.</p>
+        <p>由于 Babel 只转换语法 (如箭头函数)， 你可以使用 babel-polyfill 支持新的全局变量，例如 Promise 、新的原生方法如 String.padStart (left-pad) 等。 它使用了 <a href="https://github.com/zloirock/core-js">core-js</a> 和 <a href="https://facebook.github.io/regenerator/">regenerator</a>。 查看 <a href="/docs/usage/polyfill">babel-polyfill</a> 文档获取更多信息。</p>
 
-        <p>You can install the polyfill with</p>
+        <p>你可以通过以下方式安装 polyfill </p>
 <div markdown="1">
 ```shell
 npm install --save-dev babel-polyfill
 ```
 </div>
-        <p>Use it by requiring it at the top of the entry point to your application or in your bundler config.</p>
+        <p>使用它时需要让它在你的应用程序的入口起点或打包配置的入口起点的顶部。</p>
       </div>
 
       <div class="col-md-6">
@@ -210,7 +208,7 @@ npm install --save-dev babel-polyfill
         </div>
 
         <br>
-        <p class="text-center"><a href="https://github.com/zloirock/core-js#index">Learn about more features &rarr;</a></p>
+        <p class="text-center"><a href="https://github.com/zloirock/core-js#index">了解更多特性 &rarr;</a></p>
       </div>
     </div>
 
@@ -220,16 +218,16 @@ npm install --save-dev babel-polyfill
   <div class="row featurette">
 
     <div class="col-md-7">
-      <h2 id="jsx-and-flow">JSX and Flow</h2>
-      <p>Babel can convert JSX syntax and strip out type annotations. Check out our <a href="https://babeljs.io/docs/plugins/preset-react/">React preset</a> to get started. Use it together with the <a href="https://github.com/babel/babel-sublime">babel-sublime</a> package to bring syntax highlighting to a whole new level.</p>
+      <h2 id="jsx-and-flow">JSX 和 Flow</h2>
+      <p>Babel能够转换 JSX 语法并去除类型注释。查看 <a href="https://babeljs.io/docs/plugins/preset-react/">React preset</a> 开始使用。与 <a href="https://github.com/babel/babel-sublime">babel-sublime</a> 同时使用可以将语法高亮提高到一个新的水平。</p>
 
-      <p>You can install this preset with</p>
+      <p>你可以通过以下方式安装 preset </p>
 <div markdown="1">
 ```shell
 npm install --save-dev babel-preset-react
 ```
 </div>
-      <p>and add <code>"react"</code> to your <code>.babelrc</code> presets array.</p>
+      <p>并添加 <code>"react"</code> 到你的 <code>.babelrc</code> 的 presets 数组中。</p>
     </div>
     <div class="col-md-5">
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">export</span> <span class="k">default</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
@@ -249,7 +247,7 @@ npm install --save-dev babel-preset-react
   <span class="p">}</span>
 <span class="p">});</span></code></pre></div>
 
-      <p class="text-center">Learn more about <a href="https://facebook.github.io/jsx/">JSX</a> and <a href="http://flowtype.org/">Flow</a></p>
+      <p class="text-center">了解更多关于 <a href="https://facebook.github.io/jsx/">JSX</a> 和 <a href="http://flowtype.org/">Flow</a></p>
     </div>
   </div>
 
@@ -257,9 +255,9 @@ npm install --save-dev babel-preset-react
 
   <div class="row featurette">
     <div class="col-md-6">
-      <h2 id="pluggable">Pluggable</h2>
-      <p>Babel is built out of plugins. Compose your own transformation pipeline using existing plugins or write your own. Easily use a set of plugins by using or creating a <a href="/docs/plugins/#presets">preset</a>. <a href="/docs/plugins/">Learn more &rarr;</a></p>
-      <p>Create a plugin on the fly with <a href="https://astexplorer.net/#/KJ8AjD6maa">astexplorer.net</a> or use <a href="https://github.com/babel/generator-babel-plugin">generator-babel-plugin</a> to generate a plugin template.</p>
+      <h2 id="pluggable">插件化</h2>
+      <p>Babel 是由很多 plugin 构成。 你可以使用已有的 plugin 或者自己编写 plugin 来组成属于你自己的转换通道。使用或者创建一个 <a href="/docs/plugins/#presets">preset</a> 可以让你轻松使用多个 plugin。<a href="/docs/plugins/">了解更多 &rarr;</a></p>
+      <p>通过 <a href="https://astexplorer.net/#/KJ8AjD6maa">astexplorer.net</a> 快速创建一个插件或者使用 <a href="https://github.com/babel/generator-babel-plugin">generator-babel-plugin</a> 生成一个插件模板</p>
     </div>
     <div class="col-md-6">
 <div markdown="1">
@@ -285,8 +283,8 @@ export default function ({types: t}) {
 
   <div class="row featurette">
     <div class="col-md-4">
-      <h2 id="debuggable">Debuggable</h2>
-      <p><strong>Source map</strong> support so you can debug your compiled code with ease.</p>
+      <h2 id="debuggable">可调试</h2>
+      <p>支持 <strong>Source map</strong> 因此可以轻松调试编译后代码。</p>
     </div>
     <div class="col-md-8">
       <img src="{{ site.baseurl }}/images/featurettes/debuggable.png?t={{ site.time | date_to_xmlschema }}" alt="Debuggable Sourcemaps" class="featurette-image img-responsive">
@@ -345,7 +343,7 @@ export default function ({types: t}) {
   <div class="featurette">
     <h2 class="text-center">
       <a href="{{ site.baseurl }}/users/">
-        Who's using Babel?
+        谁在使用 Babel ?
       </a>
     </h2>
 
@@ -361,10 +359,10 @@ export default function ({types: t}) {
 
     <div class="text-center">
       <div class="btn-wrapper">
-        <a href="{{ site.baseurl }}/users/" class="btn btn-sm btn-featured">Meet more Users</a>
+        <a href="{{ site.baseurl }}/users/" class="btn btn-sm btn-featured">查看更多用户</a>
       </div>
     </div>
   </div>
 
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.4.1/slick.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/slick-carousel/1.4.1/slick.min.css">
 </div>

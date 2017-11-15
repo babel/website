@@ -18,7 +18,7 @@ module.exports = function(config) {
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For more information see the <a href="https://github.com/babel/karma-babel-preprocessor">babel/karma-babel-preprocessor repo</a>.
+    欲了解更多信息，请参阅 <a href="https://github.com/babel/karma-babel-preprocessor">babel/karma-babel-preprocessor 项目</a>。
   </p>
 </blockquote>
 

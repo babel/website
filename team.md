@@ -11,4 +11,5 @@ permalink: /team/
   {% include member.html members=site.data.team.summer-of-code title="Summer of Code" %}
   {% include member.html members=site.data.team.non-human-member title="Non-Human Members" %}
   {% include member.html members=site.data.team.alumnus title="Inactive members" %}
+  {% include member.html members=site.data.team.chinese-translation-contributors title="中文翻译贡献者" %}
 </div>

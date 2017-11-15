@@ -1,8 +1,6 @@
-Instead of running Babel directly from the command line we're going to put our
-commands in **npm scripts** which will use our local version.
+我们将把我们的指令放在本地版本的 **npm 脚本**中，而不是直接通过命令行来运行 Babel.
 
-Simply add a `"scripts"` field to your `package.json` and put the babel command
-inside there as `build`.
+简单的在你的 `package.json` 中添加一个 `"scripts"` 属性并将 babel 命令放在它的 `build` 属性中。
 
 ```diff
   {
@@ -17,16 +15,15 @@ inside there as `build`.
   }
 ```
 
-Now from our terminal we can run:
+现在从我们的终端可以运行以下命令：
 
 ```sh
 npm run build
 ```
 
-This will run Babel the same way as before and the output will be present in
-`lib` directory, only now we are using a local copy.
+这会按照和之前一样的方式来运行 Babel 并将输出放在 `lib` 目录下，唯一不同在于我们现在使用了一个本地拷贝。
 
-Alternatively, you can reference the `babel` cli inside of `node_modules`.
+另外，你可以在 `node_modules` 中引用 `babel` 命令。
 
 ```sh
 ./node_modules/.bin/babel src -d lib
@@ -34,7 +31,7 @@ Alternatively, you can reference the `babel` cli inside of `node_modules`.
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For full documentation on the Babel CLI see the
-    <a href="/docs/usage/cli/">usage docs</a>.
+    了解完整 Babel CLI 文档请看
+    <a href="/docs/usage/cli/">使用文档</a>。
   </p>
 </blockquote>

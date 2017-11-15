@@ -1,11 +1,11 @@
-- name: Prototyping
+- name: 原型
   items:
-    browser: In the browser
-- name: Babel built-ins
+    browser: 在浏览器中
+- name: Babel 内置插件
   items:
     babel_cli: CLI
     babel_register: Require hook
-- name: Build systems
+- name: 构建系统
   items:
     broccoli: Broccoli
     browserify: Browserify
@@ -24,13 +24,13 @@
     webpack: Webpack 1
     fly: Fly
     start: Start
-- name: Frameworks
+- name: 框架
   items:
     ember: Ember
     meteor: Meteor
     rails: Rails
     sails: Sails
-- name: Test frameworks
+- name: 测试框架
   items:
     ava: AVA
     jasmine: Jasmine
@@ -38,21 +38,21 @@
     karma: Karma
     lab: Lab
     mocha: Mocha
-- name: Utilities
+- name: 公用
   items:
     connect: Connect
     nodemon: Nodemon
-- name: Language APIs
+- name: 编程语言 APIs
   items:
     dotnet: C# / .NET
     node: Node
     ruby: Ruby
-- name: Template engines
+- name: 模板引擎
   items:
     pug: Pug
-- name: Editors and IDEs
+- name: 编辑器和 IDEs
   items:
     webstorm: WebStorm
-- name: Debuggers
+- name: 调试工具
   items:
     babel_node_debug: Node Inspector

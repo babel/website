@@ -191,3 +191,14 @@ alumnus:
   - name: Stefan Penner
     github: stefanpenner
     twitter: stefanpenner
+chinese-translation-contributors:
+  - name: QC-L
+    github: QC-L
+  - name: lizhihua
+    github: dear-lizhihua
+  - name: Joe Jiang
+    github: hijiangtao
+  - name: Mencius Cheng
+    github: MenciusCheng
+  - name: 王赛
+    github: wangsai

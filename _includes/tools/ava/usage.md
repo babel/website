@@ -1,12 +1,8 @@
-AVA ships with ES2015 support built-in using Babel 6 under the hood, so
-you can write test using ES2015 syntax right away.
+AVA 通过使用 Babel 6 内置支持 ES2015, 所以您可以立即使用 ES2015 语法编写测试。
 
-The AVA default Babel configuration includes the `"es2015"` and `"stage-2"`
-presets, but you can customize any Babel option for transpiling test files
-with the `"babel"` option in AVA's
-[`package.json` configuration](https://github.com/sindresorhus/ava#configuration).
+AVA 默认的 Babel 配置包括 `"es2015"` 和 `"stage-2"` presets, 但是为了转译测试文件，你可以通过 AVA 中 [`package.json` 配置](https://github.com/sindresorhus/ava#configuration) 的 `"babel"` 选项自定义任何 Babel 选项。
 
-For example:
+比如：
 
 ```json
 {
@@ -21,10 +17,8 @@ For example:
 }
 ```
 
-Or you can simply `"inherit"` the Babel configuration from
-[`.babelrc`](/docs/usage/babelrc/) or Babel's
-[`package.json` configuration](/docs/usage/babelrc/), making test files
-use the same configuration as your source files:
+或者你可以简单地从 [`.babelrc`](/docs/usage/babelrc/) 或者 Babel's
+[`package.json` 配置](/docs/usage/babelrc/) `"inherit"` Babel 的配置，使得测试文件和你源文件使用相同的配置：
 
 ```json
 {
@@ -34,13 +28,12 @@ use the same configuration as your source files:
 }
 ```
 
-Note that AVA _always_ adds a few custom Babel plugins when transpiling
-your plugins see <a href="https://github.com/sindresorhus/ava/blob/master/docs/recipes/babelrc.md#notes">notes</a>.
+请注意，AVA _总是_ 在转译你的插件时会添加一些自定义的 Babel 插件，请看<a href="https://github.com/sindresorhus/ava/blob/master/docs/recipes/babelrc.md#notes">标注</a>。
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For more information see the AVA recipe on <a
+    欲了解更多信息，请参阅 <a
     href="https://github.com/sindresorhus/ava/blob/master/docs/recipes/babelrc.md">
-    how to configure</a> Babel.
+    如何配置</a> Babel.
   </p>
 </blockquote>

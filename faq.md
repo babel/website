@@ -1,65 +1,58 @@
 ---
 layout: docs
 title: FAQ
-description: Frequently Asked Questions and Answers
+description: 常见问题和答案
 permalink: /faq/
 ---
 
-## Why is the output of `for...of` so verbose and ugly?
+## 为什么 `for...of` 的输出那么冗长和难看？
 
-In order to comply with the specification, the iterator's return method must be
-called on errors. An alternative is to enable [loose mode](/docs/plugins/transform-es2015-for-of/#options-loose)
-but please note that there are **many** caveats to be aware of if you enable
-loose mode and that you're willingly choosing to be spec incompliant.
+为了符合规范，迭代器的返回方法必须被报错方法调用。另一种方法是启用[松散模式](/docs/plugins/transform-es2015-for-of/#options-loose)，
+但请注意，如果你启用松散模式那注意事项有很多，你将愿意选择非规范。
 
-Please see [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) and
-[babel/babel#838](https://github.com/babel/babel/issues/838) for more information.
+请查看 [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) 和
+[babel/babel#838](https://github.com/babel/babel/issues/838) 了解更多信息。
 
-## Why are `this` and `arguments` being remapped in arrow functions?
+## 为什么 `this` 和 `arguments` 在箭头函数中被重新映射？
 
-Arrow functions **are not** synonymous with normal functions. `arguments` and `this` inside arrow functions
-reference their *outer function* for example:
+箭头函数与正常函数不同。在箭头函数中，`arguments` 和 `this` 引用他们的*外部函数*，例如：
 
 ```javascript
 const user = {
   firstName: "Sebastian",
   lastName: "McKenzie",
   getFullName: () => {
-    // whoops! `this` doesn't actually reference `user` here
+    // 哎哟！ `this` 在这里实际上并不引用 `user`
     return this.firstName + " " + this.lastName;
   },
-  // use the method shorthand in objects
+  // 在对象中使用简写方法
   getFullName2() {
     return this.firstName + " " + this.lastName;
   }
 };
 ```
 
-Please see [babel/babel#842](https://github.com/babel/babel/issues/842), [babel/babel#814](https://github.com/babel/babel/issues/814),
-[babel/babel#733](https://github.com/babel/babel/issues/733) and [babel/babel#730](https://github.com/babel/babel/issues/730) for
-more information.
+请查看 [babel/babel#842](https://github.com/babel/babel/issues/842)，[babel/babel#814](https://github.com/babel/babel/issues/814)，
+[babel/babel#733](https://github.com/babel/babel/issues/733) 和 [babel/babel#730](https://github.com/babel/babel/issues/730) 了解更多信息。
 
-## Why is `this` being remapped to `undefined`?
+## 为什么 `this` 被重新映射到 `undefined` ？
 
-Babel assumes that all input code is an ES2015 module. ES2015 modules are implicitly strict mode so this means
-that top-level `this` is not `window` in the browser nor is it `exports` in node.
+Babel 假设所有输入的代码都是 ES2015 模块。ES2015 模块是隐式严格模式，因此这意味着，顶层 `this` 在浏览器中不是 `window`，在 Node.js 中也不是 `exports`。
 
-If you don't want this behaviour then you have the option of disabling `strict` in the [es2015-modules-transform](http://babeljs.io/docs/plugins/transform-es2015-modules-commonjs/#usage).
+如果你不想要这种行为，那么你可以选择在 [es2015-modules-transform](http://babeljs.io/docs/plugins/transform-es2015-modules-commonjs/#usage) 中禁用 `strict`。
 
-**PLEASE NOTE:** If you do this you're willingly deviating from the spec and this may cause future
-interop issues.
+**请注意：** 如果你这样做，你将愿意偏离规范，这可能会导致未来的互操作问题。
 
-## Help?! I just want to use Babel like it was in 5.x! Everything is too complicated now!
+## 求助？！我只是想使用 5.x 的 Babel！现在一切都太复杂了！
 
-We hear you! Babel 6 requires a tiny bit of configuration in order to get going.
-[We think this is for the best](/blog/2015/10/29/6.0.0) and have added
-[presets](/docs/plugins#presets) to ease this transition.
+我们听到了！Babel 6 需要一点配置才能使用。
+[我们认为这是最好的](/blog/2015/10/29/6.0.0)和已经增加
+[预设](/docs/plugins#presets)来缓解这种过渡。
 
-## Upgrading from Babel 5.x to Babel 6
+## 从 Babel 5.x 升级到 Babel 6
 
-At the heart of Babel 6 are [plugins](/docs/plugins). What plugins you need completely
-depends on your specific configuration but just add the following `.babelrc` file to
-get all the same transforms that were in Babel 5:
+Babel 6 的核心是[插件](/docs/plugins)。你需要什么插件取决于你的特定配置，但只需添加以下 `.babelrc` 文件，
+将得到所有在 Babel 5 中相同的转换：
 
 ```json
 {
@@ -71,42 +64,36 @@ get all the same transforms that were in Babel 5:
 npm install babel-preset-env babel-preset-react babel-preset-stage-2 --save-dev
 ```
 
-Also check out our [Setting up Babel 6](http://babeljs.io/blog/2015/10/31/setting-up-babel-6) blog post.
+也可以查看我们的[配置 Babel 6](http://babeljs.io/blog/2015/10/31/setting-up-babel-6)博客文章。
 
-## Where did all the docs go?!
+## 所有的文档都到哪里去了？！
 
-Babel 6 removes a lot of the options in favor of <a href="/docs/plugins">plugins</a> so a
-lot of the docs are no longer applicable.
+Babel 6 移除了很多支持<a href="/docs/plugins">插件</a>的选项，所以很多文档都不再适用。
 
-For every removed option there should be a plugin for it. It's possible we may have missed
-something, if you think this is the case, please
-<a href="https://github.com/babel/babel/issues">open an issue</a>!
+对于每个被删除的选项，都应该有一个插件。可能我们会遗漏某些东西，如果发现了这种情况，请<a href="https://github.com/babel/babel/issues">提交问题</a>！
 
-Babel is an open source project and we appreciate any and all contributions we can get.
-Please help out with documentation if you can by submitting a pull request to the
-[babel.github.io](https://github.com/babel/babel.github.io) repo.
+Babel 是一个开源项目，我们很感激所有得到的贡献。请帮忙填写文档，你可以通过提交请求到 [babel.github.io](https://github.com/babel/babel.github.io) 仓库。
 
-## How do I build babel from source?
+## 如何从源文件中构建 Babel？
 
-See [build instructions](https://github.com/babel/babel/blob/master/CONTRIBUTING.md#developing).
+请查看[构建指南](https://github.com/babel/babel/blob/master/CONTRIBUTING.md#developing)。
 
-## How do I contribute to Babel?
+## 如何为 Babel 做贡献？
 
-See [contributing](https://github.com/babel/babel/blob/master/CONTRIBUTING.md).
+请查看[贡献](https://github.com/babel/babel/blob/master/CONTRIBUTING.md)。
 
-## Why am I getting a Syntax Error/Unexpected Token?
+## 为什么会得到语法错误/意外标识？
 
-It's most likely the case that you didn't include a plugin/preset that supports that feature. (It's also possible it's a bug in the parser, or that it actually is a syntax error).
+很可能你没有包含支持该功能的插件/预设。（也可能是解析器的Bug，或它实际上是语法错误）。
 
-## Why isn't a certain babel-x package updated?
+## 为什么不更新一个 babel-x 包？
 
-We currently use [Lerna's fixed versioning](https://github.com/lerna/lerna#fixedlocked-mode-default) system.
+我们目前使用 [Lerna 的固定版本管理](https://github.com/lerna/lerna#fixedlocked-mode-default)系统。
 
-We have a global version for all packages. When we do a release, the only packages that get updated are the packages that
-actually had changes (we do a `git diff` on that folder).
+我们对所有包有一个全局版本。当我们发布一个版本的时候，唯一更新的包是实际上有更改的包（我们在那文件夹执行了 `git diff`）。
 
-If we only update `babel-plugin-transform-exponentiation-operator` to 6.x.x, currently we don't publish a new version for all packages since the other dependencies are using `^`.
+如果只更新 `babel-plugin-transform-exponentiation-operator` 到 6.x.x，由于其他依赖使用 `^`，一般不用对所有包发布一个新的版本。
 
-For example, the Babel [v6.6.0 release](https://github.com/babel/babel/releases/tag/v6.6.0) doesn't mean all packages are now 6.6.0.
+例如，Babel [v6.6.0 版本](https://github.com/babel/babel/releases/tag/v6.6.0)并不意味着所有包现在都是 6.6.0。
 
-> To make sure you are using the latest package versions, you may need to remove `node_modules` and `npm install` again.
+> 为了确保你使用的包是最新版本，你可能要再次删除 `node_modules` 和 执行 `npm install`。

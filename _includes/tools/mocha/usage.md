@@ -1,8 +1,8 @@
 #### Mocha 4
 
-`--compilers` is deprecated as of Mocha v4.0.0. See [further explanation and workarounds](https://github.com/mochajs/mocha/wiki/compilers-deprecation).
+从 Mocha v4.0.0 开始，不推荐使用 `--compilers`. 请参阅 [进一步解释和解决办法](https://github.com/mochajs/mocha/wiki/compilers-deprecation)。
 
-In your `package.json` file make the following changes:
+在你的 `package.json` 文件中做如下变化：
 
 ```json
 {
@@ -12,7 +12,7 @@ In your `package.json` file make the following changes:
 }
 ```
 
-Some features will require a polyfill:
+有些特性需要一个 polyfill:
 
 ```sh
 npm install --save-dev babel-polyfill
@@ -37,7 +37,7 @@ npm install --save-dev babel-polyfill
 }
 ```
 
-With polyfill:
+通过 polyfill:
 
 ```json
 {

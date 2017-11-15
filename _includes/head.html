@@ -3,12 +3,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} · {{ site.tagline }}{% endif %}</title>
+  <title>{% if page.title %}{{ page.title }} | {{ site.title_zh }}{% else %}{{ site.title }} · {{ site.tagline }} | {{ site.title_zh }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/docsearch.js/2.4.1/docsearch.min.css">
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}?t={{ site.time | date_to_xmlschema }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
@@ -24,16 +24,25 @@
   <meta name="theme-color" content="#ffffff">
   {% endif %}
 
-  <meta name="og:url" content="https://babeljs.io/">
+  <meta name="og:url" content="{{ site.url }}">
   <meta name="og:image" content="website">
-  <meta name="og:title" content="{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} · {{ site.tagline }}{% endif %}">
+  <meta name="og:title" content="{% if page.title %}{{ page.title }} | {{ site.title_zh }}{% else %}{{ site.title }} · {{ site.tagline }} | {{ site.title_zh }}{% endif %}">
   <meta name="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <meta name="og:image" content="https://babeljs.io/images/share-image.png">
+  <meta name="og:image" content="{{ "/images/share-image.png" | prepend: site.baseurl | prepend: site.url }}">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@babeljs">
-  <meta name="twitter:title" content="{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} · {{ site.tagline }}{% endif %}">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {{ site.title_zh }}{% else %}{{ site.title }} · {{ site.tagline }} | {{ site.title_zh }}{% endif %}">
   <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <meta name="twitter:image:src" content="https://babeljs.io/images/share-image.png">
+  <meta name="twitter:image:src" content="{{ "/images/share-image.png" | prepend: site.baseurl | prepend: site.url }}">
   <meta name="twitter:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7d7e96af885ecd66a8c4ac73dc983681";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 </head>
