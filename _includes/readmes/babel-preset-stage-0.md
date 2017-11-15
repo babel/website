@@ -1,16 +1,16 @@
 # babel-preset-stage-0
 
-> Babel preset for stage 0 plugins.
+> 包含 stage 0 特性的一组插件的 Babel preset。
 
-## Install
+## 安装
 
 ```sh
 npm install --save-dev babel-preset-stage-0
 ```
 
-## Usage
+## 使用
 
-### Via `.babelrc` (Recommended)
+### 通过 `.babelrc` 文件 (推荐)
 
 **.babelrc**
 
@@ -20,13 +20,13 @@ npm install --save-dev babel-preset-stage-0
 }
 ```
 
-### Via CLI
+### 通过 CLI
 
 ```sh
 babel script.js --presets stage-0
 ```
 
-### Via Node API
+### 通过 Node API
 
 ```javascript
 require("babel-core").transform("code", {
