@@ -8,7 +8,7 @@ categories: announcements
 share_text: "Nearing the 7.0 Release"
 ---
 
-> Please check out the previous [Planning for 7.0](https://babeljs.io/blog/2017/03/01/upgrade-to-babel-7) post for information up till the first beta release!
+> Please check out the previous [Planning for 7.0](https://babeljs.io/blog/2017/09/12/planning-for-7.0) post for information up till the first beta release!
 
 ## Project Updates
 
@@ -19,6 +19,26 @@ share_text: "Nearing the 7.0 Release"
 - We received a [$1k/month donation](https://twitter.com/left_pad/status/923696620935421953) from Facebook Open Source!
   - We're looking to be able to fund our team full-time, but in the meantime will use our funds for sending people to TC39 meetings (every 2 months around the world). If someone wants to sponsor specifically for that we can create separate issues to track that so there are concrete/specific things a company can donate for.
 
+### Summary of the [previous post](https://babeljs.io/blog/2017/09/12/planning-for-7.0)
+
+- Drop Node 0.10/0.12
+- Updated [TC39 proposals](https://github.com/babel/proposals/issues)
+  - Numeric Separator: `1_000`
+  - Optional Chaining Operator: `a?.b`
+  - `import.meta` (parseble)
+  - Optional Catch Binding: `try { a } catch {}`
+  - BigInt (parseble): `2n`
+  - Split export extensions into `export-default-from` and `export-ns-form`
+- `.babelrc.js`
+- Typescript Preset, separate React/Flow presets
+- Removed `babel-runtime` dep for smaller size
+
+### Newly Updated TC39 Proposals
+
+- Pipeline Operator: `a |> b`
+- Throw Expressions: `() => throw 'hi'`
+- Nullish Coalescing Operator: `a ?? b`
+
 ### Deprecated Yearly Presets (e.g. babel-preset-es20xx)
 
 TL;DR is use `babel-preset-env` instead.
@@ -27,7 +47,7 @@ What's better than add new docs/messages/having you decide what babel preset to 
 
 Even though the amount of work that goes into maintaining the lists of data is humogous (again why we need help), it solves multiple issues: making sure users are up to date with the spec, less configuration/package confusion, an easier upgrade path, and less issues about what is what.
 
-## Not removing the Stage presets (babel-preset-stage-x)
+### Not removing the Stage presets (babel-preset-stage-x)
 
 https://twitter.com/left_pad/status/873242704364306433
 
@@ -35,7 +55,7 @@ We can always keep it up to date, and maybe we just need to determine a better s
 
 Right now, they are literally just a list of plugins that we manually update after a TC39 meeting happens. Of course to make this managable we will need to just allow for major version bumps for these "unstable" packages. Part of the reason for this is because the community will just re-create these packages anyway so might as well do it via an official package.
 
-### Scoped Packages (`@babel/x`)
+### Renames: Scoped Packages (`@babel/x`)
 
 Alright we only just changed every single package for Babel again 😂..
 
@@ -64,6 +84,20 @@ Examples of the scoped name change:
 `babel-preset-es2015` -> `@babel/preset-es2015` (this is deprecated though, so use preset-env)
 `babel-preset-env` -> `@babel/preset-env`
 
+### Renames: `-proposal-`
+
+Any proposals will be named with the `-proposal` prefix now to signify that they aren't officially in JavaScript yet.
+
+So `@babel/plugin-transform-class-properties` -> `@babel/plugin-proposal-class-properties`. And we would name it back when it gets to Stage 4.
+
+### Renames: Drop the year from the plugin name
+
+Previous plugins had the year in the name, but it doesn't seem to be necessary.
+
+So `@babel/plugin-transform-es2015-classes` -> `@babel/plugin-transform-classes`.
+
+Partially since this was only the case for es3/es2015 and we didn't change anything from es2016 or es2017. We are also deprecating the corresponding presets in favor of preset-env, and for the template literal revision just added it to the template literal transform for simplicity.
+
 ### Peer Dependencies + Integrations
 
 We are introducing a peer dependency on `@babel/core` for all the plugins (`@babel/plugin-class-properties`), presets (`@babel/preset-env`), top level packages (`@babel/cli`, `babel-loader`).
@@ -77,8 +111,6 @@ This is just so that people aren't trying to install these packages on the wrong
 Similarly, packages like `gulp-babel`, `rollup-plugin-babel`, etc all used to have `babel-core` as a dependency. Now these will also just have a `peerDependency` on `@babel/core`.
 
 This lets all these packages not have to bump major versions when the `@babel/core` API hasn't changed.
-
-### TC39 Proposal Plugins (what isn't JS yet)
 
 ### [#5224](https://github.com/babel/babel/pull/5224) Independent Publishing of Experimental Packages
 
@@ -110,15 +142,19 @@ If the spec to an experimental proposal changes, we should be free to make a bre
 > I believe the way we want to go about doing this is to move those packages into the `experimental/` folder in our [monorepo](https://github.com/babel/babel) instead of in `packages/`.
 > Change our publish process (probably through Lerna) to publish the packages in `experimental/` independently.
 
-## Handle `.mjs` files
+### Handle `.mjs` files
 
 - @jdd handled using `@std/esm` with `@babel/register`
 - [#5624](https://github.com/babel/babel/pull/5624) Hook into compiling .mjs files in `@babel/cli` and `@babel/register`
 - [#570](https://github.com/babel/babel/pull/5700) Always force `.mjs` to be parsed as module
 - [#6221](https://github.com/babel/babel/pull/6221) Add `--keep-file-extension` option to `@babel/cli` to retain `.mjs` file instead of converting to `.js`
 
-### Open Issues
+#### Open Issues
 
 - [ ] How can we make `@babel/register` work with modules? [#6737](https://github.com/babel/babel/issues/6737)
 - [ ] `--watch` with `.mjs` files [#6800](https://github.com/babel/babel/issues/6800)
 - [ ] Output `.mjs` extension [#6222](https://github.com/babel/babel/issues/6222)
+
+### Speed
+### Compiling `node_modules`
+### preset-env: `"useBuiltins": "usage"`
