@@ -21,7 +21,7 @@ npm install --save-dev babel-polyfill
 ```json
 {
   "scripts": {
-    "test": "mocha --require babel-polyfill babel-register"
+    "test": "mocha --require babel-polyfill --require babel-register"
   }
 }
 ```

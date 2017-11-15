@@ -1,5 +1,6 @@
+import semver from "semver";
 import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./CircleCI";
-import { BabelState, LoadScriptCallback } from "./types";
+import { BabelState } from "./types";
 import WorkerApi from "./WorkerApi";
 
 const DEFAULT_BABEL_VERSION = "6";
@@ -77,5 +78,11 @@ export default async function loadBabel(
     version = DEFAULT_BABEL_VERSION;
   }
 
-  return doLoad(`https://unpkg.com/babel-standalone@${version}/babel.min.js`);
+  const babelStandalone =
+    (semver.valid(version) && semver.gte(version, "7.0.0-beta.5")) ||
+    version >= 7
+      ? "@babel/standalone"
+      : "babel-standalone";
+
+  return doLoad(`https://unpkg.com/${babelStandalone}@${version}/babel.min.js`);
 }

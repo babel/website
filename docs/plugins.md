@@ -297,7 +297,7 @@ vs
 
 按以下顺序运行: `stage-2`， `react`， 最后 `es2015` 。
 
-这主要是为了保证向后兼容，因为大多数用户会在 "stage-0" 之前列出 "es2015" 。欲了解相关更多信息，请查看 [关于隐式遍历 API 变化的说明](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal).
+这主要是为了保证向后兼容，因为大多数用户会在 "stage-0" 之前列出 "es2015" 。欲了解相关更多信息，请查看 [关于隐式遍历 API 变化的说明](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal) 。
 
 ## Plugin/Preset 选项
 
