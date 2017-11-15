@@ -4,7 +4,6 @@ import { css } from "emotion";
 import CodeMirror from "./CodeMirror";
 import React from "react";
 import { colors } from "./styles";
-import prettyFormat from "pretty-format";
 
 type Props = {
   className?: string,
@@ -48,7 +47,7 @@ export default function CodeMirrorPanel(props: Props) {
 
 const PrintLogs = ({ logs }) => {
   return logs.map((log, idx) => {
-    return <p key={idx}>{prettyFormat(log)}</p>;
+    return <p key={idx}>{JSON.stringify(log)}</p>;
   });
 };
 
