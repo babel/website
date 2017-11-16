@@ -15,6 +15,20 @@ import type {
   PluginStateMap,
 } from "./types";
 
+const PRESET_ORDER = [
+  "es2015",
+  "es2015-loose",
+  "es2016",
+  "es2017",
+  "stage-0",
+  "stage-1",
+  "stage-2",
+  "stage-3",
+  "react",
+  "flow",
+  "typescript",
+];
+
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
@@ -125,12 +139,15 @@ class ExpandedContainer extends Component {
             label="Presets"
             toggleIsExpanded={this._togglePresetsTab}
           >
-            {Object.keys(presetState).map(label => {
-              const state = presetState[label];
+            {PRESET_ORDER.map(preset => {
+              const state = presetState[preset];
+
+              if (!state) return null;
+
               return (
                 <PluginToggle
                   config={state.config}
-                  key={label}
+                  key={preset}
                   onSettingChange={onSettingChange}
                   state={state}
                 />
