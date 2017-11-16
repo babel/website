@@ -23,6 +23,14 @@ registerPromiseWorker(message => {
         return null;
       }
 
+    case "getAvailablePresets":
+      if (!Babel) return [];
+
+      return Object.keys(Babel.availablePresets).map(p => ({
+        label: p,
+        isPreLoaded: true,
+      }));
+
     case "loadScript":
       try {
         importScripts(message.url);

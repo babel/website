@@ -62,6 +62,10 @@ export default class WorkerApi {
     return this._worker.postMessage({ method: "getBabelVersion" });
   }
 
+  getAvailablePresets(): Promise<Array<string>> {
+    return this._worker.postMessage({ method: "getAvailablePresets" });
+  }
+
   loadPlugin(state: PluginState): Promise<boolean> {
     const { config } = state;
 
