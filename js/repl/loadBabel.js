@@ -83,7 +83,7 @@ export default async function loadBabel(
   }
 
   const babelStandalone =
-    (semver.valid(version) && semver.gte(version, "7.0.0-beta.5")) ||
+    (semver.valid(version) && semver.gte(version, "7.0.0-beta.4")) ||
     version >= 7
       ? "@babel/standalone"
       : "babel-standalone";
