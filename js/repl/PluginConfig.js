@@ -21,9 +21,9 @@ const envPresetConfig: PluginConfig = {
 
 const envPresetFeaturesSupport: EnvFeatures = {
   debug: [0, 1],
-  builtInsUsage: [2, 2],
-  forceAllTransforms: [2, 2],
-  stringifiedVersion: [2, 2],
+  builtInsUsage: [2, 7],
+  forceAllTransforms: [2, 7],
+  stringifiedVersion: [2, 7],
 };
 
 const envPresetDefaults = {
