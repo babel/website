@@ -46,7 +46,7 @@ const envPresetDefaults = {
 };
 
 const runtimePolyfillConfig: PluginConfig = {
-  label: "Runtime Poylfill",
+  label: "Runtime Polyfill",
   package: "babel-polyfill",
   version: "6",
 };
@@ -60,60 +60,11 @@ const pluginConfigs: Array<PluginConfig> = [
   },
 ];
 
-const presetPluginConfigs: Array<PluginConfig> = [
-  {
-    label: "es2015",
-    package: "babel-preset-es2015",
-    isPreLoaded: true,
-  },
-  {
-    label: "es2015-loose",
-    package: "babel-preset-es2015-loose",
-    isPreLoaded: true,
-  },
-  {
-    label: "es2016",
-    package: "babel-preset-es2016",
-    isPreLoaded: true,
-  },
-  {
-    label: "es2017",
-    package: "babel-preset-es2017",
-    isPreLoaded: true,
-  },
-  {
-    label: "react",
-    package: "babel-preset-react",
-    isPreLoaded: true,
-  },
-  {
-    label: "stage-0",
-    package: "babel-preset-stage-0",
-    isPreLoaded: true,
-  },
-  {
-    label: "stage-1",
-    package: "babel-preset-stage-1",
-    isPreLoaded: true,
-  },
-  {
-    label: "stage-2",
-    package: "babel-preset-stage-2",
-    isPreLoaded: true,
-  },
-  {
-    label: "stage-3",
-    package: "babel-preset-stage-3",
-    isPreLoaded: true,
-  },
-];
-
 export {
   babelConfig,
   envPresetConfig,
   envPresetDefaults,
   envPresetFeaturesSupport,
   pluginConfigs,
-  presetPluginConfigs,
   runtimePolyfillConfig,
 };

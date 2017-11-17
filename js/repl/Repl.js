@@ -17,7 +17,6 @@ import {
   babelConfig,
   envPresetConfig,
   pluginConfigs,
-  presetPluginConfigs,
   runtimePolyfillConfig,
 } from "./PluginConfig";
 import {
@@ -88,7 +87,7 @@ class Repl extends React.Component {
         : ["es2015", "react", "stage-2"];
 
     const defaultPresets = presets.reduce((reduced, key) => {
-      if (key) reduced[`babel-preset-${key}`] = true;
+      if (key) reduced[key] = true;
       return reduced;
     }, {});
 
@@ -115,7 +114,8 @@ class Repl extends React.Component {
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
-      presets: configArrayToStateMap(presetPluginConfigs, defaultPresets),
+      // Filled in after Babel is loaded
+      presets: {},
       runtimePolyfillState: configToState(
         runtimePolyfillConfig,
         persistedState.evaluate
@@ -123,7 +123,7 @@ class Repl extends React.Component {
       sourceMap: null,
     };
 
-    this._setupBabel();
+    this._setupBabel(defaultPresets);
   }
 
   render() {
@@ -199,9 +199,16 @@ class Repl extends React.Component {
     );
   }
 
-  async _setupBabel() {
+  async _setupBabel(defaultPresets) {
     const babelState = await loadBundle(this.state.babel, this._workerApi);
-    this.setState(babelState);
+
+    this.setState({
+      babel: babelState,
+      presets: configArrayToStateMap(
+        babelState.availablePresets,
+        defaultPresets
+      ),
+    });
 
     if (babelState.isLoaded) {
       this._compile(this.state.code, this._checkForUnloadedPlugins);

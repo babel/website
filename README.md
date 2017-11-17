@@ -13,8 +13,8 @@ Feel free to suggest changes to our docs, add new content, or new ideas!
   * Make sure `bundler` is installed by running `gem install bundler`
 
 ```bash
-$ git clone git@github.com:babel/babel.github.io.git
-$ cd babel.github.io
+$ git clone git@github.com:babel/website.git
+$ cd website
 $ make bootstrap
 ```
 
@@ -50,7 +50,7 @@ If you encounter an `Liquid Exception: Included file '_includes/.../packages/...
 npm test
 ```
 
-This will lint markdown documents inside both the website and the imported repositories (like babel, babili, etc).
+This will lint markdown documents inside both the website and the imported repositories (like babel, babel-minify, etc).
 
 #### Testing compiled output
 

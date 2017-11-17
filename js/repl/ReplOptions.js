@@ -2,11 +2,7 @@
 
 import { css } from "emotion";
 import React, { Component } from "react";
-import {
-  envPresetDefaults,
-  pluginConfigs,
-  presetPluginConfigs,
-} from "./PluginConfig";
+import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
@@ -20,6 +16,20 @@ import type {
   EnvState,
   PluginStateMap,
 } from "./types";
+
+const PRESET_ORDER = [
+  "es2015",
+  "es2015-loose",
+  "es2016",
+  "es2017",
+  "stage-0",
+  "stage-1",
+  "stage-2",
+  "stage-3",
+  "react",
+  "flow",
+  "typescript",
+];
 
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
@@ -74,9 +84,6 @@ const ReplOptions = (props: Props) => (
 );
 
 export default ReplOptions;
-
-// Enable when onPresetBuild will be merged;
-const USE_PRESET_ENV_DEBUG = false;
 
 // The choice of Component over PureComponent is intentional here.
 // It simplifies the re-use of PluginState objects,
@@ -148,14 +155,20 @@ class ExpandedContainer extends Component {
             label="Presets"
             toggleIsExpanded={this._togglePresetsTab}
           >
-            {presetPluginConfigs.map(config => (
-              <PluginToggle
-                config={config}
-                key={config.package}
-                onSettingChange={onSettingChange}
-                state={presetState[config.package]}
-              />
-            ))}
+            {PRESET_ORDER.map(preset => {
+              const state = presetState[preset];
+
+              if (!state) return null;
+
+              return (
+                <PluginToggle
+                  config={state.config}
+                  key={preset}
+                  onSettingChange={onSettingChange}
+                  state={state}
+                />
+              );
+            })}
           </AccordionTab>
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}
@@ -452,13 +465,13 @@ const PluginToggle = ({
   state,
   onSettingChange,
 }: PluginToggleProps) => (
-  <label key={config.package} className={styles.settingsLabel}>
+  <label key={config.label} className={styles.settingsLabel}>
     <input
       checked={state.isEnabled && !state.didError}
       className={styles.inputCheckboxLeft}
       disabled={state.isLoading || state.didError}
       onChange={(event: SyntheticInputEvent) =>
-        onSettingChange(config.package, event.target.checked)}
+        onSettingChange(config.package || config.label, event.target.checked)}
       type="checkbox"
     />
     {state.isLoading ? <PresetLoadingAnimation /> : label || config.label}

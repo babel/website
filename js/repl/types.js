@@ -26,7 +26,7 @@ export type PluginConfig = {
   isPreLoaded?: boolean,
   label: string,
   package: string,
-  version?: string,
+  version: string,
   instanceName?: string,
 };
 
@@ -39,6 +39,7 @@ export type LazyLoadedState = {
 };
 
 export type BabelState = LazyLoadedState & {
+  availablePresets: Array<string>,
   build: string,
   errorMessage?: string,
   circleciRepo: string,

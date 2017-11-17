@@ -67,6 +67,7 @@ export const persistedStateToBabelState = (
   persistedState: PersistedState,
   config: PluginConfig
 ): BabelState => ({
+  availablePresets: [],
   build: persistedState.build,
   circleciRepo: persistedState.circleciRepo,
   didError: false,
@@ -92,9 +93,9 @@ export const configArrayToStateMap = (
   defaults: DefaultPlugins = {}
 ): PluginStateMap =>
   pluginConfigs.reduce((reduced, config) => {
-    reduced[config.package] = configToState(
+    reduced[config.package || config.label] = configToState(
       config,
-      defaults[config.package] === true
+      defaults[config.package || config.label] === true
     );
     return reduced;
   }, {});
@@ -167,6 +168,10 @@ export const getDebugInfoFromEnvResult = (
   result: BabelPresetEnvResult
 ): string => {
   const debugInfo = [];
+
+  if (result.modulePlugin) {
+    debugInfo.push(`Using modules transform:\n  ${result.modulePlugin}`);
+  }
 
   const targetNames = Object.keys(result.targets);
   if (targetNames.length) {

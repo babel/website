@@ -1,3 +1,4 @@
+import semver from "semver";
 import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./CircleCI";
 import { BabelState, PluginConfig } from "./types";
 import WorkerApi from "./WorkerApi";
@@ -14,9 +15,13 @@ export default async function loadBundle(
         state.isLoaded = true;
         state.isLoading = false;
 
-        // Incoming version might be unspecific (eg "6")
-        // Resolve to a more specific version to show in the UI.
-        return workerApi.getBundleVersion(config.instanceName).then(version => {
+        return Promise.all([
+          // Incoming version might be unspecific (eg "6")
+          // Resolve to a more specific version to show in the UI.
+          workerApi.getBundleVersion(config.instanceName),
+          workerApi.getAvailablePresets(),
+        ]).then(([version, presets]) => {
+          state.availablePresets = presets;
           state.version = version;
           return state;
         });
@@ -39,14 +44,22 @@ export default async function loadBundle(
   if (buildFromPath) {
     build = buildFromPath[1];
   }
+  build = 5831;
 
   if (build) {
     const isBuildNumeric = /^[0-9]+$/.test(build);
     try {
       if (!isBuildNumeric) {
         // Build in URL is *not* numeric, assume it's a branch name
-        // Get the latest build number for this branch
-        build = await loadLatestBuildNumberForBranch(state.circleciRepo, build);
+        // Get the latest build number for this branch.
+        //
+        // NOTE:
+        // Since we switched the 7.0 branch to master, we map /build/7.0 to
+        // /build/master for backwards compatibility.
+        build = await loadLatestBuildNumberForBranch(
+          state.circleciRepo,
+          build === "7.0" ? "master" : build
+        );
       }
       const packageName = config.package;
       const packageFile = `${packageName.replace(/-standalone/, "")}.js`;
@@ -80,7 +93,12 @@ export default async function loadBundle(
   }
 
   const base = config.baseUrl;
-  const url = `${base}/${config.package}@${version || ""}`;
 
+  const packageName =
+    (semver.valid(version) && semver.gte(version, "7.0.0-beta.4")) ||
+    version >= 7
+      ? config.package.replace(/^babel-/, "@babel/")
+      : config.package;
+  const url = `${base}/${packageName}@${version || ""}`;
   return doLoad(url);
 }
