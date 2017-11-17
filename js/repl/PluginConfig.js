@@ -101,7 +101,6 @@ export {
   envPresetConfig,
   envPresetDefaults,
   pluginConfigs,
-  presetPluginConfigs,
   runtimePolyfillConfig,
   replDefaults,
 };

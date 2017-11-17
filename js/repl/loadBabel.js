@@ -1,3 +1,4 @@
+import semver from "semver";
 import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./CircleCI";
 import { BabelState } from "./types";
 import WorkerApi from "./WorkerApi";
@@ -14,9 +15,13 @@ export default async function loadBabel(
         config.isLoaded = true;
         config.isLoading = false;
 
-        // Incoming version might be unspecific (eg "6")
-        // Resolve to a more specific version to show in the UI.
-        return workerApi.getBabelVersion().then(version => {
+        return Promise.all([
+          // Incoming version might be unspecific (eg "6")
+          // Resolve to a more specific version to show in the UI.
+          workerApi.getBabelVersion(),
+          workerApi.getAvailablePresets(),
+        ]).then(([version, presets]) => {
+          config.availablePresets = presets;
           config.version = version;
           return config;
         });
@@ -77,5 +82,11 @@ export default async function loadBabel(
     version = DEFAULT_BABEL_VERSION;
   }
 
-  return doLoad(`https://unpkg.com/babel-standalone@${version}/babel.min.js`);
+  const babelStandalone =
+    (semver.valid(version) && semver.gte(version, "7.0.0-beta.4")) ||
+    version >= 7
+      ? "@babel/standalone"
+      : "babel-standalone";
+
+  return doLoad(`https://unpkg.com/${babelStandalone}@${version}/babel.min.js`);
 }

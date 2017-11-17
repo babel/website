@@ -65,6 +65,7 @@
     "lz-string": "^1.4.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "semver": "^5.4.1",
     "unfetch": "^3.0.0",
     "worker-loader": "^1.0.0"
   },
