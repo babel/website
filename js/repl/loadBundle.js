@@ -44,7 +44,6 @@ export default async function loadBundle(
   if (buildFromPath) {
     build = buildFromPath[1];
   }
-  build = 5831;
 
   if (build) {
     const isBuildNumeric = /^[0-9]+$/.test(build);
