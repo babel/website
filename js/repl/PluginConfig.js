@@ -40,7 +40,7 @@ const pluginConfigs: Array<PluginConfig> = [
   {   
     label: "Prettify",    
     package: "prettier",    
-    version: "1",   
+    version: "1.6.1",   
   },
 ];
 
