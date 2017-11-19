@@ -40,7 +40,7 @@ const pluginConfigs: Array<PluginConfig> = [
   {
     label: "Prettify",
     package: "prettier",
-    version: "1.6.1",
+    version: "1.6.1", // v1.7.0+ causes runtime errors; see issue #1388
   },
 ];
 
