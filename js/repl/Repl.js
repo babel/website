@@ -77,6 +77,7 @@ class Repl extends React.Component {
 
     const defaultPlugins = {
       "babili-standalone": persistedState.babili,
+      prettier: persistedState.prettier,
     };
 
     const presets =
@@ -314,6 +315,7 @@ class Repl extends React.Component {
         evaluate:
           runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
         presets: presetsArray,
+        prettify: state.plugins.prettier.isEnabled,
         sourceMap: runtimePolyfillState.isEnabled,
         useBuiltIns: state.builtIns,
       })
@@ -417,6 +419,7 @@ class Repl extends React.Component {
       isSettingsTabExpanded: state.isSettingsTabExpanded,
       lineWrap: state.lineWrap,
       presets: presetsArray.join(","),
+      prettier: plugins.prettier.isEnabled,
       showSidebar: state.isSidebarExpanded,
       targets: envConfigToTargetsString(envConfig),
       version: state.babel.version,

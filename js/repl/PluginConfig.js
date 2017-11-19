@@ -37,6 +37,11 @@ const pluginConfigs: Array<PluginConfig> = [
     package: "babili-standalone", // TODO Switch to babel-minify-standalone
     version: "0",
   },
+  {   
+    label: "Prettify",    
+    package: "prettier",    
+    version: "1",   
+  },
 ];
 
 export {
