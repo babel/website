@@ -292,7 +292,7 @@ class Repl extends React.Component {
         // Because it's loaded in a worker, we need to configure it there as well.
         this._workerApi
           .registerEnvPreset()
-          .then(success => this._updateCode(this.state.code));
+          .then(() => this._updateCode(this.state.code));
       });
     }
   }
