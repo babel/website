@@ -51,6 +51,7 @@ export const loadPersistedState = (): PersistedState => {
     isSettingsTabExpanded: merged.isSettingsTabExpanded !== false, // Default to show
     lineWrap: merged.lineWrap != null ? merged.lineWrap : true,
     presets: merged.hasOwnProperty("presets") ? merged.presets : null,
+    prettier: merged.prettier === true,
     showSidebar: merged.showSidebar !== false, // Default to show
     targets: merged.targets || "",
     version: merged.version || "",

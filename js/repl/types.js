@@ -49,6 +49,7 @@ export type CompileConfig = {
   envConfig: ?EnvConfig,
   evaluate: boolean,
   presets: BabelPresets,
+  prettify: boolean,
   sourceMap: boolean,
   useBuiltIns: boolean,
 };
@@ -67,6 +68,7 @@ export type PersistedState = {
   isSettingsTabExpanded: boolean,
   lineWrap: boolean,
   presets: ?string,
+  prettier: boolean,
   showSidebar: boolean,
   targets: string,
   version: string,
