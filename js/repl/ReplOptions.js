@@ -202,7 +202,9 @@ class ExpandedContainer extends Component {
                 />
               </div>
               <label className={styles.envPresetRow}>
-                <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
+                <span
+                  className={`${styles.envPresetLabel} ${styles.highlight}`}
+                >
                   Electron
                 </span>
                 <input
@@ -228,7 +230,9 @@ class ExpandedContainer extends Component {
                 />
               </label>
               <label className={styles.envPresetRow}>
-                <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
+                <span
+                  className={`${styles.envPresetLabel} ${styles.highlight}`}
+                >
                   Node
                 </span>
                 <input
@@ -257,7 +261,9 @@ class ExpandedContainer extends Component {
                 <input
                   checked={builtIns}
                   className={styles.inputCheckboxLeft}
-                  disabled={runtimePolyfillState.isEnabled || disableEnvSettings}
+                  disabled={
+                    runtimePolyfillState.isEnabled || disableEnvSettings
+                  }
                   onChange={this._onBuiltInsChange}
                   type="checkbox"
                 />
