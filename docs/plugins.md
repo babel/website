@@ -131,7 +131,7 @@ These plugins apply transformations to your code.
 
 ### Minification
 
-Check out our [minifier based on Babel](https://github.com/babel/babili)!
+Check out our [minifier based on Babel](https://github.com/babel/minify)!
 
 These plugins are in the minify repo.
 
@@ -184,7 +184,6 @@ These plugins are in the minify repo.
 ## Misc Plugins
 
 - [external-helpers](/docs/plugins/external-helpers/)
-- [undeclared-variables-check](/docs/plugins/undeclared-variables-check/)
 
 ## Syntax Plugins
 
@@ -298,7 +297,7 @@ It is important to remember that with presets, the order is _reversed_. The foll
 
 Will run in the following order: `stage-2`, `react`, then `es2015`.
 
-This is mostly for ensuring backwards compatibility, since most users list "es2015" before "stage-0". For more information, see [notes on potential traversal API changes](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal).
+This is mostly for ensuring backwards compatibility, since most users list "es2015" before "stage-0". For more information, see [notes on potential traversal API changes](https://github.com/babel/notes/blob/master/2016/2016-08/august-01.md#potential-api-changes-for-traversal).
 
 ## Plugin/Preset Options
 

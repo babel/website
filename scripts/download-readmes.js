@@ -33,7 +33,11 @@ function getReadmeURLsFromDirectoryListing({ branch, packages, repo }) {
 }
 
 console.log('Retrieving package listing...');
+<<<<<<< HEAD
 Promise.all([getDirectoryListing('babel', 'master'), getDirectoryListing('babili')])
+=======
+Promise.all([getDirectoryListing('babel', '6.x'), getDirectoryListing('minify')])
+>>>>>>> master-repo
   .then(([babelPackages, babiliPackages]) => {
     const packages = [
       ...getReadmeURLsFromDirectoryListing(babelPackages),

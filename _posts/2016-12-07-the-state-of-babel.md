@@ -2,6 +2,7 @@
 layout: post
 title:  "The State of Babel"
 author: Henry Zhu
+author_url: "https://twitter.com/left_pad"
 date:   2016-12-07 14:30:00
 categories: announcements
 share_text: "The State of Babel"
@@ -333,7 +334,7 @@ Relevant Issues:
 
 > Priority should be determined on what the community needs: not because it would be nice to have.
 
-### [Plugin API Changes](https://github.com/babel/notes/blob/master/2016-08/august-01.md#potential-api-changes-for-traversal)
+### [Plugin API Changes](https://github.com/babel/notes/blob/master/2016/2016-08/august-01.md#potential-api-changes-for-traversal)
 
 There is a lot of confusion around how plugins/presets interact regarding ordering. This results in bugs and issues with the config which require users to place plugins before/after others in a non-intuitive way.
 
@@ -343,7 +344,7 @@ We’re currently discussing API changes that could reduce the confusion. Howeve
 
 Since Babel 6 we've used a ["fixed" mode of versioning](https://github.com/lerna/lerna#how-it-works) via Lerna. This is what allows us to release multiple packages at the same time all under the same version (if that package changes). This is nice because you don't have to manually set a version for each package but everything moves together. The only time this could cause an error is when one on the packages makes a breaking change: then every package also will bump major versions.
 
-This is explained more in [babel/notes](https://github.com/babel/notes/blob/master/2016-07/july-31.md#future-of-babels-release-process-and-its-ecosystem) but we still need to figure out the best plan of action for the project.
+This is explained more in [babel/notes](https://github.com/babel/notes/blob/master/2016/2016-07/july-31.md#future-of-babels-release-process-and-its-ecosystem) but we still need to figure out the best plan of action for the project.
 
 What happens when we need to update a Stage 0 spec to Stage 1 and it's a breaking change to the parser? Are we just going to bump the major version, wait to batch some changes up, or figure out how to do it via multiple versions of plugins?
 

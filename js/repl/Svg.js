@@ -8,10 +8,11 @@ type Props = {
   path: string,
 };
 
-const Svg = ({ className, path, ...rest }: Props) =>
+const Svg = ({ className, path, ...rest }: Props) => (
   <svg className={`${styles.svg} ${className}`} viewBox="0 0 24 24" {...rest}>
     <path className={styles.path} d={path} />
-  </svg>;
+  </svg>
+);
 
 const styles = {
   svg: css({

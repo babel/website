@@ -7,14 +7,15 @@ type PresetLoadingAnimationProps = {
 
 const PresetLoadingAnimation = ({
   className = "",
-}: PresetLoadingAnimationProps) =>
+}: PresetLoadingAnimationProps) => (
   <div className={`${className} ${styles.loadingAnimation}`}>
     <div className={`${styles.loadingTick} ${styles.loadingTick1}`} />
     <div className={`${styles.loadingTick} ${styles.loadingTick2}`} />
     <div className={`${styles.loadingTick} ${styles.loadingTick3}`} />
     <div className={`${styles.loadingTick} ${styles.loadingTick4}`} />
     <div className={`${styles.loadingTick} ${styles.loadingTick5}`} />
-  </div>;
+  </div>
+);
 
 export default PresetLoadingAnimation;
 

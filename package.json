@@ -7,7 +7,9 @@
   "scripts": {
     "start": "make serve",
     "build": "make build",
-    "lint": "eslint --ext md --rule 'prettier/prettier: 0' docs",
+    "lint": "npm run lint:docs && npm run lint:repl",
+    "lint:docs": "eslint --ext md --rule 'prettier/prettier: 0' docs",
+    "lint:repl": "eslint js/repl/*.js",
     "test": "remark _posts docs _includes README.md --quiet",
     "flow": "flow",
     "precommit": "flow && lint-staged"
@@ -38,13 +40,13 @@
     "eslint-config-babel": "^6.0.0",
     "eslint-plugin-flowtype": "^2.35.0",
     "eslint-plugin-markdown": "^1.0.0-beta.3",
-    "eslint-plugin-prettier": "^2.2.0",
+    "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.2.1",
     "flow-bin": "0.52",
     "husky": "^0.14.3",
-    "lint-staged": "^4.0.3",
+    "lint-staged": "^4.2.3",
     "node-fetch": "^1.7.1",
-    "prettier": "^1.5.3",
+    "prettier": "1.7.4",
     "remark-cli": "^3.0.0",
     "remark-lint-list-item-indent": "^1.0.0",
     "remark-lint-no-blockquote-without-caret": "^1.0.0",
@@ -56,21 +58,20 @@
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
-    "babel-plugin-emotion": "^8.0.2-7",
-    "codemirror": "5.28.0",
-    "emotion": "^8.0.2-7",
-    "lodash.camelcase": "^4.3.0",
+    "babel-plugin-emotion": "^8.0.2-11",
+    "codemirror": "5.30.0",
+    "emotion": "^8.0.2-12",
     "lodash.debounce": "^4.0.8",
     "lz-string": "^1.4.4",
-    "react": "16.0.0-beta.3",
-    "react-dom": "16.0.0-beta.3",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-tooltip": "^3.3.0",
+    "semver": "^5.4.1",
     "unfetch": "^3.0.0",
-    "worker-loader": "^0.8.1"
+    "worker-loader": "^1.0.0"
   },
   "lint-staged": {
     "js/**/*.js": [
-      "prettier --trailing-comma es5 --write",
       "eslint --format=codeframe --fix",
       "git add"
     ]

@@ -17,7 +17,6 @@ import ReactTooltip from "react-tooltip";
 import {
   envPresetConfig,
   pluginConfigs,
-  presetPluginConfigs,
   runtimePolyfillConfig,
 } from "./PluginConfig";
 import {
@@ -87,12 +86,15 @@ class Repl extends React.Component {
       prettier: persistedState.prettier,
     };
 
-    const defaultPresets = (persistedState.presets || "es2015,react,stage-2")
-      .split(",")
-      .reduce((reduced, key) => {
-        reduced[`babel-preset-${key}`] = true;
-        return reduced;
-      }, {});
+    const presets =
+      typeof persistedState.presets === "string"
+        ? persistedState.presets.split(",")
+        : ["es2015", "react", "stage-2"];
+
+    const defaultPresets = presets.reduce((reduced, key) => {
+      if (key) reduced[key] = true;
+      return reduced;
+    }, {});
 
     const envConfig = persistedStateToEnvConfig(persistedState);
 
@@ -121,7 +123,8 @@ class Repl extends React.Component {
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
-      presets: configArrayToStateMap(presetPluginConfigs, defaultPresets),
+      // Filled in after Babel is loaded
+      presets: {},
       runtimePolyfillState: configToState(
         runtimePolyfillConfig,
         persistedState.evaluate
@@ -129,7 +132,7 @@ class Repl extends React.Component {
       sourceMap: null,
     };
 
-    this._setupBabel();
+    this._setupBabel(defaultPresets);
   }
 
   render() {
@@ -148,8 +151,9 @@ class Repl extends React.Component {
         <div className={styles.loader}>
           <div className={styles.loaderContent}>
             {message}
-            {state.babel.isLoading &&
-              <PresetLoadingAnimation className={styles.loadingAnimation} />}
+            {state.babel.isLoading && (
+              <PresetLoadingAnimation className={styles.loadingAnimation} />
+            )}
           </div>
         </div>
       );
@@ -208,9 +212,16 @@ class Repl extends React.Component {
     );
   }
 
-  async _setupBabel() {
+  async _setupBabel(defaultPresets) {
     const babelState = await loadBabel(this.state.babel, this._workerApi);
-    this.setState(babelState);
+
+    this.setState({
+      babel: babelState,
+      presets: configArrayToStateMap(
+        babelState.availablePresets,
+        defaultPresets
+      ),
+    });
 
     if (babelState.isLoaded) {
       this._compile(this.state.code, this._checkForUnloadedPlugins);
@@ -293,7 +304,7 @@ class Repl extends React.Component {
         // Because it's loaded in a worker, we need to configure it there as well.
         this._workerApi
           .registerEnvPreset()
-          .then(success => this._updateCode(this.state.code));
+          .then(() => this._updateCode(this.state.code));
       });
     }
   }

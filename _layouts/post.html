@@ -20,7 +20,13 @@ custom_js:
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-push-2 babel-blog-content">
-      <p class="small text-center text-muted">Posted {{ page.date | date: "%b %-d, %Y" }} by {{ page.author }}{% if page.meta %} · {{ page.meta }}{% endif %}</p>
+      <p class="small text-center text-muted">Posted {{ page.date | date: "%b %-d, %Y" }} by
+      {% if page.author_url %}
+        <a href="{{page.author_url}}">{{page.author}}</a>
+      {% else %}
+        {{page.author}}
+      {% endif %}
+      {% if page.meta %} · {{ page.meta }}{% endif %}</p>
 
       {% if page.guest_post %}
         <blockquote class="babel-callout babel-callout-info">
