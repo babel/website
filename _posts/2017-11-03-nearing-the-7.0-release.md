@@ -12,16 +12,41 @@ share_text: "Nearing the 7.0 Release"
 
 ## Project Updates
 
-- We started a new [videos page](https://babeljs.io/docs/community/videos/)! Wanted to create this to provide a resource for people wanting to contribute to Babel.
-- We created a new [team page](https://babeljs.io/team)! I think we'll want to update this with more of what people work on and why they are involved!
+- We started a new [videos page](https://babeljs.io/docs/community/videos/)! Wanted to create this to provide a resource for people wanting to learn more about how Babel works and help contribute back!
+
+[![videos](https://i.imgur.com/DkBEsfo.png)](https://babeljs.io/docs/community/videos/)
+
+- We created a new [team page](https://babeljs.io/team)! We'll be updating this in the future with more information about what people work on and why they are involved! For such a large project, there are many ways to get involved and help out!
+
+[![team](https://i.imgur.com/YcWgRwf.png)](https://babeljs.io/team)
+
 - Babel turned three years old on [Sept 28](https://babeljs.io/blog/2017/10/05/babel-turns-three)!
-- Daniel [moved](https://twitter.com/left_pad/status/926096965565370369) `babel/babylon` and `babel/babel-preset-env` into the main Babel monorepo: [babel/babel](https://github.com/babel/babel), including everything from git history, labels, issues.
+- Daniel [moved](https://twitter.com/left_pad/status/926096965565370369) `babel/babylon` and `babel/babel-preset-env` into the main Babel monorepo: [babel/babel](https://github.com/babel/babel), including everything from git history, labels, issues!
 - We received a [$1k/month donation](https://twitter.com/left_pad/status/923696620935421953) from Facebook Open Source!
-  - We're looking to be able to fund our team full-time, but in the meantime will use our funds for sending people to TC39 meetings (every 2 months around the world). If someone wants to sponsor specifically for that we can create separate issues to track that so there are concrete/specific things a company can donate for.
+  - If your company would also like to give back and support a fundamental part of JavaScript development and it's future, consider donating to our [Open Collective](https://opencollective.com/babel) or donate developer time to helping maintain the project
+  - This the highest monthly donation we've gotten since the start (next highest is $100/month)
+  - We're definetely looking to be able to fund people on the team to work full-time
+  - In the meantime we will use our funds to meet in person and sending people to TC39 meetings (it's every 2 months around the world). If someone wants to sponsor specifically for that, we can create separate issues to track that so there are concrete/specific things a company can donate for. This has been previously difficult because we've had to pay out of pocket or for me had to find a conference on the same week to speak at to help cover expenses.
+
+### How you can help!
+
+#### #1 Help Maintain the Project (developer time at work)
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Engineer: There&#39;s a thing in SQL Server Enterprise blocking us<br>Company: Let&#39;s set up a call next week with them an ongoing discussion to resolve it next quarter<br><br>Engineer: There&#39;s a thing we need in babel, can I spent 2 days with a PR for it<br>Company: lol no it&#39;s their job <a href="https://t.co/icgaoJ0dTe">https://t.co/icgaoJ0dTe</a></p>&mdash; Shiya (@ShiyaLuo) <a href="https://twitter.com/ShiyaLuo/status/931230821976907776?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+#### #2 Fund development
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Company: &quot;We&#39;d like to use SQL Server Enterprise&quot;<br>MS: &quot;That&#39;ll be a quarter million dollars + $20K/month&quot;<br>Company: &quot;Ok!&quot;<br>...<br>Company: &quot;We&#39;d like to use Babel&quot;<br>Babel: &quot;Ok! npm i babel --save&quot;<br>Company: &quot;Cool&quot;<br>Babel: &quot;Would you like to help contribute financially?&quot;<br>Company: &quot;lol no&quot;</p>&mdash; Adam Rackis (@AdamRackis) <a href="https://twitter.com/AdamRackis/status/931195056479965185?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+### Upgrading
+
+We will also be working on a upgrade tool that will help [rewrite your package.json/.babelrc files](https://github.com/babel/notes/issues/44).
 
 ### Summary of the [previous post](https://babeljs.io/blog/2017/09/12/planning-for-7.0)
 
-- Drop Node 0.10/0.12
+- Drop Node 0.10/0.12/5 support.
 - Updated [TC39 proposals](https://github.com/babel/proposals/issues)
   - Numeric Separator: `1_000`
   - Optional Chaining Operator: `a?.b`
@@ -29,9 +54,9 @@ share_text: "Nearing the 7.0 Release"
   - Optional Catch Binding: `try { a } catch {}`
   - BigInt (parseble): `2n`
   - Split export extensions into `export-default-from` and `export-ns-form`
-- `.babelrc.js`
-- Typescript Preset, separate React/Flow presets
-- Removed `babel-runtime` dep for smaller size
+- `.babelrc.js` support (a config using JavaScript instead of JSON)
+- A new Typescript Preset + separated the React/Flow presets
+- Removed the internal `babel-runtime` dependency for smaller size
 
 ### Newly Updated TC39 Proposals
 
@@ -43,17 +68,24 @@ share_text: "Nearing the 7.0 Release"
 
 TL;DR is use `babel-preset-env` instead.
 
-What's better than add new docs/messages/having you decide what babel preset to use? If it was done for you, automatically. 
+What's better than you having to decide what Babel preset to use? If it was done for you, automatically!
 
 Even though the amount of work that goes into maintaining the lists of data is humongous (again why we need help), it solves multiple issues: making sure users are up to date with the spec, less configuration/package confusion, an easier upgrade path, and less issues about what is what.
 
+`babel-preset` is actually a pretty *old* preset that replaces every other syntax preset that you will need (es2015, es2016, es2017, es20xx, latest, etc...).
+
+![npm presets](https://i.imgur.com/nNKKFcp.png)
+
+It compiles the latest yearly release of JavaScript (whatever is in Stage 4) which replaces all the old presets. But it also has the further abilitiy to compile according to the target environments you specify: whether it's for development mode (latest version of a browser), or different builds (one for IE, one for evergreen browsers).
+
 ### Not removing the Stage presets (babel-preset-stage-x)
 
-https://twitter.com/left_pad/status/873242704364306433
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Frustration level if we remove the Stage presets in Babel? (in favor explicitly requiring proposal plugins since they aren&#39;t JavaScript yet)</p>&mdash; Henry Zhu (@left_pad) <a href="https://twitter.com/left_pad/status/873242704364306433?ref_src=twsrc%5Etfw">June 9, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 We can always keep it up to date, and maybe we just need to determine a better system than what these presets are currently.
 
-Right now, they are literally just a list of plugins that we manually update after a TC39 meeting happens. Of course to make this managable we will need to just allow for major version bumps for these "unstable" packages. Part of the reason for this is because the community will just re-create these packages anyway so might as well do it via an official package.
+Right now, they are literally just a list of plugins that we manually update after a TC39 meeting happens. Of course to make this managable we will need to just allow for major version bumps for these "unstable" packages. Part of the reason for this is because the community will just re-create these packages anyway, so we might as well do it via an official package and have the ability to provide better messaging, etc.
 
 ### Renames: Scoped Packages (`@babel/x`)
 
@@ -79,10 +111,9 @@ So it seems obvious we should do this, and if anything should of done it much ea
 
 Examples of the scoped name change:
 
-`babel-cli` -> `@babel/cli`
-`babel-core` -> `@babel/core`
-`babel-preset-es2015` -> `@babel/preset-es2015` (this is deprecated though, so use preset-env)
-`babel-preset-env` -> `@babel/preset-env`
+- `babel-cli` -> `@babel/cli`
+- `babel-core` -> `@babel/core`
+- `babel-preset-env` -> `@babel/preset-env`
 
 ### Renames: `-proposal-`
 
@@ -124,37 +155,15 @@ Unfortunately this kind of system requires that a major version be released for 
 
 This means that we intend to make major version bumps to any experimental proposal plugins when the spec changes rather than waiting to update all of Babel. So anything that is < Stage 4 would be open to breaking changes in the form of major version bumps and same with the Stage presets themselves if we don't drop them entirely.
 
-For example:
-
-Say you are using preset-env (which keeps up to date and currently includes everything in es2015, es2016, es2017) + an experimental plugin. You also decide to use object-rest-spread because it's cool.
-
-```json
-{
-  "presets": ["env"],
-  "plugins": ["transform-object-rest-spread"]
-}
-```
-
-If the spec to an experimental proposal changes, we should be free to make a breaking change and make a major version bump for that plugin only. Because it only affects that plugin, it doesn't affect anything else and people are free to update when possible. We just want to make sure that users update to the latest version of any experimental proposal when possible and provide the tools to do so automatically if that is reasonable as well.
-
-### Release Process
-
-> I believe the way we want to go about doing this is to move those packages into the `experimental/` folder in our [monorepo](https://github.com/babel/babel) instead of in `packages/`.
-> Change our publish process (probably through Lerna) to publish the packages in `experimental/` independently.
-
-### Handle `.mjs` files
-
-- @jdd handled using `@std/esm` with `@babel/register`
-- [#5624](https://github.com/babel/babel/pull/5624) Hook into compiling .mjs files in `@babel/cli` and `@babel/register`
-- [#570](https://github.com/babel/babel/pull/5700) Always force `.mjs` to be parsed as module
-- [#6221](https://github.com/babel/babel/pull/6221) Add `--keep-file-extension` option to `@babel/cli` to retain `.mjs` file instead of converting to `.js`
-
-#### Open Issues
-
-- [ ] How can we make `@babel/register` work with modules? [#6737](https://github.com/babel/babel/issues/6737)
-- [ ] `--watch` with `.mjs` files [#6800](https://github.com/babel/babel/issues/6800)
-- [ ] Output `.mjs` extension [#6222](https://github.com/babel/babel/issues/6222)
+This goes with our decision to change TC39 proposal plugins to have the `-proposal-` name. If the spec changes, we will do a major version bump to the plugin and the preset it belongs to (as opposed to just do a patch version which may break for people). Then we'll need to work on deprecating the old versions and figuring out how to setup the infrastructure to automatically update people so everyone is up to date on what the spec will become (and not get stuck on something like we have with decorators).
 
 ### Speed
+
+- fixes from bmuerer: https://twitter.com/rauchg/status/924349334346276864
+- benchmark: https://github.com/v8/web-tooling-benchmark/issues/27
+- 60% faster https://twitter.com/left_pad/status/927554660508028929
+
 ### Compiling `node_modules`
 ### preset-env: `"useBuiltins": "usage"`
+
+### Upcoming
