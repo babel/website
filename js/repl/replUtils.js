@@ -45,6 +45,8 @@ export const loadPersistedState = (): PersistedState => {
     circleciRepo: merged.circleciRepo || "",
     code: merged.code || "",
     debug: merged.debug === true,
+    spec: merged.spec != null ? merged.spec : false,
+    loose: merged.loose != null ? merged.loose : true,
     evaluate: merged.evaluate === true,
     isEnvPresetTabExpanded: merged.isEnvPresetTabExpanded === true,
     isPresetsTabExpanded: merged.isPresetsTabExpanded === true,
