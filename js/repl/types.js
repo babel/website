@@ -17,8 +17,8 @@ export type PluginConfig = {
   baseUrl?: string,
   isPreLoaded?: boolean,
   label: string,
-  package?: string,
-  version?: string,
+  package: string,
+  version: string,
 };
 
 export type PluginConfigs = Array<PluginConfig>;
@@ -67,6 +67,8 @@ export type PersistedState = {
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   lineWrap: boolean,
+  spec: boolean,
+  loose: boolean,
   presets: ?string,
   prettier: boolean,
   showSidebar: boolean,
