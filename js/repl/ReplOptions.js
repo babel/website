@@ -17,7 +17,6 @@ import type {
 
 const PRESET_ORDER = [
   "es2015",
-  "es2015-loose",
   "es2016",
   "es2017",
   "stage-0",
@@ -46,6 +45,8 @@ type Props = {
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   lineWrap: boolean,
+  spec: boolean,
+  loose: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
@@ -89,6 +90,8 @@ class ExpandedContainer extends Component {
       isPresetsTabExpanded,
       isSettingsTabExpanded,
       lineWrap,
+      spec,
+      loose,
       onIsExpandedChange,
       onSettingChange,
       pluginState,
@@ -99,6 +102,17 @@ class ExpandedContainer extends Component {
 
     const disableEnvSettings =
       !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled;
+
+    const showOption =
+      presetState["es2015"].isEnabled && !envConfig.isEnvPresetEnabled;
+    const showSpecOption = !loose && showOption;
+    const showLooseOption = !spec && showOption;
+
+    const tooltips = {
+      spec:
+        "Modify es2015 preset and enable “spec” transformations for any plugins that allow them.",
+      loose: "Modify es2015 preset and enable “loose” mode where available.",
+    };
 
     return (
       <div className={styles.expandedContainer}>
@@ -124,6 +138,30 @@ class ExpandedContainer extends Component {
               />
               Line Wrap
             </label>
+            {showSpecOption ? (
+              <label className={styles.settingsLabel} data-tip={tooltips.spec}>
+                <input
+                  checked={spec}
+                  name="spec"
+                  onChange={this._onSpecLooseChange}
+                  className={styles.inputCheckboxLeft}
+                  type="checkbox"
+                />
+                Spec
+              </label>
+            ) : null}
+            {showLooseOption ? (
+              <label className={styles.settingsLabel} data-tip={tooltips.loose}>
+                <input
+                  checked={loose}
+                  name="loose"
+                  onChange={this._onSpecLooseChange}
+                  className={styles.inputCheckboxLeft}
+                  type="checkbox"
+                />
+                Loose
+              </label>
+            ) : null}
             {pluginConfigs.map(config => (
               <PluginToggle
                 config={config}
@@ -286,6 +324,11 @@ class ExpandedContainer extends Component {
   };
 
   _onEnvPresetEnabledChange = (event: SyntheticInputEvent) => {
+    // disable and hide spec option if Env preset is enabled
+    if (event.target.checked) {
+      this.setState({ spec: false, loose: false });
+    }
+
     this.props.onEnvPresetSettingChange(
       "isEnvPresetEnabled",
       event.target.checked
@@ -324,6 +367,10 @@ class ExpandedContainer extends Component {
 
   _onNodeChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange("node", parseFloat(event.target.value));
+  };
+
+  _onSpecLooseChange = (event: SyntheticInputEvent) => {
+    this.props.onSettingChange(event.target.name, event.target.checked);
   };
 
   _toggleEnvPresetTab = () => {
