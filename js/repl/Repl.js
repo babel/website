@@ -164,6 +164,7 @@ class Repl extends React.Component {
 
     return (
       <div className={styles.repl}>
+        <ReactTooltip effect="solid" />
         <ReplOptions
           babelVersion={state.babel.version}
           builtIns={state.builtIns}
@@ -470,6 +471,9 @@ class Repl extends React.Component {
   _presetsUpdatedSetStateCallback = () => {
     this._checkForUnloadedPlugins();
     this._updateCode(this.state.code);
+
+    // The checkbox may disappear, rebuild tooltip in that case.
+    ReactTooltip.rebuild();
   };
 
   _presetsToArray(state: State = this.state): BabelPresets {
