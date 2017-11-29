@@ -33,12 +33,10 @@ share_text: "Nearing the 7.0 Release"
 #### #1 Help Maintain the Project (developer time at work)
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Engineer: There&#39;s a thing in SQL Server Enterprise blocking us<br>Company: Let&#39;s set up a call next week with them an ongoing discussion to resolve it next quarter<br><br>Engineer: There&#39;s a thing we need in babel, can I spent 2 days with a PR for it<br>Company: lol no it&#39;s their job <a href="https://t.co/icgaoJ0dTe">https://t.co/icgaoJ0dTe</a></p>&mdash; Shiya (@ShiyaLuo) <a href="https://twitter.com/ShiyaLuo/status/931230821976907776?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 #### #2 Fund development
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Company: &quot;We&#39;d like to use SQL Server Enterprise&quot;<br>MS: &quot;That&#39;ll be a quarter million dollars + $20K/month&quot;<br>Company: &quot;Ok!&quot;<br>...<br>Company: &quot;We&#39;d like to use Babel&quot;<br>Babel: &quot;Ok! npm i babel --save&quot;<br>Company: &quot;Cool&quot;<br>Babel: &quot;Would you like to help contribute financially?&quot;<br>Company: &quot;lol no&quot;</p>&mdash; Adam Rackis (@AdamRackis) <a href="https://twitter.com/AdamRackis/status/931195056479965185?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ### Upgrading
 
@@ -81,7 +79,6 @@ It compiles the latest yearly release of JavaScript (whatever is in Stage 4) whi
 ### Not removing the Stage presets (babel-preset-stage-x)
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Frustration level if we remove the Stage presets in Babel? (in favor explicitly requiring proposal plugins since they aren&#39;t JavaScript yet)</p>&mdash; Henry Zhu (@left_pad) <a href="https://twitter.com/left_pad/status/873242704364306433?ref_src=twsrc%5Etfw">June 9, 2017</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 We can always keep it up to date, and maybe we just need to determine a better system than what these presets are currently.
 
@@ -94,7 +91,6 @@ Alright we only just changed every single package for Babel again 😂..
 Here's a poll I did almost a year ago:
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thoughts on <a href="https://twitter.com/babeljs">@babeljs</a> using npm scoped packages for 7.0?</p>&mdash; Henry Zhu (@left_pad) <a href="https://twitter.com/left_pad/status/821551189166878722">January 18, 2017</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Back then, there weren't a lot of projects using scoped packages so most people didn't even know they existed. I believe you also had to pay for a npm org account while now it's free (and supports non scoped packages too). The issues with searching for scoped packages are solved and download counts work. The only thing left is that some 3rd party registries still don't support scoped. I think we are at a point where it seems pretty unreasonable to wait on that.
 
@@ -167,3 +163,6 @@ This goes with our decision to change TC39 proposal plugins to have the `-propos
 ### preset-env: `"useBuiltins": "usage"`
 
 ### Upcoming
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
