@@ -114,7 +114,7 @@ const helperPaths = path.unshiftContainer("body", helpers);
 
 ## AST changes
 
-### JSX* and TS* nodes renamed
+### JSX* and TS* node builders (from @babel/types package) renamed
 
 The case has been changed: `jsx` and `ts` are now in lowercase.
 
