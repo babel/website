@@ -29,6 +29,7 @@ import {
 import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
 import { colors, media } from "./styles";
+import ReactTooltip from "react-tooltip";
 
 import type {
   BabelPresets,
@@ -55,6 +56,8 @@ type State = {
   isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
+  spec: boolean,
+  loose: boolean,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
@@ -62,6 +65,9 @@ type State = {
 };
 
 const DEBOUNCE_DELAY = 500;
+const SUPPORTED_OPTIONS = {
+  es2015: ["spec", "loose"],
+};
 
 class Repl extends React.Component {
   props: Props;
@@ -113,6 +119,8 @@ class Repl extends React.Component {
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
+      spec: persistedState.spec,
+      loose: persistedState.loose,
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
       // Filled in after Babel is loaded
       presets: {},
@@ -156,6 +164,7 @@ class Repl extends React.Component {
 
     return (
       <div className={styles.repl}>
+        <ReactTooltip effect="solid" />
         <ReplOptions
           babelVersion={state.babel.version}
           builtIns={state.builtIns}
@@ -168,6 +177,8 @@ class Repl extends React.Component {
           isPresetsTabExpanded={state.isPresetsTabExpanded}
           isSettingsTabExpanded={state.isSettingsTabExpanded}
           lineWrap={state.lineWrap}
+          spec={state.spec}
+          loose={state.loose}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
@@ -297,16 +308,42 @@ class Repl extends React.Component {
     }
   }
 
+  _getPresetOptions = (preset: string | Array<string | Object>) => {
+    const { state } = this;
+    const options = {};
+
+    if (
+      !SUPPORTED_OPTIONS.hasOwnProperty(preset) ||
+      typeof preset !== "string"
+    ) {
+      return null;
+    }
+    ["spec", "loose"].forEach(option => {
+      if (SUPPORTED_OPTIONS[String(preset)].includes(option)) {
+        options[option] = state[option];
+      }
+    });
+    return options;
+  };
+
   _compile = (code: string, setStateCallback: () => mixed) => {
     const { state } = this;
     const { runtimePolyfillState } = state;
 
-    const presetsArray = this._presetsToArray(state);
+    let presetsArray = this._presetsToArray(state);
 
     const babili = state.plugins["babili-standalone"];
     if (babili.isEnabled && babili.isLoaded) {
       presetsArray.push("babili");
     }
+
+    // transform "es2015" to array type to add "spec" option
+    presetsArray = presetsArray.map(preset => {
+      const options = this._getPresetOptions(preset);
+      return options !== null && typeof preset === "string"
+        ? [preset, options]
+        : preset;
+    });
 
     this._workerApi
       .compile(code, {
@@ -418,6 +455,8 @@ class Repl extends React.Component {
       isPresetsTabExpanded: state.isPresetsTabExpanded,
       isSettingsTabExpanded: state.isSettingsTabExpanded,
       lineWrap: state.lineWrap,
+      spec: state.spec,
+      loose: state.loose,
       presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,
       showSidebar: state.isSidebarExpanded,
@@ -432,6 +471,9 @@ class Repl extends React.Component {
   _presetsUpdatedSetStateCallback = () => {
     this._checkForUnloadedPlugins();
     this._updateCode(this.state.code);
+
+    // The checkbox may disappear, rebuild tooltip in that case.
+    ReactTooltip.rebuild();
   };
 
   _presetsToArray(state: State = this.state): BabelPresets {
