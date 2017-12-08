@@ -7,7 +7,7 @@ package: babel-polyfill
 ---
 
 <p class="lead">
-Babel includes a <a href="https://en.wikipedia.org/wiki/Polyfill">polyfill</a> that includes a custom
+Babel includes a <a href="https://en.wikipedia.org/wiki/Polyfill_(programming)">polyfill</a> that includes a custom
   <a href="https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js">regenerator runtime</a>
   and <a href="https://github.com/zloirock/core-js">core-js</a>.
 </p>
