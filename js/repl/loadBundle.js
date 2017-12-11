@@ -1,7 +1,36 @@
 import semver from "semver";
 import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./CircleCI";
-import { BabelState, PluginConfig } from "./types";
+import { BabelState } from "./types";
 import WorkerApi from "./WorkerApi";
+
+const SCOPED_CORE_VERSION_FROM = "7.0.0-beta.4";
+const SCOPED_PRESET_ENV_VERSION_FROM = "7.0.0-beta.33";
+const LAST_PRESET_ENV_NO_SCOPE_VERSION = "2.0.0-beta.2";
+
+// There is a gap in preset-env versions. From 2.0.0-beta.2 to 7.0.0-beta.33. We need to handle it.
+const formatBundleVersion = (packageName, version) => {
+  if (!version) return "";
+  if (packageName === "babel-preset-env-standalone") {
+    const isUnregistered =
+      semver.valid(version) &&
+      semver.gt(version, LAST_PRESET_ENV_NO_SCOPE_VERSION) &&
+      semver.lt(version, SCOPED_PRESET_ENV_VERSION_FROM);
+    return isUnregistered ? LAST_PRESET_ENV_NO_SCOPE_VERSION : version;
+  }
+  return version;
+};
+
+const formatBundleName = (packageName, version) => {
+  let minimumScopedVersion = SCOPED_CORE_VERSION_FROM;
+  if (packageName === "babel-preset-env-standalone") {
+    minimumScopedVersion = SCOPED_PRESET_ENV_VERSION_FROM;
+  }
+  const isValidOrGreater =
+    semver.valid(version) && semver.gte(version, minimumScopedVersion);
+  return isValidOrGreater || version >= 7
+    ? packageName.replace(/^babel-/, "@babel/")
+    : packageName;
+};
 
 export default async function loadBundle(
   state: BabelState,
@@ -92,12 +121,15 @@ export default async function loadBundle(
   }
 
   const base = config.baseUrl;
-
-  const packageName =
-    (semver.valid(version) && semver.gte(version, "7.0.0-beta.4")) ||
-    version >= 7
-      ? config.package.replace(/^babel-/, "@babel/")
-      : config.package;
-  const url = `${base}/${packageName}@${version || ""}`;
+  // Override preset-env version to 7.x if babel-core 7.x was loaded.
+  if (config.instanceName === "babelPresetEnv") {
+    const babelVersion = await workerApi.getBundleVersion("Babel");
+    if (parseInt(babelVersion) === 7) {
+      version = SCOPED_PRESET_ENV_VERSION_FROM;
+    }
+  }
+  const packageName = formatBundleName(config.package, version);
+  const packageVersion = formatBundleVersion(config.package, version);
+  const url = `${base}/${packageName}@${packageVersion}`;
   return doLoad(url);
 }
