@@ -40,10 +40,14 @@ import type {
 
 type Props = {};
 type State = {
+  astLocations: boolean,
+  astTokens: boolean,
   babel: BabelState,
   builtIns: boolean,
   code: string,
   compiled: ?string,
+  ast: ?any,
+  transformTime: ?number,
   compileErrorMessage: ?string,
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
@@ -51,10 +55,13 @@ type State = {
   envPresetState: PluginState,
   evalErrorMessage: ?string,
   isEnvPresetTabExpanded: boolean,
+  isOutputTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
+  outputAST: boolean,
+  outputCode: boolean,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
@@ -95,10 +102,14 @@ class Repl extends React.Component {
     // A partial State is defined first b'c this._compile needs it.
     // The compile helper will then populate the missing State values.
     this.state = {
+      astLocations: persistedState.astLocations,
+      astTokens: persistedState.astTokens,
       babel: persistedStateToBabelState(persistedState),
       builtIns: persistedState.builtIns,
       code: persistedState.code,
       compiled: null,
+      ast: null,
+      transformTime: null,
       compileErrorMessage: null,
       debugEnvPreset: persistedState.debug,
       envConfig,
@@ -109,10 +120,13 @@ class Repl extends React.Component {
       ),
       evalErrorMessage: null,
       isEnvPresetTabExpanded: persistedState.isEnvPresetTabExpanded,
+      isOutputTabExpanded: persistedState.isOutputTabExpanded,
       isPresetsTabExpanded: persistedState.isPresetsTabExpanded,
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
+      outputCode: persistedState.outputCode,
+      outputAST: persistedState.outputAST,
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
       // Filled in after Babel is loaded
       presets: {},
@@ -157,6 +171,8 @@ class Repl extends React.Component {
     return (
       <div className={styles.repl}>
         <ReplOptions
+          astTokens={state.astTokens}
+          astLocations={state.astLocations}
           babelVersion={state.babel.version}
           builtIns={state.builtIns}
           className={styles.optionsColumn}
@@ -165,6 +181,7 @@ class Repl extends React.Component {
           envPresetState={state.envPresetState}
           isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
           isExpanded={state.isSidebarExpanded}
+          isOutputTabExpanded={state.isOutputTabExpanded}
           isPresetsTabExpanded={state.isPresetsTabExpanded}
           isSettingsTabExpanded={state.isSettingsTabExpanded}
           lineWrap={state.lineWrap}
@@ -172,6 +189,8 @@ class Repl extends React.Component {
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
           onTabExpandedChange={this._onTabExpandedChange}
+          outputCode={state.outputCode}
+          outputAST={state.outputAST}
           pluginState={state.plugins}
           presetState={state.presets}
           runtimePolyfillConfig={runtimePolyfillConfig}
@@ -184,20 +203,61 @@ class Repl extends React.Component {
             code={state.code}
             errorMessage={state.compileErrorMessage}
             onChange={this._updateCode}
+            autoFocus
             options={options}
             placeholder="Write code here"
           />
-          <CodeMirrorPanel
-            className={styles.codeMirrorPanel}
-            code={state.compiled}
-            errorMessage={state.evalErrorMessage}
-            info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
-            options={options}
-            placeholder="Compiled output will be shown here"
-          />
+          {this.getRightPanel(options)}
+        </div>
+        <div className={styles.transformTime}>
+          {state.transformTime ? `${state.transformTime}ms` : ""}
         </div>
       </div>
     );
+  }
+
+  getRightPanel(options) {
+    const {
+      ast,
+      compiled,
+      debugEnvPreset,
+      evalErrorMessage,
+      envPresetDebugInfo,
+      outputAST,
+    } = this.state;
+    let panel;
+
+    if (outputAST) {
+      panel = (
+        <CodeMirrorPanel
+          className={styles.codeMirrorPanel}
+          code={ast}
+          errorMessage={evalErrorMessage}
+          info={debugEnvPreset ? envPresetDebugInfo : null}
+          options={{
+            ...options,
+            lineWrapping: false,
+            mode: { name: "javascript", json: true },
+            foldGutter: true,
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+          }}
+          placeholder="AST will be shown here"
+        />
+      );
+    } else {
+      panel = (
+        <CodeMirrorPanel
+          className={styles.codeMirrorPanel}
+          code={compiled}
+          errorMessage={evalErrorMessage}
+          info={debugEnvPreset ? envPresetDebugInfo : null}
+          options={options}
+          placeholder="Compiled output will be shown here"
+        />
+      );
+    }
+
+    return panel;
   }
 
   async _setupBabel(defaultPresets) {
@@ -301,6 +361,22 @@ class Repl extends React.Component {
     const { state } = this;
     const { runtimePolyfillState } = state;
 
+    if (!code) {
+      this.setState(
+        {
+          compiled: null,
+          ast: null,
+          transformTime: null,
+          compileErrorMessage: null,
+          envPresetDebugInfo: null,
+          evalErrorMessage: null,
+          sourceMap: null,
+        },
+        setStateCallback
+      );
+      return;
+    }
+
     const presetsArray = this._presetsToArray(state);
 
     const babili = state.plugins["babili-standalone"];
@@ -310,6 +386,8 @@ class Repl extends React.Component {
 
     this._workerApi
       .compile(code, {
+        astLocations: state.astLocations,
+        astTokens: state.astTokens,
         debugEnvPreset: state.debugEnvPreset,
         envConfig: state.envPresetState.isLoaded ? state.envConfig : null,
         evaluate:
@@ -406,6 +484,8 @@ class Repl extends React.Component {
     }
 
     const payload = {
+      astLocations: state.astLocations,
+      astTokens: state.astTokens,
       babili: plugins["babili-standalone"].isEnabled,
       browsers: envConfig.browsers,
       build: state.babel.build,
@@ -415,9 +495,12 @@ class Repl extends React.Component {
       debug: state.debugEnvPreset,
       evaluate: state.runtimePolyfillState.isEnabled,
       isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
+      isOutputTabExpanded: state.isOutputTabExpanded,
       isPresetsTabExpanded: state.isPresetsTabExpanded,
       isSettingsTabExpanded: state.isSettingsTabExpanded,
       lineWrap: state.lineWrap,
+      outputAST: state.outputAST,
+      outputCode: state.outputCode,
       presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,
       showSidebar: state.isSidebarExpanded,
@@ -486,6 +569,7 @@ const styles = {
     height: "100%",
     width: "100%",
     display: "flex",
+    position: "relative",
     flexDirection: "row",
     justifyContent: "stretch",
     overflow: "auto",
@@ -501,5 +585,11 @@ const styles = {
     flexDirection: "row",
     justifyContent: "stretch",
     overflow: "auto",
+  }),
+  transformTime: css({
+    position: "absolute",
+    bottom: "0",
+    right: "0",
+    paddingRight: "5px",
   }),
 };

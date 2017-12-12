@@ -5,6 +5,8 @@ import LZString from "lz-string";
 import type { PersistedState } from "./types";
 
 const URL_KEYS = [
+  "astLocations",
+  "astTokens",
   "babili",
   "browsers",
   "build",
@@ -14,6 +16,8 @@ const URL_KEYS = [
   "circleciRepo",
   "evaluate",
   "lineWrap",
+  "outputAST",
+  "outputCode",
   "presets",
   "prettier",
   "targets",

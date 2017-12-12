@@ -10,6 +10,7 @@ import type { BabelPresetEnvResult, CompileConfig } from "./types";
 
 type Return = {
   compiled: ?string,
+  ast: ?any,
   compileErrorMessage: ?string,
   envPresetDebugInfo: ?string,
   sourceMap: ?string,
@@ -27,10 +28,36 @@ const DEFAULT_PRETTIER_CONFIG = {
   useTabs: false,
 };
 
+function filterLocation(ast: Object): Object {
+  if (typeof ast !== "object") {
+    return ast;
+  }
+  const result = {};
+  Object.keys(ast).forEach(key => {
+    if (key === "start" || key === "end" || key === "range" || key === "loc") {
+      return;
+    }
+
+    let value = ast[key];
+
+    if (value && typeof value === "object") {
+      value = filterLocation(value);
+    } else if (Array.isArray(value)) {
+      value = value.map(filterLocation);
+    }
+
+    result[key] = value;
+  });
+
+  return result;
+}
+
 export default function compile(code: string, config: CompileConfig): Return {
   const { envConfig } = config;
 
   let compiled = null;
+  let transformTime = null;
+  let ast = null;
   let compileErrorMessage = null;
   let envPresetDebugInfo = null;
   let sourceMap = null;
@@ -69,14 +96,29 @@ export default function compile(code: string, config: CompileConfig): Return {
   }
 
   try {
+    const start = Date.now();
     const transformed = Babel.transform(code, {
       babelrc: false,
       filename: "repl",
       presets: config.presets,
       sourceMap: config.sourceMap,
+      parserOpts: {
+        tokens: config.astTokens,
+      },
     });
 
+    transformTime = Date.now() - start;
+
     compiled = transformed.code;
+
+    if (!config.astLocations) {
+      transformed.ast = filterLocation(transformed.ast);
+    }
+    if (!config.astTokens) {
+      delete transformed.ast.tokens;
+    }
+
+    ast = JSON.stringify(transformed.ast, null, 2);
 
     if (config.sourceMap) {
       try {
@@ -101,6 +143,8 @@ export default function compile(code: string, config: CompileConfig): Return {
     }
   } catch (error) {
     compiled = null;
+    ast = null;
+    transformTime = null;
     compileErrorMessage = error.message;
     envPresetDebugInfo = null;
     sourceMap = null;
@@ -108,6 +152,8 @@ export default function compile(code: string, config: CompileConfig): Return {
 
   return {
     compiled,
+    transformTime,
+    ast,
     compileErrorMessage,
     envPresetDebugInfo,
     sourceMap,

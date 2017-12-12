@@ -1,5 +1,6 @@
 // @flow
 
+import { css } from "emotion";
 import { injectGlobal } from "emotion";
 import CodeMirror from "codemirror";
 import React from "react";
@@ -39,22 +40,27 @@ export default class ReactCodeMirror extends React.Component {
   };
 
   _codeMirror: any;
-  _textAreaRef: HTMLTextAreaElement;
+  _container: HTMLDivElement;
+
+  shouldComponentUpdate() {
+    return false;
+  }
 
   componentDidMount() {
-    this._codeMirror = CodeMirror.fromTextArea(this._textAreaRef, {
+    this._codeMirror = CodeMirror(this._container, {
+      value: this.props.value || "",
+      placeholder: this.props.placeholder,
+      autofocus: this.props.autoFocus,
       ...DEFAULT_CODE_MIRROR_OPTIONS,
       ...this.props.options,
     });
     this._codeMirror.on("change", this._onChange);
-    this._codeMirror.setValue(this.props.value || "");
   }
 
   componentWillUnmount() {
-    // is there a lighter-weight way to remove the cm instance?
-    if (this._codeMirror) {
-      this._codeMirror.toTextArea();
-    }
+    const container = this._container;
+    container.removeChild(container.children[0]);
+    this._codeMirror = null;
   }
 
   componentWillReceiveProps(nextProps: Props) {
@@ -93,15 +99,7 @@ export default class ReactCodeMirror extends React.Component {
   }
 
   render() {
-    return (
-      <textarea
-        autoComplete="off"
-        autoFocus={this.props.autoFocus}
-        defaultValue={this.props.value}
-        ref={this._setTextAreaRef}
-        placeholder={this.props.placeholder}
-      />
-    );
+    return <div className={styles.editor} ref={c => (this._container = c)} />;
   }
 
   _updateOption(optionName: string, newValue: any) {
@@ -117,11 +115,18 @@ export default class ReactCodeMirror extends React.Component {
       this.props.onChange(doc.getValue());
     }
   };
-
-  _setTextAreaRef = (ref: HTMLTextAreaElement) => {
-    this._textAreaRef = ref;
-  };
 }
+
+const styles = {
+  editor: css({
+    overflow: "auto",
+    position: "absolute",
+    top: "0",
+    left: "0",
+    right: "0",
+    bottom: "0",
+  }),
+};
 
 injectGlobal({
   ".CodeMirror": {

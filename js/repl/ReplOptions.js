@@ -35,6 +35,8 @@ type ToggleSetting = (name: string, isEnabled: boolean) => void;
 type OnTabExpandedChange = (name: string, isExpanded: boolean) => void;
 
 type Props = {
+  astLocations: boolean,
+  astTokens: boolean,
   babelVersion: ?string,
   builtIns: boolean,
   className: string,
@@ -45,7 +47,10 @@ type Props = {
   isExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
+  isOutputTabExpanded: boolean,
   lineWrap: boolean,
+  outputAST: boolean,
+  outputCode: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
@@ -80,6 +85,8 @@ class ExpandedContainer extends Component {
 
   render() {
     const {
+      astLocations,
+      astTokens,
       babelVersion,
       builtIns,
       debugEnvPreset,
@@ -88,11 +95,14 @@ class ExpandedContainer extends Component {
       isEnvPresetTabExpanded,
       isPresetsTabExpanded,
       isSettingsTabExpanded,
+      isOutputTabExpanded,
       lineWrap,
       onIsExpandedChange,
       onSettingChange,
       pluginState,
       presetState,
+      outputCode,
+      outputAST,
       runtimePolyfillConfig,
       runtimePolyfillState,
     } = this.props;
@@ -132,6 +142,55 @@ class ExpandedContainer extends Component {
                 state={pluginState[config.package]}
               />
             ))}
+          </AccordionTab>
+          <AccordionTab
+            className={styles.section}
+            isExpanded={isOutputTabExpanded}
+            label="Output"
+            toggleIsExpanded={this._toggleOutputTab}
+          >
+            <label className={styles.settingsLabel}>
+              <input
+                checked={outputCode}
+                onChange={this._onOutputChange}
+                className={styles.inputCheckboxLeft}
+                name="output"
+                value="code"
+                type="radio"
+              />
+              Source Code
+            </label>
+            <label className={styles.settingsLabel}>
+              <input
+                checked={outputAST}
+                onChange={this._onOutputChange}
+                className={styles.inputCheckboxLeft}
+                name="output"
+                value="ast"
+                type="radio"
+              />
+              AST
+            </label>
+            <label className={styles.settingsLabel}>
+              <input
+                checked={astLocations}
+                onChange={this._onAstLocationsChange}
+                className={styles.inputCheckboxLeft}
+                disabled={!outputAST}
+                type="checkbox"
+              />
+              Locations
+            </label>
+            <label className={styles.settingsLabel}>
+              <input
+                checked={astTokens}
+                onChange={this._onAstTokensChange}
+                className={styles.inputCheckboxLeft}
+                disabled={!outputAST}
+                type="checkbox"
+              />
+              Tokens
+            </label>
           </AccordionTab>
           <AccordionTab
             className={styles.section}
@@ -307,6 +366,11 @@ class ExpandedContainer extends Component {
     );
   };
 
+  _onOutputChange = (event: SyntheticInputEvent) => {
+    this.props.onSettingChange("outputCode", event.target.value === "code");
+    this.props.onSettingChange("outputAST", event.target.value === "ast");
+  };
+
   _onIsElectronEnabledChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange(
       "isElectronEnabled",
@@ -320,6 +384,14 @@ class ExpandedContainer extends Component {
 
   _onLineWrappingChange = (event: SyntheticInputEvent) => {
     this.props.onSettingChange("lineWrap", event.target.checked);
+  };
+
+  _onAstTokensChange = (event: SyntheticInputEvent) => {
+    this.props.onSettingChange("astTokens", event.target.checked);
+  };
+
+  _onAstLocationsChange = (event: SyntheticInputEvent) => {
+    this.props.onSettingChange("astLocations", event.target.checked);
   };
 
   _onNodeChange = (event: SyntheticInputEvent) => {
@@ -344,6 +416,13 @@ class ExpandedContainer extends Component {
     this.props.onTabExpandedChange(
       "isSettingsTabExpanded",
       !this.props.isSettingsTabExpanded
+    );
+  };
+
+  _toggleOutputTab = () => {
+    this.props.onTabExpandedChange(
+      "isOutputTabExpanded",
+      !this.props.isOutputTabExpanded
     );
   };
 }

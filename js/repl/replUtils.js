@@ -38,6 +38,8 @@ export const loadPersistedState = (): PersistedState => {
   };
 
   return {
+    astLocations: merged.astLocations != null ? merged.astLocations : false,
+    astTokens: merged.astTokens != null ? merged.astTokens : false,
     babili: merged.babili === true,
     browsers: merged.browsers || "",
     build: merged.build || "",
@@ -47,9 +49,12 @@ export const loadPersistedState = (): PersistedState => {
     debug: merged.debug === true,
     evaluate: merged.evaluate === true,
     isEnvPresetTabExpanded: merged.isEnvPresetTabExpanded === true,
+    isOutputTabExpanded: merged.isOutputTabExpanded === true,
     isPresetsTabExpanded: merged.isPresetsTabExpanded === true,
     isSettingsTabExpanded: merged.isSettingsTabExpanded !== false, // Default to show
     lineWrap: merged.lineWrap != null ? merged.lineWrap : true,
+    outputAST: merged.outputAST != null ? merged.outputAST : false,
+    outputCode: merged.outputCode != null ? merged.outputCode : true,
     presets: merged.hasOwnProperty("presets") ? merged.presets : null,
     prettier: merged.prettier === true,
     showSidebar: merged.showSidebar !== false, // Default to show

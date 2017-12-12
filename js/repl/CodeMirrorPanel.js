@@ -6,6 +6,7 @@ import React from "react";
 import { colors } from "./styles";
 
 type Props = {
+  autoFocus?: boolean,
   className?: string,
   code: ?string,
   errorMessage: ?string,
@@ -16,13 +17,14 @@ type Props = {
 };
 
 export default function CodeMirrorPanel(props: Props) {
-  const { className = "", errorMessage, info, onChange } = props;
+  const { autoFocus, className = "", errorMessage, info, onChange } = props;
 
   return (
     <div className={`${styles.panel} ${className}`}>
       <div className={styles.codeMirror}>
         <CodeMirror
           onChange={onChange}
+          autoFocus={autoFocus}
           options={{
             ...props.options,
             readOnly: onChange == null,
@@ -54,6 +56,7 @@ const styles = {
     height: "100%",
     width: "100%",
     overflow: "auto",
+    position: "relative",
   }),
   error: css({
     order: 2,
@@ -70,10 +73,8 @@ const styles = {
     ...sharedBoxStyles,
   }),
   panel: css({
-    height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "stretch",
-    overflow: "auto",
   }),
 };

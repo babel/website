@@ -45,6 +45,8 @@ export type PluginState = LazyLoadedState & {
 export type PluginStateMap = { [name: string]: PluginState };
 
 export type CompileConfig = {
+  astLocations: boolean,
+  astTokens: boolean,
   debugEnvPreset: boolean,
   envConfig: ?EnvConfig,
   evaluate: boolean,
@@ -55,6 +57,8 @@ export type CompileConfig = {
 };
 
 export type PersistedState = {
+  astLocations: boolean,
+  astTokens: boolean,
   babili: boolean,
   browsers: string,
   build: string,
@@ -64,9 +68,12 @@ export type PersistedState = {
   debug: boolean,
   evaluate: boolean,
   isEnvPresetTabExpanded: boolean,
+  isOutputTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   lineWrap: boolean,
+  outputAST: boolean,
+  outputCode: boolean,
   presets: ?string,
   prettier: boolean,
   showSidebar: boolean,
