@@ -20,6 +20,11 @@ type CompileResult = {
   sourceMap: ?string,
 };
 
+type ShippedProposalShape = {
+  instanceName: string,
+  pluginName: string,
+};
+
 /**
  * Interfaces with a web worker to lazy-loads plugins and compile code.
  */
@@ -70,6 +75,12 @@ export default class WorkerApi {
     return this._worker.postMessage({ method: "getAvailablePresets" });
   }
 
+  getAvailablePlugins(): Promise<
+    Array<{ label: string, isPreloaded: boolean }>
+  > {
+    return this._worker.postMessage({ method: "getAvailablePlugins" });
+  }
+
   loadPlugin(state: PluginState): Promise<boolean> {
     const { config } = state;
 
@@ -101,6 +112,15 @@ export default class WorkerApi {
   registerEnvPreset(): Promise<boolean> {
     return this._worker.postMessage({
       method: "registerEnvPreset",
+    });
+  }
+
+  registerShippedProposals(
+    plugins: Array<ShippedProposalShape>
+  ): Promise<boolean> {
+    return this._worker.postMessage({
+      method: "registerShippedProposals",
+      plugins,
     });
   }
 }

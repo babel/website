@@ -1,6 +1,9 @@
 // @flow
+import camelCase from "lodash.camelcase";
+import type { PluginConfig, MultiPackagesConfig, EnvFeatures } from "./types";
 
-import type { PluginConfig, EnvFeatures } from "./types";
+const convertPluginNameToInsanceName = pluginName =>
+  `_babel_${camelCase(`plugin-${pluginName}`)}`;
 
 const babelConfig: PluginConfig = {
   label: "Babel",
@@ -19,10 +22,35 @@ const envPresetConfig: PluginConfig = {
   instanceName: "babelPresetEnv",
 };
 
+const stage3Plugins: Array<PluginConfig> = [
+  "proposal-async-generator-functions",
+  "proposal-object-rest-spread",
+  "proposal-optional-catch-binding",
+  "proposal-unicode-property-regex",
+].map(pluginName => {
+  const packageName = `@babel/plugin-${pluginName}`;
+  return {
+    label: pluginName,
+    package: packageName,
+    version: "7.0.0-beta.34",
+    baseUrl: "https://bundle.run",
+    instanceName: convertPluginNameToInsanceName(pluginName),
+  };
+});
+
+const shippedProposalsConfig: MultiPackagesConfig = {
+  baseUrl: "https://bundle.run",
+  label: "Shipped Proposals",
+  packages: stage3Plugins,
+  package: "",
+  version: "7",
+};
+
 const envPresetFeaturesSupport: EnvFeatures = {
   debug: [0, 1],
   builtInsUsage: [2, 7],
   forceAllTransforms: [2, 7],
+  shippedProposals: [2, 7],
   stringifiedVersion: [2, 7],
 };
 
@@ -63,6 +91,7 @@ const pluginConfigs: Array<PluginConfig> = [
 export {
   babelConfig,
   envPresetConfig,
+  shippedProposalsConfig,
   envPresetDefaults,
   envPresetFeaturesSupport,
   pluginConfigs,

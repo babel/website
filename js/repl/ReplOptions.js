@@ -302,6 +302,24 @@ class ExpandedContainer extends Component {
                 type="checkbox"
               />
             </label>
+            {isEnvFeatureSupported(envConfig.version, "shippedProposals") && (
+              <label className={styles.envPresetRow}>
+                <LinkToDocs
+                  className={`${styles.envPresetLabel} ${styles.highlight}`}
+                  section="shippedProposals"
+                >
+                  Shipped Proposals
+                </LinkToDocs>
+                <input
+                  checked={envConfig.shippedProposals}
+                  className={styles.envPresetCheckbox}
+                  // TODO
+                  disabled={disableEnvSettings}
+                  onChange={this._onShippedProposalsChange}
+                  type="checkbox"
+                />
+              </label>
+            )}
             {isEnvFeatureSupported(envConfig.version, "forceAllTransforms") && (
               <label className={styles.envPresetRow}>
                 <LinkToDocs
@@ -382,6 +400,13 @@ class ExpandedContainer extends Component {
 
   _onElectronChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange("electron", event.target.value);
+  };
+
+  _onShippedProposalsChange = (event: SyntheticInputEvent) => {
+    this.props.onEnvPresetSettingChange(
+      "shippedProposals",
+      event.target.checked
+    );
   };
 
   _onForceAllTransformsChange = (event: SyntheticInputEvent) => {

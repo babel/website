@@ -11,6 +11,7 @@ export type EnvConfig = {
   isNodeEnabled: boolean,
   builtIns: string | false,
   forceAllTransforms: boolean,
+  shippedProposals: boolean,
   version?: string,
   node: ?string,
 };
@@ -28,6 +29,10 @@ export type PluginConfig = {
   package: string,
   version: string,
   instanceName?: string,
+};
+
+export type MultiPackagesConfig = PluginConfig & {
+  packages: Array<PluginConfig>,
 };
 
 export type PluginConfigs = Array<PluginConfig>;
@@ -53,6 +58,12 @@ export type EnvState = {
   circleciRepo: string,
   config: PluginConfig,
   version: string,
+  isEnabled: boolean,
+};
+
+export type ShippedProposalsState = LazyLoadedState & {
+  errorMessage?: string,
+  config: MultiPackagesConfig,
   isEnabled: boolean,
 };
 
@@ -84,6 +95,7 @@ export type PersistedState = {
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   forceAllTransforms: boolean,
+  shippedProposals: boolean,
   lineWrap: boolean,
   presets: ?string,
   showSidebar: boolean,

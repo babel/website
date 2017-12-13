@@ -16,6 +16,7 @@ import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import {
   babelConfig,
   envPresetConfig,
+  shippedProposalsConfig,
   pluginConfigs,
   runtimePolyfillConfig,
 } from "./PluginConfig";
@@ -27,6 +28,7 @@ import {
   persistedStateToBabelState,
   persistedStateToEnvState,
   persistedStateToEnvConfig,
+  persistedStateToShippedProposalsState,
 } from "./replUtils";
 import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
@@ -36,6 +38,7 @@ import type {
   BabelPresets,
   BabelState,
   EnvState,
+  ShippedProposalsState,
   EnvConfig,
   PluginState,
   PluginStateMap,
@@ -51,6 +54,7 @@ type State = {
   envConfig: EnvConfig,
   envPresetDebugInfo: ?string,
   envPresetState: EnvState,
+  shippedProposalsState: ShippedProposalsState,
   evalErrorMessage: ?string,
   isEnvPresetTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
@@ -107,6 +111,11 @@ class Repl extends React.Component {
         envPresetConfig,
         envConfig.isEnvPresetEnabled
       ),
+      shippedProposalsState: persistedStateToShippedProposalsState(
+        persistedState,
+        shippedProposalsConfig,
+        envConfig.isEnvPresetEnabled && envConfig.shippedProposals
+      ),
       evalErrorMessage: null,
       isEnvPresetTabExpanded: persistedState.isEnvPresetTabExpanded,
       isPresetsTabExpanded: persistedState.isPresetsTabExpanded,
@@ -162,6 +171,7 @@ class Repl extends React.Component {
           debugEnvPreset={state.debugEnvPreset}
           envConfig={state.envConfig}
           envPresetState={state.envPresetState}
+          shippedProposalsState={state.shippedProposalsState}
           isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
           isExpanded={state.isSidebarExpanded}
           isPresetsTabExpanded={state.isPresetsTabExpanded}
@@ -215,10 +225,11 @@ class Repl extends React.Component {
     }
   }
 
-  _checkForUnloadedPlugins() {
+  async _checkForUnloadedPlugins() {
     const {
       envConfig,
       envPresetState,
+      shippedProposalsState,
       plugins,
       runtimePolyfillState,
     } = this.state;
@@ -291,6 +302,40 @@ class Repl extends React.Component {
         this._workerApi
           .registerEnvPreset()
           .then(success => this._updateCode(this.state.code));
+      });
+    }
+    if (
+      envConfig.isEnvPresetEnabled &&
+      envConfig.shippedProposals &&
+      !shippedProposalsState.isLoaded
+    ) {
+      const availablePlugins = await this._workerApi.getAvailablePlugins();
+      const availablePluginsNames = availablePlugins.map(({ label }) => label);
+      shippedProposalsState.isLoading = true;
+      const notRegisteredPackages = shippedProposalsState.config.packages
+        .filter(
+          packageState => !availablePluginsNames.includes(packageState.label)
+        )
+        .map(config => configToState(config, true));
+
+      Promise.all(
+        notRegisteredPackages.map(state => loadBundle(state, this._workerApi))
+      ).then(plugins => {
+        if (plugins.every(plugin => plugin.isLoaded)) {
+          shippedProposalsState.isLoaded = true;
+          shippedProposalsState.isLoading = false;
+          this._workerApi
+            .registerShippedProposals(
+              plugins.map(({ config }) => ({
+                instanceName: config.instanceName,
+                pluginName: config.label,
+              }))
+            )
+            .then(() => this._updateCode(this.state.code));
+        } else {
+          shippedProposalsState.didError = true;
+          shippedProposalsState.isLoading = false;
+        }
       });
     }
   }
@@ -411,6 +456,7 @@ class Repl extends React.Component {
       code: state.code,
       debug: state.debugEnvPreset,
       forceAllTransforms: envConfig.forceAllTransforms,
+      shippedProposals: envConfig.shippedProposals,
       evaluate: state.runtimePolyfillState.isEnabled,
       isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
       isPresetsTabExpanded: state.isPresetsTabExpanded,

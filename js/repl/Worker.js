@@ -39,6 +39,14 @@ registerPromiseWorker(message => {
         isPreLoaded: true,
       }));
 
+    case "getAvailablePlugins":
+      if (!Babel) return [];
+
+      return Object.keys(Babel.availablePlugins).map(p => ({
+        label: p,
+        isPreLoaded: true,
+      }));
+
     case "loadScript":
       try {
         importScripts(message.url);
@@ -52,6 +60,18 @@ registerPromiseWorker(message => {
       try {
         // Was registered when loaded;
         // Babel.registerPreset("env", babelPresetEnv.default);
+
+        return true;
+      } catch (error) {
+        return false;
+      }
+
+    case "registerShippedProposals":
+      try {
+        message.plugins.forEach(({ pluginName, instanceName }) => {
+          const plugin = self[instanceName];
+          Babel.registerPlugin(pluginName, plugin);
+        });
 
         return true;
       } catch (error) {

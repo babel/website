@@ -10,11 +10,13 @@ import type {
   BabelState,
   EnvState,
   EnvConfig,
+  MultiPackagesConfig,
   PersistedState,
   PluginConfig,
   PluginConfigs,
   PluginState,
   PluginStateMap,
+  ShippedProposalsState,
 } from "./types";
 
 export const envConfigToTargetsString = (envConfig: EnvConfig): string => {
@@ -48,6 +50,7 @@ export const loadPersistedState = (): PersistedState => {
     code: merged.code || "",
     debug: merged.debug === true,
     forceAllTransforms: merged.forceAllTransforms === true,
+    shippedProposals: merged.shippedProposals === true,
     evaluate: merged.evaluate === true,
     isEnvPresetTabExpanded: merged.isEnvPresetTabExpanded === true,
     isPresetsTabExpanded: merged.isPresetsTabExpanded === true,
@@ -88,6 +91,18 @@ export const persistedStateToEnvState = (
   version: persistedState.envVersion,
 });
 
+export const persistedStateToShippedProposalsState = (
+  persistedState: PersistedState,
+  config: MultiPackagesConfig,
+  isEnabled: boolean
+): ShippedProposalsState => ({
+  config,
+  isLoading: false,
+  isLoaded: false,
+  didError: false,
+  isEnabled,
+});
+
 export const configArrayToStateMap = (
   pluginConfigs: PluginConfigs,
   defaults: DefaultPlugins = {}
@@ -126,6 +141,7 @@ export const persistedStateToEnvConfig = (
     isElectronEnabled: false,
     isNodeEnabled: false,
     forceAllTransforms: !!persistedState.forceAllTransforms,
+    shippedProposals: !!persistedState.shippedProposals,
     isBuiltInsEnabled: !!persistedState.builtIns,
     node: envPresetDefaults.node.default,
     version: persistedState.envVersion,

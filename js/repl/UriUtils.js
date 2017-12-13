@@ -12,6 +12,7 @@ const URL_KEYS = [
   "code",
   "debug",
   "forceAllTransforms",
+  "shippedProposals",
   "circleciRepo",
   "evaluate",
   "lineWrap",
