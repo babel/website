@@ -7,20 +7,21 @@
     },
     "development": {
       "plugins": [
-        ["emotion", { sourceMap: true }]
+        ["emotion", { "sourceMap": true }]
       ]
     }
   },
   "presets": [
-    ["env", {
+    ["@babel/env", {
       "targets": {
         "browsers": ["last 3 versions"]
       }
     }],
-    "react"
+    "@babel/flow",
+    "@babel/react"
   ],
   "plugins": [
-    "transform-class-properties",
-    "transform-object-rest-spread"
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread"
   ]
 }
