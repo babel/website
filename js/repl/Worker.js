@@ -66,7 +66,7 @@ registerPromiseWorker(message => {
         return false;
       }
 
-    case "registerShippedProposals":
+    case "registerPlugins":
       try {
         message.plugins.forEach(({ pluginName, instanceName }) => {
           const plugin = self[instanceName];

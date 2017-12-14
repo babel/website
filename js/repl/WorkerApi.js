@@ -20,7 +20,7 @@ type CompileResult = {
   sourceMap: ?string,
 };
 
-type ShippedProposalShape = {
+type PluginShape = {
   instanceName: string,
   pluginName: string,
 };
@@ -115,11 +115,9 @@ export default class WorkerApi {
     });
   }
 
-  registerShippedProposals(
-    plugins: Array<ShippedProposalShape>
-  ): Promise<boolean> {
+  registerPlugins(plugins: Array<PluginShape>): Promise<boolean> {
     return this._worker.postMessage({
-      method: "registerShippedProposals",
+      method: "registerPlugins",
       plugins,
     });
   }

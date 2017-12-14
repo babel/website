@@ -311,12 +311,15 @@ class Repl extends React.Component {
     ) {
       const availablePlugins = await this._workerApi.getAvailablePlugins();
       const availablePluginsNames = availablePlugins.map(({ label }) => label);
+      const babelVersion = this.state.babel.version;
       shippedProposalsState.isLoading = true;
       const notRegisteredPackages = shippedProposalsState.config.packages
         .filter(
           packageState => !availablePluginsNames.includes(packageState.label)
         )
-        .map(config => configToState(config, true));
+        .map(config =>
+          configToState({ ...config, version: babelVersion }, true)
+        );
 
       Promise.all(
         notRegisteredPackages.map(state => loadBundle(state, this._workerApi))
@@ -325,7 +328,7 @@ class Repl extends React.Component {
           shippedProposalsState.isLoaded = true;
           shippedProposalsState.isLoading = false;
           this._workerApi
-            .registerShippedProposals(
+            .registerPlugins(
               plugins.map(({ config }) => ({
                 instanceName: config.instanceName,
                 pluginName: config.label,
