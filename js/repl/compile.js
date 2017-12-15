@@ -87,10 +87,15 @@ export default function compile(code: string, config: CompileConfig): Return {
     }
 
     if (config.prettify && typeof prettier !== "undefined") {
-      compiled = prettier.format(compiled, {
-        ...DEFAULT_PRETTIER_CONFIG,
-        parser: () => transformed.ast,
-      });
+      try {
+        compiled = prettier.format(compiled, {
+          ...DEFAULT_PRETTIER_CONFIG,
+          parser: () => transformed.ast,
+        });
+      } catch (error) {
+        // Re-parse with Prettier's bundled babylon parser if it fails
+        compiled = prettier.format(compiled, DEFAULT_PRETTIER_CONFIG);
+      }
     }
   } catch (error) {
     compiled = null;

@@ -6,7 +6,7 @@
   "rules": {
     "arrow-parens": ["error", "as-needed"],
     "no-unused-vars": 1,
-    "prettier/prettier": ["error", { "trailingComma": "es5" }]
+    "prettier/prettier": "error"
   },
   "plugins": [
     "markdown",

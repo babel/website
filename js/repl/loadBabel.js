@@ -3,7 +3,7 @@ import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./CircleCI";
 import { BabelState } from "./types";
 import WorkerApi from "./WorkerApi";
 
-const DEFAULT_BABEL_VERSION = "6";
+const DEFAULT_BABEL_VERSION = "7";
 
 export default async function loadBabel(
   config: BabelState,
