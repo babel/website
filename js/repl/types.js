@@ -79,6 +79,7 @@ export type CompileConfig = {
   envConfig: ?EnvConfig,
   evaluate: boolean,
   presets: BabelPresets,
+  prettify: boolean,
   sourceMap: boolean,
 };
 
@@ -98,6 +99,7 @@ export type PersistedState = {
   shippedProposals: boolean,
   lineWrap: boolean,
   presets: ?string,
+  prettier: boolean,
   showSidebar: boolean,
   targets: string,
   version: string,

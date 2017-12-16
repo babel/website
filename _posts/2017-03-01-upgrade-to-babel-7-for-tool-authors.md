@@ -114,6 +114,15 @@ const helperPaths = path.unshiftContainer("body", helpers);
 
 ## AST changes
 
+### JSX* and TS* node builders (from @babel/types package) renamed
+
+The case has been changed: `jsx` and `ts` are now in lowercase.
+
+```diff
+- t.jSXIdentifier()
++ t.jsxIdentifier()
+```
+
 ### Tokens removed
 
 In previous versions `tokens` were always attached to the AST on the top-level. In the latests version of babylon we removed this behavior and made it disabled by default to improve the performance of the parser. All usages in babel itself have been remove and `babel-generator` is not using the tokens anymore for pretty printing.

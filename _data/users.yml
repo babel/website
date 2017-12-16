@@ -604,3 +604,9 @@
 - name: Teachoo
   url: https://www.teachoo.com
   logo: teachoo.svg
+- name: Web Jam LLC
+  url: https://www.web-jam.com
+  logo: WebJamLLC.svg
+- name: Douban Read
+  url: https://read.douban.com
+  logo: ark.svg

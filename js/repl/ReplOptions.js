@@ -196,7 +196,7 @@ class ExpandedContainer extends Component {
                 onChange={this._onEnvPresetEnabledChange}
               />
 
-              {envPresetState.isLoading || shippedProposalsState.isLoading ? (
+              {envPresetState.isLoading ? (
                 <PresetLoadingAnimation />
               ) : (
                 "Enabled"
@@ -310,7 +310,9 @@ class ExpandedContainer extends Component {
             {isEnvFeatureSupported(envConfig.version, "shippedProposals") && (
               <label className={styles.envPresetRow}>
                 {shippedProposalsState.isLoading ? (
-                  <PresetLoadingAnimation size={1.6} />
+                  <span className={styles.envPresetLoaderWrapper}>
+                    <PresetLoadingAnimation size={1.6} />
+                  </span>
                 ) : (
                   <LinkToDocs
                     className={`${styles.envPresetLabel} ${styles.highlight}`}
@@ -749,6 +751,10 @@ const styles = {
     "&:disabled": {
       opacity: 0.5,
     },
+  }),
+  envPresetLoaderWrapper: css({
+    display: "flex",
+    flex: "1 1 auto",
   }),
   versionRow: css({
     display: "flex",
