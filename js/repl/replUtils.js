@@ -84,12 +84,14 @@ export const persistedStateToEnvState = (
   persistedState: PersistedState,
   config: PluginConfig,
   isEnabled: boolean
-): EnvState => ({
-  ...persistedStateToBabelState(persistedState, config),
-  isLoading: false,
-  isEnabled,
-  version: persistedState.envVersion,
-});
+): EnvState => {
+  return {
+    ...persistedStateToBabelState(persistedState, config),
+    isLoading: false,
+    isEnabled,
+    version: persistedState.envVersion,
+  };
+};
 
 export const persistedStateToShippedProposalsState = (
   persistedState: PersistedState,

@@ -37,6 +37,7 @@ export default async function loadBundle(
   workerApi: WorkerApi
 ): Promise<BabelState> {
   const { config } = state;
+
   function doLoad(url, error) {
     state.isLoading = true;
     return workerApi.loadScript(url).then(success => {

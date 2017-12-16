@@ -12,6 +12,7 @@ import { colors, media } from "./styles";
 import type {
   EnvConfig,
   PluginConfig,
+  ShippedProposalsState,
   PluginState,
   EnvState,
   PluginStateMap,
@@ -42,6 +43,7 @@ type Props = {
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetState: EnvState,
+  shippedProposalsState: ShippedProposalsState,
   isEnvPresetTabExpanded: boolean,
   isExpanded: boolean,
   isPresetsTabExpanded: boolean,
@@ -101,6 +103,7 @@ class ExpandedContainer extends Component {
       debugEnvPreset,
       envConfig,
       envPresetState,
+      shippedProposalsState,
       isEnvPresetTabExpanded,
       isPresetsTabExpanded,
       isSettingsTabExpanded,
@@ -191,7 +194,7 @@ class ExpandedContainer extends Component {
                 onChange={this._onEnvPresetEnabledChange}
               />
 
-              {envPresetState.isLoading ? (
+              {envPresetState.isLoading || shippedProposalsState.isLoading ? (
                 <PresetLoadingAnimation />
               ) : (
                 "Enabled"
