@@ -117,7 +117,9 @@ class ExpandedContainer extends Component {
     } = this.props;
 
     const disableEnvSettings =
-      !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled;
+      !envPresetState.isLoaded ||
+      !envConfig.isEnvPresetEnabled ||
+      shippedProposalsState.isLoading;
 
     return (
       <div className={styles.expandedContainer}>
@@ -307,12 +309,16 @@ class ExpandedContainer extends Component {
             </label>
             {isEnvFeatureSupported(envConfig.version, "shippedProposals") && (
               <label className={styles.envPresetRow}>
-                <LinkToDocs
-                  className={`${styles.envPresetLabel} ${styles.highlight}`}
-                  section="shippedProposals"
-                >
-                  Shipped Proposals
-                </LinkToDocs>
+                {shippedProposalsState.isLoading ? (
+                  <PresetLoadingAnimation size={1.6} />
+                ) : (
+                  <LinkToDocs
+                    className={`${styles.envPresetLabel} ${styles.highlight}`}
+                    section="shippedProposals"
+                  >
+                    Shipped Proposals
+                  </LinkToDocs>
+                )}
                 <input
                   checked={envConfig.shippedProposals}
                   className={styles.envPresetCheckbox}

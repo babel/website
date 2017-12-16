@@ -295,13 +295,14 @@ class Repl extends React.Component {
     // Babel 'env' preset is large;
     // Only load it if it's been requested.
     if (envConfig.isEnvPresetEnabled && !envPresetState.isLoaded) {
+      envPresetState.isLoading = true;
       loadBundle(envPresetState, this._workerApi).then(() => {
         // This preset is not built into Babel standalone due to its size.
         // Before we can use it we need to explicitly register it.
         // Because it's loaded in a worker, we need to configure it there as well.
         this._workerApi
           .registerEnvPreset()
-          .then(success => this._updateCode(this.state.code));
+          .then(() => this._updateCode(this.state.code));
       });
     }
     if (
@@ -309,10 +310,10 @@ class Repl extends React.Component {
       envConfig.shippedProposals &&
       !shippedProposalsState.isLoaded
     ) {
+      shippedProposalsState.isLoading = true;
       const availablePlugins = await this._workerApi.getAvailablePlugins();
       const availablePluginsNames = availablePlugins.map(({ label }) => label);
       const babelVersion = this.state.babel.version;
-      shippedProposalsState.isLoading = true;
       const notRegisteredPackages = shippedProposalsState.config.packages
         .filter(
           packageState => !availablePluginsNames.includes(packageState.label)
