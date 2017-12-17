@@ -20,7 +20,7 @@ import {
 } from "./PluginConfig";
 import {
   envConfigToTargetsString,
-  loadPersistedState,
+  replState,
   configArrayToStateMap,
   configToState,
   persistedStateToBabelState,
@@ -73,17 +73,15 @@ class Repl extends React.Component {
   constructor(props: Props, context: any) {
     super(props, context);
 
-    const persistedState = loadPersistedState();
-
+    const persistedState = replState();
     const defaultPlugins = {
       "babili-standalone": persistedState.babili,
       prettier: persistedState.prettier,
     };
 
-    const presets =
-      typeof persistedState.presets === "string"
-        ? persistedState.presets.split(",")
-        : ["es2015", "react", "stage-2"];
+    const presets = persistedState.presets
+      ? persistedState.presets.split(",")
+      : [];
 
     const defaultPresets = presets.reduce((reduced, key) => {
       if (key) reduced[key] = true;
