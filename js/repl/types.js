@@ -17,7 +17,7 @@ export type PluginConfig = {
   baseUrl?: string,
   isPreLoaded?: boolean,
   label: string,
-  package?: string,
+  package: string,
   version?: string,
 };
 
