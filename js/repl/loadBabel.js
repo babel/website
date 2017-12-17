@@ -9,7 +9,7 @@ export default async function loadBabel(
   config: BabelState,
   workerApi: WorkerApi
 ): Promise<BabelState> {
-  function doLoad(url, error) {
+  function doLoad(url, error, requestedVersion) {
     return workerApi.loadScript(url).then(success => {
       if (success) {
         config.isLoaded = true;
@@ -22,7 +22,10 @@ export default async function loadBabel(
           workerApi.getAvailablePresets(),
         ]).then(([version, presets]) => {
           config.availablePresets = presets;
-          config.version = version;
+          // Bundles from Babel releases contain previous version because of publishing process bug.
+          const useRequestedVersion =
+            semver.valid(requestedVersion) && requestedVersion !== version;
+          config.version = useRequestedVersion ? requestedVersion : version;
           return config;
         });
       } else {
@@ -88,5 +91,9 @@ export default async function loadBabel(
       ? "@babel/standalone"
       : "babel-standalone";
 
-  return doLoad(`https://unpkg.com/${babelStandalone}@${version}/babel.min.js`);
+  return doLoad(
+    `https://unpkg.com/${babelStandalone}@${version}/babel.min.js`,
+    null,
+    version
+  );
 }
