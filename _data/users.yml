@@ -613,3 +613,6 @@
 - name: Hasura
   url: https://hasura.io
   logo: hasura.svg
+- name: Yelp
+  url: https://www.yelp.com
+  logo: yelp.svg
