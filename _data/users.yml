@@ -610,6 +610,9 @@
 - name: Douban Read
   url: https://read.douban.com
   logo: ark.svg
+- name: Hasura
+  url: https://hasura.io
+  logo: hasura.svg
 - name: Yelp
   url: https://www.yelp.com
   logo: yelp.svg
