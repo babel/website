@@ -73,7 +73,7 @@ By using `preval.macro` with `babel-plugin-macros`, we don't have any of those p
 
 **So what is it really? The TL;DR is that `babel-plugin-macros` is a simpler way to write and use Babel transforms.**
 
-There are already several [published `babel-plugin-macros`](https://www.npmjs.com/browse/keyword/babel-plugin-macros) you can use, including [`preval.macro`](https://github.com/kentcdodds/preval.macro), [`codegen.macro`](https://github.com/kentcdodds/codegen.macro), [`idx.macro`](https://github.com/dralletje/idx.macro), [`emotion/macro`](https://github.com/emotion-js/emotion/blob/master/docs/babel-macros.md), [`tagged-translations/macro`](https://github.com/vinhlh/tagged-translations#via-babel-macros), [`babel-plugin-console/scope.macro`](https://github.com/mattphillips/babel-plugin-console#macros), and [`glamor` 🔜](https://github.com/threepointone/glamor/pull/312).
+There are already several [published `babel-plugin-macros`](https://www.npmjs.com/browse/keyword/babel-plugin-macros) you can use, including [`preval.macro`](https://github.com/kentcdodds/preval.macro), [`codegen.macro`](https://github.com/kentcdodds/codegen.macro), [`idx.macro`](https://github.com/dralletje/idx.macro), [`emotion/macro`](https://github.com/emotion-js/emotion/blob/master/docs/babel.md#babel-macros), [`tagged-translations/macro`](https://github.com/vinhlh/tagged-translations#via-babel-macros), [`babel-plugin-console/scope.macro`](https://github.com/mattphillips/babel-plugin-console#macros), and [`glamor` 🔜](https://github.com/threepointone/glamor/pull/312).
 
 ## Conclusion
 
