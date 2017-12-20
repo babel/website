@@ -616,3 +616,6 @@
 - name: Yelp
   url: https://www.yelp.com
   logo: yelp.svg
+- name: N26
+  url: https://n26.com
+  logo: n26.svg
