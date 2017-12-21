@@ -8,7 +8,7 @@ categories: announcements
 share_text: "Nearing the 7.0 Release"
 ---
 
-> [Hey! Listen!](https://soundcloud.com/omnomthenom/hey-listen-a-dubstep-tribute-to-navi) Check out [Planning for 7.0](https://babeljs.io/blog/2017/09/12/planning-for-7.0) for updates throughout the beta releases.
+> [Hey! Listen!](https://soundcloud.com/omnomthenom/hey-listen-a-dubstep-tribute-to-navi) Check out [Planning for 7.0](https://babeljs.io/blog/2017/09/12/planning-for-7.0) for updates throughout the 7.0 pre-releases.
 
 ## Project Updates
 
