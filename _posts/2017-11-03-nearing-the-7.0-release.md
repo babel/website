@@ -8,25 +8,26 @@ categories: announcements
 share_text: "Nearing the 7.0 Release"
 ---
 
-> Please check out the previous [Planning for 7.0](https://babeljs.io/blog/2017/09/12/planning-for-7.0) post for information up till the first beta release!
+> [Hey! Listen!](https://soundcloud.com/omnomthenom/hey-listen-a-dubstep-tribute-to-navi) Check out [Planning for 7.0](https://babeljs.io/blog/2017/09/12/planning-for-7.0) for updates throughout the 7.0 pre-releases.
 
 ## Project Updates
 
-- We started a new [videos page](https://babeljs.io/docs/community/videos/)! Wanted to create this to provide a resource for people wanting to learn more about how Babel works and help contribute back!
+- We started a new [videos page](https://babeljs.io/docs/community/videos/)! We created this for people wanting to learn more about how Babel works and to help contribute back.
 
 [![videos](https://i.imgur.com/DkBEsfo.png)](https://babeljs.io/docs/community/videos/)
 
-- We created a new [team page](https://babeljs.io/team)! We'll be updating this in the future with more information about what people work on and why they are involved! For such a large project, there are many ways to get involved and help out!
+- We created a new [team page](https://babeljs.io/team)! We will be updating this page in the future with more information about what people work on and why they are involved. For such a large project, there are many ways to get involved and help out.
 
 [![team](https://i.imgur.com/YcWgRwf.png)](https://babeljs.io/team)
 
-- Babel turned three years old on [Sept 28](https://babeljs.io/blog/2017/10/05/babel-turns-three)!
-- Daniel [moved](https://twitter.com/left_pad/status/926096965565370369) `babel/babylon` and `babel/babel-preset-env` into the main Babel monorepo: [babel/babel](https://github.com/babel/babel), including everything from git history, labels, issues!
+- Babel turned 3 years old on [September 28, 2017](https://babeljs.io/blog/2017/10/05/babel-turns-three)!
+- Daniel [moved](https://twitter.com/left_pad/status/926096965565370369) `babel/babylon` and `babel/babel-preset-env` into the main Babel monorepo, [babel/babel](https://github.com/babel/babel), and this includes all git history, labels, issues.
 - We received a [$1k/month donation](https://twitter.com/left_pad/status/923696620935421953) from Facebook Open Source!
-  - If your company would also like to give back and support a fundamental part of JavaScript development and it's future, consider donating to our [Open Collective](https://opencollective.com/babel) or donate developer time to helping maintain the project
-  - This the highest monthly donation we've gotten since the start (next highest is $100/month)
-  - We're definetely looking to be able to fund people on the team to work full-time
-  - In the meantime we will use our funds to meet in person and sending people to TC39 meetings (it's every 2 months around the world). If someone wants to sponsor specifically for that, we can create separate issues to track that so there are concrete/specific things a company can donate for. This has been previously difficult because we've had to pay out of pocket or for me had to find a conference on the same week to speak at to help cover expenses.
+  - If your company would like to **give back** by supporting a fundamental part of JavaScript development and it's future, consider donating to our [Open Collective](https://opencollective.com/babel). You can also donate developer time to help maintain the project.
+  - This the highest monthly donation we have gotten since the start (next highest is $100/month).
+  - We are definetely looking to be able to fund people on the team to work full-time.
+  - In the meantime, we will use our funds to meet in person and to send people to TC39 meetings. These meetings are every 2 months around the world.
+  - If a company wants to specifically sponsor something, we can create separate issues to track. This was previously difficult because we had to pay out of pocket, or we had to find a conference on the same week to speak at to help cover expenses.
 
 ### How you can help!
 
@@ -44,7 +45,7 @@ We will also be working on a upgrade tool that will help [rewrite your package.j
 
 ### Summary of the [previous post](https://babeljs.io/blog/2017/09/12/planning-for-7.0)
 
-- Drop Node 0.10/0.12/5 support.
+- Dropped Node 0.10/0.12/5 support.
 - Updated [TC39 proposals](https://github.com/babel/proposals/issues)
   - Numeric Separator: `1_000`
   - Optional Chaining Operator: `a?.b`
@@ -53,7 +54,7 @@ We will also be working on a upgrade tool that will help [rewrite your package.j
   - BigInt (parseble): `2n`
   - Split export extensions into `export-default-from` and `export-ns-form`
 - `.babelrc.js` support (a config using JavaScript instead of JSON)
-- A new Typescript Preset + separated the React/Flow presets
+- Added a new Typescript Preset + separated the React/Flow presets
 - Removed the internal `babel-runtime` dependency for smaller size
 
 ### Newly Updated TC39 Proposals
@@ -64,17 +65,17 @@ We will also be working on a upgrade tool that will help [rewrite your package.j
 
 ### Deprecated Yearly Presets (e.g. babel-preset-es20xx)
 
-TL;DR is use `babel-preset-env` instead.
+TL;DR: use `babel-preset-env`.
 
-What's better than you having to decide what Babel preset to use? If it was done for you, automatically!
+What's better than you having to decide which Babel preset to use? Having it done for you, automatically!
 
-Even though the amount of work that goes into maintaining the lists of data is humongous (again why we need help), it solves multiple issues: making sure users are up to date with the spec, less configuration/package confusion, an easier upgrade path, and less issues about what is what.
+Even though the amount of work that goes into maintaining the lists of data is humongous — again, why we need help — it solves multiple issues. It makes sure users are up to date with the spec. It means less configuration/package confusion. It means an easier upgrade path. And it means less issues about what is what.
 
 `babel-preset` is actually a pretty *old* preset that replaces every other syntax preset that you will need (es2015, es2016, es2017, es20xx, latest, etc...).
 
 ![npm presets](https://i.imgur.com/nNKKFcp.png)
 
-It compiles the latest yearly release of JavaScript (whatever is in Stage 4) which replaces all the old presets. But it also has the further abilitiy to compile according to the target environments you specify: whether it's for development mode (latest version of a browser), or different builds (one for IE, one for evergreen browsers).
+It compiles the latest yearly release of JavaScript (whatever is in Stage 4) which replaces all the old presets. But it also has the abilitiy to compile according to target environments you specify: whether that is for development mode, like the latest version of a browser, or for multiple builds, like a version for IE, and then another version for evergreen browsers.
 
 ### Not removing the Stage presets (babel-preset-stage-x)
 
@@ -82,28 +83,26 @@ It compiles the latest yearly release of JavaScript (whatever is in Stage 4) whi
 
 We can always keep it up to date, and maybe we just need to determine a better system than what these presets are currently.
 
-Right now, they are literally just a list of plugins that we manually update after a TC39 meeting happens. Of course to make this managable we will need to just allow for major version bumps for these "unstable" packages. Part of the reason for this is because the community will just re-create these packages anyway, so we might as well do it via an official package and have the ability to provide better messaging, etc.
+Right now, stage presets are literally just a list of plugins that we manually update after TC39 meetings. To make this managable, we need to allow major version bumps for these "unstable" packages. Part of the reason for this is because the community will re-create these packages anyway, so we might as well do it from an official package and then have the ability to provide better messaging, etc.
 
 ### Renames: Scoped Packages (`@babel/x`)
 
-Alright we only just changed every single package for Babel again 😂..
-
-Here's a poll I did almost a year ago:
+Here is a poll I did almost a year ago:
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thoughts on <a href="https://twitter.com/babeljs">@babeljs</a> using npm scoped packages for 7.0?</p>&mdash; Henry Zhu (@left_pad) <a href="https://twitter.com/left_pad/status/821551189166878722">January 18, 2017</a></blockquote>
 
-Back then, there weren't a lot of projects using scoped packages so most people didn't even know they existed. I believe you also had to pay for a npm org account while now it's free (and supports non scoped packages too). The issues with searching for scoped packages are solved and download counts work. The only thing left is that some 3rd party registries still don't support scoped. I think we are at a point where it seems pretty unreasonable to wait on that.
+Back then, not a lot of projects used scoped packages, so most people didn't even know they existed. You may also have had to pay for a npm org account back then, while now it's free (and supports non scoped packages, too). The issues with searching for scoped packages are solved and download counts work. The only thing left is that some 3rd party registries still don't support scoped packages, and I think we are at a point where it seems pretty unreasonable to wait on that.
 
-If you want reasons why:
+If you want reasons why we prefer scoped packages:
 
-- Naming is difficult: we don't have to check if someone else decided to use our naming convention for their own plugin
+- Naming is difficult: we won’t have to check if someone else decided to use our naming convention for their own plugin
 - Similarly, package squatting
-  - Sometimes people will create `babel-preset-20xx` or some other package we will use because it's funny and then we have to make an issue/email them to ask for it back.
-  - People have a legit package but it happens to be the same name as what we wanted to call it.
-  - People see that a new proposal is merge (optional chaining, pipeline operator) and decide to fork and publish a version of it under the same name so that when we publish it errors saying it was already published 🤔. Then I had to find their email and email both them and npm support to get the package back and republish.
-- What is an "official" package and what is a user/community package with the same name. We can get issue reports of people using misnamed or unofficial packages because they assumed it was part of Babel. One example of this was a report that `babel-env` was rewriting their `.babelrc` file, and it took a while to realize they thought it was `babel-preset-env`.
+  - Sometimes people create `babel-preset-20xx` or some other package because it's funny, and then we have to make an issue/email to ask for it back.
+  - People have a legit package, but it happens to be the same name as what we wanted to call it.
+  - People see that a new proposal is merging (like optional chaining, pipeline operator) and decide to fork and publish a version of it under the same name. Then, when we publish, it tell us the package was already published 🤔. Then, I have to find their email and email both them and npm support to get the package back and republish.
+- What is an "official" package and what is a user/community package with the same name? We can get issue reports of people using misnamed or unofficial packages because they assumed it was part of Babel. One example of this was a report that `babel-env` was rewriting their `.babelrc` file, and it took them a while to realize it wasn't `babel-preset-env`.
 
-So it seems obvious we should do this, and if anything should of done it much earlier 🙂!
+So, it seems obvious we should use scoped packages, and, if anything, we should have done it much earlier 🙂!
 
 Examples of the scoped name change:
 
@@ -113,31 +112,30 @@ Examples of the scoped name change:
 
 ### Renames: `-proposal-`
 
-Any proposals will be named with the `-proposal` prefix now to signify that they aren't officially in JavaScript yet.
+Any proposals will be named with `-proposal-` now to signify that they aren't officially in JavaScript yet.
 
-So `@babel/plugin-transform-class-properties` -> `@babel/plugin-proposal-class-properties`. And we would name it back when it gets to Stage 4.
+So `@babel/plugin-transform-class-properties` becomes `@babel/plugin-proposal-class-properties`, and we would name it back once it gets into Stage 4.
 
 ### Renames: Drop the year from the plugin name
 
-Previous plugins had the year in the name, but it doesn't seem to be necessary.
+Previous plugins had the year in the name, but it doesn't seem to be necessary now.
 
-So `@babel/plugin-transform-es2015-classes` -> `@babel/plugin-transform-classes`.
+So `@babel/plugin-transform-es2015-classes` becomes `@babel/plugin-transform-classes`.
 
-Partially since this was only the case for es3/es2015 and we didn't change anything from es2016 or es2017. We are also deprecating the corresponding presets in favor of preset-env, and for the template literal revision just added it to the template literal transform for simplicity.
+Since years were only the case for es3/es2015, we didn't change anything from es2016 or es2017. However, we are deprecating those presets in favor of preset-env, and, for the template literal revision, we just added it to the template literal transform for simplicity.
 
 ### Peer Dependencies + Integrations
 
-We are introducing a peer dependency on `@babel/core` for all the plugins (`@babel/plugin-class-properties`), presets (`@babel/preset-env`), top level packages (`@babel/cli`, `babel-loader`).
+We are introducing a peer dependencies on `@babel/core` for all the plugins (`@babel/plugin-class-properties`), presets (`@babel/preset-env`), and top level packages (`@babel/cli`, `babel-loader`).
 
-`babel-loader` already had a `peerDependency` on `babel-core`, so this just changes it to `@babel/core`.
+> peerDependencies are dependencies expected to be used by your code, as opposed to dependencies only used as an implementation detail.
+> — [Stijn de Witt via StackOverflow](https://stackoverflow.com/a/34645112).
 
-This is just so that people aren't trying to install these packages on the wrong version of Babel.
+`babel-loader` already had a `peerDependency` on `babel-core`, so this just changes it to `@babel/core`. This is just so that people weren't trying to install these packages on the wrong version of Babel.
 
-> For tools that already have a `peerDependency` on `babel-core` and aren't ready for a major bump since changing the peer dependency is a breaking change, we have published a new version of `babel-core` to bridge the changes over with the version [babel-core@7.0.0-bridge.0](https://github.com/babel/babel-bridge). For more information check out [this issue](https://github.com/facebook/jest/pull/4557#issuecomment-344048628)
+For tools that already have a `peerDependency` on `babel-core` and aren't ready for a major bump (since changing the peer dependency is a breaking change), we have published a new version of `babel-core` to bridge the changes over with the new version [babel-core@7.0.0-bridge.0](https://github.com/babel/babel-bridge). For more information check out [this issue](https://github.com/facebook/jest/pull/4557#issuecomment-344048628).
 
-Similarly, packages like `gulp-babel`, `rollup-plugin-babel`, etc all used to have `babel-core` as a dependency. Now these will also just have a `peerDependency` on `@babel/core`.
-
-This lets all these packages not have to bump major versions when the `@babel/core` API hasn't changed.
+Similarly, packages like `gulp-babel`, `rollup-plugin-babel`, etc, all used to have `babel-core` as a dependency. Now these will just have a `peerDependency` on `@babel/core`. This lets these packages not have to bump major versions when the `@babel/core` API hasn't changed.
 
 ### [#5224](https://github.com/babel/babel/pull/5224) Independent Publishing of Experimental Packages
 
@@ -145,13 +143,13 @@ This lets all these packages not have to bump major versions when the `@babel/co
 
 You might remember that after Babel 6, Babel became a set of npm packages with its own ecosystem of custom presets and plugins.
 
-However since then, we've always used a "fixed/synchronized" versioning system (so that no package is on v7.0 or above). When we do a new release such as `v6.23.0` only packages that have updated code in the source are published with the new version while the rest of the packages are left as is. This mostly works in practice because we use `^` in our packages.
+However since then, we have always used a "fixed/synchronized" versioning system (so that no package is on v7.0 or above). When we do a new release such as `v6.23.0` only packages that have updated code in the source are published with the new version while the rest of the packages are left as is. This mostly works in practice because we use `^` in our packages.
 
-Unfortunately this kind of system requires that a major version be released for all packages once a single package needs it. This either means we make a lot small breaking changes (unnecessary) or we batch lots of breaking changes into a single release. Instead, we want to differentiate between the experimental packages (Stage 0, etc) and everything else (es2015).
+Unfortunately this kind of system requires that a major version be released for all packages once a single package needs it. This either means we make a lot small breaking changes (unnecessary), or we batch lots of breaking changes into a single release. Instead, we want to differentiate between the experimental packages (Stage 0, etc.) and everything else (es2015).
 
-This means that we intend to make major version bumps to any experimental proposal plugins when the spec changes rather than waiting to update all of Babel. So anything that is < Stage 4 would be open to breaking changes in the form of major version bumps and same with the Stage presets themselves if we don't drop them entirely.
+This means we intend to make major version bumps to any experimental proposal plugins when the spec changes rather than waiting to update all of Babel. So anything that is < Stage 4 would be open to breaking changes in the form of major version bumps and same with the Stage presets themselves (if we don't drop them entirely).
 
-This goes with our decision to change TC39 proposal plugins to have the `-proposal-` name. If the spec changes, we will do a major version bump to the plugin and the preset it belongs to (as opposed to just do a patch version which may break for people). Then we'll need to work on deprecating the old versions and figuring out how to setup the infrastructure to automatically update people so everyone is up to date on what the spec will become (and not get stuck on something like we have with decorators).
+This goes with our decision to change TC39 proposal plugins to use the `-proposal-` name. If the spec changes, we will do a major version bump to the plugin and the preset it belongs to (as opposed to just making a patch version which may break for people). Then, we will need to deprecate the old versions and setup an infrastructure to automatically update people so that everyone is up to date on what the spec will become (and so they don't get stuck on something, like we have with decorators).
 
 ### Speed
 
@@ -165,4 +163,3 @@ This goes with our decision to change TC39 proposal plugins to have the `-propos
 ### Upcoming
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
