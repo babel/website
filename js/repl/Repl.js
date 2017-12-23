@@ -311,37 +311,36 @@ class Repl extends React.Component {
       envConfig.shippedProposals &&
       !shippedProposalsState.isLoaded
     ) {
-      shippedProposalsState.isLoading = true;
       const availablePlugins = await this._workerApi.getAvailablePlugins();
       const availablePluginsNames = availablePlugins.map(({ label }) => label);
-      const babelVersion = this.state.babel.version;
       const notRegisteredPackages = shippedProposalsState.config.packages
         .filter(
           packageState => !availablePluginsNames.includes(packageState.label)
         )
         .map(config =>
-          configToState({ ...config, version: babelVersion }, true)
+          configToState({ ...config, version: this.state.babel.version }, true)
         );
 
-      Promise.all(
-        notRegisteredPackages.map(state => loadBundle(state, this._workerApi))
-      ).then(plugins => {
-        if (plugins.every(plugin => plugin.isLoaded)) {
+      if (notRegisteredPackages.length) {
+        shippedProposalsState.isLoading = true;
+        const plugins = await Promise.all(
+          notRegisteredPackages.map(state => loadBundle(state, this._workerApi))
+        );
+        const allPluginsAreLoaded = plugins.every(({ isLoaded }) => isLoaded);
+        if (allPluginsAreLoaded) {
           shippedProposalsState.isLoaded = true;
-          shippedProposalsState.isLoading = false;
-          this._workerApi
-            .registerPlugins(
-              plugins.map(({ config }) => ({
-                instanceName: config.instanceName,
-                pluginName: config.label,
-              }))
-            )
-            .then(() => this._updateCode(this.state.code));
+          await this._workerApi.registerPlugins(
+            plugins.map(({ config }) => ({
+              instanceName: config.instanceName,
+              pluginName: config.label,
+            }))
+          );
+          this._updateCode(this.state.code);
         } else {
           shippedProposalsState.didError = true;
-          shippedProposalsState.isLoading = false;
         }
-      });
+        shippedProposalsState.isLoading = false;
+      }
     }
   }
 
