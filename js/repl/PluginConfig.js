@@ -58,6 +58,7 @@ const replDefaults: ReplState = {
   isSettingsTabExpanded: true,
   lineWrap: true,
   presets: "es2015,react,stage-2",
+  prettier: false,
   showSidebar: true,
   targets: "",
   version: "",
