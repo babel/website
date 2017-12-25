@@ -328,13 +328,13 @@ class Repl extends React.Component {
         );
         const allPluginsAreLoaded = plugins.every(({ isLoaded }) => isLoaded);
         if (allPluginsAreLoaded) {
-          shippedProposalsState.isLoaded = true;
           await this._workerApi.registerPlugins(
             plugins.map(({ config }) => ({
               instanceName: config.instanceName,
               pluginName: config.label,
             }))
           );
+          shippedProposalsState.isLoaded = true;
           this._updateCode(this.state.code);
         } else {
           shippedProposalsState.didError = true;
