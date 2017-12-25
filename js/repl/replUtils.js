@@ -1,6 +1,6 @@
 // @flow
 
-import { envPresetDefaults } from "./PluginConfig";
+import { envPresetDefaults, replDefaults } from "./PluginConfig";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
 import { envPresetFeaturesSupport } from "./PluginConfig";
@@ -10,8 +10,8 @@ import type {
   BabelState,
   EnvState,
   EnvConfig,
+  ReplState,
   MultiPackagesConfig,
-  PersistedState,
   PluginConfig,
   PluginConfigs,
   PluginState,
@@ -33,42 +33,27 @@ export const envConfigToTargetsString = (envConfig: EnvConfig): string => {
   return encodeURIComponent(components.join(","));
 };
 
-export const loadPersistedState = (): PersistedState => {
+//  Repl state stored in Local storage
+const loadPersistedState = (): ReplState => {
   const storageState = StorageService.get("replState");
-  const queryState = UriUtils.parseQuery();
-  const merged = {
-    ...storageState,
-    ...queryState,
-  };
+  return { ...replDefaults, ...storageState };
+};
 
-  return {
-    babili: merged.babili === true,
-    browsers: merged.browsers || "",
-    build: merged.build || "",
-    builtIns: merged.builtIns || false,
-    circleciRepo: merged.circleciRepo || "",
-    code: merged.code || "",
-    debug: merged.debug === true,
-    forceAllTransforms: merged.forceAllTransforms === true,
-    shippedProposals: merged.shippedProposals === true,
-    evaluate: merged.evaluate === true,
-    isEnvPresetTabExpanded: merged.isEnvPresetTabExpanded === true,
-    isPresetsTabExpanded: merged.isPresetsTabExpanded === true,
-    isSettingsTabExpanded: merged.isSettingsTabExpanded !== false, // Default to show
-    lineWrap: merged.lineWrap != null ? merged.lineWrap : true,
-    presets: merged.hasOwnProperty("presets") ? merged.presets : null,
-    prettier: merged.prettier === true,
-    showSidebar: merged.showSidebar !== false, // Default to show
-    targets: merged.targets || "",
-    version: merged.version || "",
-    envVersion: merged.envVersion || "",
-  };
+//  Repl state in query string
+const urlState = (): ReplState => {
+  const queryState = UriUtils.parseQuery();
+  return { ...replDefaults, ...queryState };
+};
+
+export const replState = (): ReplState => {
+  const hasQueryString = window.location.hash;
+  return hasQueryString ? urlState() : loadPersistedState();
 };
 
 type DefaultPlugins = { [name: string]: boolean };
 
 export const persistedStateToBabelState = (
-  persistedState: PersistedState,
+  persistedState: ReplState,
   config: PluginConfig
 ): BabelState => ({
   availablePresets: [],
@@ -82,7 +67,7 @@ export const persistedStateToBabelState = (
 });
 
 export const persistedStateToEnvState = (
-  persistedState: PersistedState,
+  persistedState: ReplState,
   config: PluginConfig,
   isEnabled: boolean
 ): EnvState => {
@@ -95,7 +80,7 @@ export const persistedStateToEnvState = (
 };
 
 export const persistedStateToShippedProposalsState = (
-  persistedState: PersistedState,
+  persistedState: ReplState,
   config: MultiPackagesConfig,
   isEnabled: boolean
 ): ShippedProposalsState => ({
@@ -131,7 +116,7 @@ export const configToState = (
 });
 
 export const persistedStateToEnvConfig = (
-  persistedState: PersistedState
+  persistedState: ReplState
 ): EnvConfig => {
   const isEnvPresetEnabled =
     typeof persistedState.presets === "string" &&

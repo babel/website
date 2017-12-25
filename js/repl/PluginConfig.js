@@ -1,6 +1,11 @@
 // @flow
 import camelCase from "lodash.camelcase";
-import type { PluginConfig, MultiPackagesConfig, EnvFeatures } from "./types";
+import type {
+  PluginConfig,
+  MultiPackagesConfig,
+  ReplState,
+  EnvFeatures,
+} from "./types";
 
 const normalizePluginName = pluginName =>
   `_babel_${camelCase(`plugin-${pluginName}`)}`;
@@ -93,6 +98,29 @@ const pluginConfigs: Array<PluginConfig> = [
   },
 ];
 
+const replDefaults: ReplState = {
+  babili: false,
+  browsers: "",
+  build: "",
+  builtIns: false,
+  circleciRepo: "",
+  code: "",
+  debug: false,
+  evaluate: false,
+  isEnvPresetTabExpanded: false,
+  isPresetsTabExpanded: false,
+  isSettingsTabExpanded: true,
+  lineWrap: true,
+  presets: "es2015,react,stage-2",
+  prettier: false,
+  forceAllTransforms: false,
+  showSidebar: true,
+  shippedProposals: false,
+  targets: "",
+  version: "",
+  envVersion: "",
+};
+
 export {
   babelConfig,
   envPresetConfig,
@@ -101,4 +129,5 @@ export {
   envPresetFeaturesSupport,
   pluginConfigs,
   runtimePolyfillConfig,
+  replDefaults,
 };

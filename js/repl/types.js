@@ -83,11 +83,11 @@ export type CompileConfig = {
   sourceMap: boolean,
 };
 
-export type PersistedState = {
+export type ReplState = {
   babili: boolean,
   browsers: string,
   build: string,
-  builtIns: boolean | string,
+  builtIns: string | boolean,
   circleciRepo: string,
   code: string,
   debug: boolean,
