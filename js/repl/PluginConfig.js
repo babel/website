@@ -2,7 +2,7 @@
 import camelCase from "lodash.camelcase";
 import type { PluginConfig, MultiPackagesConfig, EnvFeatures } from "./types";
 
-const convertPluginNameToInsanceName = pluginName =>
+const normalizePluginName = pluginName =>
   `_babel_${camelCase(`plugin-${pluginName}`)}`;
 
 const babelConfig: PluginConfig = {
@@ -34,7 +34,7 @@ const stage3Plugins: Array<PluginConfig> = [
     package: packageName,
     version: "7.0.0-beta.34",
     baseUrl: "https://bundle.run",
-    instanceName: convertPluginNameToInsanceName(pluginName),
+    instanceName: normalizePluginName(pluginName),
   };
 });
 
