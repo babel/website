@@ -9,7 +9,7 @@ permalink: /env/
 
 ### Babel 7
 
-If you are using v7 you'll need `npm install @babel/preset-env` and `"presets": ["@babel/env"]`
+If you are using v7 you'll need `npm install @babel/preset-env` and `"presets": ["@babel/preset-env"]`
 
 ## Upgrading to `babel-preset-env`
 
