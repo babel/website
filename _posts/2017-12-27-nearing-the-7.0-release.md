@@ -8,7 +8,7 @@ categories: announcements
 share_text: "Nearing the 7.0 Release"
 ---
 
-> Check out [Planning for 7.0](https://babeljs.io/blog/2017/09/12/planning-for-7.0) for the last updates throughout the 7.0 pre-releases.
+> Check out [Planning for 7.0](https://babeljs.io/blog/2017/09/12/planning-for-7.0) for the last updates throughout the 7.0 pre-releases. If something isn't clear in this post let me know!
 
 ## Project Updates
 
