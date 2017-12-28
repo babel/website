@@ -3,7 +3,7 @@ layout: post
 title:  "Nearing the 7.0 Release"
 author: Henry Zhu
 author_url: "https://twitter.com/left_pad"
-date:   2017-11-03 12:00:00
+date:   2017-12-27 21:00:00
 categories: announcements
 share_text: "Nearing the 7.0 Release"
 ---
@@ -250,7 +250,7 @@ With type inference we can know if an instance method like `.includes` is for an
 - Either implement or have plan in place for versioning and handling polyfills independently from helpers, so we aren't explicitly tied to core-js 2 or 3, since people may have things that depend on one or the other and won't want to load both a lot of the time.
 - Either a [working decorator implementation](https://github.com/babel/babel/pull/6107), or functional legacy implementation, with clear path to land current spec behavior during 7.x's lifetime.
 
-I'm looking forward to a release (almost been a year), but also don't want to rush anything just because! Been a lot of ups and downs throughout this release but I've certainly learned a lot and I'm sure the rest of the team has as well.
+I'm really looking forward to a release (almost been a year 😝), but also don't want to rush anything just because! Been a lot of ups and downs throughout this release but I've certainly learned a lot and I'm sure the rest of the team has as well.
 
 And if I've learned anything at all this year, I should really heed this advice rather than just write about it.
 
