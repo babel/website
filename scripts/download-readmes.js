@@ -45,7 +45,7 @@ Promise.all([getDirectoryListing('babel', '6.x'), getDirectoryListing('minify')]
       },
       {
         name: 'babylon',
-        uri: '/babel/babylon/master/README.md',
+        uri: '/babel/babel/master/packages/babylon/README.md',
       },
     ];
 
