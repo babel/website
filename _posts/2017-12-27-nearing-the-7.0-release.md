@@ -256,4 +256,6 @@ And if I've learned anything at all this year, I should really heed this advice 
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">&quot;Before you go maintaining anything else, maintain your own body first&quot; - Mom 😸</p>&mdash; Henry Zhu (@left_pad) <a href="https://twitter.com/left_pad/status/944313617243099136?ref_src=twsrc%5Etfw">December 22, 2017</a></blockquote>
 
+> Also thanks to [Mariko](https://twitter.com/kosamari) for the [light push](https://twitter.com/kosamari/status/944272286055530496) to actually finish this post (2 months in the making)
+
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
