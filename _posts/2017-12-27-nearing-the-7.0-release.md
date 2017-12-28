@@ -78,7 +78,7 @@ What's better than you having to decide which Babel preset to use? Having it don
 
 Even though the amount of work that goes into maintaining the lists of data is humongous — again, why we need help — it solves multiple issues. It makes sure users are up to date with the spec. It means less configuration/package confusion. It means an easier upgrade path. And it means less issues about what is what.
 
-`babel-preset` is actually a pretty *old* preset that replaces every other syntax preset that you will need (es2015, es2016, es2017, es20xx, latest, etc...).
+`babel-preset-env` is actually a pretty *old* preset that replaces every other syntax preset that you will need (es2015, es2016, es2017, es20xx, latest, etc...).
 
 [![npm presets](https://i.imgur.com/nNKKFcp.png)](https://npm-stat.com/charts.html?package=babel-preset-env&package=babel-preset-es2015&package=babel-preset-es2016&package=babel-preset-es2017&package=babel-preset-latest&from=2016-11-21&to=2017-11-21)
 
