@@ -8,11 +8,11 @@ categories: announcements
 share_text: "Nearing the 7.0 Release"
 ---
 
-> [Hey! Listen!](https://soundcloud.com/omnomthenom/hey-listen-a-dubstep-tribute-to-navi) Check out [Planning for 7.0](https://babeljs.io/blog/2017/09/12/planning-for-7.0) for updates throughout the 7.0 pre-releases.
+> Check out [Planning for 7.0](https://babeljs.io/blog/2017/09/12/planning-for-7.0) for the last updates throughout the 7.0 pre-releases.
 
 ## Project Updates
 
-- We started a new [videos page](https://babeljs.io/docs/community/videos/)! We created this for people wanting to learn more about how Babel works and to help contribute back.
+- We started a new [videos page](https://babeljs.io/docs/community/videos/)! We created this for people wanting to learn more about how Babel works and to help others contribute back. Contains videos of conference talks on Babel and related concepts.
 
 [![videos](https://i.imgur.com/DkBEsfo.png)](https://babeljs.io/docs/community/videos/)
 
@@ -25,7 +25,8 @@ share_text: "Nearing the 7.0 Release"
 - We received a [$1k/month donation](https://twitter.com/left_pad/status/923696620935421953) from Facebook Open Source!
   - If your company would like to **give back** by supporting a fundamental part of JavaScript development and it's future, consider donating to our [Open Collective](https://opencollective.com/babel). You can also donate developer time to help maintain the project.
   - This the highest monthly donation we have gotten since the start (next highest is $100/month).
-  - We are definetely looking to be able to fund people on the team to work full-time.
+  - We are definetely looking to be able to fund people on the team to work full-time
+  - Logan in particular left his job a while ago and is using the funds to work on Babel part time at the moment.
   - In the meantime, we will use our funds to meet in person and to send people to TC39 meetings. These meetings are every 2 months around the world.
   - If a company wants to specifically sponsor something, we can create separate issues to track. This was previously difficult because we had to pay out of pocket, or we had to find a conference on the same week to speak at to help cover expenses.
 
@@ -39,9 +40,13 @@ share_text: "Nearing the 7.0 Release"
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Company: &quot;We&#39;d like to use SQL Server Enterprise&quot;<br>MS: &quot;That&#39;ll be a quarter million dollars + $20K/month&quot;<br>Company: &quot;Ok!&quot;<br>...<br>Company: &quot;We&#39;d like to use Babel&quot;<br>Babel: &quot;Ok! npm i babel --save&quot;<br>Company: &quot;Cool&quot;<br>Babel: &quot;Would you like to help contribute financially?&quot;<br>Company: &quot;lol no&quot;</p>&mdash; Adam Rackis (@AdamRackis) <a href="https://twitter.com/AdamRackis/status/931195056479965185?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
 
+#### #3 Contribute in other ways
+
+An example: [Angus](https://twitter.com/angustweets) made us an [official song](https://medium.com/@angustweets/hallelujah-in-praise-of-babel-977020010fad)!
+
 ### Upgrading
 
-We will also be working on a upgrade tool that will help [rewrite your package.json/.babelrc files](https://github.com/babel/notes/issues/44).
+We will also be working on a upgrade tool that will help [rewrite your package.json/.babelrc files](https://github.com/babel/notes/issues/44) and more. Please reach out to help and to post issues when trying to update.
 
 ### Summary of the [previous post](https://babeljs.io/blog/2017/09/12/planning-for-7.0)
 
@@ -55,6 +60,7 @@ We will also be working on a upgrade tool that will help [rewrite your package.j
   - Split export extensions into `export-default-from` and `export-ns-form`
 - `.babelrc.js` support (a config using JavaScript instead of JSON)
 - Added a new Typescript Preset + separated the React/Flow presets
+  - Added [JSX Fragment Support](https://reactjs.org/blog/2017/11/28/react-v16.2.0-fragment-support.html) and various Flow updates
 - Removed the internal `babel-runtime` dependency for smaller size
 
 ### Newly Updated TC39 Proposals
@@ -73,7 +79,7 @@ Even though the amount of work that goes into maintaining the lists of data is h
 
 `babel-preset` is actually a pretty *old* preset that replaces every other syntax preset that you will need (es2015, es2016, es2017, es20xx, latest, etc...).
 
-![npm presets](https://i.imgur.com/nNKKFcp.png)
+[![npm presets](https://i.imgur.com/nNKKFcp.png)](https://npm-stat.com/charts.html?package=babel-preset-env&package=babel-preset-es2015&package=babel-preset-es2016&package=babel-preset-es2017&package=babel-preset-latest&from=2016-11-21&to=2017-11-21)
 
 It compiles the latest yearly release of JavaScript (whatever is in Stage 4) which replaces all the old presets. But it also has the abilitiy to compile according to target environments you specify: whether that is for development mode, like the latest version of a browser, or for multiple builds, like a version for IE, and then another version for evergreen browsers.
 
@@ -151,15 +157,63 @@ This means we intend to make major version bumps to any experimental proposal pl
 
 This goes with our decision to change TC39 proposal plugins to use the `-proposal-` name. If the spec changes, we will do a major version bump to the plugin and the preset it belongs to (as opposed to just making a patch version which may break for people). Then, we will need to deprecate the old versions and setup an infrastructure to automatically update people so that everyone is up to date on what the spec will become (and so they don't get stuck on something, like we have with decorators).
 
+### The `env` option in `.babelrc` is not deprecated
+
+Unlike in the [last post](https://babeljs.io/blog/2017/09/12/planning-for-7.0#deprecate-the-env-option-in-babelrc), we just fixed the merging behavior to be [more consistent](https://twitter.com/left_pad/status/936687774098444288).
+
+The configuration in `env` is given higher priority than root config items, and instead of just being a weird approach of using both, plugins and presets now merge based on their identity, so you can do
+
+```js
+{
+  presets: [
+    ['env', { modules: false}],
+  ],
+  env: {
+    test: {
+      presets: [
+         'env'
+      ],
+    }
+  },
+}
+```
+
+with `BABEL_ENV=test`, which would replace the root env config, with the one from test, which has no options.
+
+### [Support `class A extends Array` (oldest caveat)](https://twitter.com/left_pad/status/940723982638157829)
+
+Babel will automatically wrap any native built-ins like `Array`, `Error`, `HTMLElement` etc so that doing this just works when compiling classes.
+
 ### Speed
 
-- fixes from bmuerer: https://twitter.com/rauchg/status/924349334346276864
-- benchmark: https://github.com/v8/web-tooling-benchmark/issues/27
-- 60% faster https://twitter.com/left_pad/status/927554660508028929
+- Many [fixes](https://twitter.com/rauchg/status/924349334346276864
+) from [bmeurer](https://twitter.com/bmeurer)
+- Benchmark PRs: https://github.com/v8/web-tooling-benchmark/issues/27
+- 60% faster via the [web-tooling-benchmark](https://github.com/v8/web-tooling-benchmark) https://twitter.com/left_pad/status/927554660508028929
 
-### Compiling `node_modules`
 ### preset-env: `"useBuiltins": "usage"`
 
-### Upcoming
+### Misc Updates
+
+- [`babel-template`](https://github.com/babel/babel/blob/master/packages/babel-template) is faster/easier to use
+- [regenerator](https://github.com/facebook/regenerator) was released under the [MIT License](https://twitter.com/left_pad/status/938825429955125248) - it's the dependency used to compile generators/async
+- "lazy" option to the `modules-commonjs` plugin via [#6952](https://github.com/babel/babel/pull/6952)
+- You can now use `envName: "something"` in .babelrc or pass via cli `babel --envName=something` instead of having to use `process.env.BABEL_ENV` or `process.env.NODE_ENV`
+- `["transform-for-of", { "assumeArray": true }]` to make all for-of loops output as regular arrays
+- Exclude `transform-typeof-symbol` in loose mode for preset-env [#6831](https://github.com/babel/babel/pull/6831)
+- [Landed PR for better error messages with syntax errors](https://twitter.com/left_pad/status/942859244759666691)
+
+### Todos Before Release
+
+- [Handle `.babelrc` lookup](https://github.com/babel/babel/issues/6766) (want this done before first RC release)
+- ["overrides" support](https://github.com/babel/babel/pull/7091): different config based on glob pattern
+- Caching and invalidation logic in babel-core.
+- Better story around external helpers.
+- Either implement or have plan in place for versioning and handling polyfills independently from helpers, so we aren't explicitly tied to core-js 2 or 3, since people may have things that depend on one or the other and won't want to load both a lot of the time.
+- Either a [working decorator implementation](https://github.com/babel/babel/pull/6107), or functional legacy implementation, with clear path to land current spec behavior during 7.x's lifetime.
+
+Looking forward to a release:
+
+https://github.com/babel/notes
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
