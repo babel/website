@@ -12,11 +12,11 @@ share_text: "Nearing the 7.0 Release"
 
 ## Project Updates
 
-- We started a new [videos page](https://babeljs.io/docs/community/videos/)! We created this for people wanting to learn more about how Babel works and to help others contribute back. Contains videos of conference talks on Babel and related concepts.
+- We started a new [videos page](https://babeljs.io/docs/community/videos/)! We created this for people wanting to learn more about how Babel works and to help others contribute back. This page contains videos of conference talks on Babel and related concepts from team members and people in the community (you can send a PR if you have done a talk like this as well).
 
 [![videos](https://i.imgur.com/DkBEsfo.png)](https://babeljs.io/docs/community/videos/)
 
-- We created a new [team page](https://babeljs.io/team)! We will be updating this page in the future with more information about what people work on and why they are involved. For such a large project, there are many ways to get involved and help out.
+- We created a new [team page](https://babeljs.io/team) as well! We will be updating this page in the future with more information about what people work on and why they are involved. For such a large project, there are many ways to get involved and help out.
 
 [![team](https://i.imgur.com/YcWgRwf.png)](https://babeljs.io/team)
 
@@ -24,8 +24,6 @@ share_text: "Nearing the 7.0 Release"
 - Daniel [moved](https://twitter.com/left_pad/status/926096965565370369) `babel/babylon` and `babel/babel-preset-env` into the main Babel monorepo, [babel/babel](https://github.com/babel/babel), and this includes all git history, labels, issues.
 - We received a [$1k/month donation](https://twitter.com/left_pad/status/923696620935421953) from Facebook Open Source!
   - This the highest monthly donation we have gotten since the start (next highest is $100/month).
-  - We are definetely looking to be able to fund people on the team to work full-time
-  - Logan in particular left his job a while ago and is using the funds to work on Babel part time at the moment.
   - In the meantime, we will use our funds to meet in person and to send people to TC39 meetings. These meetings are every 2 months around the world.
   - If a company wants to specifically sponsor something, we can create separate issues to track. This was previously difficult because we had to pay out of pocket, or we had to find a conference on the same week to speak at to help cover expenses.
 
@@ -37,9 +35,13 @@ If your company would like to **give back** by supporting a fundamental part of 
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Engineer: There&#39;s a thing in SQL Server Enterprise blocking us<br>Company: Let&#39;s set up a call next week with them an ongoing discussion to resolve it next quarter<br><br>Engineer: There&#39;s a thing we need in babel, can I spent 2 days with a PR for it<br>Company: lol no it&#39;s their job <a href="https://t.co/icgaoJ0dTe">https://t.co/icgaoJ0dTe</a></p>&mdash; Shiya (@ShiyaLuo) <a href="https://twitter.com/ShiyaLuo/status/931230821976907776?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
 
+The best thing we can get on this project are people committed to helping out with the project given the massive amount of work/responsibility it takes. Again, [I never felt ready](https://dev.to/hzoo/im-the-maintainer-of-babel-ask-me-anything-282/comments/1k6d) to be a maintainer but somehow stumbled upon it but I'm just one person, and our team is just a few people.
+
 #### #2 Fund development
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Company: &quot;We&#39;d like to use SQL Server Enterprise&quot;<br>MS: &quot;That&#39;ll be a quarter million dollars + $20K/month&quot;<br>Company: &quot;Ok!&quot;<br>...<br>Company: &quot;We&#39;d like to use Babel&quot;<br>Babel: &quot;Ok! npm i babel --save&quot;<br>Company: &quot;Cool&quot;<br>Babel: &quot;Would you like to help contribute financially?&quot;<br>Company: &quot;lol no&quot;</p>&mdash; Adam Rackis (@AdamRackis) <a href="https://twitter.com/AdamRackis/status/931195056479965185?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
+
+We are definetely looking to be able to fund people on the team to work full-time. Logan in particular left his job a while ago and is using our current funds to work on Babel part time at the moment!
 
 #### #3 Contribute in other ways 😊
 
@@ -47,7 +49,9 @@ For example, [Angus](https://twitter.com/angustweets) made us an [official song]
 
 ### Upgrading
 
-We will also be working on a upgrade tool that will help [rewrite your package.json/.babelrc files](https://github.com/babel/notes/issues/44) and more. Please reach out to help and to post issues when trying to update.
+We will also be working on a upgrade tool that will help [rewrite your package.json/.babelrc files](https://github.com/babel/notes/issues/44) and more. Ideally this means it would modify any necessary version number changes, package renames, and config changes.
+
+Please reach out to help and to post issues when trying to update! This is a great opportunity to get involved and to help the ecosystem update!
 
 ### Summary of the [previous post](https://babeljs.io/blog/2017/09/12/planning-for-7.0)
 
@@ -250,7 +254,11 @@ With type inference we can know if an instance method like `.includes` is for an
 - Either implement or have plan in place for versioning and handling polyfills independently from helpers, so we aren't explicitly tied to core-js 2 or 3, since people may have things that depend on one or the other and won't want to load both a lot of the time.
 - Either a [working decorator implementation](https://github.com/babel/babel/pull/6107), or functional legacy implementation, with clear path to land current spec behavior during 7.x's lifetime.
 
-I'm really looking forward to a release (almost been a year 😝), but also don't want to rush anything just because! Been a lot of ups and downs throughout this release but I've certainly learned a lot and I'm sure the rest of the team has as well.
+### Thanks
+
+Shoutout to our team of volunteers: [Logan](https://twitter.com/loganfsmyth) who has been really pushing hard to fix a lot of our core issues regarding configs and more and the one doing all of that hard work, [Brian](https://twitter.com/existentialism) who has been taking over maintainence of a lot of preset-env work and just whatever I was doing before 😛, and [Daniel](https://twitter.com/TschinderDaniel) who has always been stepping in when we need the help whether it be maintaining babel-loader or helping move the babylon/babel-preset-env repo's over. And same with [Nicolo](https://twitter.com/NicoloRibaudo), [Sven](https://twitter.com/svensauleau), [Artem](https://twitter.com/yavorsky_), and [Diogo](https://twitter.com/kovnsk) for stepping up in the last year to help out.
+
+I'm really looking forward to a release (I'm tired too; it's almost been a year 😝), but also don't want to rush anything just because! Been a lot of ups and downs throughout this release but I've certainly learned a lot and I'm sure the rest of the team has as well.
 
 And if I've learned anything at all this year, I should really heed this advice rather than just write about it.
 
