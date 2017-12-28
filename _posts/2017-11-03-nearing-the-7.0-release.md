@@ -23,7 +23,6 @@ share_text: "Nearing the 7.0 Release"
 - Babel turned 3 years old on [September 28, 2017](https://babeljs.io/blog/2017/10/05/babel-turns-three)!
 - Daniel [moved](https://twitter.com/left_pad/status/926096965565370369) `babel/babylon` and `babel/babel-preset-env` into the main Babel monorepo, [babel/babel](https://github.com/babel/babel), and this includes all git history, labels, issues.
 - We received a [$1k/month donation](https://twitter.com/left_pad/status/923696620935421953) from Facebook Open Source!
-  - If your company would like to **give back** by supporting a fundamental part of JavaScript development and it's future, consider donating to our [Open Collective](https://opencollective.com/babel). You can also donate developer time to help maintain the project.
   - This the highest monthly donation we have gotten since the start (next highest is $100/month).
   - We are definetely looking to be able to fund people on the team to work full-time
   - Logan in particular left his job a while ago and is using the funds to work on Babel part time at the moment.
@@ -31,6 +30,8 @@ share_text: "Nearing the 7.0 Release"
   - If a company wants to specifically sponsor something, we can create separate issues to track. This was previously difficult because we had to pay out of pocket, or we had to find a conference on the same week to speak at to help cover expenses.
 
 ### How you can help!
+
+If your company would like to **give back** by supporting a fundamental part of JavaScript development and it's future, consider donating to our [Open Collective](https://opencollective.com/babel). You can also donate developer time to help maintain the project.
 
 #### #1 Help Maintain the Project (developer time at work)
 
@@ -40,9 +41,9 @@ share_text: "Nearing the 7.0 Release"
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Company: &quot;We&#39;d like to use SQL Server Enterprise&quot;<br>MS: &quot;That&#39;ll be a quarter million dollars + $20K/month&quot;<br>Company: &quot;Ok!&quot;<br>...<br>Company: &quot;We&#39;d like to use Babel&quot;<br>Babel: &quot;Ok! npm i babel --save&quot;<br>Company: &quot;Cool&quot;<br>Babel: &quot;Would you like to help contribute financially?&quot;<br>Company: &quot;lol no&quot;</p>&mdash; Adam Rackis (@AdamRackis) <a href="https://twitter.com/AdamRackis/status/931195056479965185?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
 
-#### #3 Contribute in other ways
+#### #3 Contribute in other ways 😊
 
-An example: [Angus](https://twitter.com/angustweets) made us an [official song](https://medium.com/@angustweets/hallelujah-in-praise-of-babel-977020010fad)!
+For example, [Angus](https://twitter.com/angustweets) made us an [official song](https://medium.com/@angustweets/hallelujah-in-praise-of-babel-977020010fad)!
 
 ### Upgrading
 
@@ -157,7 +158,7 @@ This means we intend to make major version bumps to any experimental proposal pl
 
 This goes with our decision to change TC39 proposal plugins to use the `-proposal-` name. If the spec changes, we will do a major version bump to the plugin and the preset it belongs to (as opposed to just making a patch version which may break for people). Then, we will need to deprecate the old versions and setup an infrastructure to automatically update people so that everyone is up to date on what the spec will become (and so they don't get stuck on something, like we have with decorators).
 
-### The `env` option in `.babelrc` is not deprecated
+### The `env` option in `.babelrc` is not being deprecated!
 
 Unlike in the [last post](https://babeljs.io/blog/2017/09/12/planning-for-7.0#deprecate-the-env-option-in-babelrc), we just fixed the merging behavior to be [more consistent](https://twitter.com/left_pad/status/936687774098444288).
 
@@ -187,11 +188,48 @@ Babel will automatically wrap any native built-ins like `Array`, `Error`, `HTMLE
 ### Speed
 
 - Many [fixes](https://twitter.com/rauchg/status/924349334346276864
-) from [bmeurer](https://twitter.com/bmeurer)
-- Benchmark PRs: https://github.com/v8/web-tooling-benchmark/issues/27
+) from [bmeurer](https://twitter.com/bmeurer) on the v8 team!
 - 60% faster via the [web-tooling-benchmark](https://github.com/v8/web-tooling-benchmark) https://twitter.com/left_pad/status/927554660508028929
 
 ### preset-env: `"useBuiltins": "usage"`
+
+`babel-preset-env` introduced the idea of compiling syntax to different targets and via the `useBuiltIns` option, the ability to also only add polyfills that the targets don't support.
+
+So with this option, something like:
+
+```js
+import "babel-polyfill";
+```
+
+Can turn into
+
+```js
+import "core-js/modules/es7.string.pad-start";
+import "core-js/modules/es7.string.pad-end";
+// ...
+```
+
+if the target environment happens to support polyfills other than `padStart` or `padEnd`.
+
+However in order to make that even better, we should only import polyfills that are "used" in the codebase itself. Why even import `padStart` if it's not even used in the code?
+
+`"useBuiltins": "usage"` is our first attempt to begin that idea. It does an import at the top of each file but only adds the import if it finds it used in the code. This approach means that we can import the minimum amount of polyfills necessary for the app (and only if the target environment doesn't support it).
+
+
+So if you use `Promise` in your code, it will import it at the top of the file (if your target doesn't support it). Bundlers will dedupe the file if it's the same so this approach won't cause multiple polyfills to be imported.
+
+```js
+import "core-js/modules/es6.promise";
+var a = new Promise();
+```
+
+```js
+import "core-js/modules/es7.array.includes";
+[].includes
+a.includes
+```
+
+With type inference we can know if an instance method like `.includes` is for an array or not, and having a false positive is ok until that logic is better since it's still better than importing the whole polyfill like before.
 
 ### Misc Updates
 
@@ -212,8 +250,10 @@ Babel will automatically wrap any native built-ins like `Array`, `Error`, `HTMLE
 - Either implement or have plan in place for versioning and handling polyfills independently from helpers, so we aren't explicitly tied to core-js 2 or 3, since people may have things that depend on one or the other and won't want to load both a lot of the time.
 - Either a [working decorator implementation](https://github.com/babel/babel/pull/6107), or functional legacy implementation, with clear path to land current spec behavior during 7.x's lifetime.
 
-Looking forward to a release:
+I'm looking forward to a release (almost been a year), but also don't want to rush anything just because! Been a lot of ups and downs throughout this release but I've certainly learned a lot and I'm sure the rest of the team has as well.
 
-https://github.com/babel/notes
+And if I've learned anything at all this year, I should really heed this advice rather than just write about it.
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">&quot;Before you go maintaining anything else, maintain your own body first&quot; - Mom 😸</p>&mdash; Henry Zhu (@left_pad) <a href="https://twitter.com/left_pad/status/944313617243099136?ref_src=twsrc%5Etfw">December 22, 2017</a></blockquote>
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
