@@ -14,6 +14,7 @@ const URL_KEYS = [
   "circleciRepo",
   "evaluate",
   "lineWrap",
+  "statusBar",
   "presets",
   "prettier",
   "targets",
@@ -91,7 +92,6 @@ const updateQuery = (state: ReplState) => {
   })
     .filter(value => value)
     .join("&");
-
   window.location.hash = "?" + query;
 };
 

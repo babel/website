@@ -18,13 +18,12 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /node_modules\/(?!(prettysize)\/).*/,
         loader: 'babel-loader',
       },
     ],
   },
-  plugins: [
-  ],
+  plugins: [],
   externals: {
     codemirror: 'CodeMirror',
     'lz-string': 'LZString',
@@ -43,8 +42,8 @@ if (process.env.NODE_ENV !== 'production') {
     hot: true,
     port: DEV_SERVER_PORT,
     headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
+      'Access-Control-Allow-Origin': '*',
+    },
   };
 }
 

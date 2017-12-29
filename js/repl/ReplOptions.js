@@ -46,6 +46,7 @@ type Props = {
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   lineWrap: boolean,
+  statusBar: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
@@ -89,6 +90,7 @@ class ExpandedContainer extends Component {
       isPresetsTabExpanded,
       isSettingsTabExpanded,
       lineWrap,
+      statusBar,
       onIsExpandedChange,
       onSettingChange,
       pluginState,
@@ -132,6 +134,15 @@ class ExpandedContainer extends Component {
                 state={pluginState[config.package]}
               />
             ))}
+            <label className={styles.settingsLabel}>
+              <input
+                checked={statusBar}
+                onChange={this._onStatusBarChange}
+                className={styles.inputCheckboxLeft}
+                type="checkbox"
+              />
+              Status Bar
+            </label>
           </AccordionTab>
           <AccordionTab
             className={styles.section}
@@ -321,7 +332,9 @@ class ExpandedContainer extends Component {
   _onLineWrappingChange = (event: SyntheticInputEvent) => {
     this.props.onSettingChange("lineWrap", event.target.checked);
   };
-
+  _onStatusBarChange = (event: SyntheticInputEvent) => {
+    this.props.onSettingChange("statusBar", event.target.checked);
+  };
   _onNodeChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange("node", parseFloat(event.target.value));
   };

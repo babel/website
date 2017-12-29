@@ -3,6 +3,7 @@
 import { css } from "emotion";
 import CodeMirror from "./CodeMirror";
 import React from "react";
+import StatusBar from "./StatusBar";
 import { colors } from "./styles";
 
 type Props = {
@@ -13,10 +14,18 @@ type Props = {
   onChange?: (value: string) => void,
   options: Object,
   placeholder?: string,
+  status: Object,
 };
 
 export default function CodeMirrorPanel(props: Props) {
-  const { className = "", errorMessage, info, onChange } = props;
+  const {
+    className = "",
+    errorMessage,
+    info,
+    onChange,
+    status,
+    options,
+  } = props;
 
   return (
     <div className={`${styles.panel} ${className}`}>
@@ -34,6 +43,7 @@ export default function CodeMirrorPanel(props: Props) {
       </div>
       {info && <pre className={styles.info}>{info}</pre>}
       {errorMessage && <pre className={styles.error}>{errorMessage}</pre>}
+      {options.statusBar && <StatusBar status={status} />}
     </div>
   );
 }

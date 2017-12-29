@@ -5,6 +5,7 @@ import "regenerator-runtime/runtime";
 import { css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
+import prettySize from "prettysize";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
@@ -55,10 +56,12 @@ type State = {
   isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
+  statusBar: boolean,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
   sourceMap: ?string,
+  status: Object,
 };
 
 const DEBOUNCE_DELAY = 500;
@@ -119,6 +122,11 @@ class Repl extends React.Component {
         persistedState.evaluate
       ),
       sourceMap: null,
+      statusBar: persistedState.statusBar,
+      status: {
+        compiled: {},
+        raw: {},
+      },
     };
 
     this._setupBabel(defaultPresets);
@@ -150,6 +158,7 @@ class Repl extends React.Component {
 
     const options = {
       lineWrapping: state.lineWrap,
+      statusBar: state.statusBar,
     };
 
     return (
@@ -166,6 +175,7 @@ class Repl extends React.Component {
           isPresetsTabExpanded={state.isPresetsTabExpanded}
           isSettingsTabExpanded={state.isSettingsTabExpanded}
           lineWrap={state.lineWrap}
+          statusBar={state.statusBar}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
@@ -183,6 +193,7 @@ class Repl extends React.Component {
             errorMessage={state.compileErrorMessage}
             onChange={this._updateCode}
             options={options}
+            status={state.status.raw}
             placeholder="Write code here"
           />
           <CodeMirrorPanel
@@ -191,6 +202,7 @@ class Repl extends React.Component {
             errorMessage={state.evalErrorMessage}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
+            status={state.status.compiled}
             placeholder="Compiled output will be shown here"
           />
         </div>
@@ -317,7 +329,14 @@ class Repl extends React.Component {
         sourceMap: runtimePolyfillState.isEnabled,
         useBuiltIns: state.builtIns,
       })
-      .then(result => this.setState(result, setStateCallback));
+      .then(result => {
+        const { raw, compiled } = result.meta;
+        this._updateStatus({
+          raw: { ...raw, size: prettySize(raw.size) },
+          compiled: { ...compiled, size: prettySize(compiled.size) },
+        });
+        this.setState(result, setStateCallback);
+      });
   };
 
   // Debounce compilation since it's expensive.
@@ -416,6 +435,7 @@ class Repl extends React.Component {
       isPresetsTabExpanded: state.isPresetsTabExpanded,
       isSettingsTabExpanded: state.isSettingsTabExpanded,
       lineWrap: state.lineWrap,
+      statusBar: state.statusBar,
       presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,
       showSidebar: state.isSidebarExpanded,
@@ -447,6 +467,12 @@ class Repl extends React.Component {
     // This prevents frequent updates while a user is typing.
     this._compileToState(code);
   };
+
+  _updateStatus(status: Object) {
+    this.setState({
+      status: Object.assign({}, this.state.status, status),
+    });
+  }
 }
 
 export default function ReplWithErrorBoundary() {

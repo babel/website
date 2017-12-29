@@ -34,6 +34,10 @@ export default function compile(code: string, config: CompileConfig): Return {
   let compileErrorMessage = null;
   let envPresetDebugInfo = null;
   let sourceMap = null;
+  const meta = {
+    raw: {},
+    compiled: {},
+  };
 
   if (envConfig && envConfig.isEnvPresetEnabled) {
     const targets = {};
@@ -75,9 +79,9 @@ export default function compile(code: string, config: CompileConfig): Return {
       presets: config.presets,
       sourceMap: config.sourceMap,
     });
-
     compiled = transformed.code;
-
+    meta.compiled.size = new Blob([compiled], { type: "text/plain" }).size;
+    meta.raw.size = new Blob([code], { type: "text/plain" }).size;
     if (config.sourceMap) {
       try {
         sourceMap = JSON.stringify(transformed.map);
@@ -111,5 +115,6 @@ export default function compile(code: string, config: CompileConfig): Return {
     compileErrorMessage,
     envPresetDebugInfo,
     sourceMap,
+    meta,
   };
 }
