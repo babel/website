@@ -3,7 +3,6 @@
 import { css } from "emotion";
 import CodeMirror from "./CodeMirror";
 import React from "react";
-import StatusBar from "./StatusBar";
 import { colors } from "./styles";
 
 type Props = {
@@ -14,7 +13,7 @@ type Props = {
   onChange?: (value: string) => void,
   options: Object,
   placeholder?: string,
-  status: Object,
+  fileSize: string,
 };
 
 export default function CodeMirrorPanel(props: Props) {
@@ -23,8 +22,8 @@ export default function CodeMirrorPanel(props: Props) {
     errorMessage,
     info,
     onChange,
-    status,
     options,
+    fileSize,
   } = props;
 
   return (
@@ -40,10 +39,12 @@ export default function CodeMirrorPanel(props: Props) {
           preserveScrollPosition={onChange == null}
           value={props.code}
         />
+        {options.fileSize && (
+          <div className={styles.fileSize}> Size: {fileSize} </div>
+        )}
       </div>
       {info && <pre className={styles.info}>{info}</pre>}
       {errorMessage && <pre className={styles.error}>{errorMessage}</pre>}
-      {options.statusBar && <StatusBar status={status} />}
     </div>
   );
 }
@@ -64,6 +65,7 @@ const styles = {
     height: "100%",
     width: "100%",
     overflow: "auto",
+    position: "relative",
   }),
   error: css({
     order: 2,
@@ -85,5 +87,15 @@ const styles = {
     flexDirection: "column",
     justifyContent: "stretch",
     overflow: "auto",
+  }),
+  fileSize: css({
+    position: "absolute",
+    top: "1rem",
+    right: "2rem",
+    borderRadius: "0.5rem",
+    padding: "0.5rem 0.5rem 0.5rem 0.25rem",
+    backgroundColor: "rgba(100,100,100,0.2)",
+    color: "rgba(0,0,0,0.35)",
+    border: "0",
   }),
 };

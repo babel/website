@@ -5,7 +5,7 @@ import "regenerator-runtime/runtime";
 import { css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
-import prettySize from "prettysize";
+import { prettySize } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
@@ -56,7 +56,7 @@ type State = {
   isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
-  statusBar: boolean,
+  fileSize: boolean,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
@@ -122,10 +122,10 @@ class Repl extends React.Component {
         persistedState.evaluate
       ),
       sourceMap: null,
-      statusBar: persistedState.statusBar,
+      fileSize: persistedState.fileSize,
       status: {
-        compiled: {},
-        raw: {},
+        compiledSize: 0,
+        rawSize: 0,
       },
     };
 
@@ -158,7 +158,7 @@ class Repl extends React.Component {
 
     const options = {
       lineWrapping: state.lineWrap,
-      statusBar: state.statusBar,
+      fileSize: state.fileSize,
     };
 
     return (
@@ -175,7 +175,7 @@ class Repl extends React.Component {
           isPresetsTabExpanded={state.isPresetsTabExpanded}
           isSettingsTabExpanded={state.isSettingsTabExpanded}
           lineWrap={state.lineWrap}
-          statusBar={state.statusBar}
+          fileSize={state.fileSize}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
@@ -193,7 +193,7 @@ class Repl extends React.Component {
             errorMessage={state.compileErrorMessage}
             onChange={this._updateCode}
             options={options}
-            status={state.status.raw}
+            fileSize={state.status.rawSize}
             placeholder="Write code here"
           />
           <CodeMirrorPanel
@@ -202,7 +202,7 @@ class Repl extends React.Component {
             errorMessage={state.evalErrorMessage}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
-            status={state.status.compiled}
+            fileSize={state.status.compiledSize}
             placeholder="Compiled output will be shown here"
           />
         </div>
@@ -332,8 +332,8 @@ class Repl extends React.Component {
       .then(result => {
         const { raw, compiled } = result.meta;
         this._updateStatus({
-          raw: { ...raw, size: prettySize(raw.size) },
-          compiled: { ...compiled, size: prettySize(compiled.size) },
+          rawSize: prettySize(raw.size),
+          compiledSize: prettySize(compiled.size),
         });
         this.setState(result, setStateCallback);
       });
@@ -435,7 +435,7 @@ class Repl extends React.Component {
       isPresetsTabExpanded: state.isPresetsTabExpanded,
       isSettingsTabExpanded: state.isSettingsTabExpanded,
       lineWrap: state.lineWrap,
-      statusBar: state.statusBar,
+      fileSize: state.fileSize,
       presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,
       showSidebar: state.isSidebarExpanded,

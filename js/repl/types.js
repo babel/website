@@ -67,7 +67,7 @@ export type ReplState = {
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   lineWrap: boolean,
-  statusBar: boolean,
+  fileSize: boolean,
   presets: ?string,
   prettier: boolean,
   showSidebar: boolean,

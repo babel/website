@@ -114,7 +114,7 @@ export default function compile(code: string, config: CompileConfig): Return {
     compiled,
     compileErrorMessage,
     envPresetDebugInfo,
-    sourceMap,
     meta,
+    sourceMap,
   };
 }

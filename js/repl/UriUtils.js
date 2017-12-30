@@ -14,7 +14,7 @@ const URL_KEYS = [
   "circleciRepo",
   "evaluate",
   "lineWrap",
-  "statusBar",
+  "fileSize",
   "presets",
   "prettier",
   "targets",

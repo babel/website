@@ -57,10 +57,10 @@ const replDefaults: ReplState = {
   isPresetsTabExpanded: false,
   isSettingsTabExpanded: true,
   lineWrap: true,
-  statusBar: false,
+  fileSize: false,
   status: {
-    compiled: {},
-    raw: {},
+    compiledSize: 0,
+    rawSize: 0,
   },
   prettier: false,
   presets: "es2015,react,stage-2",

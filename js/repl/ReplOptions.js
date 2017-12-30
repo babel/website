@@ -46,7 +46,7 @@ type Props = {
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   lineWrap: boolean,
-  statusBar: boolean,
+  fileSize: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
@@ -90,7 +90,7 @@ class ExpandedContainer extends Component {
       isPresetsTabExpanded,
       isSettingsTabExpanded,
       lineWrap,
-      statusBar,
+      fileSize,
       onIsExpandedChange,
       onSettingChange,
       pluginState,
@@ -136,12 +136,12 @@ class ExpandedContainer extends Component {
             ))}
             <label className={styles.settingsLabel}>
               <input
-                checked={statusBar}
-                onChange={this._onStatusBarChange}
+                checked={fileSize}
+                onChange={this._onFileSizeChange}
                 className={styles.inputCheckboxLeft}
                 type="checkbox"
               />
-              Status Bar
+              File Size
             </label>
           </AccordionTab>
           <AccordionTab
@@ -332,8 +332,8 @@ class ExpandedContainer extends Component {
   _onLineWrappingChange = (event: SyntheticInputEvent) => {
     this.props.onSettingChange("lineWrap", event.target.checked);
   };
-  _onStatusBarChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange("statusBar", event.target.checked);
+  _onFileSizeChange = (event: SyntheticInputEvent) => {
+    this.props.onSettingChange("fileSize", event.target.checked);
   };
   _onNodeChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange("node", parseFloat(event.target.value));

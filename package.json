@@ -63,7 +63,6 @@
         "emotion": "^8.0.2-12",
         "lodash.debounce": "^4.0.8",
         "lz-string": "^1.4.4",
-        "prettysize": "^1.1.0",
         "react": "^16.0.0",
         "react-dom": "^16.0.0",
         "semver": "^5.4.1",
@@ -71,6 +70,9 @@
         "worker-loader": "^1.0.0"
     },
     "lint-staged": {
-        "js/**/*.js": ["eslint --format=codeframe --fix", "git add"]
+        "js/**/*.js": [
+            "eslint --format=codeframe --fix",
+            "git add"
+        ]
     }
 }
