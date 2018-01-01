@@ -191,18 +191,18 @@ class Repl extends React.Component {
             className={styles.codeMirrorPanel}
             code={state.code}
             errorMessage={state.compileErrorMessage}
+            fileSize={state.status.rawSize}
             onChange={this._updateCode}
             options={options}
-            fileSize={state.status.rawSize}
             placeholder="Write code here"
           />
           <CodeMirrorPanel
             className={styles.codeMirrorPanel}
             code={state.compiled}
             errorMessage={state.evalErrorMessage}
+            fileSize={state.status.compiledSize}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
-            fileSize={state.status.compiledSize}
             placeholder="Compiled output will be shown here"
           />
         </div>
