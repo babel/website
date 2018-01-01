@@ -41,12 +41,12 @@ type Props = {
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetState: PluginState,
+  fileSize: boolean,
   isEnvPresetTabExpanded: boolean,
   isExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   lineWrap: boolean,
-  fileSize: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
@@ -86,11 +86,11 @@ class ExpandedContainer extends Component {
       debugEnvPreset,
       envConfig,
       envPresetState,
+      fileSize,
       isEnvPresetTabExpanded,
       isPresetsTabExpanded,
       isSettingsTabExpanded,
       lineWrap,
-      fileSize,
       onIsExpandedChange,
       onSettingChange,
       pluginState,
@@ -318,6 +318,10 @@ class ExpandedContainer extends Component {
     );
   };
 
+  _onFileSizeChange = (event: SyntheticInputEvent) => {
+    this.props.onSettingChange("fileSize", event.target.checked);
+  };
+
   _onIsElectronEnabledChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange(
       "isElectronEnabled",
@@ -332,9 +336,7 @@ class ExpandedContainer extends Component {
   _onLineWrappingChange = (event: SyntheticInputEvent) => {
     this.props.onSettingChange("lineWrap", event.target.checked);
   };
-  _onFileSizeChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange("fileSize", event.target.checked);
-  };
+
   _onNodeChange = (event: SyntheticInputEvent) => {
     this.props.onEnvPresetSettingChange("node", parseFloat(event.target.value));
   };
