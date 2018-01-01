@@ -53,11 +53,11 @@ const replDefaults: ReplState = {
   code: "",
   debug: false,
   evaluate: false,
+  fileSize: false,
   isEnvPresetTabExpanded: false,
   isPresetsTabExpanded: false,
   isSettingsTabExpanded: true,
   lineWrap: true,
-  fileSize: false,
   status: {
     compiledSize: 0,
     rawSize: 0,
