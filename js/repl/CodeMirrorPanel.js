@@ -94,7 +94,7 @@ const styles = {
     right: "2rem",
     zIndex: 2,
     borderRadius: "0.5rem",
-    padding: "0.5rem 0.5rem 0.5rem 0.25rem",
+    padding: "0.5rem",
     backgroundColor: "rgba(225, 225, 225, 0.75)",
     color: "rgba(0, 0, 0, 0.5)",
     border: "0",
