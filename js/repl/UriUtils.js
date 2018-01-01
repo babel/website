@@ -92,6 +92,7 @@ const updateQuery = (state: ReplState) => {
   })
     .filter(value => value)
     .join("&");
+
   window.location.hash = "?" + query;
 };
 
