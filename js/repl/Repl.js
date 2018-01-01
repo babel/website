@@ -51,12 +51,12 @@ type State = {
   envPresetDebugInfo: ?string,
   envPresetState: PluginState,
   evalErrorMessage: ?string,
+  fileSize: boolean,
   isEnvPresetTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
-  fileSize: boolean,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
@@ -109,6 +109,7 @@ class Repl extends React.Component {
         envConfig.isEnvPresetEnabled
       ),
       evalErrorMessage: null,
+      fileSize: persistedState.fileSize,
       isEnvPresetTabExpanded: persistedState.isEnvPresetTabExpanded,
       isPresetsTabExpanded: persistedState.isPresetsTabExpanded,
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
@@ -122,7 +123,6 @@ class Repl extends React.Component {
         persistedState.evaluate
       ),
       sourceMap: null,
-      fileSize: persistedState.fileSize,
       status: {
         compiledSize: 0,
         rawSize: 0,
@@ -157,8 +157,8 @@ class Repl extends React.Component {
     }
 
     const options = {
-      lineWrapping: state.lineWrap,
       fileSize: state.fileSize,
+      lineWrapping: state.lineWrap,
     };
 
     return (
@@ -170,12 +170,12 @@ class Repl extends React.Component {
           debugEnvPreset={state.debugEnvPreset}
           envConfig={state.envConfig}
           envPresetState={state.envPresetState}
+          fileSize={state.fileSize}
           isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
           isExpanded={state.isSidebarExpanded}
           isPresetsTabExpanded={state.isPresetsTabExpanded}
           isSettingsTabExpanded={state.isSettingsTabExpanded}
           lineWrap={state.lineWrap}
-          fileSize={state.fileSize}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
