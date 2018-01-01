@@ -90,12 +90,13 @@ const styles = {
   }),
   fileSize: css({
     position: "absolute",
-    top: "1rem",
+    bottom: "1rem",
     right: "2rem",
+    zIndex: 2,
     borderRadius: "0.5rem",
     padding: "0.5rem 0.5rem 0.5rem 0.25rem",
-    backgroundColor: "rgba(100,100,100,0.2)",
-    color: "rgba(0,0,0,0.35)",
+    backgroundColor: "rgba(225, 225, 225, 0.75)",
+    color: "rgba(0, 0, 0, 0.5)",
     border: "0",
   }),
 };
