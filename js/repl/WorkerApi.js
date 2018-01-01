@@ -53,6 +53,7 @@ export default class WorkerApi {
               evalErrorMessage = error.message;
             }
           }
+
           return {
             compiled,
             compileErrorMessage,
