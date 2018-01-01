@@ -17,8 +17,8 @@ type CompileResult = {
   compileErrorMessage: ?string,
   envPresetDebugInfo: ?string,
   evalErrorMessage: ?string,
-  sourceMap: ?string,
   meta: Object,
+  sourceMap: ?string,
 };
 
 /**
@@ -39,8 +39,8 @@ export default class WorkerApi {
           compiled,
           compileErrorMessage,
           envPresetDebugInfo,
-          sourceMap,
           meta,
+          sourceMap,
         }) => {
           let evalErrorMessage = null;
 
@@ -58,8 +58,8 @@ export default class WorkerApi {
             compileErrorMessage,
             envPresetDebugInfo,
             evalErrorMessage,
-            sourceMap,
             meta,
+            sourceMap,
           };
         }
       );
