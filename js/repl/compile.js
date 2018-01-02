@@ -5,7 +5,6 @@ declare var Babel: any;
 declare var prettier: any;
 
 import { getDebugInfoFromEnvResult } from "./replUtils";
-
 import type { BabelPresetEnvResult, CompileConfig } from "./types";
 
 type Return = {
@@ -35,8 +34,8 @@ export default function compile(code: string, config: CompileConfig): Return {
   let envPresetDebugInfo = null;
   let sourceMap = null;
   const meta = {
-    raw: {},
-    compiled: {},
+    compiledSize: 0,
+    rawSize: new Blob([code], { type: "text/plain" }).size,
   };
 
   if (envConfig && envConfig.isEnvPresetEnabled) {
@@ -71,7 +70,6 @@ export default function compile(code: string, config: CompileConfig): Return {
 
     config.presets.push(["env", options]);
   }
-
   try {
     const transformed = Babel.transform(code, {
       babelrc: false,
@@ -80,8 +78,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       sourceMap: config.sourceMap,
     });
     compiled = transformed.code;
-    meta.compiled.size = new Blob([compiled], { type: "text/plain" }).size;
-    meta.raw.size = new Blob([code], { type: "text/plain" }).size;
+    meta.compiledSize = new Blob([compiled], { type: "text/plain" }).size;
     if (config.sourceMap) {
       try {
         sourceMap = JSON.stringify(transformed.map);
@@ -101,6 +98,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       //   compiled = prettier.__debug.formatAST(transformed.ast, DEFAULT_PRETTIER_CONFIG);
       // } else {
       compiled = prettier.format(compiled, DEFAULT_PRETTIER_CONFIG);
+      meta.compiledSize = new Blob([compiled], { type: "text/plain" }).size;
       // }
     }
   } catch (error) {

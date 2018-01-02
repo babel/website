@@ -23,7 +23,8 @@ const config = {
       },
     ],
   },
-  plugins: [],
+  plugins: [
+  ],
   externals: {
     codemirror: 'CodeMirror',
     'lz-string': 'LZString',
@@ -42,8 +43,8 @@ if (process.env.NODE_ENV !== 'production') {
     hot: true,
     port: DEV_SERVER_PORT,
     headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
+      'Access-Control-Allow-Origin': '*'
+    }
   };
 }
 

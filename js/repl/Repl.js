@@ -61,7 +61,7 @@ type State = {
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
   sourceMap: ?string,
-  status: Object,
+  meta: Object,
 };
 
 const DEBOUNCE_DELAY = 500;
@@ -123,7 +123,7 @@ class Repl extends React.Component {
         persistedState.evaluate
       ),
       sourceMap: null,
-      status: {
+      meta: {
         compiledSize: 0,
         rawSize: 0,
       },
@@ -191,7 +191,7 @@ class Repl extends React.Component {
             className={styles.codeMirrorPanel}
             code={state.code}
             errorMessage={state.compileErrorMessage}
-            fileSize={state.status.rawSize}
+            fileSize={state.meta.rawSize}
             onChange={this._updateCode}
             options={options}
             placeholder="Write code here"
@@ -200,7 +200,7 @@ class Repl extends React.Component {
             className={styles.codeMirrorPanel}
             code={state.compiled}
             errorMessage={state.evalErrorMessage}
-            fileSize={state.status.compiledSize}
+            fileSize={state.meta.compiledSize}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
             placeholder="Compiled output will be shown here"
@@ -330,11 +330,8 @@ class Repl extends React.Component {
         useBuiltIns: state.builtIns,
       })
       .then(result => {
-        const { raw, compiled } = result.meta;
-        this._updateStatus({
-          rawSize: prettySize(raw.size),
-          compiledSize: prettySize(compiled.size),
-        });
+        result.meta.compiledSize = prettySize(result.meta.compiledSize);
+        result.meta.rawSize = prettySize(result.meta.rawSize);
         this.setState(result, setStateCallback);
       });
   };
@@ -467,12 +464,6 @@ class Repl extends React.Component {
     // This prevents frequent updates while a user is typing.
     this._compileToState(code);
   };
-
-  _updateStatus(status: Object) {
-    this.setState({
-      status: Object.assign({}, this.state.status, status),
-    });
-  }
 }
 
 export default function ReplWithErrorBoundary() {

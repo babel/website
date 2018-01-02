@@ -61,7 +61,7 @@ const replDefaults: ReplState = {
   presets: "es2015,react,stage-2",
   prettier: false,
   showSidebar: true,
-  status: {
+  meta: {
     compiledSize: 0,
     rawSize: 0,
   },
