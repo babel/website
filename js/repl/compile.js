@@ -78,7 +78,6 @@ export default function compile(code: string, config: CompileConfig): Return {
       sourceMap: config.sourceMap,
     });
     compiled = transformed.code;
-    meta.compiledSize = new Blob([compiled], { type: "text/plain" }).size;
     if (config.sourceMap) {
       try {
         sourceMap = JSON.stringify(transformed.map);
@@ -98,9 +97,9 @@ export default function compile(code: string, config: CompileConfig): Return {
       //   compiled = prettier.__debug.formatAST(transformed.ast, DEFAULT_PRETTIER_CONFIG);
       // } else {
       compiled = prettier.format(compiled, DEFAULT_PRETTIER_CONFIG);
-      meta.compiledSize = new Blob([compiled], { type: "text/plain" }).size;
       // }
     }
+    meta.compiledSize = new Blob([compiled], { type: "text/plain" }).size;
   } catch (error) {
     compiled = null;
     compileErrorMessage = error.message;
