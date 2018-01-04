@@ -41,6 +41,7 @@ type Props = {
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetState: PluginState,
+  fileSize: boolean,
   isEnvPresetTabExpanded: boolean,
   isExpanded: boolean,
   isPresetsTabExpanded: boolean,
@@ -85,6 +86,7 @@ class ExpandedContainer extends Component {
       debugEnvPreset,
       envConfig,
       envPresetState,
+      fileSize,
       isEnvPresetTabExpanded,
       isPresetsTabExpanded,
       isSettingsTabExpanded,
@@ -132,6 +134,15 @@ class ExpandedContainer extends Component {
                 state={pluginState[config.package]}
               />
             ))}
+            <label className={styles.settingsLabel}>
+              <input
+                checked={fileSize}
+                onChange={this._onFileSizeChange}
+                className={styles.inputCheckboxLeft}
+                type="checkbox"
+              />
+              File Size
+            </label>
           </AccordionTab>
           <AccordionTab
             className={styles.section}
@@ -305,6 +316,10 @@ class ExpandedContainer extends Component {
       "electron",
       parseFloat(event.target.value)
     );
+  };
+
+  _onFileSizeChange = (event: SyntheticInputEvent) => {
+    this.props.onSettingChange("fileSize", event.target.checked);
   };
 
   _onIsElectronEnabledChange = (event: SyntheticInputEvent) => {

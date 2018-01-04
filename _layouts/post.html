@@ -37,23 +37,6 @@ custom_js:
       {% endif %}
 
       {{content}}
-
-      <!-- Discourse Embed -->
-      <h2 id="community-discussion">Community Discussion</h2>
-
-      <div id="discourse-comments"></div>
-
-      <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://discuss.babeljs.io/',
-                           discourseEmbedUrl: 'https://babeljs.io{{page.url}}'};
-
-        (function() {
-          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
-          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
-        })();
-      </script>
-
     </div>
   </div>
 </div>

@@ -5,6 +5,7 @@ import "regenerator-runtime/runtime";
 import { css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
+import { prettySize } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
@@ -50,11 +51,13 @@ type State = {
   envPresetDebugInfo: ?string,
   envPresetState: PluginState,
   evalErrorMessage: ?string,
+  fileSize: boolean,
   isEnvPresetTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
+  meta: Object,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
@@ -108,11 +111,16 @@ class Repl extends React.Component {
         envConfig.isEnvPresetEnabled
       ),
       evalErrorMessage: null,
+      fileSize: persistedState.fileSize,
       isEnvPresetTabExpanded: defaultPresets["env"],
       isPresetsTabExpanded,
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
+      meta: {
+        compiledSize: 0,
+        rawSize: 0,
+      },
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
       // Filled in after Babel is loaded
       presets: {},
@@ -151,6 +159,7 @@ class Repl extends React.Component {
     }
 
     const options = {
+      fileSize: state.fileSize,
       lineWrapping: state.lineWrap,
     };
 
@@ -163,6 +172,7 @@ class Repl extends React.Component {
           debugEnvPreset={state.debugEnvPreset}
           envConfig={state.envConfig}
           envPresetState={state.envPresetState}
+          fileSize={state.fileSize}
           isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
           isExpanded={state.isSidebarExpanded}
           isPresetsTabExpanded={state.isPresetsTabExpanded}
@@ -183,6 +193,7 @@ class Repl extends React.Component {
             className={styles.codeMirrorPanel}
             code={state.code}
             errorMessage={state.compileErrorMessage}
+            fileSize={state.meta.rawSize}
             onChange={this._updateCode}
             options={options}
             placeholder="Write code here"
@@ -191,6 +202,7 @@ class Repl extends React.Component {
             className={styles.codeMirrorPanel}
             code={state.compiled}
             errorMessage={state.evalErrorMessage}
+            fileSize={state.meta.compiledSize}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
             placeholder="Compiled output will be shown here"
@@ -319,7 +331,11 @@ class Repl extends React.Component {
         sourceMap: runtimePolyfillState.isEnabled,
         useBuiltIns: state.builtIns,
       })
-      .then(result => this.setState(result, setStateCallback));
+      .then(result => {
+        result.meta.compiledSize = prettySize(result.meta.compiledSize);
+        result.meta.rawSize = prettySize(result.meta.rawSize);
+        this.setState(result, setStateCallback);
+      });
   };
 
   // Debounce compilation since it's expensive.
@@ -414,6 +430,7 @@ class Repl extends React.Component {
       code: state.code,
       debug: state.debugEnvPreset,
       evaluate: state.runtimePolyfillState.isEnabled,
+      fileSize: state.fileSize,
       isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
       isPresetsTabExpanded: state.isPresetsTabExpanded,
       isSettingsTabExpanded: state.isSettingsTabExpanded,

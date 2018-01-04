@@ -13,10 +13,18 @@ type Props = {
   onChange?: (value: string) => void,
   options: Object,
   placeholder?: string,
+  fileSize: string,
 };
 
 export default function CodeMirrorPanel(props: Props) {
-  const { className = "", errorMessage, info, onChange } = props;
+  const {
+    className = "",
+    errorMessage,
+    fileSize,
+    info,
+    onChange,
+    options,
+  } = props;
 
   return (
     <div className={`${styles.panel} ${className}`}>
@@ -31,6 +39,7 @@ export default function CodeMirrorPanel(props: Props) {
           preserveScrollPosition={onChange == null}
           value={props.code}
         />
+        {options.fileSize && <div className={styles.fileSize}>{fileSize}</div>}
       </div>
       {info && <pre className={styles.info}>{info}</pre>}
       {errorMessage && <pre className={styles.error}>{errorMessage}</pre>}
@@ -54,6 +63,7 @@ const styles = {
     height: "100%",
     width: "100%",
     overflow: "auto",
+    position: "relative",
   }),
   error: css({
     order: 2,
@@ -75,5 +85,16 @@ const styles = {
     flexDirection: "column",
     justifyContent: "stretch",
     overflow: "auto",
+  }),
+  fileSize: css({
+    position: "absolute",
+    bottom: "1rem",
+    right: "2rem",
+    zIndex: 2,
+    borderRadius: "0.5rem",
+    padding: "0.5rem",
+    backgroundColor: "rgba(225, 225, 225, 0.75)",
+    color: "rgba(0, 0, 0, 0.5)",
+    border: "0",
   }),
 };
