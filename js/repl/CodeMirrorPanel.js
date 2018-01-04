@@ -20,10 +20,10 @@ export default function CodeMirrorPanel(props: Props) {
   const {
     className = "",
     errorMessage,
+    fileSize,
     info,
     onChange,
     options,
-    fileSize,
   } = props;
 
   return (
@@ -40,7 +40,7 @@ export default function CodeMirrorPanel(props: Props) {
           value={props.code}
         />
         {options.fileSize && (
-          <div className={styles.fileSize}> {fileSize} </div>
+          <div className={styles.fileSize}>{fileSize}</div>
         )}
       </div>
       {info && <pre className={styles.info}>{info}</pre>}
