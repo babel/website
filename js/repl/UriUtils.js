@@ -13,6 +13,7 @@ const URL_KEYS = [
   "debug",
   "circleciRepo",
   "evaluate",
+  "fileSize",
   "lineWrap",
   "presets",
   "prettier",

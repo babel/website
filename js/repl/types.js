@@ -63,6 +63,7 @@ export type ReplState = {
   code: string,
   debug: boolean,
   evaluate: boolean,
+  fileSize: boolean,
   isEnvPresetTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
