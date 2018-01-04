@@ -92,6 +92,8 @@ class Repl extends React.Component {
     }, {});
 
     const envConfig = persistedStateToEnvConfig(persistedState);
+    const isPresetsTabExpanded = !!presets.filter(preset => preset !== "env")
+      .length;
 
     // A partial State is defined first b'c this._compile needs it.
     // The compile helper will then populate the missing State values.
@@ -110,8 +112,8 @@ class Repl extends React.Component {
       ),
       evalErrorMessage: null,
       fileSize: persistedState.fileSize,
-      isEnvPresetTabExpanded: persistedState.isEnvPresetTabExpanded,
-      isPresetsTabExpanded: persistedState.isPresetsTabExpanded,
+      isEnvPresetTabExpanded: defaultPresets["env"],
+      isPresetsTabExpanded,
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
