@@ -57,11 +57,11 @@ type State = {
   isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
+  meta: Object,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
   sourceMap: ?string,
-  meta: Object,
 };
 
 const DEBOUNCE_DELAY = 500;
@@ -115,6 +115,10 @@ class Repl extends React.Component {
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
+      meta: {
+        compiledSize: 0,
+        rawSize: 0,
+      },
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
       // Filled in after Babel is loaded
       presets: {},
@@ -123,10 +127,6 @@ class Repl extends React.Component {
         persistedState.evaluate
       ),
       sourceMap: null,
-      meta: {
-        compiledSize: 0,
-        rawSize: 0,
-      },
     };
 
     this._setupBabel(defaultPresets);
