@@ -58,13 +58,13 @@ const replDefaults: ReplState = {
   isPresetsTabExpanded: false,
   isSettingsTabExpanded: true,
   lineWrap: true,
-  presets: "es2015,react,stage-2",
-  prettier: false,
-  showSidebar: true,
   meta: {
     compiledSize: 0,
     rawSize: 0,
   },
+  presets: "es2015,react,stage-2",
+  prettier: false,
+  showSidebar: true,
   targets: "",
   version: "",
 };
