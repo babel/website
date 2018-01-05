@@ -73,7 +73,7 @@ export const persistedStateToEnvState = (
 ): EnvState => {
   return {
     ...persistedStateToBabelState(persistedState, config),
-    isLoading: false,
+    isLoading: isEnabled,
     isEnabled,
     version: persistedState.envVersion,
   };

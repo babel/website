@@ -225,6 +225,7 @@ class Repl extends React.Component {
 
   async _setupBabel(defaultPresets) {
     const babelState = await loadBundle(this.state.babel, this._workerApi);
+    const { envPresetState } = this.state;
 
     this.setState({
       babel: babelState,
@@ -233,9 +234,11 @@ class Repl extends React.Component {
         defaultPresets
       ),
     });
-
     if (babelState.isLoaded) {
-      this._compile(this.state.code, this._checkForUnloadedPlugins);
+      if (!envPresetState.isLoading) {
+        return this._compile(this.state.code, this._checkForUnloadedPlugins);
+      }
+      this._checkForUnloadedPlugins();
     }
   }
 
