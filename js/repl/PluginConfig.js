@@ -29,9 +29,9 @@ const envPresetConfig: PluginConfig = {
 
 const stage3Plugins: Array<PluginConfig> = [
   "proposal-async-generator-functions",
-  "proposal-object-rest-spread",
-  "proposal-optional-catch-binding",
-  "proposal-unicode-property-regex",
+  // "proposal-object-rest-spread",
+  // "proposal-optional-catch-binding",
+  // "proposal-unicode-property-regex",
 ].map(pluginName => {
   const packageName = `@babel/plugin-${pluginName}`;
   return {
