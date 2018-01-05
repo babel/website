@@ -45,6 +45,7 @@ type Props = {
   envPresetState: EnvState,
   shippedProposalsState: ShippedProposalsState,
   isEnvPresetTabExpanded: boolean,
+  fileSize: boolean,
   isExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
@@ -104,6 +105,7 @@ class ExpandedContainer extends Component {
       envConfig,
       envPresetState,
       shippedProposalsState,
+      fileSize,
       isEnvPresetTabExpanded,
       isPresetsTabExpanded,
       isSettingsTabExpanded,
@@ -153,6 +155,15 @@ class ExpandedContainer extends Component {
                 state={pluginState[config.package]}
               />
             ))}
+            <label className={styles.settingsLabel}>
+              <input
+                checked={fileSize}
+                onChange={this._onFileSizeChange}
+                className={styles.inputCheckboxLeft}
+                type="checkbox"
+              />
+              File Size
+            </label>
           </AccordionTab>
           <AccordionTab
             className={styles.section}
@@ -425,6 +436,10 @@ class ExpandedContainer extends Component {
       "forceAllTransforms",
       event.target.checked
     );
+  };
+
+  _onFileSizeChange = (event: SyntheticInputEvent) => {
+    this.props.onSettingChange("fileSize", event.target.checked);
   };
 
   _onIsElectronEnabledChange = (event: SyntheticInputEvent) => {

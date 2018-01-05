@@ -27,7 +27,7 @@ export type PluginConfig = {
   isPreLoaded?: boolean,
   label: string,
   package: string,
-  version: string,
+  version?: string,
   instanceName?: string,
 };
 
@@ -92,6 +92,7 @@ export type ReplState = {
   code: string,
   debug: boolean,
   evaluate: boolean,
+  fileSize: boolean,
   isEnvPresetTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,

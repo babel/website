@@ -619,3 +619,6 @@
 - name: N26
   url: https://n26.com
   logo: n26.svg
+- name: iLoveCoding
+  url: https://ilovecoding.org
+  logo: ilovecoding.svg

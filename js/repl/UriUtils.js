@@ -15,6 +15,7 @@ const URL_KEYS = [
   "shippedProposals",
   "circleciRepo",
   "evaluate",
+  "fileSize",
   "lineWrap",
   "presets",
   "prettier",
