@@ -123,6 +123,23 @@ The case has been changed: `jsx` and `ts` are now in lowercase.
 + t.jsxIdentifier()
 ```
 
+### `.expression` field removed from `ArrowFunctionExpression`
+
+It was removed because there were two different sources of truth, and plugins would have had to manually sync them. Now you can check wether the function body is a `BlockStatement` or not.
+
+```diff
+  return {
+    visitor: {
+      ArrowFunctionExpression({ node }) {
+-       if (node.expression) {
++       if (node.body.type !== "BlockStatement") {
+          // () => foo;
+        }
+      }
+    }
+  };
+```
+
 ### Tokens removed
 
 In previous versions `tokens` were always attached to the AST on the top-level. In the latests version of babylon we removed this behavior and made it disabled by default to improve the performance of the parser. All usages in babel itself have been remove and `babel-generator` is not using the tokens anymore for pretty printing.
