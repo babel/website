@@ -125,7 +125,7 @@ The case has been changed: `jsx` and `ts` are now in lowercase.
 
 ### `.expression` field removed from `ArrowFunctionExpression`
 
-It was removed because there were two different sources of truth, and plugins would have had to manually sync them. Now you can check wether the function body is a `BlockStatement` or not.
+The `expression` field was removed to eliminate two different sources of truth and needing plugins to manually keep them in sync. You can now simply check whether the function body is a `BlockStatement` or not:
 
 ```diff
   return {
