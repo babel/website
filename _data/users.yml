@@ -625,3 +625,6 @@
 - name: hipages
   url: https://hipages.com.au
   logo: hipages.svg
+- name: Weblio
+  url: https://ejje.weblio.jp/
+  logo: weblio.svg
