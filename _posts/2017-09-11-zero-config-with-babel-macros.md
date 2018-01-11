@@ -37,39 +37,43 @@ Guess what! A tool like this exists! `babel-plugin-macros` is a new Babel plugin
 
 So what does it look like? Whelp! There are already a few `babel-plugin-macros` packages out there you can try today!
 
-Here's a real-world example of using [`preval.macro`](https://github.com/kentcdodds/preval.macro) to inline an SVG in [a universal application](https://github.com/kentcdodds/glamorous-website) built with [Next.js](https://github.com/zeit/next.js):
+Here's a real-world example of using [`babel-plugin-console/scope.macro`](https://github.com/mattphillips/babel-plugin-console/blob/master/README.md#macros):
 
 ```javascript
-import preval from 'preval.macro'
-import glamorous from 'glamorous'
+import scope from 'babel-plugin-console/scope.macro'
 
-const base64SearchSVG = preval`
-  const fs = require('fs')
-  const path = require('path')
-  const svgString = fs.readFileSync(path.join(__dirname, 'svgs/search.svg'), 'utf8')
-  const base64String = new Buffer(svgString).toString('base64')
-  module.exports = base64String
-`
+function add100(a) {
+  const oneHundred = 100
+  scope('Add 100 to another number')
+  return add(a, oneHundred)
+}
 
-const SearchBox = glamorous.input('algolia_searchbox', props => ({
-  backgroundImage: `url("data:image/svg+xml;base64,${base64SearchSVG}")`,
-  // ...
-}))
+function add(a, b) {
+  return a + b;
+}
 ```
 
-What's cool about this? Well, the alternative would look exactly like the example above except:
+Now, when that code is run, the `scope` function does some pretty nifty things:
 
-1. It's less explicit because there would be no `import preval from 'preval.macro'` in the source code.
-2. Have to add `babel-plugin-preval` to your babel configuration.
-3. Need to update your ESLint config to allow for the `preval` variable as a global.
-4. If you misconfigured `babel-plugin-preval` you'd get a cryptic error like: `Uncaught ReferenceError: preval is not defined`.
+**Browser:**
 
-By using `preval.macro` with `babel-plugin-macros`, we don't have any of those problems because:
+![Browser console scoping add100](https://github.com/mattphillips/babel-plugin-console/raw/53536cba919d5be49d4f66d957769c07ca7a4207/assets/add100-chrome.gif)
+
+**Node:**
+
+<img alt="Node console scoping add100" src="https://github.com/mattphillips/babel-plugin-console/raw/53536cba919d5be49d4f66d957769c07ca7a4207/assets/add100-node.png" width="372">
+
+Cool right? But you can do that with the regular babel plugin, so what's cool about tha macro? Well, the babel plugin would look exactly like the example above except:
+
+1. It's less explicit because there would be no `import scope from 'babel-plugin-console/scope.macro'` in the source code.
+2. Have to add `babel-plugin-console` to your babel configuration (so it's impossible to use with tools that hide that config like create-react-app).
+3. If you misconfigured `babel-plugin-console` you'd get a **runtime** error: `Uncaught TypeError: console.scope is not a function`.
+
+By using `babel-plugin-console/scope.macro` with `babel-plugin-macros`, we don't have any of those problems because:
 
 1. The import is there and used explicitly.
-2. `babel-plugin-macros` needs to be added to your config, but only once, then you can use all the macros you'd like (even local macros!)
-3. No need to update ESLint config because it's explicit.
-4. If you misconfigure `babel-plugin-macros` then you'll get [a much more friendly error message](https://github.com/kentcdodds/babel-plugin-macros/blob/f7c9881ee22b19b3c53c93711af6a42895ba1c71/src/__tests__/__snapshots__/index.js.snap#L100) that indicates what the actual problem is pointing you to documentation.
+2. `babel-plugin-macros` needs to be added to your config, but only once, then you can use all the macros you'd like (even local macros!) And it's (coming 🔜) in create-react-app! So no config necessary!
+3. If you misconfigure `babel-plugin-macros` then you'll get [a much more friendly **compile time** error message](https://github.com/kentcdodds/babel-plugin-macros/blob/f7c9881ee22b19b3c53c93711af6a42895ba1c71/src/__tests__/__snapshots__/index.js.snap#L100) that indicates what the actual problem is pointing you to documentation.
 
 **So what is it really? The TL;DR is that `babel-plugin-macros` is a simpler way to write and use Babel transforms.**
 
