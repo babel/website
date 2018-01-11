@@ -40,21 +40,26 @@ So what does it look like? Whelp! There are already a few `babel-plugin-macros` 
 Here's a real-world example of using [`preval.macro`](https://github.com/kentcdodds/preval.macro) to inline an SVG in [a universal application](https://github.com/kentcdodds/glamorous-website) built with [Next.js](https://github.com/zeit/next.js):
 
 ```javascript
+// search.js
 import preval from 'preval.macro'
 import glamorous from 'glamorous'
 
-const base64SearchSVG = preval`
-  const fs = require('fs')
-  const path = require('path')
-  const svgString = fs.readFileSync(path.join(__dirname, 'svgs/search.svg'), 'utf8')
-  const base64String = new Buffer(svgString).toString('base64')
-  module.exports = base64String
-`
+const base64SearchSVG = preval.require('./search-svg')
 
 const SearchBox = glamorous.input('algolia_searchbox', props => ({
   backgroundImage: `url("data:image/svg+xml;base64,${base64SearchSVG}")`,
   // ...
 }))
+
+
+// search-svg.js
+const fs = require('fs')
+const path = require('path')
+
+const svgString = fs.readFileSync(path.join(__dirname, 'svgs/search.svg'), 'utf8')
+
+const base64String = new Buffer(svgString).toString('base64')
+module.exports = base64String
 ```
 
 What's cool about this? Well, the alternative would look exactly like the example above except:
