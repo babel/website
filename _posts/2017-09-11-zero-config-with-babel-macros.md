@@ -80,6 +80,36 @@ By using `preval.macro` with `babel-plugin-macros`, we don't have any of those p
 
 There are already several [published `babel-plugin-macros`](https://www.npmjs.com/browse/keyword/babel-plugin-macros) you can use, including [`preval.macro`](https://github.com/kentcdodds/preval.macro), [`codegen.macro`](https://github.com/kentcdodds/codegen.macro), [`idx.macro`](https://github.com/dralletje/idx.macro), [`emotion/macro`](https://github.com/emotion-js/emotion/blob/master/docs/babel.md#babel-macros), [`tagged-translations/macro`](https://github.com/vinhlh/tagged-translations#via-babel-macros), [`babel-plugin-console/scope.macro`](https://github.com/mattphillips/babel-plugin-console#macros), and [`glamor` 🔜](https://github.com/threepointone/glamor/pull/312).
 
+### Another example
+
+`babel-plugin-macros` is a way to have no config for non-syntax babel plugins. So almost any existing babel plugin could be implemented as a macro. Here's another example of [`babel-plugin-console`](https://github.com/mattphillips/babel-plugin-console) which exposes [a macro version of itself](https://github.com/mattphillips/babel-plugin-console/blob/master/README.md#macros):
+
+```javascript
+import scope from 'babel-plugin-console/scope.macro'
+
+function add100(a) {
+  const oneHundred = 100
+  scope('Add 100 to another number')
+  return add(a, oneHundred)
+}
+
+function add(a, b) {
+  return a + b;
+}
+```
+
+Now, when that code is run, the `scope` function does some pretty nifty things:
+
+**Browser:**
+
+![Browser console scoping add100](https://github.com/mattphillips/babel-plugin-console/raw/53536cba919d5be49d4f66d957769c07ca7a4207/assets/add100-chrome.gif)
+
+**Node:**
+
+<img alt="Node console scoping add100" src="https://github.com/mattphillips/babel-plugin-console/raw/53536cba919d5be49d4f66d957769c07ca7a4207/assets/add100-node.png" width="372">
+
+Cool right? And using it is just like using any other dependency, except it has all the benefits mentioned above.
+
 ## Conclusion
 
 I think we've only begun to scratch the surface of what `babel-plugin-macros` can do. I'm hoping that we can land it in [create-react-app](https://github.com/facebookincubator/create-react-app/issues/2730) so folks using `create-react-app` can have even more power with zero configuration. I'm really excited to see more Babel plugins expose a `macro` in addition to the existing plugin functionality they already have. I can't wait to see folks create macros that are specific to their project needs.
