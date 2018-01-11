@@ -41,10 +41,13 @@ Here's a real-world example of using [`preval.macro`](https://github.com/kentcdo
 
 ```javascript
 // search.js
+// this file runs in the browser
 import preval from 'preval.macro'
 import glamorous from 'glamorous'
 
 const base64SearchSVG = preval.require('./search-svg')
+// this will be transpiled to something like:
+// const base65SearchSVG = 'PD94bWwgdmVyc2lv...etc...')
 
 const SearchBox = glamorous.input('algolia_searchbox', props => ({
   backgroundImage: `url("data:image/svg+xml;base64,${base64SearchSVG}")`,
@@ -53,12 +56,15 @@ const SearchBox = glamorous.input('algolia_searchbox', props => ({
 
 
 // search-svg.js
+// this file runs at build-time only
+// because it's required using preval.require function, which is a macro!
 const fs = require('fs')
 const path = require('path')
 
-const svgString = fs.readFileSync(path.join(__dirname, 'svgs/search.svg'), 'utf8')
-
+const svgPath = path.join(__dirname, 'svgs/search.svg')
+const svgString = fs.readFileSync(svgPath, 'utf8')
 const base64String = new Buffer(svgString).toString('base64')
+
 module.exports = base64String
 ```
 
