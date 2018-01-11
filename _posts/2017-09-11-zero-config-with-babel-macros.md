@@ -82,7 +82,7 @@ There are already several [published `babel-plugin-macros`](https://www.npmjs.co
 
 ### Another example
 
-`babel-plugin-macros` is a way to have no config for non-syntax babel plugins. So almost any existing babel plugin could be implemented as a macro. Here's another example of [`babel-plugin-console`](https://github.com/mattphillips/babel-plugin-console) which exposes [a macro version of itself](https://github.com/mattphillips/babel-plugin-console/blob/master/README.md#macros):
+`babel-plugin-macros` is a way to have no config for non-syntax babel plugins. So many existing babel plugins could be implemented as a macro. Here's another example of [`babel-plugin-console`](https://github.com/mattphillips/babel-plugin-console) which exposes [a macro version of itself](https://github.com/mattphillips/babel-plugin-console/blob/master/README.md#macros):
 
 ```javascript
 import scope from 'babel-plugin-console/scope.macro'
