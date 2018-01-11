@@ -67,14 +67,14 @@ What's cool about this? Well, the alternative would look exactly like the exampl
 1. It's less explicit because there would be no `import preval from 'preval.macro'` in the source code.
 2. Have to add `babel-plugin-preval` to your babel configuration.
 3. Need to update your ESLint config to allow for the `preval` variable as a global.
-4. If you misconfigured `babel-plugin-preval` you'd get a cryptic error like: `Uncaught ReferenceError: preval is not defined`.
+4. If you misconfigured `babel-plugin-preval` you'd get a cryptic **runtime** error like: `Uncaught ReferenceError: preval is not defined`.
 
 By using `preval.macro` with `babel-plugin-macros`, we don't have any of those problems because:
 
 1. The import is there and used explicitly.
 2. `babel-plugin-macros` needs to be added to your config, but only once, then you can use all the macros you'd like (even local macros!)
 3. No need to update ESLint config because it's explicit.
-4. If you misconfigure `babel-plugin-macros` then you'll get [a much more friendly error message](https://github.com/kentcdodds/babel-plugin-macros/blob/f7c9881ee22b19b3c53c93711af6a42895ba1c71/src/__tests__/__snapshots__/index.js.snap#L100) that indicates what the actual problem is pointing you to documentation.
+4. If you misconfigure `babel-plugin-macros` then you'll get [a much more friendly **compile time** error message](https://github.com/kentcdodds/babel-plugin-macros/blob/f7c9881ee22b19b3c53c93711af6a42895ba1c71/src/__tests__/__snapshots__/index.js.snap#L100) that indicates what the actual problem is pointing you to documentation.
 
 **So what is it really? The TL;DR is that `babel-plugin-macros` is a simpler way to write and use Babel transforms.**
 
