@@ -70,7 +70,7 @@ const LinkToDocs = ({ className, children, section }: LinkProps) => (
   <a
     className={className}
     target="_blank"
-    href={`https://github.com/babel/babel/tree/master/experimental/babel-preset-env#${section}`}
+    href={`https://github.com/babel/babel/tree/master/packages/babel-preset-env#${section}`}
   >
     {children}
   </a>
