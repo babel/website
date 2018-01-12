@@ -80,8 +80,8 @@
   url: https://nodesource.com/
   logo: nodesource.svg
 - name: MongoDB
-  url: https://mongodb.com/
-  logo: mongodb.jpg
+  url: https://www.mongodb.com/
+  logo: mongodb.svg
 - name: Envato
   url: http://www.envato.com/
   logo: envato.png
@@ -628,6 +628,3 @@
 - name: Weblio
   url: https://ejje.weblio.jp/
   logo: weblio.svg
-- name: MongoDB
-  url: https://www.mongodb.com/
-  logo: mongodb.svg
