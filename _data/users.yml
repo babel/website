@@ -628,3 +628,6 @@
 - name: Weblio
   url: https://ejje.weblio.jp/
   logo: weblio.svg
+- name: MongoDB
+  url: https://www.mongodb.com/
+  logo: mongodb.svg
