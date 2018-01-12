@@ -125,7 +125,7 @@ export default async function loadBundle(
   // Override preset-env version to 7.x if babel-core 7.x was loaded.
   if (config.instanceName === "babelPresetEnv") {
     const babelVersion = await workerApi.getBundleVersion("Babel");
-    if (parseInt(babelVersion) === 7) {
+    if (parseInt(babelVersion) === 7 && parseInt(version) < 7) {
       version = SCOPED_PRESET_ENV_VERSION_FROM;
     }
   }
