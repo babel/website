@@ -141,7 +141,7 @@ class ExpandedContainer extends Component {
             <label className={styles.settingsLabel}>
               <input
                 checked={lineWrap}
-                onChange={this._onLineWrappingChange}
+                onChange={this._onSettingCheck("lineWrap")}
                 className={styles.inputCheckboxLeft}
                 type="checkbox"
               />
@@ -158,7 +158,7 @@ class ExpandedContainer extends Component {
             <label className={styles.settingsLabel}>
               <input
                 checked={fileSize}
-                onChange={this._onFileSizeChange}
+                onChange={this._onSettingCheck("fileSize")}
                 className={styles.inputCheckboxLeft}
                 type="checkbox"
               />
@@ -204,7 +204,7 @@ class ExpandedContainer extends Component {
                 checked={envConfig.isEnvPresetEnabled}
                 className={styles.inputCheckboxLeft}
                 type="checkbox"
-                onChange={this._onEnvPresetEnabledChange}
+                onChange={this._onEnvPresetSettingCheck("isEnvPresetEnabled")}
               />
 
               {envPresetState.isLoading ? (
@@ -224,7 +224,7 @@ class ExpandedContainer extends Component {
               <textarea
                 disabled={disableEnvSettings}
                 className={`${styles.envPresetInput} ${styles.envPresetTextarea}`}
-                onChange={this._onBrowsersChange}
+                onChange={this._onEnvPresetSettingChange("browsers")}
                 placeholder={envPresetDefaults.browsers.placeholder}
                 value={envConfig.browsers}
               />
@@ -247,14 +247,14 @@ class ExpandedContainer extends Component {
                 min={envPresetDefaults.electron.min}
                 max={999}
                 step={envPresetDefaults.electron.step}
-                onChange={this._onElectronChange}
+                onChange={this._onEnvPresetSettingChange("electron")}
                 value={envConfig.electron}
               />
               <input
                 checked={envConfig.isElectronEnabled}
                 className={styles.envPresetCheckbox}
                 disabled={disableEnvSettings}
-                onChange={this._onIsElectronEnabledChange}
+                onChange={this._onEnvPresetSettingCheck("isElectronEnabled")}
                 type="checkbox"
               />
             </label>
@@ -276,14 +276,14 @@ class ExpandedContainer extends Component {
                 min={envPresetDefaults.node.min}
                 max={999}
                 step={envPresetDefaults.node.step}
-                onChange={this._onNodeChange}
+                onChange={this._onEnvPresetSettingChange("node")}
                 value={envConfig.node}
               />
               <input
                 checked={envConfig.isNodeEnabled}
                 className={styles.envPresetCheckbox}
                 disabled={disableEnvSettings}
-                onChange={this._onIsNodeEnabledChange}
+                onChange={this._onEnvPresetSettingCheck("isNodeEnabled")}
                 type="checkbox"
               />
             </label>
@@ -298,7 +298,7 @@ class ExpandedContainer extends Component {
                 <select
                   value={envConfig.builtIns}
                   className={styles.envPresetSelect}
-                  onChange={this._onBuiltInsChange}
+                  onChange={this._onEnvPresetSettingChange("builtIns")}
                   disabled={
                     !envPresetState.isLoaded ||
                     !envConfig.isEnvPresetEnabled ||
@@ -314,7 +314,7 @@ class ExpandedContainer extends Component {
                 checked={envConfig.isBuiltInsEnabled}
                 className={styles.envPresetCheckbox}
                 disabled={disableEnvSettings}
-                onChange={this._onIsBuiltInsEnabledChange}
+                onChange={this._onEnvPresetSettingCheck("isBuiltInsEnabled")}
                 type="checkbox"
               />
             </label>
@@ -337,7 +337,7 @@ class ExpandedContainer extends Component {
                   className={styles.envPresetCheckbox}
                   // TODO
                   disabled={disableEnvSettings}
-                  onChange={this._onShippedProposalsChange}
+                  onChange={this._onEnvPresetSettingCheck("shippedProposals")}
                   type="checkbox"
                 />
               </label>
@@ -354,7 +354,7 @@ class ExpandedContainer extends Component {
                   checked={envConfig.forceAllTransforms}
                   className={styles.envPresetCheckbox}
                   disabled={disableEnvSettings}
-                  onChange={this._onForceAllTransformsChange}
+                  onChange={this._onEnvPresetSettingCheck("forceAllTransforms")}
                   type="checkbox"
                 />
               </label>
@@ -367,7 +367,7 @@ class ExpandedContainer extends Component {
                   disabled={
                     disableEnvSettings || runtimePolyfillState.isEnabled
                   }
-                  onChange={this._onDebugChange}
+                  onChange={this._onSettingCheck("debugEnvPreset")}
                   type="checkbox"
                 />
                 Debug
@@ -393,72 +393,18 @@ class ExpandedContainer extends Component {
     );
   }
 
-  _onBrowsersChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange("browsers", event.target.value);
+  _onEnvPresetSettingChange = (type: string) => (
+    event: SyntheticInputEvent
+  ) => {
+    this.props.onEnvPresetSettingChange(type, event.target.value);
   };
 
-  _onEnvPresetEnabledChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange(
-      "isEnvPresetEnabled",
-      event.target.checked
-    );
+  _onEnvPresetSettingCheck = (type: string) => (event: SyntheticInputEvent) => {
+    this.props.onEnvPresetSettingChange(type, event.target.checked);
   };
 
-  _onBuiltInsChange = (event: SyntheticInputEvent) => {
-    const { value } = event.target;
-    this.props.onEnvPresetSettingChange("builtIns", value);
-  };
-
-  _onIsBuiltInsEnabledChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange(
-      "isBuiltInsEnabled",
-      event.target.checked
-    );
-  };
-
-  _onDebugChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange("debugEnvPreset", event.target.checked);
-  };
-
-  _onElectronChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange("electron", event.target.value);
-  };
-
-  _onShippedProposalsChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange(
-      "shippedProposals",
-      event.target.checked
-    );
-  };
-
-  _onForceAllTransformsChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange(
-      "forceAllTransforms",
-      event.target.checked
-    );
-  };
-
-  _onFileSizeChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange("fileSize", event.target.checked);
-  };
-
-  _onIsElectronEnabledChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange(
-      "isElectronEnabled",
-      event.target.checked
-    );
-  };
-
-  _onLineWrappingChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange("lineWrap", event.target.checked);
-  };
-
-  _onIsNodeEnabledChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange("isNodeEnabled", event.target.checked);
-  };
-
-  _onNodeChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange("node", event.target.value);
+  _onSettingCheck = (type: string) => (event: SyntheticInputEvent) => {
+    this.props.onSettingChange(type, event.target.checked);
   };
 
   _toggleEnvPresetTab = () => {
