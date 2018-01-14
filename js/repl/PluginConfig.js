@@ -27,6 +27,10 @@ const envPresetConfig: PluginConfig = {
   instanceName: "babelPresetEnv",
 };
 
+/* Some of stage-3 plugins've been added to babel-standalone gradually. For example,
+  proposal-async-generator-functions wasn't available before 7.0.0-beta.36 was released.
+  Also, using this flow, we can handle not registered yet stage-3 plugins in the future.
+*/
 const stage3Plugins: Array<PluginConfig> = [
   "proposal-async-generator-functions",
   // "proposal-object-rest-spread",
