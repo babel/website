@@ -73,6 +73,8 @@
     }
   });
 
+  $('.docs-content a[href^=#]').addClass('smooth-scroll');
+
   var $root = $('html, body');
   $('a.smooth-scroll').on('click', function(event) {
       event.preventDefault();
