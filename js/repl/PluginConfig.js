@@ -69,12 +69,12 @@ const envPresetDefaults = {
   },
   electron: {
     min: 0.3,
-    default: "1.5",
+    default: "1.8",
     step: 0.1,
   },
   node: {
     min: 0.1,
-    default: "7.4",
+    default: "8.9",
     step: 0.1,
   },
   builtIns: {
