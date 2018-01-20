@@ -4,11 +4,20 @@ export type BabelPresets = Array<string | Array<string | Object>>;
 
 export type EnvConfig = {
   browsers: string,
-  electron: ?number,
+  electron: ?string,
   isEnvPresetEnabled: boolean,
   isElectronEnabled: boolean,
+  isBuiltInsEnabled: boolean,
   isNodeEnabled: boolean,
-  node: ?number,
+  builtIns: string | false,
+  forceAllTransforms: boolean,
+  shippedProposals: boolean,
+  version?: string,
+  node: ?string,
+};
+
+export type EnvFeatures = {
+  [feature: string]: Array<number>,
 };
 
 export type LoadScriptCallback = (success: boolean) => void;
@@ -17,8 +26,13 @@ export type PluginConfig = {
   baseUrl?: string,
   isPreLoaded?: boolean,
   label: string,
-  package?: string,
+  package: string,
   version?: string,
+  instanceName?: string,
+};
+
+export type MultiPackagesConfig = PluginConfig & {
+  packages: Array<PluginConfig>,
 };
 
 export type PluginConfigs = Array<PluginConfig>;
@@ -34,7 +48,23 @@ export type BabelState = LazyLoadedState & {
   build: string,
   errorMessage?: string,
   circleciRepo: string,
+  config: PluginConfig,
   version: string,
+};
+
+export type EnvState = LazyLoadedState & {
+  build: string,
+  errorMessage?: string,
+  circleciRepo: string,
+  config: PluginConfig,
+  version: string,
+  isEnabled: boolean,
+};
+
+export type ShippedProposalsState = LazyLoadedState & {
+  errorMessage?: string,
+  config: MultiPackagesConfig,
+  isEnabled: boolean,
 };
 
 export type PluginState = LazyLoadedState & {
@@ -51,31 +81,34 @@ export type CompileConfig = {
   presets: BabelPresets,
   prettify: boolean,
   sourceMap: boolean,
-  useBuiltIns: boolean,
 };
 
-export type PersistedState = {
+export type ReplState = {
   babili: boolean,
   browsers: string,
   build: string,
-  builtIns: boolean,
+  builtIns: string | boolean,
   circleciRepo: string,
   code: string,
   debug: boolean,
   evaluate: boolean,
+  fileSize: boolean,
   isEnvPresetTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
+  forceAllTransforms: boolean,
+  shippedProposals: boolean,
   lineWrap: boolean,
   presets: ?string,
   prettier: boolean,
   showSidebar: boolean,
   targets: string,
   version: string,
+  envVersion: string,
 };
 
 type BabelPresetTargetsMap = {
-  [key: string]: number,
+  [key: string]: string,
 };
 
 type BabelNamedPresetAndTarget = {

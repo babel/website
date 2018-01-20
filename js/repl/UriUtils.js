@@ -2,7 +2,7 @@
 
 import LZString from "lz-string";
 
-import type { PersistedState } from "./types";
+import type { ReplState } from "./types";
 
 const URL_KEYS = [
   "babili",
@@ -11,13 +11,17 @@ const URL_KEYS = [
   "builtIns",
   "code",
   "debug",
+  "forceAllTransforms",
+  "shippedProposals",
   "circleciRepo",
   "evaluate",
+  "fileSize",
   "lineWrap",
   "presets",
   "prettier",
   "targets",
   "version",
+  "envVersion",
 ];
 
 const compress = (string: string) =>
@@ -79,7 +83,7 @@ const parseQuery = () => {
   return state;
 };
 
-const updateQuery = (state: PersistedState) => {
+const updateQuery = (state: ReplState) => {
   const query = URL_KEYS.map(key => {
     if (state[key] == null) {
       return null;

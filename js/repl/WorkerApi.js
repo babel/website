@@ -17,7 +17,13 @@ type CompileResult = {
   compileErrorMessage: ?string,
   envPresetDebugInfo: ?string,
   evalErrorMessage: ?string,
+  meta: Object,
   sourceMap: ?string,
+};
+
+type PluginShape = {
+  instanceName: string,
+  pluginName: string,
 };
 
 /**
@@ -34,7 +40,13 @@ export default class WorkerApi {
         config,
       })
       .then(
-        ({ compiled, compileErrorMessage, envPresetDebugInfo, sourceMap }) => {
+        ({
+          compiled,
+          compileErrorMessage,
+          envPresetDebugInfo,
+          meta,
+          sourceMap,
+        }) => {
           let evalErrorMessage = null;
 
           // Compilation is done in a web worker for performance reasons,
@@ -52,6 +64,7 @@ export default class WorkerApi {
             compileErrorMessage,
             envPresetDebugInfo,
             evalErrorMessage,
+            meta,
             sourceMap,
           };
         }
@@ -62,8 +75,18 @@ export default class WorkerApi {
     return this._worker.postMessage({ method: "getBabelVersion" });
   }
 
+  getBundleVersion(name: string): Promise<string> {
+    return this._worker.postMessage({ method: "getBundleVersion", name });
+  }
+
   getAvailablePresets(): Promise<Array<string>> {
     return this._worker.postMessage({ method: "getAvailablePresets" });
+  }
+
+  getAvailablePlugins(): Promise<
+    Array<{ label: string, isPreloaded: boolean }>
+  > {
+    return this._worker.postMessage({ method: "getAvailablePlugins" });
   }
 
   loadPlugin(state: PluginState): Promise<boolean> {
@@ -97,6 +120,13 @@ export default class WorkerApi {
   registerEnvPreset(): Promise<boolean> {
     return this._worker.postMessage({
       method: "registerEnvPreset",
+    });
+  }
+
+  registerPlugins(plugins: Array<PluginShape>): Promise<boolean> {
+    return this._worker.postMessage({
+      method: "registerPlugins",
+      plugins,
     });
   }
 }

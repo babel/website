@@ -5,26 +5,31 @@ import "regenerator-runtime/runtime";
 import { css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
+import { prettySize } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
-import loadBabel from "./loadBabel";
+import loadBundle from "./loadBundle";
 import loadPlugin from "./loadPlugin";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import {
+  babelConfig,
   envPresetConfig,
+  shippedProposalsConfig,
   pluginConfigs,
   runtimePolyfillConfig,
 } from "./PluginConfig";
 import {
   envConfigToTargetsString,
-  loadPersistedState,
+  replState,
   configArrayToStateMap,
   configToState,
   persistedStateToBabelState,
+  persistedStateToEnvState,
   persistedStateToEnvConfig,
+  persistedStateToShippedProposalsState,
 } from "./replUtils";
 import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
@@ -33,6 +38,8 @@ import { colors, media } from "./styles";
 import type {
   BabelPresets,
   BabelState,
+  EnvState,
+  ShippedProposalsState,
   EnvConfig,
   PluginState,
   PluginStateMap,
@@ -41,20 +48,22 @@ import type {
 type Props = {};
 type State = {
   babel: BabelState,
-  builtIns: boolean,
   code: string,
   compiled: ?string,
   compileErrorMessage: ?string,
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetDebugInfo: ?string,
-  envPresetState: PluginState,
+  envPresetState: EnvState,
+  shippedProposalsState: ShippedProposalsState,
   evalErrorMessage: ?string,
+  fileSize: boolean,
   isEnvPresetTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
+  meta: Object,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
@@ -73,17 +82,15 @@ class Repl extends React.Component {
   constructor(props: Props, context: any) {
     super(props, context);
 
-    const persistedState = loadPersistedState();
-
+    const persistedState = replState();
     const defaultPlugins = {
       "babili-standalone": persistedState.babili,
       prettier: persistedState.prettier,
     };
 
-    const presets =
-      typeof persistedState.presets === "string"
-        ? persistedState.presets.split(",")
-        : ["es2015", "react", "stage-2"];
+    const presets = persistedState.presets
+      ? persistedState.presets.split(",")
+      : [];
 
     const defaultPresets = presets.reduce((reduced, key) => {
       if (key) reduced[key] = true;
@@ -91,28 +98,40 @@ class Repl extends React.Component {
     }, {});
 
     const envConfig = persistedStateToEnvConfig(persistedState);
+    const isPresetsTabExpanded = !!presets.filter(preset => preset !== "env")
+      .length;
 
     // A partial State is defined first b'c this._compile needs it.
     // The compile helper will then populate the missing State values.
     this.state = {
-      babel: persistedStateToBabelState(persistedState),
-      builtIns: persistedState.builtIns,
+      babel: persistedStateToBabelState(persistedState, babelConfig),
       code: persistedState.code,
       compiled: null,
       compileErrorMessage: null,
       debugEnvPreset: persistedState.debug,
       envConfig,
       envPresetDebugInfo: null,
-      envPresetState: configToState(
+      envPresetState: persistedStateToEnvState(
+        persistedState,
         envPresetConfig,
         envConfig.isEnvPresetEnabled
       ),
+      shippedProposalsState: persistedStateToShippedProposalsState(
+        persistedState,
+        shippedProposalsConfig,
+        envConfig.isEnvPresetEnabled && envConfig.shippedProposals
+      ),
       evalErrorMessage: null,
-      isEnvPresetTabExpanded: persistedState.isEnvPresetTabExpanded,
-      isPresetsTabExpanded: persistedState.isPresetsTabExpanded,
+      fileSize: persistedState.fileSize,
+      isEnvPresetTabExpanded: defaultPresets["env"],
+      isPresetsTabExpanded,
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
+      meta: {
+        compiledSize: 0,
+        rawSize: 0,
+      },
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
       // Filled in after Babel is loaded
       presets: {},
@@ -151,6 +170,7 @@ class Repl extends React.Component {
     }
 
     const options = {
+      fileSize: state.fileSize,
       lineWrapping: state.lineWrap,
     };
 
@@ -158,11 +178,12 @@ class Repl extends React.Component {
       <div className={styles.repl}>
         <ReplOptions
           babelVersion={state.babel.version}
-          builtIns={state.builtIns}
           className={styles.optionsColumn}
           debugEnvPreset={state.debugEnvPreset}
           envConfig={state.envConfig}
           envPresetState={state.envPresetState}
+          shippedProposalsState={state.shippedProposalsState}
+          fileSize={state.fileSize}
           isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
           isExpanded={state.isSidebarExpanded}
           isPresetsTabExpanded={state.isPresetsTabExpanded}
@@ -183,6 +204,7 @@ class Repl extends React.Component {
             className={styles.codeMirrorPanel}
             code={state.code}
             errorMessage={state.compileErrorMessage}
+            fileSize={state.meta.rawSize}
             onChange={this._updateCode}
             options={options}
             placeholder="Write code here"
@@ -191,6 +213,7 @@ class Repl extends React.Component {
             className={styles.codeMirrorPanel}
             code={state.compiled}
             errorMessage={state.evalErrorMessage}
+            fileSize={state.meta.compiledSize}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
             placeholder="Compiled output will be shown here"
@@ -201,7 +224,8 @@ class Repl extends React.Component {
   }
 
   async _setupBabel(defaultPresets) {
-    const babelState = await loadBabel(this.state.babel, this._workerApi);
+    const babelState = await loadBundle(this.state.babel, this._workerApi);
+    const { envPresetState } = this.state;
 
     this.setState({
       babel: babelState,
@@ -210,16 +234,19 @@ class Repl extends React.Component {
         defaultPresets
       ),
     });
-
     if (babelState.isLoaded) {
-      this._compile(this.state.code, this._checkForUnloadedPlugins);
+      if (!envPresetState.isLoading) {
+        return this._compile(this.state.code, this._checkForUnloadedPlugins);
+      }
+      this._checkForUnloadedPlugins();
     }
   }
 
-  _checkForUnloadedPlugins() {
+  async _checkForUnloadedPlugins() {
     const {
       envConfig,
       envPresetState,
+      shippedProposalsState,
       plugins,
       runtimePolyfillState,
     } = this.state;
@@ -231,7 +258,6 @@ class Repl extends React.Component {
 
       if (plugin.isEnabled && !plugin.isLoaded && !plugin.isLoading) {
         this._numLoadingPlugins++;
-
         this._workerApi.loadPlugin(plugin).then(success => {
           this._numLoadingPlugins--;
 
@@ -286,7 +312,8 @@ class Repl extends React.Component {
     // Babel 'env' preset is large;
     // Only load it if it's been requested.
     if (envConfig.isEnvPresetEnabled && !envPresetState.isLoaded) {
-      this._workerApi.loadPlugin(envPresetState).then(() => {
+      envPresetState.isLoading = true;
+      loadBundle(envPresetState, this._workerApi).then(() => {
         // This preset is not built into Babel standalone due to its size.
         // Before we can use it we need to explicitly register it.
         // Because it's loaded in a worker, we need to configure it there as well.
@@ -294,6 +321,42 @@ class Repl extends React.Component {
           .registerEnvPreset()
           .then(() => this._updateCode(this.state.code));
       });
+    }
+    if (
+      envConfig.isEnvPresetEnabled &&
+      envConfig.shippedProposals &&
+      !shippedProposalsState.isLoaded
+    ) {
+      const availablePlugins = await this._workerApi.getAvailablePlugins();
+      const availablePluginsNames = availablePlugins.map(({ label }) => label);
+      const notRegisteredPackages = shippedProposalsState.config.packages
+        .filter(
+          packageState => !availablePluginsNames.includes(packageState.label)
+        )
+        .map(config =>
+          configToState({ ...config, version: this.state.babel.version }, true)
+        );
+
+      if (notRegisteredPackages.length) {
+        shippedProposalsState.isLoading = true;
+        const plugins = await Promise.all(
+          notRegisteredPackages.map(state => loadBundle(state, this._workerApi))
+        );
+        const allPluginsAreLoaded = plugins.every(({ isLoaded }) => isLoaded);
+        if (allPluginsAreLoaded) {
+          await this._workerApi.registerPlugins(
+            plugins.map(({ config }) => ({
+              instanceName: config.instanceName,
+              pluginName: config.label,
+            }))
+          );
+          shippedProposalsState.isLoaded = true;
+          this._updateCode(this.state.code);
+        } else {
+          shippedProposalsState.didError = true;
+        }
+        shippedProposalsState.isLoading = false;
+      }
     }
   }
 
@@ -307,7 +370,6 @@ class Repl extends React.Component {
     if (babili.isEnabled && babili.isLoaded) {
       presetsArray.push("babili");
     }
-
     this._workerApi
       .compile(code, {
         debugEnvPreset: state.debugEnvPreset,
@@ -317,9 +379,12 @@ class Repl extends React.Component {
         presets: presetsArray,
         prettify: state.plugins.prettier.isEnabled,
         sourceMap: runtimePolyfillState.isEnabled,
-        useBuiltIns: state.builtIns,
       })
-      .then(result => this.setState(result, setStateCallback));
+      .then(result => {
+        result.meta.compiledSize = prettySize(result.meta.compiledSize);
+        result.meta.rawSize = prettySize(result.meta.rawSize);
+        this.setState(result, setStateCallback);
+      });
   };
 
   // Debounce compilation since it's expensive.
@@ -405,15 +470,20 @@ class Repl extends React.Component {
       presetsArray.push("env");
     }
 
+    const builtIns = envConfig.isBuiltInsEnabled && envConfig.builtIns;
+
     const payload = {
       babili: plugins["babili-standalone"].isEnabled,
       browsers: envConfig.browsers,
       build: state.babel.build,
-      builtIns: state.builtIns,
+      builtIns: builtIns,
       circleciRepo: state.babel.circleciRepo,
       code: state.code,
       debug: state.debugEnvPreset,
+      forceAllTransforms: envConfig.forceAllTransforms,
+      shippedProposals: envConfig.shippedProposals,
       evaluate: state.runtimePolyfillState.isEnabled,
+      fileSize: state.fileSize,
       isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
       isPresetsTabExpanded: state.isPresetsTabExpanded,
       isSettingsTabExpanded: state.isSettingsTabExpanded,
@@ -423,8 +493,8 @@ class Repl extends React.Component {
       showSidebar: state.isSidebarExpanded,
       targets: envConfigToTargetsString(envConfig),
       version: state.babel.version,
+      envVersion: state.envPresetState.version,
     };
-
     StorageService.set("replState", payload);
     UriUtils.updateQuery(payload);
   };

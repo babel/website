@@ -1,18 +1,22 @@
 // @flow
 
-import { envPresetDefaults } from "./PluginConfig";
+import { envPresetDefaults, replDefaults } from "./PluginConfig";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
+import { envPresetFeaturesSupport } from "./PluginConfig";
 
 import type {
   BabelPresetEnvResult,
   BabelState,
+  EnvState,
   EnvConfig,
-  PersistedState,
+  ReplState,
+  MultiPackagesConfig,
   PluginConfig,
   PluginConfigs,
   PluginState,
   PluginStateMap,
+  ShippedProposalsState,
 } from "./types";
 
 export const envConfigToTargetsString = (envConfig: EnvConfig): string => {
@@ -29,39 +33,28 @@ export const envConfigToTargetsString = (envConfig: EnvConfig): string => {
   return encodeURIComponent(components.join(","));
 };
 
-export const loadPersistedState = (): PersistedState => {
+//  Repl state stored in Local storage
+const loadPersistedState = (): ReplState => {
   const storageState = StorageService.get("replState");
-  const queryState = UriUtils.parseQuery();
-  const merged = {
-    ...storageState,
-    ...queryState,
-  };
+  return { ...replDefaults, ...storageState };
+};
 
-  return {
-    babili: merged.babili === true,
-    browsers: merged.browsers || "",
-    build: merged.build || "",
-    builtIns: merged.builtIns === true,
-    circleciRepo: merged.circleciRepo || "",
-    code: merged.code || "",
-    debug: merged.debug === true,
-    evaluate: merged.evaluate === true,
-    isEnvPresetTabExpanded: merged.isEnvPresetTabExpanded === true,
-    isPresetsTabExpanded: merged.isPresetsTabExpanded === true,
-    isSettingsTabExpanded: merged.isSettingsTabExpanded !== false, // Default to show
-    lineWrap: merged.lineWrap != null ? merged.lineWrap : true,
-    presets: merged.hasOwnProperty("presets") ? merged.presets : null,
-    prettier: merged.prettier === true,
-    showSidebar: merged.showSidebar !== false, // Default to show
-    targets: merged.targets || "",
-    version: merged.version || "",
-  };
+//  Repl state in query string
+const urlState = (): ReplState => {
+  const queryState = UriUtils.parseQuery();
+  return { ...replDefaults, ...queryState };
+};
+
+export const replState = (): ReplState => {
+  const hasQueryString = window.location.hash;
+  return hasQueryString ? urlState() : loadPersistedState();
 };
 
 type DefaultPlugins = { [name: string]: boolean };
 
 export const persistedStateToBabelState = (
-  persistedState: PersistedState
+  persistedState: ReplState,
+  config: PluginConfig
 ): BabelState => ({
   availablePresets: [],
   build: persistedState.build,
@@ -70,6 +63,32 @@ export const persistedStateToBabelState = (
   isLoaded: false,
   isLoading: true,
   version: persistedState.version,
+  config,
+});
+
+export const persistedStateToEnvState = (
+  persistedState: ReplState,
+  config: PluginConfig,
+  isEnabled: boolean
+): EnvState => {
+  return {
+    ...persistedStateToBabelState(persistedState, config),
+    isLoading: isEnabled,
+    isEnabled,
+    version: persistedState.envVersion,
+  };
+};
+
+export const persistedStateToShippedProposalsState = (
+  persistedState: ReplState,
+  config: MultiPackagesConfig,
+  isEnabled: boolean
+): ShippedProposalsState => ({
+  config,
+  isLoading: false,
+  isLoaded: false,
+  didError: false,
+  isEnabled,
 });
 
 export const configArrayToStateMap = (
@@ -97,11 +116,11 @@ export const configToState = (
 });
 
 export const persistedStateToEnvConfig = (
-  persistedState: PersistedState
+  persistedState: ReplState
 ): EnvConfig => {
   const isEnvPresetEnabled =
-    Array.isArray(persistedState.presets) &&
-    persistedState.presets.indexOf("env") > 0;
+    !!persistedState.presets &&
+    persistedState.presets.split(",").indexOf("env") >= 0;
 
   const envConfig: EnvConfig = {
     browsers: persistedState.browsers,
@@ -109,7 +128,12 @@ export const persistedStateToEnvConfig = (
     isEnvPresetEnabled,
     isElectronEnabled: false,
     isNodeEnabled: false,
+    forceAllTransforms: !!persistedState.forceAllTransforms,
+    shippedProposals: !!persistedState.shippedProposals,
+    isBuiltInsEnabled: !!persistedState.builtIns,
     node: envPresetDefaults.node.default,
+    version: persistedState.envVersion,
+    builtIns: envPresetDefaults.builtIns.default,
   };
 
   decodeURIComponent(persistedState.targets)
@@ -117,8 +141,9 @@ export const persistedStateToEnvConfig = (
     .forEach(component => {
       try {
         const pieces = component.split("-");
+
         const name = pieces[0].toLowerCase();
-        const value = parseFloat(pieces[1]);
+        const value = pieces[1];
 
         if (name) {
           switch (name) {
@@ -178,4 +203,14 @@ export const getDebugInfoFromEnvResult = (
   }
 
   return debugInfo.join("\n\n");
+};
+
+export const isEnvFeatureSupported = (
+  version: ?string,
+  feature: string
+): boolean => {
+  if (!version) return false;
+  const parsedVersion = parseInt(version);
+  const [min, max] = envPresetFeaturesSupport[feature];
+  return parsedVersion >= min && parsedVersion <= max;
 };

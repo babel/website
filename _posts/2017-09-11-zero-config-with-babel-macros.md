@@ -40,21 +40,32 @@ So what does it look like? Whelp! There are already a few `babel-plugin-macros` 
 Here's a real-world example of using [`preval.macro`](https://github.com/kentcdodds/preval.macro) to inline an SVG in [a universal application](https://github.com/kentcdodds/glamorous-website) built with [Next.js](https://github.com/zeit/next.js):
 
 ```javascript
+// search.js
+// this file runs in the browser
 import preval from 'preval.macro'
 import glamorous from 'glamorous'
 
-const base64SearchSVG = preval`
-  const fs = require('fs')
-  const path = require('path')
-  const svgString = fs.readFileSync(path.join(__dirname, 'svgs/search.svg'), 'utf8')
-  const base64String = new Buffer(svgString).toString('base64')
-  module.exports = base64String
-`
+const base64SearchSVG = preval.require('./search-svg')
+// this will be transpiled to something like:
+// const base65SearchSVG = 'PD94bWwgdmVyc2lv...etc...')
 
 const SearchBox = glamorous.input('algolia_searchbox', props => ({
   backgroundImage: `url("data:image/svg+xml;base64,${base64SearchSVG}")`,
   // ...
 }))
+
+
+// search-svg.js
+// this file runs at build-time only
+// because it's required using preval.require function, which is a macro!
+const fs = require('fs')
+const path = require('path')
+
+const svgPath = path.join(__dirname, 'svgs/search.svg')
+const svgString = fs.readFileSync(svgPath, 'utf8')
+const base64String = new Buffer(svgString).toString('base64')
+
+module.exports = base64String
 ```
 
 What's cool about this? Well, the alternative would look exactly like the example above except:
@@ -62,18 +73,48 @@ What's cool about this? Well, the alternative would look exactly like the exampl
 1. It's less explicit because there would be no `import preval from 'preval.macro'` in the source code.
 2. Have to add `babel-plugin-preval` to your babel configuration.
 3. Need to update your ESLint config to allow for the `preval` variable as a global.
-4. If you misconfigured `babel-plugin-preval` you'd get a cryptic error like: `Uncaught ReferenceError: preval is not defined`.
+4. If you misconfigured `babel-plugin-preval` you'd get a cryptic **runtime** error like: `Uncaught ReferenceError: preval is not defined`.
 
 By using `preval.macro` with `babel-plugin-macros`, we don't have any of those problems because:
 
 1. The import is there and used explicitly.
 2. `babel-plugin-macros` needs to be added to your config, but only once, then you can use all the macros you'd like (even local macros!)
 3. No need to update ESLint config because it's explicit.
-4. If you misconfigure `babel-plugin-macros` then you'll get [a much more friendly error message](https://github.com/kentcdodds/babel-plugin-macros/blob/f7c9881ee22b19b3c53c93711af6a42895ba1c71/src/__tests__/__snapshots__/index.js.snap#L100) that indicates what the actual problem is pointing you to documentation.
+4. If you misconfigure `babel-plugin-macros` then you'll get [a much more friendly **compile time** error message](https://github.com/kentcdodds/babel-plugin-macros/blob/f7c9881ee22b19b3c53c93711af6a42895ba1c71/src/__tests__/__snapshots__/index.js.snap#L100) that indicates what the actual problem is pointing you to documentation.
 
 **So what is it really? The TL;DR is that `babel-plugin-macros` is a simpler way to write and use Babel transforms.**
 
-There are already several [published `babel-plugin-macros`](https://www.npmjs.com/browse/keyword/babel-plugin-macros) you can use, including [`preval.macro`](https://github.com/kentcdodds/preval.macro), [`codegen.macro`](https://github.com/kentcdodds/codegen.macro), [`idx.macro`](https://github.com/dralletje/idx.macro), [`emotion/macro`](https://github.com/emotion-js/emotion/blob/master/docs/babel-macros.md), [`tagged-translations/macro`](https://github.com/vinhlh/tagged-translations#via-babel-macros), [`babel-plugin-console/scope.macro`](https://github.com/mattphillips/babel-plugin-console#macros), and [`glamor` 🔜](https://github.com/threepointone/glamor/pull/312).
+There are already several [published `babel-plugin-macros`](https://www.npmjs.com/browse/keyword/babel-plugin-macros) you can use, including [`preval.macro`](https://github.com/kentcdodds/preval.macro), [`codegen.macro`](https://github.com/kentcdodds/codegen.macro), [`idx.macro`](https://github.com/dralletje/idx.macro), [`emotion/macro`](https://github.com/emotion-js/emotion/blob/master/docs/babel.md#babel-macros), [`tagged-translations/macro`](https://github.com/vinhlh/tagged-translations#via-babel-macros), [`babel-plugin-console/scope.macro`](https://github.com/mattphillips/babel-plugin-console#macros), and [`glamor` 🔜](https://github.com/threepointone/glamor/pull/312).
+
+### Another example
+
+`babel-plugin-macros` is a way to have no config for non-syntax babel plugins. So many existing babel plugins could be implemented as a macro. Here's another example of [`babel-plugin-console`](https://github.com/mattphillips/babel-plugin-console) which exposes [a macro version of itself](https://github.com/mattphillips/babel-plugin-console/blob/master/README.md#macros):
+
+```javascript
+import scope from 'babel-plugin-console/scope.macro'
+
+function add100(a) {
+  const oneHundred = 100
+  scope('Add 100 to another number')
+  return add(a, oneHundred)
+}
+
+function add(a, b) {
+  return a + b;
+}
+```
+
+Now, when that code is run, the `scope` function does some pretty nifty things:
+
+**Browser:**
+
+![Browser console scoping add100](https://github.com/mattphillips/babel-plugin-console/raw/53536cba919d5be49d4f66d957769c07ca7a4207/assets/add100-chrome.gif)
+
+**Node:**
+
+<img alt="Node console scoping add100" src="https://github.com/mattphillips/babel-plugin-console/raw/53536cba919d5be49d4f66d957769c07ca7a4207/assets/add100-node.png" width="372">
+
+Cool right? And using it is just like using any other dependency, except it has all the benefits mentioned above.
 
 ## Conclusion
 

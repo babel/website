@@ -80,8 +80,8 @@
   url: https://nodesource.com/
   logo: nodesource.svg
 - name: MongoDB
-  url: https://mongodb.com/
-  logo: mongodb.jpg
+  url: https://www.mongodb.com/
+  logo: mongodb.svg
 - name: Envato
   url: http://www.envato.com/
   logo: envato.png
@@ -610,3 +610,24 @@
 - name: Douban Read
   url: https://read.douban.com
   logo: ark.svg
+- name: Hasura
+  url: https://hasura.io
+  logo: hasura.svg
+- name: Yelp
+  url: https://www.yelp.com
+  logo: yelp.svg
+- name: N26
+  url: https://n26.com
+  logo: n26.svg
+- name: iLoveCoding
+  url: https://ilovecoding.org
+  logo: ilovecoding.svg
+- name: hipages
+  url: https://hipages.com.au
+  logo: hipages.svg
+- name: Weblio
+  url: https://ejje.weblio.jp/
+  logo: weblio.svg
+- name: UNCOVER TRUTH
+  url: https://www.uncovertruth.co.jp/
+  logo: uncovertruth.svg
