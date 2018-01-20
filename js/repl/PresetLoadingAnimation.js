@@ -3,12 +3,18 @@ import React from "react";
 
 type PresetLoadingAnimationProps = {
   className: ?string,
+  size: ?number,
 };
 
 const PresetLoadingAnimation = ({
   className = "",
+  size = 2,
 }: PresetLoadingAnimationProps) => (
-  <div className={`${className} ${styles.loadingAnimation}`}>
+  <div
+    className={`${className} ${styles.loadingAnimation} ${css({
+      height: `${size}rem`,
+    })}`}
+  >
     <div className={`${styles.loadingTick} ${styles.loadingTick1}`} />
     <div className={`${styles.loadingTick} ${styles.loadingTick2}`} />
     <div className={`${styles.loadingTick} ${styles.loadingTick3}`} />
@@ -28,7 +34,6 @@ const bounce = keyframes({
 
 const styles = {
   loadingAnimation: css({
-    height: "2rem",
     display: "flex",
     alignItems: "center",
     marginLeft: "0.5rem",

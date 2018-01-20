@@ -3,6 +3,7 @@
 import { css } from "emotion";
 import React, { Component } from "react";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
+import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import Svg from "./Svg";
@@ -11,7 +12,9 @@ import { colors, media } from "./styles";
 import type {
   EnvConfig,
   PluginConfig,
+  ShippedProposalsState,
   PluginState,
+  EnvState,
   PluginStateMap,
 } from "./types";
 
@@ -36,13 +39,13 @@ type OnTabExpandedChange = (name: string, isExpanded: boolean) => void;
 
 type Props = {
   babelVersion: ?string,
-  builtIns: boolean,
   className: string,
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
-  envPresetState: PluginState,
-  fileSize: boolean,
+  envPresetState: EnvState,
+  shippedProposalsState: ShippedProposalsState,
   isEnvPresetTabExpanded: boolean,
+  fileSize: boolean,
   isExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
@@ -56,6 +59,22 @@ type Props = {
   runtimePolyfillConfig: PluginConfig,
   runtimePolyfillState: PluginState,
 };
+
+type LinkProps = {
+  className?: string,
+  children: React$Element<any> | string,
+  section: string,
+};
+
+const LinkToDocs = ({ className, children, section }: LinkProps) => (
+  <a
+    className={className}
+    target="_blank"
+    href={`https://github.com/babel/babel/tree/master/packages/babel-preset-env#${section}`}
+  >
+    {children}
+  </a>
+);
 
 const ReplOptions = (props: Props) => (
   <div className={`${styles.wrapper} ${props.className}`}>
@@ -82,10 +101,10 @@ class ExpandedContainer extends Component {
   render() {
     const {
       babelVersion,
-      builtIns,
       debugEnvPreset,
       envConfig,
       envPresetState,
+      shippedProposalsState,
       fileSize,
       isEnvPresetTabExpanded,
       isPresetsTabExpanded,
@@ -100,7 +119,9 @@ class ExpandedContainer extends Component {
     } = this.props;
 
     const disableEnvSettings =
-      !envPresetState.isLoaded || !envConfig.isEnvPresetEnabled;
+      !envPresetState.isLoaded ||
+      !envConfig.isEnvPresetEnabled ||
+      shippedProposalsState.isLoading;
 
     return (
       <div className={styles.expandedContainer}>
@@ -120,7 +141,7 @@ class ExpandedContainer extends Component {
             <label className={styles.settingsLabel}>
               <input
                 checked={lineWrap}
-                onChange={this._onLineWrappingChange}
+                onChange={this._onSettingCheck("lineWrap")}
                 className={styles.inputCheckboxLeft}
                 type="checkbox"
               />
@@ -137,7 +158,7 @@ class ExpandedContainer extends Component {
             <label className={styles.settingsLabel}>
               <input
                 checked={fileSize}
-                onChange={this._onFileSizeChange}
+                onChange={this._onSettingCheck("fileSize")}
                 className={styles.inputCheckboxLeft}
                 type="checkbox"
               />
@@ -168,7 +189,14 @@ class ExpandedContainer extends Component {
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}
             isExpanded={isEnvPresetTabExpanded}
-            label="Env Preset"
+            label={
+              <span>
+                Env Preset{" "}
+                <small className={styles.accordionLabelVersion}>
+                  {envPresetState.version}
+                </small>
+              </span>
+            }
             toggleIsExpanded={this._toggleEnvPresetTab}
           >
             <label className={styles.settingsLabel}>
@@ -176,7 +204,7 @@ class ExpandedContainer extends Component {
                 checked={envConfig.isEnvPresetEnabled}
                 className={styles.inputCheckboxLeft}
                 type="checkbox"
-                onChange={this._onEnvPresetEnabledChange}
+                onChange={this._onEnvPresetSettingCheck("isEnvPresetEnabled")}
               />
 
               {envPresetState.isLoading ? (
@@ -187,23 +215,27 @@ class ExpandedContainer extends Component {
             </label>
 
             <div className={styles.envPresetColumn}>
-              <label
-                className={`${styles.envPresetColumnLabel} ${styles.highlight}`}
+              <LinkToDocs
+                className={`${styles.envPresetColumnLabel} ${styles.envPresetLabel} ${styles.highlight}`}
+                section="browserslist-support"
               >
-                Browser
-              </label>
+                Browsers
+              </LinkToDocs>
               <textarea
                 disabled={disableEnvSettings}
-                className={styles.envPresetInput}
-                onChange={this._onBrowsersChange}
+                className={`${styles.envPresetInput} ${styles.envPresetTextarea}`}
+                onChange={this._onEnvPresetSettingChange("browsers")}
                 placeholder={envPresetDefaults.browsers.placeholder}
                 value={envConfig.browsers}
               />
             </div>
             <label className={styles.envPresetRow}>
-              <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
+              <LinkToDocs
+                className={`${styles.envPresetLabel} ${styles.highlight}`}
+                section="targets"
+              >
                 Electron
-              </span>
+              </LinkToDocs>
               <input
                 className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
                 disabled={
@@ -215,21 +247,24 @@ class ExpandedContainer extends Component {
                 min={envPresetDefaults.electron.min}
                 max={999}
                 step={envPresetDefaults.electron.step}
-                onChange={this._onElectronChange}
+                onChange={this._onEnvPresetSettingChange("electron")}
                 value={envConfig.electron}
               />
               <input
                 checked={envConfig.isElectronEnabled}
                 className={styles.envPresetCheckbox}
                 disabled={disableEnvSettings}
-                onChange={this._onIsElectronEnabledChange}
+                onChange={this._onEnvPresetSettingCheck("isElectronEnabled")}
                 type="checkbox"
               />
             </label>
             <label className={styles.envPresetRow}>
-              <span className={`${styles.envPresetLabel} ${styles.highlight}`}>
+              <LinkToDocs
+                className={`${styles.envPresetLabel} ${styles.highlight}`}
+                section="targetsnode"
+              >
                 Node
-              </span>
+              </LinkToDocs>
               <input
                 className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
                 disabled={
@@ -241,37 +276,103 @@ class ExpandedContainer extends Component {
                 min={envPresetDefaults.node.min}
                 max={999}
                 step={envPresetDefaults.node.step}
-                onChange={this._onNodeChange}
+                onChange={this._onEnvPresetSettingChange("node")}
                 value={envConfig.node}
               />
               <input
                 checked={envConfig.isNodeEnabled}
                 className={styles.envPresetCheckbox}
                 disabled={disableEnvSettings}
-                onChange={this._onIsNodeEnabledChange}
+                onChange={this._onEnvPresetSettingCheck("isNodeEnabled")}
                 type="checkbox"
               />
             </label>
-            <label className={styles.settingsLabel}>
+            <label className={styles.envPresetRow}>
+              <LinkToDocs
+                className={`${styles.envPresetLabel} ${styles.highlight}`}
+                section="usebuiltins"
+              >
+                Built-ins
+              </LinkToDocs>
+              {isEnvFeatureSupported(envConfig.version, "builtInsUsage") && (
+                <select
+                  value={envConfig.builtIns}
+                  className={styles.envPresetSelect}
+                  onChange={this._onEnvPresetSettingChange("builtIns")}
+                  disabled={
+                    !envPresetState.isLoaded ||
+                    !envConfig.isEnvPresetEnabled ||
+                    !envConfig.isBuiltInsEnabled ||
+                    runtimePolyfillState.isEnabled
+                  }
+                >
+                  <option value="entry">Entry</option>
+                  <option value="usage">Usage</option>
+                </select>
+              )}
               <input
-                checked={builtIns}
-                className={styles.inputCheckboxLeft}
-                disabled={runtimePolyfillState.isEnabled || disableEnvSettings}
-                onChange={this._onBuiltInsChange}
-                type="checkbox"
-              />
-              Built-ins
-            </label>
-            <label className={styles.settingsLabel}>
-              <input
-                checked={debugEnvPreset}
-                className={styles.inputCheckboxLeft}
+                checked={envConfig.isBuiltInsEnabled}
+                className={styles.envPresetCheckbox}
                 disabled={disableEnvSettings}
-                onChange={this._onDebugChange}
+                onChange={this._onEnvPresetSettingCheck("isBuiltInsEnabled")}
                 type="checkbox"
               />
-              Debug
             </label>
+            {isEnvFeatureSupported(envConfig.version, "shippedProposals") && (
+              <label className={styles.envPresetRow}>
+                {shippedProposalsState.isLoading ? (
+                  <span className={styles.envPresetLoaderWrapper}>
+                    <PresetLoadingAnimation size={1.6} />
+                  </span>
+                ) : (
+                  <LinkToDocs
+                    className={`${styles.envPresetLabel} ${styles.highlight}`}
+                    section="shippedProposals"
+                  >
+                    Shipped Proposals
+                  </LinkToDocs>
+                )}
+                <input
+                  checked={envConfig.shippedProposals}
+                  className={styles.envPresetCheckbox}
+                  // TODO
+                  disabled={disableEnvSettings}
+                  onChange={this._onEnvPresetSettingCheck("shippedProposals")}
+                  type="checkbox"
+                />
+              </label>
+            )}
+            {isEnvFeatureSupported(envConfig.version, "forceAllTransforms") && (
+              <label className={styles.envPresetRow}>
+                <LinkToDocs
+                  className={`${styles.envPresetLabel} ${styles.highlight}`}
+                  section="forcealltransforms"
+                >
+                  Force All Transforms
+                </LinkToDocs>
+                <input
+                  checked={envConfig.forceAllTransforms}
+                  className={styles.envPresetCheckbox}
+                  disabled={disableEnvSettings}
+                  onChange={this._onEnvPresetSettingCheck("forceAllTransforms")}
+                  type="checkbox"
+                />
+              </label>
+            )}
+            {isEnvFeatureSupported(envConfig.version, "debug") && (
+              <label className={styles.settingsLabel}>
+                <input
+                  checked={debugEnvPreset}
+                  className={styles.inputCheckboxLeft}
+                  disabled={
+                    disableEnvSettings || runtimePolyfillState.isEnabled
+                  }
+                  onChange={this._onSettingCheck("debugEnvPreset")}
+                  type="checkbox"
+                />
+                Debug
+              </label>
+            )}
           </AccordionTab>
         </div>
         {babelVersion && (
@@ -292,53 +393,18 @@ class ExpandedContainer extends Component {
     );
   }
 
-  _onBrowsersChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange("browsers", event.target.value);
+  _onEnvPresetSettingChange = (type: string) => (
+    event: SyntheticInputEvent
+  ) => {
+    this.props.onEnvPresetSettingChange(type, event.target.value);
   };
 
-  _onEnvPresetEnabledChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange(
-      "isEnvPresetEnabled",
-      event.target.checked
-    );
+  _onEnvPresetSettingCheck = (type: string) => (event: SyntheticInputEvent) => {
+    this.props.onEnvPresetSettingChange(type, event.target.checked);
   };
 
-  _onBuiltInsChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange("builtIns", event.target.checked);
-  };
-
-  _onDebugChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange("debugEnvPreset", event.target.checked);
-  };
-
-  _onElectronChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange(
-      "electron",
-      parseFloat(event.target.value)
-    );
-  };
-
-  _onFileSizeChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange("fileSize", event.target.checked);
-  };
-
-  _onIsElectronEnabledChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange(
-      "isElectronEnabled",
-      event.target.checked
-    );
-  };
-
-  _onIsNodeEnabledChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange("isNodeEnabled", event.target.checked);
-  };
-
-  _onLineWrappingChange = (event: SyntheticInputEvent) => {
-    this.props.onSettingChange("lineWrap", event.target.checked);
-  };
-
-  _onNodeChange = (event: SyntheticInputEvent) => {
-    this.props.onEnvPresetSettingChange("node", parseFloat(event.target.value));
+  _onSettingCheck = (type: string) => (event: SyntheticInputEvent) => {
+    this.props.onSettingChange(type, event.target.checked);
   };
 
   _toggleEnvPresetTab = () => {
@@ -557,8 +623,17 @@ const styles = {
       flex: "1 0 150px",
     },
   }),
+  accordionLabelVersion: css({
+    fontSize: "1rem",
+    fontWeight: 400,
+    marginLeft: "2px",
+  }),
   inputCheckboxLeft: css({
     margin: "0 0.75rem 0 0 !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
+
+    "&:disabled": {
+      opacity: 0.5,
+    },
   }),
   highlight: css({
     textTransform: "uppercase",
@@ -600,22 +675,47 @@ const styles = {
   envPresetNumber: css({
     flex: "0 0 4rem",
     maxWidth: "4rem",
+    paddingLeft: "0.75rem",
   }),
   envPresetCheckbox: css({
     flex: "0 0 auto",
-    margin: "0 0.75rem !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
+    margin: "0 0 0 0.75rem !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
   }),
   envPresetLabel: css({
     flex: 1,
+    color: "#FFF",
+
+    ":hover": {
+      textDecoration: "none",
+      color: "#FFF",
+    },
   }),
-  envPresetInput: css({
-    WebkitAppearance: "none",
-    border: "none",
-    borderRadius: "0.25rem",
+  envPresetSelect: css({
+    maxWidth: "7rem",
+    fontWeight: 400,
+    color: colors.textareaForeground,
 
     "&:disabled": {
       opacity: 0.5,
     },
+  }),
+  envPresetTextarea: css({
+    resize: "vertical",
+  }),
+  envPresetInput: css({
+    WebkitAppearance: "none",
+    border: "none",
+    fontWeight: 400,
+    borderRadius: "0.25rem",
+    color: colors.textareaForeground,
+
+    "&:disabled": {
+      opacity: 0.5,
+    },
+  }),
+  envPresetLoaderWrapper: css({
+    display: "flex",
+    flex: "1 1 auto",
   }),
   versionRow: css({
     display: "flex",

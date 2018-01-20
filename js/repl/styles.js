@@ -19,6 +19,8 @@ const colors = {
   infoBackground: "#fffbe5",
   infoBorder: "#fff5c2",
   infoForeground: "#5c3c00",
+
+  textareaForeground: "#323330",
 };
 
 const media = {

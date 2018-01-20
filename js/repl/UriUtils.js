@@ -11,6 +11,8 @@ const URL_KEYS = [
   "builtIns",
   "code",
   "debug",
+  "forceAllTransforms",
+  "shippedProposals",
   "circleciRepo",
   "evaluate",
   "fileSize",
@@ -19,6 +21,7 @@ const URL_KEYS = [
   "prettier",
   "targets",
   "version",
+  "envVersion",
 ];
 
 const compress = (string: string) =>
