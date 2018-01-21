@@ -38,7 +38,7 @@ type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
 type OnTabExpandedChange = (name: string, isExpanded: boolean) => void;
-type OfficialChanged = (value: string) => void;
+type ShowOfficialExternalPluginsChanged = (value: string) => void;
 type PluginSearch = (value: string) => void;
 type PluginChange = (plugin: Object) => void;
 
@@ -48,11 +48,11 @@ type Props = {
   debugEnvPreset: boolean,
   pluginsLoading: boolean,
   pluginValue: string,
-  official: boolean,
+  showOfficialExternalPlugins: boolean,
   plugins: Array<Object>,
   pluginChange: PluginChange,
   externalPlugins: Array<Object>,
-  officialChanged: OfficialChanged,
+  showOfficialExternalPluginsChanged: ShowOfficialExternalPluginsChanged,
   envConfig: EnvConfig,
   pluginSearch: PluginSearch,
   envPresetState: EnvState,
@@ -122,11 +122,11 @@ export default graphql(
     }
   `,
   {
-    options: ({ pluginValue, official }) => ({
+    options: ({ pluginValue, showOfficialExternalPlugins }) => ({
       variables: {
         name: pluginValue,
         babelWebsite: true,
-        official: official || false,
+        official: showOfficialExternalPlugins || false,
       },
     }),
     props: ({ data: { loading, plugins } }) => ({
@@ -168,7 +168,7 @@ class ExpandedContainer extends Component {
       pluginsLoading,
       plugins,
       pluginValue,
-      official,
+      showOfficialExternalPlugins,
     } = this.props;
 
     const disableEnvSettings =
@@ -453,8 +453,12 @@ class ExpandedContainer extends Component {
                 />
                 <label className={styles.settingsLabel}>
                   <input
-                    checked={official}
-                    onChange={e => this._onOfficialChanged(e.target.value)}
+                    checked={showOfficialExternalPlugins}
+                    onChange={e => {
+                      this._onshowOfficialExternalPluginsChanged(
+                        e.target.value
+                      )}
+                    }
                     className={styles.inputCheckboxLeft}
                     type="checkbox"
                   />
@@ -549,8 +553,8 @@ class ExpandedContainer extends Component {
     this.props.pluginSearch(value);
   };
 
-  _onOfficialChanged = value => {
-    this.props.officialChanged(value);
+  _onshowOfficialExternalPluginsChanged = value => {
+    this.props.showOfficialExternalPluginsChanged(value);
   };
 
   _toggleSettingsTab = () => {
