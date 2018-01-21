@@ -73,6 +73,7 @@ type State = {
   pluginSearch: ?string,
   version: number,
   official: boolean,
+  loadingExternalPlugins: boolean,
 };
 
 const DEBOUNCE_DELAY = 500;
@@ -227,6 +228,7 @@ class Repl extends React.Component {
           pluginValue={state.pluginSearch}
           officialChanged={this._officialChanged}
           official={state.official}
+          loadingExternalPlugins={state.loadingExternalPlugins}
         />
 
         <div className={styles.panels}>
@@ -398,6 +400,8 @@ class Repl extends React.Component {
     const pluginName = plugin.package.name;
     const pluginExists = this.state.externalPlugins.includes(pluginName);
 
+    this.setState({loadingExternalPlugins: true});
+
     this._workerApi.loadExternalPlugin(plugin.bundled).then(loaded => {
       if (loaded === false) {
         throw new Error(`Plugin ${pluginName} could not be loaded`);
@@ -408,7 +412,9 @@ class Repl extends React.Component {
           instanceName: toCamelCase(pluginName),
           pluginName: pluginName,
         },
-      ]);
+      ]).then(() => {
+        this.setState({loadingExternalPlugins: false});
+      });
 
       if (!pluginExists) {
         this.setState(
@@ -418,9 +424,12 @@ class Repl extends React.Component {
           this._pluginsUpdatedSetStateCallback
         );
       } else {
-        this.setState(state => ({
-          externalPlugins: state.externalPlugins.filter(p => p !== pluginName),
-        }));
+        this.setState(
+          state => ({
+            externalPlugins: state.externalPlugins.filter(p => p !== pluginName),
+          }),
+          this._pluginsUpdatedSetStateCallback
+        );
       }
     });
   };

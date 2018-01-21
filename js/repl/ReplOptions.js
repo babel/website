@@ -72,6 +72,7 @@ type Props = {
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
   runtimePolyfillState: PluginState,
+  loadingExternalPlugins: boolean,
 };
 
 type LinkProps = {
@@ -429,7 +430,7 @@ class ExpandedContainer extends Component {
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}
             isExpanded={isPluginsExpanded}
-            label={<span>Plugins</span>}
+            label={<span>Plugins {this.props.loadingExternalPlugins ? <PresetLoadingAnimation /> : ''}</span>}
             toggleIsExpanded={this._togglePluginsTab}
           >
             <label className={styles.pluginContainer}>
