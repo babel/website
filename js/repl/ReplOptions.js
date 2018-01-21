@@ -430,7 +430,16 @@ class ExpandedContainer extends Component {
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}
             isExpanded={isPluginsExpanded}
-            label={<span>Plugins {this.props.loadingExternalPlugins ? <PresetLoadingAnimation /> : ''}</span>}
+            label={
+              <span className={styles.pluginsHeader}>
+                Plugins
+                {this.props.loadingExternalPlugins ? (
+                  <PresetLoadingAnimation />
+                ) : (
+                  ""
+                )}
+              </span>
+            }
             toggleIsExpanded={this._togglePluginsTab}
           >
             <label className={styles.pluginContainer}>
@@ -660,7 +669,7 @@ const styles = {
   expandedContainer: css({
     flexDirection: "column",
     display: "flex",
-    overflowY: "auto",
+    overflow: "auto",
     boxShadow:
       "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.24) 0px 1px 4px",
 
@@ -758,7 +767,12 @@ const styles = {
   pluginContainer: css({
     display: "block",
     maxHeight: 300,
-    overflow: "scroll",
+    overflow: "auto",
+    overflowX: "hidden",
+  }),
+  pluginsHeader: css({
+    display: "flex",
+    justifyContent: "space-between",
   }),
   accordionLabelVersion: css({
     fontSize: "1rem",
