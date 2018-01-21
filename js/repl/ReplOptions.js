@@ -454,7 +454,7 @@ class ExpandedContainer extends Component {
                 <label className={styles.settingsLabel}>
                   <input
                     checked={official}
-                    onChange={e => this._onOfficialChanged(e.target.value)}
+                    onChange={e => this._onOfficialChanged(e.target.checked)}
                     className={styles.inputCheckboxLeft}
                     type="checkbox"
                   />
@@ -476,11 +476,7 @@ class ExpandedContainer extends Component {
                         type="checkbox"
                       />
                       {plugin.package.name
-                        .split("babel-preset-")
-                        .join("")
                         .split("babel-plugin-")
-                        .join("")
-                        .split("@babel/plugin-")
                         .join("")}
                     </label>
                   ))}
