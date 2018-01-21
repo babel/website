@@ -16,6 +16,14 @@ registerPromiseWorker(message => {
     case "compile":
       return compile(message.code, message.config);
 
+    case "loadExternalPlugin": {
+      try {
+        self.importScripts(message.url);
+      } catch (err) {
+        return err;
+      }
+    }
+
     case "getBabelVersion":
       try {
         return Babel.version;
