@@ -2,8 +2,8 @@
 
 import { css } from "emotion";
 import React, { Component } from "react";
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
@@ -89,21 +89,29 @@ const ReplOptions = (props: Props) => (
   </div>
 );
 
-export default graphql(gql`
-  query getPlugins {
-    plugins {
-      package {
-        name
-        description
-        version
-        links {
-          repository
+export default graphql(
+  gql`
+    query getPlugins {
+      plugins {
+        package {
+          name
+          description
+          version
+          links {
+            repository
+          }
         }
+        bundled
       }
-      bundled
     }
+  `,
+  {
+    props: ({ data: { loading, plugins } }) => ({
+      pluginsLoading: loading,
+      plugins: plugins,
+    }),
   }
-`)(ReplOptions);;
+)(ReplOptions);
 
 // The choice of Component over PureComponent is intentional here.
 // It simplifies the re-use of PluginState objects,
@@ -134,6 +142,9 @@ class ExpandedContainer extends Component {
       presetState,
       runtimePolyfillConfig,
       runtimePolyfillState,
+      pluginsLoading,
+      plugins,
+      externalPlugins,
     } = this.props;
 
     const disableEnvSettings =
@@ -398,19 +409,20 @@ class ExpandedContainer extends Component {
             label={<span>Plugins</span>}
             toggleIsExpanded={this._togglePluginsTab}
           >
-            <label className={styles.settingsLabel}>
-              {console.log(this.props)}
-              <input
-                checked={envConfig.isEnvPresetEnabled}
-                className={styles.inputCheckboxLeft}
-                type="checkbox"
-                onChange={this._onEnvPresetSettingCheck("isEnvPresetEnabled")}
-              />
-
-              {envPresetState.isLoading ? (
+            <label className={styles.pluginRow}>
+              {pluginsLoading ? (
                 <PresetLoadingAnimation />
               ) : (
-                "Enabled"
+                plugins.map(plugin => (
+                  <label className={styles.pluginRow}>
+                    <input
+                      className={styles.inputCheckboxLeft}
+                      onChange={e => this._pluginChanged(e, plugin.package.name)}
+                      type="checkbox"
+                    />
+                    {plugin.package.name}
+                  </label>
+                ))
               )}
             </label>
           </AccordionTab>
@@ -473,6 +485,14 @@ class ExpandedContainer extends Component {
       "isSettingsTabExpanded",
       !this.props.isSettingsTabExpanded
     );
+  };
+
+  _pluginChanged = (e, name) => {
+    const on = e.target.value === "on";
+    const externalPlugins = this.props.externalPlugins;
+    if (!externalPlugins[name] && on) {
+      this.props.pluginChange(name);
+    }
   };
 }
 
@@ -669,6 +689,9 @@ const styles = {
     [media.mediumAndDown]: {
       flex: "1 0 150px",
     },
+  }),
+  pluginRow: css({
+    display: "block",
   }),
   accordionLabelVersion: css({
     fontSize: "1rem",

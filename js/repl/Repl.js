@@ -142,6 +142,7 @@ class Repl extends React.Component {
         persistedState.evaluate
       ),
       sourceMap: null,
+      externalPlugins: [],
     };
 
     this._setupBabel(defaultPresets);
@@ -200,6 +201,8 @@ class Repl extends React.Component {
           presetState={state.presets}
           runtimePolyfillConfig={runtimePolyfillConfig}
           runtimePolyfillState={state.runtimePolyfillState}
+          externalPlugins={state.externalPlugins}
+          pluginChange={this._pluginChange}
         />
 
         <div className={styles.panels}>
@@ -363,6 +366,8 @@ class Repl extends React.Component {
     }
   }
 
+  _pluginChange = name => this.setState({externalPlugins : this.state.externalPlugins.concat(name)});
+
   _compile = (code: string, setStateCallback: () => mixed) => {
     const { state } = this;
     const { runtimePolyfillState } = state;
@@ -375,6 +380,7 @@ class Repl extends React.Component {
     }
     this._workerApi
       .compile(code, {
+        externalPlugins: state.externalPlugins,
         debugEnvPreset: state.debugEnvPreset,
         envConfig: state.envPresetState.isLoaded ? state.envConfig : null,
         evaluate:
