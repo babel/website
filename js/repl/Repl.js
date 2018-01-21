@@ -72,7 +72,7 @@ type State = {
   externalPlugins: Array<string>,
   pluginSearch: ?string,
   version: number,
-  official: boolean,
+  showOfficialExternalPlugins: boolean,
   loadingExternalPlugins: boolean,
 };
 
@@ -162,7 +162,7 @@ class Repl extends React.Component {
         persistedState.evaluate
       ),
       sourceMap: null,
-      official: false,
+      showOfficialExternalPlugins: false,
       externalPlugins: [],
     };
 
@@ -226,8 +226,10 @@ class Repl extends React.Component {
           pluginChange={this._pluginChange}
           pluginSearch={this._pluginSearch}
           pluginValue={state.pluginSearch}
-          officialChanged={this._officialChanged}
-          official={state.official}
+          showOfficialExternalPluginsChanged={
+            this._showOfficialExternalPluginsChanged
+          }
+          showOfficialExternalPlugins={state.showOfficialExternalPlugins}
           loadingExternalPlugins={state.loadingExternalPlugins}
         />
 
@@ -442,9 +444,9 @@ class Repl extends React.Component {
     });
   };
 
-  _officialChanged = () =>
+  _showOfficialExternalPluginsChanged = () =>
     this.setState(state => ({
-      official: !state.official,
+      showOfficialExternalPlugins: !state.showOfficialExternalPlugins,
     }));
 
   _compile = (code: string, setStateCallback: () => mixed) => {
