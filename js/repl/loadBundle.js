@@ -1,3 +1,5 @@
+// @flow
+
 import semver from "semver";
 import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./CircleCI";
 import { BabelState } from "./types";

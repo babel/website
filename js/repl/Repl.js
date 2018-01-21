@@ -59,6 +59,7 @@ type State = {
   evalErrorMessage: ?string,
   fileSize: boolean,
   isEnvPresetTabExpanded: boolean,
+  isPluginsExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
@@ -125,6 +126,7 @@ class Repl extends React.Component {
       fileSize: persistedState.fileSize,
       isEnvPresetTabExpanded: defaultPresets["env"],
       isPresetsTabExpanded,
+      isPluginsExpanded: false,
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
@@ -186,6 +188,7 @@ class Repl extends React.Component {
           fileSize={state.fileSize}
           isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
           isExpanded={state.isSidebarExpanded}
+          isPluginsExpanded={state.isPluginsExpanded}
           isPresetsTabExpanded={state.isPresetsTabExpanded}
           isSettingsTabExpanded={state.isSettingsTabExpanded}
           lineWrap={state.lineWrap}
@@ -485,6 +488,7 @@ class Repl extends React.Component {
       evaluate: state.runtimePolyfillState.isEnabled,
       fileSize: state.fileSize,
       isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
+      isPluginsExpanded: state.isPluginsExpanded,
       isPresetsTabExpanded: state.isPresetsTabExpanded,
       isSettingsTabExpanded: state.isSettingsTabExpanded,
       lineWrap: state.lineWrap,

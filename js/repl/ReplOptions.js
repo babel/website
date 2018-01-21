@@ -2,6 +2,8 @@
 
 import { css } from "emotion";
 import React, { Component } from "react";
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
@@ -45,6 +47,7 @@ type Props = {
   envPresetState: EnvState,
   shippedProposalsState: ShippedProposalsState,
   isEnvPresetTabExpanded: boolean,
+  isPluginsExpanded: boolean,
   fileSize: boolean,
   isExpanded: boolean,
   isPresetsTabExpanded: boolean,
@@ -86,7 +89,21 @@ const ReplOptions = (props: Props) => (
   </div>
 );
 
-export default ReplOptions;
+export default graphql(gql`
+  query getPlugins {
+    plugins {
+      package {
+        name
+        description
+        version
+        links {
+          repository
+        }
+      }
+      bundled
+    }
+  }
+`)(ReplOptions);;
 
 // The choice of Component over PureComponent is intentional here.
 // It simplifies the re-use of PluginState objects,
@@ -107,6 +124,7 @@ class ExpandedContainer extends Component {
       shippedProposalsState,
       fileSize,
       isEnvPresetTabExpanded,
+      isPluginsExpanded,
       isPresetsTabExpanded,
       isSettingsTabExpanded,
       lineWrap,
@@ -374,6 +392,28 @@ class ExpandedContainer extends Component {
               </label>
             )}
           </AccordionTab>
+          <AccordionTab
+            className={`${styles.section} ${styles.sectionEnv}`}
+            isExpanded={isPluginsExpanded}
+            label={<span>Plugins</span>}
+            toggleIsExpanded={this._togglePluginsTab}
+          >
+            <label className={styles.settingsLabel}>
+              {console.log(this.props)}
+              <input
+                checked={envConfig.isEnvPresetEnabled}
+                className={styles.inputCheckboxLeft}
+                type="checkbox"
+                onChange={this._onEnvPresetSettingCheck("isEnvPresetEnabled")}
+              />
+
+              {envPresetState.isLoading ? (
+                <PresetLoadingAnimation />
+              ) : (
+                "Enabled"
+              )}
+            </label>
+          </AccordionTab>
         </div>
         {babelVersion && (
           <div className={styles.versionRow} title={`v${babelVersion}`}>
@@ -411,6 +451,13 @@ class ExpandedContainer extends Component {
     this.props.onTabExpandedChange(
       "isEnvPresetTabExpanded",
       !this.props.isEnvPresetTabExpanded
+    );
+  };
+
+  _togglePluginsTab = () => {
+    this.props.onTabExpandedChange(
+      "isPluginsExpanded",
+      !this.props.isPluginsExpanded
     );
   };
 
