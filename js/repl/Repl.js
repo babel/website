@@ -73,6 +73,18 @@ type State = {
 
 const DEBOUNCE_DELAY = 500;
 
+function toCamelCase(str) {
+  return str
+    .replace(/-/g, " ")
+    .replace(/\s(.)/g, function($1) {
+      return $1.toUpperCase();
+    })
+    .replace(/\s/g, "")
+    .replace(/^(.)/, function($1) {
+      return $1.toLowerCase();
+    });
+}
+
 class Repl extends React.Component {
   props: Props;
   state: State;
@@ -368,16 +380,32 @@ class Repl extends React.Component {
       }
     }
   }
-
-  _pluginChange = plugin =>
-    this.setState({
-      externalPlugins: this.state.externalPlugins.concat(plugin),
-    });
-
   _pluginSearch = value =>
     this.setState({
       pluginSearch: value,
     });
+
+  _pluginChange = plugin => {
+    const pluginName = plugin.package.name;
+
+    this._workerApi.loadExternalPlugin(plugin.bundled).then(loaded => {
+      if (loaded === false) {
+        throw new Error(`Plugin ${pluginName} could not be loaded`);
+      }
+
+      this._workerApi.registerPlugins([
+        {
+          instanceName: toCamelCase(pluginName),
+          pluginName: pluginName,
+        },
+      ]);
+
+      this.setState(
+        state => ({ externalPlugins: [...state.externalPlugins, pluginName] }),
+        this._pluginsUpdatedSetStateCallback
+      );
+    });
+  };
 
   _compile = (code: string, setStateCallback: () => mixed) => {
     const { state } = this;
@@ -391,7 +419,7 @@ class Repl extends React.Component {
     }
     this._workerApi
       .compile(code, {
-        externalPlugins: state.externalPlugins,
+        plugins: state.externalPlugins,
         debugEnvPreset: state.debugEnvPreset,
         envConfig: state.envPresetState.isLoaded ? state.envConfig : null,
         evaluate:
@@ -423,7 +451,7 @@ class Repl extends React.Component {
           [name]: value,
         },
       }),
-      this._presetsUpdatedSetStateCallback
+      this._pluginsUpdatedSetStateCallback
     );
   };
 
@@ -463,7 +491,7 @@ class Repl extends React.Component {
           presets,
         };
       }
-    }, this._presetsUpdatedSetStateCallback);
+    }, this._pluginsUpdatedSetStateCallback);
   };
 
   _onTabExpandedChange = (name: string, isExpanded: boolean) => {
@@ -471,7 +499,7 @@ class Repl extends React.Component {
       {
         [name]: isExpanded,
       },
-      this._presetsUpdatedSetStateCallback
+      this._pluginsUpdatedSetStateCallback
     );
   };
 
@@ -520,7 +548,7 @@ class Repl extends React.Component {
     UriUtils.updateQuery(payload);
   };
 
-  _presetsUpdatedSetStateCallback = () => {
+  _pluginsUpdatedSetStateCallback = () => {
     this._checkForUnloadedPlugins();
     this._updateCode(this.state.code);
   };
