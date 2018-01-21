@@ -69,6 +69,10 @@ type State = {
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
   sourceMap: ?string,
+  externalPlugins: Array<string>,
+  pluginSearch: ?string,
+  version: number,
+  official: boolean,
 };
 
 const DEBOUNCE_DELAY = 500;

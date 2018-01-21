@@ -1,5 +1,9 @@
 [ignore]
 <PROJECT_ROOT>/_site/.*
+<PROJECT_ROOT>/node_modules/graphql/.*
+<PROJECT_ROOT>/node_modules/react-apollo/.*
+<PROJECT_ROOT>/node_modules/graphql-tag/.*
+<PROJECT_ROOT>/node_modules/apollo-utilities/.*
 
 [include]
 

@@ -38,12 +38,23 @@ type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
 type OnTabExpandedChange = (name: string, isExpanded: boolean) => void;
+type OfficialChanged = (value: string) => void;
+type PluginSearch = (value: string) => void;
+type PluginChange = (plugin: Object) => void;
 
 type Props = {
   babelVersion: ?string,
   className: string,
   debugEnvPreset: boolean,
+  pluginsLoading: boolean,
+  pluginValue: string,
+  official: boolean,
+  plugins: Array<Object>,
+  pluginChange: PluginChange,
+  externalPlugins: Array<Object>,
+  officialChanged: OfficialChanged,
   envConfig: EnvConfig,
+  pluginSearch: PluginSearch,
   envPresetState: EnvState,
   shippedProposalsState: ShippedProposalsState,
   isEnvPresetTabExpanded: boolean,
@@ -155,10 +166,7 @@ class ExpandedContainer extends Component {
       runtimePolyfillState,
       pluginsLoading,
       plugins,
-      externalPlugins,
-      pluginSearch,
       pluginValue,
-      officialChanged,
       official,
     } = this.props;
 
@@ -448,7 +456,10 @@ class ExpandedContainer extends Component {
               ) : (
                 <div>
                   {plugins.map(plugin => (
-                    <label className={styles.pluginRow}>
+                    <label
+                      key={plugin.package.name}
+                      className={styles.pluginRow}
+                    >
                       <input
                         className={styles.inputCheckboxLeft}
                         onChange={e => this._pluginChanged(e, plugin)}

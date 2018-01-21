@@ -114,7 +114,7 @@ export default class WorkerApi {
     });
   }
 
-  loadScript(url: string): Promise<boolean> {
+  loadScript(url: ?string): Promise<boolean> {
     return this._worker.postMessage({
       method: "loadScript",
       url,
