@@ -91,8 +91,12 @@ const ReplOptions = (props: Props) => (
 
 export default graphql(
   gql`
-    query getPlugins($name: String!, $babelWebsite: Boolean) {
-      plugins(name: $name, babelWebsite: $babelWebsite) {
+    query getPlugins(
+      $name: String!
+      $babelWebsite: Boolean
+      $official: Boolean
+    ) {
+      plugins(name: $name, babelWebsite: $babelWebsite, official: $official) {
         package {
           name
           description
@@ -106,7 +110,13 @@ export default graphql(
     }
   `,
   {
-    options: ({ pluginValue }) => ({ variables: { name: pluginValue, babelWebsite: true } }),
+    options: ({ pluginValue, official }) => ({
+      variables: {
+        name: pluginValue,
+        babelWebsite: true,
+        official: official || false,
+      },
+    }),
     props: ({ data: { loading, plugins } }) => ({
       pluginsLoading: loading,
       plugins: plugins,
@@ -148,6 +158,8 @@ class ExpandedContainer extends Component {
       externalPlugins,
       pluginSearch,
       pluginValue,
+      officialChanged,
+      official,
     } = this.props;
 
     const disableEnvSettings =
@@ -413,13 +425,24 @@ class ExpandedContainer extends Component {
             toggleIsExpanded={this._togglePluginsTab}
           >
             <label className={styles.pluginContainer}>
-              <input
-                placeholder="Type the plugin name"
-                value={pluginValue}
-                onChange={e => this._pluginNameChanged(e.target.value)}
-                className={`${styles.pluginName} ${styles.envPresetInput}`}
-                type="text"
-              />
+              <div className={styles.pluginsSearch}>
+                <input
+                  placeholder="Type the plugin name"
+                  value={pluginValue}
+                  onChange={e => this._pluginNameChanged(e.target.value)}
+                  className={`${styles.pluginName} ${styles.envPresetInput}`}
+                  type="text"
+                />
+                <label className={styles.settingsLabel}>
+                  <input
+                    checked={official}
+                    onChange={e => this._onOfficialChanged(e.target.value)}
+                    className={styles.inputCheckboxLeft}
+                    type="checkbox"
+                  />
+                  Only official Plugins
+                </label>
+              </div>
               {pluginsLoading ? (
                 <PresetLoadingAnimation />
               ) : (
@@ -431,10 +454,16 @@ class ExpandedContainer extends Component {
                         onChange={e => this._pluginChanged(e, plugin)}
                         type="checkbox"
                       />
-                      {plugin.package.name.split('babel-plugin-').join('').split('@babel/plugin-').join('')}
+                      {plugin.package.name
+                        .split("babel-plugin-")
+                        .join("")
+                        .split("@babel/plugin-")
+                        .join("")}
                     </label>
                   ))}
-                  {!plugins.length ? 'There are no plugins that match your query' : null}
+                  {!plugins.length
+                    ? "There are no plugins that match your query"
+                    : null}
                 </div>
               )}
             </label>
@@ -495,6 +524,10 @@ class ExpandedContainer extends Component {
 
   _pluginNameChanged = value => {
     this.props.pluginSearch(value);
+  };
+
+  _onOfficialChanged = value => {
+    this.props.officialChanged(value);
   };
 
   _toggleSettingsTab = () => {
@@ -809,6 +842,11 @@ const styles = {
     "&:disabled": {
       opacity: 0.5,
     },
+  }),
+  pluginsSearch: css({
+    paddingBottom: 10,
+    marginBottom: 10,
+    borderBottom: `1px solid ${colors.inverseBackgroundDark}`,
   }),
   envPresetLoaderWrapper: css({
     display: "flex",

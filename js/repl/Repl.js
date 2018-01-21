@@ -75,12 +75,16 @@ const DEBOUNCE_DELAY = 500;
 
 function toCamelCase(str) {
   return str
-    .replace(/-/g, ' ')
-    .replace(/\//g, '_')
-    .replace(/@/g, '_')
-    .replace(/\s(.)/g, function($1) { return $1.toUpperCase(); })
-    .replace(/\s/g, '')
-    .replace(/^(.)/, function($1) { return $1.toLowerCase(); });
+    .replace(/-/g, " ")
+    .replace(/\//g, "_")
+    .replace(/@/g, "_")
+    .replace(/\s(.)/g, function($1) {
+      return $1.toUpperCase();
+    })
+    .replace(/\s/g, "")
+    .replace(/^(.)/, function($1) {
+      return $1.toLowerCase();
+    });
 }
 
 class Repl extends React.Component {
@@ -153,6 +157,7 @@ class Repl extends React.Component {
         persistedState.evaluate
       ),
       sourceMap: null,
+      official: false,
       externalPlugins: [],
     };
 
@@ -216,6 +221,8 @@ class Repl extends React.Component {
           pluginChange={this._pluginChange}
           pluginSearch={this._pluginSearch}
           pluginValue={state.pluginSearch}
+          officialChanged={this._officialChanged}
+          official={state.official}
         />
 
         <div className={styles.panels}>
@@ -407,14 +414,17 @@ class Repl extends React.Component {
           this._pluginsUpdatedSetStateCallback
         );
       } else {
-        this.setState(
-          state => ({
-            externalPlugins: state.externalPlugins.filter(p => p !== pluginName ),
-          })
-        );
+        this.setState(state => ({
+          externalPlugins: state.externalPlugins.filter(p => p !== pluginName),
+        }));
       }
     });
   };
+
+  _officialChanged = () =>
+    this.setState(state => ({
+      official: !state.official,
+    }));
 
   _compile = (code: string, setStateCallback: () => mixed) => {
     const { state } = this;

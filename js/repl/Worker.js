@@ -71,12 +71,14 @@ registerPromiseWorker(message => {
         message.plugins.forEach(({ pluginName, instanceName }) => {
           let plugin = self[instanceName];
 
-          if (typeof plugin.default === 'function') {
+          if (typeof plugin.default === "function") {
             plugin = plugin.default;
           }
 
-          if (typeof plugin === 'undefined') {
-            throw new Error(`Tried to register plugin "${instanceName}" but something went wrong`);
+          if (typeof plugin === "undefined") {
+            throw new Error(
+              `Tried to register plugin "${instanceName}" but something went wrong`
+            );
           }
 
           Babel.registerPlugin(pluginName, plugin);

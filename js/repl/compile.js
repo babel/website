@@ -90,7 +90,7 @@ export default function compile(code: string, config: CompileConfig): Return {
     console.log(babelConfig);
 
     const transformed = Babel.transform(code, babelConfig);
-    console.log('out', transformed);
+    console.log("out", transformed);
     compiled = transformed.code;
     if (config.sourceMap) {
       try {
@@ -115,7 +115,7 @@ export default function compile(code: string, config: CompileConfig): Return {
     }
     meta.compiledSize = new Blob([compiled], { type: "text/plain" }).size;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     compiled = null;
     compileErrorMessage = error.message;
     envPresetDebugInfo = null;
