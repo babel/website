@@ -404,7 +404,11 @@ class Repl extends React.Component {
 
     this._workerApi.loadExternalPlugin(plugin.bundled).then(loaded => {
       if (loaded === false) {
-        throw new Error(`Plugin ${pluginName} could not be loaded`);
+        this.setState({
+          compileErrorMessage: `Plugin ${pluginName} could not be loaded`,
+          loadingExternalPlugins: false,
+        });
+        return;
       }
 
       this._workerApi
