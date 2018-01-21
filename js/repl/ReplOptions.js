@@ -454,7 +454,10 @@ class ExpandedContainer extends Component {
                 <label className={styles.settingsLabel}>
                   <input
                     checked={showOfficialExternalPlugins}
-                    onChange={e => this._onshowOfficialExternalPluginsChanged(e.target.checked)}
+                    onChange={e =>
+                      this._onshowOfficialExternalPluginsChanged(
+                        e.target.checked
+                      )}
                     className={styles.inputCheckboxLeft}
                     type="checkbox"
                   />
@@ -475,9 +478,7 @@ class ExpandedContainer extends Component {
                         onChange={e => this._pluginChanged(e, plugin)}
                         type="checkbox"
                       />
-                      {plugin.package.name
-                        .split("babel-plugin-")
-                        .join("")}
+                      {plugin.package.name.split("babel-plugin-").join("")}
                     </label>
                   ))}
                   {!plugins.length
