@@ -431,9 +431,10 @@ class ExpandedContainer extends Component {
                         onChange={e => this._pluginChanged(e, plugin)}
                         type="checkbox"
                       />
-                      {plugin.package.name}
+                      {plugin.package.name.split('babel-plugin-').join('').split('@babel/plugin-').join('')}
                     </label>
                   ))}
+                  {!plugins.length ? 'There are no plugins that match your query' : null}
                 </div>
               )}
             </label>
@@ -614,7 +615,7 @@ const styles = {
   expandedContainer: css({
     flexDirection: "column",
     display: "flex",
-    overflow: "auto",
+    overflowY: "auto",
     boxShadow:
       "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.24) 0px 1px 4px",
 

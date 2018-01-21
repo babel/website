@@ -387,6 +387,7 @@ class Repl extends React.Component {
 
   _pluginChange = plugin => {
     const pluginName = plugin.package.name;
+    const pluginExists = this.state.externalPlugins.includes(pluginName);
 
     this._workerApi.loadExternalPlugin(plugin.bundled).then(loaded => {
       if (loaded === false) {
@@ -400,10 +401,20 @@ class Repl extends React.Component {
         },
       ]);
 
-      this.setState(
-        state => ({ externalPlugins: [...state.externalPlugins, pluginName] }),
-        this._pluginsUpdatedSetStateCallback
-      );
+      if (!pluginExists) {
+        this.setState(
+          state => ({
+            externalPlugins: [...state.externalPlugins, pluginName],
+          }),
+          this._pluginsUpdatedSetStateCallback
+        );
+      } else {
+        this.setState(
+          state => ({
+            externalPlugins: state.externalPlugins.filter(p => p !== pluginName ),
+          })
+        );
+      }
     });
   };
 
