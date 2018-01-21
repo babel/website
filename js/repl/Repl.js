@@ -400,7 +400,7 @@ class Repl extends React.Component {
     const pluginName = plugin.package.name;
     const pluginExists = this.state.externalPlugins.includes(pluginName);
 
-    this.setState({loadingExternalPlugins: true});
+    this.setState({ loadingExternalPlugins: true });
 
     this._workerApi.loadExternalPlugin(plugin.bundled).then(loaded => {
       if (loaded === false) {
@@ -411,14 +411,16 @@ class Repl extends React.Component {
         return;
       }
 
-      this._workerApi.registerPlugins([
-        {
-          instanceName: toCamelCase(pluginName),
-          pluginName: pluginName,
-        },
-      ]).then(() => {
-        this.setState({loadingExternalPlugins: false});
-      });
+      this._workerApi
+        .registerPlugins([
+          {
+            instanceName: toCamelCase(pluginName),
+            pluginName: pluginName,
+          },
+        ])
+        .then(() => {
+          this.setState({ loadingExternalPlugins: false });
+        });
 
       if (!pluginExists) {
         this.setState(
@@ -430,7 +432,9 @@ class Repl extends React.Component {
       } else {
         this.setState(
           state => ({
-            externalPlugins: state.externalPlugins.filter(p => p !== pluginName),
+            externalPlugins: state.externalPlugins.filter(
+              p => p !== pluginName
+            ),
           }),
           this._pluginsUpdatedSetStateCallback
         );
