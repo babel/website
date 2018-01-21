@@ -108,6 +108,7 @@ class Repl extends React.Component {
       babel: persistedStateToBabelState(persistedState, babelConfig),
       code: persistedState.code,
       compiled: null,
+      pluginSearch: "",
       compileErrorMessage: null,
       debugEnvPreset: persistedState.debug,
       envConfig,
@@ -203,6 +204,8 @@ class Repl extends React.Component {
           runtimePolyfillState={state.runtimePolyfillState}
           externalPlugins={state.externalPlugins}
           pluginChange={this._pluginChange}
+          pluginSearch={this._pluginSearch}
+          pluginValue={state.pluginSearch}
         />
 
         <div className={styles.panels}>
@@ -366,7 +369,15 @@ class Repl extends React.Component {
     }
   }
 
-  _pluginChange = plugin => this.setState({externalPlugins : this.state.externalPlugins.concat(plugin)});
+  _pluginChange = plugin =>
+    this.setState({
+      externalPlugins: this.state.externalPlugins.concat(plugin),
+    });
+
+  _pluginSearch = value =>
+    this.setState({
+      pluginSearch: value,
+    });
 
   _compile = (code: string, setStateCallback: () => mixed) => {
     const { state } = this;

@@ -91,8 +91,8 @@ const ReplOptions = (props: Props) => (
 
 export default graphql(
   gql`
-    query getPlugins {
-      plugins {
+    query getPlugins($name: String!) {
+      plugins(name: $name) {
         package {
           name
           description
@@ -106,6 +106,7 @@ export default graphql(
     }
   `,
   {
+    options: ({ pluginValue }) => ({ variables: { name: pluginValue } }),
     props: ({ data: { loading, plugins } }) => ({
       pluginsLoading: loading,
       plugins: plugins,
@@ -145,6 +146,8 @@ class ExpandedContainer extends Component {
       pluginsLoading,
       plugins,
       externalPlugins,
+      pluginSearch,
+      pluginValue,
     } = this.props;
 
     const disableEnvSettings =
@@ -409,20 +412,29 @@ class ExpandedContainer extends Component {
             label={<span>Plugins</span>}
             toggleIsExpanded={this._togglePluginsTab}
           >
-            <label className={styles.pluginRow}>
+            <label className={styles.pluginContainer}>
+              <input
+                placeholder="Type the plugin name"
+                value={pluginValue}
+                onChange={e => this._pluginNameChanged(e.target.value)}
+                className={`${styles.pluginName} ${styles.envPresetInput}`}
+                type="text"
+              />
               {pluginsLoading ? (
                 <PresetLoadingAnimation />
               ) : (
-                plugins.map(plugin => (
-                  <label className={styles.pluginRow}>
-                    <input
-                      className={styles.inputCheckboxLeft}
-                      onChange={e => this._pluginChanged(e, plugin)}
-                      type="checkbox"
-                    />
-                    {plugin.package.name}
-                  </label>
-                ))
+                <div>
+                  {plugins.map(plugin => (
+                    <label className={styles.pluginRow}>
+                      <input
+                        className={styles.inputCheckboxLeft}
+                        onChange={e => this._pluginChanged(e, plugin)}
+                        type="checkbox"
+                      />
+                      {plugin.package.name}
+                    </label>
+                  ))}
+                </div>
               )}
             </label>
           </AccordionTab>
@@ -478,6 +490,10 @@ class ExpandedContainer extends Component {
       "isPresetsTabExpanded",
       !this.props.isPresetsTabExpanded
     );
+  };
+
+  _pluginNameChanged = value => {
+    this.props.pluginSearch(value);
   };
 
   _toggleSettingsTab = () => {
@@ -693,6 +709,11 @@ const styles = {
   pluginRow: css({
     display: "block",
   }),
+  pluginContainer: css({
+    display: "block",
+    maxHeight: 300,
+    overflow: "scroll",
+  }),
   accordionLabelVersion: css({
     fontSize: "1rem",
     fontWeight: 400,
@@ -746,6 +767,11 @@ const styles = {
     flex: "0 0 4rem",
     maxWidth: "4rem",
     paddingLeft: "0.75rem",
+  }),
+  pluginName: css({
+    width: "100%",
+    padding: "0.75rem",
+    marginBottom: "1rem",
   }),
   envPresetCheckbox: css({
     flex: "0 0 auto",
