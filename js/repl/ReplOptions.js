@@ -467,6 +467,8 @@ class ExpandedContainer extends Component {
                         type="checkbox"
                       />
                       {plugin.package.name
+                        .split("babel-preset-")
+                        .join("")
                         .split("babel-plugin-")
                         .join("")
                         .split("@babel/plugin-")
