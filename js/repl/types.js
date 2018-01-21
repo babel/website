@@ -1,6 +1,7 @@
 // @flow
 
 export type BabelPresets = Array<string | Array<string | Object>>;
+export type BabelPlugins = Array<string>;
 
 export type EnvConfig = {
   browsers: string,
@@ -79,6 +80,7 @@ export type CompileConfig = {
   envConfig: ?EnvConfig,
   evaluate: boolean,
   presets: BabelPresets,
+  plugins: BabelPlugins,
   prettify: boolean,
   sourceMap: boolean,
 };

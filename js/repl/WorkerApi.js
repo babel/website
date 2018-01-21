@@ -75,6 +75,10 @@ export default class WorkerApi {
     return this._worker.postMessage({ method: "getBabelVersion" });
   }
 
+  loadExternalPlugin(url: string): Promise<?error> {
+    return this._worker.postMessage({ method: "loadExternalPlugin", url });
+  }
+
   getBundleVersion(name: string): Promise<string> {
     return this._worker.postMessage({ method: "getBundleVersion", name });
   }

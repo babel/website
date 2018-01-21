@@ -83,6 +83,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       babelrc: false,
       filename: "repl",
       presets: config.presets,
+      plugins: config.plugins,
       sourceMap: config.sourceMap,
     });
     compiled = transformed.code;
