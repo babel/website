@@ -366,7 +366,7 @@ class Repl extends React.Component {
     }
   }
 
-  _pluginChange = name => this.setState({externalPlugins : this.state.externalPlugins.concat(name)});
+  _pluginChange = plugin => this.setState({externalPlugins : this.state.externalPlugins.concat(plugin)});
 
   _compile = (code: string, setStateCallback: () => mixed) => {
     const { state } = this;

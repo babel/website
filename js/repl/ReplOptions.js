@@ -417,7 +417,7 @@ class ExpandedContainer extends Component {
                   <label className={styles.pluginRow}>
                     <input
                       className={styles.inputCheckboxLeft}
-                      onChange={e => this._pluginChanged(e, plugin.package.name)}
+                      onChange={e => this._pluginChanged(e, plugin)}
                       type="checkbox"
                     />
                     {plugin.package.name}
@@ -487,11 +487,11 @@ class ExpandedContainer extends Component {
     );
   };
 
-  _pluginChanged = (e, name) => {
+  _pluginChanged = (e, plugin) => {
     const on = e.target.value === "on";
     const externalPlugins = this.props.externalPlugins;
-    if (!externalPlugins[name] && on) {
-      this.props.pluginChange(name);
+    if (!externalPlugins[plugin.package.name] && on) {
+      this.props.pluginChange(plugin);
     }
   };
 }
