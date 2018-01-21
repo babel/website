@@ -91,8 +91,8 @@ const ReplOptions = (props: Props) => (
 
 export default graphql(
   gql`
-    query getPlugins($name: String!) {
-      plugins(name: $name) {
+    query getPlugins($name: String!, $babelWebsite: Boolean) {
+      plugins(name: $name, babelWebsite: $babelWebsite) {
         package {
           name
           description
@@ -106,7 +106,7 @@ export default graphql(
     }
   `,
   {
-    options: ({ pluginValue }) => ({ variables: { name: pluginValue } }),
+    options: ({ pluginValue }) => ({ variables: { name: pluginValue, babelWebsite: true } }),
     props: ({ data: { loading, plugins } }) => ({
       pluginsLoading: loading,
       plugins: plugins,
