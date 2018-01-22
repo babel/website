@@ -21,14 +21,13 @@ async function sendRequest(repo: ?string, uri: string): Promise<Object> {
 
 export async function loadBuildArtifacts(
   repo: ?string,
+  regExp: RegExp,
   build: string,
-  cb: (url: string, error?: string) => void
+  cb: (url: string, error?: string) => void // eslint-disable-line no-unused-vars
 ): Promise<string> {
   try {
     const response = await sendRequest(repo, `${build}/artifacts`);
-    const artifacts = response.filter(x =>
-      /babel-standalone\/babel.js$/.test(x.path)
-    );
+    const artifacts = response.filter(x => regExp.test(x.path));
     if (!artifacts || artifacts.length === 0) {
       throw new Error(
         `Could not find valid babel-standalone artifact in build #${build}`

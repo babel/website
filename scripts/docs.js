@@ -1,36 +1,15 @@
 (function() {
 
-  var STRING_DECAMELIZE_REGEXP = (/([a-z\d])([A-Z])/g);
-  var STRING_STRIP_HTML_REGEXP = (/(<[^>]*>)/g);
-  var STRING_DASHERIZE_REGEXP  = (/[^a-z\d]+/g);
-
-  var decamelize = _.memoize(function(str) {
-    return str.replace(STRING_DECAMELIZE_REGEXP, '$1_$2').toLowerCase();
-  });
-
-  var stripHtml = _.memoize(function(str) {
-    return str.replace(STRING_STRIP_HTML_REGEXP, '');
-  });
-
-  var dasherize = _.memoize(function(str) {
-    return decamelize(stripHtml(str)).replace(STRING_DASHERIZE_REGEXP, '-');
-  });
-
   var headings = [];
   var current;
 
   $('h2, h3').each(function(index, heading) {
     var isSubHeading = heading.tagName.toUpperCase() !== 'H2';
-    var textContent = heading.textContent;
-    var idPrefix = isSubHeading && current ? current.id : '';
-    var id = dasherize(idPrefix + textContent);
-
-    heading.id = id;
 
     var value = {
       el: headings,
       id: heading.id,
-      text: textContent,
+      text: heading.textContent,
       children: []
     };
 
@@ -93,6 +72,8 @@
       $(this).html('<a class="smooth-scroll" href="#'+$(this).attr('id')+'">' + $(this).text() + '</a>');
     }
   });
+
+  $('.docs-content a[href^=#]').addClass('smooth-scroll');
 
   var $root = $('html, body');
   $('a.smooth-scroll').on('click', function(event) {

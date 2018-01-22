@@ -16,10 +16,6 @@ This preset includes the following plugins:
 
 > For more info, check out the setup page on the [cli](/docs/setup/) and the [usage](/docs/usage/cli/) docs.
 
-## Basic Setup (with the CLI)
-
-> For more info, check out the setup page on the [cli](/docs/setup/) and the [usage](/docs/usage/cli/) docs.
-
 Install the CLI and this preset
 
 ```sh

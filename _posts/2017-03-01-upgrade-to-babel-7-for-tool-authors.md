@@ -114,6 +114,32 @@ const helperPaths = path.unshiftContainer("body", helpers);
 
 ## AST changes
 
+### JSX* and TS* node builders (from @babel/types package) renamed
+
+The case has been changed: `jsx` and `ts` are now in lowercase.
+
+```diff
+- t.jSXIdentifier()
++ t.jsxIdentifier()
+```
+
+### `.expression` field removed from `ArrowFunctionExpression`
+
+The `expression` field was removed to eliminate two different sources of truth and needing plugins to manually keep them in sync. You can now simply check whether the function body is a `BlockStatement` or not:
+
+```diff
+  return {
+    visitor: {
+      ArrowFunctionExpression({ node }) {
+-       if (node.expression) {
++       if (node.body.type !== "BlockStatement") {
+          // () => foo;
+        }
+      }
+    }
+  };
+```
+
 ### Tokens removed
 
 In previous versions `tokens` were always attached to the AST on the top-level. In the latests version of babylon we removed this behavior and made it disabled by default to improve the performance of the parser. All usages in babel itself have been remove and `babel-generator` is not using the tokens anymore for pretty printing.

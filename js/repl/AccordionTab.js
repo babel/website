@@ -9,7 +9,7 @@ type Props = {
   children: React$Element<any>,
   className: ?any,
   isExpanded?: boolean,
-  label: string,
+  label: React$Element<any> | string,
   toggleIsExpanded: Function,
 };
 
