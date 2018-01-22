@@ -37,13 +37,31 @@ polyfills are loaded first:
 import "babel-polyfill";
 ```
 
-With `webpack.config.js`, add `babel-polyfill` to your entry array:
+When using Webpack there are multiple ways to include Babel Polyfill. 
+
+* In case [`@babel/preset-env`](https://github.com/babel/babel/tree/master/packages/babel-preset-env) preset is used 
+
+	* If `useBuiltIns: 'usage'` is specified in `.babelrc` then do not include Babel Polyfill neither in `webpack.config.js` entry array nor source. Babel Polyfill still has to be installed though.
+	* If `useBuiltIns: 'entry'` is specified in `.babelrc` then include Babel Polyfill at the top of the entry point to your application via `require` or `import` as discussed above.
+	* If `useBuiltIns` key is not specified or it is explicitly set to false `useBuiltIns: false` in `.babelrc` then add Babel Polyfill to Weback entry array within `webpack.config.js`.
+
+> babel-loader 7.x | babel 6.x
 
 ```js
 module.exports = {
   entry: ["babel-polyfill", "./app/js"]
 };
 ```
+
+> babel-loader 8.x | babel 7.x
+
+```js
+module.exports = {
+  entry: ["@babel/polyfill", "./app/js"]
+};
+```
+
+* In case `@babel/preset-env` is not used then add Babel Polyfill to Weback entry array as discussed above. It can still be added at the top of the entry point to application via `require` or `import`, but this is not recommended.
 
 ## Usage in Browser
 
