@@ -126,7 +126,7 @@ export default async function loadBundle(
   if (config.instanceName === "babelPresetEnv") {
     const babelVersion = await workerApi.getBundleVersion("Babel");
     if (parseInt(babelVersion) === 7 && parseInt(version) < 7) {
-      version = SCOPED_PRESET_ENV_VERSION_FROM;
+      version = babelVersion;
     }
   }
   const packageName = formatBundleName(config.package, version);
