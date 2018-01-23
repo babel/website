@@ -527,7 +527,7 @@ class Repl extends React.Component {
           plugins,
         };
       } else if (presets.hasOwnProperty(name)) {
-        presets[name].isEnabled = !presets[name].isEnabled;
+        presets[name].isEnabled = isEnabled;
 
         return {
           presets,
