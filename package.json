@@ -25,7 +25,7 @@
     }
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "async": "^2.5.0",
     "babel-core": "^6.25.0",
