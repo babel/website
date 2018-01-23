@@ -24,13 +24,9 @@ Don't want to assemble your own set of plugins? No problem! Presets are sharable
 We've assembled some for common environments:
 
 > Each yearly preset only compiles what was ratified in that year.
-> `babel-preset-env` replaces es2015, es2016, es2017, latest
+> `babel-preset-env` replaces es2015, es2016, es2017 and latest
 
 - [env](/docs/plugins/preset-env/)
-- [es2015 (deprecated in favor of env)](/docs/plugins/preset-es2015/)
-- [es2016 (deprecated in favor of env)](/docs/plugins/preset-es2016/)
-- [es2017 (deprecated in favor of env)](/docs/plugins/preset-es2017/)
-- [latest (deprecated in favor of env)](/docs/plugins/preset-latest/)
 - [react](/docs/plugins/preset-react/)
 - [flow](/docs/plugins/preset-flow/)
 
