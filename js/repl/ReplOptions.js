@@ -2,12 +2,11 @@
 
 import { css } from "emotion";
 import React, { Component } from "react";
-import { graphql } from "react-apollo";
-import gql from "graphql-tag";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
+import ExternalPlugins from "./ExternalPlugins";
 import Svg from "./Svg";
 import { colors, media } from "./styles";
 
@@ -91,50 +90,17 @@ const LinkToDocs = ({ className, children, section }: LinkProps) => (
   </a>
 );
 
-const ReplOptions = (props: Props) => (
-  <div className={`${styles.wrapper} ${props.className}`}>
-    {props.isExpanded ? (
-      <ExpandedContainer {...props} />
-    ) : (
-      <CollapsedContainer {...props} />
-    )}
-  </div>
-);
-
-export default graphql(
-  gql`
-    query getPlugins(
-      $name: String!
-      $babelWebsite: Boolean
-      $official: Boolean
-    ) {
-      plugins(name: $name, babelWebsite: $babelWebsite, official: $official) {
-        package {
-          name
-          description
-          version
-          links {
-            repository
-          }
-        }
-        bundled
-      }
-    }
-  `,
-  {
-    options: ({ pluginValue, showOfficialExternalPlugins }) => ({
-      variables: {
-        name: pluginValue,
-        babelWebsite: true,
-        official: showOfficialExternalPlugins || false,
-      },
-    }),
-    props: ({ data: { loading, plugins } }) => ({
-      pluginsLoading: loading,
-      plugins: plugins,
-    }),
-  }
-)(ReplOptions);
+export default function ReplOptions(props: Props) {
+  return (
+    <div className={`${styles.wrapper} ${props.className}`}>
+      {props.isExpanded ? (
+        <ExpandedContainer {...props} />
+      ) : (
+        <CollapsedContainer {...props} />
+      )}
+    </div>
+  );
+}
 
 // The choice of Component over PureComponent is intentional here.
 // It simplifies the re-use of PluginState objects,
@@ -169,6 +135,7 @@ class ExpandedContainer extends Component {
       plugins,
       pluginValue,
       showOfficialExternalPlugins,
+      loadingExternalPlugins,
     } = this.props;
 
     const disableEnvSettings =
@@ -427,67 +394,22 @@ class ExpandedContainer extends Component {
               </label>
             )}
           </AccordionTab>
-          <AccordionTab
-            className={`${styles.section} ${styles.sectionEnv}`}
-            isExpanded={isPluginsExpanded}
-            label={
-              <span className={styles.pluginsHeader}>
-                Plugins
-                {this.props.loadingExternalPlugins ? (
-                  <PresetLoadingAnimation />
-                ) : (
-                  ""
-                )}
-              </span>
+
+          <ExternalPlugins
+            loadingExternalPlugins={loadingExternalPlugins}
+            isPluginsExpanded={isPluginsExpanded}
+            _togglePluginsTab={this._togglePluginsTab}
+            _pluginNameChanged={this._pluginNameChanged}
+            _onshowOfficialExternalPluginsChanged={
+              this._onshowOfficialExternalPluginsChanged
             }
-            toggleIsExpanded={this._togglePluginsTab}
-          >
-            <label className={styles.pluginContainer}>
-              <div className={styles.pluginsSearch}>
-                <input
-                  placeholder="Type the plugin name"
-                  value={pluginValue}
-                  onChange={e => this._pluginNameChanged(e.target.value)}
-                  className={`${styles.pluginName} ${styles.envPresetInput}`}
-                  type="text"
-                />
-                <label className={styles.settingsLabel}>
-                  <input
-                    checked={showOfficialExternalPlugins}
-                    onChange={e =>
-                      this._onshowOfficialExternalPluginsChanged(
-                        e.target.checked
-                      )}
-                    className={styles.inputCheckboxLeft}
-                    type="checkbox"
-                  />
-                  Only official Plugins
-                </label>
-              </div>
-              {pluginsLoading ? (
-                <PresetLoadingAnimation />
-              ) : (
-                <div>
-                  {plugins.map(plugin => (
-                    <label
-                      key={plugin.package.name}
-                      className={styles.pluginRow}
-                    >
-                      <input
-                        className={styles.inputCheckboxLeft}
-                        onChange={e => this._pluginChanged(e, plugin)}
-                        type="checkbox"
-                      />
-                      {plugin.package.name.split("babel-plugin-").join("")}
-                    </label>
-                  ))}
-                  {!plugins.length
-                    ? "There are no plugins that match your query"
-                    : null}
-                </div>
-              )}
-            </label>
-          </AccordionTab>
+            _pluginChanged={this._pluginChanged}
+            pluginValue={pluginValue}
+            showOfficialExternalPlugins={showOfficialExternalPlugins}
+            pluginsLoading={pluginsLoading}
+            plugins={plugins}
+            styles={styles}
+          />
         </div>
         {babelVersion && (
           <div className={styles.versionRow} title={`v${babelVersion}`}>
