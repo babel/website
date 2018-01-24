@@ -5,6 +5,7 @@ node_modules
 .DS_Store
 npm-debug.log
 _includes/readmes/*.md
+.idea
 
 # testing
 coverage

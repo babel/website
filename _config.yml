@@ -48,6 +48,7 @@ default_js:
   - "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"
   - "https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"
   - "/scripts/search.js"
+  - "/scripts/service-worker.init.js"
   - "/scripts/clipboard.js"
   - "/scripts/open-in-repl.js"
 
