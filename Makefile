@@ -1,21 +1,22 @@
 .PHONY: build serve
 
 bootstrap:
-	bundle install
-	npm install
-	if [ ! -d ./node_modules ]; \
-	then npm install; \
-	fi
+	# bundle install
+	# npm install
+	# if [ ! -d ./node_modules ]; \
+	# then npm install; \
+	# fi
 
-	if [ ! -d ./_sass/bootstrap ]; \
-	then cp -r ./node_modules/bootstrap-sass/assets/stylesheets/bootstrap ./_sass/bootstrap; \
-	fi
+	# if [ ! -d ./_sass/bootstrap ]; \
+	# then cp -r ./node_modules/bootstrap-sass/assets/stylesheets/bootstrap ./_sass/bootstrap; \
+	# fi
 
 	./scripts/download-readmes.js
 
 build:
-	NODE_ENV=production ./node_modules/.bin/webpack -p
-	JEKYLL_ENV=production bundle exec jekyll build
+	# NODE_ENV=production ./node_modules/.bin/webpack -p
+	# JEKYLL_ENV=production bundle exec jekyll build
+	cd website && yarn && yarn build && mv ./build/babel ../_site
 
 serve-jekyll:
 	@if ! which bundle >/dev/null; then \
