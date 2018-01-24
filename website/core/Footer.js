@@ -53,6 +53,7 @@ class Footer extends React.Component {
             <a href="https://github.com/babel">GitHub Org</a>
             <a href="https://github.com/babel/babel">GitHub Repo</a>
             <a href="https://github.com/babel/website">Website Repo</a>
+            <a href="http://henryzoo.com/babel.github.io">5.x Docs</a>
           </div>
         </section>
       </footer>

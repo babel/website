@@ -28,8 +28,12 @@ const siteConfig = {
   projectName: "babel",
   repoUrl: "https://github.com/babel/babel",
   headerLinks: [
+    { href: "https://opencollective.com/babel", label: "Donate" },
     { doc: "learn", label: "Learn" },
     { blog: true, label: "Blog" },
+    { search: true },
+    { href: "https://github.com/babel/babel", label: "GitHub" },
+    // { languages: true }
   ],
   users,
   headerIcon: "img/babel.svg",
@@ -45,10 +49,10 @@ const siteConfig = {
   // scripts: ["https://buttons.github.io/buttons.js"],
   // stylesheets: [ "" ],
   // translationRecruitingLink: "https://crowdin.com/project/",
-  // algolia: {
-  //   apiKey: "d42906b043c5422ea07b44fd49c40a0d",
-  //   indexName: "babeljs"
-  // },
+  algolia: {
+    apiKey: "d42906b043c5422ea07b44fd49c40a0d",
+    indexName: "babeljs",
+  },
   // gaTrackingId: "U-",
   // markdownPlugins: [],
   // cname
