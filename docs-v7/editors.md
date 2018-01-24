@@ -9,7 +9,7 @@ id: editors
 
 ## Syntax Highlighting
 
-![Syntax Highlighting](/images/syntax-highlighting.png)
+![Syntax Highlighting](/img/syntax-highlighting.png)
 
 These days, many popular editors support ES2015+ syntax highlighting
 out of the box, while some require installing additional extensions.

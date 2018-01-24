@@ -66,7 +66,7 @@ const PromoSection = props => (
 
 class HomeSplash extends React.Component {
   render() {
-    let language = this.props.language || '';
+    let language = this.props.language || 'en';
     return (
       <SplashContainer>
         <Logo img_src={imgUrl('babel.svg')} />
@@ -189,7 +189,7 @@ const Showcase = props => {
 
 class Index extends React.Component {
   render() {
-    let language = this.props.language || '';
+    let language = this.props.language || 'en';
 
     return (
       <div>
