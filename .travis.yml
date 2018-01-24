@@ -7,6 +7,11 @@ before_install:
   - nvm install node
   - npm install
 
+# blocklist
+branches:
+  except:
+  - docusaurus
+
 script:
   - ./scripts/download-readmes.js
   - npm test && npm run lint && bundle exec rake

@@ -1,51 +1,67 @@
 - name: Facebook
   url: https://facebook.com/
   logo: facebook.png
+  pinned: true
 - name: CloudFlare
   url: https://cloudflare.com/
   logo: cloudflare.png
+  pinned: true
 - name: Netflix
   url: https://www.netflix.com/
   logo: netflix.svg
+  pinned: true
 - name: Mozilla
   url: https://www.mozilla.org/
   logo: mozilla.svg
+  pinned: true
 - name: Yahoo!
   url: https://yahoo.com/
   logo: yahoo.png
+  pinned: true
 - name: PayPal
   url: https://paypal.com
   logo: paypal.svg
+  pinned: true
 - name: Airbnb
   url: https://www.airbnb.com/
   logo: airbnb.svg
+  pinned: true
 - name: Reddit
   url: https://www.reddit.com
   logo: reddit.png
+  pinned: true
 - name: Spotify
   url: https://www.spotify.com
   logo: spotify.png
+  pinned: true
 - name: Atlassian
   url: https://www.atlassian.com/
   logo: atlassian.svg
+  pinned: true
 - name: NFL
   url: http://www.nfl.com
   logo: nfl.svg
+  pinned: true
 - name: Bocoup
   url: http://bocoup.com/
   logo: bocoup.png
+  pinned: true
 - name: SoundCloud
   url: https://soundcloud.com
   logo: soundcloud.png
+  pinned: true
 - name: Zendesk
   url: http://www.zendesk.com
   logo: zendesk.svg
+  pinned: true
 - name: Vimeo
   url: https://vimeo.com
   logo: vimeo.svg
+  pinned: true
 - name: npm
   url: https://www.npmjs.com
   logo: npm.svg
+  pinned: true
 - name: Ember
   url: http://emberjs.com/
   logo: ember.png
