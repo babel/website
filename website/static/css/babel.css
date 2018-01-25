@@ -1,3 +1,8 @@
+body,
+.mainContainer {
+  background: #fff;
+}
+
 /* ####### LINKS ####### */
 
 .mainContainer .wrapper a,
@@ -14,10 +19,23 @@
   text-decoration: none !important;
 }
 
+.mainContainer .wrapper .button,
+.inner .projectIntro .button {
+  background: transparent;
+  border: 1px solid #323330;
+}
+
+.mainContainer .wrapper .button:hover,
+.inner .projectIntro .button:hover {
+  background: #323330;
+  color: #fff;
+}
+
 /* ####### HEADER ####### */
 
 .fixedHeaderContainer {
   background: #f5da55;
+  border-bottom: 2px solid #000;
   color: #333;
 }
 
@@ -30,6 +48,15 @@
 }
 
 /* ####### POST ####### */
+
+.read-more {
+  margin-top: 2rem;
+}
+
+.blogContainer blockquote {
+  background: #fafbfc;
+  border-left-color: #e0e0e0;
+}
 
 a.anchor {
   border: 0 !important;
