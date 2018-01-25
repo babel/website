@@ -1,0 +1,75 @@
+/* ####### LINKS ####### */
+
+.mainContainer .wrapper a,
+.inner .projectIntro a {
+  background-color: rgba(245, 218, 85, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  color: #1a1a1a;
+  transition: all 0.25s ease-out;
+}
+
+.mainContainer .wrapper a:hover,
+.inner .projectIntro a:hover {
+  background-color: rgba(245, 218, 85, 0.35);
+  text-decoration: none !important;
+}
+
+/* ####### HEADER ####### */
+
+.fixedHeaderContainer {
+  background: #f5da55;
+  color: #333;
+}
+
+@media only screen and (min-width: 736px) {
+  .navigationSlider .slidingNav ul li a {
+    color: #333;
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+}
+
+/* ####### POST ####### */
+
+a.anchor {
+  border: 0 !important;
+}
+
+.blogContainer .postHeader {
+  margin-bottom: 2rem;
+}
+
+.mainContainer .wrapper .post .postHeader h1 {
+  margin: 0 0 1rem;
+}
+
+.mainContainer .wrapper .post:not(:first-child) h1 {
+  margin-top: 2rem;
+}
+
+.blogContainer .postHeader h1 a {
+  background: transparent;
+  font-weight: 500;
+}
+
+.mainContainer .wrapper .post h2,
+.mainContainer .wrapper .post h3 {
+  font-weight: 500;
+  padding-top: 3rem;
+}
+
+.blogContainer .postHeader p.post-meta {
+  float: left;
+  font-size: 0.875rem;
+}
+
+.blogContainer .postHeader .authorBlock:before {
+  content: "by ";
+  font-size: 0.875rem;
+  margin: 1px 5px;
+}
+
+.post blockquote p:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}

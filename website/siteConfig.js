@@ -36,7 +36,7 @@ const siteConfig = {
     // { languages: true }
   ],
   users,
-  headerIcon: "img/babel.svg",
+  headerIcon: "img/babel-black.svg",
   footerIcon: "img/babel.svg",
   favicon: "img/favicon.png",
   colors: {
@@ -54,7 +54,6 @@ const siteConfig = {
     indexName: "babeljs",
   },
   disableHeaderTitle: true,
-
   // gaTrackingId: "U-",
   // markdownPlugins: [],
   // cname

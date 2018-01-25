@@ -60,19 +60,16 @@
     "transform-async-functions": "transform-async-functions",
     "transform-async-generator-functions": "async generator transform",
     "transform-async-to-generator": "Async to generator transform",
-    "transform-async-to-module-method":
-      "Async function to module method transform",
+    "transform-async-to-module-method": "Async function to module method transform",
     "transform-class-constructor-call": "Callable class constructor transform",
     "transform-class-properties": "Class properties transform",
     "transform-decorators": "Decorators transform",
     "transform-do-expressions": "Do expressions transform",
     "transform-es2015-arrow-functions": "ES2015 arrow functions transform",
-    "transform-es2015-block-scoped-functions":
-      "ES2015 block scoped functions transform",
+    "transform-es2015-block-scoped-functions": "ES2015 block scoped functions transform",
     "transform-es2015-block-scoping": "ES2015 block scoping transform",
     "transform-es2015-classes": "ES2015 classes transform",
-    "transform-es2015-computed-properties":
-      "ES2015 computed properties transform",
+    "transform-es2015-computed-properties": "ES2015 computed properties transform",
     "transform-es2015-destructuring": "ES2015 destructuring transform",
     "transform-es2015-duplicate-keys": "ES2015 duplicate keys transform",
     "transform-es2015-for-of": "ES2015 for-of transform",
@@ -84,15 +81,13 @@
     "transform-es2015-modules-umd": "ES2015 modules to UMD transform",
     "transform-es2015-object-super": "ES2015 object super transform",
     "transform-es2015-parameters": "ES2015 parameters transform",
-    "transform-es2015-shorthand-properties":
-      "ES2015 shorthand properties transform",
+    "transform-es2015-shorthand-properties": "ES2015 shorthand properties transform",
     "transform-es2015-spread": "ES2015 spread transform",
     "transform-es2015-sticky-regex": "ES2015 sticky regex transform",
     "transform-es2015-template-literals": "ES2015 template literals transform",
     "transform-es2015-typeof-symbol": "ES2015 typeof symbol transform",
     "transform-es2015-unicode-regex": "ES2015 unicode regex transform",
-    "transform-es3-member-expression-literals":
-      "ES3 member expressions literals transform",
+    "transform-es3-member-expression-literals": "ES3 member expressions literals transform",
     "transform-es3-property-literals": "ES3 property literals transform",
     "transform-es5-property-mutators": "ES5 property mutators transform",
     "transform-eval": "Eval transform",
@@ -102,18 +97,15 @@
     "transform-flow-strip-types": "Strip flow types transform",
     "transform-function-bind": "Function bind transform",
     "transform-inline-consecutive-adds": "Inline consecutive adds transform",
-    "transform-inline-environment-variables":
-      "Inline environment variables transform",
+    "transform-inline-environment-variables": "Inline environment variables transform",
     "transform-jscript": "JScript transform",
-    "transform-member-expression-literals":
-      "Member expression literals transform",
+    "transform-member-expression-literals": "Member expression literals transform",
     "transform-merge-sibling-variables": "Merge sibling variables transform",
     "transform-minify-booleans": "Minify booleans transform",
     "transform-node-env-inline": "NODE_ENV inline transform",
     "transform-object-assign": "Object.assign transform",
     "transform-object-rest-spread": "Object rest spread transform",
-    "transform-object-set-prototype-of-to-assign":
-      "Object set prototype of to assign transform",
+    "transform-object-set-prototype-of-to-assign": "Object set prototype of to assign transform",
     "transform-property-literals": "Property literals transform",
     "transform-proto-to-assign": "Proto to assign transform",
     "transform-react-constant-elements": "React constant elements transformer",
@@ -128,8 +120,7 @@
     "transform-remove-console": "Remove console transform",
     "transform-remove-debugger": "Remove debugger transform",
     "transform-runtime": "Runtime transform",
-    "transform-simplify-comparison-operators":
-      "Simplify comparison operator transform",
+    "transform-simplify-comparison-operators": "Simplify comparison operator transform",
     "transform-strict-mode": "Strict mode transform",
     "transform-undefined-to-void": "Undefined to void transform",
     "undeclared-variables-check": "Undeclared variables check",
@@ -145,10 +136,8 @@
     "Usage": "Usage"
   },
   "pages-strings": {
-    "Help Translate|recruit community translators for your project":
-      "Help Translate",
+    "Help Translate|recruit community translators for your project": "Help Translate",
     "Edit this Doc|recruitment message asking to edit the doc source": "Edit",
-    "Translate this Doc|recruitment message asking to translate the docs":
-      "Translate"
+    "Translate this Doc|recruitment message asking to translate the docs": "Translate"
   }
 }
