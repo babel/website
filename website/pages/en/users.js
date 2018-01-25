@@ -21,16 +21,26 @@ class Users extends React.Component {
           <div className="showcaseSection">
             <div className="prose">
               <h1>See who is using Babel</h1>
-              <p> Logos are submitted by company and project representatives. These companies may or may not be using Babel on their main web properties, but they are definitely using it somewhere in their organizations 🙂</p>
+              <p>
+                Logos are submitted by company and project representatives.
+                These companies may or may not be using Babel on their main web
+                properties, but they are definitely using it somewhere in their
+                organizations 🙂
+              </p>
             </div>
             <div className="logos">{showcase}</div>
             <div className="prose">
-              <p>Are you using this project? Please submit a logo of 500x200 (2.5x1) run through <a href="https://jakearchibald.github.io/svgomg/">SVGO</a></p>
+              <p>
+                Are you using this project? Please submit a logo of 500x200
+                (2.5x1) run through{" "}
+                <a href="https://jakearchibald.github.io/svgomg/">SVGO</a>
+              </p>
               <p>And give us a shout on what you love about Babel!</p>
-              <br/>
+              <br />
               <a
                 href="https://github.com/babel/website/edit/master/website/data/users.yml"
-                className="button">
+                className="button"
+              >
                 Submit a Pull Request!
               </a>
             </div>
