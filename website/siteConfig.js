@@ -53,6 +53,8 @@ const siteConfig = {
     apiKey: "d42906b043c5422ea07b44fd49c40a0d",
     indexName: "babeljs",
   },
+  disableHeaderTitle: true,
+
   // gaTrackingId: "U-",
   // markdownPlugins: [],
   // cname
