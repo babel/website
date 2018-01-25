@@ -2,6 +2,8 @@
 layout: docs
 title: babel-preset-es2015 -> babel-preset-env
 permalink: /env/
+
+id: env
 ---
 
 > We're super 😸 excited that you're trying to use ES2015 syntax, but instead of continuing yearly presets, the team recommends using babel-preset-env. By default, it has the same behavior as previous presets to compile ES2015+ to ES5.

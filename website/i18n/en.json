@@ -15,6 +15,7 @@
     "types": "Babel types",
     "core": "Babel's core packages",
     "editors": "Editors",
+    "env": "babel-preset-es2015 -> babel-preset-env",
     "faq": "FAQ",
     "learn": "Learn ES2015",
     "plugins": "Plugins",
