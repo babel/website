@@ -1,3 +1,4 @@
+import React from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -8,8 +9,8 @@ type Props = {
   loadingExternalPlugins: boolean,
   isPluginsExpanded: boolean,
   _togglePluginsTab: () => void,
-  _pluginNameChanged: (any) => void,
-  _onshowOfficialExternalPluginsChanged: (any) => void,
+  _pluginNameChanged: any => void,
+  _onshowOfficialExternalPluginsChanged: any => void,
   _pluginChanged: () => void,
   pluginValue: string,
   showOfficialExternalPlugins: boolean,
