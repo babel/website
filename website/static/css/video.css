@@ -21,6 +21,7 @@
   font-size: 17px;
   font-weight: 300;
   line-height: 1.4;
+  margin: 5px;
 }
 
 .text-center {
@@ -38,9 +39,11 @@
 }
 
 .babel-videos {
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  box-sizing: border-box;
   float: left;
-  width: 350px;
+  width: 32.3%;
   margin-bottom: 2rem;
   border: 1px solid rgba(0,0,0,.2);
   border-radius: .25rem;
@@ -72,4 +75,20 @@
 .babel-video-block {
   padding: 1.25rem;
   height: 90px;
+}
+
+@media screen and (max-width: 992px) {
+  .babel-videos {
+    box-sizing: border-box;
+    width: 48.6%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .babel-videos {
+    box-sizing: border-box;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
