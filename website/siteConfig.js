@@ -13,6 +13,8 @@ const users = loadYaml("../_data/users.yml").map(user => ({
   image: `/img/users/${user.logo}`,
 }));
 
+const team = loadYaml("./data/team.yml");
+
 const GITHUB_URL = "https://github.com/babel/website";
 
 const siteConfig = {
@@ -36,6 +38,7 @@ const siteConfig = {
     // { languages: true }
   ],
   users,
+  team,
   headerIcon: "img/babel-black.svg",
   footerIcon: "img/babel.svg",
   favicon: "img/favicon.png",
