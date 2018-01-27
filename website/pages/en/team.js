@@ -25,6 +25,48 @@ const Banner = props => {
   );
 };
 
+const MemberOrgList = props => {
+  if (props.orgs) {
+    const elements = props.orgs.map(org => {
+      return (
+        <a
+          key={org}
+          href={`https://www.github.com/${org}`}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <div className="org_image">
+            <img
+              title={org}
+              alt={org}
+              src={`https://avatars.githubusercontent.com/${org}`}
+            />
+          </div>
+        </a>
+      );
+    });
+    return <div className="member_orgs">{elements}</div>;
+  } else return null;
+};
+
+const MemberAreaList = props => {
+  if (props.areas) {
+    const areaElements = props.areas.map(area => {
+      return (
+        <a
+          key={area}
+          href={`https://www.github.com/babel/${area}`}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          🌐
+        </a>
+      );
+    });
+    return <div className="member_orgs">{areaElements}</div>;
+  } else return null;
+};
+
 const MediaLink = props => {
   if (props.text) {
     return (
@@ -44,68 +86,34 @@ const MediaLink = props => {
   } else return null;
 };
 
-const MediaObject = props => {
-  const avatarUrl = `https://avatars.githubusercontent.com/${props.member
-    .github}`;
-  const twitterUrl = `https://twitter.com/${props.member.twitter}`;
-  const githubUrl = `https://github.com/${props.member.github}`;
+const MediaObject = ({ member }) => {
+  const { github, twitter, name, orgs, areas } = member;
+  const avatarUrl = `https://avatars.githubusercontent.com/${github}`;
+  const twitterUrl = `https://twitter.com/${twitter}`;
+  const githubUrl = `https://github.com/${github}`;
   return (
     <div className="team_member">
       <div className="member_avatar">
-        <img src={avatarUrl} height="80" width="80" alt="{{member.name}}" />
+        <img src={avatarUrl} height="80" width="80" alt="{{name}}" />
       </div>
       <div className="member_info">
-        <div style={{ fontWeight: 600 }}>{props.member.name}</div>
+        <div style={{ fontWeight: 600 }}>{name}</div>
         <MediaLink
           iconAlt="github"
           iconSource="/img/icons/github.svg"
           size="16"
           url={githubUrl}
-          text={props.member.github}
+          text={github}
         />
         <MediaLink
           iconAlt="twitter"
           iconSource="/img/icons/twitter.svg"
           size="16"
           url={twitterUrl}
-          text={props.member.twitter}
+          text={twitter}
         />
-        <div className="member_orgs">
-          {props.member.orgs
-            ? props.member.orgs.map(org => {
-                return (
-                  <a
-                    key={org}
-                    href={`https://www.github.com/${org}`}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    <div className="org_image">
-                      <img
-                        title={org}
-                        alt={org}
-                        src={`https://avatars.githubusercontent.com/${org}`}
-                      />
-                    </div>
-                  </a>
-              );
-              })
-            : null}
-          {props.member.areas
-            ? props.member.areas.map(area => {
-                return (
-                  <a
-                    key={area}
-                    href={`https://www.github.com/babel/${area}`}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    🌐
-                  </a>
-              );
-              })
-            : null}
-        </div>
+        <MemberOrgList orgs={orgs} />
+        <MemberAreaList areas={areas} />
       </div>
     </div>
   );
