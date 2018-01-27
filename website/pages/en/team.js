@@ -49,7 +49,6 @@ const MediaObject = props => {
     .github}`;
   const twitterUrl = `https://twitter.com/${props.member.twitter}`;
   const githubUrl = `https://github.com/${props.member.github}`;
-  const websiteUrl = "https://github.com/babel/website";
   return (
     <div className="team_member">
       <div className="member_avatar">
@@ -96,6 +95,7 @@ const MediaObject = props => {
             ? props.member.areas.map(area => {
                 return (
                   <a
+                    key={area}
                     href={`https://www.github.com/babel/${area}`}
                     target="_blank"
                     rel="noreferrer noopener"
