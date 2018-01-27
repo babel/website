@@ -6,11 +6,11 @@ node_modules
 npm-debug.log
 _includes/readmes/*.md
 
+# webpack output
+website/static/*/build
+
 # testing
 coverage
-
-# production
-build
 
 # misc
 .DS_Store

@@ -553,7 +553,7 @@ const styles = {
     flex: "0 0 auto",
   }),
   repl: css({
-    height: "100%",
+    height: "calc(100vh - 50px)", // 50px is the header's height
     width: "100%",
     display: "flex",
     flexDirection: "row",
@@ -571,5 +571,7 @@ const styles = {
     flexDirection: "row",
     justifyContent: "stretch",
     overflow: "auto",
+    fontSize: "1rem",
+    lineHeight: "1.25rem",
   }),
 };

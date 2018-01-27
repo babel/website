@@ -67,7 +67,6 @@ const styles = {
   }),
   Label: css({
     flex: "1",
-    fontSize: "1.5rem",
     fontWeight: "bold",
   }),
   Arrow: css({
@@ -81,6 +80,6 @@ const styles = {
   Content: css({
     display: "flex",
     flexDirection: "column",
-    padding: "1rem 1.5rem",
+    padding: "0rem 1.5rem 1rem",
   }),
 };

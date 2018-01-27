@@ -637,12 +637,12 @@ const styles = {
   }),
   highlight: css({
     textTransform: "uppercase",
-    fontSize: "1rem",
+    fontSize: "0.9rem",
     fontWeight: "bold",
     color: colors.inverseForeground,
   }),
   settingsLabel: css({
-    flex: "0 0 2.5rem",
+    flex: "0 0 2rem",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -720,7 +720,7 @@ const styles = {
   versionRow: css({
     display: "flex",
     fontFamily: "monospace",
-    fontSize: "1.25rem",
+    fontSize: "1rem",
     justifyContent: "flex-end",
     overflow: "hidden",
     padding: "0 1.5rem",
