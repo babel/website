@@ -36,6 +36,7 @@ const siteConfig = {
     { doc: "learn", label: "Learn" },
     { blog: true, label: "Blog" },
     { search: true },
+    { page: "team", label: "Team" },
     { href: "https://github.com/babel/babel", label: "GitHub" },
     // { languages: true }
   ],
