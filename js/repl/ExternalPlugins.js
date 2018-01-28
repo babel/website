@@ -32,6 +32,8 @@ function ExternalPlugins({
   plugins,
   styles,
 }: Props) {
+  const hasPlugins = plugins !== undefined;
+
   return (
     <AccordionTab
       className={`${styles.section} ${styles.sectionEnv}`}
@@ -69,21 +71,22 @@ function ExternalPlugins({
           <PresetLoadingAnimation />
         ) : (
           <div>
-            {plugins.map(plugin => (
-              <label key={plugin.package.name} className={styles.pluginRow}>
-                <input
-                  className={styles.inputCheckboxLeft}
-                  onChange={e => _pluginChanged(e, plugin)}
-                  type="checkbox"
-                />
-                {plugin.package.name
-                  .split("babel-plugin-")
-                  .join("")
-                  .split("@babel/plugin-")
-                  .join("")}
-              </label>
-            ))}
-            {!plugins.length
+            {hasPlugins &&
+              plugins.map(plugin => (
+                <label key={plugin.package.name} className={styles.pluginRow}>
+                  <input
+                    className={styles.inputCheckboxLeft}
+                    onChange={e => _pluginChanged(e, plugin)}
+                    type="checkbox"
+                  />
+                  {plugin.package.name
+                    .split("babel-plugin-")
+                    .join("")
+                    .split("@babel/plugin-")
+                    .join("")}
+                </label>
+              ))}
+            {hasPlugins && !plugins.length
               ? "There are no plugins that match your query"
               : null}
           </div>
