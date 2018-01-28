@@ -30,19 +30,9 @@ class REPL extends React.Component {
       <div>
         {styles.map(url => <link rel="stylesheet" href={url} key={url} />)}
 
-        <noscript>You need to enable JavaScript to run this app.</noscript>
-
-        <div id="root" class="babel-repl-v2 mainContainer">
-          <div class="repl-loading">
-            Loading Babel ...
-            <div class="repl-loading-animation-container">
-              <div class="repl-loading-animation-box repl-loading-animation-box-1"></div>
-              <div class="repl-loading-animation-box repl-loading-animation-box-2"></div>
-              <div class="repl-loading-animation-box repl-loading-animation-box-3"></div>
-              <div class="repl-loading-animation-box repl-loading-animation-box-4"></div>
-              <div class="repl-loading-animation-box repl-loading-animation-box-5"></div>
-            </div>
-          </div>
+        
+        <div id="root">
+          <noscript>You need to enable JavaScript to run this app.</noscript>
         </div>
 
         {scripts.map(url => <script src={url} key={url} />)}
