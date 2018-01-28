@@ -122,7 +122,7 @@ const MediaObject = ({ member }) => {
 const MemberSection = props => {
   return (
     <div>
-      <h2>{props.title}</h2>
+      <h2 className="member_type">{props.title}</h2>
       <div className="member_block">
         {props.members.map(member => {
           return <MediaObject key={member.github} member={member} />;
@@ -138,7 +138,7 @@ class Team extends React.Component {
     return (
       <div>
         <Banner />
-        <Container padding={["bottom", "right", "left"]}>
+        <Container padding={["bottom"]}>
           <div>
             <MemberSection title="Core contributors" members={team.core} />
             <MemberSection title="Members" members={team.members} />

@@ -5,20 +5,20 @@
   border-bottom: 1px solid #eeeeee;
 }
 
-.page_header>h1 {
+.page_header > h1 {
   font-size: 36px;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
-.page_header>p {
+.page_header > p {
   font-size: 17px;
   font-weight: 300;
   line-height: 1.4;
   margin: 5px;
 }
 
-.page_header>p:hover {
+.page_header > p:hover {
   text-decoration: underline;
 }
 
@@ -35,12 +35,11 @@
 
 .member_avatar > img {
   height: 80px;
-  width: 80px; 
+  width: 80px;
   border-radius: 5px;
   float: left;
   margin-right: 20px;
 }
-
 
 .anchor_text {
   color: #23527c;
@@ -55,7 +54,11 @@
   box-sizing: border-box;
   display: flex;
   height: 100px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.member_type {
+  margin-bottom: 30px;
 }
 
 .member_info {
@@ -70,7 +73,7 @@
   align-content: space-between;
 }
 
-/* 
+/*
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
 */
@@ -81,7 +84,7 @@
   }
 }
 
-/* 
+/*
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
 */
@@ -89,10 +92,10 @@
 @media (min-width: 1025px) and (max-width: 1280px) {
   .team_member {
     width: 33.3%;
-}
+  }
 }
 
-/* 
+/*
   ##Device = Tablets, Ipads (portrait)
   ##Screen = B/w 768px to 1024px
 */
@@ -100,10 +103,10 @@
 @media (min-width: 768px) and (max-width: 1024px) {
   .team_member {
     width: 50%;
-}
+  }
 }
 
-/* 
+/*
   ##Device = Tablets, Ipads (landscape)
   ##Screen = B/w 768px to 1024px
 */
@@ -111,10 +114,10 @@
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   .team_member {
     width: 50%;
-}
+  }
 }
 
-/* 
+/*
   ##Device = Low Resolution Tablets, Mobiles (Landscape)
   ##Screen = B/w 481px to 767px
 */
@@ -122,10 +125,10 @@
 @media (min-width: 481px) and (max-width: 767px) {
   .team_member {
     width: 100%;
-}
+  }
 }
 
-/* 
+/*
   ##Device = Most of the Smartphones Mobiles (Portrait)
   ##Screen = B/w 320px to 479px
 */
@@ -133,5 +136,5 @@
 @media (min-width: 320px) and (max-width: 480px) {
   .team_member {
     width: 100%;
-}
+  }
 }
