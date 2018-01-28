@@ -77,8 +77,6 @@ function ExternalPlugins({
                   type="checkbox"
                 />
                 {plugin.package.name
-                  .split("babel-preset-")
-                  .join("")
                   .split("babel-plugin-")
                   .join("")
                   .split("@babel/plugin-")
