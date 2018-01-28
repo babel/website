@@ -9,15 +9,17 @@ class Users extends React.Component {
   render() {
     const showcase = siteConfig.users.map((user, i) => {
       return (
-        <a href={user.infoLink} key={i}>
-          <img src={user.image} title={user.caption} />
-        </a>
+        <div className="babel-user">
+          <a className="babel-user-link" href={user.infoLink} key={i}>
+            <img className="babel-user-logo" src={user.image} title={user.caption} />
+          </a>
+        </div>
       );
     });
 
     return (
       <div className="mainContainer">
-        <Container padding={["bottom", "top"]}>
+        <Container padding={["bottom"]}>
           <div className="showcaseSection">
             <div className="prose">
               <h1>See who is using Babel</h1>
@@ -28,7 +30,9 @@ class Users extends React.Component {
                 organizations 🙂
               </p>
             </div>
+            <hr />
             <div className="logos">{showcase}</div>
+            <hr />
             <div className="prose">
               <p>
                 Are you using this project? Please submit a logo of 500x200
