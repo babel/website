@@ -42,7 +42,7 @@ export default function AccordionTab(props: Props) {
 
 const styles = {
   AccordionTab: css({
-    flex: "1 0 2.5rem",
+    flex: "1 0 1.5rem",
     cursor: "default",
     borderBottom: `1px solid ${colors.inverseBackgroundDark}`,
     userSelect: "none",
@@ -55,7 +55,7 @@ const styles = {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    padding: "1rem 1.5rem",
+    padding: "0.625rem 0.9375rem",
     transition: "background-color 250ms ease-in-out, color 250ms ease-in-out",
     color: colors.inverseForegroundLight,
     cursor: "pointer",
@@ -68,10 +68,11 @@ const styles = {
   Label: css({
     flex: "1",
     fontWeight: "bold",
+    fontSize: "0.9375rem",
   }),
   Arrow: css({
-    height: "2rem",
-    width: "2rem",
+    height: "1.5rem",
+    width: "1.5rem",
     transition: "transform 250ms ease-in-out",
   }),
   ArrowExpanded: css({
@@ -80,6 +81,6 @@ const styles = {
   Content: css({
     display: "flex",
     flexDirection: "column",
-    padding: "0rem 1.5rem 1rem",
+    padding: "0rem 0.5rem 0.5rem",
   }),
 };

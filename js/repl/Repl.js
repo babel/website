@@ -559,6 +559,7 @@ const styles = {
     flexDirection: "row",
     justifyContent: "stretch",
     overflow: "auto",
+    fontSize: "0.875rem",
 
     [media.mediumAndDown]: {
       flexDirection: "column",
@@ -571,7 +572,7 @@ const styles = {
     flexDirection: "row",
     justifyContent: "stretch",
     overflow: "auto",
-    fontSize: "1rem",
+    fontSize: "0.875rem",
     lineHeight: "1.25rem",
   }),
 };
