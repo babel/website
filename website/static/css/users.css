@@ -1,27 +1,27 @@
-.mainContainer .showcaseSection .logos {
+.showcaseSection .logos {
     background: #eee;
     border-radius: 5px;
     padding: 20px 30px;
   }
   
-  .mainContainer .showcaseSection .babel-user {
-    width: 33.33333%;
-    padding-left: 15px;
-    padding-right: 15px;
-    box-sizing: border-box;
-  }
+.showcaseSection .babel-user {
+  width: 33.33333%;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
   
-  .mainContainer .showcaseSection .babel-user-link {
-    display: block;
-    position: relative;
-    height: 120px;
-    padding: 10px;
-    margin: 15px 0;
-    background: #fff;
-    border-radius: 5px;
-  }
+.mainContainer .showcaseSection .babel-user-link {
+  display: block;
+  position: relative;
+  height: 120px;
+  padding: 10px;
+  margin: 15px 0;
+  background: #fff;
+  border-radius: 5px;
+}
   
-  .mainContainer .showcaseSection .babel-user .babel-user-logo {
+  .showcaseSection .babel-user .babel-user-logo {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -43,10 +43,10 @@
   }
   
   @media only screen and (min-width: 360px) and (max-width: 736px) {
-    .mainContainer .showcaseSection .babel-user {
+    .showcaseSection .babel-user {
       width: 100%;
     }
-    .mainContainer .showcaseSection .babel-user .babel-user-logo {
+    .showcaseSection .babel-user .babel-user-logo {
         width: 100%
     }
   }
