@@ -49,7 +49,7 @@ const siteConfig = {
     secondaryColor: "#323330",
   },
   highlight: {
-    theme: "default",
+    theme: "tomorrow",
   },
   // scripts: ["https://buttons.github.io/buttons.js"],
   // stylesheets: [ "" ],
