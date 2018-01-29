@@ -134,7 +134,13 @@ members:
   - name: Lucas Azzola
     github: azz
     twitter: lucasazzola
-summer-of-code:
+  - name: Angus Croll
+    github: angus-c
+    twitter: angustweets
+  - name: Jordan Scales
+    github: jdan
+    twitter: jdan
+summerOfCode:
   - name: Peeyush Kushwaha
     github: peey
     twitter: peeyFTW
@@ -147,7 +153,7 @@ summer-of-code:
   - name: Emma Deacon
     github: EmmaDeacon
     twitter: EmmaMDeacon
-non-human-member:
+nonHumanMember:
   - name: Babel Bot
     github: babel-bot
     twitter: babeljs

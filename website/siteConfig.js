@@ -15,6 +15,7 @@ const users = loadYaml("../_data/users.yml").map(user => ({
 
 // move to website/data later
 const videos = loadYaml("./data/videos.yml");
+const team = loadYaml("./data/team.yml");
 
 const GITHUB_URL = "https://github.com/babel/website";
 
@@ -36,11 +37,13 @@ const siteConfig = {
     { page: "repl", label: "Try it out" },
     { blog: true, label: "Blog" },
     { search: true },
+    { page: "team", label: "Team" },
     { href: "https://github.com/babel/babel", label: "GitHub" },
     // { languages: true }
   ],
   users,
   videos,
+  team,
   headerIcon: "img/babel-black.svg",
   footerIcon: "img/babel.svg",
   favicon: "img/favicon.png",
