@@ -100,3 +100,26 @@ a.anchor {
   margin-top: 0;
   padding-top: 0;
 }
+
+.page-header {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.page-header > h1 {
+  font-size: 36px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.page-header > p {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.4;
+  margin: 5px;
+}
+
+.text-center {
+  text-align: center;
+}

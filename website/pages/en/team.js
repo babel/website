@@ -9,7 +9,7 @@ const siteConfig = require(process.cwd() + "/siteConfig.js");
 const Banner = props => {
   return (
     <div className="mainContainer">
-      <div className="page_header">
+      <div className="page-header text-center">
         <h1>Meet the Team</h1>
         <p>
           <a
