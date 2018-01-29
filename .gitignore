@@ -8,6 +8,7 @@ _includes/readmes/*.md
 
 # webpack output
 website/static/*/build
+website/build
 
 # testing
 coverage

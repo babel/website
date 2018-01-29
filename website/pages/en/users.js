@@ -9,8 +9,8 @@ class Users extends React.Component {
   render() {
     const showcase = siteConfig.users.map((user, i) => {
       return (
-        <div className="babel-user">
-          <a className="babel-user-link" href={user.infoLink} key={i}>
+        <div className="babel-user" key={i}>
+          <a className="babel-user-link" href={user.infoLink}>
             <img className="babel-user-logo" src={user.image} title={user.caption} />
           </a>
         </div>
