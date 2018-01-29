@@ -33,6 +33,7 @@ const siteConfig = {
   headerLinks: [
     { href: "https://opencollective.com/babel", label: "Donate" },
     { doc: "learn", label: "Learn" },
+    { page: "repl", label: "Try it out" },
     { blog: true, label: "Blog" },
     { search: true },
     { href: "https://github.com/babel/babel", label: "GitHub" },
