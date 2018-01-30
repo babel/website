@@ -2,6 +2,20 @@
   "docs": {
     "General": ["index", "learn", "editors", "plugins"],
     "Misc": ["caveats", "faq"],
-    "Usage": ["babelrc", "core", "cli", "polyfill", "register"]
+    "Usage": ["babelrc", "core", "cli", "polyfill", "register"],
+    "Presets": [
+      "preset-env",
+      "preset-es2015",
+      "preset-es2016",
+      "preset-es2017",
+      "preset-latest",
+      "preset-stage-0",
+      "preset-stage-1",
+      "preset-stage-2",
+      "preset-stage-3",
+      "preset-flow",
+      "preset-react",
+      "preset-minify"
+    ]
   }
 }

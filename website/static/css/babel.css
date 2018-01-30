@@ -54,15 +54,17 @@ hr{
   }
 }
 
+/* ####### GLOBAL ####### */
+
+blockquote {
+  background: #fafbfc;
+  border-left-color: #e0e0e0;
+}
+
 /* ####### POST ####### */
 
 .read-more {
   margin-top: 2rem;
-}
-
-.blogContainer blockquote {
-  background: #fafbfc;
-  border-left-color: #e0e0e0;
 }
 
 a.anchor {

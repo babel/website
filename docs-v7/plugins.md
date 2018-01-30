@@ -1,10 +1,6 @@
 ---
-layout: docs
-title: Plugins
-description:
-permalink: /docs/plugins/
-
 id: plugins
+title: Plugins
 ---
 
 Babel is a compiler. At a high level, it has 3 stages that it runs code in: parsing, transforming, and generation (like many other compilers).
@@ -28,9 +24,9 @@ We've assembled some for common environments:
 > Each yearly preset only compiles what was ratified in that year.
 > `babel-preset-env` replaces es2015, es2016, es2017 and latest
 
-- [env](/docs/plugins/preset-env/)
-- [react](/docs/plugins/preset-react/)
-- [flow](/docs/plugins/preset-flow/)
+- [env](preset-env.md)
+- [react](preset-react.md)
+- [flow](preset-flow.md)
 
 > Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
 
@@ -49,10 +45,10 @@ Any transforms in stage-x presets are changes to the language that haven't been 
 
 The [TC39](https://github.com/tc39) categorizes proposals into the following stages:
 
-- [Stage 0](/docs/plugins/preset-stage-0/) - Strawman: just an idea, possible Babel plugin.
-- [Stage 1](/docs/plugins/preset-stage-1/) - Proposal: this is worth working on.
-- [Stage 2](/docs/plugins/preset-stage-2/) - Draft: initial spec.
-- [Stage 3](/docs/plugins/preset-stage-3/) - Candidate: complete spec and initial browser implementations.
+- [Stage 0](preset-stage-0.md) - Strawman: just an idea, possible Babel plugin.
+- [Stage 1](preset-stage-1.md) - Proposal: this is worth working on.
+- [Stage 2](preset-stage-2.md) - Draft: initial spec.
+- [Stage 3](preset-stage-3.md) - Candidate: complete spec and initial browser implementations.
 - Stage 4 - Finished: will be added to the next yearly release.
 
 For more information, be sure to check out the [current TC39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
@@ -71,61 +67,61 @@ These plugins apply transformations to your code.
 
 ### ES3
 
-- [es3-member-expression-literals](/docs/plugins/transform-es3-member-expression-literals/)
-- [es3-property-literals](/docs/plugins/transform-es3-property-literals/)
+- [es3-member-expression-literals](plugin-transform-es3-member-expression-literals.md)
+- [es3-property-literals](plugin-transform-es3-property-literals.md)
 
 ### ES5
 
-- [es5-property-mutators](/docs/plugins/transform-es5-property-mutators/)
+- [es5-property-mutators](plugin-transform-es5-property-mutators.md)
 
 ### ES2015
 
-- [check-es2015-constants](/docs/plugins/check-es2015-constants/)
-- [es2015-arrow-functions](/docs/plugins/transform-es2015-arrow-functions/)
-- [es2015-block-scoped-functions](/docs/plugins/transform-es2015-block-scoped-functions/)
-- [es2015-block-scoping](/docs/plugins/transform-es2015-block-scoping/)
-- [es2015-classes](/docs/plugins/transform-es2015-classes/)
-- [es2015-computed-properties](/docs/plugins/transform-es2015-computed-properties/)
-- [es2015-destructuring](/docs/plugins/transform-es2015-destructuring/)
-- [es2015-duplicate-keys](/docs/plugins/transform-es2015-duplicate-keys/)
-- [es2015-for-of](/docs/plugins/transform-es2015-for-of/)
-- [es2015-function-name](/docs/plugins/transform-es2015-function-name/)
-- [es2015-literals](/docs/plugins/transform-es2015-literals/)
-- [es2015-object-super](/docs/plugins/transform-es2015-object-super/)
-- [es2015-parameters](/docs/plugins/transform-es2015-parameters/)
-- [es2015-shorthand-properties](/docs/plugins/transform-es2015-shorthand-properties/)
-- [es2015-spread](/docs/plugins/transform-es2015-spread/)
-- [es2015-sticky-regex](/docs/plugins/transform-es2015-sticky-regex/)
-- [es2015-template-literals](/docs/plugins/transform-es2015-template-literals/)
-- [es2015-typeof-symbol](/docs/plugins/transform-es2015-typeof-symbol/)
-- [es2015-unicode-regex](/docs/plugins/transform-es2015-unicode-regex/)
+- [check-es2015-constants](plugin-check-es2015-constants.md)
+- [es2015-arrow-functions](plugin-transform-es2015-arrow-functions.md)
+- [es2015-block-scoped-functions](plugin-transform-es2015-block-scoped-functions.md)
+- [es2015-block-scoping](plugin-transform-es2015-block-scoping.md)
+- [es2015-classes](plugin-transform-es2015-classes.md)
+- [es2015-computed-properties](plugin-transform-es2015-computed-properties.md)
+- [es2015-destructuring](plugin-transform-es2015-destructuring.md)
+- [es2015-duplicate-keys](plugin-transform-es2015-duplicate-keys.md)
+- [es2015-for-of](plugin-transform-es2015-for-of.md)
+- [es2015-function-name](plugin-transform-es2015-function-name.md)
+- [es2015-literals](plugin-transform-es2015-literals.md)
+- [es2015-object-super](plugin-transform-es2015-object-super.md)
+- [es2015-parameters](plugin-transform-es2015-parameters.md)
+- [es2015-shorthand-properties](plugin-transform-es2015-shorthand-properties.md)
+- [es2015-spread](plugin-transform-es2015-spread.md)
+- [es2015-sticky-regex](plugin-transform-es2015-sticky-regex.md)
+- [es2015-template-literals](plugin-transform-es2015-template-literals.md)
+- [es2015-typeof-symbol](plugin-transform-es2015-typeof-symbol.md)
+- [es2015-unicode-regex](plugin-transform-es2015-unicode-regex.md)
 
 ### ES2016
 
-- [exponentiation-operator](/docs/plugins/transform-exponentiation-operator/)
+- [exponentiation-operator](plugin-transform-exponentiation-operator.md)
 
 ### ES2017
 
-- [async-to-generator](/docs/plugins/transform-async-to-generator/)
+- [async-to-generator](plugin-transform-async-to-generator.md)
 
 ### Modules
 
-- [es2015-modules-amd](/docs/plugins/transform-es2015-modules-amd/)
-- [es2015-modules-commonjs](/docs/plugins/transform-es2015-modules-commonjs/)
-- [es2015-modules-systemjs](/docs/plugins/transform-es2015-modules-systemjs/)
-- [es2015-modules-umd](/docs/plugins/transform-es2015-modules-umd/)
+- [es2015-modules-amd](plugins-transform-es2015-modules-amd.md)
+- [es2015-modules-commonjs](plugins-transform-es2015-modules-commonjs.md)
+- [es2015-modules-systemjs](plugins-transform-es2015-modules-systemjs.md)
+- [es2015-modules-umd](plugins-transform-es2015-modules-umd.md)
 
 ### Experimental
 
-- [async-generator-functions](/docs/plugins/transform-async-generator-functions/)
-- [async-to-module-method](/docs/plugins/transform-async-to-module-method/)
-- [class-constructor-call](/docs/plugins/transform-class-constructor-call/) (deprecated)
-- [class-properties](/docs/plugins/transform-class-properties/)
-- [decorators](/docs/plugins/transform-decorators/)
-- [do-expressions](/docs/plugins/transform-do-expressions/)
-- [export-extensions](/docs/plugins/transform-export-extensions/)
-- [function-bind](/docs/plugins/transform-function-bind/)
-- [object-rest-spread](/docs/plugins/transform-object-rest-spread/)
+- [async-generator-functions](plugins-transform-async-generator-functions.md)
+- [async-to-module-method](plugins-transform-async-to-module-method.md)
+- [class-constructor-call](plugins-transform-class-constructor-call.md) (deprecated)
+- [class-properties](plugin-transform-class-properties.md)
+- [decorators](plugin-transform-decorators.md)
+- [do-expressions](plugin-transform-do-expressions.md)
+- [export-extensions](plugin-transform-export-extensions.md)
+- [function-bind](plugin-transform-function-bind.md)
+- [object-rest-spread](plugin-transform-object-rest-spread.md)
 
 ### Minification
 
@@ -158,30 +154,30 @@ These plugins are in the minify repo.
 
 ### React
 
-- [react-constant-elements](/docs/plugins/transform-react-constant-elements/)
-- [react-display-name](/docs/plugins/transform-react-display-name/)
-- [react-inline-elements](/docs/plugins/transform-react-inline-elements/)
-- [react-jsx](/docs/plugins/transform-react-jsx/)
-- [react-jsx-compat](/docs/plugins/transform-react-jsx-compat/)
-- [react-jsx-self](/docs/plugins/transform-react-jsx-self/)
-- [react-jsx-source](/docs/plugins/transform-react-jsx-source/)
+- [react-constant-elements](plugin-transform-react-constant-elements.md)
+- [react-display-name](plugin-transform-react-display-name.md)
+- [react-inline-elements](plugin-transform-react-inline-elements.md)
+- [react-jsx](plugin-transform-react-jsx.md)
+- [react-jsx-compat](plugin-transform-react-jsx-compat.md)
+- [react-jsx-self](plugin-transform-react-jsx-self.md)
+- [react-jsx-source](plugin-transform-react-jsx-source.md)
 
 ### Other
 
-- [eval](/docs/plugins/transform-eval/)
-- [flow-comments](/docs/plugins/transform-flow-comments/)
-- [flow-strip-types](/docs/plugins/transform-flow-strip-types/)
-- [jscript](/docs/plugins/transform-jscript/)
-- [object-assign](/docs/plugins/transform-object-assign/)
-- [object-set-prototype-of-to-assign](/docs/plugins/transform-object-set-prototype-of-to-assign/)
-- [proto-to-assign](/docs/plugins/transform-proto-to-assign/)
-- [regenerator](/docs/plugins/transform-regenerator/)
-- [runtime](/docs/plugins/transform-runtime/)
-- [strict-mode](/docs/plugins/transform-strict-mode/)
+- [eval](plugin-transform-eval.md)
+- [flow-comments](plugin-transform-flow-comments.md)
+- [flow-strip-types](plugin-transform-flow-strip-types.md)
+- [jscript](plugin-transform-jscript.md)
+- [object-assign](plugin-transform-object-assign.md)
+- [object-set-prototype-of-to-assign](plugin-transform-object-set-prototype-of-to-assign.md)
+- [proto-to-assign](plugin-transform-proto-to-assign.md)
+- [regenerator](plugin-transform-regenerator.md)
+- [runtime](plugin-transform-runtime.md)
+- [strict-mode](plugin-transform-strict-mode.md)
 
 ## Misc Plugins
 
-- [external-helpers](/docs/plugins/external-helpers/)
+- [external-helpers](plugin-external-helpers.md)
 
 ## Syntax Plugins
 
@@ -202,29 +198,29 @@ You can also provide any [`plugins` option](https://github.com/babel/babylon/#pl
 
 ### Experimental
 
-- [async-generators](/docs/plugins/syntax-async-generators/)
-- [class-properties](/docs/plugins/syntax-class-properties/)
-- [decorators](/docs/plugins/syntax-decorators/)
-- [do-expressions](/docs/plugins/syntax-do-expressions/)
-- [dynamic-import](/docs/plugins/syntax-dynamic-import/)
-- [export-extensions](/docs/plugins/syntax-export-extensions/)
-- [flow](/docs/plugins/syntax-flow/)
-- [function-bind](/docs/plugins/syntax-function-bind/)
-- [function-sent](/docs/plugins/syntax-function-sent/)
-- [jsx](/docs/plugins/syntax-jsx/)
-- [object-rest-spread](/docs/plugins/syntax-object-rest-spread/)
+- [async-generators](plugin-syntax-async-generators.md)
+- [class-properties](plugin-syntax-class-properties.md)
+- [decorators](plugin-syntax-decorators.md)
+- [do-expressions](plugin-syntax-do-expressions.md)
+- [dynamic-import](plugin-syntax-dynamic-import.md)
+- [export-extensions](plugin-syntax-export-extensions.md)
+- [flow](plugin-syntax-flow.md)
+- [function-bind](plugin-syntax-function-bind.md)
+- [function-sent](plugin-syntax-function-sent.md)
+- [jsx](plugin-syntax-jsx.md)
+- [object-rest-spread](plugin-syntax-object-rest-spread.md)
 
 ### Enabled by default
 
 These plugins have no effect anymore, as a newer babylon version enabled them by default
 
-- [async-functions](/docs/plugins/syntax-async-functions/) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
-- [exponentiation-operator](/docs/plugins/syntax-exponentiation-operator/) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
-- [trailing-function-commas](/docs/plugins/syntax-trailing-function-commas/) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+- [async-functions](plugin-syntax-async-functions.md) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+- [exponentiation-operator](plugin-syntax-exponentiation-operator.md) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+- [trailing-function-commas](plugin-syntax-trailing-function-commas.md) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
 
 ### Deprecated
 
-- [class-constructor-call](/docs/plugins/syntax-class-constructor-call/)
+- [class-constructor-call](plugin-syntax-class-constructor-call.md)
 
 ## Plugin/Preset Paths
 

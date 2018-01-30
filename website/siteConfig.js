@@ -64,6 +64,7 @@ const siteConfig = {
     { doc: "learn", label: "Learn" },
     { page: "setup", label: "Setup" },
     { page: "repl", label: "Try it out" },
+    { doc: "learn", label: "Docs" },
     { blog: true, label: "Blog" },
     { search: true },
     { href: "https://opencollective.com/babel", label: "Donate" },
