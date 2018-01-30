@@ -6,7 +6,7 @@ function loadYaml(fsPath) {
   return parseYaml(fs.readFileSync(path.join(__dirname, fsPath), "utf8"));
 }
 // move to website/data later
-const users = loadYaml("../_data/users.yml").map(user => ({
+const users = loadYaml("./data/users.yml").map(user => ({
   pinned: user.pinned,
   caption: user.name,
   infoLink: user.url,
