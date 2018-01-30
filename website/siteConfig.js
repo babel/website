@@ -2,6 +2,26 @@ const parseYaml = require("js-yaml").safeLoad;
 const path = require("path");
 const fs = require("fs");
 
+function findMarkDownSync(startPath) {
+  const result = {};
+  const files = fs.readdirSync(path.join(__dirname, startPath));
+  files.forEach((val, index) => {
+    const fPath = path.join(startPath, val);
+    const stats = fs.statSync(fPath);
+    if (stats.isDirectory()) {
+      result[val] = {
+        path: fPath,
+      };
+    }
+  });
+  return result;
+}
+const toolsMD = findMarkDownSync("../docs-v7/tools/");
+
+function loadMD(fsPath) {
+  return fs.readFileSync(path.join(__dirname, fsPath), "utf8");
+}
+
 function loadYaml(fsPath) {
   return parseYaml(fs.readFileSync(path.join(__dirname, fsPath), "utf8"));
 }
@@ -16,6 +36,14 @@ const users = loadYaml("../_data/users.yml").map(user => ({
 // move to website/data later
 const videos = loadYaml("./data/videos.yml");
 const team = loadYaml("./data/team.yml");
+const tools = loadYaml("./data/tools.yml");
+const setupBabelrc = loadMD("../docs-v7/tools/setup.md");
+
+Object.keys(toolsMD).forEach(val => {
+  const file = toolsMD[val];
+  file.install = loadMD(`${file.path}/install.md`);
+  file.usage = loadMD(`${file.path}/usage.md`);
+});
 
 const GITHUB_URL = "https://github.com/babel/website";
 
@@ -34,6 +62,7 @@ const siteConfig = {
   headerLinks: [
     { href: "https://opencollective.com/babel", label: "Donate" },
     { doc: "learn", label: "Learn" },
+    { page: "setup", label: "Setup" },
     { page: "repl", label: "Try it out" },
     { blog: true, label: "Blog" },
     { search: true },
@@ -44,6 +73,9 @@ const siteConfig = {
   users,
   videos,
   team,
+  tools,
+  toolsMD,
+  setupBabelrc,
   headerIcon: "img/babel-black.svg",
   footerIcon: "img/babel.svg",
   favicon: "img/favicon.png",
