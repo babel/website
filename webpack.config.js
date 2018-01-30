@@ -12,7 +12,7 @@ const config = {
     // Don't bother with hashing/versioning the filename - Netlify does it
     // for us in prod.
     filename: '[name].js',
-    path: __dirname + '/build/',
+    path: __dirname + '/website/static/js/build/',
   },
   module: {
     rules: [

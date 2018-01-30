@@ -537,7 +537,7 @@ const styles = {
 
     [media.large]: {
       height: "100%",
-      width: "20rem",
+      width: "15rem",
 
       [`& .${nestedCloseButton}`]: {
         right: "-2rem",
@@ -637,19 +637,20 @@ const styles = {
   }),
   highlight: css({
     textTransform: "uppercase",
-    fontSize: "1rem",
+    fontSize: "0.75rem",
     fontWeight: "bold",
     color: colors.inverseForeground,
   }),
   settingsLabel: css({
-    flex: "0 0 2.5rem",
+    flex: "0 0 2rem",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    margin: "0 -1.5rem",
-    padding: "0 1.5rem",
+    margin: "0 -0.5rem",
+    padding: "0 1rem",
     transition: "background-color 250ms ease-in-out, color 250ms ease-in-out",
     fontWeight: "normal",
+    fontSize: "0.875rem",
 
     "&:hover": {
       backgroundColor: colors.inverseBackgroundDark,
@@ -659,18 +660,18 @@ const styles = {
   envPresetColumn: css({
     display: "flex",
     flexDirection: "column",
-    margin: "0.75rem 0",
+    margin: "0.5rem",
     flex: "0 0 auto",
   }),
   envPresetColumnLabel: css({
-    margin: "0.75rem 0",
+    marginBottom: "0.75rem",
   }),
   envPresetRow: css({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     flex: "0 0 auto",
-    margin: "0.75rem 0",
+    margin: "0.5rem",
   }),
   envPresetNumber: css({
     flex: "0 0 4rem",
@@ -720,7 +721,7 @@ const styles = {
   versionRow: css({
     display: "flex",
     fontFamily: "monospace",
-    fontSize: "1.25rem",
+    fontSize: "0.75rem",
     justifyContent: "flex-end",
     overflow: "hidden",
     padding: "0 1.5rem",
@@ -731,7 +732,7 @@ const styles = {
       backgroundColor: colors.inverseBackgroundDark,
       justifyContent: "flex-start",
       margin: 0,
-      padding: "1rem 1.5rem",
+      padding: "0.625rem 0.9375rem",
     },
   }),
 };

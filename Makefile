@@ -1,34 +1,15 @@
-.PHONY: build serve
+.PHONY: bootstrap build serve
 
 bootstrap:
-	bundle install
-	npm install
-	if [ ! -d ./node_modules ]; \
-	then npm install; \
-	fi
-
-	if [ ! -d ./_sass/bootstrap ]; \
-	then cp -r ./node_modules/bootstrap-sass/assets/stylesheets/bootstrap ./_sass/bootstrap; \
-	fi
-
 	./scripts/download-readmes.js
 
-build:
-	NODE_ENV=production ./node_modules/.bin/webpack -p
-	JEKYLL_ENV=production bundle exec jekyll build
+build: build-repl build-docusaurus
 
-serve-jekyll:
-	@if ! which bundle >/dev/null; then \
-	echo "bundler is not installed, please install it with 'gem install bundler'."; \
-	exit 1; \
-	fi
+build-repl:
+	./node_modules/.bin/webpack
 
-	bundle check || bundle install; \
-	bundle exec jekyll serve --incremental
-
-serve-webpack:
-	./node_modules/.bin/webpack-dev-server
+build-docusaurus:
+	cd website && yarn && yarn build && mv ./build/babel ../_site
 
 serve:
-	# Run both Jekyll and Webpack concurrently.
-	make -j2 serve-jekyll serve-webpack
+	cd website && yarn start

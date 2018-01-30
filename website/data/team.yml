@@ -1,0 +1,199 @@
+core:
+  - name: Babel
+    github: babel
+    twitter: babeljs
+  - name: Daniel Tschinder
+    github: danez
+    twitter: TschinderDaniel
+  - name: Logan Smyth
+    github: loganfsmyth
+    twitter: loganfsmyth
+  - name: Henry Zhu
+    github: hzoo
+    twitter: left_pad
+members:
+  - name: Andrew Levine
+    github: drewml
+    twitter: drewml
+  - name: Artem Yavorsky
+    github: yavorsky
+    twitter: yavorsky_
+  - name: Boopathi Rajaa
+    github: boopathi
+    twitter: heisenbugger
+  - name: Brian Ng
+    github: existentialism
+    twitter: existentialism
+  - name: Denis Pushkarev
+    github: zloirock
+    twitter: zloirock
+  - name: Diogo Franco
+    github: kovensky
+    twitter: kovnsk
+  - name: Justin Ridgewell
+    github: jridgewell
+  - name: Kai Cataldo
+    github: kaicataldo
+    twitter: kai_cataldo
+  - name: Mateusz Burzyński
+    github: Andarist
+    twitter: AndaristRake
+  - name: Nicolò Ribaudo
+    github: nicolo-ribaudo
+    twitter: NicoloRibaudo
+  - name: Samuel Reed
+    github: STRML
+    twitter: STRML_
+  - name: Sergey Rubanov
+    github: chicoxyzzy
+    twitter: chicoxyzzy
+  - name: Sven Sauleau
+    github: xtuc
+    twitter: svensauleau
+  - name: Vignesh Shanmugam
+    github: vigneshshanmugam
+    twitter: _vigneshh
+  - name: Andres Suarez
+    github: zertosh
+    twitter: zertosh
+    orgs: [eslint]
+  - name: James Henry
+    github: JamesHenry
+    twitter: MrJamesHenry
+    orgs: [eslint]    
+  - name: Teddy Katz
+    github: not-an-aardvark
+    orgs: [eslint]
+  - name: Toru Nagashima
+    github: mysticatea
+    twitter: mysticatea
+    orgs: [eslint]
+  - name: Ben Newman
+    github: benjamn
+    twitter: benjamn
+    orgs: [tc39]
+  - name: Daniel Ehrenberg
+    github: littledan
+    twitter: littledan
+    orgs: [tc39, v8]
+  - name: Diego Ferreiro Val
+    github: diervo
+    twitter: diervo
+    orgs: [tc39]
+  - name: Gabe Isenberg
+    github: gisenberg
+    twitter: the_gisenberg
+    orgs: [tc39]
+  - name: Jordan Harband
+    github: ljharb  
+    twitter: ljharb
+    orgs: [tc39]
+  - name: Kent C. Dodds
+    github: kentcdodds
+    twitter: kentcdodds
+    orgs: [tc39]
+  - name: Kevin Gibbons
+    github: bakkot
+    twitter: bakkoting
+    orgs: [tc39]
+  - name: Leo Balter
+    github: leobalter
+    twitter: leobalter
+    orgs: [tc39]
+  - name: Mathias Bynens
+    github: mathiasbynens
+    twitter: mathias
+    orgs: [tc39, v8]
+  - name: Rick Waldron
+    github: rwaldron
+    twitter: rwaldron
+    orgs: [tc39]
+  - name: Sathya Gunasekaran
+    github: gsathya
+    twitter: _gsathya
+    orgs: [tc39, v8]
+  - name: Franziska Hinkelmann
+    github: fhinkel
+    twitter: fhinkel
+    orgs: [v8]
+  - name: Benedikt Meurer
+    github: bmeurer
+    twitter: bmeurer
+    orgs: [v8]
+  - name: Brian Vaughn
+    github: bvaughn
+    twitter: brian_d_vaughn
+    areas: [website]
+  - name: Daniel Lo Nigro
+    github: Daniel15
+    twitter: Daniel15
+    areas: [website]
+  - name: Keith Cirkel
+    github: keithamus
+    twitter: Keithamus
+  - name: Lucas Azzola
+    github: azz
+    twitter: lucasazzola
+  - name: Angus Croll
+    github: angus-c
+    twitter: angustweets
+  - name: Jordan Scales
+    github: jdan
+    twitter: jdan
+summerOfCode:
+  - name: Peeyush Kushwaha
+    github: peey
+    twitter: peeyFTW
+  - name: Karl Cheng
+    github: Qantas94Heavy
+    twitter: qantas94heavy
+  - name: Kara de la Marck
+    github: MarckK
+    twitter: KaraMarck
+  - name: Emma Deacon
+    github: EmmaDeacon
+    twitter: EmmaMDeacon
+nonHumanMember:
+  - name: Babel Bot
+    github: babel-bot
+    twitter: babeljs
+alumnus:
+  - name: Aaron Ang
+    github: aaronang
+    twitter: _aaronang
+  - name: Amjad Masad
+    github: amasad
+    twitter: amasad
+  - name: Brian Donovan
+    github: eventualbuddha
+    twitter: eventualbuddha
+  - name: Christopher Monsanto
+    github: monsanto
+    twitter: cmmonsanto
+  - name: Dan Abramov
+    github: gaearon
+    twitter: dan_abramov
+  - name: Dan Harper
+    github: danharper
+    twitter: DanHarper7
+  - name: Ingvar Stepanyan
+    github: RReverser
+    twitter: RReverser
+  - name: James Kyle
+    github: thejameskyle
+    twitter: thejameskyle
+  - name: Jesse McCarthy
+    github: jmm
+    twitter: mccjm
+  - name: Juriy Zaytsev
+    github: kangax
+    twitter: kangax
+  - name: Moti Zilberman
+    github: motiz88 
+    twitter: motiz88
+  - name: Sebastian McKenzie
+    github: kittens
+    twitter: sebmck
+  - name: Stefan Penner
+    github: stefanpenner
+    twitter: stefanpenner
