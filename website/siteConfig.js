@@ -3,15 +3,16 @@ const path = require("path");
 const fs = require("fs");
 
 function findMarkDownSync(startPath) {
-  const result = {};
+  const result = [];
   const files = fs.readdirSync(path.join(__dirname, startPath));
   files.forEach((val, index) => {
     const fPath = path.join(startPath, val);
     const stats = fs.statSync(fPath);
     if (stats.isDirectory()) {
-      result[val] = {
+      result.push({
+        title: val,
         path: fPath,
-      };
+      });
     }
   });
   return result;
@@ -39,10 +40,9 @@ const team = loadYaml("./data/team.yml");
 const tools = loadYaml("./data/tools.yml");
 const setupBabelrc = loadMD("../docs-v7/tools/setup.md");
 
-Object.keys(toolsMD).forEach(val => {
-  const file = toolsMD[val];
-  file.install = loadMD(`${file.path}/install.md`);
-  file.usage = loadMD(`${file.path}/usage.md`);
+toolsMD.forEach(tool => {
+  tool.install = loadMD(`${tool.path}/install.md`);
+  tool.usage = loadMD(`${tool.path}/usage.md`);
 });
 
 const GITHUB_URL = "https://github.com/babel/website";

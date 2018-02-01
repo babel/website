@@ -21,21 +21,33 @@ const StepFour = () => {
 };
 
 const StepSetup = () => {
+  const usagesMD = toolsMD.map((tool, index) => (
+    <div className="items" data-title={tool.title} key={index}>
+      <MarkdownBlock key={index}>{tool.usage}</MarkdownBlock>
+    </div>
+  ));
   return (
     <div className="step-hidden step-setup">
       <h2>
         <span className="step-no">3</span> Usage
       </h2>
+      {usagesMD}
     </div>
   );
 };
 
-const StepInstall = () => {
+const StepInstall = props => {
+  const installsMD = toolsMD.map((tool, index) => (
+    <div className="items" data-title={tool.title} key={index}>
+      <MarkdownBlock key={index}>{tool.install}</MarkdownBlock>
+    </div>
+  ));
   return (
     <div className="step-hidden step-setup">
       <h2 id="installation">
         <span className="step-no">2</span> Installation
       </h2>
+      {installsMD}
     </div>
   );
 };
