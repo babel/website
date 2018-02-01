@@ -60,12 +60,13 @@ const siteConfig = {
   projectName: "babel",
   repoUrl: "https://github.com/babel/babel",
   headerLinks: [
-    { href: "https://opencollective.com/babel", label: "Donate" },
+    { doc: "index", label: "About" },
     { doc: "learn", label: "Learn" },
     { page: "setup", label: "Setup" },
     { page: "repl", label: "Try it out" },
     { blog: true, label: "Blog" },
     { search: true },
+    { href: "https://opencollective.com/babel", label: "Donate" },
     { page: "team", label: "Team" },
     { href: "https://github.com/babel/babel", label: "GitHub" },
     // { languages: true }
