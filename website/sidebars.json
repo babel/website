@@ -1,6 +1,6 @@
 {
   "docs": {
-    "General": ["index", "learn", "setup", "editors", "plugins"],
+    "General": ["index", "learn", "editors", "plugins"],
     "Misc": ["caveats", "faq"],
     "Usage": ["babelrc", "core", "cli", "polyfill", "register"]
   }
