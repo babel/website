@@ -21,15 +21,7 @@ $ make bootstrap && make build
 
 To keep documentation in sync across all of Babel's packages and plugins, the documentation for the plugins and presets is sourced directly from the README files located inside their respective repositories ([Babel's packages](https://github.com/babel/babel/tree/master/packages), [babel-minify's packages](https://github.com/babel/minify/tree/master/packages), ...).
 
-For pages that are sourced from README files, the `package` field in the header needs to correspond to your package name. This package name also needs to be added to `scripts/download-readmes.js`.
-
-```yaml
-layout: docs
-title: babel-register (require hook)
-description: How to use babel-register, the require hook.
-permalink: /docs/usage/babel-register/
-package: babel-register
-```
+These documents are automatically downloaded into `docs` via [scripts/download-readmes.js](/scripts/download-readmes.js).
 
 #### Looking for support?
 

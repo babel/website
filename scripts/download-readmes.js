@@ -86,6 +86,7 @@ Promise.all([getDirectoryListing('babel', '6.x'), getDirectoryListing('minify')]
             // Adds the necessary frontmatter info for docusaurus
             parsedText = addFrontMatter(package.name, parsedText);
 
+            // Add a `z_` to be gitignored
             fs.writeFile(`${__dirname}/../docs/z_${filename}.md`, parsedText, cb);
           },
           err => {
