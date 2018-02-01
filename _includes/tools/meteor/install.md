@@ -1,3 +1,0 @@
-```sh
-meteor add ecmascript
-```

@@ -1,8 +1,5 @@
 <blockquote class="babel-callout babel-callout-warning">
   <p>
-
-  </p>
-  <p>
     Compiling in the browser has a fairly limited use case, so if you are
     working on a production site you should be precompiling your scripts
     server-side. See <a href="/docs/setup/#build-systems">setup build systems</a>
