@@ -9,6 +9,7 @@ const CONCURRENT_REQUESTS = 20;
 
 const addFrontMatter = (id, text) =>
 `---
+id: ${id}
 title: ${id}
 sidebar_label: ${id.replace(/^babel-(plugin|proposal|preset)-/, '')}
 ---
@@ -64,17 +65,7 @@ Promise.all([getDirectoryListing('babel', '6.x'), getDirectoryListing('minify')]
 
     console.log('Downloading READMEs...');
 
-    const filtered = packages.reduce((result, p) => {
-      const f = p.name.match(/^babel-([^-\s]+)-.*/);
-
-      if (f && f.length && prefixes.indexOf(f[1]) > -1) {
-        result.push(p);
-      }
-
-      return result;
-    }, []);
-
-    async.mapLimit(filtered, CONCURRENT_REQUESTS, (package, cb) => {
+    async.mapLimit(packages, CONCURRENT_REQUESTS, (package, cb) => {
       fetch(`https://raw.githubusercontent.com${package.uri}`)
         .then(res => res.text())
         .then(
@@ -95,7 +86,7 @@ Promise.all([getDirectoryListing('babel', '6.x'), getDirectoryListing('minify')]
             // Adds the necessary frontmatter info for docusaurus
             parsedText = addFrontMatter(package.name, parsedText);
 
-            fs.writeFile(`${__dirname}/../docs-v7/${filename}.md`, parsedText, cb);
+            fs.writeFile(`${__dirname}/../docs/z_${filename}.md`, parsedText, cb);
           },
           err => {
             console.error(`Could not load ${package.name}: ${err}`);

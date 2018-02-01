@@ -10,7 +10,7 @@
     "lint": "npm run lint:docs && npm run lint:repl",
     "lint:docs": "eslint --ext md --rule 'prettier/prettier: 0' docs",
     "lint:repl": "eslint js/repl/*.js",
-    "test": "remark _posts docs _includes README.md --quiet",
+    "test": "remark _posts docs README.md --quiet",
     "flow": "flow",
     "precommit": "flow && lint-staged"
   },

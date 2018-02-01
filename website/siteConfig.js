@@ -17,7 +17,7 @@ function findMarkDownSync(startPath) {
   });
   return result;
 }
-const toolsMD = findMarkDownSync("../docs-v7/tools/");
+const toolsMD = findMarkDownSync("../docs/tools/");
 
 function loadMD(fsPath) {
   return fs.readFileSync(path.join(__dirname, fsPath), "utf8");
@@ -38,7 +38,7 @@ const users = loadYaml("./data/users.yml").map(user => ({
 const videos = loadYaml("./data/videos.yml");
 const team = loadYaml("./data/team.yml");
 const tools = loadYaml("./data/tools.yml");
-const setupBabelrc = loadMD("../docs-v7/tools/setup.md");
+const setupBabelrc = loadMD("../docs/tools/setup.md");
 
 toolsMD.forEach(tool => {
   tool.install = loadMD(`${tool.path}/install.md`);
@@ -48,8 +48,6 @@ toolsMD.forEach(tool => {
 const GITHUB_URL = "https://github.com/babel/website";
 
 const siteConfig = {
-  // temporary while transitioning
-  customDocsPath: "docs-v7",
   useEnglishUrl: true,
   editUrl: `${GITHUB_URL}/blob/master/docs/`,
   title: "Babel",

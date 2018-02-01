@@ -1,21 +1,45 @@
 {
   "docs": {
-    "General": ["index", "learn", "editors", "plugins"],
-    "Misc": ["caveats", "faq"],
-    "Usage": ["babelrc", "core", "cli", "polyfill", "register"],
+    "General": [
+      "index",
+      "learn",
+      "editors",
+      "plugins",
+      "caveats",
+      "faq"
+    ],
+    "Usage": [
+      "babelrc",
+      "babel-cli",
+      "babel-polyfill",
+      "babel-register"
+    ],
     "Presets": [
-      "preset-env",
-      "preset-es2015",
-      "preset-es2016",
-      "preset-es2017",
-      "preset-latest",
-      "preset-stage-0",
-      "preset-stage-1",
-      "preset-stage-2",
-      "preset-stage-3",
-      "preset-flow",
-      "preset-react",
-      "preset-minify"
+      "babel-preset-env",
+      "babel-preset-es2015",
+      "babel-preset-es2016",
+      "babel-preset-es2017",
+      "babel-preset-latest",
+      "babel-preset-stage-0",
+      "babel-preset-stage-1",
+      "babel-preset-stage-2",
+      "babel-preset-stage-3",
+      "babel-preset-flow",
+      "babel-preset-react",
+      "babel-preset-minify"
+    ],
+    "Tooling": [
+      "babylon",
+      "babel-core",
+      "babel-generator",
+      "babel-code-frame",
+      "babel-helpers",
+      "babel-runtime",
+      "babel-template",
+      "babel-traverse",
+      "babel-types"
     ]
   }
 }
+
+
