@@ -26,7 +26,6 @@
     location.hash = name;
 
     $currentItem = $("[data-title=" + name + "]:not(.tools-button)").show();
-    console.log($currentItem);
     $steps.show();
     $stepHidden.show();
   });
