@@ -1,7 +1,7 @@
 .PHONY: bootstrap build serve
 
 bootstrap:
-	./scripts/download-readmes.js
+	rm docs/z_*.md && ./scripts/download-readmes.js
 
 build: build-repl build-docusaurus
 

@@ -7,6 +7,16 @@ const fs = require('fs');
 
 const CONCURRENT_REQUESTS = 20;
 
+const addFrontMatter = (id, text) =>
+`---
+id: ${id}
+title: ${id}
+sidebar_label: ${id.replace(/^babel-(plugin|proposal|preset)-/, '')}
+---
+
+${text}
+`;
+
 function getDirectoryListing(repo, branch = 'master') {
   let url = `https://api.github.com/repos/babel/${repo}/contents/packages?ref=${branch}`;
   if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
@@ -49,14 +59,34 @@ Promise.all([getDirectoryListing('babel', '6.x'), getDirectoryListing('minify')]
       },
     ];
 
+    const plugins = [];
+    const presets = [];
+    const prefixes = ['preset', 'plugin', 'proposal'];
+
     console.log('Downloading READMEs...');
+
     async.mapLimit(packages, CONCURRENT_REQUESTS, (package, cb) => {
       fetch(`https://raw.githubusercontent.com${package.uri}`)
         .then(res => res.text())
         .then(
           text => {
-            fs.writeFile(`${__dirname}/../_includes/readmes/${package.name}.md`, text, cb);
-            console.log(`- ${package.name}`);
+            const filename = package.name.replace(/^babel-/, '');
+
+            // This is extremely hacky/temporary, and simply mimics what we
+            // were doing in the old jekyll setup in
+            // _includes/package_readme.html. It only works because the READMEs
+            // are generally standardized to start with:
+            //
+            // # babel-something
+            //
+            // > Some description
+            //
+            let parsedText = text.split('\n').slice(4).join('\n');
+
+            // Adds the necessary frontmatter info for docusaurus
+            parsedText = addFrontMatter(package.name, parsedText);
+
+            fs.writeFile(`${__dirname}/../docs/z_${filename}.md`, parsedText, cb);
           },
           err => {
             console.error(`Could not load ${package.name}: ${err}`);

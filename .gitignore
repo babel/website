@@ -4,7 +4,6 @@ _site
 node_modules
 .DS_Store
 npm-debug.log
-_includes/readmes/*.md
 
 # webpack output
 website/static/*/build
@@ -25,3 +24,25 @@ yarn-debug.log*
 yarn-error.log*
 
 .jekyll-metadata
+
+# These markdown files are downloaded/copied using scripts/download-readmes.js
+# from other repos so we don't want to commit them
+docs/z_helper-*.md
+docs/z_plugin-*.md
+docs/z_preset-*.md
+docs/z_gulp-*.md
+docs/z_cli.md
+docs/z_code-frame.md
+docs/z_core.md
+docs/z_generator.md
+docs/z_helpers.md
+docs/z_polyfill.md
+docs/z_register.md
+docs/z_runtime.md
+docs/z_template.md
+docs/z_traverse.md
+docs/z_types.md
+docs/z_babel.md
+docs/z_babylon.md
+docs/z_minify.md
+docs/z_messages.md
