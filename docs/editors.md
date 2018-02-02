@@ -16,7 +16,7 @@ out of the box, while some require installing additional extensions.
 This guide should help you get the syntax highlighting to work.
 
 If you're looking for more advanced integrations, you may want to
-take a look at the [Setup](/docs/setup) guide.
+take a look at the [Setup](/setup) guide.
 
 **Tip:** The font used on the screenshot above is [FiraCode](https://github.com/tonsky/FiraCode).
 

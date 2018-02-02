@@ -6,4 +6,3 @@ permalink: /docs/usage/api/
 package: babel-core
 ---
 
-{% include package_readme.html %}

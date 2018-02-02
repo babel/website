@@ -15,7 +15,7 @@ Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a
 npm install --save-dev babel-cli babel-preset-env
 ```
 
-\> Create a [`.babelrc`](/docs/usage/babelrc) file (or use your [package.json](/docs/usage/babelrc#use-via-packagejson))
+\> Create a [`.babelrc`](babelrc.md) file (or use your [package.json](babelrc.md#use-via-packagejson))
 
 ```json
 { "presets": ["env"] }
@@ -27,12 +27,12 @@ npm install --save-dev babel-cli babel-preset-env
 ./node_modules/.bin/babel src --out-dir lib
 ```
 
-\> For more information on setting up Babel with your build system, IDE, and more, check out our [interactive setup guide](/docs/setup).
+\> For more information on setting up Babel with your build system, IDE, and more, check out our [interactive setup guide](/setup.html).
 
 ES2015 and beyond
 -----------------
 
-Babel has support for the latest version of JavaScript through syntax transformers. These [plugins](https://babeljs.io/docs/plugins/) allow you to use new syntax, **right now** without waiting for browser support. Check out our [env preset](https://babeljs.io/docs/plugins/preset-env) to get started.
+Babel has support for the latest version of JavaScript through syntax transformers. These [plugins](plugins.md) allow you to use new syntax, **right now** without waiting for browser support. Check out our [env preset](z_preset-env.md) to get started.
 
 You can install this preset with:
 
@@ -42,7 +42,7 @@ npm install --save-dev babel-preset-env
 
 and add `"env"` to your `.babelrc`: `{ "presets": ["env"] }`
 
-[Learn more about ES2015 →](/learn-es2015/)
+[Learn more about ES2015 →](learn.md)
 
 Polyfill
 --------
@@ -62,7 +62,7 @@ Use it by requiring it at the top of the entry point to your application or in y
 JSX and Flow
 ------------
 
-Babel can convert JSX syntax and strip out type annotations. Check out our [React preset](https://babeljs.io/docs/plugins/preset-react/) to get started. Use it together with the [babel-sublime](https://github.com/babel/babel-sublime) package to bring syntax highlighting to a whole new level.
+Babel can convert JSX syntax and strip out type annotations. Check out our [React preset](z_preset-react.md) to get started. Use it together with the [babel-sublime](https://github.com/babel/babel-sublime) package to bring syntax highlighting to a whole new level.
 
 You can install this preset with
 
@@ -96,7 +96,7 @@ export default React.createClass({
 Pluggable
 ---------
 
-Babel is built out of plugins. Compose your own transformation pipeline using existing plugins or write your own. Easily use a set of plugins by using or creating a [preset](/docs/plugins/#presets). [Learn more →](/docs/plugins/)
+Babel is built out of plugins. Compose your own transformation pipeline using existing plugins or write your own. Easily use a set of plugins by using or creating a [preset](plugins.md#presets). [Learn more →](plugins.md)
 
 Create a plugin on the fly with [astexplorer.net](https://astexplorer.net/#/KJ8AjD6maa) or use [generator-babel-plugin](https://github.com/babel/generator-babel-plugin) to generate a plugin template.
 

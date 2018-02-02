@@ -10,7 +10,7 @@ id: faq
 ## Why is the output of `for...of` so verbose and ugly?
 
 In order to comply with the specification, the iterator's return method must be
-called on errors. An alternative is to enable [loose mode](/docs/plugins/transform-es2015-for-of/#options-loose)
+called on errors. An alternative is to enable [loose mode](z_plugin-transform-es2015-for-of.md#loose)
 but please note that there are **many** caveats to be aware of if you enable
 loose mode and that you're willingly choosing to be spec incompliant.
 
@@ -46,7 +46,7 @@ more information.
 Babel assumes that all input code is an ES2015 module. ES2015 modules are implicitly strict mode so this means
 that top-level `this` is not `window` in the browser nor is it `exports` in node.
 
-If you don't want this behaviour then you have the option of disabling `strict` in the [es2015-modules-transform](http://babeljs.io/docs/plugins/transform-es2015-modules-commonjs/#usage).
+If you don't want this behaviour then you have the option of disabling `strict` in the [es2015-modules-transform](z_plugin-transform-es2015-modules-commonjs.md#usage).
 
 **PLEASE NOTE:** If you do this you're willingly deviating from the spec and this may cause future
 interop issues.
@@ -55,11 +55,11 @@ interop issues.
 
 We hear you! Babel 6 requires a tiny bit of configuration in order to get going.
 [We think this is for the best](/blog/2015/10/29/6.0.0) and have added
-[presets](/docs/plugins#presets) to ease this transition.
+[presets](plugins.md#presets) to ease this transition.
 
 ## Upgrading from Babel 5.x to Babel 6
 
-At the heart of Babel 6 are [plugins](/docs/plugins). What plugins you need completely
+At the heart of Babel 6 are [plugins](plugins.md). What plugins you need completely
 depends on your specific configuration but just add the following `.babelrc` file to
 get all the same transforms that were in Babel 5:
 
