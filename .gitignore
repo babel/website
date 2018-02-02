@@ -26,22 +26,22 @@ yarn-error.log*
 
 # These markdown files are downloaded/copied using scripts/download-readmes.js
 # from other repos so we don't want to commit them
-docs/z_helper-*.md
-docs/z_plugin-*.md
-docs/z_preset-*.md
-docs/z_gulp-*.md
-docs/z_cli.md
-docs/z_code-frame.md
-docs/z_core.md
-docs/z_generator.md
-docs/z_helpers.md
-docs/z_polyfill.md
-docs/z_register.md
-docs/z_runtime.md
-docs/z_template.md
-docs/z_traverse.md
-docs/z_types.md
-docs/z_babel.md
-docs/z_babylon.md
-docs/z_minify.md
-docs/z_messages.md
+docs/helper-*.md
+docs/plugin-*.md
+docs/preset-*.md
+docs/gulp-*.md
+docs/cli.md
+docs/code-frame.md
+docs/core.md
+docs/generator.md
+docs/helpers.md
+docs/polyfill.md
+docs/register.md
+docs/runtime.md
+docs/template.md
+docs/traverse.md
+docs/types.md
+docs/babel.md
+docs/babylon.md
+docs/minify.md
+docs/messages.md

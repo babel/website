@@ -1,8 +1,7 @@
 ---
-layout: docs
+# Don't edit this file directly.
+
 title: API
-description: How to use the Node.js API.
-permalink: /docs/usage/api/
-package: babel-core
+id: api
 ---
 
