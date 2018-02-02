@@ -1,4 +1,4 @@
-(function () {
+(function() {
   var $currentItem;
   var $currentNav;
   var $steps = $(".step");
@@ -12,7 +12,7 @@
     $stepHidden.removeAttr("style");
   }
 
-  $(".tools-group .tools-button").click(function () {
+  $(".tools-group .tools-button").click(function() {
     if ($currentNav && $currentNav[0] === this) {
       return reset();
     } else {

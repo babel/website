@@ -1,31 +1,33 @@
 #!/usr/bin/env node
 // Downloads various README files from GitHub.
 
-const async = require('async');
-const fetch = require('node-fetch');
-const fs = require('fs');
+const async = require("async");
+const fetch = require("node-fetch");
+const fs = require("fs");
 
 const CONCURRENT_REQUESTS = 20;
 
 const addFrontMatter = (id, text) =>
-`---
+  `---
 id: ${id}
 title: ${id}
-sidebar_label: ${id.replace(/^babel-(plugin|proposal|preset)-/, '')}
+sidebar_label: ${id.replace(/^babel-(plugin|proposal|preset)-/, "")}
 ---
 
 ${text}
 `;
 
-function getDirectoryListing(repo, branch = 'master') {
+function getDirectoryListing(repo, branch = "master") {
   let url = `https://api.github.com/repos/babel/${repo}/contents/packages?ref=${branch}`;
   if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
     // This is intentionally using client_id and client_secret rather than an access_token
     // so that accidental exposure of the access token does not expose API access.
     // Passing client_id and client_secret *without* an access token is sufficient to hit the
     // increased rate limits.
-    url += `&client_id=${encodeURIComponent(process.env.GITHUB_CLIENT_ID)}`
-    url += `&client_secret=${encodeURIComponent(process.env.GITHUB_CLIENT_SECRET)}`;
+    url += `&client_id=${encodeURIComponent(process.env.GITHUB_CLIENT_ID)}`;
+    url += `&client_secret=${encodeURIComponent(
+      process.env.GITHUB_CLIENT_SECRET
+    )}`;
   }
 
   return fetch(url)
@@ -34,43 +36,44 @@ function getDirectoryListing(repo, branch = 'master') {
 }
 
 function getReadmeURLsFromDirectoryListing({ branch, packages, repo }) {
-  return packages
-    .filter(file => file.type === 'dir')
-    .map(file => ({
-      name: file.name,
-      uri: `/babel/${repo}/${branch}/${file.path}/README.md`,
-    }));
+  return packages.filter(file => file.type === "dir").map(file => ({
+    name: file.name,
+    uri: `/babel/${repo}/${branch}/${file.path}/README.md`
+  }));
 }
 
-console.log('Retrieving package listing...');
-Promise.all([getDirectoryListing('babel', '6.x'), getDirectoryListing('minify')])
+console.log("Retrieving package listing...");
+Promise.all([
+  getDirectoryListing("babel", "6.x"),
+  getDirectoryListing("minify")
+])
   .then(([babelPackages, babiliPackages]) => {
     const packages = [
       ...getReadmeURLsFromDirectoryListing(babelPackages),
       ...getReadmeURLsFromDirectoryListing(babiliPackages),
       // Special cases
       {
-        name: 'babel-preset-env',
-        uri: '/babel/babel-preset-env/1.x/README.md',
+        name: "babel-preset-env",
+        uri: "/babel/babel-preset-env/1.x/README.md"
       },
       {
-        name: 'babylon',
-        uri: '/babel/babylon/master/README.md',
-      },
+        name: "babylon",
+        uri: "/babel/babylon/master/README.md"
+      }
     ];
 
     const plugins = [];
     const presets = [];
-    const prefixes = ['preset', 'plugin', 'proposal'];
+    const prefixes = ["preset", "plugin", "proposal"];
 
-    console.log('Downloading READMEs...');
+    console.log("Downloading READMEs...");
 
     async.mapLimit(packages, CONCURRENT_REQUESTS, (package, cb) => {
       fetch(`https://raw.githubusercontent.com${package.uri}`)
         .then(res => res.text())
         .then(
           text => {
-            const filename = package.name.replace(/^babel-/, '');
+            const filename = package.name.replace(/^babel-/, "");
 
             // This is extremely hacky/temporary, and simply mimics what we
             // were doing in the old jekyll setup in
@@ -81,13 +84,20 @@ Promise.all([getDirectoryListing('babel', '6.x'), getDirectoryListing('minify')]
             //
             // > Some description
             //
-            let parsedText = text.split('\n').slice(4).join('\n');
+            let parsedText = text
+              .split("\n")
+              .slice(4)
+              .join("\n");
 
             // Adds the necessary frontmatter info for docusaurus
             parsedText = addFrontMatter(package.name, parsedText);
 
             // Add a `z_` to be gitignored
-            fs.writeFile(`${__dirname}/../docs/z_${filename}.md`, parsedText, cb);
+            fs.writeFile(
+              `${__dirname}/../docs/z_${filename}.md`,
+              parsedText,
+              cb
+            );
           },
           err => {
             console.error(`Could not load ${package.name}: ${err}`);
@@ -98,5 +108,4 @@ Promise.all([getDirectoryListing('babel', '6.x'), getDirectoryListing('minify')]
   .catch(err => {
     console.error(`Could not retrieve package listing: ${err}`);
     process.exit(1);
-  }
-);
+  });
