@@ -10,7 +10,7 @@ id: faq
 ## Why is the output of `for...of` so verbose and ugly?
 
 In order to comply with the specification, the iterator's return method must be
-called on errors. An alternative is to enable [loose mode](z_plugin-transform-es2015-for-of.md#loose)
+called on errors. An alternative is to enable [loose mode](plugin-transform-es2015-for-of.md#loose)
 but please note that there are **many** caveats to be aware of if you enable
 loose mode and that you're willingly choosing to be spec incompliant.
 
@@ -46,7 +46,7 @@ more information.
 Babel assumes that all input code is an ES2015 module. ES2015 modules are implicitly strict mode so this means
 that top-level `this` is not `window` in the browser nor is it `exports` in node.
 
-If you don't want this behaviour then you have the option of disabling `strict` in the [es2015-modules-transform](z_plugin-transform-es2015-modules-commonjs.md#usage).
+If you don't want this behaviour then you have the option of disabling `strict` in the [es2015-modules-transform](plugin-transform-es2015-modules-commonjs.md#usage).
 
 **PLEASE NOTE:** If you do this you're willingly deviating from the spec and this may cause future
 interop issues.

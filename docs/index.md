@@ -32,7 +32,7 @@ npm install --save-dev babel-cli babel-preset-env
 ES2015 and beyond
 -----------------
 
-Babel has support for the latest version of JavaScript through syntax transformers. These [plugins](plugins.md) allow you to use new syntax, **right now** without waiting for browser support. Check out our [env preset](z_preset-env.md) to get started.
+Babel has support for the latest version of JavaScript through syntax transformers. These [plugins](plugins.md) allow you to use new syntax, **right now** without waiting for browser support. Check out our [env preset](preset-env.md) to get started.
 
 You can install this preset with:
 
@@ -62,7 +62,7 @@ Use it by requiring it at the top of the entry point to your application or in y
 JSX and Flow
 ------------
 
-Babel can convert JSX syntax and strip out type annotations. Check out our [React preset](z_preset-react.md) to get started. Use it together with the [babel-sublime](https://github.com/babel/babel-sublime) package to bring syntax highlighting to a whole new level.
+Babel can convert JSX syntax and strip out type annotations. Check out our [React preset](preset-react.md) to get started. Use it together with the [babel-sublime](https://github.com/babel/babel-sublime) package to bring syntax highlighting to a whole new level.
 
 You can install this preset with
 

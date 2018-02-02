@@ -9,6 +9,7 @@ const CONCURRENT_REQUESTS = 20;
 
 const addFrontMatter = (id, text) =>
   `---
+# Don't edit this file directly, it was copied using scripts/download-readmes.js
 id: ${id}
 title: ${id}
 sidebar_label: ${id.replace(/^babel-(plugin|proposal|preset)-/, "")}
@@ -92,9 +93,8 @@ Promise.all([
             // Adds the necessary frontmatter info for docusaurus
             parsedText = addFrontMatter(package.name, parsedText);
 
-            // Add a `z_` to be gitignored
             fs.writeFile(
-              `${__dirname}/../docs/z_${filename}.md`,
+              `${__dirname}/../docs/${filename}.md`,
               parsedText,
               cb
             );

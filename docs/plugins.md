@@ -24,9 +24,9 @@ We've assembled some for common environments:
 > Each yearly preset only compiles what was ratified in that year.
 > `babel-preset-env` replaces es2015, es2016, es2017 and latest
 
-- [env](z_preset-env.md)
-- [react](z_preset-react.md)
-- [flow](z_preset-flow.md)
+- [env](preset-env.md)
+- [react](preset-react.md)
+- [flow](preset-flow.md)
 
 > Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
 
@@ -45,10 +45,10 @@ Any transforms in stage-x presets are changes to the language that haven't been 
 
 The [TC39](https://github.com/tc39) categorizes proposals into the following stages:
 
-- [Stage 0](z_preset-stage-0.md) - Strawman: just an idea, possible Babel plugin.
-- [Stage 1](z_preset-stage-1.md) - Proposal: this is worth working on.
-- [Stage 2](z_preset-stage-2.md) - Draft: initial spec.
-- [Stage 3](z_preset-stage-3.md) - Candidate: complete spec and initial browser implementations.
+- [Stage 0](preset-stage-0.md) - Strawman: just an idea, possible Babel plugin.
+- [Stage 1](preset-stage-1.md) - Proposal: this is worth working on.
+- [Stage 2](preset-stage-2.md) - Draft: initial spec.
+- [Stage 3](preset-stage-3.md) - Candidate: complete spec and initial browser implementations.
 - Stage 4 - Finished: will be added to the next yearly release.
 
 For more information, be sure to check out the [current TC39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
@@ -67,61 +67,61 @@ These plugins apply transformations to your code.
 
 ### ES3
 
-- [es3-member-expression-literals](z_plugin-transform-es3-member-expression-literals.md)
-- [es3-property-literals](z_plugin-transform-es3-property-literals.md)
+- [es3-member-expression-literals](plugin-transform-es3-member-expression-literals.md)
+- [es3-property-literals](plugin-transform-es3-property-literals.md)
 
 ### ES5
 
-- [es5-property-mutators](z_plugin-transform-es5-property-mutators.md)
+- [es5-property-mutators](plugin-transform-es5-property-mutators.md)
 
 ### ES2015
 
-- [check-es2015-constants](z_plugin-check-es2015-constants.md)
-- [es2015-arrow-functions](z_plugin-transform-es2015-arrow-functions.md)
-- [es2015-block-scoped-functions](z_plugin-transform-es2015-block-scoped-functions.md)
-- [es2015-block-scoping](z_plugin-transform-es2015-block-scoping.md)
-- [es2015-classes](z_plugin-transform-es2015-classes.md)
-- [es2015-computed-properties](z_plugin-transform-es2015-computed-properties.md)
-- [es2015-destructuring](z_plugin-transform-es2015-destructuring.md)
-- [es2015-duplicate-keys](z_plugin-transform-es2015-duplicate-keys.md)
-- [es2015-for-of](z_plugin-transform-es2015-for-of.md)
-- [es2015-function-name](z_plugin-transform-es2015-function-name.md)
-- [es2015-literals](z_plugin-transform-es2015-literals.md)
-- [es2015-object-super](z_plugin-transform-es2015-object-super.md)
-- [es2015-parameters](z_plugin-transform-es2015-parameters.md)
-- [es2015-shorthand-properties](z_plugin-transform-es2015-shorthand-properties.md)
-- [es2015-spread](z_plugin-transform-es2015-spread.md)
-- [es2015-sticky-regex](z_plugin-transform-es2015-sticky-regex.md)
-- [es2015-template-literals](z_plugin-transform-es2015-template-literals.md)
-- [es2015-typeof-symbol](z_plugin-transform-es2015-typeof-symbol.md)
-- [es2015-unicode-regex](z_plugin-transform-es2015-unicode-regex.md)
+- [check-es2015-constants](plugin-check-es2015-constants.md)
+- [es2015-arrow-functions](plugin-transform-es2015-arrow-functions.md)
+- [es2015-block-scoped-functions](plugin-transform-es2015-block-scoped-functions.md)
+- [es2015-block-scoping](plugin-transform-es2015-block-scoping.md)
+- [es2015-classes](plugin-transform-es2015-classes.md)
+- [es2015-computed-properties](plugin-transform-es2015-computed-properties.md)
+- [es2015-destructuring](plugin-transform-es2015-destructuring.md)
+- [es2015-duplicate-keys](plugin-transform-es2015-duplicate-keys.md)
+- [es2015-for-of](plugin-transform-es2015-for-of.md)
+- [es2015-function-name](plugin-transform-es2015-function-name.md)
+- [es2015-literals](plugin-transform-es2015-literals.md)
+- [es2015-object-super](plugin-transform-es2015-object-super.md)
+- [es2015-parameters](plugin-transform-es2015-parameters.md)
+- [es2015-shorthand-properties](plugin-transform-es2015-shorthand-properties.md)
+- [es2015-spread](plugin-transform-es2015-spread.md)
+- [es2015-sticky-regex](plugin-transform-es2015-sticky-regex.md)
+- [es2015-template-literals](plugin-transform-es2015-template-literals.md)
+- [es2015-typeof-symbol](plugin-transform-es2015-typeof-symbol.md)
+- [es2015-unicode-regex](plugin-transform-es2015-unicode-regex.md)
 
 ### ES2016
 
-- [exponentiation-operator](z_plugin-transform-exponentiation-operator.md)
+- [exponentiation-operator](plugin-transform-exponentiation-operator.md)
 
 ### ES2017
 
-- [async-to-generator](z_plugin-transform-async-to-generator.md)
+- [async-to-generator](plugin-transform-async-to-generator.md)
 
 ### Modules
 
-- [es2015-modules-amd](z_plugin-transform-es2015-modules-amd.md)
-- [es2015-modules-commonjs](z_plugin-transform-es2015-modules-commonjs.md)
-- [es2015-modules-systemjs](z_plugin-transform-es2015-modules-systemjs.md)
-- [es2015-modules-umd](z_plugin-transform-es2015-modules-umd.md)
+- [es2015-modules-amd](plugin-transform-es2015-modules-amd.md)
+- [es2015-modules-commonjs](plugin-transform-es2015-modules-commonjs.md)
+- [es2015-modules-systemjs](plugin-transform-es2015-modules-systemjs.md)
+- [es2015-modules-umd](plugin-transform-es2015-modules-umd.md)
 
 ### Experimental
 
-- [async-generator-functions](z_plugin-transform-async-generator-functions.md)
-- [async-to-module-method](z_plugin-transform-async-to-module-method.md)
-- [class-constructor-call](z_plugin-transform-class-constructor-call.md) (deprecated)
-- [class-properties](z_plugin-transform-class-properties.md)
-- [decorators](z_plugin-transform-decorators.md)
-- [do-expressions](z_plugin-transform-do-expressions.md)
-- [export-extensions](z_plugin-transform-export-extensions.md)
-- [function-bind](z_plugin-transform-function-bind.md)
-- [object-rest-spread](z_plugin-transform-object-rest-spread.md)
+- [async-generator-functions](plugin-transform-async-generator-functions.md)
+- [async-to-module-method](plugin-transform-async-to-module-method.md)
+- [class-constructor-call](plugin-transform-class-constructor-call.md) (deprecated)
+- [class-properties](plugin-transform-class-properties.md)
+- [decorators](plugin-transform-decorators.md)
+- [do-expressions](plugin-transform-do-expressions.md)
+- [export-extensions](plugin-transform-export-extensions.md)
+- [function-bind](plugin-transform-function-bind.md)
+- [object-rest-spread](plugin-transform-object-rest-spread.md)
 
 ### Minification
 
@@ -129,55 +129,55 @@ Check out our [minifier based on Babel](https://github.com/babel/minify)!
 
 These plugins are in the minify repo.
 
-- [inline-environment-variables](z_plugin-transform-inline-environment-variables.md)
-- [inline-consecutive-adds](z_plugin-transform-inline-consecutive-adds.md)
-- [member-expression-literals](z_plugin-transform-member-expression-literals.md)
-- [merge-sibling-variables](z_plugin-transform-merge-sibling-variables.md)
-- [minify-booleans](z_plugin-transform-minify-booleans.md)
-- [minify-constant-folding](z_plugin-minify-constant-folding.md)
-- [minify-dead-code-elimination](z_plugin-minify-dead-code-elimination.md)
-- [minify-flip-comparisons](z_plugin-minify-flip-comparisons.md)
-- [minify-guarded-expressions](z_plugin-minify-guarded-expressions.md)
-- [minify-infinity](z_plugin-minify-infinity.md)
-- [minify-mangle-names](z_plugin-minify-mangle-names.md)
-- [minify-numeric-literals](z_plugin-minify-numeric-literals.md)
-- [minify-replace](z_plugin-minify-replace.md)
-- [minify-simplify](z_plugin-minify-simplify.md)
-- [minify-type-constructors](z_plugin-minify-type-constructors.md)
-- [node-env-inline](z_plugin-transform-node-env-inline.md)
-- [property-literals](z_plugin-transform-property-literals.md)
-- [regexp-constructors](z_plugin-transform-regexp-constructors.md)
-- [remove-console](z_plugin-transform-remove-console.md)
-- [remove-debugger](z_plugin-transform-remove-debugger.md)
-- [simplify-comparison-operators](z_plugin-transform-simplify-comparison-operators.md)
-- [undefined-to-void](z_plugin-transform-undefined-to-void.md)
+- [inline-environment-variables](plugin-transform-inline-environment-variables.md)
+- [inline-consecutive-adds](plugin-transform-inline-consecutive-adds.md)
+- [member-expression-literals](plugin-transform-member-expression-literals.md)
+- [merge-sibling-variables](plugin-transform-merge-sibling-variables.md)
+- [minify-booleans](plugin-transform-minify-booleans.md)
+- [minify-constant-folding](plugin-minify-constant-folding.md)
+- [minify-dead-code-elimination](plugin-minify-dead-code-elimination.md)
+- [minify-flip-comparisons](plugin-minify-flip-comparisons.md)
+- [minify-guarded-expressions](plugin-minify-guarded-expressions.md)
+- [minify-infinity](plugin-minify-infinity.md)
+- [minify-mangle-names](plugin-minify-mangle-names.md)
+- [minify-numeric-literals](plugin-minify-numeric-literals.md)
+- [minify-replace](plugin-minify-replace.md)
+- [minify-simplify](plugin-minify-simplify.md)
+- [minify-type-constructors](plugin-minify-type-constructors.md)
+- [node-env-inline](plugin-transform-node-env-inline.md)
+- [property-literals](plugin-transform-property-literals.md)
+- [regexp-constructors](plugin-transform-regexp-constructors.md)
+- [remove-console](plugin-transform-remove-console.md)
+- [remove-debugger](plugin-transform-remove-debugger.md)
+- [simplify-comparison-operators](plugin-transform-simplify-comparison-operators.md)
+- [undefined-to-void](plugin-transform-undefined-to-void.md)
 
 ### React
 
-- [react-constant-elements](z_plugin-transform-react-constant-elements.md)
-- [react-display-name](z_plugin-transform-react-display-name.md)
-- [react-inline-elements](z_plugin-transform-react-inline-elements.md)
-- [react-jsx](z_plugin-transform-react-jsx.md)
-- [react-jsx-compat](z_plugin-transform-react-jsx-compat.md)
-- [react-jsx-self](z_plugin-transform-react-jsx-self.md)
-- [react-jsx-source](z_plugin-transform-react-jsx-source.md)
+- [react-constant-elements](plugin-transform-react-constant-elements.md)
+- [react-display-name](plugin-transform-react-display-name.md)
+- [react-inline-elements](plugin-transform-react-inline-elements.md)
+- [react-jsx](plugin-transform-react-jsx.md)
+- [react-jsx-compat](plugin-transform-react-jsx-compat.md)
+- [react-jsx-self](plugin-transform-react-jsx-self.md)
+- [react-jsx-source](plugin-transform-react-jsx-source.md)
 
 ### Other
 
-- [eval](z_plugin-transform-eval.md)
-- [flow-comments](z_plugin-transform-flow-comments.md)
-- [flow-strip-types](z_plugin-transform-flow-strip-types.md)
-- [jscript](z_plugin-transform-jscript.md)
-- [object-assign](z_plugin-transform-object-assign.md)
-- [object-set-prototype-of-to-assign](z_plugin-transform-object-set-prototype-of-to-assign.md)
-- [proto-to-assign](z_plugin-transform-proto-to-assign.md)
-- [regenerator](z_plugin-transform-regenerator.md)
-- [runtime](z_plugin-transform-runtime.md)
-- [strict-mode](z_plugin-transform-strict-mode.md)
+- [eval](plugin-transform-eval.md)
+- [flow-comments](plugin-transform-flow-comments.md)
+- [flow-strip-types](plugin-transform-flow-strip-types.md)
+- [jscript](plugin-transform-jscript.md)
+- [object-assign](plugin-transform-object-assign.md)
+- [object-set-prototype-of-to-assign](plugin-transform-object-set-prototype-of-to-assign.md)
+- [proto-to-assign](plugin-transform-proto-to-assign.md)
+- [regenerator](plugin-transform-regenerator.md)
+- [runtime](plugin-transform-runtime.md)
+- [strict-mode](plugin-transform-strict-mode.md)
 
 ## Misc Plugins
 
-- [external-helpers](z_plugin-external-helpers.md)
+- [external-helpers](plugin-external-helpers.md)
 
 ## Syntax Plugins
 
@@ -185,7 +185,7 @@ These plugins allow Babel to **parse** specific types of syntax (not transform).
 
 > NOTE: Transform plugins automatically inherit/use the syntax plugins so you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
 
-You can also provide any [`plugins` option](z_babylon.md#plugins) from babylon:
+You can also provide any [`plugins` option](babylon.md#plugins) from babylon:
 
 ```json
 // .babelrc
@@ -198,29 +198,29 @@ You can also provide any [`plugins` option](z_babylon.md#plugins) from babylon:
 
 ### Experimental
 
-- [async-generators](z_plugin-syntax-async-generators.md)
-- [class-properties](z_plugin-syntax-class-properties.md)
-- [decorators](z_plugin-syntax-decorators.md)
-- [do-expressions](z_plugin-syntax-do-expressions.md)
-- [dynamic-import](z_plugin-syntax-dynamic-import.md)
-- [export-extensions](z_plugin-syntax-export-extensions.md)
-- [flow](z_plugin-syntax-flow.md)
-- [function-bind](z_plugin-syntax-function-bind.md)
-- [function-sent](z_plugin-syntax-function-sent.md)
-- [jsx](z_plugin-syntax-jsx.md)
-- [object-rest-spread](z_plugin-syntax-object-rest-spread.md)
+- [async-generators](plugin-syntax-async-generators.md)
+- [class-properties](plugin-syntax-class-properties.md)
+- [decorators](plugin-syntax-decorators.md)
+- [do-expressions](plugin-syntax-do-expressions.md)
+- [dynamic-import](plugin-syntax-dynamic-import.md)
+- [export-extensions](plugin-syntax-export-extensions.md)
+- [flow](plugin-syntax-flow.md)
+- [function-bind](plugin-syntax-function-bind.md)
+- [function-sent](plugin-syntax-function-sent.md)
+- [jsx](plugin-syntax-jsx.md)
+- [object-rest-spread](plugin-syntax-object-rest-spread.md)
 
 ### Enabled by default
 
 These plugins have no effect anymore, as a newer babylon version enabled them by default
 
-- [async-functions](z_plugin-syntax-async-functions.md) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
-- [exponentiation-operator](z_plugin-syntax-exponentiation-operator.md) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
-- [trailing-function-commas](z_plugin-syntax-trailing-function-commas.md) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+- [async-functions](plugin-syntax-async-functions.md) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+- [exponentiation-operator](plugin-syntax-exponentiation-operator.md) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+- [trailing-function-commas](plugin-syntax-trailing-function-commas.md) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
 
 ### Deprecated
 
-- [class-constructor-call](z_plugin-syntax-class-constructor-call.md)
+- [class-constructor-call](plugin-syntax-class-constructor-call.md)
 
 ## Plugin/Preset Paths
 
