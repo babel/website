@@ -4,6 +4,7 @@
   padding: 1em;
   position: relative;
   overflow-x: visible;
+  white-space: pre-wrap;
   border-left: 0;
   /* base 20px + header height */
   margin: 54px 0 20px;
