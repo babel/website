@@ -12,6 +12,7 @@
       "babelrc",
       "babel-cli",
       "babel-polyfill",
+      "babel-plugin-transform-runtime",
       "babel-register"
     ],
     "Presets": [
