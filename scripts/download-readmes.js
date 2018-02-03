@@ -59,7 +59,7 @@ Promise.all([
       },
       {
         name: "babylon",
-        uri: "/babel/babylon/master/README.md"
+        uri: "/babel/babylon/6.x/README.md"
       }
     ];
 

@@ -34,3 +34,4 @@ layout: null
 /docs/tour/                         /learn-es2015/
 /docs/plugins/transform-es2015-constants /docs/plugins/check-es2015-constants/
 /env/                               /docs/en/env/
+/docs/usage/api/                    /docs/en/babel-core/
