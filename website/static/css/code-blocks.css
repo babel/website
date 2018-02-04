@@ -1,0 +1,139 @@
+/* Increased specificity to override theme defaults */
+.hljs.hljs {
+  background-color: rgb(253, 250, 235);
+  padding: 1em;
+  position: relative;
+  overflow-x: visible;
+  white-space: pre-wrap;
+  border-left: 0;
+  /* base 20px + header height */
+  margin: 54px 0 20px;
+  box-shadow: 0px 0 rgba(50, 51, 48, 0.07), 0px 0 rgba(50, 51, 48, 0.07);
+}
+
+.hljs::before {
+  content: "";
+  background: #fbf4d0;
+  color: #b0a673;
+  display: block;
+  font-size: 11px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  padding: 0 10px;
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+}
+
+.hljs::after {
+}
+
+/* CSS needs to be listed first so that others can overwrite */
+.hljs.css::before {
+  content: "CSS";
+}
+
+.hljs.js::before,
+.hljs.javascript::before {
+  content: "JavaScript";
+}
+.hljs.json::before {
+  content: "JSON";
+}
+
+.hljs.sh::before,
+.hljs.shell::before,
+.hljs.bash::before {
+  content: "Shell";
+}
+
+.hljs.ts::before {
+  content: "TypeScript";
+}
+
+.hljs.html::before {
+  content: "HTML";
+}
+
+.hljs.yaml::before {
+  content: "YAML";
+}
+
+/*
+
+Darcula color scheme from the JetBrains family of IDEs
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #2b2b2b;
+}
+
+.hljs {
+  color: #bababa;
+}
+
+.hljs-strong,
+.hljs-emphasis {
+  color: #a8a8a2;
+}
+
+.hljs-bullet,
+.hljs-quote,
+.hljs-link,
+.hljs-number,
+.hljs-regexp,
+.hljs-literal {
+  color: #6896ba;
+}
+
+.hljs-code,
+.hljs-selector-class {
+  color: #a6e22e;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-section,
+.hljs-attribute,
+.hljs-name,
+.hljs-variable {
+  color: #cb7832;
+}
+
+.hljs-params {
+  color: #b9b9b9;
+}
+
+.hljs-string {
+  color: #6a8759;
+}
+
+.hljs-subst,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-symbol,
+.hljs-selector-id,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-addition {
+  color: #e0c46c;
+}
+
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta {
+  color: #7f7f7f;
+}

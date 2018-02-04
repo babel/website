@@ -1,8 +1,0 @@
-babel: https://github.com/babel/babel
-babel-minify: https://github.com/babel/minify
-babel-preset-env:
-  url: https://github.com/babel/babel-preset-env
-  monorepo: false
-babylon:
-  url: https://github.com/babel/babylon
-  monorepo: false
