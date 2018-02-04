@@ -482,7 +482,7 @@ class ExpandedContainer extends Component {
   _pluginChanged = (e, plugin) => {
     const on = e.target.value === "on";
     const externalPlugins = this.props.externalPlugins;
-    if (!externalPlugins[plugin.package.name] && on) {
+    if (!externalPlugins[plugin.name] && on) {
       this.props.pluginChange(plugin);
     }
   };

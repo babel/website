@@ -1,38 +1,86 @@
-import React from "react";
-import { graphql } from "react-apollo";
-import gql from "graphql-tag";
+import React, { Component } from "react";
+import { Hits, Configure, InstantSearch } from "react-instantsearch/es/dom";
+
+import { connectSearchBox } from "react-instantsearch/es/connectors";
 
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
+
+const config = {
+  apiKey: "1f0cc4b7da241f62651b85531d788fbd",
+  appId: "OFCNCOG2CU",
+  indexName: "npm-search",
+};
 
 type Props = {
   loadingExternalPlugins: boolean,
   isPluginsExpanded: boolean,
   _togglePluginsTab: () => void,
-  _pluginNameChanged: any => void,
   _onshowOfficialExternalPluginsChanged: any => void,
   _pluginChanged: () => void,
-  pluginValue: string,
   showOfficialExternalPlugins: boolean,
   pluginsLoading: boolean,
   plugins: Array<Object>,
   styles: Object,
 };
 
-function ExternalPlugins({
+class RawSearchBox extends Component {
+  props: {
+    refine: string => void,
+    styles: Object,
+  };
+
+  state = { value: "" };
+
+  _onChange(value) {
+    this.props.refine(value);
+    this.setState({ value });
+  }
+
+  render() {
+    return (
+      <input
+        placeholder="Type the plugin name"
+        value={this.state.value}
+        onChange={e => this._onChange(e.target.value)}
+        className={`${this.props.styles.pluginName} ${this.props.styles
+          .envPresetInput}`}
+        type="text"
+      />
+    );
+  }
+}
+
+export default function ExternalPlugins({
   loadingExternalPlugins,
   isPluginsExpanded,
   _togglePluginsTab,
-  _pluginNameChanged,
   _onshowOfficialExternalPluginsChanged,
   _pluginChanged,
-  pluginValue,
   showOfficialExternalPlugins,
   pluginsLoading,
   plugins,
   styles,
 }: Props) {
   const hasPlugins = plugins !== undefined;
+  const SearchBox = connectSearchBox(RawSearchBox);
+
+  function hitComponent({ hit }: { hit: Object }) {
+    return (
+      <label key={hit.name} className={styles.pluginRow}>
+        <input
+          className={styles.inputCheckboxLeft}
+          onChange={e => _pluginChanged(e, hit)}
+          type="checkbox"
+        />
+        {hit.name
+          .split("babel-plugin-")
+          .join("")
+          .split("@babel/plugin-")
+          .join("")}
+      </label>
+    );
+  }
 
   return (
     <AccordionTab
@@ -46,87 +94,49 @@ function ExternalPlugins({
       }
       toggleIsExpanded={_togglePluginsTab}
     >
-      <label className={styles.pluginContainer}>
-        <div className={styles.pluginsSearch}>
-          <input
-            placeholder="Type the plugin name"
-            value={pluginValue}
-            onChange={e => _pluginNameChanged(e.target.value)}
-            className={`${styles.pluginName} ${styles.envPresetInput}`}
-            type="text"
-          />
-          <label className={styles.settingsLabel}>
-            <input
-              checked={showOfficialExternalPlugins}
-              onChange={e => {
-                _onshowOfficialExternalPluginsChanged(e.target.value);
-              }}
-              className={styles.inputCheckboxLeft}
-              type="checkbox"
-            />
-            Only official Plugins
-          </label>
-        </div>
-        {pluginsLoading ? (
-          <PresetLoadingAnimation />
-        ) : (
-          <div>
-            {hasPlugins &&
-              plugins.map(plugin => (
-                <label key={plugin.package.name} className={styles.pluginRow}>
-                  <input
-                    className={styles.inputCheckboxLeft}
-                    onChange={e => _pluginChanged(e, plugin)}
-                    type="checkbox"
-                  />
-                  {plugin.package.name
-                    .split("babel-plugin-")
-                    .join("")
-                    .split("@babel/plugin-")
-                    .join("")}
-                </label>
-              ))}
-            {hasPlugins && !plugins.length
-              ? "There are no plugins that match your query"
-              : null}
+      <InstantSearch
+        apiKey={config.apiKey}
+        appId={config.appId}
+        indexName={config.indexName}
+      >
+        <Configure
+          hitsPerPage={10}
+          attributesToRetrieve={["name", "version"]}
+          attributesToHighlight={["name"]}
+          filters={
+            "keywords:babel-plugin" +
+            (showOfficialExternalPlugins ? " AND owner.name:babel" : "")
+          }
+        />
+
+        <label className={styles.pluginContainer}>
+          <div className={styles.pluginsSearch}>
+            <label className={styles.settingsLabel}>
+              <input
+                checked={showOfficialExternalPlugins}
+                onChange={e => {
+                  _onshowOfficialExternalPluginsChanged(e.target.value);
+                }}
+                className={styles.inputCheckboxLeft}
+                type="checkbox"
+              />
+              Only official Plugins
+            </label>
+
+            <SearchBox styles={styles} />
+            <Hits hitComponent={hitComponent} />
           </div>
-        )}
-      </label>
+          {pluginsLoading ? (
+            <PresetLoadingAnimation />
+          ) : (
+            <div>
+              {hasPlugins && !plugins.length
+                ? "There are no plugins that match your query"
+                : null}
+            </div>
+          )}
+        </label>
+      </InstantSearch>
     </AccordionTab>
   );
 }
-
-export default graphql(
-  gql`
-    query getPlugins(
-      $name: String!
-      $babelWebsite: Boolean
-      $official: Boolean
-    ) {
-      plugins(name: $name, babelWebsite: $babelWebsite, official: $official) {
-        package {
-          name
-          description
-          version
-          links {
-            repository
-          }
-        }
-        bundled
-      }
-    }
-  `,
-  {
-    options: ({ pluginValue, showOfficialExternalPlugins }) => ({
-      variables: {
-        name: pluginValue,
-        babelWebsite: true,
-        official: showOfficialExternalPlugins || false,
-      },
-    }),
-    props: ({ data: { loading, plugins } }) => ({
-      pluginsLoading: loading,
-      plugins: plugins,
-    }),
-  }
-)(ExternalPlugins);
