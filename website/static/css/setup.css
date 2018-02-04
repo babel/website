@@ -64,3 +64,15 @@
 .step-hidden .items {
   display: none;
 }
+
+.step-hidden .items ul li  {
+  font-size: 14px;
+}
+
+.step-hidden .items ol {
+  list-style: decimal;
+}
+
+.step-hidden .items ol li {
+  font-size: 14px;
+}
