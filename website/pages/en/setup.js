@@ -106,7 +106,6 @@ class Setup extends React.Component {
       <div className="mainContainer">
         <SetupHeader />
         <SetupContent />
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" />
         <script src={`${siteConfig.baseUrl}scripts/tools.js?t=${time}`} />
       </div>
     );
