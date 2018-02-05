@@ -8,6 +8,7 @@ import React from "react";
 import { prettySize } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
+import FileDrop from "./FileDrop";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
@@ -61,6 +62,7 @@ type State = {
   isEnvPresetTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
+  isUploadTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
   meta: Object,
@@ -126,6 +128,7 @@ class Repl extends React.Component {
       isEnvPresetTabExpanded: defaultPresets["env"],
       isPresetsTabExpanded,
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
+      isUploadTabExpanded: persistedState.isUploadTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       meta: {
@@ -175,7 +178,7 @@ class Repl extends React.Component {
     };
 
     return (
-      <div className={styles.repl}>
+      <FileDrop onFileDrop={this._readCodeFromFile} className={styles.repl}>
         <ReplOptions
           babelVersion={state.babel.version}
           className={styles.optionsColumn}
@@ -188,10 +191,13 @@ class Repl extends React.Component {
           isExpanded={state.isSidebarExpanded}
           isPresetsTabExpanded={state.isPresetsTabExpanded}
           isSettingsTabExpanded={state.isSettingsTabExpanded}
+          isUploadTabExpanded={state.isUploadTabExpanded}
           lineWrap={state.lineWrap}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
+          onFileUpload={this._readCodeFromFile}
+          onDownload={this._downloadCode}
           onTabExpandedChange={this._onTabExpandedChange}
           pluginState={state.plugins}
           presetState={state.presets}
@@ -219,7 +225,7 @@ class Repl extends React.Component {
             placeholder="Compiled output will be shown here"
           />
         </div>
-      </div>
+      </FileDrop>
     );
   }
 
@@ -446,6 +452,16 @@ class Repl extends React.Component {
     }, this._presetsUpdatedSetStateCallback);
   };
 
+  _readCodeFromFile = (file: File) => {
+    const reader = new FileReader();
+
+    reader.onload = event => {
+      this._updateCode(event.target.result);
+    };
+
+    reader.readAsText(file);
+  };
+
   _onTabExpandedChange = (name: string, isExpanded: boolean) => {
     this.setState(
       {
@@ -487,6 +503,7 @@ class Repl extends React.Component {
       isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
       isPresetsTabExpanded: state.isPresetsTabExpanded,
       isSettingsTabExpanded: state.isSettingsTabExpanded,
+      isUploadTabExpanded: state.isUploadTabExpanded,
       lineWrap: state.lineWrap,
       presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,
@@ -518,6 +535,16 @@ class Repl extends React.Component {
     // Update state with compiled code, errors, etc after a small delay.
     // This prevents frequent updates while a user is typing.
     this._compileToState(code);
+  };
+
+  _downloadCode = () => {
+    const anchor = document.createElement("a");
+    const blob = new Blob([this.state.compiled], { type: "text/javascript" });
+    const href = window.URL.createObjectURL(blob);
+
+    anchor.href = href;
+    anchor.download = "babel-repl-output.js";
+    anchor.click();
   };
 }
 

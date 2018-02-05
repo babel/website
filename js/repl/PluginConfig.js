@@ -116,6 +116,7 @@ const replDefaults: ReplState = {
   isEnvPresetTabExpanded: false,
   isPresetsTabExpanded: false,
   isSettingsTabExpanded: true,
+  isUploadTabExpanded: false,
   lineWrap: true,
   meta: {
     compiledSize: 0,

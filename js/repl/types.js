@@ -96,6 +96,7 @@ export type ReplState = {
   isEnvPresetTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
+  isUploadTabExpanded: boolean,
   forceAllTransforms: boolean,
   shippedProposals: boolean,
   lineWrap: boolean,

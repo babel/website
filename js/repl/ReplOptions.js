@@ -35,6 +35,7 @@ const PRESET_ORDER = [
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
+type UploadFile = (file: File) => void;
 type OnTabExpandedChange = (name: string, isExpanded: boolean) => void;
 
 type Props = {
@@ -49,10 +50,13 @@ type Props = {
   isExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
+  isUploadTabExpanded: boolean,
   lineWrap: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
+  onFileUpload: UploadFile,
+  onDownload: () => void,
   onTabExpandedChange: OnTabExpandedChange,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
@@ -93,6 +97,7 @@ export default ReplOptions;
 // Without requiring gratuitous use of Object-spread.
 class ExpandedContainer extends Component {
   props: Props;
+  _fileInput: ?HTMLElement;
 
   static defaultProps = {
     className: "",
@@ -109,6 +114,7 @@ class ExpandedContainer extends Component {
       isEnvPresetTabExpanded,
       isPresetsTabExpanded,
       isSettingsTabExpanded,
+      isUploadTabExpanded,
       lineWrap,
       onIsExpandedChange,
       onSettingChange,
@@ -374,6 +380,25 @@ class ExpandedContainer extends Component {
               </label>
             )}
           </AccordionTab>
+          <AccordionTab
+            className={styles.section}
+            isExpanded={isUploadTabExpanded}
+            label="Upload/Download"
+            toggleIsExpanded={this._toggleUploadTab}
+          >
+            <button className={styles.button} onClick={this._chooseFile}>
+              Upload
+            </button>
+            <input
+              type="file"
+              ref={input => (this._fileInput = input)}
+              onChange={this._onFileUpload}
+              style={{ display: "none" }}
+            />
+            <button className={styles.button} onClick={this._onDownload}>
+              Download
+            </button>
+          </AccordionTab>
         </div>
         {babelVersion && (
           <div className={styles.versionRow} title={`v${babelVersion}`}>
@@ -407,6 +432,18 @@ class ExpandedContainer extends Component {
     this.props.onSettingChange(type, event.target.checked);
   };
 
+  _chooseFile = (event: SyntheticInputEvent) => {
+    this._fileInput && this._fileInput.click();
+  };
+
+  _onFileUpload = (event: SyntheticInputEvent) => {
+    this.props.onFileUpload(event.target.files[0]);
+  };
+
+  _onDownload = (event: SyntheticInputEvent) => {
+    this.props.onDownload();
+  };
+
   _toggleEnvPresetTab = () => {
     this.props.onTabExpandedChange(
       "isEnvPresetTabExpanded",
@@ -425,6 +462,13 @@ class ExpandedContainer extends Component {
     this.props.onTabExpandedChange(
       "isSettingsTabExpanded",
       !this.props.isSettingsTabExpanded
+    );
+  };
+
+  _toggleUploadTab = () => {
+    this.props.onTabExpandedChange(
+      "isUploadTabExpanded",
+      !this.props.isUploadTabExpanded
     );
   };
 }
@@ -733,6 +777,20 @@ const styles = {
       justifyContent: "flex-start",
       margin: 0,
       padding: "0.625rem 0.9375rem",
+    },
+  }),
+  button: css({
+    backgroundColor: colors.inverseBackground,
+    marginBottom: "1em",
+    border: "1px solid",
+    borderRadius: "0.25em",
+    fontSize: "1.25rem",
+    fontWeight: "bold",
+    padding: "0.5em",
+
+    "&:hover": {
+      backgroundColor: colors.inverseBackgroundDark,
+      color: colors.inverseForeground,
     },
   }),
 };
