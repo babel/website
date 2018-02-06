@@ -3,6 +3,7 @@ const React = require("react");
 const fs = require("fs");
 const path = require("path");
 const CompLibrary = require("../../core/CompLibrary.js");
+const translate = require("../../server/translate.js").translate;
 const Container = CompLibrary.Container;
 const MarkdownBlock = CompLibrary.MarkdownBlock;
 const siteConfig = require(process.cwd() + "/siteConfig.js");
@@ -12,8 +13,14 @@ const toolsMD = siteConfig.toolsMD;
 const SetupHeader = () => {
   return (
     <div className="page-header text-center">
-      <h1>Using Babel</h1>
-      <p>How to use Babel with your tool of choice.</p>
+      <h1>
+        <translate desc="setup page - header">Using Babel</translate>
+      </h1>
+      <p>
+        <translate desc="setup page - header desc">
+          How to use Babel with your tool of choice.
+        </translate>
+      </p>
     </div>
   );
 };
@@ -48,7 +55,9 @@ const SetupOptions = () => {
     <div className="step-setup">
       <h2>
         <span className="step-no">1</span>
-        {" Choose your tool (try CLI)"}
+        <translate desc="setup page - step 1">
+          Choose your tool (try CLI)
+        </translate>
       </h2>
       {showCase}
     </div>
@@ -61,11 +70,13 @@ const StepInstallAndUsage = props => {
       <MarkdownBlock key={index}>{tool[props.name]}</MarkdownBlock>
     </div>
   ));
+  const installation = <translate desc="setup page - step 2">Installation</translate>;
+  const usage = <translate desc="setup page - step 3">Usage</translate>;
   return (
     <div className="step-hidden step-setup">
       <h2 id={props.name === "install" ? "installation" : ""}>
         <span className="step-no">{props.number}</span>
-        {props.name === "install" ? " Installation" : " Usage"}
+        {props.name === "install" ? installation : usage}
       </h2>
       {markdownsElement}
     </div>
@@ -76,7 +87,12 @@ const StepFour = () => {
   return (
     <div className="step-hidden step-setup">
       <h2>
-        <span className="step-no">4</span> Create <code>.babelrc</code> configuration file
+        <span className="step-no">4</span>
+        <translate desc="setup page - step 4 one">Create</translate>
+        {" "}
+        <code>.babelrc</code>
+        {" "}
+        <translate desc="setup page - step 4 two">configuration file</translate>
       </h2>
       <MarkdownBlock>{setupBabelrc}</MarkdownBlock>
     </div>
