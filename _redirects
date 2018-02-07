@@ -9,7 +9,7 @@ layout: null
 
 # Ported from redirect_from
 
-/docs/using-babel/                  /docs/setup/
+/docs/using-babel/                  /setup/
 /plugins.html                       /docs/setup/
 /docs/using-6to5/                   /docs/setup/
 /docs/usage/browser/                /docs/setup/
