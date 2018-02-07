@@ -3,18 +3,20 @@ layout: docs
 title: Editors
 description: Learn how to use Babel in your editor of choice
 permalink: /docs/editors
+
+id: editors
 ---
 
 ## Syntax Highlighting
 
-![Syntax Highlighting](/images/syntax-highlighting.png)
+![Syntax Highlighting](/img/syntax-highlighting.png)
 
 These days, many popular editors support ES2015+ syntax highlighting
 out of the box, while some require installing additional extensions.
 This guide should help you get the syntax highlighting to work.
 
 If you're looking for more advanced integrations, you may want to
-take a look at the [Setup](/docs/setup) guide.
+take a look at the [Setup](/setup) guide.
 
 **Tip:** The font used on the screenshot above is [FiraCode](https://github.com/tonsky/FiraCode).
 

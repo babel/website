@@ -1,11 +1,11 @@
 var BABEL_MINI_REPL = (function() {
   var miniReplExamples = [
-    '[1, 2, 3].map(n => n ** 2);',
-    'var [a,,b] = [1,2,3];',
-    'const x = [1, 2, 3];\nfoo([...x]);',
+    "[1, 2, 3].map(n => n ** 2);",
+    "var [a,,b] = [1,2,3];",
+    "const x = [1, 2, 3];\nfoo([...x]);",
     'var obj = {\n  shorthand,\n  method() {\n    return "😀";\n  }\n};',
     'var name = "Guy Fieri";\nvar place = "Flavortown";\n\n`Hello ${name}, ready for ${place}?`;',
-    'let yourTurn = "Type some code in here!";',
+    'let yourTurn = "Type some code in here!";'
   ];
 
   var inEditor;
@@ -30,23 +30,23 @@ var BABEL_MINI_REPL = (function() {
       readOnly: !!readOnly,
 
       // renderer
-      fontSize: '1.5rem',
+      fontSize: "1.5rem",
       highlightGutterLine: false,
       showGutter: false,
       showLineNumbers: false,
-      theme: 'ace/theme/tomorrow_night',
+      theme: "ace/theme/tomorrow_night",
 
       // session
-      mode: 'ace/mode/javascript',
+      mode: "ace/mode/javascript",
       tabSize: 2,
       useSoftTabs: true,
       useWorker: false,
-      wrap: false,
+      wrap: false
     });
 
     editor.renderer.setPadding(24);
     editor.renderer.setScrollMargin(24, 24);
-    editor.commands.removeCommands(['gotoline', 'find']);
+    editor.commands.removeCommands(["gotoline", "find"]);
 
     return editor;
   }
@@ -57,9 +57,7 @@ var BABEL_MINI_REPL = (function() {
     var timeout;
 
     function simulateKey(changingText) {
-      var delay = changingText
-        ? 4000
-        : Math.round(Math.random() * 125) + 30;
+      var delay = changingText ? 4000 : Math.round(Math.random() * 125) + 30;
 
       timeout = setTimeout(function() {
         if (!runDemo) {
@@ -73,17 +71,11 @@ var BABEL_MINI_REPL = (function() {
 
         charIndex++;
 
-        inEditor.setValue(
-          text.substring(0, charIndex),
-          1
-        );
+        inEditor.setValue(text.substring(0, charIndex), 1);
 
         if (charIndex < text.length) {
           simulateKey();
-        } else if (
-          (charIndex === text.length) &&
-          (textIndex < texts.length - 1)
-        ) {
+        } else if (charIndex === text.length && textIndex < texts.length - 1) {
           textIndex++;
           charIndex = 0;
           simulateKey(true);
@@ -99,12 +91,14 @@ var BABEL_MINI_REPL = (function() {
   }
 
   function showError(editor, babelError) {
-    editor.setValue('');
-    $('.hero-repl__error').text(babelError).addClass('hero-repl__error--visible');
+    editor.setValue("");
+    $(".hero-repl__error")
+      .text(babelError)
+      .addClass("hero-repl__error--visible");
   }
 
   function hideError() {
-    $('.hero-repl__error').removeClass('hero-repl__error--visible');
+    $(".hero-repl__error").removeClass("hero-repl__error--visible");
   }
 
   function compileCode(sourceEditor, targetEditor) {
@@ -112,9 +106,9 @@ var BABEL_MINI_REPL = (function() {
 
     try {
       transformed = Babel.transform(sourceEditor.getValue(), {
-        presets: ['latest'],
-        filename: 'repl',
-        babelrc: false,
+        presets: ["latest"],
+        filename: "repl",
+        babelrc: false
       });
     } catch (e) {
       showError(targetEditor, e.message);
@@ -125,7 +119,7 @@ var BABEL_MINI_REPL = (function() {
 
       targetEditor.setValue(
         // Remove 'use strict' just for demonstration purposes
-        transformed.code.replace(/[\'|\"]use strict[\'|\"];(\n\n)?/g, ''),
+        transformed.code.replace(/[\'|\"]use strict[\'|\"];(\n\n)?/g, ""),
         -1
       );
     }
@@ -136,30 +130,30 @@ var BABEL_MINI_REPL = (function() {
       // don't init editor on mobile devices
       if (isMobile()) return;
 
-      $('.hero-repl').prop('hidden', false);
+      $(".hero-repl").prop("hidden", false);
 
-      inEditor = setupEditor('hero-repl-in', true);
+      inEditor = setupEditor("hero-repl-in", true);
 
-      outEditor = setupEditor('hero-repl-out', true);
-      outEditor.renderer.$cursorLayer.element.style.display = "none"
+      outEditor = setupEditor("hero-repl-out", true);
+      outEditor.renderer.$cursorLayer.element.style.display = "none";
 
-      inEditor.on('change', function(e) {
+      inEditor.on("change", function(e) {
         if (!inEditor.getValue()) {
           debouncedUpdate.cancel();
-          outEditor.setValue('');
+          outEditor.setValue("");
         }
 
         debouncedUpdate();
       });
 
-      $('#hero-repl-in').on('click', function() {
+      $("#hero-repl-in").on("click", function() {
         if (runDemo) {
           BABEL_MINI_REPL.stopDemo();
         }
       });
 
       setTimeout(function() {
-        $('.hero-repl').addClass('hero-repl--visible');
+        $(".hero-repl").addClass("hero-repl--visible");
         simulateKeys(inEditor, outEditor, miniReplExamples);
       }, 150);
     },
@@ -168,17 +162,17 @@ var BABEL_MINI_REPL = (function() {
       debouncedUpdate.cancel();
       runDemo = false;
       inEditor.setReadOnly(false);
-      inEditor.setValue('');
-      outEditor.setValue('');
-    },
+      inEditor.setValue("");
+      outEditor.setValue("");
+    }
   };
 })();
 
 $(document).ready(function() {
   BABEL_MINI_REPL.start();
 
-  $('.babel-slider').slick({
-    lazyLoad: 'ondemand',
+  $(".babel-slider").slick({
+    lazyLoad: "ondemand",
     arrows: false,
     infinite: true,
     speed: 500,
@@ -186,24 +180,28 @@ $(document).ready(function() {
     autoplaySpeed: 4000,
     slidesToShow: 3,
     slidesToScroll: 3,
-    responsive: [{
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3
+        }
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
       }
-    }, {
-      breakpoint: 992,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    }, {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }]
+    ]
   });
 });

@@ -1,0 +1,134 @@
+body,
+.mainContainer {
+  background: #fff;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+/* ####### LINKS ####### */
+
+.mainContainer .wrapper a,
+.inner .projectIntro a {
+  background-color: rgba(245, 218, 85, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  color: #1a1a1a;
+  transition: all 0.25s ease-out;
+}
+
+.mainContainer .wrapper a:hover,
+.inner .projectIntro a:hover {
+  background-color: rgba(245, 218, 85, 0.35);
+  text-decoration: none !important;
+}
+
+.mainContainer .wrapper .button,
+.inner .projectIntro .button {
+  background: transparent;
+  border: 1px solid #323330;
+}
+
+.mainContainer .wrapper .button:hover,
+.inner .projectIntro .button:hover {
+  background: #323330;
+  color: #fff;
+}
+
+/* ####### HEADER ####### */
+
+.fixedHeaderContainer {
+  background: #f5da55;
+  border-bottom: 2px solid #000;
+  color: #333;
+}
+
+@media only screen and (min-width: 736px) {
+  .navigationSlider .slidingNav ul li a {
+    color: #333;
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+}
+
+/* ####### GLOBAL ####### */
+
+blockquote {
+  background: #fafbfc;
+  border-left-color: #e0e0e0;
+}
+
+/* ####### POST ####### */
+
+.read-more {
+  margin-top: 2rem;
+}
+
+a.anchor {
+  border: 0 !important;
+}
+
+.blogContainer .postHeader {
+  margin-bottom: 2rem;
+}
+
+.mainContainer .wrapper .post .postHeader h1 {
+  margin: 0 0 1rem;
+}
+
+.mainContainer .wrapper .post:not(:first-child) h1 {
+  margin-top: 2rem;
+}
+
+.blogContainer .postHeader h1 a {
+  background: transparent;
+  font-weight: 500;
+}
+
+.mainContainer .wrapper .post h2,
+.mainContainer .wrapper .post h3 {
+  font-weight: 500;
+  padding-top: 3rem;
+}
+
+.blogContainer .postHeader p.post-meta {
+  float: left;
+  font-size: 0.875rem;
+}
+
+.blogContainer .postHeader .authorBlock:before {
+  content: "by ";
+  font-size: 0.875rem;
+  margin: 1px 5px;
+}
+
+.post blockquote p:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.page-header {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.page-header > h1 {
+  font-size: 36px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.page-header > p {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.4;
+  margin: 5px;
+}
+
+.text-center {
+  text-align: center;
+}

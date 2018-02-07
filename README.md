@@ -1,64 +1,27 @@
 # [babel/website](https://babeljs.io)
 
-This is the source for the [babeljs.io](https://babeljs.io) website, powered by [Jekyll](https://jekyllrb.com/).
+This is the source for the [babeljs.io](https://babeljs.io) website: feel free to suggest changes to our docs!
 
-This repo also contains Babel's [source documentation](https://github.com/babel/website/tree/master/docs).
+> We're in the process of re-doing the site with https://docusaurus.io so things might be in flux: [#1544](https://github.com/babel/website/issues/1544)
 
-Feel free to suggest changes to our docs, add new content, or new ideas!
+- Old site: `old-site` branch is deployed to https://old.babeljs.io and https://babeljs.io
+- New site: `master` branch is deployed to https://new.babeljs.io
 
 ### Setup
-
-* [Please install ruby](https://www.ruby-lang.org/en/documentation/installation/), if not already installed.
-  * Use `which ruby` or `ruby --version`, to verify if ruby is installed.
-  * Make sure `bundler` is installed by running `gem install bundler`
 
 ```bash
 $ git clone git@github.com:babel/website.git
 $ cd website
-$ make bootstrap
+$ make bootstrap && make build
 ```
 
-* Just run `npm start` next time.
+* Just run `npm start` next time (check the Makefile and the package.json).
 
 ### Contributing to the website
 
 To keep documentation in sync across all of Babel's packages and plugins, the documentation for the plugins and presets is sourced directly from the README files located inside their respective repositories ([Babel's packages](https://github.com/babel/babel/tree/master/packages), [babel-minify's packages](https://github.com/babel/minify/tree/master/packages), ...).
 
-For pages that are sourced from README files, the `package` field in the header needs to correspond to your package name. This package name also needs to be added to `scripts/download-readmes.js`.
-
-```yaml
-layout: docs
-title: babel-register (require hook)
-description: How to use babel-register, the require hook.
-permalink: /docs/usage/babel-register/
-package: babel-register
-```
-
-#### Publishing README
-
-```
-{% include package_readme.html %}
-```
-
-For example [babel.github.io/docs/plugins/preset-stage-0.md](/docs/plugins/preset-stage-0.md) which then points to [babel/packages/babel-preset-stage-0/README.md](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-0/README.md)
-
-If you encounter an `Liquid Exception: Included file '_includes/.../packages/.../README.md' not found`, please double check your `package` configuration, and ensure you have ran `scripts/download-readmes.js` (`make build` will run this for you).
-
-#### Linting markdown
-
-```sh
-npm test
-```
-
-This will lint markdown documents inside both the website and the imported repositories (like babel, babel-minify, etc).
-
-#### Testing compiled output
-
-```sh
-rake
-```
-
-Running this will check the compiled output for broken links and invalid markup.
+These documents are automatically downloaded into `docs` via [scripts/download-readmes.js](/scripts/download-readmes.js).
 
 #### Looking for support?
 

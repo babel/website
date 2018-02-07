@@ -552,18 +552,20 @@ const styles = {
   optionsColumn: css({
     flex: "0 0 auto",
   }),
-  repl: css({
-    height: "100%",
-    width: "100%",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "stretch",
-    overflow: "auto",
+  repl: css`
+    height: 100%;
+    height: calc(100vh - 50px); /* 50px is the header's height */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    overflow: auto;
+    font-size: 0.875rem;
 
-    [media.mediumAndDown]: {
-      flexDirection: "column",
-    },
-  }),
+    ${media.mediumAndDown} {
+      flex-direction: column;
+    }
+  `,
   panels: css({
     height: "100%",
     width: "100%",
@@ -571,5 +573,7 @@ const styles = {
     flexDirection: "row",
     justifyContent: "stretch",
     overflow: "auto",
+    fontSize: "0.875rem",
+    lineHeight: "1.25rem",
   }),
 };

@@ -10,7 +10,8 @@
     "lint": "npm run lint:docs && npm run lint:repl",
     "lint:docs": "eslint --ext md --rule 'prettier/prettier: 0' docs",
     "lint:repl": "eslint js/repl/*.js",
-    "test": "remark _posts docs _includes README.md --quiet",
+    "fix:css": "prettier --write website/static/css/*.css",
+    "test": "remark docs README.md --quiet",
     "flow": "flow",
     "precommit": "flow && lint-staged"
   },
@@ -19,9 +20,11 @@
       "preset-lint-recommended": true,
       "lint-list-item-indent": false,
       "lint-no-blockquote-without-caret": false,
+      "lint-no-inline-padding": false,
       "lint-no-literal-urls": false,
       "lint-no-duplicate-headings-in-section": true,
-      "lint-no-empty-url": true
+      "lint-no-empty-url": true,
+      "lint-list-item-bullet-indent": false
     }
   },
   "author": "",
@@ -35,7 +38,6 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
-    "bootstrap-sass": "^3.3.1",
     "eslint": "^3.15.0",
     "eslint-config-babel": "^6.0.0",
     "eslint-plugin-flowtype": "^2.35.0",
@@ -72,6 +74,10 @@
   },
   "lint-staged": {
     "js/**/*.js": [
+      "eslint --format=codeframe --fix",
+      "git add"
+    ],
+    "website/pages/en": [
       "eslint --format=codeframe --fix",
       "git add"
     ]
