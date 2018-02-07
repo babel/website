@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { Hits, Configure, InstantSearch } from "react-instantsearch/es/dom";
+import { PoweredBy,  Hits, Configure, InstantSearch } from "react-instantsearch/es/dom";
 
 import { connectSearchBox } from "react-instantsearch/es/connectors";
 
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
+
+import AlgoliaLogo from '../assets/search-by-algolia-white';
 
 const config = {
   apiKey: "1f0cc4b7da241f62651b85531d788fbd",
@@ -124,6 +126,7 @@ export default function ExternalPlugins({
             </label>
 
             <SearchBox styles={styles} />
+            <AlgoliaLogo width="100" alt="Search Powered by Algolia" />
             <Hits hitComponent={hitComponent} />
           </div>
           {pluginsLoading ? (
