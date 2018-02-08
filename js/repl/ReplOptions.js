@@ -694,6 +694,7 @@ const styles = {
   pluginsHeader: css({
     display: "flex",
     justifyContent: "space-between",
+    paddingRight: 5
   }),
   accordionLabelVersion: css({
     fontSize: "1rem",
@@ -816,5 +817,9 @@ const styles = {
       margin: 0,
       padding: "0.625rem 0.9375rem",
     },
+  }),
+  checkboxOfficial: css({
+    marginTop: 10,
+    marginBottom: 10,
   }),
 };

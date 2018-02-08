@@ -91,7 +91,11 @@ export default function ExternalPlugins({
       label={
         <span className={styles.pluginsHeader}>
           Plugins
-          {loadingExternalPlugins ? <PresetLoadingAnimation /> : ""}
+          {loadingExternalPlugins ?
+            <PresetLoadingAnimation /> :
+            <AlgoliaLogo alt="Search Powered by Algolia" />
+          }
+
         </span>
       }
       toggleIsExpanded={_togglePluginsTab}
@@ -113,7 +117,7 @@ export default function ExternalPlugins({
 
         <label className={styles.pluginContainer}>
           <div className={styles.pluginsSearch}>
-            <label className={styles.settingsLabel}>
+            <label className={`${styles.settingsLabel} ${styles.checkboxOfficial}`}>
               <input
                 checked={showOfficialExternalPlugins}
                 onChange={e => {
@@ -126,7 +130,6 @@ export default function ExternalPlugins({
             </label>
 
             <SearchBox styles={styles} />
-            <AlgoliaLogo width="100" alt="Search Powered by Algolia" />
             <Hits hitComponent={hitComponent} />
           </div>
           {pluginsLoading ? (
