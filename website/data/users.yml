@@ -653,3 +653,6 @@
 - name: ePages
   url: https://www.epages.com
   logo: epages.svg
+- name: Digitalychee
+  url: https://www.lizhi.io
+  logo: digitalychee.svg
