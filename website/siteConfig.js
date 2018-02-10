@@ -34,6 +34,15 @@ const users = loadYaml("./data/users.yml").map(user => ({
   image: `/img/users/${user.logo}`,
 }));
 
+const sponsors = loadYaml("./data/sponsors.yml").map(sponsor => ({
+  type: sponsor.type,
+  caption: sponsor.name,
+  infoLink: sponsor.url,
+  image: `/img/sponsors/${sponsor.logo}`,
+  description: sponsor.description,
+  member: "@" + sponsor.member,
+}));
+
 // move to website/data later
 const videos = loadYaml("./data/videos.yml");
 const team = loadYaml("./data/team.yml");
@@ -68,6 +77,7 @@ const siteConfig = {
     { href: "https://github.com/babel/babel", label: "GitHub" },
     // { languages: true }
   ],
+  sponsors,
   users,
   videos,
   team,

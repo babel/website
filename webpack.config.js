@@ -7,6 +7,7 @@ const DEV_SERVER_PORT = 34512;
 const config = {
   entry: {
     repl: './js/repl/index.js',
+    minirepl: './js/minirepl.js',
   },
   output: {
     // Don't bother with hashing/versioning the filename - Netlify does it
