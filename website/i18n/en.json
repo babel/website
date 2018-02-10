@@ -286,6 +286,13 @@
     "Tooling": "Tooling"
   },
   "pages-strings": {
+    "Using Babel|setup page - header": "Using Babel",
+    "How to use Babel with your tool of choice.|setup page - header desc": "How to use Babel with your tool of choice.",
+    "Choose your tool (try CLI)|setup page - step 1": "Choose your tool (try CLI)",
+    "Installation|setup page - step 2": "Installation",
+    "Usage|setup page - step 3": "Usage",
+    "Create|setup page - step 4 one": "Create",
+    "configuration file|setup page - step 4 two": "configuration file",
     "Help Translate|recruit community translators for your project": "Help Translate",
     "Edit this Doc|recruitment message asking to edit the doc source": "Edit",
     "Translate this Doc|recruitment message asking to translate the docs": "Translate"

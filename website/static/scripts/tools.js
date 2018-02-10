@@ -1,36 +1,58 @@
 (function() {
-  var $currentItem;
-  var $currentNav;
-  var $steps = $(".step");
-  var $stepHidden = $(".step-hidden");
+  let currentItem;
+  let currentNav;
+  const stepHidden = document.getElementsByClassName("step-hidden");
 
-  function reset() {
-    if ($currentItem) $currentItem.hide();
-    if ($currentNav) $currentNav.removeClass("active");
-    $currentItem = $currentNav = null;
-    $steps.removeAttr("style");
-    $stepHidden.removeAttr("style");
+  function hasClass(ele, cls) {
+    return ele.className.match(new RegExp("(\\s|^)" + cls + "(\\s|$)"));
+  }
+  function addClass(ele, cls) {
+    if (!hasClass(ele, cls)) {
+      ele.className += " " + cls;
+    }
+  }
+  function removeClass(ele, cls) {
+    if (hasClass(ele, cls)) {
+      const reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
+      ele.className = ele.className.replace(reg, " ");
+    }
   }
 
-  $(".tools-group .tools-button").click(function() {
-    if ($currentNav && $currentNav[0] === this) {
-      return reset();
-    } else {
-      reset();
+  function reset() {
+    if (currentItem) {
+      for (let i = 0; i < currentItem.length; i++) {
+        currentItem[i].style.display = "none";
+      }
     }
+    if (currentNav) {
+      removeClass(currentNav, "active");
+    }
+    currentItem = currentNav = null;
+    for (let i = 0; i < stepHidden.length; i++) {
+      stepHidden[i].removeAttribute("style");
+    }
+  }
 
-    $currentNav = $(this);
-    $currentNav.addClass("active");
-
-    var name = $currentNav.attr("data-title");
-    location.hash = name;
-
-    $currentItem = $("[data-title=" + name + "]:not(.tools-button)").show();
-    $steps.show();
-    $stepHidden.show();
-  });
-
-  if (location.hash && location.hash !== "#") {
-    $(".tools-button[data-title=" + location.hash.slice(1) + "]").click();
+  const buttons = document.querySelectorAll(".tools-group .tools-button");
+  for (let i = 0; i < buttons.length; i++) {
+    const button = buttons[i];
+    button.onclick = function() {
+      if (currentNav && currentNav === this) {
+        return reset();
+      } else {
+        reset();
+      }
+      currentNav = this;
+      addClass(currentNav, "active");
+      const name = currentNav.attributes["data-title"].value;
+      location.hash = name;
+      currentItem = document.querySelectorAll("[data-title=" + name + "]:not(.tools-button)");
+      for (let i = 0; i < currentItem.length; i++) {
+        currentItem[i].style.display = "block";
+      }
+      for (let i = 0; i < stepHidden.length; i++) {
+        stepHidden[i].style.display = "block";
+      }
+    };
   }
 })();
