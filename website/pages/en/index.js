@@ -1,8 +1,5 @@
 const React = require("react");
 
-const CompLibrary = require("../../core/CompLibrary.js");
-const Container = CompLibrary.Container;
-
 const siteConfig = require(process.cwd() + "/siteConfig.js");
 
 function docUrl(doc, language) {
@@ -86,23 +83,17 @@ const MiniRepl = props => {
   );
 };
 
-const GoldSponsors = () => {
-  if ((siteConfig.sponsors || []).length === 0) {
-    return null;
-  }
-
+const SpecialSponsors = () => {
   return (
-    <div className="productShowcaseSection sponsors-gold">
-      <p>Proudly sponsored by:</p>
-      <div className="sponsors-gold-logos">
+    <div className="productShowcaseSection sponsors-special">
+      <p>Special Sponsors</p>
+      <div className="sponsors-special-logos">
         {siteConfig.sponsors
-          .filter(sponsor => {
-            return sponsor.type == "gold" || sponsor.type == "silver";
-          })
+          .filter(sponsor => sponsor.type == "special")
           .map((sponsor, i) => {
             return (
-              <a href={sponsor.infoLink} target="_blank" key={i}>
-                <img src={sponsor.image} title={sponsor.caption} />
+              <a href={sponsor.url} target="_blank" key={i}>
+                <img src={sponsor.image} title={sponsor.name} />
               </a>
             );
           })}
@@ -120,7 +111,7 @@ class HomeSplash extends React.Component {
           <ProjectTitle />
           <MiniRepl language={language} />
           <PromoSection>
-            <GoldSponsors />
+            <SpecialSponsors />
           </PromoSection>
         </div>
       </SplashContainer>
@@ -174,14 +165,9 @@ const WorkSponsors = () => {
             })
             .map((sponsor, i) => {
               return (
-                <a
-                  className="card"
-                  href={sponsor.infoLink}
-                  target="_blank"
-                  key={i}
-                >
+                <a className="card" href={sponsor.url} target="_blank" key={i}>
                   <div className="card-image">
-                    <img src={sponsor.image} title={sponsor.caption} />
+                    <img src={sponsor.image} title={sponsor.name} />
                   </div>
                   <div className="card-text">
                     <p>{sponsor.description}</p>
@@ -195,35 +181,74 @@ const WorkSponsors = () => {
   );
 };
 
-const Donate = props => {
+const SponsorTier = props => {
+  const tierSponsors = siteConfig.sponsors.filter(
+    sponsor => sponsor.type == "opencollective" && sponsor.tier === props.tier
+  );
+  return (
+    <div>
+      <h3>{props.title}</h3>
+      <ul className={`sponsors-opencollective-tier tier-${props.tier}`}>
+        {tierSponsors.map((sponsor, i) => (
+          <li key={i}>
+            <a href={sponsor.url} title={sponsor.name}>
+              <img src={sponsor.image} />
+            </a>
+          </li>
+        ))}
+      </ul>
+      {props.button ? (
+        <PromoSection>
+          <Button href="https://opencollective.com/babel" target="_blank">
+            Become a sponsor
+          </Button>
+        </PromoSection>
+      ) : null}
+    </div>
+  );
+};
+
+const OpenCollectiveSponsors = props => {
   const language = props.language || "en";
   return (
-    <div
-      className="wrapper productShowcaseSection paddingBottom"
-      style={{ textAlign: "center" }}
-    >
-      <h2>Support the team</h2>
-      <p>
-        Babel is helping shape the future of the JavaScript language itself,
-        being used at companies like Facebook, Google, Netflix, and{" "}
-        <a href={pageUrl("users.html", language)}>hundreds more</a>. Your
-        donation will help cover expenses like attending TC39 ( the committee
-        that specifies JavaScript) meettings and will directly support the core
-        team developers to continue working on improving Babel.
-      </p>
-      <PromoSection>
-        <Button href="https://opencollective.com/babel" target="_blank">
-          Become a sponsor
-        </Button>
-      </PromoSection>
+    <div className="container paddingTop paddingBottom">
+      <div className="wrapper productShowcaseSection">
+        <div className="support-the-team">
+          <h2>Support the Team</h2>
+          <p>
+            Babel is helping shape the future of the JavaScript language itself,
+            being used at companies like Facebook, Google, Netflix, and{" "}
+            <a href={pageUrl("users.html", language)}>hundreds more</a>. Your
+            donation will help cover expenses like attending TC39 (the committee
+            that specifies JavaScript) meetings and will directly support the
+            core team developers to continue working on improving Babel.
+          </p>
+          <PromoSection>
+            <Button href="https://opencollective.com/babel" target="_blank">
+              Become a sponsor
+            </Button>
+          </PromoSection>
+        </div>
+        <div className="sponsors-opencollective">
+          <h2>Open Collective Sponsors</h2>
+          <SponsorTier title="Gold" tier="gold-sponsors" button={true} />
+          <SponsorTier title="Silver" tier="silver-sponsors" button={true} />
+          <SponsorTier title="Bronze" tier="bronze-sponsors" button={true} />
+        </div>
+      </div>
     </div>
   );
 };
 
 const HomeContainer = props => (
-  <Container padding={props.padding}>
-    <div className="gridBlock">{props.children}</div>
-  </Container>
+  <div
+    className="container paddingTop paddingBottom"
+    style={{ backgroundColor: "#f6f6f6" }}
+  >
+    <div className="wrapper">
+      <div className="gridBlock">{props.children}</div>
+    </div>
+  </div>
 );
 
 class Index extends React.Component {
@@ -234,11 +259,11 @@ class Index extends React.Component {
       <div>
         <HomeSplash language={language} />
         <div className="mainContainer">
-          <HomeContainer padding={["bottom"]}>
+          <HomeContainer>
             <GetStarted language={language} />
             <WorkSponsors language={language} />
           </HomeContainer>
-          <Donate />
+          <OpenCollectiveSponsors />
         </div>
       </div>
     );

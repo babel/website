@@ -1,6 +1,7 @@
 const parseYaml = require("js-yaml").safeLoad;
 const path = require("path");
 const fs = require("fs");
+const url = require("url");
 
 function findMarkDownSync(startPath) {
   const result = [];
@@ -34,14 +35,42 @@ const users = loadYaml("./data/users.yml").map(user => ({
   image: `/img/users/${user.logo}`,
 }));
 
-const sponsors = loadYaml("./data/sponsors.yml").map(sponsor => ({
-  type: sponsor.type,
-  caption: sponsor.name,
-  infoLink: sponsor.url,
+const sponsorsManual = loadYaml("./data/sponsors.yml").map(sponsor => ({
+  ...sponsor,
   image: `/img/sponsors/${sponsor.logo}`,
-  description: sponsor.description,
-  member: "@" + sponsor.member,
 }));
+const sponsorsDownloaded = require(path.join(__dirname, "/data/sponsors.json"));
+
+const sponsors = [
+  ...sponsorsManual,
+  ...sponsorsDownloaded
+    .filter(sponsor => sponsor.id != 2719) // temporary fix for Kent C. Dodds duplicate
+    .map(sponsor => {
+      // temporary fix for AMP, facebook, and webflow
+      let tier = sponsor.tier;
+      if (sponsor.id == 9337 || sponsor.id == 2309) {
+        tier = "gold-sponsors";
+      } else if (sponsor.id == 5954) {
+        tier = "silver-sponsors";
+      }
+
+      let website = sponsor.website;
+      if (typeof website == "string") {
+        website = url.parse(website).protocol ? website : `http://${website}`;
+      } else if (typeof sponsor.twitterHandle == "string") {
+        website = `https://twitter.com/@${sponsor.twitterHandle}`;
+      }
+
+      return {
+        type: "opencollective",
+        tier,
+        name: sponsor.name,
+        url: website,
+        image: sponsor.avatar,
+        description: sponsor.description,
+      };
+    }),
+];
 
 // move to website/data later
 const videos = loadYaml("./data/videos.yml");
@@ -77,8 +106,8 @@ const siteConfig = {
     { href: "https://github.com/babel/babel", label: "GitHub" },
     // { languages: true }
   ],
-  sponsors,
   users,
+  sponsors,
   videos,
   team,
   tools,

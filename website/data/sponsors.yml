@@ -1,15 +1,18 @@
 - name: Facebook Open Source
   url: https://code.facebook.com/projects
   logo: facebook.jpg
-  type: gold
+  type: special
+  tier: gold-sponsors
 - name: AMP Project
   url: https://www.ampproject.org
   logo: amp.svg
-  type: gold
+  type: special
+  tier: gold-sponsors
 - name: Webflow
   url: https://webflow.com
   logo: webflow.svg
-  type: silver
+  type: special
+  tier: silver-sponsors
 - name: Behance
   url: https://www.behance.net
   logo: behance.svg
