@@ -1,0 +1,118 @@
+.sponsors-special p {
+  font-size: 0.9375rem;
+  padding-bottom: 0;
+}
+.sponsors-special-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.sponsors-special-logos img {
+  width: auto;
+  height: 60px;
+}
+.sponsors-special-logos a {
+  margin: 15px;
+}
+
+.get-started,
+.container .wrapper .get-started h2 {
+  text-align: center;
+}
+@media only screen and (min-width: 736px) {
+  .get-started,
+  .container .wrapper .get-started h2 {
+    text-align: left;
+  }
+  .gridBlock .twoByGridBlock.get-started {
+    padding-right: 4em;
+  }
+}
+
+.sponsors-work .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 0 0;
+}
+.wrapper .sponsors-work .card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  border-width: 0;
+  box-shadow: 0px 3px 20px 0 rgba(0, 0, 0, 0.15);
+}
+@media only screen and (min-width: 736px) {
+  .sponsors-work .card {
+    width: 45%;
+  }
+}
+.sponsors-work .card-image,
+.sponsors-work .card-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  flex-grow: 0;
+  padding: 10px;
+}
+.wrapper .sponsors-work a.card-image {
+  background: none;
+}
+.wrapper .sponsors-work .card img {
+  max-height: 100%;
+}
+.wrapper .sponsors-work .card-text {
+  height: auto;
+  flex-grow: 1;
+  border-top: 1px solid #ddd;
+  font-size: 12px;
+  padding: 0.8em;
+  color: #999;
+}
+.wrapper .sponsors-work .card-text p {
+  padding: 0;
+}
+
+.mainContainer .wrapper.productShowcaseSection {
+  text-align: center;
+}
+.mainContainer .wrapper.productShowcaseSection h2 {
+  font-size: 30px;
+  text-align: center;
+}
+.mainContainer .sponsors-opencollective h3 {
+  font-size: 24px;
+  padding: 30px 0 20px;
+}
+.mainContainer ul.sponsors-opencollective-tier {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+}
+.mainContainer ul.sponsors-opencollective-tier li {
+  list-style: none;
+  margin: 5px;
+}
+.mainContainer .sponsors-opencollective-tier a,
+.mainContainer .sponsors-opencollective-tier a:hover {
+  background: none;
+  border: none;
+}
+.tier-gold-sponsors img {
+  max-height: 90px;
+  max-width: 270px;
+}
+.tier-silver-sponsors img {
+  max-height: 85px;
+  max-width: 255px;
+}
+.tier-bronze-sponsors img {
+  max-height: 60px;
+  max-width: 180px;
+}

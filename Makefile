@@ -2,6 +2,7 @@
 
 bootstrap:
 	./scripts/download-readmes.js
+	./scripts/download-sponsors.js
 
 build: build-repl build-docusaurus
 

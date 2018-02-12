@@ -45,3 +45,6 @@ docs/babel.md
 docs/babylon.md
 docs/minify.md
 docs/messages.md
+
+# generated using scripts/download-sponsors.json
+website/data/sponsors.json
