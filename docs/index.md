@@ -129,4 +129,4 @@ Compact
 
 Babel tries uses the least amount of code possible with no dependence on a bulky runtime.
 
-This may be difficult to do in cases, and there are "loose" options for specific transforms that may tradeoff spec compliancy for readabililty, file size, and speed.
+This may be difficult to do in cases, and there are "loose" options for specific transforms that may tradeoff spec compliancy for readability, file size, and speed.
