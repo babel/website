@@ -8,18 +8,15 @@
   logo: amp.svg
   type: special
   tier: gold-sponsors
-- name: Webflow
-  url: https://webflow.com
-  logo: webflow.svg
-  type: special
-  tier: silver-sponsors
 - name: Behance
   url: https://www.behance.net
   logo: behance.svg
   type: work
   description: The leading online platform to showcase & discover creative work.
+  member: hzoo
 - name: AMP Project
   url: https://www.ampproject.org
   logo: amp-work.svg
   type: work
   description: The AMP Project is an open-source initiative aiming to make the web better for all.
+  member: jridgewell

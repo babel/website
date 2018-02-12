@@ -165,14 +165,22 @@ const WorkSponsors = () => {
             })
             .map((sponsor, i) => {
               return (
-                <a className="card" href={sponsor.url} target="_blank" key={i}>
-                  <div className="card-image">
+                <div className="card" key={i}>
+                  <a href={sponsor.url} target="_blank" className="card-image">
                     <img src={sponsor.image} title={sponsor.name} />
-                  </div>
+                  </a>
                   <div className="card-text">
                     <p>{sponsor.description}</p>
                   </div>
-                </a>
+                  <div className="card-text">
+                    <p>
+                      sponsoring{" "}
+                      <a href={`https://github.com/${sponsor.member}`}>
+                        @{sponsor.member}
+                      </a>
+                    </p>
+                  </div>
+                </div>
               );
             })}
         </div>

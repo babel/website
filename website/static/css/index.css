@@ -36,11 +36,10 @@
   justify-content: space-between;
   padding: 20px 0 0;
 }
-.wrapper .sponsors-work a.card {
+.wrapper .sponsors-work .card {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  background: none;
   border-width: 0;
   box-shadow: 0px 3px 20px 0 rgba(0, 0, 0, 0.15);
 }
@@ -57,7 +56,9 @@
   height: 80px;
   flex-grow: 0;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+}
+.wrapper .sponsors-work a.card-image {
+  background: none;
 }
 .wrapper .sponsors-work .card img {
   max-height: 100%;
@@ -65,7 +66,7 @@
 .wrapper .sponsors-work .card-text {
   height: auto;
   flex-grow: 1;
-  border-bottom: none;
+  border-top: 1px solid #ddd;
   font-size: 12px;
   padding: 0.8em;
   color: #999;
