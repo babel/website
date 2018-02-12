@@ -10,7 +10,7 @@ id: caveats
 ## Polyfills
 
 In order for certain features to work they require certain polyfills. You can satisfy **all**
-Babel feature requirements by using [babel-polyfill](babel-polyfill.md).
+Babel feature requirements by using [babel-polyfill](polyfill.md).
 
 You may alternatively/selectively include what you need:
 
@@ -32,7 +32,7 @@ You can try to use [babel-plugin-transform-builtin-extend](https://github.com/lo
 
 Since Babel assumes that your code will run in an ES5 environment it uses ES5
 functions. So if you're using an environment that has limited or no support for
-ES5 such as lower versions of IE then using [babel-polyfill](babel-polyfill.md) will add support for these methods.
+ES5 such as lower versions of IE then using [babel-polyfill](polyfill.md) will add support for these methods.
 
 ## Internet Explorer
 
