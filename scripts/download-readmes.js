@@ -45,22 +45,13 @@ function getReadmeURLsFromDirectoryListing({ branch, packages, repo }) {
 
 console.log("Retrieving package listing...");
 Promise.all([
-  getDirectoryListing("babel", "6.x"),
+  getDirectoryListing("babel", "master"),
   getDirectoryListing("minify")
 ])
   .then(([babelPackages, babiliPackages]) => {
     const packages = [
       ...getReadmeURLsFromDirectoryListing(babelPackages),
       ...getReadmeURLsFromDirectoryListing(babiliPackages),
-      // Special cases
-      {
-        name: "babel-preset-env",
-        uri: "/babel/babel-preset-env/1.x/README.md"
-      },
-      {
-        name: "babylon",
-        uri: "/babel/babylon/6.x/README.md"
-      }
     ];
 
     const plugins = [];
