@@ -83,24 +83,24 @@ const MiniRepl = props => {
   );
 };
 
-const SpecialSponsors = () => {
-  return (
-    <div className="productShowcaseSection sponsors-special">
-      <p>Special Sponsors</p>
-      <div className="sponsors-special-logos">
-        {siteConfig.sponsors
-          .filter(sponsor => sponsor.type == "special")
-          .map((sponsor, i) => {
-            return (
-              <a href={sponsor.url} target="_blank" key={i}>
-                <img src={sponsor.image} title={sponsor.name} />
-              </a>
-            );
-          })}
-      </div>
-    </div>
-  );
-};
+// const SpecialSponsors = () => {
+//   return (
+//     <div className="productShowcaseSection sponsors-special">
+//       <p>Special Sponsors</p>
+//       <div className="sponsors-special-logos">
+//         {siteConfig.sponsors
+//           .filter(sponsor => sponsor.type == "special")
+//           .map((sponsor, i) => {
+//             return (
+//               <a href={sponsor.url} target="_blank" key={i}>
+//                 <img src={sponsor.image} title={sponsor.name} />
+//               </a>
+//             );
+//           })}
+//       </div>
+//     </div>
+//   );
+// };
 
 class HomeSplash extends React.Component {
   render() {
@@ -110,9 +110,6 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <MiniRepl language={language} />
-          <PromoSection>
-            <SpecialSponsors />
-          </PromoSection>
         </div>
       </SplashContainer>
     );
@@ -126,7 +123,7 @@ const GetStarted = props => {
       className="blockElement twoByGridBlock get-started"
       style={{ flexBasis: "60%" }}
     >
-      <h2>Welcome</h2>
+      <h2>Welcome!</h2>
 
       <p>
         We&apos;re currently just a small group of{" "}
