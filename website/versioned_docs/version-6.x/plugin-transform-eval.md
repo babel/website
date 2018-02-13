@@ -1,0 +1,54 @@
+---
+# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
+id: version-6.x-babel-plugin-transform-eval
+title: babel-plugin-transform-eval
+sidebar_label: transform-eval
+original_id: babel-plugin-transform-eval
+---
+
+## Example
+
+**In**
+
+```javascript
+eval("(() => 'foo')");
+```
+
+**Out**
+
+```javascript
+eval("(function () { return 'foo'; })");
+```
+
+## Installation
+
+```sh
+npm install --save-dev babel-plugin-transform-eval
+```
+
+## Usage
+
+### Via `.babelrc` (Recommended)
+
+**.babelrc**
+
+```json
+{
+  "plugins": ["transform-eval"]
+}
+```
+
+### Via CLI
+
+```sh
+babel --plugins transform-eval script.js
+```
+
+### Via Node API
+
+```javascript
+require("babel-core").transform("code", {
+  plugins: ["transform-eval"]
+});
+```
+
