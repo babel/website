@@ -35,12 +35,15 @@ docs/code-frame.md
 docs/core.md
 docs/generator.md
 docs/helpers.md
+docs/highlight.md
+docs/node.md
 docs/polyfill.md
 docs/register.md
 docs/runtime.md
 docs/template.md
 docs/traverse.md
 docs/types.md
+docs/standalone.md
 docs/babel.md
 docs/babylon.md
 docs/minify.md
