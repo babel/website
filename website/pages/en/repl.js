@@ -2,9 +2,7 @@
 
 const React = require("react");
 
-const styles = [
-  "https://unpkg.com/codemirror@5.30.0/lib/codemirror.css",
-];
+const styles = ["https://unpkg.com/codemirror@5.30.0/lib/codemirror.css"];
 
 const scripts = [
   "https://unpkg.com/react@16.0.0/umd/react.production.min.js",
@@ -30,7 +28,6 @@ class REPL extends React.Component {
       <div>
         {styles.map(url => <link rel="stylesheet" href={url} key={url} />)}
 
-        
         <div id="root">
           <noscript>You need to enable JavaScript to run this app.</noscript>
         </div>

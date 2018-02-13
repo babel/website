@@ -1,7 +1,5 @@
 const React = require("react");
 
-const fs = require("fs");
-const path = require("path");
 const CompLibrary = require("../../core/CompLibrary.js");
 const translate = require("../../server/translate.js").translate;
 const Container = CompLibrary.Container;
@@ -70,7 +68,9 @@ const StepInstallAndUsage = props => {
       <MarkdownBlock key={index}>{tool[props.name]}</MarkdownBlock>
     </div>
   ));
-  const installation = <translate desc="setup page - step 2">Installation</translate>;
+  const installation = (
+    <translate desc="setup page - step 2">Installation</translate>
+  );
   const usage = <translate desc="setup page - step 3">Usage</translate>;
   return (
     <div className="step-hidden step-setup">
@@ -88,10 +88,8 @@ const StepFour = () => {
     <div className="step-hidden step-setup">
       <h2>
         <span className="step-no">4</span>
-        <translate desc="setup page - step 4 one">Create</translate>
-        {" "}
-        <code>.babelrc</code>
-        {" "}
+        <translate desc="setup page - step 4 one">Create</translate>{" "}
+        <code>.babelrc</code>{" "}
         <translate desc="setup page - step 4 two">configuration file</translate>
       </h2>
       <MarkdownBlock>{setupBabelrc}</MarkdownBlock>

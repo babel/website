@@ -1,12 +1,11 @@
 const React = require("react");
 
 const CompLibrary = require("../../core/CompLibrary.js");
-const GridBlock = CompLibrary.GridBlock;
 const Container = CompLibrary.Container;
 
 const siteConfig = require(process.cwd() + "/siteConfig.js");
 
-const Banner = props => {
+const Banner = () => {
   return (
     <div className="mainContainer">
       <div className="page-header text-center">

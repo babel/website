@@ -23,9 +23,15 @@ const CategoryInfo = props => {
   return (
     <p className="text-muted">
       {" by "}
-      <CategoryLink author_link={props.video.author_link} author={props.video.author} />
+      <CategoryLink
+        author_link={props.video.author_link}
+        author={props.video.author}
+      />
       {" at "}
-      <CategoryLink event_link={props.video.event_link} event={props.video.event} />
+      <CategoryLink
+        event_link={props.video.event_link}
+        event={props.video.event}
+      />
       <time dateTime={props.video.year}>{` (${props.video.year})`}</time>
     </p>
   );
@@ -39,7 +45,7 @@ const CategoryLink = props => {
       {content}
     </a>
   );
-}
+};
 
 class Videos extends React.Component {
   render() {

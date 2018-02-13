@@ -11,7 +11,11 @@ class Users extends React.Component {
       return (
         <div className="babel-user" key={i}>
           <a className="babel-user-link" href={user.infoLink}>
-            <img className="babel-user-logo" src={user.image} title={user.caption} />
+            <img
+              className="babel-user-logo"
+              src={user.image}
+              title={user.caption}
+            />
           </a>
         </div>
       );

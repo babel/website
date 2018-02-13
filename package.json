@@ -9,7 +9,7 @@
     "build": "make build",
     "lint": "npm run lint:docs && npm run lint:repl",
     "lint:docs": "eslint --ext md --rule 'prettier/prettier: 0' docs",
-    "lint:repl": "eslint js/repl/*.js",
+    "lint:repl": "eslint js/repl/*.js website/pages/en/*.js",
     "fix:css": "prettier --write website/static/css/*.css",
     "test": "remark docs README.md --quiet",
     "flow": "flow",
