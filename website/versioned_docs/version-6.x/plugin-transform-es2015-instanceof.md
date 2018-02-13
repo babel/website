@@ -1,0 +1,38 @@
+---
+# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
+id: version-6.x-babel-plugin-transform-es2015-instanceof
+title: babel-plugin-transform-es2015-instanceof
+sidebar_label: transform-es2015-instanceof
+original_id: babel-plugin-transform-es2015-instanceof
+---
+
+```sh
+npm install --save-dev babel-plugin-transform-es2015-instanceof
+```
+
+## Usage
+
+### Via `.babelrc` (Recommended)
+
+**.babelrc**
+
+```json
+{
+  "plugins": ["transform-es2015-instanceof"]
+}
+```
+
+### Via CLI
+
+```sh
+babel --plugins transform-es2015-instanceof script.js
+```
+
+### Via Node API
+
+```javascript
+require("babel-core").transform("code", {
+  plugins: ["transform-es2015-instanceof"]
+});
+```
+

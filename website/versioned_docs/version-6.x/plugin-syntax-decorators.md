@@ -1,0 +1,40 @@
+---
+# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
+id: version-6.x-babel-plugin-syntax-decorators
+title: babel-plugin-syntax-decorators
+sidebar_label: syntax-decorators
+original_id: babel-plugin-syntax-decorators
+---
+
+## Installation
+
+```sh
+npm install --save-dev babel-plugin-syntax-decorators
+```
+
+## Usage
+
+### Via `.babelrc` (Recommended)
+
+**.babelrc**
+
+```json
+{
+  "plugins": ["syntax-decorators"]
+}
+```
+
+### Via CLI
+
+```sh
+babel --plugins syntax-decorators script.js
+```
+
+### Via Node API
+
+```javascript
+require("babel-core").transform("code", {
+  plugins: ["syntax-decorators"]
+});
+```
+
