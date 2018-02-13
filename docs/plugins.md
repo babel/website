@@ -22,11 +22,11 @@ Don't want to assemble your own set of plugins? No problem! Presets are sharable
 We've assembled some for common environments:
 
 > Each yearly preset only compiles what was ratified in that year.
-> `babel-preset-env` replaces es2015, es2016, es2017 and latest
+> `@babel/preset-env` replaces es2015, es2016, es2017 and latest
 
-- [env](preset-env.md)
-- [react](preset-react.md)
-- [flow](preset-flow.md)
+- [@babel/preset-env](preset-env.md)
+- [@babel/preset-react](preset-react.md)
+- [@babel/preset-flow](preset-flow.md)
 
 > Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
 
@@ -352,13 +352,13 @@ To make your own preset, you just need to export a config.
 // Presets can contain other presets, and plugins with options.
 module.exports = {
   presets: [
-    require("babel-preset-es2015"),
+    require("@babel/preset-env"),
   ],
   plugins: [
-    [require("babel-plugin-transform-es2015-template-literals"), { spec: true }],
-    require("babel-plugin-transform-es3-member-expression-literals"),
+    [require("@babel/plugin-transform-template-literals"), { spec: true }],
+    require("@babel/plugin-transform-member-expression-literals"),
   ],
 };
 ```
 
-For more info, check out the [babel handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/user-handbook.md#making-your-own-preset) section on presets or just look at the [es2015](https://github.com/babel/babel/tree/master/packages/babel-preset-es2015) preset repo as an example.
+For more info, check out the [babel handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/user-handbook.md#making-your-own-preset) section on presets.

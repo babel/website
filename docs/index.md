@@ -9,16 +9,16 @@ Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a
 
 ## Basic setup for a library  
 
-> Install the Babel command line tool (`babel-cli`) and a Babel preset
+> Install the Babel command line tool (`@babel/cli`) and a Babel preset
 
 ```shell
-npm install --save-dev babel-cli babel-preset-env
+npm install --save-dev @babel/cli @babel/preset-env
 ```
 
 \> Create a [`.babelrc`](babelrc.md) file (or use your [package.json](babelrc.md#use-via-packagejson))
 
 ```json
-{ "presets": ["env"] }
+{ "presets": ["@babel/preset-env"] }
 ```
 
 > Run over your src files and output to a folder
@@ -37,22 +37,22 @@ Babel has support for the latest version of JavaScript through syntax transforme
 You can install this preset with:
 
 ```shell
-npm install --save-dev babel-preset-env
+npm install --save-dev @babel/preset-env
 ```
 
-and add `"env"` to your `.babelrc`: `{ "presets": ["env"] }`
+and add `"@babel/preset-env"` to your `.babelrc`: `{ "presets": ["@babel/preset-env"] }`
 
 [Learn more about ES2015 →](learn.md)
 
 Polyfill
 --------
 
-Since Babel only transforms syntax (like arrow functions), you can use babel-polyfill in order to support new globals such as Promise or new native methods like String.padStart (left-pad). It uses [core-js](https://github.com/zloirock/core-js) and [regenerator](https://facebook.github.io/regenerator/). Check out our [babel-polyfill](/docs/usage/polyfill) docs for more info.
+Since Babel only transforms syntax (like arrow functions), you can use @babel/polyfill in order to support new globals such as Promise or new native methods like String.padStart (left-pad). It uses [core-js](https://github.com/zloirock/core-js) and [regenerator](https://facebook.github.io/regenerator/). Check out our [@babel/polyfill](/docs/usage/polyfill) docs for more info.
 
 You can install the polyfill with
 
 ```shell
-npm install --save-dev babel-polyfill
+npm install --save-dev @babel/polyfill
 ```
 
 Use it by requiring it at the top of the entry point to your application or in your bundler config.
@@ -67,10 +67,10 @@ Babel can convert JSX syntax and strip out type annotations. Check out our [Reac
 You can install this preset with
 
 ```shell
-npm install --save-dev babel-preset-react
+npm install --save-dev @babel/preset-react
 ```
 
-and add `"react"` to your `.babelrc`: `{ "presets": ["env", "react"] }`
+and add `"@babel/preset-react"` to your `.babelrc`: `{ "presets": ["@babel/preset-env", "@babel/preset-react"] }`
 
 ```jsx
 export default React.createClass({

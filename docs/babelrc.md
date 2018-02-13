@@ -1,19 +1,19 @@
 ---
-layout: docs
 title: .babelrc
-description: How to use the .babelrc
-permalink: /docs/usage/babelrc/
+description: How to use a .babelrc
 
 id: babelrc
 ---
 
-All Babel API [options](api.md) except the callbacks are allowed (because `.babelrc` files are serialized as [JSON5](https://github.com/json5/json5)).
+Any Babel API [options](core.md#options) are allowed (except the callbacks).
+
+> `.babelrc` files are serialized as [JSON5](https://github.com/json5/json5))
 
 **Example:**
 
 ```json
 {
-  "plugins": ["transform-react-jsx"],
+  "plugins": ["@babel/plugin-transform-arrow-functions"],
   "ignore": [
     "foo.js",
     "bar/**/*.js"
@@ -43,7 +43,7 @@ You can use the `env` option to set specific options when in a certain environme
 {
   "env": {
     "production": {
-      "plugins": ["transform-react-constant-elements"]
+      "plugins": ["@babel/plugin-transform-classes"]
     }
   }
 }
