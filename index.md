@@ -48,10 +48,8 @@ third_party_js:
 
 <div class="container">
   <div class="row featurette text-center featurette--get-started">
-    <h2>Ready to get started?</h2>
-
     <div class="col-lg-6">
-      <h3>Install the Babel CLI and a preset</h3>
+      <h3>Install the Babel CLI and <a href="https://babeljs.io/docs/plugins/preset-env">env</a> preset</h3>
       <div class="text-left">
 <div markdown="1">
 ```shell
@@ -74,10 +72,35 @@ npm install --save-dev babel-cli babel-preset-env
     </div>
 
     <p>
-      For more information on setting up Babel with your build system, IDE,
-      and more, check out our <a href="/docs/setup">interactive setup
+      To setup Babel with a specific build system, check out our <a href="/docs/setup">interactive setup
       guide</a>.
     </p>
+  </div>
+
+  <div class="row featurette text-center sponsors-work">
+    <h2>Friends of Open Source</h2>
+
+    <p>These companies are being awesome and paying their engineers to work on Babel</p>
+
+    <div class="cards"><div class="card"><a href="https://www.behance.net" target="_blank" class="card-image"><img src="/images/sponsors/behance.svg" title="Behance"></a><div class="card-text"><p>The leading online platform to showcase &amp; discover creative work.</p></div><div class="card-text"><p>sponsoring <a href="https://github.com/hzoo">@hzoo</a></p></div></div><div class="card"><a href="https://www.ampproject.org" target="_blank" class="card-image"><img src="/images/sponsors/amp-work.svg" title="AMP Project"></a><div class="card-text"><p>The AMP Project is an open-source initiative aiming to make the web better for all.</p></div><div class="card-text"><p>sponsoring <a href="https://github.com/jridgewell">@jridgewell</a></p></div></div></div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette text-center sponsors-opencollective">
+    <h2>Open Collective Sponsors</h2>
+
+    <h3>Gold</h3>
+    <ul class="sponsors-opencollective-tier tier-gold-sponsors"><li><a href="https://code.facebook.com/projects/" title="Facebook Open Source"><img src="https://opencollective.com/proxy/images/?src=http%3A%2F%2Fres.cloudinary.com%2Fopencollective%2Fimage%2Fupload%2Fv1508519428%2FS9gk78AS_400x400_fulq2l.jpg&amp;height=96"></a></li><li><a href="https://www.ampproject.org/" title="AMP Project"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F68ed8b70-ebf2-11e6-9958-cb7e79408c56.png&amp;height=96"></a></li></ul>
+    <a class="button" href="https://opencollective.com/babel" target="_blank"><img alt="Become a sponsor" src="https://opencollective.com/static/images/become_sponsor.svg"></a>
+
+    <h3>Silver</h3>
+    <ul class="sponsors-opencollective-tier tier-silver-sponsors"><li><a href="https://webflow.com" title="Webflow"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F4a5024b0-8cf2-11e7-b1a2-b30b1de1463c.png&amp;height=96"></a></li></ul>
+    <a class="button" href="https://opencollective.com/babel" target="_blank"><img alt="Become a sponsor" src="https://opencollective.com/static/images/become_sponsor.svg"></a>
+
+    <h3>Bronze</h3>
+    <ul class="sponsors-opencollective-tier tier-bronze-sponsors"><li><a href="https://twitter.com/BitMEXdotcom" title="BitMEX"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F8c6499b0-99ab-11e7-80ca-f5c3a43ab43f.png&amp;height=96"></a></li><li><a href="http://kentcdodds.com" title="Kent C. Dodds"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F759557613445001216%2F6M2E1l4q.jpg&amp;height=96"></a></li><li><a href="https://twitter.com/arefay" title="Andre Refay"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2Fa43651a8431043e79fa239d6e3157ef8_dc3e4e40-2223-11e7-9598-359990fad0a8.jpeg&amp;height=96"></a></li><li><a href="http://reactnative.training/" title="React Native Training"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F524dec00-39e2-11e7-a19f-69aad0543ddc.png&amp;height=96"></a></li><li><a href="https://twitter.com/@alunny" title="Andrew Lunny"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F4a49f8f0-27c2-11e7-bfce-a9efbaccb8a9.jpg&amp;height=96"></a></li><li><a href="http://x-team.com" title="X-Team"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2Fa9c3b140-99ba-11e6-8650-f92e594d5de8.png&amp;height=96"></a></li><li><a href="http://sentry.io" title="Sentry.io"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F9d80bf90-d9d9-11e6-af11-676b2b71a93b.png&amp;height=96"></a></li><li><a href="http://clay.global" title="clay"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F09d57c90-637c-11e7-9ed2-bfa12b0351e8.jpg&amp;height=96"></a></li><li><a href="https://egghead.io" title="egghead.io"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Flogo.clearbit.com%2Fegghead.io&amp;height=96"></a></li><li><a href="https://www.sxl.cn/s/careers?ref=wp" title="上线了"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2Fcd34a4b0-be06-11e7-af4f-81fb56ba52b4.png&amp;height=96"></a></li><li><a href="https://rollbar.com" title="Rollbar"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F754466c0-0201-11e8-826d-9508524145c4.png&amp;height=96"></a></li><li><a href="http://opensource.coinbase.engineering" title="Coinbase"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F0e10dbb0-0c46-11e8-8c0a-8594e8ca6b48.jpg&amp;height=96"></a></li><li><a href="http://jasonlaster.github.io" title="Jason Laster"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2Fdce3fcd617834929b7e174a4ad4a5838_17f6a990-99f4-11e6-8650-f92e594d5de8.jpeg&amp;height=96"></a></li><li><a href="http://erhankaradeniz.com" title="Erhan Karadeniz"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F7bc2bb426ac84b2aac4d8c4304e229e7_26fbd2b0-26a0-11e7-af41-bf3e62df0ae9.jpeg&amp;height=96"></a></li><li><a title="Krati Ahuja"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fd1ts43dypk8bqh.cloudfront.net%2Fv1%2Favatars%2Fa7d623c4-f20d-4cc1-b2a9-d2e2f5828410&amp;height=96"></a></li><li><a title="jridgewell"><img></a></li><li><a href="https://www.keycdn.com" title="KeyCDN"><img src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F24fe4860-cb0c-11e7-a280-4f57b80ade52.png&amp;height=96"></a></li></ul>
+    <a class="button" href="https://opencollective.com/babel" target="_blank"><img alt="Become a sponsor" src="https://opencollective.com/static/images/become_sponsor.svg"></a>
   </div>
 
   <hr class="featurette-divider">
@@ -292,53 +315,6 @@ export default function ({types: t}) {
       <img src="{{ site.baseurl }}/images/featurettes/debuggable.png?t={{ site.time | date_to_xmlschema }}" alt="Debuggable Sourcemaps" class="featurette-image img-responsive">
     </div>
   </div>
-
-  <!--<div class="row featurette">
-    <div class="col-md-4">
-      <h2>Readable</h2>
-      <p>
-        Formatting is retained if possible so your generated code is as similar
-        as possible.
-      </p>
-    </div>
-    <div class="col-md-4 col-sm-6">
-<div markdown="1">
-```javascript
-
-```
-</div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-<div markdown="1">
-```javascript
-
-```
-</div>
-    </div>
-  </div>
-
-  <!--<hr class="featurette-divider">
-
-  <div class="row featurette">
-    <div class="col-md-4 col-md-push-8">
-      <h2>Compact</h2>
-      <p>Babel uses the least amount of code possible with no dependence on a bulky runtime.</p>
-    </div>
-    <div class="col-md-4 col-md-pull-4 col-sm-6">
-<div markdown="1">
-```javascript
-
-```
-</div>
-    </div>
-    <div class="col-md-4 col-md-pull-4 col-sm-6">
-<div markdown="1">
-```javascript
-
-```
-</div>
-    </div>
-  </div>-->
 
   <hr class="featurette-divider">
 
