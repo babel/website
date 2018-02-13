@@ -301,6 +301,7 @@
     "setup": "setup",
     "babel-traverse": "babel-traverse",
     "babel-types": "babel-types",
+    "v7-migration": "Upgrade to Babel 7",
     "Docs": "Docs",
     "Setup": "Setup",
     "Try it out": "Try it out",

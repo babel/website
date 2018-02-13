@@ -35,6 +35,10 @@
   content: "CSS";
 }
 
+.hljs.diff::before {
+  content: "Diff";
+}
+
 .hljs.js::before,
 .hljs.javascript::before {
   content: "JavaScript";

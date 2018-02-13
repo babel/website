@@ -6,7 +6,8 @@
       "editors",
       "plugins",
       "caveats",
-      "faq"
+      "faq",
+      "v7-migration"
     ],
     "Usage": [
       "babelrc",
