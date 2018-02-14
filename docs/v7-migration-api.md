@@ -1,5 +1,5 @@
 ---
-title:  "Upgrade to Babel 7 (APIs)"
+title:  "Upgrade to Babel 7 (API)"
 
 id: v7-migration-api
 ---
@@ -34,6 +34,33 @@ The `babel.util.*` helper methods have been removed, and `util.EXTENSIONS` has b
 Calls to `babel.transform` or any other transform function may return `null` if the file matched an `ignore` pattern or failed to match an `only` pattern [babel/babel#5487](https://github.com/babel/babel/pull/5487).
 
 The `opts.basename` option exposed on `state.file.opts` has been removed. If you need it, best to build it from `opts.filename` yourself [babel/babel#5467](https://github.com/babel/babel/pull/5467).
+
+Removed `resolveModuleSource`. We recommend using `@babel/plugin-module-resolver`'s 'resolvePath' options [babel/babel#6343](https://github.com/babel/babel/pull/6343)
+
+Removed `babel.analyse` because it was just an alias for `babel.transform`
+
+Removed `path.mark()` since we didn't use it and it can be implemented in your own plugin.
+
+Removed `babel.metadata` since the generated plugin metadata is always included in the output result.
+
+Removed `path.hub.file.addImport`. You can use the `@babel/helper-module-imports` module instead.
+
+
+```diff
++  import { addDefault } from "babel-helper-module-imports";
+function importModule(pkgStore, name, path) {
+-  return path.hub.file.addImport(resolvePath(pkgStore, name, path), 'default', name);
++  return addDefault(path, resolvePath(pkgStore, name, path), { nameHint: name });
+}
+```
+
+## Babel plugins/presets
+
+It currently takes it as the first parameter the `babel` object, and plugin/preset options, and the `dirname`
+
+```js
+module.exports = function(api, options, dirname) { }
+````
 
 ## Babylon
 
@@ -79,6 +106,10 @@ See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#ap
 
 ## `@babel/traverse`
 
+> Remove support for flow bindings [babel/babel#6528](https://github.com/babel/babel/pull/6528)
+
+The reason behind this change is that `declare var foo` doesn't introduce a new local binding, but it represents a global one.
+
 > `getFunctionParent` will no longer return `Program`, please use `getProgramParent` instead [#5923](https://github.com/babel/babel/pull/5923). ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 It doesn't make sense that a function named `getFunctionParent` also returns the Program, so that was removed.
@@ -118,6 +149,8 @@ The case has been changed: `jsx` and `ts` are now in lowercase.
 - t.jSXIdentifier()
 + t.jsxIdentifier()
 ```
+
+In general, we have differentiated the ndoe types with `TypeAnnotation` for Flow and `TSTypeAnnotation` for TypeScript so for the shared type nodes, TypeScript has a `TS` prefix.
 
 ### `.expression` field removed from `ArrowFunctionExpression`
 

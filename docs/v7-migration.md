@@ -31,7 +31,19 @@ The "env" preset has been out for more than a year now, and completely replaces 
 
 We suggest using switching as those presets should be able to be substituted entirely with the env preset.
 
+
 ## Package Renames
+
+Just as FYI, you can still use the shorthand version of a package name (remove the `preset-` or `plugin-`) in the config but I'm choosing to use the whole package name for clarity (maybe we should just remove that given it doesn't save that much typing at all anyway).
+
+```diff
+{
+-  "presets": ["@babel/preset-react"],
++  "presets": ["@babel/react"], // this is equivalent
+-  "plugins": ["@babel/transform-runtime"],
++  "plugins": ["@babel/plugin-transform-runtime"], // same
+}
+```
 
 ### Scoped Packages
 
@@ -103,6 +115,21 @@ require('a');
 
 If you were relying on Babel to inject `"use strict"` into all of your CommonJS modules automatically, you'll want to explicitly use the `transform-strict-mode` plugin in your Babel config.
 
+## Separation between the React and Flow presets
+
+`babel-preset-react` has always included the flow plugin automatically from the beginning. This has actually caused a lot of issues with users that accidently use `flow` syntax without intending due to a typo, or adding it in without typechecking with `flow` itself resulting in errors.
+
+This became further of an issue after we decided to support TypeScript with the help of the TS team. If you wanted to use the react and typescript presets, we would have to figure out a way to turn on/off the syntax automatically via file type or the directive. In the end it seemed easiest to just separate the presets entirely. 
+
+So now the react preset and the flow preset are separated.
+
+```diff
+{
+-  "presets": ["@babel/preset-react"]
++  "presets": ["@babel/preset-react", "@babel/preset-flow"] // remove flow types
++  "presets": ["@babel/preset-react", "@babel/preset-typescript"] // remove typescript types
+}
+````
 
 ## Option parsing
 
@@ -200,7 +227,7 @@ Upgrading with Mocha:
 + mocha --compilers js:@babel/register
 ```
 
-See [babel-register documentation](https://babeljs.io/docs/usage/babel-register/) for more information.
+`@babel/register` will also now only compile files in the current working directly (was done to fix issues with symlinking).
 
 ## Removed `babel-plugin-transform-class-constructor-call`
 
@@ -228,6 +255,61 @@ TC39 decided to drop this proposal. You can move your logic into the constructor
 
 See [/docs/plugins/transform-class-constructor-call/](/docs/plugins/transform-class-constructor-call/) for more information.
 
+## `@babel/plugin-proposal-class-properties`
+
+The default behavior is changed to what was previously "spec" by default
+
+```js
+// input
+class Bork {
+  static a = 'foo';
+  y;
+}
+```
+
+```js
+// default
+
+var Bork = function Bork() {
+  Object.defineProperty(this, "y", {
+    enumerable: true,
+    writable: true,
+    value: void 0
+  });
+};
+
+Object.defineProperty(Bork, "a", {
+  enumerable: true,
+  writable: true,
+  value: 'foo'
+});
+```
+
+```js
+// loose
+var Bork = function Bork() {
+  this.y = void 0;
+};
+
+Bork.a = 'foo';
+````
+
+## Split `@babel/plugin-transform-export-extensions` into the two renamed proposals
+
+This is a long time coming but this was finally changed.
+
+`@babel/plugin-transform-export-default-from`
+
+```js
+export v from 'mod';
+```
+
+`@babel/plugin-transform-export-namespace-from`
+
+```js
+export * as ns from 'mod';
+````
+
 ## `@babel/plugin-transform-template-literals`
 
 >  Template Literals Revision updated [#5523](https://github.com/babel/babel/pull/5523) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
@@ -243,10 +325,49 @@ tag`\unicode and \u{55}`;
 This has been fixed in Babel 7 and generates something like the following:
 
 ```js
+// default
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-var _templateObject = _taggedTemplateLiteral([], ["\\unicode and \\u{55}"]);
+var _templateObject = /*#__PURE__*/ _taggedTemplateLiteral([void 0], ["\\unicode and \\u{55}"]);
 tag(_templateObject);
 ```
+
+```js
+// loose mode
+function _taggedTemplateLiteralLoose(strings, raw) { strings.raw = raw; return strings; }
+var _templateObject = /*#__PURE__*/ _taggedTemplateLiteralLoose([void 0], ["\\unicode and \\u{55}"]);
+tag(_templateObject);
+````
+
+> Default to previous "spec" mode for regular template literals
+
+```js
+// input
+`foo${bar}`;
+```
+
+```js
+// default
+"foo".concat(bar);
+
+// loose
+"foo" + bar;
+```
+
+## `@babel/plugin-async-to-generator`
+
+We merged `babel-plugin-transform-async-to-module-method` into the regular async plugin by just making it an option.
+
+```diff
+{
+  "plugins": [
+-    ["@babel/transform-async-to-module-method"]
++    ["@babel/transform-async-to-generator", {
++      "module": "bluebird",
++      "method": "coroutine"
++    }]
+  ]
+}
+````
 
 ## `babel`
 
@@ -274,3 +395,7 @@ This change just makes babel-generator output `,` instead of `;`.
 > Remove `babel-core/src/api/browser.js` [#5124](https://github.com/babel/babel/pull/5124) ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
 `babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [babel-standalone](https://github.com/babel/babel-standalone).
+
+## `@babel/preset-env`
+
+`loose` mode will now automatically exclude the `typeof-symbol` transform (a lot of projects using loose mode were doing this).

@@ -7,7 +7,8 @@
       "plugins",
       "caveats",
       "faq",
-      "v7-migration"
+      "v7-migration",
+      "v7-migration-api"
     ],
     "Usage": [
       "babelrc",
