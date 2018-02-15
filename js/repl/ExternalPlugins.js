@@ -1,12 +1,17 @@
 import React, { Component } from "react";
-import { PoweredBy,  Hits, Configure, InstantSearch } from "react-instantsearch/es/dom";
+import {
+  PoweredBy,
+  Hits,
+  Configure,
+  InstantSearch,
+} from "react-instantsearch/es/dom";
 
 import { connectSearchBox } from "react-instantsearch/es/connectors";
 
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
 
-import AlgoliaLogo from '../assets/search-by-algolia-white';
+import AlgoliaLogo from "../assets/search-by-algolia-white";
 
 const config = {
   apiKey: "1f0cc4b7da241f62651b85531d788fbd",
@@ -91,11 +96,11 @@ export default function ExternalPlugins({
       label={
         <span className={styles.pluginsHeader}>
           Plugins
-          {loadingExternalPlugins ?
-            <PresetLoadingAnimation /> :
+          {loadingExternalPlugins ? (
+            <PresetLoadingAnimation />
+          ) : (
             <AlgoliaLogo alt="Search Powered by Algolia" />
-          }
-
+          )}
         </span>
       }
       toggleIsExpanded={_togglePluginsTab}
@@ -117,7 +122,9 @@ export default function ExternalPlugins({
 
         <label className={styles.pluginContainer}>
           <div className={styles.pluginsSearch}>
-            <label className={`${styles.settingsLabel} ${styles.checkboxOfficial}`}>
+            <label
+              className={`${styles.settingsLabel} ${styles.checkboxOfficial}`}
+            >
               <input
                 checked={showOfficialExternalPlugins}
                 onChange={e => {
