@@ -6,6 +6,7 @@ import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
+import ExternalPlugins from "./ExternalPlugins";
 import Svg from "./Svg";
 import { colors, media } from "./styles";
 
@@ -36,15 +37,27 @@ type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
 type OnTabExpandedChange = (name: string, isExpanded: boolean) => void;
+type ShowOfficialExternalPluginsChanged = (value: string) => void;
+type PluginSearch = (value: string) => void;
+type PluginChange = (plugin: Object) => void;
 
 type Props = {
   babelVersion: ?string,
   className: string,
   debugEnvPreset: boolean,
+  pluginsLoading: boolean,
+  pluginValue: string,
+  showOfficialExternalPlugins: boolean,
+  plugins: Array<Object>,
+  pluginChange: PluginChange,
+  externalPlugins: Array<Object>,
+  showOfficialExternalPluginsChanged: ShowOfficialExternalPluginsChanged,
   envConfig: EnvConfig,
+  pluginSearch: PluginSearch,
   envPresetState: EnvState,
   shippedProposalsState: ShippedProposalsState,
   isEnvPresetTabExpanded: boolean,
+  isPluginsExpanded: boolean,
   fileSize: boolean,
   isExpanded: boolean,
   isPresetsTabExpanded: boolean,
@@ -58,6 +71,7 @@ type Props = {
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
   runtimePolyfillState: PluginState,
+  loadingExternalPlugins: boolean,
 };
 
 type LinkProps = {
@@ -76,17 +90,17 @@ const LinkToDocs = ({ className, children, section }: LinkProps) => (
   </a>
 );
 
-const ReplOptions = (props: Props) => (
-  <div className={`${styles.wrapper} ${props.className}`}>
-    {props.isExpanded ? (
-      <ExpandedContainer {...props} />
-    ) : (
-      <CollapsedContainer {...props} />
-    )}
-  </div>
-);
-
-export default ReplOptions;
+export default function ReplOptions(props: Props) {
+  return (
+    <div className={`${styles.wrapper} ${props.className}`}>
+      {props.isExpanded ? (
+        <ExpandedContainer {...props} />
+      ) : (
+        <CollapsedContainer {...props} />
+      )}
+    </div>
+  );
+}
 
 // The choice of Component over PureComponent is intentional here.
 // It simplifies the re-use of PluginState objects,
@@ -107,6 +121,7 @@ class ExpandedContainer extends Component {
       shippedProposalsState,
       fileSize,
       isEnvPresetTabExpanded,
+      isPluginsExpanded,
       isPresetsTabExpanded,
       isSettingsTabExpanded,
       lineWrap,
@@ -116,6 +131,11 @@ class ExpandedContainer extends Component {
       presetState,
       runtimePolyfillConfig,
       runtimePolyfillState,
+      pluginsLoading,
+      plugins,
+      pluginValue,
+      showOfficialExternalPlugins,
+      loadingExternalPlugins,
     } = this.props;
 
     const disableEnvSettings =
@@ -374,6 +394,22 @@ class ExpandedContainer extends Component {
               </label>
             )}
           </AccordionTab>
+
+          <ExternalPlugins
+            loadingExternalPlugins={loadingExternalPlugins}
+            isPluginsExpanded={isPluginsExpanded}
+            _togglePluginsTab={this._togglePluginsTab}
+            _pluginNameChanged={this._pluginNameChanged}
+            _onshowOfficialExternalPluginsChanged={
+              this._onshowOfficialExternalPluginsChanged
+            }
+            _pluginChanged={this._pluginChanged}
+            pluginValue={pluginValue}
+            showOfficialExternalPlugins={showOfficialExternalPlugins}
+            pluginsLoading={pluginsLoading}
+            plugins={plugins}
+            styles={styles}
+          />
         </div>
         {babelVersion && (
           <div className={styles.versionRow} title={`v${babelVersion}`}>
@@ -414,6 +450,13 @@ class ExpandedContainer extends Component {
     );
   };
 
+  _togglePluginsTab = () => {
+    this.props.onTabExpandedChange(
+      "isPluginsExpanded",
+      !this.props.isPluginsExpanded
+    );
+  };
+
   _togglePresetsTab = () => {
     this.props.onTabExpandedChange(
       "isPresetsTabExpanded",
@@ -421,11 +464,27 @@ class ExpandedContainer extends Component {
     );
   };
 
+  _pluginNameChanged = value => {
+    this.props.pluginSearch(value);
+  };
+
+  _onshowOfficialExternalPluginsChanged = value => {
+    this.props.showOfficialExternalPluginsChanged(value);
+  };
+
   _toggleSettingsTab = () => {
     this.props.onTabExpandedChange(
       "isSettingsTabExpanded",
       !this.props.isSettingsTabExpanded
     );
+  };
+
+  _pluginChanged = (e, plugin) => {
+    const on = e.target.value === "on";
+    const externalPlugins = this.props.externalPlugins;
+    if (!externalPlugins[plugin.name] && on) {
+      this.props.pluginChange(plugin);
+    }
   };
 }
 
@@ -623,6 +682,20 @@ const styles = {
       flex: "1 0 150px",
     },
   }),
+  pluginRow: css({
+    display: "block",
+  }),
+  pluginContainer: css({
+    display: "block",
+    maxHeight: 300,
+    overflow: "auto",
+    overflowX: "hidden",
+  }),
+  pluginsHeader: css({
+    display: "flex",
+    justifyContent: "space-between",
+    paddingRight: 5,
+  }),
   accordionLabelVersion: css({
     fontSize: "1rem",
     fontWeight: 400,
@@ -677,6 +750,11 @@ const styles = {
     maxWidth: "4rem",
     paddingLeft: "0.75rem",
   }),
+  pluginName: css({
+    width: "100%",
+    padding: "0.75rem",
+    marginBottom: "1rem",
+  }),
   envPresetCheckbox: css({
     flex: "0 0 auto",
     margin: "0 0 0 0.75rem !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
@@ -713,6 +791,11 @@ const styles = {
       opacity: 0.5,
     },
   }),
+  pluginsSearch: css({
+    paddingBottom: 10,
+    marginBottom: 10,
+    borderBottom: `1px solid ${colors.inverseBackgroundDark}`,
+  }),
   envPresetLoaderWrapper: css({
     display: "flex",
     flex: "1 1 auto",
@@ -733,5 +816,9 @@ const styles = {
       margin: 0,
       padding: "1rem 1.5rem",
     },
+  }),
+  checkboxOfficial: css({
+    marginTop: 10,
+    marginBottom: 10,
   }),
 };
