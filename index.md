@@ -28,18 +28,7 @@ third_party_js:
       </div>
       <div class="hero-repl__footer">
         <a href="http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=latest%2Creact%2Cstage-2&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true">
-          Check out our REPL to experiment more with Babel!
-        </a>
-      </div>
-    </div>
-
-    {% assign latest_post = site.posts.first %}
-
-    <div class="hero-actions">
-      <div class="hero-actions-blog">
-        <a href="{{ latest_post.url }}">
-          <span class="hero-actions-blog__label">Latest From Our Blog:</span>
-          <span class="hero-actions-blog__post">{{ latest_post.title }}</span>
+          Check out the REPL to experiment more!
         </a>
       </div>
     </div>
@@ -49,7 +38,7 @@ third_party_js:
 <div class="container">
   <div class="row featurette text-center featurette--get-started">
     <div class="col-lg-6">
-      <h3>Install the Babel CLI and <a href="https://babeljs.io/docs/plugins/preset-env">env</a> preset</h3>
+      <h3>Install the CLI and <a href="https://babeljs.io/docs/plugins/preset-env">env</a> preset</h3>
       <div class="text-left">
 <div markdown="1">
 ```shell
