@@ -1,6 +1,7 @@
 // @flow
 
 export type BabelPresets = Array<string | Array<string | Object>>;
+export type BabelPlugins = Array<string>;
 
 export type EnvConfig = {
   browsers: string,
@@ -12,7 +13,7 @@ export type EnvConfig = {
   builtIns: string | false,
   forceAllTransforms: boolean,
   shippedProposals: boolean,
-  version?: string,
+  version?: any,
   node: ?string,
 };
 
@@ -27,7 +28,7 @@ export type PluginConfig = {
   isPreLoaded?: boolean,
   label: string,
   package: string,
-  version?: string,
+  version?: any,
   instanceName?: string,
 };
 
@@ -41,23 +42,24 @@ export type LazyLoadedState = {
   didError: boolean,
   isLoaded: boolean,
   isLoading: boolean,
+  config: Object,
 };
 
 export type BabelState = LazyLoadedState & {
-  availablePresets: Array<string>,
-  build: string,
+  availablePresets: Array<any>,
+  build: any,
   errorMessage?: string,
   circleciRepo: string,
   config: PluginConfig,
-  version: string,
+  version: any,
 };
 
 export type EnvState = LazyLoadedState & {
-  build: string,
+  build: number,
   errorMessage?: string,
   circleciRepo: string,
   config: PluginConfig,
-  version: string,
+  version: any,
   isEnabled: boolean,
 };
 
@@ -79,6 +81,7 @@ export type CompileConfig = {
   envConfig: ?EnvConfig,
   evaluate: boolean,
   presets: BabelPresets,
+  plugins: BabelPlugins,
   prettify: boolean,
   sourceMap: boolean,
 };
@@ -103,7 +106,7 @@ export type ReplState = {
   prettier: boolean,
   showSidebar: boolean,
   targets: string,
-  version: string,
+  version: any,
   envVersion: string,
 };
 

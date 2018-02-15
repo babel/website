@@ -1,6 +1,8 @@
+// @flow
+
 import semver from "semver";
 import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./CircleCI";
-import { BabelState } from "./types";
+import type { BabelState } from "./types";
 import WorkerApi from "./WorkerApi";
 
 const SCOPED_CORE_VERSION_FROM = "7.0.0-beta.4";

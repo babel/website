@@ -59,6 +59,7 @@ type State = {
   evalErrorMessage: ?string,
   fileSize: boolean,
   isEnvPresetTabExpanded: boolean,
+  isPluginsExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
@@ -68,9 +69,28 @@ type State = {
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
   sourceMap: ?string,
+  externalPlugins: Array<string>,
+  pluginSearch: ?string,
+  version: number,
+  showOfficialExternalPlugins: boolean,
+  loadingExternalPlugins: boolean,
 };
 
 const DEBOUNCE_DELAY = 500;
+
+function toCamelCase(str) {
+  return str
+    .replace(/-/g, " ")
+    .replace(/\//g, "_")
+    .replace(/@/g, "_")
+    .replace(/\s(.)/g, function($1) {
+      return $1.toUpperCase();
+    })
+    .replace(/\s/g, "")
+    .replace(/^(.)/, function($1) {
+      return $1.toLowerCase();
+    });
+}
 
 class Repl extends React.Component {
   props: Props;
@@ -107,6 +127,7 @@ class Repl extends React.Component {
       babel: persistedStateToBabelState(persistedState, babelConfig),
       code: persistedState.code,
       compiled: null,
+      pluginSearch: "",
       compileErrorMessage: null,
       debugEnvPreset: persistedState.debug,
       envConfig,
@@ -125,6 +146,7 @@ class Repl extends React.Component {
       fileSize: persistedState.fileSize,
       isEnvPresetTabExpanded: defaultPresets["env"],
       isPresetsTabExpanded,
+      isPluginsExpanded: false,
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
@@ -140,6 +162,8 @@ class Repl extends React.Component {
         persistedState.evaluate
       ),
       sourceMap: null,
+      showOfficialExternalPlugins: false,
+      externalPlugins: [],
     };
 
     this._setupBabel(defaultPresets);
@@ -186,6 +210,7 @@ class Repl extends React.Component {
           fileSize={state.fileSize}
           isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
           isExpanded={state.isSidebarExpanded}
+          isPluginsExpanded={state.isPluginsExpanded}
           isPresetsTabExpanded={state.isPresetsTabExpanded}
           isSettingsTabExpanded={state.isSettingsTabExpanded}
           lineWrap={state.lineWrap}
@@ -197,6 +222,15 @@ class Repl extends React.Component {
           presetState={state.presets}
           runtimePolyfillConfig={runtimePolyfillConfig}
           runtimePolyfillState={state.runtimePolyfillState}
+          externalPlugins={state.externalPlugins}
+          pluginChange={this._pluginChange}
+          pluginSearch={this._pluginSearch}
+          pluginValue={state.pluginSearch}
+          showOfficialExternalPluginsChanged={
+            this._showOfficialExternalPluginsChanged
+          }
+          showOfficialExternalPlugins={state.showOfficialExternalPlugins}
+          loadingExternalPlugins={state.loadingExternalPlugins}
         />
 
         <div className={styles.panels}>
@@ -359,6 +393,62 @@ class Repl extends React.Component {
       }
     }
   }
+  _pluginSearch = value =>
+    this.setState({
+      pluginSearch: value,
+    });
+
+  _pluginChange = plugin => {
+    const pluginExists = this.state.externalPlugins.includes(plugin.name);
+
+    this.setState({ loadingExternalPlugins: true });
+
+    const bundledUrl = `https://bundle.run/${plugin.name}@${plugin.version}`;
+
+    this._workerApi.loadExternalPlugin(bundledUrl).then(loaded => {
+      if (loaded === false) {
+        this.setState({
+          compileErrorMessage: `Plugin ${plugin.name} could not be loaded`,
+          loadingExternalPlugins: false,
+        });
+        return;
+      }
+
+      this._workerApi
+        .registerPlugins([
+          {
+            instanceName: toCamelCase(plugin.name),
+            pluginName: plugin.name,
+          },
+        ])
+        .then(() => {
+          this.setState({ loadingExternalPlugins: false });
+        });
+
+      if (!pluginExists) {
+        this.setState(
+          state => ({
+            externalPlugins: [...state.externalPlugins, plugin.name],
+          }),
+          this._pluginsUpdatedSetStateCallback
+        );
+      } else {
+        this.setState(
+          state => ({
+            externalPlugins: state.externalPlugins.filter(
+              p => p !== plugin.name
+            ),
+          }),
+          this._pluginsUpdatedSetStateCallback
+        );
+      }
+    });
+  };
+
+  _showOfficialExternalPluginsChanged = () =>
+    this.setState(state => ({
+      showOfficialExternalPlugins: !state.showOfficialExternalPlugins,
+    }));
 
   _compile = (code: string, setStateCallback: () => mixed) => {
     const { state } = this;
@@ -372,6 +462,7 @@ class Repl extends React.Component {
     }
     this._workerApi
       .compile(code, {
+        plugins: state.externalPlugins,
         debugEnvPreset: state.debugEnvPreset,
         envConfig: state.envPresetState.isLoaded ? state.envConfig : null,
         evaluate:
@@ -403,7 +494,7 @@ class Repl extends React.Component {
           [name]: value,
         },
       }),
-      this._presetsUpdatedSetStateCallback
+      this._pluginsUpdatedSetStateCallback
     );
   };
 
@@ -443,7 +534,7 @@ class Repl extends React.Component {
           presets,
         };
       }
-    }, this._presetsUpdatedSetStateCallback);
+    }, this._pluginsUpdatedSetStateCallback);
   };
 
   _onTabExpandedChange = (name: string, isExpanded: boolean) => {
@@ -451,7 +542,7 @@ class Repl extends React.Component {
       {
         [name]: isExpanded,
       },
-      this._presetsUpdatedSetStateCallback
+      this._pluginsUpdatedSetStateCallback
     );
   };
 
@@ -485,6 +576,7 @@ class Repl extends React.Component {
       evaluate: state.runtimePolyfillState.isEnabled,
       fileSize: state.fileSize,
       isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
+      isPluginsExpanded: state.isPluginsExpanded,
       isPresetsTabExpanded: state.isPresetsTabExpanded,
       isSettingsTabExpanded: state.isSettingsTabExpanded,
       lineWrap: state.lineWrap,
@@ -499,7 +591,7 @@ class Repl extends React.Component {
     UriUtils.updateQuery(payload);
   };
 
-  _presetsUpdatedSetStateCallback = () => {
+  _pluginsUpdatedSetStateCallback = () => {
     this._checkForUnloadedPlugins();
     this._updateCode(this.state.code);
   };
