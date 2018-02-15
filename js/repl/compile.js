@@ -79,12 +79,15 @@ export default function compile(code: string, config: CompileConfig): Return {
     config.presets.push(["env", options]);
   }
   try {
-    const transformed = Babel.transform(code, {
+    const babelConfig = {
       babelrc: false,
       filename: "repl",
       presets: config.presets,
+      plugins: config.plugins,
       sourceMap: config.sourceMap,
-    });
+    };
+
+    const transformed = Babel.transform(code, babelConfig);
     compiled = transformed.code;
     if (config.sourceMap) {
       try {
