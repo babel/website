@@ -139,3 +139,88 @@ a.anchor {
 footer.nav-footer {
   background: #767676;
 }
+
+/* ####### DOCS SIDEBAR ####### */
+
+nav.toc .toggleNav ul li a.navItemActive {
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 1024px) {
+  .sideNavVisible .docMainWrapper {
+    max-width: 100%;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .docsNavContainer {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 53px;
+    height: calc(100vh - 53px);
+    width: 240px;
+    margin-top: 0;
+  }
+
+  .container.docsNavContainer {
+    overflow-y: scroll;
+  }
+
+  nav.toc:last-child {
+    padding-bottom: 0;
+  }
+
+  .sideNavVisible .navPusher .mainContainer {
+    padding-bottom: 50px;
+  }
+}
+
+/* ####### PAGE SIDEBAR ####### */
+.pageNav {
+  display: none;
+}
+
+.pageNav::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (min-width: 1024px) {
+  a.anchor {
+    top: -92px;
+  }
+
+  .pageNav {
+    display: block;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 90px;
+    margin: 0 20px 50px 40px;
+    flex: 0 1 240px;
+    align-self: flex-start;
+    overflow-y: auto;
+    max-height: calc(100vh - 90px);
+  }
+
+  .pageNav > ul {
+    border-left: 1px solid #eee;
+    padding-left: 15px;
+  }
+
+  .pageNav a {
+    color: #717171;
+  }
+
+  .pageNav ul li {
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .pageNav ul ul {
+    padding: 0.5rem 0 0 20px;
+  }
+
+  .pageNav ul ul li {
+    margin-bottom: 0.5rem;
+  }
+}
