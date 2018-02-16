@@ -1,5 +1,5 @@
 const React = require("react");
-
+const translate = require("../../server/translate.js").translate;
 const siteConfig = require(process.cwd() + "/siteConfig.js");
 
 function docUrl(doc, language) {
@@ -26,20 +26,7 @@ Button.defaultProps = {
   target: "_self",
 };
 
-const SplashContainer = props => (
-  <div className="homeContainer">
-    <div className="homeSplashFade">
-      <div className="wrapper homeWrapper">{props.children}</div>
-    </div>
-  </div>
-);
-
-const ProjectTitle = () => (
-  <h2 className="projectTitle">
-    {siteConfig.title}
-    <small>{siteConfig.tagline}</small>
-  </h2>
-);
+const DEFAULT_LANGUAGE = "en";
 
 const PromoSection = props => (
   <div className="section promoSection">
@@ -49,24 +36,29 @@ const PromoSection = props => (
   </div>
 );
 
-const MiniRepl = props => {
-  const language = props.language || "en";
+const MiniRepl = ({ language }) => {
   return (
     <div className="hero-repl" hidden={true}>
       <div className="hero-repl__editor">
         <div className="hero-repl__pane hero-repl__pane--left">
-          <h3>Put in next-gen JavaScript</h3>
+          <h3>
+            <translate>Put in next-gen JavaScript</translate>
+          </h3>
           <div id="hero-repl-in" className="hero-repl__code" />
         </div>
         <div className="hero-repl__pane hero-repl__pane--right">
-          <h3>Get browser-compatible JavaScript out</h3>
+          <h3>
+            <translate>Get browser-compatible JavaScript out</translate>
+          </h3>
           <div id="hero-repl-out" className="hero-repl__code" />
           <div className="hero-repl__error" />
         </div>
       </div>
       <div className="hero-repl__footer">
         <a href={pageUrl("repl.html", language)}>
-          Check out our REPL to experiment more with Babel!
+          <translate>
+            Check out our REPL to experiment more with Babel!
+          </translate>
         </a>
       </div>
 
@@ -101,20 +93,6 @@ const MiniRepl = props => {
 //     </div>
 //   );
 // };
-
-class HomeSplash extends React.Component {
-  render() {
-    const language = this.props.language || "en";
-    return (
-      <SplashContainer>
-        <div className="inner">
-          <ProjectTitle />
-          <MiniRepl language={language} />
-        </div>
-      </SplashContainer>
-    );
-  }
-}
 
 const GetStarted = props => {
   const language = props.language || "en";
@@ -164,7 +142,11 @@ const WorkSponsors = () => {
               return (
                 <div className="card" key={i}>
                   <a href={sponsor.url} target="_blank" className="card-image">
-                    <img src={sponsor.image} title={sponsor.name} alt={`Sponsored by ${sponsor.name}`} />
+                    <img
+                      src={sponsor.image}
+                      title={sponsor.name}
+                      alt={`Sponsored by ${sponsor.name}`}
+                    />
                   </a>
                   <div className="card-text">
                     <p>{sponsor.description}</p>
@@ -256,23 +238,32 @@ const HomeContainer = props => (
   </div>
 );
 
-class Index extends React.Component {
-  render() {
-    const language = this.props.language || "en";
+const Hero = ({ language }) => (
+  <div className="hero">
+    <div className="hero__container">
+      <h1>
+        <translate>Babel is a JavaScript compiler.</translate>
+      </h1>
+      <p>
+        <translate>Use next generation JavaScript, today.</translate>
+      </p>
+      <MiniRepl language={language} />
+    </div>
+  </div>
+);
 
-    return (
-      <div>
-        <HomeSplash language={language} />
-        <div className="mainContainer">
-          <HomeContainer>
-            <GetStarted language={language} />
-            <WorkSponsors language={language} />
-          </HomeContainer>
-          <OpenCollectiveSponsors />
-        </div>
-      </div>
-    );
-  }
-}
+const Index = ({ language = DEFAULT_LANGUAGE }) => (
+  <div>
+    <Hero language={language} />
+
+    <div className="mainContainer">
+      <HomeContainer>
+        <GetStarted language={language} />
+        <WorkSponsors language={language} />
+      </HomeContainer>
+      <OpenCollectiveSponsors />
+    </div>
+  </div>
+);
 
 module.exports = Index;

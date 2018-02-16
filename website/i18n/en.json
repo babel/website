@@ -301,7 +301,7 @@
     "setup": "setup",
     "babel-traverse": "babel-traverse",
     "babel-types": "babel-types",
-    "v7-migration-api": "Upgrade to Babel 7 (APIs)",
+    "v7-migration-api": "Upgrade to Babel 7 (API)",
     "v7-migration": "Upgrade to Babel 7",
     "Docs": "Docs",
     "Setup": "Setup",
@@ -316,6 +316,11 @@
     "Tooling": "Tooling"
   },
   "pages-strings": {
+    "Put in next-gen JavaScript|no description given": "Put in next-gen JavaScript",
+    "Get browser-compatible JavaScript out|no description given": "Get browser-compatible JavaScript out",
+    "Check out our REPL to experiment more with Babel!|no description given": "Check out our REPL to experiment more with Babel!",
+    "Babel is a JavaScript compiler.|no description given": "Babel is a JavaScript compiler.",
+    "Use next generation JavaScript, today.|no description given": "Use next generation JavaScript, today.",
     "Using Babel|setup page - header": "Using Babel",
     "How to use Babel with your tool of choice.|setup page - header desc": "How to use Babel with your tool of choice.",
     "Choose your tool (try CLI)|setup page - step 1": "Choose your tool (try CLI)",

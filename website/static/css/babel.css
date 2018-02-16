@@ -51,6 +51,10 @@ hr {
 }
 
 @media only screen and (min-width: 736px) {
+  .navPusher {
+    padding-top: 54px;
+  }
+
   .navigationSlider .slidingNav ul li a {
     color: #333;
     font-size: 0.875rem;
@@ -63,6 +67,64 @@ hr {
 blockquote {
   background: #fafbfc;
   border-left-color: #e0e0e0;
+}
+
+/* ####### HOME ####### */
+
+.hero {
+  background: #323330;
+  color: #fff;
+  overflow: hidden;
+  padding: 4rem 1rem 2rem;
+  position: relative;
+  text-align: center;
+}
+
+.hero::before {
+  background: url(../img/babel-black.svg) no-repeat center center;
+  background-size: cover;
+  bottom: 0;
+  content: "";
+  display: block;
+  left: 0;
+  opacity: 0.3;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.hero__container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  color: #f5da55;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 1rem 0 3.125rem;
+}
+
+@media only screen and (min-width: 736px) {
+  .hero {
+    padding: 7rem 1rem 5rem;
+  }
+
+  .hero h1 {
+    font-size: 3.938rem;
+  }
+
+  .hero p {
+    font-size: 1.75rem;
+  }
 }
 
 /* ####### POST ####### */
