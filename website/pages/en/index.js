@@ -164,7 +164,7 @@ const WorkSponsors = () => {
               return (
                 <div className="card" key={i}>
                   <a href={sponsor.url} target="_blank" className="card-image">
-                    <img src={sponsor.image} title={sponsor.name} />
+                    <img src={sponsor.image} title={sponsor.name} alt={`Sponsored by ${sponsor.name}`} />
                   </a>
                   <div className="card-text">
                     <p>{sponsor.description}</p>
@@ -197,7 +197,7 @@ const SponsorTier = props => {
         {tierSponsors.map((sponsor, i) => (
           <li key={i}>
             <a href={sponsor.url} title={sponsor.name}>
-              <img src={sponsor.image} />
+              <img src={sponsor.image} alt={`Sponsored by ${sponsor.name}`} />
             </a>
           </li>
         ))}

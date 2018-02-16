@@ -46,6 +46,10 @@ hr {
   color: #333;
 }
 
+.fixedHeaderContainer header h3 {
+  color: #8c7500;
+}
+
 @media only screen and (min-width: 736px) {
   .navigationSlider .slidingNav ul li a {
     color: #333;
@@ -131,4 +135,7 @@ a.anchor {
 
 .text-center {
   text-align: center;
+}
+footer.nav-footer {
+  background: #767676;
 }

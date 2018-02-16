@@ -44,6 +44,7 @@ class RawSearchBox extends Component {
       <input
         placeholder="Type the plugin name"
         value={this.state.value}
+        aria-label="Plugin name"
         onChange={e => this._onChange(e.target.value)}
         className={`${this.props.styles.pluginName} ${this.props.styles
           .envPresetInput}`}
