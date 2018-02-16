@@ -63,6 +63,8 @@ class Footer extends React.Component {
             <a href="http://henryzoo.com/babel.github.io">Old 5.x Site</a>
           </div>
         </section>
+        <script src={this.props.config.baseUrl + "js/stickyfill.min.js"} />
+        <script src={this.props.config.baseUrl + "js/sidebar.js"} />
       </footer>
     );
   }
