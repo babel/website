@@ -58,6 +58,10 @@ hr {
     color: #fff;
     text-decoration: underline;
   }
+  .navigationSlider .slidingNav ul li a.active {
+    background: #323330;
+    color: #fff;
+  }
 }
 
 /* ####### GLOBAL ####### */

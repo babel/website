@@ -13,6 +13,7 @@ class Footer extends React.Component {
 
   render() {
     const currentYear = new Date().getFullYear();
+    const time = new Date().getTime();
     return (
       <footer className="nav-footer" id="footer">
         <section className="sitemap">
@@ -63,6 +64,7 @@ class Footer extends React.Component {
             <a href="http://henryzoo.com/babel.github.io">Old 5.x Site</a>
           </div>
         </section>
+        <script src={`${this.props.config.baseUrl}scripts/nav.js?t=${time}`} />
       </footer>
     );
   }
