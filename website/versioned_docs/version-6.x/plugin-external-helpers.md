@@ -1,5 +1,5 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
+# Don't edit this file directly, it was copied using scripts/download-readmes.js:
 id: version-6.x-babel-plugin-external-helpers
 title: babel-plugin-external-helpers
 sidebar_label: external-helpers
@@ -65,7 +65,7 @@ You need to import/inject this file before executing your own code (instructions
 require("babel-core").buildExternalHelpers();
 ```
 
-This injects the external helpers into `global`.
+This builds helpers as a string. The result can be saved in a file and later `require` that file in the app.
 
 #### Browser
 
@@ -106,5 +106,3 @@ require("babel-core").transform("code", {
   plugins: ["external-helpers"]
 });
 ```
-
-
