@@ -21,9 +21,9 @@ This preset includes the following plugins:
 
 And all plugins from presets:
 
-- [preset-stage-1](https://babeljs.io/docs/en/babel-preset-stage-1)
-- [preset-stage-2](https://babeljs.io/docs/en/babel-preset-stage-2)
-- [preset-stage-3](https://babeljs.io/docs/en/babel-preset-stage-3)
+- [preset-stage-1](https://babeljs.io/docs/en/preset-stage-1)
+- [preset-stage-2](https://babeljs.io/docs/en/preset-stage-2)
+- [preset-stage-3](https://babeljs.io/docs/en/preset-stage-3)
 
 > You can check the src/index.js to be sure the plugins used.
 
