@@ -656,3 +656,6 @@
 - name: Digitalychee
   url: https://www.lizhi.io
   logo: digitalychee.svg
+- name: CrowdSync
+  url: https://www.crowdsync.io
+  logo: crowdsync.svg
