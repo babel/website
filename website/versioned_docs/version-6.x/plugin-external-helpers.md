@@ -60,13 +60,10 @@ You need to import/inject this file before executing your own code (instructions
 ### Injecting the external helpers
 
 #### Node
-
-```js
-require("babel-core").buildExternalHelpers();
 ```
-
-This injects the external helpers into `global`.
-
+require('your-path-to-external-helpers.js');
+```
+This injects external helpers into `global`
 #### Browser
 
 ```html
