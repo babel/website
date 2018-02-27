@@ -65,7 +65,7 @@ You need to import/inject this file before executing your own code (instructions
 require("babel-core").buildExternalHelpers();
 ```
 
-This injects the external helpers into `global`.
+This outputs external helpers as a string which you can then inject into `global`.
 
 #### Browser
 
