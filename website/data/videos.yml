@@ -1,5 +1,41 @@
 - category: Conferences
   items:
+    - title: "10KB or Bust: The Delicate Power of Webpack and Babel"
+      author: Brian Holt
+      author_link: http://twitter.com/holtbt
+      year: 2018
+      event: jsDay
+      event_link: https://2018.jsday.it/
+      link: https://www.youtube.com/watch?v=SSymzmnk0ZA
+    - title: Through the Open Source Looking Glass
+      author: Henry Zhu
+      author_link: https://twitter.com/left_pad
+      year: 2018
+      event: React Rally
+      event_link: http://www.reactrally.com/
+      link: https://www.youtube.com/watch?v=h0sfFX7WH1c
+    - title: In Pursuit of Open Source
+      author: Henry Zhu
+      author_link: https://twitter.com/left_pad
+      year: 2018
+      event: Zeit Day
+      event_link: https://zeit.co/day/
+      link: https://www.youtube.com/watch?v=9sPDcVYX3g8
+    - title: Optimizing Your Code with Babel
+      author: Pranay Prakash and Thomas Fischer
+      author_link: https://twitter.com/pranaygp
+      #author_link: https://twitter.com/tom__fischer
+      year: 2018
+      event: Zeit Day
+      event_link: https://zeit.co/day/
+      link: https://www.youtube.com/watch?v=XvTsxa9i13o
+    - title: "Behind the scenes of Fable: Babel"
+      author: Sven Sauleau
+      author_link: https://twitter.com/svensauleau
+      year: 2017
+      event: Fable Conf
+      event_link: http://fable.io/fableconf/
+      link: https://www.youtube.com/watch?v=5vnmvXuwzJ0
     - title: So How Does Babel Even Work?
       author: Henry Zhu
       author_link: https://twitter.com/left_pad
@@ -79,6 +115,13 @@
       link: https://www.youtube.com/embed/fb_1cqg8TKc
 - category: Meetups
   items:
+    - title: Demystifying Babel
+      author: Sven Sauleau
+      author_link: https://twitter.com/svensauleau
+      year: 2018
+      event: React Vienna
+      event_link: https://www.meetup.com/ReactVienna/
+      link: https://www.youtube.com/watch?v=hOghLCWohuU
     - title: Babel Sucks
       author: James Kyle
       author_link: https://twitter.com/thejameskyle
