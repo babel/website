@@ -22,9 +22,11 @@
       event_link: https://zeit.co/day/
       link: https://www.youtube.com/embed/9sPDcVYX3g8
     - title: Optimizing Your Code with Babel
-      author: Pranay Prakash and Thomas Fischer
-      author_link: https://twitter.com/pranaygp
-      #author_link: https://twitter.com/tom__fischer
+      authors:
+        - name: Pranay Prakash
+          link: https://twitter.com/pranaygp
+        - name: Thomas Fischer
+          link: https://twitter.com/tom__fischer
       year: 2018
       event: Zeit Day
       event_link: https://zeit.co/day/
