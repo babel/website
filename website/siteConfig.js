@@ -123,7 +123,10 @@ const siteConfig = {
   highlight: {
     theme: "tomorrow",
   },
-  // scripts: ["https://buttons.github.io/buttons.js"],
+  scripts: [
+    "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js",
+    "/js/code-blocks-buttons.js"
+  ],
   // stylesheets: [ "" ],
   // translationRecruitingLink: "https://crowdin.com/project/",
   algolia: {
