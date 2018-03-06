@@ -5,9 +5,15 @@ core:
   - name: Daniel Tschinder
     github: danez
     twitter: TschinderDaniel
+  - name: Brian Ng
+    github: existentialism
+    twitter: existentialism
   - name: Logan Smyth
     github: loganfsmyth
     twitter: loganfsmyth
+  - name: Sven Sauleau
+    github: xtuc
+    twitter: svensauleau
   - name: Henry Zhu
     github: hzoo
     twitter: left_pad
@@ -21,9 +27,6 @@ members:
   - name: Boopathi Rajaa
     github: boopathi
     twitter: heisenbugger
-  - name: Brian Ng
-    github: existentialism
-    twitter: existentialism
   - name: Buu Nguyen
     github: buunguyen
     twitter: buunguyen    
@@ -50,9 +53,6 @@ members:
   - name: Sergey Rubanov
     github: chicoxyzzy
     twitter: chicoxyzzy
-  - name: Sven Sauleau
-    github: xtuc
-    twitter: svensauleau
   - name: Vignesh Shanmugam
     github: vigneshshanmugam
     twitter: _vigneshh
