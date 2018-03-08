@@ -662,3 +662,6 @@
 - name: FusionCharts
   url: https://www.fusioncharts.com/
   logo: fusioncharts.svg
+- name: Yeti
+  url: https://yeti.co
+  logo: yeti.svg
