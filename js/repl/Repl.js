@@ -5,7 +5,7 @@ import "regenerator-runtime/runtime";
 import { css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
-import {SandpackProvider, CodeMirror, TranspiledCodeView} from 'react-smooshpack';
+import {SandpackProvider, SandpackConsumer} from 'react-smooshpack/es/components';
 import { prettySize } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
@@ -244,30 +244,35 @@ class Repl extends React.Component {
           dependencies={{}}
           entry="/index.js"
           className={styles.panels}
-          onFileChange={this._updateSandpackFiles}
           skipEval
         >
-            <CodeMirror className={styles.codeMirrorPanel} />
-            <TranspiledCodeView className={styles.codeMirrorPanel} />
+          <CodeMirrorPanel
+            className={styles.codeMirrorPanel}
+            code={state.code}
+            errorMessage={state.compileErrorMessage}
+            fileSize={state.meta.rawSize}
+            onChange={this._updateCode}
+            options={options}
+            placeholder="Write code here"
+          />
 
-            {/* <CodeMirrorPanel
-              className={styles.codeMirrorPanel}
-              code={state.code}
-              errorMessage={state.compileErrorMessage}
-              fileSize={state.meta.rawSize}
-              onChange={this._updateCode}
-              options={options}
-              placeholder="Write code here"
-            /> */}
-            {/* <CodeMirrorPanel
-              className={styles.codeMirrorPanel}
-              code={state.compiled}
-              errorMessage={state.evalErrorMessage}
-              fileSize={state.meta.compiledSize}
-              info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
-              options={options}
-              placeholder="Compiled output will be shown here"
-            /> */}
+          <SandpackConsumer>
+            {(sandpack) => (
+              <CodeMirrorPanel
+                className={styles.codeMirrorPanel}
+                code={
+                  sandpack.managerState
+                  && sandpack.managerState.transpiledModules['/index.js:']
+                  && sandpack.managerState.transpiledModules['/index.js:'].source
+                  && sandpack.managerState.transpiledModules['/index.js:'].source.compiledCode}
+                errorMessage={state.evalErrorMessage}
+                fileSize={state.meta.compiledSize}
+                info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
+                options={options}
+                placeholder="Compiled output will be shown here"
+              />
+            )}
+          </SandpackConsumer>
         </SandpackProvider>
       </div>
     );
@@ -627,14 +632,6 @@ class Repl extends React.Component {
     // This prevents frequent updates while a user is typing.
     this._compileToState(code);
   };
-
-  _updateSandpackFiles = (_, sandpack) => {
-    const {code} = sandpack.files['/index.js'];
-
-    if (code !== this.state.code) {
-      this._updateCode(code);
-    }
-  }
 }
 
 export default function ReplWithErrorBoundary() {
