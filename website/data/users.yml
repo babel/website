@@ -659,6 +659,9 @@
 - name: CrowdSync
   url: https://www.crowdsync.io
   logo: crowdsync.svg
+- name: FusionCharts
+  url: https://www.fusioncharts.com/
+  logo: fusioncharts.svg
 - name: Yeti
   url: https://yeti.co
   logo: yeti.svg
