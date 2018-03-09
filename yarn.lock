@@ -4096,9 +4096,9 @@ react-instantsearch@^4.4.2:
     lodash "^4.17.4"
     prop-types "^15.5.10"
 
-react-smooshpack@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/react-smooshpack/-/react-smooshpack-0.0.12.tgz#a1eeeb03489d9760871cdc924719d4a471dc239c"
+react-smooshpack@^0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/react-smooshpack/-/react-smooshpack-0.0.13.tgz#2bce07c9ace9a0cbe65a19f85f8eaf391ad78ac3"
   dependencies:
     classnames "^2.2.5"
     codemirror "^5.35.0"
@@ -4106,7 +4106,7 @@ react-smooshpack@^0.0.12:
     react-broadcast "^0.6.2"
     react-codemirror2 "^4.0.1"
     rollup-plugin-scss "^0.4.0"
-    smooshpack "^0.0.10"
+    smooshpack "^0.0.13"
 
 react@^16.0.0:
   version "16.0.0"
@@ -4826,9 +4826,9 @@ sliced@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/sliced/-/sliced-1.0.1.tgz#0b3a662b5d04c3177b1926bea82b03f837a2ef41"
 
-smooshpack@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/smooshpack/-/smooshpack-0.0.10.tgz#8669d01ffde07cda41df2181c4adc1f58f3324e2"
+smooshpack@^0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/smooshpack/-/smooshpack-0.0.13.tgz#dada76481d7e1884c70eaa5d56f579859596dc4d"
   dependencies:
     codesandbox-api "^0.0.14"
     codesandbox-import-utils "^1.2.3"

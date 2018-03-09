@@ -246,15 +246,19 @@ class Repl extends React.Component {
           className={styles.panels}
           skipEval
         >
-          <CodeMirrorPanel
-            className={styles.codeMirrorPanel}
-            code={state.code}
-            errorMessage={state.compileErrorMessage}
-            fileSize={state.meta.rawSize}
-            onChange={this._updateCode}
-            options={options}
-            placeholder="Write code here"
-          />
+        <SandpackConsumer>
+          {(sandpack) => (
+            <CodeMirrorPanel
+              className={styles.codeMirrorPanel}
+              code={sandpack.files['/index.js'].code}
+              errorMessage={sandpack.errors.length ? sandpack.errors[0].message : undefined}
+              fileSize={state.meta.rawSize}
+              onChange={this._updateCode}
+              options={options}
+              placeholder="Write code here"
+            />
+          )}
+          </SandpackConsumer>
 
           <SandpackConsumer>
             {(sandpack) => (

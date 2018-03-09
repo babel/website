@@ -69,7 +69,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-instantsearch": "^4.4.2",
-    "react-smooshpack": "^0.0.12",
+    "react-smooshpack": "^0.0.13",
     "semver": "^5.4.1",
     "unfetch": "^3.0.0",
     "worker-loader": "^1.0.0"
