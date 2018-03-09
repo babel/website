@@ -6,7 +6,7 @@ import { css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
 import {SandpackProvider, SandpackConsumer, FileExplorer} from 'react-smooshpack/es/components';
-import { prettySize } from "./Utils";
+import { getCodeSize } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
@@ -209,7 +209,7 @@ class Repl extends React.Component {
           },
           "/.babelrc": {
             code: JSON.stringify({
-              presets: ['es2015', 'stage-2', 'react']
+              presets: ['es2015', 'stage-2', 'react'],
             }, null, 2)
           }
         }}
@@ -219,69 +219,84 @@ class Repl extends React.Component {
         entry="/index.js"
         skipEval
       >
-      <ReplOptions
-        babelVersion={state.babel.version}
-        className={styles.optionsColumn}
-        debugEnvPreset={state.debugEnvPreset}
-        envConfig={state.envConfig}
-        envPresetState={state.envPresetState}
-        shippedProposalsState={state.shippedProposalsState}
-        fileSize={state.fileSize}
-        isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
-        isExpanded={state.isSidebarExpanded}
-        isPluginsExpanded={state.isPluginsExpanded}
-        isPresetsTabExpanded={state.isPresetsTabExpanded}
-        isSettingsTabExpanded={state.isSettingsTabExpanded}
-        lineWrap={state.lineWrap}
-        onEnvPresetSettingChange={this._onEnvPresetSettingChange}
-        onIsExpandedChange={this._onIsSidebarExpandedChange}
-        onSettingChange={this._onSettingChange}
-        onTabExpandedChange={this._onTabExpandedChange}
-        pluginState={state.plugins}
-        presetState={state.presets}
-        runtimePolyfillConfig={runtimePolyfillConfig}
-        runtimePolyfillState={state.runtimePolyfillState}
-        externalPlugins={state.externalPlugins}
-        pluginChange={this._pluginChange}
-        pluginSearch={this._pluginSearch}
-        pluginValue={state.pluginSearch}
-        showOfficialExternalPluginsChanged={
-          this._showOfficialExternalPluginsChanged
-        }
-        showOfficialExternalPlugins={state.showOfficialExternalPlugins}
-        loadingExternalPlugins={state.loadingExternalPlugins}
-      />
-      <div className={styles.panels}>
-        <SandpackConsumer>
-          {(sandpack) => (
-            <CodeMirrorPanel
-              className={styles.codeMirrorPanel}
-              code={this.state.code}
-              errorMessage={sandpack.errors.length ? sandpack.errors[0].message : undefined}
-              fileSize={state.meta.rawSize}
-              onChange={this._updateCode}
-              options={options}
-              placeholder="Write code here"
-            />
-          )}
+        <ReplOptions
+          babelVersion={state.babel.version}
+          className={styles.optionsColumn}
+          debugEnvPreset={state.debugEnvPreset}
+          envConfig={state.envConfig}
+          envPresetState={state.envPresetState}
+          shippedProposalsState={state.shippedProposalsState}
+          fileSize={state.fileSize}
+          isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
+          isExpanded={state.isSidebarExpanded}
+          isPluginsExpanded={state.isPluginsExpanded}
+          isPresetsTabExpanded={state.isPresetsTabExpanded}
+          isSettingsTabExpanded={state.isSettingsTabExpanded}
+          lineWrap={state.lineWrap}
+          onEnvPresetSettingChange={this._onEnvPresetSettingChange}
+          onIsExpandedChange={this._onIsSidebarExpandedChange}
+          onSettingChange={this._onSettingChange}
+          onTabExpandedChange={this._onTabExpandedChange}
+          pluginState={state.plugins}
+          presetState={state.presets}
+          runtimePolyfillConfig={runtimePolyfillConfig}
+          runtimePolyfillState={state.runtimePolyfillState}
+          externalPlugins={state.externalPlugins}
+          pluginChange={this._pluginChange}
+          pluginSearch={this._pluginSearch}
+          pluginValue={state.pluginSearch}
+          showOfficialExternalPluginsChanged={
+            this._showOfficialExternalPluginsChanged
+          }
+          showOfficialExternalPlugins={state.showOfficialExternalPlugins}
+          loadingExternalPlugins={state.loadingExternalPlugins}
+        />
+        <div className={styles.panels}>
+          <SandpackConsumer>
+            {sandpack => (
+              <CodeMirrorPanel
+                className={styles.codeMirrorPanel}
+                code={this.state.code}
+                errorMessage={
+                  sandpack.errors.length
+                    ? sandpack.errors[0].message
+                    : undefined
+                }
+                fileSize={getCodeSize(this.state.code)}
+                onChange={this._updateCode}
+                options={options}
+                placeholder="Write code here"
+              />
+            )}
           </SandpackConsumer>
 
           <SandpackConsumer>
-            {(sandpack) => (
-              <CodeMirrorPanel
-                className={styles.codeMirrorPanel}
-                code={
-                  sandpack.managerState
-                  && sandpack.managerState.transpiledModules['/index.js:']
-                  && sandpack.managerState.transpiledModules['/index.js:'].source
-                  && sandpack.managerState.transpiledModules['/index.js:'].source.compiledCode}
-                errorMessage={state.evalErrorMessage}
-                fileSize={state.meta.compiledSize}
-                info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
-                options={options}
-                placeholder="Compiled output will be shown here"
-              />
-            )}
+            {({ managerState }) => {
+              let code;
+
+              if (
+                managerState &&
+                managerState.transpiledModules["/index.js:"] &&
+                managerState.transpiledModules["/index.js:"].source &&
+                managerState.transpiledModules["/index.js:"].source.compiledCode
+              ) {
+                code =
+                  managerState.transpiledModules["/index.js:"].source
+                    .compiledCode;
+              }
+
+              return (
+                <CodeMirrorPanel
+                  className={styles.codeMirrorPanel}
+                  code={code}
+                  errorMessage={state.evalErrorMessage}
+                  fileSize={code ? getCodeSize(code) : null}
+                  info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
+                  options={options}
+                  placeholder="Compiled output will be shown here"
+                />
+              );
+            }}
           </SandpackConsumer>
         </div>
       </SandpackProvider>
@@ -503,8 +518,6 @@ class Repl extends React.Component {
         sourceMap: runtimePolyfillState.isEnabled,
       })
       .then(result => {
-        result.meta.compiledSize = prettySize(result.meta.compiledSize);
-        result.meta.rawSize = prettySize(result.meta.rawSize);
         this.setState(result, setStateCallback);
       });
   };
