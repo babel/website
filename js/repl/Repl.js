@@ -5,7 +5,10 @@ import "regenerator-runtime/runtime";
 import { css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
-import {SandpackProvider, SandpackConsumer, FileExplorer} from 'react-smooshpack/es/components';
+import {
+  SandpackConsumer,
+  SandpackProvider,
+} from 'react-smooshpack/es/components';
 import { getCodeSize } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
@@ -35,7 +38,6 @@ import {
 import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
 import { colors, media } from "./styles";
-
 
 import type {
   BabelPresets,
@@ -204,7 +206,7 @@ class Repl extends React.Component {
     return (
       <SandpackProvider
         files={{
-          '/index.js': {
+          "/index.js": {
             code: state.code
           },
           "/.babelrc": {
@@ -253,26 +255,8 @@ class Repl extends React.Component {
         />
         <div className={styles.panels}>
           <SandpackConsumer>
-            {sandpack => (
-              <CodeMirrorPanel
-                className={styles.codeMirrorPanel}
-                code={this.state.code}
-                errorMessage={
-                  sandpack.errors.length
-                    ? sandpack.errors[0].message
-                    : undefined
-                }
-                fileSize={getCodeSize(this.state.code)}
-                onChange={this._updateCode}
-                options={options}
-                placeholder="Write code here"
-              />
-            )}
-          </SandpackConsumer>
-
-          <SandpackConsumer>
-            {({ managerState }) => {
-              let code;
+            {({ errors, managerState }) => {
+              let compiled;
 
               if (
                 managerState &&
@@ -280,22 +264,33 @@ class Repl extends React.Component {
                 managerState.transpiledModules["/index.js:"].source &&
                 managerState.transpiledModules["/index.js:"].source.compiledCode
               ) {
-                code =
+                compiled =
                   managerState.transpiledModules["/index.js:"].source
                     .compiledCode;
               }
 
-              return (
+              return [
                 <CodeMirrorPanel
                   className={styles.codeMirrorPanel}
-                  code={code}
+                  code={this.state.code}
+                  errorMessage={errors.length ? errors[0].message : undefined}
+                  fileSize={getCodeSize(this.state.code)}
+                  key="input"
+                  onChange={this._updateCode}
+                  options={options}
+                  placeholder="Write code here"
+                />,
+                <CodeMirrorPanel
+                  className={styles.codeMirrorPanel}
+                  code={compiled}
                   errorMessage={state.evalErrorMessage}
-                  fileSize={code ? getCodeSize(code) : null}
+                  fileSize={compiled ? getCodeSize(compiled) : null}
                   info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
+                  key="output"
                   options={options}
                   placeholder="Compiled output will be shown here"
-                />
-              );
+                />,
+              ];
             }}
           </SandpackConsumer>
         </div>
