@@ -2,6 +2,7 @@
 
 import { css } from "emotion";
 import React, { Component } from "react";
+import { FileExplorer } from 'react-smooshpack';
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
@@ -205,6 +206,9 @@ class ExpandedContainer extends Component {
                 />
               );
             })}
+          </AccordionTab>
+          <AccordionTab isExpanded label="File Explorer">
+            <FileExplorer />
           </AccordionTab>
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}

@@ -5,7 +5,7 @@ import "regenerator-runtime/runtime";
 import { css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
-import {SandpackProvider, SandpackConsumer} from 'react-smooshpack/es/components';
+import {SandpackProvider, SandpackConsumer, FileExplorer} from 'react-smooshpack/es/components';
 import { prettySize } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
@@ -51,6 +51,7 @@ type Props = {};
 type State = {
   babel: BabelState,
   code: string,
+  babelCode: string;
   compiled: ?string,
   compileErrorMessage: ?string,
   debugEnvPreset: boolean,
@@ -201,56 +202,61 @@ class Repl extends React.Component {
     };
 
     return (
-      <div className={styles.repl}>
-        <ReplOptions
-          babelVersion={state.babel.version}
-          className={styles.optionsColumn}
-          debugEnvPreset={state.debugEnvPreset}
-          envConfig={state.envConfig}
-          envPresetState={state.envPresetState}
-          shippedProposalsState={state.shippedProposalsState}
-          fileSize={state.fileSize}
-          isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
-          isExpanded={state.isSidebarExpanded}
-          isPluginsExpanded={state.isPluginsExpanded}
-          isPresetsTabExpanded={state.isPresetsTabExpanded}
-          isSettingsTabExpanded={state.isSettingsTabExpanded}
-          lineWrap={state.lineWrap}
-          onEnvPresetSettingChange={this._onEnvPresetSettingChange}
-          onIsExpandedChange={this._onIsSidebarExpandedChange}
-          onSettingChange={this._onSettingChange}
-          onTabExpandedChange={this._onTabExpandedChange}
-          pluginState={state.plugins}
-          presetState={state.presets}
-          runtimePolyfillConfig={runtimePolyfillConfig}
-          runtimePolyfillState={state.runtimePolyfillState}
-          externalPlugins={state.externalPlugins}
-          pluginChange={this._pluginChange}
-          pluginSearch={this._pluginSearch}
-          pluginValue={state.pluginSearch}
-          showOfficialExternalPluginsChanged={
-            this._showOfficialExternalPluginsChanged
+      <SandpackProvider
+        files={{
+          '/index.js': {
+            code: state.code
+          },
+          "/.babelrc": {
+            code: JSON.stringify({
+              presets: ['es2015', 'stage-2', 'react']
+            }, null, 2)
           }
-          showOfficialExternalPlugins={state.showOfficialExternalPlugins}
-          loadingExternalPlugins={state.loadingExternalPlugins}
-        />
-
-        <SandpackProvider
-          files={{
-            '/index.js': {
-              code: state.code
-            }
-          }}
-          dependencies={{}}
-          entry="/index.js"
-          className={styles.panels}
-          skipEval
-        >
+        }}
+        className={styles.repl}
+        dependencies={{}}
+        template="preact-cli"
+        entry="/index.js"
+        skipEval
+      >
+      <ReplOptions
+        babelVersion={state.babel.version}
+        className={styles.optionsColumn}
+        debugEnvPreset={state.debugEnvPreset}
+        envConfig={state.envConfig}
+        envPresetState={state.envPresetState}
+        shippedProposalsState={state.shippedProposalsState}
+        fileSize={state.fileSize}
+        isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
+        isExpanded={state.isSidebarExpanded}
+        isPluginsExpanded={state.isPluginsExpanded}
+        isPresetsTabExpanded={state.isPresetsTabExpanded}
+        isSettingsTabExpanded={state.isSettingsTabExpanded}
+        lineWrap={state.lineWrap}
+        onEnvPresetSettingChange={this._onEnvPresetSettingChange}
+        onIsExpandedChange={this._onIsSidebarExpandedChange}
+        onSettingChange={this._onSettingChange}
+        onTabExpandedChange={this._onTabExpandedChange}
+        pluginState={state.plugins}
+        presetState={state.presets}
+        runtimePolyfillConfig={runtimePolyfillConfig}
+        runtimePolyfillState={state.runtimePolyfillState}
+        externalPlugins={state.externalPlugins}
+        pluginChange={this._pluginChange}
+        pluginSearch={this._pluginSearch}
+        pluginValue={state.pluginSearch}
+        showOfficialExternalPluginsChanged={
+          this._showOfficialExternalPluginsChanged
+        }
+        showOfficialExternalPlugins={state.showOfficialExternalPlugins}
+        loadingExternalPlugins={state.loadingExternalPlugins}
+      />
+      <div className={styles.panels}>
         <SandpackConsumer>
           {(sandpack) => (
             <CodeMirrorPanel
               className={styles.codeMirrorPanel}
-              code={sandpack.files['/index.js'].code}
+              code={this.state.code}
               errorMessage={sandpack.errors.length ? sandpack.errors[0].message : undefined}
               fileSize={state.meta.rawSize}
               onChange={this._updateCode}
@@ -277,8 +283,8 @@ class Repl extends React.Component {
               />
             )}
           </SandpackConsumer>
-        </SandpackProvider>
-      </div>
+        </div>
+      </SandpackProvider>
     );
   }
 
