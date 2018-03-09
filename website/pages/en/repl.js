@@ -5,8 +5,8 @@ const React = require("react");
 const styles = ["https://unpkg.com/codemirror@5.30.0/lib/codemirror.css"];
 
 const scripts = [
-  "https://unpkg.com/react@16.0.0/umd/react.production.min.js",
-  "https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js",
+  "https://unpkg.com/react@16.2.0/umd/react.production.min.js",
+  "https://unpkg.com/react-dom@16.2.0/umd/react-dom.production.min.js",
   "https://unpkg.com/codemirror@5.30.0/lib/codemirror.js",
   "https://unpkg.com/codemirror@5.30.0/mode/javascript/javascript.js",
   "https://unpkg.com/codemirror@5.30.0/mode/xml/xml.js",
