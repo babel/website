@@ -8,8 +8,8 @@ import React from "react";
 import {
   SandpackConsumer,
   SandpackProvider,
-} from 'react-smooshpack/es/components';
-import { getCodeSize } from "./Utils";
+} from "react-smooshpack/es/components";
+import { getCodeSize, getEnvPresetOptions } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
@@ -53,7 +53,7 @@ type Props = {};
 type State = {
   babel: BabelState,
   code: string,
-  babelCode: string;
+  babelCode: string,
   compiled: ?string,
   compileErrorMessage: ?string,
   debugEnvPreset: boolean,
@@ -177,6 +177,8 @@ class Repl extends React.Component {
   render() {
     const state = this.state;
 
+    // TODO:
+    // We can replace all of this once SandpackConsumer exposes bundler status
     if (!state.babel.isLoaded) {
       let message = "Loading Babel...";
 
@@ -203,17 +205,17 @@ class Repl extends React.Component {
       lineWrapping: state.lineWrap,
     };
 
+    const babelrc = this.mapStateToBabelConfig(state);
+
     return (
       <SandpackProvider
         files={{
           "/index.js": {
-            code: state.code
+            code: state.code,
           },
           "/.babelrc": {
-            code: JSON.stringify({
-              presets: ['es2015', 'stage-2', 'react'],
-            }, null, 2)
-          }
+            code: JSON.stringify(babelrc, null, 2),
+          },
         }}
         className={styles.repl}
         dependencies={{}}
@@ -634,6 +636,39 @@ class Repl extends React.Component {
     this._checkForUnloadedPlugins();
     this._updateCode(this.state.code);
   };
+
+  mapStateToBabelConfig(
+    {
+      envConfig,
+      envPresetState,
+      presets: presetConfig,
+      runtimePolyfillState,
+    }: State = this.state
+  ) {
+    const presets = Object.keys(presetConfig)
+      .filter(key => presetConfig[key].isEnabled && presetConfig[key].isLoaded)
+      .map(key => {
+        const name = presetConfig[key].config.label;
+
+        // TODO: Enable this once Sandpack exposes transpiler info
+        // if (semver.gte(Babel.version, "7.0.0-beta.5")) {
+        //   return `@babel/preset-${name}`;
+        // }
+
+        return name;
+      });
+
+    if (envPresetState.isLoaded && envPresetState.isEnabled) {
+      presets.push(["env", getEnvPresetOptions(envConfig)]);
+    }
+
+    return {
+      // TODO
+      //plugins: state.externalPlugins,
+      presets: presets,
+      sourceMaps: runtimePolyfillState.isEnabled,
+    };
+  }
 
   _presetsToArray(state: State = this.state): BabelPresets {
     const { presets } = state;

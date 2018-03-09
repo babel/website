@@ -23,8 +23,49 @@ const prettySize = (size: number) => {
     mysize = `0 ${unit}`;
   }
   return mysize;
-}
+};
 
 export const getCodeSize = (code: string) => {
   return prettySize(new Blob([code], { type: "text/plain" }).size);
+};
+
+export const getEnvPresetOptions = ({
+  browsers,
+  builtIns,
+  forceAllTransforms,
+  isBuiltInsEnabled,
+  isElectronEnabled,
+  isNodeEnabled,
+  node,
+  shippedProposals,
+}: EnvConfig) => {
+  let useBuiltIns = false;
+
+  const targets = {};
+
+  if (browsers) {
+    targets.browsers = browsers
+      .split(",")
+      .map(x => x.trim())
+      .filter(x => x);
+  }
+
+  if (isElectronEnabled) {
+    targets.electron = isElectronEnabled;
+  }
+
+  if (isNodeEnabled) {
+    targets.node = node;
+  }
+
+  if (isBuiltInsEnabled) {
+    useBuiltIns = builtIns;
+  }
+
+  return {
+    targets,
+    forceAllTransforms,
+    shippedProposals,
+    useBuiltIns,
+  };
 };

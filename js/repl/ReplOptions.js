@@ -2,7 +2,7 @@
 
 import { css } from "emotion";
 import React, { Component } from "react";
-import { FileExplorer } from 'react-smooshpack';
+import { FileExplorer } from "react-smooshpack";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
@@ -698,7 +698,7 @@ const styles = {
   pluginsHeader: css({
     display: "flex",
     justifyContent: "space-between",
-    paddingRight: 5
+    paddingRight: 5,
   }),
   accordionLabelVersion: css({
     fontSize: "1rem",
