@@ -174,31 +174,69 @@ class Repl extends React.Component {
     this._setupBabel(defaultPresets);
   }
 
-  render() {
+  renderOptions() {
     const state = this.state;
 
-    // TODO:
-    // We can replace all of this once SandpackConsumer exposes bundler status
-    if (!state.babel.isLoaded) {
-      let message = "Loading Babel...";
+    return (
+      <ReplOptions
+        babelVersion={state.babel.version}
+        className={styles.optionsColumn}
+        debugEnvPreset={state.debugEnvPreset}
+        envConfig={state.envConfig}
+        envPresetState={state.envPresetState}
+        shippedProposalsState={state.shippedProposalsState}
+        fileSize={state.fileSize}
+        isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
+        isExpanded={state.isSidebarExpanded}
+        isPluginsExpanded={state.isPluginsExpanded}
+        isPresetsTabExpanded={state.isPresetsTabExpanded}
+        isSettingsTabExpanded={state.isSettingsTabExpanded}
+        lineWrap={state.lineWrap}
+        onEnvPresetSettingChange={this._onEnvPresetSettingChange}
+        onIsExpandedChange={this._onIsSidebarExpandedChange}
+        onSettingChange={this._onSettingChange}
+        onTabExpandedChange={this._onTabExpandedChange}
+        pluginState={state.plugins}
+        presetState={state.presets}
+        runtimePolyfillConfig={runtimePolyfillConfig}
+        runtimePolyfillState={state.runtimePolyfillState}
+        externalPlugins={state.externalPlugins}
+        pluginChange={this._pluginChange}
+        pluginSearch={this._pluginSearch}
+        pluginValue={state.pluginSearch}
+        showOfficialExternalPluginsChanged={
+          this._showOfficialExternalPluginsChanged
+        }
+        showOfficialExternalPlugins={state.showOfficialExternalPlugins}
+        loadingExternalPlugins={state.loadingExternalPlugins}
+      />
+    );
+  }
 
-      if (state.babel.didError) {
-        message =
-          state.babel.errorMessage ||
-          "An error occurred while loading Babel :(";
-      }
+  // TODO: Activate this once SandpackConsumer exposes bundler status
+  renderLoader = (status: SandpackStatus) => {
+    let loading = true;
+    let message = "Loading Babel...";
 
-      return (
-        <div className={styles.loader}>
-          <div className={styles.loaderContent}>
-            {message}
-            {state.babel.isLoading && (
-              <PresetLoadingAnimation className={styles.loadingAnimation} />
-            )}
-          </div>
-        </div>
-      );
+    if (status === Statuses.LOADING_ERROR) {
+      loading = false;
+      message = "An error occurred while loading Babel :(";
     }
+
+    return (
+      <div className={styles.loader}>
+        <div className={styles.loaderContent}>
+          {message}
+          {loading && (
+            <PresetLoadingAnimation className={styles.loadingAnimation} />
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  render() {
+    const state = this.state;
 
     const options = {
       fileSize: state.fileSize,
@@ -223,79 +261,60 @@ class Repl extends React.Component {
         entry="/index.js"
         skipEval
       >
-        <ReplOptions
-          babelVersion={state.babel.version}
-          className={styles.optionsColumn}
-          debugEnvPreset={state.debugEnvPreset}
-          envConfig={state.envConfig}
-          envPresetState={state.envPresetState}
-          shippedProposalsState={state.shippedProposalsState}
-          fileSize={state.fileSize}
-          isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
-          isExpanded={state.isSidebarExpanded}
-          isPluginsExpanded={state.isPluginsExpanded}
-          isPresetsTabExpanded={state.isPresetsTabExpanded}
-          isSettingsTabExpanded={state.isSettingsTabExpanded}
-          lineWrap={state.lineWrap}
-          onEnvPresetSettingChange={this._onEnvPresetSettingChange}
-          onIsExpandedChange={this._onIsSidebarExpandedChange}
-          onSettingChange={this._onSettingChange}
-          onTabExpandedChange={this._onTabExpandedChange}
-          pluginState={state.plugins}
-          presetState={state.presets}
-          runtimePolyfillConfig={runtimePolyfillConfig}
-          runtimePolyfillState={state.runtimePolyfillState}
-          externalPlugins={state.externalPlugins}
-          pluginChange={this._pluginChange}
-          pluginSearch={this._pluginSearch}
-          pluginValue={state.pluginSearch}
-          showOfficialExternalPluginsChanged={
-            this._showOfficialExternalPluginsChanged
-          }
-          showOfficialExternalPlugins={state.showOfficialExternalPlugins}
-          loadingExternalPlugins={state.loadingExternalPlugins}
-        />
-        <div className={styles.panels}>
-          <SandpackConsumer>
-            {({ errors, managerState }) => {
-              let compiled;
+        <SandpackConsumer>
+          {({ errors, managerState }) => {
+            {/* if (
+              status === Statuses.LOADING_DEPENDENCIES ||
+              status === Statuses.LOADING_ERROR
+            ) {
+              this.renderLoader(status);
+            } */}
 
-              if (
-                managerState &&
-                managerState.transpiledModules["/index.js:"] &&
-                managerState.transpiledModules["/index.js:"].source &&
-                managerState.transpiledModules["/index.js:"].source.compiledCode
-              ) {
-                compiled =
-                  managerState.transpiledModules["/index.js:"].source
-                    .compiledCode;
-              }
+            let compiled;
 
-              return [
-                <CodeMirrorPanel
-                  className={styles.codeMirrorPanel}
-                  code={this.state.code}
-                  errorMessage={errors.length ? errors[0].message : undefined}
-                  fileSize={getCodeSize(this.state.code)}
-                  key="input"
-                  onChange={this._updateCode}
-                  options={options}
-                  placeholder="Write code here"
-                />,
-                <CodeMirrorPanel
-                  className={styles.codeMirrorPanel}
-                  code={compiled}
-                  errorMessage={state.evalErrorMessage}
-                  fileSize={compiled ? getCodeSize(compiled) : null}
-                  info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
-                  key="output"
-                  options={options}
-                  placeholder="Compiled output will be shown here"
-                />,
-              ];
-            }}
-          </SandpackConsumer>
-        </div>
+            if (
+              managerState &&
+              managerState.transpiledModules["/index.js:"] &&
+              managerState.transpiledModules["/index.js:"].source &&
+              managerState.transpiledModules["/index.js:"].source.compiledCode
+            ) {
+              compiled =
+                managerState.transpiledModules["/index.js:"].source
+                  .compiledCode;
+            }
+
+            return (
+              <React.Fragment>
+                {this.renderOptions()}
+
+                <div className={styles.panels}>
+                  <CodeMirrorPanel
+                    className={styles.codeMirrorPanel}
+                    code={this.state.code}
+                    errorMessage={errors.length ? errors[0].message : undefined}
+                    fileSize={getCodeSize(this.state.code)}
+                    key="input"
+                    onChange={this._updateCode}
+                    options={options}
+                    placeholder="Write code here"
+                  />
+                  <CodeMirrorPanel
+                    className={styles.codeMirrorPanel}
+                    code={compiled}
+                    errorMessage={state.evalErrorMessage}
+                    fileSize={compiled ? getCodeSize(compiled) : null}
+                    info={
+                      state.debugEnvPreset ? state.envPresetDebugInfo : null
+                    }
+                    key="output"
+                    options={options}
+                    placeholder="Compiled output will be shown here"
+                  />
+                </div>
+              </React.Fragment>
+            );
+          }}
+        </SandpackConsumer>
       </SandpackProvider>
     );
   }
