@@ -9,9 +9,11 @@ import {
   SandpackConsumer,
   SandpackProvider,
 } from "react-smooshpack/es/components";
+import semver from "semver";
 import { getCodeSize, getEnvPresetOptions } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
+import ReplContext from './ReplContext';
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
@@ -47,6 +49,7 @@ import type {
   EnvConfig,
   PluginState,
   PluginStateMap,
+  SandpackConsumerProps,
   SandpackStatus,
 } from "./types";
 
@@ -54,7 +57,6 @@ type Props = {};
 type State = {
   babel: BabelState,
   code: string,
-  babelCode: string,
   compiled: ?string,
   compileErrorMessage: ?string,
   debugEnvPreset: boolean,
@@ -102,7 +104,6 @@ class Repl extends React.Component {
   props: Props;
   state: State;
 
-  _initialDepsLoaded = false;
   _numLoadingPlugins = 0;
   _workerApi = new WorkerApi();
 
@@ -115,27 +116,29 @@ class Repl extends React.Component {
       prettier: persistedState.prettier,
     };
 
-    const presets = persistedState.presets
+    const persistedPresets = persistedState.presets
       ? persistedState.presets.split(",")
       : [];
 
-    const defaultPresets = presets.reduce((reduced, key) => {
-      if (key) reduced[key] = true;
-      return reduced;
-    }, {});
+    const presets = [];
+    let isEnvTabExpanded = false;
+    let isPresetsTabExpanded = false;
+
+    persistedPresets.forEach(p => {
+      if (p) presets.push(p);
+      if (!isEnvTabExpanded && p === "env") isEnvTabExpanded = true;
+      if (!isPresetsTabExpanded && p) isPresetsTabExpanded = true;
+    });
 
     const envConfig = persistedStateToEnvConfig(persistedState);
-    const isPresetsTabExpanded = !!presets.filter(preset => preset !== "env")
-      .length;
 
     // A partial State is defined first b'c this._compile needs it.
     // The compile helper will then populate the missing State values.
     this.state = {
       babel: persistedStateToBabelState(persistedState, babelConfig),
       code: persistedState.code,
-      compiled: null,
-      pluginSearch: "",
       compileErrorMessage: null,
+      compiled: null,
       debugEnvPreset: persistedState.debug,
       envConfig,
       envPresetDebugInfo: null,
@@ -144,14 +147,10 @@ class Repl extends React.Component {
         envPresetConfig,
         envConfig.isEnvPresetEnabled
       ),
-      shippedProposalsState: persistedStateToShippedProposalsState(
-        persistedState,
-        shippedProposalsConfig,
-        envConfig.isEnvPresetEnabled && envConfig.shippedProposals
-      ),
       evalErrorMessage: null,
+      externalPlugins: [],
       fileSize: persistedState.fileSize,
-      isEnvPresetTabExpanded: defaultPresets["env"],
+      isEnvPresetTabExpanded: isEnvTabExpanded,
       isPresetsTabExpanded,
       isPluginsExpanded: false,
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
@@ -161,27 +160,33 @@ class Repl extends React.Component {
         compiledSize: 0,
         rawSize: 0,
       },
+      pluginSearch: "",
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
-      // Filled in after Babel is loaded
-      presets: {},
+      presets,
       runtimePolyfillState: configToState(
         runtimePolyfillConfig,
         persistedState.evaluate
       ),
-      sourceMap: null,
+      shippedProposalsState: persistedStateToShippedProposalsState(
+        persistedState,
+        shippedProposalsConfig,
+        envConfig.isEnvPresetEnabled && envConfig.shippedProposals
+      ),
       showOfficialExternalPlugins: false,
-      externalPlugins: [],
+      sourceMap: null,
     };
 
-    this._setupBabel(defaultPresets);
+    this._setupBabel();
   }
 
-  renderOptions() {
+  renderOptions({ availablePresets, babelVersion }) {
     const state = this.state;
 
+    const presets = configArrayToStateMap(availablePresets, state.presets);
+    console.log(5, availablePresets, presets);
     return (
       <ReplOptions
-        babelVersion={state.babel.version}
+        babelVersion={babelVersion}
         className={styles.optionsColumn}
         debugEnvPreset={state.debugEnvPreset}
         envConfig={state.envConfig}
@@ -199,7 +204,7 @@ class Repl extends React.Component {
         onSettingChange={this._onSettingChange}
         onTabExpandedChange={this._onTabExpandedChange}
         pluginState={state.plugins}
-        presetState={state.presets}
+        presetState={presets}
         runtimePolyfillConfig={runtimePolyfillConfig}
         runtimePolyfillState={state.runtimePolyfillState}
         externalPlugins={state.externalPlugins}
@@ -217,12 +222,22 @@ class Repl extends React.Component {
 
   // TODO: Activate this once SandpackConsumer exposes bundler status
   renderLoader = (status: SandpackStatus, errors?: Array<string>) => {
+    let message;
     let loading = true;
-    let message = "Loading Babel...";
 
     if (errors.length) {
       loading = false;
       message = "An error occurred while loading Babel :(";
+    } else {
+      switch (status) {
+        case 'initializing':
+          message = 'Initializing...';
+          break;
+
+        case 'installing-dependencies':
+          message = 'Installing dependencies...';
+          break;
+      }
     }
 
     return (
@@ -237,39 +252,23 @@ class Repl extends React.Component {
     );
   };
 
-  renderEditor = ({ errors, managerState, managerStatus }) => {
-    if (!this._initialDepsLoaded) {
-      if (managerStatus === "transpiling") {
-        // TODO: Consider moving this to `ReplEditor` component and check this
-        // inside cWRP?
-        this._initialDepsLoaded = true;
-      }
-
-      return this.renderLoader(managerStatus, errors);
-    }
-
+  renderEditor = ({
+    compiledCode,
+    errors,
+    getManagerTranspilerContext,
+    managerState,
+    managerStatus,
+    transpilerContext,
+  }) => {
     const state = this.state;
     const options = {
       fileSize: state.fileSize,
       lineWrapping: state.lineWrap,
     };
 
-    let compiled;
-
-    if (
-      managerState &&
-      managerState.transpiledModules["/index.js:"] &&
-      managerState.transpiledModules["/index.js:"].source &&
-      managerState.transpiledModules["/index.js:"].source.compiledCode
-    ) {
-      compiled =
-        managerState.transpiledModules["/index.js:"].source
-          .compiledCode;
-    }
-
     return (
       <React.Fragment>
-        {this.renderOptions()}
+        {this.renderOptions(transpilerContext)}
 
         <div className={styles.panels}>
           <CodeMirrorPanel
@@ -284,9 +283,9 @@ class Repl extends React.Component {
           />
           <CodeMirrorPanel
             className={styles.codeMirrorPanel}
-            code={compiled}
+            code={compiledCode}
             errorMessage={state.evalErrorMessage}
-            fileSize={compiled ? getCodeSize(compiled) : null}
+            fileSize={compiledCode ? getCodeSize(compiledCode) : null}
             info={
               state.debugEnvPreset ? state.envPresetDebugInfo : null
             }
@@ -307,8 +306,8 @@ class Repl extends React.Component {
       lineWrapping: state.lineWrap,
     };
 
-    const babelrc = this.mapStateToBabelConfig(state);
-
+    const { babelrc, packageDeps } = this.mapStateToConfigs(state);
+    console.log(1, babelrc, packageDeps);
     return (
       <SandpackProvider
         files={{
@@ -320,12 +319,20 @@ class Repl extends React.Component {
           },
         }}
         className={styles.repl}
-        dependencies={{}}
+        dependencies={packageDeps}
         template="preact-cli"
         entry="/index.js"
         skipEval
       >
-        <SandpackConsumer>{this.renderEditor}</SandpackConsumer>
+        <SandpackConsumer>
+          {sandpackProps => (
+            <ReplContext
+              {...sandpackProps}
+              renderLoader={this.renderLoader}
+              renderEditor={this.renderEditor}
+            />
+          )}
+        </SandpackConsumer>
       </SandpackProvider>
     );
   }
@@ -334,13 +341,7 @@ class Repl extends React.Component {
     const babelState = await loadBundle(this.state.babel, this._workerApi);
     const { envPresetState } = this.state;
 
-    this.setState({
-      babel: babelState,
-      presets: configArrayToStateMap(
-        babelState.availablePresets,
-        defaultPresets
-      ),
-    });
+    this.setState({ babel: babelState });
     if (babelState.isLoaded) {
       if (!envPresetState.isLoading) {
         return this._compile(this.state.code, this._checkForUnloadedPlugins);
@@ -667,37 +668,59 @@ class Repl extends React.Component {
     this._updateCode(this.state.code);
   };
 
-  mapStateToBabelConfig(
+  // Returns a .babelrc and package.json dependencies
+  mapStateToConfigs(
     {
+      babel,
       envConfig,
       envPresetState,
-      presets: presetConfig,
+      presets: requestedPresets,
       runtimePolyfillState,
     }: State = this.state
   ) {
-    const presets = Object.keys(presetConfig)
-      .filter(key => presetConfig[key].isEnabled && presetConfig[key].isLoaded)
-      .map(key => {
-        const name = presetConfig[key].config.label;
+    const packageDeps = {};
+    const requestedBabelVersion = babel.version || "6.26.0";
+    const scopeNeeded = semver.gte(requestedBabelVersion, "7.0.0-beta.5");
 
-        // TODO: Enable this once Sandpack exposes transpiler info
-        // if (semver.gte(Babel.version, "7.0.0-beta.5")) {
-        //   return `@babel/preset-${name}`;
-        // }
+    const getConfigNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : key;
+    const getPackageNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : `babel-preset-${key}`;
 
-        return name;
-      });
+    // TODO: handle 3rd party presets?
+    const presets = requestedPresets
+      .filter(key => key !== "env")
+      .map(key => getConfigNameFromKey(key, scopeNeeded));
+    console.log(9, envPresetState)
+    if (envPresetState.isEnabled) {
+      presets.push([
+        getConfigNameFromKey("env", scopeNeeded),
+        getEnvPresetOptions(envConfig),
+      ]);
 
-    if (envPresetState.isLoaded && envPresetState.isEnabled) {
-      presets.push(["env", getEnvPresetOptions(envConfig)]);
+      let packageVersion;
+      const requestedEnvVersion = envPresetState.version;
+
+      if (requestedEnvVersion) {
+        packageVersion = requestedEnvVersion;
+      } else if (scopeNeeded) {
+        packageVersion = requestedBabelVersion;
+      } else if (semver.satisfies(requestedVersion, "^6")) {
+        packageVersion = "1.6.1";
+      }
+
+      packageDeps[getPackageNameFromKey("env", scopeNeeded)] = packageVersion;
     }
 
-    return {
+    const babelrc = {
       // TODO
       //plugins: state.externalPlugins,
       presets: presets,
       sourceMaps: runtimePolyfillState.isEnabled,
     };
+
+    return {
+      babelrc,
+      packageDeps,
+    }
   }
 
   _presetsToArray(state: State = this.state): BabelPresets {
