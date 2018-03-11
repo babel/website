@@ -47,6 +47,7 @@ import type {
   EnvConfig,
   PluginState,
   PluginStateMap,
+  SandpackStatus,
 } from "./types";
 
 type Props = {};
@@ -101,6 +102,7 @@ class Repl extends React.Component {
   props: Props;
   state: State;
 
+  _initialDepsLoaded = false;
   _numLoadingPlugins = 0;
   _workerApi = new WorkerApi();
 
@@ -214,11 +216,11 @@ class Repl extends React.Component {
   }
 
   // TODO: Activate this once SandpackConsumer exposes bundler status
-  renderLoader = (status: SandpackStatus) => {
+  renderLoader = (status: SandpackStatus, errors?: Array<string>) => {
     let loading = true;
     let message = "Loading Babel...";
 
-    if (status === Statuses.LOADING_ERROR) {
+    if (errors.length) {
       loading = false;
       message = "An error occurred while loading Babel :(";
     }
@@ -232,6 +234,68 @@ class Repl extends React.Component {
           )}
         </div>
       </div>
+    );
+  };
+
+  renderEditor = ({ errors, managerState, managerStatus }) => {
+    if (!this._initialDepsLoaded) {
+      if (managerStatus === "transpiling") {
+        // TODO: Consider moving this to `ReplEditor` component and check this
+        // inside cWRP?
+        this._initialDepsLoaded = true;
+      }
+
+      return this.renderLoader(managerStatus, errors);
+    }
+
+    const state = this.state;
+    const options = {
+      fileSize: state.fileSize,
+      lineWrapping: state.lineWrap,
+    };
+
+    let compiled;
+
+    if (
+      managerState &&
+      managerState.transpiledModules["/index.js:"] &&
+      managerState.transpiledModules["/index.js:"].source &&
+      managerState.transpiledModules["/index.js:"].source.compiledCode
+    ) {
+      compiled =
+        managerState.transpiledModules["/index.js:"].source
+          .compiledCode;
+    }
+
+    return (
+      <React.Fragment>
+        {this.renderOptions()}
+
+        <div className={styles.panels}>
+          <CodeMirrorPanel
+            className={styles.codeMirrorPanel}
+            code={this.state.code}
+            errorMessage={errors.length ? errors[0].message : undefined}
+            fileSize={getCodeSize(this.state.code)}
+            key="input"
+            onChange={this._updateCode}
+            options={options}
+            placeholder="Write code here"
+          />
+          <CodeMirrorPanel
+            className={styles.codeMirrorPanel}
+            code={compiled}
+            errorMessage={state.evalErrorMessage}
+            fileSize={compiled ? getCodeSize(compiled) : null}
+            info={
+              state.debugEnvPreset ? state.envPresetDebugInfo : null
+            }
+            key="output"
+            options={options}
+            placeholder="Compiled output will be shown here"
+          />
+        </div>
+      </React.Fragment>
     );
   };
 
@@ -261,60 +325,7 @@ class Repl extends React.Component {
         entry="/index.js"
         skipEval
       >
-        <SandpackConsumer>
-          {({ errors, managerState }) => {
-            {/* if (
-              status === Statuses.LOADING_DEPENDENCIES ||
-              status === Statuses.LOADING_ERROR
-            ) {
-              this.renderLoader(status);
-            } */}
-
-            let compiled;
-
-            if (
-              managerState &&
-              managerState.transpiledModules["/index.js:"] &&
-              managerState.transpiledModules["/index.js:"].source &&
-              managerState.transpiledModules["/index.js:"].source.compiledCode
-            ) {
-              compiled =
-                managerState.transpiledModules["/index.js:"].source
-                  .compiledCode;
-            }
-
-            return (
-              <React.Fragment>
-                {this.renderOptions()}
-
-                <div className={styles.panels}>
-                  <CodeMirrorPanel
-                    className={styles.codeMirrorPanel}
-                    code={this.state.code}
-                    errorMessage={errors.length ? errors[0].message : undefined}
-                    fileSize={getCodeSize(this.state.code)}
-                    key="input"
-                    onChange={this._updateCode}
-                    options={options}
-                    placeholder="Write code here"
-                  />
-                  <CodeMirrorPanel
-                    className={styles.codeMirrorPanel}
-                    code={compiled}
-                    errorMessage={state.evalErrorMessage}
-                    fileSize={compiled ? getCodeSize(compiled) : null}
-                    info={
-                      state.debugEnvPreset ? state.envPresetDebugInfo : null
-                    }
-                    key="output"
-                    options={options}
-                    placeholder="Compiled output will be shown here"
-                  />
-                </div>
-              </React.Fragment>
-            );
-          }}
-        </SandpackConsumer>
+        <SandpackConsumer>{this.renderEditor}</SandpackConsumer>
       </SandpackProvider>
     );
   }
@@ -722,6 +733,7 @@ const styles = {
     display: "flex",
     height: "100vh",
     justifyContent: "center",
+    width: "100vw",
   }),
   loadingAnimation: css({
     justifyContent: "center",

@@ -127,3 +127,11 @@ export type BabelPresetEnvResult = {
   transformations: Array<string>,
   transformationsWithTargets: Array<BabelNamedPresetAndTarget>,
 };
+
+export type SandpackStatus =
+  'initializing' |
+  'installing-dependencies' |
+  'transpiling' |
+  'evaluating' |
+  'running-tests' |
+  'idle';
