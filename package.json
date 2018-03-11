@@ -33,7 +33,7 @@
     "async": "^2.5.0",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.1.1",
-    "babel-loader": "^7.1.1",
+    "babel-loader": "^7.1.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.6.0",
@@ -56,8 +56,9 @@
     "remark-lint-no-empty-url": "^1.0.0",
     "remark-lint-no-literal-urls": "^1.0.0",
     "remark-preset-lint-recommended": "^2.0.0",
-    "webpack": "^3.5.4",
-    "webpack-dev-server": "^2.7.1"
+    "webpack": "^4.0.0",
+    "webpack-cli": "^2.0.11",
+    "webpack-dev-server": "^3.1.1"
   },
   "dependencies": {
     "babel-plugin-emotion": "^8.0.2-11",
@@ -69,10 +70,10 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-instantsearch": "^4.4.2",
-    "react-smooshpack": "^0.0.17",
+    "react-smooshpack": "0.0.18",
     "semver": "^5.4.1",
     "unfetch": "^3.0.0",
-    "worker-loader": "^1.0.0"
+    "worker-loader": "^1.1.1"
   },
   "lint-staged": {
     "js/**/*.js": [

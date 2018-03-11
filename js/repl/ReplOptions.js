@@ -2,7 +2,7 @@
 
 import { css } from "emotion";
 import React, { Component } from "react";
-import { FileExplorer } from "react-smooshpack";
+import { FileExplorer } from "react-smooshpack/es/components";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
