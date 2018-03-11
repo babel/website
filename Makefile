@@ -7,7 +7,7 @@ bootstrap:
 build: build-repl build-docusaurus copy-redirects
 
 build-repl:
-	./node_modules/.bin/webpack
+	./node_modules/.bin/cross-env NODE_ENV=production ./node_modules/.bin/webpack
 
 build-docusaurus:
 	cd website && yarn && yarn build
