@@ -33,3 +33,25 @@ layout: null
 /features.html                      /learn-es2015/
 /docs/tour/                         /learn-es2015/
 /docs/plugins/transform-es2015-constants /docs/plugins/check-es2015-constants/
+
+# docusaurus redirects
+/docs/en/babel-cli/ /docs/usage/cli/                
+/docs/en/babel-core/ /docs/usage/api/                
+/docs/en/babel-core/ /docs/core-packages/            
+/docs/en/babel-polyfill/ /docs/usage/polyfill/           
+/docs/en/babel-register/ /docs/usage/babel-register/     
+/docs/en/babelrc/ /docs/usage/babelrc/            
+/docs/en/caveats/ /docs/usage/caveats/            
+/docs/en/editors/ /docs/editors/                  
+/docs/en/env/ /env/                           
+/docs/en/faq/ /faq/                           
+/docs/en/learn/ /learn-es2015/                  
+/docs/en/plugins/ /docs/plugins/                  
+/en/setup/ /docs/setup/                    
+/en/videos/ /docs/community/videos/         
+/docs/en/babel-types/ /core-packages/babel-types/     
+/docs/en/babel-template/ /core-packages/babel-template/  
+/docs/en/babel-helpers/ /core-packages/babel-helpers/   
+/docs/en/babel-code-frame/ /core-packages/babel-code-frame/
+/docs/en/babylon/ /core-packages/babylon/         
+/docs/en/babel-polyfill/            /docs/usage/polyfill/
