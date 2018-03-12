@@ -595,7 +595,6 @@ class Repl extends React.Component<Props, State> {
   };
 
   _pluginsUpdatedSetStateCallback = () => {
-    this._checkForUnloadedPlugins();
     this._updateCode(this.state.code);
   };
 
