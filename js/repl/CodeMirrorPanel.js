@@ -39,7 +39,7 @@ export default function CodeMirrorPanel(props: Props) {
           preserveScrollPosition={onChange == null}
           value={props.code}
         />
-        {options.fileSize && <div className={styles.fileSize}>{fileSize}</div>}
+        {options.fileSize && fileSize !== null && <div className={styles.fileSize}>{fileSize}</div>}
       </div>
       {info && <pre className={styles.info}>{info}</pre>}
       {errorMessage && <pre className={styles.error}>{errorMessage}</pre>}

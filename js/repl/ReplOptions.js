@@ -113,6 +113,25 @@ class ExpandedContainer extends Component {
     className: "",
   };
 
+  handlePresetChange = (name: string, isEnabled: boolean) => {
+    const { onSettingChange, presetState } = this.props;
+
+    onSettingChange(
+      "presets",
+      Object.keys(presetState).reduce((result, key) => {
+        if (
+          presetState[key] &&
+          ((key !== name && presetState[key].isEnabled) ||
+            (key === name && isEnabled))
+        ) {
+          result.push(key);
+        }
+
+        return result;
+      }, [])
+    );
+  };
+
   render() {
     const {
       babelVersion,
@@ -139,10 +158,7 @@ class ExpandedContainer extends Component {
       loadingExternalPlugins,
     } = this.props;
 
-    const disableEnvSettings =
-      !envPresetState.isLoaded ||
-      !envConfig.isEnvPresetEnabled ||
-      shippedProposalsState.isLoading;
+    const disableEnvSettings = !envConfig.isEnvPresetEnabled;
 
     return (
       <div className={styles.expandedContainer}>
@@ -201,7 +217,7 @@ class ExpandedContainer extends Component {
                 <PluginToggle
                   config={state.config}
                   key={preset}
-                  onSettingChange={onSettingChange}
+                  onSettingChange={this.handlePresetChange}
                   state={state}
                 />
               );
@@ -230,12 +246,7 @@ class ExpandedContainer extends Component {
                 type="checkbox"
                 onChange={this._onEnvPresetSettingCheck("isEnvPresetEnabled")}
               />
-
-              {envPresetState.isLoading ? (
-                <PresetLoadingAnimation />
-              ) : (
-                "Enabled"
-              )}
+              Enabled
             </label>
 
             <div className={styles.envPresetColumn}>
@@ -263,7 +274,6 @@ class ExpandedContainer extends Component {
               <input
                 className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
                 disabled={
-                  !envPresetState.isLoaded ||
                   !envConfig.isEnvPresetEnabled ||
                   !envConfig.isElectronEnabled
                 }
