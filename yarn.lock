@@ -1749,9 +1749,9 @@ codemirror@^5.35.0:
   version "5.35.0"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.35.0.tgz#280653d495455bc66aa87e6284292b02775ba878"
 
-codesandbox-api@^0.0.17:
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/codesandbox-api/-/codesandbox-api-0.0.17.tgz#895695e60ca59f075b0ecc48bf924b88984acdf5"
+codesandbox-api@^0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/codesandbox-api/-/codesandbox-api-0.0.18.tgz#56b96b37533f80d20c21861e5e477d3557e613ca"
 
 codesandbox-import-util-types@^1.2.3:
   version "1.2.3"
@@ -5660,18 +5660,18 @@ react-instantsearch@^4.4.2:
     lodash "^4.17.4"
     prop-types "^15.5.10"
 
-react-smooshpack@0.0.19:
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/react-smooshpack/-/react-smooshpack-0.0.19.tgz#11a5500d489afe2ff7824e562acc9b422f8a2f6c"
+react-smooshpack@0.0.21:
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/react-smooshpack/-/react-smooshpack-0.0.21.tgz#26f0ef92cf0bdf0820735f3ff3edc79cee54eeca"
   dependencies:
     classnames "^2.2.5"
     codemirror "^5.35.0"
-    codesandbox-api "^0.0.17"
+    codesandbox-api "^0.0.18"
     codesandbox-import-utils "^1.2.3"
     react-broadcast "^0.6.2"
     react-codemirror2 "^4.0.1"
     rollup-plugin-scss "^0.4.0"
-    smooshpack "^0.0.19"
+    smooshpack "^0.0.21"
 
 react@^16.2.0:
   version "16.2.0"
@@ -6586,11 +6586,11 @@ slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
 
-smooshpack@^0.0.19:
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/smooshpack/-/smooshpack-0.0.19.tgz#2641c5dd72d2fcda84f9554e689d7dd9aa5746e4"
+smooshpack@^0.0.21:
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/smooshpack/-/smooshpack-0.0.21.tgz#a98adbe5d1d53f89cae7aaaceb1c7ab5180c66c7"
   dependencies:
-    codesandbox-api "^0.0.17"
+    codesandbox-api "^0.0.18"
     codesandbox-import-utils "^1.2.3"
 
 snapdragon-node@^2.0.1:
