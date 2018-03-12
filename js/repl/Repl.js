@@ -639,8 +639,8 @@ class Repl extends React.Component<Props, State> {
     }
 
     const babelrc = {
-      // TODO
-      //plugins: state.externalPlugins,
+      // TODO: handle state.externalPlugins
+      plugins: [],
       presets: presets,
       sourceMaps: runtimePolyfillState.isEnabled,
     };
