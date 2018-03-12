@@ -631,7 +631,7 @@ class Repl extends React.Component<Props, State> {
         packageVersion = requestedEnvVersion;
       } else if (scopeNeeded) {
         packageVersion = requestedBabelVersion;
-      } else if (semver.satisfies(requestedVersion, "^6")) {
+      } else if (semver.satisfies(requestedBabelVersion, "^6")) {
         packageVersion = "1.6.1";
       }
 
