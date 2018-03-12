@@ -56,10 +56,10 @@ layout: null
 /docs/en/babylon/ /core-packages/babylon/         
 /docs/en/babel-polyfill/            /docs/usage/polyfill/
 
-/docs/en/babel-preset-:splat /docs/plugins/preset-*
-/docs/en/babel-plugin-transform-:splat /docs/plugins/transform-*      
-/docs/en/babel-plugin-syntax-:splat /docs/plugins/syntax-*      
-/docs/en/babel-plugin-minify-:splat /docs/plugins/minify-*      
+/docs/en/babel-preset-* /docs/plugins/preset-:splat
+/docs/en/babel-plugin-transform-* /docs/plugins/transform-:splat      
+/docs/en/babel-plugin-syntax-* /docs/plugins/syntax-:splat      
+/docs/en/babel-plugin-minify-* /docs/plugins/minify-:splat      
 /docs/en/babel-plugin-external-helpers /docs/plugins/external-helpers/ 
 /docs/en/babel-plugin-check-es2015-constants /docs/plugins/check-es2015-constants/
 /docs/en/babel-plugin-undeclared-variables-check /docs/plugins/undeclared-variables-check/
