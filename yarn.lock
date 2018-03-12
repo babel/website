@@ -4395,6 +4395,10 @@ lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
 
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+
 lodash.mergewith@^4.6.0:
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.1.tgz#639057e726c3afbdb3e7d42741caa8d6e4335927"
@@ -5660,9 +5664,9 @@ react-instantsearch@^4.4.2:
     lodash "^4.17.4"
     prop-types "^15.5.10"
 
-react-smooshpack@0.0.21:
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/react-smooshpack/-/react-smooshpack-0.0.21.tgz#26f0ef92cf0bdf0820735f3ff3edc79cee54eeca"
+react-smooshpack@0.0.23:
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/react-smooshpack/-/react-smooshpack-0.0.23.tgz#d5674b91798b607497ff3885fe42152aedb54c90"
   dependencies:
     classnames "^2.2.5"
     codemirror "^5.35.0"
@@ -5671,7 +5675,7 @@ react-smooshpack@0.0.21:
     react-broadcast "^0.6.2"
     react-codemirror2 "^4.0.1"
     rollup-plugin-scss "^0.4.0"
-    smooshpack "^0.0.21"
+    smooshpack "^0.0.23"
 
 react@^16.2.0:
   version "16.2.0"
@@ -6586,12 +6590,13 @@ slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
 
-smooshpack@^0.0.21:
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/smooshpack/-/smooshpack-0.0.21.tgz#a98adbe5d1d53f89cae7aaaceb1c7ab5180c66c7"
+smooshpack@^0.0.23:
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/smooshpack/-/smooshpack-0.0.23.tgz#b8e55406b6bb5310dca0999d77436e34c25cd520"
   dependencies:
     codesandbox-api "^0.0.18"
     codesandbox-import-utils "^1.2.3"
+    lodash.isequal "^4.5.0"
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
