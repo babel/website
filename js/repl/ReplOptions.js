@@ -729,7 +729,7 @@ const styles = {
     color: colors.inverseForeground,
   }),
   settingsLabel: css({
-    flex: "0 0 2rem",
+    flex: "0 0 1.5rem",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
