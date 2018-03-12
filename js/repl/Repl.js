@@ -501,7 +501,7 @@ class Repl extends React.Component<Props, State> {
           [name]: value,
         },
       }),
-      //this._pluginsUpdatedSetStateCallback
+      this._pluginsUpdatedSetStateCallback
     );
   };
 
@@ -653,7 +653,7 @@ class Repl extends React.Component<Props, State> {
 
   // TODO(bng): maybe expose a debounce/delay timeout on SandpackProducer?
   _updateCode = (code: string) => {
-    this.setState({ code });
+    this.setState({ code }, this._persistState);
   };
 }
 
