@@ -68,7 +68,6 @@ type State = {
   isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
-  meta: Object,
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
@@ -155,10 +154,6 @@ class Repl extends React.Component<Props, State> {
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
-      meta: {
-        compiledSize: 0,
-        rawSize: 0,
-      },
       pluginSearch: "",
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
       presets,
