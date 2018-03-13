@@ -665,3 +665,6 @@
 - name: Yeti
   url: https://yeti.co
   logo: yeti.svg
+- name: Kuali
+  url: https://www.kuali.co
+  logo: kuali.svg
