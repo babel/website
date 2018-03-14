@@ -208,3 +208,7 @@ a.anchor {
 footer.nav-footer {
   background: #767676;
 }
+
+.onPageNav {
+  align-self: flex-start;
+}
