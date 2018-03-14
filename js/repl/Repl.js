@@ -58,11 +58,10 @@ type State = {
   compiled: ?string,
   compileErrorMessage: ?string,
   config: {
-    dependencies: ?{ [name: string]: string },
     error: boolean,
-    files: ?{ [name: string]: { code: string } },
     ready: boolean,
     status: string,
+    transpilerUrl: ?string,
   },
   configError: ?string,
   debugEnvPreset: boolean,
@@ -148,13 +147,11 @@ class Repl extends React.Component<Props, State> {
       code: persistedState.code,
       compileErrorMessage: null,
       compiled: null,
-      configReady: false,
       config: {
-        dependencies: null,
         error: null,
-        files: null,
         ready: false,
         status: "Initializing...",
+        transpilerUrl: null,
       },
       debugEnvPreset: persistedState.debug,
       envConfig,
@@ -307,12 +304,14 @@ class Repl extends React.Component<Props, State> {
     if (!state.config.ready) {
       return <ReplLoader isLoading={!state.config.error} message={state.config.status} />;
     }
-    console.log(state.config)
+
+    const { files, packageDeps } = this.mapStateToConfigs();
+
     return (
       <SandpackProvider
-        files={state.config.files}
+        files={files}
         className={styles.repl}
-        dependencies={state.config.dependencies}
+        dependencies={packageDeps}
         template="babel-repl"
         entry="/index.js"
         skipEval
@@ -611,10 +610,64 @@ class Repl extends React.Component<Props, State> {
     this._updateCode(this.state.code);
   };
 
-  async setupConfig() {
+  async setupTranspiler(babelState: BabelState) {
+    let build = babelState.build;
+
+    // TODO(bng): investigate if we still need this?
+    const buildFromPath = window.location.pathname.match(/\/build\/([^/]+)\/?$/);
+
+    if (buildFromPath) {
+      build = buildFromPath[1];
+    }
+
+    if (!build) return null;
+
+    let url;
+
+    const isBuildNumeric = /^[0-9]+$/.test(build);
+
+    try {
+      if (!isBuildNumeric) {
+        // Build in URL is *not* numeric, assume it's a branch name
+        // Get the latest build number for this branch.
+        //
+        // NOTE:
+        // Since we switched the 7.0 branch to master, we map /build/7.0 to
+        // /build/master for backwards compatibility.
+        build = await loadLatestBuildNumberForBranch(
+          babelState.circleciRepo,
+          build === "7.0" ? "master" : build
+        );
+      }
+
+      const packageName = babelState.config.package;
+      const packageFile = `${packageName.replace(/-standalone/, "")}.js`;
+      const regExp = new RegExp(`${packageName}/${packageFile}$`);
+
+      url = await loadBuildArtifacts(
+        babelState.circleciRepo,
+        regExp,
+        build,
+      );
+    } catch (ex) {
+      this.setState({
+        config: {
+          error: true,
+          status: ex.message,
+        },
+      });
+
+      return;
+    }
+
+    return url;
+  }
+
+  mapStateToConfigs() {
     const {
       babel,
       code,
+      config,
       envConfig,
       envPresetState,
       presets: requestedPresets,
@@ -667,69 +720,34 @@ class Repl extends React.Component<Props, State> {
       },
     };
 
-    let build = babel.build;
-    const buildFromPath = window.location.pathname.match(/\/build\/([^/]+)\/?$/);
-
-    if (buildFromPath) {
-      build = buildFromPath[1];
-    }
-
-    if (build) {
-      let url;
-
-      const isBuildNumeric = /^[0-9]+$/.test(build);
-
-      try {
-        if (!isBuildNumeric) {
-          // Build in URL is *not* numeric, assume it's a branch name
-          // Get the latest build number for this branch.
-          //
-          // NOTE:
-          // Since we switched the 7.0 branch to master, we map /build/7.0 to
-          // /build/master for backwards compatibility.
-          build = await loadLatestBuildNumberForBranch(
-            babel.circleciRepo,
-            build === "7.0" ? "master" : build
-          );
-        }
-
-        const packageName = babel.config.package;
-        const packageFile = `${packageName.replace(/-standalone/, "")}.js`;
-        const regExp = new RegExp(`${packageName}/${packageFile}$`);
-
-        url = await loadBuildArtifacts(
-          babel.circleciRepo,
-          regExp,
-          build,
-        );
-      } catch (ex) {
-        this.setState({
-          config: {
-            error: true,
-            status: ex.message,
-          },
-        });
-
-        return;
-      }
-
+    if (config.transpilerUrl) {
       files["/babel-transpiler.json"] = {
         code: JSON.stringify({
-          babelURL: url,
+          babelURL: config.transpilerUrl,
         }, null, 2),
       };
     }
 
+    return {
+      files,
+      packageDeps,
+    };
+  }
+
+  // If we're loading a specific build/version of Babel, like from a
+  // CircleCI artifact, then we need to generate a config file to let
+  // Sandpack know to use it instead of its default.
+  async setupConfig() {
+    const transpilerUrl = await this.setupTranspiler(this.state.babel);
+
     this.setState({
       config: {
-        dependencies: packageDeps,
-        files,
+        transpilerUrl,
         ready: true,
       },
     });
   }
 
-  // TODO(bng): maybe expose a debounce/delay timeout on SandpackProducer?
   _updateCode = (code: string) => {
     this.setState({ code }, this._persistState);
   };
