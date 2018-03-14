@@ -5664,9 +5664,9 @@ react-instantsearch@^4.4.2:
     lodash "^4.17.4"
     prop-types "^15.5.10"
 
-react-smooshpack@0.0.24:
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/react-smooshpack/-/react-smooshpack-0.0.24.tgz#17eb31be872b495ac85614851f6b5730b838d9b3"
+react-smooshpack@0.0.25:
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/react-smooshpack/-/react-smooshpack-0.0.25.tgz#733271822a73904b5105cb633a4b1909565251f7"
   dependencies:
     classnames "^2.2.5"
     codemirror "^5.35.0"
@@ -5675,7 +5675,7 @@ react-smooshpack@0.0.24:
     react-broadcast "^0.6.2"
     react-codemirror2 "^4.0.1"
     rollup-plugin-scss "^0.4.0"
-    smooshpack "^0.0.24"
+    smooshpack "^0.0.25"
 
 react@^16.2.0:
   version "16.2.0"
@@ -6590,9 +6590,9 @@ slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
 
-smooshpack@^0.0.24:
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/smooshpack/-/smooshpack-0.0.24.tgz#9161cf985f9208b67900497a706d68fe8337de44"
+smooshpack@^0.0.25:
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/smooshpack/-/smooshpack-0.0.25.tgz#206ace474c373d16c2d8372f1dde187f47d2be07"
   dependencies:
     codesandbox-api "^0.0.18"
     codesandbox-import-utils "^1.2.3"
