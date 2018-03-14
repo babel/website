@@ -60,6 +60,13 @@ hr {
     font-size: 0.875rem;
     font-weight: 400;
   }
+
+  .navigationSlider .slidingNav ul li a:active,
+  .navigationSlider .slidingNav ul li a:focus {
+    background: #323330;
+    color: #fff;
+    text-decoration: underline;
+  }
 }
 
 /* ####### GLOBAL ####### */
