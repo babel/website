@@ -134,6 +134,7 @@ const siteConfig = {
     indexName: "babeljs",
   },
   disableHeaderTitle: true,
+  onPageNav: "separate",
   // gaTrackingId: "U-",
   // markdownPlugins: [],
   // cname
