@@ -1,10 +1,8 @@
 // @flow
-import React from 'react';
-import { css } from "emotion";
-import PresetLoadingAnimation from "./PresetLoadingAnimation";
-import { colors } from "./styles";
+import React from "react";
+import ReplLoader from "./ReplLoader";
 
-import type { SandpackConsumerProps } from './types';
+import type { SandpackConsumerProps } from "./types";
 
 type Props = SandpackConsumerProps & {
   renderEditor: () => React$Node,
@@ -93,22 +91,13 @@ export default class ReplContext extends React.Component<Props, State> {
       } else if (status === "installing-dependencies") {
         message = "Installing dependencies...";
       } else {
-        message = "Initializing...";
+        message = "Initializing bundler...";
       }
     } else {
       message = "Finishing up...";
     }
 
-    return (
-      <div className={styles.loader}>
-        <div className={styles.loaderContent}>
-          {message}
-          {loading && (
-            <PresetLoadingAnimation className={styles.loadingAnimation} />
-          )}
-        </div>
-      </div>
-    );
+    return <ReplLoader isLoading={loading} message={message} />;
   }
 
   render() {
@@ -127,22 +116,3 @@ export default class ReplContext extends React.Component<Props, State> {
   }
 }
 
-const styles = {
-  loader: css({
-    alignItems: "center",
-    background: colors.inverseBackgroundDark,
-    color: colors.inverseForegroundLight,
-    display: "flex",
-    height: "100vh",
-    justifyContent: "center",
-    width: "100vw",
-  }),
-  loadingAnimation: css({
-    justifyContent: "center",
-    margin: "2rem 0 0 0",
-  }),
-  loaderContent: css({
-    margin: "auto",
-    textAlign: "center",
-  }),
-};

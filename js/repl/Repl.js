@@ -12,8 +12,10 @@ import {
 import semver from "semver";
 import { getCodeSize, getEnvPresetOptions } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
+import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from './CircleCI';
 import CodeMirrorPanel from "./CodeMirrorPanel";
-import ReplContext from './ReplContext';
+import ReplContext from "./ReplContext";
+import ReplLoader from "./ReplLoader";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
@@ -55,6 +57,14 @@ type State = {
   code: string,
   compiled: ?string,
   compileErrorMessage: ?string,
+  config: {
+    dependencies: ?{ [name: string]: string },
+    error: boolean,
+    files: ?{ [name: string]: { code: string } },
+    ready: boolean,
+    status: string,
+  },
+  configError: ?string,
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetDebugInfo: ?string,
@@ -132,11 +142,20 @@ class Repl extends React.Component<Props, State> {
 
     const envConfig = persistedStateToEnvConfig(persistedState);
 
+    // TODO: cleanup/move to unstated
     this.state = {
       babel: persistedStateToBabelState(persistedState, babelConfig),
       code: persistedState.code,
       compileErrorMessage: null,
       compiled: null,
+      configReady: false,
+      config: {
+        dependencies: null,
+        error: null,
+        files: null,
+        ready: false,
+        status: "Initializing...",
+      },
       debugEnvPreset: persistedState.debug,
       envConfig,
       envPresetDebugInfo: null,
@@ -169,6 +188,10 @@ class Repl extends React.Component<Props, State> {
       showOfficialExternalPlugins: false,
       sourceMap: null,
     };
+  }
+
+  componentDidMount() {
+    this.setupConfig();
   }
 
   renderOptions({ availablePresets, babelVersion }) {
@@ -281,20 +304,15 @@ class Repl extends React.Component<Props, State> {
       lineWrapping: state.lineWrap,
     };
 
-    const { babelrc, packageDeps } = this.mapStateToConfigs(state);
-
+    if (!state.config.ready) {
+      return <ReplLoader isLoading={!state.config.error} message={state.config.status} />;
+    }
+    console.log(state.config)
     return (
       <SandpackProvider
-        files={{
-          "/index.js": {
-            code: state.code,
-          },
-          "/.babelrc": {
-            code: JSON.stringify(babelrc, null, 2),
-          },
-        }}
+        files={state.config.files}
         className={styles.repl}
-        dependencies={packageDeps}
+        dependencies={state.config.dependencies}
         template="babel-repl"
         entry="/index.js"
         skipEval
@@ -593,16 +611,16 @@ class Repl extends React.Component<Props, State> {
     this._updateCode(this.state.code);
   };
 
-  // Returns a .babelrc and package.json dependencies
-  mapStateToConfigs(
-    {
+  async setupConfig() {
+    const {
       babel,
+      code,
       envConfig,
       envPresetState,
       presets: requestedPresets,
       runtimePolyfillState,
-    }: State = this.state
-  ) {
+    } = this.state;
+
     const packageDeps = {};
     const requestedBabelVersion = babel.version || "6.26.0";
     const scopeNeeded = semver.gte(requestedBabelVersion, "7.0.0-beta.5");
@@ -640,10 +658,75 @@ class Repl extends React.Component<Props, State> {
       sourceMaps: runtimePolyfillState.isEnabled,
     };
 
-    return {
-      babelrc,
-      packageDeps,
+    const files = {
+      "/index.js": {
+        code: code,
+      },
+      "/.babelrc": {
+        code: JSON.stringify(babelrc, null, 2),
+      },
+    };
+
+    let build = babel.build;
+    const buildFromPath = window.location.pathname.match(/\/build\/([^/]+)\/?$/);
+
+    if (buildFromPath) {
+      build = buildFromPath[1];
     }
+
+    if (build) {
+      let url;
+
+      const isBuildNumeric = /^[0-9]+$/.test(build);
+
+      try {
+        if (!isBuildNumeric) {
+          // Build in URL is *not* numeric, assume it's a branch name
+          // Get the latest build number for this branch.
+          //
+          // NOTE:
+          // Since we switched the 7.0 branch to master, we map /build/7.0 to
+          // /build/master for backwards compatibility.
+          build = await loadLatestBuildNumberForBranch(
+            babel.circleciRepo,
+            build === "7.0" ? "master" : build
+          );
+        }
+
+        const packageName = babel.config.package;
+        const packageFile = `${packageName.replace(/-standalone/, "")}.js`;
+        const regExp = new RegExp(`${packageName}/${packageFile}$`);
+
+        url = await loadBuildArtifacts(
+          babel.circleciRepo,
+          regExp,
+          build,
+        );
+      } catch (ex) {
+        this.setState({
+          config: {
+            error: true,
+            status: ex.message,
+          },
+        });
+
+        return;
+      }
+
+      files["/babel-transpiler.json"] = {
+        code: JSON.stringify({
+          babelURL: url,
+        }, null, 2),
+      };
+    }
+
+    this.setState({
+      config: {
+        dependencies: packageDeps,
+        files,
+        ready: true,
+      },
+    });
   }
 
   // TODO(bng): maybe expose a debounce/delay timeout on SandpackProducer?
