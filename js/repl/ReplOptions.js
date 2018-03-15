@@ -70,8 +70,6 @@ type Props = {
   onTabExpandedChange: OnTabExpandedChange,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
-  runtimePolyfillConfig: PluginConfig,
-  runtimePolyfillState: PluginState,
   loadingExternalPlugins: boolean,
 };
 
@@ -138,6 +136,7 @@ class ExpandedContainer extends Component {
       debugEnvPreset,
       envConfig,
       envPresetState,
+      evalEnabled,
       shippedProposalsState,
       fileSize,
       isEnvPresetTabExpanded,
@@ -149,8 +148,6 @@ class ExpandedContainer extends Component {
       onSettingChange,
       pluginState,
       presetState,
-      runtimePolyfillConfig,
-      runtimePolyfillState,
       pluginsLoading,
       plugins,
       pluginValue,
@@ -169,12 +166,15 @@ class ExpandedContainer extends Component {
             label="Settings"
             toggleIsExpanded={this._toggleSettingsTab}
           >
-            <PluginToggle
-              config={runtimePolyfillConfig}
-              label="Evaluate"
-              onSettingChange={onSettingChange}
-              state={runtimePolyfillState}
-            />
+            <label className={styles.settingsLabel}>
+              <input
+                checked={evalEnabled}
+                onChange={this._onSettingCheck("evalEnabled")}
+                className={styles.inputCheckboxLeft}
+                type="checkbox"
+              />
+              Evaluate
+            </label>
             <label className={styles.settingsLabel}>
               <input
                 checked={lineWrap}
@@ -336,8 +336,7 @@ class ExpandedContainer extends Component {
                   disabled={
                     !envPresetState.isLoaded ||
                     !envConfig.isEnvPresetEnabled ||
-                    !envConfig.isBuiltInsEnabled ||
-                    runtimePolyfillState.isEnabled
+                    !envConfig.isBuiltInsEnabled
                   }
                 >
                   <option value="entry">Entry</option>
@@ -398,9 +397,7 @@ class ExpandedContainer extends Component {
                 <input
                   checked={debugEnvPreset}
                   className={styles.inputCheckboxLeft}
-                  disabled={
-                    disableEnvSettings || runtimePolyfillState.isEnabled
-                  }
+                  disabled={disableEnvSettings}
                   onChange={this._onSettingCheck("debugEnvPreset")}
                   type="checkbox"
                 />

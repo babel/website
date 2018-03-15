@@ -69,6 +69,7 @@ type State = {
   envPresetDebugInfo: ?string,
   envPresetState: EnvState,
   shippedProposalsState: ShippedProposalsState,
+  evalEnabled: boolean,
   evalErrorMessage: ?string,
   fileSize: boolean,
   isEnvPresetTabExpanded: boolean,
@@ -79,7 +80,6 @@ type State = {
   lineWrap: boolean,
   plugins: PluginStateMap,
   presets: PluginStateMap,
-  runtimePolyfillState: PluginState,
   sourceMap: ?string,
   externalPlugins: Array<string>,
   pluginSearch: ?string,
@@ -161,6 +161,7 @@ class Repl extends React.Component<Props, State> {
         envPresetConfig,
         envConfig.isEnvPresetEnabled
       ),
+      evalEnabled: false,
       evalErrorMessage: null,
       externalPlugins: [],
       fileSize: persistedState.fileSize,
@@ -173,10 +174,6 @@ class Repl extends React.Component<Props, State> {
       pluginSearch: "",
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
       presets,
-      runtimePolyfillState: configToState(
-        runtimePolyfillConfig,
-        persistedState.evaluate
-      ),
       shippedProposalsState: persistedStateToShippedProposalsState(
         persistedState,
         shippedProposalsConfig,
@@ -218,6 +215,7 @@ class Repl extends React.Component<Props, State> {
         debugEnvPreset={state.debugEnvPreset}
         envConfig={state.envConfig}
         envPresetState={state.envPresetState}
+        evalEnabled={state.evalEnabled}
         shippedProposalsState={state.shippedProposalsState}
         fileSize={state.fileSize}
         isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
@@ -232,8 +230,6 @@ class Repl extends React.Component<Props, State> {
         onTabExpandedChange={this._onTabExpandedChange}
         pluginState={state.plugins}
         presetState={presets}
-        runtimePolyfillConfig={runtimePolyfillConfig}
-        runtimePolyfillState={state.runtimePolyfillState}
         externalPlugins={state.externalPlugins}
         pluginChange={this._pluginChange}
         pluginSearch={this._pluginSearch}
@@ -314,7 +310,7 @@ class Repl extends React.Component<Props, State> {
         dependencies={packageDeps}
         template="babel-repl"
         entry="/index.js"
-        skipEval
+        skipEval={!state.evalEnabled}
       >
         <SandpackConsumer>
           {sandpackProps => (
@@ -528,15 +524,9 @@ class Repl extends React.Component<Props, State> {
 
   _onSettingChange = (name: string, value: any) => {
     this.setState(state => {
-      const { plugins, presets, runtimePolyfillState } = state;
+      const { plugins, presets } = state;
 
-      if (name === "babel-polyfill") {
-        runtimePolyfillState.isEnabled = value;
-
-        return {
-          runtimePolyfillState,
-        };
-      } else if (name === "presets") {
+      if (name === "presets") {
         return { presets: value };
       } else if (state.hasOwnProperty(name)) {
         return {
@@ -588,7 +578,7 @@ class Repl extends React.Component<Props, State> {
       debug: state.debugEnvPreset,
       forceAllTransforms: envConfig.forceAllTransforms,
       shippedProposals: envConfig.shippedProposals,
-      evaluate: state.runtimePolyfillState.isEnabled,
+      evaluate: state.evalEnabled,
       fileSize: state.fileSize,
       isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
       isPluginsExpanded: state.isPluginsExpanded,
@@ -670,8 +660,8 @@ class Repl extends React.Component<Props, State> {
       config,
       envConfig,
       envPresetState,
+      evalEnabled,
       presets: requestedPresets,
-      runtimePolyfillState,
     } = this.state;
 
     const packageDeps = {};
@@ -708,7 +698,7 @@ class Repl extends React.Component<Props, State> {
       // TODO: handle state.externalPlugins
       plugins: [],
       presets: presets,
-      sourceMaps: runtimePolyfillState.isEnabled,
+      sourceMaps: evalEnabled,
     };
 
     const files = {

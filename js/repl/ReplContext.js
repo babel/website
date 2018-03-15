@@ -9,9 +9,15 @@ type Props = SandpackConsumerProps & {
   renderLoader: (status: SandpackStatus, errors?: Array<string>) => React$Node,
 };
 
+type TranspilerContext = {
+  availablePlugins: Array<{ label: string, isPreLoaded: boolean }>,
+  availablePresets: Array<{ label: string, isPreLoaded: boolean }>,
+  babelVersion: string,
+};
+
 type State = {
   initialDepsLoaded: boolean,
-  ready: boolean,
+  transpilerContext: ?TranspilerContext,
 };
 
 const mapItemsToStateMap = items =>
@@ -23,7 +29,6 @@ const mapItemsToStateMap = items =>
 export default class ReplContext extends React.Component<Props, State> {
   state = {
     initialDepsLoaded: false,
-    ready: false,
     transpilerContext: null,
   };
 
