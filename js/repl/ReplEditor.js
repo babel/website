@@ -1,10 +1,15 @@
 // @flow
 import React from "react";
+import { css } from "emotion";
+import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplLoader from "./ReplLoader";
+import { colors, media } from "./styles";
+import { getCodeSize } from "./Utils";
 
-import type { SandpackConsumerProps } from "./types";
+import type { SandpackConsumerProps, SandpackTranspilerContext } from "./types";
 
 type Props = SandpackConsumerProps & {
+  onTranspilerContext: (SandpackTranspilerContext) => void,
   renderEditor: () => React$Node,
   renderLoader: (status: SandpackStatus, errors?: Array<string>) => React$Node,
 };
@@ -26,7 +31,7 @@ const mapItemsToStateMap = items =>
     isPreLoaded: true,
   }));
 
-export default class ReplContext extends React.Component<Props, State> {
+export default class ReplEditor extends React.Component<Props, State> {
   state = {
     initialDepsLoaded: false,
     transpilerContext: null,
@@ -37,6 +42,7 @@ export default class ReplContext extends React.Component<Props, State> {
   componentWillReceiveProps({
     getManagerTranspilerContext,
     managerStatus,
+    onTranspilerContext,
   }: Props) {
     let initialDepsLoaded = this.state.initialDepsLoaded;
 
@@ -56,15 +62,13 @@ export default class ReplContext extends React.Component<Props, State> {
           babelVersion,
         };
 
+        onTranspilerContext(transpilerContext);
+
         this.setState({ transpilerContext });
       });
     }
 
     this.setState({ initialDepsLoaded });
-  }
-
-  checkReady() {
-    return this.state.initialDepsLoaded && !!this.state.transpilerContext;
   }
 
   getCompiledCode() {
@@ -94,30 +98,75 @@ export default class ReplContext extends React.Component<Props, State> {
         loading = false;
         message = "An error occurred while loading Babel :(";
       } else if (status === "installing-dependencies") {
-        message = "Installing dependencies...";
+        message = "Installing dependencies";
       } else {
-        message = "Initializing bundler...";
+        message = "Initializing bundler";
       }
     } else {
-      message = "Finishing up...";
+      message = "Finishing up";
     }
 
     return <ReplLoader isLoading={loading} message={message} />;
   }
 
   render() {
-    const { renderEditor, ...props } = this.props;
+    const state = this.state;
+    const { code, errors, lineWrap, managerStatus, onCodeChange, renderSidebar, showFileSize } = this.props;
 
-    if (!this.checkReady()) {
-      return this.renderLoader(props.managerStatus, props.errors);
+    if (!this.state.initialDepsLoaded || this.state.transpilerContext === null) {
+      return this.renderLoader(managerStatus, errors);
     }
 
-    // This is just temporary
-    return renderEditor({
-      ...props,
-      compiledCode: this.getCompiledCode(),
-      transpilerContext: this.state.transpilerContext,
-    });
+    const options = {
+      fileSize: showFileSize,
+      lineWrapping: lineWrap,
+    };
+
+    const compiledCode = this.getCompiledCode();
+
+    return (
+      <React.Fragment>
+        {renderSidebar(this.state.transpilerContext)}
+
+        <div className={styles.panels}>
+          <CodeMirrorPanel
+            className={styles.codeMirrorPanel}
+            code={code}
+            errorMessage={errors.length ? errors[0].message : undefined}
+            fileSize={getCodeSize(this.state.code)}
+            onChange={onCodeChange}
+            options={options}
+            placeholder="Write code here"
+          />
+          <CodeMirrorPanel
+            className={styles.codeMirrorPanel}
+            code={compiledCode}
+            errorMessage={state.evalErrorMessage}
+            fileSize={compiledCode ? getCodeSize(compiledCode) : null}
+            info={
+              state.debugEnvPreset ? state.envPresetDebugInfo : null
+            }
+            options={options}
+            placeholder="Compiled output will be shown here"
+          />
+        </div>
+      </React.Fragment>
+    );
   }
 }
 
+const styles = {
+  codeMirrorPanel: css({
+    flex: "0 0 50%",
+  }),
+  panels: css({
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "stretch",
+    overflow: "auto",
+    fontSize: "0.875rem",
+    lineHeight: "1.25rem",
+  }),
+};

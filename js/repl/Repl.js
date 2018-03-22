@@ -13,8 +13,7 @@ import semver from "semver";
 import { getCodeSize, getEnvPresetOptions } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from './CircleCI';
-import CodeMirrorPanel from "./CodeMirrorPanel";
-import ReplContext from "./ReplContext";
+import ReplEditor from "./ReplEditor";
 import ReplLoader from "./ReplLoader";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
@@ -26,6 +25,7 @@ import {
   pluginConfigs,
   runtimePolyfillConfig,
 } from "./PluginConfig";
+import loadBuild from './loadBuild';
 import {
   envConfigToTargetsString,
   replState,
@@ -88,20 +88,6 @@ type State = {
   loadingExternalPlugins: boolean,
 };
 
-function toCamelCase(str) {
-  return str
-    .replace(/-/g, " ")
-    .replace(/\//g, "_")
-    .replace(/@/g, "_")
-    .replace(/\s(.)/g, function($1) {
-      return $1.toUpperCase();
-    })
-    .replace(/\s/g, "")
-    .replace(/^(.)/, function($1) {
-      return $1.toLowerCase();
-    });
-}
-
 class Repl extends React.Component<Props, State> {
   _numLoadingPlugins = 0;
 
@@ -149,6 +135,11 @@ class Repl extends React.Component<Props, State> {
       compiled: null,
       config: {
         error: null,
+        files: {
+          './index.js': {
+            code: '',
+          },
+        },
         ready: false,
         status: "Initializing...",
         transpilerUrl: null,
@@ -185,10 +176,10 @@ class Repl extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    this.setupConfig();
+    this.setupBabel();
   }
 
-  renderOptions({ availablePresets, babelVersion }) {
+  renderOptions = ({ availablePresets, babelVersion }) => {
     const state = this.state;
 
     // TODO(bng): this is super temporary... we need to generally clean up
@@ -241,88 +232,48 @@ class Repl extends React.Component<Props, State> {
         loadingExternalPlugins={state.loadingExternalPlugins}
       />
     );
-  }
-
-  renderEditor = ({
-    compiledCode,
-    errors,
-    getManagerTranspilerContext,
-    managerState,
-    managerStatus,
-    transpilerContext,
-  }) => {
-    const state = this.state;
-    const options = {
-      fileSize: state.fileSize,
-      lineWrapping: state.lineWrap,
-    };
-
-    return (
-      <React.Fragment>
-        {this.renderOptions(transpilerContext)}
-
-        <div className={styles.panels}>
-          <CodeMirrorPanel
-            className={styles.codeMirrorPanel}
-            code={this.state.code}
-            errorMessage={errors.length ? errors[0].message : undefined}
-            fileSize={getCodeSize(this.state.code)}
-            key="input"
-            onChange={this._updateCode}
-            options={options}
-            placeholder="Write code here"
-          />
-          <CodeMirrorPanel
-            className={styles.codeMirrorPanel}
-            code={compiledCode}
-            errorMessage={state.evalErrorMessage}
-            fileSize={compiledCode ? getCodeSize(compiledCode) : null}
-            info={
-              state.debugEnvPreset ? state.envPresetDebugInfo : null
-            }
-            key="output"
-            options={options}
-            placeholder="Compiled output will be shown here"
-          />
-        </div>
-      </React.Fragment>
-    );
   };
 
   render() {
     const state = this.state;
 
-    const options = {
-      fileSize: state.fileSize,
-      lineWrapping: state.lineWrap,
-    };
-
-    if (!state.config.ready) {
-      return <ReplLoader isLoading={!state.config.error} message={state.config.status} />;
-    }
-
-    const { files, packageDeps } = this.mapStateToConfigs();
-
+    const { files, dependencies } = this.mapStateToConfigs();
+    console.log(5, files, dependencies);
     return (
       <SandpackProvider
         files={files}
         className={styles.repl}
-        dependencies={packageDeps}
+        dependencies={dependencies}
         template="babel-repl"
         entry="/index.js"
         skipEval={!state.evalEnabled}
       >
         <SandpackConsumer>
           {sandpackProps => (
-            <ReplContext
+            <ReplEditor
               {...sandpackProps}
-              renderEditor={this.renderEditor}
+              code={this.state.code}
+              lineWrapping={state.lineWrap}
+              onCodeChange={this._updateCode}
+              onTranspilerContext={this.handleTranspilerContext}
+              renderSidebar={this.renderOptions}
+              showFileSize={state.fileSize}
             />
           )}
         </SandpackConsumer>
       </SandpackProvider>
     );
   }
+
+  handleTranspilerContext = (transpilerContext) => {
+    this.setState(({ config }) => ({
+      config: {
+        ...config,
+        ready: true,
+        transpilerContext,
+      },
+    }));
+  };
 
   // TODO(bng): replace this with package.json deps passed to sandpack
   // async _checkForUnloadedPlugins() {
@@ -600,62 +551,8 @@ class Repl extends React.Component<Props, State> {
     this._updateCode(this.state.code);
   };
 
-  async setupTranspiler(babelState: BabelState) {
-    let build = babelState.build;
-
-    // TODO(bng): investigate if we still need this?
-    const buildFromPath = window.location.pathname.match(/\/build\/([^/]+)\/?$/);
-
-    if (buildFromPath) {
-      build = buildFromPath[1];
-    }
-
-    if (!build) return null;
-
-    let url;
-
-    const isBuildNumeric = /^[0-9]+$/.test(build);
-
-    try {
-      if (!isBuildNumeric) {
-        // Build in URL is *not* numeric, assume it's a branch name
-        // Get the latest build number for this branch.
-        //
-        // NOTE:
-        // Since we switched the 7.0 branch to master, we map /build/7.0 to
-        // /build/master for backwards compatibility.
-        build = await loadLatestBuildNumberForBranch(
-          babelState.circleciRepo,
-          build === "7.0" ? "master" : build
-        );
-      }
-
-      const packageName = babelState.config.package;
-      const packageFile = `${packageName.replace(/-standalone/, "")}.js`;
-      const regExp = new RegExp(`${packageName}/${packageFile}$`);
-
-      url = await loadBuildArtifacts(
-        babelState.circleciRepo,
-        regExp,
-        build,
-      );
-    } catch (ex) {
-      this.setState({
-        config: {
-          error: true,
-          status: ex.message,
-        },
-      });
-
-      return;
-    }
-
-    return url;
-  }
-
   mapStateToConfigs() {
     const {
-      babel,
       code,
       config,
       envConfig,
@@ -664,51 +561,58 @@ class Repl extends React.Component<Props, State> {
       presets: requestedPresets,
     } = this.state;
 
+    let babelrc;
     const packageDeps = {};
-    const requestedBabelVersion = babel.version || "6.26.0";
-    const scopeNeeded = semver.gte(requestedBabelVersion, "7.0.0-beta.5");
 
-    const getConfigNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : key;
-    const getPackageNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : `babel-preset-${key}`;
+    if (config.ready) {
+      const version = config.transpilerContext.babelVersion;
+      const scopeNeeded = semver.gte(version, "7.0.0-beta.5");
 
-    // TODO: handle 3rd party presets?
-    const presets = requestedPresets.map(key => getConfigNameFromKey(key, scopeNeeded));
+      const getConfigNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : key;
+      const getPackageNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : `babel-preset-${key}`;
 
-    if (envConfig.isEnvPresetEnabled) {
-      presets.push([
-        getConfigNameFromKey("env", scopeNeeded),
-        getEnvPresetOptions(envConfig),
-      ]);
+      // TODO: handle 3rd party presets?
+      const presets = requestedPresets.slice();
 
-      let packageVersion;
-      const requestedEnvVersion = envPresetState.version;
+      if (envConfig.isEnvPresetEnabled) {
+        presets.push([
+          getConfigNameFromKey("env", scopeNeeded),
+          getEnvPresetOptions(envConfig),
+        ]);
 
-      if (requestedEnvVersion) {
-        packageVersion = requestedEnvVersion;
-      } else if (scopeNeeded) {
-        packageVersion = requestedBabelVersion;
-      } else if (semver.satisfies(requestedBabelVersion, "^6")) {
-        packageVersion = "1.6.1";
+        let packageVersion;
+        const requestedEnvVersion = envPresetState.version;
+
+        if (requestedEnvVersion) {
+          packageVersion = requestedEnvVersion;
+        } else if (scopeNeeded) {
+          packageVersion = version;
+        } else if (semver.satisfies(version, "^6")) {
+          packageVersion = "1.6.1";
+        }
+
+        packageDeps[getPackageNameFromKey("env", scopeNeeded)] = packageVersion;
       }
 
-      packageDeps[getPackageNameFromKey("env", scopeNeeded)] = packageVersion;
+      babelrc = {
+        // TODO: handle state.externalPlugins
+        plugins: [],
+        presets: presets,
+        sourceMaps: evalEnabled,
+      };
     }
-
-    const babelrc = {
-      // TODO: handle state.externalPlugins
-      plugins: [],
-      presets: presets,
-      sourceMaps: evalEnabled,
-    };
 
     const files = {
       "/index.js": {
         code: code,
       },
-      "/.babelrc": {
-        code: JSON.stringify(babelrc, null, 2),
-      },
     };
+
+    if (babelrc) {
+      files["/.babelrc"] = {
+        code: JSON.stringify(babelrc, null, 2),
+      };
+    }
 
     if (config.transpilerUrl) {
       files["/babel-transpiler.json"] = {
@@ -719,21 +623,38 @@ class Repl extends React.Component<Props, State> {
     }
 
     return {
+      dependencies: packageDeps,
       files,
-      packageDeps,
     };
   }
 
   // If we're loading a specific build/version of Babel, like from a
   // CircleCI artifact, then we need to generate a config file to let
   // Sandpack know to use it instead of its default.
-  async setupConfig() {
-    const transpilerUrl = await this.setupTranspiler(this.state.babel);
+  async setupBabel() {
+    let transpilerUrl;
+
+    try {
+      transpilerUrl = await loadBuild(
+        this.state.babel.build,
+        this.state.babel.circleciRepo,
+      );
+    } catch (ex) {
+      console.log('a', ex)
+      this.setState({
+        config: {
+          error: true,
+          status: ex.message,
+        },
+      });
+
+      return;
+    }
 
     this.setState({
       config: {
+        ...this.state.config,
         transpilerUrl,
-        ready: true,
       },
     });
   }
@@ -752,12 +673,6 @@ export default function ReplWithErrorBoundary() {
 }
 
 const styles = {
-  codeMirrorPanel: css({
-    flex: "0 0 50%",
-  }),
-  optionsColumn: css({
-    flex: "0 0 auto",
-  }),
   repl: css`
     height: 100%;
     height: calc(100vh - 50px); /* 50px is the header's height */
@@ -772,14 +687,7 @@ const styles = {
       flex-direction: column;
     }
   `,
-  panels: css({
-    height: "100%",
-    width: "100%",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "stretch",
-    overflow: "auto",
-    fontSize: "0.875rem",
-    lineHeight: "1.25rem",
+  optionsColumn: css({
+    flex: "0 0 auto",
   }),
 };
