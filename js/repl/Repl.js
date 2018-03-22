@@ -604,7 +604,7 @@ class Repl extends React.Component<Props, State> {
 
     const files = {
       "/index.js": {
-        code: code,
+        code: config.ready ? code : '',
       },
     };
 

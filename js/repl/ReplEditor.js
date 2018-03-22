@@ -112,7 +112,7 @@ export default class ReplEditor extends React.Component<Props, State> {
   render() {
     const state = this.state;
     const { code, errors, lineWrap, managerStatus, onCodeChange, renderSidebar, showFileSize } = this.props;
-
+    console.log(managerStatus)
     if (!this.state.initialDepsLoaded || this.state.transpilerContext === null) {
       return this.renderLoader(managerStatus, errors);
     }
@@ -122,7 +122,7 @@ export default class ReplEditor extends React.Component<Props, State> {
       lineWrapping: lineWrap,
     };
 
-    const compiledCode = this.getCompiledCode();
+    const compiledCode = managerStatus !== "transpiling" ? this.getCompiledCode() : null;
 
     return (
       <React.Fragment>
