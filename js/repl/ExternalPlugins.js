@@ -76,20 +76,18 @@ export default function ExternalPlugins({
 
   function hitComponent({ hit }: { hit: Object }) {
     return (
-      <div>
-        <label key={hit.name} className={styles.pluginRow}>
-          <input
-            className={styles.inputCheckboxLeft}
-            onChange={e => _pluginChanged(e, hit)}
-            type="checkbox"
-          />
-        </label>
+      <label key={hit.name} className={styles.pluginRow}>
+        <input
+          className={styles.inputCheckboxLeft}
+          onChange={e => _pluginChanged(e, hit)}
+          type="checkbox"
+        />
         {hit.name
           .split("babel-plugin-")
           .join("")
           .split("@babel/plugin-")
           .join("")}
-      </div>
+      </label>
     );
   }
 
