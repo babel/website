@@ -1,12 +1,17 @@
 import React, { Component } from "react";
-import { PoweredBy,  Hits, Configure, InstantSearch } from "react-instantsearch/es/dom";
+import {
+  PoweredBy,
+  Hits,
+  Configure,
+  InstantSearch,
+} from "react-instantsearch/es/dom";
 
 import { connectSearchBox } from "react-instantsearch/es/connectors";
 
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
 
-import AlgoliaLogo from '../assets/search-by-algolia-white';
+import AlgoliaLogo from "../assets/search-by-algolia-white";
 
 const config = {
   apiKey: "1f0cc4b7da241f62651b85531d788fbd",
@@ -46,8 +51,9 @@ class RawSearchBox extends Component {
         value={this.state.value}
         aria-label="Plugin name"
         onChange={e => this._onChange(e.target.value)}
-        className={`${this.props.styles.pluginName} ${this.props.styles
-          .envPresetInput}`}
+        className={`${this.props.styles.pluginName} ${
+          this.props.styles.envPresetInput
+        }`}
         type="text"
       />
     );
@@ -70,18 +76,20 @@ export default function ExternalPlugins({
 
   function hitComponent({ hit }: { hit: Object }) {
     return (
-      <label key={hit.name} className={styles.pluginRow}>
-        <input
-          className={styles.inputCheckboxLeft}
-          onChange={e => _pluginChanged(e, hit)}
-          type="checkbox"
-        />
+      <div>
+        <label key={hit.name} className={styles.pluginRow}>
+          <input
+            className={styles.inputCheckboxLeft}
+            onChange={e => _pluginChanged(e, hit)}
+            type="checkbox"
+          />
+        </label>
         {hit.name
           .split("babel-plugin-")
           .join("")
           .split("@babel/plugin-")
           .join("")}
-      </label>
+      </div>
     );
   }
 
@@ -92,11 +100,11 @@ export default function ExternalPlugins({
       label={
         <span className={styles.pluginsHeader}>
           Plugins
-          {loadingExternalPlugins ?
-            <PresetLoadingAnimation /> :
+          {loadingExternalPlugins ? (
+            <PresetLoadingAnimation />
+          ) : (
             <AlgoliaLogo alt="Search Powered by Algolia" />
-          }
-
+          )}
         </span>
       }
       toggleIsExpanded={_togglePluginsTab}
@@ -116,9 +124,11 @@ export default function ExternalPlugins({
           }
         />
 
-        <label className={styles.pluginContainer}>
+        <div className={styles.pluginContainer}>
           <div className={styles.pluginsSearch}>
-            <label className={`${styles.settingsLabel} ${styles.checkboxOfficial}`}>
+            <label
+              className={`${styles.settingsLabel} ${styles.checkboxOfficial}`}
+            >
               <input
                 checked={showOfficialExternalPlugins}
                 onChange={e => {
@@ -142,7 +152,7 @@ export default function ExternalPlugins({
                 : null}
             </div>
           )}
-        </label>
+        </div>
       </InstantSearch>
     </AccordionTab>
   );
