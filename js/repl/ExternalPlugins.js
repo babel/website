@@ -120,7 +120,7 @@ export default function ExternalPlugins({
           }
         />
 
-        <label className={styles.pluginContainer}>
+        <div className={styles.pluginContainer}>
           <div className={styles.pluginsSearch}>
             <label
               className={`${styles.settingsLabel} ${styles.checkboxOfficial}`}
@@ -148,7 +148,7 @@ export default function ExternalPlugins({
                 : null}
             </div>
           )}
-        </label>
+        </div>
       </InstantSearch>
     </AccordionTab>
   );
