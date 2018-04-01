@@ -67,23 +67,23 @@ third_party_js:
     <div class="col-lg-6">
       <h3>Install the CLI and <a href="https://babeljs.io/docs/plugins/preset-env">env</a> preset</h3>
       <div class="text-left">
-        <div markdown="1">
+<div markdown="1">
 ```shell
 npm install --save-dev babel-cli babel-preset-env
 ```
-        </div>
+</div>
       </div>
     </div>
     <div class="col-lg-6">
       <h3>Create a <a href="/docs/usage/babelrc"><code>.babelrc</code></a> file (or use your <a href="/docs/usage/babelrc#use-via-packagejson">package.json</a>)</h3>
       <div class="text-left">
-        <div markdown="1">
+<div markdown="1">
 ```json
 {
   "presets": ["env"]
 }
 ```
-        </div>
+</div>
       </div>
     </div>
 
