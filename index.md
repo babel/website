@@ -19,10 +19,10 @@ third_party_js:
 
     <div style="margin-top: 20px;">
       <small>
-        We hope that you will appreciate some music while reading our documentation.
+        Please consider taking some time to appreciate this song while reading our documentation.
 
         <br />
-        You can learn more about it here: <a href="https://medium.com/@angustweets/hallelujah-in-praise-of-babel-977020010fad">Hallelujah—In Praise of Babel</a>.
+        Lyrics and more here: <a href="https://medium.com/@angustweets/hallelujah-in-praise-of-babel-977020010fad">Hallelujah—In Praise of Babel</a>.
       </small>
     </div>
   </div>
