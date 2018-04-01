@@ -9,7 +9,7 @@ before_install:
 
 script:
   - ./scripts/download-readmes.js
-  - npm test && npm run lint && bundle exec rake
+  - npm test && bundle exec rake
 
 git:
   submodules: false
