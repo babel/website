@@ -48,7 +48,7 @@ third_party_js:
       <li><a href="https://vueschool.io/?babel" title="Vue School"><img src="/images/sponsors/vueschool.png" style="width: 160px"></a></li>
       <li><a href="https://devrant.com/?babel" title="devRant"><img src="/images/sponsors/devRant.png" style="width: 160px"></a></li>
     </ul>
-    <a class="button" href="https://patreon.com/henryzhu" target="_blank"><img alt="Become a sponsor on Patreon" src="https://www.patreon.com/bePatron?c=1512731&rid=2399661"></a>
+    <a href="https://www.patreon.com/bePatron?u=905738" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
 
     <h3>Open Collective (Silver)</h3>
     <ul class="sponsors-opencollective-tier tier-silver-sponsors">
