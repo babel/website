@@ -175,7 +175,7 @@ var BABEL_MINI_REPL = (function() {
 })();
 
 $(document).ready(function() {
-  BABEL_MINI_REPL.start();
+  // BABEL_MINI_REPL.start();
 
   $('.babel-slider').slick({
     lazyLoad: 'ondemand',
