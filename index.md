@@ -19,10 +19,15 @@ third_party_js:
 
     <div style="margin-top: 20px;">
       <small>
-        Please consider taking some time to appreciate this song while reading our documentation.
+        Please take some time to appreciate this song while reading our documentation.
 
         <br />
+        
         Lyrics and more here: <a href="https://medium.com/@angustweets/hallelujah-in-praise-of-babel-977020010fad">Hallelujah—In Praise of Babel</a>.
+        
+        <br />
+        
+        Consider <a href="https://opencollective.com/babel">donating</a> to the project!
       </small>
     </div>
   </div>
