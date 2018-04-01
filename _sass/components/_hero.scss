@@ -7,11 +7,11 @@
   margin-bottom: 20px;
   overflow: hidden;
   // Not ideal, but for now, match bootstrap's container side padding
-  padding: 4em 15px 2em;
+  padding: 3em 15px 2em;
   position: relative;
 
   @media (min-width: $screen-md-min) {
-    padding: 6em 15px 3em;
+    padding: 3em 15px 3em;
   }
 
   &::before {
