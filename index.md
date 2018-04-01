@@ -45,8 +45,8 @@ third_party_js:
 
     <h3>Patreon (Gold)</h3>
     <ul class="sponsors-opencollective-tier tier-gold-sponsors">
-      <li><a href="https://vueschool.io/?babel" title="Vue School"><img src="/images/sponsors/vueschool.png"></a></li>
-      <li><a href="https://devrant.com/?babel" title="devRant"><img src="/images/sponsors/devRant.png"></a></li>
+      <li><a href="https://vueschool.io/?babel" title="Vue School"><img src="/images/sponsors/vueschool.png" style="width: 160px"></a></li>
+      <li><a href="https://devrant.com/?babel" title="devRant"><img src="/images/sponsors/devRant.png" style="width: 160px"></a></li>
     </ul>
     <a class="button" href="https://patreon.com/henryzhu" target="_blank"><img alt="Become a sponsor on Patreon" src="https://www.patreon.com/bePatron?c=1512731&rid=2399661"></a>
 
