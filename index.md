@@ -13,22 +13,24 @@ third_party_js:
     <h1>Babel is a JavaScript compiler.</h1>
     <p>Use next generation JavaScript, today.</p>
 
-    <div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/40abpedBKK8?rel=0&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
+    <div class="hero-repl" hidden>
+      <div class="hero-repl__editor">
+        <div class="hero-repl__pane hero-repl__pane--left">
+          <h3>Put in next-gen JavaScript</h3>
+          <div id="hero-repl-in" class="hero-repl__code"></div>
+        </div>
 
-    <div style="margin-top: 20px;">
-      <small>
-        Please take some time to appreciate this song while reading our documentation.
-
-        <br />
-        
-        Lyrics and more here: <a href="https://medium.com/@angustweets/hallelujah-in-praise-of-babel-977020010fad">Hallelujah—In Praise of Babel</a>.
-        
-        <br />
-        
-        Consider <a href="https://opencollective.com/babel">donating</a> to the project!
-      </small>
+        <div class="hero-repl__pane hero-repl__pane--right">
+          <h3>Get browser-compatible JavaScript out</h3>
+          <div id="hero-repl-out" class="hero-repl__code"></div>
+          <div class="hero-repl__error"></div>
+        </div>
+      </div>
+      <div class="hero-repl__footer">
+        <a href="http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=latest%2Creact%2Cstage-2&experimental=false&loose=false&spec=false&code=%5B1%2C2%2C3%5D.map(n%20%3D%3E%20n%20%2B%201)%3B&playground=true">
+          Check out the REPL to experiment more!
+        </a>
+      </div>
     </div>
   </div>
 </div>
