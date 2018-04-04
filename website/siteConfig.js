@@ -46,8 +46,13 @@ const sponsors = [
   ...sponsorsDownloaded
     .filter(sponsor => sponsor.id != 2719) // temporary fix for Kent C. Dodds duplicate
     .map(sponsor => {
-      // temporary fix for webflow
-      let tier = sponsor.id == 5954 ? "silver-sponsors" : sponsor.tier;
+      // temporary fix for coinbase and webflow
+      let tier = sponsor.tier;
+      if (sponsor.id == 12671) {
+        tier = "gold-sponsors";
+      } else if (sponsor.id == 5954) {
+        tier = "silver-sponsors";
+      }
 
       let website = sponsor.website;
       if (typeof website == "string") {
