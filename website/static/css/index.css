@@ -82,11 +82,11 @@
   font-size: 30px;
   text-align: center;
 }
-.mainContainer .sponsors-opencollective h3 {
+.mainContainer .sponsor-tiers h3 {
   font-size: 24px;
   padding: 30px 0 20px;
 }
-.mainContainer ul.sponsors-opencollective-tier {
+.mainContainer ul.sponsors-tier {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -95,21 +95,24 @@
   margin: 0 auto;
   padding: 0;
 }
-.mainContainer ul.sponsors-opencollective-tier li {
+.mainContainer ul.sponsors-tier li {
   list-style: none;
   margin: 5px;
 }
-.mainContainer .sponsors-opencollective-tier a,
-.mainContainer .sponsors-opencollective-tier a:hover {
+.mainContainer .sponsors-tier a,
+.mainContainer .sponsors-tier a:hover {
   background: none;
   border: none;
 }
 .tier-gold-sponsors img {
-  height: 90px;
+  max-height: 90px;
+  max-width: 270px;
 }
 .tier-silver-sponsors img {
-  height: 85px;
+  max-height: 85px;
+  max-width: 255px;
 }
 .tier-bronze-sponsors img {
-  height: 60px;
+  max-height: 60px;
+  max-width: 180px;
 }
