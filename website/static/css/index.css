@@ -105,14 +105,11 @@
   border: none;
 }
 .tier-gold-sponsors img {
-  max-height: 90px;
-  max-width: 270px;
+  height: 90px;
 }
 .tier-silver-sponsors img {
-  max-height: 85px;
-  max-width: 255px;
+  height: 85px;
 }
 .tier-bronze-sponsors img {
-  max-height: 60px;
-  max-width: 180px;
+  height: 60px;
 }

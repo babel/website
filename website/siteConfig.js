@@ -54,6 +54,8 @@ const sponsors = [
         website = url.parse(website).protocol ? website : `http://${website}`;
       } else if (typeof sponsor.twitterHandle == "string") {
         website = `https://twitter.com/@${sponsor.twitterHandle}`;
+      } else {
+        website = `https://opencollective.com/${sponsor.slug}`;
       }
 
       return {
@@ -61,7 +63,7 @@ const sponsors = [
         tier,
         name: sponsor.name,
         url: website,
-        image: sponsor.avatar,
+        image: sponsor.avatar || "/img/user.svg",
         description: sponsor.description,
       };
     }),
