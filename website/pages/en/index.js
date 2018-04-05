@@ -170,12 +170,12 @@ const WorkSponsors = () => {
 
 const SponsorTier = props => {
   const tierSponsors = siteConfig.sponsors.filter(
-    sponsor => sponsor.type == "opencollective" && sponsor.tier === props.tier
+    sponsor => sponsor.type == props.type && sponsor.tier === props.tier
   );
   return (
     <div>
       <h3>{props.title}</h3>
-      <ul className={`sponsors-opencollective-tier tier-${props.tier}`}>
+      <ul className={`sponsors-tier tier-${props.tier}`}>
         {tierSponsors.map((sponsor, i) => (
           <li key={i}>
             <a href={sponsor.url} title={sponsor.name}>
@@ -186,8 +186,8 @@ const SponsorTier = props => {
       </ul>
       {props.button ? (
         <PromoSection>
-          <Button href="https://opencollective.com/babel" target="_blank">
-            Become a sponsor
+          <Button href={props.button.link} target="_blank">
+            {props.button.title}
           </Button>
         </PromoSection>
       ) : null}
@@ -197,6 +197,15 @@ const SponsorTier = props => {
 
 const OpenCollectiveSponsors = props => {
   const language = props.language || "en";
+  const ocButton = {
+      title: "Become a sponsor",
+      link: "https://opencollective.com/babel",
+    },
+    patreonButton = {
+      title: "Become a patron",
+      link: "https://www.patreon.com/bePatron?u=905738",
+    };
+
   return (
     <div className="container paddingTop paddingBottom">
       <div className="wrapper productShowcaseSection">
@@ -216,11 +225,31 @@ const OpenCollectiveSponsors = props => {
             </Button>
           </PromoSection>
         </div>
-        <div className="sponsors-opencollective">
-          <h2>Open Collective Sponsors</h2>
-          <SponsorTier title="Gold" tier="gold-sponsors" button={true} />
-          <SponsorTier title="Silver" tier="silver-sponsors" button={true} />
-          <SponsorTier title="Bronze" tier="bronze-sponsors" button={true} />
+        <div className="sponsor-tiers">
+          <SponsorTier
+            type="opencollective"
+            title="Gold Sponsors (Open Collective)"
+            tier="gold-sponsors"
+            button={ocButton}
+          />
+          <SponsorTier
+            type="patreon"
+            title="Gold Sponsors (Patreon)"
+            tier="gold-sponsors"
+            button={patreonButton}
+          />
+          <SponsorTier
+            type="opencollective"
+            title="Silver Sponsors (Open Collective)"
+            tier="silver-sponsors"
+            button={ocButton}
+          />
+          <SponsorTier
+            type="opencollective"
+            title="Bronze Sponsors (Open Collective)"
+            tier="bronze-sponsors"
+            button={ocButton}
+          />
         </div>
       </div>
     </div>

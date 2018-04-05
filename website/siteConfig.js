@@ -46,9 +46,9 @@ const sponsors = [
   ...sponsorsDownloaded
     .filter(sponsor => sponsor.id != 2719) // temporary fix for Kent C. Dodds duplicate
     .map(sponsor => {
-      // temporary fix for AMP, facebook, and webflow
+      // temporary fix for coinbase and webflow
       let tier = sponsor.tier;
-      if (sponsor.id == 9337 || sponsor.id == 2309) {
+      if (sponsor.id == 12671) {
         tier = "gold-sponsors";
       } else if (sponsor.id == 5954) {
         tier = "silver-sponsors";
@@ -59,6 +59,8 @@ const sponsors = [
         website = url.parse(website).protocol ? website : `http://${website}`;
       } else if (typeof sponsor.twitterHandle == "string") {
         website = `https://twitter.com/@${sponsor.twitterHandle}`;
+      } else {
+        website = `https://opencollective.com/${sponsor.slug}`;
       }
 
       return {
@@ -66,7 +68,7 @@ const sponsors = [
         tier,
         name: sponsor.name,
         url: website,
-        image: sponsor.avatar,
+        image: sponsor.avatar || "/img/user.svg",
         description: sponsor.description,
       };
     }),
