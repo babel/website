@@ -115,7 +115,7 @@ export default function ExternalPlugins({
           attributesToRetrieve={["name", "version"]}
           attributesToHighlight={["name"]}
           filters={
-            "keywords:babel-plugin" +
+            "computedKeywords:babel-plugin" +
             (showOfficialExternalPlugins ? " AND owner.name:babel" : "")
           }
         />
