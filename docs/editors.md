@@ -30,6 +30,8 @@ Then install [Babel](https://packagecontrol.io/packages/Babel) package
 from the Package Control menu and follow
 the [instructions](https://github.com/babel/babel-sublime#installation).
 
+An alternative sublime package called [Naomi](https://packagecontrol.io/packages/Naomi) is also available. [Installation instruction](https://github.com/borela/naomi#installation)
+
 ### Vim
 
 Install the [vim-javascript](https://github.com/pangloss/vim-javascript) plugin, which brings both
