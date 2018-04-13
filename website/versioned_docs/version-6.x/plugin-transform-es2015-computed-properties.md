@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-transform-es2015-computed-properties
 title: babel-plugin-transform-es2015-computed-properties
 sidebar_label: transform-es2015-computed-properties

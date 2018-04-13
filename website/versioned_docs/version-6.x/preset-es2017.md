@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-preset-es2017
 title: babel-preset-es2017
 sidebar_label: es2017

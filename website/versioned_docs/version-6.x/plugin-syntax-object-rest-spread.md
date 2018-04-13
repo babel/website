@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-syntax-object-rest-spread
 title: babel-plugin-syntax-object-rest-spread
 sidebar_label: syntax-object-rest-spread

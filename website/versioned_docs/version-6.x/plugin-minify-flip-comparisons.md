@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-minify-flip-comparisons
 title: babel-plugin-minify-flip-comparisons
 sidebar_label: minify-flip-comparisons

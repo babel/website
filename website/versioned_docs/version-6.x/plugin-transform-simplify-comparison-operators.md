@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-transform-simplify-comparison-operators
 title: babel-plugin-transform-simplify-comparison-operators
 sidebar_label: transform-simplify-comparison-operators

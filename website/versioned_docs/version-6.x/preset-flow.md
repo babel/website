@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-preset-flow
 title: babel-preset-flow
 sidebar_label: flow

@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-code-frame
 title: babel-code-frame
 sidebar_label: babel-code-frame

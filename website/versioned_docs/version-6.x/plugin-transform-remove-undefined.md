@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-transform-remove-undefined
 title: babel-plugin-transform-remove-undefined
 sidebar_label: transform-remove-undefined

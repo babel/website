@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-transform-object-assign
 title: babel-plugin-transform-object-assign
 sidebar_label: transform-object-assign

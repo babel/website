@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-helper-to-multiple-sequence-expressions
 title: babel-helper-to-multiple-sequence-expressions
 sidebar_label: babel-helper-to-multiple-sequence-expressions

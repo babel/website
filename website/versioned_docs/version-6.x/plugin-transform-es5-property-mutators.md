@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-transform-es5-property-mutators
 title: babel-plugin-transform-es5-property-mutators
 sidebar_label: transform-es5-property-mutators

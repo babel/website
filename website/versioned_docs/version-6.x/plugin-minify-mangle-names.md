@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-minify-mangle-names
 title: babel-plugin-minify-mangle-names
 sidebar_label: minify-mangle-names

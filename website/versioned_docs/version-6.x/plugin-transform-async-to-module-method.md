@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-transform-async-to-module-method
 title: babel-plugin-transform-async-to-module-method
 sidebar_label: transform-async-to-module-method

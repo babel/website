@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-transform-decorators
 title: babel-plugin-transform-decorators
 sidebar_label: transform-decorators

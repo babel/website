@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-helper-builder-react-jsx
 title: babel-helper-builder-react-jsx
 sidebar_label: babel-helper-builder-react-jsx

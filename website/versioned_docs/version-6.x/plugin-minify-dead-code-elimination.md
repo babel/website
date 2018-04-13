@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-minify-dead-code-elimination
 title: babel-plugin-minify-dead-code-elimination
 sidebar_label: minify-dead-code-elimination
