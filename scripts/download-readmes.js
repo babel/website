@@ -9,11 +9,12 @@ const CONCURRENT_REQUESTS = 20;
 
 const addFrontMatter = (id, text) =>
   `---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js
 id: ${id}
 title: ${id}
 sidebar_label: ${id.replace(/^babel-(plugin|proposal|preset)-/, "")}
 ---
+
+[comment]: # Don't edit this file directly, it was copied using scripts/download-readmes.js
 
 ${text}
 `;

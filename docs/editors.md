@@ -1,7 +1,5 @@
 ---
 title: Editors
-description: Learn how to use Babel in your editor of choice
-
 id: editors
 ---
 

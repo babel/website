@@ -1,8 +1,5 @@
 ---
-layout: docs
 title: babel-preset-es2015 -> babel-preset-env
-permalink: /env/
-
 id: env
 ---
 

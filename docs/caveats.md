@@ -1,7 +1,5 @@
 ---
 title: Caveats
-description: Just some things to keep in mind when using Babel.
-
 id: caveats
 ---
 
