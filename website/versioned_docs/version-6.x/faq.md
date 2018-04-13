@@ -1,9 +1,5 @@
 ---
-layout: docs
 title: FAQ
-description: Frequently Asked Questions and Answers
-permalink: /faq/
-: 
 id: version-6.x-faq
 original_id: faq
 ---

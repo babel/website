@@ -1,9 +1,5 @@
 ---
-layout: docs
 title: Caveats
-description: Just some things to keep in mind when using Babel.
-permalink: /docs/usage/caveats/
-: 
 id: version-6.x-caveats
 original_id: caveats
 ---
