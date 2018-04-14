@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-transform-react-jsx
 title: babel-plugin-transform-react-jsx
 sidebar_label: transform-react-jsx

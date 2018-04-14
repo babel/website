@@ -1,7 +1,5 @@
 ---
 title: .babelrc
-description: How to use a .babelrc
-
 id: babelrc
 ---
 

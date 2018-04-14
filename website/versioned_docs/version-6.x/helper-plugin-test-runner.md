@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-helper-plugin-test-runner
 title: babel-helper-plugin-test-runner
 sidebar_label: babel-helper-plugin-test-runner

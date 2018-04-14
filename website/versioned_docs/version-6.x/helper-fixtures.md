@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-helper-fixtures
 title: babel-helper-fixtures
 sidebar_label: babel-helper-fixtures

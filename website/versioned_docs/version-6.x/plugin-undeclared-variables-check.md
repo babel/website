@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-undeclared-variables-check
 title: babel-plugin-undeclared-variables-check
 sidebar_label: undeclared-variables-check

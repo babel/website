@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-preset-latest
 title: babel-preset-latest
 sidebar_label: latest

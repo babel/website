@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-syntax-exponentiation-operator
 title: babel-plugin-syntax-exponentiation-operator
 sidebar_label: syntax-exponentiation-operator

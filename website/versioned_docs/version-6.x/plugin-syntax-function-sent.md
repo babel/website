@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-syntax-function-sent
 title: babel-plugin-syntax-function-sent
 sidebar_label: syntax-function-sent

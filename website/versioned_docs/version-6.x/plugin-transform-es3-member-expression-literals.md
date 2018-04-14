@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-transform-es3-member-expression-literals
 title: babel-plugin-transform-es3-member-expression-literals
 sidebar_label: transform-es3-member-expression-literals

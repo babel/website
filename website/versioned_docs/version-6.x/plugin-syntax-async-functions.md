@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-syntax-async-functions
 title: babel-plugin-syntax-async-functions
 sidebar_label: syntax-async-functions

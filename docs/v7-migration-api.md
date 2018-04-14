@@ -1,6 +1,5 @@
 ---
 title:  "Upgrade to Babel 7 (API)"
-
 id: v7-migration-api
 ---
 

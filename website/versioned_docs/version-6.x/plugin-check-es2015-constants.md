@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-check-es2015-constants
 title: babel-plugin-check-es2015-constants
 sidebar_label: check-es2015-constants

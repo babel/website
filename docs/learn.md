@@ -1,9 +1,5 @@
 ---
-layout: docs
 title: Learn ES2015
-description: A detailed overview of ECMAScript 2015 features. Based on Luke Hoban's es6features repo.
-permalink: /learn-es2015/
-
 id: learn
 ---
 

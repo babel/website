@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-transform-class-constructor-call
 title: babel-plugin-transform-class-constructor-call
 sidebar_label: transform-class-constructor-call

@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-transform-async-to-generator
 title: babel-plugin-transform-async-to-generator
 sidebar_label: transform-async-to-generator

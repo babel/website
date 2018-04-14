@@ -1,7 +1,5 @@
 ---
 title: Babel's core packages
-description: The Babel repo is managed as a monorepo; it's composed of many npm packages
-
 id: core-packages
 ---
 

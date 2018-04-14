@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-minify-type-constructors
 title: babel-plugin-minify-type-constructors
 sidebar_label: minify-type-constructors

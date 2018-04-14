@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-syntax-function-bind
 title: babel-plugin-syntax-function-bind
 sidebar_label: syntax-function-bind
