@@ -54,7 +54,7 @@ export async function loadLatestBuildNumberForBranch(
     return response[0].build_num;
   } catch (ex) {
     throw new Error(
-      `Could not load latest Babel build on ${branch}: ${ex.message}`
+      `Could not load latest Babel build on branch "${branch}": ${ex.message}`
     );
   }
 }

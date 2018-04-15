@@ -3,6 +3,7 @@
 import { css } from "emotion";
 import CodeMirror from "./CodeMirror";
 import React from "react";
+import debounce from "lodash.debounce";
 import { colors } from "./styles";
 
 type Props = {
@@ -16,35 +17,79 @@ type Props = {
   fileSize: string,
 };
 
-export default function CodeMirrorPanel(props: Props) {
-  const {
-    className = "",
-    errorMessage,
-    fileSize,
-    info,
-    onChange,
-    options,
-  } = props;
+type State = {
+  value: ?string,
+};
 
-  return (
-    <div className={`${styles.panel} ${className}`}>
-      <div className={styles.codeMirror}>
-        <CodeMirror
-          onChange={onChange}
-          options={{
-            ...props.options,
-            readOnly: onChange == null,
-          }}
-          placeholder={props.placeholder}
-          preserveScrollPosition={onChange == null}
-          value={props.code}
-        />
-        {options.fileSize && <div className={styles.fileSize}>{fileSize}</div>}
-      </div>
-      {info && <pre className={styles.info}>{info}</pre>}
-      {errorMessage && <pre className={styles.error}>{errorMessage}</pre>}
-    </div>
+const DEBOUNCE_DELAY = 500;
+
+export default class CodeMirrorPanel extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = this.mapPropsToState(props);
+
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    this.setState(this.mapPropsToState(nextProps));
+  }
+
+  mapPropsToState(props: Props) {
+    return {
+      value: props.code || '',
+    };
+  }
+
+  _handleChange = debounce(
+    (code: string) => this.props.onChange(code),
+    DEBOUNCE_DELAY,
   );
+
+  handleChange = (code: string) => {
+    this.setState({ value: code });
+    this._handleChange(code);
+  };
+
+  render() {
+    const {
+      className = "",
+      code,
+      errorMessage,
+      fileSize,
+      info,
+      onChange,
+      options,
+      placeholder,
+    } = this.props;
+
+    let fileSizeBubble;
+
+    if (options.fileSize && fileSize !== null) {
+      fileSizeBubble = <div className={styles.fileSize}>{fileSize}</div>;
+    }
+
+    const readOnly = typeof onChange !== "function";
+
+    return (
+      <div className={`${styles.panel} ${className}`}>
+        <div className={styles.codeMirror}>
+          <CodeMirror
+            onChange={!readOnly ? this.handleChange : null}
+            options={{
+              ...options,
+              readOnly,
+            }}
+            placeholder={placeholder}
+            preserveScrollPosition={readOnly}
+            value={code}
+          />
+          {fileSizeBubble}
+        </div>
+        {info && <pre className={styles.info}>{info}</pre>}
+        {errorMessage && <pre className={styles.error}>{errorMessage}</pre>}
+      </div>
+    );
+  }
 }
 
 const sharedBoxStyles = {
@@ -70,6 +115,7 @@ const styles = {
     backgroundColor: colors.errorBackground,
     borderTop: `1px solid ${colors.errorBorder}`,
     color: colors.errorForeground,
+    fontFamily: 'monospace',
     ...sharedBoxStyles,
   }),
   info: css({

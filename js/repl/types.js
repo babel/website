@@ -127,3 +127,28 @@ export type BabelPresetEnvResult = {
   transformations: Array<string>,
   transformationsWithTargets: Array<BabelNamedPresetAndTarget>,
 };
+
+// ####### SANDPACK #######
+
+export type SandpackStatus =
+  'initializing' |
+  'installing-dependencies' |
+  'transpiling' |
+  'evaluating' |
+  'running-tests' |
+  'idle';
+
+export type SandpackTranspilerContext = {
+  [id: string]: any // TODO: improve
+};
+
+export type SandpackState = {
+
+};
+
+export type SandpackConsumerProps = {
+  errors: Array<string>,
+  getManagerTranspilerContext: () => Promise<SandpackTranspilerContext>,
+  managerState: SandpackState,
+  managerStatus: SandpackStatus,
+};

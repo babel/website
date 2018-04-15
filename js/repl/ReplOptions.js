@@ -2,6 +2,7 @@
 
 import { css } from "emotion";
 import React, { Component } from "react";
+import { FileExplorer } from "react-smooshpack/es/components";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
@@ -69,8 +70,6 @@ type Props = {
   onTabExpandedChange: OnTabExpandedChange,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
-  runtimePolyfillConfig: PluginConfig,
-  runtimePolyfillState: PluginState,
   loadingExternalPlugins: boolean,
 };
 
@@ -112,12 +111,32 @@ class ExpandedContainer extends Component {
     className: "",
   };
 
+  handlePresetChange = (name: string, isEnabled: boolean) => {
+    const { onSettingChange, presetState } = this.props;
+
+    onSettingChange(
+      "presets",
+      Object.keys(presetState).reduce((result, key) => {
+        if (
+          presetState[key] &&
+          ((key !== name && presetState[key].isEnabled) ||
+            (key === name && isEnabled))
+        ) {
+          result.push(key);
+        }
+
+        return result;
+      }, [])
+    );
+  };
+
   render() {
     const {
       babelVersion,
       debugEnvPreset,
       envConfig,
       envPresetState,
+      evalEnabled,
       shippedProposalsState,
       fileSize,
       isEnvPresetTabExpanded,
@@ -129,8 +148,6 @@ class ExpandedContainer extends Component {
       onSettingChange,
       pluginState,
       presetState,
-      runtimePolyfillConfig,
-      runtimePolyfillState,
       pluginsLoading,
       plugins,
       pluginValue,
@@ -138,10 +155,7 @@ class ExpandedContainer extends Component {
       loadingExternalPlugins,
     } = this.props;
 
-    const disableEnvSettings =
-      !envPresetState.isLoaded ||
-      !envConfig.isEnvPresetEnabled ||
-      shippedProposalsState.isLoading;
+    const disableEnvSettings = !envConfig.isEnvPresetEnabled;
 
     return (
       <div className={styles.expandedContainer}>
@@ -152,12 +166,15 @@ class ExpandedContainer extends Component {
             label="Settings"
             toggleIsExpanded={this._toggleSettingsTab}
           >
-            <PluginToggle
-              config={runtimePolyfillConfig}
-              label="Evaluate"
-              onSettingChange={onSettingChange}
-              state={runtimePolyfillState}
-            />
+            <label className={styles.settingsLabel}>
+              <input
+                checked={evalEnabled}
+                onChange={this._onSettingCheck("evalEnabled")}
+                className={styles.inputCheckboxLeft}
+                type="checkbox"
+              />
+              Evaluate
+            </label>
             <label className={styles.settingsLabel}>
               <input
                 checked={lineWrap}
@@ -200,11 +217,14 @@ class ExpandedContainer extends Component {
                 <PluginToggle
                   config={state.config}
                   key={preset}
-                  onSettingChange={onSettingChange}
+                  onSettingChange={this.handlePresetChange}
                   state={state}
                 />
               );
             })}
+          </AccordionTab>
+          <AccordionTab isExpanded label="File Explorer">
+            <FileExplorer />
           </AccordionTab>
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}
@@ -226,12 +246,7 @@ class ExpandedContainer extends Component {
                 type="checkbox"
                 onChange={this._onEnvPresetSettingCheck("isEnvPresetEnabled")}
               />
-
-              {envPresetState.isLoading ? (
-                <PresetLoadingAnimation />
-              ) : (
-                "Enabled"
-              )}
+              Enabled
             </label>
 
             <div className={styles.envPresetColumn}>
@@ -259,7 +274,6 @@ class ExpandedContainer extends Component {
               <input
                 className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
                 disabled={
-                  !envPresetState.isLoaded ||
                   !envConfig.isEnvPresetEnabled ||
                   !envConfig.isElectronEnabled
                 }
@@ -322,8 +336,7 @@ class ExpandedContainer extends Component {
                   disabled={
                     !envPresetState.isLoaded ||
                     !envConfig.isEnvPresetEnabled ||
-                    !envConfig.isBuiltInsEnabled ||
-                    runtimePolyfillState.isEnabled
+                    !envConfig.isBuiltInsEnabled
                   }
                 >
                   <option value="entry">Entry</option>
@@ -384,9 +397,7 @@ class ExpandedContainer extends Component {
                 <input
                   checked={debugEnvPreset}
                   className={styles.inputCheckboxLeft}
-                  disabled={
-                    disableEnvSettings || runtimePolyfillState.isEnabled
-                  }
+                  disabled={disableEnvSettings}
                   onChange={this._onSettingCheck("debugEnvPreset")}
                   type="checkbox"
                 />
@@ -694,7 +705,7 @@ const styles = {
   pluginsHeader: css({
     display: "flex",
     justifyContent: "space-between",
-    paddingRight: 5
+    paddingRight: 5,
   }),
   accordionLabelVersion: css({
     fontSize: "1rem",
@@ -715,7 +726,7 @@ const styles = {
     color: colors.inverseForeground,
   }),
   settingsLabel: css({
-    flex: "0 0 2rem",
+    flex: "0 0 1.5rem",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",

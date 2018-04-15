@@ -32,6 +32,9 @@ const config = {
     react: 'React',
     'react-dom': 'ReactDOM',
   },
+  performance: {
+    hints: false,
+  },
 };
 
 if (process.env.NODE_ENV !== 'production') {
