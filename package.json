@@ -71,7 +71,7 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-instantsearch": "^5.0.3",
-    "react-smooshpack": "0.0.32",
+    "react-smooshpack": "0.0.33",
     "semver": "^5.4.1",
     "unfetch": "^3.0.0",
     "worker-loader": "^1.1.1"

@@ -533,6 +533,7 @@ class Repl extends React.Component<Props, State> {
     const getPackageNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : `babel-preset-${key}`;
 
     // TODO: handle 3rd party presets?
+    const plugins = [];
     const presets = requestedPresets.slice();
 
     if (envConfig.isEnvPresetEnabled) {
@@ -559,12 +560,17 @@ class Repl extends React.Component<Props, State> {
       // packageDeps[getPackageNameFromKey("env", useScoped)] = packageVersion;
     }
 
+    Object.keys(userPlugins).forEach(plugin => {
+      plugins.push(plugin);
+      packageDeps[plugin] = userPlugins[plugin];
+    });
+
     const files = {
       "/.babelrc": {
         code: JSON.stringify({
           // TODO: handle state.externalPlugins
-          plugins: [],
-          presets: presets,
+          plugins,
+          presets,
           sourceMaps: evalEnabled,
         }, null, 2),
       },
@@ -579,17 +585,13 @@ class Repl extends React.Component<Props, State> {
       };
 
       if (envConfig.isEnvPresetEnabled) {
-        items.babelEnvUrl = config.buildArtifacts.envStandalone;
+        items.babelEnvURL = config.buildArtifacts.envStandalone;
       }
 
       files["/babel-transpiler.json"] = {
         code: JSON.stringify(items, null, 2),
       };
     }
-
-    Object.keys(userPlugins).forEach(plugin => {
-      packageDeps[plugin] = userPlugins[plugin];
-    });
 
     return {
       dependencies: packageDeps,
