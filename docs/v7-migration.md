@@ -146,6 +146,10 @@ Note this does not apply to the CLI, where `--presets es2015,es2016` will certai
 }
 ```
 
+## Plugin/Preset Exports
+
+All plugins/presets should now export a function rather than an object for consistency [via [babel/babel#6494](https://github.com/babel/babel/pull/6494)]. This will help us with caching.
+
 ## Resolving string-based config values
 
 In Babel 6, values passed to Babel directly (not from a config file), were resolved relative to the files being compiled, which led to lots of confusion.
