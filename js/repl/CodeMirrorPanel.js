@@ -104,11 +104,13 @@ const sharedBoxStyles = {
 
 const styles = {
   codeMirror: css({
-    display: "block",
-    height: "100%",
-    width: "100%",
-    overflow: "auto",
-    position: "relative",
+    bottom: "0",
+    display: "flex",
+    left: "0",
+    overflow: "hidden",
+    position: "absolute",
+    right: "0",
+    top: "0",
   }),
   error: css({
     order: 2,
@@ -126,11 +128,11 @@ const styles = {
     ...sharedBoxStyles,
   }),
   panel: css({
-    height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "stretch",
     overflow: "auto",
+    position: "relative",
   }),
   fileSize: css({
     position: "absolute",

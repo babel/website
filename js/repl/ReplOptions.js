@@ -2,7 +2,6 @@
 
 import { css } from "emotion";
 import React, { Component } from "react";
-import { FileExplorer } from "react-smooshpack/es/components";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
@@ -18,6 +17,7 @@ import type {
   PluginState,
   EnvState,
   PluginStateMap,
+  SidebarTabSection,
 } from "./types";
 
 const PRESET_ORDER = [
@@ -57,20 +57,15 @@ type Props = {
   pluginSearch: PluginSearch,
   envPresetState: EnvState,
   shippedProposalsState: ShippedProposalsState,
-  isEnvPresetTabExpanded: boolean,
   isPluginsExpanded: boolean,
   fileSize: boolean,
   isExpanded: boolean,
-  isPresetsTabExpanded: boolean,
-  isSettingsTabExpanded: boolean,
   lineWrap: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
-  onTabExpandedChange: OnTabExpandedChange,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
-  loadingExternalPlugins: boolean,
 };
 
 type LinkProps = {
@@ -101,15 +96,31 @@ export default function ReplOptions(props: Props) {
   );
 }
 
+type State = {
+  isEnvTabExpanded: boolean,
+  isPluginsTabExpanded: boolean,
+  isPresetsTabExpanded: boolean,
+  isSettingsTabExpanded: boolean,
+};
+
 // The choice of Component over PureComponent is intentional here.
 // It simplifies the re-use of PluginState objects,
 // Without requiring gratuitous use of Object-spread.
-class ExpandedContainer extends Component {
-  props: Props;
-
+class ExpandedContainer extends Component<Props, State> {
   static defaultProps = {
     className: "",
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isEnvTabExpanded: props.envConfig.isEnvPresetEnabled,
+      isPluginsTabExpanded: Object.keys(props.userPlugins).length > 0,
+      isPresetsTabExpanded: Object.keys(props.presetState).length > 0,
+      isSettingsTabExpanded: true, // TODO
+    };
+  }
 
   handlePresetChange = (name: string, isEnabled: boolean) => {
     const { onSettingChange, presetState } = this.props;
@@ -130,6 +141,15 @@ class ExpandedContainer extends Component {
     );
   };
 
+  handleToggleTabExpanded = (tab: SidebarTabSection) => {
+    const parsedTab = tab.charAt(0).toUpperCase() + tab.slice(1);
+    const key = `is${parsedTab}TabExpanded`;
+
+    this.setState((state: State) => ({
+      [key]: !state[key],
+    }));
+  };
+
   render() {
     const {
       babelVersion,
@@ -139,21 +159,23 @@ class ExpandedContainer extends Component {
       evalEnabled,
       shippedProposalsState,
       fileSize,
-      isEnvPresetTabExpanded,
-      isPluginsExpanded,
-      isPresetsTabExpanded,
-      isSettingsTabExpanded,
       lineWrap,
       onIsExpandedChange,
       onSettingChange,
+      onUserPluginChange,
       pluginState,
       presetState,
-      pluginsLoading,
-      plugins,
       pluginValue,
       showOfficialExternalPlugins,
-      loadingExternalPlugins,
+      userPlugins,
     } = this.props;
+
+    const {
+      isEnvTabExpanded,
+      isPluginsTabExpanded,
+      isPresetsTabExpanded,
+      isSettingsTabExpanded,
+    } = this.state;
 
     const disableEnvSettings = !envConfig.isEnvPresetEnabled;
 
@@ -164,7 +186,8 @@ class ExpandedContainer extends Component {
             className={styles.section}
             isExpanded={isSettingsTabExpanded}
             label="Settings"
-            toggleIsExpanded={this._toggleSettingsTab}
+            onToggleExpanded={this.handleToggleTabExpanded}
+            tabKey="settings"
           >
             <label className={styles.settingsLabel}>
               <input
@@ -206,7 +229,8 @@ class ExpandedContainer extends Component {
             className={styles.section}
             isExpanded={isPresetsTabExpanded}
             label="Presets"
-            toggleIsExpanded={this._togglePresetsTab}
+            onToggleExpanded={this.handleToggleTabExpanded}
+            tabKey="presets"
           >
             {PRESET_ORDER.map(preset => {
               const state = presetState[preset];
@@ -223,12 +247,9 @@ class ExpandedContainer extends Component {
               );
             })}
           </AccordionTab>
-          <AccordionTab isExpanded label="File Explorer">
-            <FileExplorer />
-          </AccordionTab>
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}
-            isExpanded={isEnvPresetTabExpanded}
+            isExpanded={isEnvTabExpanded}
             label={
               <span>
                 Env Preset{" "}
@@ -237,7 +258,8 @@ class ExpandedContainer extends Component {
                 </small>
               </span>
             }
-            toggleIsExpanded={this._toggleEnvPresetTab}
+            onToggleExpanded={this.handleToggleTabExpanded}
+            tabKey="env"
           >
             <label className={styles.settingsLabel}>
               <input
@@ -407,19 +429,11 @@ class ExpandedContainer extends Component {
           </AccordionTab>
 
           <ExternalPlugins
-            loadingExternalPlugins={loadingExternalPlugins}
-            isPluginsExpanded={isPluginsExpanded}
-            _togglePluginsTab={this._togglePluginsTab}
-            _pluginNameChanged={this._pluginNameChanged}
-            _onshowOfficialExternalPluginsChanged={
-              this._onshowOfficialExternalPluginsChanged
-            }
-            _pluginChanged={this._pluginChanged}
-            pluginValue={pluginValue}
-            showOfficialExternalPlugins={showOfficialExternalPlugins}
-            pluginsLoading={pluginsLoading}
-            plugins={plugins}
+            isExpanded={isPluginsTabExpanded}
+            onSelect={onUserPluginChange}
+            onToggleExpanded={this.handleToggleTabExpanded}
             styles={styles}
+            userPlugins={userPlugins}
           />
         </div>
         {babelVersion && (
@@ -452,50 +466,6 @@ class ExpandedContainer extends Component {
 
   _onSettingCheck = (type: string) => (event: SyntheticInputEvent) => {
     this.props.onSettingChange(type, event.target.checked);
-  };
-
-  _toggleEnvPresetTab = () => {
-    this.props.onTabExpandedChange(
-      "isEnvPresetTabExpanded",
-      !this.props.isEnvPresetTabExpanded
-    );
-  };
-
-  _togglePluginsTab = () => {
-    this.props.onTabExpandedChange(
-      "isPluginsExpanded",
-      !this.props.isPluginsExpanded
-    );
-  };
-
-  _togglePresetsTab = () => {
-    this.props.onTabExpandedChange(
-      "isPresetsTabExpanded",
-      !this.props.isPresetsTabExpanded
-    );
-  };
-
-  _pluginNameChanged = value => {
-    this.props.pluginSearch(value);
-  };
-
-  _onshowOfficialExternalPluginsChanged = value => {
-    this.props.showOfficialExternalPluginsChanged(value);
-  };
-
-  _toggleSettingsTab = () => {
-    this.props.onTabExpandedChange(
-      "isSettingsTabExpanded",
-      !this.props.isSettingsTabExpanded
-    );
-  };
-
-  _pluginChanged = (e, plugin) => {
-    const on = e.target.value === "on";
-    const externalPlugins = this.props.externalPlugins;
-    if (!externalPlugins[plugin.name] && on) {
-      this.props.pluginChange(plugin);
-    }
   };
 }
 
@@ -815,11 +785,12 @@ const styles = {
   versionRow: css({
     display: "flex",
     fontFamily: "monospace",
-    fontSize: "0.75rem",
+    fontSize: "0.6rem",
     justifyContent: "flex-end",
     overflow: "hidden",
     padding: "0 1.5rem",
     textOverflow: "ellipsis",
+    textTransform: "uppercase",
     whiteSpace: "nowrap",
 
     [media.large]: {

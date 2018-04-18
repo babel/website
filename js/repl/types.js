@@ -152,3 +152,5 @@ export type SandpackConsumerProps = {
   managerState: SandpackState,
   managerStatus: SandpackStatus,
 };
+
+export type SidebarTabSection = 'env' | 'plugins' | 'presets';

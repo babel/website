@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { css } from "emotion";
+import { OpenInCodeSandbox } from "react-smooshpack/es/components";
 import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplLoader from "./ReplLoader";
 import { colors, media } from "./styles";
@@ -9,7 +10,6 @@ import { getCodeSize } from "./Utils";
 import type { SandpackConsumerProps, SandpackTranspilerContext } from "./types";
 
 type Props = SandpackConsumerProps & {
-  onTranspilerContext: (SandpackTranspilerContext) => void,
   renderEditor: () => React$Node,
   renderLoader: (status: SandpackStatus, errors?: Array<string>) => React$Node,
 };
@@ -42,7 +42,6 @@ export default class ReplEditor extends React.Component<Props, State> {
   componentWillReceiveProps({
     getManagerTranspilerContext,
     managerStatus,
-    onTranspilerContext,
   }: Props) {
     let initialDepsLoaded = this.state.initialDepsLoaded;
 
@@ -61,8 +60,6 @@ export default class ReplEditor extends React.Component<Props, State> {
           availablePresets: mapItemsToStateMap(availablePresets),
           babelVersion,
         };
-
-        onTranspilerContext(transpilerContext);
 
         this.setState({ transpilerContext });
       });
@@ -112,7 +109,7 @@ export default class ReplEditor extends React.Component<Props, State> {
   render() {
     const state = this.state;
     const { code, errors, lineWrap, managerStatus, onCodeChange, renderSidebar, showFileSize } = this.props;
-    console.log(managerStatus)
+
     if (!this.state.initialDepsLoaded || this.state.transpilerContext === null) {
       return this.renderLoader(managerStatus, errors);
     }
@@ -128,27 +125,32 @@ export default class ReplEditor extends React.Component<Props, State> {
       <React.Fragment>
         {renderSidebar(this.state.transpilerContext)}
 
-        <div className={styles.panels}>
-          <CodeMirrorPanel
-            className={styles.codeMirrorPanel}
-            code={code}
-            errorMessage={errors.length ? errors[0].message : undefined}
-            fileSize={getCodeSize(this.state.code)}
-            onChange={onCodeChange}
-            options={options}
-            placeholder="Write code here"
-          />
-          <CodeMirrorPanel
-            className={styles.codeMirrorPanel}
-            code={compiledCode}
-            errorMessage={state.evalErrorMessage}
-            fileSize={compiledCode ? getCodeSize(compiledCode) : null}
-            info={
-              state.debugEnvPreset ? state.envPresetDebugInfo : null
-            }
-            options={options}
-            placeholder="Compiled output will be shown here"
-          />
+        <div className={styles.editorContainer}>
+          <div className={styles.panels}>
+            <CodeMirrorPanel
+              className={styles.codeMirrorPanel}
+              code={code}
+              errorMessage={errors.length ? errors[0].message : undefined}
+              fileSize={getCodeSize(this.state.code)}
+              onChange={onCodeChange}
+              options={options}
+              placeholder="Write code here"
+            />
+            <CodeMirrorPanel
+              className={styles.codeMirrorPanel}
+              code={compiledCode}
+              errorMessage={state.evalErrorMessage}
+              fileSize={compiledCode ? getCodeSize(compiledCode) : null}
+              info={
+                state.debugEnvPreset ? state.envPresetDebugInfo : null
+              }
+              options={options}
+              placeholder="Compiled output will be shown here"
+            />
+          </div>
+          <div className={styles.metaBar}>
+            <OpenInCodeSandbox />
+          </div>
         </div>
       </React.Fragment>
     );
@@ -156,17 +158,27 @@ export default class ReplEditor extends React.Component<Props, State> {
 }
 
 const styles = {
+  editorContainer: css({
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
+  }),
   codeMirrorPanel: css({
     flex: "0 0 50%",
   }),
   panels: css({
-    height: "100%",
-    width: "100%",
     display: "flex",
+    flex: "1",
     flexDirection: "row",
     justifyContent: "stretch",
-    overflow: "auto",
     fontSize: "0.875rem",
     lineHeight: "1.25rem",
+  }),
+  metaBar: css({
+    background: "#141618",
+    flex: "0 0 32px",
+    height: "32px",
   }),
 };

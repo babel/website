@@ -5645,18 +5645,18 @@ react-codemirror2@^4.0.1:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/react-codemirror2/-/react-codemirror2-4.1.0.tgz#f56f5c2a481fded181a55777e066178d194b9709"
 
-react-dom@^16.2.0:
-  version "16.2.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.2.0.tgz#69003178601c0ca19b709b33a83369fe6124c044"
+react-dom@^16.3.2:
+  version "16.3.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-instantsearch@^4.4.2:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/react-instantsearch/-/react-instantsearch-4.5.2.tgz#37c359eb0b1ab9d67690351970d6c59d0269f2c7"
+react-instantsearch@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/react-instantsearch/-/react-instantsearch-5.0.3.tgz#4d082e86678f819949537f2b35acf831325b5a97"
   dependencies:
     algoliasearch "^3.24.0"
     algoliasearch-helper "^2.21.0"
@@ -5664,9 +5664,9 @@ react-instantsearch@^4.4.2:
     lodash "^4.17.4"
     prop-types "^15.5.10"
 
-react-smooshpack@0.0.28:
-  version "0.0.28"
-  resolved "https://registry.yarnpkg.com/react-smooshpack/-/react-smooshpack-0.0.28.tgz#8f08f1b01ef9d09e7a805bf178a85686a503943f"
+react-smooshpack@0.0.32:
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/react-smooshpack/-/react-smooshpack-0.0.32.tgz#080e221244a335f269255fc48ecf6df35a5af98c"
   dependencies:
     classnames "^2.2.5"
     codemirror "^5.35.0"
@@ -5675,11 +5675,11 @@ react-smooshpack@0.0.28:
     react-broadcast "^0.6.2"
     react-codemirror2 "^4.0.1"
     rollup-plugin-scss "^0.4.0"
-    smooshpack "^0.0.28"
+    smooshpack "^0.0.32"
 
-react@^16.2.0:
-  version "16.2.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.2.0.tgz#a31bd2dab89bff65d42134fa187f24d054c273ba"
+react@^16.3.2:
+  version "16.3.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -6590,9 +6590,9 @@ slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
 
-smooshpack@^0.0.28:
-  version "0.0.28"
-  resolved "https://registry.yarnpkg.com/smooshpack/-/smooshpack-0.0.28.tgz#7667bd9c094e8543d7815df1e553a4b3e17f63ff"
+smooshpack@^0.0.32:
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/smooshpack/-/smooshpack-0.0.32.tgz#fbb9679fd469fd03e44548ca7a3c71e00f6ed148"
   dependencies:
     codesandbox-api "^0.0.18"
     codesandbox-import-utils "^1.2.3"

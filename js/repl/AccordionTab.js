@@ -5,39 +5,50 @@ import React from "react";
 import Svg from "./Svg";
 import { colors, media } from "./styles";
 
+import type { SidebarTabSection } from './types';
+
 type Props = {
   children: React$Element<any>,
   className: ?any,
   isExpanded?: boolean,
   label: React$Element<any> | string,
-  toggleIsExpanded: Function,
+  onToggleExpanded: () => mixed,
+  tabKey: SidebarTabSection,
 };
 
-export default function AccordionTab(props: Props) {
-  return (
-    <div className={`${styles.AccordionTab} ${props.className || ""}`}>
-      <div className={styles.HeaderRow} onClick={props.toggleIsExpanded}>
-        <div className={styles.Label}>{props.label}</div>
-        <Svg
-          className={`${styles.Arrow} ${props.isExpanded
-            ? styles.ArrowExpanded
-            : ""}`}
-          path="
-            M15.41,16.58
-            L10.83,12
-            L15.41,7.41
-            L14,6
-            L8,12
-            L14,18
-            L15.41,16.58
-            Z"
-        />
+export default class AccordionTab extends React.Component<Props> {
+  handleToggle = () => {
+    this.props.onToggleExpanded(this.props.tabKey);
+  };
+
+  render() {
+    const { children, className, isExpanded, label } = this.props;
+
+    return (
+      <div className={`${styles.AccordionTab} ${className || ""}`}>
+        <div className={styles.HeaderRow} onClick={this.handleToggle}>
+          <div className={styles.Label}>{label}</div>
+          <Svg
+            className={`${styles.Arrow} ${isExpanded
+              ? styles.ArrowExpanded
+              : ""}`}
+            path="
+              M15.41,16.58
+              L10.83,12
+              L15.41,7.41
+              L14,6
+              L8,12
+              L14,18
+              L15.41,16.58
+              Z"
+          />
+        </div>
+        {isExpanded && (
+          <div className={styles.Content}>{children}</div>
+        )}
       </div>
-      {props.isExpanded && (
-        <div className={styles.Content}>{props.children}</div>
-      )}
-    </div>
-  );
+    )
+  }
 }
 
 const styles = {
@@ -67,8 +78,8 @@ const styles = {
   }),
   Label: css({
     flex: "1",
-    fontWeight: "bold",
-    fontSize: "0.9375rem",
+    fontWeight: "400",
+    fontSize: "0.875rem",
   }),
   Arrow: css({
     height: "1.5rem",

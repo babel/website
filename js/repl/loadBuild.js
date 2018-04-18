@@ -17,8 +17,6 @@ const loadBuild = async (
 
   if (!b) return null;
 
-  let url;
-
   const isBuildNumeric = /^[0-9]+$/.test(b);
 
   if (!isBuildNumeric) {
@@ -34,16 +32,7 @@ const loadBuild = async (
     );
   }
 
-  const packageFile = `${packageName.replace(/-standalone/, "")}.js`;
-  const regExp = new RegExp(`${packageName}/${packageFile}$`);
-
-  const p = await loadBuildArtifacts(
-    repoUrl,
-    regExp,
-    b,
-  );
-
-  return p;
+  return loadBuildArtifacts(repoUrl, b);
 };
 
 export default loadBuild;

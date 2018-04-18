@@ -2,7 +2,7 @@
 
 import "regenerator-runtime/runtime";
 
-import { css } from "emotion";
+import { css, keyframes } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
 import {
@@ -58,9 +58,8 @@ type State = {
   compiled: ?string,
   compileErrorMessage: ?string,
   config: {
-    error: boolean,
+    error: ?string,
     ready: boolean,
-    status: string,
     transpilerUrl: ?string,
   },
   configError: ?string,
@@ -83,6 +82,7 @@ type State = {
   sourceMap: ?string,
   externalPlugins: Array<string>,
   pluginSearch: ?string,
+  userPlugins: { [name: string]: string },
   version: number,
   showOfficialExternalPlugins: boolean,
   loadingExternalPlugins: boolean,
@@ -104,26 +104,8 @@ class Repl extends React.Component<Props, State> {
       ? persistedState.presets.split(",")
       : [];
 
-    const presets = [];
-    let isEnvTabExpanded = false;
-    let isPresetsTabExpanded = false;
-
     // TODO(bng): temporary
-    persistedPresets.forEach(p => {
-      if (!p) return;
-
-      if (p === "env") {
-        if (!isEnvTabExpanded) {
-          isEnvTabExpanded = true;
-        }
-      } else {
-        if (!isPresetsTabExpanded) {
-          isPresetsTabExpanded = true;
-        }
-
-        presets.push(p);
-      }
-    });
+    const presets = persistedPresets.filter(p => p && p !== "env");
 
     const envConfig = persistedStateToEnvConfig(persistedState);
 
@@ -134,15 +116,9 @@ class Repl extends React.Component<Props, State> {
       compileErrorMessage: null,
       compiled: null,
       config: {
+        buildArtifacts: null,
         error: null,
-        files: {
-          './index.js': {
-            code: '',
-          },
-        },
         ready: false,
-        status: "Initializing...",
-        transpilerUrl: null,
       },
       debugEnvPreset: persistedState.debug,
       envConfig,
@@ -154,10 +130,7 @@ class Repl extends React.Component<Props, State> {
       ),
       evalEnabled: false,
       evalErrorMessage: null,
-      externalPlugins: [],
       fileSize: persistedState.fileSize,
-      isEnvPresetTabExpanded: isEnvTabExpanded,
-      isPresetsTabExpanded,
       isPluginsExpanded: false,
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
@@ -172,12 +145,17 @@ class Repl extends React.Component<Props, State> {
       ),
       showOfficialExternalPlugins: false,
       sourceMap: null,
+      userPlugins: {},
     };
   }
 
   componentDidMount() {
     this.setupBabel();
   }
+
+  handleUserPluginChange = (userPlugins) => {
+    this.setState({ userPlugins });
+  };
 
   renderOptions = ({ availablePresets, babelVersion }) => {
     const state = this.state;
@@ -209,36 +187,31 @@ class Repl extends React.Component<Props, State> {
         evalEnabled={state.evalEnabled}
         shippedProposalsState={state.shippedProposalsState}
         fileSize={state.fileSize}
-        isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
         isExpanded={state.isSidebarExpanded}
-        isPluginsExpanded={state.isPluginsExpanded}
-        isPresetsTabExpanded={state.isPresetsTabExpanded}
         isSettingsTabExpanded={state.isSettingsTabExpanded}
         lineWrap={state.lineWrap}
         onEnvPresetSettingChange={this._onEnvPresetSettingChange}
         onIsExpandedChange={this._onIsSidebarExpandedChange}
         onSettingChange={this._onSettingChange}
         onTabExpandedChange={this._onTabExpandedChange}
+        onUserPluginChange={this.handleUserPluginChange}
         pluginState={state.plugins}
         presetState={presets}
-        externalPlugins={state.externalPlugins}
-        pluginChange={this._pluginChange}
-        pluginSearch={this._pluginSearch}
-        pluginValue={state.pluginSearch}
-        showOfficialExternalPluginsChanged={
-          this._showOfficialExternalPluginsChanged
-        }
-        showOfficialExternalPlugins={state.showOfficialExternalPlugins}
-        loadingExternalPlugins={state.loadingExternalPlugins}
+        userPlugins={state.userPlugins}
       />
     );
   };
 
   render() {
-    const state = this.state;
+    const { code, config, evalEnabled, fileSize, lineWrap } = this.state;
+
+    if (!config.ready) {
+      let message = config.error || 'Initializing...';
+      return <ReplLoader isLoading={false} message={message} />
+    }
 
     const { files, dependencies } = this.mapStateToConfigs();
-    console.log(5, files, dependencies);
+    console.log(files, dependencies);
     return (
       <SandpackProvider
         files={files}
@@ -246,34 +219,23 @@ class Repl extends React.Component<Props, State> {
         dependencies={dependencies}
         template="babel-repl"
         entry="/index.js"
-        skipEval={!state.evalEnabled}
+        skipEval={!evalEnabled}
       >
         <SandpackConsumer>
           {sandpackProps => (
             <ReplEditor
               {...sandpackProps}
-              code={this.state.code}
-              lineWrapping={state.lineWrap}
+              code={code}
+              lineWrapping={lineWrap}
               onCodeChange={this._updateCode}
-              onTranspilerContext={this.handleTranspilerContext}
               renderSidebar={this.renderOptions}
-              showFileSize={state.fileSize}
+              showFileSize={fileSize}
             />
           )}
         </SandpackConsumer>
       </SandpackProvider>
     );
   }
-
-  handleTranspilerContext = (transpilerContext) => {
-    this.setState(({ config }) => ({
-      config: {
-        ...config,
-        ready: true,
-        transpilerContext,
-      },
-    }));
-  };
 
   // TODO(bng): replace this with package.json deps passed to sandpack
   // async _checkForUnloadedPlugins() {
@@ -393,11 +355,6 @@ class Repl extends React.Component<Props, State> {
   //     }
   //   }
   // }
-
-  _pluginSearch = value =>
-    this.setState({
-      pluginSearch: value,
-    });
 
   _pluginChange = plugin => {
     const pluginExists = this.state.externalPlugins.includes(plugin.name);
@@ -559,68 +516,80 @@ class Repl extends React.Component<Props, State> {
       envPresetState,
       evalEnabled,
       presets: requestedPresets,
+      userPlugins,
     } = this.state;
 
-    let babelrc;
+    let useScoped = true;
+
     const packageDeps = {};
+    console.log(envConfig, envPresetState);
+    // To simplify things, if `build` is passed, then we assume scoped packages,
+    // as the main use-case for this is for allowing the REPL to test PRs.
 
-    if (config.ready) {
-      const version = config.transpilerContext.babelVersion;
-      const scopeNeeded = semver.gte(version, "7.0.0-beta.5");
+    // TODO: handle parsing version from query string
+    // if (babel.version) {}
 
-      const getConfigNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : key;
-      const getPackageNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : `babel-preset-${key}`;
+    const getConfigNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : key;
+    const getPackageNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : `babel-preset-${key}`;
 
-      // TODO: handle 3rd party presets?
-      const presets = requestedPresets.slice();
+    // TODO: handle 3rd party presets?
+    const presets = requestedPresets.slice();
 
-      if (envConfig.isEnvPresetEnabled) {
-        presets.push([
-          getConfigNameFromKey("env", scopeNeeded),
-          getEnvPresetOptions(envConfig),
-        ]);
+    if (envConfig.isEnvPresetEnabled) {
+      presets.push([
+        getConfigNameFromKey("env", useScoped),
+        getEnvPresetOptions(envConfig),
+      ]);
 
-        let packageVersion;
-        const requestedEnvVersion = envPresetState.version;
+      // if (!envConfig.build) {}
 
-        if (requestedEnvVersion) {
-          packageVersion = requestedEnvVersion;
-        } else if (scopeNeeded) {
-          packageVersion = version;
-        } else if (semver.satisfies(version, "^6")) {
-          packageVersion = "1.6.1";
-        }
+      // let packageVersion = "*";
 
-        packageDeps[getPackageNameFromKey("env", scopeNeeded)] = packageVersion;
-      }
+      // const requestedEnvVersion = envPresetState.version;
+      // if (envPresetState.build) {
+      //   packageVersion = "*";
+      // } if (requestedEnvVersion) {
+      //   packageVersion = requestedEnvVersion;
+      // } else if (useScoped) {
+      //   packageVersion = version;
+      // } else if (semver.satisfies(version, "^6")) {
+      //   packageVersion = "1.6.1";
+      // }
 
-      babelrc = {
-        // TODO: handle state.externalPlugins
-        plugins: [],
-        presets: presets,
-        sourceMaps: evalEnabled,
-      };
+      // packageDeps[getPackageNameFromKey("env", useScoped)] = packageVersion;
     }
 
     const files = {
+      "/.babelrc": {
+        code: JSON.stringify({
+          // TODO: handle state.externalPlugins
+          plugins: [],
+          presets: presets,
+          sourceMaps: evalEnabled,
+        }, null, 2),
+      },
       "/index.js": {
-        code: config.ready ? code : '',
+        code: code,
       },
     };
 
-    if (babelrc) {
-      files["/.babelrc"] = {
-        code: JSON.stringify(babelrc, null, 2),
+    if (config.buildArtifacts) {
+      const items = {
+        babelURL: config.buildArtifacts.babelStandalone,
+      };
+
+      if (envConfig.isEnvPresetEnabled) {
+        items.babelEnvUrl = config.buildArtifacts.envStandalone;
+      }
+
+      files["/babel-transpiler.json"] = {
+        code: JSON.stringify(items, null, 2),
       };
     }
 
-    if (config.transpilerUrl) {
-      files["/babel-transpiler.json"] = {
-        code: JSON.stringify({
-          babelURL: config.transpilerUrl,
-        }, null, 2),
-      };
-    }
+    Object.keys(userPlugins).forEach(plugin => {
+      packageDeps[plugin] = userPlugins[plugin];
+    });
 
     return {
       dependencies: packageDeps,
@@ -632,19 +601,17 @@ class Repl extends React.Component<Props, State> {
   // CircleCI artifact, then we need to generate a config file to let
   // Sandpack know to use it instead of its default.
   async setupBabel() {
-    let transpilerUrl;
+    let buildArtifacts;
 
     try {
-      transpilerUrl = await loadBuild(
+      buildArtifacts = await loadBuild(
         this.state.babel.build,
         this.state.babel.circleciRepo,
       );
     } catch (ex) {
-      console.log('a', ex)
       this.setState({
         config: {
-          error: true,
-          status: ex.message,
+          error: ex.message,
         },
       });
 
@@ -654,7 +621,8 @@ class Repl extends React.Component<Props, State> {
     this.setState({
       config: {
         ...this.state.config,
-        transpilerUrl,
+        buildArtifacts,
+        ready: true,
       },
     });
   }
