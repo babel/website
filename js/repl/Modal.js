@@ -15,6 +15,7 @@ export default class Modal extends Component<Props> {
   };
 
   _node: ?HTMLDivElement;
+  _content: ?HTMLDivElement;
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeydown);
@@ -49,6 +50,12 @@ export default class Modal extends Component<Props> {
     }
   };
 
+  handleContentClick = (e: SyntheticEvent<*>) => {
+    if (e.target !== this._content) return;
+
+    this.props.onClose();
+  };
+
   render() {
     if (!this._node) {
       this._node = document.createElement('div');
@@ -58,12 +65,17 @@ export default class Modal extends Component<Props> {
       }
     }
 
-    const { children, onClose, ...props } = this.props;
+    const { children, onClick, onClose, ...props } = this.props;
 
     const result = (
       <React.Fragment>
-        <div className={styles.overlay} onClick={onClose} />
-        <div className={styles.content} {...props}>
+        <div className={styles.overlay} />
+        <div
+          className={styles.content}
+          onClick={this.handleContentClick}
+          ref={x => this._content = x}
+          {...props}
+        >
           {children}
         </div>
       </React.Fragment>
@@ -85,18 +97,6 @@ const modalFadeIn = keyframes`
   }
 `;
 
-const contentScaleIn = keyframes`
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-`;
-
 const styles = {
   overlay: css`
     animation: ${modalFadeIn} 175ms ease 1 forwards;
@@ -111,7 +111,7 @@ const styles = {
     z-index: 10000;
   `,
   content: css`
-    animation: ${contentScaleIn} 175ms ease 1 forwards;
+    animation: ${modalFadeIn} 175ms ease 1 forwards;
     background: transparent;
     height: 100%;
     overflow-y: auto;

@@ -79,19 +79,18 @@ export default class ExternalPluginsModal extends React.Component<Props, State> 
 
     return (
       <Modal onClose={onClose}>
-        <InstantSearch
-          apiKey={config.apiKey}
-          appId={config.appId}
-          indexName={config.indexName}
-        >
-          <Configure
-            hitsPerPage={5}
-            attributesToRetrieve={["name", "version", "description", "owner"]}
-            attributesToHighlight={["name"]}
-            filters={filters}
-          />
-
-          <div className={styles.modalContent}>
+        <div className={styles.modalContent}>
+          <InstantSearch
+            apiKey={config.apiKey}
+            appId={config.appId}
+            indexName={config.indexName}
+          >
+            <Configure
+              hitsPerPage={5}
+              attributesToRetrieve={["name", "version", "description", "owner"]}
+              attributesToHighlight={["name"]}
+              filters={filters}
+            />
             <div className={styles.modalSearch}>
               <SearchBox inputRef={x => this._input = x} />
               <label>
@@ -130,8 +129,8 @@ export default class ExternalPluginsModal extends React.Component<Props, State> 
             <div className={styles.modalFooter}>
               <PoweredBy />
             </div>
-          </div>
-        </InstantSearch>
+          </InstantSearch>
+        </div>
       </Modal>
     );
   }
@@ -140,12 +139,13 @@ export default class ExternalPluginsModal extends React.Component<Props, State> 
 const styles = {
   modalContent: css`
     background: #22252B;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 50px;
     color: #9EA5B3;
     margin: 40px auto;
     width: 650px;
 
     .ais-Pagination {
-      background: #2a2d35;
+      background: ${colors.inverseBackgroundLight};
       color: #9EA5B3;
       display: flex;
       padding: 0.5rem 0;
@@ -161,9 +161,32 @@ const styles = {
       opacity: 0.5;
       pointer-events: none;
     }
+
+    .ais-Pagination-item {
+      display: inline-block;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      padding: 3px;
+      text-align: center;
+      transition: all .3s ease;
+      width: 28px;
+
+      a {
+        color: ${colors.inverseForegroundLight};
+      }
+    }
+
+    .ais-Pagination-item--selected {
+      background: #F1DA6B;
+      font-weight: 400;
+
+      a {
+        color: ${colors.inverseBackgroundDark};
+      }
+    }
   `,
   modalFooter: css`
-    background: #191A1F;
+    background: ${colors.inverseBackgroundDark};
     display: flex;
     font-size: 0.75rem;
     padding: 0.5rem 1rem;
@@ -179,7 +202,12 @@ const styles = {
     }
 
     .ais-PoweredBy-logo {
-      fill: #FFF;
+      height: 20px;
+      width: 74px;
+
+      path:last-child {
+        fill: #FFF !important;
+      }
     }
   `,
   modalSearch: css`
@@ -199,19 +227,19 @@ const styles = {
       }
     }
   `,
-  item: css`
-    align-items: center;
-    border-bottom: 1px solid rgb(24, 26, 31);
-    cursor: pointer;
-    display: flex;
-    font-size: 0.875rem;
-    padding: 0.5rem 1rem;
+  item: css({
+    alignItems: "center",
+    borderBottom: `1px solid ${colors.inverseBackgroundDark}`,
+    cursor: "pointer",
+    display: "flex",
+    fontSize: "0.875rem",
+    padding: "0.5rem 1rem",
+    transition: "all 0.25s ease-out",
 
-    &:hover {
-      background: ${colors.inverseBackgroundLight},
-    }
-  `,
-
+    "&:hover": {
+      backgroundColor: "#455569",
+    },
+  }),
   itemName: css`
     flex: 1;
 

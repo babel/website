@@ -64,7 +64,7 @@
   "dependencies": {
     "babel-plugin-emotion": "^8.0.2-11",
     "codemirror": "5.30.0",
-    "emotion": "^8.0.2-12",
+    "emotion": "^9.1.2",
     "lodash.camelcase": "^4.3.0",
     "lodash.debounce": "^4.0.8",
     "lz-string": "^1.4.4",

@@ -149,7 +149,13 @@ export default class ReplEditor extends React.Component<Props, State> {
             />
           </div>
           <div className={styles.metaBar}>
-            <OpenInCodeSandbox />
+            <OpenInCodeSandbox
+              render={() => (
+                <button className="" type="submit">
+                  Open in CodeSandbox!
+                </button>
+              )}
+            />
           </div>
         </div>
       </React.Fragment>

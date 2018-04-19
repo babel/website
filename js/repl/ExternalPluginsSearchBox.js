@@ -13,7 +13,7 @@ export class SearchBox extends React.PureComponent {
       <input
         className={style}
         onChange={this.handleChange}
-        placeholder="Type in plugin's package name (ex. babel-plugin-lodash)"
+        placeholder="Type in a package name (ex. babel-plugin-lodash)"
         ref={this.props.inputRef}
         type="text"
         value={this.props.currentRefinement}
@@ -33,6 +33,7 @@ const style = css`
 
   &::placeholder {
     color: #9EA5B3;
+    opacity: 0.5;
   }
 `;
 

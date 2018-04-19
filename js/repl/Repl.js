@@ -80,12 +80,7 @@ type State = {
   plugins: PluginStateMap,
   presets: PluginStateMap,
   sourceMap: ?string,
-  externalPlugins: Array<string>,
-  pluginSearch: ?string,
   userPlugins: { [name: string]: string },
-  version: number,
-  showOfficialExternalPlugins: boolean,
-  loadingExternalPlugins: boolean,
 };
 
 class Repl extends React.Component<Props, State> {
@@ -135,7 +130,6 @@ class Repl extends React.Component<Props, State> {
       isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
-      pluginSearch: "",
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
       presets,
       shippedProposalsState: persistedStateToShippedProposalsState(
@@ -143,7 +137,6 @@ class Repl extends React.Component<Props, State> {
         shippedProposalsConfig,
         envConfig.isEnvPresetEnabled && envConfig.shippedProposals
       ),
-      showOfficialExternalPlugins: false,
       sourceMap: null,
       userPlugins: {},
     };
@@ -237,178 +230,6 @@ class Repl extends React.Component<Props, State> {
     );
   }
 
-  // TODO(bng): replace this with package.json deps passed to sandpack
-  // async _checkForUnloadedPlugins() {
-  //   const {
-  //     envConfig,
-  //     envPresetState,
-  //     shippedProposalsState,
-  //     plugins,
-  //     runtimePolyfillState,
-  //   } = this.state;
-
-  //   // Assume all default presets are baked into babel-standalone.
-  //   // We really only need to worry about plugins.
-  //   for (const key in plugins) {
-  //     const plugin = plugins[key];
-
-  //     if (plugin.isEnabled && !plugin.isLoaded && !plugin.isLoading) {
-  //       this._numLoadingPlugins++;
-  //       this._workerApi.loadPlugin(plugin).then(success => {
-  //         this._numLoadingPlugins--;
-
-  //         // If a plugin has failed to load, re-render to show a loading error.
-  //         if (!success) {
-  //           this.setState({ plugins });
-  //         }
-
-  //         // Once all plugins have been loaded, re-compile code.
-  //         if (this._numLoadingPlugins === 0) {
-  //           this._updateCode(this.state.code);
-  //         }
-  //       });
-  //     }
-  //   }
-
-  //   // Babel (runtime) polyfill is large;
-  //   // It's only needed if we're actually executing the compiled code.
-  //   // Defer loading it unless "evaluate" is enabled.
-  //   if (runtimePolyfillState.isEnabled && !runtimePolyfillState.isLoaded) {
-  //     // Compilation is done in a web worker for performance reasons,
-  //     // But eval requires the UI thread so code can access globals like window.
-  //     // Because of this, the runtime polyfill must be loaded on the UI thread.
-  //     // We also eval in an iframe so the polyfills need to be accessible there.
-  //     // We could copy them from window to frame.contentWindow,
-  //     // But it's less error-prone to just load the polyfills into the iframe.
-  //     loadPlugin(
-  //       runtimePolyfillState,
-  //       () => {
-  //         let evalErrorMessage: ?string = null;
-
-  //         if (!this.state.compiled) {
-  //           return;
-  //         }
-
-  //         // No need to recompile at this point;
-  //         // Just evaluate the most recently compiled code.
-  //         try {
-  //           // eslint-disable-next-line
-  //           scopedEval.execute(this.state.compiled, this.state.sourceMap);
-  //         } catch (error) {
-  //           evalErrorMessage = error.message;
-  //         }
-
-  //         // Re-render (even if no error) to update the label loading-state.
-  //         this.setState({ evalErrorMessage });
-  //       },
-  //       scopedEval.getIframe()
-  //     );
-  //   }
-
-  //   // Babel 'env' preset is large;
-  //   // Only load it if it's been requested.
-  //   if (envConfig.isEnvPresetEnabled && !envPresetState.isLoaded) {
-  //     envPresetState.isLoading = true;
-  //     loadBundle(envPresetState, this._workerApi).then(() => {
-  //       // This preset is not built into Babel standalone due to its size.
-  //       // Before we can use it we need to explicitly register it.
-  //       // Because it's loaded in a worker, we need to configure it there as well.
-  //       this._workerApi
-  //         .registerEnvPreset()
-  //         .then(() => this._updateCode(this.state.code));
-  //     });
-  //   }
-  //   if (
-  //     envConfig.isEnvPresetEnabled &&
-  //     envConfig.shippedProposals &&
-  //     !shippedProposalsState.isLoaded
-  //   ) {
-  //     const availablePlugins = await this._workerApi.getAvailablePlugins();
-  //     const availablePluginsNames = availablePlugins.map(({ label }) => label);
-  //     const notRegisteredPackages = shippedProposalsState.config.packages
-  //       .filter(
-  //         packageState => !availablePluginsNames.includes(packageState.label)
-  //       )
-  //       .map(config =>
-  //         configToState({ ...config, version: this.state.babel.version }, true)
-  //       );
-
-  //     if (notRegisteredPackages.length) {
-  //       shippedProposalsState.isLoading = true;
-  //       const plugins = await Promise.all(
-  //         notRegisteredPackages.map(state => loadBundle(state, this._workerApi))
-  //       );
-  //       const allPluginsAreLoaded = plugins.every(({ isLoaded }) => isLoaded);
-  //       if (allPluginsAreLoaded) {
-  //         await this._workerApi.registerPlugins(
-  //           plugins.map(({ config }) => ({
-  //             instanceName: config.instanceName,
-  //             pluginName: config.label,
-  //           }))
-  //         );
-  //         shippedProposalsState.isLoaded = true;
-  //         this._updateCode(this.state.code);
-  //       } else {
-  //         shippedProposalsState.didError = true;
-  //       }
-  //       shippedProposalsState.isLoading = false;
-  //     }
-  //   }
-  // }
-
-  _pluginChange = plugin => {
-    const pluginExists = this.state.externalPlugins.includes(plugin.name);
-
-    this.setState({ loadingExternalPlugins: true });
-
-    const bundledUrl = `https://bundle.run/${plugin.name}@${plugin.version}`;
-
-    // TODO(bng): replace
-    // this._workerApi.loadExternalPlugin(bundledUrl).then(loaded => {
-    //   if (loaded === false) {
-    //     this.setState({
-    //       compileErrorMessage: `Plugin ${plugin.name} could not be loaded`,
-    //       loadingExternalPlugins: false,
-    //     });
-    //     return;
-    //   }
-
-    //   this._workerApi
-    //     .registerPlugins([
-    //       {
-    //         instanceName: toCamelCase(plugin.name),
-    //         pluginName: plugin.name,
-    //       },
-    //     ])
-    //     .then(() => {
-    //       this.setState({ loadingExternalPlugins: false });
-    //     });
-
-    //   if (!pluginExists) {
-    //     this.setState(
-    //       state => ({
-    //         externalPlugins: [...state.externalPlugins, plugin.name],
-    //       }),
-    //       this._pluginsUpdatedSetStateCallback
-    //     );
-    //   } else {
-    //     this.setState(
-    //       state => ({
-    //         externalPlugins: state.externalPlugins.filter(
-    //           p => p !== plugin.name
-    //         ),
-    //       }),
-    //       this._pluginsUpdatedSetStateCallback
-    //     );
-    //   }
-    // });
-  };
-
-  _showOfficialExternalPluginsChanged = () =>
-    this.setState(state => ({
-      showOfficialExternalPlugins: !state.showOfficialExternalPlugins,
-    }));
-
   _onEnvPresetSettingChange = (name: string, value: any) => {
     this.setState(
       state => ({
@@ -448,15 +269,6 @@ class Repl extends React.Component<Props, State> {
         };
       }
     }, this._pluginsUpdatedSetStateCallback);
-  };
-
-  _onTabExpandedChange = (name: string, isExpanded: boolean) => {
-    this.setState(
-      {
-        [name]: isExpanded,
-      },
-      this._pluginsUpdatedSetStateCallback
-    );
   };
 
   _persistState = () => {
