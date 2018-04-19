@@ -11,7 +11,7 @@ custom_js_with_timestamps:
 - docs.js
 ---
 
-[EDIT: please refer to the new upgrade page](http://new.babeljs.io/docs/en/next/v7-migration.html)
+[EDIT: please refer to the new upgrade page](http://new.babeljs.io/docs/en/next/v7-migration-api.html)
 
 Refer users to this document for those that create tools that depend on Babel (such as Babel plugins).
 
