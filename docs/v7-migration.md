@@ -7,7 +7,7 @@ Refer users to this document when upgrading to Babel 7.
 
 <!--truncate-->
 
-Help edit this file [here](https://github.com/babel/website/blob/mster/docs/v7-migration.md)
+Help edit this file [here](https://github.com/babel/website/blob/master/docs/v7-migration.md)
 
 Because not every breaking change will affect every project, we've sorted the sections by the likelihood of a change breaking tests when upgrading.
 
