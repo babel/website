@@ -26,6 +26,8 @@ If you import a Babel package in a library you may need to use `.default` when u
 
 ## `@babel/core`
 
+Changed `ast` to be false by default for performance (most tools aren't using it) [babel/babel#7436](https://github.com/babel/babel/pull/7436/commits/8e3e6e0a8838607c5a01ba4232c4d3ff8dee5db0).
+
 The publicly exposed but undocumented `Pipeline` class has been removed. Best to use the transformation methods exposed from `@babel/core` directly [babel/babel#5376](https://github.com/babel/babel/pull/5376).
 
 The `babel.util.*` helper methods have been removed, and `util.EXTENSIONS` has been moved to `babel.DEFAULT_EXTENSIONS` [babel/babel#5487](https://github.com/babel/babel/pull/5487).
@@ -43,7 +45,6 @@ Removed `path.mark()` since we didn't use it and it can be implemented in your o
 Removed `babel.metadata` since the generated plugin metadata is always included in the output result.
 
 Removed `path.hub.file.addImport`. You can use the `@babel/helper-module-imports` module instead.
-
 
 ```diff
 +  import { addDefault } from "babel-helper-module-imports";
