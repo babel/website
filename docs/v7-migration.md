@@ -69,7 +69,14 @@ module.exports = {
 
 ### [Switch to `-proposal-` for TC39 Proposals](/blog/2017/12/27/nearing-the-7.0-release.html#renames-proposal)
 
-Example: `@babel/plugin-transform-class-properties` became `@babel/plugin-proposal-class-properties`.
+This means any plugin that isn't in a yearly release (ES2015, ES2016, etc) should be renamed to `-proposal`. This is so we can better signify that a proposal isn't officially in JavaScript.
+
+Examples:
+
+- `@babel/plugin-transform-function-bind` is now `@babel/plugin-proposal-function-bind` (Stage 0)
+- `@babel/plugin-transform-class-properties` is now `@babel/plugin-proposal-class-properties` (Stage 3)
+
+This also means that when a proposal moves to Stage 4, we should rename the package.
 
 ### [Remove the year from package names](/blog/2017/12/27/nearing-the-7.0-release.html#renames-drop-the-year-from-the-plugin-name)
 
