@@ -43,7 +43,6 @@ type PluginSearch = (value: string) => void;
 type PluginChange = (plugin: Object) => void;
 
 type Props = {
-  babelVersion: ?string,
   className: string,
   debugEnvPreset: boolean,
   pluginsLoading: boolean,
@@ -152,7 +151,6 @@ class ExpandedContainer extends Component<Props, State> {
 
   render() {
     const {
-      babelVersion,
       debugEnvPreset,
       envConfig,
       envPresetState,
@@ -296,8 +294,7 @@ class ExpandedContainer extends Component<Props, State> {
               <input
                 className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
                 disabled={
-                  !envConfig.isEnvPresetEnabled ||
-                  !envConfig.isElectronEnabled
+                  !envConfig.isEnvPresetEnabled || !envConfig.isElectronEnabled
                 }
                 type="number"
                 min={envPresetDefaults.electron.min}
@@ -436,11 +433,6 @@ class ExpandedContainer extends Component<Props, State> {
             userPlugins={userPlugins}
           />
         </div>
-        {babelVersion && (
-          <div className={styles.versionRow} title={`v${babelVersion}`}>
-            v{babelVersion}
-          </div>
-        )}
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
           onClick={() => onIsExpandedChange(false)}

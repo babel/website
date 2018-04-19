@@ -3,6 +3,7 @@ import React from "react";
 import { css } from "emotion";
 import { OpenInCodeSandbox } from "react-smooshpack/es/components";
 import CodeMirrorPanel from "./CodeMirrorPanel";
+import CodeSandboxLogo from "./CodeSandboxLogo";
 import ReplLoader from "./ReplLoader";
 import { colors, media } from "./styles";
 import { getCodeSize } from "./Utils";
@@ -53,7 +54,9 @@ export default class ReplEditor extends React.Component<Props, State> {
       this._loadingTranspilerContext = true;
 
       getManagerTranspilerContext().then(context => {
-        const { availablePlugins, availablePresets, babelVersion } = context["babel-loader"];
+        const { availablePlugins, availablePresets, babelVersion } = context[
+          "babel-loader"
+        ];
 
         const transpilerContext = {
           availablePlugins: mapItemsToStateMap(availablePlugins),
@@ -108,9 +111,19 @@ export default class ReplEditor extends React.Component<Props, State> {
 
   render() {
     const state = this.state;
-    const { code, errors, lineWrap, managerStatus, onCodeChange, renderSidebar, showFileSize } = this.props;
+    const {
+      code,
+      errors,
+      lineWrap,
+      managerStatus,
+      onCodeChange,
+      renderSidebar,
+      showFileSize,
+    } = this.props;
 
-    if (!this.state.initialDepsLoaded || this.state.transpilerContext === null) {
+    const transpilerContext = this.state.transpilerContext;
+
+    if (!this.state.initialDepsLoaded || transpilerContext === null) {
       return this.renderLoader(managerStatus, errors);
     }
 
@@ -119,11 +132,12 @@ export default class ReplEditor extends React.Component<Props, State> {
       lineWrapping: lineWrap,
     };
 
-    const compiledCode = managerStatus !== "transpiling" ? this.getCompiledCode() : null;
+    const compiledCode =
+      managerStatus !== "transpiling" ? this.getCompiledCode() : null;
 
     return (
       <React.Fragment>
-        {renderSidebar(this.state.transpilerContext)}
+        {renderSidebar(transpilerContext)}
 
         <div className={styles.editorContainer}>
           <div className={styles.panels}>
@@ -141,18 +155,26 @@ export default class ReplEditor extends React.Component<Props, State> {
               code={compiledCode}
               errorMessage={state.evalErrorMessage}
               fileSize={compiledCode ? getCodeSize(compiledCode) : null}
-              info={
-                state.debugEnvPreset ? state.envPresetDebugInfo : null
-              }
+              info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
               options={options}
               placeholder="Compiled output will be shown here"
             />
           </div>
           <div className={styles.metaBar}>
+            <div className={styles.metaVersion}>
+              Babel Version: {transpilerContext.babelVersion}
+            </div>
             <OpenInCodeSandbox
               render={() => (
-                <button className="" type="submit">
-                  Open in CodeSandbox!
+                <button className={styles.codeSandbox} type="submit">
+                  <div>
+                    <CodeSandboxLogo
+                      className={styles.codeSandboxLogo}
+                      color={colors.inverseForegroundLight}
+                      size={18}
+                    />
+                    Open in CodeSandbox
+                  </div>
                 </button>
               )}
             />
@@ -182,9 +204,43 @@ const styles = {
     fontSize: "0.875rem",
     lineHeight: "1.25rem",
   }),
-  metaBar: css({
-    background: "#141618",
-    flex: "0 0 32px",
-    height: "32px",
-  }),
+  metaBar: css`
+    align-items: center;
+    background: #141618;
+    color: ${colors.inverseForegroundLight};
+    display: flex;
+    flex: 0 0 32px;
+    font-size: 0.688rem;
+    height: 32px;
+    padding: 0 1rem;
+  `,
+  metaVersion: css`
+    flex: 1;
+    margin-right: 1rem;
+  `,
+  codeSandbox: css`
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: currentColor;
+    cursor: pointer;
+    display: flex;
+    font-size: 0.688rem;
+    height: 32px;
+    outline: 0;
+    padding: 0 0.5rem;
+
+    &:hover {
+      background: ${colors.inverseBackgroundLight};
+    }
+
+    > div {
+      align-items: center;
+      display: flex;
+    }
+  `,
+  codeSandboxLogo: css`
+    margin-left: auto;
+    margin-right: 0.5rem;
+  `,
 };

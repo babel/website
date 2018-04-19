@@ -40,7 +40,9 @@ export async function loadBuildArtifacts(
     response.forEach(x => {
       if (x.path.indexOf("babel-standalone/babel.js") > -1) {
         result.babelStandalone = x.url;
-      } else if (x.path.indexOf("babel-preset-env-standalone/babel-preset-env.js") > -1) {
+      } else if (
+        x.path.indexOf("babel-preset-env-standalone/babel-preset-env.js") > -1
+      ) {
         result.envStandalone = x.url;
       }
     });

@@ -12,7 +12,7 @@ import {
 import semver from "semver";
 import { getCodeSize, getEnvPresetOptions } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
-import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from './CircleCI';
+import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./CircleCI";
 import ReplEditor from "./ReplEditor";
 import ReplLoader from "./ReplLoader";
 import ReplOptions from "./ReplOptions";
@@ -25,7 +25,7 @@ import {
   pluginConfigs,
   runtimePolyfillConfig,
 } from "./PluginConfig";
-import loadBuild from './loadBuild';
+import loadBuild from "./loadBuild";
 import {
   envConfigToTargetsString,
   replState,
@@ -55,14 +55,11 @@ type Props = {};
 type State = {
   babel: BabelState,
   code: string,
-  compiled: ?string,
-  compileErrorMessage: ?string,
   config: {
     error: ?string,
     ready: boolean,
     transpilerUrl: ?string,
   },
-  configError: ?string,
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
   envPresetDebugInfo: ?string,
@@ -108,8 +105,6 @@ class Repl extends React.Component<Props, State> {
     this.state = {
       babel: persistedStateToBabelState(persistedState, babelConfig),
       code: persistedState.code,
-      compileErrorMessage: null,
-      compiled: null,
       config: {
         buildArtifacts: null,
         error: null,
@@ -146,11 +141,11 @@ class Repl extends React.Component<Props, State> {
     this.setupBabel();
   }
 
-  handleUserPluginChange = (userPlugins) => {
+  handleUserPluginChange = userPlugins => {
     this.setState({ userPlugins });
   };
 
-  renderOptions = ({ availablePresets, babelVersion }) => {
+  renderOptions = ({ availablePresets }) => {
     const state = this.state;
 
     // TODO(bng): this is super temporary... we need to generally clean up
@@ -167,12 +162,11 @@ class Repl extends React.Component<Props, State> {
       state.presets.reduce((result, p) => {
         result[p] = true;
         return result;
-      }, {}),
+      }, {})
     );
 
     return (
       <ReplOptions
-        babelVersion={babelVersion}
         className={styles.optionsColumn}
         debugEnvPreset={state.debugEnvPreset}
         envConfig={state.envConfig}
@@ -199,8 +193,8 @@ class Repl extends React.Component<Props, State> {
     const { code, config, evalEnabled, fileSize, lineWrap } = this.state;
 
     if (!config.ready) {
-      let message = config.error || 'Initializing...';
-      return <ReplLoader isLoading={false} message={message} />
+      let message = config.error || "Initializing...";
+      return <ReplLoader isLoading={false} message={message} />;
     }
 
     const { files, dependencies } = this.mapStateToConfigs();
@@ -341,8 +335,10 @@ class Repl extends React.Component<Props, State> {
     // TODO: handle parsing version from query string
     // if (babel.version) {}
 
-    const getConfigNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : key;
-    const getPackageNameFromKey = (key, scopeNeeded) => scopeNeeded ? `@babel/preset-${key}` : `babel-preset-${key}`;
+    const getConfigNameFromKey = (key, scopeNeeded) =>
+      scopeNeeded ? `@babel/preset-${key}` : key;
+    const getPackageNameFromKey = (key, scopeNeeded) =>
+      scopeNeeded ? `@babel/preset-${key}` : `babel-preset-${key}`;
 
     // TODO: handle 3rd party presets?
     const plugins = [];
@@ -379,12 +375,16 @@ class Repl extends React.Component<Props, State> {
 
     const files = {
       "/.babelrc": {
-        code: JSON.stringify({
-          // TODO: handle state.externalPlugins
-          plugins,
-          presets,
-          sourceMaps: evalEnabled,
-        }, null, 2),
+        code: JSON.stringify(
+          {
+            // TODO: handle state.externalPlugins
+            plugins,
+            presets,
+            sourceMaps: evalEnabled,
+          },
+          null,
+          2
+        ),
       },
       "/index.js": {
         code: code,
@@ -420,7 +420,7 @@ class Repl extends React.Component<Props, State> {
     try {
       buildArtifacts = await loadBuild(
         this.state.babel.build,
-        this.state.babel.circleciRepo,
+        this.state.babel.circleciRepo
       );
     } catch (ex) {
       this.setState({

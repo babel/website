@@ -1,6 +1,6 @@
 // @flow
 import { css } from "emotion";
-import React from 'react';
+import React from "react";
 import {
   Configure,
   Hits,
@@ -8,9 +8,9 @@ import {
   Pagination,
   PoweredBy,
 } from "react-instantsearch/es/dom";
-import SearchBox from './ExternalPluginsSearchBox';
-import Modal from './Modal';
-import { colors } from './styles';
+import SearchBox from "./ExternalPluginsSearchBox";
+import Modal from "./Modal";
+import { colors } from "./styles";
 
 const config = {
   apiKey: "1f0cc4b7da241f62651b85531d788fbd",
@@ -24,7 +24,10 @@ type State = {
   officialOnly: boolean,
 };
 
-export default class ExternalPluginsModal extends React.Component<Props, State> {
+export default class ExternalPluginsModal extends React.Component<
+  Props,
+  State
+> {
   state = {
     officialOnly: false,
   };
@@ -37,7 +40,7 @@ export default class ExternalPluginsModal extends React.Component<Props, State> 
     }
   }
 
-  handleSelectPlugin = (hit) => {
+  handleSelectPlugin = hit => {
     this.props.onPluginSelect(hit);
     this.props.onClose();
   };
@@ -54,9 +57,7 @@ export default class ExternalPluginsModal extends React.Component<Props, State> 
         <div className={styles.itemName}>
           <strong>
             {hit.name}
-            <span className={styles.itemMeta}>
-              v{hit.version}
-            </span>
+            <span className={styles.itemMeta}>v{hit.version}</span>
           </strong>
 
           <p>{hit.description}</p>
@@ -74,8 +75,8 @@ export default class ExternalPluginsModal extends React.Component<Props, State> 
     const { onClose, onPluginSelect } = this.props;
     const { officialOnly } = this.state;
 
-    const filters = "keywords:babel-plugin" +
-      (officialOnly ? " AND owner.name:babel" : "");
+    const filters =
+      "keywords:babel-plugin" + (officialOnly ? " AND owner.name:babel" : "");
 
     return (
       <Modal onClose={onClose}>
@@ -92,7 +93,7 @@ export default class ExternalPluginsModal extends React.Component<Props, State> 
               filters={filters}
             />
             <div className={styles.modalSearch}>
-              <SearchBox inputRef={x => this._input = x} />
+              <SearchBox inputRef={x => (this._input = x)} />
               <label>
                 <input
                   checked={officialOnly}
@@ -103,29 +104,29 @@ export default class ExternalPluginsModal extends React.Component<Props, State> 
               </label>
             </div>
             <Pagination />
-            <Hits hitComponent={({ hit }) => (
-              <div
-                className={styles.item}
-                key={hit.name}
-                onClick={() => this.handleSelectPlugin(hit)}
-              >
-                <div className={styles.itemName}>
-                  <strong>
-                    {hit.name}
-                    <span className={styles.itemMeta}>
-                      v{hit.version}
-                    </span>
-                  </strong>
+            <Hits
+              hitComponent={({ hit }) => (
+                <div
+                  className={styles.item}
+                  key={hit.name}
+                  onClick={() => this.handleSelectPlugin(hit)}
+                >
+                  <div className={styles.itemName}>
+                    <strong>
+                      {hit.name}
+                      <span className={styles.itemMeta}>v{hit.version}</span>
+                    </strong>
 
-                  <p>{hit.description}</p>
+                    <p>{hit.description}</p>
 
-                  <div className={styles.itemOwner}>
-                    <img src={hit.owner.avatar} />
-                    {hit.owner.name}
+                    <div className={styles.itemOwner}>
+                      <img src={hit.owner.avatar} />
+                      {hit.owner.name}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )} />
+              )}
+            />
             <div className={styles.modalFooter}>
               <PoweredBy />
             </div>
@@ -138,15 +139,15 @@ export default class ExternalPluginsModal extends React.Component<Props, State> 
 
 const styles = {
   modalContent: css`
-    background: #22252B;
+    background: #22252b;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 50px;
-    color: #9EA5B3;
+    color: #9ea5b3;
     margin: 40px auto;
     width: 650px;
 
     .ais-Pagination {
       background: ${colors.inverseBackgroundLight};
-      color: #9EA5B3;
+      color: #9ea5b3;
       display: flex;
       padding: 0.5rem 0;
       text-align: center;
@@ -168,7 +169,7 @@ const styles = {
       font-size: 0.875rem;
       padding: 3px;
       text-align: center;
-      transition: all .3s ease;
+      transition: all 0.3s ease;
       width: 28px;
 
       a {
@@ -177,7 +178,7 @@ const styles = {
     }
 
     .ais-Pagination-item--selected {
-      background: #F1DA6B;
+      background: #f1da6b;
       font-weight: 400;
 
       a {
@@ -206,7 +207,7 @@ const styles = {
       width: 74px;
 
       path:last-child {
-        fill: #FFF !important;
+        fill: #fff !important;
       }
     }
   `,
@@ -244,7 +245,7 @@ const styles = {
     flex: 1;
 
     strong {
-      color: #FFF;
+      color: #fff;
     }
 
     p {
@@ -257,9 +258,9 @@ const styles = {
 
   itemMeta: css`
     align-items: center;
-    background: #2B2D34;
+    background: #2b2d34;
     border-radius: 0.5rem;
-    color: #9EA5B3;
+    color: #9ea5b3;
     display: inline-flex;
     flex: 0 0 65px;
     font-size: 0.65rem;

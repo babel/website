@@ -131,20 +131,18 @@ export type BabelPresetEnvResult = {
 // ####### SANDPACK #######
 
 export type SandpackStatus =
-  'initializing' |
-  'installing-dependencies' |
-  'transpiling' |
-  'evaluating' |
-  'running-tests' |
-  'idle';
+  | "initializing"
+  | "installing-dependencies"
+  | "transpiling"
+  | "evaluating"
+  | "running-tests"
+  | "idle";
 
 export type SandpackTranspilerContext = {
-  [id: string]: any // TODO: improve
+  [id: string]: any, // TODO: improve
 };
 
-export type SandpackState = {
-
-};
+export type SandpackState = {};
 
 export type SandpackConsumerProps = {
   errors: Array<string>,
@@ -153,4 +151,4 @@ export type SandpackConsumerProps = {
   managerStatus: SandpackStatus,
 };
 
-export type SidebarTabSection = 'env' | 'plugins' | 'presets';
+export type SidebarTabSection = "env" | "plugins" | "presets";

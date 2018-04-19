@@ -1,0 +1,4 @@
+*.json
+dist/
+lib/
+flow-typed/
