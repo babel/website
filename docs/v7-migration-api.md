@@ -47,7 +47,7 @@ Removed `babel.metadata` since the generated plugin metadata is always included 
 Removed `path.hub.file.addImport`. You can use the `@babel/helper-module-imports` module instead.
 
 ```diff
-+  import { addDefault } from "babel-helper-module-imports";
++  import { addDefault } from "@babel/helper-module-imports";
 function importModule(pkgStore, name, path) {
 -  return path.hub.file.addImport(resolvePath(pkgStore, name, path), 'default', name);
 +  return addDefault(path, resolvePath(pkgStore, name, path), { nameHint: name });
