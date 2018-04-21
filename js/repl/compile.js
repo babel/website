@@ -82,9 +82,20 @@ export default function compile(code: string, config: CompileConfig): Return {
     const babelConfig = {
       babelrc: false,
       filename: "repl",
-      presets: config.presets,
-      plugins: config.plugins,
       sourceMap: config.sourceMap,
+
+      // HACK: decorators needs to be set to "legacy" until they are implemented
+      presets: config.presets.map(preset => {
+        if (
+          Babel.version[0] === "7" &&
+          typeof preset === "string" &&
+          /^stage-[0-2]$/.test(preset)
+        ) {
+          return [preset, { decoratorsLegacy: true }];
+        }
+        return preset;
+      }),
+      plugins: config.plugins,
     };
 
     const transformed = Babel.transform(code, babelConfig);
