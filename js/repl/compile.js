@@ -86,7 +86,11 @@ export default function compile(code: string, config: CompileConfig): Return {
 
       // HACK: decorators needs to be set to "legacy" until they are implemented
       presets: config.presets.map(preset => {
-        if (typeof preset === "string" && /^stage-[0-2]$/.test(preset)) {
+        if (
+          Babel.version[0] === "7" &&
+          typeof preset === "string" &&
+          /^stage-[0-2]$/.test(preset)
+        ) {
           return [preset, { decoratorsLegacy: true }];
         }
         return preset;
