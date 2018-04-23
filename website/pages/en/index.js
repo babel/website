@@ -67,7 +67,7 @@ const MiniRepl = ({ language }) => {
         defer={true}
       />
       <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"
+        src="https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js"
         defer={true}
       />
       <script src={`${siteConfig.baseUrl}js/build/minirepl.js`} defer={true} />
