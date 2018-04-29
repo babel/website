@@ -14,7 +14,7 @@ $ git clone git@github.com:babel/website.git
 $ yarn && make bootstrap && make build
 $ cd website
 $ yarn 
-$ npm start
+$ npm start # Open http://localhost:3000/
 ```
 
 * Just run `npm start` in `website` next time (check the `Makefile` and the `package.json`).
