@@ -32,6 +32,7 @@
     "babel-helper-hoist-variables": "babel-helper-hoist-variables",
     "babel-helper-is-void-0": "babel-helper-is-void-0",
     "babel-helper-mark-eval-scopes": "babel-helper-mark-eval-scopes",
+    "babel-helper-member-expression-to-functions": "babel-helper-member-expression-to-functions",
     "babel-helper-module-imports": "babel-helper-module-imports",
     "babel-helper-module-transforms": "babel-helper-module-transforms",
     "babel-helper-optimise-call-expression": "babel-helper-optimise-call-expression",
