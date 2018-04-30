@@ -11,11 +11,13 @@ This is the source for the [babeljs.io](https://babeljs.io) website: feel free t
 
 ```bash
 $ git clone git@github.com:babel/website.git
-$ cd website
 $ yarn && make bootstrap && make build
+$ cd website
+$ yarn 
+$ npm start # Open http://localhost:3000/
 ```
 
-* Just run `npm start` next time (check the Makefile and the package.json).
+* Just run `npm start` in `website` next time (check the `Makefile` and the `package.json`).
 
 ### Contributing to the website
 
