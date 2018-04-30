@@ -5,15 +5,21 @@
   "description": "",
   "main": "",
   "scripts": {
-    "start": "make serve",
-    "build": "make build",
+    "bootstrap": "npm run bootstrap:readmes && npm run bootstrap:sponsors && npm run build",
+    "bootstrap:readmes": "node ./scripts/download-readmes.js",
+    "bootstrap:sponsors": "node ./scripts/download-sponsors.js",
+    "build:docusaurus": "cd website && yarn && yarn build",
+    "build:redirects": "cp ./_redirects ./website/build/babel",
+    "build:repl": "webpack",
+    "build": "npm run build:repl && npm run build:docusaurus && npm run build:redirects",
+    "flow": "flow",
     "lint": "npm run lint:docs && npm run lint:repl",
     "lint:docs": "eslint --ext md --rule 'prettier/prettier: 0' docs",
     "lint:repl": "eslint js/repl/*.js website/pages/en/*.js",
     "fix:css": "prettier --write website/static/css/*.css",
-    "test": "remark docs README.md --quiet",
-    "flow": "flow",
-    "precommit": "flow && lint-staged"
+    "precommit": "flow && lint-staged",
+    "start": "cd website && yarn start",
+    "test": "remark docs README.md --quiet"
   },
   "remarkConfig": {
     "plugins": {
