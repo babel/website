@@ -28,14 +28,14 @@ The "env" preset has been out for more than a year now, and completely replaces 
 - `babel-preset-es2016`
 - `babel-preset-es2017`
 - `babel-preset-latest`
-- can combination of the above ^
+- A combination of the above ^
 
-We suggest using switching as those presets should be able to be substituted entirely with the env preset.
+These presets should be substituted with the "env" preset.
 
 
 ## Package Renames
 
-Just as FYI, you can still use the shorthand version of a package name (remove the `preset-` or `plugin-`) in the config but I'm choosing to use the whole package name for clarity (maybe we should just remove that given it doesn't save that much typing at all anyway).
+You can still use the shorthand version of a package name (remove the `preset-` or `plugin-`) in the config, but I'm choosing to use the whole package name for clarity (maybe we should just remove that, given it doesn't save that much typing anyway).
 
 ```diff
 {
@@ -125,7 +125,7 @@ If you were relying on Babel to inject `"use strict"` into all of your CommonJS 
 
 ## Separation between the React and Flow presets
 
-`babel-preset-react` has always included the flow plugin automatically from the beginning. This has actually caused a lot of issues with users that accidently use `flow` syntax without intending due to a typo, or adding it in without typechecking with `flow` itself resulting in errors.
+`babel-preset-react` has always included the flow plugin automatically from the beginning. This has actually caused a lot of issues with users that accidently use `flow` syntax without intending due to a typo, or adding it in without typechecking with `flow` itself, resulting in errors.
 
 This became further of an issue after we decided to support TypeScript with the help of the TS team. If you wanted to use the react and typescript presets, we would have to figure out a way to turn on/off the syntax automatically via file type or the directive. In the end it seemed easiest to just separate the presets entirely. 
 
@@ -142,7 +142,7 @@ So now the react preset and the flow preset are separated.
 ## Option parsing
 
 Babel's config options are stricter than in Babel 6.
-Where a comma-separated list for presets, e.g. `"presets": 'es2015, es2016'` technically worked before, it will now fail and need to be changed to an array [#5463](https://github.com/babel/babel/pull/5463).
+Where a comma-separated list for presets, e.g. `"presets": 'es2015, es2016'` technically worked before, it will now fail and needs to be changed to an array [#5463](https://github.com/babel/babel/pull/5463).
 
 Note this does not apply to the CLI, where `--presets es2015,es2016` will certainly still work.
 
@@ -394,7 +394,7 @@ I think we can do something interesting with this name though.
 
 If you want formatting for compiled output you can use recast/prettier/escodegen/fork babel-generator.
 
-This option was only available through `babel-generator` explicitly until v6.18.0 when we exposed `parserOpts` and `generatorOpts`. Because there was a bug in that release no one should've used this option in Babel itself.
+This option was only available through `babel-generator` explicitly until v6.18.0 when we exposed `parserOpts` and `generatorOpts`. Because there was a bug in that release, no one should've used this option in Babel itself.
 
 > Dropping the `flowUsesCommas` option [#5123](https://github.com/babel/babel/pull/5123) ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
