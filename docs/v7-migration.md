@@ -30,7 +30,7 @@ The "env" preset has been out for more than a year now, and completely replaces 
 - `babel-preset-latest`
 - A combination of the above ^
 
-These presets can be substituted with the "env" preset.
+These presets should be substituted with the "env" preset.
 
 
 ## Package Renames
