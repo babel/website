@@ -668,3 +668,6 @@
 - name: Kuali
   url: https://www.kuali.co
   logo: kuali.svg
+- name: Sequence
+  url: https://sequence.work
+  logo: sequence.svg
