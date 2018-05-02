@@ -14,7 +14,7 @@ title: ${id}
 sidebar_label: ${id.replace(/^babel-(plugin|proposal|preset)-/, "")}
 ---
 
-[comment]: # Don't edit this file directly, it was copied using scripts/download-readmes.js
+[comment]: # (Don't edit this file directly, it was copied using scripts/download-readmes.js)
 
 ${text}
 `;
