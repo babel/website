@@ -28,7 +28,8 @@
       "babel-preset-stage-3",
       "babel-preset-flow",
       "babel-preset-react",
-      "babel-preset-minify"
+      "babel-preset-minify",
+      "babel-preset-typescript"
     ],
     "Tooling": [
       "babylon",
