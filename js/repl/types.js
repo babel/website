@@ -25,6 +25,7 @@ export type LoadScriptCallback = (success: boolean) => void;
 
 export type PluginConfig = {
   baseUrl?: string,
+  help?: string,
   isPreLoaded?: boolean,
   label: string,
   package: string,
