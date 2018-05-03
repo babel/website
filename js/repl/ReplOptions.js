@@ -531,6 +531,7 @@ const PluginToggle = ({
       type="checkbox"
     />
     {state.isLoading ? <PresetLoadingAnimation /> : label || config.label}
+    {config.help ? <span className={styles.tooltip} data-content={config.help}>?</span> : null}
   </label>
 );
 
