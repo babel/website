@@ -718,7 +718,7 @@ const styles = {
     "&:hover::after": {
       content: "attr(data-content)",
       fontSize: "10px",
-      backgroundColor: color.inverseBackgroundDark,
+      backgroundColor: colors.inverseBackgroundDark,
       display: "block",
       position: "fixed",
       padding: "10px",
