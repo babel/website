@@ -92,6 +92,7 @@ const pluginConfigs: Array<PluginConfig> = [
   {
     baseUrl: "https://unpkg.com",
     label: "Minify",
+    help: "babel-minify is a beta product, using it can cause unexpected bugs in transpilation",
     package: "babili-standalone", // TODO Switch to babel-minify-standalone
     version: "0",
   },
