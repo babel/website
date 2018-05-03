@@ -709,6 +709,24 @@ const styles = {
       opacity: 0.5,
     },
   }),
+  tooltip: css({
+    marginLeft: "5px",
+    backgroundColor: colors.inverseBackgroundDark,
+    borderRadius: "50%",
+    padding: "0 6px",
+
+    "&:hover::after": {
+      content: "attr(data-content)",
+      fontSize: "10px",
+      backgroundColor: color.inverseBackgroundDark,
+      display: "block",
+      position: "fixed",
+      padding: "10px",
+      width: "150px",
+      border: "1px solid black",
+      borderRadius: "2px",
+     } 
+  }),
   highlight: css({
     textTransform: "uppercase",
     fontSize: "0.75rem",
