@@ -310,13 +310,13 @@ Bork.a = 'foo';
 
 This is a long time coming but this was finally changed.
 
-`@babel/plugin-transform-export-default-from`
+`@babel/plugin-proposal-export-default-from`
 
 ```js
 export v from 'mod';
 ```
 
-`@babel/plugin-transform-export-namespace-from`
+`@babel/plugin-proposal-export-namespace-from`
 
 ```js
 export * as ns from 'mod';
