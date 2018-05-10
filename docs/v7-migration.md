@@ -411,3 +411,18 @@ This change just makes babel-generator output `,` instead of `;`.
 ## `@babel/preset-env`
 
 `loose` mode will now automatically exclude the `typeof-symbol` transform (a lot of projects using loose mode were doing this).
+
+## `@babel/plugin-proposal-decorators`
+
+This packages now requires the `legacy` option, whose value must be `true`. It is needed to let us to provide a better default when the new decorators proposal will be implemented.
+
+```diff
+ {
+   "plugins": [
+-    "@babel/plugin-proposal-decorators"
++    ["@babel/plugin-proposal-decorators", { "legacy": true }]
+   ]
+ }
+```
+
+> NOTE: If you are using `@babel/preset-stage-0` or `@babel/preset-stage-1`, which include this plugin, you must pass them the `decoratorsLegacy` option.
