@@ -414,7 +414,7 @@ This change just makes babel-generator output `,` instead of `;`.
 
 ## `@babel/plugin-proposal-decorators`
 
-In anticipation of implementing the new decorators proposal, we've decided to make it the new default behavior. This means that to continue using the current decorators implementation, you must set the `legacy` option as `true`.
+In anticipation of the new decorators proposal implementation, we've decided to make it the new default behavior. This means that to continue using the current decorators syntax/behavior, you must set the `legacy` option as `true`.
 
 ```diff
  {
