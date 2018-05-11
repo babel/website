@@ -715,15 +715,15 @@ const styles = {
     color: colors.inverseForeground,
   }),
   settingsLabel: css({
-    flex: "0 0 2rem",
-    display: "flex",
-    flexDirection: "row",
     alignItems: "center",
+    display: "flex",
+    flex: "0 0 1.5rem",
+    flexDirection: "row",
+    fontSize: "0.875rem",
+    fontWeight: "normal",
     margin: "0 -0.5rem",
     padding: "0 1rem",
     transition: "background-color 250ms ease-in-out, color 250ms ease-in-out",
-    fontWeight: "normal",
-    fontSize: "0.875rem",
 
     "&:hover": {
       backgroundColor: colors.inverseBackgroundDark,
