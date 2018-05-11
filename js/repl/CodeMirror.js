@@ -16,8 +16,15 @@ const DEFAULT_CODE_MIRROR_OPTIONS = {
   tabWidth: 2,
 };
 
+type Highlight = {
+  line: number,
+  ch: number,
+  name: string
+};
+
 type Props = {
   autoFocus: boolean,
+  highlight?: Highlight,
   onChange: (value: string) => void,
   options: Object,
   placeholder?: string,
@@ -48,6 +55,7 @@ export default class ReactCodeMirror extends React.Component {
     });
     this._codeMirror.on("change", this._onChange);
     this._codeMirror.setValue(this.props.value || "");
+    this._checkHighlight();
   }
 
   componentWillUnmount() {
@@ -77,6 +85,8 @@ export default class ReactCodeMirror extends React.Component {
       this._codeMirror.setValue("");
     }
 
+    this._checkHighlight();
+
     if (typeof nextProps.options === "object") {
       for (const optionName in nextProps.options) {
         if (nextProps.options.hasOwnProperty(optionName)) {
@@ -101,6 +111,22 @@ export default class ReactCodeMirror extends React.Component {
         ref={this._setTextAreaRef}
         placeholder={this.props.placeholder}
       />
+    );
+  }
+
+  _checkHighlight = () => {
+    this._codeMirror.getDoc().getAllMarks().forEach(mark => mark.clear());
+
+    if (!this.props.highlight) return;
+
+    const { line, ch, name } = this.props.highlight;
+    const endColumn = ch + name.length;
+    this._codeMirror.getDoc().markText(
+      { line, ch },
+      { line, ch: endColumn },
+      {
+        css: 'background: red; color: white'
+      }
     );
   }
 

@@ -14,6 +14,7 @@ type Props = {
   options: Object,
   placeholder?: string,
   fileSize: string,
+  highlight?: Object,
 };
 
 export default function CodeMirrorPanel(props: Props) {
@@ -24,12 +25,14 @@ export default function CodeMirrorPanel(props: Props) {
     info,
     onChange,
     options,
+    highlight,
   } = props;
 
   return (
     <div className={`${styles.panel} ${className}`}>
       <div className={styles.codeMirror}>
         <CodeMirror
+          highlight={highlight}
           onChange={onChange}
           options={{
             ...props.options,

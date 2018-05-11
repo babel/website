@@ -5,6 +5,7 @@ import "regenerator-runtime/runtime";
 import { css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
+import sourceMap from "source-map";
 import { prettySize } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
@@ -71,6 +72,9 @@ type State = {
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
   sourceMap: ?string,
+  sourceMapRepresentation: ?string,
+  sourceMapSourceHighlight?: Object,
+  sourceMapCompiledHighlight?: Object,
   externalPlugins: Array<string>,
   pluginSearch: ?string,
   version: number,
@@ -235,6 +239,7 @@ class Repl extends React.Component {
             code={state.code}
             errorMessage={state.compileErrorMessage}
             fileSize={state.meta.rawSize}
+            highlight={state.sourceMapSourceHighlight}
             onChange={this._updateCode}
             options={options}
             placeholder="Write code here"
@@ -244,12 +249,37 @@ class Repl extends React.Component {
             code={state.compiled}
             errorMessage={state.evalErrorMessage}
             fileSize={state.meta.compiledSize}
+            highlight={state.sourceMapCompiledHighlight}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
             options={options}
             placeholder="Compiled output will be shown here"
           />
         </div>
+
+        {state.sourceMapRepresentation &&
+          <footer className={styles.footerPanel}>
+            {state.sourceMapRepresentation}
+          </footer>
+        }
       </div>
+    );
+  }
+
+  _setHighlight(panel: string, highlight: Object) {
+    const key = (panel === 'source') ? 'sourceMapSourceHighlight' : 'sourceMapCompiledHighlight';
+    this.setState(
+      { [key]: highlight },
+      this.forceUpdate
+    );
+  }
+
+  _removeHighlights() {
+    this.setState(
+      {
+        'sourceMapSourceHighlight': null,
+        'sourceMapCompiledHighlight': null,
+      },
+      this.forceUpdate
     );
   }
 
@@ -463,8 +493,55 @@ class Repl extends React.Component {
       .then(result => {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
         result.meta.rawSize = prettySize(result.meta.rawSize);
+        if (result.sourceMap) {
+          result.sourceMapRepresentation = this.processSourcemap(result.sourceMap);
+        }
         this.setState(result, setStateCallback);
       });
+  };
+
+  processSourcemap = (rawSourceMap: string) => {
+    const smc = new sourceMap.SourceMapConsumer(rawSourceMap);
+
+    const mappings = [];
+    smc.eachMapping(function (m) {
+      if (m.name) mappings.push(m);
+    });
+
+    const onMouseEnter = mapping => {
+      this._setHighlight(
+        'source',
+        {
+          line: mapping.originalLine - 1,
+          ch: mapping.originalColumn,
+          name: mapping.name
+        }
+      );
+
+      this._setHighlight(
+        'compiled',
+        {
+          line: mapping.generatedLine - 1,
+          ch: mapping.generatedColumn,
+          name: mapping.name
+        }
+      );
+    }
+
+    const onMouseLeave = mapping => this._removeHighlights();
+
+    return (
+      <div className="representation">
+        {mappings.map((m, index) =>
+          <SourceMapLine
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            key={index}
+            {...m}
+          />
+        )}
+      </div>
+    )
   };
 
   // Debounce compilation since it's expensive.
@@ -605,6 +682,21 @@ class Repl extends React.Component {
   };
 }
 
+class SourceMapLine extends React.Component {
+  render() {
+    const { name, originalLine, originalColumn, generatedLine, generatedColumn } = this.props;
+
+    return (
+      <div
+        onMouseEnter={e => this.props.onMouseEnter(this.props)}
+        onMouseLeave={e => this.props.onMouseLeave(this.props)}
+      >
+        {`${name}: ${originalLine}:${originalColumn} -> ${generatedLine}:${generatedColumn}`}
+      </div>
+    );
+  }
+}
+
 export default function ReplWithErrorBoundary() {
   return (
     <ErrorBoundary>
@@ -651,7 +743,17 @@ const styles = {
     }
   `,
   panels: css({
-    height: "100%",
+    height: "80%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "stretch",
+    overflow: "auto",
+    fontSize: "0.875rem",
+    lineHeight: "1.25rem",
+  }),
+  footerPanel: css({
+    height: "20%",
     width: "100%",
     display: "flex",
     flexDirection: "row",
