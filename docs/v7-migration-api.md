@@ -102,6 +102,12 @@ babylon.parse(code, {
 
 See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
 
+> Renamed `decorators` plugin to `decorators-legacy` ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+It has been renamed to align with the `legacy` option of `@babel/plugin-proposal-decorators`. A new `decorators` plugin has been implemented, which implements the new decorators proposal.
+
+The two versions of the proposals have different syntaxes, so it is highly reccomended to use `decorators-legacy` until the new semantics are implemented by Babel.
+
 > Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 ## `@babel/traverse`
