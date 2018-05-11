@@ -46,7 +46,9 @@
       addClass(currentNav, "active");
       const name = currentNav.attributes["data-title"].value;
       location.hash = name;
-      currentItem = document.querySelectorAll("[data-title=" + name + "]:not(.tools-button)");
+      currentItem = document.querySelectorAll(
+        "[data-title=" + name + "]:not(.tools-button)"
+      );
       for (let i = 0; i < currentItem.length; i++) {
         currentItem[i].style.display = "block";
       }

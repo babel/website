@@ -694,7 +694,7 @@ const styles = {
   pluginsHeader: css({
     display: "flex",
     justifyContent: "space-between",
-    paddingRight: 5
+    paddingRight: 5,
   }),
   accordionLabelVersion: css({
     fontSize: "1rem",

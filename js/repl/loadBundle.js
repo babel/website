@@ -112,7 +112,7 @@ export default async function loadBundle(
   // Dev: /repl/#?version=1.2.3
   let version = state.version;
   const versionKey = config.versionKey || "version";
-  const versionRegExp = new RegExp(`/${versionKey}\/(.+)\/?$`);
+  const versionRegExp = new RegExp(`/${versionKey}/(.+)/?$`);
   const versionFromPath = window.location.pathname.match(versionRegExp);
   if (versionFromPath) {
     version = versionFromPath[1];

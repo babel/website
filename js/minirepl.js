@@ -122,7 +122,7 @@ function compileCode(sourceEditor, targetEditor) {
 
     targetEditor.setValue(
       // Remove 'use strict' just for demonstration purposes
-      transformed.code.replace(/[\'|\"]use strict[\'|\"];(\n\n)?/g, ""),
+      transformed.code.replace(/['|"]use strict['|"];(\n\n)?/g, ""),
       -1
     );
   }
