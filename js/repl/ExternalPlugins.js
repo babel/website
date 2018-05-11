@@ -1,151 +1,114 @@
-import React, { Component } from "react";
-import { Hits, Configure, InstantSearch } from "react-instantsearch/es/dom";
-
-import { connectSearchBox } from "react-instantsearch/es/connectors";
-
+import { css } from "emotion";
+import * as React from "react";
 import AccordionTab from "./AccordionTab";
+import ExternalPluginsModal from "./ExternalPluginsModal";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
-
-import AlgoliaLogo from "../assets/search-by-algolia-white";
-
-const config = {
-  apiKey: "1f0cc4b7da241f62651b85531d788fbd",
-  appId: "OFCNCOG2CU",
-  indexName: "npm-search",
-};
 
 type Props = {
   loadingExternalPlugins: boolean,
   isPluginsExpanded: boolean,
-  _togglePluginsTab: () => void,
-  _onshowOfficialExternalPluginsChanged: any => void,
-  _pluginChanged: () => void,
-  showOfficialExternalPlugins: boolean,
-  pluginsLoading: boolean,
-  plugins: Array<Object>,
+  plugins: Array<string>,
   styles: Object,
 };
 
-class RawSearchBox extends Component {
-  props: {
-    refine: string => void,
-    styles: Object,
+type State = {
+  modalOpen: boolean,
+};
+
+export default class ExternalPlugins extends React.Component<Props, State> {
+  static defaultProps = {
+    plugins: [],
   };
 
-  state = { value: "" };
+  state = {
+    modalOpen: false,
+  };
 
-  _onChange(value) {
-    this.props.refine(value);
-    this.setState({ value });
+  handleOpenModal = () => {
+    this.setState({ modalOpen: true });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ modalOpen: false });
+  };
+
+  renderPlugins() {
+    const plugins = this.props.plugins;
+
+    if (plugins.length === 0) {
+      return null;
+    }
+
+    return (
+      <ul className={currentStyles.pluginList}>
+        {plugins.map(p => <li key={p}>{p}</li>)}
+      </ul>
+    );
   }
 
   render() {
+    const { isExpanded, onToggleExpanded, styles, plugins } = this.props;
+    console.log(plugins);
     return (
-      <input
-        placeholder="Type the plugin name"
-        value={this.state.value}
-        aria-label="Plugin name"
-        onChange={e => this._onChange(e.target.value)}
-        className={`${this.props.styles.pluginName} ${this.props.styles
-          .envPresetInput}`}
-        type="text"
-      />
-    );
-  }
-}
-
-export default function ExternalPlugins({
-  loadingExternalPlugins,
-  isPluginsExpanded,
-  _togglePluginsTab,
-  _onshowOfficialExternalPluginsChanged,
-  _pluginChanged,
-  showOfficialExternalPlugins,
-  pluginsLoading,
-  plugins,
-  styles,
-}: Props) {
-  const hasPlugins = plugins !== undefined;
-  const SearchBox = connectSearchBox(RawSearchBox);
-
-  function hitComponent({ hit }: { hit: Object }) {
-    return (
-      <label key={hit.name} className={styles.pluginRow}>
-        <input
-          className={styles.inputCheckboxLeft}
-          onChange={e => _pluginChanged(e, hit)}
-          type="checkbox"
-        />
-        {hit.name
-          .split("babel-plugin-")
-          .join("")
-          .split("@babel/plugin-")
-          .join("")}
-      </label>
-    );
-  }
-
-  return (
-    <AccordionTab
-      className={`${styles.section} ${styles.sectionEnv}`}
-      isExpanded={isPluginsExpanded}
-      label={
-        <span className={styles.pluginsHeader}>
-          Plugins
-          {loadingExternalPlugins ? (
-            <PresetLoadingAnimation />
-          ) : (
-            <AlgoliaLogo alt="Search Powered by Algolia" />
-          )}
-        </span>
-      }
-      toggleIsExpanded={_togglePluginsTab}
-    >
-      <InstantSearch
-        apiKey={config.apiKey}
-        appId={config.appId}
-        indexName={config.indexName}
+      <AccordionTab
+        className={`${styles.section} ${styles.sectionEnv}`}
+        isExpanded={this.props.isPluginsExpanded}
+        label={
+          <span className={styles.pluginsHeader}>
+            Plugins
+            {false && <PresetLoadingAnimation />}
+          </span>
+        }
+        toggleIsExpanded={this.props._togglePluginsTab}
+        tabKey="plugins"
       >
-        <Configure
-          hitsPerPage={10}
-          attributesToRetrieve={["name", "version"]}
-          attributesToHighlight={["name"]}
-          filters={
-            "computedKeywords:babel-plugin" +
-            (showOfficialExternalPlugins ? " AND owner.name:babel" : "")
-          }
-        />
+        {this.renderPlugins()}
 
-        <div className={styles.pluginContainer}>
-          <div className={styles.pluginsSearch}>
-            <label
-              className={`${styles.settingsLabel} ${styles.checkboxOfficial}`}
-            >
-              <input
-                checked={showOfficialExternalPlugins}
-                onChange={e => {
-                  _onshowOfficialExternalPluginsChanged(e.target.value);
-                }}
-                className={styles.inputCheckboxLeft}
-                type="checkbox"
-              />
-              Only official Plugins
-            </label>
+        <button
+          className={currentStyles.modalButton}
+          onClick={this.handleOpenModal}
+        >
+          Add Plugin
+        </button>
 
-            <SearchBox styles={styles} />
-            <Hits hitComponent={hitComponent} />
-          </div>
-          {pluginsLoading ? (
-            <PresetLoadingAnimation />
-          ) : (
-            <div>
-              {hasPlugins && !plugins.length
-                ? "There are no plugins that match your query"
-                : null}
-            </div>
-          )}
-        </div>
-      </InstantSearch>
-    </AccordionTab>
-  );
+        {this.state.modalOpen && (
+          <ExternalPluginsModal
+            onClose={this.handleCloseModal}
+            onPluginSelect={this.props._pluginChanged}
+          />
+        )}
+      </AccordionTab>
+    );
+  }
 }
+
+const currentStyles = {
+  modalButton: css`
+    background: #f1da6b;
+    border: 0;
+    border-radius: 4px;
+    margin: 0 0.5rem;
+    padding: 0.5rem 0;
+  `,
+  pluginList: css`
+    font-size: 0.75rem;
+    margin: 0 -0.5rem 1rem;
+
+    > li {
+      align-items: center;
+      border-left: 4px solid transparent;
+      display: flex;
+      line-height: 1.1;
+      padding: 0 0.625rem;
+      transition: all 0.25s ease-out;
+
+      &:hover {
+        border-left-color: #eeda7b;
+      }
+
+      &:not(:first-child) {
+        margin-top: 0.5rem;
+      }
+    }
+  `,
+};

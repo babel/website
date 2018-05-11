@@ -403,11 +403,11 @@ class ExpandedContainer extends Component {
             _onshowOfficialExternalPluginsChanged={
               this._onshowOfficialExternalPluginsChanged
             }
-            _pluginChanged={this._pluginChanged}
+            _pluginChanged={this.props.pluginChange}
             pluginValue={pluginValue}
             showOfficialExternalPlugins={showOfficialExternalPlugins}
             pluginsLoading={pluginsLoading}
-            plugins={plugins}
+            plugins={this.props.externalPlugins}
             styles={styles}
           />
         </div>
@@ -596,7 +596,7 @@ const styles = {
 
     [media.large]: {
       height: "100%",
-      width: "15rem",
+      width: "18rem",
 
       [`& .${nestedCloseButton}`]: {
         right: "-2rem",
