@@ -71,10 +71,11 @@ type State = {
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
-  sourceMap: ?string,
-  sourceMapRepresentation: ?string,
-  sourceMapSourceHighlight?: Object,
-  sourceMapCompiledHighlight?: Object,
+  sourceMap?: string,
+  sourceMapMappings?: Object,
+  sourceMapJSX?: Object,
+  sourceMapSourceHighlight: array,
+  sourceMapCompiledHighlight: array,
   externalPlugins: Array<string>,
   pluginSearch: ?string,
   version: number,
@@ -255,9 +256,9 @@ class Repl extends React.Component {
             placeholder="Compiled output will be shown here"
           />
 
-          {state.sourceMapRepresentation &&
+          {state.sourceMapJSX &&
             <footer className={styles.footerPanel}>
-              {state.sourceMapRepresentation}
+              {state.sourceMapJSX}
             </footer>
           }
         </div>
@@ -265,10 +266,10 @@ class Repl extends React.Component {
     );
   }
 
-  _setHighlight(panel: string, highlight: Object) {
+  _setHighlights(panel: string, highlights: array) {
     const key = (panel === 'source') ? 'sourceMapSourceHighlight' : 'sourceMapCompiledHighlight';
     this.setState(
-      { [key]: highlight },
+      { [key]: highlights },
       this.forceUpdate
     );
   }
@@ -276,8 +277,8 @@ class Repl extends React.Component {
   _removeHighlights() {
     this.setState(
       {
-        'sourceMapSourceHighlight': null,
-        'sourceMapCompiledHighlight': null,
+        'sourceMapSourceHighlight': [],
+        'sourceMapCompiledHighlight': [],
       },
       this.forceUpdate
     );
@@ -494,38 +495,111 @@ class Repl extends React.Component {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
         result.meta.rawSize = prettySize(result.meta.rawSize);
         if (result.sourceMap) {
-          result.sourceMapRepresentation = this.processSourcemap(result.sourceMap);
+          result.sourceMapMappings = this.getSourcemapMappings(result.sourceMap);
+          result.sourceMapJSX = this.getSourcemapJSX(result.sourceMapMappings);
         }
         this.setState(result, setStateCallback);
       });
   };
 
-  processSourcemap = (rawSourceMap: string) => {
+  getSourcemapMappings = (rawSourceMap: string): array => {
     const smc = new sourceMap.SourceMapConsumer(rawSourceMap);
 
-    const mappings = [];
-    smc.eachMapping(function (m) {
-      if (m.name) mappings.push(m);
+    const originalPositions = [];
+    smc.eachMapping(
+      function (m) {
+        if (m.originalLine === null) return;
+
+        const last = originalPositions.length > 0 ? originalPositions[originalPositions.length - 1] : null;
+
+        // Ignore multiple matching original locations.
+        if (last && last.line === m.originalLine && last.columnStart === m.originalColumn) return;
+
+        // Set the _end_ of the previous mapping to the start of the new one.
+        if (
+          last &&
+          last.line === m.originalLine
+        ) {
+          last.columnEnd = m.originalColumn;
+        }
+
+        originalPositions.push({
+          source: m.source,
+          name: m.name,
+          line: m.originalLine,
+          columnStart: m.originalColumn,
+          columnEnd: Infinity,
+        });
+      },
+      null,
+      sourceMap.SourceMapConsumer.ORIGINAL_ORDER
+    );
+
+    // Compute the spans on the generated file.
+    smc.computeColumnSpans();
+
+    return originalPositions.map((origPos): Object => {
+      const ranges = smc.allGeneratedPositionsFor({
+        source: origPos.source,
+        line: origPos.line,
+        column: origPos.columnStart,
+      });
+
+      const generatedRanges = ranges.map(range => ({
+        line: range.line,
+        columnStart: range.column,
+        columnEnd: range. lastColumn + 1
+      }));
+
+      return {
+        original: origPos,
+        generated: generatedRanges,
+      };
     });
+  };
+
+  getSourcemapJSX = (mappings: array) => {
+
+/*
+{
+  "original": {
+    "source": "repl",
+    "name": null,
+    "line": 1,
+    "columnStart": 0,
+    "columnEnd": 6
+  },
+  "generated": [
+    {
+      "line": 5,
+      "columnStart": 0,
+      "columnEnd": 4
+    },
+    {
+      "line": 29,
+      "columnStart": 3,
+      "columnEnd": null
+    }
+  ]
+}
+*/
 
     const onMouseEnter = mapping => {
-      this._setHighlight(
+      this._setHighlights(
         'source',
-        {
-          line: mapping.originalLine - 1,
-          ch: mapping.originalColumn,
-          name: mapping.name
-        }
+        [{
+          line: mapping.original.line - 1,
+          columnStart: mapping.original.columnStart,
+          columnEnd: mapping.original.columnEnd
+        }]
       );
 
-      this._setHighlight(
-        'compiled',
-        {
-          line: mapping.generatedLine - 1,
-          ch: mapping.generatedColumn,
-          name: mapping.name
-        }
-      );
+      const compiledHighlights = mapping.generated.map(range => ({
+        line: range.line - 1,
+        columnStart: range.columnStart,
+        columnEnd: range.columnEnd
+      }));
+      this._setHighlights('compiled', compiledHighlights);
     }
 
     const onMouseLeave = mapping => this._removeHighlights();
@@ -690,7 +764,7 @@ class SourceMapLine extends React.Component {
     };
   }
   render() {
-    const { name, originalLine, originalColumn, generatedLine, generatedColumn } = this.props;
+    const { original, generated } = this.props;
 
     const className = this.state.hovered ? styles.sourceMapLineHover : styles.sourceMapLine;
 
@@ -699,10 +773,13 @@ class SourceMapLine extends React.Component {
         onMouseEnter={e => { this.setState({ hovered: true }); this.props.onMouseEnter(this.props); }}
         onMouseLeave={e => { this.setState({ hovered: false }); this.props.onMouseLeave(this.props); }}
       >
-        <strong>{name}: </strong>
-        {originalLine}:{originalColumn}
+        {original.name && <strong>{original.name}: </strong>}
+        {original.line}:{original.columnStart}
         {' → '}
-        {generatedLine}:{generatedColumn}
+        {generated
+          .map(mapping => `${mapping.line}:${mapping.columnStart}`)
+          .join(', ')
+        }
       </div>
     );
   }

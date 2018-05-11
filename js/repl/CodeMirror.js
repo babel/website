@@ -16,15 +16,9 @@ const DEFAULT_CODE_MIRROR_OPTIONS = {
   tabWidth: 2,
 };
 
-type Highlight = {
-  line: number,
-  ch: number,
-  name: string
-};
-
 type Props = {
   autoFocus: boolean,
-  highlight?: Highlight,
+  highlight?: array,
   onChange: (value: string) => void,
   options: Object,
   placeholder?: string,
@@ -119,20 +113,32 @@ export default class ReactCodeMirror extends React.Component {
 
     if (!this.props.highlight) return;
 
-    const { line, ch, name } = this.props.highlight;
-    const endColumn = ch + name.length;
-    this._codeMirror.getDoc().markText(
-      { line, ch },
-      { line, ch: endColumn },
-      {
-        css: `background: ${colors.inverseBackgroundDark}; color: ${colors.inverseForeground}`
-      }
-    );
+    this.props.highlight.forEach(mark => {
+      this._codeMirror.getDoc().markText(
+        { line: mark.line, ch: mark.columnStart },
+        { line: mark.line, ch: mark.columnEnd },
+        {
+          css: `background: ${colors.inverseBackgroundDark}; color: ${colors.inverseForeground}`
+        }
+      );
+    });
 
-    // try to centralize the element
-    const t = this._codeMirror.charCoords({line, ch: 0}, "local").top;
-    const middleHeight = this._codeMirror.getScrollerElement().offsetHeight / 2;
-    this._codeMirror.scrollTo(null, t - middleHeight - 5);
+    /**
+     * Attempt below to scroll to the relevant portion.
+     * Disabled, because the code can be well-distributed in Babel and jumping to the top
+     * is not useful, it makes it impossible to review all items.
+     * To be rewritten as: "is _any_ highlight viewable? if not, scroll to the first".
+     */
+    // const firstLine = this.props.highlight.reduce((acc, val) => {
+    //   return (!acc && val.line) ? val.line : null;
+    // }, null);
+
+    // if (firstLine) {
+    //   // try to centralize the element
+    //   const t = this._codeMirror.charCoords({ line: firstLine, ch: 0 }, "local").top;
+    //   const middleHeight = this._codeMirror.getScrollerElement().offsetHeight / 2;
+    //   this._codeMirror.scrollTo(null, t - middleHeight - 5);
+    // }
   }
 
   _updateOption(optionName: string, newValue: any) {
