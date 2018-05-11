@@ -6,7 +6,7 @@ const url = require("url");
 function findMarkDownSync(startPath) {
   const result = [];
   const files = fs.readdirSync(path.join(__dirname, startPath));
-  files.forEach((val, index) => {
+  files.forEach(val => {
     const fPath = path.join(startPath, val);
     const stats = fs.statSync(fPath);
     if (stats.isDirectory()) {

@@ -9,7 +9,6 @@ const siteConfig = require(CWD + "/siteConfig.js");
 const versions = require(CWD + "/versions.json");
 
 class Versions extends React.Component {
-
   render() {
     const language = this.props.language || "en";
     const latestVersion = versions[0];
@@ -30,10 +29,7 @@ class Versions extends React.Component {
                   <td>
                     <a
                       href={
-                        siteConfig.baseUrl +
-                        "docs/" +
-                        language +
-                        "/index.html"
+                        siteConfig.baseUrl + "docs/" + language + "/index.html"
                       }
                     >
                       Documentation

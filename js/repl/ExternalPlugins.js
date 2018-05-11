@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import {
-  PoweredBy,
-  Hits,
-  Configure,
-  InstantSearch,
-} from "react-instantsearch/es/dom";
+import { Hits, Configure, InstantSearch } from "react-instantsearch/es/dom";
 
 import { connectSearchBox } from "react-instantsearch/es/connectors";
 
@@ -51,9 +46,8 @@ class RawSearchBox extends Component {
         value={this.state.value}
         aria-label="Plugin name"
         onChange={e => this._onChange(e.target.value)}
-        className={`${this.props.styles.pluginName} ${
-          this.props.styles.envPresetInput
-        }`}
+        className={`${this.props.styles.pluginName} ${this.props.styles
+          .envPresetInput}`}
         type="text"
       />
     );
