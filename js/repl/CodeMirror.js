@@ -125,9 +125,14 @@ export default class ReactCodeMirror extends React.Component {
       { line, ch },
       { line, ch: endColumn },
       {
-        css: 'background: red; color: white'
+        css: `background: ${colors.inverseBackgroundDark}; color: ${colors.inverseForeground}`
       }
     );
+
+    // try to centralize the element
+    const t = this._codeMirror.charCoords({line, ch: 0}, "local").top;
+    const middleHeight = this._codeMirror.getScrollerElement().offsetHeight / 2;
+    this._codeMirror.scrollTo(null, t - middleHeight - 5);
   }
 
   _updateOption(optionName: string, newValue: any) {

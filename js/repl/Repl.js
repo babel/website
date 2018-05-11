@@ -254,13 +254,13 @@ class Repl extends React.Component {
             options={options}
             placeholder="Compiled output will be shown here"
           />
-        </div>
 
-        {state.sourceMapRepresentation &&
-          <footer className={styles.footerPanel}>
-            {state.sourceMapRepresentation}
-          </footer>
-        }
+          {state.sourceMapRepresentation &&
+            <footer className={styles.footerPanel}>
+              {state.sourceMapRepresentation}
+            </footer>
+          }
+        </div>
       </div>
     );
   }
@@ -531,7 +531,7 @@ class Repl extends React.Component {
     const onMouseLeave = mapping => this._removeHighlights();
 
     return (
-      <div className="representation">
+      <div className={styles.sourceMapWrapper}>
         {mappings.map((m, index) =>
           <SourceMapLine
             onMouseEnter={onMouseEnter}
@@ -683,15 +683,26 @@ class Repl extends React.Component {
 }
 
 class SourceMapLine extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      hovered: false
+    };
+  }
   render() {
     const { name, originalLine, originalColumn, generatedLine, generatedColumn } = this.props;
 
+    const className = this.state.hovered ? styles.sourceMapLineHover : styles.sourceMapLine;
+
     return (
-      <div
-        onMouseEnter={e => this.props.onMouseEnter(this.props)}
-        onMouseLeave={e => this.props.onMouseLeave(this.props)}
+      <div className={className}
+        onMouseEnter={e => { this.setState({ hovered: true }); this.props.onMouseEnter(this.props); }}
+        onMouseLeave={e => { this.setState({ hovered: false }); this.props.onMouseLeave(this.props); }}
       >
-        {`${name}: ${originalLine}:${originalColumn} -> ${generatedLine}:${generatedColumn}`}
+        <strong>{name}: </strong>
+        {originalLine}:{originalColumn}
+        {' → '}
+        {generatedLine}:{generatedColumn}
       </div>
     );
   }
@@ -704,6 +715,16 @@ export default function ReplWithErrorBoundary() {
     </ErrorBoundary>
   );
 }
+
+const sourceMapLineBaseStyle = {
+  background: colors.infoBackground,
+  display: 'inline-block',
+  cursor: 'pointer',
+  fontFamily: 'monospace',
+  margin: '.5em 0 0 .5em',
+  border: '1px solid #ddd',
+  padding: '.1em 0.3em',
+};
 
 const styles = {
   loader: css({
@@ -724,10 +745,19 @@ const styles = {
   }),
   codeMirrorPanel: css({
     flex: "0 0 50%",
+    height: "80%",
   }),
   optionsColumn: css({
     flex: "0 0 auto",
   }),
+  sourceMapWrapper: css({
+    width: '100%',
+  }),
+  sourceMapLine: css(sourceMapLineBaseStyle),
+  sourceMapLineHover: css(Object.assign({}, sourceMapLineBaseStyle, {
+    background: colors.inverseBackgroundDark,
+    color: colors.inverseForeground,
+  })),
   repl: css`
     height: 100%;
     height: calc(100vh - 50px); /* 50px is the header's height */
@@ -743,10 +773,11 @@ const styles = {
     }
   `,
   panels: css({
-    height: "80%",
+    height: "100%",
     width: "100%",
     display: "flex",
     flexDirection: "row",
+    flexWrap: "wrap",
     justifyContent: "stretch",
     overflow: "auto",
     fontSize: "0.875rem",
@@ -755,9 +786,8 @@ const styles = {
   footerPanel: css({
     height: "20%",
     width: "100%",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "stretch",
+    flex: "0 0 100%",
+    borderTop: "1px solid #ddd",
     overflow: "auto",
     fontSize: "0.875rem",
     lineHeight: "1.25rem",
