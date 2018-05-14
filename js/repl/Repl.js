@@ -144,10 +144,6 @@ class Repl extends React.Component {
       ),
       evalErrorMessage: null,
       fileSize: persistedState.fileSize,
-      isEnvPresetTabExpanded: defaultPresets["env"],
-      isPresetsTabExpanded,
-      isPluginsExpanded: false,
-      isSettingsTabExpanded: persistedState.isSettingsTabExpanded,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       meta: {
@@ -208,16 +204,11 @@ class Repl extends React.Component {
           envPresetState={state.envPresetState}
           shippedProposalsState={state.shippedProposalsState}
           fileSize={state.fileSize}
-          isEnvPresetTabExpanded={state.isEnvPresetTabExpanded}
           isExpanded={state.isSidebarExpanded}
-          isPluginsExpanded={state.isPluginsExpanded}
-          isPresetsTabExpanded={state.isPresetsTabExpanded}
-          isSettingsTabExpanded={state.isSettingsTabExpanded}
           lineWrap={state.lineWrap}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
-          onTabExpandedChange={this._onTabExpandedChange}
           pluginState={state.plugins}
           presetState={state.presets}
           runtimePolyfillConfig={runtimePolyfillConfig}
@@ -535,15 +526,6 @@ class Repl extends React.Component {
         };
       }
     }, this._pluginsUpdatedSetStateCallback);
-  };
-
-  _onTabExpandedChange = (name: string, isExpanded: boolean) => {
-    this.setState(
-      {
-        [name]: isExpanded,
-      },
-      this._pluginsUpdatedSetStateCallback
-    );
   };
 
   _persistState = () => {

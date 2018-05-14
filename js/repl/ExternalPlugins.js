@@ -17,7 +17,7 @@ const config = {
 type Props = {
   loadingExternalPlugins: boolean,
   isPluginsExpanded: boolean,
-  _togglePluginsTab: () => void,
+  onToggleExpanded: () => void,
   _onshowOfficialExternalPluginsChanged: any => void,
   _pluginChanged: () => void,
   showOfficialExternalPlugins: boolean,
@@ -57,7 +57,7 @@ class RawSearchBox extends Component {
 export default function ExternalPlugins({
   loadingExternalPlugins,
   isPluginsExpanded,
-  _togglePluginsTab,
+  onToggleExpanded,
   _onshowOfficialExternalPluginsChanged,
   _pluginChanged,
   showOfficialExternalPlugins,
@@ -99,7 +99,8 @@ export default function ExternalPlugins({
           )}
         </span>
       }
-      toggleIsExpanded={_togglePluginsTab}
+      onToggleExpanded={onToggleExpanded}
+      tabKey="plugins"
     >
       <InstantSearch
         apiKey={config.apiKey}

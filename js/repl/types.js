@@ -127,3 +127,5 @@ export type BabelPresetEnvResult = {
   transformations: Array<string>,
   transformationsWithTargets: Array<BabelNamedPresetAndTarget>,
 };
+
+export type SidebarTabSection = "env" | "plugins" | "presets" | "settings";
