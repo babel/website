@@ -1,52 +1,36 @@
-'use strict';
-
-const webpack = require('webpack');
-
-const DEV_SERVER_PORT = 34512;
+"use strict";
 
 const config = {
+  mode: process.env.NODE_ENV === "production" ? "production" : "development",
   entry: {
-    repl: './js/repl/index.js',
-    minirepl: './js/minirepl.js',
+    repl: "./js/repl/index.js",
+    minirepl: "./js/minirepl.js",
   },
   output: {
     // Don't bother with hashing/versioning the filename - Netlify does it
     // for us in prod.
-    filename: '[name].js',
-    path: __dirname + '/website/static/js/build/',
+    filename: "[name].js",
+    path: __dirname + "/website/static/js/build/",
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
       },
     ],
   },
-  plugins: [
-  ],
+  plugins: [],
   externals: {
-    codemirror: 'CodeMirror',
-    'lz-string': 'LZString',
-    react: 'React',
-    'react-dom': 'ReactDOM',
+    codemirror: "CodeMirror",
+    "lz-string": "LZString",
+    react: "React",
+    "react-dom": "ReactDOM",
+  },
+  performance: {
+    hints: false,
   },
 };
-
-if (process.env.NODE_ENV !== 'production') {
-  // Enable hot reloading in dev
-  config.output.publicPath = `http://localhost:${DEV_SERVER_PORT}/`;
-  config.plugins.push(new webpack.HotModuleReplacementPlugin());
-  config.devServer = {
-    compress: true,
-    contentBase: false,
-    hot: true,
-    port: DEV_SERVER_PORT,
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
-  };
-}
 
 module.exports = config;
