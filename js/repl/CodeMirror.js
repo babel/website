@@ -18,8 +18,9 @@ const DEFAULT_CODE_MIRROR_OPTIONS = {
 
 type Props = {
   autoFocus: boolean,
-  highlight?: array,
+  highlight?: Array<Object>,
   onChange: (value: string) => void,
+  onCursorActivity?: Function,
   options: Object,
   placeholder?: string,
   value: ?string,
@@ -48,13 +49,23 @@ export default class ReactCodeMirror extends React.Component {
       ...this.props.options,
     });
     this._codeMirror.on("change", this._onChange);
+
+    this._onMouseMove = this._onMouseMove.bind(this);
+    if (this.props.onCursorActivity) {
+      this._codeMirror.getScrollerElement().addEventListener('mousemove', this._onMouseMove);
+    }
+
     this._codeMirror.setValue(this.props.value || "");
-    this._checkHighlight();
+    this._highlightMarkedCode();
   }
 
   componentWillUnmount() {
     // is there a lighter-weight way to remove the cm instance?
     if (this._codeMirror) {
+      if (this.props.onCursorActivity) {
+        this._codeMirror.getScrollerElement().removeEventListener('mousemove', this._onMouseMove);
+      }
+
       this._codeMirror.toTextArea();
     }
   }
@@ -79,7 +90,11 @@ export default class ReactCodeMirror extends React.Component {
       this._codeMirror.setValue("");
     }
 
-    this._checkHighlight();
+    if (!this.props.onCursorActivity && nextProps.onCursorActivity) {
+      this._codeMirror.getScrollerElement().addEventListener('mousemove', this._onMouseMove);
+    }
+
+    this._highlightMarkedCode();
 
     if (typeof nextProps.options === "object") {
       for (const optionName in nextProps.options) {
@@ -108,17 +123,31 @@ export default class ReactCodeMirror extends React.Component {
     );
   }
 
-  _checkHighlight = () => {
+  _onMouseMove = (e: Object) => {
+    const coords = { left: e.pageX, top: e.pageY };
+    const position = this._codeMirror.coordsChar(coords);
+
+    //$FlowFixMe
+    this.props.onCursorActivity(position);
+  }
+
+  _highlightMarkedCode = () => {
     this._codeMirror.getDoc().getAllMarks().forEach(mark => mark.clear());
 
     if (!this.props.highlight) return;
 
     this.props.highlight.forEach(mark => {
+      const css = mark.active
+        ? [`background: ${colors.inverseBackgroundDark}`, `color: ${colors.inverseForeground}`]
+        : [`background: ${colors.inverseBackgroundLight}`]
+      if (mark.cursor) {
+        css.push(`cursor: pointer`);
+      }
       this._codeMirror.getDoc().markText(
         { line: mark.line, ch: mark.columnStart },
         { line: mark.line, ch: mark.columnEnd },
         {
-          css: `background: ${colors.inverseBackgroundDark}; color: ${colors.inverseForeground}`
+          css: css.join(';')
         }
       );
     });

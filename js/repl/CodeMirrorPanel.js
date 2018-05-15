@@ -11,10 +11,11 @@ type Props = {
   errorMessage: ?string,
   info?: ?string,
   onChange?: (value: string) => void,
+  onCursorActivity?: Function,
   options: Object,
   placeholder?: string,
   fileSize: string,
-  highlight?: Object,
+  highlight?: Array<Object>,
 };
 
 export default function CodeMirrorPanel(props: Props) {
@@ -24,6 +25,7 @@ export default function CodeMirrorPanel(props: Props) {
     fileSize,
     info,
     onChange,
+    onCursorActivity,
     options,
     highlight,
   } = props;
@@ -34,6 +36,7 @@ export default function CodeMirrorPanel(props: Props) {
         <CodeMirror
           highlight={highlight}
           onChange={onChange}
+          onCursorActivity={onCursorActivity}
           options={{
             ...props.options,
             readOnly: onChange == null,

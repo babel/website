@@ -72,10 +72,9 @@ type State = {
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
   sourceMap?: string,
-  sourceMapMappings?: Object,
-  sourceMapJSX?: Object,
-  sourceMapSourceHighlight: array,
-  sourceMapCompiledHighlight: array,
+  sourceMapMappings?: Array<Object>,
+  sourceMapSourceHighlight: Array<Object>,
+  sourceMapCompiledHighlight: Array<Object>,
   externalPlugins: Array<string>,
   pluginSearch: ?string,
   version: number,
@@ -165,7 +164,9 @@ class Repl extends React.Component {
         runtimePolyfillConfig,
         persistedState.evaluate
       ),
-      sourceMap: null,
+      sourceMap: '',
+      sourceMapCompiledHighlight: [],
+      sourceMapSourceHighlight: [],
       showOfficialExternalPlugins: false,
       externalPlugins: [],
     };
@@ -242,6 +243,7 @@ class Repl extends React.Component {
             fileSize={state.meta.rawSize}
             highlight={state.sourceMapSourceHighlight}
             onChange={this._updateCode}
+            onCursorActivity={position => this._handleCursorPosition('source', position)}
             options={options}
             placeholder="Write code here"
           />
@@ -252,24 +254,48 @@ class Repl extends React.Component {
             fileSize={state.meta.compiledSize}
             highlight={state.sourceMapCompiledHighlight}
             info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
+            onCursorActivity={position => this._handleCursorPosition('compiled', position)}
             options={options}
             placeholder="Compiled output will be shown here"
           />
-
-          {state.sourceMapJSX &&
-            <footer className={styles.footerPanel}>
-              {state.sourceMapJSX}
-            </footer>
-          }
         </div>
       </div>
     );
   }
 
-  _setHighlights(panel: string, highlights: array) {
-    const key = (panel === 'source') ? 'sourceMapSourceHighlight' : 'sourceMapCompiledHighlight';
+  _handleCursorPosition(panel: string, position: Object) {
+    if (!this.state.sourceMapMappings) return;
+
+    const mappingsUnderCursor = this.state.sourceMapMappings.filter(m => (
+      m.original.line === (position.line + 1) &&
+      m.original.columnStart <= position.ch &&
+      m.original.columnEnd > position.ch
+    ));
+
+    this._removeHighlights();
+
+    if (!mappingsUnderCursor.length) return;
+
+    const firstMapping = mappingsUnderCursor[0];
+    this._highlightMapping(firstMapping.original, true, true, true);
+    firstMapping.generated.forEach(m => this._highlightMapping(m, true));
+  }
+
+  _highlightMapping(mapping: Object, active: boolean = false, isSource: boolean = false, cursor: boolean = false) {
+    const highlight = {
+      line: mapping.line - 1,
+      columnStart: mapping.columnStart,
+      columnEnd: mapping.columnEnd,
+      active,
+      cursor
+    };
+    const stateKey = isSource ? 'sourceMapSourceHighlight' : 'sourceMapCompiledHighlight';
+    const newHighlightList: Array<Object> = this.state[stateKey].slice(0);
+
+    newHighlightList.push(highlight);
+
     this.setState(
-      { [key]: highlights },
+      { [stateKey]: newHighlightList },
       this.forceUpdate
     );
   }
@@ -488,21 +514,18 @@ class Repl extends React.Component {
           runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
         presets: presetsArray,
         prettify: state.plugins.prettier.isEnabled,
-        sourceMap: runtimePolyfillState.isEnabled,
+        sourceMap: true,
         sourceType: state.sourceType,
       })
-      .then(result => {
+      .then((result: Object) => {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
         result.meta.rawSize = prettySize(result.meta.rawSize);
-        if (result.sourceMap) {
-          result.sourceMapMappings = this.getSourcemapMappings(result.sourceMap);
-          result.sourceMapJSX = this.getSourcemapJSX(result.sourceMapMappings);
-        }
+        result.sourceMapMappings = result.sourceMap ? this.getSourcemapMappings(result.sourceMap) : [];
         this.setState(result, setStateCallback);
       });
   };
 
-  getSourcemapMappings = (rawSourceMap: string): array => {
+  getSourcemapMappings = (rawSourceMap: string): Array<Object> => {
     const smc = new sourceMap.SourceMapConsumer(rawSourceMap);
 
     const originalPositions = [];
@@ -556,66 +579,6 @@ class Repl extends React.Component {
         generated: generatedRanges,
       };
     });
-  };
-
-  getSourcemapJSX = (mappings: array) => {
-
-/*
-{
-  "original": {
-    "source": "repl",
-    "name": null,
-    "line": 1,
-    "columnStart": 0,
-    "columnEnd": 6
-  },
-  "generated": [
-    {
-      "line": 5,
-      "columnStart": 0,
-      "columnEnd": 4
-    },
-    {
-      "line": 29,
-      "columnStart": 3,
-      "columnEnd": null
-    }
-  ]
-}
-*/
-
-    const onMouseEnter = mapping => {
-      this._setHighlights(
-        'source',
-        [{
-          line: mapping.original.line - 1,
-          columnStart: mapping.original.columnStart,
-          columnEnd: mapping.original.columnEnd
-        }]
-      );
-
-      const compiledHighlights = mapping.generated.map(range => ({
-        line: range.line - 1,
-        columnStart: range.columnStart,
-        columnEnd: range.columnEnd
-      }));
-      this._setHighlights('compiled', compiledHighlights);
-    }
-
-    const onMouseLeave = mapping => this._removeHighlights();
-
-    return (
-      <div className={styles.sourceMapWrapper}>
-        {mappings.map((m, index) =>
-          <SourceMapLine
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-            key={index}
-            {...m}
-          />
-        )}
-      </div>
-    )
   };
 
   // Debounce compilation since it's expensive.
@@ -756,35 +719,6 @@ class Repl extends React.Component {
   };
 }
 
-class SourceMapLine extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      hovered: false
-    };
-  }
-  render() {
-    const { original, generated } = this.props;
-
-    const className = this.state.hovered ? styles.sourceMapLineHover : styles.sourceMapLine;
-
-    return (
-      <div className={className}
-        onMouseEnter={e => { this.setState({ hovered: true }); this.props.onMouseEnter(this.props); }}
-        onMouseLeave={e => { this.setState({ hovered: false }); this.props.onMouseLeave(this.props); }}
-      >
-        {original.name && <strong>{original.name}: </strong>}
-        {original.line}:{original.columnStart}
-        {' → '}
-        {generated
-          .map(mapping => `${mapping.line}:${mapping.columnStart}`)
-          .join(', ')
-        }
-      </div>
-    );
-  }
-}
-
 export default function ReplWithErrorBoundary() {
   return (
     <ErrorBoundary>
@@ -792,16 +726,6 @@ export default function ReplWithErrorBoundary() {
     </ErrorBoundary>
   );
 }
-
-const sourceMapLineBaseStyle = {
-  background: colors.infoBackground,
-  display: 'inline-block',
-  cursor: 'pointer',
-  fontFamily: 'monospace',
-  margin: '.5em 0 0 .5em',
-  border: '1px solid #ddd',
-  padding: '.1em 0.3em',
-};
 
 const styles = {
   loader: css({
@@ -822,7 +746,7 @@ const styles = {
   }),
   codeMirrorPanel: css({
     flex: "0 0 50%",
-    height: "80%",
+    height: "100%",
   }),
   optionsColumn: css({
     flex: "0 0 auto",
@@ -830,11 +754,6 @@ const styles = {
   sourceMapWrapper: css({
     width: '100%',
   }),
-  sourceMapLine: css(sourceMapLineBaseStyle),
-  sourceMapLineHover: css(Object.assign({}, sourceMapLineBaseStyle, {
-    background: colors.inverseBackgroundDark,
-    color: colors.inverseForeground,
-  })),
   repl: css`
     height: 100%;
     height: calc(100vh - 50px); /* 50px is the header's height */
@@ -856,15 +775,6 @@ const styles = {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "stretch",
-    overflow: "auto",
-    fontSize: "0.875rem",
-    lineHeight: "1.25rem",
-  }),
-  footerPanel: css({
-    height: "20%",
-    width: "100%",
-    flex: "0 0 100%",
-    borderTop: "1px solid #ddd",
     overflow: "auto",
     fontSize: "0.875rem",
     lineHeight: "1.25rem",
