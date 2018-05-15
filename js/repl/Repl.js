@@ -746,13 +746,9 @@ const styles = {
   }),
   codeMirrorPanel: css({
     flex: "0 0 50%",
-    height: "100%",
   }),
   optionsColumn: css({
     flex: "0 0 auto",
-  }),
-  sourceMapWrapper: css({
-    width: '100%',
   }),
   repl: css`
     height: 100%;
@@ -773,7 +769,6 @@ const styles = {
     width: "100%",
     display: "flex",
     flexDirection: "row",
-    flexWrap: "wrap",
     justifyContent: "stretch",
     overflow: "auto",
     fontSize: "0.875rem",
