@@ -224,6 +224,7 @@ class Repl extends React.Component {
           runtimePolyfillState={state.runtimePolyfillState}
           externalPlugins={state.externalPlugins}
           pluginChange={this._pluginChange}
+          onExternalPluginRemove={this._removeExternalPlugin}
           pluginSearch={this._pluginSearch}
           pluginValue={state.pluginSearch}
           showOfficialExternalPluginsChanged={
@@ -433,17 +434,18 @@ class Repl extends React.Component {
           this._pluginsUpdatedSetStateCallback
         );
       } else {
-        this.setState(
-          state => ({
-            externalPlugins: state.externalPlugins.filter(
-              p => p !== plugin.name
-            ),
-          }),
-          this._pluginsUpdatedSetStateCallback
-        );
+        this._removeExternalPlugin(plugin.name);
       }
     });
   };
+
+  _removeExternalPlugin = pluginName =>
+    this.setState(
+      state => ({
+        externalPlugins: state.externalPlugins.filter(p => p !== pluginName),
+      }),
+      this._pluginsUpdatedSetStateCallback
+    );
 
   _showOfficialExternalPluginsChanged = () =>
     this.setState(state => ({

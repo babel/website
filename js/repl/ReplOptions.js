@@ -404,6 +404,7 @@ class ExpandedContainer extends Component {
               this._onshowOfficialExternalPluginsChanged
             }
             _pluginChanged={this.props.pluginChange}
+            _onExternalPluginRemove={this.props.onExternalPluginRemove}
             pluginValue={pluginValue}
             showOfficialExternalPlugins={showOfficialExternalPlugins}
             pluginsLoading={pluginsLoading}

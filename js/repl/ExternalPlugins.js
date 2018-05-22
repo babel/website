@@ -33,7 +33,7 @@ export default class ExternalPlugins extends React.Component<Props, State> {
   };
 
   renderPlugins() {
-    const plugins = this.props.plugins;
+    const { plugins, _onExternalPluginRemove } = this.props;
 
     if (plugins.length === 0) {
       return null;
@@ -41,7 +41,12 @@ export default class ExternalPlugins extends React.Component<Props, State> {
 
     return (
       <ul className={currentStyles.pluginList}>
-        {plugins.map(p => <li key={p}>{p}</li>)}
+        {plugins.map(p => (
+          <li key={p}>
+            {p}
+            <a onClick={() => _onExternalPluginRemove(p)}>✕</a>
+          </li>
+        ))}
       </ul>
     );
   }
@@ -98,6 +103,7 @@ const currentStyles = {
       align-items: center;
       border-left: 4px solid transparent;
       display: flex;
+      justify-content: space-between;
       line-height: 1.1;
       padding: 0 0.625rem;
       transition: all 0.25s ease-out;
@@ -108,6 +114,18 @@ const currentStyles = {
 
       &:not(:first-child) {
         margin-top: 0.5rem;
+      }
+
+      > a {
+        color: #9da5b4;
+        padding: 4px 6px;
+
+        &:hover {
+          color: white;
+          cursor: pointer;
+          text-decoration: none;
+          background-color: black;
+        }
       }
     }
   `,
