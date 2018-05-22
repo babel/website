@@ -275,7 +275,6 @@ class Repl extends React.Component {
       plugins,
       runtimePolyfillState,
     } = this.state;
-
     // Assume all default presets are baked into babel-standalone.
     // We really only need to worry about plugins.
     for (const key in plugins) {
@@ -550,6 +549,8 @@ class Repl extends React.Component {
       browsers: envConfig.browsers,
       build: state.babel.build,
       builtIns: builtIns,
+      spec: envConfig.isSpecEnabled,
+      loose: envConfig.isLooseEnabled,
       circleciRepo: state.babel.circleciRepo,
       code: state.code,
       debug: state.debugEnvPreset,

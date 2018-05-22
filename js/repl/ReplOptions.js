@@ -371,6 +371,36 @@ class ExpandedContainer extends Component<Props, State> {
                 type="checkbox"
               />
             </label>
+            <label className={styles.envPresetRow}>
+              <LinkToDocs
+                className={`${styles.envPresetLabel} ${styles.highlight}`}
+                section="spec"
+              >
+                Spec
+              </LinkToDocs>
+              <input
+                checked={envConfig.isSpecEnabled}
+                className={styles.envPresetCheckbox}
+                disabled={disableEnvSettings}
+                onChange={this._onEnvPresetSettingCheck("isSpecEnabled")}
+                type="checkbox"
+              />
+            </label>
+            <label className={styles.envPresetRow}>
+              <LinkToDocs
+                className={`${styles.envPresetLabel} ${styles.highlight}`}
+                section="loose"
+              >
+                Loose
+              </LinkToDocs>
+              <input
+                checked={envConfig.isLooseEnabled}
+                className={styles.envPresetCheckbox}
+                disabled={disableEnvSettings}
+                onChange={this._onEnvPresetSettingCheck("isLooseEnabled")}
+                type="checkbox"
+              />
+            </label>
             {isEnvFeatureSupported(envConfig.version, "shippedProposals") && (
               <label className={styles.envPresetRow}>
                 {shippedProposalsState.isLoading ? (
@@ -468,7 +498,9 @@ class ExpandedContainer extends Component<Props, State> {
     this.props.onEnvPresetSettingChange(type, event.target.value);
   };
 
-  _onEnvPresetSettingCheck = (type: string) => (event: SyntheticInputEvent<*>) => {
+  _onEnvPresetSettingCheck = (type: string) => (
+    event: SyntheticInputEvent<*>
+  ) => {
     this.props.onEnvPresetSettingChange(type, event.target.checked);
   };
 

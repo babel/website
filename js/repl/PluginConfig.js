@@ -107,6 +107,8 @@ const replDefaults: ReplState = {
   browsers: "",
   build: "",
   builtIns: false,
+  spec: false,
+  loose: false,
   circleciRepo: "",
   code: "",
   debug: false,

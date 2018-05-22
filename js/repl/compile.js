@@ -34,6 +34,8 @@ export default function compile(code: string, config: CompileConfig): Return {
   let envPresetDebugInfo = null;
   let sourceMap = null;
   let useBuiltIns = false;
+  let spec: false;
+  let loose: false;
   const meta = {
     compiledSize: 0,
     rawSize: new Blob([code], { type: "text/plain" }).size,
@@ -58,6 +60,12 @@ export default function compile(code: string, config: CompileConfig): Return {
     if (envConfig.isNodeEnabled) {
       targets.node = envConfig.node;
     }
+    if (envConfig.isSpecEnabled) {
+      spec = envConfig.isSpecEnabled;
+    }
+    if (envConfig.isLooseEnabled) {
+      loose = envConfig.isLooseEnabled;
+    }
 
     // onPresetBuild is invoked synchronously during compilation.
     // But the env preset info calculated from the callback should be part of our state update.
@@ -74,6 +82,8 @@ export default function compile(code: string, config: CompileConfig): Return {
       forceAllTransforms,
       shippedProposals,
       useBuiltIns,
+      spec,
+      loose,
     };
 
     config.presets.push(["env", options]);
