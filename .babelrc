@@ -7,14 +7,14 @@
     },
     "development": {
       "plugins": [
-        ["emotion", { sourceMap: true }]
+        ["emotion", { "sourceMap": true }]
       ]
     }
   },
   "presets": [
     ["env", {
       "targets": {
-        "browsers": ["last 3 versions"]
+        "browsers": ["last 3 versions", "ie >= 11"]
       }
     }],
     "react"
