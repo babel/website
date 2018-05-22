@@ -13,7 +13,7 @@
       {
         "modules": false,
         "targets": {
-          "browsers": ["last 3 versions", "ie >= 11"]
+          "browsers": ["last 3 versions"]
         }
       }
     ],
