@@ -20,7 +20,7 @@ See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
 This just means Babel *itself* won't run on older versions of Node. It can still *output* code that runs on old Node.
 
-## [Deprecations](/blog/2017/12/27/nearing-the-7.0-release.html#deprecated-yearly-presets-eg-babel-preset-es20xx)
+## [Yearly Preset Deprecations](/blog/2017/12/27/nearing-the-7.0-release.html#deprecated-yearly-presets-eg-babel-preset-es20xx)
 
 The "env" preset has been out for more than a year now, and completely replaces some of the presets we've had/suggested earlier.
 
@@ -32,6 +32,9 @@ The "env" preset has been out for more than a year now, and completely replaces 
 
 These presets should be substituted with the "env" preset.
 
+## [Versioning/Dependencies](/blog/2017/12/27/nearing-the-7.0-release.html#peer-dependencies-integrations)
+
+Most plugins/top level packages now have a `peerDependency` on `@babel/core`.
 
 ## Package Renames
 
@@ -83,10 +86,6 @@ This also means that when a proposal moves to Stage 4, we should rename the pack
 Some of the plugins had `-es3-` or `-es2015-` in the names, but these were unncessary.
 
 `@babel/plugin-transform-es2015-classes` became `@babel/plugin-transform-classes`.
-
-## [Versioning/Dependencies](/blog/2017/12/27/nearing-the-7.0-release.html#peer-dependencies-integrations)
-
-Most plugins/top level packages now have a `peerDependency` on `@babel/core`.
 
 ## `"use strict"` and `this` in CommonJS
 
@@ -209,9 +208,9 @@ Part of the reason we wanted to remove/deprecate stage presets in the first plac
 
 ## Spec Compliancy
 
-> A trailing comma cannot come after a RestElement in objects [#290](https://github.com/babel/babylon/pull/290) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+### `@babel/plugin-proposal-object-rest-spread`
 
-This is when you are using `@babel/plugin-proposal-object-rest-spread`.
+> A trailing comma cannot come after a RestElement in objects [#290](https://github.com/babel/babylon/pull/290) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 ```diff
 var {
@@ -220,54 +219,39 @@ var {
 } = { a: 1 };
 ```
 
-## `@babel/register`
+Since Object Spread defines new propeties and `Object.assign` just sets them, Babel has changed the default behavior to be more spec compliant.
 
-> `babel-core/register.js` has been removed [#5132](https://github.com/babel/babel/pull/5132) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-The deprecated usage of `babel-core/register` has been removed in Babel 7; instead use the standalone package `@babel/register`.
-
-Install `@babel/register` as a new dependency:
-
-```sh
-npm install --save-dev @babel/register
+```js
+// input
+z = { x, ...y };
 ```
 
-Upgrading with Mocha:
+```js
+// default behavior : "proposal-object-rest-spread"
+function _objectSpread(target) { ... }
 
-```diff
-- mocha --compilers js:babel-core/register
-+ mocha --compilers js:@babel/register
+z = _objectSpread({
+  x
+}, y);
 ```
 
-`@babel/register` will also now only compile files in the current working directly (was done to fix issues with symlinking).
+```js
+// old v6 behavior: ["proposal-object-rest-spread", { "loose": true }]
+function _extends(target) { ... }
 
-## Removed `babel-plugin-transform-class-constructor-call`
-
-> babel-plugin-transform-class-constructor-call has been removed [#5119](https://github.com/babel/babel/pull/5119) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-TC39 decided to drop this proposal. You can move your logic into the constructor or into a static method.
-
-```diff
-  class Point {
-    constructor(x, y) {
-      this.x = x;
-      this.y = y;
-    }
-
--  call constructor(x, y) {
-+  static secondConstructor(x, y) {
-      return new Point(x, y);
-    }
-  }
-
-  let p1 = new Point(1, 2);
-- let p2 = Point(3, 4);
-+ let p2 = Point.secondConstructor(3, 4);
+z = _extends({
+  x
+}, y);
 ```
 
-See [/docs/plugins/transform-class-constructor-call/](/docs/plugins/transform-class-constructor-call/) for more information.
+```js
+// substitute for Object.assign: ["proposal-object-rest-spread", { "loose": true, "useBuiltIns": true }]
+z = Object.assign({
+  x
+}, y);
+```
 
-## `@babel/plugin-proposal-class-properties`
+### `@babel/plugin-proposal-class-properties`
 
 The default behavior is changed to what was previously "spec" by default
 
@@ -306,7 +290,7 @@ var Bork = function Bork() {
 Bork.a = 'foo';
 ````
 
-## Split `@babel/plugin-transform-export-extensions` into the two renamed proposals
+### Split `@babel/plugin-transform-export-extensions` into the two renamed proposals
 
 This is a long time coming but this was finally changed.
 
@@ -322,7 +306,7 @@ export v from 'mod';
 export * as ns from 'mod';
 ````
 
-## `@babel/plugin-transform-template-literals`
+### `@babel/plugin-transform-template-literals`
 
 >  Template Literals Revision updated [#5523](https://github.com/babel/babel/pull/5523) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
@@ -365,7 +349,48 @@ tag(_templateObject);
 "foo" + bar;
 ```
 
-## `@babel/plugin-async-to-generator`
+### `@babel/plugin-proposal-decorators`
+
+In anticipation of the new decorators proposal implementation, we've decided to make it the new default behavior. This means that to continue using the current decorators syntax/behavior, you must set the `legacy` option as `true`.
+
+```diff
+ {
+   "plugins": [
+-    "@babel/plugin-proposal-decorators"
++    ["@babel/plugin-proposal-decorators", { "legacy": true }]
+   ]
+ }
+```
+
+> NOTE: If you are using `@babel/preset-stage-0` or `@babel/preset-stage-1`, which include this plugin, you must pass them the `decoratorsLegacy` option.
+
+### Removed `babel-plugin-transform-class-constructor-call`
+
+> babel-plugin-transform-class-constructor-call has been removed [#5119](https://github.com/babel/babel/pull/5119) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+TC39 decided to drop this proposal. You can move your logic into the constructor or into a static method.
+
+See [/docs/plugins/transform-class-constructor-call/](/docs/plugins/transform-class-constructor-call/) for more information.
+
+```diff
+  class Point {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+    }
+
+-  call constructor(x, y) {
++  static secondConstructor(x, y) {
+      return new Point(x, y);
+    }
+  }
+
+  let p1 = new Point(1, 2);
+- let p2 = Point(3, 4);
++ let p2 = Point.secondConstructor(3, 4);
+```
+
+### `@babel/plugin-async-to-generator`
 
 We merged `babel-plugin-transform-async-to-module-method` into the regular async plugin by just making it an option.
 
@@ -387,6 +412,27 @@ We merged `babel-plugin-transform-async-to-module-method` into the regular async
 
 This package currently gives you an error message to install `babel-cli` instead in v6.
 I think we can do something interesting with this name though.
+
+## `@babel/register`
+
+> `babel-core/register.js` has been removed [#5132](https://github.com/babel/babel/pull/5132) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+The deprecated usage of `babel-core/register` has been removed in Babel 7; instead use the standalone package `@babel/register`.
+
+Install `@babel/register` as a new dependency:
+
+```sh
+npm install --save-dev @babel/register
+```
+
+Upgrading with Mocha:
+
+```diff
+- mocha --compilers js:babel-core/register
++ mocha --compilers js:@babel/register
+```
+
+`@babel/register` will also now only compile files in the current working directly (was done to fix issues with symlinking).
 
 ## `@babel/generator`
 
@@ -411,18 +457,3 @@ This change just makes babel-generator output `,` instead of `;`.
 ## `@babel/preset-env`
 
 `loose` mode will now automatically exclude the `typeof-symbol` transform (a lot of projects using loose mode were doing this).
-
-## `@babel/plugin-proposal-decorators`
-
-In anticipation of the new decorators proposal implementation, we've decided to make it the new default behavior. This means that to continue using the current decorators syntax/behavior, you must set the `legacy` option as `true`.
-
-```diff
- {
-   "plugins": [
--    "@babel/plugin-proposal-decorators"
-+    ["@babel/plugin-proposal-decorators", { "legacy": true }]
-   ]
- }
-```
-
-> NOTE: If you are using `@babel/preset-stage-0` or `@babel/preset-stage-1`, which include this plugin, you must pass them the `decoratorsLegacy` option.
