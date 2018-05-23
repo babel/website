@@ -341,10 +341,12 @@ tag(_templateObject);
 ```
 
 ```js
-// default
+// default v7 behavior: ["@babel/plugin-transform-template-literals"]
 "foo".concat(bar);
+```
 
-// loose
+```js
+// old v6 behavior: ["@babel/plugin-transform-template-literals", { "loose": true }]
 "foo" + bar;
 ```
 
