@@ -219,7 +219,12 @@ var {
 } = { a: 1 };
 ```
 
-Since Object Spread defines new propeties and `Object.assign` just sets them, Babel has changed the default behavior to be more spec compliant.
+---
+
+> Since Object Spread defines new propeties and `Object.assign` just sets them, Babel has changed the default behavior to be more spec compliant.
+
+- [objectSpread helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L375)
+- [extends helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L357-L373)
 
 ```js
 // input
@@ -332,6 +337,8 @@ function _taggedTemplateLiteralLoose(strings, raw) { strings.raw = raw; return s
 var _templateObject = /*#__PURE__*/ _taggedTemplateLiteralLoose([void 0], ["\\unicode and \\u{55}"]);
 tag(_templateObject);
 ````
+
+---
 
 > Default to previous "spec" mode for regular template literals
 
