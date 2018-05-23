@@ -11,6 +11,7 @@
     [
       "env",
       {
+        "useBuiltIns": true,
         "modules": false,
         "targets": {
           "browsers": ["last 3 versions"]

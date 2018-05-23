@@ -69,6 +69,7 @@
   },
   "dependencies": {
     "babel-plugin-emotion": "^8.0.2-11",
+    "babel-polyfill": "^6.26.0",
     "codemirror": "5.30.0",
     "emotion": "^8.0.2-12",
     "lodash.camelcase": "^4.3.0",
