@@ -13,7 +13,7 @@ Because not every breaking change will affect every project, we've sorted the se
 
 ## All of Babel
 
-> Support for Node.js 0.10 and 0.12 has been dropped [#5025](https://github.com/babel/babel/pull/5025), [#5041](https://github.com/babel/babel/pull/5041), [#5186](https://github.com/babel/babel/pull/5186) ![high](https://img.shields.io/badge/level%20of%20awesomeness%3F-high-red.svg)
+> Support for Node.js 0.10, 0.12, 4 and 5 has been dropped [#5025](https://github.com/babel/babel/pull/5025), [#5041](https://github.com/babel/babel/pull/5041), [#7755](https://github.com/babel/babel/pull/7755), [#5186](https://github.com/babel/babel/pull/5186) ![high](https://img.shields.io/badge/level%20of%20awesomeness%3F-high-red.svg)
 
 We highly encourage you to use a newer version of Node.js (LTS v8) since the previous versions are not maintained.
 See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
