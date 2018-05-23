@@ -227,7 +227,7 @@ z = { x, ...y };
 ```
 
 ```js
-// default behavior : "proposal-object-rest-spread"
+// v7 default behavior: ["proposal-object-rest-spread"]
 function _objectSpread(target) { ... }
 
 z = _objectSpread({
@@ -236,7 +236,7 @@ z = _objectSpread({
 ```
 
 ```js
-// old v6 behavior: ["proposal-object-rest-spread", { "loose": true }]
+// Old v6 behavior: ["proposal-object-rest-spread", { "loose": true }]
 function _extends(target) { ... }
 
 z = _extends({
@@ -245,7 +245,7 @@ z = _extends({
 ```
 
 ```js
-// substitute for Object.assign: ["proposal-object-rest-spread", { "loose": true, "useBuiltIns": true }]
+// Substitute for Object.assign: ["proposal-object-rest-spread", { "loose": true, "useBuiltIns": true }]
 z = Object.assign({
   x
 }, y);
@@ -264,8 +264,7 @@ class Bork {
 ```
 
 ```js
-// default
-
+// v7 default behavior: ["@babel/plugin-proposal-class-properties"]
 var Bork = function Bork() {
   Object.defineProperty(this, "y", {
     enumerable: true,
@@ -282,7 +281,7 @@ Object.defineProperty(Bork, "a", {
 ```
 
 ```js
-// loose
+// old v6 behavior: ["@babel/plugin-proposal-class-properties", { "loose": true }]
 var Bork = function Bork() {
   this.y = void 0;
 };
