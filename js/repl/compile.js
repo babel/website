@@ -81,7 +81,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   try {
     const babelConfig = {
       babelrc: false,
-      filename: "repl",
+      filename: config.fileName,
       sourceMap: config.sourceMap,
 
       // HACK: decorators needs to be set to "legacy" until they are implemented

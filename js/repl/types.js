@@ -84,6 +84,7 @@ export type CompileConfig = {
   plugins: BabelPlugins,
   prettify: boolean,
   sourceMap: boolean,
+  fileName: ?string,
 };
 
 export type ReplState = {

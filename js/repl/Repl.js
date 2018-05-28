@@ -74,6 +74,7 @@ type State = {
   version: number,
   showOfficialExternalPlugins: boolean,
   loadingExternalPlugins: boolean,
+  fileName: ?string,
 };
 
 const DEBOUNCE_DELAY = 500;
@@ -150,6 +151,7 @@ class Repl extends React.Component {
         compiledSize: 0,
         rawSize: 0,
       },
+      fileName: "file.js",
       plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
       // Filled in after Babel is loaded
       presets: {},
@@ -222,6 +224,7 @@ class Repl extends React.Component {
           }
           showOfficialExternalPlugins={state.showOfficialExternalPlugins}
           loadingExternalPlugins={state.loadingExternalPlugins}
+          fileName={state.fileName}
         />
 
         <div className={styles.panels}>
