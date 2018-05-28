@@ -101,15 +101,11 @@ export default class WorkerApi {
 
     state.isLoading = true;
 
-    let loadPromise;
-
-    if (config.files) {
-      loadPromise = Promise.all(
-        config.files.map(file => this.loadScript(`${url}/${file}`))
-      );
-    } else {
-      loadPromise = this.loadScript(url);
-    }
+    const loadPromise = !config.files
+      ? this.loadScript(url)
+      : Promise.all(
+          config.files.map(file => this.loadScript(`${url}/${file}`))
+        );
 
     return loadPromise.then(success => {
       if (success) {

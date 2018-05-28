@@ -3,6 +3,7 @@
 // Globals pre-loaded by Worker
 declare var Babel: any;
 declare var prettier: any;
+declare var prettierPlugins: any;
 
 import { getDebugInfoFromEnvResult } from "./replUtils";
 import type { BabelPresetEnvResult, CompileConfig } from "./types";
