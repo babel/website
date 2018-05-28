@@ -6,7 +6,7 @@ import { registerPromiseWorkerApi } from "./WorkerUtils";
 import type { CompileConfig, PluginState } from "./types";
 
 // $FlowFixMe
-const WorkerSource = require("worker-loader?inline=true&fallback=false!./Worker");
+const WorkerSource = require("worker-loader?inline=true!./Worker");
 
 type PromiseWorkerApi = {
   postMessage(message: Object): Promise<any>,
