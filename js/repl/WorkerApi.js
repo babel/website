@@ -6,7 +6,7 @@ import { registerPromiseWorkerApi } from "./WorkerUtils";
 import type { CompileConfig, PluginState } from "./types";
 
 // $FlowFixMe
-const WorkerSource = require("worker-loader?inline=true!./Worker");
+const WorkerSource = require("worker-loader?inline=true&fallback=false!./Worker");
 
 type PromiseWorkerApi = {
   postMessage(message: Object): Promise<any>,
@@ -101,7 +101,17 @@ export default class WorkerApi {
 
     state.isLoading = true;
 
-    return this.loadScript(url).then(success => {
+    let loadPromise;
+
+    if (config.files) {
+      loadPromise = Promise.all(
+        config.files.map(file => this.loadScript(`${url}/${file}`))
+      );
+    } else {
+      loadPromise = this.loadScript(url);
+    }
+
+    return loadPromise.then(success => {
       if (success) {
         state.isLoaded = true;
         state.isLoading = false;

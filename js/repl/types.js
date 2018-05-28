@@ -30,6 +30,7 @@ export type PluginConfig = {
   package: string,
   version?: any,
   instanceName?: string,
+  files?: Array<string>,
 };
 
 export type MultiPackagesConfig = PluginConfig & {
