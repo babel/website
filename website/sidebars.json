@@ -32,7 +32,7 @@
       "babel-preset-typescript"
     ],
     "Tooling": [
-      "babylon",
+      "babel-parser",
       "babel-core",
       "babel-generator",
       "babel-code-frame",
