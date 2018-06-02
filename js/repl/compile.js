@@ -97,6 +97,7 @@ export default function compile(code: string, config: CompileConfig): Return {
         return preset;
       }),
       plugins: config.plugins,
+      sourceType: config.sourceType,
     };
 
     const transformed = Babel.transform(code, babelConfig);

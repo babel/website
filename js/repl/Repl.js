@@ -43,6 +43,7 @@ import type {
   EnvConfig,
   PluginState,
   PluginStateMap,
+  SourceType,
 } from "./types";
 
 type Props = {};
@@ -58,6 +59,7 @@ type State = {
   shippedProposalsState: ShippedProposalsState,
   evalErrorMessage: ?string,
   fileSize: boolean,
+  sourceType: SourceType,
   isEnvPresetTabExpanded: boolean,
   isPluginsExpanded: boolean,
   isPresetsTabExpanded: boolean,
@@ -144,6 +146,7 @@ class Repl extends React.Component {
       ),
       evalErrorMessage: null,
       fileSize: persistedState.fileSize,
+      sourceType: persistedState.sourceType,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       meta: {
@@ -204,6 +207,7 @@ class Repl extends React.Component {
           envPresetState={state.envPresetState}
           shippedProposalsState={state.shippedProposalsState}
           fileSize={state.fileSize}
+          sourceType={state.sourceType}
           isExpanded={state.isSidebarExpanded}
           lineWrap={state.lineWrap}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
@@ -455,6 +459,7 @@ class Repl extends React.Component {
         presets: presetsArray,
         prettify: state.plugins.prettier.isEnabled,
         sourceMap: runtimePolyfillState.isEnabled,
+        sourceType: state.sourceType,
       })
       .then(result => {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
@@ -492,28 +497,28 @@ class Repl extends React.Component {
     );
   };
 
-  _onSettingChange = (name: string, isEnabled: boolean) => {
+  _onSettingChange = (name: string, value: boolean | string) => {
     this.setState(state => {
       const { plugins, presets, runtimePolyfillState } = state;
 
       if (name === "babel-polyfill") {
-        runtimePolyfillState.isEnabled = isEnabled;
+        runtimePolyfillState.isEnabled = value;
 
         return {
           runtimePolyfillState,
         };
       } else if (state.hasOwnProperty(name)) {
         return {
-          [name]: isEnabled,
+          [name]: value,
         };
       } else if (plugins.hasOwnProperty(name)) {
-        plugins[name].isEnabled = isEnabled;
+        plugins[name].isEnabled = value;
 
         return {
           plugins,
         };
       } else if (presets.hasOwnProperty(name)) {
-        presets[name].isEnabled = isEnabled;
+        presets[name].isEnabled = value;
 
         return {
           presets,
@@ -551,6 +556,7 @@ class Repl extends React.Component {
       shippedProposals: envConfig.shippedProposals,
       evaluate: state.runtimePolyfillState.isEnabled,
       fileSize: state.fileSize,
+      sourceType: state.sourceType,
       isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
       isPluginsExpanded: state.isPluginsExpanded,
       isPresetsTabExpanded: state.isPresetsTabExpanded,

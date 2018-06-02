@@ -18,6 +18,7 @@ import type {
   PluginStateMap,
   ShippedProposalsState,
   SidebarTabSection,
+  SourceType,
 } from "./types";
 
 const PRESET_ORDER = [
@@ -36,7 +37,7 @@ const PRESET_ORDER = [
 
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
-type ToggleSetting = (name: string, isEnabled: boolean) => void;
+type ToggleSetting = (name: string, value: boolean | string) => void;
 type ShowOfficialExternalPluginsChanged = (value: string) => void;
 type PluginSearch = (value: string) => void;
 type PluginChange = (plugin: Object) => void;
@@ -59,6 +60,7 @@ type Props = {
   isEnvPresetTabExpanded: boolean,
   isPluginsExpanded: boolean,
   fileSize: boolean,
+  sourceType: SourceType,
   isExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
@@ -147,6 +149,7 @@ class ExpandedContainer extends Component<Props, State> {
       envPresetState,
       shippedProposalsState,
       fileSize,
+      sourceType,
       lineWrap,
       onIsExpandedChange,
       onExternalPluginRemove,
@@ -214,6 +217,19 @@ class ExpandedContainer extends Component<Props, State> {
                 type="checkbox"
               />
               File Size
+            </label>
+            <label className={`${styles.settingsLabel} ${styles.selectLabel}`}>
+              Source Type
+              <select
+                value={sourceType}
+                onChange={(event: SyntheticInputEvent<*>) =>
+                  onSettingChange("sourceType", event.target.value)}
+                className={styles.sourceTypeSelect}
+              >
+                <option value="module">Module</option>
+                <option value="script">Script</option>
+                <option value="unambiguous">Unambiguous</option>
+              </select>
             </label>
           </AccordionTab>
           <AccordionTab
@@ -736,6 +752,20 @@ const styles = {
     "&:hover": {
       backgroundColor: colors.inverseBackgroundDark,
       color: colors.inverseForeground,
+    },
+  }),
+  selectLabel: css({
+    [media.medium]: {
+      flexDirection: "column",
+      flexBasis: "3rem",
+      alignItems: "flex-start",
+    },
+  }),
+  sourceTypeSelect: css({
+    marginLeft: "0.5rem",
+
+    [media.medium]: {
+      marginLeft: "0",
     },
   }),
   envPresetColumn: css({

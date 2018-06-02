@@ -114,6 +114,7 @@ const replDefaults: ReplState = {
   debug: false,
   evaluate: false,
   fileSize: false,
+  sourceType: "module",
   forceAllTransforms: false,
   isEnvPresetTabExpanded: false,
   isPluginsExpanded: false,

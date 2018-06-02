@@ -77,6 +77,8 @@ export type PluginState = LazyLoadedState & {
 
 export type PluginStateMap = { [name: string]: PluginState };
 
+export type SourceType = "script" | "module" | "unambiguous";
+
 export type CompileConfig = {
   debugEnvPreset: boolean,
   envConfig: ?EnvConfig,
@@ -85,6 +87,7 @@ export type CompileConfig = {
   plugins: BabelPlugins,
   prettify: boolean,
   sourceMap: boolean,
+  sourceType: SourceType,
 };
 
 export type ReplState = {
@@ -97,6 +100,7 @@ export type ReplState = {
   debug: boolean,
   evaluate: boolean,
   fileSize: boolean,
+  sourceType: SourceType,
   isEnvPresetTabExpanded: boolean,
   isPresetsTabExpanded: boolean,
   isSettingsTabExpanded: boolean,
