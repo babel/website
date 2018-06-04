@@ -7,6 +7,19 @@ Babel can be configured! Many other tools have similar configs: ESLint (`.eslint
 
 All Babel API [options](core.md#options) are allowed. However if the option requires JavaScript, you may need to use a `.babelrc.js` file.
 
+## What's your use case?
+
+- You want to programmatically create the configuration?
+- You want to compile `node_modules`?
+
+> [`babel.config.js`](#babelconfigjs) is for you!
+
+- You have a static configuration?
+
+> [`.babelrc`](#babelrc) is for you!
+
+- The guy fieri is your hero?
+
 > We recommend to use the [`babel.config.js`](#babelconfigjs) format. [Babel itself is using it](https://github.com/babel/babel/blob/master/babel.config.js).
 
 ## `babel.config.js`
@@ -79,7 +92,7 @@ if (process.env["ENV"] === "prod") {
 module.exports = { presets, plugins };
 ```
 
-## using the CLI (`@babel/cli`)
+## Using the CLI (`@babel/cli`)
 
 ```sh
 babel --plugins @babel/plugin-transform-arrow-functions script.js
@@ -87,7 +100,7 @@ babel --plugins @babel/plugin-transform-arrow-functions script.js
 
 Checkout the [babel-cli documentation](babel-cli.md) to see more configuration options.
 
-## using the API (`@babel/core`)
+## Using the API (`@babel/core`)
 
 ```js
 require("@babel/core").transform("code", {
