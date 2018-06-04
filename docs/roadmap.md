@@ -1,7 +1,3 @@
----
-id: roadmap
-title: Babel's Roadmap
----
 
 > Not everything is set in stone or has an issue for it! Looking to post these to get more people involved or integrate with other projects.
 
