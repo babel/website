@@ -1,7 +1,5 @@
 ---
 title: .babelrc
-description: How to use a .babelrc
-
 id: babelrc
 ---
 
@@ -35,7 +33,7 @@ module.exports = {
 
 ## Use via `package.json`
 
-You can alternatively choose to specify your `.babelrc` config from within `package.json` like so:
+Alternatively, you can choose to specify your `.babelrc` config from within `package.json` like so:
 
 ```json
 {

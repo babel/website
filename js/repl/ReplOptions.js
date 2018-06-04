@@ -12,11 +12,12 @@ import { colors, media } from "./styles";
 
 import type {
   EnvConfig,
-  PluginConfig,
-  ShippedProposalsState,
-  PluginState,
   EnvState,
+  PluginConfig,
+  PluginState,
   PluginStateMap,
+  ShippedProposalsState,
+  SidebarTabSection,
 } from "./types";
 
 const PRESET_ORDER = [
@@ -36,7 +37,6 @@ const PRESET_ORDER = [
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, isEnabled: boolean) => void;
-type OnTabExpandedChange = (name: string, isExpanded: boolean) => void;
 type ShowOfficialExternalPluginsChanged = (value: string) => void;
 type PluginSearch = (value: string) => void;
 type PluginChange = (plugin: Object) => void;
@@ -66,7 +66,6 @@ type Props = {
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
-  onTabExpandedChange: OnTabExpandedChange,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
@@ -102,14 +101,41 @@ export default function ReplOptions(props: Props) {
   );
 }
 
+type State = {
+  isEnvTabExpanded: boolean,
+  isPluginsTabExpanded: boolean,
+  isPresetsTabExpanded: boolean,
+  isSettingsTabExpanded: boolean,
+};
+
 // The choice of Component over PureComponent is intentional here.
 // It simplifies the re-use of PluginState objects,
 // Without requiring gratuitous use of Object-spread.
-class ExpandedContainer extends Component {
-  props: Props;
-
+class ExpandedContainer extends Component<Props, State> {
   static defaultProps = {
     className: "",
+  };
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      isEnvTabExpanded: props.envConfig.isEnvPresetEnabled,
+      isPluginsTabExpanded: props.externalPlugins.length > 0,
+      isPresetsTabExpanded: Object.keys(props.presetState).some(
+        p => props.presetState[p].isEnabled
+      ),
+      isSettingsTabExpanded: true, // TODO
+    };
+  }
+
+  handleToggleTabExpanded = (tab: SidebarTabSection) => {
+    const parsedTab = tab.charAt(0).toUpperCase() + tab.slice(1);
+    const key = `is${parsedTab}TabExpanded`;
+
+    this.setState((state: State) => ({
+      [key]: !state[key],
+    }));
   };
 
   render() {
@@ -120,10 +146,7 @@ class ExpandedContainer extends Component {
       envPresetState,
       shippedProposalsState,
       fileSize,
-      isEnvPresetTabExpanded,
       isPluginsExpanded,
-      isPresetsTabExpanded,
-      isSettingsTabExpanded,
       lineWrap,
       onIsExpandedChange,
       onSettingChange,
@@ -138,6 +161,13 @@ class ExpandedContainer extends Component {
       loadingExternalPlugins,
     } = this.props;
 
+    const {
+      isEnvTabExpanded,
+      isPluginsTabExpanded,
+      isPresetsTabExpanded,
+      isSettingsTabExpanded,
+    } = this.state;
+
     const disableEnvSettings =
       !envPresetState.isLoaded ||
       !envConfig.isEnvPresetEnabled ||
@@ -150,7 +180,8 @@ class ExpandedContainer extends Component {
             className={styles.section}
             isExpanded={isSettingsTabExpanded}
             label="Settings"
-            toggleIsExpanded={this._toggleSettingsTab}
+            onToggleExpanded={this.handleToggleTabExpanded}
+            tabKey="settings"
           >
             <PluginToggle
               config={runtimePolyfillConfig}
@@ -189,7 +220,8 @@ class ExpandedContainer extends Component {
             className={styles.section}
             isExpanded={isPresetsTabExpanded}
             label="Presets"
-            toggleIsExpanded={this._togglePresetsTab}
+            onToggleExpanded={this.handleToggleTabExpanded}
+            tabKey="presets"
           >
             {PRESET_ORDER.map(preset => {
               const state = presetState[preset];
@@ -208,7 +240,7 @@ class ExpandedContainer extends Component {
           </AccordionTab>
           <AccordionTab
             className={`${styles.section} ${styles.sectionEnv}`}
-            isExpanded={isEnvPresetTabExpanded}
+            isExpanded={isEnvTabExpanded}
             label={
               <span>
                 Env Preset{" "}
@@ -217,7 +249,8 @@ class ExpandedContainer extends Component {
                 </small>
               </span>
             }
-            toggleIsExpanded={this._toggleEnvPresetTab}
+            onToggleExpanded={this.handleToggleTabExpanded}
+            tabKey="env"
           >
             <label className={styles.settingsLabel}>
               <input
@@ -396,18 +429,18 @@ class ExpandedContainer extends Component {
           </AccordionTab>
 
           <ExternalPlugins
-            loadingExternalPlugins={loadingExternalPlugins}
-            isPluginsExpanded={isPluginsExpanded}
-            _togglePluginsTab={this._togglePluginsTab}
             _pluginNameChanged={this._pluginNameChanged}
             _onshowOfficialExternalPluginsChanged={
               this._onshowOfficialExternalPluginsChanged
             }
             _pluginChanged={this._pluginChanged}
+            isPluginsExpanded={isPluginsTabExpanded}
+            loadingExternalPlugins={loadingExternalPlugins}
+            onToggleExpanded={this.handleToggleTabExpanded}
             pluginValue={pluginValue}
-            showOfficialExternalPlugins={showOfficialExternalPlugins}
-            pluginsLoading={pluginsLoading}
             plugins={plugins}
+            pluginsLoading={pluginsLoading}
+            showOfficialExternalPlugins={showOfficialExternalPlugins}
             styles={styles}
           />
         </div>
@@ -430,38 +463,17 @@ class ExpandedContainer extends Component {
   }
 
   _onEnvPresetSettingChange = (type: string) => (
-    event: SyntheticInputEvent
+    event: SyntheticInputEvent<*>
   ) => {
     this.props.onEnvPresetSettingChange(type, event.target.value);
   };
 
-  _onEnvPresetSettingCheck = (type: string) => (event: SyntheticInputEvent) => {
+  _onEnvPresetSettingCheck = (type: string) => (event: SyntheticInputEvent<*>) => {
     this.props.onEnvPresetSettingChange(type, event.target.checked);
   };
 
-  _onSettingCheck = (type: string) => (event: SyntheticInputEvent) => {
+  _onSettingCheck = (type: string) => (event: SyntheticInputEvent<*>) => {
     this.props.onSettingChange(type, event.target.checked);
-  };
-
-  _toggleEnvPresetTab = () => {
-    this.props.onTabExpandedChange(
-      "isEnvPresetTabExpanded",
-      !this.props.isEnvPresetTabExpanded
-    );
-  };
-
-  _togglePluginsTab = () => {
-    this.props.onTabExpandedChange(
-      "isPluginsExpanded",
-      !this.props.isPluginsExpanded
-    );
-  };
-
-  _togglePresetsTab = () => {
-    this.props.onTabExpandedChange(
-      "isPresetsTabExpanded",
-      !this.props.isPresetsTabExpanded
-    );
   };
 
   _pluginNameChanged = value => {
@@ -470,13 +482,6 @@ class ExpandedContainer extends Component {
 
   _onshowOfficialExternalPluginsChanged = value => {
     this.props.showOfficialExternalPluginsChanged(value);
-  };
-
-  _toggleSettingsTab = () => {
-    this.props.onTabExpandedChange(
-      "isSettingsTabExpanded",
-      !this.props.isSettingsTabExpanded
-    );
   };
 
   _pluginChanged = (e, plugin) => {
@@ -526,7 +531,7 @@ const PluginToggle = ({
       checked={state.isEnabled && !state.didError}
       className={styles.inputCheckboxLeft}
       disabled={state.isLoading || state.didError}
-      onChange={(event: SyntheticInputEvent) =>
+      onChange={(event: SyntheticInputEvent<*>) =>
         onSettingChange(config.package || config.label, event.target.checked)}
       type="checkbox"
     />
@@ -694,7 +699,7 @@ const styles = {
   pluginsHeader: css({
     display: "flex",
     justifyContent: "space-between",
-    paddingRight: 5
+    paddingRight: 5,
   }),
   accordionLabelVersion: css({
     fontSize: "1rem",
@@ -715,15 +720,15 @@ const styles = {
     color: colors.inverseForeground,
   }),
   settingsLabel: css({
-    flex: "0 0 2rem",
-    display: "flex",
-    flexDirection: "row",
     alignItems: "center",
+    display: "flex",
+    flex: "0 0 1.5rem",
+    flexDirection: "row",
+    fontSize: "0.875rem",
+    fontWeight: "normal",
     margin: "0 -0.5rem",
     padding: "0 1rem",
     transition: "background-color 250ms ease-in-out, color 250ms ease-in-out",
-    fontWeight: "normal",
-    fontSize: "0.875rem",
 
     "&:hover": {
       backgroundColor: colors.inverseBackgroundDark,

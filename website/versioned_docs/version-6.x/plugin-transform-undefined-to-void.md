@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-plugin-transform-undefined-to-void
 title: babel-plugin-transform-undefined-to-void
 sidebar_label: transform-undefined-to-void

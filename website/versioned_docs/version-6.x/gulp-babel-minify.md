@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-gulp-babel-minify
 title: gulp-babel-minify
 sidebar_label: gulp-babel-minify

@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-preset-minify
 title: babel-preset-minify
 sidebar_label: minify

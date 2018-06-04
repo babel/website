@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { PoweredBy,  Hits, Configure, InstantSearch } from "react-instantsearch/es/dom";
+import { Hits, Configure, InstantSearch } from "react-instantsearch/es/dom";
 
 import { connectSearchBox } from "react-instantsearch/es/connectors";
 
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
 
-import AlgoliaLogo from '../assets/search-by-algolia-white';
+import AlgoliaLogo from "../assets/search-by-algolia-white";
 
 const config = {
   apiKey: "1f0cc4b7da241f62651b85531d788fbd",
@@ -17,7 +17,7 @@ const config = {
 type Props = {
   loadingExternalPlugins: boolean,
   isPluginsExpanded: boolean,
-  _togglePluginsTab: () => void,
+  onToggleExpanded: () => void,
   _onshowOfficialExternalPluginsChanged: any => void,
   _pluginChanged: () => void,
   showOfficialExternalPlugins: boolean,
@@ -57,7 +57,7 @@ class RawSearchBox extends Component {
 export default function ExternalPlugins({
   loadingExternalPlugins,
   isPluginsExpanded,
-  _togglePluginsTab,
+  onToggleExpanded,
   _onshowOfficialExternalPluginsChanged,
   _pluginChanged,
   showOfficialExternalPlugins,
@@ -92,14 +92,15 @@ export default function ExternalPlugins({
       label={
         <span className={styles.pluginsHeader}>
           Plugins
-          {loadingExternalPlugins ?
-            <PresetLoadingAnimation /> :
+          {loadingExternalPlugins ? (
+            <PresetLoadingAnimation />
+          ) : (
             <AlgoliaLogo alt="Search Powered by Algolia" />
-          }
-
+          )}
         </span>
       }
-      toggleIsExpanded={_togglePluginsTab}
+      onToggleExpanded={onToggleExpanded}
+      tabKey="plugins"
     >
       <InstantSearch
         apiKey={config.apiKey}
@@ -111,14 +112,16 @@ export default function ExternalPlugins({
           attributesToRetrieve={["name", "version"]}
           attributesToHighlight={["name"]}
           filters={
-            "keywords:babel-plugin" +
+            "computedKeywords:babel-plugin" +
             (showOfficialExternalPlugins ? " AND owner.name:babel" : "")
           }
         />
 
-        <label className={styles.pluginContainer}>
+        <div className={styles.pluginContainer}>
           <div className={styles.pluginsSearch}>
-            <label className={`${styles.settingsLabel} ${styles.checkboxOfficial}`}>
+            <label
+              className={`${styles.settingsLabel} ${styles.checkboxOfficial}`}
+            >
               <input
                 checked={showOfficialExternalPlugins}
                 onChange={e => {
@@ -142,7 +145,7 @@ export default function ExternalPlugins({
                 : null}
             </div>
           )}
-        </label>
+        </div>
       </InstantSearch>
     </AccordionTab>
   );

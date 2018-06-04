@@ -12,7 +12,7 @@ This is the source for the [babeljs.io](https://babeljs.io) website: feel free t
 ```bash
 $ git clone git@github.com:babel/website.git
 $ cd website
-$ npm install && make bootstrap && make build
+$ yarn && yarn bootstrap
 ```
 
 * Just run `npm start` next time (check the Makefile and the package.json).

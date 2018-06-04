@@ -1,5 +1,4 @@
 ---
-# Don't edit this file directly, it was copied using scripts/download-readmes.js: 
 id: version-6.x-babel-preset-stage-3
 title: babel-preset-stage-3
 sidebar_label: stage-3

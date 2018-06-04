@@ -6,7 +6,7 @@ const url = require("url");
 function findMarkDownSync(startPath) {
   const result = [];
   const files = fs.readdirSync(path.join(__dirname, startPath));
-  files.forEach((val, index) => {
+  files.forEach(val => {
     const fPath = path.join(startPath, val);
     const stats = fs.statSync(fPath);
     if (stats.isDirectory()) {
@@ -46,9 +46,9 @@ const sponsors = [
   ...sponsorsDownloaded
     .filter(sponsor => sponsor.id != 2719) // temporary fix for Kent C. Dodds duplicate
     .map(sponsor => {
-      // temporary fix for AMP, facebook, and webflow
+      // temporary fix for coinbase and webflow
       let tier = sponsor.tier;
-      if (sponsor.id == 9337 || sponsor.id == 2309) {
+      if (sponsor.id == 12671) {
         tier = "gold-sponsors";
       } else if (sponsor.id == 5954) {
         tier = "silver-sponsors";
@@ -59,6 +59,8 @@ const sponsors = [
         website = url.parse(website).protocol ? website : `http://${website}`;
       } else if (typeof sponsor.twitterHandle == "string") {
         website = `https://twitter.com/@${sponsor.twitterHandle}`;
+      } else {
+        website = `https://opencollective.com/${sponsor.slug}`;
       }
 
       return {
@@ -66,7 +68,7 @@ const sponsors = [
         tier,
         name: sponsor.name,
         url: website,
-        image: sponsor.avatar,
+        image: sponsor.avatar || "/img/user.svg",
         description: sponsor.description,
       };
     }),
@@ -123,7 +125,10 @@ const siteConfig = {
   highlight: {
     theme: "tomorrow",
   },
-  // scripts: ["https://buttons.github.io/buttons.js"],
+  scripts: [
+    "https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js",
+    "/js/code-blocks-buttons.js",
+  ],
   // stylesheets: [ "" ],
   // translationRecruitingLink: "https://crowdin.com/project/",
   algolia: {
@@ -131,6 +136,7 @@ const siteConfig = {
     indexName: "babeljs",
   },
   disableHeaderTitle: true,
+  onPageNav: "separate",
   // gaTrackingId: "U-",
   // markdownPlugins: [],
   // cname

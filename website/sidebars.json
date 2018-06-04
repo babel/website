@@ -8,6 +8,7 @@
       "plugins",
       "caveats",
       "faq",
+      "roadmap",
       "v7-migration",
       "v7-migration-api"
     ],
@@ -29,10 +30,11 @@
       "babel-preset-stage-3",
       "babel-preset-flow",
       "babel-preset-react",
-      "babel-preset-minify"
+      "babel-preset-minify",
+      "babel-preset-typescript"
     ],
     "Tooling": [
-      "babylon",
+      "babel-parser",
       "babel-core",
       "babel-generator",
       "babel-code-frame",

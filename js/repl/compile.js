@@ -3,6 +3,7 @@
 // Globals pre-loaded by Worker
 declare var Babel: any;
 declare var prettier: any;
+declare var prettierPlugins: any;
 
 import { getDebugInfoFromEnvResult } from "./replUtils";
 import type { BabelPresetEnvResult, CompileConfig } from "./types";
@@ -82,9 +83,20 @@ export default function compile(code: string, config: CompileConfig): Return {
     const babelConfig = {
       babelrc: false,
       filename: "repl",
-      presets: config.presets,
-      plugins: config.plugins,
       sourceMap: config.sourceMap,
+
+      // HACK: decorators needs to be set to "legacy" until they are implemented
+      presets: config.presets.map(preset => {
+        if (
+          Babel.version[0] === "7" &&
+          typeof preset === "string" &&
+          /^stage-[0-2]$/.test(preset)
+        ) {
+          return [preset, { decoratorsLegacy: true }];
+        }
+        return preset;
+      }),
+      plugins: config.plugins,
     };
 
     const transformed = Babel.transform(code, babelConfig);
@@ -97,7 +109,11 @@ export default function compile(code: string, config: CompileConfig): Return {
       }
     }
 
-    if (config.prettify && typeof prettier !== "undefined") {
+    if (
+      config.prettify &&
+      typeof prettier !== "undefined" &&
+      typeof prettierPlugins !== "undefined"
+    ) {
       // TODO Don't re-parse; just pass Prettier the AST we already have.
       // This will have to wait until we've updated to Babel 7 since Prettier uses it.
       // Prettier doesn't handle ASTs from Babel 6.
@@ -107,7 +123,10 @@ export default function compile(code: string, config: CompileConfig): Return {
       // ) {
       //   compiled = prettier.__debug.formatAST(transformed.ast, DEFAULT_PRETTIER_CONFIG);
       // } else {
-      compiled = prettier.format(compiled, DEFAULT_PRETTIER_CONFIG);
+      compiled = prettier.format(compiled, {
+        ...DEFAULT_PRETTIER_CONFIG,
+        plugins: prettierPlugins,
+      });
       // }
     }
     meta.compiledSize = new Blob([compiled], { type: "text/plain" }).size;

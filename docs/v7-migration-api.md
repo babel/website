@@ -1,6 +1,5 @@
 ---
 title:  "Upgrade to Babel 7 (API)"
-
 id: v7-migration-api
 ---
 
@@ -27,6 +26,8 @@ If you import a Babel package in a library you may need to use `.default` when u
 
 ## `@babel/core`
 
+Changed `ast` to be false by default for performance (most tools aren't using it) [babel/babel#7436](https://github.com/babel/babel/pull/7436/commits/8e3e6e0a8838607c5a01ba4232c4d3ff8dee5db0).
+
 The publicly exposed but undocumented `Pipeline` class has been removed. Best to use the transformation methods exposed from `@babel/core` directly [babel/babel#5376](https://github.com/babel/babel/pull/5376).
 
 The `babel.util.*` helper methods have been removed, and `util.EXTENSIONS` has been moved to `babel.DEFAULT_EXTENSIONS` [babel/babel#5487](https://github.com/babel/babel/pull/5487).
@@ -45,9 +46,8 @@ Removed `babel.metadata` since the generated plugin metadata is always included 
 
 Removed `path.hub.file.addImport`. You can use the `@babel/helper-module-imports` module instead.
 
-
 ```diff
-+  import { addDefault } from "babel-helper-module-imports";
++  import { addDefault } from "@babel/helper-module-imports";
 function importModule(pkgStore, name, path) {
 -  return path.hub.file.addImport(resolvePath(pkgStore, name, path), 'default', name);
 +  return addDefault(path, resolvePath(pkgStore, name, path), { nameHint: name });
@@ -101,6 +101,12 @@ babylon.parse(code, {
 ```
 
 See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
+
+> Renamed `decorators` plugin to `decorators-legacy` ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+It has been renamed to align with the `legacy` option of `@babel/plugin-proposal-decorators`. A new `decorators` plugin has been implemented, which implements the new decorators proposal.
+
+The two versions of the proposals have different syntaxes, so it is highly reccomended to use `decorators-legacy` until the new semantics are implemented by Babel.
 
 > Removed `classConstructorCall` plugin [#291](https://github.com/babel/babylon/pull/291) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 

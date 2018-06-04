@@ -1,9 +1,5 @@
 ---
-layout: docs
 title: .babelrc
-description: How to use the .babelrc
-permalink: /docs/usage/babelrc/
-: 
 id: version-6.x-babelrc
 original_id: babelrc
 ---

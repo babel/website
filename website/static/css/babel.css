@@ -60,6 +60,13 @@ hr {
     font-size: 0.875rem;
     font-weight: 400;
   }
+
+  .navigationSlider .slidingNav ul li a:active,
+  .navigationSlider .slidingNav ul li a:focus {
+    background: #323330;
+    color: #fff;
+    text-decoration: underline;
+  }
 }
 
 /* ####### GLOBAL ####### */
@@ -200,4 +207,62 @@ a.anchor {
 }
 footer.nav-footer {
   background: #767676;
+}
+
+/* ####### DOCS SIDEBAR ####### */
+@supports (position: sticky) {
+  @media only screen and (min-width: 1024px) {
+    .separateOnPageNav .headerWrapper.wrapper,
+    .separateOnPageNav.doc .docMainWrapper.wrapper {
+      max-width: 100%;
+    }
+
+    .separateOnPageNav.doc .docMainWrapper {
+      justify-content: space-between;
+      padding: 0;
+      margin-bottom: 0;
+    }
+
+    .separateOnPageNav.doc .docsNavContainer {
+      position: -webkit-sticky;
+      position: sticky;
+      overflow-y: scroll;
+      top: 53px;
+      flex: 1 auto;
+      width: auto;
+      min-width: 240px;
+      height: calc(100vh - 53px);
+      margin: 0 20px 0 0;
+    }
+
+    nav.toc .toggleNav .navGroup {
+      margin: 0;
+    }
+
+    nav.toc .toggleNav .navGroup h3 {
+      padding-left: 20px;
+    }
+
+    nav.toc .toggleNav ul li a {
+      margin-left: 20px;
+    }
+
+    nav.toc .toggleNav ul li a.navItemActive {
+      font-weight: bold;
+    }
+
+    .separateOnPageNav.doc.sideNavVisible .navPusher .mainContainer {
+      flex: 4 auto;
+      padding: 0 40px 50px 20px;
+    }
+
+    .onPageNav {
+      flex: 1 auto;
+      min-width: 240px;
+    }
+  }
+}
+
+.onPageNav {
+  align-self: flex-start;
 }

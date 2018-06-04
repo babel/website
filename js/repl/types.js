@@ -30,6 +30,7 @@ export type PluginConfig = {
   package: string,
   version?: any,
   instanceName?: string,
+  files?: Array<string>,
 };
 
 export type MultiPackagesConfig = PluginConfig & {
@@ -127,3 +128,5 @@ export type BabelPresetEnvResult = {
   transformations: Array<string>,
   transformationsWithTargets: Array<BabelNamedPresetAndTarget>,
 };
+
+export type SidebarTabSection = "env" | "plugins" | "presets" | "settings";

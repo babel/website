@@ -1,8 +1,11 @@
 /* Increased specificity to override theme defaults */
+pre {
+  position: relative;
+}
+
 .hljs.hljs {
   background-color: rgb(253, 250, 235);
   padding: 1em;
-  position: relative;
   overflow-x: visible;
   white-space: pre-wrap;
   border-left: 0;
@@ -25,6 +28,7 @@
   right: 0;
   bottom: 100%;
   left: 0;
+  z-index: 1;
 }
 
 .hljs::after {
@@ -140,4 +144,44 @@ Darcula color scheme from the JetBrains family of IDEs
 .hljs-deletion,
 .hljs-meta {
   color: #7f7f7f;
+}
+
+pre .btn-icon {
+  position: absolute;
+  top: -34px;
+  z-index: 2;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 0;
+  color: #b0a673;
+  background-color: transparent;
+  height: 34px;
+  transition: all .25s ease-out;
+}
+
+pre .btn-icon:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+.btn-icon__body {
+  align-items: center;
+  display: flex;
+}
+
+.btn-icon svg {
+  fill: currentColor;
+  margin-right: .4em;
+}
+
+.btn-icon__label {
+  font-size: 11px;
+}
+
+.btn-open-in-repl {
+  right: 75px;
+}
+
+.btn-clipboard {
+  right: 10px;
 }

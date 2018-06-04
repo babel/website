@@ -12,7 +12,7 @@ const Banner = () => {
         <h1>Meet the Team</h1>
         <p>
           <a
-            href="https://github.com/babel/website/blob/master/team.md"
+            href="https://github.com/babel/website/blob/master/website/data/team.yml"
             target="_blank"
             rel="noreferrer noopener"
           >

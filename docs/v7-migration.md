@@ -1,6 +1,5 @@
 ---
 title:  "Upgrade to Babel 7"
-
 id: v7-migration
 ---
 
@@ -8,20 +7,20 @@ Refer users to this document when upgrading to Babel 7.
 
 <!--truncate-->
 
-Help edit this file [here](https://github.com/babel/website/blob/mster/docs/v7-migration.md)
+Help edit this file [here](https://github.com/babel/website/blob/master/docs/v7-migration.md)
 
 Because not every breaking change will affect every project, we've sorted the sections by the likelihood of a change breaking tests when upgrading.
 
 ## All of Babel
 
-> Support for Node.js 0.10 and 0.12 has been dropped [#5025](https://github.com/babel/babel/pull/5025), [#5041](https://github.com/babel/babel/pull/5041), [#5186](https://github.com/babel/babel/pull/5186) ![high](https://img.shields.io/badge/level%20of%20awesomeness%3F-high-red.svg)
+> Support for Node.js 0.10, 0.12, 4 and 5 has been dropped [#5025](https://github.com/babel/babel/pull/5025), [#5041](https://github.com/babel/babel/pull/5041), [#7755](https://github.com/babel/babel/pull/7755), [#5186](https://github.com/babel/babel/pull/5186) ![high](https://img.shields.io/badge/level%20of%20awesomeness%3F-high-red.svg)
 
 We highly encourage you to use a newer version of Node.js (LTS v8) since the previous versions are not maintained.
 See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
 This just means Babel *itself* won't run on older versions of Node. It can still *output* code that runs on old Node.
 
-## [Deprecations](/blog/2017/12/27/nearing-the-7.0-release.html#deprecated-yearly-presets-eg-babel-preset-es20xx)
+## [Yearly Preset Deprecations](/blog/2017/12/27/nearing-the-7.0-release.html#deprecated-yearly-presets-eg-babel-preset-es20xx)
 
 The "env" preset has been out for more than a year now, and completely replaces some of the presets we've had/suggested earlier.
 
@@ -29,14 +28,17 @@ The "env" preset has been out for more than a year now, and completely replaces 
 - `babel-preset-es2016`
 - `babel-preset-es2017`
 - `babel-preset-latest`
-- can combination of the above ^
+- A combination of the above ^
 
-We suggest using switching as those presets should be able to be substituted entirely with the env preset.
+These presets should be substituted with the "env" preset.
 
+## [Versioning/Dependencies](/blog/2017/12/27/nearing-the-7.0-release.html#peer-dependencies-integrations)
+
+Most plugins/top level packages now have a `peerDependency` on `@babel/core`.
 
 ## Package Renames
 
-Just as FYI, you can still use the shorthand version of a package name (remove the `preset-` or `plugin-`) in the config but I'm choosing to use the whole package name for clarity (maybe we should just remove that given it doesn't save that much typing at all anyway).
+You can still use the shorthand version of a package name (remove the `preset-` or `plugin-`) in the config, but I'm choosing to use the whole package name for clarity (maybe we should just remove that, given it doesn't save that much typing anyway).
 
 ```diff
 {
@@ -70,17 +72,20 @@ module.exports = {
 
 ### [Switch to `-proposal-` for TC39 Proposals](/blog/2017/12/27/nearing-the-7.0-release.html#renames-proposal)
 
-Example: `@babel/plugin-transform-class-properties` became `@babel/plugin-proposal-class-properties`.
+This means any plugin that isn't in a yearly release (ES2015, ES2016, etc) should be renamed to `-proposal`. This is so we can better signify that a proposal isn't officially in JavaScript.
+
+Examples:
+
+- `@babel/plugin-transform-function-bind` is now `@babel/plugin-proposal-function-bind` (Stage 0)
+- `@babel/plugin-transform-class-properties` is now `@babel/plugin-proposal-class-properties` (Stage 3)
+
+This also means that when a proposal moves to Stage 4, we should rename the package.
 
 ### [Remove the year from package names](/blog/2017/12/27/nearing-the-7.0-release.html#renames-drop-the-year-from-the-plugin-name)
 
 Some of the plugins had `-es3-` or `-es2015-` in the names, but these were unncessary.
 
 `@babel/plugin-transform-es2015-classes` became `@babel/plugin-transform-classes`.
-
-## [Versioning/Dependencies](/blog/2017/12/27/nearing-the-7.0-release.html#peer-dependencies-integrations)
-
-Most plugins/top level packages now have a `peerDependency` on `@babel/core`.
 
 ## `"use strict"` and `this` in CommonJS
 
@@ -119,7 +124,7 @@ If you were relying on Babel to inject `"use strict"` into all of your CommonJS 
 
 ## Separation between the React and Flow presets
 
-`babel-preset-react` has always included the flow plugin automatically from the beginning. This has actually caused a lot of issues with users that accidently use `flow` syntax without intending due to a typo, or adding it in without typechecking with `flow` itself resulting in errors.
+`babel-preset-react` has always included the flow plugin automatically from the beginning. This has actually caused a lot of issues with users that accidently use `flow` syntax without intending due to a typo, or adding it in without typechecking with `flow` itself, resulting in errors.
 
 This became further of an issue after we decided to support TypeScript with the help of the TS team. If you wanted to use the react and typescript presets, we would have to figure out a way to turn on/off the syntax automatically via file type or the directive. In the end it seemed easiest to just separate the presets entirely. 
 
@@ -136,7 +141,7 @@ So now the react preset and the flow preset are separated.
 ## Option parsing
 
 Babel's config options are stricter than in Babel 6.
-Where a comma-separated list for presets, e.g. `"presets": 'es2015, es2016'` technically worked before, it will now fail and need to be changed to an array [#5463](https://github.com/babel/babel/pull/5463).
+Where a comma-separated list for presets, e.g. `"presets": 'es2015, es2016'` technically worked before, it will now fail and needs to be changed to an array [#5463](https://github.com/babel/babel/pull/5463).
 
 Note this does not apply to the CLI, where `--presets es2015,es2016` will certainly still work.
 
@@ -146,6 +151,10 @@ Note this does not apply to the CLI, where `--presets es2015,es2016` will certai
 +  "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
 ```
+
+## Plugin/Preset Exports
+
+All plugins/presets should now export a function rather than an object for consistency [via [babel/babel#6494](https://github.com/babel/babel/pull/6494)]. This will help us with caching.
 
 ## Resolving string-based config values
 
@@ -199,9 +208,9 @@ Part of the reason we wanted to remove/deprecate stage presets in the first plac
 
 ## Spec Compliancy
 
-> A trailing comma cannot come after a RestElement in objects [#290](https://github.com/babel/babylon/pull/290) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+### `@babel/plugin-proposal-object-rest-spread`
 
-This is when you are using `@babel/plugin-proposal-object-rest-spread`.
+> A trailing comma cannot come after a RestElement in objects [#290](https://github.com/babel/babylon/pull/290) ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 ```diff
 var {
@@ -210,54 +219,44 @@ var {
 } = { a: 1 };
 ```
 
-## `@babel/register`
+---
 
-> `babel-core/register.js` has been removed [#5132](https://github.com/babel/babel/pull/5132) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+> Since Object Spread defines new propeties and `Object.assign` just sets them, Babel has changed the default behavior to be more spec compliant.
 
-The deprecated usage of `babel-core/register` has been removed in Babel 7; instead use the standalone package `@babel/register`.
+- [objectSpread helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L375)
+- [extends helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L357-L373)
 
-Install `@babel/register` as a new dependency:
-
-```sh
-npm install --save-dev @babel/register
+```js
+// input
+z = { x, ...y };
 ```
 
-Upgrading with Mocha:
+```js
+// v7 default behavior: ["proposal-object-rest-spread"]
+function _objectSpread(target) { ... }
 
-```diff
-- mocha --compilers js:babel-core/register
-+ mocha --compilers js:@babel/register
+z = _objectSpread({
+  x
+}, y);
 ```
 
-`@babel/register` will also now only compile files in the current working directly (was done to fix issues with symlinking).
+```js
+// Old v6 behavior: ["proposal-object-rest-spread", { "loose": true }]
+function _extends(target) { ... }
 
-## Removed `babel-plugin-transform-class-constructor-call`
-
-> babel-plugin-transform-class-constructor-call has been removed [#5119](https://github.com/babel/babel/pull/5119) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-TC39 decided to drop this proposal. You can move your logic into the constructor or into a static method.
-
-```diff
-  class Point {
-    constructor(x, y) {
-      this.x = x;
-      this.y = y;
-    }
-
--  call constructor(x, y) {
-+  static secondConstructor(x, y) {
-      return new Point(x, y);
-    }
-  }
-
-  let p1 = new Point(1, 2);
-- let p2 = Point(3, 4);
-+ let p2 = Point.secondConstructor(3, 4);
+z = _extends({
+  x
+}, y);
 ```
 
-See [/docs/plugins/transform-class-constructor-call/](/docs/plugins/transform-class-constructor-call/) for more information.
+```js
+// Substitute for Object.assign: ["proposal-object-rest-spread", { "loose": true, "useBuiltIns": true }]
+z = Object.assign({
+  x
+}, y);
+```
 
-## `@babel/plugin-proposal-class-properties`
+### `@babel/plugin-proposal-class-properties`
 
 The default behavior is changed to what was previously "spec" by default
 
@@ -270,8 +269,7 @@ class Bork {
 ```
 
 ```js
-// default
-
+// v7 default behavior: ["@babel/plugin-proposal-class-properties"]
 var Bork = function Bork() {
   Object.defineProperty(this, "y", {
     enumerable: true,
@@ -288,7 +286,7 @@ Object.defineProperty(Bork, "a", {
 ```
 
 ```js
-// loose
+// old v6 behavior: ["@babel/plugin-proposal-class-properties", { "loose": true }]
 var Bork = function Bork() {
   this.y = void 0;
 };
@@ -296,23 +294,23 @@ var Bork = function Bork() {
 Bork.a = 'foo';
 ````
 
-## Split `@babel/plugin-transform-export-extensions` into the two renamed proposals
+### Split `@babel/plugin-transform-export-extensions` into the two renamed proposals
 
 This is a long time coming but this was finally changed.
 
-`@babel/plugin-transform-export-default-from`
+`@babel/plugin-proposal-export-default-from`
 
 ```js
 export v from 'mod';
 ```
 
-`@babel/plugin-transform-export-namespace-from`
+`@babel/plugin-proposal-export-namespace-from`
 
 ```js
 export * as ns from 'mod';
 ````
 
-## `@babel/plugin-transform-template-literals`
+### `@babel/plugin-transform-template-literals`
 
 >  Template Literals Revision updated [#5523](https://github.com/babel/babel/pull/5523) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
@@ -340,6 +338,8 @@ var _templateObject = /*#__PURE__*/ _taggedTemplateLiteralLoose([void 0], ["\\un
 tag(_templateObject);
 ````
 
+---
+
 > Default to previous "spec" mode for regular template literals
 
 ```js
@@ -348,14 +348,57 @@ tag(_templateObject);
 ```
 
 ```js
-// default
+// default v7 behavior: ["@babel/plugin-transform-template-literals"]
 "foo".concat(bar);
+```
 
-// loose
+```js
+// old v6 behavior: ["@babel/plugin-transform-template-literals", { "loose": true }]
 "foo" + bar;
 ```
 
-## `@babel/plugin-async-to-generator`
+### `@babel/plugin-proposal-decorators`
+
+In anticipation of the new decorators proposal implementation, we've decided to make it the new default behavior. This means that to continue using the current decorators syntax/behavior, you must set the `legacy` option as `true`.
+
+```diff
+ {
+   "plugins": [
+-    "@babel/plugin-proposal-decorators"
++    ["@babel/plugin-proposal-decorators", { "legacy": true }]
+   ]
+ }
+```
+
+> NOTE: If you are using `@babel/preset-stage-0` or `@babel/preset-stage-1`, which include this plugin, you must pass them the `decoratorsLegacy` option.
+
+### Removed `babel-plugin-transform-class-constructor-call`
+
+> babel-plugin-transform-class-constructor-call has been removed [#5119](https://github.com/babel/babel/pull/5119) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+TC39 decided to drop this proposal. You can move your logic into the constructor or into a static method.
+
+See [/docs/plugins/transform-class-constructor-call/](/docs/plugins/transform-class-constructor-call/) for more information.
+
+```diff
+  class Point {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+    }
+
+-  call constructor(x, y) {
++  static secondConstructor(x, y) {
+      return new Point(x, y);
+    }
+  }
+
+  let p1 = new Point(1, 2);
+- let p2 = Point(3, 4);
++ let p2 = Point.secondConstructor(3, 4);
+```
+
+### `@babel/plugin-async-to-generator`
 
 We merged `babel-plugin-transform-async-to-module-method` into the regular async plugin by just making it an option.
 
@@ -378,13 +421,34 @@ We merged `babel-plugin-transform-async-to-module-method` into the regular async
 This package currently gives you an error message to install `babel-cli` instead in v6.
 I think we can do something interesting with this name though.
 
+## `@babel/register`
+
+> `babel-core/register.js` has been removed [#5132](https://github.com/babel/babel/pull/5132) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+The deprecated usage of `babel-core/register` has been removed in Babel 7; instead use the standalone package `@babel/register`.
+
+Install `@babel/register` as a new dependency:
+
+```sh
+npm install --save-dev @babel/register
+```
+
+Upgrading with Mocha:
+
+```diff
+- mocha --compilers js:babel-core/register
++ mocha --compilers js:@babel/register
+```
+
+`@babel/register` will also now only compile files in the current working directly (was done to fix issues with symlinking).
+
 ## `@babel/generator`
 
 > Dropping the `quotes` option [#5154](https://github.com/babel/babel/pull/5154)] ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
 If you want formatting for compiled output you can use recast/prettier/escodegen/fork babel-generator.
 
-This option was only available through `babel-generator` explicitly until v6.18.0 when we exposed `parserOpts` and `generatorOpts`. Because there was a bug in that release no one should've used this option in Babel itself.
+This option was only available through `babel-generator` explicitly until v6.18.0 when we exposed `parserOpts` and `generatorOpts`. Because there was a bug in that release, no one should've used this option in Babel itself.
 
 > Dropping the `flowUsesCommas` option [#5123](https://github.com/babel/babel/pull/5123) ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
