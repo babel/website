@@ -31,7 +31,7 @@ module.exports = function () {
 
 ### Environment
 
-A conditional configuration is useful when you want to use certain plugins/presets based on the current environement, for example:
+A conditional configuration is useful when you want to use certain plugins/presets based on the current environment, for example:
 
 ```js
 module.exports = function () {
@@ -81,7 +81,7 @@ You can pass a `root` in the Babel configuation, see [@Babel/core's documentatio
 
 ## Extending other `.babelrc`
 
-To allow people to opt into `.babelrc` usage, potentially for local development; you can specifiy a list of `.babelrc` to use.
+To allow people to opt into `.babelrc` usage, potentially for local development; you can specify a list of `.babelrc` to use.
 
 For example using `babel-loader`:
 
