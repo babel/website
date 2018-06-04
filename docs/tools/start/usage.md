@@ -1,25 +1,27 @@
 ```js
-import Start from 'start';
-import reporter from 'start-pretty-reporter';
-import files from 'start-files';
-import read from 'start-read';
-import babel from 'start-babel';
-import write from 'start-write';
+import sequence from '@start/plugin-sequence'
+import find from '@start/plugin-find'
+import read from '@start/plugin-read'
+import babel from '@start/plugin-lib-babel'
+import write from '@start/plugin-write'
 
-const start = Start(reporter());
-
-export function build() {
-  return start(
-    files('lib/**/*.js'),
-    read(),
-    babel({ sourceMaps: true }),
-    write('build/')
-  );
+const babelConfig = {
+  // …
+  babelrc: false,
+  sourceMap: true,
 }
+
+export const task = () =>
+  sequence(
+    find('src/**/*.js'),
+    read,
+    babel(babelConfig),
+    write('build/')
+  )
 ```
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For more information see the <a href="https://github.com/start-runner/babel">start-runner/babel repo</a>.
+    For more information see the <a href="https://github.com/deepsweet/start">deepsweet/start repo</a>.
   </p>
 </blockquote>
