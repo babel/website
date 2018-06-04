@@ -1,15 +1,18 @@
 {
   "docs": {
-    "General": [
+    "Guides": [
       "index",
+      "usage",
       "learn",
+      "v7-migration",
+      "v7-migration-api"
+    ],
+    "General": [
       "editors",
       "plugins",
       "caveats",
       "faq",
-      "roadmap",
-      "v7-migration",
-      "v7-migration-api"
+      "roadmap"
     ],
     "Usage": [
       "babelrc",
