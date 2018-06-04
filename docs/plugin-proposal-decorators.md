@@ -82,7 +82,7 @@ require("@babel/core").transform("code", {
 
 ### `decoratorsBeforeExport`
 
-`boolean`, defaults to `true`.
+`boolean`, defaults to `false`.
 
 ```js
 // decoratorsBeforeExport: true
