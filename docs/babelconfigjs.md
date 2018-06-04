@@ -5,7 +5,7 @@ id: babelconfigjs
 
 ## Lookup behavior
 
-The lookup behavior is simple, Babel will only look for a `babel.config.js` in the root directory (where your package.json is by default). You can configure if needed, see [Specifying the root folder](babelconfigjs.md#specifying-the-root-folder).
+The lookup behavior is direct as Babel will only look for a `babel.config.js` in the root directory (where your `package.json` is by default). If configuration is needed, see [specifying the root folder](babelconfigjs.md#specifying-the-root-folder).
 
 ## Merging behavior
 
