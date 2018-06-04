@@ -24,7 +24,7 @@ npm install --save babel-polyfill
 
 > Because this is a polyfill (which will run before your source code), we need it to be a `dependency`, not a `devDependency`
 
-## Usage in Node / Browserify / Webpack
+## Usage in Node / Browserify / webpack
 
 To include the polyfill you need to require it at the top of the **entry point** to your application.
 
@@ -42,13 +42,13 @@ polyfills are loaded first:
 import "babel-polyfill";
 ```
 
-When using Webpack there are multiple ways to include Babel Polyfill. 
+When using webpack there are multiple ways to include Babel Polyfill. 
 
 * In case [`@babel/preset-env`](https://github.com/babel/babel/tree/master/packages/babel-preset-env) preset is used 
 
 	* If `useBuiltIns: 'usage'` is specified in `.babelrc` then do not include Babel Polyfill neither in `webpack.config.js` entry array nor source. Babel Polyfill still has to be installed though.
 	* If `useBuiltIns: 'entry'` is specified in `.babelrc` then include Babel Polyfill at the top of the entry point to your application via `require` or `import` as discussed above.
-	* If `useBuiltIns` key is not specified or it is explicitly set to false `useBuiltIns: false` in `.babelrc` then add Babel Polyfill to Weback entry array within `webpack.config.js`.
+  * If `useBuiltIns` key is not specified or it is explicitly set with `useBuiltIns: false` in your .babelrc, add Babel Polyfill to the entry array in your `webpack.config.js`.
 
 > babel-loader 7.x | babel 6.x
 
@@ -66,7 +66,7 @@ module.exports = {
 };
 ```
 
-* In case `@babel/preset-env` is not used then add Babel Polyfill to Weback entry array as discussed above. It can still be added at the top of the entry point to application via `require` or `import`, but this is not recommended.
+* In case `@babel/preset-env` is not used then add Babel Polyfill to webpack entry array as discussed above. It can still be added at the top of the entry point to application via `import` or `require`, but this is not recommended.
 
 ## Usage in Browser
 
