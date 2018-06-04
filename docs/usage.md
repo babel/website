@@ -5,7 +5,7 @@ title: Usage Guide
 
 There are quite a few tools in the Babel toolchain that try to make it easy for you to use Babel whether you're an "end-user" or building an integration of Babel itself. You can read more about the tools you decide to use in the "Usage" section of the docs.
 
-If you're building an app or library, there are two main things Babel can do for you:
+If you're building an app or library, here are the main things Babel can do for you:
 - Transform syntax
 - Polyfill features that are missing in your target environment
 - Code transformations (codemods)
