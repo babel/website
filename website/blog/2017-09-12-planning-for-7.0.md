@@ -582,7 +582,7 @@ If the spec to an experimental proposal changes, we should be free to make a bre
 
 ## 💀 Possible Deprecations
 
-### Deprecate the "env" option in `.babelrc`
+### ~~Deprecate the "env" option in `.babelrc`~~
 
 > [babel/babel#5276](https://github.com/babel/babel/issues/5276)
 
