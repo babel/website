@@ -9,9 +9,9 @@ The lookup behavior is direct as Babel will only look for a `babel.config.js` in
 
 ## Merging behavior
 
-Unlike the other formats (see [configuration guide](condiguration.md)), Babel won't try to merge configurations.
+Unlike other formats (see the [configuration guide](configuration.md)), Babel won't try to merge configurations.
 
-> Note that the configuration defined in `babel.config.js` is applied in your entire project.
+> Note: the configuration defined in `babel.config.js` is applied to your entire project.
 
 ## Conditional configuration
 
@@ -31,7 +31,7 @@ module.exports = function () {
 
 ### Environment
 
-A conditional configuration is useful when you want to use certain plugins/presetns based on the current environement, for example:
+A conditional configuration is useful when you want to use certain plugins/presets based on the current environement, for example:
 
 ```js
 module.exports = function () {
@@ -73,7 +73,7 @@ Returns Babel's core version.
 
 ### `api.cache()`
 
-TODO
+// TODO
 
 ## Specifying the root folder
 
