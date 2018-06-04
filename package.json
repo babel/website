@@ -5,8 +5,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "bootstrap": "npm run bootstrap:readmes && npm run bootstrap:sponsors && npm run build",
-    "bootstrap:readmes": "node ./scripts/download-readmes.js",
+    "bootstrap": "npm run bootstrap:sponsors && npm run build",
     "bootstrap:sponsors": "node ./scripts/download-sponsors.js",
     "build": "npm run build:repl && npm run build:docusaurus && npm run build:redirects",
     "build:docusaurus": "cd website && yarn && yarn build",

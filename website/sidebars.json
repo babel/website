@@ -1,18 +1,19 @@
 {
   "docs": {
     "Guides": [
-      "configuration"
+      "index",
+      "usage",
+      "configuration",
+      "learn",
+      "v7-migration",
+      "v7-migration-api"
     ],
     "General": [
-      "index",
-      "learn",
       "editors",
       "plugins",
       "caveats",
       "faq",
-      "roadmap",
-      "v7-migration",
-      "v7-migration-api"
+      "roadmap"
     ],
     "Usage": [
       "babelconfigjs",
