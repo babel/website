@@ -1,5 +1,5 @@
 ---
-title:  "Upgrade to Babel 7"
+title: "Upgrade to Babel 7"
 id: v7-migration
 ---
 
