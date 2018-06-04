@@ -154,7 +154,7 @@ require("@babel/parser").parse("code", {
 > NOTE: When a plugin is specified multiple times, only the first options are considered.
 
 - `decorators`:
-  - `decoratorsBeforeExport` (`boolean`)
+  - `decoratorsBeforeExport` (`boolean`, default: `false`)
     ```js
     // decoratorsBeforeExport: true
     @dec
@@ -164,7 +164,7 @@ require("@babel/parser").parse("code", {
     export @dec class C {}
     ```
 - `flow`:
-  - `all` (`boolean`)
+  - `all` (`boolean`, default: `false`)
     <!-- TODO -->
 
 ### FAQ

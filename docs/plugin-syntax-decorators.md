@@ -46,7 +46,7 @@ Use the legacy (stage 1) decorators syntax.
 
 ### `decoratorsBeforeExport`
 
-`boolean`, defaults to `true`.
+`boolean`, defaults to `false`.
 
 ```js
 // decoratorsBeforeExport: true
