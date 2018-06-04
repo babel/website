@@ -25,8 +25,6 @@ module.exports = function () {
 }
 ```
 
-> **Note**: the lookup and merging behaviors are different from the other configuration formats, see [`.babel.config.js` loopkup-behavior](babelconfigjs.md#lookup) and [`.babel.config.js` merging](babelconfigjs.md#merging-behavior) for more information.
-
 Checkout the [`.babel.config.js` documentation](babelconfigjs.md) to see more configuration options.
 
 ## `.babelrc`

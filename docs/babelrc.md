@@ -5,9 +5,15 @@ id: babelrc
 
 ## Lookup behavior
 
-Babel will look for a `.babelrc` in the current directory of the file being transpiled. If one does not exist, it will travel up the directory tree until it finds either a `.babelrc`, or a `package.json` with a `"babel": {}` hash within.
+Babel will look for a `.babelrc` in the current directory (which defaults to cwd).
 
 Use `"babelrc": false` in [options](api.md#options) to stop lookup behavior, or provide the [`--no-babelrc` CLI flag](babel-cli.md#babel-ignoring-babelrc).
+
+## Merging behavior
+
+If Babel finds other `.babelrc` files while transpiling files in subfolder, it will merge the configuration together.
+
+> Note that it can lead to undefined behaviors, and we recommend to use [`.babel.config.js` documentation](babelconfigjs.md) instead.
 
 ## `"overrides"`
 

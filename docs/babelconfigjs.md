@@ -5,11 +5,13 @@ id: babelconfigjs
 
 ## Lookup behavior
 
-Unlike other formats (see [configuration guide](configuration.md))...
+The lookup behavior is simple, Babel will only look for a `babel.config.js` in the root directory (where your package.json is by default). You can configure if needed, see [Specifying the root folder](babelconfigjs.md#specifying-the-root-folder).
 
 ## Merging behavior
 
-Unlike other formats (see [configuration guide](configuration.md))...
+Unlike the other formats (see [configuration guide](condiguration.md)), Babel won't try to merge configurations.
+
+> Note that the configuration defined in `babel.config.js` is applied in your entire project.
 
 ## Conditional configuration
 
@@ -51,8 +53,45 @@ REMOVE_DEBUG=1 babel file.js
 
 ## API
 
+Babel will pass an object as first argument, called `api` here.
+
 ```js
 module.exports = function (api) {
   const babelEnv = api.env();
+
+  return { ... };
+}
+```
+
+### `api.env()`
+
+Returns Babel's environement, you can configure it using the `BABEL_ENV` environement variable.
+
+### `api.version`
+
+Returns Babel's core version.
+
+### `api.cache()`
+
+TODO
+
+## Specifying the root folder
+
+You can pass a `root` in the Babel configuation, see [@Babel/core's documentation](babel-core.md#options).
+
+## Extending other `.babelrc`
+
+To allow people to opt into `.babelrc` usage, potentially for local development; you can specifiy a list of `.babelrc` to use.
+
+For example using `babel-loader`:
+
+```js
+test: /\.js$/,
+loader: "babel-loader",
+options: {
+  babelrc: [
+    ".",
+    "../some-linked-package"
+  ]
 }
 ```
