@@ -5,7 +5,6 @@
     "previous": "Previous",
     "tagline": "The compiler for next generation JavaScript",
     "babelrc": ".babelrc",
-    "babylon": "babylon",
     "caveats": "Caveats",
     "babel-cli": "babel-cli",
     "babel-code-frame": "babel-code-frame",
