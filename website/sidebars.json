@@ -1,5 +1,8 @@
 {
   "docs": {
+    "Guides": [
+      "configuration"
+    ],
     "General": [
       "index",
       "learn",
@@ -12,6 +15,7 @@
       "v7-migration-api"
     ],
     "Usage": [
+      "babelconfigjs",
       "babelrc",
       "babel-cli",
       "babel-polyfill",
