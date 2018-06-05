@@ -18,7 +18,27 @@ const config = {
   indexName: "npm-search",
 };
 
-type Props = {};
+type SearchHit = {
+  description: string,
+  name: string,
+  objectID: string,
+  owner: {
+    avatar: string,
+    link: string,
+    name: string,
+  },
+  version: string,
+};
+
+type RenderHitProps = {
+  hit: SearchHit,
+};
+
+type Props = {
+  onClose: () => void,
+  onPluginSelect: any, // TODO
+  plugins: Array<string>,
+};
 
 type State = {
   officialOnly: boolean,
@@ -40,7 +60,7 @@ export default class ExternalPluginsModal extends React.Component<
     }
   }
 
-  handleSelectPlugin = hit => {
+  handleSelectPlugin = (hit: SearchHit) => {
     this.props.onPluginSelect(hit);
     this.props.onClose();
   };
@@ -51,9 +71,13 @@ export default class ExternalPluginsModal extends React.Component<
     }));
   };
 
-  renderHit = ({ hit }) => {
+  renderHit = ({ hit }: RenderHitProps) => {
     return (
-      <div className={styles.item} key={hit.name} onClick={this.handleHitClick}>
+      <div
+        className={styles.item}
+        key={hit.name}
+        onClick={() => this.handleSelectPlugin(hit)}
+      >
         <div className={styles.itemName}>
           <strong>
             {hit.name}
@@ -72,11 +96,18 @@ export default class ExternalPluginsModal extends React.Component<
   };
 
   render() {
-    const { onClose } = this.props;
+    const { onClose, plugins } = this.props;
     const { officialOnly } = this.state;
 
-    const filters =
-      "keywords:babel-plugin" + (officialOnly ? " AND owner.name:babel" : "");
+    let filters = "keywords:babel-plugin";
+
+    if (officialOnly) {
+      filters += " AND owner.name:babel";
+    }
+
+    if (plugins.length) {
+      plugins.forEach(p => (filters += ` AND NOT objectID:${p}`));
+    }
 
     return (
       <Modal onClose={onClose}>
@@ -104,29 +135,7 @@ export default class ExternalPluginsModal extends React.Component<
               </label>
             </div>
             <Pagination />
-            <Hits
-              hitComponent={({ hit }) => (
-                <div
-                  className={styles.item}
-                  key={hit.name}
-                  onClick={() => this.handleSelectPlugin(hit)}
-                >
-                  <div className={styles.itemName}>
-                    <strong>
-                      {hit.name}
-                      <span className={styles.itemMeta}>v{hit.version}</span>
-                    </strong>
-
-                    <p>{hit.description}</p>
-
-                    <div className={styles.itemOwner}>
-                      <img src={hit.owner.avatar} />
-                      {hit.owner.name}
-                    </div>
-                  </div>
-                </div>
-              )}
-            />
+            <Hits hitComponent={this.renderHit} />
             <div className={styles.modalFooter}>
               <PoweredBy />
             </div>

@@ -71,7 +71,13 @@ export default class ExternalPlugins extends React.Component<Props, State> {
   }
 
   render() {
-    const { isExpanded, onToggleExpanded, styles } = this.props;
+    const {
+      _pluginChanged,
+      isExpanded,
+      onToggleExpanded,
+      plugins,
+      styles,
+    } = this.props;
 
     return (
       <AccordionTab
@@ -92,7 +98,8 @@ export default class ExternalPlugins extends React.Component<Props, State> {
         {this.state.modalOpen && (
           <ExternalPluginsModal
             onClose={this.handleCloseModal}
-            onPluginSelect={this.props._pluginChanged}
+            onPluginSelect={_pluginChanged}
+            plugins={plugins}
           />
         )}
       </AccordionTab>

@@ -5,7 +5,8 @@ import ReactDOM from "react-dom";
 
 type Props = {
   children: React$Node,
-  onClose: () => mixed,
+  onClick?: () => void,
+  onClose: () => void,
 };
 
 export default class Modal extends Component<Props> {
@@ -22,6 +23,7 @@ export default class Modal extends Component<Props> {
     if (!document.body) return;
 
     const width = document.body.clientWidth;
+
     document.body.style.overflow = "hidden";
     document.body.style.width = `${width}px`;
   }
@@ -30,8 +32,8 @@ export default class Modal extends Component<Props> {
     document.removeEventListener("keydown", this.handleKeydown);
 
     if (document.body) {
-      document.body.style.overflow = null;
-      document.body.style.width = null;
+      document.body.style.overflow = "";
+      document.body.style.width = "";
     }
 
     if (this._node && document.body) {
@@ -43,7 +45,7 @@ export default class Modal extends Component<Props> {
     this.props.onClose();
   }
 
-  handleKeydown = (e: Event) => {
+  handleKeydown = (e: KeyboardEvent) => {
     if (e.keyCode === /* esc */ 27) {
       this.props.onClose();
     }
@@ -64,6 +66,7 @@ export default class Modal extends Component<Props> {
       }
     }
 
+    // eslint-disable-next-line no-unused-vars
     const { children, onClick, onClose, ...props } = this.props;
 
     const result = (

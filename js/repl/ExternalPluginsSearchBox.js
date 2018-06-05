@@ -3,7 +3,13 @@ import { css } from "emotion";
 import React from "react";
 import { connectSearchBox } from "react-instantsearch/es/connectors";
 
-export class SearchBox extends React.PureComponent {
+type Props = {
+  currentRefinement: ?string,
+  inputRef: () => void,
+  refine: (value: string) => void,
+};
+
+export class SearchBox extends React.PureComponent<Props> {
   handleChange = (event: SyntheticInputEvent<*>) => {
     this.props.refine(event.target.value);
   };
