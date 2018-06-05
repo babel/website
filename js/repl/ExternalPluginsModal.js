@@ -10,7 +10,7 @@ import {
 } from "react-instantsearch/es/dom";
 import SearchBox from "./ExternalPluginsSearchBox";
 import Modal from "./Modal";
-import { colors } from "./styles";
+import { colors, media } from "./styles";
 
 const config = {
   apiKey: "1f0cc4b7da241f62651b85531d788fbd",
@@ -151,8 +151,13 @@ const styles = {
     background: #22252b;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 50px;
     color: #9ea5b3;
-    margin: 40px auto;
-    width: 650px;
+    margin: 0;
+    width: auto;
+
+    ${media.mediumAndUp} {
+      margin: 40px auto;
+      width: 650px;
+    }
 
     .ais-Pagination {
       background: ${colors.inverseBackgroundLight};
