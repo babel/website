@@ -193,12 +193,14 @@ const styles = {
     padding: 0.5rem 1rem;
 
     .ais-PoweredBy {
-      display: flex;
       align-items: center;
+      display: flex;
       margin-left: auto;
     }
 
     .ais-PoweredBy-link {
+      align-items: center;
+      display: flex;
       margin-left: 0.5rem;
     }
 
