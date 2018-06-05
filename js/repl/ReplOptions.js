@@ -64,6 +64,7 @@ type Props = {
   isSettingsTabExpanded: boolean,
   lineWrap: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
+  onExternalPluginRemove: (pluginName: string) => void,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
   pluginState: PluginStateMap,
@@ -146,16 +147,15 @@ class ExpandedContainer extends Component<Props, State> {
       envPresetState,
       shippedProposalsState,
       fileSize,
-      isPluginsExpanded,
       lineWrap,
       onIsExpandedChange,
+      onExternalPluginRemove,
       onSettingChange,
       pluginState,
       presetState,
       runtimePolyfillConfig,
       runtimePolyfillState,
       pluginsLoading,
-      plugins,
       pluginValue,
       showOfficialExternalPlugins,
       loadingExternalPlugins,
@@ -433,12 +433,13 @@ class ExpandedContainer extends Component<Props, State> {
             _onshowOfficialExternalPluginsChanged={
               this._onshowOfficialExternalPluginsChanged
             }
-            _pluginChanged={this._pluginChanged}
-            isPluginsExpanded={isPluginsTabExpanded}
-            loadingExternalPlugins={loadingExternalPlugins}
+            _pluginChanged={this.props.pluginChange}
+            isExpanded={isPluginsTabExpanded}
+            isLoading={loadingExternalPlugins}
+            onRemove={onExternalPluginRemove}
             onToggleExpanded={this.handleToggleTabExpanded}
             pluginValue={pluginValue}
-            plugins={plugins}
+            plugins={this.props.externalPlugins}
             pluginsLoading={pluginsLoading}
             showOfficialExternalPlugins={showOfficialExternalPlugins}
             styles={styles}
@@ -468,7 +469,9 @@ class ExpandedContainer extends Component<Props, State> {
     this.props.onEnvPresetSettingChange(type, event.target.value);
   };
 
-  _onEnvPresetSettingCheck = (type: string) => (event: SyntheticInputEvent<*>) => {
+  _onEnvPresetSettingCheck = (type: string) => (
+    event: SyntheticInputEvent<*>
+  ) => {
     this.props.onEnvPresetSettingChange(type, event.target.checked);
   };
 
@@ -601,7 +604,7 @@ const styles = {
 
     [media.large]: {
       height: "100%",
-      width: "15rem",
+      width: "18rem",
 
       [`& .${nestedCloseButton}`]: {
         right: "-2rem",

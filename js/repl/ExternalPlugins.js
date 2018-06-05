@@ -1,152 +1,162 @@
-import React, { Component } from "react";
-import { Hits, Configure, InstantSearch } from "react-instantsearch/es/dom";
-
-import { connectSearchBox } from "react-instantsearch/es/connectors";
-
+import { css } from "emotion";
+import * as React from "react";
 import AccordionTab from "./AccordionTab";
+import ExternalPluginsModal from "./ExternalPluginsModal";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
 
-import AlgoliaLogo from "../assets/search-by-algolia-white";
-
-const config = {
-  apiKey: "1f0cc4b7da241f62651b85531d788fbd",
-  appId: "OFCNCOG2CU",
-  indexName: "npm-search",
-};
-
 type Props = {
-  loadingExternalPlugins: boolean,
-  isPluginsExpanded: boolean,
+  isExpanded: boolean,
+  isLoading: boolean,
+  onRemove: (pluginName: string) => void,
   onToggleExpanded: () => void,
-  _onshowOfficialExternalPluginsChanged: any => void,
-  _pluginChanged: () => void,
-  showOfficialExternalPlugins: boolean,
-  pluginsLoading: boolean,
-  plugins: Array<Object>,
+  plugins: Array<string>,
   styles: Object,
 };
 
-class RawSearchBox extends Component {
-  props: {
-    refine: string => void,
-    styles: Object,
+type State = {
+  modalOpen: boolean,
+};
+
+export default class ExternalPlugins extends React.Component<Props, State> {
+  static defaultProps = {
+    isLoading: false,
+    plugins: [],
   };
 
-  state = { value: "" };
+  state = {
+    modalOpen: false,
+  };
 
-  _onChange(value) {
-    this.props.refine(value);
-    this.setState({ value });
+  handleOpenModal = () => {
+    this.setState({ modalOpen: true });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ modalOpen: false });
+  };
+
+  renderButton() {
+    const { isLoading } = this.props;
+
+    return (
+      <button
+        className={currentStyles.modalButton}
+        disbled={isLoading}
+        onClick={this.handleOpenModal}
+      >
+        {isLoading ? "Loading Plugin..." : "Add Plugin"}
+      </button>
+    );
+  }
+
+  renderPlugins() {
+    const { onRemove, plugins } = this.props;
+
+    if (plugins.length === 0) {
+      return <span class={currentStyles.empty}>None added</span>;
+    }
+
+    return (
+      <ul className={currentStyles.pluginList}>
+        {plugins.map(p => (
+          <li key={p}>
+            {p}
+            <div className={currentStyles.pluginActions}>
+              <a onClick={() => onRemove(p)}>✕</a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   render() {
+    const {
+      _pluginChanged,
+      isExpanded,
+      onToggleExpanded,
+      plugins,
+      styles,
+    } = this.props;
+
     return (
-      <input
-        placeholder="Type the plugin name"
-        value={this.state.value}
-        aria-label="Plugin name"
-        onChange={e => this._onChange(e.target.value)}
-        className={`${this.props.styles.pluginName} ${this.props.styles
-          .envPresetInput}`}
-        type="text"
-      />
-    );
-  }
-}
-
-export default function ExternalPlugins({
-  loadingExternalPlugins,
-  isPluginsExpanded,
-  onToggleExpanded,
-  _onshowOfficialExternalPluginsChanged,
-  _pluginChanged,
-  showOfficialExternalPlugins,
-  pluginsLoading,
-  plugins,
-  styles,
-}: Props) {
-  const hasPlugins = plugins !== undefined;
-  const SearchBox = connectSearchBox(RawSearchBox);
-
-  function hitComponent({ hit }: { hit: Object }) {
-    return (
-      <label key={hit.name} className={styles.pluginRow}>
-        <input
-          className={styles.inputCheckboxLeft}
-          onChange={e => _pluginChanged(e, hit)}
-          type="checkbox"
-        />
-        {hit.name
-          .split("babel-plugin-")
-          .join("")
-          .split("@babel/plugin-")
-          .join("")}
-      </label>
-    );
-  }
-
-  return (
-    <AccordionTab
-      className={`${styles.section} ${styles.sectionEnv}`}
-      isExpanded={isPluginsExpanded}
-      label={
-        <span className={styles.pluginsHeader}>
-          Plugins
-          {loadingExternalPlugins ? (
-            <PresetLoadingAnimation />
-          ) : (
-            <AlgoliaLogo alt="Search Powered by Algolia" />
-          )}
-        </span>
-      }
-      onToggleExpanded={onToggleExpanded}
-      tabKey="plugins"
-    >
-      <InstantSearch
-        apiKey={config.apiKey}
-        appId={config.appId}
-        indexName={config.indexName}
+      <AccordionTab
+        className={`${styles.section} ${styles.sectionEnv}`}
+        isExpanded={isExpanded}
+        label={
+          <span className={styles.pluginsHeader}>
+            Plugins
+            {false && <PresetLoadingAnimation />}
+          </span>
+        }
+        onToggleExpanded={onToggleExpanded}
+        tabKey="plugins"
       >
-        <Configure
-          hitsPerPage={10}
-          attributesToRetrieve={["name", "version"]}
-          attributesToHighlight={["name"]}
-          filters={
-            "computedKeywords:babel-plugin" +
-            (showOfficialExternalPlugins ? " AND owner.name:babel" : "")
-          }
-        />
+        {this.renderPlugins()}
+        {this.renderButton()}
 
-        <div className={styles.pluginContainer}>
-          <div className={styles.pluginsSearch}>
-            <label
-              className={`${styles.settingsLabel} ${styles.checkboxOfficial}`}
-            >
-              <input
-                checked={showOfficialExternalPlugins}
-                onChange={e => {
-                  _onshowOfficialExternalPluginsChanged(e.target.value);
-                }}
-                className={styles.inputCheckboxLeft}
-                type="checkbox"
-              />
-              Only official Plugins
-            </label>
-
-            <SearchBox styles={styles} />
-            <Hits hitComponent={hitComponent} />
-          </div>
-          {pluginsLoading ? (
-            <PresetLoadingAnimation />
-          ) : (
-            <div>
-              {hasPlugins && !plugins.length
-                ? "There are no plugins that match your query"
-                : null}
-            </div>
-          )}
-        </div>
-      </InstantSearch>
-    </AccordionTab>
-  );
+        {this.state.modalOpen && (
+          <ExternalPluginsModal
+            onClose={this.handleCloseModal}
+            onPluginSelect={_pluginChanged}
+            plugins={plugins}
+          />
+        )}
+      </AccordionTab>
+    );
+  }
 }
+
+const currentStyles = {
+  modalButton: css`
+    background: #f1da6b;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    padding: 0.5rem 0;
+  `,
+  pluginList: css`
+    font-size: 0.75rem;
+    margin: 0.5rem -0.5rem 1rem;
+
+    > li {
+      align-items: center;
+      border-left: 2px solid transparent;
+      display: flex;
+      line-height: 1.1;
+      padding: 0.25rem 0.75rem;
+      position: relative;
+      transition: all 0.25s ease-out;
+
+      &:hover {
+        border-left-color: #eeda7b;
+      }
+
+      &:not(:first-child) {
+        margin-top: 0.5rem;
+      }
+    }
+  `,
+  empty: css`
+    color: #61656e;
+    font-size: 0.875rem;
+    margin: 0.5rem 0.5rem 1rem;
+  `,
+  pluginActions: css`
+    align-items: center;
+    background: #23252b;
+    bottom: 0;
+    display: flex;
+    padding-left: 1rem;
+    position: absolute;
+    right: 1rem;
+    top: 0;
+
+    a,
+    a:visited {
+      color: #fff;
+      cursor: poitner;
+    }
+  `,
+};

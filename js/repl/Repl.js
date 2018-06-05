@@ -207,6 +207,7 @@ class Repl extends React.Component {
           isExpanded={state.isSidebarExpanded}
           lineWrap={state.lineWrap}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
+          onExternalPluginRemove={this.handleRemoveExternalPlugin}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
           pluginState={state.plugins}
@@ -424,14 +425,7 @@ class Repl extends React.Component {
           this._pluginsUpdatedSetStateCallback
         );
       } else {
-        this.setState(
-          state => ({
-            externalPlugins: state.externalPlugins.filter(
-              p => p !== plugin.name
-            ),
-          }),
-          this._pluginsUpdatedSetStateCallback
-        );
+        this.handleRemoveExternalPlugin(plugin.name);
       }
     });
   };
@@ -592,6 +586,15 @@ class Repl extends React.Component {
     // Update state with compiled code, errors, etc after a small delay.
     // This prevents frequent updates while a user is typing.
     this._compileToState(code);
+  };
+
+  handleRemoveExternalPlugin = (pluginName: string) => {
+    this.setState(
+      state => ({
+        externalPlugins: state.externalPlugins.filter(p => p !== pluginName),
+      }),
+      this._pluginsUpdatedSetStateCallback
+    );
   };
 }
 
