@@ -77,7 +77,7 @@ Returns Babel's core version.
 
 ## Specifying the root folder
 
-You can pass a `root` in the Babel configuation, see [@Babel/core's documentation](babel-core.md#options).
+You can pass a `root` in the Babel configuration, see [@Babel/core's documentation](babel-core.md#options).
 
 ## Extending other `.babelrc`
 
