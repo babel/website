@@ -5,7 +5,16 @@ id: babelrc
 
 ## Lookup behavior
 
-Babel will look for a `.babelrc` in the current directory (which defaults to cwd).
+Babel will look for a `.babelrc` in the current directory (which defaults to cwd). For example if you are using a monorepo and you run Babel from the `packageA`:
+
+```js
+project
+├── .babelrc // ignored
+└── monorepo
+    └── packageA
+        ├── package.json
+        └── ...
+```
 
 Use `"babelrc": false` in [options](api.md#options) to stop lookup behavior, or provide the [`--no-babelrc` CLI flag](babel-cli.md#babel-ignoring-babelrc).
 

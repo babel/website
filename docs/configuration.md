@@ -18,7 +18,7 @@ All Babel API [options](core.md#options) are allowed. However if the option requ
 
 > [`.babelrc`](#babelrc) is for you!
 
-- The guy fieri is your hero?
+- The Guy Fieri is your hero?
 
 > We recommend to use the [`babel.config.js`](#babelconfigjs) format. [Babel itself is using it](https://github.com/babel/babel/blob/master/babel.config.js).
 

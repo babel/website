@@ -11,17 +11,32 @@ The lookup behavior is direct as Babel will only look for a `babel.config.js` in
 
 Unlike other formats (see the [configuration guide](configuration.md)), Babel won't try to merge configurations.
 
+```js
+project
+├── package.json
+├── babel.config.js
+├── node_modules
+│   └── depA
+│       ├── .babelrc // ignored
+│       └── index.js // babel.config.js will be used
+└── src
+    ├── .babelrc // ignored
+    └── index.js // babel.config.js will be used
+```
+
 > Note: the configuration defined in `babel.config.js` is applied to your entire project.
 
-## Conditional configuration
+## Dynamic configuration
 
-Since it's just a regular JavaScript file, you can write any arbitrary conditions before returning the configuration, for example:
+Since it's just a regular JavaScript file, you can write any arbitrary logic or use the Nodejs API:
 
 ```js
+const pkg = require("./package.json");
+
 module.exports = function () {
   const plugins = [ ... ];
 
-  if (true === false) {
+  if (pkg.authors.includes("Fieri")) {
     plugins.push(...);
   }
 
