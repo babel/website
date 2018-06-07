@@ -3,6 +3,7 @@
     "Guides": [
       "index",
       "usage",
+      "configuration",
       "learn",
       "v7-migration",
       "v7-migration-api"
@@ -15,6 +16,7 @@
       "roadmap"
     ],
     "Usage": [
+      "babelconfigjs",
       "babelrc",
       "babel-cli",
       "babel-polyfill",

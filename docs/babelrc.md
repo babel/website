@@ -3,67 +3,26 @@ title: .babelrc
 id: babelrc
 ---
 
-Babel can be configured! Many other tools have similar configs: ESLint (`.eslintrc`), Prettier (`.prettierrc`).
-
-All Babel API [options](core.md#options) are allowed. However if the option requires JavaScript, you may need to use a `.babelrc.js` file.
-
-## Config types
-
-- `.babelrc`
-- `.babelrc.js`
-- `package.json` key
-- Tools (`@babel/core`, `@babel/register`) may take in options directly
-- `@babel/cli`
-
-## Use via `.babelrc`
-
-```json
-{
-  "plugins": ["@babel/plugin-transform-arrow-functions"]
-}
-```
-
-## Use via `.babelrc.js`
-
-```json
-module.exports = {
-  "plugins": ["@babel/plugin-transform-arrow-functions"]
-};
-```
-
-## Use via `package.json`
-
-Alternatively, you can choose to specify your `.babelrc` config from within `package.json` like so:
-
-```json
-{
-  "name": "my-package",
-  "version": "1.0.0",
-  "babel": {
-    // my babel config here
-  }
-}
-```
-
-## Use via `@babel/core`
-
-```js
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-arrow-functions"]
-});
-```
-
-## Use via `@babel/cli`
-
-```sh
-babel --plugins @babel/plugin-transform-arrow-functions script.js
-```
-
 ## Lookup behavior
 
-Babel will look for a `.babelrc` in the current directory of the file being transpiled. If one does not exist, it will travel up the directory tree until it finds either a `.babelrc`, or a `package.json` with a `"babel": {}` hash within.
+Babel will look for a `.babelrc` in the current directory (which defaults to cwd). For example if you are using a monorepo and you run Babel from the `packageA`:
+
+```js
+project
+├── .babelrc // ignored
+└── monorepo
+    └── packageA
+        ├── package.json
+        └── ...
+```
 
 Use `"babelrc": false` in [options](api.md#options) to stop lookup behavior, or provide the [`--no-babelrc` CLI flag](babel-cli.md#babel-ignoring-babelrc).
+
+## Merging behavior
+
+If Babel finds other `.babelrc` files while transpiling files in subfolder, it will merge the configuration together.
+
+> Note that it can lead to undefined behaviors, and we recommend to use [`.babel.config.js` documentation](babelconfigjs.md) instead.
 
 ## `"overrides"`
 
