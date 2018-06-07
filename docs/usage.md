@@ -5,7 +5,7 @@ title: Usage Guide
 
 There are quite a few tools in the Babel toolchain that try to make it easy for you to use Babel whether you're an "end-user" or building an integration of Babel itself. This will be a quick introduction to those tools and you can read more about them in the "Usage" section of the docs.
 
-If you're using a framework, the work of configuring Babel might be already done for you, and you might want to check our [interactive setup guide](/setup.html) instead.
+> If you're using a framework, the work of configuring Babel might be different or actually already handled for you. Check out our [interactive setup guide](/setup.html) instead.
 
 ## Overview
 
@@ -114,11 +114,13 @@ npm install --save-dev @babel/preset-env
 ./node_modules/.bin/babel src --out-dir lib --presets=@babel/env
 ```
 
-Without any configuration this preset will include all the es2015, es2016 and es2017 plugins. But presets can take options too. Rather than passing both cli and preset options from the terminal, let's look at another way of passing options: configuration files.
+Without any configuration, this preset will include all plugins to support modern JavaScript (ES2015, ES2016, etc.). But presets can take options too. Rather than passing both cli and preset options from the terminal, let's look at another way of passing options: configuration files.
 
 ## Configuration
 
-You can read more about how to [Configure Babel](configuration.md) next. For now we will create a file called `babel.config.js` with this content:
+> There are a few different ways to use configuration files depending on your needs. Be sure to read our in-depth guide on how to [configure Babel](configuration.md) for more information.
+
+For now, let's create a file called `babel.config.js` with the following content:
 
 ```js
 const presets = [
@@ -173,7 +175,7 @@ Babel will now inspect all your code for features that are missing in your targe
 Promise.resolve().finally()
 ```
 
-would turn into this (because edge 17 doesn't have `Promise.prototype.finally`):
+would turn into this (because Edge 17 doesn't have `Promise.prototype.finally`):
 
 ```js
 require("core-js/modules/es.promise.finally");
