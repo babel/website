@@ -5,7 +5,7 @@ title: Usage Guide
 
 There are quite a few tools in the Babel toolchain that try to make it easy for you to use Babel whether you're an "end-user" or building an integration of Babel itself. This will be a quick introduction to those tools and you can read more about them in the "Usage" section of the docs.
 
-If you're using a framework, the work of configuring babel might be already done for you, and you might want to check our [interactive setup guide](/setup.html) instead.
+If you're using a framework, the work of configuring Babel might be already done for you, and you might want to check our [interactive setup guide](/setup.html) instead.
 
 ## Overview
 
