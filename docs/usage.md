@@ -3,16 +3,13 @@ id: usage
 title: Usage Guide
 ---
 
-There are quite a few tools in the Babel toolchain that try to make it easy for you to use Babel whether you're an "end-user" or building an integration of Babel itself. You can read more about the tools you decide to use in the "Usage" section of the docs.
+There are quite a few tools in the Babel toolchain that try to make it easy for you to use Babel whether you're an "end-user" or building an integration of Babel itself. This will be a quick introduction to those tools and you can read more about them in the "Usage" section of the docs.
 
-If you're building an app or library, here are the main things Babel can do for you:
-- Transform syntax
-- Polyfill features that are missing in your target environment
-- Code transformations (codemods)
-
-This short guide will show you how to compile your JavaScript application code that uses ES2015+ syntax into code that works in the last 2 versions of all browsers, as well as Safari versions 7 and up. That will involve both transforming new syntax and polyfilling missing features.
+If you're using a framework, the work of configuring babel might be already done for you, and you might want to check our [interactive setup guide](/setup.html) instead.
 
 ## Overview
+
+This guide will show you how to compile your JavaScript application code that uses ES2015+ syntax into code that works in current browsers. That will involve both transforming new syntax and polyfilling missing features.
 
 The entire process to set this up involves:
 
@@ -28,7 +25,7 @@ The entire process to set this up involves:
     const presets = [
       ["@babel/env", {
         targets: {
-          browsers: ["last 2 versions", "safari >= 7"]
+          browsers: ["edge 17", "firefox 60", "chrome 67", "safari 11.1"]
         },
         useBuiltIns: "usage"
       }]
@@ -36,6 +33,9 @@ The entire process to set this up involves:
 
     module.exports = { presets };
     ```
+
+    > The browsers list above is just an example. You will have to make your own [browserlists](https://github.com/browserslist/browserslist) query based on the browsers you want to support.
+
 3. And running this command to compile all your code from the `src` directory to `lib`:
 
     ```sh
@@ -48,7 +48,7 @@ Read on for a step-by-step explanation of how this works and an introduction to 
 
 ## Basic usage with CLI
 
-All the Babel modules you'll need are published as separate npm packages scoped under `@babel` (since the version 7). This modular design allows for various tools each designed for a specific use case. Here we'll look at `@babel/core` and `@babel/cli`.
+All the Babel modules you'll need are published as separate npm packages scoped under `@babel` (since version 7). This modular design allows for various tools each designed for a specific use case. Here we'll look at `@babel/core` and `@babel/cli`.
 
 ### Core Library
 
@@ -97,7 +97,7 @@ Now any arrow functions in our code will be transformed into ES5 compatible func
 ```js
 const fn = () => 1;
 
-// to
+// converted to
 
 var fn = function fn() {
     return 1;
@@ -114,20 +114,20 @@ npm install --save-dev @babel/preset-env
 ./node_modules/.bin/babel src --out-dir lib --presets=@babel/env
 ```
 
-Without any configuration this preset will include all the es2015, es2016 and es2017 plugins. But presets can take options too. Rather than passing both cli and preset options form the terminal, let's look at another way of passing options: configuration files.
+Without any configuration this preset will include all the es2015, es2016 and es2017 plugins. But presets can take options too. Rather than passing both cli and preset options from the terminal, let's look at another way of passing options: configuration files.
 
 ## Configuration
 
-There exists multiple type of configuration in Babel but we will use the `babel.config.js` one. You can read more about configuration here: [TODO CONFIGURATION SECTION FIRST](https://oo).
+You can read more about how to [Configure Babel](configuration.md) next. For now we will create a file called `babel.config.js` with this content:
 
 ```js
 const presets = [
-  ["env", {
+  ["@babel/env", {
     targets: {
-      browsers: ["last 2 versions", "safari >= 7"]
+      browsers: ["edge 17", "firefox 60", "chrome 67", "safari 11.1"]
     }
   }]
-]
+];
 
 module.exports = { presets };
 ```
@@ -156,13 +156,13 @@ Now luckily for us, we're using the `env` preset which has a `"useBuiltIns"` opt
 
 ```js
 const presets = [
-  ["env", {
+  ["@babel/env", {
     targets: {
-      browsers: ["last 2 versions", "safari >= 7"]
+      browsers: ["edge 17", "firefox 60", "chrome 67", "safari 11.1"]
     },
     useBuiltIns: "usage"
   }]
-]
+];
 
 module.exports = { presets };
 ```
@@ -170,15 +170,15 @@ module.exports = { presets };
 Babel will now inspect all your code for features that are missing in your target environments and include only the required polyfills. For example this code:
 
 ```js
-[1,2,3].includes(2);
+Promise.resolve().finally()
 ```
 
-would turn into this:
+would turn into this (because edge 17 doesn't have `Promise.prototype.finally`):
 
 ```js
-require("core-js/modules/es7.array.includes");
+require("core-js/modules/es.promise.finally");
 
-[1,2,3].includes(2);
+Promise.resolve().finally()
 ```
 
 If we weren't using the `env` preset with the `"useBuiltIns"` option set to `"usage"` we would've had to require the full polyfill *only once* in our entry point before any other code.
