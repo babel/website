@@ -25,7 +25,10 @@ The entire process to set this up involves:
     const presets = [
       ["@babel/env", {
         targets: {
-          browsers: ["edge 17", "firefox 60", "chrome 67", "safari 11.1"]
+          edge: "17",
+          firefox: "60",
+          chrome: "67",
+          safari: "11.1"
         },
         useBuiltIns: "usage"
       }]
@@ -34,7 +37,7 @@ The entire process to set this up involves:
     module.exports = { presets };
     ```
 
-    > The browsers list above is just an example. You will have to make your own [browserlists](https://github.com/browserslist/browserslist) query based on the browsers you want to support.
+    > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support.
 
 3. And running this command to compile all your code from the `src` directory to `lib`:
 
@@ -126,7 +129,10 @@ For now, let's create a file called `babel.config.js` with the following content
 const presets = [
   ["@babel/env", {
     targets: {
-      browsers: ["edge 17", "firefox 60", "chrome 67", "safari 11.1"]
+      edge: "17",
+      firefox: "60",
+      chrome: "67",
+      safari: "11.1"
     }
   }]
 ];
@@ -160,7 +166,10 @@ Now luckily for us, we're using the `env` preset which has a `"useBuiltIns"` opt
 const presets = [
   ["@babel/env", {
     targets: {
-      browsers: ["edge 17", "firefox 60", "chrome 67", "safari 11.1"]
+      edge: "17",
+      firefox: "60",
+      chrome: "67",
+      safari: "11.1"
     },
     useBuiltIns: "usage"
   }]
