@@ -755,17 +755,33 @@ const styles = {
     },
   }),
   selectLabel: css({
-    [media.medium]: {
-      flexDirection: "column",
-      flexBasis: "3rem",
-      alignItems: "flex-start",
-    },
+    alignItems: "flex-start",
+    flexDirection: "column",
+    flexBasis: "4rem",
+    margin: "1rem 0 0 0",
+    padding: "0 0.5rem",
   }),
   sourceTypeSelect: css({
-    marginLeft: "0.5rem",
+    appearance: "none",
+    backgroundColor: "#2D3035",
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='${colors.inverseForegroundLight}'><polygon points='0,0 100,0 50,50'/></svg>")`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "8px",
+    backgroundPosition: "calc(100% - 1rem) calc(100% - 8px)",
+    border: 0,
+    color: colors.inverseForegroundLight,
+    height: "30px",
+    margin: "0.25rem 0 0 0",
+    padding: "0 0.5rem",
+    transition: "all 0.25s ease-in",
+    width: "100%",
 
-    [media.medium]: {
-      marginLeft: "0",
+    "&:hover": {
+      backgroundColor: "#32353A",
+    },
+
+    "&::-ms-expand": {
+      display: "none",
     },
   }),
   envPresetColumn: css({
