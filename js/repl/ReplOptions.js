@@ -46,6 +46,7 @@ type Props = {
   babelVersion: ?string,
   className: string,
   debugEnvPreset: boolean,
+  evalEnabled: boolean,
   pluginsLoading: boolean,
   pluginValue: ?string,
   showOfficialExternalPlugins: boolean,
@@ -138,10 +139,10 @@ class ExpandedContainer extends Component<Props, State> {
 
   render() {
     const {
-      babelVersion,
       debugEnvPreset,
       envConfig,
       envPresetState,
+      evalEnabled,
       shippedProposalsState,
       fileSize,
       sourceType,
@@ -151,8 +152,6 @@ class ExpandedContainer extends Component<Props, State> {
       onSettingChange,
       pluginState,
       presetState,
-      runtimePolyfillConfig,
-      runtimePolyfillState,
       pluginsLoading,
       pluginValue,
       showOfficialExternalPlugins,
@@ -167,9 +166,7 @@ class ExpandedContainer extends Component<Props, State> {
     } = this.state;
 
     const disableEnvSettings =
-      !envPresetState.isLoaded ||
-      !envConfig.isEnvPresetEnabled ||
-      shippedProposalsState.isLoading;
+      !envConfig.isEnvPresetEnabled || shippedProposalsState.isLoading;
 
     return (
       <div className={styles.expandedContainer}>
@@ -181,12 +178,15 @@ class ExpandedContainer extends Component<Props, State> {
             onToggleExpanded={this.handleToggleTabExpanded}
             tabKey="settings"
           >
-            <PluginToggle
-              config={runtimePolyfillConfig}
-              label="Evaluate"
-              onSettingChange={onSettingChange}
-              state={runtimePolyfillState}
-            />
+            <label className={styles.settingsLabel}>
+              <input
+                checked={evalEnabled}
+                className={styles.inputCheckboxLeft}
+                onChange={this._onSettingCheck("evalEnabled")}
+                type="checkbox"
+              />
+              Evaluate
+            </label>
             <label className={styles.settingsLabel}>
               <input
                 checked={lineWrap}
@@ -366,8 +366,7 @@ class ExpandedContainer extends Component<Props, State> {
                   disabled={
                     !envPresetState.isLoaded ||
                     !envConfig.isEnvPresetEnabled ||
-                    !envConfig.isBuiltInsEnabled ||
-                    runtimePolyfillState.isEnabled
+                    !envConfig.isBuiltInsEnabled
                   }
                 >
                   <option value="entry">Entry</option>
@@ -458,9 +457,7 @@ class ExpandedContainer extends Component<Props, State> {
                 <input
                   checked={debugEnvPreset}
                   className={styles.inputCheckboxLeft}
-                  disabled={
-                    disableEnvSettings || runtimePolyfillState.isEnabled
-                  }
+                  disabled={disableEnvSettings}
                   onChange={this._onSettingCheck("debugEnvPreset")}
                   type="checkbox"
                 />
@@ -486,11 +483,6 @@ class ExpandedContainer extends Component<Props, State> {
             styles={styles}
           />
         </div>
-        {babelVersion && (
-          <div className={styles.versionRow} title={`v${babelVersion}`}>
-            v{babelVersion}
-          </div>
-        )}
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
           onClick={() => onIsExpandedChange(false)}

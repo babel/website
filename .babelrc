@@ -5,6 +5,21 @@
     },
     "development": {
       "plugins": [["emotion", { "sourceMap": true }]]
+    },
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "useBuiltIns": true,
+            "modules": "commonjs",
+            "targets": {
+              "browsers": ["last 3 versions"]
+            }
+          }
+        ],
+        "react"
+      ]
     }
   },
   "presets": [

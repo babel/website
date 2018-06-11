@@ -128,7 +128,7 @@ export default class ReactCodeMirror extends React.Component<Props, State> {
 
 injectGlobal({
   ".CodeMirror": {
-    height: "100% !important",
+    height: "auto !important",
     width: "100% !important",
     "-webkit-overflow-scrolling": "touch",
   },

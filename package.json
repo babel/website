@@ -18,7 +18,8 @@
     "start": "run-p start:repl start:docusaurus",
     "start:docusaurus": "cd website && yarn start",
     "start:repl": "webpack -d -w",
-    "test": "remark docs README.md --quiet"
+    "test": "remark docs README.md --quiet",
+    "test:repl": "jest"
   },
   "remarkConfig": {
     "plugins": {
@@ -36,12 +37,13 @@
   "license": "MIT",
   "devDependencies": {
     "async": "^2.5.0",
-    "babel-core": "^6.25.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
+    "babel-jest": "^23.4.0",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-config-babel": "^7.0.2",
@@ -51,6 +53,7 @@
     "eslint-plugin-react": "7.7.0",
     "flow-bin": "^0.72.0",
     "husky": "^0.14.3",
+    "jest": "^23.4.1",
     "lint-staged": "^4.2.3",
     "node-fetch": "^1.7.1",
     "npm-run-all": "^4.1.3",
@@ -77,6 +80,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-instantsearch": "^5.1.0",
+    "react-smooshpack": "0.0.44",
     "semver": "^5.4.1",
     "unfetch": "^3.0.0",
     "worker-loader": "^1.1.1"
@@ -90,5 +94,8 @@
       "eslint --format=codeframe --fix",
       "git add"
     ]
+  },
+  "jest": {
+
   }
 }

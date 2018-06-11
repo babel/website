@@ -42,6 +42,7 @@ const loadPersistedState = (): ReplState => {
 //  Repl state in query string
 const urlState = (): ReplState => {
   const queryState = UriUtils.parseQuery();
+  console.log(replDefaults, queryState);
   return { ...replDefaults, ...queryState };
 };
 
@@ -73,7 +74,7 @@ export const persistedStateToEnvState = (
 ): EnvState => {
   return {
     ...persistedStateToBabelState(persistedState, config),
-    isLoading: isEnabled,
+    isLoading: false,
     isEnabled,
     version: persistedState.envVersion,
   };

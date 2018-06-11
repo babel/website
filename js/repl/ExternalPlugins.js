@@ -63,10 +63,10 @@ export default class ExternalPlugins extends React.Component<Props, State> {
     return (
       <ul className={currentStyles.pluginList}>
         {plugins.map(p => (
-          <li key={p}>
-            {p}
+          <li key={p.name}>
+            {p.name}
             <div className={currentStyles.pluginActions}>
-              <a onClick={() => onRemove(p)}>✕</a>
+              <a onClick={() => onRemove(p.name)}>✕</a>
             </div>
           </li>
         ))}
