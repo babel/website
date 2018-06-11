@@ -271,7 +271,7 @@ const Hero = ({ language }) => (
   <div className="hero">
     <a href="https://tidelift.com/subscription/npm/babel">
       <div className="tidelift-banner">
-        Professionally-supported Babel now available
+        Get Professionally Supported Babel
       </div>
     </a>
     <div className="hero__container">
