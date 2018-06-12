@@ -9,6 +9,11 @@ third_party_js:
 ---
 
 <div class="hero">
+  <a class="hero-tidelift-banner__anchor" href="https://tidelift.com/subscription/npm/babel">
+    <div class="hero-tidelift-banner">
+      Get Professionally Supported Babel
+    </div>
+  </a>
   <div class="hero__content">
     <h1>Babel is a JavaScript compiler.</h1>
     <p>Use next generation JavaScript, today.</p>
