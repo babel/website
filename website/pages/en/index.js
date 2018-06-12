@@ -244,12 +244,6 @@ const OpenCollectiveSponsors = props => {
             tier="silver-sponsors"
             button={ocButton}
           />
-          <SponsorTier
-            type="opencollective"
-            title="Bronze Sponsors (Open Collective)"
-            tier="bronze-sponsors"
-            button={ocButton}
-          />
         </div>
       </div>
     </div>

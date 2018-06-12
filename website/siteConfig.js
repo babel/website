@@ -44,7 +44,6 @@ const sponsorsDownloaded = require(path.join(__dirname, "/data/sponsors.json"));
 const sponsors = [
   ...sponsorsManual,
   ...sponsorsDownloaded
-    .filter(sponsor => sponsor.id != 2719) // temporary fix for Kent C. Dodds duplicate
     .map(sponsor => {
       // temporary fix for coinbase and webflow
       let tier = sponsor.tier;
