@@ -136,7 +136,7 @@ const siteConfig = {
   },
   disableHeaderTitle: true,
   onPageNav: "separate",
-  // gaTrackingId: "U-",
+  gaTrackingId: "UA-114990275-1",
   // markdownPlugins: [],
   // cname
 };
