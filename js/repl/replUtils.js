@@ -131,6 +131,8 @@ export const persistedStateToEnvConfig = (
     forceAllTransforms: !!persistedState.forceAllTransforms,
     shippedProposals: !!persistedState.shippedProposals,
     isBuiltInsEnabled: !!persistedState.builtIns,
+    isSpecEnabled: !!persistedState.spec,
+    isLooseEnabled: !!persistedState.loose,
     node: envPresetDefaults.node.default,
     version: persistedState.envVersion,
     builtIns: envPresetDefaults.builtIns.default,

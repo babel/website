@@ -9,6 +9,8 @@ const URL_KEYS = [
   "browsers",
   "build",
   "builtIns",
+  "spec",
+  "loose",
   "code",
   "debug",
   "forceAllTransforms",
