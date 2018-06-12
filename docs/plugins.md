@@ -201,7 +201,7 @@ These plugins allow Babel to **parse** specific types of syntax (not transform).
 
 > NOTE: Transform plugins automatically inherit/use the syntax plugins so you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
 
-You can also provide any [`plugins` option](babylon.md#plugins) from babylon:
+You can also provide any [`plugins` option](parser.md#plugins) from the Babel parser:
 
 ```json
 // .babelrc
