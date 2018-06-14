@@ -14,7 +14,9 @@ import * as babel from "@babel/core";
 All transformations will use your local configuration files (`.babelrc` or in `package.json`). See [options](#options) to disable it.
 
 
-## babel.transform(code: string, [options?](#options): Object, callback: Function)
+## transform
+
+> babel.transform(code: string, [options?](#options): Object, callback: Function)
 
 Transforms the passed in `code`. Calling a callback with an object with the generated code,
 source map, and AST.
@@ -35,15 +37,13 @@ babel.transform("code();", options, function(err, result) {
 });
 ```
 
-### Compat Note:
+> Compat Note: 
+> 
+> In Babel 6, this method was synchronous and `transformSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformSync` since this backward-compat may be dropped in future major versions of Babel.
 
-In Babel 6, this method was synchronous and `transformSync` did not exist. For backward-compatibility,
-this function will behave synchronously if no callback is given. If you're starting with Babel 7
-and need synchronous behavior, please use `transformSync` since this backward-compat may be dropped in
-future major versions of Babel.
+## transformSync
 
-
-## babel.transformSync(code: string, [options?](#options): Object)
+> babel.transformSync(code: string, [options?](#options): Object)
 
 Transforms the passed in `code`. Returning an object with the generated code,
 source map, and AST.
@@ -62,7 +62,9 @@ result.ast;
 ```
 
 
-## babel.transformFile(filename: string, [options?](#options): Object, callback: Function)
+## transformFile
+
+> babel.transformFile(filename: string, [options?](#options): Object, callback: Function)
 
 Asynchronously transforms the entire contents of a file.
 
@@ -79,7 +81,9 @@ babel.transformFile("filename.js", options, function (err, result) {
 ```
 
 
-## babel.transformFileSync(filename: string, [options?](#options): Object)
+## transformFileSync
+
+> babel.transformFileSync(filename: string, [options?](#options): Object)
 
 Synchronous version of `babel.transformFile`. Returns the transformed contents of
 the `filename`.
@@ -95,7 +99,9 @@ babel.transformFileSync("filename.js", options).code;
 ```
 
 
-## babel.transformFromAst(ast: Object, code?: string, [options?](#options): Object, callback: Function): FileNode | null
+## transformFromAst
+
+> babel.transformFromAst(ast: Object, code?: string, [options?](#options): Object, callback: Function): FileNode | null
 
 Given an [AST](https://astexplorer.net/), transform it.
 
@@ -107,15 +113,14 @@ babel.transformFromAst(parsedAst, sourceCode, options, function(err, result) {
 });
 ```
 
-### Compat Note:
-
-In Babel 6, this method was synchronous and `transformFromAstSync` did not exist. For backward-compatibility,
-this function will behave synchronously if no callback is given. If you're starting with Babel 7
-and need synchronous behavior, please use `transformFromAstSync` since this backward-compat may be dropped in
-future major versions of Babel.
+> Compat Note:
+> 
+> In Babel 6, this method was synchronous and `transformFromAstSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformFromAstSync` since this backward-compat may be dropped in future major versions of Babel.
 
 
-## babel.transformFromAstSync(ast: Object, code?: string, [options?](#options): Object)
+## transformFromAstSync
+
+> babel.transformFromAstSync(ast: Object, code?: string, [options?](#options): Object)
 
 Given an [AST](https://astexplorer.net/), transform it.
 
@@ -125,7 +130,9 @@ const parsedAst = babel.parse(sourceCode, { allowReturnOutsideFunction: true });
 const { code, map, ast } = babel.transformFromAstSync(parsedAst, sourceCode, options);
 ```
 
-## babel.parse(code: string, [options?](#options): Object)
+## parse
+
+> babel.parse(code: string, [options?](#options): Object)
 
 Given some code, parse it using Babel's standard behavior. Referenced presets and
 plugins will be loaded such that optional syntax plugins are automatically
@@ -138,7 +145,9 @@ Many systems that wrap Babel like to automatically inject plugins and presets,
 or override options. To accomplish this goal, Babel exposes several functions
 that aid in loading the configuration part-way without transforming.
 
-### babel.loadOptions([options?](#options): Object)
+### loadOptions
+
+> babel.loadOptions([options?](#options): Object)
 
 Resolve Babel's options fully, resulting in an options object where:
 
@@ -154,7 +163,9 @@ the options Babel has received. Caching on this isn't 100% guaranteed to
 invalidate properly, but it is the best we have at the moment.
 
 
-### babel.loadPartialConfig([options?](#options): Object): PartialConfig
+### loadPartialConfig
+
+> babel.loadPartialConfig([options?](#options): Object): PartialConfig
 
 To allow systems to easily manipulate and validate a user's config, this function
 resolves the plugins and presets and proceeds no further. The expectation is
@@ -178,7 +189,9 @@ with a replacement item created by `babel.createConfigItem`. See that
 function for information about `ConfigItem` fields.
 
 
-### babel.createConfigItem(value: string | {} | Function | [string | {} | Function, {} | void], { dirname?: string, type?: "preset" | "plugin" }): ConfigItem
+### createConfigItem
+
+> babel.createConfigItem(value: string | {} | Function | [string | {} | Function, {} | void], { dirname?: string, type?: "preset" | "plugin" }): ConfigItem
 
 Allows build tooling to create and cache config items up front. If this function
 is called multiple times for a given plugin, Babel will call the plugin's function itself
