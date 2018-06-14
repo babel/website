@@ -62,5 +62,5 @@ require("@babel/core").transform("code", {
 
 ## References
 
-* [Proposal: Logical Assignment Operators](https://github.com/jridgewell/proposal-logical-assignment-operators)
+* [Proposal: Logical Assignment Operators](https://github.com/tc39/proposal-logical-assignment)
 
