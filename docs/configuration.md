@@ -38,7 +38,7 @@ module.exports = function () {
 }
 ```
 
-Checkout the [`.babel.config.js` documentation](babelconfigjs.md) to see more configuration options.
+Checkout the [`babel.config.js` documentation](babelconfigjs.md) to see more configuration options.
 
 ## `.babelrc`
 
