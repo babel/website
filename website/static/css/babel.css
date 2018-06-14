@@ -249,6 +249,11 @@ footer.nav-footer {
   background: #767676;
 }
 
+table td code {
+  color: #393939;
+  word-break: normal;
+}
+
 /* ####### DOCS SIDEBAR ####### */
 @supports (position: sticky) {
   @media only screen and (min-width: 1024px) {
