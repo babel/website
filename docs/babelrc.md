@@ -22,7 +22,7 @@ Use `"babelrc": false` in [options](api.md#options) to stop lookup behavior, or 
 
 If Babel finds other `.babelrc` files while transpiling files in subfolder, it will merge the configuration together.
 
-> Note that it can lead to undefined behaviors, and we recommend to use [`.babel.config.js` documentation](babelconfigjs.md) instead.
+> Note that it can lead to undefined behaviors, and we recommend to use [`babel.config.js` documentation](babelconfigjs.md) instead.
 
 ## `"overrides"`
 
