@@ -137,6 +137,7 @@ const siteConfig = {
   disableHeaderTitle: true,
   onPageNav: "separate",
   gaTrackingId: "UA-114990275-1",
+  cleanUrl: true,
   // markdownPlugins: [],
   // cname
 };
