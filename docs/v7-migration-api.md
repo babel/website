@@ -54,6 +54,49 @@ function importModule(pkgStore, name, path) {
 }
 ```
 
+### Config changes
+
+We've made some major changes to way config lookup works:
+
+> By default when searching for `.babelrc` files for a given file, stop at `package.json`.
+
+For any particular file, Babel v6 keeps looking up the directory hierarchy until it finds a config file.
+This means your project might break because it uses a config file found outside the package root like in
+the home directory.
+
+> Adds support for a `babel.config.js` file along the lines of what Webpack does
+
+Because this would break how a monorepo works (including Babel itself), we are introducing a new config file,
+that basically removes the hierarchical nature of configs.
+
+Included is a `root` option that defaults to the current working directory for it to find the file.
+It is also not loaded relatively so it will handle symlinking correctly, whereas before you may have had
+hard-code the paths in webpack before.
+
+Check the `babel.config.js` docs for more info: https://babeljs.io/docs/en/next/babelconfigjs.html
+
+This file combined with the new [`overrides`](https://babeljs.io/docs/en/next/babelrc.html#overrides) property and `env` lets you have a single config file
+that can work for all the files in a project vs. multiple config files per folder.
+
+We also exclude `node_modules` by default and only look in the root unless you opt-in to setting
+an array of the `.babelrc` option such as `"babelrc": [".", "node_modules/pkgA"]`
+
+## Asserting Babel version [#7450](https://github.com/babel/babel/pull/7450)
+
+Plugins can check that it's loaded with a certain version of Babel.
+The API will expose an `assertVersion` method, where you can pass in semver.
+
+The declare helper is used to keep backwards compat with v6.
+
+```js
+import { declare } from "@babel/helper-plugin-utils";
+
+export default declare(api => {
+  api.assertVersion(7);
+  // ...
+});
+```
+
 ## Babel plugins/presets
 
 It currently takes it as the first parameter the `babel` object, and plugin/preset options, and the `dirname`
@@ -146,6 +189,28 @@ const helperPaths = path.unshiftContainer("body", helpers);
 ```
 
 ## AST changes
+
+### Add `InterpreterDirective` Node [#7928](https://github.com/babel/babel/pull/7928)
+
+Babylon already parses "shebangs" (`#!env node`) but put's in a comment in the `Program` node.
+Now we are just creating an actual node for it.
+
+Add a new `interpreter` field to the `Program` node.
+
+```js
+extend interface Program {
+  interpreter: InterpreterDirective;
+}
+```
+
+Add the `InterpreterDirective` Node
+
+```js
+interface InterpreterDirective <: Node {
+    type: "InterpreterDirective";
+    value: string;
+}
+```
 
 ### JSX* and TS* node builders (from @babel/types package) renamed
 
