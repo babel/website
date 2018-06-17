@@ -286,7 +286,7 @@ This option is useful for "blacklisting" a transform like `@babel/plugin-transfo
 
 ### `useBuiltIns`
 
-`boolean`, defaults to `false`.
+`boolean`, defaults to `false` if `injectPolyfills` is `false`, otherwise defaults to `true`.
 
 Will use the native built-in instead of trying to polyfill behavior for any plugins that require one.
 
