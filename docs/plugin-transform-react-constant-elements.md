@@ -47,7 +47,7 @@ const Hr = () => {
 > See https://github.com/facebook/react/issues/3226 for more on this
 
   ```js
-  <div width={{width: 100}} />
+  <div style={{width: 100}} />
   ```
 
 ## Installation
