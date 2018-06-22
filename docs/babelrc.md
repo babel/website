@@ -16,7 +16,7 @@ project
         └── ...
 ```
 
-Use `"babelrc": false` in [options](api.md#options) to stop lookup behavior, or provide the [`--no-babelrc` CLI flag](babel-cli.md#babel-ignoring-babelrc).
+Use `"babelrc": false` in [options](core.md#options) to stop lookup behavior, or provide the [`--no-babelrc` CLI flag](babel-cli.md#babel-ignoring-babelrc).
 
 ## Merging behavior
 
