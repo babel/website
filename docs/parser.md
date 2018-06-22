@@ -4,7 +4,7 @@ title: babel-parser
 sidebar_label: babel-parser
 ---
 
-<p align="center">
+<p align="left">
   The Babel parser (previously Babylon) is a JavaScript parser used in <a href="https://github.com/babel/babel">Babel</a>.
 </p>
 
