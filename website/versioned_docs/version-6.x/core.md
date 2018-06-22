@@ -76,9 +76,9 @@ const { code, map, ast } = babel.transformFromAst(ast, code, options);
 ## Options
 
 > #### Babel CLI
-> 
+>
 > You can pass these options from the Babel CLI like so:
-> 
+>
 > `babel --name=value`
 
 Following is a table of the options you can use:
@@ -92,6 +92,7 @@ Following is a table of the options you can use:
 | `code`                   | `true`               | Enable code generation |
 | `comments`               | `true`               | Output comments in generated output. |
 | `compact`                | `"auto"`             | Do not include superfluous whitespace characters and line terminators. When set to `"auto"` compact is set to `true` on input sizes of >500KB. |
+| `cwd`                    | `.`                  | The working directory that Babel's programmatic options are loaded relative to. |
 | `env`                    | `{}`                 | This is an object of keys that represent different environments. For example, you may have: `{ env: { production: { /* specific options */ } } }` which will use those options when the environment variable `BABEL_ENV` is set to `"production"`. If `BABEL_ENV` isn't set then `NODE_ENV` will be used, if it's not set then it defaults to `"development"` |
 | `extends`                | `null`               | A path to an `.babelrc` file to extend |
 | `filename`               | `"unknown"`          | Filename for use in errors etc. |
