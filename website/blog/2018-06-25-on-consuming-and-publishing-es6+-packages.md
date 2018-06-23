@@ -12,7 +12,7 @@ How can we make compiling dependencies not just possible, but normal?
 
 <!--truncate-->
 
-> Inspired by [Dan's tweet](https://twitter.com/dan_abramov/status/1009179550134296577) about how we can conflate shipping source code, ES6+, ESM
+This post is inspired by [Dan's tweet](https://twitter.com/dan_abramov/status/1009179550134296577) about how we can conflate shipping source code, ES6+, ESM
 
 This is a pretty enabling feature request for the whole ecosystem, so I'm glad we've tried to make this easier in Babel v7 (I just realized this whole post is a good pitch for using it). Hopefully it can be made more standard moving forward (if we're collectively able to figure out some things I outline below).
 
@@ -214,3 +214,5 @@ Babel v7 should be out soon, this post goes into some of the ways it should help
 Maybe we should decide on another key in `package.json`, maybe `"es"`? Reminds me of the poll I made for [babel-preset-latest](https://twitter.com/left_pad/status/758429846594850816).
 
 Potential recommendation: package authors should also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on (I don't believe `module` should be that key) but continue to publish ES5 under `main`. Consumers can use `preset-env` and opt-in into running on `node_modules`.
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
