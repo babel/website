@@ -8,12 +8,11 @@ categories: announcements
 share_text: "On Consuming (and Publishing) ES6+ Packages"
 ---
 
-How can we make compiling dependencies normal?
+How can we make compiling dependencies not just possible, but normal?
 
 <!--truncate-->
 
-<!-- I would probably add a TLDR; mention of what Dan wrote. Just a brief introduction to the topic. -->
-> Inspired by [Dan's tweet](https://twitter.com/dan_abramov/status/1009179550134296577)
+> Inspired by [Dan's tweet](https://twitter.com/dan_abramov/status/1009179550134296577) about how we can conflate shipping source code, ES6+, ESM
 
 This is a pretty enabling feature request for the whole ecosystem, so I'm glad we've tried to make this easier in Babel v7 (I just realized this whole post is a good pitch for using it). Hopefully it can be made more standard moving forward (if we're collectively able to figure out some things I outline below).
 
@@ -70,8 +69,7 @@ This is what Dan was warning about. There are many issues with *shipping* uncomp
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/femUb4vgxh">pic.twitter.com/femUb4vgxh</a></p>&mdash; Rach Smith 🌈 (@rachsmithtweets) <a href="https://twitter.com/rachsmithtweets/status/892478598765887488?ref_src=twsrc%5Etfw">August 1, 2017</a></blockquote>
 
-<!-- added "simply" to emphasys like in the hyronically "just use" (if that's what you intended) -->
-First, we already recommend people be careful with *simply using* syntax less than Stage 3.
+We already recommend people be careful with using proposals lower than Stage 3, let alone publishing them.
 
 But telling people not to use Stage X goes against the whole purpose of Babel in the first place. A big reason why proposals move forward or are shaped to be better is precisely because of the feedback the committee can get from real-world usage (whether in production or not) based on using it in Babel.
 
@@ -143,14 +141,8 @@ One suggestion is to provide an ES5 version but also publish a version that incl
 
 TODO:
 
-- Due to complexity and tooling, it may be difficult for projects to publish ES6/ESM without more setup. This is probably the biggest issue to get right. We should add some feature requests to `@babel/cli` to make this easier, and maybe make the `babel` package do this by default.
-
-<!-- jshcrowthe: Getting into the library dev scene I definitely felt the lack of good tooling/guides for publishing modules "correctly." Would be awesome if we could do something here -->
-
-- Tools like @developit's [microbundle](https://github.com/developit/microbundle) may help a lot with this.
-- How do we deal with polyfills? Mention `preset-env` + polyfills
-
-<!-- jshcrowthe: As you said above, polyfills are application specific, based on the target environment. Would love it if, as a library dev, didn't have to worry about these at all and these were handled by application tooling. -->
+- Due to complexity and tooling, it may be difficult for projects to publish ES6/ESM without more setup. This is probably the biggest issue to get right, even docs aren't enough. We should add some feature requests to `@babel/cli` to make this easier, and maybe make the `babel` package do this by default? Tools like @developit's [microbundle](https://github.com/developit/microbundle) may help a lot with this.
+- How do we deal with polyfills? This could be it's own post (I never finished it). Mention `preset-env` + polyfills. What would it look like for a library author not to have to think about polyfills (or the user).
 
 ### Compiler Complexity
 
