@@ -51,13 +51,13 @@ But assuming people even know it exists or have starting using it at all, it's m
 
 You have control over your own code to be able to take advantage of preset-env: write in ES6+ and target ES6+ browsers.
 
-However, this isn't necessarily the case for your dependencies (you should take ownership for them though).
+However, this isn't necessarily the case for your dependencies (though you _should_ take ownership of them).
 
 ## What Then?
 
-The next step is to start thinking, how do we actually make this happen?
+The next step is to start thinking "how do we actually make this happen"?
 
-It sounds like it's as straightforward as running Babel over `node_modules` with the same configuration for your application.
+Is it as straightforward as just running Babel over `node_modules` with the same configuration for your application?
 
 ## Caveats
 
@@ -69,23 +69,23 @@ This is what Dan was warning about. There are many issues with *shipping* uncomp
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/femUb4vgxh">pic.twitter.com/femUb4vgxh</a></p>&mdash; Rach Smith 🌈 (@rachsmithtweets) <a href="https://twitter.com/rachsmithtweets/status/892478598765887488?ref_src=twsrc%5Etfw">August 1, 2017</a></blockquote>
 
-We already recommend people be careful with using proposals lower than Stage 3, let alone publishing them.
+We already recommend that people should be careful when using proposals lower than Stage 3, let alone publishing them.
 
-But telling people not to use Stage X goes against the whole purpose of Babel in the first place. A big reason why proposals move forward or are shaped to be better is precisely because of the feedback the committee can get from real-world usage (whether in production or not) based on using it in Babel.
+But telling people not to use Stage X goes against the whole purpose of Babel in the first place. A big reason why proposals gain improvements and move forward are because of the feedback the committee gets from real-world usage (whether in production or not) based on using it via Babel.
 
-So there is certainly a balance to be had here. We don't want to scare people away from using new syntax (that is a hard sell 😂), but we also don't want people to get the idea that "once it's in Babel, the syntax is official or immutable". Ideally people look into the purpose of a proposal and make the tradeoffs for their use case.
+There is certainly a balance to be had here. We don't want to scare people away from using new syntax (that is a hard sell 😂), but we also don't want people to get the idea that "once it's in Babel, the syntax is official or immutable". Ideally people look into the purpose of a proposal and make the tradeoffs for their use case.
 
-One of the most common things people do is use the Stage 0 or Stage 2 presets. We plan to remove these Stage presets in v7 after much back and forth. I thought at first it would be convienent, that people would make their own unofficial ones anyway, or it might help with "JavaScript fatigue". I find now that it just causes more of an issue: people continue to copy paste configs and not understanding what goes into a preset in the first place. After all, seeing `"stage-0"` says nothing. My hope is that in actually making the decision explicit, people will have to learn what non-standard syntax they are opting into.
+One of the most common things people do is use the Stage 0 or Stage 2 presets. We plan to remove the stage presets in v7 after much back and forth. I thought at first it would be convienent, that people would make their own unofficial ones anyway, or it might help with "JavaScript fatigue". I find now that it just causes more of an issue: people continue to copy/paste configs with out understanding what goes into a preset in the first place. After all, seeing `"stage-0"` says nothing. My hope is that in making the decision to use proposal plugins explicit, people will have to learn what non-standard syntax they are opting into.
 
 #### Staging Process
 
-- The [TC39 staging process](https://tc39.github.io/process-document/) does not always move foward: there is the possibility for a proposal to move to any point in the process: even moving backwards from Stage 3 to Stage 2 as the case with Numeric Separators (`1_000`) or dropped entirely (`Object.observe()`, others you may have forgotten)
+- The [TC39 staging process](https://tc39.github.io/process-document/) does not always move forward: there is the possibility for a proposal to move to any point in the process: even moving backwards from Stage 3 to Stage 2 as the case with Numeric Separators (`1_000`) or dropped entirely (`Object.observe()`, and others you may have forgotten)
 - It can be hard to differentitate between the stages if you aren't involved: most people would advise that Stage 0-2 is unstable though.
 - Summary: Stage 0 has no criteria and is just an idea, Stage 1 is accepting that the problem is worth solving, Stage 2 is about describing a solution in spec text, Stage 3 means the specific solution is thought out, and Stage 4 means that it is ready for inclusion with tests, multiple browser implementations, and in-the-field experience.
 
 #### Publishing Non-standard Syntax
 
-So actually publishing it in a library may cause even more issues. Because a proposal on TC39 (even at Stage 3) has a possibility of changing, it means you will inevitability will have to change the code.
+So actually publishing it in a library may cause even more issues. Because a TC39 proposal (even at Stage 3) has a possibility of changing, it means you will inevitability have to change the code.
 
 At least if you ship the compiled version, it will still work and the library maintainer can change the output so that it works the same as before. Shipping the uncompiled version means that anyone consuming a package will necessarily have to have a build step to use it, and will have to have the same version of Babel as you. This is no different than using TS/JSX/Flow which you wouldn't publish either.
 
@@ -108,9 +108,9 @@ Some tools like Rollup/Webpack will also read from another field called `module`
 }
 ```
 
-The reason this was introduced is so that users can consume ES2015 modules (ESM).
+This was introduced so that users could consume ES2015 modules (ESM).
 
-However, the sole intention of this field is ESM not anything else. The [Rollup docs](https://github.com/rollup/rollup/wiki/pkg.module#wait-it-just-means-import-and-export--not-other-future-javascript-features) on this make it clear that it's not intended for future JavaScript syntax.
+However, the sole intention of this field is ESM, not anything else. The [Rollup docs](https://github.com/rollup/rollup/wiki/pkg.module#wait-it-just-means-import-and-export--not-other-future-javascript-features) make it clear that it's not intended for future JavaScript syntax.
 
 What this means is that we may need another way to handle ES6+ even though some libraries may choose to do this anyway.
 
@@ -129,9 +129,9 @@ A common suggestion is for libraries to start publishing ES2015 under another fi
 }
 ```
 
-This works for ES2015 but the question next is what about ES2016? Are we supposed to create a new folder for each year and a new field in `package.json`? That also seems unsustainable later, and even produces even larger `node_modules` still.
+This works for ES2015 but the question next is what about ES2016? Are we supposed to create a new folder for each year and a new field in `package.json`? That seems unsustainable, and will continue to produce larger `node_modules`.
 
-I feel like this is similar to how we had a babel preset for each year and ended up creating `preset-latest` which included all the yearly plugins (we removed that soon after in favor of `preset-env`).
+I feel like this is similar to how we had a Babel preset for each year and ended up creating `preset-latest` which included all the yearly plugins (we removed that soon after in favor of `preset-env`).
 
 Having a field like `es-latest` or `esnext` may not be helpful either because we want the library versions to be fixed yet changing. And providing only the source may not always be helpful if you use non-standard syntax, TS, Flow, JSX, etc which might have different behavior based on compiler version. Maybe we need some changes on the `npm` side?
 
@@ -150,7 +150,7 @@ Every compiler has bugs, although the risk is lower if there are so many users a
 
 - Babel v6 assumed everything that it compiled was a module and thus in strict mode (one could argue this is actually a good thing). Thus if you tried to run Babel on all your `node_modules` and it encountered something that was a `script` like a jQuery plugin it might cause a lot of issues. This is changed in v7 so that it won't always auto inject the `"use strict"` directive unless it actually is a module.
 - React Native has always compiled `node_modules` by default and has probably learned a lot from issues like ^.
-- `preset-env` could have it's own bugs because we use `compat-table` vs. test262.
+- `preset-env` could have its own bugs because we use `compat-table` vs. test262.
 - Browsers themselves can have issues with running native ES6+ code vs. ES5.
 - Question of how do we determine what is "supported": https://github.com/babel/babel-preset-env/issues/54 example of edge case.
 
