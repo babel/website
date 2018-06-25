@@ -155,10 +155,8 @@ One suggestion is to provide an ES5 version but also publish a version that incl
 
 ### Dependencies May Not Publish ES2015+
 
-TODO:
-
 - Due to complexity and tooling, it may be difficult for projects to publish ES2015/ESM without more setup. This is probably the biggest issue to get right, even docs aren't enough. We should add some feature requests to `@babel/cli` to make this easier, and maybe make the `babel` package do this by default? Tools like @developit's [microbundle](https://github.com/developit/microbundle) may help a lot with this.
-- How do we deal with polyfills? This could be it's own post (I never finished it). Mention `preset-env` + polyfills. What would it look like for a library author not to have to think about polyfills (or the user).
+- How do we deal with polyfills (I have another post to discuss this)? What would it look like for a library author not to have to think about polyfills (or the user).
 
 With that said, how does Babel help with all this?
 
