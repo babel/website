@@ -24,7 +24,7 @@ Being able to compile dependencies is an enabling feature request for the whole 
 Why is compiling your dependencies desirable in the first place (vs. your own code)?
 
 - You can ship less code to users, since JavaScript has a [cost](https://medium.com/dev-channel/the-cost-of-javascript-84009f51e99e).
-- You are able to make the tradeoff of where your code is able to run vs. the library.
+- You get the freedom to make the tradeoffs of where your code is able to run (vs. the library).
 
 ## The Ephemeral JavaScript Runtime
 
@@ -36,10 +36,11 @@ Babel used to be `6to5`, since it only converted from ES2015 to ES5. Back then, 
 
 Browsers will eventually catch up to the standard (and have with ES2015). Creating `preset-env` helps us align with the browsers since if we only compiled to ES5, no one would ever run native code in the browsers.
 
-The real difference is realizing that there will _always_ be a sliding window of support: whether it's the JavaScript language that continues to move forward with new syntax, the browsers catching up with the standard, or the companies/projects themselves.
+The real difference is realizing that there will _always_ be a sliding window of support:
 
-- You (your supported environments)
+- Application code (your supported environments)
 - Browsers (Chrome, Firefox, Edge, Safari)
+- Babel (the abstraction layer)
 - TC39/ECMAScript Proposals (and Babel implementations)
 
 Thus the need isn't just for `6to5` to be renamed to Babel because it compiles to `7to5`, but for Babel to change the implicit assumption it only targets ES5. With `@babel/preset-env`, you are able to write the latest JavaScript and target whichever browser (environment) you want!
@@ -48,13 +49,24 @@ Using Babel and `preset-env` helps you keep up with that sliding window. However
 
 ## Who's Problem is It?
 
-You have control over your own code to be able to take advantage of preset-env: write in ES2015+ and target ES2015+ browsers.
+You have control over your own code to be able to take advantage of `preset-env`: by writing in ES2015+ and targeting ES2015+ browsers.
 
-However, this isn't necessarily the case for your dependencies (though you _should_ take ownership of them).
+Even though this isn't necessarily the case for your dependencies, you'll want to think about it in order to get the same benefits as compiling your application code.
 
 Is it as straightforward as just running Babel over `node_modules` with the same configuration for your application?
 
 ## Complexities in Compiling Dependencies
+
+### Compiler Complexity
+
+Every compiler has bugs, although the risk is lower if there are so many users and sufficient tests. We should just be aware that compiling dependencies does increase the surface area of potential bugs, but I don't believe that should deter us from making this a common practice.
+
+- Babel v6 assumed everything that it compiled was a module and thus in strict mode (one could argue this is actually a good thing). Thus if you tried to run Babel on all your `node_modules` and it encountered something that was a `script` like a jQuery plugin it might cause a lot of issues. This is changed in v7 so that it won't always auto inject the `"use strict"` directive unless it actually is a module.
+- React Native has always compiled `node_modules` by default and has probably learned a lot from issues like ^.
+- `preset-env` could have its own bugs because we use `compat-table` vs. test262.
+- Browsers themselves can have issues with running native ES2015+ code vs. ES5.
+- Question of how do we determine what is "supported": https://github.com/babel/babel-preset-env/issues/54 example of edge case.
+- It was never in Babel's scope to compile dependencies: we actually got issue reports that people would actually accidently do it, making the build slower.
 
 ### Using Non-Standard Syntax
 
@@ -75,6 +87,8 @@ We already recommend that people should be careful when using proposals lower th
 But telling people not to use Stage X goes against the whole purpose of Babel in the first place. A big reason why proposals gain improvements and move forward are because of the feedback the committee gets from real-world usage (whether in production or not) based on using it via Babel.
 
 There is certainly a balance to be had here. We don't want to scare people away from using new syntax (that is a hard sell 😂), but we also don't want people to get the idea that "once it's in Babel, the syntax is official or immutable". Ideally people look into the purpose of a proposal and make the tradeoffs for their use case.
+
+#### Removing the Stage Presets in v7
 
 One of the most common things people do is use the Stage 0 or Stage 2 presets. We plan to remove the stage presets in v7. We thought at first it would be convienent, that people would make their own unofficial ones anyway, or it might help with "JavaScript fatigue". We find now that it just causes more of an issue: people continue to copy/paste configs with out understanding what goes into a preset in the first place. After all, seeing `"stage-0"` says nothing. My hope is that in making the decision to use proposal plugins explicit, people will have to learn what non-standard syntax they are opting into.
 
@@ -107,9 +121,12 @@ This was introduced so that users could consume ES2015 modules (ESM).
 
 However, the sole intention of this field is ESM, not anything else. The [Rollup docs](https://github.com/rollup/rollup/wiki/pkg.module#wait-it-just-means-import-and-export--not-other-future-javascript-features) make it clear that it's not intended for future JavaScript syntax.
 
-What this means is that we may need another way to handle ES2015+ even though some libraries may choose to do this anyway.
+Despite this warning, package authors invariably conflate the use of ES modules with the JavaScript language level they authored it in.
+As such, we may need another way to signal the language level.
 
-A common suggestion is for libraries to start publishing ES2015 under another field like `es2015`, e.g. `"es2015": "es2015/redux.js"`.
+#### Non-scalable Solutions?
+
+A yearly `package.json` key: a common suggestion is for libraries to start publishing ES2015 under another field like `es2015`, e.g. `"es2015": "es2015/redux.js"`.
 
 ```js
 // @angular/core package.json
@@ -126,9 +143,13 @@ A common suggestion is for libraries to start publishing ES2015 under another fi
 
 This works for ES2015 but the question next is what about ES2016? Are we supposed to create a new folder for each year and a new field in `package.json`? That seems unsustainable, and will continue to produce larger `node_modules`.
 
-I feel like this is similar to how we had a Babel preset for each year and ended up creating `preset-latest` which included all the yearly plugins (we removed that soon after in favor of `preset-env`).
+This was an issue with Babel itself: we had intended to continue to publish yearly presets (`preset-es2015`, `preset-es2016`..) until `preset-env` removed that need.
 
-Having a field like `es-latest` or `esnext` may not be helpful either because we want the library versions to be fixed yet changing. And providing only the source may not always be helpful if you use non-standard syntax, TS, Flow, JSX, etc which might have different behavior based on compiler version. Maybe we need some changes on the `npm` side?
+Publishing it based on specific environments/syntax would seem to be even worse as the amount of combinations only increases.
+
+What about providing just the source? That may have similar problems if you used non-standard syntax as mentioned earlier.
+
+Having a `esnext` field may not be helpful either. The "latest" version of JavaScript changes depending on the point in time you authored the code.
 
 One suggestion is to provide an ES5 version but also publish a version that includes the latest standard syntax so it can be compiled with `preset-env`.
 
@@ -139,21 +160,11 @@ TODO:
 - Due to complexity and tooling, it may be difficult for projects to publish ES2015/ESM without more setup. This is probably the biggest issue to get right, even docs aren't enough. We should add some feature requests to `@babel/cli` to make this easier, and maybe make the `babel` package do this by default? Tools like @developit's [microbundle](https://github.com/developit/microbundle) may help a lot with this.
 - How do we deal with polyfills? This could be it's own post (I never finished it). Mention `preset-env` + polyfills. What would it look like for a library author not to have to think about polyfills (or the user).
 
-### Compiler Complexity
-
-Every compiler has bugs, although the risk is lower if there are so many users and sufficient tests. We should just be aware that compiling dependencies does increase the surface area of potential bugs, but I don't believe that should deter us from making this a common practice.
-
-- Babel v6 assumed everything that it compiled was a module and thus in strict mode (one could argue this is actually a good thing). Thus if you tried to run Babel on all your `node_modules` and it encountered something that was a `script` like a jQuery plugin it might cause a lot of issues. This is changed in v7 so that it won't always auto inject the `"use strict"` directive unless it actually is a module.
-- React Native has always compiled `node_modules` by default and has probably learned a lot from issues like ^.
-- `preset-env` could have its own bugs because we use `compat-table` vs. test262.
-- Browsers themselves can have issues with running native ES2015+ code vs. ES5.
-- Question of how do we determine what is "supported": https://github.com/babel/babel-preset-env/issues/54 example of edge case.
-
 With that said, how does Babel help with all this?
 
 ## How Babel v7 Helps
 
-It can be pretty painful to compile `node_modules` in Babel v6. The reason is both that we never thought of it as something we wanted as well as getting issue reports that people would actually accidently do it making the build slower.
+As I've discussed, compiling dependencies in Babel v6 can be pretty painful. Babel v7 will address some of these pain points. 
 
 One issue (which we have fixed in v7) is around config lookup. Babel currently runs per file so when compiling a file, it tries to find the closest config to know what to compile against. If it doesn't find it in the same directory, it keeps looking up directories (this is why if you don't specify a config but have one in your home directory it might try to load that instead).
 
@@ -202,14 +213,16 @@ module.exports = {
 }
 ```
 
+## Proposals to Discuss
+
+Potential recommendation: package authors should also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on (I don't believe `module` should be that key) but continue to publish ES5 under `main`. Consumers can use `preset-env` and opt-in into running on `node_modules`.
+
+Maybe we should decide on another key in `package.json`, maybe `"es"`? Reminds me of the poll I made for [babel-preset-latest](https://twitter.com/left_pad/status/758429846594850816).
+
 ## Let's Do This!
 
 Hopefully this is an encouraging call to action for looking into moving forward to make compiling dependencies more first class. It's not just about the specific ES2015/ES5 distinction.
 
-Babel v7 should be out soon, this post goes into some of the ways it should help with this effort but we'll need everyone's help to change the ecosystem (more education, published packages that do this, and better tooling and sustainability).
-
-Maybe we should decide on another key in `package.json`, maybe `"es"`? Reminds me of the poll I made for [babel-preset-latest](https://twitter.com/left_pad/status/758429846594850816).
-
-Potential recommendation: package authors should also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on (I don't believe `module` should be that key) but continue to publish ES5 under `main`. Consumers can use `preset-env` and opt-in into running on `node_modules`.
+Babel v7 should be out soon. This post goes into some of the ways it should help with this effort but we'll need everyone's help to change the ecosystem: more education, published packages that do this, and better tooling and sustainability.
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
