@@ -2,7 +2,10 @@
 
 const React = require("react");
 
-const styles = ["https://unpkg.com/codemirror@5.30.0/lib/codemirror.css"];
+const styles = [
+  "https://unpkg.com/codemirror@5.30.0/lib/codemirror.css",
+  "/css/repl.css"
+];
 
 const scripts = [
   "https://unpkg.com/react@16.3.2/umd/react.production.min.js",
