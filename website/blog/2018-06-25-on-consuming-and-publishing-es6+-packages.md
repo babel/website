@@ -126,7 +126,7 @@ After all, seeing `"stage-0"` says nothing. My hope is that in making the decisi
 
 ### Publishing Non-standard Syntax
 
-As a library author, publishing non-standard syntax is setting our users up for possible inconsistencies, refactoring, and breakage of their projects. Because a TC39 proposal (even at Stage 3) has a possibility of changing, it means we will inevitability have to change the library code.
+As a library author, publishing non-standard syntax is setting our users up for possible inconsistencies, refactoring, and breakage of their projects. Because a TC39 proposal (even at Stage 3) has a possibility of changing, it means we will inevitability have to change the library code. A "new" proposal doesn't mean the idea is fixed or certain but rather that we collectively want explore the solution space.
 
 At least if we ship the compiled version, it will still work and the library maintainer can change the output so that it works the same as before. Shipping the uncompiled version means that anyone consuming a package will necessarily have to have a build step to use it, and will have to have the same configuration of Babel as us. This is in the same bucket as using TS/JSX/Flow: we wouldn't expect consumers to configure the same compiler environment just because we used them.
 
@@ -245,7 +245,9 @@ module.exports = {
 }
 ```
 
-## Recommendation to Discuss
+## Recommendations to Discuss
+
+We should shift our fixed view of publishing JavaScript to one that keeps up with the standard which pushes forward.
 
 My recommendation is that package authors should continue to publish ES5/CJS under `main` for backwards compat with current tooling and workflow but also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on like `main-es` (I don't believe `module` should be that key).
 
@@ -259,9 +261,15 @@ With Babel 7, consumers can more safely use `preset-env` and opt-in into running
 
 ## Let's Do This!
 
-Hopefully this is an encouraging call to action for looking into moving forward to make compiling dependencies more first class. It's not just about the specific ES2015/ES5 distinction.
+Compiling JavScript shouldn't be just about the specific ES2015/ES5 distinction, whether it's for our app or our dependencies! Hopefully this is an encouraging call to action re-starting conversations around making compiling dependencies more first class.
 
-Babel v7 should be out soon. This post goes into some of the ways it should help with this effort but we'll need everyone's help to change the ecosystem: more education, published packages that do this, and better tooling and sustainability.
+This post goes into some of the ways Babel should help with this effort but we'll need everyone's help to change the ecosystem: more education, more opt-in published packages, and better tooling.
+
+Let's take advantage of ES2015+ not just in our own code, but our dependencies.
+
+---
+
+If you appreciated this article and the work that we do on Babel, please consider partnering with us and supporting my [Patreon](https://www.patreon.com/henryzhu) and Babel's [Open Collective](https://opencollective.com/babel) to continue to invest in the JavaScript ecosystem that we all use.
 
 > Thanks to the [many](https://twitter.com/left_pad/status/1010280464840617984) folks who offered to review this post including [@chrisdarroch](https://twitter.com/chrisdarroch), [@existentialism](https://twitter.com/existentialism), [@betaorbust](https://twitter.com/betaorbust), [@_developit](https://twitter.com/_developit), [@jdalton](https://twitter.com/jdalton), [@bonsaistudio](https://twitter.com/bonsaistudio).
 
