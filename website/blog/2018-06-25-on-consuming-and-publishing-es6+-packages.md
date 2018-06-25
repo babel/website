@@ -16,7 +16,8 @@ The ability to compile dependencies is an enabling feature request for the whole
 
 ## Assumptions
 
-- We can and will ship to modern browsers that support ES2015+ natively (don't have to support IE) or are able to send multiple kinds of bundles (i.e. [checking for script`type=module`](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/)).
+- We believe compiling our own app code is useful.
+- We can and will ship to modern browsers that support ES2015+ [natively](https://kangax.github.io/compat-table/es6/) (don't have to support IE) or are able to send multiple kinds of bundles (i.e. [checking for script`type=module`](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/)).
 - Our dependencies actually publish ES2015+ instead of the current baseline of ES5/ES3.
 - The future baseline shouldn't be fixed at ES2015, but is a changing target.
 
@@ -24,18 +25,16 @@ The ability to compile dependencies is an enabling feature request for the whole
 
 Why is compiling dependencies desirable in the first place (vs. our own code)?
 
-- We can ship less code to users, since JavaScript has a [cost](https://medium.com/dev-channel/the-cost-of-javascript-84009f51e99e).
-- We get the freedom to make the tradeoffs of where our code is able to run (vs. the library).
+- To have the freedom to make the tradeoffs of where code is able to run (vs. the library).
+- To ship less code to users, since JavaScript has a [cost](https://medium.com/dev-channel/the-cost-of-javascript-84009f51e99e).
 
 ## The Ephemeral JavaScript Runtime
 
-When thinking about Babel's role not just in moving the language itself forward, we saw that developers would eventually want to move past only compiling to ES5. 
+The argument for why compiling dependencies would be helpful is the same for why Babel [eventually](https://github.com/babel/babel/pull/3476) introduced [`@babel/preset-env`](https://babeljs.io/docs/en/next/babel-preset-env.html). We saw that developers would eventually want to move past only compiling to ES5. 
 
-Thus, the argument for why compiling dependencies would be helpful is the same for why we eventually introduced `@babel/preset-env`.
+Babel used to be [`6to5`](https://babeljs.io/blog/2017/10/05/babel-turns-three), since it only converted from ES2015 to ES5. Back then, the browser support for ES2015 was almost non-existent, so the idea of a JavaScript compiler was both novel and useful: we could write modern code and have it work for all of our users.
 
-Babel used to be `6to5`, since it only converted from ES2015 to ES5. Back then, the browser support for ES2015 was almost non-existent, so the idea of a JavaScript compiler was both novel and useful: we could write modern code and have it work for all of our users.
-
-But what about the browser runtimes themselves? Because rowsers will eventually catch up to the standard (and have with ES2015), creating `preset-env` helps Babel and the community align with both the browsers and TC39 itself. If we only compiled to ES5, no one would ever run native code in the browsers.
+But what about the browser runtimes themselves? Because evergreen browsers will eventually catch up to the standard (and they have with ES2015), creating `preset-env` helps Babel and the community align with both the browsers and TC39 itself. If we only compiled to ES5, no one would ever run native code in the browsers.
 
 The real difference is realizing that there will _always_ be a sliding window of support:
 
@@ -46,32 +45,60 @@ The real difference is realizing that there will _always_ be a sliding window of
 
 Thus the need isn't just for `6to5` to be renamed to Babel because it compiles to `7to5`, but for Babel to change the implicit assumption it only targets ES5. With `@babel/preset-env`, we are able to write the latest JavaScript and target whichever browser (environment)!
 
-Using Babel and `preset-env` helps us keep up with that constantly changing sliding window. However, even if we use it, it's mainly for *our application code* and not what our code depends upon.
+Using Babel and `preset-env` helps us keep up with that constantly changing sliding window. However, even if we use it, it's currently used for *our application code* and not what our code depends upon.
 
-## Who's Problem is It?
+## Who Owns Our Dependencies?
 
-Because we have control over our own code, we are able to take advantage of `preset-env`: both writing in ES2015+ and targeting ES2015+ browsers.
+Because we have control over our own code, we are able to take advantage of `preset-env`: both by writing in ES2015+ and targeting ES2015+ browsers.
 
-Even though this isn't necessarily the case for our dependencies, we'll want to think about it in order to get the same benefits as compiling our application code.
+This isn't necessarily the case for our dependencies; in order to get the same benefits as compiling our code we may need to make some changes.
 
-Is it as straightforward as just running Babel over `node_modules` with the same configuration for our applications?
+Is it as straightforward as just running Babel over `node_modules`?
 
-## Complexities in Compiling Dependencies
+## The Current Complexities in Compiling Dependencies
 
 ### Compiler Complexity
 
-Every compiler has bugs, although the risk is lower if there are so many users and sufficient tests. We should just be aware that compiling dependencies does increase the surface area of potential bugs, but it shouldn't deter us from making this a common practice.
+All code (compilers are no different) has bugs. Although it shouldn't deter us from making this a common practice, we should be aware that compiling dependencies does increase the surface area of issues and complexity.
 
-- Babel v6 assumed everything that it compiled was a module and thus in strict mode (one could argue this is actually a good thing). Thus if we tried to run Babel on all our `node_modules` and it encountered something that was a `script` like a jQuery plugin it might cause a lot of issues. This is changed in v7 so that it won't always auto inject the `"use strict"` directive unless it actually is a module.
-- React Native has always compiled `node_modules` by default and has probably learned a lot from issues like ^.
-- `preset-env` could have its own bugs because we use `compat-table` vs. test262.
-- Browsers themselves can have issues with running native ES2015+ code vs. ES5.
-- Question of how do we determine what is "supported": https://github.com/babel/babel-preset-env/issues/54 example of edge case.
 - It was never in Babel's scope to compile dependencies: we actually got issue reports that people would actually accidently do it, making the build slower.
+- `preset-env` itself could have because we use [`compat-table`](https://kangax.github.io/compat-table/es6/) for our data vs. [test262](https://github.com/tc39/test262) (the official test suite).
+- Browsers themselves can have issues with running native ES2015+ code vs. ES5.
+- There is still a question of determining what is "supported": https://github.com/babel/babel-preset-env/issues/54 is an example of an edge case.
+
+#### Specific Issues in v6
+
+Running a `script` as a `module` will either cause a `SyntaxError`, new runtime erorrs, or unexpected behavior due to the differences in semantics.
+
+Babel v6 viewed every file as a `module` and thus in ["strict mode"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode).
+
+> One could argue this is actually a good thing, since everyone using Babel will be opt-ing into strict mode by default 🙂.
+
+Running Babel with a conventional setup on all our `node_modules` may cause issues with code that is a `script` such as a jQuery plugin.
+
+An example of an issue is how [`this` gets converted to `undefined`](https://github.com/babel/babel/issues/7636).
+
+```js
+// Input
+(function($) {
+  // ...
+}(this.jQuery));
+```
+
+```js
+// Output
+"use strict";
+
+(function ($) {
+  // ...
+})(undefined.jQuery);
+```
+
+This was [changed in v7](https://github.com/babel/babel/pull/6280) so that it won't auto inject the `"use strict"` directive unless it actually is a `module`.
 
 ### Using Non-Standard Syntax
 
-There are many issues with *shipping* uncompiled proposal syntax. (This post was inspired by [Dan's concern](https://twitter.com/dan_abramov/status/1009179550134296577) about this)
+There are many issues with *shipping* uncompiled proposal syntax (this post was inspired by [Dan's concern](https://twitter.com/dan_abramov/status/1009179550134296577) about this).
 
 #### Staging Process
 
