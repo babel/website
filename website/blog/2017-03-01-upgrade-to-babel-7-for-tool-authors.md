@@ -14,6 +14,6 @@ custom_js_with_timestamps:
 
 We are moving the migration guide to a docs page instead of a blog post!
 
-## Check out [v7-migration-api](/v7-migration-api.md)!
+## Check out [v7-migration-api](https://babeljs.io/docs/en/next/v7-migration-api)!
 
 Refer users to this document for those that create tools that depend on Babel (such as Babel plugins).
