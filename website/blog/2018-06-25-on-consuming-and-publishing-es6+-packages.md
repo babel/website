@@ -59,9 +59,9 @@ Is it as straightforward as just running Babel over `node_modules`?
 
 ### Compiler Complexity
 
-All code (compilers are no different) has bugs. Although it shouldn't deter us from making this a common practice, we should be aware that compiling dependencies does increase the surface area of issues and complexity.
+Although it shouldn't deter us from making this a common practice, we should be aware that compiling dependencies does increase the surface area of issues and complexity.
 
-- It was never in Babel's scope to compile dependencies: we actually got issue reports that people would actually accidently do it, making the build slower.
+- Compilers are no different than other programs and has bugs. 
 - `preset-env` itself could have because we use [`compat-table`](https://kangax.github.io/compat-table/es6/) for our data vs. [test262](https://github.com/tc39/test262) (the official test suite).
 - Browsers themselves can have issues with running native ES2015+ code vs. ES5.
 - There is still a question of determining what is "supported": https://github.com/babel/babel-preset-env/issues/54 is an example of an edge case.
@@ -96,15 +96,17 @@ An example of an issue is how [`this` gets converted to `undefined`](https://git
 
 This was [changed in v7](https://github.com/babel/babel/pull/6280) so that it won't auto inject the `"use strict"` directive unless it actually is a `module`.
 
+It was also not in Babel's original scope to compile dependencies: we actually got issue reports that people would accidently do it, making the build slower. So there may be a lot of defaults and documentation in the tooling that purposely not allow compiling `node_modules`.
+
 ### Using Non-Standard Syntax
 
 There are many issues with *shipping* uncompiled proposal syntax (this post was inspired by [Dan's concern](https://twitter.com/dan_abramov/status/1009179550134296577) about this).
 
 #### Staging Process
 
-- The [TC39 staging process](https://tc39.github.io/process-document/) does not always move forward: there is the possibility for a proposal to move to any point in the process: even moving backwards from Stage 3 to Stage 2 as the case with Numeric Separators (`1_000`) or dropped entirely (`Object.observe()`, and others we may have forgotten 😁)
-- Summary: Stage 0 has no criteria and is just an idea, Stage 1 is accepting that the problem is worth solving, Stage 2 is about describing a solution in spec text, Stage 3 means the specific solution is thought out, and Stage 4 means that it is ready for inclusion with tests, multiple browser implementations, and in-the-field experience.
-- The committee would advise that Stage 0-2 is still experimental.
+The [TC39 staging process](https://tc39.github.io/process-document/) does not always move forward: a proposal can move to any point in the process: even moving backwards from Stage 3 to Stage 2 as the case with Numeric Separators (`1_000`),  dropped entirely (`Object.observe()`, and others we may have forgotten 😁), or just stall like function bind (`a::b`) or decorators until recently.
+
+- Summary of the Stages: Stage 0 has no criteria and is just an idea, Stage 1 is accepting that the problem is worth solving, Stage 2 is about describing a solution in spec text, Stage 3 means the specific solution is thought out, and Stage 4 means that it is ready for inclusion with tests, multiple browser implementations, and in-the-field experience.
 
 #### Using Proposals
 
@@ -112,21 +114,21 @@ There are many issues with *shipping* uncompiled proposal syntax (this post was 
 
 We already recommend that people should be careful when using proposals lower than Stage 3, let alone publishing them.
 
-But telling people not to use Stage X goes against the whole purpose of Babel in the first place. A big reason why proposals gain improvements and move forward are because of the feedback the committee gets from real-world usage (whether in production or not) based on using it via Babel.
+But only telling people not to use Stage X goes against the whole purpose of Babel in the first place. A big reason why proposals gain improvements and move forward are because of the feedback the committee gets from real-world usage (whether in production or not) based on using it via Babel.
 
-There is certainly a balance to be had here. We don't want to scare people away from using new syntax (that is a hard sell 😂), but we also don't want people to get the idea that "once it's in Babel, the syntax is official or immutable". Ideally people look into the purpose of a proposal and make the tradeoffs for their use case.
+There is certainly a balance to be had here: we don't want to scare people away from using new syntax (that is a hard sell 😂), but we also don't want people to get the idea that "once it's in Babel, the syntax is official or immutable". Ideally people look into the purpose of a proposal and make the tradeoffs for their use case.
 
 #### Removing the Stage Presets in v7
 
-One of the most common things people do is use the Stage 0 or Stage 2 presets. We plan to remove the stage presets in v7. We thought at first it would be convienent, that people would make their own unofficial ones anyway, or it might help with "JavaScript fatigue". We find now that it just causes more of an issue: people continue to copy/paste configs with out understanding what goes into a preset in the first place. After all, seeing `"stage-0"` says nothing. My hope is that in making the decision to use proposal plugins explicit, people will have to learn what non-standard syntax they are opting into.
+Even though one of the most common things people do is use the Stage 0 preset, we plan to remove the stage presets in v7. We thought at first it would be convienent, that people would make their own unofficial ones anyway, or it might help with "JavaScript fatigue". It seems to cause more of an issue: people continue to copy/paste configs with out understanding what goes into a preset in the first place. 
+
+After all, seeing `"stage-0"` says nothing. My hope is that in making the decision to use proposal plugins explicit, people will have to learn what non-standard syntax they are opting into. More intentionality should lead to a better understanding of not just Babel but JavaScript the language and it's development instead of just it's usage.
 
 ### Publishing Non-standard Syntax
 
 As a library author, publishing non-standard syntax is setting our users up for possible inconsistencies, refactoring, and breakage of their projects. Because a TC39 proposal (even at Stage 3) has a possibility of changing, it means we will inevitability have to change the library code.
 
 At least if we ship the compiled version, it will still work and the library maintainer can change the output so that it works the same as before. Shipping the uncompiled version means that anyone consuming a package will necessarily have to have a build step to use it, and will have to have the same configuration of Babel as us. This is in the same bucket as using TS/JSX/Flow: we wouldn't expect consumers to configure the same compiler environment just because we used them.
-
-TODO: Or a proposal might just stall because people are busy, etc. Decorators are a great example of this.
 
 ### Conflating ESM and ES2015+
 
@@ -147,14 +149,15 @@ Some tools like Rollup/Webpack will also read from another field called `module`
 
 This was introduced so that users could consume ES2015 modules (ESM).
 
-However, the sole intention of this field is ESM, not anything else. The [Rollup docs](https://github.com/rollup/rollup/wiki/pkg.module#wait-it-just-means-import-and-export--not-other-future-javascript-features) make it clear that it's not intended for future JavaScript syntax.
+However, the sole intention of this field is ESM, not anything else. The [Rollup docs](https://github.com/rollup/rollup/wiki/pkg.module#wait-it-just-means-import-and-export--not-other-future-javascript-features) that specify the `module` field make it clear that it's not intended for future JavaScript syntax.
 
 Despite this warning, package authors invariably conflate the use of ES modules with the JavaScript language level they authored it in.
+
 As such, we may need another way to signal the language level.
 
 #### Non-scalable Solutions?
 
-A yearly `package.json` key: a common suggestion is for libraries to start publishing ES2015 under another field like `es2015`, e.g. `"es2015": "es2015/redux.js"`.
+A common suggestion is for libraries to start publishing ES2015 under another field like `es2015`, e.g. `"es2015": "es2015/redux.js"`.
 
 ```js
 // @angular/core package.json
@@ -169,30 +172,33 @@ A yearly `package.json` key: a common suggestion is for libraries to start publi
 }
 ```
 
-This works for ES2015 but the question next is what about ES2016? Are we supposed to create a new folder for each year and a new field in `package.json`? That seems unsustainable, and will continue to produce larger `node_modules`.
+This works for ES2015, but it begs the question of what we should do about ES2016? Are we supposed to create a new folder for each year and a new field in `package.json`? That seems unsustainable, and will continue to produce larger `node_modules`.
 
-This was an issue with Babel itself: we had intended to continue to publish yearly presets (`preset-es2015`, `preset-es2016`..) until `preset-env` removed that need.
+> This was an issue with Babel itself: we had intended to continue to publish yearly presets (`preset-es2015`, `preset-es2016`..) until we realized that `preset-env` would remove that need.
 
-Publishing it based on specific environments/syntax would seem to be even worse as the amount of combinations only increases.
+Publishing it based on specific environments/syntax would seem to be just as untenable as the amount of combinations only increases (`"ie-11-arrow-functions"`).
 
-What about providing just the source? That may have similar problems if we used non-standard syntax as mentioned earlier.
+What about distributing just the source itself? That may have similar problems if we used non-standard syntax as mentioned earlier.
 
-Having a `esnext` field may not be helpful either. The "latest" version of JavaScript changes depending on the point in time we authored the code.
-
-One suggestion is to provide an ES5 version but also publish a version that includes the latest standard syntax so it can be compiled with `preset-env`.
+Having a `esnext` field may not be entirely helpful either. The "latest" version of JavaScript changes depending on the point in time we authored the code.
 
 ### Dependencies May Not Publish ES2015+
 
-- Due to complexity and tooling, it may be difficult for projects to publish ES2015/ESM without more setup. This is probably the biggest issue to get right, even docs aren't enough. We should add some feature requests to `@babel/cli` to make this easier, and maybe make the `babel` package do this by default? Tools like @developit's [microbundle](https://github.com/developit/microbundle) may help a lot with this.
-- How do we deal with polyfills (this will be an upcoming post)? What would it look like for a library author not to have to think about polyfills (or the user).
+This effort will only be standard if it becomes straightfoward to do as a library author. It will be hard to argue for the significance of this change if both new and popular libraries aren't able to ship the latest syntax.
 
-With that said, how does Babel help with all this?
+Due to the complexity and tooling setup, it may be difficult for projects to publish ES2015+/ESM. This is probably the biggest issue to get right, and more documentation just isn't enough.
+
+For Babel, we may need to add some feature requests to `@babel/cli` to make this easier, and maybe make the `babel` package do this by default? Or we should integrate better with tools like @developit's [microbundle](https://github.com/developit/microbundle).
+
+And how do we deal with polyfills (this will be an upcoming post)? What would it look like for a library author not to have to think about polyfills (or the user).
+
+With all that said, how does Babel help with all this?
 
 ## How Babel v7 Helps
 
-As I've discussed, compiling dependencies in Babel v6 can be pretty painful. Babel v7 will address some of these pain points. 
+As we've discussed, compiling dependencies in Babel v6 can be pretty painful. Babel v7 will address some of these pain points. 
 
-One issue (which we have fixed in v7) is around config lookup. Babel currently runs per file so when compiling a file, it tries to find the closest config to know what to compile against. If it doesn't find it in the same directory, it keeps looking up directories (this is why if we don't specify a config but have one in our home directory it might try to load that instead).
+One issue is around configuration lookup. Babel currently runs per file so when compiling a file, it tries to find the closest config ([`.babelrc`](https://babeljs.io/docs/en/next/babelrc)) to know what to compile against. It will keep looking up the directory tree if it doesn't find it in the current folder.
 
 ```
 project
@@ -206,7 +212,7 @@ project
 
 We made a [few changes](https://github.com/babel/babel/pull/7358):
 
-- One is to stop lookup at the package boundary (stop when we find a `package.json`). This makes sure Babel won't try to load a config file outside.
+- One is to stop lookup at the package boundary (stop when we find a `package.json`). This makes sure Babel won't try to load a config file outside the app, the most surprising being with it finds one in your home directory.
 - If we use a monorepo, we'll may want to have a `.babelrc` per-package that extends some other central config.
 - Babel itself is a monorepo, so instead we are using the new `babel.config.js` which allows us to resolve all files to that config (no more lookup).
 - We added an [`"overrides"`](https://github.com/babel/babel/pull/7091) option which allows us to basically create a new config for any set of paths.
@@ -239,16 +245,24 @@ module.exports = {
 }
 ```
 
-## Proposals to Discuss
+## Recommendation to Discuss
 
-Potential recommendation: package authors should also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on (I don't believe `module` should be that key) but continue to publish ES5 under `main`. Consumers can use `preset-env` and opt-in into running on `node_modules`.
+My recommendation is that package authors should continue to publish ES5/CJS under `main` for backwards compat with current tooling and workflow but also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on like `main-es` (I don't believe `module` should be that key).
 
-Maybe we should decide on another key in `package.json`, maybe `"es"`? Reminds me of a poll I made for [babel-preset-latest](https://twitter.com/left_pad/status/758429846594850816).
+> Maybe we should decide on another key in `package.json`, maybe `"es"`? Reminds me of a poll I made for [babel-preset-latest](https://twitter.com/left_pad/status/758429846594850816).
+
+Compiling dependencies isn't just something for one project/company to take advantage of: it requires a push by the whole community to move forward. Even though this effort will be natural, it might require some sort of standardization: we can implement a set of criteria for how librarys can opt-in to publishing ES2015+ and verify this via CI/tooling/npm itself.
+
+Documentation needs to updated to mention the benefits of compiling `node_modules`, how to do so for the library authors, and how to consume it in bundlers/compilers.
+
+With Babel 7, consumers can more safely use `preset-env` and opt-in into running on `node_modules` with new config options like `overrides`.
 
 ## Let's Do This!
 
 Hopefully this is an encouraging call to action for looking into moving forward to make compiling dependencies more first class. It's not just about the specific ES2015/ES5 distinction.
 
 Babel v7 should be out soon. This post goes into some of the ways it should help with this effort but we'll need everyone's help to change the ecosystem: more education, published packages that do this, and better tooling and sustainability.
+
+> Thanks to the [many](https://twitter.com/left_pad/status/1010280464840617984) folks who offered to review this post including [@chrisdarroch](https://twitter.com/chrisdarroch), [@existentialism](https://twitter.com/existentialism), [@betaorbust](https://twitter.com/betaorbust), [@_developit](https://twitter.com/_developit), [@jdalton](https://twitter.com/jdalton), [@bonsaistudio](https://twitter.com/bonsaistudio).
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
