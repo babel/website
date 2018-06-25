@@ -99,7 +99,7 @@ const GetStarted = props => {
   return (
     <div
       className="blockElement twoByGridBlock get-started"
-      style={{ flexBasis: "60%" }}
+      style={{ flexBasis: "60%", margin: 0 }}
     >
       <h2>Welcome!</h2>
 
@@ -125,7 +125,7 @@ const WorkSponsors = () => {
   return (
     <div
       className="blockElement alignCenter twoByGridBlock sponsors-work"
-      style={{ flexBasis: "40%" }}
+      style={{ flexBasis: "40%", margin: 0 }}
     >
       <h2>Friends of Open Source</h2>
       <p style={{ fontSize: 16 }}>
@@ -284,7 +284,7 @@ const Index = ({ language = DEFAULT_LANGUAGE }) => (
   <div>
     <Hero language={language} />
 
-    <div className="mainContainer">
+    <div className="mainContainer" style={{padding: 0}}>
       <HomeContainer>
         <GetStarted language={language} />
         <WorkSponsors language={language} />
