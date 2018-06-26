@@ -225,22 +225,22 @@ This allows us to have a single config for our whole app: maybe we want to compi
 // babel.config.js
 module.exports = {
   presets: [
-    ['env', { 
+    ['@babel/preset-env', { 
       targets: { node: 'current' },
     }],
   ],
   overrides: [{
     test: "./client",
     presets: [
-      ['env', { 
-        targets: { browsers: ["last 2 versions"] },
+      ['@babel/preset-env', { 
+        targets: { "chrome": "60"] },
       }],
     ],
   }, {
     test: "./node_modules/",
     presets: [
-      ['env', { 
-        targets: { browsers: ["last 2 versions"] },
+      ['@babel/preset-env', { 
+        targets: { "chrome": "60"] },
       }],
     ],
   }],
