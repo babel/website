@@ -145,7 +145,7 @@ Some tools like Rollup/webpack also read from another field called `module` (pre
 {
   ...
   "main": "lib/redux.js", // ES5 + Common JS
-  "module": "es/redux.mjs", // ES5 + JS Modules
+  "module": "es/redux.js", // ES5 + JS Modules
 }
 ```
 
@@ -159,18 +159,18 @@ As such, we may need another way to signal the language level.
 
 #### Non-scalable Solutions?
 
-A common suggestion is for libraries to start publishing ES2015 under another field like `es2015`, e.g. `"es2015": "es2015/redux.mjs"`.
+A common suggestion is for libraries to start publishing ES2015 under another field like `es2015`, e.g. `"es2015": "es2015/package.mjs"`.
 
 ```js
 // @angular/core package.json
 {
   "main": "./bundles/core.umd.js",
-  "module": "./fesm5/core.mjs",
+  "module": "./fesm5/core.js",
   "es2015": "./fesm2015/core.js",
-  "esm5": "./esm5/core.mjs",
-  "esm2015": "./esm2015/core.mjs",
-  "fesm5": "./fesm5/core.mjs",
-  "fesm2015": "./fesm2015/core.mjs",
+  "esm5": "./esm5/core.js",
+  "esm2015": "./esm2015/core.js",
+  "fesm5": "./fesm5/core.js",
+  "fesm2015": "./fesm2015/core.js",
 }
 ```
 
