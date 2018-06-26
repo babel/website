@@ -32,7 +32,7 @@ Why is compiling dependencies desirable in the first place (vs. our own code)?
 
 The argument for why compiling dependencies would be helpful is the same for why Babel [eventually](https://github.com/babel/babel/pull/3476) introduced [`@babel/preset-env`](https://babeljs.io/docs/en/next/babel-preset-env.html). We saw that developers would eventually want to move past only compiling to ES5. 
 
-Babel used to be [`6to5`](https://babeljs.io/blog/2017/10/05/babel-turns-three), since it only converted from ES2015 to ES5. Back then, the browser support for ES2015 was almost non-existent, so the idea of a JavaScript compiler was both novel and useful: we could write modern code and have it work for all of our users.
+Babel used to be [`6to5`](https://babeljs.io/blog/2017/10/05/babel-turns-three), since it only converted from ES2015 to ES5. Back then, the browser support for ES2015 was almost non-existent, so the idea of a JavaScript compiler was both novel and useful: we could write modern code, and have it work for all of our users.
 
 But what about the browser runtimes themselves? Because evergreen browsers will eventually catch up to the standard (and they have with ES2015), creating `preset-env` helps Babel and the community align with both the browsers and TC39 itself. If we only compiled to ES5, no one would ever run native code in the browsers.
 
@@ -43,7 +43,7 @@ The real difference is realizing that there will _always_ be a sliding window of
 - Babel (the abstraction layer)
 - TC39/ECMAScript Proposals (and Babel implementations)
 
-Thus the need isn't just for `6to5` to be renamed to Babel because it compiles to `7to5`, but for Babel to change the implicit assumption it only targets ES5. With `@babel/preset-env`, we are able to write the latest JavaScript and target whichever browser (environment)!
+Thus, the need isn't just for `6to5` to be renamed to Babel because it compiles to `7to5`, but for Babel to change the implicit assumption it only targets ES5. With `@babel/preset-env`, we are able to write the latest JavaScript and target whichever browser (environment)!
 
 Using Babel and `preset-env` helps us keep up with that constantly changing sliding window. However, even if we use it, it's currently used for *our application code* and not what our code depends upon.
 
@@ -61,14 +61,14 @@ Is it as straightforward as just running Babel over `node_modules`?
 
 Although it shouldn't deter us from making this a common practice, we should be aware that compiling dependencies does increase the surface area of issues and complexity.
 
-- Compilers are no different than other programs and has bugs. 
-- `preset-env` itself could have because we use [`compat-table`](https://kangax.github.io/compat-table/es6/) for our data vs. [test262](https://github.com/tc39/test262) (the official test suite).
+- Compilers are no different than other programs and have bugs. 
+- `preset-env` itself could have bugs because we use [`compat-table`](https://kangax.github.io/compat-table/es6/) for our data vs. [test262](https://github.com/tc39/test262) (the official test suite).
 - Browsers themselves can have issues with running native ES2015+ code vs. ES5.
 - There is still a question of determining what is "supported": https://github.com/babel/babel-preset-env/issues/54 is an example of an edge case.
 
 #### Specific Issues in v6
 
-Running a `script` as a `module` will either cause a `SyntaxError`, new runtime erorrs, or unexpected behavior due to the differences in semantics.
+Running a `script` as a `module` will either cause a `SyntaxError`, new runtime errors, or unexpected behavior due to the differences in semantics.
 
 Babel v6 viewed every file as a `module` and thus in ["strict mode"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode).
 
@@ -94,9 +94,9 @@ An example of an issue is how [`this` gets converted to `undefined`](https://git
 })(undefined.jQuery);
 ```
 
-This was [changed in v7](https://github.com/babel/babel/pull/6280) so that it won't auto inject the `"use strict"` directive unless it actually is a `module`.
+This was [changed in v7](https://github.com/babel/babel/pull/6280) so that it won't auto inject the `"use strict"` directive unless it is a `module`.
 
-It was also not in Babel's original scope to compile dependencies: we actually got issue reports that people would accidently do it, making the build slower. So there may be a lot of defaults and documentation in the tooling that purposely not allow compiling `node_modules`.
+It was also not in Babel's original scope to compile dependencies: we actually got issue reports that people would accidently do it, making the build slower. There is a lot of defaults and documentation in the tooling that purposely disable compiling `node_modules`.
 
 ### Using Non-Standard Syntax
 
@@ -120,15 +120,15 @@ There is certainly a balance to be had here: we don't want to scare people away 
 
 #### Removing the Stage Presets in v7
 
-Even though one of the most common things people do is use the Stage 0 preset, we plan to remove the stage presets in v7. We thought at first it would be convienent, that people would make their own unofficial ones anyway, or it might help with "JavaScript fatigue". It seems to cause more of an issue: people continue to copy/paste configs with out understanding what goes into a preset in the first place. 
+Even though one of the most common things people do is use the Stage 0 preset, we plan to remove the stage presets in v7. We thought at first it would be convenient, that people would make their own unofficial ones anyway, or it might help with "JavaScript fatigue". It seems to cause more of an issue: people continue to copy/paste configs without understanding what goes into a preset in the first place. 
 
-After all, seeing `"stage-0"` says nothing. My hope is that in making the decision to use proposal plugins explicit, people will have to learn what non-standard syntax they are opting into. More intentionality should lead to a better understanding of not just Babel but JavaScript the language and it's development instead of just it's usage.
+After all, seeing `"stage-0"` says nothing. My hope is that in making the decision to use proposal plugins explicit, people will have to learn what non-standard syntax they are opting into. More intentionality should lead to a better understanding of not just Babel but JavaScript the language and its development instead of just it's usage.
 
 ### Publishing Non-standard Syntax
 
-As a library author, publishing non-standard syntax is setting our users up for possible inconsistencies, refactoring, and breakage of their projects. Because a TC39 proposal (even at Stage 3) has a possibility of changing, it means we will inevitability have to change the library code. A "new" proposal doesn't mean the idea is fixed or certain but rather that we collectively want explore the solution space.
+As a library author, publishing non-standard syntax is setting our users up for possible inconsistencies, refactoring, and breakage of their projects. Because a TC39 proposal (even at Stage 3) has a possibility of changing, it means we will inevitability have to change the library code. A "new" proposal doesn't mean the idea is fixed or certain but rather that we collectively want to explore the solution space.
 
-At least if we ship the compiled version, it will still work and the library maintainer can change the output so that it works the same as before. Shipping the uncompiled version means that anyone consuming a package will necessarily have to have a build step to use it, and will have to have the same configuration of Babel as us. This is in the same bucket as using TS/JSX/Flow: we wouldn't expect consumers to configure the same compiler environment just because we used them.
+At least if we ship the compiled version, it will still work, and the library maintainer can change the output so that it works the same as before. Shipping the uncompiled version means that anyone consuming a package will necessarily have to have a build step to use it and will have to have the same configuration of Babel as us. This is in the same bucket as using TS/JSX/Flow: we wouldn't expect consumers to configure the same compiler environment just because we used them.
 
 ### Conflating ESM and ES2015+
 
@@ -184,7 +184,7 @@ Having a `esnext` field may not be entirely helpful either. The "latest" version
 
 ### Dependencies May Not Publish ES2015+
 
-This effort will only be standard if it becomes straightfoward to do as a library author. It will be hard to argue for the significance of this change if both new and popular libraries aren't able to ship the latest syntax.
+This effort will only be standard if it becomes straightforward to do as a library author. It will be hard to argue for the significance of this change if both new and popular libraries aren't able to ship the latest syntax.
 
 Due to the complexity and tooling setup, it may be difficult for projects to publish ES2015+/ESM. This is probably the biggest issue to get right, and more documentation just isn't enough.
 
@@ -253,7 +253,7 @@ My recommendation is that package authors should continue to publish ES5/CJS und
 
 > Maybe we should decide on another key in `package.json`, maybe `"es"`? Reminds me of a poll I made for [babel-preset-latest](https://twitter.com/left_pad/status/758429846594850816).
 
-Compiling dependencies isn't just something for one project/company to take advantage of: it requires a push by the whole community to move forward. Even though this effort will be natural, it might require some sort of standardization: we can implement a set of criteria for how librarys can opt-in to publishing ES2015+ and verify this via CI/tooling/npm itself.
+Compiling dependencies isn't just something for one project/company to take advantage of: it requires a push by the whole community to move forward. Even though this effort will be natural, it might require some sort of standardization: we can implement a set of criteria for how libraries can opt-in to publishing ES2015+ and verify this via CI/tooling/npm itself.
 
 Documentation needs to updated to mention the benefits of compiling `node_modules`, how to do so for the library authors, and how to consume it in bundlers/compilers.
 
@@ -261,9 +261,9 @@ With Babel 7, consumers can more safely use `preset-env` and opt-in into running
 
 ## Let's Do This!
 
-Compiling JavScript shouldn't be just about the specific ES2015/ES5 distinction, whether it's for our app or our dependencies! Hopefully this is an encouraging call to action re-starting conversations around making compiling dependencies more first class.
+Compiling JavaScript shouldn't be just about the specific ES2015/ES5 distinction, whether it's for our app or our dependencies! Hopefully this is an encouraging call to action re-starting conversations around making compiling dependencies more first class.
 
-This post goes into some of the ways Babel should help with this effort but we'll need everyone's help to change the ecosystem: more education, more opt-in published packages, and better tooling.
+This post goes into some of the ways Babel should help with this effort, but we'll need everyone's help to change the ecosystem: more education, more opt-in published packages, and better tooling.
 
 Let's take advantage of ES2015+ not just in our own code, but our dependencies.
 
