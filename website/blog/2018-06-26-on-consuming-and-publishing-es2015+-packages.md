@@ -251,15 +251,11 @@ module.exports = {
 
 We should shift our fixed view of publishing JavaScript to one that keeps up with the latest standard.
 
-For package authors.
-
 We should continue to publish ES5/CJS under `main` for backwards compatibility with current tooling but also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on like `main-es`. (I don't believe `module` should be that key since it was intended only for JS Modules).
 
 > Maybe we should decide on another key in `package.json`, maybe `"es"`? Reminds me of the poll I made for [babel-preset-latest](https://twitter.com/left_pad/status/758429846594850816).
 
 Compiling dependencies isn't just something for one project/company to take advantage of: it requires a push by the whole community to move forward. Even though this effort will be natural, it might require some sort of standardization: we can implement a set of criteria for how libraries can opt-in to publishing ES2015+ and verify this via CI/tooling/npm itself.
-
-For tool authors/everyone.
 
 Documentation needs to updated to mention the benefits of compiling `node_modules`, how to do so for the library authors, and how to consume it in bundlers/compilers.
 
@@ -272,12 +268,6 @@ Compiling JavaScript shouldn't be just about the specific ES2015/ES5 distinction
 This post goes into some of the ways Babel should help with this effort, but we'll need everyone's help to change the ecosystem: more education, more opt-in published packages, and better tooling.
 
 ---
-
-Maybe dependencies will become a first-class citizen for compliation. But have we thought about the future of our dependencies and their sustainability?
-
-In the case of Babel, it's grown to be a fundamental part of the JavaScript ecosystem with the help of some volunteers and only more so the past year.
-
-Please consider partnering with us by getting involved and/or supporting my [Patreon](https://www.patreon.com/henryzhu) and Babel's [Open Collective](https://opencollective.com/babel).
 
 > Thanks to the [many](https://twitter.com/left_pad/status/1010280464840617984) folks who offered to review this post including [@chrisdarroch](https://twitter.com/chrisdarroch), [@existentialism](https://twitter.com/existentialism), [@mathias](https://twitter.com/mathias), [@betaorbust](https://twitter.com/betaorbust), [@_developit](https://twitter.com/_developit), [@jdalton](https://twitter.com/jdalton), [@bonsaistudio](https://twitter.com/bonsaistudio).
 
