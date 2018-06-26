@@ -8,7 +8,9 @@ categories: announcements
 share_text: "On Consuming (and Publishing) ES2015+ Packages"
 ---
 
-How can we make compiling our dependencies not just possible, but normal?
+For those of us that need to support older browsers, we run a compiler like Babel over application code. But that's not all of the code that we ship to browsers, there's also the code in our `node_modules`.
+
+Can we make compiling our dependencies not just possible, but normal?
 
 <!--truncate-->
 
@@ -16,7 +18,6 @@ The ability to compile dependencies is an enabling feature request for the whole
 
 ## Assumptions
 
-- We believe compiling our own app code is useful due to supporting older browsers.
 - We will ship to modern browsers that support ES2015+ [natively](https://kangax.github.io/compat-table/es6/) (don't have to support IE) or are able to send multiple kinds of bundles (i.e. [by using `<script type="module">` and `<script nomodule>`](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/)).
 - Our dependencies actually publish ES2015+ instead of the current baseline of ES5/ES3.
 - The future baseline shouldn't be fixed at ES2015, but is a changing target.
@@ -27,6 +28,8 @@ Why is compiling dependencies (as opposed to just compiling our own code) desira
 
 - To have the freedom to make the tradeoffs of where code is able to run (vs. the library).
 - To ship less code to users, since JavaScript has a [cost](https://medium.com/dev-channel/the-cost-of-javascript-84009f51e99e).
+
+> If you only support evergreen, latest browsers then you may not need to compile your own code let alone dependencies!
 
 ## The Ephemeral JavaScript Runtime
 
@@ -64,7 +67,7 @@ Although it shouldn't deter us from making this a common practice, we should be 
 - Compilers are no different than other programs and have bugs. 
 - `preset-env` itself could have bugs because we use [`compat-table`](https://kangax.github.io/compat-table/es6/) for our data vs. [Test262](https://github.com/tc39/test262) (the official test suite).
 - Browsers themselves can have issues with running native ES2015+ code vs. ES5.
-- There is still a question of determining what is "supported": https://github.com/babel/babel-preset-env/issues/54 is an example of an edge case.
+- There is still a question of determining what is "supported": see [babel/babel-preset-env#54](https://github.com/babel/babel-preset-env/issues/54) for an example of an edge case. Does it pass the test just because it parses or has partial support?
 
 #### Specific Issues in v6
 
@@ -247,21 +250,25 @@ module.exports = {
 
 ## Recommendations to Discuss
 
-We should shift our fixed view of publishing JavaScript to one that keeps up with the standard which pushes forward.
+We should shift our fixed view of publishing JavaScript to one that keeps up with the latest standard.
 
-My recommendation is that package authors should continue to publish ES5/CJS under `main` for backwards compat with current tooling and workflow but also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on like `main-es`. I don't believe `module` should be that key since it was intended only for JS Modules.
+For package authors.
+
+We should continue to publish ES5/CJS under `main` for backwards compatibility with current tooling but also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on like `main-es`. (I don't believe `module` should be that key since it was intended only for JS Modules).
 
 > Maybe we should decide on another key in `package.json`, maybe `"es"`? Reminds me of a poll I made for [babel-preset-latest](https://twitter.com/left_pad/status/758429846594850816).
 
 Compiling dependencies isn't just something for one project/company to take advantage of: it requires a push by the whole community to move forward. Even though this effort will be natural, it might require some sort of standardization: we can implement a set of criteria for how libraries can opt-in to publishing ES2015+ and verify this via CI/tooling/npm itself.
 
+For tool authors/everyone.
+
 Documentation needs to updated to mention the benefits of compiling `node_modules`, how to do so for the library authors, and how to consume it in bundlers/compilers.
 
-With Babel 7, consumers can more safely use `preset-env` and opt-in to running on `node_modules` with new config options like `overrides`.
+And with Babel 7, consumers can more safely use `preset-env` and opt-in to running on `node_modules` with new config options like `overrides`.
 
 ## Let's Do This!
 
-Compiling JavaScript shouldn't be just about the specific ES2015/ES5 distinction, whether it's for our app or our dependencies! Hopefully this is an encouraging call to action re-starting conversations around making compiling dependencies more first-class.
+Compiling JavaScript shouldn't be just about the specific ES2015/ES5 distinction, whether it's for our app or our dependencies! Hopefully this is an encouraging call to action re-starting conversations around using ES2015+ published dependencies more first-class.
 
 This post goes into some of the ways Babel should help with this effort, but we'll need everyone's help to change the ecosystem: more education, more opt-in published packages, and better tooling.
 
@@ -269,8 +276,12 @@ Let's take advantage of ES2015+ not just in our own code, but our dependencies.
 
 ---
 
-If you appreciated this article and the work that we do on Babel, please consider partnering with us and supporting my [Patreon](https://www.patreon.com/henryzhu) and Babel's [Open Collective](https://opencollective.com/babel) to continue to invest in the JavaScript ecosystem that we all use.
+Maybe dependencies will become a first-class citizen for compliation. But have we thought about the future of our dependencies and their sustainability?
 
-> Thanks to the [many](https://twitter.com/left_pad/status/1010280464840617984) folks who offered to review this post including [@chrisdarroch](https://twitter.com/chrisdarroch), [@existentialism](https://twitter.com/existentialism), [@betaorbust](https://twitter.com/betaorbust), [@_developit](https://twitter.com/_developit), [@jdalton](https://twitter.com/jdalton), [@bonsaistudio](https://twitter.com/bonsaistudio).
+In the case of Babel, it's grown to be a fundamental part of the JavaScript ecosystem with the help of some volunteers.
+
+Please consider partnering with us by getting involved and/or supporting my [Patreon](https://www.patreon.com/henryzhu) and Babel's [Open Collective](https://opencollective.com/babel).
+
+> Thanks to the [many](https://twitter.com/left_pad/status/1010280464840617984) folks who offered to review this post including [@chrisdarroch](https://twitter.com/chrisdarroch), [@existentialism](https://twitter.com/existentialism), [@mathias](https://twitter.com/mathias), [@betaorbust](https://twitter.com/betaorbust), [@_developit](https://twitter.com/_developit), [@jdalton](https://twitter.com/jdalton), [@bonsaistudio](https://twitter.com/bonsaistudio).
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
