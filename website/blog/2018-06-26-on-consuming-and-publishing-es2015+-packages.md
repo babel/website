@@ -3,7 +3,7 @@ layout: post
 title:  "On Consuming (and Publishing) ES2015+ Packages"
 author: Henry Zhu
 authorURL: https://twitter.com/left_pad
-date:   2018-06-25 12:00:00
+date:   2018-06-26 12:00:00
 categories: announcements
 share_text: "On Consuming (and Publishing) ES2015+ Packages"
 ---
@@ -16,8 +16,8 @@ The ability to compile dependencies is an enabling feature request for the whole
 
 ## Assumptions
 
-- We believe compiling our own app code is useful.
-- We can and will ship to modern browsers that support ES2015+ [natively](https://kangax.github.io/compat-table/es6/) (don't have to support IE) or are able to send multiple kinds of bundles (i.e. [by using `<script type="module">` and `<script nomodule>`](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/)).
+- We believe compiling our own app code is useful due to supporting older browsers.
+- We will ship to modern browsers that support ES2015+ [natively](https://kangax.github.io/compat-table/es6/) (don't have to support IE) or are able to send multiple kinds of bundles (i.e. [by using `<script type="module">` and `<script nomodule>`](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/)).
 - Our dependencies actually publish ES2015+ instead of the current baseline of ES5/ES3.
 - The future baseline shouldn't be fixed at ES2015, but is a changing target.
 
@@ -68,7 +68,7 @@ Although it shouldn't deter us from making this a common practice, we should be 
 
 #### Specific Issues in v6
 
-Running a `script` as a `module` either causes a `SyntaxError`, new runtime errors, or unexpected behavior due to the differences in semantics between classic scripts and modules.
+Running a `script` as a `module` either causes a `SyntaxError`, new runtime errors, or unexpected behavior due to the [differences in semantics](https://developers.google.com/web/fundamentals/primers/modules#intro) between classic scripts and modules.
 
 Babel v6 viewed every file as a `module` and thus in ["strict mode"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode).
 
@@ -128,13 +128,13 @@ After all, seeing `"stage-0"` says nothing. My hope is that in making the decisi
 
 As a library author, publishing non-standard syntax is setting our users up for possible inconsistencies, refactoring, and breakage of their projects. Because a TC39 proposal (even at Stage 3) has a possibility of changing, it means we will inevitability have to change the library code. A "new" proposal doesn't mean the idea is fixed or certain but rather that we collectively want to explore the solution space.
 
-At least if we ship the compiled version, it will still work, and the library maintainer can change the output so that it works the same as before. Shipping the uncompiled version means that anyone consuming a package needs to have a build step to use it and needs to have the same configuration of Babel as us. This is in the same bucket as using TS/JSX/Flow: we wouldn't expect consumers to configure the same compiler environment just because we used them.
+At least if we ship the compiled version, it will still work, and the library maintainer can change the output so that it compiles into code that works the same as before. Shipping the uncompiled version means that anyone consuming a package needs to have a build step to use it and needs to have the same configuration of Babel as us. This is in the same bucket as using TS/JSX/Flow: we wouldn't expect consumers to configure the same compiler environment just because we used them.
 
-### Conflating ESM and ES2015+
+### Conflating JavaScript Modules and ES2015+
 
 When we write `import foo from "foo"` or `require("foo")` and `foo` doesn't have an `index.js`, it resolves to the `main` field in the `package.json` of the module.
 
-Some tools like Rollup/webpack also read from another field called `module` (previously `jsnext:main`). It uses this to instead resolve to the ESM file.
+Some tools like Rollup/webpack also read from another field called `module` (previously `jsnext:main`). It uses this to instead resolve to the JS Module file.
 
 - An example with [`redux`](https://github.com/reactjs/redux)
 
@@ -142,12 +142,12 @@ Some tools like Rollup/webpack also read from another field called `module` (pre
 // redux package.json
 {
   ...
-  "main": "lib/redux.js", // ES5 + CJS
-  "module": "es/redux.js", // ES5 + ESM
+  "main": "lib/redux.js", // ES5 + Common JS
+  "module": "es/redux.mjs", // ES5 + JS Modules
 }
 ```
 
-This was introduced so that users could consume ES2015 modules (ESM).
+This was introduced so that users could consume JS Modules (ESM).
 
 However, the sole intention of this field is ESM, not anything else. The [Rollup docs](https://github.com/rollup/rollup/wiki/pkg.module#wait-it-just-means-import-and-export--not-other-future-javascript-features) specify that the `module` field makes it clear that it's not intended for future JavaScript syntax.
 
@@ -157,18 +157,18 @@ As such, we may need another way to signal the language level.
 
 #### Non-scalable Solutions?
 
-A common suggestion is for libraries to start publishing ES2015 under another field like `es2015`, e.g. `"es2015": "es2015/redux.js"`.
+A common suggestion is for libraries to start publishing ES2015 under another field like `es2015`, e.g. `"es2015": "es2015/redux.mjs"`.
 
 ```js
 // @angular/core package.json
 {
   "main": "./bundles/core.umd.js",
-  "module": "./fesm5/core.js",
+  "module": "./fesm5/core.mjs",
   "es2015": "./fesm2015/core.js",
-  "esm5": "./esm5/core.js",
-  "esm2015": "./esm2015/core.js",
-  "fesm5": "./fesm5/core.js",
-  "fesm2015": "./fesm2015/core.js",
+  "esm5": "./esm5/core.mjs",
+  "esm2015": "./esm2015/core.mjs",
+  "fesm5": "./fesm5/core.mjs",
+  "fesm2015": "./fesm2015/core.mjs",
 }
 ```
 
@@ -249,7 +249,7 @@ module.exports = {
 
 We should shift our fixed view of publishing JavaScript to one that keeps up with the standard which pushes forward.
 
-My recommendation is that package authors should continue to publish ES5/CJS under `main` for backwards compat with current tooling and workflow but also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on like `main-es`. I don't believe `module` should be that key.
+My recommendation is that package authors should continue to publish ES5/CJS under `main` for backwards compat with current tooling and workflow but also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on like `main-es`. I don't believe `module` should be that key since it was intended only for JS Modules.
 
 > Maybe we should decide on another key in `package.json`, maybe `"es"`? Reminds me of a poll I made for [babel-preset-latest](https://twitter.com/left_pad/status/758429846594850816).
 
