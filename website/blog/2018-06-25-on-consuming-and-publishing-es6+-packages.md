@@ -17,13 +17,13 @@ The ability to compile dependencies is an enabling feature request for the whole
 ## Assumptions
 
 - We believe compiling our own app code is useful.
-- We can and will ship to modern browsers that support ES2015+ [natively](https://kangax.github.io/compat-table/es6/) (don't have to support IE) or are able to send multiple kinds of bundles (i.e. [checking for script`type=module`](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/)).
+- We can and will ship to modern browsers that support ES2015+ [natively](https://kangax.github.io/compat-table/es6/) (don't have to support IE) or are able to send multiple kinds of bundles (i.e. [by using `<script type="module">` and `<script nomodule>`](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/)).
 - Our dependencies actually publish ES2015+ instead of the current baseline of ES5/ES3.
 - The future baseline shouldn't be fixed at ES2015, but is a changing target.
 
 ## Why
 
-Why is compiling dependencies desirable in the first place (vs. our own code)?
+Why is compiling dependencies (as opposed to just compiling our own code) desirable in the first place?
 
 - To have the freedom to make the tradeoffs of where code is able to run (vs. the library).
 - To ship less code to users, since JavaScript has a [cost](https://medium.com/dev-channel/the-cost-of-javascript-84009f51e99e).
@@ -32,20 +32,20 @@ Why is compiling dependencies desirable in the first place (vs. our own code)?
 
 The argument for why compiling dependencies would be helpful is the same for why Babel [eventually](https://github.com/babel/babel/pull/3476) introduced [`@babel/preset-env`](https://babeljs.io/docs/en/next/babel-preset-env.html). We saw that developers would eventually want to move past only compiling to ES5. 
 
-Babel used to be [`6to5`](https://babeljs.io/blog/2017/10/05/babel-turns-three), since it only converted from ES2015 to ES5. Back then, the browser support for ES2015 was almost non-existent, so the idea of a JavaScript compiler was both novel and useful: we could write modern code, and have it work for all of our users.
+Babel used to be [`6to5`](https://babeljs.io/blog/2017/10/05/babel-turns-three), since it only converted from ES2015 (known as ES6 back then) to ES5. Back then, the browser support for ES2015 was almost non-existent, so the idea of a JavaScript compiler was both novel and useful: we could write modern code, and have it work for all of our users.
 
-But what about the browser runtimes themselves? Because evergreen browsers will eventually catch up to the standard (and they have with ES2015), creating `preset-env` helps Babel and the community align with both the browsers and TC39 itself. If we only compiled to ES5, no one would ever run native code in the browsers.
+But what about the browser runtimes themselves? Because evergreen browsers will eventually catch up to the standard (as they have with ES2015), creating `preset-env` helps Babel and the community align with both the browsers and TC39 itself. If we only compiled to ES5, no one would ever run native code in the browsers.
 
 The real difference is realizing that there will _always_ be a sliding window of support:
 
 - Application code (our supported environments)
 - Browsers (Chrome, Firefox, Edge, Safari)
 - Babel (the abstraction layer)
-- TC39/ECMAScript Proposals (and Babel implementations)
+- TC39/ECMAScript proposals (and Babel implementations)
 
-Thus, the need isn't just for `6to5` to be renamed to Babel because it compiles to `7to5`, but for Babel to change the implicit assumption it only targets ES5. With `@babel/preset-env`, we are able to write the latest JavaScript and target whichever browser (environment)!
+Thus, the need isn't just for `6to5` to be renamed to Babel because it compiles to `7to5`, but for Babel to change the implicit assumption it only targets ES5. With `@babel/preset-env`, we are able to write the latest JavaScript and target whichever browser/environment!
 
-Using Babel and `preset-env` helps us keep up with that constantly changing sliding window. However, even if we use it, it's currently used for *our application code* and not what our code depends upon.
+Using Babel and `preset-env` helps us keep up with that constantly changing sliding window. However, even if we use it, it's currently used only for *our application code*, and not for our code’s dependencies.
 
 ## Who Owns Our Dependencies?
 
@@ -62,17 +62,17 @@ Is it as straightforward as just running Babel over `node_modules`?
 Although it shouldn't deter us from making this a common practice, we should be aware that compiling dependencies does increase the surface area of issues and complexity.
 
 - Compilers are no different than other programs and have bugs. 
-- `preset-env` itself could have bugs because we use [`compat-table`](https://kangax.github.io/compat-table/es6/) for our data vs. [test262](https://github.com/tc39/test262) (the official test suite).
+- `preset-env` itself could have bugs because we use [`compat-table`](https://kangax.github.io/compat-table/es6/) for our data vs. [Test262](https://github.com/tc39/test262) (the official test suite).
 - Browsers themselves can have issues with running native ES2015+ code vs. ES5.
 - There is still a question of determining what is "supported": https://github.com/babel/babel-preset-env/issues/54 is an example of an edge case.
 
 #### Specific Issues in v6
 
-Running a `script` as a `module` will either cause a `SyntaxError`, new runtime errors, or unexpected behavior due to the differences in semantics.
+Running a `script` as a `module` either causes a `SyntaxError`, new runtime errors, or unexpected behavior due to the differences in semantics between classic scripts and modules.
 
 Babel v6 viewed every file as a `module` and thus in ["strict mode"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode).
 
-> One could argue this is actually a good thing, since everyone using Babel will be opt-ing into strict mode by default 🙂.
+> One could argue this is actually a good thing, since everyone using Babel is opting in to strict mode by default 🙂.
 
 Running Babel with a conventional setup on all our `node_modules` may cause issues with code that is a `script` such as a jQuery plugin.
 
@@ -81,7 +81,7 @@ An example of an issue is how [`this` gets converted to `undefined`](https://git
 ```js
 // Input
 (function($) {
-  // ...
+  // …
 }(this.jQuery));
 ```
 
@@ -90,11 +90,11 @@ An example of an issue is how [`this` gets converted to `undefined`](https://git
 "use strict";
 
 (function ($) {
-  // ...
+  // …
 })(undefined.jQuery);
 ```
 
-This was [changed in v7](https://github.com/babel/babel/pull/6280) so that it won't auto inject the `"use strict"` directive unless it is a `module`.
+This was [changed in v7](https://github.com/babel/babel/pull/6280) so that it won't auto-inject the `"use strict"` directive unless the source file is a `module`.
 
 It was also not in Babel's original scope to compile dependencies: we actually got issue reports that people would accidently do it, making the build slower. There is a lot of defaults and documentation in the tooling that purposely disable compiling `node_modules`.
 
@@ -104,9 +104,9 @@ There are many issues with *shipping* uncompiled proposal syntax (this post was 
 
 #### Staging Process
 
-The [TC39 staging process](https://tc39.github.io/process-document/) does not always move forward: a proposal can move to any point in the process: even moving backwards from Stage 3 to Stage 2 as the case with Numeric Separators (`1_000`),  dropped entirely (`Object.observe()`, and others we may have forgotten 😁), or just stall like function bind (`a::b`) or decorators until recently.
+The [TC39 staging process](https://tc39.github.io/process-document/) does not always move forward: a proposal can move to any point in the process: even moving backwards from Stage 3 to Stage 2 as was the case with Numeric Separators (`1_000`),  dropped entirely (`Object.observe()`, and others we may have forgotten 😁), or just stall like function bind (`a::b`) or decorators until recently.
 
-- Summary of the Stages: Stage 0 has no criteria and is just an idea, Stage 1 is accepting that the problem is worth solving, Stage 2 is about describing a solution in spec text, Stage 3 means the specific solution is thought out, and Stage 4 means that it is ready for inclusion with tests, multiple browser implementations, and in-the-field experience.
+- Summary of the Stages: Stage 0 has no criteria and means the proposal is just an idea, Stage 1 is accepting that the problem is worth solving, Stage 2 is about describing a solution in spec text, Stage 3 means the specific solution is thought out, and Stage 4 means that it is ready for inclusion in the spec with tests, multiple browser implementations, and in-the-field experience.
 
 #### Using Proposals
 
@@ -122,19 +122,19 @@ There is certainly a balance to be had here: we don't want to scare people away 
 
 Even though one of the most common things people do is use the Stage 0 preset, we plan to remove the stage presets in v7. We thought at first it would be convenient, that people would make their own unofficial ones anyway, or it might help with "JavaScript fatigue". It seems to cause more of an issue: people continue to copy/paste configs without understanding what goes into a preset in the first place. 
 
-After all, seeing `"stage-0"` says nothing. My hope is that in making the decision to use proposal plugins explicit, people will have to learn what non-standard syntax they are opting into. More intentionality should lead to a better understanding of not just Babel but JavaScript the language and its development instead of just it's usage.
+After all, seeing `"stage-0"` says nothing. My hope is that in making the decision to use proposal plugins explicit, people will have to learn what non-standard syntax they are opting into. More intentionally, this should lead to a better understanding of not just Babel but of JavaScript as a language and its development instead of just its usage.
 
 ### Publishing Non-standard Syntax
 
 As a library author, publishing non-standard syntax is setting our users up for possible inconsistencies, refactoring, and breakage of their projects. Because a TC39 proposal (even at Stage 3) has a possibility of changing, it means we will inevitability have to change the library code. A "new" proposal doesn't mean the idea is fixed or certain but rather that we collectively want to explore the solution space.
 
-At least if we ship the compiled version, it will still work, and the library maintainer can change the output so that it works the same as before. Shipping the uncompiled version means that anyone consuming a package will necessarily have to have a build step to use it and will have to have the same configuration of Babel as us. This is in the same bucket as using TS/JSX/Flow: we wouldn't expect consumers to configure the same compiler environment just because we used them.
+At least if we ship the compiled version, it will still work, and the library maintainer can change the output so that it works the same as before. Shipping the uncompiled version means that anyone consuming a package needs to have a build step to use it and needs to have the same configuration of Babel as us. This is in the same bucket as using TS/JSX/Flow: we wouldn't expect consumers to configure the same compiler environment just because we used them.
 
 ### Conflating ESM and ES2015+
 
-When we write `import foo from "foo"` or `require("foo")` and `foo` doesn't have an `index.js`, it will resolve to the `main` field in the `package.json` of the module.
+When we write `import foo from "foo"` or `require("foo")` and `foo` doesn't have an `index.js`, it resolves to the `main` field in the `package.json` of the module.
 
-Some tools like Rollup/Webpack will also read from another field called `module` (previously `jsnext:main`). It uses this to instead resolve to the ESM file.
+Some tools like Rollup/webpack also read from another field called `module` (previously `jsnext:main`). It uses this to instead resolve to the ESM file.
 
 - An example with [`redux`](https://github.com/reactjs/redux)
 
@@ -149,7 +149,7 @@ Some tools like Rollup/Webpack will also read from another field called `module`
 
 This was introduced so that users could consume ES2015 modules (ESM).
 
-However, the sole intention of this field is ESM, not anything else. The [Rollup docs](https://github.com/rollup/rollup/wiki/pkg.module#wait-it-just-means-import-and-export--not-other-future-javascript-features) that specify the `module` field make it clear that it's not intended for future JavaScript syntax.
+However, the sole intention of this field is ESM, not anything else. The [Rollup docs](https://github.com/rollup/rollup/wiki/pkg.module#wait-it-just-means-import-and-export--not-other-future-javascript-features) specify that the `module` field makes it clear that it's not intended for future JavaScript syntax.
 
 Despite this warning, package authors invariably conflate the use of ES modules with the JavaScript language level they authored it in.
 
@@ -184,13 +184,13 @@ Having a `esnext` field may not be entirely helpful either. The "latest" version
 
 ### Dependencies May Not Publish ES2015+
 
-This effort will only be standard if it becomes straightforward to do as a library author. It will be hard to argue for the significance of this change if both new and popular libraries aren't able to ship the latest syntax.
+This effort will only be standard if it becomes straightforward to apply as a library author. It will be hard to argue for the significance of this change if both new and popular libraries aren't able to ship the latest syntax.
 
-Due to the complexity and tooling setup, it may be difficult for projects to publish ES2015+/ESM. This is probably the biggest issue to get right, and more documentation just isn't enough.
+Due to the complexity and tooling setup, it may be difficult for projects to publish ES2015+/ESM. This is probably the biggest issue to get right, and adding more documentation just isn't enough.
 
 For Babel, we may need to add some feature requests to `@babel/cli` to make this easier, and maybe make the `babel` package do this by default? Or we should integrate better with tools like @developit's [microbundle](https://github.com/developit/microbundle).
 
-And how do we deal with polyfills (this will be an upcoming post)? What would it look like for a library author not to have to think about polyfills (or the user).
+And how do we deal with polyfills (this will be an upcoming post)? What would it look like for a library author (or the user) to not to have to think about polyfills?
 
 With all that said, how does Babel help with all this?
 
@@ -198,7 +198,7 @@ With all that said, how does Babel help with all this?
 
 As we've discussed, compiling dependencies in Babel v6 can be pretty painful. Babel v7 will address some of these pain points. 
 
-One issue is around configuration lookup. Babel currently runs per file so when compiling a file, it tries to find the closest config ([`.babelrc`](https://babeljs.io/docs/en/next/babelrc)) to know what to compile against. It will keep looking up the directory tree if it doesn't find it in the current folder.
+One issue is around configuration lookup. Babel currently runs per file, so when compiling a file, it tries to find the closest config ([`.babelrc`](https://babeljs.io/docs/en/next/babelrc)) to know what to compile against. It keeps looking up the directory tree if it doesn't find it in the current folder.
 
 ```
 project
@@ -213,7 +213,7 @@ project
 We made a [few changes](https://github.com/babel/babel/pull/7358):
 
 - One is to stop lookup at the package boundary (stop when we find a `package.json`). This makes sure Babel won't try to load a config file outside the app, the most surprising being with it finds one in your home directory.
-- If we use a monorepo, we'll may want to have a `.babelrc` per-package that extends some other central config.
+- If we use a monorepo, we may want to have a `.babelrc` per-package that extends some other central config.
 - Babel itself is a monorepo, so instead we are using the new `babel.config.js` which allows us to resolve all files to that config (no more lookup).
 - We added an [`"overrides"`](https://github.com/babel/babel/pull/7091) option which allows us to basically create a new config for any set of paths.
 
@@ -249,7 +249,7 @@ module.exports = {
 
 We should shift our fixed view of publishing JavaScript to one that keeps up with the standard which pushes forward.
 
-My recommendation is that package authors should continue to publish ES5/CJS under `main` for backwards compat with current tooling and workflow but also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on like `main-es` (I don't believe `module` should be that key).
+My recommendation is that package authors should continue to publish ES5/CJS under `main` for backwards compat with current tooling and workflow but also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on like `main-es`. I don't believe `module` should be that key.
 
 > Maybe we should decide on another key in `package.json`, maybe `"es"`? Reminds me of a poll I made for [babel-preset-latest](https://twitter.com/left_pad/status/758429846594850816).
 
@@ -257,11 +257,11 @@ Compiling dependencies isn't just something for one project/company to take adva
 
 Documentation needs to updated to mention the benefits of compiling `node_modules`, how to do so for the library authors, and how to consume it in bundlers/compilers.
 
-With Babel 7, consumers can more safely use `preset-env` and opt-in into running on `node_modules` with new config options like `overrides`.
+With Babel 7, consumers can more safely use `preset-env` and opt-in to running on `node_modules` with new config options like `overrides`.
 
 ## Let's Do This!
 
-Compiling JavaScript shouldn't be just about the specific ES2015/ES5 distinction, whether it's for our app or our dependencies! Hopefully this is an encouraging call to action re-starting conversations around making compiling dependencies more first class.
+Compiling JavaScript shouldn't be just about the specific ES2015/ES5 distinction, whether it's for our app or our dependencies! Hopefully this is an encouraging call to action re-starting conversations around making compiling dependencies more first-class.
 
 This post goes into some of the ways Babel should help with this effort, but we'll need everyone's help to change the ecosystem: more education, more opt-in published packages, and better tooling.
 
