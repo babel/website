@@ -29,8 +29,6 @@ Why is compiling dependencies (as opposed to just compiling our own code) desira
 - To have the freedom to make the tradeoffs of where code is able to run (vs. the library).
 - To ship less code to users, since JavaScript has a [cost](https://medium.com/dev-channel/the-cost-of-javascript-84009f51e99e).
 
-> If you only support evergreen, latest browsers then you may not need to compile your own code let alone dependencies!
-
 ## The Ephemeral JavaScript Runtime
 
 The argument for why compiling dependencies would be helpful is the same for why Babel [eventually](https://github.com/babel/babel/pull/3476) introduced [`@babel/preset-env`](https://babeljs.io/docs/en/next/babel-preset-env.html). We saw that developers would eventually want to move past only compiling to ES5. 
@@ -58,18 +56,19 @@ This isn't necessarily the case for our dependencies; in order to get the same b
 
 Is it as straightforward as just running Babel over `node_modules`?
 
-## The Current Complexities in Compiling Dependencies
+## Current Complexities in Compiling Dependencies
 
 ### Compiler Complexity
 
-Although it shouldn't deter us from making this a common practice, we should be aware that compiling dependencies does increase the surface area of issues and complexity.
+Although it shouldn't deter us from making this possible, we should be aware that compiling dependencies does increase the surface area of issues and complexity, especially for Babel itself.
 
+- Not every dependency needs to be compiled, and compiling more files does mean a slower build.
 - Compilers are no different than other programs and have bugs. 
 - `preset-env` itself could have bugs because we use [`compat-table`](https://kangax.github.io/compat-table/es6/) for our data vs. [Test262](https://github.com/tc39/test262) (the official test suite).
 - Browsers themselves can have issues with running native ES2015+ code vs. ES5.
 - There is still a question of determining what is "supported": see [babel/babel-preset-env#54](https://github.com/babel/babel-preset-env/issues/54) for an example of an edge case. Does it pass the test just because it parses or has partial support?
 
-#### Specific Issues in v6
+#### Specific Issues in Babel v6
 
 Running a `script` as a `module` either causes a `SyntaxError`, new runtime errors, or unexpected behavior due to the [differences in semantics](https://developers.google.com/web/fundamentals/primers/modules#intro) between classic scripts and modules.
 
@@ -215,7 +214,7 @@ project
 
 We made a [few changes](https://github.com/babel/babel/pull/7358):
 
-- One is to stop lookup at the package boundary (stop when we find a `package.json`). This makes sure Babel won't try to load a config file outside the app, the most surprising being with it finds one in your home directory.
+- One is to stop lookup at the package boundary (stop when we find a `package.json`). This makes sure Babel won't try to load a config file outside the app, the most surprising being when it finds one in the home directory.
 - If we use a monorepo, we may want to have a `.babelrc` per-package that extends some other central config.
 - Babel itself is a monorepo, so instead we are using the new `babel.config.js` which allows us to resolve all files to that config (no more lookup).
 - We added an [`"overrides"`](https://github.com/babel/babel/pull/7091) option which allows us to basically create a new config for any set of paths.
@@ -256,7 +255,7 @@ For package authors.
 
 We should continue to publish ES5/CJS under `main` for backwards compatibility with current tooling but also publish a version compiled down to latest syntax (no experimental proposals) under a new key we can standardize on like `main-es`. (I don't believe `module` should be that key since it was intended only for JS Modules).
 
-> Maybe we should decide on another key in `package.json`, maybe `"es"`? Reminds me of a poll I made for [babel-preset-latest](https://twitter.com/left_pad/status/758429846594850816).
+> Maybe we should decide on another key in `package.json`, maybe `"es"`? Reminds me of the poll I made for [babel-preset-latest](https://twitter.com/left_pad/status/758429846594850816).
 
 Compiling dependencies isn't just something for one project/company to take advantage of: it requires a push by the whole community to move forward. Even though this effort will be natural, it might require some sort of standardization: we can implement a set of criteria for how libraries can opt-in to publishing ES2015+ and verify this via CI/tooling/npm itself.
 
@@ -272,13 +271,11 @@ Compiling JavaScript shouldn't be just about the specific ES2015/ES5 distinction
 
 This post goes into some of the ways Babel should help with this effort, but we'll need everyone's help to change the ecosystem: more education, more opt-in published packages, and better tooling.
 
-Let's take advantage of ES2015+ not just in our own code, but our dependencies.
-
 ---
 
 Maybe dependencies will become a first-class citizen for compliation. But have we thought about the future of our dependencies and their sustainability?
 
-In the case of Babel, it's grown to be a fundamental part of the JavaScript ecosystem with the help of some volunteers.
+In the case of Babel, it's grown to be a fundamental part of the JavaScript ecosystem with the help of some volunteers and only more so the past year.
 
 Please consider partnering with us by getting involved and/or supporting my [Patreon](https://www.patreon.com/henryzhu) and Babel's [Open Collective](https://opencollective.com/babel).
 
