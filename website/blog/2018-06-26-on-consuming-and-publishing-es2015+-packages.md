@@ -222,6 +222,8 @@ We made a [few changes](https://github.com/babel/babel/pull/7358):
 
 We added an [`"overrides"`](https://github.com/babel/babel/pull/7091) option which allows us to basically create a new config for any set of file paths.
 
+> This allows every config object to specify a `test`/`include`/`exclude` field, just like you might do for Webpack. Each item allows an item, or array of items that can be a `string`, `RegExp`, or `function`.
+
 This allows us to have a single config for our whole app: maybe we want to compile our server JavaScript code differently than the client code (as well as compile some package(s) in `node_modules`).
 
 ```js
@@ -233,14 +235,7 @@ module.exports = {
     }],
   ],
   overrides: [{
-    test: "./client",
-    presets: [
-      ['@babel/preset-env', { 
-        targets: { "chrome": "60" } },
-      }],
-    ],
-  }, {
-    test: "./node_modules/package",
+    test: ["./client-code", "./node_modules/package-a"],
     presets: [
       ['@babel/preset-env', { 
         targets: { "chrome": "60" } },
