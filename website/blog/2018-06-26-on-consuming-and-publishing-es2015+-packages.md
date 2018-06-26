@@ -8,17 +8,17 @@ categories: announcements
 share_text: "On Consuming (and Publishing) ES2015+ Packages"
 ---
 
-For those of us that need to support older browsers, we run a compiler like Babel over application code. But that's not all of the code that we ship to browsers, there's also the code in our `node_modules`.
+For those of us that need to support older browsers, we run a compiler like Babel over application code. But that's not all of the code that we ship to browsers; there's also the code in our `node_modules`.
 
 Can we make compiling our dependencies not just possible, but normal?
 
 <!--truncate-->
 
-The ability to compile dependencies is an enabling feature request for the whole ecosystem. Starting with some of the changes we made in Babel v7, we hope to see it standardized moving forward.
+The ability to compile dependencies is an enabling feature request for the whole ecosystem. Starting with some of the changes we made in Babel v7 to make selective dependency compilation possible, we hope to see it standardized moving forward.
 
 ## Assumptions
 
-- We will ship to modern browsers that support ES2015+ [natively](https://kangax.github.io/compat-table/es6/) (don't have to support IE) or are able to send multiple kinds of bundles (i.e. [by using `<script type="module">` and `<script nomodule>`](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/)).
+- We ship to modern browsers that support ES2015+ [natively](https://kangax.github.io/compat-table/es6/) (don't have to support IE) or are able to send multiple kinds of bundles (i.e. [by using `<script type="module">` and `<script nomodule>`](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/) or ).
 - Our dependencies actually publish ES2015+ instead of the current baseline of ES5/ES3.
 - The future baseline shouldn't be fixed at ES2015, but is a changing target.
 
@@ -62,8 +62,8 @@ Is it as straightforward as just running Babel over `node_modules`?
 
 Although it shouldn't deter us from making this possible, we should be aware that compiling dependencies does increase the surface area of issues and complexity, especially for Babel itself.
 
-- Not every dependency needs to be compiled, and compiling more files does mean a slower build.
 - Compilers are no different than other programs and have bugs. 
+- Not every dependency needs to be compiled, and compiling more files does mean a slower build.
 - `preset-env` itself could have bugs because we use [`compat-table`](https://kangax.github.io/compat-table/es6/) for our data vs. [Test262](https://github.com/tc39/test262) (the official test suite).
 - Browsers themselves can have issues with running native ES2015+ code vs. ES5.
 - There is still a question of determining what is "supported": see [babel/babel-preset-env#54](https://github.com/babel/babel-preset-env/issues/54) for an example of an edge case. Does it pass the test just because it parses or has partial support?
