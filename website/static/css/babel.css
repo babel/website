@@ -57,6 +57,19 @@ blockquote {
   color: #f5da55;
 }
 
+.algolia-autocomplete {
+  line-height: 20px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .reactNavSearchWrapper:before {
+    left: 6px;
+  }
+  .reactNavSearchWrapper:after {
+    left: 15px;
+  }
+}
+
 /* ####### POST ####### */
 
 .read-more {
@@ -88,13 +101,13 @@ blockquote {
 
 .page-header {
   padding-bottom: 9px;
-  margin: 40px 0 20px;
+  margin: 0 0 20px;
   border-bottom: 1px solid #eeeeee;
 }
 
 .page-header > h1 {
   font-size: 36px;
-  margin-top: 20px;
+  margin-top: 0px;
   margin-bottom: 10px;
 }
 
