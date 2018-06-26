@@ -217,9 +217,12 @@ We made a [few changes](https://github.com/babel/babel/pull/7358):
 - One is to stop lookup at the package boundary (stop when we find a `package.json`). This makes sure Babel won't try to load a config file outside the app, the most surprising being when it finds one in the home directory.
 - If we use a monorepo, we may want to have a `.babelrc` per-package that extends some other central config.
 - Babel itself is a monorepo, so instead we are using the new `babel.config.js` which allows us to resolve all files to that config (no more lookup).
-- We added an [`"overrides"`](https://github.com/babel/babel/pull/7091) option which allows us to basically create a new config for any set of paths.
 
-This allows us to have a single config for our whole app: maybe we want to compile our server JavaScript code differently than the client code as well as compile something in `node_modules`.
+### Selective Compilation with `"overrides"`
+
+We added an [`"overrides"`](https://github.com/babel/babel/pull/7091) option which allows us to basically create a new config for any set of file paths.
+
+This allows us to have a single config for our whole app: maybe we want to compile our server JavaScript code differently than the client code (as well as compile some package(s) in `node_modules`).
 
 ```js
 // babel.config.js
@@ -237,7 +240,7 @@ module.exports = {
       }],
     ],
   }, {
-    test: "./node_modules/",
+    test: "./node_modules/packageA",
     presets: [
       ['@babel/preset-env', { 
         targets: { "chrome": "60"] },
