@@ -236,14 +236,14 @@ module.exports = {
     test: "./client",
     presets: [
       ['@babel/preset-env', { 
-        targets: { "chrome": "60"] },
+        targets: { "chrome": "60" } },
       }],
     ],
   }, {
-    test: "./node_modules/packageA",
+    test: "./node_modules/package",
     presets: [
       ['@babel/preset-env', { 
-        targets: { "chrome": "60"] },
+        targets: { "chrome": "60" } },
       }],
     ],
   }],
