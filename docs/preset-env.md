@@ -597,5 +597,5 @@ Using polyfills:
 
 ## Issues
 
-If you get a `SyntaxError: Unexpected token ...` error when using the [object-rest-spread](https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-object-rest-spread) transform then make sure the plugin has been updated to, at least, `v6.19.0`.
+If you get a `SyntaxError: Unexpected token ...` error when using the [object-rest-spread](https://babeljs.io/docs/en/babel-plugin-transform-object-rest-spread) transform then make sure the plugin has been updated to, at least, `v6.19.0`.
 
