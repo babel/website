@@ -114,7 +114,7 @@ const siteConfig = {
   tools,
   toolsMD,
   setupBabelrc,
-  headerIcon: "img/babel-black.svg",
+  headerIcon: "img/babel.svg",
   footerIcon: "img/babel.svg",
   favicon: "img/favicon.png",
   colors: {
