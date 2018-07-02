@@ -61,15 +61,6 @@ blockquote {
   line-height: 20px;
 }
 
-@media only screen and (max-width: 1024px) {
-  .reactNavSearchWrapper:before {
-    left: 6px;
-  }
-  .reactNavSearchWrapper:after {
-    left: 15px;
-  }
-}
-
 /* ####### POST ####### */
 
 .read-more {
