@@ -37,8 +37,8 @@ babel.transform("code();", options, function(err, result) {
 });
 ```
 
-> Compat Note: 
-> 
+> Compat Note:
+>
 > In Babel 6, this method was synchronous and `transformSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformSync` since this backward-compat may be dropped in future major versions of Babel.
 
 ## transformSync
@@ -114,7 +114,7 @@ babel.transformFromAst(parsedAst, sourceCode, options, function(err, result) {
 ```
 
 > Compat Note:
-> 
+>
 > In Babel 6, this method was synchronous and `transformFromAstSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformFromAstSync` since this backward-compat may be dropped in future major versions of Babel.
 
 
@@ -153,7 +153,7 @@ Resolve Babel's options fully, resulting in an options object where:
 
 * `opts.plugins` is a full list of `Plugin` instances.
 * `opts.presets` is empty and all presets are flattened into `opts`.
-* It can be safely passed back to Babel. Fields like `babelrc` have been set to 
+* It can be safely passed back to Babel. Fields like `babelrc` have been set to
   false so that later calls to Babel will not make a second attempt to load
   config files.
 
@@ -178,7 +178,7 @@ and pass it back to Babel again.
   * `plugins: Array<ConfigItem>` - See below.
   * `presets: Array<ConfigItem>` - See below.
   * It can be safely passed back to Babel. Fields like `babelrc` have been set
-    to false so that later calls to Babel will not make a second attempt to 
+    to false so that later calls to Babel will not make a second attempt to
     load config files.
 * `hasFilesystemConfig(): boolean` - Check if the resolved config loaded any settings from the filesystem.
 
@@ -206,7 +206,7 @@ Each `ConfigItem` exposes all of the information Babel knows. The fields are:
 * `value: {} | Function` - The resolved value of the plugin.
 * `options: {} | void` - The options object passed to the plugin.
 * `dirname: string` - The path that the options are relative to.
-* `name: string | void` - The name that the user gave the plugin instance, e.g. `plugins: [ ['env', {}, 'my-env'] ]` 
+* `name: string | void` - The name that the user gave the plugin instance, e.g. `plugins: [ ['env', {}, 'my-env'] ]`
 * `file: Object | void` - Information about the plugin's file, if Babel knows it.
   * `request: string` - The file that the user requested, e.g. `"@babel/env"`
   * `resolved: string` - The full path of the resolved file, e.g. `"/tmp/node_modules/@babel/preset-env/lib/index.js"`
@@ -239,6 +239,7 @@ Following is a table of the options you can use:
 | `code`                   | `true`               | Enable code generation |
 | `comments`               | `true`               | Output comments in generated output |
 | `compact`                | `"auto"`             | Do not include superfluous whitespace characters and line terminators. When set to `"auto"` compact is set to `true` on input sizes of >500KB |
+| `cwd`                    | `.`                  | The working directory that Babel's programmatic options are loaded relative to. |
 | `env`                    | `{}`                 | This is an object of keys that represent different environments. For example, you may have: `{ env: { production: { /* specific options */ } } }` which will use those options when the `envName` is `production` |
 | `extends`                | `null`               | A path to a `.babelrc` file to extend |
 | `filename`               | `"unknown"`          | Filename for use in errors etc |
