@@ -311,7 +311,19 @@ This is mostly for ensuring backwards compatibility, since most users list "es20
 
 Both plugins and presets can have options specified by wrapping the name and an options object in an array inside your config.
 
-For example:
+For specifying no options, these are all equivalent:
+
+```json
+{
+  "plugins": [
+    "pluginA",
+    ["pluginA"],
+    ["pluginA", {}],
+  ]
+}
+```
+
+To specify an option, pass an object with the keys as the option names.
 
 ```json
 {
@@ -329,7 +341,7 @@ Settings options for presets works exactly the same:
 ```json
 {
   "presets": [
-    ["es2015", {
+    ["env", {
       "loose": true,
       "modules": false
     }]
