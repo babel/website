@@ -32,6 +32,7 @@
 /features.html                      https://old.babeljs.io/learn-es2015/
 /docs/tour/                         https://old.babeljs.io/learn-es2015/
 /docs/plugins/transform-es2015-constants https://old.babeljs.io/docs/plugins/check-es2015-constants/
+/docs/learn.html https://old.babeljs.io/learn-es2015/      
 
 # after docusaurus rewrite
 /php/                               https://old.babeljs.io/php/
