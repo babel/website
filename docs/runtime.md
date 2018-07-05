@@ -6,7 +6,15 @@ sidebar_label: babel-runtime
 
 `@babel/runtime` is a library that contain's Babel modular runtime helpers and a version of `regenerator-runtime`.
 
-This is meant to be used as a `dependency` with the plugin [`@babel/plugin-transform-runtime`](plugin-transform-runtime.md).
+## Installation
+
+> This is meant to be used as a `dependency` with the plugin [`@babel/plugin-transform-runtime`](plugin-transform-runtime.md).
+
+```sh
+npm install --save @babel/runtime
+```
+
+> See also: `@babel/runtime-corejs2`.
 
 ## Why
 
