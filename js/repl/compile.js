@@ -102,7 +102,7 @@ export default function compile(code: string, config: CompileConfig): Return {
           typeof preset === "string" &&
           /^stage-[0-2]$/.test(preset)
         ) {
-          return [preset, { decoratorsLegacy: true }];
+          return [preset, { decoratorsLegacy: true, pipelineProposal: "minimal" }];
         }
         return preset;
       }),
