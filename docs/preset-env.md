@@ -220,17 +220,11 @@ A query to select browsers (ex: last 2 versions, > 5%, safari tp) using [browser
 
 Note, browsers' results are overridden by explicit items from `targets`.
 
-### `spec`
+### `transformMode`
 
-`boolean`, defaults to `false`.
+`"normal" | "performance" | "compliance"`, defaults to `"normal"`.
 
-Enable more spec compliant, but potentially slower, transformations for any plugins in this preset that support them.
-
-### `loose`
-
-`boolean`, defaults to `false`.
-
-Enable ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.html) for any plugins in this preset that allow them.
+The default behavior for configuring plugins. For example, "performance" means enabling ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.html) for any plugins in this preset that allow them. Likewise, "compliance" means enabling more spec compliant, but potentially slower, transformations for any plugins in this preset that support them. The default option, "normal" corresponds to the default behavior of plugins (typically striking a balance between spec compliance and performance).
 
 ### `modules`
 
@@ -463,7 +457,7 @@ class A {}
 exports.A = A;
 ```
 
-#### Target Chrome 52 with webpack 2/rollup and loose mode
+#### Target Chrome 52 with webpack 2/rollup and performance mode
 
 **.babelrc**
 
@@ -475,7 +469,7 @@ exports.A = A;
         "chrome": 52
       },
       "modules": false,
-      "loose": true
+      "transformMode": "performance"
     }]
   ]
 }
