@@ -224,7 +224,7 @@ Note, browsers' results are overridden by explicit items from `targets`.
 
 `"normal" | "performance" | "compliance"`, defaults to `"normal"`.
 
-The default behavior for configuring plugins. For example, "performance" means enabling ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.html) for any plugins in this preset that allow them. Likewise, "compliance" means enabling more spec compliant, but potentially slower, transformations for any plugins in this preset that support them. The default option, "normal" corresponds to the default behavior of plugins (typically striking a balance between spec compliance and performance).
+Determines the the default configuration for certain plugins. For example, "performance" means enabling ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.html) for any plugins in this preset that allow them. Likewise, "compliance" means enabling more spec compliant, but potentially slower, transformations for any plugins in this preset that support them. The default option, "normal" corresponds to the default behavior of plugins (typically striking a balance between spec compliance and performance).
 
 ### `modules`
 
