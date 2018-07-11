@@ -56,6 +56,6 @@ require("@babel/core").transform("code", {
 
 ## References
 
+* [Spec: Exponentiation Operator](https://tc39.github.io/ecma262/#sec-exp-operator)
 * [Proposal: Exponentiation Operator](https://github.com/rwaldron/exponentiation-operator)
-* [Spec: Exponential Operator](https://rwaldron.github.io/exponentiation-operator/)
 
