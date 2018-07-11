@@ -4,6 +4,9 @@ title: babel-preset-es2016
 sidebar_label: es2016
 ---
 
+> As of Babel v6, all the yearly presets have been deprecated
+> We recommend using `@babel/preset-env` instead.
+
 ## Install
 
 ```sh
