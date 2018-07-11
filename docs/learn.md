@@ -461,7 +461,7 @@ Module loaders support:
 - Nested virtualization
 
 The default module loader can be configured, and new loaders can be constructed
-to evaluated and load code in isolated or constrained contexts.
+to evaluate and load code in isolated or constrained contexts.
 
 ```js
 // Dynamic loading – ‘System’ is default loader
