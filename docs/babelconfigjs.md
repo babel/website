@@ -80,7 +80,7 @@ module.exports = function (api) {
 
 ### `api.env()`
 
-Returns Babel's environement, you can configure it using the `BABEL_ENV` environement variable.
+Returns Babel's environment, you can configure it using the `BABEL_ENV` environment variable.
 
 ### `api.version`
 
