@@ -85,13 +85,13 @@ npx babel script.js --out-file script-compiled.js --source-maps inline
 
 ### Compile Directories
 
-Compile the entire `src` directory and output it to the `lib` directory. You may use `--out-dir` or `-d`. This doesn't overwrite any other files or directories in `lib`.
+Compile the entire `src` directory and output it to the `lib` directory by using either `--out-dir` or `-d`. This doesn't overwrite any other files or directories in `lib`.
 
 ```sh
 npx babel src --out-dir lib
 ```
 
-Compile the entire `src` directory and output it to the one concatenated file.
+Compile the entire `src` directory and output it as a single concatenated file.
 
 ```sh
 npx babel src --out-file script-compiled.js
