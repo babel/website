@@ -37,7 +37,6 @@ export default class ReactCodeMirror extends React.Component<Props, State> {
     onChange: (value: string) => {},
   };
 
-  props: Props;
   state = {
     isFocused: false,
   };

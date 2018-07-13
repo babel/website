@@ -1,6 +1,7 @@
 // @flow
 
 const sizes = ["Bytes", "kB", "MB", "GB", "TB", "PB", "EB"];
+
 export function prettySize(size: number) {
   const places = 1;
   let mysize;

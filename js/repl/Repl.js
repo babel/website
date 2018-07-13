@@ -90,9 +90,6 @@ function toCamelCase(str) {
 }
 
 class Repl extends React.Component<Props, State> {
-  props: Props;
-  state: State;
-
   _numLoadingPlugins = 0;
   _workerApi = new WorkerApi();
 
