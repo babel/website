@@ -202,6 +202,7 @@ This also works with scoped packages:
     "@org/name" // equivalent
   ]
 }
+```
 
 ## Plugin Ordering
 

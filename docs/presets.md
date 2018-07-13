@@ -5,7 +5,7 @@ title: Presets
 
 Don't want to assemble your own set of plugins? No problem! Presets can act as an array of Babel plugins or even a sharable [`.babelrc`](babelrc.md) config.
 
-### Official Presets
+## Official Presets
 
 We've assembled some for common environments:
 
@@ -16,7 +16,7 @@ We've assembled some for common environments:
 
 > Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
 
-### Stage-X (Experimental Presets)
+## Stage-X (Experimental Presets)
 
 Any transforms in stage-x presets are changes to the language that haven't been approved to be part of a release of Javascript (such as ES6/ES2015).
 
@@ -114,6 +114,7 @@ This also works with scoped packages:
   	"@org/name" // equivalent
   ]
 }
+```
 
 ## Preset Ordering
 

@@ -39,13 +39,11 @@ After that finishes installing, your `package.json` file should include:
 }
 ```
 
-## Basic Usage 
+## Usage 
 
 ```sh
 babel script.js
 ```
-
-## babel
 
 > **Note:** These instructions use the excellent [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) command to run the locally installed executables. You can drop it inside of an [npm run script](https://docs.npmjs.com/cli/run-script) or you may instead execute with the relative path instead. `./node_modules/.bin/babel`
 
@@ -149,4 +147,4 @@ npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,
 
 ### Advanced Usage
 
-There are many more options available in the babel CLI, see [options](/docs/usage/api/#options), `babel --help` and other sections for more information.
+There are many more options available in the babel CLI, see [options](core.md/#options), `babel --help` and other sections for more information.
