@@ -77,7 +77,7 @@ If you would then like to add a **source map file** you can use
 npx babel script.js --out-file script-compiled.js --source-maps
 ```
 
-If you would rather have **inline source maps**, you may use `--source-maps inline`.
+Or, if you'd rather have **inline source maps**, use `--source-maps inline` instead.
 
 ```sh
 npx babel script.js --out-file script-compiled.js --source-maps inline
