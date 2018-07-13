@@ -139,7 +139,7 @@ npx babel script.js --out-file script-compiled.js --presets=es2015,react
 
 ### Ignoring .babelrc
 
-Ignore the configuration from the projects .babelrc file and use the cli options e.g. for a custom build
+Ignore the configuration from the project's `.babelrc` file and use the cli options e.g. for a custom build
 
 ```sh
 npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,react
