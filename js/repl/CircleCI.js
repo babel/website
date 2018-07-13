@@ -23,7 +23,7 @@ export async function loadBuildArtifacts(
   repo: ?string,
   regExp: RegExp,
   build: number,
-  cb: (url: string, error?: string) => Promise // eslint-disable-line no-unused-vars
+  cb: (url: string, error?: string) => Promise<any> // eslint-disable-line no-unused-vars
 ): Promise<string> {
   try {
     const response = await sendRequest(repo, `${build}/artifacts`);

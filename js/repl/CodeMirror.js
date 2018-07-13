@@ -25,7 +25,11 @@ type Props = {
   preserveScrollPosition: boolean,
 };
 
-export default class ReactCodeMirror extends React.Component {
+type State = {
+  isFocused: boolean,
+};
+
+export default class ReactCodeMirror extends React.Component<Props, State> {
   static defaultProps = {
     autoFocus: false,
     preserveScrollPosition: false,
@@ -33,13 +37,12 @@ export default class ReactCodeMirror extends React.Component {
     onChange: (value: string) => {},
   };
 
-  props: Props;
   state = {
     isFocused: false,
   };
 
   _codeMirror: any;
-  _textAreaRef: HTMLTextAreaElement;
+  _textAreaRef: HTMLTextAreaElement | null;
 
   componentDidMount() {
     this._codeMirror = CodeMirror.fromTextArea(this._textAreaRef, {
@@ -118,7 +121,7 @@ export default class ReactCodeMirror extends React.Component {
     }
   };
 
-  _setTextAreaRef = (ref: HTMLTextAreaElement) => {
+  _setTextAreaRef = (ref: HTMLTextAreaElement | null) => {
     this._textAreaRef = ref;
   };
 }

@@ -43,34 +43,33 @@ const sponsorsDownloaded = require(path.join(__dirname, "/data/sponsors.json"));
 
 const sponsors = [
   ...sponsorsManual,
-  ...sponsorsDownloaded
-    .map(sponsor => {
-      // temporary fix for coinbase and webflow
-      let tier = sponsor.tier;
-      if (sponsor.id == 12671) {
-        tier = "gold-sponsors";
-      } else if (sponsor.id == 5954) {
-        tier = "silver-sponsors";
-      }
+  ...sponsorsDownloaded.map(sponsor => {
+    // temporary fix for coinbase and webflow
+    let tier = sponsor.tier;
+    if (sponsor.id == 12671) {
+      tier = "gold-sponsors";
+    } else if (sponsor.id == 5954) {
+      tier = "silver-sponsors";
+    }
 
-      let website = sponsor.website;
-      if (typeof website == "string") {
-        website = url.parse(website).protocol ? website : `http://${website}`;
-      } else if (typeof sponsor.twitterHandle == "string") {
-        website = `https://twitter.com/@${sponsor.twitterHandle}`;
-      } else {
-        website = `https://opencollective.com/${sponsor.slug}`;
-      }
+    let website = sponsor.website;
+    if (typeof website == "string") {
+      website = url.parse(website).protocol ? website : `http://${website}`;
+    } else if (typeof sponsor.twitterHandle == "string") {
+      website = `https://twitter.com/@${sponsor.twitterHandle}`;
+    } else {
+      website = `https://opencollective.com/${sponsor.slug}`;
+    }
 
-      return {
-        type: "opencollective",
-        tier,
-        name: sponsor.name,
-        url: website,
-        image: sponsor.avatar || "/img/user.svg",
-        description: sponsor.description,
-      };
-    }),
+    return {
+      type: "opencollective",
+      tier,
+      name: sponsor.name,
+      url: website,
+      image: sponsor.avatar || "/img/user.svg",
+      description: sponsor.description,
+    };
+  }),
 ];
 
 // move to website/data later

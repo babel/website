@@ -264,9 +264,7 @@ const HomeContainer = props => (
 const Hero = ({ language }) => (
   <div className="hero">
     <a href="https://tidelift.com/subscription/npm/babel">
-      <div className="tidelift-banner">
-        Get Professionally Supported Babel
-      </div>
+      <div className="tidelift-banner">Get Professionally Supported Babel</div>
     </a>
     <div className="hero__container">
       <h1>
@@ -284,7 +282,7 @@ const Index = ({ language = DEFAULT_LANGUAGE }) => (
   <div>
     <Hero language={language} />
 
-    <div className="mainContainer" style={{padding: 0}}>
+    <div className="mainContainer" style={{ padding: 0 }}>
       <HomeContainer>
         <GetStarted language={language} />
         <WorkSponsors language={language} />

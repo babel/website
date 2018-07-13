@@ -35,8 +35,8 @@ export default function compile(code: string, config: CompileConfig): Return {
   let envPresetDebugInfo = null;
   let sourceMap = null;
   let useBuiltIns = false;
-  let spec: false;
-  let loose: false;
+  let spec = false;
+  let loose = false;
   const meta = {
     compiledSize: 0,
     rawSize: new Blob([code], { type: "text/plain" }).size,
@@ -102,7 +102,13 @@ export default function compile(code: string, config: CompileConfig): Return {
           typeof preset === "string" &&
           /^stage-[0-2]$/.test(preset)
         ) {
-          return [preset, { decoratorsLegacy: true, pipelineProposal: "minimal" }];
+          return [
+            preset,
+            {
+              decoratorsLegacy: true,
+              pipelineProposal: "minimal",
+            },
+          ];
         }
         return preset;
       }),

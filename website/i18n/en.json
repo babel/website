@@ -407,9 +407,7 @@
     "General": "General",
     "Usage": "Usage",
     "Presets": "Presets",
-    "Tooling": "Tooling",
-    "install": "install",
-    "setup": "setup"
+    "Tooling": "Tooling"
   },
   "pages-strings": {
     "Put in next-gen JavaScript|no description given": "Put in next-gen JavaScript",
