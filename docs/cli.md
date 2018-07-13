@@ -16,9 +16,9 @@ to install it **locally** project by project.
 There are two primary reasons for this.
 
 1. Different projects on the same machine can depend on different versions of
-     Babel allowing you to update one at a time.
-2. It means you do not have an implicit dependency on the environment you are
-     working in. Making your project far more portable and easier to setup.
+     Babel allowing you to update them individually.
+2. Not having an implicit dependency on the environment you are working in 
+     makes your project far more portable and easier to setup.
 
 We can install Babel CLI locally by running:
 
