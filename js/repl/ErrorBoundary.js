@@ -1,3 +1,5 @@
+// @flow
+
 import React from "react";
 import { css } from "emotion";
 import { colors } from "./styles";
@@ -10,7 +12,7 @@ type State = {
   error: ?Error,
 };
 
-export default class ErrorBoundary extends React.Component {
+export default class ErrorBoundary extends React.Component<Props, State> {
   props: Props;
   state: State;
 

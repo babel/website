@@ -58,6 +58,7 @@ export type BabelState = LazyLoadedState & {
 };
 
 export type EnvState = LazyLoadedState & {
+  availablePresets: Array<any>,
   build: number,
   errorMessage?: string,
   circleciRepo: string,
@@ -105,9 +106,6 @@ export type ReplState = {
   evaluate: boolean,
   fileSize: boolean,
   sourceType: SourceType,
-  isEnvPresetTabExpanded: boolean,
-  isPresetsTabExpanded: boolean,
-  isSettingsTabExpanded: boolean,
   forceAllTransforms: boolean,
   shippedProposals: boolean,
   lineWrap: boolean,
