@@ -11,6 +11,8 @@ Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a
 - Code transformations (codemods)
 - More (check out these [videos](/videos.html) for inspiration)
 
+> For an awesome tutorial on compilers, check out [the-super-tiny-compiler](https://github.com/thejameskyle/the-super-tiny-compiler), which also explains how Babel itself works on a high level.
+
 ## ES2015 and beyond
 
 Babel has support for the latest version of JavaScript through syntax transformers.

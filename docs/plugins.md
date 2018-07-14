@@ -3,58 +3,11 @@ id: plugins
 title: Plugins
 ---
 
-Babel is a compiler. At a high level, it has 3 stages that it runs code in: parsing, transforming, and generation (like many other compilers).
+Babel is a compiler (source code => output code). Like many other compilers it runs in 3 stages: parsing, transforming, and printing.
 
-> For an awesome/simple tutorial on compilers, check out [the-super-tiny-compiler](https://github.com/thejameskyle/the-super-tiny-compiler), which also explains how Babel itself works on a high level.
+Now, out of the box Babel doesn't do anything. It basically acts like `const babel = code => code;` by parsing the code and then generating the same code back out again. You will need to add plugins for Babel to do anything.
 
-Now, out of the box Babel doesn't do anything. It basically acts like `const babel = code => code;` by parsing the code and then generating the same code back out again.
-
-You will need to add some plugins for Babel to do anything (they affect the 2nd stage, transformation).
-
-Don't know where to start? Check out some of our [presets](#presets).
-
-## Presets
-
-Don't want to assemble your own set of plugins? No problem! Presets are sharable [`.babelrc`](babelrc.md) configs or simply an array of babel plugins.
-
-### Official Presets
-
-We've assembled some for common environments:
-
-> Each yearly preset only compiles what was ratified in that year.
-> `@babel/preset-env` replaces es2015, es2016, es2017 and latest
-
-- [@babel/preset-env](preset-env.md)
-- [@babel/preset-flow](preset-flow.md)
-- [@babel/preset-react](preset-react.md)
-- [@babel/preset-typescript](preset-typescript.md)
-
-> Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
-
-### Stage-X (Experimental Presets)
-
-Any transforms in stage-x presets are changes to the language that haven't been approved to be part of a release of Javascript (such as ES6/ES2015).
-
-> "Changes to the language are developed by way of a process which provides guidelines for evolving an addition from an idea to a fully specified feature"
-
-<blockquote class="babel-callout babel-callout-danger">
-  <h4>Subject to change</h4>
-  <p>
-    These proposals are subject to change so <strong><em>use with extreme caution</em></strong>, especially for anything pre stage-3. We plan to update stage-x presets when proposals change after each TC39 meeting when possible.
-  </p>
-</blockquote>
-
-The [TC39](https://github.com/tc39) categorizes proposals into the following stages:
-
-- [Stage 0](preset-stage-0.md) - Strawman: just an idea, possible Babel plugin.
-- [Stage 1](preset-stage-1.md) - Proposal: this is worth working on.
-- [Stage 2](preset-stage-2.md) - Draft: initial spec.
-- [Stage 3](preset-stage-3.md) - Candidate: complete spec and initial browser implementations.
-- Stage 4 - Finished: will be added to the next yearly release.
-
-For more information, be sure to check out the [current TC39 proposals](https://github.com/tc39/proposals) and its [process document](https://tc39.github.io/process-document).
-
-The TC39 stage process is also explained in detail across a few posts by Yehuda Katz (@wycatz) over at [thefeedbackloop.xyz](https://thefeedbackloop.xyz): [Stage 0 and 1](https://thefeedbackloop.xyz/tc39-a-process-sketch-stages-0-and-1/), [Stage 2](https://thefeedbackloop.xyz/tc39-process-sketch-stage-2/), [Stage 3](https://thefeedbackloop.xyz/tc39-process-sketch-stage-3/), and Stage 4 coming soon.
+Instead of individual plugins, you can also enable a set of plugins in a [preset](presets.md).
 
 ## Transform Plugins
 
@@ -109,7 +62,12 @@ These plugins apply transformations to your code.
 
 ### ES2018
 
+- [async-generator-functions](plugin-proposal-async-generator-functions.md)
 - [dotall-regex](plugin-transform-dotall-regex.md)
+- [export-namespace-from](plugin-proposal-export-namespace-from.md)
+- [object-rest-spread](plugin-proposal-object-rest-spread.md)
+- [optional-catch-binding](plugin-proposal-optional-catch-binding.md)
+- [unicode-property-regex](plugin-proposal-unicode-property-regex.md)
 
 ### Modules
 
@@ -120,23 +78,18 @@ These plugins apply transformations to your code.
 
 ### Experimental
 
-- [async-generator-functions](plugin-proposal-async-generator-functions.md)
 - [class-properties](plugin-proposal-class-properties.md)
 - [decorators](plugin-proposal-decorators.md)
 - [do-expressions](plugin-proposal-do-expressions.md)
 - [export-default-from](plugin-proposal-export-default-from.md)
-- [export-namespace-from](plugin-proposal-export-namespace-from.md)
 - [function-bind](plugin-proposal-function-bind.md)
 - [function-sent](plugin-proposal-function-sent.md)
 - [logical-assignment-operators](plugin-proposal-logical-assignment-operators.md)
 - [nullish-coalescing-operator](plugin-proposal-nullish-coalescing-operator.md)
 - [numeric-separator](plugin-proposal-numeric-separator.md)
-- [object-rest-spread](plugin-proposal-object-rest-spread.md)
-- [optional-catch-binding](plugin-proposal-optional-catch-binding.md)
 - [optional-chaining](plugin-proposal-optional-chaining.md)
 - [pipeline-operator](plugin-proposal-pipeline-operator.md)
 - [throw-expressions](plugin-proposal-throw-expressions.md)
-- [unicode-property-regex](plugin-proposal-unicode-property-regex.md)
 
 ### Minification
 
@@ -181,7 +134,7 @@ These plugins are in the minify repo.
 
 ### Other
 
-- [flow-comments](plugin-transform-flow-comments.md)
+- [external-helpers](plugin-external-helpers.md)
 - [flow-strip-types](plugin-transform-flow-strip-types.md)
 - [jscript](plugin-transform-jscript.md)
 - [object-assign](plugin-transform-object-assign.md)
@@ -191,20 +144,17 @@ These plugins are in the minify repo.
 - [runtime](plugin-transform-runtime.md)
 - [strict-mode](plugin-transform-strict-mode.md)
 
-## Misc Plugins
-
-- [external-helpers](plugin-external-helpers.md)
-
 ## Syntax Plugins
 
-These plugins allow Babel to **parse** specific types of syntax (not transform).
+These plugins only allow Babel to **parse** specific types of syntax (not transform).
 
-> NOTE: Transform plugins automatically inherit/use the syntax plugins so you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
+> NOTE: transform plugins automatically enable the syntax plugins. So you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
 
-You can also provide any [`plugins` option](parser.md#plugins) from the Babel parser:
+Alternatively, you can also provide any [`plugins` option](parser.md#plugins) from the Babel parser:
+
+Your `.babelrc`:
 
 ```json
-// .babelrc
 {
   "parserOpts": {
     "plugins": ["jsx", "flow"]
@@ -212,63 +162,49 @@ You can also provide any [`plugins` option](parser.md#plugins) from the Babel pa
 }
 ```
 
-### Experimental
-
-- [async-generators](plugin-syntax-async-generators.md)
-- [class-properties](plugin-syntax-class-properties.md)
-- [decorators](plugin-syntax-decorators.md)
-- [do-expressions](plugin-syntax-do-expressions.md)
-- [dynamic-import](plugin-syntax-dynamic-import.md)
-- [export-default-from](plugin-syntax-export-default-from.md)
-- [export-namespace-from](plugin-syntax-export-namespace-from.md)
-- [flow](plugin-syntax-flow.md)
-- [function-bind](plugin-syntax-function-bind.md)
-- [function-sent](plugin-syntax-function-sent.md)
-- [import-meta](plugin-syntax-import-meta.md)
-- [jsx](plugin-syntax-jsx.md)
-- [logical-assignment-operators](plugin-syntax-logical-assignment-operators.md)
-- [nullish-coalescing-operator](plugin-syntax-nullish-coalescing-operator.md)
-- [numeric-separator](plugin-syntax-numeric-separator.md)
-- [object-rest-spread](plugin-syntax-object-rest-spread.md)
-- [optional-catch-binding](plugin-syntax-optional-catch-binding.md)
-- [optional-chaining](plugin-syntax-optional-chaining.md)
-- [pipeline-operator](plugin-syntax-pipeline-operator.md)
-- [throw-expressions](plugin-syntax-throw-expressions.md)
-- [typescript](plugin-syntax-typescript.md)
-
 ## Plugin/Preset Paths
 
 If the plugin is on npm, you can pass in the name of the plugin and babel will check that it's installed in `node_modules`
 
-`"plugins": ["babel-plugin-myPlugin"]`
+```json
+{ 
+  "plugins": ["babel-plugin-myPlugin"]
+}
+```
 
-You can also specify an relative/absolute path to your plugin/preset.
+You can also specify an relative/absolute path to your plugin.
 
-`"plugins": ["./node_modules/asdf/plugin"]`
+```json
+{
+  "plugins": ["./node_modules/asdf/plugin"]
+}
+```
 
-### Plugin/Preset Shorthand
+### Plugin Shorthand
 
-If you prefix the plugin with `babel-plugin-`, you can use a shorthand to leave out that prefix
+If the name of the package is prefixed with `babel-plugin-`, you can use a shorthand:
 
-`"plugins": ["myPlugin"]`
-
-Same with presets
-
-`"presets": ["babel-preset-myPreset"]`
-
-vs
-
-`"presets": ["myPreset"]`
+```js
+{
+  "plugins": [
+    "myPlugin",
+    "babel-plugin-myPlugin" // equivalent
+  ]
+}
+```
 
 This also works with scoped packages:
 
-`"presets": ["@org/babel-preset-name"]`
+```js
+{
+  "plugins": [
+    "@org/babel-plugin-name",
+    "@org/name" // equivalent
+  ]
+}
+```
 
-shorthand
-
-`"presets": ["@org/name"]`
-
-## Plugin/Preset Ordering
+## Plugin Ordering
 
 > Ordering matters for each visitor in the plugin.
 
@@ -307,7 +243,7 @@ Will run in the following order: `stage-2`, `react`, then `es2015`.
 
 This is mostly for ensuring backwards compatibility, since most users list "es2015" before "stage-0". For more information, see [notes on potential traversal API changes](https://github.com/babel/notes/blob/master/2016/2016-08/august-01.md#potential-api-changes-for-traversal).
 
-## Plugin/Preset Options
+## Plugin Options
 
 Both plugins and presets can have options specified by wrapping the name and an options object in an array inside your config.
 
@@ -369,22 +305,3 @@ export default function () {
   };
 }
 ```
-
-## Creating a Preset
-
-To make your own preset, you just need to export a config.
-
-```js
-// Presets can contain other presets, and plugins with options.
-module.exports = {
-  presets: [
-    require("@babel/preset-env"),
-  ],
-  plugins: [
-    [require("@babel/plugin-transform-template-literals"), { spec: true }],
-    require("@babel/plugin-transform-member-expression-literals"),
-  ],
-};
-```
-
-For more info, check out the [babel handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/user-handbook.md#making-your-own-preset) section on presets.

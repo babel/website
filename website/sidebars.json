@@ -11,6 +11,7 @@
     "General": [
       "editors",
       "plugins",
+      "presets",
       "caveats",
       "faq",
       "roadmap"

@@ -4,7 +4,6 @@ title: babel-core
 sidebar_label: babel-core
 ---
 
-
 ```javascript
 var babel = require("@babel/core");
 import { transform } from "@babel/core";
