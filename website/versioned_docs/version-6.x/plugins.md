@@ -68,34 +68,34 @@ These plugins apply transformations to your code.
 
 ### ES3
 
-- [es3-member-expression-literals](plugin-transform-es3-member-expression-literals.md)
-- [es3-property-literals](plugin-transform-es3-property-literals.md)
+- [es3-member-expression-literals](babel-plugin-transform-es3-member-expression-literals)
+- [es3-property-literals](babel-plugin-transform-es3-property-literals)
 
 ### ES5
 
-- [es5-property-mutators](plugin-transform-es5-property-mutators.md)
+- [es5-property-mutators](babel-plugin-transform-es5-property-mutators)
 
 ### ES2015
 
-- [check-es2015-constants](plugin-check-es2015-constants.md)
-- [es2015-arrow-functions](plugin-transform-es2015-arrow-functions.md)
-- [es2015-block-scoped-functions](plugin-transform-es2015-block-scoped-functions.md)
-- [es2015-block-scoping](plugin-transform-es2015-block-scoping.md)
-- [es2015-classes](plugin-transform-es2015-classes.md)
-- [es2015-computed-properties](plugin-transform-es2015-computed-properties.md)
-- [es2015-destructuring](plugin-transform-es2015-destructuring.md)
-- [es2015-duplicate-keys](plugin-transform-es2015-duplicate-keys.md)
-- [es2015-for-of](plugin-transform-es2015-for-of.md)
-- [es2015-function-name](plugin-transform-es2015-function-name.md)
-- [es2015-literals](plugin-transform-es2015-literals.md)
-- [es2015-object-super](plugin-transform-es2015-object-super.md)
-- [es2015-parameters](plugin-transform-es2015-parameters.md)
-- [es2015-shorthand-properties](plugin-transform-es2015-shorthand-properties.md)
-- [es2015-spread](plugin-transform-es2015-spread.md)
-- [es2015-sticky-regex](plugin-transform-es2015-sticky-regex.md)
-- [es2015-template-literals](plugin-transform-es2015-template-literals.md)
-- [es2015-typeof-symbol](plugin-transform-es2015-typeof-symbol.md)
-- [es2015-unicode-regex](plugin-transform-es2015-unicode-regex.md)
+- [check-es2015-constants](babel-plugin-check-es2015-constants)
+- [es2015-arrow-functions](babel-plugin-transform-es2015-arrow-functions)
+- [es2015-block-scoped-functions](babel-plugin-transform-es2015-block-scoped-functions)
+- [es2015-block-scoping](babel-plugin-transform-es2015-block-scoping)
+- [es2015-classes](babel-plugin-transform-es2015-classes)
+- [es2015-computed-properties](babel-plugin-transform-es2015-computed-properties)
+- [es2015-destructuring](babel-plugin-transform-es2015-destructuring)
+- [es2015-duplicate-keys](babel-plugin-transform-es2015-duplicate-keys)
+- [es2015-for-of](babel-plugin-transform-es2015-for-of)
+- [es2015-function-name](babel-plugin-transform-es2015-function-name)
+- [es2015-literals](babel-plugin-transform-es2015-literals)
+- [es2015-object-super](babel-plugin-transform-es2015-object-super)
+- [es2015-parameters](babel-plugin-transform-es2015-parameters)
+- [es2015-shorthand-properties](babel-plugin-transform-es2015-shorthand-properties)
+- [es2015-spread](babel-plugin-transform-es2015-spread)
+- [es2015-sticky-regex](babel-plugin-transform-es2015-sticky-regex)
+- [es2015-template-literals](babel-plugin-transform-es2015-template-literals)
+- [es2015-typeof-symbol](babel-plugin-transform-es2015-typeof-symbol)
+- [es2015-unicode-regex](babel-plugin-transform-es2015-unicode-regex)
 
 ### ES2016
 
@@ -107,22 +107,22 @@ These plugins apply transformations to your code.
 
 ### Modules
 
-- [es2015-modules-amd](plugin-transform-es2015-modules-amd.md)
-- [es2015-modules-commonjs](plugin-transform-es2015-modules-commonjs.md)
-- [es2015-modules-systemjs](plugin-transform-es2015-modules-systemjs.md)
-- [es2015-modules-umd](plugin-transform-es2015-modules-umd.md)
+- [es2015-modules-amd](babel-plugin-transform-es2015-modules-amd)
+- [es2015-modules-commonjs](babel-plugin-transform-es2015-modules-commonjs)
+- [es2015-modules-systemjs](babel-plugin-transform-es2015-modules-systemjs)
+- [es2015-modules-umd](babel-plugin-transform-es2015-modules-umd)
 
 ### Experimental
 
-- [async-generator-functions](plugin-transform-async-generator-functions.md)
-- [async-to-module-method](plugin-transform-async-to-module-method.md)
-- [class-constructor-call](plugin-transform-class-constructor-call.md) (deprecated)
-- [class-properties](plugin-transform-class-properties.md)
-- [decorators](plugin-transform-decorators.md)
-- [do-expressions](plugin-transform-do-expressions.md)
-- [export-extensions](plugin-transform-export-extensions.md)
-- [function-bind](plugin-transform-function-bind.md)
-- [object-rest-spread](plugin-transform-object-rest-spread.md)
+- [async-generator-functions](babel-plugin-transform-async-generator-functions)
+- [async-to-module-method](babel-plugin-transform-async-to-module-method)
+- [class-constructor-call](babel-plugin-transform-class-constructor-call) (deprecated)
+- [class-properties](babel-plugin-transform-class-properties)
+- [decorators](babel-plugin-transform-decorators)
+- [do-expressions](babel-plugin-transform-do-expressions)
+- [export-extensions](babel-plugin-transform-export-extensions)
+- [function-bind](babel-plugin-transform-function-bind)
+- [object-rest-spread](babel-plugin-transform-object-rest-spread)
 
 ### Minification
 
@@ -165,7 +165,7 @@ These plugins are in the minify repo.
 
 ### Other
 
-- [eval](plugin-transform-eval.md)
+- [eval](babel-plugin-transform-eval)
 - [flow-comments](plugin-transform-flow-comments.md)
 - [flow-strip-types](plugin-transform-flow-strip-types.md)
 - [jscript](plugin-transform-jscript.md)
@@ -186,7 +186,7 @@ These plugins allow Babel to **parse** specific types of syntax (not transform).
 
 > NOTE: Transform plugins automatically inherit/use the syntax plugins so you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
 
-You can also provide any [`plugins` option](babylon.md#plugins) from babylon:
+You can also provide any [`plugins` option](babylon#plugins) from babylon:
 
 ```json
 // .babelrc
@@ -204,7 +204,7 @@ You can also provide any [`plugins` option](babylon.md#plugins) from babylon:
 - [decorators](plugin-syntax-decorators.md)
 - [do-expressions](plugin-syntax-do-expressions.md)
 - [dynamic-import](plugin-syntax-dynamic-import.md)
-- [export-extensions](plugin-syntax-export-extensions.md)
+- [export-extensions](babel-plugin-syntax-export-extensions)
 - [flow](plugin-syntax-flow.md)
 - [function-bind](plugin-syntax-function-bind.md)
 - [function-sent](plugin-syntax-function-sent.md)
@@ -215,13 +215,13 @@ You can also provide any [`plugins` option](babylon.md#plugins) from babylon:
 
 These plugins have no effect anymore, as a newer babylon version enabled them by default
 
-- [async-functions](plugin-syntax-async-functions.md) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
-- [exponentiation-operator](plugin-syntax-exponentiation-operator.md) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
-- [trailing-function-commas](plugin-syntax-trailing-function-commas.md) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+- [async-functions](babel-plugin-syntax-async-functions) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+- [exponentiation-operator](babel-plugin-syntax-exponentiation-operator) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
+- [trailing-function-commas](babel-plugin-syntax-trailing-function-commas) (since babylon [6.9.1](https://github.com/babel/babylon/releases/tag/v6.9.1))
 
 ### Deprecated
 
-- [class-constructor-call](plugin-syntax-class-constructor-call.md)
+- [class-constructor-call](babel-plugin-syntax-class-constructor-call)
 
 ## Plugin/Preset Paths
 
