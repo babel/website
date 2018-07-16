@@ -3,7 +3,7 @@ layout: post
 title:  "Announcing Babel's New Partnership with trivago!"
 author: Henry Zhu
 authorURL: https://twitter.com/left_pad
-date:   2018-07-16 12:00:00
+date:   2018-07-16 12:30:00
 categories: announcements
 share_text: "Announcing Babel's New Partnership with trivago!"
 ---
@@ -12,9 +12,9 @@ We are happy to announce a new partnership with [trivago](https://www.trivago.co
 
 <!--truncate-->
 
-They've committed to fund our community with $2,000 per month, for a total of $24,000 per year.
+They've committed to fund our community with $2,000 per month, for a total of $24,000 per year!
 
-trivago is famous for their TV ads ("Hotel? trivago!") but also recognized for their substantial financial support for the [Webpack](https://webpack.js.org/) community. They have a track record of supporting Open Source communities without interfering with their work so we were very excited when they got in touch to offer their support for Babel.
+trivago is famous for their TV ads ("Hotel? trivago!") but also recognized for their substantial financial support for the [Webpack](https://webpack.js.org/) community. They have a [track record of supporting Open Source communities](https://tech.trivago.com/opensource/) without interfering with their work so we were very excited when they got in touch to offer their support for Babel.
 
 Just as it is for many projects and companies all over the world, [Babel](https://babeljs.io/) is a key technology for trivago’s applications. It enables high productivity from using the modern JavaScript language while still shipping compatible code for their users running older browsers like IE11. Internally, they utilize around a dozen custom Babel plugins and their own JavaScript framework, [Melody](https://melody.js.org) also heavily relies on Babel to do its magic.
 
