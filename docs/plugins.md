@@ -64,7 +64,6 @@ These plugins apply transformations to your code.
 
 - [async-generator-functions](plugin-proposal-async-generator-functions.md)
 - [dotall-regex](plugin-transform-dotall-regex.md)
-- [export-namespace-from](plugin-proposal-export-namespace-from.md)
 - [object-rest-spread](plugin-proposal-object-rest-spread.md)
 - [optional-catch-binding](plugin-proposal-optional-catch-binding.md)
 - [unicode-property-regex](plugin-proposal-unicode-property-regex.md)
@@ -82,6 +81,7 @@ These plugins apply transformations to your code.
 - [decorators](plugin-proposal-decorators.md)
 - [do-expressions](plugin-proposal-do-expressions.md)
 - [export-default-from](plugin-proposal-export-default-from.md)
+- [export-namespace-from](plugin-proposal-export-namespace-from.md)
 - [function-bind](plugin-proposal-function-bind.md)
 - [function-sent](plugin-proposal-function-sent.md)
 - [logical-assignment-operators](plugin-proposal-logical-assignment-operators.md)
@@ -167,7 +167,7 @@ Your `.babelrc`:
 If the plugin is on npm, you can pass in the name of the plugin and babel will check that it's installed in `node_modules`
 
 ```json
-{ 
+{
   "plugins": ["babel-plugin-myPlugin"]
 }
 ```
