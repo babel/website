@@ -41,9 +41,6 @@ export default class Transitions {
     return (...args: any) => {
       // $FlowFixMe
       const { code } = generate(this._getProgramParent(args[0]).node);
-      console.log(code);
-      console.log(pluginAlias);
-      console.log(visitorType);
 
       if (
         this._transitions.length === 0 ||
