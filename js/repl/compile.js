@@ -6,13 +6,19 @@ declare var prettier: any;
 declare var prettierPlugins: any;
 
 import { getDebugInfoFromEnvResult } from "./replUtils";
-import type { BabelPresetEnvResult, CompileConfig } from "./types";
+import Transitions from "./Transitions";
+import type { BabelPresetEnvResult, CompileConfig, Transition } from "./types";
 
 type Return = {
   compiled: ?string,
   compileErrorMessage: ?string,
   envPresetDebugInfo: ?string,
+  meta: {
+    compiledSize: number,
+    rawSize: number,
+  },
   sourceMap: ?string,
+  transitions: ?Array<Transition>,
 };
 
 const DEFAULT_PRETTIER_CONFIG = {
@@ -37,6 +43,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   let useBuiltIns = false;
   let spec = false;
   let loose = false;
+  const transitions = new Transitions();
   const meta = {
     compiledSize: 0,
     rawSize: new Blob([code], { type: "text/plain" }).size,
@@ -89,6 +96,7 @@ export default function compile(code: string, config: CompileConfig): Return {
 
     config.presets.push(["env", options]);
   }
+
   try {
     const babelConfig = {
       babelrc: false,
@@ -114,10 +122,18 @@ export default function compile(code: string, config: CompileConfig): Return {
       }),
       plugins: config.plugins,
       sourceType: config.sourceType,
+      wrapPluginVisitorMethod: config.getTransitions
+        ? transitions.wrapPluginVisitorMethod
+        : () => {},
     };
 
     const transformed = Babel.transform(code, babelConfig);
     compiled = transformed.code;
+
+    if (config.getTransitions) {
+      transitions.addExitTransition(compiled);
+    }
+
     if (config.sourceMap) {
       try {
         sourceMap = JSON.stringify(transformed.map);
@@ -160,5 +176,6 @@ export default function compile(code: string, config: CompileConfig): Return {
     envPresetDebugInfo,
     meta,
     sourceMap,
+    transitions: transitions.getValue(),
   };
 }

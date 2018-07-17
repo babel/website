@@ -91,6 +91,7 @@ export type CompileConfig = {
   prettify: boolean,
   sourceMap: boolean,
   sourceType: SourceType,
+  getTransitions: boolean,
 };
 
 export type ReplState = {
@@ -115,6 +116,7 @@ export type ReplState = {
   targets: string,
   version: any,
   envVersion: string,
+  showTimeTravel: boolean,
 };
 
 type BabelPresetTargetsMap = {
@@ -136,3 +138,10 @@ export type BabelPresetEnvResult = {
 };
 
 export type SidebarTabSection = "env" | "plugins" | "presets" | "settings";
+
+export type Transition = {
+  code: string,
+  pluginAlias: string,
+  visitorType: string,
+  currentNode?: string,
+};
