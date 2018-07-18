@@ -77,9 +77,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       };
     }
 
-    const options = {
-      // not a valid option in v7
-      onPresetBuild: Babel.version[0] === "6" ? onPresetBuild: undefined,
+    const options: { [string]: any } = {
       targets,
       forceAllTransforms,
       shippedProposals,
@@ -87,6 +85,11 @@ export default function compile(code: string, config: CompileConfig): Return {
       spec,
       loose,
     };
+    
+    // not a valid option in v7: preset-env-standalone added extra fields not in preset-env
+    if (Babel.version[0] === "6") {
+      options.onPresetBuild = onPresetBuild;
+    }
 
     config.presets.push(["env", options]);
   }
