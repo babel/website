@@ -72,6 +72,7 @@ type State = {
   showOfficialExternalPlugins: boolean,
   loadingExternalPlugins: boolean,
   showTimeTravel: boolean,
+  transitions: Array<Object>,
 };
 
 const DEBOUNCE_DELAY = 500;
@@ -158,6 +159,7 @@ class Repl extends React.Component<Props, State> {
       externalPlugins: [],
       loadingExternalPlugins: false,
       showTimeTravel: true,
+      transitions: [],
     };
 
     this._setupBabel(defaultPresets);
@@ -456,6 +458,7 @@ class Repl extends React.Component<Props, State> {
         sourceMap: runtimePolyfillState.isEnabled,
         sourceType: state.sourceType,
         getTransitions: state.showTimeTravel,
+        transitions: state.transitions,
       })
       .then(result => {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
@@ -639,7 +642,6 @@ const styles = {
     justify-content: stretch;
     overflow: auto;
     font-size: 0.875rem;
-
     ${media.mediumAndDown} {
       flex-direction: column;
     }
