@@ -78,7 +78,8 @@ export default function compile(code: string, config: CompileConfig): Return {
     }
 
     const options = {
-      onPresetBuild,
+      // not a valid option in v7
+      onPresetBuild: Babel.version[0] === "6" ? onPresetBuild: undefined,
       targets,
       forceAllTransforms,
       shippedProposals,
