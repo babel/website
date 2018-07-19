@@ -23,7 +23,7 @@ The pipeline operator was originally introduced by [Gilbert Garza](https://githu
 
 The first issue was the question of placeholders. This was first raised by [Kevin Smith](https://github.com/zenparsing) in [this issue](https://github.com/tc39/proposal-pipeline-operator/issues/84), where he suggested [Hack-style pipelining](https://docs.hhvm.com/hack/operators/pipe-operator). In Hack, a placeholder is required for every right-hand side of the pipeline, as in this example:
 
-```
+```hack
 namespace Hack\UserDocumentation\Operators\Pipe\Examples\MapFilterCountPiped;
 
 function piped_example(array<int> $arr): int {
