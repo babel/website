@@ -8,7 +8,7 @@ categories: announcements
 share_text: "What's the Deal with the New Pipeline Plugin Configuration?"
 ---
 
-With the release of babel@7.0.0-beta52, we introduced a new required configuration flag to `@babel/plugin-proposal-pipeline-operator`, a breaking change not only for the pipeline operator itself but for the `stage-0` & `stage-1` presets that use it. In order to clear up some of the confusion, let's take a look at the pipeline proposal and why we needed to introduce this configuration option.
+With the release of babel@7.0.0-beta54, we [introduced](https://github.com/babel/babel/pull/3159) a new required configuration flag to `@babel/plugin-proposal-pipeline-operator`, a breaking change not for the pipeline operator. To clear up the confusion, let's take a look at the pipeline proposal and why we needed to introduce this configuration option.
 
 <!--truncate-->
 
@@ -140,11 +140,9 @@ Once all three proposals were fleshed out, we realized discussion and debate wer
 
 Because these proposals parse slightly differently, support needs to be added to `@babel/parser` (formerly `babylon`), and the parser needs to be configured based on which proposal is its current parse target. The pipeline operator plugin itself thus needs the `"proposal"` option, both to configure babylon as well as its own transformation.
 
-We were working under a compressed timeline for this, as we needed to introduce any breaking changes to babel, `@babel/parser`, as well as the pipeline proposal plugin before babel@7 left beta. We also wanted the plugin to be able to eventually default to whichever of the proposals get accepted, so the configuration option becomes obsolete. Given these two constraints, we opted to introduce this new configuration option and make it required, forcing users to decide which proposal they want to use in their project.
+We were working under a compressed timeline for this, as we needed to introduce any breaking changes to babel, `@babel/parser`, as well as the pipeline proposal plugin before babel@7 left beta. We also wanted the plugin to be able to eventually default to whichever of the proposals get accepted, so the configuration option becomes obsolete.
 
-Because the pipeline proposal is currently stage-1, both the `stage-1` & `stage-0` plugins include the pipeline operator. An option was added to both of those plugins, `"pipelineProposal"`, to forward the value to the pipeline plugin. This option was also required, and thus breaking, so it caused some frustration for some users. The stage presets have been deprecated and [are being removed](https://github.com/babel/babel/pull/8293), because when those presets are used, consumers often don't know what plugins they're including, so changes like this are surprising and frustrating.
-
-Once a particular proposal gets accepted as the canonical behavior of the pipeline operator, we'll deprecate the `"proposal"` option and make the default whichever gets accepted, and the rejected proposals will be removed in the following major version.
+Given these two constraints, we opted to introduce this new configuration option and make it required, forcing users to decide which proposal they want to use in their project. Once a particular proposal gets accepted as the canonical behavior of the pipeline operator, we'll deprecate the `"proposal"` option and make the default whichever gets accepted, and the rejected proposals will be removed in the following major version.
 
 ## Get Involved
 
