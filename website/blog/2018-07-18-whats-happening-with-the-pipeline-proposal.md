@@ -153,7 +153,7 @@ Smart pipelines thus resolve the issue of async in an integrative way, allowing 
 
 ## Where Babel Comes In
 
-Once all three proposals were fleshed out, we realized discussion and debate were unlikely to resolve the inherent tension between them. We decided the best way to make a decision would be with the feedback of developers, using the proposals in real code. Given Babel's role in the community, we approached them about including all three of the above proposals in the pipeline operator plugin.
+Once all three proposals were fleshed out, we realized discussion and debate were unlikely to resolve the inherent tension between them. We decided the best way to make a decision would be with the feedback of developers, using the proposals in real code. Given Babel's role in the community, we decided to introduce all three of the above proposals into the pipeline operator plugin.
 
 Because these proposals parse slightly differently, support needs to be added to `@babel/parser` (formerly `babylon`), and the parser needs to be configured based on which proposal is its current parse target. The pipeline operator plugin itself thus needs the `"proposal"` option, both to configure babylon as well as its own transformation.
 
