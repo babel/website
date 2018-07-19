@@ -8,13 +8,13 @@ categories: announcements
 share_text: "What's Happening With the Pipeline (|>) Proposal?"
 ---
 
-With the release of babel@7.0.0-beta54, we [introduced](https://github.com/babel/babel/pull/3159) a new required configuration flag to `@babel/plugin-proposal-pipeline-operator`, a breaking change not for the pipeline operator. To clear up the confusion, let's take a look at the pipeline proposal and why we needed to introduce this configuration option.
+With the release of [babel@7.0.0-beta52](https://github.com/babel/babel/releases/tag/v7.0.0-beta.52), we introduced a new required configuration flag to `@babel/plugin-proposal-pipeline-operator`, a breaking change not for the pipeline operator. To clear up any confusion, let's take a look at the pipeline proposal and why we needed to introduce this configuration option.
 
 <!--truncate-->
 
 ## Current Status
 
-The pipeline operator was originally introduced by [Gilbert Garza](https://github.com/gilbert), providing a clean syntax for "streamlining chained function calls in a readable, functional manner." The pipeline operator has roots in a number of languages, including F#, Hack, Elm, Elixir, and others, but there were two major points of contention in introducing the new syntax to JavaScript:
+The pipeline operator was originally [introduced](https://github.com/babel/babel/pull/3159) by [Gilbert Garza](https://github.com/gilbert), providing a clean syntax for "streamlining chained function calls in a readable, functional manner." The pipeline operator has roots in a number of languages, including F#, Hack, Elm, Elixir, and others, but there were two major points of contention in introducing the new syntax to JavaScript:
 
 * Whether and how to introduce placeholders
 * How to handle async / await in the pipeline
