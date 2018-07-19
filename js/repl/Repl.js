@@ -14,6 +14,7 @@ import UriUtils from "./UriUtils";
 import loadBundle from "./loadBundle";
 import loadPlugin from "./loadPlugin";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
+import TimeTravelSlider from "./TimeTravelSlider";
 import {
   babelConfig,
   envPresetConfig,
@@ -226,26 +227,28 @@ class Repl extends React.Component<Props, State> {
           showOfficialExternalPlugins={state.showOfficialExternalPlugins}
           loadingExternalPlugins={state.loadingExternalPlugins}
         />
-
-        <div className={styles.panels}>
-          <CodeMirrorPanel
-            className={styles.codeMirrorPanel}
-            code={state.code}
-            errorMessage={state.compileErrorMessage}
-            fileSize={state.meta.rawSize}
-            onChange={this._updateCode}
-            options={options}
-            placeholder="Write code here"
-          />
-          <CodeMirrorPanel
-            className={styles.codeMirrorPanel}
-            code={state.compiled}
-            errorMessage={state.evalErrorMessage}
-            fileSize={state.meta.compiledSize}
-            info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
-            options={options}
-            placeholder="Compiled output will be shown here"
-          />
+        <div className={styles.wrapperPanels}>
+          <div className={styles.panels}>
+            <CodeMirrorPanel
+              className={styles.codeMirrorPanel}
+              code={state.code}
+              errorMessage={state.compileErrorMessage}
+              fileSize={state.meta.rawSize}
+              onChange={this._updateCode}
+              options={options}
+              placeholder="Write code here"
+            />
+            <CodeMirrorPanel
+              className={styles.codeMirrorPanel}
+              code={state.compiled}
+              errorMessage={state.evalErrorMessage}
+              fileSize={state.meta.compiledSize}
+              info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
+              options={options}
+              placeholder="Compiled output will be shown here"
+            />
+          </div>
+          <TimeTravelSlider transitions={state.transitions} />
         </div>
       </div>
     );
@@ -642,10 +645,17 @@ const styles = {
     justify-content: stretch;
     overflow: auto;
     font-size: 0.875rem;
+
     ${media.mediumAndDown} {
       flex-direction: column;
     }
   `,
+  wrapperPanels: css({
+    height: "100%",
+    width: "100%",
+    justifyContent: "stretch",
+    overflow: "auto",
+  }),
   panels: css({
     height: "100%",
     width: "100%",
