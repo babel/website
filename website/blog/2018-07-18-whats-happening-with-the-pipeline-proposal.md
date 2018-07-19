@@ -3,7 +3,7 @@ layout: post
 title:  "What's Happening With the Pipeline (|>) Proposal?"
 author: James DiGioia
 authorURL: https://twitter.com/JamesDiGioia
-date: 2018-07-18 12:00:00
+date: 2018-07-19 12:00:00
 categories: announcements
 share_text: "What's Happening With the Pipeline (|>) Proposal?"
 ---
