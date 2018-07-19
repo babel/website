@@ -71,7 +71,7 @@ type Props = {
   runtimePolyfillConfig: PluginConfig,
   runtimePolyfillState: PluginState,
   loadingExternalPlugins: boolean,
-  fileName: ?string,
+  filename: ?string,
 };
 
 type LinkProps = {
@@ -160,7 +160,7 @@ class ExpandedContainer extends Component<Props, State> {
       pluginValue,
       showOfficialExternalPlugins,
       loadingExternalPlugins,
-      fileName,
+      filename,
     } = this.props;
 
     const {
@@ -223,7 +223,7 @@ class ExpandedContainer extends Component<Props, State> {
                 type= "text"
                 className={styles.inputFileBoxLeft}
                 size={fileNameBoxSize}
-                value={fileName}
+                value={filename}
               />
             </label>
           </AccordionTab>

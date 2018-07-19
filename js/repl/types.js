@@ -76,6 +76,8 @@ export type PluginState = LazyLoadedState & {
 
 export type PluginStateMap = { [name: string]: PluginState };
 
+export type filename = "file.js";
+
 export type CompileConfig = {
   debugEnvPreset: boolean,
   envConfig: ?EnvConfig,
@@ -84,7 +86,7 @@ export type CompileConfig = {
   plugins: BabelPlugins,
   prettify: boolean,
   sourceMap: boolean,
-  fileName: ?string,
+  filename: ?string,
 };
 
 export type ReplState = {

@@ -81,7 +81,6 @@ export default function compile(code: string, config: CompileConfig): Return {
   try {
     const babelConfig = {
       babelrc: false,
-      filename: config.fileName,
       sourceMap: config.sourceMap,
 
       // HACK: decorators needs to be set to "legacy" until they are implemented
@@ -96,6 +95,7 @@ export default function compile(code: string, config: CompileConfig): Return {
         return preset;
       }),
       plugins: config.plugins,
+      filename: config.filename,
     };
 
     const transformed = Babel.transform(code, babelConfig);
