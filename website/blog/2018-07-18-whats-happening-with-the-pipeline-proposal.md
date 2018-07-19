@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "What's the Deal with the New Pipeline Plugin Configuration?"
+title:  "What's Happening With the Pipeline (|>) Proposal?"
 author: James DiGioia
 authorURL: https://twitter.com/JamesDiGioia
-date:   2018-06-26 12:00:00
+date: 2018-07-18 12:00:00
 categories: announcements
-share_text: "What's the Deal with the New Pipeline Plugin Configuration?"
+share_text: "What's Happening With the Pipeline (|>) Proposal?"
 ---
 
 With the release of babel@7.0.0-beta54, we [introduced](https://github.com/babel/babel/pull/3159) a new required configuration flag to `@babel/plugin-proposal-pipeline-operator`, a breaking change not for the pipeline operator. To clear up the confusion, let's take a look at the pipeline proposal and why we needed to introduce this configuration option.
@@ -54,7 +54,7 @@ which would desugar to
 await f(x)
 ```
 
-Unfortunately, this is intuitively ambiguous, as it could reasonably desugar to this:
+Unfortunately, users may expect this alternative desugaring:
 
 ```js
 (await f)(x)
@@ -131,21 +131,23 @@ promise
   |> console.log;
 ```
 
-In ["topic style"](https://github.com/js-choi/proposal-smart-pipelines/blob/master/readme.md#topic-style), a placeholder (called a "lexical topic token") is required, and the code will throw an early SyntaxError if it is not included.
-
-```js
-10 |> # + 1;
-promise |> await #;
-```
-
-In ["bare style"](https://github.com/js-choi/proposal-smart-pipelines/blob/master/readme.md#bare-style), where a bare identifier is provided to a step in the pipeline, no token is necessary.
+Smart Pipelines have a few rules for the placeholder. If a bare identifier is provided to a step in the pipeline, no token is necessary, called ["bare style"](https://github.com/js-choi/proposal-smart-pipelines/blob/master/readme.md#bare-style):
 
 ```js
 x |> a;
 x |> f.b;
 ```
 
-If there are any operators, parentheses (including for method calls), brackets, or anything other than identifiers and dot punctuators, then it is in topic style, not in bare style, and a topic token is necessary. This is avoids footguns and eliminate ambiguity in bare style code.
+Unlike Hack, unary functions don't require a placeholder token.
+
+For other expressions, a placeholder (called a "lexical topic token") is required, and the code will throw an early SyntaxError if it is not included in ["topic style"](https://github.com/js-choi/proposal-smart-pipelines/blob/master/readme.md#topic-style):
+
+```js
+10 |> # + 1;
+promise |> await #;
+```
+
+If there are any operators, parentheses (including for method calls), brackets, or anything other than identifiers and dot punctuators, then a topic token is necessary. This avoids footguns and eliminate ambiguity when not using a topic token.
 
 Smart pipelines thus resolve the issue of async in an integrative way, allowing all possible expressions to be emedded in a pipeline; not only `await`, but also `typeof`, `yield`, and another other operator desired.
 
