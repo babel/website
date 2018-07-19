@@ -60,7 +60,7 @@ Unfortunately, this is intuitively ambiguous, as it could reasonably desugar to 
 (await f)(x)
 ```
 
-While there was some pushback on the idea of including async handling in the pipeline at all, the committee felt, without a strong reason it wasn't doable, it would oppose a pipeline operator that didn't handle async/await. While there are ways to handle Promise-returning functions without explicit syntax, they are too cumbersome to be useful or require a helper function.
+While there was pushback on the idea of including async handling in the pipeline at all, committee members expressed concern about a pipeline operator that didn't handle async/await. While there are ways to handle Promise-returning functions without explicit syntax, they are too cumbersome to be useful or require a helper function.
 
 ## Proposed Solutions
 
