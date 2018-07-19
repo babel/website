@@ -68,7 +68,7 @@ As a result of these discussions, two proposals, along with a base minimal propo
 
 ### [Minimal Pipelines](https://github.com/tc39/proposal-pipeline-operator/)
 
-This proposal covers the basic functionality of the pipeline operator. The minimal proposal bans await, so there's no async handling involved at all, and includes no placeholders. It matches the behavior of the babel plugin pre-configuration option and is the current specification in the pipeline operator proposal repository. It functions more as a straw man, to compare the benefits and tradeoffs of other the proposals, and is unlikely to be accepted as-is without lethal defects in both of the alternatives.
+This proposal covers the basic functionality of the pipeline operator. The minimal proposal bans await, so there's no async handling involved at all, and includes no placeholders. It matches the behavior of the babel plugin before we introduced the configuration and is the current specification in the pipeline operator proposal repository. It functions more as a straw man, to compare the benefits and tradeoffs of other the proposals, and is unlikely to be accepted as-is without lethal defects in both of the alternatives.
 
 ### [F# Pipelines](https://github.com/valtech-nyc/proposal-fsharp-pipelines/)
 
