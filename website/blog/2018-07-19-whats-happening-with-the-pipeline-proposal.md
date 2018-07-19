@@ -38,7 +38,7 @@ var_dump(piped_example(range(1, 10)));
 
 We built on this concept, as a placeholder can easily be used in arbitrary expressions, with the placeholder representing the value returned from the previous step. This affords additional flexibility and power within a pipeline step.
 
-The downside is the complexity involved in introducing a new token. The hash (`#`) is the current choice, and although this is still open to bikeshedding, any token would potentially have multiple meanings. The hash is also used by the private fields proposal, and [all other options are in use in one form or another](https://github.com/tc39/proposal-partial-application/issues/21#issuecomment-361092565).
+The downside is the complexity involved in introducing a new token. The hash (`#`) is the current choice, and although this is still open to bikeshedding, any token would potentially have multiple meanings. The hash is also used by the [private fields proposal](https://github.com/tc39/proposal-class-fields#private-fields), and [all other options are in use in one form or another](https://github.com/tc39/proposal-partial-application/issues/21#issuecomment-361092565).
 
 ### Async / Await
 
@@ -163,6 +163,6 @@ Given these two constraints, we opted to introduce this new configuration option
 
 ## Get Involved
 
-If you're interested in getting involved in the pipeline proposal, all the conversations are public and you  find them in the [pipeline operator repository](https://github.com/tc39/proposal-pipeline-operator/). You can also check out the [presentation from the last TC39 meeting](https://docs.google.com/presentation/d/1eFFRK1wLIazIuK0F6fY974OIDvvWXS890XAMB59PUBA/edit#slide=id.p).Lastly, you can find [James DiGioia](https://twitter.com/jamesdigioia), [J. S. Choi](https://twitter.com/__jschoi), or [Daniel Ehrenberg](https://twitter.com/littledan) on Twitter.
+If you're interested in getting involved in the pipeline proposal, all the conversations are public and you  find them in the [pipeline operator repository](https://github.com/tc39/proposal-pipeline-operator/). You can also check out the [presentation from the last TC39 meeting](https://docs.google.com/presentation/d/1eFFRK1wLIazIuK0F6fY974OIDvvWXS890XAMB59PUBA/edit#slide=id.p). Lastly, you can find [James DiGioia](https://twitter.com/jamesdigioia), [J. S. Choi](https://twitter.com/__jschoi), or [Daniel Ehrenberg](https://twitter.com/littledan) on Twitter.
 
 But most importantly, once the work is complete, try out the pipeline operator in your own projects! We're also working on adding options to the [repl](https://babeljs.io/repl/), so you'll be able to try out the code there as well. We need feedback and real code in order for this to be useful, so we'd love to hear from you. Tweet us at [@babeljs](https://twitter.com/babeljs) to let us know.
