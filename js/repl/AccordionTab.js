@@ -27,7 +27,6 @@ export default class AccordionTab extends React.Component<Props> {
     return (
       <div className={`${styles.AccordionTab} ${className || ""}`}>
         <div className={styles.HeaderRow} onClick={this.handleToggle}>
-          <div className={styles.Label}>{label}</div>
           <Svg
             className={`${styles.Arrow} ${isExpanded
               ? styles.ArrowExpanded
@@ -42,6 +41,7 @@ export default class AccordionTab extends React.Component<Props> {
               L15.41,16.58
               Z"
           />
+          <div className={styles.Label}>{label}</div>
         </div>
         {isExpanded && <div className={styles.Content}>{children}</div>}
       </div>
@@ -76,16 +76,19 @@ const styles = {
   }),
   Label: css({
     flex: "1",
-    fontWeight: "400",
-    fontSize: "0.875rem",
+    fontSize: "0.75rem",
+    fontWeight: "700",
+    textTransform: "uppercase",
   }),
   Arrow: css({
-    height: "1.5rem",
-    width: "1.5rem",
+    height: "1rem",
+    margin: "0 0.33rem 0 0",
+    transform: "rotateZ(180deg)",
     transition: "transform 250ms ease-in-out",
+    width: "1rem",
   }),
   ArrowExpanded: css({
-    transform: "rotateZ(-90deg)",
+    transform: "rotateZ(270deg)",
   }),
   Content: css({
     display: "flex",

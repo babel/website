@@ -61,7 +61,7 @@ class Videos extends React.Component {
         return <VideosItem key={j} video={video} />;
       });
       return (
-        <div className="container" key={i}>
+        <div className="videos-container" key={i}>
           <h2>{category.category}</h2>
           {videos}
         </div>

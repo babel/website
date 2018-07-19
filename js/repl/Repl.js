@@ -43,6 +43,7 @@ import type {
   EnvConfig,
   PluginState,
   PluginStateMap,
+  SourceType,
 } from "./types";
 
 type Props = {};
@@ -58,10 +59,7 @@ type State = {
   shippedProposalsState: ShippedProposalsState,
   evalErrorMessage: ?string,
   fileSize: boolean,
-  isEnvPresetTabExpanded: boolean,
-  isPluginsExpanded: boolean,
-  isPresetsTabExpanded: boolean,
-  isSettingsTabExpanded: boolean,
+  sourceType: SourceType,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
   meta: Object,
@@ -71,7 +69,6 @@ type State = {
   sourceMap: ?string,
   externalPlugins: Array<string>,
   pluginSearch: ?string,
-  version: number,
   showOfficialExternalPlugins: boolean,
   loadingExternalPlugins: boolean,
   filename: ?string,
@@ -93,10 +90,7 @@ function toCamelCase(str) {
     });
 }
 
-class Repl extends React.Component {
-  props: Props;
-  state: State;
-
+class Repl extends React.Component<Props, State> {
   _numLoadingPlugins = 0;
   _workerApi = new WorkerApi();
 
@@ -119,8 +113,8 @@ class Repl extends React.Component {
     }, {});
 
     const envConfig = persistedStateToEnvConfig(persistedState);
-    const isPresetsTabExpanded = !!presets.filter(preset => preset !== "env")
-      .length;
+    // const isPresetsTabExpanded = !!presets.filter(preset => preset !== "env")
+    //   .length;
 
     // A partial State is defined first b'c this._compile needs it.
     // The compile helper will then populate the missing State values.
@@ -145,6 +139,7 @@ class Repl extends React.Component {
       ),
       evalErrorMessage: null,
       fileSize: persistedState.fileSize,
+      sourceType: persistedState.sourceType,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       meta: {
@@ -161,6 +156,7 @@ class Repl extends React.Component {
       sourceMap: null,
       showOfficialExternalPlugins: false,
       externalPlugins: [],
+      loadingExternalPlugins: false,
     };
 
     this._setupBabel(defaultPresets);
@@ -205,9 +201,11 @@ class Repl extends React.Component {
           envPresetState={state.envPresetState}
           shippedProposalsState={state.shippedProposalsState}
           fileSize={state.fileSize}
+          sourceType={state.sourceType}
           isExpanded={state.isSidebarExpanded}
           lineWrap={state.lineWrap}
           onEnvPresetSettingChange={this._onEnvPresetSettingChange}
+          onExternalPluginRemove={this.handleRemoveExternalPlugin}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
           pluginState={state.plugins}
@@ -215,6 +213,7 @@ class Repl extends React.Component {
           runtimePolyfillConfig={runtimePolyfillConfig}
           runtimePolyfillState={state.runtimePolyfillState}
           externalPlugins={state.externalPlugins}
+          pluginsLoading={true}
           pluginChange={this._pluginChange}
           pluginSearch={this._pluginSearch}
           pluginValue={state.pluginSearch}
@@ -277,7 +276,6 @@ class Repl extends React.Component {
       plugins,
       runtimePolyfillState,
     } = this.state;
-
     // Assume all default presets are baked into babel-standalone.
     // We really only need to worry about plugins.
     for (const key in plugins) {
@@ -426,14 +424,7 @@ class Repl extends React.Component {
           this._pluginsUpdatedSetStateCallback
         );
       } else {
-        this.setState(
-          state => ({
-            externalPlugins: state.externalPlugins.filter(
-              p => p !== plugin.name
-            ),
-          }),
-          this._pluginsUpdatedSetStateCallback
-        );
+        this.handleRemoveExternalPlugin(plugin.name);
       }
     });
   };
@@ -463,6 +454,7 @@ class Repl extends React.Component {
         presets: presetsArray,
         prettify: state.plugins.prettier.isEnabled,
         sourceMap: runtimePolyfillState.isEnabled,
+        sourceType: state.sourceType,
       })
       .then(result => {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
@@ -500,28 +492,28 @@ class Repl extends React.Component {
     );
   };
 
-  _onSettingChange = (name: string, isEnabled: boolean) => {
+  _onSettingChange = (name: string, value: boolean | string) => {
     this.setState(state => {
       const { plugins, presets, runtimePolyfillState } = state;
 
       if (name === "babel-polyfill") {
-        runtimePolyfillState.isEnabled = isEnabled;
+        runtimePolyfillState.isEnabled = !!value;
 
         return {
           runtimePolyfillState,
         };
       } else if (state.hasOwnProperty(name)) {
         return {
-          [name]: isEnabled,
+          [name]: value,
         };
       } else if (plugins.hasOwnProperty(name)) {
-        plugins[name].isEnabled = isEnabled;
+        plugins[name].isEnabled = !!value;
 
         return {
           plugins,
         };
       } else if (presets.hasOwnProperty(name)) {
-        presets[name].isEnabled = isEnabled;
+        presets[name].isEnabled = !!value;
 
         return {
           presets,
@@ -552,6 +544,8 @@ class Repl extends React.Component {
       browsers: envConfig.browsers,
       build: state.babel.build,
       builtIns: builtIns,
+      spec: envConfig.isSpecEnabled,
+      loose: envConfig.isLooseEnabled,
       circleciRepo: state.babel.circleciRepo,
       code: state.code,
       debug: state.debugEnvPreset,
@@ -559,10 +553,7 @@ class Repl extends React.Component {
       shippedProposals: envConfig.shippedProposals,
       evaluate: state.runtimePolyfillState.isEnabled,
       fileSize: state.fileSize,
-      isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
-      isPluginsExpanded: state.isPluginsExpanded,
-      isPresetsTabExpanded: state.isPresetsTabExpanded,
-      isSettingsTabExpanded: state.isSettingsTabExpanded,
+      sourceType: state.sourceType,
       lineWrap: state.lineWrap,
       presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,
@@ -594,6 +585,15 @@ class Repl extends React.Component {
     // Update state with compiled code, errors, etc after a small delay.
     // This prevents frequent updates while a user is typing.
     this._compileToState(code);
+  };
+
+  handleRemoveExternalPlugin = (pluginName: string) => {
+    this.setState(
+      state => ({
+        externalPlugins: state.externalPlugins.filter(p => p !== pluginName),
+      }),
+      this._pluginsUpdatedSetStateCallback
+    );
   };
 }
 

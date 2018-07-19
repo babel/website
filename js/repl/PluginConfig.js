@@ -96,9 +96,11 @@ const pluginConfigs: Array<PluginConfig> = [
     version: "0",
   },
   {
+    baseUrl: "https://unpkg.com",
     label: "Prettify",
     package: "prettier",
-    version: "1.6.1", // v1.7.0+ causes runtime errors; see issue #1388
+    version: "1.13.0",
+    files: ["standalone.js", "parser-babylon.js"],
   },
 ];
 
@@ -107,11 +109,14 @@ const replDefaults: ReplState = {
   browsers: "",
   build: "",
   builtIns: false,
+  spec: false,
+  loose: false,
   circleciRepo: "",
   code: "",
   debug: false,
   evaluate: false,
   fileSize: false,
+  sourceType: "module",
   forceAllTransforms: false,
   isEnvPresetTabExpanded: false,
   isPluginsExpanded: false,

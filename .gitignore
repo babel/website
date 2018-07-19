@@ -24,30 +24,7 @@ yarn-error.log*
 
 .jekyll-metadata
 
-# These markdown files are downloaded/copied using scripts/download-readmes.js
-# from other repos so we don't want to commit them
-docs/helper-*.md
-docs/plugin-*.md
-docs/preset-*.md
-docs/gulp-*.md
-docs/cli.md
-docs/code-frame.md
-docs/core.md
-docs/generator.md
-docs/helpers.md
-docs/highlight.md
-docs/node.md
-docs/polyfill.md
-docs/register.md
-docs/runtime.md
-docs/template.md
-docs/traverse.md
-docs/types.md
-docs/standalone.md
-docs/babel.md
-docs/babylon.md
-docs/minify.md
-docs/messages.md
-
 # generated using scripts/download-sponsors.json
 website/data/sponsors.json
+
+package-lock.json

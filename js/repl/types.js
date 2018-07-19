@@ -10,6 +10,8 @@ export type EnvConfig = {
   isElectronEnabled: boolean,
   isBuiltInsEnabled: boolean,
   isNodeEnabled: boolean,
+  isSpecEnabled: boolean,
+  isLooseEnabled: boolean,
   builtIns: string | false,
   forceAllTransforms: boolean,
   shippedProposals: boolean,
@@ -30,6 +32,7 @@ export type PluginConfig = {
   package: string,
   version?: any,
   instanceName?: string,
+  files?: Array<string>,
 };
 
 export type MultiPackagesConfig = PluginConfig & {
@@ -55,6 +58,7 @@ export type BabelState = LazyLoadedState & {
 };
 
 export type EnvState = LazyLoadedState & {
+  availablePresets: Array<any>,
   build: number,
   errorMessage?: string,
   circleciRepo: string,
@@ -77,6 +81,7 @@ export type PluginState = LazyLoadedState & {
 export type PluginStateMap = { [name: string]: PluginState };
 
 export type filename = "file.js";
+export type SourceType = "script" | "module" | "unambiguous";
 
 export type CompileConfig = {
   debugEnvPreset: boolean,
@@ -87,6 +92,7 @@ export type CompileConfig = {
   prettify: boolean,
   sourceMap: boolean,
   filename: ?string,
+  sourceType: SourceType,
 };
 
 export type ReplState = {
@@ -94,14 +100,14 @@ export type ReplState = {
   browsers: string,
   build: string,
   builtIns: string | boolean,
+  spec: boolean,
+  loose: boolean,
   circleciRepo: string,
   code: string,
   debug: boolean,
   evaluate: boolean,
   fileSize: boolean,
-  isEnvPresetTabExpanded: boolean,
-  isPresetsTabExpanded: boolean,
-  isSettingsTabExpanded: boolean,
+  sourceType: SourceType,
   forceAllTransforms: boolean,
   shippedProposals: boolean,
   lineWrap: boolean,

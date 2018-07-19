@@ -4,9 +4,7 @@ title: babel-parser
 sidebar_label: babel-parser
 ---
 
-[comment]: # (Don't edit this file directly, it was copied using scripts/download-readmes.js)
-
-<p align="center">
+<p align="left">
   The Babel parser (previously Babylon) is a JavaScript parser used in <a href="https://github.com/babel/babel">Babel</a>.
 </p>
 
@@ -157,6 +155,7 @@ require("@babel/parser").parse("code", {
 
 - `decorators`:
   - `decoratorsBeforeExport` (`boolean`)
+  - `decoratorsBeforeExport` (`boolean`, default: `false`)
     ```js
     // decoratorsBeforeExport: true
     @dec
@@ -166,7 +165,7 @@ require("@babel/parser").parse("code", {
     export @dec class C {}
     ```
 - `flow`:
-  - `all` (`boolean`)
+  - `all` (`boolean`, default: `false`)
     <!-- TODO -->
 
 ### FAQ

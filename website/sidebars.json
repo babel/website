@@ -1,16 +1,23 @@
 {
   "docs": {
-    "General": [
+    "Guides": [
       "index",
+      "usage",
+      "configuration",
       "learn",
-      "editors",
-      "plugins",
-      "caveats",
-      "faq",
       "v7-migration",
       "v7-migration-api"
     ],
+    "General": [
+      "editors",
+      "plugins",
+      "presets",
+      "caveats",
+      "faq",
+      "roadmap"
+    ],
     "Usage": [
+      "babelconfigjs",
       "babelrc",
       "babel-cli",
       "babel-polyfill",
@@ -19,9 +26,6 @@
     ],
     "Presets": [
       "babel-preset-env",
-      "babel-preset-es2015",
-      "babel-preset-es2016",
-      "babel-preset-es2017",
       "babel-preset-stage-0",
       "babel-preset-stage-1",
       "babel-preset-stage-2",
@@ -32,7 +36,7 @@
       "babel-preset-typescript"
     ],
     "Tooling": [
-      "babylon",
+      "babel-parser",
       "babel-core",
       "babel-generator",
       "babel-code-frame",

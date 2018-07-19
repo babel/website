@@ -1,13 +1,3 @@
-- name: Vue School
-  url: https://vueschool.io/?babel
-  logo: vueschool.png
-  type: patreon
-  tier: gold-sponsors
-- name: devRant
-  url: https://devrant.com/?babel
-  logo: devRant.png
-  type: patreon
-  tier: gold-sponsors
 - name: Behance
   url: https://www.behance.net
   logo: behance.svg

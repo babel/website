@@ -1,5 +1,5 @@
 ---
-title:  "Upgrade to Babel 7"
+title: "Upgrade to Babel 7"
 id: v7-migration
 ---
 
@@ -442,6 +442,8 @@ Upgrading with Mocha:
 
 `@babel/register` will also now only compile files in the current working directly (was done to fix issues with symlinking).
 
+`@babel/register` options are now replaced instead of merged
+
 ## `@babel/generator`
 
 > Dropping the `quotes` option [#5154](https://github.com/babel/babel/pull/5154)] ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
@@ -461,6 +463,8 @@ This change just makes babel-generator output `,` instead of `;`.
 > Remove `babel-core/src/api/browser.js` [#5124](https://github.com/babel/babel/pull/5124) ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
 `babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [babel-standalone](https://github.com/babel/babel-standalone).
+
+Babel will return `filename` as an absolute path [#8044](https://github.com/babel/babel/pull/8044)
 
 ## `@babel/preset-env`
 

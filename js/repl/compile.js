@@ -3,6 +3,7 @@
 // Globals pre-loaded by Worker
 declare var Babel: any;
 declare var prettier: any;
+declare var prettierPlugins: any;
 
 import { getDebugInfoFromEnvResult } from "./replUtils";
 import type { BabelPresetEnvResult, CompileConfig } from "./types";
@@ -34,6 +35,8 @@ export default function compile(code: string, config: CompileConfig): Return {
   let envPresetDebugInfo = null;
   let sourceMap = null;
   let useBuiltIns = false;
+  let spec = false;
+  let loose = false;
   const meta = {
     compiledSize: 0,
     rawSize: new Blob([code], { type: "text/plain" }).size,
@@ -58,6 +61,12 @@ export default function compile(code: string, config: CompileConfig): Return {
     if (envConfig.isNodeEnabled) {
       targets.node = envConfig.node;
     }
+    if (envConfig.isSpecEnabled) {
+      spec = envConfig.isSpecEnabled;
+    }
+    if (envConfig.isLooseEnabled) {
+      loose = envConfig.isLooseEnabled;
+    }
 
     // onPresetBuild is invoked synchronously during compilation.
     // But the env preset info calculated from the callback should be part of our state update.
@@ -68,13 +77,19 @@ export default function compile(code: string, config: CompileConfig): Return {
       };
     }
 
-    const options = {
-      onPresetBuild,
+    const options: { [string]: any } = {
       targets,
       forceAllTransforms,
       shippedProposals,
       useBuiltIns,
+      spec,
+      loose,
     };
+    
+    // not a valid option in v7: preset-env-standalone added extra fields not in preset-env
+    if (Babel.version[0] === "6") {
+      options.onPresetBuild = onPresetBuild;
+    }
 
     config.presets.push(["env", options]);
   }
@@ -90,12 +105,19 @@ export default function compile(code: string, config: CompileConfig): Return {
           typeof preset === "string" &&
           /^stage-[0-2]$/.test(preset)
         ) {
-          return [preset, { decoratorsLegacy: true }];
+          return [
+            preset,
+            {
+              decoratorsLegacy: true,
+              pipelineProposal: "minimal",
+            },
+          ];
         }
         return preset;
       }),
       plugins: config.plugins,
       filename: config.filename,
+      sourceType: config.sourceType,
     };
 
     const transformed = Babel.transform(code, babelConfig);
@@ -108,7 +130,11 @@ export default function compile(code: string, config: CompileConfig): Return {
       }
     }
 
-    if (config.prettify && typeof prettier !== "undefined") {
+    if (
+      config.prettify &&
+      typeof prettier !== "undefined" &&
+      typeof prettierPlugins !== "undefined"
+    ) {
       // TODO Don't re-parse; just pass Prettier the AST we already have.
       // This will have to wait until we've updated to Babel 7 since Prettier uses it.
       // Prettier doesn't handle ASTs from Babel 6.
@@ -118,7 +144,10 @@ export default function compile(code: string, config: CompileConfig): Return {
       // ) {
       //   compiled = prettier.__debug.formatAST(transformed.ast, DEFAULT_PRETTIER_CONFIG);
       // } else {
-      compiled = prettier.format(compiled, DEFAULT_PRETTIER_CONFIG);
+      compiled = prettier.format(compiled, {
+        ...DEFAULT_PRETTIER_CONFIG,
+        plugins: prettierPlugins,
+      });
       // }
     }
     meta.compiledSize = new Blob([compiled], { type: "text/plain" }).size;

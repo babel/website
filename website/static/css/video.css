@@ -5,11 +5,11 @@
   overflow: hidden;
 }
 
-.container {
+.videos-container {
   overflow: hidden;
 }
 
-.container > h2 {
+.videos-container > h2 {
   font-size: 30px;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -51,7 +51,10 @@
 
 .babel-video-block {
   padding: 1.25rem;
-  height: 90px;
+}
+
+.babel-video-block p {
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 992px) {

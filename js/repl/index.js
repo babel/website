@@ -1,14 +1,19 @@
 // @flow
 
-import 'babel-polyfill';
+import "babel-polyfill";
 import React from "react";
 import ReactDOM from "react-dom";
 
 import Repl from "./Repl";
 
-ReactDOM.render(<Repl />, document.getElementById("root"));
+declare var module: {
+  hot: {
+    accept(path: ?string, callback: ?() => void): void,
+  },
+};
+
+ReactDOM.render(<Repl />, (document.getElementById("root"): any));
 
 if (module.hot) {
-  // $FlowFixMe
   module.hot.accept();
 }

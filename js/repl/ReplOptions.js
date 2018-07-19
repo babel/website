@@ -18,6 +18,7 @@ import type {
   PluginStateMap,
   ShippedProposalsState,
   SidebarTabSection,
+  SourceType,
 } from "./types";
 
 const PRESET_ORDER = [
@@ -36,7 +37,7 @@ const PRESET_ORDER = [
 
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
-type ToggleSetting = (name: string, isEnabled: boolean) => void;
+type ToggleSetting = (name: string, value: boolean | string) => void;
 type ShowOfficialExternalPluginsChanged = (value: string) => void;
 type PluginSearch = (value: string) => void;
 type PluginChange = (plugin: Object) => void;
@@ -46,24 +47,21 @@ type Props = {
   className: string,
   debugEnvPreset: boolean,
   pluginsLoading: boolean,
-  pluginValue: string,
+  pluginValue: ?string,
   showOfficialExternalPlugins: boolean,
-  plugins: Array<Object>,
   pluginChange: PluginChange,
-  externalPlugins: Array<Object>,
+  externalPlugins: Array<string>,
   showOfficialExternalPluginsChanged: ShowOfficialExternalPluginsChanged,
   envConfig: EnvConfig,
   pluginSearch: PluginSearch,
   envPresetState: EnvState,
   shippedProposalsState: ShippedProposalsState,
-  isEnvPresetTabExpanded: boolean,
-  isPluginsExpanded: boolean,
   fileSize: boolean,
+  sourceType: SourceType,
   isExpanded: boolean,
-  isPresetsTabExpanded: boolean,
-  isSettingsTabExpanded: boolean,
   lineWrap: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
+  onExternalPluginRemove: (pluginName: string) => void,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
   pluginState: PluginStateMap,
@@ -147,16 +145,16 @@ class ExpandedContainer extends Component<Props, State> {
       envPresetState,
       shippedProposalsState,
       fileSize,
-      isPluginsExpanded,
+      sourceType,
       lineWrap,
       onIsExpandedChange,
+      onExternalPluginRemove,
       onSettingChange,
       pluginState,
       presetState,
       runtimePolyfillConfig,
       runtimePolyfillState,
       pluginsLoading,
-      plugins,
       pluginValue,
       showOfficialExternalPlugins,
       loadingExternalPlugins,
@@ -217,6 +215,7 @@ class ExpandedContainer extends Component<Props, State> {
               />
               File Size
             </label>
+
             <label className={styles.settingsLabel}>
             File Name
               <input
@@ -225,6 +224,18 @@ class ExpandedContainer extends Component<Props, State> {
                 size={fileNameBoxSize}
                 value={filename}
               />
+            <label className={`${styles.settingsLabel} ${styles.selectLabel}`}>
+              Source Type
+              <select
+                value={sourceType}
+                onChange={(event: SyntheticInputEvent<*>) =>
+                  onSettingChange("sourceType", event.target.value)}
+                className={styles.sourceTypeSelect}
+              >
+                <option value="module">Module</option>
+                <option value="script">Script</option>
+                <option value="unambiguous">Unambiguous</option>
+              </select>
             </label>
           </AccordionTab>
           <AccordionTab
@@ -382,6 +393,36 @@ class ExpandedContainer extends Component<Props, State> {
                 type="checkbox"
               />
             </label>
+            <label className={styles.envPresetRow}>
+              <LinkToDocs
+                className={`${styles.envPresetLabel} ${styles.highlight}`}
+                section="spec"
+              >
+                Spec
+              </LinkToDocs>
+              <input
+                checked={envConfig.isSpecEnabled}
+                className={styles.envPresetCheckbox}
+                disabled={disableEnvSettings}
+                onChange={this._onEnvPresetSettingCheck("isSpecEnabled")}
+                type="checkbox"
+              />
+            </label>
+            <label className={styles.envPresetRow}>
+              <LinkToDocs
+                className={`${styles.envPresetLabel} ${styles.highlight}`}
+                section="loose"
+              >
+                Loose
+              </LinkToDocs>
+              <input
+                checked={envConfig.isLooseEnabled}
+                className={styles.envPresetCheckbox}
+                disabled={disableEnvSettings}
+                onChange={this._onEnvPresetSettingCheck("isLooseEnabled")}
+                type="checkbox"
+              />
+            </label>
             {isEnvFeatureSupported(envConfig.version, "shippedProposals") && (
               <label className={styles.envPresetRow}>
                 {shippedProposalsState.isLoading ? (
@@ -444,12 +485,13 @@ class ExpandedContainer extends Component<Props, State> {
             _onshowOfficialExternalPluginsChanged={
               this._onshowOfficialExternalPluginsChanged
             }
-            _pluginChanged={this._pluginChanged}
-            isPluginsExpanded={isPluginsTabExpanded}
-            loadingExternalPlugins={loadingExternalPlugins}
+            _pluginChanged={this.props.pluginChange}
+            isExpanded={isPluginsTabExpanded}
+            isLoading={loadingExternalPlugins}
+            onRemove={onExternalPluginRemove}
             onToggleExpanded={this.handleToggleTabExpanded}
             pluginValue={pluginValue}
-            plugins={plugins}
+            plugins={this.props.externalPlugins}
             pluginsLoading={pluginsLoading}
             showOfficialExternalPlugins={showOfficialExternalPlugins}
             styles={styles}
@@ -479,7 +521,9 @@ class ExpandedContainer extends Component<Props, State> {
     this.props.onEnvPresetSettingChange(type, event.target.value);
   };
 
-  _onEnvPresetSettingCheck = (type: string) => (event: SyntheticInputEvent<*>) => {
+  _onEnvPresetSettingCheck = (type: string) => (
+    event: SyntheticInputEvent<*>
+  ) => {
     this.props.onEnvPresetSettingChange(type, event.target.checked);
   };
 
@@ -614,7 +658,7 @@ const styles = {
 
     [media.large]: {
       height: "100%",
-      width: "15rem",
+      width: "18rem",
 
       [`& .${nestedCloseButton}`]: {
         right: "-2rem",
@@ -753,6 +797,37 @@ const styles = {
     "&:hover": {
       backgroundColor: colors.inverseBackgroundDark,
       color: colors.inverseForeground,
+    },
+  }),
+  selectLabel: css({
+    alignItems: "flex-start",
+    flexDirection: "column",
+    flexBasis: "4rem",
+    margin: "1rem 0 0 0",
+    padding: "0 0.5rem",
+  }),
+  sourceTypeSelect: css({
+    appearance: "none",
+    backgroundColor: "#2D3035",
+    // eslint-disable-next-line
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='${colors.inverseForegroundLight}'><polygon points='0,0 100,0 50,50'/></svg>")`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "8px",
+    backgroundPosition: "calc(100% - 1rem) calc(100% - 8px)",
+    border: 0,
+    color: colors.inverseForegroundLight,
+    height: "30px",
+    margin: "0.25rem 0 0 0",
+    padding: "0 0.5rem",
+    transition: "all 0.25s ease-in",
+    width: "100%",
+
+    "&:hover": {
+      backgroundColor: "#32353A",
+    },
+
+    "&::-ms-expand": {
+      display: "none",
     },
   }),
   envPresetColumn: css({
