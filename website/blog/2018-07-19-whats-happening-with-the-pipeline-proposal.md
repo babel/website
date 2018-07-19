@@ -8,7 +8,7 @@ categories: announcements
 share_text: "What's Happening With the Pipeline (|>) Proposal?"
 ---
 
-With the release of [babel@7.0.0-beta52](https://github.com/babel/babel/releases/tag/v7.0.0-beta.52), we introduced a new required configuration flag to `@babel/plugin-proposal-pipeline-operator`, a breaking change not for the pipeline operator. To clear up any confusion, let's take a look at the pipeline proposal and why we needed to introduce this configuration option.
+With the release of [babel@7.0.0-beta52](https://github.com/babel/babel/releases/tag/v7.0.0-beta.52), we introduced a new required configuration flag to `@babel/plugin-proposal-pipeline-operator`, a breaking change for the pipeline operator. To clear up any confusion, let's take a look at the pipeline proposal and why we needed to introduce this configuration option.
 
 <!--truncate-->
 
