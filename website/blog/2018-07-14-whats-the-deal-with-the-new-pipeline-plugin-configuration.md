@@ -21,7 +21,22 @@ The pipeline operator was originally introduced by [Gilbert Garza](https://githu
 
 ### Placeholders
 
-The first issue was the question of placeholders. This was first raised by [Kevin Smith](https://github.com/zenparsing) in [this issue](https://github.com/tc39/proposal-pipeline-operator/issues/84), suggesting Hack-style pipelining requring placeholders for every function call. Placeholders expand the potential use space of the pipeline operator, as you can now embed arbitrary expressions in the pipeline, with the placeholder representing the value returned from the previous step.
+The first issue was the question of placeholders. This was first raised by [Kevin Smith](https://github.com/zenparsing) in [this issue](https://github.com/tc39/proposal-pipeline-operator/issues/84), where he suggested [Hack-style pipelining](https://docs.hhvm.com/hack/operators/pipe-operator). In Hack, a placeholder is required for every right-hand side of the pipeline, as in this example:
+
+```
+namespace Hack\UserDocumentation\Operators\Pipe\Examples\MapFilterCountPiped;
+
+function piped_example(array<int> $arr): int {
+  return $arr
+    |> \array_map($x ==> $x * $x, $$)
+    |> \array_filter($$, $x ==> $x % 2 == 0)
+    |> \count($$);
+}
+
+var_dump(piped_example(range(1, 10)));
+```
+
+We built on this concept, as a placeholder can easily be used in arbitrary expressions, with the placeholder representing the value returned from the previous step. This affords additional flexibility and power within a pipeline step.
 
 The downside is the complexity involved in introducing a new token. The hash (`#`) is the current choice, and although this is still open to bikeshedding, any token would potentially have multiple meanings. The hash is also used by the private fields proposal, and [all other options are in use in one form or another](https://github.com/tc39/proposal-partial-application/issues/21#issuecomment-361092565).
 
