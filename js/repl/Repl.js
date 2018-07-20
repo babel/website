@@ -74,6 +74,7 @@ type State = {
   loadingExternalPlugins: boolean,
   showTimeTravel: boolean,
   transitions: Array<Object>,
+  currentTransition: Object,
 };
 
 const DEBOUNCE_DELAY = 500;
@@ -161,10 +162,14 @@ class Repl extends React.Component<Props, State> {
       loadingExternalPlugins: false,
       showTimeTravel: true,
       transitions: [],
+      currentTransition: {},
     };
 
     this._setupBabel(defaultPresets);
   }
+  selectTransition = (transition: Object) => {
+    this.setState({ currentTransition: transition });
+  };
 
   render() {
     const state = this.state;
@@ -248,7 +253,11 @@ class Repl extends React.Component<Props, State> {
               placeholder="Compiled output will be shown here"
             />
           </div>
-          <TimeTravelSlider transitions={state.transitions} />
+          <TimeTravelSlider
+            currentTransition={state.currentTransition}
+            transitions={state.transitions}
+            selectTransition={this.selectTransition}
+          />
         </div>
       </div>
     );
@@ -589,7 +598,6 @@ class Repl extends React.Component<Props, State> {
 
   _updateCode = (code: string) => {
     this.setState({ code });
-
     // Update state with compiled code, errors, etc after a small delay.
     // This prevents frequent updates while a user is typing.
     this._compileToState(code);

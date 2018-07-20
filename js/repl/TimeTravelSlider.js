@@ -6,31 +6,13 @@ import { colors } from "./styles";
 
 type Props = {
   className?: string,
+  currentTransition: Object,
   transitions: Array<Object>,
+  selectTransition: (transition: Object) => void,
 };
 
-type State = {
-  current: Object,
-};
-
-type SelectTransition = {
-  code: string,
-  currentNode: string,
-  pluginAlias: string,
-  visitorType: string,
-};
-
-class TimeTravelSlider extends React.Component<Props, State> {
+class TimeTravelSlider extends React.Component<Props> {
   _isMounted = false;
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      current: {},
-    };
-
-    this.handleMouse = this.handleMouse.bind(this);
-  }
-
   componentDidMount = () => {
     this._isMounted = true;
   };
@@ -39,13 +21,9 @@ class TimeTravelSlider extends React.Component<Props, State> {
     this._isMounted = false;
   };
 
-  handleMouse = (transition: SelectTransition) => {
-    this.setState({ current: transition });
-  };
-
   render() {
-    const { transitions } = this.props;
-    const { current } = this.state;
+    const { transitions, currentTransition } = this.props;
+    console.log(currentTransition.code);
     return (
       <div>
         <div className={styles.timeTravelSlider}>
@@ -56,15 +34,15 @@ class TimeTravelSlider extends React.Component<Props, State> {
                   className={styles.silderBox}
                   key={`${i}-transition`}
                   onMouseEnter={() =>
-                    transition && this.handleMouse(transition)}
+                    transition && this.props.selectTransition(transition)}
                 />
               );
             })}
         </div>
         <StatusBar
-          pluginAlias={current.pluginAlias}
-          visitorType={current.visitorType}
-          currentNode={current.currentNode}
+          pluginAlias={currentTransition.pluginAlias}
+          visitorType={currentTransition.visitorType}
+          currentNode={currentTransition.currentNode}
         />
       </div>
     );
