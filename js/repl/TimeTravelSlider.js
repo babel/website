@@ -23,10 +23,9 @@ class TimeTravelSlider extends React.Component<Props> {
 
   render() {
     const { transitions, currentTransition } = this.props;
-    console.log(currentTransition.code);
     return (
-      <div>
-        <div className={styles.timeTravelSlider}>
+      <div className={styles.sliderWrapper}>
+        <div className={styles.sliderRow}>
           {transitions &&
             transitions.map((transition, i) => {
               return (
@@ -71,20 +70,28 @@ const StatusBar = ({
 export default TimeTravelSlider;
 
 const styles = {
-  timeTravelSlider: css({
+  sliderWrapper: css({
+    height: "20%",
     display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    backgroundColor: colors.inverseBackgroundDark,
+  }),
+  sliderRow: css({
+    display: "flex",
+    flex: "1 auto",
+    flexWrap: "wrap",
     flexDirection: "row",
     justifyContent: "stretch",
-    height: "50px",
     width: "100%",
     position: "relative",
     background: colors.inverseBackground,
   }),
   silderBox: css({
+    flex: "1 auto",
     borderTop: `1px solid ${colors.inverseBackgroundDark}`,
     borderLeft: `1px solid ${colors.inverseBackgroundDark}`,
-    width: "100%",
-    height: "50px",
+    // width: "100%",
     transition: "background-color 250ms ease-in-out, color 250ms ease-in-out",
     "&:hover": {
       backgroundColor: colors.inverseBackgroundDark,
@@ -97,12 +104,14 @@ const styles = {
   statusBar: css({
     display: "flex",
     flexDirection: "row",
-    justifyContent: "stretch",
     padding: "0.625rem 0.9375rem",
+    justifyContent: "flex-start",
     margin: 0,
     fontFamily: "monospace",
     fontSize: "0.75rem",
     fontWeight: "normal",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
     backgroundColor: colors.inverseBackgroundDark,
     color: colors.inverseForegroundLight,
   }),

@@ -164,11 +164,11 @@ class Repl extends React.Component<Props, State> {
       transitions: [],
       currentTransition: {},
     };
-
     this._setupBabel(defaultPresets);
   }
   selectTransition = (transition: Object) => {
     this.setState({ currentTransition: transition });
+    this.setState({ compiled: transition.code });
   };
 
   render() {
@@ -254,6 +254,7 @@ class Repl extends React.Component<Props, State> {
             />
           </div>
           <TimeTravelSlider
+            className={styles.sliders}
             currentTransition={state.currentTransition}
             transitions={state.transitions}
             selectTransition={this.selectTransition}
@@ -470,7 +471,6 @@ class Repl extends React.Component<Props, State> {
         sourceMap: runtimePolyfillState.isEnabled,
         sourceType: state.sourceType,
         getTransitions: state.showTimeTravel,
-        transitions: state.transitions,
       })
       .then(result => {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
@@ -662,10 +662,10 @@ const styles = {
     height: "100%",
     width: "100%",
     justifyContent: "stretch",
-    overflow: "auto",
+    overflow: "hidden",
   }),
   panels: css({
-    height: "100%",
+    height: "80%",
     width: "100%",
     display: "flex",
     flexDirection: "row",
@@ -673,5 +673,9 @@ const styles = {
     overflow: "auto",
     fontSize: "0.875rem",
     lineHeight: "1.25rem",
+  }),
+  sliders: css({
+    height: "20%",
+    margin: 0,
   }),
 };
