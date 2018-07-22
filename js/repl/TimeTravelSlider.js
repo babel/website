@@ -32,8 +32,7 @@ class TimeTravelSlider extends React.Component<Props> {
                 <div
                   className={styles.silderBox}
                   key={`${i}-transition`}
-                  onMouseEnter={() =>
-                    transition && this.props.selectTransition(transition)}
+                  onMouseEnter={() => this.props.selectTransition(transition)}
                 />
               );
             })}
@@ -88,14 +87,18 @@ const styles = {
     background: colors.inverseBackground,
   }),
   silderBox: css({
-    flex: "1 auto",
+    flex: 1,
+    width: 0,
+    "&:last-child": {
+      marginRight: 0,
+    },
     borderTop: `1px solid ${colors.inverseBackgroundDark}`,
     borderLeft: `1px solid ${colors.inverseBackgroundDark}`,
-    // width: "100%",
+    color: colors.inverseForeground,
+    fontSize: "0.5rem",
     transition: "background-color 250ms ease-in-out, color 250ms ease-in-out",
     "&:hover": {
       backgroundColor: colors.inverseBackgroundDark,
-      color: colors.inverseForeground,
     },
   }),
   info: css({
