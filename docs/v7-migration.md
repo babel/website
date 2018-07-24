@@ -38,6 +38,8 @@ Most plugins/top level packages now have a `peerDependency` on `@babel/core`.
 
 ## Package Renames
 
+- `babylon` is now `@babel/parser`
+
 You can still use the shorthand version of a package name (remove the `preset-` or `plugin-`) in the config, but I'm choosing to use the whole package name for clarity (maybe we should just remove that, given it doesn't save that much typing anyway).
 
 ```diff
