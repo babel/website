@@ -78,24 +78,15 @@ Thus it's easy to [search](https://twitter.com/search?q=es7%20class%20properties
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Your reminder that binding with :: is just an experimental proposal at stage 0 and might never become a part of JS. Don&#39;t call it &quot;ES7&quot;.</p>&mdash; Dan Abramov (@dan_abramov) <a href="https://twitter.com/dan_abramov/status/785082176610115584?ref_src=twsrc%5Etfw">October 9, 2016</a></blockquote>
 
-It's completely understandable that this happens without realizing it, but continuing to do so sets different expectations for how the language progresses. It's nothing to feel guilty about, we learn as a community and [remind](https://twitter.com/dan_abramov/status/785082176610115584) one another of how JavaScript works.
+It's completely understandable that this happens without realizing it, but continuing to do so sets different expectations for how the language progresses. It's nothing to feel guilty about, we learn as a community and remind one another of how JavaScript works.
 
-[Jay Phelps](https://twitter.com/_jayphelps/status/779770321003962369) wrote a nice [article](https://medium.com/@jayphelps/please-stop-referring-to-proposed-javascript-features-as-es7-cad29f9dcc4b) about the subject. He explains it would be best to call them by the "Stage" they are currently at: "Stage 2 Decorators", or just simply the "Decorators Proposal".
+[Jay Phelps](https://twitter.com/_jayphelps/status/779770321003962369) wrote a nice [article](https://medium.com/@jayphelps/please-stop-referring-to-proposed-javascript-features-as-es7-cad29f9dcc4b) about this subject. He explains it would be best to call them by the "Stage" they are currently at: "Stage 2 Decorators", or just simply the "Decorators Proposal".
 
 The reasoning is that saying "ES7 Decorators" assumes that Decorators is expected to be in ES7. I mentioned this in my [last post regarding compiling node_modules](https://babeljs.io/blog/2018/06/26/on-consuming-and-publishing-es2015+-packages#staging-process), but being in a particular Stage doesn't guarantee much: a proposal can stall, move backward, or get removed entirely.
 
 We wanted to highlight this fact when we decided to [change the names](https://babeljs.io/docs/en/next/v7-migration#switch-to-proposal-for-tc39-proposals-blog-2017-12-27-nearing-the-70-releasehtml-renames-proposal) of the proposal plugins from `@babel/plugin-transform-` to `@babel/plugin-proposal-`.
 
 What are we to do here? It does feel like part of our responsibility to make speaking about these proposals clear.
-
-### Semver is Hard for Compilers
-
-TODO: https://twitter.com/sebmck/status/685870041347305472, https://github.com/babel/babel/pull/3225 (rollup, flow, typescript, what about other compilers)
-
-### Ecosystem Maintenance Burden
-
-TODO: We push all other tools in a negative way, burdensome even for us! Can mention all the tooling that needs to be updated along the way and the lack of help. https://twitter.com/mjackson/status/619580016473456641, http://jshint.com/blog/new-lang-features/
-
 
 ### Back and Forth
 
@@ -159,6 +150,10 @@ Also, you are free to make your own preset that contains the same plugins and up
 TODO: Refer to previous [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) about configuring proposal plugins to not have default behaviors if in-flux.
 
 We are trying to better position ourselves in the JavaScript ecosystem: being part of the TC39 process and being a resource for both implementing newer (Stage 0-2) proposals and receiving feedback from users.
+
+### Ecosystem Maintenance Burden
+
+TODO: We push all other tools in a negative way, burdensome even for us! Can mention all the tooling that needs to be updated along the way and the lack of help. https://twitter.com/mjackson/status/619580016473456641, http://jshint.com/blog/new-lang-features/
 
 ---
 
