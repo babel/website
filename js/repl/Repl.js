@@ -166,14 +166,9 @@ class Repl extends React.Component<Props, State> {
     };
     this._setupBabel(defaultPresets);
   }
-  selectTransition = (transition: Object) => {
-    this.setState({ currentTransition: transition });
-    this.setState({ compiled: transition.code });
-  };
 
   render() {
     const state = this.state;
-
     if (!state.babel.isLoaded) {
       let message = "Loading Babel...";
 
@@ -603,6 +598,19 @@ class Repl extends React.Component<Props, State> {
     this._compileToState(code);
   };
 
+  selectTransition = (transition: Object) => {
+    const transitionSize = prettySize(transition.size);
+    this.setState({
+      ...this.state,
+      currentTransition: transition,
+      compiled: transition.code,
+      meta: {
+        compiledSize: transitionSize,
+        rawSize: this.state.meta.rawSize,
+      },
+    });
+  };
+
   handleRemoveExternalPlugin = (pluginName: string) => {
     this.setState(
       state => ({
@@ -653,7 +661,6 @@ const styles = {
     justify-content: stretch;
     overflow: auto;
     font-size: 0.875rem;
-
     ${media.mediumAndDown} {
       flex-direction: column;
     }

@@ -51,6 +51,7 @@ export default class Transitions {
           pluginAlias,
           visitorType,
           currentNode: args[0].node.type,
+          size: new Blob([code], { type: "text/plain" }).size,
         });
       }
       callback.call(this, ...args);
