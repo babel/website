@@ -54,37 +54,37 @@ module.exports = {
 
 ## Problems
 
-These presets were a convenient way use what we all wanted: the new, shiny, "yet-to-be-determined" future of JavaScript.
+These presets were a convenient way to use what we all wanted: the new, shiny, "yet-to-be-determined" future of JavaScript.
 
 Looking back, it worked really well! (Maybe too well?)
 
 ### Too Good a Job?
 
-With new languages like [CoffeeScript](https://coffeescript.org/) and new tooling like [Traceur](https://github.com/google/traceur-compiler) it set the expectation that compiling JavaScript wasn't something to laugh at. And Babel made it that much easier to integrate with existing tooling and to use future syntax. The expectations were changed from skepticism and worry to completely embracing the experimental.
+Languages like [CoffeeScript](https://coffeescript.org/) and tooling like [Traceur](https://github.com/google/traceur-compiler) helped establish the idea that compiling JavaScript wasn't crazy. Babel made it even easier to both use new/future syntax and integrate with existing tooling. The expectations changed from skepticism and worry to completely embracing the experimental.
 
-We probably wouldn't be where we're at if not for the wide adoption of compilers such as Babel: it brought ES2015 to many more people, earlier both in terms of teaching and usage. With the growth of React and it's optional JSX syntax along side class properties and object rest/spread led to people knowing a bit more about these syntax proposals.
+We probably wouldn't be where we are at if not for the wide adoption of compilers such as Babel: it accelerated the usage (and teaching) of ES2015 to a much larger audience. The growth of React further fueled usage as its JSX syntax, class properties, and object rest/spread led to people knowing a bit more about these syntax proposals.
 
 Babel became a one-time setup for people, never to be thought of again. It became underlying infrastructure, hidden behind other tooling until there was a `SyntaxError`, dependency issues, or integration issues. Simply use `stage-0`.
 
-This was awesome to see in some ways, as it meant that these ideas were being tested in the wild, especially in production. However, it meant that many companies, tools, people would be in some trouble if a proposal happened to drop or changed in a significant way.
+This was awesome to see in some ways, as it meant that these ideas were being tested in the wild, even in production environments. However, it also meant that many companies, tools, and people would encounter some trouble if a proposal happened to change in a significant way (or even get dropped altogether).
 
 ### "ES7 Decorators"
 
 Part of issue is precisely around naming things, and as we hear a lot, naming things is hard.
 
-There were a lot of names for ES6 itself: Harmony, ES Next, ES6, ES2015. So when people hear about new ideas it makes sense to just pick the latest number and attach the name to it.
+There were a lot of names for ES6 itself: Harmony, ES Next, ES6, ES2015. When people hear about new ideas it makes sense to just pick the latest number and attach the name to it.
 
-Thus it's easy to [search](https://twitter.com/search?q=es7%20class%20properties&src=typd) [around](https://twitter.com/search?q=es7%20decorators&src=typd) for tweets/blog posts/talks that say something like "ES7 Decorators" and find that it is a common occurrence.
+Thus it's easy to [search](https://twitter.com/search?q=es7%20class%20properties&src=typd) [around](https://twitter.com/search?q=es7%20decorators&src=typd) for tweets/blog posts/talks that say something like "ES7 Decorators" and find it become the established name for it.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Your reminder that binding with :: is just an experimental proposal at stage 0 and might never become a part of JS. Don&#39;t call it &quot;ES7&quot;.</p>&mdash; Dan Abramov (@dan_abramov) <a href="https://twitter.com/dan_abramov/status/785082176610115584?ref_src=twsrc%5Etfw">October 9, 2016</a></blockquote>
 
-It's completely understandable that this happens and not realize it, but continuing to do so sets different expectations on how the language progresses. Nothing to feel guilty about, we learn as a community and [remind](https://twitter.com/dan_abramov/status/785082176610115584) one another of how JavaScript works.
+It's completely understandable that this happens without realizing it, but continuing to do so sets different expectations for how the language progresses. It's nothing to feel guilty about, we learn as a community and [remind](https://twitter.com/dan_abramov/status/785082176610115584) one another of how JavaScript works.
 
-[Jay Phelps](https://twitter.com/_jayphelps/status/779770321003962369) wrote a nice [article](https://medium.com/@jayphelps/please-stop-referring-to-proposed-javascript-features-as-es7-cad29f9dcc4b) about the subject explaining it would be best to call them by the "Stage" they are currently at: "Stage 2 Decorators", or simply as the "Decorators Proposal".
+[Jay Phelps](https://twitter.com/_jayphelps/status/779770321003962369) wrote a nice [article](https://medium.com/@jayphelps/please-stop-referring-to-proposed-javascript-features-as-es7-cad29f9dcc4b) about the subject. He explains it would be best to call them by the "Stage" they are currently at: "Stage 2 Decorators", or just simply the "Decorators Proposal".
 
-The reasoning is that saying "ES7 Decorators" assumes that Decorators is expected to be in ES7. I mentioned this in my [last post regarding compiling node_modules](https://babeljs.io/blog/2018/06/26/on-consuming-and-publishing-es2015+-packages#staging-process), but being in a Stage doesn't guarantee much if proposals stall, move backward, or get removed entirely.
+The reasoning is that saying "ES7 Decorators" assumes that Decorators is expected to be in ES7. I mentioned this in my [last post regarding compiling node_modules](https://babeljs.io/blog/2018/06/26/on-consuming-and-publishing-es2015+-packages#staging-process), but being in a particular Stage doesn't guarantee much: a proposal can stall, move backward, or get removed entirely.
 
-This is the reasoning behind [changing the names](https://babeljs.io/docs/en/next/v7-migration#switch-to-proposal-for-tc39-proposals-blog-2017-12-27-nearing-the-70-releasehtml-renames-proposal) of the proposal plugins to be `@babel/plugin-proposal-` instead of `@babel/plugin-transform-`.
+We wanted to highlight this fact when we decided to [change the names](https://babeljs.io/docs/en/next/v7-migration#switch-to-proposal-for-tc39-proposals-blog-2017-12-27-nearing-the-70-releasehtml-renames-proposal) of the proposal plugins from `@babel/plugin-transform-` to `@babel/plugin-proposal-`.
 
 What are we to do here? It does feel like part of our responsibility to make speaking about these proposals clear.
 
