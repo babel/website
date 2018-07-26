@@ -600,15 +600,15 @@ class Repl extends React.Component<Props, State> {
 
   selectTransition = (transition: Object) => {
     const transitionSize = prettySize(transition.size);
-    this.setState({
-      ...this.state,
+    this.setState(prevState => ({
+      ...prevState,
       currentTransition: transition,
       compiled: transition.code,
       meta: {
         compiledSize: transitionSize,
         rawSize: this.state.meta.rawSize,
       },
-    });
+    }));
   };
 
   handleRemoveExternalPlugin = (pluginName: string) => {

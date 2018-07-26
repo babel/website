@@ -30,6 +30,7 @@ export default class Transitions {
       code,
       pluginAlias: "output",
       visitorType: "exit",
+      size: new Blob([code], { type: "text/plain" }).size,
     });
   };
 
