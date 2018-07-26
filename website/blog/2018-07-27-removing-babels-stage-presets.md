@@ -151,11 +151,11 @@ But removing previous defaults or removing the Stage presets doesn't mean we don
 
 ## Migrating
 
-TL;DR is that removing the Stage presets so that at some level, people will have to opt-in and know what kinds of proposals are being used instead of assuming what people should use, especially given the unstable nature of some of these proposals. If you use your own preset or a toolchain (i.e. [create-react-app](https://github.com/facebook/create-react-app)) it's possible this change doesn't affect you directly.
+> For a more automatic migration, we have updated [babel-upgrade](https://github.com/babel/babel-upgrade) to do this for you (you can run `npx babel-upgrade`).
 
-We deprecated the Stage presets in v7 as of `7.0.0-beta.52`, so if you don't want to change your config now we would suggest you *pin* the versions to `beta.54` until you can upgrade; after `beta.54` we will throw an error with how to migrate.
+The TL;DR is that we removing the Stage presets. At some level, people will have to opt-in and know what kinds of proposals are being used instead of assuming what people should use, especially given the unstable nature of some of these proposals. But if you use your another preset or a toolchain (i.e. [create-react-app](https://github.com/facebook/create-react-app)) it's possible this change doesn't affect you directly.
 
-For a more automatic migration, we have updated [babel-upgrade](https://github.com/babel/babel-upgrade) which you can run with `npx babel-upgrade`.
+We have deprecated the Stage presets as of `7.0.0-beta.52`, so if you don't want to change your config now we would suggest you *pin* the versions to `beta.54` until you can upgrade; after `beta.54` we will throw an error with how to migrate.
 
 As as alternative, you are free to make your own preset that contains the same plugins and upgrade them as you please (someone make a tool that automatically creates a preset from your config). In the future, we may want to work on a `babel-init` that can help you setup plugins interactively or update `babel-upgrade` itself to accomplsih it. Maybe Babel should stay as a low-level tool and rely on other higher-level/framework tools like `create-react-app` to handle these choices for people.
 
