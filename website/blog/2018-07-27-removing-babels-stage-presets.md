@@ -125,6 +125,18 @@ It isn't our intention to threaten, rush, or force specific things into the ecos
 
 ## Hesitations
 
+### Other Considerations
+
+We also could of tried to:
+
+- [Rename the presets](https://github.com/babel/babel/issues/4914) to better signify the stability level (doesn't solve the versioning problem)
+- Better versioning strategies: independently version the presets and update them immediately when needed, maybe use `0.x`
+- Warn/Error for old out of date versions of presets.
+
+The the end, people would still have to look up what proposals are at what Stage to know which ones to use if we kept the Stages in.
+
+### Why Now?
+
 Why not remove it earlier? Stage presets have been part of Babel for years and there were concerns with adding more "complexity" to using Babel. A lot of tooling, documentation, articles, and knowledge were around the Stage presets. We also thought it was better to have officially maintained presets, since someone would (and will) inevitably create them.
 
 We're trying to determine the right level of feedback: if it's only the committee that decides what goes into the language,  it may lead to well-specified features that are not needed, but if the community expects that in-progress, experimental proposals are considered stable or ok to use in production without consequence, then we have other issues. We all want to move forward and proceed with intention: not rushing, but not being too cautious. Babel is the right place to do that experimentation but knowing where the boundaries are is necessary.
@@ -133,7 +145,9 @@ In the end, it actually makes more sense to remove the presets because it means 
 
 We fully expect some initial backlash from this, but ultimately feel like removing the Stage presets is a better decision for us all in the long run.
 
-TODO: mention stuff like https://news.ycombinator.com/item?id=11371906, https://www.reddit.com/r/javascript/comments/4c8isx/babel_6_useless_by_default_a_lesson_in_how_not_to/
+And this project is no stranger to community uproar 🙂, as Babel 6 was a "controverisal" release for many. There were plently of posts right after and even [recently](https://news.ycombinator.com/item?id=11371906) that speak about how difficult it was to use.
+
+But removing previous defaults or removing the Stage presets doesn't mean we don't care about ease of use, new users, or documentation. We try with what we can to keep the project stable, document what we know, and provide tooling to make things better.
 
 ## Migrating
 
@@ -143,31 +157,33 @@ We deprecated the Stage presets in v7 as of `7.0.0-beta.52`, so if you don't wan
 
 For a more automatic migration, we have updated [babel-upgrade](https://github.com/babel/babel-upgrade) which you can run with `npx babel-upgrade`.
 
-Also, you are free to make your own preset that contains the same plugins and upgrade them as you please.
+As as alternative, you are free to make your own preset that contains the same plugins and upgrade them as you please (someone make a tool that automatically creates a preset from your config). In the future, we may want to work on a `babel-init` that can help you setup plugins interactively or update `babel-upgrade` itself to accomplsih it. Maybe Babel should stay as a low-level tool and rely on other higher-level/framework tools like `create-react-app` to handle these choices for people.
 
 ## The Future
 
-TODO: Refer to previous [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) about configuring proposal plugins to not have default behaviors if in-flux.
+### Proposal Implementations in Babel
 
-We are trying to better position ourselves in the JavaScript ecosystem: being part of the TC39 process and being a resource for both implementing newer (Stage 0-2) proposals and receiving feedback from users.
+[Josh Justice](https://twitter.com/CodingItWrong) wrote a [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) recently about the changes to using the pipeline operator (`|>`).
+
+The main point there is that the proposal itself is in flux and has a few options to explore. Because we'd like to implement all three of the current possibilities as Babel plugins for both spec feedback and user feedback, we believed the way the plugin is used should change as well.
+
+Before we would simply add the proposal plugin to the config and that was it. Now we would remove the default behavior and ask users to opt-in to a flag that shows which proposal is chosen, and makes it clear that there isn't a fixed or even favored option at the moment.
+
+```diff
+{
+  "plugins": [
+-   "@babel/plugin-proposal-pipeline-operator"
++   ["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }]
+  ]
+}
+```
 
 ### Ecosystem Maintenance Burden
 
-TODO: We push all other tools in a negative way, burdensome even for us! Can mention all the tooling that needs to be updated along the way and the lack of help. https://twitter.com/mjackson/status/619580016473456641, http://jshint.com/blog/new-lang-features/
+TODO: Each new syntax provides affordances to the language, but it brings new burdens for all of our tooling. Can mention all the tooling that needs to be updated along the way and the lack of help. https://twitter.com/mjackson/status/619580016473456641, http://jshint.com/blog/new-lang-features/
 
----
+### Purpose
 
-TODO: considerations/alternatives/workarounds?
-
-> `babel-init`?
-> Rely on other higher level tools like create-react-app
-> Tool to convert your current config into a shareable preset
-> `babel-upgrade`
-
-There are a lot of other ways to tackle this issue as well, and maybe we can use them if it makes more sense in the future.
-
-- Versioning strategies: Independently version the presets and update them immediately when needed
-- [Rename the presets](https://github.com/babel/babel/issues/4914)
-- Keep them but warn/error when out of date?
+TODO: We are trying to better position ourselves in the JavaScript ecosystem: being part of the TC39 process and being a resource for both implementing newer (Stage 0-2) proposals and receiving feedback from users.
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
