@@ -95,7 +95,7 @@ We wanted to highlight this fact when we decided to [change the names](https://b
 
 ### BabelScript
 
-Having presets for proposals so early in the process may imply to people that these proposals are guaranteed to move forward or have a stable implementation.
+Having presets for proposals so early in the process may imply that these proposals are guaranteed to move forward or have a stable implementation.
 
 [TC39](https://tc39.github.io/process-document/) urges caution when using Stage 2-or below proposals, as it might result in inadvertent pressure from the community to keep the implementation as-is instead of improving it for fear of breaking existing code or ecosystem fragmentation (e.g. using a different symbol like `#` instead of `@` for decorators). 
 
@@ -131,13 +131,13 @@ In the end, people would still have to look up what proposals are at what Stage 
 
 ### Why Now?
 
-Why not remove it earlier? Stage presets have been part of Babel for years, and there were concerns with adding more "complexity" to using Babel. A lot of tooling, documentation, articles, and knowledge were around the Stage presets. Earlier, we thought it was better to officially maintain the presets since someone else would (and will) inevitably create them.
+Why not remove it earlier? The Stage presets have been part of Babel for years, and there were concerns with adding more "complexity" to using Babel. A lot of tooling, documentation, articles, and knowledge were around the Stage presets. Earlier, we thought it was better to officially maintain the presets since someone else would (and will) inevitably create them.
 
 We're trying to determine the right level of feedback: if it's only the committee that decides what goes into the language,  it may lead to well-specified features that are not needed, but if the community expects that in-progress, experimental proposals are considered stable or ok to use in production without consequence, then we'll have other issues. We all want to move forward and proceed with intention: not rushing, but not being too cautious. Babel is the right place to do that experimentation but knowing where the boundaries are is necessary.
 
 Removing the presets would be considered a "feature" since it means someone would have to make an explicit decision to use each proposal, which is reasonable for any proposal since they all have varying levels of instability, usefulness, and complexity.
 
-We fully expect some initial [backlash](https://news.ycombinator.com/item?id=11371906) from this, but ultimately feel that removing the Stage presets is a better decision for us all in the long run. But removing previous defaults or removing the Stage presets doesn't mean we don't care about ease of use, new users, or documentation. We work with what we can to keep the project stable, document what we know, and provide tooling to make things better.
+We fully expect some initial [backlash](https://news.ycombinator.com/item?id=11371906) from this, but ultimately feel that removing the Stage presets is a better decision for us all in the long run. However, removing previous defaults or removing the Stage presets doesn't mean we don't care about ease of use, new users, or documentation. We work with what we can to keep the project stable, provide tooling to make things better, and document what we know.
 
 ## Migrating
 
@@ -145,9 +145,9 @@ We fully expect some initial [backlash](https://news.ycombinator.com/item?id=113
 
 The TL;DR is that we're removing the Stage presets. At some level, people will have to opt-in and know what kinds of proposals are being used instead of assuming what people should use, especially given the unstable nature of some of these proposals. If you use another preset or a toolchain, (e.g. [create-react-app](https://github.com/facebook/create-react-app)) it's possible this change doesn't affect you directly.
 
-We have deprecated the Stage presets as of `7.0.0-beta.52`, so if you don't want to change your config now we would suggest you *pin* the versions to `beta.54` until you can upgrade; after `beta.54` we will throw an error with a message saying how to migrate.
+We have deprecated the Stage presets as of `7.0.0-beta.52`. If you don't want to change your config now, we would suggest you *pin* the versions to `beta.54` until you can upgrade; after `beta.54` we will throw an error with a message saying how to migrate. And check that all your versions are the same while in prerelease.
 
-As an alternative, you are free to make your own preset that contains the same plugins and upgrade them as you please. In the future, we may want to work on a `babel-init` that can help you set up plugins interactively or update `babel-upgrade` itself to list and add the current Stage plugins? Or maybe Babel should stay as a low-level tool and rely on other higher-level/framework tools like `create-react-app` to handle these choices for people.
+As an alternative, you are free to make your own preset that contains the same plugins and upgrade them as you please. In the future, we may want to work on a `babel-init` that can help you set up plugins interactively or update `babel-upgrade` itself to list and add the current Stage plugins. Maybe Babel should stay as a low-level tool and rely on other higher-level/framework tools like `create-react-app` to handle these choices for people.
 
 ### Preventing Proposal Lock-In
 
@@ -182,7 +182,7 @@ Babel has taken on the unusual burden of supporting these experimental features;
 
 ### The Future
 
-The purpose of this project is to act as a part of the TC39 process: being a resource for both implementing newer (Stage 0-2) proposals and receiving feedback from users while also supporting older versions of JavaScript. We hope this post sheds more light on how we are trying, as best we can, to better align this project in the JavaScript ecosystem.
+The purpose of this project is to act as a part of the TC39 process: being a resource for both implementing newer (Stage 0-2) proposals and receiving feedback from users while also supporting older versions of JavaScript. We hope this post sheds more light on how we are trying, as best we can, to better align this project in the JavaScript ecosystem. We will be releasing a RC for v7 soon!
 
 ---
 
