@@ -155,7 +155,7 @@ We have deprecated the Stage presets as of `7.0.0-beta.52`, so if you don't want
 
 As an alternative, you are free to make your own preset that contains the same plugins and upgrade them as you please. In the future, we may want to work on a `babel-init` that can help you set up plugins interactively or update `babel-upgrade` itself to list and add the current Stage plugins? Or maybe Babel should stay as a low-level tool and rely on other higher-level/framework tools like `create-react-app` to handle these choices for people.
 
-### Proposal Lock In
+### Preventing Proposal Lock In
 
 [James DiGioia](https://twitter.com/JamesDiGioia) wrote a [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) recently about the changes to using the pipeline operator (`|>`).
 
@@ -185,5 +185,11 @@ Who is doing that work, and is it our responsibility to make sure everything wor
 ### The Future
 
 The purpose of this project is to act as a part of the TC39 process: being a resource for both implementing newer (Stage 0-2) proposals and receiving feedback from users while also supporting older versions of JavaScript. We hope this post sheds more light on how we are trying, as best we can, to better align this project in the JavaScript ecosystem.
+
+---
+
+If you appreciate this post and the work we're doing on Babel, you can support me on [Patreon](https://www.patreon.com/henryzhu), ask your company to sponsor us on [Open Collective](https://opencollective.com/babel), or better yet get involved with Babel as part of your job/work. We'd appreciate the collective ownership.
+
+With thanks to all the reviewers (too many to list)!
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
