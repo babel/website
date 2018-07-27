@@ -66,7 +66,18 @@ We probably wouldn't be where we are if not for the wide adoption of compilers s
 
 Babel became a one-time setup for people, never to be thought of again. It became underlying infrastructure, hidden behind other tooling until there was a `SyntaxError`, dependency issues, or integration issues. Simply use `stage-0`.
 
-This was awesome to see in some ways, as it meant that these ideas were being tested in the wild, even in production environments. However, it also meant that many companies, tools, and people would encounter some trouble if a proposal happened to change in a significant way (or even get dropped altogether).
+This was awesome to see in some ways, as it meant that these ideas were being tested in the wild, even in production environments. However, it also meant that many companies, tools, and people would encounter some trouble if a proposal changed in a significant way (or even get dropped altogether).
+
+### Back and Forth
+
+Over the years, we've had many issues raised in our repo about what to do with the Stage presets: [#4914](https://github.com/babel/babel/issues/4914), [#4955](https://github.com/babel/babel/issues/4955), [#7770](https://github.com/babel/babel/issues/7770)
+
+I even wrote in an older post about the release of Babel 7.0 that said we *weren't* [removing them](https://babeljs.io/blog/2017/12/27/nearing-the-7.0-release) 😅.
+
+Ultimately, we decided that keeping the Stage presets would lead to some issues for Babel itself:
+
+- It was a common issue to ask something like: ["What presets(s) are needed to use async functions?"](https://github.com/babel/babel/issues/2948). It was difficult for people to know exactly what `stage-0` meant, and few people would look at its `package.json` or source.
+- Removing a plugin in Stage 3 is actually a breaking change. This issue is exacerbated when you are trying to use `@babel/preset-env` to not compile a natively supported proposal.
 
 ### "ES7 Decorators"
 
@@ -86,24 +97,11 @@ The reasoning is that saying "ES7 Decorators" assumes that Decorators is expecte
 
 We wanted to highlight this fact when we decided to [change the names](https://babeljs.io/docs/en/next/v7-migration#switch-to-proposal-for-tc39-proposals-blog-2017-12-27-nearing-the-70-releasehtml-renames-proposal) of the proposal plugins from `@babel/plugin-transform-` to `@babel/plugin-proposal-`.
 
-What are we to do here? It does feel like part of our responsibility to make speaking about these proposals clear.
-
-### Back and Forth
-
-Over the years, we've had many issues raised in our repo about what to do with the Stage presets: [#4914](https://github.com/babel/babel/issues/4914), [#4955](https://github.com/babel/babel/issues/4955), [#7770](https://github.com/babel/babel/issues/7770)
-
-I even wrote in an older post about the release of Babel 7.0 that said we *weren't* [removing them](https://babeljs.io/blog/2017/12/27/nearing-the-7.0-release) 😅.
-
-Ultimately, we decided that keeping the Stage presets would lead to some issues for Babel itself:
-
-- It was a common issue to ask something like: ["What presets(s) are needed to use async functions?"](https://github.com/babel/babel/issues/2948). It was difficult for people to know exactly what `stage-0` meant, and few people would look at its `package.json` or source.
-- Removing a plugin in Stage 3 is actually a breaking change. This issue is exacerbated when you are trying to use `@babel/preset-env` to not compile a natively supported proposal.
-
 ### BabelScript
 
 [TC39](https://tc39.github.io/process-document/) urges caution when using Stage 2-or below proposals, as it might result in inadvertent pressure from the community to keep the implementation as-is instead of improving/changing it for fear of breaking existing code or fragmentation (for example, using a different symbol like `#` for decorators instead of `@`). 
 
-People joke that developers who use Babel are using "BabelScript" instead of JavaScript, implying that somehow once a Babel plugin is made for a certain feature, that must mean it’s "fixed" or officially part of the language already (which is not true). For some, the first question that people think of when they see a new syntax or idea (Stage -1 😂) is whether there's a Babel plugin for it.
+People joke that developers who use Babel are using "BabelScript" instead of JavaScript, implying that somehow once a Babel plugin is made for a certain feature, that must mean it’s "fixed" or officially part of the language already (which is not true). For some, the first question that people think of when they see a new syntax or idea (Stage "-1") is whether there's a Babel plugin for it.
 
 Having presets for proposals so early in the process may imply to people that these proposals are guaranteed to move forward or have a stable implementation.
 
@@ -180,7 +178,9 @@ A language's "syntax budget" doesn't just apply to the complexity of the languag
 
 Once new syntax is proposed, many things need updating: parsers (`babylon`), syntax highlighting (`language-babel`), linters (`babel-eslint`), test frameworks (jest/ava), formatters (`prettier`), code coverage (`instanbul`), minifiers (`babel-minify`), and more.  There have been many issues brought up on projects like `acorn`, `eslint`, `jshint`, `typescript`, and others to support Stage 0 proposals because they were in Babel. There aren't many projects that would adhere to a policy that required them to support any proposal since that would be extremely demanding to maintain. In many ways, it's surprising we even attempt to handle it in Babel itself given the constant updates and churn.
 
-Who is doing that work, and is it our responsibility to make sure everything works? Every one of those projects (mostly volunteers) is lacking in help in almost every aspect, and yet we continually get complaints about this across the board. How are we, as a community, to take responsibility for dealing with these changes (same with open source as a whole)?
+Who is doing that work, and is it our responsibility to make sure everything works? Every one of those projects (mostly volunteers) is lacking in help in almost every aspect, and yet we continually get complaints about this across the board. How are we, as a community, to take responsibility for dealing with our infrastructure (not dissimilar to open source as a whole)?
+
+Babel has taken on the unusual burden of supporting these experimental features; at the same time, it's reasonable that other projects take a more conservative policy. If you'd like to see new language features supported across the ecosystem, [contribute to TC39](https://github.com/tc39/ecma262/blob/master/CONTRIBUTING.md) and this project to bring these proposals to Stage 4.
 
 ### The Future
 
@@ -190,6 +190,6 @@ The purpose of this project is to act as a part of the TC39 process: being a res
 
 If you appreciate this post and the work we're doing on Babel, you can support me on [Patreon](https://www.patreon.com/henryzhu), ask your company to sponsor us on [Open Collective](https://opencollective.com/babel), or better yet get involved with Babel as part of your job/work. We'd appreciate the collective ownership.
 
-With thanks to all the reviewers (too many to list)!
+With thanks to all the [reviewers](https://github.com/babel/website/pull/1735)!
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
