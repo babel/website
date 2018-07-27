@@ -188,6 +188,6 @@ The purpose of this project is to act as a part of the TC39 process: being a res
 
 If you appreciate this post and the work we're doing on Babel, you can support me on [Patreon](https://www.patreon.com/henryzhu), ask your company to sponsor us on [Open Collective](https://opencollective.com/babel), or better yet get your company involved with Babel as part of your work. We'd appreciate the collective ownership.
 
-With thanks to all the [reviewers](https://github.com/babel/website/pull/1735)!
+With thanks to all the [reviewers](https://github.com/babel/website/pull/1735)! Feel free to give feedback on [Twitter](https://twitter.com/left_pad/status/1022877618348146693?s=20).
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
