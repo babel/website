@@ -70,7 +70,7 @@ This was awesome to see in some ways, as it meant that these ideas were being te
 
 ### "ES7 Decorators"
 
-Part of issue is precisely around naming things, and as we hear often, naming things is hard.
+Part of the issue is precisely around naming things, and as we hear often, naming things is hard.
 
 There were a lot of names for ES6 itself: Harmony, ES Next, ES6, ES2015. When people hear about new ideas it makes sense to just pick the latest number and attach the name to it.
 
@@ -153,7 +153,7 @@ But removing previous defaults or removing the Stage presets doesn't mean we don
 
 > For a more automatic migration, we have updated [babel-upgrade](https://github.com/babel/babel-upgrade) to do this for you (you can run `npx babel-upgrade`).
 
-The TL;DR is that we're removing the Stage presets. At some level, people will have to opt-in and know what kinds of proposals are being used instead of assuming what people should use, especially given the unstable nature of some of these proposals. But if you use your another preset or a toolchain (e.g. [create-react-app](https://github.com/facebook/create-react-app)) it's possible this change doesn't affect you directly.
+The TL;DR is that we're removing the Stage presets. At some level, people will have to opt-in and know what kinds of proposals are being used instead of assuming what people should use, especially given the unstable nature of some of these proposals. But if you use another preset or a toolchain (e.g. [create-react-app](https://github.com/facebook/create-react-app)) it's possible this change doesn't affect you directly.
 
 We have deprecated the Stage presets as of `7.0.0-beta.52`, so if you don't want to change your config now we would suggest you *pin* the versions to `beta.54` until you can upgrade; after `beta.54` we will throw an error with a message saying how to migrate.
 
