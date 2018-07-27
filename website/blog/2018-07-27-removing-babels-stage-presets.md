@@ -26,11 +26,9 @@ Each preset (ex. `stage-3`, `stage-2`, etc.) included all the plugins for that p
 
 This allowed users who wanted to use experimental syntax to simply add the preset, instead of needing to configure/install each individual plugin.
 
-We actually [added](https://github.com/babel/babel/pull/2649) the Stage presets shortly after Babel's v6 release (it was previously a config flag in v5).
+We actually [added](https://github.com/babel/babel/pull/2649) the Stage presets shortly after Babel's v6 release (it was previously a config flag in v5). Shown below is an older example from Babel v6.
 
-These are some older examples from Babel v6.
-
-It’s common to see this in a config: 
+It was common to see this in a config: 
 
 ```js
 {
@@ -70,14 +68,12 @@ This was awesome to see in some ways, as it meant that these ideas were being te
 
 ### Back and Forth
 
-Over the years, we've had many issues raised in our repo about what to do with the Stage presets: [#4914](https://github.com/babel/babel/issues/4914), [#4955](https://github.com/babel/babel/issues/4955), [#7770](https://github.com/babel/babel/issues/7770)
+Over the years, we've raised many issues to discuss what to do with the Stage presets: [#4914](https://github.com/babel/babel/issues/4914), [#4955](https://github.com/babel/babel/issues/4955), [#7770](https://github.com/babel/babel/issues/7770). I even wrote in an older post about Babel 7.0 that said we *weren't* [removing them](https://babeljs.io/blog/2017/12/27/nearing-the-7.0-release) 😅.
 
-I even wrote in an older post about the release of Babel 7.0 that said we *weren't* [removing them](https://babeljs.io/blog/2017/12/27/nearing-the-7.0-release) 😅.
+But we found that keeping the Stage presets would lead to issues even for Babel itself:
 
-Ultimately, we decided that keeping the Stage presets would lead to some issues for Babel itself:
-
-- It was a common issue to ask something like: ["What presets(s) are needed to use async functions?"](https://github.com/babel/babel/issues/2948). It was difficult for people to know exactly what `stage-0` meant, and few people would look at its `package.json` or source.
-- Removing a plugin in Stage 3 is actually a breaking change. This issue is exacerbated when you are trying to use `@babel/preset-env` to not compile a natively supported proposal.
+- It was a common issue to ask something like: ["What presets(s) are needed to use async functions?"](https://github.com/babel/babel/issues/2948). It would be unclear for people to know exactly what `stage-0` meant, and few people would look at its `package.json` or source.
+- Removing a proposal plugin in Stage 3 (once it moves to Stage 4) is actually a breaking change. This issue is exacerbated when you are trying to use `@babel/preset-env` to not compile a natively supported proposal.
 
 ### "ES7 Decorators"
 
@@ -85,7 +81,7 @@ Part of the issue is precisely around naming things, and as we hear often, namin
 
 There were a lot of names for ES6 itself: Harmony, ES Next, ES6, ES2015. When people hear about new ideas it makes sense to just pick the latest number and attach the name to it.
 
-Thus it's easy to [search](https://twitter.com/search?q=es7%20class%20properties&src=typd) [around](https://twitter.com/search?q=es7%20decorators&src=typd) for tweets/blog posts/talks that say something like "ES7 Decorators" and find that it's become the established name for it.
+Thus it's easy to [search](https://twitter.com/search?q=es7%20class%20properties&src=typd) [around](https://twitter.com/search?q=es7%20decorators&src=typd) for tweets/blog posts/talks that say "ES7 Decorators" and find that it's become the accustomed name for it.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Your reminder that binding with :: is just an experimental proposal at stage 0 and might never become a part of JS. Don&#39;t call it &quot;ES7&quot;.</p>&mdash; Dan Abramov (@dan_abramov) <a href="https://twitter.com/dan_abramov/status/785082176610115584?ref_src=twsrc%5Etfw">October 9, 2016</a></blockquote>
 
@@ -99,11 +95,11 @@ We wanted to highlight this fact when we decided to [change the names](https://b
 
 ### BabelScript
 
-[TC39](https://tc39.github.io/process-document/) urges caution when using Stage 2-or below proposals, as it might result in inadvertent pressure from the community to keep the implementation as-is instead of improving/changing it for fear of breaking existing code or fragmentation (for example, using a different symbol like `#` for decorators instead of `@`). 
-
-People joke that developers who use Babel are using "BabelScript" instead of JavaScript, implying that somehow once a Babel plugin is made for a certain feature, that must mean it’s "fixed" or officially part of the language already (which is not true). For some, the first question that people think of when they see a new syntax or idea (Stage "-1") is whether there's a Babel plugin for it.
-
 Having presets for proposals so early in the process may imply to people that these proposals are guaranteed to move forward or have a stable implementation.
+
+[TC39](https://tc39.github.io/process-document/) urges caution when using Stage 2-or below proposals, as it might result in inadvertent pressure from the community to keep the implementation as-is instead of improving it for fear of breaking existing code or ecosystem fragmentation (e.g. using a different symbol like `#` instead of `@` for decorators). 
+
+People joke that developers who use Babel are using "BabelScript" instead of JavaScript, implying that somehow once a Babel plugin is made for a certain feature, that must mean it’s "fixed" or officially part of the language already (which is not true). For some, the first thought for people when they see a new syntax/idea (Stage "-1") is whether there a Babel plugin for it.
 
 ### Setting Expectations
 
