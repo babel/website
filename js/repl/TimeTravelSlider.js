@@ -8,7 +8,7 @@ type Props = {
   className?: string,
   currentTransition: Object,
   transitions: Array<Object>,
-  selectTransition: (transition: Object) => void,
+  selectTransition: (transition: Object) => () => void,
 };
 
 class TimeTravelSlider extends React.Component<Props> {
@@ -32,7 +32,7 @@ class TimeTravelSlider extends React.Component<Props> {
                 <div
                   className={styles.silderBox}
                   key={`${i}-transition`}
-                  onMouseEnter={() => this.props.selectTransition(transition)}
+                  onMouseEnter={this.props.selectTransition(transition)}
                 />
               );
             })}

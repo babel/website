@@ -598,7 +598,7 @@ class Repl extends React.Component<Props, State> {
     this._compileToState(code);
   };
 
-  selectTransition = (transition: Object) => {
+  selectTransition = (transition: Object) => () => {
     const transitionSize = prettySize(transition.size);
     this.setState(prevState => ({
       ...prevState,
