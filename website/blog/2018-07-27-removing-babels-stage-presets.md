@@ -159,8 +159,6 @@ We have deprecated the Stage presets as of `7.0.0-beta.52`, so if you don't want
 
 As an alternative, you are free to make your own preset that contains the same plugins and upgrade them as you please (someone make a tool that automatically creates a preset from your config). In the future, we may want to work on a `babel-init` that can help you set up plugins interactively or update `babel-upgrade` itself to accomplish it. Maybe Babel should stay as a low-level tool and rely on other higher-level/framework tools like `create-react-app` to handle these choices for people.
 
-## The Future
-
 ### Proposal Implementations in Babel
 
 [James DiGioia](https://twitter.com/JamesDiGioia) wrote a [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) recently about the changes to using the pipeline operator (`|>`).
@@ -178,12 +176,18 @@ Before we would simply add the proposal plugin to the config and that was it. No
 }
 ```
 
+This is something that we'd like to continue to do moving forward as another indication that these proposals are open to change and feedback from all of us. The removal of the Stage presets makes this even easier as before we had to pass down these options even if you didn't use the syntax.
+
 ### Ecosystem Maintenance Burden
 
-TODO: Each new syntax provides affordances to the language, but it brings new burdens for all of our tooling. Can mention all the tooling that needs to be updated along the way and the lack of help. https://twitter.com/mjackson/status/619580016473456641, http://jshint.com/blog/new-lang-features/
+A language's "syntax budget" doesn't just apply to the complexity of the language itslef but can extend down to the tooling. Each new syntax can brings [new burdens](http://jshint.com/blog/new-lang-features/) for the maintainers of other JavaScript projects.
 
-### Purpose
+Once a new syntax is "added" many things need updating: parsers (`babylon`), syntax highlighting (`language-babel`), linters (`babel-eslint`), test frameworks (jest/ava), formatters (`prettier`), code coverage (`instanbul`), minifiers (`babel-minify`), and more.  There have been many issues brought up on projects like `acorn`, `eslint`, `jshint`, `typescript`, and others to support Stage 0 proposals because they were in Babel. There aren't many projects that would adhere to a policy that required them to support any proposal since that would be extremely demanding to maintain. In many ways, it's surprising we even attempt to handle it in Babel itself given the constant updates and churn.
 
-TODO: We are trying to better position ourselves in the JavaScript ecosystem: being part of the TC39 process and being a resource for both implementing newer (Stage 0-2) proposals and receiving feedback from users.
+Who is doing that work, and is it our responsibility to make sure everything works? Every one of those projects (mostly volunteers) is lacking in help in almost every aspect, and yet we continouly get complaints about this across the board. How are we to as a community take responsibility for dealing with these changes (same with open source as a whole)?
+
+### The Future
+
+The purpose of this project is to act as a part of the TC39 process: being a resource for both implementing newer (Stage 0-2) proposals and receiving feedback from users while also supporting older versions of JavaScript. We hope this post sheds more light on how we are trying as best we can to better align this project in the JavaScript ecosystem.
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
