@@ -172,7 +172,7 @@ This is something that we'd like to continue to do moving forward as another ind
 
 A language's "syntax budget" doesn't just apply to the complexity of the language itself but can extend down to the tooling. Each new syntax addition brings new [burden](http://jshint.com/blog/new-lang-features/) to the maintainers of other JavaScript projects.
 
-Once new syntax is proposed, many things need updating: parsers (`babylon`), syntax highlighting (`language-babel`), linters (`babel-eslint`), test frameworks (jest/ava), formatters (`prettier`), code coverage (`instanbul`), minifiers (`babel-minify`), and more.
+Once new syntax is proposed, many things need updating: parsers (`babylon`), syntax highlighting (`language-babel`), linters (`babel-eslint`), test frameworks (jest/ava), formatters (`prettier`), code coverage (`istanbul`), minifiers (`babel-minify`), and more.
 
 There have been many issues brought up on projects like `acorn`, `eslint`, `jshint`, `typescript`, and others to support Stage 0 proposals because they were in Babel. There aren't many projects that would adhere to a policy that required them to support any proposal since that would be extremely demanding to maintain. In many ways, it's surprising we even attempt to handle it in Babel itself given the constant updates and churn.
 
