@@ -101,7 +101,7 @@ Ultimately, we decided that keeping the Stage presets would lead to some issues 
 
 ### BabelScript
 
-[TC39](https://tc39.github.io/process-document/) urges caution when using Stage 2-or below proposals, as it might result in inadvertant pressure from the community to keep the implementation as-is instead of improving/changing it for fear of breaking existing code or fragmentation (for example, using a different symbol like `#` for decorators instead of `@`). 
+[TC39](https://tc39.github.io/process-document/) urges caution when using Stage 2-or below proposals, as it might result in inadvertent pressure from the community to keep the implementation as-is instead of improving/changing it for fear of breaking existing code or fragmentation (for example, using a different symbol like `#` for decorators instead of `@`). 
 
 People joke that developers who use Babel are using "BabelScript" instead of JavaScript, implying that somehow once a Babel plugin is made for a certain feature, that must mean it’s "fixed" or officially part of the language already (which is not true). For some, the first question that people think of when they see a new syntax or idea (Stage -1 😂) is whether there's a Babel plugin for it.
 
@@ -133,7 +133,7 @@ We also could have tried to:
 - Better versioning strategies: independently version the presets and update them immediately when needed, maybe use `0.x`
 - Warn/Error for old out-of-date versions of presets
 
-The the end, people would still have to look up what proposals are at what Stage to know which ones to use if we kept the Stages in.
+In the end, people would still have to look up what proposals are at what Stage to know which ones to use if we kept the Stages in.
 
 ### Why Now?
 
@@ -141,31 +141,27 @@ Why not remove it earlier? Stage presets have been part of Babel for years, and 
 
 We're trying to determine the right level of feedback: if it's only the committee that decides what goes into the language,  it may lead to well-specified features that are not needed, but if the community expects that in-progress, experimental proposals are considered stable or ok to use in production without consequence, then we'll have other issues. We all want to move forward and proceed with intention: not rushing, but not being too cautious. Babel is the right place to do that experimentation but knowing where the boundaries are is necessary.
 
-In the end, it actually makes more sense to remove the presets because it means that users have to explicitly opt-in to using new proposals. This would be considered a "feature" since it means someone would have to make an explicit decision to use each proposal, which is reasonable for any proposal since they all have varying levels of instability, usefulness, and complexity.
+Removing the presets would be considered a "feature" since it means someone would have to make an explicit decision to use each proposal, which is reasonable for any proposal since they all have varying levels of instability, usefulness, and complexity.
 
-We fully expect some initial backlash from this, but ultimately feel like removing the Stage presets is a better decision for us all in the long run.
-
-And this project is no stranger to community uproar 🙂, as Babel 6 was a "controversial" release for many. There were plently of posts right after and even [recently](https://news.ycombinator.com/item?id=11371906) that speak about how difficult it was to use.
-
-But removing previous defaults or removing the Stage presets doesn't mean we don't care about ease of use, new users, or documentation. We try with what we can to keep the project stable, document what we know, and provide tooling to make things better.
+We fully expect some initial [backlash](https://news.ycombinator.com/item?id=11371906) from this, but ultimately feel that removing the Stage presets is a better decision for us all in the long run. But removing previous defaults or removing the Stage presets doesn't mean we don't care about ease of use, new users, or documentation. We work with what we can to keep the project stable, document what we know, and provide tooling to make things better.
 
 ## Migrating
 
 > For a more automatic migration, we have updated [babel-upgrade](https://github.com/babel/babel-upgrade) to do this for you (you can run `npx babel-upgrade`).
 
-The TL;DR is that we're removing the Stage presets. At some level, people will have to opt-in and know what kinds of proposals are being used instead of assuming what people should use, especially given the unstable nature of some of these proposals. But if you use another preset or a toolchain (e.g. [create-react-app](https://github.com/facebook/create-react-app)) it's possible this change doesn't affect you directly.
+The TL;DR is that we're removing the Stage presets. At some level, people will have to opt-in and know what kinds of proposals are being used instead of assuming what people should use, especially given the unstable nature of some of these proposals. If you use another preset or a toolchain, (e.g. [create-react-app](https://github.com/facebook/create-react-app)) it's possible this change doesn't affect you directly.
 
 We have deprecated the Stage presets as of `7.0.0-beta.52`, so if you don't want to change your config now we would suggest you *pin* the versions to `beta.54` until you can upgrade; after `beta.54` we will throw an error with a message saying how to migrate.
 
-As an alternative, you are free to make your own preset that contains the same plugins and upgrade them as you please (someone make a tool that automatically creates a preset from your config). In the future, we may want to work on a `babel-init` that can help you set up plugins interactively or update `babel-upgrade` itself to accomplish it. Maybe Babel should stay as a low-level tool and rely on other higher-level/framework tools like `create-react-app` to handle these choices for people.
+As an alternative, you are free to make your own preset that contains the same plugins and upgrade them as you please. In the future, we may want to work on a `babel-init` that can help you set up plugins interactively or update `babel-upgrade` itself to list and add the current Stage plugins? Or maybe Babel should stay as a low-level tool and rely on other higher-level/framework tools like `create-react-app` to handle these choices for people.
 
-### Proposal Implementations in Babel
+### Proposal Lock In
 
 [James DiGioia](https://twitter.com/JamesDiGioia) wrote a [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) recently about the changes to using the pipeline operator (`|>`).
 
-The main point there is that the proposal itself is in flux and has a few options to explore. Because we'd like to implement all three of the current possibilities as Babel plugins for both spec feedback and user feedback, we believed the way the plugin is used should change as well. This a relatively new approach for 
+The main point there is that the proposal itself is in flux and has a few options to explore. Because we'd like to implement all three of the current possibilities as Babel plugins for both spec feedback and user feedback, we believed the way the plugin is used should change as well. This a relatively new approach for TC39 and Babel!
 
-Before we would simply add the proposal plugin to the config and that was it. Now we would remove the default behavior and ask users to opt in to a flag that shows which proposal is chosen, and makes it clear that there isn't a fixed or even favored option at the moment.
+Before, we would add the proposal plugin to the config and that was it. Now, we remove the default behavior and ask users to opt in to a flag that shows which proposal is chosen, and make it clear that there isn't a fixed (or even favored) option at the moment.
 
 ```diff
 {
@@ -180,14 +176,14 @@ This is something that we'd like to continue to do moving forward as another ind
 
 ### Ecosystem Maintenance Burden
 
-A language's "syntax budget" doesn't just apply to the complexity of the language itslef but can extend down to the tooling. Each new syntax can brings [new burdens](http://jshint.com/blog/new-lang-features/) for the maintainers of other JavaScript projects.
+A language's "syntax budget" doesn't just apply to the complexity of the language itself but can extend down to the tooling. Each new syntax addition brings new [burden](http://jshint.com/blog/new-lang-features/) to the maintainers of other JavaScript projects.
 
-Once a new syntax is "added" many things need updating: parsers (`babylon`), syntax highlighting (`language-babel`), linters (`babel-eslint`), test frameworks (jest/ava), formatters (`prettier`), code coverage (`instanbul`), minifiers (`babel-minify`), and more.  There have been many issues brought up on projects like `acorn`, `eslint`, `jshint`, `typescript`, and others to support Stage 0 proposals because they were in Babel. There aren't many projects that would adhere to a policy that required them to support any proposal since that would be extremely demanding to maintain. In many ways, it's surprising we even attempt to handle it in Babel itself given the constant updates and churn.
+Once new syntax is proposed, many things need updating: parsers (`babylon`), syntax highlighting (`language-babel`), linters (`babel-eslint`), test frameworks (jest/ava), formatters (`prettier`), code coverage (`instanbul`), minifiers (`babel-minify`), and more.  There have been many issues brought up on projects like `acorn`, `eslint`, `jshint`, `typescript`, and others to support Stage 0 proposals because they were in Babel. There aren't many projects that would adhere to a policy that required them to support any proposal since that would be extremely demanding to maintain. In many ways, it's surprising we even attempt to handle it in Babel itself given the constant updates and churn.
 
-Who is doing that work, and is it our responsibility to make sure everything works? Every one of those projects (mostly volunteers) is lacking in help in almost every aspect, and yet we continouly get complaints about this across the board. How are we to as a community take responsibility for dealing with these changes (same with open source as a whole)?
+Who is doing that work, and is it our responsibility to make sure everything works? Every one of those projects (mostly volunteers) is lacking in help in almost every aspect, and yet we continually get complaints about this across the board. How are we, as a community, to take responsibility for dealing with these changes (same with open source as a whole)?
 
 ### The Future
 
-The purpose of this project is to act as a part of the TC39 process: being a resource for both implementing newer (Stage 0-2) proposals and receiving feedback from users while also supporting older versions of JavaScript. We hope this post sheds more light on how we are trying as best we can to better align this project in the JavaScript ecosystem.
+The purpose of this project is to act as a part of the TC39 process: being a resource for both implementing newer (Stage 0-2) proposals and receiving feedback from users while also supporting older versions of JavaScript. We hope this post sheds more light on how we are trying, as best we can, to better align this project in the JavaScript ecosystem.
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
