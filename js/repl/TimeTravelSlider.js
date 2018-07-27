@@ -70,7 +70,7 @@ export default TimeTravelSlider;
 
 const styles = {
   sliderWrapper: css({
-    height: "20%",
+    height: "15%",
     display: "flex",
     flexDirection: "column",
     width: "100%",

@@ -672,7 +672,7 @@ const styles = {
     overflow: "hidden",
   }),
   panels: css({
-    height: "80%",
+    height: "85%",
     width: "100%",
     display: "flex",
     flexDirection: "row",
