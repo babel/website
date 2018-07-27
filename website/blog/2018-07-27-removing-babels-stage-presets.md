@@ -64,24 +64,24 @@ We probably wouldn't be where we are if not for the wide adoption of compilers s
 
 Babel became a one-time setup for people, never to be thought of again. It became the underlying infrastructure, hidden behind other tools until there was a `SyntaxError`, dependency issues, or integration issues. Simply use `stage-0`.
 
-This was awesome to see in some ways, as it meant that these ideas were being tested in the wild, even in production environments. However, it also meant that many companies, tools, and people would encounter some trouble if a proposal changed in a significant way (or even get dropped altogether).
+This was awesome to see in some ways, as it meant that these ideas were being tested in the wild, even in production environments. However, it also meant that many companies, tools, and people would encounter some trouble if a proposal changed in a significant way (or even got dropped altogether).
 
 ### Back and Forth
 
 Over the years, we've raised many issues to discuss what to do with the Stage presets in [#4914](https://github.com/babel/babel/issues/4914), [#4955](https://github.com/babel/babel/issues/4955), [#7770](https://github.com/babel/babel/issues/7770). I even wrote in an older post about Babel 7.0 that said we *weren't* [removing them](https://babeljs.io/blog/2017/12/27/nearing-the-7.0-release) 😅.
 
-But we found that keeping the Stage presets would lead to issues even for Babel itself:
+However, we found that keeping the Stage presets would lead to issues even for Babel itself:
 
 - It was a common issue to ask something like: ["What presets(s) are needed to use async functions?"](https://github.com/babel/babel/issues/2948). It would be unclear for people to know exactly what `stage-0` meant, and few people would look at its `package.json` or source.
 - Removing a proposal plugin in Stage 3 (once it moves to Stage 4) is actually a breaking change. This issue is exacerbated when you are trying to use `@babel/preset-env` to not compile a natively supported proposal.
 
 ### "ES7 Decorators"
 
-Part of the issue is precisely around naming things, and as we hear often, naming things is hard.
+Part of the issue is precisely around naming things, and as we often here, naming things is hard.
 
 There were a lot of names for ES6 itself: Harmony, ES Next, ES6, ES2015. When people hear about new ideas it makes sense to just pick the latest number and attach the name to it.
 
-Thus it's easy to [search](https://twitter.com/search?q=es7%20class%20properties&src=typd) [around](https://twitter.com/search?q=es7%20decorators&src=typd) for tweets/blog posts/talks that say "ES7 Decorators" and find that it's become the accustomed name for it.
+Thereforce, it's easy to [search](https://twitter.com/search?q=es7%20class%20properties&src=typd) [around](https://twitter.com/search?q=es7%20decorators&src=typd) for tweets/blog posts/talks that say "ES7 Decorators" and find that it's become the accustomed name for it.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Your reminder that binding with :: is just an experimental proposal at stage 0 and might never become a part of JS. Don&#39;t call it &quot;ES7&quot;.</p>&mdash; Dan Abramov (@dan_abramov) <a href="https://twitter.com/dan_abramov/status/785082176610115584?ref_src=twsrc%5Etfw">October 9, 2016</a></blockquote>
 
@@ -172,7 +172,9 @@ This is something that we'd like to continue to do moving forward as another ind
 
 A language's "syntax budget" doesn't just apply to the complexity of the language itself but can extend down to the tooling. Each new syntax addition brings new [burden](http://jshint.com/blog/new-lang-features/) to the maintainers of other JavaScript projects.
 
-Once new syntax is proposed, many things need updating: parsers (`babylon`), syntax highlighting (`language-babel`), linters (`babel-eslint`), test frameworks (jest/ava), formatters (`prettier`), code coverage (`instanbul`), minifiers (`babel-minify`), and more.  There have been many issues brought up on projects like `acorn`, `eslint`, `jshint`, `typescript`, and others to support Stage 0 proposals because they were in Babel. There aren't many projects that would adhere to a policy that required them to support any proposal since that would be extremely demanding to maintain. In many ways, it's surprising we even attempt to handle it in Babel itself given the constant updates and churn.
+Once new syntax is proposed, many things need updating: parsers (`babylon`), syntax highlighting (`language-babel`), linters (`babel-eslint`), test frameworks (jest/ava), formatters (`prettier`), code coverage (`instanbul`), minifiers (`babel-minify`), and more.
+
+There have been many issues brought up on projects like `acorn`, `eslint`, `jshint`, `typescript`, and others to support Stage 0 proposals because they were in Babel. There aren't many projects that would adhere to a policy that required them to support any proposal since that would be extremely demanding to maintain. In many ways, it's surprising we even attempt to handle it in Babel itself given the constant updates and churn.
 
 Who is doing that work, and is it our responsibility to make sure everything works? Every one of those projects (mostly volunteers) is lacking in help in almost every aspect, and yet we continually get complaints about this across the board. How are we, as a community, to take responsibility for dealing with our infrastructure (not dissimilar to open source as a whole)?
 
@@ -184,7 +186,7 @@ The purpose of this project is to act as a part of the TC39 process: being a res
 
 ---
 
-If you appreciate this post and the work we're doing on Babel, you can support me on [Patreon](https://www.patreon.com/henryzhu), ask your company to sponsor us on [Open Collective](https://opencollective.com/babel), or better yet get involved with Babel as part of your job/work. We'd appreciate the collective ownership.
+If you appreciate this post and the work we're doing on Babel, you can support me on [Patreon](https://www.patreon.com/henryzhu), ask your company to sponsor us on [Open Collective](https://opencollective.com/babel), or better yet get your company involved with Babel as part of your work. We'd appreciate the collective ownership.
 
 With thanks to all the [reviewers](https://github.com/babel/website/pull/1735)!
 
