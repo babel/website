@@ -10,7 +10,7 @@ share_text: "Removing Babel's Stage Presets"
 
 Moving forward with v7, we've decided it's best to stop publishing the Stage presets in Babel (e.g. `@babel/preset-stage-0`).
 
-We didn't make this decision lightly and wanted bring show some context regarding TC39, new proposals, and Babel.
+We didn't make this decision lightly and wanted to show the context behind the interplay between TC39, Babel, and the community.
 
 <!--truncate-->
 
@@ -62,7 +62,7 @@ Looking back, it worked really well! (Maybe too well?)
 
 Languages like [CoffeeScript](https://coffeescript.org/) and tooling like [Traceur](https://github.com/google/traceur-compiler) helped establish the idea of compiling JavaScript. Babel made it even easier to both use new/future syntax and integrate with existing tooling. The expectations changed from skepticism and worry to completely embracing the experimental.
 
-We probably wouldn't be where we are at if not for the wide adoption of compilers such as Babel: it accelerated the usage (and teaching) of ES2015 to a much larger audience. The growth of React further fueled usage as its JSX syntax, class properties, and object rest/spread led to people knowing a bit more about these syntax proposals.
+We probably wouldn't be where we are if not for the wide adoption of compilers such as Babel: it accelerated the usage (and teaching) of ES2015 to a much larger audience. The growth of React further fueled usage as its JSX syntax, class properties, and object rest/spread led to people knowing a bit more about these syntax proposals.
 
 Babel became a one-time setup for people, never to be thought of again. It became underlying infrastructure, hidden behind other tooling until there was a `SyntaxError`, dependency issues, or integration issues. Simply use `stage-0`.
 
@@ -103,7 +103,7 @@ Ultimately, we decided that keeping the Stage presets would lead to some issues 
 
 [TC39](https://tc39.github.io/process-document/) urges caution when using Stage 2-or below proposals, as it might result in inadvertant pressure from the community to keep the implementation as-is instead of improving/changing it for fear of breaking existing code or fragmentation (for example, using a different symbol like `#` for decorators instead of `@`). 
 
-People joke that developers that use Babel are using "BabelScript" instead of JavaScript, implying that somehow once a Babel plugin is made for a certain feature, that must mean it’s "fixed" or officially part of the language already (which is not true). For some, the first question that people think of when they see a new syntax or idea (Stage -1 😂) is whether there's a Babel plugin for it.
+People joke that developers who use Babel are using "BabelScript" instead of JavaScript, implying that somehow once a Babel plugin is made for a certain feature, that must mean it’s "fixed" or officially part of the language already (which is not true). For some, the first question that people think of when they see a new syntax or idea (Stage -1 😂) is whether there's a Babel plugin for it.
 
 Having presets for proposals so early in the process may imply to people that these proposals are guaranteed to move forward or have a stable implementation.
 
@@ -117,7 +117,7 @@ It became common to see `"stage-0"` being used in libraries, boilerplates, talks
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">&quot;Just say no&quot; to `babel?stage=0` in production.</p>&mdash; Ryan Florence (@ryanflorence) <a href="https://twitter.com/ryanflorence/status/627154904302288897?ref_src=twsrc%5Etfw">July 31, 2015</a></blockquote>
 
-There was a lot of good discussion even years ago, but it wasn't the easiest thing to navigate: we wouldn't want to penalize users that understood the tradeoffs by putting `console.warn`s when using it, and not having the option at all seemed unreasonable at the time.
+There was a lot of good discussion even years ago, but it wasn't the easiest thing to navigate: we wouldn't want to penalize users who understood the tradeoffs by putting `console.warn`s when using it, and not having the option at all seemed unreasonable at the time.
 
 Blindly opting into Stage 0 (whether we had it by default) or people choosing to do so seems dangerous, but also never using any proposals is overly cautious. Ideally, everyone should able to make an informed decision about the kinds of features that seem reasonable to them and use them wisely, regardless of what stage they are in. [Mike Pennisi](https://twitter.com/jugglinmike) wrote [a great post](https://bocoup.com/blog/javascript-developers-watch-your-language) about these concerns.
 
@@ -127,19 +127,19 @@ It isn't our intention to threaten, rush, or force specific things into the ecos
 
 ### Other Considerations
 
-We also could of tried to:
+We also could have tried to:
 
 - [Rename the presets](https://github.com/babel/babel/issues/4914) to better signify the stability level (doesn't solve the versioning problem)
 - Better versioning strategies: independently version the presets and update them immediately when needed, maybe use `0.x`
-- Warn/Error for old out of date versions of presets.
+- Warn/Error for old out-of-date versions of presets
 
 The the end, people would still have to look up what proposals are at what Stage to know which ones to use if we kept the Stages in.
 
 ### Why Now?
 
-Why not remove it earlier? Stage presets have been part of Babel for years and there were concerns with adding more "complexity" to using Babel. A lot of tooling, documentation, articles, and knowledge were around the Stage presets. We also thought it was better to have officially maintained presets, since someone would (and will) inevitably create them.
+Why not remove it earlier? Stage presets have been part of Babel for years, and there were concerns with adding more "complexity" to using Babel. A lot of tooling, documentation, articles, and knowledge were around the Stage presets. We also thought it was better to have officially maintained presets, since someone would (and will) inevitably create them.
 
-We're trying to determine the right level of feedback: if it's only the committee that decides what goes into the language,  it may lead to well-specified features that are not needed, but if the community expects that in-progress, experimental proposals are considered stable or ok to use in production without consequence, then we have other issues. We all want to move forward and proceed with intention: not rushing, but not being too cautious. Babel is the right place to do that experimentation but knowing where the boundaries are is necessary.
+We're trying to determine the right level of feedback: if it's only the committee that decides what goes into the language,  it may lead to well-specified features that are not needed, but if the community expects that in-progress, experimental proposals are considered stable or ok to use in production without consequence, then we'll have other issues. We all want to move forward and proceed with intention: not rushing, but not being too cautious. Babel is the right place to do that experimentation but knowing where the boundaries are is necessary.
 
 In the end, it actually makes more sense to remove the presets because it means that users have to explicitly opt-in to using new proposals. This would be considered a "feature" since it means someone would have to make an explicit decision to use each proposal, which is reasonable for any proposal since they all have varying levels of instability, usefulness, and complexity.
 
@@ -153,21 +153,21 @@ But removing previous defaults or removing the Stage presets doesn't mean we don
 
 > For a more automatic migration, we have updated [babel-upgrade](https://github.com/babel/babel-upgrade) to do this for you (you can run `npx babel-upgrade`).
 
-The TL;DR is that we removing the Stage presets. At some level, people will have to opt-in and know what kinds of proposals are being used instead of assuming what people should use, especially given the unstable nature of some of these proposals. But if you use your another preset or a toolchain (i.e. [create-react-app](https://github.com/facebook/create-react-app)) it's possible this change doesn't affect you directly.
+The TL;DR is that we're removing the Stage presets. At some level, people will have to opt-in and know what kinds of proposals are being used instead of assuming what people should use, especially given the unstable nature of some of these proposals. But if you use your another preset or a toolchain (e.g. [create-react-app](https://github.com/facebook/create-react-app)) it's possible this change doesn't affect you directly.
 
 We have deprecated the Stage presets as of `7.0.0-beta.52`, so if you don't want to change your config now we would suggest you *pin* the versions to `beta.54` until you can upgrade; after `beta.54` we will throw an error with a message saying how to migrate.
 
-As as alternative, you are free to make your own preset that contains the same plugins and upgrade them as you please (someone make a tool that automatically creates a preset from your config). In the future, we may want to work on a `babel-init` that can help you setup plugins interactively or update `babel-upgrade` itself to accomplish it. Maybe Babel should stay as a low-level tool and rely on other higher-level/framework tools like `create-react-app` to handle these choices for people.
+As an alternative, you are free to make your own preset that contains the same plugins and upgrade them as you please (someone make a tool that automatically creates a preset from your config). In the future, we may want to work on a `babel-init` that can help you set up plugins interactively or update `babel-upgrade` itself to accomplish it. Maybe Babel should stay as a low-level tool and rely on other higher-level/framework tools like `create-react-app` to handle these choices for people.
 
 ## The Future
 
 ### Proposal Implementations in Babel
 
-[Josh Justice](https://twitter.com/CodingItWrong) wrote a [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) recently about the changes to using the pipeline operator (`|>`).
+[James DiGioia](https://twitter.com/JamesDiGioia) wrote a [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) recently about the changes to using the pipeline operator (`|>`).
 
-The main point there is that the proposal itself is in flux and has a few options to explore. Because we'd like to implement all three of the current possibilities as Babel plugins for both spec feedback and user feedback, we believed the way the plugin is used should change as well.
+The main point there is that the proposal itself is in flux and has a few options to explore. Because we'd like to implement all three of the current possibilities as Babel plugins for both spec feedback and user feedback, we believed the way the plugin is used should change as well. This a relatively new approach for 
 
-Before we would simply add the proposal plugin to the config and that was it. Now we would remove the default behavior and ask users to opt-in to a flag that shows which proposal is chosen, and makes it clear that there isn't a fixed or even favored option at the moment.
+Before we would simply add the proposal plugin to the config and that was it. Now we would remove the default behavior and ask users to opt in to a flag that shows which proposal is chosen, and makes it clear that there isn't a fixed or even favored option at the moment.
 
 ```diff
 {
