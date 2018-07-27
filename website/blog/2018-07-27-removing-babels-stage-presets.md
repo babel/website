@@ -77,11 +77,11 @@ However, we found that keeping the Stage presets would lead to issues even for B
 
 ### "ES7 Decorators"
 
-Part of the issue is precisely around naming things, and as we often here, naming things is hard.
+Part of the issue is precisely around naming things, and as we often hear, naming things is hard.
 
 There were a lot of names for ES6 itself: Harmony, ES Next, ES6, ES2015. When people hear about new ideas it makes sense to just pick the latest number and attach the name to it.
 
-Thereforce, it's easy to [search](https://twitter.com/search?q=es7%20class%20properties&src=typd) [around](https://twitter.com/search?q=es7%20decorators&src=typd) for tweets/blog posts/talks that say "ES7 Decorators" and find that it's become the accustomed name for it.
+Therefore, it's easy to [search](https://twitter.com/search?q=es7%20class%20properties&src=typd) [around](https://twitter.com/search?q=es7%20decorators&src=typd) for tweets/blog posts/talks that say "ES7 Decorators" and find that it's become the accustomed name for it.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Your reminder that binding with :: is just an experimental proposal at stage 0 and might never become a part of JS. Don&#39;t call it &quot;ES7&quot;.</p>&mdash; Dan Abramov (@dan_abramov) <a href="https://twitter.com/dan_abramov/status/785082176610115584?ref_src=twsrc%5Etfw">October 9, 2016</a></blockquote>
 
