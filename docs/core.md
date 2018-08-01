@@ -241,7 +241,7 @@ Following is a table of the options you can use:
 | `cwd`                    | `.`                  | The working directory that Babel's programmatic options are loaded relative to. |
 | `env`                    | `{}`                 | This is an object of keys that represent different environments. For example, you may have: `{ env: { production: { /* specific options */ } } }` which will use those options when the `envName` is `production` |
 | `extends`                | `null`               | A path to a `.babelrc` file to extend |
-| `filename`               | `"unknown"`          | Filename for use in errors etc |
+| `filename`               | `"unknown"`          | Filename for use in errors, babel config lookup, etc |
 | `filenameRelative`       | `(filename)`         | Filename relative to `sourceRoot` |
 | `generatorOpts`          | `{}`                 | An object containing the options to be passed down to the babel code generator, @babel/generator |
 | `getModuleId`            | `null`               | Specify a custom callback to generate a module id with. Called as `getModuleId(moduleName)`. If falsy value is returned then the generated module id is used |
