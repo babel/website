@@ -485,12 +485,12 @@ class ExpandedContainer extends Component<Props, State> {
             showOfficialExternalPlugins={showOfficialExternalPlugins}
             styles={styles}
           />
+          {babelVersion && (
+            <div className={styles.versionRow} title={`v${babelVersion}`}>
+              v{babelVersion}
+            </div>
+          )}
         </div>
-        {babelVersion && (
-          <div className={styles.versionRow} title={`v${babelVersion}`}>
-            v{babelVersion}
-          </div>
-        )}
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
           onClick={() => onIsExpandedChange(false)}
