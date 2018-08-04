@@ -12,7 +12,7 @@ sidebar_label: babel-runtime
 npm install --save @babel/runtime
 ```
 
-> See also: `@babel/runtime-corejs2`.
+> See also: [`@babel/runtime-corejs2`](runtime-corejs2.md).
 
 ## Usage
 
