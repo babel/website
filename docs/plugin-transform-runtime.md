@@ -91,7 +91,7 @@ e.g. `['transform-runtime', { corejs: 2 }],`
 
 Specifying a number will rewrite the helpers that need polyfillable APIs to reference `core-js` instead.
 
-This requires changing the dependency used to be `@babel/runtime-corejs2` instead of `@babel/runtime`.
+This requires changing the dependency used to be [`@babel/runtime-corejs2`](runtime-corejs2.md) instead of `@babel/runtime`.
 
 ```sh
 npm install --save @babel/runtime-corejs2
