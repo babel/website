@@ -494,12 +494,12 @@ class ExpandedContainer extends Component<Props, State> {
               styles={styles}
             />
           </div>
-          {babelVersion && (
-            <div className={styles.versionRow} title={`v${babelVersion}`}>
-              v{babelVersion}
-            </div>
-          )}
         </div>
+        {babelVersion && (
+          <div className={styles.versionRow} title={`v${babelVersion}`}>
+            v{babelVersion}
+          </div>
+        )}
 
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
@@ -647,19 +647,13 @@ const styles = {
     },
   }),
   expandedContainer: css({
-    // flexDirection: "column",
-    // display: "flex",
-
     overflow: "auto",
     boxShadow:
       "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.24) 0px 1px 4px",
 
     [media.large]: {
-      height: "100%",
+      height: "calc(100% - 38px)", // 38px is babel-version tab's height
       width: "18rem",
-      // display: "flex",
-      // flexDirection: "column",
-
       [`& .${nestedCloseButton}`]: {
         right: "-2rem",
       },
@@ -905,7 +899,11 @@ const styles = {
 
     [media.large]: {
       backgroundColor: colors.inverseBackgroundDark,
-      justifyContent: "flex-start",
+      //justifyContent: "flex-start",
+      position: "absolute",
+      width: "100%",
+      bottom: 0,
+      zIndex: 9,
       margin: 0,
       padding: "0.625rem 0.9375rem",
     },
