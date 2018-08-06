@@ -71,6 +71,7 @@ type State = {
   pluginSearch: ?string,
   showOfficialExternalPlugins: boolean,
   loadingExternalPlugins: boolean,
+  filename: ?string,
 };
 
 const DEBOUNCE_DELAY = 500;
@@ -221,6 +222,7 @@ class Repl extends React.Component<Props, State> {
           }
           showOfficialExternalPlugins={state.showOfficialExternalPlugins}
           loadingExternalPlugins={state.loadingExternalPlugins}
+          filename={state.filename}
         />
 
         <div className={styles.panels}>

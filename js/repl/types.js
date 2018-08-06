@@ -80,6 +80,7 @@ export type PluginState = LazyLoadedState & {
 
 export type PluginStateMap = { [name: string]: PluginState };
 
+export type filename = "file.js";
 export type SourceType = "script" | "module" | "unambiguous";
 
 export type CompileConfig = {
@@ -90,6 +91,7 @@ export type CompileConfig = {
   plugins: BabelPlugins,
   prettify: boolean,
   sourceMap: boolean,
+  filename: ?string,
   sourceType: SourceType,
 };
 

@@ -69,6 +69,7 @@ type Props = {
   runtimePolyfillConfig: PluginConfig,
   runtimePolyfillState: PluginState,
   loadingExternalPlugins: boolean,
+  filename: ?string,
 };
 
 type LinkProps = {
@@ -157,6 +158,7 @@ class ExpandedContainer extends Component<Props, State> {
       pluginValue,
       showOfficialExternalPlugins,
       loadingExternalPlugins,
+      filename,
     } = this.props;
 
     const {
@@ -213,6 +215,15 @@ class ExpandedContainer extends Component<Props, State> {
               />
               File Size
             </label>
+
+            <label className={styles.settingsLabel}>
+            File Name
+              <input
+                type= "text"
+                className={styles.inputFileBoxLeft}
+                size={fileNameBoxSize}
+                value={filename}
+              />
             <label className={`${styles.settingsLabel} ${styles.selectLabel}`}>
               Source Type
               <select
@@ -586,6 +597,8 @@ const PluginToggle = ({
 // Defined separately from styles due to nesting.
 const nestedCloseButton = css({});
 
+const fileNameBoxSize = 6;
+
 const styles = {
   wrapper: css({
     position: "relative",
@@ -752,6 +765,13 @@ const styles = {
   }),
   inputCheckboxLeft: css({
     margin: "0 0.75rem 0 0 !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
+
+    "&:disabled": {
+      opacity: 0.5,
+    },
+  }),
+  inputFileBoxLeft: css({
+    margin: "0 0.75rem 0 0 !important",
 
     "&:disabled": {
       opacity: 0.5,
