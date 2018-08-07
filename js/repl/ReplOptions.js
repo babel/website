@@ -174,323 +174,333 @@ class ExpandedContainer extends Component<Props, State> {
     return (
       <div className={styles.expandedContainer}>
         <div className={styles.sectionsWrapper}>
-          <AccordionTab
-            className={styles.section}
-            isExpanded={isSettingsTabExpanded}
-            label="Settings"
-            onToggleExpanded={this.handleToggleTabExpanded}
-            tabKey="settings"
-          >
-            <PluginToggle
-              config={runtimePolyfillConfig}
-              label="Evaluate"
-              onSettingChange={onSettingChange}
-              state={runtimePolyfillState}
-            />
-            <label className={styles.settingsLabel}>
-              <input
-                checked={lineWrap}
-                onChange={this._onSettingCheck("lineWrap")}
-                className={styles.inputCheckboxLeft}
-                type="checkbox"
-              />
-              Line Wrap
-            </label>
-            {pluginConfigs.map(config => (
+          <div>
+            <AccordionTab
+              className={styles.section}
+              isExpanded={isSettingsTabExpanded}
+              label="Settings"
+              onToggleExpanded={this.handleToggleTabExpanded}
+              tabKey="settings"
+            >
               <PluginToggle
-                config={config}
-                key={config.package}
+                config={runtimePolyfillConfig}
+                label="Evaluate"
                 onSettingChange={onSettingChange}
-                state={pluginState[config.package]}
+                state={runtimePolyfillState}
               />
-            ))}
-            <label className={styles.settingsLabel}>
-              <input
-                checked={fileSize}
-                onChange={this._onSettingCheck("fileSize")}
-                className={styles.inputCheckboxLeft}
-                type="checkbox"
-              />
-              File Size
-            </label>
-            <label className={`${styles.settingsLabel} ${styles.selectLabel}`}>
-              Source Type
-              <select
-                value={sourceType}
-                onChange={(event: SyntheticInputEvent<*>) =>
-                  onSettingChange("sourceType", event.target.value)}
-                className={styles.sourceTypeSelect}
-              >
-                <option value="module">Module</option>
-                <option value="script">Script</option>
-                <option value="unambiguous">Unambiguous</option>
-              </select>
-            </label>
-          </AccordionTab>
-          <AccordionTab
-            className={styles.section}
-            isExpanded={isPresetsTabExpanded}
-            label="Presets"
-            onToggleExpanded={this.handleToggleTabExpanded}
-            tabKey="presets"
-          >
-            {PRESET_ORDER.map(preset => {
-              const state = presetState[preset];
-
-              if (!state) return null;
-
-              return (
-                <PluginToggle
-                  config={state.config}
-                  key={preset}
-                  onSettingChange={onSettingChange}
-                  state={state}
-                />
-              );
-            })}
-          </AccordionTab>
-          <AccordionTab
-            className={`${styles.section} ${styles.sectionEnv}`}
-            isExpanded={isEnvTabExpanded}
-            label={
-              <span>
-                Env Preset{" "}
-                <small className={styles.accordionLabelVersion}>
-                  {envPresetState.version}
-                </small>
-              </span>
-            }
-            onToggleExpanded={this.handleToggleTabExpanded}
-            tabKey="env"
-          >
-            <label className={styles.settingsLabel}>
-              <input
-                checked={envConfig.isEnvPresetEnabled}
-                className={styles.inputCheckboxLeft}
-                type="checkbox"
-                onChange={this._onEnvPresetSettingCheck("isEnvPresetEnabled")}
-              />
-
-              {envPresetState.isLoading ? (
-                <PresetLoadingAnimation />
-              ) : (
-                "Enabled"
-              )}
-            </label>
-
-            <div className={styles.envPresetColumn}>
-              <LinkToDocs
-                className={`${styles.envPresetColumnLabel} ${styles.envPresetLabel} ${styles.highlight}`}
-                section="browserslist-support"
-              >
-                Browsers
-              </LinkToDocs>
-              <textarea
-                disabled={disableEnvSettings}
-                className={`${styles.envPresetInput} ${styles.envPresetTextarea}`}
-                onChange={this._onEnvPresetSettingChange("browsers")}
-                placeholder={envPresetDefaults.browsers.placeholder}
-                value={envConfig.browsers}
-              />
-            </div>
-            <label className={styles.envPresetRow}>
-              <LinkToDocs
-                className={`${styles.envPresetLabel} ${styles.highlight}`}
-                section="targets"
-              >
-                Electron
-              </LinkToDocs>
-              <input
-                className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
-                disabled={
-                  !envPresetState.isLoaded ||
-                  !envConfig.isEnvPresetEnabled ||
-                  !envConfig.isElectronEnabled
-                }
-                type="number"
-                min={envPresetDefaults.electron.min}
-                max={999}
-                step={envPresetDefaults.electron.step}
-                onChange={this._onEnvPresetSettingChange("electron")}
-                value={envConfig.electron}
-              />
-              <input
-                checked={envConfig.isElectronEnabled}
-                className={styles.envPresetCheckbox}
-                disabled={disableEnvSettings}
-                onChange={this._onEnvPresetSettingCheck("isElectronEnabled")}
-                type="checkbox"
-              />
-            </label>
-            <label className={styles.envPresetRow}>
-              <LinkToDocs
-                className={`${styles.envPresetLabel} ${styles.highlight}`}
-                section="targetsnode"
-              >
-                Node
-              </LinkToDocs>
-              <input
-                className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
-                disabled={
-                  !envPresetState.isLoaded ||
-                  !envConfig.isEnvPresetEnabled ||
-                  !envConfig.isNodeEnabled
-                }
-                type="number"
-                min={envPresetDefaults.node.min}
-                max={999}
-                step={envPresetDefaults.node.step}
-                onChange={this._onEnvPresetSettingChange("node")}
-                value={envConfig.node}
-              />
-              <input
-                checked={envConfig.isNodeEnabled}
-                className={styles.envPresetCheckbox}
-                disabled={disableEnvSettings}
-                onChange={this._onEnvPresetSettingCheck("isNodeEnabled")}
-                type="checkbox"
-              />
-            </label>
-            <label className={styles.envPresetRow}>
-              <LinkToDocs
-                className={`${styles.envPresetLabel} ${styles.highlight}`}
-                section="usebuiltins"
-              >
-                Built-ins
-              </LinkToDocs>
-              {isEnvFeatureSupported(envConfig.version, "builtInsUsage") && (
-                <select
-                  value={envConfig.builtIns}
-                  className={styles.envPresetSelect}
-                  onChange={this._onEnvPresetSettingChange("builtIns")}
-                  disabled={
-                    !envPresetState.isLoaded ||
-                    !envConfig.isEnvPresetEnabled ||
-                    !envConfig.isBuiltInsEnabled ||
-                    runtimePolyfillState.isEnabled
-                  }
-                >
-                  <option value="entry">Entry</option>
-                  <option value="usage">Usage</option>
-                </select>
-              )}
-              <input
-                checked={envConfig.isBuiltInsEnabled}
-                className={styles.envPresetCheckbox}
-                disabled={disableEnvSettings}
-                onChange={this._onEnvPresetSettingCheck("isBuiltInsEnabled")}
-                type="checkbox"
-              />
-            </label>
-            <label className={styles.envPresetRow}>
-              <LinkToDocs
-                className={`${styles.envPresetLabel} ${styles.highlight}`}
-                section="spec"
-              >
-                Spec
-              </LinkToDocs>
-              <input
-                checked={envConfig.isSpecEnabled}
-                className={styles.envPresetCheckbox}
-                disabled={disableEnvSettings}
-                onChange={this._onEnvPresetSettingCheck("isSpecEnabled")}
-                type="checkbox"
-              />
-            </label>
-            <label className={styles.envPresetRow}>
-              <LinkToDocs
-                className={`${styles.envPresetLabel} ${styles.highlight}`}
-                section="loose"
-              >
-                Loose
-              </LinkToDocs>
-              <input
-                checked={envConfig.isLooseEnabled}
-                className={styles.envPresetCheckbox}
-                disabled={disableEnvSettings}
-                onChange={this._onEnvPresetSettingCheck("isLooseEnabled")}
-                type="checkbox"
-              />
-            </label>
-            {isEnvFeatureSupported(envConfig.version, "shippedProposals") && (
-              <label className={styles.envPresetRow}>
-                {shippedProposalsState.isLoading ? (
-                  <span className={styles.envPresetLoaderWrapper}>
-                    <PresetLoadingAnimation size={1.6} />
-                  </span>
-                ) : (
-                  <LinkToDocs
-                    className={`${styles.envPresetLabel} ${styles.highlight}`}
-                    section="shippedProposals"
-                  >
-                    Shipped Proposals
-                  </LinkToDocs>
-                )}
+              <label className={styles.settingsLabel}>
                 <input
-                  checked={envConfig.shippedProposals}
-                  className={styles.envPresetCheckbox}
-                  // TODO
-                  disabled={disableEnvSettings}
-                  onChange={this._onEnvPresetSettingCheck("shippedProposals")}
+                  checked={lineWrap}
+                  onChange={this._onSettingCheck("lineWrap")}
+                  className={styles.inputCheckboxLeft}
                   type="checkbox"
                 />
+                Line Wrap
               </label>
-            )}
-            {isEnvFeatureSupported(envConfig.version, "forceAllTransforms") && (
+              {pluginConfigs.map(config => (
+                <PluginToggle
+                  config={config}
+                  key={config.package}
+                  onSettingChange={onSettingChange}
+                  state={pluginState[config.package]}
+                />
+              ))}
+              <label className={styles.settingsLabel}>
+                <input
+                  checked={fileSize}
+                  onChange={this._onSettingCheck("fileSize")}
+                  className={styles.inputCheckboxLeft}
+                  type="checkbox"
+                />
+                File Size
+              </label>
+              <label
+                className={`${styles.settingsLabel} ${styles.selectLabel}`}
+              >
+                Source Type
+                <select
+                  value={sourceType}
+                  onChange={(event: SyntheticInputEvent<*>) =>
+                    onSettingChange("sourceType", event.target.value)}
+                  className={styles.sourceTypeSelect}
+                >
+                  <option value="module">Module</option>
+                  <option value="script">Script</option>
+                  <option value="unambiguous">Unambiguous</option>
+                </select>
+              </label>
+            </AccordionTab>
+            <AccordionTab
+              className={styles.section}
+              isExpanded={isPresetsTabExpanded}
+              label="Presets"
+              onToggleExpanded={this.handleToggleTabExpanded}
+              tabKey="presets"
+            >
+              {PRESET_ORDER.map(preset => {
+                const state = presetState[preset];
+
+                if (!state) return null;
+
+                return (
+                  <PluginToggle
+                    config={state.config}
+                    key={preset}
+                    onSettingChange={onSettingChange}
+                    state={state}
+                  />
+                );
+              })}
+            </AccordionTab>
+            <AccordionTab
+              className={`${styles.section} ${styles.sectionEnv}`}
+              isExpanded={isEnvTabExpanded}
+              label={
+                <span>
+                  Env Preset{" "}
+                  <small className={styles.accordionLabelVersion}>
+                    {envPresetState.version}
+                  </small>
+                </span>
+              }
+              onToggleExpanded={this.handleToggleTabExpanded}
+              tabKey="env"
+            >
+              <label className={styles.settingsLabel}>
+                <input
+                  checked={envConfig.isEnvPresetEnabled}
+                  className={styles.inputCheckboxLeft}
+                  type="checkbox"
+                  onChange={this._onEnvPresetSettingCheck("isEnvPresetEnabled")}
+                />
+
+                {envPresetState.isLoading ? (
+                  <PresetLoadingAnimation />
+                ) : (
+                  "Enabled"
+                )}
+              </label>
+
+              <div className={styles.envPresetColumn}>
+                <LinkToDocs
+                  className={`${styles.envPresetColumnLabel} ${styles.envPresetLabel} ${styles.highlight}`}
+                  section="browserslist-support"
+                >
+                  Browsers
+                </LinkToDocs>
+                <textarea
+                  disabled={disableEnvSettings}
+                  className={`${styles.envPresetInput} ${styles.envPresetTextarea}`}
+                  onChange={this._onEnvPresetSettingChange("browsers")}
+                  placeholder={envPresetDefaults.browsers.placeholder}
+                  value={envConfig.browsers}
+                />
+              </div>
               <label className={styles.envPresetRow}>
                 <LinkToDocs
                   className={`${styles.envPresetLabel} ${styles.highlight}`}
-                  section="forcealltransforms"
+                  section="targets"
                 >
-                  Force All Transforms
+                  Electron
                 </LinkToDocs>
                 <input
-                  checked={envConfig.forceAllTransforms}
+                  className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
+                  disabled={
+                    !envPresetState.isLoaded ||
+                    !envConfig.isEnvPresetEnabled ||
+                    !envConfig.isElectronEnabled
+                  }
+                  type="number"
+                  min={envPresetDefaults.electron.min}
+                  max={999}
+                  step={envPresetDefaults.electron.step}
+                  onChange={this._onEnvPresetSettingChange("electron")}
+                  value={envConfig.electron}
+                />
+                <input
+                  checked={envConfig.isElectronEnabled}
                   className={styles.envPresetCheckbox}
                   disabled={disableEnvSettings}
-                  onChange={this._onEnvPresetSettingCheck("forceAllTransforms")}
+                  onChange={this._onEnvPresetSettingCheck("isElectronEnabled")}
                   type="checkbox"
                 />
               </label>
-            )}
-            {isEnvFeatureSupported(envConfig.version, "debug") && (
-              <label className={styles.settingsLabel}>
+              <label className={styles.envPresetRow}>
+                <LinkToDocs
+                  className={`${styles.envPresetLabel} ${styles.highlight}`}
+                  section="targetsnode"
+                >
+                  Node
+                </LinkToDocs>
                 <input
-                  checked={debugEnvPreset}
-                  className={styles.inputCheckboxLeft}
+                  className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
                   disabled={
-                    disableEnvSettings || runtimePolyfillState.isEnabled
+                    !envPresetState.isLoaded ||
+                    !envConfig.isEnvPresetEnabled ||
+                    !envConfig.isNodeEnabled
                   }
-                  onChange={this._onSettingCheck("debugEnvPreset")}
+                  type="number"
+                  min={envPresetDefaults.node.min}
+                  max={999}
+                  step={envPresetDefaults.node.step}
+                  onChange={this._onEnvPresetSettingChange("node")}
+                  value={envConfig.node}
+                />
+                <input
+                  checked={envConfig.isNodeEnabled}
+                  className={styles.envPresetCheckbox}
+                  disabled={disableEnvSettings}
+                  onChange={this._onEnvPresetSettingCheck("isNodeEnabled")}
                   type="checkbox"
                 />
-                Debug
               </label>
-            )}
-          </AccordionTab>
+              <label className={styles.envPresetRow}>
+                <LinkToDocs
+                  className={`${styles.envPresetLabel} ${styles.highlight}`}
+                  section="usebuiltins"
+                >
+                  Built-ins
+                </LinkToDocs>
+                {isEnvFeatureSupported(envConfig.version, "builtInsUsage") && (
+                  <select
+                    value={envConfig.builtIns}
+                    className={styles.envPresetSelect}
+                    onChange={this._onEnvPresetSettingChange("builtIns")}
+                    disabled={
+                      !envPresetState.isLoaded ||
+                      !envConfig.isEnvPresetEnabled ||
+                      !envConfig.isBuiltInsEnabled ||
+                      runtimePolyfillState.isEnabled
+                    }
+                  >
+                    <option value="entry">Entry</option>
+                    <option value="usage">Usage</option>
+                  </select>
+                )}
+                <input
+                  checked={envConfig.isBuiltInsEnabled}
+                  className={styles.envPresetCheckbox}
+                  disabled={disableEnvSettings}
+                  onChange={this._onEnvPresetSettingCheck("isBuiltInsEnabled")}
+                  type="checkbox"
+                />
+              </label>
+              <label className={styles.envPresetRow}>
+                <LinkToDocs
+                  className={`${styles.envPresetLabel} ${styles.highlight}`}
+                  section="spec"
+                >
+                  Spec
+                </LinkToDocs>
+                <input
+                  checked={envConfig.isSpecEnabled}
+                  className={styles.envPresetCheckbox}
+                  disabled={disableEnvSettings}
+                  onChange={this._onEnvPresetSettingCheck("isSpecEnabled")}
+                  type="checkbox"
+                />
+              </label>
+              <label className={styles.envPresetRow}>
+                <LinkToDocs
+                  className={`${styles.envPresetLabel} ${styles.highlight}`}
+                  section="loose"
+                >
+                  Loose
+                </LinkToDocs>
+                <input
+                  checked={envConfig.isLooseEnabled}
+                  className={styles.envPresetCheckbox}
+                  disabled={disableEnvSettings}
+                  onChange={this._onEnvPresetSettingCheck("isLooseEnabled")}
+                  type="checkbox"
+                />
+              </label>
+              {isEnvFeatureSupported(envConfig.version, "shippedProposals") && (
+                <label className={styles.envPresetRow}>
+                  {shippedProposalsState.isLoading ? (
+                    <span className={styles.envPresetLoaderWrapper}>
+                      <PresetLoadingAnimation size={1.6} />
+                    </span>
+                  ) : (
+                    <LinkToDocs
+                      className={`${styles.envPresetLabel} ${styles.highlight}`}
+                      section="shippedProposals"
+                    >
+                      Shipped Proposals
+                    </LinkToDocs>
+                  )}
+                  <input
+                    checked={envConfig.shippedProposals}
+                    className={styles.envPresetCheckbox}
+                    // TODO
+                    disabled={disableEnvSettings}
+                    onChange={this._onEnvPresetSettingCheck("shippedProposals")}
+                    type="checkbox"
+                  />
+                </label>
+              )}
+              {isEnvFeatureSupported(
+                envConfig.version,
+                "forceAllTransforms"
+              ) && (
+                <label className={styles.envPresetRow}>
+                  <LinkToDocs
+                    className={`${styles.envPresetLabel} ${styles.highlight}`}
+                    section="forcealltransforms"
+                  >
+                    Force All Transforms
+                  </LinkToDocs>
+                  <input
+                    checked={envConfig.forceAllTransforms}
+                    className={styles.envPresetCheckbox}
+                    disabled={disableEnvSettings}
+                    onChange={this._onEnvPresetSettingCheck(
+                      "forceAllTransforms"
+                    )}
+                    type="checkbox"
+                  />
+                </label>
+              )}
+              {isEnvFeatureSupported(envConfig.version, "debug") && (
+                <label className={styles.settingsLabel}>
+                  <input
+                    checked={debugEnvPreset}
+                    className={styles.inputCheckboxLeft}
+                    disabled={
+                      disableEnvSettings || runtimePolyfillState.isEnabled
+                    }
+                    onChange={this._onSettingCheck("debugEnvPreset")}
+                    type="checkbox"
+                  />
+                  Debug
+                </label>
+              )}
+            </AccordionTab>
 
-          <ExternalPlugins
-            _pluginNameChanged={this._pluginNameChanged}
-            _onshowOfficialExternalPluginsChanged={
-              this._onshowOfficialExternalPluginsChanged
-            }
-            _pluginChanged={this.props.pluginChange}
-            isExpanded={isPluginsTabExpanded}
-            isLoading={loadingExternalPlugins}
-            onRemove={onExternalPluginRemove}
-            onToggleExpanded={this.handleToggleTabExpanded}
-            pluginValue={pluginValue}
-            plugins={this.props.externalPlugins}
-            pluginsLoading={pluginsLoading}
-            showOfficialExternalPlugins={showOfficialExternalPlugins}
-            styles={styles}
-          />
+            <ExternalPlugins
+              _pluginNameChanged={this._pluginNameChanged}
+              _onshowOfficialExternalPluginsChanged={
+                this._onshowOfficialExternalPluginsChanged
+              }
+              _pluginChanged={this.props.pluginChange}
+              isExpanded={isPluginsTabExpanded}
+              isLoading={loadingExternalPlugins}
+              onRemove={onExternalPluginRemove}
+              onToggleExpanded={this.handleToggleTabExpanded}
+              pluginValue={pluginValue}
+              plugins={this.props.externalPlugins}
+              pluginsLoading={pluginsLoading}
+              showOfficialExternalPlugins={showOfficialExternalPlugins}
+              styles={styles}
+            />
+          </div>
         </div>
         {babelVersion && (
           <div className={styles.versionRow} title={`v${babelVersion}`}>
             v{babelVersion}
           </div>
         )}
+
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
           onClick={() => onIsExpandedChange(false)}
@@ -637,16 +647,13 @@ const styles = {
     },
   }),
   expandedContainer: css({
-    flexDirection: "column",
-    display: "flex",
     overflow: "auto",
     boxShadow:
       "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.24) 0px 1px 4px",
 
     [media.large]: {
-      height: "100%",
+      height: "calc(100% - 38px)", // 38px is babel-version tab's height
       width: "18rem",
-
       [`& .${nestedCloseButton}`]: {
         right: "-2rem",
       },
@@ -695,13 +702,12 @@ const styles = {
   sectionsWrapper: css({
     flex: "1 1 auto",
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
+    width: "100%",
     flexWrap: "wrap",
-
-    [media.large]: {
-      display: "block",
-    },
-
+    justifyContent: "space-between",
+    minHeight: "100%",
+    [media.large]: {},
     [media.small]: {
       maxHeight: "300px",
       display: "block",
@@ -893,7 +899,11 @@ const styles = {
 
     [media.large]: {
       backgroundColor: colors.inverseBackgroundDark,
-      justifyContent: "flex-start",
+      //justifyContent: "flex-start",
+      position: "absolute",
+      width: "100%",
+      bottom: 0,
+      zIndex: 9,
       margin: 0,
       padding: "0.625rem 0.9375rem",
     },
