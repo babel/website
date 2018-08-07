@@ -60,6 +60,7 @@ type State = {
   shippedProposalsState: ShippedProposalsState,
   evalErrorMessage: ?string,
   fileSize: boolean,
+  timeTravel: boolean,
   sourceType: SourceType,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
@@ -142,6 +143,7 @@ class Repl extends React.Component<Props, State> {
       ),
       evalErrorMessage: null,
       fileSize: persistedState.fileSize,
+      timeTravel: persistedState.timeTravel,
       sourceType: persistedState.sourceType,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
@@ -194,7 +196,6 @@ class Repl extends React.Component<Props, State> {
       fileSize: state.fileSize,
       lineWrapping: state.lineWrap,
     };
-
     return (
       <div className={styles.repl}>
         <ReplOptions
@@ -205,6 +206,7 @@ class Repl extends React.Component<Props, State> {
           envPresetState={state.envPresetState}
           shippedProposalsState={state.shippedProposalsState}
           fileSize={state.fileSize}
+          timeTravel={state.timeTravel}
           sourceType={state.sourceType}
           isExpanded={state.isSidebarExpanded}
           lineWrap={state.lineWrap}
@@ -228,7 +230,12 @@ class Repl extends React.Component<Props, State> {
           loadingExternalPlugins={state.loadingExternalPlugins}
         />
         <div className={styles.wrapperPanels}>
-          <div className={styles.panels}>
+          <div
+            className={[
+              styles.panels,
+              !state.timeTravel && styles.panelsMax,
+            ].join(" ")}
+          >
             <CodeMirrorPanel
               className={styles.codeMirrorPanel}
               code={state.code}
@@ -248,12 +255,14 @@ class Repl extends React.Component<Props, State> {
               placeholder="Compiled output will be shown here"
             />
           </div>
-          <TimeTravelSlider
-            className={styles.sliders}
-            currentTransition={state.currentTransition}
-            transitions={state.transitions}
-            selectTransition={this.selectTransition}
-          />
+          {state.timeTravel && (
+            <TimeTravelSlider
+              className={styles.sliders}
+              currentTransition={state.currentTransition}
+              transitions={state.transitions}
+              selectTransition={this.selectTransition}
+            />
+          )}
         </div>
       </div>
     );
@@ -564,6 +573,7 @@ class Repl extends React.Component<Props, State> {
       shippedProposals: envConfig.shippedProposals,
       evaluate: state.runtimePolyfillState.isEnabled,
       fileSize: state.fileSize,
+      timeTravel: state.timeTravel,
       sourceType: state.sourceType,
       lineWrap: state.lineWrap,
       presets: presetsArray.join(","),
@@ -680,6 +690,9 @@ const styles = {
     overflow: "auto",
     fontSize: "0.875rem",
     lineHeight: "1.25rem",
+  }),
+  panelsMax: css({
+    height: "100% !important",
   }),
   sliders: css({
     height: "20%",

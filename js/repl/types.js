@@ -106,6 +106,7 @@ export type ReplState = {
   debug: boolean,
   evaluate: boolean,
   fileSize: boolean,
+  timeTravel: boolean,
   sourceType: SourceType,
   forceAllTransforms: boolean,
   shippedProposals: boolean,
