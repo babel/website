@@ -129,7 +129,7 @@ const WorkSponsors = () => {
     >
       <h2>Friends of Open Source</h2>
       <p style={{ fontSize: 16 }}>
-        These companies are being awesome and paying their engineers to work on
+        These companies are awesome and pay these engineers to work on
         Babel
       </p>
       <div className="productShowcaseSection">
@@ -243,6 +243,11 @@ const OpenCollectiveSponsors = props => {
             title="Silver Sponsors (Open Collective)"
             tier="silver-sponsors"
             button={ocButton}
+          />
+          <SponsorTier
+            type="other"
+            title="Misc Sponsors"
+            tier="other-sponsors"
           />
         </div>
       </div>

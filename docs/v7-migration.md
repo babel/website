@@ -32,11 +32,21 @@ The "env" preset has been out for more than a year now, and completely replaces 
 
 These presets should be substituted with the "env" preset.
 
+## [Stage Preset Deprecations](https://github.com/babel/babel/issues/7770)
+
+We are removing the stage presets in favor of explicit proposal usage. Can check the [stage-0 readme](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0) for more migration steps.
+
+To do this automatially you can run [`npx babel-upgrade`](https://github.com/babel/babel-upgrade) (PR added [here](https://github.com/babel/babel-upgrade/pull/69)).
+
+(add link to blog post when published).
+
 ## [Versioning/Dependencies](/blog/2017/12/27/nearing-the-7.0-release.html#peer-dependencies-integrations)
 
 Most plugins/top level packages now have a `peerDependency` on `@babel/core`.
 
 ## Package Renames
+
+- `babylon` is now `@babel/parser`
 
 You can still use the shorthand version of a package name (remove the `preset-` or `plugin-`) in the config, but I'm choosing to use the whole package name for clarity (maybe we should just remove that, given it doesn't save that much typing anyway).
 

@@ -101,8 +101,8 @@ z = Object.assign({ x }, y);
 
 ## References
 
-* [Proposal: Object Rest/Spread Properties for ECMAScript](https://github.com/sebmarkbage/ecmascript-rest-spread)
-* [Spec](http://sebmarkbage.github.io/ecmascript-rest-spread)
+* [Proposal: Object Rest/Spread Properties for ECMAScript](https://github.com/tc39/proposal-object-rest-spread)
+* [Spec](https://tc39.github.io/proposal-object-rest-spread/)
 * [Spread VS. Object.assign](http://2ality.com/2016/10/rest-spread-properties.html#spreading-objects-versus-objectassign)
 * [Assigning VS. defining properties](http://exploringjs.com/es6/ch_oop-besides-classes.html#sec_assigning-vs-defining-properties)
 

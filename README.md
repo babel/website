@@ -1,6 +1,6 @@
 # [babel/website](https://babeljs.io)
 
-This is the source for the [babeljs.io](https://babeljs.io) website: feel free to suggest changes to our docs!
+This is the source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
 
 > We're just switched over to a new site using https://docusaurus.io so there might be a few issues to fix
 
@@ -19,8 +19,8 @@ $ yarn && yarn bootstrap
 
 ### Contributing to the website
 
-To keep documentation in sync across all of Babel's packages and plugins, the documentation for the plugins and presets is are now directly located in this repo and now the READMEs are [auto generated](https://github.com/babel/babel/blob/master/scripts/generators/readmes.js) and point to this documentation.
+To keep documentation in sync across all of Babel's packages, the docs are now directly located in this repository. The READMEs in [`babel/babel`](https://github.com/babel/babel) are [auto generated](https://github.com/babel/babel/blob/master/scripts/generators/readmes.js) and point to this documentation.
 
 #### Looking for support?
 
-For questions and support please join our [Slack community](https://slack.babeljs.io/), channel #website or directly [here](https://babeljs.slack.com/messages/website/).
+For questions and support on contributing please join our [Slack community](https://slack.babeljs.io/), channel `#website` or directly [here](https://babeljs.slack.com/messages/website/).
