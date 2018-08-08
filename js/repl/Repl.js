@@ -98,7 +98,7 @@ class Repl extends React.Component<Props, State> {
 
     const persistedState = replState();
     const defaultPlugins = {
-      "babili-standalone": persistedState.babili,
+      "babili-standalone": persistedState.minify, // TODO Switch to babel-minify-standalone
       prettier: persistedState.prettier,
     };
 
@@ -437,9 +437,8 @@ class Repl extends React.Component<Props, State> {
     const { runtimePolyfillState } = state;
 
     const presetsArray = this._presetsToArray(state);
-
-    const babili = state.plugins["babili-standalone"];
-    if (babili.isEnabled && babili.isLoaded) {
+    const minify = state.plugins["babili-standalone"]; // TODO Switch to babel-minify-standalone
+    if (minify.isEnabled && minify.isLoaded) {
       presetsArray.push("babili");
     }
     this._workerApi
@@ -526,8 +525,8 @@ class Repl extends React.Component<Props, State> {
 
     const presetsArray = this._presetsToArray();
 
-    const babili = state.plugins["babili-standalone"];
-    if (babili.isEnabled) {
+    const minify = state.plugins["babili-standalone"]; // TODO Switch to babel-minify-standalone
+    if (minify.isEnabled) {
       presetsArray.push("babili");
     }
 
@@ -538,7 +537,7 @@ class Repl extends React.Component<Props, State> {
     const builtIns = envConfig.isBuiltInsEnabled && envConfig.builtIns;
 
     const payload = {
-      babili: plugins["babili-standalone"].isEnabled,
+      minify: plugins["babili-standalone"].isEnabled, // TODO Switch to babel-minify-standalone
       browsers: envConfig.browsers,
       build: state.babel.build,
       builtIns: builtIns,
@@ -571,7 +570,6 @@ class Repl extends React.Component<Props, State> {
 
   _presetsToArray(state: State = this.state): BabelPresets {
     const { presets } = state;
-
     return Object.keys(presets)
       .filter(key => presets[key].isEnabled && presets[key].isLoaded)
       .map(key => presets[key].config.label);
