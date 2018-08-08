@@ -87,6 +87,6 @@ z = Object.assign({ x }, y);
 
 ## References
 
-* [Proposal: Object Rest/Spread Properties for ECMAScript](https://github.com/sebmarkbage/ecmascript-rest-spread)
-* [Spec](http://sebmarkbage.github.io/ecmascript-rest-spread)
+* [Proposal: Object Rest/Spread Properties for ECMAScript](https://github.com/tc39/proposal-object-rest-spread)
+* [Spec](https://tc39.github.io/proposal-object-rest-spread/)
 

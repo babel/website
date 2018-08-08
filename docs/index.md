@@ -7,9 +7,19 @@ title: What is Babel?
 
 Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments. Here are the main things Babel can do for you:
 - Transform syntax
-- Polyfill features that are missing in your target environment (through [core-js](https://github.com/zloirock/core-js))
-- Code transformations (codemods)
-- More (check out these [videos](/videos.html) for inspiration)
+- Polyfill features that are missing in your target environment (through [@babel/polyfill](polyfill.md))
+- Source code transformations (codemods)
+- And more! (check out these [videos](/videos.html) for inspiration)
+
+```js
+// Babel Input: ES2015 arrow function
+[1, 2, 3].map((n) => n + 1);
+
+// Babel Output: ES5 equivalent
+[1, 2, 3].map(function(n) {
+  return n + 1;
+});
+```
 
 > For an awesome tutorial on compilers, check out [the-super-tiny-compiler](https://github.com/thejameskyle/the-super-tiny-compiler), which also explains how Babel itself works on a high level.
 

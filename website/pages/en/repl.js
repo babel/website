@@ -1,8 +1,10 @@
 "use strict";
 
 const React = require("react");
-
-const styles = ["https://unpkg.com/codemirror@5.30.0/lib/codemirror.css"];
+const styles = [
+  "https://unpkg.com/codemirror@5.30.0/lib/codemirror.css",
+  "/static/css/hide-footer.css",
+];
 
 const scripts = [
   "https://unpkg.com/react@16.3.2/umd/react.production.min.js",
@@ -26,7 +28,9 @@ class REPL extends React.Component {
   render() {
     return (
       <div>
-        {styles.map(url => <link rel="stylesheet" href={url} key={url} />)}
+        {styles.map(url => (
+          <link rel="stylesheet" type="text/css" href={url} key={url} />
+        ))}
 
         <div id="root">
           <noscript>You need to enable JavaScript to run this app.</noscript>
