@@ -6,7 +6,8 @@ sidebar_label: babel-polyfill
 
 Babel includes a [polyfill](https://en.wikipedia.org/wiki/Polyfill_(programming)) that includes a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) and [core-js](https://github.com/zloirock/core-js).
 
-This will emulate a full ES2015+ environment and is intended to be used in an application rather than a library/tool. This polyfill is automatically loaded when using `babel-node`.
+This will emulate a full ES2015+ environment (no < Stage 4 proposals) and is intended to be used in an application rather than a library/tool.
+(this polyfill is automatically loaded when using `babel-node`).
 
 This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (provided you use the [regenerator](https://babeljs.io/docs/en/babel-plugin-transform-regenerator) plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
 
@@ -21,6 +22,10 @@ npm install --save @babel/polyfill
 ## Size
 
 The polyfill is provided as a convienence but you should use it with `@babel/preset-env` and the [`useBuiltIns` option](https://babeljs.io/docs/en/next/babel-preset-env.html#usebuiltins) so that it doesn't include the whole polyfill which isn't always needed. Otherwise, we would recommend you import the individual polyfills manually.
+
+## TC39 Proposals
+
+If you need to use a proposal that is not Stage 4, `@babel/polyfill` will not automatically import those for you. You will have to import those from another polyfill like [`core-js`](https://github.com/zloirock/core-js) individually. We may work towards including this as separate files in `@babel/polyfill` soon.
 
 ## Usage in Node / Browserify / Webpack
 
