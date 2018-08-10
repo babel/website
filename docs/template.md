@@ -55,7 +55,7 @@ import template from "@babel/template";
 import generate from "@babel/generator";
 import * as t from "@babel/types";
 
-const fn = template`
+const fn = template(`
   var IMPORT_NAME = require('${"my-module"}');
 `);
 
