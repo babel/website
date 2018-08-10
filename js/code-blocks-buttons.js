@@ -1,3 +1,5 @@
+import "babel-polyfill";
+
 /* global ClipboardJS */
 /* eslint quotes: ["error", "double", { "avoidEscape": true }] */
 window.addEventListener("load", function() {

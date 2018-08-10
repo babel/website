@@ -5,6 +5,7 @@ const config = {
   entry: {
     repl: "./js/repl/index.js",
     minirepl: "./js/minirepl.js",
+    "code-blocks-buttons": "./js/code-blocks-buttons.js",
   },
   output: {
     // Don't bother with hashing/versioning the filename - Netlify does it

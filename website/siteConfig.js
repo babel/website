@@ -125,7 +125,7 @@ const siteConfig = {
   },
   scripts: [
     "https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js",
-    "/js/code-blocks-buttons.js",
+    "/js/build/code-blocks-buttons.js",
   ],
   // stylesheets: [ "" ],
   // translationRecruitingLink: "https://crowdin.com/project/",
