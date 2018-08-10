@@ -1,4 +1,5 @@
 "use strict";
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 
 const config = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
@@ -22,7 +23,7 @@ const config = {
       },
     ],
   },
-  plugins: [],
+  plugins: [new MinifyPlugin()],
   externals: {
     codemirror: "CodeMirror",
     "lz-string": "LZString",
