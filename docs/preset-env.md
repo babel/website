@@ -137,7 +137,7 @@ For example, to enable only the polyfills and plugins needed for a project targe
 {
   "presets": [
     ["@babel/preset-env", {
-      "useBuiltIns": "entry"
+      "injectPolyfills": "entry"
     }]
   ]
 }
@@ -282,9 +282,15 @@ An array of plugins to always exclude/remove.
 
 The possible options are the same as the `include` option.
 
-This option is useful for "blacklisting" a transform like `@babel/plugin-transform-regenerator` if you don't use generators and don't want to include `regeneratorRuntime` (when using `useBuiltIns`) or for using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](http://babeljs.io/docs/plugins/proposal-async-generator-functions/).
+This option is useful for "blacklisting" a transform like `@babel/plugin-transform-regenerator` if you don't use generators and don't want to include `regeneratorRuntime` (when using `injectPolyfills`) or for using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](http://babeljs.io/docs/plugins/proposal-async-generator-functions/).
 
 ### `useBuiltIns`
+
+`boolean`, defaults to `false` if `injectPolyfills` is `false`, otherwise defaults to `true`.
+
+Will use the native built-in instead of trying to polyfill behavior for any plugins that require one.
+
+### `injectPolyfills`
 
 `"usage"` | `"entry"` | `false`, defaults to `false`.
 
@@ -294,7 +300,7 @@ A way to apply `@babel/preset-env` for polyfills (via `@babel/polyfill`).
 npm install @babel/polyfill --save
 ```
 
-#### `useBuiltIns: 'usage'`
+#### `injectPolyfills: 'usage'`
 
 Adds specific imports for polyfills when they are used in each file. We take advantage of the fact that a bundler will load the same polyfill only once.
 
@@ -334,7 +340,7 @@ var a = new Promise();
 var b = new Map();
 ```
 
-#### `useBuiltIns: 'entry'`
+#### `injectPolyfills: 'entry'`
 
 > NOTE: Only use `require("@babel/polyfill");` once in your whole app.
 > Multiple imports or requires of `@babel/polyfill` will throw an error since it can cause global collisions and other issues that are hard to trace.
@@ -357,7 +363,7 @@ import "core-js/modules/es7.string.pad-end";
 
 This will also work for `core-js` directly (`import "core-js";` or `require('core-js');`)
 
-#### `useBuiltIns: false`
+#### `injectPolyfills: false`
 
 Don't add polyfills automatically per file, or transform `import "@babel/polyfill"` to individual polyfills.
 
@@ -547,7 +553,7 @@ exports.A = A;
         "safari": 10
       },
       "modules": false,
-      "useBuiltIns": "entry",
+      "injectPolyfills": "entry",
       "debug": true
     }]
   ]
