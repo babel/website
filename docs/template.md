@@ -57,7 +57,7 @@ import * as t from "@babel/types";
 
 const fn = template`
   var IMPORT_NAME = require('${"my-module"}');
-`);
+`;
 
 const ast = fn({
   IMPORT_NAME: t.identifier("myModule");
