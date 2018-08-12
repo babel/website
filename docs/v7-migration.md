@@ -241,7 +241,7 @@ So if you need `core-js` support with `transform-runtime`, you would now pass th
 
 ```sh
 # install the runtime as a dependency
-npm install @babel/runtime-corejs2`
+npm install @babel/runtime-corejs2
 # install the plugin as a devDependency
 npm install @babel/plugin-transform-runtime --save-dev
 ```
