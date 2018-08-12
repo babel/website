@@ -251,7 +251,7 @@ npm install @babel/plugin-transform-runtime --save-dev
   "plugins": [
 -   ["@babel/plugin-transform-runtime"],
 +   ["@babel/plugin-transform-runtime", {
-+     "corejs" 2,   
++     "corejs": 2,   
 +   }],
   ]
 }
