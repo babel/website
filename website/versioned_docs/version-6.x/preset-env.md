@@ -9,7 +9,7 @@ original_id: babel-preset-env
 npm install babel-preset-env --save-dev
 ```
 
-Without any configuration options, babel-preset-env behaves exactly the same as babel-preset-latest (or babel-preset-es2015, babel-preset-es2016, and babel-preset-es2017 together).
+Without any configuration options, `babel-preset-env` behaves exactly the same as [`babel-preset-latest`](https://babeljs.io/docs/en/babel-preset-latest) (or [`babel-preset-es2015`](https://babeljs.io/docs/en/babel-preset-es2015), [`babel-preset-es2016`](https://babeljs.io/docs/en/babel-preset-es2016), and [`babel-preset-es2017`](https://babeljs.io/docs/en/babel-preset-es2017) together).
 
 ```json
 {
