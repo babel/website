@@ -1,3 +1,4 @@
+import "es5-shim";
 import "babel-polyfill";
 
 /* global ClipboardJS */
