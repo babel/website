@@ -156,13 +156,13 @@ require("@babel/parser").parse("code", {
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind)) | `a::b`, `::console.log` |
 | `functionSent` | `function.sent` |
 | `importMeta` ([proposal](https://github.com/tc39/proposal-import-meta)) | `import.meta.url` |
-| `logicalAssignment` ([proposal](https://github.com/tc39/proposal-logical-assignment)) | `a ||= b` |
+| `logicalAssignment` ([proposal](https://github.com/tc39/proposal-logical-assignment)) | `a &&= b` |
 | `nullishCoalescingOperator` ([proposal](https://github.com/babel/proposals/issues/14)) | `a ?? b` |
 | `numericSeparator` ([proposal](https://github.com/samuelgoto/proposal-numeric-separator)) | `1_000_000` |
 | `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread)) | `var a = { b, ...c };` |
 | `optionalCatchBinding` ([proposal](https://github.com/babel/proposals/issues/7)) | `try {throw 0;} catch{do();}` |
 | `optionalChaining` ([proposal](https://github.com/tc39/proposal-optional-chaining)) | `a?.b` |
-| `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | `a |> b` |
+| `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | `a &#124;> b` |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
 
 #### Plugins options
