@@ -124,35 +124,46 @@ require("@babel/parser").parse("code", {
 
 ### Plugins
 
+#### Miscellaneous
+
 | Name | Code Example |
 |------|--------------|
 | `estree` ([repo](https://github.com/estree/estree)) | n/a |
-| `jsx` ([repo](https://facebook.github.io/jsx/)) | `<a attr="b">{s}</a>` |
+
+#### Language extensions
+
+| Name | Code Example |
+|------|--------------|
 | `flow` ([repo](https://github.com/facebook/flow)) | `var a: string = "";` |
 | `flowComments` ([docs](https://flow.org/en/docs/types/comments/)) | `/*:: type Foo = {...}; */` |
+| `jsx` ([repo](https://facebook.github.io/jsx/)) | `<a attr="b">{s}</a>` |
 | `typescript` ([repo](https://github.com/Microsoft/TypeScript)) | `var a: string = "";` |
-| `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions)) | `var a = do { if (true) { 'hi'; } };` |
-| `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread)) | `var a = { b, ...c };` |
-| `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) and `decorators-legacy` | `@a class A {}` |
+
+#### ECMAScript [proposals](https://github.com/babel/proposals)
+
+| Name | Code Example |
+|------|--------------|
+| `asyncGenerators` ([proposal](https://github.com/tc39/proposal-async-iteration)) | `async function*() {}`, `for await (let a of b) {}` |
+| `bigInt` ([proposal](https://github.com/tc39/proposal-bigint)) | `100n` |
 | `classProperties` ([proposal](https://github.com/tc39/proposal-class-public-fields)) | `class A { b = 1; }` |
 | `classPrivateProperties` ([proposal](https://github.com/tc39/proposal-private-fields)) | `class A { #b = 1; }` |
 | `classPrivateMethods` ([proposal](https://github.com/tc39/proposal-private-methods)) | `class A { #c() {} }` |
+| `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br> `decorators-legacy` | `@a class A {}` |
+| `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions)) | `var a = do { if (true) { 'hi'; } };` |
+| `dynamicImport` ([proposal](https://github.com/tc39/proposal-dynamic-import)) | `import('./guy').then(a)` |
 | `exportDefaultFrom` ([proposal](https://github.com/leebyron/ecmascript-export-default-from)) | `export v from "mod"` |
 | `exportNamespaceFrom` ([proposal](https://github.com/leebyron/ecmascript-export-ns-from)) | `export * as ns from "mod"` |
-| `asyncGenerators` ([proposal](https://github.com/tc39/proposal-async-iteration)) | `async function*() {}`, `for await (let a of b) {}` |
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind)) | `a::b`, `::console.log` |
 | `functionSent` | `function.sent` |
-| `dynamicImport` ([proposal](https://github.com/tc39/proposal-dynamic-import)) | `import('./guy').then(a)` |
-| `numericSeparator` ([proposal](https://github.com/samuelgoto/proposal-numeric-separator)) | `1_000_000` |
-| `optionalChaining` ([proposal](https://github.com/tc39/proposal-optional-chaining)) | `a?.b` |
 | `importMeta` ([proposal](https://github.com/tc39/proposal-import-meta)) | `import.meta.url` |
-| `bigInt` ([proposal](https://github.com/tc39/proposal-bigint)) | `100n` |
-| `optionalCatchBinding` ([proposal](https://github.com/babel/proposals/issues/7)) | `try {throw 0;} catch{do();}` |
-| `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
-| `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | `a |> b` |
-| `nullishCoalescingOperator` ([proposal](https://github.com/babel/proposals/issues/14)) | `a ?? b` |
 | `logicalAssignment` ([proposal](https://github.com/tc39/proposal-logical-assignment)) | `a ||= b` |
-
+| `nullishCoalescingOperator` ([proposal](https://github.com/babel/proposals/issues/14)) | `a ?? b` |
+| `numericSeparator` ([proposal](https://github.com/samuelgoto/proposal-numeric-separator)) | `1_000_000` |
+| `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread)) | `var a = { b, ...c };` |
+| `optionalCatchBinding` ([proposal](https://github.com/babel/proposals/issues/7)) | `try {throw 0;} catch{do();}` |
+| `optionalChaining` ([proposal](https://github.com/tc39/proposal-optional-chaining)) | `a?.b` |
+| `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | `a |> b` |
+| `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
 
 #### Plugins options
 
