@@ -42,7 +42,9 @@ mind. When in doubt, use `.parse()`.
   the top level raises an error. Set this to `true` to accept such
   code.
 
-- **allowSuperOutsideMethod**: TODO
+- **allowSuperOutsideMethod**: By default, `super` use is not allowed
+  outside of class and object methods. Set this to `true` to accept such
+  code.
 
 - **sourceType**: Indicate the mode the code should be parsed in. Can be
   one of `"script"`, `"module"`, or `"unambiguous"`. Defaults to `"script"`. `"unambiguous"` will make @babel/parser attempt to _guess_, based on the presence of ES6 `import` or `export` statements. Files with ES6 `import`s and `export`s are considered `"module"` and are otherwise `"script"`.
@@ -53,7 +55,9 @@ mind. When in doubt, use `.parse()`.
 
 - **plugins**: Array containing the plugins that you want to enable.
 
-- **strictMode**: TODO
+- **strictMode**: By default, ECMAScript code is parsed as strict only if a
+  `"use strict";` directive is present or if the parsed file is an ECMAScript
+  module. Set this option to `true` to always parse files in strict mode.
 
 - **ranges**: Adds a `ranges` property to each node: `[node.start, node.end]`
 
@@ -127,9 +131,9 @@ require("@babel/parser").parse("code", {
 | `flow` ([repo](https://github.com/facebook/flow)) | `var a: string = "";` |
 | `flowComments` ([docs](https://flow.org/en/docs/types/comments/)) | `/*:: type Foo = {...}; */` |
 | `typescript` ([repo](https://github.com/Microsoft/TypeScript)) | `var a: string = "";` |
-| `doExpressions` | `var a = do { if (true) { 'hi'; } };` |
+| `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions)) | `var a = do { if (true) { 'hi'; } };` |
 | `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread)) | `var a = { b, ...c };` |
-| `decorators` (Stage 2 [proposal](https://github.com/tc39/proposal-decorators)) and `decorators-legacy` (Stage 1) | `@a class A {}` |
+| `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) and `decorators-legacy` | `@a class A {}` |
 | `classProperties` ([proposal](https://github.com/tc39/proposal-class-public-fields)) | `class A { b = 1; }` |
 | `classPrivateProperties` ([proposal](https://github.com/tc39/proposal-private-fields)) | `class A { #b = 1; }` |
 | `classPrivateMethods` ([proposal](https://github.com/tc39/proposal-private-methods)) | `class A { #c() {} }` |
@@ -145,8 +149,9 @@ require("@babel/parser").parse("code", {
 | `bigInt` ([proposal](https://github.com/tc39/proposal-bigint)) | `100n` |
 | `optionalCatchBinding` ([proposal](https://github.com/babel/proposals/issues/7)) | `try {throw 0;} catch{do();}` |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
-| `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | `a \|> b` |
+| `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | `a |> b` |
 | `nullishCoalescingOperator` ([proposal](https://github.com/babel/proposals/issues/14)) | `a ?? b` |
+| `logicalAssignment` ([proposal](https://github.com/tc39/proposal-logical-assignment)) | `a ||= b` |
 
 
 #### Plugins options
@@ -163,9 +168,16 @@ require("@babel/parser").parse("code", {
     // decoratorsBeforeExport: false
     export @dec class C {}
     ```
+- `pipelineOperator`:
+  - `proposal` (required, accepted values: `minimal`)
+    There are different proposals for the pipeline operator. This option
+    allows to choose which one to use.
+    See [What's Happening With the Pipeline (|>) Proposal?](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) for more information.
+
 - `flow`:
   - `all` (`boolean`, default: `false`)
-    <!-- TODO -->
+    Some code has different meaning in Flow and in vanilla JavaScript. For example, `foo<T>(x)` is parsed as a call expression with a type argument in Flow, but as a comparsion (`foo < T > x`) accordingly to the ECMAScript specification. By default, `babel-parser` parses those ambigous constructs as Flow types only if the file starts with a `// @flow` pragma.
+    Set this option to `true` to always parse files as if `// @flow` was specified.
 
 ### FAQ
 
