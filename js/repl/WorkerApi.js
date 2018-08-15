@@ -79,7 +79,7 @@ export default class WorkerApi {
     return this.loadScript(url);
   }
 
-  getBundleVersion(name: string): Promise<string> {
+  getBundleVersion(name: string): Promise<number> {
     return this._worker.postMessage({ method: "getBundleVersion", name });
   }
 

@@ -144,26 +144,26 @@ tdz                 | Passed to [builtIns][builtIns], [evaluate][evaluate], [dea
 }
 ```
 
-[booleans]: ../../packages/babel-plugin-transform-minify-booleans
-[builtIns]: ../../packages/babel-plugin-minify-builtins
-[consecutiveAdds]: ../../packages/babel-plugin-transform-inline-consecutive-adds
-[deadcode]: ../../packages/babel-plugin-minify-dead-code-elimination
-[evaluate]: ../../packages/babel-plugin-minify-constant-folding
-[flipComparisons]: ../../packages/babel-plugin-minify-flip-comparisons
-[guards]: ../../packages/babel-plugin-minify-guarded-expressions
-[infinity]: ../../packages/babel-plugin-minify-infinity
-[mangle]: ../../packages/babel-plugin-minify-mangle-names
-[memberExpressions]: ../../packages/babel-plugin-transform-member-expression-literals
-[mergeVars]: ../../packages/babel-plugin-transform-merge-sibling-variables
-[numericLiterals]: ../../packages/babel-plugin-minify-numeric-literals
-[propertyLiterals]: ../../packages/babel-plugin-transform-property-literals
-[regexpConstructors]: ../../packages/babel-plugin-transform-regexp-constructors
-[removeConsole]: ../../packages/babel-plugin-transform-remove-console
-[removeDebugger]: ../../packages/babel-plugin-transform-remove-debugger
-[removeUndefined]: ../../packages/babel-plugin-transform-remove-undefined
-[replace]: ../../packages/babel-plugin-minify-replace
-[simplify]: ../../packages/babel-plugin-minify-simplify
-[simplifyComparisons]: ../../packages/babel-plugin-transform-simplify-comparison-operators
-[typeConstructors]: ../../packages/babel-plugin-minify-type-constructors
-[undefinedToVoid]: ../../packages/babel-plugin-transform-undefined-to-void
+[booleans]: babel-plugin-transform-minify-booleans
+[builtIns]: babel-plugin-minify-builtins
+[consecutiveAdds]: babel-plugin-transform-inline-consecutive-adds
+[deadcode]: babel-plugin-minify-dead-code-elimination
+[evaluate]: babel-plugin-minify-constant-folding
+[flipComparisons]: babel-plugin-minify-flip-comparisons
+[guards]: babel-plugin-minify-guarded-expressions
+[infinity]: babel-plugin-minify-infinity
+[mangle]: babel-plugin-minify-mangle-names
+[memberExpressions]: babel-plugin-transform-member-expression-literals
+[mergeVars]: babel-plugin-transform-merge-sibling-variables
+[numericLiterals]: babel-plugin-minify-numeric-literals
+[propertyLiterals]: babel-plugin-transform-property-literals
+[regexpConstructors]: babel-plugin-transform-regexp-constructors
+[removeConsole]: babel-plugin-transform-remove-console
+[removeDebugger]: babel-plugin-transform-remove-debugger
+[removeUndefined]: babel-plugin-transform-remove-undefined
+[replace]: babel-plugin-minify-replace
+[simplify]: babel-plugin-minify-simplify
+[simplifyComparisons]: babel-plugin-transform-simplify-comparison-operators
+[typeConstructors]: babel-plugin-minify-type-constructors
+[undefinedToVoid]: babel-plugin-transform-undefined-to-void
 

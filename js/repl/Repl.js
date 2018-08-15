@@ -61,10 +61,6 @@ type State = {
   evalErrorMessage: ?string,
   fileSize: boolean,
   sourceType: SourceType,
-  isEnvPresetTabExpanded: boolean,
-  isPluginsExpanded: boolean,
-  isPresetsTabExpanded: boolean,
-  isSettingsTabExpanded: boolean,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
   meta: Object,
@@ -77,7 +73,6 @@ type State = {
   sourceMapCompiledHighlight: Array<Object>,
   externalPlugins: Array<string>,
   pluginSearch: ?string,
-  version: number,
   showOfficialExternalPlugins: boolean,
   loadingExternalPlugins: boolean,
 };
@@ -98,10 +93,7 @@ function toCamelCase(str) {
     });
 }
 
-class Repl extends React.Component {
-  props: Props;
-  state: State;
-
+class Repl extends React.Component<Props, State> {
   _numLoadingPlugins = 0;
   _workerApi = new WorkerApi();
 
@@ -124,8 +116,8 @@ class Repl extends React.Component {
     }, {});
 
     const envConfig = persistedStateToEnvConfig(persistedState);
-    const isPresetsTabExpanded = !!presets.filter(preset => preset !== "env")
-      .length;
+    // const isPresetsTabExpanded = !!presets.filter(preset => preset !== "env")
+    //   .length;
 
     // A partial State is defined first b'c this._compile needs it.
     // The compile helper will then populate the missing State values.
@@ -169,6 +161,7 @@ class Repl extends React.Component {
       sourceMapSourceHighlight: [],
       showOfficialExternalPlugins: false,
       externalPlugins: [],
+      loadingExternalPlugins: false,
     };
 
     this._setupBabel(defaultPresets);
@@ -225,6 +218,7 @@ class Repl extends React.Component {
           runtimePolyfillConfig={runtimePolyfillConfig}
           runtimePolyfillState={state.runtimePolyfillState}
           externalPlugins={state.externalPlugins}
+          pluginsLoading={true}
           pluginChange={this._pluginChange}
           pluginSearch={this._pluginSearch}
           pluginValue={state.pluginSearch}
@@ -615,7 +609,7 @@ class Repl extends React.Component {
       const { plugins, presets, runtimePolyfillState } = state;
 
       if (name === "babel-polyfill") {
-        runtimePolyfillState.isEnabled = value;
+        runtimePolyfillState.isEnabled = !!value;
 
         return {
           runtimePolyfillState,
@@ -625,13 +619,13 @@ class Repl extends React.Component {
           [name]: value,
         };
       } else if (plugins.hasOwnProperty(name)) {
-        plugins[name].isEnabled = value;
+        plugins[name].isEnabled = !!value;
 
         return {
           plugins,
         };
       } else if (presets.hasOwnProperty(name)) {
-        presets[name].isEnabled = value;
+        presets[name].isEnabled = !!value;
 
         return {
           presets,
@@ -672,10 +666,6 @@ class Repl extends React.Component {
       evaluate: state.runtimePolyfillState.isEnabled,
       fileSize: state.fileSize,
       sourceType: state.sourceType,
-      isEnvPresetTabExpanded: state.isEnvPresetTabExpanded,
-      isPluginsExpanded: state.isPluginsExpanded,
-      isPresetsTabExpanded: state.isPresetsTabExpanded,
-      isSettingsTabExpanded: state.isSettingsTabExpanded,
       lineWrap: state.lineWrap,
       presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,

@@ -19,7 +19,7 @@ The entire process to set this up involves:
     npm install --save-dev @babel/core @babel/cli @babel/preset-env
     npm install --save @babel/polyfill
     ```
-2. Creating a config file named `.babel.config.js` in the root of your project with this content:
+2. Creating a config file named `babel.config.js` in the root of your project with this content:
 
     ```js
     const presets = [

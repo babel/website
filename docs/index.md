@@ -7,9 +7,21 @@ title: What is Babel?
 
 Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments. Here are the main things Babel can do for you:
 - Transform syntax
-- Polyfill features that are missing in your target environment (through [core-js](https://github.com/zloirock/core-js))
-- Code transformations (codemods)
-- More (check out these [videos](/videos.html) for inspiration)
+- Polyfill features that are missing in your target environment (through [@babel/polyfill](polyfill.md))
+- Source code transformations (codemods)
+- And more! (check out these [videos](/videos.html) for inspiration)
+
+```js
+// Babel Input: ES2015 arrow function
+[1, 2, 3].map((n) => n + 1);
+
+// Babel Output: ES5 equivalent
+[1, 2, 3].map(function(n) {
+  return n + 1;
+});
+```
+
+> For an awesome tutorial on compilers, check out [the-super-tiny-compiler](https://github.com/thejameskyle/the-super-tiny-compiler), which also explains how Babel itself works on a high level.
 
 ## ES2015 and beyond
 
@@ -17,9 +29,9 @@ Babel has support for the latest version of JavaScript through syntax transforme
 
 These [plugins](plugins.md) allow you to use new syntax, **right now** without waiting for browser support. Check out our [usage guide](usage.md) to get started.
 
-## JSX and Flow
+## JSX and React
 
-Babel can convert JSX syntax and strip out type annotations. Check out our [React preset](preset-react.md) to get started. Use it together with the [babel-sublime](https://github.com/babel/babel-sublime) package to bring syntax highlighting to a whole new level.
+Babel can convert JSX syntax! Check out our [React preset](preset-react.md) to get started. Use it together with the [babel-sublime](https://github.com/babel/babel-sublime) package to bring syntax highlighting to a whole new level.
 
 You can install this preset with
 
@@ -27,7 +39,7 @@ You can install this preset with
 npm install --save-dev @babel/preset-react
 ```
 
-and don't forget to add `@babel/preset-react` to your Babel configuration.
+and add `@babel/preset-react` to your Babel configuration.
 
 ```jsx
 export default React.createClass({
@@ -35,11 +47,11 @@ export default React.createClass({
     return { num: this.getRandomNumber() };
   },
 
-  getRandomNumber(): number {
+  getRandomNumber() {
     return Math.ceil(Math.random() * 6);
   },
 
-  render(): any {
+  render() {
     return <div>
       Your dice roll:
       {this.state.num}
@@ -48,7 +60,38 @@ export default React.createClass({
 });
 ```
 
-> Learn more about [JSX](https://facebook.github.io/jsx/) and [Flow](http://flowtype.org/)
+> Learn more about [JSX](https://facebook.github.io/jsx/)
+
+## Type Annotations (Flow and TypeScript)
+
+Babel can strip out type annotations! Check out either our [Flow preset](preset-flow.md) or [TypeScript preset](preset-typescript.md] to get started. Keep in mind this just allows you to use these in combination with Babel, as Babel doesn't do the type checking itself.
+
+You can install the flow preset with
+
+```shell
+npm install --save-dev @babel/preset-flow
+```
+
+```js
+// @flow
+function square(n: number): number {
+  return n * n;
+}
+```
+
+or the typescript preset with
+
+```shell
+npm install --save-dev @babel/preset-typescript
+```
+
+```js
+function Greeter(greeting: string) {
+    this.greeting = greeting;
+}
+```
+
+> Learn more about [Flow](http://flowtype.org/) and [TypeScript](https://www.typescriptlang.org/)
 
 Pluggable
 ---------

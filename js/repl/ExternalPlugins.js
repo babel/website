@@ -1,14 +1,18 @@
+// @flow
+
 import { css } from "emotion";
 import * as React from "react";
 import AccordionTab from "./AccordionTab";
 import ExternalPluginsModal from "./ExternalPluginsModal";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
+import type { SidebarTabSection } from "./types";
 
 type Props = {
+  _pluginChanged: any,
   isExpanded: boolean,
   isLoading: boolean,
   onRemove: (pluginName: string) => void,
-  onToggleExpanded: () => void,
+  onToggleExpanded: (key: SidebarTabSection) => mixed,
   plugins: Array<string>,
   styles: Object,
 };

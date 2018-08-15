@@ -99,7 +99,7 @@ const GetStarted = props => {
   return (
     <div
       className="blockElement twoByGridBlock get-started"
-      style={{ flexBasis: "60%" }}
+      style={{ flexBasis: "60%", margin: 0 }}
     >
       <h2>Welcome!</h2>
 
@@ -125,11 +125,11 @@ const WorkSponsors = () => {
   return (
     <div
       className="blockElement alignCenter twoByGridBlock sponsors-work"
-      style={{ flexBasis: "40%" }}
+      style={{ flexBasis: "40%", margin: 0 }}
     >
       <h2>Friends of Open Source</h2>
       <p style={{ fontSize: 16 }}>
-        These companies are being awesome and paying their engineers to work on
+        These companies are awesome and pay these engineers to work on
         Babel
       </p>
       <div className="productShowcaseSection">
@@ -244,6 +244,11 @@ const OpenCollectiveSponsors = props => {
             tier="silver-sponsors"
             button={ocButton}
           />
+          <SponsorTier
+            type="other"
+            title="Misc Sponsors"
+            tier="other-sponsors"
+          />
         </div>
       </div>
     </div>
@@ -264,9 +269,7 @@ const HomeContainer = props => (
 const Hero = ({ language }) => (
   <div className="hero">
     <a href="https://tidelift.com/subscription/npm/babel">
-      <div className="tidelift-banner">
-        Get Professionally Supported Babel
-      </div>
+      <div className="tidelift-banner">Get Professionally Supported Babel</div>
     </a>
     <div className="hero__container">
       <h1>
@@ -284,7 +287,7 @@ const Index = ({ language = DEFAULT_LANGUAGE }) => (
   <div>
     <Hero language={language} />
 
-    <div className="mainContainer">
+    <div className="mainContainer" style={{ padding: 0 }}>
       <HomeContainer>
         <GetStarted language={language} />
         <WorkSponsors language={language} />

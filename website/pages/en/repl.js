@@ -4,7 +4,7 @@ const React = require("react");
 
 const styles = [
   "https://unpkg.com/codemirror@5.30.0/lib/codemirror.css",
-  "/css/repl.css"
+  "/static/css/hide-footer.css",
 ];
 
 const scripts = [
@@ -29,7 +29,9 @@ class REPL extends React.Component {
   render() {
     return (
       <div>
-        {styles.map(url => <link rel="stylesheet" href={url} key={url} />)}
+        {styles.map(url => (
+          <link rel="stylesheet" type="text/css" href={url} key={url} />
+        ))}
 
         <div id="root">
           <noscript>You need to enable JavaScript to run this app.</noscript>

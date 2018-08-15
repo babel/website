@@ -8,7 +8,7 @@ sidebar_label: env
 npm install @babel/preset-env --save-dev
 ```
 
-Without any configuration options, `@babel/preset-env` behaves exactly the same as [`@babel/preset-es2015`](https://github.com/babel/babel/tree/master/packages/babel-preset-es2015), [`@babel/preset-es2016`](https://github.com/babel/babel/tree/master/packages/babel-preset-es2016) and [`@babel/preset-es2017`](https://github.com/babel/babel/tree/master/packages/babel-preset-es2017) together (or the deprecated `babel-preset-latest`).
+Without any configuration options, `@babel/preset-env` behaves exactly the same as [`@babel/preset-es2015`](https://babeljs.io/docs/en/babel-preset-es2015), [`@babel/preset-es2016`](https://babeljs.io/docs/en/babel-preset-es2016) and [`@babel/preset-es2017`](https://babeljs.io/docs/en/babel-preset-es2017) together (or the deprecated `babel-preset-latest`).
 
 > We don't recommend using `preset-env` this way because it doesn't take advantage of its ability to target specific browsers.
 
@@ -594,8 +594,3 @@ Using polyfills:
   ]
 }
 ```
-
-## Issues
-
-If you get a `SyntaxError: Unexpected token ...` error when using the [object-rest-spread](https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-object-rest-spread) transform then make sure the plugin has been updated to, at least, `v6.19.0`.
-

@@ -306,6 +306,7 @@
     "stage-3": "stage-3",
     "babel-preset-typescript": "babel-preset-typescript",
     "typescript": "typescript",
+    "presets": "Presets",
     "babel-register": "babel-register",
     "roadmap": "Babel Roadmap",
     "Roadmap": "Roadmap",
@@ -407,9 +408,7 @@
     "General": "General",
     "Usage": "Usage",
     "Presets": "Presets",
-    "Tooling": "Tooling",
-    "install": "install",
-    "setup": "setup"
+    "Tooling": "Tooling"
   },
   "pages-strings": {
     "Put in next-gen JavaScript|no description given": "Put in next-gen JavaScript",

@@ -11,6 +11,7 @@
     "General": [
       "editors",
       "plugins",
+      "presets",
       "caveats",
       "faq",
       "roadmap"
@@ -25,9 +26,6 @@
     ],
     "Presets": [
       "babel-preset-env",
-      "babel-preset-es2015",
-      "babel-preset-es2016",
-      "babel-preset-es2017",
       "babel-preset-stage-0",
       "babel-preset-stage-1",
       "babel-preset-stage-2",
