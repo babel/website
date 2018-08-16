@@ -73,7 +73,6 @@ type State = {
   pluginSearch: ?string,
   showOfficialExternalPlugins: boolean,
   loadingExternalPlugins: boolean,
-  showTimeTravel: boolean,
   transitions: Array<Object>,
   currentTransition: Object,
 };
@@ -162,7 +161,6 @@ class Repl extends React.Component<Props, State> {
       showOfficialExternalPlugins: false,
       externalPlugins: [],
       loadingExternalPlugins: false,
-      showTimeTravel: true,
       transitions: [],
       currentTransition: {},
     };
@@ -474,7 +472,7 @@ class Repl extends React.Component<Props, State> {
         prettify: state.plugins.prettier.isEnabled,
         sourceMap: runtimePolyfillState.isEnabled,
         sourceType: state.sourceType,
-        getTransitions: state.showTimeTravel,
+        getTransitions: state.timeTravel,
       })
       .then(result => {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
@@ -582,7 +580,6 @@ class Repl extends React.Component<Props, State> {
       targets: envConfigToTargetsString(envConfig),
       version: state.babel.version,
       envVersion: state.envPresetState.version,
-      showTimeTravel: state.showTimeTravel,
     };
     StorageService.set("replState", payload);
     UriUtils.updateQuery(payload);
