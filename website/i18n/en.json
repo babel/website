@@ -310,6 +310,7 @@
     "babel-register": "babel-register",
     "roadmap": "Babel Roadmap",
     "Roadmap": "Roadmap",
+    "babel-runtime-corejs2": "babel-runtime-corejs2",
     "babel-runtime": "babel-runtime",
     "babel-standalone": "babel-standalone",
     "babel-template": "babel-template",

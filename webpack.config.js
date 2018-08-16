@@ -1,10 +1,12 @@
 "use strict";
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 
 const config = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
   entry: {
     repl: "./js/repl/index.js",
     minirepl: "./js/minirepl.js",
+    "code-blocks-buttons": "./js/code-blocks-buttons.js",
   },
   output: {
     // Don't bother with hashing/versioning the filename - Netlify does it
@@ -21,7 +23,7 @@ const config = {
       },
     ],
   },
-  plugins: [],
+  plugins: [new MinifyPlugin()],
   externals: {
     codemirror: "CodeMirror",
     "lz-string": "LZString",

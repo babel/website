@@ -85,7 +85,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       spec,
       loose,
     };
-    
+
     // not a valid option in v7: preset-env-standalone added extra fields not in preset-env
     if (Babel.version[0] === "6") {
       options.onPresetBuild = onPresetBuild;
