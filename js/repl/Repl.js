@@ -2,7 +2,7 @@
 
 import "regenerator-runtime/runtime";
 
-import { css } from "emotion";
+import { cx, css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
 import { prettySize } from "./Utils";
@@ -229,10 +229,7 @@ class Repl extends React.Component<Props, State> {
         />
         <div className={styles.wrapperPanels}>
           <div
-            className={[
-              styles.panels,
-              !state.timeTravel && styles.panelsMax,
-            ].join(" ")}
+            className={cx(styles.panels, !state.timeTravel && styles.panelsMax)}
           >
             <CodeMirrorPanel
               className={styles.codeMirrorPanel}
