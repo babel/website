@@ -169,6 +169,7 @@ class Repl extends React.Component<Props, State> {
 
   render() {
     const state = this.state;
+
     if (!state.babel.isLoaded) {
       let message = "Loading Babel...";
 

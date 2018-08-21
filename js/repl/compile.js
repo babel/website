@@ -18,7 +18,7 @@ type Return = {
     rawSize: number,
   },
   sourceMap: ?string,
-  transitions: ?Array<Transition>,
+  transitions: Array<Transition>,
 };
 
 const DEFAULT_PRETTIER_CONFIG = {
@@ -92,7 +92,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       spec,
       loose,
     };
-    
+
     // not a valid option in v7: preset-env-standalone added extra fields not in preset-env
     if (Babel.version[0] === "6") {
       options.onPresetBuild = onPresetBuild;
