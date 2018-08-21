@@ -57,6 +57,7 @@ type Props = {
   envPresetState: EnvState,
   shippedProposalsState: ShippedProposalsState,
   fileSize: boolean,
+  timeTravel: boolean,
   sourceType: SourceType,
   isExpanded: boolean,
   lineWrap: boolean,
@@ -144,6 +145,7 @@ class ExpandedContainer extends Component<Props, State> {
       envPresetState,
       shippedProposalsState,
       fileSize,
+      timeTravel,
       sourceType,
       lineWrap,
       onIsExpandedChange,
@@ -213,6 +215,15 @@ class ExpandedContainer extends Component<Props, State> {
                   type="checkbox"
                 />
                 File Size
+              </label>
+              <label className={styles.settingsLabel}>
+                <input
+                  checked={timeTravel}
+                  onChange={this._onSettingCheck("timeTravel")}
+                  className={styles.inputCheckboxLeft}
+                  type="checkbox"
+                />
+                Time Travel
               </label>
               <label
                 className={`${styles.settingsLabel} ${styles.selectLabel}`}
@@ -899,7 +910,6 @@ const styles = {
 
     [media.large]: {
       backgroundColor: colors.inverseBackgroundDark,
-      //justifyContent: "flex-start",
       position: "absolute",
       width: "100%",
       bottom: 0,

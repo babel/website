@@ -2,7 +2,7 @@
 
 import "regenerator-runtime/runtime";
 
-import { css } from "emotion";
+import { cx, css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
 import { prettySize } from "./Utils";
@@ -14,6 +14,7 @@ import UriUtils from "./UriUtils";
 import loadBundle from "./loadBundle";
 import loadPlugin from "./loadPlugin";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
+import TimeTravelSlider from "./TimeTravelSlider";
 import {
   babelConfig,
   envPresetConfig,
@@ -59,6 +60,7 @@ type State = {
   shippedProposalsState: ShippedProposalsState,
   evalErrorMessage: ?string,
   fileSize: boolean,
+  timeTravel: boolean,
   sourceType: SourceType,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
@@ -71,6 +73,8 @@ type State = {
   pluginSearch: ?string,
   showOfficialExternalPlugins: boolean,
   loadingExternalPlugins: boolean,
+  transitions: Array<Object>,
+  currentTransition: Object,
 };
 
 const DEBOUNCE_DELAY = 500;
@@ -138,6 +142,7 @@ class Repl extends React.Component<Props, State> {
       ),
       evalErrorMessage: null,
       fileSize: persistedState.fileSize,
+      timeTravel: persistedState.timeTravel,
       sourceType: persistedState.sourceType,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
@@ -156,8 +161,9 @@ class Repl extends React.Component<Props, State> {
       showOfficialExternalPlugins: false,
       externalPlugins: [],
       loadingExternalPlugins: false,
+      transitions: [],
+      currentTransition: {},
     };
-
     this._setupBabel(defaultPresets);
   }
 
@@ -189,7 +195,6 @@ class Repl extends React.Component<Props, State> {
       fileSize: state.fileSize,
       lineWrapping: state.lineWrap,
     };
-
     return (
       <div className={styles.repl}>
         <ReplOptions
@@ -200,6 +205,7 @@ class Repl extends React.Component<Props, State> {
           envPresetState={state.envPresetState}
           shippedProposalsState={state.shippedProposalsState}
           fileSize={state.fileSize}
+          timeTravel={state.timeTravel}
           sourceType={state.sourceType}
           isExpanded={state.isSidebarExpanded}
           lineWrap={state.lineWrap}
@@ -222,26 +228,37 @@ class Repl extends React.Component<Props, State> {
           showOfficialExternalPlugins={state.showOfficialExternalPlugins}
           loadingExternalPlugins={state.loadingExternalPlugins}
         />
-
-        <div className={styles.panels}>
-          <CodeMirrorPanel
-            className={styles.codeMirrorPanel}
-            code={state.code}
-            errorMessage={state.compileErrorMessage}
-            fileSize={state.meta.rawSize}
-            onChange={this._updateCode}
-            options={options}
-            placeholder="Write code here"
-          />
-          <CodeMirrorPanel
-            className={styles.codeMirrorPanel}
-            code={state.compiled}
-            errorMessage={state.evalErrorMessage}
-            fileSize={state.meta.compiledSize}
-            info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
-            options={options}
-            placeholder="Compiled output will be shown here"
-          />
+        <div className={styles.wrapperPanels}>
+          <div
+            className={cx(styles.panels, !state.timeTravel && styles.panelsMax)}
+          >
+            <CodeMirrorPanel
+              className={styles.codeMirrorPanel}
+              code={state.code}
+              errorMessage={state.compileErrorMessage}
+              fileSize={state.meta.rawSize}
+              onChange={this._updateCode}
+              options={options}
+              placeholder="Write code here"
+            />
+            <CodeMirrorPanel
+              className={styles.codeMirrorPanel}
+              code={state.compiled}
+              errorMessage={state.evalErrorMessage}
+              fileSize={state.meta.compiledSize}
+              info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
+              options={options}
+              placeholder="Compiled output will be shown here"
+            />
+          </div>
+          {state.timeTravel && (
+            <TimeTravelSlider
+              className={styles.sliders}
+              currentTransition={state.currentTransition}
+              transitions={state.transitions}
+              selectTransition={this.selectTransition}
+            />
+          )}
         </div>
       </div>
     );
@@ -453,6 +470,7 @@ class Repl extends React.Component<Props, State> {
         prettify: state.plugins.prettier.isEnabled,
         sourceMap: runtimePolyfillState.isEnabled,
         sourceType: state.sourceType,
+        getTransitions: state.timeTravel,
       })
       .then(result => {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
@@ -551,6 +569,7 @@ class Repl extends React.Component<Props, State> {
       shippedProposals: envConfig.shippedProposals,
       evaluate: state.runtimePolyfillState.isEnabled,
       fileSize: state.fileSize,
+      timeTravel: state.timeTravel,
       sourceType: state.sourceType,
       lineWrap: state.lineWrap,
       presets: presetsArray.join(","),
@@ -579,10 +598,22 @@ class Repl extends React.Component<Props, State> {
 
   _updateCode = (code: string) => {
     this.setState({ code });
-
     // Update state with compiled code, errors, etc after a small delay.
     // This prevents frequent updates while a user is typing.
     this._compileToState(code);
+  };
+
+  selectTransition = (transition: Object) => () => {
+    const transitionSize = prettySize(transition.size);
+    this.setState(prevState => ({
+      ...prevState,
+      currentTransition: transition,
+      compiled: transition.code,
+      meta: {
+        compiledSize: transitionSize,
+        rawSize: this.state.meta.rawSize,
+      },
+    }));
   };
 
   handleRemoveExternalPlugin = (pluginName: string) => {
@@ -635,13 +666,18 @@ const styles = {
     justify-content: stretch;
     overflow: auto;
     font-size: 0.875rem;
-
     ${media.mediumAndDown} {
       flex-direction: column;
     }
   `,
-  panels: css({
+  wrapperPanels: css({
     height: "100%",
+    width: "100%",
+    justifyContent: "stretch",
+    overflow: "hidden",
+  }),
+  panels: css({
+    height: "85%",
     width: "100%",
     display: "flex",
     flexDirection: "row",
@@ -649,5 +685,12 @@ const styles = {
     overflow: "auto",
     fontSize: "0.875rem",
     lineHeight: "1.25rem",
+  }),
+  panelsMax: css({
+    height: "100% !important",
+  }),
+  sliders: css({
+    height: "20%",
+    margin: 0,
   }),
 };
