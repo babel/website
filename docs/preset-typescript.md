@@ -58,11 +58,22 @@ require("@babel/core").transform("code", {
 
 ## Options
 
+### `isTSX`
+
+`boolean`, defaults to `false`.
+
+Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as typescript's legacy type assertion `var foo = <string>bar;`. Also, `isTSX: true` requires `allExtensions: true`
+
 ### `jsxPragma`
 
-`string`
+`string`, defaults to `React`.
 
 Replace the function used when compiling JSX expressions.
 
 This is so that we know that the import is not a type import, and should not be removed
 
+### `allExtensions`
+
+`boolean`, defaults to `false`.
+
+Indicates that every file should be parsed as TS or TSX (depending on the isTSX option)

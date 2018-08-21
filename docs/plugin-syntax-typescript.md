@@ -34,3 +34,10 @@ require("@babel/core").transform("code", {
 });
 ```
 
+## Options
+
+### `isTSX`
+
+`boolean`, defaults to `false`.
+
+Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as typescript's legacy type assertion `var foo = <string>bar;`

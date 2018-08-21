@@ -36,9 +36,22 @@ These presets should be substituted with the "env" preset.
 
 We are removing the stage presets in favor of explicit proposal usage. Can check the [stage-0 readme](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0) for more migration steps.
 
-To do this automatially you can run [`npx babel-upgrade`](https://github.com/babel/babel-upgrade) (PR added [here](https://github.com/babel/babel-upgrade/pull/69)).
+To do this automatically you can run [`npx babel-upgrade`](https://github.com/babel/babel-upgrade) (PR added [here](https://github.com/babel/babel-upgrade/pull/69)).
 
 (add link to blog post when published).
+
+## [Remove proposal polyfills in `@babel/polyfill`](https://github.com/babel/babel/issues/8416)
+
+Based on similar thinking, we have removed the polyfill proposals from `@babel/polyfill`. You will need to import these independently.
+
+Right now `@babel/polyfill` is mostly just an alias of `core-js`. [Source](https://github.com/babel/babel/blob/master/packages/babel-polyfill/src/index.js)
+
+Before it used to just be 2 imports:
+
+```js
+import "core-js/shim"; // included < Stage 4 proposals
+import "regenerator-runtime/runtime";
+```
 
 ## [Versioning/Dependencies](/blog/2017/12/27/nearing-the-7.0-release.html#peer-dependencies-integrations)
 
@@ -201,18 +214,48 @@ The `--copy-files` argument for the `babel` command, which tells Babel to copy a
 
 The `babel-node` command in Babel 6 was part of the `babel-cli` package. In Babel 7, this command has been split out into its own `@babel/node` package, so if you are using that command, you'll want to add this new dependency.
 
+### `@babel/runtime`, `@babel/plugin-transform-runtime`
 
-## `@babel/preset-stage-3`
+We have separated out Babel's helpers from it's "polyfilling" behavior in runtime. More details in the [PR](https://github.com/babel/babel/pull/8266).
 
-> Remove Stage 4 plugins from Stage 3 [#5126](https://github.com/babel/babel/pull/5126) ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
+[`@babel/runtime`](runtime.md) now only contains the helpers, and if you need `core-js` you can use [`@babel/runtime-corejs2`](runtime-corejs2.md) and the option provided in the transform. For both you still need the [`@babel/plugin-transform-runtime`](plugin-transform-runtime.md)
 
-These plugins were moved into their yearly presets after moving to Stage 4:
+#### Only Helpers
 
-- `babel-plugin-syntax-trailing-function-commas` (`babel-preset-es2017`)
-- `babel-plugin-transform-async-to-generator` (`babel-preset-es2017`)
-- `babel-plugin-transform-exponentiation-operator` (`babel-preset-es2016`)
+```sh
+# install the runtime as a dependency
+npm install @babel/runtime`
+# install the plugin as a devDependency
+npm install @babel/plugin-transform-runtime --save-dev
+```
 
-Part of the reason we wanted to remove/deprecate stage presets in the first place are because of this issue. Whenever a proposal gets to Stage 4, it should technically be removed from the Stage 3 preset but it is a breaking change. Because all proposals are at risk (almost guranteed) to have breaking changes, it's the only parts of the Babel repo that would regularly have major version bumps (unless we do a 0.x versioning system which is basically the same thing). At the same time, we aren't doing the best job of signaling what each Stage means and the kinds of precautions you may want to take when using a proposal, especially in production.
+```json
+{
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
+```
+
+#### Helpers + polyfilling from `core-js`
+
+So if you need `core-js` support with `transform-runtime`, you would now pass the `corejs` option and use the `@babel/runtime-corejs2` dependency instead of `@babel/runtime`.
+
+```sh
+# install the runtime as a dependency
+npm install @babel/runtime-corejs2
+# install the plugin as a devDependency
+npm install @babel/plugin-transform-runtime --save-dev
+```
+
+```diff
+{
+  "plugins": [
+-   ["@babel/plugin-transform-runtime"],
++   ["@babel/plugin-transform-runtime", {
++     "corejs": 2,   
++   }],
+  ]
+}
+```
 
 ---
 
@@ -381,6 +424,19 @@ In anticipation of the new decorators proposal implementation, we've decided to 
 ```
 
 > NOTE: If you are using `@babel/preset-stage-0` or `@babel/preset-stage-1`, which include this plugin, you must pass them the `decoratorsLegacy` option.
+
+### `@babel/plugin-proposal-pipeline-operator`
+
+Newer proposals in flux will error by default and will require everyone opt into a specific proposal will things are still < Stage 2. This is explained more in this [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal)
+
+```diff
+{
+  "plugins": [
+-   "@babel/plugin-proposal-pipeline-operator"
++   ["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }]
+  ]
+}
+```
 
 ### Removed `babel-plugin-transform-class-constructor-call`
 
