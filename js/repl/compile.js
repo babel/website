@@ -128,7 +128,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       sourceType: config.sourceType,
       wrapPluginVisitorMethod: config.getTransitions
         ? transitions.wrapPluginVisitorMethod
-        : () => {},
+        : undefined,
     };
 
     const transformed = Babel.transform(code, babelConfig);
