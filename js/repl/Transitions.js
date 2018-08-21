@@ -22,7 +22,7 @@ export default class Transitions {
   };
 
   getValue = () => {
-    return this._transitions.length ? this._transitions : undefined;
+    return this._transitions;
   };
 
   addExitTransition = (code: string) => {

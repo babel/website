@@ -23,6 +23,7 @@ class TimeTravelSlider extends React.Component<Props> {
 
   render() {
     const { transitions, currentTransition } = this.props;
+    if (!transitions.length) return null;
     return (
       <div className={styles.sliderWrapper}>
         <div className={styles.sliderRow}>
