@@ -3,7 +3,6 @@
 const React = require("react");
 const styles = [
   "https://unpkg.com/codemirror@5.30.0/lib/codemirror.css",
-  "/static/css/hide-footer.css",
 ];
 
 const scripts = [
