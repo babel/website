@@ -12,28 +12,22 @@ type Props = {
 };
 
 class TimeTravelSlider extends React.Component<Props> {
-  _isMounted = false;
-  componentDidMount = () => {
-    this._isMounted = true;
-  };
-
-  componentWillUnmount = () => {
-    this._isMounted = false;
-  };
-
   render() {
     const { transitions, currentTransition } = this.props;
-    if (!transitions.length) return null;
+    //if (!transitions.length) return null;
     return (
       <div className={styles.sliderWrapper}>
         <div className={styles.sliderRow}>
-          {transitions.map((transition, i) => (
-            <div
-              className={styles.silderBox}
-              key={`${i}-transition`}
-              onMouseEnter={this.props.selectTransition(transition)}
-            />
-          ))}
+          {transitions &&
+            transitions.map((transition, i) => (
+              <div
+                className={styles.silderBox}
+                key={`${i}-transition`}
+                onMouseEnter={this.props.selectTransition(transition)}
+              >
+                {i == 0 ? "Original" : i}
+              </div>
+            ))}
         </div>
         <StatusBar
           pluginAlias={currentTransition.pluginAlias}
@@ -82,20 +76,25 @@ const styles = {
     justifyContent: "stretch",
     width: "100%",
     position: "relative",
-    background: colors.inverseBackground,
+    background: colors.inverseBackgroundLight,
   }),
   silderBox: css({
     flex: 1,
     width: 0,
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "center",
     "&:last-child": {
       marginRight: 0,
     },
-    borderTop: `1px solid ${colors.inverseBackgroundDark}`,
-    borderLeft: `1px solid ${colors.inverseBackgroundDark}`,
-    color: colors.inverseForeground,
-    fontSize: "0.5rem",
+    borderTop: `0.625rem solid ${colors.inverseBackground}`,
+    borderLeft: `0.625rem solid ${colors.inverseBackground}`,
+    borderBottom: `0.625rem solid ${colors.inverseBackground}`,
+    color: colors.inverseForegroundLight,
+    fontSize: "0.65rem",
     transition: "background-color 250ms ease-in-out, color 250ms ease-in-out",
     "&:hover": {
+      cursor: "pointer",
       backgroundColor: colors.inverseBackgroundDark,
     },
   }),
