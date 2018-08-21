@@ -117,7 +117,6 @@ export type ReplState = {
   targets: string,
   version: any,
   envVersion: string,
-  showTimeTravel: boolean,
 };
 
 type BabelPresetTargetsMap = {

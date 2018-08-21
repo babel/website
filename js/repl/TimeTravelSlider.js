@@ -26,16 +26,13 @@ class TimeTravelSlider extends React.Component<Props> {
     return (
       <div className={styles.sliderWrapper}>
         <div className={styles.sliderRow}>
-          {transitions &&
-            transitions.map((transition, i) => {
-              return (
-                <div
-                  className={styles.silderBox}
-                  key={`${i}-transition`}
-                  onMouseEnter={this.props.selectTransition(transition)}
-                />
-              );
-            })}
+          {transitions.map((transition, i) => (
+            <div
+              className={styles.silderBox}
+              key={`${i}-transition`}
+              onMouseEnter={this.props.selectTransition(transition)}
+            />
+          ))}
         </div>
         <StatusBar
           pluginAlias={currentTransition.pluginAlias}

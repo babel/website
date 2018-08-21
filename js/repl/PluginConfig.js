@@ -135,7 +135,6 @@ const replDefaults: ReplState = {
   targets: "",
   version: "",
   envVersion: "",
-  showTimeTravel: true,
 };
 
 export {
