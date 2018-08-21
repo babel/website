@@ -60,9 +60,13 @@ require("@babel/core").transform("code", {
 ```
 ## Options
 
+### `isTSX`
+
+`boolean`, defaults to `false`
+
 ### `jsxPragma`
 
-`string`
+`string`, defaults to `React`
 
 Replace the function used when compiling JSX expressions.
 
