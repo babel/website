@@ -63,7 +63,7 @@ Thus, I think it's an understatement to say that Babel is a vital part of the Ja
 
 Ok then, let's talk about some changes!
 
-## [#4315](https://github.com/babel/babel/issues/4315) Drop support for unmaintained Node versions: 0.10, 0.12, 5
+## Drop Support for Unmaintained Node Versions: 0.10, 0.12, 5 ([#4315](https://github.com/babel/babel/issues/4315))
 
 Progress in OSS projects often comes at the cost of upgrading for its users. Because of this, we've always been hesitant in making the choice to introduce a major version bump/breaking changes. By dropping unsupported versions of Node, we can not only make a number of improvements to the codebase, but also upgrade dependencies and tools (ESLint, Yarn, Jest, Lerna, etc).
 
@@ -534,7 +534,7 @@ After v7, we plan to move `babel-core` to be a peerDependency like `babel-loader
 
 ## Meta
 
-### [#5218](https://github.com/babel/babel/pull/5218) Remove `babel-runtime` from our own Babel dependencies
+### Remove `babel-runtime` from our own Babel dependencies ([#5218](https://github.com/babel/babel/pull/5218))
 
 Babel itself doesn't have that many external dependencies, but in 6.x [each package has a dependency on `babel-runtime`](https://github.com/babel/babel/blob/958f72ddc28e2f5d02adf44eadd2b1265dd0fa4d/packages/babel-plugin-transform-es2015-arrow-functions/package.json#L12) so that built-ins like Symbol, Map, Set, and others are available without needing a polyfill. By changing the minimum supported version of Node to v4 (where those built-ins are supported natively), we can drop the dependency entirely.
 
@@ -549,7 +549,7 @@ With [Create React App](https://github.com/facebookincubator/create-react-app) t
 
 So although this issue has been fixed "upstream" by using npm >= 3/later Yarn, we can do our part by simply dropping our own dependency on `babel-runtime`.
 
-### [#5224](https://github.com/babel/babel/pull/5224) Independent Publishing of Experimental Packages
+### Independent Publishing of Experimental Packages ([#5224](https://github.com/babel/babel/pull/5224))
 
 > I mention this in [The State of Babel](http://babeljs.io/blog/2016/12/07/the-state-of-babel) in the `Versioning` section. [Github Issue](https://github.com/babel/babylon/issues/275)
 
