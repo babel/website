@@ -577,8 +577,8 @@ If the spec to an experimental proposal changes, we should be free to make a bre
 ### TODOs
 
 > Then we should rename all proposals to `babel-plugin-proposal-` instead of `babel-plugin-transform-` (done)
-~~> I believe the way we want to go about doing this is to move those packages into the `experimental/` folder in our [monorepo](https://github.com/babel/babel) instead of in `packages/`.~~
-~~> Change our publish process (probably through Lerna) to publish the packages in `experimental/` independently.~~
+> ~~I believe the way we want to go about doing this is to move those packages into the `experimental/` folder in our [monorepo](https://github.com/babel/babel) instead of in `packages/`.~~
+> ~~Change our publish process (probably through Lerna) to publish the packages in `experimental/` independently.~~
 
 ## 💀 Possible Deprecations
 
