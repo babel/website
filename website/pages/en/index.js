@@ -129,8 +129,7 @@ const WorkSponsors = () => {
     >
       <h2>Friends of Open Source</h2>
       <p style={{ fontSize: 16 }}>
-        These companies are awesome and pay these engineers to work on
-        Babel
+        These companies are awesome and pay these engineers to work on Babel
       </p>
       <div className="productShowcaseSection">
         <div className="cards">

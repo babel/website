@@ -33,7 +33,9 @@ class REPL extends React.Component {
           <noscript>You need to enable JavaScript to run this app.</noscript>
         </div>
 
-        {scripts.map(url => <script src={url} key={url} />)}
+        {scripts.map(url => (
+          <script src={url} key={url} />
+        ))}
       </div>
     );
   }
