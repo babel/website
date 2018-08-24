@@ -15,7 +15,7 @@ $ cd website
 $ yarn && yarn bootstrap
 ```
 
-* Just run `npm start` next time (check the Makefile and the package.json).
+- Just run `npm start` next time (check the package.json for scripts).
 
 ### Contributing to the website
 
