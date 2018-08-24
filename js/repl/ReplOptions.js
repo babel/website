@@ -243,7 +243,8 @@ class ExpandedContainer extends Component<Props, State> {
                 <select
                   value={sourceType}
                   onChange={(event: SyntheticInputEvent<*>) =>
-                    onSettingChange("sourceType", event.target.value)}
+                    onSettingChange("sourceType", event.target.value)
+                  }
                   className={styles.sourceTypeSelect}
                 >
                   <option value="module">Module</option>
@@ -305,14 +306,18 @@ class ExpandedContainer extends Component<Props, State> {
 
               <div className={styles.envPresetColumn}>
                 <LinkToDocs
-                  className={`${styles.envPresetColumnLabel} ${styles.envPresetLabel} ${styles.highlight}`}
+                  className={`${styles.envPresetColumnLabel} ${
+                    styles.envPresetLabel
+                  } ${styles.highlight}`}
                   section="browserslist-support"
                 >
                   Browsers
                 </LinkToDocs>
                 <textarea
                   disabled={disableEnvSettings}
-                  className={`${styles.envPresetInput} ${styles.envPresetTextarea}`}
+                  className={`${styles.envPresetInput} ${
+                    styles.envPresetTextarea
+                  }`}
                   onChange={this._onEnvPresetSettingChange("browsers")}
                   placeholder={envPresetDefaults.browsers.placeholder}
                   value={envConfig.browsers}
@@ -326,7 +331,9 @@ class ExpandedContainer extends Component<Props, State> {
                   Electron
                 </LinkToDocs>
                 <input
-                  className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
+                  className={`${styles.envPresetNumber} ${
+                    styles.envPresetInput
+                  }`}
                   disabled={
                     !envPresetState.isLoaded ||
                     !envConfig.isEnvPresetEnabled ||
@@ -355,7 +362,9 @@ class ExpandedContainer extends Component<Props, State> {
                   Node
                 </LinkToDocs>
                 <input
-                  className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
+                  className={`${styles.envPresetNumber} ${
+                    styles.envPresetInput
+                  }`}
                   disabled={
                     !envPresetState.isLoaded ||
                     !envConfig.isEnvPresetEnabled ||
@@ -608,7 +617,8 @@ const PluginToggle = ({
       className={styles.inputCheckboxLeft}
       disabled={state.isLoading || state.didError}
       onChange={(event: SyntheticInputEvent<*>) =>
-        onSettingChange(config.package || config.label, event.target.checked)}
+        onSettingChange(config.package || config.label, event.target.checked)
+      }
       type="checkbox"
     />
     {state.isLoading ? <PresetLoadingAnimation /> : label || config.label}
