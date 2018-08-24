@@ -1,170 +1,15 @@
 ---
 id: babel-preset-env
-title: babel-preset-env
+title: @babel/preset-env
 sidebar_label: env
 ---
 
-```sh
-npm install @babel/preset-env --save-dev
-```
+`@babel/preset-env` is a smart preset that allows you to use the latest JavaScript without needing to micromanage which syntax transforms (and optionally, browser polyfills) are needed by your target environment(s). This both makes your life easier and JavaScript bundles smaller!
 
-Without any configuration options, `@babel/preset-env` behaves exactly the same as [`@babel/preset-es2015`](https://babeljs.io/docs/en/babel-preset-es2015), [`@babel/preset-es2016`](https://babeljs.io/docs/en/babel-preset-es2016) and [`@babel/preset-es2017`](https://babeljs.io/docs/en/babel-preset-es2017) together (or the deprecated `babel-preset-latest`).
-
-> We don't recommend using `preset-env` this way because it doesn't take advantage of its ability to target specific browsers.
-
-```json
-{
-  "presets": ["@babel/preset-env"]
-}
-```
-
-You can also configure it to only include the polyfills and transforms needed for the browsers you support. Compiling only what's needed can make your bundles smaller and your life easier.
-
-If you want to specify target browsers, we recommend using a [`.browserslistrc`](https://github.com/browserslist/browserslist) config, which is also used by many tools including Autoprefixer.
-
-For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
-
-```
-> 0.25%
-not dead
-```
-
-The full list of queries could be found in [Browserslist docs](https://github.com/browserslist/browserslist#queries).
-
-If you need to use different browsers for Babel, you can also specify Browserslist queries in the [targets.browsers option](https://github.com/babel/babel/tree/master/packages/babel-preset-env#targetsbrowsers) in your Babel config.
-
-You may also target browsers supporting ES Modules (https://www.ecma-international.org/ecma-262/6.0/#sec-modules). When specifying this option, the browsers field will be ignored. You can use this approach in combination with `<script type="module"></script>` to conditionally serve smaller scripts to users (https://jakearchibald.com/2017/es-modules-in-browsers/#nomodule-for-backwards-compatibility).
-
-*Please note*: when specifying the esmodules target, browsers targets will be ignored.
-
-```json
-{
-  "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "esmodules": true
-      }
-    }]
-  ]
-}
-```
-
-Similarly, if you're targeting Node.js instead of the browser, you can configure `@babel/preset-env` to only include the polyfills and transforms necessary for a particular version:
-
-```json
-{
-  "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "node": "6.10"
-      }
-    }]
-  ]
-}
-```
-
-For convenience, you can use `"node": "current"` to only include the necessary polyfills and transforms for the Node.js version that you use to run Babel:
-
-```json
-{
-  "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "node": "current"
-      }
-    }]
-  ]
-}
-```
-
-- [How it Works](#how-it-works)
 - [Install](#install)
-- [Usage](#usage)
+- [How Does it Work?](#how-does-it-work)
+- [Browserslist Integration](#browserslist-integration)
 - [Options](#options)
-- [Examples](#examples)
-- [Issues](#issues)
-
-## How it Works
-
-### Determine environment support for ECMAScript features
-
-Use external data such as [`compat-table`](https://github.com/kangax/compat-table) to determine browser support. (We should create PRs there when necessary)
-
-![](https://cloud.githubusercontent.com/assets/588473/19214029/58deebce-8d48-11e6-9004-ee3fbcb75d8b.png)
-
-We can periodically run [build-data.js](https://github.com/babel/babel/blob/master/packages/babel-preset-env/scripts/build-data.js) which generates [plugins.json](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugins.json).
-
-Ref: [#7](https://github.com/babel/babel-preset-env/issues/7)
-
-### Maintain a mapping between JavaScript features and Babel plugins
-
-> Currently located at [plugin-features.js](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugin-features.js).
-
-This should be straightforward to do in most cases. There might be cases where plugins should be split up more or certain plugins aren't standalone enough (or impossible to do).
-
-### Support all plugins in Babel that are considered `latest`
-
-> Default behavior without options is the same as `@babel/preset-latest`.
-
-It won't include `stage-x` plugins. env will support all plugins in what we consider the latest version of JavaScript (by matching what we do in [`@babel/preset-latest`](http://babeljs.io/docs/plugins/preset-latest/)).
-
-Ref: [#14](https://github.com/babel/babel-preset-env/issues/14)
-
-### Determine the lowest common denominator of plugins to be included in the preset
-
-If you are targeting IE 8 and Chrome 55 it will include all plugins required by IE 8 since you would need to support both still.
-
-### Support a target option `"node": "current"` to compile for the currently running node version.
-
-For example, if you are building on Node 6, arrow functions won't be converted, but they will if you build on Node 0.12.
-
-### Support a `browsers` option like autoprefixer.
-
-Use [browserslist](https://github.com/ai/browserslist) to declare supported environments by performing queries like `> 1%, last 2 versions`.
-
-Ref: [#19](https://github.com/babel/babel-preset-env/pull/19)
-
-### Browserslist support.
-
-[Browserslist](https://github.com/ai/browserslist) is a library used to share a supported list of browsers between different front-end tools like [autoprefixer](https://github.com/postcss/autoprefixer), [stylelint](https://stylelint.io/), [eslint-plugin-compat](https://github.com/amilajack/eslint-plugin-compat) and many others.
-
-By default, @babel/preset-env will use [browserslist config sources](https://github.com/ai/browserslist#queries).
-
-For example, to enable only the polyfills and plugins needed for a project targeting *last 2 versions* and *IE10*:
-
-**.babelrc**
-```json
-{
-  "presets": [
-    ["@babel/preset-env", {
-      "useBuiltIns": "entry"
-    }]
-  ]
-}
-```
-
-**browserslist**
-```
-Last 2 versions
-IE 10
-```
-
-or
-
-**package.json**
-```
-"browserslist": "last 2 versions, ie 10"
-```
-
-Browserslist config will be ignored if: 1) `targets.browsers` was specified 2) or with `ignoreBrowserslistConfig: true` option ([see more](#ignoreBrowserslistConfig)):
-
-#### Targets merging.
-
-1. If [targets.browsers](#targetsbrowsers) is defined - the browserslist config will be ignored. The browsers specified in `targets` will be merged with [any other explicitly defined targets](#targets). If merged, targets defined explicitly will override the same targets received from `targets.browsers`.
-
-2. If [targets.browsers](#targetsbrowsers) is _not_ defined - the program will search browserslist file or `package.json` with `browserslist` field. The search will start from the working directory of the process or from the path specified by the `configPath` option, and go up to the system root. If both a browserslist file and configuration inside a `package.json` are found, an exception will be thrown.
-
-3. If a browserslist config was found and other targets are defined (but not [targets.browsers](#targetsbrowsers)), the targets will be merged in the same way as `targets` defined explicitly with `targets.browsers`.
 
 ## Install
 
@@ -180,14 +25,52 @@ Or [yarn](https://yarnpkg.com):
 yarn add @babel/preset-env --dev
 ```
 
-## Usage
+## How Does it Work?
 
-The default behavior without options runs all transforms (behaves the same as [@babel/preset-latest](https://babeljs.io/docs/plugins/preset-latest/)).
+`@babel/preset-env` would not be possible if not for a number of awesome open-source projects, like [`browserslist`](https://github.com/browserslist/browserslist), [`compat-table`](https://github.com/kangax/compat-table), and [`electron-to-chromium`](https://github.com/Kilian/electron-to-chromium).
+
+We leverage these data sources to maintain mappings of which version of our supported target environments gained support of a JavaScript syntax or browser feature, as well as a mapping of those syntaxes and features to Babel transform plugins and core-js polyfills.
+
+> It is important to note that `@babel/preset-env` does _not_ support `stage-x` plugins.
+
+`@babel/preset-env` takes any [target environments you've specified](#targets) and checks them against its mappings to compile a list of plugins and passes it to Babel.
+
+## Browserslist Integration
+
+For browser- or Electron-based projects, we recommend using a [`.browserslistrc`](https://github.com/browserslist/browserslist) file to specify targets. You may already have this configuration file as it is used by many tools in the ecosystem, like [autoprefixer](https://github.com/postcss/autoprefixer), [stylelint](https://stylelint.io/), [eslint-plugin-compat](https://github.com/amilajack/eslint-plugin-compat) and many others.
+
+By default `@babel/preset-env` will use [browserslist config sources](https://github.com/ai/browserslist#queries) _unless_ either the [targets](#targets) or [ignoreBrowserslistConfig](#ignoreBrowserslistConfig) options are set.
+
+For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
+
+**.babelrc**
 
 ```json
 {
-  "presets": ["@babel/preset-env"]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry"
+      }
+    ]
+  ]
 }
+```
+
+**browserslist**
+
+```
+> 0.25%
+not dead
+```
+
+or
+
+**package.json**
+
+```
+"browserslist": "> 0.25%, not dead"
 ```
 
 ## Options
@@ -196,29 +79,85 @@ For more information on setting options for a preset, refer to the [plugin/prese
 
 ### `targets`
 
-`{ [string]: number | string }`, defaults to `{}`.
+`string | Array<string> | { [string]: string }`, defaults to `{}`.
 
-Takes an object of environment versions to support.
+Describes the environments you support/target for your project.
 
-Each target environment takes a number or a string (we recommend using a string when specifying minor versions like `node: "6.10"`). You can also specify `tp` (technology preview) version for Safari.
+This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query:
+
+```json
+{
+  "targets": "> 0.25%, not dead"
+}
+```
+
+Or an object of minimum environment versions to support:
+
+```json
+{
+  "targets": {
+    "chrome": "58",
+    "ie": "11"
+  }
+}
+```
 
 Example environments: `chrome`, `opera`, `edge`, `firefox`, `safari`, `ie`, `ios`, `android`, `node`, `electron`.
 
-The [data](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugins.json) for this is generated by running the [build-data script](https://github.com/babel/babel/blob/master/packages/babel-preset-env/scripts/build-data.js) which pulls in data from [compat-table](https://kangax.github.io/compat-table).
+Sidenote, if no targets are specified, `@babel/preset-env` behaves exactly the same as [`@babel/preset-es2015`](https://babeljs.io/docs/en/babel-preset-es2015), [`@babel/preset-es2016`](https://babeljs.io/docs/en/babel-preset-es2016) and [`@babel/preset-es2017`](https://babeljs.io/docs/en/babel-preset-es2017) together (or the deprecated `babel-preset-latest`).
 
-### `targets.node`
+> We don't recommend using `preset-env` this way because it doesn't take advantage of its ability to target specific browsers.
 
-`number | string | "current" | true`
+```json
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+
+#### `targets.esmodules`
+
+`boolean`.
+
+You may also target browsers supporting ES Modules (https://www.ecma-international.org/ecma-262/6.0/#sec-modules). When specifying this option, the browsers field will be ignored. You can use this approach in combination with `<script type="module"></script>` to conditionally serve smaller scripts to users (https://jakearchibald.com/2017/es-modules-in-browsers/#nomodule-for-backwards-compatibility).
+
+> _Please note_: when specifying the esmodules target, browsers targets will be ignored.
+
+```json
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "esmodules": true
+        }
+      }
+    ]
+  ]
+}
+```
+
+#### `targets.node`
+
+`string | "current" | true`.
 
 If you want to compile against the current node version, you can specify `"node": true` or `"node": "current"`, which would be the same as `"node": process.versions.node`.
 
-### `targets.browsers`
+#### `targets.safari`
 
-`Array<string> | string`
+`string | "tp"`.
+
+If you want to compile against the [technology preview](https://developer.apple.com/safari/technology-preview/) version of Safari, you can specify `"safari": "tp"`.
+
+#### `targets.browser`
+
+`string | Array<string>`.
 
 A query to select browsers (ex: last 2 versions, > 5%, safari tp) using [browserslist](https://github.com/ai/browserslist).
 
 Note, browsers' results are overridden by explicit items from `targets`.
+
+> Note: this will be removed in later version in favor of just setting "targets" to a query directly.
 
 ### `spec`
 
@@ -368,28 +307,31 @@ Don't add polyfills automatically per file, or transform `import "@babel/polyfil
 <p><details>
   <summary><b>Example</b></summary>
 
-  With Babel 7's .babelrc.js support, you can force all transforms to be run if env is set to `production`.
+With Babel 7's .babelrc.js support, you can force all transforms to be run if env is set to `production`.
 
-  ```js
-  module.exports = {
-    presets: [
-      ["@babel/preset-env", {
+```js
+module.exports = {
+  presets: [
+    [
+      "@babel/preset-env",
+      {
         targets: {
           chrome: 59,
           edge: 13,
           firefox: 50,
         },
         // for uglifyjs...
-        forceAllTransforms: process.env === "production"
-      }],
+        forceAllTransforms: process.env === "production",
+      },
     ],
-  };
-  ```
+  ],
+};
+```
+
 </details></p>
 
-
 > NOTE: `targets.uglify` is deprecated and will be removed in the next major in
-favor of this.
+> favor of this.
 
 By default, this preset will run all the transforms needed for the targeted
 environment(s). Enable this option if you want to force running _all_
@@ -397,10 +339,10 @@ transforms, which is useful if the output will be run through UglifyJS or an
 environment that only supports ES5.
 
 > NOTE: Uglify has a work-in-progress "Harmony" branch to address the lack of
-ES6 support, but it is not yet stable.  You can follow its progress in
-[UglifyJS2 issue #448](https://github.com/mishoo/UglifyJS2/issues/448).  If you
-require an alternative minifier which _does_ support ES6 syntax, we recommend
-using [babel-minify](https://github.com/babel/minify).
+> ES6 support, but it is not yet stable. You can follow its progress in
+> [UglifyJS2 issue #448](https://github.com/mishoo/UglifyJS2/issues/448). If you
+> require an alternative minifier which _does_ support ES6 syntax, we recommend
+> using [babel-minify](https://github.com/babel/minify).
 
 ### `configPath`
 
@@ -429,168 +371,3 @@ The following are currently supported:
 **Features**
 
 - [Optional catch binding](https://github.com/tc39/proposal-optional-catch-binding)
-
----
-
-## Examples
-
-### Export with various targets
-
-```js
-export class A {}
-```
-
-#### Target only Chrome 52
-
-**.babelrc**
-
-```json
-{
-  "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "chrome": 52
-      }
-    }]
-  ]
-}
-```
-
-**Out**
-
-```js
-class A {}
-exports.A = A;
-```
-
-#### Target Chrome 52 with webpack 2/rollup and loose mode
-
-**.babelrc**
-
-```json
-{
-  "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "chrome": 52
-      },
-      "modules": false,
-      "loose": true
-    }]
-  ]
-}
-```
-
-**Out**
-
-```js
-export class A {}
-```
-
-#### Target specific browsers via browserslist
-
-**.babelrc**
-
-```json
-{
-  "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "chrome": 52,
-        "browsers": ["last 2 versions", "safari 7"]
-      }
-    }]
-  ]
-}
-```
-
-**Out**
-
-```js
-export var A = function A() {
-  _classCallCheck(this, A);
-};
-```
-
-#### Target latest node via `node: true` or `node: "current"`
-
-**.babelrc**
-
-```json
-{
-  "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "node": "current"
-      }
-    }]
-  ]
-}
-```
-
-**Out**
-
-```js
-class A {}
-exports.A = A;
-```
-
-### Show debug output
-
-**.babelrc**
-
-```json
-{
-  "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "safari": 10
-      },
-      "modules": false,
-      "useBuiltIns": "entry",
-      "debug": true
-    }]
-  ]
-}
-```
-
-**stdout**
-
-```sh
-Using targets:
-{
-  "safari": 10
-}
-
-Modules transform: false
-
-Using plugins:
-  @babel/plugin-transform-exponentiation-operator {}
-  @babel/plugin-transform-async-to-generator {}
-
-Using polyfills:
-  es7.object.values {}
-  es7.object.entries {}
-  es7.object.get-own-property-descriptors {}
-  web.timers {}
-  web.immediate {}
-  web.dom.iterable {}
-```
-
-### Include and exclude specific plugins/built-ins
-
-> always include arrow functions, explicitly exclude generators
-
-```json
-{
-  "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "browsers": ["last 2 versions", "safari >= 7"]
-      },
-      "include": ["transform-arrow-functions", "es6.map"],
-      "exclude": ["transform-regenerator", "es6.set"]
-    }]
-  ]
-}
-```
