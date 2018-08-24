@@ -12,6 +12,7 @@ class Versions extends React.Component {
   render() {
     const language = this.props.language || "en";
     const latestVersion = versions[0];
+    const repoUrl = `https://github.com/${siteConfig.organizationName}/${siteConfig.projectName}`;
     return (
       <div className="docMainWrapper wrapper">
         <Container className="mainContainer versionsContainer">
