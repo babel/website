@@ -1,6 +1,6 @@
 ---
 id: babel-preset-react
-title: babel-preset-react
+title: @babel/preset-react
 sidebar_label: react
 ---
 

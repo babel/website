@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-react-jsx-compat
-title: babel-plugin-transform-react-jsx-compat
+title: @babel/plugin-transform-react-jsx-compat
 sidebar_label: transform-react-jsx-compat
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-computed-properties
-title: babel-plugin-transform-computed-properties
+title: @babel/plugin-transform-computed-properties
 sidebar_label: transform-computed-properties
 ---
 

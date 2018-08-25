@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-function-sent
-title: babel-plugin-syntax-function-sent
+title: @babel/plugin-syntax-function-sent
 sidebar_label: syntax-function-sent
 ---
 

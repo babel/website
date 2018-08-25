@@ -1,6 +1,6 @@
 ---
 id: babel-cli
-title: babel-cli
+title: @babel/cli
 sidebar_label: babel-cli
 ---
 
@@ -17,7 +17,7 @@ There are two primary reasons for this.
 
 1. Different projects on the same machine can depend on different versions of
      Babel allowing you to update them individually.
-2. Not having an implicit dependency on the environment you are working in 
+2. Not having an implicit dependency on the environment you are working in
      makes your project far more portable and easier to setup.
 
 We can install Babel CLI locally by running:
@@ -39,7 +39,7 @@ After that finishes installing, your `package.json` file should include:
 }
 ```
 
-## Usage 
+## Usage
 
 ```sh
 babel script.js

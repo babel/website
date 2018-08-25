@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-typescript
-title: babel-plugin-transform-typescript
+title: @babel/plugin-transform-typescript
 sidebar_label: transform-typescript
 ---
 

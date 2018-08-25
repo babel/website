@@ -1,6 +1,6 @@
 ---
 id: babel-preset-es2015
-title: babel-preset-es2015
+title: @babel/preset-es2015
 sidebar_label: es2015
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-for-of
-title: babel-plugin-transform-for-of
+title: @babel/plugin-transform-for-of
 sidebar_label: transform-for-of
 ---
 

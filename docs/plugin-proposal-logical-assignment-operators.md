@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-logical-assignment-operators
-title: babel-plugin-proposal-logical-assignment-operators
+title: @babel/plugin-proposal-logical-assignment-operators
 sidebar_label: proposal-logical-assignment-operators
 ---
 

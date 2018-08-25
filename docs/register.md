@@ -1,6 +1,6 @@
 ---
 id: babel-register
-title: babel-register
+title: @babel/register
 sidebar_label: babel-register
 ---
 
@@ -114,12 +114,12 @@ user's file, Babel could end up trying to compile itself _as it is loading_.
 
 To avoid this problem, this module explicitly disallows re-entrant compilation,
 e.g. Babel's own compilation logic explicitly cannot trigger further compilation
-of any other files on the fly. The downside of this is that if you want to 
-define a plugin or preset that is itself live-compiled, the process is 
+of any other files on the fly. The downside of this is that if you want to
+define a plugin or preset that is itself live-compiled, the process is
 complicated.
 
-The crux of it is that your own code needs to load the plugin/preset first. 
-Assuming the plugin/preset loads all of its dependencies up front, what you'll 
+The crux of it is that your own code needs to load the plugin/preset first.
+Assuming the plugin/preset loads all of its dependencies up front, what you'll
 want to do is:
 
 ```

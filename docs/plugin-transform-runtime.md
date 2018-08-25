@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-runtime
-title: babel-plugin-transform-runtime
+title: @babel/plugin-transform-runtime
 sidebar_label: transform-runtime
 ---
 

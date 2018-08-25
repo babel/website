@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-logical-assignment-operators
-title: babel-plugin-syntax-logical-assignment-operators
+title: @babel/plugin-syntax-logical-assignment-operators
 sidebar_label: syntax-logical-assignment-operators
 ---
 

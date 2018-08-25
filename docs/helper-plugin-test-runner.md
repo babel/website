@@ -1,6 +1,6 @@
 ---
 id: babel-helper-plugin-test-runner
-title: babel-helper-plugin-test-runner
+title: @babel/helper-plugin-test-runner
 sidebar_label: babel-helper-plugin-test-runner
 ---
 

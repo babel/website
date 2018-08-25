@@ -1,6 +1,6 @@
 ---
 id: babel-preset-typescript
-title: babel-preset-typescript
+title: @babel/preset-typescript
 sidebar_label: typescript
 ---
 

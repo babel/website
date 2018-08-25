@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-destructuring
-title: babel-plugin-transform-destructuring
+title: @babel/plugin-transform-destructuring
 sidebar_label: transform-destructuring
 ---
 
@@ -74,7 +74,7 @@ Enabling this option will assume that what you want to destructure is an array a
 
 `boolean`, defaults to `false`.
 
-Enabling this option will use `Object.assign` directly instead of the Babel's `extends` helper. 
+Enabling this option will use `Object.assign` directly instead of the Babel's `extends` helper.
 
 ##### Example
 

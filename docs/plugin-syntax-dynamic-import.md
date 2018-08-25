@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-dynamic-import
-title: babel-plugin-syntax-dynamic-import
+title: @babel/plugin-syntax-dynamic-import
 sidebar_label: syntax-dynamic-import
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-template
-title: babel-template
+title: @babel/template
 sidebar_label: babel-template
 ---
 
