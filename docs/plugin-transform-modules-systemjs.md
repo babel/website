@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-modules-systemjs
-title: babel-plugin-transform-modules-systemjs
+title: @babel/plugin-transform-modules-systemjs
 sidebar_label: transform-modules-systemjs
 ---
 

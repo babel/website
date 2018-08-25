@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-reserved-words
-title: babel-plugin-transform-reserved-words
+title: @babel/plugin-transform-reserved-words
 sidebar_label: transform-reserved-words
 ---
 

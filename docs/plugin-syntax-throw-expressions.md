@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-throw-expressions
-title: babel-plugin-syntax-throw-expressions
+title: @babel/plugin-syntax-throw-expressions
 sidebar_label: syntax-throw-expressions
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-do-expressions
-title: babel-plugin-proposal-do-expressions
+title: @babel/plugin-proposal-do-expressions
 sidebar_label: proposal-do-expressions
 ---
 

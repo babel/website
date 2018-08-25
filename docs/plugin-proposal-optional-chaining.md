@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-optional-chaining
-title: babel-plugin-proposal-optional-chaining
+title: @babel/plugin-proposal-optional-chaining
 sidebar_label: proposal-optional-chaining
 ---
 

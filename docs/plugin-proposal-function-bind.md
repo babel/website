@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-function-bind
-title: babel-plugin-proposal-function-bind
+title: @babel/plugin-proposal-function-bind
 sidebar_label: proposal-function-bind
 ---
 

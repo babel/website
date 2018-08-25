@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-strict-mode
-title: babel-plugin-transform-strict-mode
+title: @babel/plugin-transform-strict-mode
 sidebar_label: transform-strict-mode
 ---
 

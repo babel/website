@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-flow
-title: babel-plugin-syntax-flow
+title: @babel/plugin-syntax-flow
 sidebar_label: syntax-flow
 ---
 

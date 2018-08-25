@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-bigint
-title: babel-plugin-syntax-bigint
+title: @babel/plugin-syntax-bigint
 sidebar_label: syntax-bigint
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-classes
-title: babel-plugin-transform-classes
+title: @babel/plugin-transform-classes
 sidebar_label: transform-classes
 ---
 

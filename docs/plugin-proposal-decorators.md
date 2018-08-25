@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-decorators
-title: babel-plugin-proposal-decorators
+title: @babel/plugin-proposal-decorators
 sidebar_label: proposal-decorators
 ---
 

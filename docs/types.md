@@ -1,6 +1,6 @@
 ---
 id: babel-types
-title: babel-types
+title: @babel/types
 sidebar_label: babel-types
 ---
 

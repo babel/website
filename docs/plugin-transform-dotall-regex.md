@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-dotall-regex
-title: babel-plugin-transform-dotall-regex
+title: @babel/plugin-transform-dotall-regex
 sidebar_label: transform-dotall-regex
 ---
 

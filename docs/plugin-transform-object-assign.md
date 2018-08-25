@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-object-assign
-title: babel-plugin-transform-object-assign
+title: @babel/plugin-transform-object-assign
 sidebar_label: transform-object-assign
 ---
 
