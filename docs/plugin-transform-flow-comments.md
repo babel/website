@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-flow-comments
-title: babel-plugin-transform-flow-comments
+title: @babel/plugin-transform-flow-comments
 sidebar_label: transform-flow-comments
 ---
 

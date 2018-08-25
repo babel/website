@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-jscript
-title: babel-plugin-transform-jscript
+title: @babel/plugin-transform-jscript
 sidebar_label: transform-jscript
 ---
 

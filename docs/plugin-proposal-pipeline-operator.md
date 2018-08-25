@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-pipeline-operator
-title: babel-plugin-proposal-pipeline-operator
+title: @babel/plugin-proposal-pipeline-operator
 sidebar_label: proposal-pipeline-operator
 ---
 

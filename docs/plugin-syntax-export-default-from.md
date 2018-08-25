@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-export-default-from
-title: babel-plugin-syntax-export-default-from
+title: @babel/plugin-syntax-export-default-from
 sidebar_label: syntax-export-default-from
 ---
 

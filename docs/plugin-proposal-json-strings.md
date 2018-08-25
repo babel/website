@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-json-strings
-title: babel-plugin-proposal-json-strings
+title: @babel/plugin-proposal-json-strings
 sidebar_label: proposal-json-strings
 ---
 

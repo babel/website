@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-optional-catch-binding
-title: babel-plugin-syntax-optional-catch-binding
+title: @babel/plugin-syntax-optional-catch-binding
 sidebar_label: syntax-optional-catch-binding
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-inline-consecutive-adds
-title: babel-plugin-transform-inline-consecutive-adds
+title: @babel/plugin-transform-inline-consecutive-adds
 sidebar_label: transform-inline-consecutive-adds
 ---
 

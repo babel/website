@@ -1,6 +1,6 @@
 ---
 id: babel-preset-es2017
-title: babel-preset-es2017
+title: @babel/preset-es2017
 sidebar_label: es2017
 ---
 

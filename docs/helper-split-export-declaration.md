@@ -1,6 +1,6 @@
 ---
 id: babel-helper-split-export-declaration
-title: babel-helper-split-export-declaration
+title: @babel/helper-split-export-declaration
 sidebar_label: babel-helper-split-export-declaration
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-object-set-prototype-of-to-assign
-title: babel-plugin-transform-object-set-prototype-of-to-assign
+title: @babel/plugin-transform-object-set-prototype-of-to-assign
 sidebar_label: transform-object-set-prototype-of-to-assign
 ---
 

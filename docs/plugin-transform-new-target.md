@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-new-target
-title: babel-plugin-transform-new-target
+title: @babel/plugin-transform-new-target
 sidebar_label: transform-new-target
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-function-bind
-title: babel-plugin-syntax-function-bind
+title: @babel/plugin-syntax-function-bind
 sidebar_label: syntax-function-bind
 ---
 

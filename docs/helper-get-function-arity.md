@@ -1,6 +1,6 @@
 ---
 id: babel-helper-get-function-arity
-title: babel-helper-get-function-arity
+title: @babel/helper-get-function-arity
 sidebar_label: babel-helper-get-function-arity
 ---
 

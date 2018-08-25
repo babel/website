@@ -1,6 +1,6 @@
 ---
 id: babel-helpers
-title: babel-helpers
+title: @babel/helpers
 sidebar_label: babel-helpers
 ---
 

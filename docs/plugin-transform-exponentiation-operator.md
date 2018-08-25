@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-exponentiation-operator
-title: babel-plugin-transform-exponentiation-operator
+title: @babel/plugin-transform-exponentiation-operator
 sidebar_label: transform-exponentiation-operator
 ---
 

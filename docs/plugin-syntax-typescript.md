@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-typescript
-title: babel-plugin-syntax-typescript
+title: @babel/plugin-syntax-typescript
 sidebar_label: syntax-typescript
 ---
 

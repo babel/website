@@ -1,6 +1,6 @@
 ---
 id: babel-preset-stage-2
-title: babel-preset-stage-2
+title: @babel/preset-stage-2
 sidebar_label: stage-2
 ---
 

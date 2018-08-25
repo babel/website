@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-numeric-separator
-title: babel-plugin-proposal-numeric-separator
+title: @babel/plugin-proposal-numeric-separator
 sidebar_label: proposal-numeric-separator
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-runtime-corejs2
-title: babel-runtime-corejs2
+title: @babel/runtime-corejs2
 sidebar_label: babel-runtime-corejs2
 ---
 

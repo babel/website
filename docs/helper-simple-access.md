@@ -1,6 +1,6 @@
 ---
 id: babel-helper-simple-access
-title: babel-helper-simple-access
+title: @babel/helper-simple-access
 sidebar_label: babel-helper-simple-access
 ---
 
