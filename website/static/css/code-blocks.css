@@ -47,6 +47,11 @@ pre {
 .hljs.language-javascript::before {
   content: "JavaScript";
 }
+
+.hljs.language-jsx::before {
+  content: "JSX";
+}
+
 .hljs.language-json::before {
   content: "JSON";
 }
