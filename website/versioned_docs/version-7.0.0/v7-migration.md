@@ -299,6 +299,8 @@ We have separated out Babel's helpers from it's "polyfilling" behavior in runtim
 
 [`@babel/runtime`](runtime.md) now only contains the helpers, and if you need `core-js` you can use [`@babel/runtime-corejs2`](runtime-corejs2.md) and the option provided in the transform. For both you still need the [`@babel/plugin-transform-runtime`](plugin-transform-runtime.md)
 
+We've removed the proposals `transform-runtime` as well since we have done the same for `@babel/polyfill` [#8547](https://github.com/babel/babel/pull/8547).
+
 #### Only Helpers
 
 ```sh
