@@ -5,6 +5,7 @@ import LZString from "lz-string";
 import type { ReplState } from "./types";
 
 const URL_KEYS = [
+  "ast",
   "babili",
   "browsers",
   "build",

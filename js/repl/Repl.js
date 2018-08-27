@@ -49,6 +49,7 @@ import type {
 
 type Props = {};
 type State = {
+  ast: boolean,
   babel: BabelState,
   code: string,
   compiled: ?string,
@@ -122,6 +123,7 @@ class Repl extends React.Component<Props, State> {
     // A partial State is defined first b'c this._compile needs it.
     // The compile helper will then populate the missing State values.
     this.state = {
+      ast: persistedState.ast,
       babel: persistedStateToBabelState(persistedState, babelConfig),
       code: persistedState.code,
       compiled: null,
@@ -198,6 +200,7 @@ class Repl extends React.Component<Props, State> {
     return (
       <div className={styles.repl}>
         <ReplOptions
+          ast={state.ast}
           babelVersion={state.babel.version}
           className={styles.optionsColumn}
           debugEnvPreset={state.debugEnvPreset}
@@ -511,6 +514,7 @@ class Repl extends React.Component<Props, State> {
   _onSettingChange = (name: string, value: boolean | string) => {
     this.setState(state => {
       const { plugins, presets, runtimePolyfillState } = state;
+      console.log(plugins);
 
       if (name === "babel-polyfill") {
         runtimePolyfillState.isEnabled = !!value;
@@ -556,6 +560,7 @@ class Repl extends React.Component<Props, State> {
     const builtIns = envConfig.isBuiltInsEnabled && envConfig.builtIns;
 
     const payload = {
+      ast: state.ast,
       babili: plugins["babili-standalone"].isEnabled,
       browsers: envConfig.browsers,
       build: state.babel.build,
