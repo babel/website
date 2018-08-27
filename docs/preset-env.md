@@ -41,6 +41,8 @@ For browser- or Electron-based projects, we recommend using a [`.browserslistrc`
 
 By default `@babel/preset-env` will use [browserslist config sources](https://github.com/ai/browserslist#queries) _unless_ either the [targets](#targets) or [ignoreBrowserslistConfig](#ignoreBrowserslistConfig) options are set.
 
+Note that only versions of Android, Chrome, Edge, Firefox, IE, iOS Safari, Safari, and Node versions returned by browserslist will be used for feature detection.
+
 For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
 
 **.babelrc**
