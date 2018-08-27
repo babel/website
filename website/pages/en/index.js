@@ -292,18 +292,26 @@ const Hero = ({ language }) => (
   </div>
 );
 
-const Index = ({ language = DEFAULT_LANGUAGE }) => (
-  <div>
-    <Hero language={language} />
+const Index = ({ language }) => {
+  let lang = language;
 
-    <div className="mainContainer" style={{ padding: 0 }}>
-      <HomeContainer>
-        <GetStarted language={language} />
-        <WorkSponsors language={language} />
-      </HomeContainer>
-      <OpenCollectiveSponsors />
+  if (!language || !language.length) {
+    lang = DEFAULT_LANGUAGE;
+  }
+
+  return (
+    <div>
+      <Hero language={lang} />
+
+      <div className="mainContainer" style={{ padding: 0 }}>
+        <HomeContainer>
+          <GetStarted language={lang} />
+          <WorkSponsors language={lang} />
+        </HomeContainer>
+        <OpenCollectiveSponsors />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 module.exports = Index;
