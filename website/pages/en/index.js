@@ -277,6 +277,16 @@ const Hero = ({ language }) => (
       <p>
         <translate>Use next generation JavaScript, today.</translate>
       </p>
+
+      <div className="hero__announcement">
+        <span>
+          <strong>Babel 7 is out!</strong> Please read our{" "}
+          <a href="#">announcement</a> and{" "}
+          <a href={docUrl("v7-migration", language)}>upgrade guide</a> for more
+          information.
+        </span>
+      </div>
+
       <MiniRepl language={language} />
     </div>
   </div>
