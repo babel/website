@@ -228,13 +228,38 @@ This option is useful for "blacklisting" a transform like `@babel/plugin-transfo
 
 `"usage"` | `"entry"` | `false`, defaults to `false`.
 
-A way to apply `@babel/preset-env` for polyfills (via `@babel/polyfill`).
+> This option adds direct references to the `core-js` module as bare imports. Thus `core-js` will be resolved relative to the file itself and needs to be accessible. You may need to specify `core-js@2` as a top level dependency in your application if there isn't a `core-js` dependency or there are multiple versions.
+
+A way to apply `@babel/preset-env` for polyfills (via `core-js`).
+
+#### `useBuiltIns: 'entry'`
+
+> NOTE: Only use `require("@babel/polyfill");` once in your whole app.
+> Multiple imports or requires of `@babel/polyfill` will throw an error since it can cause global collisions and other issues that are hard to trace.
+> We recommend creating a single entry file that only contains the `require` statement.
+
+This option enables a new plugin that replaces the statement `import "@babel/polyfill"` or `require("@babel/polyfill")` with individual requires for `@babel/polyfill` based on environment.
 
 ```sh
 npm install @babel/polyfill --save
 ```
 
-#### `useBuiltIns: 'usage'`
+**In**
+
+```js
+import "@babel/polyfill";
+```
+
+**Out (different based on environment)**
+
+```js
+import "core-js/modules/es7.string.pad-start";
+import "core-js/modules/es7.string.pad-end";
+```
+
+This will also work for `core-js` directly (`import "core-js";` or `require('core-js');`)
+
+#### `useBuiltIns: 'usage'` (experimental)
 
 Adds specific imports for polyfills when they are used in each file. We take advantage of the fact that a bundler will load the same polyfill only once.
 
@@ -273,29 +298,6 @@ var a = new Promise();
 ```js
 var b = new Map();
 ```
-
-#### `useBuiltIns: 'entry'`
-
-> NOTE: Only use `require("@babel/polyfill");` once in your whole app.
-> Multiple imports or requires of `@babel/polyfill` will throw an error since it can cause global collisions and other issues that are hard to trace.
-> We recommend creating a single entry file that only contains the `require` statement.
-
-This option enables a new plugin that replaces the statement `import "@babel/polyfill"` or `require("@babel/polyfill")` with individual requires for `@babel/polyfill` based on environment.
-
-**In**
-
-```js
-import "@babel/polyfill";
-```
-
-**Out (different based on environment)**
-
-```js
-import "core-js/modules/es7.string.pad-start";
-import "core-js/modules/es7.string.pad-end";
-```
-
-This will also work for `core-js` directly (`import "core-js";` or `require('core-js');`)
 
 #### `useBuiltIns: false`
 
