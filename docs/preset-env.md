@@ -104,7 +104,7 @@ Or an object of minimum environment versions to support:
 
 Supported environments: `chrome`, `opera`, `edge`, `firefox`, `ie`, `safari`, `ios`, `android`, `node`, `electron`
 
-If browserslist query or browserslist config is used, only versions of above environments will be used.
+If browserslist query or browserslist config is used, only versions of environments above will be used.
 
 Sidenote, if no targets are specified, `@babel/preset-env` behaves exactly the same as [`@babel/preset-es2015`](https://babeljs.io/docs/en/babel-preset-es2015), [`@babel/preset-es2016`](https://babeljs.io/docs/en/babel-preset-es2016) and [`@babel/preset-es2017`](https://babeljs.io/docs/en/babel-preset-es2017) together (or the deprecated `babel-preset-latest`).
 
