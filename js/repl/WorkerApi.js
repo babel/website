@@ -13,6 +13,7 @@ type PromiseWorkerApi = {
 };
 
 type CompileResult = {
+  astContext: Object,
   compiled: ?string,
   compiledAST: ?string,
   compileErrorMessage: ?string,
@@ -20,6 +21,7 @@ type CompileResult = {
   evalErrorMessage: ?string,
   meta: Object,
   sourceMap: ?string,
+  transitions: Array<Object>,
 };
 
 type PluginShape = {
@@ -42,6 +44,7 @@ export default class WorkerApi {
       })
       .then(
         ({
+          astContext,
           compiled,
           compiledAST,
           compileErrorMessage,
@@ -51,7 +54,6 @@ export default class WorkerApi {
           transitions,
         }) => {
           let evalErrorMessage = null;
-
           // Compilation is done in a web worker for performance reasons,
           // But eval requires the UI thread so code can access globals like window.
           if (config.evaluate) {
@@ -61,8 +63,9 @@ export default class WorkerApi {
               evalErrorMessage = error.message;
             }
           }
-
+          astContext = JSON.parse(astContext);
           return {
+            astContext,
             compiled,
             compiledAST,
             compileErrorMessage,

@@ -10,6 +10,7 @@ import Transitions from "./Transitions";
 import type { BabelPresetEnvResult, CompileConfig, Transition } from "./types";
 
 type Return = {
+  astContext: ?string,
   compiled: ?string,
   compiledAST: ?string,
   compileErrorMessage: ?string,
@@ -36,7 +37,7 @@ const DEFAULT_PRETTIER_CONFIG = {
 
 export default function compile(code: string, config: CompileConfig): Return {
   const { envConfig } = config;
-
+  let astContext = null;
   let compiled = null;
   let compiledAST = null;
   let compileErrorMessage = null;
@@ -134,6 +135,8 @@ export default function compile(code: string, config: CompileConfig): Return {
     };
 
     const transformed = Babel.transform(code, babelConfig);
+
+    astContext = JSON.stringify(transformed.ast);
     compiled = transformed.code;
     compiledAST = transformed.ast;
 
@@ -171,6 +174,7 @@ export default function compile(code: string, config: CompileConfig): Return {
     }
     meta.compiledSize = new Blob([compiled], { type: "text/plain" }).size;
   } catch (error) {
+    astContext = null;
     compiled = null;
     compiledAST = {};
     compileErrorMessage = error.message;
@@ -179,6 +183,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   }
 
   return {
+    astContext,
     compiled,
     compiledAST: JSON.stringify(compiledAST),
     compileErrorMessage,
