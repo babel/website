@@ -96,6 +96,7 @@ export type CompileConfig = {
 
 export type ReplState = {
   ast: boolean,
+  astContext: Object,
   babili: boolean,
   browsers: string,
   build: string,

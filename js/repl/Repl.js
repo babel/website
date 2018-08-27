@@ -50,6 +50,7 @@ import type {
 type Props = {};
 type State = {
   ast: boolean,
+  astContext: Object,
   babel: BabelState,
   code: string,
   compiled: ?string,
@@ -124,6 +125,7 @@ class Repl extends React.Component<Props, State> {
     // The compile helper will then populate the missing State values.
     this.state = {
       ast: persistedState.ast,
+      astContext: persistedState.astContext,
       babel: persistedStateToBabelState(persistedState, babelConfig),
       code: persistedState.code,
       compiled: null,
@@ -464,6 +466,7 @@ class Repl extends React.Component<Props, State> {
     }
     this._workerApi
       .compile(code, {
+        astContext: state.astContext,
         plugins: state.externalPlugins,
         debugEnvPreset: state.debugEnvPreset,
         envConfig: state.envPresetState.isLoaded ? state.envConfig : null,
@@ -514,7 +517,6 @@ class Repl extends React.Component<Props, State> {
   _onSettingChange = (name: string, value: boolean | string) => {
     this.setState(state => {
       const { plugins, presets, runtimePolyfillState } = state;
-      console.log(plugins);
 
       if (name === "babel-polyfill") {
         runtimePolyfillState.isEnabled = !!value;
@@ -561,6 +563,7 @@ class Repl extends React.Component<Props, State> {
 
     const payload = {
       ast: state.ast,
+      astContext: state.astContext,
       babili: plugins["babili-standalone"].isEnabled,
       browsers: envConfig.browsers,
       build: state.babel.build,
