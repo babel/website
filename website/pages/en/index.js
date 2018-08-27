@@ -281,7 +281,7 @@ const Hero = ({ language }) => (
       <div className="hero__announcement">
         <span>
           <strong>Babel 7 is out!</strong> Please read our{" "}
-          <a href="#">announcement</a> and{" "}
+          <a href="/blog/2018/08/24/7.0.0">announcement</a> and{" "}
           <a href={docUrl("v7-migration", language)}>upgrade guide</a> for more
           information.
         </span>
