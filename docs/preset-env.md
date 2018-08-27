@@ -229,7 +229,7 @@ This option is useful for "blacklisting" a transform like `@babel/plugin-transfo
 
 > This option adds direct references to the `core-js` module as bare imports. Thus `core-js` will be resolved relative to the file itself and needs to be accessible. You may need to specify `core-js@2` as a top level dependency in your application if there isn't a `core-js` dependency or there are multiple versions.
 
-A way to apply `@babel/preset-env` for polyfills (via `core-js`).
+This option configures how `@babel/preset-env` handles polyfills.
 
 #### `useBuiltIns: 'entry'`
 
