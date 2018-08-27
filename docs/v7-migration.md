@@ -352,7 +352,7 @@ var {
 
 ---
 
-> Since Object Spread defines new propeties and `Object.assign` just sets them, Babel has changed the default behavior to be more spec compliant.
+> Since Object Spread defines new properties and `Object.assign` just sets them, Babel has changed the default behavior to be more spec compliant.
 
 - [objectSpread helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L375)
 - [extends helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L357-L373)
@@ -447,7 +447,7 @@ export * as ns from 'mod';
 
 See the proposal for [Template Literals Revision](https://tc39.github.io/proposal-template-literal-revision/).
 
-It cause Babel 6 to throw `Bad character escape sequence (5:6)`.
+It causes Babel 6 to throw `Bad character escape sequence (5:6)`.
 
 ```js
 tag`\unicode and \u{55}`;
@@ -505,7 +505,7 @@ In anticipation of the new decorators proposal implementation, we've decided to 
 
 ### `@babel/plugin-proposal-pipeline-operator`
 
-Newer proposals in flux will error by default and will require everyone opt into a specific proposal will things are still < Stage 2. This is explained more in this [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal)
+Newer proposals in flux will error by default and will require everyone to opt into a specific proposal while things are still < Stage 2. This is explained more in this [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal).
 
 ```diff
 {
