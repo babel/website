@@ -11,6 +11,7 @@ import type { BabelPresetEnvResult, CompileConfig, Transition } from "./types";
 
 type Return = {
   compiled: ?string,
+  compiledAST: ?string,
   compileErrorMessage: ?string,
   envPresetDebugInfo: ?string,
   meta: {
@@ -37,6 +38,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   const { envConfig } = config;
 
   let compiled = null;
+  let compiledAST = null;
   let compileErrorMessage = null;
   let envPresetDebugInfo = null;
   let sourceMap = null;
@@ -133,6 +135,7 @@ export default function compile(code: string, config: CompileConfig): Return {
 
     const transformed = Babel.transform(code, babelConfig);
     compiled = transformed.code;
+    compiledAST = transformed.ast;
 
     if (config.getTransitions) {
       transitions.addExitTransition(compiled);
@@ -169,6 +172,7 @@ export default function compile(code: string, config: CompileConfig): Return {
     meta.compiledSize = new Blob([compiled], { type: "text/plain" }).size;
   } catch (error) {
     compiled = null;
+    compiledAST = {};
     compileErrorMessage = error.message;
     envPresetDebugInfo = null;
     sourceMap = null;
@@ -176,6 +180,7 @@ export default function compile(code: string, config: CompileConfig): Return {
 
   return {
     compiled,
+    compiledAST: JSON.stringify(compiledAST),
     compileErrorMessage,
     envPresetDebugInfo,
     meta,

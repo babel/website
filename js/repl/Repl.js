@@ -35,6 +35,7 @@ import {
 import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
 import { colors, media } from "./styles";
+import ReactJson from "react-json-view";
 
 import type {
   BabelPresets,
@@ -53,6 +54,7 @@ type State = {
   babel: BabelState,
   code: string,
   compiled: ?string,
+  compiledAST: ?string,
   compileErrorMessage: ?string,
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
@@ -127,6 +129,7 @@ class Repl extends React.Component<Props, State> {
       babel: persistedStateToBabelState(persistedState, babelConfig),
       code: persistedState.code,
       compiled: null,
+      compiledAST: "",
       pluginSearch: "",
       compileErrorMessage: null,
       debugEnvPreset: persistedState.debug,
@@ -244,15 +247,24 @@ class Repl extends React.Component<Props, State> {
               options={options}
               placeholder="Write code here"
             />
-            <CodeMirrorPanel
-              className={styles.codeMirrorPanel}
-              code={state.compiled}
-              errorMessage={state.evalErrorMessage}
-              fileSize={state.meta.compiledSize}
-              info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
-              options={options}
-              placeholder="Compiled output will be shown here"
-            />
+            {state.ast ? (
+              <ReactJson
+                src={state.compiledAST ? JSON.parse(state.compiledAST) : {}}
+                enableClipboard={false}
+                displayObjectSize={false}
+                displayDataTypes={false}
+              />
+            ) : (
+              <CodeMirrorPanel
+                className={styles.codeMirrorPanel}
+                code={state.compiled}
+                errorMessage={state.evalErrorMessage}
+                fileSize={state.meta.compiledSize}
+                info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
+                options={options}
+                placeholder="Compiled output will be shown here"
+              />
+            )}
           </div>
           {state.timeTravel && (
             <TimeTravelSlider

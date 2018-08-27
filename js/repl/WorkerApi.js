@@ -14,6 +14,7 @@ type PromiseWorkerApi = {
 
 type CompileResult = {
   compiled: ?string,
+  compiledAST: ?string,
   compileErrorMessage: ?string,
   envPresetDebugInfo: ?string,
   evalErrorMessage: ?string,
@@ -42,6 +43,7 @@ export default class WorkerApi {
       .then(
         ({
           compiled,
+          compiledAST,
           compileErrorMessage,
           envPresetDebugInfo,
           meta,
@@ -62,6 +64,7 @@ export default class WorkerApi {
 
           return {
             compiled,
+            compiledAST,
             compileErrorMessage,
             envPresetDebugInfo,
             evalErrorMessage,
