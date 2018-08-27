@@ -224,7 +224,7 @@ const OpenCollectiveSponsors = props => {
             </Button>
           </PromoSection>
         </div>
-        <div className="sponsor-tiers">
+        <div className="sponsor-tiers" id="sponsors">
           <SponsorTier
             type="opencollective"
             title="Gold Sponsors (Open Collective)"
