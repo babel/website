@@ -55,7 +55,6 @@ type State = {
   babel: BabelState,
   code: string,
   compiled: ?string,
-  compiledAST: ?string,
   compileErrorMessage: ?string,
   debugEnvPreset: boolean,
   envConfig: EnvConfig,
@@ -131,7 +130,6 @@ class Repl extends React.Component<Props, State> {
       babel: persistedStateToBabelState(persistedState, babelConfig),
       code: persistedState.code,
       compiled: null,
-      compiledAST: "",
       pluginSearch: "",
       compileErrorMessage: null,
       debugEnvPreset: persistedState.debug,
@@ -251,7 +249,7 @@ class Repl extends React.Component<Props, State> {
             />
             {state.ast ? (
               <ReactJson
-                src={state.compiledAST ? JSON.parse(state.compiledAST) : {}}
+                src={state.astContext}
                 enableClipboard={false}
                 displayObjectSize={false}
                 displayDataTypes={false}
