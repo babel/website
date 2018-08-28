@@ -430,13 +430,30 @@ The `sourceRoot` fields to set in the generated source map, if one is desired.
 Type: `"script" | "module" | "unambiguous"`<br />
 Default: "module"<br />
 
-* "script" - Parse the file using the ECMAScript Script grammar. No `import`/`export` statements allowed, and files are not in strict mode.
-* "module" - Parse the file using the ECMAScript Module grammar. Files are automatically strict, and `import`/`export` statements are allowed.
-* "unambiguous" - Consider the file a "module" if `import`/`export` statements are present, or else consider it a "script".
+* `"script"` - Parse the file using the ECMAScript Script grammar. No `import`/`export` statements allowed, and files are not in strict mode.
+* `"module"` - Parse the file using the ECMAScript Module grammar. Files are automatically strict, and `import`/`export` statements are allowed.
+* `"unambiguous"` - Consider the file a "module" if `import`/`export` statements are present, or else consider it a "script".
 
-`unambiguous` can be quite useful in contexts where the type is unknow, but it can lead to
+`unambiguous` can be quite useful in contexts where the type is unknown, but it can lead to
 false matches because it's perfectly valid to have a module file that does not use `import`/`export`
 statements.
+
+This option is important because the type of the current file affects both
+parsing of input files, and certain transforms that may wish to add
+`import`/`require` usage to the current file.
+
+For instance, [`@babel/plugin-transform-runtime`](plugin-transform-runtime.md)
+relies on the type of the current document to decide whether to insert
+an `import` declaration, or a `require()` call.
+[`@babel/preset-env`](preset-env.md) also does the same for its
+[`"useBuiltIns"`](preset-env.md#usebuiltins) option. Since Babel defaults to treating files
+are ES modules, generally these plugins/presets will insert `import` statements. Setting
+the correct `sourceType` can be important because having the wrong type can lead to cases
+where Babel would insert `import` statements into files that are meant to be CommonJS
+files. This can be particularly important in projects where compilation
+of `node_modules` dependencies is being performed, because inserting an
+`import` statements can cause Webpack and other tooling to see a file
+as an ES module, breaking what would otherwise be a functional CommonJS file.
 
 Note: This option will not affect parsing of `.mjs` files, as they are currently
 hard-coded to always parse as `"module"` files.
@@ -684,12 +701,29 @@ Individual plugin/preset items can have several different structures:
 
 * `EntryTarget` - Individual plugin
 * `[EntryTarget, EntryOptions]` - Individual plugin w/ options
-* `[EntryTarget, EntryOptions, string]` - Individual plugin with options and name
+* `[EntryTarget, EntryOptions, string]` - Individual plugin with options and name (see [merging](Merging) for more info on names)
 * `ConfigItem` - A plugin configuration item created by `babel.createConfigItem()`.
 
 The same `EntryTarget` may be used multiple times unless each one is given a different
 name, and doing so will result in a duplicate-plugin/preset error.
 
+That can be a little hard to read, so as an example:
+
+```js
+plugins: [
+  // EntryTarget
+  '@babel/plugin-transform-classes',
+
+  // [EntryTarget, EntryOptions]
+  ['@babel/plugin-transform-arrow-functions', { spec: true }],
+
+  // [EntryTarget, EntryOptions, string]
+  ['@babel/plugin-transform-for-of', { loose: true }, "some-name"],
+
+  // ConfigItem
+  babel.createConfigItem(require("@babel/plugin-transform-spread")),
+],
+```
 
 #### `EntryTarget`
 
