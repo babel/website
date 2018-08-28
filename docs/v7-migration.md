@@ -7,8 +7,6 @@ Refer users to this document when upgrading to Babel 7.
 
 <!--truncate-->
 
-Help edit this file [here](https://github.com/babel/website/blob/master/docs/v7-migration.md)
-
 Because not every breaking change will affect every project, we've sorted the sections by the likelihood of a change breaking tests when upgrading.
 
 ## All of Babel
@@ -42,9 +40,9 @@ To do this automatically you can run [`npx babel-upgrade`](https://github.com/ba
 
 ## [Remove proposal polyfills in `@babel/polyfill`](https://github.com/babel/babel/issues/8416)
 
-Based on similar thinking, we have removed the polyfill proposals from `@babel/polyfill`. You will need to import these independently.
+Based on similar thinking, we have removed the polyfill proposals from `@babel/polyfill`.
 
-Right now `@babel/polyfill` is mostly just an alias of `core-js`. [Source](https://github.com/babel/babel/blob/master/packages/babel-polyfill/src/index.js)
+Right now `@babel/polyfill` is mostly just an alias of `core-js` v2. [Source](https://github.com/babel/babel/blob/master/packages/babel-polyfill/src/index.js)
 
 Before it used to just be 2 imports:
 
@@ -52,6 +50,86 @@ Before it used to just be 2 imports:
 import "core-js/shim"; // included < Stage 4 proposals
 import "regenerator-runtime/runtime";
 ```
+
+If you want to use proposals, you will need to import these independently. You should import them directly from the [`core-js`](https://github.com/zloirock/core-js/tree/v2#usage) package or another package on npm.
+
+e.g.
+
+```js
+import "core-js/fn/array/flatMap";
+```
+
+Below is a list of Stage < 3 proposal polyfills in `core-js` v2.
+
+<details>
+
+```js
+// core-js v2
+
+// Stage 3
+import "core-js/fn/string/trim-left";
+import "core-js/fn/string/trim-right";
+import "core-js/fn/string/match-all";
+import "core-js/fn/array/flat-map";
+import "core-js/fn/array/flatten";  // RENAMED
+import "core-js/fn/global";
+
+// Stage 1
+import "core-js/fn/symbol/observable";
+import "core-js/fn/promise/try";
+import "core-js/fn/observable";
+
+// Stage 1 Math Extensions
+import "core-js/fn/math/clamp";
+import "core-js/fn/math/deg-per-rad";
+import "core-js/fn/math/degrees";
+import "core-js/fn/math/fscale";
+import "core-js/fn/math/iaddh";
+import "core-js/fn/math/isubh";
+import "core-js/fn/math/imulh";
+import "core-js/fn/math/rad-per-deg";
+import "core-js/fn/math/radians";
+import "core-js/fn/math/scale";
+import "core-js/fn/math/umulh";
+import "core-js/fn/math/signbit";
+
+// Stage 1 "of and from on collection constructors"
+import "core-js/fn/map/of";
+import "core-js/fn/set/of";
+import "core-js/fn/weak-map/of";
+import "core-js/fn/weak-set/of";
+import "core-js/fn/map/from";
+import "core-js/fn/set/from";
+import "core-js/fn/weak-map/from";
+import "core-js/fn/weak-set/from";
+
+// Stage 0
+import "core-js/fn/string/at";
+
+// Nonstandard
+import "core-js/fn/object/define-getter";
+import "core-js/fn/object/define-setter";
+import "core-js/fn/object/lookup-getter";
+import "core-js/fn/object/lookup-setter";
+// import "core-js/fn/map/to-json"; // Not available standalone
+// import "core-js/fn/set/to-json"; // Not available standalone
+
+import "core-js/fn/system/global";
+import "core-js/fn/error/is-error";
+import "core-js/fn/asap";
+
+// Decorator metadata? Not sure of stage/proposal
+import "core-js/fn/reflect/define-metadata";
+import "core-js/fn/reflect/delete-metadata";
+import "core-js/fn/reflect/get-metadata";
+import "core-js/fn/reflect/get-metadata-keys";
+import "core-js/fn/reflect/get-own-metadata";
+import "core-js/fn/reflect/get-own-metadata-keys";
+import "core-js/fn/reflect/has-metadata";
+import "core-js/fn/reflect/has-own-metadata";
+import "core-js/fn/reflect/metadata";
+```
+</details>
 
 ## [Versioning/Dependencies](/blog/2017/12/27/nearing-the-7.0-release.html#peer-dependencies-integrations)
 
@@ -274,7 +352,7 @@ var {
 
 ---
 
-> Since Object Spread defines new propeties and `Object.assign` just sets them, Babel has changed the default behavior to be more spec compliant.
+> Since Object Spread defines new properties and `Object.assign` just sets them, Babel has changed the default behavior to be more spec compliant.
 
 - [objectSpread helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L375)
 - [extends helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L357-L373)
@@ -369,7 +447,7 @@ export * as ns from 'mod';
 
 See the proposal for [Template Literals Revision](https://tc39.github.io/proposal-template-literal-revision/).
 
-It cause Babel 6 to throw `Bad character escape sequence (5:6)`.
+It causes Babel 6 to throw `Bad character escape sequence (5:6)`.
 
 ```js
 tag`\unicode and \u{55}`;
@@ -427,7 +505,7 @@ In anticipation of the new decorators proposal implementation, we've decided to 
 
 ### `@babel/plugin-proposal-pipeline-operator`
 
-Newer proposals in flux will error by default and will require everyone opt into a specific proposal will things are still < Stage 2. This is explained more in this [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal)
+Newer proposals in flux will error by default and will require everyone to opt into a specific proposal while things are still < Stage 2. This is explained more in this [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal).
 
 ```diff
 {

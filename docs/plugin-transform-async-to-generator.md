@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-async-to-generator
-title: babel-plugin-transform-async-to-generator
+title: @babel/plugin-transform-async-to-generator
 sidebar_label: transform-async-to-generator
 ---
 

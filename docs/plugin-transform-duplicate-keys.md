@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-duplicate-keys
-title: babel-plugin-transform-duplicate-keys
+title: @babel/plugin-transform-duplicate-keys
 sidebar_label: transform-duplicate-keys
 ---
 

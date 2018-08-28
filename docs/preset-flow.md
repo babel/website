@@ -1,6 +1,6 @@
 ---
 id: babel-preset-flow
-title: babel-preset-flow
+title: @babel/preset-flow
 sidebar_label: flow
 ---
 

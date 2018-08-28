@@ -1,6 +1,6 @@
 ---
 id: babel-helper-hoist-variables
-title: babel-helper-hoist-variables
+title: @babel/helper-hoist-variables
 sidebar_label: babel-helper-hoist-variables
 ---
 

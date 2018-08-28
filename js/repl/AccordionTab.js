@@ -28,9 +28,9 @@ export default class AccordionTab extends React.Component<Props> {
       <div className={`${styles.AccordionTab} ${className || ""}`}>
         <div className={styles.HeaderRow} onClick={this.handleToggle}>
           <Svg
-            className={`${styles.Arrow} ${isExpanded
-              ? styles.ArrowExpanded
-              : ""}`}
+            className={`${styles.Arrow} ${
+              isExpanded ? styles.ArrowExpanded : ""
+            }`}
             path="
               M15.41,16.58
               L10.83,12

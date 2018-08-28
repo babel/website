@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-numeric-separator
-title: babel-plugin-syntax-numeric-separator
+title: @babel/plugin-syntax-numeric-separator
 sidebar_label: syntax-numeric-separator
 ---
 

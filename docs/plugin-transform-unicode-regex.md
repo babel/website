@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-unicode-regex
-title: babel-plugin-transform-unicode-regex
+title: @babel/plugin-transform-unicode-regex
 sidebar_label: transform-unicode-regex
 ---
 

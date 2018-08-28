@@ -63,7 +63,7 @@ Thus, I think it's an understatement to say that Babel is a vital part of the Ja
 
 Ok then, let's talk about some changes!
 
-## [#4315](https://github.com/babel/babel/issues/4315) Drop support for unmaintained Node versions: 0.10, 0.12, 5
+## Drop Support for Unmaintained Node Versions: 0.10, 0.12, 5 ([#4315](https://github.com/babel/babel/issues/4315))
 
 Progress in OSS projects often comes at the cost of upgrading for its users. Because of this, we've always been hesitant in making the choice to introduce a major version bump/breaking changes. By dropping unsupported versions of Node, we can not only make a number of improvements to the codebase, but also upgrade dependencies and tools (ESLint, Yarn, Jest, Lerna, etc).
 
@@ -534,7 +534,7 @@ After v7, we plan to move `babel-core` to be a peerDependency like `babel-loader
 
 ## Meta
 
-### [#5218](https://github.com/babel/babel/pull/5218) Remove `babel-runtime` from our own Babel dependencies
+### Remove `babel-runtime` from our own Babel dependencies ([#5218](https://github.com/babel/babel/pull/5218))
 
 Babel itself doesn't have that many external dependencies, but in 6.x [each package has a dependency on `babel-runtime`](https://github.com/babel/babel/blob/958f72ddc28e2f5d02adf44eadd2b1265dd0fa4d/packages/babel-plugin-transform-es2015-arrow-functions/package.json#L12) so that built-ins like Symbol, Map, Set, and others are available without needing a polyfill. By changing the minimum supported version of Node to v4 (where those built-ins are supported natively), we can drop the dependency entirely.
 
@@ -549,7 +549,7 @@ With [Create React App](https://github.com/facebookincubator/create-react-app) t
 
 So although this issue has been fixed "upstream" by using npm >= 3/later Yarn, we can do our part by simply dropping our own dependency on `babel-runtime`.
 
-### [#5224](https://github.com/babel/babel/pull/5224) Independent Publishing of Experimental Packages
+### Independent Publishing of Experimental Packages ([#5224](https://github.com/babel/babel/pull/5224))
 
 > I mention this in [The State of Babel](http://babeljs.io/blog/2016/12/07/the-state-of-babel) in the `Versioning` section. [Github Issue](https://github.com/babel/babylon/issues/275)
 
@@ -574,17 +574,12 @@ Say you are using preset-env (which keeps up to date and currently includes ever
 
 If the spec to an experimental proposal changes, we should be free to make a breaking change and make a major version bump for that plugin only. Because it only affects that plugin, it doesn't affect anything else and people are free to update when possible. We just want to make sure that users update to the latest version of any experimental proposal when possible and provide the tools to do so automatically if that is reasonable as well.
 
-### TODOs?
-
-> I believe the way we want to go about doing this is to move those packages into the `experimental/` folder in our [monorepo](https://github.com/babel/babel) instead of in `packages/`.
-> Then we should rename all proposals to `babel-plugin-proposal-` instead of `babel-plugin-transform-`
-> Change our publish process (probably through Lerna) to publish the packages in `experimental/` independently.
-
 ## 💀 Possible Deprecations
 
 ### ~~Deprecate the "env" option in `.babelrc`~~
 
 > [babel/babel#5276](https://github.com/babel/babel/issues/5276)
+> EDIT: We changed the behavior to be more intuitive and did not remove it.
 
 The "env" configuration option (not to be confused with babel-preset-env) has been a source of confusion for our users as seen by the numerous issues reported.
 
@@ -592,7 +587,7 @@ The [current behavior](http://babeljs.io/docs/usage/babelrc/#env-option) is to m
 
 To eliminate the confusion (and help our power users), we're considering dropping the env config option all together and recommending users use the proposed JS config format (see below).
 
-### Deprecate ES20xx presets
+### Deprecate ES20xx presets (done)
 
 > We already deprecated preset-latest a while ago, and ES2016/ES2017 [earlier](https://twitter.com/left_pad/status/897483806499885057)
 > It's annoying making a yearly preset (extra package/dependency, issues with npm package squatting unless we do scoped packages)
@@ -601,9 +596,9 @@ Developers shouldn't even need to make the decision of what yearly preset to use
 
 ## 🤔 Questions
 
-### ~~Deprecate/Rename/Remove Stage X presets~~
+### Deprecate/Rename/Remove Stage X presets (done)
 
-> We'll probably keep these and just make major version bumps.
+> EDIT: we did this and we wrote a whole [post](https://babeljs.io/blog/2018/07/27/removing-babels-stage-presets) to explain it.
 
 Many in the community (and TC39) have expressed concerns over the Stage X presets. I believe I just added them to have an easy migration path from Babel 5 to Babel 6 (used to be a "stage" option).
 
@@ -620,7 +615,7 @@ It also seems much easier to maintain your own preset than to have to update the
 > I often see people go "I want object rest, and that's stage 2, so I enabled stage 2". They now have a load of other experimental features enabled they might not know about and probably don't need.
 > Also, as stages change over time then people who aren't using shrinkwrap or yarn will get new features appearing, possibly without their knowledge. If a feature is canned they might even get one vanishing. @glenjamin
 
-### Using npm Scoped Packages
+### Using npm Scoped Packages (done, `@babel/x`)
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thoughts on <a href="https://twitter.com/babeljs">@babeljs</a> using npm scoped packages for 7.0?</p>&mdash; Henry Zhu (@left_pad) <a href="https://twitter.com/left_pad/status/821551189166878722">January 18, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -642,6 +637,8 @@ Cons
 Sounds like we may want to defer, and in the very least it's not a breaking change given it's a name change.
 
 ### `external-helpers`, `transform-runtime`, `babel-polyfill`
+
+EDIT: we separated out `transform-runtime`'s use of `@babel/runtime` and `core-js`
 
 > "regeneratorRuntime is not defined" - reported all the time.
 

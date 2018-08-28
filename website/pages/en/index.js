@@ -129,8 +129,7 @@ const WorkSponsors = () => {
     >
       <h2>Friends of Open Source</h2>
       <p style={{ fontSize: 16 }}>
-        These companies are awesome and pay these engineers to work on
-        Babel
+        These companies are awesome and pay these engineers to work on Babel
       </p>
       <div className="productShowcaseSection">
         <div className="cards">
@@ -225,7 +224,7 @@ const OpenCollectiveSponsors = props => {
             </Button>
           </PromoSection>
         </div>
-        <div className="sponsor-tiers">
+        <div className="sponsor-tiers" id="sponsors">
           <SponsorTier
             type="opencollective"
             title="Gold Sponsors (Open Collective)"
@@ -278,23 +277,41 @@ const Hero = ({ language }) => (
       <p>
         <translate>Use next generation JavaScript, today.</translate>
       </p>
+
+      <div className="hero__announcement">
+        <span>
+          <strong>Babel 7 is out!</strong> Please read our{" "}
+          <a href="/blog/2018/08/27/7.0.0">announcement</a> and{" "}
+          <a href={docUrl("v7-migration", language)}>upgrade guide</a> for more
+          information.
+        </span>
+      </div>
+
       <MiniRepl language={language} />
     </div>
   </div>
 );
 
-const Index = ({ language = DEFAULT_LANGUAGE }) => (
-  <div>
-    <Hero language={language} />
+const Index = ({ language }) => {
+  let lang = language;
 
-    <div className="mainContainer" style={{ padding: 0 }}>
-      <HomeContainer>
-        <GetStarted language={language} />
-        <WorkSponsors language={language} />
-      </HomeContainer>
-      <OpenCollectiveSponsors />
+  if (!language || !language.length) {
+    lang = DEFAULT_LANGUAGE;
+  }
+
+  return (
+    <div>
+      <Hero language={lang} />
+
+      <div className="mainContainer" style={{ padding: 0 }}>
+        <HomeContainer>
+          <GetStarted language={lang} />
+          <WorkSponsors language={lang} />
+        </HomeContainer>
+        <OpenCollectiveSponsors />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 module.exports = Index;

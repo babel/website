@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-export-default-from
-title: babel-plugin-proposal-export-default-from
+title: @babel/plugin-proposal-export-default-from
 sidebar_label: proposal-export-default-from
 ---
 

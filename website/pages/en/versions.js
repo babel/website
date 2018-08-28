@@ -12,6 +12,9 @@ class Versions extends React.Component {
   render() {
     const language = this.props.language || "en";
     const latestVersion = versions[0];
+    const repoUrl = `https://github.com/${siteConfig.organizationName}/${
+      siteConfig.projectName
+    }`;
     return (
       <div className="docMainWrapper wrapper">
         <Container className="mainContainer versionsContainer">
@@ -35,17 +38,22 @@ class Versions extends React.Component {
                       Documentation
                     </a>
                   </td>
-                  <td />
+                  <td>
+                    <a href={`${repoUrl}/releases/tag/v${latestVersion}`}>
+                      Release Notes
+                    </a>
+                  </td>
                 </tr>
               </tbody>
             </table>
             <p>This is the current stable version of the project.</p>
             <a name="rc" />
             <h3>Pre-release versions</h3>
+            <p>These are the latest changes that have yet to be released.</p>
             <table className="versions">
               <tbody>
                 <tr>
-                  <th>master (7.x)</th>
+                  <th>master</th>
                   <td>
                     <a
                       href={
@@ -59,10 +67,12 @@ class Versions extends React.Component {
                       Documentation
                     </a>
                   </td>
+                  <td>
+                    <a href={repoUrl}>Source Code</a>
+                  </td>
                 </tr>
               </tbody>
             </table>
-            <p>These are the latest changes that have yet to be released.</p>
             {versions &&
               versions.length > 1 && (
                 <div>
@@ -87,6 +97,11 @@ class Versions extends React.Component {
                                   }
                                 >
                                   Documentation
+                                </a>
+                              </td>
+                              <td>
+                                <a href={`${repoUrl}/releases/tag/v${version}`}>
+                                  Release Notes
                                 </a>
                               </td>
                             </tr>

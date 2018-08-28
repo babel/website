@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-parameters
-title: babel-plugin-transform-parameters
+title: @babel/plugin-transform-parameters
 sidebar_label: transform-parameters
 ---
 

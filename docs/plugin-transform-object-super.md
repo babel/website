@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-object-super
-title: babel-plugin-transform-object-super
+title: @babel/plugin-transform-object-super
 sidebar_label: transform-object-super
 ---
 

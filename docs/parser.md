@@ -1,6 +1,6 @@
 ---
 id: babel-parser
-title: babel-parser
+title: @babel/parser
 sidebar_label: babel-parser
 ---
 

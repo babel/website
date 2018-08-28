@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-class-properties
-title: babel-plugin-syntax-class-properties
+title: @babel/plugin-syntax-class-properties
 sidebar_label: syntax-class-properties
 ---
 

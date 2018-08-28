@@ -1,7 +1,6 @@
 "use strict";
 
 const React = require("react");
-
 const styles = [
   "https://unpkg.com/codemirror@5.30.0/lib/codemirror.css",
   "/static/css/hide-footer.css",
@@ -37,7 +36,9 @@ class REPL extends React.Component {
           <noscript>You need to enable JavaScript to run this app.</noscript>
         </div>
 
-        {scripts.map(url => <script src={url} key={url} />)}
+        {scripts.map(url => (
+          <script src={url} key={url} />
+        ))}
       </div>
     );
   }

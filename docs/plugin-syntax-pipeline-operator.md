@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-pipeline-operator
-title: babel-plugin-syntax-pipeline-operator
+title: @babel/plugin-syntax-pipeline-operator
 sidebar_label: syntax-pipeline-operator
 ---
 

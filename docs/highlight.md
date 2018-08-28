@@ -1,6 +1,6 @@
 ---
 id: babel-highlight
-title: babel-highlight
+title: @babel/highlight
 sidebar_label: babel-highlight
 ---
 

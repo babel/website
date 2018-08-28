@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-block-scoping
-title: babel-plugin-transform-block-scoping
+title: @babel/plugin-transform-block-scoping
 sidebar_label: transform-block-scoping
 ---
 

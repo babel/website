@@ -1,6 +1,6 @@
 ---
 id: babel-helper-fixtures
-title: babel-helper-fixtures
+title: @babel/helper-fixtures
 sidebar_label: babel-helper-fixtures
 ---
 

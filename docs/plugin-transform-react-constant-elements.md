@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-react-constant-elements
-title: babel-plugin-transform-react-constant-elements
+title: @babel/plugin-transform-react-constant-elements
 sidebar_label: transform-react-constant-elements
 ---
 

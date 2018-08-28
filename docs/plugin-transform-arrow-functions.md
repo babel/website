@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-arrow-functions
-title: babel-plugin-transform-arrow-functions
+title: @babel/plugin-transform-arrow-functions
 sidebar_label: transform-arrow-functions
 ---
 

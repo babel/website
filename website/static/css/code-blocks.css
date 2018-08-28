@@ -35,37 +35,42 @@ pre {
 }
 
 /* CSS needs to be listed first so that others can overwrite */
-.hljs.css::before {
+.hljs.language-css::before {
   content: "CSS";
 }
 
-.hljs.diff::before {
+.hljs.language-diff::before {
   content: "Diff";
 }
 
-.hljs.js::before,
-.hljs.javascript::before {
+.hljs.language-js::before,
+.hljs.language-javascript::before {
   content: "JavaScript";
 }
-.hljs.json::before {
+
+.hljs.language-jsx::before {
+  content: "JSX";
+}
+
+.hljs.language-json::before {
   content: "JSON";
 }
 
-.hljs.sh::before,
-.hljs.shell::before,
-.hljs.bash::before {
+.hljs.language-sh::before,
+.hljs.language-shell::before,
+.hljs.language-bash::before {
   content: "Shell";
 }
 
-.hljs.ts::before {
+.hljs.language-ts::before {
   content: "TypeScript";
 }
 
-.hljs.html::before {
+.hljs.language-html::before {
   content: "HTML";
 }
 
-.hljs.yaml::before {
+.hljs.language-yaml::before {
   content: "YAML";
 }
 

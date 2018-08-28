@@ -1,6 +1,6 @@
 ---
 id: babel-helper-plugin-utils
-title: babel-helper-plugin-utils
+title: @babel/helper-plugin-utils
 sidebar_label: babel-helper-plugin-utils
 ---
 

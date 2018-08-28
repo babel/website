@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-react-display-name
-title: babel-plugin-transform-react-display-name
+title: @babel/plugin-transform-react-display-name
 sidebar_label: transform-react-display-name
 ---
 

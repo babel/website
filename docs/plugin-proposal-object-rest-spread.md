@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-object-rest-spread
-title: babel-plugin-proposal-object-rest-spread
+title: @babel/plugin-proposal-object-rest-spread
 sidebar_label: proposal-object-rest-spread
 ---
 
@@ -73,7 +73,7 @@ For detailed information please check out [Spread VS. Object.assign](http://2ali
 
 `boolean`, defaults to `false`.
 
-Enabling this option will use `Object.assign` directly instead of the Babel's `extends` helper. 
+Enabling this option will use `Object.assign` directly instead of the Babel's `extends` helper.
 
 ##### Example
 

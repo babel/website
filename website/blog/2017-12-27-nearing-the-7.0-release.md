@@ -90,7 +90,9 @@ Even though the amount of work that goes into maintaining the lists of data is h
 
 It compiles the latest yearly release of JavaScript (whatever is in Stage 4) which replaces all the old presets. But it also has the abilitiy to compile according to target environments you specify: whether that is for development mode, like the latest version of a browser, or for multiple builds, like a version for IE, and then another version for evergreen browsers.
 
-### Not removing the Stage presets (babel-preset-stage-x)
+### ~~Not removing the Stage presets (babel-preset-stage-x)~~
+
+EDIT: We removed them, explained [here](https://babeljs.io/blog/2018/07/27/removing-babels-stage-presets)
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Frustration level if we remove the Stage presets in Babel? (in favor explicitly requiring proposal plugins since they aren&#39;t JavaScript yet)</p>&mdash; Henry Zhu (@left_pad) <a href="https://twitter.com/left_pad/status/873242704364306433?ref_src=twsrc%5Etfw">June 9, 2017</a></blockquote>
 
@@ -252,7 +254,6 @@ With type inference we can know if an instance method like `.includes` is for an
 - [Handle `.babelrc` lookup](https://github.com/babel/babel/issues/6766) (want this done before first RC release)
 - ["overrides" support](https://github.com/babel/babel/pull/7091): different config based on glob pattern
 - Caching and invalidation logic in babel-core.
-- Better story around external helpers.
 - Either implement or have plan in place for versioning and handling polyfills independently from helpers, so we aren't explicitly tied to core-js 2 or 3, since people may have things that depend on one or the other and won't want to load both a lot of the time.
 - Either a [working decorator implementation](https://github.com/babel/babel/pull/6107), or functional legacy implementation, with clear path to land current spec behavior during 7.x's lifetime.
 

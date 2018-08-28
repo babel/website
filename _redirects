@@ -54,7 +54,8 @@
 /core-packages/babel-helpers/       /docs/en/babel-helpers/
 /core-packages/babel-code-frame/    /docs/en/babel-code-frame/
 /core-packages/babylon/             /docs/en/babylon/
-/docs/en/babylon/                   /docs/en/babel-parser/
+# Enable after v7 becomes stable
+# /docs/en/babylon/                   /docs/en/6.x/babylon/
 
 /docs/plugins/preset-*              /docs/en/babel-preset-:splat
 /docs/plugins/transform-*           /docs/en/babel-plugin-transform-:splat
