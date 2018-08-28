@@ -18,7 +18,7 @@ You might end up on this page because you saw a message in the terminal like thi
 
 Before you proceed further, ask yourself: are you *using* Babel? Check your `package.json` and look for `babel-preset-es2015` or a similar preset there. If you see a preset like this in your `package.json`, read on!
 
-If you don't use Babel or don't use deprecated yearly presets, you probably saw this message because *another package* you depend on uses them. **In that case there's nothing *you* need to do**. Nevertheless, it might be a good idea to find out which package uses the deprecated presets, and help them migrate by sending a pull request. You can find this out by running `npm ls babel-preset-es2015` which will show the dependency tree. 
+If you don't use Babel or don't use deprecated yearly presets, you probably saw this message because *another package* you depend on uses them. **In that case there's nothing *you* need to do**. Nevertheless, it might be a good idea to find out which package uses the deprecated presets, and help them migrate by sending a pull request. You can find this out by running `npm ls babel-preset-es2015` which will show the dependency tree.
 
 ## Upgrading to `babel-preset-env`
 
@@ -27,7 +27,7 @@ If you don't use Babel or don't use deprecated yearly presets, you probably saw 
 ```sh
 npm install babel-preset-env --save-dev
 ```
-#### Basic `.babelrc` change
+#### Basic [options](options.md) change
 
 ```diff
 {
@@ -36,7 +36,7 @@ npm install babel-preset-env --save-dev
 }
 ```
 
-#### `.babelrc` change with options
+#### [options](options.md) change with preset options
 
 ```diff
 {
@@ -58,7 +58,7 @@ npm install babel-preset-env --save-dev
 
 ## By targeting specific browsers, Babel can do less work so you can ship native ES2015+ 😎!
 
-#### `.babelrc` against a specific chrome version
+#### [options](options.md) against a specific chrome version
 
 ```json
 {
@@ -72,7 +72,7 @@ npm install babel-preset-env --save-dev
 }
 ```
 
-#### `.babelrc` against current node version
+#### [options](options.md) against current node version
 
 ```json
 {

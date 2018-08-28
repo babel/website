@@ -147,4 +147,4 @@ npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,
 
 ### Advanced Usage
 
-There are many more options available in the babel CLI, see [options](core.md/#options), `babel --help` and other sections for more information.
+There are many more options available, see [options](options.md), `babel --help` and other sections for more information.

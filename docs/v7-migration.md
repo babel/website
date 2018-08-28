@@ -227,7 +227,7 @@ If you were relying on Babel to inject `"use strict"` into all of your CommonJS 
 
 `babel-preset-react` has always included the flow plugin automatically from the beginning. This has actually caused a lot of issues with users that accidently use `flow` syntax without intending due to a typo, or adding it in without typechecking with `flow` itself, resulting in errors.
 
-This became further of an issue after we decided to support TypeScript with the help of the TS team. If you wanted to use the react and typescript presets, we would have to figure out a way to turn on/off the syntax automatically via file type or the directive. In the end it seemed easiest to just separate the presets entirely. 
+This became further of an issue after we decided to support TypeScript with the help of the TS team. If you wanted to use the react and typescript presets, we would have to figure out a way to turn on/off the syntax automatically via file type or the directive. In the end it seemed easiest to just separate the presets entirely.
 
 So now the react preset and the flow preset are separated.
 
@@ -329,7 +329,7 @@ npm install @babel/plugin-transform-runtime --save-dev
   "plugins": [
 -   ["@babel/plugin-transform-runtime"],
 +   ["@babel/plugin-transform-runtime", {
-+     "corejs": 2,   
++     "corejs": 2,
 +   }],
   ]
 }
@@ -606,7 +606,7 @@ This change just makes babel-generator output `,` instead of `;`.
 
 > Remove `babel-core/src/api/browser.js` [#5124](https://github.com/babel/babel/pull/5124) ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
-`babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [babel-standalone](https://github.com/babel/babel-standalone).
+`babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [@babel/standalone](standalone.md).
 
 Babel will return `filename` as an absolute path [#8044](https://github.com/babel/babel/pull/8044)
 
