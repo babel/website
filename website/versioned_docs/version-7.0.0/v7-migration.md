@@ -52,7 +52,7 @@ import "core-js/shim"; // included < Stage 4 proposals
 import "regenerator-runtime/runtime";
 ```
 
-If you want to use proposals, you will need to import these independently. You should import then directy from the [`core-js`](https://github.com/zloirock/core-js/tree/v2#usage) package or another package on npm.
+If you want to use proposals, you will need to import these independently. You should import them directly from the [`core-js`](https://github.com/zloirock/core-js/tree/v2#usage) package or another package on npm.
 
 e.g.
 
