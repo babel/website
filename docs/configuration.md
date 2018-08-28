@@ -5,7 +5,7 @@ title: Configure Babel
 
 Babel can be configured! Many other tools have similar configs: ESLint (`.eslintrc`), Prettier (`.prettierrc`).
 
-All Babel API [options](core.md#options) are allowed. However if the option requires JavaScript, you may need to use a `.babelrc.js` file.
+All Babel API [options](options.md) are allowed. However, if the option requires JavaScript, you may want to use a Javascript [configuration file](config-files.md).
 
 ## What's your use case?
 
@@ -14,13 +14,13 @@ All Babel API [options](core.md#options) are allowed. However if the option requ
 
 > [`babel.config.js`](#babelconfigjs) is for you!
 
-- You have a static configuration?
+- You have a static configuration that only applies to your simple single package?
 
 > [`.babelrc`](#babelrc) is for you!
 
 - The Guy Fieri is your hero?
 
-> We recommend to use the [`babel.config.js`](#babelconfigjs) format. [Babel itself is using it](https://github.com/babel/babel/blob/master/babel.config.js).
+> We recommend to use the [`babel.config.js`](config-files.md#project-wide-configuration) format. [Babel itself is using it](https://github.com/babel/babel/blob/master/babel.config.js).
 
 ## `babel.config.js`
 
@@ -38,7 +38,7 @@ module.exports = function () {
 }
 ```
 
-Checkout the [`babel.config.js` documentation](babelconfigjs.md) to see more configuration options.
+Checkout the [`babel.config.js` documentation](config-files.md#project-wide-configuration) to see more configuration options.
 
 ## `.babelrc`
 
@@ -51,7 +51,7 @@ Create a file called `.babelrc` with the following content in your project.
 }
 ```
 
-Checkout the [.babelrc documentation](babelrc.md) to see more configuration options.
+Checkout the [.babelrc documentation](config-files.md#file-relative-configuration) to see more configuration options.
 
 ### `package.json`
 

@@ -10,7 +10,7 @@ import { transform } from "@babel/core";
 import * as babel from "@babel/core";
 ```
 
-All transformations will use your local configuration files (`.babelrc` or in `package.json`). See [options](#options) to disable it.
+All transformations will use your local [configuration files](config-files.md).
 
 
 ## transform
@@ -60,6 +60,27 @@ result.map;
 result.ast;
 ```
 
+## transformAsync
+
+> babel.transformAsync(code: string, [options?](#options): Object)
+
+Transforms the passed in `code`. Returning an promise for an object with the
+generated code, source map, and AST.
+
+```js
+babel.transformAsync(code, options) // => Promise<{ code, map, ast }>
+```
+
+**Example**
+
+```js
+babel.transformAsync("code();", options).then(result => {
+  result.code;
+  result.map;
+  result.ast;
+});
+```
+
 
 ## transformFile
 
@@ -98,6 +119,26 @@ babel.transformFileSync("filename.js", options).code;
 ```
 
 
+## transformFileAsync
+
+> babel.transformFileAsync(filename: string, [options?](#options): Object)
+
+Promise version of `babel.transformFile`. Returns a promise for the transformed
+contents of the `filename`.
+
+```js
+babel.transformFileAsync(filename, options) // => Promise<{ code, map, ast }>
+```
+
+**Example**
+
+```js
+babel.transformFileAsync("filename.js", options).then(result => {
+  result.code;
+});
+```
+
+
 ## transformFromAst
 
 > babel.transformFromAst(ast: Object, code?: string, [options?](#options): Object, callback: Function): FileNode | null
@@ -129,9 +170,54 @@ const parsedAst = babel.parse(sourceCode, { allowReturnOutsideFunction: true });
 const { code, map, ast } = babel.transformFromAstSync(parsedAst, sourceCode, options);
 ```
 
+## transformFromAstAsync
+
+> babel.transformFromAstAsync(ast: Object, code?: string, [options?](#options): Object)
+
+Given an [AST](https://astexplorer.net/), transform it.
+
+```js
+const sourceCode = "if (true) return;";
+babel.parseAsync(sourceCode, { allowReturnOutsideFunction: true })
+  .then(parsedAst => {
+    return babel.transformFromAstSync(parsedAst, sourceCode, options);
+  })
+  .then(({ code, map, ast }) => {
+    // ...
+  });
+```
+
 ## parse
 
-> babel.parse(code: string, [options?](#options): Object)
+> babel.parse(code: string, [options?](#options): Object, callback: Function)
+
+Given some code, parse it using Babel's standard behavior. Referenced presets and
+plugins will be loaded such that optional syntax plugins are automatically
+enabled.
+
+> Compat Note:
+>
+> In Babel 7's early betas, this method was synchronous and `parseSync` did not exist. For backward-compatibility,
+> this function will behave synchronously if no callback is given. If you're starting with Babel 7 stable
+> and need synchronous behavior, please use `parseSync` since this backward-compat may be dropped
+> in future major versions of Babel.
+
+
+## parseSync
+
+> babel.parseSync(code: string, [options?](#options): Object)
+
+Returns an AST.
+
+Given some code, parse it using Babel's standard behavior. Referenced presets and
+plugins will be loaded such that optional syntax plugins are automatically
+enabled.
+
+## parseAsync
+
+> babel.parseAsync(code: string, [options?](#options): Object)
+
+Returns a promise for an AST.
 
 Given some code, parse it using Babel's standard behavior. Referenced presets and
 plugins will be loaded such that optional syntax plugins are automatically
@@ -144,6 +230,7 @@ Many systems that wrap Babel like to automatically inject plugins and presets,
 or override options. To accomplish this goal, Babel exposes several functions
 that aid in loading the configuration part-way without transforming.
 
+
 ### loadOptions
 
 > babel.loadOptions([options?](#options): Object)
@@ -152,8 +239,8 @@ Resolve Babel's options fully, resulting in an options object where:
 
 * `opts.plugins` is a full list of `Plugin` instances.
 * `opts.presets` is empty and all presets are flattened into `opts`.
-* It can be safely passed back to Babel. Fields like `babelrc` have been set to
-  false so that later calls to Babel will not make a second attempt to load
+* It can be safely passed back to Babel. Fields like [`"babelrc"`](options.md#babelrc) have been set to
+  `false` so that later calls to Babel will not make a second attempt to load
   config files.
 
 `Plugin` instances aren't meant to be manipulated directly, but often
@@ -171,12 +258,13 @@ resolves the plugins and presets and proceeds no further. The expectation is
 that callers will take the config's `.options`, manipulate it as then see fit
 and pass it back to Babel again.
 
-* `babelrc: string | void` - The path of the `.babelrc` file, if there was one.
+* `babelrc: string | void` - The path of the [file-relative configuration](config-files.md#file-relative-configuration) file, if there was one.
 * `babelignore: string | void` - The path of the `.babelignore` file, if there was one.
+* `config: string | void` - The path of the [project-wide config file](config-files.md#project-wide-configuration) file, if there was one.
 * `options: ValidatedOptions` - The partially resolved options, which can be manipulated and passed back to Babel again.
   * `plugins: Array<ConfigItem>` - See below.
   * `presets: Array<ConfigItem>` - See below.
-  * It can be safely passed back to Babel. Fields like `babelrc` have been set
+  * It can be safely passed back to Babel. Options like [`"babelrc"`](options.md#babelrc) have been set
     to false so that later calls to Babel will not make a second attempt to
     load config files.
 * `hasFilesystemConfig(): boolean` - Check if the resolved config loaded any settings from the filesystem.
@@ -213,54 +301,4 @@ Each `ConfigItem` exposes all of the information Babel knows. The fields are:
 
 ## Options
 
-<blockquote class="babel-callout babel-callout-info">
-  <h4>Babel CLI</h4>
-  <p>
-    You can pass these options from the Babel CLI like so:
-  </p>
-  <p>
-    <code>babel --option-name<span class="o">=</span>value</code>
-  </p>
-</blockquote>
-
-Following is a table of the options you can use:
-
-| Option                   | Default              | Description                     |
-| ------------------------ | -------------------- | ------------------------------- |
-| `ast`                    | `false`              | Include the AST in the returned object |
-| `auxiliaryCommentAfter`  | `null`               | Attach a comment after all non-user injected code |
-| `auxiliaryCommentBefore` | `null`               | Attach a comment before all non-user injected code |
-| `root`                   | `"."`                | Specify the "root" folder that defines the location to search for "babel.config.js", and the default folder to allow `.babelrc` files inside of.|
-| `configFile`             | `undefined`          | The config file to load Babel's config from. Defaults to searching for "babel.config.js" inside the "root" folder. `false` will disable searching for config files.|
-| `babelrc`                | `true`               | Specify whether or not to use .babelrc and .babelignore files. Not available when using the CLI, [use `--no-babelrc` instead](https://babeljs.io/docs/usage/cli/#babel-ignoring-babelrc) |
-| `babelrcRoots`           | `(root)`             | Specify which packages should be search for .babelrc files when they are being compiled. `true` to _always_ search, or a path string or an array of paths to packages to search inside of. Defaults to only searching the "root" package. |
-| `envName`                | env vars             | Defaults to environment variable `BABEL_ENV` if set, or else `NODE_ENV` if set, or else it defaults to `"development"` |
-| `code`                   | `true`               | Enable code generation |
-| `comments`               | `true`               | Output comments in generated output |
-| `compact`                | `"auto"`             | Do not include superfluous whitespace characters and line terminators. When set to `"auto"` compact is set to `true` on input sizes of >500KB |
-| `cwd`                    | `.`                  | The working directory that Babel's programmatic options are loaded relative to. |
-| `env`                    | `{}`                 | This is an object of keys that represent different environments. For example, you may have: `{ env: { production: { /* specific options */ } } }` which will use those options when the `envName` is `production` |
-| `extends`                | `null`               | A path to a `.babelrc` file to extend |
-| `filename`               | `"unknown"`          | Filename for use in errors, babel config lookup, etc |
-| `filenameRelative`       | `(filename)`         | Filename relative to `sourceRoot` |
-| `generatorOpts`          | `{}`                 | An object containing the options to be passed down to the babel code generator, @babel/generator |
-| `getModuleId`            | `null`               | Specify a custom callback to generate a module id with. Called as `getModuleId(moduleName)`. If falsy value is returned then the generated module id is used |
-| `highlightCode`          | `true`               | ANSI highlight syntax error code frames |
-| `ignore`                 | `null`               | Opposite to the `only` option. `ignore` is disregarded if `only` is specified |
-| `inputSourceMap`         | `null`               | A source map object that the output source map will be based on |
-| `minified`               | `false`              | Should the output be minified (not printing last semicolons in blocks, printing literal string values instead of escaped ones, stripping `()` from `new` when safe) |
-| `moduleId`               | `null`               | Specify a custom name for module ids |
-| `moduleIds`              | `false`              | If truthy, insert an explicit id for modules. By default, all modules are anonymous. (Not available for `common` modules) |
-| `moduleRoot`             | `(sourceRoot)`       | Optional prefix for the AMD module formatter that will be prepend to the filename on module definitions |
-| `only`                   | `null`               | A [glob](https://github.com/isaacs/minimatch), regex, or mixed array of both, matching paths to **only** compile. Can also be an array of arrays containing paths to explicitly match. When attempting to compile a non-matching file it's returned verbatim |
-| `parserOpts`             | `{}`                 | An object containing the options to be passed down to the babel parser, @babel/parser |
-| `plugins`                | `[]`                 | List of [plugins](https://babeljs.io/docs/plugins/) to load and use |
-| `presets`                | `[]`                 | List of [presets](https://babeljs.io/docs/plugins/#presets) (a set of plugins) to load and use |
-| `retainLines`            | `false`              | Retain line numbers. This will lead to wacky code but is handy for scenarios where you can't use source maps. (**NOTE:** This will not retain the columns) |
-| `shouldPrintComment`     | `null`               | An optional callback that controls whether a comment should be output or not. Called as `shouldPrintComment(commentContents)`. **NOTE:** This overrides the `comment` option when used |
-| `sourceFileName`         | `(filenameRelative)` | Set `sources[0]` on returned source map |
-| `sourceMaps`             | `false`              | If truthy, adds a `map` property to returned output. If set to `"inline"`, a comment with a sourceMappingURL directive is added to the bottom of the returned code. If set to `"both"` then a `map` property is returned as well as a source map comment appended. **This does not emit sourcemap files by itself!** To have sourcemaps emitted using the CLI, you must pass it the `--source-maps` option |
-| `sourceRoot`             | `(moduleRoot)`       | The root from which all sources are relative |
-| `sourceType`             | `"module"`           | Indicate the mode the code should be parsed in. Can be one of "script", "module", or "unambiguous". `"unambiguous"` will make Babel attempt to _guess_, based on the presence of ES6 `import` or `export` statements. Files with ES6 `import`s and `export`s are considered `"module"` and are otherwise `"script"`. |
-| `wrapPluginVisitorMethod`| `null`               | An optional callback that can be used to wrap visitor methods. **NOTE:** This is useful for things like introspection, and not really needed for implementing anything. Called as `wrapPluginVisitorMethod(pluginAlias, visitorType, callback)`.
-
+See [the full option list here](options.md).

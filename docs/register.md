@@ -74,9 +74,10 @@ require("@babel/register")({
 });
 ```
 
-You can pass in all other [options](https://babeljs.io/docs/usage/api/#options) as well,
-including `plugins` and `presets`. But note that the closest [`.babelrc`](https://babeljs.io/docs/usage/babelrc/)
-to each file still applies, and takes precedence over any options you pass in here.
+You can pass in all other [options](options.md) as well, including `plugins` and `presets`.
+Note that [config files](config-files.md) will also be loaded and the programmatic
+config will be merged over top of the file config options.
+
 
 ## Environment variables
 
