@@ -19,7 +19,7 @@ Babel has two parallel config file formats, which can be used together, or indep
 New in Babel 7.x, Babel has as concept of a ["root"](options.md#root) directory, which defaults
 to the current working directory. For project-wide configuration, Babel will automatically search
 for a `"babel.config.js"` in this root directory. Alternatively, users can use an explicit
-["configFile"](options.md#configFile) value to override the default config file search behavior.
+["configFile"](options.md#configfile) value to override the default config file search behavior.
 
 Because project-wide config files are separated from the physical location of the config
 file, they can be ideal for configuration that must apply broadly, even allowing
@@ -44,7 +44,7 @@ and the individual packages are responsible for running their builds (and their 
 directory for Babel is the individual packages), the `babel.config.js` file will not be automatically
 loaded, and users will be required to set the path to it manually.
 
-Project-wide configs can also be disabled by setting ["configFile"](options.md#configFile) to `false`.
+Project-wide configs can also be disabled by setting ["configFile"](options.md#configfile) to `false`.
 
 ## File-relative configuration
 
@@ -59,7 +59,7 @@ There are a few edge cases to consider when using a file-relative config:
 * Searching will stop once a directory containing a `package.json` is found, so a relative config
   only applies within a single package.
 * The ["filename"](options.md#filename) being compiled must be inside of
-  ["babelrcRoots"](options.md#babelrcRoots) packages, or else searching will be skipped entirely.
+  ["babelrcRoots"](options.md#babelrcroots) packages, or else searching will be skipped entirely.
 
 File-relative configs can also be disable by setting ["babelrc"](options.md#babelrc) to `false`.
 
@@ -93,11 +93,11 @@ One alternative would be to create a `.babelrc` in each sub-package that uses ["
 { "extends": "../../.babelrc" }
 ```
 Unfortunately, this approach can be a bit repetitive, and depending on how Babel is being used,
-could require setting ["babelrcRoots"](options.md#babelrcRoots).
+could require setting ["babelrcRoots"](options.md#babelrcroots).
 
 Given that, it may be more desirable to rename the `.babelrc` to be a
 [project-wide "babel.config.js"](#project-wide-configuration). As mentioned in the project-wide
-section above, this may then require explicitly setting ["configFile"](options.md#configFile)
+section above, this may then require explicitly setting ["configFile"](options.md#configfile)
 since Babel will not find the config file if the working directory isn't correct.
 
 
@@ -174,7 +174,7 @@ that:
 
 Since `NODE_ENV` is a fairly common way to toggle behavior, Babel also includes an API function
 meant specifically for that. This API is used as a quick way to check the
-["envName"](options.md#envName) that Babel was loaded with, which takes `NODE_ENV` into account
+["envName"](options.md#envname) that Babel was loaded with, which takes `NODE_ENV` into account
 if no other overriding environment is set.
 
 It has a few different forms:
