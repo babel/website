@@ -250,6 +250,11 @@ class Repl extends React.Component<Props, State> {
             {state.ast ? (
               <ReactJson
                 src={state.astContext}
+                style={{
+                  overflowY: "scroll",
+                  width: "100%",
+                }}
+                shouldCollapse={field => field.name !== "root"}
                 enableClipboard={false}
                 displayObjectSize={false}
                 displayDataTypes={false}
