@@ -99,7 +99,7 @@ export default class ExternalPluginsModal extends React.Component<
     const { onClose, plugins } = this.props;
     const { officialOnly } = this.state;
 
-    let filters = "keywords:babel-plugin";
+    let filters = "computedKeywords:babel-plugin";
 
     if (officialOnly) {
       filters += " AND owner.name:babel";
