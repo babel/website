@@ -8,30 +8,11 @@
 # Ported from redirect_from
 # old.babeljs.io
 
-/docs/using-babel/                  https://old.babeljs.io/docs/setup/
-/plugins.html                       https://old.babeljs.io/docs/setup/
-/docs/using-6to5/                   https://old.babeljs.io/docs/setup/
-/docs/usage/browser/                https://old.babeljs.io/docs/setup/
-/browser.html                       https://old.babeljs.io/docs/setup/
-/docs/core-packages/babel-register/ https://old.babeljs.io/docs/usage/babel-register/
-/docs/usage/require/                https://old.babeljs.io/docs/usage/babel-register/
-/docs/usage/options/                https://old.babeljs.io/docs/usage/api/
-/docs/advanced/plugins/             https://old.babeljs.io/docs/plugins/
-/docs/usage/modules/                https://old.babeljs.io/docs/plugins/
-/caveats.html                       https://old.babeljs.io/docs/usage/caveats/
-/usage.html                         https://old.babeljs.io/docs/usage/cli/
-/docs/faq/                          https://old.babeljs.io/faq/
 /php.html                           https://old.babeljs.io/php/
-/repl.html                          /repl/
 /repl_old.html                      https://old.babeljs.io/repl/
 /repl_old                           https://old.babeljs.io/repl/
 /7/                                 https://old.babeljs.io/repl/build/7.0/
 /7.html                             https://old.babeljs.io/repl/build/7.0/
-/docs/learn-es6/                    https://old.babeljs.io/learn-es2015/
-/docs/learn-es2015/                 https://old.babeljs.io/learn-es2015/
-/features.html                      https://old.babeljs.io/learn-es2015/
-/docs/tour/                         https://old.babeljs.io/learn-es2015/
-/docs/plugins/transform-es2015-constants https://old.babeljs.io/docs/plugins/check-es2015-constants/
 
 # after docusaurus rewrite
 /php/                               https://old.babeljs.io/php/
@@ -40,7 +21,7 @@
 /docs/core-packages/                /docs/en/babel-core/
 /docs/usage/polyfill/               /docs/en/babel-polyfill/
 /docs/usage/babel-register/         /docs/en/babel-register/
-/docs/usage/babelrc/                /docs/en/babelrc/
+/docs/usage/babelrc/                /docs/en/config-files/
 /docs/usage/caveats/                /docs/en/caveats/
 /docs/editors/                      /docs/en/editors/
 /env/                               /docs/en/env/
@@ -54,13 +35,33 @@
 /core-packages/babel-helpers/       /docs/en/babel-helpers/
 /core-packages/babel-code-frame/    /docs/en/babel-code-frame/
 /core-packages/babylon/             /docs/en/babylon/
-# Enable after v7 becomes stable
-# /docs/en/babylon/                   /docs/en/6.x/babylon/
+/docs/en/babylon/                   /docs/en/babel-parser
+
+/docs/using-babel/                  /en/setup
+/plugins.html                       /en/setup
+/docs/using-6to5/                   /en/setup
+/docs/usage/browser/                /en/setup
+/browser.html                       /en/setup
+/docs/advanced/plugins/             /docs/en/plugins
+/docs/usage/modules/                /docs/en/plugins
+/usage.html                         /docs/en/babel-cli
+/docs/faq/                          /docs/en/faq
+/docs/learn-es6/                    /docs/en/learn
+/docs/learn-es2015/                 /docs/en/learn
+/features.html                      /docs/en/learn
+/docs/tour/                         /docs/en/learn
+/docs/core-packages/babel-register/ /docs/en/babel-register
+/docs/usage/require/                /docs/en/babel-register
+/docs/usage/options/                /docs/en/options
+/caveats.html                       /docs/en/caveats
+/repl.html                          /repl/
 
 /docs/plugins/preset-*              /docs/en/babel-preset-:splat
 /docs/plugins/transform-*           /docs/en/babel-plugin-transform-:splat
 /docs/plugins/syntax-*              /docs/en/babel-plugin-syntax-:splat
 /docs/plugins/minify-*              /docs/en/babel-plugin-minify-:splat
 /docs/plugins/external-helpers/     /docs/en/babel-plugin-external-helpers
+
 /docs/plugins/check-es2015-constants/ /docs/en/babel-plugin-check-es2015-constants
+/docs/plugins/transform-es2015-constants /docs/en/babel-plugin-check-es2015-constants
 /docs/plugins/undeclared-variables-check/ /docs/en/babel-plugin-undeclared-variables-check
