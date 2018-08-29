@@ -13,7 +13,7 @@ id: options
 - [AMD / UMD / SystemJS options](#amd-umd-systemjs-module-options)
 - [Option concepts](#options-concepts)
 
-Options can be passed be passed to Babel in a variety of ways. When directly to Babel,
+Options can be passed to Babel in a variety of ways. When passed directly to Babel,
 you can just pass the objects object. When Babel is used via a wrapper, it may also be
 necessary, or at least more useful, to pass the options via [configuration files](config-files.md).
 
@@ -57,7 +57,7 @@ they will skip compilation of ES modules into CommonJS modules.
 Type: `string`<br />
 
 The filename associated with the code currently being compiled, if there is one.
-The filename is optional, but not all Babel functionality is available when
+The filename is optional, but not all of Babel's functionality is available when
 the filename is unknown, because a subset of options rely on the filename
 for their functionality.
 
@@ -65,7 +65,7 @@ The three primary cases users could run into are:
 
 * The filename is exposed to plugins. Some plugins may require the presence of the filename.
 * Options like [`"test"`](#test), [`"exclude"`](#exclude), and [`"ignore"`](#ignore) require the filename for string/RegExp matching.
-* `.babelrc` files are loaded relative to the file being compiled. If this option is omited, Babel will behave as if `babelrc: false` has been set.
+* `.babelrc` files are loaded relative to the file being compiled. If this option is omitted, Babel will behave as if `babelrc: false` has been set.
 
 
 ### `filenameRelative`
@@ -94,7 +94,7 @@ Type: `boolean`<br />
 Default: `false`<br />
 
 Babel's default is to generate a string and a sourcemap, but in some
-contexts it can be useful to get the AST itself. The primary usecase for this
+contexts it can be useful to get the AST itself. The primary use case for this
 would be a chain of multiple transform passes, along the lines of
 
 ```js
@@ -113,7 +113,7 @@ const { code, map } = babel.transformFromAstSync(ast, code, {
 });
 ```
 
-Note: This option is not on by default because the majority of user won't need
+Note: This option is not on by default because the majority of users won't need
 it and because we'd like to eventually add a caching layer to Babel. Having
 to cache the AST structure will take significantly more space.
 
@@ -293,14 +293,14 @@ overrides: [{
 }],
 ```
 could be used to enable the `compact` option for one specific file that is known
-to be large and minified, to tell Babel not to bother trying to print the file nicely.
+to be large and minified, and tell Babel not to bother trying to print the file nicely.
 
 
 ### `test`
 
 Type: `MatchPattern | Array<MatchPattern>` ([`MatchPattern`](#matchpattern))<br />
 
-If all of patterns fail to match, the current configuration object is considered
+If all patterns fail to match, the current configuration object is considered
 inactive and is ignored during config processing. This option is most useful
 when used within an `overrides` option object, but it's allowed anywhere.
 
@@ -378,7 +378,7 @@ Type: `boolean | SourceMap`<br />
 Default: `true`<br />
 
 `true` will attempt to load an input sourcemap from the file itself, if it
-contains a `//# sourceMappingURL=...` commment. If no map is found, or the
+contains a `//# sourceMappingURL=...` comment. If no map is found, or the
 map fails to load and parse, it will be silently discarded.
 
 If an object is provided, it will be treated as the source map object itself.
@@ -400,7 +400,7 @@ Default: `false`<br />
 * `"both"` will write the file with a `data:` URL and _also_ a `.map`.
 
 Note: These options are bit weird, so it may make the most sense to just use
-`true` and handle the rest in your own code, depending on your usecase.
+`true` and handle the rest in your own code, depending on your use case.
 
 
 ### `sourceMap`
@@ -486,14 +486,14 @@ after performing whatever logging and analysis they wish to do.
 
 Type: `{}`<br />
 
-An opaque object containing options to pass though to the parser being used.
+An opaque object containing options to pass through to the parser being used.
 
 
 ### `generatorOpts`
 
 Type: `{}`<br />
 
-An opaque object containing options to pass though to the code generator being used.
+An opaque object containing options to pass through to the code generator being used.
 
 
 ## Code Generator options
@@ -503,7 +503,7 @@ An opaque object containing options to pass though to the code generator being u
 Type: `boolean`<br />
 Default: `false`<br />
 
-Babel will make an effort to generator code such that items are printed on the
+Babel will make an effort to generate code such that items are printed on the
 same line that they were on in the original file. This option exists so that
 users who cannot use source maps can get vaguely useful error line numbers,
 but it is only a best-effort, and is not guaranteed in all cases with all plugins.
@@ -537,7 +537,7 @@ Allows specifying a prefix comment to insert before pieces of code that were
 not present in the original file.
 
 Note: The definition of what is and isn't present in the original file can
-get a little ugly, so usage of this option is not recommended. If you need to
+get a little ugly, so usage of this option is _not recommended_. If you need to
 annotate code somehow, it is better to do so using a Babel plugin.
 
 
@@ -549,7 +549,7 @@ Allows specifying a prefix comment to insert after pieces of code that were
 not present in the original file.
 
 Note: The definition of what is and isn't present in the original file can
-get a little ugly, so usage of this option is not recommended. If you need to
+get a little ugly, so usage of this option is _not recommended_. If you need to
 annotate code somehow, it is better to do so using a Babel plugin.
 
 
@@ -594,7 +594,7 @@ A hard-coded ID to use for the module. Cannot be used alongside `getModuleId`.
 Type: `(name: string) => string`<br />
 
 Given the babel-generated module name, return the name to use. Returning
-a falcy value will use the original `name`.
+a falsy value will use the original `name`.
 
 
 ### `moduleRoot`
@@ -610,8 +610,8 @@ A root path to include on generated module names.
 
 Type: `string | RegExp | (filename: string | void, context: { callee: { name: string } | void, envName: string ) => boolean`
 
-Several Babel options perform tests against filepaths. In general, these
-options support a common patter approach where each pattern can be
+Several Babel options perform tests against file paths. In general, these
+options support a common pattern approach where each pattern can be
 
 * `string` - A file path with simple support for `*` and `**` as full slug matches. Any file or
   parent folder matching the pattern counts as a match. The path follow's Node's normal path logic,
@@ -631,7 +631,7 @@ and will consider it an error otherwise.
 ### Merging
 
 Babel's configuration merging is relatively straightforward. Options will overwrite existing options
-when they are present and their value is not `undefined`, with a few special cases:
+when they are present, and their value is not `undefined`, with a few special cases:
 
 * `parserOpts` objects are merged, rather than replaced, using the same logic as top-level options.
 * `generatorOpts` objects are merged, rather than replaced, using the same logic as top-level options.
@@ -652,7 +652,7 @@ overrides: [{
 }]
 ```
 The `overrides` item will be merged on top of the top-level plugins. Importantly, the `plugins`
-array as a whole doesn't just replace the top-level one. The merging logic will see thay `"./plug"`
+array as a whole doesn't just replace the top-level one. The merging logic will see that `"./plug"`
 is the same plugin in both cases, and `{ thing: false, field2: true }` will replace the original
 options, resulting in a config as
 
@@ -743,7 +743,7 @@ Options are passed through to each plugin/preset when they are executed. `undefi
 normalized to an empty object.
 
 `false` indicates that an entry is entirely disabled. This can be useful in contexts where ordering
-is important, but a separate condition is needed to decide if something is enabled. For instace:
+is important, but a separate condition is needed to decide if something is enabled. For instance:
 
 ```js
 plugins: [
@@ -776,7 +776,7 @@ when loading items. This boils down to a few primary rules:
 * `babel-plugin-`/`babel-preset-` will be injected as a prefix any `@`-scoped package that doesn't have it _anywhere_ in their name.
 * `babel-plugin`/`babel-preset` will be injected as the package name if only the `@`-scope name is given.
 
-Here are some example, when applied in a plugin context:
+Here are some examples, when applied in a plugin context:
 
 | Input | Normalized |
 | -------- | --- |
