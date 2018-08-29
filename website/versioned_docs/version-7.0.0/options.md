@@ -199,7 +199,7 @@ This option allows users to provide a list of other packages that should be cons
 "root" packages when considering whether to load `.babelrc` files.
 
 For example, a monorepo setup that wishes to allow individual packages to
-have their own configs might with to do
+have their own configs might want to do
 
 ```js
 babelrcRoots: [
