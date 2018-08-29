@@ -201,13 +201,16 @@ We currently aren't willing to commit to supporting the API for plugins or the r
 
 Our current recommendation for those that want to create their own custom syntax is for users to fork the parser.
 
-To consume your custom parser, you can add to your `.babelrc` via its npm package name or require it if using JavaScript,
+To consume your custom parser, you can add a plugin to your [options](options.md#plugins) to call the parser via its npm package name or require it if using JavaScript,
 
-```json
-{
-  "parserOpts": {
-    "parser": "custom-fork-of-babel-parser-on-npm-here"
-  }
+```js
+const parse = require("custom-fork-of-babel-parser-on-npm-here");
+
+module.exports = {
+  plugins: [{
+    parserOverride(code, opts) {
+      return parse(code, opts);
+    },
+  }]
 }
 ```
-

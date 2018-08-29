@@ -228,7 +228,7 @@ If you were relying on Babel to inject `"use strict"` into all of your CommonJS 
 
 `babel-preset-react` has always included the flow plugin automatically from the beginning. This has actually caused a lot of issues with users that accidently use `flow` syntax without intending due to a typo, or adding it in without typechecking with `flow` itself, resulting in errors.
 
-This became further of an issue after we decided to support TypeScript with the help of the TS team. If you wanted to use the react and typescript presets, we would have to figure out a way to turn on/off the syntax automatically via file type or the directive. In the end it seemed easiest to just separate the presets entirely. 
+This became further of an issue after we decided to support TypeScript with the help of the TS team. If you wanted to use the react and typescript presets, we would have to figure out a way to turn on/off the syntax automatically via file type or the directive. In the end it seemed easiest to just separate the presets entirely.
 
 So now the react preset and the flow preset are separated.
 
@@ -299,8 +299,6 @@ We have separated out Babel's helpers from it's "polyfilling" behavior in runtim
 
 [`@babel/runtime`](runtime.md) now only contains the helpers, and if you need `core-js` you can use [`@babel/runtime-corejs2`](runtime-corejs2.md) and the option provided in the transform. For both you still need the [`@babel/plugin-transform-runtime`](plugin-transform-runtime.md)
 
-We've removed the proposals `transform-runtime` as well since we have done the same for `@babel/polyfill` [#8547](https://github.com/babel/babel/pull/8547).
-
 #### Only Helpers
 
 ```sh
@@ -332,7 +330,7 @@ npm install @babel/plugin-transform-runtime --save-dev
   "plugins": [
 -   ["@babel/plugin-transform-runtime"],
 +   ["@babel/plugin-transform-runtime", {
-+     "corejs": 2,   
++     "corejs": 2,
 +   }],
   ]
 }
@@ -355,7 +353,7 @@ var {
 
 ---
 
-> Since Object Spread defines new propeties and `Object.assign` just sets them, Babel has changed the default behavior to be more spec compliant.
+> Since Object Spread defines new properties and `Object.assign` just sets them, Babel has changed the default behavior to be more spec compliant.
 
 - [objectSpread helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L375)
 - [extends helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L357-L373)
@@ -450,7 +448,7 @@ export * as ns from 'mod';
 
 See the proposal for [Template Literals Revision](https://tc39.github.io/proposal-template-literal-revision/).
 
-It cause Babel 6 to throw `Bad character escape sequence (5:6)`.
+It causes Babel 6 to throw `Bad character escape sequence (5:6)`.
 
 ```js
 tag`\unicode and \u{55}`;
@@ -508,7 +506,7 @@ In anticipation of the new decorators proposal implementation, we've decided to 
 
 ### `@babel/plugin-proposal-pipeline-operator`
 
-Newer proposals in flux will error by default and will require everyone opt into a specific proposal will things are still < Stage 2. This is explained more in this [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal)
+Newer proposals in flux will error by default and will require everyone to opt into a specific proposal while things are still < Stage 2. This is explained more in this [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal).
 
 ```diff
 {
@@ -609,7 +607,7 @@ This change just makes babel-generator output `,` instead of `;`.
 
 > Remove `babel-core/src/api/browser.js` [#5124](https://github.com/babel/babel/pull/5124) ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
-`babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [babel-standalone](https://github.com/babel/babel-standalone).
+`babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [@babel/standalone](standalone.md).
 
 Babel will return `filename` as an absolute path [#8044](https://github.com/babel/babel/pull/8044)
 

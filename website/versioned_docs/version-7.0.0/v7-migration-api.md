@@ -74,13 +74,13 @@ Included is a `root` option that defaults to the current working directory for i
 It is also not loaded relatively so it will handle symlinking correctly, whereas before you may have had
 hard-code the paths in webpack before.
 
-Check the `babel.config.js` docs for more info: https://babeljs.io/docs/en/next/babelconfigjs.html
+Check the `babel.config.js` docs for more info: [project-wide configuration](config-files.md#project-wide-configuration)
 
-This file combined with the new [`overrides`](https://babeljs.io/docs/en/next/babelrc.html#overrides) property and `env` lets you have a single config file
+This file combined with the new [`overrides`](options.md#overrides) property and `env` lets you have a single config file
 that can work for all the files in a project vs. multiple config files per folder.
 
 We also exclude `node_modules` by default and only look in the root unless you opt-in to setting
-an array of the `.babelrc` option such as `"babelrc": [".", "node_modules/pkgA"]`
+an array of the `.babelrcRoots` option such as `"babelrcRoots": [".", "node_modules/pkgA"]`
 
 ## Asserting Babel version [#7450](https://github.com/babel/babel/pull/7450)
 

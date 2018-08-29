@@ -17,8 +17,8 @@
       "version-7.0.0-roadmap"
     ],
     "Usage": [
-      "version-7.0.0-babelconfigjs",
-      "version-7.0.0-babelrc",
+      "version-7.0.0-options",
+      "version-7.0.0-config-files",
       "version-7.0.0-babel-cli",
       "version-7.0.0-babel-polyfill",
       "version-7.0.0-babel-plugin-transform-runtime",

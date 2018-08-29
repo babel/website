@@ -21,7 +21,7 @@
 /docs/core-packages/                /docs/en/babel-core/
 /docs/usage/polyfill/               /docs/en/babel-polyfill/
 /docs/usage/babel-register/         /docs/en/babel-register/
-/docs/usage/babelrc/                /docs/en/babelrc/
+/docs/usage/babelrc/                /docs/en/config-files/
 /docs/usage/caveats/                /docs/en/caveats/
 /docs/editors/                      /docs/en/editors/
 /env/                               /docs/en/env/
