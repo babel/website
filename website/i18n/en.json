@@ -4,6 +4,8 @@
     "next": "Next",
     "previous": "Previous",
     "tagline": "The compiler for next generation JavaScript",
+    "babelconfigjs": "babel.config.js",
+    "babelrc": ".babelrc",
     "caveats": "Caveats",
     "babel-cli": "babel-cli",
     "babel-code-frame": "babel-code-frame",
