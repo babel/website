@@ -170,7 +170,7 @@ require("@babel/parser").parse("code", {
 > NOTE: When a plugin is specified multiple times, only the first options are considered.
 
 - `decorators`:
-  - `decoratorsBeforeExport` (`boolean`, default: `false`)
+  - `decoratorsBeforeExport` (`boolean`)
     ```js
     // decoratorsBeforeExport: true
     @dec
