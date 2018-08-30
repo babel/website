@@ -5,6 +5,7 @@ import "regenerator-runtime/runtime";
 import { cx, css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
+import sourceMap from "source-map";
 import { prettySize } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
@@ -68,7 +69,10 @@ type State = {
   plugins: PluginStateMap,
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
-  sourceMap: ?string,
+  sourceMap?: string,
+  sourceMapMappings?: Array<Object>,
+  sourceMapSourceHighlight: Array<Object>,
+  sourceMapCompiledHighlight: Array<Object>,
   externalPlugins: Array<string>,
   pluginSearch: ?string,
   showOfficialExternalPlugins: boolean,
@@ -157,7 +161,9 @@ class Repl extends React.Component<Props, State> {
         runtimePolyfillConfig,
         persistedState.evaluate
       ),
-      sourceMap: null,
+      sourceMap: '',
+      sourceMapCompiledHighlight: [],
+      sourceMapSourceHighlight: [],
       showOfficialExternalPlugins: false,
       externalPlugins: [],
       loadingExternalPlugins: false,
@@ -237,7 +243,9 @@ class Repl extends React.Component<Props, State> {
               code={state.code}
               errorMessage={state.compileErrorMessage}
               fileSize={state.meta.rawSize}
+              highlight={state.sourceMapSourceHighlight}
               onChange={this._updateCode}
+              onCursorActivity={position => this._handleCursorPosition('source', position)}
               options={options}
               placeholder="Write code here"
             />
@@ -246,7 +254,9 @@ class Repl extends React.Component<Props, State> {
               code={state.compiled}
               errorMessage={state.evalErrorMessage}
               fileSize={state.meta.compiledSize}
+              highlight={state.sourceMapCompiledHighlight}
               info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
+              onCursorActivity={position => this._handleCursorPosition('compiled', position)}
               options={options}
               placeholder="Compiled output will be shown here"
             />
@@ -261,6 +271,53 @@ class Repl extends React.Component<Props, State> {
           )}
         </div>
       </div>
+    );
+  }
+
+  _handleCursorPosition(panel: string, position: Object) {
+    if (!this.state.sourceMapMappings) return;
+
+    const mappingsUnderCursor = this.state.sourceMapMappings.filter(m => (
+      m.original.line === (position.line + 1) &&
+      m.original.columnStart <= position.ch &&
+      m.original.columnEnd > position.ch
+    ));
+
+    this._removeHighlights();
+
+    if (!mappingsUnderCursor.length) return;
+
+    const firstMapping = mappingsUnderCursor[0];
+    this._highlightMapping(firstMapping.original, true, true, true);
+    firstMapping.generated.forEach(m => this._highlightMapping(m, true));
+  }
+
+  _highlightMapping(mapping: Object, active: boolean = false, isSource: boolean = false, cursor: boolean = false) {
+    const highlight = {
+      line: mapping.line - 1,
+      columnStart: mapping.columnStart,
+      columnEnd: mapping.columnEnd,
+      active,
+      cursor
+    };
+    const stateKey = isSource ? 'sourceMapSourceHighlight' : 'sourceMapCompiledHighlight';
+    const newHighlightList: Array<Object> = this.state[stateKey].slice(0);
+
+    newHighlightList.push(highlight);
+
+    this.setState(
+      { [stateKey]: newHighlightList },
+      this.forceUpdate
+    );
+  }
+
+  _removeHighlights() {
+    this.setState(
+      {
+        'sourceMapSourceHighlight': [],
+        'sourceMapCompiledHighlight': [],
+      },
+      this.forceUpdate
     );
   }
 
@@ -468,15 +525,72 @@ class Repl extends React.Component<Props, State> {
           runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
         presets: presetsArray,
         prettify: state.plugins.prettier.isEnabled,
-        sourceMap: runtimePolyfillState.isEnabled,
+        sourceMap: true,
         sourceType: state.sourceType,
         getTransitions: state.timeTravel,
       })
-      .then(result => {
+      .then((result: Object) => {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
         result.meta.rawSize = prettySize(result.meta.rawSize);
+        result.sourceMapMappings = result.sourceMap ? this.getSourcemapMappings(result.sourceMap) : [];
         this.setState(result, setStateCallback);
       });
+  };
+
+  getSourcemapMappings = (rawSourceMap: string): Array<Object> => {
+    const smc = new sourceMap.SourceMapConsumer(rawSourceMap);
+
+    const originalPositions = [];
+    smc.eachMapping(
+      function (m) {
+        if (m.originalLine === null) return;
+
+        const last = originalPositions.length > 0 ? originalPositions[originalPositions.length - 1] : null;
+
+        // Ignore multiple matching original locations.
+        if (last && last.line === m.originalLine && last.columnStart === m.originalColumn) return;
+
+        // Set the _end_ of the previous mapping to the start of the new one.
+        if (
+          last &&
+          last.line === m.originalLine
+        ) {
+          last.columnEnd = m.originalColumn;
+        }
+
+        originalPositions.push({
+          source: m.source,
+          name: m.name,
+          line: m.originalLine,
+          columnStart: m.originalColumn,
+          columnEnd: Infinity,
+        });
+      },
+      null,
+      sourceMap.SourceMapConsumer.ORIGINAL_ORDER
+    );
+
+    // Compute the spans on the generated file.
+    smc.computeColumnSpans();
+
+    return originalPositions.map((origPos): Object => {
+      const ranges = smc.allGeneratedPositionsFor({
+        source: origPos.source,
+        line: origPos.line,
+        column: origPos.columnStart,
+      });
+
+      const generatedRanges = ranges.map(range => ({
+        line: range.line,
+        columnStart: range.column,
+        columnEnd: range. lastColumn + 1
+      }));
+
+      return {
+        original: origPos,
+        generated: generatedRanges,
+      };
+    });
   };
 
   // Debounce compilation since it's expensive.
