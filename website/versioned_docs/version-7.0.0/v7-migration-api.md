@@ -243,7 +243,7 @@ The `expression` field was removed to eliminate two different sources of truth a
 
 ### Tokens removed
 
-In previous versions `tokens` were always attached to the AST on the top-level. In the latest version of `@babel/parser` we removed this behavior and made it disabled by default to improve the performance of the parser. All usages in babel itself have been remove and `@babel/generator` is not using the tokens anymore for pretty printing.
+In previous versions `tokens` were always attached to the AST on the top-level. In the latest version of `@babel/parser` we removed this behavior and made it disabled by default to improve the performance of the parser. All usages in babel itself have been removed and `@babel/generator` is not using the tokens anymore for pretty printing.
 
 If your babel plugin uses `tokens` at the moment, evaluate if it is still necessary and try to remove the usage if possible. If your plugin really depends on getting tokens you can reactivate it but please only consider this if there is no other way as this will hurt users performance.
 

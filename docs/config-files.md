@@ -163,7 +163,7 @@ that:
 
 * Callbacks should be small and side-effect free.
 * Callbacks should return values with the smallest range possible. For example, the
-  `.using(() => process.env.NODE_ENV)` usage above is not idea because it would create an unknown
+  `.using(() => process.env.NODE_ENV)` usage above is not ideal because it would create an unknown
   number of cache entries depending on how many values of `NODE_ENV` are detected. It would be
   safer to do `.using(() => process.env.NODE_ENV === "development")` because then the cache entry
   can only ever be `true` or `false`.

@@ -185,7 +185,7 @@ This also means that when a proposal moves to Stage 4, we should rename the pack
 
 ### [Remove the year from package names](/blog/2017/12/27/nearing-the-7.0-release.html#renames-drop-the-year-from-the-plugin-name)
 
-Some of the plugins had `-es3-` or `-es2015-` in the names, but these were unncessary.
+Some of the plugins had `-es3-` or `-es2015-` in the names, but these were unnecessary.
 
 `@babel/plugin-transform-es2015-classes` became `@babel/plugin-transform-classes`.
 
