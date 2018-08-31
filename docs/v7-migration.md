@@ -229,7 +229,7 @@ If you were relying on Babel to inject `"use strict"` into all of your CommonJS 
 
 This issue was compounded when we decided to support TypeScript. If you wanted to use the React and TypeScript presets, we would have to figure out a way to turn on/off the syntax, automatically, via file type or the directive. In the end, it was easier to separate the presets entirely.
 
-Presets enable babel to parse types provided by flow / TypeScript (and other dialects / languages), then strip them out when compiling down to JavaScript.
+Presets enable Babel to parse types provided by flow / TypeScript (and other dialects / languages), then strip them out when compiling down to JavaScript.
 
 ```diff
 {
