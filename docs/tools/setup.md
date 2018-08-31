@@ -2,7 +2,7 @@
 
 To start, you can use the <a href="https://babeljs.io/docs/plugins/preset-env/">env preset</a>, which enables transforms for ES2015+
 
-To make use of Babel 7, one need to use the naming convention as with `@babel` as follows:
+To make use of Babel 7+ ( babel 7 and future versions ), one need to use the naming convention as with `@babel` as follows:
 
 ```shell
 npm install @babel/preset-env --save-dev
