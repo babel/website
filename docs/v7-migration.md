@@ -223,19 +223,19 @@ require('a');
 
 If you were relying on Babel to inject `"use strict"` into all of your CommonJS modules automatically, you'll want to explicitly use the `transform-strict-mode` plugin in your Babel config.
 
-## Separation between the React and Flow presets
+## Separation of the React and Flow presets
 
-`babel-preset-react` has always included the flow plugin automatically from the beginning. This has actually caused a lot of issues with users that accidently use `flow` syntax without intending due to a typo, or adding it in without typechecking with `flow` itself, resulting in errors.
+`babel-preset-react` has always included the flow plugin. This has caused a lot of issues with users that accidently use `flow` syntax unintentionally due to a typo, or adding it in without typechecking with `flow` itself, resulting in errors.
 
-This became further of an issue after we decided to support TypeScript with the help of the TS team. If you wanted to use the react and typescript presets, we would have to figure out a way to turn on/off the syntax automatically via file type or the directive. In the end it seemed easiest to just separate the presets entirely.
+This issue was compounded when we decided to support TypeScript. If you wanted to use the React and TypeScript presets, we would have to figure out a way to turn on/off the syntax, automatically, via file type or the directive. In the end, it was easier to separate the presets entirely.
 
-So now the react preset and the flow preset are separated.
+Presets enable Babel to parse types provided by Flow / TypeScript (and other dialects / languages), then strip them out when compiling down to JavaScript.
 
 ```diff
 {
 -  "presets": ["@babel/preset-react"]
-+  "presets": ["@babel/preset-react", "@babel/preset-flow"] // remove flow types
-+  "presets": ["@babel/preset-react", "@babel/preset-typescript"] // remove typescript types
++  "presets": ["@babel/preset-react", "@babel/preset-flow"] // parse & remove flow types
++  "presets": ["@babel/preset-react", "@babel/preset-typescript"] // parse & remove typescript types
 }
 ````
 
