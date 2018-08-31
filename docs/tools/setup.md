@@ -12,7 +12,7 @@ In order to enable the preset with the new naming convention to use babel versio
 
 ```json
 {
-  "presets": ["babel/env"]
+  "presets": ["@babel/env"]
 }
 ```
 
