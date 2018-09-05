@@ -302,7 +302,7 @@ We have separated out Babel's helpers from it's "polyfilling" behavior in runtim
 
 ```sh
 # install the runtime as a dependency
-npm install @babel/runtime`
+npm install @babel/runtime
 # install the plugin as a devDependency
 npm install @babel/plugin-transform-runtime --save-dev
 ```
