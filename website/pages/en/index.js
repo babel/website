@@ -240,6 +240,12 @@ const OpenCollectiveSponsors = ({ language }) => {
             button={ocButton}
           />
           <SponsorTier
+            type="patreon"
+            title="Silver Sponsors (Patreon)"
+            tier="silver-sponsors"
+            button={patreonButton}
+          />
+          <SponsorTier
             type="other"
             title="Misc Sponsors"
             tier="other-sponsors"
