@@ -9,6 +9,7 @@ import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import ExternalPlugins from "./ExternalPlugins";
 import Svg from "./Svg";
 import { colors, media } from "./styles";
+import { joinListEnglish } from "./Utils";
 
 import type {
   EnvConfig,
@@ -16,6 +17,7 @@ import type {
   PluginConfig,
   PluginState,
   PluginStateMap,
+  PresetsOptions,
   ShippedProposalsState,
   SidebarTabSection,
   SourceType,
@@ -38,6 +40,7 @@ const PRESET_ORDER = [
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, value: boolean | string) => void;
+type TogglePresetOption = (name: string, value: boolean) => void;
 type ShowOfficialExternalPluginsChanged = (value: string) => void;
 type PluginSearch = (value: string) => void;
 type PluginChange = (plugin: Object) => void;
@@ -56,6 +59,7 @@ type Props = {
   pluginSearch: PluginSearch,
   envPresetState: EnvState,
   shippedProposalsState: ShippedProposalsState,
+  presetsOptions: PresetsOptions,
   fileSize: boolean,
   timeTravel: boolean,
   sourceType: SourceType,
@@ -65,6 +69,7 @@ type Props = {
   onExternalPluginRemove: (pluginName: string) => void,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
+  onPresetOptionChange: TogglePresetOption,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
@@ -87,6 +92,38 @@ const LinkToDocs = ({ className, children, section }: LinkProps) => (
     {children}
   </a>
 );
+
+type PresetOptionProps = {
+  className?: string,
+  enabled?: boolean,
+  option: string,
+  presets: string[],
+  comment?: string,
+  children: React$Element<any> | Array<React$Element<any>>,
+};
+
+const PresetOption = ({
+  className = "",
+  enabled = true,
+  option,
+  presets,
+  comment,
+  children,
+}: PresetOptionProps) => {
+  let title = `"${option}"\n- Applied to ${joinListEnglish(presets)}`;
+  if (comment) title += `\n- ${comment}`;
+
+  return (
+    <label
+      className={`${styles.settingsLabel} ${
+        !enabled ? styles.presetsOptionsDisabled : ""
+      } ${className}`}
+      title={title}
+    >
+      {children}
+    </label>
+  );
+};
 
 export default function ReplOptions(props: Props) {
   return (
@@ -159,6 +196,7 @@ class ExpandedContainer extends Component<Props, State> {
       pluginValue,
       showOfficialExternalPlugins,
       loadingExternalPlugins,
+      presetsOptions,
     } = this.props;
 
     const {
@@ -263,6 +301,53 @@ class ExpandedContainer extends Component<Props, State> {
                   />
                 );
               })}
+              <span
+                className={`${styles.presetsOptionsTitle} ${styles.highlight}`}
+              >
+                Options
+              </span>
+              <PresetOption
+                className={styles.presetsOptionsRow}
+                option="decoratorsLegacy"
+                presets={["stage-0", "stage-1", "stage-2"]}
+              >
+                <span className={styles.presetsOptionsLabel}>
+                  Legacy decorators
+                </span>
+                <input
+                  checked={presetsOptions.decoratorsLegacy}
+                  className={styles.envPresetCheckbox}
+                  type="checkbox"
+                  onChange={this._onPresetOptionChange(
+                    "decoratorsLegacy",
+                    t => t.checked
+                  )}
+                />
+              </PresetOption>
+              <PresetOption
+                className={styles.presetsOptionsRow}
+                option="decoratorsBeforeExport"
+                presets={["stage-0", "stage-1", "stage-2"]}
+                comment="Only works when legacy decorators are not enabled"
+                enabled={!presetsOptions.decoratorsLegacy}
+              >
+                <span className={styles.presetsOptionsLabel}>
+                  Decorators before <code>export</code>
+                </span>
+                <input
+                  enabled={!presetsOptions.decoratorsLegacy}
+                  checked={
+                    !presetsOptions.decoratorsLegacy &&
+                    presetsOptions.decoratorsBeforeExport
+                  }
+                  className={styles.envPresetCheckbox}
+                  type="checkbox"
+                  onChange={this._onPresetOptionChange(
+                    "decoratorsBeforeExport",
+                    t => t.checked
+                  )}
+                />
+              </PresetOption>
             </AccordionTab>
             <AccordionTab
               className={`${styles.section} ${styles.sectionEnv}`}
@@ -550,6 +635,12 @@ class ExpandedContainer extends Component<Props, State> {
     this.props.onSettingChange(type, event.target.checked);
   };
 
+  _onPresetOptionChange = (type: string, getValue: (target: *) => *) => (
+    event: SyntheticInputEvent<*>
+  ) => {
+    this.props.onPresetOptionChange(type, getValue(event.target));
+  };
+
   _pluginNameChanged = value => {
     this.props.pluginSearch(value);
   };
@@ -789,6 +880,23 @@ const styles = {
     fontSize: "0.75rem",
     fontWeight: "bold",
     color: colors.inverseForeground,
+  }),
+  presetsOptionsTitle: css({
+    margin: "0 -0.5rem",
+    padding: "0.5rem 1rem 0.25rem",
+  }),
+  presetsOptionsRow: css({
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    flex: "0 0 auto",
+    margin: "0.5rem",
+  }),
+  presetsOptionsLabel: css({
+    flex: 1,
+  }),
+  presetsOptionsDisabled: css({
+    opacity: 0.5,
   }),
   settingsLabel: css({
     alignItems: "center",
