@@ -222,7 +222,7 @@ The case has been changed: `jsx` and `ts` are now in lowercase.
 + t.jsxIdentifier()
 ```
 
-In general, we have differentiated the ndoe types with `TypeAnnotation` for Flow and `TSTypeAnnotation` for TypeScript so for the shared type nodes, TypeScript has a `TS` prefix.
+In general, we have differentiated the node types with `TypeAnnotation` for Flow and `TSTypeAnnotation` for TypeScript so for the shared type nodes, TypeScript has a `TS` prefix.
 
 ### `.expression` field removed from `ArrowFunctionExpression`
 
