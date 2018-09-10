@@ -102,7 +102,7 @@ npx babel src --out-file script-compiled.js
 Ignore spec and test files
 
 ```sh
-npx babel src --out-dir lib --ignore spec.js,test.js
+npx babel src --out-dir lib --ignore "src/**/*.spec.js","src/**/*.test.js"
 ```
 
 ### Copy files
