@@ -173,7 +173,7 @@ Enable ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.htm
 
 ### `modules`
 
-`"amd" | "umd" | "systemjs" | "commonjs" | "cjs" | false`, defaults to `"commonjs"`.
+`"amd" | "umd" | "systemjs" | "commonjs" | "cjs" | false`, defaults to `"commonjs"` or `false` depending on [`supportsStaticESM` flag](https://babeljs.io/docs/en/options#caller) passed by API caller. E.g. it's `false` by default when using `babel-loader`.
 
 Enable transformation of ES6 module syntax to another module type.
 
