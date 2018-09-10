@@ -59,6 +59,7 @@
     "babel-parser": "babel-parser",
     "babel-plugin-external-helpers": "@babel/plugin-external-helpers",
     "external-helpers": "external-helpers",
+    "plugin-handbook": "Plugin Handbook",
     "babel-plugin-minify-builtins": "babel-plugin-minify-builtins",
     "minify-builtins": "minify-builtins",
     "babel-plugin-minify-constant-folding": "babel-plugin-minify-constant-folding",
@@ -398,6 +399,7 @@
     "babel-traverse": "babel-traverse",
     "babel-types": "babel-types",
     "usage": "Usage Guide",
+    "user-handbook": "User Handbook",
     "v7-migration-api": "Upgrade to Babel 7 (API)",
     "v7-migration": "Upgrade to Babel 7",
     "Docs": "Docs",
@@ -409,6 +411,7 @@
     "GitHub": "GitHub",
     "Guides": "Guides",
     "General": "General",
+    "Handbook": "Handbook",
     "Usage": "Usage",
     "Presets": "Presets",
     "Tooling": "Tooling"

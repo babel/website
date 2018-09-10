@@ -16,6 +16,10 @@
       "faq",
       "roadmap"
     ],
+    "Handbook": [
+      "user-handbook",
+      "plugin-handbook"
+    ],
     "Usage": [
       "options",
       "config-files",
