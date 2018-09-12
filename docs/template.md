@@ -1,7 +1,7 @@
 ---
 id: babel-template
 title: @babel/template
-sidebar_label: babel-template
+sidebar_label: template
 ---
 
 In computer science, this is known as an implementation of quasiquotes.

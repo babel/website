@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-helper-simple-access
 title: @babel/helper-simple-access
-sidebar_label: babel-helper-simple-access
+sidebar_label: helper-simple-access
 original_id: babel-helper-simple-access
 ---
 

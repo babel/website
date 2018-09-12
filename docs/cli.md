@@ -1,7 +1,7 @@
 ---
 id: babel-cli
 title: @babel/cli
-sidebar_label: babel-cli
+sidebar_label: cli
 ---
 
 Babel comes with a built-in CLI which can be used to compile files from the command line.

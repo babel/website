@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-generator
 title: @babel/generator
-sidebar_label: babel-generator
+sidebar_label: generator
 original_id: babel-generator
 ---
 

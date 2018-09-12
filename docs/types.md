@@ -1,7 +1,7 @@
 ---
 id: babel-types
 title: @babel/types
-sidebar_label: babel-types
+sidebar_label: types
 ---
 
 ## Install

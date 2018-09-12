@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-runtime
 title: @babel/runtime
-sidebar_label: babel-runtime
+sidebar_label: runtime
 original_id: babel-runtime
 ---
 

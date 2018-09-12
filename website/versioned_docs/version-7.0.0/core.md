@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-core
 title: @babel/core
-sidebar_label: babel-core
+sidebar_label: core
 original_id: babel-core
 ---
 

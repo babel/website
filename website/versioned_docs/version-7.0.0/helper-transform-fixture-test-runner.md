@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-helper-transform-fixture-test-runner
 title: @babel/helper-transform-fixture-test-runner
-sidebar_label: babel-helper-transform-fixture-test-runner
+sidebar_label: helper-transform-fixture-test-runner
 original_id: babel-helper-transform-fixture-test-runner
 ---
 

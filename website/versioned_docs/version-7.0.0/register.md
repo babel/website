@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-register
 title: @babel/register
-sidebar_label: babel-register
+sidebar_label: register
 original_id: babel-register
 ---
 

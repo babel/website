@@ -1,7 +1,7 @@
 ---
 id: babel-traverse
 title: @babel/traverse
-sidebar_label: babel-traverse
+sidebar_label: traverse
 ---
 
 ## Install

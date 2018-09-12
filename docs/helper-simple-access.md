@@ -1,7 +1,7 @@
 ---
 id: babel-helper-simple-access
 title: @babel/helper-simple-access
-sidebar_label: babel-helper-simple-access
+sidebar_label: helper-simple-access
 ---
 
 to a given variable, and there are cases like

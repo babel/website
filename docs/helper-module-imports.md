@@ -1,7 +1,7 @@
 ---
 id: babel-helper-module-imports
 title: @babel/helper-module-imports
-sidebar_label: babel-helper-module-imports
+sidebar_label: helper-module-imports
 ---
 
 ```sh

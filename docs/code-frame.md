@@ -1,7 +1,7 @@
 ---
 id: babel-code-frame
 title: @babel/code-frame
-sidebar_label: babel-code-frame
+sidebar_label: code-frame
 ---
 
 ## Install

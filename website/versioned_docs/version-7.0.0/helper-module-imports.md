@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-helper-module-imports
 title: @babel/helper-module-imports
-sidebar_label: babel-helper-module-imports
+sidebar_label: helper-module-imports
 original_id: babel-helper-module-imports
 ---
 

@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-template
 title: @babel/template
-sidebar_label: babel-template
+sidebar_label: template
 original_id: babel-template
 ---
 

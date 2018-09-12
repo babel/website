@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-helper-fixtures
 title: @babel/helper-fixtures
-sidebar_label: babel-helper-fixtures
+sidebar_label: helper-fixtures
 original_id: babel-helper-fixtures
 ---
 

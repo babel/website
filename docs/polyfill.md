@@ -1,7 +1,7 @@
 ---
 id: babel-polyfill
 title: @babel/polyfill
-sidebar_label: babel-polyfill
+sidebar_label: polyfill
 ---
 
 Babel includes a [polyfill](https://en.wikipedia.org/wiki/Polyfill_(programming)) that includes a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) and [core-js](https://github.com/zloirock/core-js).

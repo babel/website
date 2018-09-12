@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-polyfill
 title: @babel/polyfill
-sidebar_label: babel-polyfill
+sidebar_label: polyfill
 original_id: babel-polyfill
 ---
 

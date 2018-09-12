@@ -1,7 +1,7 @@
 ---
 id: babel-helpers
 title: @babel/helpers
-sidebar_label: babel-helpers
+sidebar_label: helpers
 ---
 
 ## Install
