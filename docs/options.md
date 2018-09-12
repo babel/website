@@ -131,11 +131,47 @@ Type: `string`<br />
 Default: `opts.cwd`<br />
 Placement: Only allowed in Babel's programmatic options<br />
 
-The path of the conceptual root package for the current Babel project.
+The initial path that will be processed based on the [`"rootMode"`](#rootmode)
+to determine the conceptual root folder for the current Babel project.
 This is used in two primary cases:
 
 * The base directory when checking for the default [`"configFile"`](#configfile) value
 * The default value for [`"babelrcRoots"`](#babelrcroots).
+
+
+### `rootMode`
+
+Type: `"root" | "upward" | "upward-optional"`<br />
+Default: `"root"`<br />
+Placement: Only allowed in Babel's programmatic options<br />
+Version: `^7.1.0`
+
+This option, combined with the [`"root"`](#root) value, defines how Babel
+chooses its project root. The different modes define different ways that
+Babel can process the [`"root"`](#root) value to get the final project root.
+
+* `"root"` - Passes the [`"root"`](#root) value through as unchanged.
+* `"upward"` - Walks upward from the [`"root"`](#root) directory, looking
+  for a directory containing a [`babel.config.js`](config-files.md#project-wide-configuration)
+  file, and throws an error if a [`babel.config.js`](config-files.md#project-wide-configuration)
+  is not found.
+* `"upward-optional"` - Walk upward from the [`"root"`](#root) directory,
+  looking for a directory containing a [`babel.config.js`](config-files.md#project-wide-configuration)
+  file, and falls back to [`"root"`](#root) if a [`babel.config.js`](config-files.md#project-wide-configuration)
+  is not found.
+
+`"root"` is the default mode because it avoids the risk that Babel will
+accidentally load a `babel.config.js` that is entirely outside of the current
+project folder. If you use `"upward-optional"`, be aware that it will walk up the
+directory structure all the way to the filesystem root, and it is always
+possible that someone will have a forgotten `babel.config.js` in their home
+directory, which could cause unexpected errors in your builds.
+
+Users with monorepo project structures that run builds/tests on a per-package basis
+may well want to use `"upward"` since monorepos often have a [`babel.config.js`](config-files.md#project-wide-configuration)
+in the project root. Running Babel in a monorepo subdirectory without `"upward"`,
+will cause Babel to skip loading any [`babel.config.js`](config-files.md#project-wide-configuration)
+files in the project root, which can lead to unexpected errors and compilation failure.
 
 
 ### `envName`
