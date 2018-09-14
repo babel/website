@@ -8,8 +8,6 @@ categories: announcements
 share_text: "TC39 Standards-track Decorators in Babel"
 ---
 
-> TODO: Better title. Help pls :pray:
-
 Babel 7.1.0 finally supports the new decorators proposal: you can try it out by using the `@babel/plugin-proposal-decorators` plugin 🎉.
 
 <!--truncate-->
