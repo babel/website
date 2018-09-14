@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-code-frame
 title: @babel/code-frame
-sidebar_label: babel-code-frame
+sidebar_label: code-frame
 original_id: babel-code-frame
 ---
 

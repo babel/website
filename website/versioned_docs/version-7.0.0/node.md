@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-node
 title: @babel/node
-sidebar_label: babel-node
+sidebar_label: node
 original_id: babel-node
 ---
 

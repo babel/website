@@ -1,7 +1,7 @@
 ---
 id: babel-standalone
 title: @babel/standalone
-sidebar_label: babel-standalone
+sidebar_label: standalone
 ---
 
 

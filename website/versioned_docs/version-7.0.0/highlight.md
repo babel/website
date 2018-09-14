@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-highlight
 title: @babel/highlight
-sidebar_label: babel-highlight
+sidebar_label: highlight
 original_id: babel-highlight
 ---
 

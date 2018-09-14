@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-helper-plugin-test-runner
 title: @babel/helper-plugin-test-runner
-sidebar_label: babel-helper-plugin-test-runner
+sidebar_label: helper-plugin-test-runner
 original_id: babel-helper-plugin-test-runner
 ---
 

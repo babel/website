@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-standalone
 title: @babel/standalone
-sidebar_label: babel-standalone
+sidebar_label: standalone
 original_id: babel-standalone
 ---
 

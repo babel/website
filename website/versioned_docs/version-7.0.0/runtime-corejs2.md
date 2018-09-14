@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-runtime-corejs2
 title: @babel/runtime-corejs2
-sidebar_label: babel-runtime-corejs2
+sidebar_label: runtime-corejs2
 original_id: babel-runtime-corejs2
 ---
 

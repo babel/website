@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-helper-builder-react-jsx
 title: @babel/helper-builder-react-jsx
-sidebar_label: babel-helper-builder-react-jsx
+sidebar_label: helper-builder-react-jsx
 original_id: babel-helper-builder-react-jsx
 ---
 

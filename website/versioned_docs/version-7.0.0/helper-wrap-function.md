@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-helper-wrap-function
 title: @babel/helper-wrap-function
-sidebar_label: babel-helper-wrap-function
+sidebar_label: helper-wrap-function
 original_id: babel-helper-wrap-function
 ---
 

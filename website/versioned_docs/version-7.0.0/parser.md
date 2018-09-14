@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-parser
 title: @babel/parser
-sidebar_label: babel-parser
+sidebar_label: parser
 original_id: babel-parser
 ---
 

@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-helper-annotate-as-pure
 title: @babel/helper-annotate-as-pure
-sidebar_label: babel-helper-annotate-as-pure
+sidebar_label: helper-annotate-as-pure
 original_id: babel-helper-annotate-as-pure
 ---
 

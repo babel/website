@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-helpers
 title: @babel/helpers
-sidebar_label: babel-helpers
+sidebar_label: helpers
 original_id: babel-helpers
 ---
 

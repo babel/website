@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-types
 title: @babel/types
-sidebar_label: babel-types
+sidebar_label: types
 original_id: babel-types
 ---
 

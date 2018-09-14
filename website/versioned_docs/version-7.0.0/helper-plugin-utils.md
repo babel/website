@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-helper-plugin-utils
 title: @babel/helper-plugin-utils
-sidebar_label: babel-helper-plugin-utils
+sidebar_label: helper-plugin-utils
 original_id: babel-helper-plugin-utils
 ---
 

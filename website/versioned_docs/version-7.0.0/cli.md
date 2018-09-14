@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-cli
 title: @babel/cli
-sidebar_label: babel-cli
+sidebar_label: cli
 original_id: babel-cli
 ---
 

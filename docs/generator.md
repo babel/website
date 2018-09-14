@@ -1,7 +1,7 @@
 ---
 id: babel-generator
 title: @babel/generator
-sidebar_label: babel-generator
+sidebar_label: generator
 ---
 
 ## Install

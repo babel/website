@@ -1,7 +1,7 @@
 ---
 id: version-7.0.0-babel-traverse
 title: @babel/traverse
-sidebar_label: babel-traverse
+sidebar_label: traverse
 original_id: babel-traverse
 ---
 
