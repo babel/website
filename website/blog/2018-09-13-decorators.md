@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Article about Decorators"
+title:  "TC39 Standards-track Decorators in Babel"
 author: Nicolò Ribaudo
 authorURL: https://twitter.com/NicoloRibaudo
 date:   2018-09-13 23:00:00
 categories: announcements
-share_text: "Article about Decorators"
+share_text: "TC39 Standards-track Decorators in Babel"
 ---
 
 > TODO: Better title. Help pls :pray:
@@ -16,20 +16,20 @@ Babel 7.1.0 finally supports the new decorators proposal: you can try it out by 
 
 ## A bit of history
 
-Decorators where [first proposed](https://github.com/wycats/javascript-decorators/blob/696232bbd997618d603d6577848d635872f25c43/README.md) by [Yehuda Kats](https://github.com/wycats) more than three years ago. They have been implemented in TypeScript, which released support for decorators in [version 1.5](https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#typescript-15) (2015) alongside with many ES6 features: modules, destructuring, `let`/`const`, `for ... of` and computed properties.
-Some major frameworks, like Angular and MobX, started using them to enhance their user experience: this made decorators popular and give the community a false sense of stability.
+Decorators were [first proposed](https://github.com/wycats/javascript-decorators/blob/696232bbd997618d603d6577848d635872f25c43/README.md) by [Yehuda Kats](https://github.com/wycats) more than three years ago. TypeScript released support for decorators in [version 1.5](https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#typescript-15) (2015) alongside with many ES6 features: modules, destructuring, `let`/`const`, `for ... of` and computed properties.
+Some major frameworks, like Angular and MobX, started using them to enhance their developer experience: this made decorators popular and gave the community a false sense of stability.
 
 Babel first implemented decorators in [version 5](https://github.com/babel/babel/blob/master/.github/CHANGELOG-v5.md#500), but they had been removed in Babel 6 because the proposal was still in flux. Logan Smyth created an unofficial plugin ([`babel-plugin-transform-decorators-legacy`](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy)) which replicated the Babel 5 behavior; it has then been moved to the official Babel repository during the first Babel 7 alpha release. This plugin still used the old decorators semantics, because it wasn't clear yet what the new proposal would have been.
 
-Since then, after that [Daniel Ehrenberg](https://github.com/littledan) and [Brian Terlson](https://github.com/bterlson) become co-authors of the proposal, it has been almost completely rewritten. Not everything has been decided yet, and there isn't a compliant implementation as of today.
+Since then, after that [Daniel Ehrenberg](https://github.com/littledan) and [Brian Terlson](https://github.com/bterlson) become co-authors of the proposal along with [Yehuda Katz](https://github.com/wycats), it has been almost completely rewritten. Not everything has been decided yet, and there isn't a compliant implementation as of today.
 
 Babel 7.0.0 introduced a new flag to the `@babel/plugin-proposal-decorators` plugin: the `legacy` option, whose only valid value was `true`. This breaking change was needed to provide a smooth transition path from the stage 1 version of the proposal to the current one.
 In Babel 7.1.0 we are introducing support for this new proposal, and it is enabled by default when using the `@babel/plugin-proposal-decorators` plugin. If we didn't introduce the `legacy: true` option in Babel 7.0.0, it wouldn't be possible to use the correct semantics by default (which would be equivalent to `legacy: false`).
-This new proposal also supports decorators on private fields and methods. We haven't implemented this featue yet in Babel (for each class, you can use either decorators or private elements), but it will come very soon.
+This new proposal also supports decorators on private fields and methods. We haven't implemented this feature yet in Babel (for each class, you can use either decorators or private elements), but it will come very soon.
 
 ## What changed in the new proposal?
 
-Even thougt the new proposal looks very similar to the old one, there are several important differences which make the two versions completely incompatible with each other.
+Even though the new proposal looks very similar to the old one, there are several important differences which make the two versions completely incompatible with each other.
 
 ### Syntax
 
@@ -111,7 +111,7 @@ These questions need further discussion before being resolved, and that's where 
 
 ## The role of Babel
 
-As already stated in the «[What's Happening With the Pipeline (|>) Proposal?](http://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal)» article, with the Babel 7 release we are starting to use our position in the JS ecosystem to help proposal authors even more, by giving developers the ability to test and give feedback about different variations of the proposals.
+Following the trend in the «[What's Happening With the Pipeline (|>) Proposal?](http://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal)» article, with the Babel 7 release we are starting to use our position in the JS ecosystem to help proposal authors even more, by giving developers the ability to test and give feedback about different variations of the proposals.
 
 For this reason, alongside with the update of `@babel/plugin-proposal-decorators` we introduced a new option: `decoratorsBeforeExport`, which allows users to try both `export @decorator class C {}` and `@decorator export default class`. We will also introduce an option to customize the privacy constraint of decorated private elements. These options will be required until TC39 folks make a decision about them, so that we can let the default behavior be whatever the final proposal will specify.
 
