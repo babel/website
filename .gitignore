@@ -27,4 +27,7 @@ yarn-error.log*
 # generated using scripts/download-sponsors.json
 website/data/sponsors.json
 
+website/i18n/*
+website/translated_docs
+
 package-lock.json
