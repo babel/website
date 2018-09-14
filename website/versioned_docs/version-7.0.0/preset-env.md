@@ -150,7 +150,7 @@ If you want to compile against the current node version, you can specify `"node"
 
 If you want to compile against the [technology preview](https://developer.apple.com/safari/technology-preview/) version of Safari, you can specify `"safari": "tp"`.
 
-#### `targets.browser`
+#### `targets.browsers`
 
 `string | Array<string>`.
 
