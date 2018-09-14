@@ -19,7 +19,7 @@ Some major frameworks, like Angular and MobX, started using them to enhance thei
 
 Babel first implemented decorators in [version 5](https://github.com/babel/babel/blob/master/.github/CHANGELOG-v5.md#500), but they had been removed in Babel 6 because the proposal was still in flux. Logan Smyth created an unofficial plugin ([`babel-plugin-transform-decorators-legacy`](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy)) which replicated the Babel 5 behavior; it has then been moved to the official Babel repository during the first Babel 7 alpha release. This plugin still used the old decorators semantics, because it wasn't clear yet what the new proposal would have been.
 
-Since then, after that [Daniel Ehrenberg](https://github.com/littledan) and [Brian Terlson](https://github.com/bterlson) become co-authors of the proposal along with [Yehuda Katz](https://github.com/wycats), it has been almost completely rewritten. Not everything has been decided yet, and there isn't a compliant implementation as of today.
+Since then, [Daniel Ehrenberg](https://github.com/littledan) and [Brian Terlson](https://github.com/bterlson) become co-authors of the proposal along with [Yehuda Katz](https://github.com/wycats), it has been almost completely rewritten. Not everything has been decided yet, and there isn't a compliant implementation as of today.
 
 Babel 7.0.0 introduced a new flag to the `@babel/plugin-proposal-decorators` plugin: the `legacy` option, whose only valid value was `true`. This breaking change was needed to provide a smooth transition path from the stage 1 version of the proposal to the current one.
 In Babel 7.1.0 we are introducing support for this new proposal, and it is enabled by default when using the `@babel/plugin-proposal-decorators` plugin. If we didn't introduce the `legacy: true` option in Babel 7.0.0, it wouldn't be possible to use the correct semantics by default (which would be equivalent to `legacy: false`).
@@ -27,7 +27,7 @@ This new proposal also supports decorators on private fields and methods. We hav
 
 ## What changed in the new proposal?
 
-Even though the new proposal looks very similar to the old one, there are several important differences which make the two versions completely incompatible with each other.
+Even though the new proposal looks very similar to the old one, there are several important differences that make them incompatible.
 
 ### Syntax
 
@@ -113,7 +113,7 @@ Following the trend in the «[What's Happening With the Pipeline (|>) Proposal?]
 
 For this reason, alongside with the update of `@babel/plugin-proposal-decorators` we introduced a new option: `decoratorsBeforeExport`, which allows users to try both `export @decorator class C {}` and `@decorator export default class`. We will also introduce an option to customize the privacy constraint of decorated private elements. These options will be required until TC39 folks make a decision about them, so that we can let the default behavior be whatever the final proposal will specify.
 
-If you are directly using our parser ([`@babel/parser`](https://babeljs.io/docs/en/next/babel-parser.html), formerly `babylon`) you could already use the `decoratorsBeforeExport` option in version 7.0.0:
+If you are directly using our parser ([`@babel/parser`](https://babeljs.io/docs/en/next/babel-parser.html), formerly `babylon`) you can already use the `decoratorsBeforeExport` option in version 7.0.0:
 
 ```javascript=
 const ast = babylon.parse(code, {
@@ -125,7 +125,7 @@ const ast = babylon.parse(code, {
 
 ## Your role
 
-As a JavaScript developer, you can help to outline the future of the language. You can test the various semantics which are being considered for decorators, and give feedback to the proposal authors. We need to know how you are using them in real-life projects!
+As a JavaScript developer, you can help outline the future of the language. You can test the various semantics which are being considered for decorators, and give feedback to the proposal authors. We need to know how you are using them in real-life projects!
 You can also find out why some design decisions were taken by reading the discussions in the issues and the meeting notes in the [proposal's repository](https://github.com/tc39/proposal-decorators).
 
 If you want to try out decorators right now, you can play with the different presets options in our [repl](https://babeljs.io/repl/build/master)!
