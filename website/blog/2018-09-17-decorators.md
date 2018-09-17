@@ -14,7 +14,7 @@ Babel 7.1.0 finally supports the new decorators proposal: you can try it out by 
 
 ## A Bit of History
 
-Decorators were [first proposed](https://github.com/wycats/javascript-decorators/blob/696232bbd997618d603d6577848d635872f25c43/README.md) by [Yehuda Katz](https://github.com/wycats) more than three years ago. TypeScript released support for decorators in [version 1.5](https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#typescript-15) (2015) alongside with many ES6 features: modules, destructuring, `let`/`const`, `for ... of` and computed properties.
+Decorators were [first proposed](https://github.com/wycats/javascript-decorators/blob/696232bbd997618d603d6577848d635872f25c43/README.md) by [Yehuda Katz](https://github.com/wycats) more than three years ago. TypeScript released support for decorators in [version 1.5](https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#typescript-15) (2015) alongside with many ES6 features.
 Some major frameworks, like Angular and MobX, started using them to enhance their developer experience: this made decorators popular and gave the community a false sense of stability.
 
 Babel first implemented decorators in [version 5](https://github.com/babel/babel/blob/master/.github/CHANGELOG-v5.md#500), but removed them in Babel 6 because the proposal was still in flux. [Logan Smyth](https://github.com/loganfsmyth) created an unofficial plugin ([`babel-plugin-transform-decorators-legacy`](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy)) which replicated the Babel 5 behavior; it has since then been moved to the official Babel repository during the first Babel 7 alpha release. This plugin still used the old decorators semantics, because it wasn't clear yet what the new proposal would have been.
@@ -33,7 +33,7 @@ Even though the new proposal looks very similar to the old one, there are severa
 
 ### Syntax
 
-The old proposal allowed any valid left-hand side expression to be used as the body of a decorator. For example, this was valid code:
+The old proposal allowed any valid left-hand side expression (literals, function and class expressions, `new` expressions and function calls, simple and computed property accesses) to be used as the body of a decorator. For example, this was valid code:
 
 ```javascript=
 class MyClass {
