@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "TC39 Standards-track Decorators in Babel"
+title:  "TC39 Standards Track Decorators in Babel"
 author: Nicolò Ribaudo
 authorURL: https://twitter.com/NicoloRibaudo
 date:   2018-09-17 12:00:00
 categories: announcements
-share_text: "TC39 Standards-track Decorators in Babel"
+share_text: "TC39 Standards Track Decorators in Babel"
 ---
 
 Babel 7.1.0 finally supports the new decorators proposal: you can try it out by using the [`@babel/plugin-proposal-decorators`](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) plugin 🎉.
@@ -129,6 +129,22 @@ const ast = babylon.parse(code, {
   ]
 })
 ```
+
+### Usage
+
+For usage in Babel itself:
+
+```sh
+npm install @babel/plugin-proposal-decorators --save-dev
+```
+
+```json
+{
+  "plugins": ["@babel/plugin-proposal-decorators"]
+}
+```
+
+Check the [`@babel/plugin-proposal-decorators`](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) docs for more options.
 
 ## Your Role
 
