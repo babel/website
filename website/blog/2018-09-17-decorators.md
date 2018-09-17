@@ -114,7 +114,7 @@ These questions need further discussion before being resolved, and that's where 
 
 ## The Role of Babel
 
-Following the trend in the «[What's Happening With the Pipeline (|>) Proposal?](http://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal)» article, with the Babel 7 release we are starting to use our position in the JS ecosystem to help proposal authors even more, by giving developers the ability to test and give feedback about different variations of the proposals.
+Following the trend in the [What's Happening With the Pipeline (|>) Proposal?](http://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) article, with the Babel 7 release we are starting to use our position in the JS ecosystem to help proposal authors even more, by giving developers the ability to test and give feedback about different variations of the proposals.
 
 For this reason, alongside with the update of `@babel/plugin-proposal-decorators` we introduced a new option: `decoratorsBeforeExport`, which allows users to try both `export @decorator class C {}` and `@decorator export default class`.
 
