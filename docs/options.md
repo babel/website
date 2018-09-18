@@ -17,6 +17,12 @@ Options can be passed to Babel in a variety of ways. When passed directly to Bab
 you can just pass the objects object. When Babel is used via a wrapper, it may also be
 necessary, or at least more useful, to pass the options via [configuration files](config-files.md).
 
+If passing options via `@babel/cli` you'll need to `kebab-case` the names. i.e.
+
+```
+npx babel --root-mode upward file.js # equivalent of passing the rootMode config option
+```
+
 ## Primary options
 
 These options are only allowed as part of Babel's programmatic options, so
