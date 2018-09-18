@@ -7,20 +7,6 @@ const siteConfig = require(process.cwd() + "/siteConfig.js");
 
 class Users extends React.Component {
   render() {
-    const showcase = siteConfig.users.map((user, i) => {
-      return (
-        <div className="babel-user" key={i}>
-          <a className="babel-user-link" href={user.infoLink}>
-            <img
-              className="babel-user-logo"
-              src={user.image}
-              title={user.caption}
-            />
-          </a>
-        </div>
-      );
-    });
-
     return (
       <div className="mainContainer">
         <Container padding={["bottom"]}>
@@ -34,25 +20,36 @@ class Users extends React.Component {
                 organizations 🙂
               </p>
             </div>
-            <hr />
-            <div className="logos">{showcase}</div>
+            <div className="hr">
+              <span>Who&#39;s Using</span>
+            </div>
+            <div
+              className="users"
+              data-users={JSON.stringify(siteConfig.users)}
+            />
             <hr />
             <div className="prose">
               <p>
-                Are you using this project? Please submit a logo of 500x200
-                (2.5x1) run through{" "}
-                <a href="https://jakearchibald.github.io/svgomg/">SVGO</a>
+                Are you using this project?
+                <a
+                  href="https://build.amsterdam/your-company/babel"
+                  target="_blank"
+                  className="button"
+                >
+                  Add your company
+                </a>
+                or submit a{" "}
+                <a
+                  href="https://github.com/babel/website/edit/master/website/data/users.js"
+                  target="_blank"
+                >
+                  Pull Request
+                </a>{" "}
+                manually.
               </p>
-              <p>And give us a shout on what you love about Babel!</p>
-              <br />
-              <a
-                href="https://github.com/babel/website/edit/master/website/data/users.yml"
-                className="button"
-              >
-                Submit a Pull Request!
-              </a>
             </div>
           </div>
+          <script src="/js/build/users.js" />
         </Container>
       </div>
     );
