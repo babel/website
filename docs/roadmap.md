@@ -6,9 +6,9 @@ sidebar_label: Roadmap
 
 > Not everything is set in stone or has an issue for it! Looking to post these to get more people involved or integrate with other projects.
 
-## Babel 7
+## Babel 7.x
 
-Mentioned these in [babel/notes](https://github.com/babel/notes/blob/master/2017/2017-12/dec-21.md#before-the-v7-final) and some of the [high priority items](https://github.com/babel/babel/labels/Priority%3A%20High).
+TODO
 
 ## Ecosystem
 
@@ -132,23 +132,17 @@ Better set of tests for stability/spec compliancy.
 - Validate config better
 - Create/expand on new tools like https://github.com/boopathi/babel-time-travel
 
-### Speed
-
-> Already working with v8 via https://github.com/v8/web-tooling-benchmark, but can add other representative workloads: jsx/flow/ts/es6+.
-
-Can run these benchmarks for perf PRs, should track some over time.
-
 ### Website Rehaul
 
-- Use a blog framework like Gatsby/Docusaurus
-- Versioned docs pages: currently we don't have an easy way to show both the documentation for v6, v7, and beyond.
-- Translatable docs
+- [x] Use Docusaurus
+- [x] Versioned docs pages: currently we don't have an easy way to show both the documentation for v6, v7, and beyond.
+- [ ] Translatable docs
 
 #### Expanded Docs
 
 - Real documentation on APIs
 - Up to date babel-handbook/merge into rehauled website
-- Continue our [videos page](https://babeljs.io/docs/community/videos/)
+- [x] Continue our [videos page](https://babeljs.io/docs/community/videos/)
 - Link to common errors pages
 
 #### Better REPL
