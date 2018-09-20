@@ -80,6 +80,27 @@ The new decorators proposal is much more powerful: element decorators take an ob
 
 Class decorators take an object which contains the descriptors of every single class element, making it possible to modify them before creating the class.
 
+### Upgrading
+
+Given these incompatibilities, it is not possible to use existing decorators with the new proposal: this would make the migration very slow, since existing libraries (MobX, Angular, etc.) can't be upgraded without introducing breaking changes.
+To workaround this issue, we have published an utility package which wraps the decorators in your code. After running it,
+you can safely change your Babel config to use the new proposal 🎉.
+
+You can upgrade your files using a one-liner:
+
+```shell=
+npx wrap-legacy-decorators src/file-with-decorators.js --decorators-before-export --write
+```
+
+If your code only runs in Node, or if you are bundling your code with Webpack or Rollup, you can avoid injecting the wrapper function in each file by using an external dependency:
+
+```shell=
+npm install --save decorators-compat
+npx wrap-legacy-decorators src/file-with-decorators.js --decorators-before-export --external-helpers --write
+```
+
+For more information, you can read [the package documentation](https://github.com/nicolo-ribaudo/legacy-decorators-migration-utility).
+
 ## Open Questions
 
 Not everything has been decided yet: decorators are a very big feature and defining them in the best possible way is complex.
@@ -140,7 +161,7 @@ npm install @babel/plugin-proposal-decorators --save-dev
 
 ```json
 {
-  "plugins": ["@babel/plugin-proposal-decorators"]
+  "plugins": ["@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true }]
 }
 ```
 
