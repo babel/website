@@ -223,9 +223,19 @@ const OpenCollectiveSponsors = ({ language }) => {
         <div className="sponsor-tiers" id="sponsors">
           <SponsorTier
             type="opencollective"
+            title="Base Support Sponsors"
+            tier="base-support-sponsor"
+          />
+          <SponsorTier
+            type="opencollective"
             title="Gold Sponsors (Open Collective)"
             tier="gold-sponsors"
             button={ocButton}
+          />
+          <SponsorTier
+            type="other"
+            title="Misc Sponsors"
+            tier="other-sponsors"
           />
           <SponsorTier
             type="patreon"
@@ -244,11 +254,6 @@ const OpenCollectiveSponsors = ({ language }) => {
             title="Silver Sponsors (Patreon)"
             tier="silver-sponsors"
             button={patreonButton}
-          />
-          <SponsorTier
-            type="other"
-            title="Misc Sponsors"
-            tier="other-sponsors"
           />
         </div>
       </div>
