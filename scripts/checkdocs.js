@@ -12,7 +12,7 @@ sgf.includeContent = true;
 // Even though we don't care for renamed files, 'R' in filter
 // is needed to recognize them as renamed instead of deleted + added
 sgf("AMR", function(err, results) {
-  const version = "7.0.0";
+  const version = "7.1.0";
   const versionFolder = `website/versioned_docs/version-${version}/`;
 
   const versionedDocs = {};
