@@ -99,7 +99,7 @@ module.exports = { presets, plugins };
 babel --plugins @babel/plugin-transform-arrow-functions script.js
 ```
 
-Checkout the [babel-cli documentation](babel-cli.md) to see more configuration options.
+Checkout the [babel-cli documentation](cli.md) to see more configuration options.
 
 ## Using the API (`@babel/core`)
 
@@ -109,4 +109,4 @@ require("@babel/core").transform("code", {
 });
 ```
 
-Checkout the [babel-core documentation](babel-core.md) to see more configuration options.
+Checkout the [babel-core documentation](core.md) to see more configuration options.

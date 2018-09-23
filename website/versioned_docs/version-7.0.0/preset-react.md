@@ -106,7 +106,7 @@ Toggles whether or not to throw an error if a XML namespaced tag name is used. F
 
 Though the JSX spec allows this, it is disabled by default since React's JSX does not currently have support for it.
 
-#### babelrc.js
+#### .babelrc.js
 
 ```js
 module.exports = {
