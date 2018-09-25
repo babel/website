@@ -38,7 +38,7 @@ module.exports = function () {
 }
 ```
 
-Checkout the [`babel.config.js` documentation](config-files.md#project-wide-configuration) to see more configuration options.
+Check out the [`babel.config.js` documentation](config-files.md#project-wide-configuration) to see more configuration options.
 
 ## `.babelrc`
 
@@ -51,7 +51,7 @@ Create a file called `.babelrc` with the following content in your project.
 }
 ```
 
-Checkout the [.babelrc documentation](config-files.md#file-relative-configuration) to see more configuration options.
+Check out the [.babelrc documentation](config-files.md#file-relative-configuration) to see more configuration options.
 
 ### `package.json`
 
@@ -70,7 +70,7 @@ Alternatively, you can choose to specify your [`.babelrc`](#babelrc) config from
 
 ### `.babelrc.js`
 
-The configuration is the same than [`.babelrc`](#babelrc), apart than you can write it using JavaScript.
+The configuration is the same as [`.babelrc`](#babelrc), but you can write it using JavaScript.
 
 ```js
 const presets = [ ... ];
@@ -98,7 +98,7 @@ module.exports = { presets, plugins };
 babel --plugins @babel/plugin-transform-arrow-functions script.js
 ```
 
-Checkout the [babel-cli documentation](cli.md) to see more configuration options.
+Check out the [babel-cli documentation](cli.md) to see more configuration options.
 
 ## Using the API (`@babel/core`)
 
@@ -108,4 +108,4 @@ require("@babel/core").transform("code", {
 });
 ```
 
-Checkout the [babel-core documentation](core.md) to see more configuration options.
+Check out the [babel-core documentation](core.md) to see more configuration options.
