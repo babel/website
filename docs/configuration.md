@@ -79,7 +79,7 @@ const plugins = [ ... ];
 module.exports = { presets, plugins };
 ```
 
-You are allowed to access any Node.js API, for example a dynamic configuration based on the process environment:
+You are allowed to access any Node.js APIs, for example a dynamic configuration based on the process environment:
 
 ```js
 const presets = [ ... ];
