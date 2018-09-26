@@ -2664,6 +2664,19 @@ Aliases: `TSType`
 
 ---
 
+### tSUnknownType
+```javascript
+t.tsUnknownType(types)
+```
+
+See also `t.isTSUnknownType(node, opts)` and `t.assertTSUnknownType(node, opts)`.
+
+Aliases: `TSType`
+
+ - `types`: `Array<TSType>` (required)
+
+---
+
 ### tSVoidKeyword
 ```javascript
 t.tsVoidKeyword()
