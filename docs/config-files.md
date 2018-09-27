@@ -146,7 +146,7 @@ there is that it makes caching harder. Babel wants to avoid re-executing the
 config function every time a file is compiled, because then it would also need to
 re-execute any plugin and preset functions referenced in that config.
 
-The avoid this, Babel expects users of config functions to tell it how to manage
+To avoid this, Babel expects users of config functions to tell it how to manage
 caching within a config file.
 
 * `api.cache.forever()` - Permacache the computed config and never call the function again.
