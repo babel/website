@@ -18,6 +18,12 @@ See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
 This just means Babel *itself* won't run on older versions of Node. It can still *output* code that runs on old Node.
 
+## Config Lookup Changes
+
+More info here: https://babeljs.io/docs/en/config-files#6x-vs-7x-babelrc-loading
+
+Babel has had issues previously with handling `node_modules`, symlinks, and monorepos. We've made some changes to account for this: Babel will stop lookup at the `package.json` boundary instead of looking up the chain. For monorepo's we have added a new `babel.config.js` file that centralizes our config across all the packages (alternatively you could make a config per package).
+
 ## [Yearly Preset Deprecations](/blog/2017/12/27/nearing-the-7.0-release.html#deprecated-yearly-presets-eg-babel-preset-es20xx)
 
 The "env" preset has been out for more than a year now, and completely replaces some of the presets we've had/suggested earlier.
