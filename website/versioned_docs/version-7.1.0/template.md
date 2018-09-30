@@ -1,7 +1,8 @@
 ---
-id: babel-template
+id: version-7.1.0-babel-template
 title: @babel/template
 sidebar_label: template
+original_id: babel-template
 ---
 
 In computer science, this is known as an implementation of quasiquotes.

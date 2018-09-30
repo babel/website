@@ -1,7 +1,8 @@
 ---
-id: babel-plugin-transform-modules-systemjs
+id: version-7.1.0-babel-plugin-transform-modules-systemjs
 title: @babel/plugin-transform-modules-systemjs
 sidebar_label: transform-modules-systemjs
+original_id: babel-plugin-transform-modules-systemjs
 ---
 
 ## Example

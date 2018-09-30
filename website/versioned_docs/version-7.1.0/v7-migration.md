@@ -1,6 +1,7 @@
 ---
-title: "Upgrade to Babel 7"
-id: v7-migration
+title: Upgrade to Babel 7
+id: version-7.1.0-v7-migration
+original_id: v7-migration
 ---
 
 Refer users to this document when upgrading to Babel 7.
@@ -16,7 +17,7 @@ Because not every breaking change will affect every project, we've sorted the se
 We highly encourage you to use a newer version of Node.js (LTS v8) since the previous versions are not maintained.
 See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
-This just means Babel _itself_ won't run on older versions of Node. It can still _output_ code that runs on old Node versions.
+This just means Babel _itself_ won't run on older versions of Node. It can still _output_ code that runs on old Node.
 
 ## Config Lookup Changes
 
@@ -26,7 +27,7 @@ Babel has had issues previously with handling `node_modules`, symlinks, and mono
 
 ## [Yearly Preset Deprecations](/blog/2017/12/27/nearing-the-7.0-release.html#deprecated-yearly-presets-eg-babel-preset-es20xx)
 
-The "env" preset has been out for more than a year now, and completely replaces some of the presets we've had and suggested earlier.
+The "env" preset has been out for more than a year now, and completely replaces some of the presets we've had/suggested earlier.
 
 - `babel-preset-es2015`
 - `babel-preset-es2016`
@@ -36,11 +37,13 @@ The "env" preset has been out for more than a year now, and completely replaces 
 
 These presets should be substituted with the "env" preset.
 
-## [Stage Preset Deprecations](https://babeljs.io/blog/2018/07/27/removing-babels-stage-presets)
+## [Stage Preset Deprecations](https://github.com/babel/babel/issues/7770)
 
-We are removing the stage presets in favor of explicit proposal usage. Can check the [stage-0 README](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0) for more migration steps.
+We are removing the stage presets in favor of explicit proposal usage. Can check the [stage-0 readme](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0) for more migration steps.
 
 To do this automatically you can run [`npx babel-upgrade`](https://github.com/babel/babel-upgrade) (PR added [here](https://github.com/babel/babel-upgrade/pull/69)).
+
+(add link to blog post when published).
 
 ## [Remove proposal polyfills in `@babel/polyfill`](https://github.com/babel/babel/issues/8416)
 
@@ -157,7 +160,7 @@ You can still use the shorthand version of a package name (remove the `preset-` 
 
 ### Scoped Packages
 
-The most important change is finally switching all packages to [scoped packages](/blog/2017/12/27/nearing-the-7.0-release.html#renames-scoped-packages-babel-x) (the folder names in the [monorepo](https://github.com/babel/babel/tree/master/packages) are not changed but the name in its `package.json` is).
+The most important change is finally switching all packages to [scoped packages](/blog/2017/12/27/nearing-the-7.0-release.html#renames-scoped-packages-babel-x). (the folder names in the [monorepo](https://github.com/babel/babel/tree/master/packages) are not changed but the package.name is)
 
 This means there will be no more issues with accidental/intentional name squatting, a clear separation from community plugins, and a simpler naming convention.
 
@@ -260,7 +263,7 @@ Note this does not apply to the CLI, where `--presets es2015,es2016` will certai
 
 ## Plugin/Preset Exports
 
-All plugins/presets should now export a function rather than an object for consistency ([via babel/babel#6494](https://github.com/babel/babel/pull/6494)). This will help us with caching.
+All plugins/presets should now export a function rather than an object for consistency [via [babel/babel#6494](https://github.com/babel/babel/pull/6494)]. This will help us with caching.
 
 ## Resolving string-based config values
 

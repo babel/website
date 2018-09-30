@@ -1,7 +1,8 @@
 ---
-id: babel-plugin-proposal-numeric-separator
+id: version-7.1.0-babel-plugin-proposal-numeric-separator
 title: @babel/plugin-proposal-numeric-separator
 sidebar_label: proposal-numeric-separator
+original_id: babel-plugin-proposal-numeric-separator
 ---
 
 ## Example

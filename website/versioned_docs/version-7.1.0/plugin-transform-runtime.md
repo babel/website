@@ -1,7 +1,8 @@
 ---
-id: babel-plugin-transform-runtime
+id: version-7.1.0-babel-plugin-transform-runtime
 title: @babel/plugin-transform-runtime
 sidebar_label: transform-runtime
+original_id: babel-plugin-transform-runtime
 ---
 
 A plugin that enables the re-use of Babel's injected helper code to save on codesize.

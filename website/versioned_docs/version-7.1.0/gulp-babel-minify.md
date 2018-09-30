@@ -1,7 +1,8 @@
 ---
-id: gulp-babel-minify
+id: version-7.1.0-gulp-babel-minify
 title: gulp-babel-minify
 sidebar_label: gulp-babel-minify
+original_id: gulp-babel-minify
 ---
 
 ```sh

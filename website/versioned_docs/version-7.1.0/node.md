@@ -1,7 +1,8 @@
 ---
-id: babel-node
+id: version-7.1.0-babel-node
 title: @babel/node
 sidebar_label: node
+original_id: babel-node
 ---
 
 babel-node is a CLI that works exactly the same as the Node.js CLI, with the added benefit of compiling with Babel presets and plugins before running it.

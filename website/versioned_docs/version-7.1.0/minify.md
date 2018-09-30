@@ -1,7 +1,8 @@
 ---
-id: babel-minify
+id: version-7.1.0-babel-minify
 title: babel-minify
 sidebar_label: babel-minify
+original_id: babel-minify
 ---
 
 [![npm](https://img.shields.io/npm/v/babel-minify.svg?maxAge=2592000)](https://www.npmjs.com/package/babel-minify)
