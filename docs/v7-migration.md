@@ -38,7 +38,7 @@ These presets should be substituted with the "env" preset.
 
 ## [Stage Preset Deprecations](https://github.com/babel/babel/issues/7770)
 
-We are removing the stage presets in favor of explicit proposal usage. Can check the [stage-0 readme](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0) for more migration steps.
+We are removing the stage presets in favor of explicit proposal usage. Can check the [stage-0 README](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0) for more migration steps.
 
 To do this automatically you can run [`npx babel-upgrade`](https://github.com/babel/babel-upgrade) (PR added [here](https://github.com/babel/babel-upgrade/pull/69)).
 
