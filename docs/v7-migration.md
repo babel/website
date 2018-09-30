@@ -26,7 +26,7 @@ Babel has had issues previously with handling `node_modules`, symlinks, and mono
 
 ## [Yearly Preset Deprecations](/blog/2017/12/27/nearing-the-7.0-release.html#deprecated-yearly-presets-eg-babel-preset-es20xx)
 
-The "env" preset has been out for more than a year now, and completely replaces some of the presets we've had/suggested earlier.
+The "env" preset has been out for more than a year now, and completely replaces some of the presets we've had and suggested earlier.
 
 - `babel-preset-es2015`
 - `babel-preset-es2016`
@@ -158,7 +158,7 @@ You can still use the shorthand version of a package name (remove the `preset-` 
 
 ### Scoped Packages
 
-The most important change is finally switching all packages to [scoped packages](/blog/2017/12/27/nearing-the-7.0-release.html#renames-scoped-packages-babel-x). (the folder names in the [monorepo](https://github.com/babel/babel/tree/master/packages) are not changed but the package.name is)
+The most important change is finally switching all packages to [scoped packages](/blog/2017/12/27/nearing-the-7.0-release.html#renames-scoped-packages-babel-x) (the folder names in the [monorepo](https://github.com/babel/babel/tree/master/packages) are not changed but the name in the `package.json` is).
 
 This means there will be no more issues with accidental/intentional name squatting, a clear separation from community plugins, and a simpler naming convention.
 
