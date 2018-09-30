@@ -16,7 +16,7 @@ Because not every breaking change will affect every project, we've sorted the se
 We highly encourage you to use a newer version of Node.js (LTS v8) since the previous versions are not maintained.
 See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
-This just means Babel *itself* won't run on older versions of Node. It can still *output* code that runs on old Node.
+This just means Babel *itself* won't run on older versions of Node. It can still *output* code that runs on old Node versions.
 
 ## Config Lookup Changes
 
