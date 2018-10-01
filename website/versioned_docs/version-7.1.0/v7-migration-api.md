@@ -1,6 +1,7 @@
 ---
-title: "Upgrade to Babel 7 (API)"
-id: v7-migration-api
+title: Upgrade to Babel 7 (API)
+id: version-7.1.0-v7-migration-api
+original_id: v7-migration-api
 ---
 
 Refer users to this document when upgrading to Babel 7.

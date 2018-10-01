@@ -1,7 +1,8 @@
 ---
-id: babel-register
+id: version-7.1.0-babel-register
 title: @babel/register
 sidebar_label: register
+original_id: babel-register
 ---
 
 One of the ways you can use Babel is through the require hook. The require hook

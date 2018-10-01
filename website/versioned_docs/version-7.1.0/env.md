@@ -1,6 +1,7 @@
 ---
 title: babel-preset-es2015 -> babel-preset-env
-id: env
+id: version-7.1.0-env
+original_id: env
 ---
 
 > We're super 😸 excited that you're trying to use ES2015 syntax, but instead of continuing yearly presets, the team recommends using babel-preset-env. By default, it has the same behavior as previous presets to compile ES2015+ to ES5.

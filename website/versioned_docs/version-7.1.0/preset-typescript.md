@@ -1,7 +1,8 @@
 ---
-id: babel-preset-typescript
+id: version-7.1.0-babel-preset-typescript
 title: @babel/preset-typescript
 sidebar_label: typescript
+original_id: babel-preset-typescript
 ---
 
 This preset includes the following plugins:

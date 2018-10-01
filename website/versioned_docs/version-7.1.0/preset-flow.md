@@ -1,7 +1,8 @@
 ---
-id: babel-preset-flow
+id: version-7.1.0-babel-preset-flow
 title: @babel/preset-flow
 sidebar_label: flow
+original_id: babel-preset-flow
 ---
 
 This preset includes the following plugins:
