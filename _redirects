@@ -62,6 +62,13 @@
 /docs/plugins/minify-*              /docs/en/babel-plugin-minify-:splat
 /docs/plugins/external-helpers/     /docs/en/babel-plugin-external-helpers
 
+/docs/en/babel-plugin-transform-async-generator-functions       /docs/en/babel-plugin-proposal-async-generator-functions
+/docs/en/babel-plugin-transform-class-properties                /docs/en/babel-plugin-proposal-class-properties
+/docs/en/babel-plugin-transform-decorators                      /docs/en/babel-plugin-proposal-decorators
+/docs/en/babel-plugin-transform-do-expressions                  /docs/en/babel-plugin-proposal-do-expressions
+/docs/en/babel-plugin-transform-export-extensions               /docs/en/babel-plugin-proposal-export-namespace
+/docs/en/babel-plugin-transform-object-rest-spread              /docs/en/babel-plugin-proposal-object-rest-spread
+
 /docs/plugins/check-es2015-constants/ /docs/en/babel-plugin-check-es2015-constants
 /docs/plugins/transform-es2015-constants /docs/en/babel-plugin-check-es2015-constants
 /docs/plugins/undeclared-variables-check/ /docs/en/babel-plugin-undeclared-variables-check
