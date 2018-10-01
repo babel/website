@@ -36,13 +36,11 @@ The "env" preset has been out for more than a year now, and completely replaces 
 
 These presets should be substituted with the "env" preset.
 
-## [Stage Preset Deprecations](https://github.com/babel/babel/issues/7770)
+## [Stage Preset Deprecations](https://babeljs.io/blog/2018/07/27/removing-babels-stage-presets)
 
 We are removing the stage presets in favor of explicit proposal usage. Can check the [stage-0 README](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0) for more migration steps.
 
 To do this automatically you can run [`npx babel-upgrade`](https://github.com/babel/babel-upgrade) (PR added [here](https://github.com/babel/babel-upgrade/pull/69)).
-
-(add link to blog post when published).
 
 ## [Remove proposal polyfills in `@babel/polyfill`](https://github.com/babel/babel/issues/8416)
 
