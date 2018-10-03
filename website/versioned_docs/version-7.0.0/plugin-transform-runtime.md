@@ -88,7 +88,7 @@ require("@babel/core").transform("code", {
 
 `boolean` or `number` , defaults to `false`.
 
-e.g. `['transform-runtime', { corejs: 2 }],`
+e.g. `['@babel/plugin-transform-runtime', { corejs: 2 }],`
 
 Specifying a number will rewrite the helpers that need polyfillable APIs to reference `core-js` instead.
 
