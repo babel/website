@@ -73,7 +73,7 @@ const sponsors = [
 ];
 
 // move to website/data later
-const videos = loadYaml("./data/videos.yml");
+const videos = require(path.join(__dirname, "/data/videos.js"));
 const team = loadYaml("./data/team.yml");
 const tools = loadYaml("./data/tools.yml");
 const setupBabelrc = loadMD("../docs/tools/setup.md");
