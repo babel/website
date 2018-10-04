@@ -33,13 +33,12 @@ gulpBabelMinify(minifyOptions, overrides);
 
 ### minifyOptions
 
-These are passed on to the minify preset. Refer https://github.com/babel/minify/tree/master/packages/babel-preset-minify#options. Default `{}`
+These are passed on to the minify preset. Refer to the [preset-minify options](preset-minify.md#options). Default `{}`
 
 ### Overrides
 
 Default: `{}`
 
-+ `babel`: Use a custom `@babel/core`
-+ `minifyPreset`: Use a custom `babel-preset-minify`
-+ `comments`: [Function | RegExp | Boolean]
-
+- `babel`: Use a custom `@babel/core`
+- `minifyPreset`: Use a custom `babel-preset-minify`
+- `comments`: [Function | RegExp | Boolean]

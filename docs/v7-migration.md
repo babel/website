@@ -16,11 +16,17 @@ Because not every breaking change will affect every project, we've sorted the se
 We highly encourage you to use a newer version of Node.js (LTS v8) since the previous versions are not maintained.
 See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
 
-This just means Babel *itself* won't run on older versions of Node. It can still *output* code that runs on old Node.
+This just means Babel _itself_ won't run on older versions of Node. It can still _output_ code that runs on old Node versions.
+
+## Config Lookup Changes
+
+For more info, read our [6.x vs 7.x comparison](config-files.md#6x-vs-7x-babelrc-loading).
+
+Babel has had issues previously with handling `node_modules`, symlinks, and monorepos. We've made some changes to account for this: Babel will stop lookup at the `package.json` boundary instead of looking up the chain. For monorepo's we have added a new `babel.config.js` file that centralizes our config across all the packages (alternatively you could make a config per package). In 7.1, we've introduced a [`rootMode`](options.md#rootmode) option for further lookup if necessary.
 
 ## [Yearly Preset Deprecations](/blog/2017/12/27/nearing-the-7.0-release.html#deprecated-yearly-presets-eg-babel-preset-es20xx)
 
-The "env" preset has been out for more than a year now, and completely replaces some of the presets we've had/suggested earlier.
+The "env" preset has been out for more than a year now, and completely replaces some of the presets we've had and suggested earlier.
 
 - `babel-preset-es2015`
 - `babel-preset-es2016`
@@ -30,13 +36,11 @@ The "env" preset has been out for more than a year now, and completely replaces 
 
 These presets should be substituted with the "env" preset.
 
-## [Stage Preset Deprecations](https://github.com/babel/babel/issues/7770)
+## [Stage Preset Deprecations](https://babeljs.io/blog/2018/07/27/removing-babels-stage-presets)
 
-We are removing the stage presets in favor of explicit proposal usage. Can check the [stage-0 readme](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0) for more migration steps.
+We are removing the stage presets in favor of explicit proposal usage. Can check the [stage-0 README](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0) for more migration steps.
 
 To do this automatically you can run [`npx babel-upgrade`](https://github.com/babel/babel-upgrade) (PR added [here](https://github.com/babel/babel-upgrade/pull/69)).
-
-(add link to blog post when published).
 
 ## [Remove proposal polyfills in `@babel/polyfill`](https://github.com/babel/babel/issues/8416)
 
@@ -51,7 +55,7 @@ import "core-js/shim"; // included < Stage 4 proposals
 import "regenerator-runtime/runtime";
 ```
 
-If you want to use proposals, you will need to import these independently. You should import then directy from the [`core-js`](https://github.com/zloirock/core-js/tree/v2#usage) package or another package on npm.
+If you want to use proposals, you will need to import these independently. You should import them directly from the [`core-js`](https://github.com/zloirock/core-js/tree/v2#usage) package or another package on npm.
 
 e.g.
 
@@ -71,7 +75,7 @@ import "core-js/fn/string/trim-left";
 import "core-js/fn/string/trim-right";
 import "core-js/fn/string/match-all";
 import "core-js/fn/array/flat-map";
-import "core-js/fn/array/flatten";  // RENAMED
+import "core-js/fn/array/flatten"; // RENAMED
 import "core-js/fn/global";
 
 // Stage 1
@@ -129,6 +133,7 @@ import "core-js/fn/reflect/has-metadata";
 import "core-js/fn/reflect/has-own-metadata";
 import "core-js/fn/reflect/metadata";
 ```
+
 </details>
 
 ## [Versioning/Dependencies](/blog/2017/12/27/nearing-the-7.0-release.html#peer-dependencies-integrations)
@@ -152,7 +157,7 @@ You can still use the shorthand version of a package name (remove the `preset-` 
 
 ### Scoped Packages
 
-The most important change is finally switching all packages to [scoped packages](/blog/2017/12/27/nearing-the-7.0-release.html#renames-scoped-packages-babel-x). (the folder names in the [monorepo](https://github.com/babel/babel/tree/master/packages) are not changed but the package.name is)
+The most important change is finally switching all packages to [scoped packages](/blog/2017/12/27/nearing-the-7.0-release.html#renames-scoped-packages-babel-x) (the folder names in the [monorepo](https://github.com/babel/babel/tree/master/packages) are not changed but the name in its `package.json` is).
 
 This means there will be no more issues with accidental/intentional name squatting, a clear separation from community plugins, and a simpler naming convention.
 
@@ -166,8 +171,8 @@ You can still use the shorthand way of specifying a preset or plugin. However be
 
 ```js
 module.exports = {
-  "presets": ["@babel/env"], // "@babel/preset-env"
-  "plugins": ["@babel/transform-arrow-functions"] // same as "@babel/plugin-transform-arrow-functions"
+  presets: ["@babel/env"], // "@babel/preset-env"
+  plugins: ["@babel/transform-arrow-functions"], // same as "@babel/plugin-transform-arrow-functions"
 };
 ```
 
@@ -184,7 +189,7 @@ This also means that when a proposal moves to Stage 4, we should rename the pack
 
 ### [Remove the year from package names](/blog/2017/12/27/nearing-the-7.0-release.html#renames-drop-the-year-from-the-plugin-name)
 
-Some of the plugins had `-es3-` or `-es2015-` in the names, but these were unncessary.
+Some of the plugins had `-es3-` or `-es2015-` in the names, but these were unnecessary.
 
 `@babel/plugin-transform-es2015-classes` became `@babel/plugin-transform-classes`.
 
@@ -212,32 +217,32 @@ This behavior has been restricted in Babel 7 so that for the `transform-es2015-m
 
 ```js
 // input2.js
-import 'a';
+import "a";
 ```
 
 ```js
 // output.js v6 and v7
-'use strict';
-require('a');
+"use strict";
+require("a");
 ```
 
 If you were relying on Babel to inject `"use strict"` into all of your CommonJS modules automatically, you'll want to explicitly use the `transform-strict-mode` plugin in your Babel config.
 
-## Separation between the React and Flow presets
+## Separation of the React and Flow presets
 
-`babel-preset-react` has always included the flow plugin automatically from the beginning. This has actually caused a lot of issues with users that accidently use `flow` syntax without intending due to a typo, or adding it in without typechecking with `flow` itself, resulting in errors.
+`babel-preset-react` has always included the flow plugin. This has caused a lot of issues with users that accidently use `flow` syntax unintentionally due to a typo, or adding it in without typechecking with `flow` itself, resulting in errors.
 
-This became further of an issue after we decided to support TypeScript with the help of the TS team. If you wanted to use the react and typescript presets, we would have to figure out a way to turn on/off the syntax automatically via file type or the directive. In the end it seemed easiest to just separate the presets entirely. 
+This issue was compounded when we decided to support TypeScript. If you wanted to use the React and TypeScript presets, we would have to figure out a way to turn on/off the syntax, automatically, via file type or the directive. In the end, it was easier to separate the presets entirely.
 
-So now the react preset and the flow preset are separated.
+Presets enable Babel to parse types provided by Flow / TypeScript (and other dialects / languages), then strip them out when compiling down to JavaScript.
 
 ```diff
 {
 -  "presets": ["@babel/preset-react"]
-+  "presets": ["@babel/preset-react", "@babel/preset-flow"] // remove flow types
-+  "presets": ["@babel/preset-react", "@babel/preset-typescript"] // remove typescript types
++  "presets": ["@babel/preset-react", "@babel/preset-flow"] // parse & remove flow types
++  "presets": ["@babel/preset-react", "@babel/preset-typescript"] // parse & remove typescript types
 }
-````
+```
 
 ## Option parsing
 
@@ -255,7 +260,7 @@ Note this does not apply to the CLI, where `--presets es2015,es2016` will certai
 
 ## Plugin/Preset Exports
 
-All plugins/presets should now export a function rather than an object for consistency [via [babel/babel#6494](https://github.com/babel/babel/pull/6494)]. This will help us with caching.
+All plugins/presets should now export a function rather than an object for consistency ([via babel/babel#6494](https://github.com/babel/babel/pull/6494)). This will help us with caching.
 
 ## Resolving string-based config values
 
@@ -273,7 +278,6 @@ Assuming your `node_modules` folder is in `.`, in Babel 6 this would fail becaus
 
 This change also affects `only` and `ignore` which will be expanded on next.
 
-
 ## Path-based `only` and `ignore` patterns
 
 In Babel 6, `only` and `ignore` were treated as a general matching string, rather than a filepath glob. This meant that for instance `*.foo.js` would match `./**/*.foo.js`, which was confusing and surprising to most users.
@@ -282,11 +286,9 @@ In Babel 7, these are now treated as path-based glob patterns which can either b
 
 `only` and `ignore` patterns _do_ still also work for directories, so you could also use `only: './tests'` to only compile files in your `tests` directory, with no need to use `**/*.js` to match all nested files.
 
-
 ## Babel's CLI commands
 
 The `--copy-files` argument for the `babel` command, which tells Babel to copy all files in a directory that Babel doesn't know how to handle, will also now copy files that failed an `only`/`ignore` check, where before it would silently skip all ignored files.
-
 
 ### `@babel/node`
 
@@ -302,7 +304,7 @@ We have separated out Babel's helpers from it's "polyfilling" behavior in runtim
 
 ```sh
 # install the runtime as a dependency
-npm install @babel/runtime`
+npm install @babel/runtime
 # install the plugin as a devDependency
 npm install @babel/plugin-transform-runtime --save-dev
 ```
@@ -329,7 +331,7 @@ npm install @babel/plugin-transform-runtime --save-dev
   "plugins": [
 -   ["@babel/plugin-transform-runtime"],
 +   ["@babel/plugin-transform-runtime", {
-+     "corejs": 2,   
++     "corejs": 2,
 +   }],
   ]
 }
@@ -352,7 +354,7 @@ var {
 
 ---
 
-> Since Object Spread defines new propeties and `Object.assign` just sets them, Babel has changed the default behavior to be more spec compliant.
+> Since Object Spread defines new properties and `Object.assign` just sets them, Babel has changed the default behavior to be more spec compliant.
 
 - [objectSpread helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L375)
 - [extends helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L357-L373)
@@ -382,9 +384,12 @@ z = _extends({
 
 ```js
 // Substitute for Object.assign: ["proposal-object-rest-spread", { "loose": true, "useBuiltIns": true }]
-z = Object.assign({
-  x
-}, y);
+z = Object.assign(
+  {
+    x,
+  },
+  y
+);
 ```
 
 ### `@babel/plugin-proposal-class-properties`
@@ -394,7 +399,7 @@ The default behavior is changed to what was previously "spec" by default
 ```js
 // input
 class Bork {
-  static a = 'foo';
+  static a = "foo";
   y;
 }
 ```
@@ -405,14 +410,14 @@ var Bork = function Bork() {
   Object.defineProperty(this, "y", {
     enumerable: true,
     writable: true,
-    value: void 0
+    value: void 0,
   });
 };
 
 Object.defineProperty(Bork, "a", {
   enumerable: true,
   writable: true,
-  value: 'foo'
+  value: "foo",
 });
 ```
 
@@ -422,8 +427,8 @@ var Bork = function Bork() {
   this.y = void 0;
 };
 
-Bork.a = 'foo';
-````
+Bork.a = "foo";
+```
 
 ### Split `@babel/plugin-transform-export-extensions` into the two renamed proposals
 
@@ -432,22 +437,22 @@ This is a long time coming but this was finally changed.
 `@babel/plugin-proposal-export-default-from`
 
 ```js
-export v from 'mod';
+export v from "mod";
 ```
 
 `@babel/plugin-proposal-export-namespace-from`
 
 ```js
-export * as ns from 'mod';
-````
+export * as ns from "mod";
+```
 
 ### `@babel/plugin-transform-template-literals`
 
->  Template Literals Revision updated [#5523](https://github.com/babel/babel/pull/5523) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+> Template Literals Revision updated [#5523](https://github.com/babel/babel/pull/5523) ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 See the proposal for [Template Literals Revision](https://tc39.github.io/proposal-template-literal-revision/).
 
-It cause Babel 6 to throw `Bad character escape sequence (5:6)`.
+It causes Babel 6 to throw `Bad character escape sequence (5:6)`.
 
 ```js
 tag`\unicode and \u{55}`;
@@ -457,17 +462,30 @@ This has been fixed in Babel 7 and generates something like the following:
 
 ```js
 // default
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-var _templateObject = /*#__PURE__*/ _taggedTemplateLiteral([void 0], ["\\unicode and \\u{55}"]);
+function _taggedTemplateLiteral(strings, raw) {
+  return Object.freeze(
+    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
+  );
+}
+var _templateObject = /*#__PURE__*/ _taggedTemplateLiteral(
+  [void 0],
+  ["\\unicode and \\u{55}"]
+);
 tag(_templateObject);
 ```
 
 ```js
 // loose mode
-function _taggedTemplateLiteralLoose(strings, raw) { strings.raw = raw; return strings; }
-var _templateObject = /*#__PURE__*/ _taggedTemplateLiteralLoose([void 0], ["\\unicode and \\u{55}"]);
+function _taggedTemplateLiteralLoose(strings, raw) {
+  strings.raw = raw;
+  return strings;
+}
+var _templateObject = /*#__PURE__*/ _taggedTemplateLiteralLoose(
+  [void 0],
+  ["\\unicode and \\u{55}"]
+);
 tag(_templateObject);
-````
+```
 
 ---
 
@@ -505,7 +523,7 @@ In anticipation of the new decorators proposal implementation, we've decided to 
 
 ### `@babel/plugin-proposal-pipeline-operator`
 
-Newer proposals in flux will error by default and will require everyone opt into a specific proposal will things are still < Stage 2. This is explained more in this [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal)
+Newer proposals in flux will error by default and will require everyone to opt into a specific proposal while things are still < Stage 2. This is explained more in this [post](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal).
 
 ```diff
 {
@@ -556,7 +574,7 @@ We merged `babel-plugin-transform-async-to-module-method` into the regular async
 +    }]
   ]
 }
-````
+```
 
 ## `babel`
 
@@ -606,7 +624,7 @@ This change just makes babel-generator output `,` instead of `;`.
 
 > Remove `babel-core/src/api/browser.js` [#5124](https://github.com/babel/babel/pull/5124) ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
-`babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [babel-standalone](https://github.com/babel/babel-standalone).
+`babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [@babel/standalone](standalone.md).
 
 Babel will return `filename` as an absolute path [#8044](https://github.com/babel/babel/pull/8044)
 

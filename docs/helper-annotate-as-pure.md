@@ -1,7 +1,7 @@
 ---
 id: babel-helper-annotate-as-pure
 title: @babel/helper-annotate-as-pure
-sidebar_label: babel-helper-annotate-as-pure
+sidebar_label: helper-annotate-as-pure
 ---
 
 ```js

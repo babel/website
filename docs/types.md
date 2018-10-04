@@ -1,7 +1,7 @@
 ---
 id: babel-types
 title: @babel/types
-sidebar_label: babel-types
+sidebar_label: types
 ---
 
 ## Install
@@ -2657,6 +2657,19 @@ t.tsUnionType(types)
 ```
 
 See also `t.isTSUnionType(node, opts)` and `t.assertTSUnionType(node, opts)`.
+
+Aliases: `TSType`
+
+ - `types`: `Array<TSType>` (required)
+
+---
+
+### tSUnknownType
+```javascript
+t.tsUnknownType(types)
+```
+
+See also `t.isTSUnknownType(node, opts)` and `t.assertTSUnknownType(node, opts)`.
 
 Aliases: `TSType`
 

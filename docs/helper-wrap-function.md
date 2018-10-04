@@ -1,7 +1,7 @@
 ---
 id: babel-helper-wrap-function
 title: @babel/helper-wrap-function
-sidebar_label: babel-helper-wrap-function
+sidebar_label: helper-wrap-function
 ---
 
 ## Example

@@ -21,10 +21,10 @@ npm install babel-minify --save-dev
 ```js
 const minify = require("babel-minify");
 
-const {code, map} = minify("input code", {
+const { code, map } = minify("input code", {
   mangle: {
-    keepClassName: true
-  }
+    keepClassName: true,
+  },
 });
 ```
 
@@ -39,20 +39,20 @@ minify input.js --out-file input.min.js --mangle.keepClassName
 ```js
 const minify = require("babel-minify");
 
-minify(input, minifyOptions, overrides)
+minify(input, minifyOptions, overrides);
 ```
 
 ### minifyOptions
 
-Refer [babel-preset-minify options](https://github.com/babel/minify/tree/master/packages/babel-preset-minify#options)
+Refer [babel-preset-minify options](preset-minify.md#options)
 
 ### overrides
 
-+ `babel`: Custom babel
-+ `minifyPreset`: Custom minify preset
-+ `inputSourceMap`: Input Sourcemap
-+ `sourceMaps`: [Boolean]
-+ `comments`: [Function | RegExp | Boolean]
+- `babel`: Custom babel
+- `minifyPreset`: Custom minify preset
+- `inputSourceMap`: Input Sourcemap
+- `sourceMaps`: [Boolean]
+- `comments`: [Function | RegExp | Boolean]
 
 ## CLI Options
 
@@ -86,6 +86,5 @@ Refer the corresponding plugins to know the list of options it takes
 
 ### IO options
 
-+ `--out-file path/to/file.min.js`: Output filename. Used only when reading from STDIN / a single input file
-+ `--out-dir path/to/dir`: Output Directory.
-
+- `--out-file path/to/file.min.js`: Output filename. Used only when reading from STDIN / a single input file
+- `--out-dir path/to/dir`: Output Directory.

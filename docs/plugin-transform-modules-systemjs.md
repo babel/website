@@ -15,17 +15,17 @@ export default 42;
 **Out**
 
 ```javascript
-System.register([], function (_export, _context) {
+System.register([], function(_export, _context) {
   return {
     setters: [],
-    execute: function () {
+    execute: function() {
       _export("default", 42);
-    }
+    },
   };
 });
 ```
 
-For dynamic import support (`import('./lazy.js').then(m => ...)`), enable the [@babel/plugin-syntax-dynamic-import](https://babeljs.io/docs/plugins/syntax-dynamic-import/) plugin before this one.
+For dynamic import support (`import('./lazy.js').then(m => ...)`), enable the [@babel/plugin-syntax-dynamic-import](plugin-syntax-dynamic-import.md) plugin before this one.
 
 ## Installation
 
@@ -52,10 +52,13 @@ With options:
 ```json
 {
   "plugins": [
-    ["@babel/plugin-transform-modules-systemjs", {
-      // outputs SystemJS.register(...)
-      "systemGlobal": "SystemJS"
-    }]
+    [
+      "@babel/plugin-transform-modules-systemjs",
+      {
+        // outputs SystemJS.register(...)
+        "systemGlobal": "SystemJS"
+      }
+    ]
   ]
 }
 ```
@@ -70,7 +73,6 @@ babel --plugins @babel/plugin-transform-modules-systemjs script.js
 
 ```javascript
 require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-modules-systemjs"]
+  plugins: ["@babel/plugin-transform-modules-systemjs"],
 });
 ```
-

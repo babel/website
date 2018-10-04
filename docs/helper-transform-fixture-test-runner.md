@@ -1,7 +1,7 @@
 ---
 id: babel-helper-transform-fixture-test-runner
 title: @babel/helper-transform-fixture-test-runner
-sidebar_label: babel-helper-transform-fixture-test-runner
+sidebar_label: helper-transform-fixture-test-runner
 ---
 
 ## Usage

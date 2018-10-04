@@ -83,6 +83,8 @@ toolsMD.forEach(tool => {
   tool.usage = loadMD(`${tool.path}/usage.md`);
 });
 
+const DEFAULT_LANGUAGE = "en";
+
 const GITHUB_URL = "https://github.com/babel/website";
 
 const siteConfig = {
@@ -92,6 +94,10 @@ const siteConfig = {
   tagline: "The compiler for next generation JavaScript",
   url: "https://babeljs.io",
   baseUrl: "/",
+  getDocUrl: (doc, language) =>
+    `${siteConfig.baseUrl}docs/${language || DEFAULT_LANGUAGE}/${doc}`,
+  getPageUrl: (page, language) =>
+    `${siteConfig.baseUrl}${language || DEFAULT_LANGUAGE}/${page}`,
   organizationName: "babel",
   projectName: "babel",
   repoUrl: "https://github.com/babel/babel",

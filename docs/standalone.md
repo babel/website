@@ -1,7 +1,7 @@
 ---
 id: babel-standalone
 title: @babel/standalone
-sidebar_label: babel-standalone
+sidebar_label: standalone
 ---
 
 
@@ -57,7 +57,7 @@ Loading external scripts via `src` attribute is supported too:
 <script type="text/babel" src="foo.js"></script>
 ```
 
-Note that `.babelrc` doesn't work in @babel/standalone, as no file system access is available. The presets and/or plugins to use **must** be specified in the options passed to `Babel.transform`.
+Note that [config files](config-files.md) don't work in @babel/standalone, as no file system access is available. The presets and/or plugins to use **must** be specified in the options passed to `Babel.transform`.
 
 Customisation
 =============

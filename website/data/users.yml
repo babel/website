@@ -671,3 +671,6 @@
 - name: Sequence
   url: https://sequence.work
   logo: sequence.svg
+- name: BitMidi
+  url: https://bitmidi.com
+  logo: bitmidi.svg

@@ -4,7 +4,7 @@ title: @babel/plugin-transform-duplicate-keys
 sidebar_label: transform-duplicate-keys
 ---
 
-This plugin actually converts duplicate keys in objects to be computed properties, which then must be handled by the [@babel/plugin-transform-computed-properties](http://babeljs.io/docs/plugins/transform-computed-properties) plugin. The final result won't contain any object literals with duplicate keys.
+This plugin actually converts duplicate keys in objects to be computed properties, which then must be handled by the [@babel/plugin-transform-computed-properties](plugin-transform-computed-properties.md) plugin. The final result won't contain any object literals with duplicate keys.
 
 ## Example
 
@@ -15,7 +15,7 @@ var x = { a: 5, a: 6 };
 var y = {
   get a() {},
   set a(x) {},
-  a: 3
+  a: 3,
 };
 ```
 
@@ -26,7 +26,7 @@ var x = { a: 5, ["a"]: 6 };
 var y = {
   get a() {},
   set a(x) {},
-  ["a"]: 3
+  ["a"]: 3,
 };
 ```
 
@@ -58,7 +58,6 @@ babel --plugins @babel/plugin-transform-duplicate-keys script.js
 
 ```javascript
 require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-duplicate-keys"]
+  plugins: ["@babel/plugin-transform-duplicate-keys"],
 });
 ```
-

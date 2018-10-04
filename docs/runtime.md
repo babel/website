@@ -1,7 +1,7 @@
 ---
 id: babel-runtime
 title: @babel/runtime
-sidebar_label: babel-runtime
+sidebar_label: runtime
 ---
 
 `@babel/runtime` is a library that contain's Babel modular runtime helpers and a version of `regenerator-runtime`.

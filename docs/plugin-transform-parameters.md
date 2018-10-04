@@ -24,12 +24,19 @@ function test(x = "hello", { a, b }, ...args) {
 
 ```javascript
 function test() {
-  var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "hello";
+  var x =
+    arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "hello";
   var _ref = arguments[1];
   var a = _ref.a,
-      b = _ref.b;
+    b = _ref.b;
 
-  for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+  for (
+    var _len = arguments.length,
+      args = Array(_len > 2 ? _len - 2 : 0),
+      _key = 2;
+    _key < _len;
+    _key++
+  ) {
     args[_key - 2] = arguments[_key];
   }
 
@@ -47,7 +54,7 @@ npm install --save-dev @babel/plugin-transform-parameters
 
 Default parameters desugar into `let` declarations to retain proper semantics. If this is
 not supported in your environment then you'll need the
-[@babel/plugin-transform-block-scoping](http://babeljs.io/docs/plugins/transform-block-scoping) plugin.
+[@babel/plugin-transform-block-scoping](plugin-transform-block-scoping.md) plugin.
 
 ## Usage
 
@@ -71,7 +78,7 @@ babel --plugins @babel/plugin-transform-parameters script.js
 
 ```javascript
 require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-parameters"]
+  plugins: ["@babel/plugin-transform-parameters"],
 });
 ```
 
@@ -87,11 +94,10 @@ The `loose` implementation is a more performant solution as JavaScript engines w
 
 ```javascript
 // Spec behavior
-function bar1 (arg1 = 1) {}
-bar1.length // 0
+function bar1(arg1 = 1) {}
+bar1.length; // 0
 
 // Loose mode
-function bar1 (arg1 = 1) {}
-bar1.length // 1
+function bar1(arg1 = 1) {}
+bar1.length; // 1
 ```
-
