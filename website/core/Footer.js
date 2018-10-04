@@ -1,16 +1,6 @@
 const React = require("react");
 
 class Footer extends React.Component {
-  docUrl(doc, language = "en") {
-    const baseUrl = this.props.config.baseUrl;
-    return baseUrl + "docs/" + (language ? language + "/" : "") + doc;
-  }
-
-  pageUrl(doc, language = "en") {
-    const baseUrl = this.props.config.baseUrl;
-    return baseUrl + (language ? language + "/" : "") + doc;
-  }
-
   render() {
     return (
       <footer className="nav-footer" id="footer">
@@ -27,13 +17,23 @@ class Footer extends React.Component {
           </a>
           <div>
             <h5>Docs</h5>
-            <a href={this.docUrl("learn.html", this.props.language)}>
+            <a
+              href={this.props.config.getDocUrl(
+                "learn.html",
+                this.props.language
+              )}
+            >
               Learn ES2015
             </a>
           </div>
           <div>
             <h5>Community</h5>
-            <a href={this.pageUrl("users.html", this.props.language)}>
+            <a
+              href={this.props.config.getPageUrl(
+                "users.html",
+                this.props.language
+              )}
+            >
               User Showcase
             </a>
             <a

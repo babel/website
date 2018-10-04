@@ -4,7 +4,7 @@ title: @babel/plugin-transform-object-set-prototype-of-to-assign
 sidebar_label: transform-object-set-prototype-of-to-assign
 ---
 
-**NOTE:** There are some caveats when using this plugin, see the [`@babel/plugin-transform-proto-to-assign` README](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-proto-to-assign) for more information.
+**NOTE:** There are some caveats when using this plugin, see the [`@babel/plugin-transform-proto-to-assign`](plugin-transform-proto-to-assign.md) docs for more information.
 
 ## Example
 
@@ -50,7 +50,6 @@ babel --plugins @babel/plugin-transform-object-set-prototype-of-to-assign script
 
 ```javascript
 require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-object-set-prototype-of-to-assign"]
+  plugins: ["@babel/plugin-transform-object-set-prototype-of-to-assign"],
 });
 ```
-

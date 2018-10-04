@@ -6,7 +6,6 @@ pre {
 .hljs.hljs {
   background-color: rgb(253, 250, 235);
   padding: 1em;
-  overflow-x: visible;
   white-space: pre-wrap;
   border-left: 0;
   /* base 20px + header height */

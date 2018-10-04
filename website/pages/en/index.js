@@ -2,14 +2,6 @@ const React = require("react");
 const translate = require("../../server/translate.js").translate;
 const siteConfig = require(process.cwd() + "/siteConfig.js");
 
-function docUrl(doc, language) {
-  return siteConfig.baseUrl + "docs/" + (language ? language + "/" : "") + doc;
-}
-
-function pageUrl(page, language) {
-  return siteConfig.baseUrl + (language ? language + "/" : "") + page;
-}
-
 class Button extends React.Component {
   render() {
     return (
@@ -25,8 +17,6 @@ class Button extends React.Component {
 Button.defaultProps = {
   target: "_self",
 };
-
-const DEFAULT_LANGUAGE = "en";
 
 const PromoSection = props => (
   <div className="section promoSection">
@@ -55,7 +45,7 @@ const MiniRepl = ({ language }) => {
         </div>
       </div>
       <div className="hero-repl__footer">
-        <a href={pageUrl("repl.html", language)}>
+        <a href={siteConfig.getPageUrl("repl.html", language)}>
           <translate>
             Check out our REPL to experiment more with Babel!
           </translate>
@@ -94,8 +84,7 @@ const MiniRepl = ({ language }) => {
 //   );
 // };
 
-const GetStarted = props => {
-  const language = props.language || "en";
+const GetStarted = ({ language }) => {
   return (
     <div
       className="blockElement twoByGridBlock get-started"
@@ -105,17 +94,22 @@ const GetStarted = props => {
 
       <p>
         We&apos;re currently just a small group of{" "}
-        <a href={pageUrl("team.html", language)}>volunteers</a> that spend their
-        free time maintaining this project. If Babel has benefited you in your
-        work, becoming a contributor might be a great way to give back.
+        <a href={siteConfig.getPageUrl("team.html", language)}>volunteers</a>{" "}
+        that spend their free time maintaining this project. If Babel has
+        benefited you in your work, becoming a contributor might be a great way
+        to give back.
       </p>
       <p>
         Learn more about Babel by reading the get started guide or watching
         talks about the concepts behind it.
       </p>
       <PromoSection>
-        <Button href={docUrl("index.html", language)}>Get Started</Button>
-        <Button href={pageUrl("videos.html", language)}>Videos</Button>
+        <Button href={siteConfig.getDocUrl("index.html", language)}>
+          Get Started
+        </Button>
+        <Button href={siteConfig.getPageUrl("videos.html", language)}>
+          Videos
+        </Button>
       </PromoSection>
     </div>
   );
@@ -194,8 +188,7 @@ const SponsorTier = props => {
   );
 };
 
-const OpenCollectiveSponsors = props => {
-  const language = props.language || "en";
+const OpenCollectiveSponsors = ({ language }) => {
   const ocButton = {
       title: "Become a sponsor",
       link: "https://opencollective.com/babel",
@@ -213,10 +206,13 @@ const OpenCollectiveSponsors = props => {
           <p>
             Babel is helping shape the future of the JavaScript language itself,
             being used at companies like Facebook, Google, Netflix, and{" "}
-            <a href={pageUrl("users.html", language)}>hundreds more</a>. Your
-            donation will help cover expenses like attending TC39 (the committee
-            that specifies JavaScript) meetings and will directly support the
-            core team developers to continue working on improving Babel.
+            <a href={siteConfig.getPageUrl("users.html", language)}>
+              hundreds more
+            </a>
+            . Your donation will help cover expenses like attending TC39 (the
+            committee that specifies JavaScript) meetings and will directly
+            support the core team developers to continue working on improving
+            Babel.
           </p>
           <PromoSection>
             <Button href="https://opencollective.com/babel" target="_blank">
@@ -224,12 +220,22 @@ const OpenCollectiveSponsors = props => {
             </Button>
           </PromoSection>
         </div>
-        <div className="sponsor-tiers">
+        <div className="sponsor-tiers" id="sponsors">
+          <SponsorTier
+            type="opencollective"
+            title="Base Support Sponsors"
+            tier="base-support-sponsor"
+          />
           <SponsorTier
             type="opencollective"
             title="Gold Sponsors (Open Collective)"
             tier="gold-sponsors"
             button={ocButton}
+          />
+          <SponsorTier
+            type="other"
+            title="Misc Sponsors"
+            tier="other-sponsors"
           />
           <SponsorTier
             type="patreon"
@@ -244,9 +250,10 @@ const OpenCollectiveSponsors = props => {
             button={ocButton}
           />
           <SponsorTier
-            type="other"
-            title="Misc Sponsors"
-            tier="other-sponsors"
+            type="patreon"
+            title="Silver Sponsors (Patreon)"
+            tier="silver-sponsors"
+            button={patreonButton}
           />
         </div>
       </div>
@@ -277,23 +284,37 @@ const Hero = ({ language }) => (
       <p>
         <translate>Use next generation JavaScript, today.</translate>
       </p>
+
+      <div className="hero__announcement">
+        <span>
+          <strong>Babel 7 is out!</strong> Please read our{" "}
+          <a href="/blog/2018/08/27/7.0.0">announcement</a> and{" "}
+          <a href={siteConfig.getDocUrl("v7-migration", language)}>
+            upgrade guide
+          </a>{" "}
+          for more information.
+        </span>
+      </div>
+
       <MiniRepl language={language} />
     </div>
   </div>
 );
 
-const Index = ({ language = DEFAULT_LANGUAGE }) => (
-  <div>
-    <Hero language={language} />
+const Index = ({ language }) => {
+  return (
+    <div>
+      <Hero language={language} />
 
-    <div className="mainContainer" style={{ padding: 0 }}>
-      <HomeContainer>
-        <GetStarted language={language} />
-        <WorkSponsors language={language} />
-      </HomeContainer>
-      <OpenCollectiveSponsors />
+      <div className="mainContainer" style={{ padding: 0 }}>
+        <HomeContainer>
+          <GetStarted language={language} />
+          <WorkSponsors language={language} />
+        </HomeContainer>
+        <OpenCollectiveSponsors />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 module.exports = Index;

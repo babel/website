@@ -1,5 +1,5 @@
 ---
-title:  "Upgrade to Babel 7 (API)"
+title: "Upgrade to Babel 7 (API)"
 id: v7-migration-api
 ---
 
@@ -7,17 +7,18 @@ Refer users to this document when upgrading to Babel 7.
 
 <!--truncate-->
 
-
 > Also check out the [v7-migration guide](v7-migration.md) for other user-level changes.
 
 ## All Babel packages
 
 ### NodeJS support
+
 ![high](https://img.shields.io/badge/level%20of%20awesomeness%3F-high-red.svg)
 
 Support for Node.js 0.10 and 0.12 has been dropped as both of this versions are out of maintenance.
 
 ### Export changes
+
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 Dropped use of `add-module-exports` plugin on Babel packages.
@@ -73,13 +74,13 @@ Included is a `root` option that defaults to the current working directory for i
 It is also not loaded relatively so it will handle symlinking correctly, whereas before you may have had
 hard-code the paths in webpack before.
 
-Check the `babel.config.js` docs for more info: https://babeljs.io/docs/en/next/babelconfigjs.html
+Check the `babel.config.js` docs for more info: [project-wide configuration](config-files.md#project-wide-configuration)
 
-This file combined with the new [`overrides`](https://babeljs.io/docs/en/next/babelrc.html#overrides) property and `env` lets you have a single config file
+This file combined with the new [`overrides`](options.md#overrides) property and `env` lets you have a single config file
 that can work for all the files in a project vs. multiple config files per folder.
 
 We also exclude `node_modules` by default and only look in the root unless you opt-in to setting
-an array of the `.babelrc` option such as `"babelrc": [".", "node_modules/pkgA"]`
+an array of the `.babelrcRoots` option such as `"babelrcRoots": [".", "node_modules/pkgA"]`
 
 ## Asserting Babel version [#7450](https://github.com/babel/babel/pull/7450)
 
@@ -102,8 +103,8 @@ export default declare(api => {
 It currently takes it as the first parameter the `babel` object, and plugin/preset options, and the `dirname`
 
 ```js
-module.exports = function(api, options, dirname) { }
-````
+module.exports = function(api, options, dirname) {};
+```
 
 ## `babel-parser` (known as Babylon)
 
@@ -119,8 +120,8 @@ Before:
 
 ```js
 babelParser.parse(code, {
-  plugins: [ "*" ]
-})
+  plugins: ["*"],
+});
 ```
 
 You can get the old behavior using:
@@ -139,11 +140,11 @@ babelParser.parse(code, {
     "functionSent",
     "jsx",
     "objectRestSpread",
-  ]
-})
+  ],
+});
 ```
 
-See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
+See Babylon's [plugin options](parser.md#plugins).
 
 > Renamed `decorators` plugin to `decorators-legacy` ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -221,7 +222,7 @@ The case has been changed: `jsx` and `ts` are now in lowercase.
 + t.jsxIdentifier()
 ```
 
-In general, we have differentiated the ndoe types with `TypeAnnotation` for Flow and `TSTypeAnnotation` for TypeScript so for the shared type nodes, TypeScript has a `TS` prefix.
+In general, we have differentiated the node types with `TypeAnnotation` for Flow and `TSTypeAnnotation` for TypeScript so for the shared type nodes, TypeScript has a `TS` prefix.
 
 ### `.expression` field removed from `ArrowFunctionExpression`
 
@@ -242,7 +243,7 @@ The `expression` field was removed to eliminate two different sources of truth a
 
 ### Tokens removed
 
-In previous versions `tokens` were always attached to the AST on the top-level. In the latest version of `@babel/parser` we removed this behavior and made it disabled by default to improve the performance of the parser. All usages in babel itself have been remove and `@babel/generator` is not using the tokens anymore for pretty printing.
+In previous versions `tokens` were always attached to the AST on the top-level. In the latest version of `@babel/parser` we removed this behavior and made it disabled by default to improve the performance of the parser. All usages in babel itself have been removed and `@babel/generator` is not using the tokens anymore for pretty printing.
 
 If your babel plugin uses `tokens` at the moment, evaluate if it is still necessary and try to remove the usage if possible. If your plugin really depends on getting tokens you can reactivate it but please only consider this if there is no other way as this will hurt users performance.
 
@@ -263,10 +264,10 @@ export default function() {
 
 The following nodes have been renamed:
 
-| Name 6.x | Name 7.x | Example | PR |
-|----------|----------|---------|----|
-| ExistentialTypeParam | ExistsTypeAnnotation | ```type A = B<*>;``` | [#322](https://github.com/babel/babylon/pull/322) |
-| NumericLiteralTypeAnnotation | NumberLiteralTypeAnnotation | ```type T = 0;``` | [#332](https://github.com/babel/babylon/pull/332) |
+| Name 6.x                     | Name 7.x                    | Example          | PR                                                |
+| ---------------------------- | --------------------------- | ---------------- | ------------------------------------------------- |
+| ExistentialTypeParam         | ExistsTypeAnnotation        | `type A = B<*>;` | [#322](https://github.com/babel/babylon/pull/322) |
+| NumericLiteralTypeAnnotation | NumberLiteralTypeAnnotation | `type T = 0;`    | [#332](https://github.com/babel/babylon/pull/332) |
 
 Besides the AST-Nodes also all the corresponding functions in `@babel/types` have been renamed.
 
@@ -303,20 +304,20 @@ On the following AST-Nodes the value of the field `variance` has been changed fr
 
 The field is only available when enabling the `flow` plugin in babylon.
 
-  * ObjectProperty
-  * ObjectMethod
-  * AssignmentProperty
-  * ClassMethod
-  * ClassProperty
-  * Property
+- ObjectProperty
+- ObjectMethod
+- AssignmentProperty
+- ClassMethod
+- ClassProperty
+- Property
 
 The type of the new `Variance` node looks like this:
 
 ```js
 type VarianceNode = {
   type: "Variance",
-  kind: "plus"|"minus",
-}
+  kind: "plus" | "minus",
+};
 ```
 
 ```diff
@@ -340,7 +341,7 @@ The location info of `ObjectTypeIndexer` has been changed to not include semicol
 Example:
 
 ```js
-var a: { [a: number]: string; };
+var a: { [a: number]: string };
 ```
 
 ```diff

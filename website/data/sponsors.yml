@@ -14,3 +14,8 @@
   logo: tidelift.png
   type: other
   tier: other-sponsors
+- name: issue.sh
+  url: https://issue.sh
+  logo: issue-sh.svg
+  type: patreon
+  tier: silver-sponsors

@@ -1,7 +1,7 @@
 ---
 id: babel-register
 title: @babel/register
-sidebar_label: babel-register
+sidebar_label: register
 ---
 
 One of the ways you can use Babel is through the require hook. The require hook
@@ -27,7 +27,7 @@ All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`,
 <blockquote class="babel-callout babel-callout-info">
   <h4>Polyfill not included</h4>
   <p>
-    You must include the <a href="https://babeljs.io/docs/usage/polyfill/">polyfill</a> separately
+    You must include the <a href="./babel-polyfill.html">polyfill</a> separately
     when using features that require it, like generators.
   </p>
 </blockquote>
@@ -41,7 +41,7 @@ override this by passing an ignore regex via:
 require("@babel/register")({
   // This will override `node_modules` ignoring - you can alternatively pass
   // an array of strings to be explicitly matched or a regex / glob
-  ignore: []
+  ignore: [],
 });
 ```
 
@@ -56,9 +56,9 @@ require("@babel/register")({
 
     // The file's path is also passed to any ignore functions. It will
     // **not** be compiled if `true` is returned.
-    function (filepath) {
+    function(filepath) {
       return filepath !== "/path/to/es6-file.js";
-    }
+    },
   ],
 
   // Optional only regex - if any filenames **don't** match this regex then they
@@ -70,13 +70,13 @@ require("@babel/register")({
   extensions: [".es6", ".es", ".jsx", ".js", ".mjs"],
 
   // Setting this to false will disable the cache.
-  cache: true
+  cache: true,
 });
 ```
 
-You can pass in all other [options](https://babeljs.io/docs/usage/api/#options) as well,
-including `plugins` and `presets`. But note that the closest [`.babelrc`](https://babeljs.io/docs/usage/babelrc/)
-to each file still applies, and takes precedence over any options you pass in here.
+You can pass in all other [options](options.md) as well, including `plugins` and `presets`.
+Note that [config files](config-files.md) will also be loaded and the programmatic
+config will be merged over top of the file config options.
 
 ## Environment variables
 
@@ -133,4 +133,3 @@ require("./my-plugin");
 Because it is your own code that triggered the load, and not the logic within
 `@babel/register` itself, this should successfully compile any plugin/preset
 that that loads synchronously.
-

@@ -1,7 +1,7 @@
 ---
 id: babel-node
 title: @babel/node
-sidebar_label: babel-node
+sidebar_label: node
 ---
 
 babel-node is a CLI that works exactly the same as the Node.js CLI, with the added benefit of compiling with Babel presets and plugins before running it.
@@ -69,11 +69,11 @@ npx babel-node --debug --presets es2015 -- script.js --debug
 
 ### Options
 
-| Option                   | Default              | Description                     |
-| ------------------------ | -------------------- | ------------------------------- |
-| `-e, --eval [script]`    |                      | Evaluate script                 |
-| `-p, --print`            |                      | Evaluate script and print result |
-| `-i, --ignore [regex]`   | `node_modules`       | Ignore all files that match this regex when using the require hook |
-| `-x, --extensions`       | `".js",".jsx",".es6",".es"` | List of extensions to hook into |
-| `--presets`                | `[]`                 | Comma-separated list of [presets](/docs/plugins/#presets) (a set of plugins) to load and use. |
-| `--plugins`                | `[]`                 | Comma-separated list of [plugins](/docs/plugins/) to load and use. |
+| Option                 | Default                     | Description                                                                       |
+| ---------------------- | --------------------------- | --------------------------------------------------------------------------------- |
+| `-e, --eval [script]`  |                             | Evaluate script                                                                   |
+| `-p, --print`          |                             | Evaluate script and print result                                                  |
+| `-i, --ignore [regex]` | `node_modules`              | Ignore all files that match this regex when using the require hook                |
+| `-x, --extensions`     | `".js",".jsx",".es6",".es"` | List of extensions to hook into                                                   |
+| `--presets`            | `[]`                        | Comma-separated list of [presets](presets.md) (a set of plugins) to load and use. |
+| `--plugins`            | `[]`                        | Comma-separated list of [plugins](plugins.md) to load and use.                    |

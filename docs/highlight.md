@@ -1,7 +1,7 @@
 ---
 id: babel-highlight
 title: @babel/highlight
-sidebar_label: babel-highlight
+sidebar_label: highlight
 ---
 
 ## Install

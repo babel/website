@@ -1,7 +1,7 @@
 ---
 id: babel-cli
 title: @babel/cli
-sidebar_label: babel-cli
+sidebar_label: cli
 ---
 
 Babel comes with a built-in CLI which can be used to compile files from the command line.
@@ -102,7 +102,7 @@ npx babel src --out-file script-compiled.js
 Ignore spec and test files
 
 ```sh
-npx babel src --out-dir lib --ignore spec.js,test.js
+npx babel src --out-dir lib --ignore "src/**/*.spec.js","src/**/*.test.js"
 ```
 
 ### Copy files
@@ -147,4 +147,4 @@ npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,
 
 ### Advanced Usage
 
-There are many more options available in the babel CLI, see [options](core.md/#options), `babel --help` and other sections for more information.
+There are many more options available, see [options](options.md), `babel --help` and other sections for more information.
