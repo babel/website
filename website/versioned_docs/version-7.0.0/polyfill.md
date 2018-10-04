@@ -50,8 +50,9 @@ With webpack, there are multiple ways to include the polyfills:
 
 - When used alongside [`@babel/preset-env`](preset-env.md),
 
-      	* If `useBuiltIns: 'usage'` is specified in `.babelrc` then do not include `@babel/polyfill` in either `webpack.config.js` entry array nor source. Note, `@babel/polyfill` still needs to be installed.
-      	* If `useBuiltIns: 'entry'` is specified in `.babelrc` then include `@babel/polyfill` at the top of the entry point to your application via `require` or `import` as discussed above.
+  - If `useBuiltIns: 'usage'` is specified in `.babelrc` then do not include `@babel/polyfill` in either `webpack.config.js` entry array nor source. Note, `@babel/polyfill` still needs to be installed.
+
+  - If `useBuiltIns: 'entry'` is specified in `.babelrc` then include `@babel/polyfill` at the top of the entry point to your application via `require` or `import` as discussed above.
 
   - If `useBuiltIns` key is not specified or it is explicitly set with `useBuiltIns: false` in your .babelrc, add `@babel/polyfill` directly to the entry array in your `webpack.config.js`.
 
