@@ -35,7 +35,7 @@ import {
 import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
 import { colors, media } from "./styles";
-import ReactJson from "react-json-view";
+import ASTPanel from "./ASTPanel";
 
 import type {
   BabelPresets,
@@ -248,17 +248,7 @@ class Repl extends React.Component<Props, State> {
               placeholder="Write code here"
             />
             {state.ast ? (
-              <ReactJson
-                src={state.astContext}
-                style={{
-                  overflowY: "scroll",
-                  width: "100%",
-                }}
-                shouldCollapse={field => field.name !== "root"}
-                enableClipboard={false}
-                displayObjectSize={false}
-                displayDataTypes={false}
-              />
+              <ASTPanel ast={state.astContext} />
             ) : (
               <CodeMirrorPanel
                 className={styles.codeMirrorPanel}
