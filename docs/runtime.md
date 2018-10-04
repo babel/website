@@ -25,7 +25,7 @@ Sometimes Babel may inject some code in the output that is the same and thus can
 For example, with the class transform (without loose mode):
 
 ```js
-class A {}
+class Circle {}
 ```
 
 turns into:
