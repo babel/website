@@ -1,7 +1,8 @@
 ---
-id: babel-preset-stage-3
+id: version-7.1.0-babel-preset-stage-3
 title: @babel/preset-stage-3
 sidebar_label: stage-3
+original_id: babel-preset-stage-3
 ---
 
 > As of Babel v7, all the stage presets have been deprecated
