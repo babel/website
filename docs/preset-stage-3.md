@@ -4,7 +4,7 @@ title: @babel/preset-stage-3
 sidebar_label: stage-3
 ---
 
-> As of Babel v7, all the stage presets have been deprecated
+> As of Babel v7, all the stage presets have been deprecated.
 > Check [the Babel 7 migration documentation](../v7-migration#stage-preset-deprecations-https-githubcom-babel-babel-issues-7770) for more information.
 
 The gist of Stage 3 is:

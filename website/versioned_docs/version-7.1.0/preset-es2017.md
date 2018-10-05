@@ -5,7 +5,7 @@ sidebar_label: es2017
 original_id: babel-preset-es2017
 ---
 
-> As of Babel v6, all the yearly presets have been deprecated
+> As of Babel v6, all the yearly presets have been deprecated.
 > We recommend using [`@babel/preset-env`](preset-env.md) instead.
 
 ## Install
