@@ -248,7 +248,7 @@ class Repl extends React.Component<Props, State> {
               placeholder="Write code here"
             />
             {state.ast ? (
-              <ASTPanel ast={state.astContext} />
+              <ASTPanel src={state.astContext} />
             ) : (
               <CodeMirrorPanel
                 className={styles.codeMirrorPanel}
