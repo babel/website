@@ -5,11 +5,11 @@ sidebar_label: babel-polyfill
 original_id: babel-polyfill
 ---
 
-Babel includes a [polyfill](https://en.wikipedia.org/wiki/Polyfill_(programming)) that includes a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) and [core-js](https://github.com/zloirock/core-js).
+Babel includes a [polyfill](<https://en.wikipedia.org/wiki/Polyfill_(programming)>) that includes a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) and [core-js](https://github.com/zloirock/core-js).
 
 This will emulate a full ES2015+ environment and is intended to be used in an application rather than a library/tool. This polyfill is automatically loaded when using `babel-node`.
 
-This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (provided you use the [regenerator](https://babeljs.io/docs/en/babel-plugin-transform-regenerator) plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
+This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (provided you use the [regenerator](plugin-transform-regenerator.md) plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
 
 ## Installation
 
@@ -19,7 +19,7 @@ npm install --save babel-polyfill
 
 > Because this is a polyfill (which will run before your source code), we need it to be a `dependency`, not a `devDependency`
 
-## Usage in Node / Browserify / Webpack
+## Usage in Node / Browserify / webpack
 
 To include the polyfill you need to require it at the top of the **entry point** to your application.
 
@@ -37,13 +37,24 @@ polyfills are loaded first:
 import "babel-polyfill";
 ```
 
-With `webpack.config.js`, add `babel-polyfill` to your entry array:
+With webpack, there are multiple ways to include the polyfills:
+
+- When used alongside [`babel-preset-env`](preset-env.md),
+
+  - If `useBuiltIns: 'usage'` is specified in `.babelrc` then do not include `babel-polyfill` in either `webpack.config.js` entry array nor source. Note, `babel-polyfill` still needs to be installed.
+
+  - If `useBuiltIns: 'entry'` is specified in `.babelrc` then include `babel-polyfill` at the top of the entry point to your application via `require` or `import` as discussed above.
+
+  - If `useBuiltIns` key is not specified or it is explicitly set with `useBuiltIns: false` in your .babelrc, add `babel-polyfill` directly to the entry array in your `webpack.config.js`.
 
 ```js
 module.exports = {
-  entry: ["babel-polyfill", "./app/js"]
+  entry: ["babel-polyfill", "./app/js"],
 };
 ```
+- If [`babel-preset-env`](preset-env.md) is not used then add `babel-polyfill` to webpack entry array as discussed above. It can still be added at the top of the entry point to application via `import` or `require`, but this is not recommended.
+
+> We do not recommend that you import the whole polyfill directly: either try the `useBuiltIns` options or import only the polyfills you need manually (either from this package or somewhere else).
 
 ## Usage in Browser
 
@@ -56,7 +67,6 @@ before it.
 
 ## Details
 
-> ##### If you are looking for something that won't modify globals to be used in a tool/library, checkout the [`transform-runtime`](https://babeljs.io/docs/en/babel-plugin-transform-runtime) plugin. This means you won't be able to use the instance methods mentioned above like `Array.prototype.includes`.
+> ##### If you are looking for something that won't modify globals to be used in a tool/library, checkout the [`transform-runtime`](plugin-transform-runtime.md) plugin. This means you won't be able to use the instance methods mentioned above like `Array.prototype.includes`.
 
 Note: Depending on what ES2015 methods you actually use, you may not need to use `babel-polyfill` or the runtime plugin. You may want to only [load the specific polyfills you are using](https://github.com/zloirock/core-js#commonjs) (like `Object.assign`) or just document that the environment the library is being loaded in should include certain polyfills.
-
