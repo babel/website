@@ -1,7 +1,8 @@
 ---
-id: babel-preset-es2015
+id: version-7.1.0-babel-preset-es2015
 title: @babel/preset-es2015
 sidebar_label: es2015
+original_id: babel-preset-es2015
 ---
 
 > As of Babel v6, all the yearly presets have been deprecated
