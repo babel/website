@@ -53,6 +53,8 @@ module.exports = {
 };
 ```
 
+We do not recommend that you import the whole polyfill directly: either try the `useBuiltIns` options or import only the polyfills you need manually (either from this package or somewhere else).
+
 - If [`babel-preset-env`](preset-env.md) is not used then add `babel-polyfill` to webpack entry array as discussed above. It can still be added at the top of the entry point to application via `import` or `require`, but this is not recommended.
 
 ## Usage in Browser
