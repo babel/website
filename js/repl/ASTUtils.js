@@ -104,4 +104,33 @@ function unflatten(target, opts) {
   return result;
 }
 
-export { flatten, unflatten };
+function filterFlatten(flattenSrc, type) {
+  const result = Object.keys(flattenSrc)
+    .filter(key => {
+      const keys = key.split(".");
+      return keys.includes(type);
+    })
+    .reduce((object, key) => {
+      object[key] = flattenSrc[key];
+      return object;
+    }, {});
+  return result;
+}
+
+function deleteFlatten(currentSrc, deletedSrc) {
+  const deletedKeys = Object.keys(deletedSrc);
+  const result = Object.keys(currentSrc).reduce((object, key) => {
+    !deletedKeys.includes(key) ? (object[key] = currentSrc[key]) : null;
+    return object;
+  }, {});
+  return result;
+}
+
+function mergeFlatten(currentSrc, nextSrc) {
+  return {
+    ...currentSrc,
+    ...nextSrc,
+  };
+}
+
+export { flatten, unflatten, filterFlatten, deleteFlatten, mergeFlatten };
