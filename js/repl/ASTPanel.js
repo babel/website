@@ -45,13 +45,15 @@ export default class ASTPanel extends React.Component<Props, State> {
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    if (nextProps.src !== prevState.src) {
-      const flattenSrc = flatten(nextProps.src);
-      return {
-        src: unflatten(flattenSrc),
-        flattenSrc: flattenSrc,
-        flattenType: filterFlatten(flattenSrc, "type"),
-      };
+    if (nextProps.src) {
+      if (nextProps.src !== prevState.src) {
+        const flattenSrc = flatten(nextProps.src);
+        return {
+          src: unflatten(flattenSrc),
+          flattenSrc: flattenSrc,
+          flattenType: filterFlatten(flattenSrc, "type"),
+        };
+      }
     }
     return null;
   }
