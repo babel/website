@@ -100,11 +100,17 @@ function unflatten(target, opts) {
   return result;
 }
 
-function filterFlatten(flattenSrc, type) {
+function filterFlatten(flattenSrc, type = "", value) {
   const result = Object.keys(flattenSrc)
     .filter(key => {
-      const keys = key.split(".");
-      return keys.includes(type);
+      if (type) {
+        const keys = key.split(".");
+        return keys.includes(type);
+      }
+      if (value) {
+        const v = value === "null" || value === "undefined" ? null : value;
+        return flattenSrc[key] === v;
+      }
     })
     .reduce((object, key) => {
       object[key] = flattenSrc[key];

@@ -19,8 +19,10 @@ type Props = {
 
 type State = {
   src: Object,
+  flattenEmpty: Object,
   flattenSrc: Object,
   flattenType: Object,
+  flattenLocation: Object,
   astOption: {
     autofocus: boolean,
     location: boolean,
@@ -34,8 +36,10 @@ const OPTION_ORDER = ["autofocus", "location", "empty", "type"];
 export default class ASTPanel extends React.Component<Props, State> {
   state = {
     src: {},
+    flattenEmpty: {},
     flattenSrc: {},
     flattenType: {},
+    flattenLocation: {},
     astOption: {
       autofocus: true,
       location: true,
@@ -49,48 +53,60 @@ export default class ASTPanel extends React.Component<Props, State> {
       if (nextProps.src !== prevState.src) {
         const flattenSrc = flatten(nextProps.src);
         return {
-          src: unflatten(flattenSrc),
+          src: nextProps.src,
           flattenSrc: flattenSrc,
           flattenType: filterFlatten(flattenSrc, "type"),
+          flattenLocation: {
+            ...filterFlatten(flattenSrc, "start"),
+            ...filterFlatten(flattenSrc, "end"),
+          },
+          flattenEmpty: filterFlatten(flattenSrc, null, "null"),
         };
       }
     }
-    return null;
   }
 
   _onOptionSettingCheck(option: string) {
-    this.setState(
-      prevState => (
-        {
-          astOption: {
-            ...prevState.astOption,
-            [option]: !prevState.astOption[option],
-          },
-        },
-        this._onChangeJson(option)
-      )
-    );
+    this.setState(prevState => ({
+      astOption: {
+        ...prevState.astOption,
+        [option]: !prevState.astOption[option],
+      },
+    }));
+    this._onChangeJson(option);
   }
 
   _onChangeJson(option: string) {
-    const { src, astOption, flattenSrc, flattenType } = this.state;
+    const {
+      astOption,
+      flattenEmpty,
+      flattenSrc,
+      flattenType,
+      flattenLocation,
+    } = this.state;
 
     function triggerAstOutput(type) {
       const isShow = astOption[type];
       let newSrc = {};
       const types = {
         autofocus: () => {},
-        empty: () => {},
+        empty: () => {
+          newSrc = isShow
+            ? deleteFlatten(flattenSrc, flattenEmpty)
+            : mergeFlatten(flattenSrc, flattenEmpty);
+          return newSrc;
+        },
         type: () => {
-          if (isShow) {
-            newSrc = deleteFlatten(flattenSrc, flattenType);
-          } else {
-            newSrc = mergeFlatten(flattenSrc, flattenType);
-          }
+          newSrc = isShow
+            ? deleteFlatten(flattenSrc, flattenType)
+            : mergeFlatten(flattenSrc, flattenType);
           return newSrc;
         },
         location: () => {
-          console.log(isShow, type);
+          newSrc = isShow
+            ? deleteFlatten(flattenSrc, flattenLocation)
+            : mergeFlatten(flattenSrc, flattenLocation);
+          return newSrc;
         },
         default: () => {},
       };
@@ -126,9 +142,9 @@ export default class ASTPanel extends React.Component<Props, State> {
               overflowY: "scroll",
               width: "100%",
             }}
-            shouldCollapse={field => field.name !== "root"}
+            sortKeys={true}
             enableClipboard={false}
-            displayObjectSize={false}
+            displayObjectSize={true}
             displayDataTypes={false}
           />
         )}
