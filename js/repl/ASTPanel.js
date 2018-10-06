@@ -45,8 +45,8 @@ export default class ASTPanel extends React.Component<Props, State> {
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    const flattenSrc = flatten(nextProps.src);
     if (nextProps.src !== prevState.src) {
+      const flattenSrc = flatten(nextProps.src);
       return {
         src: unflatten(flattenSrc),
         flattenSrc: flattenSrc,
@@ -56,20 +56,22 @@ export default class ASTPanel extends React.Component<Props, State> {
     return null;
   }
 
-  onOptionSettingCheck(option: string) {
-    this.setState(prevState => ({
-      astOption: {
-        ...prevState.astOption,
-        [option]: !prevState.astOption[option],
-      },
-    }));
-
-    this.onChangeJson(option);
+  _onOptionSettingCheck(option: string) {
+    this.setState(
+      prevState => (
+        {
+          astOption: {
+            ...prevState.astOption,
+            [option]: !prevState.astOption[option],
+          },
+        },
+        this._onChangeJson(option)
+      )
+    );
   }
 
-  onChangeJson(option: string) {
+  _onChangeJson(option: string) {
     const { src, astOption, flattenSrc, flattenType } = this.state;
-    // const OPTION_ORDER = ["autofocus", "location", "empty", "type"];
 
     function triggerAstOutput(type) {
       const isShow = astOption[type];
@@ -104,18 +106,16 @@ export default class ASTPanel extends React.Component<Props, State> {
     return (
       <div className={`${styles.panel} ${className}`}>
         <div>
-          {OPTION_ORDER.map(option => {
-            return (
-              <label>
-                <input
-                  checked={astOption[option]}
-                  type="checkbox"
-                  onChange={() => this.onOptionSettingCheck(option)}
-                />
-                {option}
-              </label>
-            );
-          })}
+          {OPTION_ORDER.map(option => (
+            <label>
+              <input
+                checked={astOption[option]}
+                type="checkbox"
+                onChange={() => this._onOptionSettingCheck(option)}
+              />
+              {option}
+            </label>
+          ))}
         </div>
         {src && (
           <ReactJson

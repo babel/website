@@ -37,15 +37,12 @@ function flatten(target, opts) {
       output[newKey] = value;
     });
   }
-
   step(target);
-
   return output;
 }
 
 function unflatten(target, opts) {
   opts = opts || {};
-
   const delimiter = opts.delimiter || ".";
   const overwrite = opts.overwrite || false;
   const result = {};
@@ -61,7 +58,6 @@ function unflatten(target, opts) {
   // an integer.
   function getkey(key) {
     const parsedKey = Number(key);
-
     return isNaN(parsedKey) || key.indexOf(".") !== -1 || opts.object
       ? key
       : parsedKey;
