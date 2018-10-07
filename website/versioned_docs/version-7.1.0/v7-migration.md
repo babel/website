@@ -37,7 +37,7 @@ The "env" preset has been out for more than a year now, and completely replaces 
 
 These presets should be substituted with the "env" preset.
 
-## [Stage Preset Deprecations](https://github.com/babel/babel/issues/7770)
+## [Stage Preset Deprecations](https://babeljs.io/blog/2018/07/27/removing-babels-stage-presets)
 
 We are removing the stage presets in favor of explicit proposal usage. Can check the [stage-0 readme](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0) for more migration steps.
 
