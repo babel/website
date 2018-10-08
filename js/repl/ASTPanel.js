@@ -49,20 +49,18 @@ export default class ASTPanel extends React.Component<Props, State> {
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    if (nextProps.src) {
-      if (nextProps.src !== prevState.src) {
-        const flattenSrc = flatten(nextProps.src);
-        return {
-          src: nextProps.src,
-          flattenSrc: flattenSrc,
-          flattenType: filterFlatten(flattenSrc, "type"),
-          flattenLocation: {
-            ...filterFlatten(flattenSrc, "start"),
-            ...filterFlatten(flattenSrc, "end"),
-          },
-          flattenEmpty: filterFlatten(flattenSrc, null, "null"),
-        };
-      }
+    if (nextProps.src && nextProps.src !== prevState.src) {
+      const flattenSrc = flatten(nextProps.src);
+      return {
+        src: nextProps.src,
+        flattenSrc: flattenSrc,
+        flattenType: filterFlatten(flattenSrc, "type"),
+        flattenLocation: {
+          ...filterFlatten(flattenSrc, "start"),
+          ...filterFlatten(flattenSrc, "end"),
+        },
+        flattenEmpty: filterFlatten(flattenSrc, null, "null"),
+      };
     }
   }
 
@@ -123,12 +121,13 @@ export default class ASTPanel extends React.Component<Props, State> {
 
     return (
       <div className={`${styles.panel} ${className}`}>
-        <div>
+        <div className={styles.optionWrapper}>
           {OPTION_ORDER.map(option => (
-            <label>
+            <label className={styles.settingsLabel}>
               <input
                 checked={astOption[option]}
                 type="checkbox"
+                className={styles.inputCheckboxLeft}
                 onChange={() => this._onOptionSettingCheck(option)}
               />
               {option}
@@ -154,30 +153,39 @@ export default class ASTPanel extends React.Component<Props, State> {
 }
 
 const styles = {
-  codeMirror: css({
-    display: "block",
-    height: "100%",
+  optionWrapper: css({
+    display: "flex",
+    flexDirection: "row",
     width: "100%",
-    overflow: "auto",
-    position: "relative",
+    justifyContent: "stretch",
+    backgroundColor: colors.inverseBackgroundLight,
   }),
-  // error: css({
-  //   order: 2,
-  //   backgroundColor: colors.errorBackground,
-  //   borderTop: `1px solid ${colors.errorBorder}`,
-  //   color: colors.errorForeground,
-  //   ...sharedBoxStyles,
-  // }),
-  // info: css({
-  //   order: 1,
-  //   backgroundColor: colors.infoBackground,
-  //   borderTop: `1px solid ${colors.infoBorder}`,
-  //   color: colors.infoForeground,
-  //   ...sharedBoxStyles,
-  // }),
+  settingsLabel: css({
+    alignItems: "center",
+    display: "flex",
+    flex: "0 0 1.5rem",
+    flexDirection: "colum",
+    fontSize: "0.875rem",
+    fontWeight: "normal",
+    margin: "0 -0.5rem",
+    padding: "0 1rem",
+    transition: "background-color 250ms ease-in-out, color 250ms ease-in-out",
+
+    "&:hover": {
+      backgroundColor: colors.inverseBackgroundDark,
+      color: colors.inverseForeground,
+    },
+  }),
+  inputCheckboxLeft: css({
+    margin: "0 0.75rem 0 0 !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
+
+    "&:disabled": {
+      opacity: 0.5,
+    },
+  }),
   panel: css({
     height: "100%",
-    display: "flex",
+    display: "grid",
     flexDirection: "column",
     justifyContent: "stretch",
     overflow: "auto",
