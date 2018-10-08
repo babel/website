@@ -82,15 +82,15 @@ require("@babel/core").transform("code", {
 
 ### `decoratorsBeforeExport`
 
-`boolean`, defaults to `false`.
+`boolean`
 
 ```js
+// decoratorsBeforeExport: false
+export @decorator class Bar {}
+
 // decoratorsBeforeExport: true
 @decorator
 export class Foo {}
-
-// decoratorsBeforeExport: false
-export @decorator class Bar {}
 ```
 
 This option was added to help tc39 collect feedback from the community by allowing experimentation with both possible syntaxes.
