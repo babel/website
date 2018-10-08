@@ -92,6 +92,10 @@
     "website/pages/en": [
       "eslint --format=codeframe --fix",
       "git add"
+    ],
+    "website/data/*.js": [
+      "eslint --format=codeframe --fix",
+      "git add"
     ]
   }
 }
