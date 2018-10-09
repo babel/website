@@ -70,6 +70,7 @@ const styles = {
     backgroundColor: colors.errorBackground,
     borderTop: `1px solid ${colors.errorBorder}`,
     color: colors.errorForeground,
+    fontFamily: "monospace",
     ...sharedBoxStyles,
   }),
   info: css({
@@ -77,6 +78,7 @@ const styles = {
     backgroundColor: colors.infoBackground,
     borderTop: `1px solid ${colors.infoBorder}`,
     color: colors.infoForeground,
+    fontFamily: "monospace",
     ...sharedBoxStyles,
   }),
   panel: css({
