@@ -12,11 +12,11 @@ original_id: babel-preset-stage-2
 >
 > If you want the same configuration as before:
 >
-> ```json
+> ```json5
 > {
->   "plugins": [
+>   plugins: [
 >     // Stage 2
->     ["@babel/plugin-proposal-decorators", { "legacy": true }],
+>     ["@babel/plugin-proposal-decorators", { legacy: true }],
 >     "@babel/plugin-proposal-function-sent",
 >     "@babel/plugin-proposal-export-namespace-from",
 >     "@babel/plugin-proposal-numeric-separator",
@@ -25,15 +25,15 @@ original_id: babel-preset-stage-2
 >     // Stage 3
 >     "@babel/plugin-syntax-dynamic-import",
 >     "@babel/plugin-syntax-import-meta",
->     ["@babel/plugin-proposal-class-properties", { "loose": false }],
->     "@babel/plugin-proposal-json-strings"
->   ]
+>     ["@babel/plugin-proposal-class-properties", { loose: false }],
+>     "@babel/plugin-proposal-json-strings",
+>   ],
 > }
 > ```
 >
 > If you're using the same configuration across many separate projects, keep in mind that you can also create your own custom presets with whichever plugins and presets you're looking to use.
 >
-> ```jsx
+> ```js
 > module.exports = function() {
 >   return {
 >     plugins: [
