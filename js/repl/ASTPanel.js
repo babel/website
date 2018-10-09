@@ -106,7 +106,7 @@ export default class ASTPanel extends React.Component<Props, State> {
             : mergeFlatten(flattenSrc, flattenLocation);
           return newSrc;
         },
-        default: () => {},
+        default: () => flattenSrc,
       };
       return (types[type] || types["default"])();
     }
