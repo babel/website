@@ -4,6 +4,11 @@ title: @babel/preset-stage-1
 sidebar_label: stage-1
 ---
 
+> As of Babel v7, all the stage presets have been deprecated.
+> Check [the blog post](/blog/2018/07/27/removing-babels-stage-presets) for more information.
+>
+> For upgrade instructions, see [the README](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-1/README.md).
+
 The gist of Stage 1 is:
 
 > **Stage 1**: proposal
