@@ -128,6 +128,9 @@ const siteConfig = {
   },
   highlight: {
     theme: "tomorrow",
+    hljs: hljs => {
+      hljs.registerLanguage("json5", hljs => hljs.getLanguage("javascript"));
+    },
   },
   scripts: [
     "https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js",
