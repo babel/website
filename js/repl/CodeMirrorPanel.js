@@ -53,6 +53,7 @@ const sharedBoxStyles = {
   overflow: "auto",
   margin: 0,
   padding: "0.5rem 0.75rem",
+  fontFamily: "monospace",
   whiteSpace: "pre-wrap",
   "-webkit-overflow-scrolling": "touch",
 };
@@ -70,7 +71,6 @@ const styles = {
     backgroundColor: colors.errorBackground,
     borderTop: `1px solid ${colors.errorBorder}`,
     color: colors.errorForeground,
-    fontFamily: "monospace",
     ...sharedBoxStyles,
   }),
   info: css({
@@ -78,7 +78,6 @@ const styles = {
     backgroundColor: colors.infoBackground,
     borderTop: `1px solid ${colors.infoBorder}`,
     color: colors.infoForeground,
-    fontFamily: "monospace",
     ...sharedBoxStyles,
   }),
   panel: css({
