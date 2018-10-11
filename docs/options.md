@@ -111,7 +111,7 @@ const source = fs.readFileSync(filename, "utf8");
 const { ast } = babel.transformSync(source, { filename, ast: true, code: false });
 
 // Minify the file in a second pass and generate the output code here.
-const { code, map } = babel.transformFromAstSync(ast, code, {
+const { code, map } = babel.transformFromAstSync(ast, source, {
   filename,
   presets: ["minify"],
   babelrc: false,
