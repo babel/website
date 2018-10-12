@@ -14,7 +14,7 @@ original_id: babel-preset-stage-2
 >
 > ```json5
 > {
->   plugins: [
+>   "plugins": [
 >     // Stage 2
 >     ["@babel/plugin-proposal-decorators", { legacy: true }],
 >     "@babel/plugin-proposal-function-sent",
@@ -26,8 +26,8 @@ original_id: babel-preset-stage-2
 >     "@babel/plugin-syntax-dynamic-import",
 >     "@babel/plugin-syntax-import-meta",
 >     ["@babel/plugin-proposal-class-properties", { loose: false }],
->     "@babel/plugin-proposal-json-strings",
->   ],
+>     "@babel/plugin-proposal-json-strings"
+>   ]
 > }
 > ```
 >

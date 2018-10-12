@@ -4,10 +4,40 @@ title: @babel/preset-stage-3
 sidebar_label: stage-3
 ---
 
-> As of Babel v7, all the stage presets have been deprecated.
+> As of Babel v7, all of the stage-x presets have been deprecated.
 > Check [the blog post](/blog/2018/07/27/removing-babels-stage-presets) for more information.
 >
-> For upgrade instructions, see [the README](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-3/README.md).
+> For a more automatic migration, we have updated [babel-upgrade](https://github.com/babel/babel-upgrade) to do this for you (you can run `npx babel-upgrade`).
+>
+> If you want the same configuration as before:
+>
+> ```json5
+> {
+>   "plugins": [
+>     // Stage 3
+>     "@babel/plugin-syntax-dynamic-import",
+>     "@babel/plugin-syntax-import-meta",
+>     ["@babel/plugin-proposal-class-properties", { loose: false }],
+>     "@babel/plugin-proposal-json-strings"
+>   ]
+> }
+> ```
+>
+> If you're using the same configuration across many separate projects, keep in mind that you can also create your own custom presets with whichever plugins and presets you're looking to use.
+>
+> ```js
+> module.exports = function() {
+>   return {
+>     plugins: [
+>       require("@babel/plugin-syntax-dynamic-import"),
+>       [require("@babel/plugin-proposal-class-properties"), { loose: false }],
+>     ],
+>     presets: [
+>       // ...
+>     ],
+>   };
+> };
+> ```
 
 The gist of Stage 3 is:
 

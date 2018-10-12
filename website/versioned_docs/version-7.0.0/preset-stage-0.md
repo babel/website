@@ -14,7 +14,7 @@ original_id: babel-preset-stage-0
 >
 > ```json5
 > {
->   plugins: [
+>   "plugins": [
 >     // Stage 0
 >     "@babel/plugin-proposal-function-bind",
 >
@@ -37,8 +37,8 @@ original_id: babel-preset-stage-0
 >     "@babel/plugin-syntax-dynamic-import",
 >     "@babel/plugin-syntax-import-meta",
 >     ["@babel/plugin-proposal-class-properties", { loose: false }],
->     "@babel/plugin-proposal-json-strings",
->   ],
+>     "@babel/plugin-proposal-json-strings"
+>   ]
 > }
 > ```
 >

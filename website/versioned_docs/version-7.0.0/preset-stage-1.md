@@ -14,7 +14,7 @@ original_id: babel-preset-stage-1
 >
 > ```json5
 > {
->   plugins: [
+>   "plugins": [
 >     // Stage 1
 >     "@babel/plugin-proposal-export-default-from",
 >     "@babel/plugin-proposal-logical-assignment-operators",
@@ -34,8 +34,8 @@ original_id: babel-preset-stage-1
 >     "@babel/plugin-syntax-dynamic-import",
 >     "@babel/plugin-syntax-import-meta",
 >     ["@babel/plugin-proposal-class-properties", { loose: false }],
->     "@babel/plugin-proposal-json-strings",
->   ],
+>     "@babel/plugin-proposal-json-strings"
+>   ]
 > }
 > ```
 >
