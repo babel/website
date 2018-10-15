@@ -29,6 +29,14 @@ class Footer extends React.Component {
           <div>
             <h5>Community</h5>
             <a
+              href={this.props.config.getVideoUrl(
+                "videos.html",
+                this.props.language
+              )}
+            >
+              Videos
+            </a>
+            <a
               href={this.props.config.getPageUrl(
                 "users.html",
                 this.props.language

@@ -98,6 +98,8 @@ const siteConfig = {
     `${siteConfig.baseUrl}docs/${language || DEFAULT_LANGUAGE}/${doc}`,
   getPageUrl: (page, language) =>
     `${siteConfig.baseUrl}${language || DEFAULT_LANGUAGE}/${page}`,
+  getVideoUrl: (videos, language) =>
+  `${siteConfig.baseUrl}${language || DEFAULT_LANGUAGE}/${videos}`,
   organizationName: "babel",
   projectName: "babel",
   repoUrl: "https://github.com/babel/babel",
@@ -105,6 +107,7 @@ const siteConfig = {
     { doc: "index", label: "Docs" },
     { page: "setup", label: "Setup" },
     { page: "repl", label: "Try it out" },
+    { page: "videos", label: "Videos" },
     { blog: true, label: "Blog" },
     { search: true },
     { href: "https://opencollective.com/babel", label: "Donate" },
