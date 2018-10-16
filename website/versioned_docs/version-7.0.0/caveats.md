@@ -45,7 +45,7 @@ this is widely supported but you may run into problems with much older browsers.
 around.
 
 For classes that have `super`s, the super class won't resolve correctly. You can
-get around this by enabling the `loose` option in the [es2015-classes](plugin-transform-es2015-classes.md) plugin.
+get around this by enabling the `loose` option in the [transform-classes](plugin-transform-classes.md) plugin.
 
 ### Getters/setters (8 and below)
 
