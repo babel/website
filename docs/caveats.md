@@ -21,7 +21,7 @@ There is also the `loose` option for some of these plugins.
 ## Classes
 
 Built-in classes such as `Date`, `Array`, `DOM` etc cannot be properly subclassed
-due to limitations in ES5 (for the [es2015-classes](plugin-transform-es2015-classes.md) plugin).
+due to limitations in ES5 (for the [transform-classes](plugin-transform-classes.md) plugin).
 You can try to use [babel-plugin-transform-builtin-extend](https://github.com/loganfsmyth/babel-plugin-transform-builtin-extend) based on `Object.setPrototypeOf` and `Reflect.construct`, but it also has some limitations.
 
 ## ES5
@@ -44,7 +44,7 @@ this is widely supported but you may run into problems with much older browsers.
 around.
 
 For classes that have `super`s, the super class won't resolve correctly. You can
-get around this by enabling the `loose` option in the [es2015-classes](plugin-transform-es2015-classes.md) plugin.
+get around this by enabling the `loose` option in the [transform-classes](plugin-transform-classes.md) plugin.
 
 ### Getters/setters (8 and below)
 
