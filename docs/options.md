@@ -105,13 +105,13 @@ would be a chain of multiple transform passes, along the lines of
 
 ```js
 const filename = "example.js";
-const code = fs.readFileSync(filename, "utf8");
+const source = fs.readFileSync(filename, "utf8");
 
 // Load and compile file normally, but skip code generation.
-const { ast } = babel.transformSync(code, { filename, ast: true, code: false });
+const { ast } = babel.transformSync(source, { filename, ast: true, code: false });
 
 // Minify the file in a second pass and generate the output code here.
-const { code, map } = babel.transformFromAstSync(ast, code, {
+const { code, map } = babel.transformFromAstSync(ast, source, {
   filename,
   presets: ["minify"],
   babelrc: false,
