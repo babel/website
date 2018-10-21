@@ -210,7 +210,7 @@ Note that the above `.` is the `RegExp` equivalent to match any character, and n
 
 This option is useful if there is a bug in a native implementation, or a combination of a non-supported feature + a supported one doesn't work.
 
-For example, Node 4 supports native classes but not spread. If `super` is used with a spread argument, then the `@babel/plugin-transform-classes` transform needs to be `include`d, as it is not possible to transpile a spread with `super` otherwise.
+For example, Node 4 supports native classes but not spread. If `super` is used with a spread argument, then the `@babel/plugin-proposal-object-rest-spread` transform needs to be `include`d, as it is not possible to transpile a spread with `super` otherwise.
 
 > NOTE: The `include` and `exclude` options _only_ work with the [plugins included with this preset](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugin-features.js); so, for example, including `@babel/plugin-proposal-do-expressions` or excluding `@babel/plugin-proposal-function-bind` will throw errors. To use a plugin _not_ included with this preset, add them to your ["plugins"](options.md#plugins) directly.
 
