@@ -36,3 +36,28 @@ require("@babel/core").transform("code", {
 });
 ```
 
+## Dynamic imports with babel-preset-env
+
+The babel-preset-env plugin doesn't know that the dynamic import plugin will translate `import` into a `Promise`. For example, IE requires the `promise` and `iterator` polyfill to be added manually. 
+
+```js
+// webpack config
+const config = {
+    entry: [
+        'core-js/modules/es6.promise',
+        'core-js/modules/es6.array.iterator',
+        path.resolve(__dirname, "src/main.js"),
+    ],
+    // ...
+}
+```
+
+or
+
+```js
+// src/main.js
+import 'core-js/modules/es6.promise';
+import 'core-js/modules/es6.array.iterator';
+
+// ...
+```

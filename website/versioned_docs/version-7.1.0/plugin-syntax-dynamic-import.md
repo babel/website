@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-babel-plugin-syntax-dynamic-import
+id: version-7.1.0-babel-plugin-syntax-dynamic-import
 title: @babel/plugin-syntax-dynamic-import
 sidebar_label: syntax-dynamic-import
 original_id: babel-plugin-syntax-dynamic-import
