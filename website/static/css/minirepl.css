@@ -1,11 +1,9 @@
 .hero-repl {
-  opacity: 0;
-  -webkit-transition: opacity 0.25s ease-out;
-  -o-transition: opacity 0.25s ease-out;
-  transition: opacity 0.25s ease-out;
   color: white;
   max-width: 920px;
   margin: 0 auto;
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
 }
 .hero-repl--visible {
   opacity: 1;
@@ -22,11 +20,9 @@
   position: absolute;
   right: 0;
   text-align: left;
+  transition: opacity 0.25s ease-out;
   top: 47px;
   white-space: pre;
-  -webkit-transition: opacity 0.25s ease-out;
-  -o-transition: opacity 0.25s ease-out;
-  transition: opacity 0.25s ease-out;
 }
 .hero-repl__error--visible {
   opacity: 1;
@@ -42,8 +38,6 @@
   display: block;
   padding: 1rem 0;
   text-decoration: underline;
-  -webkit-transition: all 0.25s ease-out;
-  -o-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
 }
 .hero-repl__footer a:hover {
@@ -51,25 +45,11 @@
   color: #fff;
 }
 .hero-repl__editor {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
 }
 @media (min-width: 992px) {
   .hero-repl__editor {
-    -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    -webkit-flex-direction: row;
-    -moz-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
   }
 }
@@ -81,11 +61,6 @@
 
 @media (min-width: 992px) {
   .hero-repl__pane {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1 1 50%;
-    -moz-box-flex: 1;
-    -moz-flex: 1 1 50%;
-    -ms-flex: 1 1 50%;
     flex: 1 1 50%;
   }
 }

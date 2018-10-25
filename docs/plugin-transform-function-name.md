@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-function-name
-title: babel-plugin-transform-function-name
+title: @babel/plugin-transform-function-name
 sidebar_label: transform-function-name
 ---
 

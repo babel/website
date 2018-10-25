@@ -5,7 +5,7 @@ id: core-packages
 
 ## Other packages
 
-* [babel-parser]([parser].md): babel-parser (Babylon) is a JavaScript parser used in Babel
+* [babel-parser](parser.md): babel-parser (Babylon) is a JavaScript parser used in Babel
 * [babel-core](core.md): The core module that wraps everything in our transform api (used for integrations)
 * [babel-generator](generator.md): Prints a string from an AST
 * [babel-types](types.md): Babel Types is a Lodash-esque utility library for AST nodes

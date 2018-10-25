@@ -6,16 +6,16 @@ sidebar_label: Roadmap
 
 > Not everything is set in stone or has an issue for it! Looking to post these to get more people involved or integrate with other projects.
 
-## Babel 7
+## Babel 7.x
 
-Mentioned these in [babel/notes](https://github.com/babel/notes/blob/master/2017/2017-12/dec-21.md#before-the-v7-final) and some of the [high priority items](https://github.com/babel/babel/labels/Priority%3A%20High).
+TODO
 
 ## Ecosystem
 
 ### Remake `compat-table` used in preset-env
 
 > https://github.com/kangax/compat-table could use a remake, ideally work with browser vendors on this
-    
+
 - There is also https://github.com/mdn/browser-compat-data
 - Also use data from test262?
 - Run tests against real browsers
@@ -78,7 +78,7 @@ Mentioned these in [babel/notes](https://github.com/babel/notes/blob/master/2017
 - Use [six-speed](https://github.com/kpdecker/six-speed) repo as a base, needs to apply for ES6 and proposals
 - Need continued maintainence
 
-### Compiled Output Stats 
+### Compiled Output Stats
 
 > [#5340](https://github.com/babel/babel/issues/5340) Can show the code size before and after compiling to give a sense of compiled output. Could create suggestions like using "loose" mode or not compiling, etc.
 
@@ -132,23 +132,17 @@ Better set of tests for stability/spec compliancy.
 - Validate config better
 - Create/expand on new tools like https://github.com/boopathi/babel-time-travel
 
-### Speed
-  
-> Already working with v8 via https://github.com/v8/web-tooling-benchmark, but can add other representative workloads: jsx/flow/ts/es6+.
-
-Can run these benchmarks for perf PRs, should track some over time.
-
 ### Website Rehaul
 
-- Use a blog framework like Gatsby/Docusaurus
-- Versioned docs pages: currently we don't have an easy way to show both the documentation for v6, v7, and beyond.
-- Translatable docs
+- [x] Use Docusaurus
+- [x] Versioned docs pages: currently we don't have an easy way to show both the documentation for v6, v7, and beyond.
+- [ ] Translatable docs
 
 #### Expanded Docs
 
 - Real documentation on APIs
 - Up to date babel-handbook/merge into rehauled website
-- Continue our [videos page](https://babeljs.io/docs/community/videos/)
+- [x] Continue our [videos page](https://babeljs.io/docs/community/videos/)
 - Link to common errors pages
 
 #### Better REPL
@@ -157,7 +151,7 @@ Can run these benchmarks for perf PRs, should track some over time.
 - Import any package from npm (can give test examples for 3rd party plugins, debugging issues)
 - Run any plugin from npm
 - Create a plugin from the repl (can we merge it with ASTExplorer/codesandbox?), even publish, run from URL?
-- Import/Export a `.babelrc` file
+- Import/Export a config file
 - Combine ^ with the ability to run the version of Babel in a PR/master.
 - Use plugin's tests in the repo as "examples" for docs.
 

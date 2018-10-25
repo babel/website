@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-property-mutators
-title: babel-plugin-transform-property-mutators
+title: @babel/plugin-transform-property-mutators
 sidebar_label: transform-property-mutators
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-do-expressions
-title: babel-plugin-syntax-do-expressions
+title: @babel/plugin-syntax-do-expressions
 sidebar_label: syntax-do-expressions
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-proto-to-assign
-title: babel-plugin-transform-proto-to-assign
+title: @babel/plugin-transform-proto-to-assign
 sidebar_label: transform-proto-to-assign
 ---
 

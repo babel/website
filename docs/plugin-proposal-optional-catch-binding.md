@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-optional-catch-binding
-title: babel-plugin-proposal-optional-catch-binding
+title: @babel/plugin-proposal-optional-catch-binding
 sidebar_label: proposal-optional-catch-binding
 ---
 

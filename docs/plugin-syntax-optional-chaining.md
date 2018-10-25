@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-optional-chaining
-title: babel-plugin-syntax-optional-chaining
+title: @babel/plugin-syntax-optional-chaining
 sidebar_label: syntax-optional-chaining
 ---
 

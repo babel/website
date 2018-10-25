@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-block-scoped-functions
-title: babel-plugin-transform-block-scoped-functions
+title: @babel/plugin-transform-block-scoped-functions
 sidebar_label: transform-block-scoped-functions
 ---
 

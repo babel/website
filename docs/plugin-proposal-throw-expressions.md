@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-throw-expressions
-title: babel-plugin-proposal-throw-expressions
+title: @babel/plugin-proposal-throw-expressions
 sidebar_label: proposal-throw-expressions
 ---
 

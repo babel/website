@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-jsx
-title: babel-plugin-syntax-jsx
+title: @babel/plugin-syntax-jsx
 sidebar_label: syntax-jsx
 ---
 

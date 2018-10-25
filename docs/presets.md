@@ -3,7 +3,7 @@ id: presets
 title: Presets
 ---
 
-Don't want to assemble your own set of plugins? No problem! Presets can act as an array of Babel plugins or even a sharable [`.babelrc`](babelrc.md) config.
+Don't want to assemble your own set of plugins? No problem! Presets can act as an array of Babel plugins or even a sharable [`options`](options.md) config.
 
 ## Official Presets
 
@@ -79,7 +79,7 @@ For more info, check out the [babel handbook](https://github.com/thejameskyle/ba
 If the preset is on npm, you can pass in the name of the preset and babel will check that it's installed in `node_modules`
 
 ```json
-{ 
+{
   "presets": ["babel-preset-myPreset"]
 }
 ```

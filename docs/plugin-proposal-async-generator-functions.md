@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-async-generator-functions
-title: babel-plugin-proposal-async-generator-functions
+title: @babel/plugin-proposal-async-generator-functions
 sidebar_label: proposal-async-generator-functions
 ---
 

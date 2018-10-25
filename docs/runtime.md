@@ -1,7 +1,7 @@
 ---
 id: babel-runtime
-title: babel-runtime
-sidebar_label: babel-runtime
+title: @babel/runtime
+sidebar_label: runtime
 ---
 
 `@babel/runtime` is a library that contain's Babel modular runtime helpers and a version of `regenerator-runtime`.
@@ -25,7 +25,7 @@ Sometimes Babel may inject some code in the output that is the same and thus can
 For example, with the class transform (without loose mode):
 
 ```js
-class A {}
+class Circle {}
 ```
 
 turns into:

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-async-generators
-title: babel-plugin-syntax-async-generators
+title: @babel/plugin-syntax-async-generators
 sidebar_label: syntax-async-generators
 ---
 

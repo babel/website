@@ -5,41 +5,35 @@
 }
 
 .showcaseSection .babel-user {
-  width: 33.33333%;
+  box-sizing: border-box;
   padding-left: 15px;
   padding-right: 15px;
-  box-sizing: border-box;
+  width: 33.33333%;
 }
 
 .mainContainer .showcaseSection .babel-user-link {
-  display: block;
-  position: relative;
-  height: 120px;
-  padding: 10px;
-  margin: 15px 0;
   background: #fff;
   border-radius: 5px;
+  display: block;
+  height: 120px;
+  margin: 15px 0;
+  padding: 10px;
+  position: relative;
 }
 
 .showcaseSection .babel-user .babel-user-logo {
+  left: 50%;
+  max-height: 100px;
+  max-width: 200px;
   position: absolute;
   top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  max-width: 200px;
-  max-height: 100px;
 }
 
 .mainContainer .showcaseSection .babel-user-link:hover {
   background: #fff;
-  -webkit-transform: scale3d(1.1, 1.1, 1);
-  -ms-transform: scale3d(1.1, 1.1, 1);
-  -o-transform: scale3d(1.1, 1.1, 1);
-  transform: scale3d(1.1, 1.1, 1);
   box-shadow: 0px 0px 2px 0px #000;
+  transform: scale3d(1.1, 1.1, 1);
 }
 
 @media only screen and (min-width: 360px) and (max-width: 736px) {

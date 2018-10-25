@@ -73,7 +73,7 @@ const sponsors = [
 ];
 
 // move to website/data later
-const videos = loadYaml("./data/videos.yml");
+const videos = require(path.join(__dirname, "/data/videos.js"));
 const team = loadYaml("./data/team.yml");
 const tools = loadYaml("./data/tools.yml");
 const setupBabelrc = loadMD("../docs/tools/setup.md");
@@ -82,6 +82,8 @@ toolsMD.forEach(tool => {
   tool.install = loadMD(`${tool.path}/install.md`);
   tool.usage = loadMD(`${tool.path}/usage.md`);
 });
+
+const DEFAULT_LANGUAGE = "en";
 
 const GITHUB_URL = "https://github.com/babel/website";
 
@@ -92,6 +94,12 @@ const siteConfig = {
   tagline: "The compiler for next generation JavaScript",
   url: "https://babeljs.io",
   baseUrl: "/",
+  getDocUrl: (doc, language) =>
+    `${siteConfig.baseUrl}docs/${language || DEFAULT_LANGUAGE}/${doc}`,
+  getPageUrl: (page, language) =>
+    `${siteConfig.baseUrl}${language || DEFAULT_LANGUAGE}/${page}`,
+  getVideoUrl: (videos, language) =>
+  `${siteConfig.baseUrl}${language || DEFAULT_LANGUAGE}/${videos}`,
   organizationName: "babel",
   projectName: "babel",
   repoUrl: "https://github.com/babel/babel",
@@ -99,6 +107,7 @@ const siteConfig = {
     { doc: "index", label: "Docs" },
     { page: "setup", label: "Setup" },
     { page: "repl", label: "Try it out" },
+    { page: "videos", label: "Videos" },
     { blog: true, label: "Blog" },
     { search: true },
     { href: "https://opencollective.com/babel", label: "Donate" },
@@ -122,10 +131,14 @@ const siteConfig = {
   },
   highlight: {
     theme: "tomorrow",
+    hljs: hljs => {
+      hljs.registerLanguage("json5", hljs => hljs.getLanguage("javascript"));
+    },
   },
   scripts: [
     "https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js",
     "/js/code-blocks-buttons.js",
+    "/scripts/repl-page-hacks.js",
   ],
   // stylesheets: [ "" ],
   // translationRecruitingLink: "https://crowdin.com/project/",

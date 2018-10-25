@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-class-properties
-title: babel-plugin-proposal-class-properties
+title: @babel/plugin-proposal-class-properties
 sidebar_label: proposal-class-properties
 ---
 

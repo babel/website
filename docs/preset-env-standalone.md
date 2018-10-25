@@ -1,6 +1,6 @@
 ---
 id: babel-preset-env-standalone
-title: babel-preset-env-standalone
+title: @babel/preset-env-standalone
 sidebar_label: env-standalone
 ---
 

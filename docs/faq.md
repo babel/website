@@ -56,7 +56,7 @@ We hear you! Babel 6 requires a tiny bit of configuration in order to get going.
 ## Upgrading from Babel 5.x to Babel 6
 
 At the heart of Babel 6 are [plugins](plugins.md). What plugins you need completely
-depends on your specific configuration but just add the following `.babelrc` file to
+depends on your specific configuration but just add the following [config file](config-files.md) to
 get all the same transforms that were in Babel 5:
 
 ```json

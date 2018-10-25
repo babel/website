@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-shorthand-properties
-title: babel-plugin-transform-shorthand-properties
+title: @babel/plugin-transform-shorthand-properties
 sidebar_label: transform-shorthand-properties
 ---
 

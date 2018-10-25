@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-sticky-regex
-title: babel-plugin-transform-sticky-regex
+title: @babel/plugin-transform-sticky-regex
 sidebar_label: transform-sticky-regex
 ---
 

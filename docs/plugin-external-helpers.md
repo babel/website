@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-external-helpers
-title: babel-plugin-external-helpers
+title: @babel/plugin-external-helpers
 sidebar_label: external-helpers
 ---
 

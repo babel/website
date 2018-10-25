@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-instanceof
-title: babel-plugin-transform-instanceof
+title: @babel/plugin-transform-instanceof
 sidebar_label: transform-instanceof
 ---
 

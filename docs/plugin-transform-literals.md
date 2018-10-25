@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-literals
-title: babel-plugin-transform-literals
+title: @babel/plugin-transform-literals
 sidebar_label: transform-literals
 ---
 

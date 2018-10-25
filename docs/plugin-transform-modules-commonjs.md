@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-modules-commonjs
-title: babel-plugin-transform-modules-commonjs
+title: @babel/plugin-transform-modules-commonjs
 sidebar_label: transform-modules-commonjs
 ---
 

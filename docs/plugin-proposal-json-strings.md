@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-json-strings
-title: babel-plugin-proposal-json-strings
+title: @babel/plugin-proposal-json-strings
 sidebar_label: proposal-json-strings
 ---
 
@@ -53,5 +53,5 @@ require("@babel/core").transform("code", {
 ```
 
 ## References
-- [Proposal: Optional Catch Binding for ECMAScript](https://github.com/babel/proposals/issues/7)
+- [Proposal: Subsume JSON strings](https://github.com/babel/proposals/issues/43)
 

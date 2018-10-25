@@ -20,8 +20,7 @@
     requirejs: RequireJS
     rollup: Rollup
     sprockets: Sprockets
-    webpack2: Webpack
-    webpack: Webpack 1
+    webpack: Webpack
     fly: Fly
     start: Start
 - name: Frameworks

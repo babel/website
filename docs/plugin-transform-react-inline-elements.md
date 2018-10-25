@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-react-inline-elements
-title: babel-plugin-transform-react-inline-elements
+title: @babel/plugin-transform-react-inline-elements
 sidebar_label: transform-react-inline-elements
 ---
 

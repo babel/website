@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-spread
-title: babel-plugin-transform-spread
+title: @babel/plugin-transform-spread
 sidebar_label: transform-spread
 ---
 

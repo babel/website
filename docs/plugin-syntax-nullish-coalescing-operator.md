@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-nullish-coalescing-operator
-title: babel-plugin-syntax-nullish-coalescing-operator
+title: @babel/plugin-syntax-nullish-coalescing-operator
 sidebar_label: syntax-nullish-coalescing-operator
 ---
 

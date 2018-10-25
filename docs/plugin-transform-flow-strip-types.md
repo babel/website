@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-flow-strip-types
-title: babel-plugin-transform-flow-strip-types
+title: @babel/plugin-transform-flow-strip-types
 sidebar_label: transform-flow-strip-types
 ---
 

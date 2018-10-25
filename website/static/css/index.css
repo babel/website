@@ -40,6 +40,19 @@
   margin: 1rem 0 3.125rem;
 }
 
+.hero__announcement {
+  background: rgba(238, 218, 124, 1);
+  border-radius: 20px;
+  color: #24292e;
+  display: inline-flex;
+  margin-bottom: 2rem;
+  padding: 8px 20px;
+}
+
+.hero__announcement a {
+  border-bottom: 1px solid #999;
+}
+
 @media only screen and (min-width: 736px) {
   .hero {
     padding: 7rem 1rem 5rem;

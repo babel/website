@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-unicode-property-regex
-title: babel-plugin-proposal-unicode-property-regex
+title: @babel/plugin-proposal-unicode-property-regex
 sidebar_label: proposal-unicode-property-regex
 ---
 

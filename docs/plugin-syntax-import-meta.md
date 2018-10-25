@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-import-meta
-title: babel-plugin-syntax-import-meta
+title: @babel/plugin-syntax-import-meta
 sidebar_label: syntax-import-meta
 ---
 

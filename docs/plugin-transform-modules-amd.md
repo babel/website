@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-modules-amd
-title: babel-plugin-transform-modules-amd
+title: @babel/plugin-transform-modules-amd
 sidebar_label: transform-modules-amd
 ---
 

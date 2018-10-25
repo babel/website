@@ -15,37 +15,41 @@ The entire process to set this up involves:
 
 1. Running these commands to install the packages:
 
-    ```sh
-    npm install --save-dev @babel/core @babel/cli @babel/preset-env
-    npm install --save @babel/polyfill
-    ```
+   ```sh
+   npm install --save-dev @babel/core @babel/cli @babel/preset-env
+   npm install --save @babel/polyfill
+   ```
+
 2. Creating a config file named `babel.config.js` in the root of your project with this content:
 
-    ```js
-    const presets = [
-      ["@babel/env", {
-        targets: {
-          edge: "17",
-          firefox: "60",
-          chrome: "67",
-          safari: "11.1"
-        },
-        useBuiltIns: "usage"
-      }]
-    ];
+   ```js
+   const presets = [
+     [
+       "@babel/env",
+       {
+         targets: {
+           edge: "17",
+           firefox: "60",
+           chrome: "67",
+           safari: "11.1",
+         },
+         useBuiltIns: "usage",
+       },
+     ],
+   ];
 
-    module.exports = { presets };
-    ```
+   module.exports = { presets };
+   ```
 
-    > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support.
+   > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support.
 
 3. And running this command to compile all your code from the `src` directory to `lib`:
 
-    ```sh
-    ./node_modules/.bin/babel src --out-dir lib
-    ```
+   ```sh
+   ./node_modules/.bin/babel src --out-dir lib
+   ```
 
-    > You can use the npm package runner that comes with npm@5.2.0 to shorten that command by replacing `./node_modules/.bin/babel` with `npx babel`
+   > You can use the npm package runner that comes with npm@5.2.0 to shorten that command by replacing `./node_modules/.bin/babel` with `npx babel`
 
 Read on for a step-by-step explanation of how this works and an introduction to each of the tools used.
 
@@ -103,7 +107,7 @@ const fn = () => 1;
 // converted to
 
 var fn = function fn() {
-    return 1;
+  return 1;
 };
 ```
 
@@ -127,14 +131,17 @@ For now, let's create a file called `babel.config.js` with the following content
 
 ```js
 const presets = [
-  ["@babel/env", {
-    targets: {
-      edge: "17",
-      firefox: "60",
-      chrome: "67",
-      safari: "11.1"
-    }
-  }]
+  [
+    "@babel/env",
+    {
+      targets: {
+        edge: "17",
+        firefox: "60",
+        chrome: "67",
+        safari: "11.1",
+      },
+    },
+  ],
 ];
 
 module.exports = { presets };
@@ -146,7 +153,7 @@ Now the `env` preset will only load transformation plugins for features that are
 
 The [@babel/polyfill](polyfill.md) module includes [core-js](https://github.com/zloirock/core-js) and a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) to emulate a full ES2015+ environment.
 
-This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (provided you use the [regenerator](https://babeljs.io/docs/plugins/transform-regenerator/) plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
+This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (provided you use the [regenerator](plugin-transform-regenerator.md) plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
 
 For library/tool authors this may be too much. If you don't need the instance methods like `Array.prototype.includes` you can do without polluting the global scope altogether by using the [transform runtime](plugin-transform-runtime.md) plugin instead of `@babel/polyfill`.
 
@@ -164,15 +171,18 @@ Now luckily for us, we're using the `env` preset which has a `"useBuiltIns"` opt
 
 ```js
 const presets = [
-  ["@babel/env", {
-    targets: {
-      edge: "17",
-      firefox: "60",
-      chrome: "67",
-      safari: "11.1"
+  [
+    "@babel/env",
+    {
+      targets: {
+        edge: "17",
+        firefox: "60",
+        chrome: "67",
+        safari: "11.1",
+      },
+      useBuiltIns: "usage",
     },
-    useBuiltIns: "usage"
-  }]
+  ],
 ];
 
 module.exports = { presets };
@@ -181,7 +191,7 @@ module.exports = { presets };
 Babel will now inspect all your code for features that are missing in your target environments and include only the required polyfills. For example this code:
 
 ```js
-Promise.resolve().finally()
+Promise.resolve().finally();
 ```
 
 would turn into this (because Edge 17 doesn't have `Promise.prototype.finally`):
@@ -189,10 +199,10 @@ would turn into this (because Edge 17 doesn't have `Promise.prototype.finally`):
 ```js
 require("core-js/modules/es.promise.finally");
 
-Promise.resolve().finally()
+Promise.resolve().finally();
 ```
 
-If we weren't using the `env` preset with the `"useBuiltIns"` option set to `"usage"` we would've had to require the full polyfill *only once* in our entry point before any other code.
+If we weren't using the `env` preset with the `"useBuiltIns"` option set to `"usage"` we would've had to require the full polyfill _only once_ in our entry point before any other code.
 
 ## Summary
 

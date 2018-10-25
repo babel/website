@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-regenerator
-title: babel-plugin-transform-regenerator
+title: @babel/plugin-transform-regenerator
 sidebar_label: transform-regenerator
 ---
 

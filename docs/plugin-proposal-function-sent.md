@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-function-sent
-title: babel-plugin-proposal-function-sent
+title: @babel/plugin-proposal-function-sent
 sidebar_label: proposal-function-sent
 ---
 

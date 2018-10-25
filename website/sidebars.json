@@ -17,8 +17,8 @@
       "roadmap"
     ],
     "Usage": [
-      "babelconfigjs",
-      "babelrc",
+      "options",
+      "config-files",
       "babel-cli",
       "babel-polyfill",
       "babel-plugin-transform-runtime",

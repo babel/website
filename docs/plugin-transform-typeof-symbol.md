@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-typeof-symbol
-title: babel-plugin-transform-typeof-symbol
+title: @babel/plugin-transform-typeof-symbol
 sidebar_label: transform-typeof-symbol
 ---
 

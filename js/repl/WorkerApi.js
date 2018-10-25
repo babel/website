@@ -46,6 +46,7 @@ export default class WorkerApi {
           envPresetDebugInfo,
           meta,
           sourceMap,
+          transitions,
         }) => {
           let evalErrorMessage = null;
 
@@ -66,6 +67,7 @@ export default class WorkerApi {
             evalErrorMessage,
             meta,
             sourceMap,
+            transitions,
           };
         }
       );

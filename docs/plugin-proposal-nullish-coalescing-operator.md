@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-nullish-coalescing-operator
-title: babel-plugin-proposal-nullish-coalescing-operator
+title: @babel/plugin-proposal-nullish-coalescing-operator
 sidebar_label: proposal-nullish-coalescing-operator
 ---
 

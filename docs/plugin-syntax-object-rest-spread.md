@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-object-rest-spread
-title: babel-plugin-syntax-object-rest-spread
+title: @babel/plugin-syntax-object-rest-spread
 sidebar_label: syntax-object-rest-spread
 ---
 

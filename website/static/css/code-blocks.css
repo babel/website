@@ -6,7 +6,6 @@ pre {
 .hljs.hljs {
   background-color: rgb(253, 250, 235);
   padding: 1em;
-  overflow-x: visible;
   white-space: pre-wrap;
   border-left: 0;
   /* base 20px + header height */
@@ -31,41 +30,47 @@ pre {
   z-index: 1;
 }
 
-.hljs::after {
-}
-
 /* CSS needs to be listed first so that others can overwrite */
-.hljs.css::before {
+.hljs.language-css::before {
   content: "CSS";
 }
 
-.hljs.diff::before {
+.hljs.language-diff::before {
   content: "Diff";
 }
 
-.hljs.js::before,
-.hljs.javascript::before {
+.hljs.language-js::before,
+.hljs.language-javascript::before {
   content: "JavaScript";
 }
-.hljs.json::before {
+
+.hljs.language-jsx::before {
+  content: "JSX";
+}
+
+.hljs.language-json::before {
   content: "JSON";
 }
 
-.hljs.sh::before,
-.hljs.shell::before,
-.hljs.bash::before {
+.hljs.language-json5::before {
+  content: "JSON5";
+}
+
+.hljs.language-sh::before,
+.hljs.language-shell::before,
+.hljs.language-bash::before {
   content: "Shell";
 }
 
-.hljs.ts::before {
+.hljs.language-ts::before {
   content: "TypeScript";
 }
 
-.hljs.html::before {
+.hljs.language-html::before {
   content: "HTML";
 }
 
-.hljs.yaml::before {
+.hljs.language-yaml::before {
   content: "YAML";
 }
 
@@ -156,7 +161,7 @@ pre .btn-icon {
   color: #b0a673;
   background-color: transparent;
   height: 34px;
-  transition: all .25s ease-out;
+  transition: all 0.25s ease-out;
 }
 
 pre .btn-icon:hover {
@@ -171,7 +176,7 @@ pre .btn-icon:hover {
 
 .btn-icon svg {
   fill: currentColor;
-  margin-right: .4em;
+  margin-right: 0.4em;
 }
 
 .btn-icon__label {

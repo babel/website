@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-modules-umd
-title: babel-plugin-transform-modules-umd
+title: @babel/plugin-transform-modules-umd
 sidebar_label: transform-modules-umd
 ---
 

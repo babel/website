@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-export-namespace-from
-title: babel-plugin-syntax-export-namespace-from
+title: @babel/plugin-syntax-export-namespace-from
 sidebar_label: syntax-export-namespace-from
 ---
 
