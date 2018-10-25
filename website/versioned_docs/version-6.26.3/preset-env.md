@@ -9,7 +9,7 @@ original_id: babel-preset-env
 npm install babel-preset-env --save-dev
 ```
 
-Without any configuration options, babel-preset-env behaves exactly the same as babel-preset-latest (or babel-preset-es2015, babel-preset-es2016, and babel-preset-es2017 together).
+Without any configuration options, `babel-preset-env` behaves exactly the same as [`babel-preset-latest`](babel-preset-latest) (or [`babel-preset-es2015`](preset-es2015.md), [`babel-preset-es2016`](preset-es2016.md), and [`babel-preset-es2017`](preset-es2017.md) together).
 
 ```json
 {
@@ -33,7 +33,7 @@ This example only includes the polyfills and code transforms needed for the last
 }
 ```
 
-Similarly, if you're targeting Node.js instead of the browser, you can configure babel-preset-env to only include the polyfills and transforms necessary for a particular version:
+Similarly, if you're targeting Node.js instead of the browser, you can configure `babel-preset-env` to only include the polyfills and transforms necessary for a particular version:
 
 ```json
 {
@@ -93,7 +93,7 @@ This should be straightforward to do in most cases. There might be cases where p
 
 > Default behavior without options is the same as `babel-preset-latest`.
 
-It won't include `stage-x` plugins. env will support all plugins in what we consider the latest version of JavaScript (by matching what we do in [`babel-preset-latest`](http://babeljs.io/docs/plugins/preset-latest/)).
+It won't include `stage-x` plugins. env will support all plugins in what we consider the latest version of JavaScript (by matching what we do in [`babel-preset-latest`](babel-preset-latest)).
 
 Ref: [#14](https://github.com/babel/babel-preset-env/issues/14)
 
@@ -127,7 +127,7 @@ yarn add babel-preset-env --dev
 
 ## Usage
 
-The default behavior without options runs all transforms (behaves the same as [babel-preset-latest](https://babeljs.io/docs/plugins/preset-latest/)).
+The default behavior without options runs all transforms (behaves the same as [babel-preset-latest](babel-preset-latest)).
 
 ```json
 {
@@ -137,7 +137,7 @@ The default behavior without options runs all transforms (behaves the same as [b
 
 ## Options
 
-For more information on setting options for a preset, refer to the [plugin/preset options](http://babeljs.io/docs/plugins/#plugin-preset-options) documentation.
+For more information on setting options for a preset, refer to the [plugin/preset options](plugins.md#plugin-preset-options) documentation.
 
 ### `targets`
 
@@ -231,7 +231,7 @@ An array of plugins to always exclude/remove.
 
 The possible options are the same as the `include` option.
 
-This option is useful for "blacklisting" a transform like `transform-regenerator` if you don't use generators and don't want to include `regeneratorRuntime` (when using `useBuiltIns`) or for using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](http://babeljs.io/docs/plugins/transform-async-generator-functions/).
+This option is useful for "blacklisting" a transform like `transform-regenerator` if you don't use generators and don't want to include `regeneratorRuntime` (when using `useBuiltIns`) or for using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](babel-plugin-transform-async-generator-functions).
 
 ### `useBuiltIns`
 
@@ -239,7 +239,7 @@ This option is useful for "blacklisting" a transform like `transform-regenerator
 
 A way to apply `babel-preset-env` for polyfills (via "babel-polyfill").
 
-> NOTE: This does not currently polyfill experimental/stage-x built-ins like the regular "babel-polyfill" does.
+> NOTE: This does not currently polyfill `experimental/stage-x` built-ins like the regular `babel-polyfill` does.
 > This will only work with npm >= 3 (which should be used with Babel 6 anyway)
 
 ```
