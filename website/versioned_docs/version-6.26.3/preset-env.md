@@ -9,7 +9,7 @@ original_id: babel-preset-env
 npm install babel-preset-env --save-dev
 ```
 
-Without any configuration options, `babel-preset-env` behaves exactly the same as [`babel-preset-latest`](preset-latest.md) (or [`babel-preset-es2015`](preset-es2015.md), [`babel-preset-es2016`](preset-es2016.md), and [`babel-preset-es2017`](preset-es2017.md) together).
+Without any configuration options, `babel-preset-env` behaves exactly the same as [`babel-preset-latest`](babel-preset-latest) (or [`babel-preset-es2015`](preset-es2015.md), [`babel-preset-es2016`](preset-es2016.md), and [`babel-preset-es2017`](preset-es2017.md) together).
 
 ```json
 {
@@ -93,7 +93,7 @@ This should be straightforward to do in most cases. There might be cases where p
 
 > Default behavior without options is the same as `babel-preset-latest`.
 
-It won't include `stage-x` plugins. env will support all plugins in what we consider the latest version of JavaScript (by matching what we do in [`babel-preset-latest`](preset-latest.md)).
+It won't include `stage-x` plugins. env will support all plugins in what we consider the latest version of JavaScript (by matching what we do in [`babel-preset-latest`](babel-preset-latest)).
 
 Ref: [#14](https://github.com/babel/babel-preset-env/issues/14)
 
@@ -127,7 +127,7 @@ yarn add babel-preset-env --dev
 
 ## Usage
 
-The default behavior without options runs all transforms (behaves the same as [babel-preset-latest](preset-latest.md)).
+The default behavior without options runs all transforms (behaves the same as [babel-preset-latest](babel-preset-latest)).
 
 ```json
 {
@@ -231,7 +231,7 @@ An array of plugins to always exclude/remove.
 
 The possible options are the same as the `include` option.
 
-This option is useful for "blacklisting" a transform like `transform-regenerator` if you don't use generators and don't want to include `regeneratorRuntime` (when using `useBuiltIns`) or for using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](plugin-transform-async-generator-functions.md).
+This option is useful for "blacklisting" a transform like `transform-regenerator` if you don't use generators and don't want to include `regeneratorRuntime` (when using `useBuiltIns`) or for using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](babel-plugin-transform-async-generator-functions).
 
 ### `useBuiltIns`
 
@@ -441,7 +441,7 @@ Using polyfills:
 
 ## Caveats
 
-If you get a `SyntaxError: Unexpected token ...` error when using the [object-rest-spread](plugin-transform-object-rest-spread.md) transform then make sure the plugin has been updated to, at least, `v6.19.0`.
+If you get a `SyntaxError: Unexpected token ...` error when using the [object-rest-spread](babel-plugin-transform-object-rest-spread) transform then make sure the plugin has been updated to, at least, `v6.19.0`.
 
 ## Other Cool Projects
 
