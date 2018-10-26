@@ -370,8 +370,8 @@ The following are currently supported:
 
 **Builtins**
 
-- None
+- [es7.array.flat-map](https://github.com/tc39/proposal-flatMap)
 
 **Features**
 
-- [Optional catch binding](https://github.com/tc39/proposal-optional-catch-binding)
+- None
