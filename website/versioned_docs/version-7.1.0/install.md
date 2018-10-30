@@ -1,3 +1,7 @@
+---
+original_id: undefined
+id: version-7.1.0-undefined
+---
 While you _can_ install Babel CLI globally on your machine, it's much better
 to install it **locally** project by project.
 
