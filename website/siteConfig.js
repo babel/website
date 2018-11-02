@@ -137,9 +137,18 @@ const siteConfig = {
     },
   },
   scripts: [
-    "https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js",
-    "/js/code-blocks-buttons.js",
-    "/scripts/repl-page-hacks.js",
+    {
+      src: "https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js",
+      defer: true
+    },
+    {
+      src: "/js/code-blocks-buttons.js",
+      defer: true
+    },
+    {
+      src: "/scripts/repl-page-hacks.js",
+      defer: true
+    }
   ],
   // stylesheets: [ "" ],
   // translationRecruitingLink: "https://crowdin.com/project/",
@@ -151,6 +160,7 @@ const siteConfig = {
   onPageNav: "separate",
   gaTrackingId: "UA-114990275-1",
   cleanUrl: true,
+  enableUpdateTime: true,
   // markdownPlugins: [],
   // cname
 };
