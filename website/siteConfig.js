@@ -129,6 +129,7 @@ const siteConfig = {
     primaryColor: "#323330",
     secondaryColor: "#323330",
   },
+  blogSidebarCount: "ALL",
   highlight: {
     theme: "tomorrow",
     hljs: hljs => {
