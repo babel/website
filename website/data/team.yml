@@ -11,6 +11,9 @@ core:
   - name: Logan Smyth
     github: loganfsmyth
     twitter: loganfsmyth
+  - name: Nicolò Ribaudo
+    github: nicolo-ribaudo
+    twitter: NicoloRibaudo
   - name: Sven Sauleau
     github: xtuc
     twitter: svensauleau
@@ -44,9 +47,6 @@ members:
   - name: Mateusz Burzyński
     github: Andarist
     twitter: AndaristRake
-  - name: Nicolò Ribaudo
-    github: nicolo-ribaudo
-    twitter: NicoloRibaudo
   - name: Samuel Reed
     github: STRML
     twitter: STRML_
