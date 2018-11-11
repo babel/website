@@ -2,10 +2,8 @@
 
 This is the source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
 
-> We're just switched over to a new site using https://docusaurus.io so there might be a few issues to fix
-
-- Current site: `master` branch is deployed to https://babeljs.io
-- Old site: `old-site` branch is deployed to https://old.babeljs.io
+- Current: `master` branch is deployed to https://babeljs.io
+- Old: `old-site` branch is deployed to https://old.babeljs.io
 
 ### Setup
 
@@ -32,4 +30,4 @@ To make a fix to the published site you must edit the corresponding markdown fil
 
 #### Looking for support?
 
-For questions and support on contributing please join our [Slack community](https://slack.babeljs.io/), channel `#website` or directly [here](https://babeljs.slack.com/messages/website/).
+For questions and support on contributing please join our [Slack community](https://slack.babeljs.io/), channel `#website` or directly [here](https://babeljs.slack.com/messages/website).
