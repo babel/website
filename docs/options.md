@@ -453,7 +453,7 @@ This is an synonym for `sourceMaps`. Using `sourceMaps` is recommended.
 ### `sourceFileName`
 
 Type: `string`<br />
-Default: `opts.filenameRelative` when available, or `"unknown"`<br />
+Default: `path.basename(opts.filenameRelative)` when available, or `"unknown"`<br />
 
 The name to use for the file inside the source map object.
 
