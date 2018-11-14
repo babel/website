@@ -76,7 +76,7 @@ or
 
 ## Options
 
-For more information on setting options for a preset, refer to the [plugin/preset options](http://babeljs.io/docs/plugins/#plugin-preset-options) documentation.
+For more information on setting options for a preset, refer to the [preset options](presets.md#preset-options) documentation.
 
 ### `targets`
 
@@ -174,7 +174,7 @@ Enable ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.htm
 
 ### `modules`
 
-`"amd" | "umd" | "systemjs" | "commonjs" | "cjs" | false`, defaults to `"commonjs"`.
+`"amd" | "umd" | "systemjs" | "commonjs" | "cjs" | "auto" | false`, defaults to `"auto"`.
 
 Enable transformation of ES6 module syntax to another module type.
 
@@ -222,7 +222,7 @@ An array of plugins to always exclude/remove.
 
 The possible options are the same as the `include` option.
 
-This option is useful for "blacklisting" a transform like `@babel/plugin-transform-regenerator` if you don't use generators and don't want to include `regeneratorRuntime` (when using `useBuiltIns`) or for using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](http://babeljs.io/docs/plugins/proposal-async-generator-functions/).
+This option is useful for "blacklisting" a transform like `@babel/plugin-transform-regenerator` if you don't use generators and don't want to include `regeneratorRuntime` (when using `useBuiltIns`) or for using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](plugin-proposal-async-generator-functions.md).
 
 ### `useBuiltIns`
 
@@ -347,7 +347,7 @@ environment that only supports ES5.
 > ES6 support, but it is not yet stable. You can follow its progress in
 > [UglifyJS2 issue #448](https://github.com/mishoo/UglifyJS2/issues/448). If you
 > require an alternative minifier which _does_ support ES6 syntax, we recommend
-> using [babel-minify](https://github.com/babel/minify).
+> using [babel-minify](preset-minify.md).
 
 ### `configPath`
 
@@ -365,14 +365,14 @@ Toggles whether or not [browserslist config sources](https://github.com/ai/brows
 
 `boolean`, defaults to `false`
 
-Toggles enabling support for builtin/feature proposals that have shipped in browsers. If your target environments have native support for a feature proposal, its matching parser syntax plugin is enabled instead of performing any transform. Note that this _does not_ enable the same transformations as [`@babel/preset-stage-3`](https://babeljs.io/docs/plugins/preset-stage-3/), since proposals can continue to change before landing in browsers.
+Toggles enabling support for builtin/feature proposals that have shipped in browsers. If your target environments have native support for a feature proposal, its matching parser syntax plugin is enabled instead of performing any transform. Note that this _does not_ enable the same transformations as [`@babel/preset-stage-3`](preset-stage-3.md), since proposals can continue to change before landing in browsers.
 
 The following are currently supported:
 
 **Builtins**
 
-- None
+- [es7.array.flat-map](https://github.com/tc39/proposal-flatMap)
 
 **Features**
 
-- [Optional catch binding](https://github.com/tc39/proposal-optional-catch-binding)
+- None
