@@ -139,14 +139,14 @@ class Team extends React.Component {
         <Banner />
         <Container padding={["bottom"]}>
           <div>
-            <MemberSection title="Core contributors" members={team.core} />
-            <MemberSection title="Members" members={team.members} />
+            <MemberSection title="Core Maintainers" members={team.core} />
+            <MemberSection title="Team Members" members={team.members} />
             <MemberSection title="Summer of Code" members={team.summerOfCode} />
             <MemberSection
               title="NonHuman Members"
               members={team.nonHumanMember}
             />
-            <MemberSection title="Inactive members" members={team.alumnus} />
+            <MemberSection title="Alumni" members={team.alumnus} />
           </div>
         </Container>
       </div>
