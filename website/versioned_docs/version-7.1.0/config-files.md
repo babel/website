@@ -1,6 +1,7 @@
 ---
 title: Config Files
-id: config-files
+id: version-7.1.0-config-files
+original_id: config-files
 ---
 
 ## Configuration File Types
@@ -169,7 +170,6 @@ module: {
   }]
 }
 ```
-
 #### Jest
 Jest is often installed at the root of the monorepo and may not require configuration,
 but if it is installed per-package it can unfortunately be more complex to configure.
