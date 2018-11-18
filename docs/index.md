@@ -127,6 +127,6 @@ Babel tries to stay true to the ECMAScript standard, as much as reasonably possi
 Compact
 --------
 
-Babel tries uses the least amount of code possible with no dependence on a bulky runtime.
+Babel tries using the least amount of code possible with no dependence on a bulky runtime.
 
 This may be difficult to do in cases, and there are "loose" options for specific transforms that may tradeoff spec compliancy for readability, file size, and speed.
