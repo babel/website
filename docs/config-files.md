@@ -174,15 +174,15 @@ module: {
 Jest is often installed at the root of the monorepo and may not require configuration,
 but if it is installed per-package it can unfortunately be more complex to configure.
 
-The main part is creating a file that configures wraps `babel-jest`'s default behavior
-in order to set the option, e.g.
+The main part is creating a custom jest transformer file that wraps `babel-jest`'s default
+behavior in order to set the option, e.g.
 ```js
 module.exports = require("babel-jest").createTransformer({
   rootMode: "upward",
 });
 ```
 and with that saved somewhere, you'd then use that file in the place of `babel-jest` in
-your Jest options via:
+your Jest options via the [transform option](https://jestjs.io/docs/en/configuration#transform-object-string-string):
 ```json
 "transform": {
   "^.+\\.jsx?$": "./path/to/wrapper.js"
