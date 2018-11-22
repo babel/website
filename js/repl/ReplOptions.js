@@ -1,6 +1,6 @@
 // @flow
 
-import { css } from "emotion";
+import { css, cx } from "emotion";
 import React, { Component } from "react";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
@@ -95,6 +95,7 @@ const LinkToDocs = ({ className, children, section }: LinkProps) => (
 
 type PresetOptionProps = {
   className?: string,
+  when?: boolean,
   enabled?: boolean,
   option: string,
   presets: string[],
@@ -104,19 +105,27 @@ type PresetOptionProps = {
 
 const PresetOption = ({
   className = "",
+  when = true,
   enabled = true,
   option,
   presets,
   comment,
   children,
 }: PresetOptionProps) => {
-  if (!enabled) return null;
+  if (!when) return null;
 
   let title = `"${option}"\n- Applied to ${joinListEnglish(presets)}`;
   if (comment) title += `\n- ${comment}`;
 
   return (
-    <label className={`${styles.settingsLabel}  ${className}`} title={title}>
+    <label
+      className={cx(
+        styles.settingsLabel,
+        enabled || styles.presetsOptionsDisabled,
+        className
+      )}
+      title={title}
+    >
       {children}
     </label>
   );
@@ -309,11 +318,10 @@ class ExpandedContainer extends Component<Props, State> {
                 Options
               </span>
               <PresetOption
+                when={isStage2Enabled}
                 className={styles.presetsOptionsRow}
                 option="decoratorsLegacy"
                 presets={["stage-0", "stage-1", "stage-2"]}
-                presetState={presetState}
-                enabled={isStage2Enabled}
               >
                 <span className={styles.presetsOptionsLabel}>
                   Legacy decorators
@@ -329,11 +337,12 @@ class ExpandedContainer extends Component<Props, State> {
                 />
               </PresetOption>
               <PresetOption
+                when={isStage2Enabled}
                 className={styles.presetsOptionsRow}
                 option="decoratorsBeforeExport"
                 presets={["stage-0", "stage-1", "stage-2"]}
                 comment="Only works when legacy decorators are not enabled"
-                enabled={isStage2Enabled && !presetsOptions.decoratorsLegacy}
+                enabled={!presetsOptions.decoratorsLegacy}
               >
                 <span className={styles.presetsOptionsLabel}>
                   Decorators before <code>export</code>
