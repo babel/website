@@ -110,16 +110,13 @@ const PresetOption = ({
   comment,
   children,
 }: PresetOptionProps) => {
+  if (!enabled) return null;
+
   let title = `"${option}"\n- Applied to ${joinListEnglish(presets)}`;
   if (comment) title += `\n- ${comment}`;
 
   return (
-    <label
-      className={`${styles.settingsLabel} ${
-        !enabled ? styles.presetsOptionsDisabled : ""
-      } ${className}`}
-      title={title}
-    >
+    <label className={`${styles.settingsLabel}  ${className}`} title={title}>
       {children}
     </label>
   );
@@ -210,6 +207,11 @@ class ExpandedContainer extends Component<Props, State> {
       !envPresetState.isLoaded ||
       !envConfig.isEnvPresetEnabled ||
       shippedProposalsState.isLoading;
+
+    const isStage2Enabled =
+      presetState["stage-0"].isEnabled ||
+      presetState["stage-1"].isEnabled ||
+      presetState["stage-2"].isEnabled;
 
     return (
       <div className={styles.expandedContainer}>
@@ -310,6 +312,8 @@ class ExpandedContainer extends Component<Props, State> {
                 className={styles.presetsOptionsRow}
                 option="decoratorsLegacy"
                 presets={["stage-0", "stage-1", "stage-2"]}
+                presetState={presetState}
+                enabled={isStage2Enabled}
               >
                 <span className={styles.presetsOptionsLabel}>
                   Legacy decorators
@@ -329,7 +333,7 @@ class ExpandedContainer extends Component<Props, State> {
                 option="decoratorsBeforeExport"
                 presets={["stage-0", "stage-1", "stage-2"]}
                 comment="Only works when legacy decorators are not enabled"
-                enabled={!presetsOptions.decoratorsLegacy}
+                enabled={isStage2Enabled && !presetsOptions.decoratorsLegacy}
               >
                 <span className={styles.presetsOptionsLabel}>
                   Decorators before <code>export</code>
@@ -884,6 +888,11 @@ const styles = {
   presetsOptionsTitle: css({
     margin: "0 -0.5rem",
     padding: "0.5rem 1rem 0.25rem",
+
+    // Hide the title if it isn't followed by any option
+    "&:last-child": {
+      display: "none",
+    },
   }),
   presetsOptionsRow: css({
     display: "flex",
@@ -925,7 +934,9 @@ const styles = {
     appearance: "none",
     backgroundColor: "#2D3035",
     // eslint-disable-next-line
-    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='${colors.inverseForegroundLight}'><polygon points='0,0 100,0 50,50'/></svg>")`,
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='${
+      colors.inverseForegroundLight
+    }'><polygon points='0,0 100,0 50,50'/></svg>")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "8px",
     backgroundPosition: "calc(100% - 1rem) calc(100% - 8px)",

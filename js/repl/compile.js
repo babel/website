@@ -118,15 +118,6 @@ export default function compile(code: string, config: CompileConfig): Return {
             ? undefined
             : presetsOptions.decoratorsBeforeExport;
 
-          console.log("P", [
-            preset,
-            {
-              decoratorsLegacy,
-              decoratorsBeforeExport,
-              pipelineProposal: "minimal",
-            },
-          ]);
-
           return [
             preset,
             {
@@ -136,7 +127,6 @@ export default function compile(code: string, config: CompileConfig): Return {
             },
           ];
         }
-        console.log("P", preset);
         return preset;
       }),
       plugins: config.plugins,
