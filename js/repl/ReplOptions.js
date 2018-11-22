@@ -119,11 +119,9 @@ const PresetOption = ({
 
   return (
     <label
-      className={cx(
-        styles.settingsLabel,
-        enabled || styles.presetsOptionsDisabled,
-        className
-      )}
+      className={`${styles.settingsLabel} ${
+        enabled ? "" : styles.presetsOptionsDisabled
+      } ${className}`}
       title={title}
     >
       {children}
@@ -319,7 +317,6 @@ class ExpandedContainer extends Component<Props, State> {
               </span>
               <PresetOption
                 when={isStage2Enabled}
-                className={styles.presetsOptionsRow}
                 option="decoratorsLegacy"
                 presets={["stage-0", "stage-1", "stage-2"]}
               >
@@ -338,7 +335,6 @@ class ExpandedContainer extends Component<Props, State> {
               </PresetOption>
               <PresetOption
                 when={isStage2Enabled}
-                className={styles.presetsOptionsRow}
                 option="decoratorsBeforeExport"
                 presets={["stage-0", "stage-1", "stage-2"]}
                 comment="Only works when legacy decorators are not enabled"
@@ -902,13 +898,6 @@ const styles = {
     "&:last-child": {
       display: "none",
     },
-  }),
-  presetsOptionsRow: css({
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    flex: "0 0 auto",
-    margin: "0.5rem",
   }),
   presetsOptionsLabel: css({
     flex: 1,
