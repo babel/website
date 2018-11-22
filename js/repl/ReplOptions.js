@@ -1,6 +1,6 @@
 // @flow
 
-import { css, cx } from "emotion";
+import { css } from "emotion";
 import React, { Component } from "react";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
