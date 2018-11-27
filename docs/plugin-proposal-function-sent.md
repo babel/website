@@ -28,7 +28,7 @@ let generator = _skipFirstGeneratorNext(function* () {
 
 const iterator = generator();
 iterator.next(1); // Logs "Sent 1"
-iterator.next(2); // Logs "Yield 1"
+iterator.next(2); // Logs "Yield 2"
 ```
 
 ## Installation
