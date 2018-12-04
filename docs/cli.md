@@ -126,7 +126,7 @@ npx babel --out-file script-compiled.js < script.js
 Use the `--plugins` option to specify plugins to use in compilation
 
 ```sh
-npx babel script.js --out-file script-compiled.js --plugins=transform-runtime,transform-es2015-modules-amd
+npx babel script.js --out-file script-compiled.js --plugins=@babel/proposal-class-properties,@babel/transform-modules-amd
 ```
 
 ### Using Presets
@@ -134,7 +134,7 @@ npx babel script.js --out-file script-compiled.js --plugins=transform-runtime,tr
 Use the `--presets` option to specify plugins to use in compilation
 
 ```sh
-npx babel script.js --out-file script-compiled.js --presets=es2015,react
+npx babel script.js --out-file script-compiled.js --presets=@babel/preset-env,@babel/flow
 ```
 
 ### Ignoring .babelrc
