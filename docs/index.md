@@ -64,7 +64,7 @@ export default React.createClass({
 
 ## Type Annotations (Flow and TypeScript)
 
-Babel can strip out type annotations! Check out either our [Flow preset](preset-flow.md) or [TypeScript preset](preset-typescript.md) to get started. Keep in mind that **Babel doesn't do type checking**, and you'll have to try to compile the code yourself in order to get the benefits of Type Annotations.
+Babel can strip out type annotations! Check out either our [Flow preset](preset-flow.md) or [TypeScript preset](preset-typescript.md) to get started. Keep in mind that **Babel doesn't do type checking**; you'll still have to install and use Flow or TypeScript to check types.
 
 You can install the flow preset with
 
