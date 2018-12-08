@@ -61,7 +61,8 @@ With options (and their defaults):
         "corejs": false,
         "helpers": true,
         "regenerator": true,
-        "useESModules": false
+        "useESModules": false,
+        "absoluteRuntime": false,
       }
     ]
   ]
@@ -153,6 +154,12 @@ export default function(instance, Constructor) {
   }
 }
 ```
+
+### `absoluteRuntime`
+
+`boolean`, defaults to `false`.
+
+When enabled, the loader will get the path of modules being passed into this module using the `cwd` set by the `babel-loader`. For example, this allows you to run this preset via a CLI tool and specify the `cwd` as the root directory of the CLI tool instead of the `process.cwd`. This is useful when your tool may have references to things like `@babel/runtime` and the `process.cwd` doesn't.
 
 ## Technical details
 
