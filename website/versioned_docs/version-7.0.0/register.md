@@ -134,5 +134,5 @@ require("./my-plugin");
 
 Because it is your own code that triggered the load, and not the logic within
 `@babel/register` itself, this should successfully compile any plugin/preset
-that that loads synchronously.
+that loads synchronously.
 
