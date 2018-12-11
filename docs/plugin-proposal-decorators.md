@@ -6,45 +6,118 @@ sidebar_label: proposal-decorators
 
 ## Example
 
-(examples are from proposal)
-
-### Simple class decorator
+(examples are from [proposal][proposal])
 
 ```js
-@annotation
-class MyClass { }
+@defineElement('num-counter')
+class Counter extends HTMLElement {
+  @observed #x = 0;
 
-function annotation(target) {
-   target.annotated = true;
+  @bound
+  #clicked() {
+    this.#x++;
+  }
+
+  constructor() {
+    super();
+    this.onclick = this.#clicked;
+  }
+
+  connectedCallback() { this.render(); }
+
+  @bound
+  render() {
+    this.textContent = this.#x.toString();
+  }
 }
 ```
 
 ### Class decorator
 
 ```js
-@isTestable(true)
-class MyClass { }
+// Define the class as a custom element with the given tag name
+function defineElement(tagName) {
+  // In order for a decorator to take an argument, it takes that argument
+  // in the outer function and returns a different function that's called
+  // when actually decorating the class (manual currying).
+  return function(classDescriptor) {
+    let { kind, elements } = classDescriptor;
+    assert(kind == "class");
+    return {
+      kind,
+      elements,
+      // This callback is called once the class is otherwise fully defined
+      finisher(klass) {
+        window.customElements.define(tagName, klass);
+      }
+    };
+  };
+}
 
-function isTestable(value) {
-   return function decorator(target) {
-      target.isTestable = value;
-   }
+```
+
+### Method decorator
+
+```js
+// Create a bound version of the method as a field
+function bound(elementDescriptor) {
+  let { kind, key, descriptor } = elementDescriptor;
+  assert(kind == "method");
+  let { value } = descriptor
+  function initializer() {
+    return value.bind(this);
+  }
+  // Return both the original method and a bound function field that calls the method.
+  // (That way the original method will still exist on the prototype, avoiding
+  // confusing side-effects.)
+  let boundFieldDescriptor = { ...descriptor, value: undefined }
+  return {
+    ...elementDescriptor,
+    extras: [
+      { kind: "field", key, placement: "own", descriptor: boundFieldDescriptor, initializer }
+    ]
+  }
 }
 ```
 
-### Class function decorator
+### Field decorator
 
 ```js
-class C {
-  @enumerable(false)
-  method() { }
+// Whenever a read or write is done to a field, call the render()
+// method afterwards. Implement this by replacing the field with
+// a getter/setter pair.
+function observed({kind, key, placement, descriptor, initializer}) {
+  assert(kind == "field");
+  assert(placement == "own");
+  // Create a new anonymous private name as a key for a class element
+  let storage = PrivateName();
+  let underlyingDescriptor = { enumerable: false, configurable: false, writable: true };
+  let underlying = { kind, key: storage, placement, descriptor: underlyingDescriptor, initializer };
+  return {
+    kind: "method",
+    key,
+    placement,
+    descriptor: {
+      get() { return storage.get(this); },
+      set(value) {
+        storage.set(this, value);
+        // Assume the @bound decorator was used on render
+        window.requestAnimationFrame(this.render);
+      },
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable
+    },
+    extras: [underlying]
+  };
 }
 
-function enumerable(value) {
-  return function (target, key, descriptor) {
-     descriptor.enumerable = value;
-     return descriptor;
-  }
+// There is no built-in PrivateName constructor, but a new private name can
+// be constructed by extracting it from a throwaway class
+function PrivateName() {
+  let name;
+  function extract({key}) { name = key; }
+  class Throwaway { @extract #_; }
+  return name;
 }
 ```
 
@@ -142,5 +215,6 @@ Right:
 
 ## References
 
-* [Proposal: JavaScript Decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md)
+* [Proposal: JavaScript Decorators][proposal]
 
+[proposal]: https://github.com/tc39/proposal-decorators/blob/master/README.md
