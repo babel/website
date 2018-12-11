@@ -53,7 +53,7 @@ const MiniRepl = ({ language }) => {
       </div>
 
       <script
-        src="https://unpkg.com/babel-standalone@6/babel.min.js"
+        src="https://unpkg.com/@babel/standalone@^7.0.0/babel.min.js"
         defer={true}
       />
       <script

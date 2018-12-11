@@ -25,7 +25,6 @@ const URL_KEYS = [
   "prettier",
   "targets",
   "version",
-  "envVersion",
 ];
 
 const compress = (string: string) =>
