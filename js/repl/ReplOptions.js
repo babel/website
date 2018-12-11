@@ -1,6 +1,6 @@
 // @flow
 
-import { css } from "emotion";
+import { css, cx } from "emotion";
 import React, { Component } from "react";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
@@ -281,7 +281,7 @@ class ExpandedContainer extends Component<Props, State> {
                   onChange={(event: SyntheticInputEvent<*>) =>
                     onSettingChange("sourceType", event.target.value)
                   }
-                  className={styles.sourceTypeSelect}
+                  className={cx(styles.optionSelect, styles.sourceTypeSelect)}
                 >
                   <option value="module">Module</option>
                   <option value="script">Script</option>
@@ -321,17 +321,28 @@ class ExpandedContainer extends Component<Props, State> {
                 presets={["stage-0", "stage-1", "stage-2"]}
               >
                 <span className={styles.presetsOptionsLabel}>
-                  Legacy decorators
+                  Decorators mode
                 </span>
-                <input
-                  checked={presetsOptions.decoratorsLegacy}
-                  className={styles.envPresetCheckbox}
-                  type="checkbox"
+                <select
+                  className={cx(styles.optionSelect, styles.presetOptionSelect)}
                   onChange={this._onPresetOptionChange(
                     "decoratorsLegacy",
-                    t => t.checked
+                    t => t.value === "legacy"
                   )}
-                />
+                >
+                  <option
+                    vale="modern"
+                    selected={!presetsOptions.decoratorsLegacy}
+                  >
+                    Current Proposal
+                  </option>
+                  <option
+                    value="legacy"
+                    selected={presetsOptions.decoratorsLegacy}
+                  >
+                    Legacy
+                  </option>
+                </select>
               </PresetOption>
               <PresetOption
                 when={isStage2Enabled}
@@ -341,14 +352,15 @@ class ExpandedContainer extends Component<Props, State> {
                 enabled={!presetsOptions.decoratorsLegacy}
               >
                 <span className={styles.presetsOptionsLabel}>
-                  Decorators before <code>export</code>
+                  Decorators before
+                  <code>export</code>
                 </span>
                 <input
                   enabled={!presetsOptions.decoratorsLegacy}
-                  checked={
-                    !presetsOptions.decoratorsLegacy &&
-                    presetsOptions.decoratorsBeforeExport
-                  }
+                  checked={presetsOptions.decoratorsBeforeExport}
+                  ref={el => {
+                    if (el) el.indeterminate = presetsOptions.decoratorsLegacy;
+                  }}
                   className={styles.envPresetCheckbox}
                   type="checkbox"
                   onChange={this._onPresetOptionChange(
@@ -647,6 +659,7 @@ class ExpandedContainer extends Component<Props, State> {
   _onPresetOptionChange = (type: string, getValue: (target: *) => *) => (
     event: SyntheticInputEvent<*>
   ) => {
+    console.log("CHANGE", type, getValue(event.target));
     this.props.onPresetOptionChange(type, getValue(event.target));
   };
 
@@ -928,7 +941,7 @@ const styles = {
     margin: "1rem 0 0 0",
     padding: "0 0.5rem",
   }),
-  sourceTypeSelect: css({
+  optionSelect: css({
     appearance: "none",
     backgroundColor: "#2D3035",
     // eslint-disable-next-line
@@ -937,14 +950,10 @@ const styles = {
     }'><polygon points='0,0 100,0 50,50'/></svg>")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "8px",
-    backgroundPosition: "calc(100% - 1rem) calc(100% - 8px)",
     border: 0,
     color: colors.inverseForegroundLight,
-    height: "30px",
     margin: "0.25rem 0 0 0",
-    padding: "0 0.5rem",
     transition: "all 0.25s ease-in",
-    width: "100%",
 
     "&:hover": {
       backgroundColor: "#32353A",
@@ -953,6 +962,16 @@ const styles = {
     "&::-ms-expand": {
       display: "none",
     },
+  }),
+  sourceTypeSelect: css({
+    backgroundPosition: "calc(100% - 1rem) calc(100% - 8px)",
+    padding: "0 0.5rem",
+    height: "30px",
+    width: "100%",
+  }),
+  presetOptionSelect: css({
+    padding: "0.2rem 1.5rem 0.2rem 0.5rem",
+    backgroundPosition: "calc(100% - 0.5rem) calc(100% - 0.3rem)",
   }),
   envPresetColumn: css({
     display: "flex",
