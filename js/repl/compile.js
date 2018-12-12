@@ -34,7 +34,7 @@ const DEFAULT_PRETTIER_CONFIG = {
 };
 
 export default function compile(code: string, config: CompileConfig): Return {
-  const { envConfig } = config;
+  const { envConfig, presetsOptions } = config;
 
   let compiled = null;
   let compileErrorMessage = null;
@@ -107,17 +107,22 @@ export default function compile(code: string, config: CompileConfig): Return {
       filename: "repl",
       sourceMap: config.sourceMap,
 
-      // HACK: decorators needs to be set to "legacy" until they are implemented
       presets: config.presets.map(preset => {
         if (
           Babel.version[0] === "7" &&
           typeof preset === "string" &&
           /^stage-[0-2]$/.test(preset)
         ) {
+          const decoratorsLegacy = presetsOptions.decoratorsLegacy;
+          const decoratorsBeforeExport = decoratorsLegacy
+            ? undefined
+            : presetsOptions.decoratorsBeforeExport;
+
           return [
             preset,
             {
-              decoratorsLegacy: true,
+              decoratorsLegacy,
+              decoratorsBeforeExport,
               pipelineProposal: "minimal",
             },
           ];

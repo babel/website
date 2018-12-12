@@ -30,6 +30,7 @@ import {
   persistedStateToBabelState,
   persistedStateToEnvState,
   persistedStateToEnvConfig,
+  persistedStateToPresetsOptions,
   persistedStateToShippedProposalsState,
 } from "./replUtils";
 import WorkerApi from "./WorkerApi";
@@ -42,6 +43,7 @@ import type {
   EnvState,
   ShippedProposalsState,
   EnvConfig,
+  PresetsOptions,
   PluginState,
   PluginStateMap,
   SourceType,
@@ -58,6 +60,7 @@ type State = {
   envPresetDebugInfo: ?string,
   envPresetState: EnvState,
   shippedProposalsState: ShippedProposalsState,
+  presetsOptions: PresetsOptions,
   evalErrorMessage: ?string,
   fileSize: boolean,
   timeTravel: boolean,
@@ -115,6 +118,7 @@ class Repl extends React.Component<Props, State> {
       return reduced;
     }, {});
 
+    const presetsOptions = persistedStateToPresetsOptions(persistedState);
     const envConfig = persistedStateToEnvConfig(persistedState);
     // const isPresetsTabExpanded = !!presets.filter(preset => preset !== "env")
     //   .length;
@@ -128,6 +132,7 @@ class Repl extends React.Component<Props, State> {
       pluginSearch: "",
       compileErrorMessage: null,
       debugEnvPreset: persistedState.debug,
+      presetsOptions,
       envConfig,
       envPresetDebugInfo: null,
       envPresetState: persistedStateToEnvState(
@@ -204,12 +209,14 @@ class Repl extends React.Component<Props, State> {
           envConfig={state.envConfig}
           envPresetState={state.envPresetState}
           shippedProposalsState={state.shippedProposalsState}
+          presetsOptions={state.presetsOptions}
           fileSize={state.fileSize}
           timeTravel={state.timeTravel}
           sourceType={state.sourceType}
           isExpanded={state.isSidebarExpanded}
           lineWrap={state.lineWrap}
-          onEnvPresetSettingChange={this._onEnvPresetSettingChange}
+          onPresetOptionChange={this._onOptionChange("presetsOptions")}
+          onEnvPresetSettingChange={this._onOptionChange("envConfig")}
           onExternalPluginRemove={this.handleRemoveExternalPlugin}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
@@ -464,6 +471,7 @@ class Repl extends React.Component<Props, State> {
         plugins: state.externalPlugins,
         debugEnvPreset: state.debugEnvPreset,
         envConfig: state.envPresetState.isLoaded ? state.envConfig : null,
+        presetsOptions: state.presetsOptions,
         evaluate:
           runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
         presets: presetsArray,
@@ -487,11 +495,14 @@ class Repl extends React.Component<Props, State> {
     DEBOUNCE_DELAY
   );
 
-  _onEnvPresetSettingChange = (name: string, value: any) => {
+  _onOptionChange = (kind: "envConfig" | "presetsOptions") => (
+    name: string,
+    value: any
+  ) => {
     this.setState(
       state => ({
-        envConfig: {
-          ...state.envConfig,
+        [kind]: {
+          ...state[kind],
           [name]: value,
         },
       }),
@@ -578,6 +589,8 @@ class Repl extends React.Component<Props, State> {
       targets: envConfigToTargetsString(envConfig),
       version: state.babel.version,
       envVersion: state.envPresetState.version,
+      decoratorsLegacy: state.presetsOptions.decoratorsLegacy,
+      decoratorsBeforeExport: state.presetsOptions.decoratorsBeforeExport,
     };
     StorageService.set("replState", payload);
     UriUtils.updateQuery(payload);

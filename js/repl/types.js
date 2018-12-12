@@ -3,6 +3,11 @@
 export type BabelPresets = Array<string | Array<string | Object>>;
 export type BabelPlugins = Array<string>;
 
+export type PresetsOptions = {
+  decoratorsLegacy: boolean,
+  decoratorsBeforeExport: boolean,
+};
+
 export type EnvConfig = {
   browsers: string,
   electron: ?string,
@@ -85,6 +90,7 @@ export type SourceType = "script" | "module" | "unambiguous";
 export type CompileConfig = {
   debugEnvPreset: boolean,
   envConfig: ?EnvConfig,
+  presetsOptions: PresetsOptions,
   evaluate: boolean,
   presets: BabelPresets,
   plugins: BabelPlugins,
@@ -117,6 +123,8 @@ export type ReplState = {
   targets: string,
   version: any,
   envVersion: string,
+  decoratorsLegacy: boolean,
+  decoratorsBeforeExport: boolean,
 };
 
 type BabelPresetTargetsMap = {

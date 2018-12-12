@@ -135,6 +135,8 @@ const replDefaults: ReplState = {
   targets: "",
   version: "",
   envVersion: "",
+  decoratorsLegacy: false,
+  decoratorsBeforeExport: false,
 };
 
 export {
