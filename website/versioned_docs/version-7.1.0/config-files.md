@@ -54,7 +54,7 @@ These caveats mean that:
 
 See the [monorepo](#monorepos) documentation for more discussion on how to configure monorepos that have many packages.
 
-File-relative configs can also be disable by setting ["babelrc"](options.md#babelrc) to `false`.
+File-relative configs can also be disabled by setting ["babelrc"](options.md#babelrc) to `false`.
 
 ### 6.x vs 7.x `.babelrc` loading
 
