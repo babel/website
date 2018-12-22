@@ -86,7 +86,7 @@
 }
 
 .homepage-banner::before {
-  background: url(../img/favicon.png) no-repeat center center;
+  /* background: url(../img/favicon.png) no-repeat center center; */
   content: "";
   width: 20px;
   height: 20px;
