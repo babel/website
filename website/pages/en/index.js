@@ -274,8 +274,8 @@ const HomeContainer = props => (
 
 const Hero = ({ language }) => (
   <div className="hero">
-    <a href="https://tidelift.com/subscription/npm/babel">
-      <div className="tidelift-banner">Get Professionally Supported Babel</div>
+    <a href="https://teespring.com/babel-christmas">
+      <div className="homepage-banner">Get Babel Holiday Apparel (CODE: FLAVORTOWN)</div>
     </a>
     <div className="hero__container">
       <h1>
