@@ -31,7 +31,7 @@ Babel uses very small helpers for common functions such as `_extend`. By default
 
 This is where the `@babel/plugin-transform-runtime` plugin comes in: all of the helpers will reference the module `@babel/runtime` to avoid duplication across your compiled output. The runtime will be compiled into your build.
 
-Another purpose of this transformer is to create a sandboxed environment for your code. If you use [@babel/polyfill](http://babeljs.io/docs/usage/polyfill/) and the built-ins it provides such as `Promise`, `Set` and `Map`, those will pollute the global scope. While this might be ok for an app or a command line tool, it becomes a problem if your code is a library which you intend to publish for others to use or if you can't exactly control the environment in which your code will run.
+Another purpose of this transformer is to create a sandboxed environment for your code. If you use [@babel/polyfill](polyfill.md) and the built-ins it provides such as `Promise`, `Set` and `Map`, those will pollute the global scope. While this might be ok for an app or a command line tool, it becomes a problem if your code is a library which you intend to publish for others to use or if you can't exactly control the environment in which your code will run.
 
 The transformer will alias these built-ins to `core-js` so you can use them seamlessly without having to require the polyfill.
 
@@ -56,12 +56,15 @@ With options (and their defaults):
 ```json
 {
   "plugins": [
-    ["@babel/plugin-transform-runtime", {
-      "corejs": false,
-      "helpers": true,
-      "regenerator": true,
-      "useESModules": false
-    }]
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": false,
+        "helpers": true,
+        "regenerator": true,
+        "useESModules": false
+      }
+    ]
   ]
 }
 ```
@@ -78,7 +81,7 @@ babel --plugins @babel/plugin-transform-runtime script.js
 
 ```javascript
 require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-runtime"]
+  plugins: ["@babel/plugin-transform-runtime"],
 });
 ```
 
@@ -135,7 +138,7 @@ For example, here is the `classCallCheck` helper with `useESModules` disabled:
 ```js
 exports.__esModule = true;
 
-exports.default = function (instance, Constructor) {
+exports.default = function(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
@@ -145,7 +148,7 @@ exports.default = function (instance, Constructor) {
 And, with it enabled:
 
 ```js
-export default function (instance, Constructor) {
+export default function(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
@@ -156,9 +159,9 @@ export default function (instance, Constructor) {
 
 The `transform-runtime` transformer plugin does three things:
 
-* Automatically requires `@babel/runtime/regenerator` when you use generators/async functions (toggleable with the `regenerator` option).
-* Can use `core-js` for helpers if necessary instead of assuming it will be polyfilled by the user (toggleable with the `corejs` option)
-* Automatically removes the inline Babel helpers and uses the module `@babel/runtime/helpers` instead (toggleable with the `helpers` option).
+- Automatically requires `@babel/runtime/regenerator` when you use generators/async functions (toggleable with the `regenerator` option).
+- Can use `core-js` for helpers if necessary instead of assuming it will be polyfilled by the user (toggleable with the `corejs` option)
+- Automatically removes the inline Babel helpers and uses the module `@babel/runtime/helpers` instead (toggleable with the `helpers` option).
 
 What does this actually mean though? Basically, you can use built-ins such as `Promise`, `Set`, `Symbol`, etc., as well use all the Babel features that require a polyfill seamlessly, without global pollution, making it extremely suitable for libraries.
 
@@ -169,9 +172,7 @@ Make sure you include `@babel/runtime` as a dependency.
 Whenever you use a generator function or async function:
 
 ```javascript
-function* foo() {
-
-}
+function* foo() {}
 ```
 
 the following is generated:
@@ -182,15 +183,19 @@ the following is generated:
 var _marked = [foo].map(regeneratorRuntime.mark);
 
 function foo() {
-  return regeneratorRuntime.wrap(function foo$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-        case "end":
-          return _context.stop();
+  return regeneratorRuntime.wrap(
+    function foo$(_context) {
+      while (1) {
+        switch ((_context.prev = _context.next)) {
+          case 0:
+          case "end":
+            return _context.stop();
+        }
       }
-    }
-  }, _marked[0], this);
+    },
+    _marked[0],
+    this
+  );
 }
 ```
 
@@ -206,20 +211,26 @@ var _regenerator = require("@babel/runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 var _marked = [foo].map(_regenerator2.default.mark);
 
 function foo() {
-  return _regenerator2.default.wrap(function foo$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-        case "end":
-          return _context.stop();
+  return _regenerator2.default.wrap(
+    function foo$(_context) {
+      while (1) {
+        switch ((_context.prev = _context.next)) {
+          case 0:
+          case "end":
+            return _context.stop();
+        }
       }
-    }
-  }, _marked[0], this);
+    },
+    _marked[0],
+    this
+  );
 }
 ```
 
@@ -237,7 +248,7 @@ The plugin transforms the following:
 ```javascript
 var sym = Symbol();
 
-var promise = new Promise;
+var promise = new Promise();
 
 console.log(arr[Symbol.iterator]());
 ```
@@ -259,7 +270,9 @@ var _symbol = require("@babel/runtime-corejs2/core-js/symbol");
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 var sym = (0, _symbol2.default)();
 
@@ -283,8 +296,7 @@ transformer replaces all the helper calls to a module.
 That means that the following code:
 
 ```javascript
-class Person {
-}
+class Person {}
 ```
 
 usually turns into:
@@ -292,7 +304,11 @@ usually turns into:
 ```javascript
 "use strict";
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
 
 var Person = function Person() {
   _classCallCheck(this, Person);
@@ -308,7 +324,9 @@ var _classCallCheck2 = require("@babel/runtime/helpers/classCallCheck");
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 var Person = function Person() {
   (0, _classCallCheck3.default)(this, Person);
