@@ -274,8 +274,8 @@ const HomeContainer = props => (
 
 const Hero = ({ language }) => (
   <div className="hero">
-    <a href="https://teespring.com/babel-christmas">
-      <div className="homepage-banner">Get Babel Holiday Apparel (USE CODE FLAVORTOWN)</div>
+    <a href="https://teespring.com/babel-christmas?pr=FLAVORTOWN">
+      <div className="homepage-banner">Get Babel Holiday Apparel 👕</div>
     </a>
     <div className="hero__container">
       <h1>
