@@ -68,6 +68,7 @@
 }
 
 .homepage-banner {
+  align-items: center;
   background-color: #626980;
   color: #ffffff;
   display: flex;
