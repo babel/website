@@ -36,27 +36,27 @@ console.log(!!(nibbles & (1 << 7))); // true
 ```js
 // Messages are sent as 24 bit values, but should be
 // treated as 3 distinct bytes:
-let message = 0xA0_B0_C0;
+let message = 0xa0_b0_c0;
 
 // What's the value of the upper most byte? It's A0, or 160.
 // We can confirm that:
-let a = (message >> 16) & 0xFF;
+let a = (message >> 16) & 0xff;
 console.log(a.toString(16), a); // a0, 160
 
 // What's the value of the middle byte? It's B0, or 176.
 // Let's just make sure...
-let b = (message >> 8) & 0xFF;
+let b = (message >> 8) & 0xff;
 console.log(b.toString(16), b); // b0, 176
 
 // What's the value of the lower most byte? It's C0, or 192.
 // Again, let's prove that:
-let c = message & 0xFF;
+let c = message & 0xff;
 console.log(c.toString(16), b); // c0, 192
 ```
 
 ### Octal Literal
 
-*hand wave emoji*
+_hand wave emoji_
 
 Octals are great for permissions, but also look better when represented in `0o0000` form. No real benefit with separators here.
 
@@ -88,15 +88,15 @@ babel --plugins @babel/plugin-proposal-numeric-separator script.js
 
 ```javascript
 require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-proposal-numeric-separator"]
+  plugins: ["@babel/plugin-proposal-numeric-separator"],
 });
 ```
 
 ## Additional Information
 
-If you need to further compile ES2015 Decimal, Binary, Hex and Octal number representations to their pre-ES2015 numeric literal form, add the [`"@babel/plugin-transform-literals"`](http://babeljs.io/docs/plugins/transform-literals/) plugin:
+If you need to further compile ES2015 Decimal, Binary, Hex and Octal number representations to their pre-ES2015 numeric literal form, add the [`"@babel/plugin-transform-literals"`](plugin-transform-literals.md) plugin:
 
-> `@babel/plugin-transform-literals` is already included in [@babel/preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env) and @babel/preset-es2015.
+> `@babel/plugin-transform-literals` is already included in [@babel/preset-env](preset-env.md) and @babel/preset-es2015.
 
 ### Via `.babelrc` (Recommended)
 
@@ -114,5 +114,4 @@ If you need to further compile ES2015 Decimal, Binary, Hex and Octal number repr
 
 ## References
 
-* [Proposal: Numeric Separators](https://github.com/samuelgoto/proposal-numeric-separator)
-
+- [Proposal: Numeric Separators](https://github.com/samuelgoto/proposal-numeric-separator)

@@ -170,6 +170,7 @@ module: {
   }]
 }
 ```
+
 #### Jest
 Jest is often installed at the root of the monorepo and may not require configuration,
 but if it is installed per-package it can unfortunately be more complex to configure.
@@ -355,5 +356,6 @@ module.exports = function(api) {
   };
 };
 ```
+
 
 

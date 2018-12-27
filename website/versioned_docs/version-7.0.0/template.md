@@ -26,7 +26,7 @@ const buildRequire = template(`
 
 const ast = buildRequire({
   IMPORT_NAME: t.identifier("myModule"),
-  SOURCE: t.stringLiteral("my-module")
+  SOURCE: t.stringLiteral("my-module"),
 });
 
 console.log(generate(ast).code);
@@ -46,8 +46,8 @@ const ast = template.ast(`
   var myModule = require("my-module");
 `);
 ```
-which will parse and return the AST directly.
 
+which will parse and return the AST directly.
 
 ## Template Literal Usage
 
@@ -84,10 +84,10 @@ const ast = template.ast`
   var ${mod} = require("${name}");
 `;
 ```
+
 which will parse and return the AST directly. Note that unlike the string-based
 version mentioned earlier, since this is a template literal, it is still
 valid to perform replacements using template literal replacements.
-
 
 ## AST results
 
@@ -122,7 +122,6 @@ an exception if the result is anything but a single statement.
 
 `template.program("foo;")()` returns the `Program` node for the template.
 
-
 ## API
 
 ### `template(code, [opts])`
@@ -133,12 +132,12 @@ Type: `string`
 
 #### options
 
-`@babel/template` accepts all of the options from [Babel Parser](https://github.com/babel/babel/tree/master/packages/babel-parser), and specifies
+`@babel/template` accepts all of the options from [Babel Parser](babel-parser.md#options), and specifies
 some defaults of its own:
 
-* `allowReturnOutsideFunction` is set to `true` by default.
-* `allowSuperOutsideMethod` is set to `true` by default.
-* `sourceType` is set to `module` by default.
+- `allowReturnOutsideFunction` is set to `true` by default.
+- `allowSuperOutsideMethod` is set to `true` by default.
+- `sourceType` is set to `module` by default.
 
 ##### placeholderWhitelist
 
@@ -171,6 +170,3 @@ By default `@babel/template` returns a `function` which is invoked with an
 optional object of replacements. See the usage section for an example.
 
 When using `.ast`, the AST will be returned directly.
-
-[@babel/parser]: https://github.com/babel/babel/tree/master/packages/babel-parser#options
-
