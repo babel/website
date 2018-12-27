@@ -11,7 +11,7 @@ There are two primary reasons for this.
 We can install Babel CLI locally by running:
 
 ```sh
-npm install --save-dev babel-cli
+npm install --save-dev @babel/core @babel/cli
 ```
 
 <blockquote class="babel-callout babel-callout-info">
@@ -27,7 +27,8 @@ After that finishes installing, your `package.json` file should include:
 ```diff
 {
   "devDependencies": {
-+   "babel-cli": "^6.0.0"
++   "@babel/cli": "^7.0.0",
++   "@babel/core": "^7.0.0"
   }
 }
 ```
