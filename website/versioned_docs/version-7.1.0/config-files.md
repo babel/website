@@ -121,7 +121,7 @@ to have as a place for repo-level options.
 
 You can often place all of your repo configuration in the root [`babel.config.js`](#project-wide-configuration).
 With ["overrides"](options.md#overrides), you can easily specify configuration that only applies to
-certain subfolders of your repository, which can often be easier to follow that creating many
+certain subfolders of your repository, which can often be easier to follow than creating many
 `.babelrc` files across the repo.
 
 The first issue you'll likely run into is that by default, Babel expects to load [`babel.config.js`](#project-wide-configuration)
