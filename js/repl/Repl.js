@@ -248,7 +248,7 @@ class Repl extends React.Component<Props, State> {
               placeholder="Write code here"
             />
             {state.ast ? (
-              <ASTPanel src={state.astContext} />
+              <ASTPanel className={styles.astPanel} src={state.astContext} />
             ) : (
               <CodeMirrorPanel
                 className={styles.codeMirrorPanel}
@@ -667,6 +667,10 @@ const styles = {
   codeMirrorPanel: css({
     flex: "0 0 50%",
   }),
+  astPanel: css({
+    flex: "0 0 50%",
+    overflow: "hidden",
+  }),
   optionsColumn: css({
     flex: "0 0 auto",
   }),
@@ -693,6 +697,7 @@ const styles = {
     height: "85%",
     width: "100%",
     display: "flex",
+    flexFlow: "wrap",
     flexDirection: "row",
     justifyContent: "stretch",
     overflow: "auto",

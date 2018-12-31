@@ -24,14 +24,13 @@ type State = {
   flattenType: Object,
   flattenLocation: Object,
   astOption: {
-    autofocus: boolean,
     location: boolean,
     empty: boolean,
     type: boolean,
   },
 };
 
-const OPTION_ORDER = ["autofocus", "location", "empty", "type"];
+const OPTION_ORDER = ["location", "empty", "type"];
 
 export default class ASTPanel extends React.Component<Props, State> {
   state = {
@@ -87,7 +86,6 @@ export default class ASTPanel extends React.Component<Props, State> {
       const isShow = astOption[type];
       let newSrc = {};
       const types = {
-        autofocus: () => {},
         empty: () => {
           newSrc = isShow
             ? deleteFlatten(flattenSrc, flattenEmpty)
@@ -120,33 +118,35 @@ export default class ASTPanel extends React.Component<Props, State> {
     const { className = "" } = this.props;
 
     return (
-      <div className={`${styles.panel} ${className}`}>
-        <div className={styles.optionWrapper}>
-          {OPTION_ORDER.map(option => (
-            <label className={styles.settingsLabel}>
-              <input
-                checked={astOption[option]}
-                type="checkbox"
-                className={styles.inputCheckboxLeft}
-                onChange={() => this._onOptionSettingCheck(option)}
-              />
-              {option}
-            </label>
-          ))}
-        </div>
+      <div className={`${className}`}>
         {src && (
-          <ReactJson
-            src={src}
-            style={{
-              overflowY: "scroll",
-              width: "100%",
-            }}
-            sortKeys={true}
-            enableClipboard={false}
-            displayObjectSize={true}
-            displayDataTypes={false}
-          />
+          <div className={styles.optionWrapper}>
+            {OPTION_ORDER.map(option => (
+              <label className={styles.settingsLabel}>
+                <input
+                  checked={astOption[option]}
+                  type="checkbox"
+                  className={styles.inputCheckboxLeft}
+                  onChange={() => this._onOptionSettingCheck(option)}
+                />
+                {option}
+              </label>
+            ))}
+          </div>
         )}
+        <ReactJson
+          src={src}
+          style={{
+            overflowY: "scroll",
+            overflow: "show",
+            width: "100%",
+            height: "100%",
+          }}
+          sortKeys={true}
+          enableClipboard={false}
+          displayObjectSize={true}
+          displayDataTypes={false}
+        />
       </div>
     );
   }
@@ -158,6 +158,7 @@ const styles = {
     flexDirection: "row",
     width: "100%",
     justifyContent: "stretch",
+    color: colors.inverseForegroundLight,
     backgroundColor: colors.inverseBackgroundLight,
   }),
   settingsLabel: css({
@@ -167,10 +168,8 @@ const styles = {
     flexDirection: "colum",
     fontSize: "0.875rem",
     fontWeight: "normal",
-    margin: "0 -0.5rem",
     padding: "0 1rem",
     transition: "background-color 250ms ease-in-out, color 250ms ease-in-out",
-
     "&:hover": {
       backgroundColor: colors.inverseBackgroundDark,
       color: colors.inverseForeground,
@@ -178,16 +177,8 @@ const styles = {
   }),
   inputCheckboxLeft: css({
     margin: "0 0.75rem 0 0 !important", // TODO (bvaughn) Override input[type="checkbox"] style in main.css
-
     "&:disabled": {
       opacity: 0.5,
     },
-  }),
-  panel: css({
-    height: "100%",
-    display: "grid",
-    flexDirection: "column",
-    justifyContent: "stretch",
-    overflow: "auto",
   }),
 };
