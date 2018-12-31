@@ -136,12 +136,7 @@ export default class ASTPanel extends React.Component<Props, State> {
         )}
         <ReactJson
           src={src}
-          style={{
-            overflowY: "scroll",
-            overflow: "show",
-            width: "100%",
-            height: "100%",
-          }}
+          style={styles.reactJson}
           sortKeys={true}
           enableClipboard={false}
           displayObjectSize={true}
@@ -181,4 +176,10 @@ const styles = {
       opacity: 0.5,
     },
   }),
+  reactJson: {
+    overflowY: "scroll",
+    overflow: "show",
+    width: "100%",
+    height: "100%",
+  },
 };
