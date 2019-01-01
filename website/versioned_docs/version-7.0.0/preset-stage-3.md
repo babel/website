@@ -5,6 +5,11 @@ sidebar_label: stage-3
 original_id: babel-preset-stage-3
 ---
 
+> As of Babel v7, all the stage presets have been deprecated.
+> Check [the blog post](/blog/2018/07/27/removing-babels-stage-presets) for more information.
+>
+> For upgrade instructions, see [the README](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-3/README.md).
+
 The gist of Stage 3 is:
 
 > **Stage 3**: candidate
@@ -64,4 +69,5 @@ Will use the native built-in instead of trying to polyfill behavior for any plug
 ## References
 
 - Chapter "[The TC39 process for ECMAScript features](http://exploringjs.com/es2016-es2017/ch_tc39-process.html)" in "Exploring ES2016 and ES2017" by Axel Rauschmayer
+
 

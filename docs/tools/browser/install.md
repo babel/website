@@ -7,7 +7,7 @@
   </p>
 </blockquote>
 
-You can use [babel/babel-standalone](https://github.com/babel/babel-standalone#usage) as a precompiled version of babel or run a bundler on babel yourself.
+You can use `@babel/standalone` as a precompiled version of Babel or run a bundler on Babel yourself. Check the usage section below for how to use it as a script.
 
 You can also use the many online tools to prototype a script:
 

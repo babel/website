@@ -7,7 +7,7 @@ original_id: babel-preset-flow
 
 This preset includes the following plugins:
 
-- [@babel/plugin-transform-flow-strip-types](https://babeljs.io/docs/plugins/transform-flow-strip-types/)
+- [@babel/plugin-transform-flow-strip-types](plugin-transform-flow-strip-types.md)
 
 ## Example
 
@@ -51,7 +51,6 @@ babel --presets @babel/preset-flow script.js
 
 ```javascript
 require("@babel/core").transform("code", {
-  presets: ["@babel/preset-flow"]
+  presets: ["@babel/preset-flow"],
 });
 ```
-

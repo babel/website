@@ -15,7 +15,7 @@ If you are using Babel version 7 you will need to run `npm install @babel/preset
 
 You might end up on this page because you saw a message in the terminal like this:
 
-> 🙌 Thanks for using Babel: we recommend using babel-preset-env now: please read babeljs.io/env to update!
+> 🙌 Thanks for using Babel: we recommend using babel-preset-env now: please read [babeljs.io/env](https://babeljs.io/env) to update!
 
 Before you proceed further, ask yourself: are you _using_ Babel? Check your `package.json` and look for `babel-preset-es2015` or a similar preset there. If you see a preset like this in your `package.json`, read on!
 

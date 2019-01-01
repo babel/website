@@ -89,6 +89,8 @@ require("@babel/core").transform("code", {
 
 When `true`, class properties are compiled to use an assignment expression instead of `Object.defineProperty`.
 
+For an explanation of the consequences of using either, see [Definition vs. Assignment](http://2ality.com/2012/08/property-definition-assignment.html) (TL;DR in Part 5)
+
 #### Example
 
 ```js
@@ -150,4 +152,5 @@ Bork.b = void 0;
 ## References
 
 * [Proposal: ES Class Fields & Static Properties](https://github.com/jeffmo/es-class-static-properties-and-fields)
+
 

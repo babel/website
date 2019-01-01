@@ -1,6 +1,6 @@
 // @flow
 
-import { css } from "emotion";
+import { css, cx } from "emotion";
 import React, { Component } from "react";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import { isEnvFeatureSupported } from "./replUtils";
@@ -9,6 +9,7 @@ import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import ExternalPlugins from "./ExternalPlugins";
 import Svg from "./Svg";
 import { colors, media } from "./styles";
+import { joinListEnglish } from "./Utils";
 
 import type {
   EnvConfig,
@@ -16,6 +17,7 @@ import type {
   PluginConfig,
   PluginState,
   PluginStateMap,
+  PresetsOptions,
   ShippedProposalsState,
   SidebarTabSection,
   SourceType,
@@ -38,6 +40,7 @@ const PRESET_ORDER = [
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, value: boolean | string) => void;
+type TogglePresetOption = (name: string, value: boolean) => void;
 type ShowOfficialExternalPluginsChanged = (value: string) => void;
 type PluginSearch = (value: string) => void;
 type PluginChange = (plugin: Object) => void;
@@ -57,6 +60,7 @@ type Props = {
   pluginSearch: PluginSearch,
   envPresetState: EnvState,
   shippedProposalsState: ShippedProposalsState,
+  presetsOptions: PresetsOptions,
   fileSize: boolean,
   timeTravel: boolean,
   sourceType: SourceType,
@@ -66,6 +70,7 @@ type Props = {
   onExternalPluginRemove: (pluginName: string) => void,
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
+  onPresetOptionChange: TogglePresetOption,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
@@ -88,6 +93,42 @@ const LinkToDocs = ({ className, children, section }: LinkProps) => (
     {children}
   </a>
 );
+
+type PresetOptionProps = {
+  className?: string,
+  when?: boolean,
+  enabled?: boolean,
+  option: string,
+  presets: string[],
+  comment?: string,
+  children: React$Element<any> | Array<React$Element<any>>,
+};
+
+const PresetOption = ({
+  className = "",
+  when = true,
+  enabled = true,
+  option,
+  presets,
+  comment,
+  children,
+}: PresetOptionProps) => {
+  if (!when) return null;
+
+  let title = `"${option}"\n- Applied to ${joinListEnglish(presets)}`;
+  if (comment) title += `\n- ${comment}`;
+
+  return (
+    <label
+      className={`${styles.settingsLabel} ${
+        enabled ? "" : styles.presetsOptionsDisabled
+      } ${className}`}
+      title={title}
+    >
+      {children}
+    </label>
+  );
+};
 
 export default function ReplOptions(props: Props) {
   return (
@@ -161,6 +202,7 @@ class ExpandedContainer extends Component<Props, State> {
       pluginValue,
       showOfficialExternalPlugins,
       loadingExternalPlugins,
+      presetsOptions,
     } = this.props;
 
     const {
@@ -174,6 +216,11 @@ class ExpandedContainer extends Component<Props, State> {
       !envPresetState.isLoaded ||
       !envConfig.isEnvPresetEnabled ||
       shippedProposalsState.isLoading;
+
+    const isStage2Enabled =
+      presetState["stage-0"].isEnabled ||
+      presetState["stage-1"].isEnabled ||
+      presetState["stage-2"].isEnabled;
 
     return (
       <div className={styles.expandedContainer}>
@@ -245,7 +292,7 @@ class ExpandedContainer extends Component<Props, State> {
                   onChange={(event: SyntheticInputEvent<*>) =>
                     onSettingChange("sourceType", event.target.value)
                   }
-                  className={styles.sourceTypeSelect}
+                  className={cx(styles.optionSelect, styles.sourceTypeSelect)}
                 >
                   <option value="module">Module</option>
                   <option value="script">Script</option>
@@ -274,6 +321,65 @@ class ExpandedContainer extends Component<Props, State> {
                   />
                 );
               })}
+              <span
+                className={`${styles.presetsOptionsTitle} ${styles.highlight}`}
+              >
+                Options
+              </span>
+              <PresetOption
+                when={isStage2Enabled}
+                option="decoratorsLegacy"
+                presets={["stage-0", "stage-1", "stage-2"]}
+              >
+                <span className={styles.presetsOptionsLabel}>
+                  Decorators mode
+                </span>
+                <select
+                  className={cx(styles.optionSelect, styles.presetOptionSelect)}
+                  onChange={this._onPresetOptionChange(
+                    "decoratorsLegacy",
+                    t => t.value === "legacy"
+                  )}
+                >
+                  <option
+                    vale="modern"
+                    selected={!presetsOptions.decoratorsLegacy}
+                  >
+                    Current Proposal
+                  </option>
+                  <option
+                    value="legacy"
+                    selected={presetsOptions.decoratorsLegacy}
+                  >
+                    Legacy
+                  </option>
+                </select>
+              </PresetOption>
+              <PresetOption
+                when={isStage2Enabled}
+                option="decoratorsBeforeExport"
+                presets={["stage-0", "stage-1", "stage-2"]}
+                comment="Only works when legacy decorators are not enabled"
+                enabled={!presetsOptions.decoratorsLegacy}
+              >
+                <span className={styles.presetsOptionsLabel}>
+                  Decorators before
+                  <code>export</code>
+                </span>
+                <input
+                  enabled={!presetsOptions.decoratorsLegacy}
+                  checked={presetsOptions.decoratorsBeforeExport}
+                  ref={el => {
+                    if (el) el.indeterminate = presetsOptions.decoratorsLegacy;
+                  }}
+                  className={styles.envPresetCheckbox}
+                  type="checkbox"
+                  onChange={this._onPresetOptionChange(
+                    "decoratorsBeforeExport",
+                    t => t.checked
+                  )}
+                />
+              </PresetOption>
             </AccordionTab>
             <AccordionTab
               className={`${styles.section} ${styles.sectionEnv}`}
@@ -561,6 +667,13 @@ class ExpandedContainer extends Component<Props, State> {
     this.props.onSettingChange(type, event.target.checked);
   };
 
+  _onPresetOptionChange = (type: string, getValue: (target: *) => *) => (
+    event: SyntheticInputEvent<*>
+  ) => {
+    console.log("CHANGE", type, getValue(event.target));
+    this.props.onPresetOptionChange(type, getValue(event.target));
+  };
+
   _pluginNameChanged = value => {
     this.props.pluginSearch(value);
   };
@@ -801,6 +914,21 @@ const styles = {
     fontWeight: "bold",
     color: colors.inverseForeground,
   }),
+  presetsOptionsTitle: css({
+    margin: "0 -0.5rem",
+    padding: "0.5rem 1rem 0.25rem",
+
+    // Hide the title if it isn't followed by any option
+    "&:last-child": {
+      display: "none",
+    },
+  }),
+  presetsOptionsLabel: css({
+    flex: 1,
+  }),
+  presetsOptionsDisabled: css({
+    opacity: 0.5,
+  }),
   settingsLabel: css({
     alignItems: "center",
     display: "flex",
@@ -824,21 +952,19 @@ const styles = {
     margin: "1rem 0 0 0",
     padding: "0 0.5rem",
   }),
-  sourceTypeSelect: css({
+  optionSelect: css({
     appearance: "none",
     backgroundColor: "#2D3035",
     // eslint-disable-next-line
-    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='${colors.inverseForegroundLight}'><polygon points='0,0 100,0 50,50'/></svg>")`,
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='${
+      colors.inverseForegroundLight
+    }'><polygon points='0,0 100,0 50,50'/></svg>")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "8px",
-    backgroundPosition: "calc(100% - 1rem) calc(100% - 8px)",
     border: 0,
     color: colors.inverseForegroundLight,
-    height: "30px",
     margin: "0.25rem 0 0 0",
-    padding: "0 0.5rem",
     transition: "all 0.25s ease-in",
-    width: "100%",
 
     "&:hover": {
       backgroundColor: "#32353A",
@@ -847,6 +973,16 @@ const styles = {
     "&::-ms-expand": {
       display: "none",
     },
+  }),
+  sourceTypeSelect: css({
+    backgroundPosition: "calc(100% - 1rem) calc(100% - 8px)",
+    padding: "0 0.5rem",
+    height: "30px",
+    width: "100%",
+  }),
+  presetOptionSelect: css({
+    padding: "0.2rem 1.5rem 0.2rem 0.5rem",
+    backgroundPosition: "calc(100% - 0.5rem) calc(100% - 0.3rem)",
   }),
   envPresetColumn: css({
     display: "flex",

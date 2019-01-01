@@ -5,6 +5,11 @@ sidebar_label: stage-1
 original_id: babel-preset-stage-1
 ---
 
+> As of Babel v7, all the stage presets have been deprecated.
+> Check [the blog post](/blog/2018/07/27/removing-babels-stage-presets) for more information.
+>
+> For upgrade instructions, see [the README](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-1/README.md).
+
 The gist of Stage 1 is:
 
 > **Stage 1**: proposal
@@ -70,4 +75,5 @@ Use the legacy (stage 1) decorators syntax and behavior.
 ## References
 
 - Chapter "[The TC39 process for ECMAScript features](http://exploringjs.com/es2016-es2017/ch_tc39-process.html)" in "Exploring ES2016 and ES2017" by Axel Rauschmayer
+
 

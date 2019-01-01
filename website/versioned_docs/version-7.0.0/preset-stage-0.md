@@ -5,6 +5,11 @@ sidebar_label: stage-0
 original_id: babel-preset-stage-0
 ---
 
+> As of Babel v7, all the stage presets have been deprecated.
+> Check [the blog post](/blog/2018/07/27/removing-babels-stage-presets) for more information.
+>
+> For upgrade instructions, see [the README](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-0/README.md).
+
 ## Install
 
 ```sh
@@ -56,4 +61,5 @@ Will use the native built-in instead of trying to polyfill behavior for any plug
 `boolean`, defaults to `false`.
 
 Use the legacy (stage 1) decorators syntax and behavior.
+
 

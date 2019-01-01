@@ -64,7 +64,7 @@ export default React.createClass({
 
 ## Type Annotations (Flow and TypeScript)
 
-Babel can strip out type annotations! Check out either our [Flow preset](preset-flow.md) or [TypeScript preset](preset-typescript.md) to get started. Keep in mind this just allows you to use these in combination with Babel, as Babel doesn't do the type checking itself.
+Babel can strip out type annotations! Check out either our [Flow preset](preset-flow.md) or [TypeScript preset](preset-typescript.md) to get started. Keep in mind that **Babel doesn't do type checking**; you'll still have to install and use Flow or TypeScript to check types.
 
 You can install the flow preset with
 
@@ -127,6 +127,6 @@ Babel tries to stay true to the ECMAScript standard, as much as reasonably possi
 Compact
 --------
 
-Babel tries uses the least amount of code possible with no dependence on a bulky runtime.
+Babel tries using the least amount of code possible with no dependence on a bulky runtime.
 
 This may be difficult to do in cases, and there are "loose" options for specific transforms that may tradeoff spec compliancy for readability, file size, and speed.

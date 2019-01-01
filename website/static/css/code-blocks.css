@@ -30,9 +30,6 @@ pre {
   z-index: 1;
 }
 
-.hljs::after {
-}
-
 /* CSS needs to be listed first so that others can overwrite */
 .hljs.language-css::before {
   content: "CSS";
@@ -53,6 +50,10 @@ pre {
 
 .hljs.language-json::before {
   content: "JSON";
+}
+
+.hljs.language-json5::before {
+  content: "JSON5";
 }
 
 .hljs.language-sh::before,
@@ -160,7 +161,7 @@ pre .btn-icon {
   color: #b0a673;
   background-color: transparent;
   height: 34px;
-  transition: all .25s ease-out;
+  transition: all 0.25s ease-out;
 }
 
 pre .btn-icon:hover {
@@ -175,7 +176,7 @@ pre .btn-icon:hover {
 
 .btn-icon svg {
   fill: currentColor;
-  margin-right: .4em;
+  margin-right: 0.4em;
 }
 
 .btn-icon__label {

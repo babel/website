@@ -50,6 +50,7 @@ require("@babel/register")({
 ```javascript
 require("@babel/register")({
   // Array of ignore conditions, either a regex or a function. (Optional)
+  // File paths that match any condition are not compiled.
   ignore: [
     // When a file path matches this regex then it is **not** compiled
     /regex/,
@@ -61,9 +62,17 @@ require("@babel/register")({
     },
   ],
 
-  // Optional only regex - if any filenames **don't** match this regex then they
-  // aren't compiled
-  only: /my_es6_folder/,
+  // Array of accept conditions, either a regex or a function. (Optional)
+  // File paths that match all conditions are compiled.
+  only: [
+    // File paths that **don't** match this regex are not compiled
+    /my_es6_folder/,
+
+    // File paths that **do not** return true are not compiled
+    function(filepath) {
+      return filepath === "/path/to/es6-file.js";
+    }
+  ],
 
   // Setting this will remove the currently hooked extensions of `.es6`, `.es`, `.jsx`, `.mjs`
   // and .js so you'll have to add them back if you want them to be used again.
@@ -132,4 +141,4 @@ require("./my-plugin");
 
 Because it is your own code that triggered the load, and not the logic within
 `@babel/register` itself, this should successfully compile any plugin/preset
-that that loads synchronously.
+that loads synchronously.

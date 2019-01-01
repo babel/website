@@ -39,7 +39,7 @@ We leverage these data sources to maintain mappings of which version of our supp
 
 For browser- or Electron-based projects, we recommend using a [`.browserslistrc`](https://github.com/browserslist/browserslist) file to specify targets. You may already have this configuration file as it is used by many tools in the ecosystem, like [autoprefixer](https://github.com/postcss/autoprefixer), [stylelint](https://stylelint.io/), [eslint-plugin-compat](https://github.com/amilajack/eslint-plugin-compat) and many others.
 
-By default `@babel/preset-env` will use [browserslist config sources](https://github.com/ai/browserslist#queries) _unless_ either the [targets](#targets) or [ignoreBrowserslistConfig](#ignoreBrowserslistConfig) options are set.
+By default `@babel/preset-env` will use [browserslist config sources](https://github.com/ai/browserslist#queries) _unless_ either the [targets](#targets) or [ignoreBrowserslistConfig](#ignorebrowserslistconfig) options are set.
 
 For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
 
@@ -104,7 +104,7 @@ Or an object of minimum environment versions to support:
 
 Example environments: `chrome`, `opera`, `edge`, `firefox`, `safari`, `ie`, `ios`, `android`, `node`, `electron`.
 
-Sidenote, if no targets are specified, `@babel/preset-env` behaves exactly the same as [`@babel/preset-es2015`](preset-es2015.md), [`@babel/preset-es2016`](preset-es2016.md) and [`@babel/preset-es2017`](preset-es2017.md) together (or the deprecated `babel-preset-latest`).
+Sidenote, if no targets are specified, `@babel/preset-env` behaves exactly the same as [`@babel/preset-es2015`](preset-es2015.md), [`@babel/preset-es2016`](preset-es2016.md) and [`@babel/preset-es2017`](preset-es2017.md) together (or the deprecated [`babel-preset-latest`](/docs/en/babel-preset-latest)).
 
 > We don't recommend using `preset-env` this way because it doesn't take advantage of its ability to target specific browsers.
 
@@ -173,11 +173,13 @@ Enable ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.htm
 
 ### `modules`
 
-`"amd" | "umd" | "systemjs" | "commonjs" | "cjs" | false`, defaults to `"commonjs"`.
+`"amd" | "umd" | "systemjs" | "commonjs" | "cjs" | "auto" | false`, defaults to `"auto"`.
 
 Enable transformation of ES6 module syntax to another module type.
 
 Setting this to `false` will not transform modules.
+
+Also note that `cjs` is just an alias for `commonjs`.
 
 ### `debug`
 
@@ -370,8 +372,8 @@ The following are currently supported:
 
 **Builtins**
 
-- None
+- [es7.array.flat-map](https://github.com/tc39/proposal-flatMap)
 
 **Features**
 
-- [Optional catch binding](https://github.com/tc39/proposal-optional-catch-binding)
+- None

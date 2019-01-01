@@ -2324,6 +2324,9 @@
       "version-7.1.0-babelrc": {
         "title": ".babelrc"
       },
+      "version-7.1.0-caveats": {
+        "title": "Caveats"
+      },
       "version-7.1.0-babel-cli": {
         "title": "@babel/cli",
         "sidebar_label": "cli"
@@ -2351,10 +2354,6 @@
       "version-7.1.0-babel-generator": {
         "title": "@babel/generator",
         "sidebar_label": "generator"
-      },
-      "version-7.1.0-gulp-babel-minify": {
-        "title": "gulp-babel-minify",
-        "sidebar_label": "gulp-babel-minify"
       },
       "version-7.1.0-babel-helper-annotate-as-pure": {
         "title": "@babel/helper-annotate-as-pure",
@@ -2470,10 +2469,6 @@
       "version-7.1.0-undefined": {
         "title": "version-7.1.0-undefined"
       },
-      "version-7.1.0-babel-minify": {
-        "title": "babel-minify",
-        "sidebar_label": "babel-minify"
-      },
       "version-7.1.0-babel-node": {
         "title": "@babel/node",
         "sidebar_label": "node"
@@ -2485,33 +2480,25 @@
         "title": "@babel/parser",
         "sidebar_label": "parser"
       },
-      "version-7.1.0-babel-plugin-proposal-numeric-separator": {
-        "title": "@babel/plugin-proposal-numeric-separator",
-        "sidebar_label": "proposal-numeric-separator"
+      "version-7.1.0-babel-plugin-proposal-class-properties": {
+        "title": "@babel/plugin-proposal-class-properties",
+        "sidebar_label": "proposal-class-properties"
+      },
+      "version-7.1.0-babel-plugin-proposal-decorators": {
+        "title": "@babel/plugin-proposal-decorators",
+        "sidebar_label": "proposal-decorators"
+      },
+      "version-7.1.0-babel-plugin-proposal-function-sent": {
+        "title": "@babel/plugin-proposal-function-sent",
+        "sidebar_label": "proposal-function-sent"
       },
       "version-7.1.0-babel-plugin-proposal-optional-chaining": {
         "title": "@babel/plugin-proposal-optional-chaining",
         "sidebar_label": "proposal-optional-chaining"
       },
-      "version-7.1.0-babel-plugin-transform-duplicate-keys": {
-        "title": "@babel/plugin-transform-duplicate-keys",
-        "sidebar_label": "transform-duplicate-keys"
-      },
-      "version-7.1.0-babel-plugin-transform-modules-systemjs": {
-        "title": "@babel/plugin-transform-modules-systemjs",
-        "sidebar_label": "transform-modules-systemjs"
-      },
-      "version-7.1.0-babel-plugin-transform-object-set-prototype-of-to-assign": {
-        "title": "@babel/plugin-transform-object-set-prototype-of-to-assign",
-        "sidebar_label": "transform-object-set-prototype-of-to-assign"
-      },
-      "version-7.1.0-babel-plugin-transform-parameters": {
-        "title": "@babel/plugin-transform-parameters",
-        "sidebar_label": "transform-parameters"
-      },
-      "version-7.1.0-babel-plugin-transform-runtime": {
-        "title": "@babel/plugin-transform-runtime",
-        "sidebar_label": "transform-runtime"
+      "version-7.1.0-babel-plugin-syntax-dynamic-import": {
+        "title": "@babel/plugin-syntax-dynamic-import",
+        "sidebar_label": "syntax-dynamic-import"
       },
       "version-7.1.0-plugins": {
         "title": "Plugins"
@@ -2524,17 +2511,33 @@
         "title": "@babel/preset-env",
         "sidebar_label": "env"
       },
-      "version-7.1.0-babel-preset-flow": {
-        "title": "@babel/preset-flow",
-        "sidebar_label": "flow"
+      "version-7.1.0-babel-preset-es2015": {
+        "title": "@babel/preset-es2015",
+        "sidebar_label": "es2015"
       },
-      "version-7.1.0-babel-preset-react": {
-        "title": "@babel/preset-react",
-        "sidebar_label": "react"
+      "version-7.1.0-babel-preset-es2016": {
+        "title": "@babel/preset-es2016",
+        "sidebar_label": "es2016"
       },
-      "version-7.1.0-babel-preset-typescript": {
-        "title": "@babel/preset-typescript",
-        "sidebar_label": "typescript"
+      "version-7.1.0-babel-preset-es2017": {
+        "title": "@babel/preset-es2017",
+        "sidebar_label": "es2017"
+      },
+      "version-7.1.0-babel-preset-stage-0": {
+        "title": "@babel/preset-stage-0",
+        "sidebar_label": "stage-0"
+      },
+      "version-7.1.0-babel-preset-stage-1": {
+        "title": "@babel/preset-stage-1",
+        "sidebar_label": "stage-1"
+      },
+      "version-7.1.0-babel-preset-stage-2": {
+        "title": "@babel/preset-stage-2",
+        "sidebar_label": "stage-2"
+      },
+      "version-7.1.0-babel-preset-stage-3": {
+        "title": "@babel/preset-stage-3",
+        "sidebar_label": "stage-3"
       },
       "version-7.1.0-presets": {
         "title": "Presets"
@@ -2559,10 +2562,6 @@
         "title": "@babel/standalone",
         "sidebar_label": "standalone"
       },
-      "version-7.1.0-babel-template": {
-        "title": "@babel/template",
-        "sidebar_label": "template"
-      },
       "version-7.1.0-babel-traverse": {
         "title": "@babel/traverse",
         "sidebar_label": "traverse"
@@ -2571,20 +2570,24 @@
         "title": "@babel/types",
         "sidebar_label": "types"
       },
-      "version-7.1.0-usage": {
-        "title": "Usage Guide"
+      "version-7.2.0-babel-plugin-proposal-decorators": {
+        "title": "@babel/plugin-proposal-decorators",
+        "sidebar_label": "proposal-decorators"
       },
-      "version-7.1.0-v7-migration-api": {
-        "title": "Upgrade to Babel 7 (API)"
+      "version-7.2.0-roadmap": {
+        "title": "Babel Roadmap",
+        "sidebar_label": "Roadmap"
       },
-      "version-7.1.0-v7-migration": {
-        "title": "Upgrade to Babel 7"
+      "version-7.2.0-babel-types": {
+        "title": "@babel/types",
+        "sidebar_label": "types"
       }
     },
     "links": {
       "Docs": "Docs",
       "Setup": "Setup",
       "Try it out": "Try it out",
+      "Videos": "Videos",
       "Blog": "Blog",
       "Donate": "Donate",
       "Team": "Team",

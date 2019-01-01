@@ -118,7 +118,7 @@ export default class ASTPanel extends React.Component<Props, State> {
     const { className = "" } = this.props;
 
     return (
-      <div className={`${className}`}>
+      <div className={`${styles.astWrapper} ${className}`}>
         {src && (
           <div className={styles.optionWrapper}>
             {OPTION_ORDER.map(option => (
@@ -148,6 +148,9 @@ export default class ASTPanel extends React.Component<Props, State> {
 }
 
 const styles = {
+  astWrapper: css({
+    height: "100%",
+  }),
   optionWrapper: css({
     display: "flex",
     flexDirection: "row",

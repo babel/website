@@ -18,6 +18,12 @@ Options can be passed to Babel in a variety of ways. When passed directly to Bab
 you can just pass the objects object. When Babel is used via a wrapper, it may also be
 necessary, or at least more useful, to pass the options via [configuration files](config-files.md).
 
+If passing options via `@babel/cli` you'll need to `kebab-case` the names. i.e.
+
+```
+npx babel --root-mode upward file.js # equivalent of passing the rootMode config option
+```
+
 ## Primary options
 
 These options are only allowed as part of Babel's programmatic options, so
@@ -100,13 +106,13 @@ would be a chain of multiple transform passes, along the lines of
 
 ```js
 const filename = "example.js";
-const code = fs.readFileSync(filename, "utf8");
+const source = fs.readFileSync(filename, "utf8");
 
 // Load and compile file normally, but skip code generation.
-const { ast } = babel.transformSync(code, { filename, ast: true, code: false });
+const { ast } = babel.transformSync(source, { filename, ast: true, code: false });
 
 // Minify the file in a second pass and generate the output code here.
-const { code, map } = babel.transformFromAstSync(ast, code, {
+const { code, map } = babel.transformFromAstSync(ast, source, {
   filename,
   presets: ["minify"],
   babelrc: false,
@@ -448,7 +454,7 @@ This is an synonym for `sourceMaps`. Using `sourceMaps` is recommended.
 ### `sourceFileName`
 
 Type: `string`<br />
-Default: `opts.filenameRelative` when available, or `"unknown"`<br />
+Default: `path.basename(opts.filenameRelative)` when available, or `"unknown"`<br />
 
 The name to use for the file inside the source map object.
 

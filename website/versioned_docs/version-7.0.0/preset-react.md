@@ -7,16 +7,16 @@ original_id: babel-preset-react
 
 This preset always includes the following plugins:
 
-- [@babel/plugin-syntax-jsx](https://babeljs.io/docs/plugins/syntax-jsx/)
-- [@babel/plugin-transform-react-jsx](https://babeljs.io/docs/plugins/transform-react-jsx/)
-- [@babel/plugin-transform-react-display-name](https://babeljs.io/docs/plugins/transform-react-display-name/)
+- [@babel/plugin-syntax-jsx](plugin-syntax-jsx.md)
+- [@babel/plugin-transform-react-jsx](plugin-transform-react-jsx.md)
+- [@babel/plugin-transform-react-display-name](plugin-transform-react-display-name.md)
 
 And with the `development` option:
 
-- [@babel/plugin-transform-react-jsx-self](https://babeljs.io/docs/plugins/transform-react-jsx-self/)
-- [@babel/plugin-transform-react-jsx-source](https://babeljs.io/docs/plugins/transform-react-jsx-source/)
+- [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md)
+- [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md)
 
-> Note: Flow syntax support is no longer enabled in v7. For that, you will need to add the [Flow preset](https://babeljs.io/docs/plugins/preset-flow/).
+> Note: Flow syntax support is no longer enabled in v7. For that, you will need to add the [Flow preset](preset-flow.md).
 
 ## Installation
 
@@ -45,11 +45,14 @@ With options:
 ```json
 {
   "presets": [
-    ["@babel/preset-react", {
-      "pragma": "dom", // default pragma is React.createElement
-      "pragmaFrag": "DomFrag", // default is React.Fragment
-      "throwIfNamespace": false // defaults to true
-    }]
+    [
+      "@babel/preset-react",
+      {
+        "pragma": "dom", // default pragma is React.createElement
+        "pragmaFrag": "DomFrag", // default is React.Fragment
+        "throwIfNamespace": false // defaults to true
+      }
+    ]
   ]
 }
 ```
@@ -64,7 +67,7 @@ babel --presets @babel/preset-react script.js
 
 ```javascript
 require("@babel/core").transform("code", {
-  presets: ["@babel/preset-react"]
+  presets: ["@babel/preset-react"],
 });
 ```
 
@@ -92,7 +95,7 @@ Will use the native built-in instead of trying to polyfill behavior for any plug
 
 `boolean`, defaults to `false`.
 
-Toggles plugins that aid in development, such as [`@babel/plugin-transform-react-jsx-self`](https://babeljs.io/docs/plugins/transform-react-jsx-self/) and [`@babel/plugin-transform-react-jsx-source`](https://babeljs.io/docs/plugins/transform-react-jsx-source/).
+Toggles plugins that aid in development, such as [`@babel/plugin-transform-react-jsx-self`](plugin-transform-react-jsx-self.md) and [`@babel/plugin-transform-react-jsx-source`](plugin-transform-react-jsx-source.md).
 
 This is useful when combined with the [env option](options.md#env) configuration or [js config files](config-files.md#javascript).
 
@@ -111,11 +114,14 @@ Though the JSX spec allows this, it is disabled by default since React's JSX doe
 ```js
 module.exports = {
   presets: [
-    ["@babel/preset-react", {
-      development: process.env.BABEL_ENV === "development",
-    }],
+    [
+      "@babel/preset-react",
+      {
+        development: process.env.BABEL_ENV === "development",
+      },
+    ],
   ],
-}
+};
 ```
 
 #### .babelrc
@@ -127,11 +133,8 @@ module.exports = {
   "presets": ["@babel/preset-react"],
   "env": {
     "development": {
-      "presets": [
-        ["@babel/preset-react", { "development": true }]
-      ]
+      "presets": [["@babel/preset-react", { "development": true }]]
     }
   }
 }
 ```
-

@@ -33,7 +33,32 @@ babel --plugins @babel/plugin-syntax-dynamic-import script.js
 
 ```javascript
 require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-syntax-dynamic-import"]
+  plugins: ["@babel/plugin-syntax-dynamic-import"],
 });
 ```
 
+## Working with Webpack and @babel/preset-env
+
+Currently, `@babel/preset-env` is unaware that using `import()` with [Webpack relies on `Promise` internally](https://webpack.js.org/guides/code-splitting/#dynamic-imports). Environments which do not have builtin support for `Promise`, like Internet Explorer, will require both the `promise` and `iterator` polyfills be added manually.
+
+```js
+// webpack config
+const config = {
+  entry: [
+    "core-js/modules/es6.promise",
+    "core-js/modules/es6.array.iterator",
+    path.resolve(__dirname, "src/main.js"),
+  ],
+  // ...
+};
+```
+
+or
+
+```js
+// src/main.js
+import "core-js/modules/es6.promise";
+import "core-js/modules/es6.array.iterator";
+
+// ...
+```
