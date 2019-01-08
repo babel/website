@@ -43,7 +43,7 @@ more information.
 Babel assumes that all input code is an ES2015 module. ES2015 modules are implicitly strict mode so this means
 that top-level `this` is not `window` in the browser nor is it `exports` in node.
 
-If you don't want this behaviour then you have the option of disabling `strict` in the [es2015-modules-transform](plugin-transform-es2015-modules-commonjs.md#usage).
+If you don't want this behaviour then you have the option of disabling `strict` in the [plugin-transform-modules-commonjs](plugin-transform-modules-commonjs.md#usage).
 
 **PLEASE NOTE:** If you do this you're willingly deviating from the spec and this may cause future
 interop issues.
@@ -109,3 +109,4 @@ If we only update `babel-plugin-transform-exponentiation-operator` to 6.x.x, cur
 For example, the Babel [v6.6.0 release](https://github.com/babel/babel/releases/tag/v6.6.0) doesn't mean all packages are now 6.6.0.
 
 > To make sure you are using the latest package versions, you may need to remove `node_modules` and `npm install` again.
+

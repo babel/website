@@ -26,7 +26,7 @@ Sometimes Babel may inject some code in the output that is the same and thus can
 For example, with the class transform (without loose mode):
 
 ```js
-class A {}
+class Circle {}
 ```
 
 turns into:
@@ -54,3 +54,4 @@ var Circle = function Circle() {
 ```
 
 `@babel/runtime` is just the package that contains the implementations of the functions in a modular way.
+

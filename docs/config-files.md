@@ -53,7 +53,7 @@ These caveats mean that:
 
 See the [monorepo](#monorepos) documentation for more discussion on how to configure monorepos that have many packages.
 
-File-relative configs can also be disable by setting ["babelrc"](options.md#babelrc) to `false`.
+File-relative configs can also be disabled by setting ["babelrc"](options.md#babelrc) to `false`.
 
 ### 6.x vs 7.x `.babelrc` loading
 
@@ -120,7 +120,7 @@ to have as a place for repo-level options.
 
 You can often place all of your repo configuration in the root [`babel.config.js`](#project-wide-configuration).
 With ["overrides"](options.md#overrides), you can easily specify configuration that only applies to
-certain subfolders of your repository, which can often be easier to follow that creating many
+certain subfolders of your repository, which can often be easier to follow than creating many
 `.babelrc` files across the repo.
 
 The first issue you'll likely run into is that by default, Babel expects to load [`babel.config.js`](#project-wide-configuration)

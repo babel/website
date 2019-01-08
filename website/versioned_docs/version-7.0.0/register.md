@@ -28,7 +28,7 @@ All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`,
 <blockquote class="babel-callout babel-callout-info">
   <h4>Polyfill not included</h4>
   <p>
-    You must include the <a href="https://babeljs.io/docs/usage/polyfill/">polyfill</a> separately
+    You must include the <a href="./babel-polyfill.html">polyfill</a> separately
     when using features that require it, like generators.
   </p>
 </blockquote>
@@ -42,7 +42,7 @@ override this by passing an ignore regex via:
 require("@babel/register")({
   // This will override `node_modules` ignoring - you can alternatively pass
   // an array of strings to be explicitly matched or a regex / glob
-  ignore: []
+  ignore: [],
 });
 ```
 
@@ -51,34 +51,42 @@ require("@babel/register")({
 ```javascript
 require("@babel/register")({
   // Array of ignore conditions, either a regex or a function. (Optional)
+  // File paths that match any condition are not compiled.
   ignore: [
     // When a file path matches this regex then it is **not** compiled
     /regex/,
 
     // The file's path is also passed to any ignore functions. It will
     // **not** be compiled if `true` is returned.
-    function (filepath) {
+    function(filepath) {
       return filepath !== "/path/to/es6-file.js";
-    }
+    },
   ],
 
-  // Optional only regex - if any filenames **don't** match this regex then they
-  // aren't compiled
-  only: /my_es6_folder/,
+  // Array of accept conditions, either a regex or a function. (Optional)
+  // File paths that match all conditions are compiled.
+  only: [
+    // File paths that **don't** match this regex are not compiled
+    /my_es6_folder/,
+
+    // File paths that **do not** return true are not compiled
+    function(filepath) {
+      return filepath === "/path/to/es6-file.js";
+    }
+  ],
 
   // Setting this will remove the currently hooked extensions of `.es6`, `.es`, `.jsx`, `.mjs`
   // and .js so you'll have to add them back if you want them to be used again.
   extensions: [".es6", ".es", ".jsx", ".js", ".mjs"],
 
   // Setting this to false will disable the cache.
-  cache: true
+  cache: true,
 });
 ```
 
 You can pass in all other [options](options.md) as well, including `plugins` and `presets`.
 Note that [config files](config-files.md) will also be loaded and the programmatic
 config will be merged over top of the file config options.
-
 
 ## Environment variables
 
