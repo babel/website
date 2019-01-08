@@ -4,18 +4,8 @@
   type: work
   description: The AMP Project is an open-source initiative aiming to make the web better for all.
   member: jridgewell
-- name: Condé Nast Tech
-  url: https://technology.condenast.com/
-  logo: conde-nast.jpg
-  type: other
-  tier: other-sponsors
 - name: Tidelift
   url: https://tidelift.com/subscription/pkg/npm-babel
   logo: tidelift.png
   type: other
   tier: other-sponsors
-- name: issue.sh
-  url: https://issue.sh
-  logo: issue-sh.svg
-  type: patreon
-  tier: silver-sponsors
