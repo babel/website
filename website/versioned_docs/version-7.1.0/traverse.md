@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-babel-traverse
+id: version-7.1.0-babel-traverse
 title: @babel/traverse
 sidebar_label: traverse
 original_id: babel-traverse
@@ -43,7 +43,6 @@ traverse(ast, {
     }
 })
 ```
-
 
 [:book: **Read the full docs here**](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/plugin-handbook.md#babel-traverse)
 

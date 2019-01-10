@@ -38,7 +38,7 @@ Also, we can target particular [**node types**](https://babeljs.io/docs/en/babel
 ```js
 traverse(ast, {
     FunctionDeclaration: function(path) {
-             path.node.name = "x";
+             path.node.id.name = "x";
     }
 })
 ```
