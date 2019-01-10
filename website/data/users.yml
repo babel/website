@@ -674,3 +674,6 @@
 - name: BitMidi
   url: https://bitmidi.com
   logo: bitmidi.svg
+- name: Taskade
+  url: https://taskade.com
+  logo: taskade-logo.svg
