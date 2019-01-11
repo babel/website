@@ -72,6 +72,14 @@ Replace the function used when compiling JSX expressions.
 
 This is so that we know that the import is not a type import, and should not be removed
 
+### `jsxPragmaFrag`
+
+`string`, defaults to `React.Fragment`
+
+Replace the function used when compiling JSX fragment expressions.
+
+This is so that we know that the import is not a type import, and should not be removed
+
 [const_enum]: https://www.typescriptlang.org/docs/handbook/enums.html#const-enums
 [namespace]: https://www.typescriptlang.org/docs/handbook/namespaces.html
 [exin]: https://www.typescriptlang.org/docs/handbook/modules.html#export--and-import--require
