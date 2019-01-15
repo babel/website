@@ -5,7 +5,7 @@ sidebar_label: transform-named-capturing-groups-regex
 ---
 
 > NOTE: This plugin generates code that needs ES6 regular expressions
-> functionalities. If you need to support older browsers, wither use
+> functionalities. If you need to support older browsers, use either
 > the `runtime: false` option or import a proper polyfill (e.g. `core-js`).
 
 ## Examples
