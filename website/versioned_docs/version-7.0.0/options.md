@@ -171,7 +171,7 @@ naming scheme that is independent of the "babelrc" name.
 ### `babelrc`
 
 Type: `boolean`<br />
-Default: `true` as long as the `filename` option has been specificed<br />
+Default: `true` as long as the `filename` option has been specified<br />
 Placement: Allowed in Babel's programmatic options, or inside of the loaded [`"configFile"`](#configfile). A programmatic option will override a config file one.<br />
 
 `true` will enable searching for [configuration files](config-files.md#file-relative-configuration) relative
