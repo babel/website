@@ -37,7 +37,7 @@ Calls to `babel.transform` or any other transform function may return `null` if 
 
 The `opts.basename` option exposed on `state.file.opts` has been removed. If you need it, best to build it from `opts.filename` yourself [babel/babel#5467](https://github.com/babel/babel/pull/5467).
 
-Removed `resolveModuleSource`. We recommend using `@babel/plugin-module-resolver`'s 'resolvePath' options [babel/babel#6343](https://github.com/babel/babel/pull/6343)
+Removed `resolveModuleSource`. We recommend using `babel-plugin-module-resolver@3`'s 'resolvePath' options [babel/babel#6343](https://github.com/babel/babel/pull/6343)
 
 Removed `babel.analyse` because it was just an alias for `babel.transform`
 
