@@ -4,6 +4,10 @@ title: @babel/plugin-syntax-async-generators
 sidebar_label: syntax-async-generators
 ---
 
+> #### Syntax only
+>
+> It's unlikely you want to directly use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-async-generators](babeljs.io/docs/en/plugin-proposal-async-generator-functions.md) to both _parse_ and transform this syntax.
+
 ## Example
 
 **Syntax**

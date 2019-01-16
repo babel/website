@@ -4,6 +4,10 @@ title: @babel/plugin-syntax-nullish-coalescing-operator
 sidebar_label: syntax-nullish-coalescing-operator
 ---
 
+> #### Syntax only
+>
+> It's unlikely you want to directly use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-nullish-coalescing-operator](babeljs.io/docs/en/plugin-proposal-nullish-coalescing-operator.md) to both _parse_ and transform this syntax.
+
 ## Installation
 
 ```sh

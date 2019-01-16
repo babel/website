@@ -4,6 +4,10 @@ title: @babel/plugin-syntax-class-properties
 sidebar_label: syntax-class-properties
 ---
 
+> #### Syntax only
+>
+> It's unlikely you want to directly use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-class-properties](babeljs.io/docs/en/plugin-proposal-class-properties.md) to both _parse_ and transform this syntax.
+
 ## Installation
 
 ```sh

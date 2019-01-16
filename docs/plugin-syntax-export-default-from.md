@@ -4,6 +4,10 @@ title: @babel/plugin-syntax-export-default-from
 sidebar_label: syntax-export-default-from
 ---
 
+> #### Syntax only
+>
+> It's unlikely you want to directly use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-export-default-from](babeljs.io/docs/en/plugin-proposal-export-default-from.md) to both _parse_ and transform this syntax.
+
 ## Installation
 
 ```sh

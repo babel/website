@@ -4,6 +4,10 @@ title: @babel/plugin-syntax-logical-assignment-operators
 sidebar_label: syntax-logical-assignment-operators
 ---
 
+> #### Syntax only
+>
+> It's unlikely you want to directly use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-logical-assignment-operators](babeljs.io/docs/en/plugin-proposal-logical-assignment-operators.md) to both _parse_ and transform this syntax.
+
 ## Installation
 
 ```sh

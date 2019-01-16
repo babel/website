@@ -4,6 +4,10 @@ title: @babel/plugin-syntax-json-strings
 sidebar_label: syntax-json-strings
 ---
 
+> #### Syntax only
+>
+> It's unlikely you want to directly use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-json-strings](babeljs.io/docs/en/plugin-proposal-json-strings.md) to both _parse_ and transform this syntax.
+
 ## Installation
 
 ```sh

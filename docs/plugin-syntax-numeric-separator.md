@@ -4,6 +4,9 @@ title: @babel/plugin-syntax-numeric-separator
 sidebar_label: syntax-numeric-separator
 ---
 
+> #### Syntax only
+>
+> It's unlikely you want to directly use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-numeric-separator](babeljs.io/docs/en/plugin-proposal-numeric-separator.md) to both _parse_ and transform this syntax.
 
 ## Installation
 

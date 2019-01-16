@@ -4,6 +4,10 @@ title: @babel/plugin-syntax-decorators
 sidebar_label: syntax-decorators
 ---
 
+> #### Syntax only
+>
+> It's unlikely you want to directly use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-decorators](babeljs.io/docs/en/plugin-proposal-decorators.md) to both _parse_ and transform this syntax.
+
 ## Installation
 
 ```sh
