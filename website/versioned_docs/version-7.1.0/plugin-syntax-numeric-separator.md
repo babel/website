@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-babel-plugin-syntax-numeric-separator
+id: version-7.1.0-babel-plugin-syntax-numeric-separator
 title: @babel/plugin-syntax-numeric-separator
 sidebar_label: syntax-numeric-separator
 original_id: babel-plugin-syntax-numeric-separator

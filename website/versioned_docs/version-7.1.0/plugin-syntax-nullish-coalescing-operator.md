@@ -1,7 +1,8 @@
 ---
-id: babel-plugin-syntax-nullish-coalescing-operator
+id: version-7.1.0-babel-plugin-syntax-nullish-coalescing-operator
 title: @babel/plugin-syntax-nullish-coalescing-operator
 sidebar_label: syntax-nullish-coalescing-operator
+original_id: babel-plugin-syntax-nullish-coalescing-operator
 ---
 
 > #### Syntax only

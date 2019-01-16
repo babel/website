@@ -1,7 +1,8 @@
 ---
-id: babel-plugin-syntax-do-expressions
+id: version-7.1.0-babel-plugin-syntax-do-expressions
 title: @babel/plugin-syntax-do-expressions
 sidebar_label: syntax-do-expressions
+original_id: babel-plugin-syntax-do-expressions
 ---
 
 > #### Syntax only

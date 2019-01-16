@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-babel-plugin-syntax-function-bind
+id: version-7.1.0-babel-plugin-syntax-function-bind
 title: @babel/plugin-syntax-function-bind
 sidebar_label: syntax-function-bind
 original_id: babel-plugin-syntax-function-bind

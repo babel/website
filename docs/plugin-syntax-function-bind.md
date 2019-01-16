@@ -6,7 +6,7 @@ sidebar_label: syntax-function-bind
 
 > #### Syntax only
 >
-> It's unlikely you want to directly use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-function-bind](babeljs.io/docs/en/plugin-proposal-function-bind.md) to both _parse_ and transform this syntax.
+> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-function-bind](babeljs.io/docs/en/plugin-proposal-function-bind.md) to _both_ parse and transform this syntax.
 
 ## Installation
 

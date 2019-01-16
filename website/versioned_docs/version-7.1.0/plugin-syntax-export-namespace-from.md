@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-babel-plugin-syntax-export-namespace-from
+id: version-7.1.0-babel-plugin-syntax-export-namespace-from
 title: @babel/plugin-syntax-export-namespace-from
 sidebar_label: syntax-export-namespace-from
 original_id: babel-plugin-syntax-export-namespace-from

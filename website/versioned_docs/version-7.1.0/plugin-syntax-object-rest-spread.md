@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-babel-plugin-syntax-object-rest-spread
+id: version-7.1.0-babel-plugin-syntax-object-rest-spread
 title: @babel/plugin-syntax-object-rest-spread
 sidebar_label: syntax-object-rest-spread
 original_id: babel-plugin-syntax-object-rest-spread

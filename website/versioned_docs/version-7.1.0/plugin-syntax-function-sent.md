@@ -1,7 +1,8 @@
 ---
-id: babel-plugin-syntax-function-sent
+id: version-7.1.0-babel-plugin-syntax-function-sent
 title: @babel/plugin-syntax-function-sent
 sidebar_label: syntax-function-sent
+original_id: babel-plugin-syntax-function-sent
 ---
 
 > #### Syntax only

@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-babel-plugin-syntax-json-strings
+id: version-7.1.0-babel-plugin-syntax-json-strings
 title: @babel/plugin-syntax-json-strings
 sidebar_label: syntax-json-strings
 original_id: babel-plugin-syntax-json-strings

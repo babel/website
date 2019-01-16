@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-babel-plugin-syntax-export-default-from
+id: version-7.1.0-babel-plugin-syntax-export-default-from
 title: @babel/plugin-syntax-export-default-from
 sidebar_label: syntax-export-default-from
 original_id: babel-plugin-syntax-export-default-from

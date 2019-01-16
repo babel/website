@@ -1,7 +1,8 @@
 ---
-id: babel-plugin-syntax-optional-catch-binding
+id: version-7.1.0-babel-plugin-syntax-optional-catch-binding
 title: @babel/plugin-syntax-optional-catch-binding
 sidebar_label: syntax-optional-catch-binding
+original_id: babel-plugin-syntax-optional-catch-binding
 ---
 
 > #### Syntax only

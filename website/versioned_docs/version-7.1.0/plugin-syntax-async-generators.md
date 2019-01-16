@@ -1,7 +1,8 @@
 ---
-id: babel-plugin-syntax-async-generators
+id: version-7.1.0-babel-plugin-syntax-async-generators
 title: @babel/plugin-syntax-async-generators
 sidebar_label: syntax-async-generators
+original_id: babel-plugin-syntax-async-generators
 ---
 
 > #### Syntax only

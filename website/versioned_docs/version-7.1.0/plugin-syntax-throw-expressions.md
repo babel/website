@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-babel-plugin-syntax-throw-expressions
+id: version-7.1.0-babel-plugin-syntax-throw-expressions
 title: @babel/plugin-syntax-throw-expressions
 sidebar_label: syntax-throw-expressions
 original_id: babel-plugin-syntax-throw-expressions

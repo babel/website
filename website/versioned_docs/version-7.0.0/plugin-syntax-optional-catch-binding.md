@@ -5,6 +5,10 @@ sidebar_label: syntax-optional-catch-binding
 original_id: babel-plugin-syntax-optional-catch-binding
 ---
 
+> #### Syntax only
+>
+> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-optional-catch-binding](babeljs.io/docs/en/plugin-proposal-optional-catch-binding.md) to _both_ parse and transform this syntax.
+
 ## Example
 
 **Syntax**
