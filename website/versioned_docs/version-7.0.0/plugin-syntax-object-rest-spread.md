@@ -7,7 +7,7 @@ original_id: babel-plugin-syntax-object-rest-spread
 
 > #### Syntax only
 >
-> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-object-rest-spread](babeljs.io/docs/en/plugin-proposal-object-rest-spread.md) to _both_ parse and transform this syntax.
+> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-object-rest-spread](plugin-proposal-object-rest-spread.md) to _both_ parse and transform this syntax.
 
 ## Installation
 

@@ -6,7 +6,7 @@ sidebar_label: syntax-json-strings
 
 > #### Syntax only
 >
-> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-json-strings](babeljs.io/docs/en/plugin-proposal-json-strings.md) to _both_ parse and transform this syntax.
+> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-json-strings](plugin-proposal-json-strings.md) to _both_ parse and transform this syntax.
 
 ## Installation
 

@@ -6,7 +6,7 @@ sidebar_label: syntax-optional-chaining
 
 > #### Syntax only
 >
-> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-optional-chaining](babeljs.io/docs/en/plugin-proposal-optional-chaining.md) to _both_ parse and transform this syntax.
+> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-optional-chaining](plugin-proposal-optional-chaining.md) to _both_ parse and transform this syntax.
 
 ## Installation
 
