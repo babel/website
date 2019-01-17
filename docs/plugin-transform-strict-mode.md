@@ -5,8 +5,8 @@ sidebar_label: transform-strict-mode
 ---
 
 This plugin may be enabled via `@babel/plugin-transform-modules-commonjs`.
-If you wish to disable it you can either turn `strict` off or pass
-`strictMode: false` as an option to the commonjs transform.
+To do this you can pass `strict: true` as an option to the commonjs transform.
+This option defaults to `false`.
 
 ## Example
 
