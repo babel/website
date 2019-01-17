@@ -135,4 +135,19 @@ function mergeFlatten(currentSrc, nextSrc) {
   };
 }
 
-export { flatten, unflatten, filterFlatten, deleteFlatten, mergeFlatten };
+function reject(obj, keys) {
+  const result = Object.keys(obj)
+    .filter(k => !keys.includes(k))
+    .map(k => Object.assign({}, { [k]: obj[k] }))
+    .reduce((res, o) => Object.assign(res, o), {});
+  return result;
+}
+
+export {
+  flatten,
+  unflatten,
+  filterFlatten,
+  deleteFlatten,
+  mergeFlatten,
+  reject,
+};

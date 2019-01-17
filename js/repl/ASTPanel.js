@@ -6,10 +6,11 @@ import React from "react";
 import ReactJson from "react-json-view";
 import {
   flatten,
-  unflatten,
   filterFlatten,
+  unflatten,
   deleteFlatten,
   mergeFlatten,
+  reject,
 } from "./ASTUtils";
 
 type Props = {
@@ -49,9 +50,17 @@ export default class ASTPanel extends React.Component<Props, State> {
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     if (nextProps.src && nextProps.src !== prevState.src) {
-      const flattenSrc = flatten(nextProps.src);
+      let flattenSrc = flatten(nextProps.src);
+      const deleteKeys = Object.keys({
+        ...filterFlatten(flattenSrc, "_fromTemplate"),
+        ...filterFlatten(flattenSrc, "_letDone"),
+      });
+
+      flattenSrc = reject(flattenSrc, deleteKeys);
+      const src = unflatten(flattenSrc);
+
       return {
-        src: nextProps.src,
+        src: src,
         flattenSrc: flattenSrc,
         flattenType: filterFlatten(flattenSrc, "type"),
         flattenLocation: {
@@ -138,6 +147,7 @@ export default class ASTPanel extends React.Component<Props, State> {
           src={src}
           style={styles.reactJson}
           sortKeys={true}
+          name={false}
           enableClipboard={false}
           displayObjectSize={true}
           displayDataTypes={false}
