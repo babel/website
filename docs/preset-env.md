@@ -4,42 +4,42 @@ title: @babel/preset-env
 sidebar_label: env
 ---
 
-`@babel/preset-env` is a smart preset that allows you to use the latest JavaScript without needing to micromanage which syntax transforms (and optionally, browser polyfills) are needed by your target environment(s). This both makes your life easier and JavaScript bundles smaller!
+`@babel/preset-env` 是一个智能的集合，可以让你在项目需要适配的环境（即`target`）中使用最新的javascript特性，而不需要为每一个新特性都配置一个单独的语法转化器（或者browser polyfills）,也就是你只需要支持你的项目需要适配哪些浏览器或者运行环境，而不用具体去管这些运行环境究竟实现了哪些新特性，没有实现哪些新特性。 
 
-- [Install](#install)
-- [How Does it Work?](#how-does-it-work)
-- [Browserslist Integration](#browserslist-integration)
-- [Options](#options)
+- [安装](#install)
+- [如何工作？](#how-does-it-work)
+- [集成浏览器列表](#browserslist-integration)
+- [选项](#options)
 
-## Install
+## 安装
 
-With [npm](https://www.npmjs.com):
+[使用npm安装](https://www.npmjs.com):
 
-```sh
+```命令
 npm install --save-dev @babel/preset-env
 ```
 
-Or [yarn](https://yarnpkg.com):
+或者[使用yarn安装](https://yarnpkg.com):
 
-```sh
+```命令
 yarn add @babel/preset-env --dev
 ```
 
-## How Does it Work?
+## 如何工作？
 
-`@babel/preset-env` would not be possible if not for a number of awesome open-source projects, like [`browserslist`](https://github.com/browserslist/browserslist), [`compat-table`](https://github.com/kangax/compat-table), and [`electron-to-chromium`](https://github.com/Kilian/electron-to-chromium).
+`@babel/preset-env` 来源于一些很酷的开源项目如： [`browserslist`](https://github.com/browserslist/browserslist)、[`compat-table`](https://github.com/kangax/compat-table)、[`electron-to-chromium`](https://github.com/Kilian/electron-to-chromium)等.
 
-We leverage these data sources to maintain mappings of which version of our supported target environments gained support of a JavaScript syntax or browser feature, as well as a mapping of those syntaxes and features to Babel transform plugins and core-js polyfills.
+我们利用这些开源项目维护我们所要支持的目标环境版本和javascript语法或浏览器特性之间的映射关系，以及这些语法和特性同Babel转化器插件和core-js polyfills之间的映射关系。
 
-> It is important to note that `@babel/preset-env` does _not_ support `stage-x` plugins.
+> 注意： `@babel/preset-env` 不支持 `stage-x` 插件.
 
-`@babel/preset-env` takes any [target environments you've specified](#targets) and checks them against its mappings to compile a list of plugins and passes it to Babel.
+`@babel/preset-env`支持指定[target参数](#targets)，在编译插件列表的时候会检查`target`的映射，同时会把这些映射发送给Babel。
 
-## Browserslist Integration
+## 集成浏览器列表
 
-For browser- or Electron-based projects, we recommend using a [`.browserslistrc`](https://github.com/browserslist/browserslist) file to specify targets. You may already have this configuration file as it is used by many tools in the ecosystem, like [autoprefixer](https://github.com/postcss/autoprefixer), [stylelint](https://stylelint.io/), [eslint-plugin-compat](https://github.com/amilajack/eslint-plugin-compat) and many others.
+对于浏览器项目或者Electron项目，我们推荐使用[`.browserslistrc`](https://github.com/browserslist/browserslist) 文件来指定`target`。这类的配置文件还有 [autoprefixer](https://github.com/postcss/autoprefixer)、[stylelint](https://stylelint.io/)、[eslint-plugin-compat](https://github.com/amilajack/eslint-plugin-compat)等。
 
-By default `@babel/preset-env` will use [browserslist config sources](https://github.com/ai/browserslist#queries) _unless_ either the [targets](#targets) or [ignoreBrowserslistConfig](#ignorebrowserslistconfig) options are set.
+如果没有配置[targets选项](#targets)或者设置了[ignoreBrowserslistConfig选项]，即默认情况下(#ignorebrowserslistconfig)`@babel/preset-env` 使用[browserslist配置](https://github.com/ai/browserslist#queries)。
 
 For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
 
