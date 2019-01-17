@@ -6,7 +6,7 @@ id: faq
 ## Why is the output of `for...of` so verbose and ugly?
 
 In order to comply with the specification, the iterator's return method must be
-called on errors. An alternative is to enable [loose mode](plugin-transform-es2015-for-of.md#loose)
+called on errors. An alternative is to enable [loose mode](plugin-transform-for-of.md#loose)
 but please note that there are **many** caveats to be aware of if you enable
 loose mode and that you're willingly choosing to be spec incompliant.
 

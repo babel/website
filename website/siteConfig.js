@@ -43,7 +43,10 @@ const sponsorsDownloaded = require(path.join(__dirname, "/data/sponsors.json"));
 
 const sponsors = [
   ...sponsorsManual,
-  ...sponsorsDownloaded.map(sponsor => {
+  ...sponsorsDownloaded
+  // filter out Handshake for special tier
+  .filter(sponsor => sponsor.id !== 19490)
+  .map(sponsor => {
     // temporary fix for coinbase and webflow
     let tier = sponsor.tier;
     if (sponsor.id == 12671) {
@@ -69,7 +72,7 @@ const sponsors = [
       image: sponsor.avatar || "/img/user.svg",
       description: sponsor.description,
     };
-  }),
+  })
 ];
 
 // move to website/data later
