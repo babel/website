@@ -521,6 +521,10 @@
         "title": "@babel/plugin-transform-modules-umd",
         "sidebar_label": "transform-modules-umd"
       },
+      "babel-plugin-transform-named-capturing-groups-regex": {
+        "title": "@babel/plugin-transform-named-capturing-groups-regex",
+        "sidebar_label": "transform-named-capturing-groups-regex"
+      },
       "babel-plugin-transform-new-target": {
         "title": "@babel/plugin-transform-new-target",
         "sidebar_label": "transform-new-target"
@@ -2604,7 +2608,6 @@
   "pages-strings": {
     "Put in next-gen JavaScript|no description given": "Put in next-gen JavaScript",
     "Get browser-compatible JavaScript out|no description given": "Get browser-compatible JavaScript out",
-    "Check out our REPL to experiment more with Babel!|no description given": "Check out our REPL to experiment more with Babel!",
     "Babel is a JavaScript compiler.|no description given": "Babel is a JavaScript compiler.",
     "Use next generation JavaScript, today.|no description given": "Use next generation JavaScript, today.",
     "Using Babel|setup page - header": "Using Babel",
