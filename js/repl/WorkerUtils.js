@@ -16,7 +16,6 @@ export function registerPromiseWorker(handler: Handler) {
 
     try {
       const message = handler(data.message);
-
       self.postMessage({
         message,
         uid: data.uid,

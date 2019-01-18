@@ -46,6 +46,7 @@ type PluginSearch = (value: string) => void;
 type PluginChange = (plugin: Object) => void;
 
 type Props = {
+  ast: boolean,
   babelVersion: ?string,
   className: string,
   debugEnvPreset: boolean,
@@ -180,6 +181,7 @@ class ExpandedContainer extends Component<Props, State> {
 
   render() {
     const {
+      ast,
       babelVersion,
       debugEnvPreset,
       envConfig,
@@ -271,6 +273,15 @@ class ExpandedContainer extends Component<Props, State> {
                   type="checkbox"
                 />
                 Time Travel
+              </label>
+              <label className={styles.settingsLabel}>
+                <input
+                  checked={ast}
+                  onChange={this._onSettingCheck("ast")}
+                  className={styles.inputCheckboxLeft}
+                  type="checkbox"
+                />
+                AST
               </label>
               <label
                 className={`${styles.settingsLabel} ${styles.selectLabel}`}

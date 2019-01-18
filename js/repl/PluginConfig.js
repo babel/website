@@ -105,6 +105,8 @@ const pluginConfigs: Array<PluginConfig> = [
 ];
 
 const replDefaults: ReplState = {
+  ast: false,
+  astContext: {},
   babili: false,
   browsers: "",
   build: "",

@@ -5,36 +5,31 @@ sidebar_label: Roadmap
 original_id: roadmap
 ---
 
-> Not everything is set in stone or has an issue for it! Looking to post these to get more people involved or integrate with other projects.
-
-## Babel 7.x
-
-TODO
-
 ## Ecosystem
 
-### Remake `compat-table` used in preset-env
+### Test Against `test262`
 
-> https://github.com/kangax/compat-table could use a remake, ideally work with browser vendors on this
+> The parser already does this, but we don't do it for transforms.
 
-- There is also https://github.com/mdn/browser-compat-data
-- Also use data from test262?
-- Run tests against real browsers
-- have a data-only format
-- Need continued maintainence
+We should run against `test262` (the JavaScript test suite). This is made easier with [test262-harness](https://github.com/bterlson/test262-harness). In addition, it would be great to have it run in [test262-report](https://test262.report/), as [announced](https://bocoup.com/blog/announcing-test262-report) by Bocoup.
+
+This will give us a few things:
+
+- Better confidence in Babel's output. More tests/coverage is better for catching regressions and finding spec bugs worth working on.
+- Can use these to help do a reverse test against any kind of "loose" mode. We can purposely fail a test when that option intends to not adhere to the spec.
+- Can use this new data instead of `compat-table` for `@babel/preset-env`.
 
 ### Polyfill behavior
 
 > This is regarding https://github.com/babel/babel/tree/master/packages/babel-preset-env#usebuiltins-usage
 
-- Allow any substitute polyfill instead of `core-js`. You should be able to override anything (custom `Promise`, etc)
-- Make `"usage"` option the default after it is stable.
+- [ ] Allow any substitute polyfill instead of `core-js`. You should be able to override anything (custom `Promise`, etc)
+- [ ] Make `"usage"` option the default after it is stable.
 
 ### Build/publish workflow
 
 - Guide on compiling/publishing ES2015+, .mjs, etc: https://twitter.com/philwalton/status/908082461799616512
 - Support multi-build/folder outputs based on ES version/browser/engines?
-- Includes making sure you can run Babel safely over node_modules [like with #6280](https://github.com/babel/babel/pull/6280). [create-react-app has an issue for this](https://github.com/facebookincubator/create-react-app/issues/3777)
 
 ### Codemods for TC39 Proposals
 
@@ -110,13 +105,6 @@ Not sure what this looks like but had this idea for a really long time and didn'
 
 ## General/Infra
 
-### Run Babel against Spec tests (test262, TS, Flow, JSX)
-
-Better set of tests for stability/spec compliancy.
-
-- The parser (babylon) already has a whitelist of test262 tests
-- Need to do the same for the transforms.
-
 ### Smoke Tests
 
 - Babel itself https://github.com/babel/babel/issues/6134
@@ -133,17 +121,11 @@ Better set of tests for stability/spec compliancy.
 - Validate config better
 - Create/expand on new tools like https://github.com/boopathi/babel-time-travel
 
-### Website Rehaul
+#### Website/Docs
 
-- [x] Use Docusaurus
-- [x] Versioned docs pages: currently we don't have an easy way to show both the documentation for v6, v7, and beyond.
-- [ ] Translatable docs
-
-#### Expanded Docs
-
+- Translations
 - Real documentation on APIs
 - Up to date babel-handbook/merge into rehauled website
-- [x] Continue our [videos page](https://babeljs.io/docs/community/videos/)
 - Link to common errors pages
 
 #### Better REPL

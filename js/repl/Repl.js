@@ -36,6 +36,7 @@ import {
 import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
 import { colors, media } from "./styles";
+import ASTPanel from "./ASTPanel";
 
 import type {
   BabelPresets,
@@ -51,6 +52,8 @@ import type {
 
 type Props = {};
 type State = {
+  ast: boolean,
+  astContext: Object,
   babel: BabelState,
   code: string,
   compiled: ?string,
@@ -126,6 +129,8 @@ class Repl extends React.Component<Props, State> {
     // A partial State is defined first b'c this._compile needs it.
     // The compile helper will then populate the missing State values.
     this.state = {
+      ast: persistedState.ast,
+      astContext: persistedState.astContext,
       babel: persistedStateToBabelState(persistedState, babelConfig),
       code: persistedState.code,
       compiled: null,
@@ -203,6 +208,7 @@ class Repl extends React.Component<Props, State> {
     return (
       <div className={styles.repl}>
         <ReplOptions
+          ast={state.ast}
           babelVersion={state.babel.version}
           className={styles.optionsColumn}
           debugEnvPreset={state.debugEnvPreset}
@@ -248,15 +254,19 @@ class Repl extends React.Component<Props, State> {
               options={options}
               placeholder="Write code here"
             />
-            <CodeMirrorPanel
-              className={styles.codeMirrorPanel}
-              code={state.compiled}
-              errorMessage={state.evalErrorMessage}
-              fileSize={state.meta.compiledSize}
-              info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
-              options={options}
-              placeholder="Compiled output will be shown here"
-            />
+            {state.ast ? (
+              <ASTPanel className={styles.astPanel} src={state.astContext} />
+            ) : (
+              <CodeMirrorPanel
+                className={styles.codeMirrorPanel}
+                code={state.compiled}
+                errorMessage={state.evalErrorMessage}
+                fileSize={state.meta.compiledSize}
+                info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
+                options={options}
+                placeholder="Compiled output will be shown here"
+              />
+            )}
           </div>
           {state.timeTravel && (
             <TimeTravelSlider
@@ -468,6 +478,7 @@ class Repl extends React.Component<Props, State> {
     }
     this._workerApi
       .compile(code, {
+        astContext: state.astContext,
         plugins: state.externalPlugins,
         debugEnvPreset: state.debugEnvPreset,
         envConfig: state.envPresetState.isLoaded ? state.envConfig : null,
@@ -567,6 +578,8 @@ class Repl extends React.Component<Props, State> {
     const builtIns = envConfig.isBuiltInsEnabled && envConfig.builtIns;
 
     const payload = {
+      ast: state.ast,
+      astContext: state.astContext,
       babili: plugins["babili-standalone"].isEnabled,
       browsers: envConfig.browsers,
       build: state.babel.build,
@@ -667,11 +680,16 @@ const styles = {
   codeMirrorPanel: css({
     flex: "0 0 50%",
   }),
+  astPanel: css({
+    flex: "0 0 50%",
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "column",
+  }),
   optionsColumn: css({
     flex: "0 0 auto",
   }),
   repl: css`
-    height: 100%;
     height: calc(100vh - 50px); /* 50px is the header's height */
     width: 100%;
     display: flex;
@@ -693,6 +711,7 @@ const styles = {
     height: "85%",
     width: "100%",
     display: "flex",
+    flexFlow: "wrap",
     flexDirection: "row",
     justifyContent: "stretch",
     overflow: "auto",
