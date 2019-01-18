@@ -6,10 +6,10 @@ sidebar_label: env
 
 `@babel/preset-env` 是一个智能的集合，可以让你在项目需要适配的环境（即`target`）中使用最新的javascript特性，而不需要为每一个新特性都配置一个单独的语法转化器（或者browser polyfills）,也就是你只需要支持你的项目需要适配哪些浏览器或者运行环境，而不用具体去管这些运行环境究竟实现了哪些新特性，没有实现哪些新特性。 
 
-- [安装](#install)
-- [如何工作？](#how-does-it-work)
-- [集成浏览器列表](#browserslist-integration)
-- [选项](#options)
+- [安装](#安装)
+- [如何工作？](#如何工作？)
+- [集成浏览器列表](#集成浏览器列表)
+- [选项](#选项)
 
 ## 安装
 
@@ -39,11 +39,10 @@ yarn add @babel/preset-env --dev
 
 对于浏览器项目或者Electron项目，我们推荐使用[`.browserslistrc`](https://github.com/browserslist/browserslist) 文件来指定`target`。这类的配置文件还有 [autoprefixer](https://github.com/postcss/autoprefixer)、[stylelint](https://stylelint.io/)、[eslint-plugin-compat](https://github.com/amilajack/eslint-plugin-compat)等。
 
-如果没有配置[targets选项](#targets)或者设置了[ignoreBrowserslistConfig选项]，即默认情况下(#ignorebrowserslistconfig)`@babel/preset-env` 使用[browserslist配置](https://github.com/ai/browserslist#queries)。
+如果没有配置[targets](#targets)或者设置了[ignoreBrowserslistConfig选项](#ignorebrowserslistconfig)，即默认情况下`@babel/preset-env` 使用[browserslist配置](https://github.com/ai/browserslist#queries)。
 
-For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
-
-[Options](options.md#presets)
+举个例子，如果项目需要适配的是市场占有率大于0.25%的浏览器（不包括没有安全更新的浏览器，比如IE10和BlackBerry）:
+那[配置参数如下：](options.md#presets)
 
 ```json
 {
@@ -65,25 +64,23 @@ For example, to only include polyfills and code transforms needed for users whos
 not dead
 ```
 
-or
-
-**package.json**
+**或者在package.json中添加**
 
 ```
 "browserslist": "> 0.25%, not dead"
 ```
 
-## Options
+## 选项
 
-For more information on setting options for a preset, refer to the [preset options](presets.md#preset-options) documentation.
+更多的参数信息见 [preset选项](presets.md#preset-options)。
 
 ### `targets`
 
-`string | Array<string> | { [string]: string }`, defaults to `{}`.
-
-Describes the environments you support/target for your project.
-
-This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query:
+类型：`string | Array<string> | { [string]: string }`
+默认值：`{}`
+含义：描述项目需要兼容的环境
+值：
+1. [浏览器兼容](https://github.com/ai/browserslist) 查询条件:
 
 ```json
 {
@@ -91,7 +88,7 @@ This can either be a [browserslist-compatible](https://github.com/ai/browserslis
 }
 ```
 
-Or an object of minimum environment versions to support:
+2. 需要兼容的环境的最低版本：
 
 ```json
 {
@@ -102,11 +99,11 @@ Or an object of minimum environment versions to support:
 }
 ```
 
-Example environments: `chrome`, `opera`, `edge`, `firefox`, `safari`, `ie`, `ios`, `android`, `node`, `electron`.
+这里的环境关键字有： `chrome`, `opera`, `edge`, `firefox`, `safari`, `ie`, `ios`, `android`, `node`, `electron`。
 
-Sidenote, if no targets are specified, `@babel/preset-env` will transform all ECMAScript 2015+ code by default.
+> _注_：如果不指定`targets`，`@babel/preset-env`会转化所有的ECMAScript 2015+的代码。
 
-> We don't recommend using `preset-env` this way because it doesn't take advantage of its ability to target specific browsers.
+> 我们不建议按照下面的方式使用`preset-env`
 
 ```json
 {
@@ -116,11 +113,11 @@ Sidenote, if no targets are specified, `@babel/preset-env` will transform all EC
 
 #### `targets.esmodules`
 
-`boolean`.
+类型：`boolean`
 
-You may also target browsers supporting ES Modules (https://www.ecma-international.org/ecma-262/6.0/#sec-modules). When specifying this option, the browsers field will be ignored. You can use this approach in combination with `<script type="module"></script>` to conditionally serve smaller scripts to users (https://jakearchibald.com/2017/es-modules-in-browsers/#nomodule-for-backwards-compatibility).
+含义：你可以也需要兼容支持ES Modules (https://www.ecma-international.org/ecma-262/6.0/#sec-modules)的浏览器。 当这个值设置为true的时候，browsers字段会被忽略。 你可以结合`<script type="module"></script>` 让用户获取更小尺寸的代码 (https://jakearchibald.com/2017/es-modules-in-browsers/#nomodule-for-backwards-compatibility).
 
-> _Please note_: when specifying the esmodules target, browsers targets will be ignored.
+> _注_: 当`targets.esmodules`为`true`的时候`targets.browsers`就会被忽略。
 
 ```json
 {
@@ -139,99 +136,97 @@ You may also target browsers supporting ES Modules (https://www.ecma-internation
 
 #### `targets.node`
 
-`string | "current" | true`.
+类型：`string | "current" | true`
 
-If you want to compile against the current node version, you can specify `"node": true` or `"node": "current"`, which would be the same as `"node": process.versions.node`.
+如果你想在当前的node环境中进行编译，那么可以设置：`"node": true` 或`"node": "current"`或`"node": process.versions.node`.
 
 #### `targets.safari`
 
-`string | "tp"`.
+类型：`string | "tp"`.
 
-If you want to compile against the [technology preview](https://developer.apple.com/safari/technology-preview/) version of Safari, you can specify `"safari": "tp"`.
+如果你想针对`Safari`的[technology preview](https://developer.apple.com/safari/technology-preview/) 版本进行编译，你可以设置：`"safari": "tp"`.
 
 #### `targets.browsers`
 
-`string | Array<string>`.
+类型：`string | Array<string>`
 
-A query to select browsers (ex: last 2 versions, > 5%, safari tp) using [browserslist](https://github.com/ai/browserslist).
+含义：浏览器查询条件 (例如: last 2 versions, > 5%, safari tp) ，详情见：[browserslist](https://github.com/ai/browserslist).
 
-Note, browsers' results are overridden by explicit items from `targets`.
+> _注：_ 这个值会被`targets`中的浏览器查询条件覆盖
 
-> Note: this will be removed in later version in favor of just setting "targets" to a query directly.
+> _注：_  在最新版本中会移除这个选项，直接使用`targets`来配置
 
 ### `spec`
 
-`boolean`, defaults to `false`.
-
-Enable more spec compliant, but potentially slower, transformations for any plugins in this preset that support them.
+类型：`boolean`
+默认值：`false`
+含义：当值为`true`的时候意味着preset中的所有插件会使用更符合规范的转化方式
 
 ### `loose`
 
-`boolean`, defaults to `false`.
+类型：`boolean`
+默认值：`false`
 
-Enable ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.html) for any plugins in this preset that allow them.
+含义：为这个preset中的所有插件开启["loose" 选项](http://2ality.com/2015/12/babel6-loose-mode.html)。
 
 ### `modules`
 
-`"amd" | "umd" | "systemjs" | "commonjs" | "cjs" | "auto" | false`, defaults to `"auto"`.
+可选值：`"amd" | "umd" | "systemjs" | "commonjs" | "cjs" | "auto" | false`
+默认值：`"auto"`
 
-Enable transformation of ES6 module syntax to another module type.
+支持将ES6 module转化为其他module类型。
 
-Setting this to `false` will not transform modules.
+值 `false` 意味着不会转化模块加载方式
 
-Also note that `cjs` is just an alias for `commonjs`.
+`cjs`是`commonjs`的简写
 
 ### `debug`
 
-`boolean`, defaults to `false`.
+类型：`boolean`
+默认值：`false`
 
-Outputs the targets/plugins used and the version specified in [plugin data version](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugins.json) to `console.log`.
+用`console.log`输出使用的targets和plugins以及pulgin的版本，版本值见：[插件版本](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugins.json
 
 ### `include`
 
-`Array<string|RegExp>`, defaults to `[]`.
+类型：`Array<string|RegExp>`
+默认值：`[]`
+含义：指定始终会包括的插件
 
-An array of plugins to always include.
+可选的值有：
 
-Valid options include any:
+- [Babel plugins](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugin-features.js) - 同时还有 (`@babel/plugin-transform-spread`) and 以及没有@babel前缀的 (`plugin-transform-spread`)
 
-- [Babel plugins](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugin-features.js) - both with (`@babel/plugin-transform-spread`) and without prefix (`plugin-transform-spread`) are supported.
+- [Built-ins](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/built-in-features.js)，例如 `es6.map`, `es6.set`, or `es6.object.assign`.
 
-- [Built-ins](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/built-in-features.js), such as `es6.map`, `es6.set`, or `es6.object.assign`.
+插件的名称可以使用全称、部分指定以及正则的形式，如：
 
-Plugin names can be fully or partially specified (or using `RegExp`).
+- 全称示例：`"es6.math.sign"`
+- 部分指定示例：`"es6.math.*"` （代表所有以`es6.math`开头的插件)
+- 正则：`/^transform-.*$/` 或者 `new RegExp("^transform-modules-.*")`
 
-Acceptable inputs:
+_注：_ 部分指定中`.`和在正则中的用法一样是用来匹配任何字符而不是指实际的符号`'.'`。同样值得一提的是在正则中需要使用`.*`来匹配任何字符，而不是使用`glob`中的`*`。
 
-- Full name (`string`): `"es6.math.sign"`
-- Partial name (`string`): `"es6.math.*"` (resolves to all plugins with `es6.math` prefix)
-- `RegExp` Object: `/^transform-.*$/` or `new RegExp("^transform-modules-.*")`
+当原生实现有bug的时候，或者支持的特性和不支持的特性需要组合使用的时候这个选项就可以派上用场了。举个例子来说，Node 4支持classes但是不支持spread. 如果在class中`super`方法中使用spread参数，那么就需要包含`@babel/plugin-transform-classes`，否则就不能编译带有spread参数的super方法。
 
-Note that the above `.` is the `RegExp` equivalent to match any character, and not the actual `'.'` character. Also note that to match any character `.*` is used in `RegExp` as opposed to `*` in `glob` format.
-
-This option is useful if there is a bug in a native implementation, or a combination of a non-supported feature + a supported one doesn't work.
-
-For example, Node 4 supports native classes but not spread. If `super` is used with a spread argument, then the `@babel/plugin-transform-classes` transform needs to be `include`d, as it is not possible to transpile a spread with `super` otherwise.
-
-> NOTE: The `include` and `exclude` options _only_ work with the [plugins included with this preset](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugin-features.js); so, for example, including `@babel/plugin-proposal-do-expressions` or excluding `@babel/plugin-proposal-function-bind` will throw errors. To use a plugin _not_ included with this preset, add them to your ["plugins"](options.md#plugins) directly.
+> _注：_:  `include`和`exclude`选项的作用范围为[preset所包含的插件](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugin-features.js)，所以如果`include` `@babel/plugin-proposal-do-expressions` 或者`exclude` `@babel/plugin-proposal-function-bind` 会报错。 如果要使用preset中没有的插件，可以直接在 ["plugins"选项](options.md#plugins) 中配置。
 
 ### `exclude`
 
-`Array<string|RegExp>`, defaults to `[]`.
+类型： `Array<string|RegExp>`
+默认值： `[]`
+含义：需要排除在外的插件列表
 
-An array of plugins to always exclude/remove.
-
-The possible options are the same as the `include` option.
-
-This option is useful for "blacklisting" a transform like `@babel/plugin-transform-regenerator` if you don't use generators and don't want to include `regeneratorRuntime` (when using `useBuiltIns`) or for using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](plugin-proposal-async-generator-functions.md).
+同`include`选项不同的是，`exclude` 用来添加转化器的黑名单， 例如如果你不使用generators，那么你就可以排除掉`@babel/plugin-transform-regenerator`和`regeneratorRuntime`(前提是配置：`useBuiltIns`)或者使用更快的插件如 [fast-async](https://github.com/MatAtBread/fast-async) 来取代 [Babel's async-to-gen](plugin-proposal-async-generator-functions.md)
 
 ### `useBuiltIns`
 
-`"usage"` | `"entry"` | `false`, defaults to `false`.
+可选值：`"usage"` | `"entry"` | `false` 
+默认值：`false`
 
 > This option adds direct references to the `core-js` module as bare imports. Thus `core-js` will be resolved relative to the file itself and needs to be accessible. You may need to specify `core-js@2` as a top level dependency in your application if there isn't a `core-js` dependency or there are multiple versions.
 
-This option configures how `@babel/preset-env` handles polyfills.
+这个选项定义了`@babel/preset-env`处理polyfills的方式
 
 #### `useBuiltIns: 'entry'`
 
