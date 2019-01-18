@@ -135,13 +135,24 @@ function mergeFlatten(currentSrc, nextSrc) {
   };
 }
 
-function reject(obj, keys) {
-  const result = Object.keys(obj)
-    .filter(k => !keys.includes(k))
-    .map(k => Object.assign({}, { [k]: obj[k] }))
-    .reduce((res, o) => Object.assign(res, o), {});
-  return result;
+function reject(obj, char) {
+  return Object.keys(obj)
+    .filter(key => !key.includes(char))
+    .reduce((o, key) => {
+      return {
+        ...o,
+        [key]: obj[key],
+      };
+    }, {});
 }
+
+// function reject(obj, keys) {
+//   const result = Object.keys(obj)
+//     .filter(k => !keys.includes(k))
+//     .map(k => Object.assign({}, { [k]: obj[k] }))
+//     .reduce((res, o) => Object.assign(res, o), {});
+//   return result;
+// }
 
 export {
   flatten,

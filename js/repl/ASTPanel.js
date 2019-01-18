@@ -51,12 +51,7 @@ export default class ASTPanel extends React.Component<Props, State> {
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     if (nextProps.src && nextProps.src !== prevState.src) {
       let flattenSrc = flatten(nextProps.src);
-      const deleteKeys = Object.keys({
-        ...filterFlatten(flattenSrc, "_fromTemplate"),
-        ...filterFlatten(flattenSrc, "_letDone"),
-      });
-
-      flattenSrc = reject(flattenSrc, deleteKeys);
+      flattenSrc = reject(flattenSrc, "_");
       const src = unflatten(flattenSrc);
 
       return {
@@ -172,11 +167,10 @@ const styles = {
   settingsLabel: css({
     alignItems: "center",
     display: "flex",
-    flex: "0 0 1.5rem",
     flexDirection: "colum",
     fontSize: "0.875rem",
     fontWeight: "normal",
-    padding: "0 1rem",
+    padding: "0.19rem 1rem",
     transition: "background-color 250ms ease-in-out, color 250ms ease-in-out",
     "&:hover": {
       backgroundColor: colors.inverseBackgroundDark,
