@@ -388,8 +388,8 @@ class ExpandedContainer extends Component<Props, State> {
                   )}
                 >
                   <option
-                    vale="simple"
-                    selected={presetsOptions.pipelineProposal === "simple"}
+                    vale="minimal"
+                    selected={presetsOptions.pipelineProposal === "minimal"}
                   >
                     Simple
                   </option>

@@ -137,7 +137,7 @@ const replDefaults: ReplState = {
   envVersion: "",
   decoratorsLegacy: false,
   decoratorsBeforeExport: false,
-  pipelineProposal: "simple",
+  pipelineProposal: "minimal",
 };
 
 export {
