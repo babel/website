@@ -61,7 +61,7 @@ There are a few edge cases to consider when using a file-relative config:
 * The ["filename"](options.md#filename) being compiled must be inside of
   ["babelrcRoots"](options.md#babelrcroots) packages, or else searching will be skipped entirely.
 
-File-relative configs can also be disable by setting ["babelrc"](options.md#babelrc) to `false`.
+File-relative configs can also be disabled by setting ["babelrc"](options.md#babelrc) to `false`.
 
 ### 6.x vs 7.x `.babelrc` loading
 

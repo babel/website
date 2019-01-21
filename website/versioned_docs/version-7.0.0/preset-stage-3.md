@@ -5,40 +5,10 @@ sidebar_label: stage-3
 original_id: babel-preset-stage-3
 ---
 
-> As of Babel v7, all of the stage-x presets have been deprecated.
+> As of Babel v7, all the stage presets have been deprecated.
 > Check [the blog post](/blog/2018/07/27/removing-babels-stage-presets) for more information.
 >
-> For a more automatic migration, we have updated [babel-upgrade](https://github.com/babel/babel-upgrade) to do this for you (you can run `npx babel-upgrade`).
->
-> If you want the same configuration as before:
->
-> ```json5
-> {
->   plugins: [
->     // Stage 3
->     "@babel/plugin-syntax-dynamic-import",
->     "@babel/plugin-syntax-import-meta",
->     ["@babel/plugin-proposal-class-properties", { loose: false }],
->     "@babel/plugin-proposal-json-strings",
->   ],
-> }
-> ```
->
-> If you're using the same configuration across many separate projects, keep in mind that you can also create your own custom presets with whichever plugins and presets you're looking to use.
->
-> ```js
-> module.exports = function() {
->   return {
->     plugins: [
->       require("@babel/plugin-syntax-dynamic-import"),
->       [require("@babel/plugin-proposal-class-properties"), { loose: false }],
->     ],
->     presets: [
->       // ...
->     ],
->   };
-> };
-> ```
+> For upgrade instructions, see [the README](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-3/README.md).
 
 The gist of Stage 3 is:
 
@@ -78,7 +48,7 @@ babel script.js --presets @babel/preset-stage-3
 
 ```javascript
 require("@babel/core").transform("code", {
-  presets: ["@babel/preset-stage-3"],
+  presets: ["@babel/preset-stage-3"]
 });
 ```
 
@@ -99,3 +69,5 @@ Will use the native built-in instead of trying to polyfill behavior for any plug
 ## References
 
 - Chapter "[The TC39 process for ECMAScript features](http://exploringjs.com/es2016-es2017/ch_tc39-process.html)" in "Exploring ES2016 and ES2017" by Axel Rauschmayer
+
+
