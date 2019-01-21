@@ -38,7 +38,7 @@ const videos = [
           },
           {
             name: "Thomas Fischer",
-            link: "https://twitter.com/tom__fischer"
+            link: "https://twitter.com/tom__fischer",
           },
         ],
         year: "2018",
@@ -70,7 +70,8 @@ const videos = [
         author_link: "https://twitter.com/kentcdodds",
         year: "2017",
         event: "Open West",
-        event_link: "https://kentcdodds.com/talks/#writing-custom-babel-and-eslint-plugins-with-asts",
+        event_link:
+          "https://kentcdodds.com/talks/#writing-custom-babel-and-eslint-plugins-with-asts",
         link: "https://www.youtube.com/embed/VBscbcm2Mok",
       },
       {
@@ -260,7 +261,8 @@ const videos = [
         author_link: "https://twitter.com/kentcdodds",
         year: "2017",
         event: "PayPal (practice run with coworkers)",
-        event_link: "https://kentcdodds.com/workshops/#code-transformation-and-linting",
+        event_link:
+          "https://kentcdodds.com/workshops/#code-transformation-and-linting",
         link: "https://www.youtube.com/embed/-iA7TAUGn2Y",
       },
     ],
