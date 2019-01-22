@@ -103,7 +103,7 @@ to approach monorepo configuration.
 
 With monorepo setups, the core thing to understand is that Babel treats your working directory
 as its logical ["root"](options.md#root), which causes problems if you want to run Babel
-tools within a specific sub-package which having Babel apply to the repo as a whole.
+tools within a specific sub-package without having Babel apply to the repo as a whole.
 
 Separately, it is also important to decide if you want to use [`.babelrc`](#file-relative-configuration)
 files or just a central [`babel.config.js`](#project-wide-configuration). [`.babelrc`](#file-relative-configuration)
@@ -356,6 +356,4 @@ module.exports = function(api) {
   };
 };
 ```
-
-
 
