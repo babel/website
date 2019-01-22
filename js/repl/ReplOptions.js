@@ -40,7 +40,7 @@ const PRESET_ORDER = [
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, value: boolean | string) => void;
-type TogglePresetOption = (name: string, value: boolean) => void;
+type TogglePresetOption = (name: string, value: *) => void;
 type ShowOfficialExternalPluginsChanged = (value: string) => void;
 type PluginSearch = (value: string) => void;
 type PluginChange = (plugin: Object) => void;
@@ -220,6 +220,9 @@ class ExpandedContainer extends Component<Props, State> {
       presetState["stage-1"].isEnabled ||
       presetState["stage-2"].isEnabled;
 
+    const isStage1Enabled =
+      presetState["stage-0"].isEnabled || presetState["stage-1"].isEnabled;
+
     return (
       <div className={styles.expandedContainer}>
         <div className={styles.sectionsWrapper}>
@@ -368,6 +371,35 @@ class ExpandedContainer extends Component<Props, State> {
                     t => t.checked
                   )}
                 />
+              </PresetOption>
+              <PresetOption
+                when={isStage1Enabled}
+                option="pipelineProposal"
+                presets={["stage-0", "stage-1"]}
+              >
+                <span className={styles.presetsOptionsLabel}>
+                  Pipeline proposal
+                </span>
+                <select
+                  className={cx(styles.optionSelect, styles.presetOptionSelect)}
+                  onChange={this._onPresetOptionChange(
+                    "pipelineProposal",
+                    t => t.value
+                  )}
+                >
+                  <option
+                    vale="minimal"
+                    selected={presetsOptions.pipelineProposal === "minimal"}
+                  >
+                    Minimal
+                  </option>
+                  <option
+                    value="smart"
+                    selected={presetsOptions.pipelineProposal === "smart"}
+                  >
+                    Smart
+                  </option>
+                </select>
               </PresetOption>
             </AccordionTab>
             <AccordionTab

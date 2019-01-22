@@ -123,7 +123,7 @@ export default function compile(code: string, config: CompileConfig): Return {
             {
               decoratorsLegacy,
               decoratorsBeforeExport,
-              pipelineProposal: "minimal",
+              pipelineProposal: presetsOptions.pipelineProposal,
             },
           ];
         }

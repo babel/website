@@ -124,6 +124,7 @@ export const persistedStateToPresetsOptions = (
     decoratorsBeforeExport:
       !persistedState.decoratorsLegacy &&
       !!persistedState.decoratorsBeforeExport,
+    pipelineProposal: persistedState.pipelineProposal || "minimal",
   };
 };
 

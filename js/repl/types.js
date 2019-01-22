@@ -6,6 +6,7 @@ export type BabelPlugins = Array<string>;
 export type PresetsOptions = {
   decoratorsLegacy: boolean,
   decoratorsBeforeExport: boolean,
+  pipelineProposal: "smart" | "minimal",
 };
 
 export type EnvConfig = {
@@ -125,6 +126,7 @@ export type ReplState = {
   envVersion: string,
   decoratorsLegacy: boolean,
   decoratorsBeforeExport: boolean,
+  pipelineProposal: "minimal" | "smart",
 };
 
 type BabelPresetTargetsMap = {

@@ -591,6 +591,7 @@ class Repl extends React.Component<Props, State> {
       envVersion: state.envPresetState.version,
       decoratorsLegacy: state.presetsOptions.decoratorsLegacy,
       decoratorsBeforeExport: state.presetsOptions.decoratorsBeforeExport,
+      pipelineProposal: state.presetsOptions.pipelineProposal,
     };
     StorageService.set("replState", payload);
     UriUtils.updateQuery(payload);
