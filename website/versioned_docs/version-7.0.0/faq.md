@@ -7,7 +7,7 @@ original_id: faq
 ## Why is the output of `for...of` so verbose and ugly?
 
 In order to comply with the specification, the iterator's return method must be
-called on errors. An alternative is to enable [loose mode](plugin-transform-es2015-for-of.md#loose)
+called on errors. An alternative is to enable [loose mode](plugin-transform-for-of.md#loose)
 but please note that there are **many** caveats to be aware of if you enable
 loose mode and that you're willingly choosing to be spec incompliant.
 
@@ -109,4 +109,3 @@ If we only update `babel-plugin-transform-exponentiation-operator` to 6.x.x, cur
 For example, the Babel [v6.6.0 release](https://github.com/babel/babel/releases/tag/v6.6.0) doesn't mean all packages are now 6.6.0.
 
 > To make sure you are using the latest package versions, you may need to remove `node_modules` and `npm install` again.
-

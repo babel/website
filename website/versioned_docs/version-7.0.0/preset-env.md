@@ -105,7 +105,7 @@ Or an object of minimum environment versions to support:
 
 Example environments: `chrome`, `opera`, `edge`, `firefox`, `safari`, `ie`, `ios`, `android`, `node`, `electron`.
 
-Sidenote, if no targets are specified, `@babel/preset-env` behaves exactly the same as [`@babel/preset-es2015`](preset-es2015.md), [`@babel/preset-es2016`](preset-es2016.md) and [`@babel/preset-es2017`](preset-es2017.md) together (or the deprecated [`babel-preset-latest`](/docs/en/babel-preset-latest)).
+Sidenote, if no targets are specified, `@babel/preset-env` will transform all ECMAScript 2015+ code by default.
 
 > We don't recommend using `preset-env` this way because it doesn't take advantage of its ability to target specific browsers.
 

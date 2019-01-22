@@ -29,7 +29,7 @@ Create a file called `babel.config.js` with the following content at the root of
 ```js
 module.exports = function (api) {
   api.cache(true);
-  
+
   const presets = [ ... ];
   const plugins = [ ... ];
 
