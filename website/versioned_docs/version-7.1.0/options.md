@@ -106,13 +106,13 @@ would be a chain of multiple transform passes, along the lines of
 
 ```js
 const filename = "example.js";
-const code = fs.readFileSync(filename, "utf8");
+const source = fs.readFileSync(filename, "utf8");
 
 // Load and compile file normally, but skip code generation.
-const { ast } = babel.transformSync(code, { filename, ast: true, code: false });
+const { ast } = babel.transformSync(source, { filename, ast: true, code: false });
 
 // Minify the file in a second pass and generate the output code here.
-const { code, map } = babel.transformFromAstSync(ast, code, {
+const { code, map } = babel.transformFromAstSync(ast, source, {
   filename,
   presets: ["minify"],
   babelrc: false,
@@ -213,7 +213,7 @@ naming scheme that is independent of the "babelrc" name.
 ### `babelrc`
 
 Type: `boolean`<br />
-Default: `true` as long as the `filename` option has been specificed<br />
+Default: `true` as long as the `filename` option has been specified<br />
 Placement: Allowed in Babel's programmatic options, or inside of the loaded [`"configFile"`](#configfile). A programmatic option will override a config file one.<br />
 
 `true` will enable searching for [configuration files](config-files.md#file-relative-configuration) relative

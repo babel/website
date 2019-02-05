@@ -5,56 +5,10 @@ sidebar_label: stage-1
 original_id: babel-preset-stage-1
 ---
 
-> As of Babel v7, all of the stage-x presets have been deprecated.
+> As of Babel v7, all the stage presets have been deprecated.
 > Check [the blog post](/blog/2018/07/27/removing-babels-stage-presets) for more information.
 >
-> For a more automatic migration, we have updated [babel-upgrade](https://github.com/babel/babel-upgrade) to do this for you (you can run `npx babel-upgrade`).
->
-> If you want the same configuration as before:
->
-> ```json5
-> {
->   plugins: [
->     // Stage 1
->     "@babel/plugin-proposal-export-default-from",
->     "@babel/plugin-proposal-logical-assignment-operators",
->     ["@babel/plugin-proposal-optional-chaining", { loose: false }],
->     ["@babel/plugin-proposal-pipeline-operator", { proposal: "minimal" }],
->     ["@babel/plugin-proposal-nullish-coalescing-operator", { loose: false }],
->     "@babel/plugin-proposal-do-expressions",
->
->     // Stage 2
->     ["@babel/plugin-proposal-decorators", { legacy: true }],
->     "@babel/plugin-proposal-function-sent",
->     "@babel/plugin-proposal-export-namespace-from",
->     "@babel/plugin-proposal-numeric-separator",
->     "@babel/plugin-proposal-throw-expressions",
->
->     // Stage 3
->     "@babel/plugin-syntax-dynamic-import",
->     "@babel/plugin-syntax-import-meta",
->     ["@babel/plugin-proposal-class-properties", { loose: false }],
->     "@babel/plugin-proposal-json-strings",
->   ],
-> }
-> ```
->
-> If you're using the same configuration across many separate projects, keep in mind that you can also create your own custom presets with whichever plugins and presets you're looking to use.
->
-> ```js
-> module.exports = function() {
->   return {
->     plugins: [
->       require("@babel/plugin-syntax-dynamic-import"),
->       [require("@babel/plugin-proposal-decorators"), { legacy: true }],
->       [require("@babel/plugin-proposal-class-properties"), { loose: false }],
->     ],
->     presets: [
->       // ...
->     ],
->   };
-> };
-> ```
+> For upgrade instructions, see [the README](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-1/README.md).
 
 The gist of Stage 1 is:
 
@@ -94,7 +48,7 @@ babel script.js --presets @babel/preset-stage-1
 
 ```javascript
 require("@babel/core").transform("code", {
-  presets: ["@babel/preset-stage-1"],
+  presets: ["@babel/preset-stage-1"]
 });
 ```
 
@@ -121,3 +75,5 @@ Use the legacy (stage 1) decorators syntax and behavior.
 ## References
 
 - Chapter "[The TC39 process for ECMAScript features](http://exploringjs.com/es2016-es2017/ch_tc39-process.html)" in "Exploring ES2016 and ES2017" by Axel Rauschmayer
+
+

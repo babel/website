@@ -122,6 +122,9 @@ const replDefaults: ReplState = {
   shippedProposals: false,
   targets: "",
   version: "",
+  decoratorsLegacy: false,
+  decoratorsBeforeExport: false,
+  pipelineProposal: "minimal",
 };
 
 export {

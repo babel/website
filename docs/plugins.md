@@ -64,6 +64,7 @@ These plugins apply transformations to your code.
 
 - [async-generator-functions](plugin-proposal-async-generator-functions.md)
 - [dotall-regex](plugin-transform-dotall-regex.md)
+- [named-capturing-groups-regex](plugin-transform-named-capturing-groups-regex.md)
 - [object-rest-spread](plugin-proposal-object-rest-spread.md)
 - [optional-catch-binding](plugin-proposal-optional-catch-binding.md)
 - [unicode-property-regex](plugin-proposal-unicode-property-regex.md)
@@ -219,10 +220,7 @@ For example:
 
 ```json
 {
-  "plugins": [
-    "transform-decorators-legacy",
-    "transform-class-properties"
-  ]
+  "plugins": ["transform-decorators-legacy", "transform-class-properties"]
 }
 ```
 
@@ -232,11 +230,7 @@ It is important to remember that with presets, the order is _reversed_. The foll
 
 ```json
 {
-  "presets": [
-    "es2015",
-    "react",
-    "stage-2"
-  ]
+  "presets": ["es2015", "react", "stage-2"]
 }
 ```
 
@@ -252,11 +246,7 @@ For specifying no options, these are all equivalent:
 
 ```json
 {
-  "plugins": [
-    "pluginA",
-    ["pluginA"],
-    ["pluginA", {}],
-  ]
+  "plugins": ["pluginA", ["pluginA"], ["pluginA", {}]]
 }
 ```
 
@@ -265,10 +255,13 @@ To specify an option, pass an object with the keys as the option names.
 ```json
 {
   "plugins": [
-    ["transform-async-to-module-method", {
-      "module": "bluebird",
-      "method": "coroutine"
-    }]
+    [
+      "transform-async-to-module-method",
+      {
+        "module": "bluebird",
+        "method": "coroutine"
+      }
+    ]
   ]
 }
 ```
@@ -278,10 +271,13 @@ Settings options for presets works exactly the same:
 ```json
 {
   "presets": [
-    ["env", {
-      "loose": true,
-      "modules": false
-    }]
+    [
+      "env",
+      {
+        "loose": true,
+        "modules": false
+      }
+    ]
   ]
 }
 ```
@@ -294,15 +290,18 @@ to learn how to create your own plugins.
 The simple plugin that reverses names (from the homepage):
 
 ```js
-export default function () {
+export default function() {
   return {
     visitor: {
       Identifier(path) {
         const name = path.node.name;
         // reverse the name: JavaScript -> tpircSavaJ
-        path.node.name = name.split("").reverse().join("");
-      }
-    }
+        path.node.name = name
+          .split("")
+          .reverse()
+          .join("");
+      },
+    },
   };
 }
 ```

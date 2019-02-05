@@ -8,6 +8,7 @@ import type {
   BabelState,
   EnvState,
   EnvConfig,
+  PresetsOptions,
   ReplState,
   MultiPackagesConfig,
   PluginConfig,
@@ -111,6 +112,18 @@ export const configToState = (
   isLoading: false,
   plugin: null,
 });
+
+export const persistedStateToPresetsOptions = (
+  persistedState: ReplState
+): PresetsOptions => {
+  return {
+    decoratorsLegacy: !!persistedState.decoratorsLegacy,
+    decoratorsBeforeExport:
+      !persistedState.decoratorsLegacy &&
+      !!persistedState.decoratorsBeforeExport,
+    pipelineProposal: persistedState.pipelineProposal || "minimal",
+  };
+};
 
 export const persistedStateToEnvConfig = (
   persistedState: ReplState

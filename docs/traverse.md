@@ -32,5 +32,16 @@ traverse(ast, {
   }
 });
 ```
+
+Also, we can target particular [**node types**](https://babeljs.io/docs/en/babel-types#api) in the Syntax Tree
+
+```js
+traverse(ast, {
+    FunctionDeclaration: function(path) {
+             path.node.id.name = "x";
+    }
+})
+```
+
 [:book: **Read the full docs here**](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/plugin-handbook.md#babel-traverse)
 

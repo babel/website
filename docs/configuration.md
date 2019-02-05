@@ -27,7 +27,9 @@ All Babel API [options](options.md) are allowed. However, if the option requires
 Create a file called `babel.config.js` with the following content at the root of your project (where the `package.json` is).
 
 ```js
-module.exports = function () {
+module.exports = function (api) {
+  api.cache(true);
+
   const presets = [ ... ];
   const plugins = [ ... ];
 

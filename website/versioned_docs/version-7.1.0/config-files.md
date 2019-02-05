@@ -54,7 +54,7 @@ These caveats mean that:
 
 See the [monorepo](#monorepos) documentation for more discussion on how to configure monorepos that have many packages.
 
-File-relative configs can also be disable by setting ["babelrc"](options.md#babelrc) to `false`.
+File-relative configs can also be disabled by setting ["babelrc"](options.md#babelrc) to `false`.
 
 ### 6.x vs 7.x `.babelrc` loading
 
@@ -103,7 +103,7 @@ to approach monorepo configuration.
 
 With monorepo setups, the core thing to understand is that Babel treats your working directory
 as its logical ["root"](options.md#root), which causes problems if you want to run Babel
-tools within a specific sub-package which having Babel apply to the repo as a whole.
+tools within a specific sub-package without having Babel apply to the repo as a whole.
 
 Separately, it is also important to decide if you want to use [`.babelrc`](#file-relative-configuration)
 files or just a central [`babel.config.js`](#project-wide-configuration). [`.babelrc`](#file-relative-configuration)
@@ -121,7 +121,7 @@ to have as a place for repo-level options.
 
 You can often place all of your repo configuration in the root [`babel.config.js`](#project-wide-configuration).
 With ["overrides"](options.md#overrides), you can easily specify configuration that only applies to
-certain subfolders of your repository, which can often be easier to follow that creating many
+certain subfolders of your repository, which can often be easier to follow than creating many
 `.babelrc` files across the repo.
 
 The first issue you'll likely run into is that by default, Babel expects to load [`babel.config.js`](#project-wide-configuration)
@@ -170,6 +170,7 @@ module: {
   }]
 }
 ```
+
 #### Jest
 Jest is often installed at the root of the monorepo and may not require configuration,
 but if it is installed per-package it can unfortunately be more complex to configure.
@@ -355,5 +356,4 @@ module.exports = function(api) {
   };
 };
 ```
-
 

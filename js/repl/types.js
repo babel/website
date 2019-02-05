@@ -3,6 +3,12 @@
 export type BabelPresets = Array<string | Array<string | Object>>;
 export type BabelPlugins = Array<string>;
 
+export type PresetsOptions = {
+  decoratorsLegacy: boolean,
+  decoratorsBeforeExport: boolean,
+  pipelineProposal: "smart" | "minimal",
+};
+
 export type EnvConfig = {
   browsers: string,
   electron: ?string,
@@ -85,6 +91,7 @@ export type SourceType = "script" | "module" | "unambiguous";
 export type CompileConfig = {
   debugEnvPreset: boolean,
   envConfig: ?EnvConfig,
+  presetsOptions: PresetsOptions,
   evaluate: boolean,
   presets: BabelPresets,
   plugins: BabelPlugins,
@@ -116,6 +123,9 @@ export type ReplState = {
   showSidebar: boolean,
   targets: string,
   version: any,
+  decoratorsLegacy: boolean,
+  decoratorsBeforeExport: boolean,
+  pipelineProposal: "minimal" | "smart",
 };
 
 export type SidebarTabSection = "env" | "plugins" | "presets" | "settings";

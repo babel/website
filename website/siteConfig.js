@@ -43,33 +43,36 @@ const sponsorsDownloaded = require(path.join(__dirname, "/data/sponsors.json"));
 
 const sponsors = [
   ...sponsorsManual,
-  ...sponsorsDownloaded.map(sponsor => {
-    // temporary fix for coinbase and webflow
-    let tier = sponsor.tier;
-    if (sponsor.id == 12671) {
-      tier = "gold-sponsors";
-    } else if (sponsor.id == 5954) {
-      tier = "silver-sponsors";
-    }
+  ...sponsorsDownloaded
+    // filter out Handshake for special tier
+    .filter(sponsor => sponsor.id !== 19490)
+    .map(sponsor => {
+      // temporary fix for coinbase and webflow
+      let tier = sponsor.tier;
+      if (sponsor.id == 12671) {
+        tier = "gold-sponsors";
+      } else if (sponsor.id == 5954) {
+        tier = "silver-sponsors";
+      }
 
-    let website = sponsor.website;
-    if (typeof website == "string") {
-      website = url.parse(website).protocol ? website : `http://${website}`;
-    } else if (typeof sponsor.twitterHandle == "string") {
-      website = `https://twitter.com/@${sponsor.twitterHandle}`;
-    } else {
-      website = `https://opencollective.com/${sponsor.slug}`;
-    }
+      let website = sponsor.website;
+      if (typeof website == "string") {
+        website = url.parse(website).protocol ? website : `http://${website}`;
+      } else if (typeof sponsor.twitterHandle == "string") {
+        website = `https://twitter.com/@${sponsor.twitterHandle}`;
+      } else {
+        website = `https://opencollective.com/${sponsor.slug}`;
+      }
 
-    return {
-      type: "opencollective",
-      tier,
-      name: sponsor.name,
-      url: website,
-      image: sponsor.avatar || "/img/user.svg",
-      description: sponsor.description,
-    };
-  }),
+      return {
+        type: "opencollective",
+        tier,
+        name: sponsor.name,
+        url: website,
+        image: sponsor.avatar || "/img/user.svg",
+        description: sponsor.description,
+      };
+    }),
 ];
 
 // move to website/data later
@@ -99,7 +102,7 @@ const siteConfig = {
   getPageUrl: (page, language) =>
     `${siteConfig.baseUrl}${language || DEFAULT_LANGUAGE}/${page}`,
   getVideoUrl: (videos, language) =>
-  `${siteConfig.baseUrl}${language || DEFAULT_LANGUAGE}/${videos}`,
+    `${siteConfig.baseUrl}${language || DEFAULT_LANGUAGE}/${videos}`,
   organizationName: "babel",
   projectName: "babel",
   repoUrl: "https://github.com/babel/babel",
@@ -139,16 +142,16 @@ const siteConfig = {
   scripts: [
     {
       src: "https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js",
-      defer: true
+      defer: true,
     },
     {
       src: "/js/code-blocks-buttons.js",
-      defer: true
+      defer: true,
     },
     {
       src: "/scripts/repl-page-hacks.js",
-      defer: true
-    }
+      defer: true,
+    },
   ],
   // stylesheets: [ "" ],
   // translationRecruitingLink: "https://crowdin.com/project/",

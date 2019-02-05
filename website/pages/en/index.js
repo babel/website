@@ -44,13 +44,6 @@ const MiniRepl = ({ language }) => {
           <div className="hero-repl__error" />
         </div>
       </div>
-      <div className="hero-repl__footer">
-        <a href={siteConfig.getPageUrl("repl.html", language)}>
-          <translate>
-            Check out our REPL to experiment more with Babel!
-          </translate>
-        </a>
-      </div>
 
       <script
         src="https://unpkg.com/@babel/standalone@^7.0.0/babel.min.js"
@@ -90,18 +83,17 @@ const GetStarted = ({ language }) => {
       className="blockElement twoByGridBlock get-started"
       style={{ flexBasis: "60%", margin: 0 }}
     >
-      <h2>Welcome!</h2>
-
+      <h3>Welcome!</h3>
+      <p>
+        Learn more about Babel at our getting started guide or check out a talk
+        about the concepts behind it.
+      </p>
       <p>
         We&apos;re currently just a small group of{" "}
         <a href={siteConfig.getPageUrl("team.html", language)}>volunteers</a>{" "}
         that spend their free time maintaining this project. If Babel has
-        benefited you in your work, becoming a contributor might be a great way
-        to give back.
-      </p>
-      <p>
-        Learn more about Babel by reading the get started guide or watching
-        talks about the concepts behind it.
+        benefited you in your work, becoming a contributor or donating might
+        just be a great way to give back!
       </p>
       <PromoSection>
         <Button href={siteConfig.getDocUrl("index.html", language)}>
@@ -115,51 +107,51 @@ const GetStarted = ({ language }) => {
   );
 };
 
-const WorkSponsors = () => {
-  return (
-    <div
-      className="blockElement alignCenter twoByGridBlock sponsors-work"
-      style={{ flexBasis: "40%", margin: 0 }}
-    >
-      <h2>Friends of Open Source</h2>
-      <p style={{ fontSize: 16 }}>
-        These companies are awesome and pay these engineers to work on Babel
-      </p>
-      <div className="productShowcaseSection">
-        <div className="cards">
-          {siteConfig.sponsors
-            .filter(sponsor => {
-              return sponsor.type == "work";
-            })
-            .map((sponsor, i) => {
-              return (
-                <div className="card" key={i}>
-                  <a href={sponsor.url} target="_blank" className="card-image">
-                    <img
-                      src={sponsor.image}
-                      title={sponsor.name}
-                      alt={`Sponsored by ${sponsor.name}`}
-                    />
-                  </a>
-                  <div className="card-text">
-                    <p>{sponsor.description}</p>
-                  </div>
-                  <div className="card-text">
-                    <p>
-                      sponsoring{" "}
-                      <a href={`https://github.com/${sponsor.member}`}>
-                        @{sponsor.member}
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-        </div>
-      </div>
-    </div>
-  );
-};
+// const WorkSponsors = () => {
+//   return (
+//     <div
+//       className="blockElement alignCenter twoByGridBlock sponsors-work"
+//       style={{ flexBasis: "40%", margin: 0 }}
+//     >
+//       <h2>Friends of Open Source</h2>
+//       <p style={{ fontSize: 16 }}>
+//         These companies are awesome and pay these engineers to work on Babel
+//       </p>
+//       <div className="productShowcaseSection">
+//         <div className="cards">
+//           {siteConfig.sponsors
+//             .filter(sponsor => {
+//               return sponsor.type == "work";
+//             })
+//             .map((sponsor, i) => {
+//               return (
+//                 <div className="card" key={i}>
+//                   <a href={sponsor.url} target="_blank" className="card-image">
+//                     <img
+//                       src={sponsor.image}
+//                       title={sponsor.name}
+//                       alt={`Sponsored by ${sponsor.name}`}
+//                     />
+//                   </a>
+//                   <div className="card-text">
+//                     <p>{sponsor.description}</p>
+//                   </div>
+//                   <div className="card-text">
+//                     <p>
+//                       sponsoring{" "}
+//                       <a href={`https://github.com/${sponsor.member}`}>
+//                         @{sponsor.member}
+//                       </a>
+//                     </p>
+//                   </div>
+//                 </div>
+//               );
+//             })}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 const SponsorTier = props => {
   const tierSponsors = siteConfig.sponsors.filter(
@@ -167,11 +159,10 @@ const SponsorTier = props => {
   );
   return (
     <div>
-      <h3>{props.title}</h3>
       <ul className={`sponsors-tier tier-${props.tier}`}>
         {tierSponsors.map((sponsor, i) => (
           <li key={i}>
-            <a href={sponsor.url} title={sponsor.name}>
+            <a href={sponsor.url} title={sponsor.name} target="_blank">
               <img src={sponsor.image} alt={`Sponsored by ${sponsor.name}`} />
             </a>
           </li>
@@ -199,28 +190,10 @@ const OpenCollectiveSponsors = ({ language }) => {
     };
 
   return (
-    <div className="container paddingTop paddingBottom">
+    <div className="container paddingBottom">
       <div className="wrapper productShowcaseSection">
-        <div className="support-the-team">
-          <h2>Support the Team</h2>
-          <p>
-            Babel is helping shape the future of the JavaScript language itself,
-            being used at companies like Facebook, Google, Netflix, and{" "}
-            <a href={siteConfig.getPageUrl("users.html", language)}>
-              hundreds more
-            </a>
-            . Your donation will help cover expenses like attending TC39 (the
-            committee that specifies JavaScript) meetings and will directly
-            support the core team developers to continue working on improving
-            Babel.
-          </p>
-          <PromoSection>
-            <Button href="https://opencollective.com/babel" target="_blank">
-              Become a sponsor
-            </Button>
-          </PromoSection>
-        </div>
         <div className="sponsor-tiers" id="sponsors">
+          <h3>Open Collective Sponsors</h3>
           <SponsorTier
             type="opencollective"
             title="Base Support Sponsors"
@@ -230,18 +203,6 @@ const OpenCollectiveSponsors = ({ language }) => {
             type="opencollective"
             title="Gold Sponsors (Open Collective)"
             tier="gold-sponsors"
-            button={ocButton}
-          />
-          <SponsorTier
-            type="other"
-            title="Misc Sponsors"
-            tier="other-sponsors"
-          />
-          <SponsorTier
-            type="patreon"
-            title="Gold Sponsors (Patreon)"
-            tier="gold-sponsors"
-            button={patreonButton}
           />
           <SponsorTier
             type="opencollective"
@@ -249,10 +210,21 @@ const OpenCollectiveSponsors = ({ language }) => {
             tier="silver-sponsors"
             button={ocButton}
           />
+          <h3>Patreon Sponsors</h3>
+          <SponsorTier
+            type="patreon"
+            title="Gold Sponsors (Patreon)"
+            tier="gold-sponsors"
+          />
           <SponsorTier
             type="patreon"
             title="Silver Sponsors (Patreon)"
             tier="silver-sponsors"
+          />
+          <SponsorTier
+            type="other"
+            title="Misc Sponsors"
+            tier="other-sponsors"
             button={patreonButton}
           />
         </div>
@@ -263,8 +235,8 @@ const OpenCollectiveSponsors = ({ language }) => {
 
 const HomeContainer = props => (
   <div
-    className="container paddingTop paddingBottom"
-    style={{ backgroundColor: "#f6f6f6" }}
+    className="container"
+    style={{ backgroundColor: "#f6f6f6", paddingBottom: 20 }}
   >
     <div className="wrapper">
       <div className="gridBlock">{props.children}</div>
@@ -274,8 +246,8 @@ const HomeContainer = props => (
 
 const Hero = ({ language }) => (
   <div className="hero">
-    <a href="https://tidelift.com/subscription/npm/babel">
-      <div className="tidelift-banner">Get Professionally Supported Babel</div>
+    <a href="https://teespring.com/babel-christmas?pr=FLAVORTOWN">
+      <div className="homepage-banner">Get Babel Holiday Apparel 👕</div>
     </a>
     <div className="hero__container">
       <h1>
@@ -297,6 +269,21 @@ const Hero = ({ language }) => (
       </div>
 
       <MiniRepl language={language} />
+
+      <h3>Special Sponsor</h3>
+
+      <div class="sponsors-tier" style={{ margin: "10px 0" }}>
+        <a href="https://www.handshake.org" title="Handshake" target="_blank">
+          <img
+            src="https://handshake.org/images/landing/logo-light.svg"
+            alt="Sponsored by Handshake"
+            style={{ width: 180 }}
+          />
+          <div style={{ color: "#b7b8b7" }}>
+            Decentralized certificate authority and naming
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 );
@@ -309,7 +296,9 @@ const Index = ({ language }) => {
       <div className="mainContainer" style={{ padding: 0 }}>
         <HomeContainer>
           <GetStarted language={language} />
-          <WorkSponsors language={language} />
+          {
+            // <WorkSponsors language={language} />
+          }
         </HomeContainer>
         <OpenCollectiveSponsors />
       </div>

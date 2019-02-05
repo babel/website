@@ -162,7 +162,7 @@ require("@babel/parser").parse("code", {
 | `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread)) | `var a = { b, ...c };` |
 | `optionalCatchBinding` ([proposal](https://github.com/babel/proposals/issues/7)) | `try {throw 0;} catch{do();}` |
 | `optionalChaining` ([proposal](https://github.com/tc39/proposal-optional-chaining)) | `a?.b` |
-| `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | `a &#124;> b` |
+| `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | <code>a &#124;> b</code> |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
 
 #### Plugins options
@@ -187,7 +187,7 @@ require("@babel/parser").parse("code", {
 
 - `flow`:
   - `all` (`boolean`, default: `false`)
-    Some code has different meaning in Flow and in vanilla JavaScript. For example, `foo<T>(x)` is parsed as a call expression with a type argument in Flow, but as a comparsion (`foo < T > x`) accordingly to the ECMAScript specification. By default, `babel-parser` parses those ambigous constructs as Flow types only if the file starts with a `// @flow` pragma.
+    Some code has different meaning in Flow and in vanilla JavaScript. For example, `foo<T>(x)` is parsed as a call expression with a type argument in Flow, but as a comparison (`foo < T > x`) accordingly to the ECMAScript specification. By default, `babel-parser` parses those ambiguous constructs as Flow types only if the file starts with a `// @flow` pragma.
     Set this option to `true` to always parse files as if `// @flow` was specified.
 
 ### FAQ

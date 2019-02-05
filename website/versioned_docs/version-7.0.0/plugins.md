@@ -144,6 +144,7 @@ These plugins are in the minify repo.
 - [regenerator](plugin-transform-regenerator.md)
 - [runtime](plugin-transform-runtime.md)
 - [strict-mode](plugin-transform-strict-mode.md)
+- [typescript](plugin-transform-typescript.md)
 
 ## Syntax Plugins
 
@@ -306,3 +307,4 @@ export default function () {
   };
 }
 ```
+

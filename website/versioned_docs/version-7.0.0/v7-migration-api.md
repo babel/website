@@ -8,17 +8,18 @@ Refer users to this document when upgrading to Babel 7.
 
 <!--truncate-->
 
-
 > Also check out the [v7-migration guide](v7-migration.md) for other user-level changes.
 
 ## All Babel packages
 
 ### NodeJS support
+
 ![high](https://img.shields.io/badge/level%20of%20awesomeness%3F-high-red.svg)
 
 Support for Node.js 0.10 and 0.12 has been dropped as both of this versions are out of maintenance.
 
 ### Export changes
+
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 Dropped use of `add-module-exports` plugin on Babel packages.
@@ -37,7 +38,7 @@ Calls to `babel.transform` or any other transform function may return `null` if 
 
 The `opts.basename` option exposed on `state.file.opts` has been removed. If you need it, best to build it from `opts.filename` yourself [babel/babel#5467](https://github.com/babel/babel/pull/5467).
 
-Removed `resolveModuleSource`. We recommend using `@babel/plugin-module-resolver`'s 'resolvePath' options [babel/babel#6343](https://github.com/babel/babel/pull/6343)
+Removed `resolveModuleSource`. We recommend using `babel-plugin-module-resolver@3`'s 'resolvePath' options [babel/babel#6343](https://github.com/babel/babel/pull/6343)
 
 Removed `babel.analyse` because it was just an alias for `babel.transform`
 
@@ -103,8 +104,8 @@ export default declare(api => {
 It currently takes it as the first parameter the `babel` object, and plugin/preset options, and the `dirname`
 
 ```js
-module.exports = function(api, options, dirname) { }
-````
+module.exports = function(api, options, dirname) {};
+```
 
 ## `babel-parser` (known as Babylon)
 
@@ -120,8 +121,8 @@ Before:
 
 ```js
 babelParser.parse(code, {
-  plugins: [ "*" ]
-})
+  plugins: ["*"],
+});
 ```
 
 You can get the old behavior using:
@@ -140,11 +141,11 @@ babelParser.parse(code, {
     "functionSent",
     "jsx",
     "objectRestSpread",
-  ]
-})
+  ],
+});
 ```
 
-See Babylon's [plugin options](https://babeljs.io/docs/core-packages/babylon/#api-plugins).
+See Babylon's [plugin options](parser.md#plugins).
 
 > Renamed `decorators` plugin to `decorators-legacy` ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -264,10 +265,10 @@ export default function() {
 
 The following nodes have been renamed:
 
-| Name 6.x | Name 7.x | Example | PR |
-|----------|----------|---------|----|
-| ExistentialTypeParam | ExistsTypeAnnotation | ```type A = B<*>;``` | [#322](https://github.com/babel/babylon/pull/322) |
-| NumericLiteralTypeAnnotation | NumberLiteralTypeAnnotation | ```type T = 0;``` | [#332](https://github.com/babel/babylon/pull/332) |
+| Name 6.x                     | Name 7.x                    | Example          | PR                                                |
+| ---------------------------- | --------------------------- | ---------------- | ------------------------------------------------- |
+| ExistentialTypeParam         | ExistsTypeAnnotation        | `type A = B<*>;` | [#322](https://github.com/babel/babylon/pull/322) |
+| NumericLiteralTypeAnnotation | NumberLiteralTypeAnnotation | `type T = 0;`    | [#332](https://github.com/babel/babylon/pull/332) |
 
 Besides the AST-Nodes also all the corresponding functions in `@babel/types` have been renamed.
 
@@ -304,20 +305,20 @@ On the following AST-Nodes the value of the field `variance` has been changed fr
 
 The field is only available when enabling the `flow` plugin in babylon.
 
-  * ObjectProperty
-  * ObjectMethod
-  * AssignmentProperty
-  * ClassMethod
-  * ClassProperty
-  * Property
+- ObjectProperty
+- ObjectMethod
+- AssignmentProperty
+- ClassMethod
+- ClassProperty
+- Property
 
 The type of the new `Variance` node looks like this:
 
 ```js
 type VarianceNode = {
   type: "Variance",
-  kind: "plus"|"minus",
-}
+  kind: "plus" | "minus",
+};
 ```
 
 ```diff
@@ -341,7 +342,7 @@ The location info of `ObjectTypeIndexer` has been changed to not include semicol
 Example:
 
 ```js
-var a: { [a: number]: string; };
+var a: { [a: number]: string };
 ```
 
 ```diff
@@ -421,3 +422,4 @@ The two AST-Nodes `RestProperty` and `SpreadProperty` have been removed in favor
 ```
 
 See our [upgrade PR for Babel](https://github.com/babel/babel/pull/5317) and the [Babylon AST spec](https://github.com/babel/babylon/blob/7.0/ast/spec.md) for more information.
+

@@ -4,6 +4,10 @@ title: @babel/plugin-syntax-do-expressions
 sidebar_label: syntax-do-expressions
 ---
 
+> #### Syntax only
+>
+> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-do-expressions](plugin-proposal-do-expressions.md) to _both_ parse and transform this syntax.
+
 ## Installation
 
 ```sh
