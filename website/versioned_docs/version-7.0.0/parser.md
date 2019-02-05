@@ -181,14 +181,14 @@ require("@babel/parser").parse("code", {
     export @dec class C {}
     ```
 - `pipelineOperator`:
-  - `proposal` (required, accepted values: `minimal`)
+  - `proposal` (required, accepted values: `minimal`, `smart`)
     There are different proposals for the pipeline operator. This option
     allows to choose which one to use.
     See [What's Happening With the Pipeline (|>) Proposal?](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) for more information.
 
 - `flow`:
   - `all` (`boolean`, default: `false`)
-    Some code has different meaning in Flow and in vanilla JavaScript. For example, `foo<T>(x)` is parsed as a call expression with a type argument in Flow, but as a comparsion (`foo < T > x`) accordingly to the ECMAScript specification. By default, `babel-parser` parses those ambigous constructs as Flow types only if the file starts with a `// @flow` pragma.
+    Some code has different meaning in Flow and in vanilla JavaScript. For example, `foo<T>(x)` is parsed as a call expression with a type argument in Flow, but as a comparison (`foo < T > x`) accordingly to the ECMAScript specification. By default, `babel-parser` parses those ambiguous constructs as Flow types only if the file starts with a `// @flow` pragma.
     Set this option to `true` to always parse files as if `// @flow` was specified.
 
 ### FAQ

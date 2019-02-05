@@ -1,7 +1,8 @@
 ---
-id: babel-parser
+id: version-7.2.0-babel-parser
 title: @babel/parser
 sidebar_label: parser
+original_id: babel-parser
 ---
 
 <p align="left">
