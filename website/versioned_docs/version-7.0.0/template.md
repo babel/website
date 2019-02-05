@@ -132,7 +132,7 @@ Type: `string`
 
 #### options
 
-`@babel/template` accepts all of the options from [Babel Parser](babel-parser.md#options), and specifies
+`@babel/template` accepts all of the options from [Babel Parser](parser.md#options), and specifies
 some defaults of its own:
 
 - `allowReturnOutsideFunction` is set to `true` by default.
