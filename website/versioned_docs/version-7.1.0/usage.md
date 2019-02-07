@@ -1,3 +1,7 @@
+---
+original_id: undefined
+id: version-7.1.0-undefined
+---
 To include it you will need to require it at the top of the **entry point**
 to your application.
 
