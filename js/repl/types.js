@@ -123,28 +123,9 @@ export type ReplState = {
   showSidebar: boolean,
   targets: string,
   version: any,
-  envVersion: string,
   decoratorsLegacy: boolean,
   decoratorsBeforeExport: boolean,
   pipelineProposal: "minimal" | "smart",
-};
-
-type BabelPresetTargetsMap = {
-  [key: string]: string,
-};
-
-type BabelNamedPresetAndTarget = {
-  name: string,
-  targets: BabelPresetTargetsMap,
-};
-
-export type BabelPresetEnvResult = {
-  modulePlugin: string,
-  polyfills: ?Array<string>,
-  polyfillsWithTargets: ?Array<BabelNamedPresetAndTarget>,
-  targets: BabelPresetTargetsMap,
-  transformations: Array<string>,
-  transformationsWithTargets: Array<BabelNamedPresetAndTarget>,
 };
 
 export type SidebarTabSection = "env" | "plugins" | "presets" | "settings";

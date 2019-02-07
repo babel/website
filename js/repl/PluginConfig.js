@@ -12,27 +12,25 @@ const normalizePluginName = pluginName =>
 
 const babelConfig: PluginConfig = {
   label: "Babel",
-  package: "babel-standalone",
-  version: "6",
+  package: "@babel/standalone",
+  version: "^7.0.0",
   baseUrl: "https://unpkg.com",
   instanceName: "Babel",
 };
 
 const envPresetConfig: PluginConfig = {
   label: "Env Preset",
-  package: "babel-preset-env-standalone",
-  version: "1.6.2",
+  package: "@babel/preset-env-standalone",
+  version: "^7.0.0",
   baseUrl: "https://unpkg.com",
-  versionKey: "envVersion",
   instanceName: "babelPresetEnv",
 };
 
-/* Some of stage-3 plugins've been added to babel-standalone gradually. For example,
-  proposal-async-generator-functions wasn't available before 7.0.0-beta.36 was released.
-  Also, using this flow, we can handle not registered yet stage-3 plugins in the future.
+/* Some of stage-3 plugins've been added to @babel/standalone gradually. If a new
+*  shippedProposal is added, add it to this list.
 */
-const stage3Plugins: Array<PluginConfig> = [
-  "proposal-async-generator-functions",
+const shippedProposalsPackages: Array<PluginConfig> = [
+  // "proposal-async-generator-functions",
   // "proposal-object-rest-spread",
   // "proposal-optional-catch-binding",
   // "proposal-unicode-property-regex",
@@ -41,7 +39,6 @@ const stage3Plugins: Array<PluginConfig> = [
   return {
     label: pluginName,
     package: packageName,
-    version: "7.0.0-beta.34",
     baseUrl: "https://bundle.run",
     instanceName: normalizePluginName(pluginName),
   };
@@ -50,17 +47,8 @@ const stage3Plugins: Array<PluginConfig> = [
 const shippedProposalsConfig: MultiPackagesConfig = {
   baseUrl: "https://bundle.run",
   label: "Shipped Proposals",
-  packages: stage3Plugins,
+  packages: shippedProposalsPackages,
   package: "",
-  version: "7",
-};
-
-const envPresetFeaturesSupport: EnvFeatures = {
-  debug: [0, 1],
-  builtInsUsage: [2, 7],
-  forceAllTransforms: [2, 7],
-  shippedProposals: [2, 7],
-  stringifiedVersion: [2, 7],
 };
 
 const envPresetDefaults = {
@@ -84,8 +72,8 @@ const envPresetDefaults = {
 
 const runtimePolyfillConfig: PluginConfig = {
   label: "Runtime Polyfill",
-  package: "babel-polyfill",
-  version: "6",
+  package: "@babel/polyfill",
+  version: "^7.0.0",
 };
 
 const pluginConfigs: Array<PluginConfig> = [
@@ -134,7 +122,6 @@ const replDefaults: ReplState = {
   shippedProposals: false,
   targets: "",
   version: "",
-  envVersion: "",
   decoratorsLegacy: false,
   decoratorsBeforeExport: false,
   pipelineProposal: "minimal",
@@ -145,7 +132,6 @@ export {
   envPresetConfig,
   shippedProposalsConfig,
   envPresetDefaults,
-  envPresetFeaturesSupport,
   pluginConfigs,
   runtimePolyfillConfig,
   replDefaults,

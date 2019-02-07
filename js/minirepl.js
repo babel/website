@@ -109,7 +109,7 @@ function compileCode(sourceEditor, targetEditor) {
 
   try {
     transformed = Babel.transform(sourceEditor.getValue(), {
-      presets: ["latest"],
+      presets: ["es2015", "es2016", "es2017"],
       filename: "repl",
       babelrc: false,
     });

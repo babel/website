@@ -3,10 +3,8 @@
 import { envPresetDefaults, replDefaults } from "./PluginConfig";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
-import { envPresetFeaturesSupport } from "./PluginConfig";
 
 import type {
-  BabelPresetEnvResult,
   BabelState,
   EnvState,
   EnvConfig,
@@ -76,7 +74,6 @@ export const persistedStateToEnvState = (
     ...persistedStateToBabelState(persistedState, config),
     isLoading: isEnabled,
     isEnabled,
-    version: persistedState.envVersion,
   };
 };
 
@@ -147,7 +144,7 @@ export const persistedStateToEnvConfig = (
     isSpecEnabled: !!persistedState.spec,
     isLooseEnabled: !!persistedState.loose,
     node: envPresetDefaults.node.default,
-    version: persistedState.envVersion,
+    version: persistedState.version,
     builtIns: envPresetDefaults.builtIns.default,
   };
 
@@ -181,51 +178,4 @@ export const persistedStateToEnvConfig = (
     });
 
   return envConfig;
-};
-
-export const getDebugInfoFromEnvResult = (
-  result: BabelPresetEnvResult
-): string => {
-  const debugInfo = [];
-
-  if (result.modulePlugin) {
-    debugInfo.push(`Using modules transform:\n  ${result.modulePlugin}`);
-  }
-
-  const targetNames = Object.keys(result.targets);
-  if (targetNames.length) {
-    debugInfo.push(
-      "Using targets:\n" +
-        targetNames.map(name => `• ${name}: ${result.targets[name]}`).join("\n")
-    );
-  }
-
-  if (result.transformationsWithTargets.length) {
-    debugInfo.push(
-      "Using plugins:\n" +
-        result.transformationsWithTargets
-          .map(item => `• ${item.name}`)
-          .join("\n")
-    );
-  }
-
-  // This property will only be set if we compiled with useBuiltIns=true
-  if (result.polyfillsWithTargets && result.polyfillsWithTargets.length) {
-    debugInfo.push(
-      "Using polyfills:\n" +
-        result.polyfillsWithTargets.map(item => `• ${item.name}`).join("\n")
-    );
-  }
-
-  return debugInfo.join("\n\n");
-};
-
-export const isEnvFeatureSupported = (
-  version: ?string,
-  feature: string
-): boolean => {
-  if (!version) return false;
-  const parsedVersion = parseInt(version);
-  const [min, max] = envPresetFeaturesSupport[feature];
-  return parsedVersion >= min && parsedVersion <= max;
 };

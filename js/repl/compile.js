@@ -5,9 +5,8 @@ declare var Babel: any;
 declare var prettier: any;
 declare var prettierPlugins: any;
 
-import { getDebugInfoFromEnvResult } from "./replUtils";
 import Transitions from "./Transitions";
-import type { BabelPresetEnvResult, CompileConfig, Transition } from "./types";
+import type { CompileConfig, Transition } from "./types";
 
 type Return = {
   compiled: ?string,
@@ -75,15 +74,6 @@ export default function compile(code: string, config: CompileConfig): Return {
       loose = envConfig.isLooseEnabled;
     }
 
-    // onPresetBuild is invoked synchronously during compilation.
-    // But the env preset info calculated from the callback should be part of our state update.
-    let onPresetBuild = null;
-    if (config.debugEnvPreset) {
-      onPresetBuild = (result: BabelPresetEnvResult) => {
-        envPresetDebugInfo = getDebugInfoFromEnvResult(result);
-      };
-    }
-
     const options: { [string]: any } = {
       targets,
       forceAllTransforms,
@@ -92,11 +82,6 @@ export default function compile(code: string, config: CompileConfig): Return {
       spec,
       loose,
     };
-
-    // not a valid option in v7: preset-env-standalone added extra fields not in preset-env
-    if (Babel.version[0] === "6") {
-      options.onPresetBuild = onPresetBuild;
-    }
 
     config.presets.push(["env", options]);
   }
@@ -108,11 +93,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       sourceMap: config.sourceMap,
 
       presets: config.presets.map(preset => {
-        if (
-          Babel.version[0] === "7" &&
-          typeof preset === "string" &&
-          /^stage-[0-2]$/.test(preset)
-        ) {
+        if (typeof preset === "string" && /^stage-[0-2]$/.test(preset)) {
           const decoratorsLegacy = presetsOptions.decoratorsLegacy;
           const decoratorsBeforeExport = decoratorsLegacy
             ? undefined

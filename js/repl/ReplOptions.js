@@ -3,7 +3,6 @@
 import { css, cx } from "emotion";
 import React, { Component } from "react";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
-import { isEnvFeatureSupported } from "./replUtils";
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import ExternalPlugins from "./ExternalPlugins";
@@ -48,7 +47,6 @@ type PluginChange = (plugin: Object) => void;
 type Props = {
   babelVersion: ?string,
   className: string,
-  debugEnvPreset: boolean,
   pluginsLoading: boolean,
   pluginValue: ?string,
   showOfficialExternalPlugins: boolean,
@@ -181,7 +179,6 @@ class ExpandedContainer extends Component<Props, State> {
   render() {
     const {
       babelVersion,
-      debugEnvPreset,
       envConfig,
       envPresetState,
       shippedProposalsState,
@@ -405,14 +402,7 @@ class ExpandedContainer extends Component<Props, State> {
             <AccordionTab
               className={`${styles.section} ${styles.sectionEnv}`}
               isExpanded={isEnvTabExpanded}
-              label={
-                <span>
-                  Env Preset{" "}
-                  <small className={styles.accordionLabelVersion}>
-                    {envPresetState.version}
-                  </small>
-                </span>
-              }
+              label={<span>Env Preset</span>}
               onToggleExpanded={this.handleToggleTabExpanded}
               tabKey="env"
             >
@@ -519,22 +509,20 @@ class ExpandedContainer extends Component<Props, State> {
                 >
                   Built-ins
                 </LinkToDocs>
-                {isEnvFeatureSupported(envConfig.version, "builtInsUsage") && (
-                  <select
-                    value={envConfig.builtIns}
-                    className={styles.envPresetSelect}
-                    onChange={this._onEnvPresetSettingChange("builtIns")}
-                    disabled={
-                      !envPresetState.isLoaded ||
-                      !envConfig.isEnvPresetEnabled ||
-                      !envConfig.isBuiltInsEnabled ||
-                      runtimePolyfillState.isEnabled
-                    }
-                  >
-                    <option value="entry">Entry</option>
-                    <option value="usage">Usage</option>
-                  </select>
-                )}
+                <select
+                  value={envConfig.builtIns}
+                  className={styles.envPresetSelect}
+                  onChange={this._onEnvPresetSettingChange("builtIns")}
+                  disabled={
+                    !envPresetState.isLoaded ||
+                    !envConfig.isEnvPresetEnabled ||
+                    !envConfig.isBuiltInsEnabled ||
+                    runtimePolyfillState.isEnabled
+                  }
+                >
+                  <option value="entry">Entry</option>
+                  <option value="usage">Usage</option>
+                </select>
                 <input
                   checked={envConfig.isBuiltInsEnabled}
                   className={styles.envPresetCheckbox}
@@ -573,66 +561,43 @@ class ExpandedContainer extends Component<Props, State> {
                   type="checkbox"
                 />
               </label>
-              {isEnvFeatureSupported(envConfig.version, "shippedProposals") && (
-                <label className={styles.envPresetRow}>
-                  {shippedProposalsState.isLoading ? (
-                    <span className={styles.envPresetLoaderWrapper}>
-                      <PresetLoadingAnimation size={1.6} />
-                    </span>
-                  ) : (
-                    <LinkToDocs
-                      className={`${styles.envPresetLabel} ${styles.highlight}`}
-                      section="shippedProposals"
-                    >
-                      Shipped Proposals
-                    </LinkToDocs>
-                  )}
-                  <input
-                    checked={envConfig.shippedProposals}
-                    className={styles.envPresetCheckbox}
-                    // TODO
-                    disabled={disableEnvSettings}
-                    onChange={this._onEnvPresetSettingCheck("shippedProposals")}
-                    type="checkbox"
-                  />
-                </label>
-              )}
-              {isEnvFeatureSupported(
-                envConfig.version,
-                "forceAllTransforms"
-              ) && (
-                <label className={styles.envPresetRow}>
+              <label className={styles.envPresetRow}>
+                {shippedProposalsState.isLoading ? (
+                  <span className={styles.envPresetLoaderWrapper}>
+                    <PresetLoadingAnimation size={1.6} />
+                  </span>
+                ) : (
                   <LinkToDocs
                     className={`${styles.envPresetLabel} ${styles.highlight}`}
-                    section="forcealltransforms"
+                    section="shippedProposals"
                   >
-                    Force All Transforms
+                    Shipped Proposals
                   </LinkToDocs>
-                  <input
-                    checked={envConfig.forceAllTransforms}
-                    className={styles.envPresetCheckbox}
-                    disabled={disableEnvSettings}
-                    onChange={this._onEnvPresetSettingCheck(
-                      "forceAllTransforms"
-                    )}
-                    type="checkbox"
-                  />
-                </label>
-              )}
-              {isEnvFeatureSupported(envConfig.version, "debug") && (
-                <label className={styles.settingsLabel}>
-                  <input
-                    checked={debugEnvPreset}
-                    className={styles.inputCheckboxLeft}
-                    disabled={
-                      disableEnvSettings || runtimePolyfillState.isEnabled
-                    }
-                    onChange={this._onSettingCheck("debugEnvPreset")}
-                    type="checkbox"
-                  />
-                  Debug
-                </label>
-              )}
+                )}
+                <input
+                  checked={envConfig.shippedProposals}
+                  className={styles.envPresetCheckbox}
+                  // TODO
+                  disabled={disableEnvSettings}
+                  onChange={this._onEnvPresetSettingCheck("shippedProposals")}
+                  type="checkbox"
+                />
+              </label>
+              <label className={styles.envPresetRow}>
+                <LinkToDocs
+                  className={`${styles.envPresetLabel} ${styles.highlight}`}
+                  section="forcealltransforms"
+                >
+                  Force All Transforms
+                </LinkToDocs>
+                <input
+                  checked={envConfig.forceAllTransforms}
+                  className={styles.envPresetCheckbox}
+                  disabled={disableEnvSettings}
+                  onChange={this._onEnvPresetSettingCheck("forceAllTransforms")}
+                  type="checkbox"
+                />
+              </label>
             </AccordionTab>
 
             <ExternalPlugins

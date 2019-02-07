@@ -30,7 +30,7 @@ export async function loadBuildArtifacts(
     const artifacts = response.filter(x => regExp.test(x.path));
     if (!artifacts || artifacts.length === 0) {
       throw new Error(
-        `Could not find valid babel-standalone artifact in build #${build}`
+        `Could not find valid @babel/standalone artifact in build #${build}`
       );
     }
     return artifacts[0].url;

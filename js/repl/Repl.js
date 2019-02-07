@@ -298,7 +298,7 @@ class Repl extends React.Component<Props, State> {
       plugins,
       runtimePolyfillState,
     } = this.state;
-    // Assume all default presets are baked into babel-standalone.
+    // Assume all default presets are baked into @babel/standalone.
     // We really only need to worry about plugins.
     for (const key in plugins) {
       const plugin = plugins[key];
@@ -523,7 +523,7 @@ class Repl extends React.Component<Props, State> {
     this.setState(state => {
       const { plugins, presets, runtimePolyfillState } = state;
 
-      if (name === "babel-polyfill") {
+      if (name === "@babel/polyfill") {
         runtimePolyfillState.isEnabled = !!value;
 
         return {
@@ -588,7 +588,6 @@ class Repl extends React.Component<Props, State> {
       showSidebar: state.isSidebarExpanded,
       targets: envConfigToTargetsString(envConfig),
       version: state.babel.version,
-      envVersion: state.envPresetState.version,
       decoratorsLegacy: state.presetsOptions.decoratorsLegacy,
       decoratorsBeforeExport: state.presetsOptions.decoratorsBeforeExport,
       pipelineProposal: state.presetsOptions.pipelineProposal,
