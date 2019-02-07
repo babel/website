@@ -64,8 +64,8 @@ export default async function loadBundle(
           build === "7.0" ? "master" : build
         );
       }
-      const packageName = config.package;
-      const packageFile = `${packageName.replace(/-standalone/, "")}.js`;
+      const packageName = config.package.replace("@", "").replace("/", "-");
+      const packageFile = packageName.replace("-standalone", ".js");
       const regExp = new RegExp(`${packageName}/${packageFile}$`);
       const url = await loadBuildArtifacts(
         state.circleciRepo,
