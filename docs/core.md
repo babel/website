@@ -255,7 +255,7 @@ invalidate properly, but it is the best we have at the moment.
 
 To allow systems to easily manipulate and validate a user's config, this function
 resolves the plugins and presets and proceeds no further. The expectation is
-that callers will take the config's `.options`, manipulate it as then see fit
+that callers will take the config's `.options`, manipulate it as they see fit
 and pass it back to Babel again.
 
 * `babelrc: string | void` - The path of the [file-relative configuration](config-files.md#file-relative-configuration) file, if there was one.
