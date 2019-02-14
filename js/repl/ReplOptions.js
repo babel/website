@@ -1,7 +1,7 @@
 // @flow
 
 import { css, cx } from "emotion";
-import React, { Component } from "react";
+import React, { Component, type Node as ReactChildren } from "react";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
@@ -127,6 +127,18 @@ const PresetOption = ({
   );
 };
 
+type SelectOptionProps = {
+  value: string,
+  actual: string,
+  children: ReactChildren,
+};
+
+const SelectOption = ({ value, actual, children }: SelectOptionProps) => (
+  <option value={value} selected={value === actual}>
+    {children}
+  </option>
+);
+
 export default function ReplOptions(props: Props) {
   return (
     <div className={`${styles.wrapper} ${props.className}`}>
@@ -220,7 +232,7 @@ class ExpandedContainer extends Component<Props, State> {
     const isStage1Enabled =
       presetState["stage-0"].isEnabled || presetState["stage-1"].isEnabled;
 
-    const isDecoratorsNov2018 = presetsOptions.decoratorsVersion === "nov-2018";
+    const { decoratorsVersion } = presetsOptions;
 
     return (
       <div className={styles.expandedContainer}>
@@ -338,12 +350,15 @@ class ExpandedContainer extends Component<Props, State> {
                     t => t.value
                   )}
                 >
-                  <option value="nov-2018" selected={isDecoratorsNov2018}>
+                  <SelectOption value="jan-2019" actual={decoratorsVersion}>
+                    January 2019
+                  </SelectOption>
+                  <SelectOption value="nov-2018" actual={decoratorsVersion}>
                     November 2018
-                  </option>
-                  <option value="legacy" selected={!isDecoratorsNov2018}>
+                  </SelectOption>
+                  <SelectOption value="legacy" actual={decoratorsVersion}>
                     Legacy
-                  </option>
+                  </SelectOption>
                 </select>
               </PresetOption>
               <PresetOption
@@ -354,17 +369,17 @@ class ExpandedContainer extends Component<Props, State> {
                   "Only works with November 2018 decorators." +
                   " It defaults to 'true' with legacy decorators."
                 }
-                enabled={isDecoratorsNov2018}
+                enabled={decoratorsVersion === "nov-2018"}
               >
                 <span className={styles.presetsOptionsLabel}>
                   Decorators before
                   <code>export</code>
                 </span>
                 <input
-                  enabled={isDecoratorsNov2018}
+                  enabled={decoratorsVersion === "nov-2018"}
                   checked={presetsOptions.decoratorsBeforeExport}
                   ref={el => {
-                    if (el) el.indeterminate = !isDecoratorsNov2018;
+                    if (el) el.indeterminate = decoratorsVersion !== "nov-2018";
                   }}
                   className={styles.envPresetCheckbox}
                   type="checkbox"

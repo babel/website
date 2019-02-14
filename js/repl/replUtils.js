@@ -125,9 +125,9 @@ export const persistedStateToPresetsOptions = (
   persistedState: ReplState
 ): PresetsOptions => {
   return {
-    decoratorsVersion: persistedState.decoratorsVersion || "nov-2018",
+    decoratorsVersion: persistedState.decoratorsVersion || "jan-2019",
     decoratorsBeforeExport:
-      persistedState.decoratorsVersion === "nov-2018" &&
+      persistedState.decoratorsVersion === "jan-2019" &&
       !!persistedState.decoratorsBeforeExport,
     pipelineProposal: persistedState.pipelineProposal || "minimal",
   };

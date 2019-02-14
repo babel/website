@@ -122,7 +122,7 @@ const replDefaults: ReplState = {
   shippedProposals: false,
   targets: "",
   version: "",
-  decoratorsVersion: "nov-2018",
+  decoratorsVersion: "jan-2019",
   decoratorsBeforeExport: false,
   pipelineProposal: "minimal",
 };

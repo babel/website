@@ -4,7 +4,7 @@ export type BabelPresets = Array<string | Array<string | Object>>;
 export type BabelPlugins = Array<string>;
 
 export type PresetsOptions = {
-  decoratorsVersion: "legacy" | "nov-2018",
+  decoratorsVersion: "legacy" | "nov-2018" | "jan-2019",
   decoratorsBeforeExport: boolean,
   pipelineProposal: "smart" | "minimal",
 };
@@ -123,7 +123,7 @@ export type ReplState = {
   showSidebar: boolean,
   targets: string,
   version: any,
-  decoratorsVersion: "legacy" | "nov-2018",
+  decoratorsVersion: "legacy" | "nov-2018" | "jan-2019",
   decoratorsBeforeExport: boolean,
   pipelineProposal: "minimal" | "smart",
 };
