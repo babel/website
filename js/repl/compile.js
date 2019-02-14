@@ -110,13 +110,6 @@ export default function compile(code: string, config: CompileConfig): Return {
               ({ decoratorsVersion } = presetsOptions);
           }
 
-          console.log({
-            decoratorsVersion,
-            decoratorsLegacy,
-            decoratorsBeforeExport,
-            pipelineProposal: presetsOptions.pipelineProposal,
-          });
-
           return [
             preset,
             {
