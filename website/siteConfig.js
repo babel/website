@@ -163,7 +163,9 @@ const siteConfig = {
   onPageNav: "separate",
   gaTrackingId: "UA-114990275-1",
   cleanUrl: true,
+  enableUpdateBy: true,
   enableUpdateTime: true,
+  scrollToTop: true,
   // markdownPlugins: [],
   // cname
 };
