@@ -1,5 +1,5 @@
 ---
-id: version-7.3.0-plugins
+id: version-7.2.0-plugins
 title: Plugins
 original_id: plugins
 ---
@@ -65,7 +65,6 @@ These plugins apply transformations to your code.
 
 - [async-generator-functions](plugin-proposal-async-generator-functions.md)
 - [dotall-regex](plugin-transform-dotall-regex.md)
-- [named-capturing-groups-regex](plugin-transform-named-capturing-groups-regex.md)
 - [object-rest-spread](plugin-proposal-object-rest-spread.md)
 - [optional-catch-binding](plugin-proposal-optional-catch-binding.md)
 - [unicode-property-regex](plugin-proposal-unicode-property-regex.md)
