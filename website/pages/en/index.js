@@ -186,7 +186,7 @@ const OpenCollectiveSponsors = ({ language }) => {
     },
     patreonButton = {
       title: "Become a patron",
-      link: "https://www.patreon.com/bePatron?u=905738",
+      link: "https://www.patreon.com/join/henryzhu",
     };
 
   return (
