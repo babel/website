@@ -51,11 +51,12 @@ babel --presets @babel/preset-typescript script.ts
 
 ### Via Node API
 
+Need a filename with ts or tsx suffix
+
 ```javascript
 require("@babel/core").transform("code", {
-  presets: [
-    ["@babel/preset-typescript", { allExtensions: true }]
-  ]
+  presets: ["@babel/preset-typescript"],
+  filename: "example.ts"
 });
 ```
 
