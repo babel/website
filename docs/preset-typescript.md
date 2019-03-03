@@ -52,7 +52,9 @@ babel --presets @babel/preset-typescript script.ts
 
 ```javascript
 require("@babel/core").transform("code", {
-  presets: ["@babel/preset-typescript"],
+  presets: [
+    ["@babel/preset-typescript", { allExtensions: true }]
+  ]
 });
 ```
 
