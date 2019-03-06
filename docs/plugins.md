@@ -89,10 +89,10 @@ These plugins apply transformations to your code.
 - [nullish-coalescing-operator](plugin-proposal-nullish-coalescing-operator.md)
 - [numeric-separator](plugin-proposal-numeric-separator.md)
 - [optional-chaining](plugin-proposal-optional-chaining.md)
+- [partial-application](plugin-proposal-partial-application.md)
 - [pipeline-operator](plugin-proposal-pipeline-operator.md)
 - [private-methods](plugin-proposal-private-methods.md)
 - [throw-expressions](plugin-proposal-throw-expressions.md)
-- [partial-application](plugin-proposal-partial-application.md)
 
 ### Minification
 
