@@ -162,6 +162,7 @@ require("@babel/parser").parse("code", {
 | `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread)) | `var a = { b, ...c };` |
 | `optionalCatchBinding` ([proposal](https://github.com/babel/proposals/issues/7)) | `try {throw 0;} catch{do();}` |
 | `optionalChaining` ([proposal](https://github.com/tc39/proposal-optional-chaining)) | `a?.b` |
+| `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32)) | `f(?, a)` |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | <code>a &#124;> b</code> |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
 
