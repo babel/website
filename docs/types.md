@@ -36,6 +36,17 @@ Aliases: `Expression`
 
 ---
 
+### argumentPlaceholder
+```javascript
+t.argumentPlaceholder()
+```
+
+See also `t.isArgumentPlaceholder(node, opts)` and `t.assertArgumentPlaceholder(node, opts)`.
+
+Aliases: none
+
+---
+
 ### arrayPattern
 ```javascript
 t.arrayPattern(elements)
