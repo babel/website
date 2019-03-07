@@ -8,10 +8,17 @@ Does not type-check its input. For that, you will need to install and set up Typ
 
 ## Caveats
 
-* Does not support [`namespace`][namespace]s. **Workaround**: Move to using [file exports][fm], or migrate to using the `module { }` syntax instead.
+* Does not support [`namespace`][namespace]s. 
+
+  **Workaround**: Move to using [file exports][fm], or migrate to using the `module { }` syntax instead.
+  
 * Does not support [`const enum`][const_enum]s because those require type information to compile.
-**Workaround**: Remove the `const`, which makes it available at runtime.
-* Does not support [`export =`][exin] and [`import =`][exin], because those cannot be compiled to ES.next. **Workaround**: Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
+
+  **Workaround**: Remove the `const`, which makes it available at runtime.
+  
+* Does not support [`export =`][exin] and [`import =`][exin], because those cannot be compiled to ES.next. 
+
+  **Workaround**: Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
 
 ## Example
 
