@@ -62,7 +62,7 @@ With options (and their defaults):
         "corejs": false,
         "helpers": true,
         "regenerator": true,
-        "useESModules": false,
+        "useESModules": false
       }
     ]
   ]
