@@ -5,6 +5,7 @@ const config = {
   entry: {
     repl: "./js/repl/index.js",
     minirepl: "./js/minirepl.js",
+    users: "./js/users.js",
   },
   output: {
     // Don't bother with hashing/versioning the filename - Netlify does it

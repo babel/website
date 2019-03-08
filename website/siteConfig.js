@@ -27,13 +27,8 @@ function loadMD(fsPath) {
 function loadYaml(fsPath) {
   return parseYaml(fs.readFileSync(path.join(__dirname, fsPath), "utf8"));
 }
-// move to website/data later
-const users = loadYaml("./data/users.yml").map(user => ({
-  pinned: user.pinned,
-  caption: user.name,
-  infoLink: user.url,
-  image: `/img/users/${user.logo}`,
-}));
+
+const users = require(path.join(__dirname, "/data/users.js"));
 
 const sponsorsManual = loadYaml("./data/sponsors.yml").map(sponsor => ({
   ...sponsor,

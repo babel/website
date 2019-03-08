@@ -1,46 +1,206 @@
-.showcaseSection .logos {
-  background: #eee;
-  border-radius: 5px;
-  padding: 20px 30px;
-}
-
-.showcaseSection .babel-user {
-  box-sizing: border-box;
-  padding-left: 15px;
-  padding-right: 15px;
-  width: 33.33333%;
-}
-
-.mainContainer .showcaseSection .babel-user-link {
-  background: #fff;
-  border-radius: 5px;
-  display: block;
-  height: 120px;
-  margin: 15px 0;
-  padding: 10px;
+.showcaseSection .hr {
+  margin: 60px auto 20px auto;
+  border: none;
+  border-top: 1px solid #dfe2e5;
   position: relative;
 }
 
-.showcaseSection .babel-user .babel-user-logo {
-  left: 50%;
-  max-height: 100px;
-  max-width: 200px;
+.showcaseSection .hr span {
+  font-size: 1.5em;
   position: absolute;
-  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
-
-.mainContainer .showcaseSection .babel-user-link:hover {
+  left: 50%;
+  padding: 0px 15px;
   background: #fff;
-  box-shadow: 0px 0px 2px 0px #000;
-  transform: scale3d(1.1, 1.1, 1);
+  top: 0;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-@media only screen and (min-width: 360px) and (max-width: 736px) {
-  .showcaseSection .babel-user {
+.showcaseSection a.button {
+  display: block;
+  max-width: 300px;
+  margin: 10px auto;
+}
+
+.showcaseSection .users {
+  position: relative;
+}
+
+/* reset existing a styling */
+.showcaseSection .users a,
+.showcaseSection .users a:hover {
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.showcaseSection .users .filter {
+  display: block;
+  margin: 40px auto 20px 0;
+}
+
+.showcaseSection .users .filter a {
+  font-size: 16px;
+}
+
+.showcaseSection .users .filter a.active {
+  font-weight: 700;
+}
+
+.showcaseSection .users .stats {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  font-weight: 300;
+  color: #a1a1a1;
+  font-size: 14px;
+}
+
+.showcaseSection .users ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  font-size: 1rem;
+  font-weight: initial;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.showcaseSection .users ul > li {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.showcaseSection .users ul > li.row {
+  display: block;
+  margin: 0 40px;
+  width: 100%; /* force horizontal space */
+}
+
+/* Testimonial */
+.showcaseSection .users ul > li.row .holder {
+  width: 100%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.showcaseSection .users ul > li.row button {
+  border: none;
+  background: none;
+  color: #7aaaff;
+  text-align: center;
+  border-bottom: 1px solid #7aaaff;
+  outline: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  margin: 20px;
+}
+
+/* Each Company */
+.showcaseSection .users ul > li > .holder {
+  flex: 1;
+  width: 250px;
+  min-height: 50px;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+  padding: 18px;
+  margin: 30px 16px;
+  text-align: center;
+  border: 1px solid #e2e2e2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+}
+
+.showcaseSection .users ul > li > .holder a {
+  border: none;
+}
+
+/* Member Photo */
+.showcaseSection .users ul > li > .holder a .logo {
+  width: 120px;
+  height: auto;
+  background: #fff;
+  max-width: 120px;
+  max-height: 60px;
+  display: block;
+  border: 5px solid #fff;
+}
+
+.showcaseSection .users ul > li > .holder.icon {
+  margin-top: 30px;
+  padding-top: 70px;
+}
+
+.showcaseSection .users ul > li > .holder.icon > a {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, -30%);
+  transform: translate(-50%, -30%);
+}
+
+.showcaseSection .users ul > li > .holder.icon > a .logo {
+  max-height: 50px;
+}
+
+.showcaseSection .users ul > li > .holder > a .name {
+  display: none;
+}
+
+.showcaseSection .users ul > li > .holder.icon > a .name {
+  margin-top: 10px;
+  font-weight: 600;
+  display: block;
+}
+
+.showcaseSection .users ul > li > .holder .attributes {
+  color: #a1a1a1;
+  line-height: 24px;
+}
+
+.showcaseSection .users ul > li > .holder .attributes .hr {
+  margin-top: 20px;
+}
+/*
+ * Two column view
+ */
+@media (max-width: 885px) {
+  .showcaseSection .users ul > li.row {
+    width: 530px;
+  }
+}
+/*
+ * Mobile view
+ */
+@media (max-width: 600px) {
+  .showcaseSection .users .stats {
+    position: initial;
+    text-align: center;
+  }
+  .showcaseSection .users ul > li {
     width: 100%;
   }
-  .showcaseSection .babel-user .babel-user-logo {
-    width: 100%;
+  .showcaseSection .users ul > li.row {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .showcaseSection .users ul > li > .holder {
+    margin: 20px auto 20px auto;
+  }
+  .showcaseSection .users ul > li > .holder.icon {
+    margin-top: 40px;
   }
 }
