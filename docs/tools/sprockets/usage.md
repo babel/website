@@ -1,15 +1,14 @@
 ```rb
-# Gemfile
-gem "sprockets"
-gem "sprockets-es6"
-```
+# config/application.rb
+extend Sprockets::BumbleD::DSL
 
-```rb
-require "sprockets/es6"
+configure_sprockets_bumble_d do |config|
+  config.babel_config_version = 1
+end
 ```
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For more information see the <a href="https://github.com/TannerRogalsky/sprockets-es6">TannerRogalsky/sprockets-es6 repo</a>.
+    For more information see the <a href="https://github.com/rmacklin/sprockets-bumble_d">rmacklin/sprockets-bumble_d repo</a>.
   </p>
 </blockquote>
