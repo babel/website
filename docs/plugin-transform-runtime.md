@@ -58,6 +58,7 @@ With options (and their defaults):
     [
       "@babel/plugin-transform-runtime",
       {
+        "absoluteRuntime": false,
         "corejs": false,
         "helpers": true,
         "regenerator": true,
@@ -153,6 +154,14 @@ export default function(instance, Constructor) {
   }
 }
 ```
+
+### `absoluteRuntime`
+
+`boolean` or `string`, defaults to `false`.
+
+This allows users to run `transform-runtime` broadly across a whole project. By default, `transform-runtime` imports from `@babel/runtime/foo` directly, but that only works if `@babel/runtime` is in the `node_modules` of the file that is being compiled. This can be problematic for nested `node_modules`, npm-linked modules, or CLIs that reside outside the user's project, among other cases. To avoid worrying about how the runtime module's location is resolved, this allows users to resolve the runtime once up front, and then insert absolute paths to the runtime into the output code.
+
+Using absolute paths is not desirable if files are compiled for use at a later time, but in contexts where a file is compiled and then immediately consumed, they can be quite helpful.
 
 ## Technical details
 
