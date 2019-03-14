@@ -14,12 +14,14 @@ npm install --save-dev @babel/template
 
 ## String Usage
 
-When calling `template` as a function with a string arguments, you can provide _placeholders_ which will then be substituted when the template is used.
-You can use two different kind of placeholders: syntactic placeholders (e.g. `%%name%%`) or identifier placeholders (e.g. `NAME`). `@babel/template` supports both those approaches by default, but they can't be mixed. If you need to be explicit about what syntax you are using, you can use the [`syntacticPlaceholders`](#syntacticplaceholders) option.
+When calling `template` as a function with a string argument, you can provide _placeholders_ which will get substituted when the template is used.
 
-Please note that syntactic placeholders have been introduced in Babel 7.4.0. If you don't control the `@babel/template` version (for example, when importing it from a `@babel/core@^7.0.0` peer dependency), you must use identifier placeholders. On the other hand, syntactic placeholders have some advantages: they can be used even where identifiers would be a syntax error (e.g. in place of function bodies, or in export declarations), and they don't conflict with uppercase variables (e.g., `new URL()`).
+You can use two different kinds of placeholders: syntactic placeholders (e.g. `%%name%%`) or identifier placeholders (e.g. `NAME`). `@babel/template` supports both those approaches by default, but they can't be mixed. If you need to be explicit about what syntax you are using, you can use the [`syntacticPlaceholders`](#syntacticplaceholders) option.
+
+Please note that syntactic placeholders were introduced in Babel 7.4.0. If you don't control the `@babel/template` version (for example, when importing it from a `@babel/core@^7.0.0` peer dependency), you must use identifier placeholders. On the other hand, syntactic placeholders have some advantages: they can be used where identifiers would be a syntax error (e.g. in place of function bodies, or in export declarations), and they don't conflict with uppercase variables (e.g., `new URL()`).
 
 Input (syntactic placeholders):
+
 ```js
 import template from "@babel/template";
 import generate from "@babel/generator";
@@ -38,6 +40,7 @@ console.log(generate(ast).code);
 ```
 
 Input (identifier placeholders):
+
 ```js
 const buildRequire = template(`
   var IMPORT_NAME = require(SOURCE);
