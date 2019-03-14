@@ -58,7 +58,7 @@ Output:
 const myModule = require("my-module");
 ```
 
-### `.ast`!
+### `.ast`
 
 If no placeholders are in use and you just want a simple way to parse a
 string into an AST, you can use the `.ast` version of the template.
