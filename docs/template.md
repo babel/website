@@ -14,6 +14,12 @@ npm install --save-dev @babel/template
 
 ## String Usage
 
+When calling `template` as a function with a string arguments, you can provide _placeholders_ which will then be substituted when the template is used.
+You can use two different kind of placeholders: syntactic placeholders (e.g. `%%name%%`) or identifier placeholders (e.g. `NAME`). `@babel/template` supports both those approaches by default, but they can't be mixed. If you need to be explicit about what syntax you are using, you can use the [`syntacticPlaceholders`](#syntacticplaceholders) option.
+
+Please note that syntactic placeholders have been introduced in Babel 7.4.0. If you don't control the `@babel/template` version (for example, when importing it from a `@babel/core@^7.0.0` peer dependency), you must use identifier placeholders. On the other hand, syntactic placeholders have some advantages: they can be used even where identifiers would be a syntax error (e.g. in place of function bodies, or in export declarations), and they don't conflict with uppercase variables (e.g., `new URL()`).
+
+Input (syntactic placeholders):
 ```js
 import template from "@babel/template";
 import generate from "@babel/generator";
@@ -31,14 +37,7 @@ const ast = buildRequire({
 console.log(generate(ast).code);
 ```
 
-Output:
-
-```js
-const myModule = require("my-module");
-```
-
-If you need to support versions of `@babel/template` lower than 7.4.0, you can use uppercase identifiers as placeholders:
-
+Input (identifier placeholders):
 ```js
 const buildRequire = template(`
   var IMPORT_NAME = require(SOURCE);
@@ -48,6 +47,12 @@ const ast = buildRequire({
   IMPORT_NAME: t.identifier("myModule"),
   SOURCE: t.stringLiteral("my-module"),
 });
+```
+
+Output:
+
+```js
+const myModule = require("my-module");
 ```
 
 ### `.ast`!
@@ -73,11 +78,11 @@ import * as t from "@babel/types";
 const source = "my-module";
 
 const fn = template`
-  var %%importName%% = require('${source}');
+  var IMPORT_NAME = require('${source}');
 `;
 
 const ast = fn({
-  importName: t.identifier("myModule");
+  IMPORT_NAME: t.identifier("myModule");
 });
 
 console.log(generate(ast).code);
@@ -161,24 +166,6 @@ Type: `boolean`
 Default: `true` is `%%foo%%`-style placeholders are used; `false` otherwise.
 
 When this option is `true`, you can use `%%foo%%` to mark placeholders in your templates. When it is `false`, placeholders are identifiers determined by the `placeholderWhitelist` and `placeholderPattern` options.
-
-Note that identifier placeholders can only be used where an identifier is allowed, while syntactic placeholders can also be used, for example, as class bodies or exported declarations.
-
-**`true`**
-
-```js
-const buildLog = template(`console.log( %%message%% )`);
-
-buildLog({ message: t.stringLiteral("Hi!") });
-```
-
-**`false`**
-
-```js
-const buildLog = template(`console.log( MESSAGE )`);
-
-buildLog({ MESSAGE: t.stringLiteral("Hi!") });
-```
 
 ##### placeholderWhitelist
 
