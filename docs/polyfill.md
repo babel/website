@@ -4,7 +4,11 @@ title: @babel/polyfill
 sidebar_label: polyfill
 ---
 
-> ⚠️ As of Babel 7.4.0, this package has been deprecated in favor of the separate inclusion of `core-js` (to polyfill ECMAScript features) and `regenerator-runtime/runtime` (needed to use transpiled generator functions).
+> ⚠️ As of Babel 7.4.0, this package has been deprecated in favor of the separate inclusion of `core-js/stable` (to polyfill ECMAScript features) and `regenerator-runtime/runtime` (needed to use transpiled generator functions):
+> ```js
+> import "core-js/stable";
+> import "renegerator-runtime/runtime";
+> ```
 
 Babel includes a [polyfill](<https://en.wikipedia.org/wiki/Polyfill_(programming)>) that includes a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) and [core-js](https://github.com/zloirock/core-js).
 

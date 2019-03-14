@@ -245,7 +245,7 @@ npm install core-js@3 --save
 > Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
 > We recommend creating a single entry file that only contains the `import` statement.
 
-This option enables a new plugin that replaces the statement `import "core-js";` and `import "regenerator-runtime/runtime"` (or `require("corejs")` and `require("regenerator-runtime/runtime")`) with individual requires to different `core-js` entry points based on environment.
+This option enables a new plugin that replaces the `import "core-js";` and `import "regenerator-runtime/runtime"` statements (or `require("corejs")` and `require("regenerator-runtime/runtime")`) with individual requires to different `core-js` entry points based on environment.
 
 **In**
 
@@ -258,6 +258,29 @@ import "core-js";
 ```js
 import "core-js/modules/es.string.pad-start";
 import "core-js/modules/es.string.pad-end";
+```
+
+Importing `"core-js"` loads polyfills for every possible ECMAScript feature: what if you know that you only need some of them? When using `core-js@3`, `@babel/preset-env` is able to optimize every single `core-js` entrypoint and their combinations. For example, you might want to only polyfill array methods and new `Math` proposals:
+
+**In**
+
+```js
+import "core-js/es/array";
+import "core-js/proposals/math-extensions";
+```
+
+**Out (different based on environment)**
+
+```js
+import "core-js/modules/es.array.unscopables.flat";
+import "core-js/modules/es.array.unscopables.flat-map";
+import "core-js/modules/esnext.math.clamp";
+import "core-js/modules/esnext.math.deg-per-rad";
+import "core-js/modules/esnext.math.degrees";
+import "core-js/modules/esnext.math.fscale";
+import "core-js/modules/esnext.math.rad-per-deg";
+import "core-js/modules/esnext.math.radians";
+import "core-js/modules/esnext.math.scale";
 ```
 
 > NOTE: When using `core-js@2` (either explicitly using the [`corejs: 2`](#corejs) option or implicitly), `@babel/preset-env` will also imports and requires of `@babel/polyfill`.
