@@ -20,6 +20,27 @@ import generate from "@babel/generator";
 import * as t from "@babel/types";
 
 const buildRequire = template(`
+  var %%importName%% = require(%%source%%);
+`);
+
+const ast = buildRequire({
+  importName: t.identifier("myModule"),
+  source: t.stringLiteral("my-module"),
+});
+
+console.log(generate(ast).code);
+```
+
+Output:
+
+```js
+const myModule = require("my-module");
+```
+
+If you need to support versions of `@babel/template` lower than 7.4.0, you can use uppercase identifiers as placeholders:
+
+```js
+const buildRequire = template(`
   var IMPORT_NAME = require(SOURCE);
 `);
 
@@ -27,15 +48,9 @@ const ast = buildRequire({
   IMPORT_NAME: t.identifier("myModule"),
   SOURCE: t.stringLiteral("my-module"),
 });
-
-console.log(generate(ast).code);
 ```
 
-```js
-const myModule = require("my-module");
-```
-
-### `.ast`
+### `.ast`!
 
 If no placeholders are in use and you just want a simple way to parse a
 string into an AST, you can use the `.ast` version of the template.
@@ -55,12 +70,14 @@ import template from "@babel/template";
 import generate from "@babel/generator";
 import * as t from "@babel/types";
 
+const source = "my-module";
+
 const fn = template`
-  var IMPORT_NAME = require('${"my-module"}');
+  var %%importName%% = require('${source}');
 `;
 
 const ast = fn({
-  IMPORT_NAME: t.identifier("myModule");
+  importName: t.identifier("myModule");
 });
 
 console.log(generate(ast).code);
@@ -138,10 +155,37 @@ some defaults of its own:
 - `allowSuperOutsideMethod` is set to `true` by default.
 - `sourceType` is set to `module` by default.
 
+#### syntacticPlaceholders
+
+Type: `boolean`
+Default: `true` is `%%foo%%`-style placeholders are used; `false` otherwise.
+
+When this option is `true`, you can use `%%foo%%` to mark placeholders in your templates. When it is `false`, placeholders are identifiers determined by the `placeholderWhitelist` and `placeholderPattern` options.
+
+Note that identifier placeholders can only be used where an identifier is allowed, while syntactic placeholders can also be used, for example, as class bodies or exported declarations.
+
+**`true`**
+
+```js
+const buildLog = template(`console.log( %%message%% )`);
+
+buildLog({ message: t.stringLiteral("Hi!") });
+```
+
+**`false`**
+
+```js
+const buildLog = template(`console.log( MESSAGE )`);
+
+buildLog({ MESSAGE: t.stringLiteral("Hi!") });
+```
+
 ##### placeholderWhitelist
 
 Type: `Set<string>`
 Default: `undefined`
+
+> This option is not compatible with `syntacticPlaceholders: true`
 
 A set of placeholder names to automatically accept. Items in this list do
 not need to match the given placeholder pattern.
@@ -150,6 +194,8 @@ not need to match the given placeholder pattern.
 
 Type: `RegExp | false`
 Default: `/^[_$A-Z0-9]+$/`
+
+> This option is not compatible with `syntacticPlaceholders: true`
 
 A pattern to search for when looking for Identifier and StringLiteral
 nodes that should be considered placeholders.
