@@ -47,7 +47,7 @@ super(?)          // `?` not supported in |SuperCall|
 ## Installation
 
 ```sh
-$ npm install @babel/plugin-proposal-partial-application
+$ npm install --save-dev @babel/plugin-proposal-partial-application
 ```
 
 ## Usage
