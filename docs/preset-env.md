@@ -229,21 +229,26 @@ This option is useful for "blacklisting" a transform like `@babel/plugin-transfo
 
 `"usage"` | `"entry"` | `false`, defaults to `false`.
 
-> When using this options, you also need to configure the [`corejs`](#corejs) option.
-
 This option configures how `@babel/preset-env` handles polyfills.
 
-This option adds direct references to the `core-js` module as bare imports. For this reason, you need to install `core-js@3` or `core-js@2` (depending on the value of the [`corejs`](#corejs) option) as a dependency of your application:
+When either the `usage` or `entry` options are used, `@babel-preset-env` will add direct references to `core-js` modules as bare imports (or requires). This means `core-js` will be resolved relative to the file itself and needs to be accessible.
+
+Since `@babel/polyfill` was deprecated in 7.4.0, we recommend directly adding `core-js` and setting the version via the [`corejs`](#corejs) option.
 
 ```sh
 npm install core-js@3 --save
+
+# or
+
+npm install core-js@2 --save
 ```
 
 #### `useBuiltIns: 'entry'`
 
 > NOTE: Only use `import "core-js";` and `import "regenerator-runtime/runtime";` once in your whole app.
+> If you are using `@babel/polyfill`, it already includes both `core-js` and `regenerator-runtime`: importing it twice will throw an error.
 > Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
-> We recommend creating a single entry file that only contains the `import` statement.
+> We recommend creating a single entry file that only contains the `import` statements.
 
 This option enables a new plugin that replaces the `import "core-js";` and `import "regenerator-runtime/runtime"` statements (or `require("corejs")` and `require("regenerator-runtime/runtime")`) with individual requires to different `core-js` entry points based on environment.
 
@@ -328,38 +333,18 @@ var b = new Map();
 
 #### `useBuiltIns: false`
 
-Don't add polyfills automatically per file, or transform `import "core-js"` to individual polyfills.
+Don't add polyfills automatically per file, and don't transform `import "core-js"` or `import "@babel/polufill"` to individual polyfills.
 
 ### `corejs`
 
-`CorejsVersion` or `{ version: CorejsVersion, proposals: boolean }`, defaults to `2`.
-`CorejsVersion` can be either `2` or `3`.
+`2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `2`.
 
-This option, which can only be used when `useBuiltIns` is not `false`, configures `@babel/preset-env` to inject imports to the correct `core-js` version.
-By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill them, you need to set `proposals: true`.
+This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the correct imports for your `core-js` version.
 
-`corejs: 2` only supports global variables (e.g. `Promise`) and static properties (e.g. `Array.from`), while `corejs: 3` also supports instance properties (e.g. `[].includes`).
-
-By default, `@babel/plugin-transform-runtime` doesn't polyfill proposals. If you are using `corejs: 3`, you can opt-in using the `proposals: true` boolean flag:
-
-**In**
-
-```js
-globalThis;
-```
-
-**Out** (`useBuiltIns: "usage", corejs: 3`)
-
-```js
-globalThis;
-```
-
-**Out** (`useBuiltIns: "usage", corejs: { version: 3, proposals: true }`)
-
-```js
-import "core-js/modules/esnext.global-this";
-globalThis;
-```
+By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill them, you have three different options:
+- set the [`shippedProposals`](#shippedproposals) option to `true`. This will enable polyfills and transforms for proposal which have already been shipped in browsers for a while.
+- use `corejs: { version: 3, proposals: true }`. This will enable polyfilling of every proposal supported by `core-js`.
+- when using `useBuiltIns: "entry"`, you can directly import a [proposal polyfill](https://github.com/zloirock/core-js/tree/master/packages/core-js/proposals): `import "core-js/proposals/string-replace-all"`.
 
 ### `forceAllTransforms`
 
@@ -429,7 +414,8 @@ The following are currently supported:
 
 **Builtins**
 
-- [es7.array.flat-map](https://github.com/tc39/proposal-flatMap)
+- [esnext.global-this](https://github.com/tc39/proposal-global) (only supported by `core-js@3`)
+- [esnext.string.match-all](https://github.com/tc39/proposal-string-matchall) (only supported by `core-js@3`)
 
 **Features**
 

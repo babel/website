@@ -88,27 +88,22 @@ require("@babel/core").transform("code", {
 
 ### `corejs`
 
-`false`, `CorejsVersion` or `{ version: CorejsVersion, proposals: boolean }`, defaults to `false`.
-`CorejsVersion` can be either `2` or `3`.
+`false`, `2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `false`.
 
 e.g. `['@babel/plugin-transform-runtime', { corejs: 3 }],`
 
-When this option is not false, all polyfillable API usages will be rewritten to reference helpers from `core-js` instead.
-`corejs: 2` only supports global variables (e.g. `Promise`) and static properties (e.g. `Array.from`), while `corejs: 3` also supports instance properties (e.g. `[].includes`).
+Specifying a number will rewrite the helpers that need polyfillable APIs to reference helpers from that (major) version of `core-js` instead
+Please note that `corejs: 2` only supports global variables (e.g. `Promise`) and static properties (e.g. `Array.from`), while `corejs: 3` also supports instance properties (e.g. `[].includes`).
 
-By default, `@babel/plugin-transform-runtime` doesn't polyfill proposals. If you are using `corejs: 3`, you can opt-in using the `proposals: true` boolean flag.
+By default, `@babel/plugin-transform-runtime` doesn't polyfill proposals. If you are using `corejs: 3`, you can opt into this by enabling using the `proposals: true` option.
 
 This option requires changing the dependency used to provide the necessary runtime helpers:
 
-| `corejs` option | Runtime package          |
-|-----------------|--------------------------|
-| `false`         | `@babel/runtime`         |
-| `2`             | `@babel/runtime-corejs2` |
-| `3`             | `@babel/runtime-corejs3` |
-
-```sh
-npm install --save [Runtime package]
-```
+| `corejs` option | Install command                             |
+|-----------------|---------------------------------------------|
+| `false`         | `npm install --save @babel/runtime`         |
+| `2`             | `npm install --save @babel/runtime-corejs2` |
+| `3`             | `npm install --save @babel/runtime-corejs3` |
 
 ### `helpers`
 
