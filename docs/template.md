@@ -166,9 +166,11 @@ some defaults of its own:
 #### syntacticPlaceholders
 
 Type: `boolean`
-Default: `true` is `%%foo%%`-style placeholders are used; `false` otherwise.
+Default: `true` if `%%foo%%`-style placeholders are used; `false` otherwise.
 
-When this option is `true`, you can use `%%foo%%` to mark placeholders in your templates. When it is `false`, placeholders are identifiers determined by the `placeholderWhitelist` and `placeholderPattern` options.
+When this option is `true`, you can use `%%foo%%` to mark placeholders in
+your templates. When it is `false`, placeholders are identifiers determined
+by the `placeholderWhitelist` and `placeholderPattern` options.
 
 ##### placeholderWhitelist
 
