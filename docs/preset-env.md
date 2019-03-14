@@ -229,38 +229,41 @@ This option is useful for "blacklisting" a transform like `@babel/plugin-transfo
 
 `"usage"` | `"entry"` | `false`, defaults to `false`.
 
-> This option adds direct references to the `core-js` module as bare imports. Thus `core-js` will be resolved relative to the file itself and needs to be accessible. You may need to specify `core-js@2` as a top level dependency in your application if there isn't a `core-js` dependency or there are multiple versions.
+> When using this options, you also need to configure the [`corejs`](#corejs) option.
 
 This option configures how `@babel/preset-env` handles polyfills.
 
-#### `useBuiltIns: 'entry'`
-
-> NOTE: Only use `require("@babel/polyfill");` once in your whole app.
-> Multiple imports or requires of `@babel/polyfill` will throw an error since it can cause global collisions and other issues that are hard to trace.
-> We recommend creating a single entry file that only contains the `require` statement.
-
-This option enables a new plugin that replaces the statement `import "@babel/polyfill"` or `require("@babel/polyfill")` with individual requires for `@babel/polyfill` based on environment.
+This option adds direct references to the `core-js` module as bare imports. For this reason, you need to install `core-js@3` or `core-js@2` (depending on the value of the [`corejs`](#corejs) option) as a dependency of your application:
 
 ```sh
-npm install @babel/polyfill --save
+npm install core-js@3 --save
 ```
+
+#### `useBuiltIns: 'entry'`
+
+> NOTE: Only use `import "core-js";` and `import "regenerator-runtime/runtime";` once in your whole app.
+> Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
+> We recommend creating a single entry file that only contains the `import` statement.
+
+This option enables a new plugin that replaces the statement `import "core-js";` and `import "regenerator-runtime/runtime"` (or `require("corejs")` and `require("regenerator-runtime/runtime")`) with individual requires to different `core-js` entry points based on environment.
 
 **In**
 
 ```js
-import "@babel/polyfill";
+import "core-js";
 ```
 
 **Out (different based on environment)**
 
 ```js
-import "core-js/modules/es7.string.pad-start";
-import "core-js/modules/es7.string.pad-end";
+import "core-js/modules/es.string.pad-start";
+import "core-js/modules/es.string.pad-end";
 ```
 
-This will also work for `core-js` directly (`import "core-js";` or `require('core-js');`)
+> NOTE: When using `core-js@2` (either explicitly using the [`corejs: 2`](#corejs) option or implicitly), `@babel/preset-env` will also imports and requires of `@babel/polyfill`.
+> This behavior is deprecated because it isn't possible to use `@babel/polyfill` with different `core-js` versions.
 
-#### `useBuiltIns: 'usage'` (experimental)
+#### `useBuiltIns: 'usage'`
 
 Adds specific imports for polyfills when they are used in each file. We take advantage of the fact that a bundler will load the same polyfill only once.
 
@@ -281,12 +284,12 @@ var b = new Map();
 **Out (if environment doesn't support it)**
 
 ```js
-import "core-js/modules/es6.promise";
+import "core-js/modules/es.promise";
 var a = new Promise();
 ```
 
 ```js
-import "core-js/modules/es6.map";
+import "core-js/modules/es.map";
 var b = new Map();
 ```
 
@@ -302,7 +305,38 @@ var b = new Map();
 
 #### `useBuiltIns: false`
 
-Don't add polyfills automatically per file, or transform `import "@babel/polyfill"` to individual polyfills.
+Don't add polyfills automatically per file, or transform `import "core-js"` to individual polyfills.
+
+### `corejs`
+
+`CorejsVersion` or `{ version: CorejsVersion, proposals: boolean }`, defaults to `2`.
+`CorejsVersion` can be either `2` or `3`.
+
+This option, which can only be used when `useBuiltIns` is not `false`, configures `@babel/preset-env` to inject imports to the correct `core-js` version.
+By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill them, you need to set `proposals: true`.
+
+`corejs: 2` only supports global variables (e.g. `Promise`) and static properties (e.g. `Array.from`), while `corejs: 3` also supports instance properties (e.g. `[].includes`).
+
+By default, `@babel/plugin-transform-runtime` doesn't polyfill proposals. If you are using `corejs: 3`, you can opt-in using the `proposals: true` boolean flag:
+
+**In**
+
+```js
+globalThis;
+```
+
+**Out** (`useBuiltIns: "usage", corejs: 3`)
+
+```js
+globalThis;
+```
+
+**Out** (`useBuiltIns: "usage", corejs: { version: 3, proposals: true }`)
+
+```js
+import "core-js/modules/esnext.global-this";
+globalThis;
+```
 
 ### `forceAllTransforms`
 
