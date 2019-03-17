@@ -39,20 +39,11 @@ type Props = {
   onClose: () => void,
   onPluginSelect: any, // TODO
   plugins: Array<BabelPlugin>,
-};
-
-type State = {
   officialOnly: boolean,
+  handleOfficialOnlyToggle: boolean => void,
 };
 
-export default class ExternalPluginsModal extends React.Component<
-  Props,
-  State
-> {
-  state = {
-    officialOnly: false,
-  };
-
+export default class ExternalPluginsModal extends React.Component<Props> {
   _input: ?HTMLInputElement;
 
   componentDidMount() {
@@ -64,12 +55,6 @@ export default class ExternalPluginsModal extends React.Component<
   handleSelectPlugin = (hit: SearchHit) => {
     this.props.onPluginSelect(hit);
     this.props.onClose();
-  };
-
-  handleOfficialOnlyToggle = () => {
-    this.setState(({ officialOnly }) => ({
-      officialOnly: !officialOnly,
-    }));
   };
 
   renderHit = ({ hit }: RenderHitProps) => {
@@ -97,8 +82,7 @@ export default class ExternalPluginsModal extends React.Component<
   };
 
   render() {
-    const { onClose, plugins } = this.props;
-    const { officialOnly } = this.state;
+    const { onClose, plugins, officialOnly } = this.props;
 
     let filters = "computedKeywords:babel-plugin";
 
@@ -129,7 +113,7 @@ export default class ExternalPluginsModal extends React.Component<
               <label>
                 <input
                   checked={officialOnly}
-                  onChange={this.handleOfficialOnlyToggle}
+                  onChange={this.props.handleOfficialOnlyToggle}
                   type="checkbox"
                 />
                 Only official plugins

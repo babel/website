@@ -19,6 +19,7 @@ type Props = {
 
 type State = {
   modalOpen: boolean,
+  officialOnly: boolean,
 };
 
 export default class ExternalPlugins extends React.Component<Props, State> {
@@ -29,6 +30,7 @@ export default class ExternalPlugins extends React.Component<Props, State> {
 
   state = {
     modalOpen: false,
+    officialOnly: false,
   };
 
   handleOpenModal = () => {
@@ -37,6 +39,12 @@ export default class ExternalPlugins extends React.Component<Props, State> {
 
   handleCloseModal = () => {
     this.setState({ modalOpen: false });
+  };
+
+  handleOfficialOnlyToggle = () => {
+    this.setState(({ officialOnly }) => ({
+      officialOnly: !officialOnly,
+    }));
   };
 
   renderButton() {
@@ -86,6 +94,7 @@ export default class ExternalPlugins extends React.Component<Props, State> {
       styles,
       isLoading,
     } = this.props;
+    const { officialOnly } = this.state;
 
     return (
       <AccordionTab
@@ -108,6 +117,8 @@ export default class ExternalPlugins extends React.Component<Props, State> {
             onClose={this.handleCloseModal}
             onPluginSelect={_pluginChanged}
             plugins={plugins}
+            officialOnly={officialOnly}
+            handleOfficialOnlyToggle={this.handleOfficialOnlyToggle}
           />
         )}
       </AccordionTab>
