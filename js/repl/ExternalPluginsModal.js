@@ -11,6 +11,7 @@ import {
 import SearchBox from "./ExternalPluginsSearchBox";
 import Modal from "./Modal";
 import { colors, media } from "./styles";
+import type { BabelPlugin } from "./types";
 
 const config = {
   apiKey: "1f0cc4b7da241f62651b85531d788fbd",
@@ -37,7 +38,7 @@ type RenderHitProps = {
 type Props = {
   onClose: () => void,
   onPluginSelect: any, // TODO
-  plugins: Array<string>,
+  plugins: Array<BabelPlugin>,
 };
 
 type State = {
@@ -106,7 +107,7 @@ export default class ExternalPluginsModal extends React.Component<
     }
 
     if (plugins.length) {
-      plugins.forEach(p => (filters += ` AND NOT objectID:${p}`));
+      plugins.forEach(p => (filters += ` AND NOT objectID:${p.name}`));
     }
 
     return (

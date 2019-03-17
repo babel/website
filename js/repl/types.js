@@ -2,6 +2,10 @@
 
 export type BabelPresets = Array<string | Array<string | Object>>;
 export type BabelPlugins = Array<string>;
+export type BabelPlugin = {
+  name: string,
+  version: string,
+};
 
 export type PresetsOptions = {
   decoratorsLegacy: boolean,
@@ -126,6 +130,7 @@ export type ReplState = {
   decoratorsLegacy: boolean,
   decoratorsBeforeExport: boolean,
   pipelineProposal: "minimal" | "smart",
+  externalPlugins: ?string,
 };
 
 export type SidebarTabSection = "env" | "plugins" | "presets" | "settings";

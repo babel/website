@@ -6,6 +6,7 @@ import UriUtils from "./UriUtils";
 
 import type {
   BabelState,
+  BabelPlugin,
   EnvState,
   EnvConfig,
   PresetsOptions,
@@ -186,4 +187,19 @@ export const persistedStateToEnvConfig = (
     });
 
   return envConfig;
+};
+
+export const persistedStateToExternalPluginsState = (
+  persistedState: ReplState
+): Array<BabelPlugin> => {
+  const { externalPlugins } = persistedState;
+  if (!externalPlugins) {
+    return [];
+  }
+  return externalPlugins.split(",").map(plugin => {
+    const separator = plugin.lastIndexOf("@");
+    const name = plugin.slice(0, separator);
+    const version = plugin.slice(separator + 1);
+    return { name, version };
+  });
 };
