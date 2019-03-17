@@ -65,7 +65,8 @@ export default class ExternalPlugins extends React.Component<Props, State> {
         {plugins.map(p => (
           <li key={p.name}>
             <span className={currentStyles.pluginName}>
-              {p.name} v{p.version}
+              {p.name}{" "}
+              <span className={currentStyles.pluginVersion}>v{p.version}</span>
             </span>
             <div className={currentStyles.pluginActions}>
               <a onClick={() => onRemove(p.name)}>✕</a>
@@ -152,6 +153,9 @@ const currentStyles = {
   `,
   pluginName: css`
     flex: 1;
+  `,
+  pluginVersion: css`
+    color: #61656e;
   `,
   pluginActions: css`
     align-items: center;
