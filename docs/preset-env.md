@@ -197,14 +197,14 @@ Valid options include any:
 
 - [Babel plugins](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugin-features.js) - both with (`@babel/plugin-transform-spread`) and without prefix (`plugin-transform-spread`) are supported.
 
-- [Built-ins](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/built-in-features.js), such as `es6.map`, `es6.set`, or `es6.object.assign`.
+- Built-ins (both for [core-js@2](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs2/built-in-definitions.js) and [core-js@3]([https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs3/built-in-definitions.js](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs3/built-in-definitions.js)))), such as `es.map`, `es.set`, or `es.object.assign`.
 
 Plugin names can be fully or partially specified (or using `RegExp`).
 
 Acceptable inputs:
 
-- Full name (`string`): `"es6.math.sign"`
-- Partial name (`string`): `"es6.math.*"` (resolves to all plugins with `es6.math` prefix)
+- Full name (`string`): `"es.math.sign"`
+- Partial name (`string`): `"es.math.*"` (resolves to all plugins with `es.math` prefix)
 - `RegExp` Object: `/^transform-.*$/` or `new RegExp("^transform-modules-.*")`
 
 Note that the above `.` is the `RegExp` equivalent to match any character, and not the actual `'.'` character. Also note that to match any character `.*` is used in `RegExp` as opposed to `*` in `glob` format.
@@ -250,7 +250,7 @@ npm install core-js@2 --save
 > Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
 > We recommend creating a single entry file that only contains the `import` statements.
 
-This option enables a new plugin that replaces the `import "core-js";` and `import "regenerator-runtime/runtime"` statements (or `require("corejs")` and `require("regenerator-runtime/runtime")`) with individual requires to different `core-js` entry points based on environment.
+This option enables a new plugin that replaces the `import "core-js/stable";` and `import "regenerator-runtime/runtime"` statements (or `require("corejs")` and `require("regenerator-runtime/runtime")`) with individual requires to different `core-js` entry points based on environment.
 
 **In**
 
@@ -287,6 +287,8 @@ import "core-js/modules/esnext.math.rad-per-deg";
 import "core-js/modules/esnext.math.radians";
 import "core-js/modules/esnext.math.scale";
 ```
+
+You can read [core-js](https://github.com/zloirock/core-js)'s documentation for more information about the different entry points.
 
 > NOTE: When using `core-js@2` (either explicitly using the [`corejs: 2`](#corejs) option or implicitly), `@babel/preset-env` will also imports and requires of `@babel/polyfill`.
 > This behavior is deprecated because it isn't possible to use `@babel/polyfill` with different `core-js` versions.
@@ -342,9 +344,10 @@ Don't add polyfills automatically per file, and don't transform `import "core-js
 This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the correct imports for your `core-js` version.
 
 By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill them, you have three different options:
-- set the [`shippedProposals`](#shippedproposals) option to `true`. This will enable polyfills and transforms for proposal which have already been shipped in browsers for a while.
-- use `corejs: { version: 3, proposals: true }`. This will enable polyfilling of every proposal supported by `core-js`.
 - when using `useBuiltIns: "entry"`, you can directly import a [proposal polyfill](https://github.com/zloirock/core-js/tree/master/packages/core-js/proposals): `import "core-js/proposals/string-replace-all"`.
+- when using `useBuiltIns: "usage"` you have two different alternatives:
+  - set the [`shippedProposals`](#shippedproposals) option to `true`. This will enable polyfills and transforms for proposal which have already been shipped in browsers for a while.
+  - use `corejs: { version: 3, proposals: true }`. This will enable polyfilling of every proposal supported by `core-js`.
 
 ### `forceAllTransforms`
 
@@ -412,7 +415,7 @@ Toggles enabling support for builtin/feature proposals that have shipped in brow
 
 The following are currently supported:
 
-**Builtins**
+**Builtins** injected when using `useBuiltIns: "usage"`
 
 - [esnext.global-this](https://github.com/tc39/proposal-global) (only supported by `core-js@3`)
 - [esnext.string.match-all](https://github.com/tc39/proposal-string-matchall) (only supported by `core-js@3`)
