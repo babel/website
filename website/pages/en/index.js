@@ -272,7 +272,7 @@ const Hero = ({ language }) => (
 
       <h3>Special Sponsor</h3>
 
-      <div class="sponsors-tier" style={{ margin: "10px 0" }}>
+      <div className="sponsors-tier" style={{ margin: "10px 0" }}>
         <a href="https://www.handshake.org" title="Handshake" target="_blank">
           <img
             src="https://handshake.org/images/landing/logo-light.svg"

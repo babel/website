@@ -57,7 +57,7 @@ export default class ExternalPlugins extends React.Component<Props, State> {
     const { onRemove, plugins } = this.props;
 
     if (plugins.length === 0) {
-      return <span class={currentStyles.empty}>None added</span>;
+      return <span className={currentStyles.empty}>None added</span>;
     }
 
     return (
