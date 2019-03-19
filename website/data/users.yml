@@ -4,7 +4,7 @@
   pinned: true
 - name: CloudFlare
   url: https://cloudflare.com/
-  logo: cloudflare.png
+  logo: cloudflare.svg
   pinned: true
 - name: Netflix
   url: https://www.netflix.com/
