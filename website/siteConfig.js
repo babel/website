@@ -163,8 +163,10 @@ const siteConfig = {
   onPageNav: "separate",
   gaTrackingId: "UA-114990275-1",
   cleanUrl: true,
-  enableUpdateBy: true,
-  enableUpdateTime: true,
+  // These two options make the build insanely slow
+  enableUpdateBy: false,
+  enableUpdateTime: false,
+  // ----
   scrollToTop: true,
   // markdownPlugins: [],
   // cname
