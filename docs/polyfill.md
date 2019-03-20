@@ -7,7 +7,7 @@ sidebar_label: polyfill
 > 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features) and `regenerator-runtime/runtime` (needed to use transpiled generator functions):
 > ```js
 > import "core-js/stable";
-> import "renegerator-runtime/runtime";
+> import "regenerator-runtime/runtime";
 > ```
 
 Babel includes a [polyfill](<https://en.wikipedia.org/wiki/Polyfill_(programming)>) that includes a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) and [core-js](https://github.com/zloirock/core-js).
