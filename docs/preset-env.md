@@ -335,7 +335,7 @@ var b = new Map();
 
 #### `useBuiltIns: false`
 
-Don't add polyfills automatically per file, and don't transform `import "core-js"` or `import "@babel/polufill"` to individual polyfills.
+Don't add polyfills automatically per file, and don't transform `import "core-js"` or `import "@babel/polyfill"` to individual polyfills.
 
 ### `corejs`
 
