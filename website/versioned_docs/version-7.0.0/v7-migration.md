@@ -12,7 +12,7 @@ Because not every breaking change will affect every project, we've sorted the se
 
 ## All of Babel
 
-> Support for Node.js 0.10, 0.12, 4 and 5 has been dropped [#5025](https://github.com/babel/babel/pull/5025), [#5041](https://github.com/babel/babel/pull/5041), [#7755](https://github.com/babel/babel/pull/7755), [#5186](https://github.com/babel/babel/pull/5186) ![high](https://img.shields.io/badge/level%20of%20awesomeness%3F-high-red.svg)
+> Support for Node.js 0.10, 0.12, 4 and 5 has been dropped [#5025](https://github.com/babel/babel/pull/5025), [#5041](https://github.com/babel/babel/pull/5041), [#7755](https://github.com/babel/babel/pull/7755), [#5186](https://github.com/babel/babel/pull/5186)
 
 We highly encourage you to use a newer version of Node.js (LTS v8) since the previous versions are not maintained.
 See [nodejs/LTS](https://github.com/nodejs/LTS) for more information.
@@ -61,7 +61,7 @@ If you want to use proposals, you will need to import these independently. You s
 e.g.
 
 ```js
-import "core-js/fn/array/flatMap";
+import "core-js/fn/array/flat-map";
 ```
 
 Below is a list of Stage < 3 proposal polyfills in `core-js` v2.
@@ -632,4 +632,3 @@ Babel will return `filename` as an absolute path [#8044](https://github.com/babe
 ## `@babel/preset-env`
 
 `loose` mode will now automatically exclude the `typeof-symbol` transform (a lot of projects using loose mode were doing this).
-
