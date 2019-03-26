@@ -18,8 +18,7 @@ obj["var"] = "isKeyword";
 **Out**
 
 ```javascript
-obj.foo = "isValid";
-
+obj["foo"] = "isValid";
 obj["const"] = "isKeyword";
 obj["var"] = "isKeyword";
 ```
