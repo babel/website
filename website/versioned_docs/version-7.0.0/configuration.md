@@ -6,7 +6,7 @@ original_id: configuration
 
 Babel can be configured! Many other tools have similar configs: ESLint (`.eslintrc`), Prettier (`.prettierrc`).
 
-All Babel API [options](options.md) are allowed. However, if the option requires JavaScript, you may want to use a Javascript [configuration file](config-files.md).
+All Babel API [options](options.md) are allowed. However, if the option requires JavaScript, you may want to use a JavaScript [configuration file](config-files.md).
 
 ## What's your use case?
 
