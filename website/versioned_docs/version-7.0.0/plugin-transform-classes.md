@@ -17,6 +17,24 @@ needs to be wrapped. This is needed to workaround two problems:
 The wrapper works on IE11 and every other browser with `Object.setPrototypeOf` or `__proto__` as fallback.
 There is **NO IE <= 10 support**. If you need IE <= 10 it's recommended that you don't extend natives.
 
+Babel needs to statically know if you are extending a built-in class. For this reason, the "mixin pattern" doesn't work:
+
+```js
+class Foo extends mixin(Array) {}
+
+function mixin(Super) {
+  return class extends Super { mix() {} };
+}
+```
+
+To workaround this limitation, you can add another class in the inheritance chain so that Babel can wrap the native class:
+
+```js
+const ExtensibleArray = class extends Array {}
+
+class Foo extends mixin(ExtensibleArray) {}
+```
+
 ## Examples
 
 **In**
