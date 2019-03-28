@@ -85,10 +85,9 @@ This is so that we know that the import is not a type import, and should not be 
 
 ## TypeScript Compiler Options
 
-The official TypeScript compiler has many [options][tsc-options] which allow configuring both
-the compiler and the type checker. While many of them don't make sense for Babel (for example,
-`--allowUnusedLabels`), some of them might be useful. Their behavior can be achieved in Babel
-using different configuration options or plugins.
+The official TypeScript compiler has many [options][tsc-options] for configuring how it
+compiles and type checks. While many don't apply, some behaviors might be useful and their
+equivalents in Babel can be enabled by some configuration options or plugins.
 
 - `--alwaysStrict`
   You can use the `strictMode` [parser option](https://babeljs.io/docs/en/babel-parser#options):
@@ -98,14 +97,14 @@ using different configuration options or plugins.
   };
   ```
 - `--downlevelIteration`
-  You can use the `@babel/plugin-transform-for-of` plugin. If you are using `@babel/preset-env`, `for...of` is already transpiled using iterators when it isn't supported by your compilation target.
+  You can use the `@babel/plugin-transform-for-of` plugin. If you are using `@babel/preset-env`, `for...of` is already transpiled using iterators when it isn't supported by your compilation target(s).
 - `--emitDecoratorMetadata`
-  This option isn't supported by an official Babel package since it is not part of the decorators proposal, but it is a TypeScript-specific addition.
+  This option isn't supported by an official Babel package since it is a TypeScript-specific addition and not part of the decorators proposal.
   If you rely on this feature, you can use the community plugin [babel-plugin-transform-typescript-metadata](https://github.com/leonardfactory/babel-plugin-transform-typescript-metadata#readme).
 - `--esModuleInterop`
   This is the default behavior of Babel when transpiling ECMAScript modules.
 - `--experimentalDecorators`
-  This option enables support for the "legacy" decorator proposal. You can enable it in Babel using the `@babel/plugin-proposal-decorators` plugin, altought there are some minor differences.
+  This option enables support for the "legacy" decorator proposal. You can enable it in Babel using the `@babel/plugin-proposal-decorators` plugin, but please be aware, there are some minor differences.
   ```js
   module.exports = {
     plugins: [
