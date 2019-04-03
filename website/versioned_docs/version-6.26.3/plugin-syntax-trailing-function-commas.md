@@ -120,7 +120,7 @@ require("babel-core").transform("code", {
 
 ## References
 
-* [Proposal](https://github.com/jeffmo/es-trailing-function-commas)
-* [Spec](http://jeffmo.github.io/es-trailing-function-commas/)
+* [Proposal](https://github.com/tc39/proposal-trailing-function-commas)
+* [Spec](http://tc39.github.io/proposal-trailing-function-commas/)
 * [Why you should enforce Dangling Commas for Multiline Statements](https://medium.com/@nikgraf/why-you-should-enforce-dangling-commas-for-multiline-statements-d034c98e36f8)
 
