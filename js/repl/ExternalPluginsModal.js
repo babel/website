@@ -11,6 +11,7 @@ import {
 import SearchBox from "./ExternalPluginsSearchBox";
 import Modal from "./Modal";
 import { colors, media } from "./styles";
+import type { BabelPlugin } from "./types";
 
 const config = {
   apiKey: "1f0cc4b7da241f62651b85531d788fbd",
@@ -37,21 +38,12 @@ type RenderHitProps = {
 type Props = {
   onClose: () => void,
   onPluginSelect: any, // TODO
-  plugins: Array<string>,
-};
-
-type State = {
+  plugins: Array<BabelPlugin>,
   officialOnly: boolean,
+  handleOfficialOnlyToggle: boolean => void,
 };
 
-export default class ExternalPluginsModal extends React.Component<
-  Props,
-  State
-> {
-  state = {
-    officialOnly: false,
-  };
-
+export default class ExternalPluginsModal extends React.Component<Props> {
   _input: ?HTMLInputElement;
 
   componentDidMount() {
@@ -63,12 +55,6 @@ export default class ExternalPluginsModal extends React.Component<
   handleSelectPlugin = (hit: SearchHit) => {
     this.props.onPluginSelect(hit);
     this.props.onClose();
-  };
-
-  handleOfficialOnlyToggle = () => {
-    this.setState(({ officialOnly }) => ({
-      officialOnly: !officialOnly,
-    }));
   };
 
   renderHit = ({ hit }: RenderHitProps) => {
@@ -96,8 +82,7 @@ export default class ExternalPluginsModal extends React.Component<
   };
 
   render() {
-    const { onClose, plugins } = this.props;
-    const { officialOnly } = this.state;
+    const { onClose, plugins, officialOnly } = this.props;
 
     let filters = "computedKeywords:babel-plugin";
 
@@ -106,7 +91,7 @@ export default class ExternalPluginsModal extends React.Component<
     }
 
     if (plugins.length) {
-      plugins.forEach(p => (filters += ` AND NOT objectID:${p}`));
+      plugins.forEach(p => (filters += ` AND NOT objectID:${p.name}`));
     }
 
     return (
@@ -128,7 +113,7 @@ export default class ExternalPluginsModal extends React.Component<
               <label>
                 <input
                   checked={officialOnly}
-                  onChange={this.handleOfficialOnlyToggle}
+                  onChange={this.props.handleOfficialOnlyToggle}
                   type="checkbox"
                 />
                 Only official plugins

@@ -25,6 +25,7 @@ const URL_KEYS = [
   "prettier",
   "targets",
   "version",
+  "externalPlugins",
 ];
 
 const compress = (string: string) =>

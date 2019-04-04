@@ -5,7 +5,7 @@ import * as React from "react";
 import AccordionTab from "./AccordionTab";
 import ExternalPluginsModal from "./ExternalPluginsModal";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
-import type { SidebarTabSection } from "./types";
+import type { SidebarTabSection, BabelPlugin } from "./types";
 
 type Props = {
   _pluginChanged: any,
@@ -13,12 +13,13 @@ type Props = {
   isLoading: boolean,
   onRemove: (pluginName: string) => void,
   onToggleExpanded: (key: SidebarTabSection) => mixed,
-  plugins: Array<string>,
+  plugins: Array<BabelPlugin>,
   styles: Object,
 };
 
 type State = {
   modalOpen: boolean,
+  officialOnly: boolean,
 };
 
 export default class ExternalPlugins extends React.Component<Props, State> {
@@ -29,6 +30,7 @@ export default class ExternalPlugins extends React.Component<Props, State> {
 
   state = {
     modalOpen: false,
+    officialOnly: false,
   };
 
   handleOpenModal = () => {
@@ -37,6 +39,12 @@ export default class ExternalPlugins extends React.Component<Props, State> {
 
   handleCloseModal = () => {
     this.setState({ modalOpen: false });
+  };
+
+  handleOfficialOnlyToggle = () => {
+    this.setState(({ officialOnly }) => ({
+      officialOnly: !officialOnly,
+    }));
   };
 
   renderButton() {
@@ -63,10 +71,13 @@ export default class ExternalPlugins extends React.Component<Props, State> {
     return (
       <ul className={currentStyles.pluginList}>
         {plugins.map(p => (
-          <li key={p}>
-            {p}
+          <li key={p.name}>
+            <span className={currentStyles.pluginName}>
+              {p.name}{" "}
+              <span className={currentStyles.pluginVersion}>v{p.version}</span>
+            </span>
             <div className={currentStyles.pluginActions}>
-              <a onClick={() => onRemove(p)}>✕</a>
+              <a onClick={() => onRemove(p.name)}>✕</a>
             </div>
           </li>
         ))}
@@ -81,7 +92,9 @@ export default class ExternalPlugins extends React.Component<Props, State> {
       onToggleExpanded,
       plugins,
       styles,
+      isLoading,
     } = this.props;
+    const { officialOnly } = this.state;
 
     return (
       <AccordionTab
@@ -90,7 +103,7 @@ export default class ExternalPlugins extends React.Component<Props, State> {
         label={
           <span className={styles.pluginsHeader}>
             Plugins
-            {false && <PresetLoadingAnimation />}
+            {isLoading && <PresetLoadingAnimation />}
           </span>
         }
         onToggleExpanded={onToggleExpanded}
@@ -104,6 +117,8 @@ export default class ExternalPlugins extends React.Component<Props, State> {
             onClose={this.handleCloseModal}
             onPluginSelect={_pluginChanged}
             plugins={plugins}
+            officialOnly={officialOnly}
+            handleOfficialOnlyToggle={this.handleOfficialOnlyToggle}
           />
         )}
       </AccordionTab>
@@ -122,7 +137,7 @@ const currentStyles = {
   `,
   pluginList: css`
     font-size: 0.75rem;
-    margin: 0.5rem -0.5rem 1rem;
+    margin: 0.5rem 0 1rem;
 
     > li {
       align-items: center;
@@ -147,16 +162,19 @@ const currentStyles = {
     font-size: 0.875rem;
     margin: 0.5rem 0.5rem 1rem;
   `,
+  pluginName: css`
+    flex: 1;
+  `,
+  pluginVersion: css`
+    color: #61656e;
+  `,
   pluginActions: css`
     align-items: center;
     background: #23252b;
     bottom: 0;
-    display: flex;
+    flex-shrink: 0;
     padding-left: 1rem;
-    position: absolute;
-    right: 1rem;
-    top: 0;
-
+    cursor: pointer;
     a,
     a:visited {
       color: #fff;

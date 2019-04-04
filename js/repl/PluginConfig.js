@@ -1,11 +1,6 @@
 // @flow
 import camelCase from "lodash.camelcase";
-import type {
-  PluginConfig,
-  MultiPackagesConfig,
-  ReplState,
-  EnvFeatures,
-} from "./types";
+import type { PluginConfig, MultiPackagesConfig, ReplState } from "./types";
 
 const normalizePluginName = pluginName =>
   `_babel_${camelCase(`plugin-${pluginName}`)}`;
@@ -125,6 +120,7 @@ const replDefaults: ReplState = {
   decoratorsLegacy: false,
   decoratorsBeforeExport: false,
   pipelineProposal: "minimal",
+  externalPlugins: "",
 };
 
 export {

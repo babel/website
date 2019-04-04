@@ -32,6 +32,7 @@ import {
   persistedStateToEnvConfig,
   persistedStateToPresetsOptions,
   persistedStateToShippedProposalsState,
+  persistedStateToExternalPluginsState,
 } from "./replUtils";
 import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
@@ -40,6 +41,7 @@ import { colors, media } from "./styles";
 import type {
   BabelPresets,
   BabelState,
+  BabelPlugin,
   EnvState,
   ShippedProposalsState,
   EnvConfig,
@@ -72,7 +74,7 @@ type State = {
   presets: PluginStateMap,
   runtimePolyfillState: PluginState,
   sourceMap: ?string,
-  externalPlugins: Array<string>,
+  externalPlugins: Array<BabelPlugin>,
   pluginSearch: ?string,
   showOfficialExternalPlugins: boolean,
   loadingExternalPlugins: boolean,
@@ -164,7 +166,7 @@ class Repl extends React.Component<Props, State> {
       ),
       sourceMap: null,
       showOfficialExternalPlugins: false,
-      externalPlugins: [],
+      externalPlugins: persistedStateToExternalPluginsState(persistedState),
       loadingExternalPlugins: false,
       transitions: [],
       currentTransition: {},
@@ -273,6 +275,7 @@ class Repl extends React.Component<Props, State> {
 
   async _setupBabel(defaultPresets) {
     const babelState = await loadBundle(this.state.babel, this._workerApi);
+    await this._loadInitialExternalPlugins();
     const { envPresetState } = this.state;
 
     this.setState({
@@ -406,49 +409,64 @@ class Repl extends React.Component<Props, State> {
       }
     }
   }
+
+  _loadInitialExternalPlugins = () => {
+    return Promise.all(
+      this.state.externalPlugins.map(plugin =>
+        this._loadExternalPlugin(plugin).catch()
+      )
+    );
+  };
+
+  _loadExternalPlugin = (plugin: BabelPlugin) => {
+    const bundledUrl = `https://bundle.run/${plugin.name}@${plugin.version}`;
+    return this._workerApi.loadExternalPlugin(bundledUrl).then(loaded => {
+      if (loaded === false) {
+        this.setState({
+          compileErrorMessage: `Plugin ${plugin.name} could not be loaded`,
+        });
+        return Promise.reject();
+      }
+      return this._workerApi.registerPlugins([
+        {
+          instanceName: toCamelCase(plugin.name),
+          pluginName: plugin.name,
+        },
+      ]);
+    });
+  };
+
   _pluginSearch = value =>
     this.setState({
       pluginSearch: value,
     });
 
   _pluginChange = plugin => {
-    const pluginExists = this.state.externalPlugins.includes(plugin.name);
+    const pluginExists =
+      this.state.externalPlugins.findIndex(
+        externalPlugin => externalPlugin.name === plugin.name
+      ) > -1;
 
-    this.setState({ loadingExternalPlugins: true });
+    if (!pluginExists) {
+      this.setState({ loadingExternalPlugins: true });
 
-    const bundledUrl = `https://bundle.run/${plugin.name}@${plugin.version}`;
-
-    this._workerApi.loadExternalPlugin(bundledUrl).then(loaded => {
-      if (loaded === false) {
-        this.setState({
-          compileErrorMessage: `Plugin ${plugin.name} could not be loaded`,
-          loadingExternalPlugins: false,
-        });
-        return;
-      }
-
-      this._workerApi
-        .registerPlugins([
-          {
-            instanceName: toCamelCase(plugin.name),
-            pluginName: plugin.name,
-          },
-        ])
+      this._loadExternalPlugin(plugin)
         .then(() => {
-          this.setState({ loadingExternalPlugins: false });
+          this.setState(
+            state => ({
+              externalPlugins: [...state.externalPlugins, plugin],
+            }),
+            this._pluginsUpdatedSetStateCallback
+          );
+        })
+        .finally(() => {
+          this.setState({
+            loadingExternalPlugins: false,
+          });
         });
-
-      if (!pluginExists) {
-        this.setState(
-          state => ({
-            externalPlugins: [...state.externalPlugins, plugin.name],
-          }),
-          this._pluginsUpdatedSetStateCallback
-        );
-      } else {
-        this.handleRemoveExternalPlugin(plugin.name);
-      }
-    });
+    } else {
+      this.handleRemoveExternalPlugin(plugin.name);
+    }
   };
 
   _showOfficialExternalPluginsChanged = () =>
@@ -468,7 +486,7 @@ class Repl extends React.Component<Props, State> {
     }
     this._workerApi
       .compile(code, {
-        plugins: state.externalPlugins,
+        plugins: state.externalPlugins.map(plugin => plugin.name),
         debugEnvPreset: state.debugEnvPreset,
         envConfig: state.envPresetState.isLoaded ? state.envConfig : null,
         presetsOptions: state.presetsOptions,
@@ -591,6 +609,9 @@ class Repl extends React.Component<Props, State> {
       decoratorsLegacy: state.presetsOptions.decoratorsLegacy,
       decoratorsBeforeExport: state.presetsOptions.decoratorsBeforeExport,
       pipelineProposal: state.presetsOptions.pipelineProposal,
+      externalPlugins: state.externalPlugins
+        .map(plugin => `${plugin.name}@${plugin.version}`)
+        .join(","),
     };
     StorageService.set("replState", payload);
     UriUtils.updateQuery(payload);
@@ -632,7 +653,9 @@ class Repl extends React.Component<Props, State> {
   handleRemoveExternalPlugin = (pluginName: string) => {
     this.setState(
       state => ({
-        externalPlugins: state.externalPlugins.filter(p => p !== pluginName),
+        externalPlugins: state.externalPlugins.filter(
+          p => p.name !== pluginName
+        ),
       }),
       this._pluginsUpdatedSetStateCallback
     );

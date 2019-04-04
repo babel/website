@@ -11,6 +11,7 @@ import { colors, media } from "./styles";
 import { joinListEnglish } from "./Utils";
 
 import type {
+  BabelPlugin,
   EnvConfig,
   EnvState,
   PluginConfig,
@@ -51,7 +52,7 @@ type Props = {
   pluginValue: ?string,
   showOfficialExternalPlugins: boolean,
   pluginChange: PluginChange,
-  externalPlugins: Array<string>,
+  externalPlugins: Array<BabelPlugin>,
   showOfficialExternalPluginsChanged: ShowOfficialExternalPluginsChanged,
   envConfig: EnvConfig,
   pluginSearch: PluginSearch,
