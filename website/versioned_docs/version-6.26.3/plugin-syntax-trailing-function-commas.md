@@ -21,7 +21,7 @@ clownPuppiesEverywhere(
 ## Example
 
 ### Basic
-This is an example from the [Proposal](https://github.com/jeffmo/es-trailing-function-commas).
+This is an example from the [Proposal](https://github.com/tc39/proposal-trailing-function-commas).
 
 Let's say you have this function:
 
