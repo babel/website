@@ -9,3 +9,13 @@
   logo: tidelift.png
   type: other
   tier: other-sponsors
+- name: BestVPN
+  url: bestvpn.co
+  logo: bestvpn.png
+  type: patreon
+  tier: silver-sponsors
+- name: VPNRanks
+  url: https://www.vpnranks.com
+  logo: vpnranks.png
+  type: patreon
+  tier: silver-sponsors
