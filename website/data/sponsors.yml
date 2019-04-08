@@ -10,7 +10,7 @@
   type: other
   tier: other-sponsors
 - name: BestVPN
-  url: bestvpn.co
+  url: https://www.bestvpn.co
   logo: bestvpn.png
   type: patreon
   tier: silver-sponsors
