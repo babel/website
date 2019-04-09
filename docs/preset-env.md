@@ -197,14 +197,14 @@ Valid options include any:
 
 - [Babel plugins](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugin-features.js) - both with (`@babel/plugin-transform-spread`) and without prefix (`plugin-transform-spread`) are supported.
 
-- [Built-ins](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/built-in-features.js), such as `es6.map`, `es6.set`, or `es6.object.assign`.
+- Built-ins (both for [core-js@2](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs2/built-in-definitions.js) and [core-js@3]([https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs3/built-in-definitions.js](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs3/built-in-definitions.js)))), such as `es.map`, `es.set`, or `es.object.assign`.
 
 Plugin names can be fully or partially specified (or using `RegExp`).
 
 Acceptable inputs:
 
-- Full name (`string`): `"es6.math.sign"`
-- Partial name (`string`): `"es6.math.*"` (resolves to all plugins with `es6.math` prefix)
+- Full name (`string`): `"es.math.sign"`
+- Partial name (`string`): `"es.math.*"` (resolves to all plugins with `es.math` prefix)
 - `RegExp` Object: `/^transform-.*$/` or `new RegExp("^transform-modules-.*")`
 
 Note that the above `.` is the `RegExp` equivalent to match any character, and not the actual `'.'` character. Also note that to match any character `.*` is used in `RegExp` as opposed to `*` in `glob` format.
@@ -229,38 +229,71 @@ This option is useful for "blacklisting" a transform like `@babel/plugin-transfo
 
 `"usage"` | `"entry"` | `false`, defaults to `false`.
 
-> This option adds direct references to the `core-js` module as bare imports. Thus `core-js` will be resolved relative to the file itself and needs to be accessible. You may need to specify `core-js@2` as a top level dependency in your application if there isn't a `core-js` dependency or there are multiple versions.
-
 This option configures how `@babel/preset-env` handles polyfills.
+
+When either the `usage` or `entry` options are used, `@babel-preset-env` will add direct references to `core-js` modules as bare imports (or requires). This means `core-js` will be resolved relative to the file itself and needs to be accessible.
+
+Since `@babel/polyfill` was deprecated in 7.4.0, we recommend directly adding `core-js` and setting the version via the [`corejs`](#corejs) option.
+
+```sh
+npm install core-js@3 --save
+
+# or
+
+npm install core-js@2 --save
+```
 
 #### `useBuiltIns: 'entry'`
 
-> NOTE: Only use `require("@babel/polyfill");` once in your whole app.
-> Multiple imports or requires of `@babel/polyfill` will throw an error since it can cause global collisions and other issues that are hard to trace.
-> We recommend creating a single entry file that only contains the `require` statement.
+> NOTE: Only use `import "core-js";` and `import "regenerator-runtime/runtime";` once in your whole app.
+> If you are using `@babel/polyfill`, it already includes both `core-js` and `regenerator-runtime`: importing it twice will throw an error.
+> Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
+> We recommend creating a single entry file that only contains the `import` statements.
 
-This option enables a new plugin that replaces the statement `import "@babel/polyfill"` or `require("@babel/polyfill")` with individual requires for `@babel/polyfill` based on environment.
-
-```sh
-npm install @babel/polyfill --save
-```
+This option enables a new plugin that replaces the `import "core-js/stable";` and `import "regenerator-runtime/runtime"` statements (or `require("corejs")` and `require("regenerator-runtime/runtime")`) with individual requires to different `core-js` entry points based on environment.
 
 **In**
 
 ```js
-import "@babel/polyfill";
+import "core-js";
 ```
 
 **Out (different based on environment)**
 
 ```js
-import "core-js/modules/es7.string.pad-start";
-import "core-js/modules/es7.string.pad-end";
+import "core-js/modules/es.string.pad-start";
+import "core-js/modules/es.string.pad-end";
 ```
 
-This will also work for `core-js` directly (`import "core-js";` or `require('core-js');`)
+Importing `"core-js"` loads polyfills for every possible ECMAScript feature: what if you know that you only need some of them? When using `core-js@3`, `@babel/preset-env` is able to optimize every single `core-js` entrypoint and their combinations. For example, you might want to only polyfill array methods and new `Math` proposals:
 
-#### `useBuiltIns: 'usage'` (experimental)
+**In**
+
+```js
+import "core-js/es/array";
+import "core-js/proposals/math-extensions";
+```
+
+**Out (different based on environment)**
+
+```js
+import "core-js/modules/es.array.unscopables.flat";
+import "core-js/modules/es.array.unscopables.flat-map";
+import "core-js/modules/esnext.math.clamp";
+import "core-js/modules/esnext.math.deg-per-rad";
+import "core-js/modules/esnext.math.degrees";
+import "core-js/modules/esnext.math.fscale";
+import "core-js/modules/esnext.math.rad-per-deg";
+import "core-js/modules/esnext.math.radians";
+import "core-js/modules/esnext.math.scale";
+```
+
+You can read [core-js](https://github.com/zloirock/core-js)'s documentation for more information about the different entry points.
+
+> NOTE: When using `core-js@2` (either explicitly using the [`corejs: 2`](#corejs) option or implicitly), `@babel/preset-env` will also imports and requires of `@babel/polyfill`.
+> This behavior is deprecated because it isn't possible to use `@babel/polyfill` with different `core-js` versions.
+
+#### `useBuiltIns: 'usage'`
 
 Adds specific imports for polyfills when they are used in each file. We take advantage of the fact that a bundler will load the same polyfill only once.
 
@@ -281,12 +314,12 @@ var b = new Map();
 **Out (if environment doesn't support it)**
 
 ```js
-import "core-js/modules/es6.promise";
+import "core-js/modules/es.promise";
 var a = new Promise();
 ```
 
 ```js
-import "core-js/modules/es6.map";
+import "core-js/modules/es.map";
 var b = new Map();
 ```
 
@@ -302,7 +335,19 @@ var b = new Map();
 
 #### `useBuiltIns: false`
 
-Don't add polyfills automatically per file, or transform `import "@babel/polyfill"` to individual polyfills.
+Don't add polyfills automatically per file, and don't transform `import "core-js"` or `import "@babel/polyfill"` to individual polyfills.
+
+### `corejs`
+
+`2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `2`.
+
+This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the correct imports for your `core-js` version.
+
+By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill them, you have three different options:
+- when using `useBuiltIns: "entry"`, you can directly import a [proposal polyfill](https://github.com/zloirock/core-js/tree/master/packages/core-js/proposals): `import "core-js/proposals/string-replace-all"`.
+- when using `useBuiltIns: "usage"` you have two different alternatives:
+  - set the [`shippedProposals`](#shippedproposals) option to `true`. This will enable polyfills and transforms for proposal which have already been shipped in browsers for a while.
+  - use `corejs: { version: 3, proposals: true }`. This will enable polyfilling of every proposal supported by `core-js`.
 
 ### `forceAllTransforms`
 
@@ -370,9 +415,10 @@ Toggles enabling support for builtin/feature proposals that have shipped in brow
 
 The following are currently supported:
 
-**Builtins**
+**Builtins** injected when using `useBuiltIns: "usage"`
 
-- [es7.array.flat-map](https://github.com/tc39/proposal-flatMap)
+- [esnext.global-this](https://github.com/tc39/proposal-global) (only supported by `core-js@3`)
+- [esnext.string.match-all](https://github.com/tc39/proposal-string-matchall) (only supported by `core-js@3`)
 
 **Features**
 

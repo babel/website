@@ -6,7 +6,7 @@ sidebar_label: transform-runtime
 
 A plugin that enables the re-use of Babel's injected helper code to save on codesize.
 
-> NOTE: Instance methods such as `"foobar".includes("foo")` will not work since that would require modification of existing built-ins (you can use [`@babel/polyfill`](polyfill.md) for that).
+> NOTE: Instance methods such as `"foobar".includes("foo")` will only work with `core-js@3`. If you need to polyfill them, you can directly import `"core-js"` or use `@babel/preset-env`'s `useBuiltIns` option.
 
 ## Installation
 
@@ -30,7 +30,7 @@ Babel uses very small helpers for common functions such as `_extend`. By default
 
 This is where the `@babel/plugin-transform-runtime` plugin comes in: all of the helpers will reference the module `@babel/runtime` to avoid duplication across your compiled output. The runtime will be compiled into your build.
 
-Another purpose of this transformer is to create a sandboxed environment for your code. If you use [@babel/polyfill](polyfill.md) and the built-ins it provides such as `Promise`, `Set` and `Map`, those will pollute the global scope. While this might be ok for an app or a command line tool, it becomes a problem if your code is a library which you intend to publish for others to use or if you can't exactly control the environment in which your code will run.
+Another purpose of this transformer is to create a sandboxed environment for your code. If you directly import [core-js](https://github.com/zloirock/core-js) or [@babel/polyfill](polyfill.md) and the built-ins it provides such as `Promise`, `Set` and `Map`, those will pollute the global scope. While this might be ok for an app or a command line tool, it becomes a problem if your code is a library which you intend to publish for others to use or if you can't exactly control the environment in which your code will run.
 
 The transformer will alias these built-ins to `core-js` so you can use them seamlessly without having to require the polyfill.
 
@@ -89,17 +89,22 @@ require("@babel/core").transform("code", {
 
 ### `corejs`
 
-`boolean` or `number` , defaults to `false`.
+`false`, `2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `false`.
 
-e.g. `['@babel/plugin-transform-runtime', { corejs: 2 }],`
+e.g. `['@babel/plugin-transform-runtime', { corejs: 3 }],`
 
-Specifying a number will rewrite the helpers that need polyfillable APIs to reference `core-js` instead.
+Specifying a number will rewrite the helpers that need polyfillable APIs to reference helpers from that (major) version of `core-js` instead
+Please note that `corejs: 2` only supports global variables (e.g. `Promise`) and static properties (e.g. `Array.from`), while `corejs: 3` also supports instance properties (e.g. `[].includes`).
 
-This requires changing the dependency used to be [`@babel/runtime-corejs2`](runtime-corejs2.md) instead of `@babel/runtime`.
+By default, `@babel/plugin-transform-runtime` doesn't polyfill proposals. If you are using `corejs: 3`, you can opt into this by enabling using the `proposals: true` option.
 
-```sh
-npm install --save @babel/runtime-corejs2
-```
+This option requires changing the dependency used to provide the necessary runtime helpers:
+
+| `corejs` option | Install command                             |
+|-----------------|---------------------------------------------|
+| `false`         | `npm install --save @babel/runtime`         |
+| `2`             | `npm install --save @babel/runtime-corejs2` |
+| `3`             | `npm install --save @babel/runtime-corejs3` |
 
 ### `helpers`
 
@@ -256,7 +261,9 @@ The plugin transforms the following:
 ```javascript
 var sym = Symbol();
 
-var promise = new Promise();
+var promise = Promise.resolve();
+
+var check = arr.includes("yeah!");
 
 console.log(arr[Symbol.iterator]());
 ```
@@ -264,35 +271,24 @@ console.log(arr[Symbol.iterator]());
 into the following:
 
 ```javascript
-"use strict";
+import _getIterator from "@babel/runtime-corejs3/core-js/get-iterator";
+import _includesInstanceProperty from "@babel/runtime-corejs3/core-js-stable/instance/includes";
+import _Promise from "@babel/runtime-corejs3/core-js-stable/promise";
+import _Symbol from "@babel/runtime-corejs3/core-js-stable/symbol";
 
-var _getIterator2 = require("@babel/runtime-corejs2/core-js/get-iterator");
+var sym = _Symbol();
 
-var _getIterator3 = _interopRequireDefault(_getIterator2);
+var promise = _Promise.resolve();
 
-var _promise = require("@babel/runtime-corejs2/core-js/promise");
+var check = _includesInstanceProperty(arr).call(arr, "yeah!");
 
-var _promise2 = _interopRequireDefault(_promise);
-
-var _symbol = require("@babel/runtime-corejs2/core-js/symbol");
-
-var _symbol2 = _interopRequireDefault(_symbol);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-var sym = (0, _symbol2.default)();
-
-var promise = new _promise2.default();
-
-console.log((0, _getIterator3.default)(arr));
+console.log(_getIterator(arr));
 ```
 
-This means is that you can seamlessly use these native built-ins and static methods
+This means is that you can seamlessly use these native built-ins and methods
 without worrying about where they come from.
 
-**NOTE:** Instance methods such as `"foobar".includes("foo")` will **not** work.
+**NOTE:** Instance methods such as `"foobar".includes("foo")` will only work when using `corejs: 3`.
 
 ### Helper aliasing
 
