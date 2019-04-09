@@ -304,6 +304,12 @@ var b = new Map();
 
 Don't add polyfills automatically per file, or transform `import "@babel/polyfill"` to individual polyfills.
 
+### `corejs`
+
+`string`, defaults to `2`.
+
+Specifies version of core-js used by `useBuiltIns: 'usage'`.
+
 ### `forceAllTransforms`
 
 `boolean`, defaults to `false`.
