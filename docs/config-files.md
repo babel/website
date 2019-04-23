@@ -314,7 +314,7 @@ It has a few different forms:
 * `api.env()` returns the current `envName` string.
 * `api.env(envName => envName.startsWith("test-"))` returns `true` if the env starts with "test-".
 
-This function internally makes use of `api.cache` mentioned below to ensure that
+This function internally makes use of `api.cache` mentioned above to ensure that
 Babel is aware that this build depends on a specific `envName`.
 
 
