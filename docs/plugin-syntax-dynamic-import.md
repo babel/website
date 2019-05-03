@@ -44,8 +44,8 @@ Currently, `@babel/preset-env` is unaware that using `import()` with [Webpack re
 // webpack config
 const config = {
   entry: [
-    "core-js/modules/es6.promise",
-    "core-js/modules/es6.array.iterator",
+    "core-js/modules/es.promise",
+    "core-js/modules/es.array.iterator",
     path.resolve(__dirname, "src/main.js"),
   ],
   // ...
@@ -56,8 +56,8 @@ or
 
 ```js
 // src/main.js
-import "core-js/modules/es6.promise";
-import "core-js/modules/es6.array.iterator";
+import "core-js/modules/es.promise";
+import "core-js/modules/es.array.iterator";
 
 // ...
 ```
