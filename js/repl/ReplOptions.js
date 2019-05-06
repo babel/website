@@ -275,21 +275,8 @@ class ExpandedContainer extends Component<Props, State> {
                 />
                 Time Travel
               </label>
-              <label
-                className={`${styles.settingsLabel} ${styles.selectLabel}`}
-              >
-                Filename
-                <input
-                  value={filename}
-                  onChange={(event: SyntheticInputEvent<*>) =>
-                    onSettingChange("filename", event.target.value)
-                  }
-                  // className={cx(styles.optionSelect, styles.sourceTypeSelect)}
-                />
-              </label>
-              <label
-                className={`${styles.settingsLabel} ${styles.selectLabel}`}
-              >
+              <div className={styles.horizontalRule} />
+              <label className={`${styles.settingsLabel} ${styles.blockLabel}`}>
                 Source Type
                 <select
                   value={sourceType}
@@ -302,6 +289,17 @@ class ExpandedContainer extends Component<Props, State> {
                   <option value="script">Script</option>
                   <option value="unambiguous">Unambiguous</option>
                 </select>
+              </label>
+              <label className={`${styles.settingsLabel} ${styles.blockLabel}`}>
+                Filename
+                <input
+                  value={filename}
+                  onChange={(event: SyntheticInputEvent<*>) =>
+                    onSettingChange("filename", event.target.value)
+                  }
+                  // className={styles.filenameInput}
+                  className={styles.filenameInput}
+                />
               </label>
             </AccordionTab>
             <AccordionTab
@@ -946,12 +944,30 @@ const styles = {
       color: colors.inverseForeground,
     },
   }),
-  selectLabel: css({
+  horizontalRule: css({
+    marginTop: "1em",
+  }),
+  blockLabel: css({
     alignItems: "flex-start",
     flexDirection: "column",
     flexBasis: "4rem",
-    margin: "1rem 0 0 0",
+    padding: "0 1rem",
+  }),
+  filenameInput: css({
+    appearance: "none",
+    backgroundColor: "#2D3035",
+    border: 0,
+    fontWeight: 400,
+    borderRadius: "0.25rem",
+    color: colors.inverseForegroundLight,
+    marginTop: "0.25rem",
     padding: "0 0.5rem",
+    height: "30px",
+    width: "100%",
+
+    "&:hover": {
+      backgroundColor: "#32353A",
+    },
   }),
   optionSelect: css({
     appearance: "none",
@@ -964,7 +980,7 @@ const styles = {
     backgroundSize: "8px",
     border: 0,
     color: colors.inverseForegroundLight,
-    margin: "0.25rem 0 0 0",
+    marginTop: "0.25rem",
     transition: "all 0.25s ease-in",
 
     "&:hover": {
