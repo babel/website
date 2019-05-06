@@ -67,6 +67,7 @@ type State = {
   fileSize: boolean,
   timeTravel: boolean,
   sourceType: SourceType,
+  filename: string,
   isSidebarExpanded: boolean,
   lineWrap: boolean,
   meta: Object,
@@ -151,6 +152,7 @@ class Repl extends React.Component<Props, State> {
       fileSize: persistedState.fileSize,
       timeTravel: persistedState.timeTravel,
       sourceType: persistedState.sourceType,
+      filename: persistedState.filename,
       isSidebarExpanded: persistedState.showSidebar,
       lineWrap: persistedState.lineWrap,
       meta: {
@@ -215,6 +217,7 @@ class Repl extends React.Component<Props, State> {
           fileSize={state.fileSize}
           timeTravel={state.timeTravel}
           sourceType={state.sourceType}
+          filename={state.filename}
           isExpanded={state.isSidebarExpanded}
           lineWrap={state.lineWrap}
           onPresetOptionChange={this._onOptionChange("presetsOptions")}
@@ -496,6 +499,7 @@ class Repl extends React.Component<Props, State> {
         prettify: state.plugins.prettier.isEnabled,
         sourceMap: runtimePolyfillState.isEnabled,
         sourceType: state.sourceType,
+        filename: state.filename,
         getTransitions: state.timeTravel,
       })
       .then(result => {
@@ -600,6 +604,7 @@ class Repl extends React.Component<Props, State> {
       fileSize: state.fileSize,
       timeTravel: state.timeTravel,
       sourceType: state.sourceType,
+      filename: state.filename,
       lineWrap: state.lineWrap,
       presets: presetsArray.join(","),
       prettier: plugins.prettier.isEnabled,

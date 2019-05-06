@@ -101,6 +101,7 @@ const replDefaults: ReplState = {
   fileSize: false,
   timeTravel: false,
   sourceType: "module",
+  filename: "repl.js",
   forceAllTransforms: false,
   isEnvPresetTabExpanded: false,
   isPluginsExpanded: false,

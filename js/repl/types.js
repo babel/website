@@ -102,6 +102,7 @@ export type CompileConfig = {
   prettify: boolean,
   sourceMap: boolean,
   sourceType: SourceType,
+  filename: string,
   getTransitions: boolean,
 };
 
@@ -119,6 +120,7 @@ export type ReplState = {
   fileSize: boolean,
   timeTravel: boolean,
   sourceType: SourceType,
+  filename: string,
   forceAllTransforms: boolean,
   shippedProposals: boolean,
   lineWrap: boolean,

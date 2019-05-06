@@ -62,6 +62,7 @@ type Props = {
   fileSize: boolean,
   timeTravel: boolean,
   sourceType: SourceType,
+  filename: string,
   isExpanded: boolean,
   lineWrap: boolean,
   onEnvPresetSettingChange: ToggleEnvPresetSetting,
@@ -186,6 +187,7 @@ class ExpandedContainer extends Component<Props, State> {
       fileSize,
       timeTravel,
       sourceType,
+      filename,
       lineWrap,
       onIsExpandedChange,
       onExternalPluginRemove,
@@ -272,6 +274,18 @@ class ExpandedContainer extends Component<Props, State> {
                   type="checkbox"
                 />
                 Time Travel
+              </label>
+              <label
+                className={`${styles.settingsLabel} ${styles.selectLabel}`}
+              >
+                Filename
+                <input
+                  value={filename}
+                  onChange={(event: SyntheticInputEvent<*>) =>
+                    onSettingChange("filename", event.target.value)
+                  }
+                  // className={cx(styles.optionSelect, styles.sourceTypeSelect)}
+                />
               </label>
               <label
                 className={`${styles.settingsLabel} ${styles.selectLabel}`}

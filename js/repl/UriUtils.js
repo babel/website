@@ -20,6 +20,7 @@ const URL_KEYS = [
   "fileSize",
   "timeTravel",
   "sourceType",
+  "filename",
   "lineWrap",
   "presets",
   "prettier",

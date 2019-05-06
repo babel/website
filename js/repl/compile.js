@@ -89,7 +89,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   try {
     const babelConfig = {
       babelrc: false,
-      filename: "repl",
+      filename: config.filename,
       sourceMap: config.sourceMap,
 
       presets: config.presets.map(preset => {
