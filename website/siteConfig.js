@@ -18,7 +18,7 @@ function findMarkDownSync(startPath) {
   });
   return result;
 }
-const toolsMD = findMarkDownSync("../docs/tools/");
+const toolsMD = findMarkDownSync("./data/tools/");
 
 function loadMD(fsPath) {
   return fs.readFileSync(path.join(__dirname, fsPath), "utf8");
@@ -79,7 +79,7 @@ const sponsors = [
 const videos = require(path.join(__dirname, "/data/videos.js"));
 const team = loadYaml("./data/team.yml");
 const tools = loadYaml("./data/tools.yml");
-const setupBabelrc = loadMD("../docs/tools/setup.md");
+const setupBabelrc = loadMD("./data/tools/setup.md");
 
 toolsMD.forEach(tool => {
   tool.install = loadMD(`${tool.path}/install.md`);
