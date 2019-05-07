@@ -72,3 +72,5 @@
 /docs/plugins/check-es2015-constants/ /docs/en/babel-plugin-check-es2015-constants
 /docs/plugins/transform-es2015-constants /docs/en/babel-plugin-check-es2015-constants
 /docs/plugins/undeclared-variables-check/ /docs/en/babel-plugin-undeclared-variables-check
+
+/docs/en/next/tools/*               /setup
