@@ -4,11 +4,9 @@
     "node": true,
     "mocha": true
   },
-  "extends": "babel",
+  "extends": ["babel", "prettier"],
   "plugins": ["prettier"],
   "rules": {
-    "arrow-parens": ["error", "as-needed"],
-    "no-unused-vars": 1,
     "prettier/prettier": "error"
   },
   "overrides": [
