@@ -56,7 +56,9 @@ window.addEventListener("load", function() {
   });
 
   const presets = ["es2015", "stage-0", "react"];
-  document.querySelectorAll(".btn-open-in-repl").forEach(function(btn) {
+  const buttons = document.querySelectorAll(".btn-open-in-repl");
+  for(var i = 0; i < buttons.length; i++) {
+    const btn = buttons[i];
     btn.addEventListener("click", function() {
       const code = this.parentNode.querySelector("code");
 
@@ -72,5 +74,5 @@ window.addEventListener("load", function() {
 
       window.open(url);
     });
-  });
+  }
 });
