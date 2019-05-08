@@ -341,3 +341,5 @@ var Person = function Person() {
   (0, _classCallCheck3.default)(this, Person);
 };
 ```
+
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

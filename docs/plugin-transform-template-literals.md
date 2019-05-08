@@ -86,3 +86,4 @@ When `false` or not set, all template literal expressions and quasis are combine
 "foo" + bar;
 ```
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

@@ -102,3 +102,5 @@ bar1.length; // 0
 function bar1(arg1 = 1) {}
 bar1.length; // 1
 ```
+
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

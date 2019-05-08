@@ -141,6 +141,8 @@ Right:
 }
 ```
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+
 ## References
 
 * [Proposal: JavaScript Decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md)

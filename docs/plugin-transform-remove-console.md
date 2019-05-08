@@ -62,3 +62,4 @@ require("@babel/core").transform("code", {
 
 + `exclude` - An array of console methods to exclude from removal.
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

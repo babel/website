@@ -147,6 +147,7 @@ var Bork = function Bork() {
 Bork.a = 'foo';
 Bork.b = void 0;
 ```
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
 
 ## References
 

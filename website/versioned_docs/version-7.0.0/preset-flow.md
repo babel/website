@@ -77,3 +77,5 @@ Would get parsed as a nested binary expression:
 ```javascript
 f < T > e;
 ```
+
+> You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)

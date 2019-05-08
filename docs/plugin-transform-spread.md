@@ -84,3 +84,4 @@ In loose mode, **all** iterables are assumed to be arrays.
 
 * [MDN: Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

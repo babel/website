@@ -76,3 +76,4 @@ require("@babel/core").transform("code", {
 + `keepClassName` - prevent plugin from removing class name. Useful for code depending on `cls.name`
 + `tdz` - Account for TDZ (Temporal Dead Zone)
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

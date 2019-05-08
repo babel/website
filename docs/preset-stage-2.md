@@ -71,6 +71,8 @@ Will use the native built-in instead of trying to polyfill behavior for any plug
 
 Use the legacy (stage 1) decorators syntax and behavior.
 
+> You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
+
 ## References
 
 - Chapter "[The TC39 process for ECMAScript features](http://exploringjs.com/es2016-es2017/ch_tc39-process.html)" in "Exploring ES2016 and ES2017" by Axel Rauschmayer

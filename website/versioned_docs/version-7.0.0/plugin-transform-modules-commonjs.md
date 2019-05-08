@@ -165,3 +165,4 @@ The two cases where imports can never be lazy are:
   Re-exporting all names requires up-front execution because otherwise there is no
   way to know what names need to be exported.
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

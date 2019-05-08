@@ -74,3 +74,5 @@ var stringRe = /(?<quote>"|').*?\k<quote>/;
 stringRe.test("'foo'"); // "true", works
 stringRe.exec("'foo'").groups.quote; // Error
 ```
+
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

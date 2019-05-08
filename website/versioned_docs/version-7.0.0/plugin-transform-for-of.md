@@ -156,3 +156,4 @@ for (var _i = 0; _i < _arr.length; _i++) {
 }
 ```
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
