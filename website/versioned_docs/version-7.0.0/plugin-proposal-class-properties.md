@@ -154,5 +154,3 @@ Bork.b = void 0;
 ## References
 
 * [Proposal: ES Class Fields & Static Properties](https://github.com/jeffmo/es-class-static-properties-and-fields)
-
-

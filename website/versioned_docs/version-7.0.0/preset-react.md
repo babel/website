@@ -138,3 +138,5 @@ module.exports = {
   }
 }
 ```
+
+> You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
