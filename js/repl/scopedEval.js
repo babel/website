@@ -17,9 +17,11 @@ function getIframe() {
 function scopedEval(code: string, sourceMap: ?string) {
   // Append source map footer so errors map to pre-compiled code.
   if (sourceMap) {
-    code = `${code}\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,${btoa(
-      unescape(encodeURIComponent(sourceMap))
-    )}`;
+    code =
+      `${code}\n//` + // !! This is to avoid a bug with convert-source-map which would detect this line as valid sourcemap
+      `# sourceMappingURL=data:application/json;charset=utf-8;base64,${btoa(
+        unescape(encodeURIComponent(sourceMap))
+      )}`;
   }
 
   // Eval code within an iframe so that it can't eg unmount the REPL.
