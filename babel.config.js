@@ -20,6 +20,10 @@ module.exports = function(api) {
           useBuiltIns: "entry",
           corejs: 3,
           shippedProposals: true,
+          targets: {
+            // This is browserlist defaults
+            browsers: ["> 0.5%", "last 2 versions", "Firefox ESR", "not dead"],
+          },
         },
       ],
       "@babel/preset-flow",
