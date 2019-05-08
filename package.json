@@ -37,15 +37,15 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "async": "^2.5.0",
-    "babel-core": "^6.25.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-emotion": "^9.1.2",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1",
     "chalk": "^2.4.1",
     "cpy-cli": "^2.0.0",
     "cross-env": "^5.2.0",
@@ -74,9 +74,9 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "@babel/generator": "^7.2.0",
-    "@babel/polyfill": "^7.0.0",
+    "@babel/generator": "^7.4.4",
     "codemirror": "5.30.0",
+    "core-js": "^3.0.1",
     "emotion": "^9.1.3",
     "lodash.camelcase": "^4.3.0",
     "lodash.debounce": "^4.0.8",
@@ -87,7 +87,7 @@
     "regenerator-runtime": "^0.13.1",
     "semver": "^5.4.1",
     "unfetch": "^3.0.0",
-    "worker-loader": "^1.1.1"
+    "worker-loader": "^2.0.0"
   },
   "lint-staged": {
     "js/**/*.js": [
