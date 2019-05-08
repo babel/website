@@ -26,7 +26,7 @@ const PromoSection = props => (
   </div>
 );
 
-const MiniRepl = ({ language }) => {
+const MiniRepl = () => {
   return (
     <div className="hero-repl" hidden={true}>
       <div className="hero-repl__editor">
@@ -184,7 +184,7 @@ const SponsorTier = props => {
   );
 };
 
-const OpenCollectiveSponsors = ({ language }) => {
+const OpenCollectiveSponsors = () => {
   const ocButton = {
       title: "Become a sponsor",
       link: "https://opencollective.com/babel",

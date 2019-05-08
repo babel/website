@@ -129,7 +129,6 @@ class Setup extends React.Component {
     super(props);
   }
   render() {
-    const time = new Date().getTime();
     return (
       <div className="mainContainer">
         <SetupHeader />

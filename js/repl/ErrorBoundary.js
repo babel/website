@@ -1,11 +1,11 @@
 // @flow
 
-import React from "react";
+import * as React from "react";
 import { css } from "emotion";
 import { colors } from "./styles";
 
 type Props = {
-  children?: any,
+  children?: React.Node,
 };
 
 type State = {
@@ -13,12 +13,9 @@ type State = {
 };
 
 export default class ErrorBoundary extends React.Component<Props, State> {
-  constructor(props: Props, context: any) {
-    super(props, context);
-    this.state = {
-      error: null,
-    };
-  }
+  state: State = {
+    error: null,
+  };
 
   componentDidCatch(error: Error) {
     this.setState({ error });
@@ -32,7 +29,7 @@ export default class ErrorBoundary extends React.Component<Props, State> {
         </div>
       );
     }
-    return this.props.children;
+    return this.props.children || null;
   }
 }
 
