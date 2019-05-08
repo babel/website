@@ -13,7 +13,7 @@ $ cd website
 $ yarn && yarn bootstrap
 ```
 
-- Just run `npm start` next time (check the package.json for scripts).
+- Just run `yarn start` next time (check the package.json for scripts).
 
 ### Contributing to the website
 
