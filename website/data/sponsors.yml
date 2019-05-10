@@ -11,7 +11,7 @@
   tier: other-sponsors
 - name: LinkedIn
   url: https://www.linkedin.com
-  logo: linkedin.png
+  logo: ../users/linkedin.png
   type: patreon
   tier: silver-sponsors
 - name: BestVPN
