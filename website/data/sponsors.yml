@@ -9,6 +9,11 @@
   logo: tidelift.png
   type: other
   tier: other-sponsors
+- name: LinkedIn
+  url: https://www.linkedin.com
+  logo: ../users/linkedin.png
+  type: patreon
+  tier: silver-sponsors
 - name: BestVPN
   url: https://www.bestvpn.co
   logo: bestvpn.png
