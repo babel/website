@@ -240,10 +240,9 @@ function f(x, y, z) {
 f(...[1,2,3]) == 6
 ```
 
-### Let + Const
+### Const + Let
 
-Block-scoped binding constructs. `let` is the new `var`. `const` is
-single-assignment. Static restrictions prevent use before assignment.
+Block-scoped binding constructs. `const` is the new `var`. `let` can be reassigned. Static restrictions prevent use before assignment.
 
 
 ```js
