@@ -46,13 +46,19 @@ const sponsors = [
   ...sponsorsDownloaded
     // filter out Handshake for special tier
     .filter(sponsor => sponsor.id !== 19490)
+    .filter(sponsor => {
+      return new Date(sponsor.lastDonation).getMonth() === new Date().getMonth() ||
+        sponsor.id === 2309 || sponsor.id === 4087 || sponsor.id === 6060 // amp/airbnb/trivago
+    })
     .map(sponsor => {
-      // temporary fix for coinbase and webflow
+      // temporary fix
       let tier = sponsor.tier;
-      if (sponsor.id == 12671) {
-        tier = "gold-sponsors";
-      } else if (sponsor.id == 5954) {
+      if (sponsor.id == 5954) { // webflow
         tier = "silver-sponsors";
+      } else if (sponsor.id == 5301) { // clayglobal
+        tier = "silver-sponsors";
+      } else if (sponsor.id == 2309) { // amp
+        tier = "base-support-sponsor";
       }
 
       let website = sponsor.website;

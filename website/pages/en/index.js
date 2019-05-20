@@ -83,26 +83,17 @@ const GetStarted = ({ language }) => {
       className="blockElement twoByGridBlock get-started"
       style={{ flexBasis: "60%", margin: 0 }}
     >
-      <h3>Welcome!</h3>
       <p>
-        Learn more about Babel at our getting started guide or check out a talk
-        about the concepts behind it.
+        Learn more about Babel with our <a href={siteConfig.getDocUrl("index.html", language)}>getting started guide</a> or check out
+        some <a href={siteConfig.getPageUrl("videos.html", language)}>videos</a> on the people and concepts behind it.
       </p>
       <p>
-        We&apos;re currently just a small group of{" "}
+        We&apos;re a small group of{" "}
         <a href={siteConfig.getPageUrl("team.html", language)}>volunteers</a>{" "}
-        that spend their free time maintaining this project. If Babel has
-        benefited you in your work, becoming a contributor or donating might
+        that spend their free time maintaining this project, funded by the community. If Babel has
+        benefited you in your work, becoming a <a href="https://github.com/babel/babel/blob/master/CONTRIBUTING.md">contributor</a> or <a href="https://opencollective.com/babel">sponsoring</a> might
         just be a great way to give back!
       </p>
-      <PromoSection>
-        <Button href={siteConfig.getDocUrl("index.html", language)}>
-          Get Started
-        </Button>
-        <Button href={siteConfig.getPageUrl("videos.html", language)}>
-          Videos
-        </Button>
-      </PromoSection>
     </div>
   );
 };
@@ -293,7 +284,7 @@ const Index = ({ language }) => {
     <div>
       <Hero language={language} />
 
-      <div className="mainContainer" style={{ padding: 0 }}>
+      <div className="mainContainer" style={{ padding: 0, marginTop: 20 }}>
         <HomeContainer>
           <GetStarted language={language} />
           {
