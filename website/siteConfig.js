@@ -46,7 +46,10 @@ const sponsors = [
   ...sponsorsDownloaded
     // filter out Handshake for special tier
     .filter(sponsor => sponsor.id !== 19490)
-    .filter(sponsor => new Date(sponsor.lastDonation).getMonth() === new Date().getMonth())
+    .filter(sponsor => {
+      return new Date(sponsor.lastDonation).getMonth() === new Date().getMonth() ||
+        sponsor.id === 2309 || sponsor.id === 4087 || sponsor.id === 6060 // amp/airbnb/trivago
+    })
     .map(sponsor => {
       // temporary fix
       let tier = sponsor.tier;
