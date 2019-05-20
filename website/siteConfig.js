@@ -46,12 +46,13 @@ const sponsors = [
   ...sponsorsDownloaded
     // filter out Handshake for special tier
     .filter(sponsor => sponsor.id !== 19490)
+    .filter(sponsor => new Date(sponsor.lastDonation).getMonth() === new Date().getMonth())
     .map(sponsor => {
-      // temporary fix for coinbase and webflow
+      // temporary fix
       let tier = sponsor.tier;
-      if (sponsor.id == 12671) {
-        tier = "gold-sponsors";
-      } else if (sponsor.id == 5954) {
+      if (sponsor.id == 5954) { // webflow
+        tier = "silver-sponsors";
+      } else if (sponsor.id == 5301) { // clayglobal
         tier = "silver-sponsors";
       }
 
