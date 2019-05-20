@@ -57,6 +57,8 @@ const sponsors = [
         tier = "silver-sponsors";
       } else if (sponsor.id == 5301) { // clayglobal
         tier = "silver-sponsors";
+      } else if (sponsor.id == 2309) { // amp
+        tier = "base-support-sponsor";
       }
 
       let website = sponsor.website;
