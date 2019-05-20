@@ -91,8 +91,7 @@ const GetStarted = ({ language }) => {
         We&apos;re a small group of{" "}
         <a href={siteConfig.getPageUrl("team.html", language)}>volunteers</a>{" "}
         that spend their free time maintaining this project, funded by the community. If Babel has
-        benefited you in your work, becoming a <a href="https://github.com/babel/babel/blob/master/CONTRIBUTING.md">contributor</a>
-        or <a href="https://opencollective.com/babel">sponsoring</a> might
+        benefited you in your work, becoming a <a href="https://github.com/babel/babel/blob/master/CONTRIBUTING.md">contributor</a> or <a href="https://opencollective.com/babel">sponsoring</a> might
         just be a great way to give back!
       </p>
     </div>
@@ -285,7 +284,7 @@ const Index = ({ language }) => {
     <div>
       <Hero language={language} />
 
-      <div className="mainContainer" style={{ padding: 0 }}>
+      <div className="mainContainer" style={{ padding: 0, marginTop: 20 }}>
         <HomeContainer>
           <GetStarted language={language} />
           {
