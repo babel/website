@@ -80,19 +80,33 @@ const MiniRepl = ({ language }) => {
 const GetStarted = ({ language }) => {
   return (
     <div
-      className="blockElement twoByGridBlock get-started"
-      style={{ flexBasis: "60%", margin: 0 }}
+      className="blockElement"
+      style={{
+        fontSize: "18px",
+        maxWidth: "800px",
+        padding: "45px 0 7px",
+        margin: "0 auto",
+      }}
     >
       <p>
-        Learn more about Babel with our <a href={siteConfig.getDocUrl("index.html", language)}>getting started guide</a> or check out
-        some <a href={siteConfig.getPageUrl("videos.html", language)}>videos</a> on the people and concepts behind it.
+        Learn more about Babel with our{" "}
+        <a href={siteConfig.getDocUrl("index.html", language)}>
+          getting started guide
+        </a>{" "}
+        or check out some{" "}
+        <a href={siteConfig.getPageUrl("videos.html", language)}>videos</a> on
+        the people and concepts behind it.
       </p>
       <p>
         We&apos;re a small group of{" "}
         <a href={siteConfig.getPageUrl("team.html", language)}>volunteers</a>{" "}
-        that spend their free time maintaining this project, funded by the community. If Babel has
-        benefited you in your work, becoming a <a href="https://github.com/babel/babel/blob/master/CONTRIBUTING.md">contributor</a> or <a href="https://opencollective.com/babel">sponsoring</a> might
-        just be a great way to give back!
+        that spend their free time maintaining this project, funded by the
+        community. If Babel has benefited you in your work, becoming a{" "}
+        <a href="https://github.com/babel/babel/blob/master/CONTRIBUTING.md">
+          contributor
+        </a>{" "}
+        or <a href="https://opencollective.com/babel">sponsoring</a> might just
+        be a great way to give back!
       </p>
     </div>
   );
@@ -284,7 +298,7 @@ const Index = ({ language }) => {
     <div>
       <Hero language={language} />
 
-      <div className="mainContainer" style={{ padding: 0, marginTop: 20 }}>
+      <div className="mainContainer" style={{ padding: 0 }}>
         <HomeContainer>
           <GetStarted language={language} />
           {
