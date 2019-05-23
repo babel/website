@@ -99,6 +99,8 @@ z = { x, ...y };
 z = Object.assign({ x }, y);
 ```
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+
 ## References
 
 * [Proposal: Object Rest/Spread Properties for ECMAScript](https://github.com/tc39/proposal-object-rest-spread)

@@ -80,3 +80,5 @@ f < T > e;
 Setting this to true will only strip annotations and declarations from files
 that contain the `// @flow` directive. It will also throw errors for any Flow
 annotations found in files without the directive.
+
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

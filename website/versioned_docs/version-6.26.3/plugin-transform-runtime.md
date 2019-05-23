@@ -124,6 +124,8 @@ Example:
 import extends from 'flavortown/runtime/helpers/extends';
 ```
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+
 ## Technical details
 
 The `runtime` transformer plugin does three things:

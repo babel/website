@@ -137,6 +137,8 @@ var _privateMethod2 = function _privateMethod2() {
 };
 ```
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+
 ## References
 
 - [Proposal: Private methods and getter/setters for JavaScript classes](https://github.com/tc39/proposal-private-methods)

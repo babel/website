@@ -148,6 +148,8 @@ Out (`loose === false`)
 foo === null || foo === void 0 ? void 0 : foo.bar;
 ```
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+
 ## References
 
 * [Proposal: Optional Chaining](https://github.com/tc39/proposal-optional-chaining)

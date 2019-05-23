@@ -148,6 +148,8 @@ Bork.a = 'foo';
 Bork.b = void 0;
 ```
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+
 ## References
 
 * [Proposal: Public and private instance fields](https://github.com/tc39/proposal-class-fields)
