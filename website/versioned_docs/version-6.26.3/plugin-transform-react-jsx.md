@@ -134,3 +134,4 @@ Note that the `@jsx React.DOM` pragma has been deprecated as of React v0.12
 
 When spreading props, use `Object.assign` directly instead of Babel's extend helper.
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

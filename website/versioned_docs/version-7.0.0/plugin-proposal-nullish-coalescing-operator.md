@@ -82,6 +82,8 @@ var _object$foo;
 var foo = (_object$foo = object.foo) != null ? _object$foo : "default";
 ```
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+
 ## References
 
 * [Proposal: Nullish Coalescing](https://github.com/tc39-transfer/proposal-nullish-coalescing)

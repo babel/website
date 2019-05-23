@@ -146,3 +146,4 @@ When `Bar.prototype.foo` is defined it triggers the setter on `Foo`. This is a
 case that is very unlikely to appear in production code however it's something
 to keep in mind.
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

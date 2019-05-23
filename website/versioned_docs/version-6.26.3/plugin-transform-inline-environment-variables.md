@@ -69,3 +69,4 @@ require("babel-core").transform("code", {
 + `include` - array of environment variables to include
 + `exclude` - array of environment variables to exclude
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

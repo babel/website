@@ -77,3 +77,5 @@ This is so that we know that the import is not a type import, and should not be 
 `boolean`, defaults to `false`.
 
 Indicates that every file should be parsed as TS or TSX (depending on the isTSX option)
+
+> You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)

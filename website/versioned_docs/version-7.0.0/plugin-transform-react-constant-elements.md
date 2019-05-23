@@ -89,6 +89,8 @@ This will skip the `Mutable Properties` deopt.
 
 ```
 
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+
 ### Via CLI
 
 ```sh
