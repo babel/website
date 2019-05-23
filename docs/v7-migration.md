@@ -598,8 +598,8 @@ npm install --save-dev @babel/register
 Upgrading with Mocha:
 
 ```diff
-- mocha --compilers js:babel-core/register
-+ mocha --compilers js:@babel/register
+- mocha --require babel-core/register
++ mocha --require @babel/register
 ```
 
 `@babel/register` will also now only compile files in the current working directly (was done to fix issues with symlinking).
