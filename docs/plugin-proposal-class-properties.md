@@ -150,5 +150,5 @@ Bork.b = void 0;
 
 ## References
 
-* [Proposal: ES Class Fields & Static Properties](https://github.com/jeffmo/es-class-static-properties-and-fields)
-
+* [Proposal: Public and private instance fields](https://github.com/tc39/proposal-class-fields)
+* [Proposal: Static class features](https://github.com/tc39/proposal-static-class-features)
