@@ -8,9 +8,80 @@ Does not type-check its input. For that, you will need to install and set up Typ
 
 ## Caveats
 
-* Does not support [`namespace`][namespace]s.
+* Since Babel does not type-check, invalid TypeScript may successfully get transformed, and often in unexpected or invalid ways. 
 
-  **Workaround**: Move to using [file exports][fm], or migrate to using the `module { }` syntax instead.
+* Type-only `namespace`s should be marked with `declare` and will subsequently be safely removed.
+
+* `namespaces`s not marked with `declare` are experimental and disabled by default. Not enabling will result in an error: *"Namespace not marked type-only declare. Non-declarative namespaces are only supported experimentally in Babel."*
+
+  **Workaround**: Enable the `allowNamespaces` option.
+
+* `export`ing a variable using `var` or `let` in a `namespace` will result in an error: *"Namespaces exporting non-const are not supported by Babel. Change to const or ..."*
+
+  **Workaround**: Use `const`. If some form of mutation is required, explicitly use an object with internal mutability.
+  
+  **Q**: Why doesn't Babel allow export of a `var` or `let`?
+  
+  **A**: The TypeScript compiler dynamically changes how these variables are used depending on whether or not the value is mutated. Ultimately, this depends on a type-model and is outside the scope of Babel. A best-effort implementation would transform context-dependent usages of the variable to always use the `Namespace.Value` version instead of `Value`, in case it was mutated outside of the current file. Allowing `var` or `let` from Babel (as the transform is not-yet-written) is therefor is more likely than not to present itself as a bug when used as-if it was not `const`.
+
+* `namespace`s will not share their scope. In TypeScript, it is valid to refer to contextual items that a `namespace` extends without qualifying them, and the compiler will add the qualifier. In Babel, there is no type-model, and it is impossible to dynamically change references to match the established type of the parent object.
+
+  Consider this code:
+
+  ```typescript
+  namespace N {
+    export const V = 1;
+  }
+  namespace N {
+    export const W = V;
+  }
+  ```
+  
+  The TypeScript compiler compiles it to something like this:
+  
+  ```javascript
+  var N = {};
+  (function (N) {
+    N.V = 1;
+  })(N);
+  (function (N) {
+    N.W = N.V;
+  })(N);
+  ```
+  
+  While Babel will transform it to something like this:
+  
+  ```javascript
+  var N;
+  (function (_N) {
+    const V = _N = 1;
+  })(N || (N = {}));
+  (function (_N) {
+    const W = V;
+  })(N || (N = {}));
+  ```
+  
+  As Babel doesn't understand the type of `N`, the reference to `V` will be `undefined` resulting in an error.
+
+  **Workaround**: Explicitly refer to values not in the same namespace definition, even if they would be in the scope according to TypeScript. Examples:
+
+  ```typescript
+  namespace N {
+    export const V = 1;
+  }
+  namespace N {
+    export const W = N.V;
+  }
+  ```
+
+  Or:
+
+  ```typescript
+  namespace N {
+    export const V = 1;
+    export const W = V;
+  }
+  ```
 
 * Does not support [`const enum`][const_enum]s because those require type information to compile.
 
@@ -82,6 +153,10 @@ require("@babel/core").transform("code", {
 Replace the function used when compiling JSX expressions.
 
 This is so that we know that the import is not a type import, and should not be removed
+
+### `allowNamespaces`
+
+`boolean`, defaults to `false` but will default to `true` in the [future](https://github.com/babel/notes/blob/master/2019/05/21.md#prs).
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
 
