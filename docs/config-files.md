@@ -288,6 +288,8 @@ caching within a config file.
 * `api.cache.invalidate(() => process.env.NODE_ENV)` - Cache based on the value of `NODE_ENV`.
   Any time the `using` callback returns a value other than the one that was expected, the overall
   config function will be called again and all entries in the cache will be replaced with the result.
+* `api.cache(true)` - Same as `api.cache.forever()`
+* `api.cache(false)` - Same as `api.cache.never()`
 
 Since the actual callback result is used to check if the cache entry is valid, it is recommended
 that:
@@ -314,8 +316,7 @@ It has a few different forms:
 * `api.env()` returns the current `envName` string.
 * `api.env(envName => envName.startsWith("test-"))` returns `true` if the env starts with "test-".
 
-This function internally makes use of `api.cache` mentioned above to ensure that
-Babel is aware that this build depends on a specific `envName`.
+> **Note:** This function internally makes use of [`api.cache`](#apicache) mentioned above to ensure that Babel is aware that this build depends on a specific `envName`. You should not use it alongside with `api.cache.forever()` or `api.cache.never()`.
 
 
 ### `api.caller(cb)`
