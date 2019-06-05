@@ -289,6 +289,8 @@ caching within a config file.
 * `api.cache.invalidate(() => process.env.NODE_ENV)` - Cache based on the value of `NODE_ENV`.
   Any time the `using` callback returns a value other than the one that was expected, the overall
   config function will be called again and all entries in the cache will be replaced with the result.
+* `api.cache(true)` - Same as `api.cache.forever()`
+* `api.cache(false)` - Same as `api.cache.never()`
 
 Since the actual callback result is used to check if the cache entry is valid, it is recommended
 that:
