@@ -29,31 +29,31 @@ it will compile ES6 code before running it.
 Launch a REPL (Read-Eval-Print-Loop).
 
 ```sh
-npx babel-node
+npx @babel/node
 ```
 
 Evaluate code.
 
 ```sh
-npx babel-node -e "class Test { }"
+npx @babel/node -e "class Test { }"
 ```
 
 Compile and run `test.js`.
 
 ```sh
-npx babel-node test
+npx @babel/node test
 ```
 
 > **Tip:** Use `rlwrap` to get a REPL with input history
 >
 > ```sh
-> npx rlwrap babel-node
+> rlwrap npx @babel/node
 > ```
 >
 > On some platforms (like OSX), extra arguments may be required for `rlwrap` to function properly, eg:
 >
 > ```sh
-> NODE_NO_READLINE=1 npx rlwrap --always-readline babel-node
+> NODE_NO_READLINE=1 rlwrap --always-readline npx @babel/node
 > ```
 
 ### Usage
@@ -65,7 +65,7 @@ babel-node [options] [ -e script | script.js ] [arguments]
 When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
 
 ```sh
-npx babel-node --debug --presets es2015 -- script.js --debug
+npx @babel/node --debug --presets es2015 -- script.js --debug
 ```
 
 ### Options
