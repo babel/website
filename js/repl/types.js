@@ -10,7 +10,7 @@ export type BabelPlugin = {
 export type PresetsOptions = {
   decoratorsLegacy: boolean,
   decoratorsBeforeExport: boolean,
-  pipelineProposal: "smart" | "minimal",
+  pipelineProposal: "smart" | "minimal" | "fsharp",
 };
 
 export type EnvConfig = {
@@ -129,7 +129,7 @@ export type ReplState = {
   version: any,
   decoratorsLegacy: boolean,
   decoratorsBeforeExport: boolean,
-  pipelineProposal: "minimal" | "smart",
+  pipelineProposal: "minimal" | "smart" | "fsharp",
   externalPlugins: ?string,
 };
 

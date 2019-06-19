@@ -397,6 +397,12 @@ class ExpandedContainer extends Component<Props, State> {
                   >
                     Smart
                   </option>
+                  <option
+                    value="fsharp"
+                    selected={presetsOptions.pipelineProposal === "fsharp"}
+                  >
+                    F#
+                  </option>
                 </select>
               </PresetOption>
             </AccordionTab>
