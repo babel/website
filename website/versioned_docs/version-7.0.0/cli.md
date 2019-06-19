@@ -132,7 +132,7 @@ npx babel script.js --out-file script-compiled.js --plugins=@babel/proposal-clas
 
 ### Using Presets
 
-Use the `--presets` option to specify plugins to use in compilation
+Use the `--presets` option to specify presets to use in compilation
 
 ```sh
 npx babel script.js --out-file script-compiled.js --presets=@babel/preset-env,@babel/flow
@@ -149,4 +149,3 @@ npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,
 ### Advanced Usage
 
 There are many more options available, see [options](options.md), `babel --help` and other sections for more information.
-

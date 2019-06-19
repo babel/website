@@ -131,7 +131,7 @@ npx babel script.js --out-file script-compiled.js --plugins=@babel/proposal-clas
 
 ### Using Presets
 
-Use the `--presets` option to specify plugins to use in compilation
+Use the `--presets` option to specify presets to use in compilation
 
 ```sh
 npx babel script.js --out-file script-compiled.js --presets=@babel/preset-env,@babel/flow
