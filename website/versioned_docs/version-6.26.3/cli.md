@@ -133,7 +133,7 @@ npx babel script.js --out-file script-compiled.js --plugins=transform-runtime,tr
 
 ### Using Presets
 
-Use the `--presets` option to specify plugins to use in compilation
+Use the `--presets` option to specify presets to use in compilation
 
 ```sh
 npx babel script.js --out-file script-compiled.js --presets=es2015,react
@@ -218,4 +218,3 @@ npx babel-node --debug --presets es2015 -- script.js --debug
 | `-x, --extensions`       | `".js",".jsx",".es6",".es"` | List of extensions to hook into |
 | `--presets`                | `[]`                 | Comma-separated list of [presets](/docs/plugins/#presets) (a set of plugins) to load and use. |
 | `--plugins`                | `[]`                 | Comma-separated list of [plugins](/docs/plugins/) to load and use. |
-
