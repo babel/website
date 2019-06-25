@@ -18,3 +18,4 @@ Online Editors that run Babel for you:
 - [JSFiddle](https://jsfiddle.net/fh5whLfd/)
 - [JSBin](http://jsbin.com/rokimopuse/edit?html,js,console,output)
 - [Codepen](http://codepen.io/anon/pen/dOGgeO)
+- [JSitor](https://jsitor.com/P1Br0ZbSF)

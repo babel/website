@@ -11,7 +11,7 @@ But why?!
 
 It's true that using Babel through Webpack, Browserify or Gulp should be sufficient for most use cases. However, there are some valid use cases for @babel/standalone:
 
- - Sites like [JSFiddle](https://jsfiddle.net/), [JS Bin](https://jsbin.com/), the [REPL on the Babel site](http://babeljs.io/repl/), etc. These sites compile user-provided JavaScript in real-time.
+ - Sites like [JSFiddle](https://jsfiddle.net/), [JS Bin](https://jsbin.com/), the [REPL on the Babel site](http://babeljs.io/repl/), [JSitor](https://jsitor.com), etc. These sites compile user-provided JavaScript in real-time.
  - Apps that embed a JavaScript engine such as V8 directly, and want to use Babel for compilation
   - Apps that want to use JavaScript as a scripting language for extending the app itself, including all the goodies that ES2015 provides.
   - Integration of Babel into a non-Node.js environment ([ReactJS.NET](http://reactjs.net/), [ruby-babel-transpiler](https://github.com/babel/ruby-babel-transpiler), [php-babel-transpiler](https://github.com/talyssonoc/php-babel-transpiler), etc).
