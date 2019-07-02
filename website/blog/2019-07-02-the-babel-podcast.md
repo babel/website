@@ -1,4 +1,12 @@
-# The Babel Podcast
+---
+layout: post
+title:  "The Babel Podcast"
+author: Henry Zhu
+authorURL: https://twitter.com/left_pad
+date:   2019-07-02 0:00:00
+categories: announcements
+share_text: "The Babel Podcast"
+---
 
 Today we're announcing the [The Babel Podcast](https://podcast.babeljs.io)!
 
@@ -6,6 +14,7 @@ Today we're announcing the [The Babel Podcast](https://podcast.babeljs.io)!
 
 ### Subscribe with: [Apple]( https://podcasts.apple.com/us/podcast/the-babel-podcast/id1470143101) | [Google](https://www.google.com/podcasts?feed=aHR0cHM6Ly9mZWVkcy50cmFuc2lzdG9yLmZtL3RoZS1iYWJlbC1wb2RjYXN0) | [Spotify](https://open.spotify.com/show/3TK8x8AGckeEQEtnJVZYAz) | [RSS](https://feeds.transistor.fm/the-babel-podcast)
 
+<!-- truncate -->
 ---
 
 To start out, our first [episode](https://podcast.babeljs.io/rome) is with our good friend Sebastian McKenzie, the creator of Babel!
