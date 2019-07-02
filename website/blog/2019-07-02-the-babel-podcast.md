@@ -15,6 +15,7 @@ Today we're announcing the [The Babel Podcast](https://podcast.babeljs.io)!
 ### Subscribe with: [Apple]( https://podcasts.apple.com/us/podcast/the-babel-podcast/id1470143101) | [Google](https://www.google.com/podcasts?feed=aHR0cHM6Ly9mZWVkcy50cmFuc2lzdG9yLmZtL3RoZS1iYWJlbC1wb2RjYXN0) | [Spotify](https://open.spotify.com/show/3TK8x8AGckeEQEtnJVZYAz) | [RSS](https://feeds.transistor.fm/the-babel-podcast)
 
 <!-- truncate -->
+---
 
 To start out, our first [episode](https://podcast.babeljs.io/rome) is with our good friend Sebastian McKenzie, the creator of Babel!
 
@@ -50,9 +51,8 @@ Current non-goals: talk about news or a "this week in Babel", have a set weekly 
 
 ### Some Guest/Topics Ideas
 
-What do you want to hear about? Who do you want to hear from?
+What else do you want to hear about? Who do you want to hear from?
 
-- Sebastian on the early days and the vision of Babel
 - Interviewing the core team/contributors: how did you get involved, what is exciting about the project, your role, the future?
 - High level concepts in Babel (ASTs, visitor pattern, compilers, testing, JS specification)
 - Background/struggles in key decisions we've made:
@@ -60,7 +60,7 @@ What do you want to hear about? Who do you want to hear from?
     - On private fields syntax (# instead of private)
     - Common questions: "Won't Babel be obsolete soon?"
     - Why did you do x?
-- Chatting with interesting babel plugin authors? babel-macros, i18n
+- Chatting with various Babel plugin authors? [babel-macros](https://github.com/kentcdodds/babel-plugin-macros), i18n
 - Babel alternatives: would be fun to chat about why the projects were made, what the differences/tradeoffs are, etc!
     - [traceur](https://github.com/google/traceur-compiler)
     - [buble](https://github.com/bublejs/buble)
@@ -74,12 +74,11 @@ What do you want to hear about? Who do you want to hear from?
 - Related tooling: CSSX, PostCSS
 - Babel integrations (things that use Babel as infrastructure): Jest/Next.js/Parcel/CRA
 
-### Language Standards/TC39 **Topics**
+### Language Standards/TC39 Topics
 
-- **Language Standards**: People tend to think “ivory tower”, so it could be interesting to speak with folks on TC39 to better explain how things are done, how to get involved, and what can change.
+- Speak with folks on TC39 to explain how things are done, how to get involved, and what can change.
     - On Babel as a test bed for new features
     - How does it differ from other language standards like C or browser APIs?
-    - How has the committee grown over time in the mix of people: language designers, implementors, practioners, educators?
     - History of a specific feature: how does it get finalized?
     - What’s a meeting like: who goes, how it is organized? Is there much arguing or voting?
     - How has decision making evolved over time? (the Staging process)
@@ -97,4 +96,3 @@ What do you want to hear about? Who do you want to hear from?
     - Defining terms: footgun, etc
     - Scope: complexity of change, interactions with other features
     - Precedence: existing userland implementation, previous discussions, other languages, similar features
-- On contributing to the specification
