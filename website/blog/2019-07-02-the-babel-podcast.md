@@ -18,8 +18,6 @@ Today we're announcing the [The Babel Podcast](https://podcast.babeljs.io)!
 ---
 
 To start out, our first [episode](https://podcast.babeljs.io/rome) is with our good friend Sebastian McKenzie, the creator of Babel!
-
-> We asked on [Twitter](https://twitter.com/left_pad/status/1093529997162237952) about the name and got some fun suggestions including Lost in Transpilation, Babbling On, Babel Babble, etc. But in the end, "The Babel Podcast" is the most clear!
  
 It does take some time/money to create and maintain these podcasts (equipment, research, editing, transcription), so if you'd like to sponsor us: https://opencollective.com/babel. We could also add specific podcast sponsors, so let me know if you'd be interested in doing so.
 
@@ -96,3 +94,6 @@ What else do you want to hear about? Who do you want to hear from?
     - Defining terms: footgun, etc
     - Scope: complexity of change, interactions with other features
     - Precedence: existing userland implementation, previous discussions, other languages, similar features
+
+
+> We asked on [Twitter](https://twitter.com/left_pad/status/1093529997162237952) about the name and got some fun suggestions including Lost in Transpilation, Babbling On, Babel Babble, etc. But in the end, "The Babel Podcast" is the most clear!
