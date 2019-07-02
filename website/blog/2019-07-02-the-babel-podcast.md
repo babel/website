@@ -19,7 +19,7 @@ Today we're announcing the [The Babel Podcast](https://podcast.babeljs.io)!
 
 To start out, our first [episode](https://podcast.babeljs.io/rome) is with our good friend Sebastian McKenzie, the creator of Babel!
  
-It does take some time/money to create and maintain these podcasts (equipment, research, editing, transcription), so if you'd like to sponsor us: https://opencollective.com/babel. We could also add specific podcast sponsors, so let me know if you'd be interested in doing so.
+> It does take time to create and maintain these podcasts (equipment, research, editing, transcription), so consider [supporting](https://github.com/babel/babel?sponsor=1) us! We could also add specific podcast sponsors, so let [me](https://twitter.com/left_pad) know if you'd be interested in doing so.
 
 ## Why?
 
@@ -59,11 +59,8 @@ What else do you want to hear about? Who do you want to hear from?
     - Common questions: "Won't Babel be obsolete soon?"
     - Why did you do x?
 - Chatting with various Babel plugin authors? [babel-macros](https://github.com/kentcdodds/babel-plugin-macros), i18n
-- Babel alternatives: would be fun to chat about why the projects were made, what the differences/tradeoffs are, etc!
-    - [traceur](https://github.com/google/traceur-compiler)
-    - [buble](https://github.com/bublejs/buble)
-    - [sucrase](https://github.com/alangpierce/sucrase)
-    - [swc](https://github.com/swc-project/swc)
+- Babel alternatives: [traceur](https://github.com/google/traceur-compiler), [buble](https://github.com/bublejs/buble), [sucrase](https://github.com/alangpierce/sucrase), [swc](https://github.com/swc-project/swc)
+    - It would be fun to chat about why the projects were made, what the differences/tradeoffs are, etc!
 - Compile to JavaScript langauges
     - Elm/Reason/etc (standalone language)
     - Coffeescript/Dart (explicitly recommends Babel for compiling down to ES5)
@@ -85,15 +82,13 @@ What else do you want to hear about? Who do you want to hear from?
     - Perception of the language over time: moving too fast, moving too slow
     - Questions about language design: performance, usability, teachability, aesthetics, syntax budget, etc.
     - Ecosystem alignment: how is the language shaped by tools, libraries, other use cases other than the web?
-- History of Committee itself
+- History of Committee Itself
     - Transitions: using a Word doc to GitHub, using TCQ, the "how we work" repo
     - Growth of committee over the years (language designers, implementors, practitioners, educators, combination)
     - Specific proposals: Object.observe, etc?
-- Presenting a proposal/topic
+- Presenting a Proposal
     - Explaining the problem space
-    - Defining terms: footgun, etc
     - Scope: complexity of change, interactions with other features
     - Precedence: existing userland implementation, previous discussions, other languages, similar features
-
 
 > We asked on [Twitter](https://twitter.com/left_pad/status/1093529997162237952) about the name and got some fun suggestions including Lost in Transpilation, Babbling On, Babel Babble, etc. But in the end, "The Babel Podcast" is the most clear!
