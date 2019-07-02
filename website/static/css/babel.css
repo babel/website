@@ -1,0 +1,119 @@
+hr {
+  border-width: 1px 0 0 0;
+}
+
+blockquote {
+  background: #fafbfc;
+  border-left-color: #e0e0e0;
+  color: inherit;
+}
+
+.headerWrapper.wrapper {
+  max-width: 1400px;
+}
+
+/* ####### LINKS ####### */
+
+.mainContainer a:not(.hash-link) {
+  background-color: rgba(245, 218, 85, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  color: #1a1a1a;
+  transition: all 0.25s ease-out;
+}
+
+.mainContainer a:not(.hash-link):hover {
+  background-color: rgba(245, 218, 85, 0.35);
+  text-decoration: none !important;
+}
+
+.mainContainer a code {
+  background-color: transparent;
+}
+
+.mainContainer a.anchor {
+  border-width: 0;
+}
+
+.mainContainer a.button {
+  border-bottom-color: #323330;
+  background-color: transparent;
+}
+
+.mainContainer a.button:hover {
+  background: #323330;
+  color: #f5da55;
+}
+
+/* ####### HEADER & FOOTER ####### */
+
+.navigationSlider .slidingNav ul li a:hover,
+.navigationSlider .slidingNav ul li.siteNavItemActive a,
+.navigationSlider .slidingNav ul li.siteNavGroupActive a {
+  color: #f5da55;
+}
+
+.nav-footer .sitemap a:hover,
+.nav-footer .sitemap a:focus {
+  color: #f5da55;
+}
+
+.algolia-autocomplete {
+  line-height: 20px;
+}
+
+/* ####### POST ####### */
+
+.read-more {
+  margin-top: 2rem;
+}
+
+.blogContainer .postHeader p.post-meta {
+  float: left;
+  font-size: 0.875rem;
+}
+
+.blogContainer .postHeader .authorBlock:before {
+  content: "by ";
+  font-size: 0.875rem;
+  margin: 1px 5px;
+}
+
+.blogContainer h2 {
+  font-size: 32px;
+}
+
+.blogContainer h3 {
+  font-size: 24px;
+}
+
+.blogContainer h4 {
+  font-size: 20px;
+}
+
+.page-header {
+  padding-bottom: 9px;
+  margin: 0 0 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.page-header > h1 {
+  font-size: 36px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.page-header > p {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.4;
+  margin: 5px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+table td code {
+  color: #393939;
+  word-break: normal;
+}

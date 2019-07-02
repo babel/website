@@ -1,0 +1,31 @@
+- name: AMP Project
+  url: https://www.ampproject.org
+  logo: amp-work.svg
+  type: work
+  description: The AMP Project is an open-source initiative aiming to make the web better for all.
+  member: jridgewell
+- name: Tidelift
+  url: https://tidelift.com/subscription/pkg/npm-babel
+  logo: tidelift.png
+  type: other
+  tier: other-sponsors
+- name: LinkedIn
+  url: https://www.linkedin.com
+  logo: ../users/linkedin.png
+  type: patreon
+  tier: silver-sponsors
+- name: BestVPN
+  url: https://www.bestvpn.co
+  logo: bestvpn.png
+  type: patreon
+  tier: silver-sponsors
+- name: VPNRanks
+  url: https://www.vpnranks.com
+  logo: vpnranks.png
+  type: patreon
+  tier: silver-sponsors
+- name: usave
+  url: https://usave.co.uk/utilities/broadband/
+  logo: usave.png
+  type: patreon
+  tier: silver-sponsors

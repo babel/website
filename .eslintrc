@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "extends": "babel",
+  "plugins": ["prettier"],
+  "rules": {
+    "arrow-parens": ["error", "as-needed"],
+    "no-unused-vars": 1,
+    "prettier/prettier": "error"
+  },
+  "overrides": [
+    {
+      "files": ["js/**/*.js", "website/**/*.js"],
+      "parserOptions": {
+        "jsx": true
+      },
+      "plugins": ["react"],
+      "rules": {
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error"
+      }
+    },
+    {
+      "files": ["website/**/*.md"],
+      "plugins": ["markdown"]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+.showcaseSection .logos {
+  background: #eee;
+  border-radius: 5px;
+  padding: 20px 30px;
+}
+
+.showcaseSection .babel-user {
+  box-sizing: border-box;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 33.33333%;
+}
+
+.mainContainer .showcaseSection .babel-user-link {
+  background: #fff;
+  border-radius: 5px;
+  display: block;
+  height: 120px;
+  margin: 15px 0;
+  padding: 10px;
+  position: relative;
+}
+
+.showcaseSection .babel-user .babel-user-logo {
+  left: 50%;
+  max-height: 100px;
+  max-width: 200px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mainContainer .showcaseSection .babel-user-link:hover {
+  background: #fff;
+  box-shadow: 0px 0px 2px 0px #000;
+  transform: scale3d(1.1, 1.1, 1);
+}
+
+@media only screen and (min-width: 360px) and (max-width: 736px) {
+  .showcaseSection .babel-user {
+    width: 100%;
+  }
+  .showcaseSection .babel-user .babel-user-logo {
+    width: 100%;
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "version-7.0.0-docs": {
+    "Guides": [
+      "version-7.0.0-index",
+      "version-7.0.0-usage",
+      "version-7.0.0-configuration",
+      "version-7.0.0-learn",
+      "version-7.0.0-v7-migration",
+      "version-7.0.0-v7-migration-api"
+    ],
+    "General": [
+      "version-7.0.0-editors",
+      "version-7.0.0-plugins",
+      "version-7.0.0-presets",
+      "version-7.0.0-caveats",
+      "version-7.0.0-faq",
+      "version-7.0.0-roadmap"
+    ],
+    "Usage": [
+      "version-7.0.0-options",
+      "version-7.0.0-config-files",
+      "version-7.0.0-babel-cli",
+      "version-7.0.0-babel-polyfill",
+      "version-7.0.0-babel-plugin-transform-runtime",
+      "version-7.0.0-babel-register"
+    ],
+    "Presets": [
+      "version-7.0.0-babel-preset-env",
+      "version-7.0.0-babel-preset-stage-0",
+      "version-7.0.0-babel-preset-stage-1",
+      "version-7.0.0-babel-preset-stage-2",
+      "version-7.0.0-babel-preset-stage-3",
+      "version-7.0.0-babel-preset-flow",
+      "version-7.0.0-babel-preset-react",
+      "version-7.0.0-babel-preset-minify",
+      "version-7.0.0-babel-preset-typescript"
+    ],
+    "Tooling": [
+      "version-7.0.0-babel-parser",
+      "version-7.0.0-babel-core",
+      "version-7.0.0-babel-generator",
+      "version-7.0.0-babel-code-frame",
+      "version-7.0.0-babel-helpers",
+      "version-7.0.0-babel-runtime",
+      "version-7.0.0-babel-template",
+      "version-7.0.0-babel-traverse",
+      "version-7.0.0-babel-types"
+    ]
+  }
+}

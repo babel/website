@@ -1,0 +1,52 @@
+{
+  "docs": {
+    "Guides": [
+      "index",
+      "usage",
+      "configuration",
+      "learn",
+      "v7-migration",
+      "v7-migration-api"
+    ],
+    "General": [
+      "editors",
+      "plugins",
+      "presets",
+      "caveats",
+      "faq",
+      "roadmap"
+    ],
+    "Usage": [
+      "options",
+      "config-files",
+      "babel-cli",
+      "babel-polyfill",
+      "babel-plugin-transform-runtime",
+      "babel-register"
+    ],
+    "Presets": [
+      "babel-preset-env",
+      "babel-preset-stage-0",
+      "babel-preset-stage-1",
+      "babel-preset-stage-2",
+      "babel-preset-stage-3",
+      "babel-preset-flow",
+      "babel-preset-react",
+      "babel-preset-minify",
+      "babel-preset-typescript"
+    ],
+    "Tooling": [
+      "babel-parser",
+      "babel-core",
+      "babel-generator",
+      "babel-code-frame",
+      "babel-helpers",
+      "babel-runtime",
+      "babel-template",
+      "babel-traverse",
+      "babel-types"
+    ]
+  }
+}
+
+

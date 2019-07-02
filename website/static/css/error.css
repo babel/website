@@ -1,0 +1,32 @@
+.error-page .error-message-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+  max-width: 1400px;
+  width: 87%;
+}
+
+.error-page .error-message {
+  height: 75vh;
+  background: #323330;
+}
+
+.error-page .error-message span {
+  color: #f5da55;
+  font-size: 8.8em;
+  font-weight: 700;
+  display: inline-block;
+  margin-top: 21vh;
+  text-align: center;
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  display: block;
+}
+
+.error-page .error-message p {
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-top: 71px;
+  font-size: 1.6em;
+  text-align: center;
+}

@@ -1,0 +1,228 @@
+.hero {
+  background: #3b3c38;
+  color: #fff;
+  overflow: hidden;
+  padding: 4rem 1rem 2rem;
+  position: relative;
+  text-align: center;
+}
+
+.hero::before {
+  background: url(../img/babel-black.svg) no-repeat center center;
+  background-size: cover;
+  bottom: 0;
+  content: "";
+  display: block;
+  left: 0;
+  opacity: 0.3;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.hero__container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  color: #f5da55;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 1rem 0 3.125rem;
+}
+
+.hero__announcement {
+  background: rgba(238, 218, 124, 1);
+  border-radius: 20px;
+  color: #24292e;
+  display: inline-flex;
+  margin-bottom: 2rem;
+  padding: 8px 20px;
+}
+
+.hero__announcement a {
+  border-bottom: 1px solid #999;
+}
+
+@media only screen and (min-width: 736px) {
+  .hero {
+    padding: 7rem 1rem 3rem;
+  }
+
+  .hero h1 {
+    font-size: 3.938rem;
+  }
+
+  .hero p {
+    font-size: 1.75rem;
+  }
+}
+
+.homepage-banner {
+  align-items: center;
+  background-color: #626980;
+  color: #ffffff;
+  display: flex;
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  justify-content: center;
+  position: absolute;
+  margin-top: -64px;
+  padding: 10px 0;
+  right: 0;
+  text-transform: uppercase;
+  width: 100%;
+  z-index: 2;
+}
+
+.homepage-banner::before {
+  /* background: url(../img/favicon.png) no-repeat center center; */
+  content: "";
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+@media only screen and (min-width: 736px) {	
+   .homepage-banner {	
+     border-bottom-left-radius: 100px;	
+     border-top-left-radius: 100px;	
+     font-size: 13px;	
+     position: absolute;	
+     margin-top: -100px;	
+     padding: 10px;	
+     padding-right: 20px;	
+     right: 0;	
+     width: auto;	
+   }	
+}
+
+.sponsors-special p {
+  font-size: 0.9375rem;
+  padding-bottom: 0;
+}
+.sponsors-special-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.sponsors-special-logos img {
+  width: auto;
+  height: 60px;
+}
+.sponsors-special-logos a {
+  margin: 15px;
+}
+
+.get-started,
+.container .wrapper .get-started h2 {
+  text-align: center;
+}
+@media only screen and (min-width: 736px) {
+  .get-started,
+  .container .wrapper .get-started h2 {
+    text-align: left;
+  }
+  .gridBlock .twoByGridBlock.get-started {
+    padding-right: 4em;
+  }
+}
+
+.sponsors-work .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 0 0;
+}
+.wrapper .sponsors-work .card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  border-width: 0;
+  box-shadow: 0px 3px 20px 0 rgba(0, 0, 0, 0.15);
+}
+@media only screen and (min-width: 736px) {
+  .sponsors-work .card {
+    width: 45%;
+  }
+}
+.sponsors-work .card-image,
+.sponsors-work .card-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  flex-grow: 0;
+  padding: 10px;
+}
+.wrapper .sponsors-work a.card-image {
+  background: none;
+}
+.wrapper .sponsors-work .card img {
+  max-height: 100%;
+}
+.wrapper .sponsors-work .card-text {
+  height: auto;
+  flex-grow: 1;
+  border-top: 1px solid #ddd;
+  font-size: 12px;
+  padding: 0.8em;
+  color: #717171;
+}
+.wrapper .sponsors-work .card-text p {
+  padding: 0;
+}
+
+.mainContainer .wrapper.productShowcaseSection {
+  text-align: center;
+}
+.mainContainer .wrapper.productShowcaseSection h2 {
+  font-size: 30px;
+  text-align: center;
+}
+.mainContainer .sponsor-tiers h3 {
+  font-size: 24px;
+}
+.mainContainer ul.sponsors-tier {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+}
+.mainContainer ul.sponsors-tier li {
+  list-style: none;
+  margin: 5px;
+}
+.mainContainer .sponsors-tier a,
+.mainContainer .sponsors-tier a:hover {
+  background: none;
+  border: none;
+}
+.tier-base-support-sponsor img {
+  width: 90px;
+}
+.tier-gold-sponsors img {
+  width: 60px;
+}
+.tier-silver-sponsors img {
+  width: 40px;
+}
+.tier-other-sponsors img {
+  max-width: 100px;
+}

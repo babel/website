@@ -1,0 +1,11 @@
+[ignore]
+<PROJECT_ROOT>/_site/.*
+<PROJECT_ROOT>/website/build/.*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]

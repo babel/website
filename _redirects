@@ -1,0 +1,76 @@
+# https://www.netlify.com/docs/redirects/
+
+# REPL builds, to preview pull requests
+/repl/build/:build /repl/ 200
+# Previous versions of the REPL
+/repl/version/:version /repl/ 200
+
+# Ported from redirect_from
+# old.babeljs.io
+
+/php.html                           https://old.babeljs.io/php/
+/repl_old.html                      https://old.babeljs.io/repl/
+/repl_old                           https://old.babeljs.io/repl/
+/7/                                 https://old.babeljs.io/repl/build/7.0/
+/7.html                             https://old.babeljs.io/repl/build/7.0/
+
+# after docusaurus rewrite
+/php/                               https://old.babeljs.io/php/
+/docs/usage/cli/                    /docs/en/babel-cli/
+/docs/usage/api/                    /docs/en/babel-core/
+/docs/core-packages/                /docs/en/babel-core/
+/docs/usage/polyfill/               /docs/en/babel-polyfill/
+/docs/usage/babel-register/         /docs/en/babel-register/
+/docs/usage/babelrc/                /docs/en/config-files/
+/docs/usage/caveats/                /docs/en/caveats/
+/docs/editors/                      /docs/en/editors/
+/env/                               /docs/en/env/
+/faq/                               /docs/en/faq/
+/learn-es2015/                      /docs/en/learn/
+/docs/plugins/                      /docs/en/plugins/
+/docs/setup/                        /en/setup/
+/docs/community/videos/             /en/videos/
+/core-packages/babel-types/         /docs/en/babel-types/
+/core-packages/babel-template/      /docs/en/babel-template/
+/core-packages/babel-helpers/       /docs/en/babel-helpers/
+/core-packages/babel-code-frame/    /docs/en/babel-code-frame/
+/core-packages/babylon/             /docs/en/babylon/
+/docs/en/babylon/                   /docs/en/babel-parser
+
+/docs/using-babel/                  /en/setup
+/plugins.html                       /en/setup
+/docs/using-6to5/                   /en/setup
+/docs/usage/browser/                /en/setup
+/browser.html                       /en/setup
+/docs/advanced/plugins/             /docs/en/plugins
+/docs/usage/modules/                /docs/en/plugins
+/usage.html                         /docs/en/babel-cli
+/docs/faq/                          /docs/en/faq
+/docs/learn-es6/                    /docs/en/learn
+/docs/learn-es2015/                 /docs/en/learn
+/features.html                      /docs/en/learn
+/docs/tour/                         /docs/en/learn
+/docs/core-packages/babel-register/ /docs/en/babel-register
+/docs/usage/require/                /docs/en/babel-register
+/docs/usage/options/                /docs/en/options
+/caveats.html                       /docs/en/caveats
+/repl.html                          /repl/
+
+/docs/plugins/preset-*              /docs/en/babel-preset-:splat
+/docs/plugins/transform-*           /docs/en/babel-plugin-transform-:splat
+/docs/plugins/syntax-*              /docs/en/babel-plugin-syntax-:splat
+/docs/plugins/minify-*              /docs/en/babel-plugin-minify-:splat
+/docs/plugins/external-helpers/     /docs/en/babel-plugin-external-helpers
+
+/docs/en/babel-plugin-transform-async-generator-functions       /docs/en/babel-plugin-proposal-async-generator-functions
+/docs/en/babel-plugin-transform-class-properties                /docs/en/babel-plugin-proposal-class-properties
+/docs/en/babel-plugin-transform-decorators                      /docs/en/babel-plugin-proposal-decorators
+/docs/en/babel-plugin-transform-do-expressions                  /docs/en/babel-plugin-proposal-do-expressions
+/docs/en/babel-plugin-transform-export-extensions               /docs/en/babel-plugin-proposal-export-namespace
+/docs/en/babel-plugin-transform-object-rest-spread              /docs/en/babel-plugin-proposal-object-rest-spread
+
+/docs/plugins/check-es2015-constants/ /docs/en/babel-plugin-check-es2015-constants
+/docs/plugins/transform-es2015-constants /docs/en/babel-plugin-check-es2015-constants
+/docs/plugins/undeclared-variables-check/ /docs/en/babel-plugin-undeclared-variables-check
+
+/docs/en/next/tools/*               /setup

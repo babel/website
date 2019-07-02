@@ -1,0 +1,120 @@
+.member_block a:hover {
+  text-decoration: underline;
+}
+
+.member_orgs {
+  display: flex;
+}
+
+.org_image > img {
+  height: 22px;
+  width: 22px;
+  border-radius: 5px;
+  margin-right: 2px;
+}
+
+.member_avatar > img {
+  height: 80px;
+  width: 80px;
+  border-radius: 5px;
+  float: left;
+  margin-right: 20px;
+}
+
+.anchor_text {
+  color: #23527c;
+  font-size: 14px;
+}
+
+.anchor_text:hover {
+  text-decoration: underline;
+}
+
+.team_member {
+  box-sizing: border-box;
+  display: flex;
+  height: 100px;
+  margin-bottom: 30px;
+}
+
+.member_type {
+  margin-bottom: 30px;
+}
+
+.member_info {
+  display: block;
+  margin-right: 20px;
+  line-height: 1.7;
+}
+
+.member_block {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+/*
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  .team_member {
+    width: 25%;
+  }
+}
+
+/*
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .team_member {
+    width: 33.3%;
+  }
+}
+
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .team_member {
+    width: 50%;
+  }
+}
+
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .team_member {
+    width: 50%;
+  }
+}
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .team_member {
+    width: 100%;
+  }
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .team_member {
+    width: 100%;
+  }
+}
