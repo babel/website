@@ -46,6 +46,14 @@ mind. When in doubt, use `.parse()`.
   outside of class and object methods. Set this to `true` to accept such
   code.
 
+- **allowUndeclaredExports**: By default, exporting an identifier that was
+  not declared in the current module scope will raise an error. While this
+  behavior is required by the ECMAScript modules specification, Babel's
+  parser cannot anticipate transforms later in the plugin pipeline that
+  might insert the appropriate declarations, so it is sometimes important
+  to set this option to `true` to prevent the parser from prematurely
+  complaining about undeclared exports that will be added later.
+
 - **sourceType**: Indicate the mode the code should be parsed in. Can be
   one of `"script"`, `"module"`, or `"unambiguous"`. Defaults to `"script"`. `"unambiguous"` will make @babel/parser attempt to _guess_, based on the presence of ES6 `import` or `export` statements. Files with ES6 `import`s and `export`s are considered `"module"` and are otherwise `"script"`.
 
