@@ -22,7 +22,7 @@ This just means Babel _itself_ won't run on older versions of Node. It can still
 
 For more info, read our [6.x vs 7.x comparison](config-files.md#6x-vs-7x-babelrc-loading).
 
-Babel has had issues previously with handling `node_modules`, symlinks, and monorepos. We've made some changes to account for this: Babel will stop lookup at the `package.json` boundary instead of looking up the chain. For monorepo's we have added a new `babel.config.js` file that centralizes our config across all the packages (alternatively you could make a config per package). In 7.1, we've introduced a [`rootMode`](options.md#rootmode) option for further lookup if necessary.
+Babel has had issues previously with handling `node_modules`, symlinks, and monorepos. We've made some changes to account for this: Babel 7.* will stop lookup at the `package.json` boundary instead of looking up the chain. For monorepo's we have added a new `babel.config.js` file that centralizes our config across all the packages (alternatively you could make a config per package). In 7.1, we've introduced a [`rootMode`](options.md#rootmode) option for further lookup if necessary.
 
 ## [Yearly Preset Deprecations](/blog/2017/12/27/nearing-the-7.0-release.html#deprecated-yearly-presets-eg-babel-preset-es20xx)
 
