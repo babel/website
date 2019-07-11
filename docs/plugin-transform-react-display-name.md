@@ -11,6 +11,7 @@ sidebar_label: transform-react-display-name
 ```js
 var foo = React.createClass({}); // React <= 15
 var bar = createReactClass({});  // React 16+
+var baz = React.lazy(() => import('./BazImpl')); // React 16.6+
 ```
 
 **Out**
@@ -22,6 +23,12 @@ var foo = React.createClass({
 var bar = createReactClass({
   displayName: "bar"
 }); // React 16+
+var _baz;
+var baz = (
+  _baz = React.lazy(() => import('./BazImpl')),
+  _baz.displayName = 'baz',
+  _baz
+); // React 16.6+
 ```
 
 ## Installation
