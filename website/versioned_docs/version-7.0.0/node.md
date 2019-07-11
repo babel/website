@@ -47,13 +47,13 @@ npx @babel/node test
 > **Tip:** Use `rlwrap` to get a REPL with input history
 >
 > ```sh
-> rlwrap npx @babel/node
+> npx rlwrap @babel/node
 > ```
 >
 > On some platforms (like OSX), extra arguments may be required for `rlwrap` to function properly, eg:
 >
 > ```sh
-> NODE_NO_READLINE=1 rlwrap --always-readline npx @babel/node
+> NODE_NO_READLINE=1 npx rlwrap --always-readline @babel/node
 > ```
 
 ### Usage
@@ -80,3 +80,4 @@ npx @babel/node --debug --presets es2015 -- script.js --debug
 | `--plugins`            | `[]`                        | Comma-separated list of [plugins](plugins.md) to load and use.                                                                              |
 | `--config-file [path]` | `[]`                        | Path to the babel config file to use. Defaults to working directory babel.config.js                                                         |
 | `--env-name [name]`    | `[]`                        | The name of the 'env' to use when loading configs and plugins. Defaults to the value of BABEL_ENV, or else NODE_ENV, or else 'development'. |
+

@@ -318,7 +318,6 @@ It has a few different forms:
 
 > **Note:** This function internally makes use of [`api.cache`](#apicache) mentioned above to ensure that Babel is aware that this build depends on a specific `envName`. You should not use it alongside with `api.cache.forever()` or `api.cache.never()`.
 
-
 ### `api.caller(cb)`
 
 This API is used as a way to access the `caller` data that has been passed to Babel.
@@ -356,5 +355,3 @@ module.exports = function(api) {
   };
 };
 ```
-
-

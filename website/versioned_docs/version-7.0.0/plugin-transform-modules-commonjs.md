@@ -5,6 +5,8 @@ sidebar_label: transform-modules-commonjs
 original_id: babel-plugin-transform-modules-commonjs
 ---
 
+This plugin transforms ES2015 modules to [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1).
+
 ## Example
 
 **In**
