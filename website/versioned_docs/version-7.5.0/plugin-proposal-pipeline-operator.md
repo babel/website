@@ -1,7 +1,8 @@
 ---
-id: babel-plugin-proposal-pipeline-operator
+id: version-7.5.0-babel-plugin-proposal-pipeline-operator
 title: @babel/plugin-proposal-pipeline-operator
 sidebar_label: proposal-pipeline-operator
+original_id: babel-plugin-proposal-pipeline-operator
 ---
 
 ## Installation
