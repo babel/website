@@ -22,8 +22,8 @@ const envPresetConfig: PluginConfig = {
 };
 
 /* Some of stage-3 plugins've been added to @babel/standalone gradually. If a new
-*  shippedProposal is added, add it to this list.
-*/
+ * shippedProposal is added, add it to this list.
+ */
 const shippedProposalsPackages: Array<PluginConfig> = [
   // "proposal-async-generator-functions",
   // "proposal-object-rest-spread",

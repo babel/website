@@ -73,44 +73,43 @@ class Versions extends React.Component {
                 </tr>
               </tbody>
             </table>
-            {versions &&
-              versions.length > 1 && (
-                <div>
-                  <a name="archive" />
-                  <h3>Past Versions</h3>
-                  <table className="versions">
-                    <tbody>
-                      {versions.map(
-                        version =>
-                          version !== latestVersion && (
-                            <tr key={version}>
-                              <th>{version}</th>
-                              <td>
-                                <a
-                                  href={
-                                    siteConfig.baseUrl +
-                                    "docs/" +
-                                    language +
-                                    "/" +
-                                    version +
-                                    "/index.html"
-                                  }
-                                >
-                                  Documentation
-                                </a>
-                              </td>
-                              <td>
-                                <a href={`${repoUrl}/releases/tag/v${version}`}>
-                                  Release Notes
-                                </a>
-                              </td>
-                            </tr>
-                          )
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-              )}
+            {versions && versions.length > 1 && (
+              <div>
+                <a name="archive" />
+                <h3>Past Versions</h3>
+                <table className="versions">
+                  <tbody>
+                    {versions.map(
+                      version =>
+                        version !== latestVersion && (
+                          <tr key={version}>
+                            <th>{version}</th>
+                            <td>
+                              <a
+                                href={
+                                  siteConfig.baseUrl +
+                                  "docs/" +
+                                  language +
+                                  "/" +
+                                  version +
+                                  "/index.html"
+                                }
+                              >
+                                Documentation
+                              </a>
+                            </td>
+                            <td>
+                              <a href={`${repoUrl}/releases/tag/v${version}`}>
+                                Release Notes
+                              </a>
+                            </td>
+                          </tr>
+                        )
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         </Container>
       </div>

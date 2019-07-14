@@ -53,7 +53,7 @@ export function registerPromiseWorkerApi(worker: any) {
     postMessage(message: any) {
       const uid = ++counter;
 
-      return new Promise((resolve, reject) => {
+      return new Promise<any>((resolve, reject) => {
         uidMap[uid] = [resolve, reject];
         worker.postMessage({
           message,

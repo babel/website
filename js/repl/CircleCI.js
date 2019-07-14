@@ -22,7 +22,7 @@ async function sendRequest(repo: ?string, uri: string): Promise<Object> {
 export async function loadBuildArtifacts(
   repo: ?string,
   regExp: RegExp,
-  build: number,
+  build: number | string,
   cb: (url: string, error?: string) => Promise<any> // eslint-disable-line no-unused-vars
 ): Promise<string> {
   try {

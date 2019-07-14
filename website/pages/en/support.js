@@ -1,5 +1,4 @@
 const React = require("react");
-const translate = require("../../server/translate.js").translate;
 const siteConfig = require(process.cwd() + "/siteConfig.js");
 
 class Button extends React.Component {
@@ -125,7 +124,7 @@ const OpenCollectiveSponsors = ({ language }) => {
   );
 };
 
-const Index = ({ language }) => {
+const Index = () => {
   return (
     <div className="mainContainer" style={{ padding: 0 }}>
       <OpenCollectiveSponsors />
