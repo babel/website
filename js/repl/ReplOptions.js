@@ -433,7 +433,7 @@ class ExpandedContainer extends Component<Props, State> {
                   className={`${styles.envPresetColumnLabel} ${
                     styles.envPresetLabel
                   } ${styles.highlight}`}
-                  section="browserslist-support"
+                  section="browserslist-integration"
                 >
                   Browsers
                 </LinkToDocs>
