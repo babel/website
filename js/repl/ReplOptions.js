@@ -576,7 +576,7 @@ class ExpandedContainer extends Component<Props, State> {
                 ) : (
                   <LinkToDocs
                     className={`${styles.envPresetLabel} ${styles.highlight}`}
-                    section="shippedProposals"
+                    section="shippedproposals"
                   >
                     Shipped Proposals
                   </LinkToDocs>
