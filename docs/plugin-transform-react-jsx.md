@@ -11,16 +11,18 @@ sidebar_label: transform-react-jsx
 **In**
 
 ```javascript
-var profile = <div>
-  <img src="avatar.png" className="profile" />
-  <h3>{[user.firstName, user.lastName].join(' ')}</h3>
-</div>;
+const profile = (
+  <div>
+    <img src="avatar.png" className="profile" />
+    <h3>{[user.firstName, user.lastName].join(' ')}</h3>
+  </div>
+);
 ```
 
 **Out**
 
 ```javascript
-var profile = React.createElement("div", null,
+const profile = React.createElement("div", null,
   React.createElement("img", { src: "avatar.png", className: "profile" }),
   React.createElement("h3", null, [user.firstName, user.lastName].join(" "))
 );
@@ -31,26 +33,28 @@ var profile = React.createElement("div", null,
 **In**
 
 ```javascript
-/** @jsx dom */
+/** @jsx jsx */
 
-var { dom } = require("deku");
+import { jsx } from '@emotion/core';
 
-var profile = <div>
-  <img src="avatar.png" className="profile" />
-  <h3>{[user.firstName, user.lastName].join(' ')}</h3>
-</div>;
+const profile = (
+  <div>
+    <img src="avatar.png" className="profile" />
+    <h3>{[user.firstName, user.lastName].join(' ')}</h3>
+  </div>
+);
 ```
 
 **Out**
 
 ```javascript
-/** @jsx dom */
+/** @jsx jsx */
 
-var dom = require("deku").dom;
+import { jsx } from '@emotion/core';
 
-var profile = dom("div", null,
-  dom("img", { src: "avatar.png", className: "profile" }),
-  dom("h3", null, [user.firstName, user.lastName].join(" "))
+const profile = jsx("div", null,
+  jsx("img", { src: "avatar.png", className: "profile" }),
+  jsx("h3", null, [user.firstName, user.lastName].join(" "))
 );
 ```
 
@@ -63,7 +67,7 @@ Fragments are a feature available in React 16.2.0+.
 **In**
 
 ```javascript
-var descriptions = items.map(item => (
+const descriptions = items.map(item => (
   <>
     <dt>{item.name}</dt>
     <dd>{item.value}</dd>
@@ -74,7 +78,7 @@ var descriptions = items.map(item => (
 **Out**
 
 ```javascript
-var descriptions = items.map(item => React.createElement(
+const descriptions = items.map(item => React.createElement(
   React.Fragment,
   null,
   React.createElement("dt", null, item.name),
@@ -87,10 +91,10 @@ var descriptions = items.map(item => React.createElement(
 **In**
 
 ```javascript
-/** @jsx dom */
-/** @jsxFrag DomFrag */
+/** @jsx jsx */
+/** @jsxFrag JsxFrag */
 
-var { dom, DomFrag } = require("deku"); // DomFrag is fictional!
+import { jsx, JsxFrag } from '@emotion/core'; // JsxFrag is fictional!
 
 var descriptions = items.map(item => (
   <>
@@ -103,16 +107,16 @@ var descriptions = items.map(item => (
 **Out**
 
 ```javascript
-/** @jsx dom */
-/** @jsxFrag DomFrag */
+/** @jsx jsx */
+/** @jsxFrag JsxFrag */
 
-var { dom, DomFrag } = require("deku"); // DomFrag is fictional!
+import { jsx, JsxFrag } from '@emotion/core'; // JsxFrag is fictional!
 
-var descriptions = items.map(item => dom(
-  DomFrag,
+var descriptions = items.map(item => jsx(
+  JsxFrag,
   null,
-  dom("dt", null, item.name),
-  dom("dd", null, item.value)
+  jsx("dt", null, item.name),
+  jsx("dd", null, item.value)
 ));
 ```
 
@@ -144,8 +148,8 @@ With options:
 {
   "plugins": [
     ["@babel/plugin-transform-react-jsx", {
-      "pragma": "dom", // default pragma is React.createElement
-      "pragmaFrag": "DomFrag", // default is React.Fragment
+      "pragma": "jsx", // default pragma is React.createElement
+      "pragmaFrag": "JsxFrag", // default is React.Fragment
       "throwIfNamespace": false // defaults to true
     }]
   ]
