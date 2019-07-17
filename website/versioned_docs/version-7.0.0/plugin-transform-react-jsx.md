@@ -34,9 +34,9 @@ const profile = React.createElement("div", null,
 **In**
 
 ```javascript
-/** @jsx jsx */
+/** @jsx Preact.h */
 
-import { jsx } from '@emotion/core';
+import Preact from 'preact';
 
 const profile = (
   <div>
@@ -49,13 +49,13 @@ const profile = (
 **Out**
 
 ```javascript
-/** @jsx jsx */
+/** @jsx Preact.h */
 
-import { jsx } from '@emotion/core';
+import Preact from 'preact';
 
-const profile = jsx("div", null,
-  jsx("img", { src: "avatar.png", className: "profile" }),
-  jsx("h3", null, [user.firstName, user.lastName].join(" "))
+const profile = h("div", null,
+  Preact.h("img", { src: "avatar.png", className: "profile" }),
+  Preact.h("h3", null, [user.firstName, user.lastName].join(" "))
 );
 ```
 
@@ -92,10 +92,10 @@ const descriptions = items.map(item => React.createElement(
 **In**
 
 ```javascript
-/** @jsx jsx */
-/** @jsxFrag JsxFrag */
+/** @jsx Preact.h */
+/** @jsxFrag Preact.Fragment */
 
-import { jsx, JsxFrag } from '@emotion/core'; // JsxFrag is fictional!
+import Preact from 'preact';
 
 var descriptions = items.map(item => (
   <>
@@ -108,16 +108,16 @@ var descriptions = items.map(item => (
 **Out**
 
 ```javascript
-/** @jsx jsx */
-/** @jsxFrag JsxFrag */
+/** @jsx Preact.h */
+/** @jsxFrag Preact.Fragment */
 
-import { jsx, JsxFrag } from '@emotion/core'; // JsxFrag is fictional!
+import Preact from 'preact';
 
-var descriptions = items.map(item => jsx(
-  JsxFrag,
+var descriptions = items.map(item => Preact.h(
+  Preact.Fragment,
   null,
-  jsx("dt", null, item.name),
-  jsx("dd", null, item.value)
+  Preact.h("dt", null, item.name),
+  Preact.h("dd", null, item.value)
 ));
 ```
 
@@ -149,8 +149,8 @@ With options:
 {
   "plugins": [
     ["@babel/plugin-transform-react-jsx", {
-      "pragma": "jsx", // default pragma is React.createElement
-      "pragmaFrag": "JsxFrag", // default is React.Fragment
+      "pragma": "Preact.h", // default pragma is React.createElement
+      "pragmaFrag": "Preact.Fragment", // default is React.Fragment
       "throwIfNamespace": false // defaults to true
     }]
   ]
