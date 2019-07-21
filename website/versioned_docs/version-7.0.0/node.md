@@ -54,14 +54,14 @@ npx babel-node test
 > **Tip:** Use `rlwrap` to get a REPL with input history
 >
 > ```sh
-> npx rlwrap babel-node
+> rlwrap npx babel-node
 > ```
 >
 > On some platforms (like OSX), extra arguments may be required for `rlwrap` to function properly, eg:
 >
 > ```sh
-> NODE_NO_READLINE=1 npx rlwrap --always-readline babel-node
-> ```
+> NODE_NO_READLINE=1 rlwrap --always-readline npx babel-node
+> 
 
 ### Usage
 
