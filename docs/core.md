@@ -180,7 +180,7 @@ Given an [AST](https://astexplorer.net/), transform it.
 const sourceCode = "if (true) return;";
 babel.parseAsync(sourceCode, { allowReturnOutsideFunction: true })
   .then(parsedAst => {
-    return babel.transformFromAstSync(parsedAst, sourceCode, options);
+    return babel.transformFromAstAsync(parsedAst, sourceCode, options);
   })
   .then(({ code, map, ast }) => {
     // ...
