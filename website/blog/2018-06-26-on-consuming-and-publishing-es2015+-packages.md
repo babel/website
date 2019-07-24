@@ -98,7 +98,7 @@ An example of an issue is how [`this` gets converted to `undefined`](https://git
 
 This was [changed in v7](https://github.com/babel/babel/pull/6280) so that it won't auto-inject the `"use strict"` directive unless the source file is a `module`.
 
-It was also not in Babel's original scope to compile dependencies: we actually got issue reports that people would accidently do it, making the build slower. There is a lot of defaults and documentation in the tooling that purposely disable compiling `node_modules`.
+It was also not in Babel's original scope to compile dependencies: we actually got issue reports that people would accidentally do it, making the build slower. There is a lot of defaults and documentation in the tooling that purposely disable compiling `node_modules`.
 
 ### Using Non-Standard Syntax
 
