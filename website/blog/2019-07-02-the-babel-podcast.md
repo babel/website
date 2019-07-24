@@ -62,7 +62,7 @@ What else do you want to hear about? Who do you want to hear from?
 - Chatting with various Babel plugin authors? [babel-macros](https://github.com/kentcdodds/babel-plugin-macros), i18n
 - Babel alternatives: [traceur](https://github.com/google/traceur-compiler), [buble](https://github.com/bublejs/buble), [sucrase](https://github.com/alangpierce/sucrase), [swc](https://github.com/swc-project/swc)
     - It would be fun to chat about why the projects were made, what the differences/tradeoffs are, etc!
-- Compile to JavaScript langauges
+- Compile to JavaScript languages
     - Elm/Reason/etc (standalone language)
     - Coffeescript/Dart (explicitly recommends Babel for compiling down to ES5)
     - Fable (F#) (uses Babel itself)

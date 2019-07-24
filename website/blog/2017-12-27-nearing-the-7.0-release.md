@@ -43,7 +43,7 @@ The best thing we can get on this project are people committed to helping out wi
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Company: &quot;We&#39;d like to use SQL Server Enterprise&quot;<br>MS: &quot;That&#39;ll be a quarter million dollars + $20K/month&quot;<br>Company: &quot;Ok!&quot;<br>...<br>Company: &quot;We&#39;d like to use Babel&quot;<br>Babel: &quot;Ok! npm i babel --save&quot;<br>Company: &quot;Cool&quot;<br>Babel: &quot;Would you like to help contribute financially?&quot;<br>Company: &quot;lol no&quot;</p>&mdash; Adam Rackis (@AdamRackis) <a href="https://twitter.com/AdamRackis/status/931195056479965185?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
 
-We are definetely looking to be able to fund people on the team to work full-time. Logan in particular left his job a while ago and is using our current funds to work on Babel part time at the moment!
+We are definitely looking to be able to fund people on the team to work full-time. Logan in particular left his job a while ago and is using our current funds to work on Babel part time at the moment!
 
 #### #3 Contribute in other ways 😊
 
@@ -88,7 +88,7 @@ Even though the amount of work that goes into maintaining the lists of data is h
 
 [![npm presets](https://i.imgur.com/nNKKFcp.png)](https://npm-stat.com/charts.html?package=babel-preset-env&package=babel-preset-es2015&package=babel-preset-es2016&package=babel-preset-es2017&package=babel-preset-latest&from=2016-11-21&to=2017-11-21)
 
-It compiles the latest yearly release of JavaScript (whatever is in Stage 4) which replaces all the old presets. But it also has the abilitiy to compile according to target environments you specify: whether that is for development mode, like the latest version of a browser, or for multiple builds, like a version for IE, and then another version for evergreen browsers.
+It compiles the latest yearly release of JavaScript (whatever is in Stage 4) which replaces all the old presets. But it also has the ability to compile according to target environments you specify: whether that is for development mode, like the latest version of a browser, or for multiple builds, like a version for IE, and then another version for evergreen browsers.
 
 ### ~~Not removing the Stage presets (babel-preset-stage-x)~~
 
@@ -98,7 +98,7 @@ EDIT: We removed them, explained [here](https://babeljs.io/blog/2018/07/27/remov
 
 We can always keep it up to date, and maybe we just need to determine a better system than what these presets are currently.
 
-Right now, stage presets are literally just a list of plugins that we manually update after TC39 meetings. To make this managable, we need to allow major version bumps for these "unstable" packages. Part of the reason for this is because the community will re-create these packages anyway, so we might as well do it from an official package and then have the ability to provide better messaging, etc.
+Right now, stage presets are literally just a list of plugins that we manually update after TC39 meetings. To make this manageable, we need to allow major version bumps for these "unstable" packages. Part of the reason for this is because the community will re-create these packages anyway, so we might as well do it from an official package and then have the ability to provide better messaging, etc.
 
 ### Renames: Scoped Packages (`@babel/x`)
 
@@ -259,7 +259,7 @@ With type inference we can know if an instance method like `.includes` is for an
 
 ### Thanks
 
-Shoutout to our team of volunteers: [Logan](https://twitter.com/loganfsmyth) who has been really pushing hard to fix a lot of our core issues regarding configs and more and the one doing all of that hard work, [Brian](https://twitter.com/existentialism) who has been taking over maintainence of a lot of preset-env work and just whatever I was doing before 😛, and [Daniel](https://twitter.com/TschinderDaniel) who has always been stepping in when we need the help whether it be maintaining babel-loader or helping move the babylon/babel-preset-env repo's over. And same with [Nicolo](https://twitter.com/NicoloRibaudo), [Sven](https://twitter.com/svensauleau), [Artem](https://twitter.com/yavorsky_), and [Diogo](https://twitter.com/kovnsk) for stepping up in the last year to help out.
+Shoutout to our team of volunteers: [Logan](https://twitter.com/loganfsmyth) who has been really pushing hard to fix a lot of our core issues regarding configs and more and the one doing all of that hard work, [Brian](https://twitter.com/existentialism) who has been taking over maintenance of a lot of preset-env work and just whatever I was doing before 😛, and [Daniel](https://twitter.com/TschinderDaniel) who has always been stepping in when we need the help whether it be maintaining babel-loader or helping move the babylon/babel-preset-env repo's over. And same with [Nicolo](https://twitter.com/NicoloRibaudo), [Sven](https://twitter.com/svensauleau), [Artem](https://twitter.com/yavorsky_), and [Diogo](https://twitter.com/kovnsk) for stepping up in the last year to help out.
 
 I'm really looking forward to a release (I'm tired too; it's almost been a year 😝), but also don't want to rush anything just because! Been a lot of ups and downs throughout this release but I've certainly learned a lot and I'm sure the rest of the team has as well.
 
