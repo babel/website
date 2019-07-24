@@ -178,7 +178,7 @@ Given an [AST](https://astexplorer.net/), transform it.
 
 ```js
 const sourceCode = "if (true) return;";
-babel.parseAsync(sourceCode, { allowReturnOutsideFunction: true })
+babel.parseAsync(sourceCode, { parserOpts: { allowReturnOutsideFunction: true } })
   .then(parsedAst => {
     return babel.transformFromAstAsync(parsedAst, sourceCode, options);
   })
