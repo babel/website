@@ -386,7 +386,7 @@ Aliases: `Property`, `Private`
 
 ### classProperty
 ```javascript
-t.classProperty(key, value, typeAnnotation, decorators, computed)
+t.classProperty(key, value, typeAnnotation, decorators, computed, static)
 ```
 
 See also `t.isClassProperty(node, opts)` and `t.assertClassProperty(node, opts)`.
