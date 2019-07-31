@@ -4,23 +4,74 @@ title: @babel/plugin-transform-typescript
 sidebar_label: transform-typescript
 ---
 
-This plugin does not type-check its input. For that, you will need to install and [set up TypeScript](https://www.typescriptlang.org).
+This plugin adds support for the syntax used by the [TypeScript programming language][ts]. However, this plugin does not add the ability to type-check the JavaScript passed to it. For that, you will need to install and set up TypeScript.
+
+## Example
+
+**In**
+
+```javascript
+const x: number = 0;
+```
+
+**Out**
+
+```javascript
+const x = 0;
+```
+
+## Installation
+
+```sh
+npm install --save-dev @babel/plugin-transform-typescript
+```
+
+## Usage
+
+### Via `.babelrc` (Recommended)
+
+**.babelrc**
+
+```json
+{
+  "plugins": ["@babel/plugin-transform-typescript"]
+}
+```
+
+### Via CLI
+
+```sh
+babel --plugins @babel/plugin-transform-typescript script.js
+```
+
+### Via Node API
+
+```javascript
+require("@babel/core").transform("code", {
+  plugins: ["@babel/plugin-transform-typescript"]
+});
+```
+
 
 ## Caveats
 
-* Since Babel does not type-check, invalid TypeScript may successfully get transformed, and often in unexpected or invalid ways.
+Because there are features of the TypeScript language which rely on the full type-system to be available to make changes at runtime. This section of caveats is quite long, however, it's worth noting that a few of these features are only found in older TypeScript codebases and have modern JavaScript equivilents which you are probably already using.
 
-* Does not support [`const enum`][const_enum]s because those require type information to compile.
+1. Since Babel does not type-check, code which is syntacically correct, but would fail the TypeScript type-checking may successfully get transformed, and often in unexpected or invalid ways.
 
-  **Workaround**: Remove the `const`, which makes it available at runtime.
+1. This plugin does not support [`const enum`][const_enum]s because those require type information to compile.
 
-* Does not support [`export =`][exin] and [`import =`][exin], because those cannot be compiled to ES.next.
+   **Workaround**: Remove the `const`, which makes it available at runtime.
 
-  **Workaround**: Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
+1. This plugin does not support [`export =`][exin] and [`import =`][exin], because those cannot be compiled to ES.next. These are a TypeScript only form of `import`/`export`.
 
-* Behaves as if the `--isolatedModules` option was passed to the TypeScript Compiler. This can't be worked around because Babel doesn't support cross-file analysis.
+   **Workaround**: Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
 
-* Does not load `tsconfig.json` files. Some options are supported in alternative ways: see [`TypeScript Compiler Options`](#typescript-compiler-options)
+1. Changes to your `tsconfig.json` are not reflected in babel. The build process will always behave as though [`isolateModules`][iso-mods] is turned on, there are Babel-native alternative ways to set a lot of the [`tsconfig.json` options]((#typescript-compiler-options) however.
+
+1. **Q**: Why doesn't Babel allow export of a `var` or `let`?
+  
+   **A**: The TypeScript compiler dynamically changes how these variables are used depending on whether or not the value is mutated. Ultimately, this depends on a type-model and is outside the scope of Babel. A best-effort implementation would transform context-dependent usages of the variable to always use the `Namespace.Value` version instead of `Value`, in case it was mutated outside of the current file. Allowing `var` or `let` from Babel (as the transform is not-yet-written) is therefor is more likely than not to present itself as a bug when used as-if it was not `const`.
 
 
 ### Impartial Namespace Support
@@ -37,10 +88,6 @@ If you have existing code which uses the TypeScript-only [namespace][namespace] 
 
   **Workaround**: Use `const`. If some form of mutation is required, explicitly use an object with internal mutability.
   
-  **Q**: Why doesn't Babel allow export of a `var` or `let`?
-  
-  **A**: The TypeScript compiler dynamically changes how these variables are used depending on whether or not the value is mutated. Ultimately, this depends on a type-model and is outside the scope of Babel. A best-effort implementation would transform context-dependent usages of the variable to always use the `Namespace.Value` version instead of `Value`, in case it was mutated outside of the current file. Allowing `var` or `let` from Babel (as the transform is not-yet-written) is therefor is more likely than not to present itself as a bug when used as-if it was not `const`.
-
 * `namespace`s will not share their scope. In TypeScript, it is valid to refer to contextual items that a `namespace` extends without qualifying them, and the compiler will add the qualifier. In Babel, there is no type-model, and it is impossible to dynamically change references to match the established type of the parent object.
 
   Consider this code:
@@ -100,52 +147,6 @@ If you have existing code which uses the TypeScript-only [namespace][namespace] 
   }
   ```
 
-
-## Example
-
-**In**
-
-```javascript
-const x: number = 0;
-```
-
-**Out**
-
-```javascript
-const x = 0;
-```
-
-## Installation
-
-```sh
-npm install --save-dev @babel/plugin-transform-typescript
-```
-
-## Usage
-
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
-
-```json
-{
-  "plugins": ["@babel/plugin-transform-typescript"]
-}
-```
-
-### Via CLI
-
-```sh
-babel --plugins @babel/plugin-transform-typescript script.js
-```
-
-### Via Node API
-
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-typescript"]
-});
-```
 ## Options
 
 ### `isTSX`
@@ -239,3 +240,5 @@ equivalents in Babel can be enabled by some configuration options or plugins.
 [tsc-options]: https://www.typescriptlang.org/docs/handbook/compiler-options.html
 [namespace]: https://www.typescriptlang.org/docs/handbook/namespaces-and-modules.html
 [not-disappearing]: https://github.com/microsoft/TypeScript/issues/30994#issuecomment-484150549
+[ts]: https://www.typescriptlang.org
+[iso-mods]: https://www.typescriptlang.org/docs/handbook/compiler-options.html
