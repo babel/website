@@ -4,11 +4,28 @@ title: @babel/plugin-transform-typescript
 sidebar_label: transform-typescript
 ---
 
-Does not type-check its input. For that, you will need to install and set up TypeScript.
+This plugin does not type-check its input. For that, you will need to install and [set up TypeScript](https://www.typescriptlang.org).
 
 ## Caveats
 
-* Since Babel does not type-check, invalid TypeScript may successfully get transformed, and often in unexpected or invalid ways. 
+* Since Babel does not type-check, invalid TypeScript may successfully get transformed, and often in unexpected or invalid ways.
+
+* Does not support [`const enum`][const_enum]s because those require type information to compile.
+
+  **Workaround**: Remove the `const`, which makes it available at runtime.
+
+* Does not support [`export =`][exin] and [`import =`][exin], because those cannot be compiled to ES.next.
+
+  **Workaround**: Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
+
+* Behaves as if the `--isolatedModules` option was passed to the TypeScript Compiler. This can't be worked around because Babel doesn't support cross-file analysis.
+
+* Does not load `tsconfig.json` files. Some options are supported in alternative ways: see [`TypeScript Compiler Options`](#typescript-compiler-options)
+
+
+### Impartial Namespace Support
+
+If you have existing code which uses the TypeScript-only [namespace][namespace] features. Babel supports a subset of TypeScript's namespace features. If you are considering writing new code which uses namespace, using the ES2015 `import`/`export` is recommended instead. It's [not going away][not-disappearing], but there are modern alternatives.
 
 * Type-only `namespace`s should be marked with `declare` and will subsequently be safely removed.
 
@@ -83,17 +100,6 @@ Does not type-check its input. For that, you will need to install and set up Typ
   }
   ```
 
-* Does not support [`const enum`][const_enum]s because those require type information to compile.
-
-  **Workaround**: Remove the `const`, which makes it available at runtime.
-
-* Does not support [`export =`][exin] and [`import =`][exin], because those cannot be compiled to ES.next.
-
-  **Workaround**: Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
-
-* Behaves as if the `--isolatedModules` option was passed to the TypeScript Compiler. This can't be worked around because Babel doesn't support cross-file analysis.
-
-* Does not load `tsconfig.json` files. Some options are supported in alternative ways: see [`TypeScript Compiler Options`](#typescript-compiler-options)
 
 ## Example
 
@@ -231,3 +237,5 @@ equivalents in Babel can be enabled by some configuration options or plugins.
 [exin]: https://www.typescriptlang.org/docs/handbook/modules.html#export--and-import--require
 [fm]: https://github.com/Microsoft/dtslint/blob/master/docs/no-single-declare-module.md
 [tsc-options]: https://www.typescriptlang.org/docs/handbook/compiler-options.html
+[namespace]: https://www.typescriptlang.org/docs/handbook/namespaces-and-modules.html
+[not-disappearing]: https://github.com/microsoft/TypeScript/issues/30994#issuecomment-484150549
