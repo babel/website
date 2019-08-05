@@ -55,9 +55,9 @@ require("@babel/core").transform("code", {
 
 ## Caveats
 
-Because there are features of the TypeScript language which rely on the full type-system to be available to make changes at runtime. This section of caveats is quite long, however, it's worth noting that a few of these features are only found in older TypeScript codebases and have modern JavaScript equivilents which you are probably already using.
+Because there are features of the TypeScript language which rely on the full type-system to be available to make changes at runtime. This section of caveats is quite long, however, it's worth noting that a few of these features are only found in older TypeScript codebases and have modern JavaScript equivalents which you are probably already using.
 
-1. Since Babel does not type-check, code which is syntacically correct, but would fail the TypeScript type-checking may successfully get transformed, and often in unexpected or invalid ways.
+1. Since Babel does not type-check, code which is syntactically correct, but would fail the TypeScript type-checking may successfully get transformed, and often in unexpected or invalid ways.
 
 1. This plugin does not support [`const enum`][const_enum]s because those require type information to compile.
 
