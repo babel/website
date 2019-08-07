@@ -2698,7 +2698,7 @@ t.templateElement(value, tail)
 
 See also `t.isTemplateElement(node, opts)` and `t.assertTemplateElement(node, opts)`.
 
- - `value` (required)
+ - `value`: `{ raw: string, cooked: string }` (required)
  - `tail`: `boolean` (default: `false`)
 
 ---
