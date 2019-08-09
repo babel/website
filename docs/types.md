@@ -414,8 +414,7 @@ Aliases: `Private`, `Property`
 
 ### classProperty
 ```javascript
-t.classProperty(key)
-```
+t.classProperty(key)```
 
 See also `t.isClassProperty(node, opts)` and `t.assertClassProperty(node, opts)`.
 

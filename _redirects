@@ -5,8 +5,9 @@
 # Previous versions of the REPL
 /repl/version/:version /repl/ 200
 
-# Ported from redirect_from
-# old.babeljs.io
+# Redirect aliases
+https://new.babeljs.io/* https://babeljs.io/:splat 301!
+https://babel.netlify.com/* https://babeljs.io/:splat 301!
 
 /php.html                           https://old.babeljs.io/php/
 /repl_old.html                      https://old.babeljs.io/repl/
