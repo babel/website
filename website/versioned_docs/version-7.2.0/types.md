@@ -1010,6 +1010,17 @@ Aliases: `Conditional`, `Statement`
 
 ---
 
+### import
+```javascript
+t.import()
+```
+
+See also `t.isImport(node, opts)` and `t.assertImport(node, opts)`.
+
+Aliases: `Expression`
+
+---
+
 ### importDeclaration
 ```javascript
 t.importDeclaration(specifiers, source)
@@ -1943,6 +1954,17 @@ t.stringTypeAnnotation()
 See also `t.isStringTypeAnnotation(node, opts)` and `t.assertStringTypeAnnotation(node, opts)`.
 
 Aliases: `Flow`, `FlowBaseAnnotation`, `FlowType`
+
+---
+
+### super
+```javascript
+t.super()
+```
+
+See also `t.isSuper(node, opts)` and `t.assertSuper(node, opts)`.
+
+Aliases: `Expression`
 
 ---
 

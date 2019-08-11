@@ -206,6 +206,14 @@ const getArgumentsAndReturnType = def => {
       new RegExp(`^export function ${type}\\(`).test(l)
     );
 
+    if (findFunction.length === 0 && (type === "import" || type === "super")) {
+      findFunction.push(
+        `export function ${type}(): ${type
+          .slice(0, 1)
+          .toUpperCase()}${type.slice(1)};`
+      );
+    }
+
     if (findFunction.length === 0) {
       continue;
     }

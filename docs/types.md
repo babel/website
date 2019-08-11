@@ -414,7 +414,8 @@ Aliases: `Private`, `Property`
 
 ### classProperty
 ```javascript
-t.classProperty(key)```
+t.classProperty(key)
+```
 
 See also `t.isClassProperty(node, opts)` and `t.assertClassProperty(node, opts)`.
 
@@ -1005,6 +1006,17 @@ Aliases: `Conditional`, `Statement`
  - `test`: `Expression` (required)
  - `consequent`: `Statement` (required)
  - `alternate`: `Statement` (default: `null`)
+
+---
+
+### import
+```javascript
+t.import()
+```
+
+See also `t.isImport(node, opts)` and `t.assertImport(node, opts)`.
+
+Aliases: `Expression`
 
 ---
 
@@ -1941,6 +1953,17 @@ t.stringTypeAnnotation()
 See also `t.isStringTypeAnnotation(node, opts)` and `t.assertStringTypeAnnotation(node, opts)`.
 
 Aliases: `Flow`, `FlowBaseAnnotation`, `FlowType`
+
+---
+
+### super
+```javascript
+t.super()
+```
+
+See also `t.isSuper(node, opts)` and `t.assertSuper(node, opts)`.
+
+Aliases: `Expression`
 
 ---
 
