@@ -15,7 +15,7 @@ Babel has two parallel config file formats, which can be used together, or indep
 
 ## Project-wide configuration
 
-New in Babel 7.x, Babel has as concept of a ["root"](options.md#root) directory, which defaults
+New in Babel 7.x, Babel has a concept of a ["root"](options.md#root) directory, which defaults
 to the current working directory. For project-wide configuration, Babel will automatically search
 for a `"babel.config.js"` in this root directory. Alternatively, users can use an explicit
 ["configFile"](options.md#configfile) value to override the default config file search behavior.
