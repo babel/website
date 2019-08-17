@@ -33,7 +33,7 @@ Launch a REPL (Read-Eval-Print-Loop).
 npx babel-node
 ```
 
-Install basic dependencies on-the-fly and launch a REPL
+If you prefer not to install `@babel/node` and `@babel/core`, you can install them on-the-fly:
 ```sh
 npx --package=@babel/{core,node,preset-env} babel-node
 ```
