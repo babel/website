@@ -1,6 +1,6 @@
 ---
 id: version-7.0.0-babel-plugin-transform-property-literals
-title: babel-plugin-transform-property-literals
+title: @babel/plugin-transform-property-literals
 sidebar_label: transform-property-literals
 original_id: babel-plugin-transform-property-literals
 ---
@@ -38,7 +38,7 @@ var foo = {
 ## Installation
 
 ```sh
-npm install babel-plugin-transform-property-literals --save-dev
+npm install @babel/plugin-transform-property-literals --save-dev
 ```
 
 ## Usage
@@ -49,21 +49,21 @@ npm install babel-plugin-transform-property-literals --save-dev
 
 ```json
 {
-  "plugins": ["transform-property-literals"]
+  "plugins": ["@babel/plugin-transform-property-literals"]
 }
 ```
 
 ### Via CLI
 
 ```sh
-babel --plugins transform-property-literals script.js
+babel --plugins @babel/plugin-transform-property-literals script.js
 ```
 
 ### Via Node API
 
 ```javascript
 require("@babel/core").transform("code", {
-  plugins: ["transform-property-literals"]
+  plugins: ["@babel/plugin-transform-property-literals"]
 });
 ```
 
