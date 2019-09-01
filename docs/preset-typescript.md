@@ -78,4 +78,10 @@ This is so that we know that the import is not a type import, and should not be 
 
 Indicates that every file should be parsed as TS or TSX (depending on the isTSX option)
 
+### `allowNamespaces`
+
+`boolean`, defaults to `false` but will default to `true` in the [future](https://github.com/babel/notes/blob/master/2019/05/21.md#prs).
+
+Enables compilation of TypeScript namespaces.
+
 > You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
