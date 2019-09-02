@@ -80,7 +80,7 @@ Indicates that every file should be parsed as TS or TSX (depending on the isTSX 
 
 ### `allowNamespaces`
 
-`boolean`, defaults to `false` but will default to `true` in the [future](https://github.com/babel/notes/blob/master/2019/05/21.md#prs).
+`boolean`, uses the default set by [`@babel/plugin-transform-typescript`](https://babeljs.io/docs/en/babel-plugin-transform-typescript#allownamespaces).
 
 Enables compilation of TypeScript namespaces.
 
