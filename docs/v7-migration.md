@@ -60,7 +60,11 @@ If you want to use proposals, you will need to import these independently. You s
 e.g.
 
 ```js
+// for core-js v2:
 import "core-js/fn/array/flat-map";
+
+// for core-js v3:
+import "core-js/features/array/flat-map";
 ```
 
 Below is a list of Stage < 3 proposal polyfills in `core-js` v2.
