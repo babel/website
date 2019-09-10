@@ -86,7 +86,7 @@ const LinkToDocs = ({ className, children, section }: LinkProps) => (
   <a
     className={className}
     target="_blank"
-    href={`https://github.com/babel/babel/tree/master/packages/babel-preset-env#${section}`}
+    href={`/docs/en/next/babel-preset-env.html#${section}`}
   >
     {children}
   </a>
@@ -433,7 +433,7 @@ class ExpandedContainer extends Component<Props, State> {
                   className={`${styles.envPresetColumnLabel} ${
                     styles.envPresetLabel
                   } ${styles.highlight}`}
-                  section="browserslist-support"
+                  section="browserslist-integration"
                 >
                   Browsers
                 </LinkToDocs>
@@ -576,7 +576,7 @@ class ExpandedContainer extends Component<Props, State> {
                 ) : (
                   <LinkToDocs
                     className={`${styles.envPresetLabel} ${styles.highlight}`}
-                    section="shippedProposals"
+                    section="shippedproposals"
                   >
                     Shipped Proposals
                   </LinkToDocs>
