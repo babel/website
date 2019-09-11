@@ -53,7 +53,7 @@ const profile = (
 
 import Preact from 'preact';
 
-const profile = h("div", null,
+const profile = Preact.h("div", null,
   Preact.h("img", { src: "avatar.png", className: "profile" }),
   Preact.h("h3", null, [user.firstName, user.lastName].join(" "))
 );
