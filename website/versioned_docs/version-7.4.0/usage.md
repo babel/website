@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-usage
+id: version-7.4.0-usage
 title: Usage Guide
 original_id: usage
 ---
@@ -151,6 +151,12 @@ module.exports = { presets };
 Now the `env` preset will only load transformation plugins for features that are not available in our target browsers. We're all set for syntax. Let's look at polyfills next.
 
 ## Polyfill
+
+> 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features) and `regenerator-runtime/runtime` (needed to use transpiled generator functions):
+> ```js
+> import "core-js/stable";
+> import "regenerator-runtime/runtime";
+> ```
 
 The [@babel/polyfill](polyfill.md) module includes [core-js](https://github.com/zloirock/core-js) and a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) to emulate a full ES2015+ environment.
 

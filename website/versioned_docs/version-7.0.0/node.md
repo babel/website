@@ -61,7 +61,7 @@ npx babel-node test
 >
 > ```sh
 > NODE_NO_READLINE=1 rlwrap --always-readline npx babel-node
-> 
+> ```
 
 ### Usage
 

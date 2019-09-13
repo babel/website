@@ -61,7 +61,7 @@ const fn = template`
 `;
 
 const ast = fn({
-  IMPORT_NAME: t.identifier("myModule");
+  IMPORT_NAME: t.identifier("myModule"),
 });
 
 console.log(generate(ast).code);

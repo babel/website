@@ -18,10 +18,11 @@ import { addSideEffect } from "@babel/helper-module-imports";
 addSideEffect(path, 'source');
 ```
 
-### `import { named } from "source"`
+### `import { named as _named } from "source"`
 
 ```js
 import { addNamed } from "@babel/helper-module-imports";
+// if the hintedName isn't set, the function will gennerate a uuid as hintedName itself such as '_named'
 addNamed(path, 'named', 'source');
 ```
 

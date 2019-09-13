@@ -148,7 +148,7 @@ Given an [AST](https://astexplorer.net/), transform it.
 
 ```js
 const sourceCode = "if (true) return;";
-const parsedAst = babel.parse(sourceCode, { allowReturnOutsideFunction: true });
+const parsedAst = babel.parse(sourceCode, { parserOpts: { allowReturnOutsideFunction: true } });
 babel.transformFromAst(parsedAst, sourceCode, options, function(err, result) {
   const { code, map, ast } = result;
 });
@@ -167,7 +167,7 @@ Given an [AST](https://astexplorer.net/), transform it.
 
 ```js
 const sourceCode = "if (true) return;";
-const parsedAst = babel.parse(sourceCode, { allowReturnOutsideFunction: true });
+const parsedAst = babel.parse(sourceCode, { parserOpts: { allowReturnOutsideFunction: true } });
 const { code, map, ast } = babel.transformFromAstSync(parsedAst, sourceCode, options);
 ```
 
@@ -179,9 +179,9 @@ Given an [AST](https://astexplorer.net/), transform it.
 
 ```js
 const sourceCode = "if (true) return;";
-babel.parseAsync(sourceCode, { allowReturnOutsideFunction: true })
+babel.parseAsync(sourceCode, { parserOpts: { allowReturnOutsideFunction: true } })
   .then(parsedAst => {
-    return babel.transformFromAstSync(parsedAst, sourceCode, options);
+    return babel.transformFromAstAsync(parsedAst, sourceCode, options);
   })
   .then(({ code, map, ast }) => {
     // ...
