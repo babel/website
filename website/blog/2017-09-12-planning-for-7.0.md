@@ -492,7 +492,7 @@ We're working on a guide for how to setup TypeScript and Babel with the TypeScri
 
 ### "Pure" Annotation in specific transforms for minifiers
 
-After [#6209](https://github.com/babel/babel/pull/6209), ES6 classes that are transpiled will have a `/*#__PURE__*/` comment that minfiers like Uglify and babel-minify can use for dead code elimination. These annotations may expand to our helper functions as well.
+After [#6209](https://github.com/babel/babel/pull/6209), ES6 classes that are transpiled will have a `/*#__PURE__*/` comment that minifiers like Uglify and babel-minify can use for dead code elimination. These annotations may expand to our helper functions as well.
 
 Input
 
