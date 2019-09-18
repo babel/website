@@ -182,7 +182,7 @@ const [replaced] = path.replaceWith(node);
 replace.node === node; // => true
 ```
 
-This is especially useful when inserting serveral nodes into some higher-up scope, since you can immediately call the `Path` APIs on the node's new `Path`.
+This is especially useful when inserting several nodes into some higher-up scope, since you can immediately call the `Path` APIs on the node's new `Path`.
 
 ```js
 const parent = path.findParent(() => /* some selection criteria */);
