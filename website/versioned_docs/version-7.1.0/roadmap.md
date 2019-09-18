@@ -93,7 +93,7 @@ Support having async plugins. Will require it to be opt-in and for all other plu
 ### Plugin Ordering
 
 - Add `before`/`after` keys for plugins so they can specify order.
-- Possibily implement related plugins in the same "plugin" but just expose a flag out to the end-user.
+- Possibly implement related plugins in the same "plugin" but just expose a flag out to the end-user.
 
 ### Babel Helpers (shared code)
 - loader should handle these automatically like rollup
