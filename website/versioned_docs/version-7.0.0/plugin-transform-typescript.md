@@ -108,7 +108,7 @@ using different configuration options or plugins.
 - `--esModuleInterop`
   This is the default behavior of Babel when transpiling ECMAScript modules.
 - `--experimentalDecorators`
-  This option enables support for the "legacy" decorator proposal. You can enable it in Babel using the `@babel/plugin-proposal-decorators` plugin, altought there are some minor differences.
+  This option enables support for the "legacy" decorator proposal. You can enable it in Babel using the `@babel/plugin-proposal-decorators` plugin, although there are some minor differences.
   ```js
   module.exports = {
     plugins: [
