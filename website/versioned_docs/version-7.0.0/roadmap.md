@@ -180,7 +180,7 @@ References: https://github.com/eslint/eslint-github-bot, https://github.com/open
 ### Maintainers/Sustainability
 
 - Promote Open Collective, talking with companies about office hours, sponsorship, contracting?
-- Mentoring: Google Summer of Code/Rails Girls Summer of Code were great but was hard to keep up with volunteeers and I felt like we could be doing a lot more with full time help.
+- Mentoring: Google Summer of Code/Rails Girls Summer of Code were great but was hard to keep up with volunteers and I felt like we could be doing a lot more with full time help.
 - Maybe doing local meetups on contributing, or livestreaming development/maintenance work?
 - Should focus on bringing in maintainers that will lower the burden, not increase it even if there is upfront work
 
