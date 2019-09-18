@@ -11,7 +11,7 @@ original_id: babel-plugin-syntax-throw-expressions
 
 ```js
 function test(param = throw new Error('required!')) {
-  const test = param === true || throw new Error('Falsey!');
+  const test = param === true || throw new Error('Falsy!');
 }
 ```
 
