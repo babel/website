@@ -91,7 +91,7 @@ function Greeter(greeting: string) {
 }
 ```
 
-> Learn more about [Flow](http://flowtype.org/) and [TypeScript](https://www.typescriptlang.org/)
+> Learn more about [Flow](https://flow.org/) and [TypeScript](https://www.typescriptlang.org/)
 
 Pluggable
 ---------
