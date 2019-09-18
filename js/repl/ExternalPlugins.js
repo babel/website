@@ -53,7 +53,7 @@ export default class ExternalPlugins extends React.Component<Props, State> {
     return (
       <button
         className={currentStyles.modalButton}
-        disbled={isLoading}
+        disabled={isLoading}
         onClick={this.handleOpenModal}
       >
         {isLoading ? "Loading Plugin..." : "Add Plugin"}
