@@ -671,4 +671,4 @@ Follow our meeting notes/discussions on [babel/notes](https://github.com/babel/n
 
 ## Thanks!
 
-I'm hopeful that we can do the official release soon, but I'd like to mention that open source is sustained by consistent, day-to-day maintenance and not just a hyped-up release cycle where we just leave everyone else in the dust and move on so it may take a little longer as we wait to fixup bugs and upgrade the ecoystem.
+I'm hopeful that we can do the official release soon, but I'd like to mention that open source is sustained by consistent, day-to-day maintenance and not just a hyped-up release cycle where we just leave everyone else in the dust and move on so it may take a little longer as we wait to fixup bugs and upgrade the ecosystem.
