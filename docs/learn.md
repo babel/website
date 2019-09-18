@@ -293,7 +293,7 @@ for (var n of fibonacci) {
 ```
 
 Iteration is based on these duck-typed interfaces (using
-[TypeScript](http://typescriptlang.org) type syntax for exposition only):
+[TypeScript](https://www.typescriptlang.org/) type syntax for exposition only):
 
 ```ts
 interface IteratorResult {
@@ -346,7 +346,7 @@ for (var n of fibonacci) {
 }
 ```
 
-The generator interface is (using [TypeScript](http://typescriptlang.org) type
+The generator interface is (using [TypeScript](https://www.typescriptlang.org/) type
 syntax for exposition only):
 
 ```ts
