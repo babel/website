@@ -14,7 +14,7 @@ Babel has really come a long way since [Sebastian](https://github.com/kittens) s
 
 <!--truncate-->
 
-And now it's even helping move the language forward by supporting the proposals coming from TC39. We're looking forward to being able to particpate more in [TC39 meetings](https://twitter.com/loganfsmyth/status/844252727186149377).
+And now it's even helping move the language forward by supporting the proposals coming from TC39. We're looking forward to being able to participate more in [TC39 meetings](https://twitter.com/loganfsmyth/status/844252727186149377).
 
 We're really happy to see that the project itself has grown so much since [last year](https://babeljs.io/blog/2016/09/28/6.16.0)!
 
