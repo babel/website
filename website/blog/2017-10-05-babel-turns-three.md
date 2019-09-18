@@ -10,7 +10,7 @@ share_text: "Babel Turns Three"
 
 > Happy Birthday Babel! 🎂 (Sept 28)
 
-Babel has really come a long way since [Sebastian](https://github.com/kittens) started the project only 3 years ago! A while back it was renamed from [6to5 to Babel](https://babeljs.io/blog/2015/02/15/not-born-to-die); for good reason as it has signficantly contributed to the use of ES2015+ by [many companies](https://babeljs.io/users), libraries, and developers alike.
+Babel has really come a long way since [Sebastian](https://github.com/kittens) started the project only 3 years ago! A while back it was renamed from [6to5 to Babel](https://babeljs.io/blog/2015/02/15/not-born-to-die); for good reason as it has significantly contributed to the use of ES2015+ by [many companies](https://babeljs.io/users), libraries, and developers alike.
 
 <!--truncate-->
 
