@@ -655,7 +655,7 @@ Can we combine/replace these packages and have an easier, default experience?
 
 We want the community to upgrade and provide their feedback/reports. There will probably be a lot of initial activity which can be overwhelming so please be patient with us. We'd appreciate the help in helping triage, write docs/upgrade guides/tips, and codemods to help others upgrade more seamlessly. Because Babel touches a lot of the JavaScript ecosystem, it may not be as simple as simply updating one package because it could depend on other community Babel plugins on npm. We're not going to just wait around for a month and hope people upgrade, there's a lot of work to be done to make this happen without half the community still staying on 6.x next year. I'd not like to leave projects (and people) behind. So let us know what we can do to help, and I'd ask that you'd do the same for us and the rest of the community.
 
-## Project Sustainibility
+## Project Sustainability
 
 Shoutout to my team at [Behance](https://www.behance.net) for allowing me to work on Babel part-time at work; we're still basically the only company working to sustain Babel in any capacity on work time. I'm really glad to be able to support the project at work instead of only after work/weekends, and hope this can be the case for more maintainers in the future. (I hope we've been a good example of how companies can support the open source projects they use and not necessarily "own").
 
