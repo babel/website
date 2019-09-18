@@ -21,7 +21,7 @@ module.exports = function(api) {
           corejs: 3,
           shippedProposals: true,
           targets: {
-            // This is browserlist defaults
+            // This is browserslist defaults
             browsers: ["> 0.5%", "last 2 versions", "Firefox ESR", "not dead"],
           },
         },

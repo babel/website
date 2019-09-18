@@ -185,7 +185,7 @@ Relevant Issues:
 
 - Next big feature: apply the same idea of preset-env to polyfills as well [babel/babel-preset-env#20](https://github.com/babel/babel-preset-env/issues/20) with corresponding PR in [babel/babel-preset-env#56](https://github.com/babel/babel-preset-env/pull/56).
 - [Using browserslist](https://github.com/babel/babel-preset-env/issues/26) and [PR](https://github.com/babel/babel-preset-env/pull/51)
-- ["Node.js versions support" in Browserlist](https://github.com/ai/browserslist/issues/75)
+- ["Node.js versions support" in Browserslist](https://github.com/ai/browserslist/issues/75)
 - [Publish runnable tests & browser data to npm](https://github.com/kangax/compat-table/issues/711)
 
 ### Linting via [babel-eslint](https://github.com/babel/babel-eslint)
