@@ -72,7 +72,7 @@ This will give us a few things:
 > Add a new option in `preset-env`: will continue to compile if the native support is *slower*. Can setup a threshold, may need to compare against the size difference.
 
 - Use [six-speed](https://github.com/kpdecker/six-speed) repo as a base, needs to apply for ES6 and proposals
-- Need continued maintainence
+- Need continued maintenance
 
 ### Compiled Output Stats
 

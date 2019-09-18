@@ -21,7 +21,7 @@ Mentioned these in [babel/notes](https://github.com/babel/notes/blob/master/2017
 - Also use data from test262?
 - Run tests against real browsers
 - have a data-only format
-- Need continued maintainence
+- Need continued maintenance
 
 ### Polyfill behavior
 
@@ -77,7 +77,7 @@ Mentioned these in [babel/notes](https://github.com/babel/notes/blob/master/2017
 > Add a new option in `preset-env`: will continue to compile if the native support is *slower*. Can setup a threshold, may need to compare against the size difference.
 
 - Use [six-speed](https://github.com/kpdecker/six-speed) repo as a base, needs to apply for ES6 and proposals
-- Need continued maintainence
+- Need continued maintenance
 
 ### Compiled Output Stats
 
