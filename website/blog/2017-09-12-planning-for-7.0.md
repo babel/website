@@ -234,7 +234,7 @@ Input
 const size = import.meta.scriptElement.dataset.size || 300;
 ```
 
-### Stage 2: Numeric Seperators (new)
+### Stage 2: Numeric Separators (new)
 
 > [`babel-plugin-transform-numeric-separator`](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-numeric-separator): make numeric literals more readable by creating a visual separation (a `_`) between groups of digits.
 
