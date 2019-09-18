@@ -61,7 +61,7 @@ If you're interested in helping out please check out the issues linked below!
 
 [TC39](https://github.com/tc39) stands for Ecma International, Technical Committee 39: it's the committee that makes JavaScript.
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/b0rk">@b0rk</a> Short answers:<br><br>Who&#39;s there? Engine implementors, developers, a handful of academics and theorists, and <a href="https://twitter.com/BrendanEich">@BrendanEich</a>.</p>&mdash; Yehuda Katz (@wycats) <a href="https://twitter.com/wycats/status/803821500394598401">November 30, 2016</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/b0rk">@b0rk</a> Short answers:<br><br>Who&#39;s there? Engine implementers, developers, a handful of academics and theorists, and <a href="https://twitter.com/BrendanEich">@BrendanEich</a>.</p>&mdash; Yehuda Katz (@wycats) <a href="https://twitter.com/wycats/status/803821500394598401">November 30, 2016</a></blockquote>
 
 Babel uses [TC39's concept of stages](http://babeljs.io/docs/plugins/#stage-x-experimental-presets-) to categorize its experimental plugins. Users should be able to easily use features before they are all implemented in browsers in [stage 4 of the TC39 process](https://tc39.github.io/process-document/).
 

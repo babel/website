@@ -85,7 +85,7 @@ What else do you want to hear about? Who do you want to hear from?
     - Ecosystem alignment: how is the language shaped by tools, libraries, other use cases other than the web?
 - History of Committee Itself
     - Transitions: using a Word doc to GitHub, using TCQ, the "how we work" repo
-    - Growth of committee over the years (language designers, implementors, practitioners, educators, combination)
+    - Growth of committee over the years (language designers, implementers, practitioners, educators, combination)
     - Specific proposals: Object.observe, etc?
 - Presenting a Proposal
     - Explaining the problem space
