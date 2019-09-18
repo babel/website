@@ -178,7 +178,7 @@ const currentStyles = {
     a,
     a:visited {
       color: #fff;
-      cursor: poitner;
+      cursor: pointer;
     }
   `,
 };
