@@ -677,3 +677,6 @@
 - name: Taskade
   url: https://taskade.com
   logo: taskade-logo.svg
+- name: Skype
+  url: https://www.skype.com
+  logo: skype-logo.svg
