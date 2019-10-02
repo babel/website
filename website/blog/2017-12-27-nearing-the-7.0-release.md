@@ -61,9 +61,9 @@ Please reach out to help and to post issues when trying to update! This is a gre
 - Updated [TC39 proposals](https://github.com/babel/proposals/issues)
   - Numeric Separator: `1_000`
   - Optional Chaining Operator: `a?.b`
-  - `import.meta` (parseble)
+  - `import.meta` (parsable)
   - Optional Catch Binding: `try { a } catch {}`
-  - BigInt (parseble): `2n`
+  - BigInt (parsable): `2n`
   - Split export extensions into `export-default-from` and `export-ns-form`
 - `.babelrc.js` support (a config using JavaScript instead of JSON)
 - Added a new Typescript Preset + separated the React/Flow presets

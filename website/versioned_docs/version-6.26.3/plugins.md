@@ -33,7 +33,7 @@ We've assembled some for common environments:
 
 ### Stage-X (Experimental Presets)
 
-Any transforms in stage-x presets are changes to the language that haven't been approved to be part of a release of Javascript (such as ES6/ES2015).
+Any transforms in stage-x presets are changes to the language that haven't been approved to be part of a release of JavaScript (such as ES6/ES2015).
 
 > "Changes to the language are developed by way of a process which provides guidelines for evolving an addition from an idea to a fully specified feature"
 

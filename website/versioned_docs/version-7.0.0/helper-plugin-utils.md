@@ -11,7 +11,7 @@ but it is means to provide clear error messages if a plugin is run on a version
 of Babel that doesn't have the APIs that the plugin is trying to use.
 
 Every one of Babel's core plugins and presets will use this module, and ideally
-because of that its size should be kept to a miminum because this may or may
+because of that its size should be kept to a minimum because this may or may
 not be deduplicated when installed.
 
 

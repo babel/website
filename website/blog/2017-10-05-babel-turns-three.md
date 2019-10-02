@@ -10,11 +10,11 @@ share_text: "Babel Turns Three"
 
 > Happy Birthday Babel! 🎂 (Sept 28)
 
-Babel has really come a long way since [Sebastian](https://github.com/kittens) started the project only 3 years ago! A while back it was renamed from [6to5 to Babel](https://babeljs.io/blog/2015/02/15/not-born-to-die); for good reason as it has signficantly contributed to the use of ES2015+ by [many companies](https://babeljs.io/users), libraries, and developers alike.
+Babel has really come a long way since [Sebastian](https://github.com/kittens) started the project only 3 years ago! A while back it was renamed from [6to5 to Babel](https://babeljs.io/blog/2015/02/15/not-born-to-die); for good reason as it has significantly contributed to the use of ES2015+ by [many companies](https://babeljs.io/users), libraries, and developers alike.
 
 <!--truncate-->
 
-And now it's even helping move the language forward by supporting the proposals coming from TC39. We're looking forward to being able to particpate more in [TC39 meetings](https://twitter.com/loganfsmyth/status/844252727186149377).
+And now it's even helping move the language forward by supporting the proposals coming from TC39. We're looking forward to being able to participate more in [TC39 meetings](https://twitter.com/loganfsmyth/status/844252727186149377).
 
 We're really happy to see that the project itself has grown so much since [last year](https://babeljs.io/blog/2016/09/28/6.16.0)!
 
@@ -72,7 +72,7 @@ We've accomplished a lot, but we have to continue to work in multiple ways to ma
 
 ## Future Ideas
 
-- Providing a ["metadata" plugin](https://github.com/babel/notes/issues/34) for users to grep for patterns in their codebases. This will be useful to figure out how people are using certain proposals (similar to what was done in [tc39/proposal-optional-chaining#17](https://github.com/tc39/proposal-optional-chaining/issues/17) for coffescript regarding `?.`)
+- Providing a ["metadata" plugin](https://github.com/babel/notes/issues/34) for users to grep for patterns in their codebases. This will be useful to figure out how people are using certain proposals (similar to what was done in [tc39/proposal-optional-chaining#17](https://github.com/tc39/proposal-optional-chaining/issues/17) for CoffeeScript regarding `?.`)
 - Better codemod support for all proposals: ideally each proposal plugin should come with a plugin to remove/compile the proposal away if a proposal gets dropped or the syntax changes. Similarly, we can provide a codemod to automatically convert syntax over to the new proposal as well (ideally using [lebab](https://lebab.io))
 - Figuring out tooling for publishing ES2015+ and how that interacts with polyfills, transform-runtime, babel-preset-env, npm, .mjs
 - Fixing plugin ordering, traversal edge cases, `babel` package, `babel --init`, performance/size stats.

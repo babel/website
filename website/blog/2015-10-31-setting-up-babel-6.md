@@ -82,7 +82,7 @@ $ npm install --save-dev babel-preset-es2015
 }
 ```
 
-To Include all Javascript versions:
+To Include all JavaScript versions:
 
 ```sh
 $ npm install --save-dev babel-preset-env

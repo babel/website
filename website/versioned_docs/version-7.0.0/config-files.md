@@ -131,7 +131,7 @@ module.exports = function(api) {
 }
 ```
 
-The `api` object exposes everthing Babel itself exposes from its index module, along with
+The `api` object exposes everything Babel itself exposes from its index module, along with
 config-file specific APIs:
 
 ### `api.version`

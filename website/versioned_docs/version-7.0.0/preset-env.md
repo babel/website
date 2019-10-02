@@ -312,7 +312,7 @@ Don't add polyfills automatically per file, or transform `import "@babel/polyfil
 <p><details>
   <summary><b>Example</b></summary>
 
-With Babel 7's [Javascipt config file](config-files#javascript) support, you can force all transforms to be run if env is set to `production`.
+With Babel 7's [JavaScript config file](config-files#javascript) support, you can force all transforms to be run if env is set to `production`.
 
 ```js
 module.exports = function(api) {

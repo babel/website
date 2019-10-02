@@ -73,7 +73,7 @@ Because there are features of the TypeScript language which rely on the full typ
 
 1. **Q**: Why doesn't Babel allow export of a `var` or `let`?
   
-   **A**: The TypeScript compiler dynamically changes how these variables are used depending on whether or not the value is mutated. Ultimately, this depends on a type-model and is outside the scope of Babel. A best-effort implementation would transform context-dependent usages of the variable to always use the `Namespace.Value` version instead of `Value`, in case it was mutated outside of the current file. Allowing `var` or `let` from Babel (as the transform is not-yet-written) is therefor is more likely than not to present itself as a bug when used as-if it was not `const`.
+   **A**: The TypeScript compiler dynamically changes how these variables are used depending on whether or not the value is mutated. Ultimately, this depends on a type-model and is outside the scope of Babel. A best-effort implementation would transform context-dependent usages of the variable to always use the `Namespace.Value` version instead of `Value`, in case it was mutated outside of the current file. Allowing `var` or `let` from Babel (as the transform is not-yet-written) is therefore is more likely than not to present itself as a bug when used as-if it was not `const`.
 
 
 ### Impartial Namespace Support

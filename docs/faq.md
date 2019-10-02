@@ -8,7 +8,7 @@ id: faq
 In order to comply with the specification, the iterator's return method must be
 called on errors. An alternative is to enable [loose mode](plugin-transform-for-of.md#loose)
 but please note that there are **many** caveats to be aware of if you enable
-loose mode and that you're willingly choosing to be spec incompliant.
+loose mode and that you're willingly choosing not to comply with the spec.
 
 Please see [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) and
 [babel/babel#838](https://github.com/babel/babel/issues/838) for more information.

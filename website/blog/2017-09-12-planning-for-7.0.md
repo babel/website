@@ -165,7 +165,7 @@ Input
 try {
   throw 0;
 } catch {
-  doSomethingWhichDoesntCareAboutTheValueThrown();
+  doSomethingWhichDoesNotCareAboutTheValueThrown();
 }
 ```
 
@@ -175,7 +175,7 @@ Output
 try {
   throw 0;
 } catch (_unused) {
-  doSomethingWhichDoesntCareAboutTheValueThrown();
+  doSomethingWhichDoesNotCareAboutTheValueThrown();
 }
 ```
 
@@ -234,7 +234,7 @@ Input
 const size = import.meta.scriptElement.dataset.size || 300;
 ```
 
-### Stage 2: Numeric Seperators (new)
+### Stage 2: Numeric Separators (new)
 
 > [`babel-plugin-transform-numeric-separator`](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-numeric-separator): make numeric literals more readable by creating a visual separation (a `_`) between groups of digits.
 
@@ -492,7 +492,7 @@ We're working on a guide for how to setup TypeScript and Babel with the TypeScri
 
 ### "Pure" Annotation in specific transforms for minifiers
 
-After [#6209](https://github.com/babel/babel/pull/6209), ES6 classes that are transpiled will have a `/*#__PURE__*/` comment that minfiers like Uglify and babel-minify can use for dead code elimination. These annotations may expand to our helper functions as well.
+After [#6209](https://github.com/babel/babel/pull/6209), ES6 classes that are transpiled will have a `/*#__PURE__*/` comment that minifiers like Uglify and babel-minify can use for dead code elimination. These annotations may expand to our helper functions as well.
 
 Input
 
@@ -655,7 +655,7 @@ Can we combine/replace these packages and have an easier, default experience?
 
 We want the community to upgrade and provide their feedback/reports. There will probably be a lot of initial activity which can be overwhelming so please be patient with us. We'd appreciate the help in helping triage, write docs/upgrade guides/tips, and codemods to help others upgrade more seamlessly. Because Babel touches a lot of the JavaScript ecosystem, it may not be as simple as simply updating one package because it could depend on other community Babel plugins on npm. We're not going to just wait around for a month and hope people upgrade, there's a lot of work to be done to make this happen without half the community still staying on 6.x next year. I'd not like to leave projects (and people) behind. So let us know what we can do to help, and I'd ask that you'd do the same for us and the rest of the community.
 
-## Project Sustainibility
+## Project Sustainability
 
 Shoutout to my team at [Behance](https://www.behance.net) for allowing me to work on Babel part-time at work; we're still basically the only company working to sustain Babel in any capacity on work time. I'm really glad to be able to support the project at work instead of only after work/weekends, and hope this can be the case for more maintainers in the future. (I hope we've been a good example of how companies can support the open source projects they use and not necessarily "own").
 
@@ -671,4 +671,4 @@ Follow our meeting notes/discussions on [babel/notes](https://github.com/babel/n
 
 ## Thanks!
 
-I'm hopeful that we can do the official release soon, but I'd like to mention that open source is sustained by consistent, day-to-day maintenance and not just a hyped-up release cycle where we just leave everyone else in the dust and move on so it may take a little longer as we wait to fixup bugs and upgrade the ecoystem.
+I'm hopeful that we can do the official release soon, but I'd like to mention that open source is sustained by consistent, day-to-day maintenance and not just a hyped-up release cycle where we just leave everyone else in the dust and move on so it may take a little longer as we wait to fixup bugs and upgrade the ecosystem.

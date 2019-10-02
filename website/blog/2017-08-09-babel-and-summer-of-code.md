@@ -74,7 +74,7 @@ In the meantime, they've already done all the necessary work to implement the ne
 - Hopefully it inspires some to get involved as a result of the program, and for others to step up as mentors/maintainers (ideally from the hundreds of top companies that use this project everyday) to bring people in.
 - Ultimately, this is just about building a community and making a great experience for our students/interns.
 
-It takes a lot of work to get involved in any community, and it's up to the people aleady involved to make this as easy as possible to join in. It requires one to spend the time to meet people where they are at (in many ways), not just write code but to invest in others. A community is about the people, and open source is about the community.
+It takes a lot of work to get involved in any community, and it's up to the people already involved to make this as easy as possible to join in. It requires one to spend the time to meet people where they are at (in many ways), not just write code but to invest in others. A community is about the people, and open source is about the community.
 
 Participating in Summer of Code gives us a great opportunity to make this happen, and we're continuously working on improving.
 

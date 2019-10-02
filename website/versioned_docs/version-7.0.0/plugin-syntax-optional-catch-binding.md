@@ -17,7 +17,7 @@ original_id: babel-plugin-syntax-optional-catch-binding
 try {
   throw 0;
 } catch {
-  doSomethingWhichDoesntCareAboutTheValueThrown();
+  doSomethingWhichDoesNotCareAboutTheValueThrown();
   console.log("Yay, code executes!");
 }
 ```

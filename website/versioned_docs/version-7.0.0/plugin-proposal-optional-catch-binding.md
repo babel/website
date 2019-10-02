@@ -12,7 +12,7 @@ original_id: babel-plugin-proposal-optional-catch-binding
 try {
   throw 0;
 } catch {
-  doSomethingWhichDoesntCareAboutTheValueThrown();
+  doSomethingWhichDoesNotCareAboutTheValueThrown();
 }
 ```
 
@@ -20,7 +20,7 @@ try {
 try {
   throw 0;
 } catch {
-  doSomethingWhichDoesntCareAboutTheValueThrown();
+  doSomethingWhichDoesNotCareAboutTheValueThrown();
 } finally {
   doSomeCleanup();
 }

@@ -16,7 +16,7 @@ We didn't make this decision lightly and wanted to show the context behind the i
 
 ## Some History
 
-A Babel preset is a shareable list of plugins.
+A Babel preset is a sharable list of plugins.
 
 The [official Babel Stage presets](https://babeljs.io/docs/en/next/presets) tracked the [TC39 Staging process](https://tc39.github.io/process-document/) for new [syntax proposals](https://github.com/tc39/proposals) in JavaScript.
 

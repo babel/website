@@ -61,7 +61,7 @@ If you're interested in helping out please check out the issues linked below!
 
 [TC39](https://github.com/tc39) stands for Ecma International, Technical Committee 39: it's the committee that makes JavaScript.
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/b0rk">@b0rk</a> Short answers:<br><br>Who&#39;s there? Engine implementors, developers, a handful of academics and theorists, and <a href="https://twitter.com/BrendanEich">@BrendanEich</a>.</p>&mdash; Yehuda Katz (@wycats) <a href="https://twitter.com/wycats/status/803821500394598401">November 30, 2016</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/b0rk">@b0rk</a> Short answers:<br><br>Who&#39;s there? Engine implementers, developers, a handful of academics and theorists, and <a href="https://twitter.com/BrendanEich">@BrendanEich</a>.</p>&mdash; Yehuda Katz (@wycats) <a href="https://twitter.com/wycats/status/803821500394598401">November 30, 2016</a></blockquote>
 
 Babel uses [TC39's concept of stages](http://babeljs.io/docs/plugins/#stage-x-experimental-presets-) to categorize its experimental plugins. Users should be able to easily use features before they are all implemented in browsers in [stage 4 of the TC39 process](https://tc39.github.io/process-document/).
 
@@ -185,7 +185,7 @@ Relevant Issues:
 
 - Next big feature: apply the same idea of preset-env to polyfills as well [babel/babel-preset-env#20](https://github.com/babel/babel-preset-env/issues/20) with corresponding PR in [babel/babel-preset-env#56](https://github.com/babel/babel-preset-env/pull/56).
 - [Using browserslist](https://github.com/babel/babel-preset-env/issues/26) and [PR](https://github.com/babel/babel-preset-env/pull/51)
-- ["Node.js versions support" in Browserlist](https://github.com/ai/browserslist/issues/75)
+- ["Node.js versions support" in Browserslist](https://github.com/ai/browserslist/issues/75)
 - [Publish runnable tests & browser data to npm](https://github.com/kangax/compat-table/issues/711)
 
 ### Linting via [babel-eslint](https://github.com/babel/babel-eslint)
@@ -516,7 +516,7 @@ Old Issues:
 
 You might think that as [a project gets more widely used](https://npm-stat.com/charts.html?package=babel-core&from=2015-02-07&to=2016-12-07) that more people show up to help out. But like most OSS projects that aren't backed by a company, there is a constant issue with maintenance and sustainability; people get burned out, move on to other cool projects, or get busy with work/family/etc.
 
-Like James describes in [Dear Javascript](https://medium.com/@thejameskyle/dear-javascript-7e14ffcae36c), the current Babel team is pretty small.
+Like James describes in [Dear JavaScript](https://medium.com/@thejameskyle/dear-javascript-7e14ffcae36c), the current Babel team is pretty small.
 
 > Babel isn't a company, a special team at Facebook, or corporate-funded OSS project. It's a community-driven effort currently held up by a few people and we want that to grow.
 

@@ -149,7 +149,7 @@ promise |> await #;
 
 If there are any operators, parentheses (including for method calls), brackets, or anything other than identifiers and dot punctuators, then a topic token is necessary. This avoids footguns and eliminate ambiguity when not using a topic token.
 
-Smart pipelines thus resolve the issue of async in an integrative way, allowing all possible expressions to be emedded in a pipeline; not only `await`, but also `typeof`, `yield`, and another other operator desired.
+Smart pipelines thus resolve the issue of async in an integrative way, allowing all possible expressions to be embedded in a pipeline; not only `await`, but also `typeof`, `yield`, and another other operator desired.
 
 ## Where Babel Comes In
 

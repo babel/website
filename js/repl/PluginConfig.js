@@ -21,7 +21,7 @@ const envPresetConfig: PluginConfig = {
   instanceName: "babelPresetEnv",
 };
 
-/* Some of stage-3 plugins've been added to @babel/standalone gradually. If a new
+/* Some of stage-3 plugins have been added to @babel/standalone gradually. If a new
  * shippedProposal is added, add it to this list.
  */
 const shippedProposalsPackages: Array<PluginConfig> = [
