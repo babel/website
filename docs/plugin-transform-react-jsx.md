@@ -196,7 +196,7 @@ When spreading props, use `Object.assign` directly instead of Babel's extend hel
 
 `boolean`, defaults to `true`.
 
-Toggles whether or not to throw an error if a XML namespaced tag name is used. For example:
+Toggles whether or not to throw an error if an XML namespaced tag name is used. For example:
 
     <f:image />
 
