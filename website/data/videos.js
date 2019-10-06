@@ -3,6 +3,15 @@ const videos = [
     category: "Conferences",
     items: [
       {
+        title: "I Can Babel Macros (and So Can You!)",
+        author: "Shawn Wang",
+        author_link: "https://twitter.com/swyx",
+        year: "2019",
+        event: "JSConf Hawaii",
+        event_link: "https://2019.jsconfhi.com/",
+        link: "https://www.youtube.com/watch?v=1WNT5RCENfo",
+      },
+      {
         title: "10KB or Bust: The Delicate Power of Webpack and Babel",
         author: "Brian Holt",
         author_link: "http://twitter.com/holtbt",
