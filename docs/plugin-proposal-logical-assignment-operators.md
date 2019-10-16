@@ -14,18 +14,24 @@ obj.a.b ||= c;
 
 a &&= b;
 obj.a.b &&= c;
+
+a ??= b;
+obj.a.b ??= c;
 ```
 
 **Out**
 
 ```javascript
-var _obj$a, _obj$a2;
+var _obj$a, _obj$a2, _a, _obj$a3, _b;
 
 a || (a = b);
 (_obj$a = obj.a).b || (_obj$a.b = c);
 
 a && (a = b);
 (_obj$a2 = obj.a).b && (_obj$a2.b = c);
+
+(_a = a) !== null && _a !== void 0 ? _a : a = b;
+(_b = (_obj$a = obj.a).b) !== null && _b !== void 0 ? _b : _obj$a.b = c;
 ```
 
 ## Installation
