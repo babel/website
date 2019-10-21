@@ -229,14 +229,14 @@ This option is useful for "blacklisting" a transform like `@babel/plugin-transfo
 
 `"usage"` | `"entry"` | `false`, defaults to `false`.
 
-This option configures how `@babel/preset-env` imports various polyfills in your generated code.
+This option configures how `@babel/preset-env` imports polyfills and runtime support into your generated code.
 
-Specifically, this option supports the following external polyfill packages:
+Specifically, this option supports the following external packages:
 
 - `core-js`: For standard JS built-ins
-- `regenerator`: For generator and `async`/`await` support
+- `regenerator-runtime`: For generator and `async`/`await` support
 
-Since these polyfills do not come with Babel or `@babel/preset-env` itself, they'll need to be installed as production-level dependencies. This way, when the Babel-generated code imports them, they'll be accessible (in `node_modules`).
+Since these packages do not come with Babel or `@babel/preset-env` itself, they'll need to be installed as production-level dependencies. This way, when the Babel-generated code imports them, they'll be accessible (in `node_modules`).
 
 ```sh
 npm install core-js regenerator --save
@@ -251,7 +251,7 @@ npm install core-js regenerator --save
 > Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
 > We recommend creating a single entry file that only contains the `import` statements.
 
-This option enables a new plugin that replaces the `import "core-js";` and `import "regenerator-runtime/runtime"` statements with only what's needed from each of them, depending on the target environments.
+This option enables a new plugin that replaces the `import "core-js"` and `import "regenerator-runtime/runtime"` statements with only what's needed from each of them, depending on the target environments.
 
 **In**
 
