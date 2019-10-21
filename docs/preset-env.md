@@ -239,7 +239,7 @@ Specifically, this option supports the following external packages:
 Since these packages do not come with Babel or `@babel/preset-env` itself, they'll need to be installed as production-level dependencies. This way, when the Babel-generated code imports them, they'll be accessible (in `node_modules`).
 
 ```sh
-npm install core-js regenerator --save
+npm install core-js regenerator-runtime --save
 ```
 
 > NOTE: Previously, these would be installed via `@babel/polyfill`, which is now deprecated. The above method of installing these polyfill packages is the recommended way.
