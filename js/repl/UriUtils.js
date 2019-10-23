@@ -5,7 +5,7 @@ import LZString from "lz-string";
 import type { ReplState } from "./types";
 
 const URL_KEYS = [
-  "babili",
+  "minify",
   "browsers",
   "build",
   "builtIns",
