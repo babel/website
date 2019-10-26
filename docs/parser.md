@@ -34,9 +34,10 @@ mind. When in doubt, use `.parse()`.
   declarations can only appear at a program's top level. Setting this
   option to `true` allows them anywhere where a statement is allowed.
 
-- **allowAwaitOutsideFunction**: By default, `await` use is not allowed
-  outside of an async function. Set this to `true` to accept such
-  code.
+- **allowAwaitOutsideFunction**: By default, `await` use is only allowed
+  inside of an async function or, when the `topLevelAwait` plugin is enabled,
+  in the top-level scope of modules. Set this to `true` to also acept it in the
+  top-level scope of scripts.
 
 - **allowReturnOutsideFunction**: By default, a return statement at
   the top level raises an error. Set this to `true` to accept such
@@ -174,6 +175,7 @@ require("@babel/parser").parse("code", {
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32)) | `f(?, a)` |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | <code>a &#124;> b</code> |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
+| `topLevelAwait` ([proposal])(https://github.com/tc39/proposal-top-level-await/) | `await promise` in modules |
 
 #### Plugins options
 
