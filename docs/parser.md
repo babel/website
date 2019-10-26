@@ -54,14 +54,20 @@ mind. When in doubt, use `.parse()`.
   to set this option to `true` to prevent the parser from prematurely
   complaining about undeclared exports that will be added later.
 
+- **errorRecovery**: By default, Babel always throws an error when it finds some invalid
+  code. When this option is set to `true`, it will store the parsing error and try to continue
+  parsing the invalid input file.
+  The resulting AST will have an `errors` property representing an array of all the parsing errors.
+  Note that even when this option is enabled, `@babel/parser` could throw for unrecoverable errors.
+
+- **plugins**: Array containing the plugins that you want to enable.
+
 - **sourceType**: Indicate the mode the code should be parsed in. Can be
   one of `"script"`, `"module"`, or `"unambiguous"`. Defaults to `"script"`. `"unambiguous"` will make @babel/parser attempt to _guess_, based on the presence of ES6 `import` or `export` statements. Files with ES6 `import`s and `export`s are considered `"module"` and are otherwise `"script"`.
 
 - **sourceFilename**: Correlate output AST nodes with their source filename.  Useful when generating code and source maps from the ASTs of multiple input files.
 
 - **startLine**: By default, the first line of code parsed is treated as line 1. You can provide a line number to alternatively start with. Useful for integration with other source tools.
-
-- **plugins**: Array containing the plugins that you want to enable.
 
 - **strictMode**: By default, ECMAScript code is parsed as strict only if a
   `"use strict";` directive is present or if the parsed file is an ECMAScript
