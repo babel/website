@@ -90,6 +90,12 @@ Replace the component used when compiling JSX fragments.
 
 Will use the native built-in instead of trying to polyfill behavior for any plugins that require one.
 
+### `useSpread`
+
+`boolean`, defaults to `false`.
+
+When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
+
 ### `development`
 
 `boolean`, defaults to `false`.
