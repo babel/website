@@ -167,7 +167,12 @@ const SponsorTier = props => {
       <ul className={`sponsors-tier tier-${props.tier}`}>
         {tierSponsors.map((sponsor, i) => (
           <li key={i}>
-            <a href={sponsor.url} title={sponsor.name} target="_blank">
+            <a
+              href={sponsor.url}
+              title={sponsor.name}
+              target="_blank"
+              rel="noopener sponsored"
+            >
               <img src={sponsor.image} alt={`Sponsored by ${sponsor.name}`} />
             </a>
           </li>
