@@ -36,7 +36,7 @@ mind. When in doubt, use `.parse()`.
 
 - **allowAwaitOutsideFunction**: By default, `await` use is only allowed
   inside of an async function or, when the `topLevelAwait` plugin is enabled,
-  in the top-level scope of modules. Set this to `true` to also acept it in the
+  in the top-level scope of modules. Set this to `true` to also accept it in the
   top-level scope of scripts.
 
 - **allowReturnOutsideFunction**: By default, a return statement at
