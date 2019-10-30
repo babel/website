@@ -6,7 +6,12 @@ declare var prettier: any;
 declare var prettierPlugins: any;
 
 import Transitions from "./Transitions";
-import type { CompileConfig, Transition } from "./types";
+import type {
+  BabelPresets,
+  CompileConfig,
+  Transition,
+  SupportedFileExtension,
+} from "./types";
 
 type Return = {
   compiled: ?string,
@@ -31,6 +36,17 @@ const DEFAULT_PRETTIER_CONFIG = {
   trailingComma: "none",
   useTabs: false,
 };
+
+function guessFileExtension(presets: BabelPresets): SupportedFileExtension {
+  let ext = ".js";
+  if (presets.includes("typescript")) {
+    ext = ".ts";
+  }
+  if (presets.includes("react")) {
+    ext = (ext + "x": any);
+  }
+  return (ext: SupportedFileExtension);
+}
 
 export default function compile(code: string, config: CompileConfig): Return {
   const { envConfig, presetsOptions } = config;
@@ -89,7 +105,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   try {
     const babelConfig = {
       babelrc: false,
-      filename: "repl",
+      filename: "repl" + guessFileExtension(config.presets),
       sourceMap: config.sourceMap,
 
       presets: config.presets.map(preset => {

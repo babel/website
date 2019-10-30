@@ -141,3 +141,5 @@ export type Transition = {
   visitorType: string,
   currentNode?: string,
 };
+
+export type SupportedFileExtension = ".js" | ".jsx" | ".ts" | ".tsx";
