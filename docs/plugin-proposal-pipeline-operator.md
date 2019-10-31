@@ -7,7 +7,7 @@ sidebar_label: proposal-pipeline-operator
 ## Installation
 
 ```sh
-$ npm install @babel/plugin-proposal-pipeline-operator
+$ npm install --save-dev @babel/plugin-proposal-pipeline-operator
 ```
 
 ## Usage
