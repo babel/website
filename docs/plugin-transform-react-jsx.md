@@ -192,6 +192,12 @@ Replace the component used when compiling JSX fragments.
 
 When spreading props, use `Object.assign` directly instead of Babel's extend helper.
 
+### `useSpread`
+
+`boolean`, defaults to `false`.
+
+When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
+
 ### `throwIfNamespace`
 
 `boolean`, defaults to `true`.
