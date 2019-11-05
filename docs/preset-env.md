@@ -266,7 +266,7 @@ import "regenerator-runtime/runtime";
 // If the target envs don't support these methods
 import "core-js/modules/es.string.pad-start";
 import "core-js/modules/es.string.pad-end";
-// If the target envs don't support generators or `async`/`await`
+// If the target envs don't support generators
 import "regenerator-runtime/runtime`;
 ```
 
