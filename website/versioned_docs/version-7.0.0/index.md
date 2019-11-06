@@ -92,7 +92,7 @@ function Greeter(greeting: string) {
 }
 ```
 
-> Learn more about [Flow](http://flowtype.org/) and [TypeScript](https://www.typescriptlang.org/)
+> Learn more about [Flow](https://flow.org/) and [TypeScript](https://www.typescriptlang.org/)
 
 Pluggable
 ---------
@@ -131,4 +131,3 @@ Compact
 Babel tries using the least amount of code possible with no dependence on a bulky runtime.
 
 This may be difficult to do in cases, and there are "loose" options for specific transforms that may tradeoff spec compliancy for readability, file size, and speed.
-

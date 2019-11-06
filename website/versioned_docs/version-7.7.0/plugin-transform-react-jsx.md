@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-babel-plugin-transform-react-jsx
+id: version-7.7.0-babel-plugin-transform-react-jsx
 title: @babel/plugin-transform-react-jsx
 sidebar_label: transform-react-jsx
 original_id: babel-plugin-transform-react-jsx
@@ -192,6 +192,12 @@ Replace the component used when compiling JSX fragments.
 `boolean`, defaults to `false`.
 
 When spreading props, use `Object.assign` directly instead of Babel's extend helper.
+
+### `useSpread`
+
+`boolean`, defaults to `false`.
+
+When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
 
 ### `throwIfNamespace`
 

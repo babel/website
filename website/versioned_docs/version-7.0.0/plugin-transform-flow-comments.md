@@ -7,7 +7,7 @@ original_id: babel-plugin-transform-flow-comments
 
 You should be able to use this plugin instead of `@babel/plugin-flow-strip-types` to preserve the `/* @flow */` directive and still use flow.
 
-[Flow Comments Blog Post](http://flowtype.org/blog/2015/02/20/Flow-Comments.html)
+[Flow Comments Blog Post](https://flow.org/blog/2015/02/20/Flow-Comments.html)
 
 ## Example
 
