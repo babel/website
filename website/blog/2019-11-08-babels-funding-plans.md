@@ -3,7 +3,7 @@ layout: post
 title:  "Babel's Funding Plans"
 author: Henry Zhu
 authorURL: https://twitter.com/left_pad
-date: 2019-11-07 17:00:00
+date: 2019-11-08 12:00:00
 categories: announcements
 share_text: "Babel's Funding Plans"
 ---
@@ -50,7 +50,9 @@ You can financially contribute to Babel on our [Open Collective](https://opencol
 
 Our team is using [Open Collective](https://opencollective.com/babel) to fund our team members. Both companies and individuals and donate to the team, either as a one-time or recurring donation.
 
-We're happy to start with an [email](team@babeljs.io) to chat about working together, but we'd also be glad to meet in-person or plan out a visit!
+If you have any questions or concerns about financially contributing to Babel we'd be happy to discuss by [email](team@babeljs.io).
+
+And in case your company is located in one of the cities that the core team lives in we'd also love to meet in-person!
 
 - [Henry](https://twitter.com/left_pad) is based in NYC and will be in the Bay Area November 4th-15th.
 - [Nicolò](https://twitter.com/NicoloRibaudo) is based in Italy and will be in Moscow November 6th-10th.
@@ -58,7 +60,7 @@ We're happy to start with an [email](team@babeljs.io) to chat about working toge
 - [Jùnliàng](https://twitter.com/JLHwung) is based in Ontario.
 - [Kai](https://twitter.com/kai_cataldo) is based in the New York City area.
 
-We'd appreciate hearing about how you are using Babel or how you are looking to get involved. Please reach out to Henry on [Twitter](https://twitter.com/left_pad) or [Email](henry@babeljs.io), or to the rest of team!
+The team would appreciate hearing about how you are using Babel or how you are looking to get involved.
 
 ## Our Goals
 
