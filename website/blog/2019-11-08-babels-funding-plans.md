@@ -83,6 +83,7 @@ And long term:
 
 We know that as maintainers we need to do outreach for our project and for open source as a whole. Our efforts up to this point have consisted of the following:
 
+- [Thinkmill](https://www.thinkmill.com.au/) funded 3 months of part-time work on Babel for Sebastian, the creator of Babel, while he was employed. This was followed by 3 months working part-time work at [Cloudflare](https://www.cloudflare.com/). And then almost 12 months of full-time while working for [Facebook](https://opensource.facebook.com/), which included the entire release of Babel 6.
 - Adobe funded 50% of Henry's work on Babel during his time working there.
 - We've helped companies during internal open source-oriented hackathons, including [Condé Nast](https://technology.condenast.com/) and [Bloomberg](https://www.techatbloomberg.com/) and hosting workshops on open source and Babel development at companies like Netflix.
 - Speaking at [companies](https://twitter.com/left_pad/status/1190398587538202624?s=20) like Spotify/Facebook, local [meetups](https://twitter.com/left_pad/status/1184301596437549056?s=20), bootcamps, [universities](https://twitter.com/left_pad/status/1191515333347004416?s=20) like Berkeley, and participating in [Hacktoberfest](https://twitter.com/bendhalpern/status/1050181229910331392?s=20) events.
