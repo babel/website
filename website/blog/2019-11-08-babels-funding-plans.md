@@ -46,9 +46,9 @@ __One thing we'd like to note:__ Collectives currently only show the total annua
 
 ## How You Can Help
 
-As said before, Babel is not a company. This means that it is funded similar to a non-profit organization that takes donations.
+You can financially contribute to Babel on our [Open Collective](https://opencollective.com/babel)!
 
-Donations are handled through [Open Collective](https://opencollective.com/babel), a service that allows companies and individuals to financially contribute to open source projects. The Babel core team uses these donations to sustain continued development of the project.
+Our team is using [Open Collective](https://opencollective.com/babel) to fund our team members. Both companies and individuals and donate to the team, either as a one-time or recurring donation.
 
 If you have any questions or concerns about financially contributing to Babel we'd be happy to discuss by [email](team@babeljs.io).
 
