@@ -3,7 +3,7 @@ layout: post
 title:  "Babel's Funding Plans"
 author: Henry Zhu
 authorURL: https://twitter.com/left_pad
-date: 2019-11-07 17:00:00
+date: 2019-11-08 12:00:00
 categories: announcements
 share_text: "Babel's Funding Plans"
 ---
@@ -46,11 +46,19 @@ __One thing we'd like to note:__ Collectives currently only show the total annua
 
 ## How You Can Help
 
-You can financially contribute to Babel on our [Open Collective](https://opencollective.com/babel)!
+As said before, Babel is not a company. This means that it is funded like a non-profit organization that takes donations.
 
-Our team is using [Open Collective](https://opencollective.com/babel) to fund our team members. Both companies and individuals and donate to the team, either as a one-time or recurring donation.
+Donations are handled through [Open Collective](https://opencollective.com/babel), a service that allows companies and individuals to financially contribute to open source projects. The Babel core team uses these donations to sustain continued development of the project.
 
-We're happy to start with an [email](team@babeljs.io) to chat about working together, but we'd also be glad to meet in-person or plan out a visit!
+Examples of this are performance improvements, new features, and implementing TC39 proposals that allow you to adopt new JavaScript features.
+
+Financial contributions are divided into different tiers. All donations are appreciated, but tiers such as Silver/Gold also allow your company to have their logo on our homepage, and our Base Support Tier also gives access to support hours.
+
+If you have any doubts about financially contributing to Babel we'd be happy to answer any questions by [email](team@babeljs.io).
+
+In case your company is located in one of the cities that the core team lives in we'd also love to meet in-person!
+
+> We're happy to start with an [email](team@babeljs.io) to chat about working together, but we'd also be glad to meet in-person or plan out a visit!
 
 - [Henry](https://twitter.com/left_pad) is based in NYC and will be in the Bay Area November 4th-15th.
 - [Nicolò](https://twitter.com/NicoloRibaudo) is based in Italy and will be in Moscow November 6th-10th.
@@ -58,7 +66,7 @@ We're happy to start with an [email](team@babeljs.io) to chat about working toge
 - [Jùnliàng](https://twitter.com/JLHwung) is based in Ontario.
 - [Kai](https://twitter.com/kai_cataldo) is based in the New York City area.
 
-We'd appreciate hearing about how you are using Babel or how you are looking to get involved. Please reach out to Henry on [Twitter](https://twitter.com/left_pad) or [Email](henry@babeljs.io), or to the rest of team!
+The team would appreciate hearing about how you are using Babel or how you are looking to get involved. Please reach out to Henry on [Twitter](https://twitter.com/left_pad) or [Email](henry@babeljs.io)!
 
 ## Our Goals
 
