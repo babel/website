@@ -46,13 +46,13 @@ __One thing we'd like to note:__ Collectives currently only show the total annua
 
 ## How You Can Help
 
-As said before, Babel is not a company. This means that it is funded like a non-profit organization that takes donations.
+As said before, Babel is not a company. This means that it is funded similar to a non-profit organization that takes donations.
 
 Donations are handled through [Open Collective](https://opencollective.com/babel), a service that allows companies and individuals to financially contribute to open source projects. The Babel core team uses these donations to sustain continued development of the project.
 
-If you have any doubts about financially contributing to Babel we'd be happy to answer any questions by [email](team@babeljs.io).
+If you have any questions or concerns about financially contributing to Babel we'd be happy to discuss by [email](team@babeljs.io).
 
-In case your company is located in one of the cities that the core team lives in we'd also love to meet in-person!
+And in case your company is located in one of the cities that the core team lives in we'd also love to meet in-person!
 
 - [Henry](https://twitter.com/left_pad) is based in NYC and will be in the Bay Area November 4th-15th.
 - [Nicolò](https://twitter.com/NicoloRibaudo) is based in Italy and will be in Moscow November 6th-10th.
@@ -60,7 +60,7 @@ In case your company is located in one of the cities that the core team lives in
 - [Jùnliàng](https://twitter.com/JLHwung) is based in Ontario.
 - [Kai](https://twitter.com/kai_cataldo) is based in the New York City area.
 
-The team would appreciate hearing about how you are using Babel or how you are looking to get involved. Please reach out to Henry on [Twitter](https://twitter.com/left_pad) or [Email](henry@babeljs.io)!
+The team would appreciate hearing about how you are using Babel or how you are looking to get involved.
 
 ## Our Goals
 
