@@ -97,6 +97,8 @@ Support can ultimately an opportunity to talk and learn from maintainers, provid
 
 > We get a lot of valuable ideas from our relationships with maintainers. It's almost a proxy for hiring the best people in the world, only for a limited amount of time. Open Collective gives a business like ours access to a diverse talent pool that would be impossible to build internally. - [Guillermo Rauch](https://blog.opencollective.com/zeit/)
 
+Want to get involved? Learn more in the [How You Can Help section](#how-you-can-help).
+
 ## Conclusion
 
 In an ideal world, Babel wouldn't even be necessary. However, in practice, there may always be gaps between where JavaScript is at with future proposals, when vendors can implement them (after Stage 3), what browsers a given website supports, and what Node.js versions are supported for a given library. In that sliding window of functionality is where a tool like Babel can provide significant value.
