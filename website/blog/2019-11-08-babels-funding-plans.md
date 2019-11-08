@@ -50,15 +50,9 @@ As said before, Babel is not a company. This means that it is funded like a non-
 
 Donations are handled through [Open Collective](https://opencollective.com/babel), a service that allows companies and individuals to financially contribute to open source projects. The Babel core team uses these donations to sustain continued development of the project.
 
-Examples of this are performance improvements, new features, and implementing TC39 proposals that allow you to adopt new JavaScript features.
-
-Financial contributions are divided into different tiers. All donations are appreciated, but tiers such as Silver/Gold also allow your company to have their logo on our homepage, and our Base Support Tier also gives access to support hours.
-
 If you have any doubts about financially contributing to Babel we'd be happy to answer any questions by [email](team@babeljs.io).
 
 In case your company is located in one of the cities that the core team lives in we'd also love to meet in-person!
-
-> We're happy to start with an [email](team@babeljs.io) to chat about working together, but we'd also be glad to meet in-person or plan out a visit!
 
 - [Henry](https://twitter.com/left_pad) is based in NYC and will be in the Bay Area November 4th-15th.
 - [Nicolò](https://twitter.com/NicoloRibaudo) is based in Italy and will be in Moscow November 6th-10th.
