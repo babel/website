@@ -77,7 +77,7 @@ And long term:
 - **Proposal Advancement**: Our goal is to enable a feedback loop for proposal champions to get validation through "real world" use cases within the JavaScript community. This will ultimately only happen if the plugin is adopted, there's enough time for people to use it and learn its implications, and for there to be a workflow in place for dialogue with and giving feedback to the TC39 committee. We would like to figure out how to best be a resource for more community members to understand the TC39 process and get involved in the improvement of JavaScript from the ground up. This requires plugins tracking the proposals to be created in a timely fashion and maintained, which requires a considerable amount of effort. This is especially true with plugins for early stage proposals, since these plugins require continued maintenance as proposals are updated.
 - **Education**: Related to this is an aspiration to help more developers understand the tools they use. Many tools and frameworks, particularly in the JavaScript ecosystem, operate over similar core concepts (such as ASTs). Leveling the playing field empowers more people to contribute, fix issues, and bring new ideas to the table. Language development has a high barrier to entry that our project can help lower.
 
-### How Companies and Individuals Have Helped Before
+## How Companies and Individuals Have Helped Before
 
 We know that as maintainers we need to do outreach for our project and for open source as a whole. Our efforts up to this point have consisted of the following:
 
