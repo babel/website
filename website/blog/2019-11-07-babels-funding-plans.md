@@ -30,7 +30,7 @@ Widespread adoption brings with it new challenges, and the team has been grappli
 
 ## Funding Plans
 
-We believe that Babel would benefit immensely from more than one person being funded to work on the project, and want to secure funding for three additional team members, [Nicolò](https://twitter.com/NicoloRibaudo), and [Jùnliàng](https://twitter.com/JLHwung), and [Kai](https://twitter.com/kai_cataldo) as part-time maintainers.
+We believe that Babel would benefit immensely from more than one person being funded to work on the project, and want to secure funding for three additional team members, [Nicolò](https://twitter.com/NicoloRibaudo), [Jùnliàng](https://twitter.com/JLHwung), and [Kai](https://twitter.com/kai_cataldo) as part-time maintainers.
 
 We are setting up an additional funding goal of $12,000/month through [Open Collective](https://opencollective.com/babel). This is $4,000/month each, which is the target we have defined for a part-time salary.
 
@@ -81,7 +81,7 @@ And long term:
 
 We know that as maintainers we need to do outreach for our project and for open source as a whole. Our efforts up to this point have consisted of the following:
 
-- Adobe has funded 50% of Henry's work on Babel during his time working there.
+- Adobe funded 50% of Henry's work on Babel during his time working there.
 - We've helped companies during internal open source-oriented hackathons, including [Condé Nast](https://technology.condenast.com/) and [Bloomberg](https://www.techatbloomberg.com/) and hosting workshops on open source and Babel development at companies like Netflix.
 - Speaking at [companies](https://twitter.com/left_pad/status/1190398587538202624?s=20) like Spotify/Facebook, local [meetups](https://twitter.com/left_pad/status/1184301596437549056?s=20), bootcamps, [universities](https://twitter.com/left_pad/status/1191515333347004416?s=20) like Berkeley, and participating in [Hacktoberfest](https://twitter.com/bendhalpern/status/1050181229910331392?s=20) events.
 
