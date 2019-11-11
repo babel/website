@@ -83,7 +83,7 @@ square(2, 4, 7.5, 8, 11.5, 21); // returns: [4, 16, 56.25, 64, 132.25, 441]
 
 ### Classes
 
-ES2015 classes are a simple sugar over the prototype-based OO pattern.  Having a
+ES2015 classes are syntactic sugar over the prototype-based OO pattern.  Having a
 single convenient declarative form makes class patterns easier to use, and
 encourages interoperability.  Classes support prototype-based inheritance, super
 calls, instance and static methods and constructors.
