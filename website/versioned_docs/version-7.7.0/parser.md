@@ -182,7 +182,7 @@ require("@babel/parser").parse("code", {
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32)) | `f(?, a)` |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | <code>a &#124;> b</code> |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
-| `topLevelAwait` ([proposal])(https://github.com/tc39/proposal-top-level-await/) | `await promise` in modules |
+| `topLevelAwait` ([proposal](https://github.com/tc39/proposal-top-level-await/)) | `await promise` in modules |
 
 #### Plugins options
 
