@@ -32,3 +32,10 @@ export function joinListEnglish(list: string[]): string {
   if (list.length === 1) return list[0];
   return `${list.slice(0, -1).join(", ")} and ${list[list.length - 1]}`;
 }
+
+export function preferDarkColorScheme(): boolean {
+  return (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme:dark)").matches
+  );
+}

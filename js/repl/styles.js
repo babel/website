@@ -7,6 +7,7 @@ const colors = {
   errorForeground: "#ff0000",
 
   foregroundLight: "#aaaaaa",
+  foregroundDark: "#777777",
 
   // Inspired by: Nuclide's "One Dark" theme
   inverseBackground: "#21252b",
