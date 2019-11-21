@@ -1,6 +1,6 @@
 // @flow
 
-import { injectGlobal } from "emotion";
+import { injectGlobal, css } from "emotion";
 import CodeMirror from "codemirror";
 import React from "react";
 import { colors } from "./styles";
@@ -134,9 +134,7 @@ injectGlobal({
     width: "100% !important",
     "-webkit-overflow-scrolling": "touch",
   },
-  ".CodeMirror pre.CodeMirror-placeholder.CodeMirror-line-like": {
-    color: preferDarkColorScheme()
-      ? colors.foregroundDark
-      : colors.foregroundLight,
-  },
+  ".CodeMirror pre.CodeMirror-placeholder.CodeMirror-line-like": css({
+    color: colors.foregroundLight,
+  }),
 });

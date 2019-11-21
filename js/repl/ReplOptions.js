@@ -947,7 +947,7 @@ const styles = {
   }),
   optionSelect: css({
     appearance: "none",
-    backgroundColor: "#2D3035",
+    backgroundColor: colors.selectBackground,
     // eslint-disable-next-line
     backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='${
       colors.inverseForegroundLight
@@ -960,7 +960,7 @@ const styles = {
     transition: "all 0.25s ease-in",
 
     "&:hover": {
-      backgroundColor: "#32353A",
+      backgroundColor: colors.selectHover,
     },
 
     "&::-ms-expand": {
@@ -1009,11 +1009,11 @@ const styles = {
   }),
   envPresetLabel: css({
     flex: 1,
-    color: "#FFF",
+    color: colors.inverseForeground,
 
     ":hover": {
       textDecoration: "none",
-      color: "#FFF",
+      color: colors.inverseForeground,
     },
   }),
   envPresetSelect: css({
