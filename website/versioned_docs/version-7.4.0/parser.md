@@ -47,6 +47,8 @@ mind. When in doubt, use `.parse()`.
   outside of class and object methods. Set this to `true` to accept such
   code.
 
+- **createParenthesizedExpressions**: By default, the parser sets `extra.parenthesized` on the expression nodes. When this option is set to `true`, `ParenthesizedExpression` AST nodes are created instead.
+
 - **sourceType**: Indicate the mode the code should be parsed in. Can be
   one of `"script"`, `"module"`, or `"unambiguous"`. Defaults to `"script"`. `"unambiguous"` will make @babel/parser attempt to _guess_, based on the presence of ES6 `import` or `export` statements. Files with ES6 `import`s and `export`s are considered `"module"` and are otherwise `"script"`.
 
