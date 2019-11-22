@@ -8,7 +8,7 @@ sidebar_label: proposal-do-expressions
 
 > The `do { .. }` expression executes a block (with one or many statements in it), and the final statement completion value inside the block becomes the completion value of the do expression.
 
-from [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch5.md#statement-completion-values)
+from [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/types-grammar/ch5.md#statement-completion-values), Types & Grammar -> Chapter 5 -> Secion Statement Completion Values
 
 It can be seen as a complex version of the [ternary operator](http://mdn.io/ternary):
 
