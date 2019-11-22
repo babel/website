@@ -55,7 +55,7 @@ mind. When in doubt, use `.parse()`.
   to set this option to `true` to prevent the parser from prematurely
   complaining about undeclared exports that will be added later.
 
-- **createParenthesizedExpressions**: By default, the parser sets extra.parenthesized on the expression nodes. When this option is set to `true`, create `ParenthesizedExpression` AST nodes.
+- **createParenthesizedExpressions**: By default, the parser sets `extra.parenthesized` on the expression nodes. When this option is set to `true`, `ParenthesizedExpression` AST nodes are created instead.
 
 - **errorRecovery**: By default, Babel always throws an error when it finds some invalid
   code. When this option is set to `true`, it will store the parsing error and try to continue
