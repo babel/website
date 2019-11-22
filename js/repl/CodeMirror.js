@@ -1,9 +1,10 @@
 // @flow
 
-import { injectGlobal } from "emotion";
+import { injectGlobal, css } from "emotion";
 import CodeMirror from "codemirror";
 import React from "react";
 import { colors } from "./styles";
+import { preferDarkColorScheme } from "./Utils";
 
 const DEFAULT_CODE_MIRROR_OPTIONS = {
   autoCloseBrackets: true,
@@ -14,6 +15,7 @@ const DEFAULT_CODE_MIRROR_OPTIONS = {
   showCursorWhenSelecting: true,
   styleActiveLine: true,
   tabWidth: 2,
+  theme: preferDarkColorScheme() ? "darcula" : "default",
 };
 
 type Props = {
@@ -132,7 +134,7 @@ injectGlobal({
     width: "100% !important",
     "-webkit-overflow-scrolling": "touch",
   },
-  ".CodeMirror-lines pre.CodeMirror-placeholder": {
+  ".CodeMirror pre.CodeMirror-placeholder.CodeMirror-line-like": css({
     color: colors.foregroundLight,
-  },
+  }),
 });
