@@ -18,9 +18,9 @@ All Babel API [options](options.md) are allowed. However, if the option requires
 
 > [`.babelrc`](#babelrc) is for you!
 
-- The Guy Fieri is your hero?
+- Guy Fieri is your hero?
 
-> We recommend to use the [`babel.config.js`](config-files.md#project-wide-configuration) format. [Babel itself is using it](https://github.com/babel/babel/blob/master/babel.config.js).
+> We recommend using the [`babel.config.js`](config-files.md#project-wide-configuration) format. [Babel itself is using it](https://github.com/babel/babel/blob/master/babel.config.js).
 
 ## `babel.config.js`
 
