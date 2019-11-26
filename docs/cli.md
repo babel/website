@@ -145,6 +145,16 @@ Ignore the configuration from the project's `.babelrc` file and use the cli opti
 npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,react
 ```
 
+### Set File Extensions
+
+By default, Babel will override the extension of the transpiled file and use `.js` instead.
+
+To preserve the original file extension you can pass the `--keep-file-extension`.
+
+You can also control what file extension is used with `--out-file-extension .example-extension` e.g. `babel src/ lib/ --out-file-extension .mjs`.
+
+Note that `--keep-file-extension` and `--out-file-extension` cannot be used together.
+
 ### Advanced Usage
 
 There are many more options available, see [options](options.md), `babel --help` and other sections for more information.
