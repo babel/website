@@ -107,7 +107,6 @@ class Repl extends React.Component<Props, State> {
 
     const persistedState = replState();
     const defaultPlugins = {
-      "babili-standalone": persistedState.babili,
       prettier: persistedState.prettier,
     };
 
@@ -480,10 +479,6 @@ class Repl extends React.Component<Props, State> {
 
     const presetsArray = this._presetsToArray(state);
 
-    const babili = state.plugins["babili-standalone"];
-    if (babili.isEnabled && babili.isLoaded) {
-      presetsArray.push("babili");
-    }
     this._workerApi
       .compile(code, {
         plugins: state.externalPlugins.map(plugin => plugin.name),
@@ -573,11 +568,6 @@ class Repl extends React.Component<Props, State> {
 
     const presetsArray = this._presetsToArray();
 
-    const babili = state.plugins["babili-standalone"];
-    if (babili.isEnabled) {
-      presetsArray.push("babili");
-    }
-
     if (envConfig.isEnvPresetEnabled) {
       presetsArray.push("env");
     }
@@ -585,7 +575,6 @@ class Repl extends React.Component<Props, State> {
     const builtIns = envConfig.isBuiltInsEnabled && envConfig.builtIns;
 
     const payload = {
-      babili: plugins["babili-standalone"].isEnabled,
       browsers: envConfig.browsers,
       build: state.babel.build,
       builtIns: builtIns,
