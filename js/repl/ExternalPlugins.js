@@ -76,9 +76,13 @@ export default class ExternalPlugins extends React.Component<Props, State> {
               {p.name}{" "}
               <span className={currentStyles.pluginVersion}>v{p.version}</span>
             </span>
-            <div className={currentStyles.pluginActions}>
-              <a onClick={() => onRemove(p.name)}>✕</a>
-            </div>
+            <button
+              className={currentStyles.pluginActions}
+              onClick={() => onRemove(p.name)}
+              type="button"
+            >
+              ✕
+            </button>
           </li>
         ))}
       </ul>
@@ -170,15 +174,12 @@ const currentStyles = {
   `,
   pluginActions: css`
     align-items: center;
-    background: #23252b;
+    background-color: transparent;
+    border: none;
     bottom: 0;
     flex-shrink: 0;
     padding-left: 1rem;
     cursor: pointer;
-    a,
-    a:visited {
-      color: #fff;
-      cursor: pointer;
-    }
+    color: #fff;
   `,
 };
