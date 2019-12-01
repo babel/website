@@ -106,7 +106,6 @@ export type CompileConfig = {
 };
 
 export type ReplState = {
-  babili: boolean,
   browsers: string,
   build: string,
   builtIns: string | boolean,

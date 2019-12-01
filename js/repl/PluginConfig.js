@@ -74,12 +74,6 @@ const runtimePolyfillConfig: PluginConfig = {
 const pluginConfigs: Array<PluginConfig> = [
   {
     baseUrl: "https://unpkg.com",
-    label: "Minify",
-    package: "babili-standalone", // TODO Switch to babel-minify-standalone
-    version: "0",
-  },
-  {
-    baseUrl: "https://unpkg.com",
     label: "Prettify",
     package: "prettier",
     version: "1.13.0",
@@ -88,7 +82,6 @@ const pluginConfigs: Array<PluginConfig> = [
 ];
 
 const replDefaults: ReplState = {
-  babili: false,
   browsers: "",
   build: "",
   builtIns: false,
