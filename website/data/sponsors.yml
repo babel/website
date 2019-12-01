@@ -1,3 +1,10 @@
+- type: opencollective
+  tier: base-support-sponsor
+  name: Trivago
+  url: https://tech.trivago.com/opensource/
+  image: https://images.opencollective.com/trivago/9bdcb07/logo.png
+  description: trivago Engineering is a great place to learn, grow, and do great things together.
+
 - name: AMP Project
   url: https://www.ampproject.org
   logo: amp-work.svg
