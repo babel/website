@@ -37,7 +37,7 @@ const users = loadYaml("./data/users.yml").map(user => ({
 
 const sponsorsManual = loadYaml("./data/sponsors.yml").map(sponsor => ({
   ...sponsor,
-  image: path.join("/img/sponsors/", sponsor.logo),
+  image: sponsor.image || path.join("/img/sponsors/", sponsor.logo),
 }));
 const sponsorsDownloaded = require(path.join(__dirname, "/data/sponsors.json"));
 
