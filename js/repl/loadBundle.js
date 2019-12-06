@@ -49,6 +49,9 @@ export default async function loadBundle(
     build = buildFromPath[1];
   }
 
+  const packageName = config.package.replace("@", "").replace("/", "-");
+  const packageFile = packageName.replace("-standalone", ".min.js");
+
   if (build) {
     const isBuildNumeric = /^[0-9]+$/.test(build);
     try {
@@ -64,8 +67,6 @@ export default async function loadBundle(
           build === "7.0" ? "master" : build
         );
       }
-      const packageName = config.package.replace("@", "").replace("/", "-");
-      const packageFile = packageName.replace("-standalone", ".js");
       const regExp = new RegExp(`${packageName}/${packageFile}$`);
       const url = await loadBuildArtifacts(
         state.circleciRepo,
@@ -93,5 +94,7 @@ export default async function loadBundle(
     version = config.version;
   }
 
-  return doLoad(`${config.baseUrl}/${config.package}@${version}`);
+  return doLoad(
+    `${config.baseUrl}/${config.package}@${version}/${packageFile}`
+  );
 }
