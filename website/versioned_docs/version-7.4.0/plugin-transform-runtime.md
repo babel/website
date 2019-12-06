@@ -63,7 +63,8 @@ With options (and their defaults):
         "corejs": false,
         "helpers": true,
         "regenerator": true,
-        "useESModules": false
+        "useESModules": false,
+        "version": "7.0.0-beta.0"
       }
     ]
   ]
@@ -170,6 +171,28 @@ This allows users to run `transform-runtime` broadly across a whole project. By 
 Using absolute paths is not desirable if files are compiled for use at a later time, but in contexts where a file is compiled and then immediately consumed, they can be quite helpful.
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+
+### `version`
+
+By default transform-runtime assumes that `@babel/runtime@7.0.0` is installed. If you have later versions of
+`@babel/runtime` (or their corejs counterparts e.g. `@babel/runtime-corejs3`) installed or listed as a dependency, transform-runtime can use more advanced features.
+
+For example if you depend on `@babel/runtime-corejs2@7.4.4` you can transpile your code with
+```json
+{
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "absoluteRuntime": false,
+        "corejs": 2,
+        "version": "^7.4.4"
+      }
+    ]
+  ]
+}
+```
+which results in a smaller bundle size.
 
 ## Technical details
 
