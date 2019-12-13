@@ -86,7 +86,7 @@ new Test?.(); // test instance
 new exists?.(); // undefined
 ```
 
-### Delete deeply nested properties
+### Deleting deeply nested properties
 
 ```js
 const obj = {
