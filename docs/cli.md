@@ -99,15 +99,23 @@ npx babel src --out-file script-compiled.js
 
 ### Ignore files
 
-Ignore spec and test files
+Given files will be ignored from compilation and will not moved to destination.
 
 ```sh
 npx babel src --out-dir lib --ignore "src/**/*.spec.js","src/**/*.test.js"
 ```
 
+### Include ignored files
+
+Copy the ignored files to destination.
+
+```sh
+npx babel src --out-dir lib --ignore --include-ignore "src/**/*.spec.js","src/**/*.test.js"
+```
+
 ### Copy files
 
-Copy files that will not be compiled
+Copy incompatible files to the destination folder.
 
 ```sh
 npx babel src --out-dir lib --copy-files
