@@ -541,7 +541,7 @@ And just in the last 3 months a lot more collaborators:
 - [Kai Cataldo, @kaicataldo](https://github.com/kaicataldo)
 - [Andrew Levine, @drewml](https://github.com/DrewML)
 - [Brian Ng, @existentialism](https://github.com/existentialism)
-- [Diogo Franco, @kovensky](https://github.com/Kovensky)
+- [Jessica Franco, @Jessidhia](https://github.com/Jessidhia)
 
 Babili core team:
 
@@ -579,7 +579,7 @@ I myself joined Twitter to be able to talk with users and help out. Being able t
 
 We have a relatively active community on there!
 
-You'll find a lot of awesome community members willing to help such as [Jordan Harband, @ljharb](https://github.com/ljharb), [Diogo Franco, @kovensky](https://github.com/kovensky), [Jimmy Jia, @taion](https://github.com/taion), [Denis Pushkarev, @zloirock](https://github.com/zloirock) and more!
+You'll find a lot of awesome community members willing to help such as [Jordan Harband, @ljharb](https://github.com/ljharb), [Jessica Franco, @Jessidhia](https://github.com/Jessidhia), [Jimmy Jia, @taion](https://github.com/taion), [Denis Pushkarev, @zloirock](https://github.com/zloirock) and more!
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">If you haven&#39;t joined our slack yet: please join at <a href="https://t.co/h3m7l9jkrg">https://t.co/h3m7l9jkrg</a>. Check out development/plugins to see what&#39;s up! <a href="https://t.co/f1CKaV8G6G">pic.twitter.com/f1CKaV8G6G</a></p>&mdash; Babel (@babeljs) <a href="https://twitter.com/babeljs/status/793223871080136705">October 31, 2016</a></blockquote>
 
