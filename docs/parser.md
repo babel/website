@@ -76,7 +76,7 @@ mind. When in doubt, use `.parse()`.
   `"use strict";` directive is present or if the parsed file is an ECMAScript
   module. Set this option to `true` to always parse files in strict mode.
 
-- **ranges**: Adds a `ranges` property to each node: `[node.start, node.end]`
+- **ranges**: Adds a `range` property to each node: `[node.start, node.end]`
 
 - **tokens**: Adds all parsed tokens to a `tokens` property on the `File` node
 
