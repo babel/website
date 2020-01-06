@@ -39,7 +39,7 @@ fetch(graphqlEndpoint, {
   .then(res => res.data.account.orders.nodes)
   .then(nodes =>
     nodes.map(node => ({
-      tier: node.tier.slug,
+      // tier: node.tier.slug,
       name: node.fromAccount.name,
       slug: node.fromAccount.slug,
       website: node.fromAccount.website,
