@@ -30,9 +30,7 @@ npm install --save-dev @babel/plugin-transform-typeof-symbol
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

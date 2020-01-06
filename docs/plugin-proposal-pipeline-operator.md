@@ -12,9 +12,7 @@ $ npm install --save-dev @babel/plugin-proposal-pipeline-operator
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

@@ -37,9 +37,7 @@ npm install --save-dev @babel/plugin-transform-block-scoped-functions
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

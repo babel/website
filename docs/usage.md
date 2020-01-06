@@ -20,25 +20,25 @@ The entire process to set this up involves:
    npm install --save @babel/polyfill
    ```
 
-2. Creating a config file named `babel.config.js` in the root of your project with this content:
+2. Creating a config file named `babel.config.json` in the root of your project with this content:
 
-   ```js
-   const presets = [
-     [
-       "@babel/env",
-       {
-         targets: {
-           edge: "17",
-           firefox: "60",
-           chrome: "67",
-           safari: "11.1",
-         },
-         useBuiltIns: "usage",
-       },
-     ],
-   ];
-
-   module.exports = { presets };
+   ```json
+   {
+     "presets": [
+       [
+         "@babel/env",
+         {
+           "targets": {
+             "edge": "17",
+             "firefox": "60",
+             "chrome": "67",
+             "safari": "11.1",
+           },
+           "useBuiltIns": "usage",
+         }
+       ]
+     ]
+   }
    ```
 
    > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support.
@@ -127,7 +127,7 @@ Without any configuration, this preset will include all plugins to support moder
 
 > There are a few different ways to use configuration files depending on your needs. Be sure to read our in-depth guide on how to [configure Babel](configuration.md) for more information.
 
-For now, let's create a file called `babel.config.js` with the following content:
+For now, let's create a file called `babel.config.json` with the following content:
 
 ```js
 const presets = [
@@ -175,23 +175,23 @@ npm install --save @babel/polyfill
 
 Now luckily for us, we're using the `env` preset which has a `"useBuiltIns"` option that when set to `"usage"` will practically apply the last optimization mentioned above where you only include the polyfills you need. With this new option the configuration changes like this:
 
-```js
-const presets = [
-  [
-    "@babel/env",
-    {
-      targets: {
-        edge: "17",
-        firefox: "60",
-        chrome: "67",
-        safari: "11.1",
-      },
-      useBuiltIns: "usage",
-    },
-  ],
-];
-
-module.exports = { presets };
+```json
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "edge": "17",
+          "firefox": "60",
+          "chrome": "67",
+          "safari": "11.1",
+        },
+        "useBuiltIns": "usage",
+      }
+    ]
+  ]
+}
 ```
 
 Babel will now inspect all your code for features that are missing in your target environments and include only the required polyfills. For example this code:

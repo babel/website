@@ -58,9 +58,7 @@ not supported in your environment then you'll need the
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

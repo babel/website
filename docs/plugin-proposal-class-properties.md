@@ -44,9 +44,7 @@ npm install --save-dev @babel/plugin-proposal-class-properties
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 Without options:
 

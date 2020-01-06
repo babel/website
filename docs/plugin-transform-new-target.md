@@ -81,9 +81,7 @@ npm install --save-dev @babel/plugin-transform-new-target
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

@@ -32,9 +32,7 @@ npm install --save-dev @babel/plugin-transform-modules-commonjs
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```js
 // without options

@@ -53,9 +53,7 @@ npm install --save-dev @babel/plugin-transform-proto-to-assign
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

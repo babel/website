@@ -67,9 +67,7 @@ npm install --save-dev @babel/plugin-proposal-numeric-separator
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {
@@ -97,9 +95,7 @@ If you need to further compile ES2015 Decimal, Binary, Hex and Octal number repr
 
 > `@babel/plugin-transform-literals` is already included in [@babel/preset-env](preset-env.md) and @babel/preset-es2015.
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

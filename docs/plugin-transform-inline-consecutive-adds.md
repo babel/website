@@ -43,9 +43,7 @@ npm install babel-plugin-transform-inline-consecutive-adds --save-dev
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

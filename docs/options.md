@@ -71,7 +71,7 @@ The three primary cases users could run into are:
 
 * The filename is exposed to plugins. Some plugins may require the presence of the filename.
 * Options like [`"test"`](#test), [`"exclude"`](#exclude), and [`"ignore"`](#ignore) require the filename for string/RegExp matching.
-* `.babelrc` files are loaded relative to the file being compiled. If this option is omitted, Babel will behave as if `babelrc: false` has been set.
+* `.babelrc.*` files are loaded relative to the file being compiled. If this option is omitted, Babel will behave as if `babelrc: false` has been set.
 
 
 ### `filenameRelative`
@@ -158,25 +158,25 @@ Babel can process the [`"root"`](#root) value to get the final project root.
 
 * `"root"` - Passes the [`"root"`](#root) value through as unchanged.
 * `"upward"` - Walks upward from the [`"root"`](#root) directory, looking
-  for a directory containing a [`babel.config.js`](config-files.md#project-wide-configuration)
-  file, and throws an error if a [`babel.config.js`](config-files.md#project-wide-configuration)
+  for a directory containing a [`babel.config.*`](config-files.md#project-wide-configuration)
+  file, and throws an error if a [`babel.config.*`](config-files.md#project-wide-configuration)
   is not found.
 * `"upward-optional"` - Walk upward from the [`"root"`](#root) directory,
-  looking for a directory containing a [`babel.config.js`](config-files.md#project-wide-configuration)
-  file, and falls back to [`"root"`](#root) if a [`babel.config.js`](config-files.md#project-wide-configuration)
+  looking for a directory containing a [`babel.config.*`](config-files.md#project-wide-configuration)
+  file, and falls back to [`"root"`](#root) if a [`babel.config.*`](config-files.md#project-wide-configuration)
   is not found.
 
 `"root"` is the default mode because it avoids the risk that Babel will
-accidentally load a `babel.config.js` that is entirely outside of the current
+accidentally load a `babel.config.*` that is entirely outside of the current
 project folder. If you use `"upward-optional"`, be aware that it will walk up the
 directory structure all the way to the filesystem root, and it is always
-possible that someone will have a forgotten `babel.config.js` in their home
+possible that someone will have a forgotten `babel.config.*` in their home
 directory, which could cause unexpected errors in your builds.
 
 Users with monorepo project structures that run builds/tests on a per-package basis
-may well want to use `"upward"` since monorepos often have a [`babel.config.js`](config-files.md#project-wide-configuration)
+may well want to use `"upward"` since monorepos often have a [`babel.config.*`](config-files.md#project-wide-configuration)
 in the project root. Running Babel in a monorepo subdirectory without `"upward"`,
-will cause Babel to skip loading any [`babel.config.js`](config-files.md#project-wide-configuration)
+will cause Babel to skip loading any [`babel.config.*`](config-files.md#project-wide-configuration)
 files in the project root, which can lead to unexpected errors and compilation failure.
 
 
@@ -195,15 +195,15 @@ available inside configuration functions, plugins, and presets, via the
 ### `configFile`
 
 Type: `string | boolean`<br />
-Default: `path.resolve(opts.root, "babel.config.js")`, if it exists, `false` otherwise<br />
+Default: `path.resolve(opts.root, "babel.config.*")`, if it exists, `false` otherwise<br />
 Placement: Only allowed in Babel's programmatic options<br />
 
-Defaults to searching for a default `babel.config.js` file, but can be passed
+Defaults to searching for a default `babel.config.*` file, but can be passed
 the path of any JS or JSON5 config file.
 
-NOTE: This option does _not_ affect loading of [`.babelrc`](config-files.md#file-relative-configuration) files, so while
-it may be tempting to do `configFile: "./foo/.babelrc"`, it is not recommended.
-If the given [`.babelrc`](config-files.md#file-relative-configuration) is loaded via the standard
+NOTE: This option does _not_ affect loading of [`.babelrc.*`](config-files.md#file-relative-configuration) files, so while
+it may be tempting to do `configFile: "./foo/.babelrc.json"`, it is not recommended.
+If the given [`.babelrc.*`](config-files.md#file-relative-configuration) is loaded via the standard
 file-relative logic, you'll end up loading the same config file twice, merging it with itself.
 If you are linking a specific config file, it is recommended to stick with a
 naming scheme that is independent of the "babelrc" name.
@@ -221,7 +221,7 @@ to the [`"filename"`](#filename) provided to Babel.
 A `babelrc` value passed in the programmatic options will override one set
 within a configuration file.
 
-Note: `.babelrc` files are only loaded if the current [`"filename"`](#filename) is inside of
+Note: `.babelrc.*` files are only loaded if the current [`"filename"`](#filename) is inside of
 a package that matches one of the [`"babelrcRoots"`](#babelrcroots) packages.
 
 
@@ -231,13 +231,13 @@ Type: `boolean | MatchPattern | Array<MatchPattern>`<br />
 Default: `opts.root`<br />
 Placement: Allowed in Babel's programmatic options, or inside of the loaded `configFile`. A programmatic option will override a config file one.<br />
 
-By default, Babel will only search for `.babelrc` files within the [`"root"`](#root) package
-because otherwise Babel cannot know if a given `.babelrc` is meant to be loaded, or
+By default, Babel will only search for `.babelrc.*` files within the [`"root"`](#root) package
+because otherwise Babel cannot know if a given `.babelrc.*` is meant to be loaded, or
 if it's [`"plugins"`](#plugins) and [`"presets"`](#presets) have even been installed, since the file being
 compiled could be inside `node_modules`, or have been symlinked into the project.
 
 This option allows users to provide a list of other packages that should be considered
-"root" packages when considering whether to load `.babelrc` files.
+"root" packages when considering whether to load `.babelrc.*` files.
 
 For example, a monorepo setup that wishes to allow individual packages to
 have their own configs might want to do
@@ -247,7 +247,7 @@ babelrcRoots: [
   // Keep the root as a root
   ".",
 
-  // Also consider monorepo packages "root" and load their .babelrc files.
+  // Also consider monorepo packages "root" and load their .babelrc.* files.
   "./packages/*"
 ]
 ```

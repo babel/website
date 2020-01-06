@@ -9,22 +9,29 @@ All Babel API [options](options.md) are allowed. However, if the option requires
 
 ## What's your use case?
 
-- You want to programmatically create the configuration?
+- You are using a monorepo?
 - You want to compile `node_modules`?
 
-> [`babel.config.js`](#babelconfigjs) is for you!
+> [`babel.config.*`](#babelconfigjs) is for you!
 
-- You have a static configuration that only applies to your simple single package?
+- You have a configuration that only applies to a single part of your project?
 
-> [`.babelrc`](#babelrc) is for you!
+> [`.babelrc.*`](#babelrc) is for you!
 
 - Guy Fieri is your hero?
 
-> We recommend using the [`babel.config.js`](config-files.md#project-wide-configuration) format. [Babel itself is using it](https://github.com/babel/babel/blob/master/babel.config.js).
+> We recommend using the [`babel.config.*`](config-files.md#project-wide-configuration) format. [Babel itself is using it](https://github.com/babel/babel/blob/master/babel.config.js).
 
-## `babel.config.js`
+### `babel.config.json`
 
-Create a file called `babel.config.js` with the following content at the root of your project (where the `package.json` is).
+Create a file called `babel.config.json` with the following content at the root of your project (where the `package.json` is).
+
+```json
+{
+  "presets": [...],
+  "plugins": [...]
+}
+```
 
 ```js
 module.exports = function (api) {
@@ -40,11 +47,11 @@ module.exports = function (api) {
 }
 ```
 
-Check out the [`babel.config.js` documentation](config-files.md#project-wide-configuration) to see more configuration options.
+Check out the [`babel.config.*` documentation](config-files.md#project-wide-configuration) to see more configuration options.
 
-## `.babelrc`
+### `.babelrc.json`
 
-Create a file called `.babelrc` with the following content in your project.
+Create a file called `.babelrc.json` with the following content in your project.
 
 ```json
 {
@@ -57,7 +64,7 @@ Check out the [.babelrc documentation](config-files.md#file-relative-configurati
 
 ### `package.json`
 
-Alternatively, you can choose to specify your [`.babelrc`](#babelrc) config from within `package.json` using the `babel` key like so:
+Alternatively, you can choose to specify your [`.babelrc.json`](#babelrc) config from within `package.json` using the `babel` key like so:
 
 ```json
 {
@@ -70,9 +77,9 @@ Alternatively, you can choose to specify your [`.babelrc`](#babelrc) config from
 }
 ```
 
-### `.babelrc.js`
+### JavaScript configuratino files
 
-The configuration is the same as [`.babelrc`](#babelrc), but you can write it using JavaScript.
+You can also write `babel.config.json` and `.babelrc.json` files using JavaScript:
 
 ```js
 const presets = [ ... ];
@@ -93,6 +100,8 @@ if (process.env["ENV"] === "prod") {
 
 module.exports = { presets, plugins };
 ```
+
+You can read more about JavaScript configuration files in the [dedicated documentation](config-files.md)
 
 ## Using the CLI (`@babel/cli`)
 

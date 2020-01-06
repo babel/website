@@ -47,9 +47,7 @@ npm install --save-dev @babel/plugin-transform-for-of
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 Without options:
 

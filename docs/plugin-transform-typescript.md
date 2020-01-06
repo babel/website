@@ -28,9 +28,7 @@ npm install --save-dev @babel/plugin-transform-typescript
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {
@@ -201,7 +199,7 @@ equivalents in Babel can be enabled by some configuration options or plugins.
 - `--importHelpers`
   This is the equivalent of the `@babel/plugin-transform-runtime` package.
 - `--inlineSourceMap`
-  You can set the [`sourceMaps: "inline"`](https://babeljs.io/docs/en/options#sourcemaps) option in your `babel.config.js` file.
+  You can set the [`sourceMaps: "inline"`](https://babeljs.io/docs/en/options#sourcemaps) option in your `babel.config.*` file.
 - `--isolatedModules`
   This is the default Babel behavior, and it can't be turned off because Babel doesn't support cross-file analysis.
 - `--jsx`
