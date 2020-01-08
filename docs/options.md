@@ -11,8 +11,8 @@ id: options
 - [Misc options](#misc-options)
 - [Code Generator options](#code-generator-options)
 - [AMD / UMD / SystemJS options](#amd-umd-systemjs-module-options)
-- [Option concepts](#options-concepts)
 - [CLI options](#cli-options)
+- [Option concepts](#options-concepts)
 
 Options can be passed to Babel in a variety of ways. When passed directly to Babel,
 you can just pass the objects object. When Babel is used via a wrapper, it may also be
@@ -646,6 +646,15 @@ Type: `string`<br />
 
 A root path to include on generated module names.
 
+## CLI options
+
+### Copy ignored files
+
+Include ignored files when copying non-compilable files.
+
+```sh
+npx babel src --out-dir lib --ignore "src/**/*.spec.js" --copy-ignored
+```
 
 ## Options Concepts
 
@@ -838,15 +847,3 @@ Here are some examples, when applied in a plugin context:
 | `"@scope/prefix-babel-plugin-mod"` | `"@scope/prefix-babel-plugin-mod"` |
 | `"@scope/mod/plugin"` | `"@scope/mod/plugin"`
 | `"module:foo"` | `"foo"` |
-
-## CLI options
-
-### Copy ignored files
-
-Include ignored files when copying non-compilable files.
-
-```sh
-npx babel src --out-dir lib --ignore "src/**/*.spec.js" --copy-ignored
-```
-
-
