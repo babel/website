@@ -15,9 +15,7 @@ npm install --save-dev @babel/preset-es2017
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

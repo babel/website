@@ -50,15 +50,15 @@ super(?)          // `?` not supported in |SuperCall|
 $ npm install --save-dev @babel/plugin-proposal-partial-application
 ```
 
-## Usage
-
-Add the following line to your .babelrc file:
+### With a configuration file (Recommended)
 
 ```json
 {
   "plugins": ["@babel/plugin-proposal-partial-application"]
 }
 ```
+
+### Via CLI
 
 ```sh
 babel --plugins @babel/plugin-proposal-partial-application script.js

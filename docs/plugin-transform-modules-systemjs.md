@@ -35,9 +35,7 @@ npm install --save-dev @babel/plugin-transform-modules-systemjs
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 Without options:
 

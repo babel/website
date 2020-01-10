@@ -38,9 +38,7 @@ See the [technical details](#technical-details) section for more information on 
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-Add the following line to your `.babelrc` file:
+### With a configuration file (Recommended)
 
 Without options:
 

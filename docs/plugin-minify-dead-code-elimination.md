@@ -38,9 +38,7 @@ npm install babel-plugin-minify-dead-code-elimination --save-dev
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 // without options

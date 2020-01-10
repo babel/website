@@ -44,7 +44,7 @@ npm install --save-dev @babel/plugin-transform-regenerator
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
+### With a configuration file (Recommended)
 
 Without options:
 

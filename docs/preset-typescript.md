@@ -32,9 +32,8 @@ npm install --save-dev @babel/preset-typescript
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
+### With a configuration file (Recommended)
 
-**.babelrc**
 
 ```json
 {

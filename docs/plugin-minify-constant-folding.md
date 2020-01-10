@@ -63,9 +63,7 @@ npm install babel-plugin-minify-constant-folding --save-dev
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {
