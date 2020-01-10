@@ -38,15 +38,17 @@ fetch(graphqlEndpoint, {
   .then(res => res.json())
   .then(res => res.data.account.orders.nodes)
   .then(nodes =>
-    nodes.map(node => ({
-      tier: node.tier.slug,
-      name: node.fromAccount.name,
-      slug: node.fromAccount.slug,
-      website: node.fromAccount.website,
-      avatar: node.fromAccount.imageUrl,
-      twitterHandle: node.fromAccount.twitterHandle,
-      description: node.fromAccount.description,
-    }))
+    nodes
+      .filter(node => !!node.tier)
+      .map(node => ({
+        tier: node.tier.slug,
+        name: node.fromAccount.name,
+        slug: node.fromAccount.slug,
+        website: node.fromAccount.website,
+        avatar: node.fromAccount.imageUrl,
+        twitterHandle: node.fromAccount.twitterHandle,
+        description: node.fromAccount.description,
+      }))
   )
   .then(sponsors => JSON.stringify(sponsors, null, 2))
   .then(sponsorsJson => {
