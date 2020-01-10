@@ -77,7 +77,7 @@ Alternatively, you can choose to specify your [`.babelrc.json`](#babelrc) config
 }
 ```
 
-### JavaScript configuratino files
+### JavaScript configuration files
 
 You can also write `babel.config.json` and `.babelrc.json` files using JavaScript:
 
