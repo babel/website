@@ -12,15 +12,15 @@ All Babel API [options](options.md) are allowed. However, if the option requires
 - You are using a monorepo?
 - You want to compile `node_modules`?
 
-> [`babel.config.*`](#babelconfigjs) is for you!
+> [`babel.config.json`](#babelconfigjs) is for you!
 
 - You have a configuration that only applies to a single part of your project?
 
-> [`.babelrc.*`](#babelrc) is for you!
+> [`.babelrc.json`](#babelrc) is for you!
 
 - Guy Fieri is your hero?
 
-> We recommend using the [`babel.config.*`](config-files.md#project-wide-configuration) format. [Babel itself is using it](https://github.com/babel/babel/blob/master/babel.config.js).
+> We recommend using the [`babel.config.json`](config-files.md#project-wide-configuration) format. [Babel itself is using it](https://github.com/babel/babel/blob/master/babel.config.js).
 
 ### `babel.config.json`
 
@@ -47,7 +47,7 @@ module.exports = function (api) {
 }
 ```
 
-Check out the [`babel.config.*` documentation](config-files.md#project-wide-configuration) to see more configuration options.
+Check out the [`babel.config.json` documentation](config-files.md#project-wide-configuration) to see more configuration options.
 
 ### `.babelrc.json`
 

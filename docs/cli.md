@@ -137,9 +137,9 @@ Use the `--presets` option to specify presets to use in compilation
 npx babel script.js --out-file script-compiled.js --presets=@babel/preset-env,@babel/flow
 ```
 
-### Ignoring .babelrc.*
+### Ignoring .babelrc.json
 
-Ignore the configuration from the project's `.babelrc.*` file and use the cli options e.g. for a custom build
+Ignore the configuration from the project's `.babelrc.json` file and use the cli options e.g. for a custom build
 
 ```sh
 npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,react
