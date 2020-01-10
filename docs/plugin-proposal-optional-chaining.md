@@ -95,7 +95,6 @@ const obj = {
   },
 };
 
-// Prior to version 7.8, a delete operation would return undefined
 const ret = delete obj?.foo?.bar?.baz; // true
 ```
 
