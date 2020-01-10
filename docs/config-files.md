@@ -17,7 +17,7 @@ Babel has two parallel config file formats, which can be used together, or indep
 
 New in Babel 7.x, Babel has a concept of a ["root"](options.md#root) directory, which defaults
 to the current working directory. For project-wide configuration, Babel will automatically search
-for a `babel.config.json` file, or an equivalend one using the [supported extensions](#supported-file-extensions),
+for a `babel.config.json` file, or an equivalent one using the [supported extensions](#supported-file-extensions),
 in this root directory. Alternatively, users can use an explicit
 ["configFile"](options.md#configfile) value to override the default config file search behavior.
 
@@ -34,7 +34,7 @@ Project-wide configs can also be disabled by setting ["configFile"](options.md#c
 
 ## File-relative configuration
 
-Babel loads `.babelrc.json` files, or an equivalend one using the [supported extensions](#supported-file-extensions), by searching up the
+Babel loads `.babelrc.json` files, or an equivalent one using the [supported extensions](#supported-file-extensions), by searching up the
 directory structure starting from the ["filename"](options.md#filename) being compiled (limited by the caveats below).
 This can be powerful because it allows you to create independent configurations for subsections of
 a package. File-relative configurations are also [merged](options.md#merging) over top of
@@ -100,7 +100,7 @@ Babel can be configured using any file extension natively supported by Node.js: 
 - `babel.config.json` and `.babelrc.json` are parsed as JSON5 and should contain an object matching
   the [options](options.md) format that Babel accepts.
   
-  It is recommended to choose this file type wherever possible: JS config files are
+  We recommend using this file type wherever possible: JS config files are
   handy if you have complex configuration that is conditional or otherwise computed at build time.
   However, the downside is that JS configs are less statically analyzable, and therefore have
   negative effects on cacheability, linting, IDE autocomplete, etc.
@@ -127,7 +127,7 @@ return the generated configuration.
 Function-returning configs are given a few special powers because they can access an API exposed
 by Babel itself. See [Config Function API](#config-function-api) for more information.
 
-> For compatibility reasons, you could find `.babelrc` used as an alias for `.babelrc.json`.
+> For compatibility reasons, `.babelrc` is an alias for `.babelrc.json`.
 
 ## Monorepos
 
