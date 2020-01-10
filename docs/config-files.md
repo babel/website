@@ -111,9 +111,7 @@ Babel can be configured using any file extension natively supported by Node.js: 
 - `babel.config.cjs` and `.babelrc.cjs` allow you to define your configuration as CommonJS,
   using `module.exports`.
 
-- `babel.config.mjs` and `.babelrc.mjs` use native ECMAScript modules. They are only supported by
-  Node.js 13.2 or newer, and might work in older versions when passing `--experimental-modules` flag
-  to Node.js.
+- `babel.config.mjs` and `.babelrc.mjs` use native ECMAScript modules. They are supported by Node.js 13.2+ (or older versions via the `--experimental-modules` flag).
   Please remember that native ECMAScript modules are asynchronous (that's why `import()` always
   returns a promise!): for this reason, `.mjs` config files will throw when calling Babel
   synchronously.
