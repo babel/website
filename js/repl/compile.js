@@ -64,6 +64,8 @@ export default function compile(code: string, config: CompileConfig): Return {
     rawSize: new Blob([code], { type: "text/plain" }).size,
   };
 
+  let presetEnvOptions = {};
+
   if (envConfig && envConfig.isEnvPresetEnabled) {
     const targets = {};
     const { forceAllTransforms, shippedProposals } = envConfig;
@@ -90,7 +92,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       loose = envConfig.isLooseEnabled;
     }
 
-    const options: { [string]: any } = {
+    presetEnvOptions = {
       targets,
       forceAllTransforms,
       shippedProposals,
@@ -98,8 +100,6 @@ export default function compile(code: string, config: CompileConfig): Return {
       spec,
       loose,
     };
-
-    config.presets.push(["env", options]);
   }
 
   try {
@@ -109,7 +109,11 @@ export default function compile(code: string, config: CompileConfig): Return {
       sourceMap: config.sourceMap,
 
       presets: config.presets.map(preset => {
-        if (typeof preset === "string" && /^stage-[0-2]$/.test(preset)) {
+        if (typeof preset !== "string") return preset;
+        if (preset === "env") {
+          return ["env", presetEnvOptions];
+        }
+        if (/^stage-[0-2]$/.test(preset)) {
           const decoratorsLegacy = presetsOptions.decoratorsLegacy;
           const decoratorsBeforeExport = decoratorsLegacy
             ? undefined
