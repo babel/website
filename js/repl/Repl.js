@@ -98,6 +98,21 @@ function toCamelCase(str) {
     });
 }
 
+function compareVersions(a: string, b: string): 1 | 0 | -1 {
+  const aParts = a.split(".");
+  const bParts = b.split(".");
+
+  for (let i = 0; i < 3; i++) {
+    if (+aParts[i] > +bParts[i]) return 1;
+    if (+aParts[i] < +bParts[i]) return -1;
+  }
+  return 0;
+}
+
+function isEnvStandaloneNeeded(babelVersion: string): boolean {
+  return compareVersions(babelVersion, "7.8.0") === -1;
+}
+
 class Repl extends React.Component<Props, State> {
   _numLoadingPlugins = 0;
   _workerApi = new WorkerApi();
@@ -285,7 +300,10 @@ class Repl extends React.Component<Props, State> {
       ),
     });
     if (babelState.isLoaded) {
-      if (!envPresetState.isLoading) {
+      if (
+        !envPresetState.isLoading ||
+        !isEnvStandaloneNeeded(babelState.version)
+      ) {
         return this._compile(this.state.code, this._checkForUnloadedPlugins);
       }
       this._checkForUnloadedPlugins();
@@ -357,6 +375,9 @@ class Repl extends React.Component<Props, State> {
         scopedEval.getIframe()
       );
     }
+
+    // Starting from Babel 7.8.0, preset-env is included in @babel/standalone
+    if (!isEnvStandaloneNeeded(this.state.babel.version)) return;
 
     // Babel 'env' preset is large;
     // Only load it if it's been requested.
