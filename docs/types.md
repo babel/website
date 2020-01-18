@@ -1127,7 +1127,7 @@ Aliases: `Flow`, `FlowType`
 
 ### jSXAttribute
 ```javascript
-t.jsxAttribute(name, value)
+t.jSXAttribute(name, value)
 ```
 
 See also `t.isJSXAttribute(node, opts)` and `t.assertJSXAttribute(node, opts)`.
@@ -1141,7 +1141,7 @@ Aliases: `JSX`, `Immutable`
 
 ### jSXClosingElement
 ```javascript
-t.jsxClosingElement(name)
+t.jSXClosingElement(name)
 ```
 
 See also `t.isJSXClosingElement(node, opts)` and `t.assertJSXClosingElement(node, opts)`.
@@ -1154,7 +1154,7 @@ Aliases: `JSX`, `Immutable`
 
 ### jSXClosingFragment
 ```javascript
-t.jsxClosingFragment()
+t.jSXClosingFragment()
 ```
 
 See also `t.isJSXClosingFragment(node, opts)` and `t.assertJSXClosingFragment(node, opts)`.
@@ -1166,7 +1166,7 @@ Aliases: `JSX`, `Immutable`
 
 ### jSXElement
 ```javascript
-t.jsxElement(openingElement, closingElement, children, selfClosing)
+t.jSXElement(openingElement, closingElement, children, selfClosing)
 ```
 
 See also `t.isJSXElement(node, opts)` and `t.assertJSXElement(node, opts)`.
@@ -1182,7 +1182,7 @@ Aliases: `JSX`, `Immutable`, `Expression`
 
 ### jSXEmptyExpression
 ```javascript
-t.jsxEmptyExpression()
+t.jSXEmptyExpression()
 ```
 
 See also `t.isJSXEmptyExpression(node, opts)` and `t.assertJSXEmptyExpression(node, opts)`.
@@ -1194,7 +1194,7 @@ Aliases: `JSX`
 
 ### jSXExpressionContainer
 ```javascript
-t.jsxExpressionContainer(expression)
+t.jSXExpressionContainer(expression)
 ```
 
 See also `t.isJSXExpressionContainer(node, opts)` and `t.assertJSXExpressionContainer(node, opts)`.
@@ -1207,7 +1207,7 @@ Aliases: `JSX`, `Immutable`
 
 ### jSXFragment
 ```javascript
-t.jsxFragment(openingFragment, closingFragment, children)
+t.jSXFragment(openingFragment, closingFragment, children)
 ```
 
 See also `t.isJSXFragment(node, opts)` and `t.assertJSXFragment(node, opts)`.
@@ -1222,7 +1222,7 @@ Aliases: `JSX`, `Immutable`, `Expression`
 
 ### jSXIdentifier
 ```javascript
-t.jsxIdentifier(name)
+t.jSXIdentifier(name)
 ```
 
 See also `t.isJSXIdentifier(node, opts)` and `t.assertJSXIdentifier(node, opts)`.
@@ -1235,7 +1235,7 @@ Aliases: `JSX`
 
 ### jSXMemberExpression
 ```javascript
-t.jsxMemberExpression(object, property)
+t.jSXMemberExpression(object, property)
 ```
 
 See also `t.isJSXMemberExpression(node, opts)` and `t.assertJSXMemberExpression(node, opts)`.
@@ -1249,7 +1249,7 @@ Aliases: `JSX`
 
 ### jSXNamespacedName
 ```javascript
-t.jsxNamespacedName(namespace, name)
+t.jSXNamespacedName(namespace, name)
 ```
 
 See also `t.isJSXNamespacedName(node, opts)` and `t.assertJSXNamespacedName(node, opts)`.
@@ -1263,7 +1263,7 @@ Aliases: `JSX`
 
 ### jSXOpeningElement
 ```javascript
-t.jsxOpeningElement(name, attributes, selfClosing)
+t.jSXOpeningElement(name, attributes, selfClosing)
 ```
 
 See also `t.isJSXOpeningElement(node, opts)` and `t.assertJSXOpeningElement(node, opts)`.
@@ -1278,7 +1278,7 @@ Aliases: `JSX`, `Immutable`
 
 ### jSXOpeningFragment
 ```javascript
-t.jsxOpeningFragment()
+t.jSXOpeningFragment()
 ```
 
 See also `t.isJSXOpeningFragment(node, opts)` and `t.assertJSXOpeningFragment(node, opts)`.
@@ -1290,7 +1290,7 @@ Aliases: `JSX`, `Immutable`
 
 ### jSXSpreadAttribute
 ```javascript
-t.jsxSpreadAttribute(argument)
+t.jSXSpreadAttribute(argument)
 ```
 
 See also `t.isJSXSpreadAttribute(node, opts)` and `t.assertJSXSpreadAttribute(node, opts)`.
@@ -1303,7 +1303,7 @@ Aliases: `JSX`
 
 ### jSXSpreadChild
 ```javascript
-t.jsxSpreadChild(expression)
+t.jSXSpreadChild(expression)
 ```
 
 See also `t.isJSXSpreadChild(node, opts)` and `t.assertJSXSpreadChild(node, opts)`.
@@ -1316,7 +1316,7 @@ Aliases: `JSX`, `Immutable`
 
 ### jSXText
 ```javascript
-t.jsxText(value)
+t.jSXText(value)
 ```
 
 See also `t.isJSXText(node, opts)` and `t.assertJSXText(node, opts)`.
