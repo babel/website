@@ -29,9 +29,7 @@ npm install babel-plugin-transform-regexp-constructors
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

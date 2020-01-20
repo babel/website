@@ -31,9 +31,7 @@ npm install --save-dev @babel/preset-flow
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

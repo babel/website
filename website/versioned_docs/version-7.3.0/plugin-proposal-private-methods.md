@@ -32,9 +32,7 @@ $ npm install @babel/plugin-proposal-private-methods
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 Without options:
 

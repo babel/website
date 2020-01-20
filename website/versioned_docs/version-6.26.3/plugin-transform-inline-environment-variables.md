@@ -28,9 +28,7 @@ npm install babel-plugin-transform-inline-environment-variables
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 // without options

@@ -27,9 +27,7 @@ npm install --save-dev babel-plugin-transform-es3-member-expression-literals
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

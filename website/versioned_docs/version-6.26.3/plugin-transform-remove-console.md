@@ -27,9 +27,7 @@ npm install babel-plugin-transform-remove-console
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 // without options

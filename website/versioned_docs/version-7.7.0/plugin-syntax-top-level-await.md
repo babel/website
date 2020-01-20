@@ -25,9 +25,7 @@ npm install --save-dev @babel/plugin-syntax-top-level-await
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

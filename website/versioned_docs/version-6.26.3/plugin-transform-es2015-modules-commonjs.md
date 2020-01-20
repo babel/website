@@ -39,9 +39,7 @@ npm install --save-dev babel-plugin-transform-es2015-modules-commonjs
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```js
 // without options

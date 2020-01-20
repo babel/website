@@ -39,9 +39,7 @@ The transformation plugin is typically used only in development, but the runtime
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-Add the following line to your `.babelrc` file:
+### With a configuration file (Recommended)
 
 Without options:
 

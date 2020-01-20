@@ -31,9 +31,7 @@ npm install --save-dev babel-plugin-transform-es3-property-literals
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

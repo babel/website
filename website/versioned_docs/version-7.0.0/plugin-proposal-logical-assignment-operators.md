@@ -37,9 +37,7 @@ npm install --save-dev @babel/plugin-proposal-logical-assignment-operators
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

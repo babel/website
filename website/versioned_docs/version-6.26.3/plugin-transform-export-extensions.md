@@ -20,9 +20,7 @@ npm install --save-dev babel-plugin-transform-export-extensions
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

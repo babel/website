@@ -56,9 +56,7 @@ npm install --save-dev babel-plugin-transform-es2015-computed-properties
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 Without options:
 

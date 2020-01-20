@@ -62,9 +62,7 @@ npm install --save-dev babel-plugin-transform-es2015-arrow-functions
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 Without options:
 

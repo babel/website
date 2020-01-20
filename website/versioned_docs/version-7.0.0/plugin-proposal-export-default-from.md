@@ -19,9 +19,7 @@ npm install --save-dev @babel/plugin-proposal-export-default-from
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {
