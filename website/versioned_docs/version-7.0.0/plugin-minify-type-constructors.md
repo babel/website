@@ -37,9 +37,7 @@ npm install babel-plugin-minify-type-constructors --save-dev
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

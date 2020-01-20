@@ -75,9 +75,7 @@ npm install --save-dev babel-plugin-transform-class-constructor-call
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

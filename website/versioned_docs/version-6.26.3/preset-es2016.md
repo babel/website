@@ -19,9 +19,7 @@ npm install --save-dev babel-preset-es2016
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

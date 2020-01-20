@@ -34,9 +34,7 @@ npm install --save-dev babel-plugin-transform-es2015-modules-systemjs
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 Without options:
 

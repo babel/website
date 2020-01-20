@@ -82,9 +82,7 @@ npm install --save-dev babel-plugin-external-helpers
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

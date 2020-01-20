@@ -23,9 +23,7 @@ npm install --save-dev babel-preset-latest
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

@@ -39,9 +39,7 @@ npm install --save-dev babel-plugin-transform-es5-property-mutators
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

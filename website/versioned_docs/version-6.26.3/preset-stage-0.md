@@ -34,9 +34,7 @@ npm install --save-dev babel-preset-stage-0
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

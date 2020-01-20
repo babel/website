@@ -15,7 +15,7 @@ npm install --save-dev @babel/plugin-proposal-unicode-property-regex
 
 ## Usage
 
-### Via `.babelrc` (recommended)
+### With a configuration file (Recommended)
 
 `.babelrc`
 

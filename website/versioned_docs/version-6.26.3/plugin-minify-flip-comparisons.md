@@ -33,9 +33,7 @@ npm install babel-plugin-minify-flip-comparisons
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

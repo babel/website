@@ -32,9 +32,7 @@ npm install --save-dev @babel/plugin-proposal-nullish-coalescing-operator
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

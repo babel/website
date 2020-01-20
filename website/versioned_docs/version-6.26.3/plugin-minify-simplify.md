@@ -59,9 +59,7 @@ npm install babel-plugin-minify-simplify
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

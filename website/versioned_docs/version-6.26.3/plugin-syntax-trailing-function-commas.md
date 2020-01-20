@@ -94,9 +94,7 @@ npm install --save-dev babel-plugin-syntax-trailing-function-commas
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

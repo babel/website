@@ -81,9 +81,7 @@ npm install --save-dev babel-plugin-transform-async-generator-functions
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

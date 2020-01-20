@@ -27,9 +27,7 @@ npm install --save-dev babel-plugin-transform-es2015-template-literals
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 Without options:
 

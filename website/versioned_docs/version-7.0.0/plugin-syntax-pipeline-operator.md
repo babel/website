@@ -17,9 +17,7 @@ $ npm install @babel/plugin-syntax-pipeline-operator
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

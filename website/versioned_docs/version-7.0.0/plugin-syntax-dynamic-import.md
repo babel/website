@@ -13,9 +13,7 @@ npm install --save-dev @babel/plugin-syntax-dynamic-import
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

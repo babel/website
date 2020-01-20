@@ -52,9 +52,7 @@ npm install --save-dev babel-plugin-transform-react-constant-elements
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

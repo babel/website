@@ -53,7 +53,7 @@ $ npm install --save-dev @babel/plugin-proposal-partial-application
 
 ## Usage
 
-Add the following line to your .babelrc file:
+### With a configuration file (Recommended)
 
 ```json
 {

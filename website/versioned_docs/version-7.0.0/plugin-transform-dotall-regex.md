@@ -41,7 +41,7 @@ npm install --save-dev @babel/plugin-transform-dotall-regex
 
 ## Usage
 
-### Via `.babelrc` (recommended)
+### With a configuration file (Recommended)
 
 `.babelrc`
 

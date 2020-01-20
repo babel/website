@@ -19,9 +19,7 @@ npm install --save-dev babel-plugin-transform-es2015-classes
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```js
 // without options

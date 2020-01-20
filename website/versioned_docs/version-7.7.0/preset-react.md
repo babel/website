@@ -28,9 +28,7 @@ npm install --save-dev @babel/preset-react
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 Without options:
 

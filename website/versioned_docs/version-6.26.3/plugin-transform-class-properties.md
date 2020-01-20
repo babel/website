@@ -45,9 +45,7 @@ npm install --save-dev babel-plugin-transform-class-properties
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 // without options

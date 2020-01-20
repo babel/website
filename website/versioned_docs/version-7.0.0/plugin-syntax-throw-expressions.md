@@ -24,9 +24,7 @@ npm install --save-dev @babel/plugin-syntax-throw-expressions
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

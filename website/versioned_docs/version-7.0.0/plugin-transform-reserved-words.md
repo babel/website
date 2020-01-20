@@ -33,9 +33,7 @@ npm install --save-dev @babel/plugin-transform-reserved-words
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

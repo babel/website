@@ -35,9 +35,7 @@ npm install --save-dev babel-plugin-check-es2015-constants
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

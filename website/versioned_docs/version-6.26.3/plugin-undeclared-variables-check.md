@@ -34,9 +34,7 @@ npm install --save-dev babel-plugin-undeclared-variables-check
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {

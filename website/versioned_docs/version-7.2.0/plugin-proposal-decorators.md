@@ -57,7 +57,7 @@ npm install --save-dev @babel/plugin-proposal-decorators
 
 ## Usage
 
-Add the following line to your .babelrc file:
+### With a configuration file (Recommended)
 
 ```json
 {

@@ -27,9 +27,7 @@ npm install babel-plugin-transform-simplify-comparison-operators --save-dev
 
 ## Usage
 
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
+### With a configuration file (Recommended)
 
 ```json
 {
