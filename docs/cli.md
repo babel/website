@@ -113,6 +113,12 @@ Copy files that will not be compiled
 npx babel src --out-dir lib --copy-files
 ```
 
+If you don't want to copy ignored JavaScript files:
+
+```sh
+npx babel src --out-dir lib --copy-files --no-copy-ignored
+```
+
 ### Piping Files
 
 Pipe a file in via stdin and output it to `script-compiled.js`
