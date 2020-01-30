@@ -657,6 +657,8 @@ Include ignored files when copying non-compilable files.
 npx babel src --out-dir lib --ignore "src/**/*.spec.js" --copy-ignored
 ```
 
+> ⚠️ To maintain backward compatibility, in Babel 7.8.4 the default value of the `--copy-ignored` option has been changed to `true`. If you want to disable it, you can use `--no-copy-ignored`.
+
 ## Options Concepts
 
 ### `MatchPattern`

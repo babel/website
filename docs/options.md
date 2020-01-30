@@ -646,16 +646,6 @@ Type: `string`<br />
 
 A root path to include on generated module names.
 
-## CLI options
-
-### Copy ignored files
-
-Include ignored files when copying non-compilable files.
-
-```sh
-npx babel src --out-dir lib --ignore "src/**/*.spec.js" --copy-ignored
-```
-
 ## Options Concepts
 
 ### `MatchPattern`
