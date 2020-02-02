@@ -12,11 +12,11 @@ All Babel API [options](options.md) are allowed. However, if the option requires
 - You are using a monorepo?
 - You want to compile `node_modules`?
 
-> [`babel.config.json`](#babelconfigjs) is for you!
+> [`babel.config.json`](#babelconfigjson) is for you!
 
 - You have a configuration that only applies to a single part of your project?
 
-> [`.babelrc.json`](#babelrc) is for you!
+> [`.babelrc.json`](#babelrcjson) is for you!
 
 - Guy Fieri is your hero?
 
@@ -64,7 +64,7 @@ Check out the [.babelrc documentation](config-files.md#file-relative-configurati
 
 ### `package.json`
 
-Alternatively, you can choose to specify your [`.babelrc.json`](#babelrc) config from within `package.json` using the `babel` key like so:
+Alternatively, you can choose to specify your [`.babelrc.json`](#babelrcjson) config from within `package.json` using the `babel` key like so:
 
 ```json
 {
