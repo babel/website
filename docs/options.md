@@ -650,7 +650,7 @@ A root path to include on generated module names.
 
 ### `MatchPattern`
 
-Type: `string | RegExp | (filename: string | void, context: { callee: { name: string } | void, envName: string ) => boolean`
+Type: `string | RegExp | (filename: string | void, context: { caller: { name: string } | void, envName: string, dirname: string ) => boolean`
 
 Several Babel options perform tests against file paths. In general, these
 options support a common pattern approach where each pattern can be
@@ -664,10 +664,10 @@ options support a common pattern approach where each pattern can be
 Importantly, if either of these are used, Babel requires that the `filename` option be present,
 and will consider it an error otherwise.
 
-* `(filename: string | void, context: { callee: { name: string } | void, envName: string }) => boolean` is a general callback that should
+* `(filename: string | void, context: { caller: { name: string } | void, envName: string, dirname: string }) => boolean` is a general callback that should
   return a boolean to indicate whether it is a match or not. The function is passed the filename
-  or `undefined` if one was not given to Babel. It is also passed the current `envName` and `callee`
-  options that were specified by the top-level call to Babel.
+  or `undefined` if one was not given to Babel. It is also passed the current `envName` and `caller`
+  options that were specified by the top-level call to Babel and `dirname` that is either a directory of the configuration file or the current working directory (if the transformation was called programmatically).
 
 
 ### Merging
