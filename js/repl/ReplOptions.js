@@ -181,8 +181,6 @@ class ExpandedContainer extends Component<Props, State> {
     const {
       babelVersion,
       envConfig,
-      envPresetState,
-      shippedProposalsState,
       fileSize,
       timeTravel,
       sourceType,
@@ -207,11 +205,6 @@ class ExpandedContainer extends Component<Props, State> {
       isPresetsTabExpanded,
       isSettingsTabExpanded,
     } = this.state;
-
-    const disableEnvSettings =
-      !envPresetState.isLoaded ||
-      !envConfig.isEnvPresetEnabled ||
-      shippedProposalsState.isLoading;
 
     const isStage2Enabled =
       presetState["stage-0"].isEnabled ||
@@ -420,12 +413,7 @@ class ExpandedContainer extends Component<Props, State> {
                   type="checkbox"
                   onChange={this._onEnvPresetSettingCheck("isEnvPresetEnabled")}
                 />
-
-                {envPresetState.isLoading ? (
-                  <PresetLoadingAnimation />
-                ) : (
-                  "Enabled"
-                )}
+                Enabled
               </label>
 
               <div className={styles.envPresetColumn}>
@@ -438,7 +426,7 @@ class ExpandedContainer extends Component<Props, State> {
                   Browsers
                 </LinkToDocs>
                 <textarea
-                  disabled={disableEnvSettings}
+                  disabled={!envConfig.isEnvPresetEnabled}
                   className={`${styles.envPresetInput} ${
                     styles.envPresetTextarea
                   }`}
@@ -459,7 +447,6 @@ class ExpandedContainer extends Component<Props, State> {
                     styles.envPresetInput
                   }`}
                   disabled={
-                    !envPresetState.isLoaded ||
                     !envConfig.isEnvPresetEnabled ||
                     !envConfig.isElectronEnabled
                   }
@@ -473,7 +460,7 @@ class ExpandedContainer extends Component<Props, State> {
                 <input
                   checked={envConfig.isElectronEnabled}
                   className={styles.envPresetCheckbox}
-                  disabled={disableEnvSettings}
+                  disabled={!envConfig.isEnvPresetEnabled}
                   onChange={this._onEnvPresetSettingCheck("isElectronEnabled")}
                   type="checkbox"
                 />
@@ -490,9 +477,7 @@ class ExpandedContainer extends Component<Props, State> {
                     styles.envPresetInput
                   }`}
                   disabled={
-                    !envPresetState.isLoaded ||
-                    !envConfig.isEnvPresetEnabled ||
-                    !envConfig.isNodeEnabled
+                    !envConfig.isEnvPresetEnabled || !envConfig.isNodeEnabled
                   }
                   type="number"
                   min={envPresetDefaults.node.min}
@@ -504,7 +489,7 @@ class ExpandedContainer extends Component<Props, State> {
                 <input
                   checked={envConfig.isNodeEnabled}
                   className={styles.envPresetCheckbox}
-                  disabled={disableEnvSettings}
+                  disabled={!envConfig.isEnvPresetEnabled}
                   onChange={this._onEnvPresetSettingCheck("isNodeEnabled")}
                   type="checkbox"
                 />
@@ -521,7 +506,6 @@ class ExpandedContainer extends Component<Props, State> {
                   className={styles.envPresetSelect}
                   onChange={this._onEnvPresetSettingChange("builtIns")}
                   disabled={
-                    !envPresetState.isLoaded ||
                     !envConfig.isEnvPresetEnabled ||
                     !envConfig.isBuiltInsEnabled ||
                     runtimePolyfillState.isEnabled
@@ -533,7 +517,7 @@ class ExpandedContainer extends Component<Props, State> {
                 <input
                   checked={envConfig.isBuiltInsEnabled}
                   className={styles.envPresetCheckbox}
-                  disabled={disableEnvSettings}
+                  disabled={!envConfig.isEnvPresetEnabled}
                   onChange={this._onEnvPresetSettingCheck("isBuiltInsEnabled")}
                   type="checkbox"
                 />
@@ -548,7 +532,7 @@ class ExpandedContainer extends Component<Props, State> {
                 <input
                   checked={envConfig.isSpecEnabled}
                   className={styles.envPresetCheckbox}
-                  disabled={disableEnvSettings}
+                  disabled={!envConfig.isEnvPresetEnabled}
                   onChange={this._onEnvPresetSettingCheck("isSpecEnabled")}
                   type="checkbox"
                 />
@@ -563,29 +547,23 @@ class ExpandedContainer extends Component<Props, State> {
                 <input
                   checked={envConfig.isLooseEnabled}
                   className={styles.envPresetCheckbox}
-                  disabled={disableEnvSettings}
+                  disabled={!envConfig.isEnvPresetEnabled}
                   onChange={this._onEnvPresetSettingCheck("isLooseEnabled")}
                   type="checkbox"
                 />
               </label>
               <label className={styles.envPresetRow}>
-                {shippedProposalsState.isLoading ? (
-                  <span className={styles.envPresetLoaderWrapper}>
-                    <PresetLoadingAnimation size={1.6} />
-                  </span>
-                ) : (
-                  <LinkToDocs
-                    className={`${styles.envPresetLabel} ${styles.highlight}`}
-                    section="shippedproposals"
-                  >
-                    Shipped Proposals
-                  </LinkToDocs>
-                )}
+                <LinkToDocs
+                  className={`${styles.envPresetLabel} ${styles.highlight}`}
+                  section="shippedproposals"
+                >
+                  Shipped Proposals
+                </LinkToDocs>
                 <input
                   checked={envConfig.shippedProposals}
                   className={styles.envPresetCheckbox}
                   // TODO
-                  disabled={disableEnvSettings}
+                  disabled={!envConfig.isEnvPresetEnabled}
                   onChange={this._onEnvPresetSettingCheck("shippedProposals")}
                   type="checkbox"
                 />
@@ -600,7 +578,7 @@ class ExpandedContainer extends Component<Props, State> {
                 <input
                   checked={envConfig.forceAllTransforms}
                   className={styles.envPresetCheckbox}
-                  disabled={disableEnvSettings}
+                  disabled={!envConfig.isEnvPresetEnabled}
                   onChange={this._onEnvPresetSettingCheck("forceAllTransforms")}
                   type="checkbox"
                 />
