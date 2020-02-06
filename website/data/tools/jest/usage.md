@@ -15,7 +15,7 @@ In your `package.json` file make the following changes:
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    For more information see the <a href="https://github.com/babel/babel-jest">babel/babel-jest repo</a>.
+    For more information see the <a href="https://github.com/facebook/jest/tree/master/packages/babel-jest">babel-jest repo</a>.
   </p>
 </blockquote>
 
