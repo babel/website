@@ -295,7 +295,6 @@ class Repl extends React.Component<Props, State> {
         babelState.errorMessage =
           babelState.errorMessage || envState.errorMessage;
       } else {
-        alert("REG!");
         await this._workerApi.registerEnvPreset();
       }
     }
