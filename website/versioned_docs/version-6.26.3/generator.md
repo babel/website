@@ -42,6 +42,7 @@ quotes                 | `'single'` or `'double'` | autodetect based on `ast.tok
 filename               | string   |                 | Used in warning messages
 flowCommaSeparator     | boolean  | `false`         | Set to `true` to use commas instead of semicolons as Flow property separators
 jsonCompatibleStrings  | boolean  | `false`         | Set to true to run `jsesc` with "json": true to print "\u00A9" vs. "©";
+numbers                | string   | `decimal`       | Set `numbers: octal` in `jsescOption` to get the octal integer representation of any numeric value. Other supported options are `decimal, binary` and `hexadecimal`.
 
 Options for source maps:
 
