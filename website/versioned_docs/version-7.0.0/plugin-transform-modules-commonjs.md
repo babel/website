@@ -166,3 +166,8 @@ The two cases where imports can never be lazy are:
   way to know what names need to be exported.
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+
+## Caveats
+
+### Node.js builtin ES Modules support
+Since v13 Node.js has supported ECMAScript Modules natively. If you are authoring ES module code and use this plugin for backward Node.js versions support, please checkout [Differences Between ES Modules and CommonJS](https://nodejs.org/api/esm.html#esm_differences_between_es_modules_and_commonjs).
