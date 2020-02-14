@@ -58,6 +58,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   let useBuiltIns = false;
   let spec = false;
   let loose = false;
+  let corejs = "3.6";
   const transitions = new Transitions();
   const meta = {
     compiledSize: 0,
@@ -81,6 +82,9 @@ export default function compile(code: string, config: CompileConfig): Return {
     }
     if (envConfig.isBuiltInsEnabled) {
       useBuiltIns = !config.evaluate && envConfig.builtIns;
+      if (envConfig.corejs) {
+        corejs = envConfig.corejs;
+      }
     }
     if (envConfig.isNodeEnabled) {
       targets.node = envConfig.node;
@@ -97,6 +101,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       forceAllTransforms,
       shippedProposals,
       useBuiltIns,
+      corejs,
       spec,
       loose,
     };

@@ -63,6 +63,9 @@ const envPresetDefaults = {
   builtIns: {
     default: "usage",
   },
+  corejs: {
+    default: "3.6",
+  },
 };
 
 const runtimePolyfillConfig: PluginConfig = {
