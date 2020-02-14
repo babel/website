@@ -5,7 +5,7 @@ sidebar_label: transform-modules-commonjs
 original_id: babel-plugin-transform-modules-commonjs
 ---
 
-This plugin transforms ES2015 modules to [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1).
+This plugin transforms ECMAScript modules to [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1). The _syntax_ of Import/Export Statement (`import "./mod.js"`) and Import Expression (`import('./mod.js')`) are transformed to their CommonJS representation. Note that Babel is unaware of different resolution algorithms between implementations of ECMAScript modules and CommonJS.
 
 ## Example
 
@@ -166,8 +166,3 @@ The two cases where imports can never be lazy are:
   way to know what names need to be exported.
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
-
-## Caveats
-
-### Node.js builtin ES Modules support
-Since v13 Node.js has supported ECMAScript Modules natively. If you are authoring ES module code and use this plugin for backward Node.js versions support, please checkout [Differences Between ES Modules and CommonJS](https://nodejs.org/api/esm.html#esm_differences_between_es_modules_and_commonjs).

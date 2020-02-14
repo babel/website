@@ -5,6 +5,8 @@ sidebar_label: transform-modules-umd
 original_id: babel-plugin-transform-modules-umd
 ---
 
+This plugin transforms ECMAScript modules to [UMD](https://github.com/umdjs/umd). The _syntax_ of Import/Export Statement (`import "./mod.js"`) and Import Expression (`import('./mod.js')`) are transformed to their UMD representation. Note that Babel is unaware of different resolution algorithms between implementations of ECMAScript modules and UMD.
+
 ## Example
 
 **In**

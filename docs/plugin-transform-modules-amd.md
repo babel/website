@@ -4,6 +4,8 @@ title: @babel/plugin-transform-modules-amd
 sidebar_label: transform-modules-amd
 ---
 
+This plugin transforms ECMAScript modules to [AMD](https://github.com/amdjs/amdjs-api/blob/master/AMD.md). The _syntax_ of Import/Export Statement (`import "./mod.js"`) and Import Expression (`import('./mod.js')`) are transformed to their AMD representation. Note that Babel is unaware of different resolution algorithms between implementations of ECMAScript modules and AMD.
+
 ## Example
 
 **In**
