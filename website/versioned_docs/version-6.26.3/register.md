@@ -101,4 +101,4 @@ Disable the cache.
 BABEL_DISABLE_CACHE=1 babel-node script.js
 ```
 
-**Note:** `@babel/register` currently does not support compiling native Node.js ES modules on the fly. This is because Node.js doesn't have a stable API yet to intercept ES modules loading.
+**Note:** `babel-register` currently does not support compiling native Node.js ES modules on the fly. This is because Node.js doesn't have a stable API yet to intercept ES modules loading.
