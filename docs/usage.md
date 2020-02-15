@@ -127,7 +127,7 @@ Without any configuration, this preset will include all plugins to support moder
 
 > There are a few different ways to use configuration files depending on your needs. Be sure to read our in-depth guide on how to [configure Babel](configuration.md) for more information.
 
-For now, let's create a file called `babel.config.json` with the following content:
+For now, let's create a file called `babel.config.js` with the following content:
 
 ```js
 const presets = [
