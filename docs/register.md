@@ -142,3 +142,5 @@ require("./my-plugin");
 Because it is your own code that triggered the load, and not the logic within
 `@babel/register` itself, this should successfully compile any plugin/preset
 that loads synchronously.
+
+**Note:** `@babel/register` does _not_ support compiling native Node.js ES modules on the fly, since currently there is no stable API for intercepting ES modules loading.
