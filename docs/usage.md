@@ -127,24 +127,24 @@ Without any configuration, this preset will include all plugins to support moder
 
 > There are a few different ways to use configuration files depending on your needs. Be sure to read our in-depth guide on how to [configure Babel](configuration.md) for more information.
 
-For now, let's create a file called `babel.config.js` with the following content:
+For now, let's create a file called `babel.config.json` with the following content:
 
-```js
-const presets = [
+```json
+{
+"presets": [
   [
-    "@babel/env",
+  "@babel/env",
     {
-      targets: {
-        edge: "17",
-        firefox: "60",
-        chrome: "67",
-        safari: "11.1",
-      },
-    },
-  ],
-];
-
-module.exports = { presets };
+      "targets": {
+        "edge": "17",
+        "firefox": "60",
+        "chrome": "67",
+        "safari": "11.1"
+        }
+      }
+    ]
+  ]
+}
 ```
 
 Now the `env` preset will only load transformation plugins for features that are not available in our target browsers. We're all set for syntax. Let's look at polyfills next.
