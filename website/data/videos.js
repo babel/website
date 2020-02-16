@@ -9,7 +9,7 @@ const videos = [
         year: "2019",
         event: "HolyJS",
         event_link: "https://holyjs.ru/en/",
-        link: "https://www.youtube.com/watch?v=UeVq_U5obnE",
+        link: "https://www.youtube.com/embed/UeVq_U5obnE",
       },
       {
         title: "I Can Babel Macros (and So Can You!)",
@@ -18,7 +18,7 @@ const videos = [
         year: "2019",
         event: "JSConf Hawaii",
         event_link: "https://www.jsconfhi.com/",
-        link: "https://www.youtube.com/watch?v=1WNT5RCENfo",
+        link: "https://www.youtube.com/embed/1WNT5RCENfo",
       },
       {
         title: "Open Source: Charity or Business",
@@ -27,7 +27,7 @@ const videos = [
         year: "2019",
         event: "JSNation",
         event_link: "https://jsnation.com",
-        link: "https://www.youtube.com/watch?v=fpQRi5ZIq1Q",
+        link: "https://www.youtube.com/embed/fpQRi5ZIq1Q",
       },
       {
         title: "Maintainers Anonymous",
@@ -36,7 +36,7 @@ const videos = [
         year: "2019",
         event: "JSHeroes",
         event_link: "https://jsheroes.io",
-        link: "https://www.youtube.com/watch?v=-BPUPNz5H70",
+        link: "https://www.youtube.com/embed/-BPUPNz5H70",
       },
       {
         title: "Maintainer's Virtue",
@@ -45,7 +45,7 @@ const videos = [
         year: "2018",
         event: "All Things Open",
         event_link: "https://www.allthingsopen.org",
-        link: "https://www.youtube.com/watch?v=6qaupQ0KnkU",
+        link: "https://www.youtube.com/embed/6qaupQ0KnkU",
       },
       {
         title: "10KB or Bust: The Delicate Power of Webpack and Babel",
