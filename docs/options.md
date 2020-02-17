@@ -11,7 +11,6 @@ id: options
 - [Misc options](#misc-options)
 - [Code Generator options](#code-generator-options)
 - [AMD / UMD / SystemJS options](#amd-umd-systemjs-module-options)
-- [CLI options](#cli-options)
 - [Option concepts](#options-concepts)
 
 Options can be passed to Babel in a variety of ways. When passed directly to Babel,
