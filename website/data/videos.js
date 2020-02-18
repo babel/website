@@ -165,15 +165,6 @@ const videos = [
         link: "https://www.youtube.com/embed/i1c0zV1jZfc",
       },
       {
-        title: "Compiling JavaScript",
-        author: "James Kyle",
-        author_link: "https://twitter.com/thejameskyle",
-        year: "2015",
-        event: "jQuerySF",
-        event_link: "http://jquerysf.com/",
-        link: "https://www.youtube.com/embed/Ku3AWp_-Qzs",
-      },
-      {
         title: "Consolidation of Tools",
         author: "Sebastian McKenzie",
         author_link: "https://twitter.com/sebmck",
