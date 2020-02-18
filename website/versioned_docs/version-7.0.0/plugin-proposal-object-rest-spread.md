@@ -63,7 +63,7 @@ By default, this plugin will produce spec compliant code by using Babel's `objec
 
 Enabling this option will use Babel's `extends` helper, which is basically the same as `Object.assign` (see `useBuiltIns` below to use it directly).
 
-:warning: Please keep in mind that even if they're almost equivalent, there's an important difference between spread and `Object.assign`: **spread _defines_ new properties, while `Object.assign()` _sets_ them**, so using this mode might produce unexpected results in some cases.
+⚠️ Please keep in mind that even if they're almost equivalent, there's an important difference between spread and `Object.assign`: **spread _defines_ new properties, while `Object.assign()` _sets_ them**, so using this mode might produce unexpected results in some cases.
 
 For detailed information please check out [Spread VS. Object.assign](http://2ality.com/2016/10/rest-spread-properties.html#spreading-objects-versus-objectassign) and [Assigning VS. defining properties](http://exploringjs.com/es6/ch_oop-besides-classes.html#sec_assigning-vs-defining-properties).
 

@@ -4,7 +4,7 @@ title: @babel/plugin-transform-modules-commonjs
 sidebar_label: transform-modules-commonjs
 ---
 
-This plugin transforms ES2015 modules to [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1).
+This plugin transforms ECMAScript modules to [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1). Note that only the _syntax_ of import/export statements (`import "./mod.js"`) and import expressions (`import('./mod.js')`) is transformed, as Babel is unaware of different resolution algorithms between implementations of ECMAScript modules and CommonJS.
 
 ## Example
 
