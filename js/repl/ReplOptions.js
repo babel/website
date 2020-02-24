@@ -502,6 +502,19 @@ class ExpandedContainer extends Component<Props, State> {
                   Built-ins
                 </LinkToDocs>
                 <select
+                  value={envConfig.corejs}
+                  className={styles.envPresetSelect}
+                  onChange={this._onEnvPresetSettingChange("corejs")}
+                  disabled={
+                    !envConfig.isEnvPresetEnabled ||
+                    !envConfig.isBuiltInsEnabled ||
+                    runtimePolyfillState.isEnabled
+                  }
+                >
+                  <option value="2">core-js 2</option>
+                  <option value="3.6">core-js 3.6</option>
+                </select>
+                <select
                   value={envConfig.builtIns}
                   className={styles.envPresetSelect}
                   onChange={this._onEnvPresetSettingChange("builtIns")}
@@ -998,6 +1011,7 @@ const styles = {
     maxWidth: "7rem",
     fontWeight: 400,
     color: colors.textareaForeground,
+    margin: "0 0 0 0.75rem",
 
     "&:disabled": {
       opacity: 0.5,
