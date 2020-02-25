@@ -42,7 +42,7 @@ quotes                 | `'single'` or `'double'` | autodetect based on `ast.tok
 filename               | string   |                 | Used in warning messages
 flowCommaSeparator     | boolean  | `false`         | Set to `true` to use commas instead of semicolons as Flow property separators
 jsonCompatibleStrings  | boolean  | `false`         | Set to true to run `jsesc` with "json": true to print "\u00A9" vs. "©";
-jsescOption            | string   |                 | We leverage `jsesc` for getting ASCII-safe output for string literals. You can customize `jsesc` by [passing options](https://github.com/mathiasbynens/jsesc#api) to it.
+jsescOption            | object   |                 | Use `jsesc` to process literals. `jsesc` is applied to numbers only if `jsescOption.numbers` is present. You can customize `jsesc` by [passing options](https://github.com/mathiasbynens/jsesc#api) to it.
 
 Options for source maps:
 
