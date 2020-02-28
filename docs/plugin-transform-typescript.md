@@ -153,19 +153,27 @@ If you have existing code which uses the TypeScript-only [namespace][namespace] 
 
 `boolean`, defaults to `false`
 
+Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as typescript's legacy type assertion `var foo = <string>bar;`. Also, `isTSX: true` requires `allExtensions: true`.
+
 ### `jsxPragma`
 
 `string`, defaults to `React`
 
-Replace the function used when compiling JSX expressions.
-
-This is so that we know that the import is not a type import, and should not be removed
+Replace the function used when compiling JSX expressions. This is so that we know that the import is not a type import, and should not be removed.
 
 ### `allowNamespaces`
 
 `boolean`, defaults to `false` but will default to `true` in the [future](https://github.com/babel/notes/blob/master/2019/05/21.md#prs).
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+Enables compilation of TypeScript namespaces.
+
+### `onlyRemoveTypeImports`
+
+`boolean`, defaults to `false`
+
+When set to `true`, the transform will only remove [type-only imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-exports) (introduced in TypeScript 3.8). This should only be used if you are using TypeScript >= 3.8.
+
+> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options).
 
 ## TypeScript Compiler Options
 
