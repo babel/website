@@ -742,7 +742,7 @@ Individual plugin/preset items can have several different structures:
 
 * `EntryTarget` - Individual plugin
 * `[EntryTarget, EntryOptions]` - Individual plugin w/ options
-* `[EntryTarget, EntryOptions, string]` - Individual plugin with options and name (see [merging](Merging) for more info on names)
+* `[EntryTarget, EntryOptions, string]` - Individual plugin with options and name (see [merging](#merging) for more info on names)
 * `ConfigItem` - A plugin configuration item created by `babel.createConfigItem()`.
 
 The same `EntryTarget` may be used multiple times unless each one is given a different
