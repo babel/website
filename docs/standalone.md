@@ -32,7 +32,7 @@ Load `babel.js` or `babel.min.js` in your environment. This will expose [Babel's
 
 ```js
 var input = 'const getMessage = () => "Hello World";';
-var output = Babel.transform(input, { presets: ['es2015'] }).code;
+var output = Babel.transform(input, { presets: ['env'] }).code;
 ```
 
 When loaded in a browser, @babel/standalone will automatically compile and execute all script tags with type `text/babel` or `text/jsx`:
@@ -49,7 +49,7 @@ document.getElementById('output').innerHTML = getMessage();
 
 You can use the `data-plugins` and `data-presets` attributes to specify the Babel plugins/presets to use:
 ```html
-<script type="text/babel" data-presets="es2015,stage-2">
+<script type="text/babel" data-presets="env,stage-3">
 ```
 
 Loading external scripts via `src` attribute is supported too:
