@@ -84,7 +84,7 @@ For more information on setting options for a preset, refer to the [preset optio
 
 Describes the environments you support/target for your project.
 
-This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query:
+This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query (with [caveats](presets.md#ineffective-browserslist-queries)):
 
 ```json
 {
@@ -380,3 +380,8 @@ The following are currently supported:
 - None
 
 > You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
+
+## Caveats
+
+### Ineffective browserslist queries
+While `op_mini all` is a valid browserslist query, preset-env currently ignores it due to [lack of support data](https://github.com/kangax/compat-table/issues/1057) for Opera Mini.
