@@ -60,7 +60,7 @@ Because there are features of the TypeScript language which rely on the full typ
 
 1. This plugin does not support [`const enum`][const_enum]s because those require type information to compile.
 
-   **Workarounds**: 
+   **Workarounds**:
     - Use the plugin [babel-plugin-const-enum](https://www.npmjs.com/package/babel-plugin-const-enum).
     - Remove the `const`, which makes it available at runtime.
 
@@ -68,10 +68,10 @@ Because there are features of the TypeScript language which rely on the full typ
 
    **Workaround**: Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
 
-1. Changes to your `tsconfig.json` are not reflected in babel. The build process will always behave as though [`isolateModules`][iso-mods] is turned on, there are Babel-native alternative ways to set a lot of the [`tsconfig.json` options](#typescript-compiler-options) however.
+1. Changes to your `tsconfig.json` are not reflected in babel. The build process will always behave as though [`isolatedModules`][iso-mods] is turned on, there are Babel-native alternative ways to set a lot of the [`tsconfig.json` options](#typescript-compiler-options) however.
 
 1. **Q**: Why doesn't Babel allow export of a `var` or `let`?
-  
+
    **A**: The TypeScript compiler dynamically changes how these variables are used depending on whether or not the value is mutated. Ultimately, this depends on a type-model and is outside the scope of Babel. A best-effort implementation would transform context-dependent usages of the variable to always use the `Namespace.Value` version instead of `Value`, in case it was mutated outside of the current file. Allowing `var` or `let` from Babel (as the transform is not-yet-written) is therefore is more likely than not to present itself as a bug when used as-if it was not `const`.
 
 
@@ -88,7 +88,7 @@ If you have existing code which uses the TypeScript-only [namespace][namespace] 
 * `export`ing a variable using `var` or `let` in a `namespace` will result in an error: *"Namespaces exporting non-const are not supported by Babel. Change to const or ..."*
 
   **Workaround**: Use `const`. If some form of mutation is required, explicitly use an object with internal mutability.
-  
+
 * `namespace`s will not share their scope. In TypeScript, it is valid to refer to contextual items that a `namespace` extends without qualifying them, and the compiler will add the qualifier. In Babel, there is no type-model, and it is impossible to dynamically change references to match the established type of the parent object.
 
   Consider this code:
@@ -101,9 +101,9 @@ If you have existing code which uses the TypeScript-only [namespace][namespace] 
     export const W = V;
   }
   ```
-  
+
   The TypeScript compiler compiles it to something like this:
-  
+
   ```javascript
   var N = {};
   (function (N) {
@@ -113,9 +113,9 @@ If you have existing code which uses the TypeScript-only [namespace][namespace] 
     N.W = N.V;
   })(N);
   ```
-  
+
   While Babel will transform it to something like this:
-  
+
   ```javascript
   var N;
   (function (_N) {
@@ -125,7 +125,7 @@ If you have existing code which uses the TypeScript-only [namespace][namespace] 
     const W = V;
   })(N || (N = {}));
   ```
-  
+
   As Babel doesn't understand the type of `N`, the reference to `V` will be `undefined` resulting in an error.
 
   **Workaround**: Explicitly refer to values not in the same namespace definition, even if they would be in the scope according to TypeScript. Examples:
