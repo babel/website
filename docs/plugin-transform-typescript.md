@@ -67,7 +67,7 @@ Because there are features of the TypeScript language which rely on the full typ
 
    **Workaround**: Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
 
-1. Changes to your `tsconfig.json` are not reflected in babel. The build process will always behave as though [`isolateModules`][iso-mods] is turned on, there are Babel-native alternative ways to set a lot of the [`tsconfig.json` options](#typescript-compiler-options) however.
+1. Changes to your `tsconfig.json` are not reflected in babel. The build process will always behave as though [`isolatedModules`][iso-mods] is turned on, there are Babel-native alternative ways to set a lot of the [`tsconfig.json` options](#typescript-compiler-options) however.
 
 1. **Q**: Why doesn't Babel allow export of a `var` or `let`?
   
