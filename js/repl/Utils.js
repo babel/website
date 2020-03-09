@@ -39,3 +39,14 @@ export function preferDarkColorScheme(): boolean {
     window.matchMedia("(prefers-color-scheme:dark)").matches
   );
 }
+
+export function compareVersions(a: string, b: string): 1 | 0 | -1 {
+  const aParts = a.split(".");
+  const bParts = b.split(".");
+
+  for (let i = 0; i < 3; i++) {
+    if (+aParts[i] > +bParts[i]) return 1;
+    if (+aParts[i] < +bParts[i]) return -1;
+  }
+  return 0;
+}
