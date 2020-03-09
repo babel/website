@@ -22,7 +22,7 @@ class Counter extends HTMLElement {
 ## Installation
 
 ```sh
-$ npm install @babel/plugin-proposal-private-methods
+$ npm install @babel/plugin-proposal-private-methods --save-dev
 ```
 
 ## Usage
