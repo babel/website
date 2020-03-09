@@ -16,6 +16,7 @@ export type PresetsOptions = {
 export type EnvConfig = {
   browsers: string,
   electron: ?string,
+  isBugfixesEnabled: boolean,
   isEnvPresetEnabled: boolean,
   isElectronEnabled: boolean,
   isBuiltInsEnabled: boolean,
@@ -108,6 +109,7 @@ export type CompileConfig = {
 
 export type ReplState = {
   browsers: string,
+  bugfixes: boolean,
   build: string,
   builtIns: string | boolean,
   spec: boolean,
