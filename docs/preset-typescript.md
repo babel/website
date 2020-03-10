@@ -83,4 +83,19 @@ Indicates that every file should be parsed as TS or TSX (depending on the isTSX 
 
 Enables compilation of TypeScript namespaces.
 
+### `allowDeclareFields`
+
+`boolean`, defaults to `false`
+
+> NOTE: This will be enabled by default in Babel 8
+
+When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
+
+```javascript
+class A {
+  declare foo: string; // Removed
+  bar: string; // Initialized to undefined
+}
+```
+
 > You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)

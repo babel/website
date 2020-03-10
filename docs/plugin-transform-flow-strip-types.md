@@ -79,4 +79,19 @@ Setting this to true will only strip annotations and declarations from files
 that contain the `// @flow` directive. It will also throw errors for any Flow
 annotations found in files without the directive.
 
+### `allowDeclareFields`
+
+`boolean`, defaults to `false`
+
+> NOTE: This will be enabled by default in Babel 8
+
+When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
+
+```javascript
+class A {
+  declare foo: string; // Removed
+  bar: string; // Initialized to undefined
+}
+```
+
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

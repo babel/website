@@ -1,5 +1,5 @@
 ---
-id: version-7.8.0-babel-preset-typescript
+id: version-7.7.0-babel-preset-typescript
 title: @babel/preset-typescript
 sidebar_label: typescript
 original_id: babel-preset-typescript
@@ -34,7 +34,6 @@ npm install --save-dev @babel/preset-typescript
 ## Usage
 
 ### With a configuration file (Recommended)
-
 
 ```json
 {
