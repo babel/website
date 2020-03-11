@@ -4,6 +4,17 @@ title: @babel/plugin-syntax-dynamic-import
 sidebar_label: syntax-dynamic-import
 ---
 
+`@babel/plugin-syntax-dynamic-import` needed to enable parsing for import().
+
+In Babel 7.8.0 it's enabled by default, so this plugin shouldn't be needed if you are using `@babel/core@>7.8.0`.
+
+If you want to transpile import():
+
+1. If you are using `@babel/preset-env`, it's automatically handled
+2. If you are using Webpack or Rollup, you shouldn't transpile import() with Babel and let the bundler handle it for you
+3. Otherwise, you need `@babel/plugin-proposal-dynamic-import`
+
+
 ## Installation
 
 ```sh
