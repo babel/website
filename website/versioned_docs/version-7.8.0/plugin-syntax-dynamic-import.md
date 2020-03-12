@@ -1,7 +1,8 @@
 ---
-id: babel-plugin-syntax-dynamic-import
+id: version-7.8.0-babel-plugin-syntax-dynamic-import
 title: @babel/plugin-syntax-dynamic-import
 sidebar_label: syntax-dynamic-import
+original_id: babel-plugin-syntax-dynamic-import
 ---
 
 `@babel/plugin-syntax-dynamic-import` is needed to enable parsing for `import()`.
