@@ -5,7 +5,7 @@ sidebar_label: syntax-dynamic-import
 original_id: babel-plugin-syntax-dynamic-import
 ---
 
-`@babel/plugin-syntax-dynamic-import` is needed to enable parsing for `import()`.
+`@babel/plugin-syntax-dynamic-import` is needed to enable support for parsing `import()`
 
 This plugin is enabled by default since Babel 7.8.0, so you shouldn't need to enable this plugin separately.
 
