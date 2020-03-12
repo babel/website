@@ -152,6 +152,12 @@ Ignore the configuration from the project's `.babelrc.json` file and use the cli
 npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,react
 ```
 
+### Custom config path
+
+```sh
+npx babel --config-file /path/to/my/babel.config.json --out-dir dist ./src
+```
+
 ### Set File Extensions
 
 By default, Babel will override the extension of the transpiled file and use `.js` instead.
