@@ -1,3 +1,8 @@
+- name: Trivago
+  url: https://tech.trivago.com/opensource/
+  image: https://images.opencollective.com/trivago/9bdcb07/logo.png
+  type: opencollective
+  tier: base-support-sponsor
 - name: Tidelift
   url: https://tidelift.com/subscription/pkg/npm-babel
   logo: tidelift.png
