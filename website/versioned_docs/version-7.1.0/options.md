@@ -531,12 +531,13 @@ Type: `{}`<br />
 
 An opaque object containing options to pass through to the parser being used.
 
+For available parser options, see [Parser Options](parser.md#options).
 
 ### `generatorOpts`
 
 Type: `{}`<br />
 
-An opaque object containing options to pass through to the code generator being used.
+An opaque object containing options to pass through to the code generator being used. See [Code Generator Options](#code-generator-options) for most used options.
 
 
 ## Code Generator options
@@ -613,6 +614,10 @@ Default with `minified`: `() => opts.comments`<br />
 
 A function that can decide whether a given comment should be included in the
 output code from Babel.
+
+
+### Advanced Usage
+For more code generator options, see [Generator Options](generator.md#options).
 
 
 ## AMD / UMD / SystemJS module options
