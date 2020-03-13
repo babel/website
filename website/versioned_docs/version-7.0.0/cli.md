@@ -145,6 +145,13 @@ Ignore the configuration from the project's `.babelrc` file and use the cli opti
 npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,react
 ```
 
+### Custom config path
+
+```sh
+npx babel --config-file /path/to/my/babel.config.json --out-dir dist ./src
+```
+
+
 ### Advanced Usage
 
 There are many more options available, see [options](options.md), `babel --help` and other sections for more information.
