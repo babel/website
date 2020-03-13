@@ -41,11 +41,11 @@ After that finishes installing, your `package.json` file should include:
 
 ## Usage
 
+> **Note:** Please install `@babel/cli` and `@babel/core` first before `npx babel`, otherwise `npx` will install out-of-dated `babel` 6.x. Other than [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b), you can also drop it inside of an [npm run script](https://docs.npmjs.com/cli/run-script) or you may instead execute with the relative path instead. `./node_modules/.bin/babel`
 ```sh
-babel script.js
+npx babel script.js
 ```
 
-> **Note:** These instructions use the excellent [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) command to run the locally installed executables. You can drop it inside of an [npm run script](https://docs.npmjs.com/cli/run-script) or you may instead execute with the relative path instead. `./node_modules/.bin/babel`
 
 ### Compile Files
 
