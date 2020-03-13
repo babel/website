@@ -234,7 +234,7 @@ This option configures how `@babel/preset-env` imports polyfills and runtime sup
 Specifically, this option supports the following external packages:
 
 - `core-js`: For standard JS built-ins
-- `regenerator-runtime`: For generator and `async`/`await` support (for browsers that lack support)
+- `regenerator-runtime`: For generator and `async`/`await` support (for browsers that lack support for generators)
 
 Since these packages do not come with Babel or `@babel/preset-env` itself, they'll need to be installed as production-level dependencies. This way, when the Babel-generated code imports them, they'll be accessible (in `node_modules`).
 
