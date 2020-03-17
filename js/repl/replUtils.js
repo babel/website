@@ -152,6 +152,7 @@ export const persistedStateToEnvConfig = (
     isBuiltInsEnabled: !!persistedState.builtIns,
     isSpecEnabled: !!persistedState.spec,
     isLooseEnabled: !!persistedState.loose,
+    isBugfixesEnabled: !!persistedState.bugfixes,
     node: envPresetDefaults.node.default,
     version: persistedState.version,
     builtIns: envPresetDefaults.builtIns.default,

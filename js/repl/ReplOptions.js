@@ -8,7 +8,7 @@ import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import ExternalPlugins from "./ExternalPlugins";
 import Svg from "./Svg";
 import { colors, media } from "./styles";
-import { joinListEnglish } from "./Utils";
+import { compareVersions, joinListEnglish } from "./Utils";
 
 import type {
   BabelPlugin,
@@ -213,6 +213,9 @@ class ExpandedContainer extends Component<Props, State> {
 
     const isStage1Enabled =
       presetState["stage-0"].isEnabled || presetState["stage-1"].isEnabled;
+
+    const isBugfixesSupported =
+      babelVersion && compareVersions(babelVersion, "7.9.0") !== -1;
 
     return (
       <div className={styles.expandedContainer}>
@@ -565,6 +568,25 @@ class ExpandedContainer extends Component<Props, State> {
                   type="checkbox"
                 />
               </label>
+              {isBugfixesSupported && (
+                <label className={styles.envPresetRow}>
+                  <LinkToDocs
+                    className={`${styles.envPresetLabel} ${styles.highlight}`}
+                    section="bugfixes"
+                  >
+                    Bug Fixes
+                  </LinkToDocs>
+                  <input
+                    checked={envConfig.isBugfixesEnabled}
+                    className={styles.envPresetCheckbox}
+                    disabled={!envConfig.isEnvPresetEnabled}
+                    onChange={this._onEnvPresetSettingCheck(
+                      "isBugfixesEnabled"
+                    )}
+                    type="checkbox"
+                  />
+                </label>
+              )}
               <label className={styles.envPresetRow}>
                 <LinkToDocs
                   className={`${styles.envPresetLabel} ${styles.highlight}`}

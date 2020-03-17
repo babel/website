@@ -58,6 +58,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   let useBuiltIns = false;
   let spec = false;
   let loose = false;
+  let bugfixes = false;
   let corejs = "3.6";
   const transitions = new Transitions();
   const meta = {
@@ -95,6 +96,9 @@ export default function compile(code: string, config: CompileConfig): Return {
     if (envConfig.isLooseEnabled) {
       loose = envConfig.isLooseEnabled;
     }
+    if (envConfig.isBugfixesEnabled) {
+      bugfixes = envConfig.isBugfixesEnabled;
+    }
 
     presetEnvOptions = {
       targets,
@@ -104,6 +108,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       corejs,
       spec,
       loose,
+      bugfixes,
     };
   }
 
