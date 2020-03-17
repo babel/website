@@ -74,13 +74,13 @@ require("@babel/core").transform("code", {
 
 `boolean`, defaults to `false`
 
+Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as typescript's legacy type assertion `var foo = <string>bar;`. Also, `isTSX: true` requires `allExtensions: true`.
+
 ### `jsxPragma`
 
 `string`, defaults to `React`
 
-Replace the function used when compiling JSX expressions.
-
-This is so that we know that the import is not a type import, and should not be removed
+Replace the function used when compiling JSX expressions. This is so that we know that the import is not a type import, and should not be removed.
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
 
@@ -156,5 +156,3 @@ using different configuration options or plugins.
 [exin]: https://www.typescriptlang.org/docs/handbook/modules.html#export--and-import--require
 [fm]: https://github.com/Microsoft/dtslint/blob/master/docs/no-single-declare-module.md
 [tsc-options]: https://www.typescriptlang.org/docs/handbook/compiler-options.html
-
-
