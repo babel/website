@@ -207,7 +207,7 @@ equivalents in Babel can be enabled by some configuration options or plugins.
 - `--importHelpers`
   This is the equivalent of the `@babel/plugin-transform-runtime` package.
 - `---importsNotUsedAsValues`
-  You can the `onlyRemoveTypeImports` option to replicate this behavior. `onlyRemoveTypeImports: true` is equivalent to `importsNotUsedAsValues: preserve`, while `onlyRemoveTypeImports: false` is equivalent to `importsNotUsedAsValues: remove`. There is no equivalent for `importsNotUsedAsValues: error`.
+  You can use the `onlyRemoveTypeImports` option to replicate this behavior. `onlyRemoveTypeImports: true` is equivalent to `importsNotUsedAsValues: preserve`, while `onlyRemoveTypeImports: false` is equivalent to `importsNotUsedAsValues: remove`. There is no equivalent for `importsNotUsedAsValues: error`.
 - `--inlineSourceMap`
   You can set the [`sourceMaps: "inline"`](https://babeljs.io/docs/en/options#sourcemaps) option in your `babel.config.json` file.
 - `--isolatedModules`
