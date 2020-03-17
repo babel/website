@@ -163,8 +163,9 @@ Note, browsers' results are overridden by explicit items from `targets`.
 
 `boolean`, defaults to `true`.
 
-By default, `@babel/preset-env` (and Babel plugins in general) grouped ECMAScript syntax features into collections of closely related smaller features. These groups can be large and include a lot of edge cases, for example "function arguments" includes destructured, default and rest parameters.
-From this grouping information, Babel enables or disables each group based on the browser support target you specify to `@babel/preset-env`’s `targets` option.
+> Note: These optimizations will be enabled by default in Babel 8
+
+By default, `@babel/preset-env` (and Babel plugins in general) grouped ECMAScript syntax features into collections of closely related smaller features. These groups can be large and include a lot of edge cases, for example "function arguments" includes destructured, default and rest parameters. From this grouping information, Babel enables or disables each group based on the browser support target you specify to `@babel/preset-env`’s `targets` option.
 
 When this option is enabled, `@babel/preset-env` tries to compile the broken syntax to the closest *non-broken modern syntax* supported by your target browsers. Depending on your `targets` and on how many modern syntax you are using, this can lead to a significant size reduction in the compiled app.
 
