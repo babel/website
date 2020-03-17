@@ -1,6 +1,8 @@
 // @flow
 
 // Globals pre-loaded by Worker
+import { compareVersions } from "./Utils";
+
 declare var Babel: any;
 declare var prettier: any;
 declare var prettierPlugins: any;
@@ -108,8 +110,10 @@ export default function compile(code: string, config: CompileConfig): Return {
       corejs,
       spec,
       loose,
-      bugfixes,
     };
+    if (Babel.version && compareVersions(Babel.version, "7.9.0") !== -1) {
+      (presetEnvOptions: any).bugfixes = bugfixes;
+    }
   }
 
   try {
