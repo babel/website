@@ -5,7 +5,7 @@ import "regenerator-runtime/runtime";
 import { cx, css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
-import { prettySize } from "./Utils";
+import { prettySize, compareVersions } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
@@ -96,17 +96,6 @@ function toCamelCase(str) {
     .replace(/^(.)/, function($1) {
       return $1.toLowerCase();
     });
-}
-
-function compareVersions(a: string, b: string): 1 | 0 | -1 {
-  const aParts = a.split(".");
-  const bParts = b.split(".");
-
-  for (let i = 0; i < 3; i++) {
-    if (+aParts[i] > +bParts[i]) return 1;
-    if (+aParts[i] < +bParts[i]) return -1;
-  }
-  return 0;
 }
 
 class Repl extends React.Component<Props, State> {
@@ -287,7 +276,7 @@ class Repl extends React.Component<Props, State> {
     const babelState = await loadBundle(this.state.babel, this._workerApi);
     await this._loadInitialExternalPlugins();
 
-    if (compareVersions(babelState.version, "7.8.0") == -1) {
+    if (compareVersions(babelState.version, "7.8.0") === -1) {
       const envState = await this._loadPresetEnvStandalone();
 
       if (envState.didError) {
@@ -578,6 +567,7 @@ class Repl extends React.Component<Props, State> {
 
     const payload = {
       browsers: envConfig.browsers,
+      bugfixes: envConfig.isBugfixesEnabled,
       build: state.babel.build,
       builtIns: builtIns,
       spec: envConfig.isSpecEnabled,

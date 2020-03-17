@@ -1,6 +1,8 @@
 // @flow
 
 // Globals pre-loaded by Worker
+import { compareVersions } from "./Utils";
+
 declare var Babel: any;
 declare var prettier: any;
 declare var prettierPlugins: any;
@@ -58,6 +60,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   let useBuiltIns = false;
   let spec = false;
   let loose = false;
+  let bugfixes = false;
   let corejs = "3.6";
   const transitions = new Transitions();
   const meta = {
@@ -95,6 +98,9 @@ export default function compile(code: string, config: CompileConfig): Return {
     if (envConfig.isLooseEnabled) {
       loose = envConfig.isLooseEnabled;
     }
+    if (envConfig.isBugfixesEnabled) {
+      bugfixes = envConfig.isBugfixesEnabled;
+    }
 
     presetEnvOptions = {
       targets,
@@ -105,6 +111,9 @@ export default function compile(code: string, config: CompileConfig): Return {
       spec,
       loose,
     };
+    if (Babel.version && compareVersions(Babel.version, "7.9.0") !== -1) {
+      (presetEnvOptions: any).bugfixes = bugfixes;
+    }
   }
 
   try {

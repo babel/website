@@ -86,6 +86,7 @@ const pluginConfigs: Array<PluginConfig> = [
 
 const replDefaults: ReplState = {
   browsers: "",
+  bugfixes: false,
   build: "",
   builtIns: false,
   spec: false,
