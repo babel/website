@@ -153,7 +153,7 @@ If you have existing code which uses the TypeScript-only [namespace][namespace] 
 
 `boolean`, defaults to `false`
 
-Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as typescript's legacy type assertion `var foo = <string>bar;`. Also, `isTSX: true` requires `allExtensions: true`.
+Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as TypeScript's legacy type assertion `var foo = <string>bar;`. Also, `isTSX: true` requires `allExtensions: true`.
 
 ### `jsxPragma`
 
