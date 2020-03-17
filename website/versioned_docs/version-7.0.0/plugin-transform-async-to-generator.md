@@ -89,7 +89,7 @@ require("@babel/core").transform("code", {
 
 ### Bluebird non-promise runtime error
 
-When a non-promise value are awaited, bluebird will throw "Error: A value was yielded that could not be treated as a promise". It is a runtime error so Babel can not handle it automatically. Users should manually transform it to a promise.
+When using `await` with non-promise values, Bluebird will throw "Error: A value was yielded that could not be treated as a promise". Since Babel cannot automatically handle this runtime error, you should manually transform it to a promise.
 ```diff
 async function foo() {
 -  await 42;
