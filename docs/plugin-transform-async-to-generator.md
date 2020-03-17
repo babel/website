@@ -29,7 +29,7 @@ var foo = _asyncToGenerator(function* () {
 
 **Out with options**
 
-> Turn async functions into a Bluebird coroutine
+> Turn async functions into a Bluebird coroutine ([caveats](#bluebird-non-promise-runtime-error))
 
 ```javascript
 var Bluebird = require("bluebird");
@@ -82,6 +82,18 @@ babel --plugins @babel/plugin-transform-async-to-generator script.js
 require("@babel/core").transform("code", {
   plugins: ["@babel/plugin-transform-async-to-generator"]
 });
+```
+
+## Caveats
+
+### Bluebird non-promise runtime error
+
+When a non-promise value are awaited, bluebird will throw "Error: A value was yielded that could not be treated as a promise". It is a runtime error so Babel can not handle it automatically. Users should manually transform it to a promise.
+```diff
+async function foo() {
+-  await 42;
++  await Promise.resolve(42);
+}
 ```
 
 ## References
