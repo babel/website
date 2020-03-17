@@ -175,6 +175,21 @@ When set to `true`, the transform will only remove [type-only imports](https://w
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options).
 
+### `allowDeclareFields`
+
+`boolean`, defaults to `false`
+
+> NOTE: This will be enabled by default in Babel 8
+
+When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
+
+```javascript
+class A {
+  declare foo: string; // Removed
+  bar: string; // Initialized to undefined
+}
+```
+
 ## TypeScript Compiler Options
 
 The official TypeScript compiler has many [options][tsc-options] for configuring how it
