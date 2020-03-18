@@ -8,7 +8,7 @@ sidebar_label: transform-react-jsx
 
 ### React Automatic Runtime
 
-Automatic runtime is a feature avaliable in v7.9.0. With this runtime enabled, the functions that JSX compiles to will be imported automatically.
+Automatic runtime is a feature available in v7.9.0. With this runtime enabled, the functions that JSX compiles to will be imported automatically.
 
 **In**
 
@@ -158,7 +158,7 @@ const profile = Preact.h(
 
 ### Fragments
 
-Fragments are a feature available in React 16.2.0+.
+[Fragments](https://reactjs.org/docs/fragments.html) are a feature available in React 16.2.0+.
 
 #### React
 
@@ -186,7 +186,7 @@ const descriptions = items.map(item =>
 );
 ```
 
-#### Custom for Classic Runtime
+#### Customizing with the Classic Runtime
 
 **In**
 
@@ -222,7 +222,7 @@ var descriptions = items.map(item =>
 );
 ```
 
-Note that if a custom pragma is specified, then a custom fragment pragma must also be specified if the `<></>` is used. Otherwise, an error will be thrown.
+Note that if a custom pragma is specified, then a custom fragment pragma must also be specified if the fragment sytnax `<></>` is used. Otherwise, an error will be thrown.
 
 ## Installation
 
@@ -295,7 +295,7 @@ Though the JSX spec allows this, it is disabled by default since React's JSX doe
 
 Decides which runtime to use.
 
-`automatic` auto imports the functions that JSX transpiles to. `classic` does not automatic import anything.
+`automatic` auto imports the functions that JSX transpiles to. `classic` does not automatically import anything.
 
 ### React Automatic Runtime
 
