@@ -162,7 +162,7 @@ Note, browsers' results are overridden by explicit items from `targets`.
 
 ### `bugfixes`
 
-`boolean`, defaults to `true`.
+`boolean`, defaults to `false`.
 
 > Note: These optimizations will be enabled by default in Babel 8
 
