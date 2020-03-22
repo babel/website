@@ -3,6 +3,11 @@
   image: https://images.opencollective.com/trivago/9bdcb07/logo.png
   type: opencollective
   tier: base-support-sponsor
+- name: Gatsby
+  url: https://www.gatsbyjs.com/
+  image: https://images.opencollective.com/gatsbyjs/2aecbd6/logo/256.png
+  type: opencollective
+  tier: base-support-sponsor
 - name: Tidelift
   url: https://tidelift.com/subscription/pkg/npm-babel
   logo: tidelift.png
