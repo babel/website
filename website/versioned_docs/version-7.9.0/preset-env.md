@@ -434,7 +434,7 @@ The following are currently supported:
 
 **Features**
 
-- numeric separator
+- [numeric separator](https://github.com/tc39/proposal-numeric-separator)
 
 > You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
 
