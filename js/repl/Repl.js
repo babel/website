@@ -324,6 +324,10 @@ class Repl extends React.Component<Props, State> {
         });
       }
     }
+    // If no plugins are enabled, immediately invoke a new compilation
+    if (this._numLoadingPlugins === 0) {
+      this._compile(this.state.code, this._persistState);
+    }
 
     // Babel (runtime) polyfill is large;
     // It's only needed if we're actually executing the compiled code.
