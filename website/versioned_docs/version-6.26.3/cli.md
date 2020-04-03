@@ -39,7 +39,7 @@ After that finishes installing, your `package.json` file should include:
 }
 ```
 
-## Basic Usage 
+## Basic Usage
 
 ```sh
 babel script.js
@@ -154,13 +154,13 @@ There are many more options available in the babel CLI, see [options](/docs/usag
 ## babel-node
 
 > #### Not meant for production use
-> 
+>
 > You should not be using `babel-node` in production. It is unnecessarily heavy, with high memory usage due to the cache being stored in memory. You will also always experience a startup performance penalty as the entire app needs to be compiled on the fly.
-> 
+>
 > Check out the [example Node.js server with Babel](https://github.com/babel/example-node-server) for an idea of how to use Babel in a production deployment.
 
 > #### ES6-style module-loading may not function as expected
-> 
+>
 > Due to technical limitations ES6-style module-loading is not fully supported in a `babel-node REPL`.
 
 babel comes with a second CLI which works exactly the same as Node.js's CLI, only
@@ -205,7 +205,7 @@ babel-node [options] [ -e script | script.js ] [arguments]
 When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
 
 ```sh
-npx babel-node --debug --presets es2015 -- script.js --debug
+npx babel-node --inspect --presets es2015 -- script.js --inspect
 ```
 
 ### Options
