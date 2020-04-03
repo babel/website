@@ -71,7 +71,7 @@ babel-node [options] [ -e script | script.js ] [arguments]
 When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
 
 ```sh
-npx babel-node --debug --presets es2015 -- script.js --debug
+npx babel-node --inspect --presets es2015 -- script.js --inspect
 ```
 
 ### Options
