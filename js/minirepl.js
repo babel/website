@@ -109,7 +109,8 @@ function compileCode(sourceEditor, targetEditor) {
 
   try {
     transformed = Babel.transform(sourceEditor.getValue(), {
-      presets: ["es2015", "es2016", "es2017"],
+      presets: ["react", ["env", { targets: "defaults", loose: true }]],
+      plugins: [["external-helpers", { helperVersion: "7.100.0" }]],
       filename: "repl",
       babelrc: false,
     });
