@@ -3,10 +3,9 @@
 import debounce from "lodash.debounce";
 
 const miniReplExamples = [
-  "[1, 2, 3].map(n => n ** 2);",
-  "var [a,,b] = [1,2,3];",
-  "const x = [1, 2, 3];\nfoo([...x]);",
-  'var obj = {\n  shorthand,\n  method() {\n    return "😀";\n  }\n};',
+  "element.index ?? -1;",
+  "const styles = {\n" + "  ...defaults,\n" + '  color: "#f5da55",\n' + "};",
+  "const city = address?.city",
   'var name = "Guy Fieri";\nvar place = "Flavortown";\n\n`Hello ${name}, ready for ${place}?`;',
   'let yourTurn = "Type some code in here!";',
 ];
