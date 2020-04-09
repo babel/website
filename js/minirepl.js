@@ -109,7 +109,10 @@ function compileCode(sourceEditor, targetEditor) {
 
   try {
     transformed = Babel.transform(sourceEditor.getValue(), {
-      presets: ["react", ["env", { targets: "defaults", loose: true }]],
+      presets: [
+        "react",
+        ["env", { targets: "defaults, not ie 11, not ie_mob 11", loose: true }],
+      ],
       plugins: [["external-helpers", { helperVersion: "7.100.0" }]],
       filename: "repl",
       babelrc: false,
