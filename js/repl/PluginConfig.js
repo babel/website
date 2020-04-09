@@ -79,7 +79,7 @@ const pluginConfigs: Array<PluginConfig> = [
     baseUrl: "https://unpkg.com",
     label: "Prettify",
     package: "prettier",
-    version: "1.13.0",
+    version: "2",
     files: ["standalone.js", "parser-babylon.js"],
   },
 ];
