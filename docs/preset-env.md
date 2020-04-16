@@ -420,7 +420,7 @@ Toggles whether or not [browserslist config sources](https://github.com/ai/brows
 
 ### `browserslistEnv`
 
-`string`, defaults to `"production"`
+`string`, defaults to `undefined`
 
 The [browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to use.
 
