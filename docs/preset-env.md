@@ -433,7 +433,9 @@ The following are currently supported:
 
 **Features**
 
+- [class properties](https://github.com/tc39/proposal-class-fields)
 - [numeric separator](https://github.com/tc39/proposal-numeric-separator)
+- [private methods](https://github.com/tc39/proposal-private-methods)
 
 > You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
 
