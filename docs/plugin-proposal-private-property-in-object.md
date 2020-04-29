@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-proposal-private-property-in-object
-title: @babel/plugin-property-private-property-in-object
-sidebar_label: property-private-property-in-object
+title: @babel/plugin-proposal-private-property-in-object
+sidebar_label: proposal-private-property-in-object
 ---
 
 ## Example
