@@ -134,7 +134,7 @@ This option allows for-of to be used with array-like objects.
 
 An array-like object is an object with a `length` property: for example, `{ 0: "a", 1: "b", length: 2 }`. Note that, like real arrays, array-like objects can have "holes": `{ 1: "a", length: 3 }` is equivalent to `[ (hole), "a", (hole) ]`.
 
-While is not spec-compliant to iterate array-like objects as if they were arrays, there are many objects that would be _iterables_ in modern browsers with `Symbol.iterator` support. Some notable examples are the DOM collections, like `document.querySelectorAll("img.big")`. Those objects are the main use case for this option.
+While it is _not_ spec-compliant to iterate array-like objects as if they were arrays, there are many objects that would be _iterables_ in modern browsers with `Symbol.iterator` support. Some notable examples are the DOM collections, like `document.querySelectorAll("img.big")`, which are the main use case for this option.
 
 Please note that Babel allows iterating `arguments` in old engines even if this option is disabled, because it's defined as _iterable_ in the ECMAScript specification.
 
