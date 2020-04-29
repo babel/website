@@ -76,7 +76,7 @@ require("@babel/core").transform("code", {
 
 > Note: The `loose` mode configuration setting _must_ be the same as [`@babel/proposal-class-properties`](plugin-proposal-class-properties.md).
 
-When true, private property `in` expressions will check for a own property on the object, instead of checking for presence inside a `WeakSet`. This results in improved
+When true, private property `in` expressions will check own properties (as opposed to inherited ones) on the object, instead of checking for presence inside a `WeakSet`. This results in improved
 performance and debugging (normal property access vs `.get()`) at the expense
 of potentially leaking "privates" via things like `Object.getOwnPropertyNames`.
 
@@ -120,4 +120,3 @@ var _bar = babelHelpers.classPrivateFieldLooseKey("bar");
 ## References
 
 * [Proposal: Ergonomic brand checks for Private Fields](https://github.com/tc39/proposal-private-fields-in-in)
-
