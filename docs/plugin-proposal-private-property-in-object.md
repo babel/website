@@ -41,7 +41,7 @@ var _bar = new WeakMap();
 ## Installation
 
 ```sh
-npm install --save-dev @babel/plugin-property-private-property-in-object
+npm install --save-dev @babel/plugin-proposal-private-property-in-object
 ```
 
 ## Usage
@@ -50,21 +50,21 @@ npm install --save-dev @babel/plugin-property-private-property-in-object
 
 ```json
 {
-  "plugins": ["@babel/plugin-property-private-property-in-object
+  "plugins": ["@babel/plugin-proposal-private-property-in-object"]
 }
 ```
 
 ### Via CLI
 
 ```sh
-babel --plugins @babel/plugin-property-private-property-in-object
+babel --plugins @babel/plugin-proposal-private-property-in-object
 ```
 
 ### Via Node API
 
 ```javascript
 require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-property-private-property-in-object
+  plugins: ["@babel/plugin-proposal-private-property-in-object"]
 });
 ```
 
