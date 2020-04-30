@@ -48,7 +48,7 @@ const shippedProposalsConfig: MultiPackagesConfig = {
 
 const envPresetDefaults = {
   browsers: {
-    placeholder: "> 2%, ie 11, safari > 9",
+    placeholder: "defaults, not ie 11, not ie_mob 11",
   },
   electron: {
     min: 0.3,
@@ -57,7 +57,7 @@ const envPresetDefaults = {
   },
   node: {
     min: 0.1,
-    default: "8.9",
+    default: "10.13",
     step: 0.1,
   },
   builtIns: {
@@ -85,8 +85,8 @@ const pluginConfigs: Array<PluginConfig> = [
 ];
 
 const replDefaults: ReplState = {
-  browsers: "",
-  bugfixes: false,
+  browsers: "defaults, not ie 11, not ie_mob 11",
+  bugfixes: true,
   build: "",
   builtIns: false,
   spec: false,
@@ -108,7 +108,7 @@ const replDefaults: ReplState = {
     compiledSize: 0,
     rawSize: 0,
   },
-  presets: "es2015,react,stage-2",
+  presets: "react,stage-2,env",
   prettier: false,
   showSidebar: true,
   shippedProposals: false,
