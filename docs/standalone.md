@@ -45,6 +45,12 @@ document.getElementById('output').innerHTML = getMessage();
 </script>
 ```
 
+If you want to use your browser's native support for ES Modules, you'd normally need to set a `type="module"` attribute on your script tag. With @babel/standalone, set a `data-type="module"` attribute instead, like this:
+
+```html
+<script type="text/babel" data-type="module">
+```
+
 You can use the `data-plugins` and `data-presets` attributes to specify the Babel plugins/presets to use:
 
 ```html
