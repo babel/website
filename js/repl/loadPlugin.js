@@ -16,7 +16,7 @@ export default function loadPlugin(
   state.isLoading = true;
 
   const { config } = state;
-  const base = config.baseUrl || "https://unpkg.com";
+  const base = config.baseUrl || "https://bundle.run";
   const url = `${base}/${config.package}@${config.version || ""}`;
 
   loadScript(
