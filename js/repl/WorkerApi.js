@@ -98,7 +98,7 @@ export default class WorkerApi {
   loadPlugin(state: PluginState): Promise<boolean> {
     const { config } = state;
 
-    const base = config.baseUrl || "https://unpkg.com";
+    const base = config.baseUrl || "https://bundle.run";
     const url = `${base}/${config.package}@${config.version || ""}`;
 
     state.isLoading = true;

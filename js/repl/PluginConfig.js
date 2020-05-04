@@ -34,13 +34,13 @@ const shippedProposalsPackages: Array<PluginConfig> = [
   return {
     label: pluginName,
     package: packageName,
-    baseUrl: "https://unpkg.com",
+    baseUrl: "https://bundle.run",
     instanceName: normalizePluginName(pluginName),
   };
 });
 
 const shippedProposalsConfig: MultiPackagesConfig = {
-  baseUrl: "https://unpkg.com",
+  baseUrl: "https://bundle.run",
   label: "Shipped Proposals",
   packages: shippedProposalsPackages,
   package: "",
