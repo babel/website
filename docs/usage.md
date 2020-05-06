@@ -26,7 +26,7 @@ The entire process to set this up involves:
    {
      "presets": [
        [
-         "@babel/env",
+         "@babel/preset-env",
          {
            "targets": {
              "edge": "17",
@@ -134,7 +134,7 @@ For now, let's create a file called `babel.config.json` with the following conte
 {
 "presets": [
   [
-  "@babel/env",
+  "@babel/preset-env",
     {
       "targets": {
         "edge": "17",
@@ -180,7 +180,7 @@ Now luckily for us, we're using the `env` preset which has a `"useBuiltIns"` opt
 {
   "presets": [
     [
-      "@babel/env",
+      "@babel/preset-env",
       {
         "targets": {
           "edge": "17",
