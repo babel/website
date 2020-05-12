@@ -69,7 +69,7 @@ require("@babel/core").transform("code", {
 
 `boolean`, defaults to `false`.
 
-> Note: The `loose` mode configuration setting _must_ be the same as [`@babel/proposal-class-properties`](plugin-proposal-class-properties.md).
+> Note: The `loose` mode configuration setting _must_ be the same as [`@babel/plugin-proposal-class-properties`](plugin-proposal-class-properties.md).
 
 When true, private methods will be assigned directly on its parent
 via `Object.defineProperty` rather than a `WeakSet`. This results in improved
