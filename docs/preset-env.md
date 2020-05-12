@@ -83,7 +83,7 @@ For more information on setting options for a preset, refer to the [preset optio
 
 Describes the environments you support/target for your project.
 
-This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query (with [caveats](presets.md#ineffective-browserslist-queries)):
+This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query (with [caveats](#ineffective-browserslist-queries)):
 
 ```json
 {
