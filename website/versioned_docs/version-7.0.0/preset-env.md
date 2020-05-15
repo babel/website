@@ -196,7 +196,7 @@ An array of plugins to always include.
 
 Valid options include any:
 
-- [Babel plugins](https://github.com/babel/babel/blob/master/packages/babel-compat-data/scripts/data/plugin-features.js) - both with `babel-plugin-`(`babel-plugin-transform-spread`) and without prefix (`transform-spread`) are supported.
+- [Babel plugins](https://github.com/babel/babel-preset-env/blob/master/data/plugin-features.js) - without prefix: `transform-spread` and with prefix: `babel-plugin-`: `babel-plugin-transform-spread` and are supported.
 
 - [Built-ins](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/built-in-features.js), such as `es6.map`, `es6.set`, or `es6.object.assign`.
 

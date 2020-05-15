@@ -222,7 +222,7 @@ An array of plugins to always include.
 
 Valid options include any:
 
-- [Babel plugins](https://github.com/babel/babel-preset-env/blob/master/data/plugin-features.js) - both with `babel-plugin-` (`babel-plugin-transform-es2015-spread`) and without prefix (`transform-es2015-spread`) are supported.
+- [Babel plugins](https://github.com/babel/babel-preset-env/blob/master/data/plugin-features.js) - without prefix: `transform-es2015-spread` and with prefix `babel-plugin-`: `babel-plugin-transform-es2015-spread` and are supported.
 
 - [Built-ins](https://github.com/babel/babel-preset-env/blob/master/data/built-in-features.js), such as `map`, `set`, or `object.assign`.
 
