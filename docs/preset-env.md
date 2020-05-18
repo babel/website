@@ -260,7 +260,7 @@ npm install core-js@2 --save
 > Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
 > We recommend creating a single entry file that only contains the `import` statements.
 
-This option enables a new plugin that replaces the `import "core-js/stable";` and `import "regenerator-runtime/runtime"` statements (or `require("corejs")` and `require("regenerator-runtime/runtime")`) with individual requires to different `core-js` entry points based on environment.
+This option enables a new plugin that replaces the `import "core-js/stable";` and `import "regenerator-runtime/runtime"` statements (or `require("core-js")` and `require("regenerator-runtime/runtime")`) with individual requires to different `core-js` entry points based on environment.
 
 **In**
 
