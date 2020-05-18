@@ -161,7 +161,7 @@ Sidenote, if the `targets` option is not set and `corejs` is not set to `false`,
 
 ```json
 {
-  "presets": ["@babel/plugin-transform-runtime"]
+  "plugins": ["@babel/plugin-transform-runtime"]
 }
 ```
 
