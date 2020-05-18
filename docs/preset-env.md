@@ -120,7 +120,7 @@ Because of this, `preset-env`'s behavior is different than [browserslist](https:
 
 ```json
 {
-  "presets": [["@babel/preset-env", { targets: 'defaults' }]]
+  "presets": [["@babel/preset-env", { "targets": "defaults" }]]
 }
 ```
 
