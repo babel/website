@@ -36,44 +36,6 @@ The transformer will alias these built-ins to `core-js` so you can use them seam
 
 See the [technical details](#technical-details) section for more information on how this works and the types of transformations that occur.
 
-## Browserslist Integration
-
-For browser- or Electron-based projects, we recommend using a [`.browserslistrc`](https://github.com/browserslist/browserslist) file to specify targets. You may already have this configuration file as it is used by many tools in the ecosystem, like [autoprefixer](https://github.com/postcss/autoprefixer), [stylelint](https://stylelint.io/), [eslint-plugin-compat](https://github.com/amilajack/eslint-plugin-compat) and many others.
-
-Assuming the `corejs` option is not set to `false`, by default `@babel/plugin-transform-runtime` will use [browserslist config sources](https://github.com/ai/browserslist#queries) _unless_ either the [targets](#targets) or [ignoreBrowserslistConfig](#ignorebrowserslistconfig) options are set.
-
-For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
-
-[Options](options.md#presets)
-
-```json
-{
-  "plugins": [
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "corejs": 3
-      }
-    ]
-  ]
-}
-```
-
-**browserslist**
-
-```
-> 0.25%
-not dead
-```
-
-or
-
-**package.json**
-
-```
-"browserslist": "> 0.25%, not dead"
-```
-
 ## Usage
 
 ### With a configuration file (Recommended)
@@ -86,7 +48,7 @@ Without options:
 }
 ```
 
-With options (and their defaults, excluding `configPath`):
+With options (and their defaults):
 
 ```json
 {
@@ -97,7 +59,6 @@ With options (and their defaults, excluding `configPath`):
         "absoluteRuntime": false,
         "corejs": false,
         "helpers": true,
-        "ignoreBrowserslistConfig": false,
         "regenerator": true,
         "targets": {},
         "useESModules": false,
@@ -194,7 +155,7 @@ Or an object of minimum environment versions to support:
 
 Example environments: `chrome`, `opera`, `edge`, `firefox`, `safari`, `ie`, `ios`, `android`, `node`, `electron`.
 
-Sidenote, if no targets are specified and `corejs` is not set to `false`, then `@babel/plugin-transform-runtime` will transform all ECMAScript 2015+ code by default.
+Sidenote, if the `targets` option is not set and `corejs` is not set to `false`, then `@babel/plugin-transform-runtime` will transform all ECMAScript 2015+ code.
 
 > We don't recommend using `plugin-transfrom-runtime` this way because it doesn't take advantage of its ability to target specific browsers.
 
@@ -249,18 +210,6 @@ A query to select browsers (ex: last 2 versions, > 5%, safari tp) using [browser
 Note, browsers' results are overridden by explicit items from `targets`.
 
 > Note: this will be removed in later version in favor of just setting "targets" to a query directly.
-
-### `configPath`
-
-`string`, defaults to `process.cwd()`
-
-The starting point where the config search for browserslist will start, and ascend to the system root until found.
-
-### `ignoreBrowserslistConfig`
-
-`boolean`, defaults to `false`
-
-Toggles whether or not [browserslist config sources](https://github.com/ai/browserslist#queries) are used, which includes searching for any browserslist files or referencing the browserslist key inside package.json. This is useful for projects that use a browserslist config for files that won't be compiled with Babel.
 
 ### `useBuiltIns`
 
