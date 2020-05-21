@@ -683,3 +683,6 @@
 - name: SwissDev Jobs
   url: https://swissdevjobs.ch
   logo: swissdev-java-jobs-logo.svg
+- name: BroadbandUK
+  url: https://broadbandspeedtest.org.uk
+  logo: broadbanduk.svg
