@@ -328,7 +328,7 @@ class ExpandedContainer extends Component<Props, State> {
                   )}
                 >
                   <option
-                    vale="modern"
+                    value="modern"
                     selected={!presetsOptions.decoratorsLegacy}
                   >
                     Current Proposal
