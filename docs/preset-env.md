@@ -418,6 +418,12 @@ The starting point where the config search for browserslist will start, and asce
 
 Toggles whether or not [browserslist config sources](https://github.com/ai/browserslist#queries) are used, which includes searching for any browserslist files or referencing the browserslist key inside package.json. This is useful for projects that use a browserslist config for files that won't be compiled with Babel.
 
+### `browserslistEnv`
+
+`string`, defaults to `undefined`
+
+The [Browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to use.
+
 ### `shippedProposals`
 
 `boolean`, defaults to `false`
