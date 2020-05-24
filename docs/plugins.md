@@ -50,6 +50,7 @@ These plugins apply transformations to your code.
 - [sticky-regex](plugin-transform-sticky-regex.md)
 - [template-literals](plugin-transform-template-literals.md)
 - [typeof-symbol](plugin-transform-typeof-symbol.md)
+- [unicode-escapes](plugin-transform-unicode-escapes.md)
 - [unicode-regex](plugin-transform-unicode-regex.md)
 
 ### ES2016
