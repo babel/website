@@ -16,6 +16,8 @@ In March 2018, Henry [left his job](https://www.henryzoo.com/leaving-behance/) t
 
 This has been a big win for the team, but we're finding that it is not enough.
 
+<!-- truncate -->
+
 ## New Challenges
 
 Babel has come a long way from [its origins as "6to5"](https://www.youtube.com/watch?v=fntd0sPMOtQ), growing beyond just the *adoption* and implementation of language features in JavaScript. It has become a key part in its _development_:
