@@ -686,3 +686,6 @@
 - name: BroadbandUK
   url: https://broadbandspeedtest.org.uk
   logo: broadbanduk.svg
+- name: Toptal
+  url: https://www.toptal.com
+  logo: toptal.svg
