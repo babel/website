@@ -81,7 +81,7 @@ var output = Babel.transform(input, { presets: ['env'] }).code;
 
 Note that [config files](config-files.md) don't work in @babel/standalone, as no file system access is available. The presets and/or plugins to use **must** be specified in the options passed to `Babel.transform`.
 
-Customisation
+Customization
 =============
 Custom plugins and presets can be added using the `registerPlugin` and `registerPreset` methods respectively:
 
