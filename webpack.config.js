@@ -1,4 +1,5 @@
 "use strict";
+const TerserPlugin = require("terser-webpack-plugin");
 
 const config = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
@@ -30,6 +31,18 @@ const config = {
   },
   performance: {
     hints: false,
+  },
+  // workaround https://bugs.webkit.org/show_bug.cgi?id=212725
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            ascii_only: true,
+          },
+        },
+      }),
+    ],
   },
 };
 
