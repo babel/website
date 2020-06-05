@@ -78,6 +78,8 @@ require("@babel/core").transform("code", {
 
 In loose mode, **all** iterables are assumed to be arrays.
 
+Loose mode preserves "holes" when spreading an array (for example, `[ ...Array(2) ]` produces `[ (hole), (hole) ]`). Set loose to `false` to avoid this behaviour.
+
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
 
 ### `allowArrayLike`
