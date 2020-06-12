@@ -102,7 +102,7 @@ const GetStarted = ({ language }) => {
         <a href={siteConfig.getPageUrl("team.html", language)}>volunteers</a>{" "}
         that spend their free time maintaining this project, funded by the
         community. If Babel has benefited you in your work, becoming a{" "}
-        <a href="https://github.com/babel/babel/blob/master/CONTRIBUTING.md">
+        <a href="https://github.com/babel/babel/blob/main/CONTRIBUTING.md">
           contributor
         </a>{" "}
         or <a href="https://opencollective.com/babel">sponsoring</a> might just
