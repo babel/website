@@ -142,7 +142,7 @@ npx babel script.js --out-file script-compiled.js --presets=@babel/preset-env,@b
 Ignore the configuration from the project's `.babelrc.json` file and use the cli options e.g. for a custom build
 
 ```sh
-npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,react
+npx babel --no-babelrc script.js --out-file script-compiled.js --presets=@babel/preset-env,@babel/preset-react
 ```
 
 ### Custom config path
