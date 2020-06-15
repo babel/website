@@ -64,7 +64,8 @@ export default async function loadBundle(
         // /build/master for backwards compatibility.
         build = await loadLatestBuildNumberForBranch(
           state.circleciRepo,
-          build === "7.0" ? "master" : build
+          build === "7.0" ? "master" : build,
+          "build-standalone"
         );
       }
       const regExp = new RegExp(`${packageName}/${packageFile}$`);
