@@ -136,7 +136,7 @@ npx babel script.js --out-file script-compiled.js --plugins=transform-runtime,tr
 Use the `--presets` option to specify presets to use in compilation
 
 ```sh
-npx babel script.js --out-file script-compiled.js --presets=es2015,react
+npx babel script.js --out-file script-compiled.js --presets=@babel/preset-env,@babel/preset-react
 ```
 
 ### Ignoring .babelrc
@@ -144,7 +144,7 @@ npx babel script.js --out-file script-compiled.js --presets=es2015,react
 Ignore the configuration from the projects .babelrc file and use the cli options e.g. for a custom build
 
 ```sh
-npx babel --no-babelrc script.js --out-file script-compiled.js --presets=es2015,react
+npx babel --no-babelrc script.js --out-file script-compiled.js --presets=@babel/preset-env,@babel/preset-react
 ```
 
 ### Advanced Usage
@@ -205,7 +205,7 @@ babel-node [options] [ -e script | script.js ] [arguments]
 When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
 
 ```sh
-npx babel-node --inspect --presets es2015 -- script.js --inspect
+npx babel-node --inspect --presets @babel/preset-env -- script.js --inspect
 ```
 
 ### Options

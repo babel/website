@@ -276,7 +276,7 @@ In Babel 7, values are resolved consistently either relative to the config file 
 For `presets` and `plugins` values, this change means that the CLI will behave nicely in cases such as
 
 ```bash
-babel --presets @babel/preset-es2015 ../file.js
+babel --presets @babel/preset-env ../file.js
 ```
 
 Assuming your `node_modules` folder is in `.`, in Babel 6 this would fail because the preset could not be found.

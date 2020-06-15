@@ -232,13 +232,11 @@ It is important to remember that with presets, the order is _reversed_. The foll
 
 ```json
 {
-  "presets": ["es2015", "react", "stage-2"]
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
 ```
 
-Will run in the following order: `stage-2`, `react`, then `es2015`.
-
-This is mostly for ensuring backwards compatibility, since most users list "es2015" before "stage-0". For more information, see [notes on potential traversal API changes](https://github.com/babel/notes/blob/master/2016/2016-08/august-01.md#potential-api-changes-for-traversal).
+Will run in the following order: `@babel/preset-react` then `@babel/preset-env`.
 
 ## Plugin Options
 
