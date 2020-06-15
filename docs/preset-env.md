@@ -323,10 +323,14 @@ var b = new Map();
 
 **Out (if environment doesn't support it)**
 
+a.js
+
 ```js
 import "core-js/modules/es.promise";
 var a = new Promise();
 ```
+
+b.js
 
 ```js
 import "core-js/modules/es.map";
@@ -335,9 +339,13 @@ var b = new Map();
 
 **Out (if environment supports it)**
 
+a.js
+
 ```js
 var a = new Promise();
 ```
+
+b.js
 
 ```js
 var b = new Map();
