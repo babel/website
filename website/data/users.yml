@@ -689,3 +689,6 @@
 - name: Toptal
   url: https://www.toptal.com
   logo: toptal.svg
+- name: IndiaMART
+  url: https://www.indiamart.com
+  logo: indiamart.png
