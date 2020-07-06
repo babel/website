@@ -5,7 +5,7 @@ sidebar_label: typescript
 original_id: babel-preset-typescript
 ---
 
-This preset includes the following plugins:
+This preset is recommended if you use [TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html), a typed superset of JavaScript. It includes the following plugins:
 
 - [@babel/plugin-transform-typescript](plugin-transform-typescript.md)
 
@@ -26,6 +26,8 @@ const x = 0;
 ```
 
 ## Installation
+
+> You can also check out the [TypeScript in 5 minutes page](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
 
 ```sh
 npm install --save-dev @babel/preset-typescript
