@@ -49,11 +49,11 @@ With options:
     [
       "@babel/preset-react",
       {
-        "pragma": "dom", // default pragma is React.createElement (only in classic runtime)
-        "pragmaFrag": "DomFrag", // default is React.Fragment (only in classic runtime)
+        // "pragma": "dom", // default pragma is React.createElement (only in classic runtime)
+        // "pragmaFrag": "DomFrag", // default is React.Fragment (only in classic runtime)
         "throwIfNamespace": false, // defaults to true
-        "runtime": "classic" // defaults to classic
-        // "importSource": "custom-jsx-library" // defaults to react (only in automatic runtime)
+        "runtime": "automatic", // defaults to automatic
+        "importSource": "custom-jsx-library" // defaults to react (only in automatic runtime)
       }
     ]
   ]
@@ -80,7 +80,7 @@ require("@babel/core").transform("code", {
 
 #### `runtime`
 
-`classic | automatic`, defaults to `classic`
+`classic | automatic`, defaults to `automatic`
 
 Decides which runtime to use.
 
@@ -125,18 +125,6 @@ Replace the function used when compiling JSX expressions.
 `string`, defaults to `React.Fragment`.
 
 Replace the component used when compiling JSX fragments.
-
-#### `useBuiltIns`
-
-`boolean`, defaults to `false`.
-
-Will use the native built-in instead of trying to polyfill behavior for any plugins that require one.
-
-#### `useSpread`
-
-`boolean`, defaults to `false`.
-
-When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
 
 ### .babelrc.js
 

@@ -8,7 +8,7 @@ sidebar_label: transform-react-jsx
 
 ### React Automatic Runtime
 
-Automatic runtime is a feature available in v7.9.0. With this runtime enabled, the functions that JSX compiles to will be imported automatically.
+Automatic runtime is a feature available in v7.9.0 and becomes default in v8.0.0. With this runtime enabled, the functions that JSX compiles to will be imported automatically.
 
 **In**
 
@@ -251,7 +251,7 @@ With options:
       "@babel/plugin-transform-react-jsx",
       {
         "throwIfNamespace": false, // defaults to true
-        "runtime": "automatic", // defaults to classic
+        "runtime": "classic", // defaults to automatic
         "importSource": "custom-jsx-library" // defaults to react
       }
     ]
@@ -320,15 +320,3 @@ Note that the `@jsx React.DOM` pragma has been deprecated as of React v0.12
 `string`, defaults to `React.Fragment`.
 
 Replace the component used when compiling JSX fragments.
-
-### `useBuiltIns`
-
-`boolean`, defaults to `false`.
-
-When spreading props, use `Object.assign` directly instead of Babel's extend helper.
-
-### `useSpread`
-
-`boolean`, defaults to `false`.
-
-When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
