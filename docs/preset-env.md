@@ -400,9 +400,6 @@ module.exports = function(api) {
 
 </details></p>
 
-> NOTE: `targets.uglify` is deprecated and will be removed in the next major in
-> favor of this.
-
 By default, this preset will run all the transforms needed for the targeted
 environment(s). Enable this option if you want to force running _all_
 transforms, which is useful if the output will be run through UglifyJS or an
