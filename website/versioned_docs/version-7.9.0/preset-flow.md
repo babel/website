@@ -5,7 +5,7 @@ sidebar_label: flow
 original_id: babel-preset-flow
 ---
 
-This preset includes the following plugins:
+This preset is recommended if you use [Flow](https://flow.org/en/docs/getting-started/), a static type checker for JavaScript code. It includes the following plugins:
 
 - [@babel/plugin-transform-flow-strip-types](plugin-transform-flow-strip-types.md)
 
