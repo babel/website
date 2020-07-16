@@ -83,6 +83,9 @@ Note that [config files](config-files.md) don't work in @babel/standalone, as no
 
 Customization
 =============
+
+### custom plugins
+
 Custom plugins and presets can be added using the `registerPlugin` and `registerPreset` methods respectively:
 
 ```js
@@ -113,4 +116,27 @@ var output = Babel.transform(
   {plugins: ['lolizer']}
 );
 // Returns "function LOL() { LOL(LOL); }"
+```
+
+### custom presets: passing options to built-in presets/plugins
+
+If you want to pass options to builtin plugins and presets, you can create a new preset and pass these options inside the preset.
+```js
+// Define a preset
+Babel.registerPreset("env-plus", {
+  presets: [
+    [Babel.availablePresets["env"], { "loose": true }]
+  ],
+  plugins: [
+    [
+      Babel.availablePlugins["proposal-decorators"], { decoratorsBeforeExport: true }
+    ]
+  ],
+});
+```
+
+Once registered, you can use this preset in an inline script:
+
+```html
+<script type="text/babel" data-presets="env-plus">
 ```
