@@ -1,16 +1,16 @@
 ```js
-var rollup = require("rollup");
-var babel = require("@rollup/plugin-babel");
+import babel from '@rollup/plugin-babel';
 
-rollup.rollup({
-  entry: "src/main.js",
-  plugins: [ babel() ]
-}).then(function (bundle) {
-  bundle.write({
-    dest: "dist/bundle.js",
-    format: "umd"
-  });
-});
+const config = {
+  input: 'src/index.js',
+  output: {
+    dir: 'output',
+    format: 'esm'
+  },
+  plugins: [babel({ babelHelpers: 'bundled' })]
+};
+
+export default config;
 ```
 
 <blockquote class="babel-callout babel-callout-info">
