@@ -8,7 +8,7 @@ sidebar_label: transform-react-jsx
 
 ### React Automatic Runtime
 
-Automatic runtime is a feature available in v7.9.0 and becomes default in v8.0.0. With this runtime enabled, the functions that JSX compiles to will be imported automatically.
+Automatic runtime is a feature available in v7.9.0 and becomes the default in v8.0.0. With this runtime enabled, the functions that JSX compiles to will be imported automatically.
 
 **In**
 
