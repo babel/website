@@ -2,12 +2,15 @@ core:
   - name: Babel
     github: babel
     twitter: babeljs
-  - name: Daniel Tschinder
-    github: danez
-    twitter: TschinderDaniel
   - name: Brian Ng
     github: existentialism
     twitter: existentialism
+  - name: Henry Zhu
+    github: hzoo
+    twitter: left_pad
+  - name: Huáng Jùnliàng
+    github: JLHwung
+    twitter: JLHwung
   - name: Logan Smyth
     github: loganfsmyth
     twitter: loganfsmyth
@@ -17,9 +20,6 @@ core:
   - name: Sven Sauleau
     github: xtuc
     twitter: svensauleau
-  - name: Henry Zhu
-    github: hzoo
-    twitter: left_pad
 members:
   - name: Andrew Levine
     github: drewml
@@ -32,7 +32,10 @@ members:
     twitter: heisenbugger
   - name: Buu Nguyen
     github: buunguyen
-    twitter: buunguyen    
+    twitter: buunguyen
+  - name: Daniel Tschinder
+    github: danez
+    twitter: TschinderDaniel
   - name: Denis Pushkarev
     github: zloirock
     twitter: zloirock
