@@ -46,9 +46,9 @@ Type: An object with the shape of
 ```flow
 interface CallerData {
   name: string;
-  supportsStaticESM: boolean;
-  supportsDynamicImport: boolean;
-  supportsTopLevelAwait: boolean;
+  supportsStaticESM?: boolean;
+  supportsDynamicImport?: boolean;
+  supportsTopLevelAwait?: boolean;
 }
 ```
 
