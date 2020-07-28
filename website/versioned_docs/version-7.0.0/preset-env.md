@@ -176,11 +176,12 @@ Enable ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.htm
 
 `"amd" | "umd" | "systemjs" | "commonjs" | "cjs" | "auto" | false`, defaults to `"auto"`.
 
-Enable transformation of ES6 module syntax to another module type.
+Enable transformation of ES module syntax to another module type. Note that `cjs` is just an alias for `commonjs`.
 
-Setting this to `false` will not transform modules.
+Setting this to `false` will preserve ES modules. Use this only if you intend to ship native ES Modules to browsers. If you are using a bundler with Babel, the default `modules: "auto"` is always preferred.
 
-Also note that `cjs` is just an alias for `commonjs`.
+#### `modules: "auto"`
+By default `@babel/preset-env` uses [`caller`](options.md#caller) data to determine whether ES modules and module features (e.g. `import()`) should be transformed. Generally `caller` data will be specified in the bundler plugins (e.g. `babel-loader`, `@rollup/plugin-babel`) and thus it is not recommended to pass `caller` data yourself -- The passed `caller` may overwrite the one from bundler plugins and in the future you may get suboptimal results if bundlers supports new module features.
 
 ### `debug`
 
