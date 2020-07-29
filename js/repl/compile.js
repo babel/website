@@ -30,7 +30,7 @@ type Return = {
 const DEFAULT_PRETTIER_CONFIG = {
   bracketSpacing: true,
   jsxBracketSameLine: false,
-  parser: "babylon",
+  parser: "babel",
   printWidth: 80,
   semi: true,
   singleQuote: false,
