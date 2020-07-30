@@ -130,12 +130,12 @@ BABEL_SHOW_CONFIG_FOR=./src/myComponent.jsx npm start
 ```
 
 ```powershell
-$env:BABEL_SHOW_CONFIG_FOR=.\src\myComponent.jsx; npm start
+$env:BABEL_SHOW_CONFIG_FOR = ".\src\myComponent.jsx"; npm start
 ```
 
-`BABEL_SHOW_CONFIG_FOR` accepts absolute and relative _file_ path. If it is a relative path, it will be resolved from [`cwd`](options.md#cwd).
+`BABEL_SHOW_CONFIG_FOR` accepts both absolute and relative _file_ paths. If it is a relative path, it will be resolved from [`cwd`](options.md#cwd).
 
-Once Babel processes the input file specified by `BABEL_SHOW_CONFIG_FOR`, Babel will print effective configs to console. Here is an example output
+Once Babel processes the input file specified by `BABEL_SHOW_CONFIG_FOR`, Babel will print effective configs to the console. Here is an example output:
 
 ```
 Babel configs on "/path/to/cwd/src/index.js" (ascending priority):
@@ -183,14 +183,14 @@ programmatic options from @babel/cli
 }
 ```
 
-Babel will print multiple effective config sources in the order of ascending priority. In the example above, the priority is
+Babel will print effective config sources ordered by ascending priority. Using the example above, the priority is:
 
 ```
 babel.config.json < .babelrc < programmatic options from @babel/cli
 ```
 In other words, `babel.config.json` is overwritten by `.babelrc`, and `.babelrc` is overwritten by programmatic options.
 
-In each config sources, Babel prints applicable config items (e.g. [`overrides`](options.md#overrides) and [`.env`](options.md#env)) in the order of ascending priority. Generally each config sources has at least one config item -- the root content of configs. If you have configured `overrides` or `env`, Babel will not print them in the root, but instead it will output a separate config item titled as `.overrides[index]`, where `index` is the position of the item. So you can learn whether the overrides config is effective on the input and which configs this item will override.
+For each config source, Babel prints applicable config items (e.g. [`overrides`](options.md#overrides) and [`.env`](options.md#env)) in the order of ascending priority. Generally each config sources has at least one config item -- the root content of configs. If you have configured `overrides` or `env`, Babel will not print them in the root, but will instead output a separate config item titled as `.overrides[index]`, where `index` is the position of the item. This helps determine whether the item is effective on the input and which configs it will override.
 
 If your input is ignored by `ignore` or `only`, Babel will print that this file is ignored.
 
