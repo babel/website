@@ -60,13 +60,18 @@ pre {
   content: "JSON5";
 }
 
+.hljs.language-powershell::before {
+  content: "PowerShell";
+}
+
 .hljs.language-sh::before,
 .hljs.language-shell::before,
 .hljs.language-bash::before {
   content: "Shell";
 }
 
-.hljs.language-ts::before {
+.hljs.language-ts::before,
+.hljs.language-typescript::before {
   content: "TypeScript";
 }
 
