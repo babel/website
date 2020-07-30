@@ -43,7 +43,15 @@ relative to.
 
 ### `caller`
 
-Type: `Object` with a string-typed `"name"` property.<br />
+Type: An object with the shape of
+```flow
+interface CallerData {
+  name: string;
+  supportsStaticESM?: boolean;
+  supportsDynamicImport?: boolean;
+  supportsTopLevelAwait?: boolean;
+}
+```
 
 Utilities may pass a `caller` object to identify themselves to Babel and pass
 capability-related flags for use by configs, presets and plugins. For example
