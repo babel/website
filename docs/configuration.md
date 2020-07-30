@@ -120,3 +120,110 @@ require("@babel/core").transform("code", {
 ```
 
 Check out the [babel-core documentation](core.md) to see more configuration options.
+
+## Print effective configs
+
+You can tell Babel to print effective configs on a given input path
+```sh
+# *nix or WSL
+BABEL_SHOW_CONFIG_FOR=./src/myComponent.jsx npm start
+```
+
+```powershell
+$env:BABEL_SHOW_CONFIG_FOR = ".\src\myComponent.jsx"; npm start
+```
+
+`BABEL_SHOW_CONFIG_FOR` accepts both absolute and relative _file_ paths. If it is a relative path, it will be resolved from [`cwd`](options.md#cwd).
+
+Once Babel processes the input file specified by `BABEL_SHOW_CONFIG_FOR`, Babel will print effective configs to the console. Here is an example output:
+
+```
+Babel configs on "/path/to/cwd/src/index.js" (ascending priority):
+config /path/to/cwd/babel.config.json
+{
+  "sourceType": "script",
+  "plugins": [
+    "@foo/babel-plugin-1
+  ],
+  "extends": "./my-extended.js"
+}
+
+config /path/to/cwd/babel.config.json .env["test"]
+{
+  "plugins": [
+    [
+      "@foo/babel-plugin-3",
+      {
+        "noDocumentAll": true
+      },
+    ]
+  ]
+}
+
+config /path/to/cwd/babel.config.json .overrides[0]
+{
+  "test": "src/index.js",
+  "sourceMaps": true
+}
+
+config /path/to/cwd/.babelrc
+{}
+
+programmatic options from @babel/cli
+{
+  "sourceFileName": "./src/index.js",
+  "presets": [
+    "@babel/preset-env"
+  ],
+  "configFile": "./my-config.js",
+  "caller": {
+    "name": "@babel/cli"
+  },
+  "filename": "./src/index.js"
+}
+```
+
+Babel will print effective config sources ordered by ascending priority. Using the example above, the priority is:
+
+```
+babel.config.json < .babelrc < programmatic options from @babel/cli
+```
+In other words, `babel.config.json` is overwritten by `.babelrc`, and `.babelrc` is overwritten by programmatic options.
+
+For each config source, Babel prints applicable config items (e.g. [`overrides`](options.md#overrides) and [`.env`](options.md#env)) in the order of ascending priority. Generally each config sources has at least one config item -- the root content of configs. If you have configured `overrides` or `env`, Babel will not print them in the root, but will instead output a separate config item titled as `.overrides[index]`, where `index` is the position of the item. This helps determine whether the item is effective on the input and which configs it will override.
+
+If your input is ignored by `ignore` or `only`, Babel will print that this file is ignored.
+
+### How Babel merges config items
+
+For each config items mentioned above, Babel applies `Object.assign` on options except for `plugins` and `presets`, which is concatenated by `Array#concat`. For example
+```js
+const config = {
+  plugins: [["plugin-1a", { loose: true }], "plugin-1b"],
+  presets: ["preset-1a"],
+  sourceType: "script"
+}
+
+const newConfigItem = {
+  plugins: [["plugin-1a", { loose: false }], "plugin-2b"],
+  presets: ["preset-1a", "preset-2a"],
+  sourceType: "module"
+}
+
+BabelConfigMerge(config, newConfigItem);
+// returns
+({
+  plugins: [
+    ["plugin-1a", { loose: false }],
+    "plugin-1b",
+    ["plugin-1a", { loose: false }],
+    "plugin-2b"
+  ], // new plugins are pushed
+  presets: [
+    "preset-1a",
+    "preset-1a",
+    "preset-2b"
+  ], // new presets are pushed
+  sourceType: "module" // sourceType: "script" is overwritten
+})
+```
