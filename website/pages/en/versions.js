@@ -43,6 +43,11 @@ class Versions extends React.Component {
                       Release Notes
                     </a>
                   </td>
+                  <td>
+                    <a href={`${siteConfig.baseUrl}${latestVersion}`}>
+                      Blog Post
+                    </a>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -101,6 +106,11 @@ class Versions extends React.Component {
                             <td>
                               <a href={`${repoUrl}/releases/tag/v${version}`}>
                                 Release Notes
+                              </a>
+                            </td>
+                            <td>
+                              <a href={`${siteConfig.baseUrl}${version}`}>
+                                Blog Post
                               </a>
                             </td>
                           </tr>
