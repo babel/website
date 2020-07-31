@@ -18,11 +18,11 @@ Existing as a compatibility layer between Babel and ESLint – two projects main
 * The version of Babel's parser that `babel-eslint` relies on is a direct dependency in its `package.json` and the plugins it enables are hardcoded, leading to a potential mismatch in versions and enabled language features between compiling and linting. This has historically led to a lot of confusion and hard-to-debug issues, and we believe solving this issue is a big win for both maintainers and end users.
 * `babel-eslint` has to be updated to handle changes in both upstream projects, and has often been out of sync with one or the other.
 
-The challenges above have added up to `babel-eslint` requiring more resources than the team has at its disposable, resulting in `babel-eslint` not getting the attention a widely used project (6M downloads a week at the time of this writing) requires to stay up-to-date.
+The challenges above have added up to `babel-eslint` requiring more resources than the team has at its disposal, resulting in `babel-eslint` not getting the attention a widely used project (6M downloads a week at the time of this writing) requires to stay up-to-date.
 
 ## The Present
 
-With the next iteration of `babel-eslint`, we have decided publish the package under a new name: `@babel/eslint-parser`. To alleviate some of the challenges discussed above, we are doing the following:
+With the next iteration of `babel-eslint`, we have decided to publish the package under a new name: `@babel/eslint-parser`. To alleviate some of the challenges discussed above, we are doing the following:
 
 * `@babel/eslint-parser` will require `@babel/core` as a peer dependency and will now use Babel core's APIs to read and apply your Babel configuration. This means that the same version of Babel with the same settings will be used for both compiling and linting. This is consistent with what we recommend and do with other packages in the Babel ecosystem.
 * `@babel/eslint-parser` will live in the main [`babel/babel`](https://github.com/babel/babel/tree/main/eslint/babel-eslint-parser) monorepo with other Babel packages. We hope this will help to mitigate some of the syncing issues `babel-eslint` has seen in the past and allow us to lint the repo with the latest source code in GitHub, shortening the feedback loop of how changes in Babel affect linting.
