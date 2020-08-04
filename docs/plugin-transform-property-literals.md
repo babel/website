@@ -11,8 +11,8 @@ sidebar_label: transform-property-literals
 ```javascript
 var foo = {
   // changed
-  "bar": function () {},
-  "1": function () {},
+  const: function () {},
+  var: function () {},
 
   // not changed
   "default": 1,
@@ -25,8 +25,8 @@ var foo = {
 
 ```javascript
 var foo = {
-  bar: function () {},
-  1: function () {},
+  "const": function () {},
+  "var": function () {},
 
   "default": 1,
   [a]: 2,
