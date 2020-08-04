@@ -21,7 +21,7 @@ There is also the `loose` option for some of these plugins.
 
 ## Built-ins
 
-Babel assumes that built-ins (e.g. `Array`, `WeakMap` and others) are not modified in a spec-incompliant way. That said, Babel still accepts proper polyfills of built-ins.
+Babel assumes that built-ins (e.g. `Array`, `WeakMap` and others), if polyfilled, are modified in a manner that is spec-compliant.
 
 ## Classes
 
