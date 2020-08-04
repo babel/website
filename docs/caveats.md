@@ -10,13 +10,17 @@ Babel feature requirements by using [@babel/polyfill](polyfill.md).
 
 You may alternatively/selectively include what you need:
 
-| Feature                     | Requirements                                                                          |
-| --------------------------- | ------------------------------------------------------------------------------------- |
+| Feature                     | Requirements                                                                                            |
+| --------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Async functions, Generators | [regenerator runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) |
-| Array destructuring, For Of | `Symbol`, `prototype[Symbol.iterator]`                                                |
-| Spread                      | `Array.from`                                                                          |
+| Array destructuring, For Of | `Symbol`, `prototype[Symbol.iterator]`                                                                  |
+| Spread                      | `Array.from`                                                                                            |
 
 There is also the `loose` option for some of these plugins.
+
+## Built-ins
+
+Babel assumes that built-ins (e.g. `Array`, `WeakMap` and others), if polyfilled, are modified in a manner that is spec-compliant.
 
 ## Classes
 
