@@ -66,7 +66,9 @@ Because there are features of the TypeScript language which rely on the full typ
 
 1. This plugin does not support [`export =`][exin] and [`import =`][exin], because those cannot be compiled to ES.next. These are a TypeScript only form of `import`/`export`.
 
-   **Workaround**: Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
+   **Workarounds**:
+    - Use the plugin [babel-plugin-replace-ts-export-assignment](https://www.npmjs.com/package/babel-plugin-replace-ts-export-assignment) to transform `export =`.
+    - Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
 
 1. Changes to your `tsconfig.json` are not reflected in babel. The build process will always behave as though [`isolatedModules`][iso-mods] is turned on, there are Babel-native alternative ways to set a lot of the [`tsconfig.json` options]((#typescript-compiler-options) however.
 

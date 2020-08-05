@@ -27,8 +27,6 @@ const x = 0;
 
 ## Installation
 
-> You can also check out the [TypeScript in 5 minutes page](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
-
 ```sh
 npm install --save-dev @babel/preset-typescript
 ```

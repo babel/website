@@ -243,7 +243,7 @@ This option is useful for "blacklisting" a transform like `@babel/plugin-transfo
 
 This option configures how `@babel/preset-env` handles polyfills.
 
-When either the `usage` or `entry` options are used, `@babel-preset-env` will add direct references to `core-js` modules as bare imports (or requires). This means `core-js` will be resolved relative to the file itself and needs to be accessible.
+When either the `usage` or `entry` options are used, `@babel/preset-env` will add direct references to `core-js` modules as bare imports (or requires). This means `core-js` will be resolved relative to the file itself and needs to be accessible.
 
 Since `@babel/polyfill` was deprecated in 7.4.0, we recommend directly adding `core-js` and setting the version via the [`corejs`](#corejs) option.
 
@@ -325,10 +325,14 @@ var b = new Map();
 
 **Out (if environment doesn't support it)**
 
+a.js
+
 ```js
 import "core-js/modules/es.promise";
 var a = new Promise();
 ```
+
+b.js
 
 ```js
 import "core-js/modules/es.map";
@@ -337,9 +341,13 @@ var b = new Map();
 
 **Out (if environment supports it)**
 
+a.js
+
 ```js
 var a = new Promise();
 ```
+
+b.js
 
 ```js
 var b = new Map();

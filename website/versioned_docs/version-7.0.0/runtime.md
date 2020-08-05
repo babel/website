@@ -5,7 +5,7 @@ sidebar_label: runtime
 original_id: babel-runtime
 ---
 
-`@babel/runtime` is a library that contain's Babel modular runtime helpers and a version of `regenerator-runtime`.
+`@babel/runtime` is a library that contains Babel modular runtime helpers and a version of `regenerator-runtime`.
 
 ## Installation
 
@@ -54,4 +54,3 @@ var Circle = function Circle() {
 ```
 
 `@babel/runtime` is just the package that contains the implementations of the functions in a modular way.
-
