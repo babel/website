@@ -30,7 +30,7 @@ yarn add @babel/preset-env --dev
 
 `@babel/preset-env` would not be possible if not for a number of awesome open-source projects, like [`browserslist`](https://github.com/browserslist/browserslist), [`compat-table`](https://github.com/kangax/compat-table), and [`electron-to-chromium`](https://github.com/Kilian/electron-to-chromium).
 
-We leverage these data sources to maintain mappings of which version of our supported target environments gained support of a JavaScript syntax or browser feature, as well as a mapping of those syntaxes and features to Babel transform plugins and core-js polyfills.
+We leverage these data sources to maintain [mappings of which version](https://github.com/babel/babel/blob/master/packages/babel-compat-data/data/plugins.json) of our supported target environments gained support of a JavaScript syntax or browser feature, as well as a mapping of those syntaxes and features to Babel transform plugins and core-js polyfills.
 
 > It is important to note that `@babel/preset-env` does _not_ support `stage-x` plugins.
 
@@ -42,9 +42,9 @@ For browser- or Electron-based projects, we recommend using a [`.browserslistrc`
 
 By default `@babel/preset-env` will use [browserslist config sources](https://github.com/ai/browserslist#queries) _unless_ either the [targets](#targets) or [ignoreBrowserslistConfig](#ignorebrowserslistconfig) options are set.
 
-For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
+> Please note that if you are relying on browserslist's defaults query (either explicitly or by having no browserslist config), you will want to check out the [No targets](#no-targets) section for information on preset-env's behavior.
 
-[Options](options.md#presets)
+For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
 
 ```json
 {
@@ -105,15 +105,27 @@ Or an object of minimum environment versions to support:
 
 Example environments: `chrome`, `opera`, `edge`, `firefox`, `safari`, `ie`, `ios`, `android`, `node`, `electron`.
 
-Sidenote, if no targets are specified, `@babel/preset-env` will transform all ECMAScript 2015+ code by default.
+#### No targets
 
-> We don't recommend using `preset-env` this way because it doesn't take advantage of its ability to target specific browsers.
+Since one of the original goals of `preset-env` was to help users easily transition from using `preset-latest`, it behaves similarly when no targets are specified: `preset-env` will transform all ES2015-ES2020 code to be ES5 compatible.
+
+> We don't recommend using `preset-env` this way because it doesn't take advantage of its ability to target specific environments/versions.
 
 ```json
 {
   "presets": ["@babel/preset-env"]
 }
 ```
+
+Because of this, `preset-env`'s behavior is different than [browserslist](https://github.com/browserslist/browserslist#queries): it does _not_ use the `defaults` query when there are no targets are found in your Babel _or_ browserslist config(s). If you want to use the `defaults` query, you will need to explicitly pass it as a target:
+
+```json
+{
+  "presets": [["@babel/preset-env", { "targets": "defaults" }]]
+}
+```
+
+We recognize this isn’t ideal and will be revisiting this in Babel v8.
 
 #### `targets.esmodules`
 
@@ -187,7 +199,7 @@ By default `@babel/preset-env` uses [`caller`](options.md#caller) data to determ
 
 `boolean`, defaults to `false`.
 
-Outputs the targets/plugins used and the version specified in [plugin data version](https://github.com/babel/babel/blob/master/packages/babel-preset-env/data/plugins.json) to `console.log`.
+Outputs to `console.log` the polyfills and transform plugins enabled by `preset-env` and, if applicable, which one of your targets that needed it.
 
 ### `include`
 
