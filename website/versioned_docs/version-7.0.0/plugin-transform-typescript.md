@@ -19,7 +19,9 @@ Does not type-check its input. For that, you will need to install and set up Typ
 
 * Does not support [`export =`][exin] and [`import =`][exin], because those cannot be compiled to ES.next.
 
-  **Workaround**: Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
+  **Workarounds**:
+    - Use the plugin [babel-plugin-replace-ts-export-assignment](https://www.npmjs.com/package/babel-plugin-replace-ts-export-assignment) to transform `export =`.
+    - Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
 
 * Behaves as if the `--isolatedModules` option was passed to the TypeScript Compiler. This can't be worked around because Babel doesn't support cross-file analysis.
 

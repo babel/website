@@ -9,7 +9,7 @@ original_id: babel-plugin-proposal-do-expressions
 
 > The `do { .. }` expression executes a block (with one or many statements in it), and the final statement completion value inside the block becomes the completion value of the do expression.
 
-from [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch5.md#statement-completion-values)
+from [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch5.md#statement-completion-values), Types & Grammar -> Chapter 5 -> Section Statement Completion Values
 
 It can be seen as a complex version of the [ternary operator](http://mdn.io/ternary):
 
@@ -115,6 +115,6 @@ require("@babel/core").transform("code", {
 
 ## References
 - [Proposal](https://github.com/tc39/proposal-do-expressions)
-- [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch5.md#statement-completion-values)
+- [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch5.md#statement-completion-values)
 - Very handy for conditions inside JSX: [reactjs/react-future#35](https://github.com/reactjs/react-future/issues/35#issuecomment-120009203)
 

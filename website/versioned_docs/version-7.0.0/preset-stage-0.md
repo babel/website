@@ -8,7 +8,7 @@ original_id: babel-preset-stage-0
 > As of Babel v7, all the stage presets have been deprecated.
 > Check [the blog post](/blog/2018/07/27/removing-babels-stage-presets) for more information.
 >
-> For upgrade instructions, see [the README](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-0/README.md).
+> For upgrade instructions, see [the README](https://github.com/babel/babel/blob/755ec192e22c6b6e00782e4810366d0166fdbebd/packages/babel-preset-stage-0/README.md).
 
 ## Install
 
