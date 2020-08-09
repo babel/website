@@ -689,3 +689,6 @@
 - name: Toptal
   url: https://www.toptal.com
   logo: toptal.svg
+- name: Rubrik
+  url: https://www.rubrik.com
+  logo: rubrik.svg
