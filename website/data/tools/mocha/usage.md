@@ -7,7 +7,7 @@ In your `package.json` file make the following changes:
 ```json
 {
   "scripts": {
-    "test": "mocha --require babel-register"
+    "test": "mocha --require @babel/register"
   }
 }
 ```
@@ -21,7 +21,7 @@ npm install --save-dev babel-polyfill
 ```json
 {
   "scripts": {
-    "test": "mocha --require babel-polyfill --require babel-register"
+    "test": "mocha --require babel-polyfill --require @babel/register"
   }
 }
 ```
@@ -32,7 +32,7 @@ npm install --save-dev babel-polyfill
 ```json
 {
   "scripts": {
-    "test": "mocha --compilers js:babel-register"
+    "test": "mocha --compilers js:@babel/register"
   }
 }
 ```
@@ -42,7 +42,7 @@ With polyfill:
 ```json
 {
   "scripts": {
-    "test": "mocha --require babel-polyfill --compilers js:babel-register"
+    "test": "mocha --require babel-polyfill --compilers js:@babel/register"
   }
 }
 ```
