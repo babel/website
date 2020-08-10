@@ -80,7 +80,7 @@ const pluginConfigs: Array<PluginConfig> = [
     label: "Prettify",
     package: "prettier",
     version: "2",
-    files: ["standalone.js", "parser-babylon.js"],
+    files: ["standalone.js", "parser-babel.js"],
   },
 ];
 
