@@ -692,3 +692,6 @@
 - name: Rubrik
   url: https://www.rubrik.com
   logo: rubrik.svg
+- name: BlueHive
+  url: https://www.bluehive.com
+  logo: bluehive.svg
