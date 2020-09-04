@@ -1,33 +1,47 @@
-#### Mocha 4
-
-`--compilers` is deprecated as of Mocha v4.0.0. See [further explanation and workarounds](https://github.com/mochajs/mocha/wiki/compilers-deprecation).
+#### Mocha 8
 
 In your `package.json` file make the following changes:
 
-```json
-{
-  "scripts": {
-    "test": "mocha --require @babel/register"
-  }
-}
+Create `.mocharc.yaml` in your project root:
+```yaml
+require:
+  - '@babel/register'
 ```
 
-Some features will require a polyfill:
+Some features may require a polyfill:
 
 ```sh
-npm install --save-dev babel-polyfill
+# Polyfills for builtin methods
+npm install --save core-js
+# Polyfills for generator function
+npm install --save regenerator-runtime
 ```
 
+Add import polyfills _before_ `@babel/register`.
+```yaml
+require:
+  - 'core-js'
+  - 'regenerator-runtime'
+  - '@babel/register'
+```
+
+Create `babel.config.json` in your project root:
 ```json
 {
-  "scripts": {
-    "test": "mocha --require babel-polyfill --require @babel/register"
-  }
+  "presets": ["@babel/preset-env"]
 }
 ```
+
+<blockquote class="babel-callout babel-callout-info">
+  <p>
+    For more information see the <code>babel</code>
+    <a href="https://github.com/mochajs/mocha-examples/tree/master/packages/babel">mocha-examples</a>.
+  </p>
+</blockquote>
 
 #### Mocha 3
 
+`--compilers` is deprecated as of Mocha v4.0.0. See [further explanation and workarounds](https://github.com/mochajs/mocha/wiki/compilers-deprecation).
 
 ```json
 {

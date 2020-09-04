@@ -1,5 +1,7 @@
 ```javascript
-require("@babel/core").transform("code", options);
+require("@babel/core").transform("code", {
+  presets: ["@babel/preset-env"],
+});
 ```
 
 <blockquote class="babel-callout babel-callout-info">

@@ -7,7 +7,7 @@ In your `package.json` file make the following changes:
   },
   "jest": {
     "transform": {
-      "^.+\\.jsx?$": "babel-jest"
+      "^.+\\.[t|j]sx?$": "babel-jest"
     }
   }
 }

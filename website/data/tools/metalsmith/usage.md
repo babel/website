@@ -7,6 +7,7 @@ Add the `metalsmith-babel` field to your `metalsmith.json`.
   "plugins": {
     "metalsmith-babel": {
       // babel options
+      "presets": ["@babel/preset-env"]
     }
   }
 }
@@ -19,7 +20,10 @@ var Metalsmith = require("metalsmith");
 var babel = require("metalsmith-babel");
 
 new Metalsmith("./source")
-  .use(babel({/* babel options */}));
+  .use(babel({
+    /* babel options */
+    presets: ["@babel/preset-env"]
+  }))
   .build(function(err, files) {
     if (err) {
       throw err;

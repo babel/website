@@ -1,3 +1,3 @@
 ```sh
-npm install --save-dev ember-cli-babel
+ember install ember-cli-babel
 ```

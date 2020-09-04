@@ -1,3 +1,3 @@
 ```sh
-npm install --save-dev karma-babel-preprocessor
+npm install --save-dev karma-babel-preprocessor @babel/core
 ```

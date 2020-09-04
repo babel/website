@@ -2,9 +2,10 @@ Add the following paths to your configuration:
 
 ```js
 paths: {
-  es6: "node_modules/requirejs-babel/es6",
-  babel: "node_modules/requirejs-babel/babel-4.6.6.min"
-}
+    es6: '...node_modules/requirejs-babel/es6',
+    babel: '...node_modules/@babel/standalone/babel.min',
+    'babel-plugin-module-resolver': '...node_modules/babel-plugin-module-resolver-standalone/index'
+  }
 ```
 
 Then reference files via the `es6!` plugin name:

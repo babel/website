@@ -1,3 +1,3 @@
 ```sh
-npm install requirejs-babel
+npm install --save-dev requirejs-babel @babel/standalone babel-plugin-module-resolver-standalone
 ```
