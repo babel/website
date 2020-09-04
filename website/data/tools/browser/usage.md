@@ -1,5 +1,5 @@
 
-<h4>With babel-standalone</h4>
+<h4>With @babel/standalone</h4>
 
 ```html
 <div id="output"></div>

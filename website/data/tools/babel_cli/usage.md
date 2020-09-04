@@ -12,7 +12,7 @@ inside there as `build`.
 +     "build": "babel src -d lib"
 +   },
     "devDependencies": {
-      "babel-cli": "^6.0.0"
+      "@babel/cli": "^7.0.0"
     }
   }
 ```
