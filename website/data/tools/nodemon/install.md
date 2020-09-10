@@ -1,3 +1,3 @@
 ```sh
-npm install babel-cli babel-preset-env --save-dev
+npm install @babel/core @babel/node --save-dev
 ```

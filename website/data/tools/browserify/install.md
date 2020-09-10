@@ -1,3 +1,3 @@
 ```sh
-npm install --save-dev babelify babel-core
+npm install --save-dev babelify @babel/core
 ```

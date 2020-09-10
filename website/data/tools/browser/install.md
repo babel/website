@@ -12,6 +12,7 @@ You can use `@babel/standalone` as a precompiled version of Babel or run a bundl
 You can also use the many online tools to prototype a script:
 
 - [Babel's own REPL](https://babeljs.io/repl)
+- [CodeSandbox](https://codesandbox.io/s/babel-repl-custom-plugin-7s08o?file=/src/index.js)
 
 Online Editors that run Babel for you:
 

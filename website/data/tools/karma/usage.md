@@ -11,6 +11,10 @@ module.exports = function(config) {
     },
     "babelPreprocessor": {
       // options go here
+      options: {
+        presets: ["@babel/preset-env"],
+        sourceMap: "inline"
+      },
     }
   });
 };

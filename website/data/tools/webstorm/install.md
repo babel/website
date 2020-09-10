@@ -1,3 +1,3 @@
 ```sh
-npm install --save-dev babel-cli
+npm install --save-dev @babel/cli
 ```
