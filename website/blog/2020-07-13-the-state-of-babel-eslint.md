@@ -8,6 +8,10 @@ categories: announcements
 share_text: "The State of babel-eslint"
 ---
 
+`babel-eslint` is moved to `@babel/eslint-parser`!
+
+<!-- truncate -->
+
 ## The Past
 
 Existing as a compatibility layer between Babel and ESLint – two projects maintained by two separate teams – `babel-eslint` has been a difficult package to maintain since the beginning. Some of the challenges the team has faced while maintaining `babel-eslint`:
