@@ -73,6 +73,27 @@ or
 "browserslist": "> 0.25%, not dead"
 ```
 
+## Working with Webpack
+
+`core-js` and `webpack/buildin` will not work and cause errors if they are transplied by Babel.
+
+You will need to exclude them form `babel-loader`.
+
+```js
+{
+  "loader": "babel-loader",
+  "options": {
+    "exclude": [
+      /node_modules[\\\/]core-js/,
+      /node_modules[\\\/]webpack[\\\/]buildin/,
+    ],
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}
+```
+
 ## Options
 
 For more information on setting options for a preset, refer to the [preset options](presets.md#preset-options) documentation.
