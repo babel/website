@@ -258,7 +258,7 @@ resolves the plugins and presets and proceeds no further. The expectation is
 that callers will take the config's `.options`, manipulate it as they see fit
 and pass it back to Babel again.
 
-This function accepts one additional option in addition to the standard [options](#options): `showIgnoredFiles`.
+This function accepts one additional option as part of the options object in addition to the standard [options](#options): `showIgnoredFiles`.
 When set to true, `loadPartialConfig` always returns a result when a file is ignored, rather than `null`.
 This is useful in order to allow the caller to access the list of files that influenced this outcome, e.g.
 for watch mode. The caller can determine whether a file was ignored based on the returned `fileHandling` property.
