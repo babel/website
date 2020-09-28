@@ -9,7 +9,7 @@ babel-node is a CLI that works exactly the same as the Node.js CLI, with the add
 ## Install
 
 ```sh
-npm install --save-dev @babel/core @babel/node
+npm install --save-dev @babel/core @babel/node @babel/cli
 ```
 
 > #### Not meant for production use
@@ -35,7 +35,7 @@ npx babel-node
 
 If you prefer not to install `@babel/node` and `@babel/core`, you can install them on-the-fly:
 ```sh
-npx -p @babel/core -p @babel/node babel-node
+npx -p @babel/core -p @babel/node -p @babel/cli babel-node
 ```
 
 Evaluate code.
