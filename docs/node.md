@@ -27,13 +27,13 @@ it will compile ES6 code before running it.
 
 Launch a REPL (Read-Eval-Print-Loop).
 
-> You should install `@babel/node` and `@babel/core` first before `npx babel-node`, otherwise `npx` will install out-of-dated legacy `babel-node` 6.x.
+> You should install `@babel/node`, `@babel/core` and `@babel/cli` first before `npx babel-node`, otherwise `npx` will install out-of-dated legacy `babel-node` 6.x.
 
 ```sh
 npx babel-node
 ```
 
-If you prefer not to install `@babel/node` and `@babel/core`, you can install them on-the-fly:
+If you prefer not to install these packages, you can install them on-the-fly:
 ```sh
 npx -p @babel/core -p @babel/node -p @babel/cli babel-node
 ```
