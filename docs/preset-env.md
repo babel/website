@@ -73,26 +73,11 @@ or
 "browserslist": "> 0.25%, not dead"
 ```
 
-## Working with Webpack
+## Integrating with Webpack
 
-`core-js` and `webpack/buildin` will not work and cause errors if they are transplied by Babel.
+`core-js` polyfills will cause errors if they are transpiled by Babel.
 
-You will need to exclude them form `babel-loader`.
-
-```js
-{
-  "loader": "babel-loader",
-  "options": {
-    "exclude": [
-      /node_modules[\\\/]core-js/,
-      /node_modules[\\\/]webpack[\\\/]buildin/,
-    ],
-    "presets": [
-      "@babel/preset-env"
-    ]
-  }
-}
-```
+See [`babel-loader`'s documentation](https://webpack.js.org/loaders/babel-loader/#exclude-libraries-that-should-not-be-transpiled) for details
 
 ## Options
 
