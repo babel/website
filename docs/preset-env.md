@@ -77,7 +77,7 @@ or
 
 `core-js` polyfills will cause errors if they are transpiled by Babel.
 
-See [`babel-loader`'s documentation](https://webpack.js.org/loaders/babel-loader/#exclude-libraries-that-should-not-be-transpiled) for details
+See [`babel-loader`'s documentation](https://webpack.js.org/loaders/babel-loader/#exclude-libraries-that-should-not-be-transpiled) for details.
 
 ## Options
 
