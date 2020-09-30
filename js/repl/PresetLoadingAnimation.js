@@ -12,16 +12,12 @@ const PresetLoadingAnimation = ({
   className = "",
   size = 2,
 }: PresetLoadingAnimationProps) => (
-  <div
-    className={`${className} ${styles.loadingAnimation} ${css({
-      height: `${size}rem`,
-    })}`}
-  >
-    <div className={`${styles.loadingTick} ${styles.loadingTick1}`} />
-    <div className={`${styles.loadingTick} ${styles.loadingTick2}`} />
-    <div className={`${styles.loadingTick} ${styles.loadingTick3}`} />
-    <div className={`${styles.loadingTick} ${styles.loadingTick4}`} />
-    <div className={`${styles.loadingTick} ${styles.loadingTick5}`} />
+  <div className={`${className} ${styles.loadingAnimation(size)}`}>
+    <div className={styles.loadingTick(size)} />
+    <div className={styles.loadingTick(size)} />
+    <div className={styles.loadingTick(size)} />
+    <div className={styles.loadingTick(size)} />
+    <div className={styles.loadingTick(size)} />
   </div>
 );
 
@@ -35,36 +31,27 @@ const bounce = keyframes({
 });
 
 const styles = {
-  loadingAnimation: css({
-    display: "flex",
-    alignItems: "center",
-    marginLeft: "0.5rem",
-  }),
-  loadingTick: css({
-    width: "4px",
-    height: "100%",
-    backgroundColor: "rgba(255,255,255,0.25)",
-    display: "inline-block",
-    animationName: bounce,
-    animationDuration: "1.4s",
-    animationIterationCount: "infinite",
-    animationTimingFunction: "ease-in-out",
-    marginLeft: "6px",
-  }),
-  loadingTick1: css({
-    animationDelay: 0,
-    marginLeft: 0,
-  }),
-  loadingTick2: css({
-    animationDelay: "-1.1s",
-  }),
-  loadingTick3: css({
-    animationDelay: "-1.0s",
-  }),
-  loadingTick4: css({
-    animationDelay: "-0.9s",
-  }),
-  loadingTick5: css({
-    animationDelay: "-0.8s",
-  }),
+  loadingAnimation: (size: number) =>
+    css({
+      alignItems: "center",
+      display: "flex",
+      height: `${size}rem`,
+      marginLeft: "0.5rem",
+    }),
+  loadingTick: (size: number) => {
+    return css({
+      animation: `1.4s ${bounce} infinite ease-in-out`,
+      backgroundColor: "rgba(255,255,255,0.25)",
+      display: "inline-block",
+      height: "100%",
+      marginLeft: `${2 + (size - 1) * 2}px`,
+      width: `${size * 2}px`,
+
+      ":nth-child(1)": { animationDelay: 0, marginLeft: 0 },
+      ":nth-child(2)": { animationDelay: "-1.1s" },
+      ":nth-child(3)": { animationDelay: "-1.0s" },
+      ":nth-child(4)": { animationDelay: "-0.9s" },
+      ":nth-child(5)": { animationDelay: "-0.8s" },
+    });
+  },
 };
