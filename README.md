@@ -1,4 +1,4 @@
-# [babel/website](https://babeljs.io)
+# [babel/website](https://babeljs.io) - Take a look at it
 
 This is the source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
 
