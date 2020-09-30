@@ -1,6 +1,6 @@
 # [babel/website](https://babeljs.io)
 
-This is the source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
+This is the main source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
 
 - Current: `master` branch is deployed to https://babeljs.io
 - Old: `old-site` branch is deployed to https://old.babeljs.io
@@ -13,7 +13,7 @@ $ cd website
 $ yarn && yarn bootstrap
 ```
 
-- Just run `yarn start` next time (check the package.json for scripts).
+- Just run `yarn start` next time (to check the  package.json for scripts).
 
 ### Contributing to the website
 
