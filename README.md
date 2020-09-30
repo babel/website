@@ -7,6 +7,10 @@ This is the source for the [babeljs.io](https://babeljs.io) website; feel free t
 
 ### Setup
 
+Node: Check that Node is installed with version 10.19.0 and up. You can check this with node -v.
+
+Yarn: Make sure that Yarn 1 is installed with version >= 1.19.0.
+
 ```bash
 $ git clone git@github.com:babel/website.git
 $ cd website
