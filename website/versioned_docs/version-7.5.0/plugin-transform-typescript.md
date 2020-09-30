@@ -239,11 +239,9 @@ equivalents in Babel can be enabled by some configuration options or plugins.
   When using `@babel/cli`, you can specify the [`--watch` option](https://babeljs.io/docs/en/babel-cli#compile-files).
 
 [const_enum]: https://www.typescriptlang.org/docs/handbook/enums.html#const-enums
-[namespace]: https://www.typescriptlang.org/docs/handbook/namespaces.html
 [exin]: https://www.typescriptlang.org/docs/handbook/modules.html#export--and-import--require
-[fm]: https://github.com/Microsoft/dtslint/blob/master/docs/no-single-declare-module.md
-[tsc-options]: https://www.typescriptlang.org/docs/handbook/compiler-options.html
-[namespace]: https://www.typescriptlang.org/docs/handbook/namespaces-and-modules.html
+[iso-mods]: https://www.typescriptlang.org/docs/handbook/compiler-options.html
+[namespace]: https://www.typescriptlang.org/docs/handbook/namespaces.html
 [not-disappearing]: https://github.com/microsoft/TypeScript/issues/30994#issuecomment-484150549
 [ts]: https://www.typescriptlang.org
-[iso-mods]: https://www.typescriptlang.org/docs/handbook/compiler-options.html
+[tsc-options]: https://www.typescriptlang.org/docs/handbook/compiler-options.html
