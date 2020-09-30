@@ -5,7 +5,7 @@ This is the source for the [babeljs.io](https://babeljs.io) website; feel free t
 - Current: `master` branch is deployed to https://babeljs.io
 - Old: `old-site` branch is deployed to https://old.babeljs.io
 
-### Setup
+### Setup -
 
 ```bash
 $ git clone git@github.com:babel/website.git
