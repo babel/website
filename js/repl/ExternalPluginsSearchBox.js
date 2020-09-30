@@ -1,7 +1,7 @@
 // @flow
 import { css } from "emotion";
 import React from "react";
-import { connectSearchBox } from "react-instantsearch/es/connectors";
+import { connectSearchBox } from "react-instantsearch-dom";
 
 type Props = {
   currentRefinement: ?string,
