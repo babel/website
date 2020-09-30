@@ -1,4 +1,5 @@
 // @flow
+import algoliasearch from "algoliasearch/lite";
 import { css } from "emotion";
 import React from "react";
 import {
@@ -7,17 +8,16 @@ import {
   InstantSearch,
   Pagination,
   PoweredBy,
-} from "react-instantsearch/es/dom";
+} from "react-instantsearch-dom";
 import SearchBox from "./ExternalPluginsSearchBox";
 import Modal from "./Modal";
 import { colors, media } from "./styles";
 import type { BabelPlugin } from "./types";
 
-const config = {
-  apiKey: "1f0cc4b7da241f62651b85531d788fbd",
-  appId: "OFCNCOG2CU",
-  indexName: "npm-search",
-};
+const searchClient = algoliasearch(
+  "OFCNCOG2CU",
+  "1f0cc4b7da241f62651b85531d788fbd"
+);
 
 type SearchHit = {
   description: string,
@@ -97,11 +97,7 @@ export default class ExternalPluginsModal extends React.Component<Props> {
     return (
       <Modal onClose={onClose}>
         <div className={styles.modalContent}>
-          <InstantSearch
-            apiKey={config.apiKey}
-            appId={config.appId}
-            indexName={config.indexName}
-          >
+          <InstantSearch indexName="npm-search" searchClient={searchClient}>
             <Configure
               hitsPerPage={5}
               attributesToRetrieve={["name", "version", "description", "owner"]}
@@ -119,7 +115,7 @@ export default class ExternalPluginsModal extends React.Component<Props> {
                 Only official plugins
               </label>
             </div>
-            <Pagination />
+            <Pagination showFirst={false} showLast={false} />
             <Hits hitComponent={this.renderHit} />
             <div className={styles.modalFooter}>
               <PoweredBy />
@@ -166,6 +162,7 @@ const styles = {
       display: inline-block;
       border-radius: 4px;
       font-size: 0.875rem;
+      margin-top: 0;
       padding: 3px;
       text-align: center;
       transition: all 0.3s ease;
@@ -183,6 +180,12 @@ const styles = {
       a {
         color: ${colors.inverseBackgroundDark};
       }
+    }
+
+    .ais-Hits-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
   `,
   modalFooter: css`
@@ -219,9 +222,9 @@ const styles = {
     label {
       align-items: center;
       display: flex;
-      flex: 0 0 165px;
+      flex: 0 0 180px;
       font-size: 0.875rem;
-      padding-left: 1rem;
+      padding: 0 1rem;
       user-select: none;
 
       input {
