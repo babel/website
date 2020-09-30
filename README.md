@@ -17,11 +17,11 @@ $ yarn && yarn bootstrap
 
 ### Contributing to the website
 
-To keep documentation in sync across all of Babel's packages, the docs are now directly located in this repository. The READMEs in [`babel/babel`](https://github.com/babel/babel) are [auto generated](https://github.com/babel/babel/blob/master/scripts/generators/readmes.js) and point to this documentation.
+To keep documentation in sync across all of babel's packages, the docs are now directly located in this repository. The READMEs in [`babel/babel`](https://github.com/babel/babel) are [auto generated](https://github.com/babel/babel/blob/master/scripts/generators/readmes.js) and point to this documentation.
 
-You might want to make yourself familiar with [docusaurus](https://docusaurus.io/docs/en/installation) to make significant changes to the website. If you only want to make content changes you just need to know about versioned docs.
+You might want to make yourself familiar with [docusaurus](https://docusaurus.io/docs/en/installation) to make significant changes to the website. If you only want to make content changes you just need to know about versioned documnts.
 
-#### Versioned docs
+#### Versioned documents
 
 - `/docs` - the files in here are responsible for the "next" version at https://babeljs.io/docs/en/next.
 - `/website/versioned_docs/version-*` - these are the docs for the past versions, the latest one being the currently published version at https://babeljs.io/docs/en
