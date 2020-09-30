@@ -15,7 +15,7 @@ $ yarn && yarn bootstrap
 
 - Just run `yarn start` next time (check the package.json for scripts).
 
-### Contributing to the website
+### Contributing to the website for some more amazing documentation
 
 To keep documentation in sync across all of Babel's packages, the docs are now directly located in this repository. The READMEs in [`babel/babel`](https://github.com/babel/babel) are [auto generated](https://github.com/babel/babel/blob/master/scripts/generators/readmes.js) and point to this documentation.
 
@@ -28,6 +28,6 @@ You might want to make yourself familiar with [docusaurus](https://docusaurus.io
 
 After making your changes to the markdown files in the `/docs` folder, a git hook script will suggest files from the past versions folders that you might also need to apply your changes to.
 
-#### Looking for support?
+#### Looking for support? please support our work 
 
 For questions and support on contributing please join our [Slack community](https://slack.babeljs.io/), channel `#website` or directly [here](https://babeljs.slack.com/messages/website).
