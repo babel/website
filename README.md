@@ -1,4 +1,4 @@
-# [babel/website](https://babeljs.io)
+# ["babel"- an awesome website](https://babeljs.io)
 
 This is the source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
 
@@ -28,6 +28,6 @@ You might want to make yourself familiar with [docusaurus](https://docusaurus.io
 
 After making your changes to the markdown files in the `/docs` folder, a git hook script will suggest files from the past versions folders that you might also need to apply your changes to.
 
-#### Looking for support?
+#### Need any help? We're here for you!
 
 For questions and support on contributing please join our [Slack community](https://slack.babeljs.io/), channel `#website` or directly [here](https://babeljs.slack.com/messages/website).
