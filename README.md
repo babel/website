@@ -38,6 +38,54 @@ You might want to make yourself familiar with [docusaurus](https://docusaurus.io
 
 After making your changes to the markdown files in the `/docs` folder, a git hook script will suggest files from the past versions folders that you might also need to apply your changes to.
 
+# Usage Guide
+There are quite a few tools in the Babel toolchain that try to make it easy for you to use Babel whether you're an "end-user" or building an integration of Babel itself. This will be a quick introduction to those tools and you can read more about them in the "Usage" section of the docs.
+
+If you're using a framework, the work of configuring Babel might be different or actually already handled for you. Check out our interactive setup guide instead.
+
+# Overview
+This guide will show you how to compile your JavaScript application code that uses ES2015+ syntax into code that works in current browsers. That will involve both transforming new syntax and polyfilling missing features.
+
+### The entire process to set this up involves:
+
+Running these commands to install the packages:
+
+npm install --save-dev @babel/core @babel/cli @babel/preset-env
+npm install --save @babel/polyfill
+
+Copy
+Creating a config file named babel.config.json in the root of your project with this content:
+
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "edge": "17",
+          "firefox": "60",
+          "chrome": "67",
+          "safari": "11.1",
+        },
+        "useBuiltIns": "usage",
+        "corejs": "3.6.4",
+      }
+    ]
+  ]
+}
+
+Copy
+The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support.
+
+And running this command to compile all your code from the src directory to lib:
+
+./node_modules/.bin/babel src --out-dir lib
+
+Copy
+You can use the npm package runner that comes with npm@5.2.0 to shorten that command by replacing ./node_modules/.bin/babel with npx babel
+
+Read on for a step-by-step explanation of how this works and an introduction to each of the tools used.
+
 #### Looking for support?
 
 For questions and support on contributing please join our [Slack community](https://slack.babeljs.io/), channel `#website` or directly [here](https://babeljs.slack.com/messages/website).
