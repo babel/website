@@ -73,7 +73,7 @@ or
 "browserslist": "> 0.25%, not dead"
 ```
 
-## Integrating with Webpack
+## Integrating with webpack
 
 `core-js` polyfills will cause errors if they are transpiled by Babel.
 
