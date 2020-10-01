@@ -1,4 +1,4 @@
-# [babel/website](https://babeljs.io)
+# [babel- A next generation javascript compiler](https://babeljs.io)
 
 > ## :warning: Hacktoberfest notice
 >
