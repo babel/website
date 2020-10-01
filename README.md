@@ -21,6 +21,8 @@ To keep documentation in sync across all of Babel's packages, the docs are now d
 
 You might want to make yourself familiar with [docusaurus](https://docusaurus.io/docs/en/installation) to make significant changes to the website. If you only want to make content changes you just need to know about versioned docs.
 
+I was full of pride when President Obama talked about coding in his last State of the Union address. I was proud when Chicago recently made computer science mandatory as a requirement for graduation. To see this elevate to the level of a bigger conversation is progress.
+
 #### Versioned docs
 
 - `/docs` - the files in here are responsible for the "next" version at https://babeljs.io/docs/en/next.
