@@ -1,4 +1,4 @@
-# [babel/website](https://babeljs.io)
+# [babel/website](https://babeljs.io) - an amazing project
 
 > ## :warning: Hacktoberfest notice
 >
