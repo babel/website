@@ -1,6 +1,6 @@
-# [babel/website](https://babeljs.io)
+# [babel/website for docs](https://babeljs.io)
 
-This is the source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
+This is the source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs for the best results !
 
 - Current: `master` branch is deployed to https://babeljs.io
 - Old: `old-site` branch is deployed to https://old.babeljs.io
