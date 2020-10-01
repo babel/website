@@ -34,7 +34,7 @@ You might want to make yourself familiar with [docusaurus](https://docusaurus.io
 #### Versioned docs
 
 - `/docs` - the files in here are responsible for the "next" version at https://babeljs.io/docs/en/next.
-- `/website/versioned_docs/version-*` - these are the docs for the past versions, the latest one being the currently published version at https://babeljs.io/docs/en
+- `/website/versioned_docs/version-*` - these docs for the previous versions, the latest one being the currently published version at https://babeljs.io/docs/en
 
 After making your changes to the markdown files in the `/docs` folder, a git hook script will suggest files from the past versions folders that you might also need to apply your changes to.
 
