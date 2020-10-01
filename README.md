@@ -1,4 +1,5 @@
 # [babel/website](https://babeljs.io)
+Babel is a JavaScript Compiler, it is an amazing project.
 
 This is the source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
 
