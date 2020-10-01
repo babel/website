@@ -1,6 +1,7 @@
 # [babel/website](https://babeljs.io)
 
-This is the source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
+This is the source code for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
+website; website is really very impressive
 
 - Current: `master` branch is deployed to https://babeljs.io
 - Old: `old-site` branch is deployed to https://old.babeljs.io
@@ -26,7 +27,7 @@ You might want to make yourself familiar with [docusaurus](https://docusaurus.io
 - `/docs` - the files in here are responsible for the "next" version at https://babeljs.io/docs/en/next.
 - `/website/versioned_docs/version-*` - these are the docs for the past versions, the latest one being the currently published version at https://babeljs.io/docs/en
 
-After making your changes to the markdown files in the `/docs` folder, a git hook script will suggest files from the past versions folders that you might also need to apply your changes to.
+After making your changes to the markdown files in the `/docs` folder, a git hook script will suggest files from the past version folders that you might also need to apply your changes to.
 
 #### Looking for support?
 
