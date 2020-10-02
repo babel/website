@@ -73,6 +73,9 @@ or
 "browserslist": "> 0.25%, not dead"
 ```
 
+> Please note that the browserslist query is resolved with [`mobileToDesktop: true`](https://github.com/browserslist/browserslist#js-api).
+> For example, if you want to create a snapshot of a query run `npx browserslist --mobile-to-desktop ">0.25%, not dead"`.
+
 ## Options
 
 For more information on setting options for a preset, refer to the [preset options](presets.md#preset-options) documentation.
