@@ -9,7 +9,7 @@ sidebar_label: env
 - [Install](#install)
 - [How Does it Work?](#how-does-it-work)
 - [Browserslist Integration](#browserslist-integration)
-- [webpack Integration](#webpack-Integration)
+- [webpack Integration](#webpack-integration)
 - [Options](#options)
 
 ## Install
