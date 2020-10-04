@@ -1,6 +1,6 @@
 # [babel/website](https://babeljs.io)
 
-> ## :warning: Hacktoberfest notice
+> ## :warning: Hacktoberfest Notice
 >
 > We welcome any contribution that brings value to the project, whether they are opened for Hacktoberfest or not. However, we don't appreciate spam PRs such as [#2367](https://github.com/babel/website/pull/2367), that would hinder future collaboration. It also takes precious maintainer time that is better spent on other PRs that benefit rest of the community.
 >
