@@ -9,7 +9,7 @@ sidebar_label: env
 - [Install](#install)
 - [How Does it Work?](#how-does-it-work)
 - [Browserslist Integration](#browserslist-integration)
-- [Integrating with webpack](#integrating-with-webpack)
+- [webpack Integration](#webpack-Integration)
 - [Options](#options)
 
 ## Install
@@ -74,7 +74,10 @@ or
 "browserslist": "> 0.25%, not dead"
 ```
 
-## Integrating with webpack
+> Please note that the browserslist query is resolved with [`mobileToDesktop: true`](https://github.com/browserslist/browserslist#js-api).
+> For example, if you want to create a snapshot of a query run `npx browserslist --mobile-to-desktop ">0.25%, not dead"`.
+
+## webpack Integration
 
 `core-js` polyfills will cause errors if they are transpiled by Babel.
 

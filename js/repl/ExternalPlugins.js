@@ -107,7 +107,7 @@ export default class ExternalPlugins extends React.Component<Props, State> {
         label={
           <span className={styles.pluginsHeader}>
             Plugins
-            {isLoading && <PresetLoadingAnimation />}
+            {isLoading && <PresetLoadingAnimation size={1} />}
           </span>
         }
         onToggleExpanded={onToggleExpanded}
