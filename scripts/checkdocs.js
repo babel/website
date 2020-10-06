@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+
 if (process.env.NEXT_DOCS) process.exit();
 
 const fs = require("fs");
@@ -44,6 +45,7 @@ sgf("AMR", function(err, staged) {
 
   console.log(
     chalk`
+
 > versioned docs check:
 We noticed changes to some markdown files in the {yellow docs/} folder but no
 corresponding changes in {yellow website/versioned_docs/}.
