@@ -1,4 +1,4 @@
-<p>Great! You've configured Babel but you haven't made it actually <em>do</em> anything. Create a <a href="/docs/usage#configuration">babel.config.json</a> config in your project root and enable some <a href="/docs/presets">presets</a>.</p>
+<p>Great! You've configured Babel but you haven't made it actually <em>do</em> anything. Create a <a href="/docs/en/usage#configuration">babel.config.json</a> config in your project root and enable some <a href="/docs/en/presets">presets</a>.</p>
 
 To start, you can use the <a href="/docs/plugins/preset-env">env preset</a>, which enables transforms for ES2015+
 
