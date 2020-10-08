@@ -113,6 +113,20 @@ Copy files that will not be compiled
 npx babel src --out-dir lib --copy-files
 ```
 
+If you don't want to copy ignored JavaScript files:
+
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| v7.8.0 | Added `--copy-ignored` |
+| v7.8.4 | Change `copyeIgnored` option default to `true`, it can be disabled by `--no-copy-ignored` |
+</details>
+
+```sh
+npx babel src --out-dir lib --copy-files --no-copy-ignored
+```
+
 ### Piping Files
 
 Pipe a file in via stdin and output it to `script-compiled.js`
@@ -137,9 +151,9 @@ Use the `--presets` option to specify presets to use in compilation
 npx babel script.js --out-file script-compiled.js --presets=@babel/preset-env,@babel/flow
 ```
 
-### Ignoring .babelrc
+### Ignoring .babelrc.json or .babelrc
 
-Ignore the configuration from the project's `.babelrc` file and use the cli options e.g. for a custom build
+Ignore the configuration from the project's `.babelrc` or `.babelrc.json` file and use the cli options e.g. for a custom build
 
 ```sh
 npx babel --no-babelrc script.js --out-file script-compiled.js --presets=@babel/preset-env,@babel/preset-react
@@ -151,6 +165,17 @@ npx babel --no-babelrc script.js --out-file script-compiled.js --presets=@babel/
 npx babel --config-file /path/to/my/babel.config.json --out-dir dist ./src
 ```
 
+### Set File Extensions
+
+Added in: `v7.8.0`
+
+By default, Babel will override the extension of the transpiled file and use `.js` instead.
+
+To preserve the original file extension you can pass the `--keep-file-extension`.
+
+You can also control what file extension is used with `--out-file-extension .example-extension` e.g. `babel src/ lib/ --out-file-extension .mjs`.
+
+Note that `--keep-file-extension` and `--out-file-extension` cannot be used together.
 
 ### Advanced Usage
 
