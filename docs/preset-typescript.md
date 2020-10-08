@@ -93,6 +93,8 @@ When enabled, type-only class fields are only removed if they are prefixed with 
 class A {
   declare foo: string; // Removed
   bar: string; // Initialized to undefined
+  prop?: string; // Initialized to undefined
+  prop1!: string // Initialized to undefined
 }
 ```
 

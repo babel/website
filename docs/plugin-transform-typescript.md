@@ -189,6 +189,8 @@ When enabled, type-only class fields are only removed if they are prefixed with 
 class A {
   declare foo: string; // Removed
   bar: string; // Initialized to undefined
+  prop?: string; // Initialized to undefined
+  prop1!: string // Initialized to undefined
 }
 ```
 
@@ -257,6 +259,8 @@ equivalents in Babel can be enabled by some configuration options or plugins.
 - `--target`
   Babel doesn't support targeting a specific version of the language, but you can choose which engines you want to target using [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env).
   If you prefer, you can enable [individual plugins](https://babeljs.io/docs/en/plugins) for every ECMAScript feature.
+-  `--useDefineForClassFields`
+  You can use the `onlyRemoveTypeImports` option to replicate this behavior.
 - `--watch`, `-w`
   When using `@babel/cli`, you can specify the [`--watch` option](https://babeljs.io/docs/en/babel-cli#compile-files).
 
