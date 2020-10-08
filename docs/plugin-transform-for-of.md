@@ -130,6 +130,8 @@ Please see [google/traceur-compiler#1773](https://github.com/google/traceur-comp
 ### `allowArrayLike`
 `boolean`, defaults to `false`
 
+Added in: `v7.10.0`
+
 This option allows for-of to be used with array-like objects.
 
 An array-like object is an object with a `length` property: for example, `{ 0: "a", 1: "b", length: 2 }`. Note that, like real arrays, array-like objects can have "holes": `{ 1: "a", length: 3 }` is equivalent to `[ (hole), "a", (hole) ]`.
