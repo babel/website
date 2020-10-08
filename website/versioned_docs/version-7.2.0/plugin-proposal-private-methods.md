@@ -1,17 +1,30 @@
 ---
-id: version-7.2.0-babel-plugin-proposal-private-methods
+id: version-7.3.0-babel-plugin-proposal-private-methods
 title: @babel/plugin-proposal-private-methods
 sidebar_label: proposal-private-methods
 original_id: babel-plugin-proposal-private-methods
 ---
 
-> Note: Support for private accessors (getters and setters) was added in [7.3.0](https://babeljs.io/blog/2019/01/21/7.3.0)!
+<details>
+<summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.3.0` | Support private accessors (getters and setters) |
+| `v7.2.0` | Initial Release |
+</details>
 
 ## Example
 
 ```js
 class Counter extends HTMLElement {
   #xValue = 0;
+
+  get #x() { return this.#xValue; }
+  set #x(value) {
+    this.#xValue = value;
+    window.requestAnimationFrame(
+      this.#render.bind(this));
+  }
 
   #clicked() {
     this.#x++;
@@ -65,7 +78,7 @@ require("@babel/core").transform("code", {
 
 `boolean`, defaults to `false`.
 
-> Note: The `loose` mode configuration setting _must_ be the same as [`@babel/proposal-class-properties`](plugin-proposal-class-properties.md).
+> Note: The `loose` mode configuration setting _must_ be the same as [`@babel/plugin-proposal-class-properties`](plugin-proposal-class-properties.md).
 
 When true, private methods will be assigned directly on its parent
 via `Object.defineProperty` rather than a `WeakSet`. This results in improved
