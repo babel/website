@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-babel-plugin-transform-spread
+id: version-7.10.0-babel-plugin-transform-spread
 title: @babel/plugin-transform-spread
 sidebar_label: transform-spread
 original_id: babel-plugin-transform-spread
@@ -82,6 +82,20 @@ In loose mode, **all** iterables are assumed to be arrays.
 Loose mode preserves "holes" when spreading an array (for example, `[ ...Array(2) ]` produces `[ (hole), (hole) ]`). Set loose to `false` to avoid this behaviour.
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+
+### `allowArrayLike`
+
+`boolean`, defaults to `false`
+
+Added in: `v7.10.0`
+
+This option allows spreading array-like objects as if they were arrays.
+
+An array-like object is an object with a `length` property: for example, `{ 0: "a", 1: "b", length: 2 }`. Note that, like real arrays, array-like objects can have "holes": `{ 1: "a", length: 3 }` is equivalent to `[ (hole), "a", (hole) ]`.
+
+While it is _not_ spec-compliant to spread array-like objects as if they were arrays, there are many objects that would be _iterables_ in modern browsers with `Symbol.iterator` support. Some notable examples are the DOM collections, like `document.querySelectorAll("img.big")`, which are the main use case for this option.
+
+Please note that Babel allows spreading `arguments` in old engines even if this option is disabled, because it's defined as _iterable_ in the ECMAScript specification.
 
 ## References
 
