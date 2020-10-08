@@ -52,6 +52,14 @@ interface CallerData {
   supportsExportNamespaceFrom?: boolean;
 }
 ```
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| v7.11.0 | Add `supportsExportNamespaceFrom` |
+| v7.7.0 | Add `supportsTopLevelAwait` |
+| v7.5.0 | Add `supportsDynamicImport` |
+</details>
 
 Utilities may pass a `caller` object to identify themselves to Babel and pass
 capability-related flags for use by configs, presets and plugins. For example
@@ -80,7 +88,7 @@ The three primary cases users could run into are:
 
 * The filename is exposed to plugins. Some plugins may require the presence of the filename.
 * Options like [`"test"`](#test), [`"exclude"`](#exclude), and [`"ignore"`](#ignore) require the filename for string/RegExp matching.
-* `.babelrc.json` files are loaded relative to the file being compiled. If this option is omitted, Babel will behave as if `babelrc: false` has been set.
+* `.babelrc.json` or `.babelrc` files are loaded relative to the file being compiled. If this option is omitted, Babel will behave as if `babelrc: false` has been set.
 
 
 ### `filenameRelative`
@@ -136,6 +144,7 @@ to cache the AST structure will take significantly more space.
 
 Type: `boolean`<br />
 Default: `true`<br />
+Added in `v7.11.0`
 
 By default `babel.transformFromAst` will clone the input AST to avoid mutations.
 Specifying `cloneInputAst: false` can improve parsing performance if the input AST
@@ -167,11 +176,13 @@ This is used in two primary cases:
 Type: `"root" | "upward" | "upward-optional"`<br />
 Default: `"root"`<br />
 Placement: Only allowed in Babel's programmatic options<br />
-Version: `^7.1.0`
+Added in: `v7.1.0`
 
 This option, combined with the [`"root"`](#root) value, defines how Babel
 chooses its project root. The different modes define different ways that
 Babel can process the [`"root"`](#root) value to get the final project root.
+
+Note: `babel.config.json` is supported from Babel 7.8.0. In older Babel 7 versions, only `babel.config.js` is supported.
 
 * `"root"` - Passes the [`"root"`](#root) value through as unchanged.
 * `"upward"` - Walks upward from the [`"root"`](#root) directory, looking

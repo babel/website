@@ -18,6 +18,12 @@ Options can be passed to Babel in a variety of ways. When passed directly to Bab
 you can just pass the objects object. When Babel is used via a wrapper, it may also be
 necessary, or at least more useful, to pass the options via [configuration files](config-files.md).
 
+If passing options via `@babel/cli` you'll need to `kebab-case` the names. i.e.
+
+```
+npx babel --root-mode upward file.js # equivalent of passing the rootMode config option
+```
+
 ## Primary options
 
 These options are only allowed as part of Babel's programmatic options, so
@@ -42,8 +48,19 @@ Type: An object with the shape of
 interface CallerData {
   name: string;
   supportsStaticESM?: boolean;
+  supportsDynamicImport?: boolean;
+  supportsTopLevelAwait?: boolean;
+  supportsExportNamespaceFrom?: boolean;
 }
 ```
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| v7.11.0 | Add `supportsExportNamespaceFrom` |
+| v7.7.0 | Add `supportsTopLevelAwait` |
+| v7.5.0 | Add `supportsDynamicImport` |
+</details>
 
 Utilities may pass a `caller` object to identify themselves to Babel and pass
 capability-related flags for use by configs, presets and plugins. For example
@@ -72,7 +89,7 @@ The three primary cases users could run into are:
 
 * The filename is exposed to plugins. Some plugins may require the presence of the filename.
 * Options like [`"test"`](#test), [`"exclude"`](#exclude), and [`"ignore"`](#ignore) require the filename for string/RegExp matching.
-* `.babelrc` files are loaded relative to the file being compiled. If this option is omitted, Babel will behave as if `babelrc: false` has been set.
+* `.babelrc.json` or `.babelrc` files are loaded relative to the file being compiled. If this option is omitted, Babel will behave as if `babelrc: false` has been set.
 
 
 ### `filenameRelative`
@@ -106,13 +123,13 @@ would be a chain of multiple transform passes, along the lines of
 
 ```js
 const filename = "example.js";
-const code = fs.readFileSync(filename, "utf8");
+const source = fs.readFileSync(filename, "utf8");
 
 // Load and compile file normally, but skip code generation.
-const { ast } = babel.transformSync(code, { filename, ast: true, code: false });
+const { ast } = babel.transformSync(source, { filename, ast: true, code: false });
 
 // Minify the file in a second pass and generate the output code here.
-const { code, map } = babel.transformFromAstSync(ast, code, {
+const { code, map } = babel.transformFromAstSync(ast, source, {
   filename,
   presets: ["minify"],
   babelrc: false,
@@ -124,6 +141,15 @@ Note: This option is not on by default because the majority of users won't need
 it and because we'd like to eventually add a caching layer to Babel. Having
 to cache the AST structure will take significantly more space.
 
+### `cloneInputAst`
+
+Type: `boolean`<br />
+Default: `true`<br />
+Added in `v7.11.0`
+
+By default `babel.transformFromAst` will clone the input AST to avoid mutations.
+Specifying `cloneInputAst: false` can improve parsing performance if the input AST
+is not used elsewhere.
 
 ## Config Loading options
 
@@ -138,11 +164,49 @@ Type: `string`<br />
 Default: `opts.cwd`<br />
 Placement: Only allowed in Babel's programmatic options<br />
 
-The path of the conceptual root package for the current Babel project.
+The initial path that will be processed based on the [`"rootMode"`](#rootmode)
+to determine the conceptual root folder for the current Babel project.
 This is used in two primary cases:
 
 * The base directory when checking for the default [`"configFile"`](#configfile) value
 * The default value for [`"babelrcRoots"`](#babelrcroots).
+
+
+### `rootMode`
+
+Type: `"root" | "upward" | "upward-optional"`<br />
+Default: `"root"`<br />
+Placement: Only allowed in Babel's programmatic options<br />
+Added in: `v7.1.0`
+
+This option, combined with the [`"root"`](#root) value, defines how Babel
+chooses its project root. The different modes define different ways that
+Babel can process the [`"root"`](#root) value to get the final project root.
+
+Note: `babel.config.json` is supported from Babel 7.8.0. In older Babel 7 versions, only `babel.config.js` is supported.
+
+* `"root"` - Passes the [`"root"`](#root) value through as unchanged.
+* `"upward"` - Walks upward from the [`"root"`](#root) directory, looking
+  for a directory containing a [`babel.config.json`](config-files.md#project-wide-configuration)
+  file, and throws an error if a [`babel.config.json`](config-files.md#project-wide-configuration)
+  is not found.
+* `"upward-optional"` - Walk upward from the [`"root"`](#root) directory,
+  looking for a directory containing a [`babel.config.json`](config-files.md#project-wide-configuration)
+  file, and falls back to [`"root"`](#root) if a [`babel.config.json`](config-files.md#project-wide-configuration)
+  is not found.
+
+`"root"` is the default mode because it avoids the risk that Babel will
+accidentally load a `babel.config.json` that is entirely outside of the current
+project folder. If you use `"upward-optional"`, be aware that it will walk up the
+directory structure all the way to the filesystem root, and it is always
+possible that someone will have a forgotten `babel.config.json` in their home
+directory, which could cause unexpected errors in your builds.
+
+Users with monorepo project structures that run builds/tests on a per-package basis
+may well want to use `"upward"` since monorepos often have a [`babel.config.json`](config-files.md#project-wide-configuration)
+in the project root. Running Babel in a monorepo subdirectory without `"upward"`,
+will cause Babel to skip loading any [`babel.config.json`](config-files.md#project-wide-configuration)
+files in the project root, which can lead to unexpected errors and compilation failure.
 
 
 ### `envName`
@@ -160,15 +224,15 @@ available inside configuration functions, plugins, and presets, via the
 ### `configFile`
 
 Type: `string | boolean`<br />
-Default: `path.resolve(opts.root, "babel.config.js")`, if it exists, `false` otherwise<br />
+Default: `path.resolve(opts.root, "babel.config.json")`, if it exists, `false` otherwise<br />
 Placement: Only allowed in Babel's programmatic options<br />
 
-Defaults to searching for a default `babel.config.js` file, but can be passed
+Defaults to searching for a default `babel.config.json` file, but can be passed
 the path of any JS or JSON5 config file.
 
-NOTE: This option does _not_ affect loading of [`.babelrc`](config-files.md#file-relative-configuration) files, so while
-it may be tempting to do `configFile: "./foo/.babelrc"`, it is not recommended.
-If the given [`.babelrc`](config-files.md#file-relative-configuration) is loaded via the standard
+NOTE: This option does _not_ affect loading of [`.babelrc.json`](config-files.md#file-relative-configuration) files, so while
+it may be tempting to do `configFile: "./foo/.babelrc.json"`, it is not recommended.
+If the given [`.babelrc.json`](config-files.md#file-relative-configuration) is loaded via the standard
 file-relative logic, you'll end up loading the same config file twice, merging it with itself.
 If you are linking a specific config file, it is recommended to stick with a
 naming scheme that is independent of the "babelrc" name.
@@ -186,7 +250,7 @@ to the [`"filename"`](#filename) provided to Babel.
 A `babelrc` value passed in the programmatic options will override one set
 within a configuration file.
 
-Note: `.babelrc` files are only loaded if the current [`"filename"`](#filename) is inside of
+Note: `.babelrc.json` files are only loaded if the current [`"filename"`](#filename) is inside of
 a package that matches one of the [`"babelrcRoots"`](#babelrcroots) packages.
 
 
@@ -196,13 +260,13 @@ Type: `boolean | MatchPattern | Array<MatchPattern>`<br />
 Default: `opts.root`<br />
 Placement: Allowed in Babel's programmatic options, or inside of the loaded `configFile`. A programmatic option will override a config file one.<br />
 
-By default, Babel will only search for `.babelrc` files within the [`"root"`](#root) package
-because otherwise Babel cannot know if a given `.babelrc` is meant to be loaded, or
+By default, Babel will only search for `.babelrc.json` files within the [`"root"`](#root) package
+because otherwise Babel cannot know if a given `.babelrc.json` is meant to be loaded, or
 if it's [`"plugins"`](#plugins) and [`"presets"`](#presets) have even been installed, since the file being
 compiled could be inside `node_modules`, or have been symlinked into the project.
 
 This option allows users to provide a list of other packages that should be considered
-"root" packages when considering whether to load `.babelrc` files.
+"root" packages when considering whether to load `.babelrc.json` files.
 
 For example, a monorepo setup that wishes to allow individual packages to
 have their own configs might want to do
@@ -212,7 +276,7 @@ babelrcRoots: [
   // Keep the root as a root
   ".",
 
-  // Also consider monorepo packages "root" and load their .babelrc files.
+  // Also consider monorepo packages "root" and load their .babelrc.json files.
   "./packages/*"
 ]
 ```
@@ -615,7 +679,6 @@ Type: `string`<br />
 
 A root path to include on generated module names.
 
-
 ## Options Concepts
 
 ### `MatchPattern`
@@ -807,6 +870,3 @@ Here are some examples, when applied in a plugin context:
 | `"@scope/prefix-babel-plugin-mod"` | `"@scope/prefix-babel-plugin-mod"` |
 | `"@scope/mod/plugin"` | `"@scope/mod/plugin"`
 | `"module:foo"` | `"foo"` |
-
-
-
