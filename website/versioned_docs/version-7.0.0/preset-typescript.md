@@ -5,7 +5,7 @@ sidebar_label: typescript
 original_id: babel-preset-typescript
 ---
 
-This preset includes the following plugins:
+This preset is recommended if you use [TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html), a typed superset of JavaScript. It includes the following plugins:
 
 - [@babel/plugin-transform-typescript](plugin-transform-typescript.md)
 
@@ -75,4 +75,37 @@ Replace the function used when compiling JSX expressions. This is so that we kno
 
 Indicates that every file should be parsed as TS or TSX (depending on the `isTSX` option).
 
-> You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
+### `allowNamespaces`
+
+`boolean`, uses the default set by [`@babel/plugin-transform-typescript`](https://babeljs.io/docs/en/babel-plugin-transform-typescript#allownamespaces).
+
+Added in: `v7.6.0`
+
+Enables compilation of TypeScript namespaces.
+
+### `allowDeclareFields`
+
+`boolean`, defaults to `false`
+
+Added in: `v7.7.0`
+
+> NOTE: This will be enabled by default in Babel 8
+
+When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
+
+```javascript
+class A {
+  declare foo: string; // Removed
+  bar: string; // Initialized to undefined
+}
+```
+
+### `onlyRemoveTypeImports`
+
+`boolean`, defaults to `false`
+
+Added in: `v7.9.0`
+
+When set to `true`, the transform will only remove [type-only imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-exports) (introduced in TypeScript 3.8). This should only be used if you are using TypeScript >= 3.8.
+
+> You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options).
