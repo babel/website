@@ -17,6 +17,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 
 # after docusaurus rewrite
 /php/                               https://old.babeljs.io/php/
+/docs/usage/                        /docs/en/usage/
 /docs/usage/cli/                    /docs/en/babel-cli/
 /docs/usage/api/                    /docs/en/babel-core/
 /docs/core-packages/                /docs/en/babel-core/
@@ -29,6 +30,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /faq/                               /docs/en/faq/
 /learn-es2015/                      /docs/en/learn/
 /docs/plugins/                      /docs/en/plugins/
+/docs/presets/                      /docs/en/presets/
 /docs/setup/                        /en/setup/
 /docs/community/videos/             /en/videos/
 /core-packages/babel-types/         /docs/en/babel-types/
