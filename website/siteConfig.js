@@ -88,6 +88,7 @@ const siteConfig = {
   title: "Babel",
   tagline: "The compiler for next generation JavaScript",
   url: "https://babeljs.io",
+  v6Url: "https://v6.babeljs.io/docs/setup/",
   baseUrl: "/",
   getDocUrl: (doc, language) =>
     `${siteConfig.baseUrl}docs/${language || DEFAULT_LANGUAGE}/${doc}`,
