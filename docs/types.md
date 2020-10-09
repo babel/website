@@ -43,6 +43,8 @@ t.argumentPlaceholder()
 
 See also `t.isArgumentPlaceholder(node, opts)` and `t.assertArgumentPlaceholder(node, opts)`.
 
+Added in: `v7.4.0`
+
 Aliases: none
 
 ---
@@ -388,6 +390,13 @@ Aliases: `Property`, `Private`
 ```javascript
 t.classProperty(key, value, typeAnnotation, decorators, computed, static)
 ```
+
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.6.0` | Supports `static` |
+</details>
 
 See also `t.isClassProperty(node, opts)` and `t.assertClassProperty(node, opts)`.
 
@@ -2681,6 +2690,8 @@ t.tsUnknownType(types)
 ```
 
 See also `t.isTSUnknownType(node, opts)` and `t.assertTSUnknownType(node, opts)`.
+
+Added in: `v7.2.0`
 
 Aliases: `TSType`
 

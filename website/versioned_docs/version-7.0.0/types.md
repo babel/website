@@ -1,5 +1,5 @@
 ---
-id: version-7.0.0-babel-types
+id: version-7.6.0-babel-types
 title: @babel/types
 sidebar_label: types
 original_id: babel-types
@@ -34,6 +34,19 @@ See also `t.isArrayExpression(node, opts)` and `t.assertArrayExpression(node, op
 Aliases: `Expression`
 
  - `elements`: `Array<null | Expression | SpreadElement>` (default: `[]`)
+
+---
+
+### argumentPlaceholder
+```javascript
+t.argumentPlaceholder()
+```
+
+See also `t.isArgumentPlaceholder(node, opts)` and `t.assertArgumentPlaceholder(node, opts)`.
+
+Added in: `v7.4.0`
+
+Aliases: none
 
 ---
 
@@ -376,8 +389,15 @@ Aliases: `Property`, `Private`
 
 ### classProperty
 ```javascript
-t.classProperty(key, value, typeAnnotation, decorators, computed)
+t.classProperty(key, value, typeAnnotation, decorators, computed, static)
 ```
+
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.6.0` | Supports `static` |
+</details>
 
 See also `t.isClassProperty(node, opts)` and `t.assertClassProperty(node, opts)`.
 
@@ -2658,6 +2678,21 @@ t.tsUnionType(types)
 ```
 
 See also `t.isTSUnionType(node, opts)` and `t.assertTSUnionType(node, opts)`.
+
+Aliases: `TSType`
+
+ - `types`: `Array<TSType>` (required)
+
+---
+
+### tSUnknownType
+```javascript
+t.tsUnknownType(types)
+```
+
+See also `t.isTSUnknownType(node, opts)` and `t.assertTSUnknownType(node, opts)`.
+
+Added in: `v7.2.0`
 
 Aliases: `TSType`
 
