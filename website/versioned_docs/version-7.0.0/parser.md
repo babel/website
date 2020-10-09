@@ -31,13 +31,23 @@ mind. When in doubt, use `.parse()`.
 
 ### Options
 
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.7.0` | Added `errorRecovery` |
+| `v7.5.0` | Added `allowUndeclaredExports` |
+| `v7.2.0` | Added `createParenthesizedExpressions` |
+</details>
+
 - **allowImportExportEverywhere**: By default, `import` and `export`
   declarations can only appear at a program's top level. Setting this
   option to `true` allows them anywhere where a statement is allowed.
 
-- **allowAwaitOutsideFunction**: By default, `await` use is not allowed
-  outside of an async function. Set this to `true` to accept such
-  code.
+- **allowAwaitOutsideFunction**: By default, `await` use is only allowed
+  inside of an async function or, when the `topLevelAwait` plugin is enabled,
+  in the top-level scope of modules. Set this to `true` to also accept it in the
+  top-level scope of scripts.
 
 - **allowReturnOutsideFunction**: By default, a return statement at
   the top level raises an error. Set this to `true` to accept such
@@ -47,6 +57,24 @@ mind. When in doubt, use `.parse()`.
   outside of class and object methods. Set this to `true` to accept such
   code.
 
+- **allowUndeclaredExports**: By default, exporting an identifier that was
+  not declared in the current module scope will raise an error. While this
+  behavior is required by the ECMAScript modules specification, Babel's
+  parser cannot anticipate transforms later in the plugin pipeline that
+  might insert the appropriate declarations, so it is sometimes important
+  to set this option to `true` to prevent the parser from prematurely
+  complaining about undeclared exports that will be added later.
+
+- **createParenthesizedExpressions**: By default, the parser sets `extra.parenthesized` on the expression nodes. When this option is set to `true`, `ParenthesizedExpression` AST nodes are created instead.
+
+- **errorRecovery**: By default, Babel always throws an error when it finds some invalid
+  code. When this option is set to `true`, it will store the parsing error and try to continue
+  parsing the invalid input file.
+  The resulting AST will have an `errors` property representing an array of all the parsing errors.
+  Note that even when this option is enabled, `@babel/parser` could throw for unrecoverable errors.
+
+- **plugins**: Array containing the plugins that you want to enable.
+
 - **sourceType**: Indicate the mode the code should be parsed in. Can be
   one of `"script"`, `"module"`, or `"unambiguous"`. Defaults to `"script"`. `"unambiguous"` will make @babel/parser attempt to _guess_, based on the presence of ES6 `import` or `export` statements. Files with ES6 `import`s and `export`s are considered `"module"` and are otherwise `"script"`.
 
@@ -54,13 +82,11 @@ mind. When in doubt, use `.parse()`.
 
 - **startLine**: By default, the first line of code parsed is treated as line 1. You can provide a line number to alternatively start with. Useful for integration with other source tools.
 
-- **plugins**: Array containing the plugins that you want to enable.
-
 - **strictMode**: By default, ECMAScript code is parsed as strict only if a
   `"use strict";` directive is present or if the parsed file is an ECMAScript
   module. Set this option to `true` to always parse files in strict mode.
 
-- **ranges**: Adds a `ranges` property to each node: `[node.start, node.end]`
+- **ranges**: Adds a `range` property to each node: `[node.start, node.end]`
 
 - **tokens**: Adds all parsed tokens to a `tokens` property on the `File` node
 
@@ -133,14 +159,29 @@ require("@babel/parser").parse("code", {
 
 #### Language extensions
 
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.6.0` | Added `v8intrinsic` |
+</details>
 | Name | Code Example |
 |------|--------------|
 | `flow` ([repo](https://github.com/facebook/flow)) | `var a: string = "";` |
 | `flowComments` ([docs](https://flow.org/en/docs/types/comments/)) | `/*:: type Foo = {...}; */` |
 | `jsx` ([repo](https://facebook.github.io/jsx/)) | `<a attr="b">{s}</a>` |
 | `typescript` ([repo](https://github.com/Microsoft/TypeScript)) | `var a: string = "";` |
+| `v8intrinsic` | `%DebugPrint(foo);` |
 
 #### ECMAScript [proposals](https://github.com/babel/proposals)
+
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.7.0` | Added `topLevelAwait` |
+| `v7.4.0` | Added `partialApplication` |
+</details>
 
 | Name | Code Example |
 |------|--------------|
@@ -163,8 +204,10 @@ require("@babel/parser").parse("code", {
 | `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread)) | `var a = { b, ...c };` |
 | `optionalCatchBinding` ([proposal](https://github.com/babel/proposals/issues/7)) | `try {throw 0;} catch{do();}` |
 | `optionalChaining` ([proposal](https://github.com/tc39/proposal-optional-chaining)) | `a?.b` |
+| `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32)) | `f(?, a)` |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | <code>a &#124;> b</code> |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
+| `topLevelAwait` ([proposal](https://github.com/tc39/proposal-top-level-await/)) | `await promise` in modules |
 
 #### Plugins options
 
