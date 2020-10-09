@@ -127,7 +127,7 @@ class Versions extends React.Component {
                         </a>
                       </td>
                       <td>
-                        <a href={`${siteConfig.baseUrl}6.26.3`}>Blog Post</a>
+                        <a href={`${siteConfig.baseUrl}6.23.0`}>Blog Post</a>
                       </td>
                     </tr>
                   </tbody>
