@@ -61,6 +61,8 @@ $ npm install --save-dev @babel/plugin-proposal-partial-application
 }
 ```
 
+### Via CLI
+
 ```sh
 babel --plugins @babel/plugin-proposal-partial-application script.js
 ```
