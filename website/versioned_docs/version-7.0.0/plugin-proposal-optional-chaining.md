@@ -87,6 +87,20 @@ new Test?.(); // test instance
 new exists?.(); // undefined
 ```
 
+### Deleting deeply nested properties
+
+Added in: `v7.8.0`
+
+```js
+const obj = {
+  foo: {
+    bar: {}
+  },
+};
+
+const ret = delete obj?.foo?.bar?.baz; // true
+```
+
 ## Installation
 
 ```sh
