@@ -31,6 +31,7 @@ npm install babel-plugin-minify-builtins --save-dev
 
 ### With a configuration file (Recommended)
 
+
 ```json
 {
   "plugins": ["minify-builtins"]
