@@ -17,8 +17,6 @@ npm install --save-dev @babel/plugin-proposal-unicode-property-regex
 
 ### With a configuration file (Recommended)
 
-`.babelrc`
-
 ```json
 {
   "plugins": ["@babel/plugin-proposal-unicode-property-regex"]
