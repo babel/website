@@ -21,7 +21,31 @@ The entire process to set this up involves:
    npm install --save @babel/polyfill
    ```
 
-2. Creating a config file named `babel.config.js` in the root of your project with this content:
+2. Creating a config file named `babel.config.json` (requires `v7.8.0` and above) in the root of your project with this content:
+
+   ```json
+   {
+     "presets": [
+       [
+         "@babel/env",
+         {
+           "targets": {
+             "edge": "17",
+             "firefox": "60",
+             "chrome": "67",
+             "safari": "11.1",
+           },
+           "useBuiltIns": "usage",
+           "corejs": "3.6.4",
+         }
+       ]
+     ]
+   }
+   ```
+
+   > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support.
+
+Or `babel.config.js` if you are using an older Babel version
 
    ```js
    const presets = [
@@ -35,14 +59,13 @@ The entire process to set this up involves:
            safari: "11.1",
          },
          useBuiltIns: "usage",
+         "corejs": "3.6.4",
        },
      ],
    ];
 
    module.exports = { presets };
    ```
-
-   > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support.
 
 3. And running this command to compile all your code from the `src` directory to `lib`:
 
@@ -128,29 +151,35 @@ Without any configuration, this preset will include all plugins to support moder
 
 > There are a few different ways to use configuration files depending on your needs. Be sure to read our in-depth guide on how to [configure Babel](configuration.md) for more information.
 
-For now, let's create a file called `babel.config.js` with the following content:
+For now, let's create a file called `babel.config.json` (requires `v7.8.0` and above) with the following content:
 
-```js
-const presets = [
+```json
+{
+"presets": [
   [
     "@babel/env",
     {
-      targets: {
-        edge: "17",
-        firefox: "60",
-        chrome: "67",
-        safari: "11.1",
-      },
-    },
-  ],
-];
-
-module.exports = { presets };
+      "targets": {
+        "edge": "17",
+        "firefox": "60",
+        "chrome": "67",
+        "safari": "11.1"
+        }
+      }
+    ]
+  ]
+}
 ```
 
 Now the `env` preset will only load transformation plugins for features that are not available in our target browsers. We're all set for syntax. Let's look at polyfills next.
 
 ## Polyfill
+
+> 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features) and `regenerator-runtime/runtime` (needed to use transpiled generator functions):
+> ```js
+> import "core-js/stable";
+> import "regenerator-runtime/runtime";
+> ```
 
 The [@babel/polyfill](polyfill.md) module includes [core-js](https://github.com/zloirock/core-js) and a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) to emulate a full ES2015+ environment.
 
@@ -170,23 +199,23 @@ npm install --save @babel/polyfill
 
 Now luckily for us, we're using the `env` preset which has a `"useBuiltIns"` option that when set to `"usage"` will practically apply the last optimization mentioned above where you only include the polyfills you need. With this new option the configuration changes like this:
 
-```js
-const presets = [
+```json
+{
+  "presets": [
   [
     "@babel/env",
     {
-      targets: {
-        edge: "17",
-        firefox: "60",
-        chrome: "67",
-        safari: "11.1",
-      },
-      useBuiltIns: "usage",
+        "targets": {
+          "edge": "17",
+          "firefox": "60",
+          "chrome": "67",
+          "safari": "11.1",
     },
-  ],
-];
-
-module.exports = { presets };
+        "useBuiltIns": "usage",
+      }
+    ]
+  ]
+}
 ```
 
 Babel will now inspect all your code for features that are missing in your target environments and include only the required polyfills. For example this code:

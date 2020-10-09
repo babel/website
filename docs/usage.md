@@ -20,7 +20,7 @@ The entire process to set this up involves:
    npm install --save @babel/polyfill
    ```
 
-2. Creating a config file named `babel.config.json` in the root of your project with this content:
+2. Creating a config file named `babel.config.json` (requires `v7.8.0` and above) in the root of your project with this content:
 
    ```json
    {
@@ -43,6 +43,28 @@ The entire process to set this up involves:
    ```
 
    > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support.
+
+Or `babel.config.js` if you are using an older Babel version
+
+   ```js
+   const presets = [
+     [
+       "@babel/env",
+       {
+         targets: {
+           edge: "17",
+           firefox: "60",
+           chrome: "67",
+           safari: "11.1",
+         },
+         useBuiltIns: "usage",
+         "corejs": "3.6.4",
+       },
+     ],
+   ];
+
+   module.exports = { presets };
+   ```
 
 3. And running this command to compile all your code from the `src` directory to `lib`:
 
@@ -128,7 +150,7 @@ Without any configuration, this preset will include all plugins to support moder
 
 > There are a few different ways to use configuration files depending on your needs. Be sure to read our in-depth guide on how to [configure Babel](configuration.md) for more information.
 
-For now, let's create a file called `babel.config.json` with the following content:
+For now, let's create a file called `babel.config.json` (requires `v7.8.0` and above) with the following content:
 
 ```json
 {
