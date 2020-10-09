@@ -13,8 +13,12 @@ This preset always includes the following plugins:
 
 And with the `development` option:
 
+Classic runtime adds:
+
 - [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md)
 - [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md)
+
+Automatic runtime (since `v7.9.0`) adds the functionality for these plugins automatically when the `development` option is enabled. If you have automatic runtime enabled, adding [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md) or [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md) will error.
 
 > Note: Flow syntax support is no longer enabled in v7. For that, you will need to add the [Flow preset](preset-flow.md).
 
@@ -46,9 +50,11 @@ With options:
     [
       "@babel/preset-react",
       {
-        "pragma": "dom", // default pragma is React.createElement
-        "pragmaFrag": "DomFrag", // default is React.Fragment
-        "throwIfNamespace": false // defaults to true
+        "pragma": "dom", // default pragma is React.createElement (only in classic runtime)
+        "pragmaFrag": "DomFrag", // default is React.Fragment (only in classic runtime)
+        "throwIfNamespace": false, // defaults to true
+        "runtime": "classic" // defaults to classic
+        // "importSource": "custom-jsx-library" // defaults to react (only in automatic runtime)
       }
     ]
   ]
@@ -71,33 +77,27 @@ require("@babel/core").transform("code", {
 
 ## Options
 
-### `pragma`
+### Both Runtimes
 
-`string`, defaults to `React.createElement`.
+#### `runtime`
 
-Replace the function used when compiling JSX expressions.
+`classic | automatic`, defaults to `classic`
 
-### `pragmaFrag`
+Added in: `v7.9.0`
 
-`string`, defaults to `React.Fragment`.
+Decides which runtime to use.
 
-Replace the component used when compiling JSX fragments.
+`automatic` auto imports the functions that JSX transpiles to. `classic` does not automatic import anything.
 
-### `useBuiltIns`
-
-`boolean`, defaults to `false`.
-
-Will use the native built-in instead of trying to polyfill behavior for any plugins that require one.
-
-### `development`
+#### `development`
 
 `boolean`, defaults to `false`.
 
-Toggles plugins that aid in development, such as [`@babel/plugin-transform-react-jsx-self`](plugin-transform-react-jsx-self.md) and [`@babel/plugin-transform-react-jsx-source`](plugin-transform-react-jsx-source.md).
+This toggles behavior specific to development, such as adding `__source` and `__self`.
 
 This is useful when combined with the [env option](options.md#env) configuration or [js config files](config-files.md#javascript).
 
-### `throwIfNamespace`
+#### `throwIfNamespace`
 
 `boolean`, defaults to `true`.
 
@@ -107,7 +107,45 @@ Toggles whether or not to throw an error if a XML namespaced tag name is used. F
 
 Though the JSX spec allows this, it is disabled by default since React's JSX does not currently have support for it.
 
-#### .babelrc.js
+### React Automatic Runtime
+
+#### importSource
+
+`string`, defaults to `react`.
+
+Added in: `v7.9.0`
+
+Replaces the import source when importing functions.
+
+### React Classic Runtime
+
+#### `pragma`
+
+`string`, defaults to `React.createElement`.
+
+Replace the function used when compiling JSX expressions.
+
+#### `pragmaFrag`
+
+`string`, defaults to `React.Fragment`.
+
+Replace the component used when compiling JSX fragments.
+
+#### `useBuiltIns`
+
+`boolean`, defaults to `false`.
+
+Will use the native built-in instead of trying to polyfill behavior for any plugins that require one.
+
+#### `useSpread`
+
+`boolean`, defaults to `false`.
+
+Added in: `v7.7.0`
+
+When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
+
+### .babelrc.js
 
 ```js
 module.exports = {
@@ -122,7 +160,7 @@ module.exports = {
 };
 ```
 
-#### .babelrc
+### .babelrc
 
 > Note: the `env` option will likely get deprecated soon
 
