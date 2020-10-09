@@ -16,8 +16,10 @@ original_id: babel-plugin-transform-react-jsx-source
 **Out**
 
 ```
-<sometag __source={ { fileName: 'this/file.js', lineNumber: 10 } } />
+<sometag __source={ { fileName: 'this/file.js', lineNumber: 10, columnNumber: 1 } } />
 ```
+
+The `columnNumber` is emitted since `v7.9.0`.
 
 ## Installation
 
