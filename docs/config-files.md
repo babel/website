@@ -15,11 +15,11 @@ Babel has two parallel config file formats, which can be used together, or indep
 | `v7.7.0` | Support `.babelrc.json`, `.babelrc.cjs`, `babel.config.json`, `babel.config.cjs` |
 </details>
 
-* Project-wide configuration
-  * `babel.config.json` files, with the different extensions (`.js`, `.cjs`, `.mjs`)
-* File-relative configuration
-  * `.babelrc.json` files, with the different extensions (`.babelrc`, `.js`, `.cjs`, `.mjs`)
-  * `package.json` files with a `"babel"` key
+- Project-wide configuration
+  - `babel.config.json` files, with the different extensions (`.js`, `.cjs`, `.mjs`)
+- File-relative configuration
+  - `.babelrc.json` files, with the different extensions (`.babelrc`, `.js`, `.cjs`, `.mjs`)
+  - `package.json` files with a `"babel"` key
 
 ## Project-wide configuration
 
@@ -50,14 +50,16 @@ project-wide config values, making them potentially useful for specific override
 also be accomplished through ["overrides"](options.md#overrides).
 
 There are a few edge cases to consider when using a file-relative config:
-* Searching will stop once a directory containing a `package.json` is found, so a relative config
+
+- Searching will stop once a directory containing a `package.json` is found, so a relative config
   only applies within a single package.
-* The ["filename"](options.md#filename) being compiled must be inside of
+- The ["filename"](options.md#filename) being compiled must be inside of
   ["babelrcRoots"](options.md#babelrcroots) packages, or else searching will be skipped entirely.
 
 These caveats mean that:
-* `.babelrc.json` files _only_ apply to files within their own package
-* `.babelrc.json` files in packages that aren't Babel's 'root' are ignored unless you opt in
+
+- `.babelrc.json` files _only_ apply to files within their own package
+- `.babelrc.json` files in packages that aren't Babel's 'root' are ignored unless you opt in
   with ["babelrcRoots"](options.md#babelrcroots).
 
 See the [monorepo](#monorepos) documentation for more discussion on how to configure monorepos that have many packages.
@@ -68,14 +70,15 @@ File-relative configs can also be disabled by setting ["babelrc"](options.md#bab
 Users coming from Babel 6.x will likely trip up on these two edge cases, which are new in Babel 7.x.
 These two restrictions were added to address common footguns in Babel 6.x:
 
-* `.babelrc` files applied to `node_modules` dependencies, often unexpectedly.
-* `.babelrc` files _failed_ to apply to symlinked `node_modules` when people expected them to behave like normal dependencies.
-* `.babelrc` files _in_ `node_modules` dependencies would be detected, even though the plugins and
+- `.babelrc` files applied to `node_modules` dependencies, often unexpectedly.
+- `.babelrc` files _failed_ to apply to symlinked `node_modules` when people expected them to behave like normal dependencies.
+- `.babelrc` files _in_ `node_modules` dependencies would be detected, even though the plugins and
   presets inside they were generally not installed, and may not even be valid in the version of
   Babel compiling the file.
 
 These cases will _primarily_ cause issues for users with a monorepo structure, because if you
 have
+
 ```text
 .babelrc
 packages/
@@ -86,12 +89,15 @@ packages/
     package.json
     src/index.js
 ```
+
 the config will now be entirely ignored, because it is across a package boundary.
 
 One alternative would be to create a `.babelrc` in each sub-package that uses ["extends"](options.md#extends) as
+
 ```json
 { "extends": "../../.babelrc" }
 ```
+
 Unfortunately, this approach can be a bit repetitive, and depending on how Babel is being used,
 could require setting ["babelrcRoots"](options.md#babelrcroots).
 
@@ -106,7 +112,7 @@ Babel can be configured using any file extension natively supported by Node.js: 
 `.js`, `.cjs` and `.mjs`, both for `babel.config.json` and `.babelrc.json` files.
 
 - `babel.config.json` and `.babelrc.json` are parsed as JSON5 and should contain an object matching
-  the [options](options.md) format that Babel accepts. They are supported in `v7.7.0`.
+  the [options](options.md) format that Babel accepts. They have been supported since `v7.7.0`.
 
   We recommend using this file type wherever possible: JS config files are
   handy if you have complex configuration that is conditional or otherwise computed at build time.
@@ -117,12 +123,12 @@ Babel can be configured using any file extension natively supported by Node.js: 
   performance win.
 
 - `babel.config.cjs` and `.babelrc.cjs` allow you to define your configuration as CommonJS,
-  using `module.exports`. They are supported in `v7.7.0`.
+  using `module.exports`. They have been supported since `v7.7.0`.
 
 - `babel.config.mjs` and `.babelrc.mjs` use native ECMAScript modules. They are supported by Node.js 13.2+ (or older versions via the `--experimental-modules` flag).
   Please remember that native ECMAScript modules are asynchronous (that's why `import()` always
   returns a promise!): for this reason, `.mjs` config files will throw when calling Babel
-  synchronously. They are supported in `v7.8.0`.
+  synchronously. They have been supported since `v7.8.0`.
 
 - `babel.config.js` and `.babelrc.js` behave like the `.mjs` equivalents when your `package.json`
   file contains the [`"type": "module"`](https://nodejs.org/api/esm.html#esm_code_package_json_code_code_type_code_field)
@@ -172,6 +178,7 @@ Babel inside an individual package, e.g.
 cd packages/some-package;
 babel src -d dist
 ```
+
 the ["root"](options.md#root) Babel is using in that context is _not_ your monorepo root,
 and it won't be able to find the [`babel.config.json`](#project-wide-configuration) file.
 
@@ -189,54 +196,63 @@ the first time Babel loads it.
 How you set this value varies by project, but here are a few examples:
 
 #### CLI
+
 ```bash
 babel --root-mode upward src -d lib
 ```
 
 #### @babel/register
+
 ```js
 require("@babel/register")({
-  rootMode: "upward"
+  rootMode: "upward",
 });
 ```
 
 #### Webpack
+
 ```js
 module: {
-  rules: [{
-    loader: "babel-loader",
-    options: {
-      rootMode: "upward",
-    }
-  }]
+  rules: [
+    {
+      loader: "babel-loader",
+      options: {
+        rootMode: "upward",
+      },
+    },
+  ];
 }
 ```
 
 #### Jest
+
 Jest is often installed at the root of the monorepo and may not require configuration,
 but if it is installed per-package it can unfortunately be more complex to configure.
 
 The main part is creating a custom jest transformer file that wraps `babel-jest`'s default
 behavior in order to set the option, e.g.
+
 ```js
 module.exports = require("babel-jest").createTransformer({
   rootMode: "upward",
 });
 ```
+
 and with that saved somewhere, you'd then use that file in the place of `babel-jest` in
 your Jest options via the [transform option](https://jestjs.io/docs/en/configuration#transform-object-string-string):
+
 ```json
 "transform": {
   "^.+\\.jsx?$": "./path/to/wrapper.js"
 },
 ```
+
 so all JS files will be processed with your version of `babel-jest` with the option enabled.
 
 #### Others
 
 There are tons of tools, but at the core of it is that they need the `rootMode` option enabled
 if the working directory is not already the monorepo root.
-
 
 ### Subpackage `.babelrc.json` files
 
@@ -257,6 +273,7 @@ packages/
     .babelrc.json
     index.js
 ```
+
 compiling the `packages/mod/index.js` file will not load `packages/mod/.babelrc.json` because
 this [`.babelrc.json`](#file-relative-configuration) is within a sub-package, not the root package.
 
@@ -269,6 +286,7 @@ babelrcRoots: [
   "packages/*",
 ],
 ```
+
 so that Babel will consider all `packages/*` packages as allowed to load [`.babelrc.json`](#file-relative-configuration) files,
 along with the original repo root.
 
@@ -279,7 +297,7 @@ JS config files may export a function that will be passed config function API:
 ```js
 module.exports = function(api) {
   return {};
-}
+};
 ```
 
 The `api` object exposes everything Babel itself exposes from its index module, along with
@@ -301,27 +319,26 @@ re-execute any plugin and preset functions referenced in that config.
 To avoid this, Babel expects users of config functions to tell it how to manage
 caching within a config file.
 
-* `api.cache.forever()` - Permacache the computed config and never call the function again.
-* `api.cache.never()` - Do not cache this config, and re-execute the function every time.
-* `api.cache.using(() => process.env.NODE_ENV)` - Cache based on the value of `NODE_ENV`.
+- `api.cache.forever()` - Permacache the computed config and never call the function again.
+- `api.cache.never()` - Do not cache this config, and re-execute the function every time.
+- `api.cache.using(() => process.env.NODE_ENV)` - Cache based on the value of `NODE_ENV`.
   Any time the `using` callback returns a value other than the one that was expected, the overall
   config function will be called again and a new entry will be added to the cache.
-* `api.cache.invalidate(() => process.env.NODE_ENV)` - Cache based on the value of `NODE_ENV`.
+- `api.cache.invalidate(() => process.env.NODE_ENV)` - Cache based on the value of `NODE_ENV`.
   Any time the `using` callback returns a value other than the one that was expected, the overall
   config function will be called again and all entries in the cache will be replaced with the result.
-* `api.cache(true)` - Same as `api.cache.forever()`
-* `api.cache(false)` - Same as `api.cache.never()`
+- `api.cache(true)` - Same as `api.cache.forever()`
+- `api.cache(false)` - Same as `api.cache.never()`
 
 Since the actual callback result is used to check if the cache entry is valid, it is recommended
 that:
 
-* Callbacks should be small and side-effect free.
-* Callbacks should return values with the smallest range possible. For example, the
+- Callbacks should be small and side-effect free.
+- Callbacks should return values with the smallest range possible. For example, the
   `.using(() => process.env.NODE_ENV)` usage above is not ideal because it would create an unknown
   number of cache entries depending on how many values of `NODE_ENV` are detected. It would be
   safer to do `.using(() => process.env.NODE_ENV === "development")` because then the cache entry
   can only ever be `true` or `false`.
-
 
 ### `api.env(...)`
 
@@ -332,10 +349,10 @@ if no other overriding environment is set.
 
 It has a few different forms:
 
-* `api.env("production")` returns `true` if `envName === "production"`.
-* `api.env(["development", "test"])` returns `true` if `["development", "test"].includes(envName)`.
-* `api.env()` returns the current `envName` string.
-* `api.env(envName => envName.startsWith("test-"))` returns `true` if the env starts with "test-".
+- `api.env("production")` returns `true` if `envName === "production"`.
+- `api.env(["development", "test"])` returns `true` if `["development", "test"].includes(envName)`.
+- `api.env()` returns the current `envName` string.
+- `api.env(envName => envName.startsWith("test-"))` returns `true` if the env starts with "test-".
 
 > **Note:** This function internally makes use of [`api.cache`](#apicache) mentioned above to ensure that Babel is aware that this build depends on a specific `envName`. You should not use it alongside with `api.cache.forever()` or `api.cache.never()`.
 
@@ -347,6 +364,7 @@ values, this API is designed to automatically configure `api.cache`, the same wa
 
 The `caller` value is available as the first parameter of the callback function. It is best used
 with something like
+
 ```js
 function isBabelRegister(caller) {
   return !!(caller && caller.name === "@babel/register");
@@ -358,15 +376,16 @@ module.exports = function(api) {
   return {
     // ...
   };
-}
+};
 ```
-to toggle configuration behavior based on a specific environment.
 
+to toggle configuration behavior based on a specific environment.
 
 ### `api.assertVersion(range)`
 
 While `api.version` can be useful in general, it's sometimes nice to just declare your version.
 This API exposes a simple way to do that with:
+
 ```js
 module.exports = function(api) {
   api.assertVersion("^7.2");
