@@ -80,6 +80,7 @@ These plugins apply transformations to your code.
 ### Experimental
 
 - [class-properties](plugin-proposal-class-properties.md)
+- [class-static-block](plugin-proposal-class-static-block.md)
 - [decorators](plugin-proposal-decorators.md)
 - [do-expressions](plugin-proposal-do-expressions.md)
 - [export-default-from](plugin-proposal-export-default-from.md)
