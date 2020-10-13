@@ -4,7 +4,7 @@ title: @babel/plugin-proposal-class-static-block
 sidebar_label: proposal-class-static-block
 ---
 
-A class with a static block will be transfromed to a static private property, whose initializer is the static block wrapped in an IIAFE (Immediate invoked arrow function expression).
+A class with a static block will be transformed into a static private property, whose initializer is the static block wrapped in an IIAFE (immediate invoked arrow function expression).
 
 ## Example
 
@@ -22,7 +22,7 @@ class C {
 }
 ```
 
-will be transfromed to
+will be transformed to
 
 ```js
 class C {
