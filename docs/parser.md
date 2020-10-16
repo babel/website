@@ -197,6 +197,7 @@ require("@babel/parser").parse("code", {
 | `exportNamespaceFrom` ([proposal](https://github.com/leebyron/ecmascript-export-ns-from)) | `export * as ns from "mod"` |
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind)) | `a::b`, `::console.log` |
 | `functionSent` | `function.sent` |
+| `importAssertions` ([proposal](https://github.com/tc39/proposal-import-assertions)) | `import json from "./foo.json" assert { type: "json" };` |
 | `importMeta` ([proposal](https://github.com/tc39/proposal-import-meta)) | `import.meta.url` |
 | `logicalAssignment` ([proposal](https://github.com/tc39/proposal-logical-assignment)) | `a &&= b` |
 | `nullishCoalescingOperator` ([proposal](https://github.com/babel/proposals/issues/14)) | `a ?? b` |
