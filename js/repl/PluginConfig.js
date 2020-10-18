@@ -114,6 +114,7 @@ const replDefaults: ReplState = {
   shippedProposals: false,
   targets: "",
   version: "",
+  reactRuntime: "classic",
   decoratorsLegacy: false,
   decoratorsBeforeExport: false,
   pipelineProposal: "minimal",
