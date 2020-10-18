@@ -563,10 +563,6 @@ class Repl extends React.Component<Props, State> {
 
     const presetsArray = this._presetsToArray();
 
-    if (envConfig.isEnvPresetEnabled) {
-      presetsArray.push("env");
-    }
-
     const builtIns = envConfig.isBuiltInsEnabled && envConfig.builtIns;
 
     const payload = {
