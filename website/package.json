@@ -1,5 +1,6 @@
 {
-  "scripts": {
+  "scripts": 
+  {
     "examples": "docusaurus-examples",
     "start": "docusaurus-start",
     "build": "docusaurus-build",
@@ -8,8 +9,9 @@
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version"
   },
-  "devDependencies": {
-    "docusaurus": "^1.14.6"
-  },
+  "devDependencies": 
+    {
+      "docusaurus": "^1.14.6"
+    },
   "version": "0.0.0"
 }
