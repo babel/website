@@ -666,6 +666,9 @@ class ExpandedContainer extends Component<Props, State> {
   _onEnvPresetSettingCheck = (type: string) => (
     event: SyntheticInputEvent<*>
   ) => {
+    if (type === "isEnvPresetEnabled") {
+      this.props.presetState.env.isEnabled = event.target.checked;
+    }
     this.props.onEnvPresetSettingChange(type, event.target.checked);
   };
 
