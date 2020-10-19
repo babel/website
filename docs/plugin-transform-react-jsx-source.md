@@ -18,6 +18,8 @@ sidebar_label: transform-react-jsx-source
 <sometag __source={ { fileName: 'this/file.js', lineNumber: 10, columnNumber: 1 } } />
 ```
 
+The `columnNumber` is emitted since `v7.9.0`.
+
 ## Installation
 
 ```sh

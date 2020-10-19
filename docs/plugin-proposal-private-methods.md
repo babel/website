@@ -4,6 +4,14 @@ title: @babel/plugin-proposal-private-methods
 sidebar_label: proposal-private-methods
 ---
 
+<details>
+<summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.3.0` | Support private accessors (getters and setters) |
+| `v7.2.0` | Initial Release |
+</details>
+
 ## Example
 
 ```js

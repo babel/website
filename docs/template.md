@@ -167,6 +167,7 @@ some defaults of its own:
 
 Type: `boolean`
 Default: `true` if `%%foo%%`-style placeholders are used; `false` otherwise.
+Added in: `v7.4.0`
 
 When this option is `true`, you can use `%%foo%%` to mark placeholders in
 your templates. When it is `false`, placeholders are identifiers determined

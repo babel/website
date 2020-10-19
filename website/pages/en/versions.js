@@ -6,7 +6,7 @@ const Container = CompLibrary.Container;
 const CWD = process.cwd();
 
 const siteConfig = require(CWD + "/siteConfig.js");
-const versions = require(CWD + "/versions.json");
+const versions = require(CWD + "/past-versions.json");
 
 class Versions extends React.Component {
   render() {

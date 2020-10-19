@@ -85,5 +85,5 @@ npx babel-node --inspect --presets @babel/preset-env -- script.js --inspect
 | `-x, --extensions`     | `".js",".jsx",".es6",".es"` | List of extensions to hook into                                                                                                             |
 | `--presets`            | `[]`                        | Comma-separated list of [presets](presets.md) (a set of plugins) to load and use.                                                           |
 | `--plugins`            | `[]`                        | Comma-separated list of [plugins](plugins.md) to load and use.                                                                              |
-| `--config-file [path]` | `[]`                        | Path to the babel config file to use. Defaults to working directory babel.config.json                                                     |
+| `--config-file [path]` | `[]`                        | Path to the babel config file to use. Defaults to working directory `babel.config.json` or `babel.config.js`                                                     |
 | `--env-name [name]`    | `[]`                        | The name of the 'env' to use when loading configs and plugins. Defaults to the value of BABEL_ENV, or else NODE_ENV, or else 'development'. |

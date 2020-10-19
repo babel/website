@@ -73,7 +73,7 @@ or
 "browserslist": "> 0.25%, not dead"
 ```
 
-> Please note that the browserslist query is resolved with [`mobileToDesktop: true`](https://github.com/browserslist/browserslist#js-api).
+> Please note that since `v7.4.5` the browserslist query is resolved with [`mobileToDesktop: true`](https://github.com/browserslist/browserslist#js-api).
 > For example, if you want to create a snapshot of a query run `npx browserslist --mobile-to-desktop ">0.25%, not dead"`.
 
 ## Options
@@ -178,6 +178,8 @@ Note, browsers' results are overridden by explicit items from `targets`.
 
 `boolean`, defaults to `false`.
 
+Added in: `v7.9.0`
+
 > Note: These optimizations will be enabled by default in Babel 8
 
 By default, `@babel/preset-env` (and Babel plugins in general) grouped ECMAScript syntax features into collections of closely related smaller features. These groups can be large and include a lot of edge cases, for example "function arguments" includes destructured, default and rest parameters. From this grouping information, Babel enables or disables each group based on the browser support target you specify to `@babel/preset-env`’s `targets` option.
@@ -216,6 +218,13 @@ Outputs to `console.log` the polyfills and transform plugins enabled by `preset-
 ### `include`
 
 `Array<string|RegExp>`, defaults to `[]`.
+
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.4.0` | Support injecting `core-js@3` polyfills |
+</details>
 
 An array of plugins to always include.
 
@@ -270,6 +279,14 @@ npm install core-js@2 --save
 ```
 
 #### `useBuiltIns: 'entry'`
+
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.4.0` | It replaces `"core-js/stable"` and `"regenerator-runtime/runtime"` entry imports |
+| `v7.0.0` | It replaces `"@babel/polyfill"` entry imports |
+</details>
 
 > NOTE: Only use `import "core-js";` and `import "regenerator-runtime/runtime";` once in your whole app.
 > If you are using `@babel/polyfill`, it already includes both `core-js` and `regenerator-runtime`: importing it twice will throw an error.
@@ -373,6 +390,8 @@ Don't add polyfills automatically per file, and don't transform `import "core-js
 
 ### `corejs`
 
+Added in: `v7.4.0`
+
 `2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `2`.
 
 This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the correct imports for your `core-js` version.
@@ -444,6 +463,7 @@ Toggles whether or not [browserslist config sources](https://github.com/ai/brows
 
 ### `browserslistEnv`
 
+Added in: `v7.10.0`
 `string`, defaults to `undefined`
 
 The [Browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to use.
@@ -451,6 +471,14 @@ The [Browserslist environment](https://github.com/browserslist/browserslist#conf
 ### `shippedProposals`
 
 `boolean`, defaults to `false`
+
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.10.0` | Include class properties and private methods |
+| `v7.9.0` | Include numeric separator |
+</details>
 
 Toggles enabling support for builtin/feature proposals that have shipped in browsers. If your target environments have native support for a feature proposal, its matching parser syntax plugin is enabled instead of performing any transform. Note that this _does not_ enable the same transformations as [`@babel/preset-stage-3`](preset-stage-3.md), since proposals can continue to change before landing in browsers.
 

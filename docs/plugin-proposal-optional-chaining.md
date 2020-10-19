@@ -88,6 +88,8 @@ new exists?.(); // undefined
 
 ### Deleting deeply nested properties
 
+Added in: `v7.8.0`
+
 ```js
 const obj = {
   foo: {

@@ -50,6 +50,8 @@ super(?)          // `?` not supported in |SuperCall|
 $ npm install --save-dev @babel/plugin-proposal-partial-application
 ```
 
+## Usage
+
 ### With a configuration file (Recommended)
 
 ```json

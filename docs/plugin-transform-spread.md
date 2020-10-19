@@ -83,7 +83,10 @@ Loose mode preserves "holes" when spreading an array (for example, `[ ...Array(2
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
 
 ### `allowArrayLike`
+
 `boolean`, defaults to `false`
+
+Added in: `v7.10.0`
 
 This option allows spreading array-like objects as if they were arrays.
 

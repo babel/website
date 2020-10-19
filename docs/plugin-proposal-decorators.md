@@ -84,6 +84,13 @@ require("@babel/core").transform("code", {
 
 `boolean`
 
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.2.0` | `decoratorsBeforeExport` must be specified. Before that it defaults to `false` |
+</details>
+
 ```js
 // decoratorsBeforeExport: false
 export @decorator class Bar {}
