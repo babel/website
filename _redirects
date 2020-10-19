@@ -17,6 +17,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 
 # after docusaurus rewrite
 /php/                               https://old.babeljs.io/php/
+/docs/usage/                        /docs/en/usage/
 /docs/usage/cli/                    /docs/en/babel-cli/
 /docs/usage/api/                    /docs/en/babel-core/
 /docs/core-packages/                /docs/en/babel-core/
@@ -29,6 +30,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /faq/                               /docs/en/faq/
 /learn-es2015/                      /docs/en/learn/
 /docs/plugins/                      /docs/en/plugins/
+/docs/presets/                      /docs/en/presets/
 /docs/setup/                        /en/setup/
 /docs/community/videos/             /en/videos/
 /core-packages/babel-types/         /docs/en/babel-types/
@@ -76,6 +78,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 
 /docs/en/next/tools/*               /setup
 
+# Blog rewrites
 /7.11.0 /blog/2020/07/30/7.11.0
 /7.10.0 /blog/2020/05/25/7.10.0
 /7.9.0 /blog/2020/03/16/7.9.0
@@ -90,3 +93,19 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /7.0.0 /blog/2018/08/27/7.0.0
 /6.23.0 /blog/2017/02/13/6.23.0
 /6.23.3 /blog/2017/02/13/6.23.0
+
+# Docusaurus versioning rewrites
+# We have disabled docusaurus versioning since 7.11, they are preserved for link compatibility
+
+/docs/en/next/*                     /docs/en
+/docs/en/7.10.0/*                   /docs/en
+/docs/en/7.9.0/*                    /docs/en
+/docs/en/7.8.0/*                    /docs/en
+/docs/en/7.7.0/*                    /docs/en
+/docs/en/7.6.0/*                    /docs/en
+/docs/en/7.5.0/*                    /docs/en
+/docs/en/7.4.0/*                    /docs/en
+/docs/en/7.3.0/*                    /docs/en
+/docs/en/7.2.0/*                    /docs/en
+/docs/en/7.1.0/*                    /docs/en
+/docs/en/7.0.0/*                    /docs/en

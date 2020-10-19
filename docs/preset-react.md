@@ -17,7 +17,7 @@ Classic runtime adds:
 - [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md)
 - [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md)
 
-Automatic runtime adds the functionality for these plugins automatically when the `development` option is enabled. If you have automatic runtime enabled, adding [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md) or [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md) will error.
+Automatic runtime (since `v7.9.0`) adds the functionality for these plugins automatically when the `development` option is enabled. If you have automatic runtime enabled, adding [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md) or [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md) will error.
 
 > Note: Flow syntax support is no longer enabled in v7. For that, you will need to add the [Flow preset](preset-flow.md).
 
@@ -82,6 +82,8 @@ require("@babel/core").transform("code", {
 
 `classic | automatic`, defaults to `classic`
 
+Added in: `v7.9.0`
+
 Decides which runtime to use.
 
 `automatic` auto imports the functions that JSX transpiles to. `classic` does not automatic import anything.
@@ -110,6 +112,8 @@ Though the JSX spec allows this, it is disabled by default since React's JSX doe
 
 `string`, defaults to `react`.
 
+Added in: `v7.9.0`
+
 Replaces the import source when importing functions.
 
 ### React Classic Runtime
@@ -135,6 +139,8 @@ Will use the native built-in instead of trying to polyfill behavior for any plug
 #### `useSpread`
 
 `boolean`, defaults to `false`.
+
+Added in: `v7.7.0`
 
 When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
 

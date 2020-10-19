@@ -98,6 +98,10 @@ function toCamelCase(str) {
     });
 }
 
+function hasOwnProperty(obj, string) {
+  return Object.prototype.hasOwnProperty.call(obj, string);
+}
+
 class Repl extends React.Component<Props, State> {
   _numLoadingPlugins = 0;
   _workerApi = new WorkerApi();
@@ -537,17 +541,17 @@ class Repl extends React.Component<Props, State> {
         return {
           runtimePolyfillState,
         };
-      } else if (state.hasOwnProperty(name)) {
+      } else if (hasOwnProperty(state, name)) {
         return {
           [name]: value,
         };
-      } else if (plugins.hasOwnProperty(name)) {
+      } else if (hasOwnProperty(plugins, name)) {
         plugins[name].isEnabled = !!value;
 
         return {
           plugins,
         };
-      } else if (presets.hasOwnProperty(name)) {
+      } else if (hasOwnProperty(presets, name)) {
         presets[name].isEnabled = !!value;
 
         return {
@@ -562,10 +566,6 @@ class Repl extends React.Component<Props, State> {
     const { envConfig, plugins } = state;
 
     const presetsArray = this._presetsToArray();
-
-    if (envConfig.isEnvPresetEnabled) {
-      presetsArray.push("env");
-    }
 
     const builtIns = envConfig.isBuiltInsEnabled && envConfig.builtIns;
 
@@ -594,6 +594,7 @@ class Repl extends React.Component<Props, State> {
       decoratorsLegacy: state.presetsOptions.decoratorsLegacy,
       decoratorsBeforeExport: state.presetsOptions.decoratorsBeforeExport,
       pipelineProposal: state.presetsOptions.pipelineProposal,
+      reactRuntime: state.presetsOptions.reactRuntime,
       externalPlugins: state.externalPlugins
         .map(plugin => `${plugin.name}@${plugin.version}`)
         .join(","),

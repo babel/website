@@ -151,6 +151,31 @@ If you have existing code which uses the TypeScript-only [namespace][namespace] 
 
 ## Options
 
+### `allowDeclareFields`
+
+`boolean`, defaults to `false`
+
+Added in `v7.7.0`
+
+> NOTE: This will be enabled by default in Babel 8
+
+When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
+
+```javascript
+class A {
+  declare foo: string; // Removed
+  bar: string; // Initialized to undefined
+}
+```
+
+### `allowNamespaces`
+
+`boolean`, defaults to `false` but will default to `true` in the [future](https://github.com/babel/notes/blob/master/2019/05/21.md#prs).
+
+Added in: `v7.5.0`
+
+Enables compilation of TypeScript namespaces.
+
 ### `isTSX`
 
 `boolean`, defaults to `false`
@@ -163,27 +188,13 @@ Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as Type
 
 Replace the function used when compiling JSX expressions. This is so that we know that the import is not a type import, and should not be removed.
 
-### `allowNamespaces`
-
-`boolean`, defaults to `false` but will default to `true` in the [future](https://github.com/babel/notes/blob/master/2019/05/21.md#prs).
-
-Enables compilation of TypeScript namespaces.
-
 ### `onlyRemoveTypeImports`
 
 `boolean`, defaults to `false`
 
+Added in: `v7.9.0`
+
 When set to `true`, the transform will only remove [type-only imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-exports) (introduced in TypeScript 3.8). This should only be used if you are using TypeScript >= 3.8.
-
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options).
-
-### `allowDeclareFields`
-
-`boolean`, defaults to `false`
-
-> NOTE: This will be enabled by default in Babel 8
-
-When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
 
 ```javascript
 class A {

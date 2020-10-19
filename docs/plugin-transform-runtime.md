@@ -92,6 +92,13 @@ require("@babel/core").transform("code", {
 
 e.g. `['@babel/plugin-transform-runtime', { corejs: 3 }],`
 
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.4.0` | Supports `{ proposals: boolean }` |
+</details>
+
 Specifying a number will rewrite the helpers that need polyfillable APIs to reference helpers from that (major) version of `core-js` instead
 Please note that `corejs: 2` only supports global variables (e.g. `Promise`) and static properties (e.g. `Array.from`), while `corejs: 3` also supports instance properties (e.g. `[].includes`).
 

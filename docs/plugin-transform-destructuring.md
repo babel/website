@@ -104,6 +104,8 @@ var _z = z,
 ### `allowArrayLike`
 `boolean`, defaults to `false`
 
+Added in: `v7.10.0`
+
 This option allows destructuring array-like objects using the array destructuring syntax.
 
 An array-like object is an object with a `length` property: for example, `{ 0: "a", 1: "b", length: 2 }`. Note that, like real arrays, array-like objects can have "holes": `{ 1: "a", length: 3 }` is equivalent to `[ (hole), "a", (hole) ]`.

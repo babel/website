@@ -206,6 +206,8 @@ class ExpandedContainer extends Component<Props, State> {
       isSettingsTabExpanded,
     } = this.state;
 
+    const isReactEnabled = presetState["react"].isEnabled;
+
     const isStage2Enabled =
       presetState["stage-0"].isEnabled ||
       presetState["stage-1"].isEnabled ||
@@ -312,6 +314,35 @@ class ExpandedContainer extends Component<Props, State> {
               >
                 Options
               </span>
+              <PresetOption
+                when={isReactEnabled}
+                option="runtime"
+                presets={["react"]}
+              >
+                <span className={styles.presetsOptionsLabel}>
+                  React Runtime
+                </span>
+                <select
+                  className={cx(styles.optionSelect, styles.presetOptionSelect)}
+                  onChange={this._onPresetOptionChange(
+                    "reactRuntime",
+                    t => t.value
+                  )}
+                >
+                  <option
+                    value="automatic"
+                    selected={!presetsOptions.reactRuntime}
+                  >
+                    Automatic
+                  </option>
+                  <option
+                    value="classic"
+                    selected={presetsOptions.reactRuntime}
+                  >
+                    Classic
+                  </option>
+                </select>
+              </PresetOption>
               <PresetOption
                 when={isStage2Enabled}
                 option="decoratorsLegacy"
@@ -666,6 +697,9 @@ class ExpandedContainer extends Component<Props, State> {
   _onEnvPresetSettingCheck = (type: string) => (
     event: SyntheticInputEvent<*>
   ) => {
+    if (type === "isEnvPresetEnabled") {
+      this.props.presetState.env.isEnabled = event.target.checked;
+    }
     this.props.onEnvPresetSettingChange(type, event.target.checked);
   };
 

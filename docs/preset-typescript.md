@@ -34,7 +34,6 @@ npm install --save-dev @babel/preset-typescript
 
 ### With a configuration file (Recommended)
 
-
 ```json
 {
   "presets": ["@babel/preset-typescript"]
@@ -79,11 +78,15 @@ Indicates that every file should be parsed as TS or TSX (depending on the `isTSX
 
 `boolean`, uses the default set by [`@babel/plugin-transform-typescript`](https://babeljs.io/docs/en/babel-plugin-transform-typescript#allownamespaces).
 
+Added in: `v7.6.0`
+
 Enables compilation of TypeScript namespaces.
 
 ### `allowDeclareFields`
 
 `boolean`, defaults to `false`
+
+Added in: `v7.7.0`
 
 > NOTE: This will be enabled by default in Babel 8
 
@@ -101,6 +104,8 @@ class A {
 ### `onlyRemoveTypeImports`
 
 `boolean`, defaults to `false`
+
+Added in: `v7.9.0`
 
 When set to `true`, the transform will only remove [type-only imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-exports) (introduced in TypeScript 3.8). This should only be used if you are using TypeScript >= 3.8.
 

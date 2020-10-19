@@ -142,6 +142,14 @@ export default function compile(code: string, config: CompileConfig): Return {
             },
           ];
         }
+        if (preset === "react") {
+          return [
+            "react",
+            {
+              runtime: presetsOptions.reactRuntime,
+            },
+          ];
+        }
         return preset;
       }),
       plugins: config.plugins,

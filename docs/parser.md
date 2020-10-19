@@ -30,6 +30,15 @@ mind. When in doubt, use `.parse()`.
 
 ### Options
 
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.7.0` | Added `errorRecovery` |
+| `v7.5.0` | Added `allowUndeclaredExports` |
+| `v7.2.0` | Added `createParenthesizedExpressions` |
+</details>
+
 - **allowImportExportEverywhere**: By default, `import` and `export`
   declarations can only appear at a program's top level. Setting this
   option to `true` allows them anywhere where a statement is allowed.
@@ -149,6 +158,12 @@ require("@babel/parser").parse("code", {
 
 #### Language extensions
 
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.6.0` | Added `v8intrinsic` |
+</details>
 | Name | Code Example |
 |------|--------------|
 | `flow` ([repo](https://github.com/facebook/flow)) | `var a: string = "";` |
@@ -158,6 +173,14 @@ require("@babel/parser").parse("code", {
 | `v8intrinsic` | `%DebugPrint(foo);` |
 
 #### ECMAScript [proposals](https://github.com/babel/proposals)
+
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.7.0` | Added `topLevelAwait` |
+| `v7.4.0` | Added `partialApplication` |
+</details>
 
 | Name | Code Example |
 |------|--------------|
