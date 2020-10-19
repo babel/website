@@ -35,7 +35,7 @@ The entire process to set this up involves:
              "safari": "11.1",
            },
            "useBuiltIns": "usage",
-           "corejs": "3.6.4",
+           "corejs": "3.6.5",
          }
        ]
      ]
