@@ -11,6 +11,7 @@ export type PresetsOptions = {
   decoratorsLegacy: boolean,
   decoratorsBeforeExport: boolean,
   pipelineProposal: "smart" | "minimal" | "fsharp",
+  reactRuntime: "classic" | "automatic",
 };
 
 export type EnvConfig = {
@@ -132,6 +133,7 @@ export type ReplState = {
   decoratorsLegacy: boolean,
   decoratorsBeforeExport: boolean,
   pipelineProposal: "minimal" | "smart" | "fsharp",
+  reactRuntime: "classic" | "automatic",
   externalPlugins: ?string,
 };
 
