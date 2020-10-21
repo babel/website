@@ -258,6 +258,11 @@ resolves the plugins and presets and proceeds no further. The expectation is
 that callers will take the config's `.options`, manipulate it as they see fit
 and pass it back to Babel again.
 
+This function accepts one additional option as part of the options object in addition to the standard [options](#options): `showIgnoredFiles`.
+When set to true, `loadPartialConfig` always returns a result when a file is ignored, rather than `null`.
+This is useful in order to allow the caller to access the list of files that influenced this outcome, e.g.
+for watch mode. The caller can determine whether a file was ignored based on the returned `fileHandling` property.
+
 * `babelrc: string | void` - The path of the [file-relative configuration](config-files.md#file-relative-configuration) file, if there was one.
 * `babelignore: string | void` - The path of the `.babelignore` file, if there was one.
 * `config: string | void` - The path of the [project-wide config file](config-files.md#project-wide-configuration) file, if there was one.
@@ -268,6 +273,9 @@ and pass it back to Babel again.
     to false so that later calls to Babel will not make a second attempt to
     load config files.
 * `hasFilesystemConfig(): boolean` - Check if the resolved config loaded any settings from the filesystem.
+* `fileHandling` - This is set to `"transpile"`, `"ignored"`, or `"unsupported"` to indicate to the caller what to do with this file.
+* `files` - A `Set` of file paths that were read to build the resulting config, including project wide config files, local config files,
+  extended config files, ignore files, etc. Useful for implementing watch mode or cache invalidation.
 
 [`ConfigItem`](#configitem-type) instances expose properties to introspect the values, but each
 item should be treated as immutable. If changes are desired, the item should be
