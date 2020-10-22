@@ -196,7 +196,14 @@ Added in: `v7.9.0`
 
 When set to `true`, the transform will only remove [type-only imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-exports) (introduced in TypeScript 3.8). This should only be used if you are using TypeScript >= 3.8.
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options).
+```javascript
+class A {
+  declare foo: string; // Removed
+  bar: string; // Initialized to undefined
+  prop?: string; // Initialized to undefined
+  prop1!: string // Initialized to undefined
+}
+```
 
 ## TypeScript Compiler Options
 
@@ -263,6 +270,8 @@ equivalents in Babel can be enabled by some configuration options or plugins.
 - `--target`
   Babel doesn't support targeting a specific version of the language, but you can choose which engines you want to target using [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env).
   If you prefer, you can enable [individual plugins](https://babeljs.io/docs/en/plugins) for every ECMAScript feature.
+- `--useDefineForClassFields`
+  You can use the `onlyRemoveTypeImports` option to replicate this behavior.
 - `--watch`, `-w`
   When using `@babel/cli`, you can specify the [`--watch` option](https://babeljs.io/docs/en/babel-cli#compile-files).
 
