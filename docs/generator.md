@@ -46,6 +46,8 @@ Options for formatting output:
 | filename               | string              |                 | Used in warning messages                                                                                                                                                                                                                                           |
 | jsonCompatibleStrings  | boolean             | `false`         | Set to true to run `jsesc` with "json": true to print "\u00A9" vs. "©";                                                                                                                                                                                            |
 | jsescOption            | object              |                 | Use `jsesc` to process literals. `jsesc` is applied to numbers only if `jsescOption.numbers` (added in `v7.9.0`) is present. You can customize `jsesc` by [passing options](https://github.com/mathiasbynens/jsesc#api) to it.                                     |
+| decoratorsBeforeExport | boolean              |                 | Set to `true` to enable decorators before export in the generated code.                            |
+
 
 Options for source maps:
 
