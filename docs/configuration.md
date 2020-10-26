@@ -143,7 +143,7 @@ config /path/to/cwd/babel.config.json
 {
   "sourceType": "script",
   "plugins": [
-    "@foo/babel-plugin-1
+    "@foo/babel-plugin-1"
   ],
   "extends": "./my-extended.js"
 }
