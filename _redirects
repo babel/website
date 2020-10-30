@@ -97,15 +97,15 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 # Docusaurus versioning rewrites
 # We have disabled docusaurus versioning since 7.11, they are preserved for link compatibility
 
-/docs/en/next/*                     /docs/en
-/docs/en/7.10.0/*                   /docs/en
-/docs/en/7.9.0/*                    /docs/en
-/docs/en/7.8.0/*                    /docs/en
-/docs/en/7.7.0/*                    /docs/en
-/docs/en/7.6.0/*                    /docs/en
-/docs/en/7.5.0/*                    /docs/en
-/docs/en/7.4.0/*                    /docs/en
-/docs/en/7.3.0/*                    /docs/en
-/docs/en/7.2.0/*                    /docs/en
-/docs/en/7.1.0/*                    /docs/en
-/docs/en/7.0.0/*                    /docs/en
+/docs/en/next/*                     /docs/en/:splat
+/docs/en/7.10.0/*                   /docs/en/:splat
+/docs/en/7.9.0/*                    /docs/en/:splat
+/docs/en/7.8.0/*                    /docs/en/:splat
+/docs/en/7.7.0/*                    /docs/en/:splat
+/docs/en/7.6.0/*                    /docs/en/:splat
+/docs/en/7.5.0/*                    /docs/en/:splat
+/docs/en/7.4.0/*                    /docs/en/:splat
+/docs/en/7.3.0/*                    /docs/en/:splat
+/docs/en/7.2.0/*                    /docs/en/:splat
+/docs/en/7.1.0/*                    /docs/en/:splat
+/docs/en/7.0.0/*                    /docs/en/:splat
