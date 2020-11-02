@@ -6,7 +6,7 @@ sidebar_label: helper-plugin-test-runner
 
 ## Usage:
 
-> Check Babel for an example: https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-exponentiation-operator/test
+> Check Babel for an example: https://github.com/babel/babel/tree/main/packages/babel-plugin-transform-exponentiation-operator/test
 
 1. Inside a `/test` directory, add an `index.js` with the contents
 ```js
