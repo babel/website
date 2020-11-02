@@ -1,11 +1,5 @@
 # [babel/website](https://babeljs.io)
 
-> ## :warning: Hacktoberfest notice
->
-> We welcome any contribution that brings value to the project, whether they are opened for Hacktoberfest or not. However, we don't appreciate spam PRs such as [#2367](https://github.com/babel/website/pull/2367), that would hinder future collaboration. It also takes precious maintainer time that is better spent on other PRs that benefit rest of the community.
->
-> If you want to contribute but don't know where to start, you can take a look at [the open issues](https://github.com/babel/website/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) in this repository, or the ["docs" issues](https://github.com/babel/babel/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22i%3A+docs%22) in `babel/babel`.
-
 This is the source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
 
 - Current: `master` branch is deployed to https://babeljs.io
