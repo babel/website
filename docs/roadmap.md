@@ -20,7 +20,7 @@ This will give us a few things:
 
 ### Polyfill behavior
 
-> This is regarding https://github.com/babel/babel/tree/master/packages/babel-preset-env#usebuiltins-usage
+> This is regarding https://github.com/babel/babel/tree/main/packages/babel-preset-env#usebuiltins-usage
 
 - [ ] Allow any substitute polyfill instead of `core-js`. You should be able to override anything (custom `Promise`, etc)
 - [ ] Make `"usage"` option the default after it is stable.

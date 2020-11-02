@@ -161,7 +161,7 @@ You can still use the shorthand version of a package name (remove the `preset-` 
 
 ### Scoped Packages
 
-The most important change is finally switching all packages to [scoped packages](/blog/2017/12/27/nearing-the-7.0-release.html#renames-scoped-packages-babel-x) (the folder names in the [monorepo](https://github.com/babel/babel/tree/master/packages) are not changed but the name in its `package.json` is).
+The most important change is finally switching all packages to [scoped packages](/blog/2017/12/27/nearing-the-7.0-release.html#renames-scoped-packages-babel-x) (the folder names in the [monorepo](https://github.com/babel/babel/tree/main/packages) are not changed but the name in its `package.json` is).
 
 This means there will be no more issues with accidental/intentional name squatting, a clear separation from community plugins, and a simpler naming convention.
 
