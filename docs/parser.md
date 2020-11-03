@@ -8,7 +8,7 @@ sidebar_label: parser
   The Babel parser (previously Babylon) is a JavaScript parser used in <a href="https://github.com/babel/babel">Babel</a>.
 </p>
 
- - The latest ECMAScript version enabled by default (ES2017).
+ - The latest ECMAScript version enabled by default (ES2020).
  - Comment attachment.
  - Support for JSX, Flow, Typescript.
  - Support for experimental language proposals (accepting PRs for anything at least [stage-0](https://github.com/tc39/proposals/blob/master/stage-0-proposals.md)).
@@ -46,7 +46,8 @@ mind. When in doubt, use `.parse()`.
 - **allowAwaitOutsideFunction**: By default, `await` use is only allowed
   inside of an async function or, when the `topLevelAwait` plugin is enabled,
   in the top-level scope of modules. Set this to `true` to also accept it in the
-  top-level scope of scripts.
+  top-level scope of scripts. This option is discouraged in favor of
+  `topLevelAwait` plugin.
 
 - **allowReturnOutsideFunction**: By default, a return statement at
   the top level raises an error. Set this to `true` to accept such
@@ -94,13 +95,15 @@ mind. When in doubt, use `.parse()`.
 The Babel parser generates AST according to [Babel AST format][].
 It is based on [ESTree spec][] with the following deviations:
 
-> There is now an `estree` plugin which reverts these deviations
-
-- [Literal][] token is replaced with [StringLiteral][], [NumericLiteral][], [BooleanLiteral][], [NullLiteral][], [RegExpLiteral][]
+- [Literal][] token is replaced with [StringLiteral][], [NumericLiteral][], [BigIntLiteral][], [BooleanLiteral][], [NullLiteral][], [RegExpLiteral][]
 - [Property][] token is replaced with [ObjectProperty][] and [ObjectMethod][]
 - [MethodDefinition][] is replaced with [ClassMethod][]
 - [Program][] and [BlockStatement][] contain additional `directives` field with [Directive][] and [DirectiveLiteral][]
 - [ClassMethod][], [ObjectProperty][], and [ObjectMethod][] value property's properties in [FunctionExpression][] is coerced/brought into the main method node.
+- [ChainExpression][] is replaced with [OptionalMemberExpression][] and [OptionalCallExpression][]
+- [ImportExpression][] is replaced with a [CallExpression][] whose `callee` is an [Import] node.
+
+> There is now an `estree` plugin which reverts these deviations
 
 AST for JSX code is based on [Facebook JSX AST][].
 
@@ -110,9 +113,12 @@ AST for JSX code is based on [Facebook JSX AST][].
 [Literal]: https://github.com/estree/estree/blob/master/es5.md#literal
 [Property]: https://github.com/estree/estree/blob/master/es5.md#property
 [MethodDefinition]: https://github.com/estree/estree/blob/master/es2015.md#methoddefinition
+[ChainExpression]: https://github.com/estree/estree/blob/master/es2020.md#chainexpression
+[ImportExpression]: https://github.com/estree/estree/blob/master/es2020.md#importexpression
 
 [StringLiteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#stringliteral
 [NumericLiteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#numericliteral
+[BigIntLiteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#bigintliteral
 [BooleanLiteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#booleanliteral
 [NullLiteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#nullliteral
 [RegExpLiteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#regexpliteral
@@ -124,6 +130,10 @@ AST for JSX code is based on [Facebook JSX AST][].
 [Directive]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#directive
 [DirectiveLiteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#directiveliteral
 [FunctionExpression]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#functionexpression
+[OptionalMemberExpression]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#optionalmemberexpression
+[OptionalCallExpression]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#optionalcallexpression
+[CallExpression]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#callexpression
+[Import]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#import
 
 [Facebook JSX AST]: https://github.com/facebook/jsx/blob/master/AST.md
 
@@ -178,37 +188,51 @@ require("@babel/parser").parse("code", {
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `v7.12.0` | Added `classStaticBlock`, `moduleStringNames` |
+| `v7.11.0` | Added `decimal` |
+| `v7.10.0` | Added `privateIn` |
 | `v7.7.0` | Added `topLevelAwait` |
 | `v7.4.0` | Added `partialApplication` |
+| `v7.2.0` | Added `classPrivateMethods` |
 </details>
+
+| Name | Code Example |
+|------|--------------|
+| `classProperties` ([proposal](https://github.com/tc39/proposal-class-public-fields)) | `class A { b = 1; }` |
+| `classPrivateProperties` ([proposal](https://github.com/tc39/proposal-private-fields)) | `class A { #b = 1; }` |
+| `classPrivateMethods` ([proposal](https://github.com/tc39/proposal-private-methods)) | `class A { #c() {} }` |
+| `classStaticBlock` ([proposal](https://github.com/tc39/proposal-class-static-block)) | `class A { static {} }` |
+| `decimal` ([proposal](https://github.com/tc39/proposal-decimal)) | `0.3m` |
+| `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br> `decorators-legacy` | `@a class A {}` |
+| `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions)) | `var a = do { if (true) { 'hi'; } };` |
+| `exportDefaultFrom` ([proposal](https://github.com/tc39/ecmascript-export-default-from)) | `export v from "mod"` |
+| `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind)) | `a::b`, `::console.log` |
+| `importAssertions` ([proposal](https://github.com/tc39/proposal-import-assertions)) | `import json from "./foo.json" assert { type: "json" };` |
+| `moduleStringNames` ([proposal](https://github.com/tc39/ecma262/pull/2154)) | `import { "😄" as smile } from "emoji";` |
+| `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32)) | `f(?, a)` |
+| `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | <code>a &#124;> b</code> |
+| `privateIn` ([proposal](https://github.com/tc39/proposal-private-fields-in-in)) | `#p in obj` |
+| `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
+| `topLevelAwait` ([proposal](https://github.com/tc39/proposal-top-level-await/)) | `await promise` in modules |
+
+#### Latest ECMAScript features
+
+The following features are already enabled on the latest version of `@babel/parser`, and cannot be disabled because they are part of the language.
+You should enable these features only if you are using an older version.
 
 | Name | Code Example |
 |------|--------------|
 | `asyncGenerators` ([proposal](https://github.com/tc39/proposal-async-iteration)) | `async function*() {}`, `for await (let a of b) {}` |
 | `bigInt` ([proposal](https://github.com/tc39/proposal-bigint)) | `100n` |
-| `classProperties` ([proposal](https://github.com/tc39/proposal-class-public-fields)) | `class A { b = 1; }` |
-| `classPrivateProperties` ([proposal](https://github.com/tc39/proposal-private-fields)) | `class A { #b = 1; }` |
-| `classPrivateMethods` ([proposal](https://github.com/tc39/proposal-private-methods)) | `class A { #c() {} }` |
-| `classStaticBlock` ([proposal](https://github.com/tc39/proposal-class-static-block)) | `class A { static {} }` |
-| `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br> `decorators-legacy` | `@a class A {}` |
-| `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions)) | `var a = do { if (true) { 'hi'; } };` |
 | `dynamicImport` ([proposal](https://github.com/tc39/proposal-dynamic-import)) | `import('./guy').then(a)` |
-| `exportDefaultFrom` ([proposal](https://github.com/leebyron/ecmascript-export-default-from)) | `export v from "mod"` |
 | `exportNamespaceFrom` ([proposal](https://github.com/leebyron/ecmascript-export-ns-from)) | `export * as ns from "mod"` |
-| `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind)) | `a::b`, `::console.log` |
-| `functionSent` | `function.sent` |
-| `importAssertions` ([proposal](https://github.com/tc39/proposal-import-assertions)) | `import json from "./foo.json" assert { type: "json" };` |
-| `importMeta` ([proposal](https://github.com/tc39/proposal-import-meta)) | `import.meta.url` |
+| `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent)) | `function.sent` |
 | `logicalAssignment` ([proposal](https://github.com/tc39/proposal-logical-assignment)) | `a &&= b` |
 | `nullishCoalescingOperator` ([proposal](https://github.com/babel/proposals/issues/14)) | `a ?? b` |
 | `numericSeparator` ([proposal](https://github.com/samuelgoto/proposal-numeric-separator)) | `1_000_000` |
 | `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread)) | `var a = { b, ...c };` |
 | `optionalCatchBinding` ([proposal](https://github.com/babel/proposals/issues/7)) | `try {throw 0;} catch{do();}` |
 | `optionalChaining` ([proposal](https://github.com/tc39/proposal-optional-chaining)) | `a?.b` |
-| `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32)) | `f(?, a)` |
-| `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | <code>a &#124;> b</code> |
-| `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
-| `topLevelAwait` ([proposal](https://github.com/tc39/proposal-top-level-await/)) | `await promise` in modules |
 
 #### Plugins options
 
@@ -225,7 +249,7 @@ require("@babel/parser").parse("code", {
     export @dec class C {}
     ```
 - `pipelineOperator`:
-  - `proposal` (required, accepted values: `minimal`, `smart`)
+  - `proposal` (required, accepted values: `minimal`, `smart`, `fsharp`)
     There are different proposals for the pipeline operator. This option
     allows to choose which one to use.
     See [What's Happening With the Pipeline (|>) Proposal?](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) for more information.
