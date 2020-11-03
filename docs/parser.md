@@ -182,7 +182,7 @@ require("@babel/parser").parse("code", {
 | `typescript` ([repo](https://github.com/Microsoft/TypeScript)) | `var a: string = "";` |
 | `v8intrinsic` | `%DebugPrint(foo);` |
 
-#### ECMAScript [proposals](https://github.com/tc39/proposals)
+#### ECMAScript [proposals](https://github.com/babel/proposals)
 
 <details>
   <summary>History</summary>
@@ -217,7 +217,7 @@ require("@babel/parser").parse("code", {
 
 #### Latest ECMAScript features
 
-These features are already enabled on latest `@babel/parser`, they can not be disabled because they are part of the language.
+The following features are already enabled on the latest version of `@babel/parser`, and cannot be disabled because they are part of the language.
 You should enable these features only if you are using an older version.
 
 | Name | Code Example |
