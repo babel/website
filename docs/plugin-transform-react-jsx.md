@@ -24,8 +24,8 @@ const profile = (
 **Out**
 
 ```javascript
-import { jsx as _jsx } from "react";
-import { jsxs as _jsxs } from "react";
+import { jsx as _jsx } from "react/jsx-runtime";
+import { jsxs as _jsxs } from "react/jsx-runtime";
 
 const profile = _jsxs("div", {
   children: [
@@ -58,8 +58,8 @@ const profile = (
 **Out**
 
 ```javascript
-import { jsx as _jsx } from "custom-jsx-library";
-import { jsxs as _jsxs } from "custom-jsx-library";
+import { jsx as _jsx } from "custom-jsx-library/jsx-runtime";
+import { jsxs as _jsxs } from "custom-jsx-library/jsx-runtime";
 
 const profile = _jsxs("div", {
   children: [
