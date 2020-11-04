@@ -82,7 +82,7 @@ For more information on setting options for a preset, refer to the [preset optio
 
 ### `targets`
 
-`string | Array<string> | { [string]: string }`, defaults to `{}`.
+`string | Array<string> | { [string]: string }`, defaults to the top-level `targets` option if no browserslist-related option is specified in `@babel/preset-env`'s docs, otherwise to `{}`.
 
 Describes the environments you support/target for your project.
 
