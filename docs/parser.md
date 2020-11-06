@@ -262,7 +262,7 @@ You should enable these features only if you are using an older version.
     | SyntaxType | Record Example | Tuple Example |
     | --- | --- | --- |
     | `"hash"` | `#{ a: 1 }` | `#[1, 2]` |
-    | `"bar"` | `{| a: 1 |}` | `[|1, 2|]` |
+    | `"bar"` | <code>{&#124; a: 1 &#124;}</code> | <code>[&#124;1, 2&#124;]</code> |
     See [Ergonomics of `#{}`/`#[]`](https://github.com/tc39/proposal-record-tuple/issues/10) for more information.
 
 - `flow`:
