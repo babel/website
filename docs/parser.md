@@ -191,6 +191,7 @@ require("@babel/parser").parse("code", {
 | `v7.12.0` | Added `classStaticBlock`, `moduleStringNames` |
 | `v7.11.0` | Added `decimal` |
 | `v7.10.0` | Added `privateIn` |
+| `v7.9.0` | Added `recordAndTuple` |
 | `v7.7.0` | Added `topLevelAwait` |
 | `v7.4.0` | Added `partialApplication` |
 | `v7.2.0` | Added `classPrivateMethods` |
@@ -212,6 +213,7 @@ require("@babel/parser").parse("code", {
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32)) | `f(?, a)` |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | <code>a &#124;> b</code> |
 | `privateIn` ([proposal](https://github.com/tc39/proposal-private-fields-in-in)) | `#p in obj` |
+| `recordAndTuple` ([proposal](https://github.com/tc39/proposal-record-tuple)) | `#{x: 1}`, `#[1, 2]` |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
 | `topLevelAwait` ([proposal](https://github.com/tc39/proposal-top-level-await/)) | `await promise` in modules |
 
