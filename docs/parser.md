@@ -191,6 +191,7 @@ require("@babel/parser").parse("code", {
 | `v7.12.0` | Added `classStaticBlock`, `moduleStringNames` |
 | `v7.11.0` | Added `decimal` |
 | `v7.10.0` | Added `privateIn` |
+| `v7.9.0` | Added `recordAndTuple` |
 | `v7.7.0` | Added `topLevelAwait` |
 | `v7.4.0` | Added `partialApplication` |
 | `v7.2.0` | Added `classPrivateMethods` |
@@ -212,6 +213,7 @@ require("@babel/parser").parse("code", {
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32)) | `f(?, a)` |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | <code>a &#124;> b</code> |
 | `privateIn` ([proposal](https://github.com/tc39/proposal-private-fields-in-in)) | `#p in obj` |
+| `recordAndTuple` ([proposal](https://github.com/tc39/proposal-record-tuple)) | `#{x: 1}`, `#[1, 2]` |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23)) | `() => throw new Error("")` |
 | `topLevelAwait` ([proposal](https://github.com/tc39/proposal-top-level-await/)) | `await promise` in modules |
 
@@ -253,6 +255,15 @@ You should enable these features only if you are using an older version.
     There are different proposals for the pipeline operator. This option
     allows to choose which one to use.
     See [What's Happening With the Pipeline (|>) Proposal?](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) for more information.
+
+- `recordAndtuple`:
+  - `syntaxType` (required, accepted values: `hash`, `bar`)
+    There are two syntax variants for `recordAndTuple`. They share exactly same runtime semantics.
+    | SyntaxType | Record Example | Tuple Example |
+    | --- | --- | --- |
+    | `"hash"` | `#{ a: 1 }` | `#[1, 2]` |
+    | `"bar"` | <code>{&#124; a: 1 &#124;}</code> | <code>[&#124;1, 2&#124;]</code> |
+    See [Ergonomics of `#{}`/`#[]`](https://github.com/tc39/proposal-record-tuple/issues/10) for more information.
 
 - `flow`:
   - `all` (`boolean`, default: `false`)
