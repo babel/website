@@ -256,6 +256,15 @@ You should enable these features only if you are using an older version.
     allows to choose which one to use.
     See [What's Happening With the Pipeline (|>) Proposal?](https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-proposal) for more information.
 
+- `recordAndtuple`:
+  - `syntaxType` (required, accepted values: `hash`, `bar`)
+    There are two syntax variants for `recordAndTuple`. They share exactly same runtime semantics.
+    | SyntaxType | Record Example | Tuple Example |
+    | --- | --- | --- |
+    | `"hash"` | `#{ a: 1 }` | `#[1, 2]` |
+    | `"bar"` | `{| a: 1 |}` | `[|1, 2|]` |
+    See [Ergonomics of `#{}`/`#[]`](https://github.com/tc39/proposal-record-tuple/issues/10) for more information.
+
 - `flow`:
   - `all` (`boolean`, default: `false`)
     Some code has different meaning in Flow and in vanilla JavaScript. For example, `foo<T>(x)` is parsed as a call expression with a type argument in Flow, but as a comparison (`foo < T > x`) accordingly to the ECMAScript specification. By default, `babel-parser` parses those ambiguous constructs as Flow types only if the file starts with a `// @flow` pragma.
