@@ -333,7 +333,7 @@ import "core-js/modules/esnext.math.scale";
 
 You can read [core-js](https://github.com/zloirock/core-js)'s documentation for more information about the different entry points.
 
-> NOTE: When using `core-js@2` (either explicitly using the [`corejs: 2`](#corejs) option or implicitly), `@babel/preset-env` will also imports and requires of `@babel/polyfill`.
+> NOTE: When using `core-js@2` (either explicitly using the [`corejs: 2`](#corejs) option or implicitly), `@babel/preset-env` will also transform imports and requires of `@babel/polyfill`.
 > This behavior is deprecated because it isn't possible to use `@babel/polyfill` with different `core-js` versions.
 
 #### `useBuiltIns: 'usage'`
