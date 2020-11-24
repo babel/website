@@ -392,7 +392,9 @@ Don't add polyfills automatically per file, and don't transform `import "core-js
 
 Added in: `v7.4.0`
 
-`2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `2`.
+`2`, `3`, `3.minor`, or `{ version: 2 | 3, proposals: boolean }`, defaults to `2`.
+
+> Note: Specifying the `corejs` property with a minor value e.g. `3.7` will ensure that changes in a new minor core-js version are imported. Not specifying a minor version can lead to expected polyfills being missing.
 
 This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the correct imports for your `core-js` version.
 
