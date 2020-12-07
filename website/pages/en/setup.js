@@ -103,7 +103,7 @@ const StepFour = () => {
       <h2>
         <span className="step-no">4</span>
         <translate desc="setup page - step 4 one">Create</translate>{" "}
-        <code>.babelrc</code>{" "}
+        <code>babel.config.json</code>{" "}
         <translate desc="setup page - step 4 two">configuration file</translate>
       </h2>
       <MarkdownBlock>{setupBabelrc}</MarkdownBlock>
