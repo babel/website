@@ -149,6 +149,12 @@ const OpenCollectiveSponsors = () => {
             title="Gold Sponsors (Open Collective)"
             tier="gold-sponsors"
           />
+          <SponsorTier
+            type="opencollective"
+            title="Silver Sponsors (Open Collective)"
+            tier="silver-sponsors"
+            button={ocButton}
+          />
         </div>
       </div>
     </div>
@@ -181,12 +187,9 @@ const Hero = ({ language }) => (
 
       <div className="hero__announcement">
         <span>
-          <strong>Babel 7 is out!</strong> Please read our{" "}
-          <a href="/blog/2018/08/27/7.0.0">announcement</a> and{" "}
-          <a href={siteConfig.getDocUrl("v7-migration", language)}>
-            upgrade guide
-          </a>{" "}
-          for more information.
+          <strong>Babel 7.12 is released!</strong> Please read our{" "}
+          <a href="blog/2020/10/15/7.12.0">blog post</a> for highlights and{" "}
+          <a href="https://github.com/babel/babel/releases/tag/v7.12.0">changelog</a> for more details!
         </span>
       </div>
 
