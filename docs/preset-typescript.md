@@ -68,6 +68,12 @@ Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as type
 
 Replace the function used when compiling JSX expressions. This is so that we know that the import is not a type import, and should not be removed.
 
+### `jsxPragmaFrag`
+
+`string`, defaults to `React.Fragment`
+
+Replace the function used when compiling JSX fragment expressions. This is so that we know that the import is not a type import, and should not be removed.
+
 ### `allExtensions`
 
 `boolean`, defaults to `false`
