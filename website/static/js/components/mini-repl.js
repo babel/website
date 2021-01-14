@@ -84,7 +84,6 @@ template.innerHTML = `
         font-size: 0.83rem;
         height: 125px;
         text-align: left;
-        overflow-y: auto;
       }
       @media (min-width: 992px) {
         .repl__code {
@@ -104,6 +103,14 @@ template.innerHTML = `
           font-size: 1rem;
           text-align: left;
         }
+      }
+
+      .repl__code .cm-wrap {
+        height: 100%;
+      }
+
+      .repl__code .cm-scroller {
+        overflow: auto;
       }
     </style>
   </div>
@@ -144,7 +151,9 @@ class MiniRepl extends HTMLElement {
       root: this.shadowRoot,
     });
 
-    //this._inEditor.on("input", () => this._render());
+    this.shadowRoot.querySelector("#repl-in .cm-wrap").addEventListener("click", () => {
+      this._inEditor.focus();
+    });
   }
 
   set inputCode(code) {
