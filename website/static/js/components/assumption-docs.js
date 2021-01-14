@@ -41,7 +41,9 @@ class AssumptionDocs extends HTMLElement {
   _updateOptions() {
     this.shadowRoot.getElementById("repl").options = {
       sourceType: "module",
-      plugins: this._plugins.concat("transform-runtime"),
+      plugins: this._plugins.concat([
+        ["transform-runtime", { version: "7.100.0" }]
+      ]),
       assumptions: {
         [this._assumption]: this._enabled,
       },

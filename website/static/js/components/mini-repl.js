@@ -74,7 +74,7 @@ template.innerHTML = `
 
       @media (min-width: 992px) {
         .repl__pane {
-          flex: 1 1 50%;
+          width: 50%;
         }
       }
 
@@ -198,7 +198,7 @@ class MiniRepl extends HTMLElement {
         basicSetup,
         oneDark,
         javascriptLanguage.extension,
-        EditorView.lineWrapping,
+        //EditorView.lineWrapping,
       ],
     });
   }
@@ -210,7 +210,7 @@ class MiniRepl extends HTMLElement {
         basicSetup,
         oneDark,
         javascriptLanguage.extension,
-        EditorView.lineWrapping,
+        //EditorView.lineWrapping,
         EditorView.editable.of(false),
       ],
     });
