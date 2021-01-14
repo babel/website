@@ -395,8 +395,8 @@ Added in: `v7.4.0`
 `string` or `{ version: string, proposals: boolean }`, defaults to `"2.0"`. The `version` string can be any
 supported `core-js` versions. For example, `"3.8"` or `"2.0"`.
 
-This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the polyfills supported in your `core-js` version. It is recommended to specify minor
-versions otherwise `"3"` will be interpreted as `"3.0"` which may not include polyfills for latest features.
+This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the polyfills supported by your `core-js` version. It is recommended to specify the minor
+version otherwise `"3"` will be interpreted as `"3.0"` which may not include polyfills for the latest features.
 
 By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill them, you have three different options:
 
