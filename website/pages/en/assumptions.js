@@ -2,7 +2,7 @@ const React = require("react");
 
 const translate = require("../../server/translate.js").translate;
 
-const dedent = ([str]) => {
+const dedent = str => {
   const len = str.match(/^[\n\r]+([^\S\n\r]+)/)[1].length;
   return str.replace(new RegExp(`^[^\\S\\n\\r]{0,${len}}`, "gm"), "").trim();
 };
@@ -18,7 +18,11 @@ const AssumptionsHeader = () => {
 };
 
 const Assumption = ({ name, code, plugins, children }) => (
-  <assumption-docs assumption={name} default-code={code} plugins={plugins}>
+  <assumption-docs
+    assumption={name}
+    default-code={dedent(code)}
+    plugins={plugins}
+  >
     <h2 slot="name">
       <code>{name}</code>
     </h2>
@@ -30,15 +34,14 @@ class AssumptionsDocs extends React.Component {
   render() {
     return (
       <div className="mainContainer">
-        <script src="https://35264-24560307-gh.circle-artifacts.com/0/~/babel/packages/babel-standalone/babel.min.js" />
-        <script src="https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js" />
+        <script src="/js/babel.min.js" />
         <script type="module" src="/js/components/mini-repl.js" />
         <script type="module" src="/js/components/assumption-docs.js" />
 
         <AssumptionsHeader />
         <Assumption
           name="noDocumentAll"
-          code={dedent`
+          code={`
             let score = points ?? 0;
             let name = user?.name;
           `}
@@ -47,6 +50,79 @@ class AssumptionsDocs extends React.Component {
           When using operators that check for <code>null</code> or{" "}
           <code>undefined</code>, assume that they are never used with the
           special value <code>document.all</code>
+        </Assumption>
+        <Assumption
+          name="ignoreToPrimitiveHint"
+          code={`
+            let str = \`a\${foo}b\`;
+          `}
+          plugins="transform-template-literals"
+        >
+          When using language features that might call the{" "}
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toPrimitive">
+            <code>[Symbol.toPrimitive]</code>
+          </a>{" "}
+          method of objects, assume that they don't change their behavior based
+          on the <code>hint</code> parameter.
+        </Assumption>
+        <Assumption
+          name="mutableTemplateObject"
+          code={`
+            let str = tag\`a\${foo}b\`;
+          `}
+          plugins="transform-template-literals"
+        >
+          When using language features that might call the{" "}
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toPrimitive">
+            <code>[Symbol.toPrimitive]</code>
+          </a>{" "}
+          method of objects, assume that they don't change their behavior based
+          on the <code>hint</code> parameter.
+        </Assumption>
+        <Assumption
+          name="ignoreFunctionLength"
+          code={`
+            function fn(a, b = 2, c, d = 3) {
+              return a + b + c + d;
+            }
+          `}
+          plugins="transform-parameters"
+        >
+          Functions have a <code>.length</code> property that reflect the number
+          of parameters up to the last non-default parameter. When this option
+          is enabled, assume that the compiled code does not rely on this{" "}
+          <code>.length</code> property.
+        </Assumption>
+        <Assumption
+          name="ignoreFunctionLength"
+          code={`
+            function fn(a, b = 2, c, d = 3) {
+              return a + b + c + d;
+            }
+          `}
+          plugins="transform-parameters"
+        >
+          Functions have a <code>.length</code> property that reflect the number
+          of parameters up to the last non-default parameter. When this option
+          is enabled, assume that the compiled code does not rely on this{" "}
+          <code>.length</code> property.
+        </Assumption>
+        <Assumption
+          name="iterableIsArray"
+          code={`
+            const [first, ...rest] = obj;
+
+            call(first, ...obj);
+            let arr = [first, ...obj];
+
+            for (const el of obj) {
+              console.log(el);
+            }
+          `}
+          plugins="transform-for-of,transform-destructuring,transform-spread"
+        >
+          When using an iterable object (in array destructuring, for-of or
+          spreads), assume that it is an array.
         </Assumption>
         <br />
         <br />

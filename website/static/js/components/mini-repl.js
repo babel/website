@@ -1,6 +1,13 @@
-/* globals ace Babel */
+/* globals Babel */
 
 import debounce from "https://cdn.skypack.dev/lodash-es/debounce";
+import {
+  EditorState,
+  basicSetup,
+} from "https://cdn.skypack.dev/@codemirror/basic-setup";
+import { EditorView } from "https://cdn.skypack.dev/@codemirror/view";
+import { oneDark } from "https://cdn.skypack.dev/@codemirror/theme-one-dark";
+import { javascriptLanguage } from "https://cdn.skypack.dev/@codemirror/lang-javascript";
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -31,7 +38,7 @@ template.innerHTML = `
       }
       .repl__error {
         background: #702141;
-        bottom: 0;F
+        bottom: 0;
         font-family: monospace;
         font-size: 0.83rem;
         left: 0;
@@ -44,26 +51,11 @@ template.innerHTML = `
         transition: opacity 0.25s ease-out;
         top: 47px;
         white-space: pre;
+        display: none;
       }
       .repl__error--visible {
         opacity: 1;
-      }
-      .repl__footer {
-        background: #353634;
-        border: 1px solid #4f504d;
-        border-radius: 0 0 4px 4px;
-        color: #b7b8b7;
-      }
-      .repl__footer a {
-        color: #b7b8b7;
         display: block;
-        padding: 1rem 0;
-        text-decoration: underline;
-        transition: all 0.25s ease-out;
-      }
-      .repl__footer a:hover {
-        background: #4f504d;
-        color: #fff;
       }
       .repl__editor {
         display: flex;
@@ -92,6 +84,7 @@ template.innerHTML = `
         font-size: 0.83rem;
         height: 125px;
         text-align: left;
+        overflow-y: auto;
       }
       @media (min-width: 992px) {
         .repl__code {
@@ -133,17 +126,29 @@ class MiniRepl extends HTMLElement {
   }
 
   connectedCallback() {
-    this._inEditor = this._setupEditor("#repl-in");
-    this._outEditor = this._setupEditor("#repl-out", true);
+    console.log(this.getAttribute("default-code"));
+    const defaultCode = this.getAttribute("default-code") ?? "";
 
-    const defaultCode = this.getAttribute("default-code");
-    if (defaultCode) this._inEditor.setValue(defaultCode, 1);
+    this._inEditor = new EditorView({
+      state: this._createInputEditorState(defaultCode),
+      parent: this.shadowRoot.querySelector("#repl-in"),
+      root: this.shadowRoot,
+      dispatch: tr => {
+        this._inEditor.update([tr]);
+        this._render();
+      },
+    });
+    this._outEditor = new EditorView({
+      state: this._createOutputEditorState(""),
+      parent: this.shadowRoot.querySelector("#repl-out"),
+      root: this.shadowRoot,
+    });
 
-    this._inEditor.on("input", () => this._render());
+    //this._inEditor.on("input", () => this._render());
   }
 
   set inputCode(code) {
-    this._inEditor.setValue(code, 1);
+    this._inEditor.setState(this._createInputEditorState(code));
     this._render();
   }
 
@@ -156,17 +161,17 @@ class MiniRepl extends HTMLElement {
   }
 
   _render() {
-    const inputCode = this._inEditor.getValue();
+    const inputCode = this._inEditor.state.doc.toString();
 
     if (!inputCode) {
-      this._outEditor.setValue("");
+      this._outEditor.setState(this._createOutputEditorState(""));
       this._hideError();
       return;
     }
 
     try {
       const compiled = this._compile(inputCode);
-      this._outEditor.setValue(compiled, 1);
+      this._outEditor.setState(this._createOutputEditorState(compiled));
       this._hideError();
     } catch (err) {
       this._debouncedShowError(err.message);
@@ -177,39 +182,32 @@ class MiniRepl extends HTMLElement {
     return Babel.transform(code, this._options).code;
   }
 
-  _setupEditor(id, readOnly = false) {
-    const editor = ace.edit(this.shadowRoot.querySelector(id));
-
-    editor.setOptions({
-      // editor
-      highlightActiveLine: false,
-      readOnly: !!readOnly,
-
-      // renderer
-      fontSize: "1rem",
-      highlightGutterLine: false,
-      showGutter: false,
-      showLineNumbers: false,
-      theme: "ace/theme/tomorrow_night",
-
-      // session
-      mode: "ace/mode/javascript",
-      tabSize: 2,
-      useSoftTabs: true,
-      useWorker: false,
-      wrap: true,
+  _createInputEditorState(content) {
+    return EditorState.create({
+      doc: content,
+      extensions: [
+        basicSetup,
+        oneDark,
+        javascriptLanguage.extension,
+        EditorView.lineWrapping,
+      ],
     });
+  }
 
-    editor.renderer.setPadding(24);
-    editor.renderer.setScrollMargin(24, 24);
-    editor.commands.removeCommands(["gotoline", "find"]);
-    editor.renderer.attachToShadowRoot();
-
-    return editor;
+  _createOutputEditorState(content) {
+    return EditorState.create({
+      doc: content,
+      extensions: [
+        basicSetup,
+        oneDark,
+        javascriptLanguage.extension,
+        EditorView.lineWrapping,
+        EditorView.editable.of(false),
+      ],
+    });
   }
 
   _showError(babelError) {
-    this._outEditor.setValue("");
     const err = this.shadowRoot.getElementById("error");
     err.textContent = babelError;
     err.classList.add("repl__error--visible");
