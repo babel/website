@@ -13,20 +13,12 @@ const template = document.createElement("template");
 template.innerHTML = `
   <div>
     <div class="repl">
-      <div class="repl__editor">
-        <div class="repl__pane repl__pane--left">
-          <h3>
-            Input code
-          </h3>
-          <div id="repl-in" class="repl__code repl-in"></div>
-        </div>
-        <div class="repl__pane repl__pane--right">
-          <h3>
-            Output code
-          </h3>
-          <div id="repl-out" class="repl__code repl-out" />
-        </div>
-        <div id="error" class="repl__error" />
+      <h3 class="input-title">Input code</h3>
+      <h3 class="output-title">Output code</h3>
+      <div id="repl-in" class="repl__code input-editor"></div>
+      <div class="output-editor-error">
+        <div id="repl-out" class="repl__code output-editor"></div>
+        <div id="error" class="output-error"></div>
       </div>
     </div>
 
@@ -35,37 +27,64 @@ template.innerHTML = `
         color: white;
         max-width: 1024px;
         margin: 0 auto;
+
+        display: grid;
+        grid-template:
+          "input-title"
+          "input-editor"
+          "output-title"
+          "output-editor-error";
+
+        background: #353634;
       }
-      .repl__error {
-        background: #702141;
+
+      @media (min-width: 992px) {
+        .repl {
+          grid-template:
+            "input-title output-title"
+            "input-editor output-editor-error"
+            / 50% 50%;
+        }
+
+      .input-title { grid-area: input-title }
+      .output-title { grid-area: output-title }
+      .input-editor { grid-area: input-editor }
+      .output-editor-error { grid-area: output-editor-error }
+
+      @media (min-width: 992px) {
+        .input-title, .input-editor {
+          border-right: 1px solid #4f504d;
+        }
+      }
+
+      .output-editor-error {
+        position: relative;
+      }
+
+      .output-error {
+        position: absolute;
+        top: 0;
         bottom: 0;
+        right: 0;
+        left: 0;
+
+        background: #702141;
         font-family: monospace;
         font-size: 0.83rem;
-        left: 0;
         opacity: 0;
         overflow-y: auto;
         padding: 16px 24px;
-        position: absolute;
-        right: 0;
         text-align: left;
         transition: opacity 0.25s ease-out;
-        top: 47px;
         white-space: pre;
         display: none;
       }
-      .repl__error--visible {
+
+      .output-error--visible {
         opacity: 1;
         display: block;
       }
-      .repl__editor {
-        display: flex;
-        flex-direction: column;
-      }
-      @media (min-width: 992px) {
-        .repl__editor {
-          flex-direction: row;
-        }
-      }
+
       .repl__pane {
         background: #353634;
         border: 1px solid #4f504d;
@@ -82,13 +101,14 @@ template.innerHTML = `
         background: #3f403e;
         font-family: monospace;
         font-size: 0.83rem;
-        height: 125px;
+        min-height: 125px;
+        height: 100%;
         text-align: left;
       }
       @media (min-width: 992px) {
         .repl__code {
           font-size: 1rem;
-          height: 200px;
+          min-height: 200px;
         }
       }
       .repl h3 {
@@ -133,7 +153,6 @@ class MiniRepl extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log(this.getAttribute("default-code"));
     const defaultCode = this.getAttribute("default-code") ?? "";
 
     this._inEditor = new EditorView({
@@ -151,12 +170,14 @@ class MiniRepl extends HTMLElement {
       root: this.shadowRoot,
     });
 
-    this.shadowRoot.querySelector("#repl-in .cm-wrap").addEventListener("click", () => {
-      this._inEditor.focus();
-    });
+    this.shadowRoot
+      .querySelector("#repl-in .cm-wrap")
+      .addEventListener("click", () => {
+        this._inEditor.focus();
+      });
   }
 
-  set inputCode(code) {
+  setInput(code) {
     this._inEditor.setState(this._createInputEditorState(code));
     this._render();
   }
@@ -197,7 +218,7 @@ class MiniRepl extends HTMLElement {
       extensions: [
         basicSetup,
         oneDark,
-        javascriptLanguage.extension,
+        javascriptLanguage,
         //EditorView.lineWrapping,
       ],
     });
@@ -209,7 +230,7 @@ class MiniRepl extends HTMLElement {
       extensions: [
         basicSetup,
         oneDark,
-        javascriptLanguage.extension,
+        javascriptLanguage,
         //EditorView.lineWrapping,
         EditorView.editable.of(false),
       ],
@@ -219,15 +240,14 @@ class MiniRepl extends HTMLElement {
   _showError(babelError) {
     const err = this.shadowRoot.getElementById("error");
     err.textContent = babelError;
-    err.classList.add("repl__error--visible");
+    err.classList.add("output-error--visible");
   }
 
   _hideError() {
     this._debouncedShowError.cancel();
-
     this.shadowRoot
       .getElementById("error")
-      .classList.remove("repl__error--visible");
+      .classList.remove("output-error--visible");
   }
 }
 

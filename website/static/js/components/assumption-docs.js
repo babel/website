@@ -24,9 +24,9 @@ class AssumptionDocs extends HTMLElement {
       template.content.cloneNode(true)
     );
 
-    this.shadowRoot.getElementById("repl").inputCode = this.getAttribute(
-      "default-code"
-    );
+    this.shadowRoot
+      .getElementById("repl")
+      .setInput(this.getAttribute("default-code"));
   }
 
   connectedCallback() {
@@ -42,7 +42,7 @@ class AssumptionDocs extends HTMLElement {
     this.shadowRoot.getElementById("repl").options = {
       sourceType: "module",
       plugins: this._plugins.concat([
-        ["transform-runtime", { version: "7.100.0" }]
+        ["transform-runtime", { version: "7.100.0" }],
       ]),
       assumptions: {
         [this._assumption]: this._enabled,
