@@ -38,7 +38,7 @@ babel.transform("code();", options, function(err, result) {
 
 > Compat Note:
 >
-> In Babel 6, this method was synchronous and `transformSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformSync` since this backward-compat may be dropped in future major versions of Babel.
+> In Babel 6, this method was synchronous and `transformSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformSync` since this backward-compat will be dropped in Babel 8.
 
 ## transformSync
 

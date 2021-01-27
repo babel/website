@@ -45,7 +45,7 @@ babel --plugins transform-regexp-constructors script.js
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   plugins: ["transform-regexp-constructors"]
 });
 ```

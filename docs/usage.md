@@ -93,7 +93,7 @@ you can `require` it directly in your JavaScript program and use it like this:
 ```js
 const babel = require("@babel/core");
 
-babel.transform("code", optionsObject);
+babel.transformSync("code", optionsObject);
 ```
 
 As an end-user though, you'll probably want to install other tools that serve as an interface to `@babel/core` and integrate well with your development process. Even so, you might still want to check its documentation page to learn about the options, most of which can be set from the other tools as well.

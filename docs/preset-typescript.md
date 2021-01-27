@@ -49,7 +49,7 @@ babel --presets @babel/preset-typescript script.ts
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-typescript"],
 });
 ```

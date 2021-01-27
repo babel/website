@@ -70,7 +70,7 @@ babel --plugins @babel/plugin-transform-proto-to-assign script.js
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-proto-to-assign"]
 });
 ```

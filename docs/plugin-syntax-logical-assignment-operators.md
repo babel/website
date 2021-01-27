@@ -33,7 +33,7 @@ babel --plugins @babel/plugin-syntax-logical-assignment-operators script.js
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-logical-assignment-operators"]
 });
 ```
