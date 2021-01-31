@@ -60,7 +60,6 @@ With options (and their defaults):
         "corejs": false,
         "helpers": true,
         "regenerator": true,
-        "useESModules": false,
         "version": "7.0.0-beta.0"
       }
     ]
@@ -138,7 +137,16 @@ For more information, see [Regenerator aliasing](#regenerator-aliasing).
 
 ### `useESModules`
 
+> ⚠️ This option has been deprecated: starting from version `7.13.0`, `@babel/runtime`'s `package.json` uses `"exports"` option to automatically choose between CJS and ESM helpers.
+
 `boolean`, defaults to `false`.
+
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.13.0` | This option has been deprecated |
+</details>
 
 When enabled, the transform will use helpers that do not get run through
 `@babel/plugin-transform-modules-commonjs`. This allows for smaller builds in module
