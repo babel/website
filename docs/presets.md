@@ -39,7 +39,6 @@ For more information, be sure to check out the [current TC39 proposals](https://
 
 The TC39 stage process is also explained in detail across a few posts by Yehuda Katz (@wycatz) over at [thefeedbackloop.xyz](https://thefeedbackloop.xyz): [Stage 0 and 1](https://thefeedbackloop.xyz/tc39-a-process-sketch-stages-0-and-1/), [Stage 2](https://thefeedbackloop.xyz/tc39-process-sketch-stage-2/), [Stage 3](https://thefeedbackloop.xyz/tc39-process-sketch-stage-3/)
 
-
 ## Creating a Preset
 
 To make your own preset, you just need to export a config.
@@ -49,22 +48,16 @@ To make your own preset, you just need to export a config.
 ```js
 module.exports = function() {
   return {
-    plugins: [
-      "pluginA",
-      "pluginB",
-      "pluginC",
-    ]
+    plugins: ["pluginA", "pluginB", "pluginC"],
   };
-}
+};
 ```
 
 > Presets can contain other presets, and plugins with options.
 
 ```js
 module.exports = () => ({
-  presets: [
-    require("@babel/preset-env"),
-  ],
+  presets: [require("@babel/preset-env")],
   plugins: [
     [require("@babel/plugin-proposal-class-properties"), { loose: true }],
     require("@babel/plugin-proposal-object-rest-spread"),
@@ -94,12 +87,13 @@ You can also specify an relative/absolute path to your presets.
 
 ### Preset Shorthand
 
-If the name of the package is prefixed with `babel-preset-`, you can use a shorthand:
+If the name of the package is prefixed with `@babel/preset-` or `babel-preset-`, you can use a shorthand:
 
 ```js
 {
   "presets": [
     "myPreset",
+    "@babel/preset-myPreset",
     "babel-preset-myPreset" // equivalent
   ]
 }
@@ -110,8 +104,8 @@ This also works with scoped packages:
 ```js
 {
   "presets": [
-  	"@org/babel-preset-name",
-  	"@org/name" // equivalent
+  	"@org/babel-preset-myPreset",
+  	"@org/myPreset" // equivalent
   ]
 }
 ```
@@ -122,11 +116,7 @@ Preset ordering is reversed (last to first).
 
 ```json
 {
-  "presets": [
-    "a",
-    "b",
-    "c"
-  ]
+  "presets": ["a", "b", "c"]
 }
 ```
 
@@ -142,11 +132,7 @@ For specifying no options, these are all equivalent:
 
 ```json
 {
-  "presets": [
-    "presetA",
-    ["presetA"],
-    ["presetA", {}],
-  ]
+  "presets": ["presetA", ["presetA"], ["presetA", {}]]
 }
 ```
 
@@ -155,10 +141,13 @@ To specify an option, pass an object with the keys as the option names.
 ```json
 {
   "presets": [
-    ["@babel/preset-env", {
-      "loose": true,
-      "modules": false
-    }]
+    [
+      "@babel/preset-env",
+      {
+        "loose": true,
+        "modules": false
+      }
+    ]
   ]
 }
 ```
