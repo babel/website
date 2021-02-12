@@ -136,6 +136,19 @@ class AssumptionsDocs extends React.Component {
           on the <code>hint</code> parameter.
         </Assumption>
         <Assumption
+          name="noClassCalls"
+          code={`
+            class Test {
+              constructor() {
+                this.x = 2;
+              }
+            }
+          `}
+          plugins="transform-classes"
+        >
+          When transforming classes, assume that they are always instantiate with <code>new</code> and they are never called as functions.
+        </Assumption>
+        <Assumption
           name="noDocumentAll"
           code={`
             let score = points ?? 0;
@@ -173,6 +186,17 @@ class AssumptionsDocs extends React.Component {
           can be stored as public non-enumerable properties with an unique name
           (rather than using an external <code>WeakMap</code>). This makes
           debugging compiled private fields easier.
+        </Assumption>
+        <Assumption
+          name="pureGetters"
+          code={`
+            let a = obj;
+
+            a.b?.();
+          `}
+          plugins="proposal-optional-chaining"
+        >
+          Assume that getters, if present, don't have side-effects and can be accessed multiple times.
         </Assumption>
         <Assumption
           name="setClassMethods"
