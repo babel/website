@@ -70,13 +70,20 @@ class AssumptionsDocs extends React.Component {
           `}
           plugins="transform-modules-commonjs"
         >
-          When re-exporting a bindin from a module, assume that it doesn't change and thus it's safe to directly export it, as if you were doing
+          When re-exporting a bindin from a module, assume that it doesn't
+          change and thus it's safe to directly export it, as if you were doing
           <code>
-            <pre>import {"{"} value as val } from "dependency";<br/>export const value = val;</pre>
+            <pre>
+              import {"{"} value as val } from "dep";
+              <br />
+              export const value = val;
+            </pre>
           </code>
-          <br/>
-          <br/>
-          <em>NOTE:</em> This also affects the <code>transform-modules-umd</code> and <code>transform-modules-amd</code> plugins.
+          <br />
+          <br />
+          <em>NOTE:</em> This also affects the{" "}
+          <code>transform-modules-umd</code> and{" "}
+          <code>transform-modules-amd</code> plugins.
         </Assumption>
         <Assumption
           name="constantSuper"
@@ -102,8 +109,12 @@ class AssumptionsDocs extends React.Component {
           `}
           plugins="transform-modules-commonjs"
         >
-          When compiling ESM to CJS, Babel defines a <code>__esModule</code> property on the <code>module.exports</code> object.
-          Assume that you never iterate over the keys of <code>module.exports</code> or of <code>require("your-module")</code> using <code>for..in</code> or <code>Object.keys</code>, and thus it's safe to define <code>__esModule</code> as enumerable.
+          When compiling ESM to CJS, Babel defines a <code>__esModule</code>{" "}
+          property on the <code>module.exports</code> object. Assume that you
+          never iterate over the keys of <code>module.exports</code> or of{" "}
+          <code>require("your-module")</code> using <code>for..in</code> or{" "}
+          <code>Object.keys</code>, and thus it's safe to define{" "}
+          <code>__esModule</code> as enumerable.
         </Assumption>
         <Assumption
           name="ignoreFunctionLength"
@@ -175,7 +186,8 @@ class AssumptionsDocs extends React.Component {
           `}
           plugins="transform-classes"
         >
-          When transforming classes, assume that they are always instantiate with <code>new</code> and they are never called as functions.
+          When transforming classes, assume that they are always instantiate
+          with <code>new</code> and they are never called as functions.
         </Assumption>
         <Assumption
           name="noDocumentAll"
@@ -198,10 +210,12 @@ class AssumptionsDocs extends React.Component {
           `}
           plugins="transform-arrow-functions"
         >
-          Assume that the code never tries to instantiate arrow functions using <code>new</code>, which is disallowed according to the specification.
-          <br/>
-          <br/>
-          <em>NOTE:</em> This assumption defaults to <code>true</code>. It will default to <code>false</code> starting from Babel 8.
+          Assume that the code never tries to instantiate arrow functions using{" "}
+          <code>new</code>, which is disallowed according to the specification.
+          <br />
+          <br />
+          <em>NOTE:</em> This assumption defaults to <code>true</code>. It will
+          default to <code>false</code> starting from Babel 8.
         </Assumption>
         <Assumption
           name="objectRestNoSymbols"
@@ -239,7 +253,8 @@ class AssumptionsDocs extends React.Component {
           `}
           plugins="proposal-optional-chaining"
         >
-          Assume that getters, if present, don't have side-effects and can be accessed multiple times.
+          Assume that getters, if present, don't have side-effects and can be
+          accessed multiple times.
         </Assumption>
         <Assumption
           name="setClassMethods"

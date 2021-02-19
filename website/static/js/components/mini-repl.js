@@ -16,8 +16,8 @@ template.innerHTML = `
       <h3 class="input-title">Input code</h3>
       <h3 class="output-title">Output code</h3>
       <div id="repl-in" class="repl__code input-editor"></div>
-      <div class="output-editor-error">
-        <div id="repl-out" class="repl__code output-editor"></div>
+      <div class="output-editor-container">
+        <div id="repl-out" class="repl__code"></div>
         <div id="error" class="output-error"></div>
       </div>
     </div>
@@ -33,7 +33,7 @@ template.innerHTML = `
           "input-title"
           "input-editor"
           "output-title"
-          "output-editor-error";
+          "output-editor";
 
         background: #353634;
       }
@@ -42,14 +42,15 @@ template.innerHTML = `
         .repl {
           grid-template:
             "input-title output-title"
-            "input-editor output-editor-error"
+            "input-editor output-editor"
             / 50% 50%;
         }
+      }
 
       .input-title { grid-area: input-title }
       .output-title { grid-area: output-title }
       .input-editor { grid-area: input-editor }
-      .output-editor-error { grid-area: output-editor-error }
+      .output-editor-container { grid-area: output-editor }
 
       @media (min-width: 992px) {
         .input-title, .input-editor {
@@ -57,7 +58,11 @@ template.innerHTML = `
         }
       }
 
-      .output-editor-error {
+      .input-editor, .output-editor-container {
+        overflow-x: auto;
+      }
+
+      .output-editor-container {
         position: relative;
       }
 
@@ -127,10 +132,6 @@ template.innerHTML = `
 
       .repl__code .cm-wrap {
         height: 100%;
-      }
-
-      .repl__code .cm-scroller {
-        overflow: auto;
       }
     </style>
   </div>
