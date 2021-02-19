@@ -529,6 +529,24 @@ Note: This option will not affect parsing of `.mjs` files, as they are currently
 hard-coded to always parse as `"module"` files.
 
 
+### `assumptions`
+
+Type: `{ [assumption: string]: boolean }`<br />
+Default: `{}`<br />
+Placement: Allowed in programmatic options, config files and rpesets.<br />
+
+Set assumptions that Babel can make in order to produce smaller output:
+```json
+{
+  "assumptions": {
+    "iterableIsArray": true
+  },
+  "presets": ["@babel/preset-env"]
+}
+```
+
+For more informations, check the [assumptions](/assumptions) documentation page.
+
 ### `highlightCode`
 
 Type: `boolean`<br />
