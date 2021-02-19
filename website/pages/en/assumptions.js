@@ -63,18 +63,47 @@ class AssumptionsDocs extends React.Component {
           This can be useful, for example, to iterate DOM collections in older
           browsers
         </Assumption>
-        <Assumption name="constantSuper" code={`
-          class Child extends Base {
-            method() {
-              super.method(2);
+        <Assumption
+          name="constantReexports"
+          code={`
+            export { value } from "dependency"
+          `}
+          plugins="transform-modules-commonjs"
+        >
+          When re-exporting a bindin from a module, assume that it doesn't change and thus it's safe to directly export it, as if you were doing
+          <code>
+            <pre>import {"{"} value as val } from "dependency";<br/>export const value = val;</pre>
+          </code>
+          <br/>
+          <br/>
+          <em>NOTE:</em> This also affects the <code>transform-modules-umd</code> and <code>transform-modules-amd</code> plugins.
+        </Assumption>
+        <Assumption
+          name="constantSuper"
+          code={`
+            class Child extends Base {
+              method() {
+                super.method(2);
+              }
             }
-          }
-        `} plugins="transform-classes">
+          `}
+          plugins="transform-classes"
+        >
           The super class of a class can be changed at any time by using{" "}
           <code>Object.setPrototypeOf</code>, making it impossible for Babel to
           statically know it. When this option is enabled, Babel assumes that
           it's never changed and thus it is always the value that was placed in
           the <code>extends</code> clause in the class declaration.
+        </Assumption>
+        <Assumption
+          name="enumerableModuleMeta"
+          code={`
+            export const number = 2;
+          `}
+          plugins="transform-modules-commonjs"
+        >
+          When compiling ESM to CJS, Babel defines a <code>__esModule</code> property on the <code>module.exports</code> object.
+          Assume that you never iterate over the keys of <code>module.exports</code> or of <code>require("your-module")</code> using <code>for..in</code> or <code>Object.keys</code>, and thus it's safe to define <code>__esModule</code> as enumerable.
         </Assumption>
         <Assumption
           name="ignoreFunctionLength"
@@ -159,6 +188,20 @@ class AssumptionsDocs extends React.Component {
           When using operators that check for <code>null</code> or{" "}
           <code>undefined</code>, assume that they are never used with the
           special value <code>document.all</code>
+        </Assumption>
+        <Assumption
+          name="noNewArrows"
+          code={`
+            let getSum = (a, b) => {
+              return { sum: a + b }
+            };
+          `}
+          plugins="transform-arrow-functions"
+        >
+          Assume that the code never tries to instantiate arrow functions using <code>new</code>, which is disallowed according to the specification.
+          <br/>
+          <br/>
+          <em>NOTE:</em> This assumption defaults to <code>true</code>. It will default to <code>false</code> starting from Babel 8.
         </Assumption>
         <Assumption
           name="objectRestNoSymbols"
