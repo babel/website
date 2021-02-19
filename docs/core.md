@@ -38,7 +38,7 @@ babel.transform("code();", options, function(err, result) {
 
 > Compat Note:
 >
-> In Babel 6, this method was synchronous and `transformSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformSync` since this backward-compat will be dropped in Babel 8.
+> In Babel 6, this method was synchronous and `transformSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformSync` since this backward-compatibility will be dropped in Babel 8.
 
 ## transformSync
 
@@ -155,7 +155,7 @@ babel.transformFromAst(parsedAst, sourceCode, options, function(err, result) {
 
 > Compat Note:
 >
-> In Babel 6, this method was synchronous and `transformFromAstSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformFromAstSync` since this backward-compat will be dropped in Babel 8.
+> In Babel 6, this method was synchronous and `transformFromAstSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformFromAstSync` since this backward-compatibility will be dropped in Babel 8.
 
 
 ## transformFromAstSync
@@ -199,7 +199,7 @@ enabled.
 >
 > In Babel 7's early betas, this method was synchronous and `parseSync` did not exist. For backward-compatibility,
 > this function will behave synchronously if no callback is given. If you're starting with Babel 7 stable
-> and need synchronous behavior, please use `parseSync` since this backward-compat will be dropped in Babel 8.
+> and need synchronous behavior, please use `parseSync` since this backward-compatibility will be dropped in Babel 8.
 
 
 ## parseSync
@@ -316,4 +316,3 @@ Extending this list isn't possible, however @babel/cli does provide ways to supp
 ## Options
 
 See [the full option list here](options.md).
-
