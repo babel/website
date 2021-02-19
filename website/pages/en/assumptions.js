@@ -80,10 +80,10 @@ class AssumptionsDocs extends React.Component {
             </pre>
           </code>
           <br />
-          <br />
           <em>NOTE:</em> This also affects the{" "}
           <code>transform-modules-umd</code> and{" "}
           <code>transform-modules-amd</code> plugins.
+          <br />
         </Assumption>
         <Assumption
           name="constantSuper"
@@ -213,9 +213,9 @@ class AssumptionsDocs extends React.Component {
           Assume that the code never tries to instantiate arrow functions using{" "}
           <code>new</code>, which is disallowed according to the specification.
           <br />
-          <br />
           <em>NOTE:</em> This assumption defaults to <code>true</code>. It will
           default to <code>false</code> starting from Babel 8.
+          <br />
         </Assumption>
         <Assumption
           name="objectRestNoSymbols"
@@ -235,6 +235,11 @@ class AssumptionsDocs extends React.Component {
                 #method() {}
 
                 #field = 2;
+
+                run() {
+                  this.#method();
+                  this.#field++;
+                }
             }
         `}
           plugins="proposal-class-properties,proposal-private-methods"
@@ -346,20 +351,6 @@ class AssumptionsDocs extends React.Component {
           means that it won't be possible to extend native classes or built-ins,
           but only compiled classes or ES5 <code>function</code> constructors.
         </Assumption>
-        <br />
-        <br />
-        <br />
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
       </div>
     );
   }
