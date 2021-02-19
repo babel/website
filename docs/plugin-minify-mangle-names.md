@@ -65,7 +65,7 @@ babel --plugins minify-mangle-names script.js
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   plugins: ["minify-mangle-names"]
 });
 ```

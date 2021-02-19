@@ -61,7 +61,7 @@ babel --plugins minify-dead-code-elimination script.js
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   plugins: ["minify-dead-code-elimination"]
 });
 ```

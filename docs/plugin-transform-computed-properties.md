@@ -86,7 +86,7 @@ babel --plugins @babel/plugin-transform-computed-properties script.js
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-computed-properties"]
 });
 ```

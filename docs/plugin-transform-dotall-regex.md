@@ -59,7 +59,7 @@ $ babel --plugins @babel/plugin-transform-dotall-regex script.js
 ### Via Node.js API
 
 ```js
-require('@babel/core').transform(code, {
+require("@babel/core").transformSync(code, {
   'plugins': ['@babel/plugin-transform-dotall-regex']
 });
 ```

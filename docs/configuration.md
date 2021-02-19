@@ -114,7 +114,7 @@ Check out the [babel-cli documentation](cli.md) to see more configuration option
 ## Using the API (`@babel/core`)
 
 ```js
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-arrow-functions"]
 });
 ```

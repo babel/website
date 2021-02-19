@@ -41,7 +41,7 @@ babel --plugins minify-infinity script.js
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   plugins: ["minify-infinity"]
 });
 ```

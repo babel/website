@@ -31,7 +31,7 @@ babel --plugins @babel/@babel/plugin-proposal-unicode-property-regex script.js
 ### Via Node.js API
 
 ```js
-require("@babel/core").transform(code, {
+require("@babel/core").transformSync(code, {
   "plugins": ["@babel/plugin-proposal-unicode-property-regex"]
 });
 ```
@@ -39,7 +39,7 @@ require("@babel/core").transform(code, {
 To transpile to ES6/ES2015:
 
 ```js
-require("@babel/core").transform(code, {
+require("@babel/core").transformSync(code, {
   "plugins": [
     ["@babel/plugin-proposal-unicode-property-regex", { "useUnicodeFlag": false }]
   ]
