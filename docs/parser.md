@@ -188,6 +188,7 @@ require("@babel/parser").parse("code", {
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `v7.13.0` | Added `moduleBlocks` |
 | `v7.12.0` | Added `classStaticBlock`, `moduleStringNames` |
 | `v7.11.0` | Added `decimal` |
 | `v7.10.0` | Added `privateIn` |
@@ -209,6 +210,7 @@ require("@babel/parser").parse("code", {
 | `exportDefaultFrom` ([proposal](https://github.com/tc39/ecmascript-export-default-from)) | `export v from "mod"` |
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind)) | `a::b`, `::console.log` |
 | `importAssertions` ([proposal](https://github.com/tc39/proposal-import-assertions)) | `import json from "./foo.json" assert { type: "json" };` |
+| `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks)) | `let m = module { export let y = 1; };` |
 | `moduleStringNames` ([proposal](https://github.com/tc39/ecma262/pull/2154)) | `import { "😄" as smile } from "emoji";` |
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32)) | `f(?, a)` |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29)) | <code>a &#124;> b</code> |
