@@ -398,7 +398,7 @@ supported `core-js` versions. For example, `"3.8"` or `"2.0"`.
 This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the polyfills supported by your `core-js` version. It is recommended to specify the minor
 version otherwise `"3"` will be interpreted as `"3.0"` which may not include polyfills for the latest features.
 
-By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill them, you have three different options:
+By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill proposals, you have three different options:
 
 - when using `useBuiltIns: "entry"`, you can directly import a [proposal polyfill](https://github.com/zloirock/core-js/tree/master/packages/core-js/proposals): `import "core-js/proposals/string-replace-all"`.
 - when using `useBuiltIns: "usage"` you have two different alternatives:
