@@ -309,7 +309,7 @@ Each `ConfigItem` exposes all of the information Babel knows. The fields are:
 
 > babel.DEFAULT_EXTENSIONS: ReadonlyArray<string>
 
-A list of default extensions supported by babel (".js", ".jsx", ".es6", ".es", ".mjs").
+A list of default extensions supported by babel (".js", ".jsx", ".es6", ".es", ".mjs", "cjs").
 This list is used by @babel/register and @babel/cli to determine which files need transpiling.
 Extending this list isn't possible, however @babel/cli does provide ways to support other extensions with `--extensions`.
 
