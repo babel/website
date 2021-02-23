@@ -6,7 +6,6 @@ export default {
   output: {
     file: "website/static/js/build/cm6.mjs",
     format: "es",
-    name: "CodeMirror6",
     plugins: process.env.NODE_ENV === "development" ? undefined : [terser()],
   },
   plugins: [nodeResolve()],
