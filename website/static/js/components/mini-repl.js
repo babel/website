@@ -1,13 +1,25 @@
 /* globals Babel */
 
-import debounce from "https://cdn.skypack.dev/lodash-es/debounce";
+import debounce from "https://cdn.skypack.dev/pin/lodash-es@v4.17.21-rDGl8YjBUjcrrAbjNrmo/mode=imports,min/unoptimized/debounce.js";
+
+// Uncomment the following imports when skypack can handle multiple copies of `FacetProvider` due
+// to multiple entries, see https://github.com/babel/website/issues/2456#issuecomment-784245936
+
+// import {
+//   EditorState,
+//   basicSetup,
+// } from "https://cdn.skypack.dev/@codemirror/basic-setup@0.17.0";
+// import { EditorView } from "https://cdn.skypack.dev/@codemirror/view@0.17.6";
+// import { oneDark } from "https://cdn.skypack.dev/@codemirror/theme-one-dark@0.17.5";
+// import { javascriptLanguage } from "https://cdn.skypack.dev/@codemirror/lang-javascript@0.17.2";
+
 import {
   EditorState,
   basicSetup,
-} from "https://cdn.skypack.dev/@codemirror/basic-setup";
-import { EditorView } from "https://cdn.skypack.dev/@codemirror/view";
-import { oneDark } from "https://cdn.skypack.dev/@codemirror/theme-one-dark";
-import { javascriptLanguage } from "https://cdn.skypack.dev/@codemirror/lang-javascript";
+  EditorView,
+  oneDark,
+  javascriptLanguage,
+} from "../build/cm6.mjs";
 
 const template = document.createElement("template");
 template.innerHTML = `
