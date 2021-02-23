@@ -17,9 +17,10 @@
     "lint-staged": "lint-staged",
     "fix:css": "prettier --write website/static/css/*.css",
     "precommit": "run-s flow lint-staged",
-    "start": "run-p build:codemirror6 start:repl start:docusaurus",
+    "start": "run-p start:codemirror6 start:repl start:docusaurus",
     "start:docusaurus": "cd website && yarn start",
     "start:repl": "webpack -d -w",
+    "start:codemirror6": "cross-env NODE_ENV=development yarn build:codemirror6",
     "test": "remark docs README.md --quiet"
   },
   "remarkConfig": {
