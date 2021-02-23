@@ -1,13 +1,21 @@
 /* globals Babel */
 
-import debounce from "https://cdn.skypack.dev/lodash-es/debounce";
+import debounce from "https://cdn.skypack.dev/pin/lodash-es@v4.17.21-rDGl8YjBUjcrrAbjNrmo/mode=imports,min/unoptimized/debounce.js";
+// import {
+//   EditorState,
+//   basicSetup,
+// } from "https://cdn.skypack.dev/@codemirror/basic-setup@0.17.0";
+// import { EditorView } from "https://cdn.skypack.dev/@codemirror/view@0.17.6";
+// import { oneDark } from "https://cdn.skypack.dev/@codemirror/theme-one-dark@0.17.5";
+// import { javascriptLanguage } from "https://cdn.skypack.dev/@codemirror/lang-javascript@0.17.2";
+
 import {
   EditorState,
   basicSetup,
-} from "https://cdn.skypack.dev/@codemirror/basic-setup";
-import { EditorView } from "https://cdn.skypack.dev/@codemirror/view";
-import { oneDark } from "https://cdn.skypack.dev/@codemirror/theme-one-dark";
-import { javascriptLanguage } from "https://cdn.skypack.dev/@codemirror/lang-javascript";
+  EditorView,
+  oneDark,
+  javascriptLanguage,
+} from "../build/cm6.mjs";
 
 const template = document.createElement("template");
 template.innerHTML = `
