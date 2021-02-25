@@ -49,7 +49,7 @@ babel --presets @babel/preset-typescript script.ts
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-typescript"],
 });
 ```
@@ -67,6 +67,12 @@ Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as type
 `string`, defaults to `React`
 
 Replace the function used when compiling JSX expressions. This is so that we know that the import is not a type import, and should not be removed.
+
+### `jsxPragmaFrag`
+
+`string`, defaults to `React.Fragment`
+
+Replace the function used when compiling JSX fragment expressions. This is so that we know that the import is not a type import, and should not be removed.
 
 ### `allExtensions`
 

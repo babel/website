@@ -43,7 +43,7 @@ export async function loadLatestBuildNumberForBranch(
   repo: ?string,
   branch: string,
   jobName: string,
-  limit: number = 10
+  limit: number = 30
 ): Promise<number> {
   try {
     const response = await sendRequest(

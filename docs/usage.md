@@ -32,39 +32,39 @@ The entire process to set this up involves:
              "edge": "17",
              "firefox": "60",
              "chrome": "67",
-             "safari": "11.1",
+             "safari": "11.1"
            },
            "useBuiltIns": "usage",
-           "corejs": "3.6.5",
+           "corejs": "3.6.5"
          }
        ]
      ]
    }
    ```
 
-   > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support.
+   > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support. See [here](preset-env.md) for more `@babel/preset-env` options.
 
 Or `babel.config.js` if you are using an older Babel version
 
-   ```js
-   const presets = [
-     [
-       "@babel/env",
-       {
-         targets: {
-           edge: "17",
-           firefox: "60",
-           chrome: "67",
-           safari: "11.1",
-         },
-         useBuiltIns: "usage",
-         "corejs": "3.6.4",
-       },
-     ],
-   ];
+```js
+const presets = [
+  [
+    "@babel/env",
+    {
+      targets: {
+        edge: "17",
+        firefox: "60",
+        chrome: "67",
+        safari: "11.1",
+      },
+      useBuiltIns: "usage",
+      corejs: "3.6.4",
+    },
+  ],
+];
 
-   module.exports = { presets };
-   ```
+module.exports = { presets };
+```
 
 3. And running this command to compile all your code from the `src` directory to `lib`:
 
@@ -93,7 +93,7 @@ you can `require` it directly in your JavaScript program and use it like this:
 ```js
 const babel = require("@babel/core");
 
-babel.transform("code", optionsObject);
+babel.transformSync("code", optionsObject);
 ```
 
 As an end-user though, you'll probably want to install other tools that serve as an interface to `@babel/core` and integrate well with your development process. Even so, you might still want to check its documentation page to learn about the options, most of which can be set from the other tools as well.
@@ -154,15 +154,15 @@ For now, let's create a file called `babel.config.json` (requires `v7.8.0` and a
 
 ```json
 {
-"presets": [
-  [
-  "@babel/env",
-    {
-      "targets": {
-        "edge": "17",
-        "firefox": "60",
-        "chrome": "67",
-        "safari": "11.1"
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "edge": "17",
+          "firefox": "60",
+          "chrome": "67",
+          "safari": "11.1"
         }
       }
     ]
@@ -174,7 +174,7 @@ Now the `env` preset will only load transformation plugins for features that are
 
 ## Polyfill
 
-> 🚨 As of Babel 7.4.0, [`@babel/polyfill`](polyfill.md) was deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features) and [`regenerator-runtime/runtime`](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) (needed to use transpiled generator functions).
+> 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features) and [`regenerator-runtime/runtime`](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) (needed to use transpiled generator functions):
 
 Polyfills allow new "built-ins" of modern JS specs to be understood by older runtime environments. Built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (when used alongside the regenerator plugin) won't necessarily work in all environments such as an older browser.
 
@@ -205,9 +205,9 @@ When using the `@babel/present-env` preset, you can configure a [`"useBuiltIns"`
           "edge": "17",
           "firefox": "60",
           "chrome": "67",
-          "safari": "11.1",
+          "safari": "11.1"
         },
-        "useBuiltIns": "usage",
+        "useBuiltIns": "usage"
       }
     ]
   ]

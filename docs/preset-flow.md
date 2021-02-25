@@ -47,7 +47,7 @@ babel --presets @babel/preset-flow script.js
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-flow"],
 });
 ```

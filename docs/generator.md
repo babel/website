@@ -4,6 +4,8 @@ title: @babel/generator
 sidebar_label: generator
 ---
 
+> Turns an AST into code.
+
 ## Install
 
 ```sh

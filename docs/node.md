@@ -34,6 +34,7 @@ npx babel-node
 ```
 
 If you prefer not to install `@babel/node` and `@babel/core`, you can install them on-the-fly:
+
 ```sh
 npx -p @babel/core -p @babel/node babel-node
 ```
@@ -76,14 +77,14 @@ npx babel-node --inspect --presets @babel/preset-env -- script.js --inspect
 
 ### Options
 
-| Option                 | Default                     | Description                                                                                                                                 |
-| ---------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `-e, --eval [script]`  |                             | Evaluate script                                                                                                                             |
-| `-p, --print`          |                             | Evaluate script and print result                                                                                                            |
-| `-i, --ignore [regex]` | `node_modules`              | Ignore all files that match this regex when using the require hook. If both `-i` and `-o` are omitted, files outside the current working directory are also ignored. |
-| `-o, --only [regex]`   | current working directory   | Only include (and exclude all other) files that match this regex when using the require hook. If both `-i` and `-o` are omitted, files outside the current working directory are also ignored. |
-| `-x, --extensions`     | `".js",".jsx",".es6",".es"` | List of extensions to hook into                                                                                                             |
-| `--presets`            | `[]`                        | Comma-separated list of [presets](presets.md) (a set of plugins) to load and use.                                                           |
-| `--plugins`            | `[]`                        | Comma-separated list of [plugins](plugins.md) to load and use.                                                                              |
-| `--config-file [path]` | `[]`                        | Path to the babel config file to use. Defaults to working directory `babel.config.json` or `babel.config.js`                                                     |
-| `--env-name [name]`    | `[]`                        | The name of the 'env' to use when loading configs and plugins. Defaults to the value of BABEL_ENV, or else NODE_ENV, or else 'development'. |
+| Option                 | Default                           | Description                                                                                                                                                                                    |
+| ---------------------- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-e, --eval [script]`  |                                   | Evaluate script                                                                                                                                                                                |
+| `-p, --print`          |                                   | Evaluate script and print result                                                                                                                                                               |
+| `-i, --ignore [regex]` | `node_modules`                    | Ignore all files that match this regex when using the require hook. If both `-i` and `-o` are omitted, files outside the current working directory are also ignored.                           |
+| `-o, --only [regex]`   | current working directory         | Only include (and exclude all other) files that match this regex when using the require hook. If both `-i` and `-o` are omitted, files outside the current working directory are also ignored. |
+| `-x, --extensions`     | `".js",".jsx",".es6",".es","cjs"` | List of extensions to hook into                                                                                                                                                                |
+| `--presets`            | `[]`                              | Comma-separated list of [presets](presets.md) (a set of plugins) to load and use.                                                                                                              |
+| `--plugins`            | `[]`                              | Comma-separated list of [plugins](plugins.md) to load and use.                                                                                                                                 |
+| `--config-file [path]` | `[]`                              | Path to the babel config file to use. Defaults to working directory `babel.config.json` or `babel.config.js`. The following options in config files are not supported: `ignore`, `only`.        |
+| `--env-name [name]`    | `[]`                              | The name of the 'env' to use when loading configs and plugins. Defaults to the value of BABEL_ENV, or else NODE_ENV, or else 'development'.                                                    |

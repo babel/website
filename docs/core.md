@@ -38,7 +38,7 @@ babel.transform("code();", options, function(err, result) {
 
 > Compat Note:
 >
-> In Babel 6, this method was synchronous and `transformSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformSync` since this backward-compat may be dropped in future major versions of Babel.
+> In Babel 6, this method was synchronous and `transformSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformSync` since this backward-compatibility will be dropped in Babel 8.
 
 ## transformSync
 
@@ -147,7 +147,7 @@ Given an [AST](https://astexplorer.net/), transform it.
 
 ```js
 const sourceCode = "if (true) return;";
-const parsedAst = babel.parse(sourceCode, { parserOpts: { allowReturnOutsideFunction: true } });
+const parsedAst = babel.parseSync(sourceCode, { parserOpts: { allowReturnOutsideFunction: true } });
 babel.transformFromAst(parsedAst, sourceCode, options, function(err, result) {
   const { code, map, ast } = result;
 });
@@ -155,7 +155,7 @@ babel.transformFromAst(parsedAst, sourceCode, options, function(err, result) {
 
 > Compat Note:
 >
-> In Babel 6, this method was synchronous and `transformFromAstSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformFromAstSync` since this backward-compat may be dropped in future major versions of Babel.
+> In Babel 6, this method was synchronous and `transformFromAstSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformFromAstSync` since this backward-compatibility will be dropped in Babel 8.
 
 
 ## transformFromAstSync
@@ -166,7 +166,7 @@ Given an [AST](https://astexplorer.net/), transform it.
 
 ```js
 const sourceCode = "if (true) return;";
-const parsedAst = babel.parse(sourceCode, { parserOpts: { allowReturnOutsideFunction: true } });
+const parsedAst = babel.parseSync(sourceCode, { parserOpts: { allowReturnOutsideFunction: true } });
 const { code, map, ast } = babel.transformFromAstSync(parsedAst, sourceCode, options);
 ```
 
@@ -199,8 +199,7 @@ enabled.
 >
 > In Babel 7's early betas, this method was synchronous and `parseSync` did not exist. For backward-compatibility,
 > this function will behave synchronously if no callback is given. If you're starting with Babel 7 stable
-> and need synchronous behavior, please use `parseSync` since this backward-compat may be dropped
-> in future major versions of Babel.
+> and need synchronous behavior, please use `parseSync` since this backward-compatibility will be dropped in Babel 8.
 
 
 ## parseSync
@@ -310,11 +309,10 @@ Each `ConfigItem` exposes all of the information Babel knows. The fields are:
 
 > babel.DEFAULT_EXTENSIONS: ReadonlyArray<string>
 
-A list of default extensions supported by babel (".js", ".jsx", ".es6", ".es", ".mjs").
+A list of default extensions supported by babel (".js", ".jsx", ".es6", ".es", ".mjs", "cjs").
 This list is used by @babel/register and @babel/cli to determine which files need transpiling.
 Extending this list isn't possible, however @babel/cli does provide ways to support other extensions with `--extensions`.
 
 ## Options
 
 See [the full option list here](options.md).
-

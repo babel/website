@@ -324,6 +324,115 @@ a set of operations as independent compilation passes.
 Note: This option may be removed in future Babel versions as we add better
 support for defining ordering between plugins.
 
+## Output targets
+
+### `targets`
+
+Type: `string | Array<string> | { [string]: string }`<br />
+Default: `{}`<br />
+Placement: Allowed in Babel's programmatic options, or in config files<br />
+Added in: `v7.13.0`<br />
+
+Describes the environments you support/target for your project.
+
+This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query (with [caveats](#ineffective-browserslist-queries)):
+
+```json
+{
+  "targets": "> 0.25%, not dead"
+}
+```
+
+Or an object of minimum environment versions to support:
+
+```json
+{
+  "targets": {
+    "chrome": "58",
+    "ie": "11"
+  }
+}
+```
+
+Example environments: `chrome`, `opera`, `edge`, `firefox`, `safari`, `ie`, `ios`, `android`, `node`, `electron`.
+
+#### No targets
+
+When no targets are specified: Babel will assume you are targeting the oldest browsers possible. For example, `@babel/preset-env` will transform all ES2015-ES2020 code to be ES5 compatible.
+
+> We recommend setting `targets` to reduce the output code size.
+
+```json
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+
+Because of this, Babel's behavior is different than [browserslist](https://github.com/browserslist/browserslist#queries): it does _not_ use the `defaults` query when there are no targets are found in your Babel _or_ browserslist config(s). If you want to use the `defaults` query, you will need to explicitly pass it as a target:
+
+```json
+{
+  "targets": "defaults"
+}
+```
+
+We recognize this isn’t ideal and will be revisiting this in Babel v8.
+
+#### `targets.esmodules`
+
+Type: `boolean`
+
+You may also target browsers supporting ES Modules (https://www.ecma-international.org/ecma-262/6.0/#sec-modules). When specifying this option, the browsers field will be ignored. You can use this approach in combination with `<script type="module"></script>` to conditionally serve smaller scripts to users (https://jakearchibald.com/2017/es-modules-in-browsers/#nomodule-for-backwards-compatibility).
+
+> _Please note_: when specifying both `browsers` and the esmodules target, they will be intersected.
+
+```json
+{
+  "targets": {
+    "esmodules": true
+  }
+}
+```
+
+#### `targets.node`
+
+Type: `string | "current" | true`.
+
+If you want to compile against the current node version, you can specify `"node": true` or `"node": "current"`, which would be the same as `"node": process.versions.node`.
+
+#### `targets.safari`
+
+Type: `string | "tp"`.
+
+If you want to compile against the [technology preview](https://developer.apple.com/safari/technology-preview/) version of Safari, you can specify `"safari": "tp"`.
+
+#### `targets.browsers`
+
+Type: `string | Array<string>`.
+
+A query to select browsers (ex: last 2 versions, > 5%, safari tp) using [browserslist](https://github.com/ai/browserslist).
+
+Note, browsers' results are overridden by explicit items from `targets`.
+
+### `browserslistConfigFile`
+
+Type: `boolean`<br />
+Default: `true`<br />
+Placement: Allowed in Babel's programmatic options, or in config files<br />
+Added in: `v7.13.0`<br />
+
+Toggles whether or not [browserslist config sources](https://github.com/ai/browserslist#queries) are used, which includes searching for any browserslist files or referencing the browserslist key inside package.json. This is useful for projects that use a browserslist config for files that won't be compiled with Babel.
+
+If a string is specified, it must represent the path of a browserslist configuration file.
+
+### `browserslistEnv`
+
+Type: `string`<br />
+Default: `undefined`<br />
+Placement: Allowed in Babel's programmatic options, or in config files<br />
+Added in: `v7.13.0`<br />
+
+The [Browserslist environment](https://github.com/browserslist/browserslist#configuring-for-different-environments) to use.
 
 ## Config Merging options
 
@@ -528,6 +637,23 @@ as an ES module, breaking what would otherwise be a functional CommonJS file.
 Note: This option will not affect parsing of `.mjs` files, as they are currently
 hard-coded to always parse as `"module"` files.
 
+### `assumptions`
+
+Type: `{ [assumption: string]: boolean }`<br />
+Default: `{}`<br />
+Placement: Allowed in programmatic options, config files and rpesets.<br />
+
+Set assumptions that Babel can make in order to produce smaller output:
+```json
+{
+  "assumptions": {
+    "iterableIsArray": true
+  },
+  "presets": ["@babel/preset-env"]
+}
+```
+
+For more informations, check the [assumptions](/assumptions) documentation page.
 
 ### `highlightCode`
 

@@ -82,7 +82,7 @@ For more information on setting options for a preset, refer to the [preset optio
 
 ### `targets`
 
-`string | Array<string> | { [string]: string }`, defaults to `{}`.
+`string | Array<string> | { [string]: string }`, defaults to the top-level `targets` option if no browserslist-related option is specified in `@babel/preset-env`'s docs, otherwise to `{}`.
 
 Describes the environments you support/target for your project.
 
@@ -154,9 +154,9 @@ You may also target browsers supporting ES Modules (https://www.ecma-internation
 
 #### `targets.node`
 
-`string | "current" | true`.
+`string | "current"`.
 
-If you want to compile against the current node version, you can specify `"node": true` or `"node": "current"`, which would be the same as `"node": process.versions.node`.
+If you want to compile against the current node version, you can specify `"node": "current"`, which would be the same as `"node": process.versions.node`.
 
 #### `targets.safari`
 
@@ -392,16 +392,18 @@ Don't add polyfills automatically per file, and don't transform `import "core-js
 
 Added in: `v7.4.0`
 
-`2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `2`.
+`string` or `{ version: string, proposals: boolean }`, defaults to `"2.0"`. The `version` string can be any
+supported `core-js` versions. For example, `"3.8"` or `"2.0"`.
 
-This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the correct imports for your `core-js` version.
+This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the polyfills supported by your `core-js` version. It is recommended to specify the minor
+version otherwise `"3"` will be interpreted as `"3.0"` which may not include polyfills for the latest features.
 
-By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill them, you have three different options:
+By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill proposals, you have three different options:
 
 - when using `useBuiltIns: "entry"`, you can directly import a [proposal polyfill](https://github.com/zloirock/core-js/tree/master/packages/core-js/proposals): `import "core-js/proposals/string-replace-all"`.
 - when using `useBuiltIns: "usage"` you have two different alternatives:
   - set the [`shippedProposals`](#shippedproposals) option to `true`. This will enable polyfills and transforms for proposal which have already been shipped in browsers for a while.
-  - use `corejs: { version: 3, proposals: true }`. This will enable polyfilling of every proposal supported by `core-js`.
+  - use `corejs: { version: "3.8", proposals: true }`. This will enable polyfilling of every proposal supported by `core-js@3.8`.
 
 ### `forceAllTransforms`
 

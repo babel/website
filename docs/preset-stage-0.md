@@ -34,7 +34,7 @@ babel script.js --presets @babel/preset-stage-0
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-stage-0"]
 });
 ```

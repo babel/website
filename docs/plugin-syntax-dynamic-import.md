@@ -29,7 +29,7 @@ babel --plugins @babel/plugin-syntax-dynamic-import script.js
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-dynamic-import"],
 });
 ```

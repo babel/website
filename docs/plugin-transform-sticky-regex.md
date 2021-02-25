@@ -43,7 +43,7 @@ babel --plugins @babel/plugin-transform-sticky-regex script.js
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-sticky-regex"]
 });
 ```

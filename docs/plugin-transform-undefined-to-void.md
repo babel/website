@@ -45,7 +45,7 @@ babel --plugins transform-undefined-to-void script.js
 ### Via Node API
 
 ```javascript
-require("@babel/core").transform("code", {
+require("@babel/core").transformSync("code", {
   plugins: ["transform-undefined-to-void"]
 });
 ```
