@@ -8,6 +8,7 @@ const URL_KEYS = [
   "browsers",
   "build",
   "builtIns",
+  "corejs",
   "spec",
   "loose",
   "code",
