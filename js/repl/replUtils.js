@@ -144,7 +144,7 @@ export const persistedStateToEnvConfig = (
 
   const envConfig: EnvConfig = {
     browsers: persistedState.browsers,
-    electron: envPresetDefaults.electron.default,
+    electron: persistedState.electron ?? envPresetDefaults.electron.default,
     isEnvPresetEnabled,
     isElectronEnabled: false,
     isNodeEnabled: false,
