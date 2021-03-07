@@ -214,7 +214,7 @@ BabelConfigMerge(config, newConfigItem);
 // returns
 ({
   plugins: [
-    ["plugin-1a", { loose: false }],
+    ["plugin-1a", { loose: true }],
     "plugin-1b",
     ["plugin-1a", { loose: false }],
     "plugin-2b"
