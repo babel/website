@@ -70,3 +70,13 @@ require("@babel/core").transformSync("code", {
 });
 ```
 
+## Options
+
+### `requireDirective`
+
+`boolean`, defaults to `false`.
+
+Setting this to true will only convert flow annotations and declarations from files
+that contain the `// @flow` directive. It will also throw errors for any Flow
+annotations found in files without the directive.
+
