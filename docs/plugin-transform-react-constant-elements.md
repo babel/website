@@ -73,7 +73,7 @@ npm install --save-dev @babel/plugin-transform-react-constant-elements
 `Array<string>`, defaults to `[]`
 
 If you are using a particular library (like react-intl) that uses object properties, and you are sure
-that the element won't modify its own props, you can whitelist the element so that objects are allowed.
+that the element won't modify its own props, you can permit objects to be allowed for specific elements.
 
 This will skip the `Mutable Properties` deopt.
 
