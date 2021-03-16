@@ -71,7 +71,7 @@ class A {
 
 ### `allowNamespaces`
 
-`boolean`, defaults to `true` but will default to `true` in the [future](https://github.com/babel/notes/blob/master/2019/05/21.md#prs).
+`boolean`, defaults to `true`.
 
 <details>
   <summary>History</summary>
