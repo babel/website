@@ -423,7 +423,7 @@ Added in: `v7.13.0`<br />
 
 Toggles whether or not [browserslist config sources](https://github.com/ai/browserslist#queries) are used, which includes searching for any browserslist files or referencing the browserslist key inside package.json. This is useful for projects that use a browserslist config for files that won't be compiled with Babel.
 
-If a string is specified, it must represent the path of a browserslist configuration file.
+If a string is specified, it must represent the path of a browserslist configuration file. Relative paths are resolved relative to the configuration file which specifies this option, or to `cwd` when it's passed as part of the programmatic options.
 
 ### `browserslistEnv`
 
