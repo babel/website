@@ -1,7 +1,6 @@
 ---
 id: babel-plugin-transform-runtime
 title: @babel/plugin-transform-runtime
-sidebar_label: transform-runtime
 ---
 
 A plugin that enables the re-use of Babel's injected helper code to save on codesize.
@@ -190,6 +189,7 @@ By default transform-runtime assumes that `@babel/runtime@7.0.0` is installed. I
 `@babel/runtime` (or their corejs counterparts e.g. `@babel/runtime-corejs3`) installed or listed as a dependency, transform-runtime can use more advanced features.
 
 For example if you depend on `@babel/runtime-corejs2@7.7.4` you can transpile your code with
+
 ```json
 {
   "plugins": [
@@ -204,6 +204,7 @@ For example if you depend on `@babel/runtime-corejs2@7.7.4` you can transpile yo
   ]
 }
 ```
+
 which results in a smaller bundle size.
 
 ## Technical details

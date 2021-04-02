@@ -1,10 +1,10 @@
 ---
 id: babel-polyfill
 title: @babel/polyfill
-sidebar_label: polyfill
 ---
 
 > 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features) and `regenerator-runtime/runtime` (needed to use transpiled generator functions):
+>
 > ```js
 > import "core-js/stable";
 > import "regenerator-runtime/runtime";
@@ -85,4 +85,3 @@ before it.
 > ##### If you are looking for something that won't modify globals to be used in a tool/library, checkout the [`transform-runtime`](plugin-transform-runtime.md) plugin. This means you won't be able to use the instance methods mentioned above like `Array.prototype.includes`.
 
 Note: Depending on what ES2015 methods you actually use, you may not need to use `@babel/polyfill` or the runtime plugin. You may want to only [load the specific polyfills you are using](https://github.com/zloirock/core-js#commonjs) (like `Object.assign`) or just document that the environment the library is being loaded in should include certain polyfills.
-

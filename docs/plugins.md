@@ -3,11 +3,27 @@ id: plugins
 title: Plugins
 ---
 
-Babel is a compiler (source code => output code). Like many other compilers it runs in 3 stages: parsing, transforming, and printing.
+Babel's code transformations are enabled by applying plugins (or [presets](presets.md)) to your [configuration file](config-files.md).
 
-Now, out of the box Babel doesn't do anything. It basically acts like `const babel = code => code;` by parsing the code and then generating the same code back out again. You will need to add plugins for Babel to do anything.
+## Using a Plugin
 
-Instead of individual plugins, you can also enable a set of plugins in a [preset](presets.md).
+If the plugin is on [npm](https://www.npmjs.com/search?q=babel-plugin), you can pass in the name of the plugin and Babel will check that it's installed in `node_modules`. This is added to the [plugins](options.md#presets) config option, which takes an array.
+
+```json
+{
+  "plugins": ["babel-plugin-myPlugin", "@babel/plugin-transform-runtime"]
+}
+```
+
+You can also specify an relative/absolute path to your plugin.
+
+```json
+{
+  "plugins": ["./node_modules/asdf/plugin"]
+}
+```
+
+See [name normalization](options.md#name-normalization) for more specifics on configuring the path of a plugin or preset.
 
 ## Transform Plugins
 
@@ -97,37 +113,6 @@ These plugins apply transformations to your code.
 - [throw-expressions](plugin-proposal-throw-expressions.md)
 - [private-property-in-object](plugin-proposal-private-property-in-object.md)
 
-### Minification
-
-Check out our [minifier based on Babel](https://github.com/babel/minify)!
-
-These plugins are in the minify repo.
-
-- [inline-consecutive-adds](plugin-transform-inline-consecutive-adds.md)
-- [inline-environment-variables](plugin-transform-inline-environment-variables.md)
-- [member-expression-literals](plugin-transform-member-expression-literals.md)
-- [merge-sibling-variables](plugin-transform-merge-sibling-variables.md)
-- [minify-booleans](plugin-transform-minify-booleans.md)
-- [minify-builtins](plugin-minify-builtins.md)
-- [minify-constant-folding](plugin-minify-constant-folding.md)
-- [minify-dead-code-elimination](plugin-minify-dead-code-elimination.md)
-- [minify-flip-comparisons](plugin-minify-flip-comparisons.md)
-- [minify-guarded-expressions](plugin-minify-guarded-expressions.md)
-- [minify-infinity](plugin-minify-infinity.md)
-- [minify-mangle-names](plugin-minify-mangle-names.md)
-- [minify-numeric-literals](plugin-minify-numeric-literals.md)
-- [minify-replace](plugin-minify-replace.md)
-- [minify-simplify](plugin-minify-simplify.md)
-- [minify-type-constructors](plugin-minify-type-constructors.md)
-- [node-env-inline](plugin-transform-node-env-inline.md)
-- [property-literals](plugin-transform-property-literals.md)
-- [regexp-constructors](plugin-transform-regexp-constructors.md)
-- [remove-console](plugin-transform-remove-console.md)
-- [remove-debugger](plugin-transform-remove-debugger.md)
-- [remove-undefined](plugin-transform-remove-undefined.md)
-- [simplify-comparison-operators](plugin-transform-simplify-comparison-operators.md)
-- [undefined-to-void](plugin-transform-undefined-to-void.md)
-
 ### React
 
 - [react-constant-elements](plugin-transform-react-constant-elements.md)
@@ -153,9 +138,9 @@ These plugins are in the minify repo.
 
 ## Syntax Plugins
 
-These plugins only allow Babel to **parse** specific types of syntax (not transform).
+Most syntax is transformable by Babel. In rarer cases (if the transform isn't implemented yet, or there isn't a default way to do so), you can use plugins such as `@babel/plugin-syntax-bigint` to only allow Babel to **parse** specific types of syntax. Or you want to preserve the source code because you only want Babel to do code analysis or codemods.
 
-> NOTE: transform plugins automatically enable the syntax plugins. So you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
+> NOTE: You don't need to specify the syntax plugin if the corresponding transform plugin is used already, since it enables it automatically.
 
 Alternatively, you can also provide any [`plugins` option](parser.md#plugins) from the Babel parser:
 
@@ -169,24 +154,6 @@ Your `.babelrc`:
 }
 ```
 
-## Plugin/Preset Paths
-
-If the plugin is on npm, you can pass in the name of the plugin and babel will check that it's installed in `node_modules`
-
-```json
-{
-  "plugins": ["babel-plugin-myPlugin"]
-}
-```
-
-You can also specify an relative/absolute path to your plugin.
-
-```json
-{
-  "plugins": ["./node_modules/asdf/plugin"]
-}
-```
-
 ### Plugin Shorthand
 
 If the name of the package is prefixed with `babel-plugin-`, you can use a shorthand:
@@ -194,19 +161,8 @@ If the name of the package is prefixed with `babel-plugin-`, you can use a short
 ```js
 {
   "plugins": [
-    "myPlugin",
-    "babel-plugin-myPlugin" // equivalent
-  ]
-}
-```
-
-This also works with scoped packages:
-
-```js
-{
-  "plugins": [
-    "@org/babel-plugin-name",
-    "@org/name" // equivalent
+    "@org/name", // equivalent to "@org/babel-plugin-name"
+    "myPlugin", // equivalent to "babel-plugin-myPlugin"
   ]
 }
 ```

@@ -162,7 +162,8 @@ const siteConfig = {
   // ----
   scrollToTop: true,
   // markdownPlugins: [],
-  // cname
+  // cname,
+  // docsSideNavCollapsible: true,
 };
 
 module.exports = siteConfig;

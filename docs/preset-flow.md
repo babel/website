@@ -1,7 +1,6 @@
 ---
 id: babel-preset-flow
 title: @babel/preset-flow
-sidebar_label: flow
 ---
 
 This preset is recommended if you use [Flow](https://flow.org/en/docs/getting-started/), a static type checker for JavaScript code. It includes the following plugins:
