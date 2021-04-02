@@ -35,7 +35,7 @@ const users = loadYaml("./data/users.yml").map(user => ({
   image: `/img/users/${user.logo}`,
 }));
 
-const sponsorsManual = loadYaml("./data/sponsors.yml").map(sponsor => ({
+const sponsorsManual = (loadYaml("./data/sponsors.yml") || []).map(sponsor => ({
   ...sponsor,
   image: sponsor.image || path.join("/img/sponsors/", sponsor.logo),
 }));
