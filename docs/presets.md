@@ -91,19 +91,6 @@ module.exports = () => ({
 
 For more info, check out the [babel handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/user-handbook.md#making-your-own-preset) section on presets.
 
-### Preset Shorthand
-
-If the name of the package is prefixed with `babel-preset-`, you can use a shorthand:
-
-```js
-{
-  "presets": [
-  	"@org/name", // equivalent to "@org/babel-preset-name"
-    "myPreset", // equivalent to "babel-preset-myPreset"
-  ]
-}
-```
-
 ## Preset Ordering
 
 Preset ordering is reversed (last to first).

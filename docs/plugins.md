@@ -154,19 +154,6 @@ Your `.babelrc`:
 }
 ```
 
-### Plugin Shorthand
-
-If the name of the package is prefixed with `babel-plugin-`, you can use a shorthand:
-
-```js
-{
-  "plugins": [
-    "@org/name", // equivalent to "@org/babel-plugin-name"
-    "myPlugin", // equivalent to "babel-plugin-myPlugin"
-  ]
-}
-```
-
 ## Plugin Ordering
 
 > Ordering matters for each visitor in the plugin.
