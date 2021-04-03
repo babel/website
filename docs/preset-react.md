@@ -1,7 +1,6 @@
 ---
 id: babel-preset-react
 title: @babel/preset-react
-sidebar_label: react
 ---
 
 This preset always includes the following plugins:

@@ -1,7 +1,6 @@
 ---
 id: babel-preset-env
 title: @babel/preset-env
-sidebar_label: env
 ---
 
 `@babel/preset-env` is a smart preset that allows you to use the latest JavaScript without needing to micromanage which syntax transforms (and optionally, browser polyfills) are needed by your target environment(s). This both makes your life easier and JavaScript bundles smaller!
@@ -184,7 +183,7 @@ Added in: `v7.9.0`
 
 By default, `@babel/preset-env` (and Babel plugins in general) grouped ECMAScript syntax features into collections of closely related smaller features. These groups can be large and include a lot of edge cases, for example "function arguments" includes destructured, default and rest parameters. From this grouping information, Babel enables or disables each group based on the browser support target you specify to `@babel/preset-env`’s `targets` option.
 
-When this option is enabled, `@babel/preset-env` tries to compile the broken syntax to the closest *non-broken modern syntax* supported by your target browsers. Depending on your `targets` and on how many modern syntax you are using, this can lead to a significant size reduction in the compiled app. This option merges the features of [`@babel/preset-modules`](https://github.com/babel/preset-modules) without having to use another preset.
+When this option is enabled, `@babel/preset-env` tries to compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers. Depending on your `targets` and on how many modern syntax you are using, this can lead to a significant size reduction in the compiled app. This option merges the features of [`@babel/preset-modules`](https://github.com/babel/preset-modules) without having to use another preset.
 
 ### `spec`
 
@@ -207,6 +206,7 @@ Enable transformation of ES module syntax to another module type. Note that `cjs
 Setting this to `false` will preserve ES modules. Use this only if you intend to ship native ES Modules to browsers. If you are using a bundler with Babel, the default `modules: "auto"` is always preferred.
 
 #### `modules: "auto"`
+
 By default `@babel/preset-env` uses [`caller`](options.md#caller) data to determine whether ES modules and module features (e.g. `import()`) should be transformed. Generally `caller` data will be specified in the bundler plugins (e.g. `babel-loader`, `@rollup/plugin-babel`) and thus it is not recommended to pass `caller` data yourself -- The passed `caller` may overwrite the one from bundler plugins and in the future you may get suboptimal results if bundlers supports new module features.
 
 ### `debug`
@@ -503,4 +503,5 @@ The following are currently supported:
 ## Caveats
 
 ### Ineffective browserslist queries
+
 While `op_mini all` is a valid browserslist query, preset-env currently ignores it due to [lack of support data](https://github.com/kangax/compat-table/issues/1057) for Opera Mini.

@@ -10,13 +10,13 @@ This plugin adds support for the syntax used by the [TypeScript programming lang
 
 **In**
 
-```javascript
+```typescript
 const x: number = 0;
 ```
 
 **Out**
 
-```javascript
+```typescript
 const x = 0;
 ```
 

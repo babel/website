@@ -1,7 +1,6 @@
 ---
 id: babel-preset-typescript
 title: @babel/preset-typescript
-sidebar_label: typescript
 ---
 
 This preset is recommended if you use [TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html), a typed superset of JavaScript. It includes the following plugins:
@@ -14,13 +13,13 @@ This preset is recommended if you use [TypeScript](https://www.typescriptlang.or
 
 **In**
 
-```javascript
+```typescript
 const x: number = 0;
 ```
 
 **Out**
 
-```javascript
+```typescript
 const x = 0;
 ```
 

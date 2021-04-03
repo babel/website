@@ -1,7 +1,6 @@
 ---
 id: babel-code-frame
 title: @babel/code-frame
-sidebar_label: code-frame
 ---
 
 ## Install
@@ -13,14 +12,16 @@ npm install --save-dev @babel/code-frame
 ## Usage
 
 ```js
-import { codeFrameColumns } from '@babel/code-frame';
+import { codeFrameColumns } from "@babel/code-frame";
 
 const rawLines = `class Foo {
   constructor()
 }`;
 const location = { start: { line: 2, column: 16 } };
 
-const result = codeFrameColumns(rawLines, location, { /* options */ });
+const result = codeFrameColumns(rawLines, location, {
+  /* options */
+});
 
 console.log(result);
 ```
@@ -37,16 +38,21 @@ If the column number is not known, you may omit it.
 You can also pass an `end` hash in `location`.
 
 ```js
-import { codeFrameColumns } from '@babel/code-frame';
+import { codeFrameColumns } from "@babel/code-frame";
 
 const rawLines = `class Foo {
   constructor() {
     console.log("hello");
   }
 }`;
-const location = { start: { line: 2, column: 17 }, end: { line: 4, column: 3 } };
+const location = {
+  start: { line: 2, column: 17 },
+  end: { line: 4, column: 3 },
+};
 
-const result = codeFrameColumns(rawLines, location, { /* options */ });
+const result = codeFrameColumns(rawLines, location, {
+  /* options */
+});
 
 console.log(result);
 ```
@@ -69,7 +75,6 @@ console.log(result);
 `boolean`, defaults to `false`.
 
 Toggles syntax highlighting the code as JavaScript for terminals.
-
 
 ### `linesAbove`
 
@@ -113,7 +118,7 @@ The new API takes a `location` object, similar to what is available in an AST.
 This is an example of the deprecated (but still available) API:
 
 ```js
-import codeFrame from '@babel/code-frame';
+import codeFrame from "@babel/code-frame";
 
 const rawLines = `class Foo {
   constructor()
@@ -121,7 +126,9 @@ const rawLines = `class Foo {
 const lineNumber = 2;
 const colNumber = 16;
 
-const result = codeFrame(rawLines, lineNumber, colNumber, { /* options */ });
+const result = codeFrame(rawLines, lineNumber, colNumber, {
+  /* options */
+});
 
 console.log(result);
 ```
@@ -129,7 +136,7 @@ console.log(result);
 To get the same highlighting using the new API:
 
 ```js
-import { codeFrameColumns } from '@babel/code-frame';
+import { codeFrameColumns } from "@babel/code-frame";
 
 const rawLines = `class Foo {
   constructor() {
@@ -138,8 +145,9 @@ const rawLines = `class Foo {
 }`;
 const location = { start: { line: 2, column: 16 } };
 
-const result = codeFrameColumns(rawLines, location, { /* options */ });
+const result = codeFrameColumns(rawLines, location, {
+  /* options */
+});
 
 console.log(result);
 ```
-

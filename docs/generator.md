@@ -1,7 +1,6 @@
 ---
 id: babel-generator
 title: @babel/generator
-sidebar_label: generator
 ---
 
 > Turns an AST into code.
@@ -41,7 +40,7 @@ Options for formatting output:
 | comments               | boolean             | `true`          | Should comments be included in output                                                                                                                                                                                                                              |
 | compact                | boolean or `'auto'` | `opts.minified` | Set to `true` to avoid adding whitespace for formatting                                                                                                                                                                                                            |
 | concise                | boolean             | `false`         | Set to `true` to reduce whitespace (but not as much as `opts.compact`)                                                                                                                                                                                             |
-| decoratorsBeforeExport | boolean              |                 | Set to `true` to print decorators before `export` in output.                            |
+| decoratorsBeforeExport | boolean             |                 | Set to `true` to print decorators before `export` in output.                                                                                                                                                                                                       |
 | filename               | string              |                 | Used in warning messages                                                                                                                                                                                                                                           |
 | jsescOption            | object              |                 | Use `jsesc` to process literals. `jsesc` is applied to numbers only if `jsescOption.numbers` (added in `v7.9.0`) is present. You can customize `jsesc` by [passing options](https://github.com/mathiasbynens/jsesc#api) to it.                                     |
 | jsonCompatibleStrings  | boolean             | `false`         | Set to true to run `jsesc` with "json": true to print "\u00A9" vs. "©";                                                                                                                                                                                            |

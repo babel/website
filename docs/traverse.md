@@ -1,7 +1,6 @@
 ---
 id: babel-traverse
 title: @babel/traverse
-sidebar_label: traverse
 ---
 
 ## Install
@@ -29,7 +28,7 @@ traverse(ast, {
     if (path.isIdentifier({ name: "n" })) {
       path.node.name = "x";
     }
-  }
+  },
 });
 ```
 
@@ -37,11 +36,10 @@ Also, we can target particular [**node types**](https://babeljs.io/docs/en/babel
 
 ```js
 traverse(ast, {
-    FunctionDeclaration: function(path) {
-             path.node.id.name = "x";
-    }
-})
+  FunctionDeclaration: function(path) {
+    path.node.id.name = "x";
+  },
+});
 ```
 
 [📖 **Read the full docs here**](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/plugin-handbook.md#babel-traverse)
-
