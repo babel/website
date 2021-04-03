@@ -57,7 +57,7 @@ const sponsors = [
 
       return {
         type: "opencollective",
-        tier: sponsor?.tier,
+        tier: sponsor.tier,
         name: sponsor.name,
         url: website,
         image: sponsor.avatar || "/img/user.svg",
