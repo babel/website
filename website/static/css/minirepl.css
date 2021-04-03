@@ -91,3 +91,16 @@
     text-align: left;
   }
 }
+
+.dummy-hero-repl {
+  max-width: 920px;
+  height: 246px;
+  background-color: transparent;
+  margin: 0 auto;
+}
+/* minirepl isn't shown on mobile devices */
+@media (max-width: 760px) {
+  .dummy-hero-repl {
+    display: none;
+  }
+}

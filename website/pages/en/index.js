@@ -26,6 +26,9 @@ const PromoSection = props => (
   </div>
 );
 
+const DummyMiniRepl = () => {
+  return <div className="dummy-hero-repl" />;
+};
 const MiniRepl = () => {
   return (
     <div className="hero-repl" hidden={true}>
@@ -197,6 +200,7 @@ const Hero = ({ language }) => (
         </span>
       </div>
 
+      <DummyMiniRepl />
       <MiniRepl language={language} />
     </div>
   </div>
