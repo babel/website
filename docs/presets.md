@@ -20,6 +20,8 @@ If you aren't using Babel directly, the framework you are using may have it's ow
 
 [Next.js](https://nextjs.org/docs/advanced-features/customizing-babel-config) | [Nuxt.js](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#babel) | [Parcel](https://en.parceljs.org/javascript.html#babel) | [Jest](https://jestjs.io/docs/getting-started#using-babel) | [Gatsby](https://www.gatsbyjs.com/docs/how-to/custom-configuration/babel)
 
+<div id="preset-paths"></div>
+
 ## Using a Preset
 
 Within a Babel config, if the preset is on [npm](https://www.npmjs.com/search?q=babel-preset), you can pass in the name of the preset and Babel will check that it's installed in `node_modules` already. This is added to the [presets](options.md#presets) config option, which takes an array.

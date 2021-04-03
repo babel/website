@@ -5,6 +5,8 @@ title: Plugins
 
 Babel's code transformations are enabled by applying plugins (or [presets](presets.md)) to your [configuration file](config-files.md).
 
+<div id="pluginpreset-paths"></div>
+
 ## Using a Plugin
 
 If the plugin is on [npm](https://www.npmjs.com/search?q=babel-plugin), you can pass in the name of the plugin and Babel will check that it's installed in `node_modules`. This is added to the [plugins](options.md#presets) config option, which takes an array.
