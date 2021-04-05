@@ -2,15 +2,13 @@
 // Downloads sponsors data from the Open Collective API.
 
 const fetch = require("node-fetch");
-const fs = require("fs");
+const fs = require("fs").promises;
 
 const graphqlEndpoint = "https://api.opencollective.com/graphql/v2";
 
 // all from webpack: https://github.com/webpack/webpack.js.org/blob/master/src/utilities/fetch-supporters.js
-const { promisify } = require("util");
-const asyncWriteFile = promisify(fs.writeFile);
 const REQUIRED_KEYS = ["totalDonations", "slug", "name"];
-const sponsorsFile2 = `${__dirname}/../website/data/sponsors.json`;
+const sponsorsFile = `${__dirname}/../website/data/sponsors.json`;
 
 // https://github.com/opencollective/opencollective-api/blob/master/server/graphql/v2/query/TransactionsQuery.ts#L81
 const graphqlPageSize = 1000;
@@ -184,10 +182,9 @@ const uniqBy = (arr, predicate) => {
   }
 
   // Write the file
-  return asyncWriteFile(
-    sponsorsFile2,
-    JSON.stringify(supporters, null, 2)
-  ).then(() => console.log(`Fetched 1 file: sponsors.json`));
+  return fs
+    .writeFile(sponsorsFile, JSON.stringify(supporters, null, 2))
+    .then(() => console.log(`Fetched 1 file: sponsors.json`));
 })().catch(error => {
   console.error("utilities/fetch-supporters:", error);
   process.exitCode = 1;
