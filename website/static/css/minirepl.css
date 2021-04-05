@@ -1,9 +1,15 @@
 .hero-repl {
   color: white;
   max-width: 920px;
+  height: 336px;
   margin: 0 auto;
   opacity: 0;
   transition: opacity 0.25s ease-out;
+}
+@media(min-width: 992px) {
+  .hero-repl {
+    height: 246px;
+  }
 }
 .hero-repl--visible {
   opacity: 1;
@@ -89,5 +95,23 @@
   .hero-repl h3 {
     font-size: 1rem;
     text-align: left;
+  }
+}
+
+.dummy-hero-repl {
+  max-width: 920px;
+  height: 336px;
+  background-color: transparent;
+  margin: 0 auto;
+}
+@media(min-width: 992px) {
+  .dummy-hero-repl {
+    height: 246px;
+  }
+}
+/* minirepl isn't shown on mobile devices */
+@media (max-width: 760px) {
+  .dummy-hero-repl {
+    display: none;
   }
 }
