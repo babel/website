@@ -19,7 +19,7 @@ const x: number = 0;
 
 **Out**
 
-```typescript
+```javascript
 const x = 0;
 ```
 
@@ -97,7 +97,7 @@ Added in: `v7.7.0`
 
 When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
 
-```javascript
+```typescript
 class A {
   declare foo: string; // Removed
   bar: string; // Initialized to undefined
