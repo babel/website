@@ -44,8 +44,7 @@ const sponsorsDownloaded = require(path.join(__dirname, "/data/sponsors.json"));
 const sponsors = [
   ...sponsorsManual,
   ...sponsorsDownloaded
-    // filter out Handshake for special tier
-    .filter(sponsor => sponsor.slug !== "handshake")
+    .filter(sponsor => sponsor.slug !== "github-sponsors")
     .map(sponsor => {
       let website = sponsor.website;
       if (typeof website == "string") {
@@ -63,6 +62,9 @@ const sponsors = [
         url: website,
         image: sponsor.avatar || "/img/user.svg",
         description: sponsor.description,
+        monthly: sponsor.monthlyDonations,
+        yearly: sponsor.yearlyDonations,
+        total: sponsor.totalDonations,
       };
     }),
 ];

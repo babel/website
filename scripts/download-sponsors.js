@@ -2,64 +2,190 @@
 // Downloads sponsors data from the Open Collective API.
 
 const fetch = require("node-fetch");
-const fs = require("fs");
+const fs = require("fs").promises;
 
 const graphqlEndpoint = "https://api.opencollective.com/graphql/v2";
 
-const graphqlQuery = `{
+// all from webpack: https://github.com/webpack/webpack.js.org/blob/master/src/utilities/fetch-supporters.js
+const REQUIRED_KEYS = ["totalDonations", "slug", "name"];
+const sponsorsFile = `${__dirname}/../website/data/sponsors.json`;
+
+// https://github.com/opencollective/opencollective-api/blob/master/server/graphql/v2/query/TransactionsQuery.ts#L81
+const graphqlPageSize = 1000;
+
+const membersGraphqlQuery = `query account($limit: Int, $offset: Int) {
   account(slug: "babel") {
-    orders(status: ACTIVE, limit: 1000) {
-      totalCount
+    members(limit: $limit, offset: $offset) {
       nodes {
-        tier {
-          slug
-        }
-        fromAccount {
+        account {
           name
           slug
           website
           imageUrl
           description
         }
+        totalDonations {
+          value
+        }
+        createdAt
       }
     }
   }
 }`;
 
-const sponsorsFile = `${__dirname}/../website/data/sponsors.json`;
-
-console.log("Downloading sponsors data from Open Collective...");
-
-fetch(graphqlEndpoint, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ query: graphqlQuery }),
-})
-  .then(res => res.json())
-  .then(res => res.data.account.orders.nodes)
-  .then(nodes =>
-    nodes
-      .filter(node => !!node.tier)
-      .map(node => ({
-        tier: node.tier.slug,
-        name: node.fromAccount.name,
-        slug: node.fromAccount.slug,
-        website: node.fromAccount.website,
-        avatar: node.fromAccount.imageUrl,
-        twitterHandle: node.fromAccount.twitterHandle,
-        description: node.fromAccount.description,
-      }))
-  )
-  .then(sponsors => JSON.stringify(sponsors, null, 2))
-  .then(sponsorsJson => {
-    fs.writeFile(sponsorsFile, sponsorsJson, err => {
-      if (err) {
-        console.error("Failed to write website/data/sponsors.json file: ", err);
-      } else {
-        console.log("Success: website/data/sponsors.json created.");
+// only query transactions in last year
+const transactionsGraphqlQuery = `query transactions($dateFrom: ISODateTime, $limit: Int, $offset: Int) {
+  transactions(account: {
+    slug: "babel"
+  }, dateFrom: $dateFrom, limit: $limit, offset: $offset, includeIncognitoTransactions: false) {
+    nodes {
+        amountInHostCurrency {
+          value
+        }
+        fromAccount {
+          name
+          slug
+          website
+          imageUrl
+        }
+        createdAt
       }
-    });
-  })
-  .catch(err => {
-    console.error("Failed to fetch backers: ", err);
-  });
+  }
+}`;
+
+const nodeToSupporter = node => ({
+  name: node.account.name,
+  slug: node.account.slug,
+  website: node.account.website,
+  avatar: node.account.imageUrl,
+  firstDonation: node.createdAt,
+  totalDonations: node.totalDonations.value,
+  yearlyDonations: 0,
+  monthlyDonations: 0,
+});
+
+const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
+  const body = {
+    query: graphqlQuery,
+    variables: {
+      limit: graphqlPageSize,
+      offset: 0,
+      dateFrom: new Date(
+        time === "year"
+          ? new Date().setFullYear(new Date().getFullYear() - 1) // data from last year
+          : new Date().setMonth(new Date().getMonth() - 1) // data from last month
+      ).toISOString(),
+    },
+  };
+
+  let allNodes = [];
+
+  // Handling pagination if necessary
+  // eslint-disable-next-line
+  while (true) {
+    const result = await fetch(graphqlEndpoint, {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(response => response.json());
+    const nodes = getNodes(result.data);
+    allNodes = [...allNodes, ...nodes];
+    body.variables.offset += graphqlPageSize;
+    if (nodes.length < graphqlPageSize) {
+      return allNodes;
+    } else {
+      // sleep for a while
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+  }
+};
+
+const uniqBy = (arr, predicate) => {
+  const cb = typeof predicate === "function" ? predicate : o => o[predicate];
+
+  return [
+    ...arr
+      .reduce((map, item) => {
+        const key = item === null || item === undefined ? item : cb(item);
+
+        map.has(key) || map.set(key, item);
+
+        return map;
+      }, new Map())
+      .values(),
+  ];
+};
+
+(async () => {
+  const members = await getAllNodes(
+    membersGraphqlQuery,
+    data => data.account.members.nodes
+  );
+  let supporters = members
+    .map(nodeToSupporter)
+    .sort((a, b) => b.totalDonations - a.totalDonations);
+
+  // Deduplicating supporters with multiple orders
+  supporters = uniqBy(supporters, "slug");
+
+  const supportersBySlug = new Map();
+  for (const supporter of supporters) {
+    for (const key of REQUIRED_KEYS) {
+      if (!supporter || typeof supporter !== "object") {
+        throw new Error(
+          `Supporters: ${JSON.stringify(supporter)} is not an object.`
+        );
+      }
+      if (!(key in supporter)) {
+        throw new Error(
+          `Supporters: ${JSON.stringify(supporter)} doesn't include ${key}.`
+        );
+      }
+    }
+    supportersBySlug.set(supporter.slug, supporter);
+  }
+
+  // Calculate monthly amount from transactions
+  const transactionsYear = await getAllNodes(
+    transactionsGraphqlQuery,
+    data => data.transactions.nodes
+  );
+  for (const transaction of transactionsYear) {
+    if (!transaction.amountInHostCurrency) continue;
+    const amount = transaction.amountInHostCurrency.value;
+    if (!amount || amount <= 0) continue;
+    const supporter = supportersBySlug.get(transaction.fromAccount.slug);
+    if (!supporter) continue;
+    supporter.yearlyDonations += amount;
+  }
+
+  const transactionsMonth = await getAllNodes(
+    transactionsGraphqlQuery,
+    data => data.transactions.nodes,
+    "month"
+  );
+
+  for (const transaction of transactionsMonth) {
+    if (!transaction.amountInHostCurrency) continue;
+    const amount = transaction.amountInHostCurrency.value;
+    if (!amount || amount <= 0) continue;
+    const supporter = supportersBySlug.get(transaction.fromAccount.slug);
+    if (!supporter) continue;
+    supporter.monthlyDonations += amount;
+  }
+
+  for (const supporter of supporters) {
+    supporter.yearlyDonations = Math.round(supporter.yearlyDonations);
+    supporter.monthlyDonations = Math.round(supporter.monthlyDonations);
+  }
+
+  // Write the file
+  return fs
+    .writeFile(sponsorsFile, JSON.stringify(supporters, null, 2))
+    .then(() => console.log(`Fetched 1 file: sponsors.json`));
+})().catch(error => {
+  console.error("utilities/fetch-supporters:", error);
+  process.exitCode = 1;
+});
