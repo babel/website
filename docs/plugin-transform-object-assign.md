@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-object-assign
 title: @babel/plugin-transform-object-assign
-sidebar_label: transform-object-assign
+sidebar_label: object-assign
 ---
 
 ## Example
@@ -55,7 +55,6 @@ babel --plugins @babel/plugin-transform-object-assign script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-object-assign"]
+  plugins: ["@babel/plugin-transform-object-assign"],
 });
 ```
-

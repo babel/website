@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-proposal-private-property-in-object
 title: @babel/plugin-proposal-private-property-in-object
-sidebar_label: proposal-private-property-in-object
+sidebar_label: private-property-in-object
 ---
 
 ## Example
@@ -25,14 +25,13 @@ class Foo {
   constructor() {
     _bar.set(this, {
       writable: true,
-      value: "bar"
+      value: "bar",
     });
   }
 
   test() {
     return _bar.has(this);
   }
-
 }
 
 var _bar = new WeakMap();
@@ -64,7 +63,7 @@ babel --plugins @babel/plugin-proposal-private-property-in-object
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-private-property-in-object"]
+  plugins: ["@babel/plugin-proposal-private-property-in-object"],
 });
 ```
 
@@ -79,7 +78,6 @@ require("@babel/core").transformSync("code", {
 When true, private property `in` expressions will check own properties (as opposed to inherited ones) on the object, instead of checking for presence inside a `WeakSet`. This results in improved
 performance and debugging (normal property access vs `.get()`) at the expense
 of potentially leaking "privates" via things like `Object.getOwnPropertyNames`.
-
 
 #### Example
 
@@ -102,14 +100,13 @@ class Foo {
   constructor() {
     Object.defineProperty(this, _bar, {
       writable: true,
-      value: "bar"
+      value: "bar",
     });
   }
 
   test() {
     return Object.prototype.hasOwnProperty.call(this, _bar);
   }
-
 }
 
 var _bar = babelHelpers.classPrivateFieldLooseKey("bar");
@@ -119,4 +116,4 @@ var _bar = babelHelpers.classPrivateFieldLooseKey("bar");
 
 ## References
 
-* [Proposal: Ergonomic brand checks for Private Fields](https://github.com/tc39/proposal-private-fields-in-in)
+- [Proposal: Ergonomic brand checks for Private Fields](https://github.com/tc39/proposal-private-fields-in-in)

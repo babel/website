@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-transform-sticky-regex
 title: @babel/plugin-transform-sticky-regex
-sidebar_label: transform-sticky-regex
+sidebar_label: sticky-regex
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Examples
 
@@ -44,7 +46,6 @@ babel --plugins @babel/plugin-transform-sticky-regex script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-sticky-regex"]
+  plugins: ["@babel/plugin-transform-sticky-regex"],
 });
 ```
-

@@ -1,13 +1,15 @@
 ---
 id: babel-plugin-proposal-export-namespace-from
 title: @babel/plugin-proposal-export-namespace-from
-sidebar_label: proposal-export-namespace-from
+sidebar_label: export-namespace-from
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
 ```js
-export * as ns from 'mod';
+export * as ns from "mod";
 ```
 
 ## Installation
@@ -36,11 +38,11 @@ babel --plugins @babel/plugin-proposal-export-namespace-from script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-export-namespace-from"]
+  plugins: ["@babel/plugin-proposal-export-namespace-from"],
 });
 ```
+
 ## References
 
-* ~~[Proposal: Additional export-from statements in ES7](https://github.com/leebyron/ecmascript-more-export-from)~~ (Withdrawn)
-* [ECMAScript Proposal: export ns from](https://github.com/leebyron/ecmascript-export-ns-from)
-
+- ~~[Proposal: Additional export-from statements in ES7](https://github.com/leebyron/ecmascript-more-export-from)~~ (Withdrawn)
+- [ECMAScript Proposal: export ns from](https://github.com/leebyron/ecmascript-export-ns-from)

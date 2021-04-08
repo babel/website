@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-transform-duplicate-keys
 title: @babel/plugin-transform-duplicate-keys
-sidebar_label: transform-duplicate-keys
+sidebar_label: duplicate-keys
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 This plugin actually converts duplicate keys in objects to be computed properties, which then must be handled by the [@babel/plugin-transform-computed-properties](plugin-transform-computed-properties.md) plugin. The final result won't contain any object literals with duplicate keys.
 

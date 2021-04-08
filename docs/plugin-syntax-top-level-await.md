@@ -4,6 +4,8 @@ title: @babel/plugin-syntax-top-level-await
 sidebar_label: syntax-top-level-await
 ---
 
+> **NOTE**: This plugin is included in `@babel/preset-env`
+>
 > #### Syntax only
 >
 > This plugin only enables parsing of this feature. Babel doesn't support transforming

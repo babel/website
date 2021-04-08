@@ -1,15 +1,18 @@
 ---
 id: babel-plugin-transform-for-of
 title: @babel/plugin-transform-for-of
-sidebar_label: transform-for-of
+sidebar_label: for-of
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
 **In**
 
 ```js
-for (var i of foo) {}
+for (var i of foo) {
+}
 ```
 
 **Out**
@@ -20,7 +23,11 @@ var _didIteratorError = false;
 var _iteratorError = undefined;
 
 try {
-  for (var _iterator = foo[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+  for (
+    var _iterator = foo[Symbol.iterator](), _step;
+    !(_iteratorNormalCompletion = (_step = _iterator.next()).done);
+    _iteratorNormalCompletion = true
+  ) {
     var i = _step.value;
   }
 } catch (err) {
@@ -80,7 +87,7 @@ babel --plugins @babel/plugin-transform-for-of script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-for-of"]
+  plugins: ["@babel/plugin-transform-for-of"],
 });
 ```
 
@@ -98,13 +105,21 @@ All other iterables will continue to work fine.
 **In**
 
 ```js
-for (var i of foo) {}
+for (var i of foo) {
+}
 ```
 
 **Out**
 
 ```js
-for (var _iterator = foo, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+for (
+  var _iterator = foo,
+    _isArray = Array.isArray(_iterator),
+    _i = 0,
+    _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();
+  ;
+
+) {
   var _ref;
 
   if (_isArray) {
@@ -128,6 +143,7 @@ Please see [google/traceur-compiler#1773](https://github.com/google/traceur-comp
 [babel/babel#838](https://github.com/babel/babel/issues/838) for more information.
 
 ### `allowArrayLike`
+
 `boolean`, defaults to `false`
 
 Added in: `v7.10.0`
@@ -141,6 +157,7 @@ While it is _not_ spec-compliant to iterate array-like objects as if they were a
 Please note that Babel allows iterating `arguments` in old engines even if this option is disabled, because it's defined as _iterable_ in the ECMAScript specification.
 
 ### `assumeArray`
+
 `boolean`, defaults to `false`
 
 This will apply the optimization shown below to all for-of loops by assuming that _all_ loops are arrays.
@@ -154,7 +171,8 @@ If a basic array is used, Babel will compile the for-of loop down to a regular f
 **In**
 
 ```js
-for (let a of [1,2,3]) {}
+for (let a of [1, 2, 3]) {
+}
 ```
 
 **Out**

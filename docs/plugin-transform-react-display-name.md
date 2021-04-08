@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-transform-react-display-name
 title: @babel/plugin-transform-react-display-name
-sidebar_label: transform-react-display-name
+sidebar_label: react-display-name
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-react`
 
 ## Example
 
@@ -10,17 +12,17 @@ sidebar_label: transform-react-display-name
 
 ```js
 var foo = React.createClass({}); // React <= 15
-var bar = createReactClass({});  // React 16+
+var bar = createReactClass({}); // React 16+
 ```
 
 **Out**
 
 ```js
 var foo = React.createClass({
-  displayName: "foo"
+  displayName: "foo",
 }); // React <= 15
 var bar = createReactClass({
-  displayName: "bar"
+  displayName: "bar",
 }); // React 16+
 ```
 
@@ -50,7 +52,6 @@ babel --plugins @babel/plugin-transform-react-display-name script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-react-display-name"]
+  plugins: ["@babel/plugin-transform-react-display-name"],
 });
 ```
-

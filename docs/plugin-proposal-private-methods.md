@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-proposal-private-methods
 title: @babel/plugin-proposal-private-methods
-sidebar_label: proposal-private-methods
+sidebar_label: private-methods
 ---
 
 <details>
@@ -18,11 +18,12 @@ sidebar_label: proposal-private-methods
 class Counter extends HTMLElement {
   #xValue = 0;
 
-  get #x() { return this.#xValue; }
+  get #x() {
+    return this.#xValue;
+  }
   set #x(value) {
     this.#xValue = value;
-    window.requestAnimationFrame(
-      this.#render.bind(this));
+    window.requestAnimationFrame(this.#render.bind(this));
   }
 
   #clicked() {

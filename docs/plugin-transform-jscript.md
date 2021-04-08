@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-jscript
 title: @babel/plugin-transform-jscript
-sidebar_label: transform-jscript
+sidebar_label: jscript
 ---
 
 ## Example
@@ -9,9 +9,7 @@ sidebar_label: transform-jscript
 **In**
 
 ```javascript
-var foo = function bar() {
-
-};
+var foo = function bar() {};
 ```
 
 **Out**
@@ -19,7 +17,7 @@ var foo = function bar() {
 ```javascript
 "use strict";
 
-var foo = (function () {
+var foo = (function() {
   function bar() {}
 
   return bar;
@@ -52,7 +50,6 @@ babel --plugins @babel/plugin-transform-jscript script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-jscript"]
+  plugins: ["@babel/plugin-transform-jscript"],
 });
 ```
-

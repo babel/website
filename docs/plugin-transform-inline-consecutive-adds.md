@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-inline-consecutive-adds
 title: @babel/plugin-transform-inline-consecutive-adds
-sidebar_label: transform-inline-consecutive-adds
+sidebar_label: inline-consecutive-adds
 ---
 
 ## Example
@@ -61,7 +61,6 @@ babel --plugins transform-inline-consecutive-adds script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["transform-inline-consecutive-adds"]
+  plugins: ["transform-inline-consecutive-adds"],
 });
 ```
-

@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-proposal-numeric-separator
 title: @babel/plugin-proposal-numeric-separator
-sidebar_label: proposal-numeric-separator
+sidebar_label: numeric-separator
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 

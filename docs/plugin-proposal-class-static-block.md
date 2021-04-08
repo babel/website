@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-proposal-class-static-block
 title: @babel/plugin-proposal-class-static-block
-sidebar_label: proposal-class-static-block
+sidebar_label: class-static-block
 ---
 
 A class with a static block will be transformed into a static private property, whose initializer is the static block wrapped in an IIAFE (immediate invoked arrow function expression).

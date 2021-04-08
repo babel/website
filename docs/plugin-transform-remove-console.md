@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-remove-console
 title: babel-plugin-transform-remove-console
-sidebar_label: transform-remove-console
+sidebar_label: remove-console
 ---
 
 ## Example
@@ -38,7 +38,7 @@ npm install babel-plugin-transform-remove-console --save-dev
 ```json
 // with options
 {
-  "plugins": [ ["transform-remove-console", { "exclude": [ "error", "warn"] }] ]
+  "plugins": [["transform-remove-console", { "exclude": ["error", "warn"] }]]
 }
 ```
 
@@ -52,12 +52,12 @@ babel --plugins transform-remove-console script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["transform-remove-console"]
+  plugins: ["transform-remove-console"],
 });
 ```
 
 ## Options
 
-+ `exclude` - An array of console methods to exclude from removal.
+- `exclude` - An array of console methods to exclude from removal.
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

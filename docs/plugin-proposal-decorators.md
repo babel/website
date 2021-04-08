@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-proposal-decorators
 title: @babel/plugin-proposal-decorators
-sidebar_label: proposal-decorators
+sidebar_label: decorators
 ---
 
 ## Example
@@ -12,10 +12,10 @@ sidebar_label: proposal-decorators
 
 ```js
 @annotation
-class MyClass { }
+class MyClass {}
 
 function annotation(target) {
-   target.annotated = true;
+  target.annotated = true;
 }
 ```
 
@@ -23,12 +23,12 @@ function annotation(target) {
 
 ```js
 @isTestable(true)
-class MyClass { }
+class MyClass {}
 
 function isTestable(value) {
-   return function decorator(target) {
-      target.isTestable = value;
-   }
+  return function decorator(target) {
+    target.isTestable = value;
+  };
 }
 ```
 
@@ -37,14 +37,14 @@ function isTestable(value) {
 ```js
 class C {
   @enumerable(false)
-  method() { }
+  method() {}
 }
 
 function enumerable(value) {
-  return function (target, key, descriptor) {
-     descriptor.enumerable = value;
-     return descriptor;
-  }
+  return function(target, key, descriptor) {
+    descriptor.enumerable = value;
+    return descriptor;
+  };
 }
 ```
 
@@ -74,7 +74,7 @@ babel --plugins @babel/plugin-proposal-decorators script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-decorators"]
+  plugins: ["@babel/plugin-proposal-decorators"],
 });
 ```
 
@@ -112,7 +112,7 @@ Use the legacy (stage 1) decorators syntax and behavior.
 
 #### NOTE: Compatibility with `@babel/plugin-proposal-class-properties`
 
-If you are including your plugins manually and using `@babel/plugin-proposal-class-properties`, make sure that `@babel/plugin-proposal-decorators` comes *before* `@babel/plugin-proposal-class-properties`.
+If you are including your plugins manually and using `@babel/plugin-proposal-class-properties`, make sure that `@babel/plugin-proposal-decorators` comes _before_ `@babel/plugin-proposal-class-properties`.
 
 When using the `legacy: true` mode, `@babel/plugin-proposal-class-properties` must be used in `loose` mode to support the `@babel/plugin-proposal-decorators`.
 
@@ -142,7 +142,7 @@ Right:
 {
   "plugins": [
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
-    ["@babel/plugin-proposal-class-properties", { "loose" : true }]
+    ["@babel/plugin-proposal-class-properties", { "loose": true }]
   ]
 }
 ```
@@ -151,5 +151,4 @@ Right:
 
 ## References
 
-* [Proposal: JavaScript Decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md)
-
+- [Proposal: JavaScript Decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md)

@@ -1,15 +1,15 @@
 ---
 id: babel-plugin-proposal-function-sent
 title: @babel/plugin-proposal-function-sent
-sidebar_label: proposal-function-sent
+sidebar_label: function-sent
 ---
 
 ## Example
 
 ```js
 function* generator() {
-    console.log("Sent", function.sent);
-    console.log("Yield", yield);
+  console.log("Sent", function.sent);
+  console.log("Yield", yield);
 }
 
 const iterator = generator();
@@ -20,10 +20,10 @@ iterator.next(2); // Logs "Yield 2"
 Is compiled roughly to
 
 ```js
-let generator = _skipFirstGeneratorNext(function* () {
-    const _functionSent = yield;
-    console.log("Sent", _functionSent);
-    console.log("Yield", yield);
+let generator = _skipFirstGeneratorNext(function*() {
+  const _functionSent = yield;
+  console.log("Sent", _functionSent);
+  console.log("Yield", yield);
 });
 
 const iterator = generator();
@@ -57,11 +57,10 @@ babel --plugins @babel/plugin-proposal-function-sent script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-function-sent"]
+  plugins: ["@babel/plugin-proposal-function-sent"],
 });
 ```
 
 ## References
 
-* [Proposal](https://github.com/allenwb/ESideas/blob/master/Generator%20metaproperty.md)
-
+- [Proposal](https://github.com/allenwb/ESideas/blob/master/Generator%20metaproperty.md)

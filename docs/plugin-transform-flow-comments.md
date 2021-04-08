@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-flow-comments
 title: @babel/plugin-transform-flow-comments
-sidebar_label: transform-flow-comments
+sidebar_label: flow-comments
 ---
 
 You should be able to use this plugin instead of `@babel/plugin-flow-strip-types` to preserve the `/* @flow */` directive and still use flow.
@@ -17,11 +17,11 @@ function foo(bar?) {}
 function foo2(bar?: string) {}
 function foo(x: number): string {}
 type B = {
-  name: string;
+  name: string,
 };
 export type GraphQLFormattedError = number;
-import type A, { B, C } from './types';
-import typeof D, { E, F } from './types';
+import type A, { B, C } from "./types";
+import typeof D, { E, F } from "./types";
 ```
 
 **Out**
@@ -66,7 +66,6 @@ babel --plugins @babel/plugin-transform-flow-comments script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-flow-comments"]
+  plugins: ["@babel/plugin-transform-flow-comments"],
 });
 ```
-

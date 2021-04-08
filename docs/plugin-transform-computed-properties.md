@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-transform-computed-properties
 title: @babel/plugin-transform-computed-properties
-sidebar_label: transform-computed-properties
+sidebar_label: computed-properties
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
@@ -13,7 +15,7 @@ var obj = {
   ["x" + foo]: "heh",
   ["y" + bar]: "noo",
   foo: "foo",
-  bar: "bar"
+  bar: "bar",
 };
 ```
 
@@ -28,7 +30,7 @@ function _defineProperty(obj, key, value) {
       value: value,
       enumerable: true,
       configurable: true,
-      writable: true
+      writable: true,
     });
   } else {
     obj[key] = value;
@@ -37,14 +39,12 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-var obj = (
-  _obj = {},
-  _defineProperty(_obj, "x" + foo, "heh"),
-  _defineProperty(_obj, "y" + bar, "noo"),
-  _defineProperty(_obj, "foo", "foo"),
-  _defineProperty(_obj, "bar", "bar"),
-  _obj
-);
+var obj = ((_obj = {}),
+_defineProperty(_obj, "x" + foo, "heh"),
+_defineProperty(_obj, "y" + bar, "noo"),
+_defineProperty(_obj, "foo", "foo"),
+_defineProperty(_obj, "bar", "bar"),
+_obj);
 ```
 
 ## Installation
@@ -70,9 +70,12 @@ With options:
 ```json
 {
   "plugins": [
-    ["@babel/plugin-transform-computed-properties", {
-      "loose": true
-    }]
+    [
+      "@babel/plugin-transform-computed-properties",
+      {
+        "loose": true
+      }
+    ]
   ]
 }
 ```
@@ -87,7 +90,7 @@ babel --plugins @babel/plugin-transform-computed-properties script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-computed-properties"]
+  plugins: ["@babel/plugin-transform-computed-properties"],
 });
 ```
 
@@ -103,30 +106,28 @@ in production code.
 
 #### Example
 
-***In***
+**_In_**
 
 ```js
 var obj = {
   ["x" + foo]: "heh",
   ["y" + bar]: "noo",
   foo: "foo",
-  bar: "bar"
+  bar: "bar",
 };
 ```
 
-***Out***
+**_Out_**
 
 ```js
 var _obj;
 
-var obj = (
-  _obj = {},
-  _obj["x" + foo] = "heh",
-  _obj["y" + bar] = "noo",
-  _obj.foo = "foo",
-  _obj.bar = "bar",
-  _obj
-);
+var obj = ((_obj = {}),
+(_obj["x" + foo] = "heh"),
+(_obj["y" + bar] = "noo"),
+(_obj.foo = "foo"),
+(_obj.bar = "bar"),
+_obj);
 ```
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

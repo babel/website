@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-transform-flow-strip-types
 title: @babel/plugin-transform-flow-strip-types
-sidebar_label: transform-flow-strip-types
+sidebar_label: Flow Plugin
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-flow`
 
 ## Example
 

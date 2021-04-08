@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-modules-commonjs
 title: @babel/plugin-transform-modules-commonjs
-sidebar_label: transform-modules-commonjs
+sidebar_label: Common JS
 ---
 
 This plugin transforms ECMAScript modules to [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1). Note that only the _syntax_ of import/export statements (`import "./mod.js"`) and import expressions (`import('./mod.js')`) is transformed, as Babel is unaware of different resolution algorithms between implementations of ECMAScript modules and CommonJS.
@@ -18,7 +18,7 @@ export default 42;
 
 ```javascript
 Object.defineProperty(exports, "__esModule", {
-  value: true
+  value: true,
 });
 
 exports.default = 42;
@@ -60,7 +60,7 @@ babel --plugins @babel/plugin-transform-modules-commonjs script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-modules-commonjs"]
+  plugins: ["@babel/plugin-transform-modules-commonjs"],
 });
 ```
 
@@ -74,10 +74,10 @@ By default, when using exports with babel a non-enumerable `__esModule` property
 is exported.
 
 ```javascript
-var foo = exports.foo = 5;
+var foo = (exports.foo = 5);
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+  value: true,
 });
 ```
 
@@ -85,7 +85,7 @@ In environments that don't support this you can enable loose mode on `@babel/plu
 and instead of using `Object.defineProperty` an assignment will be used instead.
 
 ```javascript
-var foo = exports.foo = 5;
+var foo = (exports.foo = 5);
 exports.__esModule = true;
 ```
 
@@ -98,10 +98,10 @@ is exported. In some cases this property is used to determine if the import _is_
 default export or if it _contains_ the default export.
 
 ```javascript
-var foo = exports.foo = 5;
+var foo = (exports.foo = 5);
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+  value: true,
 });
 ```
 
@@ -143,23 +143,23 @@ the case when implementing a library module.
 
 The value of `lazy` has a few possible effects:
 
-* `false` - No lazy initialization of any imported module.
-* `true` - Do not lazy-initialize local `./foo` imports, but lazy-init `foo` dependencies.
+- `false` - No lazy initialization of any imported module.
+- `true` - Do not lazy-initialize local `./foo` imports, but lazy-init `foo` dependencies.
 
   Local paths are much more likely to have circular dependencies, which may break if loaded lazily,
   so they are not lazy by default, whereas dependencies between independent modules are rarely cyclical.
 
-* `Array<string>` - Lazy-initialize all imports with source matching one of the given strings.
-* `(string) => boolean` - Pass a callback that will be called to decide if a given source string should be lazy-loaded.
+- `Array<string>` - Lazy-initialize all imports with source matching one of the given strings.
+- `(string) => boolean` - Pass a callback that will be called to decide if a given source string should be lazy-loaded.
 
 The two cases where imports can never be lazy are:
 
-* `import "foo";`
+- `import "foo";`
 
   Side-effect imports are automatically non-lazy since their very existence means
   that there is no binding to later kick off initialization.
 
-* `export * from "foo"`
+- `export * from "foo"`
 
   Re-exporting all names requires up-front execution because otherwise there is no
   way to know what names need to be exported.

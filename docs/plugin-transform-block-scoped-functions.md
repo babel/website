@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-transform-block-scoped-functions
 title: @babel/plugin-transform-block-scoped-functions
-sidebar_label: transform-block-scoped-functions
+sidebar_label: block-scoped-functions
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Examples
 
@@ -10,7 +12,7 @@ sidebar_label: transform-block-scoped-functions
 
 ```javascript
 {
-  function name (n) {
+  function name(n) {
     return n;
   }
 }
@@ -22,7 +24,7 @@ name("Steve");
 
 ```javascript
 {
-  let name = function (n) {
+  let name = function(n) {
     return n;
   };
 }
@@ -55,7 +57,6 @@ babel --plugins @babel/plugin-transform-block-scoped-functions script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-block-scoped-functions"]
+  plugins: ["@babel/plugin-transform-block-scoped-functions"],
 });
 ```
-

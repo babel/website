@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-transform-template-literals
 title: @babel/plugin-transform-template-literals
-sidebar_label: transform-template-literals
+sidebar_label: template-literals
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
@@ -41,9 +43,12 @@ With options:
 ```json
 {
   "plugins": [
-    ["@babel/plugin-transform-template-literals", {
-      "loose": true
-    }]
+    [
+      "@babel/plugin-transform-template-literals",
+      {
+        "loose": true
+      }
+    ]
   ]
 }
 ```
@@ -58,7 +63,7 @@ babel --plugins @babel/plugin-transform-template-literals script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-template-literals"]
+  plugins: ["@babel/plugin-transform-template-literals"],
 });
 ```
 

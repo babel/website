@@ -1,15 +1,17 @@
 ---
 id: babel-plugin-transform-destructuring
 title: @babel/plugin-transform-destructuring
-sidebar_label: transform-destructuring
+sidebar_label: destructuring
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Examples
 
 **In**
 
 ```javascript
-let {x, y} = obj;
+let { x, y } = obj;
 
 let [a, b, ...rest] = arr;
 ```
@@ -56,7 +58,7 @@ babel --plugins @babel/plugin-transform-destructuring script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-destructuring"]
+  plugins: ["@babel/plugin-transform-destructuring"],
 });
 ```
 
@@ -96,12 +98,13 @@ var { ...x } = z;
 
 ```js
 var _z = z,
-    x = Object.assign({}, _z);
+  x = Object.assign({}, _z);
 ```
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
 
 ### `allowArrayLike`
+
 `boolean`, defaults to `false`
 
 Added in: `v7.10.0`
@@ -116,5 +119,4 @@ Please note that Babel allows destructuring `arguments` in old engines even if t
 
 ## References
 
-* [MDN: Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
-
+- [MDN: Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)

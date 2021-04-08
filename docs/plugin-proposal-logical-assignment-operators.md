@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-proposal-logical-assignment-operators
 title: @babel/plugin-proposal-logical-assignment-operators
-sidebar_label: proposal-logical-assignment-operators
+sidebar_label: logical-assignment-operators
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
@@ -54,11 +56,10 @@ babel --plugins @babel/plugin-proposal-logical-assignment-operators script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-logical-assignment-operators"]
+  plugins: ["@babel/plugin-proposal-logical-assignment-operators"],
 });
 ```
 
 ## References
 
-* [Proposal: Logical Assignment Operators](https://github.com/tc39/proposal-logical-assignment)
-
+- [Proposal: Logical Assignment Operators](https://github.com/tc39/proposal-logical-assignment)

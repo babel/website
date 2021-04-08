@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-transform-parameters
 title: @babel/plugin-transform-parameters
-sidebar_label: transform-parameters
+sidebar_label: parameters
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 This plugin transforms ES2015 parameters to ES5, this includes:
 

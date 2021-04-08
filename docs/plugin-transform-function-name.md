@@ -1,15 +1,17 @@
 ---
 id: babel-plugin-transform-function-name
 title: @babel/plugin-transform-function-name
-sidebar_label: transform-function-name
+sidebar_label: function-name
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Examples
 
 **In**
 
 ```javascript
-let number = (x) => x
+let number = x => x;
 ```
 
 **Out**
@@ -46,7 +48,6 @@ babel --plugins @babel/plugin-transform-function-name script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-function-name"]
+  plugins: ["@babel/plugin-transform-function-name"],
 });
 ```
-

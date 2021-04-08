@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-proposal-object-rest-spread
 title: @babel/plugin-proposal-object-rest-spread
-sidebar_label: proposal-object-rest-spread
+sidebar_label: object-rest-spread
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
@@ -48,7 +50,7 @@ babel --plugins @babel/plugin-proposal-object-rest-spread script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-object-rest-spread"]
+  plugins: ["@babel/plugin-proposal-object-rest-spread"],
 });
 ```
 
@@ -66,7 +68,6 @@ Enabling this option will use Babel's `extends` helper, which is basically the s
 
 For detailed information please check out [Spread VS. Object.assign](http://2ality.com/2016/10/rest-spread-properties.html#spreading-objects-versus-objectassign) and [Assigning VS. defining properties](http://exploringjs.com/es6/ch_oop-besides-classes.html#sec_assigning-vs-defining-properties).
 
-
 ### `useBuiltIns`
 
 `boolean`, defaults to `false`.
@@ -80,7 +81,10 @@ Enabling this option will use `Object.assign` directly instead of the Babel's `e
 ```json
 {
   "plugins": [
-    ["@babel/plugin-proposal-object-rest-spread", { "loose": true, "useBuiltIns": true }]
+    [
+      "@babel/plugin-proposal-object-rest-spread",
+      { "loose": true, "useBuiltIns": true }
+    ]
   ]
 }
 ```
@@ -101,8 +105,7 @@ z = Object.assign({ x }, y);
 
 ## References
 
-* [Proposal: Object Rest/Spread Properties for ECMAScript](https://github.com/tc39/proposal-object-rest-spread)
-* [Spec](https://tc39.github.io/proposal-object-rest-spread/)
-* [Spread VS. Object.assign](http://2ality.com/2016/10/rest-spread-properties.html#spreading-objects-versus-objectassign)
-* [Assigning VS. defining properties](http://exploringjs.com/es6/ch_oop-besides-classes.html#sec_assigning-vs-defining-properties)
-
+- [Proposal: Object Rest/Spread Properties for ECMAScript](https://github.com/tc39/proposal-object-rest-spread)
+- [Spec](https://tc39.github.io/proposal-object-rest-spread/)
+- [Spread VS. Object.assign](http://2ality.com/2016/10/rest-spread-properties.html#spreading-objects-versus-objectassign)
+- [Assigning VS. defining properties](http://exploringjs.com/es6/ch_oop-besides-classes.html#sec_assigning-vs-defining-properties)
