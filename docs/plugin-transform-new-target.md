@@ -1,9 +1,10 @@
 ---
 id: babel-plugin-transform-new-target
 title: @babel/plugin-transform-new-target
-sidebar_label: transform-new-target
+sidebar_label: new-target
 ---
 
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
@@ -23,8 +24,7 @@ class Foo {
   }
 }
 
-class Bar extends Foo {
-}
+class Bar extends Foo {}
 
 new Foo(); // => Foo
 new Bar(); // => Bar
@@ -69,7 +69,7 @@ Reflect.construct(Foo, []); // => Foo (correct)
 Reflect.construct(Foo, [], Bar); // => Bar (correct)
 
 Reflect.construct(Bar, []); // => Bar (incorrect, though this is how ES5
-                            // inheritance is commonly implemented.)
+// inheritance is commonly implemented.)
 Reflect.construct(Foo, [], Baz); // => undefined (incorrect)
 ```
 
@@ -99,7 +99,6 @@ babel --plugins @babel/plugin-transform-new-target script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-new-target"]
+  plugins: ["@babel/plugin-transform-new-target"],
 });
 ```
-

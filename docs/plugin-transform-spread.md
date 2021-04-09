@@ -1,17 +1,19 @@
 ---
 id: babel-plugin-transform-spread
 title: @babel/plugin-transform-spread
-sidebar_label: transform-spread
+sidebar_label: spread
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
 **In**
 
 ```js
-var a = ['a', 'b', 'c'];
+var a = ["a", "b", "c"];
 
-var b = [...a, 'foo'];
+var b = [...a, "foo"];
 
 var c = foo(...a);
 ```
@@ -19,9 +21,9 @@ var c = foo(...a);
 **Out**
 
 ```js
-var a = ['a', 'b', 'c'];
+var a = ["a", "b", "c"];
 
-var b = a.concat(['foo']);
+var b = a.concat(["foo"]);
 
 var c = foo.apply(void 0, a);
 ```
@@ -49,9 +51,12 @@ With options:
 ```json
 {
   "plugins": [
-    ["@babel/plugin-transform-spread", {
-      "loose": true
-    }]
+    [
+      "@babel/plugin-transform-spread",
+      {
+        "loose": true
+      }
+    ]
   ]
 }
 ```
@@ -66,7 +71,7 @@ babel --plugins @babel/plugin-transform-spread script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-spread"]
+  plugins: ["@babel/plugin-transform-spread"],
 });
 ```
 
@@ -98,4 +103,4 @@ Please note that Babel allows spreading `arguments` in old engines even if this 
 
 ## References
 
-* [MDN: Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+- [MDN: Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)

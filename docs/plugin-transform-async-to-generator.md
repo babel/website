@@ -1,9 +1,10 @@
 ---
 id: babel-plugin-transform-async-to-generator
 title: @babel/plugin-transform-async-to-generator
-sidebar_label: transform-async-to-generator
+sidebar_label: async-to-generator
 ---
 
+> **NOTE**: This plugin is included in `@babel/preset-env`
 > In Babel 7, `transform-async-to-module-method` was merged into this plugin
 
 ## Example
@@ -34,7 +35,7 @@ var foo = _asyncToGenerator(function* () {
 ```javascript
 var Bluebird = require("bluebird");
 
-var foo = Bluebird.coroutine(function* () {
+var foo = Bluebird.coroutine(function*() {
   yield bar();
 });
 ```
@@ -62,10 +63,13 @@ With options:
 ```json
 {
   "plugins": [
-    ["@babel/plugin-transform-async-to-generator", {
-      "module": "bluebird",
-      "method": "coroutine"
-    }]
+    [
+      "@babel/plugin-transform-async-to-generator",
+      {
+        "module": "bluebird",
+        "method": "coroutine"
+      }
+    ]
   ]
 }
 ```
@@ -80,7 +84,7 @@ babel --plugins @babel/plugin-transform-async-to-generator script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-async-to-generator"]
+  plugins: ["@babel/plugin-transform-async-to-generator"],
 });
 ```
 
@@ -89,6 +93,7 @@ require("@babel/core").transformSync("code", {
 ### Bluebird non-promise runtime error
 
 When using `await` with non-promise values, Bluebird will throw "Error: A value was yielded that could not be treated as a promise". Since Babel cannot automatically handle this runtime error, you should manually transform it to a promise.
+
 ```diff
 async function foo() {
 -  await 42;
@@ -98,4 +103,4 @@ async function foo() {
 
 ## References
 
-* [Proposal: Async Functions for ECMAScript](https://github.com/tc39/ecmascript-asyncawait)
+- [Proposal: Async Functions for ECMAScript](https://github.com/tc39/ecmascript-asyncawait)

@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-transform-literals
 title: @babel/plugin-transform-literals
-sidebar_label: transform-literals
+sidebar_label: literals
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
@@ -11,7 +13,7 @@ sidebar_label: transform-literals
 ```js
 var b = 0b11; // binary integer literal
 var o = 0o7; // octal integer literal
-const u = 'Hello\u{000A}\u{0009}!'; // unicode string literals, newline and tab
+const u = "Hello\u{000A}\u{0009}!"; // unicode string literals, newline and tab
 ```
 
 **Out**
@@ -19,7 +21,7 @@ const u = 'Hello\u{000A}\u{0009}!'; // unicode string literals, newline and tab
 ```js
 var b = 3; // binary integer literal
 var o = 7; // octal integer literal
-const u = 'Hello\n\t!'; // unicode string literals, newline and tab
+const u = "Hello\n\t!"; // unicode string literals, newline and tab
 ```
 
 ## Installation
@@ -48,7 +50,6 @@ babel --plugins @babel/plugin-transform-literals script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-literals"]
+  plugins: ["@babel/plugin-transform-literals"],
 });
 ```
-

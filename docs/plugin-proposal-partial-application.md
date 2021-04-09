@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-proposal-partial-application
 title: @babel/plugin-proposal-partial-application
-sidebar_label: proposal-partial-application
+sidebar_label: partial-application
 ---
 
 ## Example
@@ -70,12 +70,10 @@ babel --plugins @babel/plugin-proposal-partial-application script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-partial-application"]
+  plugins: ["@babel/plugin-proposal-partial-application"],
 });
 ```
 
-
 ## References
 
-* [Proposal: Partial Application](https://github.com/tc39/proposal-partial-application)
-
+- [Proposal: Partial Application](https://github.com/tc39/proposal-partial-application)

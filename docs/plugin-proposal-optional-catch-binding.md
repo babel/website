@@ -1,9 +1,10 @@
 ---
 id: babel-plugin-proposal-optional-catch-binding
 title: @babel/plugin-proposal-optional-catch-binding
-sidebar_label: proposal-optional-catch-binding
+sidebar_label: optional-catch-binding
 ---
 
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Examples
 
@@ -24,7 +25,6 @@ try {
   doSomeCleanup();
 }
 ```
-
 
 ## Installation
 
@@ -52,10 +52,10 @@ babel --plugins @babel/plugin-proposal-optional-catch-binding script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-optional-catch-binding"]
+  plugins: ["@babel/plugin-proposal-optional-catch-binding"],
 });
 ```
 
 ## References
-- [Proposal: Optional Catch Binding for ECMAScript](https://github.com/babel/proposals/issues/7)
 
+- [Proposal: Optional Catch Binding for ECMAScript](https://github.com/babel/proposals/issues/7)

@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-remove-undefined
 title: babel-plugin-transform-remove-undefined
-sidebar_label: transform-remove-undefined
+sidebar_label: remove-undefined
 ---
 
 For functions, this removes return arguments that evaluate to `undefined`.
@@ -54,12 +54,12 @@ babel --plugins babel-plugin-transform-remove-undefined script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["babel-plugin-transform-remove-undefined"]
+  plugins: ["babel-plugin-transform-remove-undefined"],
 });
 ```
 
 ## Options
 
-+ `tdz` - Detect usages before declaration/initialization in let/const(throws) and var(void 0)
+- `tdz` - Detect usages before declaration/initialization in let/const(throws) and var(void 0)
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

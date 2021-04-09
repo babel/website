@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-inline-environment-variables
 title: babel-plugin-transform-inline-environment-variables
-sidebar_label: transform-inline-environment-variables
+sidebar_label: inline-environment-variables
 ---
 
 ## Example
@@ -57,13 +57,13 @@ babel --plugins transform-inline-environment-variables script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["transform-inline-environment-variables"]
+  plugins: ["transform-inline-environment-variables"],
 });
 ```
 
 ## Options
 
-+ `include` - array of environment variables to include
-+ `exclude` - array of environment variables to exclude
+- `include` - array of environment variables to include
+- `exclude` - array of environment variables to exclude
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

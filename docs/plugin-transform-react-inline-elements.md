@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-react-inline-elements
 title: @babel/plugin-transform-react-inline-elements
-sidebar_label: transform-react-inline-elements
+sidebar_label: react-inline-elements
 ---
 
 ## Note
@@ -19,15 +19,19 @@ This transform **should be enabled only in production** (e.g., just before minif
 **In**
 
 ```javascript
-<Baz foo="bar" key="1"></Baz>;
+<Baz foo="bar" key="1" />
 ```
 
 **Out**
 
 ```javascript
-babelHelpers.jsx(Baz, {
-  foo: "bar"
-}, "1");
+babelHelpers.jsx(
+  Baz,
+  {
+    foo: "bar",
+  },
+  "1"
+);
 
 /**
  * Instead of
@@ -73,11 +77,10 @@ babel --plugins @babel/plugin-transform-react-inline-elements script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-react-inline-elements"]
+  plugins: ["@babel/plugin-transform-react-inline-elements"],
 });
 ```
 
 ## References
 
-* [[facebook/react#3228] Optimizing Compiler: Inline React Elements](https://github.com/facebook/react/issues/3228)
-
+- [[facebook/react#3228] Optimizing Compiler: Inline React Elements](https://github.com/facebook/react/issues/3228)

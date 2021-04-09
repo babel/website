@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-proposal-record-and-tuple
 title: @babel/plugin-proposal-record-and-tuple
-sidebar_label: proposal-proposal-record-and-tuple
+sidebar_label: proposal-record-and-tuple
 ---
 
 ## Installation
@@ -30,9 +30,7 @@ $ babel --plugins @babel/plugin-proposal-record-and-tuple script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: [
-    ["@babel/plugin-proposal-record-and-tuple"]
-  ]
+  plugins: [["@babel/plugin-proposal-record-and-tuple"]],
 });
 ```
 
@@ -57,9 +55,12 @@ You either need to load a polyfill, or you can pass the `"importPolyfill": true`
 ```json
 {
   "plugins": [
-    ["@babel/plugin-proposal-record-and-tuple", {
-      "importPolyfill": true
-    }]
+    [
+      "@babel/plugin-proposal-record-and-tuple",
+      {
+        "importPolyfill": true
+      }
+    ]
   ]
 }
 ```

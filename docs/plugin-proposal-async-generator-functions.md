@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-proposal-async-generator-functions
 title: @babel/plugin-proposal-async-generator-functions
-sidebar_label: proposal-async-generator-functions
+sidebar_label: async-generator-functions
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
@@ -46,7 +48,7 @@ async function f() {
 
 ```js
 async function* genAnswers() {
-  var stream = [ Promise.resolve(4), Promise.resolve(9), Promise.resolve(12) ];
+  var stream = [Promise.resolve(4), Promise.resolve(9), Promise.resolve(12)];
   var total = 0;
   for await (let val of stream) {
     total += await val;
@@ -55,7 +57,7 @@ async function* genAnswers() {
 }
 
 function forEach(ai, fn) {
-  return ai.next().then(function (r) {
+  return ai.next().then(function(r) {
     if (!r.done) {
       fn(r);
       return forEach(ai, fn);
@@ -64,13 +66,14 @@ function forEach(ai, fn) {
 }
 
 var output = 0;
-forEach(genAnswers(), function(val) { output += val.value })
-.then(function () {
+forEach(genAnswers(), function(val) {
+  output += val.value;
+}).then(function() {
   console.log(output); // 42
 });
 ```
 
-[Try it Out in the REPL](https://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=stage-3&code=async%20function*%20genAnswers()%20%7B%0A%20%20var%20stream%20%3D%20%5B%20Promise.resolve(4)%2C%20Promise.resolve(9)%2C%20Promise.resolve(12)%20%5D%3B%0A%20%20var%20total%20%3D%200%3B%0A%20%20for%20await%20(let%20val%20of%20stream)%20%7B%0A%20%20%20%20total%20%2B%3D%20await%20val%3B%0A%20%20%20%20yield%20total%3B%0A%20%20%7D%0A%7D%0A%0Afunction%20forEach(ai%2C%20fn)%20%7B%0A%20%20return%20ai.next().then(function%20(r)%20%7B%0A%20%20%20%20if%20(!r.done)%20%7B%0A%20%20%20%20%20%20fn(r)%3B%0A%20%20%20%20%20%20return%20forEach(ai%2C%20fn)%3B%0A%20%20%20%20%7D%0A%20%20%7D)%3B%0A%7D%0A%0Avar%20output%20%3D%200%3B%0AforEach(genAnswers()%2C%20function(val)%20%7B%20output%20%2B%3D%20val.value%20%7D)%0A.then(function%20()%20%7B%0A%20%20console.log(output)%3B%20%2F%2F%2042%0A%7D)%3B&experimental=true&loose=false&spec=false&playground=true&stage=0)
+[Try it Out in the REPL](https://babel.dev/repl#?browsers=ie%2011&build=&builtIns=usage&spec=false&loose=false&code_lz=IYZwngdgxgBAZgV2gFwJYHsICoYHMCmEAghCAO74BOIAFAJQwDeAUDDAG7CUwjKX7AAtjAC8MANowACpXSDUIfADp-IdABt2-GgBY6AGmmz5ilfjWbtATgNG5C5ao1aaARgBMDALoBuVhy4YZHRkYHVRGAAGPzY4dG5gMmBUZBgadXxUznD0OB4-AUEGFjY2YNDwgGoxROSssJjSsFR8dQATIJCG_wBfZj7mRBQMCHh4gFFgKAALGmTDOAhi_35kBEpR5KUIfAAPZHolZGnCGiGoNEw0ymXSmFQ8mgBCSiU2zHxbu_gIGhvGu6rdajOKUSYzOaoBZLAEwPpsHp0PwDTjcdAIZAABwxEWigwmU1mBGIpAo1HoCyQFxGNGyxRg6KxOOqAXUSmyCHwcLozCOJ1-50uo3oTH8UEwFmU6nQuBojOxyCRMAA9MqYDp3P0kUA&debug=false&forceAllTransforms=false&shippedProposals=true&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env&prettier=false&targets=&version=7.13.15)
 
 ## Installation
 
@@ -98,11 +101,10 @@ babel --plugins @babel/plugin-proposal-async-generator-functions script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-async-generator-functions"]
+  plugins: ["@babel/plugin-proposal-async-generator-functions"],
 });
 ```
 
 ## References
 
-* [Proposal: Asynchronous iteration for ECMAScript](https://github.com/tc39/proposal-async-iteration)
-
+- [Proposal: Asynchronous iteration for ECMAScript](https://github.com/tc39/proposal-async-iteration)

@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-transform-typescript
 title: @babel/plugin-transform-typescript
-sidebar_label: transform-typescript
+sidebar_label: Typescript Plugin
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-typescript`
 
 This plugin adds support for the syntax used by the [TypeScript programming language][ts]. However, this plugin does not add the ability to type-check the JavaScript passed to it. For that, you will need to install and set up TypeScript.
 

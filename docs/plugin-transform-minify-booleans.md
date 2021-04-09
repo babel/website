@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-minify-booleans
 title: babel-plugin-transform-minify-booleans
-sidebar_label: transform-minify-booleans
+sidebar_label: minify-booleans
 ---
 
 ## Example
@@ -46,7 +46,6 @@ babel --plugins transform-minify-booleans script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["transform-minify-booleans"]
+  plugins: ["transform-minify-booleans"],
 });
 ```
-

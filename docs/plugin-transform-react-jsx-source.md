@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-transform-react-jsx-source
 title: @babel/plugin-transform-react-jsx-source
-sidebar_label: transform-react-jsx-source
+sidebar_label: react-jsx-source
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-react`
 
 ## Example
 
@@ -46,7 +48,6 @@ babel --plugins @babel/plugin-transform-react-jsx-source script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-react-jsx-source"]
+  plugins: ["@babel/plugin-transform-react-jsx-source"],
 });
 ```
-

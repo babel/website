@@ -1,12 +1,12 @@
 ---
 id: babel-plugin-transform-unicode-escapes
 title: @babel/plugin-transform-unicode-escapes
-sidebar_label: transform-unicode-escapes
+sidebar_label: unicode-escapes
 ---
 
-Compile ES2015 Unicode escapes to ES5
-
 > **NOTE**: This plugin is included in `@babel/preset-env`
+
+Compile ES2015 Unicode escapes to ES5
 
 ## Example
 
@@ -52,6 +52,6 @@ babel --plugins @babel/plugin-transform-unicode-escapes
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-unicode-escapes"]
+  plugins: ["@babel/plugin-transform-unicode-escapes"],
 });
 ```

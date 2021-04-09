@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-modules-systemjs
 title: @babel/plugin-transform-modules-systemjs
-sidebar_label: transform-modules-systemjs
+sidebar_label: SystemJS
 ---
 
 This plugin transforms ECMAScript modules to [SystemJS](https://github.com/systemjs/systemjs/blob/master/docs/system-register.md). Note that only the _syntax_ of import/export statements (`import "./mod.js"`) and import expressions (`import('./mod.js')`) is transformed, as Babel is unaware of different resolution algorithms between implementations of ECMAScript modules and SystemJS.

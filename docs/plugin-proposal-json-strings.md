@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-proposal-json-strings
 title: @babel/plugin-proposal-json-strings
-sidebar_label: proposal-json-strings
+sidebar_label: json-strings
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Examples
 
@@ -46,10 +48,10 @@ babel --plugins @babel/plugin-proposal-json-strings script.js
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-json-strings"]
+  plugins: ["@babel/plugin-proposal-json-strings"],
 });
 ```
 
 ## References
-- [Proposal: Subsume JSON strings](https://github.com/babel/proposals/issues/43)
 
+- [Proposal: Subsume JSON strings](https://github.com/babel/proposals/issues/43)
