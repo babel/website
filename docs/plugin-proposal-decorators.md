@@ -6,16 +6,26 @@ sidebar_label: proposal-decorators
 
 ## Example
 
-(examples are from proposal)
-
 ### Simple class decorator
 
 ```js
 @annotation
 class MyClass { }
 
-function annotation(target) {
-   target.annotated = true;
+function annotation(classDescriptor) {
+  return {
+    ...classDescriptor,
+    elements: [
+      ...classDescriptor.elements,
+      {
+        kind: 'field',
+        key: 'annotated',
+        placement: 'static',
+        descriptor: {},
+        initializer: () => true
+      }
+    ]
+  };
 }
 ```
 
@@ -26,9 +36,21 @@ function annotation(target) {
 class MyClass { }
 
 function isTestable(value) {
-   return function decorator(target) {
-      target.isTestable = value;
-   }
+  return function(classDescriptor) {
+    return {
+      ...classDescriptor,
+      elements: [
+        ...classDescriptor.elements,
+        {
+          kind: 'field',
+          key: 'isTestable',
+          placement: 'static',
+          descriptor: {},
+          initializer: () => value
+        }
+      ]
+    };
+  };
 }
 ```
 
@@ -41,12 +63,19 @@ class C {
 }
 
 function enumerable(value) {
-  return function (target, key, descriptor) {
-     descriptor.enumerable = value;
-     return descriptor;
-  }
+  return function(elementDescriptor) {
+    return {
+      ...elementDescriptor,
+      descriptor: {
+        ...elementDescriptor.descriptor,
+        enumerable: value
+      }
+    };
+  };
 }
 ```
+
+[For further examples.][proposal]
 
 ## Installation
 
@@ -151,5 +180,6 @@ Right:
 
 ## References
 
-* [Proposal: JavaScript Decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md)
+* [Proposal: JavaScript Decorators][proposal]
 
+[proposal]: https://github.com/tc39/proposal-decorators/blob/master/README.md
