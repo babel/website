@@ -31,22 +31,6 @@ We have a hard time justifying the pay differences, and there isn't an obvious r
 
 For these reasons, we'll now change the current situation.
 
-<!--
-
-## The secret side of open source
-
-> At this point this is another blog post! Maybe I'll publish it on my personal website if I'll ever build it.
-
-The past few years have been an important journey for everyone on the team: sustaining ourselves through working on Babel has shown us many shades of what "open source" means. While many maintainers around the world already know about this, it's something that it's often overlooked by the community of open source users.
-
-Even when working on open source software not everything is on GitHub, not everything is measurable. Part of what we do is clearly visible: you can see our commits, our reviews, our discussions. Some of us _like_ seeing stats about what we do, about how many issues we fixed, or about how many PRs we merged. However, we realized that there is much more.
-
-Maintaining a big open source project with a community around it means working with and for _people_. We found ourselves discussing both about Babel and about our maintainers experience in a myriad of different places, both online and offline.
-Part of what we do is also thinking about how to make Babel and the concepts behind it, such as ASTs and code transforms, more approachable to other developers: most of the people don't need to learn about it, but everyone should have the opportunity to do so if they want to contribute to our project.
-
-We also had to talk with companies, explaining how they can help the developers they rely on by sponsoring their project, and convincing them about why they _should_ and _need_ to do it. We had the opportunity to talk about why the open source packages you depend on should not be taken for granted, why its in the interest of your company to invest in the future of those dependencies, and why the _people_ behind these dependencies are important for you.
--->
-
 ## The future
 
 Starting from April, Henry, Nicolò and Jùnliàng will all be paid the same amount.
