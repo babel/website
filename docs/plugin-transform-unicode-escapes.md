@@ -6,14 +6,16 @@ sidebar_label: unicode-escapes
 
 > **NOTE**: This plugin is included in `@babel/preset-env`
 
+Compile ES2015 Unicode escapes to ES5
+
 ## Example
 
 **In**
 
 ```javascript
-var 𝒜 = "\u{Babe1}";
+var \u{1d49c} = "\u{Babe1}";
 
-console.log(𝒜);
+console.log(\u{1d49c});
 ```
 
 **Out**
