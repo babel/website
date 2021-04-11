@@ -253,7 +253,7 @@ For example:
   ]
 }
 ```
-Then import [core-js](https://github.com/zloirock/core-js) and [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) first, in our entry file to emulate a full ES2015+ environment since [@babel/polyfill](polyfill.md) has been <a href="#response-schema">deprecated</a>:
+Then import [core-js](https://github.com/zloirock/core-js) and [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) first, in our entry file to emulate a full ES2015+ environment since [@babel/polyfill](polyfill.md) has been <a href="#polyfill-deprecated">deprecated</a>:
 
 ```js
  import "core-js/stable";
