@@ -17,7 +17,6 @@ The entire process to set this up involves:
 
    ```sh
    npm install --save-dev @babel/core @babel/cli @babel/preset-env
-   npm install --save @babel/polyfill
    ```
 
 2. Creating a config file named `babel.config.json` (requires `v7.8.0` and above) in the root of your project with this content:
