@@ -14,9 +14,6 @@ obj.a.b ||= c;
 
 a &&= b;
 obj.a.b &&= c;
-
-a ??= b;
-obj.a.b ??= c;
 ```
 
 **Out**
@@ -29,7 +26,18 @@ a || (a = b);
 
 a && (a = b);
 (_obj$a2 = obj.a).b && (_obj$a2.b = c);
+```
 
+### With Nullish Coalescing
+
+> While using the `@babel/plugin-proposal-nullish-coalescing-operator` plugin (included in `@babel/preset-env`)
+
+```javascript
+a ??= b;
+obj.a.b ??= c;
+```
+
+```javascript
 (_a = a) !== null && _a !== void 0 ? _a : a = b;
 (_b = (_obj$a = obj.a).b) !== null && _b !== void 0 ? _b : _obj$a.b = c;
 ```
