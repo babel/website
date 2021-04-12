@@ -56,7 +56,6 @@
       "babel-plugin-proposal-function-sent",
       "babel-plugin-proposal-partial-application",
       "babel-plugin-proposal-pipeline-operator",
-      "babel-plugin-proposal-pipeline-operator",
       "babel-plugin-proposal-private-methods",
       "babel-plugin-proposal-private-property-in-object",
       "babel-plugin-proposal-record-and-tuple",
