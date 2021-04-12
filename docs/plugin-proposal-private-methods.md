@@ -4,6 +4,8 @@ title: @babel/plugin-proposal-private-methods
 sidebar_label: private-methods
 ---
 
+> **NOTE**: This plugin is included in `@babel/preset-env`
+
 <details>
 <summary>History</summary>
 | Version | Changes |

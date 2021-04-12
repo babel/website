@@ -30,7 +30,7 @@ yarn add @babel/preset-env --dev
 
 We leverage these data sources to maintain [mappings of which version](https://github.com/babel/babel/blob/master/packages/babel-compat-data/data/plugins.json) of our supported target environments gained support of a JavaScript syntax or browser feature, as well as a mapping of those syntaxes and features to Babel transform plugins and core-js polyfills.
 
-> It is important to note that `@babel/preset-env` does _not_ support `stage-x` plugins.
+> Note: `@babel/preset-env` won't include any JavaScript syntax proposals less than Stage 3 because at that stage in the TC39 process, it wouldn't be implemented by any browsers anyway. Those would need to be included manually. The `shippedProposals` option will include Stage 3 proposals that some browsers have already implemented.
 
 `@babel/preset-env` takes any [target environments you've specified](#targets) and checks them against its mappings to compile a list of plugins and passes it to Babel.
 
