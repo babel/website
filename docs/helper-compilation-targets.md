@@ -9,7 +9,7 @@ sidebar_label: helper-compilation-targets
 ```javascript
 import {
   filterItems,
-  getTargets,
+  default as getTargets,
   isRequired,
 } from "@babel/helper-compilation-targets";
 ```
@@ -149,10 +149,11 @@ Normalize user specified `targets` to a list of supported targets. See also (`@b
 getTargets();
 ```
 
-An empty compilation target is equivalent to [force all transforms](preset-env.md#forceAllTransforms). The default compilation targets will changed to browserlists [`defaults, not IE 11`](https://runkit.com/jlhwung/605cd58b2c44c6001a463717) in Babel 8.
+An empty compilation target is equivalent to [force all transforms](preset-env.md#forceAllTransforms). The default compilation targets will be changed to browserlists query [`defaults, not IE 11`](https://runkit.com/jlhwung/605cd58b2c44c6001a463717) in Babel 8.
+
+One can also query the compilation targets with ES Module support, like [`@vue/babel-preset-app`](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/babel-preset-app) did in order to provide a set of modern targets.
 
 ```javascript
-// Return compilation targets with ES Module support
 /* returns {
   "android": "61.0.0",
   "chrome": "61.0.0",
@@ -169,7 +170,7 @@ getTargets({
 });
 ```
 
-The ES Module compat data is generated from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export#browser_compatibility).
+Note: The ES Module compat data is generated from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export#browser_compatibility).
 
 ## isRequired
 
@@ -238,3 +239,5 @@ module.exports = api => {
   };
 };
 ```
+
+[`@babel/plugin-proposal-object-rest-spread`](https://github.com/babel/babel/blob/962d81483ef6a57a4a3eca8230ae40795b695147/packages/babel-plugin-proposal-object-rest-spread/src/index.js#L23) uses `isRequired` to determine whether targets already have native `Object.assign` support.
