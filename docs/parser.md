@@ -273,6 +273,10 @@ You should enable these features only if you are using an older version.
     Some code has different meaning in Flow and in vanilla JavaScript. For example, `foo<T>(x)` is parsed as a call expression with a type argument in Flow, but as a comparison (`foo < T > x`) accordingly to the ECMAScript specification. By default, `babel-parser` parses those ambiguous constructs as Flow types only if the file starts with a `// @flow` pragma.
     Set this option to `true` to always parse files as if `// @flow` was specified.
 
+- `typescript`
+  - `dts` (`boolean`, default `false`)
+    In TypeScript, some syntaxes in Ambient Context such as `.d.ts` files and in `declare module` are different from normal TypeScript. If this option is enabled, syntax errors will be handled as Ambient Context.
+
 ### FAQ
 
 #### Will the Babel parser support a plugin system?
