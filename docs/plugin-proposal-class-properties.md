@@ -4,6 +4,8 @@ title: @babel/plugin-proposal-class-properties
 sidebar_label: class-properties
 ---
 
+> **NOTE**: This plugin is included in `@babel/preset-env`
+
 ## Example
 
 Below is a class with four class properties which will be transformed.

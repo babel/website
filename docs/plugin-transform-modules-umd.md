@@ -4,6 +4,8 @@ title: @babel/plugin-transform-modules-umd
 sidebar_label: UMD
 ---
 
+> **NOTE**: This plugin is included in `@babel/preset-env` under the `modules` option
+
 This plugin transforms ES2015 modules to [UMD](https://github.com/umdjs/umd). Note that only the _syntax_ of import/export statements (`import "./mod.js"`) is transformed, as Babel is unaware of different resolution algorithms between implementations of ES2015 modules and UMD.
 
 ⚠️ This plugin does not support dynamic import (`import('./lazy.js')`).
