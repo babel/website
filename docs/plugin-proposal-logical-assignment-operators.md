@@ -19,7 +19,7 @@ obj.a.b &&= c;
 **Out**
 
 ```javascript
-var _obj$a, _obj$a2, _a, _obj$a3, _b;
+var _obj$a, _obj$a2;
 
 a || (a = b);
 (_obj$a = obj.a).b || (_obj$a.b = c);
@@ -38,8 +38,12 @@ obj.a.b ??= c;
 ```
 
 ```javascript
-(_a = a) !== null && _a !== void 0 ? _a : a = b;
-(_b = (_obj$a = obj.a).b) !== null && _b !== void 0 ? _b : _obj$a.b = c;
+var _a, _obj$a, _obj$a$b;
+
+(_a = a) !== null && _a !== void 0 ? _a : (a = b);
+(_obj$a$b = (_obj$a = obj.a).b) !== null && _obj$a$b !== void 0
+  ? _obj$a$b
+  : (_obj$a.b = c);
 ```
 
 ## Installation
