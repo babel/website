@@ -21,6 +21,7 @@ sidebar_label: Plugins List
 - [private-methods](plugin-proposal-private-methods.md)
 - [throw-expressions](plugin-proposal-throw-expressions.md)
 - [private-property-in-object](plugin-proposal-private-property-in-object.md)
+- [record-and-tuple](plugin-proposal-record-and-tuple.md)
 
 ### ES2021
 
@@ -35,13 +36,14 @@ sidebar_label: Plugins List
 
 #### Syntax Only
 
-- [syntax-bigint](babel-plugin-syntax-bigint.md)
-- [syntax-dynamic-import](babel-plugin-syntax-dynamic-import.md)
-- [syntax-import-meta](babel-plugin-syntax-import-meta.md)
+- [syntax-bigint](plugin-syntax-bigint.md)
+- [syntax-dynamic-import](plugin-syntax-dynamic-import.md)
+- [syntax-import-meta](plugin-syntax-import-meta.md)
 
 ### ES2019
 
 - [optional-catch-binding](plugin-proposal-optional-catch-binding.md)
+- [json-strings](plugin-proposal-json-strings.md)
 
 ### ES2018
 
