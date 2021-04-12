@@ -223,7 +223,7 @@ module.exports = api => {
   return {
     visitor: {
       MemberExpression(path) {
-        if (path.isPattern("a.b")) {
+        if (path.matchesPattern("a.b")) {
           if (visited.has(path.node)) return;
           visited.add(path.node);
           if (optionalChainingSupported) {
