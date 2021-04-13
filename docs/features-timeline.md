@@ -87,7 +87,7 @@ title: Features Timeline
 - `bugfixes` option in `@babel/preset-env`, to workaround browsers bugs rather than compiling whole Features
 - [TypeScript 3.8](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/) support
 - Support for Flow `declare` class fields
-- Support for the [automatic](https://it.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html") JSX runtime
+- Support for the [automatic](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html") JSX runtime
 
 </li>
 <li data-date="Jan 2020">
