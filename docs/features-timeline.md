@@ -13,7 +13,7 @@ title: Features Timeline
 - Granular compiler assumptions ([docs](https://babeljs.io/assumptions), [RFC](https://github.com/babel/rfcs/pull/5))
 - Support for the [Records and Tuples](https://github.com/tc39/proposal-record-tuple) proposals
   ```js
-  let rec = #{"{"} x: 1 {"}"};
+  let rec = #{ x: 1 };
   let tup = #[1, 2, 3];
   ```
 - [TypeScript 4.2](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/) support
@@ -25,18 +25,18 @@ title: Features Timeline
 
 - Support for the [class static blocks](https://github.com/tc39/proposal-class-static-block) proposal
   ```js
-  class A {"{"}
-    static {"{"} initialize(A); {"}"}
-  {"}"}
+  class A {
+    static { initialize(A); }
+  }
   ```
 - Support for imports and exports string names
   ```js
   let happy = "wooo!";
-  export {"{"} happy as "😃" {"}"};
+  export { happy as "😃" };
   ```
 - Parser support for the [Import Assertions](https://github.com/tc39/proposal-import-assertions) proposal
   ```js
-  import json from "./foo.json" assert {"{"} type: "json" {"}"};
+  import json from "./foo.json" assert { type: "json" };
   ```
 - [TypeScript 4.1](https://devblogs.microsoft.com/typescript/announcing-typescript-4-1/) support
 
@@ -66,12 +66,12 @@ title: Features Timeline
 - Enable parser support for the [`import.meta`](https://github.com/tc39/proposal-import-meta/) Stage 4 proposal by default
 - Support for the [Ergonomic brand checks for Private Fields](https://github.com/tc39/proposal-private-fields-in-in) proposal
   ```js
-  class Car {"{"}
+  class Car {
     #plate;
-    race(other) {"{"}
+    race(other) {
        if (#plate in other) console.log("Racing against another car!");
-    {"}"}
-  {"}"}
+    }
+  }
   ```
 
 </li>
@@ -121,9 +121,9 @@ title: Features Timeline
 - Support for static private accessors, part of the
   [static class features](https://github.com/tc39/proposal-static-class-features/) proposal
   ```js
-  class Dog {"{"}
-    static get #className() {"{"} return "Dog"; {"}"}
-  {"}"}
+  class Dog {
+    static get #className() { return "Dog"; }
+  }
   ```
 
 </li>
@@ -150,9 +150,9 @@ title: Features Timeline
 - Support for static private methods, part of the
   [static class features](https://github.com/tc39/proposal-static-class-features/) proposal
   ```js
-  class Dog {"{"}
-    static #register() {"{"} /* ... */ {"}"}
-  {"}"}
+  class Dog {
+    static #register() { /* ... */ }
+  }
   ```
 - [TypeScript 3.4](https://devblogs.microsoft.com/typescript/announcing-typescript-3-4/) support
 
@@ -164,9 +164,9 @@ title: Features Timeline
 - Support for instance private accessors, part of the
   [private methods](https://github.com/tc39/proposal-private-methods/) proposal
   ```js
-  class Dog {"{"}
-    get #randomId() {"{"} return Math.random(); {"}"}
-  {"}"}
+  class Dog {
+    get #randomId() { return Math.random(); }
+  }
   ```
 - Support for the [smart pipeline operator](https://github.com/js-choi/proposal-smart-pipelines/) proposal
   ```js
@@ -187,9 +187,9 @@ title: Features Timeline
 
 - Support for instance private methods, part of the [private methods](https://github.com/tc39/proposal-private-methods/) proposal
   ```js
-  class Dog {"{"}
-    #bark() {"{"} console.log("Mew!") {"}"}
-  {"}"}
+  class Dog {
+    #bark() { console.log("Mew!") }
+  }
   ```
 
 </li>
@@ -199,15 +199,15 @@ title: Features Timeline
 
 - Support for the [decorators](https://babeljs.io/blog/2018/09/17/decorators) proposal, as it was specified in September 2018
   ```js
-  class Person {"{"}
+  class Person {
     @autoIncrement age;
-  {"}"}
+  }
   ```
 - Support for static private fields, part of the [static class features](https://github.com/tc39/proposal-static-class-features/) proposal
   ```js
-  class Person {"{"}
+  class Person {
     static #classId = 3;
-  {"}"}
+  }
   ```
 
 </li>
