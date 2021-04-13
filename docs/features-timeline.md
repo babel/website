@@ -9,6 +9,8 @@ title: Features Timeline
 
 ## Babel 7.13.0
 
+[blog post](https://babeljs.io/blog/2021/02/22/7.13.0)
+
 - Top-level `targets` option ([RFC](https://github.com/babel/rfcs/pull/2))
 - Granular compiler assumptions ([docs](https://babeljs.io/assumptions), [RFC](https://github.com/babel/rfcs/pull/5))
 - Support for the [Records and Tuples](https://github.com/tc39/proposal-record-tuple) proposals
@@ -23,13 +25,15 @@ title: Features Timeline
 
 ## Babel 7.12.0
 
+[blog post](https://babeljs.io/blog/2020/10/15/7.12.0)
+
 - Support for the [class static blocks](https://github.com/tc39/proposal-class-static-block) proposal
   ```js
   class A {
     static { initialize(A); }
   }
   ```
-- Support for imports and exports string names
+- Support for [imports and exports string names](https://github.com/tc39/ecma262/pull/2154)
   ```js
   let happy = "wooo!";
   export { happy as "😃" };
@@ -45,6 +49,8 @@ title: Features Timeline
 
 ## Babel 7.11.0
 
+[blog post](https://babeljs.io/blog/2020/07/30/7.11.0)
+
 - Enable the [Logical Assignment](https://github.com/tc39/proposal-logical-assignment/) and
   [Numeric Separator](https://github.com/tc39/proposal-numeric-separator) Stage 4 proposals by default
 - Parser support for the [Decimal](https://github.com/tc39/proposal-decimal) proposal
@@ -56,12 +62,16 @@ title: Features Timeline
 </li>
 <li class="no-children">
 
-## [@babel/eslint-parser](https://babeljs.io/blog/2020/07/13/the-state-of-babel-eslint)
+## @babel/eslint-parser
+
+[blog post](https://babeljs.io/blog/2020/07/13/the-state-of-babel-eslint)
 
 </li>
 <li data-date="May 2020">
 
 ## Babel 7.10.0
+
+[blog post](https://babeljs.io/blog/2020/05/25/7.10.0)
 
 - Enable parser support for the [`import.meta`](https://github.com/tc39/proposal-import-meta/) Stage 4 proposal by default
 - Support for the [Ergonomic brand checks for Private Fields](https://github.com/tc39/proposal-private-fields-in-in) proposal
@@ -77,12 +87,16 @@ title: Features Timeline
 </li>
 <li class="no-children">
 
-## [babel-polyfills](https://github.com/babel/babel-polyfills)
+## babel-polyfills
+
+[repository](https://github.com/babel/babel-polyfills)
 
 </li>
 <li data-date="Mar 2020">
 
 ## Babel 7.9.0
+
+[blog post](https://babeljs.io/blog/2020/03/16/7.9.0)
 
 - [`bugfixes`](https://babeljs.io/docs/en/babel-preset-env#bugfixes) option in `@babel/preset-env`, to workaround browsers bugs rather than compiling whole Features
 - [TypeScript 3.8](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/) support
@@ -94,6 +108,8 @@ title: Features Timeline
 
 ## Babel 7.8.0
 
+[blog post](https://babeljs.io/blog/2020/01/11/7.8.0)
+
 - Enable the [Optional Chaining](https://github.com/tc39/proposal-optional-chaining) and the
   [Nullish Coalescing](https://github.com/tc39/proposal-nullish-coalescing) Stage 4 proposals by default
 - Support `.mjs` configuration files
@@ -102,6 +118,8 @@ title: Features Timeline
 <li data-date="Nov 2019">
 
 ## Babel 7.7.0
+
+[blog post](https://babeljs.io/blog/2019/11/05/7.7.0)
 
 - Parser support for the [top-level `await`](https://github.com/tc39/proposal-top-level-await) proposal
   ```js
@@ -118,6 +136,8 @@ title: Features Timeline
 
 ## Babel 7.6.0
 
+[blog post](https://babeljs.io/blog/2019/09/05/7.6.0)
+
 - Support for static private accessors, part of the
   [static class features](https://github.com/tc39/proposal-static-class-features/) proposal
   ```js
@@ -131,6 +151,8 @@ title: Features Timeline
 
 ## Babel 7.5.0
 
+[blog post](https://babeljs.io/blog/2019/07/03/7.5.0)
+
 - Support for the [F# pipeline operator](https://github.com/valtech-nyc/proposal-fsharp-pipelines/) proposal
   ```js
   num |> add(2) |> double
@@ -141,6 +163,8 @@ title: Features Timeline
 <li data-date="Mar 2019">
 
 ## Babel 7.4.0
+
+[blog post](https://babeljs.io/blog/2019/03/19/7.4.0)
 
 - Support for injecting `core-js@3` polyfills
 - Support for the [Partial Application](https://github.com/tc39/proposal-partial-application/) proposal
@@ -160,6 +184,8 @@ title: Features Timeline
 <li data-date="Jan 2019">
 
 ## Babel 7.3.0
+
+[blog post](https://babeljs.io/blog/2019/01/21/7.3.0)
 
 - Support for instance private accessors, part of the
   [private methods](https://github.com/tc39/proposal-private-methods/) proposal
@@ -185,6 +211,8 @@ title: Features Timeline
 
 ## Babel 7.2.0
 
+[blog post](https://babeljs.io/blog/2018/12/03/7.2.0)
+
 - Support for instance private methods, part of the [private methods](https://github.com/tc39/proposal-private-methods/) proposal
   ```js
   class Dog {
@@ -196,6 +224,8 @@ title: Features Timeline
 <li data-date="Sep 2018">
 
 ## Babel 7.1.0
+
+[blog post](https://babeljs.io/blog/2018/09/17/7.1.0)
 
 - Support for the [decorators](https://babeljs.io/blog/2018/09/17/decorators) proposal, as it was specified in September 2018
   ```js
@@ -214,6 +244,8 @@ title: Features Timeline
 <li data-date="Aug 2018" class="no-children">
 
 ## Babel 7
+
+[blog post](https://babeljs.io/blog/2018/08/27/7.0.0)
 
 </li>
 </ol>
