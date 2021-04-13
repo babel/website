@@ -1,0 +1,51 @@
+.timeline-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.timeline-event {
+  margin: 0;
+
+  position: relative;
+  display: flex;
+
+  text-align: left;
+}
+
+.timeline-event::before {
+  content: "";
+  background-color: #ffd533;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 1.5rem;
+  width: 3px;
+}
+
+.timeline-event-dot {
+  min-width: 3rem;
+  width: 3rem;
+  height: 3rem;
+  margin: 0;
+  margin-right: 1em;
+  margin-top: 1rem;
+
+  background: #ffd533;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 0.8em;
+
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.timeline-event-name {
+  height: 4rem;
+  margin: 0;
+  line-height: 4rem;
+  display: inline;
+}
