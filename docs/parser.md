@@ -288,7 +288,14 @@ You should enable these features only if you are using an older version.
 
 ### Error codes
 
-Error codes have been introduced in `7.14.0`. This is useful if you want to handle the errors thrown by babel-parser by type.
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.14.0` | Added error codes |
+</details>
+
+Error codes have been introduced in `7.14.0`. This is useful if you want to handle the errors thrown by `@babel/parser` by type.
 
 There are two error codes, `code` and `reasonCode`.
 
@@ -305,7 +312,7 @@ const { parse } = require("@babel/parser");
 const ast = parse(`a b`, { errorRecovery: true });
 
 console.log(ast.errors[0].code); // BABEL_PARSER_SYNTAX_ERROR
-console.log(ast.errors[0].reasoncCode); // BABEL_PARSER_SOURCETYPE_MODULE_REQUIRED
+console.log(ast.errors[0].reasoncCode); // MissingSemicolon
 ```
 
 ### FAQ
