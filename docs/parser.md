@@ -236,6 +236,13 @@ You should enable these features only if you are using an older version.
 
 #### Plugins options
 
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `7.14.0` | Added `dts` for `typescript` plugin |
+</details>
+
 > NOTE: When a plugin is specified multiple times, only the first options are considered.
 
 - `decorators`:
