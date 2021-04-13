@@ -3,16 +3,23 @@
   margin: auto;
 }
 
-.timeline-event {
+.timeline-container > li {
   margin: 0;
 
   position: relative;
-  display: flex;
+  display: block;
 
   text-align: left;
+  padding-left: 4rem;
+  padding-top: 1px;
+  padding-bottom: 1rem;
 }
 
-.timeline-event::before {
+.timeline-container > li.no-children {
+  padding-bottom: 0;
+}
+
+.timeline-container > li::before {
   content: "";
   background-color: #f5da55;
   position: absolute;
@@ -22,13 +29,17 @@
   width: 3px;
 }
 
-.timeline-event-dot {
+.timeline-container > li::after {
+  content: "";
+  content: attr(data-date);
+
   min-width: 3rem;
   width: 3rem;
   height: 3rem;
   margin: 0;
-  margin-right: 1em;
-  margin-top: 1rem;
+  top: 1rem;
+  left: 0;
+  position: absolute;
 
   background: #f5da55;
   color: hsla(0,0%,100%,.9);
@@ -44,9 +55,14 @@
   text-align: center;
 }
 
-.timeline-event-name {
+.timeline-container h2 {
+  font-size: 1.25em;
   height: 4rem;
   margin: 0;
   line-height: 4rem;
   display: inline;
+}
+
+.timeline-container p {
+  margin: 0;
 }
