@@ -24,7 +24,7 @@ t.anyTypeAnnotation();
 
 See also `t.isAnyTypeAnnotation(node, opts)` and `t.assertAnyTypeAnnotation(node, opts)`.
 
-Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowbaseannotation)
 
 ---
 
@@ -49,7 +49,7 @@ See also `t.isArrayExpression(node, opts)` and `t.assertArrayExpression(node, op
 AST Node `ArrayExpression` shape:
 - `elements`: `Array<null | Expression | SpreadElement>` (default: `[]`)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -66,7 +66,7 @@ AST Node `ArrayPattern` shape:
 - `decorators`: `Array<Decorator>` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `Pattern`, `PatternLike`, `LVal`
+Aliases: [`Pattern`](#pattern), [`PatternLike`](#patternlike), [`LVal`](#lval)
 
 ---
 
@@ -81,7 +81,7 @@ See also `t.isArrayTypeAnnotation(node, opts)` and `t.assertArrayTypeAnnotation(
 AST Node `ArrayTypeAnnotation` shape:
 - `elementType`: `FlowType` (required)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -102,7 +102,7 @@ AST Node `ArrowFunctionExpression` shape:
 - `returnType`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `Scopable`, `Function`, `BlockParent`, `FunctionParent`, `Expression`, `Pureish`
+Aliases: [`Scopable`](#scopable), [`Function`](#function), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Expression`](#expression), [`Pureish`](#pureish)
 
 ---
 
@@ -119,7 +119,7 @@ AST Node `AssignmentExpression` shape:
 - `left`: `LVal` (required)
 - `right`: `Expression` (required)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -137,7 +137,7 @@ AST Node `AssignmentPattern` shape:
 - `decorators`: `Array<Decorator>` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `Pattern`, `PatternLike`, `LVal`
+Aliases: [`Pattern`](#pattern), [`PatternLike`](#patternlike), [`LVal`](#lval)
 
 ---
 
@@ -152,7 +152,7 @@ See also `t.isAwaitExpression(node, opts)` and `t.assertAwaitExpression(node, op
 AST Node `AwaitExpression` shape:
 - `argument`: `Expression` (required)
 
-Aliases: `Expression`, `Terminatorless`
+Aliases: [`Expression`](#expression), [`Terminatorless`](#terminatorless)
 
 ---
 
@@ -167,7 +167,7 @@ See also `t.isBigIntLiteral(node, opts)` and `t.assertBigIntLiteral(node, opts)`
 AST Node `BigIntLiteral` shape:
 - `value`: `string` (required)
 
-Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
+Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
 ---
 
@@ -184,7 +184,7 @@ AST Node `BinaryExpression` shape:
 - `left`: `Expression | PrivateName` (required)
 - `right`: `Expression` (required)
 
-Aliases: `Binary`, `Expression`
+Aliases: [`Binary`](#binary), [`Expression`](#expression)
 
 ---
 
@@ -200,7 +200,7 @@ AST Node `BindExpression` shape:
 - `object`: `Expression` (required)
 - `callee`: `Expression` (required)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -216,7 +216,7 @@ AST Node `BlockStatement` shape:
 - `body`: `Array<Statement>` (required)
 - `directives`: `Array<Directive>` (default: `[]`)
 
-Aliases: `Scopable`, `BlockParent`, `Block`, `Statement`
+Aliases: [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`Block`](#block), [`Statement`](#statement)
 
 ---
 
@@ -231,7 +231,7 @@ See also `t.isBooleanLiteral(node, opts)` and `t.assertBooleanLiteral(node, opts
 AST Node `BooleanLiteral` shape:
 - `value`: `boolean` (required)
 
-Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
+Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
 ---
 
@@ -246,7 +246,7 @@ See also `t.isBooleanLiteralTypeAnnotation(node, opts)` and `t.assertBooleanLite
 AST Node `BooleanLiteralTypeAnnotation` shape:
 - `value`: `boolean` (required)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -258,7 +258,7 @@ t.booleanTypeAnnotation();
 
 See also `t.isBooleanTypeAnnotation(node, opts)` and `t.assertBooleanTypeAnnotation(node, opts)`.
 
-Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowbaseannotation)
 
 ---
 
@@ -273,7 +273,7 @@ See also `t.isBreakStatement(node, opts)` and `t.assertBreakStatement(node, opts
 AST Node `BreakStatement` shape:
 - `label`: `Identifier` (default: `null`)
 
-Aliases: `Statement`, `Terminatorless`, `CompletionStatement`
+Aliases: [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
 
 ---
 
@@ -292,7 +292,7 @@ AST Node `CallExpression` shape:
 - `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -308,7 +308,7 @@ AST Node `CatchClause` shape:
 - `param`: `Identifier | ArrayPattern | ObjectPattern` (default: `null`)
 - `body`: `BlockStatement` (required)
 
-Aliases: `Scopable`, `BlockParent`
+Aliases: [`Scopable`](#scopable), [`BlockParent`](#blockparent)
 
 ---
 
@@ -345,7 +345,7 @@ AST Node `ClassDeclaration` shape:
 - `superTypeParameters`: `TypeParameterInstantiation | TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `Scopable`, `Class`, `Statement`, `Declaration`
+Aliases: [`Scopable`](#scopable), [`Class`](#class), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -367,7 +367,7 @@ AST Node `ClassExpression` shape:
 - `superTypeParameters`: `TypeParameterInstantiation | TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `Scopable`, `Class`, `Expression`
+Aliases: [`Scopable`](#scopable), [`Class`](#class), [`Expression`](#expression)
 
 ---
 
@@ -383,7 +383,7 @@ AST Node `ClassImplements` shape:
 - `id`: `Identifier` (required)
 - `typeParameters`: `TypeParameterInstantiation` (default: `null`)
 
-Aliases: `Flow`
+Aliases: [`Flow`](#flow)
 
 ---
 
@@ -412,7 +412,7 @@ AST Node `ClassMethod` shape:
 - `returnType`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `Function`, `Scopable`, `BlockParent`, `FunctionParent`, `Method`
+Aliases: [`Function`](#function), [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Method`](#method)
 
 ---
 
@@ -441,7 +441,7 @@ AST Node `ClassPrivateMethod` shape:
 - `returnType`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `Function`, `Scopable`, `BlockParent`, `FunctionParent`, `Method`, `Private`
+Aliases: [`Function`](#function), [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Method`](#method), [`Private`](#private)
 
 ---
 
@@ -460,7 +460,7 @@ AST Node `ClassPrivateProperty` shape:
 - `static` (required)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `Property`, `Private`
+Aliases: [`Property`](#property), [`Private`](#private)
 
 ---
 
@@ -493,7 +493,7 @@ AST Node `ClassProperty` shape:
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `Property`
+Aliases: [`Property`](#property)
 
 ---
 
@@ -510,7 +510,7 @@ AST Node `ConditionalExpression` shape:
 - `consequent`: `Expression` (required)
 - `alternate`: `Expression` (required)
 
-Aliases: `Expression`, `Conditional`
+Aliases: [`Expression`](#expression), [`Conditional`](#conditional)
 
 ---
 
@@ -525,7 +525,7 @@ See also `t.isContinueStatement(node, opts)` and `t.assertContinueStatement(node
 AST Node `ContinueStatement` shape:
 - `label`: `Identifier` (default: `null`)
 
-Aliases: `Statement`, `Terminatorless`, `CompletionStatement`
+Aliases: [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
 
 ---
 
@@ -537,7 +537,7 @@ t.debuggerStatement();
 
 See also `t.isDebuggerStatement(node, opts)` and `t.assertDebuggerStatement(node, opts)`.
 
-Aliases: `Statement`
+Aliases: [`Statement`](#statement)
 
 ---
 
@@ -552,7 +552,7 @@ See also `t.isDecimalLiteral(node, opts)` and `t.assertDecimalLiteral(node, opts
 AST Node `DecimalLiteral` shape:
 - `value`: `string` (required)
 
-Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
+Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
 ---
 
@@ -572,7 +572,7 @@ AST Node `DeclareClass` shape:
 - `implements`: `Array<ClassImplements>` (default: `null`, excluded from builder function)
 - `mixins`: `Array<InterfaceExtends>` (default: `null`, excluded from builder function)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -588,7 +588,7 @@ AST Node `DeclareExportAllDeclaration` shape:
 - `source`: `StringLiteral` (required)
 - `exportKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -606,7 +606,7 @@ AST Node `DeclareExportDeclaration` shape:
 - `source`: `StringLiteral` (default: `null`)
 - `default`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -622,7 +622,7 @@ AST Node `DeclareFunction` shape:
 - `id`: `Identifier` (required)
 - `predicate`: `DeclaredPredicate` (default: `null`, excluded from builder function)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -642,7 +642,7 @@ AST Node `DeclareInterface` shape:
 - `implements`: `Array<ClassImplements>` (default: `null`, excluded from builder function)
 - `mixins`: `Array<InterfaceExtends>` (default: `null`, excluded from builder function)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -659,7 +659,7 @@ AST Node `DeclareModule` shape:
 - `body`: `BlockStatement` (required)
 - `kind`: `"CommonJS" | "ES"` (default: `null`)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -674,7 +674,7 @@ See also `t.isDeclareModuleExports(node, opts)` and `t.assertDeclareModuleExport
 AST Node `DeclareModuleExports` shape:
 - `typeAnnotation`: `TypeAnnotation` (required)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -691,7 +691,7 @@ AST Node `DeclareOpaqueType` shape:
 - `typeParameters`: `TypeParameterDeclaration` (default: `null`)
 - `supertype`: `FlowType` (default: `null`)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -708,7 +708,7 @@ AST Node `DeclareTypeAlias` shape:
 - `typeParameters`: `TypeParameterDeclaration` (default: `null`)
 - `right`: `FlowType` (required)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -723,7 +723,7 @@ See also `t.isDeclareVariable(node, opts)` and `t.assertDeclareVariable(node, op
 AST Node `DeclareVariable` shape:
 - `id`: `Identifier` (required)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -738,7 +738,7 @@ See also `t.isDeclaredPredicate(node, opts)` and `t.assertDeclaredPredicate(node
 AST Node `DeclaredPredicate` shape:
 - `value`: `Flow` (required)
 
-Aliases: `Flow`, `FlowPredicate`
+Aliases: [`Flow`](#flow), [`FlowPredicate`](#flowpredicate)
 
 ---
 
@@ -792,7 +792,7 @@ See also `t.isDoExpression(node, opts)` and `t.assertDoExpression(node, opts)`.
 AST Node `DoExpression` shape:
 - `body`: `BlockStatement` (required)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -808,7 +808,7 @@ AST Node `DoWhileStatement` shape:
 - `test`: `Expression` (required)
 - `body`: `Statement` (required)
 
-Aliases: `Statement`, `BlockParent`, `Loop`, `While`, `Scopable`
+Aliases: [`Statement`](#statement), [`BlockParent`](#blockparent), [`Loop`](#loop), [`While`](#while), [`Scopable`](#scopable)
 
 ---
 
@@ -820,7 +820,7 @@ t.emptyStatement();
 
 See also `t.isEmptyStatement(node, opts)` and `t.assertEmptyStatement(node, opts)`.
 
-Aliases: `Statement`
+Aliases: [`Statement`](#statement)
 
 ---
 
@@ -832,7 +832,7 @@ t.emptyTypeAnnotation();
 
 See also `t.isEmptyTypeAnnotation(node, opts)` and `t.assertEmptyTypeAnnotation(node, opts)`.
 
-Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowbaseannotation)
 
 ---
 
@@ -849,7 +849,7 @@ AST Node `EnumBooleanBody` shape:
 - `explicitType`: `boolean` (required)
 - `hasUnknownMembers`: `boolean` (required)
 
-Aliases: `EnumBody`
+Aliases: [`EnumBody`](#enumbody)
 
 ---
 
@@ -865,7 +865,7 @@ AST Node `EnumBooleanMember` shape:
 - `id`: `Identifier` (required)
 - `init`: `BooleanLiteral` (required)
 
-Aliases: `EnumMember`
+Aliases: [`EnumMember`](#enummember)
 
 ---
 
@@ -881,7 +881,7 @@ AST Node `EnumDeclaration` shape:
 - `id`: `Identifier` (required)
 - `body`: `EnumBooleanBody | EnumNumberBody | EnumStringBody | EnumSymbolBody` (required)
 
-Aliases: `Statement`, `Declaration`
+Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -896,7 +896,7 @@ See also `t.isEnumDefaultedMember(node, opts)` and `t.assertEnumDefaultedMember(
 AST Node `EnumDefaultedMember` shape:
 - `id`: `Identifier` (required)
 
-Aliases: `EnumMember`
+Aliases: [`EnumMember`](#enummember)
 
 ---
 
@@ -913,7 +913,7 @@ AST Node `EnumNumberBody` shape:
 - `explicitType`: `boolean` (required)
 - `hasUnknownMembers`: `boolean` (required)
 
-Aliases: `EnumBody`
+Aliases: [`EnumBody`](#enumbody)
 
 ---
 
@@ -929,7 +929,7 @@ AST Node `EnumNumberMember` shape:
 - `id`: `Identifier` (required)
 - `init`: `NumericLiteral` (required)
 
-Aliases: `EnumMember`
+Aliases: [`EnumMember`](#enummember)
 
 ---
 
@@ -946,7 +946,7 @@ AST Node `EnumStringBody` shape:
 - `explicitType`: `boolean` (required)
 - `hasUnknownMembers`: `boolean` (required)
 
-Aliases: `EnumBody`
+Aliases: [`EnumBody`](#enumbody)
 
 ---
 
@@ -962,7 +962,7 @@ AST Node `EnumStringMember` shape:
 - `id`: `Identifier` (required)
 - `init`: `StringLiteral` (required)
 
-Aliases: `EnumMember`
+Aliases: [`EnumMember`](#enummember)
 
 ---
 
@@ -978,7 +978,7 @@ AST Node `EnumSymbolBody` shape:
 - `members`: `Array<EnumDefaultedMember>` (required)
 - `hasUnknownMembers`: `boolean` (required)
 
-Aliases: `EnumBody`
+Aliases: [`EnumBody`](#enumbody)
 
 ---
 
@@ -990,7 +990,7 @@ t.existsTypeAnnotation();
 
 See also `t.isExistsTypeAnnotation(node, opts)` and `t.assertExistsTypeAnnotation(node, opts)`.
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -1007,7 +1007,7 @@ AST Node `ExportAllDeclaration` shape:
 - `assertions`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
 - `exportKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 
-Aliases: `Statement`, `Declaration`, `ModuleDeclaration`, `ExportDeclaration`
+Aliases: [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration), [`ExportDeclaration`](#exportdeclaration)
 
 ---
 
@@ -1022,7 +1022,7 @@ See also `t.isExportDefaultDeclaration(node, opts)` and `t.assertExportDefaultDe
 AST Node `ExportDefaultDeclaration` shape:
 - `declaration`: `FunctionDeclaration | TSDeclareFunction | ClassDeclaration | Expression` (required)
 
-Aliases: `Statement`, `Declaration`, `ModuleDeclaration`, `ExportDeclaration`
+Aliases: [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration), [`ExportDeclaration`](#exportdeclaration)
 
 ---
 
@@ -1037,7 +1037,7 @@ See also `t.isExportDefaultSpecifier(node, opts)` and `t.assertExportDefaultSpec
 AST Node `ExportDefaultSpecifier` shape:
 - `exported`: `Identifier` (required)
 
-Aliases: `ModuleSpecifier`
+Aliases: [`ModuleSpecifier`](#modulespecifier)
 
 ---
 
@@ -1056,7 +1056,7 @@ AST Node `ExportNamedDeclaration` shape:
 - `assertions`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
 - `exportKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 
-Aliases: `Statement`, `Declaration`, `ModuleDeclaration`, `ExportDeclaration`
+Aliases: [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration), [`ExportDeclaration`](#exportdeclaration)
 
 ---
 
@@ -1071,7 +1071,7 @@ See also `t.isExportNamespaceSpecifier(node, opts)` and `t.assertExportNamespace
 AST Node `ExportNamespaceSpecifier` shape:
 - `exported`: `Identifier` (required)
 
-Aliases: `ModuleSpecifier`
+Aliases: [`ModuleSpecifier`](#modulespecifier)
 
 ---
 
@@ -1087,7 +1087,7 @@ AST Node `ExportSpecifier` shape:
 - `local`: `Identifier` (required)
 - `exported`: `Identifier | StringLiteral` (required)
 
-Aliases: `ModuleSpecifier`
+Aliases: [`ModuleSpecifier`](#modulespecifier)
 
 ---
 
@@ -1102,7 +1102,7 @@ See also `t.isExpressionStatement(node, opts)` and `t.assertExpressionStatement(
 AST Node `ExpressionStatement` shape:
 - `expression`: `Expression` (required)
 
-Aliases: `Statement`, `ExpressionWrapper`
+Aliases: [`Statement`](#statement), [`ExpressionWrapper`](#expressionwrapper)
 
 ---
 
@@ -1134,7 +1134,7 @@ AST Node `ForInStatement` shape:
 - `right`: `Expression` (required)
 - `body`: `Statement` (required)
 
-Aliases: `Scopable`, `Statement`, `For`, `BlockParent`, `Loop`, `ForXStatement`
+Aliases: [`Scopable`](#scopable), [`Statement`](#statement), [`For`](#for), [`BlockParent`](#blockparent), [`Loop`](#loop), [`ForXStatement`](#forxstatement)
 
 ---
 
@@ -1152,7 +1152,7 @@ AST Node `ForOfStatement` shape:
 - `body`: `Statement` (required)
 - `await`: `boolean` (default: `false`)
 
-Aliases: `Scopable`, `Statement`, `For`, `BlockParent`, `Loop`, `ForXStatement`
+Aliases: [`Scopable`](#scopable), [`Statement`](#statement), [`For`](#for), [`BlockParent`](#blockparent), [`Loop`](#loop), [`ForXStatement`](#forxstatement)
 
 ---
 
@@ -1170,7 +1170,7 @@ AST Node `ForStatement` shape:
 - `update`: `Expression` (default: `null`)
 - `body`: `Statement` (required)
 
-Aliases: `Scopable`, `Statement`, `For`, `BlockParent`, `Loop`
+Aliases: [`Scopable`](#scopable), [`Statement`](#statement), [`For`](#for), [`BlockParent`](#blockparent), [`Loop`](#loop)
 
 ---
 
@@ -1192,7 +1192,7 @@ AST Node `FunctionDeclaration` shape:
 - `returnType`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `Scopable`, `Function`, `BlockParent`, `FunctionParent`, `Statement`, `Pureish`, `Declaration`
+Aliases: [`Scopable`](#scopable), [`Function`](#function), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Statement`](#statement), [`Pureish`](#pureish), [`Declaration`](#declaration)
 
 ---
 
@@ -1213,7 +1213,7 @@ AST Node `FunctionExpression` shape:
 - `returnType`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `Scopable`, `Function`, `BlockParent`, `FunctionParent`, `Expression`, `Pureish`
+Aliases: [`Scopable`](#scopable), [`Function`](#function), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Expression`](#expression), [`Pureish`](#pureish)
 
 ---
 
@@ -1232,7 +1232,7 @@ AST Node `FunctionTypeAnnotation` shape:
 - `returnType`: `FlowType` (required)
 - `this`: `FunctionTypeParam` (default: `null`, excluded from builder function)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -1249,7 +1249,7 @@ AST Node `FunctionTypeParam` shape:
 - `typeAnnotation`: `FlowType` (required)
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `Flow`
+Aliases: [`Flow`](#flow)
 
 ---
 
@@ -1265,7 +1265,7 @@ AST Node `GenericTypeAnnotation` shape:
 - `id`: `Identifier | QualifiedTypeIdentifier` (required)
 - `typeParameters`: `TypeParameterInstantiation` (default: `null`)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -1283,7 +1283,7 @@ AST Node `Identifier` shape:
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `Expression`, `PatternLike`, `LVal`, `TSEntityName`
+Aliases: [`Expression`](#expression), [`PatternLike`](#patternlike), [`LVal`](#lval), [`TSEntityName`](#tsentityname)
 
 ---
 
@@ -1300,7 +1300,7 @@ AST Node `IfStatement` shape:
 - `consequent`: `Statement` (required)
 - `alternate`: `Statement` (default: `null`)
 
-Aliases: `Statement`, `Conditional`
+Aliases: [`Statement`](#statement), [`Conditional`](#conditional)
 
 ---
 
@@ -1312,7 +1312,7 @@ t.import();
 
 See also `t.isImport(node, opts)` and `t.assertImport(node, opts)`.
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -1344,7 +1344,7 @@ AST Node `ImportDeclaration` shape:
 - `assertions`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
 - `importKind`: `"type" | "typeof" | "value"` (default: `null`, excluded from builder function)
 
-Aliases: `Statement`, `Declaration`, `ModuleDeclaration`
+Aliases: [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration)
 
 ---
 
@@ -1359,7 +1359,7 @@ See also `t.isImportDefaultSpecifier(node, opts)` and `t.assertImportDefaultSpec
 AST Node `ImportDefaultSpecifier` shape:
 - `local`: `Identifier` (required)
 
-Aliases: `ModuleSpecifier`
+Aliases: [`ModuleSpecifier`](#modulespecifier)
 
 ---
 
@@ -1374,7 +1374,7 @@ See also `t.isImportNamespaceSpecifier(node, opts)` and `t.assertImportNamespace
 AST Node `ImportNamespaceSpecifier` shape:
 - `local`: `Identifier` (required)
 
-Aliases: `ModuleSpecifier`
+Aliases: [`ModuleSpecifier`](#modulespecifier)
 
 ---
 
@@ -1391,7 +1391,7 @@ AST Node `ImportSpecifier` shape:
 - `imported`: `Identifier | StringLiteral` (required)
 - `importKind`: `"type" | "typeof"` (default: `null`, excluded from builder function)
 
-Aliases: `ModuleSpecifier`
+Aliases: [`ModuleSpecifier`](#modulespecifier)
 
 ---
 
@@ -1403,7 +1403,7 @@ t.inferredPredicate();
 
 See also `t.isInferredPredicate(node, opts)` and `t.assertInferredPredicate(node, opts)`.
 
-Aliases: `Flow`, `FlowPredicate`
+Aliases: [`Flow`](#flow), [`FlowPredicate`](#flowpredicate)
 
 ---
 
@@ -1423,7 +1423,7 @@ AST Node `InterfaceDeclaration` shape:
 - `implements`: `Array<ClassImplements>` (default: `null`, excluded from builder function)
 - `mixins`: `Array<InterfaceExtends>` (default: `null`, excluded from builder function)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -1439,7 +1439,7 @@ AST Node `InterfaceExtends` shape:
 - `id`: `Identifier | QualifiedTypeIdentifier` (required)
 - `typeParameters`: `TypeParameterInstantiation` (default: `null`)
 
-Aliases: `Flow`
+Aliases: [`Flow`](#flow)
 
 ---
 
@@ -1455,7 +1455,7 @@ AST Node `InterfaceTypeAnnotation` shape:
 - `extends`: `Array<InterfaceExtends>` (default: `null`)
 - `body`: `ObjectTypeAnnotation` (required)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -1483,7 +1483,7 @@ See also `t.isIntersectionTypeAnnotation(node, opts)` and `t.assertIntersectionT
 AST Node `IntersectionTypeAnnotation` shape:
 - `types`: `Array<FlowType>` (required)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -1499,7 +1499,7 @@ AST Node `JSXAttribute` shape:
 - `name`: `JSXIdentifier | JSXNamespacedName` (required)
 - `value`: `JSXElement | JSXFragment | StringLiteral | JSXExpressionContainer` (default: `null`)
 
-Aliases: `JSX`, `Immutable`
+Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 ---
 
@@ -1514,7 +1514,7 @@ See also `t.isJSXClosingElement(node, opts)` and `t.assertJSXClosingElement(node
 AST Node `JSXClosingElement` shape:
 - `name`: `JSXIdentifier | JSXMemberExpression | JSXNamespacedName` (required)
 
-Aliases: `JSX`, `Immutable`
+Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 ---
 
@@ -1526,7 +1526,7 @@ t.jsxClosingFragment();
 
 See also `t.isJSXClosingFragment(node, opts)` and `t.assertJSXClosingFragment(node, opts)`.
 
-Aliases: `JSX`, `Immutable`
+Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 ---
 
@@ -1544,7 +1544,7 @@ AST Node `JSXElement` shape:
 - `children`: `Array<JSXText | JSXExpressionContainer | JSXSpreadChild | JSXElement | JSXFragment>` (required)
 - `selfClosing`: `boolean` (default: `null`)
 
-Aliases: `JSX`, `Immutable`, `Expression`
+Aliases: [`JSX`](#jsx), [`Immutable`](#immutable), [`Expression`](#expression)
 
 ---
 
@@ -1556,7 +1556,7 @@ t.jsxEmptyExpression();
 
 See also `t.isJSXEmptyExpression(node, opts)` and `t.assertJSXEmptyExpression(node, opts)`.
 
-Aliases: `JSX`
+Aliases: [`JSX`](#jsx)
 
 ---
 
@@ -1571,7 +1571,7 @@ See also `t.isJSXExpressionContainer(node, opts)` and `t.assertJSXExpressionCont
 AST Node `JSXExpressionContainer` shape:
 - `expression`: `Expression | JSXEmptyExpression` (required)
 
-Aliases: `JSX`, `Immutable`
+Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 ---
 
@@ -1588,7 +1588,7 @@ AST Node `JSXFragment` shape:
 - `closingFragment`: `JSXClosingFragment` (required)
 - `children`: `Array<JSXText | JSXExpressionContainer | JSXSpreadChild | JSXElement | JSXFragment>` (required)
 
-Aliases: `JSX`, `Immutable`, `Expression`
+Aliases: [`JSX`](#jsx), [`Immutable`](#immutable), [`Expression`](#expression)
 
 ---
 
@@ -1603,7 +1603,7 @@ See also `t.isJSXIdentifier(node, opts)` and `t.assertJSXIdentifier(node, opts)`
 AST Node `JSXIdentifier` shape:
 - `name`: `string` (required)
 
-Aliases: `JSX`
+Aliases: [`JSX`](#jsx)
 
 ---
 
@@ -1619,7 +1619,7 @@ AST Node `JSXMemberExpression` shape:
 - `object`: `JSXMemberExpression | JSXIdentifier` (required)
 - `property`: `JSXIdentifier` (required)
 
-Aliases: `JSX`
+Aliases: [`JSX`](#jsx)
 
 ---
 
@@ -1635,7 +1635,7 @@ AST Node `JSXNamespacedName` shape:
 - `namespace`: `JSXIdentifier` (required)
 - `name`: `JSXIdentifier` (required)
 
-Aliases: `JSX`
+Aliases: [`JSX`](#jsx)
 
 ---
 
@@ -1653,7 +1653,7 @@ AST Node `JSXOpeningElement` shape:
 - `selfClosing`: `boolean` (default: `false`)
 - `typeParameters`: `TypeParameterInstantiation | TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
-Aliases: `JSX`, `Immutable`
+Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 ---
 
@@ -1665,7 +1665,7 @@ t.jsxOpeningFragment();
 
 See also `t.isJSXOpeningFragment(node, opts)` and `t.assertJSXOpeningFragment(node, opts)`.
 
-Aliases: `JSX`, `Immutable`
+Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 ---
 
@@ -1680,7 +1680,7 @@ See also `t.isJSXSpreadAttribute(node, opts)` and `t.assertJSXSpreadAttribute(no
 AST Node `JSXSpreadAttribute` shape:
 - `argument`: `Expression` (required)
 
-Aliases: `JSX`
+Aliases: [`JSX`](#jsx)
 
 ---
 
@@ -1695,7 +1695,7 @@ See also `t.isJSXSpreadChild(node, opts)` and `t.assertJSXSpreadChild(node, opts
 AST Node `JSXSpreadChild` shape:
 - `expression`: `Expression` (required)
 
-Aliases: `JSX`, `Immutable`
+Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 ---
 
@@ -1710,7 +1710,7 @@ See also `t.isJSXText(node, opts)` and `t.assertJSXText(node, opts)`.
 AST Node `JSXText` shape:
 - `value`: `string` (required)
 
-Aliases: `JSX`, `Immutable`
+Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 ---
 
@@ -1726,7 +1726,7 @@ AST Node `LabeledStatement` shape:
 - `label`: `Identifier` (required)
 - `body`: `Statement` (required)
 
-Aliases: `Statement`
+Aliases: [`Statement`](#statement)
 
 ---
 
@@ -1743,7 +1743,7 @@ AST Node `LogicalExpression` shape:
 - `left`: `Expression` (required)
 - `right`: `Expression` (required)
 
-Aliases: `Binary`, `Expression`
+Aliases: [`Binary`](#binary), [`Expression`](#expression)
 
 ---
 
@@ -1761,7 +1761,7 @@ AST Node `MemberExpression` shape:
 - `computed`: `boolean` (default: `false`)
 - `optional`: `true | false` (default: `null`)
 
-Aliases: `Expression`, `LVal`
+Aliases: [`Expression`](#expression), [`LVal`](#lval)
 
 ---
 
@@ -1777,7 +1777,7 @@ AST Node `MetaProperty` shape:
 - `meta`: `Identifier` (required)
 - `property`: `Identifier` (required)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -1789,7 +1789,7 @@ t.mixedTypeAnnotation();
 
 See also `t.isMixedTypeAnnotation(node, opts)` and `t.assertMixedTypeAnnotation(node, opts)`.
 
-Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowbaseannotation)
 
 ---
 
@@ -1804,7 +1804,7 @@ See also `t.isModuleExpression(node, opts)` and `t.assertModuleExpression(node, 
 AST Node `ModuleExpression` shape:
 - `body`: `Program` (required)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -1823,7 +1823,7 @@ AST Node `NewExpression` shape:
 - `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -1845,7 +1845,7 @@ t.nullLiteral();
 
 See also `t.isNullLiteral(node, opts)` and `t.assertNullLiteral(node, opts)`.
 
-Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
+Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
 ---
 
@@ -1857,7 +1857,7 @@ t.nullLiteralTypeAnnotation();
 
 See also `t.isNullLiteralTypeAnnotation(node, opts)` and `t.assertNullLiteralTypeAnnotation(node, opts)`.
 
-Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowbaseannotation)
 
 ---
 
@@ -1872,7 +1872,7 @@ See also `t.isNullableTypeAnnotation(node, opts)` and `t.assertNullableTypeAnnot
 AST Node `NullableTypeAnnotation` shape:
 - `typeAnnotation`: `FlowType` (required)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -1887,7 +1887,7 @@ See also `t.isNumberLiteralTypeAnnotation(node, opts)` and `t.assertNumberLitera
 AST Node `NumberLiteralTypeAnnotation` shape:
 - `value`: `number` (required)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -1899,7 +1899,7 @@ t.numberTypeAnnotation();
 
 See also `t.isNumberTypeAnnotation(node, opts)` and `t.assertNumberTypeAnnotation(node, opts)`.
 
-Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowbaseannotation)
 
 ---
 
@@ -1914,7 +1914,7 @@ See also `t.isNumericLiteral(node, opts)` and `t.assertNumericLiteral(node, opts
 AST Node `NumericLiteral` shape:
 - `value`: `number` (required)
 
-Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
+Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
 ---
 
@@ -1929,7 +1929,7 @@ See also `t.isObjectExpression(node, opts)` and `t.assertObjectExpression(node, 
 AST Node `ObjectExpression` shape:
 - `properties`: `Array<ObjectMethod | ObjectProperty | SpreadElement>` (required)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -1953,7 +1953,7 @@ AST Node `ObjectMethod` shape:
 - `returnType`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `UserWhitespacable`, `Function`, `Scopable`, `BlockParent`, `FunctionParent`, `Method`, `ObjectMember`
+Aliases: [`UserWhitespacable`](#userwhitespacable), [`Function`](#function), [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Method`](#method), [`ObjectMember`](#objectmember)
 
 ---
 
@@ -1970,7 +1970,7 @@ AST Node `ObjectPattern` shape:
 - `decorators`: `Array<Decorator>` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `Pattern`, `PatternLike`, `LVal`
+Aliases: [`Pattern`](#pattern), [`PatternLike`](#patternlike), [`LVal`](#lval)
 
 ---
 
@@ -1989,7 +1989,7 @@ AST Node `ObjectProperty` shape:
 - `shorthand`: `boolean` (default: `false`)
 - `decorators`: `Array<Decorator>` (default: `null`)
 
-Aliases: `UserWhitespacable`, `Property`, `ObjectMember`
+Aliases: [`UserWhitespacable`](#userwhitespacable), [`Property`](#property), [`ObjectMember`](#objectmember)
 
 ---
 
@@ -2009,7 +2009,7 @@ AST Node `ObjectTypeAnnotation` shape:
 - `exact`: `boolean` (default: `false`)
 - `inexact`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -2025,7 +2025,7 @@ AST Node `ObjectTypeCallProperty` shape:
 - `value`: `FlowType` (required)
 - `static`: `boolean` (required)
 
-Aliases: `Flow`, `UserWhitespacable`
+Aliases: [`Flow`](#flow), [`UserWhitespacable`](#userwhitespacable)
 
 ---
 
@@ -2044,7 +2044,7 @@ AST Node `ObjectTypeIndexer` shape:
 - `variance`: `Variance` (default: `null`)
 - `static`: `boolean` (required)
 
-Aliases: `Flow`, `UserWhitespacable`
+Aliases: [`Flow`](#flow), [`UserWhitespacable`](#userwhitespacable)
 
 ---
 
@@ -2063,7 +2063,7 @@ AST Node `ObjectTypeInternalSlot` shape:
 - `static`: `boolean` (required)
 - `method`: `boolean` (required)
 
-Aliases: `Flow`, `UserWhitespacable`
+Aliases: [`Flow`](#flow), [`UserWhitespacable`](#userwhitespacable)
 
 ---
 
@@ -2085,7 +2085,7 @@ AST Node `ObjectTypeProperty` shape:
 - `proto`: `boolean` (required)
 - `static`: `boolean` (required)
 
-Aliases: `Flow`, `UserWhitespacable`
+Aliases: [`Flow`](#flow), [`UserWhitespacable`](#userwhitespacable)
 
 ---
 
@@ -2100,7 +2100,7 @@ See also `t.isObjectTypeSpreadProperty(node, opts)` and `t.assertObjectTypeSprea
 AST Node `ObjectTypeSpreadProperty` shape:
 - `argument`: `FlowType` (required)
 
-Aliases: `Flow`, `UserWhitespacable`
+Aliases: [`Flow`](#flow), [`UserWhitespacable`](#userwhitespacable)
 
 ---
 
@@ -2118,7 +2118,7 @@ AST Node `OpaqueType` shape:
 - `supertype`: `FlowType` (default: `null`)
 - `impltype`: `FlowType` (required)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -2137,7 +2137,7 @@ AST Node `OptionalCallExpression` shape:
 - `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -2155,7 +2155,7 @@ AST Node `OptionalMemberExpression` shape:
 - `computed`: `boolean` (default: `false`)
 - `optional`: `boolean` (required)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -2170,7 +2170,7 @@ See also `t.isParenthesizedExpression(node, opts)` and `t.assertParenthesizedExp
 AST Node `ParenthesizedExpression` shape:
 - `expression`: `Expression` (required)
 
-Aliases: `Expression`, `ExpressionWrapper`
+Aliases: [`Expression`](#expression), [`ExpressionWrapper`](#expressionwrapper)
 
 ---
 
@@ -2195,7 +2195,7 @@ t.pipelinePrimaryTopicReference();
 
 See also `t.isPipelinePrimaryTopicReference(node, opts)` and `t.assertPipelinePrimaryTopicReference(node, opts)`.
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -2237,7 +2237,7 @@ See also `t.isPrivateName(node, opts)` and `t.assertPrivateName(node, opts)`.
 AST Node `PrivateName` shape:
 - `id`: `Identifier` (required)
 
-Aliases: `Private`
+Aliases: [`Private`](#private)
 
 ---
 
@@ -2256,7 +2256,7 @@ AST Node `Program` shape:
 - `interpreter`: `InterpreterDirective` (default: `null`)
 - `sourceFile`: `string` (required)
 
-Aliases: `Scopable`, `BlockParent`, `Block`
+Aliases: [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`Block`](#block)
 
 ---
 
@@ -2272,7 +2272,7 @@ AST Node `QualifiedTypeIdentifier` shape:
 - `id`: `Identifier` (required)
 - `qualification`: `Identifier | QualifiedTypeIdentifier` (required)
 
-Aliases: `Flow`
+Aliases: [`Flow`](#flow)
 
 ---
 
@@ -2287,7 +2287,7 @@ See also `t.isRecordExpression(node, opts)` and `t.assertRecordExpression(node, 
 AST Node `RecordExpression` shape:
 - `properties`: `Array<ObjectProperty | SpreadElement>` (required)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -2303,7 +2303,7 @@ AST Node `RegExpLiteral` shape:
 - `pattern`: `string` (required)
 - `flags`: `string` (default: `''`)
 
-Aliases: `Expression`, `Pureish`, `Literal`
+Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal)
 
 ---
 
@@ -2320,7 +2320,7 @@ AST Node `RestElement` shape:
 - `decorators`: `Array<Decorator>` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
-Aliases: `LVal`, `PatternLike`
+Aliases: [`LVal`](#lval), [`PatternLike`](#patternlike)
 
 ---
 
@@ -2335,7 +2335,7 @@ See also `t.isReturnStatement(node, opts)` and `t.assertReturnStatement(node, op
 AST Node `ReturnStatement` shape:
 - `argument`: `Expression` (default: `null`)
 
-Aliases: `Statement`, `Terminatorless`, `CompletionStatement`
+Aliases: [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
 
 ---
 
@@ -2350,7 +2350,7 @@ See also `t.isSequenceExpression(node, opts)` and `t.assertSequenceExpression(no
 AST Node `SequenceExpression` shape:
 - `expressions`: `Array<Expression>` (required)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -2365,7 +2365,7 @@ See also `t.isSpreadElement(node, opts)` and `t.assertSpreadElement(node, opts)`
 AST Node `SpreadElement` shape:
 - `argument`: `Expression` (required)
 
-Aliases: `UnaryLike`
+Aliases: [`UnaryLike`](#unarylike)
 
 ---
 
@@ -2380,7 +2380,7 @@ See also `t.isStaticBlock(node, opts)` and `t.assertStaticBlock(node, opts)`.
 AST Node `StaticBlock` shape:
 - `body`: `Array<Statement>` (required)
 
-Aliases: `Scopable`, `BlockParent`
+Aliases: [`Scopable`](#scopable), [`BlockParent`](#blockparent)
 
 ---
 
@@ -2395,7 +2395,7 @@ See also `t.isStringLiteral(node, opts)` and `t.assertStringLiteral(node, opts)`
 AST Node `StringLiteral` shape:
 - `value`: `string` (required)
 
-Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
+Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
 ---
 
@@ -2410,7 +2410,7 @@ See also `t.isStringLiteralTypeAnnotation(node, opts)` and `t.assertStringLitera
 AST Node `StringLiteralTypeAnnotation` shape:
 - `value`: `string` (required)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -2422,7 +2422,7 @@ t.stringTypeAnnotation();
 
 See also `t.isStringTypeAnnotation(node, opts)` and `t.assertStringTypeAnnotation(node, opts)`.
 
-Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowbaseannotation)
 
 ---
 
@@ -2434,7 +2434,7 @@ t.super();
 
 See also `t.isSuper(node, opts)` and `t.assertSuper(node, opts)`.
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -2464,7 +2464,7 @@ AST Node `SwitchStatement` shape:
 - `discriminant`: `Expression` (required)
 - `cases`: `Array<SwitchCase>` (required)
 
-Aliases: `Statement`, `BlockParent`, `Scopable`
+Aliases: [`Statement`](#statement), [`BlockParent`](#blockparent), [`Scopable`](#scopable)
 
 ---
 
@@ -2476,7 +2476,7 @@ t.symbolTypeAnnotation();
 
 See also `t.isSymbolTypeAnnotation(node, opts)` and `t.assertSymbolTypeAnnotation(node, opts)`.
 
-Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowbaseannotation)
 
 ---
 
@@ -2488,7 +2488,7 @@ t.tsAnyKeyword();
 
 See also `t.isTSAnyKeyword(node, opts)` and `t.assertTSAnyKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -2503,7 +2503,7 @@ See also `t.isTSArrayType(node, opts)` and `t.assertTSArrayType(node, opts)`.
 AST Node `TSArrayType` shape:
 - `elementType`: `TSType` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -2519,7 +2519,7 @@ AST Node `TSAsExpression` shape:
 - `expression`: `Expression` (required)
 - `typeAnnotation`: `TSType` (required)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -2531,7 +2531,7 @@ t.tsBigIntKeyword();
 
 See also `t.isTSBigIntKeyword(node, opts)` and `t.assertTSBigIntKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -2543,7 +2543,7 @@ t.tsBooleanKeyword();
 
 See also `t.isTSBooleanKeyword(node, opts)` and `t.assertTSBooleanKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -2560,7 +2560,7 @@ AST Node `TSCallSignatureDeclaration` shape:
 - `parameters`: `Array<Identifier | RestElement>` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 
-Aliases: `TSTypeElement`
+Aliases: [`TSTypeElement`](#tstypeelement)
 
 ---
 
@@ -2578,7 +2578,7 @@ AST Node `TSConditionalType` shape:
 - `trueType`: `TSType` (required)
 - `falseType`: `TSType` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -2595,7 +2595,7 @@ AST Node `TSConstructSignatureDeclaration` shape:
 - `parameters`: `Array<Identifier | RestElement>` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 
-Aliases: `TSTypeElement`
+Aliases: [`TSTypeElement`](#tstypeelement)
 
 ---
 
@@ -2613,7 +2613,7 @@ AST Node `TSConstructorType` shape:
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 - `abstract`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -2634,7 +2634,7 @@ AST Node `TSDeclareFunction` shape:
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 - `generator`: `boolean` (default: `false`, excluded from builder function)
 
-Aliases: `Statement`, `Declaration`
+Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -2679,7 +2679,7 @@ AST Node `TSEnumDeclaration` shape:
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 - `initializer`: `Expression` (default: `null`, excluded from builder function)
 
-Aliases: `Statement`, `Declaration`
+Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -2708,7 +2708,7 @@ See also `t.isTSExportAssignment(node, opts)` and `t.assertTSExportAssignment(no
 AST Node `TSExportAssignment` shape:
 - `expression`: `Expression` (required)
 
-Aliases: `Statement`
+Aliases: [`Statement`](#statement)
 
 ---
 
@@ -2724,7 +2724,7 @@ AST Node `TSExpressionWithTypeArguments` shape:
 - `expression`: `TSEntityName` (required)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -2754,7 +2754,7 @@ AST Node `TSFunctionType` shape:
 - `parameters`: `Array<Identifier | RestElement>` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -2771,7 +2771,7 @@ AST Node `TSImportEqualsDeclaration` shape:
 - `moduleReference`: `TSEntityName | TSExternalModuleReference` (required)
 - `isExport`: `boolean` (required)
 
-Aliases: `Statement`
+Aliases: [`Statement`](#statement)
 
 ---
 
@@ -2788,7 +2788,7 @@ AST Node `TSImportType` shape:
 - `qualifier`: `TSEntityName` (default: `null`)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -2805,7 +2805,7 @@ AST Node `TSIndexSignature` shape:
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `TSTypeElement`
+Aliases: [`TSTypeElement`](#tstypeelement)
 
 ---
 
@@ -2821,7 +2821,7 @@ AST Node `TSIndexedAccessType` shape:
 - `objectType`: `TSType` (required)
 - `indexType`: `TSType` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -2836,7 +2836,7 @@ See also `t.isTSInferType(node, opts)` and `t.assertTSInferType(node, opts)`.
 AST Node `TSInferType` shape:
 - `typeParameter`: `TSTypeParameter` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -2868,7 +2868,7 @@ AST Node `TSInterfaceDeclaration` shape:
 - `body`: `TSInterfaceBody` (required)
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `Statement`, `Declaration`
+Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -2883,7 +2883,7 @@ See also `t.isTSIntersectionType(node, opts)` and `t.assertTSIntersectionType(no
 AST Node `TSIntersectionType` shape:
 - `types`: `Array<TSType>` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -2895,7 +2895,7 @@ t.tsIntrinsicKeyword();
 
 See also `t.isTSIntrinsicKeyword(node, opts)` and `t.assertTSIntrinsicKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -2910,7 +2910,7 @@ See also `t.isTSLiteralType(node, opts)` and `t.assertTSLiteralType(node, opts)`
 AST Node `TSLiteralType` shape:
 - `literal`: `NumericLiteral | StringLiteral | BooleanLiteral | BigIntLiteral` (required)
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -2929,7 +2929,7 @@ AST Node `TSMappedType` shape:
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -2949,7 +2949,7 @@ AST Node `TSMethodSignature` shape:
 - `computed`: `boolean` (default: `null`, excluded from builder function)
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `TSTypeElement`
+Aliases: [`TSTypeElement`](#tstypeelement)
 
 ---
 
@@ -2964,7 +2964,7 @@ See also `t.isTSModuleBlock(node, opts)` and `t.assertTSModuleBlock(node, opts)`
 AST Node `TSModuleBlock` shape:
 - `body`: `Array<Statement>` (required)
 
-Aliases: `Scopable`, `Block`, `BlockParent`
+Aliases: [`Scopable`](#scopable), [`Block`](#block), [`BlockParent`](#blockparent)
 
 ---
 
@@ -2982,7 +2982,7 @@ AST Node `TSModuleDeclaration` shape:
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 - `global`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `Statement`, `Declaration`
+Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -3012,7 +3012,7 @@ See also `t.isTSNamespaceExportDeclaration(node, opts)` and `t.assertTSNamespace
 AST Node `TSNamespaceExportDeclaration` shape:
 - `id`: `Identifier` (required)
 
-Aliases: `Statement`
+Aliases: [`Statement`](#statement)
 
 ---
 
@@ -3024,7 +3024,7 @@ t.tsNeverKeyword();
 
 See also `t.isTSNeverKeyword(node, opts)` and `t.assertTSNeverKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3039,7 +3039,7 @@ See also `t.isTSNonNullExpression(node, opts)` and `t.assertTSNonNullExpression(
 AST Node `TSNonNullExpression` shape:
 - `expression`: `Expression` (required)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -3051,7 +3051,7 @@ t.tsNullKeyword();
 
 See also `t.isTSNullKeyword(node, opts)` and `t.assertTSNullKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3063,7 +3063,7 @@ t.tsNumberKeyword();
 
 See also `t.isTSNumberKeyword(node, opts)` and `t.assertTSNumberKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3075,7 +3075,7 @@ t.tsObjectKeyword();
 
 See also `t.isTSObjectKeyword(node, opts)` and `t.assertTSObjectKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3090,7 +3090,7 @@ See also `t.isTSOptionalType(node, opts)` and `t.assertTSOptionalType(node, opts
 AST Node `TSOptionalType` shape:
 - `typeAnnotation`: `TSType` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -3107,7 +3107,7 @@ AST Node `TSParameterProperty` shape:
 - `accessibility`: `"public" | "private" | "protected"` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `LVal`
+Aliases: [`LVal`](#lval)
 
 ---
 
@@ -3122,7 +3122,7 @@ See also `t.isTSParenthesizedType(node, opts)` and `t.assertTSParenthesizedType(
 AST Node `TSParenthesizedType` shape:
 - `typeAnnotation`: `TSType` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -3142,7 +3142,7 @@ AST Node `TSPropertySignature` shape:
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `TSTypeElement`
+Aliases: [`TSTypeElement`](#tstypeelement)
 
 ---
 
@@ -3158,7 +3158,7 @@ AST Node `TSQualifiedName` shape:
 - `left`: `TSEntityName` (required)
 - `right`: `Identifier` (required)
 
-Aliases: `TSEntityName`
+Aliases: [`TSEntityName`](#tsentityname)
 
 ---
 
@@ -3173,7 +3173,7 @@ See also `t.isTSRestType(node, opts)` and `t.assertTSRestType(node, opts)`.
 AST Node `TSRestType` shape:
 - `typeAnnotation`: `TSType` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -3185,7 +3185,7 @@ t.tsStringKeyword();
 
 See also `t.isTSStringKeyword(node, opts)` and `t.assertTSStringKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3197,7 +3197,7 @@ t.tsSymbolKeyword();
 
 See also `t.isTSSymbolKeyword(node, opts)` and `t.assertTSSymbolKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3209,7 +3209,7 @@ t.tsThisType();
 
 See also `t.isTSThisType(node, opts)` and `t.assertTSThisType(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3224,7 +3224,7 @@ See also `t.isTSTupleType(node, opts)` and `t.assertTSTupleType(node, opts)`.
 AST Node `TSTupleType` shape:
 - `elementTypes`: `Array<TSType | TSNamedTupleMember>` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -3242,7 +3242,7 @@ AST Node `TSTypeAliasDeclaration` shape:
 - `typeAnnotation`: `TSType` (required)
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `Statement`, `Declaration`
+Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -3271,7 +3271,7 @@ AST Node `TSTypeAssertion` shape:
 - `typeAnnotation`: `TSType` (required)
 - `expression`: `Expression` (required)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -3286,7 +3286,7 @@ See also `t.isTSTypeLiteral(node, opts)` and `t.assertTSTypeLiteral(node, opts)`
 AST Node `TSTypeLiteral` shape:
 - `members`: `Array<TSTypeElement>` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -3302,7 +3302,7 @@ AST Node `TSTypeOperator` shape:
 - `typeAnnotation`: `TSType` (required)
 - `operator`: `string` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -3360,7 +3360,7 @@ AST Node `TSTypePredicate` shape:
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 - `asserts`: `boolean` (default: `null`)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -3375,7 +3375,7 @@ See also `t.isTSTypeQuery(node, opts)` and `t.assertTSTypeQuery(node, opts)`.
 AST Node `TSTypeQuery` shape:
 - `exprName`: `TSEntityName | TSImportType` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -3391,7 +3391,7 @@ AST Node `TSTypeReference` shape:
 - `typeName`: `TSEntityName` (required)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -3403,7 +3403,7 @@ t.tsUndefinedKeyword();
 
 See also `t.isTSUndefinedKeyword(node, opts)` and `t.assertTSUndefinedKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3418,7 +3418,7 @@ See also `t.isTSUnionType(node, opts)` and `t.assertTSUnionType(node, opts)`.
 AST Node `TSUnionType` shape:
 - `types`: `Array<TSType>` (required)
 
-Aliases: `TSType`
+Aliases: [`TSType`](#tstype)
 
 ---
 
@@ -3430,7 +3430,7 @@ t.tsUnknownKeyword();
 
 See also `t.isTSUnknownKeyword(node, opts)` and `t.assertTSUnknownKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3442,7 +3442,7 @@ t.tsVoidKeyword();
 
 See also `t.isTSVoidKeyword(node, opts)` and `t.assertTSVoidKeyword(node, opts)`.
 
-Aliases: `TSType`, `TSBaseType`
+Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3459,7 +3459,7 @@ AST Node `TaggedTemplateExpression` shape:
 - `quasi`: `TemplateLiteral` (required)
 - `typeParameters`: `TypeParameterInstantiation | TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -3489,7 +3489,7 @@ AST Node `TemplateLiteral` shape:
 - `quasis`: `Array<TemplateElement>` (required)
 - `expressions`: `Array<Expression | TSType>` (required)
 
-Aliases: `Expression`, `Literal`
+Aliases: [`Expression`](#expression), [`Literal`](#literal)
 
 ---
 
@@ -3501,7 +3501,7 @@ t.thisExpression();
 
 See also `t.isThisExpression(node, opts)` and `t.assertThisExpression(node, opts)`.
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -3513,7 +3513,7 @@ t.thisTypeAnnotation();
 
 See also `t.isThisTypeAnnotation(node, opts)` and `t.assertThisTypeAnnotation(node, opts)`.
 
-Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowbaseannotation)
 
 ---
 
@@ -3528,7 +3528,7 @@ See also `t.isThrowStatement(node, opts)` and `t.assertThrowStatement(node, opts
 AST Node `ThrowStatement` shape:
 - `argument`: `Expression` (required)
 
-Aliases: `Statement`, `Terminatorless`, `CompletionStatement`
+Aliases: [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
 
 ---
 
@@ -3545,7 +3545,7 @@ AST Node `TryStatement` shape:
 - `handler`: `CatchClause` (default: `null`)
 - `finalizer`: `BlockStatement` (default: `null`)
 
-Aliases: `Statement`
+Aliases: [`Statement`](#statement)
 
 ---
 
@@ -3560,7 +3560,7 @@ See also `t.isTupleExpression(node, opts)` and `t.assertTupleExpression(node, op
 AST Node `TupleExpression` shape:
 - `elements`: `Array<Expression | SpreadElement>` (default: `[]`)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -3575,7 +3575,7 @@ See also `t.isTupleTypeAnnotation(node, opts)` and `t.assertTupleTypeAnnotation(
 AST Node `TupleTypeAnnotation` shape:
 - `types`: `Array<FlowType>` (required)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -3592,7 +3592,7 @@ AST Node `TypeAlias` shape:
 - `typeParameters`: `TypeParameterDeclaration` (default: `null`)
 - `right`: `FlowType` (required)
 
-Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
+Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -3607,7 +3607,7 @@ See also `t.isTypeAnnotation(node, opts)` and `t.assertTypeAnnotation(node, opts
 AST Node `TypeAnnotation` shape:
 - `typeAnnotation`: `FlowType` (required)
 
-Aliases: `Flow`
+Aliases: [`Flow`](#flow)
 
 ---
 
@@ -3623,7 +3623,7 @@ AST Node `TypeCastExpression` shape:
 - `expression`: `Expression` (required)
 - `typeAnnotation`: `TypeAnnotation` (required)
 
-Aliases: `Flow`, `ExpressionWrapper`, `Expression`
+Aliases: [`Flow`](#flow), [`ExpressionWrapper`](#expressionwrapper), [`Expression`](#expression)
 
 ---
 
@@ -3641,7 +3641,7 @@ AST Node `TypeParameter` shape:
 - `variance`: `Variance` (default: `null`)
 - `name`: `string` (required)
 
-Aliases: `Flow`
+Aliases: [`Flow`](#flow)
 
 ---
 
@@ -3656,7 +3656,7 @@ See also `t.isTypeParameterDeclaration(node, opts)` and `t.assertTypeParameterDe
 AST Node `TypeParameterDeclaration` shape:
 - `params`: `Array<TypeParameter>` (required)
 
-Aliases: `Flow`
+Aliases: [`Flow`](#flow)
 
 ---
 
@@ -3671,7 +3671,7 @@ See also `t.isTypeParameterInstantiation(node, opts)` and `t.assertTypeParameter
 AST Node `TypeParameterInstantiation` shape:
 - `params`: `Array<FlowType>` (required)
 
-Aliases: `Flow`
+Aliases: [`Flow`](#flow)
 
 ---
 
@@ -3686,7 +3686,7 @@ See also `t.isTypeofTypeAnnotation(node, opts)` and `t.assertTypeofTypeAnnotatio
 AST Node `TypeofTypeAnnotation` shape:
 - `argument`: `FlowType` (required)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -3703,7 +3703,7 @@ AST Node `UnaryExpression` shape:
 - `argument`: `Expression` (required)
 - `prefix`: `boolean` (default: `true`)
 
-Aliases: `UnaryLike`, `Expression`
+Aliases: [`UnaryLike`](#unarylike), [`Expression`](#expression)
 
 ---
 
@@ -3718,7 +3718,7 @@ See also `t.isUnionTypeAnnotation(node, opts)` and `t.assertUnionTypeAnnotation(
 AST Node `UnionTypeAnnotation` shape:
 - `types`: `Array<FlowType>` (required)
 
-Aliases: `Flow`, `FlowType`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -3735,7 +3735,7 @@ AST Node `UpdateExpression` shape:
 - `argument`: `Expression` (required)
 - `prefix`: `boolean` (default: `false`)
 
-Aliases: `Expression`
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -3765,7 +3765,7 @@ AST Node `VariableDeclaration` shape:
 - `declarations`: `Array<VariableDeclarator>` (required)
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: `Statement`, `Declaration`
+Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -3795,7 +3795,7 @@ See also `t.isVariance(node, opts)` and `t.assertVariance(node, opts)`.
 AST Node `Variance` shape:
 - `kind`: `"minus" | "plus"` (required)
 
-Aliases: `Flow`
+Aliases: [`Flow`](#flow)
 
 ---
 
@@ -3807,7 +3807,7 @@ t.voidTypeAnnotation();
 
 See also `t.isVoidTypeAnnotation(node, opts)` and `t.assertVoidTypeAnnotation(node, opts)`.
 
-Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowbaseannotation)
 
 ---
 
@@ -3823,7 +3823,7 @@ AST Node `WhileStatement` shape:
 - `test`: `Expression` (required)
 - `body`: `Statement` (required)
 
-Aliases: `Statement`, `BlockParent`, `Loop`, `While`, `Scopable`
+Aliases: [`Statement`](#statement), [`BlockParent`](#blockparent), [`Loop`](#loop), [`While`](#while), [`Scopable`](#scopable)
 
 ---
 
@@ -3839,7 +3839,7 @@ AST Node `WithStatement` shape:
 - `object`: `Expression` (required)
 - `body`: `Statement` (required)
 
-Aliases: `Statement`
+Aliases: [`Statement`](#statement)
 
 ---
 
@@ -3855,7 +3855,7 @@ AST Node `YieldExpression` shape:
 - `argument`: `Expression` (default: `null`)
 - `delegate`: `boolean` (default: `false`)
 
-Aliases: `Expression`, `Terminatorless`
+Aliases: [`Expression`](#expression), [`Terminatorless`](#terminatorless)
 
 ---
 
@@ -3869,8 +3869,8 @@ t.isBinary(node);
 ```
 
 Covered nodes: 
-- `BinaryExpression`
-- `LogicalExpression`
+- [`BinaryExpression`](#binaryexpression)
+- [`LogicalExpression`](#logicalexpression)
 
 #### Block
 
@@ -3880,9 +3880,9 @@ t.isBlock(node);
 ```
 
 Covered nodes: 
-- `BlockStatement`
-- `Program`
-- `TSModuleBlock`
+- [`BlockStatement`](#blockstatement)
+- [`Program`](#program)
+- [`TSModuleBlock`](#tsmoduleblock)
 
 #### BlockParent
 
@@ -3892,23 +3892,23 @@ t.isBlockParent(node);
 ```
 
 Covered nodes: 
-- `ArrowFunctionExpression`
-- `BlockStatement`
-- `CatchClause`
-- `ClassMethod`
-- `ClassPrivateMethod`
-- `DoWhileStatement`
-- `ForInStatement`
-- `ForOfStatement`
-- `ForStatement`
-- `FunctionDeclaration`
-- `FunctionExpression`
-- `ObjectMethod`
-- `Program`
-- `StaticBlock`
-- `SwitchStatement`
-- `TSModuleBlock`
-- `WhileStatement`
+- [`ArrowFunctionExpression`](#arrowfunctionexpression)
+- [`BlockStatement`](#blockstatement)
+- [`CatchClause`](#catchclause)
+- [`ClassMethod`](#classmethod)
+- [`ClassPrivateMethod`](#classprivatemethod)
+- [`DoWhileStatement`](#dowhilestatement)
+- [`ForInStatement`](#forinstatement)
+- [`ForOfStatement`](#forofstatement)
+- [`ForStatement`](#forstatement)
+- [`FunctionDeclaration`](#functiondeclaration)
+- [`FunctionExpression`](#functionexpression)
+- [`ObjectMethod`](#objectmethod)
+- [`Program`](#program)
+- [`StaticBlock`](#staticblock)
+- [`SwitchStatement`](#switchstatement)
+- [`TSModuleBlock`](#tsmoduleblock)
+- [`WhileStatement`](#whilestatement)
 
 #### Class
 
@@ -3918,8 +3918,8 @@ t.isClass(node);
 ```
 
 Covered nodes: 
-- `ClassDeclaration`
-- `ClassExpression`
+- [`ClassDeclaration`](#classdeclaration)
+- [`ClassExpression`](#classexpression)
 
 #### CompletionStatement
 
@@ -3929,10 +3929,10 @@ t.isCompletionStatement(node);
 ```
 
 Covered nodes: 
-- `BreakStatement`
-- `ContinueStatement`
-- `ReturnStatement`
-- `ThrowStatement`
+- [`BreakStatement`](#breakstatement)
+- [`ContinueStatement`](#continuestatement)
+- [`ReturnStatement`](#returnstatement)
+- [`ThrowStatement`](#throwstatement)
 
 #### Conditional
 
@@ -3942,8 +3942,8 @@ t.isConditional(node);
 ```
 
 Covered nodes: 
-- `ConditionalExpression`
-- `IfStatement`
+- [`ConditionalExpression`](#conditionalexpression)
+- [`IfStatement`](#ifstatement)
 
 #### Declaration
 
@@ -3953,32 +3953,32 @@ t.isDeclaration(node);
 ```
 
 Covered nodes: 
-- `ClassDeclaration`
-- `DeclareClass`
-- `DeclareExportAllDeclaration`
-- `DeclareExportDeclaration`
-- `DeclareFunction`
-- `DeclareInterface`
-- `DeclareModule`
-- `DeclareModuleExports`
-- `DeclareOpaqueType`
-- `DeclareTypeAlias`
-- `DeclareVariable`
-- `EnumDeclaration`
-- `ExportAllDeclaration`
-- `ExportDefaultDeclaration`
-- `ExportNamedDeclaration`
-- `FunctionDeclaration`
-- `ImportDeclaration`
-- `InterfaceDeclaration`
-- `OpaqueType`
-- `TSDeclareFunction`
-- `TSEnumDeclaration`
-- `TSInterfaceDeclaration`
-- `TSModuleDeclaration`
-- `TSTypeAliasDeclaration`
-- `TypeAlias`
-- `VariableDeclaration`
+- [`ClassDeclaration`](#classdeclaration)
+- [`DeclareClass`](#declareclass)
+- [`DeclareExportAllDeclaration`](#declareexportalldeclaration)
+- [`DeclareExportDeclaration`](#declareexportdeclaration)
+- [`DeclareFunction`](#declarefunction)
+- [`DeclareInterface`](#declareinterface)
+- [`DeclareModule`](#declaremodule)
+- [`DeclareModuleExports`](#declaremoduleexports)
+- [`DeclareOpaqueType`](#declareopaquetype)
+- [`DeclareTypeAlias`](#declaretypealias)
+- [`DeclareVariable`](#declarevariable)
+- [`EnumDeclaration`](#enumdeclaration)
+- [`ExportAllDeclaration`](#exportalldeclaration)
+- [`ExportDefaultDeclaration`](#exportdefaultdeclaration)
+- [`ExportNamedDeclaration`](#exportnameddeclaration)
+- [`FunctionDeclaration`](#functiondeclaration)
+- [`ImportDeclaration`](#importdeclaration)
+- [`InterfaceDeclaration`](#interfacedeclaration)
+- [`OpaqueType`](#opaquetype)
+- [`TSDeclareFunction`](#tsdeclarefunction)
+- [`TSEnumDeclaration`](#tsenumdeclaration)
+- [`TSInterfaceDeclaration`](#tsinterfacedeclaration)
+- [`TSModuleDeclaration`](#tsmoduledeclaration)
+- [`TSTypeAliasDeclaration`](#tstypealiasdeclaration)
+- [`TypeAlias`](#typealias)
+- [`VariableDeclaration`](#variabledeclaration)
 
 #### EnumBody
 
@@ -3988,10 +3988,10 @@ t.isEnumBody(node);
 ```
 
 Covered nodes: 
-- `EnumBooleanBody`
-- `EnumNumberBody`
-- `EnumStringBody`
-- `EnumSymbolBody`
+- [`EnumBooleanBody`](#enumbooleanbody)
+- [`EnumNumberBody`](#enumnumberbody)
+- [`EnumStringBody`](#enumstringbody)
+- [`EnumSymbolBody`](#enumsymbolbody)
 
 #### EnumMember
 
@@ -4001,10 +4001,10 @@ t.isEnumMember(node);
 ```
 
 Covered nodes: 
-- `EnumBooleanMember`
-- `EnumDefaultedMember`
-- `EnumNumberMember`
-- `EnumStringMember`
+- [`EnumBooleanMember`](#enumbooleanmember)
+- [`EnumDefaultedMember`](#enumdefaultedmember)
+- [`EnumNumberMember`](#enumnumbermember)
+- [`EnumStringMember`](#enumstringmember)
 
 #### ExportDeclaration
 
@@ -4014,9 +4014,9 @@ t.isExportDeclaration(node);
 ```
 
 Covered nodes: 
-- `ExportAllDeclaration`
-- `ExportDefaultDeclaration`
-- `ExportNamedDeclaration`
+- [`ExportAllDeclaration`](#exportalldeclaration)
+- [`ExportDefaultDeclaration`](#exportdefaultdeclaration)
+- [`ExportNamedDeclaration`](#exportnameddeclaration)
 
 #### Expression
 
@@ -4026,52 +4026,52 @@ t.isExpression(node);
 ```
 
 Covered nodes: 
-- `ArrayExpression`
-- `ArrowFunctionExpression`
-- `AssignmentExpression`
-- `AwaitExpression`
-- `BigIntLiteral`
-- `BinaryExpression`
-- `BindExpression`
-- `BooleanLiteral`
-- `CallExpression`
-- `ClassExpression`
-- `ConditionalExpression`
-- `DecimalLiteral`
-- `DoExpression`
-- `FunctionExpression`
-- `Identifier`
-- `Import`
-- `JSXElement`
-- `JSXFragment`
-- `LogicalExpression`
-- `MemberExpression`
-- `MetaProperty`
-- `ModuleExpression`
-- `NewExpression`
-- `NullLiteral`
-- `NumericLiteral`
-- `ObjectExpression`
-- `OptionalCallExpression`
-- `OptionalMemberExpression`
-- `ParenthesizedExpression`
-- `PipelinePrimaryTopicReference`
-- `RecordExpression`
-- `RegExpLiteral`
-- `SequenceExpression`
-- `StringLiteral`
-- `Super`
-- `TSAsExpression`
-- `TSNonNullExpression`
-- `TSTypeAssertion`
-- `TaggedTemplateExpression`
-- `TemplateLiteral`
-- `ThisExpression`
-- `TupleExpression`
-- `TypeCastExpression`
-- `UnaryExpression`
-- `UpdateExpression`
-- `YieldExpression`
+- [`ArrayExpression`](#arrayexpression)
+- [`ArrowFunctionExpression`](#arrowfunctionexpression)
+- [`AssignmentExpression`](#assignmentexpression)
+- [`AwaitExpression`](#awaitexpression)
+- [`BigIntLiteral`](#bigintliteral)
+- [`BinaryExpression`](#binaryexpression)
+- [`BindExpression`](#bindexpression)
+- [`BooleanLiteral`](#booleanliteral)
+- [`CallExpression`](#callexpression)
+- [`ClassExpression`](#classexpression)
+- [`ConditionalExpression`](#conditionalexpression)
+- [`DecimalLiteral`](#decimalliteral)
+- [`DoExpression`](#doexpression)
+- [`FunctionExpression`](#functionexpression)
+- [`Identifier`](#identifier)
+- [`Import`](#import)
+- [`JSXElement`](#jsxelement)
+- [`JSXFragment`](#jsxfragment)
+- [`LogicalExpression`](#logicalexpression)
+- [`MemberExpression`](#memberexpression)
+- [`MetaProperty`](#metaproperty)
+- [`ModuleExpression`](#moduleexpression)
+- [`NewExpression`](#newexpression)
+- [`NullLiteral`](#nullliteral)
+- [`NumericLiteral`](#numericliteral)
+- [`ObjectExpression`](#objectexpression)
+- [`OptionalCallExpression`](#optionalcallexpression)
+- [`OptionalMemberExpression`](#optionalmemberexpression)
+- [`ParenthesizedExpression`](#parenthesizedexpression)
+- [`PipelinePrimaryTopicReference`](#pipelineprimarytopicreference)
+- [`RecordExpression`](#recordexpression)
+- [`RegExpLiteral`](#regexpliteral)
+- [`SequenceExpression`](#sequenceexpression)
+- [`StringLiteral`](#stringliteral)
+- [`Super`](#super)
+- [`TSAsExpression`](#tsasexpression)
+- [`TSNonNullExpression`](#tsnonnullexpression)
+- [`TSTypeAssertion`](#tstypeassertion)
+- [`TaggedTemplateExpression`](#taggedtemplateexpression)
+- [`TemplateLiteral`](#templateliteral)
+- [`ThisExpression`](#thisexpression)
+- [`TupleExpression`](#tupleexpression)
+- [`TypeCastExpression`](#typecastexpression)
+- [`UnaryExpression`](#unaryexpression)
+- [`UpdateExpression`](#updateexpression)
+- [`YieldExpression`](#yieldexpression)
 
 #### ExpressionWrapper
 
@@ -4081,9 +4081,9 @@ t.isExpressionWrapper(node);
 ```
 
 Covered nodes: 
-- `ExpressionStatement`
-- `ParenthesizedExpression`
-- `TypeCastExpression`
+- [`ExpressionStatement`](#expressionstatement)
+- [`ParenthesizedExpression`](#parenthesizedexpression)
+- [`TypeCastExpression`](#typecastexpression)
 
 #### Flow
 
@@ -4093,60 +4093,60 @@ t.isFlow(node);
 ```
 
 Covered nodes: 
-- `AnyTypeAnnotation`
-- `ArrayTypeAnnotation`
-- `BooleanLiteralTypeAnnotation`
-- `BooleanTypeAnnotation`
-- `ClassImplements`
-- `DeclareClass`
-- `DeclareExportAllDeclaration`
-- `DeclareExportDeclaration`
-- `DeclareFunction`
-- `DeclareInterface`
-- `DeclareModule`
-- `DeclareModuleExports`
-- `DeclareOpaqueType`
-- `DeclareTypeAlias`
-- `DeclareVariable`
-- `DeclaredPredicate`
-- `EmptyTypeAnnotation`
-- `ExistsTypeAnnotation`
-- `FunctionTypeAnnotation`
-- `FunctionTypeParam`
-- `GenericTypeAnnotation`
-- `InferredPredicate`
-- `InterfaceDeclaration`
-- `InterfaceExtends`
-- `InterfaceTypeAnnotation`
-- `IntersectionTypeAnnotation`
-- `MixedTypeAnnotation`
-- `NullLiteralTypeAnnotation`
-- `NullableTypeAnnotation`
-- `NumberLiteralTypeAnnotation`
-- `NumberTypeAnnotation`
-- `ObjectTypeAnnotation`
-- `ObjectTypeCallProperty`
-- `ObjectTypeIndexer`
-- `ObjectTypeInternalSlot`
-- `ObjectTypeProperty`
-- `ObjectTypeSpreadProperty`
-- `OpaqueType`
-- `QualifiedTypeIdentifier`
-- `StringLiteralTypeAnnotation`
-- `StringTypeAnnotation`
-- `SymbolTypeAnnotation`
-- `ThisTypeAnnotation`
-- `TupleTypeAnnotation`
-- `TypeAlias`
-- `TypeAnnotation`
-- `TypeCastExpression`
-- `TypeParameter`
-- `TypeParameterDeclaration`
-- `TypeParameterInstantiation`
-- `TypeofTypeAnnotation`
-- `UnionTypeAnnotation`
-- `Variance`
-- `VoidTypeAnnotation`
+- [`AnyTypeAnnotation`](#anytypeannotation)
+- [`ArrayTypeAnnotation`](#arraytypeannotation)
+- [`BooleanLiteralTypeAnnotation`](#booleanliteraltypeannotation)
+- [`BooleanTypeAnnotation`](#booleantypeannotation)
+- [`ClassImplements`](#classimplements)
+- [`DeclareClass`](#declareclass)
+- [`DeclareExportAllDeclaration`](#declareexportalldeclaration)
+- [`DeclareExportDeclaration`](#declareexportdeclaration)
+- [`DeclareFunction`](#declarefunction)
+- [`DeclareInterface`](#declareinterface)
+- [`DeclareModule`](#declaremodule)
+- [`DeclareModuleExports`](#declaremoduleexports)
+- [`DeclareOpaqueType`](#declareopaquetype)
+- [`DeclareTypeAlias`](#declaretypealias)
+- [`DeclareVariable`](#declarevariable)
+- [`DeclaredPredicate`](#declaredpredicate)
+- [`EmptyTypeAnnotation`](#emptytypeannotation)
+- [`ExistsTypeAnnotation`](#existstypeannotation)
+- [`FunctionTypeAnnotation`](#functiontypeannotation)
+- [`FunctionTypeParam`](#functiontypeparam)
+- [`GenericTypeAnnotation`](#generictypeannotation)
+- [`InferredPredicate`](#inferredpredicate)
+- [`InterfaceDeclaration`](#interfacedeclaration)
+- [`InterfaceExtends`](#interfaceextends)
+- [`InterfaceTypeAnnotation`](#interfacetypeannotation)
+- [`IntersectionTypeAnnotation`](#intersectiontypeannotation)
+- [`MixedTypeAnnotation`](#mixedtypeannotation)
+- [`NullLiteralTypeAnnotation`](#nullliteraltypeannotation)
+- [`NullableTypeAnnotation`](#nullabletypeannotation)
+- [`NumberLiteralTypeAnnotation`](#numberliteraltypeannotation)
+- [`NumberTypeAnnotation`](#numbertypeannotation)
+- [`ObjectTypeAnnotation`](#objecttypeannotation)
+- [`ObjectTypeCallProperty`](#objecttypecallproperty)
+- [`ObjectTypeIndexer`](#objecttypeindexer)
+- [`ObjectTypeInternalSlot`](#objecttypeinternalslot)
+- [`ObjectTypeProperty`](#objecttypeproperty)
+- [`ObjectTypeSpreadProperty`](#objecttypespreadproperty)
+- [`OpaqueType`](#opaquetype)
+- [`QualifiedTypeIdentifier`](#qualifiedtypeidentifier)
+- [`StringLiteralTypeAnnotation`](#stringliteraltypeannotation)
+- [`StringTypeAnnotation`](#stringtypeannotation)
+- [`SymbolTypeAnnotation`](#symboltypeannotation)
+- [`ThisTypeAnnotation`](#thistypeannotation)
+- [`TupleTypeAnnotation`](#tupletypeannotation)
+- [`TypeAlias`](#typealias)
+- [`TypeAnnotation`](#typeannotation)
+- [`TypeCastExpression`](#typecastexpression)
+- [`TypeParameter`](#typeparameter)
+- [`TypeParameterDeclaration`](#typeparameterdeclaration)
+- [`TypeParameterInstantiation`](#typeparameterinstantiation)
+- [`TypeofTypeAnnotation`](#typeoftypeannotation)
+- [`UnionTypeAnnotation`](#uniontypeannotation)
+- [`Variance`](#variance)
+- [`VoidTypeAnnotation`](#voidtypeannotation)
 
 #### FlowBaseAnnotation
 
@@ -4156,16 +4156,16 @@ t.isFlowBaseAnnotation(node);
 ```
 
 Covered nodes: 
-- `AnyTypeAnnotation`
-- `BooleanTypeAnnotation`
-- `EmptyTypeAnnotation`
-- `MixedTypeAnnotation`
-- `NullLiteralTypeAnnotation`
-- `NumberTypeAnnotation`
-- `StringTypeAnnotation`
-- `SymbolTypeAnnotation`
-- `ThisTypeAnnotation`
-- `VoidTypeAnnotation`
+- [`AnyTypeAnnotation`](#anytypeannotation)
+- [`BooleanTypeAnnotation`](#booleantypeannotation)
+- [`EmptyTypeAnnotation`](#emptytypeannotation)
+- [`MixedTypeAnnotation`](#mixedtypeannotation)
+- [`NullLiteralTypeAnnotation`](#nullliteraltypeannotation)
+- [`NumberTypeAnnotation`](#numbertypeannotation)
+- [`StringTypeAnnotation`](#stringtypeannotation)
+- [`SymbolTypeAnnotation`](#symboltypeannotation)
+- [`ThisTypeAnnotation`](#thistypeannotation)
+- [`VoidTypeAnnotation`](#voidtypeannotation)
 
 #### FlowDeclaration
 
@@ -4175,19 +4175,19 @@ t.isFlowDeclaration(node);
 ```
 
 Covered nodes: 
-- `DeclareClass`
-- `DeclareExportAllDeclaration`
-- `DeclareExportDeclaration`
-- `DeclareFunction`
-- `DeclareInterface`
-- `DeclareModule`
-- `DeclareModuleExports`
-- `DeclareOpaqueType`
-- `DeclareTypeAlias`
-- `DeclareVariable`
-- `InterfaceDeclaration`
-- `OpaqueType`
-- `TypeAlias`
+- [`DeclareClass`](#declareclass)
+- [`DeclareExportAllDeclaration`](#declareexportalldeclaration)
+- [`DeclareExportDeclaration`](#declareexportdeclaration)
+- [`DeclareFunction`](#declarefunction)
+- [`DeclareInterface`](#declareinterface)
+- [`DeclareModule`](#declaremodule)
+- [`DeclareModuleExports`](#declaremoduleexports)
+- [`DeclareOpaqueType`](#declareopaquetype)
+- [`DeclareTypeAlias`](#declaretypealias)
+- [`DeclareVariable`](#declarevariable)
+- [`InterfaceDeclaration`](#interfacedeclaration)
+- [`OpaqueType`](#opaquetype)
+- [`TypeAlias`](#typealias)
 
 #### FlowPredicate
 
@@ -4197,8 +4197,8 @@ t.isFlowPredicate(node);
 ```
 
 Covered nodes: 
-- `DeclaredPredicate`
-- `InferredPredicate`
+- [`DeclaredPredicate`](#declaredpredicate)
+- [`InferredPredicate`](#inferredpredicate)
 
 #### FlowType
 
@@ -4208,30 +4208,30 @@ t.isFlowType(node);
 ```
 
 Covered nodes: 
-- `AnyTypeAnnotation`
-- `ArrayTypeAnnotation`
-- `BooleanLiteralTypeAnnotation`
-- `BooleanTypeAnnotation`
-- `EmptyTypeAnnotation`
-- `ExistsTypeAnnotation`
-- `FunctionTypeAnnotation`
-- `GenericTypeAnnotation`
-- `InterfaceTypeAnnotation`
-- `IntersectionTypeAnnotation`
-- `MixedTypeAnnotation`
-- `NullLiteralTypeAnnotation`
-- `NullableTypeAnnotation`
-- `NumberLiteralTypeAnnotation`
-- `NumberTypeAnnotation`
-- `ObjectTypeAnnotation`
-- `StringLiteralTypeAnnotation`
-- `StringTypeAnnotation`
-- `SymbolTypeAnnotation`
-- `ThisTypeAnnotation`
-- `TupleTypeAnnotation`
-- `TypeofTypeAnnotation`
-- `UnionTypeAnnotation`
-- `VoidTypeAnnotation`
+- [`AnyTypeAnnotation`](#anytypeannotation)
+- [`ArrayTypeAnnotation`](#arraytypeannotation)
+- [`BooleanLiteralTypeAnnotation`](#booleanliteraltypeannotation)
+- [`BooleanTypeAnnotation`](#booleantypeannotation)
+- [`EmptyTypeAnnotation`](#emptytypeannotation)
+- [`ExistsTypeAnnotation`](#existstypeannotation)
+- [`FunctionTypeAnnotation`](#functiontypeannotation)
+- [`GenericTypeAnnotation`](#generictypeannotation)
+- [`InterfaceTypeAnnotation`](#interfacetypeannotation)
+- [`IntersectionTypeAnnotation`](#intersectiontypeannotation)
+- [`MixedTypeAnnotation`](#mixedtypeannotation)
+- [`NullLiteralTypeAnnotation`](#nullliteraltypeannotation)
+- [`NullableTypeAnnotation`](#nullabletypeannotation)
+- [`NumberLiteralTypeAnnotation`](#numberliteraltypeannotation)
+- [`NumberTypeAnnotation`](#numbertypeannotation)
+- [`ObjectTypeAnnotation`](#objecttypeannotation)
+- [`StringLiteralTypeAnnotation`](#stringliteraltypeannotation)
+- [`StringTypeAnnotation`](#stringtypeannotation)
+- [`SymbolTypeAnnotation`](#symboltypeannotation)
+- [`ThisTypeAnnotation`](#thistypeannotation)
+- [`TupleTypeAnnotation`](#tupletypeannotation)
+- [`TypeofTypeAnnotation`](#typeoftypeannotation)
+- [`UnionTypeAnnotation`](#uniontypeannotation)
+- [`VoidTypeAnnotation`](#voidtypeannotation)
 
 #### For
 
@@ -4241,9 +4241,9 @@ t.isFor(node);
 ```
 
 Covered nodes: 
-- `ForInStatement`
-- `ForOfStatement`
-- `ForStatement`
+- [`ForInStatement`](#forinstatement)
+- [`ForOfStatement`](#forofstatement)
+- [`ForStatement`](#forstatement)
 
 #### ForXStatement
 
@@ -4253,8 +4253,8 @@ t.isForXStatement(node);
 ```
 
 Covered nodes: 
-- `ForInStatement`
-- `ForOfStatement`
+- [`ForInStatement`](#forinstatement)
+- [`ForOfStatement`](#forofstatement)
 
 #### Function
 
@@ -4264,12 +4264,12 @@ t.isFunction(node);
 ```
 
 Covered nodes: 
-- `ArrowFunctionExpression`
-- `ClassMethod`
-- `ClassPrivateMethod`
-- `FunctionDeclaration`
-- `FunctionExpression`
-- `ObjectMethod`
+- [`ArrowFunctionExpression`](#arrowfunctionexpression)
+- [`ClassMethod`](#classmethod)
+- [`ClassPrivateMethod`](#classprivatemethod)
+- [`FunctionDeclaration`](#functiondeclaration)
+- [`FunctionExpression`](#functionexpression)
+- [`ObjectMethod`](#objectmethod)
 
 #### FunctionParent
 
@@ -4279,12 +4279,12 @@ t.isFunctionParent(node);
 ```
 
 Covered nodes: 
-- `ArrowFunctionExpression`
-- `ClassMethod`
-- `ClassPrivateMethod`
-- `FunctionDeclaration`
-- `FunctionExpression`
-- `ObjectMethod`
+- [`ArrowFunctionExpression`](#arrowfunctionexpression)
+- [`ClassMethod`](#classmethod)
+- [`ClassPrivateMethod`](#classprivatemethod)
+- [`FunctionDeclaration`](#functiondeclaration)
+- [`FunctionExpression`](#functionexpression)
+- [`ObjectMethod`](#objectmethod)
 
 #### Immutable
 
@@ -4294,22 +4294,22 @@ t.isImmutable(node);
 ```
 
 Covered nodes: 
-- `BigIntLiteral`
-- `BooleanLiteral`
-- `DecimalLiteral`
-- `JSXAttribute`
-- `JSXClosingElement`
-- `JSXClosingFragment`
-- `JSXElement`
-- `JSXExpressionContainer`
-- `JSXFragment`
-- `JSXOpeningElement`
-- `JSXOpeningFragment`
-- `JSXSpreadChild`
-- `JSXText`
-- `NullLiteral`
-- `NumericLiteral`
-- `StringLiteral`
+- [`BigIntLiteral`](#bigintliteral)
+- [`BooleanLiteral`](#booleanliteral)
+- [`DecimalLiteral`](#decimalliteral)
+- [`JSXAttribute`](#jsxattribute)
+- [`JSXClosingElement`](#jsxclosingelement)
+- [`JSXClosingFragment`](#jsxclosingfragment)
+- [`JSXElement`](#jsxelement)
+- [`JSXExpressionContainer`](#jsxexpressioncontainer)
+- [`JSXFragment`](#jsxfragment)
+- [`JSXOpeningElement`](#jsxopeningelement)
+- [`JSXOpeningFragment`](#jsxopeningfragment)
+- [`JSXSpreadChild`](#jsxspreadchild)
+- [`JSXText`](#jsxtext)
+- [`NullLiteral`](#nullliteral)
+- [`NumericLiteral`](#numericliteral)
+- [`StringLiteral`](#stringliteral)
 
 #### JSX
 
@@ -4319,21 +4319,21 @@ t.isJSX(node);
 ```
 
 Covered nodes: 
-- `JSXAttribute`
-- `JSXClosingElement`
-- `JSXClosingFragment`
-- `JSXElement`
-- `JSXEmptyExpression`
-- `JSXExpressionContainer`
-- `JSXFragment`
-- `JSXIdentifier`
-- `JSXMemberExpression`
-- `JSXNamespacedName`
-- `JSXOpeningElement`
-- `JSXOpeningFragment`
-- `JSXSpreadAttribute`
-- `JSXSpreadChild`
-- `JSXText`
+- [`JSXAttribute`](#jsxattribute)
+- [`JSXClosingElement`](#jsxclosingelement)
+- [`JSXClosingFragment`](#jsxclosingfragment)
+- [`JSXElement`](#jsxelement)
+- [`JSXEmptyExpression`](#jsxemptyexpression)
+- [`JSXExpressionContainer`](#jsxexpressioncontainer)
+- [`JSXFragment`](#jsxfragment)
+- [`JSXIdentifier`](#jsxidentifier)
+- [`JSXMemberExpression`](#jsxmemberexpression)
+- [`JSXNamespacedName`](#jsxnamespacedname)
+- [`JSXOpeningElement`](#jsxopeningelement)
+- [`JSXOpeningFragment`](#jsxopeningfragment)
+- [`JSXSpreadAttribute`](#jsxspreadattribute)
+- [`JSXSpreadChild`](#jsxspreadchild)
+- [`JSXText`](#jsxtext)
 
 #### LVal
 
@@ -4343,13 +4343,13 @@ t.isLVal(node);
 ```
 
 Covered nodes: 
-- `ArrayPattern`
-- `AssignmentPattern`
-- `Identifier`
-- `MemberExpression`
-- `ObjectPattern`
-- `RestElement`
-- `TSParameterProperty`
+- [`ArrayPattern`](#arraypattern)
+- [`AssignmentPattern`](#assignmentpattern)
+- [`Identifier`](#identifier)
+- [`MemberExpression`](#memberexpression)
+- [`ObjectPattern`](#objectpattern)
+- [`RestElement`](#restelement)
+- [`TSParameterProperty`](#tsparameterproperty)
 
 #### Literal
 
@@ -4359,14 +4359,14 @@ t.isLiteral(node);
 ```
 
 Covered nodes: 
-- `BigIntLiteral`
-- `BooleanLiteral`
-- `DecimalLiteral`
-- `NullLiteral`
-- `NumericLiteral`
-- `RegExpLiteral`
-- `StringLiteral`
-- `TemplateLiteral`
+- [`BigIntLiteral`](#bigintliteral)
+- [`BooleanLiteral`](#booleanliteral)
+- [`DecimalLiteral`](#decimalliteral)
+- [`NullLiteral`](#nullliteral)
+- [`NumericLiteral`](#numericliteral)
+- [`RegExpLiteral`](#regexpliteral)
+- [`StringLiteral`](#stringliteral)
+- [`TemplateLiteral`](#templateliteral)
 
 #### Loop
 
@@ -4376,11 +4376,11 @@ t.isLoop(node);
 ```
 
 Covered nodes: 
-- `DoWhileStatement`
-- `ForInStatement`
-- `ForOfStatement`
-- `ForStatement`
-- `WhileStatement`
+- [`DoWhileStatement`](#dowhilestatement)
+- [`ForInStatement`](#forinstatement)
+- [`ForOfStatement`](#forofstatement)
+- [`ForStatement`](#forstatement)
+- [`WhileStatement`](#whilestatement)
 
 #### Method
 
@@ -4390,9 +4390,9 @@ t.isMethod(node);
 ```
 
 Covered nodes: 
-- `ClassMethod`
-- `ClassPrivateMethod`
-- `ObjectMethod`
+- [`ClassMethod`](#classmethod)
+- [`ClassPrivateMethod`](#classprivatemethod)
+- [`ObjectMethod`](#objectmethod)
 
 #### ModuleDeclaration
 
@@ -4402,10 +4402,10 @@ t.isModuleDeclaration(node);
 ```
 
 Covered nodes: 
-- `ExportAllDeclaration`
-- `ExportDefaultDeclaration`
-- `ExportNamedDeclaration`
-- `ImportDeclaration`
+- [`ExportAllDeclaration`](#exportalldeclaration)
+- [`ExportDefaultDeclaration`](#exportdefaultdeclaration)
+- [`ExportNamedDeclaration`](#exportnameddeclaration)
+- [`ImportDeclaration`](#importdeclaration)
 
 #### ModuleSpecifier
 
@@ -4415,12 +4415,12 @@ t.isModuleSpecifier(node);
 ```
 
 Covered nodes: 
-- `ExportDefaultSpecifier`
-- `ExportNamespaceSpecifier`
-- `ExportSpecifier`
-- `ImportDefaultSpecifier`
-- `ImportNamespaceSpecifier`
-- `ImportSpecifier`
+- [`ExportDefaultSpecifier`](#exportdefaultspecifier)
+- [`ExportNamespaceSpecifier`](#exportnamespacespecifier)
+- [`ExportSpecifier`](#exportspecifier)
+- [`ImportDefaultSpecifier`](#importdefaultspecifier)
+- [`ImportNamespaceSpecifier`](#importnamespacespecifier)
+- [`ImportSpecifier`](#importspecifier)
 
 #### ObjectMember
 
@@ -4430,8 +4430,8 @@ t.isObjectMember(node);
 ```
 
 Covered nodes: 
-- `ObjectMethod`
-- `ObjectProperty`
+- [`ObjectMethod`](#objectmethod)
+- [`ObjectProperty`](#objectproperty)
 
 #### Pattern
 
@@ -4441,9 +4441,9 @@ t.isPattern(node);
 ```
 
 Covered nodes: 
-- `ArrayPattern`
-- `AssignmentPattern`
-- `ObjectPattern`
+- [`ArrayPattern`](#arraypattern)
+- [`AssignmentPattern`](#assignmentpattern)
+- [`ObjectPattern`](#objectpattern)
 
 #### PatternLike
 
@@ -4453,11 +4453,11 @@ t.isPatternLike(node);
 ```
 
 Covered nodes: 
-- `ArrayPattern`
-- `AssignmentPattern`
-- `Identifier`
-- `ObjectPattern`
-- `RestElement`
+- [`ArrayPattern`](#arraypattern)
+- [`AssignmentPattern`](#assignmentpattern)
+- [`Identifier`](#identifier)
+- [`ObjectPattern`](#objectpattern)
+- [`RestElement`](#restelement)
 
 #### Private
 
@@ -4467,9 +4467,9 @@ t.isPrivate(node);
 ```
 
 Covered nodes: 
-- `ClassPrivateMethod`
-- `ClassPrivateProperty`
-- `PrivateName`
+- [`ClassPrivateMethod`](#classprivatemethod)
+- [`ClassPrivateProperty`](#classprivateproperty)
+- [`PrivateName`](#privatename)
 
 #### Property
 
@@ -4479,9 +4479,9 @@ t.isProperty(node);
 ```
 
 Covered nodes: 
-- `ClassPrivateProperty`
-- `ClassProperty`
-- `ObjectProperty`
+- [`ClassPrivateProperty`](#classprivateproperty)
+- [`ClassProperty`](#classproperty)
+- [`ObjectProperty`](#objectproperty)
 
 #### Pureish
 
@@ -4491,16 +4491,16 @@ t.isPureish(node);
 ```
 
 Covered nodes: 
-- `ArrowFunctionExpression`
-- `BigIntLiteral`
-- `BooleanLiteral`
-- `DecimalLiteral`
-- `FunctionDeclaration`
-- `FunctionExpression`
-- `NullLiteral`
-- `NumericLiteral`
-- `RegExpLiteral`
-- `StringLiteral`
+- [`ArrowFunctionExpression`](#arrowfunctionexpression)
+- [`BigIntLiteral`](#bigintliteral)
+- [`BooleanLiteral`](#booleanliteral)
+- [`DecimalLiteral`](#decimalliteral)
+- [`FunctionDeclaration`](#functiondeclaration)
+- [`FunctionExpression`](#functionexpression)
+- [`NullLiteral`](#nullliteral)
+- [`NumericLiteral`](#numericliteral)
+- [`RegExpLiteral`](#regexpliteral)
+- [`StringLiteral`](#stringliteral)
 
 #### Scopable
 
@@ -4510,25 +4510,25 @@ t.isScopable(node);
 ```
 
 Covered nodes: 
-- `ArrowFunctionExpression`
-- `BlockStatement`
-- `CatchClause`
-- `ClassDeclaration`
-- `ClassExpression`
-- `ClassMethod`
-- `ClassPrivateMethod`
-- `DoWhileStatement`
-- `ForInStatement`
-- `ForOfStatement`
-- `ForStatement`
-- `FunctionDeclaration`
-- `FunctionExpression`
-- `ObjectMethod`
-- `Program`
-- `StaticBlock`
-- `SwitchStatement`
-- `TSModuleBlock`
-- `WhileStatement`
+- [`ArrowFunctionExpression`](#arrowfunctionexpression)
+- [`BlockStatement`](#blockstatement)
+- [`CatchClause`](#catchclause)
+- [`ClassDeclaration`](#classdeclaration)
+- [`ClassExpression`](#classexpression)
+- [`ClassMethod`](#classmethod)
+- [`ClassPrivateMethod`](#classprivatemethod)
+- [`DoWhileStatement`](#dowhilestatement)
+- [`ForInStatement`](#forinstatement)
+- [`ForOfStatement`](#forofstatement)
+- [`ForStatement`](#forstatement)
+- [`FunctionDeclaration`](#functiondeclaration)
+- [`FunctionExpression`](#functionexpression)
+- [`ObjectMethod`](#objectmethod)
+- [`Program`](#program)
+- [`StaticBlock`](#staticblock)
+- [`SwitchStatement`](#switchstatement)
+- [`TSModuleBlock`](#tsmoduleblock)
+- [`WhileStatement`](#whilestatement)
 
 #### Statement
 
@@ -4538,53 +4538,53 @@ t.isStatement(node);
 ```
 
 Covered nodes: 
-- `BlockStatement`
-- `BreakStatement`
-- `ClassDeclaration`
-- `ContinueStatement`
-- `DebuggerStatement`
-- `DeclareClass`
-- `DeclareExportAllDeclaration`
-- `DeclareExportDeclaration`
-- `DeclareFunction`
-- `DeclareInterface`
-- `DeclareModule`
-- `DeclareModuleExports`
-- `DeclareOpaqueType`
-- `DeclareTypeAlias`
-- `DeclareVariable`
-- `DoWhileStatement`
-- `EmptyStatement`
-- `EnumDeclaration`
-- `ExportAllDeclaration`
-- `ExportDefaultDeclaration`
-- `ExportNamedDeclaration`
-- `ExpressionStatement`
-- `ForInStatement`
-- `ForOfStatement`
-- `ForStatement`
-- `FunctionDeclaration`
-- `IfStatement`
-- `ImportDeclaration`
-- `InterfaceDeclaration`
-- `LabeledStatement`
-- `OpaqueType`
-- `ReturnStatement`
-- `SwitchStatement`
-- `TSDeclareFunction`
-- `TSEnumDeclaration`
-- `TSExportAssignment`
-- `TSImportEqualsDeclaration`
-- `TSInterfaceDeclaration`
-- `TSModuleDeclaration`
-- `TSNamespaceExportDeclaration`
-- `TSTypeAliasDeclaration`
-- `ThrowStatement`
-- `TryStatement`
-- `TypeAlias`
-- `VariableDeclaration`
-- `WhileStatement`
-- `WithStatement`
+- [`BlockStatement`](#blockstatement)
+- [`BreakStatement`](#breakstatement)
+- [`ClassDeclaration`](#classdeclaration)
+- [`ContinueStatement`](#continuestatement)
+- [`DebuggerStatement`](#debuggerstatement)
+- [`DeclareClass`](#declareclass)
+- [`DeclareExportAllDeclaration`](#declareexportalldeclaration)
+- [`DeclareExportDeclaration`](#declareexportdeclaration)
+- [`DeclareFunction`](#declarefunction)
+- [`DeclareInterface`](#declareinterface)
+- [`DeclareModule`](#declaremodule)
+- [`DeclareModuleExports`](#declaremoduleexports)
+- [`DeclareOpaqueType`](#declareopaquetype)
+- [`DeclareTypeAlias`](#declaretypealias)
+- [`DeclareVariable`](#declarevariable)
+- [`DoWhileStatement`](#dowhilestatement)
+- [`EmptyStatement`](#emptystatement)
+- [`EnumDeclaration`](#enumdeclaration)
+- [`ExportAllDeclaration`](#exportalldeclaration)
+- [`ExportDefaultDeclaration`](#exportdefaultdeclaration)
+- [`ExportNamedDeclaration`](#exportnameddeclaration)
+- [`ExpressionStatement`](#expressionstatement)
+- [`ForInStatement`](#forinstatement)
+- [`ForOfStatement`](#forofstatement)
+- [`ForStatement`](#forstatement)
+- [`FunctionDeclaration`](#functiondeclaration)
+- [`IfStatement`](#ifstatement)
+- [`ImportDeclaration`](#importdeclaration)
+- [`InterfaceDeclaration`](#interfacedeclaration)
+- [`LabeledStatement`](#labeledstatement)
+- [`OpaqueType`](#opaquetype)
+- [`ReturnStatement`](#returnstatement)
+- [`SwitchStatement`](#switchstatement)
+- [`TSDeclareFunction`](#tsdeclarefunction)
+- [`TSEnumDeclaration`](#tsenumdeclaration)
+- [`TSExportAssignment`](#tsexportassignment)
+- [`TSImportEqualsDeclaration`](#tsimportequalsdeclaration)
+- [`TSInterfaceDeclaration`](#tsinterfacedeclaration)
+- [`TSModuleDeclaration`](#tsmoduledeclaration)
+- [`TSNamespaceExportDeclaration`](#tsnamespaceexportdeclaration)
+- [`TSTypeAliasDeclaration`](#tstypealiasdeclaration)
+- [`ThrowStatement`](#throwstatement)
+- [`TryStatement`](#trystatement)
+- [`TypeAlias`](#typealias)
+- [`VariableDeclaration`](#variabledeclaration)
+- [`WhileStatement`](#whilestatement)
+- [`WithStatement`](#withstatement)
 
 #### TSBaseType
 
@@ -4594,21 +4594,21 @@ t.isTSBaseType(node);
 ```
 
 Covered nodes: 
-- `TSAnyKeyword`
-- `TSBigIntKeyword`
-- `TSBooleanKeyword`
-- `TSIntrinsicKeyword`
-- `TSLiteralType`
-- `TSNeverKeyword`
-- `TSNullKeyword`
-- `TSNumberKeyword`
-- `TSObjectKeyword`
-- `TSStringKeyword`
-- `TSSymbolKeyword`
-- `TSThisType`
-- `TSUndefinedKeyword`
-- `TSUnknownKeyword`
-- `TSVoidKeyword`
+- [`TSAnyKeyword`](#tsanykeyword)
+- [`TSBigIntKeyword`](#tsbigintkeyword)
+- [`TSBooleanKeyword`](#tsbooleankeyword)
+- [`TSIntrinsicKeyword`](#tsintrinsickeyword)
+- [`TSLiteralType`](#tsliteraltype)
+- [`TSNeverKeyword`](#tsneverkeyword)
+- [`TSNullKeyword`](#tsnullkeyword)
+- [`TSNumberKeyword`](#tsnumberkeyword)
+- [`TSObjectKeyword`](#tsobjectkeyword)
+- [`TSStringKeyword`](#tsstringkeyword)
+- [`TSSymbolKeyword`](#tssymbolkeyword)
+- [`TSThisType`](#tsthistype)
+- [`TSUndefinedKeyword`](#tsundefinedkeyword)
+- [`TSUnknownKeyword`](#tsunknownkeyword)
+- [`TSVoidKeyword`](#tsvoidkeyword)
 
 #### TSEntityName
 
@@ -4618,8 +4618,8 @@ t.isTSEntityName(node);
 ```
 
 Covered nodes: 
-- `Identifier`
-- `TSQualifiedName`
+- [`Identifier`](#identifier)
+- [`TSQualifiedName`](#tsqualifiedname)
 
 #### TSType
 
@@ -4629,41 +4629,41 @@ t.isTSType(node);
 ```
 
 Covered nodes: 
-- `TSAnyKeyword`
-- `TSArrayType`
-- `TSBigIntKeyword`
-- `TSBooleanKeyword`
-- `TSConditionalType`
-- `TSConstructorType`
-- `TSExpressionWithTypeArguments`
-- `TSFunctionType`
-- `TSImportType`
-- `TSIndexedAccessType`
-- `TSInferType`
-- `TSIntersectionType`
-- `TSIntrinsicKeyword`
-- `TSLiteralType`
-- `TSMappedType`
-- `TSNeverKeyword`
-- `TSNullKeyword`
-- `TSNumberKeyword`
-- `TSObjectKeyword`
-- `TSOptionalType`
-- `TSParenthesizedType`
-- `TSRestType`
-- `TSStringKeyword`
-- `TSSymbolKeyword`
-- `TSThisType`
-- `TSTupleType`
-- `TSTypeLiteral`
-- `TSTypeOperator`
-- `TSTypePredicate`
-- `TSTypeQuery`
-- `TSTypeReference`
-- `TSUndefinedKeyword`
-- `TSUnionType`
-- `TSUnknownKeyword`
-- `TSVoidKeyword`
+- [`TSAnyKeyword`](#tsanykeyword)
+- [`TSArrayType`](#tsarraytype)
+- [`TSBigIntKeyword`](#tsbigintkeyword)
+- [`TSBooleanKeyword`](#tsbooleankeyword)
+- [`TSConditionalType`](#tsconditionaltype)
+- [`TSConstructorType`](#tsconstructortype)
+- [`TSExpressionWithTypeArguments`](#tsexpressionwithtypearguments)
+- [`TSFunctionType`](#tsfunctiontype)
+- [`TSImportType`](#tsimporttype)
+- [`TSIndexedAccessType`](#tsindexedaccesstype)
+- [`TSInferType`](#tsinfertype)
+- [`TSIntersectionType`](#tsintersectiontype)
+- [`TSIntrinsicKeyword`](#tsintrinsickeyword)
+- [`TSLiteralType`](#tsliteraltype)
+- [`TSMappedType`](#tsmappedtype)
+- [`TSNeverKeyword`](#tsneverkeyword)
+- [`TSNullKeyword`](#tsnullkeyword)
+- [`TSNumberKeyword`](#tsnumberkeyword)
+- [`TSObjectKeyword`](#tsobjectkeyword)
+- [`TSOptionalType`](#tsoptionaltype)
+- [`TSParenthesizedType`](#tsparenthesizedtype)
+- [`TSRestType`](#tsresttype)
+- [`TSStringKeyword`](#tsstringkeyword)
+- [`TSSymbolKeyword`](#tssymbolkeyword)
+- [`TSThisType`](#tsthistype)
+- [`TSTupleType`](#tstupletype)
+- [`TSTypeLiteral`](#tstypeliteral)
+- [`TSTypeOperator`](#tstypeoperator)
+- [`TSTypePredicate`](#tstypepredicate)
+- [`TSTypeQuery`](#tstypequery)
+- [`TSTypeReference`](#tstypereference)
+- [`TSUndefinedKeyword`](#tsundefinedkeyword)
+- [`TSUnionType`](#tsuniontype)
+- [`TSUnknownKeyword`](#tsunknownkeyword)
+- [`TSVoidKeyword`](#tsvoidkeyword)
 
 #### TSTypeElement
 
@@ -4673,11 +4673,11 @@ t.isTSTypeElement(node);
 ```
 
 Covered nodes: 
-- `TSCallSignatureDeclaration`
-- `TSConstructSignatureDeclaration`
-- `TSIndexSignature`
-- `TSMethodSignature`
-- `TSPropertySignature`
+- [`TSCallSignatureDeclaration`](#tscallsignaturedeclaration)
+- [`TSConstructSignatureDeclaration`](#tsconstructsignaturedeclaration)
+- [`TSIndexSignature`](#tsindexsignature)
+- [`TSMethodSignature`](#tsmethodsignature)
+- [`TSPropertySignature`](#tspropertysignature)
 
 #### Terminatorless
 
@@ -4687,12 +4687,12 @@ t.isTerminatorless(node);
 ```
 
 Covered nodes: 
-- `AwaitExpression`
-- `BreakStatement`
-- `ContinueStatement`
-- `ReturnStatement`
-- `ThrowStatement`
-- `YieldExpression`
+- [`AwaitExpression`](#awaitexpression)
+- [`BreakStatement`](#breakstatement)
+- [`ContinueStatement`](#continuestatement)
+- [`ReturnStatement`](#returnstatement)
+- [`ThrowStatement`](#throwstatement)
+- [`YieldExpression`](#yieldexpression)
 
 #### UnaryLike
 
@@ -4702,8 +4702,8 @@ t.isUnaryLike(node);
 ```
 
 Covered nodes: 
-- `SpreadElement`
-- `UnaryExpression`
+- [`SpreadElement`](#spreadelement)
+- [`UnaryExpression`](#unaryexpression)
 
 #### UserWhitespacable
 
@@ -4713,13 +4713,13 @@ t.isUserWhitespacable(node);
 ```
 
 Covered nodes: 
-- `ObjectMethod`
-- `ObjectProperty`
-- `ObjectTypeCallProperty`
-- `ObjectTypeIndexer`
-- `ObjectTypeInternalSlot`
-- `ObjectTypeProperty`
-- `ObjectTypeSpreadProperty`
+- [`ObjectMethod`](#objectmethod)
+- [`ObjectProperty`](#objectproperty)
+- [`ObjectTypeCallProperty`](#objecttypecallproperty)
+- [`ObjectTypeIndexer`](#objecttypeindexer)
+- [`ObjectTypeInternalSlot`](#objecttypeinternalslot)
+- [`ObjectTypeProperty`](#objecttypeproperty)
+- [`ObjectTypeSpreadProperty`](#objecttypespreadproperty)
 
 #### While
 
@@ -4729,5 +4729,5 @@ t.isWhile(node);
 ```
 
 Covered nodes: 
-- `DoWhileStatement`
-- `WhileStatement`
+- [`DoWhileStatement`](#dowhilestatement)
+- [`WhileStatement`](#whilestatement)
