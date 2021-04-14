@@ -22,7 +22,6 @@ t.anyTypeAnnotation();
 
 See also `t.isAnyTypeAnnotation(node, opts)` and `t.assertAnyTypeAnnotation(node, opts)`.
 
-
 Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
@@ -34,7 +33,6 @@ t.argumentPlaceholder();
 ```
 
 See also `t.isArgumentPlaceholder(node, opts)` and `t.assertArgumentPlaceholder(node, opts)`.
-
 
 ---
 
@@ -257,7 +255,6 @@ t.booleanTypeAnnotation();
 ```
 
 See also `t.isBooleanTypeAnnotation(node, opts)` and `t.assertBooleanTypeAnnotation(node, opts)`.
-
 
 Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
@@ -537,7 +534,6 @@ t.debuggerStatement();
 ```
 
 See also `t.isDebuggerStatement(node, opts)` and `t.assertDebuggerStatement(node, opts)`.
-
 
 Aliases: `Statement`
 
@@ -822,7 +818,6 @@ t.emptyStatement();
 
 See also `t.isEmptyStatement(node, opts)` and `t.assertEmptyStatement(node, opts)`.
 
-
 Aliases: `Statement`
 
 ---
@@ -834,7 +829,6 @@ t.emptyTypeAnnotation();
 ```
 
 See also `t.isEmptyTypeAnnotation(node, opts)` and `t.assertEmptyTypeAnnotation(node, opts)`.
-
 
 Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
@@ -993,7 +987,6 @@ t.existsTypeAnnotation();
 ```
 
 See also `t.isExistsTypeAnnotation(node, opts)` and `t.assertExistsTypeAnnotation(node, opts)`.
-
 
 Aliases: `Flow`, `FlowType`
 
@@ -1317,7 +1310,6 @@ t.import();
 
 See also `t.isImport(node, opts)` and `t.assertImport(node, opts)`.
 
-
 Aliases: `Expression`
 
 ---
@@ -1408,7 +1400,6 @@ t.inferredPredicate();
 ```
 
 See also `t.isInferredPredicate(node, opts)` and `t.assertInferredPredicate(node, opts)`.
-
 
 Aliases: `Flow`, `FlowPredicate`
 
@@ -1533,7 +1524,6 @@ t.jsxClosingFragment();
 
 See also `t.isJSXClosingFragment(node, opts)` and `t.assertJSXClosingFragment(node, opts)`.
 
-
 Aliases: `JSX`, `Immutable`
 
 ---
@@ -1563,7 +1553,6 @@ t.jsxEmptyExpression();
 ```
 
 See also `t.isJSXEmptyExpression(node, opts)` and `t.assertJSXEmptyExpression(node, opts)`.
-
 
 Aliases: `JSX`
 
@@ -1673,7 +1662,6 @@ t.jsxOpeningFragment();
 ```
 
 See also `t.isJSXOpeningFragment(node, opts)` and `t.assertJSXOpeningFragment(node, opts)`.
-
 
 Aliases: `JSX`, `Immutable`
 
@@ -1799,7 +1787,6 @@ t.mixedTypeAnnotation();
 
 See also `t.isMixedTypeAnnotation(node, opts)` and `t.assertMixedTypeAnnotation(node, opts)`.
 
-
 Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
@@ -1846,7 +1833,6 @@ t.noop();
 
 See also `t.isNoop(node, opts)` and `t.assertNoop(node, opts)`.
 
-
 ---
 
 ### nullLiteral
@@ -1856,7 +1842,6 @@ t.nullLiteral();
 ```
 
 See also `t.isNullLiteral(node, opts)` and `t.assertNullLiteral(node, opts)`.
-
 
 Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
 
@@ -1869,7 +1854,6 @@ t.nullLiteralTypeAnnotation();
 ```
 
 See also `t.isNullLiteralTypeAnnotation(node, opts)` and `t.assertNullLiteralTypeAnnotation(node, opts)`.
-
 
 Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
@@ -1912,7 +1896,6 @@ t.numberTypeAnnotation();
 ```
 
 See also `t.isNumberTypeAnnotation(node, opts)` and `t.assertNumberTypeAnnotation(node, opts)`.
-
 
 Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
@@ -2210,7 +2193,6 @@ t.pipelinePrimaryTopicReference();
 
 See also `t.isPipelinePrimaryTopicReference(node, opts)` and `t.assertPipelinePrimaryTopicReference(node, opts)`.
 
-
 Aliases: `Expression`
 
 ---
@@ -2438,7 +2420,6 @@ t.stringTypeAnnotation();
 
 See also `t.isStringTypeAnnotation(node, opts)` and `t.assertStringTypeAnnotation(node, opts)`.
 
-
 Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
@@ -2450,7 +2431,6 @@ t.super();
 ```
 
 See also `t.isSuper(node, opts)` and `t.assertSuper(node, opts)`.
-
 
 Aliases: `Expression`
 
@@ -2494,7 +2474,6 @@ t.symbolTypeAnnotation();
 
 See also `t.isSymbolTypeAnnotation(node, opts)` and `t.assertSymbolTypeAnnotation(node, opts)`.
 
-
 Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
@@ -2506,7 +2485,6 @@ t.tsAnyKeyword();
 ```
 
 See also `t.isTSAnyKeyword(node, opts)` and `t.assertTSAnyKeyword(node, opts)`.
-
 
 Aliases: `TSType`, `TSBaseType`
 
@@ -2551,7 +2529,6 @@ t.tsBigIntKeyword();
 
 See also `t.isTSBigIntKeyword(node, opts)` and `t.assertTSBigIntKeyword(node, opts)`.
 
-
 Aliases: `TSType`, `TSBaseType`
 
 ---
@@ -2563,7 +2540,6 @@ t.tsBooleanKeyword();
 ```
 
 See also `t.isTSBooleanKeyword(node, opts)` and `t.assertTSBooleanKeyword(node, opts)`.
-
 
 Aliases: `TSType`, `TSBaseType`
 
@@ -2917,7 +2893,6 @@ t.tsIntrinsicKeyword();
 
 See also `t.isTSIntrinsicKeyword(node, opts)` and `t.assertTSIntrinsicKeyword(node, opts)`.
 
-
 Aliases: `TSType`, `TSBaseType`
 
 ---
@@ -3047,7 +3022,6 @@ t.tsNeverKeyword();
 
 See also `t.isTSNeverKeyword(node, opts)` and `t.assertTSNeverKeyword(node, opts)`.
 
-
 Aliases: `TSType`, `TSBaseType`
 
 ---
@@ -3075,7 +3049,6 @@ t.tsNullKeyword();
 
 See also `t.isTSNullKeyword(node, opts)` and `t.assertTSNullKeyword(node, opts)`.
 
-
 Aliases: `TSType`, `TSBaseType`
 
 ---
@@ -3088,7 +3061,6 @@ t.tsNumberKeyword();
 
 See also `t.isTSNumberKeyword(node, opts)` and `t.assertTSNumberKeyword(node, opts)`.
 
-
 Aliases: `TSType`, `TSBaseType`
 
 ---
@@ -3100,7 +3072,6 @@ t.tsObjectKeyword();
 ```
 
 See also `t.isTSObjectKeyword(node, opts)` and `t.assertTSObjectKeyword(node, opts)`.
-
 
 Aliases: `TSType`, `TSBaseType`
 
@@ -3212,7 +3183,6 @@ t.tsStringKeyword();
 
 See also `t.isTSStringKeyword(node, opts)` and `t.assertTSStringKeyword(node, opts)`.
 
-
 Aliases: `TSType`, `TSBaseType`
 
 ---
@@ -3225,7 +3195,6 @@ t.tsSymbolKeyword();
 
 See also `t.isTSSymbolKeyword(node, opts)` and `t.assertTSSymbolKeyword(node, opts)`.
 
-
 Aliases: `TSType`, `TSBaseType`
 
 ---
@@ -3237,7 +3206,6 @@ t.tsThisType();
 ```
 
 See also `t.isTSThisType(node, opts)` and `t.assertTSThisType(node, opts)`.
-
 
 Aliases: `TSType`, `TSBaseType`
 
@@ -3433,7 +3401,6 @@ t.tsUndefinedKeyword();
 
 See also `t.isTSUndefinedKeyword(node, opts)` and `t.assertTSUndefinedKeyword(node, opts)`.
 
-
 Aliases: `TSType`, `TSBaseType`
 
 ---
@@ -3461,7 +3428,6 @@ t.tsUnknownKeyword();
 
 See also `t.isTSUnknownKeyword(node, opts)` and `t.assertTSUnknownKeyword(node, opts)`.
 
-
 Aliases: `TSType`, `TSBaseType`
 
 ---
@@ -3473,7 +3439,6 @@ t.tsVoidKeyword();
 ```
 
 See also `t.isTSVoidKeyword(node, opts)` and `t.assertTSVoidKeyword(node, opts)`.
-
 
 Aliases: `TSType`, `TSBaseType`
 
@@ -3534,7 +3499,6 @@ t.thisExpression();
 
 See also `t.isThisExpression(node, opts)` and `t.assertThisExpression(node, opts)`.
 
-
 Aliases: `Expression`
 
 ---
@@ -3546,7 +3510,6 @@ t.thisTypeAnnotation();
 ```
 
 See also `t.isThisTypeAnnotation(node, opts)` and `t.assertThisTypeAnnotation(node, opts)`.
-
 
 Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
@@ -3841,7 +3804,6 @@ t.voidTypeAnnotation();
 ```
 
 See also `t.isVoidTypeAnnotation(node, opts)` and `t.assertVoidTypeAnnotation(node, opts)`.
-
 
 Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
