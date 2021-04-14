@@ -12,7 +12,7 @@ Which major new features did we introduce in each Babel version? This page inclu
 
 [blog post](https://babeljs.io/blog/2021/02/22/7.13.0)
 
-- Top-level `targets` option ([RFC](https://github.com/babel/rfcs/pull/2))
+- Top-level [`targets`](https://babeljs.io/docs/en/options#output-targets) option ([RFC](https://github.com/babel/rfcs/pull/2))
 - Granular compiler assumptions ([docs](https://babeljs.io/assumptions), [RFC](https://github.com/babel/rfcs/pull/5))
 - Support for the [Records and Tuples](https://github.com/tc39/proposal-record-tuple) proposals
   ```js
