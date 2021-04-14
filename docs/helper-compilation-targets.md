@@ -4,7 +4,7 @@ title: @babel/helper-compilation-targets
 sidebar_label: helper-compilation-targets
 ---
 
-`@babel/helper-compilation-targets` is a helper set working with compilation targets and compat tables. It is used by `@babel/preset-env` to determine which plugin should be enabled based on the give [`targets`](options.md#targets) option.
+`@babel/helper-compilation-targets` is a helper package that works with compilation targets (browsers or other environments like node) and compat tables (knowing what version supports a specific syntax). It is used by `@babel/preset-env` to determine which plugin should be enabled based on the [`targets`](options.md#targets) option.
 
 ```javascript
 import {
