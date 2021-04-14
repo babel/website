@@ -295,7 +295,7 @@ You should enable these features only if you are using an older version.
 | `v7.14.0` | Added error codes |
 </details>
 
-Error codes have been introduced in `7.14.0`. This is useful if you want to handle the errors thrown by `@babel/parser` by type.
+Error codes are useful for handling the errors thrown by `@babel/parser`.
 
 There are two error codes, `code` and `reasonCode`.
 
