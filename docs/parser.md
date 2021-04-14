@@ -300,7 +300,7 @@ Error codes are useful for handling the errors thrown by `@babel/parser`.
 There are two error codes, `code` and `reasonCode`.
 
 - `code`
-  - Rough classification of errors(e.g.`BABEL_PARSER_SYNTAX_ERROR`,`BABEL_PARSER_SOURCETYPE_MODULE_REQUIRED`).
+  - Rough classification of errors (e.g. `BABEL_PARSER_SYNTAX_ERROR`, `BABEL_PARSER_SOURCETYPE_MODULE_REQUIRED`).
 - `reasonCode`
   - Detailed classification of errors(e.g.`MissingSemicolon`,`VarRedeclaration`).
 
