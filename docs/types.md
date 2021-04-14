@@ -3874,7 +3874,7 @@ Covered nodes:
 
 #### Block
 
-A cover of BlockStatement and its alike.
+Deprecated. Will be removed in Babel 8.
 ```javascript
 t.isBlock(node);
 ```
@@ -3982,7 +3982,7 @@ Covered nodes:
 
 #### EnumBody
 
-A cover of enum bodies defined in [TypeScript](https://www.typescriptlang.org/docs/handbook/enums.html) and Flow.
+A cover of Flow enum bodies.
 ```javascript
 t.isEnumBody(node);
 ```
@@ -3995,7 +3995,7 @@ Covered nodes:
 
 #### EnumMember
 
-A cover of enum membors defined in [TypeScript](https://www.typescriptlang.org/docs/handbook/enums.html) and Flow.
+A cover of Flow enum membors.
 ```javascript
 t.isEnumMember(node);
 ```
@@ -4075,7 +4075,7 @@ Covered nodes:
 
 #### ExpressionWrapper
 
-A wrapper of expression that does not have run semantics.
+A wrapper of expression that does not have runtime semantics.
 ```javascript
 t.isExpressionWrapper(node);
 ```
@@ -4288,7 +4288,7 @@ Covered nodes:
 
 #### Immutable
 
-A cover of immutable AST nodes.
+A cover of immutable objects and JSX elements. An object is [immutable](https://tc39.es/ecma262/#immutable-prototype-exotic-object) if no other properties can be defined once created.
 ```javascript
 t.isImmutable(node);
 ```
@@ -4485,7 +4485,7 @@ Covered nodes:
 
 #### Pureish
 
-A cover of AST nodes which does not have side-effect. In other words, there is no observable behaviour changes if they are evaluated more than once.
+A cover of AST nodes which do not have side-effects. In other words, there is no observable behaviour changes if they are evaluated more than once.
 ```javascript
 t.isPureish(node);
 ```
@@ -4504,7 +4504,7 @@ Covered nodes:
 
 #### Scopable
 
-A cover of [FunctionParent](#FunctionParent) and [BlockParent](#BlockParent).
+A cover of [FunctionParent](#functionparent) and [BlockParent](#blockparent).
 ```javascript
 t.isScopable(node);
 ```
@@ -4707,7 +4707,7 @@ Covered nodes:
 
 #### UserWhitespacable
 
-
+Deprecated. Will be removed in Babel 8.
 ```javascript
 t.isUserWhitespacable(node);
 ```
