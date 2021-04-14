@@ -14,7 +14,9 @@ npm install --save-dev @babel/types
 ```
 
 ## API
-### anyTypeAnnotation
+### Node Builders
+
+#### anyTypeAnnotation
 
 ```javascript
 t.anyTypeAnnotation();
@@ -26,7 +28,7 @@ Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
 
-### argumentPlaceholder
+#### argumentPlaceholder
 
 ```javascript
 t.argumentPlaceholder();
@@ -36,7 +38,7 @@ See also `t.isArgumentPlaceholder(node, opts)` and `t.assertArgumentPlaceholder(
 
 ---
 
-### arrayExpression
+#### arrayExpression
 
 ```javascript
 t.arrayExpression(elements);
@@ -51,7 +53,7 @@ Aliases: `Expression`
 
 ---
 
-### arrayPattern
+#### arrayPattern
 
 ```javascript
 t.arrayPattern(elements);
@@ -68,7 +70,7 @@ Aliases: `Pattern`, `PatternLike`, `LVal`
 
 ---
 
-### arrayTypeAnnotation
+#### arrayTypeAnnotation
 
 ```javascript
 t.arrayTypeAnnotation(elementType);
@@ -83,7 +85,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### arrowFunctionExpression
+#### arrowFunctionExpression
 
 ```javascript
 t.arrowFunctionExpression(params, body, async);
@@ -104,7 +106,7 @@ Aliases: `Scopable`, `Function`, `BlockParent`, `FunctionParent`, `Expression`, 
 
 ---
 
-### assignmentExpression
+#### assignmentExpression
 
 ```javascript
 t.assignmentExpression(operator, left, right);
@@ -121,7 +123,7 @@ Aliases: `Expression`
 
 ---
 
-### assignmentPattern
+#### assignmentPattern
 
 ```javascript
 t.assignmentPattern(left, right);
@@ -139,7 +141,7 @@ Aliases: `Pattern`, `PatternLike`, `LVal`
 
 ---
 
-### awaitExpression
+#### awaitExpression
 
 ```javascript
 t.awaitExpression(argument);
@@ -154,7 +156,7 @@ Aliases: `Expression`, `Terminatorless`
 
 ---
 
-### bigIntLiteral
+#### bigIntLiteral
 
 ```javascript
 t.bigIntLiteral(value);
@@ -169,7 +171,7 @@ Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
 
 ---
 
-### binaryExpression
+#### binaryExpression
 
 ```javascript
 t.binaryExpression(operator, left, right);
@@ -186,7 +188,7 @@ Aliases: `Binary`, `Expression`
 
 ---
 
-### bindExpression
+#### bindExpression
 
 ```javascript
 t.bindExpression(object, callee);
@@ -202,7 +204,7 @@ Aliases: `Expression`
 
 ---
 
-### blockStatement
+#### blockStatement
 
 ```javascript
 t.blockStatement(body, directives);
@@ -218,7 +220,7 @@ Aliases: `Scopable`, `BlockParent`, `Block`, `Statement`
 
 ---
 
-### booleanLiteral
+#### booleanLiteral
 
 ```javascript
 t.booleanLiteral(value);
@@ -233,7 +235,7 @@ Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
 
 ---
 
-### booleanLiteralTypeAnnotation
+#### booleanLiteralTypeAnnotation
 
 ```javascript
 t.booleanLiteralTypeAnnotation(value);
@@ -248,7 +250,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### booleanTypeAnnotation
+#### booleanTypeAnnotation
 
 ```javascript
 t.booleanTypeAnnotation();
@@ -260,7 +262,7 @@ Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
 
-### breakStatement
+#### breakStatement
 
 ```javascript
 t.breakStatement(label);
@@ -275,7 +277,7 @@ Aliases: `Statement`, `Terminatorless`, `CompletionStatement`
 
 ---
 
-### callExpression
+#### callExpression
 
 ```javascript
 t.callExpression(callee, arguments);
@@ -294,7 +296,7 @@ Aliases: `Expression`
 
 ---
 
-### catchClause
+#### catchClause
 
 ```javascript
 t.catchClause(param, body);
@@ -310,7 +312,7 @@ Aliases: `Scopable`, `BlockParent`
 
 ---
 
-### classBody
+#### classBody
 
 ```javascript
 t.classBody(body);
@@ -323,7 +325,7 @@ AST Node `ClassBody` shape:
 
 ---
 
-### classDeclaration
+#### classDeclaration
 
 ```javascript
 t.classDeclaration(id, superClass, body, decorators);
@@ -347,7 +349,7 @@ Aliases: `Scopable`, `Class`, `Statement`, `Declaration`
 
 ---
 
-### classExpression
+#### classExpression
 
 ```javascript
 t.classExpression(id, superClass, body, decorators);
@@ -369,7 +371,7 @@ Aliases: `Scopable`, `Class`, `Expression`
 
 ---
 
-### classImplements
+#### classImplements
 
 ```javascript
 t.classImplements(id, typeParameters);
@@ -385,7 +387,7 @@ Aliases: `Flow`
 
 ---
 
-### classMethod
+#### classMethod
 
 ```javascript
 t.classMethod(kind, key, params, body, computed, static, generator, async);
@@ -414,7 +416,7 @@ Aliases: `Function`, `Scopable`, `BlockParent`, `FunctionParent`, `Method`
 
 ---
 
-### classPrivateMethod
+#### classPrivateMethod
 
 ```javascript
 t.classPrivateMethod(kind, key, params, body, static);
@@ -443,7 +445,7 @@ Aliases: `Function`, `Scopable`, `BlockParent`, `FunctionParent`, `Method`, `Pri
 
 ---
 
-### classPrivateProperty
+#### classPrivateProperty
 
 ```javascript
 t.classPrivateProperty(key, value, decorators, static);
@@ -462,7 +464,7 @@ Aliases: `Property`, `Private`
 
 ---
 
-### classProperty
+#### classProperty
 
 ```javascript
 t.classProperty(key, value, typeAnnotation, decorators, computed, static);
@@ -495,7 +497,7 @@ Aliases: `Property`
 
 ---
 
-### conditionalExpression
+#### conditionalExpression
 
 ```javascript
 t.conditionalExpression(test, consequent, alternate);
@@ -512,7 +514,7 @@ Aliases: `Expression`, `Conditional`
 
 ---
 
-### continueStatement
+#### continueStatement
 
 ```javascript
 t.continueStatement(label);
@@ -527,7 +529,7 @@ Aliases: `Statement`, `Terminatorless`, `CompletionStatement`
 
 ---
 
-### debuggerStatement
+#### debuggerStatement
 
 ```javascript
 t.debuggerStatement();
@@ -539,7 +541,7 @@ Aliases: `Statement`
 
 ---
 
-### decimalLiteral
+#### decimalLiteral
 
 ```javascript
 t.decimalLiteral(value);
@@ -554,7 +556,7 @@ Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
 
 ---
 
-### declareClass
+#### declareClass
 
 ```javascript
 t.declareClass(id, typeParameters, extends, body);
@@ -574,7 +576,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### declareExportAllDeclaration
+#### declareExportAllDeclaration
 
 ```javascript
 t.declareExportAllDeclaration(source);
@@ -590,7 +592,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### declareExportDeclaration
+#### declareExportDeclaration
 
 ```javascript
 t.declareExportDeclaration(declaration, specifiers, source);
@@ -608,7 +610,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### declareFunction
+#### declareFunction
 
 ```javascript
 t.declareFunction(id);
@@ -624,7 +626,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### declareInterface
+#### declareInterface
 
 ```javascript
 t.declareInterface(id, typeParameters, extends, body);
@@ -644,7 +646,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### declareModule
+#### declareModule
 
 ```javascript
 t.declareModule(id, body, kind);
@@ -661,7 +663,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### declareModuleExports
+#### declareModuleExports
 
 ```javascript
 t.declareModuleExports(typeAnnotation);
@@ -676,7 +678,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### declareOpaqueType
+#### declareOpaqueType
 
 ```javascript
 t.declareOpaqueType(id, typeParameters, supertype);
@@ -693,7 +695,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### declareTypeAlias
+#### declareTypeAlias
 
 ```javascript
 t.declareTypeAlias(id, typeParameters, right);
@@ -710,7 +712,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### declareVariable
+#### declareVariable
 
 ```javascript
 t.declareVariable(id);
@@ -725,7 +727,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### declaredPredicate
+#### declaredPredicate
 
 ```javascript
 t.declaredPredicate(value);
@@ -740,7 +742,7 @@ Aliases: `Flow`, `FlowPredicate`
 
 ---
 
-### decorator
+#### decorator
 
 ```javascript
 t.decorator(expression);
@@ -753,7 +755,7 @@ AST Node `Decorator` shape:
 
 ---
 
-### directive
+#### directive
 
 ```javascript
 t.directive(value);
@@ -766,7 +768,7 @@ AST Node `Directive` shape:
 
 ---
 
-### directiveLiteral
+#### directiveLiteral
 
 ```javascript
 t.directiveLiteral(value);
@@ -779,7 +781,7 @@ AST Node `DirectiveLiteral` shape:
 
 ---
 
-### doExpression
+#### doExpression
 
 ```javascript
 t.doExpression(body);
@@ -794,7 +796,7 @@ Aliases: `Expression`
 
 ---
 
-### doWhileStatement
+#### doWhileStatement
 
 ```javascript
 t.doWhileStatement(test, body);
@@ -810,7 +812,7 @@ Aliases: `Statement`, `BlockParent`, `Loop`, `While`, `Scopable`
 
 ---
 
-### emptyStatement
+#### emptyStatement
 
 ```javascript
 t.emptyStatement();
@@ -822,7 +824,7 @@ Aliases: `Statement`
 
 ---
 
-### emptyTypeAnnotation
+#### emptyTypeAnnotation
 
 ```javascript
 t.emptyTypeAnnotation();
@@ -834,7 +836,7 @@ Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
 
-### enumBooleanBody
+#### enumBooleanBody
 
 ```javascript
 t.enumBooleanBody(members);
@@ -851,7 +853,7 @@ Aliases: `EnumBody`
 
 ---
 
-### enumBooleanMember
+#### enumBooleanMember
 
 ```javascript
 t.enumBooleanMember(id);
@@ -867,7 +869,7 @@ Aliases: `EnumMember`
 
 ---
 
-### enumDeclaration
+#### enumDeclaration
 
 ```javascript
 t.enumDeclaration(id, body);
@@ -883,7 +885,7 @@ Aliases: `Statement`, `Declaration`
 
 ---
 
-### enumDefaultedMember
+#### enumDefaultedMember
 
 ```javascript
 t.enumDefaultedMember(id);
@@ -898,7 +900,7 @@ Aliases: `EnumMember`
 
 ---
 
-### enumNumberBody
+#### enumNumberBody
 
 ```javascript
 t.enumNumberBody(members);
@@ -915,7 +917,7 @@ Aliases: `EnumBody`
 
 ---
 
-### enumNumberMember
+#### enumNumberMember
 
 ```javascript
 t.enumNumberMember(id, init);
@@ -931,7 +933,7 @@ Aliases: `EnumMember`
 
 ---
 
-### enumStringBody
+#### enumStringBody
 
 ```javascript
 t.enumStringBody(members);
@@ -948,7 +950,7 @@ Aliases: `EnumBody`
 
 ---
 
-### enumStringMember
+#### enumStringMember
 
 ```javascript
 t.enumStringMember(id, init);
@@ -964,7 +966,7 @@ Aliases: `EnumMember`
 
 ---
 
-### enumSymbolBody
+#### enumSymbolBody
 
 ```javascript
 t.enumSymbolBody(members);
@@ -980,7 +982,7 @@ Aliases: `EnumBody`
 
 ---
 
-### existsTypeAnnotation
+#### existsTypeAnnotation
 
 ```javascript
 t.existsTypeAnnotation();
@@ -992,7 +994,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### exportAllDeclaration
+#### exportAllDeclaration
 
 ```javascript
 t.exportAllDeclaration(source);
@@ -1009,7 +1011,7 @@ Aliases: `Statement`, `Declaration`, `ModuleDeclaration`, `ExportDeclaration`
 
 ---
 
-### exportDefaultDeclaration
+#### exportDefaultDeclaration
 
 ```javascript
 t.exportDefaultDeclaration(declaration);
@@ -1024,7 +1026,7 @@ Aliases: `Statement`, `Declaration`, `ModuleDeclaration`, `ExportDeclaration`
 
 ---
 
-### exportDefaultSpecifier
+#### exportDefaultSpecifier
 
 ```javascript
 t.exportDefaultSpecifier(exported);
@@ -1039,7 +1041,7 @@ Aliases: `ModuleSpecifier`
 
 ---
 
-### exportNamedDeclaration
+#### exportNamedDeclaration
 
 ```javascript
 t.exportNamedDeclaration(declaration, specifiers, source);
@@ -1058,7 +1060,7 @@ Aliases: `Statement`, `Declaration`, `ModuleDeclaration`, `ExportDeclaration`
 
 ---
 
-### exportNamespaceSpecifier
+#### exportNamespaceSpecifier
 
 ```javascript
 t.exportNamespaceSpecifier(exported);
@@ -1073,7 +1075,7 @@ Aliases: `ModuleSpecifier`
 
 ---
 
-### exportSpecifier
+#### exportSpecifier
 
 ```javascript
 t.exportSpecifier(local, exported);
@@ -1089,7 +1091,7 @@ Aliases: `ModuleSpecifier`
 
 ---
 
-### expressionStatement
+#### expressionStatement
 
 ```javascript
 t.expressionStatement(expression);
@@ -1104,7 +1106,7 @@ Aliases: `Statement`, `ExpressionWrapper`
 
 ---
 
-### file
+#### file
 
 ```javascript
 t.file(program, comments, tokens);
@@ -1119,7 +1121,7 @@ AST Node `File` shape:
 
 ---
 
-### forInStatement
+#### forInStatement
 
 ```javascript
 t.forInStatement(left, right, body);
@@ -1136,7 +1138,7 @@ Aliases: `Scopable`, `Statement`, `For`, `BlockParent`, `Loop`, `ForXStatement`
 
 ---
 
-### forOfStatement
+#### forOfStatement
 
 ```javascript
 t.forOfStatement(left, right, body, await);
@@ -1154,7 +1156,7 @@ Aliases: `Scopable`, `Statement`, `For`, `BlockParent`, `Loop`, `ForXStatement`
 
 ---
 
-### forStatement
+#### forStatement
 
 ```javascript
 t.forStatement(init, test, update, body);
@@ -1172,7 +1174,7 @@ Aliases: `Scopable`, `Statement`, `For`, `BlockParent`, `Loop`
 
 ---
 
-### functionDeclaration
+#### functionDeclaration
 
 ```javascript
 t.functionDeclaration(id, params, body, generator, async);
@@ -1194,7 +1196,7 @@ Aliases: `Scopable`, `Function`, `BlockParent`, `FunctionParent`, `Statement`, `
 
 ---
 
-### functionExpression
+#### functionExpression
 
 ```javascript
 t.functionExpression(id, params, body, generator, async);
@@ -1215,7 +1217,7 @@ Aliases: `Scopable`, `Function`, `BlockParent`, `FunctionParent`, `Expression`, 
 
 ---
 
-### functionTypeAnnotation
+#### functionTypeAnnotation
 
 ```javascript
 t.functionTypeAnnotation(typeParameters, params, rest, returnType);
@@ -1234,7 +1236,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### functionTypeParam
+#### functionTypeParam
 
 ```javascript
 t.functionTypeParam(name, typeAnnotation);
@@ -1251,7 +1253,7 @@ Aliases: `Flow`
 
 ---
 
-### genericTypeAnnotation
+#### genericTypeAnnotation
 
 ```javascript
 t.genericTypeAnnotation(id, typeParameters);
@@ -1267,7 +1269,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### identifier
+#### identifier
 
 ```javascript
 t.identifier(name);
@@ -1285,7 +1287,7 @@ Aliases: `Expression`, `PatternLike`, `LVal`, `TSEntityName`
 
 ---
 
-### ifStatement
+#### ifStatement
 
 ```javascript
 t.ifStatement(test, consequent, alternate);
@@ -1302,7 +1304,7 @@ Aliases: `Statement`, `Conditional`
 
 ---
 
-### import
+#### import
 
 ```javascript
 t.import();
@@ -1314,7 +1316,7 @@ Aliases: `Expression`
 
 ---
 
-### importAttribute
+#### importAttribute
 
 ```javascript
 t.importAttribute(key, value);
@@ -1328,7 +1330,7 @@ AST Node `ImportAttribute` shape:
 
 ---
 
-### importDeclaration
+#### importDeclaration
 
 ```javascript
 t.importDeclaration(specifiers, source);
@@ -1346,7 +1348,7 @@ Aliases: `Statement`, `Declaration`, `ModuleDeclaration`
 
 ---
 
-### importDefaultSpecifier
+#### importDefaultSpecifier
 
 ```javascript
 t.importDefaultSpecifier(local);
@@ -1361,7 +1363,7 @@ Aliases: `ModuleSpecifier`
 
 ---
 
-### importNamespaceSpecifier
+#### importNamespaceSpecifier
 
 ```javascript
 t.importNamespaceSpecifier(local);
@@ -1376,7 +1378,7 @@ Aliases: `ModuleSpecifier`
 
 ---
 
-### importSpecifier
+#### importSpecifier
 
 ```javascript
 t.importSpecifier(local, imported);
@@ -1393,7 +1395,7 @@ Aliases: `ModuleSpecifier`
 
 ---
 
-### inferredPredicate
+#### inferredPredicate
 
 ```javascript
 t.inferredPredicate();
@@ -1405,7 +1407,7 @@ Aliases: `Flow`, `FlowPredicate`
 
 ---
 
-### interfaceDeclaration
+#### interfaceDeclaration
 
 ```javascript
 t.interfaceDeclaration(id, typeParameters, extends, body);
@@ -1425,7 +1427,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### interfaceExtends
+#### interfaceExtends
 
 ```javascript
 t.interfaceExtends(id, typeParameters);
@@ -1441,7 +1443,7 @@ Aliases: `Flow`
 
 ---
 
-### interfaceTypeAnnotation
+#### interfaceTypeAnnotation
 
 ```javascript
 t.interfaceTypeAnnotation(extends, body);
@@ -1457,7 +1459,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### interpreterDirective
+#### interpreterDirective
 
 ```javascript
 t.interpreterDirective(value);
@@ -1470,7 +1472,7 @@ AST Node `InterpreterDirective` shape:
 
 ---
 
-### intersectionTypeAnnotation
+#### intersectionTypeAnnotation
 
 ```javascript
 t.intersectionTypeAnnotation(types);
@@ -1485,7 +1487,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### jsxAttribute
+#### jsxAttribute
 
 ```javascript
 t.jsxAttribute(name, value);
@@ -1501,7 +1503,7 @@ Aliases: `JSX`, `Immutable`
 
 ---
 
-### jsxClosingElement
+#### jsxClosingElement
 
 ```javascript
 t.jsxClosingElement(name);
@@ -1516,7 +1518,7 @@ Aliases: `JSX`, `Immutable`
 
 ---
 
-### jsxClosingFragment
+#### jsxClosingFragment
 
 ```javascript
 t.jsxClosingFragment();
@@ -1528,7 +1530,7 @@ Aliases: `JSX`, `Immutable`
 
 ---
 
-### jsxElement
+#### jsxElement
 
 ```javascript
 t.jsxElement(openingElement, closingElement, children, selfClosing);
@@ -1546,7 +1548,7 @@ Aliases: `JSX`, `Immutable`, `Expression`
 
 ---
 
-### jsxEmptyExpression
+#### jsxEmptyExpression
 
 ```javascript
 t.jsxEmptyExpression();
@@ -1558,7 +1560,7 @@ Aliases: `JSX`
 
 ---
 
-### jsxExpressionContainer
+#### jsxExpressionContainer
 
 ```javascript
 t.jsxExpressionContainer(expression);
@@ -1573,7 +1575,7 @@ Aliases: `JSX`, `Immutable`
 
 ---
 
-### jsxFragment
+#### jsxFragment
 
 ```javascript
 t.jsxFragment(openingFragment, closingFragment, children);
@@ -1590,7 +1592,7 @@ Aliases: `JSX`, `Immutable`, `Expression`
 
 ---
 
-### jsxIdentifier
+#### jsxIdentifier
 
 ```javascript
 t.jsxIdentifier(name);
@@ -1605,7 +1607,7 @@ Aliases: `JSX`
 
 ---
 
-### jsxMemberExpression
+#### jsxMemberExpression
 
 ```javascript
 t.jsxMemberExpression(object, property);
@@ -1621,7 +1623,7 @@ Aliases: `JSX`
 
 ---
 
-### jsxNamespacedName
+#### jsxNamespacedName
 
 ```javascript
 t.jsxNamespacedName(namespace, name);
@@ -1637,7 +1639,7 @@ Aliases: `JSX`
 
 ---
 
-### jsxOpeningElement
+#### jsxOpeningElement
 
 ```javascript
 t.jsxOpeningElement(name, attributes, selfClosing);
@@ -1655,7 +1657,7 @@ Aliases: `JSX`, `Immutable`
 
 ---
 
-### jsxOpeningFragment
+#### jsxOpeningFragment
 
 ```javascript
 t.jsxOpeningFragment();
@@ -1667,7 +1669,7 @@ Aliases: `JSX`, `Immutable`
 
 ---
 
-### jsxSpreadAttribute
+#### jsxSpreadAttribute
 
 ```javascript
 t.jsxSpreadAttribute(argument);
@@ -1682,7 +1684,7 @@ Aliases: `JSX`
 
 ---
 
-### jsxSpreadChild
+#### jsxSpreadChild
 
 ```javascript
 t.jsxSpreadChild(expression);
@@ -1697,7 +1699,7 @@ Aliases: `JSX`, `Immutable`
 
 ---
 
-### jsxText
+#### jsxText
 
 ```javascript
 t.jsxText(value);
@@ -1712,7 +1714,7 @@ Aliases: `JSX`, `Immutable`
 
 ---
 
-### labeledStatement
+#### labeledStatement
 
 ```javascript
 t.labeledStatement(label, body);
@@ -1728,7 +1730,7 @@ Aliases: `Statement`
 
 ---
 
-### logicalExpression
+#### logicalExpression
 
 ```javascript
 t.logicalExpression(operator, left, right);
@@ -1745,7 +1747,7 @@ Aliases: `Binary`, `Expression`
 
 ---
 
-### memberExpression
+#### memberExpression
 
 ```javascript
 t.memberExpression(object, property, computed, optional);
@@ -1763,7 +1765,7 @@ Aliases: `Expression`, `LVal`
 
 ---
 
-### metaProperty
+#### metaProperty
 
 ```javascript
 t.metaProperty(meta, property);
@@ -1779,7 +1781,7 @@ Aliases: `Expression`
 
 ---
 
-### mixedTypeAnnotation
+#### mixedTypeAnnotation
 
 ```javascript
 t.mixedTypeAnnotation();
@@ -1791,7 +1793,7 @@ Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
 
-### moduleExpression
+#### moduleExpression
 
 ```javascript
 t.moduleExpression(body);
@@ -1806,7 +1808,7 @@ Aliases: `Expression`
 
 ---
 
-### newExpression
+#### newExpression
 
 ```javascript
 t.newExpression(callee, arguments);
@@ -1825,7 +1827,7 @@ Aliases: `Expression`
 
 ---
 
-### noop
+#### noop
 
 ```javascript
 t.noop();
@@ -1835,7 +1837,7 @@ See also `t.isNoop(node, opts)` and `t.assertNoop(node, opts)`.
 
 ---
 
-### nullLiteral
+#### nullLiteral
 
 ```javascript
 t.nullLiteral();
@@ -1847,7 +1849,7 @@ Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
 
 ---
 
-### nullLiteralTypeAnnotation
+#### nullLiteralTypeAnnotation
 
 ```javascript
 t.nullLiteralTypeAnnotation();
@@ -1859,7 +1861,7 @@ Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
 
-### nullableTypeAnnotation
+#### nullableTypeAnnotation
 
 ```javascript
 t.nullableTypeAnnotation(typeAnnotation);
@@ -1874,7 +1876,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### numberLiteralTypeAnnotation
+#### numberLiteralTypeAnnotation
 
 ```javascript
 t.numberLiteralTypeAnnotation(value);
@@ -1889,7 +1891,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### numberTypeAnnotation
+#### numberTypeAnnotation
 
 ```javascript
 t.numberTypeAnnotation();
@@ -1901,7 +1903,7 @@ Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
 
-### numericLiteral
+#### numericLiteral
 
 ```javascript
 t.numericLiteral(value);
@@ -1916,7 +1918,7 @@ Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
 
 ---
 
-### objectExpression
+#### objectExpression
 
 ```javascript
 t.objectExpression(properties);
@@ -1931,7 +1933,7 @@ Aliases: `Expression`
 
 ---
 
-### objectMethod
+#### objectMethod
 
 ```javascript
 t.objectMethod(kind, key, params, body, computed, generator, async);
@@ -1955,7 +1957,7 @@ Aliases: `UserWhitespacable`, `Function`, `Scopable`, `BlockParent`, `FunctionPa
 
 ---
 
-### objectPattern
+#### objectPattern
 
 ```javascript
 t.objectPattern(properties);
@@ -1972,7 +1974,7 @@ Aliases: `Pattern`, `PatternLike`, `LVal`
 
 ---
 
-### objectProperty
+#### objectProperty
 
 ```javascript
 t.objectProperty(key, value, computed, shorthand, decorators);
@@ -1991,7 +1993,7 @@ Aliases: `UserWhitespacable`, `Property`, `ObjectMember`
 
 ---
 
-### objectTypeAnnotation
+#### objectTypeAnnotation
 
 ```javascript
 t.objectTypeAnnotation(properties, indexers, callProperties, internalSlots, exact);
@@ -2011,7 +2013,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### objectTypeCallProperty
+#### objectTypeCallProperty
 
 ```javascript
 t.objectTypeCallProperty(value);
@@ -2027,7 +2029,7 @@ Aliases: `Flow`, `UserWhitespacable`
 
 ---
 
-### objectTypeIndexer
+#### objectTypeIndexer
 
 ```javascript
 t.objectTypeIndexer(id, key, value, variance);
@@ -2046,7 +2048,7 @@ Aliases: `Flow`, `UserWhitespacable`
 
 ---
 
-### objectTypeInternalSlot
+#### objectTypeInternalSlot
 
 ```javascript
 t.objectTypeInternalSlot(id, value, optional, static, method);
@@ -2065,7 +2067,7 @@ Aliases: `Flow`, `UserWhitespacable`
 
 ---
 
-### objectTypeProperty
+#### objectTypeProperty
 
 ```javascript
 t.objectTypeProperty(key, value, variance);
@@ -2087,7 +2089,7 @@ Aliases: `Flow`, `UserWhitespacable`
 
 ---
 
-### objectTypeSpreadProperty
+#### objectTypeSpreadProperty
 
 ```javascript
 t.objectTypeSpreadProperty(argument);
@@ -2102,7 +2104,7 @@ Aliases: `Flow`, `UserWhitespacable`
 
 ---
 
-### opaqueType
+#### opaqueType
 
 ```javascript
 t.opaqueType(id, typeParameters, supertype, impltype);
@@ -2120,7 +2122,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### optionalCallExpression
+#### optionalCallExpression
 
 ```javascript
 t.optionalCallExpression(callee, arguments, optional);
@@ -2139,7 +2141,7 @@ Aliases: `Expression`
 
 ---
 
-### optionalMemberExpression
+#### optionalMemberExpression
 
 ```javascript
 t.optionalMemberExpression(object, property, computed, optional);
@@ -2157,7 +2159,7 @@ Aliases: `Expression`
 
 ---
 
-### parenthesizedExpression
+#### parenthesizedExpression
 
 ```javascript
 t.parenthesizedExpression(expression);
@@ -2172,7 +2174,7 @@ Aliases: `Expression`, `ExpressionWrapper`
 
 ---
 
-### pipelineBareFunction
+#### pipelineBareFunction
 
 ```javascript
 t.pipelineBareFunction(callee);
@@ -2185,7 +2187,7 @@ AST Node `PipelineBareFunction` shape:
 
 ---
 
-### pipelinePrimaryTopicReference
+#### pipelinePrimaryTopicReference
 
 ```javascript
 t.pipelinePrimaryTopicReference();
@@ -2197,7 +2199,7 @@ Aliases: `Expression`
 
 ---
 
-### pipelineTopicExpression
+#### pipelineTopicExpression
 
 ```javascript
 t.pipelineTopicExpression(expression);
@@ -2210,7 +2212,7 @@ AST Node `PipelineTopicExpression` shape:
 
 ---
 
-### placeholder
+#### placeholder
 
 ```javascript
 t.placeholder(expectedNode, name);
@@ -2224,7 +2226,7 @@ AST Node `Placeholder` shape:
 
 ---
 
-### privateName
+#### privateName
 
 ```javascript
 t.privateName(id);
@@ -2239,7 +2241,7 @@ Aliases: `Private`
 
 ---
 
-### program
+#### program
 
 ```javascript
 t.program(body, directives, sourceType, interpreter);
@@ -2258,7 +2260,7 @@ Aliases: `Scopable`, `BlockParent`, `Block`
 
 ---
 
-### qualifiedTypeIdentifier
+#### qualifiedTypeIdentifier
 
 ```javascript
 t.qualifiedTypeIdentifier(id, qualification);
@@ -2274,7 +2276,7 @@ Aliases: `Flow`
 
 ---
 
-### recordExpression
+#### recordExpression
 
 ```javascript
 t.recordExpression(properties);
@@ -2289,7 +2291,7 @@ Aliases: `Expression`
 
 ---
 
-### regExpLiteral
+#### regExpLiteral
 
 ```javascript
 t.regExpLiteral(pattern, flags);
@@ -2305,7 +2307,7 @@ Aliases: `Expression`, `Pureish`, `Literal`
 
 ---
 
-### restElement
+#### restElement
 
 ```javascript
 t.restElement(argument);
@@ -2322,7 +2324,7 @@ Aliases: `LVal`, `PatternLike`
 
 ---
 
-### returnStatement
+#### returnStatement
 
 ```javascript
 t.returnStatement(argument);
@@ -2337,7 +2339,7 @@ Aliases: `Statement`, `Terminatorless`, `CompletionStatement`
 
 ---
 
-### sequenceExpression
+#### sequenceExpression
 
 ```javascript
 t.sequenceExpression(expressions);
@@ -2352,7 +2354,7 @@ Aliases: `Expression`
 
 ---
 
-### spreadElement
+#### spreadElement
 
 ```javascript
 t.spreadElement(argument);
@@ -2367,7 +2369,7 @@ Aliases: `UnaryLike`
 
 ---
 
-### staticBlock
+#### staticBlock
 
 ```javascript
 t.staticBlock(body);
@@ -2382,7 +2384,7 @@ Aliases: `Scopable`, `BlockParent`
 
 ---
 
-### stringLiteral
+#### stringLiteral
 
 ```javascript
 t.stringLiteral(value);
@@ -2397,7 +2399,7 @@ Aliases: `Expression`, `Pureish`, `Literal`, `Immutable`
 
 ---
 
-### stringLiteralTypeAnnotation
+#### stringLiteralTypeAnnotation
 
 ```javascript
 t.stringLiteralTypeAnnotation(value);
@@ -2412,7 +2414,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### stringTypeAnnotation
+#### stringTypeAnnotation
 
 ```javascript
 t.stringTypeAnnotation();
@@ -2424,7 +2426,7 @@ Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
 
-### super
+#### super
 
 ```javascript
 t.super();
@@ -2436,7 +2438,7 @@ Aliases: `Expression`
 
 ---
 
-### switchCase
+#### switchCase
 
 ```javascript
 t.switchCase(test, consequent);
@@ -2450,7 +2452,7 @@ AST Node `SwitchCase` shape:
 
 ---
 
-### switchStatement
+#### switchStatement
 
 ```javascript
 t.switchStatement(discriminant, cases);
@@ -2466,7 +2468,7 @@ Aliases: `Statement`, `BlockParent`, `Scopable`
 
 ---
 
-### symbolTypeAnnotation
+#### symbolTypeAnnotation
 
 ```javascript
 t.symbolTypeAnnotation();
@@ -2478,7 +2480,7 @@ Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
 
-### tsAnyKeyword
+#### tsAnyKeyword
 
 ```javascript
 t.tsAnyKeyword();
@@ -2490,7 +2492,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsArrayType
+#### tsArrayType
 
 ```javascript
 t.tsArrayType(elementType);
@@ -2505,7 +2507,7 @@ Aliases: `TSType`
 
 ---
 
-### tsAsExpression
+#### tsAsExpression
 
 ```javascript
 t.tsAsExpression(expression, typeAnnotation);
@@ -2521,7 +2523,7 @@ Aliases: `Expression`
 
 ---
 
-### tsBigIntKeyword
+#### tsBigIntKeyword
 
 ```javascript
 t.tsBigIntKeyword();
@@ -2533,7 +2535,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsBooleanKeyword
+#### tsBooleanKeyword
 
 ```javascript
 t.tsBooleanKeyword();
@@ -2545,7 +2547,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsCallSignatureDeclaration
+#### tsCallSignatureDeclaration
 
 ```javascript
 t.tsCallSignatureDeclaration(typeParameters, parameters, typeAnnotation);
@@ -2562,7 +2564,7 @@ Aliases: `TSTypeElement`
 
 ---
 
-### tsConditionalType
+#### tsConditionalType
 
 ```javascript
 t.tsConditionalType(checkType, extendsType, trueType, falseType);
@@ -2580,7 +2582,7 @@ Aliases: `TSType`
 
 ---
 
-### tsConstructSignatureDeclaration
+#### tsConstructSignatureDeclaration
 
 ```javascript
 t.tsConstructSignatureDeclaration(typeParameters, parameters, typeAnnotation);
@@ -2597,7 +2599,7 @@ Aliases: `TSTypeElement`
 
 ---
 
-### tsConstructorType
+#### tsConstructorType
 
 ```javascript
 t.tsConstructorType(typeParameters, parameters, typeAnnotation);
@@ -2615,7 +2617,7 @@ Aliases: `TSType`
 
 ---
 
-### tsDeclareFunction
+#### tsDeclareFunction
 
 ```javascript
 t.tsDeclareFunction(id, typeParameters, params, returnType);
@@ -2636,7 +2638,7 @@ Aliases: `Statement`, `Declaration`
 
 ---
 
-### tsDeclareMethod
+#### tsDeclareMethod
 
 ```javascript
 t.tsDeclareMethod(decorators, key, typeParameters, params, returnType);
@@ -2662,7 +2664,7 @@ AST Node `TSDeclareMethod` shape:
 
 ---
 
-### tsEnumDeclaration
+#### tsEnumDeclaration
 
 ```javascript
 t.tsEnumDeclaration(id, members);
@@ -2681,7 +2683,7 @@ Aliases: `Statement`, `Declaration`
 
 ---
 
-### tsEnumMember
+#### tsEnumMember
 
 ```javascript
 t.tsEnumMember(id, initializer);
@@ -2695,7 +2697,7 @@ AST Node `TSEnumMember` shape:
 
 ---
 
-### tsExportAssignment
+#### tsExportAssignment
 
 ```javascript
 t.tsExportAssignment(expression);
@@ -2710,7 +2712,7 @@ Aliases: `Statement`
 
 ---
 
-### tsExpressionWithTypeArguments
+#### tsExpressionWithTypeArguments
 
 ```javascript
 t.tsExpressionWithTypeArguments(expression, typeParameters);
@@ -2726,7 +2728,7 @@ Aliases: `TSType`
 
 ---
 
-### tsExternalModuleReference
+#### tsExternalModuleReference
 
 ```javascript
 t.tsExternalModuleReference(expression);
@@ -2739,7 +2741,7 @@ AST Node `TSExternalModuleReference` shape:
 
 ---
 
-### tsFunctionType
+#### tsFunctionType
 
 ```javascript
 t.tsFunctionType(typeParameters, parameters, typeAnnotation);
@@ -2756,7 +2758,7 @@ Aliases: `TSType`
 
 ---
 
-### tsImportEqualsDeclaration
+#### tsImportEqualsDeclaration
 
 ```javascript
 t.tsImportEqualsDeclaration(id, moduleReference);
@@ -2773,7 +2775,7 @@ Aliases: `Statement`
 
 ---
 
-### tsImportType
+#### tsImportType
 
 ```javascript
 t.tsImportType(argument, qualifier, typeParameters);
@@ -2790,7 +2792,7 @@ Aliases: `TSType`
 
 ---
 
-### tsIndexSignature
+#### tsIndexSignature
 
 ```javascript
 t.tsIndexSignature(parameters, typeAnnotation);
@@ -2807,7 +2809,7 @@ Aliases: `TSTypeElement`
 
 ---
 
-### tsIndexedAccessType
+#### tsIndexedAccessType
 
 ```javascript
 t.tsIndexedAccessType(objectType, indexType);
@@ -2823,7 +2825,7 @@ Aliases: `TSType`
 
 ---
 
-### tsInferType
+#### tsInferType
 
 ```javascript
 t.tsInferType(typeParameter);
@@ -2838,7 +2840,7 @@ Aliases: `TSType`
 
 ---
 
-### tsInterfaceBody
+#### tsInterfaceBody
 
 ```javascript
 t.tsInterfaceBody(body);
@@ -2851,7 +2853,7 @@ AST Node `TSInterfaceBody` shape:
 
 ---
 
-### tsInterfaceDeclaration
+#### tsInterfaceDeclaration
 
 ```javascript
 t.tsInterfaceDeclaration(id, typeParameters, extends, body);
@@ -2870,7 +2872,7 @@ Aliases: `Statement`, `Declaration`
 
 ---
 
-### tsIntersectionType
+#### tsIntersectionType
 
 ```javascript
 t.tsIntersectionType(types);
@@ -2885,7 +2887,7 @@ Aliases: `TSType`
 
 ---
 
-### tsIntrinsicKeyword
+#### tsIntrinsicKeyword
 
 ```javascript
 t.tsIntrinsicKeyword();
@@ -2897,7 +2899,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsLiteralType
+#### tsLiteralType
 
 ```javascript
 t.tsLiteralType(literal);
@@ -2912,7 +2914,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsMappedType
+#### tsMappedType
 
 ```javascript
 t.tsMappedType(typeParameter, typeAnnotation, nameType);
@@ -2931,7 +2933,7 @@ Aliases: `TSType`
 
 ---
 
-### tsMethodSignature
+#### tsMethodSignature
 
 ```javascript
 t.tsMethodSignature(key, typeParameters, parameters, typeAnnotation);
@@ -2951,7 +2953,7 @@ Aliases: `TSTypeElement`
 
 ---
 
-### tsModuleBlock
+#### tsModuleBlock
 
 ```javascript
 t.tsModuleBlock(body);
@@ -2966,7 +2968,7 @@ Aliases: `Scopable`, `Block`, `BlockParent`
 
 ---
 
-### tsModuleDeclaration
+#### tsModuleDeclaration
 
 ```javascript
 t.tsModuleDeclaration(id, body);
@@ -2984,7 +2986,7 @@ Aliases: `Statement`, `Declaration`
 
 ---
 
-### tsNamedTupleMember
+#### tsNamedTupleMember
 
 ```javascript
 t.tsNamedTupleMember(label, elementType, optional);
@@ -2999,7 +3001,7 @@ AST Node `TSNamedTupleMember` shape:
 
 ---
 
-### tsNamespaceExportDeclaration
+#### tsNamespaceExportDeclaration
 
 ```javascript
 t.tsNamespaceExportDeclaration(id);
@@ -3014,7 +3016,7 @@ Aliases: `Statement`
 
 ---
 
-### tsNeverKeyword
+#### tsNeverKeyword
 
 ```javascript
 t.tsNeverKeyword();
@@ -3026,7 +3028,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsNonNullExpression
+#### tsNonNullExpression
 
 ```javascript
 t.tsNonNullExpression(expression);
@@ -3041,7 +3043,7 @@ Aliases: `Expression`
 
 ---
 
-### tsNullKeyword
+#### tsNullKeyword
 
 ```javascript
 t.tsNullKeyword();
@@ -3053,7 +3055,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsNumberKeyword
+#### tsNumberKeyword
 
 ```javascript
 t.tsNumberKeyword();
@@ -3065,7 +3067,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsObjectKeyword
+#### tsObjectKeyword
 
 ```javascript
 t.tsObjectKeyword();
@@ -3077,7 +3079,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsOptionalType
+#### tsOptionalType
 
 ```javascript
 t.tsOptionalType(typeAnnotation);
@@ -3092,7 +3094,7 @@ Aliases: `TSType`
 
 ---
 
-### tsParameterProperty
+#### tsParameterProperty
 
 ```javascript
 t.tsParameterProperty(parameter);
@@ -3109,7 +3111,7 @@ Aliases: `LVal`
 
 ---
 
-### tsParenthesizedType
+#### tsParenthesizedType
 
 ```javascript
 t.tsParenthesizedType(typeAnnotation);
@@ -3124,7 +3126,7 @@ Aliases: `TSType`
 
 ---
 
-### tsPropertySignature
+#### tsPropertySignature
 
 ```javascript
 t.tsPropertySignature(key, typeAnnotation, initializer);
@@ -3144,7 +3146,7 @@ Aliases: `TSTypeElement`
 
 ---
 
-### tsQualifiedName
+#### tsQualifiedName
 
 ```javascript
 t.tsQualifiedName(left, right);
@@ -3160,7 +3162,7 @@ Aliases: `TSEntityName`
 
 ---
 
-### tsRestType
+#### tsRestType
 
 ```javascript
 t.tsRestType(typeAnnotation);
@@ -3175,7 +3177,7 @@ Aliases: `TSType`
 
 ---
 
-### tsStringKeyword
+#### tsStringKeyword
 
 ```javascript
 t.tsStringKeyword();
@@ -3187,7 +3189,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsSymbolKeyword
+#### tsSymbolKeyword
 
 ```javascript
 t.tsSymbolKeyword();
@@ -3199,7 +3201,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsThisType
+#### tsThisType
 
 ```javascript
 t.tsThisType();
@@ -3211,7 +3213,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsTupleType
+#### tsTupleType
 
 ```javascript
 t.tsTupleType(elementTypes);
@@ -3226,7 +3228,7 @@ Aliases: `TSType`
 
 ---
 
-### tsTypeAliasDeclaration
+#### tsTypeAliasDeclaration
 
 ```javascript
 t.tsTypeAliasDeclaration(id, typeParameters, typeAnnotation);
@@ -3244,7 +3246,7 @@ Aliases: `Statement`, `Declaration`
 
 ---
 
-### tsTypeAnnotation
+#### tsTypeAnnotation
 
 ```javascript
 t.tsTypeAnnotation(typeAnnotation);
@@ -3257,7 +3259,7 @@ AST Node `TSTypeAnnotation` shape:
 
 ---
 
-### tsTypeAssertion
+#### tsTypeAssertion
 
 ```javascript
 t.tsTypeAssertion(typeAnnotation, expression);
@@ -3273,7 +3275,7 @@ Aliases: `Expression`
 
 ---
 
-### tsTypeLiteral
+#### tsTypeLiteral
 
 ```javascript
 t.tsTypeLiteral(members);
@@ -3288,7 +3290,7 @@ Aliases: `TSType`
 
 ---
 
-### tsTypeOperator
+#### tsTypeOperator
 
 ```javascript
 t.tsTypeOperator(typeAnnotation);
@@ -3304,7 +3306,7 @@ Aliases: `TSType`
 
 ---
 
-### tsTypeParameter
+#### tsTypeParameter
 
 ```javascript
 t.tsTypeParameter(constraint, default, name);
@@ -3319,7 +3321,7 @@ AST Node `TSTypeParameter` shape:
 
 ---
 
-### tsTypeParameterDeclaration
+#### tsTypeParameterDeclaration
 
 ```javascript
 t.tsTypeParameterDeclaration(params);
@@ -3332,7 +3334,7 @@ AST Node `TSTypeParameterDeclaration` shape:
 
 ---
 
-### tsTypeParameterInstantiation
+#### tsTypeParameterInstantiation
 
 ```javascript
 t.tsTypeParameterInstantiation(params);
@@ -3345,7 +3347,7 @@ AST Node `TSTypeParameterInstantiation` shape:
 
 ---
 
-### tsTypePredicate
+#### tsTypePredicate
 
 ```javascript
 t.tsTypePredicate(parameterName, typeAnnotation, asserts);
@@ -3362,7 +3364,7 @@ Aliases: `TSType`
 
 ---
 
-### tsTypeQuery
+#### tsTypeQuery
 
 ```javascript
 t.tsTypeQuery(exprName);
@@ -3377,7 +3379,7 @@ Aliases: `TSType`
 
 ---
 
-### tsTypeReference
+#### tsTypeReference
 
 ```javascript
 t.tsTypeReference(typeName, typeParameters);
@@ -3393,7 +3395,7 @@ Aliases: `TSType`
 
 ---
 
-### tsUndefinedKeyword
+#### tsUndefinedKeyword
 
 ```javascript
 t.tsUndefinedKeyword();
@@ -3405,7 +3407,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsUnionType
+#### tsUnionType
 
 ```javascript
 t.tsUnionType(types);
@@ -3420,7 +3422,7 @@ Aliases: `TSType`
 
 ---
 
-### tsUnknownKeyword
+#### tsUnknownKeyword
 
 ```javascript
 t.tsUnknownKeyword();
@@ -3432,7 +3434,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### tsVoidKeyword
+#### tsVoidKeyword
 
 ```javascript
 t.tsVoidKeyword();
@@ -3444,7 +3446,7 @@ Aliases: `TSType`, `TSBaseType`
 
 ---
 
-### taggedTemplateExpression
+#### taggedTemplateExpression
 
 ```javascript
 t.taggedTemplateExpression(tag, quasi);
@@ -3461,7 +3463,7 @@ Aliases: `Expression`
 
 ---
 
-### templateElement
+#### templateElement
 
 ```javascript
 t.templateElement(value, tail);
@@ -3475,7 +3477,7 @@ AST Node `TemplateElement` shape:
 
 ---
 
-### templateLiteral
+#### templateLiteral
 
 ```javascript
 t.templateLiteral(quasis, expressions);
@@ -3491,7 +3493,7 @@ Aliases: `Expression`, `Literal`
 
 ---
 
-### thisExpression
+#### thisExpression
 
 ```javascript
 t.thisExpression();
@@ -3503,7 +3505,7 @@ Aliases: `Expression`
 
 ---
 
-### thisTypeAnnotation
+#### thisTypeAnnotation
 
 ```javascript
 t.thisTypeAnnotation();
@@ -3515,7 +3517,7 @@ Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
 
-### throwStatement
+#### throwStatement
 
 ```javascript
 t.throwStatement(argument);
@@ -3530,7 +3532,7 @@ Aliases: `Statement`, `Terminatorless`, `CompletionStatement`
 
 ---
 
-### tryStatement
+#### tryStatement
 
 ```javascript
 t.tryStatement(block, handler, finalizer);
@@ -3547,7 +3549,7 @@ Aliases: `Statement`
 
 ---
 
-### tupleExpression
+#### tupleExpression
 
 ```javascript
 t.tupleExpression(elements);
@@ -3562,7 +3564,7 @@ Aliases: `Expression`
 
 ---
 
-### tupleTypeAnnotation
+#### tupleTypeAnnotation
 
 ```javascript
 t.tupleTypeAnnotation(types);
@@ -3577,7 +3579,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### typeAlias
+#### typeAlias
 
 ```javascript
 t.typeAlias(id, typeParameters, right);
@@ -3594,7 +3596,7 @@ Aliases: `Flow`, `FlowDeclaration`, `Statement`, `Declaration`
 
 ---
 
-### typeAnnotation
+#### typeAnnotation
 
 ```javascript
 t.typeAnnotation(typeAnnotation);
@@ -3609,7 +3611,7 @@ Aliases: `Flow`
 
 ---
 
-### typeCastExpression
+#### typeCastExpression
 
 ```javascript
 t.typeCastExpression(expression, typeAnnotation);
@@ -3625,7 +3627,7 @@ Aliases: `Flow`, `ExpressionWrapper`, `Expression`
 
 ---
 
-### typeParameter
+#### typeParameter
 
 ```javascript
 t.typeParameter(bound, default, variance);
@@ -3643,7 +3645,7 @@ Aliases: `Flow`
 
 ---
 
-### typeParameterDeclaration
+#### typeParameterDeclaration
 
 ```javascript
 t.typeParameterDeclaration(params);
@@ -3658,7 +3660,7 @@ Aliases: `Flow`
 
 ---
 
-### typeParameterInstantiation
+#### typeParameterInstantiation
 
 ```javascript
 t.typeParameterInstantiation(params);
@@ -3673,7 +3675,7 @@ Aliases: `Flow`
 
 ---
 
-### typeofTypeAnnotation
+#### typeofTypeAnnotation
 
 ```javascript
 t.typeofTypeAnnotation(argument);
@@ -3688,7 +3690,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### unaryExpression
+#### unaryExpression
 
 ```javascript
 t.unaryExpression(operator, argument, prefix);
@@ -3705,7 +3707,7 @@ Aliases: `UnaryLike`, `Expression`
 
 ---
 
-### unionTypeAnnotation
+#### unionTypeAnnotation
 
 ```javascript
 t.unionTypeAnnotation(types);
@@ -3720,7 +3722,7 @@ Aliases: `Flow`, `FlowType`
 
 ---
 
-### updateExpression
+#### updateExpression
 
 ```javascript
 t.updateExpression(operator, argument, prefix);
@@ -3737,7 +3739,7 @@ Aliases: `Expression`
 
 ---
 
-### v8IntrinsicIdentifier
+#### v8IntrinsicIdentifier
 
 ```javascript
 t.v8IntrinsicIdentifier(name);
@@ -3750,7 +3752,7 @@ AST Node `V8IntrinsicIdentifier` shape:
 
 ---
 
-### variableDeclaration
+#### variableDeclaration
 
 ```javascript
 t.variableDeclaration(kind, declarations);
@@ -3767,7 +3769,7 @@ Aliases: `Statement`, `Declaration`
 
 ---
 
-### variableDeclarator
+#### variableDeclarator
 
 ```javascript
 t.variableDeclarator(id, init);
@@ -3782,7 +3784,7 @@ AST Node `VariableDeclarator` shape:
 
 ---
 
-### variance
+#### variance
 
 ```javascript
 t.variance(kind);
@@ -3797,7 +3799,7 @@ Aliases: `Flow`
 
 ---
 
-### voidTypeAnnotation
+#### voidTypeAnnotation
 
 ```javascript
 t.voidTypeAnnotation();
@@ -3809,7 +3811,7 @@ Aliases: `Flow`, `FlowType`, `FlowBaseAnnotation`
 
 ---
 
-### whileStatement
+#### whileStatement
 
 ```javascript
 t.whileStatement(test, body);
@@ -3825,7 +3827,7 @@ Aliases: `Statement`, `BlockParent`, `Loop`, `While`, `Scopable`
 
 ---
 
-### withStatement
+#### withStatement
 
 ```javascript
 t.withStatement(object, body);
@@ -3841,7 +3843,7 @@ Aliases: `Statement`
 
 ---
 
-### yieldExpression
+#### yieldExpression
 
 ```javascript
 t.yieldExpression(argument, delegate);
@@ -3856,3 +3858,876 @@ AST Node `YieldExpression` shape:
 Aliases: `Expression`, `Terminatorless`
 
 ---
+
+### Aliases
+
+#### Binary
+
+A cover of BinaryExpression and LogicalExpression, which share the same AST shape.
+```javascript
+t.isBinary(node);
+```
+
+Covered nodes: 
+- `BinaryExpression`
+- `LogicalExpression`
+
+#### Block
+
+A cover of BlockStatement and its alike.
+```javascript
+t.isBlock(node);
+```
+
+Covered nodes: 
+- `BlockStatement`
+- `Program`
+- `TSModuleBlock`
+
+#### BlockParent
+
+A cover of AST nodes that start an execution context with new [LexicalEnvironment](https://tc39.es/ecma262/#table-additional-state-components-for-ecmascript-code-execution-contexts). In other words, they define the scope of `let` and `const` declarations.
+```javascript
+t.isBlockParent(node);
+```
+
+Covered nodes: 
+- `ArrowFunctionExpression`
+- `BlockStatement`
+- `CatchClause`
+- `ClassMethod`
+- `ClassPrivateMethod`
+- `DoWhileStatement`
+- `ForInStatement`
+- `ForOfStatement`
+- `ForStatement`
+- `FunctionDeclaration`
+- `FunctionExpression`
+- `ObjectMethod`
+- `Program`
+- `StaticBlock`
+- `SwitchStatement`
+- `TSModuleBlock`
+- `WhileStatement`
+
+#### Class
+
+A cover of ClassExpression and ClassDeclaration, which share the same AST shape.
+```javascript
+t.isClass(node);
+```
+
+Covered nodes: 
+- `ClassDeclaration`
+- `ClassExpression`
+
+#### CompletionStatement
+
+A statement that indicates the [completion records](https://tc39.es/ecma262/#sec-completion-record-specification-type). In other words, they define the control flow of the program, such as when should a loop break or an action throws critical errors.
+```javascript
+t.isCompletionStatement(node);
+```
+
+Covered nodes: 
+- `BreakStatement`
+- `ContinueStatement`
+- `ReturnStatement`
+- `ThrowStatement`
+
+#### Conditional
+
+A cover of ConditionalExpression and IfStatement, which share the same AST shape.
+```javascript
+t.isConditional(node);
+```
+
+Covered nodes: 
+- `ConditionalExpression`
+- `IfStatement`
+
+#### Declaration
+
+A cover of any [Declaration](https://tc39.es/ecma262/#prod-Declaration)s.
+```javascript
+t.isDeclaration(node);
+```
+
+Covered nodes: 
+- `ClassDeclaration`
+- `DeclareClass`
+- `DeclareExportAllDeclaration`
+- `DeclareExportDeclaration`
+- `DeclareFunction`
+- `DeclareInterface`
+- `DeclareModule`
+- `DeclareModuleExports`
+- `DeclareOpaqueType`
+- `DeclareTypeAlias`
+- `DeclareVariable`
+- `EnumDeclaration`
+- `ExportAllDeclaration`
+- `ExportDefaultDeclaration`
+- `ExportNamedDeclaration`
+- `FunctionDeclaration`
+- `ImportDeclaration`
+- `InterfaceDeclaration`
+- `OpaqueType`
+- `TSDeclareFunction`
+- `TSEnumDeclaration`
+- `TSInterfaceDeclaration`
+- `TSModuleDeclaration`
+- `TSTypeAliasDeclaration`
+- `TypeAlias`
+- `VariableDeclaration`
+
+#### EnumBody
+
+A cover of enum bodies defined in [TypeScript](https://www.typescriptlang.org/docs/handbook/enums.html) and Flow.
+```javascript
+t.isEnumBody(node);
+```
+
+Covered nodes: 
+- `EnumBooleanBody`
+- `EnumNumberBody`
+- `EnumStringBody`
+- `EnumSymbolBody`
+
+#### EnumMember
+
+A cover of enum membors defined in [TypeScript](https://www.typescriptlang.org/docs/handbook/enums.html) and Flow.
+```javascript
+t.isEnumMember(node);
+```
+
+Covered nodes: 
+- `EnumBooleanMember`
+- `EnumDefaultedMember`
+- `EnumNumberMember`
+- `EnumStringMember`
+
+#### ExportDeclaration
+
+A cover of any [ExportDeclaration](https://tc39.es/ecma262/#prod-ExportDeclaration)s.
+```javascript
+t.isExportDeclaration(node);
+```
+
+Covered nodes: 
+- `ExportAllDeclaration`
+- `ExportDefaultDeclaration`
+- `ExportNamedDeclaration`
+
+#### Expression
+
+A cover of any [Expression](https://tc39.es/ecma262/#sec-ecmascript-language-expressions)s.
+```javascript
+t.isExpression(node);
+```
+
+Covered nodes: 
+- `ArrayExpression`
+- `ArrowFunctionExpression`
+- `AssignmentExpression`
+- `AwaitExpression`
+- `BigIntLiteral`
+- `BinaryExpression`
+- `BindExpression`
+- `BooleanLiteral`
+- `CallExpression`
+- `ClassExpression`
+- `ConditionalExpression`
+- `DecimalLiteral`
+- `DoExpression`
+- `FunctionExpression`
+- `Identifier`
+- `Import`
+- `JSXElement`
+- `JSXFragment`
+- `LogicalExpression`
+- `MemberExpression`
+- `MetaProperty`
+- `ModuleExpression`
+- `NewExpression`
+- `NullLiteral`
+- `NumericLiteral`
+- `ObjectExpression`
+- `OptionalCallExpression`
+- `OptionalMemberExpression`
+- `ParenthesizedExpression`
+- `PipelinePrimaryTopicReference`
+- `RecordExpression`
+- `RegExpLiteral`
+- `SequenceExpression`
+- `StringLiteral`
+- `Super`
+- `TSAsExpression`
+- `TSNonNullExpression`
+- `TSTypeAssertion`
+- `TaggedTemplateExpression`
+- `TemplateLiteral`
+- `ThisExpression`
+- `TupleExpression`
+- `TypeCastExpression`
+- `UnaryExpression`
+- `UpdateExpression`
+- `YieldExpression`
+
+#### ExpressionWrapper
+
+A wrapper of expression that does not have run semantics.
+```javascript
+t.isExpressionWrapper(node);
+```
+
+Covered nodes: 
+- `ExpressionStatement`
+- `ParenthesizedExpression`
+- `TypeCastExpression`
+
+#### Flow
+
+A cover of AST nodes defined for Flow.
+```javascript
+t.isFlow(node);
+```
+
+Covered nodes: 
+- `AnyTypeAnnotation`
+- `ArrayTypeAnnotation`
+- `BooleanLiteralTypeAnnotation`
+- `BooleanTypeAnnotation`
+- `ClassImplements`
+- `DeclareClass`
+- `DeclareExportAllDeclaration`
+- `DeclareExportDeclaration`
+- `DeclareFunction`
+- `DeclareInterface`
+- `DeclareModule`
+- `DeclareModuleExports`
+- `DeclareOpaqueType`
+- `DeclareTypeAlias`
+- `DeclareVariable`
+- `DeclaredPredicate`
+- `EmptyTypeAnnotation`
+- `ExistsTypeAnnotation`
+- `FunctionTypeAnnotation`
+- `FunctionTypeParam`
+- `GenericTypeAnnotation`
+- `InferredPredicate`
+- `InterfaceDeclaration`
+- `InterfaceExtends`
+- `InterfaceTypeAnnotation`
+- `IntersectionTypeAnnotation`
+- `MixedTypeAnnotation`
+- `NullLiteralTypeAnnotation`
+- `NullableTypeAnnotation`
+- `NumberLiteralTypeAnnotation`
+- `NumberTypeAnnotation`
+- `ObjectTypeAnnotation`
+- `ObjectTypeCallProperty`
+- `ObjectTypeIndexer`
+- `ObjectTypeInternalSlot`
+- `ObjectTypeProperty`
+- `ObjectTypeSpreadProperty`
+- `OpaqueType`
+- `QualifiedTypeIdentifier`
+- `StringLiteralTypeAnnotation`
+- `StringTypeAnnotation`
+- `SymbolTypeAnnotation`
+- `ThisTypeAnnotation`
+- `TupleTypeAnnotation`
+- `TypeAlias`
+- `TypeAnnotation`
+- `TypeCastExpression`
+- `TypeParameter`
+- `TypeParameterDeclaration`
+- `TypeParameterInstantiation`
+- `TypeofTypeAnnotation`
+- `UnionTypeAnnotation`
+- `Variance`
+- `VoidTypeAnnotation`
+
+#### FlowBaseAnnotation
+
+A cover of primary Flow type annotations.
+```javascript
+t.isFlowBaseAnnotation(node);
+```
+
+Covered nodes: 
+- `AnyTypeAnnotation`
+- `BooleanTypeAnnotation`
+- `EmptyTypeAnnotation`
+- `MixedTypeAnnotation`
+- `NullLiteralTypeAnnotation`
+- `NumberTypeAnnotation`
+- `StringTypeAnnotation`
+- `SymbolTypeAnnotation`
+- `ThisTypeAnnotation`
+- `VoidTypeAnnotation`
+
+#### FlowDeclaration
+
+A cover of Flow declarations.
+```javascript
+t.isFlowDeclaration(node);
+```
+
+Covered nodes: 
+- `DeclareClass`
+- `DeclareExportAllDeclaration`
+- `DeclareExportDeclaration`
+- `DeclareFunction`
+- `DeclareInterface`
+- `DeclareModule`
+- `DeclareModuleExports`
+- `DeclareOpaqueType`
+- `DeclareTypeAlias`
+- `DeclareVariable`
+- `InterfaceDeclaration`
+- `OpaqueType`
+- `TypeAlias`
+
+#### FlowPredicate
+
+A cover of Flow predicates.
+```javascript
+t.isFlowPredicate(node);
+```
+
+Covered nodes: 
+- `DeclaredPredicate`
+- `InferredPredicate`
+
+#### FlowType
+
+A cover of Flow type annotations.
+```javascript
+t.isFlowType(node);
+```
+
+Covered nodes: 
+- `AnyTypeAnnotation`
+- `ArrayTypeAnnotation`
+- `BooleanLiteralTypeAnnotation`
+- `BooleanTypeAnnotation`
+- `EmptyTypeAnnotation`
+- `ExistsTypeAnnotation`
+- `FunctionTypeAnnotation`
+- `GenericTypeAnnotation`
+- `InterfaceTypeAnnotation`
+- `IntersectionTypeAnnotation`
+- `MixedTypeAnnotation`
+- `NullLiteralTypeAnnotation`
+- `NullableTypeAnnotation`
+- `NumberLiteralTypeAnnotation`
+- `NumberTypeAnnotation`
+- `ObjectTypeAnnotation`
+- `StringLiteralTypeAnnotation`
+- `StringTypeAnnotation`
+- `SymbolTypeAnnotation`
+- `ThisTypeAnnotation`
+- `TupleTypeAnnotation`
+- `TypeofTypeAnnotation`
+- `UnionTypeAnnotation`
+- `VoidTypeAnnotation`
+
+#### For
+
+A cover of [ForStatement](https://tc39.es/ecma262/#sec-for-statement)s and [ForXStatement](#forxstatement)s.
+```javascript
+t.isFor(node);
+```
+
+Covered nodes: 
+- `ForInStatement`
+- `ForOfStatement`
+- `ForStatement`
+
+#### ForXStatement
+
+A cover of [ForInStatements and ForOfStatements](https://tc39.es/ecma262/#sec-for-in-and-for-of-statements).
+```javascript
+t.isForXStatement(node);
+```
+
+Covered nodes: 
+- `ForInStatement`
+- `ForOfStatement`
+
+#### Function
+
+A cover of functions and [method](#method)s, the must have `body` and `params`. Note: `Function` is different to `FunctionParent`.
+```javascript
+t.isFunction(node);
+```
+
+Covered nodes: 
+- `ArrowFunctionExpression`
+- `ClassMethod`
+- `ClassPrivateMethod`
+- `FunctionDeclaration`
+- `FunctionExpression`
+- `ObjectMethod`
+
+#### FunctionParent
+
+A cover of AST nodes that start an execution context with new [VariableEnvironment](https://tc39.es/ecma262/#table-additional-state-components-for-ecmascript-code-execution-contexts). In other words, they define the scope of `var` declarations. FunctionParent did not include `Program` since Babel 7.
+```javascript
+t.isFunctionParent(node);
+```
+
+Covered nodes: 
+- `ArrowFunctionExpression`
+- `ClassMethod`
+- `ClassPrivateMethod`
+- `FunctionDeclaration`
+- `FunctionExpression`
+- `ObjectMethod`
+
+#### Immutable
+
+A cover of immutable AST nodes.
+```javascript
+t.isImmutable(node);
+```
+
+Covered nodes: 
+- `BigIntLiteral`
+- `BooleanLiteral`
+- `DecimalLiteral`
+- `JSXAttribute`
+- `JSXClosingElement`
+- `JSXClosingFragment`
+- `JSXElement`
+- `JSXExpressionContainer`
+- `JSXFragment`
+- `JSXOpeningElement`
+- `JSXOpeningFragment`
+- `JSXSpreadChild`
+- `JSXText`
+- `NullLiteral`
+- `NumericLiteral`
+- `StringLiteral`
+
+#### JSX
+
+A cover of AST nodes defined for [JSX](https://facebook.github.io/jsx/).
+```javascript
+t.isJSX(node);
+```
+
+Covered nodes: 
+- `JSXAttribute`
+- `JSXClosingElement`
+- `JSXClosingFragment`
+- `JSXElement`
+- `JSXEmptyExpression`
+- `JSXExpressionContainer`
+- `JSXFragment`
+- `JSXIdentifier`
+- `JSXMemberExpression`
+- `JSXNamespacedName`
+- `JSXOpeningElement`
+- `JSXOpeningFragment`
+- `JSXSpreadAttribute`
+- `JSXSpreadChild`
+- `JSXText`
+
+#### LVal
+
+A cover of left hand side expressions used in the `left` of assignment expressions and [ForXStatement](#forxstatement)s. 
+```javascript
+t.isLVal(node);
+```
+
+Covered nodes: 
+- `ArrayPattern`
+- `AssignmentPattern`
+- `Identifier`
+- `MemberExpression`
+- `ObjectPattern`
+- `RestElement`
+- `TSParameterProperty`
+
+#### Literal
+
+A cover of [Literal](https://tc39.es/ecma262/#sec-primary-expression-literals)s, [Regular Expression Literal](https://tc39.es/ecma262/#sec-primary-expression-regular-expression-literals)s and [Template Literal](https://tc39.es/ecma262/#sec-template-literals)s.
+```javascript
+t.isLiteral(node);
+```
+
+Covered nodes: 
+- `BigIntLiteral`
+- `BooleanLiteral`
+- `DecimalLiteral`
+- `NullLiteral`
+- `NumericLiteral`
+- `RegExpLiteral`
+- `StringLiteral`
+- `TemplateLiteral`
+
+#### Loop
+
+A cover of loop statements.
+```javascript
+t.isLoop(node);
+```
+
+Covered nodes: 
+- `DoWhileStatement`
+- `ForInStatement`
+- `ForOfStatement`
+- `ForStatement`
+- `WhileStatement`
+
+#### Method
+
+A cover of object methods and class methods.
+```javascript
+t.isMethod(node);
+```
+
+Covered nodes: 
+- `ClassMethod`
+- `ClassPrivateMethod`
+- `ObjectMethod`
+
+#### ModuleDeclaration
+
+A cover of ImportDeclaration and [ExportDeclaration](#exportdeclaration)
+```javascript
+t.isModuleDeclaration(node);
+```
+
+Covered nodes: 
+- `ExportAllDeclaration`
+- `ExportDefaultDeclaration`
+- `ExportNamedDeclaration`
+- `ImportDeclaration`
+
+#### ModuleSpecifier
+
+A cover of import and export specifiers. Note: It is _not_ the [ModuleSpecifier](https://tc39.es/ecma262/#prod-ModuleSpecifier) defined in the spec.
+```javascript
+t.isModuleSpecifier(node);
+```
+
+Covered nodes: 
+- `ExportDefaultSpecifier`
+- `ExportNamespaceSpecifier`
+- `ExportSpecifier`
+- `ImportDefaultSpecifier`
+- `ImportNamespaceSpecifier`
+- `ImportSpecifier`
+
+#### ObjectMember
+
+A cover of [members](https://tc39.es/ecma262/#prod-PropertyDefinitionList) in an object literal.
+```javascript
+t.isObjectMember(node);
+```
+
+Covered nodes: 
+- `ObjectMethod`
+- `ObjectProperty`
+
+#### Pattern
+
+A cover of [BindingPattern](https://tc39.es/ecma262/#prod-BindingPattern) except Identifiers.
+```javascript
+t.isPattern(node);
+```
+
+Covered nodes: 
+- `ArrayPattern`
+- `AssignmentPattern`
+- `ObjectPattern`
+
+#### PatternLike
+
+A cover of [BindingPattern](https://tc39.es/ecma262/#prod-BindingPattern)s. 
+```javascript
+t.isPatternLike(node);
+```
+
+Covered nodes: 
+- `ArrayPattern`
+- `AssignmentPattern`
+- `Identifier`
+- `ObjectPattern`
+- `RestElement`
+
+#### Private
+
+A cover of private class elements and private identifiers.
+```javascript
+t.isPrivate(node);
+```
+
+Covered nodes: 
+- `ClassPrivateMethod`
+- `ClassPrivateProperty`
+- `PrivateName`
+
+#### Property
+
+A cover of object properties and class properties.
+```javascript
+t.isProperty(node);
+```
+
+Covered nodes: 
+- `ClassPrivateProperty`
+- `ClassProperty`
+- `ObjectProperty`
+
+#### Pureish
+
+A cover of AST nodes which does not have side-effect. In other words, there is no observable behaviour changes if they are evaluated more than once.
+```javascript
+t.isPureish(node);
+```
+
+Covered nodes: 
+- `ArrowFunctionExpression`
+- `BigIntLiteral`
+- `BooleanLiteral`
+- `DecimalLiteral`
+- `FunctionDeclaration`
+- `FunctionExpression`
+- `NullLiteral`
+- `NumericLiteral`
+- `RegExpLiteral`
+- `StringLiteral`
+
+#### Scopable
+
+A cover of [FunctionParent](#FunctionParent) and [BlockParent](#BlockParent).
+```javascript
+t.isScopable(node);
+```
+
+Covered nodes: 
+- `ArrowFunctionExpression`
+- `BlockStatement`
+- `CatchClause`
+- `ClassDeclaration`
+- `ClassExpression`
+- `ClassMethod`
+- `ClassPrivateMethod`
+- `DoWhileStatement`
+- `ForInStatement`
+- `ForOfStatement`
+- `ForStatement`
+- `FunctionDeclaration`
+- `FunctionExpression`
+- `ObjectMethod`
+- `Program`
+- `StaticBlock`
+- `SwitchStatement`
+- `TSModuleBlock`
+- `WhileStatement`
+
+#### Statement
+
+A cover of any [Statement](https://tc39.es/ecma262/#prod-Statement)s.
+```javascript
+t.isStatement(node);
+```
+
+Covered nodes: 
+- `BlockStatement`
+- `BreakStatement`
+- `ClassDeclaration`
+- `ContinueStatement`
+- `DebuggerStatement`
+- `DeclareClass`
+- `DeclareExportAllDeclaration`
+- `DeclareExportDeclaration`
+- `DeclareFunction`
+- `DeclareInterface`
+- `DeclareModule`
+- `DeclareModuleExports`
+- `DeclareOpaqueType`
+- `DeclareTypeAlias`
+- `DeclareVariable`
+- `DoWhileStatement`
+- `EmptyStatement`
+- `EnumDeclaration`
+- `ExportAllDeclaration`
+- `ExportDefaultDeclaration`
+- `ExportNamedDeclaration`
+- `ExpressionStatement`
+- `ForInStatement`
+- `ForOfStatement`
+- `ForStatement`
+- `FunctionDeclaration`
+- `IfStatement`
+- `ImportDeclaration`
+- `InterfaceDeclaration`
+- `LabeledStatement`
+- `OpaqueType`
+- `ReturnStatement`
+- `SwitchStatement`
+- `TSDeclareFunction`
+- `TSEnumDeclaration`
+- `TSExportAssignment`
+- `TSImportEqualsDeclaration`
+- `TSInterfaceDeclaration`
+- `TSModuleDeclaration`
+- `TSNamespaceExportDeclaration`
+- `TSTypeAliasDeclaration`
+- `ThrowStatement`
+- `TryStatement`
+- `TypeAlias`
+- `VariableDeclaration`
+- `WhileStatement`
+- `WithStatement`
+
+#### TSBaseType
+
+A cover of primary TypeScript type annotations.
+```javascript
+t.isTSBaseType(node);
+```
+
+Covered nodes: 
+- `TSAnyKeyword`
+- `TSBigIntKeyword`
+- `TSBooleanKeyword`
+- `TSIntrinsicKeyword`
+- `TSLiteralType`
+- `TSNeverKeyword`
+- `TSNullKeyword`
+- `TSNumberKeyword`
+- `TSObjectKeyword`
+- `TSStringKeyword`
+- `TSSymbolKeyword`
+- `TSThisType`
+- `TSUndefinedKeyword`
+- `TSUnknownKeyword`
+- `TSVoidKeyword`
+
+#### TSEntityName
+
+A cover of ts entities.
+```javascript
+t.isTSEntityName(node);
+```
+
+Covered nodes: 
+- `Identifier`
+- `TSQualifiedName`
+
+#### TSType
+
+A cover of TypeScript type annotations.
+```javascript
+t.isTSType(node);
+```
+
+Covered nodes: 
+- `TSAnyKeyword`
+- `TSArrayType`
+- `TSBigIntKeyword`
+- `TSBooleanKeyword`
+- `TSConditionalType`
+- `TSConstructorType`
+- `TSExpressionWithTypeArguments`
+- `TSFunctionType`
+- `TSImportType`
+- `TSIndexedAccessType`
+- `TSInferType`
+- `TSIntersectionType`
+- `TSIntrinsicKeyword`
+- `TSLiteralType`
+- `TSMappedType`
+- `TSNeverKeyword`
+- `TSNullKeyword`
+- `TSNumberKeyword`
+- `TSObjectKeyword`
+- `TSOptionalType`
+- `TSParenthesizedType`
+- `TSRestType`
+- `TSStringKeyword`
+- `TSSymbolKeyword`
+- `TSThisType`
+- `TSTupleType`
+- `TSTypeLiteral`
+- `TSTypeOperator`
+- `TSTypePredicate`
+- `TSTypeQuery`
+- `TSTypeReference`
+- `TSUndefinedKeyword`
+- `TSUnionType`
+- `TSUnknownKeyword`
+- `TSVoidKeyword`
+
+#### TSTypeElement
+
+A cover of TypeScript type declarations.
+```javascript
+t.isTSTypeElement(node);
+```
+
+Covered nodes: 
+- `TSCallSignatureDeclaration`
+- `TSConstructSignatureDeclaration`
+- `TSIndexSignature`
+- `TSMethodSignature`
+- `TSPropertySignature`
+
+#### Terminatorless
+
+A cover of AST nodes whose semantic will change when a line terminator is inserted between the operator and the operand.
+```javascript
+t.isTerminatorless(node);
+```
+
+Covered nodes: 
+- `AwaitExpression`
+- `BreakStatement`
+- `ContinueStatement`
+- `ReturnStatement`
+- `ThrowStatement`
+- `YieldExpression`
+
+#### UnaryLike
+
+A cover of UnaryExpression and SpreadElement.
+```javascript
+t.isUnaryLike(node);
+```
+
+Covered nodes: 
+- `SpreadElement`
+- `UnaryExpression`
+
+#### UserWhitespacable
+
+
+```javascript
+t.isUserWhitespacable(node);
+```
+
+Covered nodes: 
+- `ObjectMethod`
+- `ObjectProperty`
+- `ObjectTypeCallProperty`
+- `ObjectTypeIndexer`
+- `ObjectTypeInternalSlot`
+- `ObjectTypeProperty`
+- `ObjectTypeSpreadProperty`
+
+#### While
+
+A cover of DoWhileStatement and WhileStatement, which share the same AST shape.
+```javascript
+t.isWhile(node);
+```
+
+Covered nodes: 
+- `DoWhileStatement`
+- `WhileStatement`
