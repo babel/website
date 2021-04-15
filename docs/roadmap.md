@@ -143,7 +143,7 @@ Some things already in progress Henry has been working on and off on:
 - [Visualization](https://twitter.com/left_pad/status/1367941962083471361?s=20) of input to output mapping to help understand how Babel transforms it's code. Could be useful even for documentation in getting JavaScript users familiar with new syntax or a specific demo of a transform.
 - [Mapping](https://twitter.com/left_pad/status/1298792944099561473?s=20) of input to output like a sourcemap type structure. Can do a reverse mapping to find out what plugin caused the code to be outputted a certain way which helps with debugging.
 
-For an interactive example of what we are thinking about: https://babelmap.netlify.app/ (click and hold the mouse in the bottom sector!)
+For an interactive example of what we are thinking about: https://babel-explorer.netlify.app/ (click and hold the mouse in the bottom sector!)
 
 <!--
 
