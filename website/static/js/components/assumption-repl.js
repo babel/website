@@ -7,8 +7,6 @@ template.innerHTML = `
   <mini-repl id="repl" vertical></mini-repl>
 `;
 
-console.log("LOADING");
-
 class AssumptionRepl extends HTMLDivElement {
   _plugins = this.dataset.plugins.split(",");
   _assumption = this.dataset.assumption;
@@ -18,8 +16,6 @@ class AssumptionRepl extends HTMLDivElement {
 
   constructor() {
     super();
-
-    console.log(this._input);
 
     this.attachShadow({ mode: "open" }).appendChild(
       template.content.cloneNode(true)

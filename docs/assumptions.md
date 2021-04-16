@@ -13,6 +13,23 @@ id: assumptions
 }
 </style>
 
+By default Babel tries to compile your code so that it matches the native behavior as closely as possible. However, this sometimes means generating more output code, or slower output code, just to support some edge cases you don't care about.
+
+Since Babel 7.13.0, you can specify an `assumptions` option in your configuration to tell Babel which assumptions it can make about your code, to better optimize the compilation result. For example:
+
+```json
+{
+  "targets": ">0.5%",
+  "assumptions": {
+    "noDocumentAll": true,
+    "noClassCalls": true
+  },
+  "presets": ["@babel/preset-env"]
+}
+```
+
+> ⚠ This is advanced functionality. Please be careful when enabling assumptions, because they are not spec-compliant and may break your code in unexpected ways.
+
 ## `arrayLikeIsIterable`
 
 When spreading or iterating an array-like object, assume that it implements a `[Symbol.iterator]` method with the same behavior of the native `Array.prototype[Symbol.iterator]`, and thus directly iterate over its element by index.
