@@ -247,7 +247,9 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 ## Babel 7
 
-[blog post](https://babeljs.io/blog/2018/08/27/7.0.0). This has a lot more changes since it was 2 years of pre-releases.
+[blog post](https://babeljs.io/blog/2018/08/27/7.0.0)
+
+This has a lot more changes since it was 2 years of pre-releases.
 
 - Drop support for un-maintained Node versions: 0.10, 0.12, 4, 5
 - Switch to scoped packages ([`babel-core`](https://www.npmjs.com/package/babel-core) to [`@babel/core`](https://www.npmjs.com/package/@babel/core))
