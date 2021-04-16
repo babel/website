@@ -6,7 +6,8 @@
       "options",
       "presets",
       "plugins",
-      "plugins-list"
+      "plugins-list",
+      "assumptions"
     ],
     "Presets": [
       "babel-preset-env",
