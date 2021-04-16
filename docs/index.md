@@ -6,6 +6,7 @@ title: What is Babel?
 ## Babel is a JavaScript compiler
 
 Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments. Here are the main things Babel can do for you:
+
 - Transform syntax
 - Polyfill features that are missing in your target environment (through a third-party polyfill such as [core-js](https://github.com/zloirock/core-js))
 - Source code transformations (codemods)
@@ -13,7 +14,7 @@ Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a
 
 ```js
 // Babel Input: ES2015 arrow function
-[1, 2, 3].map((n) => n + 1);
+[1, 2, 3].map(n => n + 1);
 
 // Babel Output: ES5 equivalent
 [1, 2, 3].map(function(n) {
@@ -52,11 +53,13 @@ export default React.createClass({
   },
 
   render() {
-    return <div>
-      Your dice roll:
-      {this.state.num}
-    </div>;
-  }
+    return (
+      <div>
+        Your dice roll:
+        {this.state.num}
+      </div>
+    );
+  },
 });
 ```
 
@@ -87,14 +90,13 @@ npm install --save-dev @babel/preset-typescript
 
 ```js
 function Greeter(greeting: string) {
-    this.greeting = greeting;
+  this.greeting = greeting;
 }
 ```
 
 > Learn more about [Flow](https://flow.org/) and [TypeScript](https://www.typescriptlang.org/)
 
-Pluggable
----------
+## Pluggable
 
 Babel is built out of plugins. Compose your own transformation pipeline using existing plugins or write your own. Easily use a set of plugins by using or creating a [preset](plugins.md#presets). [Learn more →](plugins.md)
 
@@ -102,31 +104,31 @@ Create a plugin on the fly with [astexplorer.net](https://astexplorer.net/#/KJ8A
 
 ```javascript
 // A plugin is just a function
-export default function ({types: t}) {
+export default function({ types: t }) {
   return {
     visitor: {
       Identifier(path) {
         let name = path.node.name; // reverse the name: JavaScript -> tpircSavaJ
-        path.node.name = name.split('').reverse().join('');
-      }
-    }
+        path.node.name = name
+          .split("")
+          .reverse()
+          .join("");
+      },
+    },
   };
 }
 ```
 
-Debuggable
-----------
+## Debuggable
 
 **Source map** support so you can debug your compiled code with ease.
 
-Spec Compliant
---------
+## Spec Compliant
 
 Babel tries to stay true to the ECMAScript standard, as much as reasonably possible. It may also have specific options to be more spec compliant as a tradeoff to performance.
 
-Compact
---------
+## Compact
 
 Babel tries using the least amount of code possible with no dependence on a bulky runtime.
 
-This may be difficult to do in cases, and there are "loose" options for specific transforms that may tradeoff spec compliancy for readability, file size, and speed.
+This may be difficult to do in cases, and there are ["assumptions"](/assumptions) options that tradeoff spec compliancy for readability, file size, and speed.
