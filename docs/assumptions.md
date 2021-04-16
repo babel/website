@@ -37,7 +37,7 @@ const copy = [...images];
 When re-exporting a bindin from a module, assume that it doesn't change and thus it's safe to directly export it, as if you were doing
 
 ```js
-import {"{"} value as val } from "dep";
+import { value as val } from "dep";
 
 export const value = val;
 ```
