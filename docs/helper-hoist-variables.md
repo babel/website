@@ -22,7 +22,7 @@ declare export default hoistVariables(path: NodePath, emit: EmitFunction, kind: 
 
 ## Usage
 
-`hoistVariables` traverses a given `path` and replaces variable declarations (`var x = 1`) to assignment expressions (`x = 1`) (or to left hand side expressions `for (x of []);` as for `for (var x of []);`). The binding identifiers (`x`) from the declarations will be emitted via the `EmitFunction` callback. `hoistVariables` is applied only to those declarations within the same scope of `path`, in other words, it will not hoist variables defined inside a function body nested inside `path`. If `kind` is `"let"`, it will hoist `let` declarations.
+`hoistVariables` traverses a given `path` and replaces variable declarations (`var x = 1`) to assignment expressions (`x = 1`). It can also replace left hand side expressions `for (x of []);` like in `for (var x of []);`). The binding identifiers (`x`) from the declarations will be emitted via the `EmitFunction` callback. `hoistVariables` is applied only to those declarations within the same scope of `path`, in other words, it will not hoist variables defined inside a function body nested inside `path`. If `kind` is `"let"`, it will hoist `let` declarations.
 
 Generally an `EmitFunction` will declare such variables in outer `scope`.
 
