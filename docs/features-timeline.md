@@ -247,7 +247,31 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 ## Babel 7
 
-[blog post](https://babeljs.io/blog/2018/08/27/7.0.0)
+[blog post](https://babeljs.io/blog/2018/08/27/7.0.0). This has a lot more changes since it was 2 years of pre-releases.
+
+- Drop support for un-maintained Node versions: 0.10, 0.12, 4, 5
+- Switch to scoped packages ([`babel-core`](https://www.npmjs.com/package/babel-core) to [`@babel/core`](https://www.npmjs.com/package/@babel/core))
+- Remove yearly presets (`@babel/preset-es2015`) and Stage presets (`@babel/preset-stage-0`) ([blog post](https://babeljs.io/blog/2018/07/27/removing-babels-stage-presets)).
+- Added "pure" (`/*#__PURE__*/` ) annotation support in certain cases. (Implemented later as [@babel/helper-annotate-as-pure](helper-annotate-as-pure.md)
+- Add project-wide `babel.config.js` config file ([docs](config-files.md)) and [`overrides`](options.md#overrides) config option.
+- Added `"useBuiltIns: "usage"` to [`@babel/preset-env`](preset-env.md#usebuiltins)
+- Support TypeScript via `@babel/preset-typescript`
+- Support JSX Fragments `<></>`
+- Support a ton of TC39 proposals:
+  - [Unicode Property Regex](plugin-proposal-unicode-property-regex.md)
+  - [JSON Superset](plugin-proposal-json-strings.md) 
+  - [`new.target`](plugin-transform-new-target.md)
+  - [Class Private Instance Fields](plugin-proposal-class-properties.md) (`class A { #b = 2 }`)
+  - [Optional Catch Binding](plugin-proposal-optional-catch-binding.md) `try { throw 0 } catch { do() }`
+  - [BigInt](plugin-syntax-bigint.md) (syntax only)
+  - [`import.meta`](plugin-syntax-import-meta.md) (syntax only) (`import.meta.url`)
+  - [Numeric Separators](plugin-proposal-numeric-separator.md) (`1_000`)
+  - [`function.sent`](plugin-proposal-function-sent.md)
+  - [Optional Chaining](plugin-proposal-optional-chaining.md) (`a?.b`)
+  - [Logical Assignment Operators](plugin-proposal-logical-assignment-operators.md) (`a &&= b; a ||= b`)
+  - [Nullish Coalescing Operator](plugin-proposal-nullish-coalescing-operator.md) (`a ?? b`)
+  - [Pipeline Operator](plugin-proposal-pipeline-operator.md) (`a |> b`)
+  - [Throw Expressions](plugin-proposal-throw-expressions.md) (`() => throw new Error("a")`)
 
 </li>
 </ol>
