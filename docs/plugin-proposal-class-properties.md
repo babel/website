@@ -85,7 +85,7 @@ require("@babel/core").transformSync("code", {
 
 When `true`, class properties are compiled to use an assignment expression instead of `Object.defineProperty`.
 
-> ⚠️ Consider migrate to top level [`setPublicClassFields` assumptions](/assumptions#setPublicClassFields)
+> ⚠️ Consider migrating to the top level [`setPublicClassFields`](/assumptions#setPublicClassFields) assumption
 
 ```jsonc
 // babel.config.json
