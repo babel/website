@@ -6,7 +6,7 @@ id: faq
 ## Why is the output of `for...of` so verbose and ugly?
 
 In order to comply with the specification, the iterator's return method must be
-called on errors. An alternative is to use [assumptions](/assumptions) such as [`ArrayLikeIsIterable`](/assumptions#arrayLikeIsIterable) and [`IterableIsArray`](/assumptions#iterableIsArray),
+called on errors. An alternative is to use [assumptions](assumptions.md) introduced in Babel 7.13, such as [`ArrayLikeIsIterable`](assumptions.md#arraylikeisiterable) and [`IterableIsArray`](assumptions.md#iterableisarray),
 but please note that there are **many** caveats to be aware of if you use assumptions and that you're willingly choosing not to comply with the spec.
 
 Please see [babel/rfcs#5](https://github.com/babel/rfcs/pull/5), [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) and

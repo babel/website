@@ -114,7 +114,7 @@ Use the legacy (stage 1) decorators syntax and behavior.
 
 If you are including your plugins manually and using `@babel/plugin-proposal-class-properties`, make sure that `@babel/plugin-proposal-decorators` comes _before_ `@babel/plugin-proposal-class-properties`.
 
-When using the `legacy: true` mode, `@babel/plugin-proposal-class-properties` must be used in `loose` mode to support the `@babel/plugin-proposal-decorators`.
+When using the `legacy: true` mode, the [`setPublicClassFields` assumption](assumptions.md#setpublicclassfields) must be enabled to support the `@babel/plugin-proposal-decorators`.
 
 Wrong:
 
@@ -140,9 +140,12 @@ Right:
 
 ```json
 {
+  "assumptions": {
+    "setPublicClassFields": true
+  },
   "plugins": [
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
-    ["@babel/plugin-proposal-class-properties", { "loose": true }]
+    ["@babel/plugin-proposal-class-properties"]
   ]
 }
 ```

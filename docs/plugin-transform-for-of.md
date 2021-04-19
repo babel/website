@@ -98,6 +98,18 @@ require("@babel/core").transformSync("code", {
 `boolean`, defaults to `false`
 
 In loose mode, arrays are put in a fast path, thus heavily increasing performance.
+
+> ⚠️ Consider migrating to the top level [`skipForOfIteratorClosing`](assumptions.md#skipforofiteratorclosing) assumption.
+
+```jsonc
+// babel.config.json
+{
+  "assumptions": {
+    "skipForOfIteratorClosing": true
+  }
+}
+```
+
 All other iterables will continue to work fine.
 
 #### Example
@@ -137,7 +149,7 @@ for (
 
 #### Abrupt completions
 
-In loose mode an iterator's `return` method will not be called on abrupt completions caused by thrown errors.
+Under the `skipForOfIteratorClosing` assumption, an iterator's `return` method will not be called on abrupt completions caused by thrown errors.
 
 Please see [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) and
 [babel/babel#838](https://github.com/babel/babel/issues/838) for more information.

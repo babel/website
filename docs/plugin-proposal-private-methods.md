@@ -87,6 +87,20 @@ via `Object.defineProperty` rather than a `WeakSet`. This results in improved
 performance and debugging (normal property access vs `.get()`) at the expense
 of potentially leaking "privates" via things like `Object.getOwnPropertyNames`.
 
+> ⚠️ Consider migrating to the top level [`privateFieldsAsProperties`](assumptions.md#privatefieldsasproperties) assumption.
+
+```jsonc
+// babel.config.json
+{
+  "assumptions": {
+    "privateFieldsAsProperties": true,
+    "setPublicClassFields": true
+  }
+}
+```
+
+Note that both `privateFieldsAsProperties` and `setPublicClassFields` must be set to `true`.
+
 Let's use the following as an example:
 
 ```javascript
@@ -123,7 +137,7 @@ var _privateMethod2 = function _privateMethod2() {
 };
 ```
 
-With `{ loose: true }`, it becomes:
+With `{ privateFieldsAsProperties: true }`, it becomes:
 
 ```javascript
 var Foo = function Foo() {

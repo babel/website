@@ -70,6 +70,17 @@ require("@babel/core").transformSync("code", {
 
 Enabling this option will assume that what you want to destructure is an array and won't use `Array.from` on other iterables.
 
+> ⚠️ Consider migrating to the top level [`iterableIsArray`](assumptions.md#iterableisarray) assumption.
+
+```jsonc
+// babel.config.json
+{
+  "assumptions": {
+    "iterableIsArray": true
+  }
+}
+```
+
 ### `useBuiltIns`
 
 `boolean`, defaults to `false`.
@@ -116,6 +127,17 @@ An array-like object is an object with a `length` property: for example, `{ 0: "
 While it is _not_ spec-compliant to destructure array-like objects as if they were arrays, there are many objects that would be _iterables_ in modern browsers with `Symbol.iterator` support. Some notable examples are the DOM collections, like `document.querySelectorAll("img.big")`, which are the main use case for this option.
 
 Please note that Babel allows destructuring `arguments` in old engines even if this option is disabled, because it's defined as _iterable_ in the ECMAScript specification.
+
+> ⚠️ Consider migrating to the top level [`arrayLikeIsIterable`](assumptions.md#arraylikeisiterable) assumption.
+
+```jsonc
+// babel.config.json
+{
+  "assumptions": {
+    "arrayLikeIsIterable": true
+  }
+}
+```
 
 ## References
 

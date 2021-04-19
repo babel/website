@@ -83,7 +83,18 @@ require("@babel/core").transformSync("code", {
 
 In loose mode, **all** iterables are assumed to be arrays.
 
-Loose mode preserves "holes" when spreading an array (for example, `[ ...Array(2) ]` produces `[ (hole), (hole) ]`). Set loose to `false` to avoid this behaviour.
+> ⚠️ Consider migrating to the top level [`iterableIsArray`](assumptions.md#iterableisarray) assumption.
+
+```jsonc
+// babel.config.json
+{
+  "assumptions": {
+    "iterableIsArray": true
+  }
+}
+```
+
+Under the `iterableIsArray` assumption, Babel preserves "holes" when spreading an array (for example, `[ ...Array(2) ]` produces `[ (hole), (hole) ]`). Set `iterableIsArray` to `false` to avoid this behaviour.
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
 
@@ -94,6 +105,17 @@ Loose mode preserves "holes" when spreading an array (for example, `[ ...Array(2
 Added in: `v7.10.0`
 
 This option allows spreading array-like objects as if they were arrays.
+
+> ⚠️ Consider migrating to the top level [`arrayLikeIsIterable`](assumptions.md#arraylikeisiterable) assumption.
+
+```jsonc
+// babel.config.json
+{
+  "assumptions": {
+    "arrayLikeIsIterable": true
+  }
+}
+```
 
 An array-like object is an object with a `length` property: for example, `{ 0: "a", 1: "b", length: 2 }`. Note that, like real arrays, array-like objects can have "holes": `{ 1: "a", length: 3 }` is equivalent to `[ (hole), "a", (hole) ]`.
 

@@ -83,8 +83,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 ```
 
-In environments that don't support this you can enable loose mode on `@babel/plugin-transform-modules-commonjs`
-and instead of using `Object.defineProperty` an assignment will be used instead.
+> ⚠️ Consider migrating to the top level [`enumerableModuleMeta`](assumptions.md#enumerablemodulemeta) assumption.
+
+```jsonc
+// babel.config.json
+{
+  "assumptions": {
+    "enumerableModuleMeta": true
+  }
+}
+```
+
+In environments that don't support this you can enable the `enumerableModuleMeta` assumption, instead of using `Object.defineProperty` an assignment will be used instead.
 
 ```javascript
 var foo = (exports.foo = 5);
