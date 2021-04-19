@@ -37,8 +37,6 @@ template.innerHTML = `
     <style>
       .repl {
         color: white;
-        max-width: 1024px;
-        margin: 0 auto;
 
         display: grid;
         grid-template:
@@ -51,7 +49,7 @@ template.innerHTML = `
       }
 
       @media (min-width: 992px) {
-        .repl {
+        .repl:not(.vertical) {
           grid-template:
             "input-title output-title"
             "input-editor output-editor"
@@ -127,7 +125,12 @@ template.innerHTML = `
           font-size: 1rem;
           min-height: 200px;
         }
+
+        .vertical .repl__code {
+          min-height: 150px;
+        }
       }
+
       .repl h3 {
         color: #b7b8b7;
         font-size: 0.875rem;
@@ -151,6 +154,7 @@ template.innerHTML = `
 
 class MiniRepl extends HTMLElement {
   _defaultCode = this.getAttribute("default-code");
+  _vertical = this.hasAttribute("vertical");
   _options = JSON.parse(this.getAttribute("options")) ?? {};
 
   _inEditor;
@@ -163,6 +167,10 @@ class MiniRepl extends HTMLElement {
 
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+    if (this._vertical) {
+      this.shadowRoot.querySelector(".repl").classList.add("vertical");
+    }
   }
 
   connectedCallback() {

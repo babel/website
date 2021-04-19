@@ -15,6 +15,8 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /7/                                 https://old.babeljs.io/repl/build/7.0/
 /7.html                             https://old.babeljs.io/repl/build/7.0/
 
+/assumptions                        /docs/en/assumptions
+
 # after docusaurus rewrite
 /php/                               https://old.babeljs.io/php/
 /docs/usage/                        /docs/en/usage/

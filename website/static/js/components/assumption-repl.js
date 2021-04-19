@@ -1,19 +1,16 @@
 const template = document.createElement("template");
 template.innerHTML = `
-  <slot name="name"></slot>
+  <label>
+    <input id="enabled" type="checkbox" checked /> Enabled
+  </label>
 
-  <!-- description -->
-  <slot></slot>
-
-  <br>
-
-  <label><input id="enabled" type="checkbox" checked /> Enabled</label>
-  <mini-repl id="repl"></mini-repl>
+  <mini-repl id="repl" vertical></mini-repl>
 `;
 
-class AssumptionDocs extends HTMLElement {
-  _plugins = this.getAttribute("plugins").split(",");
-  _assumption = this.getAttribute("assumption");
+class AssumptionRepl extends HTMLDivElement {
+  _plugins = this.dataset.plugins.split(",");
+  _assumption = this.dataset.assumption;
+  _input = this.querySelector("code.assumption-input").textContent;
 
   _enabled = true;
 
@@ -24,9 +21,7 @@ class AssumptionDocs extends HTMLElement {
       template.content.cloneNode(true)
     );
 
-    this.shadowRoot
-      .getElementById("repl")
-      .setInput(this.getAttribute("default-code"));
+    this.shadowRoot.getElementById("repl").setInput(this._input);
   }
 
   connectedCallback() {
@@ -51,4 +46,4 @@ class AssumptionDocs extends HTMLElement {
   }
 }
 
-customElements.define("assumption-docs", AssumptionDocs);
+customElements.define("assumption-repl", AssumptionRepl, { extends: "div" });
