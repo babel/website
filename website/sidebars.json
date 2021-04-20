@@ -32,6 +32,10 @@
       "babel-template",
       "babel-traverse",
       "babel-types"
+    ],
+    "Helper Packages": [
+      "babel-helper-compilation-targets",
+      "babel-helper-module-imports"
     ]
   },
   "plugins": {
