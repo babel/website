@@ -17,7 +17,7 @@ The entire process to set this up involves:
 
    ```sh
    npm install --save-dev @babel/core @babel/cli @babel/preset-env
-   npm install --save @babel/polyfill
+   npm install --save core-js@3 regenerator-runtime
    ```
 
 2. Creating a config file named `babel.config.json` (requires `v7.8.0` and above) in the root of your project with this content:
@@ -174,30 +174,26 @@ Now the `env` preset will only load transformation plugins for features that are
 
 ## Polyfill
 
-> 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features) and `regenerator-runtime/runtime` (needed to use transpiled generator functions):
->
-> ```js
-> import "core-js/stable";
-> import "regenerator-runtime/runtime";
-> ```
+> 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features) and [`regenerator-runtime/runtime`](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) (needed to use transpiled generator functions):
 
-The [@babel/polyfill](polyfill.md) module includes [core-js](https://github.com/zloirock/core-js) and a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) to emulate a full ES2015+ environment.
+Polyfills allow new "built-ins" of modern JS specs to be understood by older runtime environments. Built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (when used alongside the regenerator plugin) won't necessarily work in all environments such as an older browser.
 
-This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (when used alongside the regenerator plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
-
-For library/tool authors this may be too much. If you don't need the instance methods like `Array.prototype.includes` you can do without polluting the global scope altogether by using the [transform runtime](plugin-transform-runtime.md) plugin instead of `@babel/polyfill`.
-
-To go one step further, if you know exactly what features you need polyfills for, you can require them directly from [core-js](https://github.com/zloirock/core-js#commonjs).
-
-Since we're building an application we can just install `@babel/polyfill`:
+You install two packages to provide polyfills. Make sure you have installed both as dependencies needed to run your source code.
 
 ```sh
-npm install --save @babel/polyfill
+npm install --save core-js regenerator-runtime
 ```
 
-> Note the `--save` option instead of `--save-dev` as this is a polyfill that needs to run before your source code.
+Importing these two modules at the entrypoint to your JS application will allow emulating a full ES2015+ environment.
 
-Now luckily for us, we're using the `env` preset which has a `"useBuiltIns"` option that when set to `"usage"` will practically apply the last optimization mentioned above where you only include the polyfills you need. With this new option the configuration changes like this:
+```js
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+```
+
+However, doing so imports all the polyfills, and you may not want *everything*.
+
+When using the `@babel/present-env` preset, you can configure a [`"useBuiltIns"` option](preset-env.md#usebuiltins) to only include the polyfills you need. With this new option the configuration changes like this:
 
 ```json
 {
@@ -232,10 +228,10 @@ require("core-js/modules/es.promise.finally");
 Promise.resolve().finally();
 ```
 
-If we weren't using the `env` preset with the `"useBuiltIns"` option set to `"usage"` we would've had to require the full polyfill _only once_ in our entry point before any other code.
+If you're not using the `env` preset, you can use the [transform runtime](plugin-transform-runtime.md) to avoid polluting the global scope. Or, if you prefer a manual approach and know what features you need to polyfill, you can import them directly from [core-js](https://github.com/zloirock/core-js#commonjs).
 
 ## Summary
 
-We used `@babel/cli` to run Babel from the terminal, `@babel/polyfill` to polyfill all the new JavaScript features, and the `env` preset to only include the transformations and polyfills for the features that we use and that are missing in our target browsers.
+We used `@babel/cli` to run Babel from the terminal, `core-js` and `regenerator-runtime` to polyfill new JavaScript features, and the `env` preset to only include the transformations and polyfills for the features that we use and that are missing in our target browsers.
 
 For more information on setting up Babel with your build system, IDE, and more, check out our [interactive setup guide](/setup.html).
