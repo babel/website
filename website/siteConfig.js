@@ -123,6 +123,7 @@ const siteConfig = {
   headerIcon: "img/babel.svg",
   footerIcon: "img/babel.svg",
   favicon: "img/favicon.png",
+  ogImage: "img/ogImage.png",
   colors: {
     primaryColor: "#323330",
     secondaryColor: "#323330",
