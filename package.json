@@ -99,6 +99,9 @@
     "semver": "^5.4.1",
     "unfetch": "^4.2.0"
   },
+  "workspaces": [
+    "./website"
+  ],
   "lint-staged": {
     "js/**/*.js": [
       "eslint --format=codeframe --fix",
