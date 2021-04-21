@@ -144,7 +144,7 @@ export const persistedStateToEnvConfig = (
 
   const envConfig: EnvConfig = {
     browsers: persistedState.browsers,
-    electron: envPresetDefaults.electron.default,
+    electron: persistedState.electron ?? envPresetDefaults.electron.default,
     isEnvPresetEnabled,
     isElectronEnabled: false,
     isNodeEnabled: false,
@@ -156,8 +156,8 @@ export const persistedStateToEnvConfig = (
     isBugfixesEnabled: !!persistedState.bugfixes,
     node: envPresetDefaults.node.default,
     version: persistedState.version,
-    builtIns: envPresetDefaults.builtIns.default,
-    corejs: envPresetDefaults.corejs.default,
+    builtIns: persistedState.builtIns ?? envPresetDefaults.builtIns.default,
+    corejs: persistedState.corejs ?? envPresetDefaults.corejs.default,
   };
 
   decodeURIComponent(persistedState.targets)

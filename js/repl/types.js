@@ -113,6 +113,7 @@ export type ReplState = {
   bugfixes: boolean,
   build: string,
   builtIns: string | boolean,
+  corejs: ?string,
   spec: boolean,
   loose: boolean,
   circleciRepo: string,
