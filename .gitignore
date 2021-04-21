@@ -32,3 +32,6 @@ website/translated_docs
 
 package-lock.json
 /.idea
+/.yarn/install-state.gz
+/.yarn/cache
+/.yarn/build-state.yml
