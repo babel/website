@@ -15,7 +15,9 @@ id: assumptions
 
 By default Babel tries to compile your code so that it matches the native behavior as closely as possible. However, this sometimes means generating more output code, or slower output code, just to support some edge cases you don't care about.
 
-Since Babel 7.13.0, you can specify an `assumptions` option in your configuration to tell Babel which assumptions it can make about your code, to better optimize the compilation result. For example:
+Since Babel 7.13.0, you can specify an `assumptions` option in your configuration to tell Babel which assumptions it can make about your code, to better optimize the compilation result. *Note*: this replaces the various `loose` options in plugins in favor of top-level options that can apply to multiple plugins ([RFC link](https://github.com/babel/rfcs/blob/master/rfcs/0003-top-level-assumptions.md)). 
+
+For example:
 
 ```json
 {
@@ -51,7 +53,7 @@ const copy = [...images];
 
 ## `constantReexports`
 
-When re-exporting a bindin from a module, assume that it doesn't change and thus it's safe to directly export it, as if you were doing
+When re-exporting a binding from a module, assume that it doesn't change and thus it's safe to directly export it, as if you were doing
 
 ```js
 import { value as val } from "dep";
