@@ -282,7 +282,7 @@ You should enable these features only if you are using an older version.
 
 - `typescript`
   - `dts` (`boolean`, default `false`)
-    In TypeScript, some syntaxes in Ambient Context such as `.d.ts` files and in `declare module` are different from normal TypeScript. If this option is enabled, syntax errors will be handled as Ambient Context. Please see https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html and https://basarat.gitbook.io/typescript/type-system/intro for detail of Ambient Context.
+    This option will enable parsing within a TypeScript ambient context, where certain syntax have different rules (like `.d.ts` files and inside `declare module` blocks). Please see https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html and https://basarat.gitbook.io/typescript/type-system/intro for more information about ambient contexts.
 
 ### FAQ
 
