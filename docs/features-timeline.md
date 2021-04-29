@@ -9,6 +9,34 @@ Additionally, use this timeline to track some other important efforts, such as t
 <ol class="timeline-container">
 <li data-date="Feb 2021">
 
+## Babel 7.14.0
+
+[blog post](https://babeljs.io/blog/2021/04/29/7.14.0)
+
+- Enable the [Class Fields](https://github.com/tc39/proposal-class-fields),
+  [Private Methods](https://github.com/tc39/proposal-private-methods) and [Static Class Features](https://github.com/tc39/proposal-static-class-features) Stage 4 proposals by default
+- Add the [Private Brand Checks](https://github.com/tc39/proposal-private-fields-in-in) and [Static Class Blocks](https://github.com/tc39/proposal-class-static-block) proposals to `@babel/preset-env`'s [`shippedProposals`](https://babeljs.io/docs/en/babel-preset-env#shippedproposals)
+  ```js
+  class A {
+    static { initialize(A); } // static block
+    #field;
+    is(obj) {
+      return #field in obj; // private brand check
+    }
+  }
+  ```
+- Support for the [`async do` expressions](https://github.com/tc39/proposal-async-do-expressions) proposal
+  ```js
+  let valP = async do {
+    2 + await computeIt();
+  };
+  ```
+- Support for the [`importInterop: "node"`](https://babeljs.io/docs/en/babel-plugin-transform-modules-commonjs#importinterop) option in `@babel/plugin-transform-modules-commonjs`, to aligh Babel with the Node.js behavior
+- [TypeScript 4.3](https://devblogs.microsoft.com/typescript/announcing-typescript-4-3/) support
+
+</li>
+<li data-date="Feb 2021">
+
 ## Babel 7.13.0
 
 [blog post](https://babeljs.io/blog/2021/02/22/7.13.0)
