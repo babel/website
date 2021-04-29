@@ -286,6 +286,35 @@ You should enable these features only if you are using an older version.
   - `dts` (`boolean`, default `false`)
     This option will enable parsing within a TypeScript ambient context, where certain syntax have different rules (like `.d.ts` files and inside `declare module` blocks). Please see https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html and https://basarat.gitbook.io/typescript/type-system/intro for more information about ambient contexts.
 
+### Error codes
+
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.14.0` | Added error codes |
+</details>
+
+Error codes are useful for handling the errors thrown by `@babel/parser`.
+
+There are two error codes, `code` and `reasonCode`.
+
+- `code`
+  - Rough classification of errors (e.g. `BABEL_PARSER_SYNTAX_ERROR`, `BABEL_PARSER_SOURCETYPE_MODULE_REQUIRED`).
+- `reasonCode`
+  - Detailed classification of errors (e.g. `MissingSemicolon`, `VarRedeclaration`).
+
+Example of using error codes with `errorRecovery`:
+
+```js
+const { parse } = require("@babel/parser");
+
+const ast = parse(`a b`, { errorRecovery: true });
+
+console.log(ast.errors[0].code); // BABEL_PARSER_SYNTAX_ERROR
+console.log(ast.errors[0].reasonCode); // MissingSemicolon
+```
+
 ### FAQ
 
 #### Will the Babel parser support a plugin system?
