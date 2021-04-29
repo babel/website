@@ -184,6 +184,7 @@ require("@babel/parser").parse("code", {
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `v7.14.0` | Added `asyncDoExpressions` |
 | `v7.13.0` | Added `moduleBlocks` |
 | `v7.12.0` | Added `classStaticBlock`, `moduleStringNames` |
 | `v7.11.0` | Added `decimal` |
@@ -196,6 +197,7 @@ require("@babel/parser").parse("code", {
 
 | Name                                                                                            | Code Example                                             |
 | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `asyncDoExpressions` ([proposal](https://github.com/tc39/proposal-async-do-expressions))        | `async do { await requestAPI().json() }`                 |
 | `classProperties` ([proposal](https://github.com/tc39/proposal-class-public-fields))            | `class A { b = 1; }`                                     |
 | `classPrivateProperties` ([proposal](https://github.com/tc39/proposal-private-fields))          | `class A { #b = 1; }`                                    |
 | `classPrivateMethods` ([proposal](https://github.com/tc39/proposal-private-methods))            | `class A { #c() {} }`                                    |

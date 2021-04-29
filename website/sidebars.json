@@ -51,6 +51,7 @@
       "babel-plugin-transform-modules-umd"
     ],
     "TC39 Proposals": [
+      "babel-plugin-proposal-async-do-expressions",
       "babel-plugin-proposal-class-properties",
       "babel-plugin-proposal-class-static-block",
       "babel-plugin-proposal-decorators",
