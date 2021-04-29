@@ -4,6 +4,150 @@ title: Babel Roadmap
 sidebar_label: Roadmap
 ---
 
+This document outlines some of the improvements our team members would like to work on during this year.
+
+This is far from being a complete list of all the new features or important changes that we'll bring to Babel, but it's a good summary if you are interested in the general direction that the project is moving toward. We may not actually finish every listed point or may delay some of them to the next year. Some of them have clear starting and ending points, while others need more research or [RFCs](https://github.com/babel/rfcs).
+
+If your company is interested and would like to directly sponsor any particular item please [reach out](mail:team@babeljs.io)!
+
+## Babel 2021 Roadmap
+
+### Babel 8
+
+We have been talking about the Babel 8 release for more than one year (we initially scheduled it about one year ago)! However, we are now closer then ever to it's release!
+
+Most of the remaining tasks are in the [tracking issue](https://github.com/babel/babel/issues/10746), but there are still a few blockers:
+- We want to drop support for [Node.js 10](https://github.com/nodejs/Release), which stops being maintained on 2021-04-30.
+- We would like to release Babel as a pure ESM package. We are now in the process of converting our sources to be compatible with Node.js' ESM implementation, and while doing so, we are examining how we can make it easier for people that currently use Babel to compile ESM to CJS.
+- We are trying to align our TypeScript AST with the [`typescript-eslint`](https://github.com/typescript-eslint/typescript-eslint/) project. Our ASTs are _almost_ identical, but we need to introduce some small breaking changes to fully align.
+- Our release infrastructure doesn't support yet pre-releases, or using multiple "main" branches (one for Babel 8 and one for Babel 7).
+- We haven't figured out yet a policy for Babel 7 maintenance.
+
+### Implement new TC39 proposals
+
+Babel can currently parse all the Stage 3 proposals, and we can transform all of them except for top-level await, import assertions and JSON modules (which are best handled by bundlers working with the dependencies graph).
+
+We support all the Stage 2 proposals except for:
+- The new iteration of the decorators proposal (we need to implement both parsing and transform);
+- Transform for the Module Blocks proposal (we implemented parsing in Babel 7.13.0).
+
+We will implement support for decorators, and investigate if and how we can implement a transform for module blocks.
+
+While we don't support many Stage 1 proposals, there have been recent updates to the pipeline operator and to do expressions. Since we already support those proposals and the community is quite excited about them, we will update our implementations.
+
+There are also other proposals (such as pattern matching) that we have not yet implemented because their champions expect to do significant changes to the syntax and semantics. However, we are closely following their development, and will implement them in Babel as soon as they stabilize a bit.
+
+### Move `@babel/preset-env` into `@babel/core`
+
+A minimal Babel transforming setup requires at least three packages:
+- `@babel/core`
+- `@babel/preset-env`
+- a Babel "runner" (`@babel/cli`, `babel-loader`, `@rollup/plugin-babel`, etc)
+
+Moving `@babel/preset-env` directly into `@babel/core` has two big advantages:
+
+- It will be easier to configure Babel in simple projects, you would only need to enable a `compileJS: true` option in `babel.config.json` (or it could even be the default in the future -- it can't be default as `@babel/eslint-parser` does not compile the source)
+- It will make sure that the plugin versions are in sync with the `@babel/core` version, avoiding most of the bugs caused by mismatched/incompatible packages versions
+- When we move to ESM, it will be hard to resolve and load plugin synchronously in `transformSync`. This prevents it from being a problem.
+
+There is already [a RFC](https://github.com/babel/rfcs/pull/10) to move _plugins_ for stable ECMAScript features in `@babel/core`, which is the first step in this direction.
+
+With our current `@babel/preset-env` architecture, we would need to specially handle official plugins to automatically enable or disable them based on `targets`.
+However, this has two drawbacks:
+- Compatibility data for a specific plugin is completely separated from the plugin implementation (it's not even a dependency, more something like an internal implicit peer dependency: plugin -> @babel/core -> @babel/compat-data);
+- Official plugins would get special treatment from `@babel/core`, but we want to make sure that third-party plugins have the same capabilities as official plugins.
+
+### Continue developing the `babel-polyfills` project
+
+We have already decided to remove the older `core-js@2` support from `@babel/preset-env` in Babel 8. We also want to stop promoting a specific third-party polyfill, which might give our users the impression that it's part of Babel itself.
+
+This might happen in two different ways:
+- We just remove `core-js@3` from `@babel/preset-env` in Babel 8, encouraging users to migrate to `babel-plugin-polyfill-corejs3` (which is what `@babel/preset-env` internally uses starting from version 7.10.0)
+- We can keep `core-js@3` support in `@babel/preset-env`, but not migrate it to `@babel/core` when we'll move the transform plugins.
+
+Whichever path we take, we would like to offer at least one alternative to our users when they'll need to update the `core-js` integration in their configuration. `core-js` is a really good polyfill that ensures the highest possible spec compliancy, but users may prefer different trade-offs.
+
+([Nicolò](https://github.com/nicolo-ribaudo)) is working with [@ljharb](https://github.com/ljharb) to make sure that the [`@es-shims` project](https://github.com/es-shims/) supports at least all the ES2015+ features (we actually aim for ES5+), so that Babel users are free to choose to between at least two options.
+
+This needs to happen _before_ dropping built-in support for `core-js@3`, so that people interested in `es-shims` don't have to migrate twice.
+
+### Expand `targets` usage for granular transforms
+
+Since the beginning, `@babel/preset-env` has used the `targets` option to automatically enable or disable transform plugins.
+
+However, there isn't a 1-to-1 mapping between Babel plugins and features implemented in browsers.
+
+For example, we have a single plugin for the different class fields types (public and private, static and instance), but browsers have varying compatibility matrices:
+
+- Firefox 73 and Safari 14 support only public instance fields
+- Firefox 75+ supports public instance and static fields
+- Chrome 79+ supports public and private fields, but doesn't support private fields in some optional chaining expressions
+- Chrome 84+ fully supports private fields, and also private methods
+- Safari TP 121 fully supports private fields (even with `?.`), but it doesn't support private methods
+
+Creating a plugin for each feature is sub-optimal. For example, we can convert private methods to private fields and then, if needed, convert them to older syntax. However, we can generate better/optimized output by directly converting private methods down to older syntax without the intermediate step if we know that it needs to be transpiled down.
+
+Since Babel 7.13.0, we can read the `targets` option directly inside a plugin, we can modify our plugins to automatically perform a _partial_ compilation of a given ECMAScript feature, which would give advantages in the output size and runtime performance.
+
+**Prior Art**
+
+This approach isn't completely new. Thanks to a collaboration with [@_developit](https://twitter.com/_developit), in Babel 7.9.0 we introduced a new `bugfixes: true` option for `@babel/preset-env`. When this option is enabled, and when using `esmodules: true` as the compilation target, we only partially compile [some features](https://github.com/babel/preset-modules#features-supported). This what made us initially think about this possibility, but the current partial transforms are less useful when using more modern targets (for example, `defaults, not ie 11`).
+
+We also already use the `targets` option to decide whether we can use `Object.assign` when compiling object spread or not.
+
+**Action Points**
+
+This goal can be split into two big tasks that can be done in parallel:
+- We need to identify *where* these optimizations can be useful by collecting real-world browserslist queries and by simulating how popular queries (for example, `defaults` or `>2%, not dead`) will evolve in the future.
+- We need to actually implement the necessary optimizations, making sure that they still work well with the other plugins (since they would highly increase the number of possible transform combinations).
+
+### Investigate new compiler `assumptions`
+
+In Babel 7.13.0 we introduced a new top-level [`assumptions`](https://babeljs.io/docs/en/options#assumptions) option, to formalize what the `loose` mode option does and offer more granular control to our users (since often they can only enable _some_ assumptions and not all of them).
+
+However, we only included options for assumptions we _already_ made when compiling in `loose` mode. We can now investigate what new assumptions our users might need.
+
+The are already some proposals, such as:
+- [#8222](https://github.com/babel/babel/issues/8222) - assume that all the ESM imports are actually immutable, avoiding the code needed for live bindings.
+- [#11356](https://github.com/babel/babel/issues/11356) - assume that compiled classes do not extends native classes, avoiding the runtime performance cost needed to instantiate possibly native classes.
+
+We can find which new assumptions we should implement, by:
+- Manually checking which features we compile to "non-obvious" output, which is usually caused by edge cases that many developers don't care about.
+- Ask for feedback from the community, since developers can test which assumptions work and which don't on their applications.
+
+### Overhaul the Babel REPL
+
+The Babel REPL is a convenient playground to learn how Babel transpiles source code.
+
+Current limits:
+
+- The REPL does not support `assumptions` config. Although we have a dedicated per-assumption basis mini REPL on https://babel.dev/assumptions, currently we can not show how these `assumptions` might work together
+- The REPL does not support plugin options. Some plugins have required options, such as `@babel/plugin-proposal-record-and-tuple` and `@babel/plugin-proposal-decorators`
+https://github.com/babel/website/issues/1292, https://github.com/babel/website/issues/2224, https://github.com/babel/website/pull/1970
+
+Features good to have:
+
+- AST Explorer (integrate with existing one)
+- stderr with complete stack trace as error log
+- stdout as output
+- Change Babel version from UI
+
+At least 15% of open issues in babel-website are related to the REPL: https://github.com/babel/website/issues?q=is%3Aissue+is%3Aopen+label%3Arepl
+
+### Educational/Debugging Tooling
+
+Related to the REPL/ASTExplorer, we could do with more tooling to help with general plugin development for ourselves and 3rd-party plugins. This is rather exploratory in nature: different visualizations for the AST itself, debugging, etc.
+
+Some things already in progress Henry has been working on and off on:
+
+- [Codesandbox](https://codesandbox.io/s/babel-repl-custom-plugin-7s08o) for making a simple Babel plugin in the same vein as https://astexplorer.net but with custom configs.
+- [Visualization](https://twitter.com/left_pad/status/1367941962083471361?s=20) of input to output mapping to help understand how Babel transforms it's code. Could be useful even for documentation in getting JavaScript users familiar with new syntax or a specific demo of a transform.
+- [Mapping](https://twitter.com/left_pad/status/1298792944099561473?s=20) of input to output like a sourcemap type structure. Can do a reverse mapping to find out what plugin caused the code to be outputted a certain way which helps with debugging.
+
+For an interactive example of what we are thinking about: https://babel-explorer.netlify.app/ (click and hold the mouse in the bottom sector!)
+
+<!--
+
 ## Ecosystem
 
 ### Test Against `test262`
@@ -170,3 +314,5 @@ References: https://github.com/eslint/eslint-github-bot, https://github.com/open
   - Should we switch to shift?
   - What about binary ast?
   - immutable? https://github.com/babel/babel/issues/4130#issuecomment-245411113
+
+-->

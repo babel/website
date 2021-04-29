@@ -15,7 +15,7 @@
       "babel-preset-typescript",
       "babel-preset-flow"
     ],
-    "Misc": ["editors", "caveats", "faq", "features-timeline"],
+    "Misc": ["roadmap", "caveats", "features-timeline", "faq", "editors"],
     "Integration Packages": [
       "babel-cli",
       "babel-polyfill",
