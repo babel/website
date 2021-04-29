@@ -6,7 +6,7 @@ sidebar_label: Roadmap
 
 This document outlines some of the improvements our team members would like to work on during this year.
 
-This is far from being a complete list of all the new features or important changes that we'll bring to Babel, but it's a good summary if you are interested in the general direction that the project is moving to. We may not actually finish every listed point or may delay some of them to the next year. Some of them have clear starting and ending points, while others need more research or [RFCs](https://github.com/babel/rfcs).
+This is far from being a complete list of all the new features or important changes that we'll bring to Babel, but it's a good summary if you are interested in the general direction that the project is moving toward. We may not actually finish every listed point or may delay some of them to the next year. Some of them have clear starting and ending points, while others need more research or [RFCs](https://github.com/babel/rfcs).
 
 If your company is interested and would like to directly sponsor any particular item please [reach out](mail:team@babeljs.io)!
 
@@ -14,7 +14,7 @@ If your company is interested and would like to directly sponsor any particular 
 
 ### Babel 8
 
-We have been talking about the Babel 8 release for more than one year (we initially scheduled it for about one year ago)! However, we are now closer then ever to actually release it.
+We have been talking about the Babel 8 release for more than one year (we initially scheduled it about one year ago)! However, we are now closer then ever to it's release!
 
 Most of the remaining tasks are in the [tracking issue](https://github.com/babel/babel/issues/10746), but there are still a few blockers:
 - We want to drop support for [Node.js 10](https://github.com/nodejs/Release), which stops being maintained on 2021-04-30.
@@ -35,7 +35,7 @@ We will implement support for decorators, and investigate if and how we can impl
 
 While we don't support many Stage 1 proposals, there have been recent updates to the pipeline operator and to do expressions. Since we already support those proposals and the community is quite excited about them, we will update our implementations.
 
-There are also other proposals (such as pattern matching) that we didn't implement yet because their champions expect to do significant changes to the syntax and semantics. However, we are closely following their developments to implement them in Babel as soon as they stabilize a bit.
+There are also other proposals (such as pattern matching) that we have not yet implemented because their champions expect to do significant changes to the syntax and semantics. However, we are closely following their development, and will implement them in Babel as soon as they stabilize a bit.
 
 ### Move `@babel/preset-env` into `@babel/core`
 
@@ -48,18 +48,18 @@ Moving `@babel/preset-env` directly into `@babel/core` has two big advantages:
 
 - It will be easier to configure Babel in simple projects, you would only need to enable a `compileJS: true` option in `babel.config.json` (or it could even be the default in the future -- it can't be default as `@babel/eslint-parser` does not compile the source)
 - It will make sure that the plugin versions are in sync with the `@babel/core` version, avoiding most of the bugs caused by mismatched/incompatible packages versions
-- When we start moving to ESM, it will be hard to resolve and load plugin synchronously in `transformSync`. This prevents it from being a problem.
+- When we move to ESM, it will be hard to resolve and load plugin synchronously in `transformSync`. This prevents it from being a problem.
 
 There is already [a RFC](https://github.com/babel/rfcs/pull/10) to move _plugins_ for stable ECMAScript features in `@babel/core`, which is the first step in this direction.
 
 With our current `@babel/preset-env` architecture, we would need to specially handle official plugins to automatically enable or disable them based on `targets`.
 However, this has two drawbacks:
 - Compatibility data for a specific plugin is completely separated from the plugin implementation (it's not even a dependency, more something like an internal implicit peer dependency: plugin -> @babel/core -> @babel/compat-data);
-- Official plugins would get a special treatment from `@babel/core`, but we want to make sure that third-party plugins have the same capabilities as official plugins.
+- Official plugins would get special treatment from `@babel/core`, but we want to make sure that third-party plugins have the same capabilities as official plugins.
 
 ### Continue developing the `babel-polyfills` project
 
-We have already decided to remove the older `core-js@2` support from `@babel/preset-env` in Babel 8, and we also want to stop promoting a specific third-party polyfill giving our users the impression that it's part of Babel itself.
+We have already decided to remove the older `core-js@2` support from `@babel/preset-env` in Babel 8. We also want to stop promoting a specific third-party polyfill, which might give our users the impression that it's part of Babel itself.
 
 This might happen in two different ways:
 - We just remove `core-js@3` from `@babel/preset-env` in Babel 8, encouraging users to migrate to `babel-plugin-polyfill-corejs3` (which is what `@babel/preset-env` internally uses starting from version 7.10.0)
@@ -87,7 +87,7 @@ For example, we have a single plugin for the different class fields types (publi
 
 Creating a plugin for each feature is sub-optimal. For example, we can convert private methods to private fields and then, if needed, convert them to older syntax. However, we can generate better/optimized output by directly converting private methods down to older syntax without the intermediate step if we know that it needs to be transpiled down.
 
-Since starting from Babel 7.13.0 we can read `targets` option directly inside a plugin, we can modify our plugins to automatically perform a _partial_ compilation of a given ECMAScript feature, which would give advantages in the output size and runtime performance.
+Since Babel 7.13.0, we can read the `targets` option directly inside a plugin, we can modify our plugins to automatically perform a _partial_ compilation of a given ECMAScript feature, which would give advantages in the output size and runtime performance.
 
 **Prior Art**
 
