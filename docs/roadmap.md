@@ -21,7 +21,7 @@ Most of the remaining tasks are in the [tracking issue](https://github.com/babel
 - We would like to release Babel as a pure ESM package. We are now in the process of converting our sources to be compatible with Node.js' ESM implementation, and while doing so, we are examining how we can make it easier for people that currently use Babel to compile ESM to CJS.
 - We are trying to align our TypeScript AST with the [`typescript-eslint`](https://github.com/typescript-eslint/typescript-eslint/) project. Our ASTs are _almost_ identical, but we need to introduce some small breaking changes to fully align.
 - Our release infrastructure doesn't support yet pre-releases, or using multiple "main" branches (one for Babel 8 and one for Babel 7).
-- We haven't figured out yet a policy for Babel 7 maintainance.
+- We haven't figured out yet a policy for Babel 7 maintenance.
 
 ### Implement new TC39 proposals
 
@@ -47,7 +47,7 @@ A minimal Babel transforming setup requires at least three packages:
 Moving `@babel/preset-env` directly into `@babel/core` has two big advantages:
 
 - It will be easier to configure Babel in simple projects, you would only need to enable a `compileJS: true` option in `babel.config.json` (or it could even be the default in the future -- it can't be default as `@babel/eslint-parser` does not compile the source)
-- It will make sure that the plugin versions are in sync with the `@babel/core` version, avoiding most of the bugs casued by accidentally incompatible packages versions
+- It will make sure that the plugin versions are in sync with the `@babel/core` version, avoiding most of the bugs caused by mismatched/incompatible packages versions
 - When we start moving to ESM, it will be hard to resolve and load plugin synchronously in `transformSync`. This prevents it from being a problem.
 
 There is already [a RFC](https://github.com/babel/rfcs/pull/10) to move _plugins_ for stable ECMAScript features in `@babel/core`, which is the first step in this direction.
@@ -65,9 +65,9 @@ This might happen in two different ways:
 - We just remove `core-js@3` from `@babel/preset-env` in Babel 8, encouraging users to migrate to `babel-plugin-polyfill-corejs3` (which is what `@babel/preset-env` internally uses starting from version 7.10.0)
 - We can keep `core-js@3` support in `@babel/preset-env`, but not migrate it to `@babel/core` when we'll move the transform plugins.
 
-Whatever path we take, we would like to offer at least one alternative to our users when they'll need to update the `core-js` integration in their configuration. `core-js` is a really good polyfill that ensures the highest possible spec compliancy, but different users might prefer different trade-offs.
+Whichever path we take, we would like to offer at least one alternative to our users when they'll need to update the `core-js` integration in their configuration. `core-js` is a really good polyfill that ensures the highest possible spec compliancy, but users may prefer different trade-offs.
 
-([Nicolò](https://github.com/nicolo-ribaudo)) is working with [@ljharb](https://github.com/ljharb) to make sure that the [`@es-shims` project](https://github.com/es-shims/) supports at least all the ES2015+ features (we actually aim for ES5+), so that Babel users are free to choose to between at least two alternatives.
+([Nicolò](https://github.com/nicolo-ribaudo)) is working with [@ljharb](https://github.com/ljharb) to make sure that the [`@es-shims` project](https://github.com/es-shims/) supports at least all the ES2015+ features (we actually aim for ES5+), so that Babel users are free to choose to between at least two options.
 
 This needs to happen _before_ dropping built-in support for `core-js@3`, so that people interested in `es-shims` don't have to migrate twice.
 
@@ -80,12 +80,12 @@ However, there isn't a 1-to-1 mapping between Babel plugins and features impleme
 For example, we have a single plugin for the different class fields types (public and private, static and instance), but browsers have varying compatibility matrices:
 
 - Firefox 73 and Safari 14 support only public instance fields
-- Firefox 75+ supports pulic instance and static fields
+- Firefox 75+ supports public instance and static fields
 - Chrome 79+ supports public and private fields, but doesn't support private fields in some optional chaining expressions
 - Chrome 84+ fully supports private fields, and also private methods
 - Safari TP 121 fully supports private fields (even with `?.`), but it doesn't support private methods
 
-Creating a plugin for each feature is sub-optimal. For example, we can convert private methods to private fields and then, if needed, convert them to older syntax. However, we can generate a better optimized output by directly converting private methods down to older syntax without the intermediate step, if we know that it needs to be transpiled down.
+Creating a plugin for each feature is sub-optimal. For example, we can convert private methods to private fields and then, if needed, convert them to older syntax. However, we can generate better/optimized output by directly converting private methods down to older syntax without the intermediate step if we know that it needs to be transpiled down.
 
 Since starting from Babel 7.13.0 we can read `targets` option directly inside a plugin, we can modify our plugins to automatically perform a _partial_ compilation of a given ECMAScript feature, which would give advantages in the output size and runtime performance.
 
