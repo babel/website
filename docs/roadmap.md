@@ -91,13 +91,13 @@ Since Babel 7.13.0, we can read the `targets` option directly inside a plugin, w
 
 **Prior Art**
 
-This approach isn't completely new. Thanks to a collaboration with [@_developit](https://twitter.com/_developit), in Babel 7.9.0 we introduced a new `bugfixes: true` option for `@babel/preset-env`. When this option is enabled, and when using `esmodules: true` as the compilation targets, we only partially compile [some features](https://github.com/babel/preset-modules#features-supported). This what made us initially think about this possibility, but the current partial transforms are less useful when using more modern targets (for example, `defaults, not ie 11`).
+This approach isn't completely new. Thanks to a collaboration with [@_developit](https://twitter.com/_developit), in Babel 7.9.0 we introduced a new `bugfixes: true` option for `@babel/preset-env`. When this option is enabled, and when using `esmodules: true` as the compilation target, we only partially compile [some features](https://github.com/babel/preset-modules#features-supported). This what made us initially think about this possibility, but the current partial transforms are less useful when using more modern targets (for example, `defaults, not ie 11`).
 
 We also already use the `targets` option to decide whether we can use `Object.assign` when compiling object spread or not.
 
 **Action Points**
 
-This goal can be divided in two main big tasks, that can be carried on in parallel:
+This goal can be split into two big tasks that can be done in parallel:
 - We need to identify *where* these optimizations can be useful by collecting real-world browserslist queries and by simulating how popular queries (for example, `defaults` or `>2%, not dead`) will evolve in the future.
 - We need to actually implement the necessary optimizations, making sure that they still work well with the other plugins (since they would highly increase the number of possible transform combinations).
 
@@ -117,11 +117,11 @@ We can find which new assumptions we should implement, by:
 
 ### Overhaul the Babel REPL
 
-The Babel REPL is a conveninent playground to learn how Babel transpiles source code.
+The Babel REPL is a convenient playground to learn how Babel transpiles source code.
 
 Current limits:
 
-- The REPL does not support `assumptions` config. Although we have delicated per-assumption basis mini REPL on https://babel.dev/assumptions, currently we can not show how these `assumptions` may work toghether
+- The REPL does not support `assumptions` config. Although we have a dedicated per-assumption basis mini REPL on https://babel.dev/assumptions, currently we can not show how these `assumptions` might work together
 - The REPL does not support plugin options. Some plugins have required options, such as `@babel/plugin-proposal-record-and-tuple` and `@babel/plugin-proposal-decorators`
 https://github.com/babel/website/issues/1292, https://github.com/babel/website/issues/2224, https://github.com/babel/website/pull/1970
 
@@ -132,7 +132,7 @@ Features good to have:
 - stdout as output
 - Change Babel version from UI
 
-At least 15% of open issues in babel-website is related to REPL: https://github.com/babel/website/issues?q=is%3Aissue+is%3Aopen+label%3Arepl
+At least 15% of open issues in babel-website are related to the REPL: https://github.com/babel/website/issues?q=is%3Aissue+is%3Aopen+label%3Arepl
 
 ### Educational/Debugging Tooling
 
