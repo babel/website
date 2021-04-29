@@ -1,57 +1,70 @@
 ---
 layout: post
-title: "Babel Funding Update"
+title: "Babel is used by millions, so why are we running out of money?"
 author: Babel Core Team
 date: 2021-04-12 0:00:00
 categories: announcements
-share_text: "Babel Funding Update"
+share_text: "Babel is used by millions, so why are we running out of money?"
 ---
 
-In March 2018 [Henry](https://twitter.com/left_pad) started an [experiment](https://www.henryzoo.com/in-pursuit-of-open-source-part-1/): would it be possible to work full-time on Babel, entirely sustained by donations from Babel users?
-
-In November 2019, after successfully guaranteeing a salary to a maintainer for over a year, we [expanded our goal](https://babeljs.io/blog/2019/11/08/babels-funding-plans): would it also be possible to support three additional part-time maintainers ([Jùnliàng](https://twitter.com/JLHwung), [Kai](https://twitter.com/kai_cataldo) and [Nicolò](https://twitter.com/NicoloRibaudo))?
-
-Nicolò, Jùnliàng and Henry are still paid to work on Babel, and together with them there is a talented team that helps after or during their day-to-day job.
+Since 2018, Babel has been doing a [funding experiment](https://babeljs.io/blog/2019/11/08/babels-funding-plans): can full time work on Babel be sustained? We've learned the answer might be no.
 
 <!-- truncate -->
 
-## Looking back
+In November 2019, after successfully paying [Henry](https://twitter.com/left_pad) a salary for over a year, we [expanded our goal](https://babeljs.io/blog/2019/11/08/babels-funding-plans) to also support three additional maintainers: [Jùnliàng](https://twitter.com/JLHwung), [Kai](https://twitter.com/kai_cataldo), and [Nicolò](https://twitter.com/NicoloRibaudo).
 
-After a few months being paid to work on Babel, Henry started receiving $11,000 USD per month. The goal was to establish the number as a baseline salary for working full-time on an open source project that seemed reasonable given the donations at the time.
+Part of the Babel team ([Nicolò](https://twitter.com/NicoloRibaudo), [Jùnliàng](https://twitter.com/JLHwung) and [Henry](https://twitter.com/left_pad)) is still being paid a salary to work on Babel, but we now need to make some adjustments in light of the donations we are currently receiving. This update is to talk about that, and ask for further support from the community.
 
-When we added three new paid maintainers, we couldn't afford to pay everyone the full $11,000 USD rate: Jùnliàng, Nicolò and Kai started at $2,000 USD per month, with the idea of increasing that amount when we would have received more donations.
+## Looking Back
 
-It has been more than one year since then and in the meanwhile Kai stepped down, but we still didn't have a chance to reconsider how much everyone is being paid.
+In 2018, Henry [left his job](https://www.henryzoo.com/in-pursuit-of-open-source-part-1/) to see if he could make a living working on open source and Babel, looking to people like [Evan You](https://twitter.com/youyuxi) as a example and for advice. He had already started work on getting more funding through the [Open Collective](https://opencollective.com/babel) that we had set up in 2017 to support the project and specifically our previous core team member [Logan Smyth](https://github.com/loganfsmyth), but it was difficult to do so early on while working half-time.
 
-We have a hard time justifying the pay differences, and there isn't an obvious reason anymore for which someone should be paid more than the other team members:
+After a few months, the fundraising efforts allowed paying Henry every month: we settled on \$11,000 per month as a baseline salary for working full-time on open source. We had a large grant (\$10k for 10 months) from [Handshake](https://handshake.org/grant-sponsors/) which initially helped boosting up our funds, but even when it ended we didn't have problems paying our team thanks to some amazing sponsors such as Airbnb, Trivago, Gatsby, AMP, and Salesforce.
 
-- We want to focus on ourselves as _people_, not as employees of a hypothetical company. We don't want to track meticulously how many hours we work, or how productive we are.
-- It's not obvious what we would consider as "working time". Part of what we do is to collaborate with other projects, but what exactly is the line between something done for Babel and something done as a personal contribution to the JavaScript ecosystem?
-- It's not possible to exactly measure how much we "produce": not every commit takes the same effort, not every task has the same impact, not every experiment has a direct result.
+We didn't want to stop there. We thought that by demonstrating our ability to create and _pay_ a strong team, more features and improvements (and in turn, value) would be delivered via Babel, which would continue the momentum of funding and sponsorship. We decided to start paying [Jùnliàng](https://twitter.com/jlhwung), [Nicolò](https://twitter.com/NicoloRibaudo) and [Kai](https://twitter.com/kai_cataldo) a "part-time" rate: we could initially afford \$2,000 USD per month. Our hope was by [announcing this plan](https://babeljs.io/blog/2019/11/08/babels-funding-plans) and continuing our fundraising efforts, we would be able to increase the budget and raise them to the full-time rate.
 
-For these reasons, we'll now change the current situation.
+## What Babel is today
 
-## The future
+It has been more than a year since then and we've both done and learned a lot.
 
-Starting from April, Henry, Nicolò and Jùnliàng will all be paid the same amount.
+[We've implemented](https://babel.dev/docs/en/features-timeline) support for many new ECMAScript proposals, kept up with every new TypeScript and Flow release, and designed [new features](https://babel.dev/assumptions) to allow producing smaller compiled output. We are now nearing the next major release, Babel 8. 
 
-This means we had to make a choice: does "pay everyone the same" mean that we should redistribute the total amount we spend monthly equally between us, or that we should bring everyone up to the level of who was being paid the most?
+Babel is continued to be used by thousands of [companies all over the world](https://babeljs.io/en/users.html). It's integrated into all kinds of frameworks in the JavaScript ecosystem, whether it's React, Next.js, Vue, Ember, Angular, etc. We are hitting over [117 million downloads/month](https://www.npmjs.com/package/@babel/core). It powers custom plugins and optimizations in varied scenarios like CSS-in-JS, GraphQL, or localization across enormous code bases.
 
-We strongly believe that working in open source should be a viable and sustainable career path, so ethically we should bring everyone *up* to the same level and not *down* to the same level. However, we also need to face the fact that we don't have unlimited money: while we would love to bring everyone up to the upper level, this would mean draining [our current balance](https://opencollective.com/babel#category-BUDGET) in just a few months.
+Babel also has become the intersection where practioners and language designers meet. We believe that it's become a vital part of the process used to test new ECMAscript proposals (hopefully, not with not too many unstable proposals in production!). This creates the ability for JavaScript developers to try new features and give feedback to the TC39 committee and ultimately influence how the language evolves. Babel doesn't represent any individual company's interest but hopefully the JavaScript users eagerness to participate in new ideas. Even if you or your company don't directly use Babel, you can still directly benefit from how it can help standardizing language features.
 
-We decided to take an intermediate strategy: starting from April Nicolò, Henry, and Jùnliàng will be paid $6,000 per month. This is still more than the donations we currently receive each month, but our current balance allows us to sustain this amount until the end of 2021. This gives us time to work towards attracting new big sponsors, and we'll constantly evaluate our decision to eventually adjust that amount during the year.
+## Our current funding situation
 
-## How you can help
+Every project has unique funding propositions and problems. For Babel, people often don't directly interact with it: like most build tools, you set up them once at the beginning and then forget about them (until you find a bug, sometimes!). 
 
-You can financially contribute to Babel on our Open Collective!
+You won't see job offers for a "Babel developer", even if most of the major JS frameworks are used with Babel. Additionally, with the growth of pre-configured frameworks such as Next.js, that lift the responsibility of managing the underlying build tools from their users, it's not uncommon to use Babel without even knowing it. This makes it harder for our users to justify sponsoring us to their companies.
 
-We are using [Open Collective](https://opencollective.com/babel) and [GitHub Sponsors](https://github.com/sponsors/babel) to fund our team members. Both companies and individuals and donate to the team, either as a one-time or recurring donation.
+From the beginning, we knew we wouldn't have enough to pay anyone a full time salary, so Henry has been spending a lot of time attempting to get continued funding, giving talks at conferences and talking to companies. However, 2020 has negatively affected our funding, despite the tech industry's growth in this time. We lost some big sponsors, and Kai had to step down to get full-time work at another job.
 
-If you have any questions or concerns about financially contributing to Babel we'd be happy to discuss by email at [team@babeljs.io](mailto:team@babeljs.io).
+We were hoping to see a continued increase in donations to be able to increase what Jùnliàng and Nicolò where taking, but it didn't happen.
 
-And in case your company is located in one of the cities that the core team lives in we'd also love to meet in-person as soon as it's safe to do so!
+<!-- Image source: https://observablehq.com/@nicolo-ribaudo/babel-opencollective-donations as of Apr 20, accounting -18k to spend this month (3*6k) -->
+<!-- NOTE: I also have this as .svg -->
+![](https://i.imgur.com/bsSHoRF.png)
 
-- [Nicolò](https://twitter.com/NicoloRibaudo) is based in northern Italy.
-- [Brian](https://twitter.com/existentialism) is based in Houston, TX.
-- [Jùnliàng](https://twitter.com/JLHwung) is based in Ontario, Canada.
-- [Henry](https://twitter.com/left_pad) is based in New York.
+## The Future
+
+Despite these funding difficulties, we still want to keep paying our core team, in order to continue improving Babel. We want to focus on making Babel easier to configure, more performant, and produce more optimized output. We want to continue implementing new proposals while also ensuring that existing features are rock solid. We want to be able to spend time on better documentation of not just Babel itself but JavaScript and language design, creating an environment where any developer can tinker with making their own syntax if they choose. There's a large scope not in terms of the code we write but opportunities to bring more people into the language design space for people who might not have ever considered it. We have also published [a roadmap](TODO:link) to better communicate our medium-term goals.
+
+We strongly believe that working in open source should be a viable and sustainable career path. We should be bringing everyone *up* to the same level, not *down*. However, we need to face the fact that this would mean draining [our current balance](https://opencollective.com/babel#category-BUDGET) in just a few months.
+
+Everyone taking smaller and smaller amounts ends up creating a false sense of sustainability. It lowers how we value our own work, and what sponsors perceive to be sustainable amount of funding.
+
+The reality is that, without more funding, we risk not being able to maintain the high standard of support and development that Babel and its users deserve. We risk losing more team members, who deserve to make a decent living in line with their skill level. The open source ecosystem also risks under-supporting a critical and widely used piece of technology.
+
+## Our Ask
+
+For now, Nicolò, Henry, and Jùnliàng will all be paid a temporary rate of \$6,000 per month. This doesn't solve the problem, but it gives us time while increasing the initial temporary \$2,000 USD salaries. The burn rate will still be more than the donations we currently receive each month, but our current balance allows us to sustain this amount until the end of 2021. 
+
+We'll do our best to balance all the priorities, while at reduced capacity due to being able to fund less of people's time and needing to spend some of that time finding new sponsors. Babel is not a company, a product, or service. And we have a small team, so we are the same people working on engineering and on funding. But it's a compromise we don't think we should have to make, considering the huge value that Babel delivers.
+
+To fully fund the currently paid maintainers (but we would like to expand who is being paid, to include the whole core team), we need at least $333,000 per year, which is 2x what we're currently bringing in. Considering the amounts of money in the tech sector, this seems tiny in comparison—but it would make a big difference to Babel. Our story and stories like it make a big difference to the health and sustainability of the open source ecosystem overall.
+
+**So, our ask is to help fund our work**, via [Open Collective](https://opencollective.com/babel) and [GitHub Sponsors](https://github.com/sponsors/babel). Though contributions from individuals do matter (and we deeply appreciate them), we are really looking for more companies to step up and become [corporate sponsors](https://opencollective.com/babel/contribute), alongside some of our current sponsors like AMP, Airbnb, Salesforce, and GitPod. If it would be better for your company to sustain us in other ways, we are also open to hearing any ideas. Reach out to us directly or by email at team@babeljs.io.
+
+We intensely hope that we'll reach our goals: more and more companies use Babel to deliver their products, and what we are asking for is a tiny fraction of the value we provide. Babel is relied upon by a big part of the web, and it's in the interests of everyone to ensure that the project continues being maintained at the same quality levels as it is now.
