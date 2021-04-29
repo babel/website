@@ -238,6 +238,13 @@ You should enable these features only if you are using an older version.
 
 #### Plugins options
 
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `7.14.0` | Added `dts` for `typescript` plugin |
+</details>
+
 > NOTE: When a plugin is specified multiple times, only the first options are considered.
 
 - `decorators`:
@@ -274,6 +281,10 @@ You should enable these features only if you are using an older version.
   - `all` (`boolean`, default: `false`)
     Some code has different meaning in Flow and in vanilla JavaScript. For example, `foo<T>(x)` is parsed as a call expression with a type argument in Flow, but as a comparison (`foo < T > x`) accordingly to the ECMAScript specification. By default, `babel-parser` parses those ambiguous constructs as Flow types only if the file starts with a `// @flow` pragma.
     Set this option to `true` to always parse files as if `// @flow` was specified.
+
+- `typescript`
+  - `dts` (`boolean`, default `false`)
+    This option will enable parsing within a TypeScript ambient context, where certain syntax have different rules (like `.d.ts` files and inside `declare module` blocks). Please see https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html and https://basarat.gitbook.io/typescript/type-system/intro for more information about ambient contexts.
 
 ### FAQ
 
