@@ -184,7 +184,7 @@ require("@babel/parser").parse("code", {
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
-| `v7.14.0` | Added `asyncDoExpressions` |
+| `v7.14.0` | Added `asyncDoExpressions` Move `classProperties`, `classPrivateProperties`, `classPrivateMethods` to Latest ECMAScript features |
 | `v7.13.0` | Added `moduleBlocks` |
 | `v7.12.0` | Added `classStaticBlock`, `moduleStringNames` |
 | `v7.11.0` | Added `decimal` |
@@ -235,6 +235,9 @@ You should enable these features only if you are using an older version.
 | `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread))      | `var a = { b, ...c };`                              |
 | `optionalCatchBinding` ([proposal](https://github.com/babel/proposals/issues/7))          | `try {throw 0;} catch{do();}`                       |
 | `optionalChaining` ([proposal](https://github.com/tc39/proposal-optional-chaining))       | `a?.b`                                              |
+| `classProperties` ([proposal](https://github.com/tc39/proposal-class-public-fields))      | `class A { b = 1; }`                                |
+| `classPrivateProperties` ([proposal](https://github.com/tc39/proposal-private-fields))    | `class A { #b = 1; }`                               |
+| `classPrivateMethods` ([proposal](https://github.com/tc39/proposal-private-methods))      | `class A { #c() {} }`                               |
 
 #### Plugins options
 
