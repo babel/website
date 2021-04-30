@@ -198,9 +198,6 @@ require("@babel/parser").parse("code", {
 | Name                                                                                            | Code Example                                             |
 | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | `asyncDoExpressions` ([proposal](https://github.com/tc39/proposal-async-do-expressions))        | `async do { await requestAPI().json() }`                 |
-| `classProperties` ([proposal](https://github.com/tc39/proposal-class-public-fields))            | `class A { b = 1; }`                                     |
-| `classPrivateProperties` ([proposal](https://github.com/tc39/proposal-private-fields))          | `class A { #b = 1; }`                                    |
-| `classPrivateMethods` ([proposal](https://github.com/tc39/proposal-private-methods))            | `class A { #c() {} }`                                    |
 | `classStaticBlock` ([proposal](https://github.com/tc39/proposal-class-static-block))            | `class A { static {} }`                                  |
 | `decimal` ([proposal](https://github.com/tc39/proposal-decimal))                                | `0.3m`                                                   |
 | `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br> `decorators-legacy` | `@a class A {}`                                          |
@@ -209,7 +206,6 @@ require("@babel/parser").parse("code", {
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                     | `a::b`, `::console.log`                                  |
 | `importAssertions` ([proposal](https://github.com/tc39/proposal-import-assertions))             | `import json from "./foo.json" assert { type: "json" };` |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                  | `let m = module { export let y = 1; };`                  |
-| `moduleStringNames` ([proposal](https://github.com/tc39/ecma262/pull/2154))                     | `import { "😄" as smile } from "emoji";`                 |
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                 | `f(?, a)`                                                |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29))                   | <code>a &#124;> b</code>                                 |
 | `privateIn` ([proposal](https://github.com/tc39/proposal-private-fields-in-in))                 | `#p in obj`                                              |
@@ -226,10 +222,14 @@ You should enable these features only if you are using an older version.
 | ----------------------------------------------------------------------------------------- | --------------------------------------------------- |
 | `asyncGenerators` ([proposal](https://github.com/tc39/proposal-async-iteration))          | `async function*() {}`, `for await (let a of b) {}` |
 | `bigInt` ([proposal](https://github.com/tc39/proposal-bigint))                            | `100n`                                              |
+| `classProperties` ([proposal](https://github.com/tc39/proposal-class-public-fields))      | `class A { b = 1; }`                                |
+| `classPrivateProperties` ([proposal](https://github.com/tc39/proposal-private-fields))    | `class A { #b = 1; }`                               |
+| `classPrivateMethods` ([proposal](https://github.com/tc39/proposal-private-methods))      | `class A { #c() {} }`                               |
 | `dynamicImport` ([proposal](https://github.com/tc39/proposal-dynamic-import))             | `import('./guy').then(a)`                           |
 | `exportNamespaceFrom` ([proposal](https://github.com/leebyron/ecmascript-export-ns-from)) | `export * as ns from "mod"`                         |
 | `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))               | `function.sent`                                     |
 | `logicalAssignment` ([proposal](https://github.com/tc39/proposal-logical-assignment))     | `a &&= b`                                           |
+| `moduleStringNames` ([proposal](https://github.com/tc39/ecma262/pull/2154))               | `import { "😄" as smile } from "emoji";`            |
 | `nullishCoalescingOperator` ([proposal](https://github.com/babel/proposals/issues/14))    | `a ?? b`                                            |
 | `numericSeparator` ([proposal](https://github.com/samuelgoto/proposal-numeric-separator)) | `1_000_000`                                         |
 | `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread))      | `var a = { b, ...c };`                              |
