@@ -111,7 +111,7 @@ _foo.default;
 _bar.bar;
 ```
 
-When this import interop is used, if both the imported and the importer module are compiled with Babel they behave as if none of them was copiled.
+When this import interop is used, if both the imported and the importer module are compiled with Babel they behave as if none of them was compiled.
 
 This is the default behavior.
 
