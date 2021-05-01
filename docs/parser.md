@@ -184,7 +184,7 @@ require("@babel/parser").parse("code", {
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
-| `v7.14.0` | Added `asyncDoExpressions` Move `classProperties`, `classPrivateProperties`, `classPrivateMethods` to Latest ECMAScript features |
+| `v7.14.0` | Added `asyncDoExpressions` Move `classProperties`, `classPrivateProperties`, `classPrivateMethods`, `moduleStringNames` to Latest ECMAScript features |
 | `v7.13.0` | Added `moduleBlocks` |
 | `v7.12.0` | Added `classStaticBlock`, `moduleStringNames` |
 | `v7.11.0` | Added `decimal` |
@@ -238,6 +238,7 @@ You should enable these features only if you are using an older version.
 | `classProperties` ([proposal](https://github.com/tc39/proposal-class-public-fields))      | `class A { b = 1; }`                                |
 | `classPrivateProperties` ([proposal](https://github.com/tc39/proposal-private-fields))    | `class A { #b = 1; }`                               |
 | `classPrivateMethods` ([proposal](https://github.com/tc39/proposal-private-methods))      | `class A { #c() {} }`                               |
+| `moduleStringNames` ([proposal](https://github.com/tc39/ecma262/pull/2154))               | `import { "😄" as smile } from "emoji";`            |
 
 #### Plugins options
 
