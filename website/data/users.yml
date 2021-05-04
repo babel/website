@@ -695,3 +695,6 @@
 - name: BlueHive
   url: https://www.bluehive.com
   logo: bluehive.svg
+- name: Wormhole
+  url: https://wormhole.app
+  logo: wormhole.svg
