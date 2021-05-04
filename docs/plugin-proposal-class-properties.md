@@ -85,6 +85,17 @@ require("@babel/core").transformSync("code", {
 
 When `true`, class properties are compiled to use an assignment expression instead of `Object.defineProperty`.
 
+> ⚠️ Consider migrating to the top level [`setPublicClassFields`](assumptions.md#setpublicclassfields) assumption
+
+```jsonc
+// babel.config.json
+{
+  "assumptions": {
+    "setPublicClassFields": true
+  }
+}
+```
+
 For an explanation of the consequences of using either, see [Definition vs. Assignment](http://2ality.com/2012/08/property-definition-assignment.html) (TL;DR in Part 5)
 
 #### Example
@@ -99,7 +110,7 @@ class Bork {
 }
 ```
 
-Without `{ "loose": true }`, the above code will compile to the following, using `Object.defineProperty`:
+Without `{ "setPublicClassFields": true }`, the above code will compile to the following, using `Object.defineProperty`:
 
 ```js
 var Bork = function Bork() {
@@ -132,7 +143,7 @@ Object.defineProperty(Bork, "b", {
 });
 ```
 
-However, with `{ "loose": true }`, it will compile using assignment expressions:
+However, with `{ "setPublicClassFields": true }`, it will compile using assignment expressions:
 
 ```js
 var Bork = function Bork() {

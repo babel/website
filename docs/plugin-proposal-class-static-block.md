@@ -59,19 +59,9 @@ npm install --save-dev @babel/plugin-proposal-class-static-block
 
 ### With a configuration file (Recommended)
 
-Without options:
-
 ```json
 {
   "plugins": ["@babel/plugin-proposal-class-static-block"]
-}
-```
-
-With options:
-
-```json
-{
-  "plugins": [["@babel/plugin-proposal-class-static-block", { "loose": true }]]
 }
 ```
 

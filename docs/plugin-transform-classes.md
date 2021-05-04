@@ -125,6 +125,20 @@ require("@babel/core").transformSync("code", {
 
 `boolean`, defaults to `false`.
 
+> ⚠️ Consider migrating to the top level [`assumptions`](assumptions.md) which offers granular control over various `loose` mode deductions Babel has applied.
+
+```jsonc
+// babel.config.json
+{
+  "assumptions": {
+    "constantSuper": true,
+    "noClassCalls": true,
+    "setClassMethods": true,
+    "superIsCallableConstructor": true
+  }
+}
+```
+
 #### Method enumerability
 
 Please note that in loose mode class methods **are** enumerable. This is not in line

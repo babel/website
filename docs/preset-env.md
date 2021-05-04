@@ -197,6 +197,8 @@ Enable more spec compliant, but potentially slower, transformations for any plug
 
 Enable ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.html) for any plugins in this preset that allow them.
 
+> ⚠️ Consider migrating to the top level [`assumptions`](assumptions.md) available since Babel 7.13.
+
 ### `modules`
 
 `"amd" | "umd" | "systemjs" | "commonjs" | "cjs" | "auto" | false`, defaults to `"auto"`.

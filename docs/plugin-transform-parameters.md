@@ -90,14 +90,25 @@ require("@babel/core").transformSync("code", {
 
 In loose mode, parameters with default values will be counted into the arity of the function. This is not spec behavior where these parameters do not add to function arity.
 
-The `loose` implementation is a more performant solution as JavaScript engines will fully optimize a function that doesn't reference `arguments`. Please do your own benchmarking and determine if this option is the right fit for your application.
+> ⚠️ Consider migrating to the top level [`ignoreFunctionLength`](assumptions.md#ignorefunctionlength) assumption.
+
+```jsonc
+// babel.config.json
+{
+  "assumptions": {
+    "ignoreFunctionLength": true
+  }
+}
+```
+
+Under the `ignoreFunctionLength` assumption, Babel will generate a more performant solution as JavaScript engines will fully optimize a function that doesn't reference `arguments`. Please do your own benchmarking and determine if this option is the right fit for your application.
 
 ```javascript
 // Spec behavior
 function bar1(arg1 = 1) {}
 bar1.length; // 0
 
-// Loose mode
+// ignoreFunctionLength: true
 function bar1(arg1 = 1) {}
 bar1.length; // 1
 ```

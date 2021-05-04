@@ -104,6 +104,17 @@ Just like method assignment in classes, in loose mode, computed property names
 use simple assignments instead of being defined. This is unlikely to be an issue
 in production code.
 
+> ⚠️ Consider migrating to the top level [`setComputedProperties`](assumptions.md#setcomputedproperties) assumption.
+
+```jsonc
+// babel.config.json
+{
+  "assumptions": {
+    "setComputedProperties": true
+  }
+}
+```
+
 #### Example
 
 **_In_**
@@ -119,6 +130,8 @@ var obj = {
 
 **_Out_**
 
+When `setComputedProperties` is `true`.
+
 ```js
 var _obj;
 
@@ -127,6 +140,21 @@ var obj = ((_obj = {}),
 (_obj["y" + bar] = "noo"),
 (_obj.foo = "foo"),
 (_obj.bar = "bar"),
+_obj);
+```
+
+When `setComputedProperties` is `false`.
+
+```js
+import _defineProperty from "@babel/runtime/helpers/defineProperty";
+
+var _obj;
+
+var obj = ((_obj = {}),
+_defineProperty(_obj, "x" + foo, "heh"),
+_defineProperty(_obj, "y" + bar, "noo"),
+_defineProperty(_obj, "foo", "foo"),
+_defineProperty(_obj, "bar", "bar"),
 _obj);
 ```
 

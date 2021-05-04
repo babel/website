@@ -68,6 +68,17 @@ When `true`, this transform will pretend `document.all` does not exist,
 and perform loose equality checks with `null` instead of strict equality checks
 against both `null` and `undefined`.
 
+> ⚠️ Consider migrating to the top level [`noDocumentAll`](assumptions.md#nodocumentall) assumption.
+
+```jsonc
+// babel.config.json
+{
+  "assumptions": {
+    "noDocumentAll": true
+  }
+}
+```
+
 #### Example
 
 **In**
