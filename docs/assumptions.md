@@ -146,12 +146,12 @@ for (const el of obj) {
 
 ## `mutableTemplateObject`
 
-When using language features that might call the [`[Symbol.toPrimitive]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toPrimitive) method of objects, assume that they don't change their behavior based on the `hint` parameter.
+Don't use `Object.freeze` for the template object created for tagged template literals. This effectively means using the `taggedTemplateLiteralLoose` helper instead of `taggedTemplateLiteral`.
 
 <div is="assumption-repl" data-assumption="mutableTemplateObject" data-plugins="transform-template-literals">
 
 ```text assumption-input
-let str = tag`a${foo}b`;
+let str = tag`a`;
 ```
 
 </div>
