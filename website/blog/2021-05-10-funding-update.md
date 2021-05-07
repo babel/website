@@ -2,7 +2,7 @@
 layout: post
 title: "Babel is used by millions, so why are we running out of money?"
 author: Babel Core Team
-date: 2021-04-12 0:00:00
+date: 2021-05-10 0:00:00
 categories: announcements
 share_text: "Babel is used by millions, so why are we running out of money?"
 ---
@@ -27,7 +27,7 @@ We didn't want to stop there. We thought that by demonstrating our ability to cr
 
 It has been more than a year since then and we've both done and learned a lot.
 
-[We've implemented](https://babel.dev/docs/en/features-timeline) support for many new ECMAScript proposals, kept up with every new TypeScript and Flow release, and designed [new features](https://babel.dev/assumptions) to allow producing smaller compiled output. We are now nearing the next major release, Babel 8. 
+[We've implemented](https://babel.dev/docs/en/features-timeline) support for many new ECMAScript proposals, kept up with every new TypeScript and Flow release, and designed [new features](https://babel.dev/assumptions) to allow producing smaller compiled output. We are now nearing the next major release, Babel 8.
 
 Babel continues to be used by thousands of [companies all over the world](https://babeljs.io/en/users.html). It's integrated into all kinds of frameworks in the JavaScript ecosystem, whether it's React, Next.js, Vue, Ember, Angular, etc. We are hitting over [117 million downloads/month](https://www.npmjs.com/package/@babel/core). It powers custom plugins and optimizations in varied scenarios like CSS-in-JS, GraphQL, or localization across enormous code bases.
 
@@ -35,7 +35,7 @@ Babel also has become the intersection where practioners and language designers 
 
 ## Our Current Funding Situation
 
-Every project has unique funding propositions and problems. For Babel, people often don't directly interact with it: like most build tools, you set them up once at the beginning and then forget about them (until you find a bug, sometimes!). 
+Every project has unique funding propositions and problems. For Babel, people often don't directly interact with it: like most build tools, you set them up once at the beginning and then forget about them (until you find a bug, sometimes!).
 
 You won't see job offers for a "Babel developer", even if most of the major JS frameworks are used with Babel. Additionally, with the growth of pre-configured frameworks such as Next.js that lift the responsibility of managing the underlying build tools from their users, it's not uncommon to use Babel without even knowing it. This makes it harder for our users to justify sponsoring us to their companies.
 
@@ -59,7 +59,7 @@ The reality is that, without more funding, we risk not being able to maintain th
 
 ## Our Ask
 
-For now, Nicolò, Henry, and Jùnliàng will all be paid a temporary rate of \$6,000 per month. This doesn't solve the problem, but it gives us time while increasing the initial temporary \$2,000 USD salaries. The burn rate will still be more than the donations we currently receive each month, but our current balance allows us to sustain this amount until the end of 2021. 
+For now, Nicolò, Henry, and Jùnliàng will all be paid a temporary rate of \$6,000 per month. This doesn't solve the problem, but it gives us time while increasing the initial temporary \$2,000 USD salaries. The burn rate will still be more than the donations we currently receive each month, but our current balance allows us to sustain this amount until the end of 2021.
 
 We'll do our best to balance all the priorities, while at reduced capacity due to being able to fund less of people's time and needing to spend some of that time finding new sponsors. Babel is not a company, a product, or service. And we have a small team, so we are the same people working on engineering and on funding. But it's a compromise we don't think we should have to make, considering the huge value that Babel delivers.
 
