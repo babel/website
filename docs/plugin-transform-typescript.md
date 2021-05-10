@@ -6,7 +6,9 @@ sidebar_label: Typescript Plugin
 
 > **NOTE**: This plugin is included in `@babel/preset-typescript`
 
-This plugin adds support for the syntax used by the [TypeScript programming language][ts]. However, this plugin does not add the ability to type-check the JavaScript passed to it. For that, you will need to install and set up TypeScript.
+This plugin adds support for the types syntax used by the [TypeScript programming language][ts]. However, this plugin does not add the ability to type-check the JavaScript passed to it. For that, you will need to install and set up TypeScript.
+
+Note that although the TypeScript compiler `tsc` actively supports certain JavaScript proposals such as optional chaining (`?.`), nullish coalescing (`??`) and class properties (`this.#x`), this preset does not include these features because they are not the types syntax available in TypeScript only. We recommend using `preset-env` with `preset-typescript` if you want to transpile these features.
 
 ## Example
 
