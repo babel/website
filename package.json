@@ -7,11 +7,12 @@
   "scripts": {
     "bootstrap": "run-s bootstrap:sponsors build",
     "bootstrap:sponsors": "node ./scripts/download-sponsors.js",
-    "build": "run-s build:codemirror6 build:repl build:docusaurus build:redirects",
+    "build": "run-s build:codemirror6 build:repl build:docusaurus build:redirects && run-s build:social-image",
     "build:docusaurus": "cd website && yarn && yarn build",
     "build:redirects": "cpy ./_redirects ./website/build/babel",
     "build:repl": "cross-env NODE_ENV=production webpack",
     "build:codemirror6": "rollup -c rollup.config.mjs",
+    "build:social-image": "node ./scripts/add-blog-social-image.js",
     "flow": "flow",
     "lint": "eslint js website",
     "lint-staged": "lint-staged",
@@ -86,6 +87,7 @@
   "dependencies": {
     "@babel/generator": "^7.11.6",
     "algoliasearch": "^4.5.1",
+    "cheerio": "^1.0.0-rc.9",
     "codemirror": "5.56.0",
     "core-js": "^3.0.1",
     "emotion": "^9.1.3",
