@@ -68,3 +68,10 @@ To fully fund the currently paid maintainers (but we would like to expand who is
 **So, our ask is to help fund our work**, via [Open Collective](https://opencollective.com/babel) and [GitHub Sponsors](https://github.com/sponsors/babel). Though individual contributions do matter (and we deeply appreciate them), we are really looking for more companies to step up and become [corporate sponsors](https://opencollective.com/babel/contribute), alongside our current sponsors like AMP, Airbnb, Salesforce, GitPod, and others. If it would be better for your company to sustain us in other ways, we are also open to hearing any ideas. Reach out to us directly or by email at team@babeljs.io.
 
 We intensely hope that we'll reach our goals: more and more companies use Babel to deliver their products, and what we are asking for is a tiny fraction of the value we provide. Babel is relied upon by a big part of the web, and it's in the interests of everyone to ensure that the project continues being maintained at the same quality levels as it is now.
+
+<div style="display:flex; justify-content:space-around; align-items:center">
+  <a href="https://opencollective.com/babel/donate" target="_blank" style="all:unset;cursor:pointer">
+    <img src="https://opencollective.com/babel/donate/button@2x.png?color=blue" width=300 />
+  </a>
+  <iframe src="https://github.com/sponsors/babel/button" title="Sponsor Babel on GitHub" height="35" width="300" style="border: 0;background: transparent;"></iframe>
+</div>
