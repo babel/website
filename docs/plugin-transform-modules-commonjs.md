@@ -251,6 +251,6 @@ The two cases where imports can never be lazy are:
 
 `boolean`, defaults to `false`
 
-> ⚠️ **Deptecated**: Use the `importInterop` option instead.
+> ⚠️ **Deprecated**: Use the `importInterop` option instead.
 
 When set to `true`, this option has the same behavior as setting `importInterop: "none"`.
