@@ -13,11 +13,11 @@ Since 2018, Babel has been doing a [funding experiment](https://babeljs.io/blog/
 
 In November 2019, after successfully paying [Henry](https://twitter.com/left_pad) a salary for over a year, we [expanded our goal](https://babeljs.io/blog/2019/11/08/babels-funding-plans) to also support three additional maintainers: [Jùnliàng](https://twitter.com/JLHwung), [Kai](https://twitter.com/kai_cataldo), and [Nicolò](https://twitter.com/NicoloRibaudo).
 
-Part of the Babel team ([Nicolò](https://twitter.com/NicoloRibaudo), [Jùnliàng](https://twitter.com/JLHwung) and [Henry](https://twitter.com/left_pad)) is still being paid a salary to work on Babel, but we now need to make some adjustments in light of the donations we are currently receiving. This update is to talk about that, and ask for further support from the community.
+Part of the Babel team ([Nicolò](https://twitter.com/NicoloRibaudo), [Jùnliàng](https://twitter.com/JLHwung) and [Henry](https://twitter.com/left_pad)) is still being paid a salary to work on Babel, but we now need to make some adjustments in light of the donations we are currently receiving. This update is to talk about that and ask for further support from the community.
 
 ## Looking Back
 
-In 2018, Henry [left his job](https://www.henryzoo.com/in-pursuit-of-open-source-part-1/) to see if he could make a living working on open source and Babel, looking to people like [Evan You](https://twitter.com/youyuxi) as a example and for advice. He had already started work on getting more funding through the [Open Collective](https://opencollective.com/babel) that we had set up in 2017 to support the project and specifically our previous core team member [Logan Smyth](https://github.com/loganfsmyth), but it was difficult to do so early on while working half-time.
+In 2018, Henry [left his job](https://www.henryzoo.com/in-pursuit-of-open-source-part-1/) to see if he could make a living working on open source and Babel, looking to people like [Evan You](https://twitter.com/youyuxi) as an example and for advice. He had already started work on getting more funding through the [Open Collective](https://opencollective.com/babel) that we had set up in 2017 to support the project and specifically our previous core team member [Logan Smyth](https://github.com/loganfsmyth), but it was difficult to do so early on while working half-time.
 
 After a few months, the fundraising efforts allowed paying Henry every month: we settled on \$11,000 per month as a baseline salary for working full-time on open source. We had a large grant (\$10k for 10 months) from [Handshake](https://handshake.org/grant-sponsors/) which initially helped boost our funds, but even when it ended we didn't have problems paying our team thanks to some amazing sponsors such as Airbnb, Trivago, Gatsby, AMP, and Salesforce.
 
@@ -44,7 +44,7 @@ From the beginning, we knew we wouldn't have enough to pay anyone a full time sa
 We were hoping to see a continued increase in donations to be able to increase what Jùnliàng and Nicolò where taking, but it didn't happen.
 
 <!-- Image source: https://observablehq.com/@nicolo-ribaudo/babel-opencollective-donations as of Apr 20, accounting -18k to spend this month (3*6k) -->
-<!-- NOTE: I also have this as .svg -->
+
 ![](https://i.imgur.com/bsSHoRF.png)
 
 ## The Future
