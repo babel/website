@@ -502,7 +502,7 @@ The following are currently supported:
 - [Private field brand checks](https://github.com/tc39/proposal-private-fields-in-in)
 
 **Materialized Features**
-These features were behind `shippedProposals` flag in older Babel versions. They are now generaly available.
+These features were behind `shippedProposals` flag in older Babel versions. They are now generally available.
 
 - [class properties](https://github.com/tc39/proposal-class-fields)
 - [numeric separator](https://github.com/tc39/proposal-numeric-separator)
