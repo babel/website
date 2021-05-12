@@ -498,7 +498,7 @@ The following are currently supported:
 **Features**
 
 - [Class static block](https://github.com/tc39/proposal-class-static-block)
-- [Import assertions](https://github.com/tc39/proposal-import-assertions)
+- [Import assertions](https://github.com/tc39/proposal-import-assertions) (parsing only)
 - [Private field brand checks](https://github.com/tc39/proposal-private-fields-in-in)
 
 **Materialized Features**
