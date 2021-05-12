@@ -480,6 +480,7 @@ The [Browserslist environment](https://github.com/browserslist/browserslist#conf
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `v7.14.0 | Include private field brand checks |
 | `v7.12.0` | Include class static block and import assertions |
 | `v7.10.0` | Include class properties and private methods |
 | `v7.9.0` | Include numeric separator |
@@ -495,6 +496,13 @@ The following are currently supported:
 - [esnext.string.match-all](https://github.com/tc39/proposal-string-matchall) (only supported by `core-js@3`)
 
 **Features**
+
+- [Class static block](https://github.com/tc39/proposal-class-static-block)
+- [Import assertions](https://github.com/tc39/proposal-import-assertions)
+- [Private field brand checks](https://github.com/tc39/proposal-private-fields-in-in)
+
+**Materialized Features**
+These features were behind `shippedProposals` flag in older Babel versions. They are now generaly available.
 
 - [class properties](https://github.com/tc39/proposal-class-fields)
 - [numeric separator](https://github.com/tc39/proposal-numeric-separator)
