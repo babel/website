@@ -9,6 +9,7 @@ import ExternalPlugins from "./ExternalPlugins";
 import Svg from "./Svg";
 import { colors, media } from "./styles";
 import { compareVersions, joinListEnglish } from "./Utils";
+import pastVersions from "./past-versions.json";
 
 import type {
   BabelPlugin,
@@ -43,6 +44,7 @@ type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, value: boolean | string) => void;
 type TogglePresetOption = (name: string, value: *) => void;
+type ToggleVersion = (version: string) => void;
 type ShowOfficialExternalPluginsChanged = (value: string) => void;
 type PluginSearch = (value: string) => void;
 type PluginChange = (plugin: Object) => void;
@@ -71,6 +73,7 @@ type Props = {
   onIsExpandedChange: ToggleExpanded,
   onSettingChange: ToggleSetting,
   onPresetOptionChange: TogglePresetOption,
+  onVersionChange: ToggleVersion,
   pluginState: PluginStateMap,
   presetState: PluginStateMap,
   runtimePolyfillConfig: PluginConfig,
@@ -190,6 +193,7 @@ class ExpandedContainer extends Component<Props, State> {
       onIsExpandedChange,
       onExternalPluginRemove,
       onSettingChange,
+      onVersionChange,
       pluginState,
       presetState,
       runtimePolyfillConfig,
@@ -687,7 +691,18 @@ class ExpandedContainer extends Component<Props, State> {
         </div>
         {babelVersion && (
           <div className={styles.versionRow} title={`v${babelVersion}`}>
-            v{babelVersion}
+            <select value={babelVersion} onChange={onVersionChange}>
+              <option value="">v{babelVersion}</option>
+              <option value="latest">Latest</option>
+              {pastVersions.map(
+                (version, index) =>
+                  version !== babelVersion && (
+                    <option value={version} key={index}>
+                      v{version}
+                    </option>
+                  )
+              )}
+            </select>
           </div>
         )}
 
