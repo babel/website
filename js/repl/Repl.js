@@ -614,9 +614,18 @@ class Repl extends React.Component<Props, State> {
   };
 
   _onVersionChange = (e: Event) => {
-    this.state.babel.version = e.target.value;
-    this._persistState();
-    location.reload();
+    this.setState(
+      {
+        babel: {
+          ...this.state.babel,
+          version: e.target.value,
+        },
+      },
+      () => {
+        this._persistState();
+        location.reload();
+      }
+    );
   };
 
   _pluginsUpdatedSetStateCallback = () => {
