@@ -1,3 +1,6 @@
+// This script generates the last 5, excluding the latest one, minor releases of
+// @babel/standalone with highest patch versions. It writes to
+// "./js/repl/past-versions.json" which is used by REPL as a version candidates list.
 import { exec } from "child_process";
 import { writeFile } from "fs/promises";
 import { resolve } from "path";
@@ -12,6 +15,7 @@ exec(
       console.error(stderr);
     }
     // Past versions will hold every published `@babel/standalone` versions
+    // in ascending orders
     // e.g.
     // "7.0.0-beta.4",
     // "7.0.0-beta.5",
