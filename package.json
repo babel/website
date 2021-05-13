@@ -22,7 +22,8 @@
     "start:docusaurus": "cd website && yarn start",
     "start:repl": "webpack -d -w",
     "start:codemirror6": "cross-env NODE_ENV=development yarn build:codemirror6",
-    "test": "remark docs README.md --quiet"
+    "test": "remark docs README.md --quiet",
+    "version": "node ./scripts/generate-repl-past-versions.mjs && git add ./js/repl/past-versions.json"
   },
   "remarkConfig": {
     "plugins": {

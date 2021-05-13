@@ -4,8 +4,7 @@
     "start": "docusaurus-start",
     "build": "docusaurus-build",
     "publish-gh-pages": "docusaurus-publish",
-    "write-translations": "docusaurus-write-translations",
-    "version": "node ../scripts/release-new-version.mjs && git add ../website/past-versions.json"
+    "write-translations": "docusaurus-write-translations"
   },
   "devDependencies": {
     "docusaurus": "^1.14.6"
