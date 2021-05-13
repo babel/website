@@ -28,7 +28,7 @@ for (const { url, title, description } of articles) {
   const res = $.root().html();
   fs.writeFileSync(filePath, res);
   fs.writeFileSync(
-    `${__dirname}/../website/build/babel/blog/${url}/idnex.html`,
+    `${__dirname}/../website/build/babel/blog/${url}/index.html`,
     res
   );
 }
