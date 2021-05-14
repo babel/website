@@ -115,7 +115,7 @@ Check out the [babel-cli documentation](cli.md) to see more configuration option
 
 ```js
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-transform-arrow-functions"]
+  plugins: ["@babel/plugin-transform-arrow-functions"],
 });
 ```
 
@@ -124,6 +124,7 @@ Check out the [babel-core documentation](core.md) to see more configuration opti
 ## Print effective configs
 
 You can tell Babel to print effective configs on a given input path
+
 ```sh
 # *nix or WSL
 BABEL_SHOW_CONFIG_FOR=./src/myComponent.jsx npm start
@@ -188,6 +189,7 @@ Babel will print effective config sources ordered by ascending priority. Using t
 ```
 babel.config.json < .babelrc < programmatic options from @babel/cli
 ```
+
 In other words, `babel.config.json` is overwritten by `.babelrc`, and `.babelrc` is overwritten by programmatic options.
 
 For each config source, Babel prints applicable config items (e.g. [`overrides`](options.md#overrides) and [`.env`](options.md#env)) in the order of ascending priority. Generally each config sources has at least one config item -- the root content of configs. If you have configured `overrides` or `env`, Babel will not print them in the root, but will instead output a separate config item titled as `.overrides[index]`, where `index` is the position of the item. This helps determine whether the item is effective on the input and which configs it will override.
@@ -196,19 +198,31 @@ If your input is ignored by `ignore` or `only`, Babel will print that this file 
 
 ### How Babel merges config items
 
-For each config items mentioned above, Babel applies `Object.assign` on options except for `plugins` and `presets`, which is concatenated by `Array#concat`. For example
+For each config items mentioned above, Babel applies `Object.assign` on the option object, which means the option value will be overwritten by another one with higher priority. However, the following options have specialized strategies:
+
+- for `plugins` and `presets`, Babel merge them by `Array#concat`.
+- for `parserOpts`, `generatorOpts` and `assumptions`, Babel merge them by `Object.assign`
+
+For example
+
 ```js
 const config = {
   plugins: [["plugin-1a", { loose: true }], "plugin-1b"],
   presets: ["preset-1a"],
-  sourceType: "script"
-}
+  sourceType: "script",
+  assumptions: {
+    setClassFields: true,
+  },
+};
 
 const newConfigItem = {
   plugins: [["plugin-1a", { loose: false }], "plugin-2b"],
   presets: ["preset-1a", "preset-2a"],
-  sourceType: "module"
-}
+  sourceType: "module",
+  assumptions: {
+    iterableIsArray: true,
+  },
+};
 
 BabelConfigMerge(config, newConfigItem);
 // returns
@@ -217,13 +231,13 @@ BabelConfigMerge(config, newConfigItem);
     ["plugin-1a", { loose: true }],
     "plugin-1b",
     ["plugin-1a", { loose: false }],
-    "plugin-2b"
+    "plugin-2b",
   ], // new plugins are pushed
-  presets: [
-    "preset-1a",
-    "preset-1a",
-    "preset-2b"
-  ], // new presets are pushed
-  sourceType: "module" // sourceType: "script" is overwritten
-})
+  presets: ["preset-1a", "preset-1a", "preset-2b"], // new presets are pushed
+  sourceType: "module", // sourceType: "script" is overwritten
+  assumptions: {
+    setClassFields: true,
+    iterableIsArray: true, // assumptions: merged by Object.assign
+  },
+});
 ```
