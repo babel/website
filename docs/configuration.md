@@ -237,7 +237,7 @@ BabelConfigMerge(config, newConfigItem);
   sourceType: "module", // sourceType: "script" is overwritten
   assumptions: {
     setClassFields: true,
-    iterableIsArray: true, // assumptions: merged by Object.assign
+    iterableIsArray: true, // assumptions are merged by Object.assign
   },
 });
 ```
