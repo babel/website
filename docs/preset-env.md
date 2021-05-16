@@ -480,7 +480,7 @@ The [Browserslist environment](https://github.com/browserslist/browserslist#conf
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
-| `v7.14.0 | Include private field brand checks |
+| `v7.14.0` | Include private field brand checks |
 | `v7.12.0` | Include class static block and import assertions |
 | `v7.10.0` | Include class properties and private methods |
 | `v7.9.0` | Include numeric separator |
