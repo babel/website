@@ -15,7 +15,7 @@ sidebar_label: Config Options
 - [Option concepts](#options-concepts)
 
 Options can be passed to Babel in a variety of ways. When passed directly to Babel,
-you can just pass the objects object. When Babel is used via a wrapper, it may also be
+you can just pass the options object. When Babel is used via a wrapper, it may also be
 necessary, or at least more useful, to pass the options via [configuration files](config-files.md).
 
 If passing options via `@babel/cli` you'll need to `kebab-case` the names. i.e.
@@ -377,7 +377,7 @@ We recognize this isn’t ideal and will be revisiting this in Babel v8.
 
 Type: `boolean`
 
-You may also target browsers supporting ES Modules (https://www.ecma-international.org/ecma-262/6.0/#sec-modules). When specifying this option, the browsers field will be ignored. You can use this approach in combination with `<script type="module"></script>` to conditionally serve smaller scripts to users (https://jakearchibald.com/2017/es-modules-in-browsers/#nomodule-for-backwards-compatibility).
+You may also target browsers supporting ES Modules (<https://www.ecma-international.org/ecma-262/6.0/#sec-modules>). When specifying this option, the browsers field will be ignored. You can use this approach in combination with `<script type="module"></script>` to conditionally serve smaller scripts to users (<https://jakearchibald.com/2017/es-modules-in-browsers/#nomodule-for-backwards-compatibility>).
 
 > _Please note_: when specifying both `browsers` and the esmodules target, they will be intersected.
 
