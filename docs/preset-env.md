@@ -118,7 +118,7 @@ Since one of the original goals of `preset-env` was to help users easily transit
 }
 ```
 
-Because of this, `preset-env`'s behavior is different than [browserslist](https://github.com/browserslist/browserslist#queries): it does _not_ use the `defaults` query when there are no targets are found in your Babel _or_ browserslist config(s). If you want to use the `defaults` query, you will need to explicitly pass it as a target:
+Because of this, `preset-env`'s behavior is different than [browserslist](https://github.com/browserslist/browserslist#queries): it does _not_ use the `defaults` query when no targets are found in your Babel _or_ browserslist config(s). If you want to use the `defaults` query, you will need to explicitly pass it as a target:
 
 ```json
 {
