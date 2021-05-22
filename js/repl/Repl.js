@@ -126,6 +126,8 @@ class Repl extends React.Component<Props, State> {
 
     const presetsOptions = persistedStateToPresetsOptions(persistedState);
     const envConfig = persistedStateToEnvConfig(persistedState);
+    envConfig.assumptions =
+      typeof envConfig.assumptions === "undefined" ? {} : envConfig.assumptions;
     // const isPresetsTabExpanded = !!presets.filter(preset => preset !== "env")
     //   .length;
 
@@ -240,6 +242,7 @@ class Repl extends React.Component<Props, State> {
           }
           showOfficialExternalPlugins={state.showOfficialExternalPlugins}
           loadingExternalPlugins={state.loadingExternalPlugins}
+          onAssumptionsChange={this._onAssumptionsChange}
         />
         <div className={styles.wrapperPanels}>
           <div
@@ -571,6 +574,12 @@ class Repl extends React.Component<Props, State> {
     }, this._pluginsUpdatedSetStateCallback);
   };
 
+  _onAssumptionsChange = (value: string, isChecked: boolean) => {
+    const { assumptions } = this.state.envConfig;
+    assumptions[value] = isChecked;
+    this.setState({ envConfig: { ...this.state.envConfig, assumptions } });
+  };
+
   _persistState = () => {
     const { state } = this;
     const { envConfig, plugins } = state;
@@ -581,6 +590,7 @@ class Repl extends React.Component<Props, State> {
       browsers: envConfig.browsers,
       bugfixes: envConfig.isBugfixesEnabled,
       build: state.babel.build,
+      assumptions: JSON.stringify(envConfig.assumptions),
       builtIns: envConfig.builtIns,
       corejs: envConfig.corejs,
       spec: envConfig.isSpecEnabled,
