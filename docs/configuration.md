@@ -192,14 +192,14 @@ babel.config.json < .babelrc < programmatic options from @babel/cli
 
 In other words, `babel.config.json` is overwritten by `.babelrc`, and `.babelrc` is overwritten by programmatic options.
 
-For each config source, Babel prints applicable config items (e.g. [`overrides`](options.md#overrides) and [`.env`](options.md#env)) in the order of ascending priority. Generally each config sources has at least one config item -- the root content of configs. If you have configured `overrides` or `env`, Babel will not print them in the root, but will instead output a separate config item titled as `.overrides[index]`, where `index` is the position of the item. This helps determine whether the item is effective on the input and which configs it will override.
+For each config source, Babel prints applicable config items (e.g. [`overrides`](options.md#overrides) and [`env`](options.md#env)) in the order of ascending priority. Generally each config sources has at least one config item -- the root content of configs. If you have configured `overrides` or `env`, Babel will not print them in the root, but will instead output a separate config item titled as `.overrides[index]`, where `index` is the position of the item. This helps determine whether the item is effective on the input and which configs it will override.
 
 If your input is ignored by `ignore` or `only`, Babel will print that this file is ignored.
 
 ### How Babel merges config items
 
 Babel's configuration merging is relatively straightforward. Options will overwrite existing options
-when they are present, and their value is not `undefined`, with a few special cases:
+when they are present and their value is not `undefined`. There are, however, a few special cases:
 
 - For `assumptions`, `parserOpts` and `generatorOpts`, objects are merged, rather than replaced, using the same logic as top-level options.
 - For `plugins` and `presets`, they are replaced based on the identity of the plugin/preset object/function itself combined with the name of the entry.
@@ -226,7 +226,7 @@ As an example, consider a config with:
 };
 ```
 
-When `NODE_ENV` is `test`, the `test` item will be merged on top of the top-level plugins.
+When `NODE_ENV` is `test`, the `sourceType` option will be replaced and the `assumptions` option will be merged. The effective config is:
 The `sourceType` option will be replaced and the `assumptions` option will be merged, resulting
 in a config as
 
