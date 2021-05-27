@@ -31,7 +31,7 @@ The pipeline proposal is one of three competing implementations. Configure with 
 | `"hack"` | [Hack-style pipes](https://github.com/js-choi/proposal-hack-pipes) | `v7.15.0`
 | `"smart"` | [Smart-mix pipes](https://github.com/js-choi/proposal-smart-pipelines) (deprecated) | `v7.3.0`
 
-If `"proposal": "hack"` is used, then a `"topicToken": "%"` option must also be included.
+If `"proposal": "hack"` is used, then a `"topicToken": "#"` option must also be included. In the future, other choices for `topicToken` will be added.
 
 The `"proposal": "smart"` option is deprecated and subject to removal in a future major version.
 
