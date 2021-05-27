@@ -201,10 +201,10 @@ If your input is ignored by `ignore` or `only`, Babel will print that this file 
 Babel's configuration merging is relatively straightforward. Options will overwrite existing options
 when they are present and their value is not `undefined`. There are, however, a few special cases:
 
-- For `assumptions`, `parserOpts` and `generatorOpts`, objects are merged, rather than replaced, using the same logic as top-level options.
+- For `assumptions`, `parserOpts` and `generatorOpts`, objects are merged, rather than replaced.
 - For `plugins` and `presets`, they are replaced based on the identity of the plugin/preset object/function itself combined with the name of the entry.
 
-#### Option merging
+#### Option (except Plugin/Preset) merging
 
 As an example, consider a config with:
 
@@ -227,8 +227,6 @@ As an example, consider a config with:
 ```
 
 When `NODE_ENV` is `test`, the `sourceType` option will be replaced and the `assumptions` option will be merged. The effective config is:
-The `sourceType` option will be replaced and the `assumptions` option will be merged, resulting
-in a config as
 
 ```js
 {
@@ -256,7 +254,7 @@ overrides: [{
 }]
 ```
 
-The `overrides` item will be merged on top of the top-level plugins. Importantly, the `plugins`
+The `overrides` item will be merged on top of the top-level options. Importantly, the `plugins`
 array as a whole doesn't just replace the top-level one. The merging logic will see that `"./plug"`
 is the same plugin in both cases, and `{ thing: false, field2: true }` will replace the original
 options, resulting in a config as
