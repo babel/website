@@ -37,6 +37,19 @@ The `"proposal": "smart"` option is deprecated and subject to removal in a futur
 
 When TC39 accepts one of the proposals, that proposal will become the default and the `"proposal"` option will no longer be required.
 
+### Summary of proposals’ behavior
+
+| Original expression | [Minimal F# pipes](https://github.com/tc39/proposal-pipeline-operator/)<br>`{proposal: "minimal"}` | [F# pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipelines/)<br>`{proposal: "fsharp"}` | [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/)<br>`{proposal: "hack",`<br>`topicToken: "#"}` |
+| --- | --- | --- | --- |
+| `o.m(x)` | `x \|> o.m` | `x \|> o.m` | `x \|> o.m(#)` |
+| `o.m(0, x)` | `x \|> y=>o.m(0, y)` | `x \|> y=>o.m(0, y)` | `x \|> o.m(0, #)` |
+| `new o.m(x)` | `x \|> y=>new o.m(y)` | `x \|> y=>new o.m(y)` | `x \|> new o.m(#)` |
+| `x + 1` | `x \|> y=>y + 1` | `x \|> y=>y + 1` | `x \|> # + 1` |
+| `[0, x]` | `x \|> y=>[0, y]` | `x \|> y=>[0, y]` | `x \|> [0, #]` |
+| `{ key: x }` | `x \|> y=>({ key: y })` | `x \|> y=>({ key: y })` | `x \|> { key: # }` |
+| `await o.m(x)` | Not supported | `x \|> o.m \|> await` | `x \|> await o.m(#)` |
+| `yield o.m(x)` | Not supported | Not supported | `x \|> yield o.m(#)` |
+
 ### Via CLI
 
 Because this plugin requires a configuration option, it [cannot be directly configured from the CLI](https://github.com/babel/babel/issues/4161). Use a [config file](/docs/en/config-files) instead with the CLI, to add and configure this plugin.
