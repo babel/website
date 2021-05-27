@@ -249,7 +249,7 @@ your Jest options via the [transform option](https://jestjs.io/docs/en/configura
 
 so all JS files will be processed with your version of `babel-jest` with the option enabled.
 
-> NOTE: When using `babel-jest` &le; 26, you must omit the `.default` part: `require("babel-jest").createTransformer({ ...`.
+> NOTE: When using `babel-jest` &le; 27, you must omit the `.default` part: `require("babel-jest").createTransformer({ ...`.
 
 #### Others
 
