@@ -39,9 +39,7 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 
 ### Via CLI
 
-```sh
-$ babel --plugins @babel/plugin-proposal-pipeline-operator script.js
-```
+Because this plugin requires a configuration option, it [cannot be directly configured from the CLI](https://github.com/babel/babel/issues/4161). Use a [config file](/docs/en/config-files) instead with the CLI, to add and configure this plugin.
 
 ### Via Node API
 
