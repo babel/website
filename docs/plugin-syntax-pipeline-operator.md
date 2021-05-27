@@ -20,21 +20,54 @@ $ npm install @babel/plugin-syntax-pipeline-operator
 
 ```json
 {
-  "plugins": ["@babel/plugin-syntax-pipeline-operator"]
+  "plugins": [
+    [ "@babel/plugin-syntax-pipeline-operator", { "proposal": "minimal" } ]
+  ]
+}
+```
+
+```json
+{
+  "plugins": [
+    [ "@babel/plugin-syntax-pipeline-operator", { "proposal": "fsharp" } ]
+  ]
+}
+```
+
+```json
+{
+  "plugins": [
+    [ "@babel/plugin-syntax-pipeline-operator", { "proposal": "hack", "topicToken": "#" } ]
+  ]
 }
 ```
 
 ### Via CLI
 
-```sh
-$ babel --plugins @babel/plugin-syntax-pipeline-operator script.js
-```
+Because this plugin requires a configuration option, it [cannot be directly configured from the CLI](https://github.com/babel/babel/issues/4161). Use a [config file](/docs/en/config-files) instead with the CLI, to add and configure this plugin.
 
 ### Via Node API
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-syntax-pipeline-operator"]
+  plugins: [
+    [ "@babel/plugin-syntax-pipeline-operator", { proposal: "minimal" } ],
+  ],
 });
 ```
 
+```javascript
+require("@babel/core").transformSync("code", {
+  plugins: [
+    [ "@babel/plugin-syntax-pipeline-operator", { proposal: "fsharp" } ],
+  ],
+});
+```
+
+```javascript
+require("@babel/core").transformSync("code", {
+  plugins: [
+    [ "@babel/plugin-syntax-pipeline-operator", { proposal: "hack": topicToken: "#" } ],
+  ],
+});
+```
