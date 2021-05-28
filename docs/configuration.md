@@ -204,7 +204,7 @@ when they are present and their value is not `undefined`. There are, however, a 
 - For `assumptions`, `parserOpts` and `generatorOpts`, objects are merged, rather than replaced.
 - For `plugins` and `presets`, they are replaced based on the identity of the plugin/preset object/function itself combined with the name of the entry.
 
-#### Option (except Plugin/Preset) merging
+#### Option (except plugin/preset) merging
 
 As an example, consider a config with:
 
