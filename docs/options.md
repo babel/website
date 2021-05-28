@@ -799,67 +799,7 @@ and will consider it an error otherwise.
 
 ### Merging
 
-Babel's configuration merging is relatively straightforward. Options will overwrite existing options
-when they are present, and their value is not `undefined`, with a few special cases:
-
-- `parserOpts` objects are merged, rather than replaced, using the same logic as top-level options.
-- `generatorOpts` objects are merged, rather than replaced, using the same logic as top-level options.
-- `plugins` and `presets` are replaced based on the identity of the plugin/preset object/function itself combined with the name of the entry.
-
-#### Plugin/Preset merging
-
-As an example, consider a config with:
-
-```js
-plugins: [
-  './other',
-  ['./plug', { thing: true, field1: true }]
-],
-overrides: [{
-  plugins: [
-    ['./plug', { thing: false, field2: true }],
-  ]
-}]
-```
-
-The `overrides` item will be merged on top of the top-level plugins. Importantly, the `plugins`
-array as a whole doesn't just replace the top-level one. The merging logic will see that `"./plug"`
-is the same plugin in both cases, and `{ thing: false, field2: true }` will replace the original
-options, resulting in a config as
-
-```js
-plugins: [
-  './other',
-  ['./plug', { thing: false, field2: true }],
-],
-```
-
-Since merging is based on identity + name, it is considered an error to use the same plugin with
-the same name twice in the same `plugins`/`presets` array. For example
-
-```js
-plugins: ["./plug", "./plug"];
-```
-
-is considered an error, because it's identical to `plugins: ['./plug']`. Additionally, even
-
-```js
-plugins: [["./plug", { one: true }], ["./plug", { two: true }]];
-```
-
-is considered an error, because the second one would just always replace the first one.
-
-If you actually _do_ want to instantiate two separate instances of a plugin, you must assign each one
-a name to disambiguate them. For example:
-
-```js
-plugins: [
-  ["./plug", { one: true }, "first-instance-name"],
-  ["./plug", { two: true }, "second-instance-name"],
-];
-```
-
-because each instance has been given a unique name and this a unique identity.
+Please refer to [How Babel merges config items](configuration.md#how-babel-merges-config-items).
 
 ### Plugin/Preset entries
 
