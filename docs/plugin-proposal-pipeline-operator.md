@@ -44,11 +44,13 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 | `o.m(x)` | `x \|> o.m` | `x \|> o.m` | `x \|> o.m(#)` |
 | `o.m(0, x)` | `x \|> y=>o.m(0, y)` | `x \|> y=>o.m(0, y)` | `x \|> o.m(0, #)` |
 | `new o.m(x)` | `x \|> y=>new o.m(y)` | `x \|> y=>new o.m(y)` | `x \|> new o.m(#)` |
+| `o[x]` | `x \|> y=>o[x]` | `x \|> y=>o[y]` | `x \|> o[#]` |
+| `x[i]` | `x \|> y=>x[i]` | `x \|> y=>y[i]` | `x \|> #[i]` |
 | `x + 1` | `x \|> y=>y + 1` | `x \|> y=>y + 1` | `x \|> # + 1` |
 | `[0, x]` | `x \|> y=>[0, y]` | `x \|> y=>[0, y]` | `x \|> [0, #]` |
 | `{ key: x }` | `x \|> y=>({ key: y })` | `x \|> y=>({ key: y })` | `x \|> { key: # }` |
 | `await o.m(x)` | Not supported | `x \|> o.m \|> await` | `x \|> await o.m(#)` |
-| `yield o.m(x)` | Not supported | Not supported | `x \|> yield o.m(#)` |
+| `yield o.m(x)` | Not supported | Not supported | `x \|> (yield o.m(#))` |
 
 ### Via CLI
 
