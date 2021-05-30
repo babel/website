@@ -39,18 +39,238 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 
 ### Summary of proposals’ behavior
 
-| Original expression | [Minimal F# pipes](https://github.com/tc39/proposal-pipeline-operator/)<br>`{proposal: "minimal"}` | [F# pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipelines/)<br>`{proposal: "fsharp"}` | [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/)<br>`{proposal: "hack",`<br>`topicToken: "#"}` |
-| --- | --- | --- | --- |
-| `o.m(x)` | `x \|> o.m` | `x \|> o.m` | `x \|> o.m(#)` |
-| `o.m(0, x)` | `x \|> y=>o.m(0, y)` | `x \|> y=>o.m(0, y)` | `x \|> o.m(0, #)` |
-| `new o.m(x)` | `x \|> y=>new o.m(y)` | `x \|> y=>new o.m(y)` | `x \|> new o.m(#)` |
-| `o[x]` | `x \|> y=>o[x]` | `x \|> y=>o[y]` | `x \|> o[#]` |
-| `x[i]` | `x \|> y=>x[i]` | `x \|> y=>y[i]` | `x \|> #[i]` |
-| `x + 1` | `x \|> y=>y + 1` | `x \|> y=>y + 1` | `x \|> # + 1` |
-| `[0, x]` | `x \|> y=>[0, y]` | `x \|> y=>[0, y]` | `x \|> [0, #]` |
-| `{ key: x }` | `x \|> y=>({ key: y })` | `x \|> y=>({ key: y })` | `x \|> { key: # }` |
-| `await o.m(x)` | Not supported | `x \|> o.m \|> await` | `x \|> await o.m(#)` |
-| `yield o.m(x)` | Not supported | Not supported | `x \|> (yield o.m(#))` |
+<table>
+<thead>
+<tr>
+<th>Original expression</th>
+<th>
+
+[Minimal F# pipes](https://github.com/tc39/proposal-pipeline-operator/)<br>`{proposal: "minimal"}`
+
+</th>
+<th>
+
+[F# pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipelines/)<br>`{proposal: "fsharp"}`
+
+</th>
+<th>
+
+[Hack pipes](https://github.com/js-choi/proposal-hack-pipes/)<br>`{proposal: "hack",`<br>`topicToken: "#"}`
+
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`o.m(x)`
+
+</td>
+<td>
+
+`x |> o.m`
+
+</td>
+<td>
+
+`x |> o.m`
+
+</td>
+<td>
+
+`x |> o.m(#)`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`o.m(0, x)`
+
+</td>
+<td>
+
+`x |> y=>o.m(0, y)`
+
+</td>
+<td>
+
+`x |> y=>o.m(0, y)`
+
+</td>
+<td>
+
+`x |> o.m(0, #)`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`new o.m(x)`
+
+</td>
+<td>
+
+`x |> y=>new o.m(y)`
+
+</td>
+<td>
+
+`x |> y=>new o.m(y)`
+
+</td>
+<td>
+
+`x |> new o.m(#)`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`o[x]`
+
+</td>
+<td>
+
+`x |> y=>o[x]`
+
+</td>
+<td>
+
+`x |> y=>o[y]`
+
+</td>
+<td>
+
+`x |> o[#]`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`x[i]`
+
+</td>
+<td>
+
+`x |> y=>x[i]`
+
+</td>
+<td>
+
+`x |> y=>y[i]`
+
+</td>
+<td>
+
+`x |> #[i]`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`x + 1`
+
+</td>
+<td>
+
+`x |> y=>y + 1`
+
+</td>
+<td>
+
+`x |> y=>y + 1`
+
+</td>
+<td>
+
+`x |> # + 1`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`[0, x]`
+
+</td>
+<td>
+
+`x |> y=>[0, y]`
+
+</td>
+<td>
+
+`x |> y=>[0, y]`
+
+</td>
+<td>
+
+`x |> [0, #]`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`{ key: x }`
+
+</td>
+<td>
+
+`x |> y=>({ key: y })`
+
+</td>
+<td>
+
+`x |> y=>({ key: y })`
+
+</td>
+<td>
+
+`x |> { key: # }`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`await o.m(x)`
+
+</td>
+<td>Not supported</td>
+<td>
+
+`x |> o.m |> await`
+
+</td>
+<td>
+
+`x |> await o.m(#)`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`yield o.m(x)`
+
+</td>
+<td>Not supported</td>
+<td>Not supported</td>
+<td>
+
+`x |> (yield o.m(#))`
+
+</td>
+</tr>
+</tbody>
+</table>
 
 ### Via CLI
 
