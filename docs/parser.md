@@ -262,13 +262,13 @@ You should enable these features only if you are using an older version.
 
 - `pipelineOperator`:
 
-  - `proposal` (required, accepted values: `minimal`, `fsharp`, `hack`, ~~`smart`~~ (deprecated))  
+  - `proposal` (required, accepted values: `minimal`, `fsharp`, `hack`, ~~`smart`~~ (deprecated))
     There are four different proposals for the pipeline operator.
     This option chooses which proposal to use.
     See [plugin-proposal-pipeline-operator](/docs/en/babel-plugin-proposal-pipeline-operator)
     for more information, including a table comparing their behavior.
 
-  - `topicToken` (required when `proposal` is `hack`, accepted values: `#`, `%`)  
+  - `topicToken` (required when `proposal` is `hack`, accepted values: `%`, `#`)
     The `hack` proposal uses a “topic” placeholder in its pipe.
     There are two different choices for this topic placeholder.
     This option chooses what token to use to refer to the topic.
