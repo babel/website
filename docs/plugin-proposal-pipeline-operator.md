@@ -22,7 +22,7 @@ $ npm install --save-dev @babel/plugin-proposal-pipeline-operator
 }
 ```
 
-The pipeline proposal is one of four competing implementations. Configure with proposal to use with the required `"proposal"` option.
+The pipeline proposal is one of four competing implementations. Configure which proposal to use with the required `"proposal"` option.
 
 | Value | Proposal | Version added |
 | ----- | -------- | ------------- |
