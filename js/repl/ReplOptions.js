@@ -118,6 +118,16 @@ const LinkToDocs = ({ className, children, section }: LinkProps) => (
   </a>
 );
 
+const LinkToAssumptionDocs = ({ className, children, section }: LinkProps) => (
+  <a
+    className={className}
+    target="_blank"
+    href={`/docs/en/next/assumptions#${section.toLowerCase()}`}
+  >
+    {children}
+  </a>
+);
+
 type PresetOptionProps = {
   className?: string,
   when?: boolean,
@@ -194,6 +204,18 @@ class ExpandedContainer extends Component<Props, State> {
       isSettingsTabExpanded: true, // TODO
       isAssumptionsTabExpanded: false,
     };
+  }
+
+  componentDidMount() {
+    const { envConfig } = this.props;
+    const { assumptions = {} } = envConfig;
+    /**
+     * Keeps the assumptions tab expanded if there are any assumptions options
+     * selected in the shared URL
+     */
+    if (Object.keys(assumptions).length > 0) {
+      this.setState({ isAssumptionsTabExpanded: true });
+    }
   }
 
   handleToggleTabExpanded = (tab: SidebarTabSection) => {
@@ -708,14 +730,14 @@ class ExpandedContainer extends Component<Props, State> {
                     : assumptions[option];
                 return (
                   <label className={styles.envPresetRow}>
-                    <LinkToDocs
+                    <LinkToAssumptionDocs
                       className={`${styles.envPresetLabel} ${
                         styles.highlightWithoutUppercase
                       }`}
-                      section="assumptions"
+                      section={option}
                     >
                       {option}
-                    </LinkToDocs>
+                    </LinkToAssumptionDocs>
                     <input
                       checked={isChecked}
                       className={styles.envPresetCheckbox}
