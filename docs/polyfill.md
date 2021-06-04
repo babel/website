@@ -10,7 +10,7 @@ title: @babel/polyfill
 > import "regenerator-runtime/runtime";
 > ```
 
-Babel includes a [polyfill](<https://en.wikipedia.org/wiki/Polyfill_(programming)>) that includes a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) and [core-js](https://github.com/zloirock/core-js).
+Babel includes a [polyfill](<https://en.wikipedia.org/wiki/Polyfill_(programming)>) that includes a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/runtime/runtime.js) and [core-js](https://github.com/zloirock/core-js).
 
 This will emulate a full ES2015+ environment (no < Stage 4 proposals) and is intended to be used in an application rather than a library/tool.
 (this polyfill is automatically loaded when using `babel-node`).
@@ -84,4 +84,4 @@ before it.
 
 > ##### If you are looking for something that won't modify globals to be used in a tool/library, checkout the [`transform-runtime`](plugin-transform-runtime.md) plugin. This means you won't be able to use the instance methods mentioned above like `Array.prototype.includes`.
 
-Note: Depending on what ES2015 methods you actually use, you may not need to use `@babel/polyfill` or the runtime plugin. You may want to only [load the specific polyfills you are using](https://github.com/zloirock/core-js#commonjs) (like `Object.assign`) or just document that the environment the library is being loaded in should include certain polyfills.
+Note: Depending on what ES2015 methods you actually use, you may not need to use `@babel/polyfill` or the runtime plugin. You may want to only [load the specific polyfills you are using](https://github.com/zloirock/core-js#commonjs-api) (like `Object.assign`) or just document that the environment the library is being loaded in should include certain polyfills.
