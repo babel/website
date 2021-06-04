@@ -576,7 +576,8 @@ class Repl extends React.Component<Props, State> {
 
   _onAssumptionsChange = (value: string, isChecked: boolean) => {
     const { assumptions } = this.state.envConfig;
-    assumptions[value] = isChecked;
+    if (isChecked === true) assumptions[value] = isChecked;
+    else delete assumptions[value];
     this.setState({ envConfig: { ...this.state.envConfig, assumptions } });
   };
 
