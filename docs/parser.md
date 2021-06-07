@@ -263,7 +263,7 @@ You should enable these features only if you are using an older version.
 - `pipelineOperator`:
 
   - `proposal` (required, accepted values: `minimal`, `fsharp`, `hack`, ~~`smart`~~ (deprecated))
-    There are four different proposals for the pipeline operator.
+    There are several different proposals for the pipeline operator.
     This option chooses which proposal to use.
     See [plugin-proposal-pipeline-operator](/docs/en/babel-plugin-proposal-pipeline-operator)
     for more information, including a table comparing their behavior.

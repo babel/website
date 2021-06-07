@@ -12,14 +12,15 @@ $ npm install --save-dev @babel/plugin-proposal-pipeline-operator
 
 ## Usage
 
-The pipeline proposal is one of four competing implementations. Configure which proposal to use with the required `"proposal"` option.
+The pipeline operator has several competing proposals.
+Configure which proposal to use with the required `"proposal"` option.
 
 | Value | Proposal | Version added |
 | ----- | -------- | ------------- |
 | `"minimal"` | [Minimal F#-style pipes](https://github.com/tc39/proposal-pipeline-operator/) | `v7.0.0`
 | `"fsharp"` | [F#-style pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipelines) | `v7.5.0`
 | `"hack"` | [Hack-style pipes](https://github.com/js-choi/proposal-hack-pipes) | `v7.15.0`
-| `"smart"` | [Smart-mix pipes](https://github.com/js-choi/proposal-smart-pipelines) (deprecated) | `v7.3.0`
+| ~~`"smart"`~~ | [Smart-mix pipes](https://github.com/js-choi/proposal-smart-pipelines) (deprecated) | `v7.3.0`
 
 If `"proposal": "hack"` is used, then a `"topicToken": "%"` or `"topicToken": "#"` option must also be included.
 
