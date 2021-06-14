@@ -226,6 +226,7 @@ class Repl extends React.Component<Props, State> {
           onExternalPluginRemove={this.handleRemoveExternalPlugin}
           onIsExpandedChange={this._onIsSidebarExpandedChange}
           onSettingChange={this._onSettingChange}
+          onVersionChange={this._onVersionChange}
           pluginState={state.plugins}
           presetState={state.presets}
           runtimePolyfillConfig={runtimePolyfillConfig}
@@ -610,6 +611,21 @@ class Repl extends React.Component<Props, State> {
     };
     StorageService.set("replState", payload);
     UriUtils.updateQuery(payload);
+  };
+
+  _onVersionChange = (e: Event) => {
+    this.setState(
+      {
+        babel: {
+          ...this.state.babel,
+          version: e.target.value,
+        },
+      },
+      () => {
+        this._persistState();
+        location.reload();
+      }
+    );
   };
 
   _pluginsUpdatedSetStateCallback = () => {
