@@ -89,7 +89,7 @@ For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `%` topic
 ```javascript
 require("@babel/core").transformSync("code", {
   plugins: [
-    [ "@babel/plugin-syntax-pipeline-operator", { proposal: "hack": topicToken: "%" } ],
+    [ "@babel/plugin-syntax-pipeline-operator", { proposal: "hack", topicToken: "%" } ],
   ],
 });
 ```
