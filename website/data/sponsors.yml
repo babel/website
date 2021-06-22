@@ -1,0 +1,6 @@
+- name: Coinbase
+  url: https://github.com/coinbase
+  image: https://avatars.githubusercontent.com/u/1885080?s=200&v=4
+  type: opencollective
+  tier: gold-sponsors
+  monthly: 1000

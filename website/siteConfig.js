@@ -42,7 +42,6 @@ const sponsorsManual = (loadYaml("./data/sponsors.yml") || []).map(sponsor => ({
 const sponsorsDownloaded = require(path.join(__dirname, "/data/sponsors.json"));
 
 const sponsors = [
-  ...sponsorsManual,
   ...sponsorsDownloaded
     .filter(sponsor => sponsor.slug !== "github-sponsors")
     .map(sponsor => {
@@ -67,6 +66,7 @@ const sponsors = [
         total: sponsor.totalDonations,
       };
     }),
+  ...sponsorsManual,
 ];
 
 // move to website/data later
