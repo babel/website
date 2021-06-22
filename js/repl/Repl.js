@@ -578,7 +578,9 @@ class Repl extends React.Component<Props, State> {
     const { assumptions } = this.state.envConfig;
     if (isChecked === true) assumptions[value] = isChecked;
     else delete assumptions[value];
-    this.setState({ envConfig: { ...this.state.envConfig, assumptions } });
+    this.setState(state => {
+      return { envConfig: { ...state.envConfig, assumptions } };
+    }, this._pluginsUpdatedSetStateCallback);
   };
 
   _persistState = () => {
