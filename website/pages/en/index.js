@@ -88,7 +88,7 @@ const GetStarted = ({ language }) => {
 const SponsorTier = props => {
   let { min, max } = props;
   const tierSponsors = siteConfig.sponsors.filter(sponsor => {
-    let value = Math.max(sponsor.monthly, sponsor.yearly / 12);
+    let value = Math.max(sponsor.monthly, (sponsor.yearly || 0) / 12);
     return +value >= min && (!max || (max && +value < max));
   });
   return (
