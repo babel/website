@@ -623,6 +623,7 @@ hard-coded to always parse as `"module"` files.
 
 Type: `{ [assumption: string]: boolean }`<br />
 Default: `{}`<br />
+Added in: `v7.13.0`<br />
 Placement: Allowed in programmatic options, config files and presets.<br />
 
 Set assumptions that Babel can make in order to produce smaller output:
