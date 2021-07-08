@@ -4,3 +4,9 @@
   type: opencollective
   tier: gold-sponsors
   monthly: 1000
+- name: ACV Auctions
+  url: https://github.com/acv-auctions
+  image: https://avatars.githubusercontent.com/u/9889795?s=200&v=4
+  type: opencollective
+  tier: silver-sponsors
+  monthly: 500
