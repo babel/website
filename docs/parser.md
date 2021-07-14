@@ -33,6 +33,7 @@ mind. When in doubt, use `.parse()`.
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `v7.15.0` | Added `attachComment` |
 | `v7.7.0` | Added `errorRecovery` |
 | `v7.5.0` | Added `allowUndeclaredExports` |
 | `v7.2.0` | Added `createParenthesizedExpressions` |
@@ -63,6 +64,8 @@ mind. When in doubt, use `.parse()`.
   might insert the appropriate declarations, so it is sometimes important
   to set this option to `true` to prevent the parser from prematurely
   complaining about undeclared exports that will be added later.
+
+- **attachComment**: By default, Babel attaches comments to adjacent AST nodes. When this option is set to `false`, comments are not attached. It can provide up to 30% performance improvement when the input code has _many_ comments. You probably don't need to set this option, `@babel/eslint-parser` will set it for you. It is not recommended to use `attachComment: false` with Babel transform, as it removes all the comments in output code, and renders annotations such as `/* istanbul ignore next */` nonfunctional.
 
 - **createParenthesizedExpressions**: By default, the parser sets `extra.parenthesized` on the expression nodes. When this option is set to `true`, `ParenthesizedExpression` AST nodes are created instead.
 
