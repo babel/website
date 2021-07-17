@@ -4,6 +4,8 @@ title: @babel/plugin-proposal-private-property-in-object
 sidebar_label: private-property-in-object
 ---
 
+> **NOTE**: This plugin is included in `@babel/preset-env`
+
 ## Example
 
 **In**
