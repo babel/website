@@ -28,7 +28,7 @@ yarn add @babel/preset-env --dev
 
 `@babel/preset-env` would not be possible if not for a number of awesome open-source projects, like [`browserslist`](https://github.com/browserslist/browserslist), [`compat-table`](https://github.com/kangax/compat-table), and [`electron-to-chromium`](https://github.com/Kilian/electron-to-chromium).
 
-We leverage these data sources to maintain [mappings of which version](https://github.com/babel/babel/blob/master/packages/babel-compat-data/data/plugins.json) of our supported target environments gained support of a JavaScript syntax or browser feature, as well as a mapping of those syntaxes and features to Babel transform plugins and core-js polyfills.
+We leverage these data sources to maintain [mappings of which version](https://github.com/babel/babel/blob/main/packages/babel-compat-data/data/plugins.json) of our supported target environments gained support of a JavaScript syntax or browser feature, as well as a mapping of those syntaxes and features to Babel transform plugins and core-js polyfills.
 
 > Note: `@babel/preset-env` won't include any JavaScript syntax proposals less than Stage 3 because at that stage in the TC39 process, it wouldn't be implemented by any browsers anyway. Those would need to be included manually. The `shippedProposals` option will include Stage 3 proposals that some browsers have already implemented.
 
@@ -232,7 +232,7 @@ An array of plugins to always include.
 
 Valid options include any:
 
-- [Babel plugins](https://github.com/babel/babel/blob/master/packages/babel-compat-data/scripts/data/plugin-features.js) - both with (`@babel/plugin-transform-spread`) and without prefix (`plugin-transform-spread`) are supported.
+- [Babel plugins](https://github.com/babel/babel/blob/main/packages/babel-compat-data/scripts/data/plugin-features.js) - both with (`@babel/plugin-transform-spread`) and without prefix (`plugin-transform-spread`) are supported.
 
 - Built-ins (both for [core-js@2](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs2/built-in-definitions.js) and [core-js@3](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs3/built-in-definitions.js), such as `es.map`, `es.set`, or `es.object.assign`.
 
@@ -250,7 +250,7 @@ This option is useful if there is a bug in a native implementation, or a combina
 
 For example, Node 4 supports native classes but not spread. If `super` is used with a spread argument, then the `@babel/plugin-transform-classes` transform needs to be `include`d, as it is not possible to transpile a spread with `super` otherwise.
 
-> NOTE: The `include` and `exclude` options _only_ work with the [plugins included with this preset](https://github.com/babel/babel/blob/master/packages/babel-compat-data/scripts/data/plugin-features.js); so, for example, including `@babel/plugin-proposal-do-expressions` or excluding `@babel/plugin-proposal-function-bind` will throw errors. To use a plugin _not_ included with this preset, add them to your ["plugins"](options.md#plugins) directly.
+> NOTE: The `include` and `exclude` options _only_ work with the [plugins included with this preset](https://github.com/babel/babel/blob/main/packages/babel-compat-data/scripts/data/plugin-features.js); so, for example, including `@babel/plugin-proposal-do-expressions` or excluding `@babel/plugin-proposal-function-bind` will throw errors. To use a plugin _not_ included with this preset, add them to your ["plugins"](options.md#plugins) directly.
 
 ### `exclude`
 

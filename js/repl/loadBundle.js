@@ -60,11 +60,12 @@ export default async function loadBundle(
         // Get the latest build number for this branch.
         //
         // NOTE:
-        // Since we switched the 7.0 branch to master, we map /build/7.0 to
-        // /build/master for backwards compatibility.
+        // Since we switched the 7.0 branch to master and then master
+        // to main, we map /build/7.0 and /build/master to
+        // /build/main for backwards compatibility.
         build = await loadLatestBuildNumberForBranch(
           state.circleciRepo,
-          build === "7.0" ? "master" : build,
+          build === "7.0" || build === "master" ? "main" : build,
           "build-standalone"
         );
       }
