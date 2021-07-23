@@ -58,7 +58,7 @@ class Versions extends React.Component {
             <table className="versions">
               <tbody>
                 <tr>
-                  <th>master</th>
+                  <th>main</th>
                   <td>
                     <a
                       href={

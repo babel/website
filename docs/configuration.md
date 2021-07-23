@@ -20,7 +20,7 @@ All Babel API [options](options.md) are allowed. However, if the option requires
 
 - Guy Fieri is your hero?
 
-> We recommend using the [`babel.config.json`](config-files.md#project-wide-configuration) format. [Babel itself is using it](https://github.com/babel/babel/blob/master/babel.config.js).
+> We recommend using the [`babel.config.json`](config-files.md#project-wide-configuration) format. [Babel itself is using it](https://github.com/babel/babel/blob/main/babel.config.js).
 
 ### `babel.config.json`
 

@@ -85,11 +85,11 @@ Please help out with documentation if you can by submitting a pull request to th
 
 ## How do I build babel from source?
 
-See [build instructions](https://github.com/babel/babel/blob/master/CONTRIBUTING.md#developing).
+See [build instructions](https://github.com/babel/babel/blob/main/CONTRIBUTING.md#developing).
 
 ## How do I contribute to Babel?
 
-See [contributing](https://github.com/babel/babel/blob/master/CONTRIBUTING.md).
+See [contributing](https://github.com/babel/babel/blob/main/CONTRIBUTING.md).
 
 ## Why am I getting a Syntax Error/Unexpected Token?
 

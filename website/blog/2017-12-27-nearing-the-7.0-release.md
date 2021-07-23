@@ -241,7 +241,7 @@ With type inference we can know if an instance method like `.includes` is for an
 
 ### Misc Updates
 
-- [`babel-template`](https://github.com/babel/babel/blob/master/packages/babel-template) is faster/easier to use
+- [`babel-template`](https://github.com/babel/babel/blob/main/packages/babel-template) is faster/easier to use
 - [regenerator](https://github.com/facebook/regenerator) was released under the [MIT License](https://twitter.com/left_pad/status/938825429955125248) - it's the dependency used to compile generators/async
 - "lazy" option to the `modules-commonjs` plugin via [#6952](https://github.com/babel/babel/pull/6952)
 - You can now use `envName: "something"` in .babelrc or pass via cli `babel --envName=something` instead of having to use `process.env.BABEL_ENV` or `process.env.NODE_ENV`
