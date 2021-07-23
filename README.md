@@ -2,7 +2,7 @@
 
 This is the source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
 
-- Current: `master` branch is deployed to https://babeljs.io
+- Current: `main` branch is deployed to https://babeljs.io
 - Old: `old-site` branch is deployed to https://v6.babeljs.io
 
 ### Setup
