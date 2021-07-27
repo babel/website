@@ -149,7 +149,7 @@ console.log(Animals.Fish);
 console.log(0);
 ```
 
-This option differs from TypeScript's `--isolatedModules` behavior, which ignores the `const` modifiers compiling them as normal enums, and aligns Babel's behavior with the TypeScript default behavior.
+This option differs from TypeScript's `--isolatedModules` behavior, which ignores the `const` modifier and compiles them as normal enums, and aligns Babel's behavior with TypeScript's default behavior.
 
 However, when _exporting_ a `const enum` Babel will compile it to a plain object literal so that it doesn't need to rely on cross-file analysis when compiling it:
 ```typescript
