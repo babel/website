@@ -10,3 +10,9 @@
   type: opencollective
   tier: silver-sponsors
   monthly: 500
+- name: American Express
+  url: https://developer.americanexpress.com/
+  image: https://avatars.githubusercontent.com/u/3853301?s=200&v=4
+  type: opencollective
+  tier: gold-sponsors
+  monthly: 1000
