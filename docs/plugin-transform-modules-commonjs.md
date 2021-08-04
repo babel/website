@@ -254,3 +254,8 @@ The two cases where imports can never be lazy are:
 > ⚠️ **Deprecated**: Use the `importInterop` option instead.
 
 When set to `true`, this option has the same behavior as setting `importInterop: "none"`.
+
+## Relevant [`assumptions`](https://babeljs.io/docs/en/assumptions)
+
+- [`enumerableModuleMeta`](https://babeljs.io/docs/en/assumptions#enumerablemodulemeta)
+- [`noIncompleteNsImportDetection`](https://babeljs.io/docs/en/assumptions#noincompletensimportdetection)
