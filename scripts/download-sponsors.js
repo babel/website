@@ -34,7 +34,7 @@ const membersGraphqlQuery = `query account($limit: Int, $offset: Int) {
 }`;
 
 // only query transactions in last year
-const transactionsGraphqlQuery = `query transactions($dateFrom: ISODateTime, $limit: Int, $offset: Int) {
+const transactionsGraphqlQuery = `query transactions($dateFrom: DateTime, $limit: Int, $offset: Int) {
   transactions(account: {
     slug: "babel"
   }, dateFrom: $dateFrom, limit: $limit, offset: $offset, includeIncognitoTransactions: false) {
@@ -78,7 +78,7 @@ const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
     },
   };
 
-  let allNodes = [];
+  const allNodes = [];
 
   // Handling pagination if necessary
   // eslint-disable-next-line
@@ -90,8 +90,16 @@ const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
         "Content-Type": "application/json",
       },
     }).then(response => response.json());
+    if (result.errors) {
+      const {
+        extensions: { code },
+        message,
+        locations: [{ line, column }],
+      } = result.errors[0];
+      throw new Error(`[${code}] ${message} (${line}:${column})`);
+    }
     const nodes = getNodes(result.data);
-    allNodes = [...allNodes, ...nodes];
+    allNodes.push(...nodes);
     body.variables.offset += graphqlPageSize;
     if (nodes.length < graphqlPageSize) {
       return allNodes;
