@@ -15,7 +15,7 @@ id: assumptions
 
 By default Babel tries to compile your code so that it matches the native behavior as closely as possible. However, this sometimes means generating more output code, or slower output code, just to support some edge cases you don't care about.
 
-Since Babel 7.13.0, you can specify an `assumptions` option in your configuration to tell Babel which assumptions it can make about your code, to better optimize the compilation result. *Note*: this replaces the various `loose` options in plugins in favor of top-level options that can apply to multiple plugins ([RFC link](https://github.com/babel/rfcs/blob/master/rfcs/0003-top-level-assumptions.md)). 
+Since Babel 7.13.0, you can specify an `assumptions` option in your configuration to tell Babel which assumptions it can make about your code, to better optimize the compilation result. *Note*: this replaces the various `loose` options in plugins in favor of top-level options that can apply to multiple plugins ([RFC link](https://github.com/babel/rfcs/blob/master/rfcs/0003-top-level-assumptions.md)).
 
 For example:
 
@@ -189,10 +189,10 @@ let name = user?.name;
 
 Assume that no own property of a module export object is observed before initialization.
 For example, when trying to access `ns.foo`, it will return `undefined` both with this assumption turned on or off. The
-difference is that `Object.prototype.hasOwnProperty.call(ns, "foo")` would return `false` when 
+difference is that `Object.prototype.hasOwnProperty.call(ns, "foo")` would return `false` when
 `noIncompleteNsImportDetection: true`.
 
-<div is="assumption-repl" data-assumption="noIncompleteNsImportDetection" data-plugins="plugin-transform-modules-commonjs">
+<div is="assumption-repl" data-assumption="noIncompleteNsImportDetection" data-plugins="transform-modules-commonjs">
 
 ```text assumption-input
 export var foo;
