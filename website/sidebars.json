@@ -52,7 +52,6 @@
     ],
     "TC39 Proposals": [
       "babel-plugin-proposal-async-do-expressions",
-      "babel-plugin-proposal-class-properties",
       "babel-plugin-proposal-class-static-block",
       "babel-plugin-proposal-decorators",
       "babel-plugin-proposal-do-expressions",
@@ -63,10 +62,8 @@
       "babel-plugin-proposal-partial-application",
       "babel-plugin-proposal-pipeline-operator",
       "babel-plugin-proposal-private-methods",
-      "babel-plugin-proposal-private-property-in-object",
       "babel-plugin-proposal-record-and-tuple",
-      "babel-plugin-proposal-throw-expressions",
-      "babel-plugin-syntax-top-level-await"
+      "babel-plugin-proposal-throw-expressions"
     ],
     "@babel/preset-env": [
       {

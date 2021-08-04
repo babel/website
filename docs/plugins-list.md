@@ -8,7 +8,6 @@ sidebar_label: Plugins List
 
 ### TC39 Proposals
 
-- [class-properties](plugin-proposal-class-properties.md)
 - [class-static-block](plugin-proposal-class-static-block.md)
 - [decorators](plugin-proposal-decorators.md)
 - [do-expressions](plugin-proposal-do-expressions.md)
@@ -18,10 +17,14 @@ sidebar_label: Plugins List
 - [function-sent](plugin-proposal-function-sent.md)
 - [partial-application](plugin-proposal-partial-application.md)
 - [pipeline-operator](plugin-proposal-pipeline-operator.md)
-- [private-methods](plugin-proposal-private-methods.md)
 - [throw-expressions](plugin-proposal-throw-expressions.md)
-- [private-property-in-object](plugin-proposal-private-property-in-object.md)
 - [record-and-tuple](plugin-proposal-record-and-tuple.md)
+
+### ES2022
+
+- [class-properties](plugin-proposal-class-properties.md)
+- [private-methods](plugin-proposal-private-methods.md)
+- [private-property-in-object](plugin-proposal-private-property-in-object.md)
 
 ### ES2021
 
