@@ -56,6 +56,13 @@ const ASSUMPTIONS_OPTIONS = [
   "skipForOfIteratorClosing",
   "superIsCallableConstructor",
 ];
+
+const PIPELINE_PROPOSALS = {
+  minimal: "Minimal",
+  fsharp: "F#",
+  hack: "Hack",
+};
+
 // These presets are deprecated. We only show them if they are enabled, so that
 // when they are enabled because of an old URL or local storage they can still
 // be disabled.
@@ -501,24 +508,14 @@ class ExpandedContainer extends Component<Props, State> {
                     t => t.value
                   )}
                 >
-                  <option
-                    value="minimal"
-                    selected={presetsOptions.pipelineProposal === "minimal"}
-                  >
-                    Minimal
-                  </option>
-                  <option
-                    value="smart"
-                    selected={presetsOptions.pipelineProposal === "smart"}
-                  >
-                    Smart
-                  </option>
-                  <option
-                    value="fsharp"
-                    selected={presetsOptions.pipelineProposal === "fsharp"}
-                  >
-                    F#
-                  </option>
+                  {Object.keys(PIPELINE_PROPOSALS).map(key => (
+                    <option
+                      value={key}
+                      selected={key === presetsOptions.pipelineProposal}
+                    >
+                      {PIPELINE_PROPOSALS[key]}
+                    </option>
+                  ))}
                 </select>
               </PresetOption>
             </AccordionTab>
