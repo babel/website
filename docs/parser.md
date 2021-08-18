@@ -100,6 +100,7 @@ It is based on [ESTree spec][] with the following deviations:
 - [Literal][] token is replaced with [StringLiteral][], [NumericLiteral][], [BigIntLiteral][], [BooleanLiteral][], [NullLiteral][], [RegExpLiteral][]
 - [Property][] token is replaced with [ObjectProperty][] and [ObjectMethod][]
 - [MethodDefinition][] is replaced with [ClassMethod][]
+- [PropertyDefinition][] is replaced with [ClassProperty][]
 - [Program][] and [BlockStatement][] contain additional `directives` field with [Directive][] and [DirectiveLiteral][]
 - [ClassMethod][], [ObjectProperty][], and [ObjectMethod][] value property's properties in [FunctionExpression][] is coerced/brought into the main method node.
 - [ChainExpression][] is replaced with [OptionalMemberExpression][] and [OptionalCallExpression][]
@@ -114,6 +115,7 @@ AST for JSX code is based on [Facebook JSX AST][].
 [literal]: https://github.com/estree/estree/blob/master/es5.md#literal
 [property]: https://github.com/estree/estree/blob/master/es5.md#property
 [methoddefinition]: https://github.com/estree/estree/blob/master/es2015.md#methoddefinition
+[propertydefinition]: https://github.com/estree/estree/blob/master/es2022.md#propertydefinition
 [chainexpression]: https://github.com/estree/estree/blob/master/es2020.md#chainexpression
 [importexpression]: https://github.com/estree/estree/blob/master/es2020.md#importexpression
 [stringliteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#stringliteral
@@ -125,6 +127,7 @@ AST for JSX code is based on [Facebook JSX AST][].
 [objectproperty]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#objectproperty
 [objectmethod]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#objectmethod
 [classmethod]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#classmethod
+[classproperty]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#classproperty
 [program]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#programs
 [blockstatement]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#blockstatement
 [directive]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#directive
