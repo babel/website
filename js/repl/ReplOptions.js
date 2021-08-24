@@ -613,7 +613,7 @@ class ExpandedContainer extends Component<Props, State> {
                   }
                 >
                   <option value="2">core-js 2</option>
-                  <option value="3.6">core-js 3.6</option>
+                  <option value="3.16">core-js 3.16</option>
                 </select>
                 <select
                   value={envConfig.builtIns}
