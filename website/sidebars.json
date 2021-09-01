@@ -68,6 +68,7 @@
         "type": "subcategory",
         "label": "ES2022",
         "ids": [
+          "babel-plugin-proposal-class-private-methods",
           "babel-plugin-proposal-class-properties",
           "babel-plugin-proposal-class-static-block",
           "babel-plugin-proposal-private-property-in-object",
