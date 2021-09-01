@@ -19,13 +19,6 @@ sidebar_label: Plugins List
 - [throw-expressions](plugin-proposal-throw-expressions.md)
 - [record-and-tuple](plugin-proposal-record-and-tuple.md)
 
-#### Syntax Only
-
-- [syntax-bigint](plugin-syntax-bigint.md) (ES2020)
-- [syntax-dynamic-import](plugin-syntax-dynamic-import.md) (ES2020)
-- [syntax-import-meta](plugin-syntax-import-meta.md) (ES2020)
-- [syntax-top-level-await](plugin-syntax-top-level-await.md) (ES2022)
-
 ### ES2022
 
 - [class-properties](plugin-proposal-class-properties.md)
@@ -140,3 +133,10 @@ sidebar_label: Plugins List
 - [regenerator](plugin-transform-regenerator.md)
 - [runtime](plugin-transform-runtime.md)
 - [strict-mode](plugin-transform-strict-mode.md)
+
+#### Syntax Only
+
+- [syntax-bigint](plugin-syntax-bigint.md) (ES2020)
+- [syntax-dynamic-import](plugin-syntax-dynamic-import.md) (ES2020)
+- [syntax-import-meta](plugin-syntax-import-meta.md) (ES2020)
+- [syntax-top-level-await](plugin-syntax-top-level-await.md) (ES2022)
