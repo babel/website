@@ -4,7 +4,7 @@ title: @babel/plugin-proposal-numeric-separator
 sidebar_label: numeric-separator
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2021](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 
 ## Example
 

@@ -4,7 +4,7 @@ title: @babel/plugin-proposal-optional-chaining
 sidebar_label: optional-chaining
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2020](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 
 ## Example
 

@@ -4,7 +4,7 @@ title: @babel/plugin-transform-named-capturing-groups-regex
 sidebar_label: named-capturing-groups-regex
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2018](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 > NOTE: This plugin generates code that needs ES6 regular expressions
 > functionalities. If you need to support older browsers, use either
 > the `runtime: false` option or import a proper polyfill (e.g. `core-js`).
