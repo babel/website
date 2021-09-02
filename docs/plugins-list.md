@@ -8,7 +8,6 @@ sidebar_label: Plugins List
 
 ### TC39 Proposals
 
-- [class-static-block](plugin-proposal-class-static-block.md)
 - [decorators](plugin-proposal-decorators.md)
 - [do-expressions](plugin-proposal-do-expressions.md)
 - [export-default-from](plugin-proposal-export-default-from.md)
@@ -23,25 +22,23 @@ sidebar_label: Plugins List
 ### ES2022
 
 - [class-properties](plugin-proposal-class-properties.md)
-- [private-methods](plugin-proposal-private-methods.md)
+- [class-static-block](plugin-proposal-class-static-block.md)
 - [private-property-in-object](plugin-proposal-private-property-in-object.md)
+- [syntax-top-level-await](plugin-syntax-top-level-await.md)
 
 ### ES2021
 
-- [numeric-separator](plugin-proposal-numeric-separator.md)
 - [logical-assignment-operators](plugin-proposal-logical-assignment-operators.md)
+- [numeric-separator](plugin-proposal-numeric-separator.md)
 
 ### ES2020
 
 - [export-namespace-from](plugin-proposal-export-namespace-from.md)
 - [nullish-coalescing-operator](plugin-proposal-nullish-coalescing-operator.md)
 - [optional-chaining](plugin-proposal-optional-chaining.md)
-
-#### Syntax Only
-
-- [syntax-bigint](plugin-syntax-bigint.md)
 - [syntax-dynamic-import](plugin-syntax-dynamic-import.md)
 - [syntax-import-meta](plugin-syntax-import-meta.md)
+- [syntax-bigint](plugin-syntax-bigint.md)
 
 ### ES2019
 
@@ -136,3 +133,10 @@ sidebar_label: Plugins List
 - [regenerator](plugin-transform-regenerator.md)
 - [runtime](plugin-transform-runtime.md)
 - [strict-mode](plugin-transform-strict-mode.md)
+
+#### Syntax Only
+
+- [syntax-bigint](plugin-syntax-bigint.md) (ES2020)
+- [syntax-dynamic-import](plugin-syntax-dynamic-import.md) (ES2020)
+- [syntax-import-meta](plugin-syntax-import-meta.md) (ES2020)
+- [syntax-top-level-await](plugin-syntax-top-level-await.md) (ES2022)

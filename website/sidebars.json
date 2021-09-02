@@ -52,11 +52,9 @@
     ],
     "TC39 Proposals": [
       "babel-plugin-proposal-async-do-expressions",
-      "babel-plugin-proposal-class-static-block",
       "babel-plugin-proposal-decorators",
       "babel-plugin-proposal-do-expressions",
       "babel-plugin-proposal-export-default-from",
-      "babel-plugin-proposal-export-namespace-from",
       "babel-plugin-proposal-function-bind",
       "babel-plugin-proposal-function-sent",
       "babel-plugin-proposal-partial-application",
@@ -66,6 +64,17 @@
       "babel-plugin-proposal-throw-expressions"
     ],
     "@babel/preset-env": [
+      {
+        "type": "subcategory",
+        "label": "ES2022",
+        "ids": [
+          "babel-plugin-proposal-class-private-methods",
+          "babel-plugin-proposal-class-properties",
+          "babel-plugin-proposal-class-static-block",
+          "babel-plugin-proposal-private-property-in-object",
+          "babel-plugin-syntax-top-level-await"
+        ]
+      },
       {
         "type": "subcategory",
         "label": "ES2021",

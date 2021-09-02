@@ -4,6 +4,8 @@ title: @babel/plugin-proposal-class-static-block
 sidebar_label: class-static-block
 ---
 
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+
 A class with a static block will be transformed into a static private property, whose initializer is the static block wrapped in an IIAFE (immediate invoked arrow function expression).
 
 ## Example
