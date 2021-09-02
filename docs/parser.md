@@ -190,6 +190,7 @@ require("@babel/parser").parse("code", {
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `v7.15.0` | Added `hack` to the `proposal` option of `pipelineOperator`. Moved `topLevelAwait`, `privateIn` to Latest ECMAScript features |
 | `v7.14.0` | Added `asyncDoExpressions`. Moved `classProperties`, `classPrivateProperties`, `classPrivateMethods`, `moduleStringNames` to Latest ECMAScript features |
 | `v7.13.0` | Added `moduleBlocks` |
 | `v7.12.0` | Added `classStaticBlock`, `moduleStringNames` |
@@ -214,10 +215,8 @@ require("@babel/parser").parse("code", {
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                  | `let m = module { export let y = 1; };`                  |
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                 | `f(?, a)`                                                |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29))                   | <code>a &#124;> b</code>                                 |
-| `privateIn` ([proposal](https://github.com/tc39/proposal-private-fields-in-in))                 | `#p in obj`                                              |
 | `recordAndTuple` ([proposal](https://github.com/tc39/proposal-record-tuple))                    | `#{x: 1}`, `#[1, 2]`                                     |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23))                   | `() => throw new Error("")`                              |
-| `topLevelAwait` ([proposal](https://github.com/tc39/proposal-top-level-await/))                 | `await promise` in modules                               |
 
 #### Latest ECMAScript features
 
@@ -241,6 +240,8 @@ You should enable these features only if you are using an older version.
 | `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread))      | `var a = { b, ...c };`                              |
 | `optionalCatchBinding` ([proposal](https://github.com/babel/proposals/issues/7))          | `try {throw 0;} catch{do();}`                       |
 | `optionalChaining` ([proposal](https://github.com/tc39/proposal-optional-chaining))       | `a?.b`                                              |
+| `privateIn` ([proposal](https://github.com/tc39/proposal-private-fields-in-in))           | `#p in obj`                                         |
+| `topLevelAwait` ([proposal](https://github.com/tc39/proposal-top-level-await/))           | `await promise` in modules                          |
 
 #### Plugins options
 
