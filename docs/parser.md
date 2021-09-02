@@ -205,7 +205,6 @@ require("@babel/parser").parse("code", {
 | Name                                                                                            | Code Example                                             |
 | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | `asyncDoExpressions` ([proposal](https://github.com/tc39/proposal-async-do-expressions))        | `async do { await requestAPI().json() }`                 |
-| `classStaticBlock` ([proposal](https://github.com/tc39/proposal-class-static-block))            | `class A { static {} }`                                  |
 | `decimal` ([proposal](https://github.com/tc39/proposal-decimal))                                | `0.3m`                                                   |
 | `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br> `decorators-legacy` | `@a class A {}`                                          |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                   | `var a = do { if (true) { 'hi'; } };`                    |
@@ -230,6 +229,7 @@ You should enable these features only if you are using an older version.
 | `classProperties` ([proposal](https://github.com/tc39/proposal-class-public-fields))      | `class A { b = 1; }`                                |
 | `classPrivateProperties` ([proposal](https://github.com/tc39/proposal-private-fields))    | `class A { #b = 1; }`                               |
 | `classPrivateMethods` ([proposal](https://github.com/tc39/proposal-private-methods))      | `class A { #c() {} }`                               |
+| `classStaticBlock` ([proposal](https://github.com/tc39/proposal-class-static-block))      | `class A { static {} }`                             |
 | `dynamicImport` ([proposal](https://github.com/tc39/proposal-dynamic-import))             | `import('./guy').then(a)`                           |
 | `exportNamespaceFrom` ([proposal](https://github.com/leebyron/ecmascript-export-ns-from)) | `export * as ns from "mod"`                         |
 | `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))               | `function.sent`                                     |
