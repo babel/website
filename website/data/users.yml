@@ -698,3 +698,6 @@
 - name: Wormhole
   url: https://wormhole.app
   logo: wormhole.svg
+- name: Ormica
+  url: https://ormica.com
+  logo: ormica.svg
