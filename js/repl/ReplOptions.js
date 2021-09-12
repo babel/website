@@ -110,6 +110,7 @@ type Props = {
   runtimePolyfillState: PluginState,
   loadingExternalPlugins: boolean,
   onAssumptionsChange: AssumptionsChange,
+  onDownloadRepl: (e: SyntheticEvent<*>) => void,
 };
 
 type LinkProps = {
@@ -769,9 +770,20 @@ class ExpandedContainer extends Component<Props, State> {
             />
           </div>
         </div>
-        {babelVersion && (
-          <div className={styles.versionRow} title={`v${babelVersion}`}>
-            <select value={babelVersion} onChange={onVersionChange}>
+        <div className={styles.versionRow}>
+          <button
+            onClick={this.props.onDownloadRepl}
+            title="Download REPL"
+            className={styles.downloadReplButton}
+          >
+            Download REPL
+          </button>
+          {babelVersion && (
+            <select
+              title={`v${babelVersion}`}
+              value={babelVersion}
+              onChange={onVersionChange}
+            >
               <option value="">v{babelVersion}</option>
               <option value="latest">Latest</option>
               {pastVersions.map(
@@ -783,8 +795,8 @@ class ExpandedContainer extends Component<Props, State> {
                   )
               )}
             </select>
-          </div>
-        )}
+          )}
+        </div>
 
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
@@ -1232,9 +1244,9 @@ const styles = {
     display: "flex",
     fontFamily: "monospace",
     fontSize: "0.75rem",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     overflow: "hidden",
-    padding: "0 1.5rem",
+    padding: "0.5rem 1.5rem",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
 
@@ -1247,6 +1259,13 @@ const styles = {
       margin: 0,
       padding: "0.625rem 0.9375rem",
     },
+  }),
+  downloadReplButton: css({
+    backgroundColor: colors.selectBackground,
+    borderRadius: "4px",
+    border: 0,
+    color: colors.inverseForegroundLight,
+    cursor: "pointer",
   }),
   checkboxOfficial: css({
     marginTop: 10,
