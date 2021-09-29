@@ -238,13 +238,6 @@ Because there are features of the TypeScript language which rely on the full typ
 
 1. Since Babel does not type-check, code which is syntactically correct, but would fail the TypeScript type-checking may successfully get transformed, and often in unexpected or invalid ways.
 
-1. This plugin does not support [`const enum`][const_enum]s because those require type information to compile.
-
-   **Workarounds**:
-
-   - Use the plugin [babel-plugin-const-enum](https://www.npmjs.com/package/babel-plugin-const-enum).
-   - Remove the `const`, which makes it available at runtime.
-
 1. This plugin does not support [`export =`][exin] and [`import =`][exin], because those cannot be compiled to ES.next. These are a TypeScript only form of `import`/`export`.
 
    **Workarounds**:
