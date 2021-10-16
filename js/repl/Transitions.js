@@ -40,7 +40,7 @@ export default class Transitions {
     callback: any
   ) => {
     return (...args: any) => {
-      const currentNode = args[0].node.type
+      const currentNode = args[0].node.type;
 
       callback.call(this, ...args);
 
