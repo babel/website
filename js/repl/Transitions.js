@@ -40,6 +40,10 @@ export default class Transitions {
     callback: any
   ) => {
     return (...args: any) => {
+      const currentNode = args[0].node.type;
+
+      callback.call(this, ...args);
+
       // $FlowFixMe
       const { code } = generate(this._getProgramParent(args[0]).node);
 
@@ -51,11 +55,10 @@ export default class Transitions {
           code,
           pluginAlias,
           visitorType,
-          currentNode: args[0].node.type,
+          currentNode,
           size: new Blob([code], { type: "text/plain" }).size,
         });
       }
-      callback.call(this, ...args);
     };
   };
 }
