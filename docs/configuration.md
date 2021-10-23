@@ -291,4 +291,4 @@ plugins: [
 ];
 ```
 
-because each instance has been given a unique name and this is a unique identity.
+because each instance has been given a unique name and thus a unique identity.
