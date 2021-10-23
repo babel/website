@@ -22,7 +22,7 @@ Configure which proposal to use with the required `"proposal"` option.
 | `"hack"` | [Hack-style pipes](https://github.com/js-choi/proposal-hack-pipes) | `v7.15.0`
 | ~~`"smart"`~~ | [Smart-mix pipes](https://github.com/js-choi/proposal-smart-pipelines) (deprecated) | `v7.3.0`
 
-If `"proposal": "hack"` is used, then a `"topicToken": "^"`, `"topicToken": "%"`, or `"topicToken": "#"` option must also be included.
+If `"proposal": "hack"` is used, then a `"topicToken": "%"`, `"topicToken": "^"`, or `"topicToken": "#"` option must also be included.
 
 The `"proposal": "smart"` option is deprecated and subject to removal in a future major version.
 
@@ -46,7 +46,7 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 </th>
 <th>
 
-[Hack pipes](https://github.com/js-choi/proposal-hack-pipes/)<br>`{proposal: "hack",`<br>`topicToken: "^"}`
+[Hack pipes](https://github.com/js-choi/proposal-hack-pipes/)<br>`{proposal: "hack",`<br>`topicToken: "%"}`
 
 </th>
 </tr>
@@ -70,7 +70,7 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 </td>
 <td>
 
-`x |> o.m(^)`
+`x |> o.m(%)`
 
 </td>
 </tr>
@@ -92,7 +92,7 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 </td>
 <td>
 
-`x |> o.m(0, ^)`
+`x |> o.m(0, %)`
 
 </td>
 </tr>
@@ -114,7 +114,7 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 </td>
 <td>
 
-`x |> new o.m(^)`
+`x |> new o.m(%)`
 
 </td>
 </tr>
@@ -136,7 +136,7 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 </td>
 <td>
 
-`x |> o[^]`
+`x |> o[%]`
 
 </td>
 </tr>
@@ -158,7 +158,7 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 </td>
 <td>
 
-`x |> ^[i]`
+`x |> %[i]`
 
 </td>
 </tr>
@@ -180,7 +180,7 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 </td>
 <td>
 
-`x |> ^ + 1`
+`x |> % + 1`
 
 </td>
 </tr>
@@ -202,7 +202,7 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 </td>
 <td>
 
-`x |> [0, ^]`
+`x |> [0, %]`
 
 </td>
 </tr>
@@ -224,7 +224,7 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 </td>
 <td>
 
-`x |> { key: ^ }`
+`x |> { key: % }`
 
 </td>
 </tr>
@@ -242,7 +242,7 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 </td>
 <td>
 
-`x |> await o.m(^)`
+`x |> await o.m(%)`
 
 </td>
 </tr>
@@ -256,7 +256,7 @@ When TC39 accepts one of the proposals, that proposal will become the default an
 <td>Not supported</td>
 <td>
 
-`x |> (yield o.m(^))`
+`x |> (yield o.m(%))`
 
 </td>
 </tr>
@@ -284,22 +284,22 @@ For [F# pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipel
   ]
 }
 ```
-For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `^` topic token:
-
-```json
-{
-  "plugins": [
-    ["@babel/plugin-proposal-pipeline-operator", { "proposal": "hack", "topicToken": "^" }]
-  ]
-}
-```
-
 For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `%` topic token:
 
 ```json
 {
   "plugins": [
     ["@babel/plugin-proposal-pipeline-operator", { "proposal": "hack", "topicToken": "%" }]
+  ]
+}
+```
+
+For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `^` topic token:
+
+```json
+{
+  "plugins": [
+    ["@babel/plugin-proposal-pipeline-operator", { "proposal": "hack", "topicToken": "^" }]
   ]
 }
 ```
@@ -340,22 +340,22 @@ require("@babel/core").transformSync("code", {
 });
 ```
 
-For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `^` topic token:
-
-```javascript
-require("@babel/core").transformSync("code", {
-  plugins: [
-    [ "@babel/plugin-proposal-pipeline-operator", { proposal: "hack", topicToken: "^" } ],
-  ],
-});
-```
-
 For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `%` topic token:
 
 ```javascript
 require("@babel/core").transformSync("code", {
   plugins: [
     [ "@babel/plugin-proposal-pipeline-operator", { proposal: "hack", topicToken: "%" } ],
+  ],
+});
+```
+
+For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `^` topic token:
+
+```javascript
+require("@babel/core").transformSync("code", {
+  plugins: [
+    [ "@babel/plugin-proposal-pipeline-operator", { proposal: "hack", topicToken: "^" } ],
   ],
 });
 ```
