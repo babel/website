@@ -106,6 +106,14 @@ class A {
 }
 ```
 
+### `disallowAmbiguousJSXLike`
+
+`boolean`, defaults to `true` for `.mts` and `.cts` files and to `false` otherwise.
+
+Added in: `v7.16.0`
+
+Even when JSX parsing is not enabled, this option disallows using syntax that would be ambiguous with JSX (`<X> y` type assertions and `<X>() => {}` type arguments). It matches the `tsc` behavior when parsing `.mts` and `.mjs` files.
+
 ### `onlyRemoveTypeImports`
 
 `boolean`, defaults to `false`

@@ -246,6 +246,7 @@ You should enable these features only if you are using an older version.
 | Version | Changes |
 | --- | --- |
 | `7.14.0` | Added `dts` for `typescript` plugin |
+| `7.16.0` | Added `disallowAmbiguousJSXLike` for `typescript` plugin |
 </details>
 
 > NOTE: When a plugin is specified multiple times, only the first options are considered.
@@ -298,6 +299,8 @@ You should enable these features only if you are using an older version.
 - `typescript`
   - `dts` (`boolean`, default `false`)
     This option will enable parsing within a TypeScript ambient context, where certain syntax have different rules (like `.d.ts` files and inside `declare module` blocks). Please see https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html and https://basarat.gitbook.io/typescript/type-system/intro for more information about ambient contexts.
+  - `disallowAmbiguousJSXLike` (`boolean`, default `false`)
+    Even when the `jsx` plugin is not enabled, this option disallows using syntax that would be ambiguous with JSX (`<X> y` type assertions and `<X>() => {}` type arguments). It matches the `tsc` behavior when parsing `.mts` and `.mjs` files.
 
 ### Error codes
 
