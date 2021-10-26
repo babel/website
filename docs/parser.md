@@ -33,6 +33,7 @@ mind. When in doubt, use `.parse()`.
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `v7.16.0` | Added `startColumn` |
 | `v7.15.0` | Added `attachComment` |
 | `v7.7.0` | Added `errorRecovery` |
 | `v7.5.0` | Added `allowUndeclaredExports` |
@@ -82,7 +83,9 @@ mind. When in doubt, use `.parse()`.
 
 - **sourceFilename**: Correlate output AST nodes with their source filename. Useful when generating code and source maps from the ASTs of multiple input files.
 
-- **startLine**: By default, the first line of code parsed is treated as line 1. You can provide a line number to alternatively start with. Useful for integration with other source tools.
+- **startColumn**: By default, the parsed code is treated as if it starts from line 1, column 0. You can provide a column number to alternatively start with. Useful for integration with other source tools.
+
+- **startLine**: By default, the parsed code is treated as if it starts from line 1, column 0. You can provide a line number to alternatively start with. Useful for integration with other source tools.
 
 - **strictMode**: By default, ECMAScript code is parsed as strict only if a
   `"use strict";` directive is present or if the parsed file is an ECMAScript
