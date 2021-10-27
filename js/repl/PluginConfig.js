@@ -71,7 +71,7 @@ const envPresetDefaults = {
 const runtimePolyfillConfig: PluginConfig = {
   label: "Runtime Polyfill",
   package: "@babel/polyfill",
-  version: "7",
+  version: "7.x",
 };
 
 const pluginConfigs: Array<PluginConfig> = [
