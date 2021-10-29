@@ -45,6 +45,7 @@ export type PluginConfig = {
   label: string,
   package: string,
   version?: any,
+  url?: string,
   instanceName?: string,
   files?: Array<string>,
 };
