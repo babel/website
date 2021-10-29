@@ -36,6 +36,8 @@ t.argumentPlaceholder();
 
 See also `t.isArgumentPlaceholder(node, opts)` and `t.assertArgumentPlaceholder(node, opts)`.
 
+Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal)
+
 ---
 
 #### arrayExpression
@@ -49,7 +51,7 @@ See also `t.isArrayExpression(node, opts)` and `t.assertArrayExpression(node, op
 AST Node `ArrayExpression` shape:
 - `elements`: `Array<null | Expression | SpreadElement>` (default: `[]`)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -67,7 +69,7 @@ AST Node `ArrayPattern` shape:
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`Pattern`](#pattern), [`PatternLike`](#patternlike), [`LVal`](#lval)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Pattern`](#pattern), [`PatternLike`](#patternlike), [`LVal`](#lval)
 
 ---
 
@@ -103,7 +105,7 @@ AST Node `ArrowFunctionExpression` shape:
 - `returnType`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`Scopable`](#scopable), [`Function`](#function), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Expression`](#expression), [`Pureish`](#pureish)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Scopable`](#scopable), [`Function`](#function), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Expression`](#expression), [`Pureish`](#pureish)
 
 ---
 
@@ -120,7 +122,7 @@ AST Node `AssignmentExpression` shape:
 - `left`: `LVal` (required)
 - `right`: `Expression` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -138,7 +140,7 @@ AST Node `AssignmentPattern` shape:
 - `decorators`: `Array<Decorator>` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`Pattern`](#pattern), [`PatternLike`](#patternlike), [`LVal`](#lval)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Pattern`](#pattern), [`PatternLike`](#patternlike), [`LVal`](#lval)
 
 ---
 
@@ -153,7 +155,7 @@ See also `t.isAwaitExpression(node, opts)` and `t.assertAwaitExpression(node, op
 AST Node `AwaitExpression` shape:
 - `argument`: `Expression` (required)
 
-Aliases: [`Expression`](#expression), [`Terminatorless`](#terminatorless)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`Terminatorless`](#terminatorless)
 
 ---
 
@@ -168,7 +170,7 @@ See also `t.isBigIntLiteral(node, opts)` and `t.assertBigIntLiteral(node, opts)`
 AST Node `BigIntLiteral` shape:
 - `value`: `string` (required)
 
-Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
 ---
 
@@ -185,7 +187,7 @@ AST Node `BinaryExpression` shape:
 - `left`: `Expression | PrivateName` (required)
 - `right`: `Expression` (required)
 
-Aliases: [`Binary`](#binary), [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Binary`](#binary), [`Expression`](#expression)
 
 ---
 
@@ -201,7 +203,7 @@ AST Node `BindExpression` shape:
 - `object`: `Expression` (required)
 - `callee`: `Expression` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -217,7 +219,7 @@ AST Node `BlockStatement` shape:
 - `body`: `Array<Statement>` (required)
 - `directives`: `Array<Directive>` (default: `[]`)
 
-Aliases: [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`Block`](#block), [`Statement`](#statement)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`Block`](#block), [`Statement`](#statement)
 
 ---
 
@@ -232,7 +234,7 @@ See also `t.isBooleanLiteral(node, opts)` and `t.assertBooleanLiteral(node, opts
 AST Node `BooleanLiteral` shape:
 - `value`: `boolean` (required)
 
-Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
 ---
 
@@ -274,7 +276,7 @@ See also `t.isBreakStatement(node, opts)` and `t.assertBreakStatement(node, opts
 AST Node `BreakStatement` shape:
 - `label`: `Identifier` (default: `null`)
 
-Aliases: [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
 
 ---
 
@@ -293,7 +295,7 @@ AST Node `CallExpression` shape:
 - `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -309,7 +311,7 @@ AST Node `CatchClause` shape:
 - `param`: `Identifier | ArrayPattern | ObjectPattern` (default: `null`)
 - `body`: `BlockStatement` (required)
 
-Aliases: [`Scopable`](#scopable), [`BlockParent`](#blockparent)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Scopable`](#scopable), [`BlockParent`](#blockparent)
 
 ---
 
@@ -323,6 +325,8 @@ See also `t.isClassBody(node, opts)` and `t.assertClassBody(node, opts)`.
 
 AST Node `ClassBody` shape:
 - `body`: `Array<ClassMethod | ClassPrivateMethod | ClassProperty | ClassPrivateProperty | TSDeclareMethod | TSIndexSignature>` (required)
+
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal)
 
 ---
 
@@ -346,7 +350,7 @@ AST Node `ClassDeclaration` shape:
 - `superTypeParameters`: `TypeParameterInstantiation | TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`Scopable`](#scopable), [`Class`](#class), [`Statement`](#statement), [`Declaration`](#declaration)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Scopable`](#scopable), [`Class`](#class), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -368,7 +372,7 @@ AST Node `ClassExpression` shape:
 - `superTypeParameters`: `TypeParameterInstantiation | TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`Scopable`](#scopable), [`Class`](#class), [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Scopable`](#scopable), [`Class`](#class), [`Expression`](#expression)
 
 ---
 
@@ -414,7 +418,7 @@ AST Node `ClassMethod` shape:
 - `returnType`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`Function`](#function), [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Method`](#method)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Function`](#function), [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Method`](#method)
 
 ---
 
@@ -444,7 +448,7 @@ AST Node `ClassPrivateMethod` shape:
 - `returnType`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`Function`](#function), [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Method`](#method), [`Private`](#private)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Function`](#function), [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Method`](#method), [`Private`](#private)
 
 ---
 
@@ -466,7 +470,7 @@ AST Node `ClassPrivateProperty` shape:
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `variance`: `Variance` (default: `null`, excluded from builder function)
 
-Aliases: [`Property`](#property), [`Private`](#private)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Property`](#property), [`Private`](#private)
 
 ---
 
@@ -501,7 +505,7 @@ AST Node `ClassProperty` shape:
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 - `variance`: `Variance` (default: `null`, excluded from builder function)
 
-Aliases: [`Property`](#property)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Property`](#property)
 
 ---
 
@@ -518,7 +522,7 @@ AST Node `ConditionalExpression` shape:
 - `consequent`: `Expression` (required)
 - `alternate`: `Expression` (required)
 
-Aliases: [`Expression`](#expression), [`Conditional`](#conditional)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`Conditional`](#conditional)
 
 ---
 
@@ -533,7 +537,7 @@ See also `t.isContinueStatement(node, opts)` and `t.assertContinueStatement(node
 AST Node `ContinueStatement` shape:
 - `label`: `Identifier` (default: `null`)
 
-Aliases: [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
 
 ---
 
@@ -545,7 +549,7 @@ t.debuggerStatement();
 
 See also `t.isDebuggerStatement(node, opts)` and `t.assertDebuggerStatement(node, opts)`.
 
-Aliases: [`Statement`](#statement)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement)
 
 ---
 
@@ -560,7 +564,7 @@ See also `t.isDecimalLiteral(node, opts)` and `t.assertDecimalLiteral(node, opts
 AST Node `DecimalLiteral` shape:
 - `value`: `string` (required)
 
-Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
+Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
 ---
 
@@ -762,6 +766,8 @@ See also `t.isDecorator(node, opts)` and `t.assertDecorator(node, opts)`.
 AST Node `Decorator` shape:
 - `expression`: `Expression` (required)
 
+Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal)
+
 ---
 
 #### directive
@@ -775,6 +781,8 @@ See also `t.isDirective(node, opts)` and `t.assertDirective(node, opts)`.
 AST Node `Directive` shape:
 - `value`: `DirectiveLiteral` (required)
 
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal)
+
 ---
 
 #### directiveLiteral
@@ -787,6 +795,8 @@ See also `t.isDirectiveLiteral(node, opts)` and `t.assertDirectiveLiteral(node, 
 
 AST Node `DirectiveLiteral` shape:
 - `value`: `string` (required)
+
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal)
 
 ---
 
@@ -802,7 +812,7 @@ AST Node `DoExpression` shape:
 - `body`: `BlockStatement` (required)
 - `async`: `boolean` (default: `false`)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -818,7 +828,7 @@ AST Node `DoWhileStatement` shape:
 - `test`: `Expression` (required)
 - `body`: `Statement` (required)
 
-Aliases: [`Statement`](#statement), [`BlockParent`](#blockparent), [`Loop`](#loop), [`While`](#while), [`Scopable`](#scopable)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`BlockParent`](#blockparent), [`Loop`](#loop), [`While`](#while), [`Scopable`](#scopable)
 
 ---
 
@@ -830,7 +840,7 @@ t.emptyStatement();
 
 See also `t.isEmptyStatement(node, opts)` and `t.assertEmptyStatement(node, opts)`.
 
-Aliases: [`Statement`](#statement)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement)
 
 ---
 
@@ -859,7 +869,7 @@ AST Node `EnumBooleanBody` shape:
 - `explicitType`: `boolean` (required)
 - `hasUnknownMembers`: `boolean` (required)
 
-Aliases: [`EnumBody`](#enumbody)
+Aliases: [`Flow`](#flow), [`EnumBody`](#enumbody)
 
 ---
 
@@ -875,7 +885,7 @@ AST Node `EnumBooleanMember` shape:
 - `id`: `Identifier` (required)
 - `init`: `BooleanLiteral` (required)
 
-Aliases: [`EnumMember`](#enummember)
+Aliases: [`Flow`](#flow), [`EnumMember`](#enummember)
 
 ---
 
@@ -891,7 +901,7 @@ AST Node `EnumDeclaration` shape:
 - `id`: `Identifier` (required)
 - `body`: `EnumBooleanBody | EnumNumberBody | EnumStringBody | EnumSymbolBody` (required)
 
-Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
+Aliases: [`Flow`](#flow), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -906,7 +916,7 @@ See also `t.isEnumDefaultedMember(node, opts)` and `t.assertEnumDefaultedMember(
 AST Node `EnumDefaultedMember` shape:
 - `id`: `Identifier` (required)
 
-Aliases: [`EnumMember`](#enummember)
+Aliases: [`Flow`](#flow), [`EnumMember`](#enummember)
 
 ---
 
@@ -923,7 +933,7 @@ AST Node `EnumNumberBody` shape:
 - `explicitType`: `boolean` (required)
 - `hasUnknownMembers`: `boolean` (required)
 
-Aliases: [`EnumBody`](#enumbody)
+Aliases: [`Flow`](#flow), [`EnumBody`](#enumbody)
 
 ---
 
@@ -939,7 +949,7 @@ AST Node `EnumNumberMember` shape:
 - `id`: `Identifier` (required)
 - `init`: `NumericLiteral` (required)
 
-Aliases: [`EnumMember`](#enummember)
+Aliases: [`Flow`](#flow), [`EnumMember`](#enummember)
 
 ---
 
@@ -956,7 +966,7 @@ AST Node `EnumStringBody` shape:
 - `explicitType`: `boolean` (required)
 - `hasUnknownMembers`: `boolean` (required)
 
-Aliases: [`EnumBody`](#enumbody)
+Aliases: [`Flow`](#flow), [`EnumBody`](#enumbody)
 
 ---
 
@@ -972,7 +982,7 @@ AST Node `EnumStringMember` shape:
 - `id`: `Identifier` (required)
 - `init`: `StringLiteral` (required)
 
-Aliases: [`EnumMember`](#enummember)
+Aliases: [`Flow`](#flow), [`EnumMember`](#enummember)
 
 ---
 
@@ -988,7 +998,7 @@ AST Node `EnumSymbolBody` shape:
 - `members`: `Array<EnumDefaultedMember>` (required)
 - `hasUnknownMembers`: `boolean` (required)
 
-Aliases: [`EnumBody`](#enumbody)
+Aliases: [`Flow`](#flow), [`EnumBody`](#enumbody)
 
 ---
 
@@ -1017,7 +1027,7 @@ AST Node `ExportAllDeclaration` shape:
 - `assertions`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
 - `exportKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 
-Aliases: [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration), [`ExportDeclaration`](#exportdeclaration)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration), [`ExportDeclaration`](#exportdeclaration)
 
 ---
 
@@ -1033,7 +1043,7 @@ AST Node `ExportDefaultDeclaration` shape:
 - `declaration`: `FunctionDeclaration | TSDeclareFunction | ClassDeclaration | Expression` (required)
 - `exportKind`: `"value"` (default: `null`, excluded from builder function)
 
-Aliases: [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration), [`ExportDeclaration`](#exportdeclaration)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration), [`ExportDeclaration`](#exportdeclaration)
 
 ---
 
@@ -1048,7 +1058,7 @@ See also `t.isExportDefaultSpecifier(node, opts)` and `t.assertExportDefaultSpec
 AST Node `ExportDefaultSpecifier` shape:
 - `exported`: `Identifier` (required)
 
-Aliases: [`ModuleSpecifier`](#modulespecifier)
+Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal), [`ModuleSpecifier`](#modulespecifier)
 
 ---
 
@@ -1067,7 +1077,7 @@ AST Node `ExportNamedDeclaration` shape:
 - `assertions`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
 - `exportKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 
-Aliases: [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration), [`ExportDeclaration`](#exportdeclaration)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration), [`ExportDeclaration`](#exportdeclaration)
 
 ---
 
@@ -1082,7 +1092,7 @@ See also `t.isExportNamespaceSpecifier(node, opts)` and `t.assertExportNamespace
 AST Node `ExportNamespaceSpecifier` shape:
 - `exported`: `Identifier` (required)
 
-Aliases: [`ModuleSpecifier`](#modulespecifier)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`ModuleSpecifier`](#modulespecifier)
 
 ---
 
@@ -1098,7 +1108,7 @@ AST Node `ExportSpecifier` shape:
 - `local`: `Identifier` (required)
 - `exported`: `Identifier | StringLiteral` (required)
 
-Aliases: [`ModuleSpecifier`](#modulespecifier)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`ModuleSpecifier`](#modulespecifier)
 
 ---
 
@@ -1113,7 +1123,7 @@ See also `t.isExpressionStatement(node, opts)` and `t.assertExpressionStatement(
 AST Node `ExpressionStatement` shape:
 - `expression`: `Expression` (required)
 
-Aliases: [`Statement`](#statement), [`ExpressionWrapper`](#expressionwrapper)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`ExpressionWrapper`](#expressionwrapper)
 
 ---
 
@@ -1130,6 +1140,8 @@ AST Node `File` shape:
 - `comments`: `Array<CommentBlock | CommentLine>` (default: `null`)
 - `tokens`: `Array<any>` (default: `null`)
 
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal)
+
 ---
 
 #### forInStatement
@@ -1145,7 +1157,7 @@ AST Node `ForInStatement` shape:
 - `right`: `Expression` (required)
 - `body`: `Statement` (required)
 
-Aliases: [`Scopable`](#scopable), [`Statement`](#statement), [`For`](#for), [`BlockParent`](#blockparent), [`Loop`](#loop), [`ForXStatement`](#forxstatement)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Scopable`](#scopable), [`Statement`](#statement), [`For`](#for), [`BlockParent`](#blockparent), [`Loop`](#loop), [`ForXStatement`](#forxstatement)
 
 ---
 
@@ -1163,7 +1175,7 @@ AST Node `ForOfStatement` shape:
 - `body`: `Statement` (required)
 - `await`: `boolean` (default: `false`)
 
-Aliases: [`Scopable`](#scopable), [`Statement`](#statement), [`For`](#for), [`BlockParent`](#blockparent), [`Loop`](#loop), [`ForXStatement`](#forxstatement)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Scopable`](#scopable), [`Statement`](#statement), [`For`](#for), [`BlockParent`](#blockparent), [`Loop`](#loop), [`ForXStatement`](#forxstatement)
 
 ---
 
@@ -1181,7 +1193,7 @@ AST Node `ForStatement` shape:
 - `update`: `Expression` (default: `null`)
 - `body`: `Statement` (required)
 
-Aliases: [`Scopable`](#scopable), [`Statement`](#statement), [`For`](#for), [`BlockParent`](#blockparent), [`Loop`](#loop)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Scopable`](#scopable), [`Statement`](#statement), [`For`](#for), [`BlockParent`](#blockparent), [`Loop`](#loop)
 
 ---
 
@@ -1203,7 +1215,7 @@ AST Node `FunctionDeclaration` shape:
 - `returnType`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`Scopable`](#scopable), [`Function`](#function), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Statement`](#statement), [`Pureish`](#pureish), [`Declaration`](#declaration)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Scopable`](#scopable), [`Function`](#function), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Statement`](#statement), [`Pureish`](#pureish), [`Declaration`](#declaration)
 
 ---
 
@@ -1224,7 +1236,7 @@ AST Node `FunctionExpression` shape:
 - `returnType`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`Scopable`](#scopable), [`Function`](#function), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Expression`](#expression), [`Pureish`](#pureish)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Scopable`](#scopable), [`Function`](#function), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Expression`](#expression), [`Pureish`](#pureish)
 
 ---
 
@@ -1294,7 +1306,7 @@ AST Node `Identifier` shape:
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`Expression`](#expression), [`PatternLike`](#patternlike), [`LVal`](#lval), [`TSEntityName`](#tsentityname)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`PatternLike`](#patternlike), [`LVal`](#lval), [`TSEntityName`](#tsentityname)
 
 ---
 
@@ -1311,7 +1323,7 @@ AST Node `IfStatement` shape:
 - `consequent`: `Statement` (required)
 - `alternate`: `Statement` (default: `null`)
 
-Aliases: [`Statement`](#statement), [`Conditional`](#conditional)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`Conditional`](#conditional)
 
 ---
 
@@ -1323,7 +1335,7 @@ t.import();
 
 See also `t.isImport(node, opts)` and `t.assertImport(node, opts)`.
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -1338,6 +1350,8 @@ See also `t.isImportAttribute(node, opts)` and `t.assertImportAttribute(node, op
 AST Node `ImportAttribute` shape:
 - `key`: `Identifier | StringLiteral` (required)
 - `value`: `StringLiteral` (required)
+
+Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal)
 
 ---
 
@@ -1355,7 +1369,7 @@ AST Node `ImportDeclaration` shape:
 - `assertions`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
 - `importKind`: `"type" | "typeof" | "value"` (default: `null`, excluded from builder function)
 
-Aliases: [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration)
 
 ---
 
@@ -1370,7 +1384,7 @@ See also `t.isImportDefaultSpecifier(node, opts)` and `t.assertImportDefaultSpec
 AST Node `ImportDefaultSpecifier` shape:
 - `local`: `Identifier` (required)
 
-Aliases: [`ModuleSpecifier`](#modulespecifier)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`ModuleSpecifier`](#modulespecifier)
 
 ---
 
@@ -1385,7 +1399,7 @@ See also `t.isImportNamespaceSpecifier(node, opts)` and `t.assertImportNamespace
 AST Node `ImportNamespaceSpecifier` shape:
 - `local`: `Identifier` (required)
 
-Aliases: [`ModuleSpecifier`](#modulespecifier)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`ModuleSpecifier`](#modulespecifier)
 
 ---
 
@@ -1402,7 +1416,23 @@ AST Node `ImportSpecifier` shape:
 - `imported`: `Identifier | StringLiteral` (required)
 - `importKind`: `"type" | "typeof"` (default: `null`, excluded from builder function)
 
-Aliases: [`ModuleSpecifier`](#modulespecifier)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`ModuleSpecifier`](#modulespecifier)
+
+---
+
+#### indexedAccessType
+
+```javascript
+t.indexedAccessType(objectType, indexType);
+```
+
+See also `t.isIndexedAccessType(node, opts)` and `t.assertIndexedAccessType(node, opts)`.
+
+AST Node `IndexedAccessType` shape:
+- `objectType`: `FlowType` (required)
+- `indexType`: `FlowType` (required)
+
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -1496,6 +1526,8 @@ See also `t.isInterpreterDirective(node, opts)` and `t.assertInterpreterDirectiv
 
 AST Node `InterpreterDirective` shape:
 - `value`: `string` (required)
+
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal)
 
 ---
 
@@ -1753,7 +1785,7 @@ AST Node `LabeledStatement` shape:
 - `label`: `Identifier` (required)
 - `body`: `Statement` (required)
 
-Aliases: [`Statement`](#statement)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement)
 
 ---
 
@@ -1770,7 +1802,7 @@ AST Node `LogicalExpression` shape:
 - `left`: `Expression` (required)
 - `right`: `Expression` (required)
 
-Aliases: [`Binary`](#binary), [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Binary`](#binary), [`Expression`](#expression)
 
 ---
 
@@ -1788,7 +1820,7 @@ AST Node `MemberExpression` shape:
 - `computed`: `boolean` (default: `false`)
 - `optional`: `true | false` (default: `null`)
 
-Aliases: [`Expression`](#expression), [`LVal`](#lval)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`LVal`](#lval)
 
 ---
 
@@ -1804,7 +1836,7 @@ AST Node `MetaProperty` shape:
 - `meta`: `Identifier` (required)
 - `property`: `Identifier` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -1831,7 +1863,7 @@ See also `t.isModuleExpression(node, opts)` and `t.assertModuleExpression(node, 
 AST Node `ModuleExpression` shape:
 - `body`: `Program` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -1850,7 +1882,7 @@ AST Node `NewExpression` shape:
 - `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal)
 
 ---
 
@@ -1862,6 +1894,8 @@ t.noop();
 
 See also `t.isNoop(node, opts)` and `t.assertNoop(node, opts)`.
 
+Aliases: [`Miscellaneous`](#miscellaneous)
+
 ---
 
 #### nullLiteral
@@ -1872,7 +1906,7 @@ t.nullLiteral();
 
 See also `t.isNullLiteral(node, opts)` and `t.assertNullLiteral(node, opts)`.
 
-Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
 ---
 
@@ -1941,7 +1975,7 @@ See also `t.isNumericLiteral(node, opts)` and `t.assertNumericLiteral(node, opts
 AST Node `NumericLiteral` shape:
 - `value`: `number` (required)
 
-Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
 ---
 
@@ -1956,7 +1990,7 @@ See also `t.isObjectExpression(node, opts)` and `t.assertObjectExpression(node, 
 AST Node `ObjectExpression` shape:
 - `properties`: `Array<ObjectMethod | ObjectProperty | SpreadElement>` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -1980,7 +2014,7 @@ AST Node `ObjectMethod` shape:
 - `returnType`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `typeParameters`: `TypeParameterDeclaration | TSTypeParameterDeclaration | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`UserWhitespacable`](#userwhitespacable), [`Function`](#function), [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Method`](#method), [`ObjectMember`](#objectmember)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`UserWhitespacable`](#userwhitespacable), [`Function`](#function), [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`FunctionParent`](#functionparent), [`Method`](#method), [`ObjectMember`](#objectmember)
 
 ---
 
@@ -1997,7 +2031,7 @@ AST Node `ObjectPattern` shape:
 - `decorators`: `Array<Decorator>` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`Pattern`](#pattern), [`PatternLike`](#patternlike), [`LVal`](#lval)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Pattern`](#pattern), [`PatternLike`](#patternlike), [`LVal`](#lval)
 
 ---
 
@@ -2016,7 +2050,7 @@ AST Node `ObjectProperty` shape:
 - `shorthand`: `boolean` (default: `false`)
 - `decorators`: `Array<Decorator>` (default: `null`)
 
-Aliases: [`UserWhitespacable`](#userwhitespacable), [`Property`](#property), [`ObjectMember`](#objectmember)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`UserWhitespacable`](#userwhitespacable), [`Property`](#property), [`ObjectMember`](#objectmember)
 
 ---
 
@@ -2164,7 +2198,24 @@ AST Node `OptionalCallExpression` shape:
 - `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
+
+---
+
+#### optionalIndexedAccessType
+
+```javascript
+t.optionalIndexedAccessType(objectType, indexType);
+```
+
+See also `t.isOptionalIndexedAccessType(node, opts)` and `t.assertOptionalIndexedAccessType(node, opts)`.
+
+AST Node `OptionalIndexedAccessType` shape:
+- `objectType`: `FlowType` (required)
+- `indexType`: `FlowType` (required)
+- `optional`: `boolean` (required)
+
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -2199,7 +2250,7 @@ AST Node `OptionalMemberExpression` shape:
 - `computed`: `boolean` (default: `false`)
 - `optional`: `boolean` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -2214,7 +2265,7 @@ See also `t.isParenthesizedExpression(node, opts)` and `t.assertParenthesizedExp
 AST Node `ParenthesizedExpression` shape:
 - `expression`: `Expression` (required)
 
-Aliases: [`Expression`](#expression), [`ExpressionWrapper`](#expressionwrapper)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`ExpressionWrapper`](#expressionwrapper)
 
 ---
 
@@ -2229,7 +2280,7 @@ See also `t.isPipelineBareFunction(node, opts)` and `t.assertPipelineBareFunctio
 AST Node `PipelineBareFunction` shape:
 - `callee`: `Expression` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Expression`](#expression), [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal)
 
 ---
 
@@ -2241,7 +2292,7 @@ t.pipelinePrimaryTopicReference();
 
 See also `t.isPipelinePrimaryTopicReference(node, opts)` and `t.assertPipelinePrimaryTopicReference(node, opts)`.
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -2256,7 +2307,7 @@ See also `t.isPipelineTopicExpression(node, opts)` and `t.assertPipelineTopicExp
 AST Node `PipelineTopicExpression` shape:
 - `expression`: `Expression` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Expression`](#expression), [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal)
 
 ---
 
@@ -2272,6 +2323,8 @@ AST Node `Placeholder` shape:
 - `expectedNode`: `"Identifier" | "StringLiteral" | "Expression" | "Statement" | "Declaration" | "BlockStatement" | "ClassBody" | "Pattern"` (required)
 - `name`: `Identifier` (required)
 
+Aliases: [`Miscellaneous`](#miscellaneous)
+
 ---
 
 #### privateName
@@ -2285,7 +2338,7 @@ See also `t.isPrivateName(node, opts)` and `t.assertPrivateName(node, opts)`.
 AST Node `PrivateName` shape:
 - `id`: `Identifier` (required)
 
-Aliases: [`Private`](#private)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Private`](#private)
 
 ---
 
@@ -2304,7 +2357,7 @@ AST Node `Program` shape:
 - `interpreter`: `InterpreterDirective` (default: `null`)
 - `sourceFile`: `string` (required)
 
-Aliases: [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`Block`](#block)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`Block`](#block)
 
 ---
 
@@ -2335,7 +2388,7 @@ See also `t.isRecordExpression(node, opts)` and `t.assertRecordExpression(node, 
 AST Node `RecordExpression` shape:
 - `properties`: `Array<ObjectProperty | SpreadElement>` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -2351,7 +2404,7 @@ AST Node `RegExpLiteral` shape:
 - `pattern`: `string` (required)
 - `flags`: `string` (default: `''`)
 
-Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal)
 
 ---
 
@@ -2369,7 +2422,7 @@ AST Node `RestElement` shape:
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`LVal`](#lval), [`PatternLike`](#patternlike)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`LVal`](#lval), [`PatternLike`](#patternlike)
 
 ---
 
@@ -2384,7 +2437,7 @@ See also `t.isReturnStatement(node, opts)` and `t.assertReturnStatement(node, op
 AST Node `ReturnStatement` shape:
 - `argument`: `Expression` (default: `null`)
 
-Aliases: [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
 
 ---
 
@@ -2399,7 +2452,7 @@ See also `t.isSequenceExpression(node, opts)` and `t.assertSequenceExpression(no
 AST Node `SequenceExpression` shape:
 - `expressions`: `Array<Expression>` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -2414,7 +2467,7 @@ See also `t.isSpreadElement(node, opts)` and `t.assertSpreadElement(node, opts)`
 AST Node `SpreadElement` shape:
 - `argument`: `Expression` (required)
 
-Aliases: [`UnaryLike`](#unarylike)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`UnaryLike`](#unarylike)
 
 ---
 
@@ -2429,7 +2482,7 @@ See also `t.isStaticBlock(node, opts)` and `t.assertStaticBlock(node, opts)`.
 AST Node `StaticBlock` shape:
 - `body`: `Array<Statement>` (required)
 
-Aliases: [`Scopable`](#scopable), [`BlockParent`](#blockparent)
+Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal), [`Scopable`](#scopable), [`BlockParent`](#blockparent)
 
 ---
 
@@ -2444,7 +2497,7 @@ See also `t.isStringLiteral(node, opts)` and `t.assertStringLiteral(node, opts)`
 AST Node `StringLiteral` shape:
 - `value`: `string` (required)
 
-Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
 ---
 
@@ -2483,7 +2536,7 @@ t.super();
 
 See also `t.isSuper(node, opts)` and `t.assertSuper(node, opts)`.
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -2499,6 +2552,8 @@ AST Node `SwitchCase` shape:
 - `test`: `Expression` (default: `null`)
 - `consequent`: `Array<Statement>` (required)
 
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal)
+
 ---
 
 #### switchStatement
@@ -2513,7 +2568,7 @@ AST Node `SwitchStatement` shape:
 - `discriminant`: `Expression` (required)
 - `cases`: `Array<SwitchCase>` (required)
 
-Aliases: [`Statement`](#statement), [`BlockParent`](#blockparent), [`Scopable`](#scopable)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`BlockParent`](#blockparent), [`Scopable`](#scopable)
 
 ---
 
@@ -2537,7 +2592,7 @@ t.tsAnyKeyword();
 
 See also `t.isTSAnyKeyword(node, opts)` and `t.assertTSAnyKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -2552,7 +2607,7 @@ See also `t.isTSArrayType(node, opts)` and `t.assertTSArrayType(node, opts)`.
 AST Node `TSArrayType` shape:
 - `elementType`: `TSType` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -2568,7 +2623,7 @@ AST Node `TSAsExpression` shape:
 - `expression`: `Expression` (required)
 - `typeAnnotation`: `TSType` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`TypeScript`](#typescript), [`Expression`](#expression)
 
 ---
 
@@ -2580,7 +2635,7 @@ t.tsBigIntKeyword();
 
 See also `t.isTSBigIntKeyword(node, opts)` and `t.assertTSBigIntKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -2592,7 +2647,7 @@ t.tsBooleanKeyword();
 
 See also `t.isTSBooleanKeyword(node, opts)` and `t.assertTSBooleanKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -2609,7 +2664,7 @@ AST Node `TSCallSignatureDeclaration` shape:
 - `parameters`: `Array<Identifier | RestElement>` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 
-Aliases: [`TSTypeElement`](#tstypeelement)
+Aliases: [`TypeScript`](#typescript), [`TSTypeElement`](#tstypeelement)
 
 ---
 
@@ -2627,7 +2682,7 @@ AST Node `TSConditionalType` shape:
 - `trueType`: `TSType` (required)
 - `falseType`: `TSType` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -2644,7 +2699,7 @@ AST Node `TSConstructSignatureDeclaration` shape:
 - `parameters`: `Array<Identifier | RestElement>` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 
-Aliases: [`TSTypeElement`](#tstypeelement)
+Aliases: [`TypeScript`](#typescript), [`TSTypeElement`](#tstypeelement)
 
 ---
 
@@ -2662,7 +2717,7 @@ AST Node `TSConstructorType` shape:
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 - `abstract`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -2683,7 +2738,7 @@ AST Node `TSDeclareFunction` shape:
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 - `generator`: `boolean` (default: `false`, excluded from builder function)
 
-Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
+Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -2712,6 +2767,8 @@ AST Node `TSDeclareMethod` shape:
 - `override`: `boolean` (default: `false`, excluded from builder function)
 - `static`: `boolean` (default: `false`, excluded from builder function)
 
+Aliases: [`TypeScript`](#typescript)
+
 ---
 
 #### tsEnumDeclaration
@@ -2729,7 +2786,7 @@ AST Node `TSEnumDeclaration` shape:
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 - `initializer`: `Expression` (default: `null`, excluded from builder function)
 
-Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
+Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -2745,6 +2802,8 @@ AST Node `TSEnumMember` shape:
 - `id`: `Identifier | StringLiteral` (required)
 - `initializer`: `Expression` (default: `null`)
 
+Aliases: [`TypeScript`](#typescript)
+
 ---
 
 #### tsExportAssignment
@@ -2758,7 +2817,7 @@ See also `t.isTSExportAssignment(node, opts)` and `t.assertTSExportAssignment(no
 AST Node `TSExportAssignment` shape:
 - `expression`: `Expression` (required)
 
-Aliases: [`Statement`](#statement)
+Aliases: [`TypeScript`](#typescript), [`Statement`](#statement)
 
 ---
 
@@ -2774,7 +2833,7 @@ AST Node `TSExpressionWithTypeArguments` shape:
 - `expression`: `TSEntityName` (required)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -2788,6 +2847,8 @@ See also `t.isTSExternalModuleReference(node, opts)` and `t.assertTSExternalModu
 
 AST Node `TSExternalModuleReference` shape:
 - `expression`: `StringLiteral` (required)
+
+Aliases: [`TypeScript`](#typescript)
 
 ---
 
@@ -2804,7 +2865,7 @@ AST Node `TSFunctionType` shape:
 - `parameters`: `Array<Identifier | RestElement>` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -2822,7 +2883,7 @@ AST Node `TSImportEqualsDeclaration` shape:
 - `importKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 - `isExport`: `boolean` (required)
 
-Aliases: [`Statement`](#statement)
+Aliases: [`TypeScript`](#typescript), [`Statement`](#statement)
 
 ---
 
@@ -2839,7 +2900,7 @@ AST Node `TSImportType` shape:
 - `qualifier`: `TSEntityName` (default: `null`)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -2857,7 +2918,7 @@ AST Node `TSIndexSignature` shape:
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 - `static`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: [`TSTypeElement`](#tstypeelement)
+Aliases: [`TypeScript`](#typescript), [`TSTypeElement`](#tstypeelement)
 
 ---
 
@@ -2873,7 +2934,7 @@ AST Node `TSIndexedAccessType` shape:
 - `objectType`: `TSType` (required)
 - `indexType`: `TSType` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -2888,7 +2949,7 @@ See also `t.isTSInferType(node, opts)` and `t.assertTSInferType(node, opts)`.
 AST Node `TSInferType` shape:
 - `typeParameter`: `TSTypeParameter` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -2902,6 +2963,8 @@ See also `t.isTSInterfaceBody(node, opts)` and `t.assertTSInterfaceBody(node, op
 
 AST Node `TSInterfaceBody` shape:
 - `body`: `Array<TSTypeElement>` (required)
+
+Aliases: [`TypeScript`](#typescript)
 
 ---
 
@@ -2920,7 +2983,7 @@ AST Node `TSInterfaceDeclaration` shape:
 - `body`: `TSInterfaceBody` (required)
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
+Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -2935,7 +2998,7 @@ See also `t.isTSIntersectionType(node, opts)` and `t.assertTSIntersectionType(no
 AST Node `TSIntersectionType` shape:
 - `types`: `Array<TSType>` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -2947,7 +3010,7 @@ t.tsIntrinsicKeyword();
 
 See also `t.isTSIntrinsicKeyword(node, opts)` and `t.assertTSIntrinsicKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -2962,7 +3025,7 @@ See also `t.isTSLiteralType(node, opts)` and `t.assertTSLiteralType(node, opts)`
 AST Node `TSLiteralType` shape:
 - `literal`: `NumericLiteral | StringLiteral | BooleanLiteral | BigIntLiteral | UnaryExpression` (required)
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -2981,7 +3044,7 @@ AST Node `TSMappedType` shape:
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -3002,7 +3065,7 @@ AST Node `TSMethodSignature` shape:
 - `kind`: `"method" | "get" | "set"` (required)
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: [`TSTypeElement`](#tstypeelement)
+Aliases: [`TypeScript`](#typescript), [`TSTypeElement`](#tstypeelement)
 
 ---
 
@@ -3017,7 +3080,7 @@ See also `t.isTSModuleBlock(node, opts)` and `t.assertTSModuleBlock(node, opts)`
 AST Node `TSModuleBlock` shape:
 - `body`: `Array<Statement>` (required)
 
-Aliases: [`Scopable`](#scopable), [`Block`](#block), [`BlockParent`](#blockparent)
+Aliases: [`TypeScript`](#typescript), [`Scopable`](#scopable), [`Block`](#block), [`BlockParent`](#blockparent)
 
 ---
 
@@ -3035,7 +3098,7 @@ AST Node `TSModuleDeclaration` shape:
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 - `global`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
+Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -3052,6 +3115,8 @@ AST Node `TSNamedTupleMember` shape:
 - `elementType`: `TSType` (required)
 - `optional`: `boolean` (default: `false`)
 
+Aliases: [`TypeScript`](#typescript)
+
 ---
 
 #### tsNamespaceExportDeclaration
@@ -3065,7 +3130,7 @@ See also `t.isTSNamespaceExportDeclaration(node, opts)` and `t.assertTSNamespace
 AST Node `TSNamespaceExportDeclaration` shape:
 - `id`: `Identifier` (required)
 
-Aliases: [`Statement`](#statement)
+Aliases: [`TypeScript`](#typescript), [`Statement`](#statement)
 
 ---
 
@@ -3077,7 +3142,7 @@ t.tsNeverKeyword();
 
 See also `t.isTSNeverKeyword(node, opts)` and `t.assertTSNeverKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3092,7 +3157,7 @@ See also `t.isTSNonNullExpression(node, opts)` and `t.assertTSNonNullExpression(
 AST Node `TSNonNullExpression` shape:
 - `expression`: `Expression` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`TypeScript`](#typescript), [`Expression`](#expression)
 
 ---
 
@@ -3104,7 +3169,7 @@ t.tsNullKeyword();
 
 See also `t.isTSNullKeyword(node, opts)` and `t.assertTSNullKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3116,7 +3181,7 @@ t.tsNumberKeyword();
 
 See also `t.isTSNumberKeyword(node, opts)` and `t.assertTSNumberKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3128,7 +3193,7 @@ t.tsObjectKeyword();
 
 See also `t.isTSObjectKeyword(node, opts)` and `t.assertTSObjectKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3143,7 +3208,7 @@ See also `t.isTSOptionalType(node, opts)` and `t.assertTSOptionalType(node, opts
 AST Node `TSOptionalType` shape:
 - `typeAnnotation`: `TSType` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -3162,7 +3227,7 @@ AST Node `TSParameterProperty` shape:
 - `override`: `boolean` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: [`LVal`](#lval)
+Aliases: [`TypeScript`](#typescript), [`LVal`](#lval)
 
 ---
 
@@ -3177,7 +3242,7 @@ See also `t.isTSParenthesizedType(node, opts)` and `t.assertTSParenthesizedType(
 AST Node `TSParenthesizedType` shape:
 - `typeAnnotation`: `TSType` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -3198,7 +3263,7 @@ AST Node `TSPropertySignature` shape:
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: [`TSTypeElement`](#tstypeelement)
+Aliases: [`TypeScript`](#typescript), [`TSTypeElement`](#tstypeelement)
 
 ---
 
@@ -3214,7 +3279,7 @@ AST Node `TSQualifiedName` shape:
 - `left`: `TSEntityName` (required)
 - `right`: `Identifier` (required)
 
-Aliases: [`TSEntityName`](#tsentityname)
+Aliases: [`TypeScript`](#typescript), [`TSEntityName`](#tsentityname)
 
 ---
 
@@ -3229,7 +3294,7 @@ See also `t.isTSRestType(node, opts)` and `t.assertTSRestType(node, opts)`.
 AST Node `TSRestType` shape:
 - `typeAnnotation`: `TSType` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -3241,7 +3306,7 @@ t.tsStringKeyword();
 
 See also `t.isTSStringKeyword(node, opts)` and `t.assertTSStringKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3253,7 +3318,7 @@ t.tsSymbolKeyword();
 
 See also `t.isTSSymbolKeyword(node, opts)` and `t.assertTSSymbolKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3265,7 +3330,7 @@ t.tsThisType();
 
 See also `t.isTSThisType(node, opts)` and `t.assertTSThisType(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3280,7 +3345,7 @@ See also `t.isTSTupleType(node, opts)` and `t.assertTSTupleType(node, opts)`.
 AST Node `TSTupleType` shape:
 - `elementTypes`: `Array<TSType | TSNamedTupleMember>` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -3298,7 +3363,7 @@ AST Node `TSTypeAliasDeclaration` shape:
 - `typeAnnotation`: `TSType` (required)
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
+Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -3312,6 +3377,8 @@ See also `t.isTSTypeAnnotation(node, opts)` and `t.assertTSTypeAnnotation(node, 
 
 AST Node `TSTypeAnnotation` shape:
 - `typeAnnotation`: `TSType` (required)
+
+Aliases: [`TypeScript`](#typescript)
 
 ---
 
@@ -3327,7 +3394,7 @@ AST Node `TSTypeAssertion` shape:
 - `typeAnnotation`: `TSType` (required)
 - `expression`: `Expression` (required)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`TypeScript`](#typescript), [`Expression`](#expression)
 
 ---
 
@@ -3342,7 +3409,7 @@ See also `t.isTSTypeLiteral(node, opts)` and `t.assertTSTypeLiteral(node, opts)`
 AST Node `TSTypeLiteral` shape:
 - `members`: `Array<TSTypeElement>` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -3358,7 +3425,7 @@ AST Node `TSTypeOperator` shape:
 - `typeAnnotation`: `TSType` (required)
 - `operator`: `string` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -3375,6 +3442,8 @@ AST Node `TSTypeParameter` shape:
 - `default`: `TSType` (default: `null`)
 - `name`: `string` (required)
 
+Aliases: [`TypeScript`](#typescript)
+
 ---
 
 #### tsTypeParameterDeclaration
@@ -3388,6 +3457,8 @@ See also `t.isTSTypeParameterDeclaration(node, opts)` and `t.assertTSTypeParamet
 AST Node `TSTypeParameterDeclaration` shape:
 - `params`: `Array<TSTypeParameter>` (required)
 
+Aliases: [`TypeScript`](#typescript)
+
 ---
 
 #### tsTypeParameterInstantiation
@@ -3400,6 +3471,8 @@ See also `t.isTSTypeParameterInstantiation(node, opts)` and `t.assertTSTypeParam
 
 AST Node `TSTypeParameterInstantiation` shape:
 - `params`: `Array<TSType>` (required)
+
+Aliases: [`TypeScript`](#typescript)
 
 ---
 
@@ -3416,7 +3489,7 @@ AST Node `TSTypePredicate` shape:
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 - `asserts`: `boolean` (default: `null`)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -3431,7 +3504,7 @@ See also `t.isTSTypeQuery(node, opts)` and `t.assertTSTypeQuery(node, opts)`.
 AST Node `TSTypeQuery` shape:
 - `exprName`: `TSEntityName | TSImportType` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -3447,7 +3520,7 @@ AST Node `TSTypeReference` shape:
 - `typeName`: `TSEntityName` (required)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -3459,7 +3532,7 @@ t.tsUndefinedKeyword();
 
 See also `t.isTSUndefinedKeyword(node, opts)` and `t.assertTSUndefinedKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3474,7 +3547,7 @@ See also `t.isTSUnionType(node, opts)` and `t.assertTSUnionType(node, opts)`.
 AST Node `TSUnionType` shape:
 - `types`: `Array<TSType>` (required)
 
-Aliases: [`TSType`](#tstype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 ---
 
@@ -3486,7 +3559,7 @@ t.tsUnknownKeyword();
 
 See also `t.isTSUnknownKeyword(node, opts)` and `t.assertTSUnknownKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3498,7 +3571,7 @@ t.tsVoidKeyword();
 
 See also `t.isTSVoidKeyword(node, opts)` and `t.assertTSVoidKeyword(node, opts)`.
 
-Aliases: [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
 ---
 
@@ -3515,7 +3588,7 @@ AST Node `TaggedTemplateExpression` shape:
 - `quasi`: `TemplateLiteral` (required)
 - `typeParameters`: `TypeParameterInstantiation | TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -3531,6 +3604,8 @@ AST Node `TemplateElement` shape:
 - `value`: `{ raw: string, cooked?: string }` (required)
 - `tail`: `boolean` (default: `false`)
 
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal)
+
 ---
 
 #### templateLiteral
@@ -3545,7 +3620,7 @@ AST Node `TemplateLiteral` shape:
 - `quasis`: `Array<TemplateElement>` (required)
 - `expressions`: `Array<Expression | TSType>` (required)
 
-Aliases: [`Expression`](#expression), [`Literal`](#literal)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`Literal`](#literal)
 
 ---
 
@@ -3557,7 +3632,7 @@ t.thisExpression();
 
 See also `t.isThisExpression(node, opts)` and `t.assertThisExpression(node, opts)`.
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -3584,7 +3659,7 @@ See also `t.isThrowStatement(node, opts)` and `t.assertThrowStatement(node, opts
 AST Node `ThrowStatement` shape:
 - `argument`: `Expression` (required)
 
-Aliases: [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
 
 ---
 
@@ -3613,7 +3688,7 @@ AST Node `TryStatement` shape:
 - `handler`: `CatchClause` (default: `null`)
 - `finalizer`: `BlockStatement` (default: `null`)
 
-Aliases: [`Statement`](#statement)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement)
 
 ---
 
@@ -3628,7 +3703,7 @@ See also `t.isTupleExpression(node, opts)` and `t.assertTupleExpression(node, op
 AST Node `TupleExpression` shape:
 - `elements`: `Array<Expression | SpreadElement>` (default: `[]`)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -3771,7 +3846,7 @@ AST Node `UnaryExpression` shape:
 - `argument`: `Expression` (required)
 - `prefix`: `boolean` (default: `true`)
 
-Aliases: [`UnaryLike`](#unarylike), [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`UnaryLike`](#unarylike), [`Expression`](#expression)
 
 ---
 
@@ -3803,7 +3878,7 @@ AST Node `UpdateExpression` shape:
 - `argument`: `Expression` (required)
 - `prefix`: `boolean` (default: `false`)
 
-Aliases: [`Expression`](#expression)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression)
 
 ---
 
@@ -3817,6 +3892,8 @@ See also `t.isV8IntrinsicIdentifier(node, opts)` and `t.assertV8IntrinsicIdentif
 
 AST Node `V8IntrinsicIdentifier` shape:
 - `name`: `string` (required)
+
+Aliases: [`Miscellaneous`](#miscellaneous)
 
 ---
 
@@ -3833,7 +3910,7 @@ AST Node `VariableDeclaration` shape:
 - `declarations`: `Array<VariableDeclarator>` (required)
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 
-Aliases: [`Statement`](#statement), [`Declaration`](#declaration)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -3849,6 +3926,8 @@ AST Node `VariableDeclarator` shape:
 - `id`: `LVal` (required)
 - `init`: `Expression` (default: `null`)
 - `definite`: `boolean` (default: `null`, excluded from builder function)
+
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal)
 
 ---
 
@@ -3891,7 +3970,7 @@ AST Node `WhileStatement` shape:
 - `test`: `Expression` (required)
 - `body`: `Statement` (required)
 
-Aliases: [`Statement`](#statement), [`BlockParent`](#blockparent), [`Loop`](#loop), [`While`](#while), [`Scopable`](#scopable)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`BlockParent`](#blockparent), [`Loop`](#loop), [`While`](#while), [`Scopable`](#scopable)
 
 ---
 
@@ -3907,7 +3986,7 @@ AST Node `WithStatement` shape:
 - `object`: `Expression` (required)
 - `body`: `Statement` (required)
 
-Aliases: [`Statement`](#statement)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement)
 
 ---
 
@@ -3923,7 +4002,7 @@ AST Node `YieldExpression` shape:
 - `argument`: `Expression` (default: `null`)
 - `delegate`: `boolean` (default: `false`)
 
-Aliases: [`Expression`](#expression), [`Terminatorless`](#terminatorless)
+Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Expression`](#expression), [`Terminatorless`](#terminatorless)
 
 ---
 
@@ -4116,7 +4195,6 @@ Covered nodes:
 - [`MemberExpression`](#memberexpression)
 - [`MetaProperty`](#metaproperty)
 - [`ModuleExpression`](#moduleexpression)
-- [`NewExpression`](#newexpression)
 - [`NullLiteral`](#nullliteral)
 - [`NumericLiteral`](#numericliteral)
 - [`ObjectExpression`](#objectexpression)
@@ -4181,6 +4259,15 @@ Covered nodes:
 - [`DeclareVariable`](#declarevariable)
 - [`DeclaredPredicate`](#declaredpredicate)
 - [`EmptyTypeAnnotation`](#emptytypeannotation)
+- [`EnumBooleanBody`](#enumbooleanbody)
+- [`EnumBooleanMember`](#enumbooleanmember)
+- [`EnumDeclaration`](#enumdeclaration)
+- [`EnumDefaultedMember`](#enumdefaultedmember)
+- [`EnumNumberBody`](#enumnumberbody)
+- [`EnumNumberMember`](#enumnumbermember)
+- [`EnumStringBody`](#enumstringbody)
+- [`EnumStringMember`](#enumstringmember)
+- [`EnumSymbolBody`](#enumsymbolbody)
 - [`ExistsTypeAnnotation`](#existstypeannotation)
 - [`FunctionTypeAnnotation`](#functiontypeannotation)
 - [`FunctionTypeParam`](#functiontypeparam)
@@ -4469,6 +4556,18 @@ Covered nodes:
 - [`ClassPrivateMethod`](#classprivatemethod)
 - [`ObjectMethod`](#objectmethod)
 
+#### Miscellaneous
+
+A cover of non-standard AST types that are sometimes useful for development.
+```javascript
+t.isMiscellaneous(node);
+```
+
+Covered nodes: 
+- [`Noop`](#noop)
+- [`Placeholder`](#placeholder)
+- [`V8IntrinsicIdentifier`](#v8intrinsicidentifier)
+
 #### ModuleDeclaration
 
 A cover of ImportDeclaration and [ExportDeclaration](#exportdeclaration)
@@ -4558,6 +4657,29 @@ Covered nodes:
 - [`ClassProperty`](#classproperty)
 - [`ObjectProperty`](#objectproperty)
 
+#### Proposal
+
+A cover of AST nodes which are proprosed for inclusion in ECMAScript.
+```javascript
+t.isProposal(node);
+```
+
+Covered nodes: 
+- [`ArgumentPlaceholder`](#argumentplaceholder)
+- [`BindExpression`](#bindexpression)
+- [`DecimalLiteral`](#decimalliteral)
+- [`Decorator`](#decorator)
+- [`DoExpression`](#doexpression)
+- [`ExportDefaultSpecifier`](#exportdefaultspecifier)
+- [`ImportAttribute`](#importattribute)
+- [`ModuleExpression`](#moduleexpression)
+- [`PipelineBareFunction`](#pipelinebarefunction)
+- [`PipelinePrimaryTopicReference`](#pipelineprimarytopicreference)
+- [`PipelineTopicExpression`](#pipelinetopicexpression)
+- [`RecordExpression`](#recordexpression)
+- [`StaticBlock`](#staticblock)
+- [`TupleExpression`](#tupleexpression)
+
 #### Pureish
 
 A cover of AST nodes which do not have side-effects. In other words, there is no observable behaviour changes if they are evaluated more than once.
@@ -4604,6 +4726,208 @@ Covered nodes:
 - [`SwitchStatement`](#switchstatement)
 - [`TSModuleBlock`](#tsmoduleblock)
 - [`WhileStatement`](#whilestatement)
+
+#### Standardized
+
+A cover of AST nodes which are part of an official ECMAScript specification.
+```javascript
+t.isStandardized(node);
+```
+
+Covered nodes: 
+- [`ArrayExpression`](#arrayexpression)
+- [`ArrayPattern`](#arraypattern)
+- [`ArrowFunctionExpression`](#arrowfunctionexpression)
+- [`AssignmentExpression`](#assignmentexpression)
+- [`AssignmentPattern`](#assignmentpattern)
+- [`AwaitExpression`](#awaitexpression)
+- [`BigIntLiteral`](#bigintliteral)
+- [`BinaryExpression`](#binaryexpression)
+- [`BlockStatement`](#blockstatement)
+- [`BooleanLiteral`](#booleanliteral)
+- [`BreakStatement`](#breakstatement)
+- [`CallExpression`](#callexpression)
+- [`CatchClause`](#catchclause)
+- [`ClassBody`](#classbody)
+- [`ClassDeclaration`](#classdeclaration)
+- [`ClassExpression`](#classexpression)
+- [`ClassMethod`](#classmethod)
+- [`ClassPrivateMethod`](#classprivatemethod)
+- [`ClassPrivateProperty`](#classprivateproperty)
+- [`ClassProperty`](#classproperty)
+- [`ConditionalExpression`](#conditionalexpression)
+- [`ContinueStatement`](#continuestatement)
+- [`DebuggerStatement`](#debuggerstatement)
+- [`Directive`](#directive)
+- [`DirectiveLiteral`](#directiveliteral)
+- [`DoWhileStatement`](#dowhilestatement)
+- [`EmptyStatement`](#emptystatement)
+- [`ExportAllDeclaration`](#exportalldeclaration)
+- [`ExportDefaultDeclaration`](#exportdefaultdeclaration)
+- [`ExportNamedDeclaration`](#exportnameddeclaration)
+- [`ExportNamespaceSpecifier`](#exportnamespacespecifier)
+- [`ExportSpecifier`](#exportspecifier)
+- [`ExpressionStatement`](#expressionstatement)
+- [`File`](#file)
+- [`ForInStatement`](#forinstatement)
+- [`ForOfStatement`](#forofstatement)
+- [`ForStatement`](#forstatement)
+- [`FunctionDeclaration`](#functiondeclaration)
+- [`FunctionExpression`](#functionexpression)
+- [`Identifier`](#identifier)
+- [`IfStatement`](#ifstatement)
+- [`Import`](#import)
+- [`ImportDeclaration`](#importdeclaration)
+- [`ImportDefaultSpecifier`](#importdefaultspecifier)
+- [`ImportNamespaceSpecifier`](#importnamespacespecifier)
+- [`ImportSpecifier`](#importspecifier)
+- [`InterpreterDirective`](#interpreterdirective)
+- [`LabeledStatement`](#labeledstatement)
+- [`LogicalExpression`](#logicalexpression)
+- [`MemberExpression`](#memberexpression)
+- [`MetaProperty`](#metaproperty)
+- [`NewExpression`](#newexpression)
+- [`NullLiteral`](#nullliteral)
+- [`NumericLiteral`](#numericliteral)
+- [`ObjectExpression`](#objectexpression)
+- [`ObjectMethod`](#objectmethod)
+- [`ObjectPattern`](#objectpattern)
+- [`ObjectProperty`](#objectproperty)
+- [`OptionalCallExpression`](#optionalcallexpression)
+- [`OptionalMemberExpression`](#optionalmemberexpression)
+- [`ParenthesizedExpression`](#parenthesizedexpression)
+- [`PrivateName`](#privatename)
+- [`Program`](#program)
+- [`RegExpLiteral`](#regexpliteral)
+- [`RestElement`](#restelement)
+- [`ReturnStatement`](#returnstatement)
+- [`SequenceExpression`](#sequenceexpression)
+- [`SpreadElement`](#spreadelement)
+- [`StringLiteral`](#stringliteral)
+- [`Super`](#super)
+- [`SwitchCase`](#switchcase)
+- [`SwitchStatement`](#switchstatement)
+- [`TaggedTemplateExpression`](#taggedtemplateexpression)
+- [`TemplateElement`](#templateelement)
+- [`TemplateLiteral`](#templateliteral)
+- [`ThisExpression`](#thisexpression)
+- [`ThrowStatement`](#throwstatement)
+- [`TryStatement`](#trystatement)
+- [`UnaryExpression`](#unaryexpression)
+- [`UpdateExpression`](#updateexpression)
+- [`VariableDeclaration`](#variabledeclaration)
+- [`VariableDeclarator`](#variabledeclarator)
+- [`WhileStatement`](#whilestatement)
+- [`WithStatement`](#withstatement)
+- [`YieldExpression`](#yieldexpression)
+
+#### StandardizedOrProposal
+
+A cover of AST nodes which are part of an official ECMAScript specification or a proposed for inclusion.
+```javascript
+t.isStandardizedOrProposal(node);
+```
+
+Covered nodes: 
+- [`ArgumentPlaceholder`](#argumentplaceholder)
+- [`ArrayExpression`](#arrayexpression)
+- [`ArrayPattern`](#arraypattern)
+- [`ArrowFunctionExpression`](#arrowfunctionexpression)
+- [`AssignmentExpression`](#assignmentexpression)
+- [`AssignmentPattern`](#assignmentpattern)
+- [`AwaitExpression`](#awaitexpression)
+- [`BigIntLiteral`](#bigintliteral)
+- [`BinaryExpression`](#binaryexpression)
+- [`BindExpression`](#bindexpression)
+- [`BlockStatement`](#blockstatement)
+- [`BooleanLiteral`](#booleanliteral)
+- [`BreakStatement`](#breakstatement)
+- [`CallExpression`](#callexpression)
+- [`CatchClause`](#catchclause)
+- [`ClassBody`](#classbody)
+- [`ClassDeclaration`](#classdeclaration)
+- [`ClassExpression`](#classexpression)
+- [`ClassMethod`](#classmethod)
+- [`ClassPrivateMethod`](#classprivatemethod)
+- [`ClassPrivateProperty`](#classprivateproperty)
+- [`ClassProperty`](#classproperty)
+- [`ConditionalExpression`](#conditionalexpression)
+- [`ContinueStatement`](#continuestatement)
+- [`DebuggerStatement`](#debuggerstatement)
+- [`DecimalLiteral`](#decimalliteral)
+- [`Decorator`](#decorator)
+- [`Directive`](#directive)
+- [`DirectiveLiteral`](#directiveliteral)
+- [`DoExpression`](#doexpression)
+- [`DoWhileStatement`](#dowhilestatement)
+- [`EmptyStatement`](#emptystatement)
+- [`ExportAllDeclaration`](#exportalldeclaration)
+- [`ExportDefaultDeclaration`](#exportdefaultdeclaration)
+- [`ExportDefaultSpecifier`](#exportdefaultspecifier)
+- [`ExportNamedDeclaration`](#exportnameddeclaration)
+- [`ExportNamespaceSpecifier`](#exportnamespacespecifier)
+- [`ExportSpecifier`](#exportspecifier)
+- [`ExpressionStatement`](#expressionstatement)
+- [`File`](#file)
+- [`ForInStatement`](#forinstatement)
+- [`ForOfStatement`](#forofstatement)
+- [`ForStatement`](#forstatement)
+- [`FunctionDeclaration`](#functiondeclaration)
+- [`FunctionExpression`](#functionexpression)
+- [`Identifier`](#identifier)
+- [`IfStatement`](#ifstatement)
+- [`Import`](#import)
+- [`ImportAttribute`](#importattribute)
+- [`ImportDeclaration`](#importdeclaration)
+- [`ImportDefaultSpecifier`](#importdefaultspecifier)
+- [`ImportNamespaceSpecifier`](#importnamespacespecifier)
+- [`ImportSpecifier`](#importspecifier)
+- [`InterpreterDirective`](#interpreterdirective)
+- [`LabeledStatement`](#labeledstatement)
+- [`LogicalExpression`](#logicalexpression)
+- [`MemberExpression`](#memberexpression)
+- [`MetaProperty`](#metaproperty)
+- [`ModuleExpression`](#moduleexpression)
+- [`NewExpression`](#newexpression)
+- [`NullLiteral`](#nullliteral)
+- [`NumericLiteral`](#numericliteral)
+- [`ObjectExpression`](#objectexpression)
+- [`ObjectMethod`](#objectmethod)
+- [`ObjectPattern`](#objectpattern)
+- [`ObjectProperty`](#objectproperty)
+- [`OptionalCallExpression`](#optionalcallexpression)
+- [`OptionalMemberExpression`](#optionalmemberexpression)
+- [`ParenthesizedExpression`](#parenthesizedexpression)
+- [`PipelineBareFunction`](#pipelinebarefunction)
+- [`PipelinePrimaryTopicReference`](#pipelineprimarytopicreference)
+- [`PipelineTopicExpression`](#pipelinetopicexpression)
+- [`PrivateName`](#privatename)
+- [`Program`](#program)
+- [`RecordExpression`](#recordexpression)
+- [`RegExpLiteral`](#regexpliteral)
+- [`RestElement`](#restelement)
+- [`ReturnStatement`](#returnstatement)
+- [`SequenceExpression`](#sequenceexpression)
+- [`SpreadElement`](#spreadelement)
+- [`StaticBlock`](#staticblock)
+- [`StringLiteral`](#stringliteral)
+- [`Super`](#super)
+- [`SwitchCase`](#switchcase)
+- [`SwitchStatement`](#switchstatement)
+- [`TaggedTemplateExpression`](#taggedtemplateexpression)
+- [`TemplateElement`](#templateelement)
+- [`TemplateLiteral`](#templateliteral)
+- [`ThisExpression`](#thisexpression)
+- [`ThrowStatement`](#throwstatement)
+- [`TryStatement`](#trystatement)
+- [`TupleExpression`](#tupleexpression)
+- [`UnaryExpression`](#unaryexpression)
+- [`UpdateExpression`](#updateexpression)
+- [`VariableDeclaration`](#variabledeclaration)
+- [`VariableDeclarator`](#variabledeclarator)
+- [`WhileStatement`](#whilestatement)
+- [`WithStatement`](#withstatement)
+- [`YieldExpression`](#yieldexpression)
 
 #### Statement
 
@@ -4768,6 +5092,78 @@ Covered nodes:
 - [`ReturnStatement`](#returnstatement)
 - [`ThrowStatement`](#throwstatement)
 - [`YieldExpression`](#yieldexpression)
+
+#### TypeScript
+
+A cover of AST nodes defined for TypeScript.
+```javascript
+t.isTypeScript(node);
+```
+
+Covered nodes: 
+- [`TSAnyKeyword`](#tsanykeyword)
+- [`TSArrayType`](#tsarraytype)
+- [`TSAsExpression`](#tsasexpression)
+- [`TSBigIntKeyword`](#tsbigintkeyword)
+- [`TSBooleanKeyword`](#tsbooleankeyword)
+- [`TSCallSignatureDeclaration`](#tscallsignaturedeclaration)
+- [`TSConditionalType`](#tsconditionaltype)
+- [`TSConstructSignatureDeclaration`](#tsconstructsignaturedeclaration)
+- [`TSConstructorType`](#tsconstructortype)
+- [`TSDeclareFunction`](#tsdeclarefunction)
+- [`TSDeclareMethod`](#tsdeclaremethod)
+- [`TSEnumDeclaration`](#tsenumdeclaration)
+- [`TSEnumMember`](#tsenummember)
+- [`TSExportAssignment`](#tsexportassignment)
+- [`TSExpressionWithTypeArguments`](#tsexpressionwithtypearguments)
+- [`TSExternalModuleReference`](#tsexternalmodulereference)
+- [`TSFunctionType`](#tsfunctiontype)
+- [`TSImportEqualsDeclaration`](#tsimportequalsdeclaration)
+- [`TSImportType`](#tsimporttype)
+- [`TSIndexSignature`](#tsindexsignature)
+- [`TSIndexedAccessType`](#tsindexedaccesstype)
+- [`TSInferType`](#tsinfertype)
+- [`TSInterfaceBody`](#tsinterfacebody)
+- [`TSInterfaceDeclaration`](#tsinterfacedeclaration)
+- [`TSIntersectionType`](#tsintersectiontype)
+- [`TSIntrinsicKeyword`](#tsintrinsickeyword)
+- [`TSLiteralType`](#tsliteraltype)
+- [`TSMappedType`](#tsmappedtype)
+- [`TSMethodSignature`](#tsmethodsignature)
+- [`TSModuleBlock`](#tsmoduleblock)
+- [`TSModuleDeclaration`](#tsmoduledeclaration)
+- [`TSNamedTupleMember`](#tsnamedtuplemember)
+- [`TSNamespaceExportDeclaration`](#tsnamespaceexportdeclaration)
+- [`TSNeverKeyword`](#tsneverkeyword)
+- [`TSNonNullExpression`](#tsnonnullexpression)
+- [`TSNullKeyword`](#tsnullkeyword)
+- [`TSNumberKeyword`](#tsnumberkeyword)
+- [`TSObjectKeyword`](#tsobjectkeyword)
+- [`TSOptionalType`](#tsoptionaltype)
+- [`TSParameterProperty`](#tsparameterproperty)
+- [`TSParenthesizedType`](#tsparenthesizedtype)
+- [`TSPropertySignature`](#tspropertysignature)
+- [`TSQualifiedName`](#tsqualifiedname)
+- [`TSRestType`](#tsresttype)
+- [`TSStringKeyword`](#tsstringkeyword)
+- [`TSSymbolKeyword`](#tssymbolkeyword)
+- [`TSThisType`](#tsthistype)
+- [`TSTupleType`](#tstupletype)
+- [`TSTypeAliasDeclaration`](#tstypealiasdeclaration)
+- [`TSTypeAnnotation`](#tstypeannotation)
+- [`TSTypeAssertion`](#tstypeassertion)
+- [`TSTypeLiteral`](#tstypeliteral)
+- [`TSTypeOperator`](#tstypeoperator)
+- [`TSTypeParameter`](#tstypeparameter)
+- [`TSTypeParameterDeclaration`](#tstypeparameterdeclaration)
+- [`TSTypeParameterInstantiation`](#tstypeparameterinstantiation)
+- [`TSTypePredicate`](#tstypepredicate)
+- [`TSTypeQuery`](#tstypequery)
+- [`TSTypeReference`](#tstypereference)
+- [`TSUndefinedKeyword`](#tsundefinedkeyword)
+- [`TSUnionType`](#tsuniontype)
+- [`TSUnknownKeyword`](#tsunknownkeyword)
+- [`TSVoidKeyword`](#tsvoidkeyword)
 
 #### UnaryLike
 
