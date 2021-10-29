@@ -22,7 +22,7 @@ Configure which proposal to use with the required `"proposal"` option.
 | `"hack"` | [Hack-style pipes](https://github.com/js-choi/proposal-hack-pipes) | `v7.15.0`
 | ~~`"smart"`~~ | [Smart-mix pipes](https://github.com/js-choi/proposal-smart-pipelines) (deprecated) | `v7.3.0`
 
-If `"proposal": "hack"` is used, then a `"topicToken": "%"` or `"topicToken": "#"` option must also be included.
+If `"proposal": "hack"` is used, then a `"topicToken": "%"`, `"topicToken": "^"`, or `"topicToken": "#"` option must also be included.
 
 The `"proposal": "smart"` option is deprecated and subject to removal in a future major version.
 
@@ -284,13 +284,22 @@ For [F# pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipel
   ]
 }
 ```
-
 For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `%` topic token:
 
 ```json
 {
   "plugins": [
     ["@babel/plugin-proposal-pipeline-operator", { "proposal": "hack", "topicToken": "%" }]
+  ]
+}
+```
+
+For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `^` topic token:
+
+```json
+{
+  "plugins": [
+    ["@babel/plugin-proposal-pipeline-operator", { "proposal": "hack", "topicToken": "^" }]
   ]
 }
 ```
@@ -337,6 +346,16 @@ For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `%` topic
 require("@babel/core").transformSync("code", {
   plugins: [
     [ "@babel/plugin-proposal-pipeline-operator", { proposal: "hack", topicToken: "%" } ],
+  ],
+});
+```
+
+For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `^` topic token:
+
+```javascript
+require("@babel/core").transformSync("code", {
+  plugins: [
+    [ "@babel/plugin-proposal-pipeline-operator", { proposal: "hack", topicToken: "^" } ],
   ],
 });
 ```
