@@ -66,6 +66,7 @@ See also `t.isArrayPattern(node, opts)` and `t.assertArrayPattern(node, opts)`.
 AST Node `ArrayPattern` shape:
 - `elements`: `Array<null | PatternLike>` (required)
 - `decorators`: `Array<Decorator>` (default: `null`, excluded from builder function)
+- `optional`: `boolean` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
 Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Pattern`](#pattern), [`PatternLike`](#patternlike), [`LVal`](#lval)
@@ -464,7 +465,10 @@ AST Node `ClassPrivateProperty` shape:
 - `value`: `Expression` (default: `null`)
 - `decorators`: `Array<Decorator>` (default: `null`)
 - `static` (required)
+- `definite`: `boolean` (default: `null`, excluded from builder function)
+- `readonly`: `boolean` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
+- `variance`: `Variance` (default: `null`, excluded from builder function)
 
 Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Property`](#property), [`Private`](#private)
 
@@ -499,6 +503,7 @@ AST Node `ClassProperty` shape:
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `override`: `boolean` (default: `false`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
+- `variance`: `Variance` (default: `null`, excluded from builder function)
 
 Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Property`](#property)
 
@@ -697,6 +702,7 @@ AST Node `DeclareOpaqueType` shape:
 - `id`: `Identifier` (required)
 - `typeParameters`: `TypeParameterDeclaration` (default: `null`)
 - `supertype`: `FlowType` (default: `null`)
+- `impltype`: `FlowType` (default: `null`, excluded from builder function)
 
 Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
@@ -1035,6 +1041,7 @@ See also `t.isExportDefaultDeclaration(node, opts)` and `t.assertExportDefaultDe
 
 AST Node `ExportDefaultDeclaration` shape:
 - `declaration`: `FunctionDeclaration | TSDeclareFunction | ClassDeclaration | Expression` (required)
+- `exportKind`: `"value"` (default: `null`, excluded from builder function)
 
 Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`Declaration`](#declaration), [`ModuleDeclaration`](#moduledeclaration), [`ExportDeclaration`](#exportdeclaration)
 
@@ -1410,6 +1417,22 @@ AST Node `ImportSpecifier` shape:
 - `importKind`: `"type" | "typeof"` (default: `null`, excluded from builder function)
 
 Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`ModuleSpecifier`](#modulespecifier)
+
+---
+
+#### indexedAccessType
+
+```javascript
+t.indexedAccessType(objectType, indexType);
+```
+
+See also `t.isIndexedAccessType(node, opts)` and `t.assertIndexedAccessType(node, opts)`.
+
+AST Node `IndexedAccessType` shape:
+- `objectType`: `FlowType` (required)
+- `indexType`: `FlowType` (required)
+
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
@@ -2196,6 +2219,23 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 ---
 
+#### optionalIndexedAccessType
+
+```javascript
+t.optionalIndexedAccessType(objectType, indexType);
+```
+
+See also `t.isOptionalIndexedAccessType(node, opts)` and `t.assertOptionalIndexedAccessType(node, opts)`.
+
+AST Node `OptionalIndexedAccessType` shape:
+- `objectType`: `FlowType` (required)
+- `indexType`: `FlowType` (required)
+- `optional`: `boolean` (required)
+
+Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
+
+---
+
 #### optionalMemberExpression
 
 ```javascript
@@ -2240,7 +2280,7 @@ See also `t.isPipelineBareFunction(node, opts)` and `t.assertPipelineBareFunctio
 AST Node `PipelineBareFunction` shape:
 - `callee`: `Expression` (required)
 
-Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal)
+Aliases: [`Expression`](#expression), [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal)
 
 ---
 
@@ -2267,7 +2307,7 @@ See also `t.isPipelineTopicExpression(node, opts)` and `t.assertPipelineTopicExp
 AST Node `PipelineTopicExpression` shape:
 - `expression`: `Expression` (required)
 
-Aliases: [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal)
+Aliases: [`Expression`](#expression), [`Proposal`](#proposal), [`StandardizedOrProposal`](#standardizedorproposal)
 
 ---
 
@@ -2379,6 +2419,7 @@ See also `t.isRestElement(node, opts)` and `t.assertRestElement(node, opts)`.
 AST Node `RestElement` shape:
 - `argument`: `LVal` (required)
 - `decorators`: `Array<Decorator>` (default: `null`, excluded from builder function)
+- `optional`: `boolean` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
 Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`LVal`](#lval), [`PatternLike`](#patternlike)
@@ -2839,6 +2880,7 @@ See also `t.isTSImportEqualsDeclaration(node, opts)` and `t.assertTSImportEquals
 AST Node `TSImportEqualsDeclaration` shape:
 - `id`: `Identifier` (required)
 - `moduleReference`: `TSEntityName | TSExternalModuleReference` (required)
+- `importKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 - `isExport`: `boolean` (required)
 
 Aliases: [`TypeScript`](#typescript), [`Statement`](#statement)
@@ -3181,6 +3223,8 @@ See also `t.isTSParameterProperty(node, opts)` and `t.assertTSParameterProperty(
 AST Node `TSParameterProperty` shape:
 - `parameter`: `Identifier | AssignmentPattern` (required)
 - `accessibility`: `"public" | "private" | "protected"` (default: `null`, excluded from builder function)
+- `decorators`: `Array<Decorator>` (default: `null`, excluded from builder function)
+- `override`: `boolean` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 
 Aliases: [`TypeScript`](#typescript), [`LVal`](#lval)
@@ -3215,6 +3259,7 @@ AST Node `TSPropertySignature` shape:
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 - `initializer`: `Expression` (default: `null`)
 - `computed`: `boolean` (default: `null`, excluded from builder function)
+- `kind`: `"get" | "set"` (required)
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 
@@ -3615,6 +3660,18 @@ AST Node `ThrowStatement` shape:
 - `argument`: `Expression` (required)
 
 Aliases: [`Standardized`](#standardized), [`StandardizedOrProposal`](#standardizedorproposal), [`Statement`](#statement), [`Terminatorless`](#terminatorless), [`CompletionStatement`](#completionstatement)
+
+---
+
+#### topicReference
+
+```javascript
+t.topicReference();
+```
+
+See also `t.isTopicReference(node, opts)` and `t.assertTopicReference(node, opts)`.
+
+Aliases: [`Expression`](#expression)
 
 ---
 
@@ -4144,7 +4201,9 @@ Covered nodes:
 - [`OptionalCallExpression`](#optionalcallexpression)
 - [`OptionalMemberExpression`](#optionalmemberexpression)
 - [`ParenthesizedExpression`](#parenthesizedexpression)
+- [`PipelineBareFunction`](#pipelinebarefunction)
 - [`PipelinePrimaryTopicReference`](#pipelineprimarytopicreference)
+- [`PipelineTopicExpression`](#pipelinetopicexpression)
 - [`RecordExpression`](#recordexpression)
 - [`RegExpLiteral`](#regexpliteral)
 - [`SequenceExpression`](#sequenceexpression)
@@ -4156,6 +4215,7 @@ Covered nodes:
 - [`TaggedTemplateExpression`](#taggedtemplateexpression)
 - [`TemplateLiteral`](#templateliteral)
 - [`ThisExpression`](#thisexpression)
+- [`TopicReference`](#topicreference)
 - [`TupleExpression`](#tupleexpression)
 - [`TypeCastExpression`](#typecastexpression)
 - [`UnaryExpression`](#unaryexpression)

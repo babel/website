@@ -4,7 +4,7 @@ title: @babel/plugin-transform-async-to-generator
 sidebar_label: async-to-generator
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2017](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 > In Babel 7, `transform-async-to-module-method` was merged into this plugin
 
 ## Example

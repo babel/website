@@ -71,7 +71,7 @@ const envPresetDefaults = {
 const runtimePolyfillConfig: PluginConfig = {
   label: "Runtime Polyfill",
   package: "@babel/polyfill",
-  version: "7",
+  url: 'https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js',
 };
 
 const pluginConfigs: Array<PluginConfig> = [

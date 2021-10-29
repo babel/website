@@ -33,6 +33,7 @@ mind. When in doubt, use `.parse()`.
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `v7.16.0` | Added `startColumn` |
 | `v7.15.0` | Added `attachComment` |
 | `v7.7.0` | Added `errorRecovery` |
 | `v7.5.0` | Added `allowUndeclaredExports` |
@@ -82,7 +83,9 @@ mind. When in doubt, use `.parse()`.
 
 - **sourceFilename**: Correlate output AST nodes with their source filename. Useful when generating code and source maps from the ASTs of multiple input files.
 
-- **startLine**: By default, the first line of code parsed is treated as line 1. You can provide a line number to alternatively start with. Useful for integration with other source tools.
+- **startColumn**: By default, the parsed code is treated as if it starts from line 1, column 0. You can provide a column number to alternatively start with. Useful for integration with other source tools.
+
+- **startLine**: By default, the parsed code is treated as if it starts from line 1, column 0. You can provide a line number to alternatively start with. Useful for integration with other source tools.
 
 - **strictMode**: By default, ECMAScript code is parsed as strict only if a
   `"use strict";` directive is present or if the parsed file is an ECMAScript
@@ -100,6 +103,7 @@ It is based on [ESTree spec][] with the following deviations:
 - [Literal][] token is replaced with [StringLiteral][], [NumericLiteral][], [BigIntLiteral][], [BooleanLiteral][], [NullLiteral][], [RegExpLiteral][]
 - [Property][] token is replaced with [ObjectProperty][] and [ObjectMethod][]
 - [MethodDefinition][] is replaced with [ClassMethod][]
+- [PropertyDefinition][] is replaced with [ClassProperty][]
 - [Program][] and [BlockStatement][] contain additional `directives` field with [Directive][] and [DirectiveLiteral][]
 - [ClassMethod][], [ObjectProperty][], and [ObjectMethod][] value property's properties in [FunctionExpression][] is coerced/brought into the main method node.
 - [ChainExpression][] is replaced with [OptionalMemberExpression][] and [OptionalCallExpression][]
@@ -114,6 +118,7 @@ AST for JSX code is based on [Facebook JSX AST][].
 [literal]: https://github.com/estree/estree/blob/master/es5.md#literal
 [property]: https://github.com/estree/estree/blob/master/es5.md#property
 [methoddefinition]: https://github.com/estree/estree/blob/master/es2015.md#methoddefinition
+[propertydefinition]: https://github.com/estree/estree/blob/master/es2022.md#propertydefinition
 [chainexpression]: https://github.com/estree/estree/blob/master/es2020.md#chainexpression
 [importexpression]: https://github.com/estree/estree/blob/master/es2020.md#importexpression
 [stringliteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#stringliteral
@@ -125,6 +130,7 @@ AST for JSX code is based on [Facebook JSX AST][].
 [objectproperty]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#objectproperty
 [objectmethod]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#objectmethod
 [classmethod]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#classmethod
+[classproperty]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#classproperty
 [program]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#programs
 [blockstatement]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#blockstatement
 [directive]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#directive
@@ -187,6 +193,7 @@ require("@babel/parser").parse("code", {
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `v7.15.0` | Added `hack` to the `proposal` option of `pipelineOperator`. Moved `topLevelAwait`, `privateIn` to Latest ECMAScript features |
 | `v7.14.0` | Added `asyncDoExpressions`. Moved `classProperties`, `classPrivateProperties`, `classPrivateMethods`, `moduleStringNames` to Latest ECMAScript features |
 | `v7.13.0` | Added `moduleBlocks` |
 | `v7.12.0` | Added `classStaticBlock`, `moduleStringNames` |
@@ -201,7 +208,6 @@ require("@babel/parser").parse("code", {
 | Name                                                                                            | Code Example                                             |
 | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | `asyncDoExpressions` ([proposal](https://github.com/tc39/proposal-async-do-expressions))        | `async do { await requestAPI().json() }`                 |
-| `classStaticBlock` ([proposal](https://github.com/tc39/proposal-class-static-block))            | `class A { static {} }`                                  |
 | `decimal` ([proposal](https://github.com/tc39/proposal-decimal))                                | `0.3m`                                                   |
 | `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br> `decorators-legacy` | `@a class A {}`                                          |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                   | `var a = do { if (true) { 'hi'; } };`                    |
@@ -211,10 +217,8 @@ require("@babel/parser").parse("code", {
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                  | `let m = module { export let y = 1; };`                  |
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                 | `f(?, a)`                                                |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29))                   | <code>a &#124;> b</code>                                 |
-| `privateIn` ([proposal](https://github.com/tc39/proposal-private-fields-in-in))                 | `#p in obj`                                              |
 | `recordAndTuple` ([proposal](https://github.com/tc39/proposal-record-tuple))                    | `#{x: 1}`, `#[1, 2]`                                     |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23))                   | `() => throw new Error("")`                              |
-| `topLevelAwait` ([proposal](https://github.com/tc39/proposal-top-level-await/))                 | `await promise` in modules                               |
 
 #### Latest ECMAScript features
 
@@ -228,6 +232,7 @@ You should enable these features only if you are using an older version.
 | `classProperties` ([proposal](https://github.com/tc39/proposal-class-public-fields))      | `class A { b = 1; }`                                |
 | `classPrivateProperties` ([proposal](https://github.com/tc39/proposal-private-fields))    | `class A { #b = 1; }`                               |
 | `classPrivateMethods` ([proposal](https://github.com/tc39/proposal-private-methods))      | `class A { #c() {} }`                               |
+| `classStaticBlock` ([proposal](https://github.com/tc39/proposal-class-static-block))      | `class A { static {} }`                             |
 | `dynamicImport` ([proposal](https://github.com/tc39/proposal-dynamic-import))             | `import('./guy').then(a)`                           |
 | `exportNamespaceFrom` ([proposal](https://github.com/leebyron/ecmascript-export-ns-from)) | `export * as ns from "mod"`                         |
 | `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))               | `function.sent`                                     |
@@ -238,6 +243,8 @@ You should enable these features only if you are using an older version.
 | `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread))      | `var a = { b, ...c };`                              |
 | `optionalCatchBinding` ([proposal](https://github.com/babel/proposals/issues/7))          | `try {throw 0;} catch{do();}`                       |
 | `optionalChaining` ([proposal](https://github.com/tc39/proposal-optional-chaining))       | `a?.b`                                              |
+| `privateIn` ([proposal](https://github.com/tc39/proposal-private-fields-in-in))           | `#p in obj`                                         |
+| `topLevelAwait` ([proposal](https://github.com/tc39/proposal-top-level-await/))           | `await promise` in modules                          |
 
 #### Plugins options
 
@@ -246,6 +253,7 @@ You should enable these features only if you are using an older version.
 | Version | Changes |
 | --- | --- |
 | `7.14.0` | Added `dts` for `typescript` plugin |
+| `7.16.0` | Added `disallowAmbiguousJSXLike` for `typescript` plugin |
 </details>
 
 > NOTE: When a plugin is specified multiple times, only the first options are considered.
@@ -298,6 +306,8 @@ You should enable these features only if you are using an older version.
 - `typescript`
   - `dts` (`boolean`, default `false`)
     This option will enable parsing within a TypeScript ambient context, where certain syntax have different rules (like `.d.ts` files and inside `declare module` blocks). Please see https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html and https://basarat.gitbook.io/typescript/type-system/intro for more information about ambient contexts.
+  - `disallowAmbiguousJSXLike` (`boolean`, default `false`)
+    Even when the `jsx` plugin is not enabled, this option disallows using syntax that would be ambiguous with JSX (`<X> y` type assertions and `<X>() => {}` type arguments). It matches the `tsc` behavior when parsing `.mts` and `.mjs` files.
 
 ### Error codes
 

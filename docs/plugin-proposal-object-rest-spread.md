@@ -4,7 +4,7 @@ title: @babel/plugin-proposal-object-rest-spread
 sidebar_label: object-rest-spread
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2018](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 
 ## Example
 

@@ -17,7 +17,7 @@ export default function loadPlugin(
 
   const { config } = state;
   const base = config.baseUrl || "https://bundle.run";
-  const url = `${base}/${config.package}@${config.version || ""}`;
+  const url = config.url || `${base}/${config.package}@${config.version || ""}`;
 
   loadScript(
     url,

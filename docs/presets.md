@@ -16,7 +16,7 @@ We've assembled a few presets for common environments:
 
 ## Other Integrations
 
-If you aren't using Babel directly, the framework you are using may have it's own configuration for you to use or extend. Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
+If you aren't using Babel directly, the framework you are using may have its own configuration for you to use or extend. Many other community maintained presets are available [on npm](https://www.npmjs.com/search?q=babel-preset)!
 
 [Next.js](https://nextjs.org/docs/advanced-features/customizing-babel-config) | [Nuxt.js](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#babel) | [Parcel](https://en.parceljs.org/javascript.html#babel) | [Jest](https://jestjs.io/docs/getting-started#using-babel) | [Gatsby](https://www.gatsbyjs.com/docs/how-to/custom-configuration/babel)
 
@@ -32,7 +32,7 @@ Within a Babel config, if the preset is on [npm](https://www.npmjs.com/search?q=
 }
 ```
 
-Otherwise, can also specify an relative/absolute path to your presets.
+Otherwise, you can also specify a relative or absolute path to your presets.
 
 ```json
 {

@@ -87,6 +87,14 @@ class A {
 
 Enables compilation of TypeScript namespaces.
 
+### `disallowAmbiguousJSXLike`
+
+`boolean`, defaults to `false`
+
+Added in: `v7.16.0`
+
+Even when JSX parsing is not enabled, this option disallows using syntax that would be ambiguous with JSX (`<X> y` type assertions and `<X>() => {}` type arguments). It matches the `tsc` behavior when parsing `.mts` and `.mjs` files.
+
 ### `isTSX`
 
 `boolean`, defaults to `false`
@@ -237,13 +245,6 @@ equivalents in Babel can be enabled by some configuration options or plugins.
 Because there are features of the TypeScript language which rely on the full type-system to be available to make changes at runtime. This section of caveats is quite long, however, it's worth noting that a few of these features are only found in older TypeScript codebases and have modern JavaScript equivalents which you are probably already using.
 
 1. Since Babel does not type-check, code which is syntactically correct, but would fail the TypeScript type-checking may successfully get transformed, and often in unexpected or invalid ways.
-
-1. This plugin does not support [`const enum`][const_enum]s because those require type information to compile.
-
-   **Workarounds**:
-
-   - Use the plugin [babel-plugin-const-enum](https://www.npmjs.com/package/babel-plugin-const-enum).
-   - Remove the `const`, which makes it available at runtime.
 
 1. This plugin does not support [`export =`][exin] and [`import =`][exin], because those cannot be compiled to ES.next. These are a TypeScript only form of `import`/`export`.
 
