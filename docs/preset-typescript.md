@@ -77,7 +77,7 @@ Replace the function used when compiling JSX fragment expressions. This is so th
 
 `boolean`, defaults to `false`
 
-Indicates that every file should be parsed as TS or TSX (depending on the `isTSX` option).
+Indicates that every file should be parsed as TS, TSX, or as TS without JSX ambiguities (depending on the `isTSX` and `disallowAmbiguousJSXLike` options).
 
 ### `allowNamespaces`
 
