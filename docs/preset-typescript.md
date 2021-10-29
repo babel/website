@@ -77,7 +77,7 @@ Replace the function used when compiling JSX fragment expressions. This is so th
 
 `boolean`, defaults to `false`
 
-Indicates that every file should be parsed as TS or TSX (depending on the `isTSX` option).
+Indicates that every file should be parsed as TS, TSX, or as TS without JSX ambiguities (depending on the `isTSX` and `disallowAmbiguousJSXLike` options).
 
 ### `allowNamespaces`
 
@@ -105,6 +105,14 @@ class A {
   prop1!: string // Initialized to undefined
 }
 ```
+
+### `disallowAmbiguousJSXLike`
+
+`boolean`, defaults to `true` for `.mts` and `.cts` files and to `false` otherwise.
+
+Added in: `v7.16.0`
+
+Even when JSX parsing is not enabled, this option disallows using syntax that would be ambiguous with JSX (`<X> y` type assertions and `<X>() => {}` type arguments). It matches the `tsc` behavior when parsing `.mts` and `.mjs` files.
 
 ### `onlyRemoveTypeImports`
 
