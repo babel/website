@@ -9,7 +9,9 @@ sidebar_label: function-bind
 ```js
 obj::func;
 // is equivalent to:
-func.bind(obj)::obj.func;
+func.bind(obj)
+
+::obj.func;
 // is equivalent to:
 obj.func.bind(obj);
 
@@ -18,7 +20,7 @@ obj::func(val);
 func
   .call(obj, val)
 
-  ::obj.func(val);
+::obj.func(val);
 // is equivalent to:
 obj.func.call(obj, val);
 ```
