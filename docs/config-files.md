@@ -258,7 +258,7 @@ if the working directory is not already the monorepo root.
 
 ### Subpackage `.babelrc.json` files
 
-Similar to the the way [`babel.config.json`](#project-wide-configuration) files are required to be in the ["root"](options.md#root),
+Similar to the way [`babel.config.json`](#project-wide-configuration) files are required to be in the ["root"](options.md#root),
 [`.babelrc.json`](#file-relative-configuration) files must be in the root _package_, by default. This means that, the same way the
 working directory affects [`babel.config.json`](#project-wide-configuration) loading, it also affects [`.babelrc.json`](#file-relative-configuration) loading.
 
