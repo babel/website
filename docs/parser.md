@@ -109,10 +109,11 @@ It is based on [ESTree spec][] with the following deviations:
 
 - [Literal][] token is replaced with [StringLiteral][], [NumericLiteral][], [BigIntLiteral][], [BooleanLiteral][], [NullLiteral][], [RegExpLiteral][]
 - [Property][] token is replaced with [ObjectProperty][] and [ObjectMethod][]
-- [MethodDefinition][] is replaced with [ClassMethod][]
-- [PropertyDefinition][] is replaced with [ClassProperty][]
+- [MethodDefinition][] is replaced with [ClassMethod][] and [ClassPrivateMethod][]
+- [PropertyDefinition][] is replaced with [ClassProperty][] and [ClassPrivateProperty][]
+- [PrivateIdentifier][] is replaced with [PrivateName][]
 - [Program][] and [BlockStatement][] contain additional `directives` field with [Directive][] and [DirectiveLiteral][]
-- [ClassMethod][], [ObjectProperty][], and [ObjectMethod][] value property's properties in [FunctionExpression][] is coerced/brought into the main method node.
+- [ClassMethod][], [ClassPrivateMethod][], [ObjectProperty][], and [ObjectMethod][] value property's properties in [FunctionExpression][] is coerced/brought into the main method node.
 - [ChainExpression][] is replaced with [OptionalMemberExpression][] and [OptionalCallExpression][]
 - [ImportExpression][] is replaced with a [CallExpression][] whose `callee` is an [Import] node.
 
@@ -128,6 +129,7 @@ AST for JSX code is based on [Facebook JSX AST][].
 [propertydefinition]: https://github.com/estree/estree/blob/master/es2022.md#propertydefinition
 [chainexpression]: https://github.com/estree/estree/blob/master/es2020.md#chainexpression
 [importexpression]: https://github.com/estree/estree/blob/master/es2020.md#importexpression
+[privateidentifier]: https://github.com/estree/estree/blob/master/es2022.md#privateidentifier
 [stringliteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#stringliteral
 [numericliteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#numericliteral
 [bigintliteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#bigintliteral
@@ -138,6 +140,8 @@ AST for JSX code is based on [Facebook JSX AST][].
 [objectmethod]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#objectmethod
 [classmethod]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#classmethod
 [classproperty]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#classproperty
+[classprivateproperty]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#classprivateproperty
+[privatename]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#privatename
 [program]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#programs
 [blockstatement]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#blockstatement
 [directive]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#directive
