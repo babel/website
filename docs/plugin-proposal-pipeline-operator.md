@@ -28,6 +28,8 @@ If `"proposal"` is omitted, or if `"proposal": "hack"` is used, then a `"topicTo
 The `"proposal": "minimal"`, `"fsharp"`, and `"smart"` options are **deprecated** and subject to removal in a future major version.
 
 ### Examples
+The following examples use `topicToken: "^^"`.
+
 From [react/scripts/jest/jest-cli.js][].
 ```js
 // Status quo
