@@ -81,7 +81,7 @@ With `^^` topic token:
 ```json
 {
   "plugins": [
-    ["@babel/plugin-proposal-pipeline-operator", { "proposal": "hack", "topicToken": "^^" }]
+    ["@babel/plugin-proposal-pipeline-operator", { "topicToken": "^^" }]
   ]
 }
 ```
@@ -91,7 +91,7 @@ With `@@` topic token:
 ```json
 {
   "plugins": [
-    ["@babel/plugin-proposal-pipeline-operator", { "proposal": "hack", "topicToken": "@@" }]
+    ["@babel/plugin-proposal-pipeline-operator", { "topicToken": "@@" }]
   ]
 }
 ```
@@ -107,7 +107,7 @@ With `^^` topic token:
 ```javascript
 require("@babel/core").transformSync("code", {
   plugins: [
-    [ "@babel/plugin-proposal-pipeline-operator", { proposal: "hack", topicToken: "^^" } ],
+    [ "@babel/plugin-proposal-pipeline-operator", { topicToken: "^^" } ],
   ],
 });
 ```
@@ -117,7 +117,7 @@ With `@@` topic token:
 ```javascript
 require("@babel/core").transformSync("code", {
   plugins: [
-    [ "@babel/plugin-proposal-pipeline-operator", { proposal: "hack", topicToken: "@@" } ],
+    [ "@babel/plugin-proposal-pipeline-operator", { topicToken: "@@" } ],
   ],
 });
 ```
