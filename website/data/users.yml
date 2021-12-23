@@ -701,3 +701,6 @@
 - name: Ormica
   url: https://ormica.com
   logo: ormica.svg
+- name: iofod
+  url: https://www.iofod.com
+  logo: iofod.svg
