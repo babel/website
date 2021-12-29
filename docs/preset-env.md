@@ -513,3 +513,25 @@ These features were behind `shippedProposals` flag in older Babel versions. They
 ### Ineffective browserslist queries
 
 While `op_mini all` is a valid browserslist query, preset-env currently ignores it due to [lack of support data](https://github.com/kangax/compat-table/issues/1057) for Opera Mini.
+
+### `core-js` and `regenerator-runtime` injections vs. Yarn PnP
+
+Starting with version 2.0, Yarn has Plug'n'Play enabled with `pnpMode` set to `"strict"`. What this means is that Yarn won't allow modules to require packages they don't explicitly list in their own dependencies. If you happen to use `@babel/preset-env` on a module and `core-js` and/or `regenerator-runtime` ends up being injected to it depite not being listed, Yarn will throw an error similar to the following:
+
+```
+Your application tried to access core-js, but it isn't declared in your dependencies; this makes the require call ambiguous and unsound.
+ERROR in ./packages/utils/index.js 1:0-42
+Module not found: Error: Can't resolve 'core-js/modules/es.array.from.js' in '/my-project/packages/utils'
+  (…)
+      Your application tried to access core-js, but it isn't declared in your dependencies; this makes the require call ambiguous and unsound.
+```
+
+To fix this,
+
+- set `pnpFallbackMode` to `"all`" by executing `yarn config set pnpFallbackMode all`, or:
+- set:
+  - `config.resolve.alias["core-js"]` to `path.dirname(require.resolve("core-js"))` and
+  - `config.resolve.alias["regenerator-runtime"]` to `path.dirname(require.resolve("regenerator-runtime"))` 
+
+
+  in your Webpack config.
