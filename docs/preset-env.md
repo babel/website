@@ -391,7 +391,7 @@ transforms, which is useful if the output will be run through UglifyJS or an
 environment that only supports ES5.
 
 > NOTE: If you require an alternative minifier which _does_ support ES6 syntax, 
-> we recommend [babel-minify](preset-minify.md) or [Terser](https://www.npmjs.com/package/terser).
+> we recommend [Terser](https://www.npmjs.com/package/terser) or [babel-minify](preset-minify.md).
 
 ### `configPath`
 
