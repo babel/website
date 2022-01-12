@@ -22,7 +22,7 @@ Additionally, use this timeline to track some other important efforts, such as t
   }
   ```
 - [TypeScript 4.5](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/) support
-- Support ESLint 8 in `@babel/eslint-parser`.
+- Support [ESLint 8](https://eslint.org/blog/2021/10/eslint-v8.0.0-released) in `@babel/eslint-parser`.
 
 </li>
 <li data-date="Jul 2021">
