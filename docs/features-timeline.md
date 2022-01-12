@@ -7,6 +7,24 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="Oct 2021">
+
+## Babel 7.16.0
+
+[blog post](https://babeljs.io/blog/2021/10/29/7.16.0)
+
+- Enable the [class static blocks](https://github.com/tc39/proposal-class-static-block) Stage 4 proposal by default
+  ```js
+  class A {
+    static {
+      initialize(A);
+    }
+  }
+  ```
+- [TypeScript 4.5](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/) support
+- Support [ESLint 8](https://eslint.org/blog/2021/10/eslint-v8.0.0-released) in `@babel/eslint-parser`.
+
+</li>
 <li data-date="Jul 2021">
 
 ## Babel 7.15.0
