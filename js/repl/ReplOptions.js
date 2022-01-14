@@ -63,6 +63,12 @@ const PIPELINE_PROPOSALS = {
   hack: "Hack",
 };
 
+const DECORATOR_PROPOSALS = {
+  "2021-12": "2021-12",
+  "2018-09": "2018-09",
+  legacy: "Legacy",
+};
+
 // These presets are deprecated. We only show them if they are enabled, so that
 // when they are enabled because of an old URL or local storage they can still
 // be disabled.
@@ -441,31 +447,32 @@ class ExpandedContainer extends Component<Props, State> {
               </PresetOption>
               <PresetOption
                 when={isStage2Enabled}
-                option="decoratorsLegacy"
+                option="decoratorsVersion"
                 presets={["stage-0", "stage-1", "stage-2"]}
               >
                 <span className={styles.presetsOptionsLabel}>
-                  Decorators mode
+                  Decorators version
                 </span>
                 <select
                   className={cx(styles.optionSelect, styles.presetOptionSelect)}
-                  onChange={this._onPresetOptionChange(
-                    "decoratorsLegacy",
-                    t => t.value === "legacy"
-                  )}
+                  onChange={
+                    (this._onPresetOptionChange("decoratorsVersion", t =>
+                      t.value === "legacy" ? undefined : t.value
+                    ),
+                    this._onPresetOptionChange(
+                      "decoratorsLegacy",
+                      t => t.value === "legacy" || undefined
+                    ))
+                  }
                 >
-                  <option
-                    value="modern"
-                    selected={!presetsOptions.decoratorsLegacy}
-                  >
-                    Current Proposal
-                  </option>
-                  <option
-                    value="legacy"
-                    selected={presetsOptions.decoratorsLegacy}
-                  >
-                    Legacy
-                  </option>
+                  {Object.keys(PIPELINE_PROPOSALS).map(key => (
+                    <option
+                      value={key}
+                      selected={key === presetsOptions.decoratorsVersion}
+                    >
+                      {DECORATOR_PROPOSALS[key]}
+                    </option>
+                  ))}
                 </select>
               </PresetOption>
               <PresetOption
