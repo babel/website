@@ -63,6 +63,12 @@ const PIPELINE_PROPOSALS = {
   hack: "Hack",
 };
 
+const DECORATOR_PROPOSALS = {
+  "2021-12": "2021-12",
+  "2018-09": "2018-09",
+  legacy: "Legacy",
+};
+
 // These presets are deprecated. We only show them if they are enabled, so that
 // when they are enabled because of an old URL or local storage they can still
 // be disabled.
@@ -441,31 +447,27 @@ class ExpandedContainer extends Component<Props, State> {
               </PresetOption>
               <PresetOption
                 when={isStage2Enabled}
-                option="decoratorsLegacy"
+                option="decoratorsVersion"
                 presets={["stage-0", "stage-1", "stage-2"]}
               >
                 <span className={styles.presetsOptionsLabel}>
-                  Decorators mode
+                  Decorators version
                 </span>
                 <select
                   className={cx(styles.optionSelect, styles.presetOptionSelect)}
                   onChange={this._onPresetOptionChange(
-                    "decoratorsLegacy",
-                    t => t.value === "legacy"
+                    "decoratorsVersion",
+                    t => t.value
                   )}
                 >
-                  <option
-                    value="modern"
-                    selected={!presetsOptions.decoratorsLegacy}
-                  >
-                    Current Proposal
-                  </option>
-                  <option
-                    value="legacy"
-                    selected={presetsOptions.decoratorsLegacy}
-                  >
-                    Legacy
-                  </option>
+                  {Object.keys(DECORATOR_PROPOSALS).map(key => (
+                    <option
+                      value={key}
+                      selected={key === presetsOptions.decoratorsVersion}
+                    >
+                      {DECORATOR_PROPOSALS[key]}
+                    </option>
+                  ))}
                 </select>
               </PresetOption>
               <PresetOption
@@ -473,17 +475,20 @@ class ExpandedContainer extends Component<Props, State> {
                 option="decoratorsBeforeExport"
                 presets={["stage-0", "stage-1", "stage-2"]}
                 comment="Only works when legacy decorators are not enabled"
-                enabled={!presetsOptions.decoratorsLegacy}
+                enabled={presetsOptions.decoratorsVersion !== "legacy"}
               >
                 <span className={styles.presetsOptionsLabel}>
                   Decorators before
                   <code>export</code>
                 </span>
                 <input
-                  enabled={!presetsOptions.decoratorsLegacy}
+                  enabled={presetsOptions.decoratorsVersion !== "legacy"}
                   checked={presetsOptions.decoratorsBeforeExport}
                   ref={el => {
-                    if (el) el.indeterminate = presetsOptions.decoratorsLegacy;
+                    if (el) {
+                      el.indeterminate =
+                        presetsOptions.decoratorsVersion === "legacy";
+                    }
                   }}
                   className={styles.envPresetCheckbox}
                   type="checkbox"
