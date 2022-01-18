@@ -397,7 +397,7 @@ Type: `string | "current" | true`.
 
 If you want to compile against the current node version, you can specify `"node": true` or `"node": "current"`, which would be the same as `"node": process.versions.node`.
 
-Alternatively, you can specify node version in a browserslist query:
+Alternatively, you can specify the node version in a browserslist query:
 
 ```jsonc
 {
@@ -405,7 +405,7 @@ Alternatively, you can specify node version in a browserslist query:
 }
 ```
 
-In this case, browserslist will resolve it to the _latest_ version available in the `node-releases` library. Because Node.js may support new language features in minor releases, a program generated for Node.js 12.22 may throw a syntax error on Node.js 12.0. We recommend you always specify a minor version when using browserslist node queries:
+In this case, browserslist will resolve it to the _latest_ version available in the `node-releases` library. Because Node.js may support new language features in minor releases, a program generated for Node.js 12.22 may throw a syntax error on Node.js 12.0. We recommend that you always specify a minor version when using node queries with browserslist:
 
 ```json
 {
