@@ -349,7 +349,9 @@ Or an object of minimum environment versions to support:
 }
 ```
 
-Example environments: `chrome`, `opera`, `edge`, `firefox`, `safari`, `ie`, `ios`, `android`, `node`, `electron`.
+Supported environments: `android`, `chrome`, `edge`, `electron`, `firefox`, `ie`, `ios`, , `node`, `opera`, `rhino`, `safari`, `samsung`.
+
+If a minor version is not specified, Babel will interpret it as `MAJOR.0`. For example, `"node": 12` will be considered as Node.js 12.0.
 
 #### No targets
 
@@ -395,6 +397,21 @@ Type: `string | "current" | true`.
 
 If you want to compile against the current node version, you can specify `"node": true` or `"node": "current"`, which would be the same as `"node": process.versions.node`.
 
+Alternatively, you can specify the node version in a browserslist query:
+
+```jsonc
+{
+  "targets": "node 12" // not recommended
+}
+```
+
+In this case, browserslist will resolve it to the _latest_ version available in the `node-releases` library. Because Node.js may support new language features in minor releases, a program generated for Node.js 12.22 may throw a syntax error on Node.js 12.0. We recommend that you always specify a minor version when using node queries with browserslist:
+
+```json
+{
+  "targets": "node 12.0"
+}
+```
 #### `targets.safari`
 
 Type: `string | "tp"`.

@@ -83,93 +83,7 @@ For more information on setting options for a preset, refer to the [preset optio
 
 `string | Array<string> | { [string]: string }`, defaults to the top-level `targets` option if no browserslist-related option is specified in `@babel/preset-env`'s docs, otherwise to `{}`.
 
-Describes the environments you support/target for your project.
-
-This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query (with [caveats](#ineffective-browserslist-queries)):
-
-```json
-{
-  "targets": "> 0.25%, not dead"
-}
-```
-
-Or an object of minimum environment versions to support:
-
-```json
-{
-  "targets": {
-    "chrome": "58",
-    "ie": "11"
-  }
-}
-```
-
-Example environments: `chrome`, `opera`, `edge`, `firefox`, `safari`, `ie`, `ios`, `android`, `node`, `electron`.
-
-#### No targets
-
-Since one of the original goals of `preset-env` was to help users easily transition from using `preset-latest`, it behaves similarly when no targets are specified: `preset-env` will transform all ES2015-ES2020 code to be ES5 compatible.
-
-> We don't recommend using `preset-env` this way because it doesn't take advantage of its ability to target specific environments/versions.
-
-```json
-{
-  "presets": ["@babel/preset-env"]
-}
-```
-
-Because of this, `preset-env`'s behavior is different than [browserslist](https://github.com/browserslist/browserslist#queries): it does _not_ use the `defaults` query when no targets are found in your Babel _or_ browserslist config(s). If you want to use the `defaults` query, you will need to explicitly pass it as a target:
-
-```json
-{
-  "presets": [["@babel/preset-env", { "targets": "defaults" }]]
-}
-```
-
-We recognize this isn’t ideal and will be revisiting this in Babel v8.
-
-#### `targets.esmodules`
-
-`boolean`.
-
-You may also target browsers supporting ES Modules (https://www.ecma-international.org/ecma-262/6.0/#sec-modules). When the `esmodules` target is specified, the `browsers` target and `browserslist`'s targets will be ignored. It is _different_, however, from top level [`targets.esmodules`](https://babeljs.io/docs/en/options#targetsesmodules) option for backward compat reasons. You can use this approach in combination with `<script type="module"></script>` to conditionally serve smaller scripts to users (https://jakearchibald.com/2017/es-modules-in-browsers/#nomodule-for-backwards-compatibility).
-
-```json
-{
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "esmodules": true
-        }
-      }
-    ]
-  ]
-}
-```
-
-#### `targets.node`
-
-`string | "current"`.
-
-If you want to compile against the current node version, you can specify `"node": "current"`, which would be the same as `"node": process.versions.node`.
-
-#### `targets.safari`
-
-`string | "tp"`.
-
-If you want to compile against the [technology preview](https://developer.apple.com/safari/technology-preview/) version of Safari, you can specify `"safari": "tp"`.
-
-#### `targets.browsers`
-
-`string | Array<string>`.
-
-A query to select browsers (ex: last 2 versions, > 5%, safari tp) using [browserslist](https://github.com/ai/browserslist).
-
-Note, browsers' results are overridden by explicit items from `targets`.
-
-> Note: this will be removed in later version in favor of just setting "targets" to a query directly.
+For usage, refer to the [`targets` option][options.md#targets] documentation.
 
 ### `bugfixes`
 
@@ -445,7 +359,7 @@ environment(s). Enable this option if you want to force running _all_
 transforms, which is useful if the output will be run through UglifyJS or an
 environment that only supports ES5.
 
-> NOTE: If you require an alternative minifier which _does_ support ES6 syntax, 
+> NOTE: If you require an alternative minifier which _does_ support ES6 syntax,
 > we recommend [Terser](https://www.npmjs.com/package/terser).
 
 ### `configPath`
