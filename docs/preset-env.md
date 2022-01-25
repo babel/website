@@ -83,7 +83,7 @@ For more information on setting options for a preset, refer to the [preset optio
 
 `string | Array<string> | { [string]: string }`, defaults to the top-level `targets` option if no browserslist-related option is specified in `@babel/preset-env`'s docs, otherwise to `{}`.
 
-For usage, refer to the [`targets` option][options.md#targets] documentation.
+For usage, refer to the [`targets` option](options.md#targets) documentation.
 
 ### `bugfixes`
 
