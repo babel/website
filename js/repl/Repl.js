@@ -5,10 +5,12 @@ import "regenerator-runtime/runtime";
 import { cx, css } from "emotion";
 import debounce from "lodash.debounce";
 import React from "react";
+import JSZip from "jszip";
 import { prettySize, compareVersions } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
 import ReplOptions from "./ReplOptions";
+import baseBabelConfig from "./baseBabelConfig";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
 import loadBundle from "./loadBundle";
@@ -244,6 +246,7 @@ class Repl extends React.Component<Props, State> {
           showOfficialExternalPlugins={state.showOfficialExternalPlugins}
           loadingExternalPlugins={state.loadingExternalPlugins}
           onAssumptionsChange={this._onAssumptionsChange}
+          onDownloadRepl={this._onDownloadRepl}
         />
         <div className={styles.wrapperPanels}>
           <div
@@ -502,6 +505,54 @@ class Repl extends React.Component<Props, State> {
         result.meta.rawSize = prettySize(result.meta.rawSize);
         this.setState(result, setStateCallback);
       });
+  };
+
+  _onDownloadRepl = (e: SyntheticEvent<*>) => {
+    const {
+      externalPlugins,
+      sourceType,
+      envConfig,
+      presets,
+      runtimePolyfillState,
+    } = this.state;
+    const zip = new JSZip();
+    const folder = zip.folder("my-babel-repl");
+
+    const packageJson = {
+      name: "my-babel-repl",
+      private: true,
+      version: "1.0.0",
+      main: "lib/index.js",
+      scripts: {
+        babel: "babel src --out-dir lib",
+      },
+      devDependencies: externalPlugins.reduce((prev: Object, plugin) => {
+        prev[plugin.name] = plugin.version;
+        return prev;
+      }, {}),
+      babel: baseBabelConfig({
+        sourceType,
+        envConfig,
+        presets,
+        plugins: externalPlugins.map(plugin => plugin.name),
+        sourceMap: runtimePolyfillState.isEnabled,
+      }),
+    };
+
+    packageJson.devDependencies["@babel/core"] = "latest";
+    packageJson.devDependencies["@babel/cli"] = "latest";
+    folder.file("package.json", JSON.stringify(packageJson));
+
+    const src = folder.folder("src");
+    src.file("index.js", this.state.code);
+    zip.generateAsync({ type: "blob" }).then(v => {
+      const anchor = document.createElement("a");
+      anchor.href = URL.createObjectURL(v);
+      anchor.download = "my-babel-repl.zip";
+      anchor.click();
+      document.removeChild(anchor);
+    });
+    e.preventDefault();
   };
 
   // Debounce compilation since it's expensive.
