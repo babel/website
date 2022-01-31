@@ -40,7 +40,7 @@ For browser- or Electron-based projects, we recommend using a [`.browserslistrc`
 
 By default `@babel/preset-env` will use [browserslist config sources](https://github.com/ai/browserslist#queries) _unless_ either the [targets](#targets) or [ignoreBrowserslistConfig](#ignorebrowserslistconfig) options are set.
 
-> Please note that if you are relying on browserslist's defaults query (either explicitly or by having no browserslist config), you will want to check out the [No targets](#no-targets) section for information on preset-env's behavior.
+> Please note that if you are relying on browserslist's defaults query (either explicitly or by having no browserslist config), you will want to check out the [No targets](options.md#no-targets) section for information on preset-env's behavior.
 
 For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
 
