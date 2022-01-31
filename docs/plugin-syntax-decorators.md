@@ -40,7 +40,25 @@ require("@babel/core").transformSync("code", {
 
 ## Options
 
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.17.0` | Added the `version` option with support for `"2021-12"`, `"2018-09"` and `"legacy"` |
+</details>
+
+### `version`
+
+`"2021-12"`, `"2018-09"` or `"legacy"`. Defaults to `"2018-09"`.
+
+Selects the decorators proposal to use:
+- `legacy` is the original Stage 1 one
+- `"2018-09"` is the proposal version that was initially promoted to Stage 2 presented to TO39 in Sept 2018.  You can read more about it at [`tc39/proposal-decorators@7fa580b40f`](https://github.com/tc39/proposal-decorators/tree/7fa580b40f2c19c561511ea2c978e307ae689a1b)
+- `"2021-12"` is the proposal version as it was presented to TC39 in Dec 2021. You can read more about it at [`tc39/proposal-decorators@d6c056fa06`](https://github.com/tc39/proposal-decorators/tree/d6c056fa061646178c34f361bad33d583316dc85).
+
 ### `legacy`
+
+> **⚠️ DEPRECATED**: Use `version: "legacy"` instead. This option is a legacy alias.
 
 `boolean`, defaults to `false`.
 
@@ -49,6 +67,11 @@ Use the legacy (stage 1) decorators syntax.
 ### `decoratorsBeforeExport`
 
 `boolean`
+
+This option:
+- is disallowed when using `version: "legacy"`;
+- is required when using `version: "2018-09"`;
+- is optional and defaults to `false` when using `version: "2021-12"`.
 
 ```js
 // decoratorsBeforeExport: true
