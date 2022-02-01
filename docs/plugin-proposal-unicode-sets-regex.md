@@ -4,7 +4,7 @@ title: @babel/plugin-proposal-unicode-sets-regex
 sidebar_label: unicode-sets-regex
 ---
 
-This plugins transform regular expression using the `v` flag, introduced by the [RegExp set notation + properties of strings](https://github.com/tc39/proposal-regexp-set-notation) proposal, to regular expressions that use the `u` flag.
+This plugin transforms regular expressions using the `v` flag, introduced by the [RegExp set notation + properties of strings](https://github.com/tc39/proposal-regexp-set-notation) proposal, to regular expressions that use the `u` flag.
 
 ## Example
 
