@@ -150,7 +150,7 @@ You can also test the new experimental implementation that will be enabled by de
 require("@babel/register/experimental-worker");
 ```
 
-It internally runs Babel asynchronously, so it's compatible with [`.mjs` configuration files](https://babeljs.io/docs/en/config-files#configuration-file-types). You can already use it as a replacement of `@babel/register` with a few caveats:
+It internally runs Babel asynchronously, so it's compatible with [`.mjs` configuration files](config-files.md#configuration-file-types). You can already use it as a replacement of `@babel/register` with a few caveats:
 - If you programmatically specify `@babel/register` options (using `require("@babel/register")({ /* ... options */ })`), you must make sure that they are serializable. This means that you cannot pass plugin functions defined inline, but you must move them to a separate `./my-plugin.js` file or to a `babel.config.js` file.
 - The new implementation is still experimental: it _should_ have the same features as the existing one, but there may be some new bugs and regressions.
 
