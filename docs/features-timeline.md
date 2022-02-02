@@ -11,8 +11,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 ## Babel 7.17.0
 
-<!-- TODO: Update this link with the release post -->
-[blog post](https://babeljs.io/blog/TODO_UPDATE_LINK/7.17.0)
+[blog post](https://babeljs.io/blog/2022/02/02/7.17.0)
 
 - Support for the new version of the [decorators](https://github.com/tc39/proposal-decorators) Stage 2 proposal
   ```js
