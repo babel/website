@@ -18,42 +18,22 @@ $ npm install @babel/plugin-syntax-pipeline-operator
 
 ### With a configuration file (Recommended)
 
-For [minimal F# pipes](https://github.com/tc39/proposal-pipeline-operator/):
+With `^^` topic token:
 
 ```json
 {
   "plugins": [
-    [ "@babel/plugin-syntax-pipeline-operator", { "proposal": "minimal" } ]
+    [ "@babel/plugin-syntax-pipeline-operator", { "topicToken": "^^" } ]
   ]
 }
 ```
 
-For [F# pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipelines/):
+With `@@` topic token:
 
 ```json
 {
   "plugins": [
-    [ "@babel/plugin-syntax-pipeline-operator", { "proposal": "fsharp" } ]
-  ]
-}
-```
-
-For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `%` topic token:
-
-```json
-{
-  "plugins": [
-    [ "@babel/plugin-syntax-pipeline-operator", { "proposal": "hack", "topicToken": "%" } ]
-  ]
-}
-```
-
-For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `#` topic token:
-
-```json
-{
-  "plugins": [
-    [ "@babel/plugin-syntax-pipeline-operator", { "proposal": "hack", "topicToken": "#" } ]
+    [ "@babel/plugin-syntax-pipeline-operator", { "topicToken": "@@" } ]
   ]
 }
 ```
@@ -64,42 +44,22 @@ Because this plugin requires a configuration option, it [cannot be directly conf
 
 ### Via Node API
 
-For [minimal F# pipes](https://github.com/tc39/proposal-pipeline-operator/):
+With `^^` topic token:
 
 ```javascript
 require("@babel/core").transformSync("code", {
   plugins: [
-    [ "@babel/plugin-syntax-pipeline-operator", { proposal: "minimal" } ],
+    [ "@babel/plugin-syntax-pipeline-operator", { topicToken: "^^" } ],
   ],
 });
 ```
 
-For [F# pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipelines/):
+With `@@` topic token:
 
 ```javascript
 require("@babel/core").transformSync("code", {
   plugins: [
-    [ "@babel/plugin-syntax-pipeline-operator", { proposal: "fsharp" } ],
-  ],
-});
-```
-
-For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `%` topic token:
-
-```javascript
-require("@babel/core").transformSync("code", {
-  plugins: [
-    [ "@babel/plugin-syntax-pipeline-operator", { proposal: "hack", topicToken: "%" } ],
-  ],
-});
-```
-
-For [Hack pipes](https://github.com/js-choi/proposal-hack-pipes/) with `#` topic token:
-
-```javascript
-require("@babel/core").transformSync("code", {
-  plugins: [
-    [ "@babel/plugin-syntax-pipeline-operator", { proposal: "hack", topicToken: "#" } ],
+    [ "@babel/plugin-syntax-pipeline-operator", { topicToken: "@@" } ],
   ],
 });
 ```
