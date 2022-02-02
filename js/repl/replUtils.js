@@ -125,11 +125,16 @@ export const configToState = (
 export const persistedStateToPresetsOptions = (
   persistedState: ReplState
 ): PresetsOptions => {
+  const decoratorsVersion =
+    // support old REPL state
+    persistedState.decoratorsLegacy
+      ? "legacy"
+      : persistedState.decoratorsVersion;
+  const decoratorsLegacy = decoratorsVersion === "legacy";
   return {
-    decoratorsLegacy: !!persistedState.decoratorsLegacy,
+    decoratorsVersion,
     decoratorsBeforeExport:
-      !persistedState.decoratorsLegacy &&
-      !!persistedState.decoratorsBeforeExport,
+      !decoratorsLegacy && !!persistedState.decoratorsBeforeExport,
     pipelineProposal: persistedState.pipelineProposal || "minimal",
     reactRuntime: persistedState.reactRuntime || "classic",
   };

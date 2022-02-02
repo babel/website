@@ -129,15 +129,21 @@ export default function compile(code: string, config: CompileConfig): Return {
           return ["env", presetEnvOptions];
         }
         if (/^stage-[0-2]$/.test(preset)) {
-          const decoratorsLegacy = presetsOptions.decoratorsLegacy;
+          const decoratorsLegacy =
+            presetsOptions.decoratorsVersion === "legacy" || undefined;
           const decoratorsBeforeExport = decoratorsLegacy
             ? undefined
             : presetsOptions.decoratorsBeforeExport;
+          const decoratorsVersion = decoratorsLegacy
+            ? undefined
+            : presetsOptions.decoratorsVersion;
 
           return [
             preset,
             {
+              // pass decoratorsLegacy for Babel < 7.17
               decoratorsLegacy,
+              decoratorsVersion,
               decoratorsBeforeExport,
               pipelineProposal: presetsOptions.pipelineProposal,
             },

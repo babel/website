@@ -8,7 +8,7 @@ export type BabelPlugin = {
 };
 
 export type PresetsOptions = {
-  decoratorsLegacy: boolean,
+  decoratorsVersion: "2021-12" | "2018-09" | "legacy",
   decoratorsBeforeExport: boolean,
   pipelineProposal: "minimal" | "fsharp" | "hack",
   reactRuntime: "classic" | "automatic",
@@ -133,7 +133,8 @@ export type ReplState = {
   showSidebar: boolean,
   targets: string,
   version: any,
-  decoratorsLegacy: boolean,
+  decoratorsVersion: "2021-12" | "2018-09" | "legacy",
+  decoratorsLegacy?: boolean, // deprecated since 7.17
   decoratorsBeforeExport: boolean,
   pipelineProposal: "minimal" | "fsharp" | "hack",
   reactRuntime: "classic" | "automatic",
