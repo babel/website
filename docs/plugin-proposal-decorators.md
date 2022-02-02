@@ -80,16 +80,30 @@ require("@babel/core").transformSync("code", {
 
 ## Options
 
-### `decoratorsBeforeExport`
-
-`boolean`
-
 <details>
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
-| `v7.2.0` | `decoratorsBeforeExport` must be specified. Before that it defaults to `false` |
+| `v7.17.0` | Added the `version` option with support for `"2021-12"`, `"2018-09"` and `"legacy"` |
 </details>
+
+### `version`
+
+`"2021-12"`, `"2018-09"` or `"legacy"`. Defaults to `"2018-09"`.
+
+Selects the decorators proposal to use:
+- `"2021-12"` is the proposal version as it was presented to TC39 in Dec 2021. You can read more about it at [`tc39/proposal-decorators@d6c056fa06`](https://github.com/tc39/
+- `"2018-09"` is the proposal version that was initially promoted to Stage 2 presented to TC39 in Sept 2018.  You can read more about it at [`tc39/proposal-decorators@7fa580b40f`](https://github.com/tc39/proposal-decorators/tree/7fa580b40f2c19c561511ea2c978e307ae689a1b).proposal-decorators/tree/d6c056fa061646178c34f361bad33d583316dc85).
+- `legacy` is the original Stage 1 proposal, defined at [`wycats/javascript-decorators@e1bf8d41bf`](https://github.com/wycats/javascript-decorators/blob/e1bf8d41bfa2591d949dd3bbf013514c8904b913/README.md).
+
+### `decoratorsBeforeExport`
+
+This option:
+- is disallowed when using `version: "legacy"`;
+- is required when using `version: "2018-09"`;
+- is optional and defaults to `false` when using `version: "2021-12"`.
+
+`boolean`
 
 ```js
 // decoratorsBeforeExport: false
@@ -106,6 +120,8 @@ For more information, check out: [tc39/proposal-decorators#69](https://github.co
 
 ### `legacy`
 
+> **⚠️ DEPRECATED**: Use `version: "legacy"` instead. This option is a legacy alias.
+
 `boolean`, defaults to `false`.
 
 Use the legacy (stage 1) decorators syntax and behavior.
@@ -114,15 +130,13 @@ Use the legacy (stage 1) decorators syntax and behavior.
 
 If you are including your plugins manually and using `@babel/plugin-proposal-class-properties`, make sure that `@babel/plugin-proposal-decorators` comes _before_ `@babel/plugin-proposal-class-properties`.
 
-When using the `legacy: true` mode, the [`setPublicClassFields` assumption](assumptions.md#setpublicclassfields) must be enabled to support the `@babel/plugin-proposal-decorators`.
-
 Wrong:
 
 ```json
 {
   "plugins": [
     "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-proposal-decorators"
+    ["@babel/plugin-proposal-decorators", { "legacy": true }]
   ]
 }
 ```
@@ -132,20 +146,8 @@ Right:
 ```json
 {
   "plugins": [
-    "@babel/plugin-proposal-decorators",
-    "@babel/plugin-proposal-class-properties"
-  ]
-}
-```
-
-```json
-{
-  "assumptions": {
-    "setPublicClassFields": true
-  },
-  "plugins": [
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
-    ["@babel/plugin-proposal-class-properties"]
+    "@babel/plugin-proposal-class-properties"
   ]
 }
 ```

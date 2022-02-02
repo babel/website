@@ -40,27 +40,6 @@ require("@babel/core").transformSync("code", {
 
 ## Options
 
-### `legacy`
-
-`boolean`, defaults to `false`.
-
-Use the legacy (stage 1) decorators syntax.
-
-### `decoratorsBeforeExport`
-
-`boolean`
-
-```js
-// decoratorsBeforeExport: true
-@decorator
-export class Foo {}
-
-// decoratorsBeforeExport: false
-export @decorator class Bar {}
-```
-
-This option was added to help tc39 collect feedback from the community by allowing experimentation with both possible syntaxes.
-
-For more information, check out: [tc39/proposal-decorators#69](https://github.com/tc39/proposal-decorators/issues/69)
+This plugin accepts the same options as [`@babel/plugin-proposal-decorators`](plugin-proposal-decorators.md).
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
