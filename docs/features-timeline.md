@@ -7,6 +7,39 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="Feb 2022">
+
+## Babel 7.17.0
+
+<!-- TODO: Update this link with the release post -->
+[blog post](https://babeljs.io/blog/TODO_UPDATE_LINK/7.17.0)
+
+- Support for the new version of the [decorators](https://github.com/tc39/proposal-decorators) Stage 2 proposal
+  ```js
+  class A {
+    @reactive #x = 2;
+
+    @logger
+    method() {
+      this.#x++;
+    }
+  }
+  ```
+- Support for the [RegExp set notation and properties of strings](https://github.com/tc39/proposal-regexp-set-notation/) Stage 2 proposal
+  ```js
+  /[\p{RGI_Emoji}&&[\0-\uFFFF]]/v;
+  ```
+- Parser support for the [private destructuring](https://github.com/tc39/proposal-destructuring-private) Stage 2 proposal
+  ```js
+  class A {
+    #x = 2;
+    method() {
+      const { #x: x } = this;
+    }
+  }
+  ```
+
+</li>
 <li data-date="Oct 2021">
 
 ## Babel 7.16.0
