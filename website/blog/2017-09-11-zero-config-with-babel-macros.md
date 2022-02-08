@@ -114,7 +114,7 @@ Now, when that code is run, the `scope` function does some pretty nifty things:
 
 **Node:**
 
-<img alt="Node console scoping add100" src="https://github.com/mattphillips/babel-plugin-console/raw/53536cba919d5be49d4f66d957769c07ca7a4207/assets/add100-node.png" width="372">
+<img alt="Node console scoping add100" src="https://github.com/mattphillips/babel-plugin-console/raw/53536cba919d5be49d4f66d957769c07ca7a4207/assets/add100-node.png" width="372" />
 
 Cool right? And using it is just like using any other dependency, except it has all the benefits mentioned above.
 
