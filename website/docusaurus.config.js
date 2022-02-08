@@ -85,6 +85,24 @@ const DEFAULT_LANGUAGE = "en";
 const GITHUB_URL = "https://github.com/babel/website";
 
 const siteConfig = {
+  baseUrl: "/",
+  onBrokenLinks: "ignore", // enable once everything works fine
+  customFields: {
+    baseUrl: "/",
+    // getDocUrl: (doc, language) =>
+    //   `/docs/${language || DEFAULT_LANGUAGE}/${doc}`,
+    // getPageUrl: (page, language) => `/${language || DEFAULT_LANGUAGE}/${page}`,
+    // getVideoUrl: (videos, language) =>
+    //   `/${language || DEFAULT_LANGUAGE}/${videos}`,
+    blogSidebarCount: "ALL",
+    users,
+    sponsors,
+    videos,
+    team,
+    tools,
+    toolsMD,
+    setupBabelrc,
+  },
   // useEnglishUrl: true, not needed
   presets: [
     [
@@ -136,20 +154,6 @@ const siteConfig = {
           );
         },
       },
-      blogSidebarCount: "ALL",
-      users,
-      sponsors,
-      videos,
-      team,
-      tools,
-      toolsMD,
-      setupBabelrc,
-      getDocUrl: (doc, language) =>
-        `/docs/${language || DEFAULT_LANGUAGE}/${doc}`,
-      getPageUrl: (page, language) =>
-        `/${language || DEFAULT_LANGUAGE}/${page}`,
-      getVideoUrl: (videos, language) =>
-        `/${language || DEFAULT_LANGUAGE}/${videos}`,
     },
     algolia: {
       apiKey: "d42906b043c5422ea07b44fd49c40a0d",
@@ -163,9 +167,9 @@ const siteConfig = {
       },
       items: [
         { to: "docs/", label: "Docs", position: "right" },
-        { to: "setup", label: "Setup", position: "right" },
-        { to: "repl", label: "Try it out", position: "right" },
-        { to: "videos", label: "Videos", position: "right" },
+        // { to: "setup", label: "Setup", position: "right" },
+        // { to: "repl", label: "Try it out", position: "right" },
+        // { to: "videos", label: "Videos", position: "right" },
         { type: "search" },
         {
           href: "https://opencollective.com/babel",
@@ -173,12 +177,13 @@ const siteConfig = {
           position: "right",
         },
 
-        { to: "team", label: "Team", position: "right" },
+        // { to: "team", label: "Team", position: "right" },
         {
           href: "https://github.com/babel/babel",
           label: "GitHub",
           position: "right",
         },
+        { to: "blog", label: "Blog", position: "right" },
       ],
     },
   },
@@ -187,7 +192,6 @@ const siteConfig = {
   tagline: "The compiler for next generation JavaScript",
   url: "https://babeljs.io",
   // v6Url: "https://v6.babeljs.io/docs/setup/", not valid but needed
-  baseUrl: "/",
   // getDocUrl: (doc, language) =>
   //   `${siteConfig.baseUrl}docs/${language || DEFAULT_LANGUAGE}/${doc}`,
   // getPageUrl: (page, language) =>

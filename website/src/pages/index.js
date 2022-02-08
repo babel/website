@@ -1,6 +1,11 @@
-const React = require("react");
-const translate = require("../../server/translate.js").translate;
-const siteConfig = require(process.cwd() + "/siteConfig.js");
+// const React = require("react");
+import React from "react";
+import "../../static/css/index.css";
+// const translate = require("../../server/translate.js").translate;
+import Translate from "@docusaurus/Translate";
+import Layout from "@theme/Layout";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+// const siteConfig = require(process.cwd() + "/siteConfig.js");
 
 class Button extends React.Component {
   render() {
@@ -30,18 +35,20 @@ const DummyMiniRepl = () => {
   return <div className="dummy-hero-repl" />;
 };
 const MiniRepl = () => {
+  const { siteConfig } = useDocusaurusContext();
+  const { customFields } = siteConfig;
   return (
     <div className="hero-repl" hidden={true}>
       <div className="hero-repl__editor">
         <div className="hero-repl__pane hero-repl__pane--left">
           <h3>
-            <translate>Put in next-gen JavaScript</translate>
+            <Translate>Put in next-gen JavaScript</Translate>
           </h3>
           <div id="hero-repl-in" className="hero-repl__code" />
         </div>
         <div className="hero-repl__pane hero-repl__pane--right">
           <h3>
-            <translate>Get browser-compatible JavaScript out</translate>
+            <Translate>Get browser-compatible JavaScript out</Translate>
           </h3>
           <div id="hero-repl-out" className="hero-repl__code" />
           <div className="hero-repl__error" />
@@ -56,12 +63,18 @@ const MiniRepl = () => {
         src="https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js"
         defer={true}
       />
-      <script src={`${siteConfig.baseUrl}js/build/minirepl.js`} defer={true} />
+      <script
+        // src={`${customFields.baseUrl}js/build/minirepl.js`}
+        defer={true}
+      />
     </div>
   );
 };
 
 const GetStarted = ({ language }) => {
+  const { siteConfig } = useDocusaurusContext();
+  const { customFields } = siteConfig;
+
   return (
     <div
       className="blockElement"
@@ -74,11 +87,11 @@ const GetStarted = ({ language }) => {
     >
       <p>
         Learn more about Babel with our{" "}
-        <a href={siteConfig.getDocUrl("index.html", language)}>
+        {/* <a href={customFields.getDocUrl("index.html", language)}>
           getting started guide
-        </a>{" "}
+        </a>{" "} */}
         or check out some{" "}
-        <a href={siteConfig.getPageUrl("videos.html", language)}>videos</a> on
+        {/* <a href={customFields.getPageUrl("videos.html", language)}>videos</a> on */}
         the people and concepts behind it.
       </p>
     </div>
@@ -87,7 +100,10 @@ const GetStarted = ({ language }) => {
 
 const SponsorTier = props => {
   let { min, max } = props;
-  const tierSponsors = siteConfig.sponsors.filter(sponsor => {
+  const { siteConfig } = useDocusaurusContext();
+  const { customFields } = siteConfig;
+
+  const tierSponsors = customFields.sponsors.filter(sponsor => {
     let value = Math.max(sponsor.monthly, (sponsor.yearly || 0) / 12);
     return +value >= min && (!max || (max && +value < max));
   });
@@ -131,13 +147,18 @@ const ocButton = {
 };
 
 const OpenCollectiveSponsors = ({ language }) => {
+  const { siteConfig } = useDocusaurusContext();
+  const { customFields } = siteConfig;
+
   return (
     <div className="container paddingBottom">
       <div className="wrapper productShowcaseSection">
         <h3>Current Sponsors</h3>
         <p>
           We&apos;re a small group of{" "}
-          <a href={siteConfig.getPageUrl("team.html", language)}>volunteers</a>{" "}
+          {/* <a href={customFields.getPageUrl("team.html", language)}>
+            volunteers
+          </a>{" "} */}
           that spend their free time maintaining this project, funded by the
           community. If Babel has benefited you in your work, becoming a{" "}
           <a href="https://github.com/babel/babel/blob/main/CONTRIBUTING.md">
@@ -191,10 +212,10 @@ const Hero = ({ language }) => (
     </a>
     <div className="hero__container">
       <h1>
-        <translate>Babel is a JavaScript compiler.</translate>
+        <Translate>Babel is a JavaScript compiler.</Translate>
       </h1>
       <p>
-        <translate>Use next generation JavaScript, today.</translate>
+        <Translate>Use next generation JavaScript, today.</Translate>
       </p>
 
       <div className="hero__announcement">
@@ -215,18 +236,22 @@ const Hero = ({ language }) => (
 );
 
 const Index = ({ language }) => {
+  const { siteConfig } = useDocusaurusContext();
+  const { customFields } = siteConfig;
   return (
-    <div>
-      <Hero language={language} />
+    <Layout title={siteConfig?.title} description={siteConfig?.tagline}>
+      <div>
+        <Hero language={language} />
 
-      <div className="mainContainer" style={{ padding: 0 }}>
-        <HomeContainer>
-          <GetStarted language={language} />
-        </HomeContainer>
-        <OpenCollectiveSponsors language={language} />
+        <div className="mainContainer" style={{ padding: 0 }}>
+          <HomeContainer>
+            <GetStarted language={language} />
+          </HomeContainer>
+          <OpenCollectiveSponsors language={language} />
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
-module.exports = Index;
+export default Index;
