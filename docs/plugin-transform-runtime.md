@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-runtime
-title: @babel/plugin-transform-runtime
+title: "@babel/plugin-transform-runtime"
 ---
 
 A plugin that enables the re-use of Babel's injected helper code to save on codesize.

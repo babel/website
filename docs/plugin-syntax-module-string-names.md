@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-module-string-names
-title: @babel/plugin-syntax-module-string-names
+title: "@babel/plugin-syntax-module-string-names"
 sidebar_label: syntax-module-string-names
 ---
 

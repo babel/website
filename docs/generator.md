@@ -1,6 +1,6 @@
 ---
 id: babel-generator
-title: @babel/generator
+title: "@babel/generator"
 ---
 
 > Turns an AST into code.

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-partial-application
-title: @babel/plugin-syntax-partial-application
+title: "@babel/plugin-syntax-partial-application"
 sidebar_label: syntax-partial-application
 ---
 

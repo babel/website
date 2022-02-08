@@ -1,6 +1,6 @@
 ---
 id: babel-parser
-title: @babel/parser
+title: "@babel/parser"
 ---
 
 <p align="left">

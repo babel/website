@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-react-jsx-source
-title: @babel/plugin-transform-react-jsx-source
+title: "@babel/plugin-transform-react-jsx-source"
 sidebar_label: react-jsx-source
 ---
 

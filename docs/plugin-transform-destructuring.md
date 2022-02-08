@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-destructuring
-title: @babel/plugin-transform-destructuring
+title: "@babel/plugin-transform-destructuring"
 sidebar_label: destructuring
 ---
 

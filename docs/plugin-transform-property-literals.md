@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-property-literals
-title: @babel/plugin-transform-property-literals
+title: "@babel/plugin-transform-property-literals"
 sidebar_label: property-literals
 ---
 

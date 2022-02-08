@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-top-level-await
-title: @babel/plugin-syntax-top-level-await
+title: "@babel/plugin-syntax-top-level-await"
 sidebar_label: syntax-top-level-await
 ---
 

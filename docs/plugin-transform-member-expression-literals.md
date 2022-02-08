@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-member-expression-literals
-title: @babel/plugin-transform-member-expression-literals
+title: "@babel/plugin-transform-member-expression-literals"
 sidebar_label: member-expression-literals
 ---
 

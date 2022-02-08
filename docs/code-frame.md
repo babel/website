@@ -1,6 +1,6 @@
 ---
 id: babel-code-frame
-title: @babel/code-frame
+title: "@babel/code-frame"
 ---
 
 ## Install

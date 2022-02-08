@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-partial-application
-title: @babel/plugin-proposal-partial-application
+title: "@babel/plugin-proposal-partial-application"
 sidebar_label: partial-application
 ---
 
