@@ -86,16 +86,18 @@ require("@babel/core").transformSync("code", {
 
 ### `corejs`
 
-`false`, `2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `false`.
+<!-- Todo: strek -->
+<!-- `false`, `2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `false`. -->
 
 e.g. `['@babel/plugin-transform-runtime', { corejs: 3 }],`
 
-<details>
+<!-- Todo: strek -->
+<!-- <details>
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
 | `v7.4.0` | Supports `{ proposals: boolean }` |
-</details>
+</details> -->
 
 Specifying a number will rewrite the helpers that need polyfillable APIs to reference helpers from that (major) version of `core-js` instead
 Please note that `corejs: 2` only supports global variables (e.g. `Promise`) and static properties (e.g. `Array.from`), while `corejs: 3` also supports instance properties (e.g. `[].includes`).
