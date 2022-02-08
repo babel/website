@@ -4,12 +4,13 @@ const fs = require("fs");
 const cheerio = require("cheerio");
 
 const articles = [
-  {
-    url: "2021/05/10/funding-update",
-    title: "Babel is used by millions, so why are we running out of money?",
-    description:
-      "Since 2018, Babel has been doing a funding experiment: can full time work on Babel be sustained? We’ve learned the answer might be no.",
-  },
+  // Todo: strek
+  // {
+  //   url: "2021/05/10/funding-update",
+  //   title: "Babel is used by millions, so why are we running out of money?",
+  //   description:
+  //     "Since 2018, Babel has been doing a funding experiment: can full time work on Babel be sustained? We’ve learned the answer might be no.",
+  // },
 ];
 
 for (const { url, title, description } of articles) {
