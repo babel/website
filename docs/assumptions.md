@@ -7,11 +7,12 @@ id: assumptions
 <script type="module" src="/js/components/mini-repl.js"></script>
 <script type="module" src="/js/components/assumption-repl.js"></script>
 
-<style>
+<!-- Todo: strek -->
+<!-- <style>
 .assumption-input {
   display: none;
 }
-</style>
+</style> -->
 
 By default Babel tries to compile your code so that it matches the native behavior as closely as possible. However, this sometimes means generating more output code, or slower output code, just to support some edge cases you don't care about.
 

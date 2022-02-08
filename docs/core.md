@@ -303,7 +303,8 @@ Each `ConfigItem` exposes all of the information Babel knows. The fields are:
 
 ## DEFAULT_EXTENSIONS
 
-> babel.DEFAULT_EXTENSIONS: ReadonlyArray<string>
+<!-- Todo: strek -->
+<!-- > babel.DEFAULT_EXTENSIONS: ReadonlyArray<string> -->
 
 A list of default extensions supported by babel (".js", ".jsx", ".es6", ".es", ".mjs", "cjs").
 This list is used by @babel/register and @babel/cli to determine which files need transpiling.

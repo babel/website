@@ -173,6 +173,9 @@ require("@babel/parser").parse("code", {
 
 #### Language extensions
 
+{/*  Todo: strek  */}
+{/* | `flowComments` ([docs](https://flow.org/en/docs/types/comments/)) | `/*:: type Foo = {...}; */`  */}
+
 <details>
   <summary>History</summary>
 | Version | Changes |
@@ -182,10 +185,11 @@ require("@babel/parser").parse("code", {
 | Name | Code Example |
 |------|--------------|
 | `flow` ([repo](https://github.com/facebook/flow)) | `var a: string = "";` |
-| `flowComments` ([docs](https://flow.org/en/docs/types/comments/)) | `/*:: type Foo = {...}; */` |
 | `jsx` ([repo](https://facebook.github.io/jsx/)) | `<a attr="b">{s}</a>` |
 | `typescript` ([repo](https://github.com/Microsoft/TypeScript)) | `var a: string = "";` |
 | `v8intrinsic` | `%DebugPrint(foo);` |
+
+
 
 #### ECMAScript [proposals](https://github.com/babel/proposals)
 
