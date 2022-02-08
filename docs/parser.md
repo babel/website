@@ -182,6 +182,7 @@ require("@babel/parser").parse("code", {
 | --- | --- |
 | `v7.6.0` | Added `v8intrinsic` |
 </details>
+
 | Name | Code Example |
 |------|--------------|
 | `flow` ([repo](https://github.com/facebook/flow)) | `var a: string = "";` |

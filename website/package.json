@@ -4,7 +4,8 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "deploy": "docusaurus publish",
-    "write-translations": "docusaurus-write-translations"
+    "write-translations": "docusaurus-write-translations",
+    "serve": "docusaurus serve"
   },
   "devDependencies": {
     "@docusaurus/core": "^2.0.0-beta.15",
