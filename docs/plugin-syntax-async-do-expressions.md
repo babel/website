@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-async-do-expressions
-title: @babel/plugin-syntax-async-do-expressions
+title: "@babel/plugin-syntax-async-do-expressions"
 sidebar_label: syntax-async-do-expressions
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-async-do-expressions
-title: @babel/plugin-proposal-async-do-expressions
+title: "@babel/plugin-proposal-async-do-expressions"
 sidebar_label: async-do-expressions
 ---
 

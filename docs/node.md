@@ -1,6 +1,6 @@
 ---
 id: babel-node
-title: @babel/node
+title: "@babel/node"
 sidebar_label: node
 ---
 

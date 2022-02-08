@@ -1,6 +1,6 @@
 ---
 id: babel-helper-wrap-function
-title: @babel/helper-wrap-function
+title: "@babel/helper-wrap-function"
 sidebar_label: helper-wrap-function
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: babel-preset-typescript
-title: @babel/preset-typescript
+title: "@babel/preset-typescript"
 ---
 
 This preset is recommended if you use [TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html), a typed superset of JavaScript. It includes the following plugins:

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-record-and-tuple
-title: @babel/plugin-proposal-record-and-tuple
+title: "@babel/plugin-proposal-record-and-tuple"
 sidebar_label: record-and-tuple
 ---
 

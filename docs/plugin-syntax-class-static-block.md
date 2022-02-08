@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-class-static-block
-title: @babel/plugin-syntax-class-static-block
+title: "@babel/plugin-syntax-class-static-block"
 sidebar_label: syntax-class-static-block
 ---
 

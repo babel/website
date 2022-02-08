@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-object-rest-spread
-title: @babel/plugin-proposal-object-rest-spread
+title: "@babel/plugin-proposal-object-rest-spread"
 sidebar_label: object-rest-spread
 ---
 
