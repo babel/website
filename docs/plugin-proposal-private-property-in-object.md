@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-private-property-in-object
-title: @babel/plugin-proposal-private-property-in-object
+title: "@babel/plugin-proposal-private-property-in-object"
 sidebar_label: private-property-in-object
 ---
 

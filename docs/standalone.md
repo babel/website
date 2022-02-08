@@ -1,6 +1,6 @@
 ---
 id: babel-standalone
-title: @babel/standalone
+title: "@babel/standalone"
 ---
 
 @babel/standalone provides a standalone build of Babel for use in browsers and other non-Node.js environments.

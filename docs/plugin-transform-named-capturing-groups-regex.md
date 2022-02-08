@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-named-capturing-groups-regex
-title: @babel/plugin-transform-named-capturing-groups-regex
+title: "@babel/plugin-transform-named-capturing-groups-regex"
 sidebar_label: named-capturing-groups-regex
 ---
 

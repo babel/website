@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-unicode-escapes
-title: @babel/plugin-transform-unicode-escapes
+title: "@babel/plugin-transform-unicode-escapes"
 sidebar_label: unicode-escapes
 ---
 

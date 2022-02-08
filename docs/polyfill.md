@@ -1,6 +1,6 @@
 ---
 id: babel-polyfill
-title: @babel/polyfill
+title: "@babel/polyfill"
 ---
 
 > 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features) and `regenerator-runtime/runtime` (needed to use transpiled generator functions):

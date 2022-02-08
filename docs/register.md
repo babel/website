@@ -1,6 +1,6 @@
 ---
 id: babel-register
-title: @babel/register
+title: "@babel/register"
 ---
 
 One of the ways you can use Babel is through the require hook. The require hook

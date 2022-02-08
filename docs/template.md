@@ -1,6 +1,6 @@
 ---
 id: babel-template
-title: @babel/template
+title: "@babel/template"
 ---
 
 In computer science, this is known as an implementation of quasiquotes.

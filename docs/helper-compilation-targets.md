@@ -1,6 +1,6 @@
 ---
 id: babel-helper-compilation-targets
-title: @babel/helper-compilation-targets
+title: "@babel/helper-compilation-targets"
 sidebar_label: helper-compilation-targets
 ---
 

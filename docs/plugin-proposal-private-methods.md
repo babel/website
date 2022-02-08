@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-private-methods
-title: @babel/plugin-proposal-private-methods
+title: "@babel/plugin-proposal-private-methods"
 sidebar_label: private-methods
 ---
 
