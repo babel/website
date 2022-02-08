@@ -71,7 +71,7 @@ We intensely hope that we'll reach our goals: more and more companies use Babel 
 
 <div style="display:flex; justify-content:space-around; align-items:center">
   <a href="https://opencollective.com/babel/donate" target="_blank" style="all:unset;cursor:pointer">
-    <img alt="Donate to our OpenCollective!" src="https://opencollective.com/babel/donate/button@2x.png?color=blue" width=300 />
+    <img alt="Donate to our OpenCollective!" src="https://opencollective.com/babel/donate/button@2x.png?color=blue" width="300" />
   </a>
   <iframe src="https://github.com/sponsors/babel/button" title="Sponsor Babel on GitHub" height="35" width="300" style="border: 0;background: transparent;"></iframe>
 </div>

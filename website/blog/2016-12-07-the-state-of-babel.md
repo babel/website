@@ -61,7 +61,7 @@ If you're interested in helping out please check out the issues linked below!
 
 [TC39](https://github.com/tc39) stands for Ecma International, Technical Committee 39: it's the committee that makes JavaScript.
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/b0rk">@b0rk</a> Short answers:<br><br>Who&#39;s there? Engine implementers, developers, a handful of academics and theorists, and <a href="https://twitter.com/BrendanEich">@BrendanEich</a>.</p>&mdash; Yehuda Katz (@wycats) <a href="https://twitter.com/wycats/status/803821500394598401">November 30, 2016</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/b0rk">@b0rk</a> Short answers:<br/><br/>Who&#39;s there? Engine implementers, developers, a handful of academics and theorists, and <a href="https://twitter.com/BrendanEich">@BrendanEich</a>.</p>&mdash; Yehuda Katz (@wycats) <a href="https://twitter.com/wycats/status/803821500394598401">November 30, 2016</a></blockquote>
 
 Babel uses [TC39's concept of stages](http://babeljs.io/docs/plugins/#stage-x-experimental-presets-) to categorize its experimental plugins. Users should be able to easily use features before they are all implemented in browsers in [stage 4 of the TC39 process](https://tc39.github.io/process-document/).
 
@@ -190,7 +190,7 @@ Relevant Issues:
 
 ### Linting via [babel-eslint](https://github.com/babel/babel-eslint)
 
-<img class="img-responsive" alt="example of eslint" src="/blog/assets/2016-12-07-the-state-of-babel/eslint.png">
+<img class="img-responsive" alt="example of eslint" src="/blog/assets/2016-12-07-the-state-of-babel/eslint.png" />
 
 ESLint doesn't support new language features until they reach Stage 4 of the proposals process. For this reason we maintain [babel-eslint](https://github.com/babel/babel-eslint) (a custom ESLint parser) so you can continue to lint JavaScript with experimental syntax.
 
@@ -354,7 +354,7 @@ What happens when we need to update a Stage 0 spec to Stage 1 and it's a breakin
 
 #### Changing the Mindset Around Stage X Presets
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">My rule of thumb on how I decide what future features to transpile:<br>&quot;Could I reasonably codemod this if it changes?&quot;<br>Don&#39;t do it otherwise.</p>&mdash; Kent C. Dodds (@kentcdodds) <a href="https://twitter.com/kentcdodds/status/803815749416456196">November 30, 2016</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">My rule of thumb on how I decide what future features to transpile:<br/>&quot;Could I reasonably codemod this if it changes?&quot;<br/>Don&#39;t do it otherwise.</p>&mdash; Kent C. Dodds (@kentcdodds) <a href="https://twitter.com/kentcdodds/status/803815749416456196">November 30, 2016</a></blockquote>
 
 Relevant Issues:
 
