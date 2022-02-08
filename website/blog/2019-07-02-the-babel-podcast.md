@@ -18,7 +18,7 @@ Today we're announcing the [The Babel Podcast](https://podcast.babeljs.io)!
 
 To start out, our first [episode](https://podcast.babeljs.io/rome) is with our good friend [Sebastian McKenzie](https://twitter.com/sebmck), the creator of Babel ([transcript](https://podcast.babeljs.io/rome/#transcript))!
  
-<iframe src='https://share.transistor.fm/e/b65dd0f9' width='100%' height='180' frameborder='0' scrolling='no' seamless='true' style='width:100%; height:180px;'></iframe>
+<iframe src='https://share.transistor.fm/e/b65dd0f9' width='100%' height='180' frameborder='0' scrolling='no' seamless='true' style={{width:"100%", height:"180px"}}></iframe>
 
 > It does take time to create and maintain these podcasts (equipment, research, editing, transcription), so consider [supporting](https://github.com/babel/babel?sponsor=1) us! We could also add specific podcast sponsors, so let [me](https://twitter.com/left_pad) know if you'd be interested in doing so.
 
