@@ -1,19 +1,25 @@
-// const React = require("react");
-import React from "react";
+import React, { useEffect } from "react";
 import "../../static/css/index.css";
-// const translate = require("../../server/translate.js").translate;
+import "../../static/css/babel.css";
+import "../../static/css/minirepl.css";
+import "../../../js/minirepl.js";
+import Link from "@docusaurus/Link";
+import BABEL_MINI_REPL from "../../../js/minirepl.js";
 import Translate from "@docusaurus/Translate";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-// const siteConfig = require(process.cwd() + "/siteConfig.js");
 
 class Button extends React.Component {
   render() {
     return (
       <div className="pluginWrapper buttonWrapper">
-        <a className="button" href={this.props.href} target={this.props.target}>
+        <Link
+          className="button"
+          to={this.props.href}
+          target={this.props.target}
+        >
           {this.props.children}
-        </a>
+        </Link>
       </div>
     );
   }
@@ -37,6 +43,9 @@ const DummyMiniRepl = () => {
 const MiniRepl = () => {
   const { siteConfig } = useDocusaurusContext();
   const { customFields } = siteConfig;
+  useEffect(() => {
+    BABEL_MINI_REPL.start();
+  });
   return (
     <div className="hero-repl" hidden={true}>
       <div className="hero-repl__editor">
@@ -54,19 +63,6 @@ const MiniRepl = () => {
           <div className="hero-repl__error" />
         </div>
       </div>
-
-      <script
-        src="https://unpkg.com/@babel/standalone@^7.0.0/babel.min.js"
-        defer={true}
-      />
-      <script
-        src="https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js"
-        defer={true}
-      />
-      <script
-        // src={`${customFields.baseUrl}js/build/minirepl.js`}
-        defer={true}
-      />
     </div>
   );
 };
@@ -87,12 +83,8 @@ const GetStarted = ({ language }) => {
     >
       <p>
         Learn more about Babel with our{" "}
-        {/* <a href={customFields.getDocUrl("index.html", language)}>
-          getting started guide
-        </a>{" "} */}
-        or check out some{" "}
-        {/* <a href={customFields.getPageUrl("videos.html", language)}>videos</a> on */}
-        the people and concepts behind it.
+        <Link to="/docs">getting started guide</Link> or check out some{" "}
+        <Link href="/videos">videos</Link> on the people and concepts behind it.
       </p>
     </div>
   );
@@ -119,14 +111,14 @@ const SponsorTier = props => {
       <ul className={`sponsors-tier tier-${props.tier}`}>
         {tierSponsors.map((sponsor, i) => (
           <li key={i}>
-            <a
-              href={sponsor.url}
+            <Link
+              to={sponsor.url}
               title={sponsor.name}
               target="_blank"
               rel="noopener sponsored"
             >
               <img src={sponsor.image} alt={`Sponsored by ${sponsor.name}`} />
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -155,16 +147,13 @@ const OpenCollectiveSponsors = ({ language }) => {
       <div className="wrapper productShowcaseSection">
         <h3>Current Sponsors</h3>
         <p>
-          We&apos;re a small group of{" "}
-          {/* <a href={customFields.getPageUrl("team.html", language)}>
-            volunteers
-          </a>{" "} */}
-          that spend their free time maintaining this project, funded by the
+          We&apos;re a small group of <Link to="/team">volunteers</Link> that
+          spend their free time maintaining this project, funded by the
           community. If Babel has benefited you in your work, becoming a{" "}
-          <a href="https://github.com/babel/babel/blob/main/CONTRIBUTING.md">
+          <Link to="https://github.com/babel/babel/blob/main/CONTRIBUTING.md">
             contributor
-          </a>{" "}
-          or <a href="https://opencollective.com/babel">sponsoring</a> might
+          </Link>{" "}
+          or <Link to="https://opencollective.com/babel">sponsoring</Link> might
           just be a great way to give back!
         </p>
         <div className="sponsor-tiers" id="sponsors">
@@ -195,10 +184,7 @@ const OpenCollectiveSponsors = ({ language }) => {
 };
 
 const HomeContainer = props => (
-  <div
-    className="container"
-    style={{ backgroundColor: "#f6f6f6", paddingBottom: 20 }}
-  >
+  <div style={{ backgroundColor: "#f6f6f6", paddingBottom: 20 }}>
     <div className="wrapper">
       <div className="gridBlock">{props.children}</div>
     </div>
@@ -207,9 +193,9 @@ const HomeContainer = props => (
 
 const Hero = ({ language }) => (
   <div className="hero">
-    <a href="https://teespring.com/babel-christmas?pr=FLAVORTOWN">
+    <Link to="https://teespring.com/babel-christmas?pr=FLAVORTOWN">
       <div className="homepage-banner">Get Babel Holiday Apparel 👕</div>
-    </a>
+    </Link>
     <div className="hero__container">
       <h1>
         <Translate>Babel is a JavaScript compiler.</Translate>
@@ -221,10 +207,10 @@ const Hero = ({ language }) => (
       <div className="hero__announcement">
         <span>
           <strong>Babel 7.17 is released!</strong> Please read our{" "}
-          <a href="blog/2022/02/02/7.17.0">blog post</a> for highlights and{" "}
-          <a href="https://github.com/babel/babel/releases/tag/v7.17.0">
+          <Link to="blog/2022/02/02/7.17.0">blog post</Link> for highlights and{" "}
+          <Link to="https://github.com/babel/babel/releases/tag/v7.17.0">
             changelog
-          </a>{" "}
+          </Link>{" "}
           for more details!
         </span>
       </div>
