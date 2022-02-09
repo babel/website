@@ -117,3 +117,51 @@ table td code {
   color: #393939;
   word-break: normal;
 }
+
+/* v2 custom css */
+.navbar {
+  background: #323330;
+  padding: 0px !important;
+  height: 50px !important;
+}
+
+.navbar__item,
+.navbar__link {
+  color: white;
+}
+
+.navbar__link:hover {
+  color: #f5da55;
+}
+.navbar__link:active {
+  color: #f5da55;
+}
+
+.navbar__item svg {
+  display: none;
+}
+.DocSearch,
+.DocSearch-Button {
+  width: 170px;
+  height: 32px !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+.DocSearch-Search-Icon {
+  color: white !important;
+}
+
+.DocSearch-Button-Keys {
+  display: none !important;
+}
+
+.DocSearch-Button-Placeholder {
+  color: white;
+}
+
+@media only screen and (max-width: 1024px) {
+  .DocSearch,
+  .DocSearch-Button {
+    background-color: rgba(242, 196, 178, 0.25) !important;
+  }
+}

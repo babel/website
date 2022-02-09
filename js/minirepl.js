@@ -174,7 +174,4 @@ const BABEL_MINI_REPL = {
   },
 };
 
-// relies on zepto being present on the page
-window.onload = function() {
-  BABEL_MINI_REPL.start();
-};
+export default BABEL_MINI_REPL;

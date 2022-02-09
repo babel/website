@@ -85,7 +85,9 @@ const DEFAULT_LANGUAGE = "en";
 const GITHUB_URL = "https://github.com/babel/website";
 
 const siteConfig = {
+  titleDelimiter: "·",
   baseUrl: "/",
+  favicon: "img/favicon.png",
   onBrokenLinks: "ignore", // enable once everything works fine
   customFields: {
     baseUrl: "/",
@@ -140,7 +142,6 @@ const siteConfig = {
       headerIcon: "img/babel.svg",
       disableHeaderTitle: true,
       footerIcon: "img/babel.svg",
-      favicon: "img/favicon.png",
       ogImage: "img/ogImage.png",
       colors: {
         primaryColor: "#323330",
@@ -160,7 +161,6 @@ const siteConfig = {
       indexName: "babeljs",
     },
     navbar: {
-      title: "Babel",
       logo: {
         alt: "Babel logo",
         src: "img/babel.svg", //revisit
@@ -170,7 +170,6 @@ const siteConfig = {
         // { to: "setup", label: "Setup", position: "right" },
         // { to: "repl", label: "Try it out", position: "right" },
         // { to: "videos", label: "Videos", position: "right" },
-        { type: "search" },
         {
           href: "https://opencollective.com/babel",
           label: "Donate",
@@ -184,6 +183,10 @@ const siteConfig = {
           position: "right",
         },
         { to: "blog", label: "Blog", position: "right" },
+        {
+          type: "search",
+          position: "right",
+        },
       ],
     },
   },
@@ -235,6 +238,18 @@ const siteConfig = {
   //   },
   // },
   scripts: [
+    {
+      src: "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",
+      defer: true,
+    },
+    {
+      src: "https://unpkg.com/@babel/standalone@^7.0.0/babel.min.js",
+      defer: true,
+    },
+    {
+      src: "https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js",
+      defer: true,
+    },
     {
       src: "https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js",
       defer: true,

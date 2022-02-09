@@ -2,6 +2,8 @@
   "scripts": {
     "examples": "docusaurus examples",
     "start": "docusaurus start",
+    "swizzle": "docusaurus swizzle",
+    "clear": "docusaurus clear",
     "build": "docusaurus build",
     "deploy": "docusaurus publish",
     "write-translations": "docusaurus-write-translations",
