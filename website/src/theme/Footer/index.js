@@ -16,12 +16,12 @@ function Footer() {
         </Link>
         <div>
           <h5>Docs</h5>
-          <Link to="/docs/en/learn.html">Learn ES2015</Link>
+          <Link to="/docs/learn">Learn ES2015</Link>
         </div>
         <div>
           <h5>Community</h5>
-          <Link to="/en/videos.html">Videos</Link>
-          <Link to="/en/users.html">User Showcase</Link>
+          <Link to="/videos">Videos</Link>
+          <Link to="/users">User Showcase</Link>
           <Link
             to="http://stackoverflow.com/questions/tagged/babeljs"
             rel="noopener noreferrer"

@@ -1,9 +1,7 @@
-const React = require("react");
-
-const CompLibrary = require("../../core/CompLibrary.js");
-const Container = CompLibrary.Container;
-
-const siteConfig = require(process.cwd() + "/siteConfig.js");
+import React from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import "../../static/css/team.css";
 
 const Banner = () => {
   return (
@@ -131,27 +129,24 @@ const MemberSection = props => {
   );
 };
 
-class Team extends React.Component {
-  render() {
-    const team = siteConfig.team;
-    return (
-      <div>
-        <Banner />
-        <Container padding={["bottom"]}>
-          <div>
-            <MemberSection title="Core Maintainers" members={team.core} />
-            <MemberSection title="Team Members" members={team.members} />
-            <MemberSection title="Summer of Code" members={team.summerOfCode} />
-            <MemberSection
-              title="NonHuman Members"
-              members={team.nonHumanMember}
-            />
-            <MemberSection title="Alumni" members={team.alumnus} />
-          </div>
-        </Container>
-      </div>
-    );
-  }
-}
+const Team = () => {
+  const { siteConfig } = useDocusaurusContext();
+  const {
+    customFields: { team },
+  } = siteConfig;
 
-module.exports = Team;
+  return (
+    <Layout title={siteConfig?.title} description={siteConfig?.tagline}>
+      <Banner />
+      <div className="wrapper">
+        <MemberSection title="Core Maintainers" members={team.core} />
+        <MemberSection title="Team Members" members={team.members} />
+        <MemberSection title="Summer of Code" members={team.summerOfCode} />
+        <MemberSection title="NonHuman Members" members={team.nonHumanMember} />
+        <MemberSection title="Alumni" members={team.alumnus} />
+      </div>
+    </Layout>
+  );
+};
+
+export default Team;

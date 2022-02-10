@@ -90,6 +90,9 @@ const siteConfig = {
   favicon: "img/favicon.png",
   onBrokenLinks: "ignore", // enable once everything works fine
   customFields: {
+    repoUrl: "https://github.com/babel/babel",
+    organizationName: "babel",
+    projectName: "babel",
     baseUrl: "/",
     // getDocUrl: (doc, language) =>
     //   `/docs/${language || DEFAULT_LANGUAGE}/${doc}`,
@@ -110,13 +113,15 @@ const siteConfig = {
     [
       "@docusaurus/preset-classic",
       {
+        theme: {
+          customCss: [require.resolve("./src/css/custom.css")],
+        },
         docs: {
           editUrl: `https://github.com/babel/website`,
           // Docs folder path relative to website dir.
           path: "../docs",
           // Sidebars file relative to website dir.
           sidebarPath: require.resolve("./sidebars.json"),
-          // repoUrl: "https://github.com/babel/babel",
 
           // headerIcon: "img/babel.svg",
           // footerIcon: "img/babel.svg",
@@ -169,22 +174,22 @@ const siteConfig = {
         { to: "docs/", label: "Docs", position: "right" },
         // { to: "setup", label: "Setup", position: "right" },
         // { to: "repl", label: "Try it out", position: "right" },
-        // { to: "videos", label: "Videos", position: "right" },
+        { to: "videos/", label: "Videos", position: "right" },
+
+        { to: "blog", label: "Blog", position: "right" },
+        {
+          type: "search",
+          position: "right",
+        },
         {
           href: "https://opencollective.com/babel",
           label: "Donate",
           position: "right",
         },
-
-        // { to: "team", label: "Team", position: "right" },
+        { to: "team", label: "Team", position: "right" },
         {
           href: "https://github.com/babel/babel",
           label: "GitHub",
-          position: "right",
-        },
-        { to: "blog", label: "Blog", position: "right" },
-        {
-          type: "search",
           position: "right",
         },
       ],
@@ -201,8 +206,6 @@ const siteConfig = {
   //   `${siteConfig.baseUrl}${language || DEFAULT_LANGUAGE}/${page}`,
   // getVideoUrl: (videos, language) =>
   //   `${siteConfig.baseUrl}${language || DEFAULT_LANGUAGE}/${videos}`,
-  organizationName: "babel",
-  projectName: "babel",
   // headerLinks: [
   //   { doc: "index", label: "Docs" },
   //   { page: "setup", label: "Setup" },
