@@ -1,9 +1,7 @@
-const React = require("react");
-
-const CompLibrary = require("../../core/CompLibrary.js");
-const Container = CompLibrary.Container;
-
-const siteConfig = require(process.cwd() + "/siteConfig.js");
+import React from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import "../../static/css/video.css";
+import Layout from "@theme/Layout";
 
 const VideosItem = props => {
   return (
@@ -62,28 +60,31 @@ const CategoryLink = props => {
   );
 };
 
-class Videos extends React.Component {
-  render() {
-    const showcase = siteConfig.videos.map((category, i) => {
-      function compare(property) {
-        return function(a, b) {
-          const value1 = a[property];
-          const value2 = b[property];
-          return value2 - value1;
-        };
-      }
-      const videos = category.items.sort(compare("year")).map((video, j) => {
-        return <VideosItem key={j} video={video} />;
-      });
-      return (
-        <div className="videos-container" key={i}>
-          <h2>{category.category}</h2>
-          {videos}
-        </div>
-      );
-    });
+const Videos = () => {
+  const { siteConfig } = useDocusaurusContext();
+  const { customFields } = siteConfig;
 
+  const showcase = customFields.videos.map((category, i) => {
+    function compare(property) {
+      return function(a, b) {
+        const value1 = a[property];
+        const value2 = b[property];
+        return value2 - value1;
+      };
+    }
+    const videos = category.items.sort(compare("year")).map((video, j) => {
+      return <VideosItem key={j} video={video} />;
+    });
     return (
+      <div className="videos-container" key={i}>
+        <h2>{category.category}</h2>
+        {videos}
+      </div>
+    );
+  });
+
+  return (
+    <Layout title={siteConfig?.title} description={siteConfig?.tagline}>
       <div className="mainContainer">
         <div className="page-header text-center">
           <h1>Videos</h1>
@@ -91,10 +92,12 @@ class Videos extends React.Component {
             Videos and podcasts about Babel and its underlying concepts.
           </p>
         </div>
-        <Container padding={["bottom"]}>{showcase}</Container>
+        {/* <Container padding={["bottom"]}> */}
+        <div className="wrapper"> {showcase}</div>
+        {/* </Container> */}
       </div>
-    );
-  }
-}
+    </Layout>
+  );
+};
 
-module.exports = Videos;
+export default Videos;

@@ -157,6 +157,7 @@ table td code {
 
 .DocSearch-Button-Placeholder {
   color: white;
+  font-size: 14px;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -164,4 +165,46 @@ table td code {
   .DocSearch-Button {
     background-color: rgba(242, 196, 178, 0.25) !important;
   }
+}
+
+.navbar__link--active {
+  color: #f5da55;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 0 20px;
+}
+
+.mainContainer {
+  flex: 1 1 0%;
+  max-width: 100%;
+  padding: 40px 0;
+}
+
+.navbar__item {
+  font-weight: 300;
+}
+.navbar_inner {
+  padding: 0 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: inherit;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  margin-top: 1.5em;
+}
+.navbar__inner {
+  padding: 0px 20px;
+}
+.container.paddingTop {
+  padding-top: 80px;
 }

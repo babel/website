@@ -1,23 +1,19 @@
-const React = require("react");
+import React from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import versions from "../../past-versions.json";
 
-const CompLibrary = require("../../core/CompLibrary");
-const Container = CompLibrary.Container;
-
-const CWD = process.cwd();
-
-const siteConfig = require(CWD + "/siteConfig.js");
-const versions = require(CWD + "/past-versions.json");
-
-class Versions extends React.Component {
-  render() {
-    const language = this.props.language || "en";
-    const latestVersion = versions[0];
-    const repoUrl = `https://github.com/${siteConfig.organizationName}/${
-      siteConfig.projectName
-    }`;
-    return (
+const Versions = () => {
+  const { siteConfig } = useDocusaurusContext();
+  const { customFields } = siteConfig;
+  const latestVersion = versions[0];
+  const repoUrl = `https://github.com/${customFields.organizationName}/${
+    customFields.projectName
+  }`;
+  return (
+    <Layout>
       <div className="docMainWrapper wrapper">
-        <Container className="mainContainer versionsContainer">
+        <div className="mainContainer versionsContainer">
           <div className="post">
             <header className="postHeader">
               <h2>{siteConfig.title + " Versions"}</h2>
@@ -30,11 +26,7 @@ class Versions extends React.Component {
                 <tr>
                   <th>{latestVersion}</th>
                   <td>
-                    <a
-                      href={
-                        siteConfig.baseUrl + "docs/" + language + "/index.html"
-                      }
-                    >
+                    <a href={customFields.baseUrl + "docs/" + "index.html"}>
                       Documentation
                     </a>
                   </td>
@@ -44,7 +36,7 @@ class Versions extends React.Component {
                     </a>
                   </td>
                   <td>
-                    <a href={`${siteConfig.baseUrl}${latestVersion}`}>
+                    <a href={`${customFields.baseUrl}${latestVersion}`}>
                       Blog Post
                     </a>
                   </td>
@@ -62,11 +54,7 @@ class Versions extends React.Component {
                   <td>
                     <a
                       href={
-                        siteConfig.baseUrl +
-                        "docs/" +
-                        language +
-                        "/next" +
-                        "/index.html"
+                        customFields.baseUrl + "docs/" + "next" + "/index.html"
                       }
                     >
                       Documentation
@@ -92,9 +80,8 @@ class Versions extends React.Component {
                             <td>
                               <a
                                 href={
-                                  siteConfig.baseUrl +
+                                  customFields.baseUrl +
                                   "docs/" +
-                                  language +
                                   "/" +
                                   version +
                                   "/index.html"
@@ -109,7 +96,7 @@ class Versions extends React.Component {
                               </a>
                             </td>
                             <td>
-                              <a href={`${siteConfig.baseUrl}${version}`}>
+                              <a href={`${customFields.baseUrl}${version}`}>
                                 Blog Post
                               </a>
                             </td>
@@ -119,7 +106,7 @@ class Versions extends React.Component {
                     <tr>
                       <th>6.26.3</th>
                       <td>
-                        <a href={siteConfig.v6Url}>Documentation</a>
+                        <a href={customFields.v6Url}>Documentation</a>
                       </td>
                       <td>
                         <a href={`${repoUrl}/releases/tag/v6.26.3`}>
@@ -127,7 +114,7 @@ class Versions extends React.Component {
                         </a>
                       </td>
                       <td>
-                        <a href={`${siteConfig.baseUrl}6.23.0`}>Blog Post</a>
+                        <a href={`${customFields.baseUrl}6.23.0`}>Blog Post</a>
                       </td>
                     </tr>
                   </tbody>
@@ -135,10 +122,10 @@ class Versions extends React.Component {
               </div>
             )}
           </div>
-        </Container>
+        </div>
       </div>
-    );
-  }
-}
+    </Layout>
+  );
+};
 
-module.exports = Versions;
+export default Versions;

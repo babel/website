@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import "../../static/css/index.css";
-import "../../static/css/babel.css";
 import "../../static/css/minirepl.css";
 import "../../../js/minirepl.js";
 import Link from "@docusaurus/Link";

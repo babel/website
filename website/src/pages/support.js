@@ -1,5 +1,7 @@
-const React = require("react");
-const siteConfig = require(process.cwd() + "/siteConfig.js");
+import React from "react";
+import Link from "@docusaurus/Link";
+import Layout from "@theme/Layout";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 class Button extends React.Component {
   render() {
@@ -26,7 +28,11 @@ const PromoSection = props => (
 );
 
 const SponsorTier = props => {
-  const tierSponsors = siteConfig.sponsors.filter(
+  const {
+    siteConfig: { customFields },
+  } = useDocusaurusContext();
+
+  const tierSponsors = customFields.sponsors.filter(
     sponsor => sponsor.type == props.type && sponsor.tier === props.tier
   );
   return (
@@ -62,6 +68,7 @@ const OpenCollectiveSponsors = ({ language }) => {
       title: "Become a patron",
       link: "https://www.patreon.com/bePatron?u=905738",
     };
+  const { siteConfig } = useDocusaurusContext();
 
   return (
     <div className="container paddingTop paddingBottom">
@@ -71,11 +78,8 @@ const OpenCollectiveSponsors = ({ language }) => {
           <p>
             Babel is helping shape the future of the JavaScript language itself,
             being used at companies like Facebook, Google, Netflix, and{" "}
-            <a href={siteConfig.getPageUrl("users.html", language)}>
-              hundreds more
-            </a>
-            . Your donations will directly help fund more of the core team to
-            work on Babel.
+            <Link href="/users">hundreds more</Link>. Your donations will
+            directly help fund more of the core team to work on Babel.
           </p>
           <PromoSection>
             <Button href="https://opencollective.com/babel" target="_blank">
@@ -126,10 +130,14 @@ const OpenCollectiveSponsors = ({ language }) => {
 
 const Index = () => {
   return (
-    <div className="mainContainer" style={{ padding: 0 }}>
-      <OpenCollectiveSponsors />
-    </div>
+    <Layout>
+      <div className="container">
+        <div className="mainContainer paddingTop" style={{ padding: 0 }}>
+          <OpenCollectiveSponsors />
+        </div>
+      </div>
+    </Layout>
   );
 };
 
-module.exports = Index;
+export default Index;
