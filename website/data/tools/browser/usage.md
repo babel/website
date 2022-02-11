@@ -15,6 +15,6 @@ document.getElementById('output').innerHTML = getMessage();
 
 <blockquote class="babel-callout babel-callout-info">
   <p>
-    See <a href="/docs/babel-standalone">docs</a> for full documentation on <code>@babel/standalone</code>.
+    See <a href="/docs/en/babel-standalone">docs</a> for full documentation on <code>@babel/standalone</code>.
   </p>
 </blockquote>
