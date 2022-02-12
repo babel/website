@@ -256,8 +256,8 @@ You should enable these features only if you are using an older version.
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `7.16.0` | Added `disallowAmbiguousJSXLike` for `typescript` plugin. Added `^` to the `topicToken` option of the `hack` pipeline operators |
 | `7.14.0` | Added `dts` for `typescript` plugin |
-| `7.16.0` | Added `disallowAmbiguousJSXLike` for `typescript` plugin |
 </details>
 
 > NOTE: When a plugin is specified multiple times, only the first options are considered.
@@ -283,7 +283,7 @@ You should enable these features only if you are using an older version.
     See [plugin-proposal-pipeline-operator](/docs/en/babel-plugin-proposal-pipeline-operator)
     for more information, including a table comparing their behavior.
 
-  - `topicToken` (required when `proposal` is `hack`, accepted values: `%`, `#`)
+  - `topicToken` (required when `proposal` is `hack`, accepted values: `%`, `#`, `^`)
     The `hack` proposal uses a “topic” placeholder in its pipe.
     There are two different choices for this topic placeholder.
     This option chooses what token to use to refer to the topic.
