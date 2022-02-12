@@ -193,6 +193,7 @@ require("@babel/parser").parse("code", {
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `v7.17.0` | Added `regexpUnicodeSets`, `destructuringPrivate`, `decoratorAutoAccessors` |
 | `v7.15.0` | Added `hack` to the `proposal` option of `pipelineOperator`. Moved `topLevelAwait`, `privateIn` to Latest ECMAScript features |
 | `v7.14.0` | Added `asyncDoExpressions`. Moved `classProperties`, `classPrivateProperties`, `classPrivateMethods`, `moduleStringNames` to Latest ECMAScript features |
 | `v7.13.0` | Added `moduleBlocks` |
@@ -210,6 +211,8 @@ require("@babel/parser").parse("code", {
 | `asyncDoExpressions` ([proposal](https://github.com/tc39/proposal-async-do-expressions))        | `async do { await requestAPI().json() }`                 |
 | `decimal` ([proposal](https://github.com/tc39/proposal-decimal))                                | `0.3m`                                                   |
 | `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br> `decorators-legacy` | `@a class A {}`                                          |
+| `decoratorAutoAccessors` ([proposal](https://github.com/tc39/proposal-decorators))              | `class Example { @reactive accessor myBool = false; }`   |
+| `destructuringPrivate` ([proposal](https://github.com/tc39/proposal-destructuring-private))     | `class { #x = 1; method() { const { #x: x } = this; } }` |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                   | `var a = do { if (true) { 'hi'; } };`                    |
 | `exportDefaultFrom` ([proposal](https://github.com/tc39/ecmascript-export-default-from))        | `export v from "mod"`                                    |
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                     | `a::b`, `::console.log`                                  |
@@ -218,6 +221,7 @@ require("@babel/parser").parse("code", {
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                 | `f(?, a)`                                                |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29))                   | <code>a &#124;> b</code>                                 |
 | `recordAndTuple` ([proposal](https://github.com/tc39/proposal-record-tuple))                    | `#{x: 1}`, `#[1, 2]`                                     |
+| `regexpUnicodeSets` ([proposal](https://github.com/tc39/proposal-regexp-set-notation))          | `/[\p{Decimal_Number}--[0-9]]/v;`                        |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23))                   | `() => throw new Error("")`                              |
 
 #### Latest ECMAScript features
