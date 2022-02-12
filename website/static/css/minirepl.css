@@ -12,7 +12,8 @@
   }
 }
 .hero-repl--visible {
-  opacity: 1;
+  /* hero repl css is over rided */
+  opacity: 1 !important;
 }
 .hero-repl__error {
   background: #702141;
