@@ -349,7 +349,7 @@ Or an object of minimum environment versions to support:
 }
 ```
 
-Supported environments: `android`, `chrome`, `edge`, `electron`, `firefox`, `ie`, `ios`, , `node`, `opera`, `rhino`, `safari`, `samsung`.
+Supported environments: `android`, `chrome`, `edge`, `electron`, `firefox`, `ie`, `ios`, `node`, `opera`, `rhino`, `safari`, `samsung`.
 
 If a minor version is not specified, Babel will interpret it as `MAJOR.0`. For example, `"node": 12` will be considered as Node.js 12.0.
 
