@@ -61,7 +61,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   let spec = false;
   let loose = false;
   let bugfixes = false;
-  let corejs = "3.6";
+  let corejs = "3.21";
   const transitions = new Transitions();
   const meta = {
     compiledSize: 0,

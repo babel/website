@@ -64,7 +64,7 @@ const envPresetDefaults = {
     default: "usage",
   },
   corejs: {
-    default: "3.6",
+    default: "3.21",
   },
 };
 
