@@ -215,7 +215,7 @@ require("@babel/parser").parse("code", {
 | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | `asyncDoExpressions` ([proposal](https://github.com/tc39/proposal-async-do-expressions))        | `async do { await requestAPI().json() }`                 |
 | `decimal` ([proposal](https://github.com/tc39/proposal-decimal))                                | `0.3m`                                                   |
-| `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br> `decorators-legacy` | `@a class A {}`                                          |
+| `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br /> `decorators-legacy` | `@a class A {}`                                          |
 | `decoratorAutoAccessors` ([proposal](https://github.com/tc39/proposal-decorators))              | `class Example { @reactive accessor myBool = false; }`   |
 | `destructuringPrivate` ([proposal](https://github.com/tc39/proposal-destructuring-private))     | `class { #x = 1; method() { const { #x: x } = this; } }` |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                   | `var a = do { if (true) { 'hi'; } };`                    |
