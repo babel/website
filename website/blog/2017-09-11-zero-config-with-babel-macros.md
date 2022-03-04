@@ -49,7 +49,7 @@ import glamorous from 'glamorous'
 
 const base64SearchSVG = preval.require('./search-svg')
 // this will be transpiled to something like:
-// const base65SearchSVG = 'PD94bWwgdmVyc2lv...etc...')
+// const base64SearchSVG = 'PD94bWwgdmVyc2lv...etc...')
 
 const SearchBox = glamorous.input('algolia_searchbox', props => ({
   backgroundImage: `url("data:image/svg+xml;base64,${base64SearchSVG}")`,
