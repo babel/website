@@ -19,7 +19,7 @@ const config = {
     // Don't bother with hashing/versioning the filename - Netlify does it
     // for us in prod.
     filename: "[name].js",
-    publicPath: "/",
+    publicPath: "./",
     path: __dirname + "/website/static/repl/",
   },
   module: {
