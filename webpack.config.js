@@ -1,5 +1,6 @@
 "use strict";
 const TerserPlugin = require("terser-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const config = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
@@ -11,7 +12,7 @@ const config = {
     // Don't bother with hashing/versioning the filename - Netlify does it
     // for us in prod.
     filename: "[name].js",
-    path: __dirname + "/website/static/js/build/",
+    path: __dirname + "/website/static/repl/",
   },
   module: {
     rules: [
@@ -22,7 +23,11 @@ const config = {
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./js/repl/index.html",
+    }),
+  ],
   externals: {
     codemirror: "CodeMirror",
     "lz-string": "LZString",

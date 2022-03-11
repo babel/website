@@ -64,6 +64,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.2",
     "flow-bin": "^0.98.1",
+    "html-webpack-plugin": "4",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
     "node-fetch": "^2.6.1",
