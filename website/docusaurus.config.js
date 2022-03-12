@@ -117,7 +117,8 @@ const siteConfig = {
           customCss: [require.resolve("./src/css/custom.css")],
         },
         docs: {
-          editUrl: `https://github.com/babel/website`,
+          editUrl: "https://github.com/babel/website/edit/main/docs",
+
           // Docs folder path relative to website dir.
           path: "../docs",
           // Sidebars file relative to website dir.
