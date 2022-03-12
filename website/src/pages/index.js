@@ -183,7 +183,7 @@ const OpenCollectiveSponsors = ({ language }) => {
 };
 
 const HomeContainer = props => (
-  <div style={{ paddingBottom: 20 }}>
+  <div style={{ backgroundColor: "#f6f6f6", paddingBottom: 20 }}>
     <div className="wrapper">
       <div className="gridBlock">{props.children}</div>
     </div>

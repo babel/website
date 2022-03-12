@@ -2,15 +2,17 @@ hr {
   border-width: 1px 0 0 0;
 }
 
+blockquote {
+  background: #fafbfc;
+  border-left-color: #e0e0e0;
+  color: inherit;
+}
+
 .headerWrapper.wrapper {
   max-width: 1400px;
 }
 
 /* ####### LINKS ####### */
-
-html[data-theme=dark] .mainContainer a:not(.hash-link){
-  color: white;
-}
 
 .mainContainer a:not(.hash-link) {
   background-color: rgba(245, 218, 85, 0.15);
