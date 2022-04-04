@@ -4,7 +4,7 @@ title: @babel/plugin-proposal-destructuring-private
 sidebar_label: destructuring-private
 ---
 
-Transforms private destructuring `({ #y: y } = this)` to `y = this.#y`.
+Transforms private destructuring `var { #y: y } = this` to `var y = this.#y`.
 
 ## Example
 ```js
@@ -30,7 +30,9 @@ class Foo {
 }
 ```
 
-The plugin respects the [`objectRestNoSymbols`](assumptions.md#objectrestnosymbols) compiler assumption.
+The plugin respects these compiler assumptions:
+- [`ignoreFunctionLength`](assumptions.md#ignorefunctionlength)
+- [`objectRestNoSymbols`](assumptions.md#objectrestnosymbols)
 
 ## Installation
 
