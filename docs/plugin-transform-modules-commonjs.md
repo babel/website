@@ -77,14 +77,20 @@ require("@babel/core").transformSync("code", {
 
 ### `importInterop`
 
-`"babel" | "node" | "none"`, or `(specifier: string) => "babel" | "node" | "none"`. Defaults to `"babel"`.
+`"babel" | "node" | "none"`, or `(specifier: string, requestingFilename: string | undefined) => "babel" | "node" | "none"`. Defaults to `"babel"`.
 
 CommonJS modules and ECMAScript modules are not fully compatible. However, compilers, bundlers and JavaScript
 runtimes developed different strategies to make them work together as well as possible.
 
-This option specify which interop strategy Babel should use. When it's a function, Babel calls this function
-passing the import specifier (for example, `@babel/core` in `import { transform } from "@babel/core"`), and the
-function should return the interop to use for that specific import.
+This option specify which interop strategy Babel should use. When it's a function, Babel calls it, and the
+function should return the interop to use for that specific import. For example:
+
+```js
+// foo.js
+import { a } from 'b';
+```
+
+When processing this file, babel will call your `importInterop` function with `('b', '/full/path/to/foo.js');
 
 #### `"babel"`
 
