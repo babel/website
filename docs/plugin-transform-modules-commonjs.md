@@ -90,7 +90,7 @@ function should return the interop to use for that specific import. For example:
 import { a } from 'b';
 ```
 
-When processing this file, babel will call your `importInterop` function with `('b', '/full/path/to/foo.js');
+When processing this file, babel will call your `importInterop` function with `('b', '/full/path/to/foo.js')`;
 
 #### `"babel"`
 
