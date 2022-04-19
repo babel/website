@@ -43,24 +43,20 @@ npm install --save-dev @babel/preset-react
 and add `@babel/preset-react` to your Babel configuration.
 
 ```jsx
-export default React.createClass({
-  getInitialState() {
-    return { num: this.getRandomNumber() };
-  },
+export default function DiceRoll(){
+  const [num, setNum] = useState(getRandomNumber());
 
-  getRandomNumber() {
+  const getRandomNumber = () => {
     return Math.ceil(Math.random() * 6);
-  },
+  };
 
-  render() {
-    return (
-      <div>
-        Your dice roll:
-        {this.state.num}
-      </div>
-    );
-  },
-});
+  return (
+    <div>
+      Your dice roll:
+      {num}
+    </div>
+  );
+};
 ```
 
 > Learn more about [JSX](https://facebook.github.io/jsx/)
