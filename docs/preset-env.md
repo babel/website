@@ -51,7 +51,7 @@ For example, to only include polyfills and code transforms needed for users whos
       "@babel/preset-env",
       {
         "useBuiltIns": "entry",
-        "corejs": 2
+        "corejs": "3.22"
       }
     ]
   ]
