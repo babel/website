@@ -82,15 +82,7 @@ require("@babel/core").transformSync("code", {
 CommonJS modules and ECMAScript modules are not fully compatible. However, compilers, bundlers and JavaScript
 runtimes developed different strategies to make them work together as well as possible.
 
-This option specify which interop strategy Babel should use. When it's a function, Babel calls it, and the
-function should return the interop to use for that specific import. For example:
-
-```js
-// foo.js
-import { a } from 'b';
-```
-
-When processing this file, babel will call your `importInterop` function with `('b', '/full/path/to/foo.js')`;
+This option specify which interop strategy Babel should use. When it's a function, Babel calls it passing the import specifier and the importer path. For example, when compiling a `/full/path/to/foo.js` file containing `import { a } from 'b'`, Babel will call it with parameters `('b', '/full/path/to/foo.js')`.
 
 #### `"babel"`
 
