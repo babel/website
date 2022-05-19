@@ -8,6 +8,7 @@ This preset always includes the following plugins:
 - [@babel/plugin-syntax-jsx](plugin-syntax-jsx.md)
 - [@babel/plugin-transform-react-jsx](plugin-transform-react-jsx.md)
 - [@babel/plugin-transform-react-display-name](plugin-transform-react-display-name.md)
+- [@babel/plugin-transform-react-pure-annotations](plugin-transform-react-pure-annotations.md)
 
 And with the `development` option:
 
@@ -104,6 +105,12 @@ Toggles whether or not to throw an error if a XML namespaced tag name is used. F
     <f:image />
 
 Though the JSX spec allows this, it is disabled by default since React's JSX does not currently have support for it.
+
+#### `pure`
+
+`boolean`, defaults to `true`.
+
+Enables `@babel/plugin-transform-react-pure-annotations`. It will mark top-level React method calls as pure for tree shaking.
 
 ### React Automatic Runtime
 
