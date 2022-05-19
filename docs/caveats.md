@@ -6,7 +6,7 @@ id: caveats
 ## Polyfills
 
 In order for certain features to work they require certain polyfills. You can satisfy **all**
-Babel feature requirements by using a complete polyfill such as [`core-js-bundle`](https://www.npmjs.com/package/core-js-bundle).
+Babel feature requirements by using a complete polyfill such as [`core-js/actual`](https://www.npmjs.com/package/core-js) or (if you want to load it using a `<script>` tag) [`core-js-bundle`](https://www.jsdelivr.com/package/npm/core-js-bundle).
 
 You may alternatively/selectively include what you need:
 
