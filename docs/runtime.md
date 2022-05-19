@@ -3,7 +3,7 @@ id: babel-runtime
 title: @babel/runtime
 ---
 
-`@babel/runtime` is a library that contains Babel modular runtime helpers and a version of `regenerator-runtime`.
+`@babel/runtime` is a library that contains Babel modular runtime helpers.
 
 ## Installation
 

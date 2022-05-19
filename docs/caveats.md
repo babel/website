@@ -6,17 +6,18 @@ id: caveats
 ## Polyfills
 
 In order for certain features to work they require certain polyfills. You can satisfy **all**
-Babel feature requirements by using [@babel/polyfill](polyfill.md).
+Babel feature requirements by using a complete polyfill such as [`core-js/actual`](https://www.npmjs.com/package/core-js) or (if you want to load it using a `<script>` tag) [`core-js-bundle`](https://www.jsdelivr.com/package/npm/core-js-bundle).
 
 You may alternatively/selectively include what you need:
 
-| Feature                     | Requirements                                                                                            |
-| --------------------------- | ------------------------------------------------------------------------------------------------------- |
-| Async functions, Generators | [regenerator runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) |
-| Array destructuring, For Of | `Symbol`, `prototype[Symbol.iterator]`                                                                  |
-| Spread                      | `Array.from`                                                                                            |
+<!-- TODO: This is out of date -->
 
-There is also the `loose` option for some of these plugins.
+| Feature                     | Requirements                           |
+| --------------------------- | -------------------------------------- |
+| Array destructuring, For Of | `Symbol`, `prototype[Symbol.iterator]` |
+| Spread                      | `Array.from`                           |
+
+If you are compiling generators or async function to ES5, and you are using a version of `@babel/core` or `@babel/plugin-transform-regenerator` older than `7.18.0`, you must also load the [`regenerator runtime`](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) package. It is automatically loaded when using `@babel/preset-env`'s `useBuiltIns: "usage"` option or `@babel/plugin-transform-runtime`.
 
 ## Built-ins
 

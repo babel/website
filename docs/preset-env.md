@@ -203,12 +203,12 @@ npm install core-js@2 --save
 | `v7.0.0` | It replaces `"@babel/polyfill"` entry imports |
 </details>
 
-> NOTE: Only use `import "core-js";` and `import "regenerator-runtime/runtime";` once in your whole app.
-> If you are using `@babel/polyfill`, it already includes both `core-js` and `regenerator-runtime`: importing it twice will throw an error.
+> NOTE: Only use `import "core-js";` once in your whole app.
+> If you are using `@babel/polyfill`, it already includes `core-js`: importing it twice will throw an error.
 > Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
 > We recommend creating a single entry file that only contains the `import` statements.
 
-This option enables a new plugin that replaces the `import "core-js/stable";` and `import "regenerator-runtime/runtime"` statements (or `require("core-js")` and `require("regenerator-runtime/runtime")`) with individual requires to different `core-js` entry points based on environment.
+This option enables a new plugin that replaces the `import "core-js/stable";` and `require("core-js");` statements with individual imports to different `core-js` entry points based on environment.
 
 **In**
 
