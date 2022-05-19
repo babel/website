@@ -4,7 +4,7 @@ title: @babel/runtime-corejs2
 sidebar_label: runtime-corejs2
 ---
 
-`@babel/runtime-corejs2` is a library that contain's Babel modular runtime helpers and a version of `regenerator-runtime` as well as [`core-js`](https://github.com/zloirock/core-js).
+`@babel/runtime-corejs2` is a library that contain's Babel modular runtime helpers as well as version 2 of [`core-js`](https://github.com/zloirock/core-js).
 
 ## Installation
 
