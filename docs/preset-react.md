@@ -110,7 +110,7 @@ Though the JSX spec allows this, it is disabled by default since React's JSX doe
 
 `boolean`, defaults to `true`.
 
-Enables `@babel/plugin-transform-react-pure-annotations`.
+Enables `@babel/plugin-transform-react-pure-annotations`. It will mark top-level React method calls as pure for tree shaking.
 
 ### React Automatic Runtime
 
