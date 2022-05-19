@@ -7,6 +7,25 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="May 2022">
+
+## Babel 7.18.0
+
+[blog post](https://babeljs.io/blog/2022/05/19/7.18.0)
+
+- [TypeScript 4.7](https://devblogs.microsoft.com/typescript/announcing-typescript-4-7/) support
+- Transform support for the [Private destructuring](https://github.com/tc39/proposal-destructuring-private) Stage 2 proposal
+  ```js
+  class A {
+    #x = 2;
+    method() {
+      const { #x: x } = this;
+    }
+  }
+  ```
+- No more need to manually include the `regenerator-runtime` helper when compiling generators
+
+</li>
 <li data-date="Feb 2022">
 
 ## Babel 7.17.0
