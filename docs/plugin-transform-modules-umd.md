@@ -224,3 +224,7 @@ require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-modules-umd"],
 });
 ```
+
+### Options
+
+See options for [`@babel/plugin-transform-modules-commonjs`](https://babeljs.io/docs/en/babel-plugin-transform-modules-commonjs#options).
