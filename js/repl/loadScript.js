@@ -3,6 +3,31 @@
 import type { LoadScriptCallback } from "./types";
 
 export default function loadScript(
+  url: string | Array<string>,
+  callback: LoadScriptCallback,
+  maybeTarget: ?HTMLIFrameElement
+) {
+  if (Array.isArray(url)) {
+    url = url.slice();
+    function retryCallback(result) {
+      if (result) {
+        callback(true);
+      } else {
+        if (url.length > 0) {
+          loadScriptInternal(url.shift(), callback, maybeTarget);
+        } else {
+          callback(false);
+        }
+      }
+    }
+
+    retryCallback(false);
+  } else {
+    loadScriptInternal(url, callback, maybeTarget);
+  }
+}
+
+function loadScriptInternal(
   url: string,
   callback: LoadScriptCallback,
   maybeTarget: ?HTMLIFrameElement

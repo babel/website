@@ -48,13 +48,18 @@ registerPromiseWorker(message => {
       }));
 
     case "loadScript":
-      try {
-        importScripts(message.url);
-
-        return true;
-      } catch (error) {
-        return false;
+      if (!Array.isArray(message.url)) {
+        message.url = [message.url];
       }
+      for (const url of message.url) {
+        try {
+          importScripts(url);
+          return true;
+        } catch (error) {
+          console.warn(error);
+        }
+      }
+      return false;
 
     case "registerEnvPreset":
       try {
