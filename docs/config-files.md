@@ -16,10 +16,11 @@ Babel has two parallel config file formats, which can be used together, or indep
 </details>
 
 - Project-wide configuration
-  - `babel.config.json` files, with the different extensions (`.js`, `.cjs`, `.mjs`)
+  - `babel.config.*` files, with the following extensions: `.json`, `.js`, `.cjs`, `.mjs`.
 - File-relative configuration
-  - `.babelrc.json` files, with the different extensions (`.babelrc`, `.js`, `.cjs`, `.mjs`)
-  - `package.json` files with a `"babel"` key
+  - `.babelrc.*` files, with the following extensions: `.json`, `.js`, `.cjs`, `.mjs`.
+  - `.babelrc` file, with no extension.
+  - `package.json` files, with a `"babel"` key.
 
 ## Project-wide configuration
 
@@ -108,8 +109,7 @@ since Babel will not find the config file if the working directory isn't correct
 
 ## Supported file extensions
 
-Babel can be configured using any file extension natively supported by Node.js: you can use `.json`,
-`.js`, `.cjs` and `.mjs`, both for `babel.config.json` and `.babelrc.json` files.
+Babel can be configured using any file extension natively supported by Node.js, as mentioned in [Configuration File Types](#configuration-file-types) section:
 
 - `babel.config.json` and `.babelrc.json` are parsed as JSON5 and should contain an object matching
   the [options](options.md) format that Babel accepts. They have been supported since `v7.7.0`.
