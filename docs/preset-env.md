@@ -173,7 +173,7 @@ An array of plugins to always exclude/remove.
 
 The possible options are the same as the `include` option.
 
-This option is useful for "blacklisting" a transform like `@babel/plugin-transform-regenerator` if you don't use generators and don't want to include `regeneratorRuntime` (when using `useBuiltIns`) or for using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](plugin-proposal-async-generator-functions.md).
+This option is useful for excluding a transform like `@babel/plugin-transform-regenerator` if you don't use generators and don't want to include `regeneratorRuntime` (when using `useBuiltIns`) or for using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](plugin-proposal-async-generator-functions.md).
 
 ### `useBuiltIns`
 
