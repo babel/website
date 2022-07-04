@@ -330,7 +330,7 @@ Added in: `v7.13.0`<br />
 
 Describes the environments you support/target for your project.
 
-This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query (with [caveats](#ineffective-browserslist-queries)):
+This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query (with [caveats](preset-env.md#ineffective-browserslist-queries)):
 
 ```json
 {
