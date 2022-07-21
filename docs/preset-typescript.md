@@ -50,6 +50,7 @@ babel --presets @babel/preset-typescript script.ts
 ```javascript
 require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-typescript"],
+  filename: 'script.ts',
 });
 ```
 
