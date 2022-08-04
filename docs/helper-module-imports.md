@@ -43,7 +43,7 @@ addDefault(path, 'source');
 
 ```js
 import { addDefault } from "@babel/helper-module-imports";
-// and if the nameHint exist in scope, it will be '_hintedName2', '_hintedName3', ...
+// If 'hintedName' exists in scope, the name will be '_hintedName2', '_hintedName3', ...
 addDefault(path, 'source', { nameHint: "hintedName" })
 ```
 
