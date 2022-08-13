@@ -79,7 +79,7 @@ Alternatively, you can choose to specify your [`.babelrc.json`](#babelrcjson) co
 
 ### JavaScript configuration files
 
-You can also write `babel.config.json` and `.babelrc.json` files using JavaScript:
+You can also write `babel.config.js` and `.babelrc.js` files using JavaScript:
 
 ```js
 const presets = [ ... ];
