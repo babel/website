@@ -17,7 +17,7 @@ var foo = {
   var: function() {},
 
   // not changed
-  default: 1,
+  "default": 1,
   [a]: 2,
   foo: 1,
 };
@@ -27,10 +27,10 @@ var foo = {
 
 ```javascript
 var foo = {
-  const: function() {},
-  var: function() {},
+  "const": function() {},
+  "var": function() {},
 
-  default: 1,
+  "default": 1,
   [a]: 2,
   foo: 1,
 };
