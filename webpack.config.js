@@ -4,6 +4,9 @@ const webpack = require("webpack");
 
 const config = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
+  stats: {
+    children: true,
+  },
   entry: {
     repl: "./js/repl/index.js",
     minirepl: "./js/minirepl.js",
