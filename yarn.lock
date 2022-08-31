@@ -3291,6 +3291,7 @@ __metadata:
     babel-eslint: ^10.1.0
     babel-loader: ^8.2.5
     babel-plugin-emotion: ^9.1.2
+    buffer: ^5.7.1
     chalk: ^2.4.1
     cheerio: ^1.0.0-rc.9
     codemirror: ^5.65.0
@@ -3633,7 +3634,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"buffer@npm:^5.2.1":
+"buffer@npm:^5.2.1, buffer@npm:^5.7.1":
   version: 5.7.1
   resolution: "buffer@npm:5.7.1"
   dependencies:
