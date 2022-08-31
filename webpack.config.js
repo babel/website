@@ -28,7 +28,7 @@ const config = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      Buffer: ["Buffer"],
+      Buffer: ["buffer"],
     }),
     new webpack.DefinePlugin({
       "process.env": {
