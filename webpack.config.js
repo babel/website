@@ -1,8 +1,12 @@
 "use strict";
 const TerserPlugin = require("terser-webpack-plugin");
+const webpack = require("webpack");
 
 const config = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
+  stats: {
+    children: true,
+  },
   entry: {
     repl: "./js/repl/index.js",
     minirepl: "./js/minirepl.js",
@@ -22,7 +26,16 @@ const config = {
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new webpack.ProvidePlugin({
+      Buffer: ["buffer"],
+    }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        BABEL_TYPES_8_BREAKING: false,
+      },
+    }),
+  ],
   externals: {
     codemirror: "CodeMirror",
     "lz-string": "LZString",

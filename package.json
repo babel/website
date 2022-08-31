@@ -20,7 +20,7 @@
     "precommit": "run-s flow lint-staged",
     "start": "run-p start:codemirror6 start:repl start:docusaurus",
     "start:docusaurus": "cd website && yarn start",
-    "start:repl": "webpack -d -w",
+    "start:repl": "webpack -d source-map -w",
     "start:codemirror6": "cross-env NODE_ENV=development yarn build:codemirror6",
     "test": "remark docs README.md --quiet",
     "version": "node ./scripts/generate-repl-past-versions.mjs && git add ./js/repl/past-versions.json"
@@ -40,18 +40,18 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-flow": "^7.10.4",
-    "@babel/preset-react": "^7.10.4",
+    "@babel/core": "^7.18.13",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-flow": "^7.18.6",
+    "@babel/preset-react": "^7.18.6",
     "@codemirror/basic-setup": "0.17.1",
     "@codemirror/lang-javascript": "0.17.2",
     "@codemirror/theme-one-dark": "0.17.5",
     "@codemirror/view": "0.17.10",
-    "@rollup/plugin-node-resolve": "^11.2.0",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.5",
     "babel-plugin-emotion": "^9.1.2",
     "chalk": "^2.4.1",
     "cpy-cli": "^3.1.1",
@@ -65,7 +65,7 @@
     "eslint-plugin-react": "^7.21.2",
     "flow-bin": "^0.98.1",
     "husky": "^4.3.0",
-    "lint-staged": "^10.4.0",
+    "lint-staged": "^13.0.3",
     "node-fetch": "^2.6.1",
     "npm-run-all": "^4.1.5",
     "prettier": "1.17.0",
@@ -76,18 +76,18 @@
     "remark-lint-no-empty-url": "^2.0.1",
     "remark-lint-no-literal-urls": "^2.0.1",
     "remark-preset-lint-recommended": "^4.0.1",
-    "rollup": "^2.39.1",
+    "rollup": "^2.78.1",
     "rollup-plugin-terser": "^7.0.2",
-    "staged-git-files": "^1.1.1",
-    "terser-webpack-plugin": "^4.2.2",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "worker-loader": "^3.0.3"
+    "terser-webpack-plugin": "^5.3.5",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.0",
+    "worker-loader": "^3.0.8"
   },
   "dependencies": {
-    "@babel/generator": "^7.11.6",
+    "@babel/generator": "^7.18.13",
     "algoliasearch": "^4.12.0",
+    "buffer": "^5.7.1",
     "cheerio": "^1.0.0-rc.9",
     "codemirror": "^5.65.0",
     "core-js": "^3.0.1",
@@ -98,8 +98,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-instantsearch-dom": "^6.7.0",
-    "regenerator-runtime": "^0.13.7",
-    "semver": "^5.4.1",
+    "regenerator-runtime": "^0.13.9",
     "unfetch": "^4.2.0"
   },
   "workspaces": [
@@ -118,5 +117,6 @@
       "eslint --format=codeframe --fix",
       "git add"
     ]
-  }
+  },
+  "packageManager": "yarn@3.2.3"
 }
