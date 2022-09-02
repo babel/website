@@ -294,7 +294,7 @@ You should enable these features only if you are using an older version.
 
 - `recordAndtuple`:
 
-  - `syntaxType` (required, accepted values: `hash`, `bar`)
+  - `syntaxType` (`hash` or `bar`, defaults to `hash`)
     There are two syntax variants for `recordAndTuple`. They share exactly same runtime semantics.
     | SyntaxType | Record Example | Tuple Example |
     | --- | --- | --- |
