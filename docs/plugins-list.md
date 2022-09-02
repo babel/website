@@ -10,6 +10,7 @@ sidebar_label: Plugins List
 
 - [decorators](plugin-proposal-decorators.md)
 - [do-expressions](plugin-proposal-do-expressions.md)
+- [duplicated-named-capturing-groups-regex](plugin-proposal-duplicated-named-capturing-groups-regex.md)
 - [export-default-from](plugin-proposal-export-default-from.md)
 - [export-namespace-from](plugin-proposal-export-namespace-from.md)
 - [function-bind](plugin-proposal-function-bind.md)
