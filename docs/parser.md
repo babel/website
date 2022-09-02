@@ -277,6 +277,10 @@ You should enable these features only if you are using an older version.
     export @dec class C {}
     ```
 
+  - `allowCallParenthesized` (`boolean`, defaults to `true`)
+
+    When `false`, disallow decorators in the `@(...)()` form in favor of `@(...())`. The stage 3 decorators proposal uses `allowCallParenthesized: false`.
+
 - `pipelineOperator`:
 
   - `proposal` (required, accepted values: `minimal`, `fsharp`, `hack`, ~~`smart`~~ (deprecated))
