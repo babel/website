@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-proposal-duplicated-named-capturing-groups-regex
 title: @babel/plugin-proposal-duplicated-named-capturing-groups-regex
-sidebar_label: named-capturing-groups-regex
+sidebar_label: duplicated-named-capturing-groups-regex
 ---
 
 ## Examples
