@@ -256,6 +256,7 @@ You should enable these features only if you are using an older version.
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `7.19.0` | The `syntaxType` option of the `recordAndTuple` plugin defaults to `hash` |
 | `7.17.0` | Added `@@` and `^^` to the `topicToken` option of the `hack` pipeline operator |
 | `7.16.0` | Added `disallowAmbiguousJSXLike` for `typescript` plugin. Added `^` to the `topicToken` option of the `hack` pipeline operators |
 | `7.14.0` | Added `dts` for `typescript` plugin |
@@ -294,7 +295,7 @@ You should enable these features only if you are using an older version.
 
 - `recordAndtuple`:
 
-  - `syntaxType` (required, accepted values: `hash`, `bar`)
+  - `syntaxType` (`hash` or `bar`, defaults to `hash`)
     There are two syntax variants for `recordAndTuple`. They share exactly same runtime semantics.
     | SyntaxType | Record Example | Tuple Example |
     | --- | --- | --- |
