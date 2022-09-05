@@ -256,6 +256,7 @@ You should enable these features only if you are using an older version.
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `7.19.0` | The `syntaxType` option of the `recordAndTuple` plugin defaults to `hash` |
 | `7.17.0` | Added `@@` and `^^` to the `topicToken` option of the `hack` pipeline operator |
 | `7.16.0` | Added `disallowAmbiguousJSXLike` for `typescript` plugin. Added `^` to the `topicToken` option of the `hack` pipeline operators |
 | `7.14.0` | Added `dts` for `typescript` plugin |
