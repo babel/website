@@ -212,7 +212,7 @@ require("@babel/parser").parse("code", {
 | `decimal` ([proposal](https://github.com/tc39/proposal-decimal))                                | `0.3m`                                                   |
 | `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br> `decorators-legacy` | `@a class A {}`                                          |
 | `decoratorAutoAccessors` ([proposal](https://github.com/tc39/proposal-decorators))              | `class Example { @reactive accessor myBool = false; }`   |
-| `destructuringPrivate` ([proposal](https://github.com/tc39/proposal-destructuring-private))     | `class { #x = 1; method() { const { #x: x } = this; } }` |
+| `destructuringPrivate` ([proposal](https://github.com/tc39/proposal-destructuring-private))     | `class Example { #x = 1; method() { const { #x: x } = this; } }` |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                   | `var a = do { if (true) { 'hi'; } };`                    |
 | `exportDefaultFrom` ([proposal](https://github.com/tc39/ecmascript-export-default-from))        | `export v from "mod"`                                    |
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                     | `a::b`, `::console.log`                                  |
