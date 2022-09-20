@@ -1,17 +1,17 @@
-// @flow
-
 type Handler = (message: any) => any;
+
 type WorkerEventData = {
-  error: ?string,
-  message: ?any,
-  uid: string,
+  error: string | undefined | null;
+  message: any | undefined | null;
+  uid: string;
 };
+
 type WorkerEvent = {
-  data: WorkerEventData,
+  data: WorkerEventData;
 };
 
 export function registerPromiseWorker(handler: Handler) {
-  self.addEventListener("message", function(event) {
+  self.addEventListener("message", function (event) {
     const { data } = event;
 
     try {

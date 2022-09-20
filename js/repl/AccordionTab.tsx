@@ -1,5 +1,3 @@
-// @flow
-
 import { css } from "emotion";
 import * as React from "react";
 import Svg from "./Svg";
@@ -7,13 +5,15 @@ import { colors, media } from "./styles";
 
 import type { SidebarTabSection } from "./types";
 
+import type { ReactElement } from "react";
+
 type Props = {
-  children: React.Node,
-  className: ?any,
-  isExpanded?: boolean,
-  label: React$Element<any> | string,
-  onToggleExpanded: (key: SidebarTabSection) => mixed,
-  tabKey: SidebarTabSection,
+  children: React.ReactNode;
+  className: any | undefined | null;
+  isExpanded?: boolean;
+  label: ReactElement<any> | string;
+  onToggleExpanded: (key: SidebarTabSection) => unknown;
+  tabKey: SidebarTabSection;
 };
 
 export default class AccordionTab extends React.Component<Props> {

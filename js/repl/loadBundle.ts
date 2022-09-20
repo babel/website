@@ -1,5 +1,3 @@
-// @flow
-
 import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./CircleCI";
 import type { BabelState } from "./types";
 import WorkerApi from "./WorkerApi";
@@ -14,7 +12,7 @@ export default async function loadBundle(
 
   function doLoad(url, error) {
     state.isLoading = true;
-    return workerApi.loadScript(url).then(success => {
+    return workerApi.loadScript(url).then((success) => {
       if (success) {
         state.isLoaded = true;
         state.isLoading = false;

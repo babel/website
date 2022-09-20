@@ -1,5 +1,3 @@
-// @flow
-
 import { css, cx } from "emotion";
 import React, { Component } from "react";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
@@ -23,6 +21,8 @@ import type {
   SidebarTabSection,
   SourceType,
 } from "./types";
+
+import type { ReactElement, ChangeEvent } from "react";
 
 const PRESET_ORDER = [
   "react",
@@ -78,50 +78,50 @@ const HIDDEN_PRESETS = ["es2015", "es2015-loose", "es2016", "es2017"];
 type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, value: boolean | string) => void;
-type TogglePresetOption = (name: string, value: *) => void;
+type TogglePresetOption = (name: string, value: any) => void;
 type ToggleVersion = (version: string) => void;
 type ShowOfficialExternalPluginsChanged = (value: string) => void;
 type PluginSearch = (value: string) => void;
-type PluginChange = (plugin: Object) => void;
+type PluginChange = (plugin: any) => void;
 type AssumptionsChange = (value: string, isChecked: boolean) => void;
 
 type Props = {
-  babelVersion: ?string,
-  className: string,
-  pluginsLoading: boolean,
-  pluginValue: ?string,
-  showOfficialExternalPlugins: boolean,
-  pluginChange: PluginChange,
-  externalPlugins: Array<BabelPlugin>,
-  showOfficialExternalPluginsChanged: ShowOfficialExternalPluginsChanged,
-  envConfig: EnvConfig,
-  pluginSearch: PluginSearch,
-  envPresetState: EnvState,
-  shippedProposalsState: ShippedProposalsState,
-  presetsOptions: PresetsOptions,
-  fileSize: boolean,
-  timeTravel: boolean,
-  sourceType: SourceType,
-  isExpanded: boolean,
-  lineWrap: boolean,
-  onEnvPresetSettingChange: ToggleEnvPresetSetting,
-  onExternalPluginRemove: (pluginName: string) => void,
-  onIsExpandedChange: ToggleExpanded,
-  onSettingChange: ToggleSetting,
-  onPresetOptionChange: TogglePresetOption,
-  onVersionChange: ToggleVersion,
-  pluginState: PluginStateMap,
-  presetState: PluginStateMap,
-  runtimePolyfillConfig: PluginConfig,
-  runtimePolyfillState: PluginState,
-  loadingExternalPlugins: boolean,
-  onAssumptionsChange: AssumptionsChange,
+  babelVersion: string | undefined | null;
+  className: string;
+  pluginsLoading: boolean;
+  pluginValue: string | undefined | null;
+  showOfficialExternalPlugins: boolean;
+  pluginChange: PluginChange;
+  externalPlugins: Array<BabelPlugin>;
+  showOfficialExternalPluginsChanged: ShowOfficialExternalPluginsChanged;
+  envConfig: EnvConfig;
+  pluginSearch: PluginSearch;
+  envPresetState: EnvState;
+  shippedProposalsState: ShippedProposalsState;
+  presetsOptions: PresetsOptions;
+  fileSize: boolean;
+  timeTravel: boolean;
+  sourceType: SourceType;
+  isExpanded: boolean;
+  lineWrap: boolean;
+  onEnvPresetSettingChange: ToggleEnvPresetSetting;
+  onExternalPluginRemove: (pluginName: string) => void;
+  onIsExpandedChange: ToggleExpanded;
+  onSettingChange: ToggleSetting;
+  onPresetOptionChange: TogglePresetOption;
+  onVersionChange: ToggleVersion;
+  pluginState: PluginStateMap;
+  presetState: PluginStateMap;
+  runtimePolyfillConfig: PluginConfig;
+  runtimePolyfillState: PluginState;
+  loadingExternalPlugins: boolean;
+  onAssumptionsChange: AssumptionsChange;
 };
 
 type LinkProps = {
-  className?: string,
-  children: React$Element<any> | string,
-  section: string,
+  className?: string;
+  children: ReactElement<any> | string;
+  section: string;
 };
 
 const LinkToDocs = ({ className, children, section }: LinkProps) => (
@@ -145,13 +145,13 @@ const LinkToAssumptionDocs = ({ className, children, section }: LinkProps) => (
 );
 
 type PresetOptionProps = {
-  className?: string,
-  when?: boolean,
-  enabled?: boolean,
-  option: string,
-  presets: string[],
-  comment?: string,
-  children: React$Element<any> | Array<React$Element<any>>,
+  className?: string;
+  when?: boolean;
+  enabled?: boolean;
+  option: string;
+  presets: string[];
+  comment?: string;
+  children: ReactElement<any> | Array<ReactElement<any>>;
 };
 
 const PresetOption = ({
@@ -193,11 +193,11 @@ export default function ReplOptions(props: Props) {
 }
 
 type State = {
-  isEnvTabExpanded: boolean,
-  isPluginsTabExpanded: boolean,
-  isPresetsTabExpanded: boolean,
-  isSettingsTabExpanded: boolean,
-  isAssumptionsTabExpanded: boolean,
+  isEnvTabExpanded: boolean;
+  isPluginsTabExpanded: boolean;
+  isPresetsTabExpanded: boolean;
+  isSettingsTabExpanded: boolean;
+  isAssumptionsTabExpanded: boolean;
 };
 
 // The choice of Component over PureComponent is intentional here.
@@ -215,7 +215,7 @@ class ExpandedContainer extends Component<Props, State> {
       isEnvTabExpanded: props.envConfig.isEnvPresetEnabled,
       isPluginsTabExpanded: props.externalPlugins.length > 0,
       isPresetsTabExpanded: Object.keys(props.presetState).some(
-        p => props.presetState[p].isEnabled
+        (p) => props.presetState[p].isEnabled
       ),
       isSettingsTabExpanded: true, // TODO
       isAssumptionsTabExpanded: false,
@@ -314,7 +314,7 @@ class ExpandedContainer extends Component<Props, State> {
                 />
                 Line Wrap
               </label>
-              {pluginConfigs.map(config => (
+              {pluginConfigs.map((config) => (
                 <PluginToggle
                   config={config}
                   key={config.package}
@@ -346,7 +346,7 @@ class ExpandedContainer extends Component<Props, State> {
                 Source Type
                 <select
                   value={sourceType}
-                  onChange={(event: SyntheticInputEvent<*>) =>
+                  onChange={(event: ChangeEvent<any>) =>
                     onSettingChange("sourceType", event.target.value)
                   }
                   className={cx(styles.optionSelect, styles.sourceTypeSelect)}
@@ -358,17 +358,13 @@ class ExpandedContainer extends Component<Props, State> {
               </label>
               <div className={styles.verticalLabeledOption}>
                 <LinkToDocs
-                  className={`${styles.verticalLabeledOptionLabel} ${
-                    styles.envPresetLabel
-                  } ${styles.highlight}`}
+                  className={`${styles.verticalLabeledOptionLabel} ${styles.envPresetLabel} ${styles.highlight}`}
                   section="targets"
                 >
                   Targets
                 </LinkToDocs>
                 <textarea
-                  className={`${styles.envPresetInput} ${
-                    styles.envPresetTextarea
-                  }`}
+                  className={`${styles.envPresetInput} ${styles.envPresetTextarea}`}
                   onChange={this._onEnvPresetSettingChange("browsers")}
                   placeholder={envPresetDefaults.browsers.placeholder}
                   value={envConfig.browsers}
@@ -382,7 +378,7 @@ class ExpandedContainer extends Component<Props, State> {
               onToggleExpanded={this.handleToggleTabExpanded}
               tabKey="presets"
             >
-              {PRESET_ORDER.map(preset => {
+              {PRESET_ORDER.map((preset) => {
                 const state = presetState[preset];
 
                 if (!state) return null;
@@ -396,7 +392,7 @@ class ExpandedContainer extends Component<Props, State> {
                   />
                 );
               })}
-              {HIDDEN_PRESETS.map(preset => {
+              {HIDDEN_PRESETS.map((preset) => {
                 const state = presetState[preset];
 
                 if (!state?.isEnabled) return null;
@@ -428,7 +424,7 @@ class ExpandedContainer extends Component<Props, State> {
                   className={cx(styles.optionSelect, styles.presetOptionSelect)}
                   onChange={this._onPresetOptionChange(
                     "reactRuntime",
-                    t => t.value
+                    (t) => t.value
                   )}
                 >
                   <option
@@ -457,10 +453,10 @@ class ExpandedContainer extends Component<Props, State> {
                   className={cx(styles.optionSelect, styles.presetOptionSelect)}
                   onChange={this._onPresetOptionChange(
                     "decoratorsVersion",
-                    t => t.value
+                    (t) => t.value
                   )}
                 >
-                  {Object.keys(DECORATOR_PROPOSALS).map(key => (
+                  {Object.keys(DECORATOR_PROPOSALS).map((key) => (
                     <option
                       value={key}
                       selected={key === presetsOptions.decoratorsVersion}
@@ -484,7 +480,7 @@ class ExpandedContainer extends Component<Props, State> {
                 <input
                   enabled={presetsOptions.decoratorsVersion !== "legacy"}
                   checked={presetsOptions.decoratorsBeforeExport}
-                  ref={el => {
+                  ref={(el) => {
                     if (el) {
                       el.indeterminate =
                         presetsOptions.decoratorsVersion === "legacy";
@@ -494,7 +490,7 @@ class ExpandedContainer extends Component<Props, State> {
                   type="checkbox"
                   onChange={this._onPresetOptionChange(
                     "decoratorsBeforeExport",
-                    t => t.checked
+                    (t) => t.checked
                   )}
                 />
               </PresetOption>
@@ -510,10 +506,10 @@ class ExpandedContainer extends Component<Props, State> {
                   className={cx(styles.optionSelect, styles.presetOptionSelect)}
                   onChange={this._onPresetOptionChange(
                     "pipelineProposal",
-                    t => t.value
+                    (t) => t.value
                   )}
                 >
-                  {Object.keys(PIPELINE_PROPOSALS).map(key => (
+                  {Object.keys(PIPELINE_PROPOSALS).map((key) => (
                     <option
                       value={key}
                       selected={key === presetsOptions.pipelineProposal}
@@ -549,9 +545,7 @@ class ExpandedContainer extends Component<Props, State> {
                   Electron
                 </LinkToDocs>
                 <input
-                  className={`${styles.envPresetNumber} ${
-                    styles.envPresetInput
-                  }`}
+                  className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
                   disabled={
                     !envConfig.isEnvPresetEnabled ||
                     !envConfig.isElectronEnabled
@@ -579,9 +573,7 @@ class ExpandedContainer extends Component<Props, State> {
                   Node
                 </LinkToDocs>
                 <input
-                  className={`${styles.envPresetNumber} ${
-                    styles.envPresetInput
-                  }`}
+                  className={`${styles.envPresetNumber} ${styles.envPresetInput}`}
                   disabled={
                     !envConfig.isEnvPresetEnabled || !envConfig.isNodeEnabled
                   }
@@ -729,7 +721,7 @@ class ExpandedContainer extends Component<Props, State> {
               onToggleExpanded={this.handleToggleTabExpanded}
               tabKey="assumptions"
             >
-              {ASSUMPTIONS_OPTIONS.map(option => {
+              {ASSUMPTIONS_OPTIONS.map((option) => {
                 const isChecked =
                   assumptions[option] === "undefined"
                     ? false
@@ -737,9 +729,7 @@ class ExpandedContainer extends Component<Props, State> {
                 return (
                   <label className={styles.envPresetRow}>
                     <LinkToAssumptionDocs
-                      className={`${styles.envPresetLabel} ${
-                        styles.highlightWithoutUppercase
-                      }`}
+                      className={`${styles.envPresetLabel} ${styles.highlightWithoutUppercase}`}
                       section={option}
                     >
                       {option}
@@ -747,7 +737,7 @@ class ExpandedContainer extends Component<Props, State> {
                     <input
                       checked={isChecked}
                       className={styles.envPresetCheckbox}
-                      onChange={event =>
+                      onChange={(event) =>
                         this._onAssumptionsCheck(option, event.target.checked)
                       }
                       type="checkbox"
@@ -804,37 +794,33 @@ class ExpandedContainer extends Component<Props, State> {
     );
   }
 
-  _onEnvPresetSettingChange = (type: string) => (
-    event: SyntheticInputEvent<*>
-  ) => {
+  _onEnvPresetSettingChange = (type: string) => (event: ChangeEvent<any>) => {
     this.props.onEnvPresetSettingChange(type, event.target.value);
   };
 
-  _onEnvPresetSettingCheck = (type: string) => (
-    event: SyntheticInputEvent<*>
-  ) => {
+  _onEnvPresetSettingCheck = (type: string) => (event: ChangeEvent<any>) => {
     if (type === "isEnvPresetEnabled") {
       this.props.presetState.env.isEnabled = event.target.checked;
     }
     this.props.onEnvPresetSettingChange(type, event.target.checked);
   };
 
-  _onSettingCheck = (type: string) => (event: SyntheticInputEvent<*>) => {
+  _onSettingCheck = (type: string) => (event: ChangeEvent<any>) => {
     this.props.onSettingChange(type, event.target.checked);
   };
 
-  _onPresetOptionChange = (type: string, getValue: (target: *) => *) => (
-    event: SyntheticInputEvent<*>
-  ) => {
-    console.log("CHANGE", type, getValue(event.target));
-    this.props.onPresetOptionChange(type, getValue(event.target));
-  };
+  _onPresetOptionChange =
+    (type: string, getValue: (target: any) => any) =>
+    (event: ChangeEvent<any>) => {
+      console.log("CHANGE", type, getValue(event.target));
+      this.props.onPresetOptionChange(type, getValue(event.target));
+    };
 
-  _pluginNameChanged = value => {
+  _pluginNameChanged = (value) => {
     this.props.pluginSearch(value);
   };
 
-  _onshowOfficialExternalPluginsChanged = value => {
+  _onshowOfficialExternalPluginsChanged = (value) => {
     this.props.showOfficialExternalPluginsChanged(value);
   };
 
@@ -852,7 +838,7 @@ class ExpandedContainer extends Component<Props, State> {
 }
 
 type CollapsedContainerProps = {
-  onIsExpandedChange: boolean => any,
+  onIsExpandedChange: (a: boolean) => any;
 };
 
 const CollapsedContainer = ({
@@ -872,11 +858,11 @@ const CollapsedContainer = ({
 );
 
 type PluginToggleProps = {
-  config: PluginConfig,
-  label?: string,
-  state: PluginState,
-  onSettingChange: ToggleSetting,
-  hidden?: boolean,
+  config: PluginConfig;
+  label?: string;
+  state: PluginState;
+  onSettingChange: ToggleSetting;
+  hidden?: boolean;
 };
 
 const PluginToggle = ({
@@ -899,7 +885,7 @@ const PluginToggle = ({
       checked={state.isEnabled && !state.didError}
       className={styles.inputCheckboxLeft}
       disabled={state.isLoading || state.didError}
-      onChange={(event: SyntheticInputEvent<*>) =>
+      onChange={(event: ChangeEvent<any>) =>
         onSettingChange(config.package || config.label, event.target.checked)
       }
       type="checkbox"
@@ -1133,9 +1119,7 @@ const styles = {
     appearance: "none",
     backgroundColor: colors.selectBackground,
     // eslint-disable-next-line
-    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='${
-      colors.inverseForegroundLight
-    }'><polygon points='0,0 100,0 50,50'/></svg>")`,
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='${colors.inverseForegroundLight}'><polygon points='0,0 100,0 50,50'/></svg>")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "8px",
     border: 0,

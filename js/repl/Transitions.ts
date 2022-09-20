@@ -1,14 +1,12 @@
-// @flow
-
 import generate from "@babel/generator";
 import type { Transition } from "./types";
 
 type Parent = {
-  isProgram: () => boolean,
-  parentPath: Parent,
+  isProgram: () => boolean;
+  parentPath: Parent;
   node: {
-    type: string,
-  },
+    type: string;
+  };
 };
 
 export default class Transitions {

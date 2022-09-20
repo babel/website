@@ -1,4 +1,3 @@
-// @flow
 import { preferDarkColorScheme } from "./Utils";
 
 const lightColors = {

@@ -1,5 +1,3 @@
-// @flow
-
 import { envPresetDefaults, replDefaults } from "./PluginConfig";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
@@ -58,7 +56,9 @@ export const replState = (): ReplState => {
   return hasQueryString ? urlState() : loadPersistedState();
 };
 
-type DefaultPlugins = { [name: string]: boolean };
+type DefaultPlugins = {
+  [name: string]: boolean;
+};
 
 export const persistedStateToBabelState = (
   persistedState: ReplState,
@@ -175,7 +175,7 @@ export const persistedStateToEnvConfig = (
   envConfig.assumptions = parsedAssumptions;
   decodeURIComponent(persistedState.targets)
     .split(",")
-    .forEach(component => {
+    .forEach((component) => {
       try {
         const pieces = component.split("-");
 
@@ -212,7 +212,7 @@ export const persistedStateToExternalPluginsState = (
   if (!externalPlugins) {
     return [];
   }
-  return externalPlugins.split(",").map(plugin => {
+  return externalPlugins.split(",").map((plugin) => {
     const separator = plugin.lastIndexOf("@");
     const name = plugin.slice(0, separator);
     const version = plugin.slice(separator + 1);

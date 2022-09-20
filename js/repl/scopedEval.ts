@@ -1,5 +1,3 @@
-// @flow
-
 let iframe = null;
 
 function getIframe() {
@@ -14,7 +12,7 @@ function getIframe() {
   return iframe;
 }
 
-function scopedEval(code: string, sourceMap: ?string) {
+function scopedEval(code: string, sourceMap?: string | null) {
   // Append source map footer so errors map to pre-compiled code.
   if (sourceMap) {
     code =

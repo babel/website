@@ -1,11 +1,9 @@
-// @flow
-
 import { css } from "emotion";
 import React from "react";
 
 type Props = {
-  className: string,
-  path: string,
+  className: string;
+  path: string;
 };
 
 const Svg = ({ className, path, ...rest }: Props) => (

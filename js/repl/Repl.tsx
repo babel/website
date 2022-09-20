@@ -1,5 +1,3 @@
-// @flow
-
 import "regenerator-runtime/runtime";
 
 import { cx, css } from "emotion";
@@ -53,34 +51,35 @@ import type {
 } from "./types";
 
 type Props = {};
+
 type State = {
-  babel: BabelState,
-  code: string,
-  compiled: ?string,
-  compileErrorMessage: ?string,
-  debugEnvPreset: boolean,
-  envConfig: EnvConfig,
-  envPresetDebugInfo: ?string,
-  envPresetState: EnvState,
-  shippedProposalsState: ShippedProposalsState,
-  presetsOptions: PresetsOptions,
-  evalErrorMessage: ?string,
-  fileSize: boolean,
-  timeTravel: boolean,
-  sourceType: SourceType,
-  isSidebarExpanded: boolean,
-  lineWrap: boolean,
-  meta: Object,
-  plugins: PluginStateMap,
-  presets: PluginStateMap,
-  runtimePolyfillState: PluginState,
-  sourceMap: ?string,
-  externalPlugins: Array<BabelPlugin>,
-  pluginSearch: ?string,
-  showOfficialExternalPlugins: boolean,
-  loadingExternalPlugins: boolean,
-  transitions: Array<Object>,
-  currentTransition: Object,
+  babel: BabelState;
+  code: string;
+  compiled: string | undefined | null;
+  compileErrorMessage: string | undefined | null;
+  debugEnvPreset: boolean;
+  envConfig: EnvConfig;
+  envPresetDebugInfo: string | undefined | null;
+  envPresetState: EnvState;
+  shippedProposalsState: ShippedProposalsState;
+  presetsOptions: PresetsOptions;
+  evalErrorMessage: string | undefined | null;
+  fileSize: boolean;
+  timeTravel: boolean;
+  sourceType: SourceType;
+  isSidebarExpanded: boolean;
+  lineWrap: boolean;
+  meta: any;
+  plugins: PluginStateMap;
+  presets: PluginStateMap;
+  runtimePolyfillState: PluginState;
+  sourceMap: string | undefined | null;
+  externalPlugins: Array<BabelPlugin>;
+  pluginSearch: string | undefined | null;
+  showOfficialExternalPlugins: boolean;
+  loadingExternalPlugins: boolean;
+  transitions: Array<any>;
+  currentTransition: any;
 };
 
 const DEBOUNCE_DELAY = 500;
@@ -90,11 +89,11 @@ function toCamelCase(str) {
     .replace(/-/g, " ")
     .replace(/\//g, "_")
     .replace(/@/g, "_")
-    .replace(/\s(.)/g, function($1) {
+    .replace(/\s(.)/g, function ($1) {
       return $1.toUpperCase();
     })
     .replace(/\s/g, "")
-    .replace(/^(.)/, function($1) {
+    .replace(/^(.)/, function ($1) {
       return $1.toLowerCase();
     });
 }
@@ -318,7 +317,7 @@ class Repl extends React.Component<Props, State> {
 
       if (plugin.isEnabled && !plugin.isLoaded && !plugin.isLoading) {
         this._numLoadingPlugins++;
-        this._workerApi.loadPlugin(plugin).then(success => {
+        this._workerApi.loadPlugin(plugin).then((success) => {
           this._numLoadingPlugins--;
 
           // If a plugin has failed to load, re-render to show a loading error.
@@ -351,7 +350,7 @@ class Repl extends React.Component<Props, State> {
       loadPlugin(
         runtimePolyfillState,
         () => {
-          let evalErrorMessage: ?string = null;
+          let evalErrorMessage: string | undefined | null = null;
 
           if (!this.state.compiled) {
             return;
@@ -381,17 +380,18 @@ class Repl extends React.Component<Props, State> {
 
     const availablePlugins = await this._workerApi.getAvailablePlugins();
     const availablePluginsNames = availablePlugins.map(({ label }) => label);
-    const notRegisteredPackages = this.state.shippedProposalsState.config.packages
-      .filter(
-        packageState => !availablePluginsNames.includes(packageState.label)
-      )
-      .map(config =>
-        configToState({ ...config, version: this.state.babel.version }, true)
-      );
+    const notRegisteredPackages =
+      this.state.shippedProposalsState.config.packages
+        .filter(
+          (packageState) => !availablePluginsNames.includes(packageState.label)
+        )
+        .map((config) =>
+          configToState({ ...config, version: this.state.babel.version }, true)
+        );
 
     if (notRegisteredPackages.length) {
       const plugins = await Promise.all(
-        notRegisteredPackages.map(state => loadBundle(state, this._workerApi))
+        notRegisteredPackages.map((state) => loadBundle(state, this._workerApi))
       );
       const allPluginsAreLoaded = plugins.every(({ isLoaded }) => isLoaded);
       if (allPluginsAreLoaded) {
@@ -415,7 +415,7 @@ class Repl extends React.Component<Props, State> {
 
   _loadInitialExternalPlugins = () => {
     return Promise.all(
-      this.state.externalPlugins.map(plugin =>
+      this.state.externalPlugins.map((plugin) =>
         this._loadExternalPlugin(plugin).catch()
       )
     );
@@ -443,15 +443,15 @@ class Repl extends React.Component<Props, State> {
     });
   };
 
-  _pluginSearch = value =>
+  _pluginSearch = (value) =>
     this.setState({
       pluginSearch: value,
     });
 
-  _pluginChange = plugin => {
+  _pluginChange = (plugin) => {
     const pluginExists =
       this.state.externalPlugins.findIndex(
-        externalPlugin => externalPlugin.name === plugin.name
+        (externalPlugin) => externalPlugin.name === plugin.name
       ) > -1;
 
     if (!pluginExists) {
@@ -460,7 +460,7 @@ class Repl extends React.Component<Props, State> {
       this._loadExternalPlugin(plugin)
         .then(() => {
           this.setState(
-            state => ({
+            (state) => ({
               externalPlugins: [...state.externalPlugins, plugin],
             }),
             this._pluginsUpdatedSetStateCallback
@@ -477,11 +477,11 @@ class Repl extends React.Component<Props, State> {
   };
 
   _showOfficialExternalPluginsChanged = () =>
-    this.setState(state => ({
+    this.setState((state) => ({
       showOfficialExternalPlugins: !state.showOfficialExternalPlugins,
     }));
 
-  _compile = (code: string, setStateCallback: () => mixed) => {
+  _compile = (code: string, setStateCallback: () => unknown) => {
     const { state } = this;
     const { runtimePolyfillState } = state;
 
@@ -489,7 +489,7 @@ class Repl extends React.Component<Props, State> {
 
     this._workerApi
       .compile(code, {
-        plugins: state.externalPlugins.map(plugin => plugin.name),
+        plugins: state.externalPlugins.map((plugin) => plugin.name),
         debugEnvPreset: state.debugEnvPreset,
         envConfig: state.envConfig,
         presetsOptions: state.presetsOptions,
@@ -501,7 +501,7 @@ class Repl extends React.Component<Props, State> {
         sourceType: state.sourceType,
         getTransitions: state.timeTravel,
       })
-      .then(result => {
+      .then((result) => {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
         result.meta.rawSize = prettySize(result.meta.rawSize);
         this.setState(result, setStateCallback);
@@ -516,29 +516,27 @@ class Repl extends React.Component<Props, State> {
     DEBOUNCE_DELAY
   );
 
-  _onOptionChange = (kind: "envConfig" | "presetsOptions") => (
-    name: string,
-    value: any
-  ) => {
-    if (name === "isBuiltInsEnabled") {
-      if (value) {
-        this.state.envConfig.builtIns ||= envPresetDefaults.builtIns.default;
-        this.state.envConfig.corejs ||= envPresetDefaults.corejs.default;
-      } else {
-        this.state.envConfig.builtIns = false;
-        this.state.envConfig.corejs = false;
+  _onOptionChange =
+    (kind: "envConfig" | "presetsOptions") => (name: string, value: any) => {
+      if (name === "isBuiltInsEnabled") {
+        if (value) {
+          this.state.envConfig.builtIns ||= envPresetDefaults.builtIns.default;
+          this.state.envConfig.corejs ||= envPresetDefaults.corejs.default;
+        } else {
+          this.state.envConfig.builtIns = false;
+          this.state.envConfig.corejs = false;
+        }
       }
-    }
-    this.setState(
-      state => ({
-        [kind]: {
-          ...state[kind],
-          [name]: value,
-        },
-      }),
-      this._pluginsUpdatedSetStateCallback
-    );
-  };
+      this.setState(
+        (state) => ({
+          [kind]: {
+            ...state[kind],
+            [name]: value,
+          },
+        }),
+        this._pluginsUpdatedSetStateCallback
+      );
+    };
 
   _onIsSidebarExpandedChange = (isExpanded: boolean) => {
     this.setState(
@@ -550,7 +548,7 @@ class Repl extends React.Component<Props, State> {
   };
 
   _onSettingChange = (name: string, value: boolean | string) => {
-    this.setState(state => {
+    this.setState((state) => {
       const { plugins, presets, runtimePolyfillState } = state;
 
       if (name === "@babel/polyfill") {
@@ -583,7 +581,7 @@ class Repl extends React.Component<Props, State> {
     const { assumptions } = this.state.envConfig;
     if (isChecked === true) assumptions[value] = isChecked;
     else delete assumptions[value];
-    this.setState(state => {
+    this.setState((state) => {
       return { envConfig: { ...state.envConfig, assumptions } };
     }, this._pluginsUpdatedSetStateCallback);
   };
@@ -623,7 +621,7 @@ class Repl extends React.Component<Props, State> {
       pipelineProposal: state.presetsOptions.pipelineProposal,
       reactRuntime: state.presetsOptions.reactRuntime,
       externalPlugins: state.externalPlugins
-        .map(plugin => `${plugin.name}@${plugin.version}`)
+        .map((plugin) => `${plugin.name}@${plugin.version}`)
         .join(","),
     };
     StorageService.set("replState", payload);
@@ -654,8 +652,8 @@ class Repl extends React.Component<Props, State> {
     const { presets } = state;
 
     return Object.keys(presets)
-      .filter(key => presets[key].isEnabled && presets[key].isLoaded)
-      .map(key => presets[key].config.label);
+      .filter((key) => presets[key].isEnabled && presets[key].isLoaded)
+      .map((key) => presets[key].config.label);
   }
 
   _updateCode = (code: string) => {
@@ -665,9 +663,9 @@ class Repl extends React.Component<Props, State> {
     this._compileToState(code);
   };
 
-  selectTransition = (transition: Object) => () => {
+  selectTransition = (transition: any) => () => {
     const transitionSize = prettySize(transition.size);
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       ...prevState,
       currentTransition: transition,
       compiled: transition.code,
@@ -680,9 +678,9 @@ class Repl extends React.Component<Props, State> {
 
   handleRemoveExternalPlugin = (pluginName: string) => {
     this.setState(
-      state => ({
+      (state) => ({
         externalPlugins: state.externalPlugins.filter(
-          p => p.name !== pluginName
+          (p) => p.name !== pluginName
         ),
       }),
       this._pluginsUpdatedSetStateCallback

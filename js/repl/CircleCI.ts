@@ -1,13 +1,14 @@
-// @flow
-
 import fetch from "unfetch";
 
-async function sendRequest(repo: ?string, uri: string): Promise<Object> {
+async function sendRequest(
+  repo: string | undefined | null,
+  uri: string
+): Promise<any> {
   const urlRepo = repo && repo.length ? repo : "babel/babel";
   const fullURL = `https://circleci.com/api/v1.1/project/github/${urlRepo}/${uri}`;
   let response;
   try {
-    response = await fetch(fullURL).then(res => res.json());
+    response = await fetch(fullURL).then((res) => res.json());
   } catch (ex) {
     throw new Error(`Error sending request to CircleCI: ${ex.message}`);
   }
@@ -20,14 +21,15 @@ async function sendRequest(repo: ?string, uri: string): Promise<Object> {
 }
 
 export async function loadBuildArtifacts(
-  repo: ?string,
+  repo: string | undefined | null,
   regExp: RegExp,
   build: number | string,
-  cb: (url: string, error?: string) => Promise<any> // eslint-disable-line no-unused-vars
+  // eslint-disable-line no-unused-vars
+  cb: (url: string, error?: string) => Promise<any>
 ): Promise<string> {
   try {
     const response = await sendRequest(repo, `${build}/artifacts`);
-    const artifacts = response.filter(x => regExp.test(x.path));
+    const artifacts = response.filter((x) => regExp.test(x.path));
     if (!artifacts || artifacts.length === 0) {
       throw new Error(
         `Could not find valid @babel/standalone artifact in build #${build}`
@@ -40,7 +42,7 @@ export async function loadBuildArtifacts(
 }
 
 export async function loadLatestBuildNumberForBranch(
-  repo: ?string,
+  repo: string | undefined | null,
   branch: string,
   jobName: string,
   limit: number = 30
@@ -52,7 +54,9 @@ export async function loadLatestBuildNumberForBranch(
     );
     if (!response) throw new Error("No builds found");
 
-    const build = response.find(build => build.workflows.job_name === jobName);
+    const build = response.find(
+      (build) => build.workflows.job_name === jobName
+    );
     if (!build) throw new Error(`No builds found (${jobName})`);
     return build.build_num;
   } catch (ex) {

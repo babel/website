@@ -1,8 +1,7 @@
-// @flow
 import camelCase from "lodash.camelcase";
 import type { PluginConfig, MultiPackagesConfig, ReplState } from "./types";
 
-const normalizePluginName = pluginName =>
+const normalizePluginName = (pluginName) =>
   `_babel_${camelCase(`plugin-${pluginName}`)}`;
 
 const babelConfig: PluginConfig = {
@@ -29,7 +28,7 @@ const shippedProposalsPackages: Array<PluginConfig> = [
   // "proposal-object-rest-spread",
   // "proposal-optional-catch-binding",
   // "proposal-unicode-property-regex",
-].map(pluginName => {
+].map((pluginName) => {
   const packageName = `@babel/plugin-${pluginName}`;
   return {
     label: pluginName,
@@ -71,7 +70,7 @@ const envPresetDefaults = {
 const runtimePolyfillConfig: PluginConfig = {
   label: "Runtime Polyfill",
   package: "@babel/polyfill",
-  url: 'https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js',
+  url: "https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js",
 };
 
 const pluginConfigs: Array<PluginConfig> = [

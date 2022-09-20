@@ -1,5 +1,3 @@
-// @flow
-
 /*
  * Long term storage for persistence of state/etc
  */

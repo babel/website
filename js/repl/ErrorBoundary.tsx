@@ -1,15 +1,13 @@
-// @flow
-
 import * as React from "react";
 import { css } from "emotion";
 import { colors } from "./styles";
 
 type Props = {
-  children?: React.Node,
+  children?: React.ReactNode;
 };
 
 type State = {
-  error: ?Error,
+  error: Error | undefined | null;
 };
 
 export default class ErrorBoundary extends React.Component<Props, State> {

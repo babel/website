@@ -1,5 +1,3 @@
-// @flow
-
 import { injectGlobal, css } from "emotion";
 import CodeMirror from "codemirror";
 import React from "react";
@@ -19,16 +17,16 @@ const DEFAULT_CODE_MIRROR_OPTIONS = {
 };
 
 type Props = {
-  autoFocus: boolean,
-  onChange: (value: string) => void,
-  options: Object,
-  placeholder?: string,
-  value: ?string,
-  preserveScrollPosition: boolean,
+  autoFocus: boolean;
+  onChange: (value: string) => void;
+  options: any;
+  placeholder?: string;
+  value: string | undefined | null;
+  preserveScrollPosition: boolean;
 };
 
 type State = {
-  isFocused: boolean,
+  isFocused: boolean;
 };
 
 export default class ReactCodeMirror extends React.Component<Props, State> {

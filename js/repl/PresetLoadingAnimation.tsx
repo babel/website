@@ -1,11 +1,9 @@
-// @flow
-
 import { css, keyframes } from "emotion";
 import * as React from "react";
 
 type PresetLoadingAnimationProps = {
-  className?: string,
-  size?: number,
+  className?: string;
+  size?: number;
 };
 
 const PresetLoadingAnimation = ({

@@ -1,5 +1,3 @@
-// @flow
-
 import LZString from "lz-string";
 
 import type { ReplState } from "./types";
@@ -52,8 +50,8 @@ const decode = (value: any) => {
   }
 };
 
-const mergeDefinedKeys = (raw: Object, keys: Array<string>, target: Object) => {
-  keys.forEach(key => {
+const mergeDefinedKeys = (raw: any, keys: Array<string>, target: any) => {
+  keys.forEach((key) => {
     if (raw[key] != null) {
       target[key] = raw[key];
     }
@@ -64,7 +62,7 @@ const parseQuery = () => {
   const raw = document.location.hash
     .replace(/^#\?/, "")
     .split("&")
-    .reduce((reduced: Object, pair: string) => {
+    .reduce((reduced: any, pair: string) => {
       const pieces = pair.split("=");
       const name = decodeURIComponent("" + pieces[0]);
 
@@ -89,7 +87,7 @@ const parseQuery = () => {
 };
 
 const updateQuery = (state: ReplState) => {
-  const query = URL_KEYS.map(key => {
+  const query = URL_KEYS.map((key) => {
     if (state[key] == null) {
       return null;
     } else if (key === "code") {
@@ -98,7 +96,7 @@ const updateQuery = (state: ReplState) => {
       return key + "=" + encode(state[key]);
     }
   })
-    .filter(value => value)
+    .filter((value) => value)
     .join("&");
 
   window.location.hash = "?" + query;

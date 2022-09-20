@@ -1,12 +1,13 @@
-// @flow
 import { css, keyframes } from "emotion";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
+import type { ReactNode, SyntheticEvent } from "react";
+
 type Props = {
-  children: React$Node,
-  onClick?: () => void,
-  onClose: () => void,
+  children: ReactNode;
+  onClick?: () => void;
+  onClose: () => void;
 };
 
 export default class Modal extends Component<Props> {
@@ -14,8 +15,8 @@ export default class Modal extends Component<Props> {
     onClose: () => {},
   };
 
-  _node: ?HTMLDivElement;
-  _content: ?HTMLDivElement;
+  _node: HTMLDivElement | undefined | null;
+  _content: HTMLDivElement | undefined | null;
 
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeydown);
@@ -51,7 +52,7 @@ export default class Modal extends Component<Props> {
     }
   };
 
-  handleContentClick = (e: SyntheticEvent<*>) => {
+  handleContentClick = (e: SyntheticEvent<any>) => {
     if (e.target !== this._content) return;
 
     this.props.onClose();
@@ -75,7 +76,7 @@ export default class Modal extends Component<Props> {
         <div
           className={styles.content}
           onClick={this.handleContentClick}
-          ref={x => (this._content = x)}
+          ref={(x) => (this._content = x)}
           {...props}
         >
           {children}

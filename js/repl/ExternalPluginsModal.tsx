@@ -1,4 +1,3 @@
-// @flow
 import algoliasearch from "algoliasearch/lite";
 import { css } from "emotion";
 import React from "react";
@@ -20,31 +19,31 @@ const searchClient = algoliasearch(
 );
 
 type SearchHit = {
-  description: string,
-  name: string,
-  objectID: string,
+  description: string;
+  name: string;
+  objectID: string;
   owner: {
-    avatar: string,
-    link: string,
-    name: string,
-  },
-  version: string,
+    avatar: string;
+    link: string;
+    name: string;
+  };
+  version: string;
 };
 
 type RenderHitProps = {
-  hit: SearchHit,
+  hit: SearchHit;
 };
 
 type Props = {
-  onClose: () => void,
-  onPluginSelect: any, // TODO
-  plugins: Array<BabelPlugin>,
-  officialOnly: boolean,
-  handleOfficialOnlyToggle: boolean => void,
+  onClose: () => void;
+  onPluginSelect: any; // TODO
+  plugins: Array<BabelPlugin>;
+  officialOnly: boolean;
+  handleOfficialOnlyToggle: (a: boolean) => void;
 };
 
 export default class ExternalPluginsModal extends React.Component<Props> {
-  _input: ?HTMLInputElement;
+  _input: HTMLInputElement | undefined | null;
 
   componentDidMount() {
     if (this._input) {
@@ -91,7 +90,7 @@ export default class ExternalPluginsModal extends React.Component<Props> {
     }
 
     if (plugins.length) {
-      plugins.forEach(p => (filters += ` AND NOT objectID:${p.name}`));
+      plugins.forEach((p) => (filters += ` AND NOT objectID:${p.name}`));
     }
 
     return (
@@ -105,7 +104,7 @@ export default class ExternalPluginsModal extends React.Component<Props> {
               filters={filters}
             />
             <div className={styles.modalSearch}>
-              <SearchBox inputRef={x => (this._input = x)} />
+              <SearchBox inputRef={(x) => (this._input = x)} />
               <label>
                 <input
                   checked={officialOnly}

@@ -1,5 +1,3 @@
-// @flow
-
 import scopedEval from "./scopedEval";
 import { registerPromiseWorkerApi } from "./WorkerUtils";
 
@@ -9,21 +7,21 @@ import type { CompileConfig, PluginState } from "./types";
 const WorkerSource = require("worker-loader?inline=no-fallback&esModule=false!./Worker");
 
 type PromiseWorkerApi = {
-  postMessage(message: Object): Promise<any>,
+  postMessage(message: any): Promise<any>;
 };
 
 type CompileResult = {
-  compiled: ?string,
-  compileErrorMessage: ?string,
-  envPresetDebugInfo: ?string,
-  evalErrorMessage: ?string,
-  meta: Object,
-  sourceMap: ?string,
+  compiled: string | undefined | null;
+  compileErrorMessage: string | undefined | null;
+  envPresetDebugInfo: string | undefined | null;
+  evalErrorMessage: string | undefined | null;
+  meta: any;
+  sourceMap: string | undefined | null;
 };
 
 type PluginShape = {
-  instanceName: string,
-  pluginName: string,
+  instanceName: string;
+  pluginName: string;
 };
 
 /**
@@ -90,7 +88,10 @@ export default class WorkerApi {
   }
 
   getAvailablePlugins(): Promise<
-    Array<{ label: string, isPreloaded: boolean }>
+    Array<{
+      label: string;
+      isPreloaded: boolean;
+    }>
   > {
     return this._worker.postMessage({ method: "getAvailablePlugins" });
   }
@@ -115,7 +116,7 @@ export default class WorkerApi {
           )
         );
 
-    return loadPromise.then(success => {
+    return loadPromise.then((success) => {
       if (success) {
         state.isLoaded = true;
         state.isLoading = false;

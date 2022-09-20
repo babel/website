@@ -1,19 +1,17 @@
-// @flow
-
 import { css } from "emotion";
 import CodeMirror from "./CodeMirror";
 import React from "react";
 import { colors } from "./styles";
 
 type Props = {
-  className?: string,
-  code: ?string,
-  errorMessage: ?string,
-  info?: ?string,
-  onChange?: (value: string) => void,
-  options: Object,
-  placeholder?: string,
-  fileSize: string,
+  className?: string;
+  code: string | undefined | null;
+  errorMessage: string | undefined | null;
+  info?: string | null;
+  onChange?: (value: string) => void;
+  options: any;
+  placeholder?: string;
+  fileSize: string;
 };
 
 export default function CodeMirrorPanel(props: Props) {

@@ -1,5 +1,3 @@
-// @flow
-
 // Globals pre-loaded by Worker
 import { compareVersions } from "./Utils";
 
@@ -16,15 +14,15 @@ import type {
 } from "./types";
 
 type Return = {
-  compiled: ?string,
-  compileErrorMessage: ?string,
-  envPresetDebugInfo: ?string,
+  compiled: string | undefined | null;
+  compileErrorMessage: string | undefined | null;
+  envPresetDebugInfo: string | undefined | null;
   meta: {
-    compiledSize: number,
-    rawSize: number,
-  },
-  sourceMap: ?string,
-  transitions: Array<Transition>,
+    compiledSize: number;
+    rawSize: number;
+  };
+  sourceMap: string | undefined | null;
+  transitions: Array<Transition>;
 };
 
 const DEFAULT_PRETTIER_CONFIG = {
@@ -45,9 +43,9 @@ function guessFileExtension(presets: BabelPresets): SupportedFileExtension {
     ext = ".ts";
   }
   if (presets.includes("react")) {
-    ext = (ext + "x": any);
+    ext = (ext + "x") as any;
   }
-  return (ext: SupportedFileExtension);
+  return ext as SupportedFileExtension;
 }
 
 export default function compile(code: string, config: CompileConfig): Return {
@@ -77,8 +75,8 @@ export default function compile(code: string, config: CompileConfig): Return {
     if (envConfig.browsers) {
       targets.browsers = envConfig.browsers
         .split(",")
-        .map(value => value.trim())
-        .filter(value => value);
+        .map((value) => value.trim())
+        .filter((value) => value);
     }
     if (envConfig.isElectronEnabled) {
       targets.electron = envConfig.electron;
@@ -112,7 +110,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       loose,
     };
     if (Babel.version && compareVersions(Babel.version, "7.9.0") !== -1) {
-      (presetEnvOptions: any).bugfixes = bugfixes;
+      (presetEnvOptions as any).bugfixes = bugfixes;
     }
   }
 
@@ -123,7 +121,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       sourceMap: config.sourceMap,
       assumptions: envConfig?.assumptions ?? {},
 
-      presets: config.presets.map(preset => {
+      presets: config.presets.map((preset) => {
         if (typeof preset !== "string") return preset;
         if (preset === "env") {
           return ["env", presetEnvOptions];

@@ -1,5 +1,3 @@
-// @flow
-
 import { css } from "emotion";
 import * as React from "react";
 import AccordionTab from "./AccordionTab";
@@ -8,18 +6,18 @@ import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import type { SidebarTabSection, BabelPlugin } from "./types";
 
 type Props = {
-  _pluginChanged: any,
-  isExpanded: boolean,
-  isLoading: boolean,
-  onRemove: (pluginName: string) => void,
-  onToggleExpanded: (key: SidebarTabSection) => mixed,
-  plugins: Array<BabelPlugin>,
-  styles: Object,
+  _pluginChanged: any;
+  isExpanded: boolean;
+  isLoading: boolean;
+  onRemove: (pluginName: string) => void;
+  onToggleExpanded: (key: SidebarTabSection) => unknown;
+  plugins: Array<BabelPlugin>;
+  styles: any;
 };
 
 type State = {
-  modalOpen: boolean,
-  officialOnly: boolean,
+  modalOpen: boolean;
+  officialOnly: boolean;
 };
 
 export default class ExternalPlugins extends React.Component<Props, State> {
@@ -70,7 +68,7 @@ export default class ExternalPlugins extends React.Component<Props, State> {
 
     return (
       <ul className={currentStyles.pluginList}>
-        {plugins.map(p => (
+        {plugins.map((p) => (
           <li key={p.name}>
             <span className={currentStyles.pluginName}>
               {p.name}{" "}

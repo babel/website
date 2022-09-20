@@ -1,14 +1,12 @@
-// @flow
-
 import { css } from "emotion";
 import React from "react";
 import { colors } from "./styles";
 
 type Props = {
-  className?: string,
-  currentTransition: Object,
-  transitions: Array<Object>,
-  selectTransition: (transition: Object) => () => void,
+  className?: string;
+  currentTransition: any;
+  transitions: Array<any>;
+  selectTransition: (transition: any) => () => void;
 };
 
 class TimeTravelSlider extends React.Component<Props> {

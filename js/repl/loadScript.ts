@@ -1,5 +1,3 @@
-// @flow
-
 import type { LoadScriptCallback } from "./types";
 
 export default function loadScript(
@@ -30,7 +28,7 @@ export default function loadScript(
 function loadScriptInternal(
   url: string,
   callback: LoadScriptCallback,
-  maybeTarget: ?HTMLIFrameElement
+  maybeTarget?: HTMLIFrameElement | null
 ) {
   if (maybeTarget != null) {
     const target = maybeTarget;

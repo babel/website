@@ -1,5 +1,3 @@
-// @flow
-
 import loadScript from "./loadScript";
 
 import type { LoadScriptCallback, PluginState } from "./types";
@@ -7,7 +5,7 @@ import type { LoadScriptCallback, PluginState } from "./types";
 export default function loadPlugin(
   state: PluginState,
   callback: LoadScriptCallback,
-  target: ?HTMLIFrameElement
+  target?: HTMLIFrameElement | null
 ) {
   if (state.isLoading) {
     return;
