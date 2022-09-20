@@ -77,7 +77,7 @@ export default class WorkerApi {
     return this._worker.postMessage({ method: "getBabelVersion" });
   }
 
-  loadExternalPlugin(url: string): Promise<boolean> {
+  loadExternalPlugin(url: string | Array<string>): Promise<boolean> {
     return this.loadScript(url);
   }
 
@@ -98,15 +98,21 @@ export default class WorkerApi {
   loadPlugin(state: PluginState): Promise<boolean> {
     const { config } = state;
 
-    const base = config.baseUrl || "https://bundle.run";
-    const url = `${base}/${config.package}@${config.version || ""}`;
+    const base = config.baseUrl ? [config.baseUrl] : ["https://bundle.run"];
+    Array.prototype.push.apply(base, ["https://packd.liuxingbaoyu.xyz"]);
+
+    const urls = config.url
+      ? [config.url]
+      : base.map(url => `${url}/${config.package}@${config.version || ""}`);
 
     state.isLoading = true;
 
     const loadPromise = !config.files
-      ? this.loadScript(url)
+      ? this.loadScript(urls)
       : Promise.all(
-          config.files.map(file => this.loadScript(`${url}/${file}`))
+          config.files.map(file =>
+            this.loadScript(urls.map(url => `${url}/${file}`))
+          )
         );
 
     return loadPromise.then(success => {
@@ -122,7 +128,7 @@ export default class WorkerApi {
     });
   }
 
-  loadScript(url: ?string): Promise<boolean> {
+  loadScript(url: ?string | Array<string>): Promise<boolean> {
     return this._worker.postMessage({
       method: "loadScript",
       url,

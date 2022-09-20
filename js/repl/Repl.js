@@ -422,7 +422,11 @@ class Repl extends React.Component<Props, State> {
   };
 
   _loadExternalPlugin = (plugin: BabelPlugin) => {
-    const bundledUrl = `https://bundle.run/${plugin.name}@${plugin.version}`;
+    const bundledUrl = [
+      "https://bundle.run",
+      "https://packd.liuxingbaoyu.xyz",
+    ].map(url => `${url}/${plugin.name}@${plugin.version}`);
+
     return this._workerApi.loadExternalPlugin(bundledUrl).then(loaded => {
       if (loaded === false) {
         this.setState({
