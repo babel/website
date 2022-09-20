@@ -438,7 +438,7 @@ Note, browsers' results are overridden by explicit items from `targets`.
 
 Type: `string`.
 
-The minimal supported version is 1.0.
+The minimum supported version is 1.0.
 
 ```json
 {
