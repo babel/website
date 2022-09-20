@@ -7,7 +7,7 @@ declare function importScripts(url: string): void;
 
 // This script should be executed within a web-worker.
 // Values returned below will be automatically wrapped in Promises.
-registerPromiseWorker((message) => {
+registerPromiseWorker(message => {
   const { method, name } = message;
 
   switch (method) {
@@ -24,6 +24,7 @@ registerPromiseWorker((message) => {
     case "getBundleVersion":
       try {
         const target = self[name];
+        // @ts-expect-error Window doesn't have the property
         return target.version;
       } catch (error) {
         return null;
@@ -32,7 +33,7 @@ registerPromiseWorker((message) => {
     case "getAvailablePresets":
       if (!Babel) return [];
 
-      return Object.keys(Babel.availablePresets).map((p) => ({
+      return Object.keys(Babel.availablePresets).map(p => ({
         label: p,
         isPreLoaded: true,
       }));
@@ -40,7 +41,7 @@ registerPromiseWorker((message) => {
     case "getAvailablePlugins":
       if (!Babel) return [];
 
-      return Object.keys(Babel.availablePlugins).map((p) => ({
+      return Object.keys(Babel.availablePlugins).map(p => ({
         label: p,
         isPreLoaded: true,
       }));
@@ -72,7 +73,7 @@ registerPromiseWorker((message) => {
     case "registerPlugins":
       try {
         message.plugins.forEach(({ pluginName, instanceName }) => {
-          let plugin = self[instanceName];
+          let plugin = self[instanceName] as any;
 
           if (typeof plugin.default === "function") {
             plugin = plugin.default;

@@ -69,7 +69,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   let presetEnvOptions = {};
 
   if (envConfig && envConfig.isEnvPresetEnabled) {
-    const targets = {};
+    const targets:any = {};
     const { forceAllTransforms, shippedProposals } = envConfig;
 
     if (envConfig.browsers) {
@@ -82,7 +82,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       targets.electron = envConfig.electron;
     }
     if (envConfig.isBuiltInsEnabled) {
-      useBuiltIns = !config.evaluate && envConfig.builtIns;
+      useBuiltIns = !config.evaluate && !!envConfig.builtIns;
       if (envConfig.corejs) {
         corejs = envConfig.corejs;
       }

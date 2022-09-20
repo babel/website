@@ -24,10 +24,10 @@ export class SearchBox extends React.PureComponent<Props> {
         ref={this.props.inputRef}
         type="text"
         value={this.props.currentRefinement}
-        autocomplete="off"
-        autocorrect="off"
-        autocapitalize="off"
-        spellcheck="false"
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck="false"
       />
     );
   }

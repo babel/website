@@ -77,7 +77,7 @@ const styles = {
   Label: css({
     flex: "1",
     fontSize: "0.75rem",
-    fontWeight: "700",
+    fontWeight: 700,
     textTransform: "uppercase",
   }),
   Arrow: css({

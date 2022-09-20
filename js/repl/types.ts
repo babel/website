@@ -23,12 +23,12 @@ export type EnvConfig = {
   isSpecEnabled: boolean;
   isLooseEnabled: boolean;
   builtIns: string | false;
-  corejs: string;
+  corejs: string | false;
   forceAllTransforms: boolean;
   shippedProposals: boolean;
   version?: any;
   node: string | undefined | null;
-  assumptions: any;
+  assumptions?: any;
 };
 
 export type EnvFeatures = {
@@ -89,6 +89,7 @@ export type ShippedProposalsState = LazyLoadedState & {
 export type PluginState = LazyLoadedState & {
   config: PluginConfig;
   isEnabled: boolean;
+  plugin: any;
 };
 
 export type PluginStateMap = {
@@ -114,8 +115,8 @@ export type ReplState = {
   browsers: string;
   bugfixes: boolean;
   build: string;
-  builtIns: string | boolean;
-  corejs: string | undefined | null;
+  builtIns: string | false;
+  corejs?: string | false;
   spec: boolean;
   loose: boolean;
   circleciRepo: string;
@@ -139,7 +140,14 @@ export type ReplState = {
   pipelineProposal: "minimal" | "fsharp" | "hack";
   reactRuntime: "classic" | "automatic";
   externalPlugins: string | undefined | null;
-  assumptions: any | undefined | null;
+  assumptions?: any;
+
+  electron?: string;
+  isEnvPresetTabExpanded?: boolean;
+  isPluginsExpanded?: boolean;
+  isPresetsTabExpanded?: boolean;
+  isSettingsTabExpanded?: boolean;
+  meta?: { compiledSize: number; rawSize: number };
 };
 
 export type SidebarTabSection =
@@ -154,6 +162,7 @@ export type Transition = {
   pluginAlias: string;
   visitorType: string;
   currentNode?: string;
+  size?: number;
 };
 
 export type SupportedFileExtension = ".js" | ".jsx" | ".ts" | ".tsx";

@@ -6,13 +6,18 @@ import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import type { SidebarTabSection, BabelPlugin } from "./types";
 
 type Props = {
-  _pluginChanged: any;
   isExpanded: boolean;
   isLoading: boolean;
   onRemove: (pluginName: string) => void;
   onToggleExpanded: (key: SidebarTabSection) => unknown;
   plugins: Array<BabelPlugin>;
   styles: any;
+  _pluginNameChanged: any;
+  _pluginChanged: any;
+  _onshowOfficialExternalPluginsChanged: any;
+  pluginValue: string;
+  pluginsLoading: boolean;
+  showOfficialExternalPlugins: boolean;
 };
 
 type State = {

@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime";
 
 import { cx, css } from "emotion";
 import debounce from "lodash.debounce";
-import React from "react";
+import React, { type ChangeEvent } from "react";
 import { prettySize, compareVersions } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
@@ -528,6 +528,8 @@ class Repl extends React.Component<Props, State> {
         }
       }
       this.setState(
+        // TODO: FIXME
+        // @ts-expect-error
         (state) => ({
           [kind]: {
             ...state[kind],
@@ -548,6 +550,8 @@ class Repl extends React.Component<Props, State> {
   };
 
   _onSettingChange = (name: string, value: boolean | string) => {
+    // TODO: FIXME
+    // @ts-expect-error
     this.setState((state) => {
       const { plugins, presets, runtimePolyfillState } = state;
 
@@ -628,11 +632,13 @@ class Repl extends React.Component<Props, State> {
     UriUtils.updateQuery(payload);
   };
 
-  _onVersionChange = (e: Event) => {
+  _onVersionChange = (e: ChangeEvent) => {
     this.setState(
       {
         babel: {
           ...this.state.babel,
+          // TODO: FIXME
+          // @ts-expect-error
           version: e.target.value,
         },
       },

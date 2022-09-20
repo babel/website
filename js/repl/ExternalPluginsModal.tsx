@@ -1,6 +1,6 @@
 import algoliasearch from "algoliasearch/lite";
 import { css } from "emotion";
-import React from "react";
+import React,{type ChangeEvent} from "react";
 import {
   Configure,
   Hits,
@@ -39,7 +39,7 @@ type Props = {
   onPluginSelect: any; // TODO
   plugins: Array<BabelPlugin>;
   officialOnly: boolean;
-  handleOfficialOnlyToggle: (a: boolean) => void;
+  handleOfficialOnlyToggle: (a: ChangeEvent) => void;
 };
 
 export default class ExternalPluginsModal extends React.Component<Props> {

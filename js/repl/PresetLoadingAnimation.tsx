@@ -45,7 +45,7 @@ const styles = {
       marginLeft: `${2 + (size - 1) * 2}px`,
       width: `${size * 2}px`,
 
-      ":nth-child(1)": { animationDelay: 0, marginLeft: 0 },
+      ":nth-child(1)": { animationDelay: "0", marginLeft: "0" },
       ":nth-child(2)": { animationDelay: "-1.1s" },
       ":nth-child(3)": { animationDelay: "-1.0s" },
       ":nth-child(4)": { animationDelay: "-0.9s" },

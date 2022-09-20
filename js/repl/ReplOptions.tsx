@@ -79,7 +79,7 @@ type ToggleEnvPresetSetting = (name: string, value: any) => void;
 type ToggleExpanded = (isExpanded: boolean) => void;
 type ToggleSetting = (name: string, value: boolean | string) => void;
 type TogglePresetOption = (name: string, value: any) => void;
-type ToggleVersion = (version: string) => void;
+type ToggleVersion = (event: ChangeEvent) => void;
 type ShowOfficialExternalPluginsChanged = (value: string) => void;
 type PluginSearch = (value: string) => void;
 type PluginChange = (plugin: any) => void;
@@ -116,6 +116,7 @@ type Props = {
   runtimePolyfillState: PluginState;
   loadingExternalPlugins: boolean;
   onAssumptionsChange: AssumptionsChange;
+  debugEnvPreset: boolean;
 };
 
 type LinkProps = {
@@ -238,6 +239,8 @@ class ExpandedContainer extends Component<Props, State> {
     const parsedTab = tab.charAt(0).toUpperCase() + tab.slice(1);
     const key = `is${parsedTab}TabExpanded`;
 
+    // TODO: FIXME
+    // @ts-expect-error
     this.setState((state: State) => ({
       [key]: !state[key],
     }));
@@ -435,7 +438,7 @@ class ExpandedContainer extends Component<Props, State> {
                   </option>
                   <option
                     value="classic"
-                    selected={presetsOptions.reactRuntime}
+                    selected={!!presetsOptions.reactRuntime}
                   >
                     Classic
                   </option>
@@ -478,7 +481,7 @@ class ExpandedContainer extends Component<Props, State> {
                   <code>export</code>
                 </span>
                 <input
-                  enabled={presetsOptions.decoratorsVersion !== "legacy"}
+                  disabled={presetsOptions.decoratorsVersion === "legacy"}
                   checked={presetsOptions.decoratorsBeforeExport}
                   ref={(el) => {
                     if (el) {
@@ -600,7 +603,7 @@ class ExpandedContainer extends Component<Props, State> {
                   Built-ins
                 </LinkToDocs>
                 <select
-                  value={envConfig.corejs}
+                  value={envConfig.corejs+''}
                   className={styles.envPresetSelect}
                   onChange={this._onEnvPresetSettingChange("corejs")}
                   disabled={
@@ -613,7 +616,7 @@ class ExpandedContainer extends Component<Props, State> {
                   <option value="3.21">core-js 3.21</option>
                 </select>
                 <select
-                  value={envConfig.builtIns}
+                  value={envConfig.builtIns+''}
                   className={styles.envPresetSelect}
                   onChange={this._onEnvPresetSettingChange("builtIns")}
                   disabled={

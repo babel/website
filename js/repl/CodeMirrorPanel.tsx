@@ -1,4 +1,4 @@
-import { css } from "emotion";
+import { css, type Interpolation } from "emotion";
 import CodeMirror from "./CodeMirror";
 import React from "react";
 import { colors } from "./styles";
@@ -45,7 +45,7 @@ export default function CodeMirrorPanel(props: Props) {
   );
 }
 
-const sharedBoxStyles = {
+const sharedBoxStyles:Interpolation = {
   flex: "0 0 auto",
   maxHeight: "33%",
   overflow: "auto",

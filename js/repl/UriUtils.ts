@@ -51,7 +51,7 @@ const decode = (value: any) => {
 };
 
 const mergeDefinedKeys = (raw: any, keys: Array<string>, target: any) => {
-  keys.forEach((key) => {
+  keys.forEach(key => {
     if (raw[key] != null) {
       target[key] = raw[key];
     }
@@ -66,7 +66,7 @@ const parseQuery = () => {
       const pieces = pair.split("=");
       const name = decodeURIComponent("" + pieces[0]);
 
-      let value = decodeURIComponent("" + pieces[1]);
+      let value: string | boolean = decodeURIComponent("" + pieces[1]);
       if (value === "true" || value === "false") {
         value = value === "true";
       }
@@ -75,7 +75,7 @@ const parseQuery = () => {
       return reduced;
     }, {});
 
-  const state = {};
+  const state: { code?: string } = {};
 
   mergeDefinedKeys(raw, URL_KEYS, state);
 
@@ -87,7 +87,7 @@ const parseQuery = () => {
 };
 
 const updateQuery = (state: ReplState) => {
-  const query = URL_KEYS.map((key) => {
+  const query = URL_KEYS.map(key => {
     if (state[key] == null) {
       return null;
     } else if (key === "code") {
@@ -96,7 +96,7 @@ const updateQuery = (state: ReplState) => {
       return key + "=" + encode(state[key]);
     }
   })
-    .filter((value) => value)
+    .filter(value => value)
     .join("&");
 
   window.location.hash = "?" + query;
