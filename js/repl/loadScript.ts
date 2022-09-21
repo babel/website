@@ -3,7 +3,7 @@ import type { LoadScriptCallback } from "./types";
 export default function loadScript(
   url: string | Array<string>,
   callback: LoadScriptCallback,
-  maybeTarget: ?HTMLIFrameElement
+  maybeTarget?: HTMLIFrameElement
 ) {
   if (Array.isArray(url)) {
     url = url.slice();
@@ -12,6 +12,7 @@ export default function loadScript(
         callback(true);
       } else {
         if (url.length > 0) {
+          // @ts-expect-error url is string[]
           loadScriptInternal(url.shift(), callback, maybeTarget);
         } else {
           callback(false);
