@@ -8,8 +8,11 @@ const config = {
     children: true,
   },
   entry: {
-    repl: "./js/repl/index.js",
+    repl: "./js/repl/index.tsx",
     minirepl: "./js/minirepl.js",
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".json"],
   },
   output: {
     // Don't bother with hashing/versioning the filename - Netlify does it
@@ -20,7 +23,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(ts|tsx|js)$/,
         exclude: /node_modules/,
         loader: "babel-loader",
       },
