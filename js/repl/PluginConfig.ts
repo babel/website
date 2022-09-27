@@ -65,7 +65,7 @@ const envPresetDefaults = {
   corejs: {
     default: "3.21",
   },
-} as const;
+};
 
 const runtimePolyfillConfig: PluginConfig = {
   label: "Runtime Polyfill",

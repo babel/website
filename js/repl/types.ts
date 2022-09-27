@@ -22,7 +22,7 @@ export type EnvConfig = {
   isNodeEnabled: boolean;
   isSpecEnabled: boolean;
   isLooseEnabled: boolean;
-  builtIns: false|"entry"|"usage";
+  builtIns: string | false;
   corejs: string | false;
   forceAllTransforms: boolean;
   shippedProposals: boolean;
@@ -115,7 +115,7 @@ export type ReplState = {
   browsers: string;
   bugfixes: boolean;
   build: string;
-  builtIns: false | "entry" | "usage";
+  builtIns: string | false;
   corejs?: string | false;
   spec: boolean;
   loose: boolean;

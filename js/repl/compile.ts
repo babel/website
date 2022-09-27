@@ -55,7 +55,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   let compileErrorMessage = null;
   let envPresetDebugInfo = null;
   let sourceMap = null;
-  let useBuiltIns:false|"entry"|"usage" = false;
+  let useBuiltIns = false;
   let spec = false;
   let loose = false;
   let bugfixes = false;
@@ -82,7 +82,7 @@ export default function compile(code: string, config: CompileConfig): Return {
       targets.electron = envConfig.electron;
     }
     if (envConfig.isBuiltInsEnabled) {
-      useBuiltIns = (!config.evaluate && envConfig.builtIns) as false|"entry"|"usage";
+      useBuiltIns = !config.evaluate && !!envConfig.builtIns;
       if (envConfig.corejs) {
         corejs = envConfig.corejs;
       }
