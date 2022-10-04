@@ -17,6 +17,7 @@ sidebar_label: Plugins List
 - [function-sent](plugin-proposal-function-sent.md)
 - [partial-application](plugin-proposal-partial-application.md)
 - [pipeline-operator](plugin-proposal-pipeline-operator.md)
+- [private-methods](plugin-proposal-private-methods.md)
 - [throw-expressions](plugin-proposal-throw-expressions.md)
 - [record-and-tuple](plugin-proposal-record-and-tuple.md)
 
