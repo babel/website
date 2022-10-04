@@ -51,6 +51,8 @@
     "@codemirror/view": "0.17.10",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@types/react": "16",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
     "babel-loader": "^8.2.5",
     "babel-plugin-emotion": "^9.1.2",
     "chalk": "^2.4.1",
@@ -61,7 +63,7 @@
     "eslint-plugin-markdown": "^3.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
-    "husky": "^4.3.0",
+    "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "node-fetch": "^2.6.1",
     "npm-run-all": "^4.1.5",
@@ -103,7 +105,7 @@
     "./website"
   ],
   "lint-staged": {
-    "js/**/*.js": [
+    "js/**/*.{js,ts,tsx}": [
       "eslint --format=codeframe --fix",
       "git add"
     ],
