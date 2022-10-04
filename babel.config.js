@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(api) {
+module.exports = function (api) {
   const env = api.env();
   api.cache.using(() => env);
 

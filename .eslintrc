@@ -2,28 +2,42 @@
   "root": true,
   "env": {
     "node": true,
-    "mocha": true
+    "mocha": true,
+    "es2022": true
   },
-  "extends": ["babel", "prettier"],
-  "plugins": ["prettier"],
+  "extends": [
+    "prettier"
+  ],
+  "plugins": [
+    "prettier"
+  ],
   "rules": {
     "prettier/prettier": "error"
   },
   "overrides": [
     {
-      "files": ["js/**/*.js", "website/**/*.js"],
+      "files": [
+        "js/**/*.tsx",
+        "website/**/*.js"
+      ],
       "parserOptions": {
         "jsx": true
       },
-      "plugins": ["react"],
+      "plugins": [
+        "react"
+      ],
       "rules": {
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error"
       }
     },
     {
-      "files": ["website/**/*.md"],
-      "plugins": ["markdown"]
+      "files": [
+        "website/**/*.md"
+      ],
+      "plugins": [
+        "markdown"
+      ]
     }
   ]
 }
