@@ -19,11 +19,11 @@ export default function loadPlugin(
 
   const urls =
     config.url ||
-    base.map(url => `${url}/${config.package}@${config.version || ""}`);
+    base.map((url) => `${url}/${config.package}@${config.version || ""}`);
 
   loadScript(
     urls,
-    success => {
+    (success) => {
       if (success) {
         state.isLoaded = true;
         state.isLoading = false;

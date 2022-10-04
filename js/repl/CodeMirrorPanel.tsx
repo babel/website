@@ -45,7 +45,7 @@ export default function CodeMirrorPanel(props: Props) {
   );
 }
 
-const sharedBoxStyles:Interpolation = {
+const sharedBoxStyles: Interpolation = {
   flex: "0 0 auto",
   maxHeight: "33%",
   overflow: "auto",

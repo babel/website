@@ -425,9 +425,9 @@ class Repl extends React.Component<Props, State> {
     const bundledUrl = [
       "https://bundle.run",
       "https://packd.liuxingbaoyu.xyz",
-    ].map(url => `${url}/${plugin.name}@${plugin.version}`);
+    ].map((url) => `${url}/${plugin.name}@${plugin.version}`);
 
-    return this._workerApi.loadExternalPlugin(bundledUrl).then(loaded => {
+    return this._workerApi.loadExternalPlugin(bundledUrl).then((loaded) => {
       if (loaded === false) {
         this.setState({
           compileErrorMessage: `Plugin ${plugin.name} could not be loaded`,

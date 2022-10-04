@@ -603,7 +603,7 @@ class ExpandedContainer extends Component<Props, State> {
                   Built-ins
                 </LinkToDocs>
                 <select
-                  value={envConfig.corejs+''}
+                  value={envConfig.corejs + ""}
                   className={styles.envPresetSelect}
                   onChange={this._onEnvPresetSettingChange("corejs")}
                   disabled={
@@ -616,7 +616,7 @@ class ExpandedContainer extends Component<Props, State> {
                   <option value="3.21">core-js 3.21</option>
                 </select>
                 <select
-                  value={envConfig.builtIns+''}
+                  value={envConfig.builtIns + ""}
                   className={styles.envPresetSelect}
                   onChange={this._onEnvPresetSettingChange("builtIns")}
                   disabled={
