@@ -104,15 +104,15 @@ export default class WorkerApi {
 
     const urls = config.url
       ? [config.url]
-      : base.map(url => `${url}/${config.package}@${config.version || ""}`);
+      : base.map((url) => `${url}/${config.package}@${config.version || ""}`);
 
     state.isLoading = true;
 
     const loadPromise = !config.files
       ? this.loadScript(urls)
       : Promise.all(
-          config.files.map(file =>
-            this.loadScript(urls.map(url => `${url}/${file}`))
+          config.files.map((file) =>
+            this.loadScript(urls.map((url) => `${url}/${file}`))
           )
         );
 

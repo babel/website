@@ -1,29 +1,56 @@
 {
   "root": true,
   "env": {
+    "es2022": true,
     "node": true,
     "mocha": true
   },
-  "extends": ["babel", "prettier"],
-  "plugins": ["prettier"],
+  "extends": [
+    "prettier"
+  ],
+  "plugins": [
+    "prettier",
+  ],
   "rules": {
     "prettier/prettier": "error"
   },
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "overrides": [
     {
-      "files": ["js/**/*.js", "website/**/*.js"],
+      "files": [
+        "**/*.ts",
+        "**/*.tsx"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "plugins": [
+        "@typescript-eslint"
+      ]
+    },
+    {
+      "files": [
+        "js/**/*.js",
+        "website/**/*.js"
+      ],
       "parserOptions": {
         "jsx": true
       },
-      "plugins": ["react"],
+      "plugins": [
+        "react"
+      ],
       "rules": {
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error"
       }
     },
     {
-      "files": ["website/**/*.md"],
-      "plugins": ["markdown"]
+      "files": [
+        "website/**/*.md"
+      ],
+      "plugins": [
+        "markdown"
+      ]
     }
   ]
 }
