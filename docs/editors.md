@@ -21,6 +21,12 @@ take a look at the [Setup](/setup) guide.
 Install [language-babel](https://atom.io/packages/language-babel) package
 and follow the [instructions](https://github.com/gandm/language-babel#installation).
 
+### Emacs
+
+Install the [js2-mode](https://github.com/mooz/js2-mode) that's likely the best JavaScript mode available for Emacs. It has very accurate syntax highlighting using a recursive-descent parser, strict recognition of the Ecma-262 language standard, supports most Rhino and SpiderMonkey extensions from 1.5 and up, and on-the-fly reporting of syntax errors and strict-mode warnings.
+
+In adition to [js2-mode](https://github.com/mooz/js2-mode), you can install two more packages, [js2-refactor](https://github.com/js-emacs/js2-refactor.el) that adds powerful refactorings, and [xref-js2](https://github.com/js-emacs/xref-js2) that makes it easy to jump to function references or definitions.
+
 ### Sublime Text 3
 
 First, [install Package Control](https://packagecontrol.io/installation).
