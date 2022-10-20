@@ -132,9 +132,10 @@ export default function compile(code: string, config: CompileConfig): Return {
         if (/^stage-[0-2]$/.test(preset)) {
           const decoratorsLegacy =
             presetsOptions.decoratorsVersion === "legacy" || undefined;
-          const decoratorsBeforeExport = decoratorsLegacy
-            ? undefined
-            : presetsOptions.decoratorsBeforeExport;
+          const decoratorsBeforeExport =
+            decoratorsLegacy || presetsOptions.decoratorsVersion === "2022-03"
+              ? undefined
+              : presetsOptions.decoratorsBeforeExport;
           const decoratorsVersion = decoratorsLegacy
             ? undefined
             : presetsOptions.decoratorsVersion;
@@ -166,6 +167,8 @@ export default function compile(code: string, config: CompileConfig): Return {
         ? transitions.wrapPluginVisitorMethod
         : undefined,
     };
+
+    console.info("Babel config", babelConfig);
 
     const transformed = Babel.transform(code, babelConfig);
     compiled = transformed.code;
