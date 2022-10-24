@@ -69,8 +69,10 @@ npx babel script.js --watch --out-file script-compiled.js
 
 ### Compile with Source Maps
 
+> **Note:** Since v7.19.3, if this parameter is not specified, `@babel/cli` will follow the [configuration files](https://babeljs.io/docs/en/config-files).
+
 If you would then like to add a **source map file** you can use
-`--source-maps` or `-s`. [Learn more about source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/).
+`--source-maps` or `-s`.
 
 ```sh
 npx babel script.js --out-file script-compiled.js --source-maps
