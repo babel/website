@@ -7,7 +7,31 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
-<li data-date="Sept 2022">
+<li data-date="Oct 2022">
+
+## Babel 7.20.0
+
+[blog post](https://babeljs.io/blog/2022/10/27/7.20.0)
+
+- [TypeScript 4.9](https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/) support
+- Parser support for the [explicit resource management](https://github.com/tc39/proposal-explicit-resource-management) Stage 2 proposal
+  ```js
+  {
+    using handle = openFile(name, "w+");
+    write(handle, "Hi!\n");
+    write(handle, ":)\n");
+  } // Automatically close the file
+  ```
+- Parser support for the [import reflection](https://github.com/tc39/proposal-import-reflection) Stage 2 proposal
+  ```js
+  import module mod from "./mod.js";
+
+  // later ...
+  import(mod);
+  ```
+
+</li>
+<li data-date="Sep 2022">
 
 ## Babel 7.19.0
 
