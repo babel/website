@@ -85,6 +85,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@algolia/events@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@algolia/events@npm:4.0.1"
+  checksum: 4f63943f4554cfcfed91d8b8c009a49dca192b81056d8c75e532796f64828cd69899852013e81ff3fff07030df8782b9b95c19a3da0845786bdfe22af42442c2
+  languageName: node
+  linkType: hard
+
 "@algolia/logger-common@npm:4.12.0":
   version: 4.12.0
   resolution: "@algolia/logger-common@npm:4.12.0"
@@ -3009,13 +3016,13 @@ __metadata:
   linkType: hard
 
 "algoliasearch-helper@npm:^3.1.0":
-  version: 3.2.2
-  resolution: "algoliasearch-helper@npm:3.2.2"
+  version: 3.11.1
+  resolution: "algoliasearch-helper@npm:3.11.1"
   dependencies:
-    events: ^1.1.1
+    "@algolia/events": ^4.0.1
   peerDependencies:
-    algoliasearch: ">= 3.1 < 5"
-  checksum: 79f9327c07565c67f6de9a3a36face1c6d9b5cf68d8b8264c6fd338c69a04b7c35b607ce6f6313fe7d41e52ac123c4dcc9d3dea89d8aba7c3432308b3d6823c9
+    algoliasearch: ">= 3.1 < 6"
+  checksum: 207616ca4549e2d06a278357ce478951a37c606f40f5b39b8e2d13bba143023a10814f065cd89629e5f2c121935d61a97d96bfb687ae7a98ef25b63da37fcf70
   languageName: node
   linkType: hard
 
@@ -6288,13 +6295,6 @@ __metadata:
   version: 4.0.7
   resolution: "eventemitter3@npm:4.0.7"
   checksum: 1875311c42fcfe9c707b2712c32664a245629b42bb0a5a84439762dd0fd637fc54d078155ea83c2af9e0323c9ac13687e03cfba79b03af9f40c89b4960099374
-  languageName: node
-  linkType: hard
-
-"events@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "events@npm:1.1.1"
-  checksum: 40431eb005cc4c57861b93d44c2981a49e7feb99df84cf551baed299ceea4444edf7744733f6a6667e942af687359b1f4a87ec1ec4f21d5127dac48a782039b9
   languageName: node
   linkType: hard
 
