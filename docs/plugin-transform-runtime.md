@@ -120,7 +120,7 @@ For more information, see [Helper aliasing](#helper-aliasing).
 
 ### `polyfill`
 
-> This option was removed in v7 by just making it the default.
+> This option was removed in v7.
 
 ### `regenerator`
 
@@ -132,7 +132,7 @@ For more information, see [Regenerator aliasing](#regenerator-aliasing).
 
 ### `useBuiltIns`
 
-> This option was removed in v7 by just making it the default.
+> This option was removed in v7.
 
 ### `useESModules`
 
