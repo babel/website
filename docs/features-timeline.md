@@ -30,6 +30,10 @@ Additionally, use this timeline to track some other important efforts, such as t
   import(mod);
   ```
 
+## babel-loader 9.0.0
+
+[release](https://github.com/babel/babel-loader/releases/tag/v9.0.0)
+
 </li>
 <li data-date="Sep 2022">
 
