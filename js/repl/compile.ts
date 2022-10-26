@@ -168,8 +168,6 @@ export default function compile(code: string, config: CompileConfig): Return {
         : undefined,
     };
 
-    console.info("Babel config", babelConfig);
-
     const transformed = Babel.transform(code, babelConfig);
     compiled = transformed.code;
 
