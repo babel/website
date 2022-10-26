@@ -64,6 +64,7 @@ const PIPELINE_PROPOSALS = {
 };
 
 const DECORATOR_PROPOSALS = {
+  "2022-03": "2022-03",
   "2021-12": "2021-12",
   "2018-09": "2018-09",
   legacy: "Legacy",
@@ -280,13 +281,15 @@ class ExpandedContainer extends Component<Props, State> {
     const { assumptions } = envConfig;
     const isReactEnabled = presetState["react"].isEnabled;
 
-    const isStage2Enabled =
-      presetState["stage-0"].isEnabled ||
-      presetState["stage-1"].isEnabled ||
-      presetState["stage-2"].isEnabled;
+    function getStages(stage: 0 | 1 | 2 | 3) {
+      return ["stage-0", "stage-1", "stage-2", "stage-3"]
+        .slice(0, stage + 1)
+        .filter((stage) => presetState[stage].isEnabled);
+    }
 
-    const isStage1Enabled =
-      presetState["stage-0"].isEnabled || presetState["stage-1"].isEnabled;
+    function isStageEnabled(stage: 0 | 1 | 2 | 3) {
+      return getStages(stage).length > 0;
+    }
 
     const isBugfixesSupported =
       babelVersion && compareVersions(babelVersion, "7.9.0") !== -1;
@@ -445,9 +448,9 @@ class ExpandedContainer extends Component<Props, State> {
                 </select>
               </PresetOption>
               <PresetOption
-                when={isStage2Enabled}
+                when={isStageEnabled(2)}
                 option="decoratorsVersion"
-                presets={["stage-0", "stage-1", "stage-2"]}
+                presets={getStages(2)}
               >
                 <span className={styles.presetsOptionsLabel}>
                   Decorators version
@@ -470,25 +473,21 @@ class ExpandedContainer extends Component<Props, State> {
                 </select>
               </PresetOption>
               <PresetOption
-                when={isStage2Enabled}
+                when={
+                  isStageEnabled(2) &&
+                  presetsOptions.decoratorsVersion !== "2022-03" &&
+                  presetsOptions.decoratorsVersion !== "legacy"
+                }
                 option="decoratorsBeforeExport"
-                presets={["stage-0", "stage-1", "stage-2"]}
-                comment="Only works when legacy decorators are not enabled"
-                enabled={presetsOptions.decoratorsVersion !== "legacy"}
+                presets={getStages(2)}
+                comment="Only works when version of decorators is 2021-12 or 2018-09"
               >
                 <span className={styles.presetsOptionsLabel}>
                   Decorators before
                   <code>export</code>
                 </span>
                 <input
-                  disabled={presetsOptions.decoratorsVersion === "legacy"}
                   checked={presetsOptions.decoratorsBeforeExport}
-                  ref={(el) => {
-                    if (el) {
-                      el.indeterminate =
-                        presetsOptions.decoratorsVersion === "legacy";
-                    }
-                  }}
                   className={styles.envPresetCheckbox}
                   type="checkbox"
                   onChange={this._onPresetOptionChange(
@@ -498,9 +497,9 @@ class ExpandedContainer extends Component<Props, State> {
                 />
               </PresetOption>
               <PresetOption
-                when={isStage1Enabled}
+                when={isStageEnabled(1)}
                 option="pipelineProposal"
-                presets={["stage-0", "stage-1"]}
+                presets={getStages(1)}
               >
                 <span className={styles.presetsOptionsLabel}>
                   Pipeline proposal

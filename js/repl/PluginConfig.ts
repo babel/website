@@ -114,7 +114,7 @@ const replDefaults: ReplState = {
   targets: "",
   version: "",
   reactRuntime: "classic",
-  decoratorsVersion: "2021-12",
+  decoratorsVersion: "2022-03",
   decoratorsBeforeExport: false,
   pipelineProposal: "minimal",
   externalPlugins: "",
