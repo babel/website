@@ -95,6 +95,14 @@ Added in: `v7.16.0`
 
 Even when JSX parsing is not enabled, this option disallows using syntax that would be ambiguous with JSX (`<X> y` type assertions and `<X>() => {}` type arguments). It matches the `tsc` behavior when parsing `.mts` and `.mjs` files.
 
+### `dts`
+
+`boolean`, defaults to `false`
+
+Added in: `v7.20.0`
+
+This option will enable parsing within a TypeScript ambient context, where certain syntax have different rules (like `.d.ts` files and inside `declare module` blocks). Please see [Official Handbook](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html) and [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/type-system/intro) for more information about ambient contexts.
+
 ### `isTSX`
 
 `boolean`, defaults to `false`
@@ -137,18 +145,19 @@ class A {
 Added in: `v7.15.0`
 
 When set to `true`, Babel will inline enum values rather than using the usual `enum` output:
+
 ```typescript
 // Input
 const enum Animals {
-  Fish
+  Fish,
 }
 console.log(Animals.Fish);
 
 // Default output
 var Animals;
 
-(function (Animals) {
-  Animals[Animals["Fish"] = 0] = "Fish";
+(function(Animals) {
+  Animals[(Animals["Fish"] = 0)] = "Fish";
 })(Animals || (Animals = {}));
 
 console.log(Animals.Fish);
@@ -160,6 +169,7 @@ console.log(0);
 This option differs from TypeScript's `--isolatedModules` behavior, which ignores the `const` modifier and compiles them as normal enums, and aligns Babel's behavior with TypeScript's default behavior.
 
 However, when _exporting_ a `const enum` Babel will compile it to a plain object literal so that it doesn't need to rely on cross-file analysis when compiling it:
+
 ```typescript
 // Input
 export const enum Animals {
