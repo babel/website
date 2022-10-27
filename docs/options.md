@@ -328,6 +328,14 @@ Default: `{}`<br />
 Placement: Allowed in Babel's programmatic options, or in config files<br />
 Added in: `v7.13.0`<br />
 
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| `v7.20.0` | Support `deno` target |
+| `v7.15.0` | Support `rhino` target |
+</details>
+
 Describes the environments you support/target for your project.
 
 This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query (with [caveats](preset-env.md#ineffective-browserslist-queries)):
@@ -349,7 +357,7 @@ Or an object of minimum environment versions to support:
 }
 ```
 
-Supported environments: `android`, `chrome`, `edge`, `electron`, `firefox`, `ie`, `ios`, `node`, `opera`, `rhino`, `safari`, `samsung`.
+Supported environments: `android`, `chrome`, `deno`, `edge`, `electron`, `firefox`, `ie`, `ios`, `node`, `opera`, `rhino`, `safari`, `samsung`.
 
 If a minor version is not specified, Babel will interpret it as `MAJOR.0`. For example, `"node": 12` will be considered as Node.js 12.0.
 
@@ -425,6 +433,20 @@ Type: `string | Array<string>`.
 A query to select browsers (ex: last 2 versions, > 5%, safari tp) using [browserslist](https://github.com/ai/browserslist).
 
 Note, browsers' results are overridden by explicit items from `targets`.
+
+#### `targets.deno`
+
+Type: `string`.
+
+The minimum supported version is 1.0.
+
+```json
+{
+  "targets": {
+    "deno": "1.9"
+  }
+}
+```
 
 ### `browserslistConfigFile`
 
