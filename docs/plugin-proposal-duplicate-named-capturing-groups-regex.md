@@ -1,7 +1,7 @@
 ---
-id: babel-plugin-proposal-duplicated-named-capturing-groups-regex
-title: @babel/plugin-proposal-duplicated-named-capturing-groups-regex
-sidebar_label: duplicated-named-capturing-groups-regex
+id: babel-plugin-proposal-duplicate-named-capturing-groups-regex
+title: @babel/plugin-proposal-duplicate-named-capturing-groups-regex
+sidebar_label: duplicate-named-capturing-groups-regex
 ---
 
 ## Examples
@@ -28,7 +28,7 @@ console.log(re.exec("02-1999").groups.year);
 ## Installation
 
 ```sh
-npm install --save-dev @babel/plugin-proposal-duplicated-named-capturing-groups-regex
+npm install --save-dev @babel/plugin-proposal-duplicate-named-capturing-groups-regex
 ```
 
 ## Usage
@@ -37,21 +37,21 @@ npm install --save-dev @babel/plugin-proposal-duplicated-named-capturing-groups-
 
 ```json
 {
-  "plugins": ["@babel/plugin-proposal-duplicated-named-capturing-groups-regex"]
+  "plugins": ["@babel/plugin-proposal-duplicate-named-capturing-groups-regex"]
 }
 ```
 
 ### Via CLI
 
 ```sh
-babel --plugins @babel/plugin-proposal-duplicated-named-capturing-groups-regex script.js
+babel --plugins @babel/plugin-proposal-duplicate-named-capturing-groups-regex script.js
 ```
 
 ### Via Node API
 
 ```javascript
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-duplicated-named-capturing-groups-regex"],
+  plugins: ["@babel/plugin-proposal-duplicate-named-capturing-groups-regex"],
 });
 ```
 
