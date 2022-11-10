@@ -6,7 +6,7 @@ import React, { type ChangeEvent } from "react";
 import { prettySize, compareVersions } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
 import CodeMirrorPanel from "./CodeMirrorPanel";
-import ReplOptions from "./ReplOptions";
+import ReplOptions, { IndeterminateCheckboxStatus } from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
 import loadBundle from "./loadBundle";
@@ -581,10 +581,15 @@ class Repl extends React.Component<Props, State> {
     }, this._pluginsUpdatedSetStateCallback);
   };
 
-  _onAssumptionsChange = (value: string, isChecked: boolean) => {
+  _onAssumptionsChange = (
+    value: string,
+    status: IndeterminateCheckboxStatus
+  ) => {
     const { assumptions } = this.state.envConfig;
-    if (isChecked === true) assumptions[value] = isChecked;
-    else delete assumptions[value];
+    if (status === IndeterminateCheckboxStatus.Indeterminate)
+      delete assumptions[value];
+    else assumptions[value] = status === 1;
+
     this.setState((state) => {
       return { envConfig: { ...state.envConfig, assumptions } };
     }, this._pluginsUpdatedSetStateCallback);
