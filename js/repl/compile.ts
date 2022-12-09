@@ -205,6 +205,7 @@ export default function compile(code: string, config: CompileConfig): Return {
     }
     meta.compiledSize = new Blob([compiled], { type: "text/plain" }).size;
   } catch (error) {
+    console.error("Compiling failed", error);
     compiled = null;
     compileErrorMessage = error.message;
     envPresetDebugInfo = null;
