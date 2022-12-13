@@ -218,6 +218,7 @@ require("@babel/parser").parse("code", {
 | `explicitResourceManagement` ([proposal](https://github.com/tc39/proposal-explicit-resource-management)) | `using reader = getReader()`                                     |
 | `exportDefaultFrom` ([proposal](https://github.com/tc39/ecmascript-export-default-from))                 | `export v from "mod"`                                            |
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                              | `a::b`, `::console.log`                                          |
+| `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))                              | `function.sent`                                                  |
 | `importAssertions` ([proposal](https://github.com/tc39/proposal-import-assertions))                      | `import json from "./foo.json" assert { type: "json" };`         |
 | `importReflection` ([proposal](https://github.com/tc39/proposal-import-reflection))                     | `import module foo from "./foo.wasm";`                           |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                           | `let m = module { export let y = 1; };`                          |
@@ -242,7 +243,6 @@ You should enable these features only if you are using an older version.
 | `classStaticBlock` ([proposal](https://github.com/tc39/proposal-class-static-block))      | `class A { static {} }`                             |
 | `dynamicImport` ([proposal](https://github.com/tc39/proposal-dynamic-import))             | `import('./guy').then(a)`                           |
 | `exportNamespaceFrom` ([proposal](https://github.com/leebyron/ecmascript-export-ns-from)) | `export * as ns from "mod"`                         |
-| `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))               | `function.sent`                                     |
 | `logicalAssignment` ([proposal](https://github.com/tc39/proposal-logical-assignment))     | `a &&= b`                                           |
 | `moduleStringNames` ([proposal](https://github.com/tc39/ecma262/pull/2154))               | `import { "😄" as smile } from "emoji";`            |
 | `nullishCoalescingOperator` ([proposal](https://github.com/babel/proposals/issues/14))    | `a ?? b`                                            |
