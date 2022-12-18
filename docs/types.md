@@ -5106,3 +5106,169 @@ t.isWhile(node);
 Covered nodes: 
 - [`DoWhileStatement`](#dowhilestatement)
 - [`WhileStatement`](#whilestatement)
+
+
+### Utility Functions
+
+#### `matchesPattern(node, pattern): boolean`
+Checks if a node matches a specific pattern.
+
+- `node`: (required) The node to be checked.
+- `pattern`: (required) The pattern that the node should match. This can be a string, a pattern object, or an array of strings or pattern objects.
+Returns true if the node matches the specified pattern.
+
+Example:
+```javascript
+const node = {
+  type: 'BinaryExpression',
+  operator: '+',
+  left: {
+    type: 'Identifier',
+    name: 'x'
+  },
+  right: {
+    type: 'Literal',
+    value: 2
+  }
+};
+
+console.log(matchesPattern(node, { type: 'BinaryExpression', operator: '+' }));  // true
+console.log(matchesPattern(node, { type: 'BinaryExpression', operator: '-' }));  // false
+console.log(matchesPattern(node, [ 'Identifier', 'Literal' ]));  // true
+```
+
+#### `buildMatchMemberExpression(object, property): (node) => boolean`
+Creates a pattern that can be used to match a specific member expression.
+
+A member expression is a type of expression that accesses a property of an object, using either a dot notation (e.g. `object.property`) or a bracket notation (e.g. `object[property]`).
+
+- `object`: (required) The object of the member expression that the pattern should match. This can be a node, or a pattern object.
+- `property`: (optional) The property of the member expression that the pattern should match. If not provided, the pattern will match any property.
+Returns a function that can be called with a node, and will return true if the node is a member expression that matches the specified pattern.
+
+Example:
+```javascript
+const { buildMatchMemberExpression } = require('babel-types');
+
+const matchX = buildMatchMemberExpression('x');
+
+console.log(matchX({ type: 'MemberExpression', object: { name: 'x' } }));  // true
+console.log(matchX({ type: 'MemberExpression', object: { name: 'y' } }));  // false
+
+const matchXDotY = buildMatchMemberExpression(
+  { type: 'Identifier', name: 'x' },
+  'y'
+);
+
+console.log(matchXDotY({ type: 'MemberExpression', object: { name: 'x' }, property: { name: 'y' } }));  // true
+console.log(matchXDotY({ type: 'MemberExpression', object: { name: 'x' }, property: { name: 'z' } }));  // false
+console.log(matchXDotY({ type: 'MemberExpression', object: { name: 'y' }, property: { name: 'y' } }));  // false
+```
+
+#### `appendToMemberExpression(memberExpression, property): MemberExpression`
+Appends a property to an existing member expression.
+
+A member expression is a type of expression that accesses a property of an object, using either a dot notation (e.g. `object.property`) or a bracket notation (e.g. `object[property]`).
+
+- `memberExpression`: (required) The existing member expression.
+- `property`: (required) The property to be appended to the member expression. This can be a string, a node, or a pattern object.
+Returns a new member expression with the appended property.
+
+Example:
+```javascript
+const memberExpression = {
+  type: 'MemberExpression',
+  object: { name: 'x' },
+  property: { name: 'y' }
+};
+
+const newMemberExpression = appendToMemberExpression(memberExpression, { type: 'Literal', value: 2 });
+
+console.log(newMemberExpression);
+// {
+//   type: 'MemberExpression',
+//   object: { name: 'x' },
+//   property: { name: 'y' },
+//   computed: true,
+//   property: { type: 'Literal', value: 2 }
+// }
+```
+
+#### `prependToMemberExpression(memberExpression: Node, prepended: Node): MemberExpression`
+Inserts a node before the object of a member expression.
+
+- `memberExpression`: The member expression node to modify.
+- `prepended`: The node to insert before the object of the member expression.
+Returns a new member expression with the prepended node inserted before the object.
+
+Example:
+```javascript
+const memberExpression = types.memberExpression(
+  types.identifier('obj'),
+  types.identifier('prop')
+);
+
+// Output: obj.prop
+console.log(memberExpression);
+
+// Prepend a new identifier to the member expression
+const newMemberExpression = types.prependToMemberExpression(
+  memberExpression,
+  types.identifier('newObj')
+);
+
+// Output: newObj.obj.prop
+console.log(newMemberExpression);
+```
+
+#### `removeProperties(object: ObjectExpression, propertyName: string | Array<string>): ObjectExpression`
+Removes one or more properties from an object expression.
+
+- `object`: The object expression from which to remove properties.
+- `propertyName`: A string or array of strings representing the names of the properties to remove.
+Returns a new object expression with the specified properties removed.
+
+Example:
+```javascript 
+const objectExpression = types.objectExpression([  types.objectProperty(types.identifier('prop1'), types.stringLiteral('value1')),  types.objectProperty(types.identifier('prop2'), types.stringLiteral('value2')),  types.objectProperty(types.identifier('prop3'), types.stringLiteral('value3'))]);
+
+// Output: { prop1: 'value1', prop2: 'value2', prop3: 'value3' }
+console.log(objectExpression);
+
+// Remove the prop2 and prop3 properties
+const newObjectExpression = types.removeProperties(objectExpression, ['prop2', 'prop3']);
+
+// Output: { prop1: 'value1' }
+console.log(newObjectExpression);
+```
+
+#### `removePropertiesDeep(object: ObjectExpression, propertyName: string | Array<string>): ObjectExpression`
+Recursively removes one or more properties from an object expression and any nested object expressions.
+
+Parameters:
+- `object`: The object expression from which to remove properties.
+- `propertyName`: A string or array of strings representing the names of the properties to remove.
+Returns a new object expression with the specified properties removed, including any nested object expressions.
+
+Example:
+```javascript
+const objectExpression = types.objectExpression([
+  types.objectProperty(types.identifier('prop1'), types.stringLiteral('value1')),
+  types.objectProperty(types.identifier('prop2'), types.stringLiteral('value2')),
+  types.objectProperty(types.identifier('nestedObject'), types.objectExpression([
+    types.objectProperty(types.identifier('nestedProp1'), types.stringLiteral('nestedValue1')),
+    types.objectProperty(types.identifier('nestedProp2'), types.stringLiteral('nestedValue2')),
+  ])),
+  types.objectProperty(types.identifier('prop3'), types.stringLiteral('value3'))
+]);
+
+// Output: { prop1: 'value1', prop2: 'value2', nestedObject: { nestedProp1: 'nestedValue1', nestedProp2: 'nestedValue2' }, prop3: 'value3' }
+console.log(objectExpression);
+
+// Remove the prop2, nestedProp1, and prop3 properties
+const newObjectExpression = types.removePropertiesDeep(objectExpression, ['prop2', 'nestedProp1', 'prop3']);
+
+// Output: { prop1: 'value1', nestedObject: { nestedProp2: 'nestedValue2' } }
+console.log(newObjectExpression);
+```
+
