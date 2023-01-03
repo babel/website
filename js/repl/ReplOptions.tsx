@@ -23,6 +23,7 @@ import type {
 } from "./types";
 
 import type { ReactElement, ChangeEvent } from "react";
+import StorageService from "./StorageService";
 
 const PRESET_ORDER = [
   "react",
@@ -766,22 +767,36 @@ class ExpandedContainer extends Component<Props, State> {
             />
           </div>
         </div>
-        {babelVersion && (
-          <div className={styles.versionRow} title={`v${babelVersion}`}>
-            <select value={babelVersion} onChange={onVersionChange}>
-              <option value="">v{babelVersion}</option>
-              <option value="latest">Latest</option>
-              {pastVersions.map(
-                (version, index) =>
-                  version !== babelVersion && (
-                    <option value={version} key={index}>
-                      v{version}
-                    </option>
-                  )
-              )}
-            </select>
-          </div>
-        )}
+
+        <div className={styles.versionRow} title={`v${babelVersion}`}>
+          <button
+            onClick={() => {
+              StorageService.set("replState", "");
+              location.hash = "";
+              location.reload();
+            }}
+          >
+            Reset
+          </button>
+          <select
+            className={css({
+              marginLeft: 10,
+            })}
+            value={babelVersion}
+            onChange={onVersionChange}
+          >
+            <option value="">v{babelVersion}</option>
+            <option value="latest">Latest</option>
+            {pastVersions.map(
+              (version, index) =>
+                version !== babelVersion && (
+                  <option value={version} key={index}>
+                    v{version}
+                  </option>
+                )
+            )}
+          </select>
+        </div>
 
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
