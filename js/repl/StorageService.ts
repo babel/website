@@ -17,6 +17,10 @@ const StorageService = {
       // Noop
     }
   },
+
+  remove(key: string): void {
+    window.localStorage.removeItem(key);
+  },
 };
 
 export default StorageService;

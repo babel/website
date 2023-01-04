@@ -23,7 +23,6 @@ import type {
 } from "./types";
 
 import type { ReactElement, ChangeEvent } from "react";
-import StorageService from "./StorageService";
 
 const PRESET_ORDER = [
   "react",
@@ -119,6 +118,7 @@ type Props = {
   loadingExternalPlugins: boolean;
   onAssumptionsChange: AssumptionsChange;
   debugEnvPreset: boolean;
+  onResetBtnClick: () => void;
 };
 
 type LinkProps = {
@@ -269,6 +269,7 @@ class ExpandedContainer extends Component<Props, State> {
       showOfficialExternalPlugins,
       loadingExternalPlugins,
       presetsOptions,
+      onResetBtnClick,
     } = this.props;
 
     const {
@@ -768,19 +769,11 @@ class ExpandedContainer extends Component<Props, State> {
           </div>
         </div>
 
-        <div className={styles.versionRow} title={`v${babelVersion}`}>
-          <button
-            onClick={() => {
-              StorageService.set("replState", "");
-              location.hash = "";
-              location.reload();
-            }}
-          >
-            Reset
-          </button>
+        <div className={styles.bottomSidebar}>
+          <button onClick={onResetBtnClick}>Reset</button>
           <select
             className={css({
-              marginLeft: 10,
+              marginLeft: "0.625rem",
             })}
             value={babelVersion}
             onChange={onVersionChange}
@@ -1234,7 +1227,7 @@ const styles = {
     display: "flex",
     flex: "1 1 auto",
   }),
-  versionRow: css({
+  bottomSidebar: css({
     display: "flex",
     fontFamily: "monospace",
     fontSize: "0.75rem",
