@@ -772,9 +772,7 @@ class ExpandedContainer extends Component<Props, State> {
         <div className={styles.bottomSidebar}>
           <button onClick={onResetBtnClick}>Reset</button>
           <select
-            className={css({
-              marginLeft: "0.625rem",
-            })}
+            className={styles.resetButton}
             value={babelVersion}
             onChange={onVersionChange}
           >
@@ -1144,6 +1142,10 @@ const styles = {
     "&::-ms-expand": {
       display: "none",
     },
+  }),
+  resetButton: css({
+    marginLeft: "0.625rem",
+    transition: "all 0.25s ease-in",
   }),
   sourceTypeSelect: css({
     backgroundPosition: "calc(100% - 1rem) calc(100% - 8px)",
