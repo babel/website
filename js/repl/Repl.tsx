@@ -243,6 +243,11 @@ class Repl extends React.Component<Props, State> {
           showOfficialExternalPlugins={state.showOfficialExternalPlugins}
           loadingExternalPlugins={state.loadingExternalPlugins}
           onAssumptionsChange={this._onAssumptionsChange}
+          onResetBtnClick={() => {
+            StorageService.remove("replState");
+            location.hash = "";
+            location.reload();
+          }}
         />
         <div className={styles.wrapperPanels}>
           <div

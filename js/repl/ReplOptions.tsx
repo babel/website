@@ -118,6 +118,7 @@ type Props = {
   loadingExternalPlugins: boolean;
   onAssumptionsChange: AssumptionsChange;
   debugEnvPreset: boolean;
+  onResetBtnClick: () => void;
 };
 
 type LinkProps = {
@@ -268,6 +269,7 @@ class ExpandedContainer extends Component<Props, State> {
       showOfficialExternalPlugins,
       loadingExternalPlugins,
       presetsOptions,
+      onResetBtnClick,
     } = this.props;
 
     const {
@@ -766,22 +768,26 @@ class ExpandedContainer extends Component<Props, State> {
             />
           </div>
         </div>
-        {babelVersion && (
-          <div className={styles.versionRow} title={`v${babelVersion}`}>
-            <select value={babelVersion} onChange={onVersionChange}>
-              <option value="">v{babelVersion}</option>
-              <option value="latest">Latest</option>
-              {pastVersions.map(
-                (version, index) =>
-                  version !== babelVersion && (
-                    <option value={version} key={index}>
-                      v{version}
-                    </option>
-                  )
-              )}
-            </select>
-          </div>
-        )}
+
+        <div className={styles.bottomSidebar}>
+          <button onClick={onResetBtnClick}>Reset</button>
+          <select
+            className={styles.resetButton}
+            value={babelVersion}
+            onChange={onVersionChange}
+          >
+            <option value="">v{babelVersion}</option>
+            <option value="latest">Latest</option>
+            {pastVersions.map(
+              (version, index) =>
+                version !== babelVersion && (
+                  <option value={version} key={index}>
+                    v{version}
+                  </option>
+                )
+            )}
+          </select>
+        </div>
 
         <div
           className={`${styles.closeButton} ${nestedCloseButton}`}
@@ -1137,6 +1143,10 @@ const styles = {
       display: "none",
     },
   }),
+  resetButton: css({
+    marginLeft: "0.625rem",
+    transition: "all 0.25s ease-in",
+  }),
   sourceTypeSelect: css({
     backgroundPosition: "calc(100% - 1rem) calc(100% - 8px)",
     padding: "0 0.5rem",
@@ -1219,7 +1229,7 @@ const styles = {
     display: "flex",
     flex: "1 1 auto",
   }),
-  versionRow: css({
+  bottomSidebar: css({
     display: "flex",
     fontFamily: "monospace",
     fontSize: "0.75rem",
