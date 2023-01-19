@@ -127,13 +127,13 @@ Replaces the import source when importing functions.
 
 `string`, defaults to `React.createElement`.
 
-Replace the function used when compiling JSX expressions.
+Replace the function used when compiling JSX expressions. It should be a qualified name (e.g. `React.createElement`) or an identifier (e.g. `createElement`).
 
 #### `pragmaFrag`
 
 `string`, defaults to `React.Fragment`.
 
-Replace the component used when compiling JSX fragments.
+Replace the component used when compiling JSX fragments. It should be a valid JSX tag name.
 
 #### `useBuiltIns`
 
