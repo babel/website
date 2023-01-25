@@ -44,16 +44,21 @@ and add `@babel/preset-react` to your Babel configuration.
 
 ```jsx
 export default function DiceRoll(){
-  const [num, setNum] = useState(getRandomNumber());
-
   const getRandomNumber = () => {
     return Math.ceil(Math.random() * 6);
   };
 
+  const [num, setNum] = useState(getRandomNumber());
+
+  const handleClick = () => {
+    const newNum = getRandomNumber();
+    setNum(newNum);
+  };
+
   return (
     <div>
-      Your dice roll:
-      {num}
+      Your dice roll: {num}.
+      <button onClick={handleClick}>Click to get a new number</button>
     </div>
   );
 };
