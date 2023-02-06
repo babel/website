@@ -85,15 +85,17 @@ require("@babel/core").transformSync("code", {
 
 | Version | Changes |
 | --- | --- |
+| `v7.21.0` | Added support for `version: "2023-01"` |
 | `v7.19.0` | Added support for `version: "2022-03"` |
 | `v7.17.0` | Added the `version` option with support for `"2021-12"`, `"2018-09"` and `"legacy"` |
 </details>
 
 ### `version`
 
-`"2022-03"`, `"2021-12"`, `"2018-09"` or `"legacy"`. Defaults to `"2018-09"`.
+`"2023-01"`, `"2022-03"`, `"2021-12"`, `"2018-09"` or `"legacy"`.
 
 Selects the decorators proposal to use:
+- `"2023-01"` is the proposal version after the updates that reached consensus in the January 2023 TC39 meeting, integrating [`pzuraq/ecma262#4`](https://github.com/pzuraq/ecma262/pull/4).
 - `"2022-03"` is the proposal version that reached consensus for Stage 3 in the March 2022 TC39 meeting. You can read more about it at [`tc39/proposal-decorators@8ca65c046d`](https://github.com/tc39/proposal-decorators/tree/8ca65c046dd5e9aa3846a1fe5df343a6f7efd9f8).
 - `"2021-12"` is the proposal version as it was presented to TC39 in Dec 2021. You can read more about it at [`tc39/proposal-decorators@d6c056fa06`](https://github.com/tc39/proposal-decorators/tree/d6c056fa061646178c34f361bad33d583316dc85).
 - `"2018-09"` is the proposal version that was initially promoted to Stage 2 presented to TC39 in Sept 2018.  You can read more about it at [`tc39/proposal-decorators@7fa580b40f`](https://github.com/tc39/proposal-decorators/tree/7fa580b40f2c19c561511ea2c978e307ae689a1b).
@@ -104,7 +106,7 @@ Selects the decorators proposal to use:
 ### `decoratorsBeforeExport`
 
 This option:
-- is disallowed when using `version: "legacy"` or `version: "2021-12"`;
+- is disallowed when using `version: "legacy"`, `version: "2022-03"`, or `version: "2023-01"`;
 - is required when using `version: "2018-09"`;
 - is optional and defaults to `false` when using `version: "2021-12"`.
 
@@ -119,7 +121,7 @@ export @decorator class Bar {}
 export class Foo {}
 ```
 
-This option was added to help tc39 collect feedback from the community by allowing experimentation with both possible syntaxes. The proposal now settled on having decorators after `export`.
+This option was added to help tc39 collect feedback from the community by allowing experimentation with both possible syntaxes. The proposal now settled on allowing decorators either before or after `export`.
 
 ### `legacy`
 

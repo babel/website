@@ -273,6 +273,7 @@ You should enable these features only if you are using an older version.
 
 | Version | Changes |
 | --- | --- |
+| `7.21.0` | The default behavior of the `decorators`' `decoratorsBeforeExport` option is to allow decorators either before or after the `export` keyword. |
 | `7.19.0` | The `syntaxType` option of the `recordAndTuple` plugin defaults to `hash`; added `allowCallParenthesized` option for the `decorators` plugin. |
 | `7.17.0` | Added `@@` and `^^` to the `topicToken` option of the `hack` pipeline operator |
 | `7.16.0` | Added `disallowAmbiguousJSXLike` for `typescript` plugin. Added `^` to the `topicToken` option of the `hack` pipeline operators |
@@ -283,7 +284,13 @@ You should enable these features only if you are using an older version.
 
 - `decorators`:
 
+  - `allowCallParenthesized` (`boolean`, defaults to `true`)
+
+    When `false`, disallow decorators in the `@(...)()` form in favor of `@(...())`. The stage 3 decorators proposal uses `allowCallParenthesized: false`.
+
   - `decoratorsBeforeExport` (`boolean`)
+
+    By default decorators on exported classes can be placed either before or after the `export` keyword. When this option is set, decorators will only be allowed in the specified position.
 
     ```js title="JavaScript"
     // decoratorsBeforeExport: true
@@ -294,9 +301,7 @@ You should enable these features only if you are using an older version.
     export @dec class C {}
     ```
 
-  - `allowCallParenthesized` (`boolean`, defaults to `true`)
-
-    When `false`, disallow decorators in the `@(...)()` form in favor of `@(...())`. The stage 3 decorators proposal uses `allowCallParenthesized: false`.
+    > ⚠️ This option is deprecated and will be removed in a future version. Code that is valid when this option is explicitly set to `true` or `false` is also valid when this option is not set.
 
 - `pipelineOperator`:
 
