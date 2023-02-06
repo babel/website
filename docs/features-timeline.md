@@ -9,6 +9,20 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="Feb 2023">
+
+## Babel 7.21.0
+
+[blog post](https://babeljs.io/blog/2023/02/10/7.21.0)
+
+- [TypeScript 5.0](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/) support
+- Support for the updates of the [decorators](https://github.com/tc39/proposal-decorators) proposal that reached consensus in the January 2023 TC39 meeting
+- Support for the [inline RegExp modifiers](github.com/tc39/proposal-regexp-modifiers) Stage 3 proposal
+  ```js
+  /(?i-m:a.)/m.exec("a\nAb"); // ["Ab"]
+  ```
+
+</li>
 <li data-date="Oct 2022">
 
 ## Babel 7.20.0
