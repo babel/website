@@ -1,4 +1,4 @@
-const parseYaml = require("js-yaml").safeLoad;
+const parseYaml = require("js-yaml").load;
 const path = require("path");
 const fs = require("fs");
 const url = require("url");
@@ -163,7 +163,8 @@ const siteConfig = {
       },
     },
     algolia: {
-      apiKey: "d42906b043c5422ea07b44fd49c40a0d",
+      appId: "M7KGJDK6WF",
+      apiKey: "6ec7d6acbfb6ed3520846a7517533c28",
       indexName: "babeljs",
     },
     navbar: {
