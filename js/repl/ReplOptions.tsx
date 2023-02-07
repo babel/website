@@ -64,6 +64,7 @@ const PIPELINE_PROPOSALS = {
 };
 
 const DECORATOR_PROPOSALS = {
+  "2023-01": "2023-01",
   "2022-03": "2022-03",
   "2021-12": "2021-12",
   "2018-09": "2018-09",
@@ -477,6 +478,7 @@ class ExpandedContainer extends Component<Props, State> {
               <PresetOption
                 when={
                   isStageEnabled(2) &&
+                  presetsOptions.decoratorsVersion !== "2023-01" &&
                   presetsOptions.decoratorsVersion !== "2022-03" &&
                   presetsOptions.decoratorsVersion !== "legacy"
                 }

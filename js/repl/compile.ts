@@ -133,7 +133,9 @@ export default function compile(code: string, config: CompileConfig): Return {
           const decoratorsLegacy =
             presetsOptions.decoratorsVersion === "legacy" || undefined;
           const decoratorsBeforeExport =
-            decoratorsLegacy || presetsOptions.decoratorsVersion === "2022-03"
+            decoratorsLegacy ||
+            presetsOptions.decoratorsVersion === "2022-03" ||
+            presetsOptions.decoratorsVersion === "2023-01"
               ? undefined
               : presetsOptions.decoratorsBeforeExport;
           const decoratorsVersion = decoratorsLegacy
