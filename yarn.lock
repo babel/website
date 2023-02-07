@@ -1977,7 +1977,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/core@npm:2.3.1, @docusaurus/core@npm:^2.0.0-beta.15":
+"@docusaurus/core@npm:2.3.1, @docusaurus/core@npm:^2.3.1":
   version: 2.3.1
   resolution: "@docusaurus/core@npm:2.3.1"
   dependencies:
@@ -2285,7 +2285,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/preset-classic@npm:^2.0.0-beta.15":
+"@docusaurus/preset-classic@npm:^2.3.1":
   version: 2.3.1
   resolution: "@docusaurus/preset-classic@npm:2.3.1"
   dependencies:
@@ -15619,8 +15619,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "website-677e41@workspace:website"
   dependencies:
-    "@docusaurus/core": ^2.0.0-beta.15
-    "@docusaurus/preset-classic": ^2.0.0-beta.15
+    "@docusaurus/core": ^2.3.1
+    "@docusaurus/preset-classic": ^2.3.1
+    react: ^16.0.0
+    react-dom: ^16.0.0
   languageName: unknown
   linkType: soft
 
