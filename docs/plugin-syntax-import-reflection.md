@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-import-reflection
-title: @babel/plugin-syntax-import-reflection
+title: "@babel/plugin-syntax-import-reflection"
 sidebar_label: syntax-import-reflection
 ---
 
