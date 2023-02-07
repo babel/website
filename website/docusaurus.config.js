@@ -174,7 +174,7 @@ const siteConfig = {
       },
       items: [
         { to: "docs/", label: "Docs", position: "right" },
-        // { to: "setup", label: "Setup", position: "right" },
+        { to: "setup", label: "Setup", position: "right" },
         {
           target: "_top",
           href:
