@@ -121,7 +121,7 @@ export @decorator class Bar {}
 export class Foo {}
 ```
 
-This option was added to help tc39 collect feedback from the community by allowing experimentation with both possible syntaxes. The proposal now settled on allowing decorators either before or after `export`.
+This option was originally added to help tc39 collect feedback from the community by allowing experimentation with the proposed syntaxes. The proposal has now settled on allowing decorators either before or after `export`.
 
 ### `legacy`
 
