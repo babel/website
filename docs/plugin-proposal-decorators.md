@@ -82,6 +82,7 @@ require("@babel/core").transformSync("code", {
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.19.0` | Added support for `version: "2022-03"` |

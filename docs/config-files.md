@@ -9,6 +9,7 @@ Babel has two parallel config file formats, which can be used together, or indep
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.8.0` | Support `.babelrc.mjs` and `babel.config.mjs` |

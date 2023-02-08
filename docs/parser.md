@@ -31,6 +31,7 @@ mind. When in doubt, use `.parse()`.
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.16.0` | Added `startColumn` |
@@ -178,6 +179,7 @@ require("@babel/parser").parse("code", {
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.6.0` | Added `v8intrinsic` |
@@ -196,6 +198,7 @@ require("@babel/parser").parse("code", {
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.20.0` | Added `explicitResourceManagement`, `importReflection` |
@@ -262,6 +265,7 @@ You should enable these features only if you are using an older version.
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `7.19.0` | The `syntaxType` option of the `recordAndTuple` plugin defaults to `hash`; added `allowCallParenthesized` option for the `decorators` plugin. |
@@ -331,6 +335,7 @@ You should enable these features only if you are using an older version.
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.14.0` | Added error codes |

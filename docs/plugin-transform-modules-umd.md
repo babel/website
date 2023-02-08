@@ -6,6 +6,7 @@ sidebar_label: UMD
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.14.0` | Implemented the `importInterop` option |

@@ -136,6 +136,7 @@ Outputs to `console.log` the polyfills and transform plugins enabled by `preset-
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.4.0` | Support injecting `core-js@3` polyfills |
@@ -197,6 +198,7 @@ npm install core-js@2 --save
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.4.0` | It replaces `"core-js/stable"` and `"regenerator-runtime/runtime"` entry imports |
@@ -388,6 +390,7 @@ The [Browserslist environment](https://github.com/browserslist/browserslist#conf
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.14.0` | Include private field brand checks |

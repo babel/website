@@ -79,6 +79,7 @@ class A {
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.5.0` | Added `allowNamespaces`, defaults to `false` |

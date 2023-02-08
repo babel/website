@@ -8,6 +8,7 @@ sidebar_label: private-methods
 
 <details>
 <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.3.0` | Support private accessors (getters and setters) |

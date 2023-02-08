@@ -55,6 +55,7 @@ interface CallerData {
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | v7.11.0 | Add `supportsExportNamespaceFrom` |
@@ -330,6 +331,7 @@ Added in: `v7.13.0`<br />
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.20.0` | Support `deno` target |

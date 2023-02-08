@@ -94,6 +94,7 @@ e.g. `['@babel/plugin-transform-runtime', { corejs: 3 }],`
 <!-- Todo: strek -->
 <!-- <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.4.0` | Supports `{ proposals: boolean }` |
@@ -144,6 +145,7 @@ For more information, see [Regenerator aliasing](#regenerator-aliasing).
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.13.0` | This option has been deprecated |

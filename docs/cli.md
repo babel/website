@@ -118,6 +118,7 @@ If you don't want to copy ignored JavaScript files:
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | v7.8.0 | Added `--copy-ignored` |
