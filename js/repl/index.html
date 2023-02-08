@@ -75,6 +75,9 @@
       .navbar__link {
         font-weight: 300;
       }
+      .navbar__link:hover, .navbar__link--active {
+        color: #f5da55;
+      }
 
       .navbar__item {
         display: inline-block;
@@ -431,11 +434,12 @@
         </div>
         <div class="navbar__items navbar__items--right">
           <a class="navbar__item navbar__link" href="/docs/">Docs</a>
+          <a class="navbar__item navbar__link" href="/setup/">Setup</a>
           <a
             href="/repl"
             target="_self"
             rel="noopener noreferrer"
-            class="navbar__item navbar__link"
+            class="navbar__item navbar__link navbar__link--active"
           >
             <span>
               Try it out
@@ -444,7 +448,7 @@
           <a class="navbar__item navbar__link" href="/videos/">Videos</a>
           <a
             aria-current="page"
-            class="navbar__item navbar__link navbar__link--active"
+            class="navbar__item navbar__link"
             href="/blog"
             >Blog</a
           >
