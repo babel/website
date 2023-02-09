@@ -4,8 +4,13 @@ title: "Babel is used by millions, so why are we running out of money?"
 author: Babel Core Team
 date: 2021-05-10 0:00:00
 categories: announcements
+image: https://i.imgur.com/tJ9p4uS.png
 share_text: "Babel is used by millions, so why are we running out of money?"
 ---
+
+<head>
+  <meta property="og:site" content="@babeljs" />
+</head>
 
 Since 2018, Babel has been doing a [funding experiment](https://babeljs.io/blog/2019/11/08/babels-funding-plans): can full time work on Babel be sustained? We've learned the answer might be no.
 

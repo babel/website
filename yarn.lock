@@ -4572,7 +4572,6 @@ __metadata:
     babel-plugin-emotion: ^9.1.2
     buffer: ^5.7.1
     chalk: ^2.4.1
-    cheerio: ^1.0.0-rc.9
     codemirror: ^5.65.0
     core-js: ^3.0.1
     cpy-cli: ^3.1.1
@@ -5083,7 +5082,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cheerio@npm:^1.0.0-rc.12, cheerio@npm:^1.0.0-rc.9":
+"cheerio@npm:^1.0.0-rc.12":
   version: 1.0.0-rc.12
   resolution: "cheerio@npm:1.0.0-rc.12"
   dependencies:
