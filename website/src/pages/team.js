@@ -67,17 +67,8 @@ const MemberAreaList = props => {
 const MediaLink = props => {
   if (props.text) {
     return (
-      <div>
-        <img
-          style={{ marginRight: 4 }}
-          height={props.size}
-          width={props.size}
-          src={props.iconSource}
-          alt={props.iconAlt}
-        />
-        <a href={props.url} target="_blank" rel="noreferrer noopener">
-          <span className="anchor_text">{props.text}</span>
-        </a>
+      <div className={"media-link " + props.icon}>
+        <a href={props.url} target="_blank" rel="noreferrer noopener">{props.text}</a>
       </div>
     );
   } else return null;
@@ -96,16 +87,12 @@ const MediaObject = ({ member }) => {
       <div className="member_info">
         <div style={{ fontWeight: 600 }}>{name}</div>
         <MediaLink
-          iconAlt="github"
-          iconSource="/img/icons/github.svg"
-          size="16"
+          icon="github"
           url={githubUrl}
           text={github}
         />
         <MediaLink
-          iconAlt="twitter"
-          iconSource="/img/icons/twitter.svg"
-          size="16"
+          icon="twitter"
           url={twitterUrl}
           text={twitter}
         />
