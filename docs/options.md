@@ -678,7 +678,7 @@ Set assumptions that Babel can make in order to produce smaller output:
 }
 ```
 
-For more informations, check the [assumptions](/assumptions) documentation page.
+For more informations, check the [assumptions](assumptions.md) documentation page.
 
 ### `highlightCode`
 

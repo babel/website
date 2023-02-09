@@ -544,6 +544,7 @@ Newer proposals in flux will error by default and will require everyone to opt i
 
 TC39 decided to drop this proposal. You can move your logic into the constructor or into a static method.
 
+<!-- todo: dead link -->
 See [/docs/plugins/transform-class-constructor-call/](/docs/plugins/transform-class-constructor-call/) for more information.
 
 ```diff

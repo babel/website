@@ -98,7 +98,7 @@ With `@@` topic token:
 
 ### Via CLI
 
-Because this plugin requires a configuration option, it [cannot be directly configured from the CLI](https://github.com/babel/babel/issues/4161). Use a [config file](/docs/en/config-files) instead with the CLI, to add and configure this plugin.
+Because this plugin requires a configuration option, it [cannot be directly configured from the CLI](https://github.com/babel/babel/issues/4161). Use a [config file](config-files.md) instead with the CLI, to add and configure this plugin.
 
 ### Via Node API
 

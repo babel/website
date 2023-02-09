@@ -298,7 +298,7 @@ You should enable these features only if you are using an older version.
   - `proposal` (required, accepted values: `minimal`, `fsharp`, `hack`, ~~`smart`~~ (deprecated))
     There are several different proposals for the pipeline operator.
     This option chooses which proposal to use.
-    See [plugin-proposal-pipeline-operator](/docs/en/babel-plugin-proposal-pipeline-operator)
+    See [plugin-proposal-pipeline-operator](plugin-proposal-pipeline-operator.md)
     for more information, including a table comparing their behavior.
 
   - `topicToken` (required when `proposal` is `hack`, accepted values: `%`, `#`, `^`, `@@`, `^^`)
@@ -306,7 +306,7 @@ You should enable these features only if you are using an older version.
     There are two different choices for this topic placeholder.
     This option chooses what token to use to refer to the topic.
     `topicToken: "#"` is incompatible with `recordAndTuple` with `syntaxType: "hash"`.
-    See [plugin-proposal-pipeline-operator](/docs/en/babel-plugin-proposal-pipeline-operator)
+    See [plugin-proposal-pipeline-operator](plugin-proposal-pipeline-operator.md)
     for more information.
 
 - `recordAndtuple`:
