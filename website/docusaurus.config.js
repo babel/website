@@ -144,22 +144,18 @@ const siteConfig = {
   themeConfig: {
     onPageNav: "separate",
     gaTrackingId: "UA-114990275-1",
+    prism: {
+      theme: require("./src/theme/prism/light"),
+      darkTheme: require("./src/theme/prism/dark"),
+    },
     siteConfig: {
       headerIcon: "img/babel.svg",
       disableHeaderTitle: true,
       footerIcon: "img/babel.svg",
       ogImage: "img/ogImage.png",
       colors: {
-        primaryColor: "#323330",
+        primaryColor: "#f5da55",
         secondaryColor: "#323330",
-      },
-      highlight: {
-        theme: "tomorrow",
-        hljs: hljs => {
-          hljs.registerLanguage("json5", hljs =>
-            hljs.getLanguage("javascript")
-          );
-        },
       },
     },
     algolia: {
