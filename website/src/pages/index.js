@@ -40,8 +40,6 @@ const DummyMiniRepl = () => {
   return <div className="dummy-hero-repl" />;
 };
 const MiniRepl = () => {
-  const { siteConfig } = useDocusaurusContext();
-  const { customFields } = siteConfig;
   useEffect(() => {
     BABEL_MINI_REPL.start();
   });
@@ -67,9 +65,6 @@ const MiniRepl = () => {
 };
 
 const GetStarted = ({ language }) => {
-  const { siteConfig } = useDocusaurusContext();
-  const { customFields } = siteConfig;
-
   return (
     <div
       className="blockElement"
