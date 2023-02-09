@@ -84,6 +84,14 @@ html[data-theme=dark] .mainContainer a:not(.hash-link){
   line-height: 20px;
 }
 
+/* dark mode switch button */
+.clean-btn > svg:first-child {
+  color: var(--ifm-navbar-link-color);
+}
+.clean-btn > svg:first-child:hover {
+  color: var(--ifm-navbar-background-color);
+}
+
 /* ####### POST ####### */
 
 .read-more {
