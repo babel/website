@@ -113,7 +113,7 @@ template.innerHTML = `
       }
 
       .repl__code {
-        background: #3f403e;
+        background: rgb(40, 44, 52);
         font-family: monospace;
         font-size: 0.83rem;
         min-height: 125px;
@@ -153,10 +153,6 @@ template.innerHTML = `
 `;
 
 class MiniRepl extends HTMLElement {
-  _defaultCode = this.getAttribute("default-code");
-  _vertical = this.hasAttribute("vertical");
-  _options = JSON.parse(this.getAttribute("options")) ?? {};
-
   _inEditor;
   _outEditor;
 
@@ -167,13 +163,17 @@ class MiniRepl extends HTMLElement {
 
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    this._defaultCode = this.getAttribute("default-code");
+    this._vertical = this.hasAttribute("vertical");
+    this._options = JSON.parse(this.getAttribute("options")) ?? {};
 
     if (this._vertical) {
       this.shadowRoot.querySelector(".repl").classList.add("vertical");
     }
-  }
 
-  connectedCallback() {
     const defaultCode = this.getAttribute("default-code") ?? "";
 
     this._inEditor = new EditorView({
@@ -191,11 +191,9 @@ class MiniRepl extends HTMLElement {
       root: this.shadowRoot,
     });
 
-    this.shadowRoot
-      .querySelector("#repl-in .cm-wrap")
-      .addEventListener("click", () => {
-        this._inEditor.focus();
-      });
+    this.shadowRoot.querySelector("#repl-in").addEventListener("click", () => {
+      this._inEditor.focus();
+    });
   }
 
   setInput(code) {

@@ -8,10 +8,6 @@ template.innerHTML = `
 `;
 
 class AssumptionRepl extends HTMLDivElement {
-  _plugins = this.dataset.plugins.split(",");
-  _assumption = this.dataset.assumption;
-  _input = this.querySelector("code.assumption-input").textContent;
-
   _enabled = true;
 
   constructor() {
@@ -20,11 +16,15 @@ class AssumptionRepl extends HTMLDivElement {
     this.attachShadow({ mode: "open" }).appendChild(
       template.content.cloneNode(true)
     );
-
-    this.shadowRoot.getElementById("repl").setInput(this._input);
   }
 
   connectedCallback() {
+    this._plugins = this.dataset.plugins.split(",");
+    this._assumption = this.dataset.assumption;
+    this._input = this.querySelector("code").textContent;
+    const miniReplComponent = this.shadowRoot.getElementById("repl");
+    customElements.upgrade(miniReplComponent);
+    miniReplComponent.setInput(this._input);
     this._updateOptions();
 
     this.shadowRoot.getElementById("enabled").addEventListener("change", () => {

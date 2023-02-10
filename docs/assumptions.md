@@ -3,10 +3,6 @@ title: Compiler assumptions
 id: assumptions
 ---
 
-<script defer src="/js/babel.min.js"></script>
-<script type="module" src="/js/components/mini-repl.js"></script>
-<script type="module" src="/js/components/assumption-repl.js"></script>
-
 <!-- Todo: strek -->
 <!-- <style>
 .assumption-input {

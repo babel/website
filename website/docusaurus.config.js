@@ -272,6 +272,14 @@ const siteConfig = {
       src: "/scripts/repl-page-hacks.js",
       defer: true,
     },
+    {
+      src: "/js/components/mini-repl.js",
+      type: "module",
+    },
+    {
+      src: "/js/components/assumption-repl.js",
+      type: "module",
+    },
   ],
   // stylesheets: [ "" ],
   // translationRecruitingLink: "https://crowdin.com/project/",
