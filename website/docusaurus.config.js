@@ -80,10 +80,6 @@ toolsMD.forEach(tool => {
   tool.usage = loadMD(`${tool.path}/usage.md`);
 });
 
-const DEFAULT_LANGUAGE = "en";
-
-const GITHUB_URL = "https://github.com/babel/website";
-
 const siteConfig = {
   titleDelimiter: "·",
   baseUrl: "/",
@@ -188,7 +184,6 @@ const siteConfig = {
       ],
     },
   },
-  // editUrl: `https://github.com/babel/website`,
   title: "Babel",
   tagline: "The compiler for next generation JavaScript",
   url: "https://babeljs.io",
@@ -227,20 +222,6 @@ const siteConfig = {
       type: "module",
     },
   ],
-  // stylesheets: [ "" ],
-  // translationRecruitingLink: "https://crowdin.com/project/",
-  // disableHeaderTitle: true,
-  // onPageNav: "separate",
-  // gaTrackingId: "UA-114990275-1",
-  // cleanUrl: true,
-  // These two options make the build insanely slow
-  // enableUpdateBy: false,
-  // enableUpdateTime: false,
-  // ----
-  // scrollToTop: true, deprecated
-  // markdownPlugins: [],
-  // cname,
-  // docsSideNavCollapsible: true,
 };
 
 module.exports = siteConfig;
