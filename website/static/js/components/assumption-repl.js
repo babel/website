@@ -8,7 +8,6 @@ template.innerHTML = `
 `;
 
 // Workaround: Pre-formatted text loses line breaks in MDX
-// The text must be wrapped within ```text
 // https://github.com/mdx-js/mdx/issues/1095
 function extractRawCodeInput(codeEl) {
   const result = [];
