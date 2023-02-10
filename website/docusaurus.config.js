@@ -132,10 +132,13 @@ const siteConfig = {
           //   primaryColor: "#323330",
           //   secondaryColor: "#323330",
           // },
-          // blogSidebarCount: "ALL",
 
           showLastUpdateAuthor: false,
           showLastUpdateTime: false,
+        },
+        blog: {
+          blogSidebarTitle: "All Blog Posts",
+          blogSidebarCount: "ALL",
         },
         // ...
       },
