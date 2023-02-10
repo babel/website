@@ -31,42 +31,6 @@
   max-width: 1400px;
 }
 
-/* ####### LINKS ####### */
-
-html[data-theme=dark] .mainContainer a:not(.hash-link){
-  color: white;
-}
-
-.mainContainer a:not(.hash-link) {
-  background-color: rgba(245, 218, 85, 0.15);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  color: #1a1a1a;
-  transition: all 0.25s ease-out;
-}
-
-.mainContainer a:not(.hash-link):hover {
-  background-color: rgba(245, 218, 85, 0.35);
-  text-decoration: none !important;
-}
-
-.mainContainer a code {
-  background-color: transparent;
-}
-
-.mainContainer a.anchor {
-  border-width: 0;
-}
-
-.mainContainer a.button {
-  border-bottom-color: #323330;
-  background-color: transparent;
-}
-
-.mainContainer a.button:hover {
-  background: #323330;
-  color: #f5da55;
-}
-
 /* ####### HEADER & FOOTER ####### */
 
 .navigationSlider .slidingNav ul li a:hover,
