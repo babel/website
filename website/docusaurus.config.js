@@ -91,6 +91,7 @@ const siteConfig = {
   onBrokenLinks: "ignore", // enable once everything works fine
   customFields: {
     repoUrl: "https://github.com/babel/babel",
+    v6Url: "https://v6.babeljs.io/docs/setup/",
     users,
     sponsors,
     videos,
@@ -191,7 +192,6 @@ const siteConfig = {
   title: "Babel",
   tagline: "The compiler for next generation JavaScript",
   url: "https://babeljs.io",
-  // v6Url: "https://v6.babeljs.io/docs/setup/", not valid but needed
 
   scripts: [
     {
