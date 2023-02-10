@@ -7,9 +7,7 @@ const Versions = () => {
   const { siteConfig } = useDocusaurusContext();
   const { customFields } = siteConfig;
   const latestVersion = versions[0];
-  const repoUrl = `https://github.com/${customFields.organizationName}/${
-    customFields.projectName
-  }`;
+  const { repoUrl } = customFields;
   return (
     <Layout>
       <div className="docMainWrapper wrapper">
@@ -26,7 +24,7 @@ const Versions = () => {
                 <tr>
                   <th>{latestVersion}</th>
                   <td>
-                    <a href={customFields.baseUrl + "docs/" + "index.html"}>
+                    <a href={siteConfig.baseUrl + "docs/" + "index.html"}>
                       Documentation
                     </a>
                   </td>
@@ -36,7 +34,7 @@ const Versions = () => {
                     </a>
                   </td>
                   <td>
-                    <a href={`${customFields.baseUrl}${latestVersion}`}>
+                    <a href={`${siteConfig.baseUrl}${latestVersion}`}>
                       Blog Post
                     </a>
                   </td>

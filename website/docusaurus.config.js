@@ -91,15 +91,6 @@ const siteConfig = {
   onBrokenLinks: "ignore", // enable once everything works fine
   customFields: {
     repoUrl: "https://github.com/babel/babel",
-    organizationName: "babel",
-    projectName: "babel",
-    baseUrl: "/",
-    // getDocUrl: (doc, language) =>
-    //   `/docs/${language || DEFAULT_LANGUAGE}/${doc}`,
-    // getPageUrl: (page, language) => `/${language || DEFAULT_LANGUAGE}/${page}`,
-    // getVideoUrl: (videos, language) =>
-    //   `/${language || DEFAULT_LANGUAGE}/${videos}`,
-    blogSidebarCount: "ALL",
     users,
     sponsors,
     videos,
@@ -123,15 +114,6 @@ const siteConfig = {
           path: "../docs",
           // Sidebars file relative to website dir.
           sidebarPath: require.resolve("./sidebars.json"),
-
-          // headerIcon: "img/babel.svg",
-          // footerIcon: "img/babel.svg",
-          // favicon: "img/favicon.png",
-          // ogImage: "img/ogImage.png",
-          // colors: {
-          //   primaryColor: "#323330",
-          //   secondaryColor: "#323330",
-          // },
 
           showLastUpdateAuthor: false,
           showLastUpdateTime: false,
@@ -210,46 +192,7 @@ const siteConfig = {
   tagline: "The compiler for next generation JavaScript",
   url: "https://babeljs.io",
   // v6Url: "https://v6.babeljs.io/docs/setup/", not valid but needed
-  // getDocUrl: (doc, language) =>
-  //   `${siteConfig.baseUrl}docs/${language || DEFAULT_LANGUAGE}/${doc}`,
-  // getPageUrl: (page, language) =>
-  //   `${siteConfig.baseUrl}${language || DEFAULT_LANGUAGE}/${page}`,
-  // getVideoUrl: (videos, language) =>
-  //   `${siteConfig.baseUrl}${language || DEFAULT_LANGUAGE}/${videos}`,
-  // headerLinks: [
-  //   { doc: "index", label: "Docs" },
-  //   { page: "setup", label: "Setup" },
-  //   { page: "repl", label: "Try it out" },
-  //   { page: "videos", label: "Videos" },
-  //   { blog: true, label: "Blog" },
-  //   { search: true },
-  //   { href: "https://opencollective.com/babel", label: "Donate" },
-  //   { page: "team", label: "Team" },
-  //   { href: "https://github.com/babel/babel", label: "GitHub" },
-  //   // { languages: true }
-  // ],
-  // users,
-  // sponsors,
-  // videos,
-  // team,
-  // tools,
-  // toolsMD,
-  // setupBabelrc,
-  // headerIcon: "img/babel.svg",
-  // footerIcon: "img/babel.svg",
-  // favicon: "img/favicon.png",
-  // ogImage: "img/ogImage.png",
-  // colors: {
-  //   primaryColor: "#323330",
-  //   secondaryColor: "#323330",
-  // },
-  // blogSidebarCount: "ALL",
-  // highlight: {
-  //   theme: "tomorrow",
-  //   hljs: hljs => {
-  //     hljs.registerLanguage("json5", hljs => hljs.getLanguage("javascript"));
-  //   },
-  // },
+
   scripts: [
     {
       src: "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",
