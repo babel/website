@@ -7,6 +7,17 @@ template.innerHTML = `
   <mini-repl id="repl" vertical></mini-repl>
 `;
 
+// Workaround: Pre-formatted text loses line breaks in MDX
+// The text must be wrapped within ```text
+// https://github.com/mdx-js/mdx/issues/1095
+function extractRawCodeInput(codeEl) {
+  const result = [];
+  for (const lineEl of codeEl.querySelectorAll(".token-line")) {
+    result.push(lineEl.textContent);
+  }
+  return result.join("\n");
+}
+
 class AssumptionRepl extends HTMLDivElement {
   _enabled = true;
 
@@ -21,7 +32,7 @@ class AssumptionRepl extends HTMLDivElement {
   connectedCallback() {
     this._plugins = this.dataset.plugins.split(",");
     this._assumption = this.dataset.assumption;
-    this._input = this.querySelector("code").textContent;
+    this._input = extractRawCodeInput(this.querySelector("code"));
     const miniReplComponent = this.shadowRoot.getElementById("repl");
     customElements.upgrade(miniReplComponent);
     miniReplComponent.setInput(this._input);
