@@ -1,20 +1,3 @@
-.tools-button {
-  display: inline-block;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  color: var(--ifm-font-color-base);
-  border: 1px solid #ccc;
-  font-size: 14px;
-  padding: 6px 12px;
-  cursor: pointer;
-  background-color: var(--ifm-button-border-color);
-  border-radius: 4px;
-}
-
-.tools-group a:link {
-  text-decoration: none !important;
-}
-
 .step-no {
   display: block;
   float: left;

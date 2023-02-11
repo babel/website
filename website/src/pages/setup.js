@@ -26,7 +26,7 @@ const SetupSelectButton = (props) => {
   const { items, name } = props.types;
   const { activeTool } = props;
   const showTools = Object.keys(items).map((tool, j) => {
-    const className = "tools-button" + (tool === activeTool ? " active" : "");
+    const className = "button button--secondary" + (tool === activeTool ? " button--active" : "");
     return (
       <Link
         key={j}
@@ -41,7 +41,9 @@ const SetupSelectButton = (props) => {
   return (
     <div className="tools-group">
       <h5>{name}</h5>
+      <div className="button-group" style={{display: "flex", flexWrap: "wrap"}}>
       {showTools}
+      </div>
     </div>
   );
 };
