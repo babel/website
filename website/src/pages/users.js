@@ -86,7 +86,7 @@ const Users = () => {
                   <br />
                   <a
                     href="https://github.com/babel/website/edit/main/website/data/users.yml"
-                    className="button"
+                    className="button button--primary"
                   >
                     Submit a Pull Request!
                   </a>
