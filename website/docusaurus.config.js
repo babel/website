@@ -198,14 +198,6 @@ const siteConfig = {
       defer: true,
     },
     {
-      src: "https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js",
-      defer: true,
-    },
-    {
-      src: "https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js",
-      defer: true,
-    },
-    {
       src: "/js/code-blocks-buttons.js",
       defer: true,
     },
