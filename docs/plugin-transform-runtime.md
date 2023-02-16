@@ -198,7 +198,7 @@ Using absolute paths is not desirable if files are compiled for use at a later t
 | `v7.21.0` | This option has been added |
 </details>
 
-Set this option if you want `"@babel/plugin-transform-runtime"` to inject imports to helpers from a different packages. You should use this option if:
+Set this option if you want `"@babel/plugin-transform-runtime"` to inject imports to helpers from a different package. You should use this option if:
 - you want to use a `@babel/runtime` version that is internally polyfilled for maximum compatibility (for example, `@babel/runtime-corejs2`) but you are not using `@babel/plugin-transform-runtime` to inject polyfills with the `corejs` option;
 - you want to use an alternative version of `@babel/runtime`, such as a fork with different internal polyfills.
 
