@@ -162,12 +162,12 @@ const profile = Preact.h(
 
 [Fragments](https://reactjs.org/docs/fragments.html) are a feature available in React 16.2.0+.
 
-#### React
+#### React Automatic Runtime
 
 **In**
 
 ```javascript
-const descriptions = items.map(item => (
+const descriptions = items.map((item) => (
   <>
     <dt>{item.name}</dt>
     <dd>{item.value}</dd>
@@ -178,7 +178,41 @@ const descriptions = items.map(item => (
 **Out**
 
 ```javascript
-const descriptions = items.map(item =>
+import { jsxs as _jsxs } from "react/jsx-runtime";
+import { Fragment as _Fragment } from "react/jsx-runtime";
+import { jsx as _jsx } from "react/jsx-runtime";
+
+const descriptions = items.map((item) =>
+  _jsxs(_Fragment, {
+    children: [
+      _jsx("dt", {
+        children: item.name,
+      }),
+      _jsx("dd", {
+        children: item.value,
+      }),
+    ],
+  })
+);
+```
+
+#### React Classic Runtime
+
+**In**
+
+```javascript
+const descriptions = items.map((item) => (
+  <>
+    <dt>{item.name}</dt>
+    <dd>{item.value}</dd>
+  </>
+));
+```
+
+**Out**
+
+```javascript
+const descriptions = items.map((item) =>
   React.createElement(
     React.Fragment,
     null,
@@ -198,7 +232,7 @@ const descriptions = items.map(item =>
 
 import Preact from "preact";
 
-var descriptions = items.map(item => (
+var descriptions = items.map((item) => (
   <>
     <dt>{item.name}</dt>
     <dd>{item.value}</dd>
@@ -214,7 +248,7 @@ var descriptions = items.map(item => (
 
 import Preact from "preact";
 
-var descriptions = items.map(item =>
+var descriptions = items.map((item) =>
   Preact.h(
     Preact.Fragment,
     null,
@@ -317,7 +351,7 @@ Replaces the import source when importing functions.
 
 `string`, defaults to `React.createElement`.
 
-Replace the function used when compiling JSX expressions.
+Replace the function used when compiling JSX expressions. It should be a qualified name (e.g. `React.createElement`) or an identifier (e.g. `createElement`).
 
 Note that the `@jsx React.DOM` pragma has been deprecated as of React v0.12
 
@@ -325,7 +359,7 @@ Note that the `@jsx React.DOM` pragma has been deprecated as of React v0.12
 
 `string`, defaults to `React.Fragment`.
 
-Replace the component used when compiling JSX fragments.
+Replace the component used when compiling JSX fragments. It should be a valid JSX tag name.
 
 ### `useBuiltIns`
 
