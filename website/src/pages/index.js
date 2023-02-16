@@ -28,6 +28,14 @@ Button.defaultProps = {
   target: "_self",
 };
 
+function waitUntilAceIsLoaded(callback) {
+  if ('ace' in window) {
+    callback()
+  } else {
+    setTimeout(() => waitUntilAceIsLoaded(callback), 500);
+  }
+}
+
 const PromoSection = props => (
   <div className="section promoSection">
     <div className="promoRow">
@@ -40,9 +48,7 @@ const DummyMiniRepl = () => {
   return <div className="dummy-hero-repl" />;
 };
 const MiniRepl = () => {
-  useEffect(() => {
-    BABEL_MINI_REPL.start();
-  });
+  useEffect(() => waitUntilAceIsLoaded(() => BABEL_MINI_REPL.start()));
   return (
     <div className="hero-repl" hidden={true}>
       <div className="hero-repl__editor">
