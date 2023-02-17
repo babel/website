@@ -24,7 +24,7 @@ Automatic runtime (since `v7.9.0`) adds the functionality for these plugins auto
 
 > You can also check out the React [Getting Started page](https://facebook.github.io/react/docs/hello-world.html)
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/preset-react
 ```
 

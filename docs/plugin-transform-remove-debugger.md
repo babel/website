@@ -19,7 +19,7 @@ debugger;
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-transform-remove-debugger --save-dev
 ```
 

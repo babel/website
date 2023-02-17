@@ -14,7 +14,7 @@ export * as ns from "mod";
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-export-namespace-from
 ```
 

@@ -10,7 +10,7 @@ sidebar_label: syntax-async-do-expressions
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-async-do-expressions
 ```
 

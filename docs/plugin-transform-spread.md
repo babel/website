@@ -30,7 +30,7 @@ var c = foo.apply(void 0, a);
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-spread
 ```
 

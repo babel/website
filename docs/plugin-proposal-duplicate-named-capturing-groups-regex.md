@@ -27,7 +27,7 @@ console.log(re.exec("02-1999").groups.year);
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-duplicate-named-capturing-groups-regex
 ```
 

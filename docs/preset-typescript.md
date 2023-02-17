@@ -25,7 +25,7 @@ const x = 0;
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/preset-typescript
 ```
 

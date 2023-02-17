@@ -22,7 +22,7 @@ _Mathfloor(a) + _Mathfloor(b);
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-minify-builtins --save-dev
 ```
 

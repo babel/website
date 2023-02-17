@@ -12,16 +12,8 @@ title: "@babel/preset-env"
 
 ## Install
 
-With [npm](https://www.npmjs.com):
-
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/preset-env
-```
-
-Or [yarn](https://yarnpkg.com):
-
-```sh title="Shell"
-yarn add @babel/preset-env --dev
 ```
 
 ## How Does it Work?
@@ -182,7 +174,7 @@ When either the `usage` or `entry` options are used, `@babel/preset-env` will ad
 
 Since `@babel/polyfill` was deprecated in 7.4.0, we recommend directly adding `core-js` and setting the version via the [`corejs`](#corejs) option.
 
-```sh title="Shell"
+```shell npm2yarn
 npm install core-js@3 --save
 
 # or

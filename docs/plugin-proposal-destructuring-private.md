@@ -36,7 +36,7 @@ The plugin respects these compiler assumptions:
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-destructuring-private
 ```
 

@@ -10,7 +10,7 @@ sidebar_label: syntax-optional-chaining
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-optional-chaining
 ```
 

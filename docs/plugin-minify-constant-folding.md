@@ -57,7 +57,7 @@ c;
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-minify-constant-folding --save-dev
 ```
 

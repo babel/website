@@ -9,7 +9,7 @@ sidebar_label: es2016
 
 ## Install
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/preset-es2016
 ```
 

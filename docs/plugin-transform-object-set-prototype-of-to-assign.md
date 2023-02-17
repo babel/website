@@ -24,7 +24,7 @@ _defaults(bar, foo);
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-object-set-prototype-of-to-assign
 ```
 

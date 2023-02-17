@@ -4,7 +4,7 @@ title: "@babel/helper-module-imports"
 sidebar_label: helper-module-imports
 ---
 
-```sh title="Shell"
+```shell npm2yarn
 npm install @babel/helper-module-imports --save
 ```
 

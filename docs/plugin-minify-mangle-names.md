@@ -32,7 +32,7 @@ function foo() {
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-minify-mangle-names --save-dev
 ```
 

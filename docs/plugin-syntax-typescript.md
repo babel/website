@@ -8,7 +8,7 @@ sidebar_label: syntax-typescript
 >
 > Using this plugin directly only enables Babel to parse this syntax. If you want to remove TypeScript syntax then use the [typescript](plugin-transform-typescript.md) plugin or [typescript](preset-typescript.md) preset to _both_ parse and transform this syntax.
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-typescript
 ```
 

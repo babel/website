@@ -42,7 +42,7 @@ var foo = Bluebird.coroutine(function*() {
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-async-to-generator
 ```
 

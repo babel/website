@@ -262,7 +262,7 @@ Note that if a custom pragma is specified, then a custom fragment pragma must al
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-react-jsx
 ```
 

@@ -5,7 +5,7 @@ title: "@babel/code-frame"
 
 ## Install
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/code-frame
 ```
 

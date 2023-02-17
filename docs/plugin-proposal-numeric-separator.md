@@ -63,7 +63,7 @@ Octals are great for permissions, but also look better when represented in `0o00
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-numeric-separator
 ```
 

@@ -103,7 +103,7 @@ const ret = delete obj?.foo?.bar?.baz; // true
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-optional-chaining
 ```
 

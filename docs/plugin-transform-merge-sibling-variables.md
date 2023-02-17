@@ -31,7 +31,7 @@ for (var i = 0, x = 0; x < 10; x++) {}
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-transform-merge-sibling-variables --save-dev
 ```
 

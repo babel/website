@@ -33,7 +33,7 @@ iterator.next(2); // Logs "Yield 2"
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-function-sent
 ```
 

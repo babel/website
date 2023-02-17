@@ -21,7 +21,7 @@ The gist of Stage 1 is:
 
 ## Install
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/preset-stage-1
 ```
 

@@ -9,7 +9,7 @@ sidebar_label: es2015
 
 ## Install
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/preset-es2015
 ```
 

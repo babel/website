@@ -20,7 +20,7 @@ This means you can use new built-ins like `Promise` or `WeakMap`, static methods
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save @babel/polyfill
 ```
 

@@ -20,7 +20,7 @@ alert(0);
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-minify-guarded-expressions --save-dev
 ```
 

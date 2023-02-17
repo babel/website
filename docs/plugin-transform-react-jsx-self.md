@@ -22,7 +22,7 @@ sidebar_label: react-jsx-self
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-react-jsx-self
 ```
 

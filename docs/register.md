@@ -10,7 +10,7 @@ fly. This is equivalent to CoffeeScript's
 
 ## Install
 
-```sh title="Shell"
+```shell npm2yarn
 npm install @babel/core @babel/register --save-dev
 ```
 

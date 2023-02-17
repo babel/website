@@ -32,7 +32,7 @@ function baz() {
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-minify-dead-code-elimination --save-dev
 ```
 

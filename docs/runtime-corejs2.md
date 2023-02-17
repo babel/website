@@ -8,7 +8,7 @@ sidebar_label: runtime-corejs2
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save @babel/runtime-corejs2
 ```
 

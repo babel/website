@@ -29,7 +29,7 @@ console.log(re.exec("1999-02-29").groups.year);
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-named-capturing-groups-regex
 ```
 

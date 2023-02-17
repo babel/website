@@ -20,7 +20,7 @@ sidebar_label: minify-numeric-literals
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-minify-numeric-literals --save-dev
 ```
 

@@ -24,7 +24,7 @@ const ex = "before\u2028after";
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-json-strings
 ```
 

@@ -27,7 +27,7 @@ Note that it is not possible to transpile this syntax to ES2015-style imports an
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-module-string-names
 ```
 

@@ -53,7 +53,7 @@ Because the output code includes private class properties, if you are already us
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-class-static-block
 ```
 

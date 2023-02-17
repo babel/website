@@ -22,7 +22,7 @@ var a = /ab+c/i;
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-transform-regexp-constructors --save-dev
 ```
 

@@ -22,7 +22,7 @@ var a = new RegExp("o+", "y");
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-sticky-regex
 ```
 

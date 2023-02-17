@@ -24,7 +24,7 @@ If you don't use Babel or don't use deprecated yearly presets, you probably saw 
 
 ### Install
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-preset-env --save-dev
 ```
 

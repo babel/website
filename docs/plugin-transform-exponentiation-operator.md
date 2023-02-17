@@ -26,7 +26,7 @@ x = Math.pow(x, 3);
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-exponentiation-operator
 ```
 

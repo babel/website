@@ -64,7 +64,7 @@ get all the same transforms that were in Babel 5:
 }
 ```
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-preset-env babel-preset-react babel-preset-stage-2 --save-dev
 ```
 

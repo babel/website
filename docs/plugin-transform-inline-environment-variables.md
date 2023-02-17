@@ -21,7 +21,7 @@ process.env.NODE_ENV;
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-transform-inline-environment-variables --save-dev
 ```
 

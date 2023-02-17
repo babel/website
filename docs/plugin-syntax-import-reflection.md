@@ -16,7 +16,7 @@ import module foo from "./foo.wasm";
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-import-reflection
 ```
 

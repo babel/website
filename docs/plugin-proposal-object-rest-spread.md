@@ -26,7 +26,7 @@ console.log(n); // { x: 1, y: 2, a: 3, b: 4 }
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-object-rest-spread
 ```
 

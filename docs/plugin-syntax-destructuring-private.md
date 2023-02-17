@@ -12,7 +12,7 @@ sidebar_label: syntax-destructuring-private
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-destructuring-private
 ```
 

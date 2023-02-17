@@ -4,7 +4,7 @@ title: gulp-babel-minify
 sidebar_label: gulp-babel-minify
 ---
 
-```sh title="Shell"
+```shell npm2yarn
 npm install gulp-babel-minify --save-dev
 ```
 

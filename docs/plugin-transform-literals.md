@@ -26,7 +26,7 @@ const u = "Hello\n\t!"; // unicode string literals, newline and tab
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-literals
 ```
 

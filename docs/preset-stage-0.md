@@ -11,7 +11,7 @@ sidebar_label: stage-0
 
 ## Install
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/preset-stage-0
 ```
 

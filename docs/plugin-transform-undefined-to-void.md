@@ -22,7 +22,7 @@ foo === void 0;
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-transform-undefined-to-void --save-dev
 ```
 

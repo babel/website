@@ -20,7 +20,7 @@ typeof foo == "object";
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-transform-simplify-comparison-operators --save-dev
 ```
 

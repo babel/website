@@ -11,13 +11,13 @@ A plugin that enables the re-use of Babel's injected helper code to save on code
 
 Install it as development dependency.
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-runtime
 ```
 
 and [`@babel/runtime`](runtime.md) as a production dependency (since it's for the "runtime").
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save @babel/runtime
 ```
 

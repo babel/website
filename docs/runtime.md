@@ -7,7 +7,7 @@ title: "@babel/runtime"
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save @babel/runtime
 ```
 

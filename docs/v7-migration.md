@@ -596,7 +596,7 @@ The deprecated usage of `babel-core/register` has been removed in Babel 7; inste
 
 Install `@babel/register` as a new dependency:
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/register
 ```
 

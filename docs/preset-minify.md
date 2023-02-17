@@ -10,7 +10,7 @@ sidebar_label: minify
 
 ## Install
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-preset-minify --save-dev
 ```
 

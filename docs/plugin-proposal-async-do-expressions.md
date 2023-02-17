@@ -46,7 +46,7 @@ Promise.all([
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-async-do-expressions
 ```
 

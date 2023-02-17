@@ -10,7 +10,7 @@ sidebar_label: syntax-nullish-coalescing-operator
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-nullish-coalescing-operator
 ```
 

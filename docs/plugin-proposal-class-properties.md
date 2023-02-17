@@ -38,7 +38,7 @@ console.log(Bork.staticFunction()); // > "babelIsCool"
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-class-properties
 ```
 

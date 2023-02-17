@@ -37,7 +37,7 @@ const bar = [1, 2];
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-transform-inline-consecutive-adds --save-dev
 ```
 

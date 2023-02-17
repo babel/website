@@ -12,6 +12,7 @@
   "devDependencies": {
     "@docusaurus/core": "^2.3.1",
     "@docusaurus/preset-classic": "^2.3.1",
+    "@docusaurus/remark-plugin-npm2yarn": "^2.3.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-markdown": "^8.0.5",

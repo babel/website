@@ -26,7 +26,7 @@ if (null !== bar) {
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-minify-flip-comparisons --save-dev
 ```
 

@@ -14,7 +14,7 @@ function test(param = throw new Error("required!")) {
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-throw-expressions
 ```
 

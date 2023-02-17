@@ -24,7 +24,7 @@ The `columnNumber` is emitted since `v7.9.0`.
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-react-jsx-source
 ```
 

@@ -75,7 +75,7 @@ Reflect.construct(Foo, [], Baz); // => undefined (incorrect)
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-new-target
 ```
 

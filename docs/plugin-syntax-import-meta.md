@@ -8,7 +8,7 @@ sidebar_label: syntax-import-meta
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-import-meta
 ```
 

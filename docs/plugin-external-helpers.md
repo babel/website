@@ -4,7 +4,7 @@ title: "@babel/plugin-external-helpers"
 sidebar_label: external-helpers
 ---
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-external-helpers
 ```
 

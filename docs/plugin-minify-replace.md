@@ -44,7 +44,7 @@ if (a.__DEV__) {
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-plugin-minify-replace --save-dev
 ```
 

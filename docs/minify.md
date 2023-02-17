@@ -10,7 +10,7 @@ Use `babel-minify` if you don't already use babel (as a preset) or want to run i
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install babel-minify --save-dev
 ```
 

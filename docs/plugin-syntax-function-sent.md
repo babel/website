@@ -10,7 +10,7 @@ sidebar_label: syntax-function-sent
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-function-sent
 ```
 

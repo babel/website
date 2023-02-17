@@ -4,7 +4,7 @@ title: "@babel/helper-hoist-variables"
 sidebar_label: helper-hoist-variables
 ---
 
-```sh title="Shell"
+```shell npm2yarn
 npm install @babel/helper-hoist-variables --save
 ```
 

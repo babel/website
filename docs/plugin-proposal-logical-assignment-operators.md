@@ -50,7 +50,7 @@ var _a, _obj$a, _obj$a$b;
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-logical-assignment-operators
 ```
 

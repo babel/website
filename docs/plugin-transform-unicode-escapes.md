@@ -28,7 +28,7 @@ console.log(_ud835_udc9c);
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-unicode-escapes
 ```
 

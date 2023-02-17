@@ -83,7 +83,7 @@ All the Babel modules you'll need are published as separate npm packages scoped 
 
 The core functionality of Babel resides at the [@babel/core](core.md) module. After installing it:
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/core
 ```
 
@@ -101,7 +101,7 @@ As an end-user though, you'll probably want to install other tools that serve as
 
 [@babel/cli](cli.md) is a tool that allows you to use babel from the terminal. Here's the installation command and a basic usage example:
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/core @babel/cli
 
 ./node_modules/.bin/babel src --out-dir lib
@@ -115,7 +115,7 @@ We used the `--out-dir` option above. You can view the rest of the options accep
 
 Transformations come in the form of plugins, which are small JavaScript programs that instruct Babel on how to carry out transformations to the code. You can even write your own plugins to apply any transformations you want to your code. To transform ES2015+ syntax into ES5 we can rely on official plugins like `@babel/plugin-transform-arrow-functions`:
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-arrow-functions
 
 ./node_modules/.bin/babel src --out-dir lib --plugins=@babel/plugin-transform-arrow-functions
@@ -137,7 +137,7 @@ That's a good start! But we also have other ES2015+ features in our code that we
 
 Just like with plugins, you can create your own presets too to share any combination of plugins you need. For our use case here, there's an excellent preset named `env`.
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/preset-env
 
 ./node_modules/.bin/babel src --out-dir lib --presets=@babel/env
@@ -191,7 +191,7 @@ To go one step further, if you know exactly what features you need polyfills for
 
 Since we're building an application we can just install `@babel/polyfill`:
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save @babel/polyfill
 ```
 

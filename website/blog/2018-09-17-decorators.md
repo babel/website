@@ -155,7 +155,7 @@ const ast = babylon.parse(code, {
 
 For usage in Babel itself:
 
-```sh title="Shell"
+```shell npm2yarn
 npm install @babel/plugin-proposal-decorators --save-dev
 ```
 

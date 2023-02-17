@@ -33,7 +33,7 @@ For dynamic import support (`import('./lazy.js').then(m => ...)`), enable the [@
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-modules-systemjs
 ```
 

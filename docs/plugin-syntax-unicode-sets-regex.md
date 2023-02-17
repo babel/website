@@ -18,7 +18,7 @@ This plugin enables parsing regular expressions using the `v` flag, introduced b
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-unicode-sets-regex
 ```
 

@@ -35,7 +35,7 @@ Reassignment of constants is a runtime error and it will insert the necessary er
 
 ## Installation
 
-```sh title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-block-scoping
 ```
 
