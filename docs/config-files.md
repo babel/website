@@ -11,7 +11,7 @@ Babel has two parallel config file formats, which can be used together, or indep
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
-| `v7.21.0` | Support `.babelrc.cts` and `babel.config.cts` (Experiment) |
+| `v7.21.0` | Support `.babelrc.cts` and `babel.config.cts` (Experimental) |
 | `v7.8.0`  | Support `.babelrc.mjs` and `babel.config.mjs` |
 | `v7.7.0`  | Support `.babelrc.json`, `.babelrc.cjs`, `babel.config.json`, `babel.config.cjs` |
 </details>
