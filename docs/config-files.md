@@ -96,7 +96,7 @@ the config will now be entirely ignored, because it is across a package boundary
 
 One alternative would be to create a `.babelrc` in each sub-package that uses ["extends"](options.md#extends) as
 
-```json
+```json title=".babelrc.json"
 { "extends": "../../.babelrc" }
 ```
 
@@ -212,7 +212,7 @@ require("@babel/register")({
 
 #### Webpack
 
-```js
+```js title="webpack.config.js"
 module: {
   rules: [
     {
@@ -233,7 +233,7 @@ but if it is installed per-package it can unfortunately be more complex to confi
 The main part is creating a custom jest transformer file that wraps `babel-jest`'s default
 behavior in order to set the option, e.g.
 
-```js
+```js title="wrapper.js"
 module.exports = require("babel-jest").default.createTransformer({
   rootMode: "upward",
 });
@@ -242,7 +242,7 @@ module.exports = require("babel-jest").default.createTransformer({
 and with that saved somewhere, you'd then use that file in the place of `babel-jest` in
 your Jest options via the [transform option](https://jestjs.io/docs/en/configuration#transform-object-string-string):
 
-```json
+```json title="jest.config.js"
 "transform": {
   "^.+\\.jsx?$": "./path/to/wrapper.js"
 },

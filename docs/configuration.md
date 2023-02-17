@@ -26,24 +26,10 @@ All Babel API [options](options.md) are allowed. However, if the option requires
 
 Create a file called `babel.config.json` with the following content at the root of your project (where the `package.json` is).
 
-```json
+```json title="babel.config.json"
 {
   "presets": [...],
   "plugins": [...]
-}
-```
-
-```js
-module.exports = function (api) {
-  api.cache(true);
-
-  const presets = [ ... ];
-  const plugins = [ ... ];
-
-  return {
-    presets,
-    plugins
-  };
 }
 ```
 
@@ -53,7 +39,7 @@ Check out the [`babel.config.json` documentation](config-files.md#project-wide-c
 
 Create a file called `.babelrc.json` with the following content in your project.
 
-```json
+```json title=".babelrc.json"
 {
   "presets": [...],
   "plugins": [...]
@@ -66,7 +52,7 @@ Check out the [.babelrc documentation](config-files.md#file-relative-configurati
 
 Alternatively, you can choose to specify your [`.babelrc.json`](#babelrcjson) config from within `package.json` using the `babel` key like so:
 
-```json
+```json title="package.json"
 {
   "name": "my-package",
   "version": "1.0.0",
@@ -81,24 +67,38 @@ Alternatively, you can choose to specify your [`.babelrc.json`](#babelrcjson) co
 
 You can also write `babel.config.js` and `.babelrc.js` files using JavaScript:
 
-```js
-const presets = [ ... ];
-const plugins = [ ... ];
+```js title="babel.config.js"
+module.exports = function (api) {
+  api.cache(true);
 
-module.exports = { presets, plugins };
+  const presets = [ ... ];
+  const plugins = [ ... ];
+
+  return {
+    presets,
+    plugins
+  };
+}
 ```
 
 You are allowed to access any Node.js APIs, for example a dynamic configuration based on the process environment:
 
-```js
-const presets = [ ... ];
-const plugins = [ ... ];
+```js title="babel.config.js"
+module.exports = function (api) {
+  api.cache(true);
 
-if (process.env["ENV"] === "prod") {
-  plugins.push(...);
+  const presets = [ ... ];
+  const plugins = [ ... ];
+
+  if (process.env["ENV"] === "prod") {
+    plugins.push(...);
+  }
+
+  return {
+    presets,
+    plugins
+  };
 }
-
-module.exports = { presets, plugins };
 ```
 
 You can read more about JavaScript configuration files in the [dedicated documentation](config-files.md)

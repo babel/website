@@ -259,45 +259,33 @@ Adds specific imports for polyfills when they are used in each file. We take adv
 
 **In**
 
-a.js
-
-```js
+```js title="a.js"
 var a = new Promise();
 ```
 
-b.js
-
-```js
+```js title="b.js"
 var b = new Map();
 ```
 
 **Out (if environment doesn't support it)**
 
-a.js
-
-```js
+```js title="a.js"
 import "core-js/modules/es.promise";
 var a = new Promise();
 ```
 
-b.js
-
-```js
+```js title="b.js"
 import "core-js/modules/es.map";
 var b = new Map();
 ```
 
 **Out (if environment supports it)**
 
-a.js
-
-```js
+```js title="a.js"
 var a = new Promise();
 ```
 
-b.js
-
-```js
+```js title="b.js"
 var b = new Map();
 ```
 

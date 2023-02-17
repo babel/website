@@ -194,8 +194,7 @@ Given browser targets `targets`, query the `compatData` whether plugin `name` is
 
 **Example**
 
-```javascript
-// babel.config.js
+```javascript title="babel.config.js"
 module.exports = api => {
   const targets = api.targets();
   // The targets have native optional chaining support
