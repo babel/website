@@ -23,6 +23,8 @@ npm install --save @babel/runtime
 
 The transformation plugin is typically used only in development, but the runtime itself will be depended on by your deployed code. See the examples below for more details.
 
+> When this plugin is enabled, the `useBuiltIns` option in `@babel/preset-env` must not be set. Otherwise, this plugin may not able to completely sandbox the environment.
+
 ## Why?
 
 Babel uses very small helpers for common functions such as `_extend`. By default this will be added to every file that requires it. This duplication is sometimes unnecessary, especially when your application is spread out over multiple files.
