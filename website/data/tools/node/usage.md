@@ -1,4 +1,4 @@
-```javascript
+```js title="JavaScript"
 require("@babel/core").transform("code", {
   presets: ["@babel/preset-env"],
 });

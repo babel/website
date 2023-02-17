@@ -175,7 +175,7 @@ files from the directory set as its ["root"](options.md#root), which means that 
 a [`babel.config.json`](#project-wide-configuration), but run
 Babel inside an individual package, e.g.
 
-```bash
+```shell title="Shell"
 cd packages/some-package;
 babel src -d dist
 ```
@@ -198,13 +198,13 @@ How you set this value varies by project, but here are a few examples:
 
 #### CLI
 
-```bash
+```shell title="Shell"
 babel --root-mode upward src -d lib
 ```
 
 #### @babel/register
 
-```js
+```js title="JavaScript"
 require("@babel/register")({
   rootMode: "upward",
 });
@@ -283,7 +283,7 @@ this [`.babelrc.json`](#file-relative-configuration) is within a sub-package, no
 To enable processing of that [`.babelrc.json`](#file-relative-configuration), you will want to use the ["babelrcRoots"](options.md#babelrcroots)
 option from inside your [`babel.config.json`](#project-wide-configuration) file to do
 
-```js
+```js title="JavaScript"
 babelrcRoots: [
   ".",
   "packages/*",
@@ -297,7 +297,7 @@ along with the original repo root.
 
 JS config files may export a function that will be passed config function API:
 
-```js
+```js title="JavaScript"
 module.exports = function(api) {
   return {};
 };
@@ -368,7 +368,7 @@ values, this API is designed to automatically configure `api.cache`, the same wa
 The `caller` value is available as the first parameter of the callback function. It is best used
 with something like
 
-```js
+```js title="JavaScript"
 function isBabelRegister(caller) {
   return !!(caller && caller.name === "@babel/register");
 }
@@ -389,7 +389,7 @@ to toggle configuration behavior based on a specific environment.
 While `api.version` can be useful in general, it's sometimes nice to just declare your version.
 This API exposes a simple way to do that with:
 
-```js
+```js title="JavaScript"
 module.exports = function(api) {
   api.assertVersion("^7.2");
 

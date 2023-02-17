@@ -19,7 +19,7 @@ inside there as `build`.
 
 Now from our terminal we can run:
 
-```sh
+```sh title="Shell"
 npm run build
 ```
 
@@ -28,7 +28,7 @@ This will run Babel the same way as before and the output will be present in
 
 Alternatively, you can reference the `babel` cli inside of `node_modules`.
 
-```sh
+```sh title="Shell"
 ./node_modules/.bin/babel src -d lib
 ```
 

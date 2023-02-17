@@ -8,7 +8,7 @@ sidebar_label: inline-consecutive-adds
 
 **In**
 
-```javascript
+```js title="JavaScript"
 const foo = {};
 foo.a = 42;
 foo.b = ["hi"];
@@ -23,7 +23,7 @@ bar.push(2);
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 const foo = {
   a: 42,
   b: ["hi"],
@@ -37,7 +37,7 @@ const bar = [1, 2];
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install babel-plugin-transform-inline-consecutive-adds --save-dev
 ```
 
@@ -45,7 +45,7 @@ npm install babel-plugin-transform-inline-consecutive-adds --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["transform-inline-consecutive-adds"]
 }
@@ -53,13 +53,13 @@ npm install babel-plugin-transform-inline-consecutive-adds --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins transform-inline-consecutive-adds script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["transform-inline-consecutive-adds"],
 });

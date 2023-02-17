@@ -9,7 +9,7 @@ sidebar_label: class-properties
 
 Below is a class with four class properties which will be transformed.
 
-```js
+```js title="JavaScript"
 class Bork {
   //Property initializer syntax
   instanceProperty = "bork";
@@ -38,7 +38,7 @@ console.log(Bork.staticFunction()); // > "babelIsCool"
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-proposal-class-properties
 ```
 
@@ -48,7 +48,7 @@ npm install --save-dev @babel/plugin-proposal-class-properties
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-class-properties"]
 }
@@ -56,7 +56,7 @@ Without options:
 
 With options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [["@babel/plugin-proposal-class-properties", { "loose": true }]]
 }
@@ -64,13 +64,13 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-class-properties script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-class-properties"],
 });
@@ -86,8 +86,7 @@ When `true`, class properties are compiled to use an assignment expression inste
 
 > ⚠️ Consider migrating to the top level [`setPublicClassFields`](assumptions.md#setpublicclassfields) assumption
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "setPublicClassFields": true
@@ -99,7 +98,7 @@ For an explanation of the consequences of using either, see [Definition vs. Assi
 
 #### Example
 
-```js
+```js title="JavaScript"
 class Bork {
   static a = "foo";
   static b;
@@ -111,7 +110,7 @@ class Bork {
 
 Without `{ "setPublicClassFields": true }`, the above code will compile to the following, using `Object.defineProperty`:
 
-```js
+```js title="JavaScript"
 var Bork = function Bork() {
   babelHelpers.classCallCheck(this, Bork);
   Object.defineProperty(this, "x", {
@@ -144,7 +143,7 @@ Object.defineProperty(Bork, "b", {
 
 However, with `{ "setPublicClassFields": true }`, it will compile using assignment expressions:
 
-```js
+```js title="JavaScript"
 var Bork = function Bork() {
   babelHelpers.classCallCheck(this, Bork);
   this.x = "bar";

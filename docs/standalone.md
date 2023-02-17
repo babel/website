@@ -71,7 +71,7 @@ You can also set the `async` attribute for external scripts.
 
 Load `babel.js` or `babel.min.js` in your environment. This will expose [Babel's API](http://babeljs.io/docs/usage/api/) in a `Babel` object:
 
-```js
+```js title="JavaScript"
 var input = 'const getMessage = () => "Hello World";';
 var output = Babel.transform(input, { presets: ["env"] }).code;
 ```
@@ -84,7 +84,7 @@ Note that [config files](config-files.md) don't work in @babel/standalone, as no
 
 Custom plugins and presets can be added using the `registerPlugin` and `registerPreset` methods respectively:
 
-```js
+```js title="JavaScript"
 // Simple plugin that converts every identifier to "LOL"
 function lolizer() {
   return {
@@ -106,7 +106,7 @@ Once registered, you can either use the custom plugin in an inline script:
 
 Or you can use the plugin with `Babel.transform`:
 
-```js
+```js title="JavaScript"
 var output = Babel.transform("function helloWorld() { alert(hello); }", {
   plugins: ["lolizer"],
 });
@@ -117,7 +117,7 @@ var output = Babel.transform("function helloWorld() { alert(hello); }", {
 
 If you want to pass options to builtin plugins and presets, you can create a new preset and pass these options inside the preset.
 
-```js
+```js title="JavaScript"
 // Define a preset
 Babel.registerPreset("env-plus", {
   presets: [[Babel.availablePresets["env"], { loose: true }]],

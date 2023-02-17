@@ -11,7 +11,7 @@ Node: Check that Node is installed with version 10.19.0 and up. You can check th
 
 Yarn: Make sure that Yarn 1 is installed with version >= 1.19.0.
 
-```bash
+```shell title="Shell"
 $ git clone git@github.com:babel/website.git
 $ cd website
 $ yarn && yarn bootstrap

@@ -1,4 +1,4 @@
-```js
+```js title="JavaScript"
 var gulp = require("gulp");
 var babel = require("gulp-babel");
 
@@ -15,7 +15,7 @@ gulp.task("default", function () {
 
 Use [gulp-sourcemaps](https://github.com/floridoo/gulp-sourcemaps) like this:
 
-```js
+```js title="JavaScript"
 var gulp = require("gulp");
 var sourcemaps = require("gulp-sourcemaps");
 var babel = require("gulp-babel");

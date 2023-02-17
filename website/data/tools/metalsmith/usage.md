@@ -2,7 +2,7 @@
 
 Add the `metalsmith-babel` field to your `metalsmith.json`.
 
-```javascript
+```js title="JavaScript"
 {
   "plugins": {
     "metalsmith-babel": {
@@ -15,7 +15,7 @@ Add the `metalsmith-babel` field to your `metalsmith.json`.
 
 #### [API](https://github.com/segmentio/metalsmith#api)
 
-```javascript
+```js title="JavaScript"
 var Metalsmith = require("metalsmith");
 var babel = require("metalsmith-babel");
 

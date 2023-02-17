@@ -12,13 +12,13 @@ This plugin enables parsing regular expressions using the `v` flag, introduced b
 
 ## Example
 
-```js
+```js title="JavaScript"
 /[\p{ASCII}&&\p{Decimal_Number}]/v
 ```
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-syntax-unicode-sets-regex
 ```
 
@@ -26,7 +26,7 @@ npm install --save-dev @babel/plugin-syntax-unicode-sets-regex
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-unicode-sets-regex"]
 }
@@ -34,13 +34,13 @@ npm install --save-dev @babel/plugin-syntax-unicode-sets-regex
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-unicode-sets-regex script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-unicode-sets-regex"],
 });

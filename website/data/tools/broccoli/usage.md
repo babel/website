@@ -1,4 +1,4 @@
-```js
+```js title="JavaScript"
 var babelTranspiler = require("broccoli-babel-transpiler");
 var scriptTree = babelTranspiler(inputTree, options);
 ```

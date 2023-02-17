@@ -1,6 +1,6 @@
 #### Via config
 
-```js
+```js title="JavaScript"
 {
   module: {
     rules: [

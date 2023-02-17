@@ -10,7 +10,7 @@ require:
 
 Some features may require a polyfill:
 
-```sh
+```sh title="Shell"
 # Polyfills for builtin methods
 npm install --save core-js
 ```
@@ -23,7 +23,7 @@ require:
 ```
 
 Create `babel.config.json` in your project root:
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-env"]
 }
@@ -40,7 +40,7 @@ Create `babel.config.json` in your project root:
 
 `--compilers` is deprecated as of Mocha v4.0.0. See [further explanation and workarounds](https://github.com/mochajs/mocha/wiki/compilers-deprecation).
 
-```json
+```json title="JSON"
 {
   "scripts": {
     "test": "mocha --compilers js:@babel/register"
@@ -50,7 +50,7 @@ Create `babel.config.json` in your project root:
 
 With polyfill:
 
-```json
+```json title="JSON"
 {
   "scripts": {
     "test": "mocha --require babel-polyfill --compilers js:@babel/register"

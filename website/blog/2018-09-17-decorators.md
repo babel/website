@@ -155,11 +155,11 @@ const ast = babylon.parse(code, {
 
 For usage in Babel itself:
 
-```sh
+```sh title="Shell"
 npm install @babel/plugin-proposal-decorators --save-dev
 ```
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true }]
 }

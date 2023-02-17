@@ -4,13 +4,13 @@ title: "@babel/helper-split-export-declaration"
 sidebar_label: helper-split-export-declaration
 ---
 
-```js
+```js title="JavaScript"
 declare export default splitExportDeclaration(path: NodePath);
 ```
 
 ## Usage
 
-```js
+```js title="JavaScript"
 import traverse from "@babel/traverse";
 import splitExportDeclaration from "@babel/helper-split-export-declaration";
 

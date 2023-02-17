@@ -1,5 +1,5 @@
 Enable Babel support either in `package.json` or `ava.config.*`
-```json
+```json title="JSON"
 {
   "ava": {
     "babel": true

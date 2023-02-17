@@ -105,7 +105,7 @@ You can read more about JavaScript configuration files in the [dedicated documen
 
 ## Using the CLI (`@babel/cli`)
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-arrow-functions script.js
 ```
 
@@ -113,7 +113,7 @@ Check out the [babel-cli documentation](cli.md) to see more configuration option
 
 ## Using the API (`@babel/core`)
 
-```js
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-arrow-functions"],
 });
@@ -125,7 +125,7 @@ Check out the [babel-core documentation](core.md) to see more configuration opti
 
 You can tell Babel to print effective configs on a given input path
 
-```sh
+```sh title="Shell"
 # *nix or WSL
 BABEL_SHOW_CONFIG_FOR=./src/myComponent.jsx npm start
 ```
@@ -208,7 +208,7 @@ when they are present and their value is not `undefined`. There are, however, a 
 
 As an example, consider a config with:
 
-```js
+```js title="JavaScript"
 {
   sourceType: "script",
   assumptions: {
@@ -228,7 +228,7 @@ As an example, consider a config with:
 
 When `NODE_ENV` is `test`, the `sourceType` option will be replaced and the `assumptions` option will be merged. The effective config is:
 
-```js
+```js title="JavaScript"
 {
   sourceType: "module", // sourceType: "script" is overwritten
   assumptions: {
@@ -242,7 +242,7 @@ When `NODE_ENV` is `test`, the `sourceType` option will be replaced and the `ass
 
 As an example, consider a config with:
 
-```js
+```js title="JavaScript"
 plugins: [
   './other',
   ['./plug', { thing: true, field1: true }]
@@ -259,7 +259,7 @@ array as a whole doesn't just replace the top-level one. The merging logic will 
 is the same plugin in both cases, and `{ thing: false, field2: true }` will replace the original
 options, resulting in a config as
 
-```js
+```js title="JavaScript"
 plugins: [
   './other',
   ['./plug', { thing: false, field2: true }],
@@ -269,13 +269,13 @@ plugins: [
 Since merging is based on identity + name, it is considered an error to use the same plugin with
 the same name twice in the same `plugins`/`presets` array. For example
 
-```js
+```js title="JavaScript"
 plugins: ["./plug", "./plug"];
 ```
 
 is considered an error, because it's identical to `plugins: ['./plug']`. Additionally, even
 
-```js
+```js title="JavaScript"
 plugins: [["./plug", { one: true }], ["./plug", { two: true }]];
 ```
 
@@ -284,7 +284,7 @@ is considered an error, because the second one would just always replace the fir
 If you actually _do_ want to instantiate two separate instances of a plugin, you must assign each one
 a name to disambiguate them. For example:
 
-```js
+```js title="JavaScript"
 plugins: [
   ["./plug", { one: true }, "first-instance-name"],
   ["./plug", { two: true }, "second-instance-name"],

@@ -10,7 +10,7 @@ sidebar_label: exponentiation-operator
 
 **In**
 
-```javascript
+```js title="JavaScript"
 let x = 10 ** 2;
 
 x **= 3;
@@ -18,7 +18,7 @@ x **= 3;
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 let x = Math.pow(10, 2);
 
 x = Math.pow(x, 3);
@@ -26,7 +26,7 @@ x = Math.pow(x, 3);
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-exponentiation-operator
 ```
 
@@ -34,7 +34,7 @@ npm install --save-dev @babel/plugin-transform-exponentiation-operator
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-exponentiation-operator"]
 }
@@ -42,13 +42,13 @@ npm install --save-dev @babel/plugin-transform-exponentiation-operator
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-exponentiation-operator script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-exponentiation-operator"],
 });

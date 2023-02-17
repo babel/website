@@ -6,7 +6,7 @@ sidebar_label: pipeline-operator
 
 ## Installation
 
-```sh
+```sh title="Shell"
 $ npm install --save-dev @babel/plugin-proposal-pipeline-operator
 ```
 
@@ -31,7 +31,7 @@ The `"proposal": "minimal"`, `"fsharp"`, and `"smart"` options are **deprecated*
 The following examples use `topicToken: "^^"`.
 
 From [react/scripts/jest/jest-cli.js][].
-```js
+```js title="JavaScript"
 // Status quo
 console.log(
   chalk.dim(
@@ -53,7 +53,7 @@ Object.keys(envars)
 ```
 
 From [jquery/src/core/init.js][].
-```js
+```js title="JavaScript"
 // Status quo
 jQuery.merge( this, jQuery.parseHTML(
   match[ 1 ],
@@ -78,7 +78,7 @@ context
 
 With `^^` topic token:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     ["@babel/plugin-proposal-pipeline-operator", { "topicToken": "^^" }]
@@ -88,7 +88,7 @@ With `^^` topic token:
 
 With `@@` topic token:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     ["@babel/plugin-proposal-pipeline-operator", { "topicToken": "@@" }]
@@ -104,7 +104,7 @@ Because this plugin requires a configuration option, it [cannot be directly conf
 
 With `^^` topic token:
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: [
     [ "@babel/plugin-proposal-pipeline-operator", { topicToken: "^^" } ],
@@ -114,7 +114,7 @@ require("@babel/core").transformSync("code", {
 
 With `@@` topic token:
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: [
     [ "@babel/plugin-proposal-pipeline-operator", { topicToken: "@@" } ],

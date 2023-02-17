@@ -10,13 +10,13 @@ sidebar_label: function-name
 
 **In**
 
-```javascript
+```js title="JavaScript"
 let number = x => x;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var number = function number(x) {
   return x;
 };
@@ -24,7 +24,7 @@ var number = function number(x) {
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-function-name
 ```
 
@@ -32,7 +32,7 @@ npm install --save-dev @babel/plugin-transform-function-name
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-function-name"]
 }
@@ -40,13 +40,13 @@ npm install --save-dev @babel/plugin-transform-function-name
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-function-name script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-function-name"],
 });

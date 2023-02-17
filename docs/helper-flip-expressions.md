@@ -4,7 +4,7 @@ title: babel-helper-flip-expressions
 sidebar_label: babel-helper-flip-expressions
 ---
 
-```sh
+```sh title="Shell"
 npm install babel-helper-flip-expressions --save-dev
 ```
 

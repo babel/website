@@ -21,7 +21,7 @@ The gist of Stage 2 is:
 
 ## Install
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/preset-stage-2
 ```
 
@@ -29,7 +29,7 @@ npm install --save-dev @babel/preset-stage-2
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-stage-2"]
 }
@@ -37,13 +37,13 @@ npm install --save-dev @babel/preset-stage-2
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel script.js --presets @babel/preset-stage-2
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-stage-2"]
 });

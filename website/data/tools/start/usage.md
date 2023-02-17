@@ -1,4 +1,4 @@
-```js
+```js title="JavaScript"
 import sequence from '@start/plugin-sequence'
 import find from '@start/plugin-find'
 import read from '@start/plugin-read'

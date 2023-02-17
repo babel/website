@@ -1,19 +1,19 @@
 #### Via CLI
 
-```sh
+```sh title="Shell"
 browserify script.js -t babelify --outfile bundle.js
 ```
 
 #### Via Node API
 
-```js
+```js title="JavaScript"
 browserify({ debug: true })
   .transform(babelify);
 ```
 
 Or a more complete example:
 
-```js
+```js title="JavaScript"
 var fs = require("fs");
 var browserify = require("browserify");
 var babelify = require("babelify");
@@ -30,13 +30,13 @@ browserify({ debug: true })
 
 **CLI**
 
-```sh
+```sh title="Shell"
 browserify -d -e script.js -t [ babelify --comments false ]
 ```
 
 ##### Node API
 
-```js
+```js title="JavaScript"
 browserify().transform(babelify.configure({
   comments: false
 }))
@@ -44,7 +44,7 @@ browserify().transform(babelify.configure({
 
 ##### package.json
 
-```json
+```json title="JSON"
 {
   "transform": [["babelify", { "comments": false }]]
 }

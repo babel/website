@@ -8,13 +8,13 @@ sidebar_label: jscript
 
 **In**
 
-```javascript
+```js title="JavaScript"
 var foo = function bar() {};
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 "use strict";
 
 var foo = (function() {
@@ -26,7 +26,7 @@ var foo = (function() {
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-jscript
 ```
 
@@ -34,7 +34,7 @@ npm install --save-dev @babel/plugin-transform-jscript
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-jscript"]
 }
@@ -42,13 +42,13 @@ npm install --save-dev @babel/plugin-transform-jscript
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-jscript script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-jscript"],
 });

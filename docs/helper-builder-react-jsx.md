@@ -4,7 +4,7 @@ title: "@babel/helper-builder-react-jsx"
 sidebar_label: helper-builder-react-jsx
 ---
 
-```javascript
+```js title="JavaScript"
 type ElementState = {
   tagExpr: Object; // tag node
   tagName: string; // raw string tag name

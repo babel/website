@@ -10,13 +10,13 @@ sidebar_label: syntax-import-reflection
 
 This plugin enables Babel to parse import reflections:
 
-```js
+```js title="JavaScript"
 import module foo from "./foo.wasm";
 ```
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-syntax-import-reflection
 ```
 
@@ -24,7 +24,7 @@ npm install --save-dev @babel/plugin-syntax-import-reflection
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-import-reflection"]
 }
@@ -32,13 +32,13 @@ npm install --save-dev @babel/plugin-syntax-import-reflection
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-import-reflection script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-import-reflection"]
 });

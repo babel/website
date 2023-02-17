@@ -7,13 +7,13 @@ title: "@babel/generator"
 
 ## Install
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/generator
 ```
 
 ## Usage
 
-```js
+```js title="JavaScript"
 import { parse } from "@babel/parser";
 import generate from "@babel/generator";
 
@@ -70,7 +70,7 @@ should be the source filenames, and values should be the source content.
 
 Here's an example of what that might look like:
 
-```js
+```js title="JavaScript"
 import { parse } from "@babel/parser";
 import generate from "@babel/generator";
 

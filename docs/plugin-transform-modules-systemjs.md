@@ -12,13 +12,13 @@ This plugin transforms ECMAScript modules to [SystemJS](https://github.com/syste
 
 **In**
 
-```javascript
+```js title="JavaScript"
 export default 42;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 System.register([], function(_export, _context) {
   return {
     setters: [],
@@ -33,7 +33,7 @@ For dynamic import support (`import('./lazy.js').then(m => ...)`), enable the [@
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-modules-systemjs
 ```
 
@@ -43,7 +43,7 @@ npm install --save-dev @babel/plugin-transform-modules-systemjs
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-modules-systemjs"]
 }
@@ -51,7 +51,7 @@ Without options:
 
 With options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [
@@ -67,13 +67,13 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-modules-systemjs script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-modules-systemjs"],
 });

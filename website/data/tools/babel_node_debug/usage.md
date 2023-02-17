@@ -1,10 +1,10 @@
-```sh
+```sh title="Shell"
 babel-node-debug path/to/script.js
 ```
 
 Or use the alias:
 
-```sh
+```sh title="Shell"
 bode-debug path/to/script.js
 ```
 

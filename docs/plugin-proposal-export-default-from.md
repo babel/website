@@ -6,13 +6,13 @@ sidebar_label: export-default-from
 
 ## Example
 
-```js
+```js title="JavaScript"
 export v from "mod";
 ```
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-proposal-export-default-from
 ```
 
@@ -20,7 +20,7 @@ npm install --save-dev @babel/plugin-proposal-export-default-from
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-export-default-from"]
 }
@@ -28,13 +28,13 @@ npm install --save-dev @babel/plugin-proposal-export-default-from
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-export-default-from script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-export-default-from"],
 });

@@ -7,7 +7,7 @@ sidebar_label: destructuring-private
 Transforms private destructuring `var { #y: y } = this` to `var y = this.#y`.
 
 ## Example
-```js
+```js title="JavaScript"
 class Foo {
   x;
   #y;
@@ -19,7 +19,7 @@ class Foo {
 
 will be transformed to
 
-```js
+```js title="JavaScript"
 class Foo {
   x;
   #y;
@@ -36,7 +36,7 @@ The plugin respects these compiler assumptions:
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-proposal-destructuring-private
 ```
 
@@ -44,7 +44,7 @@ npm install --save-dev @babel/plugin-proposal-destructuring-private
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-destructuring-private"]
 }
@@ -52,7 +52,7 @@ npm install --save-dev @babel/plugin-proposal-destructuring-private
 
 Because the output code includes private fields, if you are already using other class feature plugins (e.g. [`@babel/plugin-proposal-class-properties](plugin-proposal-class-properties.md)), be sure to place it _before_ the others.
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     "@babel/plugin-proposal-destructuring-private",
@@ -63,13 +63,13 @@ Because the output code includes private fields, if you are already using other 
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-destructuring-private script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-destructuring-private"],
 });

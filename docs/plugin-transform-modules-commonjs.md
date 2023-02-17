@@ -20,13 +20,13 @@ This plugin transforms ECMAScript modules to [CommonJS](http://wiki.commonjs.org
 
 **In**
 
-```javascript
+```js title="JavaScript"
 export default 42;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
@@ -36,7 +36,7 @@ exports.default = 42;
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-modules-commonjs
 ```
 
@@ -44,7 +44,7 @@ npm install --save-dev @babel/plugin-transform-modules-commonjs
 
 ### With a configuration file (Recommended)
 
-```js
+```js title="JavaScript"
 // without options
 {
   "plugins": ["@babel/plugin-transform-modules-commonjs"]
@@ -62,13 +62,13 @@ npm install --save-dev @babel/plugin-transform-modules-commonjs
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-modules-commonjs script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-modules-commonjs"],
 });
@@ -89,7 +89,7 @@ This option specify which interop strategy Babel should use. When it's a functio
 
 When using exports with babel a non-enumerable `__esModule` property is exported. This property is then used to determine if the import _is_ the default export or if it _contains_ the default export.
 
-```javascript
+```js title="JavaScript"
 import foo from "foo";
 import { bar } from "bar";
 foo;
@@ -118,7 +118,7 @@ This is the default behavior.
 
 When importing CommonJS files (either directly written in CommonJS, or generated with a compiler) Node.js always binds the `default` export to the value of `module.exports`.
 
-```javascript
+```js title="JavaScript"
 import foo from "foo";
 import { bar } from "bar";
 foo;
@@ -141,7 +141,7 @@ This is not exactly the same as what Node.js does since Babel allows accessing a
 
 If you know that the imported file has been transformed with a compiler that stores the `default` export on `exports.default` (such as Babel), you can safely omit the `_interopRequireDefault` helper.
 
-```javascript
+```js title="JavaScript"
 import foo from "foo";
 import { bar } from "bar";
 foo;
@@ -165,7 +165,7 @@ _bar.bar;
 By default, when using exports with babel a non-enumerable `__esModule` property
 is exported.
 
-```javascript
+```js title="JavaScript"
 var foo = (exports.foo = 5);
 
 Object.defineProperty(exports, "__esModule", {
@@ -175,8 +175,7 @@ Object.defineProperty(exports, "__esModule", {
 
 > ⚠️ Consider migrating to the top level [`enumerableModuleMeta`](assumptions.md#enumerablemodulemeta) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "enumerableModuleMeta": true
@@ -186,7 +185,7 @@ Object.defineProperty(exports, "__esModule", {
 
 In environments that don't support this you can enable the `enumerableModuleMeta` assumption, instead of using `Object.defineProperty` an assignment will be used instead.
 
-```javascript
+```js title="JavaScript"
 var foo = (exports.foo = 5);
 exports.__esModule = true;
 ```
@@ -199,7 +198,7 @@ By default, when using exports with babel a non-enumerable `__esModule` property
 is exported. In some cases this property is used to determine if the import _is_ the
 default export or if it _contains_ the default export.
 
-```javascript
+```js title="JavaScript"
 var foo = (exports.foo = 5);
 
 Object.defineProperty(exports, "__esModule", {

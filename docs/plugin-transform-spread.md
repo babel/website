@@ -10,7 +10,7 @@ sidebar_label: spread
 
 **In**
 
-```js
+```js title="JavaScript"
 var a = ["a", "b", "c"];
 
 var b = [...a, "foo"];
@@ -20,7 +20,7 @@ var c = foo(...a);
 
 **Out**
 
-```js
+```js title="JavaScript"
 var a = ["a", "b", "c"];
 
 var b = a.concat(["foo"]);
@@ -30,7 +30,7 @@ var c = foo.apply(void 0, a);
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-spread
 ```
 
@@ -40,7 +40,7 @@ npm install --save-dev @babel/plugin-transform-spread
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-spread"]
 }
@@ -48,7 +48,7 @@ Without options:
 
 With options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [
@@ -63,13 +63,13 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-spread script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-spread"],
 });
@@ -85,8 +85,7 @@ In loose mode, **all** iterables are assumed to be arrays.
 
 > ⚠️ Consider migrating to the top level [`iterableIsArray`](assumptions.md#iterableisarray) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "iterableIsArray": true
@@ -108,8 +107,7 @@ This option allows spreading array-like objects as if they were arrays.
 
 > ⚠️ Consider migrating to the top level [`arrayLikeIsIterable`](assumptions.md#arraylikeisiterable) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "arrayLikeIsIterable": true

@@ -8,7 +8,7 @@ babel-node is a CLI that works exactly the same as the Node.js CLI, with the add
 
 ## Install
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/core @babel/node
 ```
 
@@ -29,49 +29,49 @@ Launch a REPL (Read-Eval-Print-Loop).
 
 > You should install `@babel/node` and `@babel/core` first before `npx babel-node`, otherwise `npx` will install out-of-dated legacy `babel-node` 6.x.
 
-```sh
+```sh title="Shell"
 npx babel-node
 ```
 
 If you prefer not to install `@babel/node` and `@babel/core`, you can install them on-the-fly:
 
-```sh
+```sh title="Shell"
 npx -p @babel/core -p @babel/node babel-node
 ```
 
 Evaluate code.
 
-```sh
+```sh title="Shell"
 npx babel-node -e "class Test { }"
 ```
 
 Compile and run `test.js`.
 
-```sh
+```sh title="Shell"
 npx babel-node test
 ```
 
 > **Tip:** Use `rlwrap` to get a REPL with input history
 >
-> ```sh
+> ```sh title="Shell"
 > rlwrap npx babel-node
 > ```
 >
 > On some platforms (like OSX), extra arguments may be required for `rlwrap` to function properly, eg:
 >
-> ```sh
+> ```sh title="Shell"
 > NODE_NO_READLINE=1 rlwrap --always-readline npx babel-node
 > ```
 
 ### Usage
 
-```sh
+```sh title="Shell"
 babel-node [options] [ -e script | script.js ] [arguments]
 ```
 
 When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
 
-```sh
+```sh title="Shell"
 npx babel-node --inspect --presets @babel/preset-env -- script.js --inspect
 ```
 

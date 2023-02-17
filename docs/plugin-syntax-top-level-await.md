@@ -12,7 +12,7 @@ sidebar_label: syntax-top-level-await
 > top-level await, but you can use Rollup's `experimentalTopLevelAwait` or webpack@5's
 > `experiments.topLevelAwait` options.
 
-```js
+```js title="JavaScript"
 const val = await promise;
 
 export { val };
@@ -20,7 +20,7 @@ export { val };
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-syntax-top-level-await
 ```
 
@@ -28,7 +28,7 @@ npm install --save-dev @babel/plugin-syntax-top-level-await
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-top-level-await"]
 }
@@ -36,13 +36,13 @@ npm install --save-dev @babel/plugin-syntax-top-level-await
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-top-level-await script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync(code, {
   plugins: ["@babel/plugin-syntax-top-level-await"],
 });

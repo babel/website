@@ -10,7 +10,7 @@ A class with a static block will be transformed into a static private property, 
 
 ## Example
 
-```js
+```js title="JavaScript"
 class C {
   static #x = 42;
   static y;
@@ -26,7 +26,7 @@ class C {
 
 will be transformed to
 
-```js
+```js title="JavaScript"
 class C {
   static #x = 42;
   static y;
@@ -42,7 +42,7 @@ class C {
 
 Because the output code includes private class properties, if you are already using other class feature plugins (e.g. [`@babel/plugin-proposal-class-properties](plugin-proposal-class-properties.md)), be sure to place it _before_ the others.
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     "@babel/plugin-proposal-class-static-block",
@@ -53,7 +53,7 @@ Because the output code includes private class properties, if you are already us
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-proposal-class-static-block
 ```
 
@@ -61,7 +61,7 @@ npm install --save-dev @babel/plugin-proposal-class-static-block
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-class-static-block"]
 }
@@ -69,13 +69,13 @@ npm install --save-dev @babel/plugin-proposal-class-static-block
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-class-static-block script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-class-static-block"],
 });

@@ -10,13 +10,13 @@ sidebar_label: syntax-explicit-resource-management
 
 This plugin enables Babel to parse using declarations:
 
-```js
+```js title="JavaScript"
 using handler = await read();
 ```
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-syntax-explicit-resource-management
 ```
 
@@ -24,7 +24,7 @@ npm install --save-dev @babel/plugin-syntax-explicit-resource-management
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-explicit-resource-management"]
 }
@@ -32,13 +32,13 @@ npm install --save-dev @babel/plugin-syntax-explicit-resource-management
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-explicit-resource-management script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-explicit-resource-management"]
 });

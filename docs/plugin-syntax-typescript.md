@@ -8,7 +8,7 @@ sidebar_label: syntax-typescript
 >
 > Using this plugin directly only enables Babel to parse this syntax. If you want to remove TypeScript syntax then use the [typescript](plugin-transform-typescript.md) plugin or [typescript](preset-typescript.md) preset to _both_ parse and transform this syntax.
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-syntax-typescript
 ```
 
@@ -16,7 +16,7 @@ npm install --save-dev @babel/plugin-syntax-typescript
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-typescript"]
 }
@@ -24,13 +24,13 @@ npm install --save-dev @babel/plugin-syntax-typescript
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-typescript script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-typescript"],
 });

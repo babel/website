@@ -10,19 +10,19 @@ sidebar_label: template-literals
 
 **In**
 
-```javascript
+```js title="JavaScript"
 `foo${bar}`;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 "foo".concat(bar);
 ```
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-template-literals
 ```
 
@@ -32,7 +32,7 @@ npm install --save-dev @babel/plugin-transform-template-literals
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-template-literals"]
 }
@@ -40,7 +40,7 @@ Without options:
 
 With options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [
@@ -55,13 +55,13 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-template-literals script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-template-literals"],
 });
@@ -75,8 +75,7 @@ require("@babel/core").transformSync("code", {
 
 > ⚠️ Consider migrating to the top level [`mutableTemplateObject`](assumptions.md#mutabletemplateobject) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "mutableTemplateObject": true
@@ -90,13 +89,13 @@ When `false` or not set, all template literal expressions and quasis are combine
 
 **In**
 
-```javascript
+```js title="JavaScript"
 `foo${bar}`;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 "foo" + bar;
 ```
 

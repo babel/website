@@ -41,7 +41,7 @@ So what does it look like? Whelp! There are already a few `babel-plugin-macros` 
 
 Here's a real-world example of using [`preval.macro`](https://github.com/kentcdodds/preval.macro) to inline an SVG in [a universal application](https://github.com/kentcdodds/glamorous-website) built with [Next.js](https://github.com/zeit/next.js):
 
-```javascript
+```js title="JavaScript"
 // search.js
 // this file runs in the browser
 import preval from 'preval.macro'
@@ -92,7 +92,7 @@ There are already several [published `babel-plugin-macros`](https://www.npmjs.co
 
 `babel-plugin-macros` is a way to have no config for non-syntax babel plugins. So many existing babel plugins could be implemented as a macro. Here's another example of [`babel-plugin-console`](https://github.com/mattphillips/babel-plugin-console) which exposes [a macro version of itself](https://github.com/mattphillips/babel-plugin-console/blob/master/README.md#macros):
 
-```javascript
+```js title="JavaScript"
 import scope from 'babel-plugin-console/scope.macro'
 
 function add100(a) {

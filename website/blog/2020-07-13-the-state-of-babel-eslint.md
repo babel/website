@@ -43,14 +43,14 @@ Once you have ensured that `@babel/core` has been installed, you can run the fol
 
 npm
 
-```sh
+```sh title="Shell"
 npm uninstall babel-eslint babel-eslint-plugin
 npm install --save-dev @babel/eslint-parser @babel/eslint-plugin
 ```
 
 Yarn
 
-```sh
+```sh title="Shell"
 yarn remove babel-eslint babel-eslint-plugin
 yarn add --dev @babel/eslint-parser @babel/eslint-plugin
 ```

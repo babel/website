@@ -10,7 +10,7 @@ sidebar_label: private-property-in-object
 
 **In**
 
-```javascript
+```js title="JavaScript"
 class Foo {
   #bar = "bar";
 
@@ -22,7 +22,7 @@ class Foo {
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 class Foo {
   constructor() {
     _bar.set(this, {
@@ -41,7 +41,7 @@ var _bar = new WeakMap();
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-proposal-private-property-in-object
 ```
 
@@ -49,7 +49,7 @@ npm install --save-dev @babel/plugin-proposal-private-property-in-object
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-private-property-in-object"]
 }
@@ -57,13 +57,13 @@ npm install --save-dev @babel/plugin-proposal-private-property-in-object
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-private-property-in-object
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-private-property-in-object"],
 });
@@ -83,8 +83,7 @@ of potentially leaking "privates" via things like `Object.getOwnPropertyNames`.
 
 > ⚠️ Consider migrating to the top level [`privateFieldsAsProperties`](assumptions.md#privatefieldsasproperties) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "privateFieldsAsProperties": true,
@@ -99,7 +98,7 @@ Note that both `privateFieldsAsProperties` and `setPublicClassFields` must be se
 
 **In**
 
-```javascript
+```js title="JavaScript"
 class Foo {
   #bar = "bar";
 
@@ -111,7 +110,7 @@ class Foo {
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 class Foo {
   constructor() {
     Object.defineProperty(this, _bar, {

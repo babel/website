@@ -8,13 +8,13 @@ sidebar_label: object-assign
 
 **In**
 
-```javascript
+```js title="JavaScript"
 Object.assign(a, b);
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var _extends = ...;
 
 _extends(a, b);
@@ -24,14 +24,14 @@ _extends(a, b);
 
 - Will only work with code of the form `Object.assign` or `Object['assign']`. The following patterns are not supported:
 
-  ```javascript
+  ```js title="JavaScript"
   var { assign } = Object;
   var assign = Object.assign;
   ```
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-object-assign
 ```
 
@@ -39,7 +39,7 @@ npm install --save-dev @babel/plugin-transform-object-assign
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-object-assign"]
 }
@@ -47,13 +47,13 @@ npm install --save-dev @babel/plugin-transform-object-assign
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-object-assign script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-object-assign"],
 });

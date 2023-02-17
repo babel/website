@@ -1,4 +1,4 @@
-```js
+```js title="JavaScript"
 import babel from '@rollup/plugin-babel';
 
 const config = {

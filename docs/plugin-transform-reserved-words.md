@@ -14,21 +14,21 @@ environments, renames variables from that set of words.
 
 **In**
 
-```javascript
+```js title="JavaScript"
 var abstract = 1;
 var x = abstract + 1;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var _abstract = 1;
 var x = _abstract + 1;
 ```
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-reserved-words
 ```
 
@@ -36,7 +36,7 @@ npm install --save-dev @babel/plugin-transform-reserved-words
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-reserved-words"]
 }
@@ -44,13 +44,13 @@ npm install --save-dev @babel/plugin-transform-reserved-words
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-reserved-words script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-reserved-words"],
 });

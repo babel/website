@@ -8,7 +8,7 @@ sidebar_label: partial-application
 
 (examples are from proposal)
 
-```javascript
+```js title="JavaScript"
 function add(x, y) { return x + y; }
 
 const addOne = add(1, ?); // apply from the left
@@ -24,7 +24,7 @@ let newScore = player.score
 
 ### Valid Usage
 
-```javascript
+```js title="JavaScript"
 f(x, ?)           // partial application from left
 f(?, x)           // partial application from right
 f(?, x, ?)        // partial application for any arg
@@ -36,7 +36,7 @@ super.f(?)        // partial application allowed for call on |SuperProperty|
 
 ### Invalid Usage
 
-```javascript
+```js title="JavaScript"
 f(x + ?)          // `?` not in top-level Arguments of call
 x + ?             // `?` not in top-level Arguments of call
 ?.f()             // `?` not in top-level Arguments of call
@@ -46,7 +46,7 @@ super(?)          // `?` not supported in |SuperCall|
 
 ## Installation
 
-```sh
+```sh title="Shell"
 $ npm install --save-dev @babel/plugin-proposal-partial-application
 ```
 
@@ -54,7 +54,7 @@ $ npm install --save-dev @babel/plugin-proposal-partial-application
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-partial-application"]
 }
@@ -62,13 +62,13 @@ $ npm install --save-dev @babel/plugin-proposal-partial-application
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-partial-application script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-partial-application"],
 });

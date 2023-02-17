@@ -9,7 +9,7 @@ title: "@babel/types"
 
 ## Install
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/types
 ```
 
@@ -18,7 +18,7 @@ npm install --save-dev @babel/types
 
 #### anyTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.anyTypeAnnotation();
 ```
 
@@ -30,7 +30,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowb
 
 #### argumentPlaceholder
 
-```javascript
+```js title="JavaScript"
 t.argumentPlaceholder();
 ```
 
@@ -40,7 +40,7 @@ See also `t.isArgumentPlaceholder(node, opts)` and `t.assertArgumentPlaceholder(
 
 #### arrayExpression
 
-```javascript
+```js title="JavaScript"
 t.arrayExpression(elements);
 ```
 
@@ -55,7 +55,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### arrayPattern
 
-```javascript
+```js title="JavaScript"
 t.arrayPattern(elements);
 ```
 
@@ -73,7 +73,7 @@ Aliases: [`Standardized`](#standardized), [`Pattern`](#pattern), [`PatternLike`]
 
 #### arrayTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.arrayTypeAnnotation(elementType);
 ```
 
@@ -88,7 +88,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### arrowFunctionExpression
 
-```javascript
+```js title="JavaScript"
 t.arrowFunctionExpression(params, body, async);
 ```
 
@@ -110,7 +110,7 @@ Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`Function`](
 
 #### assignmentExpression
 
-```javascript
+```js title="JavaScript"
 t.assignmentExpression(operator, left, right);
 ```
 
@@ -127,7 +127,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### assignmentPattern
 
-```javascript
+```js title="JavaScript"
 t.assignmentPattern(left, right);
 ```
 
@@ -145,7 +145,7 @@ Aliases: [`Standardized`](#standardized), [`Pattern`](#pattern), [`PatternLike`]
 
 #### awaitExpression
 
-```javascript
+```js title="JavaScript"
 t.awaitExpression(argument);
 ```
 
@@ -160,7 +160,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Termina
 
 #### bigIntLiteral
 
-```javascript
+```js title="JavaScript"
 t.bigIntLiteral(value);
 ```
 
@@ -175,7 +175,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Pureish
 
 #### binaryExpression
 
-```javascript
+```js title="JavaScript"
 t.binaryExpression(operator, left, right);
 ```
 
@@ -192,7 +192,7 @@ Aliases: [`Standardized`](#standardized), [`Binary`](#binary), [`Expression`](#e
 
 #### bindExpression
 
-```javascript
+```js title="JavaScript"
 t.bindExpression(object, callee);
 ```
 
@@ -208,7 +208,7 @@ Aliases: [`Expression`](#expression)
 
 #### blockStatement
 
-```javascript
+```js title="JavaScript"
 t.blockStatement(body, directives);
 ```
 
@@ -224,7 +224,7 @@ Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`BlockParent
 
 #### booleanLiteral
 
-```javascript
+```js title="JavaScript"
 t.booleanLiteral(value);
 ```
 
@@ -239,7 +239,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Pureish
 
 #### booleanLiteralTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.booleanLiteralTypeAnnotation(value);
 ```
 
@@ -254,7 +254,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### booleanTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.booleanTypeAnnotation();
 ```
 
@@ -266,7 +266,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowb
 
 #### breakStatement
 
-```javascript
+```js title="JavaScript"
 t.breakStatement(label);
 ```
 
@@ -281,7 +281,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Terminato
 
 #### callExpression
 
-```javascript
+```js title="JavaScript"
 t.callExpression(callee, arguments);
 ```
 
@@ -300,7 +300,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### catchClause
 
-```javascript
+```js title="JavaScript"
 t.catchClause(param, body);
 ```
 
@@ -316,7 +316,7 @@ Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`BlockParent
 
 #### classAccessorProperty
 
-```javascript
+```js title="JavaScript"
 t.classAccessorProperty(key, value, typeAnnotation, decorators, computed, static);
 ```
 
@@ -344,7 +344,7 @@ Aliases: [`Standardized`](#standardized), [`Property`](#property), [`Accessor`](
 
 #### classBody
 
-```javascript
+```js title="JavaScript"
 t.classBody(body);
 ```
 
@@ -359,7 +359,7 @@ Aliases: [`Standardized`](#standardized)
 
 #### classDeclaration
 
-```javascript
+```js title="JavaScript"
 t.classDeclaration(id, superClass, body, decorators);
 ```
 
@@ -383,7 +383,7 @@ Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`Class`](#cl
 
 #### classExpression
 
-```javascript
+```js title="JavaScript"
 t.classExpression(id, superClass, body, decorators);
 ```
 
@@ -405,7 +405,7 @@ Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`Class`](#cl
 
 #### classImplements
 
-```javascript
+```js title="JavaScript"
 t.classImplements(id, typeParameters);
 ```
 
@@ -421,7 +421,7 @@ Aliases: [`Flow`](#flow)
 
 #### classMethod
 
-```javascript
+```js title="JavaScript"
 t.classMethod(kind, key, params, body, computed, static, generator, async);
 ```
 
@@ -451,7 +451,7 @@ Aliases: [`Standardized`](#standardized), [`Function`](#function), [`Scopable`](
 
 #### classPrivateMethod
 
-```javascript
+```js title="JavaScript"
 t.classPrivateMethod(kind, key, params, body, static);
 ```
 
@@ -481,7 +481,7 @@ Aliases: [`Standardized`](#standardized), [`Function`](#function), [`Scopable`](
 
 #### classPrivateProperty
 
-```javascript
+```js title="JavaScript"
 t.classPrivateProperty(key, value, decorators, static);
 ```
 
@@ -503,7 +503,7 @@ Aliases: [`Standardized`](#standardized), [`Property`](#property), [`Private`](#
 
 #### classProperty
 
-```javascript
+```js title="JavaScript"
 t.classProperty(key, value, typeAnnotation, decorators, computed, static);
 ```
 
@@ -539,7 +539,7 @@ Aliases: [`Standardized`](#standardized), [`Property`](#property)
 
 #### conditionalExpression
 
-```javascript
+```js title="JavaScript"
 t.conditionalExpression(test, consequent, alternate);
 ```
 
@@ -556,7 +556,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Conditi
 
 #### continueStatement
 
-```javascript
+```js title="JavaScript"
 t.continueStatement(label);
 ```
 
@@ -571,7 +571,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Terminato
 
 #### debuggerStatement
 
-```javascript
+```js title="JavaScript"
 t.debuggerStatement();
 ```
 
@@ -583,7 +583,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement)
 
 #### decimalLiteral
 
-```javascript
+```js title="JavaScript"
 t.decimalLiteral(value);
 ```
 
@@ -598,7 +598,7 @@ Aliases: [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#litera
 
 #### declareClass
 
-```javascript
+```js title="JavaScript"
 t.declareClass(id, typeParameters, extends, body);
 ```
 
@@ -618,7 +618,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### declareExportAllDeclaration
 
-```javascript
+```js title="JavaScript"
 t.declareExportAllDeclaration(source);
 ```
 
@@ -634,7 +634,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### declareExportDeclaration
 
-```javascript
+```js title="JavaScript"
 t.declareExportDeclaration(declaration, specifiers, source);
 ```
 
@@ -652,7 +652,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### declareFunction
 
-```javascript
+```js title="JavaScript"
 t.declareFunction(id);
 ```
 
@@ -668,7 +668,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### declareInterface
 
-```javascript
+```js title="JavaScript"
 t.declareInterface(id, typeParameters, extends, body);
 ```
 
@@ -688,7 +688,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### declareModule
 
-```javascript
+```js title="JavaScript"
 t.declareModule(id, body, kind);
 ```
 
@@ -705,7 +705,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### declareModuleExports
 
-```javascript
+```js title="JavaScript"
 t.declareModuleExports(typeAnnotation);
 ```
 
@@ -720,7 +720,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### declareOpaqueType
 
-```javascript
+```js title="JavaScript"
 t.declareOpaqueType(id, typeParameters, supertype);
 ```
 
@@ -738,7 +738,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### declareTypeAlias
 
-```javascript
+```js title="JavaScript"
 t.declareTypeAlias(id, typeParameters, right);
 ```
 
@@ -755,7 +755,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### declareVariable
 
-```javascript
+```js title="JavaScript"
 t.declareVariable(id);
 ```
 
@@ -770,7 +770,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### declaredPredicate
 
-```javascript
+```js title="JavaScript"
 t.declaredPredicate(value);
 ```
 
@@ -785,7 +785,7 @@ Aliases: [`Flow`](#flow), [`FlowPredicate`](#flowpredicate)
 
 #### decorator
 
-```javascript
+```js title="JavaScript"
 t.decorator(expression);
 ```
 
@@ -798,7 +798,7 @@ AST Node `Decorator` shape:
 
 #### directive
 
-```javascript
+```js title="JavaScript"
 t.directive(value);
 ```
 
@@ -813,7 +813,7 @@ Aliases: [`Standardized`](#standardized)
 
 #### directiveLiteral
 
-```javascript
+```js title="JavaScript"
 t.directiveLiteral(value);
 ```
 
@@ -828,7 +828,7 @@ Aliases: [`Standardized`](#standardized)
 
 #### doExpression
 
-```javascript
+```js title="JavaScript"
 t.doExpression(body, async);
 ```
 
@@ -844,7 +844,7 @@ Aliases: [`Expression`](#expression)
 
 #### doWhileStatement
 
-```javascript
+```js title="JavaScript"
 t.doWhileStatement(test, body);
 ```
 
@@ -860,7 +860,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`BlockPare
 
 #### emptyStatement
 
-```javascript
+```js title="JavaScript"
 t.emptyStatement();
 ```
 
@@ -872,7 +872,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement)
 
 #### emptyTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.emptyTypeAnnotation();
 ```
 
@@ -884,7 +884,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowb
 
 #### enumBooleanBody
 
-```javascript
+```js title="JavaScript"
 t.enumBooleanBody(members);
 ```
 
@@ -901,7 +901,7 @@ Aliases: [`Flow`](#flow), [`EnumBody`](#enumbody)
 
 #### enumBooleanMember
 
-```javascript
+```js title="JavaScript"
 t.enumBooleanMember(id);
 ```
 
@@ -917,7 +917,7 @@ Aliases: [`Flow`](#flow), [`EnumMember`](#enummember)
 
 #### enumDeclaration
 
-```javascript
+```js title="JavaScript"
 t.enumDeclaration(id, body);
 ```
 
@@ -933,7 +933,7 @@ Aliases: [`Flow`](#flow), [`Statement`](#statement), [`Declaration`](#declaratio
 
 #### enumDefaultedMember
 
-```javascript
+```js title="JavaScript"
 t.enumDefaultedMember(id);
 ```
 
@@ -948,7 +948,7 @@ Aliases: [`Flow`](#flow), [`EnumMember`](#enummember)
 
 #### enumNumberBody
 
-```javascript
+```js title="JavaScript"
 t.enumNumberBody(members);
 ```
 
@@ -965,7 +965,7 @@ Aliases: [`Flow`](#flow), [`EnumBody`](#enumbody)
 
 #### enumNumberMember
 
-```javascript
+```js title="JavaScript"
 t.enumNumberMember(id, init);
 ```
 
@@ -981,7 +981,7 @@ Aliases: [`Flow`](#flow), [`EnumMember`](#enummember)
 
 #### enumStringBody
 
-```javascript
+```js title="JavaScript"
 t.enumStringBody(members);
 ```
 
@@ -998,7 +998,7 @@ Aliases: [`Flow`](#flow), [`EnumBody`](#enumbody)
 
 #### enumStringMember
 
-```javascript
+```js title="JavaScript"
 t.enumStringMember(id, init);
 ```
 
@@ -1014,7 +1014,7 @@ Aliases: [`Flow`](#flow), [`EnumMember`](#enummember)
 
 #### enumSymbolBody
 
-```javascript
+```js title="JavaScript"
 t.enumSymbolBody(members);
 ```
 
@@ -1030,7 +1030,7 @@ Aliases: [`Flow`](#flow), [`EnumBody`](#enumbody)
 
 #### existsTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.existsTypeAnnotation();
 ```
 
@@ -1042,7 +1042,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### exportAllDeclaration
 
-```javascript
+```js title="JavaScript"
 t.exportAllDeclaration(source);
 ```
 
@@ -1059,7 +1059,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Declarati
 
 #### exportDefaultDeclaration
 
-```javascript
+```js title="JavaScript"
 t.exportDefaultDeclaration(declaration);
 ```
 
@@ -1075,7 +1075,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Declarati
 
 #### exportDefaultSpecifier
 
-```javascript
+```js title="JavaScript"
 t.exportDefaultSpecifier(exported);
 ```
 
@@ -1090,7 +1090,7 @@ Aliases: [`ModuleSpecifier`](#modulespecifier)
 
 #### exportNamedDeclaration
 
-```javascript
+```js title="JavaScript"
 t.exportNamedDeclaration(declaration, specifiers, source);
 ```
 
@@ -1109,7 +1109,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Declarati
 
 #### exportNamespaceSpecifier
 
-```javascript
+```js title="JavaScript"
 t.exportNamespaceSpecifier(exported);
 ```
 
@@ -1124,7 +1124,7 @@ Aliases: [`Standardized`](#standardized), [`ModuleSpecifier`](#modulespecifier)
 
 #### exportSpecifier
 
-```javascript
+```js title="JavaScript"
 t.exportSpecifier(local, exported);
 ```
 
@@ -1141,7 +1141,7 @@ Aliases: [`Standardized`](#standardized), [`ModuleSpecifier`](#modulespecifier)
 
 #### expressionStatement
 
-```javascript
+```js title="JavaScript"
 t.expressionStatement(expression);
 ```
 
@@ -1156,7 +1156,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Expressio
 
 #### file
 
-```javascript
+```js title="JavaScript"
 t.file(program, comments, tokens);
 ```
 
@@ -1173,7 +1173,7 @@ Aliases: [`Standardized`](#standardized)
 
 #### forInStatement
 
-```javascript
+```js title="JavaScript"
 t.forInStatement(left, right, body);
 ```
 
@@ -1190,7 +1190,7 @@ Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`Statement`]
 
 #### forOfStatement
 
-```javascript
+```js title="JavaScript"
 t.forOfStatement(left, right, body, await);
 ```
 
@@ -1208,7 +1208,7 @@ Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`Statement`]
 
 #### forStatement
 
-```javascript
+```js title="JavaScript"
 t.forStatement(init, test, update, body);
 ```
 
@@ -1226,7 +1226,7 @@ Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`Statement`]
 
 #### functionDeclaration
 
-```javascript
+```js title="JavaScript"
 t.functionDeclaration(id, params, body, generator, async);
 ```
 
@@ -1249,7 +1249,7 @@ Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`Function`](
 
 #### functionExpression
 
-```javascript
+```js title="JavaScript"
 t.functionExpression(id, params, body, generator, async);
 ```
 
@@ -1271,7 +1271,7 @@ Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`Function`](
 
 #### functionTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.functionTypeAnnotation(typeParameters, params, rest, returnType);
 ```
 
@@ -1290,7 +1290,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### functionTypeParam
 
-```javascript
+```js title="JavaScript"
 t.functionTypeParam(name, typeAnnotation);
 ```
 
@@ -1307,7 +1307,7 @@ Aliases: [`Flow`](#flow)
 
 #### genericTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.genericTypeAnnotation(id, typeParameters);
 ```
 
@@ -1323,7 +1323,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### identifier
 
-```javascript
+```js title="JavaScript"
 t.identifier(name);
 ```
 
@@ -1341,7 +1341,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Pattern
 
 #### ifStatement
 
-```javascript
+```js title="JavaScript"
 t.ifStatement(test, consequent, alternate);
 ```
 
@@ -1358,7 +1358,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Condition
 
 #### import
 
-```javascript
+```js title="JavaScript"
 t.import();
 ```
 
@@ -1370,7 +1370,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### importAttribute
 
-```javascript
+```js title="JavaScript"
 t.importAttribute(key, value);
 ```
 
@@ -1384,7 +1384,7 @@ AST Node `ImportAttribute` shape:
 
 #### importDeclaration
 
-```javascript
+```js title="JavaScript"
 t.importDeclaration(specifiers, source);
 ```
 
@@ -1402,7 +1402,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Declarati
 
 #### importDefaultSpecifier
 
-```javascript
+```js title="JavaScript"
 t.importDefaultSpecifier(local);
 ```
 
@@ -1417,7 +1417,7 @@ Aliases: [`Standardized`](#standardized), [`ModuleSpecifier`](#modulespecifier)
 
 #### importNamespaceSpecifier
 
-```javascript
+```js title="JavaScript"
 t.importNamespaceSpecifier(local);
 ```
 
@@ -1432,7 +1432,7 @@ Aliases: [`Standardized`](#standardized), [`ModuleSpecifier`](#modulespecifier)
 
 #### importSpecifier
 
-```javascript
+```js title="JavaScript"
 t.importSpecifier(local, imported);
 ```
 
@@ -1449,7 +1449,7 @@ Aliases: [`Standardized`](#standardized), [`ModuleSpecifier`](#modulespecifier)
 
 #### indexedAccessType
 
-```javascript
+```js title="JavaScript"
 t.indexedAccessType(objectType, indexType);
 ```
 
@@ -1465,7 +1465,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### inferredPredicate
 
-```javascript
+```js title="JavaScript"
 t.inferredPredicate();
 ```
 
@@ -1477,7 +1477,7 @@ Aliases: [`Flow`](#flow), [`FlowPredicate`](#flowpredicate)
 
 #### interfaceDeclaration
 
-```javascript
+```js title="JavaScript"
 t.interfaceDeclaration(id, typeParameters, extends, body);
 ```
 
@@ -1497,7 +1497,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### interfaceExtends
 
-```javascript
+```js title="JavaScript"
 t.interfaceExtends(id, typeParameters);
 ```
 
@@ -1513,7 +1513,7 @@ Aliases: [`Flow`](#flow)
 
 #### interfaceTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.interfaceTypeAnnotation(extends, body);
 ```
 
@@ -1529,7 +1529,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### interpreterDirective
 
-```javascript
+```js title="JavaScript"
 t.interpreterDirective(value);
 ```
 
@@ -1544,7 +1544,7 @@ Aliases: [`Standardized`](#standardized)
 
 #### intersectionTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.intersectionTypeAnnotation(types);
 ```
 
@@ -1559,7 +1559,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### jsxAttribute
 
-```javascript
+```js title="JavaScript"
 t.jsxAttribute(name, value);
 ```
 
@@ -1575,7 +1575,7 @@ Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 #### jsxClosingElement
 
-```javascript
+```js title="JavaScript"
 t.jsxClosingElement(name);
 ```
 
@@ -1590,7 +1590,7 @@ Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 #### jsxClosingFragment
 
-```javascript
+```js title="JavaScript"
 t.jsxClosingFragment();
 ```
 
@@ -1602,7 +1602,7 @@ Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 #### jsxElement
 
-```javascript
+```js title="JavaScript"
 t.jsxElement(openingElement, closingElement, children, selfClosing);
 ```
 
@@ -1620,7 +1620,7 @@ Aliases: [`JSX`](#jsx), [`Immutable`](#immutable), [`Expression`](#expression)
 
 #### jsxEmptyExpression
 
-```javascript
+```js title="JavaScript"
 t.jsxEmptyExpression();
 ```
 
@@ -1632,7 +1632,7 @@ Aliases: [`JSX`](#jsx)
 
 #### jsxExpressionContainer
 
-```javascript
+```js title="JavaScript"
 t.jsxExpressionContainer(expression);
 ```
 
@@ -1647,7 +1647,7 @@ Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 #### jsxFragment
 
-```javascript
+```js title="JavaScript"
 t.jsxFragment(openingFragment, closingFragment, children);
 ```
 
@@ -1664,7 +1664,7 @@ Aliases: [`JSX`](#jsx), [`Immutable`](#immutable), [`Expression`](#expression)
 
 #### jsxIdentifier
 
-```javascript
+```js title="JavaScript"
 t.jsxIdentifier(name);
 ```
 
@@ -1679,7 +1679,7 @@ Aliases: [`JSX`](#jsx)
 
 #### jsxMemberExpression
 
-```javascript
+```js title="JavaScript"
 t.jsxMemberExpression(object, property);
 ```
 
@@ -1695,7 +1695,7 @@ Aliases: [`JSX`](#jsx)
 
 #### jsxNamespacedName
 
-```javascript
+```js title="JavaScript"
 t.jsxNamespacedName(namespace, name);
 ```
 
@@ -1711,7 +1711,7 @@ Aliases: [`JSX`](#jsx)
 
 #### jsxOpeningElement
 
-```javascript
+```js title="JavaScript"
 t.jsxOpeningElement(name, attributes, selfClosing);
 ```
 
@@ -1729,7 +1729,7 @@ Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 #### jsxOpeningFragment
 
-```javascript
+```js title="JavaScript"
 t.jsxOpeningFragment();
 ```
 
@@ -1741,7 +1741,7 @@ Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 #### jsxSpreadAttribute
 
-```javascript
+```js title="JavaScript"
 t.jsxSpreadAttribute(argument);
 ```
 
@@ -1756,7 +1756,7 @@ Aliases: [`JSX`](#jsx)
 
 #### jsxSpreadChild
 
-```javascript
+```js title="JavaScript"
 t.jsxSpreadChild(expression);
 ```
 
@@ -1771,7 +1771,7 @@ Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 #### jsxText
 
-```javascript
+```js title="JavaScript"
 t.jsxText(value);
 ```
 
@@ -1786,7 +1786,7 @@ Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
 #### labeledStatement
 
-```javascript
+```js title="JavaScript"
 t.labeledStatement(label, body);
 ```
 
@@ -1802,7 +1802,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement)
 
 #### logicalExpression
 
-```javascript
+```js title="JavaScript"
 t.logicalExpression(operator, left, right);
 ```
 
@@ -1819,7 +1819,7 @@ Aliases: [`Standardized`](#standardized), [`Binary`](#binary), [`Expression`](#e
 
 #### memberExpression
 
-```javascript
+```js title="JavaScript"
 t.memberExpression(object, property, computed, optional);
 ```
 
@@ -1837,7 +1837,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`LVal`](
 
 #### metaProperty
 
-```javascript
+```js title="JavaScript"
 t.metaProperty(meta, property);
 ```
 
@@ -1853,7 +1853,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### mixedTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.mixedTypeAnnotation();
 ```
 
@@ -1865,7 +1865,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowb
 
 #### moduleExpression
 
-```javascript
+```js title="JavaScript"
 t.moduleExpression(body);
 ```
 
@@ -1880,7 +1880,7 @@ Aliases: [`Expression`](#expression)
 
 #### newExpression
 
-```javascript
+```js title="JavaScript"
 t.newExpression(callee, arguments);
 ```
 
@@ -1899,7 +1899,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### noop
 
-```javascript
+```js title="JavaScript"
 t.noop();
 ```
 
@@ -1911,7 +1911,7 @@ Aliases: [`Miscellaneous`](#miscellaneous)
 
 #### nullLiteral
 
-```javascript
+```js title="JavaScript"
 t.nullLiteral();
 ```
 
@@ -1923,7 +1923,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Pureish
 
 #### nullLiteralTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.nullLiteralTypeAnnotation();
 ```
 
@@ -1935,7 +1935,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowb
 
 #### nullableTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.nullableTypeAnnotation(typeAnnotation);
 ```
 
@@ -1950,7 +1950,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### numberLiteralTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.numberLiteralTypeAnnotation(value);
 ```
 
@@ -1965,7 +1965,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### numberTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.numberTypeAnnotation();
 ```
 
@@ -1977,7 +1977,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowb
 
 #### numericLiteral
 
-```javascript
+```js title="JavaScript"
 t.numericLiteral(value);
 ```
 
@@ -1992,7 +1992,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Pureish
 
 #### objectExpression
 
-```javascript
+```js title="JavaScript"
 t.objectExpression(properties);
 ```
 
@@ -2007,7 +2007,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### objectMethod
 
-```javascript
+```js title="JavaScript"
 t.objectMethod(kind, key, params, body, computed, generator, async);
 ```
 
@@ -2031,7 +2031,7 @@ Aliases: [`Standardized`](#standardized), [`UserWhitespacable`](#userwhitespacab
 
 #### objectPattern
 
-```javascript
+```js title="JavaScript"
 t.objectPattern(properties);
 ```
 
@@ -2048,7 +2048,7 @@ Aliases: [`Standardized`](#standardized), [`Pattern`](#pattern), [`PatternLike`]
 
 #### objectProperty
 
-```javascript
+```js title="JavaScript"
 t.objectProperty(key, value, computed, shorthand, decorators);
 ```
 
@@ -2067,7 +2067,7 @@ Aliases: [`Standardized`](#standardized), [`UserWhitespacable`](#userwhitespacab
 
 #### objectTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.objectTypeAnnotation(properties, indexers, callProperties, internalSlots, exact);
 ```
 
@@ -2087,7 +2087,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### objectTypeCallProperty
 
-```javascript
+```js title="JavaScript"
 t.objectTypeCallProperty(value);
 ```
 
@@ -2103,7 +2103,7 @@ Aliases: [`Flow`](#flow), [`UserWhitespacable`](#userwhitespacable)
 
 #### objectTypeIndexer
 
-```javascript
+```js title="JavaScript"
 t.objectTypeIndexer(id, key, value, variance);
 ```
 
@@ -2122,7 +2122,7 @@ Aliases: [`Flow`](#flow), [`UserWhitespacable`](#userwhitespacable)
 
 #### objectTypeInternalSlot
 
-```javascript
+```js title="JavaScript"
 t.objectTypeInternalSlot(id, value, optional, static, method);
 ```
 
@@ -2141,7 +2141,7 @@ Aliases: [`Flow`](#flow), [`UserWhitespacable`](#userwhitespacable)
 
 #### objectTypeProperty
 
-```javascript
+```js title="JavaScript"
 t.objectTypeProperty(key, value, variance);
 ```
 
@@ -2163,7 +2163,7 @@ Aliases: [`Flow`](#flow), [`UserWhitespacable`](#userwhitespacable)
 
 #### objectTypeSpreadProperty
 
-```javascript
+```js title="JavaScript"
 t.objectTypeSpreadProperty(argument);
 ```
 
@@ -2178,7 +2178,7 @@ Aliases: [`Flow`](#flow), [`UserWhitespacable`](#userwhitespacable)
 
 #### opaqueType
 
-```javascript
+```js title="JavaScript"
 t.opaqueType(id, typeParameters, supertype, impltype);
 ```
 
@@ -2196,7 +2196,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### optionalCallExpression
 
-```javascript
+```js title="JavaScript"
 t.optionalCallExpression(callee, arguments, optional);
 ```
 
@@ -2215,7 +2215,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### optionalIndexedAccessType
 
-```javascript
+```js title="JavaScript"
 t.optionalIndexedAccessType(objectType, indexType);
 ```
 
@@ -2232,7 +2232,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### optionalMemberExpression
 
-```javascript
+```js title="JavaScript"
 t.optionalMemberExpression(object, property, computed, optional);
 ```
 
@@ -2250,7 +2250,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### parenthesizedExpression
 
-```javascript
+```js title="JavaScript"
 t.parenthesizedExpression(expression);
 ```
 
@@ -2265,7 +2265,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Express
 
 #### pipelineBareFunction
 
-```javascript
+```js title="JavaScript"
 t.pipelineBareFunction(callee);
 ```
 
@@ -2280,7 +2280,7 @@ Aliases: [`Expression`](#expression)
 
 #### pipelinePrimaryTopicReference
 
-```javascript
+```js title="JavaScript"
 t.pipelinePrimaryTopicReference();
 ```
 
@@ -2292,7 +2292,7 @@ Aliases: [`Expression`](#expression)
 
 #### pipelineTopicExpression
 
-```javascript
+```js title="JavaScript"
 t.pipelineTopicExpression(expression);
 ```
 
@@ -2307,7 +2307,7 @@ Aliases: [`Expression`](#expression)
 
 #### placeholder
 
-```javascript
+```js title="JavaScript"
 t.placeholder(expectedNode, name);
 ```
 
@@ -2323,7 +2323,7 @@ Aliases: [`Miscellaneous`](#miscellaneous)
 
 #### privateName
 
-```javascript
+```js title="JavaScript"
 t.privateName(id);
 ```
 
@@ -2338,7 +2338,7 @@ Aliases: [`Standardized`](#standardized), [`Private`](#private)
 
 #### program
 
-```javascript
+```js title="JavaScript"
 t.program(body, directives, sourceType, interpreter);
 ```
 
@@ -2357,7 +2357,7 @@ Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`BlockParent
 
 #### qualifiedTypeIdentifier
 
-```javascript
+```js title="JavaScript"
 t.qualifiedTypeIdentifier(id, qualification);
 ```
 
@@ -2373,7 +2373,7 @@ Aliases: [`Flow`](#flow)
 
 #### recordExpression
 
-```javascript
+```js title="JavaScript"
 t.recordExpression(properties);
 ```
 
@@ -2388,7 +2388,7 @@ Aliases: [`Expression`](#expression)
 
 #### regExpLiteral
 
-```javascript
+```js title="JavaScript"
 t.regExpLiteral(pattern, flags);
 ```
 
@@ -2404,7 +2404,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Pureish
 
 #### restElement
 
-```javascript
+```js title="JavaScript"
 t.restElement(argument);
 ```
 
@@ -2422,7 +2422,7 @@ Aliases: [`Standardized`](#standardized), [`LVal`](#lval), [`PatternLike`](#patt
 
 #### returnStatement
 
-```javascript
+```js title="JavaScript"
 t.returnStatement(argument);
 ```
 
@@ -2437,7 +2437,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Terminato
 
 #### sequenceExpression
 
-```javascript
+```js title="JavaScript"
 t.sequenceExpression(expressions);
 ```
 
@@ -2452,7 +2452,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### spreadElement
 
-```javascript
+```js title="JavaScript"
 t.spreadElement(argument);
 ```
 
@@ -2467,7 +2467,7 @@ Aliases: [`Standardized`](#standardized), [`UnaryLike`](#unarylike)
 
 #### staticBlock
 
-```javascript
+```js title="JavaScript"
 t.staticBlock(body);
 ```
 
@@ -2482,7 +2482,7 @@ Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`BlockParent
 
 #### stringLiteral
 
-```javascript
+```js title="JavaScript"
 t.stringLiteral(value);
 ```
 
@@ -2497,7 +2497,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Pureish
 
 #### stringLiteralTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.stringLiteralTypeAnnotation(value);
 ```
 
@@ -2512,7 +2512,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### stringTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.stringTypeAnnotation();
 ```
 
@@ -2524,7 +2524,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowb
 
 #### super
 
-```javascript
+```js title="JavaScript"
 t.super();
 ```
 
@@ -2536,7 +2536,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### switchCase
 
-```javascript
+```js title="JavaScript"
 t.switchCase(test, consequent);
 ```
 
@@ -2552,7 +2552,7 @@ Aliases: [`Standardized`](#standardized)
 
 #### switchStatement
 
-```javascript
+```js title="JavaScript"
 t.switchStatement(discriminant, cases);
 ```
 
@@ -2568,7 +2568,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`BlockPare
 
 #### symbolTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.symbolTypeAnnotation();
 ```
 
@@ -2580,7 +2580,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowb
 
 #### tsAnyKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsAnyKeyword();
 ```
 
@@ -2592,7 +2592,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsArrayType
 
-```javascript
+```js title="JavaScript"
 t.tsArrayType(elementType);
 ```
 
@@ -2607,7 +2607,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsAsExpression
 
-```javascript
+```js title="JavaScript"
 t.tsAsExpression(expression, typeAnnotation);
 ```
 
@@ -2623,7 +2623,7 @@ Aliases: [`TypeScript`](#typescript), [`Expression`](#expression), [`LVal`](#lva
 
 #### tsBigIntKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsBigIntKeyword();
 ```
 
@@ -2635,7 +2635,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsBooleanKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsBooleanKeyword();
 ```
 
@@ -2647,7 +2647,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsCallSignatureDeclaration
 
-```javascript
+```js title="JavaScript"
 t.tsCallSignatureDeclaration(typeParameters, parameters, typeAnnotation);
 ```
 
@@ -2664,7 +2664,7 @@ Aliases: [`TypeScript`](#typescript), [`TSTypeElement`](#tstypeelement)
 
 #### tsConditionalType
 
-```javascript
+```js title="JavaScript"
 t.tsConditionalType(checkType, extendsType, trueType, falseType);
 ```
 
@@ -2682,7 +2682,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsConstructSignatureDeclaration
 
-```javascript
+```js title="JavaScript"
 t.tsConstructSignatureDeclaration(typeParameters, parameters, typeAnnotation);
 ```
 
@@ -2699,7 +2699,7 @@ Aliases: [`TypeScript`](#typescript), [`TSTypeElement`](#tstypeelement)
 
 #### tsConstructorType
 
-```javascript
+```js title="JavaScript"
 t.tsConstructorType(typeParameters, parameters, typeAnnotation);
 ```
 
@@ -2717,7 +2717,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsDeclareFunction
 
-```javascript
+```js title="JavaScript"
 t.tsDeclareFunction(id, typeParameters, params, returnType);
 ```
 
@@ -2738,7 +2738,7 @@ Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`]
 
 #### tsDeclareMethod
 
-```javascript
+```js title="JavaScript"
 t.tsDeclareMethod(decorators, key, typeParameters, params, returnType);
 ```
 
@@ -2767,7 +2767,7 @@ Aliases: [`TypeScript`](#typescript)
 
 #### tsEnumDeclaration
 
-```javascript
+```js title="JavaScript"
 t.tsEnumDeclaration(id, members);
 ```
 
@@ -2786,7 +2786,7 @@ Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`]
 
 #### tsEnumMember
 
-```javascript
+```js title="JavaScript"
 t.tsEnumMember(id, initializer);
 ```
 
@@ -2802,7 +2802,7 @@ Aliases: [`TypeScript`](#typescript)
 
 #### tsExportAssignment
 
-```javascript
+```js title="JavaScript"
 t.tsExportAssignment(expression);
 ```
 
@@ -2817,7 +2817,7 @@ Aliases: [`TypeScript`](#typescript), [`Statement`](#statement)
 
 #### tsExpressionWithTypeArguments
 
-```javascript
+```js title="JavaScript"
 t.tsExpressionWithTypeArguments(expression, typeParameters);
 ```
 
@@ -2833,7 +2833,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsExternalModuleReference
 
-```javascript
+```js title="JavaScript"
 t.tsExternalModuleReference(expression);
 ```
 
@@ -2848,7 +2848,7 @@ Aliases: [`TypeScript`](#typescript)
 
 #### tsFunctionType
 
-```javascript
+```js title="JavaScript"
 t.tsFunctionType(typeParameters, parameters, typeAnnotation);
 ```
 
@@ -2865,7 +2865,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsImportEqualsDeclaration
 
-```javascript
+```js title="JavaScript"
 t.tsImportEqualsDeclaration(id, moduleReference);
 ```
 
@@ -2883,7 +2883,7 @@ Aliases: [`TypeScript`](#typescript), [`Statement`](#statement)
 
 #### tsImportType
 
-```javascript
+```js title="JavaScript"
 t.tsImportType(argument, qualifier, typeParameters);
 ```
 
@@ -2900,7 +2900,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsIndexSignature
 
-```javascript
+```js title="JavaScript"
 t.tsIndexSignature(parameters, typeAnnotation);
 ```
 
@@ -2918,7 +2918,7 @@ Aliases: [`TypeScript`](#typescript), [`TSTypeElement`](#tstypeelement)
 
 #### tsIndexedAccessType
 
-```javascript
+```js title="JavaScript"
 t.tsIndexedAccessType(objectType, indexType);
 ```
 
@@ -2934,7 +2934,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsInferType
 
-```javascript
+```js title="JavaScript"
 t.tsInferType(typeParameter);
 ```
 
@@ -2949,7 +2949,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsInstantiationExpression
 
-```javascript
+```js title="JavaScript"
 t.tsInstantiationExpression(expression, typeParameters);
 ```
 
@@ -2965,7 +2965,7 @@ Aliases: [`TypeScript`](#typescript), [`Expression`](#expression)
 
 #### tsInterfaceBody
 
-```javascript
+```js title="JavaScript"
 t.tsInterfaceBody(body);
 ```
 
@@ -2980,7 +2980,7 @@ Aliases: [`TypeScript`](#typescript)
 
 #### tsInterfaceDeclaration
 
-```javascript
+```js title="JavaScript"
 t.tsInterfaceDeclaration(id, typeParameters, extends, body);
 ```
 
@@ -2999,7 +2999,7 @@ Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`]
 
 #### tsIntersectionType
 
-```javascript
+```js title="JavaScript"
 t.tsIntersectionType(types);
 ```
 
@@ -3014,7 +3014,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsIntrinsicKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsIntrinsicKeyword();
 ```
 
@@ -3026,7 +3026,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsLiteralType
 
-```javascript
+```js title="JavaScript"
 t.tsLiteralType(literal);
 ```
 
@@ -3041,7 +3041,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsMappedType
 
-```javascript
+```js title="JavaScript"
 t.tsMappedType(typeParameter, typeAnnotation, nameType);
 ```
 
@@ -3060,7 +3060,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsMethodSignature
 
-```javascript
+```js title="JavaScript"
 t.tsMethodSignature(key, typeParameters, parameters, typeAnnotation);
 ```
 
@@ -3081,7 +3081,7 @@ Aliases: [`TypeScript`](#typescript), [`TSTypeElement`](#tstypeelement)
 
 #### tsModuleBlock
 
-```javascript
+```js title="JavaScript"
 t.tsModuleBlock(body);
 ```
 
@@ -3096,7 +3096,7 @@ Aliases: [`TypeScript`](#typescript), [`Scopable`](#scopable), [`Block`](#block)
 
 #### tsModuleDeclaration
 
-```javascript
+```js title="JavaScript"
 t.tsModuleDeclaration(id, body);
 ```
 
@@ -3114,7 +3114,7 @@ Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`]
 
 #### tsNamedTupleMember
 
-```javascript
+```js title="JavaScript"
 t.tsNamedTupleMember(label, elementType, optional);
 ```
 
@@ -3131,7 +3131,7 @@ Aliases: [`TypeScript`](#typescript)
 
 #### tsNamespaceExportDeclaration
 
-```javascript
+```js title="JavaScript"
 t.tsNamespaceExportDeclaration(id);
 ```
 
@@ -3146,7 +3146,7 @@ Aliases: [`TypeScript`](#typescript), [`Statement`](#statement)
 
 #### tsNeverKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsNeverKeyword();
 ```
 
@@ -3158,7 +3158,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsNonNullExpression
 
-```javascript
+```js title="JavaScript"
 t.tsNonNullExpression(expression);
 ```
 
@@ -3173,7 +3173,7 @@ Aliases: [`TypeScript`](#typescript), [`Expression`](#expression), [`LVal`](#lva
 
 #### tsNullKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsNullKeyword();
 ```
 
@@ -3185,7 +3185,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsNumberKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsNumberKeyword();
 ```
 
@@ -3197,7 +3197,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsObjectKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsObjectKeyword();
 ```
 
@@ -3209,7 +3209,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsOptionalType
 
-```javascript
+```js title="JavaScript"
 t.tsOptionalType(typeAnnotation);
 ```
 
@@ -3224,7 +3224,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsParameterProperty
 
-```javascript
+```js title="JavaScript"
 t.tsParameterProperty(parameter);
 ```
 
@@ -3243,7 +3243,7 @@ Aliases: [`TypeScript`](#typescript), [`LVal`](#lval)
 
 #### tsParenthesizedType
 
-```javascript
+```js title="JavaScript"
 t.tsParenthesizedType(typeAnnotation);
 ```
 
@@ -3258,7 +3258,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsPropertySignature
 
-```javascript
+```js title="JavaScript"
 t.tsPropertySignature(key, typeAnnotation, initializer);
 ```
 
@@ -3279,7 +3279,7 @@ Aliases: [`TypeScript`](#typescript), [`TSTypeElement`](#tstypeelement)
 
 #### tsQualifiedName
 
-```javascript
+```js title="JavaScript"
 t.tsQualifiedName(left, right);
 ```
 
@@ -3295,7 +3295,7 @@ Aliases: [`TypeScript`](#typescript), [`TSEntityName`](#tsentityname)
 
 #### tsRestType
 
-```javascript
+```js title="JavaScript"
 t.tsRestType(typeAnnotation);
 ```
 
@@ -3310,7 +3310,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsStringKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsStringKeyword();
 ```
 
@@ -3322,7 +3322,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsSymbolKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsSymbolKeyword();
 ```
 
@@ -3334,7 +3334,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsThisType
 
-```javascript
+```js title="JavaScript"
 t.tsThisType();
 ```
 
@@ -3346,7 +3346,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsTupleType
 
-```javascript
+```js title="JavaScript"
 t.tsTupleType(elementTypes);
 ```
 
@@ -3361,7 +3361,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsTypeAliasDeclaration
 
-```javascript
+```js title="JavaScript"
 t.tsTypeAliasDeclaration(id, typeParameters, typeAnnotation);
 ```
 
@@ -3379,7 +3379,7 @@ Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`]
 
 #### tsTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.tsTypeAnnotation(typeAnnotation);
 ```
 
@@ -3394,7 +3394,7 @@ Aliases: [`TypeScript`](#typescript)
 
 #### tsTypeAssertion
 
-```javascript
+```js title="JavaScript"
 t.tsTypeAssertion(typeAnnotation, expression);
 ```
 
@@ -3410,7 +3410,7 @@ Aliases: [`TypeScript`](#typescript), [`Expression`](#expression), [`LVal`](#lva
 
 #### tsTypeLiteral
 
-```javascript
+```js title="JavaScript"
 t.tsTypeLiteral(members);
 ```
 
@@ -3425,7 +3425,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsTypeOperator
 
-```javascript
+```js title="JavaScript"
 t.tsTypeOperator(typeAnnotation);
 ```
 
@@ -3441,7 +3441,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsTypeParameter
 
-```javascript
+```js title="JavaScript"
 t.tsTypeParameter(constraint, default, name);
 ```
 
@@ -3460,7 +3460,7 @@ Aliases: [`TypeScript`](#typescript)
 
 #### tsTypeParameterDeclaration
 
-```javascript
+```js title="JavaScript"
 t.tsTypeParameterDeclaration(params);
 ```
 
@@ -3475,7 +3475,7 @@ Aliases: [`TypeScript`](#typescript)
 
 #### tsTypeParameterInstantiation
 
-```javascript
+```js title="JavaScript"
 t.tsTypeParameterInstantiation(params);
 ```
 
@@ -3490,7 +3490,7 @@ Aliases: [`TypeScript`](#typescript)
 
 #### tsTypePredicate
 
-```javascript
+```js title="JavaScript"
 t.tsTypePredicate(parameterName, typeAnnotation, asserts);
 ```
 
@@ -3507,7 +3507,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsTypeQuery
 
-```javascript
+```js title="JavaScript"
 t.tsTypeQuery(exprName, typeParameters);
 ```
 
@@ -3523,7 +3523,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsTypeReference
 
-```javascript
+```js title="JavaScript"
 t.tsTypeReference(typeName, typeParameters);
 ```
 
@@ -3539,7 +3539,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsUndefinedKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsUndefinedKeyword();
 ```
 
@@ -3551,7 +3551,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsUnionType
 
-```javascript
+```js title="JavaScript"
 t.tsUnionType(types);
 ```
 
@@ -3566,7 +3566,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
 #### tsUnknownKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsUnknownKeyword();
 ```
 
@@ -3578,7 +3578,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### tsVoidKeyword
 
-```javascript
+```js title="JavaScript"
 t.tsVoidKeyword();
 ```
 
@@ -3590,7 +3590,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbas
 
 #### taggedTemplateExpression
 
-```javascript
+```js title="JavaScript"
 t.taggedTemplateExpression(tag, quasi);
 ```
 
@@ -3607,7 +3607,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### templateElement
 
-```javascript
+```js title="JavaScript"
 t.templateElement(value, tail);
 ```
 
@@ -3623,7 +3623,7 @@ Aliases: [`Standardized`](#standardized)
 
 #### templateLiteral
 
-```javascript
+```js title="JavaScript"
 t.templateLiteral(quasis, expressions);
 ```
 
@@ -3639,7 +3639,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Literal
 
 #### thisExpression
 
-```javascript
+```js title="JavaScript"
 t.thisExpression();
 ```
 
@@ -3651,7 +3651,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### thisTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.thisTypeAnnotation();
 ```
 
@@ -3663,7 +3663,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowb
 
 #### throwStatement
 
-```javascript
+```js title="JavaScript"
 t.throwStatement(argument);
 ```
 
@@ -3678,7 +3678,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Terminato
 
 #### topicReference
 
-```javascript
+```js title="JavaScript"
 t.topicReference();
 ```
 
@@ -3690,7 +3690,7 @@ Aliases: [`Expression`](#expression)
 
 #### tryStatement
 
-```javascript
+```js title="JavaScript"
 t.tryStatement(block, handler, finalizer);
 ```
 
@@ -3707,7 +3707,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement)
 
 #### tupleExpression
 
-```javascript
+```js title="JavaScript"
 t.tupleExpression(elements);
 ```
 
@@ -3722,7 +3722,7 @@ Aliases: [`Expression`](#expression)
 
 #### tupleTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.tupleTypeAnnotation(types);
 ```
 
@@ -3737,7 +3737,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### typeAlias
 
-```javascript
+```js title="JavaScript"
 t.typeAlias(id, typeParameters, right);
 ```
 
@@ -3754,7 +3754,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 
 #### typeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.typeAnnotation(typeAnnotation);
 ```
 
@@ -3769,7 +3769,7 @@ Aliases: [`Flow`](#flow)
 
 #### typeCastExpression
 
-```javascript
+```js title="JavaScript"
 t.typeCastExpression(expression, typeAnnotation);
 ```
 
@@ -3785,7 +3785,7 @@ Aliases: [`Flow`](#flow), [`ExpressionWrapper`](#expressionwrapper), [`Expressio
 
 #### typeParameter
 
-```javascript
+```js title="JavaScript"
 t.typeParameter(bound, default, variance);
 ```
 
@@ -3803,7 +3803,7 @@ Aliases: [`Flow`](#flow)
 
 #### typeParameterDeclaration
 
-```javascript
+```js title="JavaScript"
 t.typeParameterDeclaration(params);
 ```
 
@@ -3818,7 +3818,7 @@ Aliases: [`Flow`](#flow)
 
 #### typeParameterInstantiation
 
-```javascript
+```js title="JavaScript"
 t.typeParameterInstantiation(params);
 ```
 
@@ -3833,7 +3833,7 @@ Aliases: [`Flow`](#flow)
 
 #### typeofTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.typeofTypeAnnotation(argument);
 ```
 
@@ -3848,7 +3848,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### unaryExpression
 
-```javascript
+```js title="JavaScript"
 t.unaryExpression(operator, argument, prefix);
 ```
 
@@ -3865,7 +3865,7 @@ Aliases: [`Standardized`](#standardized), [`UnaryLike`](#unarylike), [`Expressio
 
 #### unionTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.unionTypeAnnotation(types);
 ```
 
@@ -3880,7 +3880,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 
 #### updateExpression
 
-```javascript
+```js title="JavaScript"
 t.updateExpression(operator, argument, prefix);
 ```
 
@@ -3897,7 +3897,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 #### v8IntrinsicIdentifier
 
-```javascript
+```js title="JavaScript"
 t.v8IntrinsicIdentifier(name);
 ```
 
@@ -3912,7 +3912,7 @@ Aliases: [`Miscellaneous`](#miscellaneous)
 
 #### variableDeclaration
 
-```javascript
+```js title="JavaScript"
 t.variableDeclaration(kind, declarations);
 ```
 
@@ -3929,7 +3929,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Declarati
 
 #### variableDeclarator
 
-```javascript
+```js title="JavaScript"
 t.variableDeclarator(id, init);
 ```
 
@@ -3946,7 +3946,7 @@ Aliases: [`Standardized`](#standardized)
 
 #### variance
 
-```javascript
+```js title="JavaScript"
 t.variance(kind);
 ```
 
@@ -3961,7 +3961,7 @@ Aliases: [`Flow`](#flow)
 
 #### voidTypeAnnotation
 
-```javascript
+```js title="JavaScript"
 t.voidTypeAnnotation();
 ```
 
@@ -3973,7 +3973,7 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype), [`FlowBaseAnnotation`](#flowb
 
 #### whileStatement
 
-```javascript
+```js title="JavaScript"
 t.whileStatement(test, body);
 ```
 
@@ -3989,7 +3989,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`BlockPare
 
 #### withStatement
 
-```javascript
+```js title="JavaScript"
 t.withStatement(object, body);
 ```
 
@@ -4005,7 +4005,7 @@ Aliases: [`Standardized`](#standardized), [`Statement`](#statement)
 
 #### yieldExpression
 
-```javascript
+```js title="JavaScript"
 t.yieldExpression(argument, delegate);
 ```
 
@@ -4024,7 +4024,7 @@ Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Termina
 #### Accessor
 
 Deprecated. Will be removed in Babel 8.
-```javascript
+```js title="JavaScript"
 t.isAccessor(node);
 ```
 
@@ -4034,7 +4034,7 @@ Covered nodes:
 #### Binary
 
 A cover of BinaryExpression and LogicalExpression, which share the same AST shape.
-```javascript
+```js title="JavaScript"
 t.isBinary(node);
 ```
 
@@ -4045,7 +4045,7 @@ Covered nodes:
 #### Block
 
 Deprecated. Will be removed in Babel 8.
-```javascript
+```js title="JavaScript"
 t.isBlock(node);
 ```
 
@@ -4057,7 +4057,7 @@ Covered nodes:
 #### BlockParent
 
 A cover of AST nodes that start an execution context with new [LexicalEnvironment](https://tc39.es/ecma262/#table-additional-state-components-for-ecmascript-code-execution-contexts). In other words, they define the scope of `let` and `const` declarations.
-```javascript
+```js title="JavaScript"
 t.isBlockParent(node);
 ```
 
@@ -4083,7 +4083,7 @@ Covered nodes:
 #### Class
 
 A cover of ClassExpression and ClassDeclaration, which share the same AST shape.
-```javascript
+```js title="JavaScript"
 t.isClass(node);
 ```
 
@@ -4094,7 +4094,7 @@ Covered nodes:
 #### CompletionStatement
 
 A statement that indicates the [completion records](https://tc39.es/ecma262/#sec-completion-record-specification-type). In other words, they define the control flow of the program, such as when should a loop break or an action throws critical errors.
-```javascript
+```js title="JavaScript"
 t.isCompletionStatement(node);
 ```
 
@@ -4107,7 +4107,7 @@ Covered nodes:
 #### Conditional
 
 A cover of ConditionalExpression and IfStatement, which share the same AST shape.
-```javascript
+```js title="JavaScript"
 t.isConditional(node);
 ```
 
@@ -4118,7 +4118,7 @@ Covered nodes:
 #### Declaration
 
 A cover of any [Declaration](https://tc39.es/ecma262/#prod-Declaration)s.
-```javascript
+```js title="JavaScript"
 t.isDeclaration(node);
 ```
 
@@ -4153,7 +4153,7 @@ Covered nodes:
 #### EnumBody
 
 A cover of Flow enum bodies.
-```javascript
+```js title="JavaScript"
 t.isEnumBody(node);
 ```
 
@@ -4166,7 +4166,7 @@ Covered nodes:
 #### EnumMember
 
 A cover of Flow enum membors.
-```javascript
+```js title="JavaScript"
 t.isEnumMember(node);
 ```
 
@@ -4179,7 +4179,7 @@ Covered nodes:
 #### ExportDeclaration
 
 A cover of any [ExportDeclaration](https://tc39.es/ecma262/#prod-ExportDeclaration)s.
-```javascript
+```js title="JavaScript"
 t.isExportDeclaration(node);
 ```
 
@@ -4191,7 +4191,7 @@ Covered nodes:
 #### Expression
 
 A cover of any [Expression](https://tc39.es/ecma262/#sec-ecmascript-language-expressions)s.
-```javascript
+```js title="JavaScript"
 t.isExpression(node);
 ```
 
@@ -4250,7 +4250,7 @@ Covered nodes:
 #### ExpressionWrapper
 
 A wrapper of expression that does not have runtime semantics.
-```javascript
+```js title="JavaScript"
 t.isExpressionWrapper(node);
 ```
 
@@ -4262,7 +4262,7 @@ Covered nodes:
 #### Flow
 
 A cover of AST nodes defined for Flow.
-```javascript
+```js title="JavaScript"
 t.isFlow(node);
 ```
 
@@ -4336,7 +4336,7 @@ Covered nodes:
 #### FlowBaseAnnotation
 
 A cover of primary Flow type annotations.
-```javascript
+```js title="JavaScript"
 t.isFlowBaseAnnotation(node);
 ```
 
@@ -4355,7 +4355,7 @@ Covered nodes:
 #### FlowDeclaration
 
 A cover of Flow declarations.
-```javascript
+```js title="JavaScript"
 t.isFlowDeclaration(node);
 ```
 
@@ -4377,7 +4377,7 @@ Covered nodes:
 #### FlowPredicate
 
 A cover of Flow predicates.
-```javascript
+```js title="JavaScript"
 t.isFlowPredicate(node);
 ```
 
@@ -4388,7 +4388,7 @@ Covered nodes:
 #### FlowType
 
 A cover of Flow type annotations.
-```javascript
+```js title="JavaScript"
 t.isFlowType(node);
 ```
 
@@ -4423,7 +4423,7 @@ Covered nodes:
 #### For
 
 A cover of [ForStatement](https://tc39.es/ecma262/#sec-for-statement)s and [ForXStatement](#forxstatement)s.
-```javascript
+```js title="JavaScript"
 t.isFor(node);
 ```
 
@@ -4435,7 +4435,7 @@ Covered nodes:
 #### ForXStatement
 
 A cover of [ForInStatements and ForOfStatements](https://tc39.es/ecma262/#sec-for-in-and-for-of-statements).
-```javascript
+```js title="JavaScript"
 t.isForXStatement(node);
 ```
 
@@ -4446,7 +4446,7 @@ Covered nodes:
 #### Function
 
 A cover of functions and [method](#method)s, the must have `body` and `params`. Note: `Function` is different to `FunctionParent`. For example, a `StaticBlock` is a `FunctionParent` but not `Function`.
-```javascript
+```js title="JavaScript"
 t.isFunction(node);
 ```
 
@@ -4461,7 +4461,7 @@ Covered nodes:
 #### FunctionParent
 
 A cover of AST nodes that start an execution context with new [VariableEnvironment](https://tc39.es/ecma262/#table-additional-state-components-for-ecmascript-code-execution-contexts). In other words, they define the scope of `var` declarations. FunctionParent did not include `Program` since Babel 7.
-```javascript
+```js title="JavaScript"
 t.isFunctionParent(node);
 ```
 
@@ -4477,7 +4477,7 @@ Covered nodes:
 #### Immutable
 
 A cover of immutable objects and JSX elements. An object is [immutable](https://tc39.es/ecma262/#immutable-prototype-exotic-object) if no other properties can be defined once created.
-```javascript
+```js title="JavaScript"
 t.isImmutable(node);
 ```
 
@@ -4502,7 +4502,7 @@ Covered nodes:
 #### JSX
 
 A cover of AST nodes defined for [JSX](https://facebook.github.io/jsx/).
-```javascript
+```js title="JavaScript"
 t.isJSX(node);
 ```
 
@@ -4526,7 +4526,7 @@ Covered nodes:
 #### LVal
 
 A cover of left hand side expressions used in the `left` of assignment expressions and [ForXStatement](#forxstatement)s.
-```javascript
+```js title="JavaScript"
 t.isLVal(node);
 ```
 
@@ -4545,7 +4545,7 @@ Covered nodes:
 #### Literal
 
 A cover of [Literal](https://tc39.es/ecma262/#sec-primary-expression-literals)s, [Regular Expression Literal](https://tc39.es/ecma262/#sec-primary-expression-regular-expression-literals)s and [Template Literal](https://tc39.es/ecma262/#sec-template-literals)s.
-```javascript
+```js title="JavaScript"
 t.isLiteral(node);
 ```
 
@@ -4562,7 +4562,7 @@ Covered nodes:
 #### Loop
 
 A cover of loop statements.
-```javascript
+```js title="JavaScript"
 t.isLoop(node);
 ```
 
@@ -4576,7 +4576,7 @@ Covered nodes:
 #### Method
 
 A cover of object methods and class methods.
-```javascript
+```js title="JavaScript"
 t.isMethod(node);
 ```
 
@@ -4588,7 +4588,7 @@ Covered nodes:
 #### Miscellaneous
 
 A cover of non-standard AST types that are sometimes useful for development.
-```javascript
+```js title="JavaScript"
 t.isMiscellaneous(node);
 ```
 
@@ -4600,7 +4600,7 @@ Covered nodes:
 #### ModuleDeclaration
 
 A cover of ImportDeclaration and [ExportDeclaration](#exportdeclaration)
-```javascript
+```js title="JavaScript"
 t.isModuleDeclaration(node);
 ```
 
@@ -4613,7 +4613,7 @@ Covered nodes:
 #### ModuleSpecifier
 
 A cover of import and export specifiers. Note: It is _not_ the [ModuleSpecifier](https://tc39.es/ecma262/#prod-ModuleSpecifier) defined in the spec.
-```javascript
+```js title="JavaScript"
 t.isModuleSpecifier(node);
 ```
 
@@ -4628,7 +4628,7 @@ Covered nodes:
 #### ObjectMember
 
 A cover of [members](https://tc39.es/ecma262/#prod-PropertyDefinitionList) in an object literal.
-```javascript
+```js title="JavaScript"
 t.isObjectMember(node);
 ```
 
@@ -4639,7 +4639,7 @@ Covered nodes:
 #### Pattern
 
 A cover of [BindingPattern](https://tc39.es/ecma262/#prod-BindingPattern) except Identifiers.
-```javascript
+```js title="JavaScript"
 t.isPattern(node);
 ```
 
@@ -4651,7 +4651,7 @@ Covered nodes:
 #### PatternLike
 
 A cover of [BindingPattern](https://tc39.es/ecma262/#prod-BindingPattern)s.
-```javascript
+```js title="JavaScript"
 t.isPatternLike(node);
 ```
 
@@ -4668,7 +4668,7 @@ Covered nodes:
 #### Private
 
 A cover of private class elements and private identifiers.
-```javascript
+```js title="JavaScript"
 t.isPrivate(node);
 ```
 
@@ -4680,7 +4680,7 @@ Covered nodes:
 #### Property
 
 A cover of object properties and class properties.
-```javascript
+```js title="JavaScript"
 t.isProperty(node);
 ```
 
@@ -4693,7 +4693,7 @@ Covered nodes:
 #### Pureish
 
 A cover of AST nodes which do not have side-effects. In other words, there is no observable behaviour changes if they are evaluated more than once.
-```javascript
+```js title="JavaScript"
 t.isPureish(node);
 ```
 
@@ -4712,7 +4712,7 @@ Covered nodes:
 #### Scopable
 
 A cover of [FunctionParent](#functionparent) and [BlockParent](#blockparent).
-```javascript
+```js title="JavaScript"
 t.isScopable(node);
 ```
 
@@ -4740,7 +4740,7 @@ Covered nodes:
 #### Standardized
 
 A cover of AST nodes which are part of an official ECMAScript specification.
-```javascript
+```js title="JavaScript"
 t.isStandardized(node);
 ```
 
@@ -4836,7 +4836,7 @@ Covered nodes:
 #### Statement
 
 A cover of any [Statement](https://tc39.es/ecma262/#prod-Statement)s.
-```javascript
+```js title="JavaScript"
 t.isStatement(node);
 ```
 
@@ -4892,7 +4892,7 @@ Covered nodes:
 #### TSBaseType
 
 A cover of primary TypeScript type annotations.
-```javascript
+```js title="JavaScript"
 t.isTSBaseType(node);
 ```
 
@@ -4916,7 +4916,7 @@ Covered nodes:
 #### TSEntityName
 
 A cover of ts entities.
-```javascript
+```js title="JavaScript"
 t.isTSEntityName(node);
 ```
 
@@ -4927,7 +4927,7 @@ Covered nodes:
 #### TSType
 
 A cover of TypeScript type annotations.
-```javascript
+```js title="JavaScript"
 t.isTSType(node);
 ```
 
@@ -4971,7 +4971,7 @@ Covered nodes:
 #### TSTypeElement
 
 A cover of TypeScript type declarations.
-```javascript
+```js title="JavaScript"
 t.isTSTypeElement(node);
 ```
 
@@ -4985,7 +4985,7 @@ Covered nodes:
 #### Terminatorless
 
 A cover of AST nodes whose semantic will change when a line terminator is inserted between the operator and the operand.
-```javascript
+```js title="JavaScript"
 t.isTerminatorless(node);
 ```
 
@@ -5000,7 +5000,7 @@ Covered nodes:
 #### TypeScript
 
 A cover of AST nodes defined for TypeScript.
-```javascript
+```js title="JavaScript"
 t.isTypeScript(node);
 ```
 
@@ -5073,7 +5073,7 @@ Covered nodes:
 #### UnaryLike
 
 A cover of UnaryExpression and SpreadElement.
-```javascript
+```js title="JavaScript"
 t.isUnaryLike(node);
 ```
 
@@ -5084,7 +5084,7 @@ Covered nodes:
 #### UserWhitespacable
 
 Deprecated. Will be removed in Babel 8.
-```javascript
+```js title="JavaScript"
 t.isUserWhitespacable(node);
 ```
 
@@ -5100,7 +5100,7 @@ Covered nodes:
 #### While
 
 A cover of DoWhileStatement and WhileStatement, which share the same AST shape.
-```javascript
+```js title="JavaScript"
 t.isWhile(node);
 ```
 

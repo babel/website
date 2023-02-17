@@ -17,7 +17,7 @@ sidebar_label: private-methods
 
 ## Example
 
-```js
+```js title="JavaScript"
 class Counter extends HTMLElement {
   #xValue = 0;
 
@@ -37,7 +37,7 @@ class Counter extends HTMLElement {
 
 ## Installation
 
-```sh
+```sh title="Shell"
 $ npm install @babel/plugin-proposal-private-methods --save-dev
 ```
 
@@ -47,7 +47,7 @@ $ npm install @babel/plugin-proposal-private-methods --save-dev
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-private-methods"]
 }
@@ -55,7 +55,7 @@ Without options:
 
 With options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [["@babel/plugin-proposal-private-methods", { "loose": true }]]
 }
@@ -63,13 +63,13 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 $ babel --plugins @babel/plugin-proposal-private-methods script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-private-methods"],
 });
@@ -90,8 +90,7 @@ of potentially leaking "privates" via things like `Object.getOwnPropertyNames`.
 
 > ⚠️ Consider migrating to the top level [`privateFieldsAsProperties`](assumptions.md#privatefieldsasproperties) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "privateFieldsAsProperties": true,
@@ -104,7 +103,7 @@ Note that both `privateFieldsAsProperties` and `setPublicClassFields` must be se
 
 Let's use the following as an example:
 
-```javascript
+```js title="JavaScript"
 class Foo {
   constructor() {
     this.publicField = this.#privateMethod();
@@ -118,7 +117,7 @@ class Foo {
 
 By default, this becomes:
 
-```javascript
+```js title="JavaScript"
 var Foo = function Foo() {
   "use strict";
 
@@ -140,7 +139,7 @@ var _privateMethod2 = function _privateMethod2() {
 
 With `{ privateFieldsAsProperties: true }`, it becomes:
 
-```javascript
+```js title="JavaScript"
 var Foo = function Foo() {
   "use strict";
 

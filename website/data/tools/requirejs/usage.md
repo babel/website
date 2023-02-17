@@ -1,6 +1,6 @@
 Add the following paths to your configuration:
 
-```js
+```js title="JavaScript"
 paths: {
     es6: '...node_modules/requirejs-babel/es6',
     babel: '...node_modules/@babel/standalone/babel.min',
@@ -10,7 +10,7 @@ paths: {
 
 Then reference files via the `es6!` plugin name:
 
-```js
+```js title="JavaScript"
 define(["es6!your-es6-module"], function (module) {
   // ...
 });

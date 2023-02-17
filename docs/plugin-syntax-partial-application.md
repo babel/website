@@ -10,7 +10,7 @@ sidebar_label: syntax-partial-application
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-syntax-partial-application
 ```
 
@@ -18,7 +18,7 @@ npm install --save-dev @babel/plugin-syntax-partial-application
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-partial-application"]
 }
@@ -26,13 +26,13 @@ npm install --save-dev @babel/plugin-syntax-partial-application
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-partial-application script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-partial-application"]
 });

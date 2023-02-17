@@ -14,13 +14,13 @@ title: "@babel/preset-env"
 
 With [npm](https://www.npmjs.com):
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/preset-env
 ```
 
 Or [yarn](https://yarnpkg.com):
 
-```sh
+```sh title="Shell"
 yarn add @babel/preset-env --dev
 ```
 
@@ -44,7 +44,7 @@ By default `@babel/preset-env` will use [browserslist config sources](https://gi
 
 For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
 
-```json
+```json title="babel.config.json"
 {
   "presets": [
     [
@@ -58,19 +58,15 @@ For example, to only include polyfills and code transforms needed for users whos
 }
 ```
 
-**browserslist**
-
-```
+```text title=".browserslistrc"
 > 0.25%
 not dead
 ```
 
 or
 
-**package.json**
-
-```
-"browserslist": "> 0.25%, not dead"
+```json title="package.json"
+{ "browserslist": "> 0.25%, not dead" }
 ```
 
 > Please note that since `v7.4.5` the browserslist query is resolved with [`mobileToDesktop: true`](https://github.com/browserslist/browserslist#js-api).
@@ -186,7 +182,7 @@ When either the `usage` or `entry` options are used, `@babel/preset-env` will ad
 
 Since `@babel/polyfill` was deprecated in 7.4.0, we recommend directly adding `core-js` and setting the version via the [`corejs`](#corejs) option.
 
-```sh
+```sh title="Shell"
 npm install core-js@3 --save
 
 # or
@@ -214,13 +210,13 @@ This option enables a new plugin that replaces the `import "core-js/stable";` an
 
 **In**
 
-```js
+```js title="JavaScript"
 import "core-js";
 ```
 
 **Out (different based on environment)**
 
-```js
+```js title="JavaScript"
 import "core-js/modules/es.string.pad-start";
 import "core-js/modules/es.string.pad-end";
 ```
@@ -229,14 +225,14 @@ Importing `"core-js"` loads polyfills for every possible ECMAScript feature: wha
 
 **In**
 
-```js
+```js title="JavaScript"
 import "core-js/es/array";
 import "core-js/proposals/math-extensions";
 ```
 
 **Out (different based on environment)**
 
-```js
+```js title="JavaScript"
 import "core-js/modules/es.array.unscopables.flat";
 import "core-js/modules/es.array.unscopables.flat-map";
 import "core-js/modules/esnext.math.clamp";
@@ -319,7 +315,7 @@ By default, only polyfills for stable ECMAScript features are injected: if you w
 
 With Babel 7's [JavaScript config file](config-files#javascript) support, you can force all transforms to be run if env is set to `production`.
 
-```js
+```js title="babel.config.js"
 module.exports = function(api) {
   return {
     presets: [

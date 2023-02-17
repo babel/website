@@ -10,21 +10,21 @@ sidebar_label: json-strings
 
 **In**
 
-```js
+```js title="JavaScript"
 const ex = "before after";
 //                ^ There's a U+2028 char between 'before' and 'after'
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 const ex = "before\u2028after";
 //                ^ There's a U+2028 char between 'before' and 'after'
 ```
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-proposal-json-strings
 ```
 
@@ -32,7 +32,7 @@ npm install --save-dev @babel/plugin-proposal-json-strings
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-json-strings"]
 }
@@ -40,13 +40,13 @@ npm install --save-dev @babel/plugin-proposal-json-strings
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-json-strings script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-json-strings"],
 });

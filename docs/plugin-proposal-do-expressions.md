@@ -12,7 +12,7 @@ from [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/
 
 It can be seen as a complex version of the [ternary operator](http://mdn.io/ternary):
 
-```js
+```js title="JavaScript"
 let a = do {
   if (x > 10) {
     ("big");
@@ -26,7 +26,7 @@ let a = x > 10 ? "big" : "small";
 
 This example is not the best usage because it is too simple and using a ternary operator is a better option but you can have a much more complex condition in the `do { ... }` expression with several `if ... else` chains:
 
-```js
+```js title="JavaScript"
 let x = 100;
 let y = 20;
 
@@ -53,7 +53,7 @@ let a = do {
 
 One of the most useful usage of the `do` expression is inside JSX. If we want to conditionally display a component we usually have to call another function which would implement the condition and return the correct value, for example:
 
-```js
+```js title="JavaScript"
 const getColoredComponent = color => {
   if (color === "blue") {
     return <BlueComponent />;
@@ -73,7 +73,7 @@ const Component = props => (
 
 Using a do expression you can add logic inside JSX:
 
-```js
+```js title="JavaScript"
 const Component = props => (
   <div className="myComponent">
     {do {
@@ -91,7 +91,7 @@ const Component = props => (
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-proposal-do-expressions
 ```
 
@@ -99,7 +99,7 @@ npm install --save-dev @babel/plugin-proposal-do-expressions
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-do-expressions"]
 }
@@ -107,13 +107,13 @@ npm install --save-dev @babel/plugin-proposal-do-expressions
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-do-expressions script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-do-expressions"],
 });

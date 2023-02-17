@@ -10,13 +10,13 @@ sidebar_label: instanceof
 
 **In**
 
-```javascript
+```js title="JavaScript"
 foo instanceof Bar;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 function _instanceof(left, right) {
   if (
     right != null &&
@@ -34,7 +34,7 @@ _instanceof(foo, Bar);
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-instanceof
 ```
 
@@ -42,7 +42,7 @@ npm install --save-dev @babel/plugin-transform-instanceof
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-instanceof"]
 }
@@ -50,13 +50,13 @@ npm install --save-dev @babel/plugin-transform-instanceof
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-instanceof script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-instanceof"],
 });

@@ -10,7 +10,7 @@ sidebar_label: property-mutators
 
 **In**
 
-```javascript
+```js title="JavaScript"
 var foo = {
   get bar() {
     return this._bar;
@@ -23,7 +23,7 @@ var foo = {
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var foo = Object.defineProperties(
   {},
   {
@@ -43,7 +43,7 @@ var foo = Object.defineProperties(
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-property-mutators
 ```
 
@@ -51,7 +51,7 @@ npm install --save-dev @babel/plugin-transform-property-mutators
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-property-mutators"]
 }
@@ -59,13 +59,13 @@ npm install --save-dev @babel/plugin-transform-property-mutators
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-property-mutators script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-property-mutators"],
 });

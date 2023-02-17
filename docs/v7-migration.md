@@ -50,7 +50,7 @@ Right now `@babel/polyfill` is mostly just an alias of `core-js` v2. [Source](ht
 
 Before it used to just be 2 imports:
 
-```js
+```js title="JavaScript"
 import "core-js/shim"; // included < Stage 4 proposals
 import "regenerator-runtime/runtime";
 ```
@@ -59,7 +59,7 @@ If you want to use proposals, you will need to import these independently. You s
 
 e.g.
 
-```js
+```js title="JavaScript"
 // for core-js v2:
 import "core-js/fn/array/flat-map";
 
@@ -71,7 +71,7 @@ Below is a list of Stage < 3 proposal polyfills in `core-js` v2.
 
 <details>
 
-```js
+```js title="JavaScript"
 // core-js v2
 
 // Stage 3
@@ -173,7 +173,7 @@ Your dependencies will need to be modified like so:
 
 You can still use the shorthand way of specifying a preset or plugin. However because of the switch to scoped packages, you still have to specify the `@babel/` just like if you had your own preset to add to the config.
 
-```js
+```js title="babel.config.js"
 module.exports = {
   presets: ["@babel/env"], // "@babel/preset-env"
   plugins: ["@babel/transform-arrow-functions"], // same as "@babel/plugin-transform-arrow-functions"
@@ -201,30 +201,30 @@ Some of the plugins had `-es3-` or `-es2015-` in the names, but these were unnec
 
 Babel 6's transformations for ES6 modules ran indiscriminately on whatever files it was told to process, never taking into account if the file actually had ES6 imports/exports in them. This had the effect of rewriting file-scoped references to `this` to be `undefined` and inserting `"use strict"` at the top of all CommonJS modules that were processed by Babel.
 
-```js
+```js title="JavaScript"
 // input.js
 this;
 ```
 
-```js
+```js title="JavaScript"
 // output.js v6
 "use strict"; // assumed strict modules
 undefined; // changed this to undefined
 ```
 
-```js
+```js title="JavaScript"
 // output.js v7
 this;
 ```
 
 This behavior has been restricted in Babel 7 so that for the `transform-es2015-modules-commonjs` transform, the file is only changed if it has ES6 imports or exports in the file. (Editor's note: This may change again if we land https://github.com/babel/babel/issues/6242, so we'll want to revisit this before publishing).
 
-```js
+```js title="JavaScript"
 // input2.js
 import "a";
 ```
 
-```js
+```js title="JavaScript"
 // output.js v6 and v7
 "use strict";
 require("a");
@@ -274,7 +274,7 @@ In Babel 7, values are resolved consistently either relative to the config file 
 
 For `presets` and `plugins` values, this change means that the CLI will behave nicely in cases such as
 
-```bash
+```shell title="Shell"
 babel --presets @babel/preset-env ../file.js
 ```
 
@@ -306,14 +306,14 @@ We have separated out Babel's helpers from it's "polyfilling" behavior in runtim
 
 #### Only Helpers
 
-```sh
+```sh title="Shell"
 # install the runtime as a dependency
 npm install @babel/runtime
 # install the plugin as a devDependency
 npm install @babel/plugin-transform-runtime --save-dev
 ```
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-runtime"]
 }
@@ -323,7 +323,7 @@ npm install @babel/plugin-transform-runtime --save-dev
 
 So if you need `core-js` support with `transform-runtime`, you would now pass the `corejs` option and use the `@babel/runtime-corejs2` dependency instead of `@babel/runtime`.
 
-```sh
+```sh title="Shell"
 # install the runtime as a dependency
 npm install @babel/runtime-corejs2
 # install the plugin as a devDependency
@@ -363,12 +363,12 @@ var {
 - [objectSpread helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L375)
 - [extends helper function](https://github.com/babel/babel/blob/007bfb656502a44f6ab50cd64750cc4b38f9efff/packages/babel-helpers/src/helpers.js#L357-L373)
 
-```js
+```js title="JavaScript"
 // input
 z = { x, ...y };
 ```
 
-```js
+```js title="JavaScript"
 // v7 default behavior: ["proposal-object-rest-spread"]
 function _objectSpread(target) { ... }
 
@@ -377,7 +377,7 @@ z = _objectSpread({
 }, y);
 ```
 
-```js
+```js title="JavaScript"
 // Old v6 behavior: ["proposal-object-rest-spread", { "loose": true }]
 function _extends(target) { ... }
 
@@ -386,7 +386,7 @@ z = _extends({
 }, y);
 ```
 
-```js
+```js title="JavaScript"
 // Substitute for Object.assign: ["proposal-object-rest-spread", { "loose": true, "useBuiltIns": true }]
 z = Object.assign(
   {
@@ -400,7 +400,7 @@ z = Object.assign(
 
 The default behavior is changed to what was previously "spec" by default
 
-```js
+```js title="JavaScript"
 // input
 class Bork {
   static a = "foo";
@@ -408,7 +408,7 @@ class Bork {
 }
 ```
 
-```js
+```js title="JavaScript"
 // v7 default behavior: ["@babel/plugin-proposal-class-properties"]
 var Bork = function Bork() {
   Object.defineProperty(this, "y", {
@@ -425,7 +425,7 @@ Object.defineProperty(Bork, "a", {
 });
 ```
 
-```js
+```js title="JavaScript"
 // old v6 behavior: ["@babel/plugin-proposal-class-properties", { "loose": true }]
 var Bork = function Bork() {
   this.y = void 0;
@@ -440,13 +440,13 @@ This is a long time coming but this was finally changed.
 
 `@babel/plugin-proposal-export-default-from`
 
-```js
+```js title="JavaScript"
 export v from "mod";
 ```
 
 `@babel/plugin-proposal-export-namespace-from`
 
-```js
+```js title="JavaScript"
 export * as ns from "mod";
 ```
 
@@ -458,13 +458,13 @@ See the proposal for [Template Literals Revision](https://tc39.github.io/proposa
 
 It causes Babel 6 to throw `Bad character escape sequence (5:6)`.
 
-```js
+```js title="JavaScript"
 tag`\unicode and \u{55}`;
 ```
 
 This has been fixed in Babel 7 and generates something like the following:
 
-```js
+```js title="JavaScript"
 // default
 function _taggedTemplateLiteral(strings, raw) {
   return Object.freeze(
@@ -478,7 +478,7 @@ var _templateObject = /*#__PURE__*/ _taggedTemplateLiteral(
 tag(_templateObject);
 ```
 
-```js
+```js title="JavaScript"
 // loose mode
 function _taggedTemplateLiteralLoose(strings, raw) {
   strings.raw = raw;
@@ -495,17 +495,17 @@ tag(_templateObject);
 
 > Default to previous "spec" mode for regular template literals
 
-```js
+```js title="JavaScript"
 // input
 `foo${bar}`;
 ```
 
-```js
+```js title="JavaScript"
 // default v7 behavior: ["@babel/plugin-transform-template-literals"]
 "foo".concat(bar);
 ```
 
-```js
+```js title="JavaScript"
 // old v6 behavior: ["@babel/plugin-transform-template-literals", { "loose": true }]
 "foo" + bar;
 ```
@@ -596,7 +596,7 @@ The deprecated usage of `babel-core/register` has been removed in Babel 7; inste
 
 Install `@babel/register` as a new dependency:
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/register
 ```
 

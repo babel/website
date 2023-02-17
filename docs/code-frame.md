@@ -5,13 +5,13 @@ title: "@babel/code-frame"
 
 ## Install
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/code-frame
 ```
 
 ## Usage
 
-```js
+```js title="JavaScript"
 import { codeFrameColumns } from "@babel/code-frame";
 
 const rawLines = `class Foo {
@@ -37,7 +37,7 @@ If the column number is not known, you may omit it.
 
 You can also pass an `end` hash in `location`.
 
-```js
+```js title="JavaScript"
 import { codeFrameColumns } from "@babel/code-frame";
 
 const rawLines = `class Foo {
@@ -117,7 +117,7 @@ The new API takes a `location` object, similar to what is available in an AST.
 
 This is an example of the deprecated (but still available) API:
 
-```js
+```js title="JavaScript"
 import codeFrame from "@babel/code-frame";
 
 const rawLines = `class Foo {
@@ -135,7 +135,7 @@ console.log(result);
 
 To get the same highlighting using the new API:
 
-```js
+```js title="JavaScript"
 import { codeFrameColumns } from "@babel/code-frame";
 
 const rawLines = `class Foo {

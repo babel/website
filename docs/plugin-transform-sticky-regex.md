@@ -10,19 +10,19 @@ sidebar_label: sticky-regex
 
 **In**
 
-```javascript
+```js title="JavaScript"
 const a = /o+/y;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var a = new RegExp("o+", "y");
 ```
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-sticky-regex
 ```
 
@@ -30,7 +30,7 @@ npm install --save-dev @babel/plugin-transform-sticky-regex
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-sticky-regex"]
 }
@@ -38,13 +38,13 @@ npm install --save-dev @babel/plugin-transform-sticky-regex
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-sticky-regex script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-sticky-regex"],
 });

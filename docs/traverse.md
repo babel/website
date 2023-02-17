@@ -5,7 +5,7 @@ title: "@babel/traverse"
 
 ## Install
 
-```sh
+```sh title="Shell"
 npm install --save @babel/traverse
 ```
 
@@ -13,7 +13,7 @@ npm install --save @babel/traverse
 
 We can use it alongside the babel parser to traverse and update nodes:
 
-```js
+```js title="JavaScript"
 import * as parser from "@babel/parser";
 import traverse from "@babel/traverse";
 
@@ -34,7 +34,7 @@ traverse(ast, {
 
 Also, we can target particular [**node types**](https://babeljs.io/docs/en/babel-types#api) in the Syntax Tree
 
-```js
+```js title="JavaScript"
 traverse(ast, {
   FunctionDeclaration: function(path) {
     path.node.id.name = "x";

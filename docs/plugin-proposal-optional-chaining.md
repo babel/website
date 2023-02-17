@@ -10,7 +10,7 @@ sidebar_label: optional-chaining
 
 ### Accessing deeply nested properties
 
-```js
+```js title="JavaScript"
 const obj = {
   foo: {
     bar: {
@@ -33,7 +33,7 @@ obj?.["foo"]?.bar?.baz; // 42
 
 ### Calling deeply nested functions
 
-```js
+```js title="JavaScript"
 const obj = {
   foo: {
     bar: {
@@ -62,7 +62,7 @@ exists?.(); // undefined
 
 ### Constructing deeply nested classes
 
-```js
+```js title="JavaScript"
 const obj = {
   foo: {
     bar: {
@@ -91,7 +91,7 @@ new exists?.(); // undefined
 
 Added in: `v7.8.0`
 
-```js
+```js title="JavaScript"
 const obj = {
   foo: {
     bar: {},
@@ -103,7 +103,7 @@ const ret = delete obj?.foo?.bar?.baz; // true
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-proposal-optional-chaining
 ```
 
@@ -111,7 +111,7 @@ npm install --save-dev @babel/plugin-proposal-optional-chaining
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-optional-chaining"]
 }
@@ -119,13 +119,13 @@ npm install --save-dev @babel/plugin-proposal-optional-chaining
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-optional-chaining script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-optional-chaining"],
 });
@@ -143,8 +143,7 @@ against both `null` and `undefined`.
 
 > ⚠️ Consider migrating to the top level [`noDocumentAll`](assumptions.md#nodocumentall) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "noDocumentAll": true
@@ -156,19 +155,19 @@ against both `null` and `undefined`.
 
 In
 
-```javascript
+```js title="JavaScript"
 foo?.bar;
 ```
 
 Out (`noDocumentAll === true`)
 
-```javascript
+```js title="JavaScript"
 foo == null ? void 0 : foo.bar;
 ```
 
 Out (`noDocumentAll === false`)
 
-```javascript
+```js title="JavaScript"
 foo === null || foo === void 0 ? void 0 : foo.bar;
 ```
 

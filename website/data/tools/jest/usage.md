@@ -1,6 +1,6 @@
 In your `package.json` file make the following changes:
 
-```json
+```json title="JSON"
 {
   "scripts": {
     "test": "jest"

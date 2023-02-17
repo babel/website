@@ -24,7 +24,7 @@ The `columnNumber` is emitted since `v7.9.0`.
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/plugin-transform-react-jsx-source
 ```
 
@@ -32,7 +32,7 @@ npm install --save-dev @babel/plugin-transform-react-jsx-source
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-react-jsx-source"]
 }
@@ -40,13 +40,13 @@ npm install --save-dev @babel/plugin-transform-react-jsx-source
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-react-jsx-source script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-react-jsx-source"],
 });

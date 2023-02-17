@@ -17,7 +17,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 - [TypeScript 4.9](https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/) support
 - Parser support for the [explicit resource management](https://github.com/tc39/proposal-explicit-resource-management) Stage 2 proposal
-  ```js
+  ```js title="JavaScript"
   {
     using handle = openFile(name, "w+");
     write(handle, "Hi!\n");
@@ -25,7 +25,7 @@ Additionally, use this timeline to track some other important efforts, such as t
   } // Automatically close the file
   ```
 - Parser support for the [import reflection](https://github.com/tc39/proposal-import-reflection) Stage 2 proposal
-  ```js
+  ```js title="JavaScript"
   import module mod from "./mod.js";
 
   // later ...
@@ -45,7 +45,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 - Support for the Stage 3 version of the [decorators](https://github.com/tc39/proposal-decorators) proposal
 - Transform support for the [duplicate named capturing groups](https://github.com/tc39/proposal-duplicate-named-capturing-groups) Stage 3 proposal
-  ```js
+  ```js title="JavaScript"
   /(?<year>\d\d\d\d)-(?<month>\d\d)|(?<month>\d\d)-(?<year>\d\d\d\d)/
   ```
 
@@ -58,7 +58,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 - [TypeScript 4.7](https://devblogs.microsoft.com/typescript/announcing-typescript-4-7/) support
 - Transform support for the [Private destructuring](https://github.com/tc39/proposal-destructuring-private) Stage 2 proposal
-  ```js
+  ```js title="JavaScript"
   class A {
     #x = 2;
     method() {
@@ -76,7 +76,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 [blog post](https://babeljs.io/blog/2022/02/02/7.17.0)
 
 - Support for the new version of the [decorators](https://github.com/tc39/proposal-decorators) Stage 2 proposal
-  ```js
+  ```js title="JavaScript"
   class A {
     @reactive #x = 2;
 
@@ -87,11 +87,11 @@ Additionally, use this timeline to track some other important efforts, such as t
   }
   ```
 - Support for the [RegExp set notation and properties of strings](https://github.com/tc39/proposal-regexp-set-notation/) Stage 2 proposal
-  ```js
+  ```js title="JavaScript"
   /[\p{RGI_Emoji}&&[\0-\uFFFF]]/v;
   ```
 - Parser support for the [private destructuring](https://github.com/tc39/proposal-destructuring-private) Stage 2 proposal
-  ```js
+  ```js title="JavaScript"
   class A {
     #x = 2;
     method() {
@@ -108,7 +108,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 [blog post](https://babeljs.io/blog/2021/10/29/7.16.0)
 
 - Enable the [class static blocks](https://github.com/tc39/proposal-class-static-block) Stage 4 proposal by default
-  ```js
+  ```js title="JavaScript"
   class A {
     static {
       initialize(A);
@@ -126,12 +126,12 @@ Additionally, use this timeline to track some other important efforts, such as t
 [blog post](https://babeljs.io/blog/2021/07/26/7.15.0)
 
 - Enable parsing for the [top-level `await`](https://github.com/tc39/proposal-top-level-await) Stage 4 proposal by default
-  ```js
+  ```js title="JavaScript"
   import db from "db";
   await db.connect();
   ```
 - Enable the [Private Brand Checks](https://github.com/tc39/proposal-private-fields-in-in) Stage 4 proposal by default
-  ```js
+  ```js title="JavaScript"
   class A {
     static { initialize(A); } // static block
     #field;
@@ -141,7 +141,7 @@ Additionally, use this timeline to track some other important efforts, such as t
   }
   ```
 - Support the "Hack-style" [pipeline operator](https://github.com/tc39/proposal-pipeline-operator) Stage 2 proposal
-  ```js
+  ```js title="JavaScript"
   const result = "World" |> `Hello, ${%}!` |> alert(%);
   ```
 - [TypeScript 4.4](https://devblogs.microsoft.com/typescript/announcing-typescript-4-4/) support
@@ -156,7 +156,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 - Enable the [Class Fields](https://github.com/tc39/proposal-class-fields),
   [Private Methods](https://github.com/tc39/proposal-private-methods) and [Static Class Features](https://github.com/tc39/proposal-static-class-features) Stage 4 proposals by default
 - Add the [Private Brand Checks](https://github.com/tc39/proposal-private-fields-in-in) and [Static Class Blocks](https://github.com/tc39/proposal-class-static-block) proposals to `@babel/preset-env`'s [`shippedProposals`](https://babeljs.io/docs/en/babel-preset-env#shippedproposals)
-  ```js
+  ```js title="JavaScript"
   class A {
     static { initialize(A); } // static block
     #field;
@@ -166,7 +166,7 @@ Additionally, use this timeline to track some other important efforts, such as t
   }
   ```
 - Support for the [`async do` expressions](https://github.com/tc39/proposal-async-do-expressions) proposal
-  ```js
+  ```js title="JavaScript"
   let valP = async do {
     2 + await computeIt();
   };
@@ -184,7 +184,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 - Top-level [`targets`](https://babeljs.io/docs/en/options#output-targets) option ([RFC](https://github.com/babel/rfcs/pull/2))
 - Granular compiler assumptions ([docs](https://babeljs.io/assumptions), [RFC](https://github.com/babel/rfcs/pull/5))
 - Support for the [Records and Tuples](https://github.com/tc39/proposal-record-tuple) proposals
-  ```js
+  ```js title="JavaScript"
   let rec = #{ x: 1 };
   let tup = #[1, 2, 3];
   ```
@@ -198,18 +198,18 @@ Additionally, use this timeline to track some other important efforts, such as t
 [blog post](https://babeljs.io/blog/2020/10/15/7.12.0)
 
 - Support for the [class static blocks](https://github.com/tc39/proposal-class-static-block) proposal
-  ```js
+  ```js title="JavaScript"
   class A {
     static { initialize(A); }
   }
   ```
 - Support for [imports and exports string names](https://github.com/tc39/ecma262/pull/2154)
-  ```js
+  ```js title="JavaScript"
   let happy = "wooo!";
   export { happy as "😃" };
   ```
 - Parser support for the [Import Assertions](https://github.com/tc39/proposal-import-assertions) proposal
-  ```js
+  ```js title="JavaScript"
   import json from "./foo.json" assert { type: "json" };
   ```
 - [TypeScript 4.1](https://devblogs.microsoft.com/typescript/announcing-typescript-4-1/) support
@@ -224,7 +224,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 - Enable the [Logical Assignment](https://github.com/tc39/proposal-logical-assignment/) and
   [Numeric Separator](https://github.com/tc39/proposal-numeric-separator) Stage 4 proposals by default
 - Parser support for the [Decimal](https://github.com/tc39/proposal-decimal) proposal
-  ```js
+  ```js title="JavaScript"
   console.assert(0.1m + 0.2m === 0.3m);
   ```
 - [TypeScript 4.0](https://devblogs.microsoft.com/typescript/announcing-typescript-4-0/) support
@@ -245,7 +245,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 - Enable parser support for the [`import.meta`](https://github.com/tc39/proposal-import-meta/) Stage 4 proposal by default
 - Support for the [Ergonomic brand checks for Private Fields](https://github.com/tc39/proposal-private-fields-in-in) proposal
-  ```js
+  ```js title="JavaScript"
   class Car {
     #plate;
     race(other) {
@@ -292,7 +292,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 [blog post](https://babeljs.io/blog/2019/11/05/7.7.0)
 
 - Parser support for the [top-level `await`](https://github.com/tc39/proposal-top-level-await) proposal
-  ```js
+  ```js title="JavaScript"
   import db from "./database.js";
 
   await db.connect();
@@ -310,7 +310,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 - Support for static private accessors, part of the
   [static class features](https://github.com/tc39/proposal-static-class-features/) proposal
-  ```js
+  ```js title="JavaScript"
   class Dog {
     static get #className() { return "Dog"; }
   }
@@ -324,7 +324,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 [blog post](https://babeljs.io/blog/2019/07/03/7.5.0)
 
 - Support for the [F# pipeline operator](https://github.com/valtech-nyc/proposal-fsharp-pipelines/) proposal
-  ```js
+  ```js title="JavaScript"
   num |> add(2) |> double
   ```
 - TypeScript `namespace` support
@@ -338,12 +338,12 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 - Support for injecting `core-js@3` polyfills
 - Support for the [Partial Application](https://github.com/tc39/proposal-partial-application/) proposal
-  ```js
+  ```js title="JavaScript"
   strings.map(parseInt(?));
   ```
 - Support for static private methods, part of the
   [static class features](https://github.com/tc39/proposal-static-class-features/) proposal
-  ```js
+  ```js title="JavaScript"
   class Dog {
     static #register() { /* ... */ }
   }
@@ -359,19 +359,19 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 - Support for instance private accessors, part of the
   [private methods](https://github.com/tc39/proposal-private-methods/) proposal
-  ```js
+  ```js title="JavaScript"
   class Dog {
     get #randomId() { return Math.random(); }
   }
   ```
 - Support for the [smart pipeline operator](https://github.com/js-choi/proposal-smart-pipelines/) proposal
-  ```js
+  ```js title="JavaScript"
   num |> add(2, #) |> double
   ```
 - Support for
   [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges#using_named_groups)
   in regular expressions
-  ```js
+  ```js title="JavaScript"
   str.match({String.raw`/^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})$/`})
   ```
 - TypeScript 3.2 and 2.9 support
@@ -384,7 +384,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 [blog post](https://babeljs.io/blog/2018/12/03/7.2.0)
 
 - Support for instance private methods, part of the [private methods](https://github.com/tc39/proposal-private-methods/) proposal
-  ```js
+  ```js title="JavaScript"
   class Dog {
     #bark() { console.log("Mew!") }
   }
@@ -398,13 +398,13 @@ Additionally, use this timeline to track some other important efforts, such as t
 [blog post](https://babeljs.io/blog/2018/09/17/7.1.0)
 
 - Support for the [decorators](https://babeljs.io/blog/2018/09/17/decorators) proposal, as it was specified in September 2018
-  ```js
+  ```js title="JavaScript"
   class Person {
     @autoIncrement age;
   }
   ```
 - Support for static private fields, part of the [static class features](https://github.com/tc39/proposal-static-class-features/) proposal
-  ```js
+  ```js title="JavaScript"
   class Person {
     static #classId = 3;
   }

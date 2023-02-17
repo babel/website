@@ -7,7 +7,7 @@ with babel. To use it in earlier versions of Rails:
 gem 'webpacker'
 ```
 
-```sh
+```sh title="Shell"
 bundle install
 bundle exec rails webpacker:install
 ```

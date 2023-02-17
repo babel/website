@@ -5,7 +5,7 @@ title: "@babel/polyfill"
 
 > 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features):
 >
-> ```js
+> ```js title="JavaScript"
 > import "core-js/stable";
 > ```
 >
@@ -20,7 +20,7 @@ This means you can use new built-ins like `Promise` or `WeakMap`, static methods
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save @babel/polyfill
 ```
 
@@ -40,7 +40,7 @@ To include the polyfill you need to require it at the top of the **entry point**
 
 > Make sure it is called before all other code/require statements!
 
-```js
+```js title="JavaScript"
 require("@babel/polyfill");
 ```
 
@@ -48,7 +48,7 @@ If you are using ES6's `import` syntax in your application's **entry point**, yo
 should instead import the polyfill at the top of the **entry point** to ensure the
 polyfills are loaded first:
 
-```js
+```js title="JavaScript"
 import "@babel/polyfill";
 ```
 
@@ -62,7 +62,7 @@ With webpack, there are multiple ways to include the polyfills:
 
   - If `useBuiltIns` key is not specified or it is explicitly set with `useBuiltIns: false` in your .babelrc, add `@babel/polyfill` directly to the entry array in your `webpack.config.js`.
 
-```js
+```js title="webpack.config.js"
 module.exports = {
   entry: ["@babel/polyfill", "./app/js"],
 };

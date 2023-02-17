@@ -11,19 +11,19 @@ This preset is recommended if you use [Flow](https://flow.org/en/docs/getting-st
 
 **In**
 
-```javascript
+```js title="JavaScript"
 function foo(one: any, two: number, three?): string {}
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 function foo(one, two, three) {}
 ```
 
 ## Installation
 
-```sh
+```sh title="Shell"
 npm install --save-dev @babel/preset-flow
 ```
 
@@ -31,7 +31,7 @@ npm install --save-dev @babel/preset-flow
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-flow"]
 }
@@ -39,13 +39,13 @@ npm install --save-dev @babel/preset-flow
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --presets @babel/preset-flow script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-flow"],
 });
@@ -70,7 +70,7 @@ f<T>(e)
 
 Would get parsed as a nested binary expression:
 
-```javascript
+```js title="JavaScript"
 f < T > e;
 ```
 
@@ -84,7 +84,7 @@ Added in: `v7.9.0`
 
 When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
 
-```javascript
+```js title="JavaScript"
 class A {
   declare foo: string; // Removed
   bar: string; // Initialized to undefined

@@ -89,7 +89,7 @@ Naturally, we will take the opportunity to be as spec compliant as possible (wit
 
 Input
 
-```js
+```js title="JavaScript"
 class Bork {
   static a = 'foo';
   x = 'bar';
@@ -98,7 +98,7 @@ class Bork {
 
 Output (default)
 
-```js
+```js title="JavaScript"
 class Bork {
   constructor() {
     Object.defineProperty(this, "x", {
@@ -120,7 +120,7 @@ Object.defineProperty(Bork, "a", {
 
 Output (loose mode)
 
-```js
+```js title="JavaScript"
 class Bork {
   constructor() {
     this.x = 'bar';
@@ -136,7 +136,7 @@ Bork.a = 'foo';
 
 Input
 
-```js
+```js title="JavaScript"
 // Rest Properties
 let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
 console.log(x); // 1
@@ -150,7 +150,7 @@ console.log(n); // { x: 1, y: 2, a: 3, b: 4 }
 
 Also disallowed
 
-```js
+```js title="JavaScript"
 var { ...{ x } } = obj;
 var { ...[ y ] } = obj;
 ```
@@ -161,7 +161,7 @@ var { ...[ y ] } = obj;
 
 Input
 
-```js
+```js title="JavaScript"
 try {
   throw 0;
 } catch {
@@ -171,7 +171,7 @@ try {
 
 Output
 
-```js
+```js title="JavaScript"
 try {
   throw 0;
 } catch (_unused) {
@@ -185,13 +185,13 @@ try {
 
 Input
 
-```js
+```js title="JavaScript"
 var regex = /\p{ASCII_Hex_Digit}/u;
 ```
 
 Output
 
-```js
+```js title="JavaScript"
 var regex = /[0-9A-Fa-f]/;
 ```
 
@@ -202,13 +202,13 @@ var regex = /[0-9A-Fa-f]/;
 
 Input
 
-```js
+```js title="JavaScript"
 50000n + 60n;
 ```
 
 Output
 
-```js
+```js title="JavaScript"
 import babelCheckBinaryExpressions from "babel-check-binary-expressions";
 babelCheckBinaryExpressions(new BigInt("50000"), new BigInt("60"), "+");
 ```
@@ -220,7 +220,7 @@ babelCheckBinaryExpressions(new BigInt("50000"), new BigInt("60"), "+");
 
 Input
 
-```js
+```js title="JavaScript"
 const testModule = import('test-module');
 ```
 
@@ -230,7 +230,7 @@ const testModule = import('test-module');
 
 Input
 
-```js
+```js title="JavaScript"
 const size = import.meta.scriptElement.dataset.size || 300;
 ```
 
@@ -240,7 +240,7 @@ const size = import.meta.scriptElement.dataset.size || 300;
 
 Input
 
-```js
+```js title="JavaScript"
 1_000_000_000
 0b1010_0001_1000_0101
 0xA0_B0_C0
@@ -248,7 +248,7 @@ Input
 
 Output
 
-```js
+```js title="JavaScript"
 1000000000
 0b1010000110000101
 0xA0B0C0
@@ -260,7 +260,7 @@ Output
 
 Disallowed
 
-```js
+```js title="JavaScript"
 // no computed decorator keys
 @dec[foo]
 class A {}
@@ -283,7 +283,7 @@ export default class {}
 
 Valid
 
-```js
+```js title="JavaScript"
 // decorators with a call expression
 @foo('bar')
 class A {
@@ -304,7 +304,7 @@ export default @foo class {}
 
 Unsupported (WIP)
 
-```js
+```js title="JavaScript"
 // decorated class properties
 class A {
   @dec name = 0
@@ -317,7 +317,7 @@ class A {
 
 Input
 
-```js
+```js title="JavaScript"
 function* generator() {
     console.log("Sent", function.sent);
     console.log("Yield", yield);
@@ -330,7 +330,7 @@ iterator.next(2); // Logs "Yield 2"
 
 Output
 
-```js
+```js title="JavaScript"
 let generator = _skipFirstGeneratorNext(function* () {
     const _functionSent = yield;
     console.log("Sent", _functionSent);
@@ -345,13 +345,13 @@ let generator = _skipFirstGeneratorNext(function* () {
 
 Input
 
-```js
+```js title="JavaScript"
 export * as ns from "mod";
 ```
 
 Output
 
-```js
+```js title="JavaScript"
 import * as ns from "mod";
 export {ns};
 ```
@@ -363,13 +363,13 @@ export {ns};
 
 Input
 
-```js
+```js title="JavaScript"
 export v from "mod";
 ```
 
 Output
 
-```js
+```js title="JavaScript"
 import _v from "module";
 export { _v as v };
 ```
@@ -380,13 +380,13 @@ export { _v as v };
 
 Input
 
-```js
+```js title="JavaScript"
 a?.b = 42;
 ```
 
 Output
 
-```js
+```js title="JavaScript"
 var _a;
 (_a = a) == null ? void 0 : _a.b = 42;
 ```
@@ -397,7 +397,7 @@ var _a;
 
 Example
 
-```js
+```js title="JavaScript"
 // with a function
 function Foo() {
   console.log(new.target);
@@ -422,7 +422,7 @@ new Bar(); // => Bar
 
 Input
 
-```js
+```js title="JavaScript"
 class Foo {
   constructor() {
     new.target;
@@ -436,7 +436,7 @@ class Foo {
 
 Output
 
-```js
+```js title="JavaScript"
 class Foo {
   constructor() {
     this.constructor;
@@ -458,7 +458,7 @@ class Foo {
 
 Writing configuration files in JavaScript allows for dynamic configuration, making it possible to write a single configuration file that can adapt to different environments programmatically.
 
-```js
+```js title="JavaScript"
 var env = process.env.BABEL_ENV || process.env.NODE_ENV;
 var plugins = [];
 if (env === 'production') {
@@ -467,7 +467,7 @@ if (env === 'production') {
 module.exports = { plugins };
 ```
 
-```js
+```js title="JavaScript"
 var env = process.env.BABEL_ENV || process.env.NODE_ENV;
 module.exports = {
   plugins: [
@@ -482,7 +482,7 @@ This was previously done through the `env` configuration option, which is now de
 
 You can now use `babel-preset-typescript` to allow Babel to strip types similar to how `babel-preset-flow` works!
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["typescript"]
 }
@@ -496,7 +496,7 @@ After [#6209](https://github.com/babel/babel/pull/6209), ES6 classes that are tr
 
 Input
 
-```js
+```js title="JavaScript"
 class C {
   m(x) {
     return 'a';
@@ -506,7 +506,7 @@ class C {
 
 Output
 
-```js
+```js title="JavaScript"
 var C = /*#__PURE__*/ function () {
   function C() {
     _classCallCheck(this, C)
@@ -565,7 +565,7 @@ For example:
 
 Say you are using preset-env (which keeps up to date and currently includes everything in es2015, es2016, es2017) + an experimental plugin. You also decide to use object-rest-spread because it's cool.
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["env"],
   "plugins": ["transform-object-rest-spread"]
