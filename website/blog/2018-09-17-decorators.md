@@ -35,7 +35,7 @@ Even though the new proposal looks very similar to the old one, there are severa
 
 The old proposal allowed any valid left-hand side expression (literals, function and class expressions, `new` expressions and function calls, simple and computed property accesses) to be used as the body of a decorator. For example, this was valid code:
 
-```javascript=
+```js title="JavaScript"
 class MyClass {
   @getDecorators().methods[name]
   foo() {}
@@ -47,7 +47,7 @@ class MyClass {
 
 That syntax had a problem: the `[...]` notation was used as *both* property access inside the decorator body and to define computed names. To prevent such ambiguity, the new proposal only allows dot property access (`foo.bar`), optionally with arguments at the end (`foo.bar()`). If you need more complex expressions, you can wrap them in parentheses:
 
-```javascript=
+```js title="JavaScript"
 class MyClass {
   @decorator
   @dec(arg1, arg2)
@@ -61,7 +61,7 @@ class MyClass {
 
 The old version of the proposal allowed, in addition to class and class elements decorators, object members decorators:
 
-```javascript=
+```js title="JavaScript"
 const myObj = {
   @dec1 foo: 3,
   @dec2 bar() {},
@@ -111,7 +111,7 @@ Not everything has been decided yet: decorators are a very big feature and defin
 
 The decorator proposal has gone back and forth on this question: should decorators come before or after the export keyword?
 
-```javascript=
+```js title="JavaScript"
 export @decorator class MyClass {}
 
 // or
@@ -143,7 +143,7 @@ We will also introduce an option to customize the privacy constraint of decorate
 
 If you are directly using our parser ([`@babel/parser`](https://babeljs.io/docs/en/next/babel-parser.html), formerly `babylon`) you can already use the `decoratorsBeforeExport` option in version 7.0.0:
 
-```javascript=
+```js title="JavaScript"
 const ast = babylon.parse(code, {
   plugins: [
     ["decorators", { decoratorsBeforeExport: true }]

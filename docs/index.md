@@ -42,7 +42,7 @@ npm install --save-dev @babel/preset-react
 
 and add `@babel/preset-react` to your Babel configuration.
 
-```jsx
+```jsx title="JSX"
 export default function DiceRoll(){
   const getRandomNumber = () => {
     return Math.ceil(Math.random() * 6);

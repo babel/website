@@ -11,7 +11,7 @@ React elements to the highest possible scope, preventing multiple unnecessary re
 
 **In**
 
-```jsx
+```jsx title="JSX"
 const Hr = () => {
   return <hr className="hr" />;
 };
@@ -19,7 +19,7 @@ const Hr = () => {
 
 **Out**
 
-```jsx
+```jsx title="JSX"
 const _ref = <hr className="hr" />;
 
 const Hr = () => {
@@ -31,13 +31,13 @@ const Hr = () => {
 
 - **Spread Operator**
 
-  ```jsx
+  ```jsx title="JSX"
   <div {...foobar} />
   ```
 
 - **Refs**
 
-  ```jsx
+  ```jsx title="JSX"
   <div ref="foobar" />
   <div ref={node => this.node = node} />
   ```
