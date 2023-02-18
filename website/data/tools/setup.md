@@ -2,7 +2,7 @@
 
 To start, you can use the <a href="/docs/plugins/preset-env">env preset</a>, which enables transforms for ES2015+
 
-```shell title="Shell"
+```shell npm2yarn
 npm install @babel/preset-env --save-dev
 ```
 

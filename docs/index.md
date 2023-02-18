@@ -36,7 +36,7 @@ Babel can convert JSX syntax! Check out our [React preset](preset-react.md) to g
 
 You can install this preset with
 
-```shell title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/preset-react
 ```
 
@@ -72,7 +72,7 @@ Babel can strip out type annotations! Check out either our [Flow preset](preset-
 
 You can install the flow preset with
 
-```shell title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/preset-flow
 ```
 
@@ -85,7 +85,7 @@ function square(n: number): number {
 
 or the typescript preset with
 
-```shell title="Shell"
+```shell npm2yarn
 npm install --save-dev @babel/preset-typescript
 ```
 

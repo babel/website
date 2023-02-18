@@ -30,7 +30,7 @@ function foo() {
 
 ## Installation
 
-```shell title="Shell"
+```shell npm2yarn
 npm install babel-plugin-transform-remove-undefined --save-dev
 ```
 
