@@ -33,6 +33,7 @@ mind. When in doubt, use `.parse()`.
   <summary>History</summary>
 | Version | Changes |
 | --- | --- |
+| `v7.21.0` | Added `allowNewTargetOutsideFunction` |
 | `v7.16.0` | Added `startColumn` |
 | `v7.15.0` | Added `attachComment` |
 | `v7.7.0` | Added `errorRecovery` |
