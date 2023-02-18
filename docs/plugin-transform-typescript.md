@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-typescript
-title: @babel/plugin-transform-typescript
+title: "@babel/plugin-transform-typescript"
 sidebar_label: Typescript Plugin
 ---
 
@@ -79,6 +79,7 @@ class A {
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.5.0` | Added `allowNamespaces`, defaults to `false` |

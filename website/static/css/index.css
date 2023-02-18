@@ -1,5 +1,6 @@
 .hero {
   background: #3b3c38;
+  display: block;
   color: #fff;
   overflow: hidden;
   padding: 4rem 1rem 2rem;
@@ -41,6 +42,7 @@
 }
 
 .hero__announcement {
+  --ifm-link-color: #24292e;
   background: rgba(238, 218, 124, 1);
   border-radius: 20px;
   color: #24292e;
@@ -50,6 +52,9 @@
 }
 
 .hero__announcement a {
+  --ifm-link-color: #24292e;
+  --ifm-link-hover-color: #24292e;
+  --ifm-link-hover-decoration: none;
   border-bottom: 1px solid #999;
 }
 
@@ -144,6 +149,11 @@
 .mainContainer .wrapper.productShowcaseSection {
   text-align: center;
 }
+.mainContainer .wrapper.productShowcaseSection p {
+  margin: 0 auto;
+  max-width: 560px;
+  padding: 0.8em 0;
+}
 .mainContainer .wrapper.productShowcaseSection h2 {
   font-size: 30px;
   text-align: center;
@@ -177,4 +187,10 @@
 }
 .tier-silver-sponsors img {
   max-height: 45px;
+}
+
+h3 {
+  margin-bottom: 16px;
+  margin-top: 1.5em;
+  font-size: 20px;
 }

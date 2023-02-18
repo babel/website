@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-private-methods
-title: @babel/plugin-proposal-private-methods
+title: "@babel/plugin-proposal-private-methods"
 sidebar_label: private-methods
 ---
 
@@ -8,6 +8,7 @@ sidebar_label: private-methods
 
 <details>
 <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.3.0` | Support private accessors (getters and setters) |

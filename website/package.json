@@ -1,13 +1,21 @@
 {
   "scripts": {
-    "examples": "docusaurus-examples",
-    "start": "docusaurus-start",
-    "build": "docusaurus-build",
-    "publish-gh-pages": "docusaurus-publish",
-    "write-translations": "docusaurus-write-translations"
+    "examples": "docusaurus examples",
+    "start": "docusaurus start",
+    "swizzle": "docusaurus swizzle",
+    "clear": "docusaurus clear",
+    "build": "docusaurus build",
+    "deploy": "docusaurus publish",
+    "write-translations": "docusaurus-write-translations",
+    "serve": "docusaurus serve"
   },
   "devDependencies": {
-    "docusaurus": "^1.14.6"
+    "@docusaurus/core": "^2.3.1",
+    "@docusaurus/preset-classic": "^2.3.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-markdown": "^8.0.5",
+    "rehype-raw": "^6.1.1"
   },
   "version": "0.0.0"
 }

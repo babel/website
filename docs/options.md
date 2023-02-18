@@ -55,6 +55,7 @@ interface CallerData {
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | v7.11.0 | Add `supportsExportNamespaceFrom` |
@@ -330,6 +331,7 @@ Added in: `v7.13.0`<br />
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.20.0` | Support `deno` target |
@@ -676,7 +678,7 @@ Set assumptions that Babel can make in order to produce smaller output:
 }
 ```
 
-For more informations, check the [assumptions](/assumptions) documentation page.
+For more informations, check the [assumptions](assumptions.md) documentation page.
 
 ### `highlightCode`
 

@@ -7,11 +7,17 @@ template.innerHTML = `
   <mini-repl id="repl" vertical></mini-repl>
 `;
 
-class AssumptionRepl extends HTMLDivElement {
-  _plugins = this.dataset.plugins.split(",");
-  _assumption = this.dataset.assumption;
-  _input = this.querySelector("code.assumption-input").textContent;
+// Workaround: Pre-formatted text loses line breaks in MDX
+// https://github.com/mdx-js/mdx/issues/1095
+function extractRawCodeInput(codeEl) {
+  const result = [];
+  for (const lineEl of codeEl.querySelectorAll(".token-line")) {
+    result.push(lineEl.textContent);
+  }
+  return result.join("\n");
+}
 
+class AssumptionRepl extends HTMLDivElement {
   _enabled = true;
 
   constructor() {
@@ -20,11 +26,15 @@ class AssumptionRepl extends HTMLDivElement {
     this.attachShadow({ mode: "open" }).appendChild(
       template.content.cloneNode(true)
     );
-
-    this.shadowRoot.getElementById("repl").setInput(this._input);
   }
 
   connectedCallback() {
+    this._plugins = this.dataset.plugins.split(",");
+    this._assumption = this.dataset.assumption;
+    this._input = extractRawCodeInput(this.querySelector("code"));
+    const miniReplComponent = this.shadowRoot.getElementById("repl");
+    customElements.upgrade(miniReplComponent);
+    miniReplComponent.setInput(this._input);
     this._updateOptions();
 
     this.shadowRoot.getElementById("enabled").addEventListener("change", () => {

@@ -1,5 +1,6 @@
 .timeline-container {
-  max-width: 800px;
+  --ifm-list-item-margin: 0;
+  padding-left: 0;
   margin: auto;
 }
 
@@ -34,7 +35,7 @@
 
 .timeline-container > li::before {
   content: "";
-  background-color: #f5da55;
+  background-color: var(--ifm-color-primary);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -54,8 +55,8 @@
   left: 0;
   position: absolute;
 
-  background: #f5da55;
-  color: hsla(0,0%,100%,.9);
+  background: var(--ifm-color-primary);
+  color: var(--ifm-background-surface-color);
   border-radius: 50%;
   font-weight: bold;
   font-size: 0.8em;

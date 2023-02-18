@@ -3,6 +3,8 @@ id: features-timeline
 title: Features Timeline
 ---
 
+import "@site/static/css/timeline.css";
+
 Which major new features did we introduce in each Babel version? This page includes a very short summary for each _minor_ release, or you can read the full changelog [on GitHub](https://github.com/babel/babel/blob/main/CHANGELOG.md)!
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 

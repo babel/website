@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-transform-runtime
-title: @babel/plugin-transform-runtime
+title: "@babel/plugin-transform-runtime"
 ---
 
 A plugin that enables the re-use of Babel's injected helper code to save on codesize.
@@ -90,8 +90,10 @@ require("@babel/core").transformSync("code", {
 
 e.g. `['@babel/plugin-transform-runtime', { corejs: 3 }],`
 
+
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.4.0` | Supports `{ proposals: boolean }` |
@@ -142,6 +144,7 @@ For more information, see [Regenerator aliasing](#regenerator-aliasing).
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.13.0` | This option has been deprecated |

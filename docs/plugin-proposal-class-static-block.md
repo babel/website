@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-class-static-block
-title: @babel/plugin-proposal-class-static-block
+title: "@babel/plugin-proposal-class-static-block"
 sidebar_label: class-static-block
 ---
 

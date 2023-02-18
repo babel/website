@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-destructuring-private
-title: @babel/plugin-proposal-destructuring-private
+title: "@babel/plugin-proposal-destructuring-private"
 sidebar_label: destructuring-private
 ---
 

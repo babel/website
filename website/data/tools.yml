@@ -19,8 +19,8 @@
     requirejs: RequireJS
     rollup: Rollup
     sprockets: Sprockets
-    webpack: Webpack
     start: Start
+    webpack: Webpack
 - name: Frameworks
   items:
     ember: Ember

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-proposal-decorators
-title: @babel/plugin-proposal-decorators
+title: "@babel/plugin-proposal-decorators"
 sidebar_label: decorators
 ---
 
@@ -82,6 +82,7 @@ require("@babel/core").transformSync("code", {
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.19.0` | Added support for `version: "2022-03"` |

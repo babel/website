@@ -1,7 +1,5 @@
 /* globals Babel */
 
-import debounce from "https://cdn.skypack.dev/pin/lodash-es@v4.17.21-rDGl8YjBUjcrrAbjNrmo/mode=imports,min/unoptimized/debounce.js";
-
 // Uncomment the following imports when skypack can handle multiple copies of `FacetProvider` due
 // to multiple entries, see https://github.com/babel/website/issues/2456#issuecomment-784245936
 
@@ -20,6 +18,26 @@ import {
   oneDark,
   javascriptLanguage,
 } from "../build/cm6.mjs";
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  var fn = function () {
+    var context = this,
+      args = arguments;
+    var later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+  fn.cancel = function () {
+    clearTimeout(timeout);
+  };
+  return fn;
+}
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -113,7 +131,7 @@ template.innerHTML = `
       }
 
       .repl__code {
-        background: #3f403e;
+        background: rgb(40, 44, 52);
         font-family: monospace;
         font-size: 0.83rem;
         min-height: 125px;
@@ -153,10 +171,6 @@ template.innerHTML = `
 `;
 
 class MiniRepl extends HTMLElement {
-  _defaultCode = this.getAttribute("default-code");
-  _vertical = this.hasAttribute("vertical");
-  _options = JSON.parse(this.getAttribute("options")) ?? {};
-
   _inEditor;
   _outEditor;
 
@@ -167,13 +181,17 @@ class MiniRepl extends HTMLElement {
 
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    this._defaultCode = this.getAttribute("default-code");
+    this._vertical = this.hasAttribute("vertical");
+    this._options = JSON.parse(this.getAttribute("options")) ?? {};
 
     if (this._vertical) {
       this.shadowRoot.querySelector(".repl").classList.add("vertical");
     }
-  }
 
-  connectedCallback() {
     const defaultCode = this.getAttribute("default-code") ?? "";
 
     this._inEditor = new EditorView({
@@ -191,11 +209,9 @@ class MiniRepl extends HTMLElement {
       root: this.shadowRoot,
     });
 
-    this.shadowRoot
-      .querySelector("#repl-in .cm-wrap")
-      .addEventListener("click", () => {
-        this._inEditor.focus();
-      });
+    this.shadowRoot.querySelector("#repl-in").addEventListener("click", () => {
+      this._inEditor.focus();
+    });
   }
 
   setInput(code) {

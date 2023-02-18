@@ -15,68 +15,64 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /7/                                 https://old.babeljs.io/repl/build/7.0/
 /7.html                             https://old.babeljs.io/repl/build/7.0/
 
-/assumptions                        /docs/en/assumptions
+/assumptions                        /docs/assumptions
 
 # after docusaurus rewrite
 /php/                               https://old.babeljs.io/php/
-/docs/usage/                        /docs/en/usage/
-/docs/usage/cli/                    /docs/en/babel-cli/
-/docs/usage/api/                    /docs/en/babel-core/
-/docs/core-packages/                /docs/en/babel-core/
-/docs/usage/polyfill/               /docs/en/babel-polyfill/
-/docs/usage/babel-register/         /docs/en/babel-register/
-/docs/usage/babelrc/                /docs/en/config-files/
-/docs/usage/caveats/                /docs/en/caveats/
-/docs/editors/                      /docs/en/editors/
-/env/                               /docs/en/env/
-/faq/                               /docs/en/faq/
-/learn-es2015/                      /docs/en/learn/
-/docs/plugins/                      /docs/en/plugins/
-/docs/presets/                      /docs/en/presets/
-/docs/setup/                        /en/setup/
-/docs/community/videos/             /en/videos/
-/core-packages/babel-types/         /docs/en/babel-types/
-/core-packages/babel-template/      /docs/en/babel-template/
-/core-packages/babel-helpers/       /docs/en/babel-helpers/
-/core-packages/babel-code-frame/    /docs/en/babel-code-frame/
-/core-packages/babylon/             /docs/en/babylon/
-/docs/en/babylon/                   /docs/en/babel-parser
+/docs/usage/cli/                    /docs/babel-cli/
+/docs/usage/api/                    /docs/babel-core/
+/docs/core-packages/                /docs/babel-core/
+/docs/usage/polyfill/               /docs/babel-polyfill/
+/docs/usage/babel-register/         /docs/babel-register/
+/docs/usage/babelrc/                /docs/config-files/
+/docs/usage/caveats/                /docs/caveats/
+/env/                               /docs/env/
+/faq/                               /docs/faq/
+/learn-es2015/                      /docs/learn/
+/docs/setup/                        /setup/
+/docs/community/videos/             /videos/
+/core-packages/babel-types/         /docs/babel-types/
+/core-packages/babel-template/      /docs/babel-template/
+/core-packages/babel-helpers/       /docs/babel-helpers/
+/core-packages/babel-code-frame/    /docs/babel-code-frame/
+/core-packages/babylon/             /docs/babylon/
+/docs/en/babylon/                   /docs/babel-parser
 
-/docs/using-babel/                  /en/setup
-/plugins.html                       /en/setup
-/docs/using-6to5/                   /en/setup
-/docs/usage/browser/                /en/setup
-/browser.html                       /en/setup
-/docs/advanced/plugins/             /docs/en/plugins
-/docs/usage/modules/                /docs/en/plugins
-/usage.html                         /docs/en/babel-cli
-/docs/faq/                          /docs/en/faq
-/docs/learn-es6/                    /docs/en/learn
-/docs/learn-es2015/                 /docs/en/learn
-/features.html                      /docs/en/learn
-/docs/tour/                         /docs/en/learn
-/docs/core-packages/babel-register/ /docs/en/babel-register
-/docs/usage/require/                /docs/en/babel-register
-/docs/usage/options/                /docs/en/options
-/caveats.html                       /docs/en/caveats
+/docs/using-babel/                  /setup
+/plugins.html                       /setup
+/docs/using-6to5/                   /setup
+/docs/usage/browser/                /setup
+/browser.html                       /setup
+/docs/advanced/plugins/             /docs/plugins
+/docs/usage/modules/                /docs/plugins
+/usage.html                         /docs/babel-cli
+/docs/faq/                          /docs/faq
+/docs/learn-es6/                    /docs/learn
+/docs/learn-es2015/                 /docs/learn
+/features.html                      /docs/learn
+/docs/tour/                         /docs/learn
+/docs/core-packages/babel-register/ /docs/babel-register
+/docs/usage/require/                /docs/babel-register
+/docs/usage/options/                /docs/options
+/caveats.html                       /docs/caveats
 /repl.html                          /repl/
 
-/docs/plugins/preset-*              /docs/en/babel-preset-:splat
-/docs/plugins/transform-*           /docs/en/babel-plugin-transform-:splat
-/docs/plugins/syntax-*              /docs/en/babel-plugin-syntax-:splat
-/docs/plugins/minify-*              /docs/en/babel-plugin-minify-:splat
-/docs/plugins/external-helpers/     /docs/en/babel-plugin-external-helpers
+/docs/plugins/preset-*              /docs/babel-preset-:splat
+/docs/plugins/transform-*           /docs/babel-plugin-transform-:splat
+/docs/plugins/syntax-*              /docs/babel-plugin-syntax-:splat
+/docs/plugins/minify-*              /docs/babel-plugin-minify-:splat
+/docs/plugins/external-helpers/     /docs/babel-plugin-external-helpers
 
-/docs/en/babel-plugin-transform-async-generator-functions       /docs/en/babel-plugin-proposal-async-generator-functions
-/docs/en/babel-plugin-transform-class-properties                /docs/en/babel-plugin-proposal-class-properties
-/docs/en/babel-plugin-transform-decorators                      /docs/en/babel-plugin-proposal-decorators
-/docs/en/babel-plugin-transform-do-expressions                  /docs/en/babel-plugin-proposal-do-expressions
-/docs/en/babel-plugin-transform-export-extensions               /docs/en/babel-plugin-proposal-export-namespace
-/docs/en/babel-plugin-transform-object-rest-spread              /docs/en/babel-plugin-proposal-object-rest-spread
+/docs/en/babel-plugin-transform-async-generator-functions       /docs/babel-plugin-proposal-async-generator-functions
+/docs/en/babel-plugin-transform-class-properties                /docs/babel-plugin-proposal-class-properties
+/docs/en/babel-plugin-transform-decorators                      /docs/babel-plugin-proposal-decorators
+/docs/en/babel-plugin-transform-do-expressions                  /docs/babel-plugin-proposal-do-expressions
+/docs/en/babel-plugin-transform-export-extensions               /docs/babel-plugin-proposal-export-namespace
+/docs/en/babel-plugin-transform-object-rest-spread              /docs/babel-plugin-proposal-object-rest-spread
 
-/docs/plugins/check-es2015-constants/ /docs/en/babel-plugin-check-es2015-constants
-/docs/plugins/transform-es2015-constants /docs/en/babel-plugin-check-es2015-constants
-/docs/plugins/undeclared-variables-check/ /docs/en/babel-plugin-undeclared-variables-check
+/docs/plugins/check-es2015-constants/ /docs/babel-plugin-check-es2015-constants
+/docs/plugins/transform-es2015-constants /docs/babel-plugin-check-es2015-constants
+/docs/plugins/undeclared-variables-check/ /docs/babel-plugin-undeclared-variables-check
 
 /docs/en/next/tools/*               /setup
 
@@ -99,15 +95,19 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 # Docusaurus versioning rewrites
 # We have disabled docusaurus versioning since 7.11, they are preserved for link compatibility
 
-/docs/en/next/*                     /docs/en/:splat
-/docs/en/7.10.0/*                   /docs/en/:splat
-/docs/en/7.9.0/*                    /docs/en/:splat
-/docs/en/7.8.0/*                    /docs/en/:splat
-/docs/en/7.7.0/*                    /docs/en/:splat
-/docs/en/7.6.0/*                    /docs/en/:splat
-/docs/en/7.5.0/*                    /docs/en/:splat
-/docs/en/7.4.0/*                    /docs/en/:splat
-/docs/en/7.3.0/*                    /docs/en/:splat
-/docs/en/7.2.0/*                    /docs/en/:splat
-/docs/en/7.1.0/*                    /docs/en/:splat
-/docs/en/7.0.0/*                    /docs/en/:splat
+/docs/en/next/*                     /docs/:splat
+/docs/en/7.10.0/*                   /docs/:splat
+/docs/en/7.9.0/*                    /docs/:splat
+/docs/en/7.8.0/*                    /docs/:splat
+/docs/en/7.7.0/*                    /docs/:splat
+/docs/en/7.6.0/*                    /docs/:splat
+/docs/en/7.5.0/*                    /docs/:splat
+/docs/en/7.4.0/*                    /docs/:splat
+/docs/en/7.3.0/*                    /docs/:splat
+/docs/en/7.2.0/*                    /docs/:splat
+/docs/en/7.1.0/*                    /docs/:splat
+/docs/en/7.0.0/*                    /docs/:splat
+
+# Docusaurus v1 compat
+
+/docs/en/* /docs/:splat

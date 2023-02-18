@@ -1,6 +1,6 @@
 ---
 id: babel-helper-builder-react-jsx
-title: @babel/helper-builder-react-jsx
+title: "@babel/helper-builder-react-jsx"
 sidebar_label: helper-builder-react-jsx
 ---
 

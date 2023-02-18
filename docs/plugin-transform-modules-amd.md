@@ -1,11 +1,12 @@
 ---
 id: babel-plugin-transform-modules-amd
-title: @babel/plugin-transform-modules-amd
+title: "@babel/plugin-transform-modules-amd"
 sidebar_label: AMD
 ---
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.14.0` | Implemented the `importInterop` option |

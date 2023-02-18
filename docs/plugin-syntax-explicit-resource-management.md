@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-explicit-resource-management
-title: @babel/plugin-syntax-explicit-resource-management
+title: "@babel/plugin-syntax-explicit-resource-management"
 sidebar_label: syntax-explicit-resource-management
 ---
 

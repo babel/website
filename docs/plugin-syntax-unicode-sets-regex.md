@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-unicode-sets-regex
-title: @babel/plugin-syntax-unicode-sets-regex
+title: "@babel/plugin-syntax-unicode-sets-regex"
 sidebar_label: syntax-unicode-sets-regex
 ---
 

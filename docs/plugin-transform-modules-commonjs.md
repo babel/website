@@ -1,11 +1,12 @@
 ---
 id: babel-plugin-transform-modules-commonjs
-title: @babel/plugin-transform-modules-commonjs
+title: "@babel/plugin-transform-modules-commonjs"
 sidebar_label: Common JS
 ---
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.14.0` | Implemented the `importInterop` option |

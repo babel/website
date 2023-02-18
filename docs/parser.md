@@ -1,6 +1,6 @@
 ---
 id: babel-parser
-title: @babel/parser
+title: "@babel/parser"
 ---
 
 <p align="left">
@@ -31,6 +31,7 @@ mind. When in doubt, use `.parse()`.
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.16.0` | Added `startColumn` |
@@ -173,24 +174,30 @@ require("@babel/parser").parse("code", {
 
 #### Language extensions
 
+
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.6.0` | Added `v8intrinsic` |
 </details>
+
 | Name | Code Example |
 |------|--------------|
 | `flow` ([repo](https://github.com/facebook/flow)) | `var a: string = "";` |
-| `flowComments` ([docs](https://flow.org/en/docs/types/comments/)) | `/*:: type Foo = {...}; */` |
+| `flowComments` ([docs](https://flow.org/en/docs/types/comments/)) | <code>/&ast;:: type Foo = {...}; &ast;/</code> |
 | `jsx` ([repo](https://facebook.github.io/jsx/)) | `<a attr="b">{s}</a>` |
 | `typescript` ([repo](https://github.com/Microsoft/TypeScript)) | `var a: string = "";` |
 | `v8intrinsic` | `%DebugPrint(foo);` |
+
+
 
 #### ECMAScript [proposals](https://github.com/babel/proposals)
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.20.0` | Added `explicitResourceManagement`, `importReflection` |
@@ -211,7 +218,7 @@ require("@babel/parser").parse("code", {
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `asyncDoExpressions` ([proposal](https://github.com/tc39/proposal-async-do-expressions))                 | `async do { await requestAPI().json() }`                         |
 | `decimal` ([proposal](https://github.com/tc39/proposal-decimal))                                         | `0.3m`                                                           |
-| `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br> `decorators-legacy`          | `@a class A {}`                                                  |
+| `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br/> `decorators-legacy`          | `@a class A {}`                                                  |
 | `decoratorAutoAccessors` ([proposal](https://github.com/tc39/proposal-decorators))                       | `class Example { @reactive accessor myBool = false; }`           |
 | `destructuringPrivate` ([proposal](https://github.com/tc39/proposal-destructuring-private))              | `class Example { #x = 1; method() { const { #x: x } = this; } }` |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                            | `var a = do { if (true) { 'hi'; } };`                            |
@@ -257,6 +264,7 @@ You should enable these features only if you are using an older version.
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `7.19.0` | The `syntaxType` option of the `recordAndTuple` plugin defaults to `hash`; added `allowCallParenthesized` option for the `decorators` plugin. |
@@ -289,7 +297,7 @@ You should enable these features only if you are using an older version.
   - `proposal` (required, accepted values: `minimal`, `fsharp`, `hack`, ~~`smart`~~ (deprecated))
     There are several different proposals for the pipeline operator.
     This option chooses which proposal to use.
-    See [plugin-proposal-pipeline-operator](/docs/en/babel-plugin-proposal-pipeline-operator)
+    See [plugin-proposal-pipeline-operator](plugin-proposal-pipeline-operator.md)
     for more information, including a table comparing their behavior.
 
   - `topicToken` (required when `proposal` is `hack`, accepted values: `%`, `#`, `^`, `@@`, `^^`)
@@ -297,7 +305,7 @@ You should enable these features only if you are using an older version.
     There are two different choices for this topic placeholder.
     This option chooses what token to use to refer to the topic.
     `topicToken: "#"` is incompatible with `recordAndTuple` with `syntaxType: "hash"`.
-    See [plugin-proposal-pipeline-operator](/docs/en/babel-plugin-proposal-pipeline-operator)
+    See [plugin-proposal-pipeline-operator](plugin-proposal-pipeline-operator.md)
     for more information.
 
 - `recordAndtuple`:
@@ -326,6 +334,7 @@ You should enable these features only if you are using an older version.
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | `v7.14.0` | Added error codes |

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-destructuring-private
-title: @babel/plugin-syntax-destructuring-private
+title: "@babel/plugin-syntax-destructuring-private"
 sidebar_label: syntax-destructuring-private
 ---
 
