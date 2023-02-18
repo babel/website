@@ -135,6 +135,11 @@ const siteConfig = {
   themeConfig: {
     onPageNav: "separate",
     gaTrackingId: "UA-114990275-1",
+    docs: {
+      sidebar: {
+        hideable: true,
+      }
+    },
     prism: {
       additionalLanguages: ["powershell"],
       theme: require("./src/theme/prism/light"),
