@@ -26,7 +26,7 @@ All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`,
 <blockquote class="babel-callout babel-callout-info">
   <h4>Polyfill not included</h4>
   <p>
-    You must include the <a href="./babel-polyfill.html">polyfill</a> separately
+    You must include the [polyfill](./polyfill.md) separately
     when using features that require it, like generators.
   </p>
 </blockquote>

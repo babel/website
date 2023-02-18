@@ -52,7 +52,7 @@ You can financially contribute to Babel on our [Open Collective](https://opencol
 
 Our team is using [Open Collective](https://opencollective.com/babel) to fund our team members. Both companies and individuals and donate to the team, either as a one-time or recurring donation.
 
-If you have any questions or concerns about financially contributing to Babel we'd be happy to discuss by [email](team@babeljs.io).
+If you have any questions or concerns about financially contributing to Babel we'd be happy to discuss by [email](mailto:team@babeljs.io).
 
 And in case your company is located in one of the cities that the core team lives in we'd also love to meet in-person!
 
@@ -74,7 +74,7 @@ We will be writing up more in-depth posts on these topics, but here are some gen
 
 - **General ecosystem support**: This includes what we can do to help libraries publish ES2015+ code and for developers to target new browsers and ship less code (your own code, node_modules, [polyfills](https://github.com/babel/babel/issues/10008)) when possible, while still making it accessible for all browser users.
 
-- **Codemods**: We would like to put more emphasis on the opposite direction of code transformation (aka 5to6, [Lebab](https://github.com/lebab/lebab)), which is a powerful idea that we can help educate the community about. This would help with the transition between changes in the proposal (or if it's dropped/stalled) via an upgrade tool. 
+- **Codemods**: We would like to put more emphasis on the opposite direction of code transformation (aka 5to6, [Lebab](https://github.com/lebab/lebab)), which is a powerful idea that we can help educate the community about. This would help with the transition between changes in the proposal (or if it's dropped/stalled) via an upgrade tool.
 
 And long term:
 

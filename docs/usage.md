@@ -5,7 +5,7 @@ title: Usage Guide
 
 There are quite a few tools in the Babel toolchain that try to make it easy for you to use Babel whether you're an "end-user" or building an integration of Babel itself. This will be a quick introduction to those tools and you can read more about them in the "Usage" section of the docs.
 
-> If you're using a framework, the work of configuring Babel might be different or actually already handled for you. Check out our [interactive setup guide](/setup.html) instead.
+> If you're using a framework, the work of configuring Babel might be different or actually already handled for you. Check out our [interactive setup guide](/setup) instead.
 
 ## Overview
 
@@ -264,4 +264,4 @@ Then import [core-js](https://github.com/zloirock/core-js) (to polyfill ECMAScri
 
 We used `@babel/cli` to run Babel from the terminal, `@babel/polyfill` to polyfill all the new JavaScript features, and the `env` preset to only include the transformations and polyfills for the features that we use and that are missing in our target browsers.
 
-For more information on setting up Babel with your build system, IDE, and more, check out our [interactive setup guide](/setup.html).
+For more information on setting up Babel with your build system, IDE, and more, check out our [interactive setup guide](/setup).

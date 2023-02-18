@@ -24,7 +24,7 @@ For more info, read our [6.x vs 7.x comparison](config-files.md#6x-vs-7x-babelrc
 
 Babel has had issues previously with handling `node_modules`, symlinks, and monorepos. We've made some changes to account for this: Babel will stop lookup at the `package.json` boundary instead of looking up the chain. For monorepos we have added a new `babel.config.js` file that centralizes our config across all the packages (alternatively you could make a config per package). In 7.1, we've introduced a [`rootMode`](options.md#rootmode) option for further lookup if necessary.
 
-## [Yearly Preset Deprecations](/blog/2017/12/27/nearing-the-7.0-release.html#deprecated-yearly-presets-eg-babel-preset-es20xx)
+## [Yearly Preset Deprecations](https://babeljs.io/blog/2017/12/27/nearing-the-7.0-release.html#deprecated-yearly-presets-eg-babel-preset-es20xx)
 
 The "env" preset has been out for more than a year now, and completely replaces some of the presets we've had and suggested earlier.
 
@@ -140,7 +140,7 @@ import "core-js/fn/reflect/metadata";
 
 </details>
 
-## [Versioning/Dependencies](/blog/2017/12/27/nearing-the-7.0-release.html#peer-dependencies-integrations)
+## [Versioning/Dependencies](https://babeljs.io/blog/2017/12/27/nearing-the-7.0-release.html#peer-dependencies--integrations)
 
 Most plugins/top level packages now have a `peerDependency` on `@babel/core`.
 
@@ -161,7 +161,7 @@ You can still use the shorthand version of a package name (remove the `preset-` 
 
 ### Scoped Packages
 
-The most important change is finally switching all packages to [scoped packages](/blog/2017/12/27/nearing-the-7.0-release.html#renames-scoped-packages-babel-x) (the folder names in the [monorepo](https://github.com/babel/babel/tree/main/packages) are not changed but the name in its `package.json` is).
+The most important change is finally switching all packages to [scoped packages](https://babeljs.io/blog/2017/12/27/nearing-the-7.0-release.html#renames-scoped-packages-babel-x) (the folder names in the [monorepo](https://github.com/babel/babel/tree/main/packages) are not changed but the name in its `package.json` is).
 
 This means there will be no more issues with accidental/intentional name squatting, a clear separation from community plugins, and a simpler naming convention.
 
@@ -180,7 +180,7 @@ module.exports = {
 };
 ```
 
-### [Switch to `-proposal-` for TC39 Proposals](/blog/2017/12/27/nearing-the-7.0-release.html#renames-proposal)
+### [Switch to `-proposal-` for TC39 Proposals](https://babeljs.io/blog/2017/12/27/nearing-the-7.0-release.html#renames-proposal)
 
 This means any plugin that isn't in a yearly release (ES2015, ES2016, etc) should be renamed to `-proposal`. This is so we can better signify that a proposal isn't officially in JavaScript.
 
@@ -191,7 +191,7 @@ Examples:
 
 This also means that when a proposal moves to Stage 4, we should rename the package.
 
-### [Remove the year from package names](/blog/2017/12/27/nearing-the-7.0-release.html#renames-drop-the-year-from-the-plugin-name)
+### [Remove the year from package names](https://babeljs.io/blog/2017/12/27/nearing-the-7.0-release.html#renames-drop-the-year-from-the-plugin-name)
 
 Some of the plugins had `-es3-` or `-es2015-` in the names, but these were unnecessary.
 
@@ -544,8 +544,7 @@ Newer proposals in flux will error by default and will require everyone to opt i
 
 TC39 decided to drop this proposal. You can move your logic into the constructor or into a static method.
 
-<!-- todo: dead link -->
-See [/docs/plugins/transform-class-constructor-call/](/docs/plugins/transform-class-constructor-call/) for more information.
+See [/docs/plugins/transform-class-constructor-call/](https://old.babeljs.io/docs/plugins/transform-class-constructor-call/) for more information.
 
 ```diff
   class Point {

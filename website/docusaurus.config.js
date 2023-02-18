@@ -84,7 +84,8 @@ const siteConfig = {
   titleDelimiter: "·",
   baseUrl: "/",
   favicon: "img/favicon.png",
-  onBrokenLinks: "ignore", // enable once everything works fine
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
   customFields: {
     repoUrl: "https://github.com/babel/babel",
     v6Url: "https://v6.babeljs.io/docs/setup/",
