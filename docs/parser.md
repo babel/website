@@ -50,6 +50,9 @@ mind. When in doubt, use `.parse()`.
   top-level scope of scripts. This option is discouraged in favor of
   `topLevelAwait` plugin.
 
+- **allowNewTargetOutsideFunction**: By default, `new.target` use is not
+  allowed outside of a function or class. Set this to `true` to accept such code.
+
 - **allowReturnOutsideFunction**: By default, a return statement at
   the top level raises an error. Set this to `true` to accept such
   code.
