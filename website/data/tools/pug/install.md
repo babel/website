@@ -1,5 +1,5 @@
 `jstransformer-babel` supports Babel 6 only.
 
-```sh
+```shell npm2yarn
 npm install jstransformer-babel
 ```

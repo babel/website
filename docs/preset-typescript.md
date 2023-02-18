@@ -19,13 +19,13 @@ const x: number = 0;
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 const x = 0;
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/preset-typescript
 ```
 
@@ -33,7 +33,7 @@ npm install --save-dev @babel/preset-typescript
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-typescript"]
 }
@@ -41,13 +41,13 @@ npm install --save-dev @babel/preset-typescript
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --presets @babel/preset-typescript script.ts
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-typescript"],
   filename: 'script.ts',

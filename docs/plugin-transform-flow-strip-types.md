@@ -10,19 +10,19 @@ sidebar_label: Flow Plugin
 
 **In**
 
-```javascript
+```js title="JavaScript"
 function foo(one: any, two: number, three?): string {}
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 function foo(one, two, three) {}
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-flow-strip-types
 ```
 
@@ -30,7 +30,7 @@ npm install --save-dev @babel/plugin-transform-flow-strip-types
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-flow-strip-types"]
 }
@@ -38,13 +38,13 @@ npm install --save-dev @babel/plugin-transform-flow-strip-types
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-flow-strip-types script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-flow-strip-types"],
 });
@@ -69,7 +69,7 @@ f<T>(e)
 
 Would get parsed as a nested binary expression:
 
-```javascript
+```js title="JavaScript"
 f < T > e;
 ```
 
@@ -91,7 +91,7 @@ Added in: `v7.9.0`
 
 When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
 
-```javascript
+```js title="JavaScript"
 class A {
   declare foo: string; // Removed
   bar: string; // Initialized to undefined

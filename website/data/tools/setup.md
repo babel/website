@@ -2,13 +2,13 @@
 
 To start, you can use the <a href="/docs/plugins/preset-env">env preset</a>, which enables transforms for ES2015+
 
-```shell
+```shell npm2yarn
 npm install @babel/preset-env --save-dev
 ```
 
 In order to enable the preset you have to define it in your <code>babel.config.json</code> file, like this:
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-env"]
 }

@@ -8,7 +8,7 @@ sidebar_label: minify-constant-folding
 
 **In**
 
-```javascript
+```js title="JavaScript"
 "a" + "b"
 2 * 3;
 4 | 3;
@@ -32,7 +32,7 @@ sidebar_label: minify-constant-folding
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 "ab";
 6;
 7;
@@ -57,7 +57,7 @@ c;
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-minify-constant-folding --save-dev
 ```
 
@@ -65,7 +65,7 @@ npm install babel-plugin-minify-constant-folding --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["minify-constant-folding"]
 }
@@ -73,13 +73,13 @@ npm install babel-plugin-minify-constant-folding --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins minify-constant-folding script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["minify-constant-folding"]
 });

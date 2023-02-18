@@ -10,7 +10,7 @@ There are two primary reasons for this.
 
 We can install Babel CLI locally by running:
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/core @babel/cli
 ```
 

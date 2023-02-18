@@ -10,7 +10,7 @@ sidebar_label: numeric-separator
 
 ### Decimal Literals
 
-```js
+```js title="JavaScript"
 let budget = 1_000_000_000_000;
 
 // What is the value of `budget`? It's 1 trillion!
@@ -21,7 +21,7 @@ console.log(budget === 10 ** 12); // true
 
 ### Binary Literals
 
-```js
+```js title="JavaScript"
 let nibbles = 0b1010_0001_1000_0101;
 
 // Is bit 7 on? It sure is!
@@ -34,7 +34,7 @@ console.log(!!(nibbles & (1 << 7))); // true
 
 ### Hex Literal
 
-```js
+```js title="JavaScript"
 // Messages are sent as 24 bit values, but should be
 // treated as 3 distinct bytes:
 let message = 0xa0_b0_c0;
@@ -63,7 +63,7 @@ Octals are great for permissions, but also look better when represented in `0o00
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-numeric-separator
 ```
 
@@ -71,7 +71,7 @@ npm install --save-dev @babel/plugin-proposal-numeric-separator
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-numeric-separator"]
 }
@@ -79,13 +79,13 @@ npm install --save-dev @babel/plugin-proposal-numeric-separator
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-numeric-separator script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-numeric-separator"],
 });
@@ -99,7 +99,7 @@ If you need to further compile ES2015 Decimal, Binary, Hex and Octal number repr
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-env"],
   "plugins": ["@babel/plugin-proposal-numeric-separator"]

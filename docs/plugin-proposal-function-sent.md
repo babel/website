@@ -6,7 +6,7 @@ sidebar_label: function-sent
 
 ## Example
 
-```js
+```js title="JavaScript"
 function* generator() {
   console.log("Sent", function.sent);
   console.log("Yield", yield);
@@ -19,7 +19,7 @@ iterator.next(2); // Logs "Yield 2"
 
 Is compiled roughly to
 
-```js
+```js title="JavaScript"
 let generator = _skipFirstGeneratorNext(function*() {
   const _functionSent = yield;
   console.log("Sent", _functionSent);
@@ -33,7 +33,7 @@ iterator.next(2); // Logs "Yield 2"
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-function-sent
 ```
 
@@ -41,7 +41,7 @@ npm install --save-dev @babel/plugin-proposal-function-sent
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-function-sent"]
 }
@@ -49,13 +49,13 @@ npm install --save-dev @babel/plugin-proposal-function-sent
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-function-sent script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-function-sent"],
 });

@@ -10,7 +10,7 @@ sidebar_label: decorators
 
 ### Simple class decorator
 
-```js
+```js title="JavaScript"
 @annotation
 class MyClass {}
 
@@ -21,7 +21,7 @@ function annotation(target) {
 
 ### Class decorator
 
-```js
+```js title="JavaScript"
 @isTestable(true)
 class MyClass {}
 
@@ -34,7 +34,7 @@ function isTestable(value) {
 
 ### Class function decorator
 
-```js
+```js title="JavaScript"
 class C {
   @enumerable(false)
   method() {}
@@ -50,7 +50,7 @@ function enumerable(value) {
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-decorators
 ```
 
@@ -58,7 +58,7 @@ npm install --save-dev @babel/plugin-proposal-decorators
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-decorators"]
 }
@@ -66,13 +66,13 @@ npm install --save-dev @babel/plugin-proposal-decorators
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-decorators script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-decorators"],
 });
@@ -110,7 +110,7 @@ This option:
 
 `boolean`
 
-```js
+```js title="JavaScript"
 // decoratorsBeforeExport: false
 export @decorator class Bar {}
 
@@ -135,7 +135,7 @@ If you are including your plugins manually and using `@babel/plugin-proposal-cla
 
 Wrong:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     "@babel/plugin-proposal-class-properties",
@@ -146,7 +146,7 @@ Wrong:
 
 Right:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     ["@babel/plugin-proposal-decorators", { "version": "legacy" }],

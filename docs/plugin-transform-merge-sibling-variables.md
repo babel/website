@@ -8,7 +8,7 @@ sidebar_label: merge-sibling-variables
 
 **In**
 
-```javascript
+```js title="JavaScript"
 // merge into a single VariableDeclaration
 var foo = "bar";
 var bar = "foo";
@@ -21,7 +21,7 @@ for (var x = 0; x < 10; x++) {}
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var foo = "bar",
   bar = "foo";
 foobar();
@@ -31,7 +31,7 @@ for (var i = 0, x = 0; x < 10; x++) {}
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-transform-merge-sibling-variables --save-dev
 ```
 
@@ -39,7 +39,7 @@ npm install babel-plugin-transform-merge-sibling-variables --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["transform-merge-sibling-variables"]
 }
@@ -47,13 +47,13 @@ npm install babel-plugin-transform-merge-sibling-variables --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins transform-merge-sibling-variables script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["transform-merge-sibling-variables"],
 });

@@ -10,13 +10,13 @@ sidebar_label: nullish-coalescing-operator
 
 **In**
 
-```javascript
+```js title="JavaScript"
 var foo = object.foo ?? "default";
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var _object$foo;
 
 var foo =
@@ -30,7 +30,7 @@ var foo =
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-nullish-coalescing-operator
 ```
 
@@ -38,7 +38,7 @@ npm install --save-dev @babel/plugin-proposal-nullish-coalescing-operator
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-nullish-coalescing-operator"]
 }
@@ -46,13 +46,13 @@ npm install --save-dev @babel/plugin-proposal-nullish-coalescing-operator
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-nullish-coalescing-operator script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-nullish-coalescing-operator"],
 });
@@ -70,8 +70,7 @@ against both `null` and `undefined`.
 
 > ⚠️ Consider migrating to the top level [`noDocumentAll`](assumptions.md#nodocumentall) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "noDocumentAll": true
@@ -83,13 +82,13 @@ against both `null` and `undefined`.
 
 **In**
 
-```javascript
+```js title="JavaScript"
 var foo = object.foo ?? "default";
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var _object$foo;
 
 var foo = (_object$foo = object.foo) != null ? _object$foo : "default";

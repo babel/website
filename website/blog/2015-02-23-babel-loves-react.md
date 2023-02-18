@@ -37,13 +37,13 @@ After:
 
 Before:
 
-```sh
+```sh title="Shell"
 $ browserify -t reactify main.js
 ```
 
 After:
 
-```sh
+```sh title="Shell"
 $ browserify -t babelify main.js
 ```
 
@@ -51,13 +51,13 @@ $ browserify -t babelify main.js
 
 Before:
 
-```js
+```js title="JavaScript"
 require('node-jsx').install();
 ```
 
 After:
 
-```js
+```js title="JavaScript"
 require('babel/register');
 ````
 
@@ -65,7 +65,7 @@ require('babel/register');
 
 Before:
 
-```js
+```js title="JavaScript"
 loaders: [
   { test: /\.js$/, exclude: /node_modules/, loader: 'jsx-loader'}
 ]
@@ -73,7 +73,7 @@ loaders: [
 
 After:
 
-```js
+```js title="JavaScript"
 loaders: [
   { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
 ]
@@ -83,7 +83,7 @@ loaders: [
 
 Before:
 
-```js
+```js title="JavaScript"
 gulp.src('views/**/*.js')
     .pipe(jsx())
     .pipe(gulp.dest('dist'));
@@ -91,7 +91,7 @@ gulp.src('views/**/*.js')
 
 After:
 
-```js
+```js title="JavaScript"
 gulp.src('views/**/*.js')
     .pipe(babel())
     .pipe(gulp.dest('dist'));

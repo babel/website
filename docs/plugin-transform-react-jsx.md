@@ -14,7 +14,7 @@ Automatic runtime is a feature added in `v7.9.0`. With this runtime enabled, the
 
 **In**
 
-```javascript
+```js title="JavaScript"
 const profile = (
   <div>
     <img src="avatar.png" className="profile" />
@@ -25,7 +25,7 @@ const profile = (
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 
@@ -46,7 +46,7 @@ const profile = _jsxs("div", {
 
 **In**
 
-```javascript
+```js title="JavaScript"
 /** @jsxImportSource custom-jsx-library */
 
 const profile = (
@@ -59,7 +59,7 @@ const profile = (
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 import { jsx as _jsx } from "custom-jsx-library/jsx-runtime";
 import { jsxs as _jsxs } from "custom-jsx-library/jsx-runtime";
 
@@ -78,7 +78,7 @@ const profile = _jsxs("div", {
 
 **In**
 
-```javascript
+```js title="JavaScript"
 /** @jsxRuntime classic */
 
 const profile = (
@@ -91,7 +91,7 @@ const profile = (
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 const profile = React.createElement(
   "div",
   null,
@@ -106,7 +106,7 @@ If you do not want (or cannot use) auto importing, you can use the classic runti
 
 **In**
 
-```javascript
+```js title="JavaScript"
 const profile = (
   <div>
     <img src="avatar.png" className="profile" />
@@ -117,7 +117,7 @@ const profile = (
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 const profile = React.createElement(
   "div",
   null,
@@ -130,7 +130,7 @@ const profile = React.createElement(
 
 **In**
 
-```javascript
+```js title="JavaScript"
 /** @jsx Preact.h */
 
 import Preact from "preact";
@@ -145,7 +145,7 @@ const profile = (
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 /** @jsx Preact.h */
 
 import Preact from "preact";
@@ -166,7 +166,7 @@ const profile = Preact.h(
 
 **In**
 
-```javascript
+```javascript title="JavaScript"
 const descriptions = items.map((item) => (
   <>
     <dt>{item.name}</dt>
@@ -177,7 +177,7 @@ const descriptions = items.map((item) => (
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 import { jsxs as _jsxs } from "react/jsx-runtime";
 import { Fragment as _Fragment } from "react/jsx-runtime";
 import { jsx as _jsx } from "react/jsx-runtime";
@@ -200,7 +200,7 @@ const descriptions = items.map((item) =>
 
 **In**
 
-```javascript
+```javascript title="JavaScript"
 const descriptions = items.map((item) => (
   <>
     <dt>{item.name}</dt>
@@ -211,7 +211,7 @@ const descriptions = items.map((item) => (
 
 **Out**
 
-```javascript
+```javascript title="JavaScript"
 const descriptions = items.map((item) =>
   React.createElement(
     React.Fragment,
@@ -226,7 +226,7 @@ const descriptions = items.map((item) =>
 
 **In**
 
-```javascript
+```js title="JavaScript"
 /** @jsx Preact.h */
 /** @jsxFrag Preact.Fragment */
 
@@ -242,7 +242,7 @@ var descriptions = items.map((item) => (
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 /** @jsx Preact.h */
 /** @jsxFrag Preact.Fragment */
 
@@ -262,7 +262,7 @@ Note that if a custom pragma is specified, then a custom fragment pragma must al
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-react-jsx
 ```
 
@@ -272,7 +272,7 @@ npm install --save-dev @babel/plugin-transform-react-jsx
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-react-jsx"]
 }
@@ -280,7 +280,7 @@ Without options:
 
 With options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [
@@ -297,13 +297,13 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-react-jsx script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-react-jsx"],
 });

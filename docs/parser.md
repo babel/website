@@ -151,7 +151,7 @@ For example: We push a fix to early error on something like [#107](https://githu
 
 ### Example
 
-```javascript
+```js title="JavaScript"
 require("@babel/parser").parse("code", {
   // parse in strict mode and allow module declarations
   sourceType: "module",
@@ -279,7 +279,7 @@ You should enable these features only if you are using an older version.
 
   - `decoratorsBeforeExport` (`boolean`)
 
-    ```js
+    ```js title="JavaScript"
     // decoratorsBeforeExport: true
     @dec
     export class C {}
@@ -351,7 +351,7 @@ There are two error codes, `code` and `reasonCode`.
 
 Example of using error codes with `errorRecovery`:
 
-```js
+```js title="JavaScript"
 const { parse } = require("@babel/parser");
 
 const ast = parse(`a b`, { errorRecovery: true });
@@ -372,7 +372,7 @@ Our current recommendation for those that want to create their own custom syntax
 
 To consume your custom parser, you can add a plugin to your [options](options.md#plugins) to call the parser via its npm package name or require it if using JavaScript,
 
-```js
+```js title="JavaScript"
 const parse = require("custom-fork-of-babel-parser-on-npm-here");
 
 module.exports = {

@@ -8,19 +8,19 @@ This plugin transforms regular expressions using the `v` flag, introduced by the
 
 ## Example
 
-```js
+```js title="JavaScript"
 /[\p{ASCII}&&\p{Decimal_Number}]/v
 ```
 
 will be transformed to
 
-```js
+```js title="JavaScript"
 /[0-9]/u
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-unicode-sets-regex
 ```
 
@@ -28,7 +28,7 @@ npm install --save-dev @babel/plugin-proposal-unicode-sets-regex
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-unicode-sets-regex"]
 }
@@ -36,13 +36,13 @@ npm install --save-dev @babel/plugin-proposal-unicode-sets-regex
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-unicode-sets-regex script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-unicode-sets-regex"],
 });

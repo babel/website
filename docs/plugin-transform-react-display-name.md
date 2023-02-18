@@ -10,14 +10,14 @@ sidebar_label: react-display-name
 
 **In**
 
-```js
+```js title="JavaScript"
 var foo = React.createClass({}); // React <= 15
 var bar = createReactClass({}); // React 16+
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 var foo = React.createClass({
   displayName: "foo",
 }); // React <= 15
@@ -28,7 +28,7 @@ var bar = createReactClass({
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-react-display-name
 ```
 
@@ -36,7 +36,7 @@ npm install --save-dev @babel/plugin-transform-react-display-name
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-react-display-name"]
 }
@@ -44,13 +44,13 @@ npm install --save-dev @babel/plugin-transform-react-display-name
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-react-display-name script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-react-display-name"],
 });

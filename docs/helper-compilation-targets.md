@@ -6,7 +6,7 @@ sidebar_label: helper-compilation-targets
 
 `@babel/helper-compilation-targets` is a helper package that works with compilation targets (browsers or other environments like node) and compat tables (knowing what version supports a specific syntax). It is used by `@babel/preset-env` to determine which plugin should be enabled based on the [`targets`](options.md#targets) option.
 
-```javascript
+```js title="JavaScript"
 import {
   filterItems,
   default as getTargets,
@@ -42,7 +42,7 @@ Given a compat data table `list` (i.e. `@babel/compat-data`) and [browser target
 
 **Example**
 
-```javascript
+```js title="JavaScript"
 const compatData = {
   "transform-feature-1": {
     chrome: "1",
@@ -143,7 +143,7 @@ Normalize user specified `targets` to a list of supported targets. See also (`@b
 
 **Example**
 
-```javascript
+```js title="JavaScript"
 // Return the default compilation targets
 // returns {}
 getTargets();
@@ -153,7 +153,7 @@ An empty compilation target is equivalent to [force all transforms](preset-env.m
 
 One can also query the compilation targets with ES Module support, like [`@vue/babel-preset-app`](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/babel-preset-app) did in order to provide a set of modern targets.
 
-```javascript
+```js title="JavaScript"
 /* returns {
   "android": "61.0.0",
   "chrome": "61.0.0",
@@ -194,8 +194,7 @@ Given browser targets `targets`, query the `compatData` whether plugin `name` is
 
 **Example**
 
-```javascript
-// babel.config.js
+```javascript title="babel.config.js"
 module.exports = api => {
   const targets = api.targets();
   // The targets have native optional chaining support
@@ -209,7 +208,7 @@ module.exports = api => {
 
 Plugin authors can use `isRequired` to optimize plugin output given different `targets`:
 
-```javascript
+```javascript title="example-babel-plugin.js"
 // a naive plugin replace `a.b` to `a != null && a.b`
 module.exports = api => {
   const targets = api.targets();

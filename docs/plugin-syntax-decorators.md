@@ -10,7 +10,7 @@ sidebar_label: syntax-decorators
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-decorators
 ```
 
@@ -18,7 +18,7 @@ npm install --save-dev @babel/plugin-syntax-decorators
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-decorators"]
 }
@@ -26,13 +26,13 @@ npm install --save-dev @babel/plugin-syntax-decorators
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-decorators script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-decorators"]
 });

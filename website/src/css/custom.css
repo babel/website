@@ -94,31 +94,15 @@ article[itemprop="blogPost"] h4 {
 .navbar__item svg {
   display: none;
 }
-.DocSearch,
+
 .DocSearch-Button {
-  width: 170px;
-  height: 32px !important;
-  background: rgba(0, 0, 0, 0.2) !important;
-}
-
-.DocSearch-Search-Icon {
-  color: white !important;
-}
-
-.DocSearch-Button-Keys {
-  display: none !important;
-}
-
-.DocSearch-Button-Placeholder {
-  color: white;
-  font-size: 14px;
-}
-
-@media only screen and (max-width: 1024px) {
-  .DocSearch,
-  .DocSearch-Button {
-    background-color: rgba(242, 196, 178, 0.25) !important;
-  }
+  /* Use dark mode DocSearch variables */
+  --docsearch-text-color: var(--ifm-navbar-link-color);
+  --docsearch-searchbox-background: rgba(0, 0, 0, 0.2);
+  --docsearch-searchbox-focus-background: rgba(0, 0, 0, 0.2);
+  --docsearch-key-gradient: linear-gradient(-26.5deg,#565872,#31355b);
+  --docsearch-key-shadow: inset 0 -2px 0 0 #282d55,inset 0 0 1px 1px #51577d,0 2px 2px 0 rgba(3,4,9,0.3);
+  --docsearch-muted-color: #7f8497;
 }
 
 .wrapper {

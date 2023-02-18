@@ -7,7 +7,7 @@ In computer science, this is known as an implementation of quasiquotes.
 
 ## Install
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/template
 ```
 
@@ -21,7 +21,7 @@ Please note that syntactic placeholders were introduced in Babel 7.4.0. If you d
 
 Input (syntactic placeholders):
 
-```js
+```js title="JavaScript"
 import template from "@babel/template";
 import generate from "@babel/generator";
 import * as t from "@babel/types";
@@ -40,7 +40,7 @@ console.log(generate(ast).code);
 
 Input (identifier placeholders):
 
-```js
+```js title="JavaScript"
 const buildRequire = template(`
   var IMPORT_NAME = require(SOURCE);
 `);
@@ -53,7 +53,7 @@ const ast = buildRequire({
 
 Output:
 
-```js
+```js title="JavaScript"
 const myModule = require("my-module");
 ```
 
@@ -62,7 +62,7 @@ const myModule = require("my-module");
 If no placeholders are in use and you just want a simple way to parse a
 string into an AST, you can use the `.ast` version of the template.
 
-```js
+```js title="JavaScript"
 const ast = template.ast(`
   var myModule = require("my-module");
 `);
@@ -72,7 +72,7 @@ which will parse and return the AST directly.
 
 ## Template Literal Usage
 
-```js
+```js title="JavaScript"
 import template from "@babel/template";
 import generate from "@babel/generator";
 import * as t from "@babel/types";
@@ -99,7 +99,7 @@ the template function.
 If no placeholders are in use and you just want a simple way to parse a
 string into an AST, you can use the `.ast` version of the template.
 
-```js
+```js title="JavaScript"
 const name = "my-module";
 const mod = "myModule";
 

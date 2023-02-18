@@ -10,7 +10,7 @@ sidebar_label: member-expression-literals
 
 **In**
 
-```javascript
+```js title="JavaScript"
 obj.foo = "isValid";
 
 obj.const = "isKeyword";
@@ -19,7 +19,7 @@ obj["var"] = "isKeyword";
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 obj.foo = "isValid";
 
 obj["const"] = "isKeyword";
@@ -28,7 +28,7 @@ obj["var"] = "isKeyword";
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install @babel/plugin-transform-member-expression-literals --save-dev
 ```
 
@@ -36,7 +36,7 @@ npm install @babel/plugin-transform-member-expression-literals --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-member-expression-literals"]
 }
@@ -44,13 +44,13 @@ npm install @babel/plugin-transform-member-expression-literals --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-member-expression-literals script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-member-expression-literals"],
 });

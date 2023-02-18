@@ -8,7 +8,7 @@ sidebar_label: new-target
 
 ## Example
 
-```js
+```js title="JavaScript"
 function Foo() {
   console.log(new.target);
 }
@@ -17,7 +17,7 @@ Foo(); // => undefined
 new Foo(); // => Foo
 ```
 
-```js
+```js title="JavaScript"
 class Foo {
   constructor() {
     console.log(new.target);
@@ -35,7 +35,7 @@ new Bar(); // => Bar
 This plugin relies on `this.constructor`, which means `super` must
 already have been called when using untransformed classes.
 
-```js
+```js title="JavaScript"
 class Foo {}
 
 class Bar extends Foo {
@@ -50,7 +50,7 @@ class Bar extends Foo {
 Additionally, this plugin cannot transform all `Reflect.construct` cases
 when using `newTarget` with ES5 function classes (transformed ES6 classes).
 
-```js
+```js title="JavaScript"
 function Foo() {
   console.log(new.target);
 }
@@ -75,7 +75,7 @@ Reflect.construct(Foo, [], Baz); // => undefined (incorrect)
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-new-target
 ```
 
@@ -83,7 +83,7 @@ npm install --save-dev @babel/plugin-transform-new-target
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-new-target"]
 }
@@ -91,13 +91,13 @@ npm install --save-dev @babel/plugin-transform-new-target
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-new-target script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-new-target"],
 });

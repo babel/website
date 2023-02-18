@@ -41,23 +41,12 @@ Please note that `@babel/eslint-parser` will rely on `@babel/core` as a peer dep
 
 Once you have ensured that `@babel/core` has been installed, you can run the following commands to upgrade from `babel-eslint` and `babel-eslint-plugin` to the new packages:
 
-npm
-
-```sh
+```shell npm2yarn
 npm uninstall babel-eslint babel-eslint-plugin
 npm install --save-dev @babel/eslint-parser @babel/eslint-plugin
 ```
 
-Yarn
-
-```sh
-yarn remove babel-eslint babel-eslint-plugin
-yarn add --dev @babel/eslint-parser @babel/eslint-plugin
-```
-
-.eslintrc.js
-
-```diff
+```diff title=".eslintrc.js"
 module.exports = {
 ---  parser: "babel-eslint",
 +++  parser: "@babel/eslint-parser"

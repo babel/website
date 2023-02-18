@@ -42,7 +42,7 @@ both expression and statement bodies.  Unlike functions, arrows share the same
 lexical `this` as their surrounding code. If an arrow is inside another function,
 it shares the "arguments" variable of its parent function.
 
-```js
+```js title="JavaScript"
 // Expression bodies
 var odds = evens.map(v => v + 1);
 var nums = evens.map((v, i) => v + i);
@@ -87,7 +87,7 @@ single convenient declarative form makes class patterns easier to use, and
 encourages interoperability.  Classes support prototype-based inheritance, super
 calls, instance and static methods and constructors.
 
-```js
+```js title="JavaScript"
 class SkinnedMesh extends THREE.Mesh {
   constructor(geometry, materials) {
     super(geometry, materials);
@@ -115,7 +115,7 @@ Together, these also bring object literals and class declarations closer
 together, and let object-based design benefit from some of the same
 conveniences.
 
-```js
+```js title="JavaScript"
 var obj = {
     // Sets the prototype. "__proto__" or '__proto__' would also work.
     __proto__: theProtoObj,
@@ -148,7 +148,7 @@ tag can be added to allow the string construction to be customized, avoiding
 injection attacks or constructing higher level data structures from string
 contents.
 
-```js
+```js title="JavaScript"
 // Basic literal string creation
 `This is a pretty little template string.`
 
@@ -177,7 +177,7 @@ Destructuring allows binding using pattern matching, with support for matching
 arrays and objects.  Destructuring is fail-soft, similar to standard object
 lookup `foo["bar"]`, producing `undefined` values when not found.
 
-```js
+```js title="JavaScript"
 // list matching
 var [a, ,b] = [1,2,3];
 a === 1;
@@ -218,21 +218,21 @@ Callee-evaluated default parameter values. Turn an array into consecutive
 arguments in a function call. Bind trailing parameters to an array. Rest
 replaces the need for `arguments` and addresses common cases more directly.
 
-```js
+```js title="JavaScript"
 function f(x, y=12) {
   // y is 12 if not passed (or passed as undefined)
   return x + y;
 }
 f(3) == 15
 ```
-```js
+```js title="JavaScript"
 function f(x, ...y) {
   // y is an Array
   return x * y.length;
 }
 f(3, "hello", true) == 6
 ```
-```js
+```js title="JavaScript"
 function f(x, y, z) {
   return x + y + z;
 }
@@ -246,7 +246,7 @@ Block-scoped binding constructs. `let` is the new `var`. `const` is
 single-assignment. Static restrictions prevent use before assignment.
 
 
-```js
+```js title="JavaScript"
 function f() {
   {
     let x;
@@ -271,7 +271,7 @@ Iterable. Generalize `for..in` to custom iterator-based iteration with
 `for..of`. Don’t require realizing an array, enabling lazy design patterns like
 LINQ.
 
-```js
+```js title="JavaScript"
 let fibonacci = {
   [Symbol.iterator]() {
     let pre = 0, cur = 1;
@@ -325,7 +325,7 @@ value (or throws).
 
 Note: Can also be used to enable ‘await’-like async programming, see also ES7 `await` [proposal](https://github.com/lukehoban/ecmascript-asyncawait).
 
-```js
+```js title="JavaScript"
 var fibonacci = {
   [Symbol.iterator]: function*() {
     var pre = 0, cur = 1;
@@ -374,7 +374,7 @@ form in strings and new RegExp `u` mode to handle code points, as well as new
 APIs to process strings at the 21bit code points level.  These additions support
 building global apps in JavaScript.
 
-```js
+```js title="JavaScript"
 // same as ES5.1
 "𠮷".length == 2
 
@@ -401,19 +401,19 @@ from popular JavaScript module loaders (AMD, CommonJS). Runtime behaviour
 defined by a host-defined default loader. Implicitly async model – no code
 executes until requested modules are available and processed.
 
-```js
+```js title="JavaScript"
 // lib/math.js
 export function sum(x, y) {
   return x + y;
 }
 export var pi = 3.141593;
 ```
-```js
+```js title="JavaScript"
 // app.js
 import * as math from "lib/math";
 console.log("2π = " + math.sum(math.pi, math.pi));
 ```
-```js
+```js title="JavaScript"
 // otherApp.js
 import {sum, pi} from "lib/math";
 console.log("2π = " + sum(pi, pi));
@@ -421,7 +421,7 @@ console.log("2π = " + sum(pi, pi));
 
 Some additional features include `export default` and `export *`:
 
-```js
+```js title="JavaScript"
 // lib/mathplusplus.js
 export * from "lib/math";
 export var e = 2.71828182846;
@@ -429,7 +429,7 @@ export default function(x) {
     return Math.exp(x);
 }
 ```
-```js
+```js title="JavaScript"
 // app.js
 import exp, {pi, e} from "lib/mathplusplus";
 console.log("e^π = " + exp(pi));
@@ -464,7 +464,7 @@ Module loaders support:
 The default module loader can be configured, and new loaders can be constructed
 to evaluate and load code in isolated or constrained contexts.
 
-```js
+```js title="JavaScript"
 // Dynamic loading – ‘System’ is default loader
 System.import("lib/math").then(function(m) {
   alert("2π = " + m.sum(m.pi, m.pi));
@@ -505,7 +505,7 @@ System.set("jquery", Module({$: $})); // WARNING: not yet finalized
 Efficient data structures for common algorithms.  WeakMaps provides leak-free
 object-key’d side tables.
 
-```js
+```js title="JavaScript"
 // Sets
 var s = new Set();
 s.add("hello").add("goodbye").add("hello");
@@ -542,7 +542,7 @@ Proxies enable creation of objects with the full range of behaviors available to
 host objects.  Can be used for interception, object virtualization,
 logging/profiling, etc.
 
-```js
+```js title="JavaScript"
 // Proxying a normal object
 var target = {};
 var handler = {
@@ -555,7 +555,7 @@ var p = new Proxy(target, handler);
 p.world === "Hello, world!";
 ```
 
-```js
+```js title="JavaScript"
 // Proxying a function object
 var target = function () { return "I am the target"; };
 var handler = {
@@ -570,7 +570,7 @@ p() === "I am the proxy";
 
 There are traps available for all of the runtime-level meta-operations:
 
-```js
+```js title="JavaScript"
 var handler =
 {
   // target.prop
@@ -620,7 +620,7 @@ type. Optional `name` parameter used in debugging - but is not part of identity.
 Symbols are unique (like gensym), but not private since they are exposed via
 reflection features like `Object.getOwnPropertySymbols`.
 
-```js
+```js title="JavaScript"
 (function() {
 
   // module scoped symbol
@@ -655,7 +655,7 @@ c["key"] === undefined
 
 In ES2015, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
 
-```js
+```js title="JavaScript"
 // User code of Array subclass
 class MyArray extends Array {
     constructor(...args) { super(...args); }
@@ -678,7 +678,7 @@ arr.length == 2
 Many new library additions, including core Math libraries, Array conversion
 helpers, and Object.assign for copying.
 
-```js
+```js title="JavaScript"
 Number.EPSILON
 Number.isInteger(Infinity) // false
 Number.isNaN("NaN") // false
@@ -715,7 +715,7 @@ Object.assign(Point, { origin: new Point(0,0) })
 ### Binary and Octal Literals
 Two new numeric literal forms are added for binary (`b`) and octal (`o`).
 
-```js
+```js title="JavaScript"
 0b111110111 === 503 // true
 0o767 === 503 // true
 ```
@@ -735,7 +735,7 @@ Promises are a library for asynchronous programming. Promises are a first class
 representation of a value that may be made available in the future. Promises are
 used in many existing JavaScript libraries.
 
-```js
+```js title="JavaScript"
 function timeout(duration = 0) {
     return new Promise((resolve, reject) => {
         setTimeout(resolve, duration);
@@ -765,7 +765,7 @@ is effectively the inverse of the Proxy API, and allows making calls
 corresponding to the same meta-operations as the proxy traps. Especially useful
 for implementing proxies.
 
-```js
+```js title="JavaScript"
 var O = {a: 1};
 Object.defineProperty(O, 'b', {value: 2});
 O[Symbol('c')] = 3;
@@ -791,7 +791,7 @@ instance.c; // 42
 Calls in tail-position are guaranteed to not grow the stack unboundedly. Makes
 recursive algorithms safe in the face of unbounded inputs.
 
-```js
+```js title="JavaScript"
 function factorial(n, acc = 1) {
     "use strict";
     if (n <= 1) return acc;

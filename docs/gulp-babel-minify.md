@@ -4,13 +4,13 @@ title: gulp-babel-minify
 sidebar_label: gulp-babel-minify
 ---
 
-```sh
+```shell npm2yarn
 npm install gulp-babel-minify --save-dev
 ```
 
 ## Usage
 
-```js
+```js title="gulpfile.js"
 const gulp = require("gulp");
 const minify = require("gulp-babel-minify");
 
@@ -27,7 +27,7 @@ gulp.task("minify", () =>
 
 ## API
 
-```js
+```js title="JavaScript"
 gulpBabelMinify(minifyOptions, overrides);
 ```
 

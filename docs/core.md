@@ -3,7 +3,7 @@ id: babel-core
 title: "@babel/core"
 ---
 
-```javascript
+```js title="JavaScript"
 var babel = require("@babel/core");
 import { transform } from "@babel/core";
 import * as babel from "@babel/core";
@@ -18,7 +18,7 @@ All transformations will use your local [configuration files](config-files.md).
 Transforms the passed in `code`. Calling a callback with an object with the generated code,
 source map, and AST.
 
-```js
+```js title="JavaScript"
 babel.transform(code, options, function(err, result) {
   result; // => { code, map, ast }
 });
@@ -26,7 +26,7 @@ babel.transform(code, options, function(err, result) {
 
 **Example**
 
-```js
+```js title="JavaScript"
 babel.transform("code();", options, function(err, result) {
   result.code;
   result.map;
@@ -45,13 +45,13 @@ babel.transform("code();", options, function(err, result) {
 Transforms the passed in `code`. Returning an object with the generated code,
 source map, and AST.
 
-```js
+```js title="JavaScript"
 babel.transformSync(code, options); // => { code, map, ast }
 ```
 
 **Example**
 
-```js
+```js title="JavaScript"
 var result = babel.transformSync("code();", options);
 result.code;
 result.map;
@@ -65,13 +65,13 @@ result.ast;
 Transforms the passed in `code`. Returning an promise for an object with the
 generated code, source map, and AST.
 
-```js
+```js title="JavaScript"
 babel.transformAsync(code, options); // => Promise<{ code, map, ast }>
 ```
 
 **Example**
 
-```js
+```js title="JavaScript"
 babel.transformAsync("code();", options).then(result => {
   result.code;
   result.map;
@@ -85,13 +85,13 @@ babel.transformAsync("code();", options).then(result => {
 
 Asynchronously transforms the entire contents of a file.
 
-```js
+```js title="JavaScript"
 babel.transformFile(filename, options, callback);
 ```
 
 **Example**
 
-```js
+```js title="JavaScript"
 babel.transformFile("filename.js", options, function(err, result) {
   result; // => { code, map, ast }
 });
@@ -104,13 +104,13 @@ babel.transformFile("filename.js", options, function(err, result) {
 Synchronous version of `babel.transformFile`. Returns the transformed contents of
 the `filename`.
 
-```js
+```js title="JavaScript"
 babel.transformFileSync(filename, options); // => { code, map, ast }
 ```
 
 **Example**
 
-```js
+```js title="JavaScript"
 babel.transformFileSync("filename.js", options).code;
 ```
 
@@ -121,13 +121,13 @@ babel.transformFileSync("filename.js", options).code;
 Promise version of `babel.transformFile`. Returns a promise for the transformed
 contents of the `filename`.
 
-```js
+```js title="JavaScript"
 babel.transformFileAsync(filename, options); // => Promise<{ code, map, ast }>
 ```
 
 **Example**
 
-```js
+```js title="JavaScript"
 babel.transformFileAsync("filename.js", options).then(result => {
   result.code;
 });
@@ -139,7 +139,7 @@ babel.transformFileAsync("filename.js", options).then(result => {
 
 Given an [AST](https://astexplorer.net/), transform it.
 
-```js
+```js title="JavaScript"
 const sourceCode = "if (true) return;";
 const parsedAst = babel.parseSync(sourceCode, {
   parserOpts: { allowReturnOutsideFunction: true },
@@ -159,7 +159,7 @@ babel.transformFromAst(parsedAst, sourceCode, options, function(err, result) {
 
 Given an [AST](https://astexplorer.net/), transform it.
 
-```js
+```js title="JavaScript"
 const sourceCode = "if (true) return;";
 const parsedAst = babel.parseSync(sourceCode, {
   parserOpts: { allowReturnOutsideFunction: true },
@@ -177,7 +177,7 @@ const { code, map, ast } = babel.transformFromAstSync(
 
 Given an [AST](https://astexplorer.net/), transform it.
 
-```js
+```js title="JavaScript"
 const sourceCode = "if (true) return;";
 babel
   .parseAsync(sourceCode, { parserOpts: { allowReturnOutsideFunction: true } })

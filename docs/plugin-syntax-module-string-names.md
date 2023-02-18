@@ -8,13 +8,13 @@ sidebar_label: syntax-module-string-names
 
 This plugin enables `@babel/parser` to parse
 
-```js
+```js title="JavaScript"
 export { smile as "😄" } from "./emojis.js";
 ```
 
 It requires `@babel/parser@^7.12.0`. When used with `@babel/plugin-transform-modules-commonjs`, the example above will be transformed as
 
-```js
+```js title="JavaScript"
 const emojis = require("./emojis.js");
 Object.defineProperty(exports, "__esModule", {
   value: true,
@@ -27,7 +27,7 @@ Note that it is not possible to transpile this syntax to ES2015-style imports an
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-module-string-names
 ```
 
@@ -35,7 +35,7 @@ npm install --save-dev @babel/plugin-syntax-module-string-names
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-module-string-names"]
 }
@@ -43,13 +43,13 @@ npm install --save-dev @babel/plugin-syntax-module-string-names
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-module-string-names script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-module-string-names"],
 });

@@ -10,7 +10,7 @@ sidebar_label: object-super
 
 **In**
 
-```javascript
+```js title="JavaScript"
 let obj = {
   say() {
     return "Hello";
@@ -26,7 +26,7 @@ let obj2 = {
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var _obj;
 
 var _get = function get(object, property, receiver) {
@@ -69,7 +69,7 @@ var obj2 = (_obj = {
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-object-super
 ```
 
@@ -77,7 +77,7 @@ npm install --save-dev @babel/plugin-transform-object-super
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-object-super"]
 }
@@ -85,13 +85,13 @@ npm install --save-dev @babel/plugin-transform-object-super
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-object-super script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-object-super"],
 });

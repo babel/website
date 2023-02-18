@@ -8,13 +8,13 @@ sidebar_label: export-namespace-from
 
 ## Example
 
-```js
+```js title="JavaScript"
 export * as ns from "mod";
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-export-namespace-from
 ```
 
@@ -22,7 +22,7 @@ npm install --save-dev @babel/plugin-proposal-export-namespace-from
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-export-namespace-from"]
 }
@@ -30,13 +30,13 @@ npm install --save-dev @babel/plugin-proposal-export-namespace-from
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-export-namespace-from script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-export-namespace-from"],
 });

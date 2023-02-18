@@ -6,7 +6,7 @@ sidebar_label: throw-expressions
 
 ## Example
 
-```js
+```js title="JavaScript"
 function test(param = throw new Error("required!")) {
   const test = param === true || throw new Error("Falsy!");
 }
@@ -14,7 +14,7 @@ function test(param = throw new Error("required!")) {
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-throw-expressions
 ```
 
@@ -22,7 +22,7 @@ npm install --save-dev @babel/plugin-proposal-throw-expressions
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-throw-expressions"]
 }
@@ -30,13 +30,13 @@ npm install --save-dev @babel/plugin-proposal-throw-expressions
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-throw-expressions script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-throw-expressions"],
 });

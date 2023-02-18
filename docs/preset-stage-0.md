@@ -11,7 +11,7 @@ sidebar_label: stage-0
 
 ## Install
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/preset-stage-0
 ```
 
@@ -19,7 +19,7 @@ npm install --save-dev @babel/preset-stage-0
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-stage-0"]
 }
@@ -27,13 +27,13 @@ npm install --save-dev @babel/preset-stage-0
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel script.js --presets @babel/preset-stage-0
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-stage-0"]
 });

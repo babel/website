@@ -104,6 +104,9 @@ const siteConfig = {
         theme: {
           customCss: [require.resolve("./src/css/custom.css")],
         },
+        pages: {
+          remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
+        },
         docs: {
           editUrl: "https://github.com/babel/website/edit/main/docs",
 
@@ -114,10 +117,15 @@ const siteConfig = {
 
           showLastUpdateAuthor: false,
           showLastUpdateTime: false,
+
+          remarkPlugins: [
+            [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
+          ],
         },
         blog: {
           blogSidebarTitle: "All Blog Posts",
           blogSidebarCount: "ALL",
+          remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
         },
         // ...
       },

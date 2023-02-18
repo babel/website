@@ -13,7 +13,7 @@ sidebar_label: named-capturing-groups-regex
 
 **In**
 
-```javascript
+```js title="JavaScript"
 var re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
 
 console.log(re.exec("1999-02-29").groups.year);
@@ -21,7 +21,7 @@ console.log(re.exec("1999-02-29").groups.year);
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var re = _wrapRegExp(/(\d{4})-(\d{2})-(\d{2})/, { year: 1, month: 2, day: 3 });
 
 console.log(re.exec("1999-02-29").groups.year);
@@ -29,7 +29,7 @@ console.log(re.exec("1999-02-29").groups.year);
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-named-capturing-groups-regex
 ```
 
@@ -37,7 +37,7 @@ npm install --save-dev @babel/plugin-transform-named-capturing-groups-regex
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-named-capturing-groups-regex"]
 }
@@ -45,13 +45,13 @@ npm install --save-dev @babel/plugin-transform-named-capturing-groups-regex
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-named-capturing-groups-regex script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-named-capturing-groups-regex"],
 });
@@ -66,7 +66,7 @@ require("@babel/core").transformSync("code", {
 When this option is disabled, Babel doesn't wrap RegExps with the `_wrapRegExp` helper.
 The output only supports internal group references, and not runtime properties:
 
-```js
+```js title="JavaScript"
 var stringRe = /(?<quote>"|').*?\k<quote>/;
 
 stringRe.test("'foo'"); // "true", works

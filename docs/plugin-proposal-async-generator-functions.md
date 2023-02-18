@@ -10,7 +10,7 @@ sidebar_label: async-generator-functions
 
 **In**
 
-```javascript
+```js title="JavaScript"
 async function* agf() {
   await 1;
   yield 2;
@@ -19,7 +19,7 @@ async function* agf() {
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var _asyncGenerator = ...
 
 let agf = (() => {
@@ -36,7 +36,7 @@ let agf = (() => {
 
 For await example
 
-```js
+```js title="JavaScript"
 async function f() {
   for await (let x of y) {
     g(x);
@@ -46,7 +46,7 @@ async function f() {
 
 **Example Usage**
 
-```js
+```js title="JavaScript"
 async function* genAnswers() {
   var stream = [Promise.resolve(4), Promise.resolve(9), Promise.resolve(12)];
   var total = 0;
@@ -77,7 +77,7 @@ forEach(genAnswers(), function(val) {
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-async-generator-functions
 ```
 
@@ -85,7 +85,7 @@ npm install --save-dev @babel/plugin-proposal-async-generator-functions
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-async-generator-functions"]
 }
@@ -93,13 +93,13 @@ npm install --save-dev @babel/plugin-proposal-async-generator-functions
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-async-generator-functions script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-async-generator-functions"],
 });

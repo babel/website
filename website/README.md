@@ -2,7 +2,7 @@
 
 ## Try it
 
-```sh
+```sh title="Shell"
 cd website
 yarn
 yarn start

@@ -17,7 +17,7 @@ Please see [babel/rfcs#5](https://github.com/babel/rfcs/pull/5), [google/traceur
 Arrow functions **are not** synonymous with normal functions. `arguments` and `this` inside arrow functions
 reference their _outer function_ for example:
 
-```javascript
+```js title="JavaScript"
 const user = {
   firstName: "Sebastian",
   lastName: "McKenzie",
@@ -58,13 +58,13 @@ At the heart of Babel 6 are [plugins](plugins.md). What plugins you need complet
 depends on your specific configuration but just add the following [config file](config-files.md) to
 get all the same transforms that were in Babel 5:
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["env", "react", "stage-2"]
 }
 ```
 
-```sh
+```shell npm2yarn
 npm install babel-preset-env babel-preset-react babel-preset-stage-2 --save-dev
 ```
 

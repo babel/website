@@ -2148,6 +2148,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@docusaurus/remark-plugin-npm2yarn@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "@docusaurus/remark-plugin-npm2yarn@npm:2.3.1"
+  dependencies:
+    npm-to-yarn: ^1.0.1
+    tslib: ^2.4.0
+    unist-util-visit: ^2.0.3
+  checksum: ef6cf613fecdc86bdbe3bfb49e212cbf18c5882a78363e1355899dbae110111adae31986a1318790698eb9d6e4fe0a02864fd3d711892331bc2425603f9e2f93
+  languageName: node
+  linkType: hard
+
 "@docusaurus/theme-classic@npm:2.3.1":
   version: 2.3.1
   resolution: "@docusaurus/theme-classic@npm:2.3.1"
@@ -10732,6 +10743,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"npm-to-yarn@npm:^1.0.1":
+  version: 1.3.0
+  resolution: "npm-to-yarn@npm:1.3.0"
+  checksum: 374d61b661189efaa0ac53ed76d5526bf35f3ec7f025c5557a1748c053a1f5aac6c4c0e40a238276ae52839a54e481afce3f91c2aad1241c450aaa721e017365
+  languageName: node
+  linkType: hard
+
 "npmlog@npm:^6.0.0":
   version: 6.0.2
   resolution: "npmlog@npm:6.0.2"
@@ -15681,6 +15699,7 @@ __metadata:
   dependencies:
     "@docusaurus/core": ^2.3.1
     "@docusaurus/preset-classic": ^2.3.1
+    "@docusaurus/remark-plugin-npm2yarn": ^2.3.1
     react: ^16.0.0
     react-dom: ^16.0.0
     react-markdown: ^8.0.5

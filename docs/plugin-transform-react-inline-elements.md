@@ -18,13 +18,13 @@ This transform **should be enabled only in production** (e.g., just before minif
 
 **In**
 
-```javascript
+```js title="JavaScript"
 <Baz foo="bar" key="1" />
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 babelHelpers.jsx(
   Baz,
   {
@@ -45,7 +45,7 @@ babelHelpers.jsx(
 
 **Deopt**
 
-```js
+```js title="JavaScript"
 // The plugin will still use React.createElement when `ref` or `object rest spread` is used
 <Foo ref="bar" />
 <Foo {...bar} />
@@ -53,7 +53,7 @@ babelHelpers.jsx(
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-react-inline-elements
 ```
 
@@ -61,7 +61,7 @@ npm install --save-dev @babel/plugin-transform-react-inline-elements
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-react-inline-elements"]
 }
@@ -69,13 +69,13 @@ npm install --save-dev @babel/plugin-transform-react-inline-elements
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-react-inline-elements script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-react-inline-elements"],
 });

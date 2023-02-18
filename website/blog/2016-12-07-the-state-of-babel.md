@@ -125,7 +125,7 @@ Its goal is both simplicity in use and efficiency in output: you only need to wo
 
 Targeting Chrome 55 + last 2 versions of other browsers via [browserslist](https://github.com/ai/browserslist)
 
-```js
+```js title="JavaScript"
 {
   "presets": [
     ["env", {
@@ -140,7 +140,7 @@ Targeting Chrome 55 + last 2 versions of other browsers via [browserslist](https
 
 Targeting the current Node.js version (uses `process.versions.node`)
 
-```js
+```js title="JavaScript"
 {
   "presets": [
     ["env", {
@@ -154,7 +154,7 @@ Targeting the current Node.js version (uses `process.versions.node`)
 
 Chrome 55 `useBuiltIns` + webpack 2
 
-```js
+```js title="JavaScript"
 {
   "presets": [
     ["env", {
@@ -170,13 +170,13 @@ Chrome 55 `useBuiltIns` + webpack 2
 
 **In**
 
-```js
+```js title="JavaScript"
 import "babel-polyfill";
 ```
 
 **Out (different based on environment)**
 
-```js
+```js title="JavaScript"
 import "core-js/modules/es7.string.pad-start";
 import "core-js/modules/es7.string.pad-end";
 ```
@@ -210,7 +210,7 @@ Relevant Issues:
 
 **In**
 
-```js
+```js title="JavaScript"
 class Mangler {
   constructor(program) {
     this.program = program;
@@ -221,7 +221,7 @@ new Mangler();
 
 **Out**
 
-```js
+```js title="JavaScript"
 // ES2015 code -> Babili -> Minified ES2015 Code
 class a{constructor(b){this.program=b}}new a;
 ```
@@ -248,7 +248,7 @@ By passing in [Recast](https://github.com/benjamn/recast) in the options, Babel 
 
 `.babelrc`
 
-```js
+```js title="JavaScript"
 {
   "parserOpts": {
     "parser": "recast"
@@ -261,7 +261,7 @@ By passing in [Recast](https://github.com/benjamn/recast) in the options, Babel 
 
 Run the relevant Babel transform(s) on the source code and overwrite it:
 
-```sh
+```sh title="Shell"
 babel src -d src
 ```
 

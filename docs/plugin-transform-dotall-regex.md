@@ -10,25 +10,25 @@ sidebar_label: dotall-regex
 
 **In**
 
-```js
+```js title="JavaScript"
 /./s;
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 /[\0-\uFFFF]/;
 ```
 
 **In**
 
-```js
+```js title="JavaScript"
 /./su;
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 /[\0-\u{10FFFF}]/u;
 ```
 
@@ -36,7 +36,7 @@ sidebar_label: dotall-regex
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-dotall-regex
 ```
 
@@ -46,7 +46,7 @@ npm install --save-dev @babel/plugin-transform-dotall-regex
 
 `.babelrc`
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-dotall-regex"]
 }
@@ -54,13 +54,13 @@ npm install --save-dev @babel/plugin-transform-dotall-regex
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 $ babel --plugins @babel/plugin-transform-dotall-regex script.js
 ```
 
 ### Via Node.js API
 
-```js
+```js title="JavaScript"
 require("@babel/core").transformSync(code, {
   plugins: ["@babel/plugin-transform-dotall-regex"],
 });

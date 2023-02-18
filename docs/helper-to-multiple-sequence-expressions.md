@@ -4,7 +4,7 @@ title: babel-helper-to-multiple-sequence-expressions
 sidebar_label: babel-helper-to-multiple-sequence-expressions
 ---
 
-```sh
+```shell npm2yarn
 npm install babel-helper-to-multiple-sequence-expressions --save-dev
 ```
 

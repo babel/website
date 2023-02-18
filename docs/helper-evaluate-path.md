@@ -8,7 +8,7 @@ Fixes / Features:
 
 + Detect usages before initialization / declaration
 
-```js
+```js title="JavaScript"
 function foo() {
   console.log(b); // ReferenceError
   let b = 1;
@@ -23,7 +23,7 @@ function bar() {
 
 + Detect usages in scopes outside of initialization for vars (hoisted)
 
-```js
+```js title="JavaScript"
 function foo() {
   if (a) var x = 5;
   console.log(x); // cannot determine
@@ -32,7 +32,7 @@ function foo() {
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-helper-evaluate-path --save-dev
 ```
 

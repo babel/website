@@ -12,7 +12,7 @@ This plugin actually converts duplicate keys in objects to be computed propertie
 
 **In**
 
-```javascript
+```js title="JavaScript"
 var x = { a: 5, a: 6 };
 var y = {
   get a() {},
@@ -23,7 +23,7 @@ var y = {
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var x = { a: 5, ["a"]: 6 };
 var y = {
   get a() {},
@@ -34,7 +34,7 @@ var y = {
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-duplicate-keys
 ```
 
@@ -42,7 +42,7 @@ npm install --save-dev @babel/plugin-transform-duplicate-keys
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-duplicate-keys"]
 }
@@ -50,13 +50,13 @@ npm install --save-dev @babel/plugin-transform-duplicate-keys
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-duplicate-keys script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-duplicate-keys"],
 });

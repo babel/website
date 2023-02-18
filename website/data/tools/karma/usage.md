@@ -1,4 +1,4 @@
-```js
+```js title="JavaScript"
 module.exports = function(config) {
   config.set({
     files: [

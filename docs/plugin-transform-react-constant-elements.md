@@ -11,7 +11,7 @@ React elements to the highest possible scope, preventing multiple unnecessary re
 
 **In**
 
-```jsx
+```jsx title="JSX"
 const Hr = () => {
   return <hr className="hr" />;
 };
@@ -19,7 +19,7 @@ const Hr = () => {
 
 **Out**
 
-```jsx
+```jsx title="JSX"
 const _ref = <hr className="hr" />;
 
 const Hr = () => {
@@ -31,13 +31,13 @@ const Hr = () => {
 
 - **Spread Operator**
 
-  ```jsx
+  ```jsx title="JSX"
   <div {...foobar} />
   ```
 
 - **Refs**
 
-  ```jsx
+  ```jsx title="JSX"
   <div ref="foobar" />
   <div ref={node => this.node = node} />
   ```
@@ -46,13 +46,13 @@ const Hr = () => {
 
 > See https://github.com/facebook/react/issues/3226 for more on this
 
-```js
+```js title="JavaScript"
 <div style={{ width: 100 }} />
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-react-constant-elements
 ```
 
@@ -60,7 +60,7 @@ npm install --save-dev @babel/plugin-transform-react-constant-elements
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-react-constant-elements"]
 }
@@ -77,7 +77,7 @@ that the element won't modify its own props, you can permit objects to be allowe
 
 This will skip the `Mutable Properties` deopt.
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [
@@ -92,13 +92,13 @@ This will skip the `Mutable Properties` deopt.
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-react-constant-elements script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-react-constant-elements"],
 });

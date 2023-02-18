@@ -10,7 +10,7 @@ sidebar_label: syntax-object-rest-spread
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-object-rest-spread
 ```
 
@@ -18,7 +18,7 @@ npm install --save-dev @babel/plugin-syntax-object-rest-spread
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-object-rest-spread"]
 }
@@ -26,13 +26,13 @@ npm install --save-dev @babel/plugin-syntax-object-rest-spread
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-object-rest-spread script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-object-rest-spread"]
 });

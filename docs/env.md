@@ -24,7 +24,7 @@ If you don't use Babel or don't use deprecated yearly presets, you probably saw 
 
 ### Install
 
-```sh
+```shell npm2yarn
 npm install babel-preset-env --save-dev
 ```
 
@@ -61,7 +61,7 @@ npm install babel-preset-env --save-dev
 
 #### [options](options.md) against a specific chrome version
 
-```json
+```json title="babel.config.json"
 {
   "presets": [
     [
@@ -78,7 +78,7 @@ npm install babel-preset-env --save-dev
 
 #### [options](options.md) against current node version
 
-```json
+```json title="babel.config.json"
 {
   "presets": [
     [

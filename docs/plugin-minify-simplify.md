@@ -10,7 +10,7 @@ sidebar_label: minify-simplify
 
 **In**
 
-```js
+```js title="JavaScript"
 function foo() {
   if (x) a();
 }
@@ -22,7 +22,7 @@ function foo2() {
 
 **Out**
 
-```js
+```js title="JavaScript"
 function foo() {
   x && a();
 }
@@ -35,7 +35,7 @@ function foo2() {
 
 **In**
 
-```js
+```js title="JavaScript"
 undefined
 foo['bar']
 Number(foo)
@@ -43,7 +43,7 @@ Number(foo)
 
 **Out**
 
-```js
+```js title="JavaScript"
 void 0
 foo.bar
 +foo
@@ -52,7 +52,7 @@ foo.bar
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-minify-simplify --save-dev
 ```
 
@@ -60,7 +60,7 @@ npm install babel-plugin-minify-simplify --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["minify-simplify"]
 }
@@ -68,13 +68,13 @@ npm install babel-plugin-minify-simplify --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins minify-simplify script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["minify-simplify"]
 });

@@ -10,14 +10,14 @@ sidebar_label: for-of
 
 **In**
 
-```js
+```js title="JavaScript"
 for (var i of foo) {
 }
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 var _iteratorNormalCompletion = true;
 var _didIteratorError = false;
 var _iteratorError = undefined;
@@ -48,7 +48,7 @@ try {
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-for-of
 ```
 
@@ -58,7 +58,7 @@ npm install --save-dev @babel/plugin-transform-for-of
 
 Without options:
 
-```js
+```js title="JavaScript"
 {
   "plugins": ["@babel/plugin-transform-for-of"]
 }
@@ -66,7 +66,7 @@ Without options:
 
 With options:
 
-```js
+```js title="JavaScript"
 {
   "plugins": [
     ["@babel/plugin-transform-for-of", {
@@ -79,13 +79,13 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-for-of script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-for-of"],
 });
@@ -101,8 +101,7 @@ In loose mode, arrays are put in a fast path, thus heavily increasing performanc
 
 > ⚠️ Consider migrating to the top level [`skipForOfIteratorClosing`](assumptions.md#skipforofiteratorclosing) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "skipForOfIteratorClosing": true
@@ -116,14 +115,14 @@ All other iterables will continue to work fine.
 
 **In**
 
-```js
+```js title="JavaScript"
 for (var i of foo) {
 }
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 for (
   var _iterator = foo,
     _isArray = Array.isArray(_iterator),
@@ -182,14 +181,14 @@ If a basic array is used, Babel will compile the for-of loop down to a regular f
 
 **In**
 
-```js
+```js title="JavaScript"
 for (let a of [1, 2, 3]) {
 }
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 var _arr = [1, 2, 3];
 for (var _i = 0; _i < _arr.length; _i++) {
   var a = _arr[_i];

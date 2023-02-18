@@ -1,4 +1,4 @@
-```js
+```js title="JavaScript"
 var babelMiddleware = require("babel-connect");
 
 app.use(babelMiddleware({

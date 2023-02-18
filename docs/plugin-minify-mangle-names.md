@@ -8,7 +8,7 @@ sidebar_label: minify-mangle-names
 
 **In**
 
-```javascript
+```js title="JavaScript"
 var globalVariableName = 42;
 function foo() {
   var longLocalVariableName = 1;
@@ -20,7 +20,7 @@ function foo() {
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var globalVariableName = 42;
 function foo() {
   var a = 1;
@@ -32,7 +32,7 @@ function foo() {
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-minify-mangle-names --save-dev
 ```
 
@@ -40,14 +40,14 @@ npm install babel-plugin-minify-mangle-names --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="JSON"
 // without options
 {
   "plugins": ["minify-mangle-names"]
 }
 ```
 
-```json
+```json title="JSON"
 // with options
 {
   "plugins": [
@@ -58,13 +58,13 @@ npm install babel-plugin-minify-mangle-names --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins minify-mangle-names script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["minify-mangle-names"]
 });

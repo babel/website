@@ -8,13 +8,13 @@ sidebar_label: minify-builtins
 
 **In**
 
-```javascript
+```js title="JavaScript"
 Math.floor(a) + Math.floor(b)
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var _Mathfloor = Math.floor;
 
 _Mathfloor(a) + _Mathfloor(b);
@@ -22,7 +22,7 @@ _Mathfloor(a) + _Mathfloor(b);
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-minify-builtins --save-dev
 ```
 
@@ -31,7 +31,7 @@ npm install babel-plugin-minify-builtins --save-dev
 ### With a configuration file (Recommended)
 
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["minify-builtins"]
 }
@@ -39,13 +39,13 @@ npm install babel-plugin-minify-builtins --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins minify-builtins script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["minify-builtins"]
 });

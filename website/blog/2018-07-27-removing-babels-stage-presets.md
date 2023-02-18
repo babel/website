@@ -28,9 +28,9 @@ This allowed users who wanted to use experimental syntax to simply add the prese
 
 We actually [added](https://github.com/babel/babel/pull/2649) the Stage presets shortly after Babel's v6 release (it was previously a config flag in v5). Shown below is an older example from Babel v6.
 
-It was common to see this in a config: 
+It was common to see this in a config:
 
-```js
+```js title="JavaScript"
 {
   "presets": ["es2015", "react", "stage-0"]
 }
@@ -38,7 +38,7 @@ It was common to see this in a config:
 
 The original source of [babel-preset-stage-0](https://unpkg.com/babel-preset-stage-0@6.0.14/index.js):
 
-```js
+```js title="babel.config.js"
 module.exports = {
   presets: [
     require("babel-preset-stage-1")
@@ -97,7 +97,7 @@ We wanted to highlight this fact when we decided to [change the names](https://b
 
 Having presets for proposals so early in the process may imply that these proposals are guaranteed to move forward or have a stable implementation.
 
-[TC39](https://tc39.github.io/process-document/) urges caution when using Stage 2-or below proposals, as it might result in inadvertent pressure from the community to keep the implementation as-is instead of improving it for fear of breaking existing code or ecosystem fragmentation (e.g. using a different symbol like `#` instead of `@` for decorators). 
+[TC39](https://tc39.github.io/process-document/) urges caution when using Stage 2-or below proposals, as it might result in inadvertent pressure from the community to keep the implementation as-is instead of improving it for fear of breaking existing code or ecosystem fragmentation (e.g. using a different symbol like `#` instead of `@` for decorators).
 
 People joke that developers who use Babel are using "BabelScript" instead of JavaScript, implying that somehow once a Babel plugin is made for a certain feature, that must mean it’s "fixed" or officially part of the language already (which is not true). For some, the first thought for people when they see a new syntax/idea (Stage "-1") is whether there a Babel plugin for it.
 

@@ -172,7 +172,7 @@ Unlike in the [last post](https://babeljs.io/blog/2017/09/12/planning-for-7.0#de
 
 The configuration in `env` is given higher priority than root config items, and instead of just being a weird approach of using both, plugins and presets now merge based on their identity, so you can do
 
-```js
+```js title="JavaScript"
 {
   presets: [
     ['env', { modules: false}],
@@ -205,13 +205,13 @@ Babel will automatically wrap any native built-ins like `Array`, `Error`, `HTMLE
 
 So with this option, something like:
 
-```js
+```js title="JavaScript"
 import "babel-polyfill";
 ```
 
 Can turn into
 
-```js
+```js title="JavaScript"
 import "core-js/modules/es7.string.pad-start";
 import "core-js/modules/es7.string.pad-end";
 // ...
@@ -226,12 +226,12 @@ However in order to make that even better, we should only import polyfills that 
 
 So if you use `Promise` in your code, it will import it at the top of the file (if your target doesn't support it). Bundlers will dedupe the file if it's the same so this approach won't cause multiple polyfills to be imported.
 
-```js
+```js title="JavaScript"
 import "core-js/modules/es6.promise";
 var a = new Promise();
 ```
 
-```js
+```js title="JavaScript"
 import "core-js/modules/es7.array.includes";
 [].includes
 a.includes

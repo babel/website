@@ -8,19 +8,19 @@ sidebar_label: minify-numeric-literals
 
 **In**
 
-```javascript
+```js title="JavaScript"
 [1000, -20000]
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 [1e3, -2e4]
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-minify-numeric-literals --save-dev
 ```
 
@@ -28,7 +28,7 @@ npm install babel-plugin-minify-numeric-literals --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["minify-numeric-literals"]
 }
@@ -36,13 +36,13 @@ npm install babel-plugin-minify-numeric-literals --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins minify-numeric-literals script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["minify-numeric-literals"]
 });

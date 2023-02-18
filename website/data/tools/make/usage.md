@@ -8,6 +8,6 @@ lib/%.js: src/%.js babel.config.json
   babel $< -o $@
 ```
 
-```sh
+```sh title="Shell"
 make
 ```

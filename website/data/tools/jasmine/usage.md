@@ -1,6 +1,6 @@
 In your `spec/support/jasmine.json` file make the following changes:
 
-```json
+```json title="JSON"
 {
   "helpers": [
     "../node_modules/@babel/register/lib/node.js"
@@ -12,7 +12,7 @@ This file is created when you setup a project with the `jasmine init` command. N
 
 Create a `babel.config.json` in your project root:
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-env"]
 }

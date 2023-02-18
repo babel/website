@@ -10,7 +10,7 @@ sidebar_label: minify
 
 ## Install
 
-```sh
+```shell npm2yarn
 npm install babel-preset-minify --save-dev
 ```
 
@@ -18,7 +18,7 @@ npm install babel-preset-minify --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["minify"]
 }
@@ -26,7 +26,7 @@ npm install babel-preset-minify --save-dev
 
 or pass in options -
 
-```json
+```json title="babel.config.json"
 {
   "presets": [["minify", {
     "mangle": {
@@ -42,13 +42,13 @@ or pass in options -
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel script.js --presets minify
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   presets: ["minify"]
 });
@@ -104,7 +104,7 @@ tdz                 | Passed to [builtIns][builtIns], [evaluate][evaluate], [dea
 
 **Examples**
 
-```json
+```json title="babel.config.json"
 {
   "presets": [["minify", {
     "evaluate": false,
@@ -113,7 +113,7 @@ tdz                 | Passed to [builtIns][builtIns], [evaluate][evaluate], [dea
 }
 ```
 
-```json
+```json title="babel.config.json"
 {
   "presets": [["minify", {
     "mangle": {
@@ -123,7 +123,7 @@ tdz                 | Passed to [builtIns][builtIns], [evaluate][evaluate], [dea
 }
 ```
 
-```json
+```json title="babel.config.json"
 {
   "presets": [["minify", {
     "keepFnName": true

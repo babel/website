@@ -1,4 +1,4 @@
-```js
+```js title="JavaScript"
 grunt.initConfig({
   babel: {
     options: {

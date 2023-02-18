@@ -6,21 +6,21 @@ sidebar_label: minify-guarded-expressions
 
 **In**
 
-```javascript
+```js title="JavaScript"
 !x && foo();
 alert(0 && new Foo());
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 x || foo();
 alert(0);
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-minify-guarded-expressions --save-dev
 ```
 
@@ -28,7 +28,7 @@ npm install babel-plugin-minify-guarded-expressions --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["minify-guarded-expressions"]
 }
@@ -36,13 +36,13 @@ npm install babel-plugin-minify-guarded-expressions --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins minify-guarded-expressions script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["minify-guarded-expressions"]
 });

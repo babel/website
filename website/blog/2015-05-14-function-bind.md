@@ -27,7 +27,7 @@ binding and method extraction.
 
 Using an iterator library implemented as a module of "virtual methods":
 
-```js
+```js title="JavaScript"
 /* ES7 */
 import { map, takeWhile, forEach } from "iterlib";
 
@@ -36,7 +36,7 @@ getPlayers()
 ::takeWhile(x => x.strength > 100)
 ::forEach(x => console.log(x));
 ```
-```js
+```js title="JavaScript"
 /* ES6 */
 import { map, takeWhile, forEach } from "iterlib";
 
@@ -52,7 +52,7 @@ _val = forEach.call(_val, x => console.log(x));
 
 Using a jquery-like library of virtual methods:
 
-```js
+```js title="JavaScript"
 /* ES7 */
 // Create bindings for just the methods that we need
 let { find, html } = jake;
@@ -61,7 +61,7 @@ let { find, html } = jake;
 // "p"s and replace their content.
 document.querySelectorAll("div.myClass")::find("p")::html("hahaha");
 ```
-```js
+```js title="JavaScript"
 /* ES6 */
 let _val;
 _val = document.querySelectorAll("div.myClass");
@@ -73,11 +73,11 @@ _val = html.call(_val, "hahaha");
 
 Using method extraction to print the eventual value of a promise to the console:
 
-```js
+```js title="JavaScript"
 /* ES7 */
 Promise.resolve(123).then(::console.log);
 ```
-```js
+```js title="JavaScript"
 /* ES6 */
 // Which could be written in ES6 as:
 Promise.resolve(123).then(console.log.bind(console));
@@ -85,11 +85,11 @@ Promise.resolve(123).then(console.log.bind(console));
 
 Using method extraction to call an object method when a DOM event occurs:
 
-```js
+```js title="JavaScript"
 /* ES7 */
 $(".some-link").on("click", ::view.reset);
 ```
-```js
+```js title="JavaScript"
 /* ES6 */
 $(".some-link").on("click", view.reset.bind(view));
 ```
@@ -101,13 +101,13 @@ $(".some-link").on("click", view.reset.bind(view));
 
 Enable by stage:
 
-```sh
+```sh title="Shell"
 $ babel --stage 0
 ```
 
 Enable by transformer:
 
-```sh
+```sh title="Shell"
 $ babel --optional es7.functionBind
 ```
 

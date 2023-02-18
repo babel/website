@@ -10,7 +10,7 @@ sidebar_label: unicode-property-regex
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-unicode-property-regex
 ```
 
@@ -18,7 +18,7 @@ npm install --save-dev @babel/plugin-proposal-unicode-property-regex
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-unicode-property-regex"]
 }
@@ -26,13 +26,13 @@ npm install --save-dev @babel/plugin-proposal-unicode-property-regex
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/@babel/plugin-proposal-unicode-property-regex script.js
 ```
 
 ### Via Node.js API
 
-```js
+```js title="JavaScript"
 require("@babel/core").transformSync(code, {
   plugins: ["@babel/plugin-proposal-unicode-property-regex"],
 });
@@ -40,7 +40,7 @@ require("@babel/core").transformSync(code, {
 
 To transpile to ES6/ES2015:
 
-```js
+```js title="JavaScript"
 require("@babel/core").transformSync(code, {
   plugins: [
     [

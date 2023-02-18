@@ -6,19 +6,19 @@ sidebar_label: minify-infinity
 
 **In**
 
-```javascript
+```js title="JavaScript"
 Infinity;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 1 / 0;
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-minify-infinity --save-dev
 ```
 
@@ -26,7 +26,7 @@ npm install babel-plugin-minify-infinity --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["minify-infinity"]
 }
@@ -34,13 +34,13 @@ npm install babel-plugin-minify-infinity --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins minify-infinity script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["minify-infinity"]
 });

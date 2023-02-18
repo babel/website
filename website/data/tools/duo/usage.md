@@ -1,12 +1,12 @@
 #### Via CLI
 
-```sh
+```sh title="Shell"
 duo --use duo-babel
 ```
 
 #### Via Node API
 
-```js
+```js title="JavaScript"
 Duo(root)
   .entry(entry)
   .use(babel)

@@ -8,7 +8,7 @@ sidebar_label: minify-dead-code-elimination
 
 **In**
 
-```javascript
+```js title="JavaScript"
 function foo() {var x = 1;}
 function bar() { var x = f(); }
 function baz() {
@@ -22,7 +22,7 @@ function baz() {
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 function foo() {}
 function bar() { f(); }
 function baz() {
@@ -32,7 +32,7 @@ function baz() {
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-minify-dead-code-elimination --save-dev
 ```
 
@@ -40,7 +40,7 @@ npm install babel-plugin-minify-dead-code-elimination --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="JSON"
 // without options
 {
   "plugins": ["minify-dead-code-elimination"]
@@ -54,13 +54,13 @@ npm install babel-plugin-minify-dead-code-elimination --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins minify-dead-code-elimination script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["minify-dead-code-elimination"]
 });

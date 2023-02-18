@@ -8,19 +8,19 @@ sidebar_label: remove-console
 
 **In**
 
-```javascript
+```js title="JavaScript"
 console.log("foo");
 console.error("bar");
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-transform-remove-console --save-dev
 ```
 
@@ -28,14 +28,14 @@ npm install babel-plugin-transform-remove-console --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="JSON"
 // without options
 {
   "plugins": ["transform-remove-console"]
 }
 ```
 
-```json
+```json title="JSON"
 // with options
 {
   "plugins": [["transform-remove-console", { "exclude": ["error", "warn"] }]]
@@ -44,13 +44,13 @@ npm install babel-plugin-transform-remove-console --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins transform-remove-console script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["transform-remove-console"],
 });

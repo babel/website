@@ -10,19 +10,19 @@ sidebar_label: shorthand-properties
 
 **In**
 
-```js
+```js title="JavaScript"
 var o = { a, b, c };
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 var o = { a: a, b: b, c: c };
 ```
 
 **In**
 
-```js
+```js title="JavaScript"
 var cat = {
   getName() {
     return name;
@@ -32,7 +32,7 @@ var cat = {
 
 **Out**
 
-```js
+```js title="JavaScript"
 var cat = {
   getName: function() {
     return name;
@@ -42,7 +42,7 @@ var cat = {
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-shorthand-properties
 ```
 
@@ -50,7 +50,7 @@ npm install --save-dev @babel/plugin-transform-shorthand-properties
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-shorthand-properties"]
 }
@@ -58,13 +58,13 @@ npm install --save-dev @babel/plugin-transform-shorthand-properties
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-shorthand-properties script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-shorthand-properties"],
 });

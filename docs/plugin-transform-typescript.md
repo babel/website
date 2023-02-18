@@ -26,7 +26,7 @@ const x = 0;
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-typescript
 ```
 
@@ -34,7 +34,7 @@ npm install --save-dev @babel/plugin-transform-typescript
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-typescript"]
 }
@@ -42,13 +42,13 @@ npm install --save-dev @babel/plugin-transform-typescript
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-typescript script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-typescript"],
 });
@@ -66,7 +66,7 @@ Added in `v7.7.0`
 
 When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
 
-```javascript
+```js title="JavaScript"
 class A {
   declare foo: string; // Removed
   bar: string; // Initialized to undefined
@@ -130,7 +130,7 @@ Added in: `v7.9.0`
 
 When set to `true`, the transform will only remove [type-only imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-exports) (introduced in TypeScript 3.8). This should only be used if you are using TypeScript >= 3.8.
 
-```javascript
+```js title="JavaScript"
 class A {
   declare foo: string; // Removed
   bar: string; // Initialized to undefined
@@ -191,7 +191,7 @@ equivalents in Babel can be enabled by some configuration options or plugins.
 
 - `--alwaysStrict`
   You can use the `strictMode` [parser option](https://babeljs.io/docs/en/babel-parser#options):
-  ```js
+  ```js title="JavaScript"
   module.exports = {
     parserOpts: { strictMode: true },
   };
@@ -205,7 +205,7 @@ equivalents in Babel can be enabled by some configuration options or plugins.
   This is the default behavior of Babel when transpiling ECMAScript modules.
 - `--experimentalDecorators`
   This option enables support for the "legacy" decorator proposal. You can enable it in Babel using the `@babel/plugin-proposal-decorators` plugin, but please be aware, there are some minor differences.
-  ```js
+  ```js title="JavaScript"
   module.exports = {
     plugins: [["@babel/plugin-proposal-decorators", { legacy: true }]],
   };
@@ -295,7 +295,7 @@ If you have existing code which uses the TypeScript-only [namespace][namespace] 
 
   The TypeScript compiler compiles it to something like this:
 
-  ```javascript
+  ```js title="JavaScript"
   var N = {};
   (function(N) {
     N.V = 1;
@@ -307,7 +307,7 @@ If you have existing code which uses the TypeScript-only [namespace][namespace] 
 
   While Babel will transform it to something like this:
 
-  ```javascript
+  ```js title="JavaScript"
   var N;
   (function(_N) {
     const V = (_N = 1);

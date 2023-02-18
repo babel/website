@@ -4,7 +4,7 @@ title: "@babel/helper-hoist-variables"
 sidebar_label: helper-hoist-variables
 ---
 
-```sh
+```shell npm2yarn
 npm install @babel/helper-hoist-variables --save
 ```
 
@@ -28,7 +28,7 @@ Generally an `EmitFunction` will declare such variables in outer `scope`.
 
 ## Example
 
-```javascript
+```js title="JavaScript"
 import hoistVariables from "@babel/helper-hoist-variables";
 
 // a naive plugin transforms

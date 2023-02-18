@@ -10,7 +10,7 @@ Use `babel-minify` if you don't already use babel (as a preset) or want to run i
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-minify --save-dev
 ```
 
@@ -18,7 +18,7 @@ npm install babel-minify --save-dev
 
 ### Node API
 
-```js
+```js title="JavaScript"
 const minify = require("babel-minify");
 
 const { code, map } = minify("input code", {
@@ -30,13 +30,13 @@ const { code, map } = minify("input code", {
 
 ### CLI
 
-```sh
+```sh title="Shell"
 minify input.js --out-file input.min.js --mangle.keepClassName
 ```
 
 ## Node API
 
-```js
+```js title="JavaScript"
 const minify = require("babel-minify");
 
 minify(input, minifyOptions, overrides);
@@ -78,7 +78,7 @@ Usage: `--optionName.featureName`
 
 Example:
 
-```sh
+```sh title="Shell"
 minify input.js --mangle.keepClassName --deadcode.keepFnArgs --outFile input.min.js
 ```
 

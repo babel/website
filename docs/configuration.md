@@ -26,24 +26,10 @@ All Babel API [options](options.md) are allowed. However, if the option requires
 
 Create a file called `babel.config.json` with the following content at the root of your project (where the `package.json` is).
 
-```json
+```json title="babel.config.json"
 {
   "presets": [...],
   "plugins": [...]
-}
-```
-
-```js
-module.exports = function (api) {
-  api.cache(true);
-
-  const presets = [ ... ];
-  const plugins = [ ... ];
-
-  return {
-    presets,
-    plugins
-  };
 }
 ```
 
@@ -53,7 +39,7 @@ Check out the [`babel.config.json` documentation](config-files.md#project-wide-c
 
 Create a file called `.babelrc.json` with the following content in your project.
 
-```json
+```json title=".babelrc.json"
 {
   "presets": [...],
   "plugins": [...]
@@ -66,7 +52,7 @@ Check out the [.babelrc documentation](config-files.md#file-relative-configurati
 
 Alternatively, you can choose to specify your [`.babelrc.json`](#babelrcjson) config from within `package.json` using the `babel` key like so:
 
-```json
+```json title="package.json"
 {
   "name": "my-package",
   "version": "1.0.0",
@@ -81,31 +67,45 @@ Alternatively, you can choose to specify your [`.babelrc.json`](#babelrcjson) co
 
 You can also write `babel.config.js` and `.babelrc.js` files using JavaScript:
 
-```js
-const presets = [ ... ];
-const plugins = [ ... ];
+```js title="babel.config.js"
+module.exports = function (api) {
+  api.cache(true);
 
-module.exports = { presets, plugins };
+  const presets = [ ... ];
+  const plugins = [ ... ];
+
+  return {
+    presets,
+    plugins
+  };
+}
 ```
 
 You are allowed to access any Node.js APIs, for example a dynamic configuration based on the process environment:
 
-```js
-const presets = [ ... ];
-const plugins = [ ... ];
+```js title="babel.config.js"
+module.exports = function (api) {
+  api.cache(true);
 
-if (process.env["ENV"] === "prod") {
-  plugins.push(...);
+  const presets = [ ... ];
+  const plugins = [ ... ];
+
+  if (process.env["ENV"] === "prod") {
+    plugins.push(...);
+  }
+
+  return {
+    presets,
+    plugins
+  };
 }
-
-module.exports = { presets, plugins };
 ```
 
 You can read more about JavaScript configuration files in the [dedicated documentation](config-files.md)
 
 ## Using the CLI (`@babel/cli`)
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-arrow-functions script.js
 ```
 
@@ -113,7 +113,7 @@ Check out the [babel-cli documentation](cli.md) to see more configuration option
 
 ## Using the API (`@babel/core`)
 
-```js
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-arrow-functions"],
 });
@@ -125,7 +125,7 @@ Check out the [babel-core documentation](core.md) to see more configuration opti
 
 You can tell Babel to print effective configs on a given input path
 
-```sh
+```sh title="Shell"
 # *nix or WSL
 BABEL_SHOW_CONFIG_FOR=./src/myComponent.jsx npm start
 ```
@@ -208,7 +208,7 @@ when they are present and their value is not `undefined`. There are, however, a 
 
 As an example, consider a config with:
 
-```js
+```js title="JavaScript"
 {
   sourceType: "script",
   assumptions: {
@@ -228,7 +228,7 @@ As an example, consider a config with:
 
 When `NODE_ENV` is `test`, the `sourceType` option will be replaced and the `assumptions` option will be merged. The effective config is:
 
-```js
+```js title="JavaScript"
 {
   sourceType: "module", // sourceType: "script" is overwritten
   assumptions: {
@@ -242,7 +242,7 @@ When `NODE_ENV` is `test`, the `sourceType` option will be replaced and the `ass
 
 As an example, consider a config with:
 
-```js
+```js title="JavaScript"
 plugins: [
   './other',
   ['./plug', { thing: true, field1: true }]
@@ -259,7 +259,7 @@ array as a whole doesn't just replace the top-level one. The merging logic will 
 is the same plugin in both cases, and `{ thing: false, field2: true }` will replace the original
 options, resulting in a config as
 
-```js
+```js title="JavaScript"
 plugins: [
   './other',
   ['./plug', { thing: false, field2: true }],
@@ -269,13 +269,13 @@ plugins: [
 Since merging is based on identity + name, it is considered an error to use the same plugin with
 the same name twice in the same `plugins`/`presets` array. For example
 
-```js
+```js title="JavaScript"
 plugins: ["./plug", "./plug"];
 ```
 
 is considered an error, because it's identical to `plugins: ['./plug']`. Additionally, even
 
-```js
+```js title="JavaScript"
 plugins: [["./plug", { one: true }], ["./plug", { two: true }]];
 ```
 
@@ -284,7 +284,7 @@ is considered an error, because the second one would just always replace the fir
 If you actually _do_ want to instantiate two separate instances of a plugin, you must assign each one
 a name to disambiguate them. For example:
 
-```js
+```js title="JavaScript"
 plugins: [
   ["./plug", { one: true }, "first-instance-name"],
   ["./plug", { two: true }, "second-instance-name"],

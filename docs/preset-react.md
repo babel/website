@@ -24,7 +24,7 @@ Automatic runtime (since `v7.9.0`) adds the functionality for these plugins auto
 
 > You can also check out the React [Getting Started page](https://facebook.github.io/react/docs/hello-world.html)
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/preset-react
 ```
 
@@ -34,7 +34,7 @@ npm install --save-dev @babel/preset-react
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-react"]
 }
@@ -42,7 +42,7 @@ Without options:
 
 With options:
 
-```json
+```json title="babel.config.json"
 {
   "presets": [
     [
@@ -61,13 +61,13 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --presets @babel/preset-react script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-react"],
 });
@@ -149,9 +149,9 @@ Added in: `v7.7.0`
 
 When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
 
-### .babelrc.js
+### babel.config.js
 
-```js
+```js title="babel.config.js"
 module.exports = {
   presets: [
     [
@@ -164,11 +164,11 @@ module.exports = {
 };
 ```
 
-### .babelrc
+### babel.config.json
 
 > Note: the `env` option will likely get deprecated soon
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-react"],
   "env": {

@@ -10,7 +10,7 @@ For functions, this removes return arguments that evaluate to `undefined`.
 
 **In**
 
-```javascript
+```js title="JavaScript"
 let a = void 0;
 function foo() {
   var b = undefined;
@@ -20,7 +20,7 @@ function foo() {
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 let a;
 function foo() {
   var b;
@@ -30,7 +30,7 @@ function foo() {
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-transform-remove-undefined --save-dev
 ```
 
@@ -38,7 +38,7 @@ npm install babel-plugin-transform-remove-undefined --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["babel-plugin-transform-remove-undefined"]
 }
@@ -46,13 +46,13 @@ npm install babel-plugin-transform-remove-undefined --save-dev
 
 ### Via CLI
 
-```sh
+```shell title="Shell"
 babel --plugins babel-plugin-transform-remove-undefined script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["babel-plugin-transform-remove-undefined"],
 });

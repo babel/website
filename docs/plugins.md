@@ -11,7 +11,7 @@ Babel's code transformations are enabled by applying plugins (or [presets](prese
 
 If the plugin is on [npm](https://www.npmjs.com/search?q=babel-plugin), you can pass in the name of the plugin and Babel will check that it's installed in `node_modules`. This is added to the [plugins](options.md#presets) config option, which takes an array.
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["babel-plugin-myPlugin", "@babel/plugin-transform-runtime"]
 }
@@ -19,7 +19,7 @@ If the plugin is on [npm](https://www.npmjs.com/search?q=babel-plugin), you can 
 
 You can also specify an relative/absolute path to your plugin.
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["./node_modules/asdf/plugin"]
 }
@@ -47,7 +47,7 @@ Alternatively, you can also provide any [`plugins` option](parser.md#plugins) fr
 
 Your `.babelrc`:
 
-```json
+```json title="JSON"
 {
   "parserOpts": {
     "plugins": ["jsx", "flow"]
@@ -67,7 +67,7 @@ This means if two transforms both visit the "Program" node, the transforms will 
 
 For example:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["transform-decorators-legacy", "transform-class-properties"]
 }
@@ -77,7 +77,7 @@ Will run `transform-decorators-legacy` then `transform-class-properties`.
 
 It is important to remember that with presets, the order is _reversed_. The following:
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
@@ -91,7 +91,7 @@ Both plugins and presets can have options specified by wrapping the name and an 
 
 For specifying no options, these are all equivalent:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["pluginA", ["pluginA"], ["pluginA", {}]]
 }
@@ -99,7 +99,7 @@ For specifying no options, these are all equivalent:
 
 To specify an option, pass an object with the keys as the option names.
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [
@@ -115,7 +115,7 @@ To specify an option, pass an object with the keys as the option names.
 
 Settings options for presets works exactly the same:
 
-```json
+```json title="babel.config.json"
 {
   "presets": [
     [
@@ -136,7 +136,7 @@ to learn how to create your own plugins.
 
 The simple plugin that reverses names (from the homepage):
 
-```js
+```js title="JavaScript"
 export default function() {
   return {
     visitor: {

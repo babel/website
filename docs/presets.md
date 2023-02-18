@@ -26,7 +26,7 @@ If you aren't using Babel directly, the framework you are using may have its own
 
 Within a Babel config, if the preset is on [npm](https://www.npmjs.com/search?q=babel-preset), you can pass in the name of the preset and Babel will check that it's installed in `node_modules` already. This is added to the [presets](options.md#presets) config option, which takes an array.
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["babel-preset-myPreset", "@babel/preset-env"]
 }
@@ -34,7 +34,7 @@ Within a Babel config, if the preset is on [npm](https://www.npmjs.com/search?q=
 
 Otherwise, you can also specify a relative or absolute path to your presets.
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["./myProject/myPreset"]
 }
@@ -71,7 +71,7 @@ To make your own preset (either for local usage or to npm), you need to export a
 
 > It could just return an array of plugins..
 
-```js
+```js title="JavaScript"
 module.exports = function() {
   return {
     plugins: ["pluginA", "pluginB", "pluginC"],
@@ -81,7 +81,7 @@ module.exports = function() {
 
 > Presets can contain other presets, and plugins with options.
 
-```js
+```js title="JavaScript"
 module.exports = () => ({
   presets: [require("@babel/preset-env")],
   plugins: [
@@ -97,7 +97,7 @@ For more info, check out the [babel handbook](https://github.com/thejameskyle/ba
 
 Preset ordering is reversed (last to first).
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["a", "b", "c"]
 }
@@ -113,7 +113,7 @@ Both plugins and presets can have options specified by wrapping the name and an 
 
 For specifying no options, these are all equivalent:
 
-```json
+```json title="babel.config.json"
 {
   "presets": [
     "presetA", // bare string
@@ -125,7 +125,7 @@ For specifying no options, these are all equivalent:
 
 To specify an option, pass an object with the keys as the option names.
 
-```json
+```json title="babel.config.json"
 {
   "presets": [
     [

@@ -10,7 +10,7 @@ sidebar_label: computed-properties
 
 **In**
 
-```js
+```js title="JavaScript"
 var obj = {
   ["x" + foo]: "heh",
   ["y" + bar]: "noo",
@@ -21,7 +21,7 @@ var obj = {
 
 **Out**
 
-```js
+```js title="JavaScript"
 var _obj;
 
 function _defineProperty(obj, key, value) {
@@ -49,7 +49,7 @@ _obj);
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-computed-properties
 ```
 
@@ -59,7 +59,7 @@ npm install --save-dev @babel/plugin-transform-computed-properties
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-computed-properties"]
 }
@@ -67,7 +67,7 @@ Without options:
 
 With options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [
@@ -82,13 +82,13 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-computed-properties script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-computed-properties"],
 });
@@ -106,8 +106,7 @@ in production code.
 
 > ⚠️ Consider migrating to the top level [`setComputedProperties`](assumptions.md#setcomputedproperties) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "setComputedProperties": true
@@ -119,7 +118,7 @@ in production code.
 
 **_In_**
 
-```js
+```js title="JavaScript"
 var obj = {
   ["x" + foo]: "heh",
   ["y" + bar]: "noo",
@@ -132,7 +131,7 @@ var obj = {
 
 When `setComputedProperties` is `true`.
 
-```js
+```js title="JavaScript"
 var _obj;
 
 var obj = ((_obj = {}),
@@ -145,7 +144,7 @@ _obj);
 
 When `setComputedProperties` is `false`.
 
-```js
+```js title="JavaScript"
 import _defineProperty from "@babel/runtime/helpers/defineProperty";
 
 var _obj;

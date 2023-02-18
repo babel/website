@@ -12,7 +12,7 @@ Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a
 - Source code transformations (codemods)
 - And more! (check out these [videos](/videos.html) for inspiration)
 
-```js
+```js title="JavaScript"
 // Babel Input: ES2015 arrow function
 [1, 2, 3].map(n => n + 1);
 
@@ -36,13 +36,13 @@ Babel can convert JSX syntax! Check out our [React preset](preset-react.md) to g
 
 You can install this preset with
 
-```shell
+```shell npm2yarn
 npm install --save-dev @babel/preset-react
 ```
 
 and add `@babel/preset-react` to your Babel configuration.
 
-```jsx
+```jsx title="JSX"
 export default function DiceRoll(){
   const getRandomNumber = () => {
     return Math.ceil(Math.random() * 6);
@@ -72,11 +72,11 @@ Babel can strip out type annotations! Check out either our [Flow preset](preset-
 
 You can install the flow preset with
 
-```shell
+```shell npm2yarn
 npm install --save-dev @babel/preset-flow
 ```
 
-```js
+```js title="JavaScript"
 // @flow
 function square(n: number): number {
   return n * n;
@@ -85,11 +85,11 @@ function square(n: number): number {
 
 or the typescript preset with
 
-```shell
+```shell npm2yarn
 npm install --save-dev @babel/preset-typescript
 ```
 
-```js
+```js title="JavaScript"
 function Greeter(greeting: string) {
   this.greeting = greeting;
 }
@@ -103,15 +103,14 @@ Babel is built out of plugins. Compose your own transformation pipeline using ex
 
 Create a plugin on the fly with [astexplorer.net](https://astexplorer.net/#/KJ8AjD6maa) or use [generator-babel-plugin](https://github.com/babel/generator-babel-plugin) to generate a plugin template.
 
-```javascript
+```javascript title="example-babel-plugin.js"
 // A plugin is just a function
 export default function({ types: t }) {
   return {
     visitor: {
       Identifier(path) {
         let name = path.node.name; // reverse the name: JavaScript -> tpircSavaJ
-        path.node.name = name
-          .split("")
+        path.node.name = [...name]
           .reverse()
           .join("");
       },

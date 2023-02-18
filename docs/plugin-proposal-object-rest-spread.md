@@ -10,7 +10,7 @@ sidebar_label: object-rest-spread
 
 ### Rest Properties
 
-```js
+```js title="JavaScript"
 let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
 console.log(x); // 1
 console.log(y); // 2
@@ -19,14 +19,14 @@ console.log(z); // { a: 3, b: 4 }
 
 ### Spread Properties
 
-```js
+```js title="JavaScript"
 let n = { x, y, ...z };
 console.log(n); // { x: 1, y: 2, a: 3, b: 4 }
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-object-rest-spread
 ```
 
@@ -34,7 +34,7 @@ npm install --save-dev @babel/plugin-proposal-object-rest-spread
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-object-rest-spread"]
 }
@@ -42,13 +42,13 @@ npm install --save-dev @babel/plugin-proposal-object-rest-spread
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-object-rest-spread script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-object-rest-spread"],
 });
@@ -66,8 +66,7 @@ Enabling this option will use Babel's `extends` helper, which is basically the s
 
 > ⚠️ Consider migrating to the top level [`setSpreadProperties`](assumptions.md#setspreadproperties) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "setSpreadProperties": true
@@ -89,7 +88,7 @@ Enabling this option will use `Object.assign` directly instead of the Babel's `e
 
 **.babelrc**
 
-```json
+```json title="JSON"
 {
   "assumptions": {
     "setSpreadProperties": true
@@ -102,13 +101,13 @@ Enabling this option will use `Object.assign` directly instead of the Babel's `e
 
 **In**
 
-```js
+```js title="JavaScript"
 z = { x, ...y };
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 z = Object.assign({ x }, y);
 ```
 

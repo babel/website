@@ -8,19 +8,19 @@ sidebar_label: simplify-comparison-operators
 
 **In**
 
-```javascript
+```js title="JavaScript"
 typeof foo === "object";
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 typeof foo == "object";
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-transform-simplify-comparison-operators --save-dev
 ```
 
@@ -28,7 +28,7 @@ npm install babel-plugin-transform-simplify-comparison-operators --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["transform-simplify-comparison-operators"]
 }
@@ -36,13 +36,13 @@ npm install babel-plugin-transform-simplify-comparison-operators --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins transform-simplify-comparison-operators script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["transform-simplify-comparison-operators"],
 });

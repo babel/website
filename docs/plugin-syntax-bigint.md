@@ -11,7 +11,7 @@ sidebar_label: syntax-bigint
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-bigint
 ```
 
@@ -19,7 +19,7 @@ npm install --save-dev @babel/plugin-syntax-bigint
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-bigint"]
 }
@@ -27,13 +27,13 @@ npm install --save-dev @babel/plugin-syntax-bigint
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-bigint script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-bigint"],
 });

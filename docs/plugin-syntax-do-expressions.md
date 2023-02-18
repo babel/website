@@ -10,7 +10,7 @@ sidebar_label: syntax-do-expressions
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-do-expressions
 ```
 
@@ -18,7 +18,7 @@ npm install --save-dev @babel/plugin-syntax-do-expressions
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-do-expressions"]
 }
@@ -26,13 +26,13 @@ npm install --save-dev @babel/plugin-syntax-do-expressions
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-do-expressions script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-do-expressions"]
 });

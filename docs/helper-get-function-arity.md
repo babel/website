@@ -7,7 +7,7 @@ sidebar_label: helper-get-function-arity
 
 ## Usage
 
-```javascript
+```js title="JavaScript"
 import getFunctionArity from "@babel/helper-get-function-arity";
 
 function wrap(state, method, id, scope) {

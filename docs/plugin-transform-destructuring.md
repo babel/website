@@ -10,7 +10,7 @@ sidebar_label: destructuring
 
 **In**
 
-```javascript
+```js title="JavaScript"
 let { x, y } = obj;
 
 let [a, b, ...rest] = arr;
@@ -18,7 +18,7 @@ let [a, b, ...rest] = arr;
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 function _toArray(arr) { ... }
 
 let _obj = obj,
@@ -34,7 +34,7 @@ let _arr = arr,
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-destructuring
 ```
 
@@ -42,7 +42,7 @@ npm install --save-dev @babel/plugin-transform-destructuring
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-destructuring"]
 }
@@ -50,13 +50,13 @@ npm install --save-dev @babel/plugin-transform-destructuring
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-destructuring script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-destructuring"],
 });
@@ -72,8 +72,7 @@ Enabling this option will assume that what you want to destructure is an array a
 
 > ⚠️ Consider migrating to the top level [`iterableIsArray`](assumptions.md#iterableisarray) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "iterableIsArray": true
@@ -91,7 +90,7 @@ Enabling this option will use `Object.assign` directly instead of the Babel's `e
 
 **.babelrc**
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     ["@babel/plugin-transform-destructuring", { "useBuiltIns": true }]
@@ -101,13 +100,13 @@ Enabling this option will use `Object.assign` directly instead of the Babel's `e
 
 **In**
 
-```js
+```js title="JavaScript"
 var { ...x } = z;
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 var _z = z,
   x = Object.assign({}, _z);
 ```
@@ -130,8 +129,7 @@ Please note that Babel allows destructuring `arguments` in old engines even if t
 
 > ⚠️ Consider migrating to the top level [`arrayLikeIsIterable`](assumptions.md#arraylikeisiterable) assumption.
 
-```jsonc
-// babel.config.json
+```json title="babel.config.json"
 {
   "assumptions": {
     "arrayLikeIsIterable": true

@@ -6,7 +6,7 @@ sidebar_label: function-bind
 
 ## Detail
 
-```js
+```js title="JavaScript"
 obj::func;
 // is equivalent to:
 func.bind(obj)
@@ -29,7 +29,7 @@ obj.func.call(obj, val);
 
 ### Basic
 
-```js
+```js title="JavaScript"
 const box = {
   weight: 2,
   getWeight() {
@@ -56,7 +56,7 @@ console.log(bigBox::getWeight()::add(5)); // prints '15'
 
 It can be very handy when used with `document.querySelectorAll`:
 
-```js
+```js title="JavaScript"
 const { map, filter } = Array.prototype;
 
 let sslUrls = document
@@ -69,7 +69,7 @@ console.log(sslUrls);
 
 `document.querySelectorAll` returns a `NodeList` element which is not a plain array, so you normally can't use the `map` function on it, and have to use it this way: `Array.prototype.map.call(document.querySelectorAll(...), node => { ... })`. The above code using the `::` will work because it is equivalent to:
 
-```js
+```js title="JavaScript"
 const { map, filter } = Array.prototype;
 
 let sslUrls = document.querySelectorAll("a");
@@ -83,7 +83,7 @@ console.log(sslUrls);
 
 When nothing is specified before the `::` operator, the function is bound to its object:
 
-```js
+```js title="JavaScript"
 $(".some-link").on("click", ::view.reset);
 // is equivalent to:
 $(".some-link").on("click", view.reset.bind(view));
@@ -91,7 +91,7 @@ $(".some-link").on("click", view.reset.bind(view));
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-function-bind
 ```
 
@@ -99,7 +99,7 @@ npm install --save-dev @babel/plugin-proposal-function-bind
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-function-bind"]
 }
@@ -107,13 +107,13 @@ npm install --save-dev @babel/plugin-proposal-function-bind
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-function-bind script.js
 ```
 
 ### Via Node API
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-function-bind"],
 });

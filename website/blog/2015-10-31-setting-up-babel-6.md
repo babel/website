@@ -20,7 +20,7 @@ This blog post will cover most of the basics until that’s completed.
 
 The `babel` package is no more. Previously, it was the entire compiler and all the transforms plus a bunch of CLI tools, but this lead to unnecessarily large downloads and was a bit confusing. Now we’ve split it up into two separate packages: `babel-cli` and `babel-core`.
 
-```sh
+```sh title="Shell"
 $ npm install --global babel-cli
 # or
 $ npm install --save-dev babel-core
@@ -38,13 +38,13 @@ In order to start compiling various features you need to install plugins. For ex
 
 First install the arrow functions plugin:
 
-```sh
+```sh title="Shell"
 $ npm install --save-dev babel-plugin-transform-es2015-arrow-functions
 ```
 
 Then add it to your `.babelrc` file like this:
 
-```js
+```js title="JavaScript"
 {
   "plugins": ["transform-es2015-arrow-functions"]
 }
@@ -56,12 +56,12 @@ Babel plugins are designed to compile down incrementally. Say if you wanted to u
 
 This even happens within a single specification, for example ES2015 constants will be compiled to ES2015 `let` variables. So if you want it to go all the way down to ES5 you need to compile that as well.
 
-```sh
+```sh title="Shell"
 $ npm install --save-dev babel-plugin-check-es2015-constants
 $ npm install --save-dev babel-plugin-transform-es2015-block-scoping
 ```
 
-```js
+```js title="JavaScript"
 {
   "plugins": [
     "check-es2015-constants",
@@ -72,11 +72,11 @@ $ npm install --save-dev babel-plugin-transform-es2015-block-scoping
 
 These dependencies aren’t easy to keep track and if you don’t want to manually specify them all you may install a preset instead.
 
-```sh
+```sh title="Shell"
 $ npm install --save-dev babel-preset-es2015
 ```
 
-```js
+```js title="JavaScript"
 {
   "presets": ["es2015"]
 }
@@ -84,11 +84,11 @@ $ npm install --save-dev babel-preset-es2015
 
 To Include all JavaScript versions:
 
-```sh
+```sh title="Shell"
 $ npm install --save-dev babel-preset-env
 ```
 
-```js
+```js title="JavaScript"
 {
   "presets": ["env"]
 }
@@ -96,11 +96,11 @@ $ npm install --save-dev babel-preset-env
 
 React also has it’s own preset:
 
-```sh
+```sh title="Shell"
 $ npm install --save-dev babel-preset-react
 ```
 
-```js
+```js title="JavaScript"
 {
   "presets": ["react"]
 }
@@ -108,11 +108,11 @@ $ npm install --save-dev babel-preset-react
 
 This is also what the `stage` option has been replaced with:
 
-```sh
+```sh title="Shell"
 $ npm install --save-dev babel-preset-stage-2
 ```
 
-```js
+```js title="JavaScript"
 {
   "presets": ["stage-2"]
 }

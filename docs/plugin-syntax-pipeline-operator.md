@@ -10,7 +10,7 @@ sidebar_label: syntax-pipeline-operator
 
 ## Installation
 
-```sh
+```sh title="Shell"
 $ npm install @babel/plugin-syntax-pipeline-operator
 ```
 
@@ -20,7 +20,7 @@ $ npm install @babel/plugin-syntax-pipeline-operator
 
 With `^^` topic token:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [ "@babel/plugin-syntax-pipeline-operator", { "topicToken": "^^" } ]
@@ -30,7 +30,7 @@ With `^^` topic token:
 
 With `@@` topic token:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [ "@babel/plugin-syntax-pipeline-operator", { "topicToken": "@@" } ]
@@ -46,7 +46,7 @@ Because this plugin requires a configuration option, it [cannot be directly conf
 
 With `^^` topic token:
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: [
     [ "@babel/plugin-syntax-pipeline-operator", { topicToken: "^^" } ],
@@ -56,7 +56,7 @@ require("@babel/core").transformSync("code", {
 
 With `@@` topic token:
 
-```javascript
+```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: [
     [ "@babel/plugin-syntax-pipeline-operator", { topicToken: "@@" } ],
