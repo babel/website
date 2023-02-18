@@ -6,7 +6,7 @@ id: learn
 <blockquote class="babel-callout babel-callout-info">
   <h3>es6features</h3>
   <p>
-    This document was originally taken from Luke Hoban's excellent
+    This document was originally taken from Luke Hoban's excellent&#8200;
     <a href="https://git.io/es6features">es6features</a> repo. Go give it a star
     on GitHub!
   </p>
@@ -15,7 +15,7 @@ id: learn
 <blockquote class="babel-callout babel-callout-info">
   <h4>REPL</h4>
   <p>
-    Be sure to try these features out in the online
+    Be sure to try these features out in the online&#8200;
     <a href="/repl">REPL</a>.
   </p>
 </blockquote>
