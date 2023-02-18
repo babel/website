@@ -136,6 +136,7 @@ const siteConfig = {
     onPageNav: "separate",
     gaTrackingId: "UA-114990275-1",
     prism: {
+      additionalLanguages: ["powershell"],
       theme: require("./src/theme/prism/light"),
       darkTheme: require("./src/theme/prism/dark"),
     },
