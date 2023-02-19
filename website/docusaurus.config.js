@@ -138,7 +138,7 @@ const siteConfig = {
     docs: {
       sidebar: {
         hideable: true,
-      }
+      },
     },
     prism: {
       additionalLanguages: ["powershell"],
