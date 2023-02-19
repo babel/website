@@ -483,8 +483,7 @@ System.set("jquery", Module({$: $})); // WARNING: not yet finalized
   <h4>Additional polyfill needed</h4>
   <p>
     Since Babel defaults to using common.js modules, it does not include the
-    polyfill for the module loader API. Get it
-    <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
+    polyfill for the module loader API. Get it <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
   </p>
 </blockquote>
 
@@ -492,8 +491,7 @@ System.set("jquery", Module({$: $})); // WARNING: not yet finalized
   <h4>Using Module Loader</h4>
   <p>
     In order to use this, you'll need to tell Babel to use the
-    <code>system</code> module formatter. Also be sure to check out
-    <a href="https://github.com/systemjs/systemjs">System.js</a>
+    <code>system</code> module formatter. Also be sure to check out <a href="https://github.com/systemjs/systemjs">System.js</a>.
   </p>
 </blockquote>
 
@@ -705,8 +703,7 @@ Object.assign(Point, { origin: new Point(0,0) })
     Most of these APIs are supported by the Babel <a href="/docs/babel-polyfill">polyfill</a>. However, certain
     features are omitted for various reasons (e.g.
     <code>String.prototype.normalize</code> needs a lot of additional code to
-    support). You can find more polyfills
-    <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
+    support). You can find more polyfills <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
   </p>
 </blockquote>
 

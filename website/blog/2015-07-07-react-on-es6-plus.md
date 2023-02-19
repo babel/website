@@ -10,8 +10,7 @@ guest_post: true
 guest_description: |
   This is a guest post from Steven Luscher. Steven works on Relay at Facebook –
   a JavaScript framework for building applications using React and GraphQL.
-  Follow Steven on <a href="https://instagram.com/steveluscher/">Instagram</a>,
-  <a href="https://github.com/steveluscher">GitHub</a>,
+  Follow Steven on <a href="https://instagram.com/steveluscher/">Instagram</a>, <a href="https://github.com/steveluscher">GitHub</a>,
   and <a href="https://twitter.com/steveluscher">Twitter</a>.
 ---
 

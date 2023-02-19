@@ -11,10 +11,8 @@ custom_js_with_timestamps:
 guest_post: true
 guest_description: |
   This is a guest post from Kent C. Dodds. Kent works at PayPal and
-  teaches about JavaScript and
-  <a href="https://kentcdodds.com/workshops/#code-transformation-and-linting">writing Babel plugins</a>
-  on <a href="http://kcd.im/egghead">Egghead.io</a> and
-  <a href="https://frontendmasters.com/courses/">Frontend Masters</a>.
+  teaches about JavaScript and <a href="https://kentcdodds.com/workshops/#code-transformation-and-linting">writing Babel plugins</a>
+  on <a href="http://kcd.im/egghead">Egghead.io</a> and <a href="https://frontendmasters.com/courses/">Frontend Masters</a>.
   Follow Kent on <a href="https://github.com/kentcdodds">GitHub</a>,
   and <a href="https://twitter.com/kentcdodds">Twitter</a>.
 ---
