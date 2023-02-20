@@ -17,8 +17,8 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 - [TypeScript 5.0](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/) support
 - Support for the updates of the [decorators](https://github.com/tc39/proposal-decorators) proposal that reached consensus in the January 2023 TC39 meeting
-- Support for the [inline RegExp modifiers](github.com/tc39/proposal-regexp-modifiers) Stage 3 proposal
-  ```js
+- Support for the [inline RegExp modifiers](https://github.com/tc39/proposal-regexp-modifiers) Stage 3 proposal
+  ```js title="JavaScript"
   /(?i-m:a.)/m.exec("a\nAb"); // ["Ab"]
   ```
 
