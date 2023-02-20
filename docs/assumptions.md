@@ -241,6 +241,36 @@ class Foo {
 
 </div>
 
+> ⚠️ When using inline Babel helpers, generated string keys are unique per-file and not globally. This could cause conflicts when extending classes from a different fields with private fields with the same name.
+
+## `privateFieldsAsSymbols`
+
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| v7.21.0 | Added `privateFieldsAsSymbols` assumption |
+</details>
+
+Assume that "soft privacy" is enough for private fields, and thus they can be stored as public properties with a symbol key (rather than using an external `WeakMap`). This makes debugging compiled private fields easier.
+
+<div is="assumption-repl" data-assumption="privateFieldsAsSymbols" data-plugins="proposal-class-properties,proposal-private-methods">
+
+```text assumption-input
+class Foo {
+  #method() {}
+
+  #field = 2;
+
+  run() {
+    this.#method();
+    this.#field++;
+  }
+}
+```
+
+</div>
+
 ## `pureGetters`
 
 Assume that getters, if present, don't have side-effects and can be accessed multiple times.
