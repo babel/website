@@ -1240,6 +1240,7 @@ const styles = {
     padding: "0 1.5rem",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
+    boxSizing: "border-box",
 
     [media.large]: {
       backgroundColor: colors.inverseBackgroundDark,
