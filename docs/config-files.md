@@ -12,14 +12,15 @@ Babel has two parallel config file formats, which can be used together, or indep
 
 | Version | Changes |
 | --- | --- |
-| `v7.8.0` | Support `.babelrc.mjs` and `babel.config.mjs` |
-| `v7.7.0` | Support `.babelrc.json`, `.babelrc.cjs`, `babel.config.json`, `babel.config.cjs` |
+| `v7.21.0` | Support `.babelrc.cts` and `babel.config.cts` (Experimental) |
+| `v7.8.0`  | Support `.babelrc.mjs` and `babel.config.mjs` |
+| `v7.7.0`  | Support `.babelrc.json`, `.babelrc.cjs`, `babel.config.json`, `babel.config.cjs` |
 </details>
 
 - Project-wide configuration
-  - `babel.config.*` files, with the following extensions: `.json`, `.js`, `.cjs`, `.mjs`.
+  - `babel.config.*` files, with the following extensions: `.json`, `.js`, `.cjs`, `.mjs`, `.cts`.
 - File-relative configuration
-  - `.babelrc.*` files, with the following extensions: `.json`, `.js`, `.cjs`, `.mjs`.
+  - `.babelrc.*` files, with the following extensions: `.json`, `.js`, `.cjs`, `.mjs`, `.cts`.
   - `.babelrc` file, with no extension.
   - `package.json` files, with a `"babel"` key.
 
@@ -134,6 +135,10 @@ Babel can be configured using any file extension natively supported by Node.js, 
 - `babel.config.js` and `.babelrc.js` behave like the `.mjs` equivalents when your `package.json`
   file contains the [`"type": "module"`](https://nodejs.org/api/esm.html#esm_code_package_json_code_code_type_code_field)
   option, otherwise they are exactly the same as the `.cjs` files.
+
+- `babel.config.cts` and `.babelrc.cts` allow you to define your configuration as Typescript + CommonJS. You must either install `@babel/preset-typescript`, or run Babel using `ts-node`.
+
+> 🚧 This functionality is experimental. It's not possible yet to use `babel.config.ts` and `babel.config.mts` files, pending stabilization of the Node.js ESM loader API.
 
 JavaScript configuration files can either export an object, or a function that when called will
 return the generated configuration.
