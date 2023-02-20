@@ -34,6 +34,7 @@ mind. When in doubt, use `.parse()`.
 
 | Version | Changes |
 | --- | --- |
+| `v7.21.0` | Added `allowNewTargetOutsideFunction` |
 | `v7.16.0` | Added `startColumn` |
 | `v7.15.0` | Added `attachComment` |
 | `v7.7.0` | Added `errorRecovery` |
@@ -50,6 +51,9 @@ mind. When in doubt, use `.parse()`.
   in the top-level scope of modules. Set this to `true` to also accept it in the
   top-level scope of scripts. This option is discouraged in favor of
   `topLevelAwait` plugin.
+
+- **allowNewTargetOutsideFunction**: By default, `new.target` use is not
+  allowed outside of a function or class. Set this to `true` to accept such code.
 
 - **allowReturnOutsideFunction**: By default, a return statement at
   the top level raises an error. Set this to `true` to accept such
