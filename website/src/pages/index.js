@@ -219,9 +219,9 @@ const Hero = ({ language }) => (
 
       <div className="hero__announcement">
         <span>
-          <strong>Babel 7.20 is released!</strong> Please read our{" "}
-          <Link to="/blog/2022/10/27/7.20.0">blog post</Link> for highlights and{" "}
-          <Link to="https://github.com/babel/babel/releases/tag/v7.20.0">
+          <strong>Babel 7.21 is released!</strong> Please read our{" "}
+          <Link to="/blog/2023/02/20/7.21.0">blog post</Link> for highlights and{" "}
+          <Link to="https://github.com/babel/babel/releases/tag/v7.21.0">
             changelog
           </Link>{" "}
           for more details!
