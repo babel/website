@@ -135,9 +135,9 @@ Babel can be configured using any file extension natively supported by Node.js, 
   file contains the [`"type": "module"`](https://nodejs.org/api/esm.html#esm_code_package_json_code_code_type_code_field)
   option, otherwise they are exactly the same as the `.cjs` files.
 
-- `babel.config.cts` and `.babelrc.cts` allow you to define your configuration as Typescript + CommonJS. They have been supported since `v7.21.0`. This is experimental support for Typescript integration, so requires you to have installed `@babel/preset-typescript` or running Babel using `ts-node`.
+- `babel.config.cts` and `.babelrc.cts` allow you to define your configuration as Typescript + CommonJS. You must either install `@babel/preset-typescript`, or run Babel using `ts-node`.
 
-> It's not possible yet to use `babel.config.ts` and `babel.config.mts` files, pending stabilization of the Node.js ESM loader API.
+> 🚧 This functionality is experimental. It's not possible yet to use `babel.config.ts` and `babel.config.mts` files, pending stabilization of the Node.js ESM loader API.
 
 JavaScript configuration files can either export an object, or a function that when called will
 return the generated configuration.
