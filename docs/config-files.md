@@ -138,7 +138,7 @@ Babel can be configured using any file extension natively supported by Node.js, 
 
 - `babel.config.cts` and `.babelrc.cts` allow you to define your configuration as Typescript + CommonJS. You must either install `@babel/preset-typescript`, or run Babel using `ts-node`.
 
-> 🚧 This functionality is experimental. It's not possible yet to use `babel.config.ts` and `babel.config.mts` files, pending stabilization of the Node.js ESM loader API.
+  > 🚧 This functionality is experimental. It's not possible yet to use `babel.config.ts` and `babel.config.mts` files, pending stabilization of the Node.js ESM loader API.
 
 JavaScript configuration files can either export an object, or a function that when called will
 return the generated configuration.
