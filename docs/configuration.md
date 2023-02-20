@@ -125,14 +125,24 @@ Check out the [babel-core documentation](core.md) to see more configuration opti
 
 You can tell Babel to print effective configs on a given input path
 
-```sh title="Shell"
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="shell" label="Shell" default>
+<CodeBlock language="bash">{`
 # *nix or WSL
 BABEL_SHOW_CONFIG_FOR=./src/myComponent.jsx npm start
-```
-
-```powershell
+`}
+</CodeBlock>
+</TabItem>
+<TabItem value="powershell" label="powershell">
+<CodeBlock language="powershell">{`
 $env:BABEL_SHOW_CONFIG_FOR = ".\src\myComponent.jsx"; npm start
-```
+`}</CodeBlock>
+</TabItem>
+</Tabs>
 
 `BABEL_SHOW_CONFIG_FOR` accepts both absolute and relative _file_ paths. If it is a relative path, it will be resolved from [`cwd`](options.md#cwd).
 

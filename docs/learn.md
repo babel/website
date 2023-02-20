@@ -6,8 +6,7 @@ id: learn
 <blockquote class="babel-callout babel-callout-info">
   <h3>es6features</h3>
   <p>
-    This document was originally taken from Luke Hoban's excellent
-    <a href="https://git.io/es6features">es6features</a> repo. Go give it a star
+    This document was originally taken from Luke Hoban's excellent <a href="https://git.io/es6features">es6features</a> repo. Go give it a star
     on GitHub!
   </p>
 </blockquote>
@@ -15,8 +14,7 @@ id: learn
 <blockquote class="babel-callout babel-callout-info">
   <h4>REPL</h4>
   <p>
-    Be sure to try these features out in the online
-    <a href="/repl">REPL</a>.
+    Be sure to try these features out in the online <a href="/repl">REPL</a>.
   </p>
 </blockquote>
 
@@ -311,7 +309,7 @@ interface Iterable {
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to use Iterators you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to use Iterators you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
   </p>
 </blockquote>
 
@@ -359,7 +357,7 @@ interface Generator extends Iterator {
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to use Generators you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to use Generators you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
   </p>
 </blockquote>
 
@@ -485,8 +483,7 @@ System.set("jquery", Module({$: $})); // WARNING: not yet finalized
   <h4>Additional polyfill needed</h4>
   <p>
     Since Babel defaults to using common.js modules, it does not include the
-    polyfill for the module loader API. Get it
-    <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
+    polyfill for the module loader API. Get it <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
   </p>
 </blockquote>
 
@@ -494,8 +491,7 @@ System.set("jquery", Module({$: $})); // WARNING: not yet finalized
   <h4>Using Module Loader</h4>
   <p>
     In order to use this, you'll need to tell Babel to use the
-    <code>system</code> module formatter. Also be sure to check out
-    <a href="https://github.com/systemjs/systemjs">System.js</a>
+    <code>system</code> module formatter. Also be sure to check out <a href="https://github.com/systemjs/systemjs">System.js</a>.
   </p>
 </blockquote>
 
@@ -532,7 +528,7 @@ ws.add({ data: 42 });
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support Maps, Sets, WeakMaps, and WeakSets in all environments you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to support Maps, Sets, WeakMaps, and WeakSets in all environments you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
   </p>
 </blockquote>
 
@@ -647,7 +643,7 @@ c["key"] === undefined
 <blockquote class="babel-callout babel-callout-info">
   <h4>Limited support via polyfill</h4>
   <p>
-    Limited support requires the Babel <a href="/docs/usage/polyfill">polyfill</a>. Due to language limitations, some features can't be transpiled or polyfilled. See core.js's <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">caveats section</a> for more details.
+    Limited support requires the Babel <a href="/docs/babel-polyfill">polyfill</a>. Due to language limitations, some features can't be transpiled or polyfilled. See core.js's <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">caveats section</a> for more details.
   </p>
 </blockquote>
 
@@ -704,11 +700,10 @@ Object.assign(Point, { origin: new Point(0,0) })
 <blockquote class="babel-callout babel-callout-warning">
   <h4>Limited support from polyfill</h4>
   <p>
-    Most of these APIs are supported by the Babel <a href="/docs/usage/polyfill">polyfill</a>. However, certain
+    Most of these APIs are supported by the Babel <a href="/docs/babel-polyfill">polyfill</a>. However, certain
     features are omitted for various reasons (e.g.
     <code>String.prototype.normalize</code> needs a lot of additional code to
-    support). You can find more polyfills
-    <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
+    support). You can find more polyfills <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
   </p>
 </blockquote>
 
@@ -754,7 +749,7 @@ var p = timeout(1000).then(() => {
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to support Promises you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to support Promises you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
   </p>
 </blockquote>
 
@@ -782,7 +777,7 @@ instance.c; // 42
 <blockquote class="babel-callout babel-callout-info">
   <h4>Support via polyfill</h4>
   <p>
-    In order to use the Reflect API you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
+    In order to use the Reflect API you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
   </p>
 </blockquote>
 

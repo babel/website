@@ -84,7 +84,8 @@ const siteConfig = {
   titleDelimiter: "·",
   baseUrl: "/",
   favicon: "img/favicon.png",
-  onBrokenLinks: "ignore", // enable once everything works fine
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
   customFields: {
     repoUrl: "https://github.com/babel/babel",
     v6Url: "https://v6.babeljs.io/docs/setup/",
@@ -134,7 +135,13 @@ const siteConfig = {
   themeConfig: {
     onPageNav: "separate",
     gaTrackingId: "UA-114990275-1",
+    docs: {
+      sidebar: {
+        hideable: true,
+      },
+    },
     prism: {
+      additionalLanguages: ["powershell"],
       theme: require("./src/theme/prism/light"),
       darkTheme: require("./src/theme/prism/dark"),
     },

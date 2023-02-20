@@ -10,7 +10,7 @@ Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a
 - Transform syntax
 - Polyfill features that are missing in your target environment (through a third-party polyfill such as [core-js](https://github.com/zloirock/core-js))
 - Source code transformations (codemods)
-- And more! (check out these [videos](/videos.html) for inspiration)
+- And more! (check out these [videos](/videos) for inspiration)
 
 ```js title="JavaScript"
 // Babel Input: ES2015 arrow function

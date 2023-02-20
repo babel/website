@@ -17,9 +17,9 @@ Let me show you just how easy it is to switch:
 
 > **Note:** There are _tons_ of ways to use Babel, I'll only list a few of them
 > here. If you'd like to see a more complete list check out our
-> [Using Babel](/docs/using-babel/) page.
+> [Using Babel](/setup) page.
 
-**In the Browser** ([docs](/docs/usage/browser/))
+**In the Browser** ([docs](/setup#browser/))
 
 Before:
 
@@ -33,7 +33,7 @@ After:
 <script type='text/babel'></script>
 ```
 
-**In Browserify** ([docs](/docs/using-babel/#browserify))
+**In Browserify** ([docs](/setup#browserify))
 
 Before:
 
@@ -47,7 +47,7 @@ After:
 $ browserify -t babelify main.js
 ```
 
-**In Node** ([docs](/docs/usage/require/))
+**In Node** ([docs](/setup#require/))
 
 Before:
 
@@ -61,7 +61,7 @@ After:
 require('babel/register');
 ````
 
-**In Webpack** ([docs](/docs/using-babel/#webpack))
+**In Webpack** ([docs](/setup#webpack))
 
 Before:
 
@@ -79,7 +79,7 @@ loaders: [
 ]
 ```
 
-**In Gulp** ([docs](/docs/using-babel/#gulp))
+**In Gulp** ([docs](/setup#gulp))
 
 Before:
 
@@ -101,9 +101,9 @@ gulp.src('views/**/*.js')
 
 The list goes on, but you probably get how simple it is by now. If you didn't
 see the tool you are looking for don't worry we have a full list of them on our
-[Using Babel](/docs/using-babel/) page.
+[Using Babel](/setup) page.
 
-If you need more help getting setup be sure to read our [JSX](/docs/usage/jsx/)
+If you need more help getting setup be sure to read our [JSX](/setup#jsx/)
 docs or come ask other Babel users in our
 [support chat](https://gitter.im/babel/babel).
 
