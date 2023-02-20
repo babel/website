@@ -64,6 +64,7 @@ const PIPELINE_PROPOSALS = {
 };
 
 const DECORATOR_PROPOSALS = {
+  "2023-01": "2023-01",
   "2022-03": "2022-03",
   "2021-12": "2021-12",
   "2018-09": "2018-09",
@@ -450,9 +451,9 @@ class ExpandedContainer extends Component<Props, State> {
                 </select>
               </PresetOption>
               <PresetOption
-                when={isStageEnabled(2)}
+                when={isStageEnabled(3)}
                 option="decoratorsVersion"
-                presets={getStages(2)}
+                presets={getStages(3)}
               >
                 <span className={styles.presetsOptionsLabel}>
                   Decorators version
@@ -476,12 +477,13 @@ class ExpandedContainer extends Component<Props, State> {
               </PresetOption>
               <PresetOption
                 when={
-                  isStageEnabled(2) &&
-                  presetsOptions.decoratorsVersion !== "2022-03" &&
-                  presetsOptions.decoratorsVersion !== "legacy"
+                  isStageEnabled(3) &&
+                  !["legacy", "2022-03", "2023-01"].includes(
+                    presetsOptions.decoratorsVersion
+                  )
                 }
                 option="decoratorsBeforeExport"
-                presets={getStages(2)}
+                presets={getStages(3)}
                 comment="Only works when version of decorators is 2021-12 or 2018-09"
               >
                 <span className={styles.presetsOptionsLabel}>
