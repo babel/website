@@ -33,6 +33,13 @@ const output = generate(
 
 ## Options
 
+<details>
+  <summary>History</summary>
+| Version | Changes |
+| --- | --- |
+| v7.21.0 | Added `inputSourceMap` |
+</details>
+
 Options for formatting output:
 
 | name                   | type                | default         | description                                                                                                                                                                                                                                                        |
@@ -54,11 +61,12 @@ Options for formatting output:
 
 Options for source maps:
 
-| name           | type    | default | description                                                                                                            |
-| -------------- | ------- | ------- | ---------------------------------------------------------------------------------------------------------------------- |
-| sourceMaps     | boolean | `false` | Enable generating source maps                                                                                          |
-| sourceRoot     | string  |         | A root for all relative URLs in the source map                                                                         |
-| sourceFileName | string  |         | The filename for the source code (i.e. the code in the `code` argument). This will only be used if `code` is a string. |
+| name           | type             | default | description                                                                                                            |
+| -------------- | ---------------- | ------- | ---------------------------------------------------------------------------------------------------------------------- |
+| sourceMaps     | boolean          | `false` | Enable generating source maps                                                                                          |
+| inputSourceMap | string or object |         | The input source map                                                                                                   |
+| sourceRoot     | string           |         | A root for all relative URLs in the source map                                                                         |
+| sourceFileName | string           |         | The filename for the source code (i.e. the code in the `code` argument). This will only be used if `code` is a string. |
 
 ## AST from Multiple Sources
 
