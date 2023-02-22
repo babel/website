@@ -5,7 +5,7 @@ import { exec } from "child_process";
 import { writeFile } from "fs/promises";
 import { resolve } from "path";
 
-const numOfLatestMinor = 5;
+const numOfLatestMinor = 16;
 
 exec(
   "npm view @babel/standalone versions --json",
