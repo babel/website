@@ -29,7 +29,7 @@ Create `babel.config.json` in your project root:
 }
 ```
 
-<blockquote class="babel-callout babel-callout-info">
+<blockquote class="alert alert--info">
   <p>
     For more information see the <code>babel</code>
     <a href="https://github.com/mochajs/mocha-examples/tree/master/packages/babel">mocha-examples</a>.

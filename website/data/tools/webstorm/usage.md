@@ -6,7 +6,7 @@ By default all files with a `.js` extension will be automatically compiled with 
 
 Lastly, in **Languages & Frameworks - JavaScript - JavaScript** language version, choose ECMAScript 6.
 
-<blockquote class="babel-callout babel-callout-info">
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling#babelfilewatcher">post</a> in the WebStorm blog.
   </p>

@@ -1,4 +1,4 @@
-<blockquote class="babel-callout babel-callout-warning">
+<blockquote class="alert alert--warning">
   <p>
     Compiling in the browser has a fairly limited use case, so if you are
     working on a production site you should be precompiling your scripts

@@ -20,7 +20,7 @@ export const task = () =>
   )
 ```
 
-<blockquote class="babel-callout babel-callout-info">
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://github.com/deepsweet/start">deepsweet/start repo</a>.
   </p>

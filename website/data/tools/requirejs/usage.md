@@ -16,7 +16,7 @@ define(["es6!your-es6-module"], function (module) {
 });
 ```
 
-<blockquote class="babel-callout babel-callout-info">
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://github.com/mikach/requirejs-babel">mikach/requirejs-babel repo</a>.
   </p>
