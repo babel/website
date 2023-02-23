@@ -31,7 +31,7 @@ See [name normalization](options.md#name-normalization) for more specifics on co
 
 These plugins apply transformations to your code.
 
-<blockquote class="babel-callout babel-callout-info">
+<blockquote class="alert alert--info">
   <p>
     Transform plugins will enable the corresponding syntax plugin so you don't have to specify both.
   </p>

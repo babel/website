@@ -13,7 +13,7 @@ document.getElementById('output').innerHTML = getMessage();
 </script>
 ```
 
-<blockquote class="babel-callout babel-callout-info">
+<blockquote class="alert alert--info">
   <p>
     See <a href="/docs/en/babel-standalone">docs</a> for full documentation on <code>@babel/standalone</code>.
   </p>
