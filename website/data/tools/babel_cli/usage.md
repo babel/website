@@ -32,8 +32,8 @@ Alternatively, you can reference the `babel` cli inside of `node_modules`.
 ./node_modules/.bin/babel src -d lib
 ```
 
-<blockquote class="alert alert--info">
+:::info
   <p>
     For full documentation on the Babel CLI see the <a href="/docs/usage/cli/">usage docs</a>.
   </p>
-</blockquote>
+:::

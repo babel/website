@@ -19,8 +19,8 @@
 }
 ```
 
-<blockquote class="alert alert--info">
+:::info
   <p>
     For more information see the <a href="https://github.com/babel/babel-loader">babel/babel-loader repo</a>.
   </p>
-</blockquote>
+:::

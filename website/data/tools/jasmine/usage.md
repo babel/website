@@ -18,8 +18,8 @@ Create a `babel.config.json` in your project root:
 }
 ```
 
-<blockquote class="alert alert--info">
+:::info
   <p>
     For more information see the <a href="https://github.com/piecioshka/test-jasmine-babel">piecioshka/test-jasmine-babel repo</a>.
   </p>
-</blockquote>
+:::

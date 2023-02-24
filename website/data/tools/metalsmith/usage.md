@@ -33,8 +33,8 @@ new Metalsmith("./source")
   });
 ```
 
-<blockquote class="alert alert--info">
+:::info
   <p>
     For more information see the <a href="https://github.com/babel/metalsmith-babel">babel/metalsmith-babel repo</a>.
   </p>
-</blockquote>
+:::

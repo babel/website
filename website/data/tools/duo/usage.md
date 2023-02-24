@@ -13,9 +13,9 @@ Duo(root)
   .run(fn);
 ```
 
-<blockquote class="alert alert--info">
+:::info
   <p>
     For more information see the <a href="https://github.com/babel/duo-babel">babel/duo-babel repo</a>.
   </p>
-</blockquote>
+:::
 

@@ -31,8 +31,8 @@ gulp.task("default", function () {
 });
 ```
 
-<blockquote class="alert alert--info">
+:::info
   <p>
     For more information see the <a href="https://github.com/babel/gulp-babel">babel/gulp-babel repo</a>.
   </p>
-</blockquote>
+:::

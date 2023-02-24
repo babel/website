@@ -20,9 +20,9 @@ module.exports = function(config) {
 };
 ```
 
-<blockquote class="alert alert--info">
+:::info
   <p>
     For more information see the <a href="https://github.com/babel/karma-babel-preprocessor">babel/karma-babel-preprocessor repo</a>.
   </p>
-</blockquote>
+:::
 
