@@ -17,7 +17,7 @@
 
   --ifm-blockquote-border-left-width: 4px;
 }
-[data-theme='dark'] {
+html[data-theme='dark'] {
   --ifm-color-primary: #f5da55;
   --ifm-color-primary-dark: #f3d336;
   --ifm-color-primary-darker: #f2d026;
