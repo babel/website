@@ -38,32 +38,13 @@ const Versions = () => {
                       Blog Post
                     </a>
                   </td>
-                </tr>
-              </tbody>
-            </table>
-            <p>This is the current stable version of the project.</p>
-            <a name="rc" />
-            <h3>Pre-release versions</h3>
-            <p>These are the latest changes that have yet to be released.</p>
-            <table className="versions">
-              <tbody>
-                <tr>
-                  <th>main</th>
-                  <td>
-                    <a
-                      href={
-                        customFields.baseUrl + "docs/" + "next" + "/index.html"
-                      }
-                    >
-                      Documentation
-                    </a>
-                  </td>
                   <td>
                     <a href={repoUrl}>Source Code</a>
                   </td>
                 </tr>
               </tbody>
             </table>
+            <p>This is the current stable version of the project.</p>
             {versions && versions.length > 1 && (
               <div>
                 <a name="archive" />
@@ -76,31 +57,22 @@ const Versions = () => {
                           <tr key={version}>
                             <th>{version}</th>
                             <td>
-                              <a
-                                href={
-                                  customFields.baseUrl +
-                                  "docs/" +
-                                  "/" +
-                                  version +
-                                  "/index.html"
-                                }
-                              >
-                                Documentation
-                              </a>
-                            </td>
-                            <td>
                               <a href={`${repoUrl}/releases/tag/v${version}`}>
                                 Release Notes
                               </a>
                             </td>
                             <td>
-                              <a href={`${customFields.baseUrl}${version}`}>
+                              <a href={`${siteConfig.baseUrl}${version}`}>
                                 Blog Post
                               </a>
                             </td>
                           </tr>
                         )
                     )}
+                  </tbody>
+                </table>
+                <table className="versions">
+                  <tbody>
                     <tr>
                       <th>6.26.3</th>
                       <td>
