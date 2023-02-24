@@ -20,8 +20,8 @@ export const task = () =>
   )
 ```
 
-:::info
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://github.com/deepsweet/start">deepsweet/start repo</a>.
   </p>
-:::
+</blockquote>

@@ -1,11 +1,11 @@
-:::caution
+<blockquote class="alert alert--warning">
   <p>
     Compiling in the browser has a fairly limited use case, so if you are
     working on a production site you should be precompiling your scripts
     server-side. See <a href="/docs/setup/#build-systems">setup build systems</a>
     for more information.
   </p>
-:::
+</blockquote>
 
 You can use `@babel/standalone` as a precompiled version of Babel or run a bundler on Babel yourself. Check the usage section below for how to use it as a script.
 

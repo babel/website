@@ -8,9 +8,9 @@ Or use the alias:
 bode-debug path/to/script.js
 ```
 
-:::info
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://github.com/crabdude/babel-node-debug">crabdude/babel-node-debug repo</a>.
   </p>
-:::
+</blockquote>
 

@@ -12,9 +12,9 @@ app.use(babelMiddleware({
 app.use(connect.static("cache"));
 ```
 
-:::info
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://github.com/babel/babel-connect">babel/babel-connect repo</a>.
   </p>
-:::
+</blockquote>
 

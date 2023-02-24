@@ -14,13 +14,13 @@ We can install Babel CLI locally by running:
 npm install --save-dev @babel/core @babel/cli
 ```
 
-:::info
+<blockquote class="alert alert--info">
   <p>
     <strong>Note:</strong> If you do not have a <code>package.json</code>,
     create one before installing. This will ensure proper interaction with the
     <code>npx</code> command.
   </p>
-:::
+</blockquote>
 
 After that finishes installing, your `package.json` file should include:
 

@@ -16,9 +16,9 @@ script
     person.sayName();
 ```
 
-:::info
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://github.com/jstransformers/jstransformer-babel">jstransformers/jstransformer-babel repo</a>.
   </p>
-:::
+</blockquote>
 

@@ -9,9 +9,9 @@ plugins:
       semicolons: false
 ```
 
-:::info
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://github.com/babel/babel-brunch">babel/babel-brunch repo</a>.
   </p>
-:::
+</blockquote>
 

@@ -29,12 +29,12 @@ Create `babel.config.json` in your project root:
 }
 ```
 
-:::info
+<blockquote class="alert alert--info">
   <p>
     For more information see the <code>babel</code>
     <a href="https://github.com/mochajs/mocha-examples/tree/master/packages/babel">mocha-examples</a>.
   </p>
-:::
+</blockquote>
 
 #### Mocha 3
 

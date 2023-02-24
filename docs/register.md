@@ -23,13 +23,13 @@ require("@babel/register");
 All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`,
 `.mjs`, and `.js` will be transformed by Babel.
 
-:::info
+<blockquote class="alert alert--info">
   <h4>Polyfill not included</h4>
   <p>
     You must include the [polyfill](./polyfill.md) separately
     when using features that require it, like generators.
   </p>
-:::
+</blockquote>
 
 ### Ignores `node_modules` by default
 
