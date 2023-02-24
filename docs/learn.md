@@ -3,20 +3,14 @@ title: Learn ES2015
 id: learn
 ---
 
-<blockquote class="alert alert--info">
-  <h3>es6features</h3>
-  <p>
-    This document was originally taken from Luke Hoban's excellent <a href="https://git.io/es6features">es6features</a> repo. Go give it a star
-    on GitHub!
-  </p>
-</blockquote>
+:::info es6features
+This document was originally taken from Luke Hoban's excellent <a href="https://git.io/es6features">es6features</a> repo. Go give it a star
+on GitHub!
+:::
 
-<blockquote class="alert alert--info">
-  <h4>REPL</h4>
-  <p>
-    Be sure to try these features out in the online <a href="/repl">REPL</a>.
-  </p>
-</blockquote>
+:::info REPL
+Be sure to try these features out in the online <a href="/repl">REPL</a>.
+:::
 
 ## Introduction
 
@@ -132,11 +126,9 @@ var obj = {
 };
 ```
 
-<blockquote class="alert alert--warning">
-  <p>
-    The <code>__proto__</code> property requires native support, and was deprecated in previous ECMAScript versions. Most engines now support the property, but <a href="https://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>. Also, note that only <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">web browsers</a> are required to implement it, as it's in <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">Annex B</a>. It is available in Node.
-  </p>
-</blockquote>
+:::caution
+The <code>__proto__</code> property requires native support, and was deprecated in previous ECMAScript versions. Most engines now support the property, but <a href="https://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>. Also, note that only <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">web browsers</a> are required to implement it, as it's in <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">Annex B</a>. It is available in Node.
+:::
 
 ### Template Strings
 
@@ -306,12 +298,9 @@ interface Iterable {
 }
 ```
 
-<blockquote class="alert alert--info">
-  <h4>Support via polyfill</h4>
-  <p>
-    In order to use Iterators you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
-  </p>
-</blockquote>
+:::info Support via polyfill
+In order to use Iterators you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+:::
 
 ### Generators
 
@@ -354,12 +343,9 @@ interface Generator extends Iterator {
 }
 ```
 
-<blockquote class="alert alert--info">
-  <h4>Support via polyfill</h4>
-  <p>
-    In order to use Generators you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
-  </p>
-</blockquote>
+:::info Support via polyfill
+In order to use Generators you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+:::
 
 ### Comprehensions
 
@@ -433,23 +419,17 @@ import exp, {pi, e} from "lib/mathplusplus";
 console.log("e^π = " + exp(pi));
 ```
 
-<blockquote class="alert alert--info">
-  <h4>Module Formatters</h4>
-  <p>
-    Babel can transpile ES2015 Modules to several different formats including
-    Common.js, AMD, System, and UMD. You can even create your own. For more
-    details see the <a href="/docs/plugins/">modules docs</a>.
-  </p>
-</blockquote>
+:::info Module Formatters
+Babel can transpile ES2015 Modules to several different formats including
+Common.js, AMD, System, and UMD. You can even create your own. For more
+details see the <a href="/docs/plugins/">modules docs</a>.
+:::
 
 ### Module Loaders
 
-<blockquote class="alert alert--warning">
-  <h4>Not part of ES2015</h4>
-  <p>
-    This is left as implementation-defined within the ECMAScript 2015 specification. The eventual standard will be in WHATWG's <a href="https://whatwg.github.io/loader/">Loader specification</a>, but that is currently a work in progress. What is below is from a previous ES2015 draft.
-  </p>
-</blockquote>
+:::caution Not part of ES2015
+This is left as implementation-defined within the ECMAScript 2015 specification. The eventual standard will be in WHATWG's <a href="https://whatwg.github.io/loader/">Loader specification</a>, but that is currently a work in progress. What is below is from a previous ES2015 draft.
+:::
 
 Module loaders support:
 
@@ -479,21 +459,14 @@ System.get("jquery");
 System.set("jquery", Module({$: $})); // WARNING: not yet finalized
 ```
 
-<blockquote class="alert alert--warning">
-  <h4>Additional polyfill needed</h4>
-  <p>
-    Since Babel defaults to using common.js modules, it does not include the
-    polyfill for the module loader API. Get it <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
-  </p>
-</blockquote>
+:::caution Additional polyfill needed
+Since Babel defaults to using common.js modules, it does not include the
+polyfill for the module loader API. Get it <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
+:::
 
-<blockquote class="alert alert--info">
-  <h4>Using Module Loader</h4>
-  <p>
-    In order to use this, you'll need to tell Babel to use the
-    <code>system</code> module formatter. Also be sure to check out <a href="https://github.com/systemjs/systemjs">System.js</a>.
-  </p>
-</blockquote>
+:::info Using Module Loader
+In order to use this, you'll need to tell Babel to use the <code>system</code> module formatter. Also be sure to check out <a href="https://github.com/systemjs/systemjs">System.js</a>.
+:::
 
 
 ### Map + Set + WeakMap + WeakSet
@@ -525,12 +498,9 @@ ws.add({ data: 42 });
 // Because the added object has no other references, it will not be held in the set
 ```
 
-<blockquote class="alert alert--info">
-  <h4>Support via polyfill</h4>
-  <p>
-    In order to support Maps, Sets, WeakMaps, and WeakSets in all environments you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
-  </p>
-</blockquote>
+:::info Support via polyfill
+In order to support Maps, Sets, WeakMaps, and WeakSets in all environments you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+:::
 
 ### Proxies
 
@@ -601,12 +571,9 @@ var handler =
 }
 ```
 
-<blockquote class="alert alert--danger">
-  <h4>Unsupported feature</h4>
-  <p>
-    Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="https://kangax.github.io/compat-table/es6/#test-Proxy">various JavaScript engines</a>.
-  </p>
-</blockquote>
+:::danger Unsupported feature
+Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="https://kangax.github.io/compat-table/es6/#test-Proxy">various JavaScript engines</a>.
+:::
 
 ### Symbols
 
@@ -640,12 +607,9 @@ var c = new MyClass("hello")
 c["key"] === undefined
 ```
 
-<blockquote class="alert alert--info">
-  <h4>Limited support via polyfill</h4>
-  <p>
-    Limited support requires the Babel <a href="/docs/babel-polyfill">polyfill</a>. Due to language limitations, some features can't be transpiled or polyfilled. See core.js's <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">caveats section</a> for more details.
-  </p>
-</blockquote>
+:::info Limited support via polyfill
+Limited support requires the Babel <a href="/docs/babel-polyfill">polyfill</a>. Due to language limitations, some features can't be transpiled or polyfilled. See core.js's <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">caveats section</a> for more details.
+:::
 
 ### Subclassable Built-ins
 
@@ -662,12 +626,9 @@ arr[1] = 12;
 arr.length == 2
 ```
 
-<blockquote class="alert alert--warning">
-  <h4>Partial support</h4>
-  <p>
-    Built-in subclassability should be evaluated on a case-by-case basis as classes such as <code>HTMLElement</code> <strong>can</strong> be subclassed while many such as <code>Date</code>, <code>Array</code> and <code>Error</code> <strong>cannot</strong> be due to ES5 engine limitations.
-  </p>
-</blockquote>
+:::caution Partial support
+Built-in subclassability should be evaluated on a case-by-case basis as classes such as <code>HTMLElement</code> <strong>can</strong> be subclassed while many such as <code>Date</code>, <code>Array</code> and <code>Error</code> <strong>cannot</strong> be due to ES5 engine limitations.
+:::
 
 ### Math + Number + String + Object APIs
 
@@ -697,15 +658,9 @@ Array.of(1, 2, 3) // Similar to new Array(...), but without special one-arg beha
 Object.assign(Point, { origin: new Point(0,0) })
 ```
 
-<blockquote class="alert alert--warning">
-  <h4>Limited support from polyfill</h4>
-  <p>
-    Most of these APIs are supported by the Babel <a href="/docs/babel-polyfill">polyfill</a>. However, certain
-    features are omitted for various reasons (e.g.
-    <code>String.prototype.normalize</code> needs a lot of additional code to
-    support). You can find more polyfills <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
-  </p>
-</blockquote>
+:::caution Limited support from polyfill
+Most of these APIs are supported by the Babel <a href="/docs/babel-polyfill">polyfill</a>. However, certain features are omitted for various reasons (e.g. <code>String.prototype.normalize</code> needs a lot of additional code to support). You can find more polyfills <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
+:::
 
 ### Binary and Octal Literals
 Two new numeric literal forms are added for binary (`b`) and octal (`o`).
@@ -715,13 +670,9 @@ Two new numeric literal forms are added for binary (`b`) and octal (`o`).
 0o767 === 503 // true
 ```
 
-<blockquote class="alert alert--warning">
-  <h4>Only supports literal form</h4>
-  <p>
-    Babel is only able to transform <code>0o767</code> and not
-    <code>Number("0o767")</code>.
-  </p>
-</blockquote>
+:::caution Only supports literal form
+Babel is only able to transform <code>0o767</code> and not <code>Number("0o767")</code>.
+:::
 
 
 ### Promises
@@ -746,12 +697,9 @@ var p = timeout(1000).then(() => {
 })
 ```
 
-<blockquote class="alert alert--info">
-  <h4>Support via polyfill</h4>
-  <p>
-    In order to support Promises you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
-  </p>
-</blockquote>
+:::info Support via polyfill
+In order to support Promises you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+:::
 
 ### Reflect API
 
@@ -774,12 +722,9 @@ var instance = Reflect.construct(C, [20, 22]);
 instance.c; // 42
 ```
 
-<blockquote class="alert alert--info">
-  <h4>Support via polyfill</h4>
-  <p>
-    In order to use the Reflect API you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
-  </p>
-</blockquote>
+:::info Support via polyfill
+In order to use the Reflect API you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+:::
 
 ### Tail Calls
 
@@ -798,11 +743,8 @@ function factorial(n, acc = 1) {
 factorial(100000)
 ```
 
-<blockquote class="alert alert--warning">
-  <h4>Temporarily Removed in Babel 6</h4>
-  <p>
-    Only explicit self referencing tail recursion was supported due to the
-    complexity and performance impact of supporting tail calls globally.
-    Removed due to other bugs and will be re-implemented.
-  </p>
-</blockquote>
+:::caution Temporarily Removed in Babel 6
+Only explicit self referencing tail recursion was supported due to the
+complexity and performance impact of supporting tail calls globally.
+Removed due to other bugs and will be re-implemented.
+:::
