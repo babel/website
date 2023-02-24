@@ -4,16 +4,12 @@ id: learn
 ---
 
 :::info es6features
-  <p>
     This document was originally taken from Luke Hoban's excellent <a href="https://git.io/es6features">es6features</a> repo. Go give it a star
     on GitHub!
-  </p>
 :::
 
 :::info REPL
-  <p>
     Be sure to try these features out in the online <a href="/repl">REPL</a>.
-  </p>
 :::
 
 ## Introduction
@@ -305,9 +301,7 @@ interface Iterable {
 ```
 
 :::info Support via polyfill
-  <p>
     In order to use Iterators you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
-  </p>
 :::
 
 ### Generators
@@ -352,9 +346,7 @@ interface Generator extends Iterator {
 ```
 
 :::info Support via polyfill
-  <p>
     In order to use Generators you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
-  </p>
 :::
 
 ### Comprehensions
@@ -430,19 +422,15 @@ console.log("e^π = " + exp(pi));
 ```
 
 :::info Module Formatters
-  <p>
     Babel can transpile ES2015 Modules to several different formats including
     Common.js, AMD, System, and UMD. You can even create your own. For more
     details see the <a href="/docs/plugins/">modules docs</a>.
-  </p>
 :::
 
 ### Module Loaders
 
 :::caution Not part of ES2015
-  <p>
     This is left as implementation-defined within the ECMAScript 2015 specification. The eventual standard will be in WHATWG's <a href="https://whatwg.github.io/loader/">Loader specification</a>, but that is currently a work in progress. What is below is from a previous ES2015 draft.
-  </p>
 :::
 
 Module loaders support:
@@ -474,17 +462,13 @@ System.set("jquery", Module({$: $})); // WARNING: not yet finalized
 ```
 
 :::caution Additional polyfill needed
-  <p>
     Since Babel defaults to using common.js modules, it does not include the
     polyfill for the module loader API. Get it <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
-  </p>
 :::
 
 :::info Using Module Loader
-  <p>
     In order to use this, you'll need to tell Babel to use the
     <code>system</code> module formatter. Also be sure to check out <a href="https://github.com/systemjs/systemjs">System.js</a>.
-  </p>
 :::
 
 
@@ -518,9 +502,7 @@ ws.add({ data: 42 });
 ```
 
 :::info Support via polyfill
-  <p>
     In order to support Maps, Sets, WeakMaps, and WeakSets in all environments you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
-  </p>
 :::
 
 ### Proxies
@@ -593,9 +575,7 @@ var handler =
 ```
 
 :::danger Unsupported feature
-  <p>
     Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="https://kangax.github.io/compat-table/es6/#test-Proxy">various JavaScript engines</a>.
-  </p>
 :::
 
 ### Symbols
@@ -631,9 +611,7 @@ c["key"] === undefined
 ```
 
 :::info Limited support via polyfill
-  <p>
     Limited support requires the Babel <a href="/docs/babel-polyfill">polyfill</a>. Due to language limitations, some features can't be transpiled or polyfilled. See core.js's <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">caveats section</a> for more details.
-  </p>
 :::
 
 ### Subclassable Built-ins
@@ -652,9 +630,7 @@ arr.length == 2
 ```
 
 :::caution Partial support
-  <p>
     Built-in subclassability should be evaluated on a case-by-case basis as classes such as <code>HTMLElement</code> <strong>can</strong> be subclassed while many such as <code>Date</code>, <code>Array</code> and <code>Error</code> <strong>cannot</strong> be due to ES5 engine limitations.
-  </p>
 :::
 
 ### Math + Number + String + Object APIs
@@ -686,12 +662,10 @@ Object.assign(Point, { origin: new Point(0,0) })
 ```
 
 :::caution Limited support from polyfill
-  <p>
     Most of these APIs are supported by the Babel <a href="/docs/babel-polyfill">polyfill</a>. However, certain
     features are omitted for various reasons (e.g.
     <code>String.prototype.normalize</code> needs a lot of additional code to
     support). You can find more polyfills <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
-  </p>
 :::
 
 ### Binary and Octal Literals
@@ -703,10 +677,8 @@ Two new numeric literal forms are added for binary (`b`) and octal (`o`).
 ```
 
 :::caution Only supports literal form
-  <p>
     Babel is only able to transform <code>0o767</code> and not
     <code>Number("0o767")</code>.
-  </p>
 :::
 
 
@@ -733,9 +705,7 @@ var p = timeout(1000).then(() => {
 ```
 
 :::info Support via polyfill
-  <p>
     In order to support Promises you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
-  </p>
 :::
 
 ### Reflect API
@@ -760,9 +730,7 @@ instance.c; // 42
 ```
 
 :::info Support via polyfill
-  <p>
     In order to use the Reflect API you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
-  </p>
 :::
 
 ### Tail Calls
@@ -783,9 +751,7 @@ factorial(100000)
 ```
 
 :::caution Temporarily Removed in Babel 6
-  <p>
     Only explicit self referencing tail recursion was supported due to the
     complexity and performance impact of supporting tail calls globally.
     Removed due to other bugs and will be re-implemented.
-  </p>
 :::
