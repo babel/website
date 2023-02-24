@@ -659,10 +659,7 @@ Object.assign(Point, { origin: new Point(0,0) })
 ```
 
 :::caution Limited support from polyfill
-Most of these APIs are supported by the Babel <a href="/docs/babel-polyfill">polyfill</a>. However, certain
-features are omitted for various reasons (e.g.
-<code>String.prototype.normalize</code> needs a lot of additional code to
-support). You can find more polyfills <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
+Most of these APIs are supported by the Babel <a href="/docs/babel-polyfill">polyfill</a>. However, certain features are omitted for various reasons (e.g. <code>String.prototype.normalize</code> needs a lot of additional code to support). You can find more polyfills <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
 :::
 
 ### Binary and Octal Literals
@@ -674,8 +671,7 @@ Two new numeric literal forms are added for binary (`b`) and octal (`o`).
 ```
 
 :::caution Only supports literal form
-Babel is only able to transform <code>0o767</code> and not
-<code>Number("0o767")</code>.
+Babel is only able to transform <code>0o767</code> and not <code>Number("0o767")</code>.
 :::
 
 
