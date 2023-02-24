@@ -24,8 +24,8 @@ All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`,
 `.mjs`, and `.js` will be transformed by Babel.
 
 :::info Polyfill not included
-    You must include the [polyfill](./polyfill.md) separately
-    when using features that require it, like generators.
+You must include the [polyfill](./polyfill.md) separately
+when using features that require it, like generators.
 :::
 
 ### Ignores `node_modules` by default

@@ -45,7 +45,7 @@ See [name normalization](options.md#name-normalization) for more specifics on co
 ## Stage-X (Experimental Presets)
 
 :::danger Deprecated
-    As of Babel 7, we've decided to deprecate the Stage-X presets and stop publishing them. Because these proposals are inherently subject to change, it seems better to ask users to specify individual proposals as plugins vs. a catch all preset that you would need to check up on anyway. Check out our <a href="https://babeljs.io/blog/2018/07/27/removing-babels-stage-presets">blog</a> for more context.
+As of Babel 7, we've decided to deprecate the Stage-X presets and stop publishing them. Because these proposals are inherently subject to change, it seems better to ask users to specify individual proposals as plugins vs. a catch all preset that you would need to check up on anyway. Check out our <a href="https://babeljs.io/blog/2018/07/27/removing-babels-stage-presets">blog</a> for more context.
 :::
 
 Any transforms in stage-x presets are changes to the language that haven't been approved to be part of a release of JavaScript (such as ES6/ES2015).
