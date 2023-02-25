@@ -42,7 +42,7 @@ Here are some of our milestones:
 - [6.13.0](https://github.com/babel/babel/releases/tag/v6.13.0) finally added [Preset Options](http://babeljs.io/docs/plugins/#plugin-preset-options).
 - [6.14.0](http://babeljs.io/blog/2016/08/24/6.14.0) added a [latest-preset](http://babeljs.io/docs/plugins/preset-latest/) that keeps up to date with the yearly JavaScript specification.
 - [6.16.0](http://babeljs.io/blog/2016/09/28/6.16.0) allowed changing out the parser or code-generator.
-- In August, we released [Babili, a minifier based on Babel](https://babeljs.io/blog/2016/08/30/babili).
+- In August, we released [Babili, a minifier based on Babel](https://babeljs.io/blog/2016/08/26/babili).
 - In September, we released the first version of [babel-preset-env](https://github.com/babel/babel-preset-env) (read on for details).
 - After a year on [Phabricator](https://twitter.com/sebmck/status/667097915605708804), we moved back to to [GitHub issues](https://twitter.com/left_pad/status/773619871074648064) thanks solely to [@danez](https://github.com/danez) and his amazing (and underappreciated) work.
 
@@ -226,7 +226,7 @@ new Mangler();
 class a{constructor(b){this.program=b}}new a;
 ```
 
-Check out our [blog post](http://babeljs.io/blog/2016/08/30/babili) for more info.
+Check out our [blog post](http://babeljs.io/blog/2016/08/26/babili) for more info.
 
 Since it was recently released, we're looking for some new contributors! There's a lot of small bugs and things that could be improved for those looking for a new project to help out with!
 

@@ -13,7 +13,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 ## Babel 7.21.0
 
-[blog post](https://babeljs.io/blog/2023/02/10/7.21.0)
+[blog post](https://babeljs.io/blog/2023/02/20/7.21.0)
 
 - [TypeScript 5.0](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/) support
 - Support for the updates of the [decorators](https://github.com/tc39/proposal-decorators) proposal that reached consensus in the January 2023 TC39 meeting
