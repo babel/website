@@ -132,7 +132,7 @@ const LinkToDocs = ({ className, children, section }: LinkProps) => (
   <a
     className={className}
     target="_blank"
-    href={`/docs/en/next/babel-preset-env.html#${section}`}
+    href={`/docs/babel-preset-env#${section}`}
   >
     {children}
   </a>
@@ -142,7 +142,7 @@ const LinkToAssumptionDocs = ({ className, children, section }: LinkProps) => (
   <a
     className={className}
     target="_blank"
-    href={`/docs/en/next/assumptions#${section.toLowerCase()}`}
+    href={`/docs/assumptions#${section.toLowerCase()}`}
   >
     {children}
   </a>
@@ -638,6 +638,26 @@ class ExpandedContainer extends Component<Props, State> {
                   onChange={this._onEnvPresetSettingCheck("isBuiltInsEnabled")}
                   type="checkbox"
                 />
+              </label>
+              <label className={styles.envPresetRow}>
+                <LinkToDocs className={`${styles.envPresetLabel} ${styles.highlight}`}
+                  section="modules"
+                >
+                  Modules
+                </LinkToDocs>
+                <select
+                  value={envConfig.modules}
+                  className={styles.envPresetSelect}
+                  onChange={this._onEnvPresetSettingChange("modules")}
+                  disabled={!envConfig.isEnvPresetEnabled}
+                >
+                  <option value="auto">auto</option>
+                  <option value="amd">amd</option>
+                  <option value="umd">umd</option>
+                  <option value="systemjs">systemjs</option>
+                  <option value="commonjs">commonjs</option>
+                  <option value="false">false</option>
+                </select>
               </label>
               <label className={styles.envPresetRow}>
                 <LinkToDocs

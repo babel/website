@@ -532,6 +532,9 @@ class Repl extends React.Component<Props, State> {
           this.state.envConfig.corejs = false;
         }
       }
+      if (name === "modules" && value === "false") {
+        value = false;
+      }
       this.setState(
         // TODO: FIXME
         // @ts-expect-error
@@ -613,6 +616,7 @@ class Repl extends React.Component<Props, State> {
       circleciRepo: state.babel.circleciRepo,
       code: state.code,
       debug: state.debugEnvPreset,
+      modules: envConfig.modules,
       forceAllTransforms: envConfig.forceAllTransforms,
       shippedProposals: envConfig.shippedProposals,
       evaluate: state.runtimePolyfillState.isEnabled,

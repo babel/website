@@ -70,7 +70,7 @@ export default function compile(code: string, config: CompileConfig): Return {
 
   if (envConfig && envConfig.isEnvPresetEnabled) {
     const targets: any = {};
-    const { forceAllTransforms, shippedProposals } = envConfig;
+    const { forceAllTransforms, shippedProposals, modules } = envConfig;
 
     if (envConfig.browsers) {
       targets.browsers = envConfig.browsers
@@ -105,6 +105,7 @@ export default function compile(code: string, config: CompileConfig): Return {
 
     presetEnvOptions = {
       targets,
+      modules,
       forceAllTransforms,
       shippedProposals,
       useBuiltIns,

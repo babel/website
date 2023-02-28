@@ -153,6 +153,7 @@ export const persistedStateToEnvConfig = (
     isEnvPresetEnabled,
     isElectronEnabled: false,
     isNodeEnabled: false,
+    modules: persistedState.modules ?? envPresetDefaults.modules.default,
     forceAllTransforms: !!persistedState.forceAllTransforms,
     shippedProposals: !!persistedState.shippedProposals,
     isBuiltInsEnabled: !!persistedState.builtIns,
