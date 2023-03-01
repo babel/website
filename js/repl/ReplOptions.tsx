@@ -651,12 +651,11 @@ class ExpandedContainer extends Component<Props, State> {
                   onChange={this._onEnvPresetSettingChange("modules")}
                   disabled={!envConfig.isEnvPresetEnabled}
                 >
-                  <option value="auto">auto</option>
+                  <option value="false">false</option>
                   <option value="amd">amd</option>
                   <option value="umd">umd</option>
                   <option value="systemjs">systemjs</option>
                   <option value="commonjs">commonjs</option>
-                  <option value="false">false</option>
                 </select>
               </label>
               <label className={styles.envPresetRow}>

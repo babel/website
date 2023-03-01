@@ -66,7 +66,7 @@ const envPresetDefaults = {
     default: "3.21",
   },
   modules: {
-    default: "auto",
+    default: false,
   },
 } as const;
 
@@ -110,7 +110,7 @@ const replDefaults: ReplState = {
     compiledSize: 0,
     rawSize: 0,
   },
-  modules: "auto",
+  modules: false,
   presets: "react,stage-2,env",
   prettier: false,
   showSidebar: true,
