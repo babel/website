@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-react-jsx
 title: "@babel/plugin-transform-react-jsx"
-sidebar_label: React Plugin
+sidebar_label: transform-react-jsx
 ---
 
 > **NOTE**: This plugin is included in `@babel/preset-react`

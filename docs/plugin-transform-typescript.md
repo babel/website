@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-typescript
 title: "@babel/plugin-transform-typescript"
-sidebar_label: Typescript Plugin
+sidebar_label: transform-typescript
 ---
 
 > **NOTE**: This plugin is included in `@babel/preset-typescript`
