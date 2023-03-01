@@ -4,7 +4,11 @@ title: "@babel/plugin-syntax-import-meta"
 sidebar_label: syntax-import-meta
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2020](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2020](https://github.com/tc39/proposals/blob/master/finished-proposals.md).
+
+:::tip
+You can safely remove this plugin from your Babel config if using `@babel/core` 7.10.0 or above.
+:::
 
 ## Installation
 
