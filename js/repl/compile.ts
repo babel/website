@@ -109,10 +109,15 @@ export default function compile(code: string, config: CompileConfig): Return {
       forceAllTransforms,
       shippedProposals,
       useBuiltIns,
-      corejs,
+      corejs: undefined,
       spec,
       loose,
     };
+
+    if (useBuiltIns) {
+      (presetEnvOptions as any).corejs = corejs;
+    }
+
     if (Babel.version && compareVersions(Babel.version, "7.9.0") !== -1) {
       (presetEnvOptions as any).bugfixes = bugfixes;
     }
