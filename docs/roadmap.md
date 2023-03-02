@@ -138,7 +138,7 @@ At least 15% of open issues in babel-website are related to the REPL: https://gi
 
 Related to the REPL/ASTExplorer, we could do with more tooling to help with general plugin development for ourselves and 3rd-party plugins. This is rather exploratory in nature: different visualizations for the AST itself, debugging, etc.
 
-Some things already in progress Henry has been working on:
+Some things already in progress Henry has been working on and off on:
 
 - [Codesandbox](https://codesandbox.io/s/babel-repl-custom-plugin-7s08o) for making a simple Babel plugin in the same vein as https://astexplorer.net but with custom configs.
 - [Visualization](https://twitter.com/left_pad/status/1367941962083471361?s=20) of input to output mapping to help understand how Babel transforms its code. Could be useful even for documentation in getting JavaScript users familiar with new syntax or a specific demo of a transform.
