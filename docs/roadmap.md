@@ -14,7 +14,7 @@ If your company is interested and would like to directly sponsor any particular 
 
 ### Babel 8
 
-We have been talking about the Babel 8 release for more than one year (we initially scheduled it about one year ago)! However, we are now closer then ever to it's release!
+We have been talking about the Babel 8 release for more than one year (we initially scheduled it about one year ago)! However, we are now closer then ever to its release!
 
 Most of the remaining tasks are in the [tracking issue](https://github.com/babel/babel/issues/10746), but there are still a few blockers:
 - We want to drop support for [Node.js 10](https://github.com/nodejs/Release), which stops being maintained on 2021-04-30.
@@ -67,7 +67,7 @@ This might happen in two different ways:
 
 Whichever path we take, we would like to offer at least one alternative to our users when they'll need to update the `core-js` integration in their configuration. `core-js` is a really good polyfill that ensures the highest possible spec compliancy, but users may prefer different trade-offs.
 
-([Nicolò](https://github.com/nicolo-ribaudo)) is working with [@ljharb](https://github.com/ljharb) to make sure that the [`@es-shims` project](https://github.com/es-shims/) supports at least all the ES2015+ features (we actually aim for ES5+), so that Babel users are free to choose to between at least two options.
+([Nicolò](https://github.com/nicolo-ribaudo)) is working with [@ljharb](https://github.com/ljharb) to make sure that the [`@es-shims` project](https://github.com/es-shims/) supports at least all the ES2015+ features (we actually aim for ES5+), so that Babel users are free to choose between at least two options.
 
 This needs to happen _before_ dropping built-in support for `core-js@3`, so that people interested in `es-shims` don't have to migrate twice.
 
@@ -107,13 +107,13 @@ In Babel 7.13.0 we introduced a new top-level [`assumptions`](https://babeljs.io
 
 However, we only included options for assumptions we _already_ made when compiling in `loose` mode. We can now investigate what new assumptions our users might need.
 
-The are already some proposals, such as:
+There are already some proposals, such as:
 - [#8222](https://github.com/babel/babel/issues/8222) - assume that all the ESM imports are actually immutable, avoiding the code needed for live bindings.
 - [#11356](https://github.com/babel/babel/issues/11356) - assume that compiled classes do not extends native classes, avoiding the runtime performance cost needed to instantiate possibly native classes.
 
 We can find which new assumptions we should implement, by:
 - Manually checking which features we compile to "non-obvious" output, which is usually caused by edge cases that many developers don't care about.
-- Ask for feedback from the community, since developers can test which assumptions work and which don't on their applications.
+- Asking for feedback from the community, since developers can test which assumptions work and which don't on their applications.
 
 ### Overhaul the Babel REPL
 
@@ -141,7 +141,7 @@ Related to the REPL/ASTExplorer, we could do with more tooling to help with gene
 Some things already in progress Henry has been working on and off on:
 
 - [Codesandbox](https://codesandbox.io/s/babel-repl-custom-plugin-7s08o) for making a simple Babel plugin in the same vein as https://astexplorer.net but with custom configs.
-- [Visualization](https://twitter.com/left_pad/status/1367941962083471361?s=20) of input to output mapping to help understand how Babel transforms it's code. Could be useful even for documentation in getting JavaScript users familiar with new syntax or a specific demo of a transform.
+- [Visualization](https://twitter.com/left_pad/status/1367941962083471361?s=20) of input to output mapping to help understand how Babel transforms its code. Could be useful even for documentation in getting JavaScript users familiar with new syntax or a specific demo of a transform.
 - [Mapping](https://twitter.com/left_pad/status/1298792944099561473?s=20) of input to output like a sourcemap type structure. Can do a reverse mapping to find out what plugin caused the code to be outputted a certain way which helps with debugging.
 
 For an interactive example of what we are thinking about: https://babel-explorer.netlify.app/ (click and hold the mouse in the bottom sector!)
