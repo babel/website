@@ -4,7 +4,7 @@ title: "@babel/plugin-proposal-private-methods"
 sidebar_label: private-methods
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 
 <details>
 <summary>History</summary>
