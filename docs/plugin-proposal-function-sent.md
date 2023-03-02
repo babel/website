@@ -63,4 +63,4 @@ require("@babel/core").transformSync("code", {
 
 ## References
 
-- [Proposal](https://github.com/allenwb/ESideas/blob/master/Generator%20metaproperty.md)
+- [Proposal: Generator function.sent Meta Property](https://github.com/tc39/proposal-function.sent)

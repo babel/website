@@ -37,8 +37,8 @@ class Counter extends HTMLElement {
 
 ## Installation
 
-```sh title="Shell"
-$ npm install @babel/plugin-proposal-private-methods --save-dev
+```shell npm2yarn
+npm install @babel/plugin-proposal-private-methods --save-dev
 ```
 
 ## Usage

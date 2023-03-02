@@ -6,8 +6,8 @@ sidebar_label: record-and-tuple
 
 ## Installation
 
-```sh title="Shell"
-$ npm install --save-dev @babel/plugin-proposal-record-and-tuple
+```shell npm2yarn
+npm install --save-dev @babel/plugin-proposal-record-and-tuple
 ```
 
 ## Usage
@@ -82,3 +82,7 @@ Don't forget to add `@bloomberg/record-tuple-polyfill` to your dependencies!
 `string`, defaults to `"@bloomberg/record-tuple-polyfill"`.
 
 If you wish to inject imports to a polyfill different from `@bloomberg/record-tuple-polyfill`, you can use this option to specify its name.
+
+## References
+
+- [Proposal: JavaScript Records & Tuples](https://github.com/tc39/proposal-record-tuple)
