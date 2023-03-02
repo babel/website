@@ -4,13 +4,17 @@ title: "@babel/plugin-syntax-top-level-await"
 sidebar_label: syntax-top-level-await
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md).
 >
 > #### Syntax only
 >
 > This plugin only enables parsing of this feature. Babel doesn't support transforming
 > top-level await, but you can use Rollup's `experimentalTopLevelAwait` or webpack@5's
 > `experiments.topLevelAwait` options.
+
+:::tip
+You can safely remove this plugin from your Babel config if using `@babel/core` 7.15.0 or above.
+:::
 
 ```js title="JavaScript"
 const val = await promise;
