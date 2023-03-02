@@ -35,6 +35,7 @@ const output = generate(
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | v7.21.0 | Added `inputSourceMap` |
