@@ -13,8 +13,9 @@ Transforms `import()` expressions to non-ESM module formats.
 
 ## When (not) to use this plugin
 
-If you are using Babel in production, you should normally not use this plugin. Instead, you should use
-a bundler, such as Webpack, Rollup or Parcel to handle `import()` expressions. However, there are still some valid use cases:
+If you are using a bundler, such as Webpack, Rollup or Parcel, you should **not** use this plugin and let your bundler handle `import()` expressions.
+
+You should use this plugin if:
 - You are authoring a Node.js library in ESM but want to distribute it in CommonJS(CJS): Install this plugin and [`@babel/plugin-transform-modules-commonjs`](./plugin-transform-modules-commonjs.md)
 - You use [RequireJS](https://requirejs.org) to load modules in the browser: Install this plugin and [`@babel/plugin-transform-modules-amd`](./plugin-transform-modules-amd.md)
 - You use [SystemJS](https://github.com/systemjs/systemjs) to load modules in the browser: Install this plugin and [`@babel/plugin-transform-modules-systemjs`](./plugin-transform-modules-systemjs.md)
