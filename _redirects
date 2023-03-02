@@ -55,8 +55,8 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /docs/usage/require/                /docs/babel-register
 /docs/usage/options/                /docs/options
 /caveats.html                       /docs/caveats
-/repl.html                          /repl/
-/en/repl                            /repl/
+/repl.html                          /repl
+/en/repl                            /repl
 
 /docs/plugins/preset-*              /docs/babel-preset-:splat
 /docs/plugins/transform-*           /docs/babel-plugin-transform-:splat
