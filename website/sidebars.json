@@ -53,14 +53,17 @@
     "TC39 Proposals": [
       "babel-plugin-proposal-async-do-expressions",
       "babel-plugin-proposal-decorators",
+      "babel-plugin-proposal-destructuring-private",
       "babel-plugin-proposal-do-expressions",
+      "babel-plugin-proposal-duplicate-named-capturing-groups-regex",
       "babel-plugin-proposal-export-default-from",
       "babel-plugin-proposal-function-bind",
       "babel-plugin-proposal-function-sent",
       "babel-plugin-proposal-partial-application",
       "babel-plugin-proposal-pipeline-operator",
       "babel-plugin-proposal-record-and-tuple",
-      "babel-plugin-proposal-throw-expressions"
+      "babel-plugin-proposal-throw-expressions",
+      "babel-plugin-proposal-unicode-sets-regex"
     ],
     "@babel/preset-env": [
       {
