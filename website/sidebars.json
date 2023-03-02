@@ -62,6 +62,7 @@
       "babel-plugin-proposal-partial-application",
       "babel-plugin-proposal-pipeline-operator",
       "babel-plugin-proposal-record-and-tuple",
+      "babel-plugin-proposal-regexp-modifiers",
       "babel-plugin-proposal-throw-expressions",
       "babel-plugin-proposal-unicode-sets-regex"
     ],
