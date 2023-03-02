@@ -84,7 +84,7 @@ const Versions = () => {
                         </a>
                       </td>
                       <td>
-                        <a href={`${customFields.baseUrl}6.23.0`}>Blog Post</a>
+                        <a href={`${siteConfig.baseUrl}6.23.0`}>Blog Post</a>
                       </td>
                     </tr>
                   </tbody>
