@@ -247,6 +247,7 @@ class Foo {
 
 <details>
   <summary>History</summary>
+
 | Version | Changes |
 | --- | --- |
 | v7.21.0 | Added `privateFieldsAsSymbols` assumption |
