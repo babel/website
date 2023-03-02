@@ -81,21 +81,27 @@ npm install --save-dev @babel/plugin-proposal-dynamic-import
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-dynamic-import"]
+  "plugins": [
+    "@babel/plugin-proposal-dynamic-import",
+    "@babel/plugin-transform-modules-commonjs"
+  ]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-dynamic-import script.js
+babel --plugins=@babel/plugin-proposal-dynamic-import,@babel/plugin-transform-modules-amd script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-dynamic-import"],
+  plugins: [
+    "@babel/plugin-proposal-dynamic-import",
+    "@babel/plugin-transform-modules-systemjs"
+  ],
 });
 ```
 
