@@ -6,7 +6,7 @@ sidebar_label: babel-helper-mark-eval-scopes
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-helper-mark-eval-scopes --save-dev
 ```
 

@@ -36,13 +36,13 @@ Here are some of our milestones:
 - In [5.0.0](https://babeljs.io/blog/2015/03/31/5.0.0), Babel aligned more with the [TC39 process](https://tc39.github.io/process-document/) by introducing `stages`, added a `.babelrc` config option, and created a plugin system for custom transforms.
 - In [6.0.0](https://babeljs.io/blog/2015/10/29/6.0.0), Babel became modular (a pretty controversial idea at the time). This was a huge change that led to opt-in functionality (no defaults) and the concept of `Presets` and Plugin Options.
   - As mentioned in his article, Sebastian joined Facebook in July 2015 and worked on the entire development of Babel 6 on company time.
-- [6.3.13](https://github.com/babel/babel/blob/master/CHANGELOG.md#638-6313) Sebastian extracted our [monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) build/publish tools into what is now [Lerna](https://github.com/lerna/lerna). (What's funny is [James](https://github.com/thejameskyle) rewrote it 3 times and I had to review everything)
+- [6.3.13](https://github.com/babel/babel/blob/main/.github/CHANGELOG-v6.md#638-6313) Sebastian extracted our [monorepo](https://github.com/babel/babel/blob/main/doc/design/monorepo.md) build/publish tools into what is now [Lerna](https://github.com/lerna/lerna). (What's funny is [James](https://github.com/thejameskyle) rewrote it 3 times and I had to review everything)
   - After this was around when both Sebastian and James got burned out on Babel, and a few contributors stepped up.
   - We struggled to find direction and deal with the bugs/requests coming in but we got a lot of stuff done!
 - [6.13.0](https://github.com/babel/babel/releases/tag/v6.13.0) finally added [Preset Options](http://babeljs.io/docs/plugins/#plugin-preset-options).
 - [6.14.0](http://babeljs.io/blog/2016/08/24/6.14.0) added a [latest-preset](http://babeljs.io/docs/plugins/preset-latest/) that keeps up to date with the yearly JavaScript specification.
 - [6.16.0](http://babeljs.io/blog/2016/09/28/6.16.0) allowed changing out the parser or code-generator.
-- In August, we released [Babili, a minifier based on Babel](https://babeljs.io/blog/2016/08/30/babili).
+- In August, we released [Babili, a minifier based on Babel](https://babeljs.io/blog/2016/08/26/babili).
 - In September, we released the first version of [babel-preset-env](https://github.com/babel/babel-preset-env) (read on for details).
 - After a year on [Phabricator](https://twitter.com/sebmck/status/667097915605708804), we moved back to to [GitHub issues](https://twitter.com/left_pad/status/773619871074648064) thanks solely to [@danez](https://github.com/danez) and his amazing (and underappreciated) work.
 
@@ -61,7 +61,7 @@ If you're interested in helping out please check out the issues linked below!
 
 [TC39](https://github.com/tc39) stands for Ecma International, Technical Committee 39: it's the committee that makes JavaScript.
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/b0rk">@b0rk</a> Short answers:<br><br>Who&#39;s there? Engine implementers, developers, a handful of academics and theorists, and <a href="https://twitter.com/BrendanEich">@BrendanEich</a>.</p>&mdash; Yehuda Katz (@wycats) <a href="https://twitter.com/wycats/status/803821500394598401">November 30, 2016</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/b0rk">@b0rk</a> Short answers:<br/><br/>Who&#39;s there? Engine implementers, developers, a handful of academics and theorists, and <a href="https://twitter.com/BrendanEich">@BrendanEich</a>.</p>&mdash; Yehuda Katz (@wycats) <a href="https://twitter.com/wycats/status/803821500394598401">November 30, 2016</a></blockquote>
 
 Babel uses [TC39's concept of stages](http://babeljs.io/docs/plugins/#stage-x-experimental-presets-) to categorize its experimental plugins. Users should be able to easily use features before they are all implemented in browsers in [stage 4 of the TC39 process](https://tc39.github.io/process-document/).
 
@@ -125,7 +125,7 @@ Its goal is both simplicity in use and efficiency in output: you only need to wo
 
 Targeting Chrome 55 + last 2 versions of other browsers via [browserslist](https://github.com/ai/browserslist)
 
-```js
+```js title="JavaScript"
 {
   "presets": [
     ["env", {
@@ -140,7 +140,7 @@ Targeting Chrome 55 + last 2 versions of other browsers via [browserslist](https
 
 Targeting the current Node.js version (uses `process.versions.node`)
 
-```js
+```js title="JavaScript"
 {
   "presets": [
     ["env", {
@@ -154,7 +154,7 @@ Targeting the current Node.js version (uses `process.versions.node`)
 
 Chrome 55 `useBuiltIns` + webpack 2
 
-```js
+```js title="JavaScript"
 {
   "presets": [
     ["env", {
@@ -170,13 +170,13 @@ Chrome 55 `useBuiltIns` + webpack 2
 
 **In**
 
-```js
+```js title="JavaScript"
 import "babel-polyfill";
 ```
 
 **Out (different based on environment)**
 
-```js
+```js title="JavaScript"
 import "core-js/modules/es7.string.pad-start";
 import "core-js/modules/es7.string.pad-end";
 ```
@@ -190,7 +190,7 @@ Relevant Issues:
 
 ### Linting via [babel-eslint](https://github.com/babel/babel-eslint)
 
-<img class="img-responsive" alt="example of eslint" src="/blog/assets/2016-12-07-the-state-of-babel/eslint.png">
+<img class="img-responsive" alt="example of eslint" src="/assets/2016-12-07-the-state-of-babel/eslint.png" />
 
 ESLint doesn't support new language features until they reach Stage 4 of the proposals process. For this reason we maintain [babel-eslint](https://github.com/babel/babel-eslint) (a custom ESLint parser) so you can continue to lint JavaScript with experimental syntax.
 
@@ -210,7 +210,7 @@ Relevant Issues:
 
 **In**
 
-```js
+```js title="JavaScript"
 class Mangler {
   constructor(program) {
     this.program = program;
@@ -221,12 +221,12 @@ new Mangler();
 
 **Out**
 
-```js
+```js title="JavaScript"
 // ES2015 code -> Babili -> Minified ES2015 Code
 class a{constructor(b){this.program=b}}new a;
 ```
 
-Check out our [blog post](http://babeljs.io/blog/2016/08/30/babili) for more info.
+Check out our [blog post](http://babeljs.io/blog/2016/08/26/babili) for more info.
 
 Since it was recently released, we're looking for some new contributors! There's a lot of small bugs and things that could be improved for those looking for a new project to help out with!
 
@@ -248,7 +248,7 @@ By passing in [Recast](https://github.com/benjamn/recast) in the options, Babel 
 
 `.babelrc`
 
-```js
+```js title="JavaScript"
 {
   "parserOpts": {
     "parser": "recast"
@@ -261,7 +261,7 @@ By passing in [Recast](https://github.com/benjamn/recast) in the options, Babel 
 
 Run the relevant Babel transform(s) on the source code and overwrite it:
 
-```sh
+```sh title="Shell"
 babel src -d src
 ```
 
@@ -354,7 +354,7 @@ What happens when we need to update a Stage 0 spec to Stage 1 and it's a breakin
 
 #### Changing the Mindset Around Stage X Presets
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">My rule of thumb on how I decide what future features to transpile:<br>&quot;Could I reasonably codemod this if it changes?&quot;<br>Don&#39;t do it otherwise.</p>&mdash; Kent C. Dodds (@kentcdodds) <a href="https://twitter.com/kentcdodds/status/803815749416456196">November 30, 2016</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">My rule of thumb on how I decide what future features to transpile:<br/>&quot;Could I reasonably codemod this if it changes?&quot;<br/>Don&#39;t do it otherwise.</p>&mdash; Kent C. Dodds (@kentcdodds) <a href="https://twitter.com/kentcdodds/status/803815749416456196">November 30, 2016</a></blockquote>
 
 Relevant Issues:
 

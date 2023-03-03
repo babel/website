@@ -1,14 +1,13 @@
 ---
 id: babel-runtime
-title: @babel/runtime
-sidebar_label: runtime
+title: "@babel/runtime"
 ---
 
-`@babel/runtime` is a library that contains Babel modular runtime helpers and a version of `regenerator-runtime`.
+`@babel/runtime` is a library that contains Babel modular runtime helpers.
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save @babel/runtime
 ```
 
@@ -24,13 +23,13 @@ Sometimes Babel may inject some code in the output that is the same across files
 
 For example, with the class transform (without loose mode):
 
-```js
+```js title="JavaScript"
 class Circle {}
 ```
 
 turns into:
 
-```js
+```js title="JavaScript"
 function _classCallCheck(instance, Constructor) {
   //...
 }
@@ -44,7 +43,7 @@ this means every file that contains a class would have the `_classCallCheck` fun
 
 With `@babel/plugin-transform-runtime`, it would replace the reference to the function to the `@babel/runtime` version.
 
-```js
+```js title="JavaScript"
 var _classCallCheck = require("@babel/runtime/helpers/classCallCheck");
 
 var Circle = function Circle() {

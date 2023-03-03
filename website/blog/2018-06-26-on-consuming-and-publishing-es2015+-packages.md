@@ -31,7 +31,7 @@ Why is compiling dependencies (as opposed to just compiling our own code) desira
 
 ## The Ephemeral JavaScript Runtime
 
-The argument for why compiling dependencies would be helpful is the same for why Babel [eventually](https://github.com/babel/babel/pull/3476) introduced [`@babel/preset-env`](https://babeljs.io/docs/en/next/babel-preset-env.html). We saw that developers would eventually want to move past only compiling to ES5. 
+The argument for why compiling dependencies would be helpful is the same for why Babel [eventually](https://github.com/babel/babel/pull/3476) introduced [`@babel/preset-env`](https://babeljs.io/docs/en/next/babel-preset-env.html). We saw that developers would eventually want to move past only compiling to ES5.
 
 Babel used to be [`6to5`](https://babeljs.io/blog/2017/10/05/babel-turns-three), since it only converted from ES2015 (known as ES6 back then) to ES5. Back then, the browser support for ES2015 was almost non-existent, so the idea of a JavaScript compiler was both novel and useful: we could write modern code, and have it work for all of our users.
 
@@ -62,7 +62,7 @@ Is it as straightforward as just running Babel over `node_modules`?
 
 Although it shouldn't deter us from making this possible, we should be aware that compiling dependencies does increase the surface area of issues and complexity, especially for Babel itself.
 
-- Compilers are no different than other programs and have bugs. 
+- Compilers are no different than other programs and have bugs.
 - Not every dependency needs to be compiled, and compiling more files does mean a slower build.
 - `preset-env` itself could have bugs because we use [`compat-table`](https://kangax.github.io/compat-table/es6/) for our data vs. [Test262](https://github.com/tc39/test262) (the official test suite).
 - Browsers themselves can have issues with running native ES2015+ code vs. ES5.
@@ -80,14 +80,14 @@ Running Babel with a conventional setup on all our `node_modules` may cause issu
 
 An example of an issue is how [`this` gets converted to `undefined`](https://github.com/babel/babel/issues/7636).
 
-```js
+```js title="JavaScript"
 // Input
 (function($) {
   // …
 }(this.jQuery));
 ```
 
-```js
+```js title="JavaScript"
 // Output
 "use strict";
 
@@ -122,7 +122,7 @@ There is certainly a balance to be had here: we don't want to scare people away 
 
 #### Removing the Stage Presets in v7
 
-Even though one of the most common things people do is use the Stage 0 preset, we plan to remove the stage presets in v7. We thought at first it would be convenient, that people would make their own unofficial ones anyway, or it might help with "JavaScript fatigue". It seems to cause more of an issue: people continue to copy/paste configs without understanding what goes into a preset in the first place. 
+Even though one of the most common things people do is use the Stage 0 preset, we plan to remove the stage presets in v7. We thought at first it would be convenient, that people would make their own unofficial ones anyway, or it might help with "JavaScript fatigue". It seems to cause more of an issue: people continue to copy/paste configs without understanding what goes into a preset in the first place.
 
 After all, seeing `"stage-0"` says nothing. My hope is that in making the decision to use proposal plugins explicit, people will have to learn what non-standard syntax they are opting into. More intentionally, this should lead to a better understanding of not just Babel but of JavaScript as a language and its development instead of just its usage.
 
@@ -140,7 +140,7 @@ Some tools like Rollup/webpack also read from another field called `module` (pre
 
 - An example with [`redux`](https://github.com/reactjs/redux)
 
-```js
+```js title="JavaScript"
 // redux package.json
 {
   ...
@@ -161,7 +161,7 @@ As such, we may need another way to signal the language level.
 
 A common suggestion is for libraries to start publishing ES2015 under another field like `es2015`, e.g. `"es2015": "es2015/package.mjs"`.
 
-```js
+```js title="JavaScript"
 // @angular/core package.json
 {
   "main": "./bundles/core.umd.js",
@@ -198,7 +198,7 @@ With all that said, how does Babel help with all this?
 
 ## How Babel v7 Helps
 
-As we've discussed, compiling dependencies in Babel v6 can be pretty painful. Babel v7 will address some of these pain points. 
+As we've discussed, compiling dependencies in Babel v6 can be pretty painful. Babel v7 will address some of these pain points.
 
 One issue is around configuration lookup. Babel currently runs per file, so when compiling a file, it tries to find the closest config ([`.babelrc`](https://babeljs.io/docs/en/next/babelrc)) to know what to compile against. It keeps looking up the directory tree if it doesn't find it in the current folder.
 
@@ -226,18 +226,18 @@ We added an [`"overrides"`](https://github.com/babel/babel/pull/7091) option whi
 
 This allows us to have a single config for our whole app: maybe we want to compile our server JavaScript code differently than the client code (as well as compile some package(s) in `node_modules`).
 
-```js
+```js title="JavaScript"
 // babel.config.js
 module.exports = {
   presets: [
-    ['@babel/preset-env', { 
+    ['@babel/preset-env', {
       targets: { node: 'current' },
     }],
   ],
   overrides: [{
     test: ["./client-code", "./node_modules/package-a"],
     presets: [
-      ['@babel/preset-env', { 
+      ['@babel/preset-env', {
         targets: { "chrome": "60" } },
       }],
     ],

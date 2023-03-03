@@ -6,19 +6,18 @@ id: faq
 ## Why is the output of `for...of` so verbose and ugly?
 
 In order to comply with the specification, the iterator's return method must be
-called on errors. An alternative is to enable [loose mode](plugin-transform-for-of.md#loose)
-but please note that there are **many** caveats to be aware of if you enable
-loose mode and that you're willingly choosing not to comply with the spec.
+called on errors. An alternative is to use [assumptions](assumptions.md) introduced in Babel 7.13, such as [`ArrayLikeIsIterable`](assumptions.md#arraylikeisiterable) and [`IterableIsArray`](assumptions.md#iterableisarray),
+but please note that there are **many** caveats to be aware of if you use assumptions and that you're willingly choosing not to comply with the spec.
 
-Please see [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) and
+Please see [babel/rfcs#5](https://github.com/babel/rfcs/pull/5), [google/traceur-compiler#1773](https://github.com/google/traceur-compiler/issues/1773) and
 [babel/babel#838](https://github.com/babel/babel/issues/838) for more information.
 
 ## Why are `this` and `arguments` being remapped in arrow functions?
 
 Arrow functions **are not** synonymous with normal functions. `arguments` and `this` inside arrow functions
-reference their *outer function* for example:
+reference their _outer function_ for example:
 
-```javascript
+```js title="JavaScript"
 const user = {
   firstName: "Sebastian",
   lastName: "McKenzie",
@@ -29,7 +28,7 @@ const user = {
   // use the method shorthand in objects
   getFullName2() {
     return this.firstName + " " + this.lastName;
-  }
+  },
 };
 ```
 
@@ -59,13 +58,13 @@ At the heart of Babel 6 are [plugins](plugins.md). What plugins you need complet
 depends on your specific configuration but just add the following [config file](config-files.md) to
 get all the same transforms that were in Babel 5:
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["env", "react", "stage-2"]
 }
 ```
 
-```sh
+```shell npm2yarn
 npm install babel-preset-env babel-preset-react babel-preset-stage-2 --save-dev
 ```
 
@@ -86,11 +85,11 @@ Please help out with documentation if you can by submitting a pull request to th
 
 ## How do I build babel from source?
 
-See [build instructions](https://github.com/babel/babel/blob/master/CONTRIBUTING.md#developing).
+See [build instructions](https://github.com/babel/babel/blob/main/CONTRIBUTING.md#developing).
 
 ## How do I contribute to Babel?
 
-See [contributing](https://github.com/babel/babel/blob/master/CONTRIBUTING.md).
+See [contributing](https://github.com/babel/babel/blob/main/CONTRIBUTING.md).
 
 ## Why am I getting a Syntax Error/Unexpected Token?
 

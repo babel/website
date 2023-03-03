@@ -1,14 +1,14 @@
 ---
 id: babel-runtime-corejs2
-title: @babel/runtime-corejs2
+title: "@babel/runtime-corejs2"
 sidebar_label: runtime-corejs2
 ---
 
-`@babel/runtime-corejs2` is a library that contain's Babel modular runtime helpers and a version of `regenerator-runtime` as well as [`core-js`](https://github.com/zloirock/core-js).
+`@babel/runtime-corejs2` is a library that contain's Babel modular runtime helpers as well as version 2 of [`core-js`](https://github.com/zloirock/core-js).
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save @babel/runtime-corejs2
 ```
 
@@ -24,13 +24,13 @@ Sometimes Babel may inject some code in the output that is the same and thus can
 
 For example, with the class transform (without loose mode):
 
-```js
+```js title="JavaScript"
 class A {}
 ```
 
 turns into:
 
-```js
+```js title="JavaScript"
 function _classCallCheck(instance, Constructor) {
   //...
 }
@@ -44,7 +44,7 @@ this means every file that contains a class would have the `_classCallCheck` fun
 
 With `@babel/plugin-transform-runtime`, it would replace the reference to the function to the `@babel/runtime-corejs2` version.
 
-```js
+```js title="JavaScript"
 var _classCallCheck = require("@babel/runtime-corejs2/helpers/classCallCheck");
 
 var Circle = function Circle() {
@@ -59,13 +59,13 @@ var Circle = function Circle() {
 This can be used instead of a polyfill for any non-instance methods.
 It will replace things like `Promise` or `Symbol` with the library functions in `core-js`.
 
-```js
+```js title="JavaScript"
 Promise;
 ```
 
 turns into:
 
-```js
+```js title="JavaScript"
 var _Promise = require("@babel/runtime-corejs2/core-js/promise.js");
 ```
 

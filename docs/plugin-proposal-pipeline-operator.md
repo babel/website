@@ -1,43 +1,123 @@
 ---
 id: babel-plugin-proposal-pipeline-operator
-title: @babel/plugin-proposal-pipeline-operator
-sidebar_label: proposal-pipeline-operator
+title: "@babel/plugin-proposal-pipeline-operator"
+sidebar_label: pipeline-operator
 ---
 
 ## Installation
 
-```sh
+```sh title="Shell"
 $ npm install --save-dev @babel/plugin-proposal-pipeline-operator
 ```
 
 ## Usage
 
-### With a configuration file (Recommended)
+The pipeline operator has several competing proposals.
+Configure which proposal to use with the required `"proposal"` option.
+Its value is `"hack"` by default.
 
-```json
+| Value | Proposal | Version added |
+| ----- | -------- | ------------- |
+| ~~`"minimal"`~~ | [Minimal F#-style pipes](https://github.com/tc39/proposal-pipeline-operator/) | `v7.0.0`
+| ~~`"fsharp"`~~ | [F#-style pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipelines) | `v7.5.0`
+| `"hack"` | [Hack-style pipes](https://github.com/js-choi/proposal-hack-pipes) | `v7.15.0`
+| ~~`"smart"`~~ | [Smart-mix pipes](https://github.com/js-choi/proposal-smart-pipelines) (deprecated) | `v7.3.0`
+
+If `"proposal"` is omitted, or if `"proposal": "hack"` is used, then a `"topicToken": "^^"`, `"topicToken": "^"`, or `"topicToken": "#"` option must also be included.
+
+The `"proposal": "minimal"`, `"fsharp"`, and `"smart"` options are **deprecated** and subject to removal in a future major version.
+
+### Examples
+The following examples use `topicToken: "^^"`.
+
+From [react/scripts/jest/jest-cli.js][].
+```js title="JavaScript"
+// Status quo
+console.log(
+  chalk.dim(
+    `$ ${Object.keys(envars)
+      .map(envar => `${envar}=${envars[envar]}`)
+      .join(' ')}`,
+    'node',
+    args.join(' ')
+  )
+);
+
+// With pipes
+Object.keys(envars)
+  .map(envar => `${envar}=${envars[envar]}`)
+  .join(' ')
+  |> `$ ${^^}`
+  |> chalk.dim(^^, 'node', args.join(' '))
+  |> console.log(^^);
+```
+
+From [jquery/src/core/init.js][].
+```js title="JavaScript"
+// Status quo
+jQuery.merge( this, jQuery.parseHTML(
+  match[ 1 ],
+  context && context.nodeType ? context.ownerDocument || context : document,
+  true
+) );
+
+// With pipes
+context
+  |> (^^ && ^^.nodeType ? ^^.ownerDocument || ^^ : document)
+  |> jQuery.parseHTML(match[1], ^^, true)
+  |> jQuery.merge(^^);
+```
+
+[react/scripts/jest/jest-cli.js]: https://github.com/facebook/react/blob/17.0.2/scripts/jest/jest-cli.js
+[jquery/src/core/init.js]: https://github.com/jquery/jquery/blob/2.2-stable/src/core/init.js
+
+(For a summary of deprecated proposal modes’ behavior, see the [pipe wiki’s table of previous proposals](https://github.com/tc39/proposal-pipeline-operator/wiki#overview-of-previous-proposals).)
+
+
+### With a configuration file (recommended)
+
+With `^^` topic token:
+
+```json title="babel.config.json"
 {
-  "plugins": [["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }]]
+  "plugins": [
+    ["@babel/plugin-proposal-pipeline-operator", { "topicToken": "^^" }]
+  ]
 }
 ```
 
-The Pipeline Proposal is one of three competing implementations. Which implementation the plugin should use is configured with the `"proposal"` option. This option is required and should be one of:
+With `@@` topic token:
 
-* `"minimal"` – [Minimal Pipeline](https://github.com/tc39/proposal-pipeline-operator/)
-* `"smart"` - [Smart Pipeline](https://github.com/js-choi/proposal-smart-pipelines)
-* `"fsharp"` - [F#-Style Pipeline](https://github.com/valtech-nyc/proposal-fsharp-pipelines)
-
-When one of the implementations is accepted, it will become the default and the `"proposal"` option will no longer be required.
+```json title="babel.config.json"
+{
+  "plugins": [
+    ["@babel/plugin-proposal-pipeline-operator", { "topicToken": "@@" }]
+  ]
+}
+```
 
 ### Via CLI
 
-```sh
-$ babel --plugins @babel/plugin-proposal-pipeline-operator script.js
-```
+Because this plugin requires a configuration option, it [cannot be directly configured from the CLI](https://github.com/babel/babel/issues/4161). Use a [config file](config-files.md) instead with the CLI, to add and configure this plugin.
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-proposal-pipeline-operator"]
+With `^^` topic token:
+
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: [
+    [ "@babel/plugin-proposal-pipeline-operator", { topicToken: "^^" } ],
+  ],
+});
+```
+
+With `@@` topic token:
+
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: [
+    [ "@babel/plugin-proposal-pipeline-operator", { topicToken: "@@" } ],
+  ],
 });
 ```

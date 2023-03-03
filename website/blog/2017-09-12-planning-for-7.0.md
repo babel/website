@@ -81,7 +81,7 @@ Naturally, we will take the opportunity to be as spec compliant as possible (wit
 
 ### Stage 3: Class Properties (from Stage 2)
 
-> [`babel-plugin-transform-class-properties`](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-class-properties): the default behavior is now what was previously the "spec" option, which uses `Object.defineProperty` instead of simple assignment.
+> [`babel-plugin-transform-class-properties`](https://github.com/babel/babel/tree/main/packages/babel-plugin-transform-class-properties): the default behavior is now what was previously the "spec" option, which uses `Object.defineProperty` instead of simple assignment.
 
 > This currently has the effect of breaking the [legacy decorators plugin](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) (which we made the "transform-decorators" plugin in 7.0) if you try to decorate a class property. You'll need to use the `loose` option to be compatible with the version of decorators in the transform until we release the Stage 2 decorators plugin.
 
@@ -89,7 +89,7 @@ Naturally, we will take the opportunity to be as spec compliant as possible (wit
 
 Input
 
-```js
+```js title="JavaScript"
 class Bork {
   static a = 'foo';
   x = 'bar';
@@ -98,7 +98,7 @@ class Bork {
 
 Output (default)
 
-```js
+```js title="JavaScript"
 class Bork {
   constructor() {
     Object.defineProperty(this, "x", {
@@ -120,7 +120,7 @@ Object.defineProperty(Bork, "a", {
 
 Output (loose mode)
 
-```js
+```js title="JavaScript"
 class Bork {
   constructor() {
     this.x = 'bar';
@@ -132,11 +132,11 @@ Bork.a = 'foo';
 
 ### Stage 3: Object Rest Spread (from Stage 2)
 
-> [`babel-plugin-transform-object-rest-spread`](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-object-rest-spread): And now the plugin handles non-string keys (ex: Number/Symbol)
+> [`babel-plugin-transform-object-rest-spread`](https://github.com/babel/babel/tree/main/packages/babel-plugin-transform-object-rest-spread): And now the plugin handles non-string keys (ex: Number/Symbol)
 
 Input
 
-```js
+```js title="JavaScript"
 // Rest Properties
 let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
 console.log(x); // 1
@@ -150,18 +150,18 @@ console.log(n); // { x: 1, y: 2, a: 3, b: 4 }
 
 Also disallowed
 
-```js
+```js title="JavaScript"
 var { ...{ x } } = obj;
 var { ...[ y ] } = obj;
 ```
 
 ### Stage 3: Optional Catch Binding (new)
 
-> [`babel-plugin-transform-optional-catch-binding`](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-optional-catch-binding): allow developers to use try/catch without creating an unused binding.
+> [`babel-plugin-transform-optional-catch-binding`](https://github.com/babel/babel/tree/main/packages/babel-plugin-transform-optional-catch-binding): allow developers to use try/catch without creating an unused binding.
 
 Input
 
-```js
+```js title="JavaScript"
 try {
   throw 0;
 } catch {
@@ -171,7 +171,7 @@ try {
 
 Output
 
-```js
+```js title="JavaScript"
 try {
   throw 0;
 } catch (_unused) {
@@ -185,13 +185,13 @@ try {
 
 Input
 
-```js
+```js title="JavaScript"
 var regex = /\p{ASCII_Hex_Digit}/u;
 ```
 
 Output
 
-```js
+```js title="JavaScript"
 var regex = /[0-9A-Fa-f]/;
 ```
 
@@ -202,25 +202,25 @@ var regex = /[0-9A-Fa-f]/;
 
 Input
 
-```js
+```js title="JavaScript"
 50000n + 60n;
 ```
 
 Output
 
-```js
+```js title="JavaScript"
 import babelCheckBinaryExpressions from "babel-check-binary-expressions";
 babelCheckBinaryExpressions(new BigInt("50000"), new BigInt("60"), "+");
 ```
 
 ### Stage 3: Dynamic Import (from Stage 2)
 
-> [`babel-plugin-syntax-dynamic-import`](https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-dynamic-import): You only need to parse the syntax since tools like Webpack can handle the transformation in place of Babel.
+> [`babel-plugin-syntax-dynamic-import`](https://github.com/babel/babel/tree/main/packages/babel-plugin-syntax-dynamic-import): You only need to parse the syntax since tools like Webpack can handle the transformation in place of Babel.
 > There is also a [plugin for Node](https://github.com/airbnb/babel-plugin-dynamic-import-node)
 
 Input
 
-```js
+```js title="JavaScript"
 const testModule = import('test-module');
 ```
 
@@ -230,17 +230,17 @@ const testModule = import('test-module');
 
 Input
 
-```js
+```js title="JavaScript"
 const size = import.meta.scriptElement.dataset.size || 300;
 ```
 
 ### Stage 2: Numeric Separators (new)
 
-> [`babel-plugin-transform-numeric-separator`](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-numeric-separator): make numeric literals more readable by creating a visual separation (a `_`) between groups of digits.
+> [`babel-plugin-transform-numeric-separator`](https://github.com/babel/babel/tree/main/packages/babel-plugin-transform-numeric-separator): make numeric literals more readable by creating a visual separation (a `_`) between groups of digits.
 
 Input
 
-```js
+```js title="JavaScript"
 1_000_000_000
 0b1010_0001_1000_0101
 0xA0_B0_C0
@@ -248,7 +248,7 @@ Input
 
 Output
 
-```js
+```js title="JavaScript"
 1000000000
 0b1010000110000101
 0xA0B0C0
@@ -256,11 +256,11 @@ Output
 
 ### Stage 2: Decorators (from Stage 1), still WIP
 
-> [`babel-plugin-transform-decorators`](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-decorators): [#6107](https://github.com/babel/babel/pull/6107)
+> [`babel-plugin-transform-decorators`](https://github.com/babel/babel/tree/main/packages/babel-plugin-transform-decorators): [#6107](https://github.com/babel/babel/pull/6107)
 
 Disallowed
 
-```js
+```js title="JavaScript"
 // no computed decorator keys
 @dec[foo]
 class A {}
@@ -283,7 +283,7 @@ export default class {}
 
 Valid
 
-```js
+```js title="JavaScript"
 // decorators with a call expression
 @foo('bar')
 class A {
@@ -304,7 +304,7 @@ export default @foo class {}
 
 Unsupported (WIP)
 
-```js
+```js title="JavaScript"
 // decorated class properties
 class A {
   @dec name = 0
@@ -317,7 +317,7 @@ class A {
 
 Input
 
-```js
+```js title="JavaScript"
 function* generator() {
     console.log("Sent", function.sent);
     console.log("Yield", yield);
@@ -330,7 +330,7 @@ iterator.next(2); // Logs "Yield 2"
 
 Output
 
-```js
+```js title="JavaScript"
 let generator = _skipFirstGeneratorNext(function* () {
     const _functionSent = yield;
     console.log("Sent", _functionSent);
@@ -340,64 +340,64 @@ let generator = _skipFirstGeneratorNext(function* () {
 
 ### Stage 2: export-ns-from
 
-> [`babel-plugin-transform-export-namespace`](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-export-namespace): a shorthand to import/reexport a namespace. Split out from the old `transform-export-extensions` which combined this proposal with another
+> [`babel-plugin-transform-export-namespace`](https://github.com/babel/babel/tree/main/packages/babel-plugin-transform-export-namespace): a shorthand to import/reexport a namespace. Split out from the old `transform-export-extensions` which combined this proposal with another
 
 
 Input
 
-```js
+```js title="JavaScript"
 export * as ns from "mod";
 ```
 
 Output
 
-```js
+```js title="JavaScript"
 import * as ns from "mod";
 export {ns};
 ```
 
 ### Stage 1: export-default-from
 
-> [`babel-plugin-transform-export-default`](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-export-default): a shorthand to import/reexport something. Split out from the old `transform-export-extensions` which combined this proposal with another
+> [`babel-plugin-transform-export-default`](https://github.com/babel/babel/tree/main/packages/babel-plugin-transform-export-default): a shorthand to import/reexport something. Split out from the old `transform-export-extensions` which combined this proposal with another
 
 
 Input
 
-```js
+```js title="JavaScript"
 export v from "mod";
 ```
 
 Output
 
-```js
+```js title="JavaScript"
 import _v from "module";
 export { _v as v };
 ```
 
 ### Stage 1: Optional Chaining (new)
 
-> [`babel-plugin-transform-optional-chaining`](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-optional-chaining): the operator (`?.`) allows you to handle properties of deeply nested objects without worrying about undefined intermediate objects.
+> [`babel-plugin-transform-optional-chaining`](https://github.com/babel/babel/tree/main/packages/babel-plugin-transform-optional-chaining): the operator (`?.`) allows you to handle properties of deeply nested objects without worrying about undefined intermediate objects.
 
 Input
 
-```js
+```js title="JavaScript"
 a?.b = 42;
 ```
 
 Output
 
-```js
+```js title="JavaScript"
 var _a;
 (_a = a) == null ? void 0 : _a.b = 42;
 ```
 
 ### ES2015: `new.target`
 
-> [`babel-plugin-transform-new-target`](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-new-target): we never got around to implementing `new.target` support earlier, so now there is a plugin for it that will be included in the ES2015/env presets.
+> [`babel-plugin-transform-new-target`](https://github.com/babel/babel/tree/main/packages/babel-plugin-transform-new-target): we never got around to implementing `new.target` support earlier, so now there is a plugin for it that will be included in the ES2015/env presets.
 
 Example
 
-```js
+```js title="JavaScript"
 // with a function
 function Foo() {
   console.log(new.target);
@@ -422,7 +422,7 @@ new Bar(); // => Bar
 
 Input
 
-```js
+```js title="JavaScript"
 class Foo {
   constructor() {
     new.target;
@@ -436,7 +436,7 @@ class Foo {
 
 Output
 
-```js
+```js title="JavaScript"
 class Foo {
   constructor() {
     this.constructor;
@@ -458,7 +458,7 @@ class Foo {
 
 Writing configuration files in JavaScript allows for dynamic configuration, making it possible to write a single configuration file that can adapt to different environments programmatically.
 
-```js
+```js title="JavaScript"
 var env = process.env.BABEL_ENV || process.env.NODE_ENV;
 var plugins = [];
 if (env === 'production') {
@@ -467,7 +467,7 @@ if (env === 'production') {
 module.exports = { plugins };
 ```
 
-```js
+```js title="JavaScript"
 var env = process.env.BABEL_ENV || process.env.NODE_ENV;
 module.exports = {
   plugins: [
@@ -482,7 +482,7 @@ This was previously done through the `env` configuration option, which is now de
 
 You can now use `babel-preset-typescript` to allow Babel to strip types similar to how `babel-preset-flow` works!
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["typescript"]
 }
@@ -496,7 +496,7 @@ After [#6209](https://github.com/babel/babel/pull/6209), ES6 classes that are tr
 
 Input
 
-```js
+```js title="JavaScript"
 class C {
   m(x) {
     return 'a';
@@ -506,7 +506,7 @@ class C {
 
 Output
 
-```js
+```js title="JavaScript"
 var C = /*#__PURE__*/ function () {
   function C() {
     _classCallCheck(this, C)
@@ -565,7 +565,7 @@ For example:
 
 Say you are using preset-env (which keeps up to date and currently includes everything in es2015, es2016, es2017) + an experimental plugin. You also decide to use object-rest-spread because it's cool.
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["env"],
   "plugins": ["transform-object-rest-spread"]

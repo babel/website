@@ -1,15 +1,15 @@
 ---
 id: babel-plugin-proposal-function-sent
-title: @babel/plugin-proposal-function-sent
-sidebar_label: proposal-function-sent
+title: "@babel/plugin-proposal-function-sent"
+sidebar_label: function-sent
 ---
 
 ## Example
 
-```js
+```js title="JavaScript"
 function* generator() {
-    console.log("Sent", function.sent);
-    console.log("Yield", yield);
+  console.log("Sent", function.sent);
+  console.log("Yield", yield);
 }
 
 const iterator = generator();
@@ -19,11 +19,11 @@ iterator.next(2); // Logs "Yield 2"
 
 Is compiled roughly to
 
-```js
-let generator = _skipFirstGeneratorNext(function* () {
-    const _functionSent = yield;
-    console.log("Sent", _functionSent);
-    console.log("Yield", yield);
+```js title="JavaScript"
+let generator = _skipFirstGeneratorNext(function*() {
+  const _functionSent = yield;
+  console.log("Sent", _functionSent);
+  console.log("Yield", yield);
 });
 
 const iterator = generator();
@@ -33,7 +33,7 @@ iterator.next(2); // Logs "Yield 2"
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-function-sent
 ```
 
@@ -41,7 +41,7 @@ npm install --save-dev @babel/plugin-proposal-function-sent
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-function-sent"]
 }
@@ -49,19 +49,18 @@ npm install --save-dev @babel/plugin-proposal-function-sent
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-function-sent script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-proposal-function-sent"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-proposal-function-sent"],
 });
 ```
 
 ## References
 
-* [Proposal](https://github.com/allenwb/ESideas/blob/master/Generator%20metaproperty.md)
-
+- [Proposal: Generator function.sent Meta Property](https://github.com/tc39/proposal-function.sent)

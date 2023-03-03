@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-decorators
-title: @babel/plugin-syntax-decorators
+title: "@babel/plugin-syntax-decorators"
 sidebar_label: syntax-decorators
 ---
 
@@ -10,7 +10,7 @@ sidebar_label: syntax-decorators
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-decorators
 ```
 
@@ -18,7 +18,7 @@ npm install --save-dev @babel/plugin-syntax-decorators
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-decorators"]
 }
@@ -26,41 +26,20 @@ npm install --save-dev @babel/plugin-syntax-decorators
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-decorators script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-decorators"]
 });
 ```
 
 ## Options
 
-### `legacy`
-
-`boolean`, defaults to `false`.
-
-Use the legacy (stage 1) decorators syntax.
-
-### `decoratorsBeforeExport`
-
-`boolean`, defaults to `false`.
-
-```js
-// decoratorsBeforeExport: true
-@decorator
-export class Foo {}
-
-// decoratorsBeforeExport: false
-export @decorator class Bar {}
-```
-
-This option was added to help tc39 collect feedback from the community by allowing experimentation with both possible syntaxes.
-
-For more information, check out: [tc39/proposal-decorators#69](https://github.com/tc39/proposal-decorators/issues/69)
+This plugin accepts the same options as [`@babel/plugin-proposal-decorators`](plugin-proposal-decorators.md).
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)

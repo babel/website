@@ -2,11 +2,12 @@
 
 Add the `metalsmith-babel` field to your `metalsmith.json`.
 
-```javascript
+```js title="JavaScript"
 {
   "plugins": {
     "metalsmith-babel": {
       // babel options
+      "presets": ["@babel/preset-env"]
     }
   }
 }
@@ -14,12 +15,15 @@ Add the `metalsmith-babel` field to your `metalsmith.json`.
 
 #### [API](https://github.com/segmentio/metalsmith#api)
 
-```javascript
+```js title="JavaScript"
 var Metalsmith = require("metalsmith");
 var babel = require("metalsmith-babel");
 
 new Metalsmith("./source")
-  .use(babel({/* babel options */}));
+  .use(babel({
+    /* babel options */
+    presets: ["@babel/preset-env"]
+  }))
   .build(function(err, files) {
     if (err) {
       throw err;
@@ -29,7 +33,7 @@ new Metalsmith("./source")
   });
 ```
 
-<blockquote class="babel-callout babel-callout-info">
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://github.com/babel/metalsmith-babel">babel/metalsmith-babel repo</a>.
   </p>

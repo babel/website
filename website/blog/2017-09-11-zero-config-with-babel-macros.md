@@ -11,10 +11,8 @@ custom_js_with_timestamps:
 guest_post: true
 guest_description: |
   This is a guest post from Kent C. Dodds. Kent works at PayPal and
-  teaches about JavaScript and
-  <a href="https://kentcdodds.com/workshops/#code-transformation-and-linting">writing Babel plugins</a>
-  on <a href="http://kcd.im/egghead">Egghead.io</a> and
-  <a href="https://frontendmasters.com/courses/">Frontend Masters</a>.
+  teaches about JavaScript and <a href="https://kentcdodds.com/workshops/#code-transformation-and-linting">writing Babel plugins</a>
+  on <a href="http://kcd.im/egghead">Egghead.io</a> and <a href="https://frontendmasters.com/courses/">Frontend Masters</a>.
   Follow Kent on <a href="https://github.com/kentcdodds">GitHub</a>,
   and <a href="https://twitter.com/kentcdodds">Twitter</a>.
 ---
@@ -41,7 +39,7 @@ So what does it look like? Whelp! There are already a few `babel-plugin-macros` 
 
 Here's a real-world example of using [`preval.macro`](https://github.com/kentcdodds/preval.macro) to inline an SVG in [a universal application](https://github.com/kentcdodds/glamorous-website) built with [Next.js](https://github.com/zeit/next.js):
 
-```javascript
+```js title="JavaScript"
 // search.js
 // this file runs in the browser
 import preval from 'preval.macro'
@@ -49,7 +47,7 @@ import glamorous from 'glamorous'
 
 const base64SearchSVG = preval.require('./search-svg')
 // this will be transpiled to something like:
-// const base65SearchSVG = 'PD94bWwgdmVyc2lv...etc...')
+// const base64SearchSVG = 'PD94bWwgdmVyc2lv...etc...')
 
 const SearchBox = glamorous.input('algolia_searchbox', props => ({
   backgroundImage: `url("data:image/svg+xml;base64,${base64SearchSVG}")`,
@@ -92,7 +90,7 @@ There are already several [published `babel-plugin-macros`](https://www.npmjs.co
 
 `babel-plugin-macros` is a way to have no config for non-syntax babel plugins. So many existing babel plugins could be implemented as a macro. Here's another example of [`babel-plugin-console`](https://github.com/mattphillips/babel-plugin-console) which exposes [a macro version of itself](https://github.com/mattphillips/babel-plugin-console/blob/master/README.md#macros):
 
-```javascript
+```js title="JavaScript"
 import scope from 'babel-plugin-console/scope.macro'
 
 function add100(a) {
@@ -114,7 +112,7 @@ Now, when that code is run, the `scope` function does some pretty nifty things:
 
 **Node:**
 
-<img alt="Node console scoping add100" src="https://github.com/mattphillips/babel-plugin-console/raw/53536cba919d5be49d4f66d957769c07ca7a4207/assets/add100-node.png" width="372">
+<img alt="Node console scoping add100" src="https://github.com/mattphillips/babel-plugin-console/raw/53536cba919d5be49d4f66d957769c07ca7a4207/assets/add100-node.png" width="372" />
 
 Cool right? And using it is just like using any other dependency, except it has all the benefits mentioned above.
 

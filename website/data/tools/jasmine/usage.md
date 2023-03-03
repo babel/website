@@ -1,6 +1,6 @@
 In your `spec/support/jasmine.json` file make the following changes:
 
-```json
+```json title="JSON"
 {
   "helpers": [
     "../node_modules/@babel/register/lib/node.js"
@@ -8,9 +8,17 @@ In your `spec/support/jasmine.json` file make the following changes:
 }
 ```
 
-This file is created when you setup a project with the `jasmine init` command.
+This file is created when you setup a project with the `jasmine init` command. Note that the file paths in `helpers` option are relative to `spec_dir`, not to project root path.
 
-<blockquote class="babel-callout babel-callout-info">
+Create a `babel.config.json` in your project root:
+
+```json title="babel.config.json"
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://github.com/piecioshka/test-jasmine-babel">piecioshka/test-jasmine-babel repo</a>.
   </p>

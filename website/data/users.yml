@@ -689,3 +689,24 @@
 - name: Toptal
   url: https://www.toptal.com
   logo: toptal.svg
+- name: Rubrik
+  url: https://www.rubrik.com
+  logo: rubrik.svg
+- name: BlueHive
+  url: https://www.bluehive.com
+  logo: bluehive.svg
+- name: Wormhole
+  url: https://wormhole.app
+  logo: wormhole.svg
+- name: Ormica
+  url: https://ormica.com
+  logo: ormica.svg
+- name: iofod
+  url: https://www.iofod.com
+  logo: iofod.svg
+- name: THE PADDING
+  url: https://paddn.com
+  logo: thepadding.svg
+- name: RemoteScout
+  url: https://remotescout.ch
+  logo: remotescout.svg

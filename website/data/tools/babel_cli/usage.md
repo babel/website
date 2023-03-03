@@ -12,14 +12,14 @@ inside there as `build`.
 +     "build": "babel src -d lib"
 +   },
     "devDependencies": {
-      "babel-cli": "^6.0.0"
+      "@babel/cli": "^7.0.0"
     }
   }
 ```
 
 Now from our terminal we can run:
 
-```sh
+```sh title="Shell"
 npm run build
 ```
 
@@ -28,13 +28,12 @@ This will run Babel the same way as before and the output will be present in
 
 Alternatively, you can reference the `babel` cli inside of `node_modules`.
 
-```sh
+```sh title="Shell"
 ./node_modules/.bin/babel src -d lib
 ```
 
-<blockquote class="babel-callout babel-callout-info">
+<blockquote class="alert alert--info">
   <p>
-    For full documentation on the Babel CLI see the
-    <a href="/docs/usage/cli/">usage docs</a>.
+    For full documentation on the Babel CLI see the <a href="/docs/usage/cli/">usage docs</a>.
   </p>
 </blockquote>

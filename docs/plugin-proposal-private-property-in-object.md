@@ -1,14 +1,16 @@
 ---
 id: babel-plugin-proposal-private-property-in-object
-title: @babel/plugin-proposal-private-property-in-object
-sidebar_label: proposal-private-property-in-object
+title: "@babel/plugin-proposal-private-property-in-object"
+sidebar_label: private-property-in-object
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 
 ## Example
 
 **In**
 
-```javascript
+```js title="JavaScript"
 class Foo {
   #bar = "bar";
 
@@ -20,19 +22,18 @@ class Foo {
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 class Foo {
   constructor() {
     _bar.set(this, {
       writable: true,
-      value: "bar"
+      value: "bar",
     });
   }
 
   test() {
     return _bar.has(this);
   }
-
 }
 
 var _bar = new WeakMap();
@@ -40,7 +41,7 @@ var _bar = new WeakMap();
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-private-property-in-object
 ```
 
@@ -48,7 +49,7 @@ npm install --save-dev @babel/plugin-proposal-private-property-in-object
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-private-property-in-object"]
 }
@@ -56,15 +57,15 @@ npm install --save-dev @babel/plugin-proposal-private-property-in-object
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-private-property-in-object
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-proposal-private-property-in-object"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-proposal-private-property-in-object"],
 });
 ```
 
@@ -80,12 +81,24 @@ When true, private property `in` expressions will check own properties (as oppos
 performance and debugging (normal property access vs `.get()`) at the expense
 of potentially leaking "privates" via things like `Object.getOwnPropertyNames`.
 
+> ⚠️ Consider migrating to the top level [`privateFieldsAsProperties`](assumptions.md#privatefieldsasproperties) assumption.
+
+```json title="babel.config.json"
+{
+  "assumptions": {
+    "privateFieldsAsProperties": true,
+    "setPublicClassFields": true
+  }
+}
+```
+
+Note that both `privateFieldsAsProperties` and `setPublicClassFields` must be set to `true`.
 
 #### Example
 
 **In**
 
-```javascript
+```js title="JavaScript"
 class Foo {
   #bar = "bar";
 
@@ -97,19 +110,18 @@ class Foo {
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 class Foo {
   constructor() {
     Object.defineProperty(this, _bar, {
       writable: true,
-      value: "bar"
+      value: "bar",
     });
   }
 
   test() {
     return Object.prototype.hasOwnProperty.call(this, _bar);
   }
-
 }
 
 var _bar = babelHelpers.classPrivateFieldLooseKey("bar");
@@ -119,4 +131,4 @@ var _bar = babelHelpers.classPrivateFieldLooseKey("bar");
 
 ## References
 
-* [Proposal: Ergonomic brand checks for Private Fields](https://github.com/tc39/proposal-private-fields-in-in)
+- [Proposal: Ergonomic brand checks for Private Fields](https://github.com/tc39/proposal-private-fields-in-in)

@@ -1,4 +1,4 @@
-```js
+```js title="JavaScript"
 module.exports = function(config) {
   config.set({
     files: [
@@ -11,12 +11,16 @@ module.exports = function(config) {
     },
     "babelPreprocessor": {
       // options go here
+      options: {
+        presets: ["@babel/preset-env"],
+        sourceMap: "inline"
+      },
     }
   });
 };
 ```
 
-<blockquote class="babel-callout babel-callout-info">
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://github.com/babel/karma-babel-preprocessor">babel/karma-babel-preprocessor repo</a>.
   </p>

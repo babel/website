@@ -19,8 +19,8 @@ pre {
 
 .hljs::before {
   content: "";
-  background: #fbf4d0;
-  color: #b0a673;
+  background: #fbf4da;
+  color: #846e00;
   display: block;
   font-size: 11px;
   font-weight: bold;
@@ -60,13 +60,18 @@ pre {
   content: "JSON5";
 }
 
+.hljs.language-powershell::before {
+  content: "PowerShell";
+}
+
 .hljs.language-sh::before,
 .hljs.language-shell::before,
 .hljs.language-bash::before {
   content: "Shell";
 }
 
-.hljs.language-ts::before {
+.hljs.language-ts::before,
+.hljs.language-typescript::before {
   content: "TypeScript";
 }
 
@@ -162,7 +167,7 @@ pre .btn-icon {
   cursor: pointer;
   border: 1px solid transparent;
   padding: 0;
-  color: #b0a673;
+  color: #846e00;
   background-color: transparent;
   height: 34px;
   transition: all 0.25s ease-out;

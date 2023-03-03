@@ -1,6 +1,6 @@
 ---
 id: babel-helper-wrap-function
-title: @babel/helper-wrap-function
+title: "@babel/helper-wrap-function"
 sidebar_label: helper-wrap-function
 ---
 
@@ -8,21 +8,21 @@ sidebar_label: helper-wrap-function
 
 **In**
 
-```js
+```js title="JavaScript"
 (function () {
 }());
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 _wrapper(function () {
 })();
 ```
 
 ## Usage
 
-```js
+```js title="JavaScript"
 import wrapFunction from "@babel/helper-wrap-function";
 
 wrapFunction(nodePathOfTheFunction, nodeWhichReferencesToTheWrapper);

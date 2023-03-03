@@ -1,12 +1,11 @@
 ---
 id: babel-helpers
-title: @babel/helpers
-sidebar_label: helpers
+title: "@babel/helpers"
 ---
 
 ## Install
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/helpers
 ```
 
@@ -14,11 +13,11 @@ npm install --save-dev @babel/helpers
 
 Direct:
 
-```js
-import * as helpers from '@babel/helpers';
-import * as t from '@babel/types';
+```js title="JavaScript"
+import * as helpers from "@babel/helpers";
+import * as t from "@babel/types";
 
-const typeofHelper = helpers.get('typeof');
+const typeofHelper = helpers.get("typeof");
 
 t.isExpressionStatement(typeofHelper);
 // true
@@ -26,7 +25,7 @@ t.isExpressionStatement(typeofHelper);
 
 Inside a plugin:
 
-```js
+```js title="JavaScript"
 export default {
   visitor: {
     UnaryExpression(path) {
@@ -43,11 +42,12 @@ export default {
 > **NOTE**: This package is only meant to be used by the packages included in this repository. There is currently no way for third-party plugins to define a helper.
 
 Helpers are defined in the `src/helpers.js` file, and they must be valid modules which follow these guidelines:
- - They must have a default export, which is their entry-point.
- - They can import other helpers, exclusively by using default imports.
- - They can't have named exports.
 
-```js
+- They must have a default export, which is their entry-point.
+- They can import other helpers, exclusively by using default imports.
+- They can't have named exports.
+
+```js title="JavaScript"
 helpers.customHelper = defineHelper(`
   import dep from "dependency";
 
@@ -58,4 +58,3 @@ helpers.customHelper = defineHelper(`
   }
 `);
 ```
-

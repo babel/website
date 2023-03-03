@@ -1,22 +1,24 @@
 ---
 id: babel-plugin-transform-destructuring
-title: @babel/plugin-transform-destructuring
-sidebar_label: transform-destructuring
+title: "@babel/plugin-transform-destructuring"
+sidebar_label: destructuring
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Examples
 
 **In**
 
-```javascript
-let {x, y} = obj;
+```js title="JavaScript"
+let { x, y } = obj;
 
 let [a, b, ...rest] = arr;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 function _toArray(arr) { ... }
 
 let _obj = obj,
@@ -32,7 +34,7 @@ let _arr = arr,
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-destructuring
 ```
 
@@ -40,7 +42,7 @@ npm install --save-dev @babel/plugin-transform-destructuring
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-destructuring"]
 }
@@ -48,15 +50,15 @@ npm install --save-dev @babel/plugin-transform-destructuring
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-destructuring script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-destructuring"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-transform-destructuring"],
 });
 ```
 
@@ -68,6 +70,16 @@ require("@babel/core").transform("code", {
 
 Enabling this option will assume that what you want to destructure is an array and won't use `Array.from` on other iterables.
 
+> ⚠️ Consider migrating to the top level [`iterableIsArray`](assumptions.md#iterableisarray) assumption.
+
+```json title="babel.config.json"
+{
+  "assumptions": {
+    "iterableIsArray": true
+  }
+}
+```
+
 ### `useBuiltIns`
 
 `boolean`, defaults to `false`.
@@ -78,7 +90,7 @@ Enabling this option will use `Object.assign` directly instead of the Babel's `e
 
 **.babelrc**
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     ["@babel/plugin-transform-destructuring", { "useBuiltIns": true }]
@@ -88,21 +100,24 @@ Enabling this option will use `Object.assign` directly instead of the Babel's `e
 
 **In**
 
-```js
+```js title="JavaScript"
 var { ...x } = z;
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 var _z = z,
-    x = Object.assign({}, _z);
+  x = Object.assign({}, _z);
 ```
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
 
 ### `allowArrayLike`
+
 `boolean`, defaults to `false`
+
+Added in: `v7.10.0`
 
 This option allows destructuring array-like objects using the array destructuring syntax.
 
@@ -112,7 +127,16 @@ While it is _not_ spec-compliant to destructure array-like objects as if they we
 
 Please note that Babel allows destructuring `arguments` in old engines even if this option is disabled, because it's defined as _iterable_ in the ECMAScript specification.
 
+> ⚠️ Consider migrating to the top level [`arrayLikeIsIterable`](assumptions.md#arraylikeisiterable) assumption.
+
+```json title="babel.config.json"
+{
+  "assumptions": {
+    "arrayLikeIsIterable": true
+  }
+}
+```
+
 ## References
 
-* [MDN: Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
-
+- [MDN: Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)

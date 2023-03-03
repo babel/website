@@ -1,42 +1,44 @@
 ---
 id: babel-plugin-transform-property-literals
-title: @babel/plugin-transform-property-literals
-sidebar_label: transform-property-literals
+title: "@babel/plugin-transform-property-literals"
+sidebar_label: property-literals
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
 **In**
 
-```javascript
+```js title="JavaScript"
 var foo = {
   // changed
-  "bar": function () {},
-  "1": function () {},
+  const: function() {},
+  var: function() {},
 
   // not changed
   "default": 1,
   [a]: 2,
-  foo: 1
+  foo: 1,
 };
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 var foo = {
-  bar: function () {},
-  1: function () {},
+  "const": function() {},
+  "var": function() {},
 
   "default": 1,
   [a]: 2,
-  foo: 1
+  foo: 1,
 };
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install @babel/plugin-transform-property-literals --save-dev
 ```
 
@@ -44,7 +46,7 @@ npm install @babel/plugin-transform-property-literals --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-property-literals"]
 }
@@ -52,15 +54,14 @@ npm install @babel/plugin-transform-property-literals --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-property-literals script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-property-literals"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-transform-property-literals"],
 });
 ```
-

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      html {
+        font: 100% / 1.65 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI",
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        -webkit-font-smoothing: antialiased;
+        -webkit-tap-highlight-color: transparent;
+        text-rendering: optimizelegibility;
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .navbar {
+        background: #323330;
+        padding: 0px !important;
+        height: 50px !important;
+        display: flex;
+      }
+
+      .navbar--fixed-top {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 200;
+      }
+
+      .navbar__inner {
+        padding: 0px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .navbar__items {
+        align-items: center;
+        display: flex;
+        flex: 1;
+        min-width: 0;
+        color: white;
+      }
+
+      .navbar__items--right {
+        flex: 0 0 auto;
+        justify-content: flex-end;
+      }
+
+      .navbar__item {
+        font-weight: 300;
+        color: white;
+      }
+
+      .clean-btn {
+        background: none;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+        font-family: inherit;
+        padding: 0;
+      }
+
+      .navbar__link {
+        font-weight: 300;
+      }
+      .navbar__link:hover, .navbar__link--active {
+        color: #f5da55;
+      }
+
+      .navbar__item {
+        display: inline-block;
+        padding: 4px 12px;
+      }
+
+      .navbar__toggle {
+        display: none;
+        margin-right: 0.5rem;
+      }
+
+      @media (max-width: 996px) {
+        .navbar__toggle {
+          display: inherit;
+        }
+      }
+
+      .navbar__logo {
+        flex: 0 0 auto;
+        height: 32px;
+        margin-right: 8px;
+      }
+
+      html[data-theme="dark"]
+        .themedImage--dark_---node_modules-\@docusaurus-theme-classic-lib-next-theme-ThemedImage-styles-module {
+        display: initial;
+      }
+
+      .navbar__logo img {
+        height: 100%;
+      }
+
+      @media (max-width: 996px) {
+        .navbar__item {
+          display: none;
+        }
+      }
+
+      @media only screen and (min-width: 1024px) {
+        .nav-footer {
+          flex-shrink: 0;
+        }
+      }
+
+      .nav-footer {
+        background: #20232a;
+        border: none;
+        color: #202020;
+        font-size: 15px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 400;
+        line-height: 24px;
+        padding-bottom: 2em;
+        padding-top: 2em;
+        position: relative;
+      }
+
+      .nav-footer .sitemap {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto 3em;
+        max-width: 1080px;
+      }
+
+      .nav-footer .sitemap .nav-home {
+        display: table;
+        height: 72px;
+        margin: -12px 20px 0 0;
+        opacity: 0.4;
+        padding: 10px;
+        transition: opacity 0.15s ease-in-out;
+        width: 72px;
+      }
+
+      .nav-footer .sitemap a {
+        color: hsla(0, 0%, 100%, 0.6);
+        display: block;
+        margin: 2px 0;
+        padding: 3px 0;
+      }
+
+      .nav-footer .sitemap div {
+        flex: 1;
+      }
+
+      .nav-footer .sitemap h5,
+      .nav-footer .sitemap h5 > a,
+      .nav-footer .sitemap h6,
+      .nav-footer .sitemap h6 > a {
+        color: #fff;
+      }
+
+      .nav-footer .sitemap h5,
+      .nav-footer .sitemap h6 {
+        margin: 0 0 10px;
+      }
+
+      img {
+        height: auto;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      h5 {
+        font-weight: 600;
+        line-height: 1.25;
+        font-size: 14px;
+      }
+
+      @media only screen and (max-width: 735px) {
+        .nav-footer .sitemap {
+          display: flex;
+          flex-direction: column;
+          margin: 0 2em 3em;
+          width: calc(100% - 4em);
+        }
+      }
+
+      .navbar-sidebar--show .navbar-sidebar {
+        transform: translate3d(0, 0, 0);
+      }
+
+      .navbar-sidebar--show .navbar-sidebar,
+      .navbar-sidebar--show .navbar-sidebar__backdrop {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .navbar-sidebar {
+        overflow: hidden;
+        color: rgb(245, 246, 247);
+        background-color: #242526;
+        bottom: 0;
+        box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
+        left: 0;
+        opacity: 0;
+        position: fixed;
+        top: 0;
+        transform: translate3d(-100%, 0, 0);
+        visibility: hidden;
+        width: 83vw;
+        transition-property: opacity, visibility, transform;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in-out;
+      }
+
+      .navbar-sidebar__brand {
+        align-items: center;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex: 1;
+        height: 60px;
+        padding: 8px 16px;
+      }
+
+      .navbar-sidebar__close {
+        color: rgb(245, 246, 247);
+        display: flex;
+        margin-left: auto;
+      }
+
+      .navbar-sidebar__items {
+        display: flex;
+        height: 909px;
+        transform: translateZ(0);
+        transition: transform 200ms ease-in-out;
+      }
+
+      .navbar-sidebar__item {
+        flex-shrink: 0;
+        padding: 8px;
+        width: 80vw;
+      }
+
+      .menu {
+        font-weight: 500;
+        overflow-x: hidden;
+      }
+
+      .menu__link {
+        color: #dadde1;
+        flex: 1;
+        justify-content: space-between;
+        line-height: 1.25;
+        padding: 8px 16px;
+      }
+
+      .menu__link,
+      .menu__caret {
+        border-radius: 0.25rem;
+        display: flex;
+        transition: background 200ms cubic-bezier(0.08, 0.52, 0.52, 1);
+      }
+
+      .menu__list {
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+      }
+
+      .menu__link:hover {
+        text-decoration: none;
+        transition: color 200ms cubic-bezier(0.08, 0.52, 0.52, 1);
+      }
+      .menu__link:hover,
+      .menu__caret:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .navbar-sidebar__backdrop {
+        background-color: rgba(0, 0, 0, 0.6);
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        visibility: hidden;
+        transition-property: opacity, visibility;
+        transition-duration: 100ms;
+        transition-timing-function: ease-in-out;
+      }
+      .iconExternalLink_---node_modules-\@docusaurus-theme-classic-lib-next-theme-IconExternalLink-styles-module {
+        margin-left: 0.3rem;
+        position: relative;
+        top: 1px;
+      }
+      #root {
+        height: calc(100vh - 50px);
+        background: #1d2025;
+      }
+    </style>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Babel · The compiler for next generation JavaScript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Docusaurus" />
+    <meta
+      name="description"
+      content="The compiler for next generation JavaScript"
+    />
+    <meta
+      property="og:title"
+      content="Babel · The compiler for next generation JavaScript"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://babeljs.io/" />
+    <meta
+      property="og:description"
+      content="The compiler for next generation JavaScript"
+    />
+    <meta property="og:image" content="https://babeljs.io/img/ogImage.png" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="shortcut icon" href="/img/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"
+    />
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="https://babeljs.io/blog/atom.xml"
+      title="Babel Blog ATOM Feed"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="https://babeljs.io/blog/feed.xml"
+      title="Babel Blog RSS Feed"
+    />
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function() {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "https://www.google-analytics.com/analytics.js",
+        "ga"
+      );
+
+      ga("create", "UA-114990275-1", "auto");
+      ga("send", "pageview");
+    </script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"
+      defer=""
+    ></script>
+    <!-- <script
+         type="text/javascript"
+         src="/js/code-blocks-buttons.js"
+         defer=""
+         ></script> -->
+    <!-- <script
+         type="text/javascript"
+         src="/scripts/repl-page-hacks.js"
+         defer=""
+         ></script> -->
+    <!-- <link
+         href="https://d33wubrfki0l68.cloudfront.net/css/bcbe9380ffd2c637f893646d6eb5311bba1a8e91/css/main.css"
+         rel="stylesheet"
+         /> -->
+    <script src="/js/codetabs.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar--fixed-top">
+      <div class="navbar__inner">
+        <div class="navbar__items">
+          <button
+            onclick="document.querySelector('.navbar.navbar--fixed-top').classList.toggle('navbar-sidebar--show')"
+            aria-label="Navigation bar toggle"
+            class="navbar__toggle clean-btn"
+            type="button"
+            tabindex="0"
+          >
+            <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+                d="M4 7h22M4 15h22M4 23h22"
+              ></path>
+            </svg>
+          </button>
+          <a class="navbar__brand" href="/">
+            <div class="navbar__logo">
+              <img
+                src="/img/babel.svg"
+                alt="Babel logo"
+                class="themedImage_---node_modules-@docusaurus-theme-classic-lib-next-theme-ThemedImage-styles-module themedImage--dark_---node_modules-@docusaurus-theme-classic-lib-next-theme-ThemedImage-styles-module"
+              />
+            </div>
+          </a>
+        </div>
+        <div class="navbar__items navbar__items--right">
+          <a class="navbar__item navbar__link" href="/docs/">Docs</a>
+          <a class="navbar__item navbar__link" href="/setup/">Setup</a>
+          <a
+            href="/repl"
+            target="_self"
+            rel="noopener noreferrer"
+            class="navbar__item navbar__link navbar__link--active"
+          >
+            <span>
+              Try it out
+            </span>
+          </a>
+          <a class="navbar__item navbar__link" href="/videos/">Videos</a>
+          <a
+            aria-current="page"
+            class="navbar__item navbar__link"
+            href="/blog"
+            >Blog</a
+          >
+          <a
+            href="https://opencollective.com/babel"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="navbar__item navbar__link"
+          >
+            <span>
+              Donate
+            </span>
+          </a>
+          <a class="navbar__item navbar__link" href="/team">Team</a>
+          <a
+            href="https://github.com/babel/babel"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="navbar__item navbar__link"
+          >
+            <span>
+              GitHub
+            </span>
+          </a>
+        </div>
+      </div>
+      <div role="presentation" class="navbar-sidebar__backdrop"></div>
+      <div class="navbar-sidebar">
+        <div class="navbar-sidebar__brand">
+          <a class="navbar__brand" href="/">
+            <div class="navbar__logo">
+              <img
+                src="/img/babel.svg"
+                alt="Babel logo"
+                class="themedImage_---node_modules-@docusaurus-theme-classic-lib-next-theme-ThemedImage-styles-module themedImage--dark_---node_modules-@docusaurus-theme-classic-lib-next-theme-ThemedImage-styles-module"
+              />
+            </div>
+          </a>
+
+          <button
+            type="button"
+            class="clean-btn navbar-sidebar__close"
+            onclick="document.querySelector('.navbar.navbar--fixed-top').classList.toggle('navbar-sidebar--show')"
+          >
+            <svg viewBox="0 0 15 15" width="21" height="21">
+              <g stroke="currentColor" stroke-width="1.2">
+                <path d="M.75.75l13.5 13.5M14.25.75L.75 14.25"></path>
+              </g>
+            </svg>
+          </button>
+        </div>
+        <div class="navbar-sidebar__items">
+          <div class="navbar-sidebar__item menu">
+            <ul class="menu__list">
+              <li class="menu__list-item">
+                <a class="menu__link" href="/docs/">Docs</a>
+              </li>
+              <li class="menu__list-item">
+                <a class="menu__link" target="_top" href="/repl">Try it out</a>
+              </li>
+              <li class="menu__list-item">
+                <a class="menu__link" href="/videos/">Videos</a>
+              </li>
+              <li class="menu__list-item">
+                <a class="menu__link" href="/blog">Blog</a>
+              </li>
+              <li class="menu__list-item">
+                <a
+                  href="https://opencollective.com/babel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="menu__link"
+                  ><span
+                    >Donate<svg
+                      width="13.5"
+                      height="13.5"
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      class="iconExternalLink_---node_modules-@docusaurus-theme-classic-lib-next-theme-IconExternalLink-styles-module"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+                      ></path></svg></span
+                ></a>
+              </li>
+              <li class="menu__list-item">
+                <a class="menu__link" href="/team">Team</a>
+              </li>
+              <li class="menu__list-item">
+                <a
+                  href="https://github.com/babel/babel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="menu__link"
+                  ><span
+                    >GitHub<svg
+                      width="13.5"
+                      height="13.5"
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      class="iconExternalLink_---node_modules-@docusaurus-theme-classic-lib-next-theme-IconExternalLink-styles-module"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+                      ></path></svg></span
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <div class="navbar-sidebar__item menu">
+            <button type="button" class="clean-btn navbar-sidebar__back">
+              ← Back to main menu
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="navPusher">
+      <div>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://unpkg.com/codemirror@5.56.0/lib/codemirror.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://unpkg.com/codemirror@5.56.0/theme/darcula.css"
+        />
+        <div id="root">
+          <noscript>You need to enable JavaScript to run this app.</noscript>
+        </div>
+        <script src="https://unpkg.com/react@16.3.2/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@16.3.2/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/codemirror@5.56.0/lib/codemirror.js"></script>
+        <script src="https://unpkg.com/codemirror@5.56.0/mode/javascript/javascript.js"></script>
+        <script src="https://unpkg.com/codemirror@5.56.0/mode/xml/xml.js"></script>
+        <script src="https://unpkg.com/codemirror@5.56.0/mode/jsx/jsx.js"></script>
+        <script src="https://unpkg.com/codemirror@5.56.0/keymap/sublime.js"></script>
+        <script src="https://unpkg.com/codemirror@5.56.0/addon/comment/comment.js"></script>
+        <script src="https://unpkg.com/codemirror@5.56.0/addon/display/placeholder.js"></script>
+        <script src="https://unpkg.com/codemirror@5.56.0/addon/edit/matchbrackets.js"></script>
+        <script src="https://unpkg.com/codemirror@5.56.0/addon/search/searchcursor.js"></script>
+        <script src="https://unpkg.com/codemirror@5.56.0/addon/selection/active-line.js"></script>
+        <script src="https://unpkg.com/lz-string@1.4.4/libs/base64-string.js"></script>
+        <script src="https://unpkg.com/lz-string@1.4.4/libs/lz-string.min.js"></script>
+      </div>
+    </div>
+  </body>
+</html>

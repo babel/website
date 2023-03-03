@@ -1,6 +1,6 @@
 ---
 id: babel-helper-member-expression-to-functions
-title: @babel/helper-member-expression-to-functions
+title: "@babel/helper-member-expression-to-functions"
 sidebar_label: helper-member-expression-to-functions
 ---
 
@@ -10,7 +10,7 @@ sidebar_label: helper-member-expression-to-functions
 
 Traverses the `path` using the supplied `visitor` and an augmented `state`.
 
-```js
+```js title="JavaScript"
 const visitor = {
   MemberExpression(memberPath, state) {
 

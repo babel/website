@@ -1,3 +1,3 @@
-```sh
-npm install --save-dev babel-register
+```shell npm2yarn
+npm install --save-dev @babel/register @babel/core
 ```

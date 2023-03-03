@@ -136,6 +136,7 @@ const BABEL_MINI_REPL = {
     // don't init editor on mobile devices
     if (isMobile()) return;
 
+    $(".dummy-hero-repl").prop("hidden", true);
     $(".hero-repl").prop("hidden", false);
 
     inEditor = setupEditor("hero-repl-in", true);
@@ -173,7 +174,4 @@ const BABEL_MINI_REPL = {
   },
 };
 
-// relies on zepto being present on the page
-window.onload = function() {
-  BABEL_MINI_REPL.start();
-};
+export default BABEL_MINI_REPL;

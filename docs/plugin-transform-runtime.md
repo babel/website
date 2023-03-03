@@ -1,7 +1,6 @@
 ---
 id: babel-plugin-transform-runtime
-title: @babel/plugin-transform-runtime
-sidebar_label: transform-runtime
+title: "@babel/plugin-transform-runtime"
 ---
 
 A plugin that enables the re-use of Babel's injected helper code to save on codesize.
@@ -12,13 +11,13 @@ A plugin that enables the re-use of Babel's injected helper code to save on code
 
 Install it as development dependency.
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-runtime
 ```
 
 and [`@babel/runtime`](runtime.md) as a production dependency (since it's for the "runtime").
 
-```sh
+```shell npm2yarn
 npm install --save @babel/runtime
 ```
 
@@ -42,7 +41,7 @@ See the [technical details](#technical-details) section for more information on 
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-runtime"]
 }
@@ -50,7 +49,7 @@ Without options:
 
 With options (and their defaults):
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [
@@ -60,7 +59,6 @@ With options (and their defaults):
         "corejs": false,
         "helpers": true,
         "regenerator": true,
-        "useESModules": false,
         "version": "7.0.0-beta.0"
       }
     ]
@@ -72,14 +70,14 @@ The plugin defaults to assuming that all polyfillable APIs will be provided by t
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-runtime script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-runtime"],
 });
 ```
@@ -91,6 +89,15 @@ require("@babel/core").transform("code", {
 `false`, `2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `false`.
 
 e.g. `['@babel/plugin-transform-runtime', { corejs: 3 }],`
+
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.4.0` | Supports `{ proposals: boolean }` |
+</details>
 
 Specifying a number will rewrite the helpers that need polyfillable APIs to reference helpers from that (major) version of `core-js` instead
 Please note that `corejs: 2` only supports global variables (e.g. `Promise`) and static properties (e.g. `Array.from`), while `corejs: 3` also supports instance properties (e.g. `[].includes`).
@@ -115,7 +122,7 @@ For more information, see [Helper aliasing](#helper-aliasing).
 
 ### `polyfill`
 
-> This option was removed in v7 by just making it the default.
+> This option was removed in v7.
 
 ### `regenerator`
 
@@ -127,11 +134,21 @@ For more information, see [Regenerator aliasing](#regenerator-aliasing).
 
 ### `useBuiltIns`
 
-> This option was removed in v7 by just making it the default.
+> This option was removed in v7.
 
 ### `useESModules`
 
+> ⚠️ This option has been deprecated: starting from version `7.13.0`, `@babel/runtime`'s `package.json` uses `"exports"` option to automatically choose between CJS and ESM helpers.
+
 `boolean`, defaults to `false`.
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.13.0` | This option has been deprecated |
+</details>
 
 When enabled, the transform will use helpers that do not get run through
 `@babel/plugin-transform-modules-commonjs`. This allows for smaller builds in module
@@ -139,7 +156,7 @@ systems like webpack, since it doesn't need to preserve commonjs semantics.
 
 For example, here is the `classCallCheck` helper with `useESModules` disabled:
 
-```js
+```js title="JavaScript"
 exports.__esModule = true;
 
 exports.default = function(instance, Constructor) {
@@ -151,7 +168,7 @@ exports.default = function(instance, Constructor) {
 
 And, with it enabled:
 
-```js
+```js title="JavaScript"
 export default function(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -175,7 +192,8 @@ By default transform-runtime assumes that `@babel/runtime@7.0.0` is installed. I
 `@babel/runtime` (or their corejs counterparts e.g. `@babel/runtime-corejs3`) installed or listed as a dependency, transform-runtime can use more advanced features.
 
 For example if you depend on `@babel/runtime-corejs2@7.7.4` you can transpile your code with
-```json
+
+```json title="babel.config.json"
 {
   "plugins": [
     [
@@ -189,6 +207,7 @@ For example if you depend on `@babel/runtime-corejs2@7.7.4` you can transpile yo
   ]
 }
 ```
+
 which results in a smaller bundle size.
 
 ## Technical details
@@ -207,13 +226,13 @@ Make sure you include `@babel/runtime` as a dependency.
 
 Whenever you use a generator function or async function:
 
-```javascript
+```js title="JavaScript"
 function* foo() {}
 ```
 
 the following is generated:
 
-```javascript
+```js title="JavaScript"
 "use strict";
 
 var _marked = [foo].map(regeneratorRuntime.mark);
@@ -240,7 +259,7 @@ pollutes the global scope.
 
 With the `runtime` transformer, however, it is compiled to:
 
-```javascript
+```js title="JavaScript"
 "use strict";
 
 var _regenerator = require("@babel/runtime/regenerator");
@@ -281,7 +300,7 @@ This is with the `corejs` option.
 
 The plugin transforms the following:
 
-```javascript
+```js title="JavaScript"
 var sym = Symbol();
 
 var promise = Promise.resolve();
@@ -293,7 +312,7 @@ console.log(arr[Symbol.iterator]());
 
 into the following:
 
-```javascript
+```js title="JavaScript"
 import _getIterator from "@babel/runtime-corejs3/core-js/get-iterator";
 import _includesInstanceProperty from "@babel/runtime-corejs3/core-js-stable/instance/includes";
 import _Promise from "@babel/runtime-corejs3/core-js-stable/promise";
@@ -322,13 +341,13 @@ transformer replaces all the helper calls to a module.
 
 That means that the following code:
 
-```javascript
+```js title="JavaScript"
 class Person {}
 ```
 
 usually turns into:
 
-```javascript
+```js title="JavaScript"
 "use strict";
 
 function _classCallCheck(instance, Constructor) {
@@ -344,7 +363,7 @@ var Person = function Person() {
 
 the `runtime` transformer however turns this into:
 
-```javascript
+```js title="JavaScript"
 "use strict";
 
 var _classCallCheck2 = require("@babel/runtime/helpers/classCallCheck");

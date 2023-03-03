@@ -33,13 +33,13 @@ detects common problems with your Babel installation such as:
 
 First, make sure you have the Babel CLI installed.
 
-```sh
+```sh title="Shell"
 $ npm install -g babel-cli@^6.1.0
 ```
 
 Then simply `cd` into your project directory and run:
 
-```sh
+```sh title="Shell"
 $ babel-doctor
 
 Babel Doctor

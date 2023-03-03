@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(api) {
+module.exports = function (api) {
   const env = api.env();
   api.cache.using(() => env);
 
@@ -26,8 +26,8 @@ module.exports = function(api) {
           },
         },
       ],
-      "@babel/preset-flow",
       "@babel/preset-react",
+      "@babel/preset-typescript",
     ],
     plugins,
   };

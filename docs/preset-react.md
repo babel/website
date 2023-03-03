@@ -1,7 +1,6 @@
 ---
 id: babel-preset-react
-title: @babel/preset-react
-sidebar_label: react
+title: "@babel/preset-react"
 ---
 
 This preset always includes the following plugins:
@@ -17,7 +16,7 @@ Classic runtime adds:
 - [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md)
 - [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md)
 
-Automatic runtime adds the functionality for these plugins automatically when the `development` option is enabled. If you have automatic runtime enabled, adding [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md) or [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md) will error.
+Automatic runtime (since `v7.9.0`) adds the functionality for these plugins automatically when the `development` option is enabled. If you have automatic runtime enabled, adding [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md) or [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md) will error.
 
 > Note: Flow syntax support is no longer enabled in v7. For that, you will need to add the [Flow preset](preset-flow.md).
 
@@ -25,7 +24,7 @@ Automatic runtime adds the functionality for these plugins automatically when th
 
 > You can also check out the React [Getting Started page](https://facebook.github.io/react/docs/hello-world.html)
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/preset-react
 ```
 
@@ -35,7 +34,7 @@ npm install --save-dev @babel/preset-react
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-react"]
 }
@@ -43,7 +42,7 @@ Without options:
 
 With options:
 
-```json
+```json title="babel.config.json"
 {
   "presets": [
     [
@@ -62,14 +61,14 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --presets @babel/preset-react script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-react"],
 });
 ```
@@ -81,6 +80,8 @@ require("@babel/core").transform("code", {
 #### `runtime`
 
 `classic | automatic`, defaults to `classic`
+
+Added in: `v7.9.0`
 
 Decides which runtime to use.
 
@@ -104,11 +105,19 @@ Toggles whether or not to throw an error if a XML namespaced tag name is used. F
 
 Though the JSX spec allows this, it is disabled by default since React's JSX does not currently have support for it.
 
+#### `pure`
+
+`boolean`, defaults to `true`.
+
+Enables `@babel/plugin-transform-react-pure-annotations`. It will mark top-level React method calls as pure for tree shaking.
+
 ### React Automatic Runtime
 
 #### importSource
 
 `string`, defaults to `react`.
+
+Added in: `v7.9.0`
 
 Replaces the import source when importing functions.
 
@@ -118,13 +127,13 @@ Replaces the import source when importing functions.
 
 `string`, defaults to `React.createElement`.
 
-Replace the function used when compiling JSX expressions.
+Replace the function used when compiling JSX expressions. It should be a qualified name (e.g. `React.createElement`) or an identifier (e.g. `createElement`).
 
 #### `pragmaFrag`
 
 `string`, defaults to `React.Fragment`.
 
-Replace the component used when compiling JSX fragments.
+Replace the component used when compiling JSX fragments. It should be a valid JSX tag name.
 
 #### `useBuiltIns`
 
@@ -136,11 +145,13 @@ Will use the native built-in instead of trying to polyfill behavior for any plug
 
 `boolean`, defaults to `false`.
 
+Added in: `v7.7.0`
+
 When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
 
-### .babelrc.js
+### babel.config.js
 
-```js
+```js title="babel.config.js"
 module.exports = {
   presets: [
     [
@@ -153,11 +164,11 @@ module.exports = {
 };
 ```
 
-### .babelrc
+### babel.config.json
 
 > Note: the `env` option will likely get deprecated soon
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-react"],
   "env": {

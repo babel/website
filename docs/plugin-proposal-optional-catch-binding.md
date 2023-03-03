@@ -1,13 +1,14 @@
 ---
 id: babel-plugin-proposal-optional-catch-binding
-title: @babel/plugin-proposal-optional-catch-binding
-sidebar_label: proposal-optional-catch-binding
+title: "@babel/plugin-proposal-optional-catch-binding"
+sidebar_label: optional-catch-binding
 ---
 
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2019](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 
 ## Examples
 
-```js
+```js title="JavaScript"
 try {
   throw 0;
 } catch {
@@ -15,7 +16,7 @@ try {
 }
 ```
 
-```js
+```js title="JavaScript"
 try {
   throw 0;
 } catch {
@@ -25,10 +26,9 @@ try {
 }
 ```
 
-
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-optional-catch-binding
 ```
 
@@ -36,7 +36,7 @@ npm install --save-dev @babel/plugin-proposal-optional-catch-binding
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-optional-catch-binding"]
 }
@@ -44,18 +44,18 @@ npm install --save-dev @babel/plugin-proposal-optional-catch-binding
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-optional-catch-binding script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-proposal-optional-catch-binding"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-proposal-optional-catch-binding"],
 });
 ```
 
 ## References
-- [Proposal: Optional Catch Binding for ECMAScript](https://github.com/babel/proposals/issues/7)
 
+- [Proposal: Optional Catch Binding for ECMAScript](https://github.com/babel/proposals/issues/7)

@@ -1,18 +1,18 @@
 ---
 id: babel-highlight
-title: @babel/highlight
+title: "@babel/highlight"
 sidebar_label: highlight
 ---
 
 ## Install
 
-```sh
+```shell npm2yarn
 npm install --save @babel/highlight
 ```
 
 ## Usage
 
-```js
+```js title="JavaScript"
 import highlight from "@babel/highlight";
 
 const code = `class Foo {
@@ -24,7 +24,7 @@ const result = highlight(code);
 console.log(result);
 ```
 
-```js
+```js title="JavaScript"
 class Foo {
   constructor()
 }
@@ -32,7 +32,7 @@ class Foo {
 
 By default, `highlight` will not highlight your code if your terminal does not support color. To force colors, pass `{ forceColor: true }` as the second argument to `highlight`.
 
-```js
+```js title="JavaScript"
 import highlight from "@babel/highlight";
 
 const code = `class Foo {

@@ -1,8 +1,10 @@
 ---
 id: babel-plugin-transform-modules-systemjs
-title: @babel/plugin-transform-modules-systemjs
-sidebar_label: transform-modules-systemjs
+title: "@babel/plugin-transform-modules-systemjs"
+sidebar_label: SystemJS
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env` under the `modules` option
 
 This plugin transforms ECMAScript modules to [SystemJS](https://github.com/systemjs/systemjs/blob/master/docs/system-register.md). Note that only the _syntax_ of import/export statements (`import "./mod.js"`) and import expressions (`import('./mod.js')`) is transformed, as Babel is unaware of different resolution algorithms between implementations of ECMAScript modules and SystemJS.
 
@@ -10,13 +12,13 @@ This plugin transforms ECMAScript modules to [SystemJS](https://github.com/syste
 
 **In**
 
-```javascript
+```js title="JavaScript"
 export default 42;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 System.register([], function(_export, _context) {
   return {
     setters: [],
@@ -31,7 +33,7 @@ For dynamic import support (`import('./lazy.js').then(m => ...)`), enable the [@
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-modules-systemjs
 ```
 
@@ -41,7 +43,7 @@ npm install --save-dev @babel/plugin-transform-modules-systemjs
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-modules-systemjs"]
 }
@@ -49,7 +51,7 @@ Without options:
 
 With options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [
@@ -65,14 +67,14 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-modules-systemjs script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-modules-systemjs"],
 });
 ```

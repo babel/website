@@ -3,11 +3,11 @@ SRC = $(wildcard src/*.js)
 LIB = $(SRC:src/%.js=lib/%.js)
 
 lib: $(LIB)
-lib/%.js: src/%.js .babelrc
+lib/%.js: src/%.js babel.config.json
   mkdir -p $(@D)
   babel $< -o $@
 ```
 
-```sh
+```sh title="Shell"
 make
 ```

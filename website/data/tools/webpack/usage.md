@@ -1,21 +1,25 @@
 #### Via config
 
-```js
-module: {
-  rules: [
-    { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
-  ]
+```js title="JavaScript"
+{
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+    ]
+  }
 }
 ```
 
-#### Via loader
-
-```js
-var Person = require("babel!./Person.js").default;
-new Person();
-```
-
-<blockquote class="babel-callout babel-callout-info">
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://github.com/babel/babel-loader">babel/babel-loader repo</a>.
   </p>

@@ -1,15 +1,16 @@
 ---
 id: babel-plugin-proposal-optional-chaining
-title: @babel/plugin-proposal-optional-chaining
-sidebar_label: proposal-optional-chaining
+title: "@babel/plugin-proposal-optional-chaining"
+sidebar_label: optional-chaining
 ---
 
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2020](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 
 ## Example
 
 ### Accessing deeply nested properties
 
-```js
+```js title="JavaScript"
 const obj = {
   foo: {
     bar: {
@@ -24,15 +25,15 @@ const safe = obj?.qux?.baz; // undefined
 
 // Optional chaining and normal chaining can be intermixed
 obj?.foo.bar?.baz; // Only access `foo` if `obj` exists, and `baz` if
-                   // `bar` exists
+// `bar` exists
 
 // Example usage with bracket notation:
-obj?.['foo']?.bar?.baz // 42
+obj?.["foo"]?.bar?.baz; // 42
 ```
 
 ### Calling deeply nested functions
 
-```js
+```js title="JavaScript"
 const obj = {
   foo: {
     bar: {
@@ -61,7 +62,7 @@ exists?.(); // undefined
 
 ### Constructing deeply nested classes
 
-```js
+```js title="JavaScript"
 const obj = {
   foo: {
     bar: {
@@ -88,10 +89,12 @@ new exists?.(); // undefined
 
 ### Deleting deeply nested properties
 
-```js
+Added in: `v7.8.0`
+
+```js title="JavaScript"
 const obj = {
   foo: {
-    bar: {}
+    bar: {},
   },
 };
 
@@ -100,7 +103,7 @@ const ret = delete obj?.foo?.bar?.baz; // true
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-optional-chaining
 ```
 
@@ -108,7 +111,7 @@ npm install --save-dev @babel/plugin-proposal-optional-chaining
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-optional-chaining"]
 }
@@ -116,15 +119,15 @@ npm install --save-dev @babel/plugin-proposal-optional-chaining
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-optional-chaining script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-proposal-optional-chaining"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-proposal-optional-chaining"],
 });
 ```
 
@@ -138,23 +141,33 @@ When `true`, this transform will pretend `document.all` does not exist,
 and perform loose equality checks with `null` instead of strict equality checks
 against both `null` and `undefined`.
 
+> ⚠️ Consider migrating to the top level [`noDocumentAll`](assumptions.md#nodocumentall) assumption.
+
+```json title="babel.config.json"
+{
+  "assumptions": {
+    "noDocumentAll": true
+  }
+}
+```
+
 #### Example
 
 In
 
-```javascript
+```js title="JavaScript"
 foo?.bar;
 ```
 
-Out (`loose === true`)
+Out (`noDocumentAll === true`)
 
-```javascript
+```js title="JavaScript"
 foo == null ? void 0 : foo.bar;
 ```
 
-Out (`loose === false`)
+Out (`noDocumentAll === false`)
 
-```javascript
+```js title="JavaScript"
 foo === null || foo === void 0 ? void 0 : foo.bar;
 ```
 
@@ -162,5 +175,4 @@ foo === null || foo === void 0 ? void 0 : foo.bar;
 
 ## References
 
-* [Proposal: Optional Chaining](https://github.com/tc39/proposal-optional-chaining)
-
+- [Proposal: Optional Chaining](https://github.com/tc39/proposal-optional-chaining)

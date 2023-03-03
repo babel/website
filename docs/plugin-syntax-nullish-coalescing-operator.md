@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-nullish-coalescing-operator
-title: @babel/plugin-syntax-nullish-coalescing-operator
+title: "@babel/plugin-syntax-nullish-coalescing-operator"
 sidebar_label: syntax-nullish-coalescing-operator
 ---
 
@@ -10,7 +10,7 @@ sidebar_label: syntax-nullish-coalescing-operator
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-nullish-coalescing-operator
 ```
 
@@ -18,7 +18,7 @@ npm install --save-dev @babel/plugin-syntax-nullish-coalescing-operator
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-nullish-coalescing-operator"]
 }
@@ -26,14 +26,14 @@ npm install --save-dev @babel/plugin-syntax-nullish-coalescing-operator
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-nullish-coalescing-operator script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-nullish-coalescing-operator"]
 });
 ```

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-pipeline-operator
-title: @babel/plugin-syntax-pipeline-operator
+title: "@babel/plugin-syntax-pipeline-operator"
 sidebar_label: syntax-pipeline-operator
 ---
 
@@ -10,31 +10,56 @@ sidebar_label: syntax-pipeline-operator
 
 ## Installation
 
-```sh
-$ npm install @babel/plugin-syntax-pipeline-operator
+```shell npm2yarn
+npm install @babel/plugin-syntax-pipeline-operator
 ```
 
 ## Usage
 
 ### With a configuration file (Recommended)
 
-```json
+With `^^` topic token:
+
+```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-syntax-pipeline-operator"]
+  "plugins": [
+    [ "@babel/plugin-syntax-pipeline-operator", { "topicToken": "^^" } ]
+  ]
+}
+```
+
+With `@@` topic token:
+
+```json title="babel.config.json"
+{
+  "plugins": [
+    [ "@babel/plugin-syntax-pipeline-operator", { "topicToken": "@@" } ]
+  ]
 }
 ```
 
 ### Via CLI
 
-```sh
-$ babel --plugins @babel/plugin-syntax-pipeline-operator script.js
-```
+Because this plugin requires a configuration option, it [cannot be directly configured from the CLI](https://github.com/babel/babel/issues/4161). Use a [config file](config-files.md) instead with the CLI, to add and configure this plugin.
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-syntax-pipeline-operator"]
+With `^^` topic token:
+
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: [
+    [ "@babel/plugin-syntax-pipeline-operator", { topicToken: "^^" } ],
+  ],
 });
 ```
 
+With `@@` topic token:
+
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: [
+    [ "@babel/plugin-syntax-pipeline-operator", { topicToken: "@@" } ],
+  ],
+});
+```

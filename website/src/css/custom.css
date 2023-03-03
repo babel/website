@@ -1,0 +1,126 @@
+:root {
+  --ifm-color-primary: #9e8400;
+  --ifm-color-primary-dark: #8e7700;
+  --ifm-color-primary-darker: #867000;
+  --ifm-color-primary-darkest: #6f5c00;
+  --ifm-color-primary-light: #ae9100;
+  --ifm-color-primary-lighter: #b69800;
+  --ifm-color-primary-lightest: #cdac00;
+
+  --ifm-navbar-background-color: #323330;
+  --ifm-navbar-height: 3.25rem;
+  --ifm-navbar-padding-horizontal: 20px;
+  --ifm-navbar-padding-vertical: 0;
+
+  --ifm-navbar-link-color: #fff;
+  --ifm-navbar-link-hover-color: #f5da55;
+
+  --ifm-blockquote-border-left-width: 4px;
+}
+html[data-theme='dark'] {
+  --ifm-color-primary: #f5da55;
+  --ifm-color-primary-dark: #f3d336;
+  --ifm-color-primary-darker: #f2d026;
+  --ifm-color-primary-darkest: #dab80d;
+  --ifm-color-primary-light: #f7e174;
+  --ifm-color-primary-lighter: #f8e484;
+  --ifm-color-primary-lightest: #fbeeb2;
+}
+
+.headerWrapper.wrapper {
+  max-width: 1400px;
+}
+
+/* ####### HEADER & FOOTER ####### */
+
+.navigationSlider .slidingNav ul li a:hover,
+.navigationSlider .slidingNav ul li.siteNavItemActive a,
+.navigationSlider .slidingNav ul li.siteNavGroupActive a {
+  color: #f5da55;
+}
+
+.nav-footer .sitemap a:hover,
+.nav-footer .sitemap a:focus {
+  color: #f5da55;
+}
+
+.algolia-autocomplete {
+  line-height: 20px;
+}
+
+/* dark mode switch button */
+.navbar .clean-btn > svg:first-child {
+  color: var(--ifm-navbar-link-color);
+}
+.navbar .clean-btn > svg:first-child:hover {
+  color: var(--ifm-navbar-background-color);
+}
+
+/* ####### BLOG ####### */
+article[itemprop="blogPost"] {
+  padding-bottom: var(--ifm-spacing-vertical);
+  border-bottom: var(--ifm-hr-height) solid var(--ifm-hr-background-color);
+}
+
+article[itemprop="blogPost"] header {
+  --ifm-heading-font-weight: 600;
+  --ifm-heading-line-height: 1;
+}
+
+article[itemprop="blogPost"] header .avatar__name:before {
+  content: "by ";
+  font-weight: normal;
+}
+
+article[itemprop="blogPost"] header h2 a {
+  color: var(--ifm-font-color-base);
+  font-size: 2rem;
+}
+
+article[itemprop="blogPost"] h3 {
+  font-size: 1.5rem;
+}
+
+article[itemprop="blogPost"] h4 {
+  font-size: 1.25rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* v2 custom css */
+
+.navbar__item svg {
+  display: none;
+}
+
+.DocSearch-Button {
+  /* Use dark mode DocSearch variables */
+  --docsearch-text-color: var(--ifm-navbar-link-color);
+  --docsearch-searchbox-background: rgba(0, 0, 0, 0.2);
+  --docsearch-searchbox-focus-background: rgba(0, 0, 0, 0.2);
+  --docsearch-key-gradient: linear-gradient(-26.5deg,#565872,#31355b);
+  --docsearch-key-shadow: inset 0 -2px 0 0 #282d55,inset 0 0 1px 1px #51577d,0 2px 2px 0 rgba(3,4,9,0.3);
+  --docsearch-muted-color: #7f8497;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 0 20px;
+}
+
+.mainContainer {
+  flex: 1 1 0%;
+  max-width: 100%;
+  padding: 40px 0;
+}
+
+.navbar__item {
+  font-weight: 300;
+}
+
+.container.paddingTop {
+  padding-top: 80px;
+}

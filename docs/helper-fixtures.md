@@ -1,12 +1,12 @@
 ---
 id: babel-helper-fixtures
-title: @babel/helper-fixtures
+title: "@babel/helper-fixtures"
 sidebar_label: helper-fixtures
 ---
 
 ## Usage
 
-```javascript
+```js title="JavaScript"
 import getFixtures from "@babel/helper-fixtures";
 
 type TestFile = {

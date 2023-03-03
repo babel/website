@@ -44,3 +44,29 @@
     width: 100%;
   }
 }
+
+.container.paddingBottom {
+  padding-bottom: 80px;
+}
+
+.showcaseSection .prose {
+  margin: 0 auto;
+  max-width: 560px;
+  text-align: center;
+}
+
+.showcaseSection .logos {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.showcaseSection {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.showcaseSection .logos img {
+  width: 128px;
+}

@@ -1,32 +1,35 @@
 ---
 id: babel-plugin-transform-react-jsx-compat
-title: @babel/plugin-transform-react-jsx-compat
-sidebar_label: transform-react-jsx-compat
+title: "@babel/plugin-transform-react-jsx-compat"
+sidebar_label: react-jsx-compat
 ---
 
 ## Example
 
 **In**
 
-```javascript
-var profile = <div>
-  <img src="avatar.png" class="profile" />
-  <h3>{[user.firstName, user.lastName].join(' ')}</h3>
-</div>;
+```js title="JavaScript"
+var profile = (
+  <div>
+    <img src="avatar.png" class="profile" />
+    <h3>{[user.firstName, user.lastName].join(" ")}</h3>
+  </div>
+);
 ```
 
 **Out**
 
-```javascript
-var profile = React.DOM.div(null,
-  React.DOM.img({ src: "avatar.png", "class": "profile" }),
+```js title="JavaScript"
+var profile = React.DOM.div(
+  null,
+  React.DOM.img({ src: "avatar.png", class: "profile" }),
   React.DOM.h3(null, [user.firstName, user.lastName].join(" "))
 );
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-react-jsx-compat
 ```
 
@@ -34,7 +37,7 @@ npm install --save-dev @babel/plugin-transform-react-jsx-compat
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-react-jsx-compat"]
 }
@@ -42,15 +45,14 @@ npm install --save-dev @babel/plugin-transform-react-jsx-compat
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-react-jsx-compat script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-react-jsx-compat"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-transform-react-jsx-compat"],
 });
 ```
-

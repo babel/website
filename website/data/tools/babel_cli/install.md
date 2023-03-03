@@ -10,11 +10,11 @@ There are two primary reasons for this.
 
 We can install Babel CLI locally by running:
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/core @babel/cli
 ```
 
-<blockquote class="babel-callout babel-callout-info">
+<blockquote class="alert alert--info">
   <p>
     <strong>Note:</strong> If you do not have a <code>package.json</code>,
     create one before installing. This will ensure proper interaction with the

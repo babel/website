@@ -1,13 +1,16 @@
 ---
 id: babel-plugin-transform-classes
-title: @babel/plugin-transform-classes
-sidebar_label: transform-classes
+title: "@babel/plugin-transform-classes"
+sidebar_label: classes
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Caveats
 
 When extending a native class (e.g., `class extends Array {}`), the super class
 needs to be wrapped. This is needed to workaround two problems:
+
 - Babel transpiles classes using `SuperClass.apply(/* ... */)`, but native
   classes aren't callable and thus throw in this case.
 - Some built-in functions (like `Array`) always return a new object. Instead of
@@ -18,18 +21,20 @@ There is **NO IE <= 10 support**. If you need IE <= 10 it's recommended that you
 
 Babel needs to statically know if you are extending a built-in class. For this reason, the "mixin pattern" doesn't work:
 
-```js
+```js title="JavaScript"
 class Foo extends mixin(Array) {}
 
 function mixin(Super) {
-  return class extends Super { mix() {} };
+  return class extends Super {
+    mix() {}
+  };
 }
 ```
 
 To workaround this limitation, you can add another class in the inheritance chain so that Babel can wrap the native class:
 
-```js
-const ExtensibleArray = class extends Array {}
+```js title="JavaScript"
+const ExtensibleArray = class extends Array {};
 
 class Foo extends mixin(ExtensibleArray) {}
 ```
@@ -38,13 +43,13 @@ class Foo extends mixin(ExtensibleArray) {}
 
 **In**
 
-```javascript
+```js title="JavaScript"
 class Test {
   constructor(name) {
     this.name = name;
   }
 
-  logger () {
+  logger() {
     console.log("Hello", this.name);
   }
 }
@@ -52,10 +57,14 @@ class Test {
 
 **Out**
 
-```javascript
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+```js title="JavaScript"
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
 
-var Test = function () {
+var Test = (function() {
   function Test(name) {
     _classCallCheck(this, Test);
 
@@ -67,12 +76,12 @@ var Test = function () {
   };
 
   return Test;
-}();
+})();
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-classes
 ```
 
@@ -80,7 +89,7 @@ npm install --save-dev @babel/plugin-transform-classes
 
 ### With a configuration file (Recommended)
 
-```js
+```js title="JavaScript"
 // without options
 {
   "plugins": ["@babel/plugin-transform-classes"]
@@ -98,15 +107,15 @@ npm install --save-dev @babel/plugin-transform-classes
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-classes script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-classes"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-transform-classes"],
 });
 ```
 
@@ -115,6 +124,19 @@ require("@babel/core").transform("code", {
 ### `loose`
 
 `boolean`, defaults to `false`.
+
+> ⚠️ Consider migrating to the top level [`assumptions`](assumptions.md) which offers granular control over various `loose` mode deductions Babel has applied.
+
+```json title="babel.config.json"
+{
+  "assumptions": {
+    "constantSuper": true,
+    "noClassCalls": true,
+    "setClassMethods": true,
+    "superIsCallableConstructor": true
+  }
+}
+```
 
 #### Method enumerability
 
@@ -126,7 +148,7 @@ with the spec and you may run into issues.
 Under loose mode, methods are defined on the class prototype with simple assignments
 instead of being defined. This can result in the following not working:
 
-```javascript
+```js title="JavaScript"
 class Foo {
   set bar() {
     throw new Error("foo!");

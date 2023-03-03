@@ -1,14 +1,16 @@
 ---
 id: babel-plugin-transform-member-expression-literals
-title: @babel/plugin-transform-member-expression-literals
-sidebar_label: transform-member-expression-literals
+title: "@babel/plugin-transform-member-expression-literals"
+sidebar_label: member-expression-literals
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
 **In**
 
-```javascript
+```js title="JavaScript"
 obj.foo = "isValid";
 
 obj.const = "isKeyword";
@@ -17,7 +19,7 @@ obj["var"] = "isKeyword";
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 obj.foo = "isValid";
 
 obj["const"] = "isKeyword";
@@ -26,7 +28,7 @@ obj["var"] = "isKeyword";
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install @babel/plugin-transform-member-expression-literals --save-dev
 ```
 
@@ -34,7 +36,7 @@ npm install @babel/plugin-transform-member-expression-literals --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-member-expression-literals"]
 }
@@ -42,15 +44,14 @@ npm install @babel/plugin-transform-member-expression-literals --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-member-expression-literals script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-member-expression-literals"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-transform-member-expression-literals"],
 });
 ```
-

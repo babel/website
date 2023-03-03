@@ -1,41 +1,29 @@
-.tools-button {
-  display: inline-block;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  font-size: 14px;
-  padding: 6px 12px;
-  cursor: pointer;
-  background-color: white !important;
-  border-radius: 4px;
-}
-
-.tools-group a:link {
-  text-decoration: none !important;
-}
-
 .step-no {
   display: block;
   float: left;
   width: 30px;
   height: 30px;
   line-height: 30px;
+  color: var(--ifm-color-primary-contrast-background);
   font-size: 16px;
   font-weight: bold;
   text-align: center;
   border-radius: 20px;
-  background-color: #f5da55;
+  background-color: var(--ifm-color-primary);
   margin-right: 10px;
 }
 
 .step .step-setup h2 {
-  color: #323330;
   font-size: 22px;
   font-weight: bold;
   text-align: left;
   overflow: hidden;
   line-height: 30px;
   padding: 0;
+}
+
+.step .step-setup + .step-setup {
+  margin-top: var(--ifm-list-item-margin);
 }
 
 .step .step-setup p {
@@ -55,10 +43,7 @@
 }
 
 .tools-group .active {
-  background-color: #e6e6e6 !important;
-  border-color: #adadad;
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  outline: 0;
+  color: var(--ifm-color-primary);
 }
 
 .step-hidden .items {

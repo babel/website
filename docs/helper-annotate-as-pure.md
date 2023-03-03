@@ -1,16 +1,16 @@
 ---
 id: babel-helper-annotate-as-pure
-title: @babel/helper-annotate-as-pure
+title: "@babel/helper-annotate-as-pure"
 sidebar_label: helper-annotate-as-pure
 ---
 
-```js
+```js title="JavaScript"
 declare export default annotateAsPure(nodeOrPath: Node | NodePath);
 ```
 
 ## Usage
 
-```js
+```js title="JavaScript"
 import traverse from "@babel/traverse";
 import annotateAsPure from "@babel/helper-annotate-as-pure";
 
@@ -31,13 +31,13 @@ For example, using the `Usage` snippet above:
 
 **In**
 
-```js
+```js title="JavaScript"
 const four = /* foo */ add(2, 2);
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 const four = /* #__PURE__ */ /* foo */ add(2, 2);
 ```
 

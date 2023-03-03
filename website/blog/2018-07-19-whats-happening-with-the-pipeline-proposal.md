@@ -44,19 +44,19 @@ The downside is the complexity involved in introducing a new token. The hash (`#
 
 The initial introduction of the pipeline included this syntax for `await`:
 
-```js
+```js title="JavaScript"
 x |> await f
 ```
 
 which would desugar to
 
-```js
+```js title="JavaScript"
 await f(x)
 ```
 
 Unfortunately, users may expect this alternative desugaring:
 
-```js
+```js title="JavaScript"
 (await f)(x)
 ```
 
@@ -76,7 +76,7 @@ On the question of placeholders, F# Pipelines argue they're not needed. In the b
 
 As currently specced, arrow functions are required to be wrapped in parentheses:
 
-```js
+```js title="JavaScript"
 let person = { score: 25 };
 
 let newScore = person.score
@@ -89,19 +89,19 @@ Exploration is underway to determine whether it would be feasible to enable arro
 
 On the question of async, F# Pipelines treat `await` similar to a unary function:
 
-```js
+```js title="JavaScript"
 promise |> await
 ```
 
 This would desugar to:
 
-```js
+```js title="JavaScript"
 await promise
 ```
 
 and can thus be used in the middle of larger function chains with async:
 
-```js
+```js title="JavaScript"
 promise
   |> await
   |> (x => doubleSay(x, ', '))
@@ -119,7 +119,7 @@ The special casing of `await` could potentially enable other unary operators to 
 
 Smart Pipelines takes the idea of the placeholder to its logical conclusion, enabling it to manage partial application as well as arbitrary expressions in a pipeline. The above long chain would be written thus:
 
-```js
+```js title="JavaScript"
 promise
   |> await #
   |> doubleSay(#, ', ')
@@ -133,7 +133,7 @@ promise
 
 Smart Pipelines have a few rules for the placeholder. If a bare identifier is provided to a step in the pipeline, no token is necessary, called ["bare style"](https://github.com/js-choi/proposal-smart-pipelines/blob/master/readme.md#bare-style):
 
-```js
+```js title="JavaScript"
 x |> a;
 x |> f.b;
 ```
@@ -142,7 +142,7 @@ Unlike Hack, unary functions don't require a placeholder token.
 
 For other expressions, a placeholder (called a "lexical topic token") is required, and the code will throw an early SyntaxError if it is not included in ["topic style"](https://github.com/js-choi/proposal-smart-pipelines/blob/master/readme.md#topic-style):
 
-```js
+```js title="JavaScript"
 10 |> # + 1;
 promise |> await #;
 ```

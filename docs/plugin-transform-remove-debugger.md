@@ -1,25 +1,25 @@
 ---
 id: babel-plugin-transform-remove-debugger
 title: babel-plugin-transform-remove-debugger
-sidebar_label: transform-remove-debugger
+sidebar_label: remove-debugger
 ---
 
 ## Example
 
 **In**
 
-```javascript
+```js title="JavaScript"
 debugger;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-transform-remove-debugger --save-dev
 ```
 
@@ -27,7 +27,7 @@ npm install babel-plugin-transform-remove-debugger --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["transform-remove-debugger"]
 }
@@ -35,15 +35,14 @@ npm install babel-plugin-transform-remove-debugger --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins transform-remove-debugger script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["transform-remove-debugger"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["transform-remove-debugger"],
 });
 ```
-

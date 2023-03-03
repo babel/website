@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-class-properties
-title: @babel/plugin-syntax-class-properties
+title: "@babel/plugin-syntax-class-properties"
 sidebar_label: syntax-class-properties
 ---
 
@@ -10,7 +10,7 @@ sidebar_label: syntax-class-properties
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-class-properties
 ```
 
@@ -18,7 +18,7 @@ npm install --save-dev @babel/plugin-syntax-class-properties
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-class-properties"]
 }
@@ -26,14 +26,14 @@ npm install --save-dev @babel/plugin-syntax-class-properties
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-class-properties script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-class-properties"]
 });
 ```

@@ -1,28 +1,28 @@
 ---
 id: babel-plugin-transform-minify-booleans
 title: babel-plugin-transform-minify-booleans
-sidebar_label: transform-minify-booleans
+sidebar_label: minify-booleans
 ---
 
 ## Example
 
 **In**
 
-```javascript
+```js title="JavaScript"
 true;
 false;
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 !0;
 !1;
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install babel-plugin-transform-minify-booleans --save-dev
 ```
 
@@ -30,7 +30,7 @@ npm install babel-plugin-transform-minify-booleans --save-dev
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["transform-minify-booleans"]
 }
@@ -38,15 +38,14 @@ npm install babel-plugin-transform-minify-booleans --save-dev
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins transform-minify-booleans script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["transform-minify-booleans"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["transform-minify-booleans"],
 });
 ```
-

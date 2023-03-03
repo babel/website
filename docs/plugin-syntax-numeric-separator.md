@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-numeric-separator
-title: @babel/plugin-syntax-numeric-separator
+title: "@babel/plugin-syntax-numeric-separator"
 sidebar_label: syntax-numeric-separator
 ---
 
@@ -10,7 +10,7 @@ sidebar_label: syntax-numeric-separator
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-numeric-separator
 ```
 
@@ -18,7 +18,7 @@ npm install --save-dev @babel/plugin-syntax-numeric-separator
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-numeric-separator"]
 }
@@ -26,14 +26,14 @@ npm install --save-dev @babel/plugin-syntax-numeric-separator
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-numeric-separator script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-numeric-separator"]
 });
 ```

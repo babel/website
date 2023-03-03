@@ -4,7 +4,7 @@ title: babel-helper-remove-or-void
 sidebar_label: babel-helper-remove-or-void
 ---
 
-```sh
+```shell npm2yarn
 npm install babel-helper-remove-or-void --save-dev
 ```
 

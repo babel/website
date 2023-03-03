@@ -1,10 +1,12 @@
-```js
+```js title="JavaScript"
 var gulp = require("gulp");
 var babel = require("gulp-babel");
 
 gulp.task("default", function () {
   return gulp.src("src/app.js")
-    .pipe(babel())
+    .pipe(babel({
+      presets: ["@babel/preset-env"]
+    }))
     .pipe(gulp.dest("dist"));
 });
 ```
@@ -13,7 +15,7 @@ gulp.task("default", function () {
 
 Use [gulp-sourcemaps](https://github.com/floridoo/gulp-sourcemaps) like this:
 
-```js
+```js title="JavaScript"
 var gulp = require("gulp");
 var sourcemaps = require("gulp-sourcemaps");
 var babel = require("gulp-babel");
@@ -29,7 +31,7 @@ gulp.task("default", function () {
 });
 ```
 
-<blockquote class="babel-callout babel-callout-info">
+<blockquote class="alert alert--info">
   <p>
     For more information see the <a href="https://github.com/babel/gulp-babel">babel/gulp-babel repo</a>.
   </p>

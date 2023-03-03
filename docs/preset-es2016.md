@@ -1,6 +1,6 @@
 ---
 id: babel-preset-es2016
-title: @babel/preset-es2016
+title: "@babel/preset-es2016"
 sidebar_label: es2016
 ---
 
@@ -9,7 +9,7 @@ sidebar_label: es2016
 
 ## Install
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/preset-es2016
 ```
 
@@ -17,7 +17,7 @@ npm install --save-dev @babel/preset-es2016
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-es2016"]
 }
@@ -25,14 +25,14 @@ npm install --save-dev @babel/preset-es2016
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel script.js --presets @babel/preset-es2016
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-es2016"]
 });
 ```

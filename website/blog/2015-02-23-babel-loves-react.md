@@ -17,9 +17,9 @@ Let me show you just how easy it is to switch:
 
 > **Note:** There are _tons_ of ways to use Babel, I'll only list a few of them
 > here. If you'd like to see a more complete list check out our
-> [Using Babel](/docs/using-babel/) page.
+> [Using Babel](/setup) page.
 
-**In the Browser** ([docs](/docs/usage/browser/))
+**In the Browser** ([docs](/setup#browser/))
 
 Before:
 
@@ -33,39 +33,39 @@ After:
 <script type='text/babel'></script>
 ```
 
-**In Browserify** ([docs](/docs/using-babel/#browserify))
+**In Browserify** ([docs](/setup#browserify))
 
 Before:
 
-```sh
+```sh title="Shell"
 $ browserify -t reactify main.js
 ```
 
 After:
 
-```sh
+```sh title="Shell"
 $ browserify -t babelify main.js
 ```
 
-**In Node** ([docs](/docs/usage/require/))
+**In Node** ([docs](/setup#require/))
 
 Before:
 
-```js
+```js title="JavaScript"
 require('node-jsx').install();
 ```
 
 After:
 
-```js
+```js title="JavaScript"
 require('babel/register');
 ````
 
-**In Webpack** ([docs](/docs/using-babel/#webpack))
+**In Webpack** ([docs](/setup#webpack))
 
 Before:
 
-```js
+```js title="JavaScript"
 loaders: [
   { test: /\.js$/, exclude: /node_modules/, loader: 'jsx-loader'}
 ]
@@ -73,17 +73,17 @@ loaders: [
 
 After:
 
-```js
+```js title="JavaScript"
 loaders: [
   { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
 ]
 ```
 
-**In Gulp** ([docs](/docs/using-babel/#gulp))
+**In Gulp** ([docs](/setup#gulp))
 
 Before:
 
-```js
+```js title="JavaScript"
 gulp.src('views/**/*.js')
     .pipe(jsx())
     .pipe(gulp.dest('dist'));
@@ -91,7 +91,7 @@ gulp.src('views/**/*.js')
 
 After:
 
-```js
+```js title="JavaScript"
 gulp.src('views/**/*.js')
     .pipe(babel())
     .pipe(gulp.dest('dist'));
@@ -101,9 +101,9 @@ gulp.src('views/**/*.js')
 
 The list goes on, but you probably get how simple it is by now. If you didn't
 see the tool you are looking for don't worry we have a full list of them on our
-[Using Babel](/docs/using-babel/) page.
+[Using Babel](/setup) page.
 
-If you need more help getting setup be sure to read our [JSX](/docs/usage/jsx/)
+If you need more help getting setup be sure to read our [JSX](/setup#jsx/)
 docs or come ask other Babel users in our
 [support chat](https://gitter.im/babel/babel).
 

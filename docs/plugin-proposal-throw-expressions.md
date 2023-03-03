@@ -1,20 +1,20 @@
 ---
 id: babel-plugin-proposal-throw-expressions
-title: @babel/plugin-proposal-throw-expressions
-sidebar_label: proposal-throw-expressions
+title: "@babel/plugin-proposal-throw-expressions"
+sidebar_label: throw-expressions
 ---
 
 ## Example
 
-```js
-function test(param = throw new Error('required!')) {
-  const test = param === true || throw new Error('Falsy!');
+```js title="JavaScript"
+function test(param = throw new Error("required!")) {
+  const test = param === true || throw new Error("Falsy!");
 }
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-throw-expressions
 ```
 
@@ -22,7 +22,7 @@ npm install --save-dev @babel/plugin-proposal-throw-expressions
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-throw-expressions"]
 }
@@ -30,19 +30,18 @@ npm install --save-dev @babel/plugin-proposal-throw-expressions
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-throw-expressions script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-proposal-throw-expressions"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-proposal-throw-expressions"],
 });
 ```
 
 ## References
 
-* [Proposal: ECMAScript throw expressions](https://github.com/tc39/proposal-throw-expressions)
-
+- [Proposal: ECMAScript throw expressions](https://github.com/tc39/proposal-throw-expressions)

@@ -1,18 +1,20 @@
 ---
 id: babel-plugin-transform-react-jsx
-title: @babel/plugin-transform-react-jsx
-sidebar_label: transform-react-jsx
+title: "@babel/plugin-transform-react-jsx"
+sidebar_label: React Plugin
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-react`
 
 ## Example
 
 ### React Automatic Runtime
 
-Automatic runtime is a feature available in v7.9.0. With this runtime enabled, the functions that JSX compiles to will be imported automatically.
+Automatic runtime is a feature added in `v7.9.0`. With this runtime enabled, the functions that JSX compiles to will be imported automatically.
 
 **In**
 
-```javascript
+```js title="JavaScript"
 const profile = (
   <div>
     <img src="avatar.png" className="profile" />
@@ -23,9 +25,9 @@ const profile = (
 
 **Out**
 
-```javascript
-import { jsx as _jsx } from "react";
-import { jsxs as _jsxs } from "react";
+```js title="JavaScript"
+import { jsx as _jsx } from "react/jsx-runtime";
+import { jsxs as _jsxs } from "react/jsx-runtime";
 
 const profile = _jsxs("div", {
   children: [
@@ -44,7 +46,7 @@ const profile = _jsxs("div", {
 
 **In**
 
-```javascript
+```js title="JavaScript"
 /** @jsxImportSource custom-jsx-library */
 
 const profile = (
@@ -57,9 +59,9 @@ const profile = (
 
 **Out**
 
-```javascript
-import { jsx as _jsx } from "custom-jsx-library";
-import { jsxs as _jsxs } from "custom-jsx-library";
+```js title="JavaScript"
+import { jsx as _jsx } from "custom-jsx-library/jsx-runtime";
+import { jsxs as _jsxs } from "custom-jsx-library/jsx-runtime";
 
 const profile = _jsxs("div", {
   children: [
@@ -76,7 +78,7 @@ const profile = _jsxs("div", {
 
 **In**
 
-```javascript
+```js title="JavaScript"
 /** @jsxRuntime classic */
 
 const profile = (
@@ -89,7 +91,7 @@ const profile = (
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 const profile = React.createElement(
   "div",
   null,
@@ -104,7 +106,7 @@ If you do not want (or cannot use) auto importing, you can use the classic runti
 
 **In**
 
-```javascript
+```js title="JavaScript"
 const profile = (
   <div>
     <img src="avatar.png" className="profile" />
@@ -115,7 +117,7 @@ const profile = (
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 const profile = React.createElement(
   "div",
   null,
@@ -128,7 +130,7 @@ const profile = React.createElement(
 
 **In**
 
-```javascript
+```js title="JavaScript"
 /** @jsx Preact.h */
 
 import Preact from "preact";
@@ -143,7 +145,7 @@ const profile = (
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 /** @jsx Preact.h */
 
 import Preact from "preact";
@@ -160,12 +162,12 @@ const profile = Preact.h(
 
 [Fragments](https://reactjs.org/docs/fragments.html) are a feature available in React 16.2.0+.
 
-#### React
+#### React Automatic Runtime
 
 **In**
 
-```javascript
-const descriptions = items.map(item => (
+```javascript title="JavaScript"
+const descriptions = items.map((item) => (
   <>
     <dt>{item.name}</dt>
     <dd>{item.value}</dd>
@@ -175,8 +177,42 @@ const descriptions = items.map(item => (
 
 **Out**
 
-```javascript
-const descriptions = items.map(item =>
+```js title="JavaScript"
+import { jsxs as _jsxs } from "react/jsx-runtime";
+import { Fragment as _Fragment } from "react/jsx-runtime";
+import { jsx as _jsx } from "react/jsx-runtime";
+
+const descriptions = items.map((item) =>
+  _jsxs(_Fragment, {
+    children: [
+      _jsx("dt", {
+        children: item.name,
+      }),
+      _jsx("dd", {
+        children: item.value,
+      }),
+    ],
+  })
+);
+```
+
+#### React Classic Runtime
+
+**In**
+
+```javascript title="JavaScript"
+const descriptions = items.map((item) => (
+  <>
+    <dt>{item.name}</dt>
+    <dd>{item.value}</dd>
+  </>
+));
+```
+
+**Out**
+
+```javascript title="JavaScript"
+const descriptions = items.map((item) =>
   React.createElement(
     React.Fragment,
     null,
@@ -190,13 +226,13 @@ const descriptions = items.map(item =>
 
 **In**
 
-```javascript
+```js title="JavaScript"
 /** @jsx Preact.h */
 /** @jsxFrag Preact.Fragment */
 
 import Preact from "preact";
 
-var descriptions = items.map(item => (
+var descriptions = items.map((item) => (
   <>
     <dt>{item.name}</dt>
     <dd>{item.value}</dd>
@@ -206,13 +242,13 @@ var descriptions = items.map(item => (
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 /** @jsx Preact.h */
 /** @jsxFrag Preact.Fragment */
 
 import Preact from "preact";
 
-var descriptions = items.map(item =>
+var descriptions = items.map((item) =>
   Preact.h(
     Preact.Fragment,
     null,
@@ -226,7 +262,7 @@ Note that if a custom pragma is specified, then a custom fragment pragma must al
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-react-jsx
 ```
 
@@ -236,7 +272,7 @@ npm install --save-dev @babel/plugin-transform-react-jsx
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-react-jsx"]
 }
@@ -244,7 +280,7 @@ Without options:
 
 With options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [
@@ -261,14 +297,14 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-react-jsx script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-react-jsx"],
 });
 ```
@@ -293,6 +329,8 @@ Though the JSX spec allows this, it is disabled by default since React's JSX doe
 
 `classic | automatic`, defaults to `classic`
 
+Added in: `v7.9.0`
+
 Decides which runtime to use.
 
 `automatic` auto imports the functions that JSX transpiles to. `classic` does not automatically import anything.
@@ -303,6 +341,8 @@ Decides which runtime to use.
 
 `string`, defaults to `react`.
 
+Added in: `v7.9.0`
+
 Replaces the import source when importing functions.
 
 ### React Classic Runtime
@@ -311,7 +351,7 @@ Replaces the import source when importing functions.
 
 `string`, defaults to `React.createElement`.
 
-Replace the function used when compiling JSX expressions.
+Replace the function used when compiling JSX expressions. It should be a qualified name (e.g. `React.createElement`) or an identifier (e.g. `createElement`).
 
 Note that the `@jsx React.DOM` pragma has been deprecated as of React v0.12
 
@@ -319,7 +359,7 @@ Note that the `@jsx React.DOM` pragma has been deprecated as of React v0.12
 
 `string`, defaults to `React.Fragment`.
 
-Replace the component used when compiling JSX fragments.
+Replace the component used when compiling JSX fragments. It should be a valid JSX tag name.
 
 ### `useBuiltIns`
 

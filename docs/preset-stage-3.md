@@ -1,6 +1,6 @@
 ---
 id: babel-preset-stage-3
-title: @babel/preset-stage-3
+title: "@babel/preset-stage-3"
 sidebar_label: stage-3
 ---
 
@@ -21,7 +21,7 @@ The gist of Stage 3 is:
 
 ## Install
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/preset-stage-3
 ```
 
@@ -29,7 +29,7 @@ npm install --save-dev @babel/preset-stage-3
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-stage-3"]
 }
@@ -37,14 +37,14 @@ npm install --save-dev @babel/preset-stage-3
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel script.js --presets @babel/preset-stage-3
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-stage-3"]
 });
 ```

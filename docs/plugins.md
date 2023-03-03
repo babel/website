@@ -3,210 +3,53 @@ id: plugins
 title: Plugins
 ---
 
-Babel is a compiler (source code => output code). Like many other compilers it runs in 3 stages: parsing, transforming, and printing.
+Babel's code transformations are enabled by applying plugins (or [presets](presets.md)) to your [configuration file](config-files.md).
 
-Now, out of the box Babel doesn't do anything. It basically acts like `const babel = code => code;` by parsing the code and then generating the same code back out again. You will need to add plugins for Babel to do anything.
+<div id="pluginpreset-paths"></div>
 
-Instead of individual plugins, you can also enable a set of plugins in a [preset](presets.md).
+## Using a Plugin
 
-## Transform Plugins
+If the plugin is on [npm](https://www.npmjs.com/search?q=babel-plugin), you can pass in the name of the plugin and Babel will check that it's installed in `node_modules`. This is added to the [plugins](options.md#presets) config option, which takes an array.
 
-These plugins apply transformations to your code.
-
-<blockquote class="babel-callout babel-callout-info">
-  <p>
-    Transform plugins will enable the corresponding syntax plugin so you don't have to specify both.
-  </p>
-</blockquote>
-
-### ES3
-
-- [member-expression-literals](plugin-transform-member-expression-literals.md)
-- [property-literals](plugin-transform-property-literals.md)
-- [reserved-words](plugin-transform-reserved-words.md)
-
-### ES5
-
-- [property-mutators](plugin-transform-property-mutators.md)
-
-### ES2015
-
-- [arrow-functions](plugin-transform-arrow-functions.md)
-- [block-scoped-functions](plugin-transform-block-scoped-functions.md)
-- [block-scoping](plugin-transform-block-scoping.md)
-- [classes](plugin-transform-classes.md)
-- [computed-properties](plugin-transform-computed-properties.md)
-- [destructuring](plugin-transform-destructuring.md)
-- [duplicate-keys](plugin-transform-duplicate-keys.md)
-- [for-of](plugin-transform-for-of.md)
-- [function-name](plugin-transform-function-name.md)
-- [instanceof](plugin-transform-instanceof.md)
-- [literals](plugin-transform-literals.md)
-- [new-target](plugin-transform-new-target.md)
-- [object-super](plugin-transform-object-super.md)
-- [parameters](plugin-transform-parameters.md)
-- [shorthand-properties](plugin-transform-shorthand-properties.md)
-- [spread](plugin-transform-spread.md)
-- [sticky-regex](plugin-transform-sticky-regex.md)
-- [template-literals](plugin-transform-template-literals.md)
-- [typeof-symbol](plugin-transform-typeof-symbol.md)
-- [unicode-escapes](plugin-transform-unicode-escapes.md)
-- [unicode-regex](plugin-transform-unicode-regex.md)
-
-### ES2016
-
-- [exponentiation-operator](plugin-transform-exponentiation-operator.md)
-
-### ES2017
-
-- [async-to-generator](plugin-transform-async-to-generator.md)
-
-### ES2018
-
-- [async-generator-functions](plugin-proposal-async-generator-functions.md)
-- [dotall-regex](plugin-transform-dotall-regex.md)
-- [named-capturing-groups-regex](plugin-transform-named-capturing-groups-regex.md)
-- [object-rest-spread](plugin-proposal-object-rest-spread.md)
-- [optional-catch-binding](plugin-proposal-optional-catch-binding.md)
-- [unicode-property-regex](plugin-proposal-unicode-property-regex.md)
-
-### Modules
-
-- [modules-amd](plugin-transform-modules-amd.md)
-- [modules-commonjs](plugin-transform-modules-commonjs.md)
-- [modules-systemjs](plugin-transform-modules-systemjs.md)
-- [modules-umd](plugin-transform-modules-umd.md)
-
-### Experimental
-
-- [class-properties](plugin-proposal-class-properties.md)
-- [decorators](plugin-proposal-decorators.md)
-- [do-expressions](plugin-proposal-do-expressions.md)
-- [export-default-from](plugin-proposal-export-default-from.md)
-- [export-namespace-from](plugin-proposal-export-namespace-from.md)
-- [function-bind](plugin-proposal-function-bind.md)
-- [function-sent](plugin-proposal-function-sent.md)
-- [logical-assignment-operators](plugin-proposal-logical-assignment-operators.md)
-- [nullish-coalescing-operator](plugin-proposal-nullish-coalescing-operator.md)
-- [numeric-separator](plugin-proposal-numeric-separator.md)
-- [optional-chaining](plugin-proposal-optional-chaining.md)
-- [partial-application](plugin-proposal-partial-application.md)
-- [pipeline-operator](plugin-proposal-pipeline-operator.md)
-- [private-methods](plugin-proposal-private-methods.md)
-- [throw-expressions](plugin-proposal-throw-expressions.md)
-- [private-property-in-object](plugin-proposal-private-property-in-object.md)
-
-### Minification
-
-Check out our [minifier based on Babel](https://github.com/babel/minify)!
-
-These plugins are in the minify repo.
-
-- [inline-consecutive-adds](plugin-transform-inline-consecutive-adds.md)
-- [inline-environment-variables](plugin-transform-inline-environment-variables.md)
-- [member-expression-literals](plugin-transform-member-expression-literals.md)
-- [merge-sibling-variables](plugin-transform-merge-sibling-variables.md)
-- [minify-booleans](plugin-transform-minify-booleans.md)
-- [minify-builtins](plugin-minify-builtins.md)
-- [minify-constant-folding](plugin-minify-constant-folding.md)
-- [minify-dead-code-elimination](plugin-minify-dead-code-elimination.md)
-- [minify-flip-comparisons](plugin-minify-flip-comparisons.md)
-- [minify-guarded-expressions](plugin-minify-guarded-expressions.md)
-- [minify-infinity](plugin-minify-infinity.md)
-- [minify-mangle-names](plugin-minify-mangle-names.md)
-- [minify-numeric-literals](plugin-minify-numeric-literals.md)
-- [minify-replace](plugin-minify-replace.md)
-- [minify-simplify](plugin-minify-simplify.md)
-- [minify-type-constructors](plugin-minify-type-constructors.md)
-- [node-env-inline](plugin-transform-node-env-inline.md)
-- [property-literals](plugin-transform-property-literals.md)
-- [regexp-constructors](plugin-transform-regexp-constructors.md)
-- [remove-console](plugin-transform-remove-console.md)
-- [remove-debugger](plugin-transform-remove-debugger.md)
-- [remove-undefined](plugin-transform-remove-undefined.md)
-- [simplify-comparison-operators](plugin-transform-simplify-comparison-operators.md)
-- [undefined-to-void](plugin-transform-undefined-to-void.md)
-
-### React
-
-- [react-constant-elements](plugin-transform-react-constant-elements.md)
-- [react-display-name](plugin-transform-react-display-name.md)
-- [react-inline-elements](plugin-transform-react-inline-elements.md)
-- [react-jsx](plugin-transform-react-jsx.md)
-- [react-jsx-compat](plugin-transform-react-jsx-compat.md)
-- [react-jsx-self](plugin-transform-react-jsx-self.md)
-- [react-jsx-source](plugin-transform-react-jsx-source.md)
-
-### Other
-
-- [external-helpers](plugin-external-helpers.md)
-- [flow-strip-types](plugin-transform-flow-strip-types.md)
-- [jscript](plugin-transform-jscript.md)
-- [object-assign](plugin-transform-object-assign.md)
-- [object-set-prototype-of-to-assign](plugin-transform-object-set-prototype-of-to-assign.md)
-- [proto-to-assign](plugin-transform-proto-to-assign.md)
-- [regenerator](plugin-transform-regenerator.md)
-- [runtime](plugin-transform-runtime.md)
-- [strict-mode](plugin-transform-strict-mode.md)
-- [typescript](plugin-transform-typescript.md)
-
-## Syntax Plugins
-
-These plugins only allow Babel to **parse** specific types of syntax (not transform).
-
-> NOTE: transform plugins automatically enable the syntax plugins. So you don't need to specify the syntax plugin if the corresponding transform plugin is used already.
-
-Alternatively, you can also provide any [`plugins` option](parser.md#plugins) from the Babel parser:
-
-Your `.babelrc`:
-
-```json
+```json title="babel.config.json"
 {
-  "parserOpts": {
-    "plugins": ["jsx", "flow"]
-  }
-}
-```
-
-## Plugin/Preset Paths
-
-If the plugin is on npm, you can pass in the name of the plugin and babel will check that it's installed in `node_modules`
-
-```json
-{
-  "plugins": ["babel-plugin-myPlugin"]
+  "plugins": ["babel-plugin-myPlugin", "@babel/plugin-transform-runtime"]
 }
 ```
 
 You can also specify an relative/absolute path to your plugin.
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["./node_modules/asdf/plugin"]
 }
 ```
 
-### Plugin Shorthand
+See [name normalization](options.md#name-normalization) for more specifics on configuring the path of a plugin or preset.
 
-If the name of the package is prefixed with `babel-plugin-`, you can use a shorthand:
+## Transform Plugins
 
-```js
+These plugins apply transformations to your code.
+
+:::info
+Transform plugins will enable the corresponding syntax plugin so you don't have to specify both.
+:::
+
+## Syntax Plugins
+
+Most syntax is transformable by Babel. In rarer cases (if the transform isn't implemented yet, or there isn't a default way to do so), you can use plugins such as `@babel/plugin-syntax-bigint` to only allow Babel to **parse** specific types of syntax. Or you want to preserve the source code because you only want Babel to do code analysis or codemods.
+
+> NOTE: You don't need to specify the syntax plugin if the corresponding transform plugin is used already, since it enables it automatically.
+
+Alternatively, you can also provide any [`plugins` option](parser.md#plugins) from the Babel parser:
+
+Your `.babelrc`:
+
+```json title="JSON"
 {
-  "plugins": [
-    "myPlugin",
-    "babel-plugin-myPlugin" // equivalent
-  ]
-}
-```
-
-This also works with scoped packages:
-
-```js
-{
-  "plugins": [
-    "@org/babel-plugin-name",
-    "@org/name" // equivalent
-  ]
+  "parserOpts": {
+    "plugins": ["jsx", "flow"]
+  }
 }
 ```
 
@@ -222,7 +65,7 @@ This means if two transforms both visit the "Program" node, the transforms will 
 
 For example:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["transform-decorators-legacy", "transform-class-properties"]
 }
@@ -232,7 +75,7 @@ Will run `transform-decorators-legacy` then `transform-class-properties`.
 
 It is important to remember that with presets, the order is _reversed_. The following:
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
@@ -246,7 +89,7 @@ Both plugins and presets can have options specified by wrapping the name and an 
 
 For specifying no options, these are all equivalent:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["pluginA", ["pluginA"], ["pluginA", {}]]
 }
@@ -254,7 +97,7 @@ For specifying no options, these are all equivalent:
 
 To specify an option, pass an object with the keys as the option names.
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     [
@@ -270,7 +113,7 @@ To specify an option, pass an object with the keys as the option names.
 
 Settings options for presets works exactly the same:
 
-```json
+```json title="babel.config.json"
 {
   "presets": [
     [
@@ -291,7 +134,7 @@ to learn how to create your own plugins.
 
 The simple plugin that reverses names (from the homepage):
 
-```js
+```js title="JavaScript"
 export default function() {
   return {
     visitor: {

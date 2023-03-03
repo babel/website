@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-flow-comments
-title: @babel/plugin-transform-flow-comments
-sidebar_label: transform-flow-comments
+title: "@babel/plugin-transform-flow-comments"
+sidebar_label: flow-comments
 ---
 
 You should be able to use this plugin instead of `@babel/plugin-flow-strip-types` to preserve the `/* @flow */` directive and still use flow.
@@ -12,21 +12,21 @@ You should be able to use this plugin instead of `@babel/plugin-flow-strip-types
 
 **In**
 
-```javascript
+```js title="JavaScript"
 function foo(bar?) {}
 function foo2(bar?: string) {}
 function foo(x: number): string {}
 type B = {
-  name: string;
+  name: string,
 };
 export type GraphQLFormattedError = number;
-import type A, { B, C } from './types';
-import typeof D, { E, F } from './types';
+import type A, { B, C } from "./types";
+import typeof D, { E, F } from "./types";
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 "use strict";
 
 function foo(bar /*:: ?*/) {}
@@ -42,7 +42,7 @@ function foo(x /*: number*/) /*: string*/ {}
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-flow-comments
 ```
 
@@ -50,7 +50,7 @@ npm install --save-dev @babel/plugin-transform-flow-comments
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-flow-comments"]
 }
@@ -58,15 +58,14 @@ npm install --save-dev @babel/plugin-transform-flow-comments
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-flow-comments script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-flow-comments"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-transform-flow-comments"],
 });
 ```
-

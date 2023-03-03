@@ -3,22 +3,14 @@ title: Learn ES2015
 id: learn
 ---
 
-<blockquote class="babel-callout babel-callout-info">
-  <h3>es6features</h3>
-  <p>
-    This document was originally taken from Luke Hoban's excellent
-    <a href="https://git.io/es6features">es6features</a> repo. Go give it a star
-    on GitHub!
-  </p>
-</blockquote>
+:::info es6features
+This document was originally taken from Luke Hoban's excellent <a href="https://git.io/es6features">es6features</a> repo. Go give it a star
+on GitHub!
+:::
 
-<blockquote class="babel-callout babel-callout-info">
-  <h4>REPL</h4>
-  <p>
-    Be sure to try these features out in the online
-    <a href="/repl">REPL</a>.
-  </p>
-</blockquote>
+:::info REPL
+Be sure to try these features out in the online <a href="/repl">REPL</a>.
+:::
 
 ## Introduction
 
@@ -42,7 +34,7 @@ both expression and statement bodies.  Unlike functions, arrows share the same
 lexical `this` as their surrounding code. If an arrow is inside another function,
 it shares the "arguments" variable of its parent function.
 
-```js
+```js title="JavaScript"
 // Expression bodies
 var odds = evens.map(v => v + 1);
 var nums = evens.map((v, i) => v + i);
@@ -87,7 +79,7 @@ single convenient declarative form makes class patterns easier to use, and
 encourages interoperability.  Classes support prototype-based inheritance, super
 calls, instance and static methods and constructors.
 
-```js
+```js title="JavaScript"
 class SkinnedMesh extends THREE.Mesh {
   constructor(geometry, materials) {
     super(geometry, materials);
@@ -115,7 +107,7 @@ Together, these also bring object literals and class declarations closer
 together, and let object-based design benefit from some of the same
 conveniences.
 
-```js
+```js title="JavaScript"
 var obj = {
     // Sets the prototype. "__proto__" or '__proto__' would also work.
     __proto__: theProtoObj,
@@ -134,11 +126,9 @@ var obj = {
 };
 ```
 
-<blockquote class="babel-callout babel-callout-warning">
-  <p>
-    The <code>__proto__</code> property requires native support, and was deprecated in previous ECMAScript versions. Most engines now support the property, but <a href="https://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>. Also, note that only <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">web browsers</a> are required to implement it, as it's in <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">Annex B</a>. It is available in Node.
-  </p>
-</blockquote>
+:::caution
+The <code>__proto__</code> property requires native support, and was deprecated in previous ECMAScript versions. Most engines now support the property, but <a href="https://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>. Also, note that only <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">web browsers</a> are required to implement it, as it's in <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">Annex B</a>. It is available in Node.
+:::
 
 ### Template Strings
 
@@ -148,7 +138,7 @@ tag can be added to allow the string construction to be customized, avoiding
 injection attacks or constructing higher level data structures from string
 contents.
 
-```js
+```js title="JavaScript"
 // Basic literal string creation
 `This is a pretty little template string.`
 
@@ -177,7 +167,7 @@ Destructuring allows binding using pattern matching, with support for matching
 arrays and objects.  Destructuring is fail-soft, similar to standard object
 lookup `foo["bar"]`, producing `undefined` values when not found.
 
-```js
+```js title="JavaScript"
 // list matching
 var [a, ,b] = [1,2,3];
 a === 1;
@@ -218,21 +208,21 @@ Callee-evaluated default parameter values. Turn an array into consecutive
 arguments in a function call. Bind trailing parameters to an array. Rest
 replaces the need for `arguments` and addresses common cases more directly.
 
-```js
+```js title="JavaScript"
 function f(x, y=12) {
   // y is 12 if not passed (or passed as undefined)
   return x + y;
 }
 f(3) == 15
 ```
-```js
+```js title="JavaScript"
 function f(x, ...y) {
   // y is an Array
   return x * y.length;
 }
 f(3, "hello", true) == 6
 ```
-```js
+```js title="JavaScript"
 function f(x, y, z) {
   return x + y + z;
 }
@@ -246,7 +236,7 @@ Block-scoped binding constructs. `let` is the new `var`. `const` is
 single-assignment. Static restrictions prevent use before assignment.
 
 
-```js
+```js title="JavaScript"
 function f() {
   {
     let x;
@@ -271,7 +261,7 @@ Iterable. Generalize `for..in` to custom iterator-based iteration with
 `for..of`. Don’t require realizing an array, enabling lazy design patterns like
 LINQ.
 
-```js
+```js title="JavaScript"
 let fibonacci = {
   [Symbol.iterator]() {
     let pre = 0, cur = 1;
@@ -308,12 +298,9 @@ interface Iterable {
 }
 ```
 
-<blockquote class="babel-callout babel-callout-info">
-  <h4>Support via polyfill</h4>
-  <p>
-    In order to use Iterators you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
-  </p>
-</blockquote>
+:::info Support via polyfill
+In order to use Iterators you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+:::
 
 ### Generators
 
@@ -325,7 +312,7 @@ value (or throws).
 
 Note: Can also be used to enable ‘await’-like async programming, see also ES7 `await` [proposal](https://github.com/lukehoban/ecmascript-asyncawait).
 
-```js
+```js title="JavaScript"
 var fibonacci = {
   [Symbol.iterator]: function*() {
     var pre = 0, cur = 1;
@@ -356,12 +343,9 @@ interface Generator extends Iterator {
 }
 ```
 
-<blockquote class="babel-callout babel-callout-info">
-  <h4>Support via polyfill</h4>
-  <p>
-    In order to use Generators you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
-  </p>
-</blockquote>
+:::info Support via polyfill
+In order to use Generators you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+:::
 
 ### Comprehensions
 
@@ -374,7 +358,7 @@ form in strings and new RegExp `u` mode to handle code points, as well as new
 APIs to process strings at the 21bit code points level.  These additions support
 building global apps in JavaScript.
 
-```js
+```js title="JavaScript"
 // same as ES5.1
 "𠮷".length == 2
 
@@ -401,19 +385,19 @@ from popular JavaScript module loaders (AMD, CommonJS). Runtime behaviour
 defined by a host-defined default loader. Implicitly async model – no code
 executes until requested modules are available and processed.
 
-```js
+```js title="JavaScript"
 // lib/math.js
 export function sum(x, y) {
   return x + y;
 }
 export var pi = 3.141593;
 ```
-```js
+```js title="JavaScript"
 // app.js
 import * as math from "lib/math";
 console.log("2π = " + math.sum(math.pi, math.pi));
 ```
-```js
+```js title="JavaScript"
 // otherApp.js
 import {sum, pi} from "lib/math";
 console.log("2π = " + sum(pi, pi));
@@ -421,7 +405,7 @@ console.log("2π = " + sum(pi, pi));
 
 Some additional features include `export default` and `export *`:
 
-```js
+```js title="JavaScript"
 // lib/mathplusplus.js
 export * from "lib/math";
 export var e = 2.71828182846;
@@ -429,29 +413,23 @@ export default function(x) {
     return Math.exp(x);
 }
 ```
-```js
+```js title="JavaScript"
 // app.js
 import exp, {pi, e} from "lib/mathplusplus";
 console.log("e^π = " + exp(pi));
 ```
 
-<blockquote class="babel-callout babel-callout-info">
-  <h4>Module Formatters</h4>
-  <p>
-    Babel can transpile ES2015 Modules to several different formats including
-    Common.js, AMD, System, and UMD. You can even create your own. For more
-    details see the <a href="/docs/plugins/">modules docs</a>.
-  </p>
-</blockquote>
+:::info Module Formatters
+Babel can transpile ES2015 Modules to several different formats including
+Common.js, AMD, System, and UMD. You can even create your own. For more
+details see the <a href="/docs/plugins/">modules docs</a>.
+:::
 
 ### Module Loaders
 
-<blockquote class="babel-callout babel-callout-warning">
-  <h4>Not part of ES2015</h4>
-  <p>
-    This is left as implementation-defined within the ECMAScript 2015 specification. The eventual standard will be in WHATWG's <a href="https://whatwg.github.io/loader/">Loader specification</a>, but that is currently a work in progress. What is below is from a previous ES2015 draft.
-  </p>
-</blockquote>
+:::caution Not part of ES2015
+This is left as implementation-defined within the ECMAScript 2015 specification. The eventual standard will be in WHATWG's <a href="https://whatwg.github.io/loader/">Loader specification</a>, but that is currently a work in progress. What is below is from a previous ES2015 draft.
+:::
 
 Module loaders support:
 
@@ -464,7 +442,7 @@ Module loaders support:
 The default module loader can be configured, and new loaders can be constructed
 to evaluate and load code in isolated or constrained contexts.
 
-```js
+```js title="JavaScript"
 // Dynamic loading – ‘System’ is default loader
 System.import("lib/math").then(function(m) {
   alert("2π = " + m.sum(m.pi, m.pi));
@@ -481,23 +459,14 @@ System.get("jquery");
 System.set("jquery", Module({$: $})); // WARNING: not yet finalized
 ```
 
-<blockquote class="babel-callout babel-callout-warning">
-  <h4>Additional polyfill needed</h4>
-  <p>
-    Since Babel defaults to using common.js modules, it does not include the
-    polyfill for the module loader API. Get it
-    <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
-  </p>
-</blockquote>
+:::caution Additional polyfill needed
+Since Babel defaults to using common.js modules, it does not include the
+polyfill for the module loader API. Get it <a href="https://github.com/ModuleLoader/es6-module-loader">here</a>.
+:::
 
-<blockquote class="babel-callout babel-callout-info">
-  <h4>Using Module Loader</h4>
-  <p>
-    In order to use this, you'll need to tell Babel to use the
-    <code>system</code> module formatter. Also be sure to check out
-    <a href="https://github.com/systemjs/systemjs">System.js</a>
-  </p>
-</blockquote>
+:::info Using Module Loader
+In order to use this, you'll need to tell Babel to use the <code>system</code> module formatter. Also be sure to check out <a href="https://github.com/systemjs/systemjs">System.js</a>.
+:::
 
 
 ### Map + Set + WeakMap + WeakSet
@@ -505,7 +474,7 @@ System.set("jquery", Module({$: $})); // WARNING: not yet finalized
 Efficient data structures for common algorithms.  WeakMaps provides leak-free
 object-key’d side tables.
 
-```js
+```js title="JavaScript"
 // Sets
 var s = new Set();
 s.add("hello").add("goodbye").add("hello");
@@ -529,12 +498,9 @@ ws.add({ data: 42 });
 // Because the added object has no other references, it will not be held in the set
 ```
 
-<blockquote class="babel-callout babel-callout-info">
-  <h4>Support via polyfill</h4>
-  <p>
-    In order to support Maps, Sets, WeakMaps, and WeakSets in all environments you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
-  </p>
-</blockquote>
+:::info Support via polyfill
+In order to support Maps, Sets, WeakMaps, and WeakSets in all environments you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+:::
 
 ### Proxies
 
@@ -542,7 +508,7 @@ Proxies enable creation of objects with the full range of behaviors available to
 host objects.  Can be used for interception, object virtualization,
 logging/profiling, etc.
 
-```js
+```js title="JavaScript"
 // Proxying a normal object
 var target = {};
 var handler = {
@@ -555,7 +521,7 @@ var p = new Proxy(target, handler);
 p.world === "Hello, world!";
 ```
 
-```js
+```js title="JavaScript"
 // Proxying a function object
 var target = function () { return "I am the target"; };
 var handler = {
@@ -570,7 +536,7 @@ p() === "I am the proxy";
 
 There are traps available for all of the runtime-level meta-operations:
 
-```js
+```js title="JavaScript"
 var handler =
 {
   // target.prop
@@ -605,12 +571,9 @@ var handler =
 }
 ```
 
-<blockquote class="babel-callout babel-callout-danger">
-  <h4>Unsupported feature</h4>
-  <p>
-    Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="https://kangax.github.io/compat-table/es6/#test-Proxy">various JavaScript engines</a>.
-  </p>
-</blockquote>
+:::danger Unsupported feature
+Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="https://kangax.github.io/compat-table/es6/#test-Proxy">various JavaScript engines</a>.
+:::
 
 ### Symbols
 
@@ -620,7 +583,7 @@ type. Optional `name` parameter used in debugging - but is not part of identity.
 Symbols are unique (like gensym), but not private since they are exposed via
 reflection features like `Object.getOwnPropertySymbols`.
 
-```js
+```js title="JavaScript"
 (function() {
 
   // module scoped symbol
@@ -644,18 +607,15 @@ var c = new MyClass("hello")
 c["key"] === undefined
 ```
 
-<blockquote class="babel-callout babel-callout-info">
-  <h4>Limited support via polyfill</h4>
-  <p>
-    Limited support requires the Babel <a href="/docs/usage/polyfill">polyfill</a>. Due to language limitations, some features can't be transpiled or polyfilled. See core.js's <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">caveats section</a> for more details.
-  </p>
-</blockquote>
+:::info Limited support via polyfill
+Limited support requires the Babel <a href="/docs/babel-polyfill">polyfill</a>. Due to language limitations, some features can't be transpiled or polyfilled. See core.js's <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">caveats section</a> for more details.
+:::
 
 ### Subclassable Built-ins
 
 In ES2015, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
 
-```js
+```js title="JavaScript"
 // User code of Array subclass
 class MyArray extends Array {
     constructor(...args) { super(...args); }
@@ -666,19 +626,16 @@ arr[1] = 12;
 arr.length == 2
 ```
 
-<blockquote class="babel-callout babel-callout-warning">
-  <h4>Partial support</h4>
-  <p>
-    Built-in subclassability should be evaluated on a case-by-case basis as classes such as <code>HTMLElement</code> <strong>can</strong> be subclassed while many such as <code>Date</code>, <code>Array</code> and <code>Error</code> <strong>cannot</strong> be due to ES5 engine limitations.
-  </p>
-</blockquote>
+:::caution Partial support
+Built-in subclassability should be evaluated on a case-by-case basis as classes such as <code>HTMLElement</code> <strong>can</strong> be subclassed while many such as <code>Date</code>, <code>Array</code> and <code>Error</code> <strong>cannot</strong> be due to ES5 engine limitations.
+:::
 
 ### Math + Number + String + Object APIs
 
 Many new library additions, including core Math libraries, Array conversion
 helpers, and Object.assign for copying.
 
-```js
+```js title="JavaScript"
 Number.EPSILON
 Number.isInteger(Infinity) // false
 Number.isNaN("NaN") // false
@@ -701,32 +658,21 @@ Array.of(1, 2, 3) // Similar to new Array(...), but without special one-arg beha
 Object.assign(Point, { origin: new Point(0,0) })
 ```
 
-<blockquote class="babel-callout babel-callout-warning">
-  <h4>Limited support from polyfill</h4>
-  <p>
-    Most of these APIs are supported by the Babel <a href="/docs/usage/polyfill">polyfill</a>. However, certain
-    features are omitted for various reasons (e.g.
-    <code>String.prototype.normalize</code> needs a lot of additional code to
-    support). You can find more polyfills
-    <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
-  </p>
-</blockquote>
+:::caution Limited support from polyfill
+Most of these APIs are supported by the Babel <a href="/docs/babel-polyfill">polyfill</a>. However, certain features are omitted for various reasons (e.g. <code>String.prototype.normalize</code> needs a lot of additional code to support). You can find more polyfills <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
+:::
 
 ### Binary and Octal Literals
 Two new numeric literal forms are added for binary (`b`) and octal (`o`).
 
-```js
+```js title="JavaScript"
 0b111110111 === 503 // true
 0o767 === 503 // true
 ```
 
-<blockquote class="babel-callout babel-callout-warning">
-  <h4>Only supports literal form</h4>
-  <p>
-    Babel is only able to transform <code>0o767</code> and not
-    <code>Number("0o767")</code>.
-  </p>
-</blockquote>
+:::caution Only supports literal form
+Babel is only able to transform <code>0o767</code> and not <code>Number("0o767")</code>.
+:::
 
 
 ### Promises
@@ -735,7 +681,7 @@ Promises are a library for asynchronous programming. Promises are a first class
 representation of a value that may be made available in the future. Promises are
 used in many existing JavaScript libraries.
 
-```js
+```js title="JavaScript"
 function timeout(duration = 0) {
     return new Promise((resolve, reject) => {
         setTimeout(resolve, duration);
@@ -751,12 +697,9 @@ var p = timeout(1000).then(() => {
 })
 ```
 
-<blockquote class="babel-callout babel-callout-info">
-  <h4>Support via polyfill</h4>
-  <p>
-    In order to support Promises you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
-  </p>
-</blockquote>
+:::info Support via polyfill
+In order to support Promises you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+:::
 
 ### Reflect API
 
@@ -765,7 +708,7 @@ is effectively the inverse of the Proxy API, and allows making calls
 corresponding to the same meta-operations as the proxy traps. Especially useful
 for implementing proxies.
 
-```js
+```js title="JavaScript"
 var O = {a: 1};
 Object.defineProperty(O, 'b', {value: 2});
 O[Symbol('c')] = 3;
@@ -779,19 +722,16 @@ var instance = Reflect.construct(C, [20, 22]);
 instance.c; // 42
 ```
 
-<blockquote class="babel-callout babel-callout-info">
-  <h4>Support via polyfill</h4>
-  <p>
-    In order to use the Reflect API you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
-  </p>
-</blockquote>
+:::info Support via polyfill
+In order to use the Reflect API you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+:::
 
 ### Tail Calls
 
 Calls in tail-position are guaranteed to not grow the stack unboundedly. Makes
 recursive algorithms safe in the face of unbounded inputs.
 
-```js
+```js title="JavaScript"
 function factorial(n, acc = 1) {
     "use strict";
     if (n <= 1) return acc;
@@ -803,11 +743,8 @@ function factorial(n, acc = 1) {
 factorial(100000)
 ```
 
-<blockquote class="babel-callout babel-callout-warning">
-  <h4>Temporarily Removed in Babel 6</h4>
-  <p>
-    Only explicit self referencing tail recursion was supported due to the
-    complexity and performance impact of supporting tail calls globally.
-    Removed due to other bugs and will be re-implemented.
-  </p>
-</blockquote>
+:::caution Temporarily Removed in Babel 6
+Only explicit self referencing tail recursion was supported due to the
+complexity and performance impact of supporting tail calls globally.
+Removed due to other bugs and will be re-implemented.
+:::

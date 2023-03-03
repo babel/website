@@ -1,18 +1,20 @@
 ---
 id: babel-plugin-proposal-export-namespace-from
-title: @babel/plugin-proposal-export-namespace-from
-sidebar_label: proposal-export-namespace-from
+title: "@babel/plugin-proposal-export-namespace-from"
+sidebar_label: export-namespace-from
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2020](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 
 ## Example
 
-```js
-export * as ns from 'mod';
+```js title="JavaScript"
+export * as ns from "mod";
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-export-namespace-from
 ```
 
@@ -20,7 +22,7 @@ npm install --save-dev @babel/plugin-proposal-export-namespace-from
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-export-namespace-from"]
 }
@@ -28,19 +30,19 @@ npm install --save-dev @babel/plugin-proposal-export-namespace-from
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-export-namespace-from script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-proposal-export-namespace-from"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-proposal-export-namespace-from"],
 });
 ```
+
 ## References
 
-* ~~[Proposal: Additional export-from statements in ES7](https://github.com/leebyron/ecmascript-more-export-from)~~ (Withdrawn)
-* [ECMAScript Proposal: export ns from](https://github.com/leebyron/ecmascript-export-ns-from)
-
+- ~~[Proposal: Additional export-from statements in ES7](https://github.com/leebyron/ecmascript-more-export-from)~~ (Withdrawn)
+- [ECMAScript Proposal: export ns from](https://github.com/leebyron/ecmascript-export-ns-from)

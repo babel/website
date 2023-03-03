@@ -6,14 +6,15 @@ title: What is Babel?
 ## Babel is a JavaScript compiler
 
 Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments. Here are the main things Babel can do for you:
-- Transform syntax
-- Polyfill features that are missing in your target environment (through [@babel/polyfill](polyfill.md))
-- Source code transformations (codemods)
-- And more! (check out these [videos](/videos.html) for inspiration)
 
-```js
+- Transform syntax
+- Polyfill features that are missing in your target environment (through a third-party polyfill such as [core-js](https://github.com/zloirock/core-js))
+- Source code transformations (codemods)
+- And more! (check out these [videos](/videos) for inspiration)
+
+```js title="JavaScript"
 // Babel Input: ES2015 arrow function
-[1, 2, 3].map((n) => n + 1);
+[1, 2, 3].map(n => n + 1);
 
 // Babel Output: ES5 equivalent
 [1, 2, 3].map(function(n) {
@@ -35,29 +36,32 @@ Babel can convert JSX syntax! Check out our [React preset](preset-react.md) to g
 
 You can install this preset with
 
-```shell
+```shell npm2yarn
 npm install --save-dev @babel/preset-react
 ```
 
 and add `@babel/preset-react` to your Babel configuration.
 
-```jsx
-export default React.createClass({
-  getInitialState() {
-    return { num: this.getRandomNumber() };
-  },
-
-  getRandomNumber() {
+```jsx title="JSX"
+export default function DiceRoll(){
+  const getRandomNumber = () => {
     return Math.ceil(Math.random() * 6);
-  },
+  };
 
-  render() {
-    return <div>
-      Your dice roll:
-      {this.state.num}
-    </div>;
-  }
-});
+  const [num, setNum] = useState(getRandomNumber());
+
+  const handleClick = () => {
+    const newNum = getRandomNumber();
+    setNum(newNum);
+  };
+
+  return (
+    <div>
+      Your dice roll: {num}.
+      <button onClick={handleClick}>Click to get a new number</button>
+    </div>
+  );
+};
 ```
 
 > Learn more about [JSX](https://facebook.github.io/jsx/)
@@ -68,11 +72,11 @@ Babel can strip out type annotations! Check out either our [Flow preset](preset-
 
 You can install the flow preset with
 
-```shell
+```shell npm2yarn
 npm install --save-dev @babel/preset-flow
 ```
 
-```js
+```js title="JavaScript"
 // @flow
 function square(n: number): number {
   return n * n;
@@ -81,52 +85,50 @@ function square(n: number): number {
 
 or the typescript preset with
 
-```shell
+```shell npm2yarn
 npm install --save-dev @babel/preset-typescript
 ```
 
-```js
+```js title="JavaScript"
 function Greeter(greeting: string) {
-    this.greeting = greeting;
+  this.greeting = greeting;
 }
 ```
 
 > Learn more about [Flow](https://flow.org/) and [TypeScript](https://www.typescriptlang.org/)
 
-Pluggable
----------
+## Pluggable
 
 Babel is built out of plugins. Compose your own transformation pipeline using existing plugins or write your own. Easily use a set of plugins by using or creating a [preset](plugins.md#presets). [Learn more →](plugins.md)
 
 Create a plugin on the fly with [astexplorer.net](https://astexplorer.net/#/KJ8AjD6maa) or use [generator-babel-plugin](https://github.com/babel/generator-babel-plugin) to generate a plugin template.
 
-```javascript
+```javascript title="example-babel-plugin.js"
 // A plugin is just a function
-export default function ({types: t}) {
+export default function({ types: t }) {
   return {
     visitor: {
       Identifier(path) {
         let name = path.node.name; // reverse the name: JavaScript -> tpircSavaJ
-        path.node.name = name.split('').reverse().join('');
-      }
-    }
+        path.node.name = [...name]
+          .reverse()
+          .join("");
+      },
+    },
   };
 }
 ```
 
-Debuggable
-----------
+## Debuggable
 
 **Source map** support so you can debug your compiled code with ease.
 
-Spec Compliant
---------
+## Spec Compliant
 
 Babel tries to stay true to the ECMAScript standard, as much as reasonably possible. It may also have specific options to be more spec compliant as a tradeoff to performance.
 
-Compact
---------
+## Compact
 
 Babel tries using the least amount of code possible with no dependence on a bulky runtime.
 
-This may be difficult to do in cases, and there are "loose" options for specific transforms that may tradeoff spec compliancy for readability, file size, and speed.
+This may be difficult to do in cases, and there are ["assumptions"](assumptions.md) options that tradeoff spec compliancy for readability, file size, and speed.

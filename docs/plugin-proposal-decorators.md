@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-proposal-decorators
-title: @babel/plugin-proposal-decorators
-sidebar_label: proposal-decorators
+title: "@babel/plugin-proposal-decorators"
+sidebar_label: decorators
 ---
 
 ## Example
@@ -10,47 +10,47 @@ sidebar_label: proposal-decorators
 
 ### Simple class decorator
 
-```js
+```js title="JavaScript"
 @annotation
-class MyClass { }
+class MyClass {}
 
 function annotation(target) {
-   target.annotated = true;
+  target.annotated = true;
 }
 ```
 
 ### Class decorator
 
-```js
+```js title="JavaScript"
 @isTestable(true)
-class MyClass { }
+class MyClass {}
 
 function isTestable(value) {
-   return function decorator(target) {
-      target.isTestable = value;
-   }
+  return function decorator(target) {
+    target.isTestable = value;
+  };
 }
 ```
 
 ### Class function decorator
 
-```js
+```js title="JavaScript"
 class C {
   @enumerable(false)
-  method() { }
+  method() {}
 }
 
 function enumerable(value) {
-  return function (target, key, descriptor) {
-     descriptor.enumerable = value;
-     return descriptor;
-  }
+  return function(target, key, descriptor) {
+    descriptor.enumerable = value;
+    return descriptor;
+  };
 }
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-proposal-decorators
 ```
 
@@ -58,7 +58,7 @@ npm install --save-dev @babel/plugin-proposal-decorators
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-decorators"]
 }
@@ -66,25 +66,53 @@ npm install --save-dev @babel/plugin-proposal-decorators
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-proposal-decorators script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-proposal-decorators"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-proposal-decorators"],
 });
 ```
 
 ## Options
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.21.0` | Added support for `version: "2023-01"` |
+| `v7.19.0` | Added support for `version: "2022-03"` |
+| `v7.17.0` | Added the `version` option with support for `"2021-12"`, `"2018-09"` and `"legacy"` |
+</details>
+
+### `version`
+
+`"2023-01"`, `"2022-03"`, `"2021-12"`, `"2018-09"` or `"legacy"`.
+
+Selects the decorators proposal to use:
+- `"2023-01"` is the proposal version after the updates that reached consensus in the January 2023 TC39 meeting, integrating [`pzuraq/ecma262#4`](https://github.com/pzuraq/ecma262/pull/4).
+- `"2022-03"` is the proposal version that reached consensus for Stage 3 in the March 2022 TC39 meeting. You can read more about it at [`tc39/proposal-decorators@8ca65c046d`](https://github.com/tc39/proposal-decorators/tree/8ca65c046dd5e9aa3846a1fe5df343a6f7efd9f8).
+- `"2021-12"` is the proposal version as it was presented to TC39 in Dec 2021. You can read more about it at [`tc39/proposal-decorators@d6c056fa06`](https://github.com/tc39/proposal-decorators/tree/d6c056fa061646178c34f361bad33d583316dc85).
+- `"2018-09"` is the proposal version that was initially promoted to Stage 2 presented to TC39 in Sept 2018.  You can read more about it at [`tc39/proposal-decorators@7fa580b40f`](https://github.com/tc39/proposal-decorators/tree/7fa580b40f2c19c561511ea2c978e307ae689a1b).
+- `legacy` is the original Stage 1 proposal, defined at [`wycats/javascript-decorators@e1bf8d41bf`](https://github.com/wycats/javascript-decorators/blob/e1bf8d41bfa2591d949dd3bbf013514c8904b913/README.md).
+
+> ⚠️ If you specify the `decoratorsBeforeExport` option, `version` defaults to `"2018-09"`.
+
 ### `decoratorsBeforeExport`
+
+This option:
+- is disallowed when using `version: "legacy"`, `version: "2022-03"`, or `version: "2023-01"`;
+- is required when using `version: "2018-09"`;
+- is optional and defaults to `false` when using `version: "2021-12"`.
 
 `boolean`
 
-```js
+```js title="JavaScript"
 // decoratorsBeforeExport: false
 export @decorator class Bar {}
 
@@ -93,11 +121,11 @@ export @decorator class Bar {}
 export class Foo {}
 ```
 
-This option was added to help tc39 collect feedback from the community by allowing experimentation with both possible syntaxes.
-
-For more information, check out: [tc39/proposal-decorators#69](https://github.com/tc39/proposal-decorators/issues/69).
+This option was originally added to help tc39 collect feedback from the community by allowing experimentation with the proposed syntaxes. The proposal has now settled on allowing decorators either before or after `export`.
 
 ### `legacy`
+
+> **⚠️ DEPRECATED**: Use `version: "legacy"` instead. This option is a legacy alias.
 
 `boolean`, defaults to `false`.
 
@@ -105,37 +133,26 @@ Use the legacy (stage 1) decorators syntax and behavior.
 
 #### NOTE: Compatibility with `@babel/plugin-proposal-class-properties`
 
-If you are including your plugins manually and using `@babel/plugin-proposal-class-properties`, make sure that `@babel/plugin-proposal-decorators` comes *before* `@babel/plugin-proposal-class-properties`.
-
-When using the `legacy: true` mode, `@babel/plugin-proposal-class-properties` must be used in `loose` mode to support the `@babel/plugin-proposal-decorators`.
+If you are including your plugins manually and using `@babel/plugin-proposal-class-properties` and legacy decorators, make sure that `@babel/plugin-proposal-decorators` comes _before_ `@babel/plugin-proposal-class-properties`.
 
 Wrong:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
     "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-proposal-decorators"
+    ["@babel/plugin-proposal-decorators", { "version": "legacy" }]
   ]
 }
 ```
 
 Right:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
-    "@babel/plugin-proposal-decorators",
+    ["@babel/plugin-proposal-decorators", { "version": "legacy" }],
     "@babel/plugin-proposal-class-properties"
-  ]
-}
-```
-
-```json
-{
-  "plugins": [
-    ["@babel/plugin-proposal-decorators", { "legacy": true }],
-    ["@babel/plugin-proposal-class-properties", { "loose" : true }]
   ]
 }
 ```
@@ -144,5 +161,4 @@ Right:
 
 ## References
 
-* [Proposal: JavaScript Decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md)
-
+- [Proposal: JavaScript Decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md)

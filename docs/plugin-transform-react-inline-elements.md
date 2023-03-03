@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-react-inline-elements
-title: @babel/plugin-transform-react-inline-elements
-sidebar_label: transform-react-inline-elements
+title: "@babel/plugin-transform-react-inline-elements"
+sidebar_label: react-inline-elements
 ---
 
 ## Note
@@ -18,16 +18,20 @@ This transform **should be enabled only in production** (e.g., just before minif
 
 **In**
 
-```javascript
-<Baz foo="bar" key="1"></Baz>;
+```js title="JavaScript"
+<Baz foo="bar" key="1" />
 ```
 
 **Out**
 
-```javascript
-babelHelpers.jsx(Baz, {
-  foo: "bar"
-}, "1");
+```js title="JavaScript"
+babelHelpers.jsx(
+  Baz,
+  {
+    foo: "bar",
+  },
+  "1"
+);
 
 /**
  * Instead of
@@ -41,7 +45,7 @@ babelHelpers.jsx(Baz, {
 
 **Deopt**
 
-```js
+```js title="JavaScript"
 // The plugin will still use React.createElement when `ref` or `object rest spread` is used
 <Foo ref="bar" />
 <Foo {...bar} />
@@ -49,7 +53,7 @@ babelHelpers.jsx(Baz, {
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-react-inline-elements
 ```
 
@@ -57,7 +61,7 @@ npm install --save-dev @babel/plugin-transform-react-inline-elements
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-react-inline-elements"]
 }
@@ -65,19 +69,18 @@ npm install --save-dev @babel/plugin-transform-react-inline-elements
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-react-inline-elements script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-react-inline-elements"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-transform-react-inline-elements"],
 });
 ```
 
 ## References
 
-* [[facebook/react#3228] Optimizing Compiler: Inline React Elements](https://github.com/facebook/react/issues/3228)
-
+- [[facebook/react#3228] Optimizing Compiler: Inline React Elements](https://github.com/facebook/react/issues/3228)

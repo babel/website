@@ -1,20 +1,32 @@
 ---
 id: babel-plugin-proposal-private-methods
-title: @babel/plugin-proposal-private-methods
-sidebar_label: proposal-private-methods
+title: "@babel/plugin-proposal-private-methods"
+sidebar_label: private-methods
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+
+<details>
+<summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.3.0` | Support private accessors (getters and setters) |
+| `v7.2.0` | Initial Release |
+</details>
 
 ## Example
 
-```js
+```js title="JavaScript"
 class Counter extends HTMLElement {
   #xValue = 0;
 
-  get #x() { return this.#xValue; }
+  get #x() {
+    return this.#xValue;
+  }
   set #x(value) {
     this.#xValue = value;
-    window.requestAnimationFrame(
-      this.#render.bind(this));
+    window.requestAnimationFrame(this.#render.bind(this));
   }
 
   #clicked() {
@@ -25,8 +37,8 @@ class Counter extends HTMLElement {
 
 ## Installation
 
-```sh
-$ npm install @babel/plugin-proposal-private-methods --save-dev
+```shell npm2yarn
+npm install @babel/plugin-proposal-private-methods --save-dev
 ```
 
 ## Usage
@@ -35,7 +47,7 @@ $ npm install @babel/plugin-proposal-private-methods --save-dev
 
 Without options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-private-methods"]
 }
@@ -43,7 +55,7 @@ Without options:
 
 With options:
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [["@babel/plugin-proposal-private-methods", { "loose": true }]]
 }
@@ -51,14 +63,14 @@ With options:
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 $ babel --plugins @babel/plugin-proposal-private-methods script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-proposal-private-methods"],
 });
 ```
@@ -76,9 +88,22 @@ via `Object.defineProperty` rather than a `WeakSet`. This results in improved
 performance and debugging (normal property access vs `.get()`) at the expense
 of potentially leaking "privates" via things like `Object.getOwnPropertyNames`.
 
+> ⚠️ Consider migrating to the top level [`privateFieldsAsProperties`](assumptions.md#privatefieldsasproperties) assumption.
+
+```json title="babel.config.json"
+{
+  "assumptions": {
+    "privateFieldsAsProperties": true,
+    "setPublicClassFields": true
+  }
+}
+```
+
+Note that both `privateFieldsAsProperties` and `setPublicClassFields` must be set to `true`.
+
 Let's use the following as an example:
 
-```javascript
+```js title="JavaScript"
 class Foo {
   constructor() {
     this.publicField = this.#privateMethod();
@@ -92,7 +117,7 @@ class Foo {
 
 By default, this becomes:
 
-```javascript
+```js title="JavaScript"
 var Foo = function Foo() {
   "use strict";
 
@@ -112,9 +137,9 @@ var _privateMethod2 = function _privateMethod2() {
 };
 ```
 
-With `{ loose: true }`, it becomes:
+With `{ privateFieldsAsProperties: true }`, it becomes:
 
-```javascript
+```js title="JavaScript"
 var Foo = function Foo() {
   "use strict";
 

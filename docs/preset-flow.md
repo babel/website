@@ -1,10 +1,9 @@
 ---
 id: babel-preset-flow
-title: @babel/preset-flow
-sidebar_label: flow
+title: "@babel/preset-flow"
 ---
 
-This preset includes the following plugins:
+This preset is recommended if you use [Flow](https://flow.org/en/docs/getting-started/), a static type checker for JavaScript code. It includes the following plugins:
 
 - [@babel/plugin-transform-flow-strip-types](plugin-transform-flow-strip-types.md)
 
@@ -12,19 +11,19 @@ This preset includes the following plugins:
 
 **In**
 
-```javascript
+```js title="JavaScript"
 function foo(one: any, two: number, three?): string {}
 ```
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 function foo(one, two, three) {}
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/preset-flow
 ```
 
@@ -32,7 +31,7 @@ npm install --save-dev @babel/preset-flow
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "presets": ["@babel/preset-flow"]
 }
@@ -40,14 +39,14 @@ npm install --save-dev @babel/preset-flow
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --presets @babel/preset-flow script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   presets: ["@babel/preset-flow"],
 });
 ```
@@ -71,7 +70,7 @@ f<T>(e)
 
 Would get parsed as a nested binary expression:
 
-```javascript
+```js title="JavaScript"
 f < T > e;
 ```
 
@@ -79,11 +78,13 @@ f < T > e;
 
 `boolean`, defaults to `false`
 
+Added in: `v7.9.0`
+
 > NOTE: This will be enabled by default in Babel 8
 
 When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
 
-```javascript
+```js title="JavaScript"
 class A {
   declare foo: string; // Removed
   bar: string; // Initialized to undefined

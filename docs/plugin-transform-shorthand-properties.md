@@ -1,46 +1,48 @@
 ---
 id: babel-plugin-transform-shorthand-properties
-title: @babel/plugin-transform-shorthand-properties
-sidebar_label: transform-shorthand-properties
+title: "@babel/plugin-transform-shorthand-properties"
+sidebar_label: shorthand-properties
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Example
 
 **In**
 
-```js
+```js title="JavaScript"
 var o = { a, b, c };
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 var o = { a: a, b: b, c: c };
 ```
 
 **In**
 
-```js
+```js title="JavaScript"
 var cat = {
   getName() {
     return name;
-  }
+  },
 };
 ```
 
 **Out**
 
-```js
+```js title="JavaScript"
 var cat = {
-  getName: function () {
+  getName: function() {
     return name;
-  }
+  },
 };
 ```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-shorthand-properties
 ```
 
@@ -48,7 +50,7 @@ npm install --save-dev @babel/plugin-transform-shorthand-properties
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-shorthand-properties"]
 }
@@ -56,15 +58,14 @@ npm install --save-dev @babel/plugin-transform-shorthand-properties
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-shorthand-properties script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-shorthand-properties"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-transform-shorthand-properties"],
 });
 ```
-

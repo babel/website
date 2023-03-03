@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-transform-react-constant-elements
-title: @babel/plugin-transform-react-constant-elements
-sidebar_label: transform-react-constant-elements
+title: "@babel/plugin-transform-react-constant-elements"
+sidebar_label: react-constant-elements
 ---
 
 This plugin can speed up reconciliation and reduce garbage collection pressure by hoisting
@@ -11,7 +11,7 @@ React elements to the highest possible scope, preventing multiple unnecessary re
 
 **In**
 
-```jsx
+```jsx title="JSX"
 const Hr = () => {
   return <hr className="hr" />;
 };
@@ -19,7 +19,7 @@ const Hr = () => {
 
 **Out**
 
-```jsx
+```jsx title="JSX"
 const _ref = <hr className="hr" />;
 
 const Hr = () => {
@@ -31,13 +31,13 @@ const Hr = () => {
 
 - **Spread Operator**
 
-  ```jsx
+  ```jsx title="JSX"
   <div {...foobar} />
   ```
 
 - **Refs**
 
-  ```jsx
+  ```jsx title="JSX"
   <div ref="foobar" />
   <div ref={node => this.node = node} />
   ```
@@ -46,13 +46,13 @@ const Hr = () => {
 
 > See https://github.com/facebook/react/issues/3226 for more on this
 
-  ```js
-  <div style={{width: 100}} />
-  ```
+```js title="JavaScript"
+<div style={{ width: 100 }} />
+```
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-react-constant-elements
 ```
 
@@ -60,7 +60,7 @@ npm install --save-dev @babel/plugin-transform-react-constant-elements
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-react-constant-elements"]
 }
@@ -73,36 +73,37 @@ npm install --save-dev @babel/plugin-transform-react-constant-elements
 `Array<string>`, defaults to `[]`
 
 If you are using a particular library (like react-intl) that uses object properties, and you are sure
-that the element won't modify its own props, you can whitelist the element so that objects are allowed.
+that the element won't modify its own props, you can permit objects to be allowed for specific elements.
 
 This will skip the `Mutable Properties` deopt.
 
-```json
+```json title="babel.config.json"
 {
   "plugins": [
-    ["@babel/plugin-transform-react-constant-elements", {"allowMutablePropsOnTags": ["FormattedMessage"]}],
+    [
+      "@babel/plugin-transform-react-constant-elements",
+      { "allowMutablePropsOnTags": ["FormattedMessage"] }
+    ]
   ]
 }
-
 ```
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-react-constant-elements script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-react-constant-elements"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-transform-react-constant-elements"],
 });
 ```
 
 ## References
 
-* [[facebook/react#3226] Optimizing Compiler: Reuse Constant Value Types like ReactElement](https://github.com/facebook/react/issues/3226)
-
+- [[facebook/react#3226] Optimizing Compiler: Reuse Constant Value Types like ReactElement](https://github.com/facebook/react/issues/3226)

@@ -35,13 +35,13 @@ If your company would like to **give back** by supporting a fundamental part of 
 
 #### #1 Help Maintain the Project (developer time at work)
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Engineer: There&#39;s a thing in SQL Server Enterprise blocking us<br>Company: Let&#39;s set up a call next week with them an ongoing discussion to resolve it next quarter<br><br>Engineer: There&#39;s a thing we need in babel, can I spent 2 days with a PR for it<br>Company: lol no it&#39;s their job <a href="https://t.co/icgaoJ0dTe">https://t.co/icgaoJ0dTe</a></p>&mdash; Shiya (@ShiyaLuo) <a href="https://twitter.com/ShiyaLuo/status/931230821976907776?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Engineer: There&#39;s a thing in SQL Server Enterprise blocking us<br/>Company: Let&#39;s set up a call next week with them an ongoing discussion to resolve it next quarter<br/><br/>Engineer: There&#39;s a thing we need in babel, can I spent 2 days with a PR for it<br/>Company: lol no it&#39;s their job <a href="https://t.co/icgaoJ0dTe">https://t.co/icgaoJ0dTe</a></p>&mdash; Shiya (@ShiyaLuo) <a href="https://twitter.com/ShiyaLuo/status/931230821976907776?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
 
 The best thing we can get on this project are people committed to helping out with the project given the massive amount of work/responsibility it takes. Again, [I never felt ready](https://dev.to/hzoo/im-the-maintainer-of-babel-ask-me-anything-282/comments/1k6d) to be a maintainer but somehow stumbled upon it but I'm just one person, and our team is just a few people.
 
 #### #2 Fund development
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Company: &quot;We&#39;d like to use SQL Server Enterprise&quot;<br>MS: &quot;That&#39;ll be a quarter million dollars + $20K/month&quot;<br>Company: &quot;Ok!&quot;<br>...<br>Company: &quot;We&#39;d like to use Babel&quot;<br>Babel: &quot;Ok! npm i babel --save&quot;<br>Company: &quot;Cool&quot;<br>Babel: &quot;Would you like to help contribute financially?&quot;<br>Company: &quot;lol no&quot;</p>&mdash; Adam Rackis (@AdamRackis) <a href="https://twitter.com/AdamRackis/status/931195056479965185?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Company: &quot;We&#39;d like to use SQL Server Enterprise&quot;<br/>MS: &quot;That&#39;ll be a quarter million dollars + $20K/month&quot;<br/>Company: &quot;Ok!&quot;<br/>...<br/>Company: &quot;We&#39;d like to use Babel&quot;<br/>Babel: &quot;Ok! npm i babel --save&quot;<br/>Company: &quot;Cool&quot;<br/>Babel: &quot;Would you like to help contribute financially?&quot;<br/>Company: &quot;lol no&quot;</p>&mdash; Adam Rackis (@AdamRackis) <a href="https://twitter.com/AdamRackis/status/931195056479965185?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote>
 
 We are definitely looking to be able to fund people on the team to work full-time. Logan in particular left his job a while ago and is using our current funds to work on Babel part time at the moment!
 
@@ -172,7 +172,7 @@ Unlike in the [last post](https://babeljs.io/blog/2017/09/12/planning-for-7.0#de
 
 The configuration in `env` is given higher priority than root config items, and instead of just being a weird approach of using both, plugins and presets now merge based on their identity, so you can do
 
-```js
+```js title="JavaScript"
 {
   presets: [
     ['env', { modules: false}],
@@ -205,13 +205,13 @@ Babel will automatically wrap any native built-ins like `Array`, `Error`, `HTMLE
 
 So with this option, something like:
 
-```js
+```js title="JavaScript"
 import "babel-polyfill";
 ```
 
 Can turn into
 
-```js
+```js title="JavaScript"
 import "core-js/modules/es7.string.pad-start";
 import "core-js/modules/es7.string.pad-end";
 // ...
@@ -226,12 +226,12 @@ However in order to make that even better, we should only import polyfills that 
 
 So if you use `Promise` in your code, it will import it at the top of the file (if your target doesn't support it). Bundlers will dedupe the file if it's the same so this approach won't cause multiple polyfills to be imported.
 
-```js
+```js title="JavaScript"
 import "core-js/modules/es6.promise";
 var a = new Promise();
 ```
 
-```js
+```js title="JavaScript"
 import "core-js/modules/es7.array.includes";
 [].includes
 a.includes
@@ -241,7 +241,7 @@ With type inference we can know if an instance method like `.includes` is for an
 
 ### Misc Updates
 
-- [`babel-template`](https://github.com/babel/babel/blob/master/packages/babel-template) is faster/easier to use
+- [`babel-template`](https://github.com/babel/babel/blob/main/packages/babel-template) is faster/easier to use
 - [regenerator](https://github.com/facebook/regenerator) was released under the [MIT License](https://twitter.com/left_pad/status/938825429955125248) - it's the dependency used to compile generators/async
 - "lazy" option to the `modules-commonjs` plugin via [#6952](https://github.com/babel/babel/pull/6952)
 - You can now use `envName: "something"` in .babelrc or pass via cli `babel --envName=something` instead of having to use `process.env.BABEL_ENV` or `process.env.NODE_ENV`

@@ -89,7 +89,7 @@ The API will expose an `assertVersion` method, where you can pass in semver.
 
 The declare helper is used to keep backwards compat with v6.
 
-```js
+```js title="JavaScript"
 import { declare } from "@babel/helper-plugin-utils";
 
 export default declare(api => {
@@ -102,7 +102,7 @@ export default declare(api => {
 
 It currently takes it as the first parameter the `babel` object, and plugin/preset options, and the `dirname`
 
-```js
+```js title="JavaScript"
 module.exports = function(api, options, dirname) {};
 ```
 
@@ -118,7 +118,7 @@ We thought it would be a good idea for tools so they wouldn't have to constantly
 
 Before:
 
-```js
+```js title="JavaScript"
 babelParser.parse(code, {
   plugins: ["*"],
 });
@@ -126,7 +126,7 @@ babelParser.parse(code, {
 
 You can get the old behavior using:
 
-```js
+```js title="JavaScript"
 babelParser.parse(code, {
   plugins: [
     "asyncGenerators",
@@ -175,7 +175,7 @@ To get the equivalent behavior, you'll need to make a change like
 
 For instance, using `Path#insertBefore`, or `Path#replaceWith` will now always return an array of the newly inserted/replaced paths.
 
-```js
+```js title="JavaScript"
 const node = t.nullLiteral();
 const [replaced] = path.replaceWith(node);
 replace.node === node; // => true
@@ -183,7 +183,7 @@ replace.node === node; // => true
 
 This is especially useful when inserting several nodes into some higher-up scope, since you can immediately call the `Path` APIs on the node's new `Path`.
 
-```js
+```js title="JavaScript"
 const parent = path.findParent(() => /* some selection criteria */);
 const helperPaths = path.unshiftContainer("body", helpers);
 // helperPaths can now be referenced, manipulated, etc.
@@ -198,7 +198,7 @@ Now we are just creating an actual node for it.
 
 Add a new `interpreter` field to the `Program` node.
 
-```js
+```js title="JavaScript"
 extend interface Program {
   interpreter: InterpreterDirective;
 }
@@ -206,7 +206,7 @@ extend interface Program {
 
 Add the `InterpreterDirective` Node
 
-```js
+```js title="JavaScript"
 interface InterpreterDirective <: Node {
     type: "InterpreterDirective";
     value: string;
@@ -249,7 +249,7 @@ If your babel plugin uses `tokens` at the moment, evaluate if it is still necess
 
 To activate you need to set the `tokens` option of babylon to true. You can do this directly from your plugin.
 
-```js
+```js title="JavaScript"
 export default function() {
   return {
     manipulateOptions(opts, parserOpts) {
@@ -313,7 +313,7 @@ The field is only available when enabling the `flow` plugin in babylon.
 
 The type of the new `Variance` node looks like this:
 
-```js
+```js title="JavaScript"
 type VarianceNode = {
   type: "Variance",
   kind: "plus" | "minus",
@@ -340,7 +340,7 @@ The location info of `ObjectTypeIndexer` has been changed to not include semicol
 
 Example:
 
-```js
+```js title="JavaScript"
 var a: { [a: number]: string };
 ```
 

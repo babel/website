@@ -10,8 +10,7 @@ guest_post: true
 guest_description: |
   This is a guest post from Steven Luscher. Steven works on Relay at Facebook –
   a JavaScript framework for building applications using React and GraphQL.
-  Follow Steven on <a href="https://instagram.com/steveluscher/">Instagram</a>,
-  <a href="https://github.com/steveluscher">GitHub</a>,
+  Follow Steven on <a href="https://instagram.com/steveluscher/">Instagram</a>, <a href="https://github.com/steveluscher">GitHub</a>,
   and <a href="https://twitter.com/steveluscher">Twitter</a>.
 ---
 
@@ -23,7 +22,7 @@ While redesigning [Instagram Web](https://instagram.com/instagram/) from the ins
 
 By far the most outwardly visible change to how we write React components using ES6+ comes about when we choose to use the **[class definition syntax](https://babeljs.io/docs/learn-es2015/#classes)**. Instead of using the `React.createClass` method to define a component, we can define a bonafide ES6 class that extends `React.Component`:
 
-```js
+```js title="JavaScript"
 class Photo extends React.Component {
   render() {
     return <img alt={this.props.caption} src={this.props.src} />;
@@ -33,7 +32,7 @@ class Photo extends React.Component {
 
 Right away, you'll notice a subtle difference – a more terse syntax is available to you when defining classes:
 
-```js
+```js title="JavaScript"
 // The ES5 way
 var Photo = React.createClass({
   handleDoubleTap: function(e) { … },
@@ -41,7 +40,7 @@ var Photo = React.createClass({
 });
 ```
 
-```js
+```js title="JavaScript"
 // The ES6+ way
 class Photo extends React.Component {
   handleDoubleTap(e) { … }
@@ -53,14 +52,14 @@ Notably, we've dropped two parentheses and a trailing semicolon, and for each me
 
 All of the lifecycle methods but one can be defined as you would expect when using the new class syntax. The class' `constructor` now assumes the role previously filled by `componentWillMount`:
 
-```js
+```js title="JavaScript"
 // The ES5 way
 var EmbedModal = React.createClass({
   componentWillMount: function() { … },
 });
 ```
 
-```js
+```js title="JavaScript"
 // The ES6+ way
 class EmbedModal extends React.Component {
   constructor(props) {
@@ -74,7 +73,7 @@ class EmbedModal extends React.Component {
 
 In the ES6+ class world, prop types and defaults live as static properties on the class itself. These, as well as the component's initial state, can be defined using ES7 **[property initializers](https://gist.github.com/jeffmo/054df782c05639da2adb)**:
 
-```js
+```js title="JavaScript"
 // The ES5 way
 var Video = React.createClass({
   getDefaultProps: function() {
@@ -97,7 +96,7 @@ var Video = React.createClass({
 });
 ```
 
-```js
+```js title="JavaScript"
 // The ES6+ way
 class Video extends React.Component {
   static defaultProps = {
@@ -122,7 +121,7 @@ ES7 property initializers operate inside the class' constructor, where `this` re
 
 The `React.createClass` method used to perform some extra binding work on your component's instance methods to make sure that, inside them, the `this` keyword would refer to the instance of the component in question.
 
-```js
+```js title="JavaScript"
 // Autobinding, brought to you by React.createClass
 var PostInfo = React.createClass({
   handleOptionsButtonClick: function(e) {
@@ -134,7 +133,7 @@ var PostInfo = React.createClass({
 
 Since we don't involve the `React.createClass` method when we define components using the ES6+ class syntax, it would seem that we need to manually bind instance methods wherever we want this behavior:
 
-```js
+```js title="JavaScript"
 // Manually bind, wherever you need to
 class PostInfo extends React.Component {
   constructor(props) {
@@ -151,7 +150,7 @@ class PostInfo extends React.Component {
 
 Luckily, by combining two ES6+ features – **[arrow functions](https://babeljs.io/docs/learn-es2015/#arrows)** and property initializers – opt-in binding to the component instance becomes a breeze:
 
-```js
+```js title="JavaScript"
 class PostInfo extends React.Component {
   handleOptionsButtonClick = (e) => {
     this.setState({showOptionsModal: true});
@@ -165,7 +164,7 @@ The body of ES6 arrow functions share the same lexical `this` as the code that s
 
 One of the **[enhancements to object literals](https://babeljs.io/docs/learn-es2015/#enhanced-object-literals)** includes the ability to assign to a derived property name. We might have originally done something like this to set a piece of state:
 
-```js
+```js title="JavaScript"
 var Form = React.createClass({
   onChange: function(inputName, e) {
     var stateToSet = {};
@@ -177,7 +176,7 @@ var Form = React.createClass({
 
 Now, we have the ability to construct objects whose property names are determined by a JavaScript expression at runtime. Here, we use a **[template string](https://babeljs.io/docs/learn-es2015/#template-strings)** to determine which property to set on state:
 
-```js
+```js title="JavaScript"
 class Form extends React.Component {
   onChange(inputName, e) {
     this.setState({
@@ -191,7 +190,7 @@ class Form extends React.Component {
 
 Often when composing components, we might want to pass down *most* of a parent component's props to a child component, but not all of them. In combining ES6+ **[destructuring](https://babeljs.io/docs/learn-es2015/#destructuring)** with JSX **[spread attributes](https://facebook.github.io/react/docs/jsx-spread.html)**, this becomes possible without ceremony:
 
-```js
+```js title="JavaScript"
 class AutoloadingPostsGrid extends React.Component {
   render() {
     const {
@@ -210,7 +209,7 @@ class AutoloadingPostsGrid extends React.Component {
 
 We can combine JSX spread attributes with regular attributes too, taking advantage of a simple precedence rule to implement overrides and defaults. This element will acquire the `className` “override” even if there exists a `className` property in `this.props`:
 
-```js
+```js title="JavaScript"
 <div {...this.props} className="override">
   …
 </div>
@@ -218,7 +217,7 @@ We can combine JSX spread attributes with regular attributes too, taking advanta
 
 This element will regularly have the `className` “base” unless there exists a `className` property in `this.props` to override it:
 
-```js
+```js title="JavaScript"
 <div className="base" {...this.props}>
   …
 </div>

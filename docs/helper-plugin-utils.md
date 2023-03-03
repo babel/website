@@ -1,6 +1,6 @@
 ---
 id: babel-helper-plugin-utils
-title: @babel/helper-plugin-utils
+title: "@babel/helper-plugin-utils"
 sidebar_label: helper-plugin-utils
 ---
 
@@ -16,7 +16,7 @@ not be deduplicated when installed.
 
 ## Usage
 
-```js
+```js title="example-babel-plugin.js"
 import { declare } from "@babel/helper-plugin-utils";
 
 export default declare((api, options, dirname) => {

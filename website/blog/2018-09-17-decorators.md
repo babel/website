@@ -17,7 +17,7 @@ Babel 7.1.0 finally supports the new decorators proposal: you can try it out by 
 Decorators were [first proposed](https://github.com/wycats/javascript-decorators/blob/696232bbd997618d603d6577848d635872f25c43/README.md) by [Yehuda Katz](https://github.com/wycats) more than three years ago. TypeScript released support for decorators in [version 1.5](https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#typescript-15) (2015) alongside with many ES6 features.
 Some major frameworks, like Angular and MobX, started using them to enhance their developer experience: this made decorators popular and gave the community a false sense of stability.
 
-Babel first implemented decorators in [version 5](https://github.com/babel/babel/blob/master/.github/CHANGELOG-v5.md#500), but removed them in Babel 6 because the proposal was still in flux. [Logan Smyth](https://github.com/loganfsmyth) created an unofficial plugin ([`babel-plugin-transform-decorators-legacy`](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy)) which replicated the Babel 5 behavior; it has since then been moved to the official Babel repository during the first Babel 7 alpha release. This plugin still used the old decorators semantics, because it wasn't clear yet what the new proposal would have been.
+Babel first implemented decorators in [version 5](https://github.com/babel/babel/blob/main/.github/CHANGELOG-v5.md#500), but removed them in Babel 6 because the proposal was still in flux. [Logan Smyth](https://github.com/loganfsmyth) created an unofficial plugin ([`babel-plugin-transform-decorators-legacy`](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy)) which replicated the Babel 5 behavior; it has since then been moved to the official Babel repository during the first Babel 7 alpha release. This plugin still used the old decorators semantics, because it wasn't clear yet what the new proposal would have been.
 
 Since then, [Daniel Ehrenberg](https://github.com/littledan) and [Brian Terlson](https://github.com/bterlson) become co-authors of the proposal along with [Yehuda Katz](https://github.com/wycats), it has been almost completely rewritten. Not everything has been decided yet, and there isn't a compliant implementation as of today.
 
@@ -35,7 +35,7 @@ Even though the new proposal looks very similar to the old one, there are severa
 
 The old proposal allowed any valid left-hand side expression (literals, function and class expressions, `new` expressions and function calls, simple and computed property accesses) to be used as the body of a decorator. For example, this was valid code:
 
-```javascript=
+```js title="JavaScript"
 class MyClass {
   @getDecorators().methods[name]
   foo() {}
@@ -47,7 +47,7 @@ class MyClass {
 
 That syntax had a problem: the `[...]` notation was used as *both* property access inside the decorator body and to define computed names. To prevent such ambiguity, the new proposal only allows dot property access (`foo.bar`), optionally with arguments at the end (`foo.bar()`). If you need more complex expressions, you can wrap them in parentheses:
 
-```javascript=
+```js title="JavaScript"
 class MyClass {
   @decorator
   @dec(arg1, arg2)
@@ -61,7 +61,7 @@ class MyClass {
 
 The old version of the proposal allowed, in addition to class and class elements decorators, object members decorators:
 
-```javascript=
+```js title="JavaScript"
 const myObj = {
   @dec1 foo: 3,
   @dec2 bar() {},
@@ -111,7 +111,7 @@ Not everything has been decided yet: decorators are a very big feature and defin
 
 The decorator proposal has gone back and forth on this question: should decorators come before or after the export keyword?
 
-```javascript=
+```js title="JavaScript"
 export @decorator class MyClass {}
 
 // or
@@ -143,7 +143,7 @@ We will also introduce an option to customize the privacy constraint of decorate
 
 If you are directly using our parser ([`@babel/parser`](https://babeljs.io/docs/en/next/babel-parser.html), formerly `babylon`) you can already use the `decoratorsBeforeExport` option in version 7.0.0:
 
-```javascript=
+```js title="JavaScript"
 const ast = babylon.parse(code, {
   plugins: [
     ["decorators", { decoratorsBeforeExport: true }]
@@ -155,11 +155,11 @@ const ast = babylon.parse(code, {
 
 For usage in Babel itself:
 
-```sh
+```shell npm2yarn
 npm install @babel/plugin-proposal-decorators --save-dev
 ```
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true }]
 }
@@ -171,4 +171,4 @@ Check the [`@babel/plugin-proposal-decorators`](https://babeljs.io/docs/en/babel
 
 As a JavaScript developer, you can help outline the future of the language. You can test the various semantics which are being considered for decorators, and give feedback to the proposal authors. We need to know how you are using them in real-life projects! You can also find out why some design decisions were taken by reading the discussions in the issues and the meeting notes in the [proposal's repository](https://github.com/tc39/proposal-decorators).
 
-If you want to try out decorators right now, you can play with the different presets options in our [repl](https://babeljs.io/repl/build/master)!
+If you want to try out decorators right now, you can play with the different presets options in our [repl](https://babeljs.io/repl/build/main)!

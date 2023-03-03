@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-export-default-from
-title: @babel/plugin-syntax-export-default-from
+title: "@babel/plugin-syntax-export-default-from"
 sidebar_label: syntax-export-default-from
 ---
 
@@ -10,7 +10,7 @@ sidebar_label: syntax-export-default-from
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-export-default-from
 ```
 
@@ -18,7 +18,7 @@ npm install --save-dev @babel/plugin-syntax-export-default-from
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-export-default-from"]
 }
@@ -26,14 +26,14 @@ npm install --save-dev @babel/plugin-syntax-export-default-from
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-export-default-from script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-export-default-from"]
 });
 ```

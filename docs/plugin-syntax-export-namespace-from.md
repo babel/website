@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-syntax-export-namespace-from
-title: @babel/plugin-syntax-export-namespace-from
+title: "@babel/plugin-syntax-export-namespace-from"
 sidebar_label: syntax-export-namespace-from
 ---
 
@@ -10,7 +10,7 @@ sidebar_label: syntax-export-namespace-from
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-export-namespace-from
 ```
 
@@ -18,7 +18,7 @@ npm install --save-dev @babel/plugin-syntax-export-namespace-from
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-syntax-export-namespace-from"]
 }
@@ -26,14 +26,14 @@ npm install --save-dev @babel/plugin-syntax-export-namespace-from
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-syntax-export-namespace-from script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-export-namespace-from"]
 });
 ```

@@ -1,16 +1,17 @@
 ---
 id: babel-polyfill
-title: @babel/polyfill
-sidebar_label: polyfill
+title: "@babel/polyfill"
 ---
 
-> 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features) and `regenerator-runtime/runtime` (needed to use transpiled generator functions):
-> ```js
+> 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features):
+>
+> ```js title="JavaScript"
 > import "core-js/stable";
-> import "regenerator-runtime/runtime";
 > ```
+>
+> If you are compiling generators or async function to ES5, and you are using a version of `@babel/core` or `@babel/plugin-transform-regenerator` older than `7.18.0`, you must also load the [`regenerator runtime`](https://github.com/facebook/regenerator/tree/main/packages/runtime) package. It is automatically loaded when using `@babel/preset-env`'s `useBuiltIns: "usage"` option or `@babel/plugin-transform-runtime`.
 
-Babel includes a [polyfill](<https://en.wikipedia.org/wiki/Polyfill_(programming)>) that includes a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) and [core-js](https://github.com/zloirock/core-js).
+Babel includes a [polyfill](<https://en.wikipedia.org/wiki/Polyfill_(programming)>) that includes a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/main/packages/runtime/runtime.js) and [core-js](https://github.com/zloirock/core-js).
 
 This will emulate a full ES2015+ environment (no < Stage 4 proposals) and is intended to be used in an application rather than a library/tool.
 (this polyfill is automatically loaded when using `babel-node`).
@@ -19,7 +20,7 @@ This means you can use new built-ins like `Promise` or `WeakMap`, static methods
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save @babel/polyfill
 ```
 
@@ -39,7 +40,7 @@ To include the polyfill you need to require it at the top of the **entry point**
 
 > Make sure it is called before all other code/require statements!
 
-```js
+```js title="JavaScript"
 require("@babel/polyfill");
 ```
 
@@ -47,7 +48,7 @@ If you are using ES6's `import` syntax in your application's **entry point**, yo
 should instead import the polyfill at the top of the **entry point** to ensure the
 polyfills are loaded first:
 
-```js
+```js title="JavaScript"
 import "@babel/polyfill";
 ```
 
@@ -61,7 +62,7 @@ With webpack, there are multiple ways to include the polyfills:
 
   - If `useBuiltIns` key is not specified or it is explicitly set with `useBuiltIns: false` in your .babelrc, add `@babel/polyfill` directly to the entry array in your `webpack.config.js`.
 
-```js
+```js title="webpack.config.js"
 module.exports = {
   entry: ["@babel/polyfill", "./app/js"],
 };
@@ -84,5 +85,4 @@ before it.
 
 > ##### If you are looking for something that won't modify globals to be used in a tool/library, checkout the [`transform-runtime`](plugin-transform-runtime.md) plugin. This means you won't be able to use the instance methods mentioned above like `Array.prototype.includes`.
 
-Note: Depending on what ES2015 methods you actually use, you may not need to use `@babel/polyfill` or the runtime plugin. You may want to only [load the specific polyfills you are using](https://github.com/zloirock/core-js#commonjs) (like `Object.assign`) or just document that the environment the library is being loaded in should include certain polyfills.
-
+Note: Depending on what ES2015 methods you actually use, you may not need to use `@babel/polyfill` or the runtime plugin. You may want to only [load the specific polyfills you are using](https://github.com/zloirock/core-js#commonjs-api) (like `Object.assign`) or just document that the environment the library is being loaded in should include certain polyfills.

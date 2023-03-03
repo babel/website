@@ -1,16 +1,18 @@
 ---
 id: babel-plugin-transform-block-scoped-functions
-title: @babel/plugin-transform-block-scoped-functions
-sidebar_label: transform-block-scoped-functions
+title: "@babel/plugin-transform-block-scoped-functions"
+sidebar_label: block-scoped-functions
 ---
+
+> **NOTE**: This plugin is included in `@babel/preset-env`
 
 ## Examples
 
 **In**
 
-```javascript
+```js title="JavaScript"
 {
-  function name (n) {
+  function name(n) {
     return n;
   }
 }
@@ -20,9 +22,9 @@ name("Steve");
 
 **Out**
 
-```javascript
+```js title="JavaScript"
 {
-  let name = function (n) {
+  let name = function(n) {
     return n;
   };
 }
@@ -31,7 +33,7 @@ name("Steve");
 
 ## Installation
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-block-scoped-functions
 ```
 
@@ -39,7 +41,7 @@ npm install --save-dev @babel/plugin-transform-block-scoped-functions
 
 ### With a configuration file (Recommended)
 
-```json
+```json title="babel.config.json"
 {
   "plugins": ["@babel/plugin-transform-block-scoped-functions"]
 }
@@ -47,15 +49,14 @@ npm install --save-dev @babel/plugin-transform-block-scoped-functions
 
 ### Via CLI
 
-```sh
+```sh title="Shell"
 babel --plugins @babel/plugin-transform-block-scoped-functions script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("@babel/core").transform("code", {
-  plugins: ["@babel/plugin-transform-block-scoped-functions"]
+```js title="JavaScript"
+require("@babel/core").transformSync("code", {
+  plugins: ["@babel/plugin-transform-block-scoped-functions"],
 });
 ```
-

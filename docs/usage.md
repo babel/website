@@ -5,7 +5,7 @@ title: Usage Guide
 
 There are quite a few tools in the Babel toolchain that try to make it easy for you to use Babel whether you're an "end-user" or building an integration of Babel itself. This will be a quick introduction to those tools and you can read more about them in the "Usage" section of the docs.
 
-> If you're using a framework, the work of configuring Babel might be different or actually already handled for you. Check out our [interactive setup guide](/setup.html) instead.
+> If you're using a framework, the work of configuring Babel might be different or actually already handled for you. Check out our [interactive setup guide](/setup) instead.
 
 ## Overview
 
@@ -15,38 +15,59 @@ The entire process to set this up involves:
 
 1. Running these commands to install the packages:
 
-   ```sh
+   ```bash npm2yarn
    npm install --save-dev @babel/core @babel/cli @babel/preset-env
-   npm install --save @babel/polyfill
    ```
 
-2. Creating a config file named `babel.config.json` in the root of your project with this content:
+2. Creating a config file named `babel.config.json` (requires `v7.8.0` and above) in the root of your project with this content:
 
-   ```json
+   ```json title="babel.config.json"
    {
      "presets": [
        [
-         "@babel/env",
+         "@babel/preset-env",
          {
            "targets": {
              "edge": "17",
              "firefox": "60",
              "chrome": "67",
-             "safari": "11.1",
+             "safari": "11.1"
            },
            "useBuiltIns": "usage",
-           "corejs": "3.6.4",
+           "corejs": "3.6.5"
          }
        ]
      ]
    }
    ```
 
-   > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support.
+   > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support. See [here](preset-env.md) for more `@babel/preset-env` options.
+
+Or `babel.config.js` if you are using an older Babel version
+
+```js title="babel.config.js"
+const presets = [
+  [
+    "@babel/preset-env",
+    {
+      targets: {
+        edge: "17",
+        firefox: "60",
+        chrome: "67",
+        safari: "11.1",
+      },
+      useBuiltIns: "usage",
+      corejs: "3.6.4",
+    },
+  ],
+];
+
+module.exports = { presets };
+```
 
 3. And running this command to compile all your code from the `src` directory to `lib`:
 
-   ```sh
+   ```sh title="Shell"
    ./node_modules/.bin/babel src --out-dir lib
    ```
 
@@ -62,16 +83,16 @@ All the Babel modules you'll need are published as separate npm packages scoped 
 
 The core functionality of Babel resides at the [@babel/core](core.md) module. After installing it:
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/core
 ```
 
 you can `require` it directly in your JavaScript program and use it like this:
 
-```js
+```js title="JavaScript"
 const babel = require("@babel/core");
 
-babel.transform("code", optionsObject);
+babel.transformSync("code", optionsObject);
 ```
 
 As an end-user though, you'll probably want to install other tools that serve as an interface to `@babel/core` and integrate well with your development process. Even so, you might still want to check its documentation page to learn about the options, most of which can be set from the other tools as well.
@@ -80,7 +101,7 @@ As an end-user though, you'll probably want to install other tools that serve as
 
 [@babel/cli](cli.md) is a tool that allows you to use babel from the terminal. Here's the installation command and a basic usage example:
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/core @babel/cli
 
 ./node_modules/.bin/babel src --out-dir lib
@@ -94,7 +115,7 @@ We used the `--out-dir` option above. You can view the rest of the options accep
 
 Transformations come in the form of plugins, which are small JavaScript programs that instruct Babel on how to carry out transformations to the code. You can even write your own plugins to apply any transformations you want to your code. To transform ES2015+ syntax into ES5 we can rely on official plugins like `@babel/plugin-transform-arrow-functions`:
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/plugin-transform-arrow-functions
 
 ./node_modules/.bin/babel src --out-dir lib --plugins=@babel/plugin-transform-arrow-functions
@@ -102,7 +123,7 @@ npm install --save-dev @babel/plugin-transform-arrow-functions
 
 Now any arrow functions in our code will be transformed into ES5 compatible function expressions:
 
-```js
+```js title="JavaScript"
 const fn = () => 1;
 
 // converted to
@@ -116,7 +137,7 @@ That's a good start! But we also have other ES2015+ features in our code that we
 
 Just like with plugins, you can create your own presets too to share any combination of plugins you need. For our use case here, there's an excellent preset named `env`.
 
-```sh
+```shell npm2yarn
 npm install --save-dev @babel/preset-env
 
 ./node_modules/.bin/babel src --out-dir lib --presets=@babel/env
@@ -128,19 +149,19 @@ Without any configuration, this preset will include all plugins to support moder
 
 > There are a few different ways to use configuration files depending on your needs. Be sure to read our in-depth guide on how to [configure Babel](configuration.md) for more information.
 
-For now, let's create a file called `babel.config.json` with the following content:
+For now, let's create a file called `babel.config.json` (requires `v7.8.0` and above) with the following content:
 
-```json
+```json title="babel.config.json"
 {
-"presets": [
-  [
-  "@babel/env",
-    {
-      "targets": {
-        "edge": "17",
-        "firefox": "60",
-        "chrome": "67",
-        "safari": "11.1"
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "edge": "17",
+          "firefox": "60",
+          "chrome": "67",
+          "safari": "11.1"
         }
       }
     ]
@@ -152,13 +173,15 @@ Now the `env` preset will only load transformation plugins for features that are
 
 ## Polyfill
 
-> 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features) and `regenerator-runtime/runtime` (needed to use transpiled generator functions):
-> ```js
+> 🚨 <span id="polyfill-deprecated">As</span> of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features):
+>
+> ```js title="JavaScript"
 > import "core-js/stable";
-> import "regenerator-runtime/runtime";
 > ```
+>
+> If you are compiling generators or async function to ES5, and you are using a version of `@babel/core` or `@babel/plugin-transform-regenerator` older than `7.18.0`, you must also load the [`regenerator runtime`](https://github.com/facebook/regenerator/tree/main/packages/runtime) package. It is automatically loaded when using `@babel/preset-env`'s `useBuiltIns: "usage"` option or `@babel/plugin-transform-runtime`.
 
-The [@babel/polyfill](polyfill.md) module includes [core-js](https://github.com/zloirock/core-js) and a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) to emulate a full ES2015+ environment.
+The [@babel/polyfill](polyfill.md) module includes [core-js](https://github.com/zloirock/core-js) and a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/main/packages/runtime/runtime.js) to emulate a full ES2015+ environment.
 
 This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (when used alongside the regenerator plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
 
@@ -168,7 +191,7 @@ To go one step further, if you know exactly what features you need polyfills for
 
 Since we're building an application we can just install `@babel/polyfill`:
 
-```sh
+```shell npm2yarn
 npm install --save @babel/polyfill
 ```
 
@@ -176,19 +199,19 @@ npm install --save @babel/polyfill
 
 Now luckily for us, we're using the `env` preset which has a `"useBuiltIns"` option that when set to `"usage"` will practically apply the last optimization mentioned above where you only include the polyfills you need. With this new option the configuration changes like this:
 
-```json
+```json title="babel.config.json"
 {
   "presets": [
     [
-      "@babel/env",
+      "@babel/preset-env",
       {
         "targets": {
           "edge": "17",
           "firefox": "60",
           "chrome": "67",
-          "safari": "11.1",
+          "safari": "11.1"
         },
-        "useBuiltIns": "usage",
+        "useBuiltIns": "usage"
       }
     ]
   ]
@@ -197,22 +220,48 @@ Now luckily for us, we're using the `env` preset which has a `"useBuiltIns"` opt
 
 Babel will now inspect all your code for features that are missing in your target environments and include only the required polyfills. For example this code:
 
-```js
+```js title="JavaScript"
 Promise.resolve().finally();
 ```
 
 would turn into this (because Edge 17 doesn't have `Promise.prototype.finally`):
 
-```js
+```js title="JavaScript"
 require("core-js/modules/es.promise.finally");
 
 Promise.resolve().finally();
 ```
 
-If we weren't using the `env` preset with the `"useBuiltIns"` option set to `"usage"` we would've had to require the full polyfill _only once_ in our entry point before any other code.
+If we weren't using the `env` preset with the `"useBuiltIns"` option set to `"usage"` (defaults to "false") we would've had to require the full polyfill _only once_ in our entry point before any other code.
+
+For example:
+
+```json title="babel.config.json"
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "edge": "17",
+          "firefox": "60",
+          "chrome": "67",
+          "safari": "11.1"
+        },
+        "useBuiltIns": "entry"
+      }
+    ]
+  ]
+}
+```
+Then import [core-js](https://github.com/zloirock/core-js) (to polyfill ECMAScript features) first, in our entry file to emulate a full ES2015+ environment since [@babel/polyfill](polyfill.md) has been <a href="#polyfill-deprecated">deprecated</a>:
+
+```js title="JavaScript"
+ import "core-js/stable";
+ ```
 
 ## Summary
 
 We used `@babel/cli` to run Babel from the terminal, `@babel/polyfill` to polyfill all the new JavaScript features, and the `env` preset to only include the transformations and polyfills for the features that we use and that are missing in our target browsers.
 
-For more information on setting up Babel with your build system, IDE, and more, check out our [interactive setup guide](/setup.html).
+For more information on setting up Babel with your build system, IDE, and more, check out our [interactive setup guide](/setup).
