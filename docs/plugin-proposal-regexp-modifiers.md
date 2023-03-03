@@ -36,7 +36,7 @@ will be transformed to
 const regex = /(?:[\s\S])./;
 ```
 
-### multiple modifiers
+### Multiple modifiers
 You can also apply multiple modifiers:
 
 ```js
