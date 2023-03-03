@@ -141,6 +141,7 @@ AST for JSX code is based on [Facebook JSX AST][].
 [classmethod]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#classmethod
 [classproperty]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#classproperty
 [classprivateproperty]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#classprivateproperty
+[classprivatemethod]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#classprivatemethod
 [privatename]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#privatename
 [program]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#programs
 [blockstatement]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#blockstatement
