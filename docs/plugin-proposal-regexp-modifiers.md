@@ -44,7 +44,7 @@ You can also apply multiple modifiers:
 const regex = /(?im:^a)a/
 ```
 
-This plugin only supports `i`, `m` and `s` modifier.
+This proposal only supports `i`, `m` and `s` as inline modifiers.
 
 ## Installation
 
