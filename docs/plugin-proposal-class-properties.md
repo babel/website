@@ -100,7 +100,7 @@ For an explanation of the consequences of using either, see [Definition vs. Assi
   }
 ```
 
-Without `{ "loose": false }`, the above code will compile to the following, using `Object.defineProperty`:
+When `loose` is set to `false`, the above code will compile to the following, using `Object.defineProperty`:
 
 ```js
 var Bork = function Bork() {
