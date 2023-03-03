@@ -10,8 +10,8 @@ sidebar_label: syntax-pipeline-operator
 
 ## Installation
 
-```sh title="Shell"
-$ npm install @babel/plugin-syntax-pipeline-operator
+```shell npm2yarn
+npm install @babel/plugin-syntax-pipeline-operator
 ```
 
 ## Usage

@@ -62,7 +62,7 @@ npm install --save-dev @babel/plugin-proposal-async-do-expressions
 
 Note: This plugin transpiles `async do {}` to ES2017 Async arrow function `async () => {}`. If you target to an older engine, i.e. Node.js 6 or IE 11, please also add [`@babel/plugin-transform-async-to-generator`](plugin-transform-async-to-generator.md):
 
-```
+```json title="babel.config.json"
 {
   "plugins": [
     "@babel/plugin-proposal-async-do-expressions",
@@ -87,4 +87,4 @@ require("@babel/core").transformSync("code", {
 
 ## References
 
-- [Proposal](https://github.com/tc39/proposal-async-do-expressions)
+- [Proposal: `async do` expressions](https://github.com/tc39/proposal-async-do-expressions)

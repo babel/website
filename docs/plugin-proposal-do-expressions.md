@@ -121,6 +121,6 @@ require("@babel/core").transformSync("code", {
 
 ## References
 
-- [Proposal](https://github.com/tc39/proposal-do-expressions)
+- [Proposal: `do` expressions](https://github.com/tc39/proposal-do-expressions)
 - [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch5.md#statement-completion-values)
 - Very handy for conditions inside JSX: [reactjs/react-future#35](https://github.com/reactjs/react-future/issues/35#issuecomment-120009203)

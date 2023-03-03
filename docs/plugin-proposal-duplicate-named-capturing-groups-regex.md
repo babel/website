@@ -72,3 +72,7 @@ stringRe.exec("'foo'").groups.quote; // undefined
 ```
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+
+## References
+
+- [Proposal: Duplicate named capturing groups](https://github.com/tc39/proposal-duplicate-named-capturing-groups)
