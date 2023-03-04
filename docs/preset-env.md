@@ -82,7 +82,7 @@ For more information on setting options for a preset, refer to the [preset optio
 
 ### `targets`
 
-`string | Array<string> | { [string]: string }`, defaults to the top-level `targets` option if no [browserslist config sources](https://github.com/ai/browserslist#queries) are specified, otherwise to `{}`.
+`string | Array<string> | { [string]: string }`, defaults to the top-level [`targets` option](options.md#targets) if [`configPath`](#configpath), [`browserslistEnv`](#browserslistenv) and [`ignoreBrowserslistConfig`](#ignorebrowserslistconfig) are not specified, otherwise to `{}`.
 
 For usage, refer to the [`targets` option](options.md#targets) documentation.
 
