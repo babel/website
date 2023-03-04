@@ -109,7 +109,7 @@ class Bork {
 }
 ```
 
-Without `{ "setPublicClassFields": true }`, the above code will compile to the following, using `Object.defineProperty`:
+When `setPublicClassFields` is `false`, the above code will compile to the following, using `Object.defineProperty`:
 
 ```js title="JavaScript"
 var Bork = function Bork() {
@@ -142,7 +142,7 @@ Object.defineProperty(Bork, "b", {
 });
 ```
 
-However, with `{ "setPublicClassFields": true }`, it will compile using assignment expressions:
+When `setPublicClassFields` is set to `true`, it will compile using assignment expressions:
 
 ```js title="JavaScript"
 var Bork = function Bork() {
