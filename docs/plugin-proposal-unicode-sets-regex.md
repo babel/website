@@ -44,7 +44,7 @@ will be transformed to
 // true
 ```
 
-Note that using property of strings with `u`-flag will error.
+Here is [a list of supported properties](https://github.com/tc39/proposal-regexp-unicode-sequence-properties#proposed-solution). Note that using property of strings with `u`-flag will error.
 ```js title="input.js"
 // @codeblock-error-next-line
 /\p{Emoji_Keycap_Sequence}/u
