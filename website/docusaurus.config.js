@@ -144,6 +144,12 @@ const siteConfig = {
       additionalLanguages: ["powershell"],
       theme: require("./src/theme/prism/light"),
       darkTheme: require("./src/theme/prism/dark"),
+      magicComments: [
+        {
+          className: "code-block-error-line",
+          line: "@codeblock-error-next-line",
+        },
+      ],
     },
     siteConfig: {
       headerIcon: "img/babel.svg",
