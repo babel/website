@@ -48,9 +48,9 @@ The `isIdentifierStart` function checks whether a given Unicode code point can s
 function isIdentifierChar(codepoint: number): boolean
 ```
 
-The isIdentifierChar function checks whether a given Unicode code point can be part of an identifier, as defined by the [IdentifierPartChar](https://tc39.es/ecma262/#prod-IdentifierPartChar).
+The `isIdentifierChar` function checks whether a given Unicode code point can be part of an identifier, as defined by the [IdentifierPartChar](https://tc39.es/ecma262/#prod-IdentifierPartChar).
 
-### Keywords and ReservedWord helpers
+### Keywords and Reserved words helpers
 
 These helpers detect [keyword and reserved words](https://tc39.es/ecma262/#sec-keywords-and-reserved-words). For more information, see the [implementation](https://github.com/babel/babel/blob/main/packages/babel-helper-validator-identifier/src/keyword.ts).
 
