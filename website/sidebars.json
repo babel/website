@@ -35,7 +35,8 @@
     ],
     "Helper Packages": [
       "babel-helper-compilation-targets",
-      "babel-helper-module-imports"
+      "babel-helper-module-imports",
+      "babel-helper-validator-identifier"
     ]
   },
   "plugins": {
