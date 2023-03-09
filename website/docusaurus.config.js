@@ -152,7 +152,7 @@ const siteConfig = {
         },
         {
           className: "code-block-error-line",
-          line: "@codeblock-error-next-line",
+          line: "highlight-error-next-line",
         },
       ],
     },
