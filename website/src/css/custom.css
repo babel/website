@@ -16,6 +16,8 @@
   --ifm-navbar-link-hover-color: #f5da55;
 
   --ifm-blockquote-border-left-width: 4px;
+
+  --docusaurus-highlighted-code-line-bg: #00000018;
 }
 html[data-theme='dark'] {
   --ifm-color-primary: #f5da55;
@@ -25,6 +27,8 @@ html[data-theme='dark'] {
   --ifm-color-primary-light: #f7e174;
   --ifm-color-primary-lighter: #f8e484;
   --ifm-color-primary-lightest: #fbeeb2;
+
+  --docusaurus-highlighted-code-line-bg: #00000040;
 }
 
 .headerWrapper.wrapper {
