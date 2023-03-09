@@ -124,3 +124,13 @@ article[itemprop="blogPost"] h4 {
 .container.paddingTop {
   padding-top: 80px;
 }
+
+/* code blocks */
+.code-block-error-line {
+  /* https://docusaurus.io/docs/markdown-features/code-blocks#custom-magic-comments */
+  background-color: #ff000020;
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+  border-left: 3px solid #ff000080;
+}
