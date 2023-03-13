@@ -50,4 +50,6 @@ extensions. You may, however, need to [enable it](https://blog.jetbrains.com/web
 
 ### Emacs
 
-See [js2-mode](https://github.com/mooz/js2-mode/#react-and-jsx).
+Install the [js2-mode](https://github.com/mooz/js2-mode/#react-and-jsx).
+
+Another option is to use [web-mode](https://github.com/fxbois/web-mode).
