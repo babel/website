@@ -60,7 +60,7 @@ module.exports = (api) => {
 requeueComputedKeyAndDecorators(path: NodePath): void
 ```
 
-Requeue the computed key and decorators of a class member `path` so that they will be revisited after current traversal queue is drain. See the [example](#replace-top-level-this) section for more usage.
+Requeue the computed key and decorators of a class member `path` so that they will be revisited after current traversal queue is drained. See the [example](#replace-top-level-this) section for more usage.
 
 ```js title="my-babel-plugin.js"
 if (path.isMethod()) {
@@ -72,7 +72,7 @@ if (path.isMethod()) {
 
 ### Replace top level `this`
 
-Suppose we are migrating vanilla JavaScript to ES Modules. Now that the `this` keyword is equivalent to `undefined` at the top level of an ESModule ([spec](https://tc39.es/ecma262/#sec-module-environment-records-getthisbinding)), we want to replace all top-level `this` to [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis):
+Suppose we are migrating from vanilla JavaScript to ES Modules. Now that the `this` keyword is equivalent to `undefined` at the top level of an ESModule ([spec](https://tc39.es/ecma262/#sec-module-environment-records-getthisbinding)), we want to replace all top-level `this` to [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis):
 
 ```js title=input.js
 // replace this expression to `globalThis.foo = "top"`
@@ -137,8 +137,8 @@ module.exports = (api) => {
 }
 ```
 
-`"FunctionDeclaration|..."` is a really long string, so it is not maintainable. We can
-improve that using the [FunctionParent](types.md#functionparent) alias:
+`"FunctionDeclaration|..."` is a really long string and can be difficult to maintain. We can
+shorten it by using the [FunctionParent](types.md#functionparent) alias:
 
 ```js title="Revision 3: replace-top-level-this-plugin.js"
 module.exports = (api) => {
@@ -161,7 +161,7 @@ module.exports = (api) => {
 }
 ```
 
-The plugin works generally. However, it can not handle an edge case where top-level `this` is in computed class elements:
+The plugin works generally. However, it can not handle an edge case where top-level `this` is used within computed class elements:
 
 ```js title="input.js"
 class Bar {
@@ -215,7 +215,7 @@ module.exports = (api) => {
 }
 ```
 
-There is still one missing edge case: `this` can be in computed keys of a class property:
+There is still one missing edge case: `this` can be used within computed keys of a class property:
 
 ```js title="input.js"
 class Bar {
@@ -255,16 +255,16 @@ module.exports = (api) => {
 
 You can try out the final revision on the [AST Explorer](https://astexplorer.net/#/gist/4d1bfca2b315f687da44f3436b2f4d76/58c9b92d4f77586f23f56393252104a274ccb157).
 
-As you may find out from the name, `requeueComputedKeyAndDecorators` supports [ES decorators](./plugin-proposal-decorators.md), too:
+As its name implies, `requeueComputedKeyAndDecorators` supports [ES decorators](./plugin-proposal-decorators.md) as well:
 
 ```js title="input.js"
 class Foo {
   // replaced to `@globalThis.log`
-  @this.log foo = 1;
+  @(this.log) foo = 1;
 }
 ```
 
-The spec keeps envolving and this is yet another reason to use `environmentVisitor` instead of implementing your own `this` context visitor.
+Since the spec continues to evolve, using `environmentVisitor` can be easier than implementing your own `this` context visitor.
 
 ### Find all `super()` calls
 
