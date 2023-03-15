@@ -146,8 +146,13 @@ const siteConfig = {
       darkTheme: require("./src/theme/prism/dark"),
       magicComments: [
         {
+          className: "theme-code-block-highlighted-line",
+          line: "highlight-next-line",
+          block: { start: "highlight-start", end: "highlight-end" },
+        },
+        {
           className: "code-block-error-line",
-          line: "@codeblock-error-next-line",
+          line: "highlight-error-next-line",
         },
       ],
     },

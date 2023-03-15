@@ -46,7 +46,7 @@ will be transformed to
 
 Here is [a list of supported properties](https://github.com/tc39/proposal-regexp-unicode-sequence-properties#proposed-solution). Note that using property of strings with `u`-flag will error.
 ```js title="input.js"
-// @codeblock-error-next-line
+// highlight-error-next-line
 /\p{Emoji_Keycap_Sequence}/u
 // Error: Properties of strings are only supported when using the unicodeSets (v) flag.
 ```
