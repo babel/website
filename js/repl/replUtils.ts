@@ -136,7 +136,7 @@ export const persistedStateToPresetsOptions = (
     decoratorsBeforeExport:
       !decoratorsLegacy && !!persistedState.decoratorsBeforeExport,
     pipelineProposal: persistedState.pipelineProposal || "minimal",
-    reactRuntime: persistedState.reactRuntime || "classic",
+    reactRuntime: persistedState.reactRuntime || "automatic",
   };
 };
 
