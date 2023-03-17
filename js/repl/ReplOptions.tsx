@@ -438,13 +438,13 @@ class ExpandedContainer extends Component<Props, State> {
                 >
                   <option
                     value="automatic"
-                    selected={!presetsOptions.reactRuntime}
+                    selected={presetsOptions.reactRuntime === "automatic"}
                   >
                     Automatic
                   </option>
                   <option
                     value="classic"
-                    selected={!!presetsOptions.reactRuntime}
+                    selected={presetsOptions.reactRuntime === "classic"}
                   >
                     Classic
                   </option>
