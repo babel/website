@@ -43,3 +43,6 @@ require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-explicit-resource-management"]
 });
 ```
+
+## Reference
+- [Proposal: ECMAScript Explicit Resource Management](https://github.com/tc39/proposal-explicit-resource-management)

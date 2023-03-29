@@ -211,6 +211,7 @@ require("@babel/parser").parse("code", {
 
 | Version | Changes |
 | --- | --- |
+| `v7.22.0` | Added `asyncExplicitResourceManagement` |
 | `v7.20.0` | Added `explicitResourceManagement`, `importReflection` |
 | `v7.17.0` | Added `regexpUnicodeSets`, `destructuringPrivate`, `decoratorAutoAccessors` |
 | `v7.15.0` | Added `hack` to the `proposal` option of `pipelineOperator`. Moved `topLevelAwait`, `privateIn` to Latest ECMAScript features |
@@ -228,6 +229,7 @@ require("@babel/parser").parse("code", {
 | Name                                                                                                     | Code Example                                                     |
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `asyncDoExpressions` ([proposal](https://github.com/tc39/proposal-async-do-expressions))                 | `async do { await requestAPI().json() }`                         |
+| `asyncExplicitResourceManagement` ([proposal](https://github.com/tc39/proposal-async-explicit-resource-management)) | `await using reader = getReader()`                    |
 | `decimal` ([proposal](https://github.com/tc39/proposal-decimal))                                         | `0.3m`                                                           |
 | `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br/> `decorators-legacy`          | `@a class A {}`                                                  |
 | `decoratorAutoAccessors` ([proposal](https://github.com/tc39/proposal-decorators))                       | `class Example { @reactive accessor myBool = false; }`           |
