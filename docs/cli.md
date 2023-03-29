@@ -46,6 +46,12 @@ After that finishes installing, your `package.json` file should include:
 npx babel script.js
 ```
 
+### Print Usage
+
+```sh title="Shell"
+npx babel --help
+```
+
 ### Compile Files
 
 Compile the file `script.js` and **output to stdout**.
@@ -96,6 +102,16 @@ Compile the entire `src` directory and output it as a single concatenated file.
 
 ```sh title="Shell"
 npx babel src --out-file script-compiled.js
+```
+
+#### Directories with TypeScript Files
+
+Use the `--extensions` option to specify what file extensions Babel should handle when compiling the entire `src` directory. The default `--extensions` can be accessed from [`Babel.DEFAULT_EXTENSIONS`](./core.md#default_extensions).
+
+```sh title="Shell"
+npx babel src --out-dir lib \
+  --extensions .ts,.js,.tsx,.jsx,.cjs,.mjs \
+  --presets=@babel/preset-typescript,@babel/preset-env,@babel/preset-react
 ```
 
 ### Ignore files
@@ -153,7 +169,9 @@ Use the `--presets` option to specify presets to use in compilation
 npx babel script.js --out-file script-compiled.js --presets=@babel/preset-env,@babel/flow
 ```
 
-### Ignoring .babelrc.json or .babelrc
+### Using Config Files
+
+#### Ignoring .babelrc.json or .babelrc
 
 Ignore the configuration from the project's `.babelrc` or `.babelrc.json` file and use the cli options e.g. for a custom build
 
@@ -161,21 +179,31 @@ Ignore the configuration from the project's `.babelrc` or `.babelrc.json` file a
 npx babel --no-babelrc script.js --out-file script-compiled.js --presets=@babel/preset-env,@babel/preset-react
 ```
 
-### Custom config path
+#### Custom config path
 
 ```sh title="Shell"
 npx babel --config-file /path/to/my/babel.config.json --out-dir dist ./src
 ```
 
+See [here](./config-files.md) for more information about config files.
+
 ### Set File Extensions
 
 Added in: `v7.8.0`
 
-By default, Babel will override the extension of the transpiled file and use `.js` instead.
+By default, the transpiled file will use the `.js` extension.
 
-To preserve the original file extension you can pass the `--keep-file-extension`.
+You can control the output file extension with `--out-file-extension`
 
-You can also control what file extension is used with `--out-file-extension .example-extension` e.g. `babel src/ lib/ --out-file-extension .mjs`.
+```sh title="Shell"
+babel src --out-dir lib --out-file-extension .mjs
+```
+
+You can also preserve the input file extension with `--keep-file-extension`
+
+```sh title="Shell"
+npx babel src-with-mjs-and-cjs --out-dir lib --keep-file-extension
+```
 
 Note that `--keep-file-extension` and `--out-file-extension` cannot be used together.
 
