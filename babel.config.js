@@ -27,10 +27,10 @@ module.exports = function (api) {
     ],
     env: {
       production: {
-        plugins: ["emotion"],
+        plugins: ["@emotion"],
       },
       development: {
-        plugins: [["emotion", { sourceMap: true }]],
+        plugins: [["@emotion", { sourceMap: true }]],
       },
     },
   };

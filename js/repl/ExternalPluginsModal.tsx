@@ -1,5 +1,5 @@
 import algoliasearch from "algoliasearch/lite";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import React, { type ChangeEvent } from "react";
 import {
   Configure,
