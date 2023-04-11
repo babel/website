@@ -1,4 +1,4 @@
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import * as React from "react";
 import AccordionTab from "./AccordionTab";
 import ExternalPluginsModal from "./ExternalPluginsModal";

@@ -1,4 +1,4 @@
-import { injectGlobal, css } from "emotion";
+import { injectGlobal, css } from "@emotion/css";
 import CodeMirror from "codemirror";
 import React from "react";
 import { colors } from "./styles";

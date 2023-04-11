@@ -1,4 +1,4 @@
-import { css, type Interpolation } from "emotion";
+import { css, type Interpolation } from "@emotion/css";
 import CodeMirror from "./CodeMirror";
 import React from "react";
 import { colors } from "./styles";

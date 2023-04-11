@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime";
 
-import { cx, css } from "emotion";
+import { cx, css } from "@emotion/css";
 import debounce from "lodash.debounce";
 import React, { type ChangeEvent } from "react";
 import { prettySize, compareVersions } from "./Utils";

@@ -1,4 +1,4 @@
-import { css, cx } from "emotion";
+import { css, cx } from "@emotion/css";
 import React, { Component } from "react";
 import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
 import AccordionTab from "./AccordionTab";
