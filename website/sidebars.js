@@ -3,7 +3,7 @@ module.exports = {
     {
       type: "category",
       label: "Guides",
-      items: ["index", "usage", "configuration", "learn", "v7-migration"],
+      items: ["index", "usage", "configuration", "learn", "v8-migration"],
     },
     {
       type: "category",
