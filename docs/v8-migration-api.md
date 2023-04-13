@@ -98,6 +98,37 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: Call `t.identifier` with a valid name.
 
+- Remove `Super` from the `Expression` alias ([#14750](https://github.com/babel/babel/pull/14750)).
+
+  A `Super` node represents `super` in super call `super()` and super property `super.foo`. `super` can not be a standalone expression. In other words, `t.isExpression(t.super())` will return `false` in Babel 8.
+
+  __Migration__: Search usage of `t.isExpression`, `t.assertsExpression` and `Expression` alias in the plugin visitor, update the usage when you are handling super call and super property. For example,
+
+  ```diff title="my-babel-plugin.js"
+  // Add `.foo` to an expression
+  - if (t.isExpression(path.node)) {
+  + if (t.isExpression(path.node) || t.isSuper(path.node)) {
+    path.replaceWith(
+      t.memberExpression(
+        path.node,
+        t.identifier("foo")
+      ))
+  }
+  ```
+  You don't have to update the usage if `super()` and `super.foo` is not involved:
+  ```js title="my-babel-plugin.js"
+  // define an expression as a computed key of `foo`
+  if (t.isExpression(path.node)) {
+    path.replaceWith(
+      t.memberExpression(
+        t.identifier("foo"),
+        // `super` can not be a computed key, so we don't update `isExpression`
+        path.node,
+        /* computed */ true
+      ))
+  }
+  ```
+
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 - Remove `t.jSX*` and `t.tS*` builder aliases ([#6989](https://github.com/babel/babel/issues/6989), [#15527](https://github.com/babel/babel/pull/15527))
@@ -110,7 +141,16 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   - t.jsxElement(openingElement, closingElement, children, selfClosing?: boolean)
   + t.jsxElement(openingElement, closingElement, children)
   ```
-  __Migration__: The `selfClosing` argument is not used in the builder. You can safely remove it if you are using `t.jsxElement`.
+  __Migration__: The `selfClosing` argument is not used in the builder. You can safely remove it.
+
+- Remove `optional` argument from `t.memberExpression` ([#13407](https://github.com/babel/babel/pull/13407))
+
+  ```diff
+  - t.memberExpression(object, property, computed, optional?: boolean)
+  + t.memberExpression(object, property, computed)
+  ```
+
+  __Migration__: The `optional` argument is not used in the builder. You can safely remove it.
 
 - [Remove the `Noop` node type](https://github.com/babel/babel/issues/12355) ([#12361](https://github.com/babel/babel/pull/12361))
 
@@ -123,6 +163,20 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 - Align Babel parser error codes between Flow and TypeScript ([#13294](https://github.com/babel/babel/pull/13294))
 
   **Migration**: The `error.code` for `OptionalBindingPattern` is renamed as `PatternIsOptional`.
+
+- Remove `updateContext` field from `tokens[].type` returned from option `tokens: true ` ([#13768](https://github.com/babel/babel/pull/13768))
+
+  ```js title="babel-integration.js"
+  import { parse } from "@babel/parser";
+
+  const { tokens } = parse("a = 42", { tokens: true });
+  tokens[0].type;
+  // Babel 7
+  // { label: "name", updateContext: null, ...other properties }
+  // Babel 8
+  // { label: "name", ... other properties }
+  ```
+  **Migration**: This change probably won't affect your integration. The `tokens[].type` is an object storing meta information of a token as implementation details.
 
 ### `@babel/traverse`
 

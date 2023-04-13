@@ -3,7 +3,7 @@ title: "Upgrade to Babel 8"
 id: v8-migration
 ---
 
-Refer users to this document when upgrading to Babel 8 from Babel 7. If you are a plugin developer or integration user, please also check [migration guide for integration](./v8-migration-api.md).
+Refer users to this document when upgrading to Babel 8 from Babel 7. If you are a plugin developer or integration developer, please also check [migration guide for integration](./v8-migration-api.md).
 
 <!--truncate-->
 
@@ -27,6 +27,10 @@ Babel is now shipped in native ECMAScript modules. ([#11701](https://github.com/
 ### `@babel/core` requirements
 
 All presets and plugins require `@babel/core@^8.0.0` as peer dependency.
+
+### `@babel/eslint-parser` and `@babel/eslint-plugin`
+
+The parser and plugin require `eslint@^8.9.0` as peer dependency. ([#15563](https://github.com/babel/babel/issues/15563))
 
 ## Package Renames
 
@@ -77,7 +81,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 ## Configuration Changes
 
-### `@babel/core`
+### `@babel/core` {#configuration-change-preset-core}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -104,7 +108,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
   If you are using `@babel/cli` and passing them from command line, please create a Babel config `babel.config.js` and specify options there.
 
-### `@babel/preset-env`
+### `@babel/preset-env` {#configuration-change-preset-env}
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
@@ -134,7 +138,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
   **Migration**: The preset will also report invalid option names. Refer to the [docs](./preset-react.md#options) and ensure valid usage.
 
-### `@babel/preset-typescript`
+### `@babel/preset-typescript` {#configuration-change-preset-ts}
 
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
@@ -190,7 +194,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
   **Migration**: The preset will also report invalid option names. Refer to the [docs](./preset-typescript.md#options) and ensure valid usage. For example, `runtime` is not a valid `preset-typescript` option and thus should be removed.
 
-### `@babel/plugin-transform-typescript`
+### `@babel/plugin-transform-typescript` {#configuration-change-transform-ts}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -198,7 +202,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
   **Migration**: Remove the option from your config.
 
-### `@babel/plugin-syntax-typescript`
+### `@babel/plugin-syntax-typescript` {#configuration-change-syntax-ts}
 
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
@@ -218,7 +222,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
   If you are using `isTSX: false`, you can safely remove them.
 
-### `@babel/preset-flow`
+### `@babel/preset-flow` {#configuration-change-preset-flow}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -230,7 +234,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
   **Migration**: The preset will also report invalid option names. Refer to the [docs](./preset-flow.md#options) and ensure valid usage.
 
-### `@babel/plugin-transform-flow-strip-types`
+### `@babel/plugin-transform-flow-strip-types` {#configuration-change-transform-flow}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -238,7 +242,15 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
   **Migration**: Remove the option from your config. You will probably be fine with the new behaviour.
 
-### `@babel/generator`
+### `@babel/parser` {#configuration-change-parser}
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Remove `estree` plugin option `classFeatures` ([#13752](https://github.com/babel/babel/pull/13752))
+
+  **Migration**: Remove the option from your config. You will probably be fine with the new behaviour. Previously the `classFeatures` plugin enables `@babel/parser` to produce class properties AST compatible with ESLint 8. In Babel 8 the `eslint-parser` only works with ESLint 8 and above.
+
+### `@babel/generator` {#configuration-change-generator}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -246,7 +258,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
   **Migration**: `@babel/generator` allows to specify options for [jsesc](https://github.com/mathiasbynens/jsesc), a library used to escape printed values. If you are using the `jsonCompatibleStrings` option, you can replace it with `jsescOption: { json: true }`.
 
-### `@babel/plugin-transform-modules-systemjs`
+### `@babel/plugin-transform-modules-systemjs` {#configuration-change-transform-systemjs}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -263,7 +275,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
   ```
   **Notes**: All the other plugins which support dynamic import (`transform-modules-commonjs` and `transform-modules-amd`) require the separate plugin since it was introduced. We couldn't change it for `transform-modules-systemjs` because that package did already support dynamic import.
 
-### `@babel/plugin-proposal-decorators`
+### `@babel/plugin-proposal-decorators` {#configuration-change-transform-decorators}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -370,7 +382,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
-- Output non-ASCII characters as-is in string literal ([#11384](https://github.com/babel/babel/pull/11384))
+- Output non-ASCII characters as-is in string literal ([#12675](https://github.com/babel/babel/pull/12675))
 
   If you are using any one of `@babel/cli`, WebPack, Rollup, create-react-app or other Node.js powered bundlers, the transformed code is always encoded with `utf-8` and your app will not be affected. The issue only affects if you are manually calling the `babel.transform` API and your web server is not serving js files in the `utf8` encoding.
 
