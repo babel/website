@@ -112,9 +112,23 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
   **Migration**: The `uglify` target had been deprecated since 7.0.0-beta.0, if you still need this, use the [`forceAllTransforms`](preset-env.md#forcealltransforms) option.
 
-### `@babel/preset-react`
+### `@babel/preset-react` {#configuration-change-preset-react}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- Remove `useSpread` and `useBuiltIns` options ([#12593](https://github.com/babel/babel/pull/12593))
+
+  **Migration**: Babel 8 always compiles JSX spread elements to object spread:
+  ```jsx title=input.jsx
+  <div {...props}></div>
+  // transforms to
+  jsx("div", { ...props })
+  ```
+
+  If your app targets to modern browsers released after 2019, you can safely remove these options as object spread has less code footprint.
+
+  If your code needs to run in an environment which doesn't support object spread, you can either use `@babel/preset-env` (recommended) or `@babel/plugin-proposal-object-rest-spread`. If you want to transpile `Object.assign` down, you also need to enable `@babel/plugin-transform-object-assign`.
+  In Babel 7.7.0, you can opt-in this behavior by using the `useSpread` option.
 
 - Type check input options ([#12460](https://github.com/babel/babel/pull/12460))
 
@@ -255,7 +269,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 - Remove support for the 2018-09 decorators proposal. The plugin now requires a [`version`](./plugin-proposal-decorators.md#version) option ([#12712](https://github.com/babel/babel/pull/12712))
 
-  **Migration**: You should migrate to the [latest version of the proposal](github.com/tc39/proposal-decorators/) if you are using the `"2018-09"` or you have not specified a `version` option.
+  **Migration**: You should migrate to the [latest version of the proposal](https://github.com/tc39/proposal-decorators/) if you are using the `"2018-09"` or you have not specified a `version` option.
   ```diff title="babel.config.json"
   {
     "plugins": [
@@ -299,10 +313,9 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- [Transforms JSX spread properties using object spread](https://github.com/babel/babel/issues/9652) ([#11141](https://github.com/babel/babel/pull/11141))
+- [Transforms JSX spread properties using object spread](https://github.com/babel/babel/issues/9652) ([#12593](https://github.com/babel/babel/pull/12593))
 
-  **Migration**: If your code needs to run in an environment which doesn't support object spread, you can either use `@babel/preset-env` (recommended) or `@babel/plugin-proposal-object-rest-spread`. If you want to transpile `Object.assign` down, you also need to enable `@babel/plugin-transform-object-assign`.
-  In Babel 7.7.0, you can opt-in this behavior by using the `useSpread` option.
+  **Migration**: See the [Configuration changes / preset-react](#configuration-change-preset-react) section.
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
