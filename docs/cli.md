@@ -196,7 +196,7 @@ By default, the transpiled file will use the `.js` extension.
 You can control the output file extension with `--out-file-extension`
 
 ```sh title="Shell"
-babel src --out-dir lib --out-file-extension .mjs
+npx babel src --out-dir lib --out-file-extension .mjs
 ```
 
 You can also preserve the input file extension with `--keep-file-extension`
