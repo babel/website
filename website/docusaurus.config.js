@@ -141,7 +141,7 @@ const siteConfig = {
       },
     },
     prism: {
-      additionalLanguages: ["powershell"],
+      additionalLanguages: ["flow", "powershell"],
       theme: require("./src/theme/prism/light"),
       darkTheme: require("./src/theme/prism/dark"),
       magicComments: [
