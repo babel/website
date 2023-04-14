@@ -138,6 +138,12 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
   **Migration**: The preset will also report invalid option names. Refer to the [docs](./preset-react.md#options) and ensure valid usage.
 
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Disallow `filter` option in automatic runtime ([#15068](https://github.com/babel/babel/pull/15068/commits/e2dd3be6e38b0254bc69a8e52c265214235829c6))
+
+  **Migration**: The `filter` option can only be used with the `classic` runtime. If you have switched to `automatic` runtime, you can safely remove this option. Otherwise please specify `runtime: "classic"`.
+
 ### `@babel/preset-typescript` {#configuration-change-preset-ts}
 
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
