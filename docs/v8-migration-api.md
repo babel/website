@@ -156,6 +156,10 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: The `Noop` node is not used. If you are depending on the `Noop` node, please open an issue and talk about your use case.
 
+- Initialize `indexers`, `callProperties` and `internalSlots` in the node `ObjectTypeAnnotation` as an empty array in `t.objectTypeAnnotation` ([#14465](https://github.com/babel/babel/pull/14465))
+
+  __Migration__: In Babel 7 the builder `t.objectTypeAnnotation` initializes them as `null`, this is inconsistent with how `@babel/parser` will parse the Flow object type annotations. In Babel 8 the new default value `[]` matches the parser behaviour. Adapt to the new default value if you are depending on this.
+
 ### `@babel/parser`
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)

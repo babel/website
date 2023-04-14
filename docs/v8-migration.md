@@ -258,6 +258,49 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
   **Migration**: `@babel/generator` allows to specify options for [jsesc](https://github.com/mathiasbynens/jsesc), a library used to escape printed values. If you are using the `jsonCompatibleStrings` option, you can replace it with `jsescOption: { json: true }`.
 
+### `@babel/eslint-parser` {#configuration-change-eslint-parser}
+
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- Remove `allowImportExportEverywhere` option ([#13921](https://github.com/babel/babel/pull/13921))
+
+  **Migration**: Use `babelOptions.parserOpts.allowImportExportEverywhere` instead.
+
+  ```diff title=".eslintrc"
+  {
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+  -   "allowImportExportEverywhere": true,
+  +   "babelOptions": {
+  +     "parserOpts": {
+  +       "allowImportExportEverywhere": true
+  +     }
+  +   }
+    }
+  }
+  ```
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- `parserOpts.allowSuperOutsideMethod` defaults to `false` ([#13921](https://github.com/babel/babel/pull/13921))
+
+  **Migration**: If you want to restore to Babel 7 behaviour, set `babelOptions.parserOpts.allowSuperOutsideMethod` to `true`.
+
+- `allowReturnOutsideFunction` is inferred from `ecmaFeatures.globalReturn` ([#13921](https://github.com/babel/babel/pull/13921))
+
+  **Migration**: If you want to enable `allowReturnOutsideFunction`, set [`ecmaFeatures.globalReturn`](https://eslint.org/docs/latest/use/configure/language-options#specifying-parser-options) to `true`.
+
+  ```json title=".eslintrc"
+  {
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "globalReturn": true
+      }
+    }
+  }
+  ```
+
 ### `@babel/plugin-transform-modules-systemjs` {#configuration-change-transform-systemjs}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
