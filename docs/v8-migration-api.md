@@ -178,6 +178,58 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   ```
   **Migration**: This change probably won't affect your integration. The `tokens[].type` is an object storing meta information of a token as implementation details.
 
+- Tokenize private name `#priv` as a single `privateName` token ([#13256](https://github.com/babel/babel/pull/13256))
+
+  This change will affect your integration only when you are using `tokens: true` and are depending on the extra `tokens` AST output.
+
+  ```js title="babel-integration.js"
+  import { parse } from "@babel/parser";
+
+  const { tokens } = parse("class C { #priv }", { tokens: true });
+  tokens.filter(t => t.start >= 10 && t.end <= 15) // get tokens for `#priv`
+  // Babel 7
+  // [
+  //  Token (#) { value: "#", start: 10, end: 11 },
+  //  Token (name) { value: "priv", start: 11, end: 15 }
+  // ]
+  // Babel 8
+  // [
+  //  Token (privateName) { value: "priv", start: 10, end: 15 }
+  // ]
+  ```
+  **Migration**: Adapt to the new `privateName` token. If you want to restore to the Babel 7 behaviour, manually process the `privateName` token into the `#` token and the `name` token ([example](https://github.com/babel/babel/blob/7e60a93897f9a134506251ea51269faf4d02a86c/packages/babel-parser/src/parser/statement.ts#L86-L110)).
+
+- Tokenize string template as `templateNonTail` and `templateTail` ([#13919](https://github.com/babel/babel/pull/13919))
+
+  This change will affect your integration only when you are using `tokens: true` and are depending on the extra `tokens` AST output.
+
+  ```js title="babel-integration.js"
+  import { parse } from "@babel/parser";
+
+  const { tokens } = parse("`head${x}middle${y}tail`", { tokens: true });
+  console.log(tokens); // print tokens
+  // Babel 7
+  // [
+  //  Token (`),
+  //  Token (template) { value: "head" }, Token (${),
+  //  Token (name) { value: "x" }, Token (}),
+  //  Token (template) { value: "middle" }, Token (${),
+  //  Token (name) { value: "y" }, Token (}),
+  //  Token (template) { value: "tail" }
+  //  Token (`)
+  // ]
+  // Babel 8
+  // [
+  //  Token (templateNonTail) { value: "head" },
+  //  Token (name) { value: "x" },
+  //  Token (templateNonTail) { value: "middle" },
+  //  Token (name) { value: "y" },
+  //  Token (templateTail) { value: "tail" }
+  // ]
+  ```
+
+  **Migration**: Adapt to the new token design. If you want to restore to the Babel 7 behaviour, manually transform them to the Babel 7 tokens ([example](https://github.com/babel/babel/blob/7e60a93897f9a134506251ea51269faf4d02a86c/packages/babel-parser/src/parser/statement.ts#L116-L188)).
+
 ### `@babel/traverse`
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
