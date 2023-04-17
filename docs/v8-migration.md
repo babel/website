@@ -330,7 +330,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 - Remove support for the 2018-09 decorators proposal. The plugin now requires a [`version`](./plugin-proposal-decorators.md#version) option ([#12712](https://github.com/babel/babel/pull/12712))
 
-  **Migration**: You should migrate to the [latest version of the proposal](https://github.com/tc39/proposal-decorators/) if you are using the `"2018-09"` or you have not specified a `version` option.
+  **Migration**: You should migrate to the [latest version of the proposal](https://github.com/tc39/proposal-decorators/) `"2023-03"`, if you are using the `"2018-09"` or you have not specified a `version` option.
   ```diff title="babel.config.json"
   {
     "plugins": [
@@ -342,7 +342,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
     ]
   }
   ```
-  The syntax is the same, but you will need to rewrite your decorator functions. You can already migrate since Babel 7.21.0, using the `"version": "2023-01"` option of `@babel/plugin-proposal-decorators`.
+  The syntax is the same, but you will need to rewrite your decorator functions. The spec repo provides [comparison between the latest version and the `2018-09` version](https://github.com/tc39/proposal-decorators#comparison-with-the-previous-stage-2-decorators-proposal). You can already migrate since Babel 7.22.0, using the `"version": "2023-03"` option of `@babel/plugin-proposal-decorators`.
 
 ## Compilation Changes
 
