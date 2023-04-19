@@ -262,3 +262,17 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 - Remove `ios_saf` from `data/native-modules.json` ([#15068](https://github.com/babel/babel/pull/15068/commits/554225d72d7781356e05b6bbc4ef85f42629d001))
 
   __Migration__: Use `ios` instead.
+
+### `@babel/eslint-plugin`
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- The `default` named exports has been removed ([#14180](https://github.com/babel/babel/pull/14180))
+
+  __Migration__: This change has no effect if you are using the plugin in your ESLint config. However, if you are extending `@babel/eslint-plugin`, ensure that you obtain exports
+  from `require("@babel/eslint-plugin")` rather than `require("@babel/eslint-plugin").default`.
+
+  ```js title="my-eslint-plugin.cjs"
+  // Don't add `.default` after `require()`
+  const { rules, rulesConfig } = require("@babel/eslint-plugin")
+  ```
