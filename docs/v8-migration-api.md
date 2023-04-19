@@ -263,6 +263,10 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: Use `ios` instead.
 
+- Rename stage 4 plugin entries from `proposal-*` to `transform-*` in `plugins.json` ([#14976](https://github.com/babel/babel/pull/14976))
+
+  __Migration__: For example, use `transform-class-properties` rather than `proposal-class-properties`, for a complete list of renamed plugin, see [Packages Renames section of Babel 8 migration](./v8-migration.md#package-renames).
+
 ### `@babel/eslint-plugin`
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
@@ -276,3 +280,24 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   // Don't add `.default` after `require()`
   const { rules, rulesConfig } = require("@babel/eslint-plugin")
   ```
+
+### `@babel/helper-compilation-targets`
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- `isRequired` will not accept renamed `proposal-` queries ([#14976](https://github.com/babel/babel/pull/14976))
+
+  ```diff title="my-babel-plugin.js"
+  module.exports = api => {
+    const targets = api.targets();
+    // The targets have native optional chaining support
+    // if `transform-optional-chaining` is _not_ required
+    const optionalChainingSupported = !isRequired(
+  -   "proposal-optional-chaining",
+  +   "transform-optional-chaining",
+      targets
+    );
+  };
+  ```
+
+  __Migration__: Use the `transform-*` plugin name if the plugin is listed in [the Packages Renames section of Babel 8 migration](./v8-migration.md#package-renames).
