@@ -169,13 +169,15 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
     ```diff title="babel.config.js"
     {
-      include: /\.vue$/,
-      presets: [
-        ['@babel/preset-typescript', {
-    -     allExtensions: true, isTSX: true
-    +     ignoreExtensions: true
-        }]
-      ]
+      overrides: [{
+        include: /\.vue$/,
+        presets: [
+          ['@babel/preset-typescript', {
+    -       allExtensions: true, isTSX: true
+    +       ignoreExtensions: true
+          }]
+        ]
+      }]
     }
     ```
 
@@ -380,7 +382,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
-- [Disallow sequence expressions inside JSX attributes](https://github.com/babel/babel/issues/8604) ([#8787](https://github.com/babel/babel/pull/8787))
+- [Disallow sequence expressions inside JSX attributes](https://github.com/babel/babel/issues/8604) ([#12447](https://github.com/babel/babel/pull/12447))
 
   **Migration**: Find and replace the following code patterns. You can start the migration prior to Babel 8:
   ```diff title=input.jsx
@@ -388,7 +390,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
   + <p key={(foo, bar)}></p> // Valid
   ```
 
-- [Disallow `{`, `}`, `<` and `>` in JSX text](https://github.com/babel/babel/issues/11042) ([#11046](https://github.com/babel/babel/pull/11046))
+- [Disallow `{`, `}`, `<` and `>` in JSX text](https://github.com/babel/babel/issues/11042) ([#12451](https://github.com/babel/babel/pull/12451))
 
   **Migration**: Use `{'{'}`, `{'}'}`, `{'<'}` and `{'>'}` instead. Find and replace the following code patterns. You can start the migration prior to Babel 8:
   ```diff title=input.jsx

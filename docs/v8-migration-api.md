@@ -15,8 +15,10 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
-- Use an identifier for `TSTypeParameter.name` ([#12829](https://github.com/babel/babel/pull/12829)). For a TS type parameter `node`, `node.name` is a string in Babel 7 while in Babel 8 it is an Identifier.
-  ```ts
+- Use an identifier for `TSTypeParameter.name` ([#12829](https://github.com/babel/babel/pull/12829)).
+
+  For a TS type parameter `node`, `node.name` is a string in Babel 7 while in Babel 8 it is an Identifier.
+  ```ts title="input.ts"
   // T is a TSTypeParameter
   function process<T>(input: T): T {}
   ```
@@ -26,7 +28,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 - Rename `parameters` to `params`, `typeAnnotation` to `returnType` for `TSCallSignatureDeclaration`, `TSConstructSignatureDeclaration`, `TSFunctionType`, `TSConstructorType` and `TSMethodSignature`
  ([#9231](https://github.com/babel/babel/issues/9231), [#13709](https://github.com/babel/babel/pull/13709))
 
-  ```ts
+  ```ts title="input.ts"
   interface Foo {
     // TSCallSignatureDeclaration
     <T>(): string;
