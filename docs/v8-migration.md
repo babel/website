@@ -106,7 +106,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
   ```
   Adapt the example above if you are using `@babel/plugin-transform-modules-amd` or `@babel/plugin-transform-modules-umd`. You can start the migration prior to Babel 8.0.
 
-  If you are using `@babel/cli` and passing them from command line, please create a Babel config `babel.config.js` and specify options there.
+  If you are using `@babel/cli` and passing `--module-ids`, `--module-root` and `--module-id` from command line, please create a Babel config `babel.config.js` and specify options there.
 
 ### `@babel/preset-env` {#configuration-change-preset-env}
 

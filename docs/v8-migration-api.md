@@ -265,7 +265,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 - Rename stage 4 plugin entries from `proposal-*` to `transform-*` in `plugins.json` ([#14976](https://github.com/babel/babel/pull/14976))
 
-  __Migration__: For example, use `transform-class-properties` rather than `proposal-class-properties`, for a complete list of renamed plugin, see [Packages Renames section of Babel 8 migration](./v8-migration.md#package-renames).
+  __Migration__: For example, use `transform-class-properties` rather than `proposal-class-properties`. For a complete list of renamed plugin, see [Packages Renames section of Babel 8 migration](./v8-migration.md#package-renames).
 
 ### `@babel/eslint-plugin`
 
@@ -301,3 +301,29 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   ```
 
   __Migration__: Use the `transform-*` plugin name if the plugin is listed in [the Packages Renames section of Babel 8 migration](./v8-migration.md#package-renames).
+
+## Plugin changes
+
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- Remove `getModuleName` from plugin pass ([#12724](https://github.com/babel/babel/pull/12724))
+
+  __Migration__: Use `.file.getModuleName` instead. For example,
+
+  ```diff title="my-babel-plugin.js"
+  module.exports = {
+    name: "my-babel-plugin",
+    visitor: {
+      Identifier(path, pass) {
+  -     const moduleName = pass.getModuleName();
+  +     const moduleName = pass.file.getModuleName();
+      }
+    }
+  }
+  ```
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Remove `addImport` from plugin pass ([#15576](https://github.com/babel/babel/pull/15576))
+
+  __Migration__: This change probably will not affect your plugin as this method is already throwing an error in Babel 7. Use [`addNamed`](./helper-module-imports.md#import--named-as-_named--from-source) or [`addDefault`](./helper-module-imports.md#import-_default-from-source) from `@babel/helper-module-imports` instead.
