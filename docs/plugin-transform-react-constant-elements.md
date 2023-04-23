@@ -15,16 +15,28 @@ React elements to the highest possible scope, preventing multiple unnecessary re
 const Hr = () => {
   return <hr className="hr" />;
 };
+
+const WithChildren = (props) => {
+  return <div className={props.className}>
+    <hr />
+  </div>;
+}
 ```
 
 **Out**
 
 ```jsx title="JSX"
-const _ref = <hr className="hr" />;
+var _hr, _hr2;
 
 const Hr = () => {
-  return _ref;
+  return _hr || (_hr = <hr className="hr" />);
 };
+
+const WithChildren = (props) => {
+  return <div className={props.className}>
+    {_hr2 || (_hr2 = <hr />)}
+  </div>;
+}
 ```
 
 **Deopts**
