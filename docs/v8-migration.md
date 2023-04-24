@@ -110,6 +110,24 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 ### `@babel/preset-env` {#configuration-change-preset-env}
 
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- `includes` and `excludes` respect renamed package names ([#15576](https://github.com/babel/babel/pull/15576))
+
+  **Migration**: If `includes` or `excludes` contain any plugins mentioned in the [Packages Renames section](./v8-migration.md#package-renames), change it to the new name. For example,
+
+  ```diff title="babel.config.json"
+  {
+    "presets": [[
+      "@babel/preset-env",
+      {
+  -     "includes": ["proposal-optional-chaining"]
+  +     "includes": ["transform-optional-chaining"]
+      }
+    ]]
+  }
+  ```
+
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 - Remove `uglify` target ([#12594](https://github.com/babel/babel/pull/12594))

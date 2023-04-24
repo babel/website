@@ -327,3 +327,23 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 - Remove `addImport` from plugin pass ([#15576](https://github.com/babel/babel/pull/15576))
 
   __Migration__: This change probably will not affect your plugin as this method is already throwing an error in Babel 7. Use [`addNamed`](./helper-module-imports.md#import--named-as-_named--from-source) or [`addDefault`](./helper-module-imports.md#import-_default-from-source) from `@babel/helper-module-imports` instead.
+
+- Stop supporting fields as named exports ([#15576](https://github.com/babel/babel/pull/15576))
+
+  __Migration__: This change disallows plugins declared from named exports, for example,
+  ```js title="legacy-babel-plugin.js"
+  exports.name = "legacy-babel-plugin";
+  exports.visitor = {
+    Identifier() {}
+  }
+  ```
+
+  find such patterns and migrate to the following patterns.
+  ```js title="my-babel-plugin.cjs"
+  module.exports = {
+    name: "babel-plugin",
+    visitor: {
+      Identifier() {}
+    }
+  }
+  ```
