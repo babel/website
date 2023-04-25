@@ -2,6 +2,12 @@ const parseYaml = require("js-yaml").load;
 const path = require("path");
 const fs = require("fs");
 const url = require("url");
+const visit = require("unist-util-visit");
+
+// env vars from the cli are always strings, so !!ENV_VAR returns true for "false"
+function bool(value) {
+  return value && value !== "false" && value !== "0";
+}
 
 function findMarkDownSync(startPath) {
   const result = [];
@@ -27,7 +33,7 @@ function loadMD(fsPath) {
 function loadYaml(fsPath) {
   return parseYaml(fs.readFileSync(path.join(__dirname, fsPath), "utf8"));
 }
-// move to website/data later
+
 const users = loadYaml("./data/users.yml").map(user => ({
   pinned: user.pinned,
   caption: user.name,
@@ -69,7 +75,6 @@ const sponsors = [
   ...sponsorsManual,
 ];
 
-// move to website/data later
 const videos = require(path.join(__dirname, "/data/videos.js"));
 const team = loadYaml("./data/team.yml");
 const tools = loadYaml("./data/tools.yml");
@@ -79,6 +84,43 @@ toolsMD.forEach(tool => {
   tool.install = loadMD(`${tool.path}/install.md`);
   tool.usage = loadMD(`${tool.path}/usage.md`);
 });
+
+/**
+ * A remark plugin that renders markdown contents within `:::babel8` and the nearest matching `:::` based on the
+ * BABEL_8_BREAKING option. When `BABEL_8_BREAKING` is `true`, contents within `:::babel7` and `:::` will be removed,
+ * otherwise everything within `:::babel8` and `:::` is removed.
+ *
+ * Limit: there must be an empty line before and after `:::babel[78]` and `:::`.
+ *
+ * With this plugin we can maintain both Babel 7 and Babel 8 docs in the same branch.
+ * @param {{BABEL_8_BREAKING: boolean}} options
+ * @returns md-ast transformer
+ */
+function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
+  return async function transformer(root) {
+    visit(root, "paragraph", (node, index, parent) => {
+      const directiveLabel = node.children?.[0].value;
+      if (directiveLabel === ":::babel8" || directiveLabel === ":::babel7") {
+        const siblings = parent.children;
+        let containerEnd = index;
+        for (; containerEnd < siblings.length; containerEnd++) {
+          const node = siblings[containerEnd];
+          if (node.type === "paragraph" && node.children?.[0].value === ":::") {
+            break;
+          }
+        }
+        if (containerEnd !== siblings.length) {
+          if ((directiveLabel === ":::babel8") ^ renderBabel8) {
+            siblings.splice(index, containerEnd - index + 1); // remove anything between ":::babel[78]" and ":::"
+          } else {
+            siblings.splice(containerEnd, 1); // remove ":::"
+            siblings.splice(index, 1); // remove ":::babel[78]"
+          }
+        }
+      }
+    });
+  };
+}
 
 const siteConfig = {
   titleDelimiter: "·",
@@ -97,7 +139,6 @@ const siteConfig = {
     toolsMD,
     setupBabelrc,
   },
-  // useEnglishUrl: true, not needed
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -119,6 +160,12 @@ const siteConfig = {
           showLastUpdateAuthor: false,
           showLastUpdateTime: false,
 
+          beforeDefaultRemarkPlugins: [
+            [
+              remarkDirectiveBabel8Plugin,
+              { renderBabel8: bool(process.env.BABEL_8_BREAKING) },
+            ],
+          ],
           remarkPlugins: [
             [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
           ],
