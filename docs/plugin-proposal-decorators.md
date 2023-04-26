@@ -164,4 +164,4 @@ If you are already using `@babel/preset-env`, you can safely remove `@babel/plug
 
 ## References
 
-- [Proposal: JavaScript Decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md)
+- [Proposal: JavaScript Decorators](https://github.com/tc39/proposal-decorators)
