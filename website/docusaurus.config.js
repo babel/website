@@ -102,14 +102,25 @@ function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
       const directiveLabel = node.children?.[0].value;
       if (directiveLabel === ":::babel8" || directiveLabel === ":::babel7") {
         const siblings = parent.children;
-        let containerEnd = index;
+        let containerEnd = index,
+          nestedLevel = 0;
         for (; containerEnd < siblings.length; containerEnd++) {
           const node = siblings[containerEnd];
-          if (node.type === "paragraph" && node.children?.[0].value === ":::") {
-            break;
+          if (node.type === "paragraph") {
+            const directiveLabel = node.children?.[0].value;
+            if (directiveLabel?.startsWith(":::")) {
+              if (directiveLabel.length === 3) {
+                nestedLevel--;
+                if (nestedLevel === 0) {
+                  break;
+                }
+              } else {
+                nestedLevel++;
+              }
+            }
           }
         }
-        if (containerEnd !== siblings.length) {
+        if (nestedLevel === 0) {
           if ((directiveLabel === ":::babel8") ^ renderBabel8) {
             siblings.splice(index, containerEnd - index + 1); // remove anything between ":::babel[78]" and ":::"
           } else {
