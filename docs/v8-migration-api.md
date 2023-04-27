@@ -302,6 +302,33 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: Use the `transform-*` plugin name if the plugin is listed in [the Packages Renames section of Babel 8 migration](./v8-migration.md#package-renames).
 
+### `@babel/helper-replace-supers`
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Remove named export `environmentVisitor` ([#15550](https://github.com/babel/babel/pull/15550))
+
+  __Migration__: Import it from [`@babel/helper-environment-visitor`](./helper-environment-visitor.md).
+
+  ```diff
+  - import { environmentVisitor } from "@babel/helper-replace-supers";
+  + import environmentVisitor from `@babel/helper-environment-visitor`;
+  ```
+
+- Remove named export `skipAllButComputedKey` ([#15550](https://github.com/babel/babel/pull/15550))
+
+  __Migration__: Use [`requeueComputedKeyAndDecorators`](./helper-environment-visitor.md#requeuecomputedkeyanddecorators) instead. Find and replace the following import and usage
+  ```js title="my-babel7-plugin.js"
+  import { skipAllButComputedKey } from "@babel/helper-replace-supers";
+  skipAllButComputedKey(path);
+  ```
+  to
+  ```js title="my-babel8-plugin.js"
+  import { requeueComputedKeyAndDecorators } from `@babel/helper-environment-visitor`;
+  path.skip();
+  requeueComputedKeyAndDecorators(path);
+  ```
+
 ## Plugin changes
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
