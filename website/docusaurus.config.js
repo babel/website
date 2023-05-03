@@ -2,7 +2,6 @@ const parseYaml = require("js-yaml").load;
 const path = require("path");
 const fs = require("fs");
 const url = require("url");
-const visit = require("unist-util-visit");
 
 // env vars from the cli are always strings, so !!ENV_VAR returns true for "false"
 function bool(value) {
@@ -98,14 +97,17 @@ toolsMD.forEach(tool => {
  */
 function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
   return async function transformer(root) {
-    visit(root, "paragraph", (node, index, parent) => {
+    const children = root.children;
+    const deleteBatches = [];
+    for (let index = 0; index < children.length; index++) {
+      const node = children[index];
+      if (node.type !== "paragraph") continue;
       const directiveLabel = node.children?.[0].value;
       if (directiveLabel === ":::babel8" || directiveLabel === ":::babel7") {
-        const siblings = parent.children;
         let containerEnd = index + 1,
           nestedLevel = 1;
-        for (; containerEnd < siblings.length; containerEnd++) {
-          const node = siblings[containerEnd];
+        for (; containerEnd < children.length; containerEnd++) {
+          const node = children[containerEnd];
           if (node.type === "paragraph") {
             const directiveLabel = node.children?.[0].value;
             if (directiveLabel?.startsWith(":::")) {
@@ -122,14 +124,22 @@ function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
         }
         if (nestedLevel === 0) {
           if ((directiveLabel === ":::babel8") ^ renderBabel8) {
-            siblings.splice(index, containerEnd - index + 1); // remove anything between ":::babel[78]" and ":::"
+            deleteBatches.push([index, containerEnd - index + 1]); // remove anything between ":::babel[78]" and ":::"
           } else {
-            siblings.splice(containerEnd, 1); // remove ":::"
-            siblings.splice(index, 1); // remove ":::babel[78]"
+            deleteBatches.push([index, 1], [containerEnd, 1]); // remove ":::babel[78]" and ":::"
           }
+          index = containerEnd;
+        } else {
+          throw new Error(
+            ":::babel[78] directive is not matched with ending :::"
+          );
         }
       }
-    });
+    }
+    for (let index = deleteBatches.length - 1; index >= 0; index--) {
+      const [start, deleteCount] = deleteBatches[index];
+      children.splice(start, deleteCount);
+    }
   };
 }
 
