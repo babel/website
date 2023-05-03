@@ -102,8 +102,8 @@ function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
       const directiveLabel = node.children?.[0].value;
       if (directiveLabel === ":::babel8" || directiveLabel === ":::babel7") {
         const siblings = parent.children;
-        let containerEnd = index,
-          nestedLevel = 0;
+        let containerEnd = index + 1,
+          nestedLevel = 1;
         for (; containerEnd < siblings.length; containerEnd++) {
           const node = siblings[containerEnd];
           if (node.type === "paragraph") {
