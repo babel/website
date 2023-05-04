@@ -83,12 +83,17 @@ const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
   // Handling pagination if necessary
   // eslint-disable-next-line
   while (true) {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    if (process.env.OC_API_TOKEN) {
+      headers["Personal-Token"] = process.env.OC_API_TOKEN;
+    }
+
     const result = await fetch(graphqlEndpoint, {
       method: "POST",
       body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
     }).then(response => response.json());
     if (result.errors) {
       const {
