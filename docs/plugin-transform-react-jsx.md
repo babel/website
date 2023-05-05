@@ -361,6 +361,8 @@ Note that the `@jsx React.DOM` pragma has been deprecated as of React v0.12
 
 Replace the component used when compiling JSX fragments. It should be a valid JSX tag name.
 
+:::babel7
+
 ### `useBuiltIns`
 
 `boolean`, defaults to `false`.
@@ -372,3 +374,5 @@ When spreading props, use `Object.assign` directly instead of Babel's extend hel
 `boolean`, defaults to `false`.
 
 When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
+
+:::
