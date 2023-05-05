@@ -42,6 +42,29 @@ Without options:
 
 With options:
 
+:::babel8
+
+```json title="babel.config.json"
+{
+  "presets": [
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic", // defaults to automatic
+        "importSource": "custom-jsx-library", // defaults to react(only in automatic runtime)
+        "throwIfNamespace": false // defaults to true
+        // "pragma": "dom", // default pragma is React.createElement (only in classic runtime)
+        // "pragmaFrag": "DomFrag", // default is React.Fragment (only in classic runtime)
+      }
+    ]
+  ]
+}
+```
+
+:::
+
+:::babel7
+
 ```json title="babel.config.json"
 {
   "presets": [
@@ -58,6 +81,8 @@ With options:
   ]
 }
 ```
+
+:::
 
 ### Via CLI
 
