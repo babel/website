@@ -280,6 +280,27 @@ Without options:
 
 With options:
 
+:::babel8
+
+```json title="babel.config.json"
+{
+  "plugins": [
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "throwIfNamespace": false, // defaults to true
+        "runtime": "automatic", // defaults to autoamtic
+        "importSource": "custom-jsx-library" // defaults to react
+      }
+    ]
+  ]
+}
+```
+
+:::
+
+:::babel7
+
 ```json title="babel.config.json"
 {
   "plugins": [
@@ -294,6 +315,8 @@ With options:
   ]
 }
 ```
+
+:::
 
 ### Via CLI
 
@@ -327,7 +350,17 @@ Though the JSX spec allows this, it is disabled by default since React's JSX doe
 
 #### `runtime`
 
+:::babel8
+
+`classic | automatic`, defaults to `automatic`
+
+:::
+
+:::babel7
+
 `classic | automatic`, defaults to `classic`
+
+:::
 
 Added in: `v7.9.0`
 
