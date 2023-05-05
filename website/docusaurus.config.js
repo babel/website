@@ -3,6 +3,11 @@ const path = require("path");
 const fs = require("fs");
 const url = require("url");
 
+// env vars from the cli are always strings, so !!ENV_VAR returns true for "false"
+function bool(value) {
+  return value && value !== "false" && value !== "0";
+}
+
 function findMarkDownSync(startPath) {
   const result = [];
   const files = fs.readdirSync(path.join(__dirname, startPath));
@@ -27,7 +32,7 @@ function loadMD(fsPath) {
 function loadYaml(fsPath) {
   return parseYaml(fs.readFileSync(path.join(__dirname, fsPath), "utf8"));
 }
-// move to website/data later
+
 const users = loadYaml("./data/users.yml").map(user => ({
   pinned: user.pinned,
   caption: user.name,
@@ -69,7 +74,6 @@ const sponsors = [
   ...sponsorsManual,
 ];
 
-// move to website/data later
 const videos = require(path.join(__dirname, "/data/videos.js"));
 const team = loadYaml("./data/team.yml");
 const tools = loadYaml("./data/tools.yml");
@@ -79,6 +83,65 @@ toolsMD.forEach(tool => {
   tool.install = loadMD(`${tool.path}/install.md`);
   tool.usage = loadMD(`${tool.path}/usage.md`);
 });
+
+/**
+ * A remark plugin that renders markdown contents within `:::babel8` and the nearest matching `:::` based on the
+ * BABEL_8_BREAKING option. When `BABEL_8_BREAKING` is `true`, contents within `:::babel7` and `:::` will be removed,
+ * otherwise everything within `:::babel8` and `:::` is removed.
+ *
+ * Limit: there must be an empty line before and after `:::babel[78]` and `:::`.
+ *
+ * With this plugin we can maintain both Babel 7 and Babel 8 docs in the same branch.
+ * @param {{BABEL_8_BREAKING: boolean}} options
+ * @returns md-ast transformer
+ */
+function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
+  return async function transformer(root) {
+    const children = root.children;
+    const deleteBatches = [];
+    for (let index = 0; index < children.length; index++) {
+      const node = children[index];
+      if (node.type !== "paragraph") continue;
+      const directiveLabel = node.children?.[0].value;
+      if (directiveLabel === ":::babel8" || directiveLabel === ":::babel7") {
+        let containerEnd = index + 1,
+          nestedLevel = 1;
+        for (; containerEnd < children.length; containerEnd++) {
+          const node = children[containerEnd];
+          if (node.type === "paragraph") {
+            const directiveLabel = node.children?.[0].value;
+            if (directiveLabel?.startsWith(":::")) {
+              if (directiveLabel.length === 3) {
+                nestedLevel--;
+                if (nestedLevel === 0) {
+                  break;
+                }
+              } else {
+                nestedLevel++;
+              }
+            }
+          }
+        }
+        if (nestedLevel === 0) {
+          if ((directiveLabel === ":::babel8") ^ renderBabel8) {
+            deleteBatches.push([index, containerEnd - index + 1]); // remove anything between ":::babel[78]" and ":::"
+          } else {
+            deleteBatches.push([index, 1], [containerEnd, 1]); // remove ":::babel[78]" and ":::"
+          }
+          index = containerEnd;
+        } else {
+          throw new Error(
+            ":::babel[78] directive is not matched with ending :::"
+          );
+        }
+      }
+    }
+    for (let index = deleteBatches.length - 1; index >= 0; index--) {
+      const [start, deleteCount] = deleteBatches[index];
+      children.splice(start, deleteCount);
+    }
+  };
+}
 
 const siteConfig = {
   titleDelimiter: "·",
@@ -97,7 +160,6 @@ const siteConfig = {
     toolsMD,
     setupBabelrc,
   },
-  // useEnglishUrl: true, not needed
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -119,6 +181,12 @@ const siteConfig = {
           showLastUpdateAuthor: false,
           showLastUpdateTime: false,
 
+          beforeDefaultRemarkPlugins: [
+            [
+              remarkDirectiveBabel8Plugin,
+              { renderBabel8: bool(process.env.BABEL_8_BREAKING) },
+            ],
+          ],
           remarkPlugins: [
             [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
           ],
