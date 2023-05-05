@@ -79,9 +79,25 @@ require("@babel/core").transformSync("code", {
 
 #### `runtime`
 
+:::babel8
+
+`classic | automatic`, defaults to `automatic`
+
+:::
+
+:::babel7
+
 `classic | automatic`, defaults to `classic`
 
+:::
+
 Added in: `v7.9.0`
+
+:::babel7
+
+> Note: The default runtime will be switched to `automatic` in Babel 8.
+
+:::
 
 Decides which runtime to use.
 
