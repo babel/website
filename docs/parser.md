@@ -211,6 +211,7 @@ require("@babel/parser").parse("code", {
 
 | Version | Changes |
 | --- | --- |
+| `v7.22.0` | Added `importAttributes` |
 | `v7.20.0` | Added `explicitResourceManagement`, `importReflection` |
 | `v7.17.0` | Added `regexpUnicodeSets`, `destructuringPrivate`, `decoratorAutoAccessors` |
 | `v7.15.0` | Added `hack` to the `proposal` option of `pipelineOperator`. Moved `topLevelAwait`, `privateIn` to Latest ECMAScript features |
@@ -229,7 +230,7 @@ require("@babel/parser").parse("code", {
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `asyncDoExpressions` ([proposal](https://github.com/tc39/proposal-async-do-expressions))                 | `async do { await requestAPI().json() }`                         |
 | `decimal` ([proposal](https://github.com/tc39/proposal-decimal))                                         | `0.3m`                                                           |
-| `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br/> `decorators-legacy`          | `@a class A {}`                                                  |
+| `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br/> `decorators-legacy`         | `@a class A {}`                                                  |
 | `decoratorAutoAccessors` ([proposal](https://github.com/tc39/proposal-decorators))                       | `class Example { @reactive accessor myBool = false; }`           |
 | `destructuringPrivate` ([proposal](https://github.com/tc39/proposal-destructuring-private))              | `class Example { #x = 1; method() { const { #x: x } = this; } }` |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                            | `var a = do { if (true) { 'hi'; } };`                            |
@@ -237,8 +238,8 @@ require("@babel/parser").parse("code", {
 | `exportDefaultFrom` ([proposal](https://github.com/tc39/ecmascript-export-default-from))                 | `export v from "mod"`                                            |
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                              | `a::b`, `::console.log`                                          |
 | `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))                              | `function.sent`                                                  |
-| `importAssertions` ([proposal](https://github.com/tc39/proposal-import-assertions))                      | `import json from "./foo.json" assert { type: "json" };`         |
-| `importReflection` ([proposal](https://github.com/tc39/proposal-import-reflection))                     | `import module foo from "./foo.wasm";`                           |
+| `importAttributes` ([proposal](https://github.com/tc39/proposal-import-attributes)) <br/> `importAssertions` (⚠️ deprecated) | `import json from "./foo.json" with { type: "json" };`           |
+| `importReflection` ([proposal](https://github.com/tc39/proposal-import-reflection))                      | `import module foo from "./foo.wasm";`                           |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                           | `let m = module { export let y = 1; };`                          |
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                          | `f(?, a)`                                                        |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29))                            | <code>a &#124;> b</code>                                         |
@@ -286,6 +287,12 @@ You should enable these features only if you are using an older version.
 </details>
 
 > NOTE: When a plugin is specified multiple times, only the first options are considered.
+
+- `importAttributes`:
+
+  - `deprecatedAssertSyntax` (`boolean`, defaults to `true`)
+
+    When `true`, allow parsing import attributes using the [deprecated](https://tc39.es/proposal-import-attributes/#sec-deprecated-assert-keyword-for-import-attributes) `assert` keyword. This matches the syntax originally supported by the `importAssertions` parser plugin.
 
 - `decorators`:
 
