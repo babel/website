@@ -10,7 +10,6 @@ const config = {
   },
   entry: {
     repl: "./js/repl/index.tsx",
-    minirepl: "./js/minirepl.js",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
