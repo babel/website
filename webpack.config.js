@@ -33,6 +33,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./js/repl/index.html",
+      inject: false,
     }),
     new webpack.ProvidePlugin({
       Buffer: ["buffer"],
