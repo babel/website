@@ -136,12 +136,6 @@ export default class WorkerApi {
     });
   }
 
-  registerEnvPreset(): Promise<boolean> {
-    return this._worker.postMessage({
-      method: "registerEnvPreset",
-    });
-  }
-
   registerPlugins(plugins: Array<PluginShape>): Promise<boolean> {
     return this._worker.postMessage({
       method: "registerPlugins",

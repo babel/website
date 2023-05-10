@@ -2,7 +2,6 @@ import compile from "./compile";
 import { registerPromiseWorker } from "./WorkerUtils";
 
 declare var Babel: any;
-declare var babelPresetEnv: any;
 declare function importScripts(url: string): void;
 
 // This script should be executed within a web-worker.
@@ -59,16 +58,6 @@ registerPromiseWorker((message) => {
         }
       }
       return false;
-
-    case "registerEnvPreset":
-      try {
-        // Was registered when loaded;
-        // Babel.registerPreset("env", babelPresetEnv.default);
-
-        return true;
-      } catch (error) {
-        return false;
-      }
 
     case "registerPlugins":
       try {
