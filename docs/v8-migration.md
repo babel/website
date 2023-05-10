@@ -149,7 +149,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
   If your app targets to modern browsers released after 2019, you can safely remove these options as object spread has less code footprint.
 
-  If your code needs to run in an environment which doesn't support object spread, you can either use `@babel/preset-env` (recommended) or `@babel/plugin-proposal-object-rest-spread`. If you want to transpile `Object.assign` down, you also need to enable `@babel/plugin-transform-object-assign`.
+  If your code needs to run in an environment which doesn't support object spread, you can either use `@babel/preset-env` (recommended) or `@babel/plugin-transform-object-rest-spread`. If you want to transpile `Object.assign` down, you also need to enable `@babel/plugin-transform-object-assign`.
   In Babel 7.7.0, you can opt-in this behavior by using the `useSpread` option.
 
 - Type check input options ([#12460](https://github.com/babel/babel/pull/12460))
@@ -331,13 +331,13 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- [Require `@babel/plugin-proposal-dynamic-import` when transforming `import()` to SystemJS](https://github.com/babel/babel/blob/78cd63d9cfcd96e6a151c58fed392c3ee757d861/packages/babel-plugin-transform-modules-systemjs/src/index.js#L183-L185) ([#12700](https://github.com/babel/babel/pull/12700))
+- [Require `@babel/plugin-transform-dynamic-import` when transforming `import()` to SystemJS](https://github.com/babel/babel/blob/78cd63d9cfcd96e6a151c58fed392c3ee757d861/packages/babel-plugin-transform-modules-systemjs/src/index.js#L183-L185) ([#12700](https://github.com/babel/babel/pull/12700))
 
-  **Migration**: Add `@babel/plugin-proposal-dynamic-import` to your config: you can already do it in Babel 7. If you are using `@babel/preset-env`, you don't need to do anything.
+  **Migration**: Add `@babel/plugin-transform-dynamic-import` to your config: you can already do it in Babel 7. If you are using `@babel/preset-env`, you don't need to do anything.
   ```diff title="babel.config.js.diff"
   {
     "plugins": [
-  +   "@babel/plugin-proposal-dynamic-import",
+  +   "@babel/plugin-transform-dynamic-import",
       "@babel/plugin-transform-modules-systemjs",
     ]
   }
@@ -354,7 +354,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
   ```diff title="babel.config.json"
   {
     "plugins": [
-      ["@babel/plugin-proposal-dynamic-import", {
+      ["@babel/plugin-proposal-decorators", {
   -     "decoratorsBeforeExport": true,
   -     "version": "2018-09",
   +     "version": "2023-01"
