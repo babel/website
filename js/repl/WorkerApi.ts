@@ -137,4 +137,12 @@ export default class WorkerApi {
       plugins,
     });
   }
+
+  registerPluginAlias(pluginName: string, aliasTo: string): Promise<boolean> {
+    return this._worker.postMessage({
+      method: "registerPluginAlias",
+      pluginName,
+      aliasTo,
+    });
+  }
 }

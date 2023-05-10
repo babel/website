@@ -78,5 +78,18 @@ registerPromiseWorker((message) => {
       } catch (error) {
         return false;
       }
+
+    case "registerPluginAlias":
+      try {
+        const { aliasTo, pluginName } = message;
+        if (aliasTo in Babel.availablePlugins) {
+          Babel.registerPlugin(pluginName, Babel.availablePlugins[aliasTo]);
+          return true;
+        } else {
+          return false;
+        }
+      } catch {
+        return false;
+      }
   }
 });

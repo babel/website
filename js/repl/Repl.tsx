@@ -423,7 +423,15 @@ class Repl extends React.Component<Props, State> {
     );
   };
 
-  _loadExternalPlugin = (plugin: BabelPlugin) => {
+  _loadExternalPlugin = async (plugin: BabelPlugin) => {
+    // use available plugins from @babel/standalone for official external plugins
+    if (plugin.name.startsWith("@babel/plugin-")) {
+      const availablePlugins = await this._workerApi.getAvailablePlugins();
+      const shorthandName = plugin.name.replace("@babel/plugin-", "");
+      if (availablePlugins.includes(shorthandName)) {
+        return this._workerApi.registerPluginAlias(plugin.name, shorthandName);
+      }
+    }
     const bundledUrl = [
       "https://bundle.run",
       "https://packd.liuxingbaoyu.xyz",
