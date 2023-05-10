@@ -176,7 +176,7 @@ const siteConfig = {
           // Docs folder path relative to website dir.
           path: "../docs",
           // Sidebars file relative to website dir.
-          sidebarPath: require.resolve("./sidebars.json"),
+          sidebarPath: require.resolve("./sidebars.js"),
 
           showLastUpdateAuthor: false,
           showLastUpdateTime: false,

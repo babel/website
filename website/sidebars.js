@@ -1,102 +1,102 @@
-{
-  "docs": [
+module.exports = {
+  docs: [
     {
-      "type": "category",
-      "label": "Guides",
-      "items": ["index", "usage", "configuration", "learn", "v7-migration"]
+      type: "category",
+      label: "Guides",
+      items: ["index", "usage", "configuration", "learn", "v7-migration"],
     },
     {
-      "type": "category",
-      "label": "Config Reference",
-      "items": [
+      type: "category",
+      label: "Config Reference",
+      items: [
         "config-files",
         "options",
         "plugins",
         "plugins-list",
-        "assumptions"
-      ]
+        "assumptions",
+      ],
     },
     {
-      "type": "category",
-      "label": "Presets",
-      "link": {
-        "type": "doc",
-        "id": "presets"
+      type: "category",
+      label: "Presets",
+      link: {
+        type: "doc",
+        id: "presets",
       },
-      "items": [
+      items: [
         {
-          "type": "category",
-          "label": "@babel/preset-env",
-          "link": {
-            "type": "doc",
-            "id": "babel-preset-env"
+          type: "category",
+          label: "@babel/preset-env",
+          link: {
+            type: "doc",
+            id: "babel-preset-env",
           },
-          "items": [
+          items: [
             {
-              "type": "category",
-              "label": "ES2022",
-              "items": [
+              type: "category",
+              label: "ES2022",
+              items: [
                 "babel-plugin-proposal-class-properties",
                 "babel-plugin-proposal-class-static-block",
                 "babel-plugin-proposal-private-methods",
                 "babel-plugin-proposal-private-property-in-object",
-                "babel-plugin-syntax-top-level-await"
-              ]
+                "babel-plugin-syntax-top-level-await",
+              ],
             },
             {
-              "type": "category",
-              "label": "ES2021",
-              "items": [
+              type: "category",
+              label: "ES2021",
+              items: [
                 "babel-plugin-proposal-logical-assignment-operators",
-                "babel-plugin-proposal-numeric-separator"
-              ]
+                "babel-plugin-proposal-numeric-separator",
+              ],
             },
             {
-              "type": "category",
-              "label": "ES2020",
-              "items": [
+              type: "category",
+              label: "ES2020",
+              items: [
                 "babel-plugin-proposal-dynamic-import",
                 "babel-plugin-proposal-export-namespace-from",
                 "babel-plugin-proposal-nullish-coalescing-operator",
                 "babel-plugin-proposal-optional-chaining",
                 "babel-plugin-syntax-bigint",
                 "babel-plugin-syntax-dynamic-import",
-                "babel-plugin-syntax-import-meta"
-              ]
+                "babel-plugin-syntax-import-meta",
+              ],
             },
             {
-              "type": "category",
-              "label": "ES2019",
-              "items": [
+              type: "category",
+              label: "ES2019",
+              items: [
                 "babel-plugin-proposal-optional-catch-binding",
-                "babel-plugin-proposal-json-strings"
-              ]
+                "babel-plugin-proposal-json-strings",
+              ],
             },
             {
-              "type": "category",
-              "label": "ES2018",
-              "items": [
+              type: "category",
+              label: "ES2018",
+              items: [
                 "babel-plugin-proposal-async-generator-functions",
                 "babel-plugin-proposal-object-rest-spread",
                 "babel-plugin-proposal-unicode-property-regex",
                 "babel-plugin-transform-dotall-regex",
-                "babel-plugin-transform-named-capturing-groups-regex"
-              ]
+                "babel-plugin-transform-named-capturing-groups-regex",
+              ],
             },
             {
-              "type": "category",
-              "label": "ES2017",
-              "items": ["babel-plugin-transform-async-to-generator"]
+              type: "category",
+              label: "ES2017",
+              items: ["babel-plugin-transform-async-to-generator"],
             },
             {
-              "type": "category",
-              "label": "ES2016",
-              "items": ["babel-plugin-transform-exponentiation-operator"]
+              type: "category",
+              label: "ES2016",
+              items: ["babel-plugin-transform-exponentiation-operator"],
             },
             {
-              "type": "category",
-              "label": "ES2015",
-              "items": [
+              type: "category",
+              label: "ES2015",
+              items: [
                 "babel-plugin-transform-arrow-functions",
                 "babel-plugin-transform-block-scoping",
                 "babel-plugin-transform-classes",
@@ -116,74 +116,74 @@
                 "babel-plugin-transform-template-literals",
                 "babel-plugin-transform-typeof-symbol",
                 "babel-plugin-transform-unicode-escapes",
-                "babel-plugin-transform-unicode-regex"
-              ]
+                "babel-plugin-transform-unicode-regex",
+              ],
             },
             {
-              "type": "category",
-              "label": "ES5",
-              "items": ["babel-plugin-transform-property-mutators"]
+              type: "category",
+              label: "ES5",
+              items: ["babel-plugin-transform-property-mutators"],
             },
             {
-              "type": "category",
-              "label": "ES3",
-              "items": [
+              type: "category",
+              label: "ES3",
+              items: [
                 "babel-plugin-transform-member-expression-literals",
                 "babel-plugin-transform-property-literals",
-                "babel-plugin-transform-reserved-words"
-              ]
-            }
-          ]
+                "babel-plugin-transform-reserved-words",
+              ],
+            },
+          ],
         },
         {
-          "type": "category",
-          "label": "@babel/preset-react",
-          "link": {
-            "type": "doc",
-            "id": "babel-preset-react"
+          type: "category",
+          label: "@babel/preset-react",
+          link: {
+            type: "doc",
+            id: "babel-preset-react",
           },
-          "items": ["babel-plugin-transform-react-jsx"]
+          items: ["babel-plugin-transform-react-jsx"],
         },
         {
-          "type": "category",
-          "label": "@babel/preset-typescript",
-          "link": {
-            "type": "doc",
-            "id": "babel-preset-typescript"
+          type: "category",
+          label: "@babel/preset-typescript",
+          link: {
+            type: "doc",
+            id: "babel-preset-typescript",
           },
-          "items": ["babel-plugin-transform-typescript"]
+          items: ["babel-plugin-transform-typescript"],
         },
         {
-          "type": "category",
-          "label": "@babel/preset-flow",
-          "link": {
-            "type": "doc",
-            "id": "babel-preset-flow"
+          type: "category",
+          label: "@babel/preset-flow",
+          link: {
+            type: "doc",
+            id: "babel-preset-flow",
           },
-          "items": ["babel-plugin-transform-flow-strip-types"]
-        }
-      ]
+          items: ["babel-plugin-transform-flow-strip-types"],
+        },
+      ],
     },
     {
-      "type": "category",
-      "label": "Misc",
-      "items": ["roadmap", "caveats", "features-timeline", "faq", "editors"]
+      type: "category",
+      label: "Misc",
+      items: ["roadmap", "caveats", "features-timeline", "faq", "editors"],
     },
     {
-      "type": "category",
-      "label": "Integration Packages",
-      "items": [
+      type: "category",
+      label: "Integration Packages",
+      items: [
         "babel-cli",
         "babel-polyfill",
         "babel-plugin-transform-runtime",
         "babel-register",
-        "babel-standalone"
-      ]
+        "babel-standalone",
+      ],
     },
     {
-      "type": "category",
-      "label": "Tooling Packages",
-      "items": [
+      type: "category",
+      label: "Tooling Packages",
+      items: [
         "babel-parser",
         "babel-core",
         "babel-generator",
@@ -191,25 +191,25 @@
         "babel-runtime",
         "babel-template",
         "babel-traverse",
-        "babel-types"
-      ]
+        "babel-types",
+      ],
     },
     {
-      "type": "category",
-      "label": "Helper Packages",
-      "items": [
+      type: "category",
+      label: "Helper Packages",
+      items: [
         "babel-helper-compilation-targets",
         "babel-helper-module-imports",
-        "babel-helper-validator-identifier"
-      ]
-    }
+        "babel-helper-validator-identifier",
+      ],
+    },
   ],
-  "plugins": {
-    "Modules": [
+  plugins: {
+    Modules: [
       "babel-plugin-transform-modules-amd",
       "babel-plugin-transform-modules-commonjs",
       "babel-plugin-transform-modules-systemjs",
-      "babel-plugin-transform-modules-umd"
+      "babel-plugin-transform-modules-umd",
     ],
     "TC39 Proposals": [
       "babel-plugin-proposal-async-do-expressions",
@@ -225,7 +225,7 @@
       "babel-plugin-proposal-record-and-tuple",
       "babel-plugin-proposal-regexp-modifiers",
       "babel-plugin-proposal-throw-expressions",
-      "babel-plugin-proposal-unicode-sets-regex"
-    ]
-  }
-}
+      "babel-plugin-proposal-unicode-sets-regex",
+    ],
+  },
+};
