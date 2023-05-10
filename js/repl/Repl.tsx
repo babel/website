@@ -102,6 +102,31 @@ function hasOwnProperty(obj, string) {
   return Object.prototype.hasOwnProperty.call(obj, string);
 }
 
+function provideDefaultOptionsForExternalPlugins(pluginName, babelVersion) {
+  switch (pluginName) {
+    case "@babel/plugin-proposal-decorators": {
+      if (compareVersions(babelVersion, "7.21.0") >= 0) {
+        return { version: "2023-01" };
+      } else if (compareVersions(babelVersion, "7.19.0") >= 0) {
+        return { version: "2022-03" };
+      } else if (compareVersions(babelVersion, "7.17.0") >= 0) {
+        return { version: "2021-12" };
+      } else if (compareVersions(babelVersion, "7.0.0") >= 0) {
+        return { version: "2018-09", decoratorsBeforeExport: true };
+      }
+    }
+    case "@babel/plugin-proposal-pipeline-operator": {
+      if (compareVersions(babelVersion, "7.15.0") >= 0) {
+        return { proposal: "hack", topicToken: "%" };
+      } else {
+        return { proposal: "minimal" };
+      }
+    }
+    default:
+      return {};
+  }
+}
+
 class Repl extends React.Component<Props, State> {
   _numLoadingPlugins = 0;
   _workerApi = new WorkerApi();
@@ -499,7 +524,13 @@ class Repl extends React.Component<Props, State> {
 
     this._workerApi
       .compile(code, {
-        plugins: state.externalPlugins.map((plugin) => plugin.name),
+        plugins: state.externalPlugins.map((plugin) => [
+          plugin.name,
+          provideDefaultOptionsForExternalPlugins(
+            plugin.name,
+            state.babel.version
+          ),
+        ]),
         debugEnvPreset: state.debugEnvPreset,
         envConfig: state.envConfig,
         presetsOptions: state.presetsOptions,
