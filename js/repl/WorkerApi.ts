@@ -87,12 +87,7 @@ export default class WorkerApi {
     return this._worker.postMessage({ method: "getAvailablePresets" });
   }
 
-  getAvailablePlugins(): Promise<
-    Array<{
-      label: string;
-      isPreloaded: boolean;
-    }>
-  > {
+  getAvailablePlugins(): Promise<Array<string>> {
     return this._worker.postMessage({ method: "getAvailablePlugins" });
   }
 

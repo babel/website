@@ -40,10 +40,7 @@ registerPromiseWorker((message) => {
     case "getAvailablePlugins":
       if (!Babel) return [];
 
-      return Object.keys(Babel.availablePlugins).map((p) => ({
-        label: p,
-        isPreLoaded: true,
-      }));
+      return Object.keys(Babel.availablePlugins);
 
     case "loadScript":
       if (!Array.isArray(message.url)) {

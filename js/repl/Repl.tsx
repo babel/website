@@ -381,8 +381,7 @@ class Repl extends React.Component<Props, State> {
 
     if (result.didError) return result;
 
-    const availablePlugins = await this._workerApi.getAvailablePlugins();
-    const availablePluginsNames = availablePlugins.map(({ label }) => label);
+    const availablePluginsNames = await this._workerApi.getAvailablePlugins();
     const notRegisteredPackages =
       this.state.shippedProposalsState.config.packages
         .filter(
