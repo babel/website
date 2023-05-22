@@ -226,6 +226,7 @@ module.exports = {
       "babel-plugin-proposal-regexp-modifiers",
       "babel-plugin-proposal-throw-expressions",
       "babel-plugin-proposal-unicode-sets-regex",
+      "babel-plugin-syntax-import-attributes",
     ],
   },
 };
