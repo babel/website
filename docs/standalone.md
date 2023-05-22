@@ -72,7 +72,7 @@ If you want to pass additional options, refer to the [custom presets](#custom-pr
 Use the `data-plugins` attribute to enable builtin Babel plugins. Multiple values are comma separated.
 
 ```html
-<script type="text/babel" data-plugins="proposal-class-properties">
+<script type="text/babel" data-plugins="transform-class-properties">
 ```
 
 See [here](https://github.com/babel/babel/blob/main/packages/babel-standalone/src/generated/plugins.ts) for a list of builtin plugins in `@babel/standalone`. You can also access the list from `Babel.availablePlugins`.

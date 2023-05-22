@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-async-generator-functions
-title: "@babel/plugin-proposal-async-generator-functions"
+id: babel-plugin-transform-async-generator-functions
+title: "@babel/plugin-transform-async-generator-functions"
 sidebar_label: async-generator-functions
 ---
 
@@ -78,7 +78,7 @@ forEach(genAnswers(), function(val) {
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-async-generator-functions
+npm install --save-dev @babel/plugin-transform-async-generator-functions
 ```
 
 ## Usage
@@ -87,21 +87,21 @@ npm install --save-dev @babel/plugin-proposal-async-generator-functions
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-async-generator-functions"]
+  "plugins": ["@babel/plugin-transform-async-generator-functions"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-async-generator-functions script.js
+babel --plugins @babel/plugin-transform-async-generator-functions script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-async-generator-functions"],
+  plugins: ["@babel/plugin-transform-async-generator-functions"],
 });
 ```
 

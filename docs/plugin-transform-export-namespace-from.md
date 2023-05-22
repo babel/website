@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-export-namespace-from
-title: "@babel/plugin-proposal-export-namespace-from"
+id: babel-plugin-transform-export-namespace-from
+title: "@babel/plugin-transform-export-namespace-from"
 sidebar_label: export-namespace-from
 ---
 
@@ -15,7 +15,7 @@ export * as ns from "mod";
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-export-namespace-from
+npm install --save-dev @babel/plugin-transform-export-namespace-from
 ```
 
 ## Usage
@@ -24,21 +24,21 @@ npm install --save-dev @babel/plugin-proposal-export-namespace-from
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-export-namespace-from"]
+  "plugins": ["@babel/plugin-transform-export-namespace-from"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-export-namespace-from script.js
+babel --plugins @babel/plugin-transform-export-namespace-from script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-export-namespace-from"],
+  plugins: ["@babel/plugin-transform-export-namespace-from"],
 });
 ```
 

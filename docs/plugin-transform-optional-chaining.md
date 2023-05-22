@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-optional-chaining
-title: "@babel/plugin-proposal-optional-chaining"
+id: babel-plugin-transform-optional-chaining
+title: "@babel/plugin-transform-optional-chaining"
 sidebar_label: optional-chaining
 ---
 
@@ -104,7 +104,7 @@ const ret = delete obj?.foo?.bar?.baz; // true
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-optional-chaining
+npm install --save-dev @babel/plugin-transform-optional-chaining
 ```
 
 ## Usage
@@ -113,21 +113,21 @@ npm install --save-dev @babel/plugin-proposal-optional-chaining
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-optional-chaining"]
+  "plugins": ["@babel/plugin-transform-optional-chaining"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-optional-chaining script.js
+babel --plugins @babel/plugin-transform-optional-chaining script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-optional-chaining"],
+  plugins: ["@babel/plugin-transform-optional-chaining"],
 });
 ```
 

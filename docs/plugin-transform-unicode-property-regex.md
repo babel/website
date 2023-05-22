@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-unicode-property-regex
-title: "@babel/plugin-proposal-unicode-property-regex"
+id: babel-plugin-transform-unicode-property-regex
+title: "@babel/plugin-transform-unicode-property-regex"
 sidebar_label: unicode-property-regex
 ---
 
@@ -11,7 +11,7 @@ sidebar_label: unicode-property-regex
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-unicode-property-regex
+npm install --save-dev @babel/plugin-transform-unicode-property-regex
 ```
 
 ## Usage
@@ -20,21 +20,21 @@ npm install --save-dev @babel/plugin-proposal-unicode-property-regex
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-unicode-property-regex"]
+  "plugins": ["@babel/plugin-transform-unicode-property-regex"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/@babel/plugin-proposal-unicode-property-regex script.js
+babel --plugins @babel/@babel/plugin-transform-unicode-property-regex script.js
 ```
 
 ### Via Node.js API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync(code, {
-  plugins: ["@babel/plugin-proposal-unicode-property-regex"],
+  plugins: ["@babel/plugin-transform-unicode-property-regex"],
 });
 ```
 
@@ -44,7 +44,7 @@ To transpile to ES6/ES2015:
 require("@babel/core").transformSync(code, {
   plugins: [
     [
-      "@babel/plugin-proposal-unicode-property-regex",
+      "@babel/plugin-transform-unicode-property-regex",
       { useUnicodeFlag: false },
     ],
   ],

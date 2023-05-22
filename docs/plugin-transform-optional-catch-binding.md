@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-optional-catch-binding
-title: "@babel/plugin-proposal-optional-catch-binding"
+id: babel-plugin-transform-optional-catch-binding
+title: "@babel/plugin-transform-optional-catch-binding"
 sidebar_label: optional-catch-binding
 ---
 
@@ -29,7 +29,7 @@ try {
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-optional-catch-binding
+npm install --save-dev @babel/plugin-transform-optional-catch-binding
 ```
 
 ## Usage
@@ -38,21 +38,21 @@ npm install --save-dev @babel/plugin-proposal-optional-catch-binding
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-optional-catch-binding"]
+  "plugins": ["@babel/plugin-transform-optional-catch-binding"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-optional-catch-binding script.js
+babel --plugins @babel/plugin-transform-optional-catch-binding script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-optional-catch-binding"],
+  plugins: ["@babel/plugin-transform-optional-catch-binding"],
 });
 ```
 

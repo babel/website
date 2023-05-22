@@ -198,9 +198,9 @@ Given browser targets `targets`, query the `compatData` whether plugin `name` is
 module.exports = api => {
   const targets = api.targets();
   // The targets have native optional chaining support
-  // if `proposal-optional-chaining` is _not_ required
+  // if `transform-optional-chaining` is _not_ required
   const optionalChainingSupported = !isRequired(
-    "proposal-optional-chaining",
+    "transform-optional-chaining",
     targets
   );
 };
@@ -213,9 +213,9 @@ Plugin authors can use `isRequired` to optimize plugin output given different `t
 module.exports = api => {
   const targets = api.targets();
   // The targets have native optional chaining support
-  // if `proposal-optional-chaining` is _not_ required
+  // if `transform-optional-chaining` is _not_ required
   const optionalChainingSupported = !isRequired(
-    "proposal-optional-chaining",
+    "transform-optional-chaining",
     targets
   );
   const visited = new WeakSet();
@@ -239,4 +239,4 @@ module.exports = api => {
 };
 ```
 
-[`@babel/plugin-proposal-object-rest-spread`](https://github.com/babel/babel/blob/962d81483ef6a57a4a3eca8230ae40795b695147/packages/babel-plugin-proposal-object-rest-spread/src/index.js#L23) uses `isRequired` to determine whether targets already have native `Object.assign` support.
+[`@babel/plugin-transform-object-rest-spread`](https://github.com/babel/babel/blob/962d81483ef6a57a4a3eca8230ae40795b695147/packages/babel-plugin-transform-object-rest-spread/src/index.js#L23) uses `isRequired` to determine whether targets already have native `Object.assign` support.
