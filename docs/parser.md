@@ -290,7 +290,7 @@ You should enable these features only if you are using an older version.
 
 - `importAttributes`:
 
-  - `deprecatedAssertSyntax` (`boolean`, defaults to `true`)
+  - `deprecatedAssertSyntax` (`boolean`, defaults to `false`)
 
     When `true`, allow parsing import attributes using the [deprecated](https://tc39.es/proposal-import-attributes/#sec-deprecated-assert-keyword-for-import-attributes) `assert` keyword. This matches the syntax originally supported by the `importAssertions` parser plugin.
 

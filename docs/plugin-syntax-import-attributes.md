@@ -48,7 +48,7 @@ require("@babel/core").transformSync("code", {
 
 ### `deprecatedAssertSyntax`
 
-`boolean`.
+`boolean`, defaults to `false`.
 
 If enabled, support parsing import attributes using the [deprecated](https://tc39.es/proposal-import-attributes/#sec-deprecated-assert-keyword-for-import-attributes) `assert` keyword:
 
