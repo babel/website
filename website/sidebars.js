@@ -201,6 +201,7 @@ module.exports = {
         "babel-helper-compilation-targets",
         "babel-helper-module-imports",
         "babel-helper-validator-identifier",
+        "babel-helper-environment-visitor",
       ],
     },
   ],
