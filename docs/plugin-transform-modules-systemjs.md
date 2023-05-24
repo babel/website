@@ -78,3 +78,38 @@ require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-modules-systemjs"],
 });
 ```
+
+## Options
+
+### `moduleIds`
+
+`boolean` defaults to `!!moduleId`
+
+Added in: `v7.9.0`
+
+Enables module ID generation.
+
+### `moduleId`
+
+`string`
+
+Added in: `v7.9.0`
+
+A hard-coded ID to use for the module. Cannot be used alongside `getModuleId`.
+
+### `getModuleId`
+
+`(name: string) => string`
+
+Added in: `v7.9.0`
+
+Given the babel-generated module name, return the name to use. Returning
+a falsy value will use the original `name`.
+
+### `moduleRoot`
+
+`string`
+
+Added in: `v7.9.0`
+
+A root path to include on generated module names.
