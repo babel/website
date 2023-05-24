@@ -9,6 +9,28 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="May 2023">
+
+## Babel 7.22.0
+
+[blog post](https://babeljs.io/blog/2023/05/26/7.22.0)
+
+- Enable the Stage 4 [RegExp `v` flag](https://github.com/tc39/proposal-regexp-set-notation/) proposal by default
+- Support for the [explicit resource management](https://github.com/tc39/proposal-explicit-resource-management/) proposal Stage 3 proposal, including the [async version](https://github.com/tc39/proposal-async-explicit-resource-management/)
+  ```js title="JavaScript"
+  {
+    await using db = connect(databaseURL);
+    let user = await db.getUserById(userId);
+    await db.createPost(user.name, "Hi! :)");
+  } // Automatically close the db
+  ```
+- Support for the updates of the [decorators](https://github.com/tc39/proposal-decorators/) proposal that reached consensus in the March 2023 and May 2023 TC39 meetings
+- Parsing support for the Stage 3 [import attributes](https://github.com/tc39/proposal-import-attributes) proposal, previously known as "import assertions"
+  ```js title="JavaScript"
+  import data from "./data.json" with { type: "json" };
+  ```
+
+</li>
 <li data-date="Feb 2023">
 
 ## Babel 7.21.0
