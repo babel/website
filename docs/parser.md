@@ -211,7 +211,7 @@ require("@babel/parser").parse("code", {
 
 | Version | Changes |
 | --- | --- |
-| `v7.22.0` | Moved `regexpUnicodeSets` to Latest ECMAScript features                                                                                                 |
+| `v7.22.0` | Enabled `regexpUnicodeSets` by default |
 | `v7.20.0` | Added `explicitResourceManagement`, `importReflection` |
 | `v7.17.0` | Added `regexpUnicodeSets`, `destructuringPrivate`, `decoratorAutoAccessors` |
 | `v7.15.0` | Added `hack` to the `proposal` option of `pipelineOperator`. Moved `topLevelAwait`, `privateIn` to Latest ECMAScript features |
