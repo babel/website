@@ -111,4 +111,4 @@ If you need to further compile ES2015 Decimal, Binary, Hex and Octal number repr
 
 ## References
 
-- [Proposal: Numeric Separators](https://github.com/samuelgoto/transform-numeric-separator)
+- [Proposal: Numeric Separators](https://github.com/tc39/proposal-numeric-separator)
