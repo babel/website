@@ -218,6 +218,7 @@ module.exports = {
       "babel-plugin-proposal-destructuring-private",
       "babel-plugin-proposal-do-expressions",
       "babel-plugin-proposal-duplicate-named-capturing-groups-regex",
+      "babel-plugin-proposal-explicit-resource-management",
       "babel-plugin-proposal-export-default-from",
       "babel-plugin-proposal-function-bind",
       "babel-plugin-proposal-function-sent",
