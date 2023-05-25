@@ -228,5 +228,8 @@ module.exports = {
       "babel-plugin-proposal-throw-expressions",
       "babel-plugin-proposal-unicode-sets-regex",
     ],
+    "Web Compatibility": [
+      "babel-plugin-proposal-import-attributes-to-assertions",
+    ],
   },
 };
