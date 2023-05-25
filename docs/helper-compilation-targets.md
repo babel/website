@@ -239,4 +239,4 @@ module.exports = api => {
 };
 ```
 
-[`@babel/plugin-transform-object-rest-spread`](https://github.com/babel/babel/blob/962d81483ef6a57a4a3eca8230ae40795b695147/packages/babel-plugin-transform-object-rest-spread/src/index.js#L23) uses `isRequired` to determine whether targets already have native `Object.assign` support.
+[`@babel/plugin-transform-object-rest-spread`](https://github.com/babel/babel/blob/d54bc3cd1c1c462760e01c0a8c4bd4b3013f236a/packages/babel-plugin-transform-object-rest-spread/src/index.ts#L33) uses `isRequired` to determine whether targets already have native `Object.assign` support.
