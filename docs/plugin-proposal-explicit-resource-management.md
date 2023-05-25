@@ -28,7 +28,7 @@ try {
 }
 ```
 
-[Try it on the REPL](https://babeljs.io/repl/build/54519/#?browsers=ie%2011&build=&builtIns=false&corejs=3.28&spec=false&loose=false&code_lz=K4Zwlgdg5gBAFgQwgEwDYFMBOBlAnhAYxgF4YB7AB3Qj0IAoBKAbgCgEB3BMAFxlEliIUGTAEEQ-IqQ5delauMmMmQA&debug=false&forceAllTransforms=false&modules=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=react&prettier=false&targets=&externalPlugins=%40babel%2Fplugin-proposal-explicit-resource-management%407.22.0%2C%40babel%2Fplugin-external-helpers%407.18.6&assumptions=%7B%7D).
+[Try it on the REPL](https://babeljs.io/repl#?build=&builtIns=false&corejs=3.28&spec=false&loose=false&code_lz=K4Zwlgdg5gBAFgQwgEwDYFMBOBlAnhAYxgF4YB7AB3Qj0IAoBKAbgCgEB3BMAFxlEliIUGTAEEQ-IqQ5delauMmMmQA&debug=false&forceAllTransforms=false&modules=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=react&prettier=false&targets=&externalPlugins=%40babel%2Fplugin-proposal-explicit-resource-management%407.22.0%2C%40babel%2Fplugin-external-helpers%407.18.6&assumptions=%7B%7D).
 
 ## Installation
 
