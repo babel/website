@@ -232,6 +232,7 @@ module.exports = {
       "babel-plugin-proposal-record-and-tuple",
       "babel-plugin-proposal-regexp-modifiers",
       "babel-plugin-proposal-throw-expressions",
+      "babel-plugin-syntax-import-attributes",
     ],
     "Web Compatibility": [
       "babel-plugin-proposal-import-attributes-to-assertions",
