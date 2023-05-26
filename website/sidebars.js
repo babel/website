@@ -233,5 +233,8 @@ module.exports = {
       "babel-plugin-proposal-regexp-modifiers",
       "babel-plugin-proposal-throw-expressions",
     ],
+    "Web Compatibility": [
+      "babel-plugin-proposal-import-attributes-to-assertions",
+    ],
   },
 };
