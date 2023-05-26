@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-unicode-sets-regex
-title: "@babel/plugin-proposal-unicode-sets-regex"
+id: babel-plugin-transform-unicode-sets-regex
+title: "@babel/plugin-transform-unicode-sets-regex"
 sidebar_label: unicode-sets-regex
 ---
 
@@ -56,7 +56,7 @@ Here is [a list of supported properties](https://github.com/tc39/proposal-regexp
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-unicode-sets-regex
+npm install --save-dev @babel/plugin-transform-unicode-sets-regex
 ```
 
 ## Usage
@@ -65,20 +65,20 @@ npm install --save-dev @babel/plugin-proposal-unicode-sets-regex
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-unicode-sets-regex"]
+  "plugins": ["@babel/plugin-transform-unicode-sets-regex"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-unicode-sets-regex script.js
+babel --plugins @babel/plugin-transform-unicode-sets-regex script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-unicode-sets-regex"],
+  plugins: ["@babel/plugin-transform-unicode-sets-regex"],
 });
 ```

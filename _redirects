@@ -78,6 +78,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /docs/babel-plugin-proposal-async-generator-functions           /docs/babel-plugin-transform-async-generator-functions
 /docs/babel-plugin-proposal-object-rest-spread                  /docs/babel-plugin-transform-object-rest-spread
 /docs/babel-plugin-proposal-unicode-property-regex              /docs/babel-plugin-transform-unicode-property-regex
+/docs/babel-plugin-proposal-unicode-sets-regex                  /docs/babel-plugin-transform-unicode-sets-regex
 /docs/babel-plugin-proposal-export-namespace-from               /docs/babel-plugin-transform-export-namespace-from
 
 # Legacy redirects
