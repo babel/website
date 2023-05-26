@@ -144,7 +144,7 @@ If you are including your plugins manually and using `@babel/plugin-transform-cl
 {
   "plugins": [
 -   "@babel/plugin-transform-class-properties",
-    ["@babel/plugin-proposal-decorators", { "version": "2023-01" }]
+    ["@babel/plugin-proposal-decorators", { "version": "2023-05" }]
 +   "@babel/plugin-transform-class-properties"
   ]
 }
