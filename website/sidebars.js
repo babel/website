@@ -35,7 +35,7 @@ module.exports = {
             {
               type: "category",
               label: "ES2024",
-              items: ["babel-plugin-proposal-unicode-sets-regex"],
+              items: ["babel-plugin-transform-unicode-sets-regex"],
             },
             {
               type: "category",
