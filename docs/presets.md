@@ -82,8 +82,8 @@ module.exports = function() {
 module.exports = () => ({
   presets: [require("@babel/preset-env")],
   plugins: [
-    [require("@babel/plugin-proposal-class-properties"), { loose: true }],
-    require("@babel/plugin-proposal-object-rest-spread"),
+    [require("@babel/plugin-transform-class-properties"), { loose: true }],
+    require("@babel/plugin-transform-object-rest-spread"),
   ],
 });
 ```

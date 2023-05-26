@@ -136,27 +136,27 @@ Use `version: "legacy"` instead. This option is a legacy alias.
 
 Use the legacy (stage 1) decorators syntax and behavior.
 
-#### NOTE: Compatibility with `@babel/plugin-proposal-class-properties`
+#### NOTE: Compatibility with `@babel/plugin-transform-class-properties`
 
-If you are including your plugins manually and using `@babel/plugin-proposal-class-properties` or `@babel/plugin-private-methods` and legacy decorators, make sure that `@babel/plugin-proposal-decorators` comes _before_ `@babel/plugin-proposal-class-properties`.
+If you are including your plugins manually and using `@babel/plugin-transform-class-properties` or `@babel/plugin-private-methods` and legacy decorators, make sure that `@babel/plugin-proposal-decorators` comes _before_ `@babel/plugin-transform-class-properties`.
 
 ```diff title="babel.config.json"
 {
   "plugins": [
--   "@babel/plugin-proposal-class-properties",
+-   "@babel/plugin-transform-class-properties",
     ["@babel/plugin-proposal-decorators", { "version": "2023-01" }]
-+   "@babel/plugin-proposal-class-properties"
++   "@babel/plugin-transform-class-properties"
   ]
 }
 ```
 
-If you are already using `@babel/preset-env`, you can safely remove `@babel/plugin-proposal-class-properties` and `@babel/plugin-private-methods`:
+If you are already using `@babel/preset-env`, you can safely remove `@babel/plugin-transform-class-properties` and `@babel/plugin-private-methods`:
 
 ```diff title="babel.config.json"
 {
   "presets": ["@babel/preset-env"],
   "plugins": [
--   "@babel/plugin-proposal-class-properties",
+-   "@babel/plugin-transform-class-properties",
     ["@babel/plugin-proposal-decorators", { "version": "2023-05" }]
   ]
 }

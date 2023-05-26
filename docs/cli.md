@@ -158,7 +158,7 @@ npx babel --out-file script-compiled.js < script.js
 Use the `--plugins` option to specify plugins to use in compilation
 
 ```sh title="Shell"
-npx babel script.js --out-file script-compiled.js --plugins=@babel/proposal-class-properties,@babel/transform-modules-amd
+npx babel script.js --out-file script-compiled.js --plugins=@babel/transform-class-properties,@babel/transform-modules-amd
 ```
 
 ### Using Presets

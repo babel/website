@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-private-methods
-title: "@babel/plugin-proposal-private-methods"
+id: babel-plugin-transform-private-methods
+title: "@babel/plugin-transform-private-methods"
 sidebar_label: private-methods
 ---
 
@@ -38,7 +38,7 @@ class Counter extends HTMLElement {
 ## Installation
 
 ```shell npm2yarn
-npm install @babel/plugin-proposal-private-methods --save-dev
+npm install @babel/plugin-transform-private-methods --save-dev
 ```
 
 ## Usage
@@ -49,7 +49,7 @@ Without options:
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-private-methods"]
+  "plugins": ["@babel/plugin-transform-private-methods"]
 }
 ```
 
@@ -57,21 +57,21 @@ With options:
 
 ```json title="babel.config.json"
 {
-  "plugins": [["@babel/plugin-proposal-private-methods", { "loose": true }]]
+  "plugins": [["@babel/plugin-transform-private-methods", { "loose": true }]]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-$ babel --plugins @babel/plugin-proposal-private-methods script.js
+$ babel --plugins @babel/plugin-transform-private-methods script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-private-methods"],
+  plugins: ["@babel/plugin-transform-private-methods"],
 });
 ```
 
@@ -81,7 +81,7 @@ require("@babel/core").transformSync("code", {
 
 `boolean`, defaults to `false`.
 
-> Note: The `loose` mode configuration setting _must_ be the same as [`@babel/plugin-proposal-class-properties`](plugin-proposal-class-properties.md).
+> Note: The `loose` mode configuration setting _must_ be the same as [`@babel/plugin-transform-class-properties`](plugin-transform-class-properties.md).
 
 When true, private methods will be assigned directly on its parent
 via `Object.defineProperty` rather than a `WeakSet`. This results in improved

@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-object-rest-spread
-title: "@babel/plugin-proposal-object-rest-spread"
+id: babel-plugin-transform-object-rest-spread
+title: "@babel/plugin-transform-object-rest-spread"
 sidebar_label: object-rest-spread
 ---
 
@@ -27,7 +27,7 @@ console.log(n); // { x: 1, y: 2, a: 3, b: 4 }
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-object-rest-spread
+npm install --save-dev @babel/plugin-transform-object-rest-spread
 ```
 
 ## Usage
@@ -36,21 +36,21 @@ npm install --save-dev @babel/plugin-proposal-object-rest-spread
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-object-rest-spread"]
+  "plugins": ["@babel/plugin-transform-object-rest-spread"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-object-rest-spread script.js
+babel --plugins @babel/plugin-transform-object-rest-spread script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-object-rest-spread"],
+  plugins: ["@babel/plugin-transform-object-rest-spread"],
 });
 ```
 
@@ -94,7 +94,7 @@ Enabling this option will use `Object.assign` directly instead of the Babel's `e
     "setSpreadProperties": true
   },
   "plugins": [
-    ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }]
+    ["@babel/plugin-transform-object-rest-spread", { "useBuiltIns": true }]
   ]
 }
 ```
@@ -116,6 +116,6 @@ z = Object.assign({ x }, y);
 ## References
 
 - [Proposal: Object Rest/Spread Properties for ECMAScript](https://github.com/tc39/proposal-object-rest-spread)
-- [Spec](https://tc39.github.io/proposal-object-rest-spread/)
+- [Spec](https://tc39.github.io/transform-object-rest-spread/)
 - [Spread VS. Object.assign](http://2ality.com/2016/10/rest-spread-properties.html#spreading-objects-versus-objectassign)
 - [Assigning VS. defining properties](http://exploringjs.com/es6/ch_oop-besides-classes.html#sec_assigning-vs-defining-properties)
