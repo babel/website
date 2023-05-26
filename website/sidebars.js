@@ -34,6 +34,11 @@ module.exports = {
           items: [
             {
               type: "category",
+              label: "ES2024",
+              items: ["babel-plugin-proposal-unicode-sets-regex"],
+            },
+            {
+              type: "category",
               label: "ES2022",
               items: [
                 "babel-plugin-proposal-class-properties",
@@ -227,7 +232,6 @@ module.exports = {
       "babel-plugin-proposal-record-and-tuple",
       "babel-plugin-proposal-regexp-modifiers",
       "babel-plugin-proposal-throw-expressions",
-      "babel-plugin-proposal-unicode-sets-regex",
     ],
   },
 };
