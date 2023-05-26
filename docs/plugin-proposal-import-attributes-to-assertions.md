@@ -6,7 +6,7 @@ sidebar_label: import-attributes-to-assertions
 
 :::caution
 
-This plugin will generate code that is not compatible with the current ECMAScript specification or with any currently proposed addition to it. Only use it when you are shipping native ES modules and you need compatibility with other tools that don't support the Import Attributes syntax (`import pkg from "./package.json" with { type: "json" }`) but support the old Import Assertions syntax (`import pkg from "./package.json" assert { type: "json" }`), such as Chrome 91+ and Node.js 17.2+.
+This plugin will generate code that is not compatible with the current ECMAScript specification or with any currently proposed addition to it. Only use it when you are shipping native ES modules and you need compatibility exclusively with tools that don't support the Import Attributes syntax (`import pkg from "./package.json" with { type: "json" }`) but support the old Import Assertions syntax (`import pkg from "./package.json" assert { type: "json" }`), such as Chrome 91+ and Node.js 17.2+.
 
 :::
 
