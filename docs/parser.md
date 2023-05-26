@@ -211,7 +211,7 @@ require("@babel/parser").parse("code", {
 
 | Version | Changes |
 | --- | --- |
-| `v7.22.0` | Added `importAttributes` |
+| `v7.22.0` | Enabled `regexpUnicodeSets` by default, added `importAttributes` |
 | `v7.20.0` | Added `explicitResourceManagement`, `importReflection` |
 | `v7.17.0` | Added `regexpUnicodeSets`, `destructuringPrivate`, `decoratorAutoAccessors` |
 | `v7.15.0` | Added `hack` to the `proposal` option of `pipelineOperator`. Moved `topLevelAwait`, `privateIn` to Latest ECMAScript features |
@@ -244,7 +244,6 @@ require("@babel/parser").parse("code", {
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                          | `f(?, a)`                                                        |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29))                            | <code>a &#124;> b</code>                                         |
 | `recordAndTuple` ([proposal](https://github.com/tc39/proposal-record-tuple))                             | `#{x: 1}`, `#[1, 2]`                                             |
-| `regexpUnicodeSets` ([proposal](https://github.com/tc39/proposal-regexp-set-notation))                   | `/[\p{Decimal_Number}--[0-9]]/v;`                                |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23))                            | `() => throw new Error("")`                                      |
 
 #### Latest ECMAScript features
@@ -265,11 +264,12 @@ You should enable these features only if you are using an older version.
 | `logicalAssignment` ([proposal](https://github.com/tc39/proposal-logical-assignment))     | `a &&= b`                                           |
 | `moduleStringNames` ([proposal](https://github.com/tc39/ecma262/pull/2154))               | `import { "😄" as smile } from "emoji";`            |
 | `nullishCoalescingOperator` ([proposal](https://github.com/babel/proposals/issues/14))    | `a ?? b`                                            |
-| `numericSeparator` ([proposal](https://github.com/samuelgoto/proposal-numeric-separator)) | `1_000_000`                                         |
+| `numericSeparator` ([proposal](https://github.com/tc39/proposal-numeric-separator)) | `1_000_000`                                         |
 | `objectRestSpread` ([proposal](https://github.com/tc39/proposal-object-rest-spread))      | `var a = { b, ...c };`                              |
 | `optionalCatchBinding` ([proposal](https://github.com/babel/proposals/issues/7))          | `try {throw 0;} catch{do();}`                       |
 | `optionalChaining` ([proposal](https://github.com/tc39/proposal-optional-chaining))       | `a?.b`                                              |
 | `privateIn` ([proposal](https://github.com/tc39/proposal-private-fields-in-in))           | `#p in obj`                                         |
+| `regexpUnicodeSets` ([proposal](https://github.com/tc39/proposal-regexp-set-notation))    | `/[\p{Decimal_Number}--[0-9]]/v;`                   |
 | `topLevelAwait` ([proposal](https://github.com/tc39/proposal-top-level-await/))           | `await promise` in modules                          |
 
 #### Plugins options

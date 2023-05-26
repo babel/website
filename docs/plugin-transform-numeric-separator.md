@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-numeric-separator
-title: "@babel/plugin-proposal-numeric-separator"
+id: babel-plugin-transform-numeric-separator
+title: "@babel/plugin-transform-numeric-separator"
 sidebar_label: numeric-separator
 ---
 
@@ -64,7 +64,7 @@ Octals are great for permissions, but also look better when represented in `0o00
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-numeric-separator
+npm install --save-dev @babel/plugin-transform-numeric-separator
 ```
 
 ## Usage
@@ -73,21 +73,21 @@ npm install --save-dev @babel/plugin-proposal-numeric-separator
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-numeric-separator"]
+  "plugins": ["@babel/plugin-transform-numeric-separator"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-numeric-separator script.js
+babel --plugins @babel/plugin-transform-numeric-separator script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-numeric-separator"],
+  plugins: ["@babel/plugin-transform-numeric-separator"],
 });
 ```
 
@@ -102,13 +102,13 @@ If you need to further compile ES2015 Decimal, Binary, Hex and Octal number repr
 ```json title="babel.config.json"
 {
   "presets": ["@babel/preset-env"],
-  "plugins": ["@babel/plugin-proposal-numeric-separator"]
+  "plugins": ["@babel/plugin-transform-numeric-separator"]
 }
 {
-  "plugins": ["@babel/plugin-proposal-numeric-separator", "@babel/plugin-transform-literals"]
+  "plugins": ["@babel/plugin-transform-numeric-separator", "@babel/plugin-transform-literals"]
 }
 ```
 
 ## References
 
-- [Proposal: Numeric Separators](https://github.com/samuelgoto/proposal-numeric-separator)
+- [Proposal: Numeric Separators](https://github.com/tc39/proposal-numeric-separator)

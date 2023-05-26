@@ -34,12 +34,17 @@ module.exports = {
           items: [
             {
               type: "category",
+              label: "ES2024",
+              items: ["babel-plugin-proposal-unicode-sets-regex"],
+            },
+            {
+              type: "category",
               label: "ES2022",
               items: [
-                "babel-plugin-proposal-class-properties",
-                "babel-plugin-proposal-class-static-block",
-                "babel-plugin-proposal-private-methods",
-                "babel-plugin-proposal-private-property-in-object",
+                "babel-plugin-transform-class-properties",
+                "babel-plugin-transform-class-static-block",
+                "babel-plugin-transform-private-methods",
+                "babel-plugin-transform-private-property-in-object",
                 "babel-plugin-syntax-top-level-await",
               ],
             },
@@ -47,8 +52,8 @@ module.exports = {
               type: "category",
               label: "ES2021",
               items: [
-                "babel-plugin-proposal-logical-assignment-operators",
-                "babel-plugin-proposal-numeric-separator",
+                "babel-plugin-transform-logical-assignment-operators",
+                "babel-plugin-transform-numeric-separator",
               ],
             },
             {
@@ -56,9 +61,9 @@ module.exports = {
               label: "ES2020",
               items: [
                 "babel-plugin-proposal-dynamic-import",
-                "babel-plugin-proposal-export-namespace-from",
-                "babel-plugin-proposal-nullish-coalescing-operator",
-                "babel-plugin-proposal-optional-chaining",
+                "babel-plugin-transform-export-namespace-from",
+                "babel-plugin-transform-nullish-coalescing-operator",
+                "babel-plugin-transform-optional-chaining",
                 "babel-plugin-syntax-bigint",
                 "babel-plugin-syntax-dynamic-import",
                 "babel-plugin-syntax-import-meta",
@@ -68,17 +73,17 @@ module.exports = {
               type: "category",
               label: "ES2019",
               items: [
-                "babel-plugin-proposal-optional-catch-binding",
-                "babel-plugin-proposal-json-strings",
+                "babel-plugin-transform-optional-catch-binding",
+                "babel-plugin-transform-json-strings",
               ],
             },
             {
               type: "category",
               label: "ES2018",
               items: [
-                "babel-plugin-proposal-async-generator-functions",
-                "babel-plugin-proposal-object-rest-spread",
-                "babel-plugin-proposal-unicode-property-regex",
+                "babel-plugin-transform-async-generator-functions",
+                "babel-plugin-transform-object-rest-spread",
+                "babel-plugin-transform-unicode-property-regex",
                 "babel-plugin-transform-dotall-regex",
                 "babel-plugin-transform-named-capturing-groups-regex",
               ],
@@ -201,6 +206,7 @@ module.exports = {
         "babel-helper-compilation-targets",
         "babel-helper-module-imports",
         "babel-helper-validator-identifier",
+        "babel-helper-environment-visitor",
       ],
     },
   ],
@@ -217,6 +223,7 @@ module.exports = {
       "babel-plugin-proposal-destructuring-private",
       "babel-plugin-proposal-do-expressions",
       "babel-plugin-proposal-duplicate-named-capturing-groups-regex",
+      "babel-plugin-proposal-explicit-resource-management",
       "babel-plugin-proposal-export-default-from",
       "babel-plugin-proposal-function-bind",
       "babel-plugin-proposal-function-sent",
@@ -225,8 +232,10 @@ module.exports = {
       "babel-plugin-proposal-record-and-tuple",
       "babel-plugin-proposal-regexp-modifiers",
       "babel-plugin-proposal-throw-expressions",
-      "babel-plugin-proposal-unicode-sets-regex",
       "babel-plugin-syntax-import-attributes",
+    ],
+    "Web Compatibility": [
+      "babel-plugin-proposal-import-attributes-to-assertions",
     ],
   },
 };

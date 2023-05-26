@@ -102,6 +102,33 @@ function hasOwnProperty(obj, string) {
   return Object.prototype.hasOwnProperty.call(obj, string);
 }
 
+function provideDefaultOptionsForExternalPlugins(pluginName, babelVersion) {
+  switch (pluginName) {
+    case "@babel/plugin-proposal-decorators": {
+      if (compareVersions(babelVersion, "7.22.0") >= 0) {
+        return { version: "2023-05" };
+      } else if (compareVersions(babelVersion, "7.21.0") >= 0) {
+        return { version: "2023-01" };
+      } else if (compareVersions(babelVersion, "7.19.0") >= 0) {
+        return { version: "2022-03" };
+      } else if (compareVersions(babelVersion, "7.17.0") >= 0) {
+        return { version: "2021-12" };
+      } else if (compareVersions(babelVersion, "7.0.0") >= 0) {
+        return { version: "2018-09", decoratorsBeforeExport: true };
+      }
+    }
+    case "@babel/plugin-proposal-pipeline-operator": {
+      if (compareVersions(babelVersion, "7.15.0") >= 0) {
+        return { proposal: "hack", topicToken: "%" };
+      } else {
+        return { proposal: "minimal" };
+      }
+    }
+    default:
+      return {};
+  }
+}
+
 class Repl extends React.Component<Props, State> {
   _numLoadingPlugins = 0;
   _workerApi = new WorkerApi();
@@ -296,8 +323,6 @@ class Repl extends React.Component<Props, State> {
         babelState.didError = true;
         babelState.errorMessage =
           babelState.errorMessage || envState.errorMessage;
-      } else {
-        await this._workerApi.registerEnvPreset();
       }
     }
 
@@ -383,8 +408,7 @@ class Repl extends React.Component<Props, State> {
 
     if (result.didError) return result;
 
-    const availablePlugins = await this._workerApi.getAvailablePlugins();
-    const availablePluginsNames = availablePlugins.map(({ label }) => label);
+    const availablePluginsNames = await this._workerApi.getAvailablePlugins();
     const notRegisteredPackages =
       this.state.shippedProposalsState.config.packages
         .filter(
@@ -426,7 +450,15 @@ class Repl extends React.Component<Props, State> {
     );
   };
 
-  _loadExternalPlugin = (plugin: BabelPlugin) => {
+  _loadExternalPlugin = async (plugin: BabelPlugin) => {
+    // use available plugins from @babel/standalone for official external plugins
+    if (plugin.name.startsWith("@babel/plugin-")) {
+      const availablePlugins = await this._workerApi.getAvailablePlugins();
+      const shorthandName = plugin.name.replace("@babel/plugin-", "");
+      if (availablePlugins.includes(shorthandName)) {
+        return this._workerApi.registerPluginAlias(plugin.name, shorthandName);
+      }
+    }
     const bundledUrl = [
       "https://bundle.run",
       "https://packd.liuxingbaoyu.xyz",
@@ -494,7 +526,13 @@ class Repl extends React.Component<Props, State> {
 
     this._workerApi
       .compile(code, {
-        plugins: state.externalPlugins.map((plugin) => plugin.name),
+        plugins: state.externalPlugins.map((plugin) => [
+          plugin.name,
+          provideDefaultOptionsForExternalPlugins(
+            plugin.name,
+            state.babel.version
+          ),
+        ]),
         debugEnvPreset: state.debugEnvPreset,
         envConfig: state.envConfig,
         presetsOptions: state.presetsOptions,

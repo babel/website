@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-nullish-coalescing-operator
-title: "@babel/plugin-proposal-nullish-coalescing-operator"
+id: babel-plugin-transform-nullish-coalescing-operator
+title: "@babel/plugin-transform-nullish-coalescing-operator"
 sidebar_label: nullish-coalescing-operator
 ---
 
@@ -31,7 +31,7 @@ var foo =
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-nullish-coalescing-operator
+npm install --save-dev @babel/plugin-transform-nullish-coalescing-operator
 ```
 
 ## Usage
@@ -40,21 +40,21 @@ npm install --save-dev @babel/plugin-proposal-nullish-coalescing-operator
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-nullish-coalescing-operator"]
+  "plugins": ["@babel/plugin-transform-nullish-coalescing-operator"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-nullish-coalescing-operator script.js
+babel --plugins @babel/plugin-transform-nullish-coalescing-operator script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-nullish-coalescing-operator"],
+  plugins: ["@babel/plugin-transform-nullish-coalescing-operator"],
 });
 ```
 

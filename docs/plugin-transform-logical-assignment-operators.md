@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-logical-assignment-operators
-title: "@babel/plugin-proposal-logical-assignment-operators"
+id: babel-plugin-transform-logical-assignment-operators
+title: "@babel/plugin-transform-logical-assignment-operators"
 sidebar_label: logical-assignment-operators
 ---
 
@@ -32,7 +32,7 @@ a && (a = b);
 
 ### With Nullish Coalescing
 
-> While using the `@babel/plugin-proposal-nullish-coalescing-operator` plugin (included in `@babel/preset-env`)
+> While using the `@babel/plugin-transform-nullish-coalescing-operator` plugin (included in `@babel/preset-env`)
 
 ```js title="JavaScript"
 a ??= b;
@@ -51,7 +51,7 @@ var _a, _obj$a, _obj$a$b;
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-logical-assignment-operators
+npm install --save-dev @babel/plugin-transform-logical-assignment-operators
 ```
 
 ## Usage
@@ -60,21 +60,21 @@ npm install --save-dev @babel/plugin-proposal-logical-assignment-operators
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-logical-assignment-operators"]
+  "plugins": ["@babel/plugin-transform-logical-assignment-operators"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-logical-assignment-operators script.js
+babel --plugins @babel/plugin-transform-logical-assignment-operators script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-logical-assignment-operators"],
+  plugins: ["@babel/plugin-transform-logical-assignment-operators"],
 });
 ```
 

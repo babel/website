@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-class-properties
-title: "@babel/plugin-proposal-class-properties"
+id: babel-plugin-transform-class-properties
+title: "@babel/plugin-transform-class-properties"
 sidebar_label: class-properties
 ---
 
@@ -40,7 +40,7 @@ console.log(Bork.staticFunction()); // > "babelIsCool"
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-class-properties
+npm install --save-dev @babel/plugin-transform-class-properties
 ```
 
 ## Usage
@@ -51,7 +51,7 @@ Without options:
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-class-properties"]
+  "plugins": ["@babel/plugin-transform-class-properties"]
 }
 ```
 
@@ -59,21 +59,21 @@ With options:
 
 ```json title="babel.config.json"
 {
-  "plugins": [["@babel/plugin-proposal-class-properties", { "loose": true }]]
+  "plugins": [["@babel/plugin-transform-class-properties", { "loose": true }]]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-class-properties script.js
+babel --plugins @babel/plugin-transform-class-properties script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-class-properties"],
+  plugins: ["@babel/plugin-transform-class-properties"],
 });
 ```
 
