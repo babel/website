@@ -6,12 +6,21 @@ sidebar_label: syntax-explicit-resource-management
 
 > #### Syntax only
 >
-> This plugin only enables Babel to parse this syntax. Babel does not support transforming this syntax
+> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-explicit-resource-management](plugin-proposal-explicit-resource-management.md) to _both_ parse and transform this syntax.
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| v7.22.0 | Supports `await using` |
+</details>
 
 This plugin enables Babel to parse using declarations:
 
 ```js title="JavaScript"
 using handler = await read();
+await using handler = await read();
 ```
 
 ## Installation
@@ -43,3 +52,6 @@ require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-syntax-explicit-resource-management"]
 });
 ```
+
+## Reference
+- [Proposal: ECMAScript Explicit Resource Management](https://github.com/tc39/proposal-explicit-resource-management)

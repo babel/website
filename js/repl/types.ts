@@ -1,5 +1,5 @@
 export type BabelPresets = Array<string | Array<string | any>>;
-export type BabelPlugins = Array<string>;
+export type BabelPlugins = Array<string | [string, any]>;
 export type BabelPlugin = {
   name: string;
   version: string;

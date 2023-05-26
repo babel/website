@@ -34,6 +34,11 @@ module.exports = {
           items: [
             {
               type: "category",
+              label: "ES2024",
+              items: ["babel-plugin-proposal-unicode-sets-regex"],
+            },
+            {
+              type: "category",
               label: "ES2022",
               items: [
                 "babel-plugin-transform-class-properties",
@@ -201,6 +206,7 @@ module.exports = {
         "babel-helper-compilation-targets",
         "babel-helper-module-imports",
         "babel-helper-validator-identifier",
+        "babel-helper-environment-visitor",
       ],
     },
   ],
@@ -217,6 +223,7 @@ module.exports = {
       "babel-plugin-proposal-destructuring-private",
       "babel-plugin-proposal-do-expressions",
       "babel-plugin-proposal-duplicate-named-capturing-groups-regex",
+      "babel-plugin-proposal-explicit-resource-management",
       "babel-plugin-proposal-export-default-from",
       "babel-plugin-proposal-function-bind",
       "babel-plugin-proposal-function-sent",
@@ -225,7 +232,9 @@ module.exports = {
       "babel-plugin-proposal-record-and-tuple",
       "babel-plugin-proposal-regexp-modifiers",
       "babel-plugin-proposal-throw-expressions",
-      "babel-plugin-proposal-unicode-sets-regex",
+    ],
+    "Web Compatibility": [
+      "babel-plugin-proposal-import-attributes-to-assertions",
     ],
   },
 };
