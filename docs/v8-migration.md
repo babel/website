@@ -34,7 +34,7 @@ The parser and plugin require `eslint@^8.9.0` as peer dependency. ([#15563](http
 
 ## Package Renames
 
-The following packages has been renamed to `-transform` as they have reached Stage 4 ([#TODO](https://github.com/babel/babel/pull/TODO)):
+The following packages has been renamed to `-transform` as they have reached Stage 4 ([#15614](https://github.com/babel/babel/pull/15614)). The rename process has been landed in Babel 7.22 so you can start the migration prior to the upgrade.
 
 | Babel 7 | Babel 8 |
 | --- | --- |
