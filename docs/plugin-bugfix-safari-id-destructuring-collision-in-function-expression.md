@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-bugfix-safari-id-destructuring-collision-in-function-expression
 title: "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression"
-sidebar_label: bugfix-safari-id-destructuring-collision-in-function-expression
+sidebar_label: safari-id-destructuring-collision-in-function-expression
 ---
 
 This bugfix plugin renames destructuring parameters to workaround a [Safari bug](https://bugs.webkit.org/show_bug.cgi?id=220517) affecting versions from 10 to 15.6.

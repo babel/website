@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-bugfix-v8-spread-parameters-in-optional-chaining
 title: "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining"
-sidebar_label: bugfix-v8-spread-parameters-in-optional-chaining
+sidebar_label: v8-spread-parameters-in-optional-chaining
 ---
 
 This bugfix plugin transforms optional chaining operators to workaround a [V8 bug](https://crbug.com/v8/11558) affecting versions from 8.0 to 9.0.
