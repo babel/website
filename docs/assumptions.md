@@ -288,7 +288,7 @@ a.b?.();
 
 ## `setClassMethods`
 
-When declaring classes, assume that methods don't shadow getters on the superclass and that the program doesn't depend on methods being non-enumerable. Thus, it's safe to assign methods rather than using `Object.defineProperty`.
+When declaring classes, assume that methods don't shadow accessors or non-writable properties on the superclass prototype, and that the program doesn't depend on methods being non-enumerable. Thus, it's safe to assign methods rather than using `Object.defineProperty`.
 
 <div is="assumption-repl" data-assumption="setClassMethods" data-plugins="transform-classes">
 
