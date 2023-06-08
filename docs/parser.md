@@ -34,6 +34,7 @@ mind. When in doubt, use `.parse()`.
 
 | Version | Changes |
 | --- | --- |
+| `v7.23.0` | Added `createImportExpression` |
 | `v7.21.0` | Added `allowNewTargetOutsideFunction` and `annexb` |
 | `v7.16.0` | Added `startColumn` |
 | `v7.15.0` | Added `attachComment` |
@@ -74,6 +75,8 @@ mind. When in doubt, use `.parse()`.
 - **attachComment**: By default, Babel attaches comments to adjacent AST nodes. When this option is set to `false`, comments are not attached. It can provide up to 30% performance improvement when the input code has _many_ comments. `@babel/eslint-parser` will set it for you. It is not recommended to use `attachComment: false` with Babel transform, as doing so removes all the comments in output code, and renders annotations such as `/* istanbul ignore next */` nonfunctional.
 
 - **annexb**: By default, Babel parses JavaScript according to [ECMAScript's Annex B "_Additional ECMAScript Features for Web Browsers_"](https://tc39.es/ecma262/#sec-additional-ecmascript-features-for-web-browsers) syntax. When this option is set to `false`, Babel will parse syntax without the extensions specific to Annex B.
+
+- **createImportExpression**: By default, the parser parses dynamic import `import()` as call expression nodes. When this option is set to `true`, `ImportExpression` AST nodes are created instead. This option will default to `true` in Babel 8.
 
 - **createParenthesizedExpressions**: By default, the parser sets `extra.parenthesized` on the expression nodes. When this option is set to `true`, `ParenthesizedExpression` AST nodes are created instead.
 
