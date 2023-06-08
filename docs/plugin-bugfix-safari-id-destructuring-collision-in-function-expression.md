@@ -4,7 +4,7 @@ title: "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expre
 sidebar_label: safari-id-destructuring-collision-in-function-expression
 ---
 
-This bugfix plugin renames destructuring parameters to workaround a [Safari bug](https://bugs.webkit.org/show_bug.cgi?id=220517) affecting versions from 10 to 15.6.
+This bugfix plugin renames destructuring parameters to workaround a [Safari bug](https://bugs.webkit.org/show_bug.cgi?id=220517) affecting versions from 10 to 16.2.
 
 :::tip
 This plugin is included in `@babel/preset-env`. Set the [`bugfixes` option](./preset-env.md#bugfixes) to `true` so Babel will automatically enable this plugin for you when your `targets` are affected by the browser bug.
