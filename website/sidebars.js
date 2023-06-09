@@ -138,6 +138,14 @@ module.exports = {
                 "babel-plugin-transform-reserved-words",
               ],
             },
+            {
+              type: "category",
+              label: "Bugfix",
+              items: [
+                "babel-plugin-bugfix-safari-id-destructuring-collision-in-function-expression",
+                "babel-plugin-bugfix-v8-spread-parameters-in-optional-chaining",
+              ],
+            },
           ],
         },
         {
