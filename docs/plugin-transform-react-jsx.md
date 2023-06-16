@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-react-jsx"
 sidebar_label: transform-react-jsx
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-react`
+:::info
+This plugin is included in `@babel/preset-react`
+:::
 
 ## Example
 
@@ -323,7 +325,9 @@ Toggles whether or not to throw an error if an XML namespaced tag name is used. 
 
 Though the JSX spec allows this, it is disabled by default since React's JSX does not currently have support for it.
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 #### `runtime`
 

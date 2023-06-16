@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-typescript"
 sidebar_label: transform-typescript
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-typescript`
+:::info
+This plugin is included in `@babel/preset-typescript`
+:::
 
 This plugin adds support for the types syntax used by the [TypeScript programming language][ts]. However, this plugin does not add the ability to type-check the JavaScript passed to it. For that, you will need to install and set up TypeScript.
 
@@ -62,7 +64,9 @@ require("@babel/core").transformSync("code", {
 
 Added in `v7.7.0`
 
-> NOTE: This will be enabled by default in Babel 8
+:::note
+This will be enabled by default in Babel 8
+:::
 
 When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
 

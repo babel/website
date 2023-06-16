@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-typeof-symbol"
 sidebar_label: typeof-symbol
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Example
 

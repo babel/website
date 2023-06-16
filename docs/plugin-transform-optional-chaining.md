@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-optional-chaining"
 sidebar_label: optional-chaining
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2020](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2020](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 ## Example
 
@@ -141,7 +143,9 @@ When `true`, this transform will pretend `document.all` does not exist,
 and perform loose equality checks with `null` instead of strict equality checks
 against both `null` and `undefined`.
 
-> ⚠️ Consider migrating to the top level [`noDocumentAll`](assumptions.md#nodocumentall) assumption.
+:::caution
+Consider migrating to the top level [`noDocumentAll`](assumptions.md#nodocumentall) assumption.
+:::
 
 ```json title="babel.config.json"
 {
@@ -171,7 +175,9 @@ Out (`noDocumentAll === false`)
 foo === null || foo === void 0 ? void 0 : foo.bar;
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 ## References
 

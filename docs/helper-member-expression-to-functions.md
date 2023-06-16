@@ -6,7 +6,9 @@ sidebar_label: helper-member-expression-to-functions
 
 ## Usage
 
-> Designed for internal Babel use.
+:::note
+Designed for internal Babel use.
+:::
 
 Traverses the `path` using the supplied `visitor` and an augmented `state`.
 

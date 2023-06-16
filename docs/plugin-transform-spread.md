@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-spread"
 sidebar_label: spread
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Example
 
@@ -83,7 +85,9 @@ require("@babel/core").transformSync("code", {
 
 In loose mode, **all** iterables are assumed to be arrays.
 
-> ⚠️ Consider migrating to the top level [`iterableIsArray`](assumptions.md#iterableisarray) assumption.
+:::caution
+Consider migrating to the top level [`iterableIsArray`](assumptions.md#iterableisarray) assumption.
+:::
 
 ```json title="babel.config.json"
 {
@@ -95,7 +99,9 @@ In loose mode, **all** iterables are assumed to be arrays.
 
 Under the `iterableIsArray` assumption, Babel preserves "holes" when spreading an array (for example, `[ ...Array(2) ]` produces `[ (hole), (hole) ]`). Set `iterableIsArray` to `false` to avoid this behaviour.
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 ### `allowArrayLike`
 
@@ -105,7 +111,9 @@ Added in: `v7.10.0`
 
 This option allows spreading array-like objects as if they were arrays.
 
-> ⚠️ Consider migrating to the top level [`arrayLikeIsIterable`](assumptions.md#arraylikeisiterable) assumption.
+:::caution
+Consider migrating to the top level [`arrayLikeIsIterable`](assumptions.md#arraylikeisiterable) assumption.
+:::
 
 ```json title="babel.config.json"
 {

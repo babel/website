@@ -39,7 +39,9 @@ export default {
 
 ## Defining Helpers
 
-> **NOTE**: This package is only meant to be used by the packages included in this repository. There is currently no way for third-party plugins to define a helper.
+:::caution
+This package is only meant to be used by the packages included in this repository. There is currently no way for third-party plugins to define a helper.
+:::
 
 Helpers are defined in the `src/helpers.js` file, and they must be valid modules which follow these guidelines:
 

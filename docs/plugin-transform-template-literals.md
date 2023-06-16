@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-template-literals"
 sidebar_label: template-literals
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Example
 
@@ -73,7 +75,9 @@ require("@babel/core").transformSync("code", {
 
 `boolean`, defaults to `false`.
 
-> ⚠️ Consider migrating to the top level [`mutableTemplateObject`](assumptions.md#mutabletemplateobject) assumption.
+:::caution
+Consider migrating to the top level [`mutableTemplateObject`](assumptions.md#mutabletemplateobject) assumption.
+:::
 
 ```json title="babel.config.json"
 {
@@ -99,4 +103,6 @@ When `false` or not set, all template literal expressions and quasis are combine
 "foo" + bar;
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::

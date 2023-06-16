@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-arrow-functions"
 sidebar_label: arrow-functions
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Example
 
@@ -152,4 +154,6 @@ This option enables the following:
 
 - Add names to arrow functions.
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::

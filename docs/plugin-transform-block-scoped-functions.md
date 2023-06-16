@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-block-scoped-functions"
 sidebar_label: block-scoped-functions
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Examples
 

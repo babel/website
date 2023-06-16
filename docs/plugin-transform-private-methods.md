@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-private-methods"
 sidebar_label: private-methods
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 <details>
 <summary>History</summary>
@@ -81,14 +83,18 @@ require("@babel/core").transformSync("code", {
 
 `boolean`, defaults to `false`.
 
-> Note: The `loose` mode configuration setting _must_ be the same as [`@babel/plugin-transform-class-properties`](plugin-transform-class-properties.md).
+:::note
+The `loose` mode configuration setting _must_ be the same as [`@babel/plugin-transform-class-properties`](plugin-transform-class-properties.md).
+:::
 
 When true, private methods will be assigned directly on its parent
 via `Object.defineProperty` rather than a `WeakSet`. This results in improved
 performance and debugging (normal property access vs `.get()`) at the expense
 of potentially leaking "privates" via things like `Object.getOwnPropertyNames`.
 
-> ⚠️ Consider migrating to the top level [`privateFieldsAsProperties`](assumptions.md#privatefieldsasproperties) assumption.
+:::caution
+Consider migrating to the top level [`privateFieldsAsProperties`](assumptions.md#privatefieldsasproperties) assumption.
+:::
 
 ```json title="babel.config.json"
 {
@@ -159,7 +165,9 @@ var _privateMethod2 = function _privateMethod2() {
 };
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 ## References
 

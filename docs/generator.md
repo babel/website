@@ -29,7 +29,9 @@ const output = generate(
 );
 ```
 
-> **Note:** The symbols like white spaces or new line characters are not preserved in the AST. When Babel generator prints code from the AST, the output format is not guaranteed.
+:::info
+The symbols like white spaces or new line characters are not preserved in the AST. When Babel generator prints code from the AST, the output format is not guaranteed.
+:::
 
 ## Options
 

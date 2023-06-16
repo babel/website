@@ -34,9 +34,9 @@ babel.transform("code();", options, function(err, result) {
 });
 ```
 
-> Compat Note:
->
-> In Babel 6, this method was synchronous and `transformSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformSync` since this backward-compatibility will be dropped in Babel 8.
+:::info
+In Babel 6, this method was synchronous and `transformSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformSync` since this backward-compatibility will be dropped in Babel 8.
+:::
 
 ## transformSync
 
@@ -149,9 +149,9 @@ babel.transformFromAst(parsedAst, sourceCode, options, function(err, result) {
 });
 ```
 
-> Compat Note:
->
-> In Babel 6, this method was synchronous and `transformFromAstSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformFromAstSync` since this backward-compatibility will be dropped in Babel 8.
+:::info
+In Babel 6, this method was synchronous and `transformFromAstSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformFromAstSync` since this backward-compatibility will be dropped in Babel 8.
+:::
 
 ## transformFromAstSync
 
@@ -197,11 +197,13 @@ Given some code, parse it using Babel's standard behavior. Referenced presets an
 plugins will be loaded such that optional syntax plugins are automatically
 enabled.
 
-> Compat Note:
->
-> In Babel 7's early betas, this method was synchronous and `parseSync` did not exist. For backward-compatibility,
-> this function will behave synchronously if no callback is given. If you're starting with Babel 7 stable
-> and need synchronous behavior, please use `parseSync` since this backward-compatibility will be dropped in Babel 8.
+:::info
+In Babel 7's early betas, this method was synchronous and `parseSync` did not
+exist. For backward-compatibility, this function will behave synchronously if
+no callback is given. If you're starting with Babel 7 stable and need
+synchronous behavior, please use `parseSync` since this backward-compatibility
+will be dropped in Babel 8.
+:::
 
 ## parseSync
 

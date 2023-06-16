@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-object-rest-spread"
 sidebar_label: object-rest-spread
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2018](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2018](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 ## Example
 
@@ -64,7 +66,9 @@ By default, this plugin will produce spec compliant code by using Babel's `objec
 
 Enabling this option will use Babel's `extends` helper, which is basically the same as `Object.assign` (see `useBuiltIns` below to use it directly).
 
-> ⚠️ Consider migrating to the top level [`setSpreadProperties`](assumptions.md#setspreadproperties) assumption.
+:::caution
+Consider migrating to the top level [`setSpreadProperties`](assumptions.md#setspreadproperties) assumption.
+:::
 
 ```json title="babel.config.json"
 {
@@ -111,7 +115,9 @@ z = { x, ...y };
 z = Object.assign({ x }, y);
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 ## References
 

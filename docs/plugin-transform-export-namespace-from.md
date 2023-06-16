@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-export-namespace-from"
 sidebar_label: export-namespace-from
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2020](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2020](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 ## Example
 

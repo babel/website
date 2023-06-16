@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-numeric-separator"
 sidebar_label: numeric-separator
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2021](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2021](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 ## Example
 
@@ -95,7 +97,9 @@ require("@babel/core").transformSync("code", {
 
 If you need to further compile ES2015 Decimal, Binary, Hex and Octal number representations to their pre-ES2015 numeric literal form, add the [`"@babel/plugin-transform-literals"`](plugin-transform-literals.md) plugin:
 
-> `@babel/plugin-transform-literals` is already included in [@babel/preset-env](preset-env.md) and @babel/preset-es2015.
+:::info
+`@babel/plugin-transform-literals` is already included in [@babel/preset-env](preset-env.md).
+:::
 
 ### With a configuration file (Recommended)
 

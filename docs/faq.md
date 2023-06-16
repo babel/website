@@ -106,4 +106,6 @@ If we only update `babel-plugin-transform-exponentiation-operator` to 6.x.x, cur
 
 For example, the Babel [v6.6.0 release](https://github.com/babel/babel/releases/tag/v6.6.0) doesn't mean all packages are now 6.6.0.
 
-> To make sure you are using the latest package versions, you may need to remove `node_modules` and `npm install` again.
+:::tip
+To make sure you are using the latest package versions, you may need to remove `node_modules` and `npm install` again.
+:::

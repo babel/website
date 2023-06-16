@@ -56,7 +56,9 @@ const WithChildren = (props) => {
 
 - **Mutable Properties**
 
-> See https://github.com/facebook/react/issues/3226 for more on this
+:::tip
+See https://github.com/facebook/react/issues/3226 for more on this
+:::
 
 ```js title="JavaScript"
 <div style={{ width: 100 }} />
@@ -100,7 +102,9 @@ This will skip the `Mutable Properties` deopt.
 }
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 ### Via CLI
 

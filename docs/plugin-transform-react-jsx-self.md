@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-react-jsx-self"
 sidebar_label: react-jsx-self
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-react`
+:::info
+This plugin is included in `@babel/preset-react`
+:::
 
 ## Example
 

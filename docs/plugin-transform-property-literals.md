@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-property-literals"
 sidebar_label: property-literals
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Example
 

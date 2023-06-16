@@ -22,7 +22,9 @@ npm install --save-dev @babel/preset-env
 
 We leverage these data sources to maintain [mappings of which version](https://github.com/babel/babel/blob/main/packages/babel-compat-data/data/plugins.json) of our supported target environments gained support of a JavaScript syntax or browser feature, as well as a mapping of those syntaxes and features to Babel transform plugins and core-js polyfills.
 
-> Note: `@babel/preset-env` won't include any JavaScript syntax proposals less than Stage 3 because at that stage in the TC39 process, it wouldn't be implemented by any browsers anyway. Those would need to be included manually. The `shippedProposals` option will include Stage 3 proposals that some browsers have already implemented.
+:::note
+`@babel/preset-env` won't include any JavaScript syntax proposals less than Stage 3 because at that stage in the TC39 process, it wouldn't be implemented by any browsers anyway. Those would need to be included manually. The `shippedProposals` option will include Stage 3 proposals that some browsers have already implemented.
+:::
 
 `@babel/preset-env` takes any [target environments you've specified](#targets) and checks them against its mappings to compile a list of plugins and passes it to Babel.
 
@@ -32,7 +34,9 @@ For browser- or Electron-based projects, we recommend using a [`.browserslistrc`
 
 By default `@babel/preset-env` will use [browserslist config sources](https://github.com/ai/browserslist#queries) _unless_ either the [targets](#targets) or [ignoreBrowserslistConfig](#ignorebrowserslistconfig) options are set.
 
-> Please note that if you are relying on browserslist's defaults query (either explicitly or by having no browserslist config), you will want to check out the [No targets](options.md#no-targets) section for information on preset-env's behavior.
+:::tip
+If you are relying on browserslist's defaults query (either explicitly or by having no browserslist config), you will want to check out the [No targets](options.md#no-targets) section for information on preset-env's behavior.
+:::
 
 For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
 
@@ -61,8 +65,10 @@ or
 { "browserslist": "> 0.25%, not dead" }
 ```
 
-> Please note that since `v7.4.5` the browserslist query is resolved with [`mobileToDesktop: true`](https://github.com/browserslist/browserslist#js-api).
-> For example, if you want to create a snapshot of a query run `npx browserslist --mobile-to-desktop ">0.25%, not dead"`.
+:::note
+Please note that since `v7.4.5` the browserslist query is resolved with [`mobileToDesktop: true`](https://github.com/browserslist/browserslist#js-api).
+For example, if you want to create a snapshot of a query run `npx browserslist --mobile-to-desktop ">0.25%, not dead"`.
+:::
 
 ## Options
 
@@ -80,7 +86,9 @@ For usage, refer to the [`targets` option](options.md#targets) documentation.
 
 Added in: `v7.9.0`
 
-> Note: These optimizations will be enabled by default in Babel 8
+:::note
+These optimizations will be enabled by default in Babel 8
+:::
 
 By default, `@babel/preset-env` (and Babel plugins in general) grouped ECMAScript syntax features into collections of closely related smaller features. These groups can be large and include a lot of edge cases, for example "function arguments" includes destructured, default and rest parameters. From this grouping information, Babel enables or disables each group based on the browser support target you specify to `@babel/preset-env`’s `targets` option.
 
@@ -98,7 +106,9 @@ Enable more spec compliant, but potentially slower, transformations for any plug
 
 Enable ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.html) for any plugins in this preset that allow them.
 
-> ⚠️ Consider migrating to the top level [`assumptions`](assumptions.md) available since Babel 7.13.
+:::caution
+Consider migrating to the top level [`assumptions`](assumptions.md) available since Babel 7.13.
+:::
 
 ### `modules`
 
@@ -156,7 +166,9 @@ This option is useful if there is a bug in a native implementation, or a combina
 
 For example, Node 4 supports native classes but not spread. If `super` is used with a spread argument, then the `@babel/plugin-transform-classes` transform needs to be `include`d, as it is not possible to transpile a spread with `super` otherwise.
 
-> NOTE: The `include` and `exclude` options _only_ work with the [plugins included with this preset](https://github.com/babel/babel/blob/main/packages/babel-compat-data/scripts/data/plugin-features.js); so, for example, including `@babel/plugin-proposal-do-expressions` or excluding `@babel/plugin-proposal-function-bind` will throw errors. To use a plugin _not_ included with this preset, add them to your ["plugins"](options.md#plugins) directly.
+:::note
+The `include` and `exclude` options _only_ work with the [plugins included with this preset](https://github.com/babel/babel/blob/main/packages/babel-compat-data/scripts/data/plugin-features.js); so, for example, including `@babel/plugin-proposal-do-expressions` or excluding `@babel/plugin-proposal-function-bind` will throw errors. To use a plugin _not_ included with this preset, add them to your ["plugins"](options.md#plugins) directly.
+:::
 
 ### `exclude`
 
@@ -197,10 +209,12 @@ npm install core-js@2 --save
 | `v7.0.0` | It replaces `"@babel/polyfill"` entry imports |
 </details>
 
-> NOTE: Only use `import "core-js";` once in your whole app.
-> If you are using `@babel/polyfill`, it already includes `core-js`: importing it twice will throw an error.
-> Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
-> We recommend creating a single entry file that only contains the `import` statements.
+:::tip
+Only use `import "core-js";` once in your whole app.
+If you are using `@babel/polyfill`, it already includes `core-js`: importing it twice will throw an error.
+Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
+We recommend creating a single entry file that only contains the `import` statements.
+:::
 
 This option enables a new plugin that replaces the `import "core-js/stable";` and `require("core-js");` statements with individual imports to different `core-js` entry points based on environment.
 
@@ -242,8 +256,10 @@ import "core-js/modules/esnext.math.scale";
 
 You can read [core-js](https://github.com/zloirock/core-js)'s documentation for more information about the different entry points.
 
-> NOTE: When using `core-js@2` (either explicitly using the [`corejs: "2"`](#corejs) option or implicitly), `@babel/preset-env` will also transform imports and requires of `@babel/polyfill`.
-> This behavior is deprecated because it isn't possible to use `@babel/polyfill` with different `core-js` versions.
+:::note
+When using `core-js@2` (either explicitly using the [`corejs: "2"`](#corejs) option or implicitly), `@babel/preset-env` will also transform imports and requires of `@babel/polyfill`.
+This behavior is deprecated because it isn't possible to use `@babel/polyfill` with different `core-js` versions.
+:::
 
 #### `useBuiltIns: 'usage'`
 
@@ -334,16 +350,20 @@ module.exports = function(api) {
 
 </details></p>
 
-> NOTE: `targets.uglify` is deprecated and will be removed in the next major in
-> favor of this.
+:::danger
+`targets.uglify` is deprecated and will be removed in the next major in
+favor of this.
+:::
 
 By default, this preset will run all the transforms needed for the targeted
 environment(s). Enable this option if you want to force running _all_
 transforms, which is useful if the output will be run through UglifyJS or an
 environment that only supports ES5.
 
-> NOTE: If you require an alternative minifier which _does_ support ES6 syntax,
-> we recommend [Terser](https://www.npmjs.com/package/terser).
+:::tip
+If you require an alternative minifier which _does_ support ES6 syntax,
+we recommend [Terser](https://www.npmjs.com/package/terser).
+:::
 
 ### `configPath`
 

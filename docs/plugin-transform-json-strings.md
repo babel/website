@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-json-strings"
 sidebar_label: json-strings
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2019](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2019](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 ## Examples
 

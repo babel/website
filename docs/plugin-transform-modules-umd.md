@@ -12,7 +12,9 @@ sidebar_label: UMD
 | `v7.14.0` | Implemented the `importInterop` option |
 </details>
 
-> **NOTE**: This plugin is included in `@babel/preset-env` under the `modules` option
+:::info
+This plugin is included in `@babel/preset-env` under the `modules` option
+:::
 
 This plugin transforms ES2015 modules to [UMD](https://github.com/umdjs/umd). Note that only the _syntax_ of import/export statements (`import "./mod.js"`) is transformed, as Babel is unaware of different resolution algorithms between implementations of ES2015 modules and UMD.
 

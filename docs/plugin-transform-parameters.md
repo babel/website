@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-parameters"
 sidebar_label: parameters
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 This plugin transforms ES2015 parameters to ES5, this includes:
 
@@ -90,7 +92,9 @@ require("@babel/core").transformSync("code", {
 
 In loose mode, parameters with default values will be counted into the arity of the function. This is not spec behavior where these parameters do not add to function arity.
 
-> ⚠️ Consider migrating to the top level [`ignoreFunctionLength`](assumptions.md#ignorefunctionlength) assumption.
+:::caution
+Consider migrating to the top level [`ignoreFunctionLength`](assumptions.md#ignorefunctionlength) assumption.
+:::
 
 ```json title="babel.config.json"
 {
@@ -112,4 +116,6 @@ function bar1(arg1 = 1) {}
 bar1.length; // 1
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::

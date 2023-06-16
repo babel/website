@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-async-generator-functions"
 sidebar_label: async-generator-functions
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2018](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2018](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 ## Example
 

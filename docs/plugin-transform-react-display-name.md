@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-react-display-name"
 sidebar_label: react-display-name
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-react`
+:::info
+This plugin is included in `@babel/preset-react`
+:::
 
 ## Example
 

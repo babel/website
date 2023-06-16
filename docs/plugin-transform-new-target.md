@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-new-target"
 sidebar_label: new-target
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Example
 

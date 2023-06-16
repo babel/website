@@ -4,7 +4,9 @@ title: "@babel/preset-env-standalone"
 sidebar_label: env-standalone
 ---
 
-> 🚨 As of Babel 7.8.0, this package has been deprecated. It is now included in [@babel/standalone](standalone.md#usage).
+:::danger
+🚨 As of Babel 7.8.0, this package has been deprecated. It is now included in [@babel/standalone](standalone.md#usage).
+:::
 
 # Installation
 

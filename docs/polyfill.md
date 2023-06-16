@@ -3,13 +3,15 @@ id: babel-polyfill
 title: "@babel/polyfill"
 ---
 
-> 🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features):
->
-> ```js title="JavaScript"
-> import "core-js/stable";
-> ```
->
-> If you are compiling generators or async function to ES5, and you are using a version of `@babel/core` or `@babel/plugin-transform-regenerator` older than `7.18.0`, you must also load the [`regenerator runtime`](https://github.com/facebook/regenerator/tree/main/packages/runtime) package. It is automatically loaded when using `@babel/preset-env`'s `useBuiltIns: "usage"` option or `@babel/plugin-transform-runtime`.
+:::danger
+🚨 As of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features):
+
+```js title="JavaScript"
+import "core-js/stable";
+```
+
+If you are compiling generators or async function to ES5, and you are using a version of `@babel/core` or `@babel/plugin-transform-regenerator` older than `7.18.0`, you must also load the [`regenerator runtime`](https://github.com/facebook/regenerator/tree/main/packages/runtime) package. It is automatically loaded when using `@babel/preset-env`'s `useBuiltIns: "usage"` option or `@babel/plugin-transform-runtime`.
+:::
 
 Babel includes a [polyfill](<https://en.wikipedia.org/wiki/Polyfill_(programming)>) that includes a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/main/packages/runtime/runtime.js) and [core-js](https://github.com/zloirock/core-js).
 
@@ -24,7 +26,9 @@ This means you can use new built-ins like `Promise` or `WeakMap`, static methods
 npm install --save @babel/polyfill
 ```
 
-> Because this is a polyfill (which will run before your source code), we need it to be a `dependency`, not a `devDependency`
+:::info
+Because this is a polyfill (which will run before your source code), we need it to be a `dependency`, not a `devDependency`
+:::
 
 ## Size
 
@@ -38,7 +42,7 @@ If you need to use a proposal that is not Stage 4, `@babel/polyfill` will not au
 
 To include the polyfill you need to require it at the top of the **entry point** to your application.
 
-> Make sure it is called before all other code/require statements!
+Make sure it is called before all other code/require statements!
 
 ```js title="JavaScript"
 require("@babel/polyfill");
@@ -70,7 +74,9 @@ module.exports = {
 
 - If [`@babel/preset-env`](preset-env.md) is not used then add `@babel/polyfill` to webpack entry array as discussed above. It can still be added at the top of the entry point to application via `import` or `require`, but this is not recommended.
 
-> We do not recommend that you import the whole polyfill directly: either try the `useBuiltIns` options or import only the polyfills you need manually (either from this package or somewhere else).
+:::caution
+We do not recommend that you import the whole polyfill directly: either try the `useBuiltIns` options or import only the polyfills you need manually (either from this package or somewhere else).
+:::
 
 ## Usage in Browser
 
@@ -83,6 +89,8 @@ before it.
 
 ## Details
 
-> ##### If you are looking for something that won't modify globals to be used in a tool/library, checkout the [`transform-runtime`](plugin-transform-runtime.md) plugin. This means you won't be able to use the instance methods mentioned above like `Array.prototype.includes`.
+:::tip
+If you are looking for something that won't modify globals to be used in a tool/library, checkout the [`transform-runtime`](plugin-transform-runtime.md) plugin. This means you won't be able to use the instance methods mentioned above like `Array.prototype.includes`.
+:::
 
 Note: Depending on what ES2015 methods you actually use, you may not need to use `@babel/polyfill` or the runtime plugin. You may want to only [load the specific polyfills you are using](https://github.com/zloirock/core-js#commonjs-api) (like `Object.assign`) or just document that the environment the library is being loaded in should include certain polyfills.
