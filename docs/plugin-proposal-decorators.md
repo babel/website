@@ -90,6 +90,20 @@ require("@babel/core").transformSync("code", {
 | `v7.17.0` | Added the `version` option with support for `"2021-12"`, `"2018-09"` and `"legacy"` |
 </details>
 
+:::babel8
+
+### `version`
+
+`"2023-05"` or `"legacy"`.
+
+Selects the decorators proposal to use:
+- `"2023-05"` is the proposal version after the updates that reached consensus in the March and May 2023 TC39 meetings. This version will be enabled by default if it ends up being the final one.
+- `legacy` is the legacy Stage 1 proposal, defined at [`wycats/javascript-decorators@e1bf8d41bf`](https://github.com/wycats/javascript-decorators/blob/e1bf8d41bfa2591d949dd3bbf013514c8904b913/README.md).
+
+:::
+
+:::babel7
+
 ### `version`
 
 `"2023-05"`, `"2023-01"`, `"2022-03"`, `"2021-12"`, `"2018-09"` or `"legacy"`.
@@ -101,6 +115,10 @@ Selects the decorators proposal to use:
 - `"2021-12"` is the proposal version as it was presented to TC39 in Dec 2021. You can read more about it at [`tc39/proposal-decorators@d6c056fa06`](https://github.com/tc39/proposal-decorators/tree/d6c056fa061646178c34f361bad33d583316dc85).
 - `"2018-09"` is the proposal version that was initially promoted to Stage 2 presented to TC39 in Sept 2018.  You can read more about it at [`tc39/proposal-decorators@7fa580b40f`](https://github.com/tc39/proposal-decorators/tree/7fa580b40f2c19c561511ea2c978e307ae689a1b).
 - `legacy` is the legacy Stage 1 proposal, defined at [`wycats/javascript-decorators@e1bf8d41bf`](https://github.com/wycats/javascript-decorators/blob/e1bf8d41bfa2591d949dd3bbf013514c8904b913/README.md).
+
+:::caution
+Babel 8 will only support `"2023-05"` and `"legacy"`. If you are using a different decorators version, it's recommended to migrate to `"2023-05"`.
+:::
 
 The spec repo provides a brief [summary of the differences between these versions](https://github.com/tc39/proposal-decorators#how-does-this-proposal-compare-to-other-versions-of-decorators).
 
@@ -144,7 +162,7 @@ If you are including your plugins manually and using `@babel/plugin-transform-cl
 {
   "plugins": [
 -   "@babel/plugin-transform-class-properties",
-    ["@babel/plugin-proposal-decorators", { "version": "2023-05" }]
+    ["@babel/plugin-proposal-decorators", { "version": "legacy" }]
 +   "@babel/plugin-transform-class-properties"
   ]
 }
@@ -157,10 +175,12 @@ If you are already using `@babel/preset-env`, you can safely remove `@babel/plug
   "presets": ["@babel/preset-env"],
   "plugins": [
 -   "@babel/plugin-transform-class-properties",
-    ["@babel/plugin-proposal-decorators", { "version": "2023-05" }]
+    ["@babel/plugin-proposal-decorators", { "version": "legacy" }]
   ]
 }
 ```
+
+:::
 
 > You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
 
