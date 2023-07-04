@@ -34,7 +34,7 @@ mind. When in doubt, use `.parse()`.
 
 | Version | Changes |
 | --- | --- |
-| `v7.23.0` | Added `createImportExpression` |
+| `v7.23.0` | Added `createImportExpressions` |
 | `v7.21.0` | Added `allowNewTargetOutsideFunction` and `annexb` |
 | `v7.16.0` | Added `startColumn` |
 | `v7.15.0` | Added `attachComment` |
@@ -76,7 +76,7 @@ mind. When in doubt, use `.parse()`.
 
 - **annexb**: By default, Babel parses JavaScript according to [ECMAScript's Annex B "_Additional ECMAScript Features for Web Browsers_"](https://tc39.es/ecma262/#sec-additional-ecmascript-features-for-web-browsers) syntax. When this option is set to `false`, Babel will parse syntax without the extensions specific to Annex B.
 
-- **createImportExpression**: By default, the parser parses dynamic import `import()` as call expression nodes. When this option is set to `true`, `ImportExpression` AST nodes are created instead. This option will default to `true` in Babel 8.
+- **createImportExpressions**: By default, the parser parses dynamic import `import()` as call expression nodes. When this option is set to `true`, `ImportExpression` AST nodes are created instead. This option will default to `true` in Babel 8.
 
 - **createParenthesizedExpressions**: By default, the parser sets `extra.parenthesized` on the expression nodes. When this option is set to `true`, `ParenthesizedExpression` AST nodes are created instead.
 
