@@ -331,7 +331,7 @@ You should enable these features only if you are using an older version.
     See [plugin-proposal-pipeline-operator](plugin-proposal-pipeline-operator.md)
     for more information.
 
-- `recordAndtuple`:
+- `recordAndTuple`:
 
   - `syntaxType` (`hash` or `bar`, defaults to `hash`)
     There are two syntax variants for `recordAndTuple`. They share exactly same runtime semantics.
