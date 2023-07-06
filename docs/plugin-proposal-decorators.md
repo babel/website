@@ -184,6 +184,8 @@ If you are already using `@babel/preset-env`, you can safely remove `@babel/plug
 You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
 :::
 
+:::
+
 ## References
 
 - [Proposal: JavaScript Decorators](https://github.com/tc39/proposal-decorators)
