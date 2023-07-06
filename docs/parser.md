@@ -339,7 +339,7 @@ This option is deprecated and will be removed in a future version. Code that is 
     See [plugin-proposal-pipeline-operator](plugin-proposal-pipeline-operator.md)
     for more information.
 
-- `recordAndtuple`:
+- `recordAndTuple`:
 
   - `syntaxType` (`hash` or `bar`, defaults to `hash`)
     There are two syntax variants for `recordAndTuple`. They share exactly same runtime semantics.
