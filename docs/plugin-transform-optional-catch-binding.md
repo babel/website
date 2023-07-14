@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-optional-catch-binding"
 sidebar_label: optional-catch-binding
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2019](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2019](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 ## Examples
 

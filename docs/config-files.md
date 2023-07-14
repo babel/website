@@ -138,14 +138,18 @@ Babel can be configured using any file extension natively supported by Node.js, 
 
 - `babel.config.cts` and `.babelrc.cts` allow you to define your configuration as Typescript + CommonJS. You must either install `@babel/preset-typescript`, or run Babel using `ts-node`.
 
-  > 🚧 This functionality is experimental. It's not possible yet to use `babel.config.ts` and `babel.config.mts` files, pending stabilization of the Node.js ESM loader API.
+  :::note
+  🚧 This functionality is experimental. It's not possible yet to use `babel.config.ts` and `babel.config.mts` files, pending stabilization of the Node.js ESM loader API.
+  :::
 
 JavaScript configuration files can either export an object, or a function that when called will
 return the generated configuration.
 Function-returning configs are given a few special powers because they can access an API exposed
 by Babel itself. See [Config Function API](#config-function-api) for more information.
 
-> For compatibility reasons, `.babelrc` is an alias for `.babelrc.json`.
+:::note
+For compatibility reasons, `.babelrc` is an alias for `.babelrc.json`.
+:::
 
 ## Monorepos
 
@@ -255,7 +259,9 @@ your Jest options via the [transform option](https://jestjs.io/docs/en/configura
 
 so all JS files will be processed with your version of `babel-jest` with the option enabled.
 
-> NOTE: When using `babel-jest` &lt; 27, you must omit the `.default` part: `require("babel-jest").createTransformer({ ...`.
+:::note
+When using `babel-jest` &lt; 27, you must omit the `.default` part: `require("babel-jest").createTransformer({ ...`.
+:::
 
 #### Others
 
@@ -362,7 +368,9 @@ It has a few different forms:
 - `api.env()` returns the current `envName` string.
 - `api.env(envName => envName.startsWith("test-"))` returns `true` if the env starts with "test-".
 
-> **Note:** This function internally makes use of [`api.cache`](#apicache) mentioned above to ensure that Babel is aware that this build depends on a specific `envName`. You should not use it alongside with `api.cache.forever()` or `api.cache.never()`.
+:::note
+This function internally makes use of [`api.cache`](#apicache) mentioned above to ensure that Babel is aware that this build depends on a specific `envName`. You should not use it alongside with `api.cache.forever()` or `api.cache.never()`.
+:::
 
 ### `api.caller(cb)`
 

@@ -117,7 +117,9 @@ It is based on [ESTree spec][] with the following deviations:
 - [ChainExpression][] is replaced with [OptionalMemberExpression][] and [OptionalCallExpression][]
 - [ImportExpression][] is replaced with a [CallExpression][] whose `callee` is an [Import] node.
 
-> There is now an `estree` plugin which reverts these deviations
+:::tip
+There is now an `estree` plugin which reverts these deviations
+:::
 
 AST for JSX code is based on [Facebook JSX AST][].
 
@@ -286,7 +288,11 @@ You should enable these features only if you are using an older version.
 | `7.14.0` | Added `dts` for `typescript` plugin |
 </details>
 
-> NOTE: When a plugin is specified multiple times, only the first options are considered.
+<!-- TODO: Is this note still true? Don't we raise an exception? -->
+
+:::note
+When a plugin is specified multiple times, only the first options are considered.
+:::
 
 - `importAttributes`:
 
@@ -313,7 +319,9 @@ You should enable these features only if you are using an older version.
     export @dec class C {}
     ```
 
-    > ⚠️ This option is deprecated and will be removed in a future version. Code that is valid when this option is explicitly set to `true` or `false` is also valid when this option is not set.
+    :::caution
+This option is deprecated and will be removed in a future version. Code that is valid when this option is explicitly set to `true` or `false` is also valid when this option is not set.
+:::
 
 - `pipelineOperator`:
 

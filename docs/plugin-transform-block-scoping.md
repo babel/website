@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-block-scoping"
 sidebar_label: block-scoping
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Examples
 
@@ -109,4 +111,6 @@ let i;
 
 If you need these errors you can tell Babel to try and find them by setting `"tdz": true` for this plugin. However, the current implementation might not get all edge cases right and its best to just avoid code like this in the first place.
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::

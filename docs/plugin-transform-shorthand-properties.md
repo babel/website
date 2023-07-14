@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-shorthand-properties"
 sidebar_label: shorthand-properties
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Example
 

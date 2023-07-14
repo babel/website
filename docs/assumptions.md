@@ -22,7 +22,9 @@ For example:
 }
 ```
 
-> ⚠ This is advanced functionality. Please be careful when enabling assumptions, because they are not spec-compliant and may break your code in unexpected ways.
+:::caution
+This is advanced functionality. Please be careful when enabling assumptions, because they are not spec-compliant and may break your code in unexpected ways.
+:::
 
 ## `arrayLikeIsIterable`
 
@@ -241,7 +243,9 @@ class Foo {
 
 </div>
 
-> ⚠️ When using inline Babel helpers, generated string keys are unique per-file and not globally. This could cause conflicts when extending classes from a different fields with private fields with the same name.
+:::caution
+When using inline Babel helpers, generated string keys are unique per-file and not globally. This could cause conflicts when extending classes from a different fields with private fields with the same name.
+:::
 
 ## `privateFieldsAsSymbols`
 

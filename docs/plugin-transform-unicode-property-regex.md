@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-unicode-property-regex"
 sidebar_label: unicode-property-regex
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2018](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2018](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 [Here’s an online demo.](https://mothereff.in/regexpu#input=var+regex+%3D+/%5Cp%7BScript_Extensions%3DGreek%7D/u%3B&unicodePropertyEscape=1)
 
@@ -58,7 +60,9 @@ require("@babel/core").transformSync(code, {
 When disabled with `false`, the transform converts Unicode regexes to
 non-Unicode regexes for wider support, removing the `u` flag. See https://github.com/mathiasbynens/regexpu-core#useunicodeflag-default-false for more information.
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 ## Author
 

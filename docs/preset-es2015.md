@@ -4,8 +4,10 @@ title: "@babel/preset-es2015"
 sidebar_label: es2015
 ---
 
-> As of Babel v6, all the yearly presets have been deprecated.
-> We recommend using [`@babel/preset-env`](preset-env.md) instead.
+:::danger
+As of Babel v6, all the yearly presets have been deprecated.
+We recommend using [`@babel/preset-env`](preset-env.md) instead.
+:::
 
 ## Install
 

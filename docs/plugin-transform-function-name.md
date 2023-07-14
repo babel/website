@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-function-name"
 sidebar_label: function-name
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Examples
 

@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-unicode-regex"
 sidebar_label: unicode-regex
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Example
 

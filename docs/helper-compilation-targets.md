@@ -103,7 +103,9 @@ filterItems(
 );
 ```
 
-> When a new ES feature reaches stage-4, it will be matured in `@babel/parser`, which means it will always be parsed regardless of the plugin. However we need the syntax plugin for older `@babel/parser`.
+:::note
+When a new ES feature reaches stage-4, it will be matured in `@babel/parser`, which means it will always be parsed regardless of the plugin. However we need the syntax plugin for older `@babel/parser`.
+:::
 
 ## getTargets
 

@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-property-mutators"
 sidebar_label: property-mutators
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Example
 

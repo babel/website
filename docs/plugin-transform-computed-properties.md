@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-computed-properties"
 sidebar_label: computed-properties
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Example
 
@@ -104,7 +106,9 @@ Just like method assignment in classes, in loose mode, computed property names
 use simple assignments instead of being defined. This is unlikely to be an issue
 in production code.
 
-> ⚠️ Consider migrating to the top level [`setComputedProperties`](assumptions.md#setcomputedproperties) assumption.
+:::caution
+Consider migrating to the top level [`setComputedProperties`](assumptions.md#setcomputedproperties) assumption.
+:::
 
 ```json title="babel.config.json"
 {
@@ -157,4 +161,6 @@ _defineProperty(_obj, "bar", "bar"),
 _obj);
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::

@@ -4,9 +4,11 @@ title: "@babel/plugin-syntax-explicit-resource-management"
 sidebar_label: syntax-explicit-resource-management
 ---
 
-> #### Syntax only
->
-> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-explicit-resource-management](plugin-proposal-explicit-resource-management.md) to _both_ parse and transform this syntax.
+:::note
+#### Syntax only
+
+It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-explicit-resource-management](plugin-proposal-explicit-resource-management.md) to _both_ parse and transform this syntax.
+:::
 
 <details>
   <summary>History</summary>

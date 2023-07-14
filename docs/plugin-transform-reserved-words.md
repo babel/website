@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-reserved-words"
 sidebar_label: reserved-words
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 Some words were reserved in ES3 as potential future keywords but were not
 reserved in ES5 and later. This plugin, to be used when targeting ES3

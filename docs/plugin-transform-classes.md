@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-classes"
 sidebar_label: classes
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Caveats
 
@@ -125,7 +127,9 @@ require("@babel/core").transformSync("code", {
 
 `boolean`, defaults to `false`.
 
-> ⚠️ Consider migrating to the top level [`assumptions`](assumptions.md) which offers granular control over various `loose` mode deductions Babel has applied.
+:::caution
+Consider migrating to the top level [`assumptions`](assumptions.md) which offers granular control over various `loose` mode deductions Babel has applied.
+:::
 
 ```json title="babel.config.json"
 {
@@ -166,4 +170,6 @@ When `Bar.prototype.foo` is defined it triggers the setter on `Foo`. This is a
 case that is very unlikely to appear in production code however it's something
 to keep in mind.
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::

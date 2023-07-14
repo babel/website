@@ -6,9 +6,11 @@ sidebar_label: syntax-destructuring-private
 
 > Allow parsing of destructuring private fields
 
-> #### Syntax only
->
-> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-destructuring-private](plugin-proposal-destructuring-private.md) to _both_ parse and transform this syntax.
+:::note
+#### Syntax only
+
+It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-destructuring-private](plugin-proposal-destructuring-private.md) to _both_ parse and transform this syntax.
+:::
 
 ## Installation
 

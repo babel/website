@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-class-properties"
 sidebar_label: class-properties
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 ## Example
 
@@ -85,7 +87,9 @@ require("@babel/core").transformSync("code", {
 
 When `true`, class properties are compiled to use an assignment expression instead of `Object.defineProperty`.
 
-> ⚠️ Consider migrating to the top level [`setPublicClassFields`](assumptions.md#setpublicclassfields) assumption
+:::caution
+Consider migrating to the top level [`setPublicClassFields`](assumptions.md#setpublicclassfields) assumption
+:::
 
 ```json title="babel.config.json"
 {
@@ -155,7 +159,9 @@ Bork.a = "foo";
 Bork.b = void 0;
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 ## References
 

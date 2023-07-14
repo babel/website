@@ -4,9 +4,11 @@ title: "@babel/plugin-syntax-export-namespace-from"
 sidebar_label: syntax-export-namespace-from
 ---
 
-> #### Syntax only
->
-> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-transform-export-namespace-from](plugin-transform-export-namespace-from.md) to _both_ parse and transform this syntax.
+:::note
+#### Syntax only
+
+It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-transform-export-namespace-from](plugin-transform-export-namespace-from.md) to _both_ parse and transform this syntax.
+:::
 
 ## Installation
 
