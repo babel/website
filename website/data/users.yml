@@ -710,6 +710,6 @@
 - name: RemoteScout
   url: https://remotescout.ch
   logo: remotescout.svg
-- name: Babel
+- name: Uploadcare
   url: https://uploadcare.com/
   logo: uploadcare.svg
