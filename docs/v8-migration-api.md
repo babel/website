@@ -162,6 +162,10 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: In Babel 7 the builder `t.objectTypeAnnotation` initializes them as `null`, this is inconsistent with how `@babel/parser` will parse the Flow object type annotations. In Babel 8 the new default value `[]` matches the parser behaviour. Adapt to the new default value if you are depending on this.
 
+- Reject negative and infinite number from `t.numericLiteral` ([#15802](https://github.com/babel/babel/pull/15802))
+
+  __Migration__: Babel 7 silently ignores such invalid usage. Use `t.unaryExpression("-", t.numericalLiteral(1))` to construct AST for negative number. Use `t.identifier("Infinity")` and `t.unaryExpression("-", t.identifier("Infinity"))` for infinity values.
+
 ### `@babel/parser`
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
