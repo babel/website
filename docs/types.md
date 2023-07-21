@@ -680,8 +680,6 @@ AST Node `DeclareInterface` shape:
 - `typeParameters`: `TypeParameterDeclaration` (default: `null`)
 - `extends`: `Array<InterfaceExtends>` (default: `null`)
 - `body`: `ObjectTypeAnnotation` (required)
-- `implements`: `Array<ClassImplements>` (default: `null`, excluded from builder function)
-- `mixins`: `Array<InterfaceExtends>` (default: `null`, excluded from builder function)
 
 Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
@@ -1052,6 +1050,7 @@ See also `t.isExportAllDeclaration(node, opts)` and `t.assertExportAllDeclaratio
 AST Node `ExportAllDeclaration` shape:
 - `source`: `StringLiteral` (required)
 - `assertions`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
+- `attributes`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
 - `exportKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 
 Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Declaration`](#declaration), [`ImportOrExportDeclaration`](#importorexportdeclaration), [`ExportDeclaration`](#exportdeclaration)
@@ -1102,6 +1101,7 @@ AST Node `ExportNamedDeclaration` shape:
 - `specifiers`: `Array<ExportSpecifier | ExportDefaultSpecifier | ExportNamespaceSpecifier>` (default: `[]`)
 - `source`: `StringLiteral` (default: `null`)
 - `assertions`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
+- `attributes`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
 - `exportKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 
 Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Declaration`](#declaration), [`ImportOrExportDeclaration`](#importorexportdeclaration), [`ExportDeclaration`](#exportdeclaration)
@@ -1403,6 +1403,7 @@ AST Node `ImportDeclaration` shape:
 - `specifiers`: `Array<ImportSpecifier | ImportDefaultSpecifier | ImportNamespaceSpecifier>` (required)
 - `source`: `StringLiteral` (required)
 - `assertions`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
+- `attributes`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
 - `importKind`: `"type" | "typeof" | "value"` (default: `null`, excluded from builder function)
 - `module`: `boolean` (default: `null`, excluded from builder function)
 
@@ -1498,8 +1499,6 @@ AST Node `InterfaceDeclaration` shape:
 - `typeParameters`: `TypeParameterDeclaration` (default: `null`)
 - `extends`: `Array<InterfaceExtends>` (default: `null`)
 - `body`: `ObjectTypeAnnotation` (required)
-- `implements`: `Array<ClassImplements>` (default: `null`, excluded from builder function)
-- `mixins`: `Array<InterfaceExtends>` (default: `null`, excluded from builder function)
 
 Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
 
@@ -1994,7 +1993,7 @@ t.numericLiteral(value);
 See also `t.isNumericLiteral(node, opts)` and `t.assertNumericLiteral(node, opts)`.
 
 AST Node `NumericLiteral` shape:
-- `value`: `number` (required)
+- `value`: a non-negative finite `number` (required)
 
 Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`Pureish`](#pureish), [`Literal`](#literal), [`Immutable`](#immutable)
 
@@ -3971,7 +3970,7 @@ t.variableDeclaration(kind, declarations);
 See also `t.isVariableDeclaration(node, opts)` and `t.assertVariableDeclaration(node, opts)`.
 
 AST Node `VariableDeclaration` shape:
-- `kind`: `"var" | "let" | "const" | "using"` (required)
+- `kind`: `"var" | "let" | "const" | "using" | "await using"` (required)
 - `declarations`: `Array<VariableDeclarator>` (required)
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 
@@ -4555,7 +4554,15 @@ Covered nodes:
 
 #### ImportOrExportDeclaration
 
-A cover of ImportDeclaration and [ExportDeclaration](#exportdeclaration)
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.21.0` | Introduced |
+</details>
+
+A cover of ImportDeclaration and [ExportDeclaration](#exportdeclaration).
 ```js title="JavaScript"
 t.isImportOrExportDeclaration(node);
 ```
