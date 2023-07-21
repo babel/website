@@ -104,7 +104,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   A `Super` node represents `super` in super call `super()` and super property `super.foo`. `super` can not be a standalone expression. In other words, `t.isExpression(t.super())` will return `false` in Babel 8.
 
-  __Migration__: Search usage of `t.isExpression`, `t.assertsExpression` and `Expression` alias in the plugin visitor, update the usage when you are handling super call and super property. For example,
+  __Migration__: Search usage of `t.isExpression`, `t.assertsExpression` and `Expression` alias in the plugin visitor, and if necessary, update the usage when you are handling super call and super property. For example,
 
   ```diff title="my-babel-plugin.js"
   // Add `.foo` to an expression
@@ -152,7 +152,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   + t.memberExpression(object, property, computed)
   ```
 
-  __Migration__: The `optional` argument is not used in the builder. You can safely remove it.
+  __Migration__: The `optional` argument was already not used in the builder. You can safely remove it.
 
 - [Remove the `Noop` node type](https://github.com/babel/babel/issues/12355) ([#12361](https://github.com/babel/babel/pull/12361))
 
@@ -162,7 +162,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: In Babel 7 the builder `t.objectTypeAnnotation` initializes them as `null`, this is inconsistent with how `@babel/parser` will parse the Flow object type annotations. In Babel 8 the new default value `[]` matches the parser behaviour. Adapt to the new default value if you are depending on this.
 
-- Reject negative and infinite number from `t.numericLiteral` ([#15802](https://github.com/babel/babel/pull/15802))
+- Reject negative and NaN/infinite numbers from `t.numericLiteral` ([#15802](https://github.com/babel/babel/pull/15802))
 
   ```js title="babel-plugin.js"
   // NumericLiterals must be non-negative finite numbers.

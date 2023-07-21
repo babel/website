@@ -132,7 +132,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 - Remove `uglify` target ([#12594](https://github.com/babel/babel/pull/12594))
 
-  **Migration**: The `uglify` target had been deprecated since 7.0.0-beta.0, if you still need this, use the [`forceAllTransforms`](preset-env.md#forcealltransforms) option.
+  **Migration**: The `uglify` target had been deprecated since 7.0.0, if you still need this, use the [`forceAllTransforms`](preset-env.md#forcealltransforms) option.
 
 ### `@babel/preset-react` {#configuration-change-preset-react}
 
@@ -166,7 +166,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
-- Remove `isTSX` and `allExtensions` option ([#14955](https://github.com/babel/babel/pull/14955))
+- Remove `isTSX` and `allExtensions` options ([#14955](https://github.com/babel/babel/pull/14955))
 
   **Migration**:
   - `isTSX: true` and `allExtensions: true`
@@ -214,7 +214,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 - Remove `allowDeclareFields` option ([#12461](https://github.com/babel/babel/pull/12461))
 
-  **Migration**: Remove the option from your config. You will probably be fine with the new behaviour. Previously `allowDeclareFields` enables transforming the `declare` syntax introduced in TypeScript 3.7, in Babel 8 we support the syntax without such a flag. See also the [compilation changes](#compilation-change-jsx) section.
+  **Migration**: Remove the option from your config, since it's now enabled by default.  Previously `allowDeclareFields` enables transforming the `declare` syntax introduced in TypeScript 3.7, in Babel 8 we support the syntax without such a flag. See also the [compilation changes](#compilation-change-jsx) section.
 
 - Type check input options ([#12460](https://github.com/babel/babel/pull/12460))
 
@@ -254,7 +254,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 - Remove `allowDeclareFields` option ([#12457](https://github.com/babel/babel/pull/12457))
 
-  **Migration**: Remove the option from your config. You will probably be fine with the new behaviour. Previously `allowDeclareFields` enables transforming the `declare` syntax introduced in Flow 0.120.0, in Babel 8 we support the syntax without such a flag. See also the [compilation changes](#compilation-change-flow) section.
+  **Migration**: Remove the option from your config, since it's now enabled by default. Previously `allowDeclareFields` enables transforming the `declare` syntax introduced in Flow 0.120.0, in Babel 8 we support the syntax without such a flag. See also the [compilation changes](#compilation-change-flow) section.
 
 - Type check input options ([#12460](https://github.com/babel/babel/pull/12460))
 
@@ -274,7 +274,7 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 
 - Remove `estree` plugin option `classFeatures` ([#13752](https://github.com/babel/babel/pull/13752))
 
-  **Migration**: Remove the option from your config. You will probably be fine with the new behaviour. Previously the `classFeatures` plugin enables `@babel/parser` to produce class properties AST compatible with ESLint 8. In Babel 8 the `eslint-parser` only works with ESLint 8 and above.
+  **Migration**: Remove the option from your config, since it's now enabled by default. Previously the `classFeatures` plugin enables `@babel/parser` to produce class properties AST compatible with ESLint 8, following the ESTree specification. In Babel 8 the `eslint-parser` only works with ESLint 8 and above.
 
 ### `@babel/generator` {#configuration-change-generator}
 
