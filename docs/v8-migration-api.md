@@ -164,7 +164,11 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 - Reject negative and infinite number from `t.numericLiteral` ([#15802](https://github.com/babel/babel/pull/15802))
 
-  __Migration__: Babel 7 silently ignores such invalid usage. Use `t.unaryExpression("-", t.numericalLiteral(1))` to construct AST for negative number. Use `t.identifier("Infinity")` and `t.unaryExpression("-", t.identifier("Infinity"))` for infinity values.
+  ```js title="babel-plugin.js"
+  // NumericLiterals must be non-negative finite numbers.
+  t.numericLiteral(-1);
+  ```
+  __Migration__: Babel 7 silently ignores such invalid usage. Use `t.valueToNode(-1)` instead.
 
 ### `@babel/parser`
 
