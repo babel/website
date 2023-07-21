@@ -135,7 +135,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 - Remove `t.jSX*` and `t.tS*` builder aliases ([#6989](https://github.com/babel/babel/issues/6989), [#15527](https://github.com/babel/babel/pull/15527))
 
-  __Migration__: Use `t.jsx*` and `t.ts*` instead. For example, replace `t.jSXIdentifier("foo")` by `t.jsxIdentifier("foo")`.
+  __Migration__: Use `t.jsx*` and `t.ts*` instead. For example, replace `t.jSXIdentifier("foo")` with `t.jsxIdentifier("foo")`.
 
 - Remove `selfClosing` argument from `t.jsxElement` ([#14464](https://github.com/babel/babel/pull/14464))
 
@@ -143,7 +143,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   - t.jsxElement(openingElement, closingElement, children, selfClosing?: boolean)
   + t.jsxElement(openingElement, closingElement, children)
   ```
-  __Migration__: The `selfClosing` argument is not used in the builder. You can safely remove it.
+  __Migration__: The `selfClosing` argument was already not used in the builder. You can safely remove it.
 
 - Remove `optional` argument from `t.memberExpression` ([#13407](https://github.com/babel/babel/pull/13407))
 
