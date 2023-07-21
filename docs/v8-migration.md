@@ -79,6 +79,32 @@ Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://git
 + import value from "module" with { type: "json" };
 ```
 
+### Syntax plugins
+The following syntax plugins are no longer needed, you can safely remove them from your config and node modules:
+
+- `@babel/plugin-syntax-async-functions`
+- `@babel/plugin-syntax-async-generators`
+- `@babel/plugin-syntax-bigint`
+- `@babel/plugin-syntax-class-properties`
+- `@babel/plugin-syntax-class-static-block`
+- `@babel/plugin-syntax-dynamic-import`
+- `@babel/plugin-syntax-exponentiation-operator`
+- `@babel/plugin-syntax-export-extensions`
+- `@babel/plugin-syntax-export-namespace-from`
+- `@babel/plugin-syntax-import-meta`
+- `@babel/plugin-syntax-json-strings`
+- `@babel/plugin-syntax-logical-assignment-operators`
+- `@babel/plugin-syntax-module-string-names`
+- `@babel/plugin-syntax-nullish-coalescing-operator`
+- `@babel/plugin-syntax-numeric-separator`
+- `@babel/plugin-syntax-object-rest-spread`
+- `@babel/plugin-syntax-optional-catch-binding`
+- `@babel/plugin-syntax-optional-chaining`
+- `@babel/plugin-syntax-private-property-in-object`
+- `@babel/plugin-syntax-top-level-await`
+- `@babel/plugin-syntax-trailing-function-commas`
+- `@babel/plugin-syntax-unicode-sets-regex`
+
 ## Configuration Changes
 
 ### `@babel/core` {#configuration-change-preset-core}
