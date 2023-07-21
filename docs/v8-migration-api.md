@@ -67,6 +67,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   ```json title="babel.config.json"
   { "parserOpts": { "createParenthesizedExpression": true } }
   ```
+  When `createParenthesizedExpression` is `false`, you can also use `node.extra.parens` to detect whether `node` is wrapped in parentheses.
 
 
 ## API Changes
@@ -248,12 +249,6 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
-- [Allow skipped `NodePath`s to be requeued](https://github.com/babel/babel/blob/43b623c1f1e86e6fb86cae8d955a84fd924380a4/packages/babel-traverse/src/path/context.js#L241-L247) ([#13291](https://github.com/babel/babel/pull/13291))
-
-  **Notes**: `NodePath#requeue()` can requeue a skipped NodePath. This is actually a bugfix, but it causes an infinite loop in the tdz implementation of `@babel/plugin-transform-block-scoping` so we defer the change to Babel 8.
-
-![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
 - Remove `block` argument from `Scope#rename` ([#15288](https://github.com/babel/babel/pull/15288))
 
   ```diff
@@ -261,7 +256,13 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   + rename(oldName: string, newName?: string)
   ```
 
-  __Migration__: The third argument `block` is not used by the method. You can safely remove it if you are depending on `Scope#rename`.
+  __Migration__: In Babel 8 the third argument `block` is not used by the method. Consider remove it if you are depending on `Scope#rename`.
+
+- [Allow skipped `NodePath`s to be requeued](https://github.com/babel/babel/blob/43b623c1f1e86e6fb86cae8d955a84fd924380a4/packages/babel-traverse/src/path/context.js#L241-L247) ([#13291](https://github.com/babel/babel/pull/13291))
+
+  **Notes**: `NodePath#requeue()` can requeue a skipped NodePath. This is actually a bugfix, but it causes an infinite loop in the tdz implementation of `@babel/plugin-transform-block-scoping` in Babel 7. So it may break other plugins as well.
+
+  __Migration__: Adapt to the new behaviour. You can use `NodePath#shouldSkip` to check whether a NodePath has been skipped before calling `NodePath#requeue()`.
 
 ### `@babel/compat-data`
 
