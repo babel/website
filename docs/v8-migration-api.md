@@ -346,6 +346,14 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   This change probabaly won't break your integration as `includeUpdateExpression` defaults to `true` in Babel 7. If you are using `includeUpdateExpression: false`, adapt to the new behaviour.
 
+### `@babel/highlight`
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Remove the `getChalk` function (https://github.com/babel/babel/pull/15812)
+
+  If you need to use `chalk`, add it to your dependencies.
+
 ## Plugin changes
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
