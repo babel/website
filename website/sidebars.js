@@ -1,9 +1,19 @@
+function bool(value) {
+  return value && value !== "false" && value !== "0";
+}
+
 module.exports = {
   docs: [
     {
       type: "category",
       label: "Guides",
-      items: ["index", "usage", "configuration", "learn", "v7-migration"],
+      items: [
+        "index",
+        "usage",
+        "configuration",
+        "learn",
+        bool(process.env.BABEL_8_BREAKING) ? "v8-migration" : "v7-migration",
+      ],
     },
     {
       type: "category",
