@@ -67,7 +67,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   ```json title="babel.config.json"
   { "parserOpts": { "createParenthesizedExpression": true } }
   ```
-  When `createParenthesizedExpression` is `false`, you can also use `node.extra.parens` to detect whether `node` is wrapped in parentheses.
+  When `createParenthesizedExpression` is `false`, you can also use `node.extra.parenthesized` to detect whether `node` is wrapped in parentheses.
 
 
 ## API Changes
