@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 // Downloads sponsors data from the Open Collective API.
 
-const fetch = require("node-fetch");
 const fs = require("fs").promises;
 
 const graphqlEndpoint = "https://api.opencollective.com/graphql/v2";
@@ -53,7 +52,7 @@ const transactionsGraphqlQuery = `query transactions($dateFrom: DateTime, $limit
   }
 }`;
 
-const nodeToSupporter = node => ({
+const nodeToSupporter = (node) => ({
   name: node.account.name,
   slug: node.account.slug,
   website: node.account.website,
@@ -94,7 +93,7 @@ const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
       method: "POST",
       body: JSON.stringify(body),
       headers,
-    }).then(response => response.json());
+    }).then((response) => response.json());
     if (result.errors) {
       const {
         extensions: { code },
@@ -110,13 +109,13 @@ const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
       return allNodes;
     } else {
       // sleep for a while
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 100));
     }
   }
 };
 
 const uniqBy = (arr, predicate) => {
-  const cb = typeof predicate === "function" ? predicate : o => o[predicate];
+  const cb = typeof predicate === "function" ? predicate : (o) => o[predicate];
 
   return [
     ...arr
@@ -134,7 +133,7 @@ const uniqBy = (arr, predicate) => {
 (async () => {
   const members = await getAllNodes(
     membersGraphqlQuery,
-    data => data.account.members.nodes
+    (data) => data.account.members.nodes
   );
   let supporters = members
     .map(nodeToSupporter)
@@ -163,7 +162,7 @@ const uniqBy = (arr, predicate) => {
   // Calculate monthly amount from transactions
   const transactionsYear = await getAllNodes(
     transactionsGraphqlQuery,
-    data => data.transactions.nodes
+    (data) => data.transactions.nodes
   );
   for (const transaction of transactionsYear) {
     if (!transaction.amountInHostCurrency) continue;
@@ -176,7 +175,7 @@ const uniqBy = (arr, predicate) => {
 
   const transactionsMonth = await getAllNodes(
     transactionsGraphqlQuery,
-    data => data.transactions.nodes,
+    (data) => data.transactions.nodes,
     "month"
   );
 
@@ -198,7 +197,7 @@ const uniqBy = (arr, predicate) => {
   return fs
     .writeFile(sponsorsFile, JSON.stringify(supporters, null, 2))
     .then(() => console.log(`Fetched 1 file: sponsors.json`));
-})().catch(error => {
+})().catch((error) => {
   console.error("utilities/fetch-supporters:", error);
   process.exitCode = 1;
 });
