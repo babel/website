@@ -17,7 +17,7 @@ If the plugin is on [npm](https://www.npmjs.com/search?q=babel-plugin), you can 
 }
 ```
 
-You can also specify an relative/absolute path to your plugin.
+You can also specify a relative/absolute path to your plugin.
 
 ```json title="babel.config.json"
 {
