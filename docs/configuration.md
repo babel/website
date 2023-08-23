@@ -20,7 +20,7 @@ All Babel API [options](options.md) are allowed. However, if the option requires
 
 - Guy Fieri is your hero?
 
-> We recommend using the [`babel.config.json`](config-files.md#project-wide-configuration) format. [Babel itself is using it](https://github.com/babel/babel/blob/main/babel.config.js).
+> We recommend using the [`babel.config.json`](config-files.md#project-wide-configuration) format.
 
 ### `babel.config.json`
 
@@ -65,7 +65,7 @@ Alternatively, you can choose to specify your [`.babelrc.json`](#babelrcjson) co
 
 ### JavaScript configuration files
 
-You can also write `babel.config.js` and `.babelrc.js` files using JavaScript:
+You can also write `babel.config.js` ([like we're doing](https://github.com/babel/babel/blob/main/babel.config.js)), and `.babelrc.js` files using JavaScript:
 
 ```js title="babel.config.js"
 module.exports = function (api) {
