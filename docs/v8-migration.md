@@ -160,6 +160,9 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   **Migration**: The `uglify` target had been deprecated since 7.0.0, if you still need this, use the [`forceAllTransforms`](preset-env.md#forcealltransforms) option.
 
+- Removed syntax plugins can not be used in `includes` and `excludes` ([#15810](https://github.com/babel/babel/pull/15810))
+
+  **Migration**: You can safely remove them if you are using any of [syntax plugins listed above](#syntax-plugins) in the `includes` and `excludes` options.
 ### `@babel/preset-react` {#configuration-change-preset-react}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
