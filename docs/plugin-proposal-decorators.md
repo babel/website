@@ -184,7 +184,7 @@ class elements transform, Babel will automatically apply decorators transform be
   ],
   "plugins": [
 -   "@babel/plugin-transform-class-properties",
-    ["@babel/plugin-proposal-decorators", { "version": "legacy" }]
+    ["@babel/plugin-proposal-decorators", { "version": "2023-05" }]
   ]
 }
 ```
