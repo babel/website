@@ -42,7 +42,7 @@ class C {
 }
 ```
 
-Because the output code includes private class properties, if you are already using other class feature plugins (e.g. [`@babel/plugin-transform-class-properties](plugin-transform-class-properties.md)), be sure to place it _before_ the others.
+Because the output code includes private class properties, if you are already using other class feature plugins (e.g. [`@babel/plugin-transform-class-properties`](plugin-transform-class-properties.md)), be sure to place it _before_ the others.
 
 ```json title="babel.config.json"
 {
