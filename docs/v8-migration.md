@@ -377,21 +377,23 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- Remove support for the 2018-09 decorators proposal. The plugin now requires a [`version`](./plugin-proposal-decorators.md#version) option ([#12712](https://github.com/babel/babel/pull/12712))
+- Only support `legacy` and `2023-05`. The plugin now requires a [`version`](./plugin-proposal-decorators.md#version) option ([#12712](https://github.com/babel/babel/pull/12712), [#15676](https://github.com/babel/babel/pull/15676))
 
-  **Migration**: You should migrate to the [latest version of the proposal](https://github.com/tc39/proposal-decorators/) `"2023-03"`, if you are using the `"2018-09"` or you have not specified a `version` option.
+  **Migration**: You should migrate to the [latest version of the proposal](https://github.com/tc39/proposal-decorators/) `"2023-05"`, if you are using the `"2018-09"` or you have not specified a `version` option.
   ```diff title="babel.config.json"
   {
     "plugins": [
       ["@babel/plugin-proposal-decorators", {
   -     "decoratorsBeforeExport": true,
   -     "version": "2018-09",
-  +     "version": "2023-01"
+  +     "version": "2023-05"
       }]
     ]
   }
   ```
-  The syntax is the same, but you will need to rewrite your decorator functions. The spec repo provides [comparison between the latest version and the `2018-09` version](https://github.com/tc39/proposal-decorators#comparison-with-the-previous-stage-2-decorators-proposal). You can already migrate since Babel 7.22.0, using the `"version": "2023-03"` option of `@babel/plugin-proposal-decorators`.
+  The syntax is the same, but you will need to rewrite your decorator functions. The spec repo provides [comparison between the latest version and the `2018-09` version](https://github.com/tc39/proposal-decorators#comparison-with-the-previous-stage-2-decorators-proposal). You can already migrate since Babel 7.22.0, using the `"version": "2023-05"` option of `@babel/plugin-proposal-decorators`.
+
+  Although Babel 8 still supports the `legacy` version, it is advisable to migrate to the `2023-05` version regardless: both Babel 8 and TypeScript 5.0 support the `2023-05` version, while there are [a few behaviour differences](https://github.com/babel/babel/issues/8864#issuecomment-688535867) in the `legacy` version between Babel and `tsc`'s implementation.
 
 ## Compilation Changes
 
