@@ -98,7 +98,7 @@ require("@babel/core").transformSync("code", {
 
 Selects the decorators proposal to use:
 - `"2023-05"` is the proposal version after the updates that reached consensus in the March and May 2023 TC39 meetings. This version will be enabled by default if it ends up being the final one.
-- `legacy` is the legacy Stage 1 proposal, defined at [`wycats/javascript-decorators@e1bf8d41bf`](https://github.com/wycats/javascript-decorators/blob/e1bf8d41bfa2591d949dd3bbf013514c8904b913/README.md). The legacy mode will not have feature update and there are known [discrepancies between Babel and TypeScript](https://github.com/babel/babel/issues/8864#issuecomment-688535867). It is recommended to migrate to the `"2023-05"` proposal.
+- `legacy` is the legacy Stage 1 proposal, defined at [`wycats/javascript-decorators@e1bf8d41bf`](https://github.com/wycats/javascript-decorators/blob/e1bf8d41bfa2591d949dd3bbf013514c8904b913/README.md). The legacy mode will not have feature updates, and there are known [discrepancies between Babel and TypeScript](https://github.com/babel/babel/issues/8864#issuecomment-688535867). It is recommended to migrate to the `"2023-05"` proposal version.
 
 :::
 
@@ -189,7 +189,7 @@ class elements transform, Babel will automatically apply decorators transform be
 }
 ```
 
-If you are using `@babel/preset-env` and legacy decorators, you must manually enable the class elements transform:
+If you are using `@babel/preset-env` and legacy decorators, you must ensure the class elements transform is enabled regardless of your targets, because Babel only supports compiling legacy decorators when also compiling class properties:
 
 ```diff title="babel.config.json"
 {
