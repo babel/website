@@ -1,0 +1,55 @@
+name: Update Babel types docs
+env:
+  YARN_ENABLE_SCRIPTS: false # disable post-install scripts
+on:
+  workflow_dispatch:
+    inputs: {}
+  schedule:
+    - cron: "0 0 * * 5"
+
+permissions:
+  contents: read
+
+jobs:
+  updateTypesDocs:
+    name: Update Babel types docs
+    permissions:
+      contents: write # for Git to git push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: babel/babel
+          path: _babel
+      - name: Use Node.js latest
+        uses: actions/setup-node@v3
+        with:
+          cache: "yarn"
+      - name: Build babel
+        id: buildBabel
+        working-directory: _babel
+        run: |
+          echo "sha1=$(git rev-parse FETCH_HEAD)" >> $GITHUB_OUTPUT
+          make -j build-standalone-ci
+      - name: Generate Babel types docs
+        working-directory: _babel
+        run: |
+          node ./packages/babel-types/scripts/generators/docs.js > ../docs/types.md
+      - name: Commit Babel website changes
+        run: |
+          git config user.name "Babel Bot"
+          git config user.email "babel-bot@users.noreply.github.com"
+          git checkout -b update-types-docs
+          git commit -am "docs: update babel types"
+          git push --force origin update-types-docs
+      - name: Create Pull Request
+        uses: babel/actions/create-pull-request@v2
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          branch: update-types-docs
+          title: Update Babel types docs
+          description: The `@babel/types` docs are generated from https://github.com/babel/babel/commit/${{ steps.buildBabel.outputs.sha1 }}.
+          labels: |
+            docs
+            repo automation :robot:
