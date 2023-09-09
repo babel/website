@@ -2,6 +2,8 @@
 id: usage
 title: Usage Guide
 ---
+Nextjs: next build 
+<https://vercel.com/new/success?developer-id=&external-id=&redirect-url=&branch=master&deploymentUrl=requirejs-babel-4lnuhuvuu-turbo-monoreponextjs.vercel.app&projectName=requirejs-babel&s=https%3A%2F%2Fgithub.com%2Fsammyfilly%2Frequirejs-babel&gitOrgLimit=&hasTrialAvailable=0&totalProjects=1>
 
 There are quite a few tools in the Babel toolchain that try to make it easy for you to use Babel whether you're an "end-user" or building an integration of Babel itself. This will be a quick introduction to those tools and you can read more about them in the "Usage" section of the docs.
 
