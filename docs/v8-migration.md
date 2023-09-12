@@ -395,6 +395,13 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   Although Babel 8 still supports the `legacy` version, it is advisable to migrate to the `2023-05` version regardless: both Babel 8 and TypeScript 5.0 support the `2023-05` version, while there are [a few behaviour differences](https://github.com/babel/babel/issues/8864#issuecomment-688535867) in the `legacy` version between Babel and `tsc`'s implementation.
 
+### `@babel/node`
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- The `-gc` and `-d` command-line flags have been removed ([#15956](https://github.com/babel/babel/pull/15956))
+  **Migration**: Use the `--expose-gc` and `--inspect` Node.js flags respectively. Note that although `-d` was short for `--debug`, the latter has been [deprecated since Node.js 7.7.0](https://nodejs.org/en/docs/guides/debugging-getting-started#legacy-debugger).
+
 ## Compilation Changes
 
 ### Default target
