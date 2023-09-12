@@ -399,7 +399,8 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
-- The `-gc` and `-d` command-line flags have been removed. They are equivalent of using respectively the `--expose-gc` and `--debug` Node.js flags. Note that `--debug` has been [deprecated since Node.js 7.7.0](https://nodejs.org/en/docs/guides/debugging-getting-started#legacy-debugger), and you should use `--inspect` instead.
+- The `-gc` and `-d` command-line flags have been removed ([#15956](https://github.com/babel/babel/pull/15956))
+  **Migration**: Use the `--expose-gc` and `--inspect` Node.js flags respectively. Note that although `-d` was short for `--debug`, the latter has been [deprecated since Node.js 7.7.0](https://nodejs.org/en/docs/guides/debugging-getting-started#legacy-debugger).
 
 ## Compilation Changes
 
