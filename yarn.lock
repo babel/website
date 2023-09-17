@@ -2877,18 +2877,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codemirror/lang-javascript@npm:6.1.9":
-  version: 6.1.9
-  resolution: "@codemirror/lang-javascript@npm:6.1.9"
+"@codemirror/lang-javascript@npm:6.2.1":
+  version: 6.2.1
+  resolution: "@codemirror/lang-javascript@npm:6.2.1"
   dependencies:
     "@codemirror/autocomplete": ^6.0.0
     "@codemirror/language": ^6.6.0
     "@codemirror/lint": ^6.0.0
     "@codemirror/state": ^6.0.0
-    "@codemirror/view": ^6.0.0
+    "@codemirror/view": ^6.17.0
     "@lezer/common": ^1.0.0
     "@lezer/javascript": ^1.0.0
-  checksum: 6c79b51c61d37b3f4dde6312df02183045c31f055e5cf8550b497f39798b823b4e380a641a2cfc97f3f26fd4e89194258d8ef741c42acd72b3f2e18257b427a5
+  checksum: 3df38c4cced06195283a9a2a9365aaa7c8c1b157852b331bc3a118403f774bbba57d2a392de52f5e28d2b344a323bc0146bcf7c8ef8be2473f167d815e4a37cd
   languageName: node
   linkType: hard
 
@@ -2947,14 +2947,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codemirror/view@npm:^6.0.0, @codemirror/view@npm:^6.6.0":
-  version: 6.8.1
-  resolution: "@codemirror/view@npm:6.8.1"
+"@codemirror/view@npm:^6.0.0, @codemirror/view@npm:^6.17.0, @codemirror/view@npm:^6.6.0":
+  version: 6.19.0
+  resolution: "@codemirror/view@npm:6.19.0"
   dependencies:
     "@codemirror/state": ^6.1.4
-    style-mod: ^4.0.0
+    style-mod: ^4.1.0
     w3c-keyname: ^2.2.4
-  checksum: e645298a5d2ebbf7ad14fa4a1ccfbaafda227349b44578354783066c6e433ed57a395cbc02c7bdd5351064a5be234d625e71f9b5c24803cb24ab399f60855f28
+  checksum: 58b909c45c7b02758860953f65ce7952e0d89b9e4db35bd5a382ad90a9a1d7e9ed9bf4d60e5a38b9538375427372b9ddf1d4d161d21448691b851db92af7f71f
   languageName: node
   linkType: hard
 
@@ -5608,7 +5608,7 @@ __metadata:
     "@babel/preset-env": 8.0.0-alpha.2
     "@babel/preset-react": 8.0.0-alpha.2
     "@babel/preset-typescript": 8.0.0-alpha.2
-    "@codemirror/lang-javascript": 6.1.9
+    "@codemirror/lang-javascript": 6.2.1
     "@codemirror/theme-one-dark": 6.1.2
     "@emotion/babel-plugin": ^11.11.0
     "@emotion/css": ^11.10.6
@@ -14543,10 +14543,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-mod@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "style-mod@npm:4.0.0"
-  checksum: c19f73d660a94244f0715180a6141bf75d05e5b156cc956ba11970b83cd303c3f7edafe5fb61a3192da6186cc008bdcdd803a979070f9b64e13046463644043c
+"style-mod@npm:^4.0.0, style-mod@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "style-mod@npm:4.1.0"
+  checksum: 8402b14ca11113a3640d46b3cf7ba49f05452df7846bc5185a3535d9b6a64a3019e7fb636b59ccbb7816aeb0725b24723e77a85b05612a9360e419958e13b4e6
   languageName: node
   linkType: hard
 

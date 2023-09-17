@@ -43,7 +43,7 @@
     "@babel/preset-env": "8.0.0-alpha.2",
     "@babel/preset-react": "8.0.0-alpha.2",
     "@babel/preset-typescript": "8.0.0-alpha.2",
-    "@codemirror/lang-javascript": "6.1.9",
+    "@codemirror/lang-javascript": "6.2.1",
     "@codemirror/theme-one-dark": "6.1.2",
     "@emotion/babel-plugin": "^11.11.0",
     "@rollup/plugin-node-resolve": "^15.1.0",
