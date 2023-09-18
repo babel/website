@@ -12,20 +12,23 @@ sidebar_label: Plugins List
 - [do-expressions](plugin-proposal-do-expressions.md)
 - [duplicate-named-capturing-groups-regex](plugin-proposal-duplicate-named-capturing-groups-regex.md)
 - [export-default-from](plugin-proposal-export-default-from.md)
-- [export-namespace-from](plugin-transform-export-namespace-from.md)
 - [function-bind](plugin-proposal-function-bind.md)
 - [function-sent](plugin-proposal-function-sent.md)
 - [partial-application](plugin-proposal-partial-application.md)
 - [pipeline-operator](plugin-proposal-pipeline-operator.md)
-- [private-methods](plugin-transform-private-methods.md)
 - [throw-expressions](plugin-proposal-throw-expressions.md)
 - [record-and-tuple](plugin-proposal-record-and-tuple.md)
+
+### ES2024
+
+- [unicode-sets-regex](plugin-transform-unicode-sets-regex.md)
 
 ### ES2022
 
 - [class-properties](plugin-transform-class-properties.md)
 - [class-static-block](plugin-transform-class-static-block.md)
 - [private-property-in-object](plugin-transform-private-property-in-object.md)
+- [private-methods](plugin-transform-private-methods.md)
 - [syntax-top-level-await](plugin-syntax-top-level-await.md)
 
 ### ES2021
