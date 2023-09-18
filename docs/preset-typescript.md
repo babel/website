@@ -166,3 +166,61 @@ export var Animals = {
 ```
 
 > You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options).
+
+### `rewriteImportExtensions`
+
+`boolean`, defaults to `false`
+
+Added in: `v7.23.0`
+
+When set to `true`, Babel will rewrite `.ts`/`.mts`/`.cts` extensions in import declarations to `.js`/`.mjs`/`.cjs`.
+
+This option, when used together with TypeScript's [`allowImportingTsExtension`](https://www.typescriptlang.org/tsconfig#allowImportingTsExtensions) option, allows to write complete relative specifiers in import declaratoinss while using the same extension used by the source files.
+
+As an example, given this project structure (where `src` contains the source files, and `dist` the compiled files):
+```
+.
+├── src
+│   ├── main.ts
+│   └── dep.ts
+├── dist
+│   ├── main.js
+│   └── dep.js
+├── babel.config.json
+└── tsconfig.json
+```
+
+and with the following configuration files:
+<table>
+<tr><th>babel.config.json</th><th>tsconfig.json</th></tr>
+<tr><td>
+
+```json
+{
+  "presets": [
+    ["@babel/preset-typescript", {
+      "rewriteImportExtensions": true
+    }]
+  ]
+}
+```
+
+</td><td>
+
+```json
+{
+  "compilerOptions": {
+    "lib": ["esnext"],
+    "noEmit": true,
+    "isolatedModules": true,
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": true
+  }
+}
+
+```
+
+</td></tr>
+</table>
+
+you will be able to write `import x from "./dep.ts"` in `main.ts`, and Babel will transform it to `import x from "./dep.js"` when compiling `main.ts` to `main.js`.
