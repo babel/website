@@ -64,6 +64,7 @@ const PIPELINE_PROPOSALS = {
 };
 
 const DECORATOR_PROPOSALS = {
+  "2023-05": "2023-05",
   "2023-01": "2023-01",
   "2022-03": "2022-03",
   "2021-12": "2021-12",
@@ -640,7 +641,8 @@ class ExpandedContainer extends Component<Props, State> {
                 />
               </label>
               <label className={styles.envPresetRow}>
-                <LinkToDocs className={`${styles.envPresetLabel} ${styles.highlight}`}
+                <LinkToDocs
+                  className={`${styles.envPresetLabel} ${styles.highlight}`}
                   section="modules"
                 >
                   Modules
