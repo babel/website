@@ -128,10 +128,6 @@ export default function compile(code: string, config: CompileConfig): Return {
       babelrc: false,
       filename: "repl" + guessFileExtension(config.presets),
       sourceMap: config.sourceMap,
-      assumptions:
-        Babel.version && compareVersions(Babel.version, "7.13.0") >= 0
-          ? envConfig?.assumptions ?? {}
-          : undefined,
 
       presets: config.presets.map((preset) => {
         if (typeof preset !== "string") return preset;
@@ -178,6 +174,10 @@ export default function compile(code: string, config: CompileConfig): Return {
         ? transitions.wrapPluginVisitorMethod
         : undefined,
     };
+
+    if (Babel.version && compareVersions(Babel.version, "7.13.0") >= 0) {
+      (babelConfig as any).assumptions = envConfig?.assumptions ?? {};
+    }
 
     const transformed = Babel.transform(code, babelConfig);
     compiled = transformed.code;
