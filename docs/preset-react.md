@@ -42,6 +42,29 @@ Without options:
 
 With options:
 
+:::babel8
+
+```json title="babel.config.json"
+{
+  "presets": [
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic", // defaults to automatic
+        "importSource": "custom-jsx-library", // defaults to react(only in automatic runtime)
+        "throwIfNamespace": false // defaults to true
+        // "pragma": "dom", // default pragma is React.createElement (only in classic runtime)
+        // "pragmaFrag": "DomFrag", // default is React.Fragment (only in classic runtime)
+      }
+    ]
+  ]
+}
+```
+
+:::
+
+:::babel7
+
 ```json title="babel.config.json"
 {
   "presets": [
@@ -58,6 +81,8 @@ With options:
   ]
 }
 ```
+
+:::
 
 ### Via CLI
 
@@ -79,9 +104,25 @@ require("@babel/core").transformSync("code", {
 
 #### `runtime`
 
+:::babel8
+
+`classic | automatic`, defaults to `automatic`
+
+:::
+
+:::babel7
+
 `classic | automatic`, defaults to `classic`
 
+:::
+
 Added in: `v7.9.0`
+
+:::babel7
+
+> Note: The default runtime will be switched to `automatic` in Babel 8.
+
+:::
 
 Decides which runtime to use.
 
