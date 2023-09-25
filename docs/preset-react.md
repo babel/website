@@ -176,9 +176,15 @@ Replace the function used when compiling JSX expressions. It should be a qualifi
 
 Replace the component used when compiling JSX fragments. It should be a valid JSX tag name.
 
+:::babel7
+
 #### `useBuiltIns`
 
 `boolean`, defaults to `false`.
+
+:::warning
+This option will be removed in Babel 8. Set `useBuiltIns` to `true` if you are targeting to modern browsers.
+:::
 
 Will use the native built-in instead of trying to polyfill behavior for any plugins that require one.
 
@@ -188,7 +194,13 @@ Will use the native built-in instead of trying to polyfill behavior for any plug
 
 Added in: `v7.7.0`
 
+:::warning
+This option will be removed in Babel 8. Set `useSpread` to `true` if you are targeting to modern browsers.
+:::
+
 When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
+
+:::
 
 ### babel.config.js
 
