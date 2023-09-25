@@ -216,6 +216,7 @@ require("@babel/parser").parse("code", {
 
 | Version | Changes |
 | --- | --- |
+| `v7.23.0` | Added `sourcePhaseImports`, `deferredImportEvaluation`, `optionalChainingAssign` |
 | `v7.22.0` | Enabled `regexpUnicodeSets` by default, added `importAttributes` |
 | `v7.20.0` | Added `explicitResourceManagement`, `importReflection` |
 | `v7.17.0` | Added `regexpUnicodeSets`, `destructuringPrivate`, `decoratorAutoAccessors` |
@@ -237,6 +238,7 @@ require("@babel/parser").parse("code", {
 | `decimal` ([proposal](https://github.com/tc39/proposal-decimal))                                         | `0.3m`                                                           |
 | `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br/> `decorators-legacy`         | `@a class A {}`                                                  |
 | `decoratorAutoAccessors` ([proposal](https://github.com/tc39/proposal-decorators))                       | `class Example { @reactive accessor myBool = false; }`           |
+| `deferredImportEvaluation` ([proposal](https://github.com/tc39/proposal-defer-import-eval))              | `import defer * as ns from "dep";`                               |
 | `destructuringPrivate` ([proposal](https://github.com/tc39/proposal-destructuring-private))              | `class Example { #x = 1; method() { const { #x: x } = this; } }` |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                            | `var a = do { if (true) { 'hi'; } };`                            |
 | `explicitResourceManagement` ([proposal](https://github.com/tc39/proposal-explicit-resource-management)) | `using reader = getReader()`                                     |
@@ -246,9 +248,11 @@ require("@babel/parser").parse("code", {
 | `importAttributes` ([proposal](https://github.com/tc39/proposal-import-attributes)) <br/> `importAssertions` (⚠️ deprecated) | `import json from "./foo.json" with { type: "json" };`           |
 | `importReflection` ([proposal](https://github.com/tc39/proposal-import-reflection))                      | `import module foo from "./foo.wasm";`                           |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                           | `let m = module { export let y = 1; };`                          |
+| `optionalChainingAssign` ([proposal](https://github.com/tc39/proposal-optional-chaining-assignment))     | `x?.prop = 2`                                                    |
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                          | `f(?, a)`                                                        |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29))                            | <code>a &#124;> b</code>                                         |
 | `recordAndTuple` ([proposal](https://github.com/tc39/proposal-record-tuple))                             | `#{x: 1}`, `#[1, 2]`                                             |
+| `sourcePhaseImports` ([proposal](https://github.com/tc39/proposal-source-phase-imports))                 | `import source x from "./x"`                                     |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23))                            | `() => throw new Error("")`                                      |
 
 #### Latest ECMAScript features
@@ -325,6 +329,13 @@ When a plugin is specified multiple times, only the first options are considered
     :::caution
 This option is deprecated and will be removed in a future version. Code that is valid when this option is explicitly set to `true` or `false` is also valid when this option is not set.
 :::
+
+- `optionalChainingAssign`:
+
+  - `version` (required, accepted values: `2023-07`)
+    This proposal is still at Stage 1, and thus it's likely that it will be affected by breaking changes.
+    You must specify which version of the proposal you are using to ensure that Babel will continue
+    to parse your code in a compatible way.
 
 - `pipelineOperator`:
 
