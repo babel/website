@@ -9,6 +9,19 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="Sep 2023">
+
+## Babel 7.23.0
+
+[blog post](https://babeljs.io/blog/2023/09/25/7.23.0)
+
+- Support for the [Decorator Metadata](https://github.com/tc39/proposal-decorator-metadata/) Stage 3 proposal
+- Support for the [Source Phase Import](https://github.com/tc39/proposal-source-phase-imports) Stage 3 proposal
+- Support for the [Deferred Import Evaluation](https://github.com/tc39/proposal-defer-import-eval) Stage 2 proposal
+- Support for the [Optional Chaining Assignment](https://github.com/tc39/proposal-optional-chaining-assignment) proposal
+- Support for rewriting `.ts` extensions in imports
+
+</li>
 <li data-date="May 2023">
 
 ## Babel 7.22.0
