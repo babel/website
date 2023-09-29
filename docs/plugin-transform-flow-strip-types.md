@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-flow-strip-types"
 sidebar_label: transform-flow-strip-types
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-flow`
+:::info
+This plugin is included in `@babel/preset-flow`
+:::
 
 ## Example
 
@@ -87,7 +89,9 @@ annotations found in files without the directive.
 
 Added in: `v7.9.0`
 
-> NOTE: This will be enabled by default in Babel 8
+:::note
+This will be enabled by default in Babel 8
+:::
 
 When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
 
@@ -98,4 +102,6 @@ class A {
 }
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::

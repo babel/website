@@ -1,8 +1,12 @@
 ---
-id: babel-plugin-proposal-unicode-sets-regex
-title: "@babel/plugin-proposal-unicode-sets-regex"
+id: babel-plugin-transform-unicode-sets-regex
+title: "@babel/plugin-transform-unicode-sets-regex"
 sidebar_label: unicode-sets-regex
 ---
+
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2024](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 This plugin transforms regular expressions using the `v` flag, introduced by the [RegExp set notation + properties of strings](https://github.com/tc39/proposal-regexp-set-notation) proposal, to regular expressions that use the `u` flag.
 
@@ -54,7 +58,7 @@ Here is [a list of supported properties](https://github.com/tc39/proposal-regexp
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-unicode-sets-regex
+npm install --save-dev @babel/plugin-transform-unicode-sets-regex
 ```
 
 ## Usage
@@ -63,20 +67,20 @@ npm install --save-dev @babel/plugin-proposal-unicode-sets-regex
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-unicode-sets-regex"]
+  "plugins": ["@babel/plugin-transform-unicode-sets-regex"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-unicode-sets-regex script.js
+babel --plugins @babel/plugin-transform-unicode-sets-regex script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-unicode-sets-regex"],
+  plugins: ["@babel/plugin-transform-unicode-sets-regex"],
 });
 ```

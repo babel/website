@@ -4,9 +4,11 @@ title: "@babel/plugin-syntax-async-generators"
 sidebar_label: syntax-async-generators
 ---
 
-> #### Syntax only
->
-> It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-async-generators](plugin-proposal-async-generator-functions.md) to _both_ parse and transform this syntax.
+:::note
+#### Syntax only
+
+It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-async-generators](plugin-transform-async-generator-functions.md) to _both_ parse and transform this syntax.
+:::
 
 ## Example
 

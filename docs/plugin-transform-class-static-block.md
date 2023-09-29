@@ -1,10 +1,12 @@
 ---
-id: babel-plugin-proposal-class-static-block
-title: "@babel/plugin-proposal-class-static-block"
+id: babel-plugin-transform-class-static-block
+title: "@babel/plugin-transform-class-static-block"
 sidebar_label: class-static-block
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 A class with a static block will be transformed into a static private property, whose initializer is the static block wrapped in an IIAFE (immediate invoked arrow function expression).
 
@@ -40,13 +42,13 @@ class C {
 }
 ```
 
-Because the output code includes private class properties, if you are already using other class feature plugins (e.g. [`@babel/plugin-proposal-class-properties](plugin-proposal-class-properties.md)), be sure to place it _before_ the others.
+Because the output code includes private class properties, if you are already using other class feature plugins (e.g. [`@babel/plugin-transform-class-properties`](plugin-transform-class-properties.md)), be sure to place it _before_ the others.
 
 ```json title="babel.config.json"
 {
   "plugins": [
-    "@babel/plugin-proposal-class-static-block",
-    "@babel/plugin-proposal-class-properties"
+    "@babel/plugin-transform-class-static-block",
+    "@babel/plugin-transform-class-properties"
   ]
 }
 ```
@@ -54,7 +56,7 @@ Because the output code includes private class properties, if you are already us
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-class-static-block
+npm install --save-dev @babel/plugin-transform-class-static-block
 ```
 
 ## Usage
@@ -63,21 +65,21 @@ npm install --save-dev @babel/plugin-proposal-class-static-block
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-class-static-block"]
+  "plugins": ["@babel/plugin-transform-class-static-block"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-class-static-block script.js
+babel --plugins @babel/plugin-transform-class-static-block script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-class-static-block"],
+  plugins: ["@babel/plugin-transform-class-static-block"],
 });
 ```
 

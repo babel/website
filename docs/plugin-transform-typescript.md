@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-typescript"
 sidebar_label: transform-typescript
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-typescript`
+:::info
+This plugin is included in `@babel/preset-typescript`
+:::
 
 This plugin adds support for the types syntax used by the [TypeScript programming language][ts]. However, this plugin does not add the ability to type-check the JavaScript passed to it. For that, you will need to install and set up TypeScript.
 
@@ -62,7 +64,9 @@ require("@babel/core").transformSync("code", {
 
 Added in `v7.7.0`
 
-> NOTE: This will be enabled by default in Babel 8
+:::note
+This will be enabled by default in Babel 8
+:::
 
 When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
 
@@ -256,13 +260,6 @@ equivalents in Babel can be enabled by some configuration options or plugins.
 Because there are features of the TypeScript language which rely on the full type-system to be available to make changes at runtime. This section of caveats is quite long, however, it's worth noting that a few of these features are only found in older TypeScript codebases and have modern JavaScript equivalents which you are probably already using.
 
 1. Since Babel does not type-check, code which is syntactically correct, but would fail the TypeScript type-checking may successfully get transformed, and often in unexpected or invalid ways.
-
-1. This plugin does not support [`export =`][exin] and [`import =`][exin], because those cannot be compiled to ES.next. These are a TypeScript only form of `import`/`export`.
-
-   **Workarounds**:
-
-   - Use the plugin [babel-plugin-replace-ts-export-assignment](https://www.npmjs.com/package/babel-plugin-replace-ts-export-assignment) to transform `export =`.
-   - Convert to using `export default` and `export const`, and `import x, {y} from "z"`.
 
 1. Changes to your `tsconfig.json` are not reflected in babel. The build process will always behave as though [`isolatedModules`][iso-mods] is turned on, there are Babel-native alternative ways to set a lot of the [`tsconfig.json` options](#typescript-compiler-options) however.
 

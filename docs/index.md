@@ -22,7 +22,9 @@ Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a
 });
 ```
 
-> For an awesome tutorial on compilers, check out [the-super-tiny-compiler](https://github.com/thejameskyle/the-super-tiny-compiler), which also explains how Babel itself works on a high level.
+:::tip
+For an awesome tutorial on compilers, check out [the-super-tiny-compiler](https://github.com/thejameskyle/the-super-tiny-compiler), which also explains how Babel itself works on a high level.
+:::
 
 ## ES2015 and beyond
 
@@ -64,7 +66,9 @@ export default function DiceRoll(){
 };
 ```
 
-> Learn more about [JSX](https://facebook.github.io/jsx/)
+:::tip
+Learn more about [JSX](https://facebook.github.io/jsx/)
+:::
 
 ## Type Annotations (Flow and TypeScript)
 
@@ -95,7 +99,9 @@ function Greeter(greeting: string) {
 }
 ```
 
-> Learn more about [Flow](https://flow.org/) and [TypeScript](https://www.typescriptlang.org/)
+:::tip
+Learn more about [Flow](https://flow.org/) and [TypeScript](https://www.typescriptlang.org/)!
+:::
 
 ## Pluggable
 

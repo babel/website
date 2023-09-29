@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-for-of"
 sidebar_label: for-of
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Example
 
@@ -99,7 +101,9 @@ require("@babel/core").transformSync("code", {
 
 In loose mode, arrays are put in a fast path, thus heavily increasing performance.
 
-> ⚠️ Consider migrating to the top level [`skipForOfIteratorClosing`](assumptions.md#skipforofiteratorclosing) assumption.
+:::caution
+Consider migrating to the top level [`skipForOfIteratorClosing`](assumptions.md#skipforofiteratorclosing) assumption.
+:::
 
 ```json title="babel.config.json"
 {
@@ -195,4 +199,6 @@ for (var _i = 0; _i < _arr.length; _i++) {
 }
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::

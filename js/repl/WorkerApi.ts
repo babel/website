@@ -87,12 +87,7 @@ export default class WorkerApi {
     return this._worker.postMessage({ method: "getAvailablePresets" });
   }
 
-  getAvailablePlugins(): Promise<
-    Array<{
-      label: string;
-      isPreloaded: boolean;
-    }>
-  > {
+  getAvailablePlugins(): Promise<Array<string>> {
     return this._worker.postMessage({ method: "getAvailablePlugins" });
   }
 
@@ -136,16 +131,18 @@ export default class WorkerApi {
     });
   }
 
-  registerEnvPreset(): Promise<boolean> {
-    return this._worker.postMessage({
-      method: "registerEnvPreset",
-    });
-  }
-
   registerPlugins(plugins: Array<PluginShape>): Promise<boolean> {
     return this._worker.postMessage({
       method: "registerPlugins",
       plugins,
+    });
+  }
+
+  registerPluginAlias(pluginName: string, aliasTo: string): Promise<boolean> {
+    return this._worker.postMessage({
+      method: "registerPluginAlias",
+      pluginName,
+      aliasTo,
     });
   }
 }

@@ -1,11 +1,12 @@
 export type BabelPresets = Array<string | Array<string | any>>;
-export type BabelPlugins = Array<string>;
+export type BabelPlugins = Array<string | [string, any]>;
 export type BabelPlugin = {
   name: string;
   version: string;
 };
 
 type decoratorsVersion =
+  | "2023-05"
   | "2023-01"
   | "2022-03"
   | "2021-12"

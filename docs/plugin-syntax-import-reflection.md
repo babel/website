@@ -4,9 +4,11 @@ title: "@babel/plugin-syntax-import-reflection"
 sidebar_label: syntax-import-reflection
 ---
 
-> #### Syntax only
->
-> This plugin only enables Babel to parse this syntax. Babel does not support transforming this syntax
+:::note
+#### Syntax only
+
+This plugin only enables Babel to parse this syntax. Babel does not support transforming this syntax
+:::
 
 This plugin enables Babel to parse import reflections:
 

@@ -50,13 +50,13 @@ npm install --save-dev @babel/plugin-proposal-destructuring-private
 }
 ```
 
-Because the output code includes private fields, if you are already using other class feature plugins (e.g. [`@babel/plugin-proposal-class-properties](plugin-proposal-class-properties.md)), be sure to place it _before_ the others.
+Because the output code includes private fields, if you are already using other class feature plugins (e.g. [`@babel/plugin-transform-class-properties](plugin-transform-class-properties.md)), be sure to place it _before_ the others.
 
 ```json title="babel.config.json"
 {
   "plugins": [
     "@babel/plugin-proposal-destructuring-private",
-    "@babel/plugin-proposal-class-properties"
+    "@babel/plugin-transform-class-properties"
   ]
 }
 ```

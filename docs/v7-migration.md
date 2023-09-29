@@ -300,7 +300,7 @@ The `babel-node` command in Babel 6 was part of the `babel-cli` package. In Babe
 
 ### `@babel/runtime`, `@babel/plugin-transform-runtime`
 
-We have separated out Babel's helpers from it's "polyfilling" behavior in runtime. More details in the [PR](https://github.com/babel/babel/pull/8266).
+We have separated out Babel's helpers from its "polyfilling" behavior in runtime. More details in the [PR](https://github.com/babel/babel/pull/8266).
 
 [`@babel/runtime`](runtime.md) now only contains the helpers, and if you need `core-js` you can use [`@babel/runtime-corejs2`](runtime-corejs2.md) and the option provided in the transform. For both you still need the [`@babel/plugin-transform-runtime`](plugin-transform-runtime.md)
 

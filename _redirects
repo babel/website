@@ -64,12 +64,26 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /docs/plugins/minify-*              /docs/babel-plugin-minify-:splat
 /docs/plugins/external-helpers/     /docs/babel-plugin-external-helpers
 
-/docs/en/babel-plugin-transform-async-generator-functions       /docs/babel-plugin-proposal-async-generator-functions
-/docs/en/babel-plugin-transform-class-properties                /docs/babel-plugin-proposal-class-properties
+# Plugins renamed from -proposal- to -transform-
+/docs/babel-plugin-proposal-class-static-block                  /docs/babel-plugin-transform-class-static-block
+/docs/babel-plugin-proposal-private-property-in-object          /docs/babel-plugin-transform-private-property-in-object
+/docs/babel-plugin-proposal-class-properties                    /docs/babel-plugin-transform-class-properties
+/docs/babel-plugin-proposal-private-methods                     /docs/babel-plugin-transform-private-methods
+/docs/babel-plugin-proposal-numeric-separator                   /docs/babel-plugin-transform-numeric-separator
+/docs/babel-plugin-proposal-logical-assignment-operators        /docs/babel-plugin-transform-logical-assignment-operators
+/docs/babel-plugin-proposal-nullish-coalescing-operator         /docs/babel-plugin-transform-nullish-coalescing-operator
+/docs/babel-plugin-proposal-optional-chaining                   /docs/babel-plugin-transform-optional-chaining
+/docs/babel-plugin-proposal-json-strings                        /docs/babel-plugin-transform-json-strings
+/docs/babel-plugin-proposal-optional-catch-binding              /docs/babel-plugin-transform-optional-catch-binding
+/docs/babel-plugin-proposal-async-generator-functions           /docs/babel-plugin-transform-async-generator-functions
+/docs/babel-plugin-proposal-object-rest-spread                  /docs/babel-plugin-transform-object-rest-spread
+/docs/babel-plugin-proposal-unicode-property-regex              /docs/babel-plugin-transform-unicode-property-regex
+/docs/babel-plugin-proposal-unicode-sets-regex                  /docs/babel-plugin-transform-unicode-sets-regex
+/docs/babel-plugin-proposal-export-namespace-from               /docs/babel-plugin-transform-export-namespace-from
+
+# Legacy redirects
 /docs/en/babel-plugin-transform-decorators                      /docs/babel-plugin-proposal-decorators
 /docs/en/babel-plugin-transform-do-expressions                  /docs/babel-plugin-proposal-do-expressions
-/docs/en/babel-plugin-transform-export-extensions               /docs/babel-plugin-proposal-export-namespace
-/docs/en/babel-plugin-transform-object-rest-spread              /docs/babel-plugin-proposal-object-rest-spread
 
 /docs/plugins/check-es2015-constants/ /docs/babel-plugin-check-es2015-constants
 /docs/plugins/transform-es2015-constants /docs/babel-plugin-check-es2015-constants
@@ -78,6 +92,8 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /docs/en/next/tools/*               /setup
 
 # Blog rewrites
+/7.23.0 /blog/2023/09/25/7.22.0
+/7.22.0 /blog/2023/05/26/7.22.0
 /7.21.0 /blog/2023/02/20/7.21.0
 /7.20.0 /blog/2022/10/27/7.20.0
 /7.19.0 /blog/2022/09/05/7.19.0

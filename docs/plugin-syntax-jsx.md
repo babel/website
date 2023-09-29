@@ -4,9 +4,11 @@ title: "@babel/plugin-syntax-jsx"
 sidebar_label: syntax-jsx
 ---
 
-> #### Syntax only
->
-> Using this plugin directly only enables Babel to parse this syntax. If you want to transform JSX syntax then use the [transform-react-jsx](plugin-transform-react-jsx.md) plugin or [react](preset-react.md) preset to _both_ parse and transform this syntax.
+:::note
+#### Syntax only
+
+Using this plugin directly only enables Babel to parse this syntax. If you want to transform JSX syntax then use the [transform-react-jsx](plugin-transform-react-jsx.md) plugin or [react](preset-react.md) preset to _both_ parse and transform this syntax.
+:::
 
 ## Installation
 

@@ -12,7 +12,9 @@ sidebar_label: Common JS
 | `v7.14.0` | Implemented the `importInterop` option |
 </details>
 
-> **NOTE**: This plugin is included in `@babel/preset-env` under the `modules` option
+:::info
+This plugin is included in `@babel/preset-env` under the `modules` option
+:::
 
 This plugin transforms ECMAScript modules to [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1). Note that only the _syntax_ of import/export statements (`import "./mod.js"`) and import expressions (`import('./mod.js')`) is transformed, as Babel is unaware of different resolution algorithms between implementations of ECMAScript modules and CommonJS.
 
@@ -173,7 +175,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 ```
 
-> ⚠️ Consider migrating to the top level [`enumerableModuleMeta`](assumptions.md#enumerablemodulemeta) assumption.
+:::caution
+Consider migrating to the top level [`enumerableModuleMeta`](assumptions.md#enumerablemodulemeta) assumption.
+:::
 
 ```json title="babel.config.json"
 {
@@ -243,13 +247,17 @@ The two cases where imports can never be lazy are:
   Re-exporting all names requires up-front execution because otherwise there is no
   way to know what names need to be exported.
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 ### `noInterop`
 
 `boolean`, defaults to `false`
 
-> ⚠️ **Deprecated**: Use the `importInterop` option instead.
+:::caution
+**Deprecated**: Use the `importInterop` option instead.
+:::
 
 When set to `true`, this option has the same behavior as setting `importInterop: "none"`.
 

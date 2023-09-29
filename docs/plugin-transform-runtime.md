@@ -5,7 +5,9 @@ title: "@babel/plugin-transform-runtime"
 
 A plugin that enables the re-use of Babel's injected helper code to save on codesize.
 
-> NOTE: Instance methods such as `"foobar".includes("foo")` will only work with `core-js@3`. If you need to polyfill them, you can directly import `"core-js"` or use `@babel/preset-env`'s `useBuiltIns` option.
+:::note
+Instance methods such as `"foobar".includes("foo")` will only work with `core-js@3`. If you need to polyfill them, you can directly import `"core-js"` or use `@babel/preset-env`'s `useBuiltIns` option.
+:::
 
 ## Installation
 
@@ -23,7 +25,9 @@ npm install --save @babel/runtime
 
 The transformation plugin is typically used only in development, but the runtime itself will be depended on by your deployed code. See the examples below for more details.
 
-> When this plugin is enabled, the `useBuiltIns` option in `@babel/preset-env` must not be set. Otherwise, this plugin may not able to completely sandbox the environment.
+:::danger
+When this plugin is enabled, the `useBuiltIns` option in `@babel/preset-env` must not be set. Otherwise, this plugin may not able to completely sandbox the environment.
+:::
 
 ## Why?
 
@@ -124,7 +128,9 @@ For more information, see [Helper aliasing](#helper-aliasing).
 
 ### `polyfill`
 
-> This option was removed in v7.
+:::danger
+This option was removed in v7.
+:::
 
 ### `regenerator`
 
@@ -136,11 +142,15 @@ For more information, see [Regenerator aliasing](#regenerator-aliasing).
 
 ### `useBuiltIns`
 
-> This option was removed in v7.
+:::danger
+This option was removed in v7.
+:::
 
 ### `useESModules`
 
-> ⚠️ This option has been deprecated: starting from version `7.13.0`, `@babel/runtime`'s `package.json` uses `"exports"` option to automatically choose between CJS and ESM helpers.
+:::caution
+This option has been deprecated: starting from version `7.13.0`, `@babel/runtime`'s `package.json` uses `"exports"` option to automatically choose between CJS and ESM helpers.
+:::
 
 `boolean`, defaults to `false`.
 
@@ -186,7 +196,9 @@ This allows users to run `transform-runtime` broadly across a whole project. By 
 
 Using absolute paths is not desirable if files are compiled for use at a later time, but in contexts where a file is compiled and then immediately consumed, they can be quite helpful.
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 ### `version`
 

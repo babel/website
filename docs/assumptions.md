@@ -22,7 +22,9 @@ For example:
 }
 ```
 
-> ⚠ This is advanced functionality. Please be careful when enabling assumptions, because they are not spec-compliant and may break your code in unexpected ways.
+:::caution
+This is advanced functionality. Please be careful when enabling assumptions, because they are not spec-compliant and may break your code in unexpected ways.
+:::
 
 ## `arrayLikeIsIterable`
 
@@ -241,7 +243,9 @@ class Foo {
 
 </div>
 
-> ⚠️ When using inline Babel helpers, generated string keys are unique per-file and not globally. This could cause conflicts when extending classes from a different fields with private fields with the same name.
+:::caution
+When using inline Babel helpers, generated string keys are unique per-file and not globally. This could cause conflicts when extending classes from a different fields with private fields with the same name.
+:::
 
 ## `privateFieldsAsSymbols`
 
@@ -288,7 +292,7 @@ a.b?.();
 
 ## `setClassMethods`
 
-When declaring classes, assume that methods don't shadow getters on the superclass and that the program doesn't depend on methods being non-enumerable. Thus, it's safe to assign methods rather than using `Object.defineProperty`.
+When declaring classes, assume that methods don't shadow accessors or non-writable properties on the superclass prototype, and that the program doesn't depend on methods being non-enumerable. Thus, it's safe to assign methods rather than using `Object.defineProperty`.
 
 <div is="assumption-repl" data-assumption="setClassMethods" data-plugins="transform-classes">
 

@@ -17,7 +17,7 @@ If the plugin is on [npm](https://www.npmjs.com/search?q=babel-plugin), you can 
 }
 ```
 
-You can also specify an relative/absolute path to your plugin.
+You can also specify a relative/absolute path to your plugin.
 
 ```json title="babel.config.json"
 {
@@ -39,7 +39,9 @@ Transform plugins will enable the corresponding syntax plugin so you don't have 
 
 Most syntax is transformable by Babel. In rarer cases (if the transform isn't implemented yet, or there isn't a default way to do so), you can use plugins such as `@babel/plugin-syntax-bigint` to only allow Babel to **parse** specific types of syntax. Or you want to preserve the source code because you only want Babel to do code analysis or codemods.
 
-> NOTE: You don't need to specify the syntax plugin if the corresponding transform plugin is used already, since it enables it automatically.
+:::tip
+You don't need to specify the syntax plugin if the corresponding transform plugin is used already, since it enables it automatically.
+:::
 
 Alternatively, you can also provide any [`plugins` option](parser.md#plugins) from the Babel parser:
 

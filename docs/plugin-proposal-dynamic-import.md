@@ -7,7 +7,9 @@ sidebar_label: dynamic-import
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2020](https://github.com/tc39/proposals/blob/master/finished-proposals.md).
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2020](https://github.com/tc39/proposals/blob/master/finished-proposals.md).
+:::
 
 Transforms `import()` expressions to non-ESM module formats.
 

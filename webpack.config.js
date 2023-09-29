@@ -10,7 +10,6 @@ const config = {
   },
   entry: {
     repl: "./js/repl/index.tsx",
-    minirepl: "./js/minirepl.js",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
@@ -34,6 +33,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./js/repl/index.html",
+      inject: false,
     }),
     new webpack.ProvidePlugin({
       Buffer: ["buffer"],

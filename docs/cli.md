@@ -25,7 +25,9 @@ We can install Babel CLI locally by running:
 npm install --save-dev @babel/core @babel/cli
 ```
 
-> **Note:** If you do not have a `package.json`, create one before installing. This will ensure proper interaction with the `npx` command.
+:::note
+If you do not have a `package.json`, create one before installing. This will ensure proper interaction with the `npx` command.
+:::
 
 After that finishes installing, your `package.json` file should include:
 
@@ -40,7 +42,9 @@ After that finishes installing, your `package.json` file should include:
 
 ## Usage
 
-> **Note:** Please install `@babel/cli` and `@babel/core` first before `npx babel`, otherwise `npx` will install out-of-dated `babel` 6.x. Other than [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b), you can also drop it inside of an [npm run script](https://docs.npmjs.com/cli/run-script) or you may instead execute with the relative path instead. `./node_modules/.bin/babel`
+:::note
+Please install `@babel/cli` and `@babel/core` first before `npx babel`, otherwise `npx` will install out-of-dated `babel` 6.x. Other than [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b), you can also drop it inside of an [npm run script](https://docs.npmjs.com/cli/run-script) or you may instead execute with the relative path instead. `./node_modules/.bin/babel`
+:::
 
 ```sh title="Shell"
 npx babel script.js
@@ -75,7 +79,9 @@ npx babel script.js --watch --out-file script-compiled.js
 
 ### Compile with Source Maps
 
-> **Note:** Since v7.19.3, if this parameter is not specified, `@babel/cli` will follow the [configuration files](https://babeljs.io/docs/en/config-files).
+:::note
+Since v7.19.3, if this parameter is not specified, `@babel/cli` will follow the [configuration files](https://babeljs.io/docs/en/config-files).
+:::
 
 If you would then like to add a **source map file** you can use
 `--source-maps` or `-s`.
@@ -158,7 +164,7 @@ npx babel --out-file script-compiled.js < script.js
 Use the `--plugins` option to specify plugins to use in compilation
 
 ```sh title="Shell"
-npx babel script.js --out-file script-compiled.js --plugins=@babel/proposal-class-properties,@babel/transform-modules-amd
+npx babel script.js --out-file script-compiled.js --plugins=@babel/transform-class-properties,@babel/transform-modules-amd
 ```
 
 ### Using Presets

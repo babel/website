@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-object-super"
 sidebar_label: object-super
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Examples
 

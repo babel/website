@@ -12,48 +12,51 @@ sidebar_label: Plugins List
 - [do-expressions](plugin-proposal-do-expressions.md)
 - [duplicate-named-capturing-groups-regex](plugin-proposal-duplicate-named-capturing-groups-regex.md)
 - [export-default-from](plugin-proposal-export-default-from.md)
-- [export-namespace-from](plugin-proposal-export-namespace-from.md)
 - [function-bind](plugin-proposal-function-bind.md)
 - [function-sent](plugin-proposal-function-sent.md)
 - [partial-application](plugin-proposal-partial-application.md)
 - [pipeline-operator](plugin-proposal-pipeline-operator.md)
-- [private-methods](plugin-proposal-private-methods.md)
 - [throw-expressions](plugin-proposal-throw-expressions.md)
 - [record-and-tuple](plugin-proposal-record-and-tuple.md)
 
+### ES2024
+
+- [unicode-sets-regex](plugin-transform-unicode-sets-regex.md)
+
 ### ES2022
 
-- [class-properties](plugin-proposal-class-properties.md)
-- [class-static-block](plugin-proposal-class-static-block.md)
-- [private-property-in-object](plugin-proposal-private-property-in-object.md)
+- [class-properties](plugin-transform-class-properties.md)
+- [class-static-block](plugin-transform-class-static-block.md)
+- [private-property-in-object](plugin-transform-private-property-in-object.md)
+- [private-methods](plugin-transform-private-methods.md)
 - [syntax-top-level-await](plugin-syntax-top-level-await.md)
 
 ### ES2021
 
-- [logical-assignment-operators](plugin-proposal-logical-assignment-operators.md)
-- [numeric-separator](plugin-proposal-numeric-separator.md)
+- [logical-assignment-operators](plugin-transform-logical-assignment-operators.md)
+- [numeric-separator](plugin-transform-numeric-separator.md)
 
 ### ES2020
 
-- [export-namespace-from](plugin-proposal-export-namespace-from.md)
-- [nullish-coalescing-operator](plugin-proposal-nullish-coalescing-operator.md)
-- [optional-chaining](plugin-proposal-optional-chaining.md)
+- [export-namespace-from](plugin-transform-export-namespace-from.md)
+- [nullish-coalescing-operator](plugin-transform-nullish-coalescing-operator.md)
+- [optional-chaining](plugin-transform-optional-chaining.md)
 - [syntax-dynamic-import](plugin-syntax-dynamic-import.md)
 - [syntax-import-meta](plugin-syntax-import-meta.md)
 - [syntax-bigint](plugin-syntax-bigint.md)
 
 ### ES2019
 
-- [optional-catch-binding](plugin-proposal-optional-catch-binding.md)
-- [json-strings](plugin-proposal-json-strings.md)
+- [optional-catch-binding](plugin-transform-optional-catch-binding.md)
+- [json-strings](plugin-transform-json-strings.md)
 
 ### ES2018
 
-- [async-generator-functions](plugin-proposal-async-generator-functions.md)
+- [async-generator-functions](plugin-transform-async-generator-functions.md)
 - [dotall-regex](plugin-transform-dotall-regex.md)
 - [named-capturing-groups-regex](plugin-transform-named-capturing-groups-regex.md)
-- [object-rest-spread](plugin-proposal-object-rest-spread.md)
-- [unicode-property-regex](plugin-proposal-unicode-property-regex.md)
+- [object-rest-spread](plugin-transform-object-rest-spread.md)
+- [unicode-property-regex](plugin-transform-unicode-property-regex.md)
 
 ### ES2017
 

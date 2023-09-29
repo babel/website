@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-unicode-escapes"
 sidebar_label: unicode-escapes
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 Compile ES2015 Unicode escapes to ES5
 

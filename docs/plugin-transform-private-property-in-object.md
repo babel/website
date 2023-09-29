@@ -1,10 +1,12 @@
 ---
-id: babel-plugin-proposal-private-property-in-object
-title: "@babel/plugin-proposal-private-property-in-object"
+id: babel-plugin-transform-private-property-in-object
+title: "@babel/plugin-transform-private-property-in-object"
 sidebar_label: private-property-in-object
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 ## Example
 
@@ -42,7 +44,7 @@ var _bar = new WeakMap();
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-private-property-in-object
+npm install --save-dev @babel/plugin-transform-private-property-in-object
 ```
 
 ## Usage
@@ -51,21 +53,21 @@ npm install --save-dev @babel/plugin-proposal-private-property-in-object
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-private-property-in-object"]
+  "plugins": ["@babel/plugin-transform-private-property-in-object"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-private-property-in-object
+babel --plugins @babel/plugin-transform-private-property-in-object
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-private-property-in-object"],
+  plugins: ["@babel/plugin-transform-private-property-in-object"],
 });
 ```
 
@@ -75,13 +77,17 @@ require("@babel/core").transformSync("code", {
 
 `boolean`, defaults to `false`.
 
-> Note: The `loose` mode configuration setting _must_ be the same as [`@babel/proposal-class-properties`](plugin-proposal-class-properties.md).
+:::note
+The `loose` mode configuration setting _must_ be the same as [`@babel/transform-class-properties`](plugin-transform-class-properties.md).
+:::
 
 When true, private property `in` expressions will check own properties (as opposed to inherited ones) on the object, instead of checking for presence inside a `WeakSet`. This results in improved
 performance and debugging (normal property access vs `.get()`) at the expense
 of potentially leaking "privates" via things like `Object.getOwnPropertyNames`.
 
-> ⚠️ Consider migrating to the top level [`privateFieldsAsProperties`](assumptions.md#privatefieldsasproperties) assumption.
+:::caution
+Consider migrating to the top level [`privateFieldsAsProperties`](assumptions.md#privatefieldsasproperties) assumption.
+:::
 
 ```json title="babel.config.json"
 {
@@ -127,7 +133,9 @@ class Foo {
 var _bar = babelHelpers.classPrivateFieldLooseKey("bar");
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 ## References
 

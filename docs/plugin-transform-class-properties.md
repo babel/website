@@ -1,10 +1,12 @@
 ---
-id: babel-plugin-proposal-class-properties
-title: "@babel/plugin-proposal-class-properties"
+id: babel-plugin-transform-class-properties
+title: "@babel/plugin-transform-class-properties"
 sidebar_label: class-properties
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2022](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 ## Example
 
@@ -40,7 +42,7 @@ console.log(Bork.staticFunction()); // > "babelIsCool"
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-class-properties
+npm install --save-dev @babel/plugin-transform-class-properties
 ```
 
 ## Usage
@@ -51,7 +53,7 @@ Without options:
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-class-properties"]
+  "plugins": ["@babel/plugin-transform-class-properties"]
 }
 ```
 
@@ -59,21 +61,21 @@ With options:
 
 ```json title="babel.config.json"
 {
-  "plugins": [["@babel/plugin-proposal-class-properties", { "loose": true }]]
+  "plugins": [["@babel/plugin-transform-class-properties", { "loose": true }]]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-class-properties script.js
+babel --plugins @babel/plugin-transform-class-properties script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-class-properties"],
+  plugins: ["@babel/plugin-transform-class-properties"],
 });
 ```
 
@@ -85,7 +87,9 @@ require("@babel/core").transformSync("code", {
 
 When `true`, class properties are compiled to use an assignment expression instead of `Object.defineProperty`.
 
-> ⚠️ Consider migrating to the top level [`setPublicClassFields`](assumptions.md#setpublicclassfields) assumption
+:::caution
+Consider migrating to the top level [`setPublicClassFields`](assumptions.md#setpublicclassfields) assumption
+:::
 
 ```json title="babel.config.json"
 {
@@ -155,7 +159,9 @@ Bork.a = "foo";
 Bork.b = void 0;
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 ## References
 

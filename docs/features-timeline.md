@@ -9,6 +9,41 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="Sep 2023">
+
+## Babel 7.23.0
+
+[blog post](https://babeljs.io/blog/2023/09/25/7.23.0)
+
+- Support for the [Decorator Metadata](https://github.com/tc39/proposal-decorator-metadata/) Stage 3 proposal
+- Support for the [Source Phase Import](https://github.com/tc39/proposal-source-phase-imports) Stage 3 proposal
+- Support for the [Deferred Import Evaluation](https://github.com/tc39/proposal-defer-import-eval) Stage 2 proposal
+- Support for the [Optional Chaining Assignment](https://github.com/tc39/proposal-optional-chaining-assignment) proposal
+- Support for rewriting `.ts` extensions in imports
+
+</li>
+<li data-date="May 2023">
+
+## Babel 7.22.0
+
+[blog post](https://babeljs.io/blog/2023/05/26/7.22.0)
+
+- Enable the Stage 4 [RegExp `v` flag](https://github.com/tc39/proposal-regexp-set-notation/) proposal by default
+- Support for the [explicit resource management](https://github.com/tc39/proposal-explicit-resource-management/) proposal Stage 3 proposal, including the [async version](https://github.com/tc39/proposal-async-explicit-resource-management/)
+  ```js title="JavaScript"
+  {
+    await using db = connect(databaseURL);
+    let user = await db.getUserById(userId);
+    await db.createPost(user.name, "Hi! :)");
+  } // Automatically close the db
+  ```
+- Support for the updates of the [decorators](https://github.com/tc39/proposal-decorators/) proposal that reached consensus in the March 2023 and May 2023 TC39 meetings
+- Parsing support for the Stage 3 [import attributes](https://github.com/tc39/proposal-import-attributes) proposal, previously known as "import assertions"
+  ```js title="JavaScript"
+  import data from "./data.json" with { type: "json" };
+  ```
+
+</li>
 <li data-date="Feb 2023">
 
 ## Babel 7.21.0
@@ -442,18 +477,18 @@ This has a lot more changes since it was 2 years of pre-releases.
 - Support TypeScript via `@babel/preset-typescript`
 - Support JSX Fragments `<></>`
 - Support a ton of TC39 proposals:
-  - [Unicode Property Regex](plugin-proposal-unicode-property-regex.md)
-  - [JSON Superset](plugin-proposal-json-strings.md)
+  - [Unicode Property Regex](plugin-transform-unicode-property-regex.md)
+  - [JSON Superset](plugin-transform-json-strings.md)
   - [`new.target`](plugin-transform-new-target.md)
-  - [Class Private Instance Fields](plugin-proposal-class-properties.md) (`class A { #b = 2 }`)
-  - [Optional Catch Binding](plugin-proposal-optional-catch-binding.md) `try { throw 0 } catch { do() }`
+  - [Class Private Instance Fields](plugin-transform-class-properties.md) (`class A { #b = 2 }`)
+  - [Optional Catch Binding](plugin-transform-optional-catch-binding.md) `try { throw 0 } catch { do() }`
   - [BigInt](plugin-syntax-bigint.md) (syntax only)
   - [`import.meta`](plugin-syntax-import-meta.md) (syntax only) (`import.meta.url`)
-  - [Numeric Separators](plugin-proposal-numeric-separator.md) (`1_000`)
+  - [Numeric Separators](plugin-transform-numeric-separator.md) (`1_000`)
   - [`function.sent`](plugin-proposal-function-sent.md)
-  - [Optional Chaining](plugin-proposal-optional-chaining.md) (`a?.b`)
-  - [Logical Assignment Operators](plugin-proposal-logical-assignment-operators.md) (`a &&= b; a ||= b`)
-  - [Nullish Coalescing Operator](plugin-proposal-nullish-coalescing-operator.md) (`a ?? b`)
+  - [Optional Chaining](plugin-transform-optional-chaining.md) (`a?.b`)
+  - [Logical Assignment Operators](plugin-transform-logical-assignment-operators.md) (`a &&= b; a ||= b`)
+  - [Nullish Coalescing Operator](plugin-transform-nullish-coalescing-operator.md) (`a ?? b`)
   - [Pipeline Operator](plugin-proposal-pipeline-operator.md) (`a |> b`)
   - [Throw Expressions](plugin-proposal-throw-expressions.md) (`() => throw new Error("a")`)
 

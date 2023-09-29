@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-modules-systemjs"
 sidebar_label: SystemJS
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env` under the `modules` option
+:::info
+This plugin is included in `@babel/preset-env` under the `modules` option
+:::
 
 This plugin transforms ECMAScript modules to [SystemJS](https://github.com/systemjs/systemjs/blob/master/docs/system-register.md). Note that only the _syntax_ of import/export statements (`import "./mod.js"`) and import expressions (`import('./mod.js')`) is transformed, as Babel is unaware of different resolution algorithms between implementations of ECMAScript modules and SystemJS.
 
@@ -78,3 +80,38 @@ require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-modules-systemjs"],
 });
 ```
+
+## Options
+
+### `moduleIds`
+
+`boolean` defaults to `!!moduleId`
+
+Added in: `v7.9.0`
+
+Enables module ID generation.
+
+### `moduleId`
+
+`string`
+
+Added in: `v7.9.0`
+
+A hard-coded ID to use for the module. Cannot be used alongside `getModuleId`.
+
+### `getModuleId`
+
+`(name: string) => string`
+
+Added in: `v7.9.0`
+
+Given the babel-generated module name, return the name to use. Returning
+a falsy value will use the original `name`.
+
+### `moduleRoot`
+
+`string`
+
+Added in: `v7.9.0`
+
+A root path to include on generated module names.

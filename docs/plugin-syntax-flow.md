@@ -4,9 +4,11 @@ title: "@babel/plugin-syntax-flow"
 sidebar_label: syntax-flow
 ---
 
-> #### Syntax only
->
-> Using this plugin directly only enables Babel to parse this syntax. If you want to remove Flow syntax then use the [flow-strip-types](plugin-transform-flow-strip-types.md) plugin or [flow](preset-flow.md) preset to _both_ parse and transform this syntax.
+:::note
+#### Syntax only
+
+Using this plugin directly only enables Babel to parse this syntax. If you want to remove Flow syntax then use the [flow-strip-types](plugin-transform-flow-strip-types.md) plugin or [flow](preset-flow.md) preset to _both_ parse and transform this syntax.
+:::
 
 ## Installation
 

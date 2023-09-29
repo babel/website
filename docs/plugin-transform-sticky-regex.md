@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-sticky-regex"
 sidebar_label: sticky-regex
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Examples
 

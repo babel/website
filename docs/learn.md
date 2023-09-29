@@ -560,8 +560,6 @@ var handler =
   getPrototypeOf: ...,
   // Object.setPrototypeOf(target), Reflect.setPrototypeOf(target)
   setPrototypeOf: ...,
-  // for (let i in target) {}
-  enumerate: ...,
   // Object.keys(target)
   ownKeys: ...,
   // Object.preventExtensions(target)

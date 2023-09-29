@@ -71,7 +71,9 @@ stringRe.test("'foo'"); // "true", works
 stringRe.exec("'foo'").groups.quote; // undefined
 ```
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
 
 ## References
 

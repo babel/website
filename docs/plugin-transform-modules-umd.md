@@ -12,7 +12,9 @@ sidebar_label: UMD
 | `v7.14.0` | Implemented the `importInterop` option |
 </details>
 
-> **NOTE**: This plugin is included in `@babel/preset-env` under the `modules` option
+:::info
+This plugin is included in `@babel/preset-env` under the `modules` option
+:::
 
 This plugin transforms ES2015 modules to [UMD](https://github.com/umdjs/umd). Note that only the _syntax_ of import/export statements (`import "./mod.js"`) is transformed, as Babel is unaware of different resolution algorithms between implementations of ES2015 modules and UMD.
 
@@ -233,6 +235,39 @@ require("@babel/core").transformSync("code", {
 });
 ```
 
-### Options
+## Options
 
-See options for [`@babel/plugin-transform-modules-commonjs`](https://babeljs.io/docs/en/babel-plugin-transform-modules-commonjs#options).
+### `moduleIds`
+
+`boolean` defaults to `!!moduleId`
+
+Added in: `v7.9.0`
+
+Enables module ID generation.
+
+### `moduleId`
+
+`string`
+
+Added in: `v7.9.0`
+
+A hard-coded ID to use for the module. Cannot be used alongside `getModuleId`.
+
+### `getModuleId`
+
+`(name: string) => string`
+
+Added in: `v7.9.0`
+
+Given the babel-generated module name, return the name to use. Returning
+a falsy value will use the original `name`.
+
+### `moduleRoot`
+
+`string`
+
+Added in: `v7.9.0`
+
+A root path to include on generated module names.
+
+For options not listed here, see options for [`@babel/plugin-transform-modules-commonjs`](plugin-transform-modules-commonjs.md#options).

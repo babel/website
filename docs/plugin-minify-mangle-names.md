@@ -78,4 +78,6 @@ require("@babel/core").transformSync("code", {
 + `topLevel` - mangle topLevel Identifiers (default: `false`)
 + `keepClassName` - prevent mangler from altering class names (default: `false`).
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::

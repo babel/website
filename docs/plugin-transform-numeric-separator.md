@@ -1,10 +1,12 @@
 ---
-id: babel-plugin-proposal-numeric-separator
-title: "@babel/plugin-proposal-numeric-separator"
+id: babel-plugin-transform-numeric-separator
+title: "@babel/plugin-transform-numeric-separator"
 sidebar_label: numeric-separator
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`, in [ES2021](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2021](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+:::
 
 ## Example
 
@@ -64,7 +66,7 @@ Octals are great for permissions, but also look better when represented in `0o00
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-numeric-separator
+npm install --save-dev @babel/plugin-transform-numeric-separator
 ```
 
 ## Usage
@@ -73,21 +75,21 @@ npm install --save-dev @babel/plugin-proposal-numeric-separator
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-numeric-separator"]
+  "plugins": ["@babel/plugin-transform-numeric-separator"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-numeric-separator script.js
+babel --plugins @babel/plugin-transform-numeric-separator script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-numeric-separator"],
+  plugins: ["@babel/plugin-transform-numeric-separator"],
 });
 ```
 
@@ -95,20 +97,22 @@ require("@babel/core").transformSync("code", {
 
 If you need to further compile ES2015 Decimal, Binary, Hex and Octal number representations to their pre-ES2015 numeric literal form, add the [`"@babel/plugin-transform-literals"`](plugin-transform-literals.md) plugin:
 
-> `@babel/plugin-transform-literals` is already included in [@babel/preset-env](preset-env.md) and @babel/preset-es2015.
+:::info
+`@babel/plugin-transform-literals` is already included in [@babel/preset-env](preset-env.md).
+:::
 
 ### With a configuration file (Recommended)
 
 ```json title="babel.config.json"
 {
   "presets": ["@babel/preset-env"],
-  "plugins": ["@babel/plugin-proposal-numeric-separator"]
+  "plugins": ["@babel/plugin-transform-numeric-separator"]
 }
 {
-  "plugins": ["@babel/plugin-proposal-numeric-separator", "@babel/plugin-transform-literals"]
+  "plugins": ["@babel/plugin-transform-numeric-separator", "@babel/plugin-transform-literals"]
 }
 ```
 
 ## References
 
-- [Proposal: Numeric Separators](https://github.com/samuelgoto/proposal-numeric-separator)
+- [Proposal: Numeric Separators](https://github.com/tc39/proposal-numeric-separator)

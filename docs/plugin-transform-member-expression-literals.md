@@ -4,7 +4,9 @@ title: "@babel/plugin-transform-member-expression-literals"
 sidebar_label: member-expression-literals
 ---
 
-> **NOTE**: This plugin is included in `@babel/preset-env`
+:::info
+This plugin is included in `@babel/preset-env`
+:::
 
 ## Example
 

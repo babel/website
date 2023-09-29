@@ -4,9 +4,11 @@ title: "@babel/plugin-syntax-typescript"
 sidebar_label: syntax-typescript
 ---
 
-> #### Syntax only
->
-> Using this plugin directly only enables Babel to parse this syntax. If you want to remove TypeScript syntax then use the [typescript](plugin-transform-typescript.md) plugin or [typescript](preset-typescript.md) preset to _both_ parse and transform this syntax.
+:::note
+#### Syntax only
+
+Using this plugin directly only enables Babel to parse this syntax. If you want to remove TypeScript syntax then use the [typescript](plugin-transform-typescript.md) plugin or [typescript](preset-typescript.md) preset to _both_ parse and transform this syntax.
+:::
 
 ```shell npm2yarn
 npm install --save-dev @babel/plugin-syntax-typescript
@@ -60,4 +62,6 @@ This option will enable parsing within a TypeScript ambient context, where certa
 
 Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as typescript's legacy type assertion `var foo = <string>bar;`
 
-> You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
