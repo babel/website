@@ -4,10 +4,6 @@ title: "@babel/plugin-transform-instanceof"
 sidebar_label: instanceof
 ---
 
-:::info
-This plugin is included in `@babel/preset-env`
-:::
-
 ## Example
 
 **In**
