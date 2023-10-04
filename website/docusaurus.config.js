@@ -208,6 +208,11 @@ const siteConfig = {
         hideable: true,
       },
     },
+    colorMode: {
+      defaultMode: "light",
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     prism: {
       additionalLanguages: ["flow", "powershell"],
       theme: require("./src/theme/prism/light"),
