@@ -6,7 +6,7 @@ sidebar_label: helper-plugin-utils
 
 
 This is not aiming to implement APIs that are missing on a given Babel version,
-but it is means to provide clear error messages if a plugin is run on a version
+but it is meant to provide clear error messages if a plugin is run on a version
 of Babel that doesn't have the APIs that the plugin is trying to use.
 
 Every one of Babel's core plugins and presets will use this module, and ideally
@@ -28,7 +28,7 @@ export default declare((api, options, dirname) => {
 ## What this does
 
 Currently, this plugin provides a few services to ensure that plugins function
-well-enough to throw useful errors.
+well enough to throw useful errors.
 
 ### `options` is always passed
 
