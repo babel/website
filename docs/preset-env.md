@@ -82,12 +82,26 @@ For usage, refer to the [`targets` option](options.md#targets) documentation.
 
 ### `bugfixes`
 
+:::babel8
+
+`boolean`, defaults to `true`.
+
+:::
+
+:::babel7
+
 `boolean`, defaults to `false`.
+
+:::
 
 Added in: `v7.9.0`
 
+:::babel7
+
 :::note
-These optimizations will be enabled by default in Babel 8
+This option will be enabled by default in Babel 8
+:::
+
 :::
 
 By default, `@babel/preset-env` (and Babel plugins in general) grouped ECMAScript syntax features into collections of closely related smaller features. These groups can be large and include a lot of edge cases, for example "function arguments" includes destructured, default and rest parameters. From this grouping information, Babel enables or disables each group based on the browser support target you specify to `@babel/preset-env`’s `targets` option.
