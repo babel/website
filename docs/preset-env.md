@@ -149,8 +149,12 @@ Valid options include any:
   * `@babel/transform-spread`
   * `babel-transform-spread`
   * `transform-spread`
-
+:::babel7
 - Built-ins (both for [core-js@2](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs2/built-in-definitions.js) and [core-js@3](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs3/built-in-definitions.js), such as `es.map`, `es.set`, or `es.object.assign`.
+:::
+:::babel8
+- [core-js@3](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs3/built-in-definitions.js) polyfills, such as `es.map`, `es.set`, or `es.object.assign`.
+:::
 
 Plugin names can be fully or partially specified (or using `RegExp`).
 
@@ -178,7 +182,7 @@ An array of plugins to always exclude/remove.
 
 The possible options are the same as the `include` option.
 
-This option is useful for excluding a transform like `@babel/plugin-transform-regenerator` if you don't use generators and don't want to include `regeneratorRuntime` (when using `useBuiltIns`) or for using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](plugin-transform-async-generator-functions.md).
+This option is useful for excluding a transform like `@babel/plugin-transform-regenerator`, for example if you are using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](plugin-transform-async-generator-functions.md).
 
 ### `useBuiltIns`
 
@@ -188,6 +192,7 @@ This option configures how `@babel/preset-env` handles polyfills.
 
 When either the `usage` or `entry` options are used, `@babel/preset-env` will add direct references to `core-js` modules as bare imports (or requires). This means `core-js` will be resolved relative to the file itself and needs to be accessible.
 
+:::babel7
 Since `@babel/polyfill` was deprecated in 7.4.0, we recommend directly adding `core-js` and setting the version via the [`corejs`](#corejs) option.
 
 ```shell npm2yarn
@@ -197,6 +202,14 @@ npm install core-js@3 --save
 
 npm install core-js@2 --save
 ```
+:::
+:::babel8
+When auto-injecting polyfills using `@babel/preset-env`, you must add `core-js` to your dependencies:
+
+```shell npm2yarn
+npm install core-js
+```
+:::
 
 #### `useBuiltIns: 'entry'`
 
@@ -211,7 +224,9 @@ npm install core-js@2 --save
 
 :::tip
 Only use `import "core-js";` once in your whole app.
+:::babel7
 If you are using `@babel/polyfill`, it already includes `core-js`: importing it twice will throw an error.
+:::
 Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
 We recommend creating a single entry file that only contains the `import` statements.
 :::
@@ -256,9 +271,11 @@ import "core-js/modules/esnext.math.scale";
 
 You can read [core-js](https://github.com/zloirock/core-js)'s documentation for more information about the different entry points.
 
+:::babel7
 :::note
 When using `core-js@2` (either explicitly using the [`corejs: "2"`](#corejs) option or implicitly), `@babel/preset-env` will also transform imports and requires of `@babel/polyfill`.
 This behavior is deprecated because it isn't possible to use `@babel/polyfill` with different `core-js` versions.
+:::
 :::
 
 #### `useBuiltIns: 'usage'`
@@ -305,8 +322,12 @@ Don't add polyfills automatically per file, and don't transform `import "core-js
 
 Added in: `v7.4.0`
 
-`string` or `{ version: string, proposals: boolean }`, defaults to `"2.0"`. The `version` string can be any
-supported `core-js` versions. For example, `"3.8"` or `"2.0"`.
+:::babel7
+`string` or `{ version: string, proposals: boolean }`, defaults to `"2.0"`. The `version` string can be any supported `core-js` versions. For example, `"3.8"` or `"2.0"`.
+:::
+:::babel8
+`string` or `{ version: string, proposals: boolean }`, defaults to `"3.0"`. The `version` string can be any supported `core-js` versions. For example, `"3.8"`.
+:::
 
 This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the polyfills supported by your `core-js` version. It is recommended to specify the minor
 version otherwise `"3"` will be interpreted as `"3.0"` which may not include polyfills for the latest features.
