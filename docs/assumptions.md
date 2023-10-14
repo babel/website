@@ -26,6 +26,10 @@ For example:
 This is advanced functionality. Please be careful when enabling assumptions, because they are not spec-compliant and may break your code in unexpected ways.
 :::
 
+:::tip
+Are you migrating from `@babel/preset-env`'s `loose` and `spec` options to granular assumptions? Check ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
+:::
+
 ## `arrayLikeIsIterable`
 
 When spreading or iterating an array-like object, assume that it implements a `[Symbol.iterator]` method with the same behavior of the native `Array.prototype[Symbol.iterator]`, and thus directly iterate over its element by index.
@@ -381,3 +385,44 @@ class Child extends Parent {
 ```
 
 </div>
+
+## Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes
+
+`@babel/preset-env`'s `loose` option is equivalent to the following configuration:
+```json title="JSON"
+{
+  "presets": [
+    ["@babel/preset-env", { "exclude": ["transform-typeof-symbol"] }]
+  ],
+  "assumptions": {
+    "arrayLikeIsIterable": true,
+    "constantReexports": true,
+    "ignoreFunctionLength": true,
+    "ignoreToPrimitiveHint": true,
+    "mutableTemplateObject": true,
+    "noClassCalls": true,
+    "noDocumentAll": true,
+    "noObjectSuper": true,
+    "noUndeclaredVariablesCheck": true,
+    "objectRestNoSymbols": true,
+    "privateFieldsAsProperties": true,
+    "pureGetters": true,
+    "setClassMethods": true,
+    "setComputedProperties": true,
+    "setPublicClassFields": true,
+    "setSpreadProperties": true,
+    "skipForOfIteratorClosing": true,
+    "superIsCallableConstructor": true
+  }
+}
+```
+
+`@babel/preset-env`'s `spec` option is equivalent to the following configuration:
+```json title="JSON"
+{
+  "presets": ["@babel/preset-env"],
+  "assumptions": {
+    "noNewArrows": false,
+  }
+}
+```
