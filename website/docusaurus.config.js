@@ -96,12 +96,16 @@ toolsMD.forEach(tool => {
  * @returns md-ast transformer
  */
 function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
-  return async function transformer(root) {
+  return function transformer(root) {
     const children = root.children;
     const deleteBatches = [];
     for (let index = 0; index < children.length; index++) {
       const node = children[index];
-      if (node.type !== "paragraph") continue;
+      if (node.type === "admonitionHTML") { // for support inside ::tip, etc
+        transformer(node);
+      } else if (node.type !== "paragraph") {
+        continue;
+      }
       const directiveLabel = node.children?.[0].value;
       if (directiveLabel === ":::babel8" || directiveLabel === ":::babel7") {
         let containerEnd = index + 1,
