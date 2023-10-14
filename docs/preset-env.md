@@ -99,7 +99,7 @@ Added in: `v7.9.0`
 :::babel7
 
 ::::note
-This option will be enabled by default in Babel 8
+This option will be enabled by default in Babel 8.
 ::::
 
 :::
