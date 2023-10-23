@@ -16,7 +16,7 @@ Be sure to try these features out in the online <a href="/repl">REPL</a>.
 
 > ECMAScript 2015 is an ECMAScript standard that was ratified in June 2015.
 
-ES2015 is a significant update to the language, and the first major update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is [underway now](https://kangax.github.io/es5-compat-table/es6/).
+ES2015 is a significant update to the language, and the first major update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is [underway now](https://compat-table.github.io/compat-table/es6).
 
 See the [ES2015 standard](http://www.ecma-international.org/ecma-262/6.0/index.html)
 for full specification of the ECMAScript 2015 language.
@@ -127,7 +127,7 @@ var obj = {
 ```
 
 :::caution
-The <code>__proto__</code> property requires native support, and was deprecated in previous ECMAScript versions. Most engines now support the property, but <a href="https://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>. Also, note that only <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">web browsers</a> are required to implement it, as it's in <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">Annex B</a>. It is available in Node.
+The <code>__proto__</code> property requires native support, and was deprecated in previous ECMAScript versions. Most engines now support the property, but <a href="https://compat-table.github.io/compat-table/es6/#proto-in-object-literals-note">some do not</a>. Also, note that only <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">web browsers</a> are required to implement it, as it's in <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">Annex B</a>. It is available in Node.
 :::
 
 ### Template Strings
@@ -570,7 +570,7 @@ var handler =
 ```
 
 :::danger Unsupported feature
-Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="https://kangax.github.io/compat-table/es6/#test-Proxy">various JavaScript engines</a>.
+Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="https://compat-table.github.io/compat-table/es6/#test-Proxy">various JavaScript engines</a>.
 :::
 
 ### Symbols
