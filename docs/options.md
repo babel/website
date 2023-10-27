@@ -334,6 +334,7 @@ Added in: `v7.13.0`<br />
 
 | Version | Changes |
 | --- | --- |
+| `v7.24.0` | Support `hermes` target |
 | `v7.20.0` | Support `deno` target |
 | `v7.15.0` | Support `rhino` target |
 </details>
@@ -359,7 +360,7 @@ Or an object of minimum environment versions to support:
 }
 ```
 
-Supported environments: `android`, `chrome`, `deno`, `edge`, `electron`, `firefox`, `ie`, `ios`, `node`, `opera`, `rhino`, `safari`, `samsung`.
+Supported environments: `android`, `chrome`, `deno`, `edge`, `electron`, `firefox`, `hermes`, `ie`, `ios`, `node`, `opera`, `rhino`, `safari`, `samsung`.
 
 If a minor version is not specified, Babel will interpret it as `MAJOR.0`. For example, `"node": 12` will be considered as Node.js 12.0.
 
@@ -459,6 +460,20 @@ The minimum supported version is 1.0.
 {
   "targets": {
     "deno": "1.9"
+  }
+}
+```
+
+#### `targets.hermes`
+
+Type: `string`.
+
+The minimum supported version is 0.7.
+
+```json title="babel.config.json"
+{
+  "targets": {
+    "hermes": "0.12"
   }
 }
 ```
