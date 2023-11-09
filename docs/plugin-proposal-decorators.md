@@ -102,7 +102,7 @@ Selects the decorators proposal to use:
 
 :::
 
-:::babel7
+::::babel7
 
 ### `version`
 
@@ -213,7 +213,7 @@ The `include` option will enable the transforms included in `@babel/preset-env` 
 You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
 :::
 
-:::
+::::
 
 ## References
 
