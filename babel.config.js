@@ -16,7 +16,13 @@ module.exports = function (api) {
           shippedProposals: true,
         },
       ],
-      [ "@babel/preset-react", { development: process.env.NODE_ENV === "development" } ],
+      [
+        "@babel/preset-react",
+        {
+          runtime: "automatic",
+          development: process.env.NODE_ENV === "development",
+        },
+      ],
       [
         "@babel/preset-typescript",
         {
