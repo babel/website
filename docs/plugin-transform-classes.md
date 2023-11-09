@@ -19,7 +19,7 @@ needs to be wrapped. This is needed to workaround two problems:
   returning it, Babel should treat it as the new `this`.
 
 The wrapper works on IE11 and every other browser with `Object.setPrototypeOf` or `__proto__` as fallback.
-There is **NO IE <= 10 support**. If you need IE <= 10 it's recommended that you don't extend natives.
+There is **NO IE &leq; 10 support**. If you need IE &leq; 10 it's recommended that you don't extend natives.
 
 Babel needs to statically know if you are extending a built-in class. For this reason, the "mixin pattern" doesn't work:
 

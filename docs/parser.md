@@ -202,7 +202,7 @@ require("@babel/parser").parse("code", {
 | Name | Code Example |
 |------|--------------|
 | `flow` ([repo](https://github.com/facebook/flow)) | `var a: string = "";` |
-| `flowComments` ([docs](https://flow.org/en/docs/types/comments/)) | <code>/&ast;:: type Foo = {...}; &ast;/</code> |
+| `flowComments` ([docs](https://flow.org/en/docs/types/comments/)) | <code>/&ast;:: type Foo = \{...}; &ast;/</code> |
 | `jsx` ([repo](https://facebook.github.io/jsx/)) | `<a attr="b">{s}</a>` |
 | `typescript` ([repo](https://github.com/Microsoft/TypeScript)) | `var a: string = "";` |
 | `v8intrinsic` | `%DebugPrint(foo);` |
@@ -360,7 +360,7 @@ This option is deprecated and will be removed in a future version. Code that is 
     | SyntaxType | Record Example | Tuple Example |
     | --- | --- | --- |
     | `"hash"` | `#{ a: 1 }` | `#[1, 2]` |
-    | `"bar"` | <code>{&#124; a: 1 &#124;}</code> | <code>[&#124;1, 2&#124;]</code> |
+    | `"bar"` | <code>\{&#124; a: 1 &#124;}</code> | <code>[&#124;1, 2&#124;]</code> |
     See [Ergonomics of `#{}`/`#[]`](https://github.com/tc39/proposal-record-tuple/issues/10) for more information.
 
 - `flow`:
