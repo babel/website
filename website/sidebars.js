@@ -165,7 +165,10 @@ module.exports = {
             type: "doc",
             id: "babel-preset-react",
           },
-          items: ["babel-plugin-transform-react-jsx"],
+          items: [
+            "babel-plugin-transform-react-jsx",
+            "babel-plugin-transform-react-jsx-development",
+          ],
         },
         {
           type: "category",
