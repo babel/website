@@ -16,7 +16,7 @@ module.exports = function (api) {
           shippedProposals: true,
         },
       ],
-      "@babel/preset-react",
+      [ "@babel/preset-react", { development: process.env.NODE_ENV === "development" } ],
       [
         "@babel/preset-typescript",
         {
