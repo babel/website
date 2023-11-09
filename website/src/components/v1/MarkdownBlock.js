@@ -14,8 +14,9 @@ import rehypeRaw from "rehype-raw";
 
 const components = {
   a: ({node: _node, ...props}) => <Link {...props} />,
-  pre: ({node: _node, ...props}) => {
-    const firstChild = props.children[0];
+  pre: ({node: _node, ...props }) => {
+    const { children } = props;
+    const firstChild = Array.isArray(children) ? children[0] : children;
     if (firstChild.type === "code") {
       return <CodeBlock {...firstChild.props} />;
     } else {
