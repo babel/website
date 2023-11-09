@@ -8,7 +8,7 @@ sidebar_label: transform-react-jsx
 This plugin is included in `@babel/preset-react`
 :::
 
-This plugin generates production-ready js codes. If you are developing a React app on a development environment, please use [`@babel/plugin-transform-react-jsx-development`](./plugin-transform-react-jsx-development.md) for better debugging experience.
+This plugin generates production-ready JS code. If you are developing a React app in a development environment, please use [`@babel/plugin-transform-react-jsx-development`](./plugin-transform-react-jsx-development.md) for a better debugging experience.
 
 ## Example
 
