@@ -10,14 +10,14 @@ function bool(value) {
 
 function findMarkDownSync(startPath) {
   const result = [];
-  const files = fs.readdirSync(path.join(__dirname, startPath));
-  files.forEach(val => {
-    const fPath = path.join(startPath, val);
-    const stats = fs.statSync(fPath);
-    if (stats.isDirectory()) {
+  const files = fs.readdirSync(path.join(__dirname, startPath), {
+    withFileTypes: true,
+  });
+  files.forEach((dirent) => {
+    if (dirent.isDirectory()) {
       result.push({
-        title: val,
-        path: fPath,
+        title: dirent.name,
+        path: path.join(startPath, dirent.name),
       });
     }
   });
