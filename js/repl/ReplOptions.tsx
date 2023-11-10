@@ -1045,7 +1045,7 @@ const styles = {
       maxHeight: "300px",
       display: "block",
       overflow: "auto",
-      "-webkit-overflow-scrolling": "touch",
+      WebkitOverflowScrolling: "touch",
     },
   }),
   section: css({

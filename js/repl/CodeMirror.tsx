@@ -130,7 +130,7 @@ injectGlobal({
   ".CodeMirror": {
     height: "100% !important",
     width: "100% !important",
-    "-webkit-overflow-scrolling": "touch",
+    WebkitOverflowScrolling: "touch",
   },
   ".CodeMirror pre.CodeMirror-placeholder.CodeMirror-line-like": css({
     color: colors.foregroundLight,
