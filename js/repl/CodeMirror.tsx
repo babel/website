@@ -60,7 +60,7 @@ export default class ReactCodeMirror extends React.Component<Props, State> {
     }
   }
 
-  componentWillReceiveProps(nextProps: Props) {
+  UNSAFE_componentWillReceiveProps(nextProps: Props) {
     if (
       nextProps.value &&
       nextProps.value !== this.props.value &&
