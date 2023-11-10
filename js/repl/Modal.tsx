@@ -1,6 +1,6 @@
 import { css, keyframes } from "@emotion/css";
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import { createPortal } from "react-dom";
 
 import type { ReactNode, SyntheticEvent } from "react";
 
@@ -84,7 +84,7 @@ export default class Modal extends Component<Props> {
       </React.Fragment>
     );
 
-    return ReactDOM.createPortal(result, this._node);
+    return createPortal(result, this._node);
   }
 }
 

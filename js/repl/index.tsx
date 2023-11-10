@@ -1,5 +1,4 @@
 import "core-js";
-import React from "react";
 import { createRoot } from "react-dom/client";
 
 import Repl from "./Repl";

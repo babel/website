@@ -47,8 +47,6 @@ const config = {
   externals: {
     codemirror: "CodeMirror",
     "lz-string": "LZString",
-    react: "React",
-    "react-dom": "ReactDOM",
   },
   performance: {
     hints: false,
