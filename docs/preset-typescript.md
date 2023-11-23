@@ -123,13 +123,11 @@ Added in: `v7.16.0`
 
 Even when JSX parsing is not enabled, this option disallows using syntax that would be ambiguous with JSX (`<X> y` type assertions and `<X>() => {}` type arguments). It matches the `tsc` behavior when parsing `.mts` and `.mjs` files.
 
-:::babel8
-
 ### `ignoreExtensions`
 
 `boolean`, defaults to `false`
 
-Added in: `v8.0.0`
+Added in: `v7.21.4`
 
 When it is set to `false`, Babel will automatically provide required plugins for `*.ts`, `*.tsx`, `*.mts` and `*.cts` files.
 
@@ -146,8 +144,6 @@ When it is set to `true`, Babel will provide a general TS plugin. If you want to
   }]
 }
 ```
-
-:::
 
 ### `onlyRemoveTypeImports`
 
