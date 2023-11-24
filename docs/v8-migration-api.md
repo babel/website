@@ -15,6 +15,32 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
+- Dynamic `import()` is parsed as an `ImportExpression` ([#15682](https://github.com/babel/babel/pull/15682), [#16114](https://github.com/babel/babel/pull/16114)).
+  ```ts
+  // Example input
+  import("foo", options);
+
+  // AST in Babel 7
+  {
+    type: "CallExpression",
+    callee: { type: "Import" },
+    arguments: [
+      StringLiteral("foo"),
+      Identifier("options")
+    ]
+  }
+
+  // AST in Babel 8
+  {
+    type: "ImportExpression",
+    source: StringLitera("foo"),
+    options: Identifier("options")
+  }
+  ```
+  __Migration__: You are encouraged to test your Babel plugins with the new AST, starting from v7.23.0, specifying `{ parserOpts: { createImportExpressions: true } }` in the Babel config.
+  For end users utilizing Babel plugins that rely on the legacy `import()` AST, it is possible to set `createImportExpressions` to `false`. Note that the Babel 7 `import()` AST is now considered
+  deprecated, it does not support new ES features such as [Source Phrase Imports](https://tc39.es/proposal-source-phase-imports/). We will remove the `createImportExpressions` parser option in Babel 9.
+
 - Use an identifier for `TSTypeParameter.name` ([#12829](https://github.com/babel/babel/pull/12829)).
 
   For a TS type parameter `node`, `node.name` is a string in Babel 7 while in Babel 8 it is an Identifier.
