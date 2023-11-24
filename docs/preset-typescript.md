@@ -56,11 +56,15 @@ require("@babel/core").transformSync("code", {
 
 ## Options
 
+:::babel7
+
 ### `isTSX`
 
 `boolean`, defaults to `false`
 
 Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as typescript's legacy type assertion `var foo = <string>bar;`. Also, `isTSX: true` requires `allExtensions: true`.
+
+:::
 
 ### `jsxPragma`
 
@@ -74,11 +78,15 @@ Replace the function used when compiling JSX expressions. This is so that we kno
 
 Replace the function used when compiling JSX fragment expressions. This is so that we know that the import is not a type import, and should not be removed.
 
+:::babel7
+
 ### `allExtensions`
 
 `boolean`, defaults to `false`
 
 Indicates that every file should be parsed as TS, TSX, or as TS without JSX ambiguities (depending on the `isTSX` and `disallowAmbiguousJSXLike` options).
+
+:::
 
 ### `allowNamespaces`
 
@@ -114,6 +122,28 @@ class A {
 Added in: `v7.16.0`
 
 Even when JSX parsing is not enabled, this option disallows using syntax that would be ambiguous with JSX (`<X> y` type assertions and `<X>() => {}` type arguments). It matches the `tsc` behavior when parsing `.mts` and `.mjs` files.
+
+### `ignoreExtensions`
+
+`boolean`, defaults to `false`
+
+Added in: `v7.21.4`
+
+When it is set to `false`, Babel will automatically provide required plugins for `*.ts`, `*.tsx`, `*.mts` and `*.cts` files.
+
+When it is set to `true`, Babel will provide a general TS plugin. If you want to transpile source as if it were `*.tsx`, enable the `@babel/preset-react` preset and this plugin should work with the JSX transform seamlessly. For example,
+
+```json title="babel.config.json"
+{
+  "presets": ["@babel/preset-react"],
+  "overrides": [{
+    "test": "*.vue",
+    "presets": [
+      ["@babel/preset-typescript"], { "ignoreExtensions": true }
+    ]
+  }]
+}
+```
 
 ### `onlyRemoveTypeImports`
 

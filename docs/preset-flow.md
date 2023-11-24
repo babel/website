@@ -93,4 +93,13 @@ class A {
 }
 ```
 
+### `ignoreExtensions`
+
+`boolean`, defaults to `false`
+
+Added in: `v7.21.4`
+
+When it is set to `true`, Babel will apply the flow transform to all extensions. When it is set to `false`, Babel
+will avoid the flow transform for `*.tsx` files.
+
 > You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
