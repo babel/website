@@ -113,6 +113,19 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: The API above require a callback argument. If you are not providing a callback, please use their sync versions: `babel.transformSync`, `babel.transformFileSync`, `babel.transformFromAstSync`, `babel.parseSync`, `babel.loadOptionsSync`, `babel.loadPartialConfigSync` and `babel.createConfigItemSync`.
 
+### `@babel/generator`
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Remove `CodeGenerator` class ([#16126](https://github.com/babel/babel/pull/16126))
+
+  __Migration__: In Babel 8 the undocumented `CodeGenerator` class has been removed, please use the default exported `generate` function instead.
+
+  ```diff
+  - new CodeGenerator(ast).generate()
+  + generate(ast)
+  ```
+
 ### `@babel/types`
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
