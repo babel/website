@@ -43,7 +43,7 @@ If you're inheriting from a class then static properties are inherited from it
 via [\_\_proto\_\_](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto),
 this is widely supported but you may run into problems with much older browsers.
 
-**NOTE:** `__proto__` is not supported on IE <= 10 so static properties
+**NOTE:** `__proto__` is not supported on IE &leq; 10 so static properties
 **will not** be inherited. See the
 [protoToAssign](plugin-transform-proto-to-assign.md) for a possible work
 around.

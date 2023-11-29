@@ -543,8 +543,8 @@ Babel itself doesn't have that many external dependencies, but in 6.x [each pack
 With [Create React App](https://github.com/facebookincubator/create-react-app) the size of the node_modules folder changed drastically when babel-runtime was hoisted.
 
 - `node_modules` for npm 3: ~120MB
-- `node_modules` for Yarn (<`0.21.0`): ~518MB
-- `node_modules` for Yarn (<`0.21.0`) with hoisted `babel-runtime`: ~157MB
+- `node_modules` for Yarn (&le;`0.21.0`): ~518MB
+- `node_modules` for Yarn (&le;`0.21.0`) with hoisted `babel-runtime`: ~157MB
 - `node_modules` for Yarn + [PR #2676](https://github.com/yarnpkg/yarn/pull/2676): ~149MB ([tweet](https://twitter.com/bestander_nz/status/833696202436784128))
 
 So although this issue has been fixed "upstream" by using npm >= 3/later Yarn, we can do our part by simply dropping our own dependency on `babel-runtime`.

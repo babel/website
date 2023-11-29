@@ -1,6 +1,5 @@
 import "core-js";
-import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import Repl from "./Repl";
 
@@ -10,7 +9,7 @@ declare var module: {
   };
 };
 
-ReactDOM.render(<Repl />, document.getElementById("root") as any);
+createRoot(document.getElementById("root")).render(<Repl/>);
 
 if (module.hot) {
   module.hot.accept();

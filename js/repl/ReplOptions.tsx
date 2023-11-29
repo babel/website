@@ -436,19 +436,10 @@ class ExpandedContainer extends Component<Props, State> {
                     "reactRuntime",
                     (t) => t.value
                   )}
+                  value={presetsOptions.reactRuntime}
                 >
-                  <option
-                    value="automatic"
-                    selected={presetsOptions.reactRuntime === "automatic"}
-                  >
-                    Automatic
-                  </option>
-                  <option
-                    value="classic"
-                    selected={presetsOptions.reactRuntime === "classic"}
-                  >
-                    Classic
-                  </option>
+                  <option value="automatic">Automatic</option>
+                  <option value="classic">Classic</option>
                 </select>
               </PresetOption>
               <PresetOption
@@ -465,12 +456,10 @@ class ExpandedContainer extends Component<Props, State> {
                     "decoratorsVersion",
                     (t) => t.value
                   )}
+                  value={presetsOptions.decoratorsVersion}
                 >
                   {Object.keys(DECORATOR_PROPOSALS).map((key) => (
-                    <option
-                      value={key}
-                      selected={key === presetsOptions.decoratorsVersion}
-                    >
+                    <option key={key} value={key}>
                       {DECORATOR_PROPOSALS[key]}
                     </option>
                   ))}
@@ -515,12 +504,10 @@ class ExpandedContainer extends Component<Props, State> {
                     "pipelineProposal",
                     (t) => t.value
                   )}
+                  value={presetsOptions.pipelineProposal}
                 >
                   {Object.keys(PIPELINE_PROPOSALS).map((key) => (
-                    <option
-                      value={key}
-                      selected={key === presetsOptions.pipelineProposal}
-                    >
+                    <option key={key} value={key}>
                       {PIPELINE_PROPOSALS[key]}
                     </option>
                   ))}
@@ -754,7 +741,7 @@ class ExpandedContainer extends Component<Props, State> {
                     ? false
                     : assumptions[option];
                 return (
-                  <label className={styles.envPresetRow}>
+                  <label key={option} className={styles.envPresetRow}>
                     <LinkToAssumptionDocs
                       className={`${styles.envPresetLabel} ${styles.highlightWithoutUppercase}`}
                       section={option}
@@ -1045,7 +1032,7 @@ const styles = {
       maxHeight: "300px",
       display: "block",
       overflow: "auto",
-      "-webkit-overflow-scrolling": "touch",
+      WebkitOverflowScrolling: "touch",
     },
   }),
   section: css({

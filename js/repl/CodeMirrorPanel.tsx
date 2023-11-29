@@ -53,7 +53,7 @@ const sharedBoxStyles: Interpolation = {
   padding: "0.5rem 0.75rem",
   fontFamily: "monospace",
   whiteSpace: "pre-wrap",
-  "-webkit-overflow-scrolling": "touch",
+  WebkitOverflowScrolling: "touch",
 };
 
 const styles = {

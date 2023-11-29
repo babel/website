@@ -60,7 +60,7 @@ export default class ReactCodeMirror extends React.Component<Props, State> {
     }
   }
 
-  componentWillReceiveProps(nextProps: Props) {
+  UNSAFE_componentWillReceiveProps(nextProps: Props) {
     if (
       nextProps.value &&
       nextProps.value !== this.props.value &&
@@ -130,7 +130,7 @@ injectGlobal({
   ".CodeMirror": {
     height: "100% !important",
     width: "100% !important",
-    "-webkit-overflow-scrolling": "touch",
+    WebkitOverflowScrolling: "touch",
   },
   ".CodeMirror pre.CodeMirror-placeholder.CodeMirror-line-like": css({
     color: colors.foregroundLight,

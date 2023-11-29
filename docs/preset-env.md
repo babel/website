@@ -96,13 +96,13 @@ For usage, refer to the [`targets` option](options.md#targets) documentation.
 
 Added in: `v7.9.0`
 
-:::babel7
+::::babel7
 
-::::note
+:::note
 This option will be enabled by default in Babel 8.
-::::
-
 :::
+
+::::
 
 By default, `@babel/preset-env` (and Babel plugins in general) grouped ECMAScript syntax features into collections of closely related smaller features. These groups can be large and include a lot of edge cases, for example "function arguments" includes destructured, default and rest parameters. From this grouping information, Babel enables or disables each group based on the browser support target you specify to `@babel/preset-env`’s `targets` option.
 
@@ -258,9 +258,7 @@ npm install core-js
 Only use `import "core-js";` once in your whole app.
 
 :::babel7
-
 If you are using `@babel/polyfill`, it already includes `core-js`: importing it twice will throw an error.
-
 :::
 
 Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
@@ -307,14 +305,14 @@ import "core-js/modules/esnext.math.scale";
 
 You can read [core-js](https://github.com/zloirock/core-js)'s documentation for more information about the different entry points.
 
-:::babel7
+::::babel7
 
-::::note
+:::note
 When using `core-js@2` (either explicitly using the [`corejs: "2"`](#corejs) option or implicitly), `@babel/preset-env` will also transform imports and requires of `@babel/polyfill`.
 This behavior is deprecated because it isn't possible to use `@babel/polyfill` with different `core-js` versions.
-::::
-
 :::
+
+::::
 
 #### `useBuiltIns: 'usage'`
 
@@ -386,7 +384,7 @@ By default, only polyfills for stable ECMAScript features are injected: if you w
 
 `boolean`, defaults to `false`.
 
-<p><details>
+<details>
   <summary><b>Example</b></summary>
 
 With Babel 7's [JavaScript config file](config-files#javascript) support, you can force all transforms to be run if env is set to `production`.
@@ -412,7 +410,7 @@ module.exports = function(api) {
 };
 ```
 
-</details></p>
+</details>
 
 :::danger
 `targets.uglify` is deprecated and will be removed in the next major in

@@ -98,51 +98,22 @@ toolsMD.forEach(tool => {
 function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
   return function transformer(root) {
     const children = root.children;
-    const deleteBatches = [];
-    for (let index = 0; index < children.length; index++) {
+    for (let index = children.length - 1; index >= 0; index--) {
       const node = children[index];
-      if (node.type === "admonitionHTML") { // for support inside ::tip, etc
-        transformer(node);
-      } else if (node.type !== "paragraph") {
-        continue;
-      }
-      const directiveLabel = node.children?.[0].value;
-      if (directiveLabel === ":::babel8" || directiveLabel === ":::babel7") {
-        let containerEnd = index + 1,
-          nestedLevel = 1;
-        for (; containerEnd < children.length; containerEnd++) {
-          const node = children[containerEnd];
-          if (node.type === "paragraph") {
-            const directiveLabel = node.children?.[0].value;
-            if (directiveLabel?.startsWith(":::")) {
-              if (directiveLabel.length === 3) {
-                nestedLevel--;
-                if (nestedLevel === 0) {
-                  break;
-                }
-              } else {
-                nestedLevel++;
-              }
-            }
-          }
-        }
-        if (nestedLevel === 0) {
-          if ((directiveLabel === ":::babel8") ^ renderBabel8) {
-            deleteBatches.push([index, containerEnd - index + 1]); // remove anything between ":::babel[78]" and ":::"
+      if (node.type === "containerDirective") {
+        const directiveLabel = node.name;
+        if (directiveLabel === "babel8" || directiveLabel === "babel7") {
+          if ((directiveLabel === "babel8") ^ renderBabel8) {
+            // remove anything between ":::babel[78]" and ":::"
+            children.splice(index, 1);
           } else {
-            deleteBatches.push([index, 1], [containerEnd, 1]); // remove ":::babel[78]" and ":::"
+            // remove the :::babel[78] container only
+            children.splice(index, 1, ...node.children);
           }
-          index = containerEnd;
         } else {
-          throw new Error(
-            ":::babel[78] directive is not matched with ending :::"
-          );
+          transformer(node); // for support inside ::tip, etc
         }
       }
-    }
-    for (let index = deleteBatches.length - 1; index >= 0; index--) {
-      const [start, deleteCount] = deleteBatches[index];
-      children.splice(start, deleteCount);
     }
   };
 }

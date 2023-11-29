@@ -284,7 +284,7 @@ function for information about `ConfigItem` fields.
 
 ### createConfigItem
 
-> babel.createConfigItem(value: string | {} | Function | [string | {} | Function, {} | void], { dirname?: string, type?: "preset" | "plugin" }): ConfigItem
+> babel.createConfigItem(value: string | \{} | Function | [string | \{} | Function, \{} | void], \{ dirname?: string, type?: "preset" | "plugin" }): ConfigItem
 
 Allows build tooling to create and cache config items up front. If this function
 is called multiple times for a given plugin, Babel will call the plugin's function itself
