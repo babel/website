@@ -148,6 +148,16 @@ This option was removed in v7.
 
 ### `useESModules`
 
+::::babel8
+
+:::danger
+This option was removed in v8.
+:::
+
+::::
+
+::::babel7
+
 :::caution
 This option has been deprecated: starting from version `7.13.0`, `@babel/runtime`'s `package.json` uses `"exports"` option to automatically choose between CJS and ESM helpers.
 :::
@@ -187,6 +197,8 @@ export default function(instance, Constructor) {
   }
 }
 ```
+
+::::
 
 ### `absoluteRuntime`
 
