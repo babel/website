@@ -136,6 +136,12 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
 ### `@babel/preset-env` {#configuration-change-preset-env}
 
+![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
+
+- The `loose` and `spec` options have been removed ([#16043](https://github.com/babel/babel/pull/16043))
+
+  **Migration**: You can use the [`assumptions`](https://babeljs.io/docs/assumptions) top-level option instead. See ["Migrating from @babel/preset-env's "loose" and "spec" modes"](https://babeljs.io/docs/assumptions#migrating-from-babelpreset-envs-loose-and-spec-modes) for the ready-to-copy equivalent configuration.
+
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 - `includes` and `excludes` respect renamed package names ([#15576](https://github.com/babel/babel/pull/15576))
@@ -394,6 +400,14 @@ The following syntax plugins are no longer needed, you can safely remove them fr
   The syntax is the same, but you will need to rewrite your decorator functions. The spec repo provides [comparison between the latest version and the `2018-09` version](https://github.com/tc39/proposal-decorators#comparison-with-the-previous-stage-2-decorators-proposal). You can already migrate since Babel 7.22.0, using the `"version": "2023-05"` option of `@babel/plugin-proposal-decorators`.
 
   Although Babel 8 still supports the `legacy` version, it is advisable to migrate to the `2023-05` version regardless: both Babel 8 and TypeScript 5.0 support the `2023-05` version, while there are [a few behaviour differences](https://github.com/babel/babel/issues/8864#issuecomment-688535867) in the `legacy` version between Babel and `tsc`'s implementation.
+
+### `@babel/plugin-transform-runtime`
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- The `useESModules` option has been removed ([#16141](https://github.com/babel/babel/pull/16141))
+
+  **Migration**: Delete it from your configuration. `@babel/runtime` will now automatically expose ES modules when needed, using `package.json#exports`.
 
 ### `@babel/node`
 

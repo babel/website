@@ -127,7 +127,7 @@ These options have been removed in Babel 8. Consider migrating to the top level 
 Enable more spec compliant, but potentially slower, transformations for any plugins in this preset that support them.
 
 :::caution
-Consider migrating to the top level [`assumptions`](assumptions.md) available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
+This option has been deprecated and will be removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.md) available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
 :::
 
 ### `loose`
@@ -137,7 +137,7 @@ Consider migrating to the top level [`assumptions`](assumptions.md) available si
 Enable ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.html) for any plugins in this preset that allow them.
 
 :::caution
-Consider migrating to the top level [`assumptions`](assumptions.md) available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
+This option has been deprecated and will be removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.md) available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
 :::
 
 ::::
