@@ -713,3 +713,6 @@
 - name: Uploadcare
   url: https://uploadcare.com/
   logo: uploadcare.svg
+- name: Techjobs.be
+  url: https://techjobs.be/
+  logo: techjobsbe.svg
