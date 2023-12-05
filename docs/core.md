@@ -13,7 +13,7 @@ All transformations will use your local [configuration files](config-files.md).
 
 ## transform
 
-> babel.transform(code: string, [options?](#options): Object, callback: Function)
+> babel.transform(code: string, [options?](options.md): Object, callback: Function)
 
 Transforms the passed in `code`. Calling a callback with an object with the generated code,
 source map, and AST.
@@ -40,7 +40,7 @@ In Babel 6, this method was synchronous and `transformSync` did not exist. For b
 
 ## transformSync
 
-> babel.transformSync(code: string, [options?](#options): Object)
+> babel.transformSync(code: string, [options?](options.md): Object)
 
 Transforms the passed in `code`. Returning an object with the generated code,
 source map, and AST.
@@ -60,7 +60,7 @@ result.ast;
 
 ## transformAsync
 
-> babel.transformAsync(code: string, [options?](#options): Object)
+> babel.transformAsync(code: string, [options?](options.md): Object)
 
 Transforms the passed in `code`. Returning an promise for an object with the
 generated code, source map, and AST.
@@ -81,7 +81,7 @@ babel.transformAsync("code();", options).then(result => {
 
 ## transformFile
 
-> babel.transformFile(filename: string, [options?](#options): Object, callback: Function)
+> babel.transformFile(filename: string, [options?](options.md): Object, callback: Function)
 
 Asynchronously transforms the entire contents of a file.
 
@@ -99,7 +99,7 @@ babel.transformFile("filename.js", options, function(err, result) {
 
 ## transformFileSync
 
-> babel.transformFileSync(filename: string, [options?](#options): Object)
+> babel.transformFileSync(filename: string, [options?](options.md): Object)
 
 Synchronous version of `babel.transformFile`. Returns the transformed contents of
 the `filename`.
@@ -116,7 +116,7 @@ babel.transformFileSync("filename.js", options).code;
 
 ## transformFileAsync
 
-> babel.transformFileAsync(filename: string, [options?](#options): Object)
+> babel.transformFileAsync(filename: string, [options?](options.md): Object)
 
 Promise version of `babel.transformFile`. Returns a promise for the transformed
 contents of the `filename`.
@@ -135,7 +135,7 @@ babel.transformFileAsync("filename.js", options).then(result => {
 
 ## transformFromAst
 
-> babel.transformFromAst(ast: Object, code?: string, [options?](#options): Object, callback: Function): FileNode | null
+> babel.transformFromAst(ast: Object, code?: string, [options?](options.md): Object, callback: Function): FileNode | null
 
 Given an [AST](https://astexplorer.net/), transform it.
 
@@ -155,7 +155,7 @@ In Babel 6, this method was synchronous and `transformFromAstSync` did not exist
 
 ## transformFromAstSync
 
-> babel.transformFromAstSync(ast: Object, code?: string, [options?](#options): Object)
+> babel.transformFromAstSync(ast: Object, code?: string, [options?](options.md): Object)
 
 Given an [AST](https://astexplorer.net/), transform it.
 
@@ -173,7 +173,7 @@ const { code, map, ast } = babel.transformFromAstSync(
 
 ## transformFromAstAsync
 
-> babel.transformFromAstAsync(ast: Object, code?: string, [options?](#options): Object)
+> babel.transformFromAstAsync(ast: Object, code?: string, [options?](options.md): Object)
 
 Given an [AST](https://astexplorer.net/), transform it.
 
@@ -191,7 +191,7 @@ babel
 
 ## parse
 
-> babel.parse(code: string, [options?](#options): Object, callback: Function)
+> babel.parse(code: string, [options?](options.md): Object, callback: Function)
 
 Given some code, parse it using Babel's standard behavior. Referenced presets and
 plugins will be loaded such that optional syntax plugins are automatically
@@ -207,7 +207,7 @@ will be dropped in Babel 8.
 
 ## parseSync
 
-> babel.parseSync(code: string, [options?](#options): Object)
+> babel.parseSync(code: string, [options?](options.md): Object)
 
 Returns an AST.
 
@@ -217,7 +217,7 @@ enabled.
 
 ## parseAsync
 
-> babel.parseAsync(code: string, [options?](#options): Object)
+> babel.parseAsync(code: string, [options?](options.md): Object)
 
 Returns a promise for an AST.
 
@@ -233,7 +233,7 @@ that aid in loading the configuration part-way without transforming.
 
 ### loadOptions
 
-> babel.loadOptions([options?](#options): Object)
+> babel.loadOptions([options?](options.md): Object)
 
 Resolve Babel's options fully, resulting in an options object where:
 
@@ -250,14 +250,14 @@ invalidate properly, but it is the best we have at the moment.
 
 ### loadPartialConfig
 
-> babel.loadPartialConfig([options?](#options): Object): PartialConfig
+> babel.loadPartialConfig([options?](options.md): Object): PartialConfig
 
 To allow systems to easily manipulate and validate a user's config, this function
 resolves the plugins and presets and proceeds no further. The expectation is
 that callers will take the config's `.options`, manipulate it as they see fit
 and pass it back to Babel again.
 
-This function accepts one additional option as part of the options object in addition to the standard [options](#options): `showIgnoredFiles`.
+This function accepts one additional option as part of the options object in addition to the standard [options](options.md): `showIgnoredFiles`.
 When set to true, `loadPartialConfig` always returns a result when a file is ignored, rather than `null`.
 This is useful in order to allow the caller to access the list of files that influenced this outcome, e.g.
 for watch mode. The caller can determine whether a file was ignored based on the returned `fileHandling` property.

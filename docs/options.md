@@ -242,8 +242,8 @@ Type: `boolean`<br />
 Default: `true` as long as the `filename` option has been specified<br />
 Placement: Allowed in Babel's programmatic options, or inside of the loaded [`"configFile"`](#configfile). A programmatic option will override a config file one.<br />
 
-`true` will enable searching for [configuration files](config-files.md#file-relative-configuration) relative
-to the [`"filename"`](#filename) provided to Babel.
+`true` will enable searching for [configuration files](config-files.md#file-relative-configuration)
+and the legacy `.babelignore` file relative to the [`"filename"`](#filename) provided to Babel.
 
 A `babelrc` value passed in the programmatic options will override one set
 within a configuration file.
