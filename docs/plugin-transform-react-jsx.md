@@ -262,7 +262,7 @@ var descriptions = items.map((item) =>
 );
 ```
 
-Note that if a custom pragma is specified, then a custom fragment pragma must also be specified if the fragment sytnax `<></>` is used. Otherwise, an error will be thrown.
+Note that if a custom pragma is specified, then a custom fragment pragma must also be specified if the fragment syntax `<></>` is used. Otherwise, an error will be thrown.
 
 ## Installation
 
