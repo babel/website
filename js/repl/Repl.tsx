@@ -105,7 +105,9 @@ function hasOwnProperty(obj, string) {
 function provideDefaultOptionsForExternalPlugins(pluginName, babelVersion) {
   switch (pluginName) {
     case "@babel/plugin-proposal-decorators": {
-      if (compareVersions(babelVersion, "7.22.0") >= 0) {
+      if (compareVersions(babelVersion, "7.24.0") >= 0) {
+        return { version: "2023-11" };
+      } else if (compareVersions(babelVersion, "7.22.0") >= 0) {
         return { version: "2023-05" };
       } else if (compareVersions(babelVersion, "7.21.0") >= 0) {
         return { version: "2023-01" };
