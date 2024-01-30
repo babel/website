@@ -364,7 +364,7 @@ class Repl extends React.Component<Props, State> {
     }
     // If no plugins are enabled, immediately invoke a new compilation
     if (this._numLoadingPlugins === 0) {
-      this._compile(this.state.code, this._persistState);
+      this._compileToState(this.state.code);
     }
 
     // Babel (runtime) polyfill is large;
@@ -554,7 +554,7 @@ class Repl extends React.Component<Props, State> {
   // Debounce compilation since it's expensive.
   // This also avoids prematurely warning the user about invalid syntax,
   // eg when in the middle of typing a variable name.
-  _compileToState = debounce(
+  _compileToState: (code: string) => void = debounce(
     (code: string) => this._compile(code, this._persistState),
     DEBOUNCE_DELAY
   );
