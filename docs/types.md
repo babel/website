@@ -118,7 +118,7 @@ See also `t.isAssignmentExpression(node, opts)` and `t.assertAssignmentExpressio
 
 AST Node `AssignmentExpression` shape:
 - `operator`: `string` (required)
-- `left`: `LVal` (required)
+- `left`: `LVal | OptionalMemberExpression` (required)
 - `right`: `Expression` (required)
 
 Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
@@ -367,7 +367,7 @@ t.classDeclaration(id, superClass, body, decorators);
 See also `t.isClassDeclaration(node, opts)` and `t.assertClassDeclaration(node, opts)`.
 
 AST Node `ClassDeclaration` shape:
-- `id`: `Identifier` (required)
+- `id`: `Identifier` (default: `null`)
 - `superClass`: `Expression` (default: `null`)
 - `body`: `ClassBody` (required)
 - `decorators`: `Array<Decorator>` (default: `null`)
@@ -1406,6 +1406,7 @@ AST Node `ImportDeclaration` shape:
 - `attributes`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
 - `importKind`: `"type" | "typeof" | "value"` (default: `null`, excluded from builder function)
 - `module`: `boolean` (default: `null`, excluded from builder function)
+- `phase`: `"source" | "defer"` (default: `null`, excluded from builder function)
 
 Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Declaration`](#declaration), [`ImportOrExportDeclaration`](#importorexportdeclaration)
 
@@ -1423,6 +1424,23 @@ AST Node `ImportDefaultSpecifier` shape:
 - `local`: `Identifier` (required)
 
 Aliases: [`Standardized`](#standardized), [`ModuleSpecifier`](#modulespecifier)
+
+---
+
+#### importExpression
+
+```js title="JavaScript"
+t.importExpression(source, options);
+```
+
+See also `t.isImportExpression(node, opts)` and `t.assertImportExpression(node, opts)`.
+
+AST Node `ImportExpression` shape:
+- `source`: `Expression` (required)
+- `options`: `Expression` (default: `null`)
+- `phase`: `"source" | "defer"` (default: `null`, excluded from builder function)
+
+Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
 ---
 
@@ -2359,7 +2377,6 @@ AST Node `Program` shape:
 - `directives`: `Array<Directive>` (default: `[]`)
 - `sourceType`: `"script" | "module"` (default: `'script'`)
 - `interpreter`: `InterpreterDirective` (default: `null`)
-- `sourceFile`: `string` (required)
 
 Aliases: [`Standardized`](#standardized), [`Scopable`](#scopable), [`BlockParent`](#blockparent), [`Block`](#block)
 
@@ -2665,7 +2682,7 @@ See also `t.isTSCallSignatureDeclaration(node, opts)` and `t.assertTSCallSignatu
 
 AST Node `TSCallSignatureDeclaration` shape:
 - `typeParameters`: `TSTypeParameterDeclaration` (default: `null`)
-- `parameters`: `Array<Identifier | RestElement>` (required)
+- `parameters`: `Array<ArrayPattern | Identifier | ObjectPattern | RestElement>` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 
 Aliases: [`TypeScript`](#typescript), [`TSTypeElement`](#tstypeelement)
@@ -2700,7 +2717,7 @@ See also `t.isTSConstructSignatureDeclaration(node, opts)` and `t.assertTSConstr
 
 AST Node `TSConstructSignatureDeclaration` shape:
 - `typeParameters`: `TSTypeParameterDeclaration` (default: `null`)
-- `parameters`: `Array<Identifier | RestElement>` (required)
+- `parameters`: `Array<ArrayPattern | Identifier | ObjectPattern | RestElement>` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 
 Aliases: [`TypeScript`](#typescript), [`TSTypeElement`](#tstypeelement)
@@ -2717,7 +2734,7 @@ See also `t.isTSConstructorType(node, opts)` and `t.assertTSConstructorType(node
 
 AST Node `TSConstructorType` shape:
 - `typeParameters`: `TSTypeParameterDeclaration` (default: `null`)
-- `parameters`: `Array<Identifier | RestElement>` (required)
+- `parameters`: `Array<ArrayPattern | Identifier | ObjectPattern | RestElement>` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 - `abstract`: `boolean` (default: `null`, excluded from builder function)
 
@@ -2866,7 +2883,7 @@ See also `t.isTSFunctionType(node, opts)` and `t.assertTSFunctionType(node, opts
 
 AST Node `TSFunctionType` shape:
 - `typeParameters`: `TSTypeParameterDeclaration` (default: `null`)
-- `parameters`: `Array<Identifier | RestElement>` (required)
+- `parameters`: `Array<ArrayPattern | Identifier | ObjectPattern | RestElement>` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 
 Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
@@ -3079,7 +3096,7 @@ See also `t.isTSMethodSignature(node, opts)` and `t.assertTSMethodSignature(node
 AST Node `TSMethodSignature` shape:
 - `key`: `Expression` (required)
 - `typeParameters`: `TSTypeParameterDeclaration` (default: `null`)
-- `parameters`: `Array<Identifier | RestElement>` (required)
+- `parameters`: `Array<ArrayPattern | Identifier | ObjectPattern | RestElement>` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 - `computed`: `boolean` (default: `false`, excluded from builder function)
 - `kind`: `"method" | "get" | "set"` (required)
@@ -3269,7 +3286,7 @@ Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 #### tsPropertySignature
 
 ```js title="JavaScript"
-t.tsPropertySignature(key, typeAnnotation, initializer);
+t.tsPropertySignature(key, typeAnnotation);
 ```
 
 See also `t.isTSPropertySignature(node, opts)` and `t.assertTSPropertySignature(node, opts)`.
@@ -3277,7 +3294,6 @@ See also `t.isTSPropertySignature(node, opts)` and `t.assertTSPropertySignature(
 AST Node `TSPropertySignature` shape:
 - `key`: `Expression` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
-- `initializer`: `Expression` (default: `null`)
 - `computed`: `boolean` (default: `false`, excluded from builder function)
 - `kind`: `"get" | "set"` (required)
 - `optional`: `boolean` (default: `null`, excluded from builder function)
@@ -4263,6 +4279,7 @@ Covered nodes:
 - [`FunctionExpression`](#functionexpression)
 - [`Identifier`](#identifier)
 - [`Import`](#import)
+- [`ImportExpression`](#importexpression)
 - [`JSXElement`](#jsxelement)
 - [`JSXFragment`](#jsxfragment)
 - [`LogicalExpression`](#logicalexpression)
@@ -4878,6 +4895,7 @@ Covered nodes:
 - [`Import`](#import)
 - [`ImportDeclaration`](#importdeclaration)
 - [`ImportDefaultSpecifier`](#importdefaultspecifier)
+- [`ImportExpression`](#importexpression)
 - [`ImportNamespaceSpecifier`](#importnamespacespecifier)
 - [`ImportSpecifier`](#importspecifier)
 - [`InterpreterDirective`](#interpreterdirective)
