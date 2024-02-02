@@ -135,6 +135,7 @@ const siteConfig = {
     toolsMD,
     setupBabelrc,
   },
+  plugins: ["@orama/plugin-docusaurus-v3"],
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -213,12 +214,6 @@ const siteConfig = {
         primaryColor: "#f5da55",
         secondaryColor: "#323330",
       },
-    },
-    algolia: {
-      appId: "M7KGJDK6WF",
-      apiKey: "6ec7d6acbfb6ed3520846a7517533c28",
-      indexName: "babeljs",
-      contextualSearch: false,
     },
     navbar: {
       logo: {
