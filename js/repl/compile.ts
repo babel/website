@@ -134,6 +134,16 @@ export default function compile(code: string, config: CompileConfig): Return {
         if (preset === "env") {
           return ["env", presetEnvOptions];
         }
+        if (preset === "typescript") {
+          return [
+            "typescript",
+            {
+              allowDeclareFields: true,
+              allowNamespaces: true,
+            },
+          ];
+        }
+
         if (/^stage-[0-3]$/.test(preset)) {
           const version = presetsOptions.decoratorsVersion;
           const decoratorsLegacy = version === "legacy" || undefined;
