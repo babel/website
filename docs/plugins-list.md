@@ -8,9 +8,16 @@ sidebar_label: Plugins List
 
 ### TC39 Proposals
 
+#### Stage 3
+
 - [decorators](plugin-proposal-decorators.md)
-- [do-expressions](plugin-proposal-do-expressions.md)
 - [duplicate-named-capturing-groups-regex](plugin-proposal-duplicate-named-capturing-groups-regex.md)
+- [json-modules](plugin-proposal-json-modules.md)
+- [import-wasm-source](plugin-proposal-import-wasm-source.md)
+
+#### Early proposals
+
+- [do-expressions](plugin-proposal-do-expressions.md)
 - [export-default-from](plugin-proposal-export-default-from.md)
 - [function-bind](plugin-proposal-function-bind.md)
 - [function-sent](plugin-proposal-function-sent.md)
