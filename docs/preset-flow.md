@@ -99,7 +99,18 @@ class A {
 
 Added in: `v7.21.4`
 
-When it is set to `true`, Babel will apply the flow transform to all extensions. When it is set to `false`, Babel
-will avoid the flow transform for `*.tsx` files.
+When it is set to `true`, Babel will apply the flow transform to all extensions. When it is set to `false`, Babel will avoid the flow transform for `*.tsx` files.
 
 > You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
+
+### `experimental_useHermesParser`
+
+`boolean`, defaults to `false`
+
+Added in: `v7.24.0`
+
+The [Hermes](https://hermesengine.dev/) team is maintaining an alternative Flow parser for Babel, which is better kept up-to-date with the latest Flow syntax features. You can enable it by setting this option to `true`.
+
+:::warning
+The Hermes parser does not currently attatch comments to the AST. This can cause problems with transforms based on the presence of specific comments.
+:::
