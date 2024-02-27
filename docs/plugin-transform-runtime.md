@@ -102,7 +102,7 @@ require("@babel/core").transformSync("code", {
 
 `string`, defaults to `@babel/runtime`.
 
-This option controls to which package of helpers `@babel/plugin-transform-runtime` will inject imports to. It uses the following priority:
+This option controls which package of helpers `@babel/plugin-transform-runtime` will use when injecting imports. It uses the following priority:
 - `moduleName` option, if specified
 - Helpers module suggested by any `babel-plugin-polyfill-*` plugin
   - `babel-plugin-polyfill-corejs3` suggests `@babel/runtime-corejs3`
