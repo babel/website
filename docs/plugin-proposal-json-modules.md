@@ -35,17 +35,27 @@ will be transformed to
   </TabItem>
   <TabItem value="node-esm" label="Node.js (ESM)">
 
-  ```js title="output.js"
+  ```js title="output.mjs"
   import { readFileSync as _readFileSync } from "fs";
   const data = JSON.parse(_readFileSync(new URL(import.meta.resolve("./data.json"))));
   ```
   </TabItem>
   <TabItem value="node-cjs" label="Node.js (CommonJS)">
 
-  ```js title="output.js"
+  ```js title="output.cjs"
   "use strict";
 
   const data = JSON.parse(require("fs").readFileSync(require.resolve("./data.json")));
+  ```
+  </TabItem>
+  <TabItem value="browsers-node-cjs" label="Browsers and Node.js (ESM)">
+
+  ```js title="output.js"
+  const data = await (
+    typeof process === "object" && process.versions?.node
+      ? import("fs").then(fs => fs.promises.readFile(new URL(import.meta.resolve("./data.json")))).then(JSON.parse)
+      : fetch(import.meta.resolve("./data.json")).then(r => r.json())
+  );
   ```
   </TabItem>
 </Tabs>
