@@ -216,6 +216,14 @@ let getSum = (a, b) => {
 
 ## `noUninitializedPrivateFieldAccess`
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| v7.24.0 | Added `noUninitializedPrivateFieldAccess` assumption |
+</details>
+
 Assume that code never attempts to access private fields on classes before they are initialized. For example:
 ```js title="JavaScript"
 class Foo {
