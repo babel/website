@@ -112,5 +112,5 @@ Added in: `v7.24.0`
 The [Hermes](https://hermesengine.dev/) team is maintaining an alternative Flow parser for Babel, which is better kept up-to-date with the latest Flow syntax features. You can enable it by setting this option to `true`.
 
 :::warning
-The Hermes parser does not currently attatch comments to the AST. This can cause problems with transforms based on the presence of specific comments.
+The Hermes parser does not currently attach comments to the AST. This can cause problems with transforms that depend on the presence of specific comments.
 :::
