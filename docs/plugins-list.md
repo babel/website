@@ -14,8 +14,9 @@ sidebar_label: Plugins List
 - [duplicate-named-capturing-groups-regex](plugin-proposal-duplicate-named-capturing-groups-regex.md)
 - [json-modules](plugin-proposal-json-modules.md)
 - [import-wasm-source](plugin-proposal-import-wasm-source.md)
+- [regexp-modifiers](plugin-proposal-regexp-modifiers.md)
 
-#### Early proposals
+#### Early stages
 
 - [do-expressions](plugin-proposal-do-expressions.md)
 - [export-default-from](plugin-proposal-export-default-from.md)
