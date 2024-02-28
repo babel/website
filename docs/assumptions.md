@@ -214,6 +214,38 @@ let getSum = (a, b) => {
 
 </div>
 
+## `noUninitializedPrivateFieldAccess`
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| v7.24.0 | Added `noUninitializedPrivateFieldAccess` assumption |
+</details>
+
+Assume that code never attempts to access private fields on classes before they are initialized. For example:
+```js title="JavaScript"
+class Foo {
+  x = this.#y; // #y is not initialized yet
+  #y = 2;
+}
+```
+
+<div is="assumption-repl" data-assumption="noUninitializedPrivateFieldAccess" data-plugins="transform-class-properties">
+
+```js title="JavaScript"
+class MyClass {
+  static #id = 123;
+
+  method() {
+    return MyClass.#id;
+  }
+}
+```
+
+</div>
+
 ## `objectRestNoSymbols`
 
 When using rest patterns in object destructuring, assume that destructured objects don't have symbol keys or that it's not a problem if they are not copied.
