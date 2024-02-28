@@ -122,9 +122,30 @@ This option requires changing the dependency used to provide the necessary runti
 
 `boolean`, defaults to `true`.
 
-Toggles whether or not inlined Babel helpers (`classCallCheck`, `extends`, etc.) are replaced with calls to `moduleName`.
+Toggles whether or not inlined Babel helpers (`classCallCheck`, `extends`, etc.) are replaced with calls to `@babel/runtime` (or equivalent package).
 
 For more information, see [Helper aliasing](#helper-aliasing).
+
+### `moduleName`
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.24.0` | Added `moduleName` option |
+</details>
+
+`string`, defaults to `@babel/runtime`.
+
+This option controls which package of helpers `@babel/plugin-transform-runtime` will use when injecting imports. It uses the following priority:
+- `moduleName` option, if specified
+- Helpers module suggested by any `babel-plugin-polyfill-*` plugin
+  - `babel-plugin-polyfill-corejs3` suggests `@babel/runtime-corejs3`
+  - `babel-plugin-polyfill-corejs2` suggests `@babel/runtime-corejs2`
+- Fallback to `@babel/runtime`
+
+Note that specifying the [`corejs`](#corejs) option will internally enable the corresponding `babel-plugin-polyfill-corejs*` plugin, thus it has an effect on the final module name.
 
 ### `polyfill`
 
