@@ -2920,6 +2920,7 @@ AST Node `TSImportType` shape:
 - `argument`: `StringLiteral` (required)
 - `qualifier`: `TSEntityName` (default: `null`)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`)
+- `options`: `Expression` (default: `null`, excluded from builder function)
 
 Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
