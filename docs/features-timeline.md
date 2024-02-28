@@ -9,6 +9,15 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="Feb 2024">
+
+## Babel 7.24.0
+
+[blog post](https://babeljs.io/blog/2024/02/28/7.24.0)
+
+- Support for the [JSON modules](https://github.com/tc39/proposal-json-modules) Stage 3 proposal
+
+</li>
 <li data-date="Sep 2023">
 
 ## Babel 7.23.0
