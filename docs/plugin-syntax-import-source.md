@@ -7,7 +7,7 @@ sidebar_label: syntax-import-source
 :::note
 #### Syntax only
 
-It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-import-source](plugin-proposal-import-source.md) to _both_ parse and transform this syntax.
+It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-import-wasm-source](plugin-proposal-import-wasm-source.md) to _both_ parse and transform this syntax.
 :::
 
 This plugin enables parsing for `import source` declarations.
