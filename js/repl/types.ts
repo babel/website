@@ -6,6 +6,7 @@ export type BabelPlugin = {
 };
 
 type decoratorsVersion =
+  | "2023-11"
   | "2023-05"
   | "2023-01"
   | "2022-03"

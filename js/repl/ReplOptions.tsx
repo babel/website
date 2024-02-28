@@ -64,6 +64,7 @@ const PIPELINE_PROPOSALS = {
 };
 
 const DECORATOR_PROPOSALS = {
+  "2023-11": "2023-11",
   "2023-05": "2023-05",
   "2023-01": "2023-01",
   "2022-03": "2022-03",
