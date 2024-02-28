@@ -153,6 +153,7 @@ export default function compile(code: string, config: CompileConfig): Return {
             "2022-03",
             "2023-01",
             "2023-05",
+            "2023-11",
           ].includes(version)
             ? undefined
             : presetsOptions.decoratorsBeforeExport;

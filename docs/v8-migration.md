@@ -383,16 +383,16 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- Only support `legacy` and `2023-05`. The plugin now requires a [`version`](./plugin-proposal-decorators.md#version) option ([#12712](https://github.com/babel/babel/pull/12712), [#15676](https://github.com/babel/babel/pull/15676))
+- Only support `legacy` and `2023-11`. The plugin now requires a [`version`](./plugin-proposal-decorators.md#version) option ([#12712](https://github.com/babel/babel/pull/12712), [#15676](https://github.com/babel/babel/pull/15676))
 
-  **Migration**: You should migrate to the [latest version of the proposal](https://github.com/tc39/proposal-decorators/) `"2023-05"`, if you are using the `"2018-09"` or you have not specified a `version` option.
+  **Migration**: You should migrate to the [latest version of the proposal](https://github.com/tc39/proposal-decorators/) `"2023-11"`, if you are using the `"2018-09"` or you have not specified a `version` option.
   ```diff title="babel.config.json"
   {
     "plugins": [
       ["@babel/plugin-proposal-decorators", {
   -     "decoratorsBeforeExport": true,
   -     "version": "2018-09",
-  +     "version": "2023-05"
+  +     "version": "2023-11"
       }]
     ]
   }
