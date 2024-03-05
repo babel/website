@@ -107,7 +107,7 @@ Selects the decorators proposal to use:
 
 ### `version`
 
-`"2023-11`, `"2023-05"`, `"2023-01"`, `"2022-03"`, `"2021-12"`, `"2018-09"` or `"legacy"`.
+`"2023-11"`, `"2023-05"`, `"2023-01"`, `"2022-03"`, `"2021-12"`, `"2018-09"` or `"legacy"`.
 
 Selects the decorators proposal to use:
 - `"2023-11"` is the proposal version after the updates that reached consensus in the November 2023 TC30 meetings, intergrating [this change](https://github.com/pzuraq/ecma262/pull/12)
