@@ -134,7 +134,11 @@ export default function compile(code: string, config: CompileConfig): Return {
         if (preset === "env") {
           return ["env", presetEnvOptions];
         }
-        if (preset === "typescript") {
+        if (
+          Babel.version &&
+          compareVersions(Babel.version, "8.0.0") < 0 &&
+          preset === "typescript"
+        ) {
           return [
             "typescript",
             {
