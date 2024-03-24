@@ -33,9 +33,16 @@ npm install --save-dev @babel/plugin-proposal-optional-chaining-assign
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-optional-chaining-assign"]
+  "plugins": [
+    "@babel/plugin-proposal-optional-chaining-assign",
+    {
+      "version": "2023-07"
+    }
+  ]
 }
 ```
+
+Currently '.version' option required, representing the last proposal update. Currently, the only supported value is '2023-07'. 
 
 ### Via CLI
 
