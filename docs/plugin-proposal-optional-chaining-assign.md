@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-proposal-optional-chaining-assign
 title: "@babel/plugin-proposal-optional-chaining-assign"
-sidebar_label: optional-chaining
+sidebar_label: optional-chaining-assign
 ---
 
 Transform optional chaining on the left-hand side of assignment expressions.
@@ -33,21 +33,22 @@ npm install --save-dev @babel/plugin-proposal-optional-chaining-assign
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-optional-chaining-assign"]
+  "plugins": [
+    "@babel/plugin-proposal-optional-chaining-assign",
+    {
+      "version": "2023-07"
+    }
+  ]
 }
-```
-
-### Via CLI
-
-```sh title="Shell"
-babel --plugins @babel/plugin-proposal-optional-chaining-assign script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-optional-chaining-assign"],
+  plugins: [["@babel/plugin-proposal-optional-chaining-assign", {
+      "version": "2023-07"
+    }]],
 });
 ```
 
@@ -56,6 +57,16 @@ require("@babel/core").transformSync("code", {
 ### Assumptions
 
 This plugin is affected by the [`noDocumentAll`](https://babeljs.io/docs/assumptions#nodocumentall) assumption.
+
+### `version`
+
+Required.
+
+`"2023-07"`
+
+Selects the proposal to use:
+
+- `"2023-07"`: The stage 1 proposal as defined at [`tc39/proposal-optional-chaining-assignment@49d055c44b`](https://github.com/tc39/proposal-optional-chaining-assignment/commit/e7b48795b66a8196b1abcab2e52e2049d055c44b), presented in the July 2023 TC39 meeting.
 
 ## References
 
