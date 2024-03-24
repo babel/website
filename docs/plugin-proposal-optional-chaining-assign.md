@@ -1,7 +1,7 @@
 ---
 id: babel-plugin-proposal-optional-chaining-assign
 title: "@babel/plugin-proposal-optional-chaining-assign"
-sidebar_label: optional-chaining
+sidebar_label: optional-chaining-assign
 ---
 
 Transform optional chaining on the left-hand side of assignment expressions.
