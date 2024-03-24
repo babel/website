@@ -66,7 +66,7 @@ Required.
 
 Selects the proposal to use:
 
-- `"2023-07"`: The stage 1 proposal defined at [`tc39/proposal-optional-chaining-assignment@49d055c44b`](https://github.com/tc39/proposal-optional-chaining-assignment/commit/e7b48795b66a8196b1abcab2e52e2049d055c44b), demonstrated in the July 2023 TC39 meeting.
+- `"2023-07"`: The stage 1 proposal as defined at [`tc39/proposal-optional-chaining-assignment@49d055c44b`](https://github.com/tc39/proposal-optional-chaining-assignment/commit/e7b48795b66a8196b1abcab2e52e2049d055c44b), presented in the July 2023 TC39 meeting.
 
 ## References
 
