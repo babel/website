@@ -256,6 +256,7 @@ module.exports = {
         "babel-plugin-proposal-function-bind",
         "babel-plugin-proposal-function-sent",
         "babel-plugin-proposal-import-defer",
+        "babel-plugin-proposal-optional-chaining-assign",
         "babel-plugin-proposal-partial-application",
         "babel-plugin-proposal-pipeline-operator",
         "babel-plugin-proposal-record-and-tuple",
