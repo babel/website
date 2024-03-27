@@ -6,6 +6,6 @@ require("@babel/core").transform("code", {
 
 <blockquote class="alert alert--info">
   <p>
-    For full documentation on the Babel API see the <a href="/docs/usage/api/">usage docs</a>.
+    Explore the <a href="/docs/babel-core">@babel/core documentation</a> for the full API.
   </p>
 </blockquote>
