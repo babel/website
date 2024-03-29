@@ -34,10 +34,12 @@ npm install --save-dev @babel/plugin-proposal-optional-chaining-assign
 ```json title="babel.config.json"
 {
   "plugins": [
-    "@babel/plugin-proposal-optional-chaining-assign",
-    {
-      "version": "2023-07"
-    }
+    [
+      "@babel/plugin-proposal-optional-chaining-assign",
+      {
+        "version": "2023-07"
+      }
+    ]
   ]
 }
 ```
