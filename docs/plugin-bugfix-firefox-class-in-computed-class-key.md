@@ -10,6 +10,10 @@ This bugfix plugin transforms optional chaining operators to workaround a [Spide
 This plugin is included in `@babel/preset-env`, and Babel will automatically enable this plugin for you when your `targets` are affected by the browser bug.
 :::
 
+:::warning
+Terser versions older than 5.30.2 will undo the transform done by this plugin. Make sure to use at least version 5.30.2, or set the Terser's [`compress.inline`](https://terser.org/docs/options/#compress-options) option to `false`.
+:::
+
 ## Installation
 
 ```shell npm2yarn
