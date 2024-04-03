@@ -4,7 +4,7 @@ title: "@babel/plugin-bugfix-firefox-class-in-computed-class-key"
 sidebar_label: bugfix-firefox-class-in-computed-class-key
 ---
 
-This bugfix plugin transforms optional chaining operators to workaround a [SpiderMonkey bug](https://bugzilla.mozilla.org/show_bug.cgi?id=1887677) with private class elements.
+This bugfix plugin transforms classes inside computed keys of other classes to workaround a [SpiderMonkey bug](https://bugzilla.mozilla.org/show_bug.cgi?id=1887677) with private class elements.
 
 :::tip
 This plugin is included in `@babel/preset-env`, and Babel will automatically enable this plugin for you when your `targets` are affected by the browser bug.
