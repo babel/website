@@ -205,7 +205,7 @@ Added in: `v7.23.0`
 
 When set to `true`, Babel will rewrite `.ts`/`.mts`/`.cts` extensions in import declarations to `.js`/`.mjs`/`.cjs`.
 
-This option, when used together with TypeScript's [`allowImportingTsExtension`](https://www.typescriptlang.org/tsconfig#allowImportingTsExtensions) option, allows to write complete relative specifiers in import declaratoinss while using the same extension used by the source files.
+This option, when used together with TypeScript's [`allowImportingTsExtension`](https://www.typescriptlang.org/tsconfig#allowImportingTsExtensions) option, allows to write complete relative specifiers in import declarations while using the same extension used by the source files.
 
 As an example, given this project structure (where `src` contains the source files, and `dist` the compiled files):
 ```
