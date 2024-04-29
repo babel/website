@@ -5,9 +5,13 @@ title: "@babel/plugin-transform-runtime"
 
 A plugin that enables the re-use of Babel's injected helper code to save on codesize.
 
+::::babel7
+
 :::note
 Instance methods such as `"foobar".includes("foo")` will only work with `core-js@3`. If you need to polyfill them, you can directly import `"core-js"` or use `@babel/preset-env`'s `useBuiltIns` option.
 :::
+
+::::
 
 ## Installation
 
@@ -35,9 +39,13 @@ Babel uses very small helpers for common functions such as `_extend`. By default
 
 This is where the `@babel/plugin-transform-runtime` plugin comes in: all of the helpers will reference the module `@babel/runtime` to avoid duplication across your compiled output. The runtime will be compiled into your build.
 
+::::babel7
+
 Another purpose of this transformer is to create a sandboxed environment for your code. If you directly import [core-js](https://github.com/zloirock/core-js) or [@babel/polyfill](polyfill.md) and the built-ins it provides such as `Promise`, `Set` and `Map`, those will pollute the global scope. While this might be ok for an app or a command line tool, it becomes a problem if your code is a library which you intend to publish for others to use or if you can't exactly control the environment in which your code will run.
 
 The transformer will alias these built-ins to `core-js` so you can use them seamlessly without having to require the polyfill.
+
+::::
 
 See the [technical details](#technical-details) section for more information on how this works and the types of transformations that occur.
 
@@ -90,6 +98,21 @@ require("@babel/core").transformSync("code", {
 
 ## Options
 
+
+### `absoluteRuntime`
+
+`boolean` or `string`, defaults to `false`.
+
+This allows users to run `transform-runtime` broadly across a whole project. By default, `transform-runtime` imports from `@babel/runtime/foo` directly, but that only works if `@babel/runtime` is in the `node_modules` of the file that is being compiled. This can be problematic for nested `node_modules`, npm-linked modules, or CLIs that reside outside the user's project, among other cases. To avoid worrying about how the runtime module's location is resolved, this allows users to resolve the runtime once up front, and then insert absolute paths to the runtime into the output code.
+
+Using absolute paths is not desirable if files are compiled for use at a later time, but in contexts where a file is compiled and then immediately consumed, they can be quite helpful.
+
+:::tip
+You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::
+
+::::babel7
+
 ### `corejs`
 
 `false`, `2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `false`.
@@ -118,6 +141,12 @@ This option requires changing the dependency used to provide the necessary runti
 | `2`             | `npm install --save @babel/runtime-corejs2` |
 | `3`             | `npm install --save @babel/runtime-corejs3` |
 
+:::caution
+
+The `corejs` option will be removed in Babel 8. To inject polyfills, you can use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md) or [`babel-plugin-polyfill-corejs2`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs2/README.md) directly.
+
+:::
+
 ### `helpers`
 
 `boolean`, defaults to `true`.
@@ -125,6 +154,14 @@ This option requires changing the dependency used to provide the necessary runti
 Toggles whether or not inlined Babel helpers (`classCallCheck`, `extends`, etc.) are replaced with calls to `@babel/runtime` (or equivalent package).
 
 For more information, see [Helper aliasing](#helper-aliasing).
+
+:::caution
+
+The `helpers` option will be removed in Babel 8, as this plugin will only be used to inject helpers (including `regeneratorRuntime`, which will be handled as any other Babel helper).
+
+:::
+
+::::
 
 ### `moduleName`
 
@@ -147,41 +184,21 @@ This option controls which package of helpers `@babel/plugin-transform-runtime` 
 
 Note that specifying the [`corejs`](#corejs) option will internally enable the corresponding `babel-plugin-polyfill-corejs*` plugin, thus it has an effect on the final module name.
 
-### `polyfill`
-
-:::danger
-This option was removed in v7.
-:::
+::::babel7
 
 ### `regenerator`
 
 `boolean`, defaults to `true`.
 
-Toggles whether or not generator functions are transformed to use a regenerator runtime that does not pollute the global scope.
+In older Babel version, this option used to toggles whether or not generator functions were transformed to use a regenerator runtime that does not pollute the global scope.
 
 For more information, see [Regenerator aliasing](#regenerator-aliasing).
 
-### `useBuiltIns`
-
-:::danger
-This option was removed in v7.
+:::caution
+The `regenerator` option will be removed in Babel 8, as it will not be necessary anymore.
 :::
 
 ### `useESModules`
-
-::::babel8
-
-:::danger
-This option was removed in v8.
-:::
-
-::::
-
-::::babel7
-
-:::caution
-This option has been deprecated and will be removed in Babel 8: starting from version `7.13.0`, `@babel/runtime`'s `package.json` uses `"exports"` option to automatically choose between CJS and ESM helpers.
-:::
 
 `boolean`, defaults to `false`.
 
@@ -219,45 +236,58 @@ export default function(instance, Constructor) {
 }
 ```
 
-::::
-
-### `absoluteRuntime`
-
-`boolean` or `string`, defaults to `false`.
-
-This allows users to run `transform-runtime` broadly across a whole project. By default, `transform-runtime` imports from `@babel/runtime/foo` directly, but that only works if `@babel/runtime` is in the `node_modules` of the file that is being compiled. This can be problematic for nested `node_modules`, npm-linked modules, or CLIs that reside outside the user's project, among other cases. To avoid worrying about how the runtime module's location is resolved, this allows users to resolve the runtime once up front, and then insert absolute paths to the runtime into the output code.
-
-Using absolute paths is not desirable if files are compiled for use at a later time, but in contexts where a file is compiled and then immediately consumed, they can be quite helpful.
-
-:::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+:::caution
+The `useESModules` option has been deprecated and will be removed in Babel 8: starting from version `7.13.0`, `@babel/runtime`'s `package.json` uses `"exports"` option to automatically choose between CJS and ESM helpers.
 :::
 
+::::
+
 ### `version`
+
+::::babel7
 
 By default transform-runtime assumes that `@babel/runtime@7.0.0` is installed. If you have later versions of
 `@babel/runtime` (or their corejs counterparts e.g. `@babel/runtime-corejs3`) installed or listed as a dependency, transform-runtime can use more advanced features.
 
-For example if you depend on `@babel/runtime-corejs2@7.7.4` you can transpile your code with
+For example if you depend on `@babel/runtime@^7.24.0` you can transpile your code with
 
 ```json title="babel.config.json"
 {
   "plugins": [
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "absoluteRuntime": false,
-        "corejs": 2,
-        "version": "^7.7.4"
-      }
-    ]
+    ["@babel/plugin-transform-runtime", {
+      "version": "^7.24.0"
+    }]
   ]
 }
 ```
 
+::::
+
+::::babel8
+
+By default transform-runtime assumes that `@babel/runtime@8.0.0` is installed. If you have later versions of
+`@babel/runtime` (or their corejs counterparts e.g. `@babel/runtime-corejs3`) installed or listed as a dependency, transform-runtime can use more advanced features.
+
+
+For example if you depend on `@babel/runtime@^8.1.0` you can transpile your code with
+
+```json title="babel.config.json"
+{
+  "plugins": [
+    ["@babel/plugin-transform-runtime", {
+      "version": "^8.1.0"
+    }]
+  ]
+}
+```
+
+::::
+
 which results in a smaller bundle size.
 
 ## Technical details
+
+::::babel7
 
 The `transform-runtime` transformer plugin does three things:
 
@@ -381,6 +411,8 @@ without worrying about where they come from.
 
 ### Helper aliasing
 
+::::
+
 Usually Babel will place helpers at the top of your file to do common tasks to avoid
 duplicating the code around in the current file. Sometimes these helpers can get a
 little bulky and add unnecessary duplication across files. The `runtime`
@@ -425,3 +457,18 @@ var Person = function Person() {
   (0, _classCallCheck3.default)(this, Person);
 };
 ```
+
+## Removed options
+
+:::babel8
+
+The following options where removed in Babel 8.0.0:
+- `corejs`
+- `helpers`
+- `regenerator`
+
+:::
+
+The following options where removed in Babel 7.0.0:
+- `useBuiltIns`
+- `polyfill`
