@@ -290,7 +290,7 @@ See also `t.isCallExpression(node, opts)` and `t.assertCallExpression(node, opts
 
 AST Node `CallExpression` shape:
 - `callee`: `Expression | Super | V8IntrinsicIdentifier` (required)
-- `arguments`: `Array<Expression | SpreadElement | JSXNamespacedName | ArgumentPlaceholder>` (required)
+- `arguments`: `Array<Expression | SpreadElement | ArgumentPlaceholder>` (required)
 - `optional`: `true | false` (default: `null`, excluded from builder function)
 - `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
@@ -1915,7 +1915,7 @@ See also `t.isNewExpression(node, opts)` and `t.assertNewExpression(node, opts)`
 
 AST Node `NewExpression` shape:
 - `callee`: `Expression | Super | V8IntrinsicIdentifier` (required)
-- `arguments`: `Array<Expression | SpreadElement | JSXNamespacedName | ArgumentPlaceholder>` (required)
+- `arguments`: `Array<Expression | SpreadElement | ArgumentPlaceholder>` (required)
 - `optional`: `true | false` (default: `null`, excluded from builder function)
 - `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
@@ -2232,7 +2232,7 @@ See also `t.isOptionalCallExpression(node, opts)` and `t.assertOptionalCallExpre
 
 AST Node `OptionalCallExpression` shape:
 - `callee`: `Expression` (required)
-- `arguments`: `Array<Expression | SpreadElement | JSXNamespacedName | ArgumentPlaceholder>` (required)
+- `arguments`: `Array<Expression | SpreadElement | ArgumentPlaceholder>` (required)
 - `optional`: `boolean` (required)
 - `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
