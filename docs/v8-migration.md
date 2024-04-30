@@ -13,7 +13,7 @@ Refer users to this document when upgrading to Babel 8 from Babel 7. If you are 
 
 ### Node.js support
 
-All Babel 8 packages require Node.js `^18.20.0 || ^20.10.0 || >= 21.0.0`.
+All Babel 8 packages require Node.js `^18.20.0 || ^20.10.0 || >=21.0.0`.
 
 We highly encourage you to use a newer version of Node.js (LTS v20) since the previous versions are not maintained.
 See [nodejs/Release](https://github.com/nodejs/Release) for more information.
