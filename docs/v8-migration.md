@@ -13,9 +13,9 @@ Refer users to this document when upgrading to Babel 8 from Babel 7. If you are 
 
 ### Node.js support
 
-All Babel 8 packages require Node.js `^16.20.0 || ^18.16.0 || >=20.0.0`.
+All Babel 8 packages require Node.js `^18.20.0 || ^20.10.0 || >=21.0.0`.
 
-We highly encourage you to use a newer version of Node.js (LTS v18) since the previous versions are not maintained.
+We highly encourage you to use a newer version of Node.js (LTS v20) since the previous versions are not maintained.
 See [nodejs/Release](https://github.com/nodejs/Release) for more information.
 
 This just means Babel _itself_ won't run on older versions of Node. It can still _output_ code that runs on old Node versions.
