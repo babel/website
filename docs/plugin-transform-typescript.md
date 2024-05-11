@@ -116,7 +116,7 @@ Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as Type
 
 ### `jsxPragma`
 
-`string`, defaults to `React`
+`string`, defaults to `React.createElement`
 
 Replace the function used when compiling JSX expressions. This is so that we know that the import is not a type import, and should not be removed.
 
