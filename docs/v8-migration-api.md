@@ -284,6 +284,10 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   **Migration**: Adapt to the new token design. If you want to restore to the Babel 7 behaviour, manually transform them to the Babel 7 tokens ([example](https://github.com/babel/babel/blob/7e60a93897f9a134506251ea51269faf4d02a86c/packages/babel-parser/src/parser/statement.ts#L116-L188)).
 
+- Remove `extra.shorthand` from `ObjectProperty` nodes ([#16521](https://github.com/babel/babel/pull/16521))
+
+  **Migration**: Use `node.shorthand` rather than `node.extra.shorthand`.
+
 ### `@babel/traverse`
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
