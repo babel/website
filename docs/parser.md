@@ -118,7 +118,8 @@ It is based on [ESTree spec][] with the following deviations:
 - [Program][] and [BlockStatement][] contain additional `directives` field with [Directive][] and [DirectiveLiteral][]
 - [ClassMethod][], [ClassPrivateMethod][], [ObjectProperty][], and [ObjectMethod][] value property's properties in [FunctionExpression][] is coerced/brought into the main method node.
 - [ChainExpression][] is replaced with [OptionalMemberExpression][] and [OptionalCallExpression][]
-- [ImportExpression][] is replaced with a [CallExpression][] whose `callee` is an [Import] node.
+- [ImportExpression][] is replaced with a [CallExpression][] whose `callee` is an [Import] node. This change will be reversed in Babel 8.
+- [ExportAllDeclaration][] with `exported` field is replaced with an [ExportNamedDeclaration][] containing an [ExportNamespaceSpecifier][] node.
 
 :::tip
 There is now an `estree` plugin which reverts these deviations
@@ -134,6 +135,7 @@ AST for JSX code is based on [Facebook JSX AST][].
 [propertydefinition]: https://github.com/estree/estree/blob/master/es2022.md#propertydefinition
 [chainexpression]: https://github.com/estree/estree/blob/master/es2020.md#chainexpression
 [importexpression]: https://github.com/estree/estree/blob/master/es2020.md#importexpression
+[exportalldeclaration]: https://github.com/estree/estree/blob/master/es2020.md#exportalldeclaration
 [privateidentifier]: https://github.com/estree/estree/blob/master/es2022.md#privateidentifier
 [stringliteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#stringliteral
 [numericliteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#numericliteral
@@ -157,6 +159,8 @@ AST for JSX code is based on [Facebook JSX AST][].
 [optionalcallexpression]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#optionalcallexpression
 [callexpression]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#callexpression
 [import]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#import
+[exportnameddeclaration]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#exportnameddeclaration
+[exportnamespacespecifier]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#exportnamespacespecifier
 [facebook jsx ast]: https://github.com/facebook/jsx/blob/master/AST.md
 
 ### Semver
