@@ -44,6 +44,11 @@ module.exports = {
           items: [
             {
               type: "category",
+              label: "ES2025",
+              items: ["babel-plugin-transform-duplicate-named-capturing-groups-regex"],
+            },
+            {
+              type: "category",
               label: "ES2024",
               items: ["babel-plugin-transform-unicode-sets-regex"],
             },
@@ -242,7 +247,6 @@ module.exports = {
     "TC39 Proposals": {
       "Stage 3": [
         "babel-plugin-proposal-decorators",
-        "babel-plugin-proposal-duplicate-named-capturing-groups-regex",
         "babel-plugin-proposal-explicit-resource-management",
         "babel-plugin-proposal-import-wasm-source",
         "babel-plugin-proposal-json-modules",
