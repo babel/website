@@ -65,22 +65,23 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /docs/plugins/external-helpers/     /docs/babel-plugin-external-helpers
 
 # Plugins renamed from -proposal- to -transform-
-/docs/babel-plugin-proposal-class-static-block                  /docs/babel-plugin-transform-class-static-block
-/docs/babel-plugin-proposal-private-property-in-object          /docs/babel-plugin-transform-private-property-in-object
-/docs/babel-plugin-proposal-class-properties                    /docs/babel-plugin-transform-class-properties
-/docs/babel-plugin-proposal-private-methods                     /docs/babel-plugin-transform-private-methods
-/docs/babel-plugin-proposal-numeric-separator                   /docs/babel-plugin-transform-numeric-separator
-/docs/babel-plugin-proposal-dynamic-import                      /docs/babel-plugin-transform-dynamic-import
-/docs/babel-plugin-proposal-logical-assignment-operators        /docs/babel-plugin-transform-logical-assignment-operators
-/docs/babel-plugin-proposal-nullish-coalescing-operator         /docs/babel-plugin-transform-nullish-coalescing-operator
-/docs/babel-plugin-proposal-optional-chaining                   /docs/babel-plugin-transform-optional-chaining
-/docs/babel-plugin-proposal-json-strings                        /docs/babel-plugin-transform-json-strings
-/docs/babel-plugin-proposal-optional-catch-binding              /docs/babel-plugin-transform-optional-catch-binding
-/docs/babel-plugin-proposal-async-generator-functions           /docs/babel-plugin-transform-async-generator-functions
-/docs/babel-plugin-proposal-object-rest-spread                  /docs/babel-plugin-transform-object-rest-spread
-/docs/babel-plugin-proposal-unicode-property-regex              /docs/babel-plugin-transform-unicode-property-regex
-/docs/babel-plugin-proposal-unicode-sets-regex                  /docs/babel-plugin-transform-unicode-sets-regex
-/docs/babel-plugin-proposal-export-namespace-from               /docs/babel-plugin-transform-export-namespace-from
+/docs/babel-plugin-proposal-class-static-block                      /docs/babel-plugin-transform-class-static-block
+/docs/babel-plugin-proposal-private-property-in-object              /docs/babel-plugin-transform-private-property-in-object
+/docs/babel-plugin-proposal-class-properties                        /docs/babel-plugin-transform-class-properties
+/docs/babel-plugin-proposal-private-methods                         /docs/babel-plugin-transform-private-methods
+/docs/babel-plugin-proposal-numeric-separator                       /docs/babel-plugin-transform-numeric-separator
+/docs/babel-plugin-proposal-dynamic-import                          /docs/babel-plugin-transform-dynamic-import
+/docs/babel-plugin-proposal-logical-assignment-operators            /docs/babel-plugin-transform-logical-assignment-operators
+/docs/babel-plugin-proposal-nullish-coalescing-operator             /docs/babel-plugin-transform-nullish-coalescing-operator
+/docs/babel-plugin-proposal-optional-chaining                       /docs/babel-plugin-transform-optional-chaining
+/docs/babel-plugin-proposal-json-strings                            /docs/babel-plugin-transform-json-strings
+/docs/babel-plugin-proposal-optional-catch-binding                  /docs/babel-plugin-transform-optional-catch-binding
+/docs/babel-plugin-proposal-async-generator-functions               /docs/babel-plugin-transform-async-generator-functions
+/docs/babel-plugin-proposal-object-rest-spread                      /docs/babel-plugin-transform-object-rest-spread
+/docs/babel-plugin-proposal-unicode-property-regex                  /docs/babel-plugin-transform-unicode-property-regex
+/docs/babel-plugin-proposal-unicode-sets-regex                      /docs/babel-plugin-transform-unicode-sets-regex
+/docs/babel-plugin-proposal-export-namespace-from                   /docs/babel-plugin-transform-export-namespace-from
+/docs/babel-plugin-proposal-duplicate-named-capturing-groups-regex  /docs/babel-plugin-transform-duplicate-named-capturing-groups-regex
 
 # Legacy redirects
 /docs/en/babel-plugin-transform-decorators                      /docs/babel-plugin-proposal-decorators

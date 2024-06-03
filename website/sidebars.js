@@ -45,7 +45,7 @@ module.exports = {
             {
               type: "category",
               label: "ES2025",
-              items: ["babel-plugin-proposal-duplicate-named-capturing-groups-regex"],
+              items: ["babel-plugin-transform-duplicate-named-capturing-groups-regex"],
             },
             {
               type: "category",
