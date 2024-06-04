@@ -70,6 +70,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /docs/babel-plugin-proposal-class-properties                    /docs/babel-plugin-transform-class-properties
 /docs/babel-plugin-proposal-private-methods                     /docs/babel-plugin-transform-private-methods
 /docs/babel-plugin-proposal-numeric-separator                   /docs/babel-plugin-transform-numeric-separator
+/docs/babel-plugin-proposal-dynamic-import                      /docs/babel-plugin-transform-dynamic-import
 /docs/babel-plugin-proposal-logical-assignment-operators        /docs/babel-plugin-transform-logical-assignment-operators
 /docs/babel-plugin-proposal-nullish-coalescing-operator         /docs/babel-plugin-transform-nullish-coalescing-operator
 /docs/babel-plugin-proposal-optional-chaining                   /docs/babel-plugin-transform-optional-chaining
@@ -93,7 +94,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 
 # Blog rewrites
 /7.24.0 /blog/2024/02/28/7.24.0
-/7.23.0 /blog/2023/09/25/7.22.0
+/7.23.0 /blog/2023/09/25/7.23.0
 /7.22.0 /blog/2023/05/26/7.22.0
 /7.21.0 /blog/2023/02/20/7.21.0
 /7.20.0 /blog/2022/10/27/7.20.0

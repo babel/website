@@ -70,7 +70,7 @@ module.exports = {
               type: "category",
               label: "ES2020",
               items: [
-                "babel-plugin-proposal-dynamic-import",
+                "babel-plugin-transform-dynamic-import",
                 "babel-plugin-transform-export-namespace-from",
                 "babel-plugin-transform-nullish-coalescing-operator",
                 "babel-plugin-transform-optional-chaining",

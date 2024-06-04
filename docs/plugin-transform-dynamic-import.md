@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-dynamic-import
-title: "@babel/plugin-proposal-dynamic-import"
+id: babel-plugin-transform-dynamic-import
+title: "@babel/plugin-transform-dynamic-import"
 sidebar_label: dynamic-import
 ---
 
@@ -74,7 +74,7 @@ will be transformed to
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-dynamic-import
+npm install --save-dev @babel/plugin-transform-dynamic-import
 ```
 
 ## Usage
@@ -84,7 +84,7 @@ npm install --save-dev @babel/plugin-proposal-dynamic-import
 ```json title="babel.config.json"
 {
   "plugins": [
-    "@babel/plugin-proposal-dynamic-import",
+    "@babel/plugin-transform-dynamic-import",
     "@babel/plugin-transform-modules-commonjs"
   ]
 }
@@ -93,7 +93,7 @@ npm install --save-dev @babel/plugin-proposal-dynamic-import
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins=@babel/plugin-proposal-dynamic-import,@babel/plugin-transform-modules-amd script.js
+babel --plugins=@babel/plugin-transform-dynamic-import,@babel/plugin-transform-modules-amd script.js
 ```
 
 ### Via Node API
@@ -101,7 +101,7 @@ babel --plugins=@babel/plugin-proposal-dynamic-import,@babel/plugin-transform-mo
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
   plugins: [
-    "@babel/plugin-proposal-dynamic-import",
+    "@babel/plugin-transform-dynamic-import",
     "@babel/plugin-transform-modules-systemjs"
   ],
 });
@@ -109,4 +109,4 @@ require("@babel/core").transformSync("code", {
 
 ## References
 
-- [Proposal: import()](https://github.com/tc39/proposal-dynamic-import)
+- [Proposal: import()](https://github.com/tc39/transform-dynamic-import)
