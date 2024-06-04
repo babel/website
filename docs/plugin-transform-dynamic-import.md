@@ -109,4 +109,4 @@ require("@babel/core").transformSync("code", {
 
 ## References
 
-- [Proposal: import()](https://github.com/tc39/transform-dynamic-import)
+- [Proposal: import()](https://github.com/tc39/proposal-dynamic-import)
