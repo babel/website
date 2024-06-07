@@ -613,7 +613,7 @@ Default: `false`<br />
 - `"both"` is the same as inline, but will include the map in the result object.
 
 Options in configuration files have no effect on whether `@babel/cli` writes files separate `.map` files to disk.
-When the `--source-maps` CLI options is passed to `@babel/cli` it will also control whether `.map` files are written:
+When the `--source-maps` CLI option is passed to `@babel/cli` it will also control whether `.map` files are written:
 
 - `true` will write the map to a `.map` file on disk
 - `"inline"` will write the file directly, so it will have a `data:` containing the map
