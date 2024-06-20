@@ -11,6 +11,8 @@ functionalities. If you need to support older browsers, use either
 the `runtime: false` option or import a proper polyfill (e.g. `core-js`).
 :::
 
+This plugin transforms regular expression _literals_ to support named capturing groups. It does not patch the `new RegExp` constructor, since its arguments cannot be pre-transformed statically: to handle runtime behavior of functions/classes, you will need to use a polyfill instead.
+
 ## Examples
 
 **In**
