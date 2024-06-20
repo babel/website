@@ -76,9 +76,11 @@ For more information on setting options for a preset, refer to the [preset optio
 
 ### `targets`
 
-`string | Array<string> | { [string]: string }`, defaults to the top-level `targets` option if no browserslist-related option is specified in `@babel/preset-env`'s docs, otherwise to `{}`.
+`string | Array<string> | { [string]: string }`, defaults to the top-level [`targets` option](options.md#targets) if [`configPath`](#configpath), [`browserslistEnv`](#browserslistenv) and [`ignoreBrowserslistConfig`](#ignorebrowserslistconfig) are not specified, otherwise to `{}`.
 
 For usage, refer to the [`targets` option](options.md#targets) documentation.
+
+> To maintain backward compatibility, `esmodules` is only intersected with `browsers` when using a top-level `targets` option or browserslist config source.
 
 ### `bugfixes`
 
