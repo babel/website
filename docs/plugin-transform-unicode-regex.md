@@ -8,6 +8,8 @@ sidebar_label: unicode-regex
 This plugin is included in `@babel/preset-env`
 :::
 
+This plugin transforms regular expression _literals_ to support the `/u` flag. It does not patch the `new RegExp` constructor, since its arguments cannot be pre-transformed statically: to handle runtime behavior of functions/classes, you will need to use a polyfill instead.
+
 ## Example
 
 **In**

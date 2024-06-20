@@ -8,6 +8,8 @@ sidebar_label: unicode-property-regex
 This plugin is included in `@babel/preset-env`, in [ES2018](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 :::
 
+This plugin transforms regular expression _literals_ to support the `\p{...}` escapes. It does not patch the `new RegExp` constructor, since its arguments cannot be pre-transformed statically: to handle runtime behavior of functions/classes, you will need to use a polyfill instead.
+
 [Here’s an online demo.](https://mothereff.in/regexpu#input=var+regex+%3D+/%5Cp%7BScript_Extensions%3DGreek%7D/u%3B&unicodePropertyEscape=1)
 
 ## Installation

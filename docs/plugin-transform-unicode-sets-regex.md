@@ -10,23 +10,27 @@ This plugin is included in `@babel/preset-env`, in [ES2024](https://github.com/t
 
 This plugin transforms regular expressions using the `v` flag, introduced by the [RegExp set notation + properties of strings](https://github.com/tc39/proposal-regexp-set-notation) proposal, to regular expressions that use the `u` flag.
 
+It only transforms `/.../v` syntax and it does not patch the `new RegExp` constructor, since its arguments cannot be pre-transformed statically: to handle runtime behavior of functions/classes, you will need to use a polyfill instead.
+
 ## Example
 
 ### Intersection
+
 ```js title="input.js"
-/[\p{ASCII}&&\p{Decimal_Number}]/v
+/[\p{ASCII}&&\p{Decimal_Number}]/v;
 ```
 
 will be transformed to
 
 ```js title="output.js"
-/[0-9]/u
+/[0-9]/u;
 ```
 
 ### Difference
+
 ```js title="input.js"
 // Non-ASCII white spaces
-/[\p{White_Space}--\p{ASCII}]/v
+/[\p{White_Space}--\p{ASCII}]/v;
 ```
 
 will be transformed to
@@ -36,6 +40,7 @@ will be transformed to
 ```
 
 ### Property of Strings
+
 ```js title="input.js"
 /^\p{Emoji_Keycap_Sequence}$/v.test("*\uFE0F\u20E3");
 // true
@@ -49,9 +54,10 @@ will be transformed to
 ```
 
 Here is [a list of supported properties](https://github.com/tc39/proposal-regexp-unicode-sequence-properties#proposed-solution). Note that using property of strings with `u`-flag will error.
+
 ```js title="input.js"
 // highlight-error-next-line
-/\p{Emoji_Keycap_Sequence}/u
+/\p{Emoji_Keycap_Sequence}/u;
 // Error: Properties of strings are only supported when using the unicodeSets (v) flag.
 ```
 
