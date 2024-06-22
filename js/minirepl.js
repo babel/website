@@ -3,11 +3,19 @@
 import debounce from "lodash.debounce";
 
 const miniReplExamples = [
-  "element.index ?? -1;",
-  "const styles = {\n" + "  ...defaults,\n" + '  color: "#f5da55",\n' + "};",
-  "const city = address?.city",
-  'var name = "Guy Fieri";\nvar place = "Flavortown";\n\n`Hello ${name}, ready for ${place}?`;',
-  'let yourTurn = "Type some code in here!";',
+  `@define("my-element")
+class MyElement {}`,
+  `element
+|> jQuery.parseHTML(match[1], %, true)
+|> jQuery.merge(%);`,
+  `const name = #["Guy Fieri"][0];
+const place = #["Flavortown"][0];
+#{ "Hello": name, "ready for": place }?
+"yes" : "no"`,
+  `let result = do {
+  next(yourTurn);
+  emit("Type some code in here!")
+}`,
 ];
 
 let inEditor;
@@ -43,7 +51,7 @@ function setupEditor(id, readOnly) {
     tabSize: 2,
     useSoftTabs: true,
     useWorker: false,
-    wrap: false,
+    wrap: true,
   });
 
   editor.renderer.setPadding(24);
@@ -110,10 +118,17 @@ function compileCode(sourceEditor, targetEditor) {
     transformed = Babel.transform(sourceEditor.getValue(), {
       presets: [
         "react",
+        "typescript",
         ["env", { targets: "defaults, not ie 11, not ie_mob 11", loose: true }],
       ],
-      plugins: [["external-helpers", { helperVersion: "7.100.0" }]],
-      filename: "repl",
+      plugins: [
+        ["external-helpers", { helperVersion: "7.100.0" }],
+        ["proposal-decorators", { version: "2023-01" }],
+        ["proposal-pipeline-operator", { proposal: "hack", topicToken: "%" }],
+        ["proposal-record-and-tuple"],
+        ["proposal-do-expressions"],
+      ],
+      filename: "repl.tsx",
       babelrc: false,
     });
   } catch (e) {
