@@ -434,8 +434,6 @@ class Child extends Parent {
     "mutableTemplateObject": true,
     "noClassCalls": true,
     "noDocumentAll": true,
-    "noObjectSuper": true,
-    "noUndeclaredVariablesCheck": true,
     "objectRestNoSymbols": true,
     "privateFieldsAsProperties": true,
     "pureGetters": true,
