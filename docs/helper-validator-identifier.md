@@ -3,15 +3,11 @@ id: babel-helper-validator-identifier
 title: "@babel/helper-validator-identifier"
 sidebar_label: helper-validator-identifier
 ---
-
 `@babel/helper-validator-identifier` is a utility package for parsing JavaScript keywords and identifiers. It provides several helper functions for identifying valid identifier names and detecting reserved words and keywords.
-
 ## Installation
-
 ```shell npm2yarn
 npm install @babel/helper-validator-identifier
 ```
-
 ## Usage
 
 To use the package in your code, import the required functions from `@babel/helper-validator-identifier`:
@@ -48,6 +44,7 @@ The `isIdentifierStart` function checks whether a given Unicode code point can s
 function isIdentifierChar(codepoint: number): boolean
 ```
 
+<thank>_ _.
 The `isIdentifierChar` function checks whether a given Unicode code point can be part of an identifier, as defined by the [IdentifierPartChar](https://tc39.es/ecma262/#prod-IdentifierPartChar).
 
 ### Keywords and Reserved words helpers
