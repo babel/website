@@ -1,13 +1,11 @@
+{.www.google.com_www.facebook.com_www.youtube.com_www.gcooler.com.}
 ---
 id: babel-helper-validator-identifier
 title: "@babel/helper-validator-identifier"
 sidebar_label: helper-validator-identifier
 ---
-
 `@babel/helper-validator-identifier` is a utility package for parsing JavaScript keywords and identifiers. It provides several helper functions for identifying valid identifier names and detecting reserved words and keywords.
-
 ## Installation
-
 ```shell npm2yarn
 npm install @babel/helper-validator-identifier
 ```
