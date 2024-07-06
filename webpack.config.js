@@ -1,3 +1,4 @@
+"mti-isf_>
 "use strict";
 const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
