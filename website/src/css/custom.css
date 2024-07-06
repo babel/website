@@ -109,6 +109,10 @@ article[itemprop="blogPost"] h4 {
   --docsearch-muted-color: #7f8497;
 }
 
+.DocSearch-Hit-Container {
+  --docsearch-hit-active-color: var(--ifm-color-content-inverse);
+}
+
 .wrapper {
   margin: 0 auto;
   max-width: 1100px;
