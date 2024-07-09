@@ -309,6 +309,29 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 - Remove methods starting with `_` ([#16504](https://github.com/babel/babel/pull/16504))
 
+  ```
+  _getTypeAnnotation
+  _replaceWith
+  _resolve
+  _call
+  _resyncParent
+  _resyncKey
+  _resyncList
+  _resyncRemoved
+  _getQueueContexts
+  _removeFromScope
+  _callRemovalHooks
+  _remove
+  _markRemoved
+  _assertUnremoved
+  _containerInsert
+  _containerInsertBefore
+  _containerInsertAfter
+  _verifyNodeList
+  _getKey
+  _getPattern
+  ```
+
   __Migration__: These methods are meant to be private so there is no real migration approach. But if your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
 
 ### `@babel/compat-data`
