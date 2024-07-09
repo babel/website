@@ -395,8 +395,6 @@ We recognize this isn’t ideal and will be revisiting this in Babel v8.
 
 When no targets are specified: Babel will assume you are using the [browserslist](https://github.com/browserslist/browserslist#queries) [`defaults`](https://browsersl.ist/#q=defaults) query, which covers most modern browsers. If you want to support legacy browsers, specify the `targets` option.
 
-:::
-
 #### `targets.esmodules`
 
 Type: `boolean`
