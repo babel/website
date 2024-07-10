@@ -307,6 +307,33 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: Adapt to the new behaviour. You can use `NodePath#shouldSkip` to check whether a NodePath has been skipped before calling `NodePath#requeue()`.
 
+- Remove methods starting with `_` ([#16504](https://github.com/babel/babel/pull/16504))
+
+  ```
+  _assertUnremoved
+  _call
+  _callRemovalHooks
+  _containerInsert
+  _containerInsertAfter
+  _containerInsertBefore
+  _getKey
+  _getPattern
+  _getQueueContexts
+  _getTypeAnnotation
+  _markRemoved
+  _remove
+  _removeFromScope
+  _replaceWith
+  _resolve
+  _resyncKey
+  _resyncList
+  _resyncParent
+  _resyncRemoved
+  _verifyNodeList
+  ```
+
+  __Migration__: These methods are meant to be private so there is no real migration approach. But if your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
+
 ### `@babel/compat-data`
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
