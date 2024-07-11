@@ -75,7 +75,6 @@ export type BabelState = LazyLoadedState & {
   availablePresets: Array<any>;
   build: any;
   errorMessage?: string;
-  circleciRepo: string;
   config: PluginConfig;
   version: any;
 };
@@ -84,7 +83,6 @@ export type EnvState = LazyLoadedState & {
   availablePresets: Array<any>;
   build: number;
   errorMessage?: string;
-  circleciRepo: string;
   config: PluginConfig;
   version: any;
   isEnabled: boolean;
@@ -129,7 +127,6 @@ export type ReplState = {
   corejs?: string | false;
   spec: boolean;
   loose: boolean;
-  circleciRepo: string;
   code: string;
   debug: boolean;
   evaluate: boolean;

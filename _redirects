@@ -140,3 +140,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 # Docusaurus v1 compat
 
 /docs/en/* /docs/:splat
+
+# CircleCI CORS
+/circleci/api/* https://circleci.com/api/v1.1/project/github/babel/babel/:splat 200
+/circleci/artifacts/* https://output.circle-artifacts.com/:splat 200

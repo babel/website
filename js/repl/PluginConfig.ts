@@ -93,7 +93,6 @@ const replDefaults: ReplState = {
   builtIns: false,
   spec: false,
   loose: false,
-  circleciRepo: "",
   code: "",
   debug: false,
   evaluate: false,
