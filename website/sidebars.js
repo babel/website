@@ -153,6 +153,7 @@ module.exports = {
               label: "Bugfix",
               items: [
                 "babel-plugin-bugfix-firefox-class-in-computed-class-key",
+                "babel-plugin-bugfix-safari-class-field-initializer-scope",
                 "babel-plugin-bugfix-safari-id-destructuring-collision-in-function-expression",
                 "babel-plugin-bugfix-v8-spread-parameters-in-optional-chaining",
               ],
