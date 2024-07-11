@@ -28,10 +28,7 @@ export async function loadBuildArtifacts(
         `Could not find valid @babel/standalone artifact in build #${build}`
       );
     }
-    return artifacts[0].url.replace(
-      "https://output.circle-artifacts.com/",
-      "/circleci/artifacts/"
-    );
+    return artifacts[0].url;
   } catch (ex) {
     throw new Error(`Could not load Babel build #${build}: ${ex.message}`);
   }
