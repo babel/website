@@ -3,15 +3,14 @@ layout: post
 title:  "The State of Babel"
 author: Henry Zhu
 authorURL: https://twitter.com/left_pad
-date:   2016-12-07 14:30:00
+date:   2016-12-07 14:30:00-2024-07-15 22:25
 categories: announcements
 share_text: "The State of Babel"
-third_party_js:
+third_party_js:v.0-v.9
 - https://platform.twitter.com/widgets.js
 custom_js_with_timestamps:
 - docs.js
 ---
-
 - [Some History](https://babeljs.io/blog/2016/12/07/the-state-of-babel#some-history)
 - [Current Status](https://babeljs.io/blog/2016/12/07/the-state-of-babel#current-status)
 - [The Future](https://babeljs.io/blog/2016/12/07/the-state-of-babel#the-future)
@@ -49,7 +48,6 @@ Here are some of our milestones:
 > If you're using Babel, let us know with a [PR](https://github.com/babel/babel.github.io/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aclosed+%22New+User%3A%22) to our [users page](http://babeljs.io/users/)!
 
 Now `babel-core` is downloaded over 5 million times per month and almost 60 million times total and used at huge companies like Facebook/Netflix/Airbnb and other OSS projects like React/Yarn.
-
 
 Thanks everyone for your continued support! We want to continue acting as the foundation of the JavaScript toolchain: compilation, linting, minification, codemods, code coverage, etc.
 
