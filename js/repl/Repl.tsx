@@ -653,7 +653,6 @@ class Repl extends React.Component<Props, State> {
       corejs: envConfig.corejs,
       spec: envConfig.isSpecEnabled,
       loose: envConfig.isLooseEnabled,
-      circleciRepo: state.babel.circleciRepo,
       code: state.code,
       debug: state.debugEnvPreset,
       modules: envConfig.modules,

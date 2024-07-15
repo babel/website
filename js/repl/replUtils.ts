@@ -66,7 +66,6 @@ export const persistedStateToBabelState = (
 ): BabelState => ({
   availablePresets: [],
   build: persistedState.build,
-  circleciRepo: persistedState.circleciRepo,
   didError: false,
   isLoaded: false,
   isLoading: true,

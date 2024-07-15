@@ -1,11 +1,7 @@
 import fetch from "unfetch";
 
-async function sendRequest(
-  repo: string | undefined | null,
-  uri: string
-): Promise<any> {
-  const urlRepo = repo && repo.length ? repo : "babel/babel";
-  const fullURL = `https://circleci.com/api/v1.1/project/github/${urlRepo}/${uri}`;
+async function sendRequest(uri: string): Promise<any> {
+  const fullURL = `/circleci/api/${uri}`;
   let response;
   try {
     response = await fetch(fullURL).then((res) => res.json());
@@ -21,14 +17,11 @@ async function sendRequest(
 }
 
 export async function loadBuildArtifacts(
-  repo: string | undefined | null,
   regExp: RegExp,
-  build: number | string,
-  // eslint-disable-line no-unused-vars
-  cb: (url: string, error?: string) => Promise<any>
+  build: number | string
 ): Promise<string> {
   try {
-    const response = await sendRequest(repo, `${build}/artifacts`);
+    const response = await sendRequest(`${build}/artifacts`);
     const artifacts = response.filter((x) => regExp.test(x.path));
     if (!artifacts || artifacts.length === 0) {
       throw new Error(
@@ -42,14 +35,12 @@ export async function loadBuildArtifacts(
 }
 
 export async function loadLatestBuildNumberForBranch(
-  repo: string | undefined | null,
   branch: string,
   jobName: string,
   limit: number = 30
 ): Promise<number> {
   try {
     const response = await sendRequest(
-      repo,
       `tree/${branch}?limit=${limit}&filter=successful`
     );
     if (!response) throw new Error("No builds found");

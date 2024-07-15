@@ -62,18 +62,12 @@ export default async function loadBundle(
         // to main, we map /build/7.0 and /build/master to
         // /build/main for backwards compatibility.
         build = await loadLatestBuildNumberForBranch(
-          state.circleciRepo,
           build === "7.0" || build === "master" ? "main" : build,
           "build-standalone"
         );
       }
       const regExp = new RegExp(`${packageName}/${packageFile}$`);
-      const url = await loadBuildArtifacts(
-        state.circleciRepo,
-        regExp,
-        build,
-        doLoad
-      );
+      const url = await loadBuildArtifacts(regExp, build);
       return doLoad(url);
     } catch (ex) {
       return doLoad(null, ex.message);

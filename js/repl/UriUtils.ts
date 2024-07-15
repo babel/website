@@ -14,7 +14,6 @@ const URL_KEYS = [
   "forceAllTransforms",
   "modules",
   "shippedProposals",
-  "circleciRepo",
   "evaluate",
   "fileSize",
   "timeTravel",
