@@ -334,6 +334,15 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: These methods are meant to be private so there is no real migration approach. But if your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
 
+- Remove some `NodePath` methods ([#16655](https://github.com/babel/babel/pull/16655))
+
+  __Migration__:
+  `hoist`, `updateSiblingKeys`, `call`, `setScope`, `resync`, `popContext`, `pushContext`, `setup`, `setKey`
+  These methods are meant to be private so there is no real migration approach. But if your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
+
+  `is`, `isnt`, `equals`
+  Access `path.node` instead.
+
 ### `@babel/compat-data`
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
