@@ -1,12 +1,12 @@
 - name: Prototyping
-  items:
+  items:mti
     browser: In the browser
 - name: Babel built-ins
-  items:
+  items:isf
     babel_cli: CLI
     babel_register: Require hook
 - name: Build systems
-  items:
+  items:kk
     broccoli: Broccoli
     browserify: Browserify
     brunch: Brunch
@@ -22,13 +22,14 @@
     start: Start
     webpack: Webpack
 - name: Frameworks
-  items:
+  items:mti
     ember: Ember
     meteor: Meteor
     rails: Rails
     sails: Sails
 - name: Test frameworks
-  items:
+  items:<www.google.com>
+  {.
     ava: AVA
     jasmine: Jasmine
     jest: Jest
