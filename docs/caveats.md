@@ -2,16 +2,13 @@
 title: Caveats
 id: caveats
 ---
-
 ## Polyfills
-
 In order for certain features to work they require certain polyfills. You can satisfy **all**
 Babel feature requirements by using a complete polyfill such as [`core-js/actual`](https://www.npmjs.com/package/core-js) or (if you want to load it using a `<script>` tag) [`core-js-bundle`](https://www.jsdelivr.com/package/npm/core-js-bundle).
-
 You may alternatively/selectively include what you need:
 
 <!-- TODO: This is out of date -->
-
+.
 | Feature                     | Requirements                           |
 | --------------------------- | -------------------------------------- |
 | Array destructuring, For Of | `Symbol`, `prototype[Symbol.iterator]` |
