@@ -307,6 +307,9 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   --- functionExpressionPath.is("id")
   --- functionExpressionPath.has("id")
   +++ functionExpressionPath.node.id
+  
+  --- functionExpressionPath.has("arguments")
+  +++ !!functionExpressionPath.node.arguments.length
 
   --- functionExpressionPath.isnt("async")
   +++ !functionExpressionPath.node.async
