@@ -308,8 +308,8 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   --- functionExpressionPath.has("id")
   +++ functionExpressionPath.node.id
 
-  --- functionExpressionPath.isnt("id")
-  +++ !functionExpressionPath.node.id
+  --- functionExpressionPath.isnt("async")
+  +++ !functionExpressionPath.node.async
   ```
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
