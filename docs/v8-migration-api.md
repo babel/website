@@ -290,6 +290,31 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 ### `@babel/traverse`
 
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- Remove some `NodePath` methods ([#16655](https://github.com/babel/babel/pull/16655))
+
+  __Migration__:
+  `hoist`, `updateSiblingKeys`, `call`, `setScope`, `resync`, `popContext`, `pushContext`, `setup`, `setKey`
+  These methods are meant to be private so there is no real migration approach. But if your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
+
+  `is`, `isnt`, `has`, `equals`
+  Access `path.node` instead.
+  ```diff
+  --- functionExpressionPath.equals("id", idNode)
+  +++ functionExpressionPath.node.id === idNode
+
+  --- functionExpressionPath.is("id")
+  --- functionExpressionPath.has("id")
+  +++ functionExpressionPath.node.id
+  
+  --- functionExpressionPath.has("arguments")
+  +++ !!functionExpressionPath.node.arguments.length
+
+  --- functionExpressionPath.isnt("async")
+  +++ !functionExpressionPath.node.async
+  ```
+
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 - Remove `block` argument from `Scope#rename` ([#15288](https://github.com/babel/babel/pull/15288))
