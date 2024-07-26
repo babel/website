@@ -1,8 +1,12 @@
 ---
-id: babel-plugin-proposal-duplicate-named-capturing-groups-regex
-title: "@babel/plugin-proposal-duplicate-named-capturing-groups-regex"
+id: babel-plugin-transform-duplicate-named-capturing-groups-regex
+title: "@babel/plugin-transform-duplicate-named-capturing-groups-regex"
 sidebar_label: duplicate-named-capturing-groups-regex
 ---
+
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2025](https://github.com/tc39/proposals/blob/master/finished-proposals.md).
+:::
 
 This plugin transforms regular expression _literals_ to support duplicate named capturing groups. It does not patch the `new RegExp` constructor, since its arguments cannot be pre-transformed statically: to handle runtime behavior of functions/classes, you will need to use a polyfill instead.
 
@@ -30,7 +34,7 @@ console.log(re.exec("02-1999").groups.year);
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-duplicate-named-capturing-groups-regex
+npm install --save-dev @babel/plugin-transform-duplicate-named-capturing-groups-regex
 ```
 
 ## Usage
@@ -39,21 +43,21 @@ npm install --save-dev @babel/plugin-proposal-duplicate-named-capturing-groups-r
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-duplicate-named-capturing-groups-regex"]
+  "plugins": ["@babel/plugin-transform-duplicate-named-capturing-groups-regex"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/plugin-proposal-duplicate-named-capturing-groups-regex script.js
+babel --plugins @babel/plugin-transform-duplicate-named-capturing-groups-regex script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-duplicate-named-capturing-groups-regex"],
+  plugins: ["@babel/plugin-transform-duplicate-named-capturing-groups-regex"],
 });
 ```
 

@@ -11,7 +11,6 @@ sidebar_label: Plugins List
 #### Stage 3
 
 - [decorators](plugin-proposal-decorators.md)
-- [duplicate-named-capturing-groups-regex](plugin-proposal-duplicate-named-capturing-groups-regex.md)
 - [json-modules](plugin-proposal-json-modules.md)
 - [import-wasm-source](plugin-proposal-import-wasm-source.md)
 - [regexp-modifiers](plugin-proposal-regexp-modifiers.md)
@@ -26,6 +25,10 @@ sidebar_label: Plugins List
 - [pipeline-operator](plugin-proposal-pipeline-operator.md)
 - [throw-expressions](plugin-proposal-throw-expressions.md)
 - [record-and-tuple](plugin-proposal-record-and-tuple.md)
+
+### ES2025
+
+- [duplicate-named-capturing-groups-regex](plugin-proposal-duplicate-named-capturing-groups-regex.md)
 
 ### ES2024
 
