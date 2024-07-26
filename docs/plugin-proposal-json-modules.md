@@ -72,9 +72,7 @@ npm install --save-dev @babel/plugin-proposal-json-modules
 
 ```json title="babel.config.json"
 {
-  "plugins": [
-    "@babel/plugin-proposal-json-modules"
-  ]
+  "plugins": ["@babel/plugin-proposal-json-modules"]
 }
 ```
 
@@ -88,10 +86,36 @@ babel --plugins=@babel/plugin-proposal-json-modules script.js
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: [
-    "@babel/plugin-proposal-json-modules"
-  ],
+  plugins: ["@babel/plugin-proposal-json-modules"],
 });
+```
+
+## Options
+
+### `uncheckedRequire`
+
+Type: `boolean`<br />
+Default: `false`<br />
+Added in `v7.25.0`
+
+When set to `true`, the plugin will generate a simpler output by using `require` directly to import the JSON file. When targeting CommonJS, this option leads to output that is easier to analyze for bundlers but doesn't check that the module being imported is actually JSON:
+
+**In**
+
+```js
+import data from "./data.json" with { type: "json" };
+```
+
+**Out (without `uncheckedRequire: true`)**
+
+```js
+const data = JSON.parse(require("fs").readFileSync(require.resolve("./data.json")));
+```
+
+**Out (with `uncheckedRequire: true`)**
+
+```js
+const data = require("./data.json");
 ```
 
 ## References
