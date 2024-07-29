@@ -176,7 +176,7 @@ Replace the function used when compiling JSX expressions. It should be a qualifi
 
 Replace the component used when compiling JSX fragments. It should be a valid JSX tag name.
 
-:::babel7
+::::babel7
 
 #### `useBuiltIns`
 
@@ -200,7 +200,7 @@ This option will be removed in Babel 8. Set `useSpread` to `true` if you are tar
 
 When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
 
-:::
+::::
 
 ### babel.config.js
 

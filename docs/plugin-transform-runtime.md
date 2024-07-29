@@ -462,13 +462,13 @@ var Person = function Person() {
 
 :::babel8
 
-The following options where removed in Babel 8.0.0:
+The following options were removed in Babel 8.0.0:
 - `corejs`
 - `helpers`
 - `regenerator`
 
 :::
 
-The following options where removed in Babel 7.0.0:
+The following options were removed in Babel 7.0.0:
 - `useBuiltIns`
 - `polyfill`
