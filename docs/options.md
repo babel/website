@@ -365,7 +365,7 @@ If a minor version is not specified, Babel will interpret it as `MAJOR.0`. For e
 
 #### No targets
 
-:::babel7
+::::babel7
 
 When no targets are specified: Babel will assume you are targeting the oldest browsers possible. For example, `@babel/preset-env` will transform all ES2015-ES2020 code to be ES5 compatible.
 
@@ -389,7 +389,7 @@ Because of this, Babel's behavior is different than [browserslist](https://githu
 
 We recognize this isn’t ideal and will be revisiting this in Babel v8.
 
-:::
+::::
 
 :::babel8
 
