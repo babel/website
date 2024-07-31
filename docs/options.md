@@ -282,7 +282,7 @@ babelrcRoots: [
 
 ### `plugins`
 
-Type: `Array<PluginEntry | Plugin>` ([`PluginEntry`](#plugin-preset-entries))<br />
+Type: `Array<PluginEntry | Plugin>` ([`PluginEntry`](#pluginpreset-entries))<br />
 Default: `[]`<br />
 
 An array of plugins to activate when processing this file. For more information on how
@@ -295,7 +295,7 @@ representation of a plugin or preset, you should use [`babel.createConfigItem()`
 
 ### `presets`
 
-Type: `Array<PresetEntry>` ([`PresetEntry`](#plugin-preset-entries))<br />
+Type: `Array<PresetEntry>` ([`PresetEntry`](#pluginpreset-entries))<br />
 Default: `[]`<br />
 
 An array of presets to activate when processing this file. For more information on how
