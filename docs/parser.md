@@ -121,8 +121,8 @@ It is based on [ESTree spec][] with the following deviations:
 - [ImportExpression][] is replaced with a [CallExpression][] whose `callee` is an [Import] node. This change will be reversed in Babel 8.
 - [ExportAllDeclaration][] with `exported` field is replaced with an [ExportNamedDeclaration][] containing an [ExportNamespaceSpecifier][] node.
 
-:::tip
-There is now an `estree` plugin which reverts these deviations
+:::note
+The `estree` plugin can revert these deviations. Use it only if you are passing Babel AST to other ESTree-compliant tools.
 :::
 
 AST for JSX code is based on [Facebook JSX AST][].
