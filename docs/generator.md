@@ -3,7 +3,7 @@ id: babel-generator
 title: "@babel/generator"
 ---
 
-> Turns an AST into code.
+> Turns Babel AST into code.
 
 ## Install
 
@@ -32,6 +32,25 @@ const output = generate(
 :::info
 The symbols like white spaces or new line characters are not preserved in the AST. When Babel generator prints code from the AST, the output format is not guaranteed.
 :::
+
+### Parser plugins support
+Babel generator supports all the listed [Babel parser plugins](./parser.md#plugins) except `estree`. Note that parser plugins do not transform the code. For example,
+if you pass JSX `<div></div>` to babel generator, the result will still contain the `div` JSX element.
+
+```js title="JavaScript"
+import { parse } from "@babel/parser";
+import generate from "@babel/generator";
+
+const code = "const Example = () => <div>example</div>";
+const ast = parse(code, { plugins: ["jsx" ] });
+
+const output = generate(
+  ast,
+);
+
+// true
+output.includes("<div>");
+```
 
 ## Options
 
