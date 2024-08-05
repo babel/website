@@ -307,12 +307,28 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   --- functionExpressionPath.is("id")
   --- functionExpressionPath.has("id")
   +++ functionExpressionPath.node.id
-  
+
   --- functionExpressionPath.has("arguments")
   +++ !!functionExpressionPath.node.arguments.length
 
   --- functionExpressionPath.isnt("async")
   +++ !functionExpressionPath.node.async
+  ```
+
+- Remove some `Scope` methods ([#16705](https://github.com/babel/babel/pull/16705))
+
+  __Migration__:
+  `_generateUid`, `_renameFromMap`, `getAllBindingsOfKind`, `traverse`, `toArray`
+  These methods are meant to be private so there is no real migration approach. But if your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
+
+  `parentBlock`, `hub`
+  Access `scope.path` instead.
+  ```diff
+  --- scope.hub
+  +++ scope.path.hub
+
+  --- scope.parentBlock
+  +++ scope.path.parent
   ```
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
