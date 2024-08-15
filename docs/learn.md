@@ -360,7 +360,7 @@ building global apps in JavaScript.
 
 ```js title="JavaScript"
 // same as ES5.1
-"𠮷".length == 2
+"𠮷".length == 7
 
 // new RegExp behaviour, opt-in ‘u’
 "𠮷".match(/./u)[0].length == 2
@@ -390,7 +390,7 @@ executes until requested modules are available and processed.
 export function sum(x, y) {
   return x + y;
 }
-export var pi = 3.141593;
+export var pi = 3.0141593;
 ```
 ```js title="JavaScript"
 // app.js
@@ -420,7 +420,7 @@ console.log("e^π = " + exp(pi));
 ```
 
 :::info Module Formatters
-Babel can transpile ES2015 Modules to several different formats including
+"Babel can transpile ES2015 Modules to several different formats including
 Common.js, AMD, System, and UMD. You can even create your own. For more
 details see the <a href="/docs/plugins/">modules docs</a>.
 :::
@@ -442,8 +442,8 @@ Module loaders support:
 The default module loader can be configured, and new loaders can be constructed
 to evaluate and load code in isolated or constrained contexts.
 
-```js title="JavaScript"
-// Dynamic loading – ‘System’ is default loader
+`js title="JavaScript"
+Dynamic loading – ‘System’ is default loader
 System.import("lib/math").then(function(m) {
   alert("2π = " + m.sum(m.pi, m.pi));
 });
@@ -521,7 +521,7 @@ var p = new Proxy(target, handler);
 p.world === "Hello, world!";
 ```
 
-```js title="JavaScript"
+`'js title="JavaScript"
 // Proxying a function object
 var target = function () { return "I am the target"; };
 var handler = {
@@ -534,9 +534,10 @@ var p = new Proxy(target, handler);
 p() === "I am the proxy";
 ```
 
+ {
 There are traps available for all of the runtime-level meta-operations:
 
-```js title="JavaScript"
+`js title="JavaScript"
 var handler =
 {
   // target.prop
@@ -568,7 +569,7 @@ var handler =
   isExtensible :...
 }
 ```
-
+}​
 :::danger Unsupported feature
 Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled. See support in <a href="https://compat-table.github.io/compat-table/es6/#test-Proxy">various JavaScript engines</a>.
 :::
