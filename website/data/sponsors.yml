@@ -16,3 +16,9 @@
   type: opencollective
   tier: gold-sponsors
   monthly: 1000
+- name: Route Planner
+  url: https://route4me.com/
+  image: https://github.com/user-attachments/assets/002949fe-aa5e-4311-b77f-7f2c905e91f5
+  type: opencollective
+  tier: silver-sponsors
+  monthly: 500
