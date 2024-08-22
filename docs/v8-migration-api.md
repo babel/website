@@ -33,7 +33,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   // AST in Babel 8
   {
     type: "ImportExpression",
-    source: StringLitera("foo"),
+    source: StringLiteral("foo"),
     options: Identifier("options")
   }
   ```
@@ -76,6 +76,37 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   **Migration**: If you have a customized plugin accessing properties of these TS nodes, make adjustments accordingly:
     - For `node.parameters` in Babel 7, use `node.params` in Babel 8
     - For `node.typeAnnotation` in Babel 7, use `node.returnType` in Babel 8
+
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- Split `typeParameter` of `TSMappedType` ([#16733](https://github.com/babel/babel/pull/16733)).
+
+  For a `TSMappedType` node, the `typeParameter` attribute is split into `key` and `constraint` attributes.
+  ```ts
+  // Example input
+  let map1: { [P in string]: number; };
+
+  // AST in Babel 7
+  {
+    type: "TSMappedType",
+    typeParameter: {
+      type: "TypeParameter",
+      name: Identifier("P"),
+      constraint: TSStringKeyword()
+    },
+    typeAnnotation: TSNumberKeyword(),
+  }
+
+  // AST in Babel 8
+  {
+    type: "TSMappedType",
+    key: Identifier("P"),
+    constraint: TSStringKeyword()
+    typeAnnotation: TSNumberKeyword(),
+  }
+  ```
+
+  __Migration__: If you have a customized plugin accessing `typeParameter` of a `TSMappedType` node, use `node.key` and `node.constraint` in Babel 8.
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
@@ -307,7 +338,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   --- functionExpressionPath.is("id")
   --- functionExpressionPath.has("id")
   +++ functionExpressionPath.node.id
-  
+
   --- functionExpressionPath.has("arguments")
   +++ !!functionExpressionPath.node.arguments.length
 
