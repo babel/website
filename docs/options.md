@@ -143,6 +143,19 @@ const { code, map } = babel.transformFromAstSync(ast, source, {
 Note: This option is not on by default because the majority of users won't need
 it and because we'd like to eventually add a caching layer to Babel. Having
 to cache the AST structure will take significantly more space.
+//:function f() {
+  {
+    ///let x;
+    {
+      // okay, block scoped name
+      const x = "sneaky";
+      // error, const
+      x = "foo";
+    }
+    // error, already declared in block
+    let x = "inner";
+  }
+}
 
 ### `cloneInputAst`
 
