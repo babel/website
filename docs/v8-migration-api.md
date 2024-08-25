@@ -82,6 +82,8 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 - Split `typeParameter` of `TSMappedType` ([#16733](https://github.com/babel/babel/pull/16733)).
 
   For a `TSMappedType` node, the `typeParameter` attribute is split into `key` and `constraint` attributes.
+  This is to align the AST for TS nodes with `@typescript-eslint`.
+
   ```ts
   // Example input
   let map1: { [P in string]: number; };
