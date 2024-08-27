@@ -2,9 +2,9 @@ core:
   - name: Babel
     github: babel
     twitter: babeljs
-  - name: Brian Ng
-    github: existentialism
-    twitter: existentialism
+  - name: David Okeamah
+    github: OKEAMAH
+    twitter: agunnaya001
   - name: Henry Zhu
     github: hzoo
     twitter: left_pad
