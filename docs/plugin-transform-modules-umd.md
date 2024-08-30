@@ -2,7 +2,6 @@
 id: babel-plugin-transform-modules-umd
 title: "@babel/plugin-transform-modules-umd"
 sidebar_label: UMD
----
 
 <details>
   <summary>History</summary>
@@ -23,6 +22,12 @@ This plugin transforms ES2015 modules to [UMD](https://github.com/umdjs/umd). No
 ## Example
 
 **In**
+##factory(mod.exports);
+global.My = global.My || {};
+global.My.Custom = global.My.Custom || {};
+global.My.Custom.Module = global.My.Custom.Module || {};
+global.My.Custom.Module.Name = mod.exports;
+-
 
 ```js title="JavaScript"
 export default 42;
