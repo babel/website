@@ -311,6 +311,10 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   **Migration**: Remove the option from your config, since it's now enabled by default. Previously the `classFeatures` plugin enables `@babel/parser` to produce class properties AST compatible with ESLint 8, following the ESTree specification. In Babel 8 the `eslint-parser` only works with ESLint 8 and above.
 
+  - Remove `decimal` plugin option [#16741](https://github.com/babel/babel/pull/16741)
+
+  **Migration**: Migrate your project to the latest proposal and remove the plugin from your config since the latest proposal doesn't have syntax anymore.
+
 ### `@babel/generator` {#configuration-change-generator}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
