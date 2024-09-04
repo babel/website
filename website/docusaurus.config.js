@@ -33,23 +33,25 @@ function loadYaml(fsPath) {
   return parseYaml(fs.readFileSync(path.join(__dirname, fsPath), "utf8"));
 }
 
-const users = loadYaml("./data/users.yml").map(user => ({
+const users = loadYaml("./data/users.yml").map((user) => ({
   pinned: user.pinned,
   caption: user.name,
   infoLink: user.url,
   image: `/img/users/${user.logo}`,
 }));
 
-const sponsorsManual = (loadYaml("./data/sponsors.yml") || []).map(sponsor => ({
-  ...sponsor,
-  image: sponsor.image || path.join("/img/sponsors/", sponsor.logo),
-}));
+const sponsorsManual = (loadYaml("./data/sponsors.yml") || []).map(
+  (sponsor) => ({
+    ...sponsor,
+    image: sponsor.image || path.join("/img/sponsors/", sponsor.logo),
+  })
+);
 const sponsorsDownloaded = require(path.join(__dirname, "/data/sponsors.json"));
 
 const sponsors = [
   ...sponsorsDownloaded
-    .filter(sponsor => sponsor.slug !== "github-sponsors")
-    .map(sponsor => {
+    .filter((sponsor) => sponsor.slug !== "github-sponsors")
+    .map((sponsor) => {
       let website = sponsor.website;
       if (typeof website == "string") {
         website = url.parse(website).protocol ? website : `http://${website}`;
@@ -79,7 +81,7 @@ const team = loadYaml("./data/team.yml");
 const tools = loadYaml("./data/tools.yml");
 const setupBabelrc = loadMD("./data/tools/setup.md");
 
-toolsMD.forEach(tool => {
+toolsMD.forEach((tool) => {
   tool.install = loadMD(`${tool.path}/install.md`);
   tool.usage = loadMD(`${tool.path}/usage.md`);
 });
@@ -103,19 +105,44 @@ function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
       if (node.type === "containerDirective") {
         const directiveLabel = node.name;
         if (directiveLabel === "babel8" || directiveLabel === "babel7") {
-          if ((directiveLabel === "babel8") ^ renderBabel8) {
+          if ((directiveLabel === "babel8") !== renderBabel8) {
             // remove anything between ":::babel[78]" and ":::"
             children.splice(index, 1);
           } else {
             // remove the :::babel[78] container only
             children.splice(index, 1, ...node.children);
+            index += node.children.length;
           }
-        } else {
-          transformer(node); // for support inside ::tip, etc
         }
       }
+
+      flatMap(node, (child) => {
+        if (child?.type === "link") {
+          if (child.url === ":::babel7") {
+            return renderBabel8 ? [] : child.children;
+          }
+          if (child.url === ":::babel8") {
+            return renderBabel8 ? child.children : [];
+          }
+        }
+        return [child];
+      });
     }
   };
+
+  function flatMap(node, cb) {
+    if (typeof node !== "object" || !node || typeof node.type !== "string") {
+      return;
+    }
+    for (const key of Object.keys(node)) {
+      if (Array.isArray(node[key])) {
+        node[key] = node[key].flatMap(cb);
+        node[key].forEach((child) => flatMap(child, cb));
+      } else {
+        flatMap(node[key], cb);
+      }
+    }
+  }
 }
 
 const siteConfig = {
