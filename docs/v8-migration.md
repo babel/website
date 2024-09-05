@@ -315,6 +315,13 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   **Migration**: Migrate your project to the latest proposal and remove the plugin from your config since the latest proposal doesn't have syntax anymore.
 
+  ```diff title=example.js
+  - 1.03m
+  + new Decimal("1.03")
+  - decimal1 + decimal2
+  + decimal1.add(decimal2)
+  ```
+
 ### `@babel/generator` {#configuration-change-generator}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
