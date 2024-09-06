@@ -426,6 +426,8 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 - The `-gc` and `-d` command-line flags have been removed ([#15956](https://github.com/babel/babel/pull/15956))
   **Migration**: Use the `--expose-gc` and `--inspect` Node.js flags respectively. Note that although `-d` was short for `--debug`, the latter has been [deprecated since Node.js 7.7.0](https://nodejs.org/en/docs/guides/debugging-getting-started#legacy-debugger).
 
+- Command-line flags for Node.js and Babel must now be passed _before_ the filename, while flags for the script itself must be passed after. ([#16706](https://github.com/babel/babel/pull/16706))
+
 ## Compilation Changes
 
 ### Default target

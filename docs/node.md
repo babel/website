@@ -72,14 +72,28 @@ NODE_NO_READLINE=1 rlwrap --always-readline npx babel-node
 ### Usage
 
 ```sh title="Shell"
-babel-node [options] [ -e script | script.js ] [arguments]
+babel-node [options] [ -e script | [--] script.js ] [arguments]
 ```
+
+:::babel7
 
 When arguments for user script have names conflicting with node options, double dash placed before script name can be used to resolve ambiguities
 
 ```sh title="Shell"
 npx babel-node --inspect --presets @babel/preset-env -- script.js --inspect
 ```
+
+:::
+
+:::babel8
+
+Options for Node.js and Babel must be placed before the file name, while arguments for the script (that will be available as `process.argv`) must be placed after.
+
+```sh title="Shell"
+npx babel-node --arg-for-babel script.js --arg-for-script.js
+```
+
+:::
 
 ### Options
 
