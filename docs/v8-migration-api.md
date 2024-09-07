@@ -485,21 +485,25 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   + !functionExpressionPath.node.async
   ```
 
-- Remove some `Scope` methods ([#16705](https://github.com/babel/babel/pull/16705))
+- Remove `Scope.prototype.traverse`, `Scope#parentBlock` and `Scope#hub` ([#16705](https://github.com/babel/babel/pull/16705))
 
-  __Migration__:
-  `_generateUid`, `_renameFromMap`, `getAllBindingsOfKind`, `traverse`, `toArray`
-  These methods are meant to be private so there is no real migration approach. But if your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
-
-  `parentBlock`, `hub`
-  Access `scope.path` instead.
+  __Migration__: Use `scope.path` methods and properties instead:
   ```diff
-  --- scope.hub
-  +++ scope.path.hub
+  --- scope.traverse(scopeRootNode, visitor, state)
+  +++ scope.path.traverse(visitor, state)
 
   --- scope.parentBlock
   +++ scope.path.parent
+  
+  --- scope.hub
+  +++ scope.path.hub
   ```
+
+- Remove `Scope.prototype.getAllBindingsOfKind` and `Scope.prototype.toArray`
+
+  These methods have been removed as they are not used anymore in our code base.
+
+  __Migration__: You can copy&paste them from Babel 7's source to your plugin.
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
@@ -518,9 +522,12 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: Adapt to the new behaviour. You can use `NodePath#shouldSkip` to check whether a NodePath has been skipped before calling `NodePath#requeue()`.
 
-- Remove methods starting with `_` ([#16504](https://github.com/babel/babel/pull/16504))
+- Remove methods starting with `_` from `Scope` and `NodePath` ([#16504](https://github.com/babel/babel/pull/16504), [#16705](https://github.com/babel/babel/pull/16705))
 
-  ```
+  These methods were meant to be private.
+
+  ```js
+  // NodePath.prototype
   _assertUnremoved
   _call
   _callRemovalHooks
@@ -541,6 +548,8 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   _resyncParent
   _resyncRemoved
   _verifyNodeList
+
+  // Scope.prototype
   ```
 
   __Migration__: These methods are meant to be private so there is no real migration approach. But if your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
