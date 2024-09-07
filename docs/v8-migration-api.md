@@ -550,6 +550,8 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   _verifyNodeList
 
   // Scope.prototype
+  _renameFromMap
+  _generateUid
   ```
 
   __Migration__: These methods are meant to be private so there is no real migration approach. But if your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
