@@ -331,6 +331,12 @@ The following plugins are discontinued and their functionality is not available 
 
   **Migration**: Replace the plugin with `importAttributes`. If you are still using the `assert` keyword it's recommended that you migrate to `with`: if it's not possible to do so, you can use the `["importAttributes", { deprecatedAssertSyntax: true }]` option.`
 
+- Remove `importReflection` parser plugin ([#16808](https://github.com/babel/babel/pull/16808))
+
+  The "import reflection" proposal does not exist anymore, and it was superseeded by the "source phase imports" proposal, which uses the `source` modifier for imports instead of `module`.
+
+  **Migration**: Replace the plugin with `sourcePhaseImports`, and migrate your code to use `source` instead of `module` in import declarations.
+
 ### `@babel/generator` {#configuration-change-generator}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
