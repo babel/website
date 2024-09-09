@@ -1,7 +1,7 @@
----
-title: Learn ES2015
+
+"title: Learn ES2015
 id: learn
----
+--
 
 :::info es6features
 This document was originally taken from Luke Hoban's excellent <a href="https://git.io/es6features">es6features</a> repo. Go give it a star
