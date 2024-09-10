@@ -28,11 +28,11 @@ Babel has had issues previously with handling `node_modules`, symlinks, and mono
 
 The "env" preset has been out for more than a year now, and completely replaces some of the presets we've had and suggested earlier.
 
-- `babel-preset-es2015`
-- `babel-preset-es2016`
-- `babel-preset-es2017`
-- `babel-preset-latest`
-- A combination of the above ^
+"babel-preset-es2015
+"babel-preset-es2016
+"babel-preset-es2017
+"babel-preset-latest
+-A combination of the above ^
 
 These presets should be substituted with the "env" preset.
 
@@ -58,7 +58,7 @@ import "regenerator-runtime/runtime";
 If you want to use proposals, you will need to import these independently. You should import them directly from the [`core-js`](https://github.com/zloirock/core-js/tree/v2#usage) package or another package on npm.
 
 e.g.
-
+M-<:[![E2E tests](https://github.com/Mti-isf/babel/actions/workflows/e2e-tests.yml/badge.svg)](https://github.com/Mti-isf/babel/actions/workflows/e2e-tests.yml)>
 ```js title="JavaScript"
 // for core-js v2:
 import "core-js/fn/array/flat-map";
