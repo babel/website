@@ -470,6 +470,7 @@ The [Browserslist environment](https://github.com/browserslist/browserslist#conf
 
 | Version | Changes |
 | --- | --- |
+| `v7.26.0` | Include regexp modifiers |
 | `v7.14.0` | Include private field brand checks |
 | `v7.12.0` | Include class static block and import assertions |
 | `v7.10.0` | Include class properties and private methods |
@@ -487,15 +488,16 @@ The following are currently supported:
 
 **Features**
 
-- [Class static block](https://github.com/tc39/proposal-class-static-block)
-- [Import assertions](https://github.com/tc39/proposal-import-assertions) (parsing only)
-- [Private field brand checks](https://github.com/tc39/proposal-private-fields-in-in)
+- [Import attributes](https://github.com/tc39/proposal-import-attributes) (parsing only)
+- [Regexp modifiers](https://github.com/tc39/proposal-regexp-modifiers)
 
 **Materialized Features**
 These features were behind `shippedProposals` flag in older Babel versions. They are now generally available.
 
 - [class properties](https://github.com/tc39/proposal-class-fields)
+- [Class static block](https://github.com/tc39/proposal-class-static-block)
 - [numeric separator](https://github.com/tc39/proposal-numeric-separator)
+- [Private field brand checks](https://github.com/tc39/proposal-private-fields-in-in)
 - [private methods](https://github.com/tc39/proposal-private-methods)
 
 > You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
