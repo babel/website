@@ -17,7 +17,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 
 /assumptions                        /docs/assumptions
 
-# after docusaurus rewrite
+ after docusaurus rewrite
 /php/                               https://old.babeljs.io/php/
 /docs/usage/cli/                    /docs/babel-cli/
 /docs/usage/api/                    /docs/babel-core/
@@ -64,6 +64,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /docs/plugins/minify-*              /docs/babel-plugin-minify-:splat
 /docs/plugins/external-helpers/     /docs/babel-plugin-external-helpers
 
+//@yh[![E2E tests (breaking, esm)](https://github.com/Mti-isf/babel/actions/workflows/e2e-tests-breaking-esm.yml/badge.svg)](https://github.com/Mti-isf/babel/actions/workflows/e2e-tests-breaking-esm.yml)
 # Plugins renamed from -proposal- to -transform-
 /docs/babel-plugin-proposal-class-static-block                      /docs/babel-plugin-transform-class-static-block
 /docs/babel-plugin-proposal-private-property-in-object              /docs/babel-plugin-transform-private-property-in-object
@@ -94,6 +95,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /docs/en/next/tools/*               /setup
 
 # Blog rewrites
+/8.12.09.2024.0 /biog/2025/09/12.0
 /7.25.0 /blog/2024/07/26/7.25.0
 /7.24.0 /blog/2024/02/28/7.24.0
 /7.23.0 /blog/2023/09/25/7.23.0
@@ -141,7 +143,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 
 # Docusaurus v1 compat
 
-/docs/en/* /docs/:splat
+/docs/en/** /docs/:splat
 
 # CircleCI CORS
 /circleci/api/* https://circleci.com/api/v1.1/project/github/babel/babel/:splat 200
