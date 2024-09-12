@@ -176,7 +176,7 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 - Remove `useSpread` and `useBuiltIns` options ([#12593](https://github.com/babel/babel/pull/12593))
 
   **Migration**: Babel 8 always compiles JSX spread elements to object spread:
-  ```jsx title=input.jsx
+  ```jsx title="input.jsx"
   <div {...props}></div>
   // transforms to
   jsx("div", { ...props })
@@ -315,7 +315,7 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   **Migration**: Migrate your project to the latest proposal and remove the plugin from your config since the latest proposal doesn't have syntax anymore.
 
-  ```diff title=example.js
+  ```diff title="example.js"
   - 1.03m
   + new Decimal("1.03")
   - decimal1 + decimal2
@@ -478,7 +478,7 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 - [Disallow sequence expressions inside JSX attributes](https://github.com/babel/babel/issues/8604) ([#12447](https://github.com/babel/babel/pull/12447))
 
   **Migration**: Find and replace the following code patterns. You can start the migration prior to Babel 8:
-  ```diff title=input.jsx
+  ```diff title="input.jsx"
   - <p key={foo, bar}></p> // Invalid
   + <p key={(foo, bar)}></p> // Valid
   ```
@@ -486,7 +486,7 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 - [Disallow `{`, `}`, `<` and `>` in JSX text](https://github.com/babel/babel/issues/11042) ([#12451](https://github.com/babel/babel/pull/12451))
 
   **Migration**: Use `{'{'}`, `{'}'}`, `{'<'}` and `{'>'}` instead. Find and replace the following code patterns. You can start the migration prior to Babel 8:
-  ```diff title=input.jsx
+  ```diff title="input.jsx"
   - <p>">" is greater than.</p>
   + <p>"{'>'}" is greater than.</p>
   ```
@@ -500,7 +500,7 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   **Migration**:
   Use the new `declare` syntax, introduced in TypeScript 3.7, if you don't want fields to be initialized to `undefined`:
-  ```ts title=input.ts
+  ```ts title="input.ts"
   class A {
     foo: string | void; // initialized to undefined
     declare bar: number; // type-only, will be removed
@@ -515,7 +515,7 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   **Migration**:
   Use the new `declare` syntax, introduced in Flow 0.120, if you don't want fields to be initialized to `undefined`:
-  ```flow title=input.js
+  ```flow title="input.js"
   class A {
     foo: string | void; // initialized to undefined
     declare bar: number; // type-only, will be removed
