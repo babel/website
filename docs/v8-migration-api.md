@@ -334,18 +334,18 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   `is`, `isnt`, `has`, `equals`
   Access `path.node` instead.
   ```diff
-  --- functionExpressionPath.equals("id", idNode)
-  +++ functionExpressionPath.node.id === idNode
+  - functionExpressionPath.equals("id", idNode)
+  + functionExpressionPath.node.id === idNode
 
-  --- functionExpressionPath.is("id")
-  --- functionExpressionPath.has("id")
-  +++ functionExpressionPath.node.id
+  - functionExpressionPath.is("id")
+  - functionExpressionPath.has("id")
+  + functionExpressionPath.node.id
 
-  --- functionExpressionPath.has("arguments")
-  +++ !!functionExpressionPath.node.arguments.length
+  - functionExpressionPath.has("arguments")
+  + !!functionExpressionPath.node.arguments.length
 
-  --- functionExpressionPath.isnt("async")
-  +++ !functionExpressionPath.node.async
+  - functionExpressionPath.isnt("async")
+  + !functionExpressionPath.node.async
   ```
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
