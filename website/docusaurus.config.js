@@ -189,7 +189,7 @@ const siteConfig = {
       respectPrefersColorScheme: true,
     },
     prism: {
-      additionalLanguages: ["flow", "powershell"],
+      additionalLanguages: ["diff", "flow", "powershell"],
       theme: require("./src/theme/prism/light"),
       darkTheme: require("./src/theme/prism/dark"),
       magicComments: [
