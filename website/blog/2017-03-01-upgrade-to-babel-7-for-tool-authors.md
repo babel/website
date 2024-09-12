@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Upgrade to Babel 7 for Tool Authors (WIP)"
-author: Sven SAULEAU, Henry Zhu
+authors: [sven, henry]
 date:   2017-02-29 11:00:00
 categories: announcements
 share_text: "Upgrade to Babel 7 for Tool Authors"
@@ -15,5 +15,7 @@ custom_js_with_timestamps:
 We are moving the migration guide to a docs page instead of a blog post!
 
 ## Check out [v7-migration-api](https://babeljs.io/docs/en/next/v7-migration-api)!
+
+<!-- truncate -->
 
 Refer users to this document for those that create tools that depend on Babel (such as Babel plugins).

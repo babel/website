@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Babel Turns Three"
-author: Henry Zhu
-authorURL: https://twitter.com/left_pad
+authors: henry
 date: 2017-10-05 13:00:00
 categories: announcements
 share_text: "Babel Turns Three"

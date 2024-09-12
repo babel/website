@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Zero-config code transformation with babel-plugin-macros"
-author: Kent C. Dodds
-authorURL: https://twitter.com/kentcdodds
+authors: kent_c_dodds
 date:   2017-09-11 11:00:00
 categories: announcements
 share_text: "Zero-config code transformation with babel-plugin-macros"

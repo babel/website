@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Removing Babel's Stage Presets"
-author: Henry Zhu
-authorURL: https://twitter.com/left_pad
+authors: henry
 date:   2018-07-27 12:00:00
 categories: announcements
 share_text: "Removing Babel's Stage Presets"

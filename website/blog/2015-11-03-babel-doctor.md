@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Babel Doctor"
-author: Sebastian McKenzie
-authorURL: https://twitter.com/sebmck
+authors: sebastian
 date:   2015-11-3 10:30:00
 categories: announcements
 share_text: "Babel Doctor"

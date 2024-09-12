@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "TC39 Standards Track Decorators in Babel"
-author: Nicolò Ribaudo
-authorURL: https://twitter.com/NicoloRibaudo
+authors: nicolò
 date:   2018-09-17 12:00:00
 categories: announcements
 share_text: "TC39 Standards Track Decorators in Babel"

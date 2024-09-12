@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Nearing the 7.0 Release"
-author: Henry Zhu
-authorURL: https://twitter.com/left_pad
+authors: henry
 date:   2017-12-27 21:00:00
 categories: announcements
 share_text: "Nearing the 7.0 Release"

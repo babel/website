@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Function Bind Syntax"
-author: James Kyle
-authorURL: https://twitter.com/thejameskyle
+authors: james_kyle
 date:   2015-05-14 19:30:00
 categories: announcements
 share_text: "New in Babel 5.4: Function Bind Syntax"

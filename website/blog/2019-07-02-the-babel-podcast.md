@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "The Babel Podcast"
-author: Henry Zhu
-authorURL: https://twitter.com/left_pad
+authors: henry
 date:   2019-07-02 0:00:00
 categories: announcements
 share_text: "The Babel Podcast"
