@@ -74,7 +74,7 @@ if (path.isMethod()) {
 
 Suppose we are migrating from vanilla JavaScript to ES Modules. Now that the `this` keyword is equivalent to `undefined` at the top level of an ESModule ([spec](https://tc39.es/ecma262/#sec-module-environment-records-getthisbinding)), we want to replace all top-level `this` to [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis):
 
-```js title=input.js
+```js title="input.js"
 // replace this expression to `globalThis.foo = "top"`
 this.foo = "top";
 
