@@ -378,11 +378,21 @@ When a plugin is specified multiple times, only the first options are considered
 
 - `pipelineOperator`:
 
-  - `proposal` (required, accepted values: `minimal`, `fsharp`, `hack`, ~~`smart`~~ (deprecated))
+  :::babel7
+  - `proposal` (required, accepted values: `fsharp`, `hack`, ~~`minimal`~~, ~~`smart`~~ (deprecated))
     There are several different proposals for the pipeline operator.
     This option chooses which proposal to use.
     See [plugin-proposal-pipeline-operator](plugin-proposal-pipeline-operator.md)
     for more information, including a table comparing their behavior.
+  :::
+
+  :::babel8
+  - `proposal` (required, accepted values: `fsharp`, `hack`)
+    There are several different proposals for the pipeline operator.
+    This option chooses which proposal to use.
+    See [plugin-proposal-pipeline-operator](plugin-proposal-pipeline-operator.md)
+    for more information, including a table comparing their behavior.
+  :::
 
   - `topicToken` (required when `proposal` is `hack`, accepted values: `%`, `#`, `^`, `@@`, `^^`)
     The `hack` proposal uses a “topic” placeholder in its pipe.
