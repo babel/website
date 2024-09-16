@@ -294,6 +294,10 @@ The following plugins are discontinued and their functionality is not available 
 
   **Migration**: Remove the option from your config, since it's now enabled by default. Previously `allowDeclareFields` enables transforming the `declare` syntax introduced in Flow 0.120.0, in Babel 8 we support the syntax without such a flag. See also the [compilation changes](#compilation-change-flow) section.
 
+- Remove `enums` option ([#16792](https://github.com/babel/babel/pull/16792))
+
+  **Migration**: Remove the option from your config. The `enums` option was used to enable Flow enums, which are now supported by default.
+
 - Type check input options ([#12460](https://github.com/babel/babel/pull/12460))
 
   **Migration**: The preset will also report invalid option names. Refer to the [docs](./preset-flow.md#options) and ensure valid usage.
@@ -305,6 +309,10 @@ The following plugins are discontinued and their functionality is not available 
 - Remove `allowDeclareFields` option ([#12457](https://github.com/babel/babel/pull/12457))
 
   **Migration**: Remove the option from your config. You will probably be fine with the new behaviour.
+
+- Remove `enums` option ([#16792](https://github.com/babel/babel/pull/16792))
+
+  **Migration**: Remove the option from your config. The `enums` option was used to enable Flow enums, which are now supported by default.
 
 ### `@babel/parser` {#configuration-change-parser}
 
