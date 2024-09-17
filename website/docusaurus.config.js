@@ -169,6 +169,8 @@ const siteConfig = {
         blog: {
           blogSidebarTitle: "All Blog Posts",
           blogSidebarCount: "ALL",
+          onInlineAuthors: "throw",
+          onUntruncatedBlogPosts: "throw",
           remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
         },
         // ...
