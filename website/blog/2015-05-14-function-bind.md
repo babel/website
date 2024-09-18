@@ -46,7 +46,7 @@ _val = takeWhile.call(_val, x => x.strength > 100);
 _val = forEach.call(_val, x => console.log(x));
 ```
 
-> **Note:** Babel's [output](/repl/#?experimental=true&evaluate=false&loose=false&spec=false&playground=false&code=import%20%7B%20map%2C%20takeWhile%2C%20forEach%20%7D%20from%20%22iterlib%22%3B%0A%0AgetPlayers()%0A%3A%3Amap(x%20%3D%3E%20x.character())%0A%3A%3AtakeWhile(x%20%3D%3E%20x.strength%20%3E%20100)%0A%3A%3AforEach(x%20%3D%3E%20console.log(x))%3B)
+> **Note:** Babel's [output](https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.21&spec=false&loose=false&code_lz=JYWwDg9gTgLgBAbziAhmANHGKDWBTAdQAtgAbPTAM2gFEUBjIuAXzkqghDgCJgY8opYACNuAbgBQEgOZ4YABVIoAngIDOACgCUEgFy7UYDQA84AXgB8cYwDpGKKA35RtO_dnzEyeE-au21GCg8ADtpGCYrAEYABhi3XWooOkZfSzh6CBC1CHIbUghpEy0tMSA&debug=false&forceAllTransforms=false&modules=false&shippedProposals=false&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env%2Creact%2Cstage-2&prettier=false&targets=&version=7.25.6&externalPlugins=%40babel%2Fplugin-proposal-function-bind%407.24.7&assumptions=%7B%7D)
 > looks different than this in order to be more concise.
 
 Using a jquery-like library of virtual methods:
