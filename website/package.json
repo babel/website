@@ -10,9 +10,9 @@
     "serve": "docusaurus serve"
   },
   "devDependencies": {
-    "@docusaurus/core": "^3.0.0",
-    "@docusaurus/preset-classic": "^3.0.0",
-    "@docusaurus/remark-plugin-npm2yarn": "^3.0.0",
+    "@docusaurus/core": "^3.5.2",
+    "@docusaurus/preset-classic": "^3.5.2",
+    "@docusaurus/remark-plugin-npm2yarn": "^3.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^9.0.0",

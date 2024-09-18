@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Babel is used by millions, so why are we running out of money?"
-author: Babel Core Team
+authors: team
 date: 2021-05-10 0:00:00
 categories: announcements
 image: https://i.imgur.com/tJ9p4uS.png

@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Babel's Funding Plans"
-author: Henry Zhu
-authorURL: https://twitter.com/left_pad
+authors: henry
 date: 2019-11-08 12:00:00
 categories: announcements
 share_text: "Babel's Funding Plans"

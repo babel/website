@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "React on ES6+"
-author: Steven Luscher
-authorURL: https://twitter.com/steveluscher
+authors: steven_luscher
 date:   2015-06-07 17:00:00
 categories: announcements
 share_text: "React on ES6+"

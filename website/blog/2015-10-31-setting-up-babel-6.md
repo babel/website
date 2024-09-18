@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Setting up Babel 6"
-author: James Kyle
-authorURL: https://twitter.com/thejameskyle
+authors: james_kyle
 date:   2015-10-31 17:30:00
 categories: announcements
 share_text: "Setting up Babel 6"

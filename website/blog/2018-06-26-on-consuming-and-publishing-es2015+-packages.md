@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "On Consuming (and Publishing) ES2015+ Packages"
-author: Henry Zhu
-authorURL: https://twitter.com/left_pad
+authors: henry
 date:   2018-06-26 12:00:00
 categories: announcements
 share_text: "On Consuming (and Publishing) ES2015+ Packages"

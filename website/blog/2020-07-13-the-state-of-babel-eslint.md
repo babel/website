@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "The State of babel-eslint"
-author: Kai Cataldo
-authorURL: https://kaicataldo.com
+authors: kai
 date:   2020-07-13 0:00:00
 categories: announcements
 share_text: "The State of babel-eslint"

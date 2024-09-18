@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Announcing Babel's New Partnership with trivago!"
-author: Henry Zhu
-authorURL: https://twitter.com/left_pad
+authors: henry
 date:   2018-07-16 12:30:00
 categories: announcements
 share_text: "Announcing Babel's New Partnership with trivago!"

@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Babel <3 React"
-author: James Kyle
-authorURL: https://twitter.com/thejameskyle
+authors: james_kyle
 date:   2015-02-23 10:00:00
 categories: announcements
 share_text: "Babel <3 React"

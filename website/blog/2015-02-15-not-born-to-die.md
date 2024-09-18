@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Not Born to Die"
-author: James Kyle
-authorURL: https://twitter.com/thejameskyle
+authors: james_kyle
 date:   2015-02-15 9:18:00
 categories: announcements
 share_text: "Not Born to Die: 6to5 has been renamed to Babel"
