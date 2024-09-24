@@ -76,6 +76,26 @@ require("@babel/core").transformSync("code", {
   ]
 });
 ```
+## Note on `Symbol.metadata`
+
+When using decorators which either access or modify the metadata in the decorator context, you may need to use `Symbol.metadata`. However, `Symbol.metadata` is not defined globally by default because it is part of an experimental proposal (https://github.com/tc39/proposal-decorator-metadata).
+
+To ensure `Symbol.metadata` is available globally and matches the symbol used by the Babel decorators plugin during transpilation, you need to include a polyfill that defines it.
+
+### Steps to Include the Polyfill
+
+Install `core-js`
+```shell npm2yarn
+npm install core-js
+```
+
+Import the Metadata Polyfill
+
+```js title="Javascript"
+import 'core-js/proposals/decorator-metadata-v2.js';
+```
+
+Note: This import must come before any code that uses decorators or accesses `Symbol.metadata`.
 
 ## Options
 
