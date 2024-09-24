@@ -162,7 +162,7 @@ AST for JSX code is based on [Facebook JSX AST][].
 [import]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#import
 [exportnameddeclaration]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#exportnameddeclaration
 [exportnamespacespecifier]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#exportnamespacespecifier
-[facebook jsx ast]: https://github.com/facebook/jsx/blob/master/AST.md
+[facebook jsx ast]: https://github.com/facebook/jsx/blob/main/AST.md
 
 ### Semver
 
