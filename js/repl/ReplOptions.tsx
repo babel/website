@@ -635,7 +635,7 @@ class ExpandedContainer extends Component<Props, State> {
                   Modules
                 </LinkToDocs>
                 <select
-                  value={envConfig.modules}
+                  value={envConfig.modules + ""}
                   className={styles.envPresetSelect}
                   onChange={this._onEnvPresetSettingChange("modules")}
                   disabled={!envConfig.isEnvPresetEnabled}
