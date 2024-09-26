@@ -531,7 +531,6 @@ class ExpandedContainer extends Component<Props, State> {
                 />
                 Enabled
               </label>
-
               <label className={styles.envPresetRow}>
                 <LinkToDocs
                   className={`${styles.envPresetLabel} ${styles.highlight}`}
@@ -648,36 +647,42 @@ class ExpandedContainer extends Component<Props, State> {
                   <option value="commonjs">commonjs</option>
                 </select>
               </label>
-              <label className={styles.envPresetRow}>
-                <LinkToDocs
-                  className={`${styles.envPresetLabel} ${styles.highlight}`}
-                  section="spec"
-                >
-                  Spec
-                </LinkToDocs>
-                <input
-                  checked={envConfig.isSpecEnabled}
-                  className={styles.envPresetCheckbox}
-                  disabled={!envConfig.isEnvPresetEnabled}
-                  onChange={this._onEnvPresetSettingCheck("isSpecEnabled")}
-                  type="checkbox"
-                />
-              </label>
-              <label className={styles.envPresetRow}>
-                <LinkToDocs
-                  className={`${styles.envPresetLabel} ${styles.highlight}`}
-                  section="loose"
-                >
-                  Loose
-                </LinkToDocs>
-                <input
-                  checked={envConfig.isLooseEnabled}
-                  className={styles.envPresetCheckbox}
-                  disabled={!envConfig.isEnvPresetEnabled}
-                  onChange={this._onEnvPresetSettingCheck("isLooseEnabled")}
-                  type="checkbox"
-                />
-              </label>
+              {(!babelVersion ||
+                compareVersions(babelVersion, "8.0.0") === -1) && (
+                <label className={styles.envPresetRow}>
+                  <LinkToDocs
+                    className={`${styles.envPresetLabel} ${styles.highlight}`}
+                    section="spec"
+                  >
+                    Spec
+                  </LinkToDocs>
+                  <input
+                    checked={envConfig.isSpecEnabled}
+                    className={styles.envPresetCheckbox}
+                    disabled={!envConfig.isEnvPresetEnabled}
+                    onChange={this._onEnvPresetSettingCheck("isSpecEnabled")}
+                    type="checkbox"
+                  />
+                </label>
+              )}
+              {(!babelVersion ||
+                compareVersions(babelVersion, "8.0.0") === -1) && (
+                <label className={styles.envPresetRow}>
+                  <LinkToDocs
+                    className={`${styles.envPresetLabel} ${styles.highlight}`}
+                    section="loose"
+                  >
+                    Loose
+                  </LinkToDocs>
+                  <input
+                    checked={envConfig.isLooseEnabled}
+                    className={styles.envPresetCheckbox}
+                    disabled={!envConfig.isEnvPresetEnabled}
+                    onChange={this._onEnvPresetSettingCheck("isLooseEnabled")}
+                    type="checkbox"
+                  />
+                </label>
+              )}
               {isBugfixesSupported && (
                 <label className={styles.envPresetRow}>
                   <LinkToDocs

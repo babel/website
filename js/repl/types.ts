@@ -32,7 +32,7 @@ export type EnvConfig = {
   isSpecEnabled: boolean;
   isLooseEnabled: boolean;
   builtIns: false | "entry" | "usage";
-  modules: false | "amd" | "umd" | "systemjs" | "commonjs";
+  modules: "false" | "amd" | "umd" | "systemjs" | "commonjs";
   corejs: string | false;
   forceAllTransforms: boolean;
   shippedProposals: boolean;
