@@ -311,6 +311,7 @@ You should enable these features only if you are using an older version.
 | `privateIn` ([proposal](https://github.com/tc39/proposal-private-fields-in-in))           | `#p in obj`                                         |
 | `regexpUnicodeSets` ([proposal](https://github.com/tc39/proposal-regexp-set-notation))    | `/[\p{Decimal_Number}--[0-9]]/v;`                   |
 | `topLevelAwait` ([proposal](https://github.com/tc39/proposal-top-level-await/))           | `await promise` in modules                          |
+| `importAttributes` ([proposal](https://github.com/tc39/proposal-import-attributes))       | `import json from "./foo.json" with { type: "json" };`           |
 
 :::
 
@@ -334,16 +335,6 @@ You should enable these features only if you are using an older version.
 :::note
 When a plugin is specified multiple times, only the first options are considered.
 :::
-
-- `importAttributes`:
-
-  - `deprecatedAssertSyntax` (`boolean`, defaults to `false`)
-
-    When `true`, allow parsing an old version of the import attributes, which used the `assert` keyword instead of `with`.
-
-    :::babel7
-    This matches the syntax originally supported by the `importAssertions` parser plugin.
-    :::
 
 - `decorators`:
 
@@ -415,7 +406,18 @@ When a plugin is specified multiple times, only the first options are considered
     Even when the `jsx` plugin is not enabled, this option disallows using syntax that would be ambiguous with JSX (`<X> y` type assertions and `<X>() => {}` type arguments). It matches the `tsc` behavior when parsing `.mts` and `.mjs` files.
 
 :::babel7
-`@babel/parser` also supports a no-op `importAttributes` plugin, which takes a `deprecatedAssertSyntax: boolean` option. When this option is enabled, it's equivalent to the `deprecatedImportAssert` plugin.
+
+
+- `importAttributes`:
+
+  - `deprecatedAssertSyntax` (`boolean`, defaults to `false`)
+
+    When `true`, allow parsing an old version of the import attributes, which used the `assert` keyword instead of `with`.
+
+    :::babel7
+    This matches the syntax originally supported by the `importAssertions` parser plugin.
+    :::
+
 :::
 
 ### Error codes
