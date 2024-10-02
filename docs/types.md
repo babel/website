@@ -291,7 +291,7 @@ See also `t.isCallExpression(node, opts)` and `t.assertCallExpression(node, opts
 AST Node `CallExpression` shape:
 - `callee`: `Expression | Super | V8IntrinsicIdentifier` (required)
 - `arguments`: `Array<Expression | SpreadElement | ArgumentPlaceholder>` (required)
-- `optional`: `true | false` (default: `null`, excluded from builder function)
+- `optional`: `boolean` (default: `null`, excluded from builder function)
 - `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
@@ -1856,7 +1856,7 @@ AST Node `MemberExpression` shape:
 - `object`: `Expression | Super` (required)
 - `property`: if computed then `Expression` else `Identifier` (required)
 - `computed`: `boolean` (default: `false`)
-- `optional`: `true | false` (default: `null`)
+- `optional`: `boolean` (default: `null`)
 
 Aliases: [`Standardized`](#standardized), [`Expression`](#expression), [`LVal`](#lval)
 
@@ -1916,7 +1916,7 @@ See also `t.isNewExpression(node, opts)` and `t.assertNewExpression(node, opts)`
 AST Node `NewExpression` shape:
 - `callee`: `Expression | Super | V8IntrinsicIdentifier` (required)
 - `arguments`: `Array<Expression | SpreadElement | ArgumentPlaceholder>` (required)
-- `optional`: `true | false` (default: `null`, excluded from builder function)
+- `optional`: `boolean` (default: `null`, excluded from builder function)
 - `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
 - `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
