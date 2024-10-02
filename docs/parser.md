@@ -34,7 +34,7 @@ mind. When in doubt, use `.parse()`.
 
 | Version   | Changes                                            |
 | --------- | -------------------------------------------------- |
-| `v7.25.7` | Added `startIndex`                                 |
+| `v7.26.0` | Added `startIndex`                                 |
 | `v7.23.0` | Added `createImportExpressions`                    |
 | `v7.21.0` | Added `allowNewTargetOutsideFunction` and `annexb` |
 | `v7.16.0` | Added `startColumn`                                |
