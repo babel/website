@@ -277,7 +277,6 @@ require("@babel/parser").parse("code", {
 | `exportDefaultFrom` ([proposal](https://github.com/tc39/ecmascript-export-default-from))                                     | `export v from "mod"`                                            |
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                                                  | `a::b`, `::console.log`                                          |
 | `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))                                                  | `function.sent`                                                  |
-| `importAttributes` ([proposal](https://github.com/tc39/proposal-import-attributes)) <br/> `importAssertions` (⚠️ deprecated)  | `import json from "./foo.json" with { type: "json" };`           |
 | `importReflection` ([proposal](https://github.com/tc39/proposal-import-reflection))                                          | `import module foo from "./foo.wasm";`                           |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                                               | `let m = module { export let y = 1; };`                          |
 | `optionalChainingAssign` ([proposal](https://github.com/tc39/proposal-optional-chaining-assignment))                         | `x?.prop = 2`                                                    |
