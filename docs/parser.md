@@ -222,13 +222,13 @@ require("@babel/parser").parse("code", {
 | `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br/> `decorators-legacy`         | `@a class A {}`                                                  |
 | `decoratorAutoAccessors` ([proposal](https://github.com/tc39/proposal-decorators))                       | `class Example { @reactive accessor myBool = false; }`           |
 | `deferredImportEvaluation` ([proposal](https://github.com/tc39/proposal-defer-import-eval))              | `import defer * as ns from "dep";`                               |
+| `deprecatedImportAssert` (legacy syntax of [import attributes](https://github.com/tc39/proposal-import-attributes)) | `import json from "./foo.json" assert { type: "json" };`           |
 | `destructuringPrivate` ([proposal](https://github.com/tc39/proposal-destructuring-private))              | `class Example { #x = 1; method() { const { #x: x } = this; } }` |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                            | `var a = do { if (true) { 'hi'; } };`                            |
 | `explicitResourceManagement` ([proposal](https://github.com/tc39/proposal-explicit-resource-management)) | `using reader = getReader()`                                     |
 | `exportDefaultFrom` ([proposal](https://github.com/tc39/ecmascript-export-default-from))                 | `export v from "mod"`                                            |
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                              | `a::b`, `::console.log`                                          |
 | `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))                              | `function.sent`                                                  |
-| `deprecatedImportAssert` (legacy syntax of [import attributes](https://github.com/tc39/proposal-import-attributes)) | `import json from "./foo.json" assert { type: "json" };`           |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                           | `let m = module { export let y = 1; };`                          |
 | `optionalChainingAssign` ([proposal](https://github.com/tc39/proposal-optional-chaining-assignment))     | `x?.prop = 2`                                                    |
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                          | `f(?, a)`                                                        |
@@ -270,6 +270,7 @@ require("@babel/parser").parse("code", {
 | `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br/> `decorators-legacy`                             | `@a class A {}`                                                  |
 | `decoratorAutoAccessors` ([proposal](https://github.com/tc39/proposal-decorators))                                           | `class Example { @reactive accessor myBool = false; }`           |
 | `deferredImportEvaluation` ([proposal](https://github.com/tc39/proposal-defer-import-eval))                                  | `import defer * as ns from "dep";`                               |
+| `deprecatedImportAssert` (legacy syntax of [import attributes](https://github.com/tc39/proposal-import-attributes)) <br/> `importAssertions` (⚠️ deprecated)  | `import json from "./foo.json" assert { type: "json" };`           |
 | `destructuringPrivate` ([proposal](https://github.com/tc39/proposal-destructuring-private))                                  | `class Example { #x = 1; method() { const { #x: x } = this; } }` |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                                                | `var a = do { if (true) { 'hi'; } };`                            |
 | `explicitResourceManagement` ([proposal](https://github.com/tc39/proposal-explicit-resource-management))                     | `using reader = getReader()`                                     |
@@ -277,7 +278,6 @@ require("@babel/parser").parse("code", {
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                                                  | `a::b`, `::console.log`                                          |
 | `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))                                                  | `function.sent`                                                  |
 | `importAttributes` ([proposal](https://github.com/tc39/proposal-import-attributes)) <br/> `importAssertions` (⚠️ deprecated)  | `import json from "./foo.json" with { type: "json" };`           |
-| `deprecatedImportAssert` (legacy syntax of [import attributes](https://github.com/tc39/proposal-import-attributes)) <br/> `importAssertions` (⚠️ deprecated)  | `import json from "./foo.json" assert { type: "json" };`           |
 | `importReflection` ([proposal](https://github.com/tc39/proposal-import-reflection))                                          | `import module foo from "./foo.wasm";`                           |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                                               | `let m = module { export let y = 1; };`                          |
 | `optionalChainingAssign` ([proposal](https://github.com/tc39/proposal-optional-chaining-assignment))                         | `x?.prop = 2`                                                    |
