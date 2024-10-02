@@ -9,6 +9,15 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="Jul 2024">
+
+## Babel 7.25.0
+
+[blog post](https://babeljs.io/blog/2024/07/26/7.25.0)
+
+- Enable the Stage 4 [duplicated named capturing groups](https://github.com/tc39/proposal-duplicate-named-capturing-groups/) proposal by default
+
+</li>
 <li data-date="Feb 2024">
 
 ## Babel 7.24.0
