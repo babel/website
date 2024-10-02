@@ -228,7 +228,7 @@ require("@babel/parser").parse("code", {
 | `exportDefaultFrom` ([proposal](https://github.com/tc39/ecmascript-export-default-from))                 | `export v from "mod"`                                            |
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                              | `a::b`, `::console.log`                                          |
 | `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))                              | `function.sent`                                                  |
-| `importAttributes` ([proposal](https://github.com/tc39/proposal-import-attributes))                      | `import json from "./foo.json" with { type: "json" };`           |
+| `deprecatedImportAssert` (legacy syntax of [import attributes](https://github.com/tc39/proposal-import-attributes)) | `import json from "./foo.json" assert { type: "json" };`           |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                           | `let m = module { export let y = 1; };`                          |
 | `optionalChainingAssign` ([proposal](https://github.com/tc39/proposal-optional-chaining-assignment))     | `x?.prop = 2`                                                    |
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                          | `f(?, a)`                                                        |
@@ -277,6 +277,7 @@ require("@babel/parser").parse("code", {
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                                                  | `a::b`, `::console.log`                                          |
 | `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))                                                  | `function.sent`                                                  |
 | `importAttributes` ([proposal](https://github.com/tc39/proposal-import-attributes)) <br/> `importAssertions` (⚠️ deprecated)  | `import json from "./foo.json" with { type: "json" };`           |
+| `deprecatedImportAssert` (legacy syntax of [import attributes](https://github.com/tc39/proposal-import-attributes)) <br/> `importAssertions` (⚠️ deprecated)  | `import json from "./foo.json" assert { type: "json" };`           |
 | `importReflection` ([proposal](https://github.com/tc39/proposal-import-reflection))                                          | `import module foo from "./foo.wasm";`                           |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                                               | `let m = module { export let y = 1; };`                          |
 | `optionalChainingAssign` ([proposal](https://github.com/tc39/proposal-optional-chaining-assignment))                         | `x?.prop = 2`                                                    |
@@ -413,6 +414,10 @@ When a plugin is specified multiple times, only the first options are considered
     This option will enable parsing within a TypeScript ambient context, where certain syntax have different rules (like `.d.ts` files and inside `declare module` blocks). Please see https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html and https://basarat.gitbook.io/typescript/type-system/intro for more information about ambient contexts.
   - `disallowAmbiguousJSXLike` (`boolean`, default `false`)
     Even when the `jsx` plugin is not enabled, this option disallows using syntax that would be ambiguous with JSX (`<X> y` type assertions and `<X>() => {}` type arguments). It matches the `tsc` behavior when parsing `.mts` and `.mjs` files.
+
+:::babel7
+`@babel/parser` also supports a no-op `importAttributes` plugin, which takes a `deprecatedAssertSyntax: boolean` option. When this option is enabled, it's equivalent to the `deprecatedImportAssert` plugin.
+:::
 
 ### Error codes
 
