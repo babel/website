@@ -13,7 +13,6 @@ sidebar_label: Plugins List
 - [decorators](plugin-proposal-decorators.md)
 - [json-modules](plugin-proposal-json-modules.md)
 - [import-wasm-source](plugin-proposal-import-wasm-source.md)
-- [regexp-modifiers](plugin-proposal-regexp-modifiers.md)
 
 #### Early stages
 
@@ -28,7 +27,8 @@ sidebar_label: Plugins List
 
 ### ES2025
 
-- [duplicate-named-capturing-groups-regex](plugin-proposal-duplicate-named-capturing-groups-regex.md)
+- [duplicate-named-capturing-groups-regex](plugin-transform-duplicate-named-capturing-groups-regex.md)
+- [regexp-modifiers](plugin-transform-regexp-modifiers.md)
 
 ### ES2024
 
