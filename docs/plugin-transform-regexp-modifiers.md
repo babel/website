@@ -4,6 +4,10 @@ title: "@babel/plugin-transform-regexp-modifiers"
 sidebar_label: regexp-modifiers
 ---
 
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2025](https://github.com/tc39/proposals/blob/master/finished-proposals.md).
+:::
+
 ## Example
 
 ### `i` modifier
