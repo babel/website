@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-regexp-modifiers
-title: "@babel/plugin-proposal-regexp-modifiers"
+id: babel-plugin-transform-regexp-modifiers
+title: "@babel/plugin-transform-regexp-modifiers"
 sidebar_label: regexp-modifiers
 ---
 
@@ -37,11 +37,18 @@ const regex = /(?:[\s\S])./;
 ```
 
 ### Multiple modifiers
-You can also apply multiple modifiers:
+You can also enable multiple modifiers:
 
 ```js
 // matches Aa, aa, A\naa, etc. but not A\na
 const regex = /(?im:^a)a/
+```
+
+or disable them:
+
+```js
+// matches Aa, aa, A\naa, etc. but not A\na
+const regex = /^a(?-im:a)/im
 ```
 
 This proposal only supports `i`, `m` and `s` as inline modifiers.
@@ -49,7 +56,7 @@ This proposal only supports `i`, `m` and `s` as inline modifiers.
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-regexp-modifiers
+npm install --save-dev @babel/plugin-transform-regexp-modifiers
 ```
 
 ## Usage
@@ -58,24 +65,24 @@ npm install --save-dev @babel/plugin-proposal-regexp-modifiers
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-regexp-modifiers"]
+  "plugins": ["@babel/plugin-transform-regexp-modifiers"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins @babel/@babel/plugin-proposal-regexp-modifiers script.js
+babel --plugins @babel/@babel/plugin-transform-regexp-modifiers script.js
 ```
 
 ### Via Node.js API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync(code, {
-  plugins: ["@babel/plugin-proposal-regexp-modifiers"],
+  plugins: ["@babel/plugin-transform-regexp-modifiers"],
 });
 ```
 
 ## References
 
-- [Proposal: Regular Expression Pattern Modifiers for ECMAScript](https://github.com/tc39/proposal-regexp-modifiers)
+- [Proposal: Regular Expression Pattern Modifiers for ECMAScript](https://github.com/tc39/transform-regexp-modifiers)
