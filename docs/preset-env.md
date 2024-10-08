@@ -487,15 +487,15 @@ The following are currently supported:
 
 **Features**
 
-- [Class static block](https://github.com/tc39/proposal-class-static-block)
-- [Import assertions](https://github.com/tc39/proposal-import-assertions) (parsing only)
-- [Private field brand checks](https://github.com/tc39/proposal-private-fields-in-in)
+- [Import attributes](https://github.com/tc39/proposal-import-attributes) (parsing only)
 
 **Materialized Features**
 These features were behind `shippedProposals` flag in older Babel versions. They are now generally available.
 
 - [class properties](https://github.com/tc39/proposal-class-fields)
+- [Class static block](https://github.com/tc39/proposal-class-static-block)
 - [numeric separator](https://github.com/tc39/proposal-numeric-separator)
+- [Private field brand checks](https://github.com/tc39/proposal-private-fields-in-in)
 - [private methods](https://github.com/tc39/proposal-private-methods)
 
 > You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
