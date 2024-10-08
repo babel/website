@@ -34,8 +34,8 @@ both expression and statement bodies.  Unlike functions, arrows share the same
 lexical `this` as their surrounding code. If an arrow is inside another function,
 it shares the "arguments" variable of its parent function.
 
-```js title="JavaScript"
-// Expression bodies
+`js title="JavaScript"
+Expression bodies
 var odds = evens.map(v => v + 1);
 var nums = evens.map((v, i) => v + i);
 
@@ -63,14 +63,14 @@ function square() {
       numbers.push(number * number);
     }
 
-    return numbers;
+  return numbers;
   };
 
   return example();
 }
 
 square(2, 4, 7.5, 8, 11.5, 21); // returns: [4, 16, 56.25, 64, 132.25, 441]
-```
+``
 
 ### Classes
 
@@ -79,15 +79,15 @@ single convenient declarative form makes class patterns easier to use, and
 encourages interoperability.  Classes support prototype-based inheritance, super
 calls, instance and static methods and constructors.
 
-```js title="JavaScript"
+``js title="JavaScript"
 class SkinnedMesh extends THREE.Mesh {
   constructor(geometry, materials) {
     super(geometry, materials);
 
-    this.idMatrix = SkinnedMesh.defaultMatrix();
+  " this.idMatrix = SkinnedMesh.defaultMatrix();
     this.bones = [];
     this.boneMatrices = [];
-    //...
+    //..
   }
   update(camera) {
     //...
@@ -97,17 +97,13 @@ class SkinnedMesh extends THREE.Mesh {
     return new THREE.Matrix4();
   }
 }
-```
-
-### Enhanced Object Literals
+`` Enhanced Object Literals
 
 Object literals are extended to support setting the prototype at construction,
 shorthand for `foo: foo` assignments, defining methods and making super calls.
 Together, these also bring object literals and class declarations closer
 together, and let object-based design benefit from some of the same
-conveniences.
-
-```js title="JavaScript"
+conveniences.js title="JavaScript"
 var obj = {
     // Sets the prototype. "__proto__" or '__proto__' would also work.
     __proto__: theProtoObj,
@@ -124,7 +120,7 @@ var obj = {
     // Computed (dynamic) property names
     [ "prop_" + (() => 42)() ]: 42
 };
-```
+``
 
 :::caution
 The <code>__proto__</code> property requires native support, and was deprecated in previous ECMAScript versions. Most engines now support the property, but <a href="https://compat-table.github.io/compat-table/es6/#proto-in-object-literals-note">some do not</a>. Also, note that only <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-additional-ecmascript-features-for-web-browsers">web browsers</a> are required to implement it, as it's in <a href="http://www.ecma-international.org/ecma-262/6.0/index.html#sec-object.prototype.__proto__">Annex B</a>. It is available in Node.
@@ -138,12 +134,12 @@ tag can be added to allow the string construction to be customized, avoiding
 injection attacks or constructing higher level data structures from string
 contents.
 
-```js title="JavaScript"
+js title="JavaScript"
 // Basic literal string creation
-`This is a pretty little template string.`
+'This is a pretty little template string.`
 
 // Multiline strings
-`In ES5 this is
+In ES5 this is
  not legal.`
 
 // Interpolate variable bindings
@@ -154,12 +150,12 @@ var name = "Bob", time = "today";
 String.raw`In ES5 "\n" is a line-feed.`
 
 // Construct an HTTP request prefix is used to interpret the replacements and construction
-GET`http://foo.org/bar?a=${a}&b=${b}
+GET http://foo.org/bar?a=${a}&b=${b}
     Content-Type: application/json
     X-Credentials: ${credentials}
     { "foo": ${foo},
       "bar": ${bar}}`(myOnReadyStateChangeHandler);
-```
+``
 
 ### Destructuring
 
@@ -167,7 +163,7 @@ Destructuring allows binding using pattern matching, with support for matching
 arrays and objects.  Destructuring is fail-soft, similar to standard object
 lookup `foo["bar"]`, producing `undefined` values when not found.
 
-```js title="JavaScript"
+`js title="JavaScript"
 // list matching
 var [a, ,b] = [1,2,3];
 a === 1;
