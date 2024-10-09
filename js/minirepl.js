@@ -4,6 +4,7 @@ import debounce from "lodash.debounce";
 
 const miniReplExamples = [
   "element.index ?? -1;",
+  "const a = <h1>hello world</h1>;",
   "const styles = {\n" + "  ...defaults,\n" + '  color: "#f5da55",\n' + "};",
   "const city = address?.city",
   'var name = "Guy Fieri";\nvar place = "Flavortown";\n\n`Hello ${name}, ready for ${place}?`;',
@@ -37,6 +38,7 @@ function setupEditor(id, readOnly) {
     showGutter: false,
     showLineNumbers: false,
     theme: "ace/theme/tomorrow_night",
+    hScrollBarAlwaysVisible: true,
 
     // session
     mode: "ace/mode/javascript",
