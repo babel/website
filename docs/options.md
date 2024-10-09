@@ -3,7 +3,7 @@ title: Options
 id: options
 sidebar_label: Config Options
 ---
-
+v1
 - [Primary options](#primary-options)
 - [Config Loading options](#config-loading-options)
 - [Plugin and Preset configuration](#plugin-and-preset-options)
@@ -13,7 +13,7 @@ sidebar_label: Config Options
 - [Code Generator options](#code-generator-options)
 - [AMD / UMD / SystemJS options](#amd--umd--systemjs-module-options)
 - [Option concepts](#options-concepts)
-
+v2
 Options can be passed to Babel in a variety of ways. When passed directly to Babel,
 you can just pass the options object. When Babel is used via a wrapper, it may also be
 necessary, or at least more useful, to pass the options via [configuration files](config-files.md).
@@ -25,7 +25,7 @@ npx babel --root-mode upward file.js # equivalent of passing the rootMode config
 ```
 
 ## Primary options
-
+v3
 These options are only allowed as part of Babel's programmatic options, so
 they are primarily for use by tools that wrap around Babel, or people calling
 `babel.transform` directly. Users of Babel's integrations, like `babel-loader`
@@ -40,7 +40,7 @@ The working directory that all paths in the programmatic options will be resolve
 relative to.
 
 ### `caller`
-
+v4
 Type: An object with the shape of
 
 ```flow
@@ -79,7 +79,7 @@ would allow plugins and presets to decide that, since ES modules are supported,
 they will skip compilation of ES modules into CommonJS modules.
 
 ### `filename`
-
+v5
 Type: `string`<br />
 
 The filename associated with the code currently being compiled, if there is one.
@@ -112,7 +112,7 @@ are being made, it can be helpful to disable code generation and instead
 use `ast: true` to get the AST directly in order to avoid doing unnecessary work.
 
 ### `ast`
-
+v6
 Type: `boolean`<br />
 Default: `false`<br />
 
@@ -161,7 +161,7 @@ types of configuration files, and those configuration files can have various
 nested configuration objects that apply depending on the configuration.
 
 ### `root`
-
+v7
 Type: `string`<br />
 Default: `opts.cwd`<br />
 Placement: Only allowed in Babel's programmatic options<br />
@@ -210,7 +210,7 @@ will cause Babel to skip loading any [`babel.config.json`](config-files.md#proje
 files in the project root, which can lead to unexpected errors and compilation failure.
 
 ### `envName`
-
+v8
 Type: `string`<br />
 Default: `process.env.BABEL_ENV || process.env.NODE_ENV || "development"`<br />
 Placement: Only allowed in Babel's programmatic options<br />
@@ -221,7 +221,7 @@ available inside configuration functions, plugins, and presets, via the
 [`api.env()`](config-files.md#apienv) function.
 
 ### `configFile`
-
+v9
 Type: `string | boolean`<br />
 Default: `path.resolve(opts.root, "babel.config.json")`, if it exists, `false` otherwise<br />
 Placement: Only allowed in Babel's programmatic options<br />
@@ -237,7 +237,7 @@ If you are linking a specific config file, it is recommended to stick with a
 naming scheme that is independent of the "babelrc" name.
 
 ### `babelrc`
-
+v10.1
 Type: `boolean`<br />
 Default: `true` as long as the `filename` option has been specified<br />
 Placement: Allowed in Babel's programmatic options, or inside of the loaded [`"configFile"`](#configfile). A programmatic option will override a config file one.<br />
@@ -252,7 +252,7 @@ Note: `.babelrc.json` files are only loaded if the current [`"filename"`](#filen
 a package that matches one of the [`"babelrcRoots"`](#babelrcroots) packages.
 
 ### `babelrcRoots`
-
+v10
 Type: `boolean | MatchPattern | Array<MatchPattern>`<br />
 Default: `opts.root`<br />
 Placement: Allowed in Babel's programmatic options, or inside of the loaded `configFile`. A programmatic option will override a config file one.<br />
@@ -281,7 +281,7 @@ babelrcRoots: [
 ## Plugin and Preset options
 
 ### `plugins`
-
+v11
 Type: `Array<PluginEntry | Plugin>` ([`PluginEntry`](#pluginpreset-entries))<br />
 Default: `[]`<br />
 
@@ -323,7 +323,7 @@ support for defining ordering between plugins.
 ## Output targets
 
 ### `targets`
-
+v12
 Type: `string | Array<string> | { [string]: string }`<br />
 Default: `{}`<br />
 Placement: Allowed in Babel's programmatic options, or in config files<br />
@@ -415,7 +415,7 @@ You may also target browsers supporting [ES Modules](https://www.ecma-internatio
 ```
 
 #### `targets.node`
-
+v13
 Type: `string | "current" | true`.
 
 If you want to compile against the current node version, you can specify `"node": true` or `"node": "current"`, which would be the same as `"node": process.versions.node`.
@@ -464,7 +464,7 @@ The minimum supported version is 1.0.
 ```
 
 ### `browserslistConfigFile`
-
+v14
 Type: `boolean`<br />
 Default: `true`<br />
 Placement: Allowed in Babel's programmatic options, or in config files<br />
@@ -475,7 +475,7 @@ Toggles whether or not [browserslist config sources](https://github.com/ai/brows
 If a string is specified, it must represent the path of a browserslist configuration file. Relative paths are resolved relative to the configuration file which specifies this option, or to `cwd` when it's passed as part of the programmatic options.
 
 ### `browserslistEnv`
-
+v15
 Type: `string`<br />
 Default: `undefined`<br />
 Placement: Allowed in Babel's programmatic options, or in config files<br />
@@ -486,7 +486,7 @@ The [Browserslist environment](https://github.com/browserslist/browserslist#conf
 ## Config Merging options
 
 ### `extends`
-
+v15.1
 Type: `string`<br />
 Placement: Not allowed inside of presets<br />
 
@@ -494,7 +494,7 @@ Configs may "extend" other configuration files. Config fields in the current
 config will be [merged](#merging) on top of the extended file's configuration.
 
 ### `env`
-
+v15.2
 Type: `{ [envKey: string]: Options }`<br />
 Placement: May not be nested inside of another `env` block.<br />
 
@@ -505,7 +505,7 @@ Note: `env[envKey]` options will be [merged](#merging) on top of the options spe
 the root object.
 
 ### `overrides`
-
+v16
 Type: `Array<Options>`<br />
 Placement: May not be nested inside of another `overrides` object, or within an `env` block.<br />
 
@@ -524,7 +524,7 @@ could be used to enable the `compact` option for one specific file that is known
 to be large and minified, and tell Babel not to bother trying to print the file nicely.
 
 ### `test`
-
+v17
 Type: `MatchPattern | Array<MatchPattern>` ([`MatchPattern`](#matchpattern))<br />
 
 If all patterns fail to match, the current configuration object is considered
@@ -536,7 +536,7 @@ in earlier sections, since they are taken into account long before the
 configuration that is prepared for merging.
 
 ### `include`
-
+v18
 Type: `MatchPattern | Array<MatchPattern>` ([`MatchPattern`](#matchpattern))<br />
 
 This option is a synonym for [`"test"`](#test).
