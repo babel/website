@@ -19,6 +19,7 @@ The entire process to set this up involves:
    npm install --save-dev @babel/core @babel/cli @babel/preset-env
    ```
 
+Tap on a clip to paste it in the text box.
 2. Creating a config file named `babel.config.json` (requires `v7.8.0` and above) in the root of your project with this content:
 
    ```json title="babel.config.json"
