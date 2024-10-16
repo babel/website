@@ -56,9 +56,6 @@ export default function compile(code: string, config: CompileConfig): Return {
   let envPresetDebugInfo = null;
   let sourceMap = null;
   let useBuiltIns: false | "entry" | "usage" = false;
-  let spec = false;
-  let loose = false;
-  let bugfixes = false;
   let corejs = "3.21";
   const transitions = new Transitions();
   const meta = {
@@ -66,7 +63,17 @@ export default function compile(code: string, config: CompileConfig): Return {
     rawSize: new Blob([code], { type: "text/plain" }).size,
   };
 
-  let presetEnvOptions = {};
+  let presetEnvOptions: {
+    targets: any;
+    modules: any;
+    forceAllTransforms: boolean;
+    shippedProposals: boolean;
+    useBuiltIns: false | "entry" | "usage";
+    corejs: string;
+    spec?: boolean;
+    loose?: boolean;
+    bugfixes?: boolean;
+  };
 
   if (envConfig && envConfig.isEnvPresetEnabled) {
     const targets: any = {};
@@ -93,15 +100,6 @@ export default function compile(code: string, config: CompileConfig): Return {
     if (envConfig.isNodeEnabled) {
       targets.node = envConfig.node;
     }
-    if (envConfig.isSpecEnabled) {
-      spec = envConfig.isSpecEnabled;
-    }
-    if (envConfig.isLooseEnabled) {
-      loose = envConfig.isLooseEnabled;
-    }
-    if (envConfig.isBugfixesEnabled) {
-      bugfixes = envConfig.isBugfixesEnabled;
-    }
 
     presetEnvOptions = {
       targets,
@@ -110,16 +108,23 @@ export default function compile(code: string, config: CompileConfig): Return {
       shippedProposals,
       useBuiltIns,
       corejs: undefined,
-      spec,
-      loose,
     };
 
-    if (useBuiltIns) {
-      (presetEnvOptions as any).corejs = corejs;
+    if (Babel.version && compareVersions(Babel.version, "8.0.0") === -1) {
+      presetEnvOptions.spec = envConfig.isSpecEnabled;
+      presetEnvOptions.loose = envConfig.isLooseEnabled;
     }
 
-    if (Babel.version && compareVersions(Babel.version, "7.9.0") !== -1) {
-      (presetEnvOptions as any).bugfixes = bugfixes;
+    if (useBuiltIns) {
+      presetEnvOptions.corejs = corejs;
+    }
+
+    if (
+      envConfig.isBugfixesEnabled &&
+      Babel.version &&
+      compareVersions(Babel.version, "7.9.0") !== -1
+    ) {
+      presetEnvOptions.bugfixes = envConfig.isBugfixesEnabled;
     }
   }
 
