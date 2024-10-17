@@ -16,16 +16,33 @@ The pipeline operator has several competing proposals.
 Configure which proposal to use with the required `"proposal"` option.
 Its value is `"hack"` by default.
 
+:::babel7
+
 | Value | Proposal | Version added |
 | ----- | -------- | ------------- |
 | `"hack"` | [Hack-style pipes](https://github.com/tc39/proposal-pipeline-operator) | `v7.15.0`
-| ~~`"fsharp"`~~ | [F#-style pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipelines) | `v7.5.0`
+| `"fsharp"` | [F#-style pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipelines) | `v7.5.0`
 | ~~`"minimal"`~~ | [Minimal F#-style pipes](https://github.com/tc39/proposal-pipeline-operator/tree/abb51b3aef5c17d5971808aee49ebe6b75d7280f) | `v7.0.0`
 | ~~`"smart"`~~ | [Smart-mix pipes](https://github.com/js-choi/proposal-smart-pipelines) (deprecated) | `v7.3.0`
 
+:::
+
+:::babel8
+
+| Value | Proposal |
+| ----- | -------- |
+| `"hack"` | [Hack-style pipes](https://github.com/tc39/proposal-pipeline-operator) |
+| `"fsharp"` | [F#-style pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipelines) |
+
+:::
+
 If `"proposal"` is omitted, or if `"proposal": "hack"` is used, then a `"topicToken"` option must be included. The `topicToken` must be one of `"%"`, `"^^"`, `"@@"`, `"^"`, or `"#"`.
 
-The `"proposal": "minimal"`, `"fsharp"`, and `"smart"` options are **deprecated** and subject to removal in a future major version.
+:::babel7
+
+The `"proposal": "minimal"` and `"smart"` options are **deprecated** and subject to removal in a future major version.
+
+:::
 
 ### Examples
 The following examples use `topicToken: "^^"`.
