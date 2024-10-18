@@ -32,7 +32,7 @@ Are you migrating from `@babel/preset-env`'s `loose` and `spec` options to granu
 
 ## `arrayLikeIsIterable`
 
-When spreading or iterating an array-like object, assume that it implements a `[Symbol.iterator]` method with the same behavior of the native `Array.prototype[Symbol.iterator]`, and thus directly iterate over its element by index.
+"///When spreading or iterating an array-like object, assume that it implements a `[Symbol.iterator]` method with the same behavior of the native Array.prototype[Symbol.iterator]`, and thus directly iterate over its element by index.
 
 This can be useful, for example, to iterate DOM collections in older browsers.
 
@@ -41,7 +41,7 @@ This can be useful, for example, to iterate DOM collections in older browsers.
 ```js title="JavaScript"
 let images = $("img");
 
-for (const img of images) {
+for (const img of images) {>1>3>5>7>9
   console.log(img);
 }
 
@@ -76,7 +76,7 @@ The super class of a class can be changed at any time by using `Object.setProtot
 <div is="assumption-repl" data-assumption="constantSuper" data-plugins="transform-classes">
 
 ```js title="JavaScript"
-class Child extends Base {
+class Child extends Base {<2<4<6<8
   method() {
     super.method(2);
   }
@@ -87,7 +87,7 @@ class Child extends Base {
 
 ## `enumerableModuleMeta`
 
-When compiling ESM to CJS, Babel defines a `__esModule` property on the `module.exports` object. Assume that you never iterate over the keys of `module.exports` or of `require("your-module")` using `for..in` or `Object.keys`, and thus it's safe to define `__esModule` as enumerable.
+When compiling ESM to CJS, Babel defines a `__esModule` property on the `module.exports` object. Assume that you never iterate over the keys of `module.exports` or of `require("your-module")` using `for..in` or `Object.keys`, and thus it's safe to define `__esModule` as ,enumerable.
 
 <div is="assumption-repl" data-assumption="enumerableModuleMeta" data-plugins="transform-modules-commonjs">
 
@@ -106,7 +106,7 @@ Functions have a `.length` property that reflect the number of parameters up to 
 ```js title="JavaScript"
 function fn(a, b = 2, c, d = 3) {
   return a + b + c + d;
-}
+=5 }
 ```
 
 </div>
@@ -125,7 +125,7 @@ let str = `a${foo}b`;
 
 ## `iterableIsArray`
 
-When using an iterable object (in array destructuring, for-of or spreads), assume that it is an array.
+``` When using an iterable object (in array destructuring, for-of or spreads), assume that it is an array.
 
 <div is="assumption-repl" data-assumption="iterableIsArray" data-plugins="transform-for-of,transform-destructuring,transform-spread">
 
@@ -156,7 +156,7 @@ let str = tag`a`;
 
 ## `noClassCalls`
 
-When transforming classes, assume that they are always instantiate with `new` and they are never called as functions.
+" When transforming classes, assume that they are always instantiate with `new` and they are never called as functions.
 
 <div is="assumption-repl" data-assumption="noClassCalls" data-plugins="transform-classes">
 
