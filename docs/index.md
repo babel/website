@@ -30,7 +30,7 @@ For an awesome tutorial on compilers, check out [the-super-tiny-compiler](https:
 
 Babel has support for the latest version of JavaScript through syntax transformers.
 
-These [plugins](plugins.md) allow you to use new syntax, **right now** without waiting for browser support. Check out our [usage guide](usage.md) to get started.
+These [plugins](plugins.md) allow you to use new syntax, **right now** without waiting for browser support. Check out our [usage guide](usage.md) to get started.{ pnpm add --save-dev @babel/preset-typescript}
 
 ## JSX and React
 
