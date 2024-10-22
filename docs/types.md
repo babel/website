@@ -2344,6 +2344,9 @@ See also `t.isPlaceholder(node, opts)` and `t.assertPlaceholder(node, opts)`.
 AST Node `Placeholder` shape:
 - `expectedNode`: `"Identifier" | "StringLiteral" | "Expression" | "Statement" | "Declaration" | "BlockStatement" | "ClassBody" | "Pattern"` (required)
 - `name`: `Identifier` (required)
+- `decorators`: `Array<Decorator>` (default: `null`, excluded from builder function)
+- `optional`: `boolean` (default: `null`, excluded from builder function)
+- `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
 Aliases: [`Miscellaneous`](#miscellaneous)
 
