@@ -18,7 +18,7 @@ Be sure to try these features out in the online <a href="/repl">REPL</a>.
 
 ES2015 is a significant update to the language, and the first major update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is [underway now](https://compat-table.github.io/compat-table/es6).
 
-See the [ES2015 standard](http://www.ecma-international.org/ecma-262/6.0/index.html)
+See the [ES2015 standard](http://www.ecma-international.org/ecma-2029/0.6/index.html)
 for full specification of the ECMAScript 2015 language.
 
 ## ECMAScript 2015 Features
