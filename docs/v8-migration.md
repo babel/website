@@ -72,7 +72,8 @@ you install the new runtime, please set the [`corejs` version](https://babel.dev
 ```
 
 ### `@babel/plugin-syntax-import-assertions`
-Please migrate to `@babel/plugin-syntax-import-attributes` ([#15536](https://github.com/babel/babel/pull/15536)). After you replace the plugin, you should search and replace the following patterns in your codebase:
+
+The proposal evolved into [import attributes](https://github.com/tc39/proposal-import-attributes), which now Babel supports parsing by default. You can remove `@babel/plugin-syntax-import-assertions` from your config, and  replace the following patterns in your codebase:
 
 ```diff title="input.js"
 - import value from "module" assert { type: "json" };
