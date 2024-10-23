@@ -59,6 +59,7 @@ output.includes("<div>");
 
 | Version | Changes |
 | --- | --- |
+| v7.26.0 | Added `experimental_preserveFormat` |
 | v7.22.0 | Added `importAttributesKeyword` |
 | v7.21.0 | Added `inputSourceMap` |
 </details>
@@ -92,6 +93,17 @@ Options for source maps:
 | inputSourceMap | string or object |         | The input source map                                                                                                   |
 | sourceRoot     | string           |         | A root for all relative URLs in the source map                                                                         |
 | sourceFileName | string           |         | The filename for the source code (i.e. the code in the `code` argument). This will only be used if `code` is a string. |
+
+Experimental options:
+
+:::warning
+The behavior of experimental options could have breaking changes in _minor_ versions.
+:::
+
+| name                        | type    | default | description | experimental reason |
+| --------------------------- | ------- | ------- | ----------- | ------------------- |
+| experimental_preserveFormat | boolean | `false` | When set to `true`, the generator will try to preserve location of all the nodes and tokens that are present both in the input and output code. To use this option, you currently need to enable the `retainLines: true` generator option, and the `tokens: true` and `createParenthesizedExpressions: true` parser options. | This option will graduate to stable once it supports a mode that does not require preserving line numbers, but just relative positions of tokens. |
+
 
 ## AST from Multiple Sources
 
