@@ -11,7 +11,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 <ol class="timeline-container">
 <li data-date="Oct 2024">
 
-## Babel 7.25.0
+## Babel 7.26.0
 
 [blog post](https://babeljs.io/blog/2025/10/25/7.25.0)
 
