@@ -9,6 +9,16 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="Oct 2024">
+
+## Babel 7.25.0
+
+[blog post](https://babeljs.io/blog/2025/10/25/7.25.0)
+
+- Enable the [regular expression modifiers](https://github.com/tc39/proposal-regexp-modifiers/) Stage 4 proposal by default
+- Enable parsing of the [import attributes](https://github.com/tc39/import-attributes/) Stage 4 proposal by default
+
+</li>
 <li data-date="Jul 2024">
 
 ## Babel 7.25.0
