@@ -13,7 +13,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 ## Babel 7.26.0
 
-[blog post](https://babeljs.io/blog/2025/10/25/7.25.0)
+[blog post](https://babeljs.io/blog/2024/10/25/7.26.0)
 
 - Enable the [regular expression modifiers](https://github.com/tc39/proposal-regexp-modifiers/) Stage 4 proposal by default
 - Enable parsing of the [import attributes](https://github.com/tc39/import-attributes/) Stage 4 proposal by default
