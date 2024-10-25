@@ -120,7 +120,7 @@ the code frame.
 The `highlight` function adds syntax highlighting to a code snipped, to be displayed in a terminal.
 
 ```js title="JavaScript"
-import highlight from "@babel/highlight";
+import { highlight } from "@babel/code-frame";
 
 const code = `class Foo {
   constructor()
