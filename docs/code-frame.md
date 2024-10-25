@@ -137,49 +137,6 @@ class Foo {
 }
 ```
 
-## Upgrading from prior versions
-
-Prior to version 7, the only API exposed by this module was for a single line and optional column pointer. The old API will now log a deprecation warning.
-
-The new API takes a `location` object, similar to what is available in an AST.
-
-This is an example of the deprecated (but still available) API:
-
-```js title="JavaScript"
-import codeFrame from "@babel/code-frame";
-
-const rawLines = `class Foo {
-  constructor()
-}`;
-const lineNumber = 2;
-const colNumber = 16;
-
-const result = codeFrame(rawLines, lineNumber, colNumber, {
-  /* options */
-});
-
-console.log(result);
-```
-
-To get the same highlighting using the new API:
-
-```js title="JavaScript"
-import { codeFrameColumns } from "@babel/code-frame";
-
-const rawLines = `class Foo {
-  constructor() {
-    console.log("hello");
-  }
-}`;
-const location = { start: { line: 2, column: 16 } };
-
-const result = codeFrameColumns(rawLines, location, {
-  /* options */
-});
-
-console.log(result);
-```
-
 ## Migrating from `@babel/highlight`
 
 The `highlight` functionality was originally split in its own package, `@babel/highlight`.
@@ -225,3 +182,50 @@ process.stdout.hasColors() ? highlight(text) : text;
 ```
 
 </td></tr></tbody></table>
+
+:::babel7
+
+## Upgrading from prior versions
+
+Prior to version 7, the only API exposed by this module was for a single line and optional column pointer. The old API will now log a deprecation warning.
+
+The new API takes a `location` object, similar to what is available in an AST.
+
+This is an example of the deprecated (but still available) API:
+
+```js title="JavaScript"
+import codeFrame from "@babel/code-frame";
+
+const rawLines = `class Foo {
+  constructor()
+}`;
+const lineNumber = 2;
+const colNumber = 16;
+
+const result = codeFrame(rawLines, lineNumber, colNumber, {
+  /* options */
+});
+
+console.log(result);
+```
+
+To get the same highlighting using the new API:
+
+```js title="JavaScript"
+import { codeFrameColumns } from "@babel/code-frame";
+
+const rawLines = `class Foo {
+  constructor() {
+    console.log("hello");
+  }
+}`;
+const location = { start: { line: 2, column: 16 } };
+
+const result = codeFrameColumns(rawLines, location, {
+  /* options */
+});
+
+console.log(result);
+```
+
+:::
