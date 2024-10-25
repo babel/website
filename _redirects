@@ -64,6 +64,9 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /docs/plugins/minify-*              /docs/babel-plugin-minify-:splat
 /docs/plugins/external-helpers/     /docs/babel-plugin-external-helpers
 
+# Removed packages
+/docs/babel-highlight /docs/babel-code-frame#migrating-from-babelhighlight
+
 # Plugins renamed from -proposal- to -transform-
 /docs/babel-plugin-proposal-class-static-block                      /docs/babel-plugin-transform-class-static-block
 /docs/babel-plugin-proposal-private-property-in-object              /docs/babel-plugin-transform-private-property-in-object
