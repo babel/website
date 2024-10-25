@@ -620,13 +620,15 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 #### declareExportAllDeclaration
 
 ```js title="JavaScript"
-t.declareExportAllDeclaration(source);
+t.declareExportAllDeclaration(source, attributes);
 ```
 
 See also `t.isDeclareExportAllDeclaration(node, opts)` and `t.assertDeclareExportAllDeclaration(node, opts)`.
 
 AST Node `DeclareExportAllDeclaration` shape:
 - `source`: `StringLiteral` (required)
+- `attributes`: `Array<ImportAttribute>` (default: `null`)
+- `assertions`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
 - `exportKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 
 Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
@@ -636,7 +638,7 @@ Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#
 #### declareExportDeclaration
 
 ```js title="JavaScript"
-t.declareExportDeclaration(declaration, specifiers, source);
+t.declareExportDeclaration(declaration, specifiers, source, attributes);
 ```
 
 See also `t.isDeclareExportDeclaration(node, opts)` and `t.assertDeclareExportDeclaration(node, opts)`.
@@ -645,6 +647,8 @@ AST Node `DeclareExportDeclaration` shape:
 - `declaration`: `Flow` (default: `null`)
 - `specifiers`: `Array<ExportSpecifier | ExportNamespaceSpecifier>` (default: `null`)
 - `source`: `StringLiteral` (default: `null`)
+- `attributes`: `Array<ImportAttribute>` (default: `null`)
+- `assertions`: `Array<ImportAttribute>` (default: `null`, excluded from builder function)
 - `default`: `boolean` (default: `null`, excluded from builder function)
 
 Aliases: [`Flow`](#flow), [`FlowDeclaration`](#flowdeclaration), [`Statement`](#statement), [`Declaration`](#declaration)
@@ -3138,6 +3142,7 @@ AST Node `TSModuleDeclaration` shape:
 - `body`: `TSModuleBlock | TSModuleDeclaration` (required)
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 - `global`: `boolean` (default: `null`, excluded from builder function)
+- `kind`: `"global" | "module" | "namespace"` (required)
 
 Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`](#declaration)
 
