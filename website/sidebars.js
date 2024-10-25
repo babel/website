@@ -47,7 +47,9 @@ module.exports = {
               label: "ES2025",
               items: [
                 "babel-plugin-transform-duplicate-named-capturing-groups-regex",
+                "babel-plugin-transform-json-modules",
                 "babel-plugin-transform-regexp-modifiers",
+                "babel-plugin-syntax-import-attributes",
               ],
             },
             {
@@ -253,8 +255,6 @@ module.exports = {
         "babel-plugin-proposal-decorators",
         "babel-plugin-proposal-explicit-resource-management",
         "babel-plugin-proposal-import-wasm-source",
-        "babel-plugin-proposal-json-modules",
-        "babel-plugin-syntax-import-attributes",
       ],
       "Early stages": [
         "babel-plugin-proposal-async-do-expressions",

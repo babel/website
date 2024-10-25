@@ -83,6 +83,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /docs/babel-plugin-proposal-export-namespace-from                   /docs/babel-plugin-transform-export-namespace-from
 /docs/babel-plugin-proposal-duplicate-named-capturing-groups-regex  /docs/babel-plugin-transform-duplicate-named-capturing-groups-regex
 /docs/babel-plugin-proposal-regexp-modifiers                        /docs/babel-plugin-transform-regexp-modifiers
+/docs/babel-plugin-proposal-json-modules                            /docs/babel-plugin-transform-json-modules
 
 # Legacy redirects
 /docs/en/babel-plugin-transform-decorators                      /docs/babel-plugin-proposal-decorators

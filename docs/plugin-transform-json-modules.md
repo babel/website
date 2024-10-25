@@ -1,6 +1,6 @@
 ---
-id: babel-plugin-proposal-json-modules
-title: "@babel/plugin-proposal-json-modules"
+id: babel-plugin-transform-json-modules
+title: "@babel/plugin-transform-json-modules"
 sidebar_label: json-modules
 ---
 
@@ -63,7 +63,7 @@ will be transformed to
 ## Installation
 
 ```shell npm2yarn
-npm install --save-dev @babel/plugin-proposal-json-modules
+npm install --save-dev @babel/plugin-transform-json-modules
 ```
 
 ## Usage
@@ -72,21 +72,21 @@ npm install --save-dev @babel/plugin-proposal-json-modules
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-proposal-json-modules"]
+  "plugins": ["@babel/plugin-transform-json-modules"]
 }
 ```
 
 ### Via CLI
 
 ```sh title="Shell"
-babel --plugins=@babel/plugin-proposal-json-modules script.js
+babel --plugins=@babel/plugin-transform-json-modules script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-proposal-json-modules"],
+  plugins: ["@babel/plugin-transform-json-modules"],
 });
 ```
 
