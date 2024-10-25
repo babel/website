@@ -119,6 +119,9 @@ function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
 }
 
 const siteConfig = {
+  future: {
+    experimental_faster: (process.env.DOCUSAURUS_FASTER ?? 'true') === 'true',
+  },
   titleDelimiter: "·",
   baseUrl: "/",
   favicon: "img/favicon.png",
