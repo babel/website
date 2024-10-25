@@ -34,6 +34,7 @@ mind. When in doubt, use `.parse()`.
 
 | Version   | Changes                                            |
 | --------- | -------------------------------------------------- |
+| `v7.26.0` | Added `startIndex`                                 |
 | `v7.23.0` | Added `createImportExpressions`                    |
 | `v7.21.0` | Added `allowNewTargetOutsideFunction` and `annexB` |
 | `v7.16.0` | Added `startColumn`                                |
@@ -97,6 +98,9 @@ mind. When in doubt, use `.parse()`.
 - **startColumn**: By default, the parsed code is treated as if it starts from line 1, column 0. You can provide a column number to alternatively start with. Useful for integration with other source tools.
 
 - **startLine**: By default, the parsed code is treated as if it starts from line 1, column 0. You can provide a line number to alternatively start with. Useful for integration with other source tools.
+
+- **startIndex**: By default, all source indexes start from 0. With this option you can provide an alternative start index.
+  To ensure accurate AST source indexes this option should always be provided when `startLine` is greater than 1. Useful for integration with other source tools.
 
 - **strictMode**: By default, ECMAScript code is parsed as strict only if a
   `"use strict";` directive is present or if the parsed file is an ECMAScript
