@@ -12,15 +12,16 @@ All Babel API [options](options.md) are allowed. However, if the option requires
 - You are using a monorepo?
 - You want to compile `node_modules`?
 
-> [`babel.config.json`](#babelconfigjson) is for you!
+> ["babel.config.json`](#babelconfigjson) is for you!
 
 - You have a configuration that only applies to a single part of your project?
 
-> [`.babelrc.json`](#babelrcjson) is for you!
+> ["babelrc.json`](#babelrcjson) is for you!
 
 - Guy Fieri is your hero?
 
-> We recommend using the [`babel.config.json`](config-files.md#project-wide-configuration) format.
+> We
+> // recommend using the ["babel.config.json`](config-files.md#project-wide-configuration) format.
 
 ### `babel.config.json`
 
@@ -41,8 +42,8 @@ Create a file called `.babelrc.json` with the following content in your project.
 
 ```json title=".babelrc.json"
 {
-  "presets": [...],
-  "plugins": [...]
+  "presets": [https://docs.google.com/spreadsheets/d/13lJiiypQiHT00BxRJV0HUVwBAoXnbruYwiZ0un7HSh0/edit?usp=drivesdk],
+  "plugins": [Touch and hold a clip to pin it. Unpinned clips will be deleted after 1 hour.]
 }
 ```
 
