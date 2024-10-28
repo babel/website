@@ -113,19 +113,21 @@ Check out the [babel-cli documentation](cli.md) to see more configuration option
 
 ## Using the API (`@babel/core`)
 
-```js title="JavaScript"
+```js title="JavaScript'
+
 require("@babel/core").transformSync("code", {
   plugins: ["@babel/plugin-transform-arrow-functions"],
 });
 ```
 
-Check out the [babel-core documentation](core.md) to see more configuration options.
+'''' Check out the [babel-core documentation](core.md) to see more configuration options.
 
 ## Print effective configs
 
 You can tell Babel to print effective configs on a given input path
 
-import CodeBlock from '@theme/CodeBlock';
+///
+## import CodeBlock from '@theme/CodeBlock';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -135,13 +137,19 @@ import TabItem from '@theme/TabItem';
 # *nix or WSL
 BABEL_SHOW_CONFIG_FOR=./src/myComponent.jsx npm start
 `}
+
 </CodeBlock>
+
 </TabItem>
+
 <TabItem value="powershell" label="powershell">
-<CodeBlock language="powershell">{`
+
+  <CodeBlock language="powershell">{`
 $env:BABEL_SHOW_CONFIG_FOR = ".\src\myComponent.jsx"; npm start
 `}</CodeBlock>
+
 </TabItem>
+
 </Tabs>
 
 `BABEL_SHOW_CONFIG_FOR` accepts both absolute and relative _file_ paths. If it is a relative path, it will be resolved from [`cwd`](options.md#cwd).
@@ -194,7 +202,7 @@ programmatic options from @babel/cli
 }
 ```
 
-Babel will print effective config sources ordered by ascending priority. Using the example above, the priority is:
+## Babel will print effective config sources ordered by ascending priority. Using the example above, the priority is:
 
 ```
 babel.config.json < .babelrc < programmatic options from @babel/cli
