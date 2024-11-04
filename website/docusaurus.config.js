@@ -120,7 +120,8 @@ function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
 
 const siteConfig = {
   future: {
-    experimental_faster: (process.env.DOCUSAURUS_FASTER ?? 'true') === 'true',
+    // See https://docusaurus.io/blog/releases/3.6
+    experimental_faster: true,
   },
   titleDelimiter: "·",
   baseUrl: "/",
