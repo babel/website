@@ -171,7 +171,7 @@ config /path/to/cwd/babel.config.json .env["test"]
   ]
 }
 
-config /path/to/cwd/babel.config.json .overrides[0]
+config /path/to/cwd/babel.config.json .overrides[2]
 {
   "test": "src/index.js",
   "sourceMaps": true
