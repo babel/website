@@ -9,7 +9,7 @@ title: "@babel/parser"
 
 - The latest ECMAScript version enabled by default (ES2020).
 - Comment attachment.
-- Support for JSX, Flow, Typescript.
+- Support for JSX, Flow, TypeScript.
 - Support for experimental language proposals (accepting PRs for anything at least [stage-0](https://github.com/tc39/proposals/blob/master/stage-0-proposals.md)).
 
 ## Credits
