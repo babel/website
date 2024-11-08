@@ -5,10 +5,9 @@ import debounce from "lodash.debounce";
 const miniReplExamples = [
   "/(?i:a)b/",
   `using Flavortown = from(#["Guy Fieri"]);`,
-  `let result = do {
-  next(yourTurn);
-  emit("Type some code in here!")
-}`,
+  // use next(yourTurn) = throw "some code in here!"
+  // when we support extractors
+  `let yourTurn = throw "some code in here!"`,
 ];
 
 let inEditor;
@@ -118,7 +117,7 @@ function compileCode(sourceEditor, targetEditor) {
         ["external-helpers", { helperVersion: "7.100.0" }],
         ["proposal-explicit-resource-management"],
         ["proposal-record-and-tuple"],
-        ["proposal-do-expressions"],
+        ["proposal-throw-expressions"],
       ],
       filename: "repl.tsx",
       babelrc: false,
