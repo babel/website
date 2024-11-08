@@ -3,15 +3,8 @@
 import debounce from "lodash.debounce";
 
 const miniReplExamples = [
-  `@define("my-element")
-class MyElement {}`,
-  `element
-|> jQuery.parseHTML(match[1], %, true)
-|> jQuery.merge(%);`,
-  `const name = #["Guy Fieri"][0];
-const place = #["Flavortown"][0];
-#{ "Hello": name, "ready for": place }?
-"yes" : "no"`,
+  "/(?i:a)b/",
+  `using Flavortown = from(#["Guy Fieri"]);`,
   `let result = do {
   next(yourTurn);
   emit("Type some code in here!")
@@ -123,8 +116,7 @@ function compileCode(sourceEditor, targetEditor) {
       ],
       plugins: [
         ["external-helpers", { helperVersion: "7.100.0" }],
-        ["proposal-decorators", { version: "2023-01" }],
-        ["proposal-pipeline-operator", { proposal: "hack", topicToken: "%" }],
+        ["proposal-explicit-resource-management"],
         ["proposal-record-and-tuple"],
         ["proposal-do-expressions"],
       ],
