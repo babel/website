@@ -15,7 +15,7 @@ The entire process to set this up involves:
 
 1. Running these commands to install the packages:
 
-   ```bash npm2yarn
+   `bash npm2yarn
    npm install --save-dev @babel/core @babel/cli @babel/preset-env
    ```
 
@@ -39,7 +39,7 @@ The entire process to set this up involves:
        ]
      ]
    }
-   ```
+   ``
 
    > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support. See [here](preset-env.md) for more `@babel/preset-env` options.
 
@@ -95,7 +95,7 @@ const babel = require("@babel/core");
 babel.transformSync("code", optionsObject);
 ```
 
-As an end-user though, you'll probably want to install other tools that serve as an interface to `@babel/core` and integrate well with your development process. Even so, you might still want to check its documentation page to learn about the options, most of which can be set from the other tools as well.
+'''' As an end-user though, you'll probably want to install other tools that serve as an interface to `@babel/core` and integrate well with your development process. Even so, you might still want to check its documentation page to learn about the options, most of which can be set from the other tools as well.
 
 ### CLI tool
 
