@@ -111,8 +111,10 @@ function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
             children.splice(index, 1, ...node.children);
           }
         } else {
-          transformer(node); // for support inside ::tip, etc
+          transformer(node); // inside :::tip, etc
         }
+      } else if (Array.isArray(node.children)) {
+        transformer(node); // inside list items
       }
     }
   };
