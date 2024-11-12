@@ -348,18 +348,18 @@ When a plugin is specified multiple times, only the first options are considered
 
   - `decoratorsBeforeExport` (`boolean`)
 
-        By default decorators on exported classes can be placed either before or after the `export` keyword. When this option is set, decorators will only be allowed in the specified position.
+    By default decorators on exported classes can be placed either before or after the `export` keyword. When this option is set, decorators will only be allowed in the specified position.
 
-        ```js title="JavaScript"
-        // decoratorsBeforeExport: true
-        @dec
-        export class C {}
+    ```js title="JavaScript"
+    // decoratorsBeforeExport: true
+    @dec
+    export class C {}
 
-        // decoratorsBeforeExport: false
-        export @dec class C {}
-        ```
+    // decoratorsBeforeExport: false
+    export @dec class C {}
+    ```
 
-        :::caution
+    :::caution
 
     This option is deprecated and will be removed in a future version. Code that is valid when this option is explicitly set to `true` or `false` is also valid when this option is not set.
     :::
@@ -421,16 +421,13 @@ When a plugin is specified multiple times, only the first options are considered
 
 :::babel7
 
-
 - `importAttributes`:
 
   - `deprecatedAssertSyntax` (`boolean`, defaults to `false`)
 
     When `true`, allow parsing an old version of the import attributes, which used the `assert` keyword instead of `with`.
 
-    :::babel7
     This matches the syntax originally supported by the `importAssertions` parser plugin.
-    :::
 
 :::
 
