@@ -1,4 +1,4 @@
-import { css, type Interpolation } from "@emotion/css";
+import { css, type CSSInterpolation } from "@emotion/css";
 import CodeMirror from "./CodeMirror";
 import React from "react";
 import { colors } from "./styles";
@@ -9,7 +9,10 @@ type Props = {
   errorMessage: string | undefined | null;
   info?: string | null;
   onChange?: (value: string) => void;
-  options: any;
+  options: {
+    fileSize: boolean;
+    lineWrapping: boolean;
+  };
   placeholder?: string;
   fileSize: string;
 };
@@ -30,7 +33,7 @@ export default function CodeMirrorPanel(props: Props) {
         <CodeMirror
           onChange={onChange}
           options={{
-            ...props.options,
+            lineWrapping: options.lineWrapping,
             readOnly: onChange == null,
           }}
           placeholder={props.placeholder}
@@ -45,7 +48,7 @@ export default function CodeMirrorPanel(props: Props) {
   );
 }
 
-const sharedBoxStyles: Interpolation = {
+const sharedBoxStyles: CSSInterpolation = {
   flex: "0 0 auto",
   maxHeight: "33%",
   overflow: "auto",

@@ -45,7 +45,6 @@ const config = {
     }),
   ],
   externals: {
-    codemirror: "CodeMirror",
     "lz-string": "LZString",
   },
   performance: {

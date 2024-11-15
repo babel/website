@@ -1,138 +1,134 @@
-import { injectGlobal, css } from "@emotion/css";
-import CodeMirror from "codemirror";
-import React from "react";
-import { colors } from "./styles";
+import {
+  Compartment,
+  EditorState,
+  basicSetup,
+  EditorView,
+  placeholder as placeholderExtension,
+  oneDark,
+  tsxLanguage,
+} from "../cm6.mjs";
+// Only use type imports for @codemirror/* so that CodeMirror.tsx can share
+// the cm6.mjs with the mini-repl.js component
+import { type EditorState as EditorStateType } from "@codemirror/state";
+import {
+  type ViewUpdate,
+  type EditorView as EditorViewType,
+} from "@codemirror/view";
+import { injectGlobal } from "@emotion/css";
 import { preferDarkColorScheme } from "./Utils";
-
-const DEFAULT_CODE_MIRROR_OPTIONS = {
-  autoCloseBrackets: true,
-  keyMap: "sublime",
-  lineNumbers: true,
-  matchBrackets: true,
-  mode: "text/jsx",
-  showCursorWhenSelecting: true,
-  styleActiveLine: true,
-  tabWidth: 2,
-  theme: preferDarkColorScheme() ? "darcula" : "default",
-};
+import React, { useRef, useEffect } from "react";
 
 type Props = {
-  autoFocus: boolean;
-  onChange: (value: string) => void;
-  options: any;
+  onChange: (value: string) => void | null;
+  options: {
+    lineWrapping: boolean;
+    readOnly: boolean;
+  };
   placeholder?: string;
   value: string | undefined | null;
   preserveScrollPosition: boolean;
 };
 
-type State = {
-  isFocused: boolean;
-};
+export default function ReactCodeMirror({
+  value,
+  onChange,
+  options,
+  placeholder,
+  preserveScrollPosition,
+}: Props) {
+  const parentRef = useRef<HTMLDivElement>(null);
+  const viewRef = useRef<EditorViewType>(null);
+  const lineWrappingCompartment = new Compartment();
 
-export default class ReactCodeMirror extends React.Component<Props, State> {
-  static defaultProps = {
-    autoFocus: false,
-    preserveScrollPosition: false,
-    // eslint-disable-next-line no-unused-vars
-    onChange: (value: string) => {},
-  };
-
-  state = {
-    isFocused: false,
-  };
-
-  _codeMirror: any;
-  _textAreaRef: HTMLTextAreaElement | null;
-
-  componentDidMount() {
-    this._codeMirror = CodeMirror.fromTextArea(this._textAreaRef, {
-      ...DEFAULT_CODE_MIRROR_OPTIONS,
-      ...this.props.options,
+  useEffect(() => {
+    const editorState: EditorStateType = EditorState.create({
+      doc: value,
+      extensions: [
+        basicSetup,
+        tsxLanguage,
+        preferDarkColorScheme() ? oneDark : false,
+        // We don't use compartment here since readonly can not be changed from UI
+        EditorView.editable.of(!options.readOnly),
+        placeholderExtension(placeholder),
+        lineWrappingCompartment.of([]),
+        onChange &&
+          EditorView.updateListener.of((update: ViewUpdate) => {
+            if (update.docChanged) {
+              onChange(update.state.doc.toString());
+            }
+          }),
+        EditorView.theme({
+          "&": {
+            height: "100%",
+            maxHeight: "100%",
+          },
+        }),
+      ].filter(Boolean),
     });
-    this._codeMirror.on("change", this._onChange);
-    this._codeMirror.setValue(this.props.value || "");
-  }
 
-  componentWillUnmount() {
-    // is there a lighter-weight way to remove the cm instance?
-    if (this._codeMirror) {
-      this._codeMirror.toTextArea();
+    viewRef.current ??= new EditorView({
+      state: editorState,
+      parent: parentRef.current,
+    });
+
+    return () => {
+      if (viewRef.current) {
+        viewRef.current.destroy();
+        viewRef.current = null;
+      }
+    };
+  }, []);
+
+  // handle value prop updates
+  useEffect(() => {
+    if (value == null) {
+      return;
     }
-  }
+    const currentValue = viewRef.current?.state.doc.toString();
+    if (viewRef.current && value !== currentValue) {
+      viewRef.current.dispatch({
+        changes: {
+          from: 0,
+          to: currentValue.length,
+          insert: value,
+        },
+        effects: [
+          preserveScrollPosition &&
+            EditorView.scrollIntoView(0, {
+              yMargin: -viewRef.current.scrollDOM.scrollTop,
+            }),
+        ].filter(Boolean),
+      });
+    }
+  }, [value]);
 
-  UNSAFE_componentWillReceiveProps(nextProps: Props) {
-    if (
-      nextProps.value &&
-      nextProps.value !== this.props.value &&
-      this._codeMirror.getValue() !== nextProps.value
-    ) {
-      if (nextProps.preserveScrollPosition) {
-        const prevScrollPosition = this._codeMirror.getScrollInfo();
-        this._codeMirror.setValue(nextProps.value);
-        this._codeMirror.scrollTo(
-          prevScrollPosition.left,
-          prevScrollPosition.top
-        );
+  // handle lineWrapping updates
+  useEffect(() => {
+    if (viewRef.current) {
+      // todo: investigate why the dispatch does not work and remove the DOM manipulations below
+      // viewRef.current.dispatch({
+      //   effects: lineWrappingCompartment.reconfigure(
+      //     options.lineWrapping ? EditorView.lineWrapping : []
+      //   ),
+      // });
+      if (options.lineWrapping) {
+        parentRef.current
+          .querySelector(".cm-content")
+          .classList.add("cm-lineWrapping");
       } else {
-        this._codeMirror.setValue(nextProps.value);
-      }
-    } else if (!nextProps.value) {
-      this._codeMirror.setValue("");
-    }
-
-    if (typeof nextProps.options === "object") {
-      for (const optionName in nextProps.options) {
-        if (nextProps.options.hasOwnProperty(optionName)) {
-          this._updateOption(optionName, nextProps.options[optionName]);
-        }
+        parentRef.current
+          .querySelector(".cm-content")
+          .classList.remove("cm-lineWrapping");
       }
     }
-  }
+  }, [options.lineWrapping]);
 
-  focus() {
-    if (this._codeMirror) {
-      this._codeMirror.focus();
-    }
-  }
-
-  render() {
-    return (
-      <textarea
-        autoComplete="off"
-        autoFocus={this.props.autoFocus}
-        defaultValue={this.props.value}
-        ref={this._setTextAreaRef}
-        placeholder={this.props.placeholder}
-      />
-    );
-  }
-
-  _updateOption(optionName: string, newValue: any) {
-    const oldValue = this._codeMirror.getOption(optionName);
-
-    if (oldValue !== newValue) {
-      this._codeMirror.setOption(optionName, newValue);
-    }
-  }
-
-  _onChange = (doc: any, change: any) => {
-    if (change.origin !== "setValue") {
-      this.props.onChange(doc.getValue());
-    }
-  };
-
-  _setTextAreaRef = (ref: HTMLTextAreaElement | null) => {
-    this._textAreaRef = ref;
-  };
+  return <div ref={parentRef} className="CodeMirror" />;
 }
 
 injectGlobal({
   ".CodeMirror": {
     height: "100% !important",
-    width: "100% !important",
-    WebkitOverflowScrolling: "touch",
+    background: "#fff",
   },
-  ".CodeMirror pre.CodeMirror-placeholder.CodeMirror-line-like": css({
-    color: colors.foregroundLight,
-  }),
 });
