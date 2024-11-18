@@ -225,6 +225,7 @@ module.exports = {
         "babel-parser",
         "babel-core",
         "babel-generator",
+        "babel-compat-data",
         "babel-code-frame",
         "babel-runtime",
         "babel-template",
