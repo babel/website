@@ -199,7 +199,7 @@ const styles = {
 
     .ais-PoweredBy-logo {
       height: 20px;
-      width: 74px;
+      width: 148px;
 
       path:last-child {
         fill: #fff !important;
