@@ -1,37 +1,12 @@
 import { css } from "@emotion/css";
 import React from "react";
-import { connectSearchBox } from "react-instantsearch-dom";
-
-import type { ChangeEvent } from "react";
+import { useSearchBox } from "react-instantsearch";
 
 type Props = {
-  currentRefinement: string | undefined | null;
+  query: string | undefined | null;
   inputRef: () => void;
   refine: (value: string) => void;
 };
-
-export class SearchBox extends React.PureComponent<Props> {
-  handleChange = (event: ChangeEvent<any>) => {
-    this.props.refine(event.target.value);
-  };
-
-  render() {
-    return (
-      <input
-        className={style}
-        onChange={this.handleChange}
-        placeholder="Type in a package name (ex. babel-plugin-lodash)"
-        ref={this.props.inputRef}
-        type="text"
-        value={this.props.currentRefinement}
-        autoComplete="off"
-        autoCorrect="off"
-        autoCapitalize="off"
-        spellCheck="false"
-      />
-    );
-  }
-}
 
 const style = css`
   background: #191a1f;
@@ -48,6 +23,25 @@ const style = css`
   }
 `;
 
-const ConnectedSearchBox = connectSearchBox(SearchBox);
+function SearchBox({ query, refine, inputRef }: Props) {
+  return (
+    <input
+      className={style}
+      onChange={(event) => refine(event.currentTarget.value)}
+      placeholder="Type in a package name (ex. babel-plugin-lodash)"
+      ref={inputRef}
+      type="text"
+      value={query}
+      autoComplete="off"
+      autoCorrect="off"
+      autoCapitalize="off"
+      spellCheck="false"
+    />
+  );
+}
+
+function ConnectedSearchBox(props) {
+  return <SearchBox {...useSearchBox(props)} />;
+}
 
 export default ConnectedSearchBox;

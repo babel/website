@@ -7,7 +7,7 @@ import {
   InstantSearch,
   Pagination,
   PoweredBy,
-} from "react-instantsearch-dom";
+} from "react-instantsearch";
 import SearchBox from "./ExternalPluginsSearchBox";
 import Modal from "./Modal";
 import { colors, media } from "./styles";
