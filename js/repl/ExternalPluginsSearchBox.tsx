@@ -4,7 +4,6 @@ import { useSearchBox } from "react-instantsearch";
 
 type Props = {
   query: string | undefined | null;
-  inputRef: () => void;
   refine: (value: string) => void;
 };
 
@@ -23,18 +22,18 @@ const style = css`
   }
 `;
 
-function SearchBox({ query, refine, inputRef }: Props) {
+function SearchBox({ query, refine }: Props) {
   return (
     <input
       className={style}
       onChange={(event) => refine(event.currentTarget.value)}
       placeholder="Type in a package name (ex. babel-plugin-lodash)"
-      ref={inputRef}
       type="text"
       value={query}
       autoComplete="off"
       autoCorrect="off"
       autoCapitalize="off"
+      autoFocus
       spellCheck="false"
     />
   );

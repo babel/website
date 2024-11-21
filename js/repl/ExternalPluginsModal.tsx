@@ -43,14 +43,6 @@ type Props = {
 };
 
 export default class ExternalPluginsModal extends React.Component<Props> {
-  _input: HTMLInputElement | undefined | null;
-
-  componentDidMount() {
-    if (this._input) {
-      this._input.focus();
-    }
-  }
-
   handleSelectPlugin = (hit: SearchHit) => {
     this.props.onPluginSelect(hit);
     this.props.onClose();
@@ -104,7 +96,7 @@ export default class ExternalPluginsModal extends React.Component<Props> {
               filters={filters}
             />
             <div className={styles.modalSearch}>
-              <SearchBox inputRef={(x) => (this._input = x)} />
+              <SearchBox />
               <label>
                 <input
                   checked={officialOnly}
