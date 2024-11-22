@@ -38,7 +38,7 @@ export default function ReactCodeMirror({
 }: Props) {
   const parentRef = useRef<HTMLDivElement>(null);
   const viewRef = useRef<EditorViewType>(null);
-  const lineWrappingCompartment = new Compartment();
+  const lineWrappingCompartmentRef = useRef<Compartment>(new Compartment());
 
   useEffect(() => {
     const editorState: EditorStateType = EditorState.create({
@@ -50,7 +50,7 @@ export default function ReactCodeMirror({
         // We don't use compartment here since readonly can not be changed from UI
         EditorView.editable.of(!options.readOnly),
         placeholderExtension(placeholder),
-        lineWrappingCompartment.of([]),
+        lineWrappingCompartmentRef.current.of([]),
         onChange &&
           EditorView.updateListener.of((update: ViewUpdate) => {
             if (update.docChanged) {
@@ -105,21 +105,11 @@ export default function ReactCodeMirror({
   // handle lineWrapping updates
   useEffect(() => {
     if (viewRef.current) {
-      // todo: investigate why the dispatch does not work and remove the DOM manipulations below
-      // viewRef.current.dispatch({
-      //   effects: lineWrappingCompartment.reconfigure(
-      //     options.lineWrapping ? EditorView.lineWrapping : []
-      //   ),
-      // });
-      if (options.lineWrapping) {
-        parentRef.current
-          .querySelector(".cm-content")
-          .classList.add("cm-lineWrapping");
-      } else {
-        parentRef.current
-          .querySelector(".cm-content")
-          .classList.remove("cm-lineWrapping");
-      }
+      viewRef.current.dispatch({
+        effects: lineWrappingCompartmentRef.current.reconfigure(
+          options.lineWrapping ? EditorView.lineWrapping : []
+        ),
+      });
     }
   }, [options.lineWrapping]);
 
