@@ -3,7 +3,7 @@ id: babel-compat-data
 title: "@babel/compat-data"
 ---
 
-This package provides compatibility data for various JavaScript features across different browser and runtime environments. It is used by [`@babel/preset-env`](./preset-env.md) internally to determine the required Babel plugins for given [compilation targets](./options.md#targets). The compat data is extracted from the [compat-table project](https://github.com/compat-table/compat-table).
+This package provides compatibility data for various JavaScript features across different browser and runtime environments. It is used by [`@babel/preset-env`](./preset-env.md) internally to determine the required Babel plugins for a given set of [compilation targets](./options.md#targets). The compat data is extracted from the [compat-table project](https://github.com/compat-table/compat-table).
 
 ## Install
 
@@ -19,7 +19,7 @@ import _plugins from "@babel/compat-data/plugins";
 const pluginsCompatData = _plugins.default;
 ```
 
-The `pluginsCompatData` is an object with the Babel plugin short name as key and a compat data entry as value. Each entry is an object with browser name as key and the minimum supported version as value.
+The `pluginsCompatData` is an object with the Babel plugin short name as the key and a compat data entry as its value. Each entry is an object with a browser name as the key and the minimum supported version as its value.
 
 For example, `pluginsCompatData["transform-object-rest-spread"]` will return an object:
 
