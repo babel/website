@@ -14,7 +14,6 @@ import {
   type ViewUpdate,
   type EditorView as EditorViewType,
 } from "@codemirror/view";
-import { injectGlobal } from "@emotion/css";
 import { preferDarkColorScheme } from "./Utils";
 import React, { useRef, useEffect } from "react";
 
@@ -24,6 +23,7 @@ type Props = {
     lineWrapping: boolean;
     readOnly: boolean;
   };
+  parentRef: React.MutableRefObject<HTMLElement>;
   placeholder?: string;
   value: string | undefined | null;
   preserveScrollPosition: boolean;
@@ -33,10 +33,10 @@ export default function ReactCodeMirror({
   value,
   onChange,
   options,
+  parentRef,
   placeholder,
   preserveScrollPosition,
 }: Props) {
-  const parentRef = useRef<HTMLDivElement>(null);
   const viewRef = useRef<EditorViewType>(null);
   const lineWrappingCompartmentRef = useRef<Compartment>(new Compartment());
 
@@ -59,6 +59,7 @@ export default function ReactCodeMirror({
           }),
         EditorView.theme({
           "&": {
+            backgroundColor: "#fff",
             height: "100%",
             maxHeight: "100%",
           },
@@ -113,12 +114,5 @@ export default function ReactCodeMirror({
     }
   }, [options.lineWrapping]);
 
-  return <div ref={parentRef} className="CodeMirror" />;
+  return <></>;
 }
-
-injectGlobal({
-  ".CodeMirror": {
-    height: "100% !important",
-    background: "#fff",
-  },
-});

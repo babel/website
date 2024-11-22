@@ -1,6 +1,6 @@
 import { css, type CSSInterpolation } from "@emotion/css";
 import CodeMirror from "./CodeMirror";
-import React from "react";
+import React, { useRef } from "react";
 import { colors } from "./styles";
 
 type Props = {
@@ -18,27 +18,31 @@ type Props = {
 };
 
 export default function CodeMirrorPanel(props: Props) {
+  const cmParentRef = useRef<HTMLDivElement>(null);
   const {
     className = "",
+    code,
     errorMessage,
     fileSize,
     info,
     onChange,
     options,
+    placeholder,
   } = props;
 
   return (
     <div className={`${styles.panel} ${className}`}>
-      <div className={styles.codeMirror}>
+      <div className={styles.codeMirror} ref={cmParentRef}>
         <CodeMirror
           onChange={onChange}
           options={{
             lineWrapping: options.lineWrapping,
             readOnly: onChange == null,
           }}
-          placeholder={props.placeholder}
+          parentRef={cmParentRef}
+          placeholder={placeholder}
           preserveScrollPosition={onChange == null}
-          value={props.code}
+          value={code}
         />
         {options.fileSize && <div className={styles.fileSize}>{fileSize}</div>}
       </div>
