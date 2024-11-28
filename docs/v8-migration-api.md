@@ -697,6 +697,42 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
     }
   ```
 
+- <a name="ast-TSEnumDeclaration"></a> Wrap the `members` of `TSEnumDeclaration` within a `TSEnumBody` node ([#16979](https://github.com/babel/babel/pull/16979))
+
+  ```ts title=input.ts
+  // Example input
+  enum ColorType {
+    Red,
+    Green,
+    Blue,
+  }
+
+  // AST in Babel 7
+  {
+    type: "TSEnumDeclaration",
+    id: Identifier("ColorType")
+    members: [
+      EnumMember("Red"),
+      EnumMember("Green"),
+      EnumMember("Blue")
+    ]
+  }
+
+  // AST in Babel 8
+  {
+    type: "TSEnumDeclaration",
+    id: Identifier("ColorType")
+    body: {
+      type: "TSEnumBody",
+      members: [
+        EnumMember("Red"),
+        EnumMember("Green"),
+        EnumMember("Blue")
+      ]
+    }
+  }
+  ```
+
 - Create `TSAbstractMethodDefinition` and `TSPropertyDefinition` when both `estree` and `typescript` parser plugins are enabled ([#16679](https://github.com/babel/babel/issues/16679), [#17014](https://github.com/babel/babel/pull/17014))
 
   __Migration__: This breaking change is part of the efforts to libraries and ESLint plugins that can work both with `typescript-eslint` and `@babel/eslint-parser`. For most Babel plugin developers you can safely ignore this change as it does not affect the typescript transform and codemod. That said, if you are trying to develop a custom ESLint rule with `@babel/eslint-parser`, this change aligns the Babel AST to the `typescript-eslint` AST.
@@ -826,6 +862,26 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
         t.stringLiteral("foo")
   +   )
     )
+  ```
+
+- Require a `TSEnumBody` node as the second argument of `t.tsEnumDeclaration` ([#16979](https://github.com/babel/babel/pull/16979))
+
+  This is due to the corresponding [AST shape change](#ast-TSEnumDeclaration).
+
+  __Migration__: Wrap the `members` array within the `tsEnumBody` builder
+
+  ```diff title="my-babel-codemod.js"
+  // Create `enum ColorType { Red, Green, Blue }`
+  t.tsEnumDeclaration(
+    t.identifier("ColorType"),
+  -  [
+  +  t.tsEnumBody([
+      t.tsEnumMember(t.identifier("Red")),
+      t.tsEnumMember(t.identifier("Green")),
+      t.tsEnumMember(t.identifier("Blue"))
+  -  ],
+  +  ]),
+  )
   ```
 
 - Update the `t.tsMappedType` signature ([#16733](https://github.com/babel/babel/pull/16733))
