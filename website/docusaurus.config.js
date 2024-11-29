@@ -272,7 +272,7 @@ const siteConfig = {
 
   scripts: [
     {
-      src: "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",
+      src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js",
       defer: true,
     },
     {
