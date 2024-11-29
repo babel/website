@@ -1,4 +1,5 @@
-export { basicSetup, EditorView } from "codemirror";
+export { basicSetup } from "codemirror";
 export { oneDark } from "@codemirror/theme-one-dark";
-export { javascriptLanguage } from "@codemirror/lang-javascript";
-export { EditorState } from "@codemirror/state";
+export { javascriptLanguage, tsxLanguage } from "@codemirror/lang-javascript";
+export { EditorState, Compartment } from "@codemirror/state";
+export { EditorView, placeholder } from "@codemirror/view";
