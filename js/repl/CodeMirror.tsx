@@ -14,7 +14,6 @@ import {
   type ViewUpdate,
   type EditorView as EditorViewType,
 } from "@codemirror/view";
-import { preferDarkColorScheme } from "./Utils";
 import React, { useRef, useEffect } from "react";
 
 type Props = {
@@ -39,24 +38,31 @@ export default function ReactCodeMirror({
 }: Props) {
   const viewRef = useRef<EditorViewType>(null);
   const lineWrappingCompartmentRef = useRef<Compartment>(new Compartment());
+  const darkThemeCompartmentRef = useRef<Compartment>(new Compartment());
 
   useEffect(() => {
+    const darkColorSchemeQuery = window.matchMedia(
+      "(prefers-color-scheme:dark)"
+    );
     const editorState: EditorStateType = EditorState.create({
       doc: value,
       extensions: [
         basicSetup,
         tsxLanguage,
-        preferDarkColorScheme() ? oneDark : false,
+        darkThemeCompartmentRef.current.of(
+          darkColorSchemeQuery.matches ? oneDark : []
+        ),
         // We don't use compartment here since readonly can not be changed from UI
         EditorView.editable.of(!options.readOnly),
         placeholderExtension(placeholder),
         lineWrappingCompartmentRef.current.of([]),
-        onChange &&
-          EditorView.updateListener.of((update: ViewUpdate) => {
-            if (update.docChanged) {
-              onChange(update.state.doc.toString());
-            }
-          }),
+        onChange
+          ? EditorView.updateListener.of((update: ViewUpdate) => {
+              if (update.docChanged) {
+                onChange(update.state.doc.toString());
+              }
+            })
+          : [],
         EditorView.theme({
           "&": {
             backgroundColor: "#fff",
@@ -64,7 +70,7 @@ export default function ReactCodeMirror({
             maxHeight: "100%",
           },
         }),
-      ].filter(Boolean),
+      ],
     });
 
     viewRef.current ??= new EditorView({
@@ -72,11 +78,24 @@ export default function ReactCodeMirror({
       parent: parentRef.current,
     });
 
+    const onColorSchemeChange = () => {
+      viewRef.current.dispatch({
+        effects: darkThemeCompartmentRef.current.reconfigure(
+          darkColorSchemeQuery.matches ? oneDark : []
+        ),
+      });
+    };
+
+    darkColorSchemeQuery.addEventListener("change", onColorSchemeChange);
+
     return () => {
       if (viewRef.current) {
         viewRef.current.destroy();
         viewRef.current = null;
+        lineWrappingCompartmentRef.current = null;
+        darkThemeCompartmentRef.current = null;
       }
+      darkColorSchemeQuery.removeEventListener("change", onColorSchemeChange);
     };
   }, []);
 
