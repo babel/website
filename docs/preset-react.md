@@ -130,7 +130,17 @@ Decides which runtime to use.
 
 #### `development`
 
+:::babel7
+
 `boolean`, defaults to `false`.
+
+:::
+
+:::babel8
+
+`boolean`, defaults to `true` if Babel's [`envName`](./options.md#envname) id `"development"`, and `false` otherwise.
+
+:::
 
 This toggles behavior specific to development, such as adding `__source` and `__self`.
 

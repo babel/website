@@ -175,6 +175,18 @@ The following plugins are discontinued and their functionality is not available 
   **Migration**: You can safely remove them if you are using any of [syntax plugins listed above](#syntax-plugins) in the `includes` and `excludes` options.
 ### `@babel/preset-react` {#configuration-change-preset-react}
 
+![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
+
+- Make the `development` option default to the configured env ([#16927](https://github.com/babel/babel/pull/16927))
+
+  Note that Babel's env, set through [`envName` option](./options.md#envname), defaults to
+  `process.env.BABEL_ENV || process.env.NODE_ENV || "development"`: if you don't specify neither the `envName` option
+  nor the `BABEL_ENV` or `NODE_ENV` environment variables, it will default to `development`.
+
+  **Migration**: In production builds, set the `BABEL_ENV` or `NODE_ENV` environment variables, or the `envName` Babel
+  option, to `"production"`. If you want to run _only this preset_ in production mode, then you can explicitly set the
+  `development` option to `false`.
+
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 - Remove `useSpread` and `useBuiltIns` options ([#12593](https://github.com/babel/babel/pull/12593))
