@@ -877,9 +877,42 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
   __Migration__: This breaking change is part of the efforts to libraries and ESLint plugins that can work both with `typescript-eslint` and `@babel/eslint-parser`. For most Babel plugin developers you can safely ignore this change as it does not affect the typescript transform and codemod. That said, if you are trying to develop a custom ESLint rule with `@babel/eslint-parser`, this change aligns the Babel AST to the `typescript-eslint` AST.
 
+- Use `TSQualifiedName` for `namespace X.Y {}`'s name ([#16982](https://github.com/babel/babel/pull/16982))
+
+  Rather than representing `namespace X.Y {}` as two nested `TSModuleDeclaration` nodes with names `X` and `Y`,
+  it is now represented as a single `TSModuleDeclaration` whose name is a `TSQualifiedName(X, Y)`. This change
+  aligns the AST with the `@typescript-eslint` parser.
+
+   ```ts
+  // Example input
+  namespace X.Y {}
+
+  // AST in Babel 7
+  {
+    type: "TSModuleDeclaration",
+    id: Identifier("X"),
+    body: {
+      type: "TSModuleDeclaration",
+      id: Identifier("Y")
+      body: TSModuleBlock([]),
+    },
+  }
+
+  // AST in Babel 8
+  {
+    type: "TSModuleDeclaration",
+    id: {
+      type: "TSQualifiedName",
+      left: Identifier("X"),
+      right: Identifier("Y"),
+    },
+    body: TSModuleBlock([]),
+  }
+  ```
+
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
-- Don't generate `TSParenthesizedType` unless `createParenthesizedExpression` is enabled([#9546](https://github.com/babel/babel/issues/9546), [#12608](https://github.com/babel/babel/pull/12608))
+- Don't generate `TSParenthesizedType` unless `createParenthesizedExpression` is enabled ([#9546](https://github.com/babel/babel/issues/9546), [#12608](https://github.com/babel/babel/pull/12608))
 
   ```ts title="input.ts"
   type T = ({});
@@ -1075,6 +1108,41 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
     t.tsTypeReference(t.identifier("Q")),
     t.tsNumberKeyword()
   )
+  ```
+
+- The second argument (`body`) of `TSModuleDeclaration` cannot be a `TSModuleDeclaration` anymore ([#16982](https://github.com/babel/babel/pull/16982))
+- The second argument (`body`) of `t.tsModuleDeclaration` cannot be a `TSModuleDeclaration` node anymore ([#16982](https://github.com/babel/babel/pull/16982))
+
+  __Migration__: Either create a `TSModuleBlock` body that exports the `TSModuleDeclaration`, or create a
+  single `TSModuleDeclaration` that has a `TSQualifiedName` as its name.
+
+  ```diff title="my-babel-codemod.js"
+    // Option 1
+
+    // Create `namespace X.Y {}`
+    t.tsModuleDeclaration(
+      t.identifier("X"),
+  +   t.exportNamedDeclaration(
+        t.tsModuleDeclaration(
+          t.identifier("Y"),
+          t.tsModuleBlock([])
+        ),
+  +   ),
+    )
+
+  ```diff title="my-babel-codemod.js"
+    // Option 2
+
+    // Create `namespace X.Y {}`
+    t.tsModuleDeclaration(
+  +   t.tsQualifiedName(
+        t.identifier("X"),
+  -   t.tsModuleDeclaration(
+        t.identifier("Y"),
+  +   ),
+      t.tsModuleBlock([])
+  -   )
+    )
   ```
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
