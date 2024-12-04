@@ -91,7 +91,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   // AST in Babel 7
   {
-    type: "EnumDeclaration",
+    type: "TSEnumDeclaration",
     id: Identifier("ColorType")
     members: [
       EnumMember("Red"),
@@ -102,10 +102,10 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   // AST in Babel 8
   {
-    type: "EnumDeclaration",
+    type: "TSEnumDeclaration",
     id: Identifier("ColorType")
     body: {
-      type: "EnumBody",
+      type: "TSEnumBody",
       members: [
         EnumMember("Red"),
         EnumMember("Green"),
