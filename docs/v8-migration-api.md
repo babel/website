@@ -110,8 +110,6 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: If you have a customized plugin accessing `typeParameter` of a `TSMappedType` node, use `node.key` and `node.constraint` in Babel 8.
 
-![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
-
 - Split `TsExpressionWithTypeArguments` into `TSClassImplements` and `TSInterfaceHeritage` ([#16731](https://github.com/babel/babel/pull/16731)).
 
   This is to align the AST for TS nodes with `@typescript-eslint`.
