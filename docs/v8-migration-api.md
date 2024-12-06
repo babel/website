@@ -251,7 +251,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   )
   ```
 
-- The `t.tsMappedType` interface change ([#16733](https://github.com/babel/babel/pull/16733))
+- The `t.tsMappedType` signature changed ([#16733](https://github.com/babel/babel/pull/16733))
 
   ```ts
   // Babel 7
