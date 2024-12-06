@@ -266,7 +266,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   // Babel 7
   t.tsMappedType(
-    t.tsTypeParameter(t.tsStringKeyword(), undefined, t.identifier("P")),
+    t.tsTypeParameter(t.tsStringKeyword(), undefined, "P"),
     t.tsNumberKeyword(),
     t.tsTypeReference(t.identifier("Q"))
   )
