@@ -110,8 +110,9 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: If you have a customized plugin accessing `typeParameter` of a `TSMappedType` node, use `node.key` and `node.constraint` in Babel 8.
 
-- Split `TsExpressionWithTypeArguments` into `TSClassImplements` and `TSInterfaceHeritage` ([#16731](https://github.com/babel/babel/pull/16731)).
+- Split `TSExpressionWithTypeArguments` into `TSClassImplements` and `TSInterfaceHeritage` ([#16731](https://github.com/babel/babel/pull/16731)).
 
+  The builder and validator for `TSExpressionWithTypeArguments` in `@babel/types` and `@babel/traverse` are also removed.
   This is to align the AST for TS nodes with `@typescript-eslint`.
 
   ```ts
@@ -125,7 +126,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
     id: Identifier("C"),
     implements: [
       {
-        type: "TsExpressionWithTypeArguments",
+        type: "TSExpressionWithTypeArguments",
         expression: Identifier("X"),
         typeParameters: { type: "TSTypeParameterInstantiation", params: [TSTypeReference(Identifier("T"))] }
       }
@@ -138,7 +139,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
     id: Identifier("I"),
     extends: [
       {
-        type: "TsExpressionWithTypeArguments",
+        type: "TSExpressionWithTypeArguments",
         expression: Identifier("X"),
         typeParameters: { type: "TSTypeParameterInstantiation", params: [TSTypeReference(Identifier("T"))] }
       }
@@ -174,7 +175,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   }
   ```
 
-  __Migration__: If you have a customized plugin accessing `typeParameter` of a `TSMappedType` node, use `node.key` and `node.constraint` in Babel 8.
+  __Migration__: If you are using `TSExpressionWithTypeArguments`, replace it with `TSClassImplements` and `TSInterfaceHeritage` in Babel 8.
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
