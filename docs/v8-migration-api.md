@@ -141,9 +141,42 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: If you have a customized plugin accessing `typeParameter` of a `TSMappedType` node, use `node.key` and `node.constraint` in Babel 8.
 
+- Use `TSQualifiedName` for `namespace X.Y {}`'s name ([#16982](https://github.com/babel/babel/pull/16982))
+
+  Rather than representing `namespace X.Y {}` as two nested `TSModuleDeclaration` nodes with names `X` and `Y`,
+  it is not represented as a single `TSModuleDeclaration` whose name is a `TSQualifiedName(X, Y)`. This change
+  aligns the AST with `@typescript-eslint`. parser.
+
+   ```ts
+  // Example input
+  namespace X.Y {}
+
+  // AST in Babel 7
+  {
+    type: "TSModuleDeclaration",
+    id: Identifier("X"),
+    body: {
+      type: "TSModuleDeclaration",
+      id: Identifier("Y")
+      body: TSModuleBlock([]),
+    },
+  }
+
+  // AST in Babel 8
+  {
+    type: "TSModuleDeclaration",
+    id: {
+      type: "TSQualifiedName",
+      left: Identifier("X"),
+      right: Identifier("Y"),
+    },
+    body: TSModuleBlock([]),
+  }
+  ```
+
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
-- Don't generate `TSParenthesizedType` unless `createParenthesizedExpression` is enabled([#9546](https://github.com/babel/babel/issues/9546), [#12608](https://github.com/babel/babel/pull/12608))
+- Don't generate `TSParenthesizedType` unless `createParenthesizedExpression` is enabled ([#9546](https://github.com/babel/babel/issues/9546), [#12608](https://github.com/babel/babel/pull/12608))
 
   ```ts title="input.ts"
   type T = ({});
@@ -233,6 +266,24 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
         /* computed */ true
       ))
   }
+  ```
+
+- The second argument (`body`) of `TSModuleDeclaration` cannot be a `TSModuleDeclaration` anymore ([#16982](https://github.com/babel/babel/pull/16982))
+
+  __Migration__: Either create a `TSModuleBlock` body that exports the `TSModuleDeclaration`, or create a
+  single `TSModuleDeclaration` that has a `TSQualifiedName` as its name.
+
+  ```diff title="my-babel-codemod.js"
+    // Create `namespace X.Y {}`
+    t.tsModuleDeclaration(
+  +   t.tsQualifiedName(
+        t.identifier("X"),
+  -   t.tsModuleDeclaration(
+        t.identifier("Y"),
+  +   ),
+      t.tsModuleBlock([])
+  -   )
+    )
   ```
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
