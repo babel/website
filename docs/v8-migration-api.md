@@ -77,6 +77,46 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
     - For `node.parameters` in Babel 7, use `node.params` in Babel 8
     - For `node.typeAnnotation` in Babel 7, use `node.returnType` in Babel 8
 
+- Wrap `TSEnumMember` within the `TSEnumBody` node ([#16979](https://github.com/babel/babel/pull/16979))
+
+  In Babel 8, all members of a `TSEnumDeclaration` will be wrapped within a `TSEnumBody` node, which can be accessed from the `.body` property.
+
+  ```ts
+  // Example input
+  enum ColorType {
+    Red,
+    Green,
+    Blue,
+  }
+
+  // AST in Babel 7
+  {
+    type: "TSEnumDeclaration",
+    id: Identifier("ColorType")
+    members: [
+      EnumMember("Red"),
+      EnumMember("Green"),
+      EnumMember("Blue")
+    ]
+  }
+
+  // AST in Babel 8
+  {
+    type: "TSEnumDeclaration",
+    id: Identifier("ColorType")
+    body: {
+      type: "TSEnumBody",
+      members: [
+        EnumMember("Red"),
+        EnumMember("Green"),
+        EnumMember("Blue")
+      ]
+    }
+  }
+  ```
+
+  **Migration**: To access the enum members: For `node.members` in Babel 7, use `node.body.members` in Babel 8
+
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 - Split `typeParameter` of `TSMappedType` ([#16733](https://github.com/babel/babel/pull/16733)).
@@ -202,6 +242,24 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
         /* computed */ true
       ))
   }
+  ```
+
+- The second argument of `t.tsEnumDeclaration` requires a `TSEnumBody` node ([#16979](https://github.com/babel/babel/pull/16979))
+
+  __Migration__: wrap the `members` array within the `tsEnumBody` builder
+
+  ```diff title="my-babel-codemod.js"
+  // Create `enum ColorType { Red, Green, Blue }`
+  t.tsEnumDeclaration(
+    t.identifier("ColorType"),
+  -  [
+  +  t.tsEnumBody([ 
+      t.tsEnumMember(t.identifier("Red")),
+      t.tsEnumMember(t.identifier("Green")),
+      t.tsEnumMember(t.identifier("Blue"))
+  -  ],
+  +  ]),
+  )
   ```
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
