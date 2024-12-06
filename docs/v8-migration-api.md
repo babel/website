@@ -107,7 +107,6 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   }
   ```
 
-  **Migration**: If you have a customized plugin accessing `typeParameters`, use `typeArguments` in Babel 8
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
