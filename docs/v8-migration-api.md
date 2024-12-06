@@ -107,6 +107,37 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   }
   ```
 
+- Rename `superTypeParameters` to `superTypeArguments` for `ClassDeclaration` and `ClassExpression` ([#16679](https://github.com/babel/babel/issues/16679), [#16997](https://github.com/babel/babel/pull/16997))
+
+  ```ts title=input.ts
+  class X extends Y<string> {}
+
+  // AST in Babel 7
+  {
+    type: "ClassDeclaration",
+    id: Identifier("X"),
+    superClass: Identifier("Y"),
+    superTypeParameters: {
+      type: "TSTypeParameterInstantiation",
+      params: [{
+        type: "TSStringKeyword"
+      }]
+    }
+  }
+
+  // AST in Babel 8
+  {
+    type: "ClassDeclaration",
+    id: Identifier("X"),
+    superClass: Identifier("Y"),
+    superTypeArguments: {
+      type: "TSTypeParameterInstantiation",
+      params: [{
+        type: "TSStringKeyword"
+      }]
+    }
+  }
+  ```
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
