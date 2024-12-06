@@ -77,6 +77,37 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
     - For `node.parameters` in Babel 7, use `node.params` in Babel 8
     - For `node.typeAnnotation` in Babel 7, use `node.returnType` in Babel 8
 
+- Rename `typeParameters` to `typeArguments` for `TSTypeReference` ([#16679](https://github.com/babel/babel/issues/16679), [#17008](https://github.com/babel/babel/pull/17008))
+
+  ```ts title=input.ts
+  var arr: Array<string>;
+
+  // AST in Babel 7
+  {
+    type: "TSTypeReference",
+    typeName: Identifier("Array"),
+    typeParameters: {
+      type: "TSTypeParameterInstantiation",
+      params: [{
+        type: "TSStringKeyword"
+      }]
+    }
+  }
+
+  // AST in Babel 8
+  {
+    type: "TSTypeReference",
+    typeName: Identifier("Array"),
+    typeArguments: {
+      type: "TSTypeParameterInstantiation",
+      params: [{
+        type: "TSStringKeyword"
+      }]
+    }
+  }
+  ```
+
+
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 - Split `typeParameter` of `TSMappedType` ([#16733](https://github.com/babel/babel/pull/16733)).
