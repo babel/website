@@ -275,7 +275,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   t.tsMappedType(
     t.identifier("P"),
     t.tsStringKeyword(),
-    t.tsTypeReference(t.identifier("Q"))
+    t.tsTypeReference(t.identifier("Q")),
     t.tsNumberKeyword()
   )
   ```
