@@ -139,7 +139,9 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   }
   ```
 
-  __Migration__: If you have a customized plugin accessing `typeParameter` of a `TSMappedType` node, use `node.key` and `node.constraint` in Babel 8.
+  __Migration__: If you have a customized plugin accessing `typeParameter` of a `TSMappedType` node:
+    - For `node.typeParameter.name` in Babel 7, use `node.key` in Babel 8
+    - For `node.typeParameter.constraint` in Babel 7, use `node.constraint` in Babel 8
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
@@ -233,6 +235,49 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
         /* computed */ true
       ))
   }
+  ```
+
+- The third argument of `t.tsTypeParameter` requires an `Identifier` node ([#12829](https://github.com/babel/babel/pull/12829))
+  
+  __Migration__: Wrap the `name` string within the `identifier` builder
+
+  ```diff title="my-babel-codemod.js"
+  t.tsTypeParameter(
+    /* constraint */ undefined,
+    /* default */ undefined,
+  + t.identifier(
+      name
+  + )
+  )
+  ```
+
+- The `t.tsMappedType` interface change ([#16733](https://github.com/babel/babel/pull/16733))
+
+  ```ts
+  // Babel 7
+  declare function tsMappedType(typeParameter: TSTypeParameter, typeAnnotation?: TSType, nameType?: TSType): TSMappedType
+  // Babel 8
+  declare function tsMappedType(key: Identifier, constraint: TSType, nameType?: TSType, typeAnnotation?: TSType): TSMappedType
+  ```
+  __Migration__: See the example below.
+
+  ```ts title=my-babel-codemod.ts
+  // To create { [P in string as Q]: number }
+
+  // Babel 7
+  t.tsMappedType(
+    t.tsTypeParameter(t.tsStringKeyword(), undefined, t.identifier("P")),
+    t.tsNumberKeyword(),
+    t.tsTypeReference(t.identifier("Q"))
+  )
+
+  // Babel 8
+  t.tsMappedType(
+    t.identifier("P"),
+    t.tsStringKeyword(),
+    t.tsTypeReference(t.identifier("Q"))
+    t.tsNumberKeyword()
+  )
   ```
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
