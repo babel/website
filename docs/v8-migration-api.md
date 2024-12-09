@@ -488,15 +488,16 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 - Remove `Scope.prototype.traverse`, `Scope#parentBlock` and `Scope#hub` ([#16705](https://github.com/babel/babel/pull/16705))
 
   __Migration__: Use `scope.path` methods and properties instead:
-  ```diff
-  --- scope.traverse(scopeRootNode, visitor, state)
-  +++ scope.path.traverse(visitor, state)
 
-  --- scope.parentBlock
-  +++ scope.path.parent
-  
-  --- scope.hub
-  +++ scope.path.hub
+  ```diff
+  - scope.traverse(scopeRootNode, visitor, state)
+  + scope.path.traverse(visitor, state)
+
+  - scope.parentBlock
+  + scope.path.parent
+
+  - scope.hub
+  + scope.path.hub
   ```
 
 - Remove `Scope.prototype.getAllBindingsOfKind` and `Scope.prototype.toArray` ([#16705](https://github.com/babel/babel/pull/16705))
