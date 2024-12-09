@@ -77,6 +77,36 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
     - For `node.parameters` in Babel 7, use `node.params` in Babel 8
     - For `node.typeAnnotation` in Babel 7, use `node.returnType` in Babel 8
 
+- Rename `typeParameters` to `typeArguments` for `TSTypeQuery` ([#16679](https://github.com/babel/babel/issues/16679), [#17012](https://github.com/babel/babel/pull/17012))
+
+  ```ts title=input.ts
+  var arr: typeof Array<string>;
+
+  // AST in Babel 7
+  {
+    type: "TSTypeQuery",
+    exprName: Identifier("Array"),
+    typeParameters: {
+      type: "TSTypeParameterInstantiation",
+      params: [{
+        type: "TSStringKeyword"
+      }]
+    }
+  }
+
+  // AST in Babel 8
+  {
+    type: "TSTypeReference",
+    exprName: Identifier("Array"),
+    typeArguments: {
+      type: "TSTypeParameterInstantiation",
+      params: [{
+        type: "TSStringKeyword"
+      }]
+    }
+  }
+  ```
+
 - Rename `typeParameters` to `typeArguments` for `TSTypeReference` ([#16679](https://github.com/babel/babel/issues/16679), [#17008](https://github.com/babel/babel/pull/17008))
 
   ```ts title=input.ts
@@ -269,7 +299,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   ```
 
 - The third argument of `t.tsTypeParameter` requires an `Identifier` node ([#12829](https://github.com/babel/babel/pull/12829))
-  
+
   __Migration__: Wrap the `name` string within the `identifier` builder
 
   ```diff title="my-babel-codemod.js"
