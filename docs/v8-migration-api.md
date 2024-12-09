@@ -499,7 +499,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   +++ scope.path.hub
   ```
 
-- Remove `Scope.prototype.getAllBindingsOfKind` and `Scope.prototype.toArray`
+- Remove `Scope.prototype.getAllBindingsOfKind` and `Scope.prototype.toArray` ([#16705](https://github.com/babel/babel/pull/16705))
 
   These methods have been removed as they are not used anymore in our code base.
 
