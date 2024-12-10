@@ -204,7 +204,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
     - For `node.typeParameter.name` in Babel 7, use `node.key` in Babel 8
     - For `node.typeParameter.constraint` in Babel 7, use `node.constraint` in Babel 8
 
-- Split `TSExpressionWithTypeArguments` into `TSClassImplements` and `TSInterfaceHeritage` ([#16731](https://github.com/babel/babel/pull/16731)).
+- Split `TSExpressionWithTypeArguments` into `TSClassImplements` and `TSInterfaceHeritage` ([#16731](https://github.com/babel/babel/pull/16731), and rename `typeParameters` to `typeArguments` ([#17017](https://github.com/babel/babel/pull/17017)).
 
   The builder and validator for `TSExpressionWithTypeArguments` in `@babel/types` and `@babel/traverse` are also removed.
   This is to align the AST for TS nodes with `@typescript-eslint`.
@@ -249,7 +249,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
       {
         type: "TSClassImplements",
         expression: Identifier("X"),
-        typeParameters: { type: "TSTypeParameterInstantiation", params: [TSTypeReference(Identifier("T"))] }
+        typeArguments: { type: "TSTypeParameterInstantiation", params: [TSTypeReference(Identifier("T"))] }
       }
     ],
     body: ClassBody([]),
@@ -262,14 +262,14 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
       {
         type: "TSInterfaceHeritage",
         expression: Identifier("X"),
-        typeParameters: { type: "TSTypeParameterInstantiation", params: [TSTypeReference(Identifier("T"))] }
+        typeArguments: { type: "TSTypeParameterInstantiation", params: [TSTypeReference(Identifier("T"))] }
       }
     ],
     body: TSInterfaceBody([]),
   }
   ```
 
-  __Migration__: If you are using `TSExpressionWithTypeArguments`, replace it with `TSClassImplements` and `TSInterfaceHeritage` in Babel 8.
+  __Migration__: If you are using `TSExpressionWithTypeArguments`, replace it with `TSClassImplements` and `TSInterfaceHeritage` in Babel 8. If you are accessing `node.typeParameters`, use `node.typeArguments`.
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
