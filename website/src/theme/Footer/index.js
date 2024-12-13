@@ -42,7 +42,7 @@ function Footer() {
             rel="noopener noreferrer"
             target="_blank"
           >
-            Bluesky Profile
+            Bluesky
           </Link>
         </div>
         <div>
