@@ -31,11 +31,18 @@ function Footer() {
           </Link>
           <Link to="https://babeljs.slack.com/">Slack Channel</Link>
           <Link
-            to="https://twitter.com/babeljs"
+            to="https://x.com/babeljs"
             rel="noopener noreferrer"
             target="_blank"
           >
-            Twitter
+            X (Twitter)
+          </Link>
+          <Link
+            to="https://bsky.app/profile/babel.dev"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Bluesky
           </Link>
         </div>
         <div>
