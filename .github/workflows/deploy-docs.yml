@@ -19,13 +19,6 @@ jobs:
         run: |
           yarn install
           yarn run bootstrap
-
-  deploy:
-    name: Deploy to R2
-    runs-on: ubuntu-latest
-    needs:
-      - build
-    steps:
       - name: Check build directory
         continue-on-error: true
         run: |
