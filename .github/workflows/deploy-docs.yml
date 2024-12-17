@@ -25,3 +25,12 @@ jobs:
             echo "Build directory not found: $BUILD_DIR"
             exit 1
           fi
+      - name: Upload
+        uses: ryand56/r2-upload-action@latest
+        with:
+          r2-account-id: ${{ secrets.CF_ACCOUNT_ID }}
+          r2-access-key-id: ${{ secrets.R2_ACCESS_KEY_ID }}
+          r2-secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          r2-bucket: ${{ secrets.CF_BUCKET_ID }}
+          source-dir: ${{ env.BUILD_DIR }}
+          destination-dir: ./outputs/
