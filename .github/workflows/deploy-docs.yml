@@ -3,6 +3,9 @@ name: Deploy docs to R2
 on:
   push
 
+env:
+  BUILD_DIR: website/build
+
 jobs:
   build:
     name: Build documentation
@@ -12,11 +15,20 @@ jobs:
         uses: DerYeger/yarn-setup-action@master
         with:
           node-version: 20.5
+      - name: Build the website
+        run: |
+          yarn install
+          yarn run build:docusaurus
+
   deploy:
     name: Deploy to R2
     runs-on: ubuntu-latest
     needs:
       - build
     steps:
-      - name: Debug
-        run: echo "Hello, world!"
+      - name: Check build directory
+        run: |
+          if [ ! -d $BUILD_DIR ]; then
+            echo "Build directory not found: $BUILD_DIR"
+            exit 1
+          fi
