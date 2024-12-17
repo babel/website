@@ -1,0 +1,22 @@
+name: Deploy docs to R2
+
+on:
+  push
+
+jobs:
+  build:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Yarn setup
+        uses: DerYeger/yarn-setup-action@master
+        with:
+          node-version: 20.5
+  deploy:
+    name: Deploy to R2
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - name: Debug
+        run: echo "Hello, world!"
