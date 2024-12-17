@@ -20,11 +20,8 @@ jobs:
           yarn install
           yarn run bootstrap
       - name: Check build directory
-        continue-on-error: true
         run: |
           if [ ! -d $BUILD_DIR ]; then
             echo "Build directory not found: $BUILD_DIR"
             exit 1
           fi
-      - name: List files
-        run: ls -la
