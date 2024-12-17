@@ -18,7 +18,7 @@ jobs:
       - name: Build the website
         run: |
           yarn install
-          yarn run build:docusaurus
+          yarn run bootstrap
 
   deploy:
     name: Deploy to R2
