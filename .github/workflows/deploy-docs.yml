@@ -1,0 +1,34 @@
+name: Deploy docs to R2
+
+on:
+  push
+
+env:
+  BUILD_DIR: docs/
+  ARTIFACT_DIR: outputs/
+
+jobs:
+  build:
+    name: Build & deploy documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check build directory
+        run: |
+          if [ ! -d $BUILD_DIR ]; then
+            echo "Build directory not found: $BUILD_DIR"
+            exit 1
+          fi
+      - name: Pack files
+        run: |
+          mkdir -p $ARTIFACT_DIR
+          tar -czvf $ARTIFACT_DIR/docs.tar.gz $BUILD_DIR
+      - name: Upload
+        uses: ryand56/r2-upload-action@latest
+        with:
+          r2-account-id: ${{ secrets.CF_ACCOUNT_ID }}
+          r2-access-key-id: ${{ secrets.R2_ACCESS_KEY_ID }}
+          r2-secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          r2-bucket: ${{ secrets.CF_BUCKET_ID }}
+          source-dir: ${{ env.ARTIFACT_DIR }}
+          destination-dir: ./builds/babel-website/
