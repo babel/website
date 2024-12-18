@@ -5,7 +5,7 @@ on:
 
 env:
   BUILD_DIR: docs/
-  ARTIFACT_DIR: outputs/
+  ARTIFACT_DIR: outputs/babel-website/
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
       - name: Pack files
         run: |
           mkdir -p $ARTIFACT_DIR
-          tar -czvf $ARTIFACT_DIR/docs.tar.gz $BUILD_DIR
+          tar -czvf $ARTIFACT_DIR/artifacts.tar.gz $BUILD_DIR
       - name: Upload
         uses: ryand56/r2-upload-action@latest
         with:
