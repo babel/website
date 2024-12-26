@@ -77,65 +77,250 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
     - For `node.parameters` in Babel 7, use `node.params` in Babel 8
     - For `node.typeAnnotation` in Babel 7, use `node.returnType` in Babel 8
 
-- Rename `typeParameters` to `typeArguments` for `TSTypeQuery` ([#16679](https://github.com/babel/babel/issues/16679), [#17012](https://github.com/babel/babel/pull/17012))
+- Rename `typeParameters` to `typeArguments` for `CallExpression`, `JSXOpeningElement`, `NewExpression`, `OptionalCallExpression`, `TSInstantiationExpression`, `TSTypeQuery` and  `TSTypeReference` ([#16679](https://github.com/babel/babel/issues/16679), [#17008](https://github.com/babel/babel/pull/17008), [#17012](https://github.com/babel/babel/pull/17012), [#17020](https://github.com/babel/babel/pull/17020))
 
-  ```ts title=input.ts
-  var arr: typeof Array<string>;
+  <details>
+    <summary>CallExpression</summary>
 
-  // AST in Babel 7
-  {
-    type: "TSTypeQuery",
-    exprName: Identifier("Array"),
-    typeParameters: {
-      type: "TSTypeParameterInstantiation",
-      params: [{
-        type: "TSStringKeyword"
-      }]
+    ```ts title=input.ts
+    fn<string>()
+
+    // AST in Babel 7
+    {
+      type: "CallExpression",
+      callee: Identifier("fn"),
+      arguments: [],
+      typeParameters: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
     }
-  }
 
-  // AST in Babel 8
-  {
-    type: "TSTypeReference",
-    exprName: Identifier("Array"),
-    typeArguments: {
-      type: "TSTypeParameterInstantiation",
-      params: [{
-        type: "TSStringKeyword"
-      }]
+    // AST in Babel 8
+    {
+      type: "CallExpression",
+      callee: Identifier("fn"),
+      arguments: [],
+      typeArguments: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
     }
-  }
-  ```
+    ```
 
-- Rename `typeParameters` to `typeArguments` for `TSTypeReference` ([#16679](https://github.com/babel/babel/issues/16679), [#17008](https://github.com/babel/babel/pull/17008))
+  </details>
 
-  ```ts title=input.ts
-  var arr: Array<string>;
+  <details>
+    <summary>JSXOpeningElement</summary>
 
-  // AST in Babel 7
-  {
-    type: "TSTypeReference",
-    typeName: Identifier("Array"),
-    typeParameters: {
-      type: "TSTypeParameterInstantiation",
-      params: [{
-        type: "TSStringKeyword"
-      }]
+    ```ts title=input.ts
+    <Component<string>/>
+
+    // AST in Babel 7
+    {
+      type: "JSXOpeningElement",
+      name: JSXIdentifier("Component"),
+      attributes: [],
+      selfClosing: true,
+      typeParameters: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
     }
-  }
 
-  // AST in Babel 8
-  {
-    type: "TSTypeReference",
-    typeName: Identifier("Array"),
-    typeArguments: {
-      type: "TSTypeParameterInstantiation",
-      params: [{
-        type: "TSStringKeyword"
-      }]
+    // AST in Babel 8
+    {
+      type: "JSXOpeningElement",
+      name: JSXIdentifier("Component"),
+      attributes: [],
+      selfClosing: true,
+      typeArguments: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
     }
-  }
-  ```
+    ```
+
+  </details>
+
+  <details>
+    <summary>NewExpression</summary>
+
+    ```ts title=input.ts
+    new Component<string>()
+
+    // AST in Babel 7
+    {
+      type: "NewExpression",
+      callee: Identifier("Component"),
+      arguments: [],
+      typeParameters: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
+    }
+
+    // AST in Babel 8
+    {
+      type: "NewExpression",
+      callee: Identifier("Component"),
+      arguments: [],
+      typeArguments: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
+    }
+    ```
+
+  </details>
+
+  <details>
+    <summary>OptionalCallExpression</summary>
+
+    ```ts title=input.ts
+    fn?.<string>()
+
+    // AST in Babel 7
+    {
+      type: "OptionalCallExpression",
+      callee: Identifier("fn"),
+      arguments: [],
+      optional: true,
+      typeParameters: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
+    }
+
+    // AST in Babel 8
+    {
+      type: "OptionalCallExpression",
+      callee: Identifier("fn"),
+      arguments: [],
+      optional: true,
+      typeArguments: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
+    }
+    ```
+
+  </details>
+
+  <details>
+    <summary>TSInstantiationExpression</summary>
+
+    ```ts title=input.ts
+    fn<string>
+
+    // AST in Babel 7
+    {
+      type: "TSInstantiationExpression",
+      expression: Identifier("fn"),
+      typeParameters: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
+    }
+
+    // AST in Babel 8
+    {
+      type: "TSInstantiationExpression",
+      expression: Identifier("fn"),
+      typeArguments: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
+    }
+    ```
+
+  </details>
+
+  <details>
+    <summary>TSTypeQuery</summary>
+
+    ```ts title=input.ts
+    var arr: typeof Array<string>;
+
+    // AST in Babel 7
+    {
+      type: "TSTypeQuery",
+      exprName: Identifier("Array"),
+      typeParameters: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
+    }
+
+    // AST in Babel 8
+    {
+      type: "TSTypeQuery",
+      exprName: Identifier("Array"),
+      typeArguments: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
+    }
+    ```
+
+  </details>
+
+  <details>
+    <summary>TSTypeReference</summary>
+
+    ```ts title=input.ts
+    var arr: Array<string>;
+
+    // AST in Babel 7
+    {
+      type: "TSTypeReference",
+      typeName: Identifier("Array"),
+      typeParameters: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
+    }
+
+    // AST in Babel 8
+    {
+      type: "TSTypeReference",
+      typeName: Identifier("Array"),
+      typeArguments: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
+    }
+    ```
+
+  </details>
 
 - Rename `superTypeParameters` to `superTypeArguments` for `ClassDeclaration` and `ClassExpression` ([#16679](https://github.com/babel/babel/issues/16679), [#16997](https://github.com/babel/babel/pull/16997))
 
@@ -283,7 +468,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   TSTypeLiteral { members: [] }
   ```
 
-  **Migration**: If you need informations about parentheses, specify the [`createParenthesizedExpression`](./parser.md#options) parser option.
+  **Migration**: If you need information about parentheses, specify the [`createParenthesizedExpression`](./parser.md#options) parser option.
   ```json title="babel.config.json"
   { "parserOpts": { "createParenthesizedExpression": true } }
   ```
