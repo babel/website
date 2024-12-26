@@ -13,9 +13,11 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 ## AST Changes
 
+### JavaScript nodes
+
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
-- Dynamic `import()` is parsed as an `ImportExpression` ([#15682](https://github.com/babel/babel/pull/15682), [#16114](https://github.com/babel/babel/pull/16114)).
+- Represent dynamic `import()` with an `ImportExpression` node ([#15682](https://github.com/babel/babel/pull/15682), [#16114](https://github.com/babel/babel/pull/16114)).
   ```ts
   // Example input
   import("foo", options);
@@ -41,43 +43,208 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   For end users utilizing Babel plugins that rely on the legacy `import()` AST, it is possible to set `createImportExpressions` to `false`. Note that the Babel 7 `import()` AST is now considered
   deprecated, it does not support new ES features such as [Source Phrase Imports](https://tc39.es/proposal-source-phase-imports/). We will remove the `createImportExpressions` parser option in Babel 9.
 
-- Use an identifier for `TSTypeParameter.name` ([#12829](https://github.com/babel/babel/pull/12829)).
+### TypeScript nodes
 
-  For a TS type parameter `node`, `node.name` is a string in Babel 7 while in Babel 8 it is an Identifier.
+Most of the changes to our TypeScript-specific AST nodes are to reduce the differences with the AST shape of the `@typescript-eslint` project. This will make it easier to write ESLint rules that, when not depending on type information, can work both with `@typescript-eslint/parser` and `@babel/eslint-parser`.
+
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- <a name="ast-TSTypeParameter"></a> Use an identifier for `TSTypeParameter.name`, rather than a plain string ([#12829](https://github.com/babel/babel/pull/12829))
+
   ```ts title="input.ts"
   // T is a TSTypeParameter
   function process<T>(input: T): T {}
-  ```
 
-  __Migration__: If you have a customized plugin accessing the name of a type parameter node, use `node.name.name` in Babel 8.
-
-- Rename `parameters` to `params`, `typeAnnotation` to `returnType` for `TSCallSignatureDeclaration`, `TSConstructSignatureDeclaration`, `TSFunctionType`, `TSConstructorType` and `TSMethodSignature`
- ([#9231](https://github.com/babel/babel/issues/9231), [#13709](https://github.com/babel/babel/pull/13709))
-
-  ```ts title="input.ts"
-  interface Foo {
-    // TSCallSignatureDeclaration
-    <T>(): string;
-
-    // TSMethodSignature
-    foo<T>(): string;
-
-    // TSConstructSignatureDeclaration
-    new <T>(): string;
+  // AST in Babel 7
+  {
+    type: "TSTypeParameter",
+    name: "T",
   }
 
-  // TSFunctionType
-  type Bar = <T>() => string;
-
-  // TSConstructorType
-  type Baz = new <T>() => string;
+  // AST in Babel 8
+  {
+    type: "TSTypeParameter",
+    name: { type: "Identifier", name: "T" },
+  }
   ```
 
-  **Migration**: If you have a customized plugin accessing properties of these TS nodes, make adjustments accordingly:
-    - For `node.parameters` in Babel 7, use `node.params` in Babel 8
-    - For `node.typeAnnotation` in Babel 7, use `node.returnType` in Babel 8
+- Rename `parameters` to `params` and `typeAnnotation` to `returnType` in `TSCallSignatureDeclaration`, `TSConstructSignatureDeclaration`, `TSFunctionType`, `TSConstructorType` and `TSMethodSignature`
+ ([#9231](https://github.com/babel/babel/issues/9231), [#13709](https://github.com/babel/babel/pull/13709))
 
-- Rename `typeParameters` to `typeArguments` for `CallExpression`, `JSXOpeningElement`, `NewExpression`, `OptionalCallExpression`, `TSInstantiationExpression`, `TSTypeQuery` and  `TSTypeReference` ([#16679](https://github.com/babel/babel/issues/16679), [#17008](https://github.com/babel/babel/pull/17008), [#17012](https://github.com/babel/babel/pull/17012), [#17020](https://github.com/babel/babel/pull/17020))
+  <details>
+    <summary>TSCallSignatureDeclaration</summary>
+
+    ```ts title=input.ts
+    interface Foo {
+      (x: number): string;
+    }
+
+    // AST in Babel 7
+    {
+      type: "TSCallSignatureDeclaration",
+      parameters: [
+        { type: "Identifier", name: "x", typeAnnotation: { type: "TSNumberKeyword" } }
+      ],
+      typeAnnotation: {
+        type: "TSTypeAnnotation",
+        typeAnnotation: { type: "TSStringKeyword" }
+      }
+    }
+
+    // AST in Babel 8
+    {
+      type: "TSCallSignatureDeclaration",
+      params: [
+        { type: "Identifier", name: "x", typeAnnotation: { type: "TSNumberKeyword" } }
+      ],
+      retutnType: {
+        type: "TSTypeAnnotation",
+        typeAnnotation: { type: "TSStringKeyword" }
+      }
+    }
+    ```
+
+  </details>
+
+  <details>
+    <summary>TSConstructSignatureDeclaration</summary>
+
+    ```ts title=input.ts
+    interface Foo {
+      new (x: number): string;
+    }
+
+    // AST in Babel 7
+    {
+      type: "TSConstructSignatureDeclaration",
+      parameters: [
+        { type: "Identifier", name: "x", typeAnnotation: { type: "TSNumberKeyword" } }
+      ],
+      typeAnnotation: {
+        type: "TSTypeAnnotation",
+        typeAnnotation: { type: "TSStringKeyword" }
+      }
+    }
+
+    // AST in Babel 8
+    {
+      type: "TSConstructSignatureDeclaration",
+      params: [
+        { type: "Identifier", name: "x", typeAnnotation: { type: "TSNumberKeyword" } }
+      ],
+      retutnType: {
+        type: "TSTypeAnnotation",
+        typeAnnotation: { type: "TSStringKeyword" }
+      }
+    }
+    ```
+
+  </details>
+
+  <details>
+    <summary>TSMethodSignature</summary>
+
+    ```ts title=input.ts
+    interface Foo {
+      foo(x: number): string;
+    }
+
+    // AST in Babel 7
+    {
+      type: "TSMethodSignature",
+      key: Identifier("foo"),
+      parameters: [
+        { type: "Identifier", name: "x", typeAnnotation: { type: "TSNumberKeyword" } }
+      ],
+      typeAnnotation: {
+        type: "TSTypeAnnotation",
+        typeAnnotation: { type: "TSStringKeyword" }
+      }
+    }
+
+    // AST in Babel 8
+    {
+      type: "TSMethodSignature",
+      key: Identifier("foo"),
+      params: [
+        { type: "Identifier", name: "x", typeAnnotation: { type: "TSNumberKeyword" } }
+      ],
+      retutnType: {
+        type: "TSTypeAnnotation",
+        typeAnnotation: { type: "TSStringKeyword" }
+      }
+    }
+    ```
+
+  </details>
+
+  <details>
+    <summary>TSFunctionType</summary>
+
+    ```ts title=input.ts
+    type Bar = (x: number) => string;
+
+    // AST in Babel 7
+    {
+      type: "TSFunctionType",
+      parameters: [
+        { type: "Identifier", name: "x", typeAnnotation: { type: "TSNumberKeyword" } }
+      ],
+      typeAnnotation: {
+        type: "TSTypeAnnotation",
+        typeAnnotation: { type: "TSStringKeyword" }
+      }
+    }
+
+    // AST in Babel 8
+    {
+      type: "TSFunctionType",
+      params: [
+        { type: "Identifier", name: "x", typeAnnotation: { type: "TSNumberKeyword" } }
+      ],
+      retutnType: {
+        type: "TSTypeAnnotation",
+        typeAnnotation: { type: "TSStringKeyword" }
+      }
+    }
+    ```
+
+  </details>
+
+  <details>
+    <summary>TSConstructorType</summary>
+
+    ```ts title=input.ts
+    type Bar = (x: number) => string;
+
+    // AST in Babel 7
+    {
+      type: "TSConstructorType",
+      parameters: [
+        { type: "Identifier", name: "x", typeAnnotation: { type: "TSNumberKeyword" } }
+      ],
+      typeAnnotation: {
+        type: "TSTypeAnnotation",
+        typeAnnotation: { type: "TSStringKeyword" }
+      }
+    }
+
+    // AST in Babel 8
+    {
+      type: "TSConstructorType",
+      params: [
+        { type: "Identifier", name: "x", typeAnnotation: { type: "TSNumberKeyword" } }
+      ],
+      retutnType: {
+        type: "TSTypeAnnotation",
+        typeAnnotation: { type: "TSStringKeyword" }
+      }
+    }
+    ```
+
+  </details>
+
+- Rename `typeParameters` to `typeArguments` in `CallExpression`, `JSXOpeningElement`, `NewExpression`, `OptionalCallExpression`, `TSInstantiationExpression`, `TSTypeQuery` and  `TSTypeReference` ([#16679](https://github.com/babel/babel/issues/16679), [#17008](https://github.com/babel/babel/pull/17008), [#17012](https://github.com/babel/babel/pull/17012), [#17020](https://github.com/babel/babel/pull/17020))
 
   <details>
     <summary>CallExpression</summary>
@@ -322,7 +489,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   </details>
 
-- Rename `superTypeParameters` to `superTypeArguments` for `ClassDeclaration` and `ClassExpression` ([#16679](https://github.com/babel/babel/issues/16679), [#16997](https://github.com/babel/babel/pull/16997))
+- Rename `superTypeParameters` to `superTypeArguments` in `ClassDeclaration` and `ClassExpression` ([#16679](https://github.com/babel/babel/issues/16679), [#16997](https://github.com/babel/babel/pull/16997))
 
   ```ts title=input.ts
   class X extends Y<string> {}
@@ -354,15 +521,11 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   }
   ```
 
-![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+- <a name="ast-TSMappedType"></a> Split `typeParameter` of `TSMappedType` ([#16733](https://github.com/babel/babel/pull/16733)).
 
-- Split `typeParameter` of `TSMappedType` ([#16733](https://github.com/babel/babel/pull/16733)).
+  In `TSMappedType` nodes, the `typeParameter` property is flattened as `key` and `constraint` properties of `TSMappedType` itself.
 
-  For a `TSMappedType` node, the `typeParameter` attribute is split into `key` and `constraint` attributes.
-  This is to align the AST for TS nodes with `@typescript-eslint`.
-
-  ```ts
-  // Example input
+  ```ts title=input.ts
   let map1: { [P in string]: number; };
 
   // AST in Babel 7
@@ -385,76 +548,99 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   }
   ```
 
-  __Migration__: If you have a customized plugin accessing `typeParameter` of a `TSMappedType` node:
-    - For `node.typeParameter.name` in Babel 7, use `node.key` in Babel 8
-    - For `node.typeParameter.constraint` in Babel 7, use `node.constraint` in Babel 8
+- Split `TSExpressionWithTypeArguments` into `TSClassImplements` and `TSInterfaceHeritage` ([#16731](https://github.com/babel/babel/pull/16731).
 
-- Split `TSExpressionWithTypeArguments` into `TSClassImplements` and `TSInterfaceHeritage` ([#16731](https://github.com/babel/babel/pull/16731), and rename `typeParameters` to `typeArguments` ([#17017](https://github.com/babel/babel/pull/17017)).
+  The new nodes also use `typeArguments` instead of `typeParameters` ([#17017](https://github.com/babel/babel/pull/17017)).
 
-  The builder and validator for `TSExpressionWithTypeArguments` in `@babel/types` and `@babel/traverse` are also removed.
-  This is to align the AST for TS nodes with `@typescript-eslint`.
+  <details>
+    <summary>ClassDeclaration</summary>
 
-  ```ts
-  // Example input
-  class C implements X<T> {}
-  interface I extends X<T> {}
+    ```ts
+    class C implements X<T> {}
 
-  // AST in Babel 7
-  {
-    type: "ClassDeclaration",
-    id: Identifier("C"),
-    implements: [
-      {
-        type: "TSExpressionWithTypeArguments",
-        expression: Identifier("X"),
-        typeParameters: { type: "TSTypeParameterInstantiation", params: [TSTypeReference(Identifier("T"))] }
-      }
-    ],
-    body: ClassBody([]),
-  }
+    // AST in Babel 7
+    {
+      type: "ClassDeclaration",
+      id: Identifier("C"),
+      implements: [
+        {
+          type: "TSExpressionWithTypeArguments",
+          expression: Identifier("X"),
+          typeParameters: {
+            type: "TSTypeParameterInstantiation",
+            params: [TSTypeReference(Identifier("T"))]
+          }
+        }
+      ],
+      body: ClassBody([]),
+    }
 
-  {
-    type: "TSInterfaceDeclaration",
-    id: Identifier("I"),
-    extends: [
-      {
-        type: "TSExpressionWithTypeArguments",
-        expression: Identifier("X"),
-        typeParameters: { type: "TSTypeParameterInstantiation", params: [TSTypeReference(Identifier("T"))] }
-      }
-    ],
-    body: TSInterfaceBody([]),
-  }
+    // AST in Babel 8
+    {
+      type: "ClassDeclaration",
+      id: Identifier("C"),
+      implements: [
+        {
+          type: "TSClassImplements",
+          expression: Identifier("X"),
+          typeArguments: {
+            type: "TSTypeParameterInstantiation",
+            params: [TSTypeReference(Identifier("T"))]
+          }
+        }
+      ],
+      body: ClassBody([]),
+    }
+    ```
 
-  // AST in Babel 8
-  {
-    type: "ClassDeclaration",
-    id: Identifier("C"),
-    implements: [
-      {
-        type: "TSClassImplements",
-        expression: Identifier("X"),
-        typeArguments: { type: "TSTypeParameterInstantiation", params: [TSTypeReference(Identifier("T"))] }
-      }
-    ],
-    body: ClassBody([]),
-  }
+  </details>
 
-  {
-    type: "TSInterfaceDeclaration",
-    id: Identifier("I"),
-    extends: [
-      {
-        type: "TSInterfaceHeritage",
-        expression: Identifier("X"),
-        typeArguments: { type: "TSTypeParameterInstantiation", params: [TSTypeReference(Identifier("T"))] }
-      }
-    ],
-    body: TSInterfaceBody([]),
-  }
-  ```
+  <details>
+    <summary>TSInterfaceDeclaration</summary>
 
-  __Migration__: If you are using `TSExpressionWithTypeArguments`, replace it with `TSClassImplements` and `TSInterfaceHeritage` in Babel 8. If you are accessing `node.typeParameters`, use `node.typeArguments`.
+    ```ts
+    interface I extends X<T> {}
+
+    // AST in Babel 7
+    {
+      type: "TSInterfaceDeclaration",
+      id: Identifier("I"),
+      extends: [
+        {
+          type: "TSExpressionWithTypeArguments",
+          expression: Identifier("X"),
+          typeParameters: {
+            type: "TSTypeParameterInstantiation",
+            params: [TSTypeReference(Identifier("T"))]
+          }
+        }
+      ],
+      body: TSInterfaceBody([]),
+    }
+
+    // AST in Babel 8
+    {
+      type: "TSInterfaceDeclaration",
+      id: Identifier("I"),
+      extends: [
+        {
+          type: "TSInterfaceHeritage",
+          expression: Identifier("X"),
+          typeArguments: {
+            type: "TSTypeParameterInstantiation",
+            params: [TSTypeReference(Identifier("T"))]
+          }
+        }
+      ],
+      body: TSInterfaceBody([]),
+    }
+    ```
+
+  </details>
+
+- Create `TSAbstractMethodDefinition` and `TSPropertyDefinition` when both `estree` and `typescript` parser plugins are enabled ([#16679](https://github.com/babel/babel/issues/16679), [#17014](https://github.com/babel/babel/pull/17014))
+
+  __Migration__: This breaking change is part of the efforts to libraries and ESLint plugins that can work both with `typescript-eslint` and `@babel/eslint-parser`. For most Babel plugin developers you can safely ignore this change as it does not affect the typescript transform and codemod. That said, if you are trying to develop a custom ESLint rule with `@babel/eslint-parser`, this change aligns the Babel AST to the `typescript-eslint` AST.
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
@@ -462,9 +648,11 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   ```ts title="input.ts"
   type T = ({});
-  // createParenthesizedExpression: true
+
+  // Babel 8 with createParenthesizedExpression: true, and Babel 7
   TSParenthesizedType { typeAnnotation: TSTypeLiteral { members: [] } }
-  // createParenthesizedExpression: false
+
+  // Babel 8 with createParenthesizedExpression: false
   TSTypeLiteral { members: [] }
   ```
 
@@ -474,14 +662,11 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   ```
   When `createParenthesizedExpression` is `false`, you can also use `node.extra.parenthesized` to detect whether `node` is wrapped in parentheses.
 
-- Create `TSAbstractMethodDefinition` and `TSPropertyDefinition` when both `estree` and `typescript` parser plugins are enabled ([#16679](https://github.com/babel/babel/issues/16679), [#17014](https://github.com/babel/babel/pull/17014))
-
-  __Migration__: This breaking change is part of the efforts to libraries and ESLint plugins that can work both with `typescript-eslint` and `@babel/eslint-parser`. For most Babel plugin developers you can safely ignore this change as it does not affect the typescript transform and codemod. That said, if you are trying to develop a custom ESLint rule with `@babel/eslint-parser`, this change aligns the Babel AST to the `typescript-eslint` AST.
-
 ## API Changes
 
 ### All packages
-![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 - Disallow importing internal files ([#14013](https://github.com/babel/babel/pull/14013), [#14179](https://github.com/babel/babel/pull/14179)).
 
@@ -493,7 +678,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 - Disallow using `babel.transform`, `babel.transformFile`, `babel.transformFromAst`, `babel.parse`, `babel.loadOptions`, `babel.loadPartialConfig` and `babel.createConfigItem` synchronously ([#11110](https://github.com/babel/babel/pull/11110), [#12695](https://github.com/babel/babel/pull/12695), [#15869](https://github.com/babel/babel/pull/15869)).
 
-  __Migration__: The API above require a callback argument. If you are not providing a callback, please use their sync versions: `babel.transformSync`, `babel.transformFileSync`, `babel.transformFromAstSync`, `babel.parseSync`, `babel.loadOptionsSync`, `babel.loadPartialConfigSync` and `babel.createConfigItemSync`.
+  __Migration__: The APIs above require a callback argument. If you are not providing a callback, please use their sync versions: `babel.transformSync`, `babel.transformFileSync`, `babel.transformFromAstSync`, `babel.parseSync`, `babel.loadOptionsSync`, `babel.loadPartialConfigSync` and `babel.createConfigItemSync`.
 
 ### `@babel/generator`
 
@@ -524,9 +709,9 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 - Remove `Super` from the `Expression` alias ([#14750](https://github.com/babel/babel/pull/14750)).
 
-  A `Super` node represents `super` in super call `super()` and super property `super.foo`. `super` can not be a standalone expression. In other words, `t.isExpression(t.super())` will return `false` in Babel 8.
+  A `Super` node represents `super` in super call `super()` and super property `super.foo`. As `super` can not be a standalone expression, `t.isExpression(t.super())` will return `false` in Babel 8.
 
-  __Migration__: Search usage of `t.isExpression`, `t.assertsExpression` and `Expression` alias in the plugin visitor, and if necessary, update the usage when you are handling super call and super property. For example,
+  __Migration__: Search usage of the `t.isExpression` and `t.assertsExpression` functions, and of the `t.Expression` type alias: if they need to also accept `Super` nodes, update them accordingly.
 
   ```diff title="my-babel-plugin.js"
   // Add `.foo` to an expression
@@ -539,6 +724,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
       ))
   }
   ```
+
   You don't have to update the usage if `super()` and `super.foo` is not involved:
   ```js title="my-babel-plugin.js"
   // define an expression as a computed key of `foo`
@@ -553,27 +739,41 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   }
   ```
 
-- The third argument of `t.tsTypeParameter` requires an `Identifier` node ([#12829](https://github.com/babel/babel/pull/12829))
+- Require an `Identifier` node as the third argument of `t.tsTypeParameter` ([#12829](https://github.com/babel/babel/pull/12829))
+
+  This is due to the corresponding [AST shape change](#ast-TSTypeParameter).
 
   __Migration__: Wrap the `name` string within the `identifier` builder
 
   ```diff title="my-babel-codemod.js"
-  t.tsTypeParameter(
-    /* constraint */ undefined,
-    /* default */ undefined,
-  + t.identifier(
-      name
-  + )
-  )
+    t.tsTypeParameter(
+      /* constraint */ undefined,
+      /* default */ undefined,
+  +   t.identifier(
+        name
+  +   )
+    )
   ```
 
-- The `t.tsMappedType` signature changed ([#16733](https://github.com/babel/babel/pull/16733))
+- Update the `t.tsMappedType` signature ([#16733](https://github.com/babel/babel/pull/16733))
+
+  This is due to the corresponding [AST shape change](#ast-TSMappedType).
 
   ```ts
   // Babel 7
-  declare function tsMappedType(typeParameter: TSTypeParameter, typeAnnotation?: TSType, nameType?: TSType): TSMappedType
+  declare function tsMappedType(
+    typeParameter: TSTypeParameter,
+    typeAnnotation?: TSType,
+    nameType?: TSType
+  ): TSMappedType
+
   // Babel 8
-  declare function tsMappedType(key: Identifier, constraint: TSType, nameType?: TSType, typeAnnotation?: TSType): TSMappedType
+  declare function tsMappedType(
+    key: Identifier,
+    constraint: TSType,
+    nameType?: TSType,
+    typeAnnotation?: TSType
+  ): TSMappedType
   ```
   __Migration__: See the example below.
 
@@ -619,13 +819,13 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   __Migration__: The `optional` argument was already not used in the builder. You can safely remove it.
 
-- [Remove the `Noop` node type](https://github.com/babel/babel/issues/12355) ([#12361](https://github.com/babel/babel/pull/12361))
+- Remove the `Noop` node type ([#12361](https://github.com/babel/babel/pull/12361))
 
-  __Migration__: The `Noop` node is not used. If you are depending on the `Noop` node, please open an issue and talk about your use case.
+  __Migration__: There is no generic migration path: you should replace it with the actual node that `Noop` is being used as a placeholder for. If you are depending on `Noop` and have no alternative, please open an issue and explain your use case.
 
 - Initialize `indexers`, `callProperties` and `internalSlots` in the node `ObjectTypeAnnotation` as an empty array in `t.objectTypeAnnotation` ([#14465](https://github.com/babel/babel/pull/14465))
 
-  __Migration__: In Babel 7 the builder `t.objectTypeAnnotation` initializes them as `null`, this is inconsistent with how `@babel/parser` will parse the Flow object type annotations. In Babel 8 the new default value `[]` matches the parser behaviour. Adapt to the new default value if you are depending on this.
+  In Babel 7 the builder `t.objectTypeAnnotation` initializes them as `null`, this is inconsistent with how `@babel/parser` will parse the Flow object type annotations. In Babel 8 the new default value `[]` matches the parser behaviour.
 
 - Reject negative and NaN/infinite numbers from `t.numericLiteral` ([#15802](https://github.com/babel/babel/pull/15802))
 
@@ -633,15 +833,18 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   // NumericLiterals must be non-negative finite numbers.
   t.numericLiteral(-1);
   ```
-  __Migration__: Babel 7 silently ignores such invalid usage. Use `t.valueToNode(-1)` instead.
+
+  __Migration__: To represent a negative number, use `t.unaryExpression("-", t.numericLiteral(1))`. To represent NaN or Infinity, use `t.identifier("NaN")`. To convert a generic numeric value (which could also be negative, NaN, or an inifinity) to the proper AST node, use `t.valueToNode(num)`.
 
 ### `@babel/parser`
+
+Other than the changes listed below, `@babel/parser` is affected by all the [AST changes](#ast-changes).
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 - Align Babel parser error codes between Flow and TypeScript ([#13294](https://github.com/babel/babel/pull/13294))
 
-  **Migration**: The `error.code` for `OptionalBindingPattern` is renamed as `PatternIsOptional`.
+  The `error.code` for `OptionalBindingPattern` is renamed as `PatternIsOptional`.
 
 - Remove `updateContext` field from `tokens[].type` returned from option `tokens: true ` ([#13768](https://github.com/babel/babel/pull/13768))
 
@@ -655,11 +858,10 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   // Babel 8
   // { label: "name", ... other properties }
   ```
-  **Migration**: This change probably won't affect your integration. The `tokens[].type` is an object storing meta information of a token as implementation details.
 
-- Tokenize private name `#priv` as a single `privateName` token ([#13256](https://github.com/babel/babel/pull/13256))
+  Note that `tokens[].type` is meant to be an opaque object used as an identity for token types, as if it was a symol. Its exact shape is meant to be an internal implementation detail.
 
-  This change will affect your integration only when you are using `tokens: true` and are depending on the extra `tokens` AST output.
+- Tokenize private names (`#priv`) as a single `privateName` token ([#13256](https://github.com/babel/babel/pull/13256))
 
   ```js title="babel-integration.js"
   import { parse } from "@babel/parser";
@@ -676,11 +878,8 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   //  Token (privateName) { value: "priv", start: 10, end: 15 }
   // ]
   ```
-  **Migration**: Adapt to the new `privateName` token. If you want to restore to the Babel 7 behaviour, manually process the `privateName` token into the `#` token and the `name` token ([example](https://github.com/babel/babel/blob/7e60a93897f9a134506251ea51269faf4d02a86c/packages/babel-parser/src/parser/statement.ts#L86-L110)).
 
-- Tokenize string template as `templateNonTail` and `templateTail` ([#13919](https://github.com/babel/babel/pull/13919))
-
-  This change will affect your integration only when you are using `tokens: true` and are depending on the extra `tokens` AST output.
+- Tokenize template literals as `templateNonTail` and `templateTail` ([#13919](https://github.com/babel/babel/pull/13919))
 
   ```js title="babel-integration.js"
   import { parse } from "@babel/parser";
@@ -707,8 +906,6 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   // ]
   ```
 
-  **Migration**: Adapt to the new token design. If you want to restore to the Babel 7 behaviour, manually transform them to the Babel 7 tokens ([example](https://github.com/babel/babel/blob/7e60a93897f9a134506251ea51269faf4d02a86c/packages/babel-parser/src/parser/statement.ts#L116-L188)).
-
 - Remove `extra.shorthand` from `ObjectProperty` nodes ([#16521](https://github.com/babel/babel/pull/16521))
 
   **Migration**: Use `node.shorthand` rather than `node.extra.shorthand`.
@@ -717,14 +914,10 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- Remove some `NodePath` methods ([#16655](https://github.com/babel/babel/pull/16655))
+- Remove `is`, `isnt`, `has`, `equals` methods from `NodePath` ([#16655](https://github.com/babel/babel/pull/16655))
 
-  __Migration__:
-  `hoist`, `updateSiblingKeys`, `call`, `setScope`, `resync`, `popContext`, `pushContext`, `setup`, `setKey`
-  These methods are meant to be private so there is no real migration approach. But if your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
+  __Migration__: Directly compare properties of `path.node` instead.
 
-  `is`, `isnt`, `has`, `equals`
-  Access `path.node` instead.
   ```diff
   - functionExpressionPath.equals("id", idNode)
   + functionExpressionPath.node.id === idNode
@@ -740,6 +933,10 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   + !functionExpressionPath.node.async
   ```
 
+- Remove `hoist`, `updateSiblingKeys`, `call`, `setScope`, `resync`, `popContext`, `pushContext`, `setup`, `setKey` methods from `NodePath` ([#16655](https://github.com/babel/babel/pull/16655))
+
+  These methods are meant to be private so there is no real migration approach. If your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
+
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 - Remove `block` argument from `Scope#rename` ([#15288](https://github.com/babel/babel/pull/15288))
@@ -749,15 +946,15 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   + rename(oldName: string, newName?: string)
   ```
 
-  __Migration__: In Babel 8 the third argument `block` is not used by the method. Consider remove it if you are depending on `Scope#rename`.
+  __Migration__: Instead of passing a different block to `scope.rename()`, directly call `.rename()` on the scope corresponding to that block.
 
-- [Allow skipped `NodePath`s to be requeued](https://github.com/babel/babel/blob/43b623c1f1e86e6fb86cae8d955a84fd924380a4/packages/babel-traverse/src/path/context.js#L241-L247) ([#13291](https://github.com/babel/babel/pull/13291))
+- Allow skipped `NodePath`s to be requeued ([#13291](https://github.com/babel/babel/pull/13291))
 
-  **Notes**: `NodePath#requeue()` can requeue a skipped NodePath. This is actually a bugfix, but it causes an infinite loop in the tdz implementation of `@babel/plugin-transform-block-scoping` in Babel 7. So it may break other plugins as well.
+  `NodePath#requeue()` can requeue a skipped NodePath. This is actually a bugfix, but it causes an infinite loop in the [temporal dead zone](https://babeljs.io/docs/babel-plugin-transform-block-scoping#tdz) implementation of `@babel/plugin-transform-block-scoping` in Babel 7: it may break other plugins as well.
 
-  __Migration__: Adapt to the new behaviour. You can use `NodePath#shouldSkip` to check whether a NodePath has been skipped before calling `NodePath#requeue()`.
+  __Migration__: If you want to preserve the old behavior, you can use `NodePath#shouldSkip` to check whether a NodePath has been skipped before calling `NodePath#requeue()`.
 
-- Remove methods starting with `_` ([#16504](https://github.com/babel/babel/pull/16504))
+- Remove `NodePath` methods starting with `_` ([#16504](https://github.com/babel/babel/pull/16504))
 
   ```
   _assertUnremoved
@@ -782,25 +979,13 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   _verifyNodeList
   ```
 
-  __Migration__: These methods are meant to be private so there is no real migration approach. But if your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
-
-### `@babel/compat-data`
-
-![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-- Remove `ios_saf` from `data/native-modules.json` ([#15068](https://github.com/babel/babel/pull/15068/commits/554225d72d7781356e05b6bbc4ef85f42629d001))
-
-  __Migration__: Use `ios` instead.
-
-- Rename stage 4 plugin entries from `proposal-*` to `transform-*` in `plugins.json` ([#14976](https://github.com/babel/babel/pull/14976))
-
-  __Migration__: For example, use `transform-class-properties` rather than `proposal-class-properties`. For a complete list of renamed plugin, see [Packages Renames section of Babel 8 migration](./v8-migration.md#package-renames).
+  These methods are meant to be private so there is no real migration approach. If your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
 
 ### `@babel/eslint-plugin`
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
-- The `default` named exports has been removed ([#14180](https://github.com/babel/babel/pull/14180))
+- Remove the `default` property of the exports object ([#14180](https://github.com/babel/babel/pull/14180))
 
   __Migration__: This change has no effect if you are using the plugin in your ESLint config. However, if you are extending `@babel/eslint-plugin`, ensure that you obtain exports
   from `require("@babel/eslint-plugin")` rather than `require("@babel/eslint-plugin").default`.
@@ -810,11 +995,15 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   const { rules, rulesConfig } = require("@babel/eslint-plugin")
   ```
 
-### `@babel/helper-compilation-targets`
+### `@babel/compat-data`
 
-![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- `isRequired` will not accept renamed `proposal-` queries ([#14976](https://github.com/babel/babel/pull/14976))
+- Rename stage 4 plugin entries from `proposal-*` to `transform-*` in `plugins.json` ([#14976](https://github.com/babel/babel/pull/14976))
+
+  This change also affects the `isRequired` function of `@babel/helper-compilation-targets`, which receives plugin names as its first parameter.
+
+  __Migration__: For example, use `transform-class-properties` rather than `proposal-class-properties`. For a complete list of renamed plugin, see [Packages Renames section of Babel 8 migration](./v8-migration.md#package-renames).
 
   ```diff title="my-babel-plugin.js"
   module.exports = api => {
@@ -829,7 +1018,11 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
   };
   ```
 
-  __Migration__: Use the `transform-*` plugin name if the plugin is listed in [the Packages Renames section of Babel 8 migration](./v8-migration.md#package-renames).
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Remove `ios_saf` from `data/native-modules.json` ([#15068](https://github.com/babel/babel/pull/15068/commits/554225d72d7781356e05b6bbc4ef85f42629d001))
+
+  __Migration__: Use `ios` instead.
 
 ### `@babel/helper-replace-supers`
 
@@ -864,7 +1057,7 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 - Remove the the third parameter `includeUpdateExpression` from the default export ([#15550](https://github.com/babel/babel/pull/15550))
 
-  This change probabaly won't break your integration as `includeUpdateExpression` defaults to `true` in Babel 7. If you are using `includeUpdateExpression: false`, adapt to the new behaviour.
+  Note that the Babel 8 behavior is the same as the _default_ Babel 7 behavior (i.e. `includeUpdateExpression: true`).
 
 ### `@babel/highlight`
 
@@ -874,13 +1067,13 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
   If you need to use `chalk`, add it to your dependencies.
 
-## Plugin changes
+### Plugin API changes
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 - Remove `getModuleName` from plugin pass ([#12724](https://github.com/babel/babel/pull/12724))
 
-  __Migration__: Use `.file.getModuleName` instead. For example,
+  __Migration__: Use `.file.getModuleName` instead.
 
   ```diff title="my-babel-plugin.js"
   module.exports = {
@@ -898,21 +1091,25 @@ Check out the [v8-migration guide](v8-migration.md) for other user-level changes
 
 - Remove `addImport` from plugin pass ([#15576](https://github.com/babel/babel/pull/15576))
 
-  __Migration__: This change probably will not affect your plugin as this method is already throwing an error in Babel 7. Use [`addNamed`](./helper-module-imports.md#import--named-as-_named--from-source) or [`addDefault`](./helper-module-imports.md#import-_default-from-source) from `@babel/helper-module-imports` instead.
+  This change probably will not affect your plugin as this method is already throwing an error in Babel 7.
 
-- Stop supporting fields as named exports ([#15576](https://github.com/babel/babel/pull/15576))
+  __Migration__: Use [`addNamed`](./helper-module-imports.md#import--named-as-_named--from-source) or [`addDefault`](./helper-module-imports.md#import-_default-from-source) from `@babel/helper-module-imports` instead.
 
-  __Migration__: This change disallows plugins declared from named exports, for example,
+- Stop supporting plugin fields as named exports ([#15576](https://github.com/babel/babel/pull/15576))
+
+  For example, the following file is not a valid plugin anymore:
+
   ```js title="legacy-babel-plugin.js"
-  exports.name = "legacy-babel-plugin";
-  exports.visitor = {
+  export const name = "legacy-babel-plugin";
+  export const visitor = {
     Identifier() {}
   }
   ```
 
-  find such patterns and migrate to the following patterns.
+  __Migration__: Find such patterns and use a default export instead, either exporting a plugin object or a factory function.
+
   ```js title="my-babel-plugin.cjs"
-  module.exports = {
+  export default {
     name: "babel-plugin",
     visitor: {
       Identifier() {}
