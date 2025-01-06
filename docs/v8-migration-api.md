@@ -244,7 +244,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
   </details>
 
-- Rename `typeParameters` to `typeArguments` in `CallExpression`, `JSXOpeningElement`, `NewExpression`, `OptionalCallExpression`, `TSInstantiationExpression`, `TSTypeQuery` and  `TSTypeReference` ([#16679](https://github.com/babel/babel/issues/16679), [#17008](https://github.com/babel/babel/pull/17008), [#17012](https://github.com/babel/babel/pull/17012), [#17020](https://github.com/babel/babel/pull/17020))
+- Rename `typeParameters` to `typeArguments` in `CallExpression`, `JSXOpeningElement`, `NewExpression`, `OptionalCallExpression`, `TSImportType`, `TSInstantiationExpression`, `TSTypeQuery` and  `TSTypeReference` ([#16679](https://github.com/babel/babel/issues/16679), [#17008](https://github.com/babel/babel/pull/17008), [#17012](https://github.com/babel/babel/pull/17012), [#17020](https://github.com/babel/babel/pull/17020), [#17042](https://github.com/babel/babel/pull/17042))
 
   <details>
     <summary>CallExpression</summary>
@@ -379,6 +379,39 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
       callee: Identifier("fn"),
       arguments: [],
       optional: true,
+      typeArguments: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
+    }
+    ```
+
+  </details>
+
+  <details>
+    <summary>TSImportType</summary>
+
+    ```ts title=input.ts
+    var arr: import("./Array")<string>
+
+    // AST in Babel 7
+    {
+      type: "TSImportType",
+      argument: StringLiteral("./Array"),
+      typeParameters: {
+        type: "TSTypeParameterInstantiation",
+        params: [{
+          type: "TSStringKeyword"
+        }]
+      }
+    }
+
+    // AST in Babel 8
+    {
+      type: "TSImportType",
+      argument: StringLiteral("./Array"),
       typeArguments: {
         type: "TSTypeParameterInstantiation",
         params: [{
