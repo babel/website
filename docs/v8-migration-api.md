@@ -548,12 +548,12 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   }
   ```
 
-- Split `TSExpressionWithTypeArguments` into `TSClassImplements` and `TSInterfaceHeritage` ([#16731](https://github.com/babel/babel/pull/16731).
+- Split `TSExpressionWithTypeArguments` into `TSClassImplements` and `TSInterfaceHeritage` ([#16731](https://github.com/babel/babel/pull/16731)).
 
   The new nodes also use `typeArguments` instead of `typeParameters` ([#17017](https://github.com/babel/babel/pull/17017)).
 
   <details>
-    <summary>ClassDeclaration</summary>
+    <summary>TSClassImplements</summary>
 
     ```ts
     class C implements X<T> {}
@@ -596,7 +596,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   </details>
 
   <details>
-    <summary>TSInterfaceDeclaration</summary>
+    <summary>TSInterfaceHeritage</summary>
 
     ```ts
     interface I extends X<T> {}
