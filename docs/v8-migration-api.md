@@ -244,7 +244,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
   </details>
 
-- Rename `typeParameters` to `typeArguments` in `CallExpression`, `JSXOpeningElement`, `NewExpression`, `OptionalCallExpression`, `TSImportType`, `TSInstantiationExpression`, `TSTypeQuery` and  `TSTypeReference` ([#16679](https://github.com/babel/babel/issues/16679), [#17008](https://github.com/babel/babel/pull/17008), [#17012](https://github.com/babel/babel/pull/17012), [#17020](https://github.com/babel/babel/pull/17020), [#17042](https://github.com/babel/babel/pull/17042))
+- <a name="ast-typeArguments"></a> Rename `typeParameters` to `typeArguments` in `CallExpression`, `JSXOpeningElement`, `NewExpression`, `OptionalCallExpression`, `TSImportType`, `TSInstantiationExpression`, `TSTypeQuery` and  `TSTypeReference` ([#16679](https://github.com/babel/babel/issues/16679), [#17008](https://github.com/babel/babel/pull/17008), [#17012](https://github.com/babel/babel/pull/17012), [#17020](https://github.com/babel/babel/pull/17020), [#17042](https://github.com/babel/babel/pull/17042))
 
   <details>
     <summary>CallExpression</summary>
@@ -411,7 +411,10 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
     // AST in Babel 8
     {
       type: "TSImportType",
-      argument: StringLiteral("./Array"),
+      argument: {
+        type: "TSLiteralType",
+        literal: StringLiteral("./Array")
+      },
       typeArguments: {
         type: "TSTypeParameterInstantiation",
         params: [{
@@ -671,6 +674,29 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
   </details>
 
+- <a name="ast-TSImportType"></a> Wrap the `argument` of `TSImportType` within a `TSLiteralType` ([#17046](https://github.com/babel/babel/pull/17046))
+
+  The `TSImportType` also uses `typeArguments` instead of `typeParameters` ([#17042](https://github.com/babel/babel/pull/17042)). See [here](#ast-typeArguments) for an example.
+
+  ```ts title=input.ts
+    var arr: import("./Array")
+
+    // AST in Babel 7
+    {
+      type: "TSImportType",
+      argument: StringLiteral("./Array")
+    }
+
+    // AST in Babel 8
+    {
+      type: "TSImportType",
+      argument: {
+        type: "TSLiteralType",
+        literal: StringLiteral("./Array")
+      }
+    }
+  ```
+
 - Create `TSAbstractMethodDefinition` and `TSPropertyDefinition` when both `estree` and `typescript` parser plugins are enabled ([#16679](https://github.com/babel/babel/issues/16679), [#17014](https://github.com/babel/babel/pull/17014))
 
   __Migration__: This breaking change is part of the efforts to libraries and ESLint plugins that can work both with `typescript-eslint` and `@babel/eslint-parser`. For most Babel plugin developers you can safely ignore this change as it does not affect the typescript transform and codemod. That said, if you are trying to develop a custom ESLint rule with `@babel/eslint-parser`, this change aligns the Babel AST to the `typescript-eslint` AST.
@@ -784,6 +810,20 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
       /* default */ undefined,
   +   t.identifier(
         name
+  +   )
+    )
+  ```
+
+- Require a `TSLiteralType` node as the first argument of `t.tsImportType` ([#17046](https://github.com/babel/babel/pull/17046))
+
+  This is due to the corresponding [AST shape change](#ast-TSImportType).
+
+  __Migration__: Wrap the `argument` string literal within the `tsLiteralType` builder
+
+  ```diff title="my-babel-codemod.js"
+    t.tsImportType(
+  +   t.tsLiteralType(
+        t.stringLiteral("foo")
   +   )
     )
   ```
