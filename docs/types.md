@@ -1752,7 +1752,8 @@ AST Node `JSXOpeningElement` shape:
 - `name`: `JSXIdentifier | JSXMemberExpression | JSXNamespacedName` (required)
 - `attributes`: `Array<JSXAttribute | JSXSpreadAttribute>` (required)
 - `selfClosing`: `boolean` (default: `false`)
-- `typeParameters`: `TypeParameterInstantiation | TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
+- `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
+- `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
 Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
@@ -2799,6 +2800,21 @@ Aliases: [`TypeScript`](#typescript)
 
 ---
 
+#### tsEnumBody
+
+```js title="JavaScript"
+t.tsEnumBody(members);
+```
+
+See also `t.isTSEnumBody(node, opts)` and `t.assertTSEnumBody(node, opts)`.
+
+AST Node `TSEnumBody` shape:
+- `members`: `Array<TSEnumMember>` (required)
+
+Aliases: [`TypeScript`](#typescript)
+
+---
+
 #### tsEnumDeclaration
 
 ```js title="JavaScript"
@@ -2810,6 +2826,7 @@ See also `t.isTSEnumDeclaration(node, opts)` and `t.assertTSEnumDeclaration(node
 AST Node `TSEnumDeclaration` shape:
 - `id`: `Identifier` (required)
 - `members`: `Array<TSEnumMember>` (required)
+- `body`: `TSEnumBody` (default: `null`, excluded from builder function)
 - `const`: `boolean` (default: `null`, excluded from builder function)
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 - `initializer`: `Expression` (default: `null`, excluded from builder function)
@@ -5131,6 +5148,7 @@ Covered nodes:
 - [`TSConstructorType`](#tsconstructortype)
 - [`TSDeclareFunction`](#tsdeclarefunction)
 - [`TSDeclareMethod`](#tsdeclaremethod)
+- [`TSEnumBody`](#tsenumbody)
 - [`TSEnumDeclaration`](#tsenumdeclaration)
 - [`TSEnumMember`](#tsenummember)
 - [`TSExportAssignment`](#tsexportassignment)
