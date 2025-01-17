@@ -68,6 +68,27 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   }
   ```
 
+- Allow `ThisExpression` as `TSTypeQuery.exprName`, rather than a `this` identifier ([#17059](https://github.com/babel/babel/pull/17059))
+
+  ```ts title="input.ts"
+  function fn() {
+    // `typeof this` is a TSTypeQuery
+    var self: typeof this
+  }
+
+  // AST in Babel 7
+  {
+    type: "TSTypeQuery",
+    exprName: { type: "Identifier", name: "this" }
+  }
+
+  // AST in Babel 8
+  {
+    type: "TSTypeQuery",
+    exprName: { type: "ThisExpression" }
+  }
+  ```
+
 - Rename `parameters` to `params` and `typeAnnotation` to `returnType` in `TSCallSignatureDeclaration`, `TSConstructSignatureDeclaration`, `TSFunctionType`, `TSConstructorType` and `TSMethodSignature`
  ([#9231](https://github.com/babel/babel/issues/9231), [#13709](https://github.com/babel/babel/pull/13709))
 
