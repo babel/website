@@ -754,6 +754,46 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   }
   ```
 
+- Create `TSTemplateLiteralType` when there is at least one interpolated position
+
+  Note that the AST is not changed when there is no interpolated position, e.g. `` `foo` ``
+  as a template literal type is still parsed as a TemplateLiteral node within a TSLiteralType.
+
+  ```ts title="input.ts"
+  type World = "world";
+  // `hello ${World}` is a template literal type
+  type Greeting = `hello ${World}`;
+
+  // AST in Babel 7
+  {
+    type: "TSLiteralType",
+    literal: {
+      type: "TemplateLiteral",
+      expressions: [{
+        type: "TSTypeReference",
+        typeName: Identifier("World")
+      }],
+      quasis: [
+        TemplateElement("hello "),
+        TemplateElement("")
+      ]
+    }
+  }
+
+  // AST in Babel 8
+  {
+    type: "TSTemplateLiteralType",
+    types: [{
+      type: "TSTypeReference",
+      typeName: Identifier("World")
+    }],
+    quasis: [
+      TemplateElement("hello "),
+      TemplateElement("")
+    ]
+  }
+  ```
+
 - Create `TSAbstractMethodDefinition` and `TSPropertyDefinition` when both `estree` and `typescript` parser plugins are enabled ([#16679](https://github.com/babel/babel/issues/16679), [#17014](https://github.com/babel/babel/pull/17014))
 
   __Migration__: This breaking change is part of the efforts to libraries and ESLint plugins that can work both with `typescript-eslint` and `@babel/eslint-parser`. For most Babel plugin developers you can safely ignore this change as it does not affect the typescript transform and codemod. That said, if you are trying to develop a custom ESLint rule with `@babel/eslint-parser`, this change aligns the Babel AST to the `typescript-eslint` AST.
