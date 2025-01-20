@@ -95,7 +95,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>TSCallSignatureDeclaration</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     interface Foo {
       (x: number): string;
     }
@@ -130,7 +130,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>TSConstructSignatureDeclaration</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     interface Foo {
       new (x: number): string;
     }
@@ -165,7 +165,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>TSMethodSignature</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     interface Foo {
       foo(x: number): string;
     }
@@ -202,7 +202,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>TSFunctionType</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     type Bar = (x: number) => string;
 
     // AST in Babel 7
@@ -235,7 +235,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>TSConstructorType</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     type Bar = (x: number) => string;
 
     // AST in Babel 7
@@ -270,7 +270,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>CallExpression</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     fn<string>()
 
     // AST in Babel 7
@@ -305,7 +305,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>JSXOpeningElement</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     <Component<string>/>
 
     // AST in Babel 7
@@ -342,7 +342,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>NewExpression</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     new Component<string>()
 
     // AST in Babel 7
@@ -377,7 +377,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>OptionalCallExpression</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     fn?.<string>()
 
     // AST in Babel 7
@@ -414,7 +414,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>TSImportType</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     var arr: import("./Array")<string>
 
     // AST in Babel 7
@@ -450,7 +450,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>TSInstantiationExpression</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     fn<string>
 
     // AST in Babel 7
@@ -483,7 +483,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>TSTypeQuery</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     var arr: typeof Array<string>;
 
     // AST in Babel 7
@@ -516,7 +516,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>TSTypeReference</summary>
 
-    ```ts title=input.ts
+    ```ts title="input.ts"
     var arr: Array<string>;
 
     // AST in Babel 7
@@ -548,7 +548,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
 - Rename `superTypeParameters` to `superTypeArguments` in `ClassDeclaration` and `ClassExpression` ([#16679](https://github.com/babel/babel/issues/16679), [#16997](https://github.com/babel/babel/pull/16997))
 
-  ```ts title=input.ts
+  ```ts title="input.ts"
   class X extends Y<string> {}
 
   // AST in Babel 7
@@ -582,7 +582,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
   In `TSMappedType` nodes, the `typeParameter` property is flattened as `key` and `constraint` properties of `TSMappedType` itself.
 
-  ```ts title=input.ts
+  ```ts title="input.ts"
   let map1: { [P in string]: number; };
 
   // AST in Babel 7
@@ -612,7 +612,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>ClassDeclaration</summary>
 
-    ```ts
+    ```ts title="input.ts"
     class C implements X<T> {}
 
     // AST in Babel 7
@@ -655,7 +655,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   <details>
     <summary>TSInterfaceDeclaration</summary>
 
-    ```ts
+    ```ts title="input.ts"
     interface I extends X<T> {}
 
     // AST in Babel 7
@@ -699,7 +699,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
   The `TSImportType` also uses `typeArguments` instead of `typeParameters` ([#17042](https://github.com/babel/babel/pull/17042)). See [here](#ast-typeArguments) for an example.
 
-  ```ts title=input.ts
+  ```ts title="input.ts"
     var arr: import("./Array")
 
     // AST in Babel 7
@@ -720,7 +720,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
 - <a name="ast-TSEnumDeclaration"></a> Wrap the `members` of `TSEnumDeclaration` within a `TSEnumBody` node ([#16979](https://github.com/babel/babel/pull/16979))
 
-  ```ts title=input.ts
+  ```ts title="input.ts"
   // Example input
   enum ColorType {
     Red,
@@ -967,7 +967,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   ```
   __Migration__: See the example below.
 
-  ```ts title=my-babel-codemod.ts
+  ```ts title="my-babel-codemod.ts"
   // To create { [P in string as Q]: number }
 
   // Babel 7
