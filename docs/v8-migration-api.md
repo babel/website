@@ -89,6 +89,41 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   }
   ```
 
+- Parse exporting `TSImportEqualsDeclaration` as an `ExportNamedDeclaration` ([#17073](https://github.com/babel/babel/pull/17073))
+
+  Note that the `isExport` field is also removed. For any `TSImportEqualsDeclaration` NodePath `p`, use `p.parentPath.isExportNamedDeclaration()` to detect whether it is following an `export` keyword.
+
+  ```ts title="input.ts"
+  export import foo = require("foo")
+
+  // AST in Babel 7
+  {
+    type: "TSImportEqualsDeclaration",
+    importKind: "value"
+    isExport: true,
+    id: Identifier("foo"),
+    moduleReference: {
+      type: "TSExternalModuleReference",
+      expression: StringLiteral("foo")
+    }
+  }
+
+  // AST in Babel 8
+  {
+    type: "ExportNamedDeclaration",
+    declaration: {
+      type: "TSImportEqualsDeclaration",
+      importKind: "value"
+      id: Identifier("foo"),
+      moduleReference: {
+        type: "TSExternalModuleReference",
+        expression: StringLiteral("foo")
+      }
+    },
+    specifiers: []
+  }
+  ```
+
 - Rename `parameters` to `params` and `typeAnnotation` to `returnType` in `TSCallSignatureDeclaration`, `TSConstructSignatureDeclaration`, `TSFunctionType`, `TSConstructorType` and `TSMethodSignature`
  ([#9231](https://github.com/babel/babel/issues/9231), [#13709](https://github.com/babel/babel/pull/13709))
 
