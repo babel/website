@@ -276,10 +276,6 @@ const siteConfig = {
       defer: true,
     },
     {
-      src: "https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js",
-      defer: true,
-    },
-    {
       src: "/js/components/mini-repl.js",
       type: "module",
     },
