@@ -2928,7 +2928,7 @@ AST Node `TSImportEqualsDeclaration` shape:
 - `importKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 - `isExport`: `boolean` (required)
 
-Aliases: [`TypeScript`](#typescript), [`Statement`](#statement)
+Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -3403,6 +3403,22 @@ t.tsSymbolKeyword();
 ```
 
 See also `t.isTSSymbolKeyword(node, opts)` and `t.assertTSSymbolKeyword(node, opts)`.
+
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+
+---
+
+#### tsTemplateLiteralType
+
+```js title="JavaScript"
+t.tsTemplateLiteralType(quasis, types);
+```
+
+See also `t.isTSTemplateLiteralType(node, opts)` and `t.assertTSTemplateLiteralType(node, opts)`.
+
+AST Node `TSTemplateLiteralType` shape:
+- `quasis`: `Array<TemplateElement>` (required)
+- `types`: `Array<TSType>` (required)
 
 Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
@@ -4237,6 +4253,7 @@ Covered nodes:
 - [`OpaqueType`](#opaquetype)
 - [`TSDeclareFunction`](#tsdeclarefunction)
 - [`TSEnumDeclaration`](#tsenumdeclaration)
+- [`TSImportEqualsDeclaration`](#tsimportequalsdeclaration)
 - [`TSInterfaceDeclaration`](#tsinterfacedeclaration)
 - [`TSModuleDeclaration`](#tsmoduledeclaration)
 - [`TSTypeAliasDeclaration`](#tstypealiasdeclaration)
@@ -5040,6 +5057,7 @@ Covered nodes:
 - [`TSObjectKeyword`](#tsobjectkeyword)
 - [`TSStringKeyword`](#tsstringkeyword)
 - [`TSSymbolKeyword`](#tssymbolkeyword)
+- [`TSTemplateLiteralType`](#tstemplateliteraltype)
 - [`TSThisType`](#tsthistype)
 - [`TSUndefinedKeyword`](#tsundefinedkeyword)
 - [`TSUnknownKeyword`](#tsunknownkeyword)
@@ -5088,6 +5106,7 @@ Covered nodes:
 - [`TSRestType`](#tsresttype)
 - [`TSStringKeyword`](#tsstringkeyword)
 - [`TSSymbolKeyword`](#tssymbolkeyword)
+- [`TSTemplateLiteralType`](#tstemplateliteraltype)
 - [`TSThisType`](#tsthistype)
 - [`TSTupleType`](#tstupletype)
 - [`TSTypeLiteral`](#tstypeliteral)
@@ -5186,6 +5205,7 @@ Covered nodes:
 - [`TSSatisfiesExpression`](#tssatisfiesexpression)
 - [`TSStringKeyword`](#tsstringkeyword)
 - [`TSSymbolKeyword`](#tssymbolkeyword)
+- [`TSTemplateLiteralType`](#tstemplateliteraltype)
 - [`TSThisType`](#tsthistype)
 - [`TSTupleType`](#tstupletype)
 - [`TSTypeAliasDeclaration`](#tstypealiasdeclaration)
