@@ -203,7 +203,7 @@ export var Animals = {
 
 Added in: `v7.23.0`
 
-When set to `true`, Babel will rewrite `.ts`/`.mts`/`.cts` extensions in import declarations to `.js`/`.mjs`/`.cjs`.
+When set to `true`, Babel will rewrite `.ts`/`.mts`/`.cts` extensions in import declarations to `.js`/`.mjs`/`.cjs`. This options mirrors TypeScripts's [`rewriteRelativeImportExtensions`](https://www.typescriptlang.org/tsconfig/#rewriteRelativeImportExtensions) option.
 
 This option, when used together with TypeScript's [`allowImportingTsExtension`](https://www.typescriptlang.org/tsconfig#allowImportingTsExtensions) option, allows to write complete relative specifiers in import declarations while using the same extension used by the source files.
 
