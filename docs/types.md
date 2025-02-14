@@ -494,6 +494,7 @@ AST Node `ClassPrivateProperty` shape:
 - `decorators`: `Array<Decorator>` (default: `null`)
 - `static`: `boolean` (default: `false`)
 - `definite`: `boolean` (default: `null`, excluded from builder function)
+- `optional`: `boolean` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `variance`: `Variance` (default: `null`, excluded from builder function)
@@ -3321,7 +3322,7 @@ AST Node `TSPropertySignature` shape:
 - `key`: `Expression` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 - `computed`: `boolean` (default: `false`, excluded from builder function)
-- `kind`: `"get" | "set"` (required)
+- `kind`: `"get" | "set"` (default: `null`, excluded from builder function)
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 
