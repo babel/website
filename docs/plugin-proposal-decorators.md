@@ -217,6 +217,18 @@ You can read more about configuring plugin options [here](https://babeljs.io/doc
 
 ::::
 
+## `Symbol.metadata` notes
+
+When using decorators which either access or modify the metadata in the decorator context, you need to use `Symbol.metadata`. When `Symbol.metadata` is not available, Babel defaults to `Symbol.for("Symbol.metadata")`: this may be incompatible with other packages that use a different fallback.
+
+To ensure that `Symbol.metadata` is available globally and matches the symbol used by the Babel decorators plugin during transpilation, you will need to either include a polyfill that defines it, or define it yourself:
+
+```js title="symbol-metadata-polyfill.js"
+Symbol.metadata = Symbol.for("Symbol.metadata");
+```
+
+You can also use a third-party polyfill, such as `core-js/proposals/decorator-metadata-v2.js`. Make sure that the polyfill is executed before any code that uses decorators or accesses `Symbol.metadata`.
+
 ## References
 
 - [Proposal: JavaScript Decorators](https://github.com/tc39/proposal-decorators)

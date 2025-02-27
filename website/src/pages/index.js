@@ -6,6 +6,7 @@ import BABEL_MINI_REPL from "../../../js/minirepl.js";
 import Translate from "@docusaurus/Translate";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Head from '@docusaurus/Head';
 
 class Button extends React.Component {
   render() {
@@ -28,14 +29,14 @@ Button.defaultProps = {
 };
 
 function waitUntilAceIsLoaded(callback) {
-  if ('ace' in window) {
-    callback()
+  if ("ace" in window) {
+    callback();
   } else {
     setTimeout(() => waitUntilAceIsLoaded(callback), 500);
   }
 }
 
-const PromoSection = props => (
+const PromoSection = (props) => (
   <div className="section promoSection">
     <div className="promoRow">
       <div className="pluginRowBlock">{props.children}</div>
@@ -89,13 +90,13 @@ const GetStarted = ({ language }) => {
   );
 };
 
-const SponsorTier = props => {
+const SponsorTier = (props) => {
   let { min, max } = props;
   const { siteConfig } = useDocusaurusContext();
   const { customFields } = siteConfig;
 
-  const tierSponsors = customFields.sponsors.filter(sponsor => {
-    let value = Math.max(sponsor.monthly, (sponsor.yearly || 0) / 12);
+  const tierSponsors = customFields.sponsors.filter((sponsor) => {
+    let value = Math.max(sponsor.monthly || 0, (sponsor.yearly || 0) / 12);
     return +value >= min && (!max || (max && +value < max));
   });
   return (
@@ -145,11 +146,6 @@ const SponsorTier = props => {
   );
 };
 
-const ocButton = {
-  title: "Become a sponsor",
-  link: "https://opencollective.com/babel",
-};
-
 const OpenCollectiveSponsors = ({ language }) => {
   return (
     <div className="container paddingBottom">
@@ -192,7 +188,7 @@ const OpenCollectiveSponsors = ({ language }) => {
   );
 };
 
-const HomeContainer = props => (
+const HomeContainer = (props) => (
   <div style={{ paddingBottom: 20 }}>
     <div className="wrapper">
       <div className="gridBlock">{props.children}</div>
@@ -234,6 +230,10 @@ const Index = ({ language }) => {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
+      <Head>
+        <script src="https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js" defer=""></script>
+      </Head>
+
       <div>
         <Hero language={language} />
 

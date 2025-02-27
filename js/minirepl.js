@@ -1,13 +1,13 @@
-/*global $ ace Babel*/
+/*global ace Babel*/
 /*eslint quotes: ["error", "double", { "avoidEscape": true }]*/
 import debounce from "lodash.debounce";
 
 const miniReplExamples = [
   "/(?i:a)b/",
-  `using Flavortown = from(#["Guy Fieri"]);`,
+  'using Flavortown = from(#["Guy Fieri"]);',
   // use next(yourTurn) = throw "some code in here!"
   // when we support extractors
-  `let yourTurn = throw "some code in here!"`,
+  'let yourTurn = throw "some code in here!"',
 ];
 
 let inEditor;
@@ -15,7 +15,7 @@ let outEditor;
 
 let runDemo = true;
 
-const debouncedUpdate = debounce(function() {
+const debouncedUpdate = debounce(function () {
   compileCode(inEditor, outEditor);
 }, 1000);
 
@@ -61,7 +61,7 @@ function simulateKeys(inEditor, outEditor, texts) {
   function simulateKey(changingText) {
     const delay = changingText ? 4000 : Math.round(Math.random() * 125) + 30;
 
-    timeout = setTimeout(function() {
+    timeout = setTimeout(function () {
       if (!runDemo) {
         if (timeout) {
           clearTimeout(timeout);
@@ -94,13 +94,17 @@ function simulateKeys(inEditor, outEditor, texts) {
 
 function showError(editor, babelError) {
   editor.setValue("");
-  $(".hero-repl__error")
-    .text(babelError)
-    .addClass("hero-repl__error--visible");
+  const replErrorElement = document.querySelector(".hero-repl__error");
+  if (replErrorElement) {
+    replErrorElement.textContent = babelError;
+    replErrorElement.classList.add("hero-repl__error--visible");
+  }
 }
 
 function hideError() {
-  $(".hero-repl__error").removeClass("hero-repl__error--visible");
+  document
+    .querySelector(".hero-repl__error")
+    ?.classList.remove("hero-repl__error--visible");
 }
 
 function compileCode(sourceEditor, targetEditor) {
@@ -138,19 +142,19 @@ function compileCode(sourceEditor, targetEditor) {
 }
 
 const BABEL_MINI_REPL = {
-  start: function() {
+  start: function () {
     // don't init editor on mobile devices
     if (isMobile()) return;
 
-    $(".dummy-hero-repl").prop("hidden", true);
-    $(".hero-repl").prop("hidden", false);
+    document.querySelector(".dummy-hero-repl")?.setAttribute("hidden", true);
+    document.querySelector(".hero-repl")?.removeAttribute("hidden");
 
     inEditor = setupEditor("hero-repl-in", true);
 
     outEditor = setupEditor("hero-repl-out", true);
     outEditor.renderer.$cursorLayer.element.style.display = "none";
 
-    inEditor.on("change", function() {
+    inEditor.on("change", function () {
       if (!inEditor.getValue()) {
         debouncedUpdate.cancel();
         outEditor.setValue("");
@@ -159,19 +163,19 @@ const BABEL_MINI_REPL = {
       debouncedUpdate();
     });
 
-    $("#hero-repl-in").on("click", function() {
+    document.getElementById("hero-repl-in")?.addEventListener("click", () => {
       if (runDemo) {
         BABEL_MINI_REPL.stopDemo();
       }
     });
 
-    setTimeout(function() {
-      $(".hero-repl").addClass("hero-repl--visible");
+    setTimeout(function () {
+      document.querySelector(".hero-repl")?.classList.add("hero-repl--visible");
       simulateKeys(inEditor, outEditor, miniReplExamples);
     }, 150);
   },
 
-  stopDemo: function() {
+  stopDemo: function () {
     debouncedUpdate.cancel();
     runDemo = false;
     inEditor.setReadOnly(false);

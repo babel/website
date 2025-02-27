@@ -1,4 +1,0 @@
-body[data-repl] footer,
-body[data-repl] header a[href="/versions"] {
-  display: none;
-}

@@ -1,8 +1,8 @@
 - name: Igalia
   url: https://www.igalia.com/
-  image: https://images.opencollective.com/igalia/1c2e7cb/logo/256.png
+  image: https://images.opencollective.com/igalia/1c2e7cb/logo.png
   type: opencollective
-  tier: base-support-sponsor
+  tier: base-support-sponsors
   yearly: 30000 # There is not actual amount, but we need a large enough amount to fit in the tier
 - name: Coinbase
   url: https://github.com/coinbase

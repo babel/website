@@ -494,6 +494,7 @@ AST Node `ClassPrivateProperty` shape:
 - `decorators`: `Array<Decorator>` (default: `null`)
 - `static`: `boolean` (default: `false`)
 - `definite`: `boolean` (default: `null`, excluded from builder function)
+- `optional`: `boolean` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 - `variance`: `Variance` (default: `null`, excluded from builder function)
@@ -1752,7 +1753,8 @@ AST Node `JSXOpeningElement` shape:
 - `name`: `JSXIdentifier | JSXMemberExpression | JSXNamespacedName` (required)
 - `attributes`: `Array<JSXAttribute | JSXSpreadAttribute>` (required)
 - `selfClosing`: `boolean` (default: `false`)
-- `typeParameters`: `TypeParameterInstantiation | TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
+- `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
+- `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
 
 Aliases: [`JSX`](#jsx), [`Immutable`](#immutable)
 
@@ -2799,6 +2801,21 @@ Aliases: [`TypeScript`](#typescript)
 
 ---
 
+#### tsEnumBody
+
+```js title="JavaScript"
+t.tsEnumBody(members);
+```
+
+See also `t.isTSEnumBody(node, opts)` and `t.assertTSEnumBody(node, opts)`.
+
+AST Node `TSEnumBody` shape:
+- `members`: `Array<TSEnumMember>` (required)
+
+Aliases: [`TypeScript`](#typescript)
+
+---
+
 #### tsEnumDeclaration
 
 ```js title="JavaScript"
@@ -2810,6 +2827,7 @@ See also `t.isTSEnumDeclaration(node, opts)` and `t.assertTSEnumDeclaration(node
 AST Node `TSEnumDeclaration` shape:
 - `id`: `Identifier` (required)
 - `members`: `Array<TSEnumMember>` (required)
+- `body`: `TSEnumBody` (default: `null`, excluded from builder function)
 - `const`: `boolean` (default: `null`, excluded from builder function)
 - `declare`: `boolean` (default: `null`, excluded from builder function)
 - `initializer`: `Expression` (default: `null`, excluded from builder function)
@@ -2911,7 +2929,7 @@ AST Node `TSImportEqualsDeclaration` shape:
 - `importKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 - `isExport`: `boolean` (required)
 
-Aliases: [`TypeScript`](#typescript), [`Statement`](#statement)
+Aliases: [`TypeScript`](#typescript), [`Statement`](#statement), [`Declaration`](#declaration)
 
 ---
 
@@ -3304,7 +3322,7 @@ AST Node `TSPropertySignature` shape:
 - `key`: `Expression` (required)
 - `typeAnnotation`: `TSTypeAnnotation` (default: `null`)
 - `computed`: `boolean` (default: `false`, excluded from builder function)
-- `kind`: `"get" | "set"` (required)
+- `kind`: `"get" | "set"` (default: `null`, excluded from builder function)
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `readonly`: `boolean` (default: `null`, excluded from builder function)
 
@@ -3386,6 +3404,22 @@ t.tsSymbolKeyword();
 ```
 
 See also `t.isTSSymbolKeyword(node, opts)` and `t.assertTSSymbolKeyword(node, opts)`.
+
+Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
+
+---
+
+#### tsTemplateLiteralType
+
+```js title="JavaScript"
+t.tsTemplateLiteralType(quasis, types);
+```
+
+See also `t.isTSTemplateLiteralType(node, opts)` and `t.assertTSTemplateLiteralType(node, opts)`.
+
+AST Node `TSTemplateLiteralType` shape:
+- `quasis`: `Array<TemplateElement>` (required)
+- `types`: `Array<TSType>` (required)
 
 Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype), [`TSBaseType`](#tsbasetype)
 
@@ -4220,6 +4254,7 @@ Covered nodes:
 - [`OpaqueType`](#opaquetype)
 - [`TSDeclareFunction`](#tsdeclarefunction)
 - [`TSEnumDeclaration`](#tsenumdeclaration)
+- [`TSImportEqualsDeclaration`](#tsimportequalsdeclaration)
 - [`TSInterfaceDeclaration`](#tsinterfacedeclaration)
 - [`TSModuleDeclaration`](#tsmoduledeclaration)
 - [`TSTypeAliasDeclaration`](#tstypealiasdeclaration)
@@ -5023,6 +5058,7 @@ Covered nodes:
 - [`TSObjectKeyword`](#tsobjectkeyword)
 - [`TSStringKeyword`](#tsstringkeyword)
 - [`TSSymbolKeyword`](#tssymbolkeyword)
+- [`TSTemplateLiteralType`](#tstemplateliteraltype)
 - [`TSThisType`](#tsthistype)
 - [`TSUndefinedKeyword`](#tsundefinedkeyword)
 - [`TSUnknownKeyword`](#tsunknownkeyword)
@@ -5071,6 +5107,7 @@ Covered nodes:
 - [`TSRestType`](#tsresttype)
 - [`TSStringKeyword`](#tsstringkeyword)
 - [`TSSymbolKeyword`](#tssymbolkeyword)
+- [`TSTemplateLiteralType`](#tstemplateliteraltype)
 - [`TSThisType`](#tsthistype)
 - [`TSTupleType`](#tstupletype)
 - [`TSTypeLiteral`](#tstypeliteral)
@@ -5131,6 +5168,7 @@ Covered nodes:
 - [`TSConstructorType`](#tsconstructortype)
 - [`TSDeclareFunction`](#tsdeclarefunction)
 - [`TSDeclareMethod`](#tsdeclaremethod)
+- [`TSEnumBody`](#tsenumbody)
 - [`TSEnumDeclaration`](#tsenumdeclaration)
 - [`TSEnumMember`](#tsenummember)
 - [`TSExportAssignment`](#tsexportassignment)
@@ -5168,6 +5206,7 @@ Covered nodes:
 - [`TSSatisfiesExpression`](#tssatisfiesexpression)
 - [`TSStringKeyword`](#tsstringkeyword)
 - [`TSSymbolKeyword`](#tssymbolkeyword)
+- [`TSTemplateLiteralType`](#tstemplateliteraltype)
 - [`TSThisType`](#tsthistype)
 - [`TSTupleType`](#tstupletype)
 - [`TSTypeAliasDeclaration`](#tstypealiasdeclaration)
