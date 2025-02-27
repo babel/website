@@ -1246,8 +1246,6 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
 - Remove methods starting with `_` from `Scope` and `NodePath` ([#16504](https://github.com/babel/babel/pull/16504), [#16705](https://github.com/babel/babel/pull/16705))
 
-  These methods were meant to be private.
-
   ```js
   // NodePath.prototype
   _assertUnremoved
