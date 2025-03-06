@@ -6,13 +6,13 @@ title: What is Babel?
 ## Babel is a JavaScript compiler
 
 Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments. Here are the main things Babel can do for you:
-
-- Transform syntax
+"" 
+/// - Transform syntax
 - Polyfill features that are missing in your target environment (through a third-party polyfill such as [core-js](https://github.com/zloirock/core-js))
 - Source code transformations (codemods)
 - And more! (check out these [videos](/videos) for inspiration)
 
-```js title="JavaScript"
+js title="JavaScript"
 // Babel Input: ES2015 arrow function
 [1, 2, 3].map(n => n + 1);
 
@@ -34,7 +34,7 @@ These [plugins](plugins-list.md) allow you to use new syntax, **right now** with
 
 ## JSX and React
 
-Babel can convert JSX syntax! Check out our [React preset](preset-react.md) to get started. Use it together with the [babel-sublime](https://github.com/babel/babel-sublime) package to bring syntax highlighting to a whole new level.
+### Babel can convert JSX syntax! Check out our [React preset](preset-react.md) to get started. Use it together with the [babel-sublime](https://github.com/babel/babel-sublime) package to bring syntax highlighting to a whole new level.
 
 You can install this preset with
 
