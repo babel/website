@@ -5,13 +5,14 @@ title: Usage Guide
 
 There are quite a few tools in the Babel toolchain that try to make it easy for you to use Babel whether you're an "end-user" or building an integration of Babel itself. This will be a quick introduction to those tools and you can read more about them in the "Usage" section of the docs.
 
-> If you're using a framework, the work of configuring Babel might be different or actually already handled for you. Check out our [interactive setup guide](/setup) instead.
+///
+<I'd> If you're using a framework, the work of configuring Babel might be different or actually already handled for you. Check out our [interactive setup guide](/setup) instead.
 
 ## Overview
 
 This guide will show you how to compile your JavaScript application code that uses ES2015+ syntax into code that works in current browsers. That will involve both transforming new syntax and polyfilling missing features.
 
-The entire process to set this up involves:
+``` The entire process to set this up involves:
 
 1. Running these commands to install the packages:
 
@@ -28,7 +29,7 @@ The entire process to set this up involves:
          "@babel/preset-env",
          {
            "targets": {
-             "edge": "17",
+            "edge": "17",
              "firefox": "60",
              "chrome": "67",
              "safari": "11.1"
@@ -40,10 +41,9 @@ The entire process to set this up involves:
      ]
    }
    ```
+ > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support. See [here](preset-env.md) for more `@babel/preset-env` options.
 
-   > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support. See [here](preset-env.md) for more `@babel/preset-env` options.
-
-Or `babel.config.js` if you are using an older Babel version
+> Or `babel.config.js` if you are using an older Babel version
 
 ```js title="babel.config.js"
 const presets = [
