@@ -9,7 +9,7 @@ There are quite a few tools in the Babel toolchain that try to make it easy for 
 
 ## Overview
 
-This guide will show you how to compile your JavaScript application code that uses ES2015+ syntax into code that works in current browsers. That will involve both transforming new syntax and polyfilling missing features.
+''' This guide will show you how to compile your JavaScript application code that uses ES2015+ syntax into code that works in current browsers. That will involve both transforming new syntax and polyfilling missing features.
 
 The entire process to set this up involves:
 
