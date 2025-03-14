@@ -867,12 +867,13 @@ Here are some examples, on how matching works:
 | File extension pattern (`*.ext`)   | `foo/*.js`       | `/src/foo/test.js`, `/src/foo/index.js/`     | `/src/foo/test.ts`, `/src/foo/test.js.map`     |
 | Combined patterns                  | `**/test/*.js`   | `/src/test/file.js`, `/src/a/b/test/file.js` | `/src/test.js`, `/src/test/sub/file.js`        |
 
-Examples where `*` does not have a wildcard function: 
+Here are examples, where `*` does *not* have a wildcard function: 
 
-| Descriptin            | Pattern          | Does Not Match                                              |
+| Description           | Pattern          | Does Not Match                                              |
 | --------------------- | ---------------- | ----------------------------------------------------------- |
-| Star(s) in path       | `test*me/*.js`   | `/src/testme/1.js`, `/src/testme/2.js`, `/src/test-me/3.js` |
-| Star(s) in file name  | `file.ts*`       | `/src/file.ts`, `/src/file.tsx`                             |
+| Star in path          | `test*me/*.js`   | `/src/testme/1.js`, `/src/testme/2.js`, `/src/test-me/3.js` |
+| Star in file name     | `foo*bar.js`     | `/src/foobar.js`, `/src/foo-bar.js`                         |
+| Star in extension     | `file.ts*`       | `/src/file.ts`, `/src/file.tsx`                             |
 
 ### Merging
 
