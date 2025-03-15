@@ -979,7 +979,7 @@ const styles = {
 
     [media.large]: {
       height: "calc(100% - 38px)", // 38px is babel-version tab's height
-      width: "18rem",
+      minWidth: "18rem",
       [`& .${nestedCloseButton}`]: {
         right: "-2rem",
       },
