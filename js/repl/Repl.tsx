@@ -756,7 +756,7 @@ const styles = {
     background: colors.inverseBackgroundDark,
     color: colors.inverseForegroundLight,
     display: "flex",
-    height: "100vh",
+    height: "100%",
     justifyContent: "center",
   }),
   loadingAnimation: css({
