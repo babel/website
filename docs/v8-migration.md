@@ -203,6 +203,27 @@ The following plugins are discontinued and their functionality is not available 
   If your code needs to run in an environment which doesn't support object spread, you can either use `@babel/preset-env` (recommended) or `@babel/plugin-transform-object-rest-spread`. If you want to transpile `Object.assign` down, you also need to enable `@babel/plugin-transform-object-assign`.
   In Babel 7.7.0, you can opt-in this behavior by using the `useSpread` option.
 
+- `targets.esmodules: true` option now behaves as same as `targets.esmodules: "intersect"` ([#17188](https://github.com/babel/babel/pull/17188))
+
+  **Migration**: In Babel 7, specifying `esmodules: true` will override the `browsers` target or `browserslist`'s targets, while specifying `"intersect"` will intersect with such targets.
+
+  If your app targets to modern browsers released after 2019, you can safely remove the `esmodules` option as they all supported ES modules.
+
+  If your app targets to legacy browsers such as IE, you can also remove the `esmodules` option as IE requires more transforms than any other browsers.
+
+  If your app targets to browsers released before 2019 and you want to preserve the Babel 7 `esmodules: true` behavior, remove the `esmodules` option and set the following `browsers` target:
+
+  ```json title="babel.config.json"
+  [
+    "@babel/preset-env",
+    {
+      "targets": {
+        "browsers": "chrome 61, firefox 60, safari 10.1, node 13.2"
+      }
+    }
+  ]
+  ```
+
 - Type check input options ([#12460](https://github.com/babel/babel/pull/12460))
 
   **Migration**: The preset will also report invalid option names. Refer to the [docs](./preset-react.md#options) and ensure valid usage.
