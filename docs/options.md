@@ -399,20 +399,31 @@ When no targets are specified: Babel will assume you are using the [browserslist
 
 #### `targets.esmodules`
 
-Type: `boolean`
+Type: `boolean` | "intersect"
 
-You may also target browsers supporting [ES Modules](https://www.ecma-international.org/ecma-262/6.0/#sec-modules). When the `esmodules` target is specified, it will intersect with the `browsers` target and `browserslist`'s targets. You can use this approach in combination with `<script type="module"></script>` to conditionally serve smaller scripts to users (https://jakearchibald.com/2017/es-modules-in-browsers/#nomodule-for-backwards-compatibility).
-
-:::note When specifying both `browsers` and the esmodules target, they will be intersected.
-:::
+You may also target browsers supporting [ES Modules](https://www.ecma-international.org/ecma-262/6.0/#sec-modules). When the `esmodules` option is `"intersect"`, it will intersect with the `browsers` target and `browserslist`'s targets. You can use this approach in combination with `<script type="module"></script>` to conditionally serve smaller scripts to users (https://jakearchibald.com/2017/es-modules-in-browsers/#nomodule-for-backwards-compatibility).
 
 ```json title="babel.config.json"
 {
+  // Resolve to "Chrome 61+, FF60+, Safari 11+"
   "targets": {
-    "esmodules": true
+    "esmodules": "intersect", // Chrome 61+, FF 60+, Safari 10.1+
+    "browsers": "chrome 58, firefox 60, safari 11"
   }
 }
 ```
+
+:::babel7
+When `esmodules` option is `true`, it will override the `browsers` target or `browserslist`'s targets.
+:::
+
+:::babel8
+`esmodules: true` is an alias of `esmodules: "intersect"`.
+:::
+
+:::tip
+If you use browserslist `defaults` as the target, or you plan to support any mainstream browsers released in or after 2019, you can safely remove `esmodules` because these browsers already support ES Modules.
+:::
 
 #### `targets.node`
 
