@@ -401,6 +401,14 @@ When no targets are specified: Babel will assume you are using the [browserslist
 
 Type: `boolean` | "intersect"
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.13.0` | Support `"intersect"` |
+</details>
+
 You may also target browsers supporting [ES Modules](https://www.ecma-international.org/ecma-262/6.0/#sec-modules). When the `esmodules` option is `"intersect"`, it will intersect with the `browsers` target and `browserslist`'s targets. You can use this approach in combination with `<script type="module"></script>` to conditionally serve smaller scripts to users (https://jakearchibald.com/2017/es-modules-in-browsers/#nomodule-for-backwards-compatibility).
 
 ```json title="babel.config.json"
