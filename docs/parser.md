@@ -34,6 +34,7 @@ mind. When in doubt, use `.parse()`.
 
 | Version   | Changes                                            |
 | --------- | -------------------------------------------------- |
+| `v7.27.0` | Added `allowYieldOutsideFunction`                  |
 | `v7.26.0` | Added `startIndex`                                 |
 | `v7.23.0` | Added `createImportExpressions`                    |
 | `v7.21.0` | Added `allowNewTargetOutsideFunction` and `annexB` |
@@ -54,6 +55,10 @@ mind. When in doubt, use `.parse()`.
   in the top-level scope of modules. Set this to `true` to also accept it in the
   top-level scope of scripts. This option is discouraged in favor of
   `topLevelAwait` plugin.
+
+- **allowYieldOutsideFunction**: By default, `yield` use is only allowed
+  inside of a generator function. Set this to `true` to also accept it in the
+  top-level.
 
 - **allowNewTargetOutsideFunction**: By default, `new.target` use is not
   allowed outside of a function or class. Set this to `true` to accept such code.
