@@ -207,11 +207,11 @@ The following plugins are discontinued and their functionality is not available 
 
   **Migration**: In Babel 7, specifying `esmodules: true` will override the `browsers` target or `browserslist`'s targets, while specifying `"intersect"` will intersect with such targets.
 
-  If your app targets to modern browsers released after 2019, you can safely remove the `esmodules` option as they all supported ES modules.
+  If your app targets modern browsers released after 2019, you can safely remove the `esmodules` option as they all support ES modules.
 
-  If your app targets to legacy browsers such as IE, you can also remove the `esmodules` option as IE requires more transforms than any other browsers.
+  If your app targets legacy browsers such as IE, you can also remove the `esmodules` option as IE requires more transforms than any other browser.
 
-  If your app targets to browsers released before 2019 and you want to preserve the Babel 7 `esmodules: true` behavior, remove the `esmodules` option and set the following `browsers` target:
+  If your app targets browsers released before 2019 and you want to preserve the Babel 7 `esmodules: true` behavior, remove the `esmodules` option and set the following `browsers` target:
 
   ```json title="babel.config.json"
   [
