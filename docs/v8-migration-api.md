@@ -645,7 +645,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   The new nodes also use `typeArguments` instead of `typeParameters` ([#17017](https://github.com/babel/babel/pull/17017)). If the `expression` is a TS qualified name (e.g. `a.b`), it will be parsed as a `MemberExpression` ([#17139](https://github.com/babel/babel/pull/17139)).
 
   <details>
-    <summary>ClassDeclaration</summary>
+    <summary>TSClassImplements</summary>
 
     ```ts title="input.ts"
     class C implements X<T> {}
@@ -688,7 +688,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   </details>
 
   <details>
-    <summary>TSInterfaceDeclaration</summary>
+    <summary>TSInterfaceHeritage</summary>
 
     ```ts title="input.ts"
     interface I extends X<T> {}
