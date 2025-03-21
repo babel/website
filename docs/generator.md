@@ -15,7 +15,7 @@ npm install --save-dev @babel/generator
 
 ```js title="JavaScript"
 import { parse } from "@babel/parser";
-import generate from "@babel/generator";
+import { generate } from "@babel/generator";
 
 const code = "class Example {}";
 const ast = parse(code);
@@ -39,7 +39,7 @@ if you pass JSX `<div></div>` to babel generator, the result will still contain 
 
 ```js title="JavaScript"
 import { parse } from "@babel/parser";
-import generate from "@babel/generator";
+import { generate } from "@babel/generator";
 
 const code = "const Example = () => <div>example</div>";
 const ast = parse(code, { plugins: ["jsx" ] });
@@ -50,6 +50,16 @@ const output = generate(
 
 // true
 output.includes("<div>");
+```
+
+## API
+
+Babel generator contains exactly one function `generate`. It can be imported in different ways.
+
+```js title="JavaScript"
+const generate = require("@babel/generator");
+const { generate } = require("@babel/generator");
+import { generate } from "@babel/generator";
 ```
 
 ## Options
@@ -117,7 +127,7 @@ Here's an example of what that might look like:
 
 ```js title="JavaScript"
 import { parse } from "@babel/parser";
-import generate from "@babel/generator";
+import { generate } from "@babel/generator";
 
 const a = "var a = 1;";
 const b = "var b = 2;";

@@ -23,7 +23,7 @@ Input (syntactic placeholders):
 
 ```js title="JavaScript"
 import template from "@babel/template";
-import generate from "@babel/generator";
+import { generate } from "@babel/generator";
 import * as t from "@babel/types";
 
 const buildRequire = template(`
@@ -74,7 +74,7 @@ which will parse and return the AST directly.
 
 ```js title="JavaScript"
 import template from "@babel/template";
-import generate from "@babel/generator";
+import { generate } from "@babel/generator";
 import * as t from "@babel/types";
 
 const source = "my-module";
