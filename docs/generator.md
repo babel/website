@@ -59,11 +59,8 @@ Babel generator contains exactly one function `generate`. It can be imported in 
 ```js title="JavaScript"
 const generate = require("@babel/generator");
 const { generate } = require("@babel/generator");
-import generate from "@babel/generator";
 import { generate } from "@babel/generator";
 ```
-
-The last option works for node.js in esm modules.
 
 ## Options
 
