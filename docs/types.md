@@ -1386,6 +1386,8 @@ AST Node `ImportAttribute` shape:
 - `key`: `Identifier | StringLiteral` (required)
 - `value`: `StringLiteral` (required)
 
+Aliases: [`Standardized`](#standardized)
+
 ---
 
 #### importDeclaration
@@ -4937,6 +4939,7 @@ Covered nodes:
 - [`Identifier`](#identifier)
 - [`IfStatement`](#ifstatement)
 - [`Import`](#import)
+- [`ImportAttribute`](#importattribute)
 - [`ImportDeclaration`](#importdeclaration)
 - [`ImportDefaultSpecifier`](#importdefaultspecifier)
 - [`ImportExpression`](#importexpression)
