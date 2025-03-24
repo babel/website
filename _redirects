@@ -99,6 +99,7 @@ https://babel.netlify.com/* https://babeljs.io/:splat 301!
 /docs/en/next/tools/*               /setup
 
 # Blog rewrites
+/7.27.0 /blog/2025/03/24/7.27.0
 /7.26.0 /blog/2024/10/25/7.26.0
 /7.25.0 /blog/2024/07/26/7.25.0
 /7.24.0 /blog/2024/02/28/7.24.0
