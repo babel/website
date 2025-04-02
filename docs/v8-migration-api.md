@@ -948,7 +948,9 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   // var [x] is invalid without an initializer
   // highlight-error-next-line
   t.variableDeclaration("var", [
+    // highlight-error-next-line
     t.variableDeclarator(t.arrayPattern([t.identifier("x")]))
+    // highlight-error-next-line
   ]);
   ```
 
