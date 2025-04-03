@@ -2,6 +2,7 @@
 const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 
 const config = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
@@ -18,7 +19,7 @@ const config = {
     // Don't bother with hashing/versioning the filename - Netlify does it
     // for us in prod.
     filename: "[name].js",
-    publicPath: process.env.NODE_ENV === "production" ? "./repl/" : "./",
+    publicPath: "./repl/",
     path: __dirname + "/website/static/repl/",
   },
   module: {
@@ -28,6 +29,14 @@ const config = {
         exclude: /node_modules/,
         loader: "babel-loader",
       },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.ttf$/,
+        type: "asset/resource",
+      },
     ],
   },
   plugins: [
@@ -35,6 +44,7 @@ const config = {
       template: "./js/repl/index.html",
       inject: false,
     }),
+    new MonacoWebpackPlugin(),
     new webpack.DefinePlugin({
       "process.env": {
         BABEL_TYPES_8_BREAKING: false,
