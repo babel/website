@@ -942,6 +942,18 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
   __Migration__: Call `t.identifier` with a valid name.
 
+- Reject invalid variable declarator in `t.variableDeclaration` builder ([#10917](https://github.com/babel/babel/pull/10917), [#17217](https://github.com/babel/babel/pull/17217))
+
+  ```js title="babel-plugin.js"
+  // var [x] is invalid without an initializer
+  // highlight-error-next-line
+  t.variableDeclaration("var", [
+    // highlight-error-next-line
+    t.variableDeclarator(t.arrayPattern([t.identifier("x")]))
+    // highlight-error-next-line
+  ]);
+  ```
+
 - Remove `Super` from the `Expression` alias ([#14750](https://github.com/babel/babel/pull/14750)).
 
   A `Super` node represents `super` in super call `super()` and super property `super.foo`. As `super` can not be a standalone expression, `t.isExpression(t.super())` will return `false` in Babel 8.
