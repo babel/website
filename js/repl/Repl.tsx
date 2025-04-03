@@ -5,7 +5,7 @@ import debounce from "lodash.debounce";
 import React, { type ChangeEvent } from "react";
 import { prettySize, compareVersions } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
-import CodeMirrorPanel from "./CodeMirrorPanel";
+import Monaco from "./Monaco";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
@@ -277,21 +277,21 @@ class Repl extends React.Component<Props, State> {
           <div
             className={cx(styles.panels, !state.timeTravel && styles.panelsMax)}
           >
-            <CodeMirrorPanel
+            <Monaco
               className={styles.codeMirrorPanel}
               code={state.code}
               errorMessage={state.compileErrorMessage}
-              fileSize={state.meta.rawSize}
+              fileSize={options.fileSize && state.meta.rawSize}
+              lineWrapping={state.lineWrap}
               onChange={this._updateCode}
-              options={options}
               placeholder="Write code here"
             />
-            <CodeMirrorPanel
+            <Monaco
               className={styles.codeMirrorPanel}
               code={state.compiled}
               errorMessage={state.evalErrorMessage}
-              fileSize={state.meta.compiledSize}
-              options={options}
+              fileSize={options.fileSize && state.meta.compiledSize}
+              lineWrapping={state.lineWrap}
               placeholder="Compiled output will be shown here"
             />
           </div>
