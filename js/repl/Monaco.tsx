@@ -6,23 +6,7 @@ import { createHighlighter, type HighlighterCore } from "shiki/bundle/web";
 
 import { colors } from "./styles";
 
-let highlighter: HighlighterCore;
-createHighlighter({
-  themes: ["dark-plus"],
-  langs: ["typescript"],
-}).then((res) => {
-  highlighter = res;
-});
-
-export default function Monaco({
-  className,
-  code,
-  placeholder,
-  onChange,
-  fileSize,
-  lineWrapping,
-  errorMessage,
-}: {
+type Props = {
   className: string;
   code: string;
   placeholder: string;
@@ -30,7 +14,31 @@ export default function Monaco({
   fileSize: string | boolean;
   lineWrapping: boolean;
   errorMessage: string;
-}) {
+};
+let highlighter: HighlighterCore;
+
+export default function MonacoWithShiki(props: Props) {
+  createHighlighter({
+    themes: ["dark-plus"],
+    langs: ["typescript"],
+  }).then((res) => {
+    highlighter = res;
+  });
+  if (!highlighter) {
+    return null;
+  }
+  return <Monaco {...props} />;
+}
+
+function Monaco({
+  className,
+  code,
+  placeholder,
+  onChange,
+  fileSize,
+  lineWrapping,
+  errorMessage,
+}: Props) {
   const container = useRef<HTMLDivElement>(null);
   let [editor, setEditor] =
     React.useState<monaco.editor.IStandaloneCodeEditor | null>(null);
