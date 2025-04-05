@@ -1,7 +1,6 @@
 "use strict";
 const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 
 const config = {
@@ -10,16 +9,17 @@ const config = {
     children: true,
   },
   entry: {
-    repl: "./js/repl/index.tsx",
+    index: "./js/repl/index.tsx",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
   },
+  devtool: "source-map",
   output: {
     // Don't bother with hashing/versioning the filename - Netlify does it
     // for us in prod.
     filename: "[name].js",
-    publicPath: "./repl/",
+    publicPath: "/repl/",
     path: __dirname + "/website/static/repl/",
   },
   module: {
@@ -40,10 +40,6 @@ const config = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./js/repl/index.html",
-      inject: false,
-    }),
     new MonacoWebpackPlugin(),
     new webpack.DefinePlugin({
       "process.env": {
@@ -51,9 +47,6 @@ const config = {
       },
     }),
   ],
-  externals: {
-    "lz-string": "LZString",
-  },
   performance: {
     hints: false,
   },
