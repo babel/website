@@ -478,8 +478,7 @@ class ExpandedContainer extends Component<Props, State> {
                 comment="Only works when version of decorators is 2021-12 or 2018-09"
               >
                 <span className={styles.presetsOptionsLabel}>
-                  Decorators before
-                  <code>export</code>
+                  Decorators before export
                 </span>
                 <input
                   checked={presetsOptions.decoratorsBeforeExport}
@@ -936,8 +935,6 @@ const styles = {
     },
   }),
   collapsedContainer: css({
-    backgroundColor: colors.inverseBackground,
-
     [media.large]: {
       width: "0.5rem",
       height: "100%",
@@ -1126,11 +1123,6 @@ const styles = {
     padding: "0 1rem",
     transition: "background-color 250ms ease-in-out, color 250ms ease-in-out",
     cursor: "pointer",
-
-    "&:hover": {
-      backgroundColor: colors.inverseBackgroundDark,
-      color: colors.inverseForeground,
-    },
   }),
   selectLabel: css({
     alignItems: "flex-start",
@@ -1141,19 +1133,13 @@ const styles = {
   }),
   optionSelect: css({
     appearance: "none",
-    backgroundColor: colors.selectBackground,
     // eslint-disable-next-line
     backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='${colors.inverseForegroundLight}'><polygon points='0,0 100,0 50,50'/></svg>")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "8px",
     border: 0,
-    color: colors.inverseForegroundLight,
     margin: "0.25rem 0 0 0",
     transition: "all 0.25s ease-in",
-
-    "&:hover": {
-      backgroundColor: colors.selectHover,
-    },
 
     "&::-ms-expand": {
       display: "none",
@@ -1215,12 +1201,7 @@ const styles = {
   envPresetSelect: css({
     maxWidth: "7rem",
     fontWeight: 400,
-    color: colors.textareaForeground,
     margin: "0 0 0 0.75rem",
-
-    "&:disabled": {
-      opacity: 0.5,
-    },
   }),
   envPresetTextarea: css({
     resize: "vertical",
@@ -1230,11 +1211,6 @@ const styles = {
     border: "none",
     fontWeight: 400,
     borderRadius: "0.25rem",
-    color: colors.textareaForeground,
-
-    "&:disabled": {
-      opacity: 0.5,
-    },
   }),
   pluginsSearch: css({
     paddingBottom: 10,
