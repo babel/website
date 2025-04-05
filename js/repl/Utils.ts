@@ -32,10 +32,11 @@ export function joinListEnglish(list: string[]): string {
 }
 
 export function preferDarkColorScheme(): boolean {
-  return (
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme:dark)").matches
-  );
+  const theme = localStorage.getItem("theme");
+  if (theme) {
+    return theme === "dark";
+  }
+  return !!window.matchMedia?.("(prefers-color-scheme:dark)").matches;
 }
 
 export function compareVersions(a: string, b: string): 1 | 0 | -1 {

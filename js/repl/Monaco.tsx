@@ -5,6 +5,7 @@ import { shikiToMonaco } from "@shikijs/monaco";
 import { createHighlighter, type HighlighterCore } from "shiki/bundle/web";
 
 import { colors } from "./styles";
+import { preferDarkColorScheme } from "./Utils";
 
 type Props = {
   className: string;
@@ -15,15 +16,17 @@ type Props = {
   lineWrapping: boolean;
   errorMessage: string;
 };
+
 let highlighter: HighlighterCore;
+createHighlighter({
+  themes: ["dark-plus", "light-plus"],
+  langs: ["typescript"],
+}).then((res) => {
+  highlighter = res;
+  shikiToMonaco(highlighter, monaco);
+});
 
 export default function MonacoWithShiki(props: Props) {
-  createHighlighter({
-    themes: ["dark-plus"],
-    langs: ["typescript"],
-  }).then((res) => {
-    highlighter = res;
-  });
   if (!highlighter) {
     return null;
   }
@@ -42,16 +45,16 @@ function Monaco({
   const container = useRef<HTMLDivElement>(null);
   let [editor, setEditor] =
     React.useState<monaco.editor.IStandaloneCodeEditor | null>(null);
+  const [rect, setRect] = React.useState<DOMRect | null>(null);
 
   useEffect(() => {
-    shikiToMonaco(highlighter, monaco);
     setEditor(
       (editor = monaco.editor.create(container.current, {
         padding: {
           top: 2,
         },
-        theme: "dark-plus",
-        automaticLayout: true,
+        // https://github.com/microsoft/monaco-editor/issues/4311
+        // automaticLayout: true,
         language: "typescript",
         placeholder,
         scrollBeyondLastLine: false,
@@ -73,6 +76,41 @@ function Monaco({
 
     return () => {
       editor.dispose();
+    };
+  }, []);
+
+  useEffect(() => {
+    function listener() {
+      if (preferDarkColorScheme()) {
+        editor.updateOptions({ theme: "dark-plus" });
+      } else {
+        editor.updateOptions({ theme: "light-plus" });
+      }
+    }
+    listener();
+    addEventListener("storage", listener);
+    return () => {
+      removeEventListener("storage", listener);
+    };
+  }, []);
+
+  useEffect(() => {
+    const server = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const contentRect = entry.contentRect;
+        setRect(contentRect);
+        if (
+          !rect ||
+          rect.width !== contentRect.width ||
+          rect.height !== contentRect.height
+        ) {
+          editor.layout();
+        }
+      }
+    });
+    server.observe(container.current);
+    return () => {
+      server.disconnect();
     };
   }, []);
 
