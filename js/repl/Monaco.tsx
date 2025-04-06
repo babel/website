@@ -2,7 +2,11 @@ import { css, type CSSInterpolation } from "@emotion/css";
 import * as monaco from "monaco-editor";
 import React, { useRef, useEffect } from "react";
 import { shikiToMonaco } from "@shikijs/monaco";
-import { createHighlighter, type HighlighterCore } from "shiki/bundle/web";
+import { createHighlighterCoreSync } from "shiki/core";
+import { createJavaScriptRegexEngine } from "shiki/engine/javascript";
+import shikiTs from "@shikijs/langs/typescript";
+import shikiDarkPlus from "@shikijs/themes/dark-plus";
+import shikiLightPlus from "@shikijs/themes/light-plus";
 
 import { colors } from "./styles";
 import { preferDarkColorScheme } from "./Utils";
@@ -17,23 +21,14 @@ type Props = {
   errorMessage: string;
 };
 
-let highlighter: HighlighterCore;
-createHighlighter({
-  themes: ["dark-plus", "light-plus"],
-  langs: ["typescript"],
-}).then((res) => {
-  highlighter = res;
-  shikiToMonaco(highlighter, monaco);
+const highlighter = createHighlighterCoreSync({
+  themes: [shikiDarkPlus, shikiLightPlus],
+  langs: [shikiTs],
+  engine: createJavaScriptRegexEngine(),
 });
+shikiToMonaco(highlighter, monaco);
 
-export default function MonacoWithShiki(props: Props) {
-  if (!highlighter) {
-    return null;
-  }
-  return <Monaco {...props} />;
-}
-
-function Monaco({
+export default function Monaco({
   className,
   code,
   placeholder,
