@@ -3,10 +3,11 @@ import * as monaco from "monaco-editor";
 import React, { useRef, useEffect } from "react";
 import { shikiToMonaco } from "@shikijs/monaco";
 import { createHighlighterCoreSync } from "shiki/core";
-import { createJavaScriptRegexEngine } from "shiki/engine/javascript";
-import shikiTs from "@shikijs/langs/typescript";
+import { createOnigurumaEngine } from "shiki/engine/oniguruma";
+import shikiTS from "@shikijs/langs/typescript";
 import shikiDarkPlus from "@shikijs/themes/dark-plus";
 import shikiLightPlus from "@shikijs/themes/light-plus";
+import shikiWasm from "@shikijs/engine-oniguruma/wasm-inlined";
 
 import { colors } from "./styles";
 import { preferDarkColorScheme } from "./Utils";
@@ -19,16 +20,38 @@ type Props = {
   fileSize: string | boolean;
   lineWrapping: boolean;
   errorMessage: string;
+  fastMode?: boolean;
 };
 
-const highlighter = createHighlighterCoreSync({
-  themes: [shikiDarkPlus, shikiLightPlus],
-  langs: [shikiTs],
-  engine: createJavaScriptRegexEngine(),
-});
-shikiToMonaco(highlighter, monaco);
+let asyncLoaded = false;
 
-export default function Monaco({
+(async function () {
+  const engine = await createOnigurumaEngine(shikiWasm);
+
+  shikiToMonaco(
+    createHighlighterCoreSync({
+      themes: [shikiDarkPlus, shikiLightPlus],
+      langs: [shikiTS],
+      engine: engine,
+    }),
+    monaco
+  );
+
+  asyncLoaded = true;
+})();
+
+monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+  jsx: monaco.languages.typescript.JsxEmit.React,
+});
+
+export default function MonacoWithShiki(props: Props) {
+  if (!asyncLoaded) {
+    return null;
+  }
+  return <Monaco {...props} />;
+}
+
+function Monaco({
   className,
   code,
   placeholder,
@@ -36,6 +59,7 @@ export default function Monaco({
   fileSize,
   lineWrapping,
   errorMessage,
+  fastMode,
 }: Props) {
   const container = useRef<HTMLDivElement>(null);
   let [editor, setEditor] =
@@ -50,7 +74,19 @@ export default function Monaco({
         },
         // https://github.com/microsoft/monaco-editor/issues/4311
         // automaticLayout: true,
-        language: "typescript",
+        model: fastMode
+          ? monaco.editor.createModel(
+              "",
+              "javascript",
+              monaco.Uri.file("output/output.tsx")
+            )
+          : monaco.editor.createModel(
+              "",
+              "typescript",
+              monaco.Uri.file(
+                onChange ? "input/input.tsx" : "output/output.tsx"
+              )
+            ),
         placeholder,
         scrollBeyondLastLine: false,
         minimap: {
@@ -76,10 +112,14 @@ export default function Monaco({
 
   useEffect(() => {
     function listener() {
-      if (preferDarkColorScheme()) {
-        editor.updateOptions({ theme: "dark-plus" });
+      if (fastMode) {
+        editor.updateOptions({
+          theme: preferDarkColorScheme() ? "vs-dark" : "vs",
+        });
       } else {
-        editor.updateOptions({ theme: "light-plus" });
+        editor.updateOptions({
+          theme: preferDarkColorScheme() ? "dark-plus" : "light-plus",
+        });
       }
     }
     listener();
