@@ -293,6 +293,7 @@ class Repl extends React.Component<Props, State> {
               fileSize={options.fileSize && state.meta.compiledSize}
               lineWrapping={state.lineWrap}
               placeholder="Compiled output will be shown here"
+              fastMode={state.timeTravel}
             />
           </div>
           {state.timeTravel && (
