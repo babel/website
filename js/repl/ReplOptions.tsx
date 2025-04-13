@@ -1142,7 +1142,6 @@ const styles = {
   optionSelect: css({
     appearance: "none",
     backgroundColor: colors.selectBackground,
-    // eslint-disable-next-line
     backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='${colors.inverseForegroundLight}'><polygon points='0,0 100,0 50,50'/></svg>")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "8px",

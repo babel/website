@@ -6,7 +6,7 @@
  */
 import React from "react";
 import Layout from "@theme/Layout";
-import Translate, { translate } from "@docusaurus/Translate";
+import { translate } from "@docusaurus/Translate";
 import "../../static/css/error.css";
 function NotFound() {
   return (

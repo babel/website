@@ -67,7 +67,6 @@ export default class Modal extends Component<Props> {
       }
     }
 
-    // eslint-disable-next-line no-unused-vars
     const { children, onClick, onClose, ...props } = this.props;
 
     const result = (

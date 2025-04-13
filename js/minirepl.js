@@ -1,5 +1,4 @@
 /*global ace Babel*/
-/*eslint quotes: ["error", "double", { "avoidEscape": true }]*/
 import debounce from "lodash.debounce";
 
 const miniReplExamples = [
@@ -15,7 +14,7 @@ let outEditor;
 
 let runDemo = true;
 
-const debouncedUpdate = debounce(function() {
+const debouncedUpdate = debounce(function () {
   compileCode(inEditor, outEditor);
 }, 1000);
 
@@ -61,7 +60,7 @@ function simulateKeys(inEditor, outEditor, texts) {
   function simulateKey(changingText) {
     const delay = changingText ? 4000 : Math.round(Math.random() * 125) + 30;
 
-    timeout = setTimeout(function() {
+    timeout = setTimeout(function () {
       if (!runDemo) {
         if (timeout) {
           clearTimeout(timeout);
@@ -142,7 +141,7 @@ function compileCode(sourceEditor, targetEditor) {
 }
 
 const BABEL_MINI_REPL = {
-  start: function() {
+  start: function () {
     // don't init editor on mobile devices
     if (isMobile()) return;
 
@@ -154,7 +153,7 @@ const BABEL_MINI_REPL = {
     outEditor = setupEditor("hero-repl-out", true);
     outEditor.renderer.$cursorLayer.element.style.display = "none";
 
-    inEditor.on("change", function() {
+    inEditor.on("change", function () {
       if (!inEditor.getValue()) {
         debouncedUpdate.cancel();
         outEditor.setValue("");
@@ -169,13 +168,13 @@ const BABEL_MINI_REPL = {
       }
     });
 
-    setTimeout(function() {
+    setTimeout(function () {
       document.querySelector(".hero-repl")?.classList.add("hero-repl--visible");
       simulateKeys(inEditor, outEditor, miniReplExamples);
     }, 150);
   },
 
-  stopDemo: function() {
+  stopDemo: function () {
     debouncedUpdate.cancel();
     runDemo = false;
     inEditor.setReadOnly(false);

@@ -1,7 +1,7 @@
 import compile from "./compile";
 import { registerPromiseWorker } from "./WorkerUtils";
 
-declare var Babel: any;
+declare const Babel: any;
 declare function importScripts(url: string): void;
 
 // This script should be executed within a web-worker.
@@ -16,7 +16,7 @@ registerPromiseWorker((message) => {
     case "getBabelVersion":
       try {
         return Babel.version;
-      } catch (error) {
+      } catch (_) {
         return null;
       }
 
@@ -25,7 +25,7 @@ registerPromiseWorker((message) => {
         const target = self[name];
         // @ts-expect-error Window doesn't have the property
         return target.version;
-      } catch (error) {
+      } catch (_) {
         return null;
       }
 
@@ -75,7 +75,7 @@ registerPromiseWorker((message) => {
         });
 
         return true;
-      } catch (error) {
+      } catch (_) {
         return false;
       }
 

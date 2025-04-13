@@ -6,7 +6,7 @@ import BABEL_MINI_REPL from "../../../js/minirepl.js";
 import Translate from "@docusaurus/Translate";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Head from '@docusaurus/Head';
+import Head from "@docusaurus/Head";
 
 class Button extends React.Component {
   render() {
@@ -70,7 +70,7 @@ const MiniRepl = () => {
   );
 };
 
-const GetStarted = ({ language }) => {
+const GetStarted = () => {
   return (
     <div
       className="blockElement"
@@ -146,7 +146,7 @@ const SponsorTier = (props) => {
   );
 };
 
-const OpenCollectiveSponsors = ({ language }) => {
+const OpenCollectiveSponsors = () => {
   return (
     <div className="container paddingBottom">
       <div className="wrapper productShowcaseSection">
@@ -231,7 +231,10 @@ const Index = ({ language }) => {
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <Head>
-        <script src="https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js" defer=""></script>
+        <script
+          src="https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js"
+          defer=""
+        ></script>
       </Head>
 
       <div>

@@ -50,7 +50,7 @@ import type {
   SourceType,
 } from "./types";
 
-type Props = {};
+type Props = object;
 
 type State = {
   babel: BabelState;
@@ -391,7 +391,6 @@ class Repl extends React.Component<Props, State> {
           // No need to recompile at this point;
           // Just evaluate the most recently compiled code.
           try {
-            // eslint-disable-next-line
             scopedEval.execute(this.state.compiled, this.state.sourceMap);
           } catch (error) {
             evalErrorMessage = error.message;

@@ -45,7 +45,7 @@ const encode = (value: any) => window.encodeURIComponent(value);
 const decode = (value: any) => {
   try {
     return window.decodeURIComponent("" + value);
-  } catch (err) {
+  } catch (_) {
     return value;
   }
 };
