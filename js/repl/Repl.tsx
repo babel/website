@@ -57,9 +57,7 @@ type State = {
   code: string;
   compiled: string | undefined | null;
   compileErrorMessage: string | undefined | null;
-  debugEnvPreset: boolean;
   envConfig: EnvConfig;
-  envPresetDebugInfo: string | undefined | null;
   envPresetState: EnvState;
   shippedProposalsState: ShippedProposalsState;
   presetsOptions: PresetsOptions;
@@ -135,8 +133,8 @@ class Repl extends React.Component<Props, State> {
   _numLoadingPlugins = 0;
   _workerApi = new WorkerApi();
 
-  constructor(props: Props, context: any) {
-    super(props, context);
+  constructor(props: Props) {
+    super(props);
 
     const persistedState = replState();
     const defaultPlugins = {
@@ -167,10 +165,8 @@ class Repl extends React.Component<Props, State> {
       compiled: null,
       pluginSearch: "",
       compileErrorMessage: null,
-      debugEnvPreset: persistedState.debug,
       presetsOptions,
       envConfig,
-      envPresetDebugInfo: null,
       envPresetState: persistedStateToEnvState(
         persistedState,
         envPresetConfig,
@@ -241,7 +237,6 @@ class Repl extends React.Component<Props, State> {
         <ReplOptions
           babelVersion={state.babel.version}
           className={styles.optionsColumn}
-          debugEnvPreset={state.debugEnvPreset}
           envConfig={state.envConfig}
           envPresetState={state.envPresetState}
           shippedProposalsState={state.shippedProposalsState}
@@ -296,7 +291,6 @@ class Repl extends React.Component<Props, State> {
               code={state.compiled}
               errorMessage={state.evalErrorMessage}
               fileSize={state.meta.compiledSize}
-              info={state.debugEnvPreset ? state.envPresetDebugInfo : null}
               options={options}
               placeholder="Compiled output will be shown here"
             />
@@ -534,7 +528,6 @@ class Repl extends React.Component<Props, State> {
             state.babel.version
           ),
         ]),
-        debugEnvPreset: state.debugEnvPreset,
         envConfig: state.envConfig,
         presetsOptions: state.presetsOptions,
         evaluate:
@@ -653,7 +646,6 @@ class Repl extends React.Component<Props, State> {
       spec: envConfig.isSpecEnabled,
       loose: envConfig.isLooseEnabled,
       code: state.code,
-      debug: state.debugEnvPreset,
       modules: envConfig.modules,
       forceAllTransforms: envConfig.forceAllTransforms,
       shippedProposals: envConfig.shippedProposals,
