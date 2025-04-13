@@ -80,7 +80,6 @@ const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
   const allNodes = [];
 
   // Handling pagination if necessary
-  // eslint-disable-next-line
   while (true) {
     const headers = {
       "Content-Type": "application/json",

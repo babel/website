@@ -19,7 +19,7 @@ Button.defaultProps = {
   target: "_self",
 };
 
-const PromoSection = props => (
+const PromoSection = (props) => (
   <div className="section promoSection">
     <div className="promoRow">
       <div className="pluginRowBlock">{props.children}</div>
@@ -27,13 +27,13 @@ const PromoSection = props => (
   </div>
 );
 
-const SponsorTier = props => {
+const SponsorTier = (props) => {
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext();
 
   const tierSponsors = customFields.sponsors.filter(
-    sponsor => sponsor.type == props.type && sponsor.tier === props.tier
+    (sponsor) => sponsor.type == props.type && sponsor.tier === props.tier
   );
   return (
     <div>
@@ -59,7 +59,7 @@ const SponsorTier = props => {
   );
 };
 
-const OpenCollectiveSponsors = ({ language }) => {
+const OpenCollectiveSponsors = () => {
   const ocButton = {
       title: "Become a sponsor",
       link: "https://opencollective.com/babel",
@@ -68,7 +68,6 @@ const OpenCollectiveSponsors = ({ language }) => {
       title: "Become a patron",
       link: "https://www.patreon.com/bePatron?u=905738",
     };
-  const { siteConfig } = useDocusaurusContext();
 
   return (
     <div className="container paddingTop paddingBottom">

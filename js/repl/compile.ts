@@ -1,9 +1,9 @@
 // Globals pre-loaded by Worker
 import { compareVersions } from "./Utils";
 
-declare var Babel: any;
-declare var prettier: any;
-declare var prettierPlugins: any;
+declare const Babel: any;
+declare const prettier: any;
+declare const prettierPlugins: any;
 
 import Transitions from "./Transitions";
 import type {

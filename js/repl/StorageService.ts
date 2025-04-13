@@ -5,17 +5,13 @@ const StorageService = {
   get(key: string): any {
     try {
       return JSON.parse(window.localStorage.getItem(key));
-    } catch (error) {
-      // Noop
-    }
+    } catch {}
   },
 
   set(key: string, value: any): void {
     try {
       window.localStorage.setItem(key, JSON.stringify(value));
-    } catch (error) {
-      // Noop
-    }
+    } catch {}
   },
 
   remove(key: string): void {

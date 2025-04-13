@@ -3,7 +3,7 @@ import { registerPromiseWorkerApi } from "./WorkerUtils";
 
 import type { CompileConfig, PluginState } from "./types";
 
-// $FlowFixMe
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const WorkerSource = require("worker-loader?inline=no-fallback&esModule=false!./Worker");
 
 type PromiseWorkerApi = {
