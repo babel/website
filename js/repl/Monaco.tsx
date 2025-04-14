@@ -62,6 +62,7 @@ function Monaco({
   fastMode,
 }: Props) {
   const container = useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line prefer-const
   let [editor, setEditor] =
     React.useState<monaco.editor.IStandaloneCodeEditor | null>(null);
   const [rect, setRect] = React.useState<DOMRect | null>(null);
@@ -96,7 +97,9 @@ function Monaco({
       }))
     );
     if (onChange) {
-      code && editor.setValue(code);
+      if (code) {
+        editor.setValue(code);
+      }
       editor.onDidChangeModelContent(() => {
         const value = editor.getValue();
         if (value !== code) {
@@ -157,7 +160,9 @@ function Monaco({
 
   if (!onChange) {
     useEffect(() => {
-      code != null && editor.setValue(code);
+      if (code != null) {
+        editor.setValue(code);
+      }
     }, [code]);
   }
 
