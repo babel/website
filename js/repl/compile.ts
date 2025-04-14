@@ -16,7 +16,6 @@ import type {
 type Return = {
   compiled: string | undefined | null;
   compileErrorMessage: string | undefined | null;
-  envPresetDebugInfo: string | undefined | null;
   meta: {
     compiledSize: number;
     rawSize: number;
@@ -53,7 +52,6 @@ export default function compile(code: string, config: CompileConfig): Return {
 
   let compiled = null;
   let compileErrorMessage = null;
-  let envPresetDebugInfo = null;
   let sourceMap = null;
   let useBuiltIns: false | "entry" | "usage" = false;
   let corejs = "3.21";
@@ -238,14 +236,12 @@ export default function compile(code: string, config: CompileConfig): Return {
   } catch (error) {
     compiled = null;
     compileErrorMessage = error.message;
-    envPresetDebugInfo = null;
     sourceMap = null;
   }
 
   return {
     compiled,
     compileErrorMessage,
-    envPresetDebugInfo,
     meta,
     sourceMap,
     transitions: transitions.getValue(),

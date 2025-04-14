@@ -120,7 +120,6 @@ type Props = {
   runtimePolyfillState: PluginState;
   loadingExternalPlugins: boolean;
   onAssumptionsChange: AssumptionsChange;
-  debugEnvPreset: boolean;
   onResetBtnClick: () => void;
 };
 

@@ -9,7 +9,10 @@ declare const module: {
   };
 };
 
-createRoot(document.getElementById("root")).render(<Repl />);
+createRoot(document.getElementById("root")).render(
+  // @ts-expect-error We don't need to import `React`
+  <Repl />
+);
 
 if (module.hot) {
   module.hot.accept();

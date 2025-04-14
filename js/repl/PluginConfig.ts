@@ -94,7 +94,6 @@ const replDefaults: ReplState = {
   spec: false,
   loose: false,
   code: "",
-  debug: false,
   evaluate: false,
   fileSize: false,
   timeTravel: false,

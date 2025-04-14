@@ -1,23 +1,10 @@
 /* globals Babel */
 
-// Uncomment the following imports when skypack can handle multiple copies of `FacetProvider` due
-// to multiple entries, see https://github.com/babel/website/issues/2456#issuecomment-784245936
-
-// import {
-//   EditorState,
-//   basicSetup,
-// } from "https://cdn.skypack.dev/@codemirror/basic-setup@0.17.0";
-// import { EditorView } from "https://cdn.skypack.dev/@codemirror/view@0.17.6";
-// import { oneDark } from "https://cdn.skypack.dev/@codemirror/theme-one-dark@0.17.5";
-// import { javascriptLanguage } from "https://cdn.skypack.dev/@codemirror/lang-javascript@0.17.2";
-
-import {
-  EditorState,
-  basicSetup,
-  EditorView,
-  oneDark,
-  javascriptLanguage,
-} from "../build/cm6.mjs";
+import { basicSetup } from "https://esm.sh/codemirror@6.0.1";
+import { EditorState } from "https://esm.sh/@codemirror/state@^6.0.0";
+import { EditorView } from "https://esm.sh/@codemirror/view@^6.0.0";
+import { oneDark } from "https://esm.sh/@codemirror/theme-one-dark@^6.0.0";
+import { javascriptLanguage } from "https://esm.sh/@codemirror/lang-javascript@^6.0.0";
 
 function debounce(func, wait, immediate) {
   var timeout;
@@ -198,7 +185,7 @@ class MiniRepl extends HTMLElement {
       state: this._createInputEditorState(defaultCode),
       parent: this.shadowRoot.querySelector("#repl-in"),
       root: this.shadowRoot,
-      dispatch: tr => {
+      dispatch: (tr) => {
         this._inEditor.update([tr]);
         this._render();
       },

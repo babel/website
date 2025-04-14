@@ -7,9 +7,9 @@ import js from "@eslint/js";
 export default defineConfig([
   globalIgnores([
     "**/node_modules",
+    "website/.docusaurus",
     "website/build",
     "website/static/js/build",
-    "website/static/js/babel.min.js",
     "website/static/repl",
   ]),
   {

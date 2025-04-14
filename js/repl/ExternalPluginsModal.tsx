@@ -1,4 +1,4 @@
-import algoliasearch from "algoliasearch/lite";
+import { liteClient } from "algoliasearch/lite";
 import { css } from "@emotion/css";
 import React, { type ChangeEvent } from "react";
 import {
@@ -13,7 +13,7 @@ import Modal from "./Modal";
 import { colors, media } from "./styles";
 import type { BabelPlugin } from "./types";
 
-const searchClient = algoliasearch(
+const searchClient = liteClient(
   "OFCNCOG2CU",
   "1f0cc4b7da241f62651b85531d788fbd"
 );

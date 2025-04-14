@@ -75,7 +75,9 @@ export default class Modal extends Component<Props> {
         <div
           className={styles.content}
           onClick={this.handleContentClick}
-          ref={(x) => (this._content = x)}
+          ref={(x) => {
+            this._content = x;
+          }}
           {...props}
         >
           {children}

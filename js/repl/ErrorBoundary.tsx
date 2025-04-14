@@ -3,7 +3,7 @@ import { css } from "@emotion/css";
 import { colors } from "./styles";
 
 type Props = {
-  children?: React.ReactNode;
+  children?: React.JSX.Element;
 };
 
 type State = {

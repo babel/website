@@ -107,7 +107,6 @@ export type PluginStateMap = {
 export type SourceType = "script" | "module" | "unambiguous";
 
 export type CompileConfig = {
-  debugEnvPreset: boolean;
   envConfig: EnvConfig | undefined | null;
   presetsOptions: PresetsOptions;
   evaluate: boolean;
@@ -128,7 +127,6 @@ export type ReplState = {
   spec: boolean;
   loose: boolean;
   code: string;
-  debug: boolean;
   evaluate: boolean;
   fileSize: boolean;
   timeTravel: boolean;

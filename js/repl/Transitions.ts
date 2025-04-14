@@ -4,9 +4,7 @@ import type { Transition } from "./types";
 type Parent = {
   isProgram: () => boolean;
   parentPath: Parent;
-  node: {
-    type: string;
-  };
+  node: any;
 };
 
 export default class Transitions {

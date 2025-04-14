@@ -1,5 +1,3 @@
-import fetch from "unfetch";
-
 async function sendRequest(uri: string): Promise<any> {
   const fullURL = `/circleci/api/${uri}`;
   let response;
