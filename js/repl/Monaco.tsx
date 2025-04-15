@@ -23,9 +23,7 @@ type Props = {
   fastMode?: boolean;
 };
 
-let asyncLoaded = false;
-
-(async function () {
+const shikiPromise = (async function () {
   const engine = await createOnigurumaEngine(shikiWasm);
 
   shikiToMonaco(
@@ -36,8 +34,6 @@ let asyncLoaded = false;
     }),
     monaco
   );
-
-  asyncLoaded = true;
 })();
 
 monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
@@ -45,9 +41,16 @@ monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
 });
 
 export default function MonacoWithShiki(props: Props) {
+  const [asyncLoaded, setAsyncLoaded] = React.useState(false);
+  React.useEffect(() => {
+    shikiPromise.then(() => {
+      setAsyncLoaded(true);
+    });
+  }, []);
   if (!asyncLoaded) {
     return null;
   }
+
   return <Monaco {...props} />;
 }
 
