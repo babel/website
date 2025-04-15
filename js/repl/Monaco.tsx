@@ -113,19 +113,16 @@ function Monaco({
     editor.setModel(
       fastMode
         ? monaco.editor.createModel(
-            "",
+            code || "",
             "javascript",
             monaco.Uri.file("output/output.jsx")
           )
         : monaco.editor.createModel(
-            "",
+            code || "",
             "typescript",
             monaco.Uri.file(onChange ? "input/input.tsx" : "output/output.tsx")
           )
     );
-    if (code) {
-      editor.setValue(code);
-    }
   }, [fastMode]);
 
   useEffect(() => {
@@ -145,7 +142,7 @@ function Monaco({
     return () => {
       removeEventListener("storage", listener);
     };
-  }, []);
+  }, [fastMode]);
 
   useEffect(() => {
     const server = new ResizeObserver((entries) => {
