@@ -82,7 +82,7 @@ function Monaco({
           ? monaco.editor.createModel(
               "",
               "javascript",
-              monaco.Uri.file("output/output.tsx")
+              monaco.Uri.file("output/output.js")
             )
           : monaco.editor.createModel(
               "",
