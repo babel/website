@@ -1,5 +1,6 @@
 import { css, type CSSInterpolation } from "@emotion/css";
 import * as monaco from "monaco-editor";
+import * as monacoBasicTS from "monaco-editor/esm/vs/basic-languages/typescript/typescript.js";
 import React, { useRef, useEffect } from "react";
 import { shikiToMonaco } from "@shikijs/monaco";
 import { createHighlighterCoreSync } from "shiki/core";
@@ -38,6 +39,12 @@ const shikiPromise = (async function () {
 
 monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
   jsx: monaco.languages.typescript.JsxEmit.React,
+});
+
+monaco.languages.registerTokensProviderFactory("javascript", {
+  create() {
+    return { ...monacoBasicTS.language, tokenPostfix: ".js" };
+  },
 });
 
 export default function MonacoWithShiki(props: Props) {
@@ -108,7 +115,7 @@ function Monaco({
         ? monaco.editor.createModel(
             "",
             "javascript",
-            monaco.Uri.file("output/output.js")
+            monaco.Uri.file("output/output.jsx")
           )
         : monaco.editor.createModel(
             "",
