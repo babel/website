@@ -78,19 +78,7 @@ function Monaco({
         },
         // https://github.com/microsoft/monaco-editor/issues/4311
         // automaticLayout: true,
-        model: fastMode
-          ? monaco.editor.createModel(
-              "",
-              "javascript",
-              monaco.Uri.file("output/output.js")
-            )
-          : monaco.editor.createModel(
-              "",
-              "typescript",
-              monaco.Uri.file(
-                onChange ? "input/input.tsx" : "output/output.tsx"
-              )
-            ),
+        model: null,
         placeholder,
         scrollBeyondLastLine: false,
         minimap: {
@@ -100,9 +88,6 @@ function Monaco({
       }))
     );
     if (onChange) {
-      if (code) {
-        editor.setValue(code);
-      }
       editor.onDidChangeModelContent(() => {
         const value = editor.getValue();
         if (value !== code) {
@@ -115,6 +100,26 @@ function Monaco({
       editor.dispose();
     };
   }, []);
+
+  useEffect(() => {
+    editor.getModel()?.dispose();
+    editor.setModel(
+      fastMode
+        ? monaco.editor.createModel(
+            "",
+            "javascript",
+            monaco.Uri.file("output/output.js")
+          )
+        : monaco.editor.createModel(
+            "",
+            "typescript",
+            monaco.Uri.file(onChange ? "input/input.tsx" : "output/output.tsx")
+          )
+    );
+    if (code) {
+      editor.setValue(code);
+    }
+  }, [fastMode]);
 
   useEffect(() => {
     function listener() {
