@@ -93,14 +93,14 @@ Please replace the record/tuple syntax with the polyfill factory calls. For exam
 + Record({ p: "value" })
 
 - #[0, 1, 2]
-+ Tuple([0, 1, 2])
++ Tuple(0, 1, 2)
 
 // syntaxType: "bar"
 - {| p: "value" |}
 + Record({ p: "value" })
 
 - [|0, 1, 2|]
-+ Tuple([0, 1, 2])
++ Tuple(0, 1, 2)
 ```
 
 If you have to do a large scale migration. You can run Babel 7 with only the `@babel/plugin-proposal-record-and-tuple` plugin to transform the code base:
