@@ -7,9 +7,10 @@
     ],
     "jsx": "react",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "noEmit": true,
     "incremental": true,
+    "skipLibCheck": true
   },
 }
