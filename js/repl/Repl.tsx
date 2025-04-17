@@ -5,7 +5,7 @@ import debounce from "lodash.debounce";
 import React, { type ChangeEvent } from "react";
 import { prettySize, compareVersions } from "./Utils";
 import ErrorBoundary from "./ErrorBoundary";
-import Monaco from "./Monaco";
+import { load as loadMonaco, Monaco } from "./Monaco";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
@@ -322,6 +322,8 @@ class Repl extends React.Component<Props, State> {
           babelState.errorMessage || envState.errorMessage;
       }
     }
+
+    await loadMonaco();
 
     this.setState({
       babel: babelState,
