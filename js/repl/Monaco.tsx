@@ -24,7 +24,7 @@ type Props = {
   fastMode?: boolean;
 };
 
-const shikiPromise = (async function () {
+const asyncPromise = (async function () {
   const engine = await createOnigurumaEngine(shikiWasm);
 
   shikiToMonaco(
@@ -35,6 +35,22 @@ const shikiPromise = (async function () {
     }),
     monaco
   );
+
+  const element = document.createElement("div");
+  const editor = monaco.editor.create(element, {
+    model: monaco.editor.createModel(
+      "",
+      "typescript",
+      monaco.Uri.file("empty/empty.tsx")
+    ),
+  });
+  await new Promise((resolve) => {
+    editor.onDidChangeModelLanguageConfiguration(() => {
+      editor.dispose();
+      element.remove();
+      resolve(null);
+    });
+  });
 })();
 
 monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
@@ -47,21 +63,11 @@ monaco.languages.registerTokensProviderFactory("javascript", {
   },
 });
 
-export default function MonacoWithShiki(props: Props) {
-  const [asyncLoaded, setAsyncLoaded] = React.useState(false);
-  React.useEffect(() => {
-    shikiPromise.then(() => {
-      setAsyncLoaded(true);
-    });
-  }, []);
-  if (!asyncLoaded) {
-    return null;
-  }
-
-  return <Monaco {...props} />;
+export async function load() {
+  await asyncPromise;
 }
 
-function Monaco({
+export function Monaco({
   className,
   code,
   placeholder,
@@ -83,6 +89,7 @@ function Monaco({
         padding: {
           top: 2,
         },
+        fontSize: 14,
         // https://github.com/microsoft/monaco-editor/issues/4311
         // automaticLayout: true,
         model: null,
