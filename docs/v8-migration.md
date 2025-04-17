@@ -80,6 +80,61 @@ The proposal evolved into [import attributes](https://github.com/tc39/proposal-i
 + import value from "module" with { type: "json" };
 ```
 
+### `@babel/plugin-proposal-record-and-tuple`
+
+Please replace the record/tuple syntax with the polyfill factory calls. For example, if you are using [`@bloomberg/record-tuple-polyfill`](https://github.com/bloomberg/record-tuple-polyfill):
+
+```diff title="input.mjs"
++ import { Record, Tuple } from "@bloomberg/record-tuple-polyfill"
+
+// syntaxType: "hash"
+
+- #{ p: "value" }
++ Record({ p: "value" })
+
+- #[0, 1, 2]
++ Tuple(0, 1, 2)
+
+// syntaxType: "bar"
+- {| p: "value" |}
++ Record({ p: "value" })
+
+- [|0, 1, 2|]
++ Tuple(0, 1, 2)
+```
+
+If you have to do a large scale migration. You can run Babel 7 with only the `@babel/plugin-proposal-record-and-tuple` plugin to transform the code base:
+```json title="babel.record-tuple-migration.config.json"
+{
+  "babelrc": false,
+  "configFile": false,
+  "generateOpts": {
+    "experimental_preserveFormat": true,
+    "retainLines": true,
+    "tokens": true
+  },
+  "parserOpts": {
+    "createParenthesizedExpressions": true
+  },
+  "plugins": [
+    "@babel/plugin-syntax-jsx",
+    "@babel/plugin-syntax-typescript",
+
+    // or syntaxType: "bar" if you are using `{||}` or `[||]`
+    ["@babel/plugin-proposal-record-and-tuple", {
+      "syntaxType": "hash", "importPolyfill": true
+    }]
+  ]
+}
+```
+
+And then run `@babel/cli@7` to transform the input source `src`, this command will output the transformed source to `src-mod`:
+```sh npm2yarn
+npx @babel/cli@7 --config-file ./babel.record-tuple-migration.config.json src --out-lib src-mod
+```
+
+Please manually check whether `src-mod` can work. If everything looks good, overwrite `src` with contents in `src-mod`.
+
 ### Syntax plugins
 The following syntax plugins are no longer needed, you can safely remove them from your config and node modules:
 
