@@ -1214,6 +1214,27 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
   + !functionExpressionPath.node.async
   ```
 
+- Remove `Scope.prototype.traverse`, `Scope#parentBlock` and `Scope#hub` ([#16705](https://github.com/babel/babel/pull/16705))
+
+  __Migration__: Use `scope.path` methods and properties instead:
+
+  ```diff
+  - scope.traverse(scopeRootNode, visitor, state)
+  + scope.path.traverse(visitor, state)
+
+  - scope.parentBlock
+  + scope.path.parent
+
+  - scope.hub
+  + scope.path.hub
+  ```
+
+- Remove `Scope.prototype.getAllBindingsOfKind` and `Scope.prototype.toArray` ([#16705](https://github.com/babel/babel/pull/16705))
+
+  These methods have been removed as they are not used anymore in our code base.
+
+  __Migration__: You can copy&paste them from Babel 7's source to your plugin.
+
 - Remove `hoist`, `updateSiblingKeys`, `call`, `setScope`, `resync`, `popContext`, `pushContext`, `setup`, `setKey` methods from `NodePath` ([#16655](https://github.com/babel/babel/pull/16655))
 
   These methods are meant to be private so there is no real migration approach. If your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
@@ -1235,9 +1256,10 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
   __Migration__: If you want to preserve the old behavior, you can use `NodePath#shouldSkip` to check whether a NodePath has been skipped before calling `NodePath#requeue()`.
 
-- Remove `NodePath` methods starting with `_` ([#16504](https://github.com/babel/babel/pull/16504))
+- Remove methods starting with `_` from `Scope` and `NodePath` ([#16504](https://github.com/babel/babel/pull/16504), [#16705](https://github.com/babel/babel/pull/16705))
 
-  ```
+  ```js
+  // NodePath.prototype
   _assertUnremoved
   _call
   _callRemovalHooks
@@ -1258,6 +1280,10 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
   _resyncParent
   _resyncRemoved
   _verifyNodeList
+
+  // Scope.prototype
+  _renameFromMap
+  _generateUid
   ```
 
   These methods are meant to be private so there is no real migration approach. If your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
