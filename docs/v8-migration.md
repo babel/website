@@ -22,7 +22,7 @@ This just means Babel _itself_ won't run on older versions of Node. It can still
 
 ### ESM only
 
-Babel is now shipped in native ECMAScript modules. ([#11701](https://github.com/babel/babel/pull/11701))
+Babel is now shipped in native ECMAScript modules. ([#11701](https://github.com/babel/babel/pull/11701), [#17265](https://github.com/babel/babel/pull/17265))
 
 ### `@babel/core` requirements
 
