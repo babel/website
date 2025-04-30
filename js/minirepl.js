@@ -3,10 +3,10 @@ import debounce from "lodash.debounce";
 
 const miniReplExamples = [
   "/(?i:a)b/",
-  `using Flavortown = from(#["Guy Fieri"]);`,
+  'using Flavortown = from(#["Guy Fieri"]);',
   // use next(yourTurn) = throw "some code in here!"
   // when we support extractors
-  `let yourTurn = throw "some code in here!"`,
+  'let yourTurn = throw "some code in here!"',
 ];
 
 let inEditor;
