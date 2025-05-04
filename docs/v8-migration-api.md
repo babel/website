@@ -1372,8 +1372,6 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
 ### `@babel/compat-data`
 
-![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
-
 - Rename stage 4 plugin entries from `proposal-*` to `transform-*` in `plugins.json` ([#14976](https://github.com/babel/babel/pull/14976))
 
   This change also affects the `isRequired` function of `@babel/helper-compilation-targets`, which receives plugin names as its first parameter.
@@ -1392,6 +1390,12 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
     );
   };
   ```
+
+- Directly export data as JSON files ([#17267](https://github.com/babel/babel/pull/17267))
+
+  The entrypoints of the package are now JSON files, rather than JS files.
+
+  __Migration__: If you are importing this package from ESM, you will need to change your imports adding [`with { type: "json" }`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import/with#importing_json_modules_with_the_type_attribute) to them.
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
