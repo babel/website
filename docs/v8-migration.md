@@ -3,15 +3,17 @@ title: "Upgrade to Babel 8"
 id: v8-migration
 ---
 
-Refer users to this document when upgrading to Babel 8 from Babel 7. If you are a plugin developer or integration developer, please also check [migration guide for integration](./v8-migration-api.md).
+This document lists the breaking changes introduced in Babel 8.0.0, and how to adapt your usage of Babel to them when upgrading from Babel 7.0.0.
+
+If you are working directly with Babel's API (because, for example, you maintain a custom Babel plugin), please also check the [migration guide for integration](./v8-migration-api.md).
 
 <!--truncate-->
 
-> If you are upgrading from Babel 6, please check [here](./v7-migration.md) for Babel 7 migration guide.
+> If you are upgrading from Babel 6, please check the [Babel 7 migration guide](./v7-migration.md) first.
 
 ## All of Babel
 
-### Node.js support
+### Node.js support {#nodejs-support}
 
 All Babel 8 packages require Node.js `^20.19.0 || >=22.12.0`.
 
@@ -20,21 +22,18 @@ See [nodejs/Release](https://github.com/nodejs/Release) for more information.
 
 This just means Babel _itself_ won't run on older versions of Node. It can still _output_ code that runs on old Node versions.
 
-### ESM only
+### ESM only {#esm-only}
 
-Babel is now shipped in native ECMAScript modules. ([#11701](https://github.com/babel/babel/pull/11701), [#17265](https://github.com/babel/babel/pull/17265))
+Babel is now shipped as native ECMAScript modules ([#11701](https://github.com/babel/babel/pull/11701), [#17265](https://github.com/babel/babel/pull/17265)).
 
-### `@babel/core` requirements
+### Peer dependency requirements {#peer-dependency-requirements}
 
-All presets and plugins require `@babel/core@^8.0.0` as peer dependency.
+- All presets and plugins require `@babel/core@^8.0.0` as peer dependency. Some Babel 7 plugins and presets might work with `@babel/core@8`, and some Babel 8 plugins and presets might work with `@babel/core@7`, but we do not provide any official support for that.
+- `@babel/eslint-parser` and `@babel/eslint-plugin` require `eslint@^8.9.0` as peer dependency. ([#15563](https://github.com/babel/babel/issues/15563))
 
-### `@babel/eslint-parser` and `@babel/eslint-plugin`
+## Renamed Packages {#renamed-packages}
 
-The parser and plugin require `eslint@^8.9.0` as peer dependency. ([#15563](https://github.com/babel/babel/issues/15563))
-
-## Package Renames
-
-The following packages has been renamed to `-transform` as they have reached Stage 4 ([#15614](https://github.com/babel/babel/pull/15614)). The rename process has been landed in Babel 7.22 so you can start the migration prior to the upgrade.
+The following packages has been renamed from `...-proposal-...` to `...-transform-...`, as they have reached Stage 4 ([#15614](https://github.com/babel/babel/pull/15614)). The rename process has been landed in Babel 7.22 so you can start the migration prior to the upgrade.
 
 | Babel 7 | Babel 8 |
 | --- | --- |
@@ -55,23 +54,25 @@ The following packages has been renamed to `-transform` as they have reached Sta
 | `@babel/plugin-proposal-private-property-in-object` | `@babel/plugin-transform-private-property-in-object` |
 | `@babel/plugin-proposal-unicode-property-regex` | `@babel/plugin-transform-unicode-property-regex` |
 
-## Package Discontinued
+## Discontinued Packages {#discontinued-packages}
 
-### `@babel/runtime-corejs2`
+### `@babel/runtime-corejs2` {#babel-runtime-corejs2}
+
+`core-js@2` has not been maintained for years, and you should switch to `core-js@3` instead.
 
 Please upgrade to `@babel/runtime-corejs3` ([#11751](https://github.com/babel/babel/issues/10746#issuecomment-573402372)). After
-you install the new runtime, please set the [`corejs` version](https://babel.dev/docs/babel-plugin-transform-runtime#corejs) to 3.
+you install the new runtime, please set the [`corejs` version](https://babel.dev/docs/babel-plugin-transform-runtime#corejs) to the `core-js` version that you are using.
 
 ```diff title="babel.config.json"
 {
   "plugins": ["@babel/transform-runtime", {
 -   corejs: 2
-+   corejs: 3
++   corejs: "3.42.0"
   }]
 }
 ```
 
-### `@babel/plugin-syntax-import-assertions`
+### `@babel/plugin-syntax-import-assertions` {#babel-plugin-syntax-import-assertions}
 
 The proposal evolved into [import attributes](https://github.com/tc39/proposal-import-attributes), which now Babel supports parsing by default. You can remove `@babel/plugin-syntax-import-assertions` from your config, and  replace the following patterns in your codebase:
 
@@ -80,9 +81,11 @@ The proposal evolved into [import attributes](https://github.com/tc39/proposal-i
 + import value from "module" with { type: "json" };
 ```
 
-### `@babel/plugin-proposal-record-and-tuple`
+### `@babel/plugin-proposal-record-and-tuple` {#babel-plugin-proposal-record-and-tuple}
 
-Please replace the record/tuple syntax with the polyfill factory calls. For example, if you are using [`@bloomberg/record-tuple-polyfill`](https://github.com/bloomberg/record-tuple-polyfill):
+The Records and Tuples proposal has been withdrawn in TC39, which means that the syntax is not on track anymore to be included in the language.
+
+You will need to migrate away from the Records and Tuples syntax, and you can directly use the [`@bloomberg/record-tuple-polyfill`](https://github.com/bloomberg/record-tuple-polyfill) polyfill as if it was a standalone library.
 
 ```diff title="input.mjs"
 + import { Record, Tuple } from "@bloomberg/record-tuple-polyfill"
@@ -133,10 +136,11 @@ And then run `@babel/cli@7` to transform the input source `src`, this command wi
 npx @babel/cli@7 --config-file ./babel.record-tuple-migration.config.json src --out-lib src-mod
 ```
 
-Please manually check whether `src-mod` can work. If everything looks good, overwrite `src` with contents in `src-mod`.
+Please manually check whether `src-mod` is correct. If everything looks good, overwrite `src` with contents in `src-mod`.
 
-### Syntax plugins
-The following syntax plugins are no longer needed, you can safely remove them from your config and node modules:
+### Syntax plugins {#syntax-plugins}
+
+The following syntax plugins are no longer needed, you can safely remove them from your configuration and dependencies:
 
 - `@babel/plugin-syntax-async-functions`
 - `@babel/plugin-syntax-async-generators`
@@ -161,18 +165,23 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 - `@babel/plugin-syntax-trailing-function-commas`
 - `@babel/plugin-syntax-unicode-sets-regex`
 
-The following plugins are discontinued and their functionality is not available anymore:
-- `@babel/plugin-syntax-import-assertions`. Use `@babel/plugin-syntax-import-attributes` instead, and see the [`@babel/parser`](#configuration-change-parser) section for more information.
+## Per-package breaking changes
 
-## Configuration Changes
+### `@babel/core` {#babel-core}
 
-### `@babel/core` {#configuration-change-preset-core}
+![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
+
+- Use browserslist's `defaults` as default compilation target ([#12989](https://github.com/babel/babel/pull/12989), [#15551](https://github.com/babel/babel/pull/15551)).
+
+  If you are already using the `targets` option or have a `.browserslistrc` config file, this change won't affect you.
+
+  **Migration**: You'll probably be fine with the new behavior since the [browserslist's `defaults` covers most modern browsers](https://browsersl.ist/#q=defaults). If you need to support legacy browsers, create a [`.browserslistrc` config](https://github.com/browserslist/browserslist#queries), or specify the [`targets`](https://babeljs.io/docs/options#targets) option.
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 - The root AMD/UMD/SystemJS options, namely [`moduleIds`](./options.md#moduleids), [`getModuleId`](./options.md#getmoduleid), [`moduleRoot`](./options.md#moduleroot), [`moduleId`](./options.md#moduleid) and [`filenameRelative`](./options.md#filenamerelative) are moved to plugin options ([#5473](https://github.com/babel/babel/issues/5473), [#12724](https://github.com/babel/babel/pull/12724)).
 
-  **Migration**: Move these options to the module plugin, for example, if you are using
+  **Migration**: Move these options to the plugin you are using to transform modules. For example, if you are using
   `@babel/plugin-transform-modules-systemjs`:
   ```js title="babel.config.js"
   module.exports = {
@@ -193,7 +202,119 @@ The following plugins are discontinued and their functionality is not available 
 
   If you are using `@babel/cli` and passing `--module-ids`, `--module-root` and `--module-id` from command line, please create a Babel config `babel.config.js` and specify options there.
 
-### `@babel/preset-env` {#configuration-change-preset-env}
+  If you are transforming ESM through `@babel/preset-env`, you will need to explicitly use one of the `@babel/plugin-transform-modules-...` plugins.
+
+- `targets.esmodules: true` option now behaves as same as `targets.esmodules: "intersect"` ([#17188](https://github.com/babel/babel/pull/17188))
+
+  **Migration**: In Babel 7, specifying `esmodules: true` will override the `browsers` target or `browserslist`'s targets, while specifying `"intersect"` will intersect with such targets.
+
+  If your app targets modern browsers released after 2019, you can safely remove the `esmodules` option as they all support ES modules.
+
+  If your app targets legacy browsers such as IE, you can also remove the `esmodules` option as IE requires more transforms than any other browser.
+
+  If your app targets browsers released before 2019 and you want to preserve the Babel 7 `esmodules: true` behavior, remove the `esmodules` option and set the following `browsers` target:
+
+  ```json title="babel.config.json"
+  {
+    "targets": {
+      "browsers": "chrome 61, firefox 60, safari 10.1, node 13.2"
+    }
+  }
+  ```
+
+- Remove `uglify` target ([#12594](https://github.com/babel/babel/pull/12594))
+
+  **Migration**: The `uglify` target had been deprecated since 7.0.0. If you are using it to force `@babel/preset-env` to transpile down to ES5 and you still need to do so, you can use its [`forceAllTransforms`](preset-env.md#forcealltransforms) option.
+
+### `@babel/parser` {#babel-parser}
+
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- Remove the `estree` parser plugin's `classFeatures`  option ([#13752](https://github.com/babel/babel/pull/13752))
+
+  **Migration**: Remove the option from your config, since it's now enabled by default. Previously the `classFeatures` plugin enables `@babel/parser` to produce class properties AST compatible with ESLint 8, following the ESTree specification. In Babel 8 the `eslint-parser` only works with ESLint 8 and above.
+
+- Remove the `decimal` parser plugin ([#16741](https://github.com/babel/babel/pull/16741))
+
+  **Migration**: Migrate your project to the latest proposal and remove the plugin from your config since the proposal doesn't include syntax anymore.
+
+  ```diff title="example.js"
+  - 1.03m
+  + new Decimal("1.03")
+  - decimal1 + decimal2
+  + decimal1.add(decimal2)
+  ```
+
+- Remove the `importAssertions` parser plugin ([#16770](https://github.com/babel/babel/pull/16770))
+
+  This plugin was for an old version of the import attributes proposal, using the `assert` keyword instead of `with`. The proposal moved ahead without the `assert` keyword.
+
+  **Migration**: If possible, replace `assert` with `with` in your code. If doing so is not possible, you can temporarily use the `deprecatedImportAssert` parser plugin.
+
+- Remove the `importReflection` parser plugin ([#16808](https://github.com/babel/babel/pull/16808))
+
+  The "import reflection" proposal does not exist anymore, and it was superseeded by the "source phase imports" proposal, which uses the `source` modifier for imports instead of `module`.
+
+  **Migration**: Replace the plugin with `sourcePhaseImports`, and migrate your code to use `source` instead of `module` in import declarations.
+
+  ```diff title="example.js"
+  - import module x from "foo";
+  + import source x from "foo";
+  ```
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- [Disallow sequence expressions inside JSX attributes](https://github.com/babel/babel/issues/8604) ([#12447](https://github.com/babel/babel/pull/12447))
+
+  **Migration**: Find and replace the following code patterns. You can start the migration prior to Babel 8:
+  ```diff title="input.jsx"
+  - <p key={foo, bar}></p> // Invalid
+  + <p key={(foo, bar)}></p> // Valid
+  ```
+
+- [Disallow `{`, `}`, `<` and `>` in JSX text](https://github.com/babel/babel/issues/11042) ([#12451](https://github.com/babel/babel/pull/12451))
+
+  **Migration**: Use `{'{'}`, `{'}'}`, `{'<'}` and `{'>'}` instead. Find and replace the following code patterns. You can start the migration prior to Babel 8:
+  ```diff title="input.jsx"
+  - <p>">" is greater than.</p>
+  + <p>"{'>'}" is greater than.</p>
+  ```
+  **Notes**: This is technically a spec compliance fix because the [JSX specification](https://facebook.github.io/jsx/#prod-JSXTextCharacter) already forbids them. However, we have chosen to postpone it until Babel 8 because it could break someone's code.
+
+### `@babel/generator` {#babel-generator}
+
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- Remove the `jsonCompatibleStrings` option ([#9943](https://github.com/babel/babel/issues/9943), [#12477](https://github.com/babel/babel/pull/12477))
+
+  **Migration**: `@babel/generator` allows to specify options for [jsesc](https://github.com/mathiasbynens/jsesc), a library used to escape printed values. If you are using the `jsonCompatibleStrings` option, you can replace it with `jsescOption: { json: true }`.
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Output non-ASCII characters as-is in string literals ([#12675](https://github.com/babel/babel/pull/12675))
+
+  If you are using any one of `@babel/cli`, webpack, Rollup, or other Node.js powered bundlers, the transformed code is always encoded with `utf-8` and your app will not be affected. The issue only affects if you are manually calling the `babel.transform` API and your web server is not serving js files in the `utf8` encoding.
+
+  **Migration**: Ensure your server is always serving js files in the `utf8` encoding. If you can not control the server output, specify the `charset` attribute of the `script` tag in the html files.
+  ```html
+  <script charset="utf-8" src="your-app.js"></script>
+  ```
+  You can also restore to the Babel 7 behaviour by setting
+  ```js title="babel.config.js"
+  {
+    generatorOpts: {
+      jsescOption: {
+        minimal: false
+      }
+    }
+  }
+  ```
+
+### `@babel/preset-env` {#babel-preset-env}
+
+:::note
+`@babel/preset-env`'s `targets` option inherits its behavior from the top-level `targets` option, so make sure to check the [@babel/core](#babel-core) section.
+:::
 
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
@@ -205,7 +326,7 @@ The following plugins are discontinued and their functionality is not available 
 
 - `includes` and `excludes` respect renamed package names ([#15576](https://github.com/babel/babel/pull/15576))
 
-  **Migration**: If `includes` or `excludes` contain any plugins mentioned in the [Packages Renames section](./v8-migration.md#package-renames), change it to the new name. For example,
+  **Migration**: If `includes` or `excludes` contain any plugins mentioned in the [Packages Renames section](./v8-migration.md#renamed-packages), change it to the new name. For example,
 
   ```diff title="babel.config.json"
   {
@@ -221,20 +342,29 @@ The following plugins are discontinued and their functionality is not available 
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
-- Remove `uglify` target ([#12594](https://github.com/babel/babel/pull/12594))
+- Enable the [`bugfixes`](./preset-env.md#bugfixes) option by default ([#13866](https://github.com/babel/babel/pull/13866))
 
-  **Migration**: The `uglify` target had been deprecated since 7.0.0, if you still need this, use the [`forceAllTransforms`](preset-env.md#forcealltransforms) option.
+  **Migration**: You will probably be fine with the new behaviour as Babel now tries to compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers. If anyhow you want to restore the Babel 7 behaviour, you can specify `bugfixes: false`.
 
 - Removed syntax plugins can not be used in `includes` and `excludes` ([#15810](https://github.com/babel/babel/pull/15810))
 
   **Migration**: You can safely remove them if you are using any of [syntax plugins listed above](#syntax-plugins) in the `includes` and `excludes` options.
-### `@babel/preset-react` {#configuration-change-preset-react}
+
+### `@babel/preset-react` and `@babel/plugin-transform-react-jsx` {#babel-preset-react}
+
+:::note
+`@babel/parser` also includes some JSX-related breaking changes, so make sure to check the [@babel/parser](#babel-parser) section.
+:::
 
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
-- Make the `development` option default to the configured env ([#16927](https://github.com/babel/babel/pull/16927))
+- [Use the new JSX implementation by default](https://github.com/babel/babel/pull/11154#issuecomment-591188203) ([#12630](https://github.com/babel/babel/pull/12630))
 
-  Note that Babel's env, set through [`envName` option](./options.md#envname), defaults to
+  **Migration**: If you are using a modern version of React or Preact, it should work without any configuration changes. Otherwise, you can pass the [`runtime: "classic"`](preset-react.md#runtime) option to `@babel/preset-react` or `@babel/plugin-transform-react-jsx` to be explicit about your usage of `createElement` (or the equivalent function in other libraries).
+
+- Make the `development` option default to the configured environment ([#16927](https://github.com/babel/babel/pull/16927))
+
+  Note that Babel's environment, set through [`envName` option](./options.md#envname), defaults to
   `process.env.BABEL_ENV || process.env.NODE_ENV || "development"`: if you don't specify neither the `envName` option
   nor the `BABEL_ENV` or `NODE_ENV` environment variables, it will default to `development`.
 
@@ -256,28 +386,8 @@ The following plugins are discontinued and their functionality is not available 
   If your app targets to modern browsers released after 2019, you can safely remove these options as object spread has less code footprint.
 
   If your code needs to run in an environment which doesn't support object spread, you can either use `@babel/preset-env` (recommended) or `@babel/plugin-transform-object-rest-spread`. If you want to transpile `Object.assign` down, you also need to enable `@babel/plugin-transform-object-assign`.
-  In Babel 7.7.0, you can opt-in this behavior by using the `useSpread` option.
 
-- `targets.esmodules: true` option now behaves as same as `targets.esmodules: "intersect"` ([#17188](https://github.com/babel/babel/pull/17188))
-
-  **Migration**: In Babel 7, specifying `esmodules: true` will override the `browsers` target or `browserslist`'s targets, while specifying `"intersect"` will intersect with such targets.
-
-  If your app targets modern browsers released after 2019, you can safely remove the `esmodules` option as they all support ES modules.
-
-  If your app targets legacy browsers such as IE, you can also remove the `esmodules` option as IE requires more transforms than any other browser.
-
-  If your app targets browsers released before 2019 and you want to preserve the Babel 7 `esmodules: true` behavior, remove the `esmodules` option and set the following `browsers` target:
-
-  ```json title="babel.config.json"
-  [
-    "@babel/preset-env",
-    {
-      "targets": {
-        "browsers": "chrome 61, firefox 60, safari 10.1, node 13.2"
-      }
-    }
-  ]
-  ```
+  In Babel 7.7.0, you can opt into the Babel 8 behavior by using the `useSpread: true` option.
 
 - Type check input options ([#12460](https://github.com/babel/babel/pull/12460))
 
@@ -289,7 +399,11 @@ The following plugins are discontinued and their functionality is not available 
 
   **Migration**: The `filter` option can only be used with the `classic` runtime. If you have switched to `automatic` runtime, you can safely remove this option. Otherwise please specify `runtime: "classic"`.
 
-### `@babel/preset-typescript` {#configuration-change-preset-ts}
+### `@babel/preset-typescript` {#babel-preset-typescript}
+
+:::note
+Make sure to also check the [@babel/plugin-transform-typescript](#babel-plugin-transform-typescript) changes changes, since it's what this preset uses under the hood.
+:::
 
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
@@ -326,7 +440,7 @@ The following plugins are discontinued and their functionality is not available 
     }
     ```
 
-    If you want to preserve the JSX format but transpile the TypeScript part, use `ignoreExtensions: true` and add [`@babel/plugin-syntax-jsx`](./plugin-syntax-jsx.md) to `plugins`.
+    If you want to preserve the JSX format but transpile the TypeScript part, use `ignoreExtensions: true` and enable the [`@babel/plugin-syntax-jsx`](./plugin-syntax-jsx.md) plugin.
 
   - `isTSX: false` and `allExtensions: true`
 
@@ -341,108 +455,169 @@ The following plugins are discontinued and their functionality is not available 
 
 - Remove `allowDeclareFields` option ([#12461](https://github.com/babel/babel/pull/12461))
 
-  **Migration**: Remove the option from your config, since it's now enabled by default.  Previously `allowDeclareFields` enables transforming the `declare` syntax introduced in TypeScript 3.7, in Babel 8 we support the syntax without such a flag. See also the [compilation changes](#compilation-change-jsx) section.
+  **Migration**: Remove the option from your config, since it's now enabled by default.
 
 - Type check input options ([#12460](https://github.com/babel/babel/pull/12460))
 
   **Migration**: The preset will also report invalid option names. Refer to the [docs](./preset-typescript.md#options) and ensure valid usage. For example, `runtime` is not a valid `preset-typescript` option and thus should be removed.
 
-### `@babel/plugin-transform-typescript` {#configuration-change-transform-ts}
+### `@babel/plugin-transform-typescript` {#babel-plugin-transform-typescript}
+
+![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
+
+- [Preserve uninitialized class fields](https://github.com/babel/babel/issues/10039) ([#12461](https://github.com/babel/babel/pull/12461))
+
+  **Migration**: If you don't want fields to be initialized to `undefined` use the `declare` syntax, introduced in TypeScript 3.7:
+  ```ts title="input.ts"
+  class A {
+    foo: string | void; // initialized to undefined
+    declare bar: number; // type-only, will be removed
+  }
+  ```
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 - Remove `allowDeclareFields` option ([#12461](https://github.com/babel/babel/pull/12461))
 
-  **Migration**: Remove the option from your config.
+  **Migration**: Remove the option from your config, since it's now enabled by default.
 
-### `@babel/plugin-syntax-typescript` {#configuration-change-syntax-ts}
+### `@babel/plugin-syntax-typescript` {#babel-plugin-syntax-typescript}
 
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
 - Remove `isTSX` option ([#14955](https://github.com/babel/babel/pull/14955))
 
-  **Migration**: If you are using `isTSX: true`, remove this option and add [`@babel/plugin-syntax-jsx`](./plugin-syntax-jsx.md) to `plugins`:
+  **Migration**: If you are using `isTSX: true`, remove this option and enable the [`@babel/plugin-syntax-jsx`](./plugin-syntax-jsx.md) plugin:
 
   ```diff title="babel.config.json
   {
     "plugins": [
   -   ["@babel/plugin-syntax-typescript", { "isTSX": true }]
-  +   ["@babel/plugin-syntax-typescript"]
-  +   ["@babel/plugin-syntax-jsx"]
+  +   "@babel/plugin-syntax-typescript",
+  +   "@babel/plugin-syntax-jsx"
     ]
   }
   ```
 
-  If you are using `isTSX: false`, you can safely remove them.
+  If you are using `isTSX: false`, you can safely remove it.
 
-### `@babel/preset-flow` {#configuration-change-preset-flow}
+### `@babel/preset-flow` {#babel-preset-flow}
+
+:::note
+Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-plugin-transform-flow-strip-types) changes, since it's what this preset uses under the hood.
+:::
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
-
-- Remove `allowDeclareFields` option ([#12457](https://github.com/babel/babel/pull/12457))
-
-  **Migration**: Remove the option from your config, since it's now enabled by default. Previously `allowDeclareFields` enables transforming the `declare` syntax introduced in Flow 0.120.0, in Babel 8 we support the syntax without such a flag. See also the [compilation changes](#compilation-change-flow) section.
-
-- Remove `enums` option ([#16792](https://github.com/babel/babel/pull/16792))
-
-  **Migration**: Remove the option from your config. The `enums` option was used to enable Flow enums, which are now supported by default.
 
 - Type check input options ([#12460](https://github.com/babel/babel/pull/12460))
 
   **Migration**: The preset will also report invalid option names. Refer to the [docs](./preset-flow.md#options) and ensure valid usage.
 
-### `@babel/plugin-transform-flow-strip-types` {#configuration-change-transform-flow}
+- Remove the `allowDeclareFields` and `enums` options ([#12457](https://github.com/babel/babel/pull/12457), [#16792](https://github.com/babel/babel/pull/16792))
 
-![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+  **Migration**: Remove these options from your config, since they are now enabled by default.
 
-- Remove `allowDeclareFields` option ([#12457](https://github.com/babel/babel/pull/12457))
+### `@babel/plugin-transform-flow-strip-types` {#babel-plugin-transform-flow-strip-types}
 
-  **Migration**: Remove the option from your config. You will probably be fine with the new behaviour.
+![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
-- Remove `enums` option ([#16792](https://github.com/babel/babel/pull/16792))
+- [Preserve uninitialized class fields](https://github.com/babel/babel/issues/10039) ([#12457](https://github.com/babel/babel/pull/12457))
 
-  **Migration**: Remove the option from your config. The `enums` option was used to enable Flow enums, which are now supported by default.
-
-### `@babel/parser` {#configuration-change-parser}
-
-![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
-
-- Remove `estree` plugin option `classFeatures` ([#13752](https://github.com/babel/babel/pull/13752))
-
-  **Migration**: Remove the option from your config, since it's now enabled by default. Previously the `classFeatures` plugin enables `@babel/parser` to produce class properties AST compatible with ESLint 8, following the ESTree specification. In Babel 8 the `eslint-parser` only works with ESLint 8 and above.
-
-  - Remove `decimal` plugin option [#16741](https://github.com/babel/babel/pull/16741)
-
-  **Migration**: Migrate your project to the latest proposal and remove the plugin from your config since the latest proposal doesn't have syntax anymore.
-
-  ```diff title="example.js"
-  - 1.03m
-  + new Decimal("1.03")
-  - decimal1 + decimal2
-  + decimal1.add(decimal2)
+  **Migration**:
+  Use the new `declare` syntax, introduced in Flow 0.120, if you don't want fields to be initialized to `undefined`:
+  ```flow title="input.js"
+  class A {
+    foo: string | void; // initialized to undefined
+    declare bar: number; // type-only, will be removed
+  }
   ```
 
-- Remove `importAssertions` parser plugin ([#16770](https://github.com/babel/babel/pull/16770))
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-  This plugin was for an old version of the import attributes proposal, using the `assert` keyword instead of `with`. The proposal moved ahead without the `assert` keyword.
+- Remove the `allowDeclareFields` and `enums` options ([#12457](https://github.com/babel/babel/pull/12457), [#16792](https://github.com/babel/babel/pull/16792))
 
-  **Migration**: Replace the plugin with `importAttributes`. If you are still using the `assert` keyword it's recommended that you migrate to `with`: if it's not possible to do so, you can use the `["importAttributes", { deprecatedAssertSyntax: true }]` option.`
+  **Migration**: Remove these options from your config, since they are now enabled by default.
 
-- Remove `importReflection` parser plugin ([#16808](https://github.com/babel/babel/pull/16808))
+### `@babel/plugin-transform-runtime` {#babel-plugin-transform-runtime}
 
-  The "import reflection" proposal does not exist anymore, and it was superseeded by the "source phase imports" proposal, which uses the `source` modifier for imports instead of `module`.
+![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
 
-  **Migration**: Replace the plugin with `sourcePhaseImports`, and migrate your code to use `source` instead of `module` in import declarations.
+- The `corejs` option has been removed ([#16311](https://github.com/babel/babel/pull/16311))
 
-### `@babel/generator` {#configuration-change-generator}
+  **Migration**: To inject polyfills, you can use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md) or the deprecated [`babel-plugin-polyfill-corejs2`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs2/README.md) directly.
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- The `useESModules` option has been removed ([#16141](https://github.com/babel/babel/pull/16141))
+
+  **Migration**: Delete it from your configuration. `@babel/runtime` will now automatically expose ES modules when needed, using `package.json#exports`.
+
+- The `runtime` and `helpers` options have been removed ([#16311](https://github.com/babel/babel/pull/16311))
+
+  **Migration**: Delete them from your configuration: `@babel/runtime` will now always import helpers. If you don't want to inject imports to helpers, remove `@babel/plugin-transform-runtime` from your config.
+
+
+### `@babel/plugin-transform-modules-systemjs` {#babel-plugin-transform-modules-systemjs}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- Remove `jsonCompatibleStrings` generator option ([#9943](https://github.com/babel/babel/issues/9943), [#12477](https://github.com/babel/babel/pull/12477))
+- [Require `@babel/plugin-transform-dynamic-import` when transforming `import()` to SystemJS](https://github.com/babel/babel/blob/78cd63d9cfcd96e6a151c58fed392c3ee757d861/packages/babel-plugin-transform-modules-systemjs/src/index.js#L183-L185) ([#12700](https://github.com/babel/babel/pull/12700))
 
-  **Migration**: `@babel/generator` allows to specify options for [jsesc](https://github.com/mathiasbynens/jsesc), a library used to escape printed values. If you are using the `jsonCompatibleStrings` option, you can replace it with `jsescOption: { json: true }`.
+  **Migration**: Add `@babel/plugin-transform-dynamic-import` to your config: you can already do it in Babel 7. If you are using `@babel/preset-env`, you don't need to do anything.
+  ```diff title="babel.config.js.diff"
+  {
+    "plugins": [
+  +   "@babel/plugin-transform-dynamic-import",
+      "@babel/plugin-transform-modules-systemjs",
+    ]
+  }
+  ```
+  **Notes**: All the other plugins which support dynamic import (`transform-modules-commonjs` and `transform-modules-amd`) require the separate plugin since it was introduced. We couldn't change it for `transform-modules-systemjs` because that package did already support dynamic import.
 
-### `@babel/eslint-parser` {#configuration-change-eslint-parser}
+### `@babel/plugin-transform-regenerator` {#babel-plugin-transform-regenerator}
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Do not replace global `regeneratorRuntime` references ([#17237](https://github.com/babel/babel/pull/17237))
+
+  Babel 7 used to replace references to a `regeneratorRuntime` global with Babel's `regeneratorRuntime` helper:
+  ```js title="input.js"
+  console.log(regeneratorRuntime.isGeneratorFunction(fn));
+  ```
+  ```js title="output.js"
+  import _regeneratorRuntime from "@babel/runtime/regenerator";
+  console.log(_regeneratorRuntime.isGeneratorFunction(fn));
+  ```
+
+  This doesn't happen anymore in Babel 8.
+
+  **Migration**: The recommended approach is to update your code to not rely on a non-existent `regeneratorRuntime` global. If that's not possible, you can either import the unmaintained [`regenerator-runtime`](https://www.npmjs.com/package/regenerator-runtime) package in your application entrypoint, which will define the `regeneratorRuntime` global, or use [`babel-plugin-polyfill-regenerator`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-regenerator/README.md) to automatically inject that import for you.
+
+### `@babel/plugin-proposal-decorators` {#babel-plugin-proposal-decorators}
+
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- Only support the `legacy` and `2023-11` versions of the proposal. In addition to that, the plugin now requires a [`version`](./plugin-proposal-decorators.md#version) option ([#12712](https://github.com/babel/babel/pull/12712), [#15676](https://github.com/babel/babel/pull/15676))
+
+  **Migration**: You should migrate to the [latest version of the proposal](https://github.com/tc39/proposal-decorators/), `"2023-11"`.
+
+  ```diff title="babel.config.json"
+  {
+    "plugins": [
+      ["@babel/plugin-proposal-decorators", {
+  -     "decoratorsBeforeExport": true,
+  -     "version": "2018-09",
+  +     "version": "2023-11"
+      }]
+    ]
+  }
+  ```
+  The syntax is the same, but you will need to rewrite your decorator functions. The spec repo provides [comparison between the latest version and the `2018-09` version](https://github.com/tc39/proposal-decorators#comparison-with-the-previous-stage-2-decorators-proposal). You can already migrate since Babel 7.22.0, using the `"version": "2023-11"` option of `@babel/plugin-proposal-decorators`.
+
+  Although Babel 8 still supports the `legacy` version, it is advisable to migrate to the `2023-11` version regardless: both Babel 8 and TypeScript 5.0 support the `2023-11` version, while there are [a few behaviour differences](https://github.com/babel/babel/issues/8864#issuecomment-688535867) in the `legacy` version between Babel and `tsc`'s implementation. Browsers will only implement the latest version of the proposal.
+
+
+### `@babel/eslint-parser` {#babel-eslint-parser}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -485,193 +660,15 @@ The following plugins are discontinued and their functionality is not available 
   }
   ```
 
-### `@babel/plugin-transform-modules-systemjs` {#configuration-change-transform-systemjs}
-
-![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
-
-- [Require `@babel/plugin-transform-dynamic-import` when transforming `import()` to SystemJS](https://github.com/babel/babel/blob/78cd63d9cfcd96e6a151c58fed392c3ee757d861/packages/babel-plugin-transform-modules-systemjs/src/index.js#L183-L185) ([#12700](https://github.com/babel/babel/pull/12700))
-
-  **Migration**: Add `@babel/plugin-transform-dynamic-import` to your config: you can already do it in Babel 7. If you are using `@babel/preset-env`, you don't need to do anything.
-  ```diff title="babel.config.js.diff"
-  {
-    "plugins": [
-  +   "@babel/plugin-transform-dynamic-import",
-      "@babel/plugin-transform-modules-systemjs",
-    ]
-  }
-  ```
-  **Notes**: All the other plugins which support dynamic import (`transform-modules-commonjs` and `transform-modules-amd`) require the separate plugin since it was introduced. We couldn't change it for `transform-modules-systemjs` because that package did already support dynamic import.
-
-### `@babel/plugin-proposal-decorators` {#configuration-change-transform-decorators}
-
-![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
-
-- Only support `legacy` and `2023-11`. The plugin now requires a [`version`](./plugin-proposal-decorators.md#version) option ([#12712](https://github.com/babel/babel/pull/12712), [#15676](https://github.com/babel/babel/pull/15676))
-
-  **Migration**: You should migrate to the [latest version of the proposal](https://github.com/tc39/proposal-decorators/) `"2023-11"`, if you are using the `"2018-09"` or you have not specified a `version` option.
-  ```diff title="babel.config.json"
-  {
-    "plugins": [
-      ["@babel/plugin-proposal-decorators", {
-  -     "decoratorsBeforeExport": true,
-  -     "version": "2018-09",
-  +     "version": "2023-11"
-      }]
-    ]
-  }
-  ```
-  The syntax is the same, but you will need to rewrite your decorator functions. The spec repo provides [comparison between the latest version and the `2018-09` version](https://github.com/tc39/proposal-decorators#comparison-with-the-previous-stage-2-decorators-proposal). You can already migrate since Babel 7.22.0, using the `"version": "2023-05"` option of `@babel/plugin-proposal-decorators`.
-
-  Although Babel 8 still supports the `legacy` version, it is advisable to migrate to the `2023-05` version regardless: both Babel 8 and TypeScript 5.0 support the `2023-05` version, while there are [a few behaviour differences](https://github.com/babel/babel/issues/8864#issuecomment-688535867) in the `legacy` version between Babel and `tsc`'s implementation.
-
-### `@babel/plugin-transform-runtime`
-
-![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
-
-- The `corejs` option has been removed ([#16311](https://github.com/babel/babel/pull/16311))
-
-  **Migration**: To inject polyfills, you can use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md) or [babel-plugin-polyfill-corejs2](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs2/README.md) directly.
-
-![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-- The `useESModules` option has been removed ([#16141](https://github.com/babel/babel/pull/16141))
-
-  **Migration**: Delete it from your configuration. `@babel/runtime` will now automatically expose ES modules when needed, using `package.json#exports`.
-
-- The `runtime` and `helpers` options have been removed ([#16311](https://github.com/babel/babel/pull/16311))
-
-  **Migration**: Delete them from your configuration: `@babel/runtime` will now always import helpers. If you don't want to inject imports to helpers, remove `@babel/plugin-transform-runtime` from your config.
-
-### `@babel/node`
+### `@babel/node` {#babel-node}
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 - The `-gc` and `-d` command-line flags have been removed ([#15956](https://github.com/babel/babel/pull/15956))
   **Migration**: Use the `--expose-gc` and `--inspect` Node.js flags respectively. Note that although `-d` was short for `--debug`, the latter has been [deprecated since Node.js 7.7.0](https://nodejs.org/en/docs/guides/debugging-getting-started#legacy-debugger).
 
-- Command-line flags for Node.js and Babel must now be passed _before_ the filename, while flags for the script itself must be passed after. ([#16706](https://github.com/babel/babel/pull/16706))
+- Command-line flags for Node.js and Babel must now be passed _before_ the filename, while flags for the script itself must be passed after. ([#16706](https://github.com/babel/babel/pull/16706)):
 
-## Compilation Changes
-
-### Default target
-
-![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
-
-- Use browserslist's `defaults` as default compilation target ([#12989](https://github.com/babel/babel/pull/12989), [#15551](https://github.com/babel/babel/pull/15551)).
-
-  **Migration**: If you are already using `targets` or have a `.browserslist` config file, this change won't affect you. Otherwise, you'll probably be fine with the new behavior since the [browserslist's `defautls` covers most modern browsers](https://browsersl.ist/#q=defaults).
-
-  If you need to support legacy browsers, create a [`.browserlist` config](https://github.com/browserslist/browserslist#queries).
-
-### `@babel/preset-env`
-
-![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-- Enable the [`bugfixes`](./preset-env.md#bugfixes) option by default ([#13866](https://github.com/babel/babel/pull/13866))
-
-  **Migration**: You will probably be fine with the new behaviour as Babel now tries to compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers. If anyhow you want to restore the Babel 7 behaviour, you can specify `bugfixes: false`.
-
-### `@babel/plugin-transform-regenerator`
-
-![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-- Do not replace global `regeneratorRuntime` references ([#17237](https://github.com/babel/babel/pull/17237))
-
-  Babel 7 used to replace references to a `regeneratorRuntime` global with Babel's `regeneratorRuntime` helper:
-  ```js title="input.js"
-  console.log(regeneratorRuntime.isGeneratorFunction(fn));
   ```
-  ```js title="output.js"
-  import _regeneratorRuntime from "@babel/runtime/regenerator";
-  console.log(_regeneratorRuntime.isGeneratorFunction(fn));
-  ```
-
-  This doesn't happen anymore in Babel 8.
-
-  **Migration**: The recommended approach is to update your code to not rely on a non-existent `regeneratorRuntime` global. If that's not possible, you can either import the unmaintained [`regenerator-runtime`](https://www.npmjs.com/package/regenerator-runtime) package in your application entrypoint, which will define the `regeneratorRuntime` global, or use [`babel-plugin-polyfill-regenerator`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-regenerator/README.md) to automatically inject that import for you.
-
-### JSX {#compilation-change-jsx}
-
-![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
-
-- [Use the new JSX implementation by default](https://github.com/babel/babel/pull/11154#issuecomment-591188203) ([#12630](https://github.com/babel/babel/pull/12630))
-
-  **Migration**: If you are using a modern version of React or Preact, it should work without any configuration changes. Otherwise, you can pass the [`runtime: "classic"`](preset-react.md#runtime) option to `@babel/preset-react` or `@babel/plugin-transform-react-jsx` to be explicit about your usage of `createElement` (or the equivalent function in other libraries).
-
-![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
-
-- [Transforms JSX spread properties using object spread](https://github.com/babel/babel/issues/9652) ([#12593](https://github.com/babel/babel/pull/12593))
-
-  **Migration**: See the [Configuration changes / preset-react](#configuration-change-preset-react) section.
-
-![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-- [Disallow sequence expressions inside JSX attributes](https://github.com/babel/babel/issues/8604) ([#12447](https://github.com/babel/babel/pull/12447))
-
-  **Migration**: Find and replace the following code patterns. You can start the migration prior to Babel 8:
-  ```diff title="input.jsx"
-  - <p key={foo, bar}></p> // Invalid
-  + <p key={(foo, bar)}></p> // Valid
-  ```
-
-- [Disallow `{`, `}`, `<` and `>` in JSX text](https://github.com/babel/babel/issues/11042) ([#12451](https://github.com/babel/babel/pull/12451))
-
-  **Migration**: Use `{'{'}`, `{'}'}`, `{'<'}` and `{'>'}` instead. Find and replace the following code patterns. You can start the migration prior to Babel 8:
-  ```diff title="input.jsx"
-  - <p>">" is greater than.</p>
-  + <p>"{'>'}" is greater than.</p>
-  ```
-  **Notes**: This is technically a spec compliance fix becase the [JSX specification](https://facebook.github.io/jsx/#prod-JSXTextCharacter) already forbids them. However, we have chosen to postpone it until Babel 8 because it could break someone's code.
-
-### TypeScript {#compilation-change-ts}
-
-![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
-
-- [Preserve uninitialized class fields](https://github.com/babel/babel/issues/10039) ([#12461](https://github.com/babel/babel/pull/12461))
-
-  **Migration**:
-  Use the new `declare` syntax, introduced in TypeScript 3.7, if you don't want fields to be initialized to `undefined`:
-  ```ts title="input.ts"
-  class A {
-    foo: string | void; // initialized to undefined
-    declare bar: number; // type-only, will be removed
-  }
-  ```
-
-### Flow {#compilation-change-flow}
-
-![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
-
-- [Preserve uninitialized class fields](https://github.com/babel/babel/issues/10039) ([#12457](https://github.com/babel/babel/pull/12457))
-
-  **Migration**:
-  Use the new `declare` syntax, introduced in Flow 0.120, if you don't want fields to be initialized to `undefined`:
-  ```flow title="input.js"
-  class A {
-    foo: string | void; // initialized to undefined
-    declare bar: number; // type-only, will be removed
-  }
-  ```
-
-### Misc
-
-![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
-
-- Output non-ASCII characters as-is in string literal ([#12675](https://github.com/babel/babel/pull/12675))
-
-  If you are using any one of `@babel/cli`, WebPack, Rollup, create-react-app or other Node.js powered bundlers, the transformed code is always encoded with `utf-8` and your app will not be affected. The issue only affects if you are manually calling the `babel.transform` API and your web server is not serving js files in the `utf8` encoding.
-
-  **Migration**: Ensure your server is always serving js files in the `utf8` encoding. If you can not control the server output, specify the `charset` attribute of the `script` tag in the html files.
-  ```html
-  <script charset="utf-8" src="your-app.js"></script>
-  ```
-  You can also restore to the Babel 7 behaviour by
-  ```js title="babel.config.js"
-  {
-    generatorOpts: {
-      jsescOption: {
-        minimal: false
-      }
-    }
-  }
+  babel-node --flag-for-node --flag-for-babel script.js --flag-for-script
   ```
