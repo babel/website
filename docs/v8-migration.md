@@ -571,6 +571,25 @@ The following plugins are discontinued and their functionality is not available 
 
   **Migration**: You will probably be fine with the new behaviour as Babel now tries to compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers. If anyhow you want to restore the Babel 7 behaviour, you can specify `bugfixes: false`.
 
+### `@babel/plugin-transform-regenerator`
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Do not replace global `regeneratorRuntime` references ([#17237](https://github.com/babel/babel/pull/17237))
+
+  Babel 7 used to replace references to a `regeneratorRuntime` global with Babel's `regeneratorRuntime` helper:
+  ```js title="input.js"
+  console.log(regeneratorRuntime.isGeneratorFunction(fn));
+  ```
+  ```js title="output.js"
+  import _regeneratorRuntime from "@babel/runtime/regenerator";
+  console.log(_regeneratorRuntime.isGeneratorFunction(fn));
+  ```
+
+  This doesn't happen anymore in Babel 8.
+
+  **Migration**: The recommended approach is to update your code to not rely on a non-existing `regeneratorRuntime` global. If that's not possible, you can use [`babel-plugin-polyfill-regenerator`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-regenerator/README.md) to replace references to the `regeneratorRuntime` global with imports to the (not maintained anymore) `regenerator-runtime` package.
+
 ### JSX {#compilation-change-jsx}
 
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
