@@ -1,14 +1,14 @@
 ---
-title: "Upgrade to Babel 8 (Integration)"
+title: "Upgrade to Babel 8 (API)"
 id: v8-migration-api
 ---
 
-Refer plugin developers or integration users to this document when upgrading to Babel 8.
+This document lists the breaking changes introduced in Babel 8.0.0, and how to adapt your usage of Babel to them when upgrading from Babel 7.0.0. This document is intended for developers using Babel's API directly, such as Babel plugin authors, or authors of projects that use Babel as a library.
 
 <!--truncate-->
 
 :::info
-Check out the [v8-migration guide](v8-migration.md) for other user-level changes.
+Check out the [Babel 8 migration guide](v8-migration.md) first to learn about user-facing breaking changes.
 :::
 
 ## AST Changes
