@@ -588,7 +588,7 @@ The following plugins are discontinued and their functionality is not available 
 
   This doesn't happen anymore in Babel 8.
 
-  **Migration**: The recommended approach is to update your code to not rely on a non-existing `regeneratorRuntime` global. If that's not possible, you can either import the unmaintained [`regenerator-runtime`](https://www.npmjs.com/package/regenerator-runtime) package in your application entrypoint, which will define the `regeneratorRuntime` global, or use [`babel-plugin-polyfill-regenerator`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-regenerator/README.md) to automatically inject that import for you.
+  **Migration**: The recommended approach is to update your code to not rely on a non-existent `regeneratorRuntime` global. If that's not possible, you can either import the unmaintained [`regenerator-runtime`](https://www.npmjs.com/package/regenerator-runtime) package in your application entrypoint, which will define the `regeneratorRuntime` global, or use [`babel-plugin-polyfill-regenerator`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-regenerator/README.md) to automatically inject that import for you.
 
 ### JSX {#compilation-change-jsx}
 
