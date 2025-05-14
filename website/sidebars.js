@@ -12,7 +12,7 @@ module.exports = {
         "usage",
         "configuration",
         "learn",
-        bool(process.env.BABEL_8_BREAKING) ? "v8-migration" : "v7-migration",
+        ...(bool(process.env.BABEL_8_BREAKING) ? ["v8-migration", "v8-migration-api"] : ["v7-migration"]),
       ],
     },
     {
