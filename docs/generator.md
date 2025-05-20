@@ -46,7 +46,7 @@ const ast = parse(code, { plugins: ["jsx" ] });
 
 const output = generate(
   ast,
-);
+).code;
 
 // true
 output.includes("<div>");
@@ -62,7 +62,7 @@ const { generate } = require("@babel/generator");
 import { generate } from "@babel/generator";
 ```
 
-## Options
+### Options
 
 <details>
   <summary>History</summary>
@@ -114,6 +114,14 @@ The behavior of experimental options could have breaking changes in _minor_ vers
 | --------------------------- | ------- | ------- | ----------- | ------------------- |
 | experimental_preserveFormat | boolean | `false` | When set to `true`, the generator will try to preserve location of all the nodes and tokens that are present both in the input and output code. To use this option, you currently need to enable the `retainLines: true` generator option, and the `tokens: true` and `createParenthesizedExpressions: true` parser options. | This option will graduate to stable once it supports a mode that does not require preserving line numbers, but just relative positions of tokens. |
 
+### Result
+
+The `generate` API returns the source code and the source map information when the `sourceMaps` option is enabled. The fields are:
+
+- `code: string` - The output source code from the provided AST
+- `map: EncodedSourceMap | null` - The output source map in [encoded form](https://github.com/jridgewell/gen-mapping/blob/75eff9d01ef5da5477e316ec0f4f917ebe08dd96/src/types.ts#L13). It is lazily-evaluated
+- `decodedMap: DecodedSourceMap | undefined` - The output source map in [decoded form](https://github.com/jridgewell/gen-mapping/blob/75eff9d01ef5da5477e316ec0f4f917ebe08dd96/src/types.ts#L17). It is lazily-evaluated
+- `rawMappings: Mapping[]` - A high-level [mapping object](https://github.com/jridgewell/gen-mapping/blob/75eff9d01ef5da5477e316ec0f4f917ebe08dd96/src/types.ts#L26) for every recorded segments in order to generate the source map. It is lazily-evaluated
 
 ## AST from Multiple Sources
 
