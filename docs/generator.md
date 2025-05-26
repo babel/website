@@ -116,7 +116,7 @@ The behavior of experimental options could have breaking changes in _minor_ vers
 
 ### Result
 
-The `generate` API returns the source code and the source map information when the `sourceMaps` option is enabled. The fields are:
+The `generate` API returns an object containing the source code and the source map information when the `sourceMaps` option is enabled. Its fields are:
 
 - `code: string` - The output source code from the provided AST
 - `map: EncodedSourceMap | null` - The output source map in [encoded form](https://github.com/jridgewell/gen-mapping/blob/75eff9d01ef5da5477e316ec0f4f917ebe08dd96/src/types.ts#L13). It is lazily-evaluated
