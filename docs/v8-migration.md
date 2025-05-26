@@ -15,16 +15,17 @@ If you are working directly with Babel's API (because, for example, you maintain
 
 Before migrating to Babel 8, we recommend that you update your Babel 7 configuration to align it with Babel 8's new defaults. Once your build process is working again with Babel 7, you can then upgrade to Babel 8.
 
-You should read this full document to understand what options you need to change and what plugins you will need to remove, but here are the most important steps that you should take to modernize your config:
-- If you are not using a `.browserslistrc` file, define a top-level [`targets`](https://babeljs.io/docs/options#targets) option. The Babel 7 default is `targets: ">= 0%"` (i.e. all browsers), while the Babel 8 default is [`targets: "defaults"`](https://browsersl.ist/#q=defaults). If you are using [`@babel/preset-env`'s `targets`](https://babeljs.io/docs/babel-preset-env#targets) option, you can copy its value to the top-level configuration (next to the `presets` option).
-- If you are using `@babel/preset-env`, enable its [`bugfixes`](https://babeljs.io/docs/babel-preset-env#bugfixes) option.
-- If you are using `@babel/preset-env`'s `loose` or `spec` options, [migrate to `assumptions`](https://babeljs.io/docs/assumptions#migrating-from-babelpreset-envs-loose-and-spec-modes).
-- If you are using `@babel/preset-react` or `@babel/plugin-transform-react-jsx`, explicitly set their [`runtime`](https://babeljs.io/docs/babel-preset-react#runtime) option (Babel 7 defaults to `"classic"`, while Babel 8 to `"automatic"`), and if you choose to keep using the classic runtime set the [`useSpread`](https://babeljs.io/docs/babel-plugin-transform-react-jsx#usespread) option to `true`.
-- If you are using the TypeScript or Flow presets, replace the `isTSX` and `allExtensions` options with [`ignoreExtensions`](#babel-preset-typescript).
-- If you are transforming TypeScript or Flow, set the `allowDeclareFields` option to true (https://babeljs.io/docs/babel-preset-typescript#allowdeclarefields).
-- If you are using [`@babel/plugin-transform-runtime`'s `corejs`](https://babeljs.io/docs/babel-plugin-transform-runtime#corejsu) or [`@babel/preset-env`'s `useBuiltIns`](https://babeljs.io/docs/babel-preset-env#usebuiltins) options, remove it and use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3) instead.
-- If you are using `@babel/plugin-proposal-decorators`, set its [`version`](https://next.babeljs.io/docs/babel-plugin-proposal-decorators/#version) option to `legacy` or `2023-11`.
-- Remove the `@babel/plugin-proposal-record-and-tuple` and `@babel/plugin-syntax-import-assertions` plugins, if you are using them.
+You should read this full document to understand what options you need to change and which plugins you need to remove, but here are the most important steps to modernize your config:
+
+- If you are not using a `.browserslistrc` file, define a top-level [`targets`](./options.md#targets) option. Babel 7 defaults to `targets: ">= 0%"` (all browsers), while Babel 8 defaults to [`targets: "defaults"`](https://browsersl.ist/#q=defaults). If you are using [`@babel/preset-env`'s `targets`](./preset-env.md#targets) option, copy its value to the top-level configuration (next to `presets`).
+- If you use `@babel/preset-env`, enable its [`bugfixes`](./preset-env.md#bugfixes) option.
+- If you use `@babel/preset-env`'s `loose` or `spec` options, [migrate to `assumptions`](./assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes).
+- If you use `@babel/preset-react` or `@babel/plugin-transform-react-jsx`, explicitly set their [`runtime`](./preset-react.md#runtime) option (Babel 7 defaults to `"classic"`, Babel 8 to `"automatic"`). If you keep using the classic runtime, set the [`useSpread`](./babel-plugin-transform-react-jsx.md#usespread) option to `true`.
+- If you use the TypeScript or Flow presets, replace the `isTSX` and `allExtensions` options with [`ignoreExtensions`](#babel-preset-typescript).
+- If you are transforming TypeScript or Flow, set the `allowDeclareFields` option to `true` (see [TypeScript](./preset-typescript.md#allowdeclarefields)).
+- If you use [`@babel/plugin-transform-runtime`'s `corejs`](./babel-plugin-transform-runtime.md#corejs) or [`@babel/preset-env`'s `useBuiltIns`](./preset-env.md#usebuiltins) options, remove them and use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3) instead.
+- If you use `@babel/plugin-proposal-decorators`, set its [`version`](./plugin-proposal-decorators.md#version) option to `legacy` or `2023-11`.
+- Remove the `@babel/plugin-proposal-record-and-tuple` and `@babel/plugin-syntax-import-assertions` plugins if you are using them.
 
 ## All of Babel
 
