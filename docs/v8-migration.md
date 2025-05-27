@@ -20,10 +20,10 @@ You should read this full document to understand what options you need to change
 - If you are not using a `.browserslistrc` file, define a top-level [`targets`](./options.md#targets) option. Babel 7 defaults to `targets: ">= 0%"` (all browsers), while Babel 8 defaults to [`targets: "defaults"`](https://browsersl.ist/#q=defaults). If you are using [`@babel/preset-env`'s `targets`](./preset-env.md#targets) option, copy its value to the top-level configuration (next to `presets`).
 - If you use `@babel/preset-env`, enable its [`bugfixes`](./preset-env.md#bugfixes) option.
 - If you use `@babel/preset-env`'s `loose` or `spec` options, [migrate to `assumptions`](./assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes).
-- If you use `@babel/preset-react` or `@babel/plugin-transform-react-jsx`, explicitly set their [`runtime`](./preset-react.md#runtime) option (Babel 7 defaults to `"classic"`, Babel 8 to `"automatic"`). If you keep using the classic runtime, set the [`useSpread`](./babel-plugin-transform-react-jsx.md#usespread) option to `true`.
+- If you use `@babel/preset-react` or `@babel/plugin-transform-react-jsx`, explicitly set their [`runtime`](./preset-react.md#runtime) option (Babel 7 defaults to `"classic"`, Babel 8 to `"automatic"`). If you keep using the classic runtime, set the [`useSpread`](./plugin-transform-react-jsx.md#usespread) option to `true`.
 - If you use the TypeScript or Flow presets, replace the `isTSX` and `allExtensions` options with [`ignoreExtensions`](#babel-preset-typescript).
 - If you are transforming TypeScript or Flow, set the `allowDeclareFields` option to `true` (see [TypeScript](./preset-typescript.md#allowdeclarefields)).
-- If you use [`@babel/plugin-transform-runtime`'s `corejs`](./babel-plugin-transform-runtime.md#corejs) or [`@babel/preset-env`'s `useBuiltIns`](./preset-env.md#usebuiltins) options, remove them and use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3) instead.
+- If you use [`@babel/plugin-transform-runtime`'s `corejs`](./plugin-transform-runtime.md#corejs) or [`@babel/preset-env`'s `useBuiltIns`](./preset-env.md#usebuiltins) options, remove them and use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3) instead.
 - If you use `@babel/plugin-proposal-decorators`, set its [`version`](./plugin-proposal-decorators.md#version) option to `legacy` or `2023-11`.
 - Remove the `@babel/plugin-proposal-record-and-tuple` and `@babel/plugin-syntax-import-assertions` plugins if you are using them.
 
@@ -77,7 +77,7 @@ The following packages has been renamed from `...-proposal-...` to `...-transfor
 `core-js@2` has not been maintained for years, and you should switch to `core-js@3` instead.
 
 Please upgrade to `@babel/runtime-corejs3` ([#11751](https://github.com/babel/babel/issues/10746#issuecomment-573402372)). After
-you install the new runtime, please set the [`corejs` version](https://babel.dev/docs/babel-plugin-transform-runtime#corejs) to the `core-js` version that you are using.
+you install the new runtime, please set the [`corejs` version](./plugin-transform-runtime.md#corejs) to the `core-js` version that you are using.
 
 ```diff title="babel.config.json"
   {
