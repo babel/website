@@ -7,7 +7,7 @@ sidebar_label: syntax-explicit-resource-management
 :::note
 #### Syntax only
 
-It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-proposal-explicit-resource-management](plugin-proposal-explicit-resource-management.md) to _both_ parse and transform this syntax.
+It's unlikely you want to use this plugin directly as it only enables Babel to parse this syntax. Instead, use [plugin-transform-explicit-resource-management](plugin-transform-explicit-resource-management.md) to _both_ parse and transform this syntax.
 :::
 
 <details>
