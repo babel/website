@@ -135,6 +135,7 @@ export default class ExternalPlugins extends React.Component<Props, State> {
 
 const currentStyles = {
   modalButton: css`
+    color: #000;
     background: #f1da6b;
     border: 0;
     border-radius: 4px;
