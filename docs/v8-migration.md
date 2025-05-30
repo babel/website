@@ -58,6 +58,7 @@ The following packages has been renamed from `...-proposal-...` to `...-transfor
 | `@babel/plugin-proposal-class-static-block` | `@babel/plugin-transform-class-static-block` |
 | `@babel/plugin-proposal-duplicate-named-capturing-groups-regex` | `@babel/plugin-transform-duplicate-named-capturing-groups-regex` |
 | `@babel/plugin-proposal-dynamic-import` | `@babel/plugin-transform-dynamic-import` |
+| `@babel/plugin-proposal-explicit-resource-management` | `@babel/plugin-transform-explicit-resource-management` |
 | `@babel/plugin-proposal-export-namespace-from` | `@babel/plugin-transform-export-namespace-from` |
 | `@babel/plugin-proposal-json-strings` | `@babel/plugin-transform-json-strings` |
 | `@babel/plugin-proposal-logical-assignment-operators` | `@babel/plugin-transform-logical-assignment-operators` |
