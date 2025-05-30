@@ -1318,6 +1318,15 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
   __Migration__: Instead of passing a different block to `scope.rename()`, directly call `.rename()` on the scope corresponding to that block.
 
+- Replace `Scope#uids` and `Scope#references` with `Scope#uidsSet` and `Scope#referencesSet` ([#16624](https://github.com/babel/babel/pull/16624))
+
+  They have been changed from objects with boolean values to `Set` objects. In addition to that, they are now only defined on the program scope (`scope.getProgramParent()`) rather than on all scope objects.
+
+  ```diff
+  - if (programScope.references["foo"])
+  + if (programScope.referencesSet.has("foo"))
+  ```
+
 - Allow skipped `NodePath`s to be requeued ([#13291](https://github.com/babel/babel/pull/13291))
 
   `NodePath#requeue()` can requeue a skipped NodePath. This is actually a bugfix, but it causes an infinite loop in the [temporal dead zone](https://babeljs.io/docs/babel-plugin-transform-block-scoping#tdz) implementation of `@babel/plugin-transform-block-scoping` in Babel 7: it may break other plugins as well.
