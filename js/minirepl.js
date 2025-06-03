@@ -118,7 +118,8 @@ function compileCode(sourceEditor, targetEditor) {
       ],
       plugins: [
         ["external-helpers", { helperVersion: "7.100.0" }],
-        ["proposal-explicit-resource-management"],
+        // TODO: remove this when preset-env supports it
+        ["transform-explicit-resource-management"],
         ["proposal-record-and-tuple"],
         ["proposal-throw-expressions"],
       ],
