@@ -12,7 +12,7 @@ export default function Repl() {
   }, []);
   return (
     <div>
-      <Layout>
+      <Layout noFooter={true}>
         <div id="root">
           <noscript>You need to enable JavaScript to run this app.</noscript>
         </div>
