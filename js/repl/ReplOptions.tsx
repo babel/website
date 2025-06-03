@@ -786,7 +786,6 @@ class ExpandedContainer extends Component<Props, State> {
         <div className={styles.bottomSidebar}>
           <button onClick={onResetBtnClick}>Reset</button>
           <select
-            className={styles.resetButton}
             value={babelVersion}
             onChange={onVersionChange}
           >
@@ -970,8 +969,6 @@ const styles = {
   }),
   expandedContainer: css({
     overflow: "auto",
-    boxShadow:
-      "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.24) 0px 1px 4px",
 
     [media.large]: {
       height: "calc(100% - 38px)", // 38px is babel-version tab's height
@@ -1143,10 +1140,6 @@ const styles = {
       display: "none",
     },
   }),
-  resetButton: css({
-    marginLeft: "0.625rem",
-    transition: "all 0.25s ease-in",
-  }),
   sourceTypeSelect: css({
     backgroundPosition: "calc(100% - 1rem) calc(100% - 8px)",
     padding: "0 0.5rem",
@@ -1224,6 +1217,7 @@ const styles = {
     fontFamily: "monospace",
     fontSize: "0.75rem",
     justifyContent: "flex-end",
+    gap: "0.75rem",
     overflow: "hidden",
     padding: "0 1.5rem",
     textOverflow: "ellipsis",

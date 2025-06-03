@@ -763,6 +763,7 @@ const styles = {
   }),
   codeMirrorPanel: css({
     flex: "0 0 50%",
+    borderRight: `1px solid var(--ifm-scrollbar-track-background-color)`,
   }),
   optionsColumn: css({
     flex: "0 0 auto",
