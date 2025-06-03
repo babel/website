@@ -87,7 +87,10 @@ type ToggleVersion = (event: ChangeEvent) => void;
 type ShowOfficialExternalPluginsChanged = (value: string) => void;
 type PluginSearch = (value: string) => void;
 type PluginChange = (plugin: any) => void;
-type AssumptionsChange = (value: string, isChecked: boolean) => void;
+type AssumptionsChange = (
+  value: string,
+  status: IndeterminateCheckboxStatus
+) => void;
 
 type Props = {
   babelVersion: string | undefined | null;
@@ -184,6 +187,57 @@ const PresetOption = ({
     </label>
   );
 };
+
+export const enum IndeterminateCheckboxStatus {
+  Indeterminate = -1,
+  Unchecked = 0,
+  Checked = 1,
+}
+
+class IndeterminateCheckbox extends React.Component<{
+  status: IndeterminateCheckboxStatus;
+  className: string;
+  onChange: (status: IndeterminateCheckboxStatus) => void;
+}> {
+  state: { status: IndeterminateCheckboxStatus } = { status: -1 };
+  ele: HTMLInputElement = null;
+  status: IndeterminateCheckboxStatus = -1;
+  componentDidMount() {
+    this.ele.indeterminate = true;
+    this.state.status = this.props.status;
+  }
+
+  componentDidUpdate(prev) {
+    const status = this.state.status;
+
+    if (status === IndeterminateCheckboxStatus.Indeterminate) {
+      this.ele.indeterminate = true;
+    } else {
+      this.ele.indeterminate = false;
+      this.ele.checked = status === IndeterminateCheckboxStatus.Checked;
+    }
+
+    if (prev.status !== status) {
+      this.props.onChange(status);
+    }
+  }
+
+  render() {
+    return (
+      <input
+        type="checkbox"
+        className={this.props.className}
+        ref={(ele) => (this.ele = ele)}
+        onClick={(event) => {
+          event.nativeEvent.stopImmediatePropagation();
+          this.setState({
+            status: ++this.state.status > 1 ? -1 : this.state.status,
+          });
+        }}
+      />
+    );
+  }
+}
 
 export default function ReplOptions(props: Props) {
   return (
@@ -743,8 +797,19 @@ class ExpandedContainer extends Component<Props, State> {
               {ASSUMPTIONS_OPTIONS.map((option) => {
                 const isChecked =
                   assumptions[option] === "undefined"
-                    ? false
+                    ? undefined
                     : assumptions[option];
+
+                const button = (
+                  <IndeterminateCheckbox
+                    status={isChecked == null ? -1 : isChecked ? 1 : 0}
+                    className={styles.envPresetCheckbox}
+                    onChange={(status) => {
+                      this._onAssumptionsCheck(option, status);
+                    }}
+                  />
+                );
+
                 return (
                   <label key={option} className={styles.envPresetRow}>
                     <LinkToAssumptionDocs
@@ -753,14 +818,7 @@ class ExpandedContainer extends Component<Props, State> {
                     >
                       {option}
                     </LinkToAssumptionDocs>
-                    <input
-                      checked={isChecked}
-                      className={styles.envPresetCheckbox}
-                      onChange={(event) =>
-                        this._onAssumptionsCheck(option, event.target.checked)
-                      }
-                      type="checkbox"
-                    />
+                    {button}
                   </label>
                 );
               })}
@@ -847,8 +905,8 @@ class ExpandedContainer extends Component<Props, State> {
     this.props.showOfficialExternalPluginsChanged(value);
   };
 
-  _onAssumptionsCheck = (value, isChecked) => {
-    this.props.onAssumptionsChange(value, isChecked);
+  _onAssumptionsCheck = (value, status) => {
+    this.props.onAssumptionsChange(value, status);
   };
 
   _pluginChanged = (e, plugin) => {
