@@ -13,7 +13,7 @@ export default function Repl() {
   return (
     <div>
       <Layout noFooter={true}>
-        <div id="root">
+        <div id="root" style={{ height: "calc(100vh - var(--ifm-navbar-height))" }}>
           <noscript>You need to enable JavaScript to run this app.</noscript>
         </div>
       </Layout>
