@@ -974,7 +974,7 @@ const styles = {
       height: "calc(100% - 38px)", // 38px is babel-version tab's height
       minWidth: "18rem",
       [`& .${nestedCloseButton}`]: {
-        right: "-2rem",
+        right: "-1.5rem",
       },
     },
 
@@ -995,19 +995,19 @@ const styles = {
     color: colors.inverseForegroundLight,
 
     [media.large]: {
-      height: "5rem",
-      width: "3rem",
-      top: "calc(50% - 3rem)",
-      borderTopRightRadius: "5rem",
-      borderBottomRightRadius: "5rem",
+      height: "4rem",
+      width: "2.5rem",
+      top: "calc(50% - 2.5rem)",
+      borderTopRightRadius: "4rem",
+      borderBottomRightRadius: "4rem",
     },
 
     [media.mediumAndDown]: {
-      height: "3rem",
-      width: "5rem",
-      left: "calc(50% - 3rem)",
-      borderBottomLeftRadius: "5rem",
-      borderBottomRightRadius: "5rem",
+      height: "2.5rem",
+      width: "4rem",
+      left: "calc(50% - 2.5rem)",
+      borderBottomLeftRadius: "4rem",
+      borderBottomRightRadius: "4rem",
     },
   }),
   closeButtonIcon: css({
