@@ -134,7 +134,7 @@ export const persistedStateToPresetsOptions = (
     decoratorsVersion,
     decoratorsBeforeExport:
       !decoratorsLegacy && !!persistedState.decoratorsBeforeExport,
-    pipelineProposal: persistedState.pipelineProposal || "minimal",
+    pipelineProposal: persistedState.pipelineProposal || "hack",
     reactRuntime: persistedState.reactRuntime || "automatic",
   };
 };

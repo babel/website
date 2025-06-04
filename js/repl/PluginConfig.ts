@@ -118,7 +118,7 @@ const replDefaults: ReplState = {
   reactRuntime: "automatic",
   decoratorsVersion: "2023-11",
   decoratorsBeforeExport: false,
-  pipelineProposal: "minimal",
+  pipelineProposal: "hack",
   externalPlugins: "",
 };
 
