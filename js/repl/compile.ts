@@ -54,7 +54,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   let compileErrorMessage = null;
   let sourceMap = null;
   let useBuiltIns: false | "entry" | "usage" = false;
-  let corejs = "3.21";
+  let corejs = "3.42";
   const transitions = new Transitions();
   const meta = {
     compiledSize: 0,

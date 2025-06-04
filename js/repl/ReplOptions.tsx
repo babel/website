@@ -601,8 +601,9 @@ class ExpandedContainer extends Component<Props, State> {
                     runtimePolyfillState.isEnabled
                   }
                 >
-                  <option value="2">core-js 2</option>
+                  <option value="3.42">core-js 3.42</option>
                   <option value="3.21">core-js 3.21</option>
+                  <option value="2">core-js 2</option>
                 </select>
                 <select
                   value={envConfig.builtIns + ""}
@@ -833,7 +834,6 @@ class ExpandedContainer extends Component<Props, State> {
   _onPresetOptionChange =
     (type: string, getValue: (target: any) => any) =>
     (event: ChangeEvent<any>) => {
-      console.log("CHANGE", type, getValue(event.target));
       this.props.onPresetOptionChange(type, getValue(event.target));
     };
 
