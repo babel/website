@@ -490,9 +490,9 @@ class ExpandedContainer extends Component<Props, State> {
                 />
               </PresetOption>
               <PresetOption
-                when={isStageEnabled(1)}
+                when={isStageEnabled(2)}
                 option="pipelineProposal"
-                presets={getStages(1)}
+                presets={getStages(2)}
               >
                 <span className={styles.presetsOptionsLabel}>
                   Pipeline proposal
