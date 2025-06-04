@@ -91,12 +91,12 @@ const GetStarted = () => {
 };
 
 const SponsorTier = (props) => {
-  let { min, max } = props;
+  const { min, max } = props;
   const { siteConfig } = useDocusaurusContext();
   const { customFields } = siteConfig;
 
   const tierSponsors = customFields.sponsors.filter((sponsor) => {
-    let value = Math.max(sponsor.monthly || 0, (sponsor.yearly || 0) / 12);
+    const value = Math.max(sponsor.monthly || 0, (sponsor.yearly || 0) / 12);
     return +value >= min && (!max || (max && +value < max));
   });
   return (

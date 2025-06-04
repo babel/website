@@ -33,23 +33,25 @@ function loadYaml(fsPath) {
   return parseYaml(fs.readFileSync(path.join(__dirname, fsPath), "utf8"));
 }
 
-const users = loadYaml("./data/users.yml").map(user => ({
+const users = loadYaml("./data/users.yml").map((user) => ({
   pinned: user.pinned,
   caption: user.name,
   infoLink: user.url,
   image: `/img/users/${user.logo}`,
 }));
 
-const sponsorsManual = (loadYaml("./data/sponsors.yml") || []).map(sponsor => ({
-  ...sponsor,
-  image: sponsor.image || path.join("/img/sponsors/", sponsor.logo),
-}));
+const sponsorsManual = (loadYaml("./data/sponsors.yml") || []).map(
+  (sponsor) => ({
+    ...sponsor,
+    image: sponsor.image || path.join("/img/sponsors/", sponsor.logo),
+  })
+);
 const sponsorsDownloaded = require(path.join(__dirname, "/data/sponsors.json"));
 
 const sponsors = [
   ...sponsorsDownloaded
-    .filter(sponsor => sponsor.slug !== "github-sponsors")
-    .map(sponsor => {
+    .filter((sponsor) => sponsor.slug !== "github-sponsors")
+    .map((sponsor) => {
       let website = sponsor.website;
       if (typeof website == "string") {
         website = url.parse(website).protocol ? website : `http://${website}`;
@@ -79,7 +81,7 @@ const team = loadYaml("./data/team.yml");
 const tools = loadYaml("./data/tools.yml");
 const setupBabelrc = loadMD("./data/tools/setup.md");
 
-toolsMD.forEach(tool => {
+toolsMD.forEach((tool) => {
   tool.install = loadMD(`${tool.path}/install.md`);
   tool.usage = loadMD(`${tool.path}/usage.md`);
 });
@@ -237,11 +239,7 @@ const siteConfig = {
         { to: "docs/", label: "Docs", position: "right" },
         { to: "setup", label: "Setup", position: "right" },
         {
-          target: "_top",
-          href:
-            process.env.ENV === "development"
-              ? "http://localhost:3000/repl"
-              : `/repl`,
+          to: "repl",
           label: "Try it out",
           position: "right",
         },

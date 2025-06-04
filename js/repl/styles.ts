@@ -19,11 +19,6 @@ const lightColors = {
   infoBackground: "#fffbe5",
   infoBorder: "#fff5c2",
   infoForeground: "#5c3c00",
-
-  selectBackground: "#2D3035",
-  selectHover: "#32353A",
-
-  textareaForeground: "#323330",
 };
 
 const darkColors = {
@@ -37,11 +32,6 @@ const darkColors = {
 
   inverseForegroundLight: "#838C9B",
   inverseForeground: "#A7ABB4",
-
-  selectBackground: "#3F4248",
-  selectHover: "#43474D",
-
-  textareaForeground: "#323330",
 };
 
 const media = {
