@@ -120,7 +120,8 @@ export default function compile(code: string, config: CompileConfig): Return {
     if (
       envConfig.isBugfixesEnabled &&
       Babel.version &&
-      compareVersions(Babel.version, "7.9.0") !== -1
+      compareVersions(Babel.version, "7.9.0") !== -1 &&
+      compareVersions(Babel.version, "8.0.0") < 0
     ) {
       presetEnvOptions.bugfixes = envConfig.isBugfixesEnabled;
     }

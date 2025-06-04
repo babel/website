@@ -296,7 +296,7 @@ class ExpandedContainer extends Component<Props, State> {
     }
 
     const isBugfixesSupported =
-      babelVersion && compareVersions(babelVersion, "7.9.0") !== -1;
+      babelVersion && compareVersions(babelVersion, "7.9.0") !== -1 && compareVersions(babelVersion, "8.0.0") < 0;
 
     return (
       <div className={styles.expandedContainer}>
