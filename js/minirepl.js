@@ -3,7 +3,12 @@ import debounce from "lodash.debounce";
 
 const miniReplExamples = [
   "/(?i:a)b/",
-  'using Flavortown = from(#["Guy Fieri"]);',
+  'using Flavortown = from(["Guy Fieri"]);',
+`Object.entries(payload)
+  .map(
+    ([key, value]) => [key, value.trim()]
+  )
+  |> Object.fromEntries(%);`,
   // use next(yourTurn) = throw "some code in here!"
   // when we support extractors
   'let yourTurn = throw "some code in here!"',
@@ -114,13 +119,13 @@ function compileCode(sourceEditor, targetEditor) {
       presets: [
         "react",
         "typescript",
-        ["env", { targets: "defaults, not ie 11, not ie_mob 11", loose: true }],
+        ["env", { targets: "defaults", loose: true }],
       ],
       plugins: [
         ["external-helpers", { helperVersion: "7.100.0" }],
         // TODO: remove this when preset-env supports it
         ["transform-explicit-resource-management"],
-        ["proposal-record-and-tuple"],
+        ["proposal-pipeline-operator", { proposal: "hack", topicToken: "%" }],
         ["proposal-throw-expressions"],
       ],
       filename: "repl.tsx",
