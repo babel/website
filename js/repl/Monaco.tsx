@@ -55,6 +55,7 @@ const asyncPromise = (async function () {
 
 monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
   jsx: monaco.languages.typescript.JsxEmit.React,
+  target: monaco.languages.typescript.ScriptTarget.Latest,
 });
 
 monaco.languages.registerTokensProviderFactory("javascript", {
