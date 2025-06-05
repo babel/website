@@ -82,7 +82,6 @@ export function Monaco({
   // eslint-disable-next-line prefer-const
   let [editor, setEditor] =
     React.useState<monaco.editor.IStandaloneCodeEditor | null>(null);
-  const [rect, setRect] = React.useState<DOMRect | null>(null);
 
   useEffect(() => {
     setEditor(
@@ -153,18 +152,26 @@ export function Monaco({
   }, [fastMode]);
 
   useEffect(() => {
+    let rect: {
+      width: number;
+      height: number;
+    } | null = null;
     const server = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const contentRect = entry.contentRect;
-        setRect(contentRect);
-        if (
-          !rect ||
-          rect.width !== contentRect.width ||
-          rect.height !== contentRect.height
-        ) {
-          editor.layout();
+      setTimeout(() => {
+        for (const entry of entries) {
+          let { width, height } = entry.contentRect;
+          width = Math.floor(width);
+          height = Math.floor(height);
+
+          if (!rect || rect.width !== width || rect.height !== height) {
+            rect = {
+              width,
+              height,
+            };
+            editor.layout();
+          }
         }
-      }
+      }, 0);
     });
     server.observe(container.current);
     return () => {
