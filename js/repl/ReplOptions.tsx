@@ -296,7 +296,7 @@ class ExpandedContainer extends Component<Props, State> {
     }
 
     const isBugfixesSupported =
-      babelVersion && compareVersions(babelVersion, "7.9.0") !== -1;
+      babelVersion && compareVersions(babelVersion, "7.9.0") !== -1 && compareVersions(babelVersion, "8.0.0") < 0;
 
     return (
       <div className={styles.expandedContainer}>
@@ -490,9 +490,9 @@ class ExpandedContainer extends Component<Props, State> {
                 />
               </PresetOption>
               <PresetOption
-                when={isStageEnabled(1)}
+                when={isStageEnabled(2)}
                 option="pipelineProposal"
-                presets={getStages(1)}
+                presets={getStages(2)}
               >
                 <span className={styles.presetsOptionsLabel}>
                   Pipeline proposal
@@ -601,8 +601,9 @@ class ExpandedContainer extends Component<Props, State> {
                     runtimePolyfillState.isEnabled
                   }
                 >
-                  <option value="2">core-js 2</option>
+                  <option value="3.42">core-js 3.42</option>
                   <option value="3.21">core-js 3.21</option>
+                  <option value="2">core-js 2</option>
                 </select>
                 <select
                   value={envConfig.builtIns + ""}
@@ -833,7 +834,6 @@ class ExpandedContainer extends Component<Props, State> {
   _onPresetOptionChange =
     (type: string, getValue: (target: any) => any) =>
     (event: ChangeEvent<any>) => {
-      console.log("CHANGE", type, getValue(event.target));
       this.props.onPresetOptionChange(type, getValue(event.target));
     };
 

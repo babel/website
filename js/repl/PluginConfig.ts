@@ -63,7 +63,7 @@ const envPresetDefaults = {
     default: "usage",
   },
   corejs: {
-    default: "3.21",
+    default: "3.42",
   },
   modules: {
     default: false,
@@ -118,7 +118,7 @@ const replDefaults: ReplState = {
   reactRuntime: "automatic",
   decoratorsVersion: "2023-11",
   decoratorsBeforeExport: false,
-  pipelineProposal: "minimal",
+  pipelineProposal: "hack",
   externalPlugins: "",
 };
 

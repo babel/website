@@ -54,7 +54,7 @@ export default function compile(code: string, config: CompileConfig): Return {
   let compileErrorMessage = null;
   let sourceMap = null;
   let useBuiltIns: false | "entry" | "usage" = false;
-  let corejs = "3.21";
+  let corejs = "3.42";
   const transitions = new Transitions();
   const meta = {
     compiledSize: 0,
@@ -120,7 +120,8 @@ export default function compile(code: string, config: CompileConfig): Return {
     if (
       envConfig.isBugfixesEnabled &&
       Babel.version &&
-      compareVersions(Babel.version, "7.9.0") !== -1
+      compareVersions(Babel.version, "7.9.0") !== -1 &&
+      compareVersions(Babel.version, "8.0.0") < 0
     ) {
       presetEnvOptions.bugfixes = envConfig.isBugfixesEnabled;
     }
