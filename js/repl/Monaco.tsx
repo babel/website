@@ -76,7 +76,6 @@ export function Monaco({
   fileSize,
   lineWrapping,
   errorMessage,
-  fastMode,
 }: Props) {
   const container = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line prefer-const
@@ -92,7 +91,17 @@ export function Monaco({
         fontSize: 14,
         // https://github.com/microsoft/monaco-editor/issues/4311
         // automaticLayout: true,
-        model: null,
+        model: onChange
+          ? monaco.editor.createModel(
+              code || "",
+              "typescript",
+              monaco.Uri.file("input/input.tsx")
+            )
+          : monaco.editor.createModel(
+              code || "",
+              "javascript",
+              monaco.Uri.file("output/output.jsx")
+            ),
         placeholder,
         scrollBeyondLastLine: false,
         minimap: {
@@ -110,46 +119,20 @@ export function Monaco({
       });
     }
 
-    return () => {
-      editor.dispose();
-    };
-  }, []);
-
-  useEffect(() => {
-    editor.getModel()?.dispose();
-    editor.setModel(
-      fastMode
-        ? monaco.editor.createModel(
-            code || "",
-            "javascript",
-            monaco.Uri.file("output/output.jsx")
-          )
-        : monaco.editor.createModel(
-            code || "",
-            "typescript",
-            monaco.Uri.file(onChange ? "input/input.tsx" : "output/output.tsx")
-          )
-    );
-  }, [fastMode]);
-
-  useEffect(() => {
     function listener() {
-      if (fastMode) {
-        editor.updateOptions({
-          theme: preferDarkColorScheme() ? "vs-dark" : "vs",
-        });
-      } else {
-        editor.updateOptions({
-          theme: preferDarkColorScheme() ? "dark-plus" : "light-plus",
-        });
-      }
+      editor.updateOptions({
+        theme: preferDarkColorScheme() ? "dark-plus" : "light-plus",
+      });
     }
     listener();
     addEventListener("storage", listener);
+
     return () => {
       removeEventListener("storage", listener);
+
+      editor.dispose();
     };
-  }, [fastMode]);
+  }, []);
 
   useEffect(() => {
     let rect: {
