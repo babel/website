@@ -76,13 +76,11 @@ export function Monaco({
   fileSize,
   lineWrapping,
   errorMessage,
-  fastMode,
 }: Props) {
   const container = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line prefer-const
   let [editor, setEditor] =
     React.useState<monaco.editor.IStandaloneCodeEditor | null>(null);
-  const [rect, setRect] = React.useState<DOMRect | null>(null);
 
   useEffect(() => {
     setEditor(
@@ -93,7 +91,17 @@ export function Monaco({
         fontSize: 14,
         // https://github.com/microsoft/monaco-editor/issues/4311
         // automaticLayout: true,
-        model: null,
+        model: onChange
+          ? monaco.editor.createModel(
+              code || "",
+              "typescript",
+              monaco.Uri.file("input/input.tsx")
+            )
+          : monaco.editor.createModel(
+              code || "",
+              "javascript",
+              monaco.Uri.file("output/output.jsx")
+            ),
         placeholder,
         scrollBeyondLastLine: false,
         minimap: {
@@ -111,60 +119,42 @@ export function Monaco({
       });
     }
 
+    function listener() {
+      editor.updateOptions({
+        theme: preferDarkColorScheme() ? "dark-plus" : "light-plus",
+      });
+    }
+    listener();
+    addEventListener("storage", listener);
+
     return () => {
+      removeEventListener("storage", listener);
+
       editor.dispose();
     };
   }, []);
 
   useEffect(() => {
-    editor.getModel()?.dispose();
-    editor.setModel(
-      fastMode
-        ? monaco.editor.createModel(
-            code || "",
-            "javascript",
-            monaco.Uri.file("output/output.jsx")
-          )
-        : monaco.editor.createModel(
-            code || "",
-            "typescript",
-            monaco.Uri.file(onChange ? "input/input.tsx" : "output/output.tsx")
-          )
-    );
-  }, [fastMode]);
-
-  useEffect(() => {
-    function listener() {
-      if (fastMode) {
-        editor.updateOptions({
-          theme: preferDarkColorScheme() ? "vs-dark" : "vs",
-        });
-      } else {
-        editor.updateOptions({
-          theme: preferDarkColorScheme() ? "dark-plus" : "light-plus",
-        });
-      }
-    }
-    listener();
-    addEventListener("storage", listener);
-    return () => {
-      removeEventListener("storage", listener);
-    };
-  }, [fastMode]);
-
-  useEffect(() => {
+    let rect: {
+      width: number;
+      height: number;
+    } | null = null;
     const server = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const contentRect = entry.contentRect;
-        setRect(contentRect);
-        if (
-          !rect ||
-          rect.width !== contentRect.width ||
-          rect.height !== contentRect.height
-        ) {
-          editor.layout();
+      setTimeout(() => {
+        for (const entry of entries) {
+          let { width, height } = entry.contentRect;
+          width = Math.floor(width);
+          height = Math.floor(height);
+
+          if (!rect || rect.width !== width || rect.height !== height) {
+            rect = {
+              width,
+              height,
+            };
+            editor.layout();
+          }
         }
-      }
+      }, 0);
     });
     server.observe(container.current);
     return () => {
