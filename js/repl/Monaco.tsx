@@ -151,7 +151,7 @@ export function Monaco({
               width,
               height,
             };
-            editor.layout();
+            editor.layout(rect);
           }
         }
       }, 0);

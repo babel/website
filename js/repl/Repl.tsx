@@ -769,7 +769,6 @@ const styles = {
   }),
   repl: css`
     height: 100%;
-    height: calc(100vh - 50px); /* 50px is the header's height */
     width: 100%;
     display: flex;
     flex-direction: row;
