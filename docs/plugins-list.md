@@ -24,6 +24,10 @@ sidebar_label: Plugins List
 - [throw-expressions](plugin-proposal-throw-expressions.md)
 - [record-and-tuple](plugin-proposal-record-and-tuple.md)
 
+### ES2026
+
+- [explicit-resource-management](./plugin-transform-explicit-resource-management.md)
+
 ### ES2025
 
 - [duplicate-named-capturing-groups-regex](plugin-transform-duplicate-named-capturing-groups-regex.md)
