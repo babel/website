@@ -1,7 +1,12 @@
-const parseYaml = require("js-yaml").load;
-const path = require("path");
-const fs = require("fs");
-const url = require("url");
+import path from "path";
+import fs from "fs";
+import url from "url";
+import { createRequire } from "module";
+
+import jsYaml from "js-yaml";
+import type { Config, Plugin } from "@docusaurus/types";
+
+const require = createRequire(import.meta.url);
 
 // env vars from the cli are always strings, so !!ENV_VAR returns true for "false"
 function bool(value) {
@@ -30,7 +35,7 @@ function loadMD(fsPath) {
 }
 
 function loadYaml(fsPath) {
-  return parseYaml(fs.readFileSync(path.join(__dirname, fsPath), "utf8"));
+  return jsYaml.load(fs.readFileSync(path.join(__dirname, fsPath), "utf8"));
 }
 
 const users = loadYaml("./data/users.yml").map((user) => ({
@@ -105,6 +110,7 @@ function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
       if (node.type === "containerDirective") {
         const directiveLabel = node.name;
         if (directiveLabel === "babel8" || directiveLabel === "babel7") {
+          // @ts-expect-error expected
           if ((directiveLabel === "babel8") ^ renderBabel8) {
             // remove anything between ":::babel[78]" and ":::"
             children.splice(index, 1);
@@ -122,7 +128,19 @@ function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
   };
 }
 
-const siteConfig = {
+function docusaurusReplRoutePlugin() {
+  return {
+    name: "docusaurus-route-plugin",
+    async contentLoaded({ actions }) {
+      actions.addRoute({
+        path: "/repl/",
+        component: "@site/src/pages/repl",
+      });
+    },
+  } satisfies Plugin;
+}
+
+const siteConfig: Config = {
   future: {
     // See https://docusaurus.io/blog/releases/3.6
     experimental_faster: true,
@@ -143,6 +161,7 @@ const siteConfig = {
     toolsMD,
     setupBabelrc,
   },
+  plugins: [docusaurusReplRoutePlugin],
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -284,4 +303,4 @@ const siteConfig = {
   ],
 };
 
-module.exports = siteConfig;
+export default siteConfig;
