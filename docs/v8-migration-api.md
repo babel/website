@@ -43,6 +43,38 @@ Check out the [Babel 8 migration guide](v8-migration.md) first to learn about us
   For end users utilizing Babel plugins that rely on the legacy `import()` AST, it is possible to set `createImportExpressions` to `false`. Note that the Babel 7 `import()` AST is now considered
   deprecated, it does not support new ES features such as [Source Phrase Imports](https://tc39.es/proposal-source-phase-imports/). We will remove the `createImportExpressions` parser option in Babel 9.
 
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- Use `bigint` for `BigIntLiteral.value`, rather than a string([#17378](https://github.com/babel/babel/pull/17378))
+
+  ```js
+  // Example input
+  0xff01_0000_0000_0000_0000_0000_0000_0001n
+
+  // AST in Babel 7
+  {
+    type: "BigIntLiteral",
+    value: "0xff010000000000000000000000000001",
+    extra: {
+      rawValue: "0xff010000000000000000000000000001",
+      raw: "0xff01_0000_0000_0000_0000_0000_0000_0001n",
+    }
+  }
+
+  // AST in Babel 8
+  {
+    type: "BigIntLiteral",
+    value: 338958331222012082418099330867817086977n,
+    extra: {
+      rawValue: 338958331222012082418099330867817086977n,
+      raw: "0xff01_0000_0000_0000_0000_0000_0000_0001n"
+    }
+  }
+  ```
+
+  __Migration__: This change aligns with how we handle `NumericLiteral`. If you want to access string representation in Babel 7, call the `toString()` bigint instance method.
+  Note that the builtin JavaScript method `JSON.stringify` can not serialize `bigint`. If you want to store the Babel 8 AST as JSON, you can [provide your own `bigint` serializer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/BigInt_not_serializable).
+
 ### TypeScript nodes
 
 Most of the changes to our TypeScript-specific AST nodes are to reduce the differences with the AST shape of the `@typescript-eslint` project. This will make it easier to write ESLint rules that, when not depending on type information, can work both with `@typescript-eslint/parser` and `@babel/eslint-parser`.
