@@ -45,7 +45,7 @@ Check out the [Babel 8 migration guide](v8-migration.md) first to learn about us
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- Use `bigint` for `BigIntLiteral.value`, rather than a string([#17378](https://github.com/babel/babel/pull/17378))
+- <a name="ast-bigint"></a> Use `bigint` for `BigIntLiteral.value`, rather than a string([#17378](https://github.com/babel/babel/pull/17378))
 
   ```js
   // Example input
@@ -1070,6 +1070,19 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 - Remove `TSParameterProperty` from the `LVal` alias ([#17391](https://github.com/babel/babel/pull/17391))
 
   An `LVal` node represents valid nodes as the left hand side (LHS) of an assignment expression. A `TSParameterProperty` is a special function parameter type allowed only in a class constructor. Since `TSParameterProperty` can not be the LHS, `t.isLVal(t.tsParameterProperty(...))` will return `false` in Babel 8.
+
+- Require a `bigint` as the only argument of `t.bigIntLiteral` ([#17378](https://github.com/babel/babel/pull/17378))
+
+  This is due to the corresponding [AST shape change](#ast-bigint).
+
+  __Migration__: Pass the `bigint` primitive to the `bigIntLiteral` builder. Support of `bigint` in the `bigIntLiteral` builder starts from Babel 7.28, you can begin the migration before you upgrade to Babel 8
+
+  ```diff title="my-babel-codemod.js"
+    t.bigIntLiteral(
+-    "0xff020000000000000000000000000002"
++    0xff020000000000000000000000000002n
+    )
+  ```
 
 - Require an `Identifier` node as the third argument of `t.tsTypeParameter` ([#12829](https://github.com/babel/babel/pull/12829))
 
