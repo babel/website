@@ -4,6 +4,10 @@ title: "@babel/plugin-transform-explicit-resource-management"
 sidebar_label: explicit-resource-management
 ---
 
+:::info
+This plugin is included in `@babel/preset-env`, in [ES2026](https://github.com/tc39/proposals/blob/master/finished-proposals.md).
+:::
+
 This plugin enables Babel to transform using declarations `using handler = await read();`.
 
 ## Example
