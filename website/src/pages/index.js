@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "../../static/css/index.css";
 import "../../static/css/minirepl.css";
 import Link from "@docusaurus/Link";
-import BABEL_MINI_REPL from "../../../js/minirepl.js";
+import BABEL_MINI_REPL from "../components/minirepl.js";
 import Translate from "@docusaurus/Translate";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -211,8 +211,9 @@ const Hero = ({ language }) => (
 
       <div className="hero__announcement">
         <span>
-          <strong>Babel 8 Beta is out!</strong> Go check our {" "}
-          <Link to="/blog/2025/05/30/babel-8-beta">blog post</Link> for more details!
+          <strong>Babel 8 Beta is out!</strong> Go check our{" "}
+          <Link to="/blog/2025/05/30/babel-8-beta">blog post</Link> for more
+          details!
         </span>
       </div>
 
