@@ -1,12 +1,11 @@
+import { basicSetup } from "codemirror";
+import { oneDark } from "@codemirror/theme-one-dark";
+import { tsxLanguage } from "@codemirror/lang-javascript";
+import { EditorState, Compartment } from "@codemirror/state";
 import {
-  Compartment,
-  EditorState,
-  basicSetup,
   EditorView,
   placeholder as placeholderExtension,
-  oneDark,
-  tsxLanguage,
-} from "../cm6.mjs";
+} from "@codemirror/view";
 // Only use type imports for @codemirror/* so that CodeMirror.tsx can share
 // the cm6.mjs with the mini-repl.js component
 import { type EditorState as EditorStateType } from "@codemirror/state";

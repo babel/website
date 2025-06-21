@@ -130,6 +130,7 @@ export function Monaco({
     return () => {
       removeEventListener("storage", listener);
 
+      editor.getModel().dispose();
       editor.dispose();
     };
   }, []);

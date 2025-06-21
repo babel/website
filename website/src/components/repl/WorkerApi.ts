@@ -4,7 +4,7 @@ import { registerPromiseWorkerApi } from "./WorkerUtils";
 import type { CompileConfig, PluginState } from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-const WorkerSource = require("worker-loader?inline=no-fallback&esModule=false!./Worker");
+const WorkerSource = require("worker-rspack-loader?inline=no-fallback&esModule=false!./Worker");
 
 type PromiseWorkerApi = {
   postMessage(message: any): Promise<any>;

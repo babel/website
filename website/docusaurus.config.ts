@@ -161,7 +161,7 @@ const siteConfig: Config = {
     toolsMD,
     setupBabelrc,
   },
-  plugins: [docusaurusReplRoutePlugin],
+  plugins: [docusaurusReplRoutePlugin, require("./webpack.plugin.js")],
   presets: [
     [
       "@docusaurus/preset-classic",
