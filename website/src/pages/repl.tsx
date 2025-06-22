@@ -1,7 +1,9 @@
 import "core-js";
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import Layout from "@theme/Layout";
-import Repl from "../components/repl/Repl";
+import BrowserOnly from "@docusaurus/BrowserOnly";
+
+const Repl = lazy(() => import("../components/repl/Repl"));
 
 export default function () {
   return (
@@ -11,7 +13,13 @@ export default function () {
           id="root"
           style={{ height: "calc(100vh - var(--ifm-navbar-height))" }}
         >
-          <Repl></Repl>
+          <BrowserOnly>
+            {() => (
+              <Suspense fallback={<div>Loading...</div>}>
+                <Repl />
+              </Suspense>
+            )}
+          </BrowserOnly>
         </div>
       </Layout>
     </div>
