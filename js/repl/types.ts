@@ -104,7 +104,7 @@ export type PluginStateMap = {
   [name: string]: PluginState;
 };
 
-export type SourceType = "script" | "module" | "unambiguous";
+export type SourceType = "script" | "module" | "commonjs" | "unambiguous";
 
 export type CompileConfig = {
   envConfig: EnvConfig | undefined | null;
