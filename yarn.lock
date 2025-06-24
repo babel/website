@@ -5410,7 +5410,6 @@ __metadata:
     shiki: "npm:^3.2.1"
     typescript: "npm:^5.8.3"
     typescript-eslint: "npm:^8.29.1"
-    worker-rspack-loader: "npm:^3.1.2"
   languageName: unknown
   linkType: soft
 
@@ -14884,7 +14883,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"schema-utils@npm:^3.0.0, schema-utils@npm:^3.1.0, schema-utils@npm:^3.1.1, schema-utils@npm:^3.2.0":
+"schema-utils@npm:^3.0.0, schema-utils@npm:^3.1.1, schema-utils@npm:^3.2.0":
   version: 3.3.0
   resolution: "schema-utils@npm:3.3.0"
   dependencies:
@@ -17108,24 +17107,6 @@ __metadata:
   version: 2.0.1
   resolution: "wildcard@npm:2.0.1"
   checksum: 10/e0c60a12a219e4b12065d1199802d81c27b841ed6ad6d9d28240980c73ceec6f856771d575af367cbec2982d9ae7838759168b551776577f155044f5a5ba843c
-  languageName: node
-  linkType: hard
-
-"worker-rspack-loader@npm:^3.1.2":
-  version: 3.1.2
-  resolution: "worker-rspack-loader@npm:3.1.2"
-  dependencies:
-    loader-utils: "npm:^2.0.0"
-    schema-utils: "npm:^3.1.0"
-  peerDependencies:
-    "@rspack/core": 0.x || 1.x
-    webpack: ^5.0.0
-  peerDependenciesMeta:
-    "@rspack/core":
-      optional: true
-    webpack:
-      optional: true
-  checksum: 10/07035cd9896f994f18bc503a3b20785d378978dc4d1d0dbf70528020a7dd9088625a55b464e1915f9fc44f764ed9edba84be7474e42fb7c9d2c853abd8286215
   languageName: node
   linkType: hard
 

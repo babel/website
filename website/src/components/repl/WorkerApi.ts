@@ -3,9 +3,6 @@ import { registerPromiseWorkerApi } from "./WorkerUtils";
 
 import type { CompileConfig, PluginState } from "./types";
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const WorkerSource = require("worker-rspack-loader?inline=no-fallback&esModule=false!./Worker");
-
 type PromiseWorkerApi = {
   postMessage(message: any): Promise<any>;
 };
@@ -27,7 +24,9 @@ type PluginShape = {
  * Interfaces with a web worker to lazy-loads plugins and compile code.
  */
 export default class WorkerApi {
-  _worker: PromiseWorkerApi = registerPromiseWorkerApi(new WorkerSource());
+  _worker: PromiseWorkerApi = registerPromiseWorkerApi(
+    new Worker(new URL("./Worker", import.meta.url))
+  );
 
   compile(code: string, config: CompileConfig): Promise<CompileResult> {
     return this._worker
