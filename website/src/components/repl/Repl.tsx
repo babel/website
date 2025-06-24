@@ -11,7 +11,6 @@ import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
 import loadBundle from "./loadBundle";
 import loadPlugin from "./loadPlugin";
-import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import TimeTravelSlider from "./TimeTravelSlider";
 import {
   babelConfig,
@@ -35,7 +34,7 @@ import {
 } from "./replUtils";
 import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
-import { loadingStyles, media } from "./styles";
+import { media } from "./styles";
 
 import type {
   BabelPresets,
@@ -49,6 +48,7 @@ import type {
   PluginStateMap,
   SourceType,
 } from "./types";
+import ReplLoading from "./ReplLoading";
 
 type Props = object;
 
@@ -217,16 +217,10 @@ class Repl extends React.Component<Props, State> {
       }
 
       return (
-        <div className={loadingStyles.loader}>
-          <div className={loadingStyles.loaderContent}>
-            {message}
-            {state.babel.isLoading && (
-              <PresetLoadingAnimation
-                className={loadingStyles.loadingAnimation}
-              />
-            )}
-          </div>
-        </div>
+        <ReplLoading
+          message={message}
+          hasError={state.babel.didError}
+        ></ReplLoading>
       );
     }
 

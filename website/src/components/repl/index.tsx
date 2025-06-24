@@ -1,7 +1,6 @@
 import React, { lazy } from "react";
-import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import BrowserOnly from "@docusaurus/BrowserOnly";
-import { loadingStyles } from "./styles";
+import ReplLoading from "./ReplLoading";
 
 const Repl = lazy(() => import("./Repl"));
 
@@ -10,18 +9,7 @@ export default () => {
     <BrowserOnly>
       {() => {
         return (
-          <React.Suspense
-            fallback={
-              <div className={loadingStyles.loader}>
-                <div className={loadingStyles.loaderContent}>
-                  Loading Babel...
-                  <PresetLoadingAnimation
-                    className={loadingStyles.loadingAnimation}
-                  />
-                </div>
-              </div>
-            }
-          >
+          <React.Suspense fallback={<ReplLoading />}>
             <Repl />
           </React.Suspense>
         );

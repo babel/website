@@ -1,5 +1,4 @@
 import { preferDarkColorScheme } from "./Utils";
-import { css } from "@emotion/css";
 
 const lightColors = {
   // Inspired by: Chrome's console.error() colors
@@ -44,23 +43,4 @@ const media = {
 };
 const colors = preferDarkColorScheme() ? darkColors : lightColors;
 
-const loadingStyles = {
-  loader: css({
-    alignItems: "center",
-    background: colors.inverseBackgroundDark,
-    color: colors.inverseForegroundLight,
-    display: "flex",
-    height: "100%",
-    justifyContent: "center",
-  }),
-  loadingAnimation: css({
-    justifyContent: "center",
-    margin: "2rem 0 0 0",
-  }),
-  loaderContent: css({
-    margin: "auto",
-    textAlign: "center",
-  }),
-};
-
-export { colors, media, loadingStyles };
+export { colors, media };
