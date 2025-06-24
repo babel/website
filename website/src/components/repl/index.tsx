@@ -14,7 +14,7 @@ export default () => {
             fallback={
               <div className={loadingStyles.loader}>
                 <div className={loadingStyles.loaderContent}>
-                  "Loading Babel..."
+                  Loading Babel...
                   <PresetLoadingAnimation
                     className={loadingStyles.loadingAnimation}
                   />
