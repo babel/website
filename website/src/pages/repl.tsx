@@ -1,25 +1,23 @@
 import "core-js";
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import Layout from "@theme/Layout";
-import BrowserOnly from "@docusaurus/BrowserOnly";
+import Repl from "../components/repl/index";
 
-const Repl = lazy(() => import("../components/repl/Repl"));
+declare module "@theme/Layout" {
+  export interface Props {
+    readonly noFooter?: string;
+  }
+}
 
 export default function () {
   return (
     <div>
-      <Layout>
+      <Layout noFooter="true">
         <div
           id="root"
           style={{ height: "calc(100vh - var(--ifm-navbar-height))" }}
         >
-          <BrowserOnly>
-            {() => (
-              <Suspense fallback={<div>Loading...</div>}>
-                <Repl />
-              </Suspense>
-            )}
-          </BrowserOnly>
+          <Repl />
         </div>
       </Layout>
     </div>

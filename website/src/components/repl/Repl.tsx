@@ -35,7 +35,7 @@ import {
 } from "./replUtils";
 import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
-import { colors, media } from "./styles";
+import { loadingStyles, media } from "./styles";
 
 import type {
   BabelPresets,
@@ -217,11 +217,13 @@ class Repl extends React.Component<Props, State> {
       }
 
       return (
-        <div className={styles.loader}>
-          <div className={styles.loaderContent}>
+        <div className={loadingStyles.loader}>
+          <div className={loadingStyles.loaderContent}>
             {message}
             {state.babel.isLoading && (
-              <PresetLoadingAnimation className={styles.loadingAnimation} />
+              <PresetLoadingAnimation
+                className={loadingStyles.loadingAnimation}
+              />
             )}
           </div>
         </div>
@@ -743,23 +745,7 @@ export default function ReplWithErrorBoundary() {
   );
 }
 
-const styles = {
-  loader: css({
-    alignItems: "center",
-    background: colors.inverseBackgroundDark,
-    color: colors.inverseForegroundLight,
-    display: "flex",
-    height: "100%",
-    justifyContent: "center",
-  }),
-  loadingAnimation: css({
-    justifyContent: "center",
-    margin: "2rem 0 0 0",
-  }),
-  loaderContent: css({
-    margin: "auto",
-    textAlign: "center",
-  }),
+export const styles = {
   codeMirrorPanel: css({
     flex: "0 0 50%",
     borderRight: `1px solid var(--ifm-scrollbar-track-background-color)`,
