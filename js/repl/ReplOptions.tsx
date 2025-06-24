@@ -363,6 +363,7 @@ class ExpandedContainer extends Component<Props, State> {
                 >
                   <option value="module">Module</option>
                   <option value="script">Script</option>
+                  <option value="commonjs">CommonJS</option>
                   <option value="unambiguous">Unambiguous</option>
                 </select>
               </label>
