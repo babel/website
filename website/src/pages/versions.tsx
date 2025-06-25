@@ -7,7 +7,7 @@ const Versions = () => {
   const { siteConfig } = useDocusaurusContext();
   const { customFields } = siteConfig;
   const latestVersion = versions[0];
-  const { repoUrl } = customFields;
+  const { repoUrl, v6Url } = customFields as any;
   return (
     <Layout>
       <div className="docMainWrapper wrapper">
@@ -17,7 +17,7 @@ const Versions = () => {
               <h2>{siteConfig.title + " Versions"}</h2>
             </header>
             <p>New versions of this project are released periodically.</p>
-            <a name="latest" />
+            <a id="latest" />
             <h3>Current version (Stable)</h3>
             <table className="versions">
               <tbody>
@@ -47,12 +47,12 @@ const Versions = () => {
             <p>This is the current stable version of the project.</p>
             {versions && versions.length > 1 && (
               <div>
-                <a name="archive" />
+                <a id="archive" />
                 <h3>Past Versions</h3>
                 <table className="versions">
                   <tbody>
                     {versions.map(
-                      version =>
+                      (version) =>
                         version !== latestVersion && (
                           <tr key={version}>
                             <th>{version}</th>
@@ -76,7 +76,7 @@ const Versions = () => {
                     <tr>
                       <th>6.26.3</th>
                       <td>
-                        <a href={customFields.v6Url}>Documentation</a>
+                        <a href={v6Url}>Documentation</a>
                       </td>
                       <td>
                         <a href={`${repoUrl}/releases/tag/v6.26.3`}>

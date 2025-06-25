@@ -11,6 +11,7 @@ import "../../static/css/error.css";
 function NotFound() {
   return (
     <Layout
+      // @ts-expect-error undocumented prop
       title={translate({
         id: "theme.NotFound.title",
         message: "Page Not Found",
@@ -18,8 +19,8 @@ function NotFound() {
     >
       <div className="error-page">
         <div className="error-message">
-          <div className=" error-message-container container">
-            <span>404 </span>
+          <div className="error-message-container container">
+            <span>404</span>
             <p>Page Not Found.</p>
           </div>
         </div>

@@ -7,26 +7,7 @@ import Translate from "@docusaurus/Translate";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Head from "@docusaurus/Head";
-
-class Button extends React.Component {
-  render() {
-    return (
-      <div className="pluginWrapper buttonWrapper">
-        <Link
-          className="button"
-          to={this.props.href}
-          target={this.props.target}
-        >
-          {this.props.children}
-        </Link>
-      </div>
-    );
-  }
-}
-
-Button.defaultProps = {
-  target: "_self",
-};
+import LinkButton from "../components/LinkButton";
 
 function waitUntilAceIsLoaded(callback) {
   if ("ace" in window) {
@@ -95,7 +76,7 @@ const SponsorTier = (props) => {
   const { siteConfig } = useDocusaurusContext();
   const { customFields } = siteConfig;
 
-  const tierSponsors = customFields.sponsors.filter((sponsor) => {
+  const tierSponsors = (customFields.sponsors as any[]).filter((sponsor) => {
     const value = Math.max(sponsor.monthly || 0, (sponsor.yearly || 0) / 12);
     return +value >= min && (!max || (max && +value < max));
   });
@@ -137,9 +118,9 @@ const SponsorTier = (props) => {
       </ul>
       {props.button ? (
         <PromoSection>
-          <Button href={props.button.link} target="_blank">
+          <LinkButton href={props.button.link} target="_blank">
             {props.button.title}
-          </Button>
+          </LinkButton>
         </PromoSection>
       ) : null}
     </div>
@@ -196,7 +177,7 @@ const HomeContainer = (props) => (
   </div>
 );
 
-const Hero = ({ language }) => (
+const Hero = () => (
   <div className="hero">
     <Link to="https://teespring.com/babel-christmas?pr=FLAVORTOWN">
       <div className="homepage-banner">Get Babel Holiday Apparel 👕</div>
@@ -218,30 +199,29 @@ const Hero = ({ language }) => (
       </div>
 
       <DummyMiniRepl />
-      <MiniRepl language={language} />
+      <MiniRepl />
     </div>
   </div>
 );
 
-const Index = ({ language }) => {
-  const { siteConfig } = useDocusaurusContext();
+const Index = () => {
   return (
-    <Layout title={siteConfig.title} description={siteConfig.tagline}>
+    <Layout>
       <Head>
         <script
           src="https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js"
-          defer=""
+          defer
         ></script>
       </Head>
 
       <div>
-        <Hero language={language} />
+        <Hero />
 
         <div className="mainContainer" style={{ padding: 0 }}>
           <HomeContainer>
-            <GetStarted language={language} />
+            <GetStarted />
           </HomeContainer>
-          <OpenCollectiveSponsors language={language} />
+          <OpenCollectiveSponsors />
         </div>
       </div>
     </Layout>

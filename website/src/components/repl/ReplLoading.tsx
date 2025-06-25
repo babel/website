@@ -34,7 +34,7 @@ export default ({
     <div className={styles.loader}>
       <div className={styles.loaderContent}>
         {message}
-        {hasError && (
+        {!hasError && (
           <PresetLoadingAnimation className={styles.loadingAnimation} />
         )}
       </div>
