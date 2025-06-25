@@ -11,7 +11,6 @@ import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
 import loadBundle from "./loadBundle";
 import loadPlugin from "./loadPlugin";
-import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import TimeTravelSlider from "./TimeTravelSlider";
 import {
   babelConfig,
@@ -35,7 +34,7 @@ import {
 } from "./replUtils";
 import WorkerApi from "./WorkerApi";
 import scopedEval from "./scopedEval";
-import { colors, media } from "./styles";
+import { media } from "./styles";
 
 import type {
   BabelPresets,
@@ -49,6 +48,7 @@ import type {
   PluginStateMap,
   SourceType,
 } from "./types";
+import ReplLoading from "./ReplLoading";
 
 type Props = object;
 
@@ -217,14 +217,10 @@ class Repl extends React.Component<Props, State> {
       }
 
       return (
-        <div className={styles.loader}>
-          <div className={styles.loaderContent}>
-            {message}
-            {state.babel.isLoading && (
-              <PresetLoadingAnimation className={styles.loadingAnimation} />
-            )}
-          </div>
-        </div>
+        <ReplLoading
+          message={message}
+          hasError={state.babel.didError}
+        ></ReplLoading>
       );
     }
 
@@ -743,23 +739,7 @@ export default function ReplWithErrorBoundary() {
   );
 }
 
-const styles = {
-  loader: css({
-    alignItems: "center",
-    background: colors.inverseBackgroundDark,
-    color: colors.inverseForegroundLight,
-    display: "flex",
-    height: "100%",
-    justifyContent: "center",
-  }),
-  loadingAnimation: css({
-    justifyContent: "center",
-    margin: "2rem 0 0 0",
-  }),
-  loaderContent: css({
-    margin: "auto",
-    textAlign: "center",
-  }),
+export const styles = {
   codeMirrorPanel: css({
     flex: "0 0 50%",
     borderRight: `1px solid var(--ifm-scrollbar-track-background-color)`,

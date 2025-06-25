@@ -1,3 +1,4 @@
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 const sizes = ["Bytes", "kB", "MB", "GB", "TB", "PB", "EB"];
 
 export function prettySize(size: number) {
@@ -32,6 +33,9 @@ export function joinListEnglish(list: string[]): string {
 }
 
 export function preferDarkColorScheme(): boolean {
+  if (!ExecutionEnvironment.canUseDOM) {
+    return false;
+  }
   const theme = localStorage.getItem("theme");
   if (theme) {
     return theme === "dark";
