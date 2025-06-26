@@ -162,6 +162,7 @@ export default () => {
       if (isMobile()) return;
 
       await import(
+        /* webpackIgnore: true */
         // @ts-expect-error no types
         "https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js"
       );
