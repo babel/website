@@ -2454,7 +2454,7 @@ AST Node `RestElement` shape:
 - `optional`: `boolean` (default: `null`, excluded from builder function)
 - `typeAnnotation`: `TypeAnnotation | TSTypeAnnotation | Noop` (default: `null`, excluded from builder function)
 
-Aliases: [`Standardized`](#standardized), [`LVal`](#lval), [`PatternLike`](#patternlike)
+Aliases: [`Standardized`](#standardized), [`PatternLike`](#patternlike), [`LVal`](#lval)
 
 ---
 
