@@ -98,21 +98,3 @@
     text-align: left;
   }
 }
-
-.dummy-hero-repl {
-  max-width: 920px;
-  height: 336px;
-  background-color: transparent;
-  margin: 0 auto;
-}
-@media(min-width: 992px) {
-  .dummy-hero-repl {
-    height: 246px;
-  }
-}
-/* minirepl isn't shown on mobile devices */
-@media (max-width: 760px) {
-  .dummy-hero-repl {
-    display: none;
-  }
-}
