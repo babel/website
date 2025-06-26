@@ -1,21 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../../static/css/index.css";
-import "../../static/css/minirepl.css";
 import Link from "@docusaurus/Link";
-import BABEL_MINI_REPL from "../components/minirepl.js";
+import HeroRepl from "../components/HeroRepl";
 import Translate from "@docusaurus/Translate";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Head from "@docusaurus/Head";
 import LinkButton from "../components/LinkButton";
-
-function waitUntilAceIsLoaded(callback) {
-  if ("ace" in window) {
-    callback();
-  } else {
-    setTimeout(() => waitUntilAceIsLoaded(callback), 500);
-  }
-}
 
 const PromoSection = (props) => (
   <div className="section promoSection">
@@ -24,32 +14,6 @@ const PromoSection = (props) => (
     </div>
   </div>
 );
-
-const DummyMiniRepl = () => {
-  return <div className="dummy-hero-repl" />;
-};
-const MiniRepl = () => {
-  useEffect(() => waitUntilAceIsLoaded(() => BABEL_MINI_REPL.start()));
-  return (
-    <div className="hero-repl" hidden={true}>
-      <div className="hero-repl__editor">
-        <div className="hero-repl__pane hero-repl__pane--left">
-          <h3>
-            <Translate>Put in next-gen JavaScript</Translate>
-          </h3>
-          <div id="hero-repl-in" className="hero-repl__code" />
-        </div>
-        <div className="hero-repl__pane hero-repl__pane--right">
-          <h3>
-            <Translate>Get browser-compatible JavaScript out</Translate>
-          </h3>
-          <div id="hero-repl-out" className="hero-repl__code" />
-          <div className="hero-repl__error" />
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const GetStarted = () => {
   return (
@@ -179,9 +143,6 @@ const HomeContainer = (props) => (
 
 const Hero = () => (
   <div className="hero">
-    <Link to="https://teespring.com/babel-christmas?pr=FLAVORTOWN">
-      <div className="homepage-banner">Get Babel Holiday Apparel 👕</div>
-    </Link>
     <div className="hero__container">
       <h1>
         <Translate>Babel is a JavaScript compiler.</Translate>
@@ -198,8 +159,7 @@ const Hero = () => (
         </span>
       </div>
 
-      <DummyMiniRepl />
-      <MiniRepl />
+      <HeroRepl />
     </div>
   </div>
 );
@@ -207,13 +167,6 @@ const Hero = () => (
 const Index = () => {
   return (
     <Layout>
-      <Head>
-        <script
-          src="https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js"
-          defer
-        ></script>
-      </Head>
-
       <div>
         <Hero />
 

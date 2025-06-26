@@ -1,10 +1,15 @@
-/*global ace Babel*/
+declare const ace: any;
+declare const Babel: any;
+
+import React, { useEffect } from "react";
 import debounce from "lodash.debounce";
+
+import "../../static/css/minirepl.css";
 
 const miniReplExamples = [
   "/(?i:a)b/",
   'using Flavortown = from(["Guy Fieri"]);',
-`Object.entries(payload)
+  `Object.entries(payload)
   .map(
     ([key, value]) => [key, value.trim()]
   )
@@ -28,6 +33,10 @@ function isMobile() {
 }
 
 function setupEditor(id, readOnly) {
+  ace.config.set(
+    "basePath",
+    "https://unpkg.com/ace-builds@1.3.3/src-min-noconflict"
+  );
   const editor = ace.edit(id);
 
   editor.setOptions({
@@ -57,12 +66,12 @@ function setupEditor(id, readOnly) {
   return editor;
 }
 
-function simulateKeys(inEditor, outEditor, texts) {
+function simulateKeys(editor, texts) {
   let textIndex = 0;
   let charIndex = 0;
   let timeout;
 
-  function simulateKey(changingText) {
+  function simulateKey(changingText?) {
     const delay = changingText ? 4000 : Math.round(Math.random() * 125) + 30;
 
     timeout = setTimeout(function () {
@@ -77,7 +86,7 @@ function simulateKeys(inEditor, outEditor, texts) {
 
       charIndex++;
 
-      inEditor.setValue(text.substring(0, charIndex), 1);
+      editor.setValue(text.substring(0, charIndex), 1);
 
       if (charIndex < text.length) {
         simulateKey();
@@ -86,8 +95,8 @@ function simulateKeys(inEditor, outEditor, texts) {
         charIndex = 0;
         simulateKey(true);
       } else {
-        inEditor.selection.selectAll();
-        inEditor.setReadOnly(false);
+        editor.selection.selectAll();
+        editor.setReadOnly(false);
         clearTimeout(timeout);
       }
     }, delay);
@@ -146,47 +155,64 @@ function compileCode(sourceEditor, targetEditor) {
   }
 }
 
-const BABEL_MINI_REPL = {
-  start: function () {
-    // don't init editor on mobile devices
-    if (isMobile()) return;
+export default () => {
+  useEffect(() => {
+    (async () => {
+      // don't init editor on mobile devices
+      if (isMobile()) return;
 
-    document.querySelector(".dummy-hero-repl")?.setAttribute("hidden", true);
-    document.querySelector(".hero-repl")?.removeAttribute("hidden");
+      await import(
+        /* webpackIgnore: true */
+        // @ts-expect-error no types
+        "https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js"
+      );
 
-    inEditor = setupEditor("hero-repl-in", true);
+      inEditor = setupEditor("hero-repl-in", true);
 
-    outEditor = setupEditor("hero-repl-out", true);
-    outEditor.renderer.$cursorLayer.element.style.display = "none";
+      outEditor = setupEditor("hero-repl-out", true);
+      outEditor.renderer.$cursorLayer.element.style.display = "none";
 
-    inEditor.on("change", function () {
-      if (!inEditor.getValue()) {
-        debouncedUpdate.cancel();
-        outEditor.setValue("");
-      }
+      setTimeout(function () {
+        document
+          .querySelector(".hero-repl")
+          ?.classList.add("hero-repl--visible");
+        simulateKeys(inEditor, miniReplExamples);
+      }, 150);
+    })();
+  });
+  return (
+    <div className="hero-repl">
+      <div className="hero-repl__editor">
+        <div className="hero-repl__pane hero-repl__pane--left">
+          <h3>Put in next-gen JavaScript</h3>
+          <div
+            id="hero-repl-in"
+            className="hero-repl__code"
+            onChange={() => {
+              if (!inEditor.getValue()) {
+                debouncedUpdate.cancel();
+                outEditor.setValue("");
+              }
 
-      debouncedUpdate();
-    });
-
-    document.getElementById("hero-repl-in")?.addEventListener("click", () => {
-      if (runDemo) {
-        BABEL_MINI_REPL.stopDemo();
-      }
-    });
-
-    setTimeout(function () {
-      document.querySelector(".hero-repl")?.classList.add("hero-repl--visible");
-      simulateKeys(inEditor, outEditor, miniReplExamples);
-    }, 150);
-  },
-
-  stopDemo: function () {
-    debouncedUpdate.cancel();
-    runDemo = false;
-    inEditor.setReadOnly(false);
-    inEditor.setValue("");
-    outEditor.setValue("");
-  },
+              debouncedUpdate();
+            }}
+            onClick={() => {
+              if (runDemo) {
+                debouncedUpdate.cancel();
+                runDemo = false;
+                inEditor.setReadOnly(false);
+                inEditor.setValue("");
+                outEditor.setValue("");
+              }
+            }}
+          />
+        </div>
+        <div className="hero-repl__pane hero-repl__pane--right">
+          <h3>Get browser-compatible JavaScript out</h3>
+          <div id="hero-repl-out" className="hero-repl__code" />
+          <div className="hero-repl__error" />
+        </div>
+      </div>
+    </div>
+  );
 };
-
-export default BABEL_MINI_REPL;

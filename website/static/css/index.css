@@ -72,48 +72,6 @@
   }
 }
 
-.homepage-banner {
-  align-items: center;
-  background-color: #626980;
-  color: #ffffff;
-  display: flex;
-  font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  justify-content: center;
-  position: absolute;
-  margin-top: -64px;
-  padding: 10px 0;
-  right: 0;
-  text-transform: uppercase;
-  width: 100%;
-  z-index: 2;
-}
-
-.homepage-banner::before {
-  /* background: url(../img/favicon.png) no-repeat center center; */
-  content: "";
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  padding: 0 10px;
-}
-
-@media only screen and (min-width: 736px) {
-  .homepage-banner {
-    border-bottom-left-radius: 100px;
-    border-top-left-radius: 100px;
-    font-size: 13px;
-    position: absolute;
-    margin-top: -100px;
-    padding: 10px;
-    padding-right: 20px;
-    right: 0;
-    width: auto;
-  }
-}
-
 .sponsors-special p {
   font-size: 0.9375rem;
   padding-bottom: 0;
