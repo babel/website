@@ -7,7 +7,7 @@ const Users = () => {
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext();
-  const showcase = customFields.users.map((user, i) => {
+  const showcase = (customFields.users as any).map((user, i) => {
     return (
       <div className="babel-user" key={i}>
         <a className="babel-user-link" href={user.infoLink}>

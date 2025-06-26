@@ -5,26 +5,7 @@ import { EditorState } from "https://esm.sh/@codemirror/state@^6.0.0";
 import { EditorView } from "https://esm.sh/@codemirror/view@^6.0.0";
 import { oneDark } from "https://esm.sh/@codemirror/theme-one-dark@^6.0.0";
 import { javascriptLanguage } from "https://esm.sh/@codemirror/lang-javascript@^6.0.0";
-
-function debounce(func, wait, immediate) {
-  var timeout;
-  var fn = function () {
-    var context = this,
-      args = arguments;
-    var later = function () {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-  fn.cancel = function () {
-    clearTimeout(timeout);
-  };
-  return fn;
-}
+import debounce from "https://esm.sh/lodash.debounce";
 
 const template = document.createElement("template");
 template.innerHTML = `

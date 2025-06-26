@@ -3,7 +3,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import "../../static/css/video.css";
 import Layout from "@theme/Layout";
 
-const VideosItem = props => {
+const VideosItem = (props) => {
   return (
     <div className="babel-videos">
       <div className="babel-video-play">
@@ -17,7 +17,7 @@ const VideosItem = props => {
   );
 };
 
-const CategoryInfo = props => {
+const CategoryInfo = (props) => {
   const authors = props.video.authors || [
     { name: props.video.author, link: props.video.author_link },
   ];
@@ -36,9 +36,9 @@ const CategoryInfo = props => {
   );
 };
 
-const AuthorLinks = props => {
+const AuthorLinks = (props) => {
   const links = props.authors
-    .map(author => (
+    .map((author) => (
       <CategoryLink
         author_link={author.link}
         author={author.name}
@@ -50,7 +50,7 @@ const AuthorLinks = props => {
   return <span>{links}</span>;
 };
 
-const CategoryLink = props => {
+const CategoryLink = (props) => {
   const link = props.author_link || props.event_link;
   const content = props.author || props.event;
   return (
@@ -64,9 +64,9 @@ const Videos = () => {
   const { siteConfig } = useDocusaurusContext();
   const { customFields } = siteConfig;
 
-  const showcase = customFields.videos.map((category, i) => {
+  const showcase = (customFields.videos as any[]).map((category, i) => {
     function compare(property) {
-      return function(a, b) {
+      return function (a, b) {
         const value1 = a[property];
         const value2 = b[property];
         return value2 - value1;
@@ -84,7 +84,7 @@ const Videos = () => {
   });
 
   return (
-    <Layout title={siteConfig?.title} description={siteConfig?.tagline}>
+    <Layout>
       <div className="mainContainer">
         <div className="page-header text-center">
           <h1>Videos</h1>

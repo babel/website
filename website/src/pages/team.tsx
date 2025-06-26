@@ -22,9 +22,9 @@ const Banner = () => {
   );
 };
 
-const MemberOrgList = props => {
+const MemberOrgList = (props) => {
   if (props.orgs) {
-    const elements = props.orgs.map(org => {
+    const elements = props.orgs.map((org) => {
       return (
         <a
           key={org}
@@ -46,9 +46,9 @@ const MemberOrgList = props => {
   } else return null;
 };
 
-const MemberAreaList = props => {
+const MemberAreaList = (props) => {
   if (props.areas) {
-    const areaElements = props.areas.map(area => {
+    const areaElements = props.areas.map((area) => {
       return (
         <a
           key={area}
@@ -64,11 +64,13 @@ const MemberAreaList = props => {
   } else return null;
 };
 
-const MediaLink = props => {
+const MediaLink = (props) => {
   if (props.text) {
     return (
       <div className={"media-link " + props.icon}>
-        <a href={props.url} target="_blank" rel="noreferrer noopener">{props.text}</a>
+        <a href={props.url} target="_blank" rel="noreferrer noopener">
+          {props.text}
+        </a>
       </div>
     );
   } else return null;
@@ -86,16 +88,8 @@ const MediaObject = ({ member }) => {
       </div>
       <div className="member_info">
         <div style={{ fontWeight: 600 }}>{name}</div>
-        <MediaLink
-          icon="github"
-          url={githubUrl}
-          text={github}
-        />
-        <MediaLink
-          icon="twitter"
-          url={twitterUrl}
-          text={twitter}
-        />
+        <MediaLink icon="github" url={githubUrl} text={github} />
+        <MediaLink icon="twitter" url={twitterUrl} text={twitter} />
         <MemberOrgList orgs={orgs} />
         <MemberAreaList areas={areas} />
       </div>
@@ -103,12 +97,12 @@ const MediaObject = ({ member }) => {
   );
 };
 
-const MemberSection = props => {
+const MemberSection = (props) => {
   return (
     <div>
       <h2 className="member_type">{props.title}</h2>
       <div className="member_block">
-        {props.members.map(member => {
+        {props.members.map((member) => {
           return <MediaObject key={member.github} member={member} />;
         })}
       </div>
@@ -120,10 +114,10 @@ const Team = () => {
   const { siteConfig } = useDocusaurusContext();
   const {
     customFields: { team },
-  } = siteConfig;
+  } = siteConfig as any;
 
   return (
-    <Layout title={siteConfig?.title} description={siteConfig?.tagline}>
+    <Layout>
       <Banner />
       <div className="wrapper">
         <MemberSection title="Core Maintainers" members={team.core} />

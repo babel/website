@@ -1,4 +1,3 @@
-import "core-js";
 import React from "react";
 import Layout from "@theme/Layout";
 import Repl from "../components/repl/index";

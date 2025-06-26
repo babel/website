@@ -1,4 +1,3 @@
-import generate from "@babel/generator";
 import type { Transition } from "./types";
 
 type Parent = {
@@ -40,8 +39,7 @@ export default class Transitions {
 
       callback.call(this, ...args);
 
-      // $FlowFixMe
-      const { code } = generate(this._getProgramParent(args[0]).node);
+      const code = this._getProgramParent(args[0]).toString();
 
       if (
         this._transitions.length === 0 ||

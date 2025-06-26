@@ -2,22 +2,7 @@ import React from "react";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-
-class Button extends React.Component {
-  render() {
-    return (
-      <div className="pluginWrapper buttonWrapper">
-        <a className="button" href={this.props.href} target={this.props.target}>
-          {this.props.children}
-        </a>
-      </div>
-    );
-  }
-}
-
-Button.defaultProps = {
-  target: "_self",
-};
+import LinkButton from "../components/LinkButton";
 
 const PromoSection = (props) => (
   <div className="section promoSection">
@@ -32,7 +17,7 @@ const SponsorTier = (props) => {
     siteConfig: { customFields },
   } = useDocusaurusContext();
 
-  const tierSponsors = customFields.sponsors.filter(
+  const tierSponsors = (customFields.sponsors as any[]).filter(
     (sponsor) => sponsor.type == props.type && sponsor.tier === props.tier
   );
   return (
@@ -50,9 +35,9 @@ const SponsorTier = (props) => {
       </ul>
       {props.button ? (
         <PromoSection>
-          <Button href={props.button.link} target="_blank">
+          <LinkButton href={props.button.link} target="_blank">
             {props.button.title}
-          </Button>
+          </LinkButton>
         </PromoSection>
       ) : null}
     </div>
@@ -81,9 +66,9 @@ const OpenCollectiveSponsors = () => {
             directly help fund more of the core team to work on Babel.
           </p>
           <PromoSection>
-            <Button href="https://opencollective.com/babel" target="_blank">
+            <LinkButton href="https://opencollective.com/babel" target="_blank">
               Become a sponsor
-            </Button>
+            </LinkButton>
           </PromoSection>
         </div>
         <div className="sponsor-tiers" id="sponsors">

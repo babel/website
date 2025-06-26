@@ -1,4 +1,5 @@
 import "regenerator-runtime/runtime";
+import "core-js";
 
 import { cx, css } from "@emotion/css";
 import debounce from "lodash.debounce";
@@ -274,7 +275,7 @@ class Repl extends React.Component<Props, State> {
             className={cx(styles.panels, !state.timeTravel && styles.panelsMax)}
           >
             <Monaco
-              className={styles.codeMirrorPanel}
+              className={styles.codePanel}
               code={state.code}
               errorMessage={state.compileErrorMessage}
               fileSize={options.fileSize && state.meta.rawSize}
@@ -283,7 +284,7 @@ class Repl extends React.Component<Props, State> {
               placeholder="Write code here"
             />
             <Monaco
-              className={styles.codeMirrorPanel}
+              className={styles.codePanel}
               code={state.compiled}
               errorMessage={state.evalErrorMessage}
               fileSize={options.fileSize && state.meta.compiledSize}
@@ -740,7 +741,7 @@ export default function ReplWithErrorBoundary() {
 }
 
 export const styles = {
-  codeMirrorPanel: css({
+  codePanel: css({
     flex: "0 0 50%",
     borderRight: `1px solid var(--ifm-scrollbar-track-background-color)`,
   }),
