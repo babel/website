@@ -9,6 +9,16 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="Jun 2025">
+
+## Babel 7.28.0
+
+[blog post](https://babeljs.io/blog/2025/06/30/7.28.0)
+
+- Enable the [explicit resource management](https://github.com/tc39/proposal-explicit-resource-management/) proposal by default
+- Support for the [discard binding](https://github.com/tc39/proposal-discard-binding/) Stage 2 proposal
+
+</li>
 <li data-date="Oct 2024">
 
 ## Babel 7.26.0
