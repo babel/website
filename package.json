@@ -10,10 +10,8 @@
     "build": "yarn build:docusaurus && yarn build:redirects",
     "build:docusaurus": "cd website && yarn && yarn build --out-dir build/babel",
     "build:redirects": "node -e \"fs.cpSync('./_redirects', './website/build/babel/_redirects', { force: true })\"",
-    "lint": "eslint js website scripts",
-    "lint-staged": "lint-staged",
+    "lint": "eslint website scripts && prettier --check '**/*.{js,ts,tsx}'",
     "fix:css": "prettier --write website/static/css/*.css",
-    "precommit": "yarn tsc && yarn lint-staged",
     "start": "cd website && yarn start",
     "test": "remark docs README.md --quiet",
     "version": "node ./scripts/generate-repl-past-versions.mjs && git add ./js/repl/past-versions.json"
@@ -33,11 +31,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@docusaurus/core": "3.7.0",
-    "@docusaurus/faster": "3.7.0",
-    "@docusaurus/module-type-aliases": "3.7.0",
-    "@docusaurus/preset-classic": "3.7.0",
-    "@docusaurus/remark-plugin-npm2yarn": "3.7.0",
+    "@docusaurus/core": "^3.8.1",
+    "@docusaurus/faster": "^3.8.1",
+    "@docusaurus/module-type-aliases": "^3.8.1",
+    "@docusaurus/preset-classic": "^3.8.1",
+    "@docusaurus/remark-plugin-npm2yarn": "^3.8.1",
     "@eslint/js": "^9.24.0",
     "@shikijs/monaco": "^3.2.1",
     "@types/node": "^24.0.4",
@@ -80,16 +78,9 @@
     "./website"
   ],
   "lint-staged": {
-    "js/**/*.{js,ts,tsx}": [
+    "*.{js,ts,tsx}": [
       "eslint --format=codeframe --fix",
-      "git add"
-    ],
-    "website/pages/en/*.js": [
-      "eslint --format=codeframe --fix",
-      "git add"
-    ],
-    "website/data/*.js": [
-      "eslint --format=codeframe --fix",
+      "prettier --write",
       "git add"
     ]
   },

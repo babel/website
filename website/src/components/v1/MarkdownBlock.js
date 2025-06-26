@@ -5,16 +5,16 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import Link from '@docusaurus/Link';
-import CodeBlock from '@theme/CodeBlock';
-import Translate, {translate} from '@docusaurus/Translate';
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import Link from "@docusaurus/Link";
+import CodeBlock from "@theme/CodeBlock";
+import Translate, { translate } from "@docusaurus/Translate";
 import rehypeRaw from "rehype-raw";
 
 const components = {
-  a: ({node: _node, ...props}) => <Link {...props} />,
-  pre: ({node: _node, ...props }) => {
+  a: ({ node: _node, ...props }) => <Link {...props} />,
+  pre: ({ node: _node, ...props }) => {
     const { children } = props;
     const firstChild = Array.isArray(children) ? children[0] : children;
     if (firstChild.type === "code") {
@@ -22,7 +22,7 @@ const components = {
     } else {
       return <pre {...props} />;
     }
-  }
+  },
 };
 
 /*
@@ -42,12 +42,14 @@ function getMarkdown(children) {
   }
 }
 
-export default function MarkdownBlock({children}) {
+export default function MarkdownBlock({ children }) {
   const markdown = getMarkdown(children);
   return (
     <div>
       <span>
-        <ReactMarkdown components={components} rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
+        <ReactMarkdown components={components} rehypePlugins={[rehypeRaw]}>
+          {markdown}
+        </ReactMarkdown>
       </span>
     </div>
   );

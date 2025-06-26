@@ -12,7 +12,9 @@ module.exports = {
         "usage",
         "configuration",
         "learn",
-        ...(bool(process.env.BABEL_8_BREAKING) ? ["v8-migration", "v8-migration-api"] : ["v7-migration"]),
+        ...(bool(process.env.BABEL_8_BREAKING)
+          ? ["v8-migration", "v8-migration-api"]
+          : ["v7-migration"]),
       ],
     },
     {
@@ -45,9 +47,7 @@ module.exports = {
             {
               type: "category",
               label: "ES2026",
-              items: [
-                "babel-plugin-transform-explicit-resource-management",
-              ],
+              items: ["babel-plugin-transform-explicit-resource-management"],
             },
             {
               type: "category",
