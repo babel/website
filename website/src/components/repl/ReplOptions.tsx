@@ -296,7 +296,9 @@ class ExpandedContainer extends Component<Props, State> {
     }
 
     const isBugfixesSupported =
-      babelVersion && compareVersions(babelVersion, "7.9.0") !== -1 && compareVersions(babelVersion, "8.0.0") < 0;
+      babelVersion &&
+      compareVersions(babelVersion, "7.9.0") !== -1 &&
+      compareVersions(babelVersion, "8.0.0") < 0;
 
     return (
       <div className={styles.expandedContainer}>
@@ -786,10 +788,7 @@ class ExpandedContainer extends Component<Props, State> {
 
         <div className={styles.bottomSidebar}>
           <button onClick={onResetBtnClick}>Reset</button>
-          <select
-            value={babelVersion}
-            onChange={onVersionChange}
-          >
+          <select value={babelVersion} onChange={onVersionChange}>
             <option value="">v{babelVersion}</option>
             <option value="latest">Latest</option>
             {pastVersions.map(
