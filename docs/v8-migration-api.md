@@ -1035,6 +1035,10 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   }
   ```
 
+- Remove `TSParameterProperty` from the `LVal` alias ([#17391](https://github.com/babel/babel/pull/17391))
+
+  An `LVal` node represents valid nodes as the left hand side (LHS) of an assignment expression. A `TSParameterProperty` is a special function parameter type allowed only in a class constructor. Since `TSParameterProperty` can not be the LHS, `t.isLVal(t.tsParameterProperty(...))` will return `false` in Babel 8.
+
 - Require an `Identifier` node as the third argument of `t.tsTypeParameter` ([#12829](https://github.com/babel/babel/pull/12829))
 
   This is due to the corresponding [AST shape change](#ast-TSTypeParameter).
