@@ -266,6 +266,7 @@ module.exports = {
       "Early stages": [
         "babel-plugin-proposal-async-do-expressions",
         "babel-plugin-proposal-destructuring-private",
+        "babel-plugin-proposal-discard-binding",
         "babel-plugin-proposal-do-expressions",
         "babel-plugin-proposal-export-default-from",
         "babel-plugin-proposal-function-bind",
