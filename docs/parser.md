@@ -34,6 +34,7 @@ mind. When in doubt, use `.parse()`.
 
 | Version   | Changes                                            |
 | --------- | -------------------------------------------------- |
+| `v7.28.0` | Added `sourceType: "commonjs"`                     |
 | `v7.27.0` | Added `allowYieldOutsideFunction`                  |
 | `v7.26.0` | Added `startIndex`                                 |
 | `v7.23.0` | Added `createImportExpressions`                    |
@@ -96,7 +97,9 @@ mind. When in doubt, use `.parse()`.
 - **plugins**: Array containing the plugins that you want to enable.
 
 - **sourceType**: Indicate the mode the code should be parsed in. Can be
-  one of `"script"`, `"module"`, or `"unambiguous"`. Defaults to `"script"`. `"unambiguous"` will make @babel/parser attempt to _guess_, based on the presence of ES6 `import` or `export` statements. Files with ES6 `import`s and `export`s are considered `"module"` and are otherwise `"script"`.
+  one of `"script"`, `"commonjs"`, `"module"` or `"unambiguous"`. Defaults to `"script"`. `"unambiguous"` will make @babel/parser attempt to _guess_, based on the presence of ES6 `import` or `export` statements. Files with ES6 `import`s and `export`s are considered `"module"` and are otherwise `"script"`.
+
+  The `"commonjs"` mode indicates that the code should be run in a CommonJS environment such as Node.js. It is mostly compatible with the `"script"` mode except that `return`, `new.target` and `using`/`await using` declarations are allowed in the top level.
 
 - **sourceFilename**: Correlate output AST nodes with their source filename. Useful when generating code and source maps from the ASTs of multiple input files.
 

@@ -662,11 +662,13 @@ The `sourceRoot` fields to set in the generated source map, if one is desired.
 
 ### `sourceType`
 
-Type: `"script" | "module" | "unambiguous"`<br />
+Type: `"script" | "module" | "commonjs" | "unambiguous"`<br />
 Default: "module"<br />
 
 - `"script"` - Parse the file using the ECMAScript Script grammar. No `import`/`export` statements allowed, and files are not in strict mode.
 - `"module"` - Parse the file using the ECMAScript Module grammar. Files are automatically strict, and `import`/`export` statements are allowed.
+- `"commonjs"` - Parse the file as it will be run in a CommonJS environment. This option is recommended when transforming `.cjs` sources. See [Parser docs](./parser.md#options) for syntax
+differences between `"script"` and `"commonjs"`.
 - `"unambiguous"` - Consider the file a "module" if `import`/`export` statements are present, or else consider it a "script".
 
 `unambiguous` can be quite useful in contexts where the type is unknown, but it can lead to
@@ -886,7 +888,7 @@ Here are some examples, on how matching works:
 | File extension pattern (`*.ext`)   | `foo/*.js`       | `/src/foo/test.js`, `/src/foo/index.js/`     | `/src/foo/test.ts`, `/src/foo/test.js.map`     |
 | Combined patterns                  | `**/test/*.js`   | `/src/test/file.js`, `/src/a/b/test/file.js` | `/src/test.js`, `/src/test/sub/file.js`        |
 
-Here are examples, where `*` does *not* have a wildcard function: 
+Here are examples, where `*` does *not* have a wildcard function:
 
 | Description           | Pattern          | Does Not Match                                              |
 | --------------------- | ---------------- | ----------------------------------------------------------- |
