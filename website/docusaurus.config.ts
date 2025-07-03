@@ -144,6 +144,9 @@ const siteConfig: Config = {
   future: {
     // See https://docusaurus.io/blog/releases/3.6
     experimental_faster: true,
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true,
+    },
   },
   titleDelimiter: "·",
   baseUrl: "/",

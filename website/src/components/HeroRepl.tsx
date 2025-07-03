@@ -179,7 +179,7 @@ export default () => {
         simulateKeys(inEditor, miniReplExamples);
       }, 150);
     })();
-  });
+  }, []);
   return (
     <div className="hero-repl">
       <div className="hero-repl__editor">
