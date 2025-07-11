@@ -1,6 +1,7 @@
 import { envPresetDefaults, replDefaults } from "./PluginConfig";
 import StorageService from "./StorageService";
 import UriUtils from "./UriUtils";
+import { compareVersions } from "./Utils";
 
 import type {
   BabelState,
@@ -219,3 +220,38 @@ export const persistedStateToExternalPluginsState = (
     return { name, version };
   });
 };
+
+export function provideDefaultOptionsForExternalPlugins(pluginName, babelVersion) {
+  switch (pluginName) {
+    case "@babel/plugin-proposal-decorators": {
+      if (compareVersions(babelVersion, "7.24.0") >= 0) {
+        return { version: "2023-11" };
+      } else if (compareVersions(babelVersion, "7.22.0") >= 0) {
+        return { version: "2023-05" };
+      } else if (compareVersions(babelVersion, "7.21.0") >= 0) {
+        return { version: "2023-01" };
+      } else if (compareVersions(babelVersion, "7.19.0") >= 0) {
+        return { version: "2022-03" };
+      } else if (compareVersions(babelVersion, "7.17.0") >= 0) {
+        return { version: "2021-12" };
+      } else if (compareVersions(babelVersion, "7.0.0") >= 0) {
+        return { version: "2018-09", decoratorsBeforeExport: true };
+      }
+    }
+    case "@babel/plugin-proposal-discard-binding": {
+      return { syntaxType: "void" };
+    }
+    case "@babel/plugin-proposal-optional-chaining-assign": {
+      return { version: "2023-07" };
+    }
+    case "@babel/plugin-proposal-pipeline-operator": {
+      if (compareVersions(babelVersion, "7.15.0") >= 0) {
+        return { proposal: "hack", topicToken: "%" };
+      } else {
+        return { proposal: "minimal" };
+      }
+    }
+    default:
+      return {};
+  }
+}
