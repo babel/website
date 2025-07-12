@@ -53,3 +53,21 @@ export function compareVersions(a: string, b: string): 1 | 0 | -1 {
   }
   return 0;
 }
+
+export function toCamelCase(str) {
+  return str
+    .replace(/-/g, " ")
+    .replace(/\//g, "_")
+    .replace(/@/g, "_")
+    .replace(/\s(.)/g, function ($1) {
+      return $1.toUpperCase();
+    })
+    .replace(/\s/g, "")
+    .replace(/^(.)/, function ($1) {
+      return $1.toLowerCase();
+    });
+}
+
+export function hasOwnProperty(obj, string) {
+  return Object.prototype.hasOwnProperty.call(obj, string);
+}
