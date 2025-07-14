@@ -1,6 +1,6 @@
-import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./CircleCI";
+import { loadBuildArtifacts, loadLatestBuildNumberForBranch } from "./circleCI";
 import type { BabelState } from "./types";
-import WorkerApi from "./WorkerApi";
+import WorkerApi from "./workerApi";
 
 const versionRegExp = /\/version\/(.+)\/?/;
 

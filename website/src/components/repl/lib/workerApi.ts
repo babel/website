@@ -1,5 +1,5 @@
 import scopedEval from "./scopedEval";
-import { registerPromiseWorkerApi } from "./WorkerUtils";
+import { registerPromiseWorkerApi } from "./workerUtils";
 
 import type { CompileConfig, PluginState } from "./types";
 

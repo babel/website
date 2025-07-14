@@ -10,8 +10,8 @@ import shikiDarkPlus from "@shikijs/themes/dark-plus";
 import shikiLightPlus from "@shikijs/themes/light-plus";
 import shikiWasm from "@shikijs/engine-oniguruma/wasm-inlined";
 
-import { colors } from "./styles";
-import { preferDarkColorScheme } from "./Utils";
+import { colors } from "./lib/styles";
+import { preferDarkColorScheme } from "./lib/utils";
 
 type Props = {
   className: string;

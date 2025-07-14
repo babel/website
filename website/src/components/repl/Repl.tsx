@@ -4,14 +4,14 @@ import "core-js";
 import { cx, css } from "@emotion/css";
 import debounce from "lodash.debounce";
 import React, { type ChangeEvent } from "react";
-import { prettySize, compareVersions } from "./Utils";
+import { prettySize, compareVersions } from "./lib/utils";
 import ErrorBoundary from "./ErrorBoundary";
 import { load as loadMonaco, Monaco } from "./Monaco";
 import ReplOptions from "./ReplOptions";
-import StorageService from "./StorageService";
-import UriUtils from "./UriUtils";
-import loadBundle from "./loadBundle";
-import loadPlugin from "./loadPlugin";
+import StorageService from "./lib/storageService";
+import UriUtils from "./lib/uriUtils";
+import loadBundle from "./lib/loadBundle";
+import loadPlugin from "./lib/loadPlugin";
 import TimeTravelSlider from "./TimeTravelSlider";
 import {
   babelConfig,
@@ -20,7 +20,7 @@ import {
   shippedProposalsConfig,
   pluginConfigs,
   runtimePolyfillConfig,
-} from "./PluginConfig";
+} from "./lib/pluginConfig";
 import {
   envConfigToTargetsString,
   replState,
@@ -33,11 +33,11 @@ import {
   persistedStateToShippedProposalsState,
   persistedStateToExternalPluginsState,
   provideDefaultOptionsForExternalPlugins,
-} from "./replUtils";
-import WorkerApi from "./WorkerApi";
-import scopedEval from "./scopedEval";
-import { media } from "./styles";
-import { toCamelCase, hasOwnProperty } from "./Utils";
+} from "./lib/replUtils";
+import WorkerApi from "./lib/workerApi";
+import scopedEval from "./lib/scopedEval";
+import { media } from "./lib/styles";
+import { toCamelCase, hasOwnProperty } from "./lib/utils";
 
 import type {
   BabelPresets,
@@ -50,7 +50,7 @@ import type {
   PluginState,
   PluginStateMap,
   SourceType,
-} from "./types";
+} from "./lib/types";
 import ReplLoading from "./ReplLoading";
 
 type Props = object;

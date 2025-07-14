@@ -1,11 +1,11 @@
 // Globals pre-loaded by Worker
-import { compareVersions } from "./Utils";
+import { compareVersions } from "./utils";
 
 declare const Babel: any;
 declare const prettier: any;
 declare const prettierPlugins: any;
 
-import Transitions from "./Transitions";
+import Transitions from "./transitions";
 import type {
   BabelPresets,
   CompileConfig,

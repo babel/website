@@ -1,7 +1,7 @@
-import { envPresetDefaults, replDefaults } from "./PluginConfig";
-import StorageService from "./StorageService";
-import UriUtils from "./UriUtils";
-import { compareVersions } from "./Utils";
+import { envPresetDefaults, replDefaults } from "./pluginConfig";
+import StorageService from "./storageService";
+import UriUtils from "./uriUtils";
+import { compareVersions } from "./utils";
 
 import type {
   BabelState,
@@ -221,7 +221,10 @@ export const persistedStateToExternalPluginsState = (
   });
 };
 
-export function provideDefaultOptionsForExternalPlugins(pluginName, babelVersion) {
+export function provideDefaultOptionsForExternalPlugins(
+  pluginName,
+  babelVersion
+) {
   switch (pluginName) {
     case "@babel/plugin-proposal-decorators": {
       if (compareVersions(babelVersion, "7.24.0") >= 0) {

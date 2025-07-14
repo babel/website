@@ -1,4 +1,4 @@
-import { preferDarkColorScheme } from "./Utils";
+import { preferDarkColorScheme } from "./utils";
 
 const lightColors = {
   // Inspired by: Chrome's console.error() colors
