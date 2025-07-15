@@ -5,6 +5,7 @@ module.exports = function () {
     name: "docusaurus-webpack-plugin",
     configureWebpack() {
       return {
+        cache: false,
         plugins: [new MonacoWebpackPlugin()],
       };
     },

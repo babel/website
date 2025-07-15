@@ -16,6 +16,9 @@ import type {
   PluginState,
   PluginStateMap,
   ShippedProposalsState,
+  BabelPresets,
+  SupportedFileExtension,
+  SourceType,
 } from "./types";
 
 export const envConfigToTargetsString = (envConfig: EnvConfig): string => {
@@ -257,4 +260,169 @@ export function provideDefaultOptionsForExternalPlugins(
     default:
       return {};
   }
+}
+
+function guessFileExtension(presets: BabelPresets): SupportedFileExtension {
+  let ext = ".js";
+  if (presets.includes("typescript")) {
+    ext = ".ts";
+  }
+  if (presets.includes("react")) {
+    ext = (ext + "x") as any;
+  }
+  return ext as SupportedFileExtension;
+}
+
+export function buildTransformOpts(
+  version: string,
+  sourceType: SourceType,
+  sourceMap: boolean,
+  plugins: any[],
+  presets: BabelPresets,
+  envConfig: EnvConfig,
+  presetsOptions: PresetsOptions,
+  evaluate: boolean
+) {
+  plugins = plugins.map((plugin) => [
+    plugin.name,
+    provideDefaultOptionsForExternalPlugins(plugin.name, version),
+  ]);
+
+  let useBuiltIns: false | "entry" | "usage" = false;
+  let corejs = "3.42";
+
+  let presetEnvOptions: {
+    targets: any;
+    modules: any;
+    forceAllTransforms: boolean;
+    shippedProposals: boolean;
+    useBuiltIns: false | "entry" | "usage";
+    corejs: string;
+    spec?: boolean;
+    loose?: boolean;
+    bugfixes?: boolean;
+  };
+
+  if (envConfig && envConfig.isEnvPresetEnabled) {
+    const targets: any = {};
+    const { forceAllTransforms, shippedProposals, modules } = envConfig;
+
+    if (envConfig.browsers) {
+      targets.browsers = envConfig.browsers
+        .split(",")
+        .map((value) => value.trim())
+        .filter((value) => value);
+    }
+    if (envConfig.isElectronEnabled) {
+      targets.electron = envConfig.electron;
+    }
+    if (envConfig.isBuiltInsEnabled) {
+      useBuiltIns = (!evaluate && envConfig.builtIns) as
+        | false
+        | "entry"
+        | "usage";
+      if (envConfig.corejs) {
+        corejs = envConfig.corejs;
+      }
+    }
+    if (envConfig.isNodeEnabled) {
+      targets.node = envConfig.node;
+    }
+
+    presetEnvOptions = {
+      targets,
+      modules,
+      forceAllTransforms,
+      shippedProposals,
+      useBuiltIns,
+      corejs: undefined,
+    };
+
+    if (version && compareVersions(version, "8.0.0") === -1) {
+      presetEnvOptions.spec = envConfig.isSpecEnabled;
+      presetEnvOptions.loose = envConfig.isLooseEnabled;
+    }
+
+    if (useBuiltIns) {
+      presetEnvOptions.corejs = corejs;
+    }
+
+    if (
+      envConfig.isBugfixesEnabled &&
+      version &&
+      compareVersions(version, "7.9.0") !== -1 &&
+      compareVersions(version, "8.0.0") < 0
+    ) {
+      presetEnvOptions.bugfixes = envConfig.isBugfixesEnabled;
+    }
+  }
+
+  const babelConfig = {
+    babelrc: false,
+    filename: "repl" + guessFileExtension(presets),
+    sourceMap: sourceMap,
+
+    presets: presets.map((preset) => {
+      if (typeof preset !== "string") return preset;
+      if (preset === "env") {
+        return ["env", presetEnvOptions];
+      }
+      if (
+        version &&
+        compareVersions(version, "8.0.0") < 0 &&
+        preset === "typescript"
+      ) {
+        return [
+          "typescript",
+          {
+            allowDeclareFields: true,
+            allowNamespaces: true,
+          },
+        ];
+      }
+
+      if (/^stage-[0-3]$/.test(preset)) {
+        const version = presetsOptions.decoratorsVersion;
+        const decoratorsLegacy = version === "legacy" || undefined;
+
+        const decoratorsBeforeExport = [
+          "legacy",
+          "2022-03",
+          "2023-01",
+          "2023-05",
+          "2023-11",
+        ].includes(version)
+          ? undefined
+          : presetsOptions.decoratorsBeforeExport;
+
+        return [
+          preset,
+          {
+            // pass decoratorsLegacy for Babel < 7.17
+            decoratorsLegacy,
+            decoratorsVersion: decoratorsLegacy ? undefined : version,
+            decoratorsBeforeExport,
+            pipelineProposal: presetsOptions.pipelineProposal,
+          },
+        ];
+      }
+      if (preset === "react") {
+        return [
+          "react",
+          {
+            runtime: presetsOptions.reactRuntime,
+          },
+        ];
+      }
+      return preset;
+    }),
+    plugins: plugins,
+    sourceType,
+  };
+
+  if (version && compareVersions(version, "7.13.0") >= 0) {
+    (babelConfig as any).assumptions = envConfig?.assumptions ?? {};
+  }
+
+  return babelConfig;
 }

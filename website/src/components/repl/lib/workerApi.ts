@@ -12,7 +12,6 @@ type CompileResult = {
   compileErrorMessage: string | undefined | null;
   evalErrorMessage: string | undefined | null;
   meta: any;
-  sourceMap: string | undefined | null;
 };
 
 type PluginShape = {

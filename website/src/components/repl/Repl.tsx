@@ -32,7 +32,7 @@ import {
   persistedStateToPresetsOptions,
   persistedStateToShippedProposalsState,
   persistedStateToExternalPluginsState,
-  provideDefaultOptionsForExternalPlugins,
+  buildTransformOpts,
 } from "./lib/replUtils";
 import WorkerApi from "./lib/workerApi";
 import scopedEval from "./lib/scopedEval";
@@ -472,25 +472,24 @@ class Repl extends React.Component<Props, State> {
     const { runtimePolyfillState } = state;
 
     const presetsArray = this._presetsToArray(state);
+    const evaluate =
+      runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded;
 
     this._workerApi
       .compile(code, {
-        plugins: state.externalPlugins.map((plugin) => [
-          plugin.name,
-          provideDefaultOptionsForExternalPlugins(
-            plugin.name,
-            state.babel.version
-          ),
-        ]),
-        envConfig: state.envConfig,
-        presetsOptions: state.presetsOptions,
-        evaluate:
-          runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
-        presets: presetsArray,
+        evaluate,
         prettify: state.plugins.prettier.isEnabled,
-        sourceMap: runtimePolyfillState.isEnabled,
-        sourceType: state.sourceType,
         getTransitions: state.timeTravel,
+        babelConfig: buildTransformOpts(
+          state.babel.version,
+          state.sourceType,
+          runtimePolyfillState.isEnabled,
+          state.externalPlugins,
+          presetsArray,
+          state.envConfig,
+          state.presetsOptions,
+          evaluate
+        ),
       })
       .then((result) => {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
