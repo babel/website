@@ -24,7 +24,7 @@ type PluginShape = {
  */
 export default class WorkerApi {
   _worker: PromiseWorkerApi = registerPromiseWorkerApi(
-    new Worker(new URL("./Worker", import.meta.url))
+    new Worker(new URL("./worker", import.meta.url))
   );
 
   compile(code: string, config: CompileConfig): Promise<CompileResult> {

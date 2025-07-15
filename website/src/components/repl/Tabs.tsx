@@ -15,7 +15,7 @@ export default function Tabs({ current, labels, onClick }: TabsOptions) {
           key={index}
           className={`button ${styles.button}`}
           disabled={current === labels[index]}
-          onClick={void onClick(labels[index])}
+          onClick={() => onClick(labels[index])}
         >
           {label}
         </button>
