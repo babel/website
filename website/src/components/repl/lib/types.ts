@@ -121,6 +121,7 @@ export type ReplState = {
   corejs?: string | false;
   spec: boolean;
   loose: boolean;
+  config: string;
   code: string;
   evaluate: boolean;
   fileSize: boolean;
