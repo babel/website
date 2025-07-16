@@ -9,7 +9,7 @@ export type TabsOptions = {
 
 export default function Tabs({ current, labels, onClick }: TabsOptions) {
   return (
-    <ul className={`pills padding--xs ${css({ "--ifm-list-margin": 0 })}`}>
+    <ul className={`pills padding--sm ${css({ "--ifm-list-margin": 0 })}`}>
       {labels.map((label, index) => (
         <li
           key={index}
