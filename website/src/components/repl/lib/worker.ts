@@ -1,5 +1,5 @@
 import compile from "./compile";
-import { registerPromiseWorker } from "./WorkerUtils";
+import { registerPromiseWorker } from "./workerUtils";
 
 declare const Babel: any;
 declare function importScripts(url: string): void;

@@ -10,8 +10,8 @@ import {
 } from "react-instantsearch";
 import SearchBox from "./ExternalPluginsSearchBox";
 import Modal from "./Modal";
-import { colors, media } from "./styles";
-import type { BabelPlugin } from "./types";
+import { colors, media } from "./lib/styles";
+import type { BabelPlugin } from "./lib/types";
 
 const searchClient = liteClient(
   "OFCNCOG2CU",

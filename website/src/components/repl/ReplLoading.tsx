@@ -2,7 +2,7 @@ import React from "react";
 import { css } from "@emotion/css";
 
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
-import { colors } from "./styles";
+import { colors } from "./lib/styles";
 
 const styles = {
   loader: css({

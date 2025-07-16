@@ -1,5 +1,5 @@
 import scopedEval from "./scopedEval";
-import { registerPromiseWorkerApi } from "./WorkerUtils";
+import { registerPromiseWorkerApi } from "./workerUtils";
 
 import type { CompileConfig, PluginState } from "./types";
 
@@ -12,7 +12,6 @@ type CompileResult = {
   compileErrorMessage: string | undefined | null;
   evalErrorMessage: string | undefined | null;
   meta: any;
-  sourceMap: string | undefined | null;
 };
 
 type PluginShape = {
@@ -25,7 +24,7 @@ type PluginShape = {
  */
 export default class WorkerApi {
   _worker: PromiseWorkerApi = registerPromiseWorkerApi(
-    new Worker(new URL("./Worker", import.meta.url))
+    new Worker(new URL("./worker", import.meta.url))
   );
 
   compile(code: string, config: CompileConfig): Promise<CompileResult> {

@@ -107,14 +107,9 @@ export type PluginStateMap = {
 export type SourceType = "script" | "module" | "commonjs" | "unambiguous";
 
 export type CompileConfig = {
-  envConfig: EnvConfig | undefined | null;
-  presetsOptions: PresetsOptions;
+  babelConfig: any;
   evaluate: boolean;
-  presets: BabelPresets;
-  plugins: BabelPlugins;
   prettify: boolean;
-  sourceMap: boolean;
-  sourceType: SourceType;
   getTransitions: boolean;
 };
 
@@ -126,6 +121,7 @@ export type ReplState = {
   corejs?: string | false;
   spec: boolean;
   loose: boolean;
+  config: string;
   code: string;
   evaluate: boolean;
   fileSize: boolean;

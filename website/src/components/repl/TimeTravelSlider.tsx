@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import React from "react";
-import { colors } from "./styles";
+import { colors } from "./lib/styles";
 
 type Props = {
   className?: string;
