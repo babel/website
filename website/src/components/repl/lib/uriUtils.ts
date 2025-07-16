@@ -93,11 +93,7 @@ const parseQuery = () => {
 const updateQuery = (state: ReplState) => {
   const query = URL_KEYS.map((key) => {
     const value = state[key];
-    if (
-      value == null ||
-      value == "" ||
-      (typeof value === "object" && Object.keys(value).length === 0)
-    ) {
+    if (value == null || value == "") {
       return null;
     } else if (key === "code" || key === "config") {
       return `${key}_lz=` + compress(value);

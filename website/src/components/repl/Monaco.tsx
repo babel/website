@@ -93,9 +93,6 @@ export function Monaco({
   useEffect(() => {
     setEditor(
       (editor = monaco.editor.create(container.current, {
-        padding: {
-          top: 2,
-        },
         fontSize: 14,
         // https://github.com/microsoft/monaco-editor/issues/4311
         // automaticLayout: true,

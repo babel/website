@@ -9,37 +9,18 @@ export type TabsOptions = {
 
 export default function Tabs({ current, labels, onClick }: TabsOptions) {
   return (
-    <div className={`padding--xs ${styles.container}`}>
+    <ul className={`pills padding--xs ${css({ "--ifm-list-margin": 0 })}`}>
       {labels.map((label, index) => (
-        <button
+        <li
           key={index}
-          className={`button ${styles.button}`}
-          disabled={current === labels[index]}
+          className={`pills__item${
+            current === labels[index] ? " pills__item--active" : ""
+          }`}
           onClick={() => onClick(labels[index])}
         >
           {label}
-        </button>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
-
-const styles = {
-  container: css({
-    borderBottom: "1px solid var(--ifm-scrollbar-track-background-color)",
-  }),
-  button: css({
-    "--ifm-button-padding-horizontal": "1rem",
-    "--ifm-button-background-color": "var(--ifm-background-surface-color)",
-    "--ifm-button-color": "var(--ifm-color-emphasis-700)",
-    "--ifm-button-border-color": "var(--ifm-color-emphasis-200)",
-    "&:hover": {
-      "--ifm-button-background-color": "var(--ifm-color-emphasis-100)",
-    },
-    "&:disabled": {
-      "--ifm-button-background-color": "var(--ifm-color-emphasis-100)",
-      "--ifm-button-color": "var(--ifm-color-emphasis-900)",
-      opacity: 1,
-    },
-  }),
-};
