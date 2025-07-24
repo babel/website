@@ -219,8 +219,10 @@ module.exports = {
       label: "Integration Packages",
       items: [
         "babel-cli",
-        "babel-polyfill",
+        "babel-eslint-parser",
+        "babel-eslint-plugin",
         "babel-plugin-transform-runtime",
+        "babel-polyfill",
         "babel-register",
         "babel-standalone",
       ],
