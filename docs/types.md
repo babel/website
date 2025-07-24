@@ -3528,7 +3528,7 @@ See also `t.isTSTypeOperator(node, opts)` and `t.assertTSTypeOperator(node, opts
 
 AST Node `TSTypeOperator` shape:
 - `typeAnnotation`: `TSType` (required)
-- `operator`: `string` (required)
+- `operator`: `string` (default: `'keyof'`)
 
 Aliases: [`TypeScript`](#typescript), [`TSType`](#tstype)
 
