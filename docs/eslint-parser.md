@@ -3,7 +3,6 @@ id: babel-eslint-parser
 title: "@babel/eslint-parser"
 ---
 
-import CodeBlock from '@theme/CodeBlock';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
