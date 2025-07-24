@@ -3,6 +3,10 @@ id: babel-eslint-parser
 title: "@babel/eslint-parser"
 ---
 
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 **@babel/eslint-parser** allows you to lint all valid Babel code with the fantastic
 [ESLint](https://github.com/eslint/eslint).
 
@@ -34,13 +38,34 @@ npm install eslint @babel/core @babel/eslint-parser --save-dev
 
 To use @babel/eslint-parser, `"@babel/eslint-parser"` must be specified as the `parser` in your ESLint configuration file (see [here](https://eslint.org/docs/latest/use/configure/parser) for more detailed information).
 
-**.eslintrc.js**
+<Tabs groupId="eslint-configs">
+<TabItem value="eslint.config.js" label="eslint.config.js" default>
+
+```js
+import babelParser from "@babel/eslint-parser";
+import { defineConfig } from "eslint/config";
+
+export default defineConfig([
+  {
+    files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+    languageOptions: {
+      parser: babelParser,
+    },
+  },
+]);
+```
+
+</TabItem>
+<TabItem value=".eslintrc.js" label=".eslintrc.js">
 
 ```js
 module.exports = {
   parser: "@babel/eslint-parser",
 };
 ```
+
+</TabItem>
+</Tabs>
 
 With the parser set, your configuration can be configured as described in the [Configuring ESLint](https://eslint.org/docs/user-guide/configuring) documentation.
 
@@ -52,7 +77,35 @@ Additional configuration options can be set in your ESLint configuration under t
 
 - `requireConfigFile` (default `true`) can be set to `false` to allow @babel/eslint-parser to run on files that do not have a Babel configuration associated with them. This can be useful for linting files that are not transformed by Babel (such as tooling configuration files), though we recommend using the default parser via [glob-based configuration](https://eslint.org/docs/user-guide/configuring/configuration-files#configuration-based-on-glob-patterns).
   Note: When `requireConfigFile` is `false`, @babel/eslint-parser will still try to load the root babel config. If no configuration file is found, @babel/eslint-parser will not parse any experimental syntax. Though not recommended, if you have a babel config, but would like to prevent @babel/eslint-parser from loading Babel config, please specify
-  **.eslintrc.js**
+
+  <Tabs groupId="eslint-configs">
+  <TabItem value="eslint.config.js" label="eslint.config.js" default>
+
+  ```js
+  import babelParser from "@babel/eslint-parser";
+  import { defineConfig } from "eslint/config";
+
+  export default defineConfig([
+    {
+      files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+      languageOptions: {
+        parser: babelParser,
+        parserOptions: {
+          requireConfigFile: false,
+          babelOptions: {
+            babelrc: false,
+            configFile: false,
+            // your babel options
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
+    },
+  ]);
+  ```
+
+  </TabItem>
+  <TabItem value=".eslintrc.js" label=".eslintrc.js">
 
   ```js
   module.exports = {
@@ -69,6 +122,10 @@ Additional configuration options can be set in your ESLint configuration under t
   };
   ```
 
+  </TabItem>
+  </Tabs>
+  **eslint.config.js**
+
 - `sourceType` can be set to `"module"`(default), `"script"` or `"commonjs"`.
 - `ecmaFeatures.globalReturn` (default `false`) allow return statements in the global scope when used with `sourceType: "script"`. This option will be deprecated, please use `sourceType: "commonjs"` instead.
 - `babelOptions` is an object containing Babel configuration [options](./options.md) that are passed to Babel's parser at runtime. For cases where users might not want to use a Babel configuration file or are running Babel through another tool (such as Webpack with `babel-loader`).
@@ -79,56 +136,183 @@ Additional configuration options can be set in your ESLint configuration under t
 
 :::
 
-#### .eslintrc.js
+#### customize Babel config path
 
-```js
-module.exports = {
-  parser: "@babel/eslint-parser",
-  parserOptions: {
-    sourceType: "module",
-    allowImportExportEverywhere: false,
-    ecmaFeatures: {
-      globalReturn: false,
-    },
-    babelOptions: {
-      configFile: "path/to/config.js",
-    },
-  },
-};
-```
+  <Tabs groupId="eslint-configs">
+  <TabItem value="eslint.config.js" label="eslint.config.js" default>
 
-#### .eslintrc.js using glob-based configuration
+  ```js
+  import babelParser from "@babel/eslint-parser";
+  import { defineConfig } from "eslint/config";
+
+  export default defineConfig([
+    {
+      files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+      languageOptions: {
+        parser: babelParser,
+        parserOptions: {
+          requireConfigFile: false,
+          babelOptions: {
+            babelrc: false,
+            configFile: "path/to/babel.config.js",
+          },
+        },
+      },
+    },
+  ]);
+  ```
+
+  </TabItem>
+  <TabItem value=".eslintrc.js" label=".eslintrc.js">
+
+  ```js
+  module.exports = {
+    parser: "@babel/eslint-parser",
+    parserOptions: {
+      sourceType: "module",
+      allowImportExportEverywhere: false,
+      ecmaFeatures: {
+        globalReturn: false,
+      },
+      babelOptions: {
+        configFile: "path/to/config.js",
+      },
+    },
+  };
+  ```
+
+  </TabItem>
+  </Tabs>
+
+#### use `babel.config.mjs` configuration
+
+  If your Babel config does not contain top-level await, you should be able to use the `.mjs` config directly on Node.js 22.12 or above. Otherwise, you can use the experimental worker implementation. Note that the implementation is still experimental, please report if you find any issue.
+  <Tabs groupId="eslint-configs">
+  <TabItem value="eslint.config.js" label="eslint.config.js" default>
+
+  ```js
+  import babelParserExperimentalWorker from "@babel/eslint-parser/experimental-worker";
+  import { defineConfig } from "eslint/config";
+
+  export default defineConfig([
+    {
+      files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+      languageOptions: {
+        parser: babelParserExperimentalWorker,
+        parserOptions: {
+          requireConfigFile: false,
+          babelOptions: {
+            babelrc: false,
+            configFile: "path/to/babel.config.mjs",
+          },
+        },
+      },
+    },
+  ]);
+  ```
+
+  </TabItem>
+  <TabItem value=".eslintrc.js" label=".eslintrc.js">
+
+  ```js
+  module.exports = {
+    parser: "@babel/eslint-parser/experimental-worker",
+    parserOptions: {
+      requireConfigFile: false,
+      babelOptions: {
+        babelrc: false,
+        configFile: "path/to/babel.config.mjs",
+      },
+    },
+  };
+  ```
+
+  </TabItem>
+  </Tabs>
+
+#### use glob-based configuration
 
 This configuration would use the default parser for all files except for those found by the `"files/transformed/by/babel/*.js"` glob.
 
-```js
-module.exports = {
-  rules: {
-    indent: "error",
-  },
-  overrides: [
+  <Tabs groupId="eslint-configs">
+  <TabItem value="eslint.config.js" label="eslint.config.js" default>
+
+  ```js
+  import babelParser from "@babel/eslint-parser";
+  import { defineConfig } from "eslint/config";
+
+  export default defineConfig([
     {
       files: ["files/transformed/by/babel/*.js"],
-      parser: "@babel/eslint-parser",
+      languageOptions: {
+        parser: babelParser,
+      },
     },
-  ],
-};
-```
+  ]);
+  ```
+
+  </TabItem>
+  <TabItem value=".eslintrc.js" label=".eslintrc.js">
+
+  ```js
+  module.exports = {
+    rules: {
+      indent: "error",
+    },
+    overrides: [
+      {
+        files: ["files/transformed/by/babel/*.js"],
+        parser: "@babel/eslint-parser",
+      },
+    ],
+  };
+  ```
+
+  </TabItem>
+  </Tabs>
 
 #### Monorepo configuration
 
 This configuration is useful for monorepo, when you are running ESLint on every package and not from the monorepo root folder, as it avoids to repeat the Babel and ESLint configuration on every package.
 
-```js
-module.exports = {
-  parser: "@babel/eslint-parser",
-  parserOptions: {
-    babelOptions: {
-      rootMode: "upward",
+  <Tabs groupId="eslint-configs">
+  <TabItem value="eslint.config.js" label="eslint.config.js" default>
+
+  ```js
+  import babelParser from "@babel/eslint-parser";
+  import { defineConfig } from "eslint/config";
+
+  export default defineConfig([
+    {
+      files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+      languageOptions: {
+        parser: babelParser,
+        parserOptions: {
+          babelOptions: {
+            rootMode: "upward",
+          },
+        },
+      },
     },
-  },
-};
-```
+  ]);
+  ```
+
+  </TabItem>
+  <TabItem value=".eslintrc.js" label=".eslintrc.js">
+
+  ```js
+  module.exports = {
+    parser: "@babel/eslint-parser",
+    parserOptions: {
+      babelOptions: {
+        rootMode: "upward",
+      },
+    },
+  };
+  ```
+
+  </TabItem>
+  </Tabs>
 
 ### Run
 
