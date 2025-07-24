@@ -5,6 +5,7 @@ module.exports = function () {
     name: "docusaurus-webpack-plugin",
     configureWebpack() {
       return {
+        devtool: process.env.NODE_ENV === "production" ? false : "source-map",
         plugins: [new MonacoWebpackPlugin()],
       };
     },

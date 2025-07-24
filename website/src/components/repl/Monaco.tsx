@@ -10,18 +10,17 @@ import shikiDarkPlus from "@shikijs/themes/dark-plus";
 import shikiLightPlus from "@shikijs/themes/light-plus";
 import shikiWasm from "@shikijs/engine-oniguruma/wasm-inlined";
 
-import { colors } from "./styles";
-import { preferDarkColorScheme } from "./Utils";
+import { colors } from "./lib/styles";
+import { preferDarkColorScheme } from "./lib/utils";
 
 type Props = {
-  className: string;
+  filename: "input.tsx" | "output.jsx" | "babel.config.json";
   code: string;
   placeholder: string;
   onChange?: (value: string) => void;
-  fileSize: string | boolean;
-  lineWrapping: boolean;
-  errorMessage: string;
-  fastMode?: boolean;
+  fileSize?: string | boolean;
+  lineWrapping?: boolean;
+  errorMessage?: string;
 };
 
 const asyncPromise = (async function () {
@@ -41,11 +40,12 @@ const asyncPromise = (async function () {
     model: monaco.editor.createModel(
       "",
       "typescript",
-      monaco.Uri.file("empty/empty.tsx")
+      monaco.Uri.file("empty.tsx")
     ),
   });
   await new Promise((resolve) => {
     editor.onDidChangeModelLanguageConfiguration(() => {
+      editor.getModel().dispose();
       editor.dispose();
       element.remove();
       resolve(null);
@@ -55,6 +55,7 @@ const asyncPromise = (async function () {
 
 monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
   jsx: monaco.languages.typescript.JsxEmit.React,
+  module: monaco.languages.typescript.ModuleKind.ESNext,
   target: monaco.languages.typescript.ScriptTarget.Latest,
 });
 
@@ -64,19 +65,26 @@ monaco.languages.registerTokensProviderFactory("javascript", {
   },
 });
 
+monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+  comments: "ignore",
+  trailingCommas: "ignore",
+});
+
 export async function load() {
   await asyncPromise;
 }
 
 export function Monaco({
-  className,
+  filename,
   code,
   placeholder,
   onChange,
-  fileSize,
-  lineWrapping,
+  fileSize = false,
+  lineWrapping = true,
   errorMessage,
 }: Props) {
+  if (code == null) code = "";
+
   const container = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line prefer-const
   let [editor, setEditor] =
@@ -85,23 +93,19 @@ export function Monaco({
   useEffect(() => {
     setEditor(
       (editor = monaco.editor.create(container.current, {
-        padding: {
-          top: 2,
-        },
         fontSize: 14,
         // https://github.com/microsoft/monaco-editor/issues/4311
         // automaticLayout: true,
-        model: onChange
-          ? monaco.editor.createModel(
-              code || "",
-              "typescript",
-              monaco.Uri.file("input/input.tsx")
-            )
-          : monaco.editor.createModel(
-              code || "",
-              "javascript",
-              monaco.Uri.file("output/output.jsx")
-            ),
+        model: monaco.editor.createModel(
+          code,
+          {
+            __proto__: null,
+            "input.tsx": "typescript",
+            "output.jsx": "javascript",
+            "babel.config.json": "json",
+          }[filename],
+          monaco.Uri.file(filename)
+        ),
         placeholder,
         scrollBeyondLastLine: false,
         minimap: {
@@ -112,10 +116,8 @@ export function Monaco({
     );
     if (onChange) {
       editor.onDidChangeModelContent(() => {
-        const value = editor.getValue();
-        if (value !== code) {
-          onChange(value);
-        }
+        const value = editor.getValue() || "";
+        onChange(value);
       });
     }
 
@@ -136,25 +138,9 @@ export function Monaco({
   }, []);
 
   useEffect(() => {
-    let rect: {
-      width: number;
-      height: number;
-    } | null = null;
-    const server = new ResizeObserver((entries) => {
+    const server = new ResizeObserver(() => {
       setTimeout(() => {
-        for (const entry of entries) {
-          let { width, height } = entry.contentRect;
-          width = Math.floor(width);
-          height = Math.floor(height);
-
-          if (!rect || rect.width !== width || rect.height !== height) {
-            rect = {
-              width,
-              height,
-            };
-            editor.layout(rect);
-          }
-        }
+        editor.layout();
       }, 0);
     });
     server.observe(container.current);
@@ -171,14 +157,12 @@ export function Monaco({
 
   if (!onChange) {
     useEffect(() => {
-      if (code != null) {
-        editor.setValue(code);
-      }
+      editor.setValue(code);
     }, [code]);
   }
 
   return (
-    <div className={`${styles.panel} ${className}`}>
+    <div className={`${styles.panel}`}>
       <div ref={container} className={styles.editor}>
         {fileSize !== false && (
           <div className={styles.fileSize}>{fileSize}</div>
@@ -202,17 +186,17 @@ const sharedBoxStyles: CSSInterpolation = {
 
 const styles = {
   panel: css({
-    height: "100%",
+    flex: 1,
     display: "flex",
     flexDirection: "column",
     justifyContent: "stretch",
-    overflow: "auto",
+    minHeight: 0,
   }),
   editor: css({
     display: "block",
     height: "100%",
     width: "100%",
-    overflow: "auto",
+    minHeight: 0,
     position: "relative",
   }),
   error: css({

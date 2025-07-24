@@ -1,12 +1,12 @@
 import { css, cx } from "@emotion/css";
 import React, { Component } from "react";
-import { envPresetDefaults, pluginConfigs } from "./PluginConfig";
+import { envPresetDefaults, pluginConfigs } from "./lib/pluginConfig";
 import AccordionTab from "./AccordionTab";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
 import ExternalPlugins from "./ExternalPlugins";
 import Svg from "./Svg";
-import { colors, media } from "./styles";
-import { compareVersions, joinListEnglish } from "./Utils";
+import { colors, media } from "./lib/styles";
+import { compareVersions, joinListEnglish } from "./lib/utils";
 import pastVersions from "./past-versions.json";
 
 import type {
@@ -20,7 +20,7 @@ import type {
   ShippedProposalsState,
   SidebarTabSection,
   SourceType,
-} from "./types";
+} from "./lib/types";
 
 import type { ReactElement, ChangeEvent } from "react";
 

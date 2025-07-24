@@ -1,9 +1,9 @@
 import { css } from "@emotion/css";
 import * as React from "react";
 import Svg from "./Svg";
-import { colors, media } from "./styles";
+import { colors, media } from "./lib/styles";
 
-import type { SidebarTabSection } from "./types";
+import type { SidebarTabSection } from "./lib/types";
 
 import type { ReactElement } from "react";
 
