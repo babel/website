@@ -3,6 +3,9 @@ id: babel-eslint-plugin
 title: "@babel/eslint-plugin"
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Companion rules for [`@babel/eslint-parser`](./eslint-parser.md). `@babel/eslint-parser` does a great job at adapting `eslint`
 for use with Babel, but it can't change the built-in rules to support experimental features.
 `@babel/eslint-plugin` re-implements problematic rules so they do not give false positives or negatives.
@@ -15,20 +18,54 @@ for use with Babel, but it can't change the built-in rules to support experiment
 npm install @babel/eslint-plugin --save-dev
 ```
 
-Load the plugin in your `.eslintrc.json` file:
+Load the plugin in your ESLint config and enable all the rules you would like to use (remember to disable the original ones as well!).
 
-```json
-{
-  "plugins": ["@babel"]
-}
+<Tabs groupId="eslint-configs">
+<TabItem value="eslint.config.js" label="eslint.config.js" default>
+
+```js
+import babelParser from "@babel/eslint-parser";
+import babelPlugin from "@babel/eslint-plugin";
+import { defineConfig } from "eslint/config";
+
+export default defineConfig([
+  {
+    files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+    languageOptions: {
+      parser: babelParser,
+    },
+    plugins: {
+      babel: babelPlugin
+    },
+    rules: {
+      "new-cap": "off",
+      "no-undef": "off",
+      "no-unused-expressions": "off",
+      "object-curly-spacing": "off",
+
+      "babel/new-cap": "error",
+      "babel/no-undef": "error",
+      "babel/no-unused-expressions": "error",
+      "babel/object-curly-spacing": "error"
+    }
+  },
+]);
 ```
 
-Finally enable all the rules you would like to use (remember to disable the
-original ones as well!).
+</TabItem>
+<TabItem value=".eslintrc.json" label=".eslintrc.json">
 
 ```json
 {
+  "plugins": ["@babel"],
   "rules": {
+    "new-cap": "off",
+    "no-invalid-this": "off",
+    "no-undef": "off",
+    "no-unused-expressions": "off",
+    "object-curly-spacing": "off",
+    "semi": "off",
+
     "@babel/new-cap": "error",
     "@babel/no-invalid-this": "error",
     "@babel/no-undef": "error",
@@ -39,18 +76,25 @@ original ones as well!).
 }
 ```
 
+</TabItem>
+</Tabs>
+
 ## Rules
 
 Each rule corresponds to a core `eslint` rule and has the same options.
 
 🛠: means it's autofixable with `--fix`.
 
+:::tip
+On ESLint 8 or above, you can switch to the builtin rules `no-invalid-this` and `semi`.
+:::
+
 - `@babel/new-cap`: handles decorators (`@Decorator`)
-- `@babel/no-invalid-this`: handles class fields and private class methods (`class A { a = this.b; }`)
 - `@babel/no-undef`: handles class accessor properties (`class A { accessor x = 2 }`)
 - `@babel/no-unused-expressions`: handles `do` expressions
-- `@babel/object-curly-spacing`: handles `export * as x from "mod";` (🛠)
-- `@babel/semi`: Handles class properties (🛠)
+- `@babel/object-curly-spacing`: handles export default declaration `export x from "mod";` (🛠)
+- `@babel/no-invalid-this`: handles class fields and private class methods (`class A { a = this.b; }`).
+- `@babel/semi`: Handles class properties (🛠).
 
 ## TypeScript
 
