@@ -3,15 +3,16 @@ import "core-js";
 
 import { cx, css } from "@emotion/css";
 import debounce from "lodash.debounce";
+import json5 from "json5";
 import React, { type ChangeEvent } from "react";
-import { prettySize, compareVersions } from "./Utils";
+import { prettySize, compareVersions } from "./lib/utils";
 import ErrorBoundary from "./ErrorBoundary";
 import { load as loadMonaco, Monaco } from "./Monaco";
 import ReplOptions from "./ReplOptions";
-import StorageService from "./StorageService";
-import UriUtils from "./UriUtils";
-import loadBundle from "./loadBundle";
-import loadPlugin from "./loadPlugin";
+import StorageService from "./lib/storageService";
+import UriUtils from "./lib/uriUtils";
+import loadBundle from "./lib/loadBundle";
+import loadPlugin from "./lib/loadPlugin";
 import TimeTravelSlider from "./TimeTravelSlider";
 import {
   babelConfig,
@@ -20,7 +21,7 @@ import {
   shippedProposalsConfig,
   pluginConfigs,
   runtimePolyfillConfig,
-} from "./PluginConfig";
+} from "./lib/pluginConfig";
 import {
   envConfigToTargetsString,
   replState,
@@ -32,12 +33,12 @@ import {
   persistedStateToPresetsOptions,
   persistedStateToShippedProposalsState,
   persistedStateToExternalPluginsState,
-  provideDefaultOptionsForExternalPlugins,
-} from "./replUtils";
-import WorkerApi from "./WorkerApi";
-import scopedEval from "./scopedEval";
-import { media } from "./styles";
-import { toCamelCase, hasOwnProperty } from "./Utils";
+  buildTransformOpts,
+} from "./lib/replUtils";
+import WorkerApi from "./lib/workerApi";
+import scopedEval from "./lib/scopedEval";
+import { media } from "./lib/styles";
+import { toCamelCase, hasOwnProperty } from "./lib/utils";
 
 import type {
   BabelPresets,
@@ -50,13 +51,15 @@ import type {
   PluginState,
   PluginStateMap,
   SourceType,
-} from "./types";
+} from "./lib/types";
 import ReplLoading from "./ReplLoading";
+import Tabs from "./Tabs";
 
 type Props = object;
 
 type State = {
   babel: BabelState;
+  config: string;
   code: string;
   compiled: string | undefined | null;
   compileErrorMessage: string | undefined | null;
@@ -81,6 +84,8 @@ type State = {
   loadingExternalPlugins: boolean;
   transitions: Array<any>;
   currentTransition: any;
+  leftTab: string;
+  rightTab: string;
 };
 
 const DEBOUNCE_DELAY = 500;
@@ -117,6 +122,7 @@ class Repl extends React.Component<Props, State> {
     // The compile helper will then populate the missing State values.
     this.state = {
       babel: persistedStateToBabelState(persistedState, babelConfig),
+      config: persistedState.config,
       code: persistedState.code,
       compiled: null,
       pluginSearch: "",
@@ -156,6 +162,8 @@ class Repl extends React.Component<Props, State> {
       loadingExternalPlugins: false,
       transitions: [],
       currentTransition: {},
+      leftTab: "code",
+      rightTab: "code",
     };
     this._setupBabel(defaultPresets);
   }
@@ -229,23 +237,52 @@ class Repl extends React.Component<Props, State> {
           <div
             className={cx(styles.panels, !state.timeTravel && styles.panelsMax)}
           >
-            <Monaco
-              className={styles.codePanel}
-              code={state.code}
-              errorMessage={state.compileErrorMessage}
-              fileSize={options.fileSize && state.meta.rawSize}
-              lineWrapping={state.lineWrap}
-              onChange={this._updateCode}
-              placeholder="Write code here"
-            />
-            <Monaco
-              className={styles.codePanel}
-              code={state.compiled}
-              errorMessage={state.evalErrorMessage}
-              fileSize={options.fileSize && state.meta.compiledSize}
-              lineWrapping={state.lineWrap}
-              placeholder="Compiled output will be shown here"
-            />
+            <div className={styles.codePanel}>
+              <Tabs
+                current={state.leftTab}
+                labels={["code", "config"]}
+                onClick={(leftTab) => {
+                  this.setState({ leftTab });
+                }}
+              ></Tabs>
+              {state.leftTab === "code" && (
+                <Monaco
+                  filename="input.tsx"
+                  code={state.code}
+                  errorMessage={state.compileErrorMessage}
+                  fileSize={options.fileSize && state.meta.rawSize}
+                  lineWrapping={state.lineWrap}
+                  onChange={this._updateCode}
+                  placeholder="Write code here"
+                />
+              )}
+              {state.leftTab === "config" && (
+                <Monaco
+                  filename="babel.config.json"
+                  code={state.config}
+                  errorMessage={state.compileErrorMessage}
+                  onChange={this._updateConfig}
+                  placeholder="Write config here"
+                />
+              )}
+            </div>
+            <div className={styles.codePanel}>
+              <Tabs
+                current={state.rightTab}
+                labels={["code"]}
+                onClick={(rightTab) => {
+                  this.setState({ rightTab });
+                }}
+              ></Tabs>
+              <Monaco
+                filename="output.jsx"
+                code={state.compiled}
+                errorMessage={state.evalErrorMessage}
+                fileSize={options.fileSize && state.meta.compiledSize}
+                lineWrapping={state.lineWrap}
+                placeholder="Compiled output will be shown here"
+              />
+            </div>
           </div>
           {state.timeTravel && (
             <TimeTravelSlider
@@ -314,7 +351,7 @@ class Repl extends React.Component<Props, State> {
     }
     // If no plugins are enabled, immediately invoke a new compilation
     if (this._numLoadingPlugins === 0) {
-      this._compileToState(this.state.code);
+      this._compileToState();
     }
 
     // Babel (runtime) polyfill is large;
@@ -467,45 +504,57 @@ class Repl extends React.Component<Props, State> {
       showOfficialExternalPlugins: !state.showOfficialExternalPlugins,
     }));
 
-  _compile = (code: string, setStateCallback: () => unknown) => {
+  _compile = () => {
     const { state } = this;
     const { runtimePolyfillState } = state;
 
     const presetsArray = this._presetsToArray(state);
+    const evaluate =
+      runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded;
+
+    let config;
+    try {
+      config =
+        state.config !== ""
+          ? json5.parse(state.config)
+          : buildTransformOpts(
+              state.babel.version,
+              state.sourceType,
+              runtimePolyfillState.isEnabled,
+              state.externalPlugins,
+              presetsArray,
+              state.envConfig,
+              state.presetsOptions,
+              evaluate
+            );
+      if (typeof config !== "object") {
+        throw new Error("Must be a JSON object");
+      }
+    } catch (error) {
+      this.setState({
+        compileErrorMessage: `Invalid config: ${error.message}`,
+      });
+      return;
+    }
 
     this._workerApi
-      .compile(code, {
-        plugins: state.externalPlugins.map((plugin) => [
-          plugin.name,
-          provideDefaultOptionsForExternalPlugins(
-            plugin.name,
-            state.babel.version
-          ),
-        ]),
-        envConfig: state.envConfig,
-        presetsOptions: state.presetsOptions,
-        evaluate:
-          runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded,
-        presets: presetsArray,
+      .compile(state.code, {
+        evaluate,
         prettify: state.plugins.prettier.isEnabled,
-        sourceMap: runtimePolyfillState.isEnabled,
-        sourceType: state.sourceType,
         getTransitions: state.timeTravel,
+        babelConfig: config,
       })
       .then((result) => {
         result.meta.compiledSize = prettySize(result.meta.compiledSize);
         result.meta.rawSize = prettySize(result.meta.rawSize);
-        this.setState(result, setStateCallback);
+        this.setState(result, this._persistState);
       });
   };
 
   // Debounce compilation since it's expensive.
   // This also avoids prematurely warning the user about invalid syntax,
   // eg when in the middle of typing a variable name.
-  _compileToState: (code: string) => void = debounce(
-    (code: string) => this._compile(code, this._persistState),
-    DEBOUNCE_DELAY
-  );
+  _compileToState: () => void = debounce(() => this._compile(), DEBOUNCE_DELAY);
 
   _onOptionChange =
     (kind: "envConfig" | "presetsOptions") => (name: string, value: any) => {
@@ -594,11 +643,14 @@ class Repl extends React.Component<Props, State> {
       browsers: envConfig.browsers,
       bugfixes: envConfig.isBugfixesEnabled,
       build: state.babel.build,
-      assumptions: JSON.stringify(envConfig.assumptions),
+      assumptions: envConfig.assumptions.length
+        ? JSON.stringify(envConfig.assumptions)
+        : null,
       builtIns: envConfig.builtIns,
       corejs: envConfig.corejs,
       spec: envConfig.isSpecEnabled,
       loose: envConfig.isLooseEnabled,
+      config: state.config,
       code: state.code,
       modules: envConfig.modules,
       forceAllTransforms: envConfig.forceAllTransforms,
@@ -659,7 +711,14 @@ class Repl extends React.Component<Props, State> {
     this.setState({ code });
     // Update state with compiled code, errors, etc after a small delay.
     // This prevents frequent updates while a user is typing.
-    this._compileToState(code);
+    this._compileToState();
+  };
+
+  _updateConfig = (config: string) => {
+    this.setState({ config });
+    // Update state with compiled code, errors, etc after a small delay.
+    // This prevents frequent updates while a user is typing.
+    this._compileToState();
   };
 
   selectTransition = (transition: any) => () => {
@@ -698,6 +757,9 @@ export default function ReplWithErrorBoundary() {
 export const styles = {
   codePanel: css({
     flex: "0 0 50%",
+    display: "flex",
+    flexDirection: "column",
+    minWidth: 0,
     borderRight: `1px solid var(--ifm-scrollbar-track-background-color)`,
   }),
   optionsColumn: css({

@@ -9,6 +9,7 @@ const URL_KEYS = [
   "corejs",
   "spec",
   "loose",
+  "config",
   "code",
   "debug",
   "forceAllTransforms",
@@ -75,12 +76,15 @@ const parseQuery = () => {
       return reduced;
     }, {});
 
-  const state: { code?: string } = {};
+  const state: { code?: string; config?: string } = {};
 
   mergeDefinedKeys(raw, URL_KEYS, state);
 
   if (raw.code_lz != null) {
     state.code = decompress(raw.code_lz || "");
+  }
+  if (raw.config_lz != null) {
+    state.config = decompress(raw.config_lz || "");
   }
 
   return state;
@@ -88,15 +92,16 @@ const parseQuery = () => {
 
 const updateQuery = (state: ReplState) => {
   const query = URL_KEYS.map((key) => {
-    if (state[key] == null) {
+    const value = state[key];
+    if (value == null || value == "") {
       return null;
-    } else if (key === "code") {
-      return `${key}_lz=` + compress(state.code);
+    } else if (key === "code" || key === "config") {
+      return `${key}_lz=` + compress(value);
     } else {
-      return key + "=" + encode(state[key]);
+      return key + "=" + encode(value);
     }
   })
-    .filter((value) => value)
+    .filter(Boolean)
     .join("&");
 
   window.location.hash = "?" + query;

@@ -3,7 +3,7 @@ import * as React from "react";
 import AccordionTab from "./AccordionTab";
 import ExternalPluginsModal from "./ExternalPluginsModal";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
-import type { SidebarTabSection, BabelPlugin } from "./types";
+import type { SidebarTabSection, BabelPlugin } from "./lib/types";
 
 type Props = {
   isExpanded: boolean;
