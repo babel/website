@@ -155,11 +155,10 @@ export function Monaco({
     });
   }, [lineWrapping]);
 
-  if (!onChange) {
-    useEffect(() => {
-      editor.setValue(code);
-    }, [code]);
-  }
+  useEffect(() => {
+    if (editor.getValue() === code) return;
+    editor.setValue(code);
+  }, [code]);
 
   return (
     <div className={`${styles.panel}`}>

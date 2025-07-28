@@ -3,7 +3,6 @@ import "core-js";
 
 import { cx, css } from "@emotion/css";
 import debounce from "lodash.debounce";
-import json5 from "json5";
 import React, { type ChangeEvent } from "react";
 import { prettySize, compareVersions } from "./lib/utils";
 import ErrorBoundary from "./ErrorBoundary";
@@ -25,15 +24,16 @@ import {
 import {
   envConfigToTargetsString,
   replState,
-  configArrayToStateMap,
-  configToState,
+  pluginConfigArrayToStateMap,
+  pluginConfigToState,
   persistedStateToBabelState,
   persistedStateToEnvState,
   persistedStateToEnvConfig,
   persistedStateToPresetsOptions,
   persistedStateToShippedProposalsState,
   persistedStateToExternalPluginsState,
-  buildTransformOpts,
+  stateToConfig,
+  presetsToArray,
 } from "./lib/replUtils";
 import WorkerApi from "./lib/workerApi";
 import scopedEval from "./lib/scopedEval";
@@ -41,7 +41,6 @@ import { media } from "./lib/styles";
 import { toCamelCase, hasOwnProperty } from "./lib/utils";
 
 import type {
-  BabelPresets,
   BabelState,
   BabelPlugin,
   EnvState,
@@ -114,15 +113,13 @@ class Repl extends React.Component<Props, State> {
     const presetsOptions = persistedStateToPresetsOptions(persistedState);
     const envConfig = persistedStateToEnvConfig(persistedState);
     envConfig.assumptions =
-      typeof envConfig.assumptions === "undefined" ? {} : envConfig.assumptions;
-    // const isPresetsTabExpanded = !!presets.filter(preset => preset !== "env")
-    //   .length;
+      envConfig.assumptions === undefined ? {} : envConfig.assumptions;
 
     // A partial State is defined first b'c this._compile needs it.
     // The compile helper will then populate the missing State values.
     this.state = {
       babel: persistedStateToBabelState(persistedState, babelConfig),
-      config: persistedState.config,
+      config: JSON.stringify(JSON.parse(persistedState.config), undefined, 2),
       code: persistedState.code,
       compiled: null,
       pluginSearch: "",
@@ -149,10 +146,10 @@ class Repl extends React.Component<Props, State> {
         compiledSize: 0,
         rawSize: 0,
       },
-      plugins: configArrayToStateMap(pluginConfigs, defaultPlugins),
+      plugins: pluginConfigArrayToStateMap(pluginConfigs, defaultPlugins),
       // Filled in after Babel is loaded
       presets: {},
-      runtimePolyfillState: configToState(
+      runtimePolyfillState: pluginConfigToState(
         runtimePolyfillConfig,
         persistedState.evaluate
       ),
@@ -167,6 +164,114 @@ class Repl extends React.Component<Props, State> {
     };
     this._setupBabel(defaultPresets);
   }
+
+  _configToState = (config: string) => {
+    const state = this.state;
+    const newState: Pick<State, keyof State> = {} as any;
+    let configObject: any;
+    try {
+      configObject = JSON.parse(config);
+    } catch {
+      return;
+    }
+
+    newState.sourceType = configObject.sourceType;
+    newState.externalPlugins = (
+      (configObject.plugins || []) as BabelPlugin[]
+    ).map((plugin) => {
+      if (Array.isArray(plugin)) {
+        return {
+          name: plugin[0],
+          options: plugin[1],
+        };
+      }
+      return {
+        name: plugin,
+        options: undefined,
+      };
+    });
+    newState.envConfig = {
+      ...state.envConfig,
+      assumptions: configObject.assumptions || {},
+    };
+    newState.presets = state.presets;
+    if (configObject.presets?.length) {
+      Object.keys(state.presets).forEach((key) => {
+        for (const preset of configObject.presets) {
+          const presetName = Array.isArray(preset) ? preset[0] : preset;
+          if (presetName === key) {
+            const presetOptions = Array.isArray(preset) ? preset[1] : undefined;
+            newState.presets[key].isEnabled = true;
+            newState.presets[key].options = presetOptions;
+            if (key === "env") {
+              newState.presets[key].options = undefined;
+
+              const envConfig = newState.envConfig;
+              envConfig.isEnvPresetEnabled = true;
+              envConfig.modules = presetOptions.modules || false;
+              envConfig.isBugfixesEnabled = presetOptions.bugfixes || false;
+              envConfig.isSpecEnabled = presetOptions.spec || false;
+              envConfig.isLooseEnabled = presetOptions.loose || false;
+              envConfig.builtIns = presetOptions.useBuiltIns || false;
+              envConfig.corejs = presetOptions.corejs || false;
+              envConfig.forceAllTransforms =
+                presetOptions.forceAllTransforms || false;
+              envConfig.shippedProposals =
+                presetOptions.shippedProposals || false;
+
+              const targets = presetOptions.targets;
+              if (targets == null) {
+                envConfig.browsers = "";
+                envConfig.isElectronEnabled = envConfig.isNodeEnabled = false;
+              } else if (typeof targets === "string") {
+                envConfig.browsers = targets;
+                envConfig.isElectronEnabled = envConfig.isNodeEnabled = false;
+              } else if (typeof targets === "object") {
+                envConfig.browsers = targets.browsers || "";
+                if (targets.electron != null) {
+                  envConfig.isElectronEnabled = true;
+                  envConfig.electron = targets.electron;
+                }
+                if (targets.node != null) {
+                  envConfig.isNodeEnabled = true;
+                  envConfig.node = targets.node;
+                }
+              }
+            }
+            return;
+          }
+        }
+        if (key === "env") {
+          newState.envConfig.isEnvPresetEnabled = false;
+        }
+        newState.presets[key].isEnabled = false;
+        newState.presets[key].options = undefined;
+      });
+    }
+    return newState;
+  };
+
+  _stateToConfig = (state = this.state) => {
+    const configObject = stateToConfig(
+      state.babel.version,
+      state.sourceType,
+      state.externalPlugins,
+      state.presets,
+      state.envConfig,
+      state.presetsOptions
+    );
+    const oldConfigObject =
+      state === this.state ? null : JSON.parse(state.config);
+    if (oldConfigObject) {
+      Object.keys(oldConfigObject).forEach((key) => {
+        if (configObject[key] == null) {
+          configObject[key] = oldConfigObject[key];
+        }
+      });
+    }
+
+    return { config: JSON.stringify(configObject, undefined, 2) };
+  };
 
   render() {
     const state = this.state;
@@ -299,7 +404,6 @@ class Repl extends React.Component<Props, State> {
 
   async _setupBabel(defaultPresets) {
     const babelState = await loadBundle(this.state.babel, this._workerApi);
-    await this._loadInitialExternalPlugins();
 
     if (compareVersions(babelState.version, "7.8.0") === -1) {
       const envState = await this._loadPresetEnvStandalone();
@@ -313,12 +417,28 @@ class Repl extends React.Component<Props, State> {
 
     await loadMonaco();
 
-    this.setState({
+    const presets = pluginConfigArrayToStateMap(
+      babelState.availablePresets,
+      defaultPresets
+    );
+
+    const newState = {
       babel: babelState,
-      presets: configArrayToStateMap(
-        babelState.availablePresets,
-        defaultPresets
-      ),
+      presets,
+      config: this.state.config,
+    };
+
+    if (this.state.config === "{}") {
+      Object.assign(
+        newState,
+        this._stateToConfig({ ...this.state, ...newState })
+      );
+    }
+
+    this.setState(newState, () => {
+      this.setState(this._configToState(newState.config), () => {
+        this._loadInitialExternalPlugins();
+      });
     });
 
     this._checkForUnloadedPlugins();
@@ -401,7 +521,10 @@ class Repl extends React.Component<Props, State> {
           (packageState) => !availablePluginsNames.includes(packageState.label)
         )
         .map((config) =>
-          configToState({ ...config, version: this.state.babel.version }, true)
+          pluginConfigToState(
+            { ...config, version: this.state.babel.version },
+            true
+          )
         );
 
     if (notRegisteredPackages.length) {
@@ -508,25 +631,12 @@ class Repl extends React.Component<Props, State> {
     const { state } = this;
     const { runtimePolyfillState } = state;
 
-    const presetsArray = this._presetsToArray(state);
     const evaluate =
       runtimePolyfillState.isEnabled && runtimePolyfillState.isLoaded;
 
     let config;
     try {
-      config =
-        state.config !== ""
-          ? json5.parse(state.config)
-          : buildTransformOpts(
-              state.babel.version,
-              state.sourceType,
-              runtimePolyfillState.isEnabled,
-              state.externalPlugins,
-              presetsArray,
-              state.envConfig,
-              state.presetsOptions,
-              evaluate
-            );
+      config = JSON.parse(state.config);
       if (typeof config !== "object") {
         throw new Error("Must be a JSON object");
       }
@@ -637,7 +747,7 @@ class Repl extends React.Component<Props, State> {
     const { state } = this;
     const { envConfig, plugins } = state;
 
-    const presetsArray = this._presetsToArray();
+    const presetsArray = presetsToArray(state.presets);
 
     const payload = {
       browsers: envConfig.browsers,
@@ -650,7 +760,7 @@ class Repl extends React.Component<Props, State> {
       corejs: envConfig.corejs,
       spec: envConfig.isSpecEnabled,
       loose: envConfig.isLooseEnabled,
-      config: state.config,
+      config: JSON.stringify(JSON.parse(state.config)),
       code: state.code,
       modules: envConfig.modules,
       forceAllTransforms: envConfig.forceAllTransforms,
@@ -696,16 +806,9 @@ class Repl extends React.Component<Props, State> {
 
   _pluginsUpdatedSetStateCallback = () => {
     this._checkForUnloadedPlugins();
+    this.setState(this._stateToConfig());
     this._updateCode(this.state.code);
   };
-
-  _presetsToArray(state: State = this.state): BabelPresets {
-    const { presets } = state;
-
-    return Object.keys(presets)
-      .filter((key) => presets[key].isEnabled && presets[key].isLoaded)
-      .map((key) => presets[key].config.label);
-  }
 
   _updateCode = (code: string) => {
     this.setState({ code });
@@ -716,6 +819,7 @@ class Repl extends React.Component<Props, State> {
 
   _updateConfig = (config: string) => {
     this.setState({ config });
+    this.setState(this._configToState(config));
     // Update state with compiled code, errors, etc after a small delay.
     // This prevents frequent updates while a user is typing.
     this._compileToState();

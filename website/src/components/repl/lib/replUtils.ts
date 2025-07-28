@@ -101,19 +101,19 @@ export const persistedStateToShippedProposalsState = (
   isEnabled,
 });
 
-export const configArrayToStateMap = (
+export const pluginConfigArrayToStateMap = (
   pluginConfigs: PluginConfigs,
   defaults: DefaultPlugins = {}
 ): PluginStateMap =>
   pluginConfigs.reduce((reduced, config) => {
-    reduced[config.package || config.label] = configToState(
+    reduced[config.package || config.label] = pluginConfigToState(
       config,
       defaults[config.package || config.label] === true
     );
     return reduced;
   }, {});
 
-export const configToState = (
+export const pluginConfigToState = (
   config: PluginConfig,
   isEnabled: boolean = false
 ): PluginState => ({
@@ -123,6 +123,7 @@ export const configToState = (
   isLoaded: config.isPreLoaded === true,
   isLoading: false,
   plugin: null,
+  options: null,
 });
 
 export const persistedStateToPresetsOptions = (
@@ -224,6 +225,65 @@ export const persistedStateToExternalPluginsState = (
   });
 };
 
+export function provideDefaultOptionsForPresets(
+  preset: string,
+  presetEnvOptions: any,
+  presetsOptions: PresetsOptions,
+  version: string
+) {
+  if (preset === "env") {
+    return ["env", presetEnvOptions];
+  }
+  if (
+    version &&
+    compareVersions(version, "8.0.0") < 0 &&
+    preset === "typescript"
+  ) {
+    return [
+      "typescript",
+      {
+        allowDeclareFields: true,
+        allowNamespaces: true,
+      },
+    ];
+  }
+
+  if (/^stage-[0-3]$/.test(preset)) {
+    const version = presetsOptions.decoratorsVersion;
+    const decoratorsLegacy = version === "legacy" || undefined;
+
+    const decoratorsBeforeExport = [
+      "legacy",
+      "2022-03",
+      "2023-01",
+      "2023-05",
+      "2023-11",
+    ].includes(version)
+      ? undefined
+      : presetsOptions.decoratorsBeforeExport;
+
+    return [
+      preset,
+      {
+        // pass decoratorsLegacy for Babel < 7.17
+        decoratorsLegacy,
+        decoratorsVersion: decoratorsLegacy ? undefined : version,
+        decoratorsBeforeExport,
+        pipelineProposal: presetsOptions.pipelineProposal,
+      },
+    ];
+  }
+  if (preset === "react") {
+    return [
+      "react",
+      {
+        runtime: presetsOptions.reactRuntime,
+      },
+    ];
+  }
+  return preset;
+}
+
 export function provideDefaultOptionsForExternalPlugins(
   pluginName,
   babelVersion
@@ -262,6 +322,12 @@ export function provideDefaultOptionsForExternalPlugins(
   }
 }
 
+export function presetsToArray(presets: PluginStateMap): BabelPresets {
+  return Object.keys(presets)
+    .filter((key) => presets[key].isEnabled && presets[key].isLoaded)
+    .map((key) => presets[key].config.label);
+}
+
 function guessFileExtension(presets: BabelPresets): SupportedFileExtension {
   let ext = ".js";
   if (presets.includes("typescript")) {
@@ -278,15 +344,12 @@ export function buildTransformOpts(
   sourceType: SourceType,
   sourceMap: boolean,
   plugins: any[],
-  presets: BabelPresets,
-  envConfig: EnvConfig,
+  presets: PluginStateMap,
   presetsOptions: PresetsOptions,
+  envConfig: EnvConfig,
   evaluate: boolean
 ) {
-  plugins = plugins.map((plugin) => [
-    plugin.name,
-    provideDefaultOptionsForExternalPlugins(plugin.name, version),
-  ]);
+  const presetsArray = presetsToArray(presets);
 
   let useBuiltIns: false | "entry" | "usage" = false;
   let corejs = "3.42";
@@ -303,18 +366,21 @@ export function buildTransformOpts(
     bugfixes?: boolean;
   };
 
-  if (envConfig && envConfig.isEnvPresetEnabled) {
-    const targets: any = {};
+  if (envConfig?.isEnvPresetEnabled) {
+    let targets: any = {};
     const { forceAllTransforms, shippedProposals, modules } = envConfig;
 
     if (envConfig.browsers) {
-      targets.browsers = envConfig.browsers
-        .split(",")
-        .map((value) => value.trim())
-        .filter((value) => value);
+      targets.browsers = envConfig.browsers;
     }
     if (envConfig.isElectronEnabled) {
       targets.electron = envConfig.electron;
+    }
+    if (envConfig.isNodeEnabled) {
+      targets.node = envConfig.node;
+    }
+    if (Object.keys(targets).length === 1 && targets.browsers) {
+      targets = envConfig.browsers;
     }
     if (envConfig.isBuiltInsEnabled) {
       useBuiltIns = (!evaluate && envConfig.builtIns) as
@@ -324,9 +390,6 @@ export function buildTransformOpts(
       if (envConfig.corejs) {
         corejs = envConfig.corejs;
       }
-    }
-    if (envConfig.isNodeEnabled) {
-      targets.node = envConfig.node;
     }
 
     presetEnvOptions = {
@@ -358,63 +421,17 @@ export function buildTransformOpts(
   }
 
   const babelConfig = {
-    babelrc: false,
-    filename: "repl" + guessFileExtension(presets),
+    filename: "repl" + guessFileExtension(presetsArray),
     sourceMap: sourceMap,
-
-    presets: presets.map((preset) => {
-      if (typeof preset !== "string") return preset;
-      if (preset === "env") {
-        return ["env", presetEnvOptions];
-      }
-      if (
-        version &&
-        compareVersions(version, "8.0.0") < 0 &&
-        preset === "typescript"
-      ) {
-        return [
-          "typescript",
-          {
-            allowDeclareFields: true,
-            allowNamespaces: true,
-          },
-        ];
-      }
-
-      if (/^stage-[0-3]$/.test(preset)) {
-        const version = presetsOptions.decoratorsVersion;
-        const decoratorsLegacy = version === "legacy" || undefined;
-
-        const decoratorsBeforeExport = [
-          "legacy",
-          "2022-03",
-          "2023-01",
-          "2023-05",
-          "2023-11",
-        ].includes(version)
-          ? undefined
-          : presetsOptions.decoratorsBeforeExport;
-
-        return [
-          preset,
-          {
-            // pass decoratorsLegacy for Babel < 7.17
-            decoratorsLegacy,
-            decoratorsVersion: decoratorsLegacy ? undefined : version,
-            decoratorsBeforeExport,
-            pipelineProposal: presetsOptions.pipelineProposal,
-          },
-        ];
-      }
-      if (preset === "react") {
-        return [
-          "react",
-          {
-            runtime: presetsOptions.reactRuntime,
-          },
-        ];
-      }
-      return preset;
+    presets: presetsArray.map((name) => {
+      return presets[name].options
+        ? [name, presets[name].options]
+        : provideDefaultOptionsForPresets(
+            name,
+            presetEnvOptions,
+            presetsOptions,
+            version
+          );
     }),
     plugins: plugins,
     sourceType,
@@ -425,4 +442,56 @@ export function buildTransformOpts(
   }
 
   return babelConfig;
+}
+
+export function stateToConfig(
+  version: string,
+  sourceType: SourceType,
+  plugins: BabelPlugin[],
+  presets: PluginStateMap,
+  envConfig: EnvConfig,
+  presetsOptions: PresetsOptions
+) {
+  const config = buildTransformOpts(
+    version,
+    sourceType,
+    undefined,
+    plugins.map((plugin) => [
+      plugin.name,
+      plugin.options ??
+        provideDefaultOptionsForExternalPlugins(plugin.name, version),
+    ]),
+    presets,
+    presetsOptions,
+    envConfig,
+    undefined
+  ) as any;
+  const presetEnvOptions = config.presets?.find(
+    (preset) => preset[0] === "env"
+  )?.[1];
+  if (presetEnvOptions) {
+    const defaults = {
+      forceAllTransforms: false,
+      shippedProposals: false,
+      useBuiltIns: false,
+      spec: false,
+      loose: false,
+    };
+    Object.keys(presetEnvOptions).forEach((key) => {
+      if (presetEnvOptions[key] === defaults[key]) {
+        delete presetEnvOptions[key];
+      }
+    });
+  }
+
+  if (!config?.presets.length) {
+    delete config.presets;
+  }
+  if (!config?.plugins.length) {
+    delete config.plugins;
+  }
+  if (config.assumptions && Object.keys(config.assumptions).length === 0) {
+    delete config.assumptions;
+  }
+  return config;
 }
