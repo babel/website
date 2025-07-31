@@ -77,8 +77,14 @@ export default class ExternalPlugins extends React.Component<Props, State> {
           <li key={p.name}>
             <span className={currentStyles.pluginName}>
               {p.name}
-              {/* {" "}
-              <span className={currentStyles.pluginVersion}>v{p.version}</span> */}
+              {p.version ? " " : ""}
+              {p.version ? (
+                <span className={currentStyles.pluginVersion}>
+                  v{p.version}
+                </span>
+              ) : (
+                ""
+              )}
             </span>
             <button
               className={currentStyles.pluginActions}

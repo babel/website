@@ -92,6 +92,7 @@ const DEBOUNCE_DELAY = 500;
 class Repl extends React.Component<Props, State> {
   _numLoadingPlugins = 0;
   _workerApi = new WorkerApi();
+  _availablePlugins: Array<string> = [];
 
   constructor(props: Props) {
     super(props);
@@ -179,15 +180,27 @@ class Repl extends React.Component<Props, State> {
     newState.externalPlugins = (
       (configObject.plugins || []) as BabelPlugin[]
     ).map((plugin) => {
+      let name: string;
+      let version;
+      let options;
       if (Array.isArray(plugin)) {
-        return {
-          name: plugin[0],
-          options: plugin[1],
-        };
+        name = plugin[0] + "";
+        options = plugin[1];
+      } else {
+        name = plugin + "";
+      }
+      const arr = name.split("@");
+      if (arr.length === 3) {
+        name = arr[0] + "@" + arr[1];
+        version = arr[2];
+      } else if (arr.length === 2 && arr[0] !== "") {
+        name = arr[0];
+        version = arr[1];
       }
       return {
-        name: plugin,
-        options: undefined,
+        name,
+        version,
+        options,
       };
     });
     newState.envConfig = {
@@ -415,6 +428,8 @@ class Repl extends React.Component<Props, State> {
       }
     }
 
+    this._availablePlugins = await this._workerApi.getAvailablePlugins();
+
     await loadMonaco();
 
     const presets = pluginConfigArrayToStateMap(
@@ -551,6 +566,17 @@ class Repl extends React.Component<Props, State> {
     return { didError: false, isLoaded: true, errorMessage: null };
   }
 
+  _getBundledPluginName(plugin: BabelPlugin) {
+    // use available plugins from @babel/standalone for official external plugins
+    if (plugin.name.startsWith("@babel/plugin-")) {
+      const shorthandName = plugin.name.replace("@babel/plugin-", "");
+      if (this._availablePlugins.includes(shorthandName)) {
+        return shorthandName;
+      }
+    }
+    return false;
+  }
+
   _loadInitialExternalPlugins = () => {
     return Promise.all(
       this.state.externalPlugins.map((plugin) =>
@@ -560,18 +586,14 @@ class Repl extends React.Component<Props, State> {
   };
 
   _loadExternalPlugin = async (plugin: BabelPlugin) => {
-    // use available plugins from @babel/standalone for official external plugins
-    if (plugin.name.startsWith("@babel/plugin-")) {
-      const availablePlugins = await this._workerApi.getAvailablePlugins();
-      const shorthandName = plugin.name.replace("@babel/plugin-", "");
-      if (availablePlugins.includes(shorthandName)) {
-        return this._workerApi.registerPluginAlias(plugin.name, shorthandName);
-      }
+    const shorthandName = this._getBundledPluginName(plugin);
+    if (shorthandName) {
+      return this._workerApi.registerPluginAlias(plugin.name, shorthandName);
     }
-    const bundledUrl = [
-      "https://bundle.run",
-      "https://packd.liuxingbaoyu.xyz",
-    ].map((url) => `${url}/${plugin.name}@${plugin.version}`);
+
+    const bundledUrl = ["https://packd.liuxingbaoyu.xyz"].map(
+      (url) => `${url}/${plugin.name}@${plugin.version}`
+    );
 
     return this._workerApi.loadExternalPlugin(bundledUrl).then((loaded) => {
       if (loaded === false) {
@@ -583,7 +605,9 @@ class Repl extends React.Component<Props, State> {
       return this._workerApi.registerPlugins([
         {
           instanceName: toCamelCase(plugin.name),
-          pluginName: plugin.name,
+          pluginName: plugin.version
+            ? `${plugin.name}@${plugin.version}`
+            : plugin.name,
         },
       ]);
     });
@@ -602,6 +626,11 @@ class Repl extends React.Component<Props, State> {
 
     if (!pluginExists) {
       this.setState({ loadingExternalPlugins: true });
+
+      const shorthandName = this._getBundledPluginName(plugin);
+      if (shorthandName) {
+        plugin = { ...plugin, version: "" };
+      }
 
       this._loadExternalPlugin(plugin)
         .then(() => {

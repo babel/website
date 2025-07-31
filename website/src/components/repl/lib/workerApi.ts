@@ -83,8 +83,7 @@ export default class WorkerApi {
   loadPlugin(state: PluginState): Promise<boolean> {
     const { config } = state;
 
-    const base = config.baseUrl ? [config.baseUrl] : ["https://bundle.run"];
-    Array.prototype.push.apply(base, ["https://packd.liuxingbaoyu.xyz"]);
+    const base = ["https://packd.liuxingbaoyu.xyz"];
 
     const urls = config.url
       ? [config.url]

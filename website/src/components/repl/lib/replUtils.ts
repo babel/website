@@ -457,7 +457,7 @@ export function stateToConfig(
     sourceType,
     undefined,
     plugins.map((plugin) => [
-      plugin.name,
+      plugin.version ? plugin.name + "@" + plugin.version : plugin.name,
       plugin.options ??
         provideDefaultOptionsForExternalPlugins(plugin.name, version),
     ]),
