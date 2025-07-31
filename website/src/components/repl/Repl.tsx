@@ -177,6 +177,10 @@ class Repl extends React.Component<Props, State> {
     }
 
     newState.sourceType = configObject.sourceType;
+    const pluginExists = new Set<string>(
+      state.externalPlugins.map((p) => p.name)
+    );
+    const needsLoadedPlugins = [];
     newState.externalPlugins = (
       (configObject.plugins || []) as BabelPlugin[]
     ).map((plugin) => {
@@ -196,6 +200,13 @@ class Repl extends React.Component<Props, State> {
       } else if (arr.length === 2 && arr[0] !== "") {
         name = arr[0];
         version = arr[1];
+      }
+      if (!pluginExists.has(name)) {
+        needsLoadedPlugins.push({
+          name,
+          version,
+          options,
+        });
       }
       return {
         name,
@@ -261,7 +272,7 @@ class Repl extends React.Component<Props, State> {
         newState.presets[key].options = undefined;
       });
     }
-    return newState;
+    return { newState, needsLoadedPlugins };
   };
 
   _stateToConfig = (state = this.state) => {
@@ -451,7 +462,7 @@ class Repl extends React.Component<Props, State> {
     }
 
     this.setState(newState, () => {
-      this.setState(this._configToState(newState.config), () => {
+      this.setState(this._configToState(newState.config).newState, () => {
         this._loadInitialExternalPlugins();
       });
     });
@@ -574,7 +585,6 @@ class Repl extends React.Component<Props, State> {
         return shorthandName;
       }
     }
-    return false;
   }
 
   _loadInitialExternalPlugins = () => {
@@ -848,10 +858,16 @@ class Repl extends React.Component<Props, State> {
 
   _updateConfig = (config: string) => {
     this.setState({ config });
-    this.setState(this._configToState(config));
-    // Update state with compiled code, errors, etc after a small delay.
-    // This prevents frequent updates while a user is typing.
-    this._compileToState();
+    const { newState, needsLoadedPlugins } = this._configToState(config);
+    this.setState({ ...newState, loadingExternalPlugins: false });
+    Promise.all(
+      needsLoadedPlugins.map((v) => this._loadExternalPlugin(v))
+    ).finally(() => {
+      this.setState({ loadingExternalPlugins: false });
+      // Update state with compiled code, errors, etc after a small delay.
+      // This prevents frequent updates while a user is typing.
+      this._compileToState();
+    });
   };
 
   selectTransition = (transition: any) => () => {
