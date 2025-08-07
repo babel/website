@@ -308,7 +308,7 @@ along with the original repo root.
 
 JS config files may export a function that will be passed config API:
 
-````babel7
+:::babel7
 
 ```js title="babel.config.js"
 module.exports = function(api) {
@@ -316,9 +316,9 @@ module.exports = function(api) {
 };
 ```
 
-````
+:::
 
-````babel8
+:::babel8
 
 ```js title="babel.config.js"
 /**
@@ -330,7 +330,7 @@ module.exports = function(api) {
 };
 ```
 
-````
+:::
 
 The ConfigAPI object `api` provides the following properties or methods:
 
