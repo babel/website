@@ -306,16 +306,33 @@ along with the original repo root.
 
 ## Config Function API
 
-JS config files may export a function that will be passed config function API:
+JS config files may export a function that will be passed config API:
 
-```js title="JavaScript"
+:::babel7
+
+```js title="babel.config.js"
 module.exports = function(api) {
   return {};
 };
 ```
 
-The `api` object exposes everything Babel itself exposes from its index module, along with
-config-file specific APIs:
+:::
+
+:::babel8
+
+```js title="babel.config.js"
+/**
+ * @param {import("@babel/core").ConfigAPI} api
+ * @returns {import("@babel/core").InputOptions}
+ */
+module.exports = function(api) {
+  return {};
+};
+```
+
+:::
+
+The ConfigAPI object `api` provides the following properties or methods:
 
 ### `api.version`
 
