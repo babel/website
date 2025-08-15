@@ -5,3 +5,5 @@ i18n/
 
 # Automatically generated
 docs/types.md
+website/static/js/build/
+website/static/repl/
