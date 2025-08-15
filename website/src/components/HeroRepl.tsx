@@ -172,6 +172,15 @@ export default () => {
       outEditor = setupEditor("hero-repl-out", true);
       outEditor.renderer.$cursorLayer.element.style.display = "none";
 
+      inEditor.session.on("change", () => {
+        if (!inEditor.getValue()) {
+          debouncedUpdate.cancel();
+          outEditor.setValue("");
+        }
+
+        debouncedUpdate();
+      });
+
       setTimeout(function () {
         document
           .querySelector(".hero-repl")
@@ -188,14 +197,6 @@ export default () => {
           <div
             id="hero-repl-in"
             className="hero-repl__code"
-            onChange={() => {
-              if (!inEditor.getValue()) {
-                debouncedUpdate.cancel();
-                outEditor.setValue("");
-              }
-
-              debouncedUpdate();
-            }}
             onClick={() => {
               if (runDemo) {
                 debouncedUpdate.cancel();
