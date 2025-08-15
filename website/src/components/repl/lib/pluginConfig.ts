@@ -93,7 +93,7 @@ const replDefaults: ReplState = {
   builtIns: false,
   spec: false,
   loose: false,
-  config: "",
+  config: "{}",
   code: "",
   evaluate: false,
   fileSize: false,

@@ -1,8 +1,9 @@
-export type BabelPresets = Array<string | Array<string | any>>;
+export type BabelPresets = Array<string>;
 export type BabelPlugins = Array<string | [string, any]>;
 export type BabelPlugin = {
   name: string;
-  version: string;
+  version?: string;
+  options?: any;
 };
 
 type decoratorsVersion =
@@ -98,6 +99,7 @@ export type PluginState = LazyLoadedState & {
   config: PluginConfig;
   isEnabled: boolean;
   plugin: any;
+  options: any;
 };
 
 export type PluginStateMap = {

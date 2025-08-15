@@ -2,7 +2,7 @@ import LZString from "lz-string";
 
 import type { ReplState } from "./types";
 
-const URL_KEYS = [
+const INPUT_URL_KEYS = [
   "browsers",
   "build",
   "builtIns",
@@ -11,7 +11,6 @@ const URL_KEYS = [
   "loose",
   "config",
   "code",
-  "debug",
   "forceAllTransforms",
   "modules",
   "shippedProposals",
@@ -28,6 +27,18 @@ const URL_KEYS = [
   "assumptions",
 ];
 
+const OUTPUT_URL_KEYS = [
+  "build",
+  "config",
+  "code",
+  "evaluate",
+  "fileSize",
+  "timeTravel",
+  "lineWrap",
+  "prettier",
+  "version",
+];
+
 const compress = (string: string) =>
   LZString.compressToBase64(string)
     .replace(/\+/g, "-") // Convert '+' to '-'
@@ -40,16 +51,6 @@ const decompress = (string: string) =>
       .replace(/-/g, "+") // Convert '-' to '+'
       .replace(/_/g, "/") // Convert '_' to '/'
   );
-
-const encode = (value: any) => window.encodeURIComponent(value);
-
-const decode = (value: any) => {
-  try {
-    return window.decodeURIComponent("" + value);
-  } catch (_) {
-    return value;
-  }
-};
 
 const mergeDefinedKeys = (raw: any, keys: Array<string>, target: any) => {
   keys.forEach((key) => {
@@ -65,9 +66,9 @@ const parseQuery = () => {
     .split("&")
     .reduce((reduced: any, pair: string) => {
       const pieces = pair.split("=");
-      const name = decodeURIComponent("" + pieces[0]);
+      const name = decodeURIComponent(pieces[0]);
 
-      let value: string | boolean = decodeURIComponent("" + pieces[1]);
+      let value: string | boolean = decodeURIComponent(pieces[1]);
       if (value === "true" || value === "false") {
         value = value === "true";
       }
@@ -78,7 +79,7 @@ const parseQuery = () => {
 
   const state: { code?: string; config?: string } = {};
 
-  mergeDefinedKeys(raw, URL_KEYS, state);
+  mergeDefinedKeys(raw, INPUT_URL_KEYS, state);
 
   if (raw.code_lz != null) {
     state.code = decompress(raw.code_lz || "");
@@ -91,14 +92,14 @@ const parseQuery = () => {
 };
 
 const updateQuery = (state: ReplState) => {
-  const query = URL_KEYS.map((key) => {
+  const query = OUTPUT_URL_KEYS.map((key) => {
     const value = state[key];
     if (value == null || value == "") {
       return null;
     } else if (key === "code" || key === "config") {
       return `${key}_lz=` + compress(value);
     } else {
-      return key + "=" + encode(value);
+      return key + "=" + encodeURIComponent(value);
     }
   })
     .filter(Boolean)
@@ -109,9 +110,7 @@ const updateQuery = (state: ReplState) => {
 
 export default {
   compress,
-  decode,
   decompress,
-  encode,
   parseQuery,
   updateQuery,
 };
