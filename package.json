@@ -36,13 +36,13 @@
     "@docusaurus/module-type-aliases": "^3.8.1",
     "@docusaurus/preset-classic": "^3.8.1",
     "@docusaurus/remark-plugin-npm2yarn": "^3.8.1",
-    "@eslint/js": "^9.24.0",
+    "@eslint/js": "^9.35.0",
     "@types/node": "^24.0.4",
     "@types/react": "^19.1.1",
-    "eslint": "^9.24.0",
+    "eslint": "^9.35.0",
     "eslint-formatter-codeframe": "^7.32.1",
     "eslint-plugin-react": "^7.37.5",
-    "globals": "^16.0.0",
+    "globals": "^16.4.0",
     "husky": "^8.0.1",
     "json5": "^2.2.3",
     "lint-staged": "^13.0.3",
@@ -58,7 +58,7 @@
     "remark-lint-no-literal-urls": "^3.1.1",
     "remark-preset-lint-recommended": "^6.1.2",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.39.1"
+    "typescript-eslint": "^8.43.0"
   },
   "dependencies": {
     "@emotion/css": "^11.10.6",
