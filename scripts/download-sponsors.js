@@ -98,7 +98,19 @@ const getAllNodes = async (
       method: "POST",
       body: JSON.stringify(body),
       headers,
-    }).then((response) => response.json());
+    })
+      .then((response) => {
+        if (process.env.OC_DEBUG) {
+          console.log("Variables", body.variables);
+          console.log(
+            "Rate-limit Remaining",
+            response.headers.get("x-ratelimit-remaining")
+          );
+          console.log("Execution Time", response.headers.get("execution-time"));
+        }
+        return response;
+      })
+      .then((response) => response.json());
     if (result.errors) {
       const {
         extensions: { code },
