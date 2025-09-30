@@ -82,7 +82,7 @@ const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
   // Handling pagination if necessary
   while (true) {
     const headers = {
-      "User-Agent": "Babel download-sponsors",
+      "User-Agent": "node",
       "Content-Type": "application/json",
     };
     if (process.env.OC_API_TOKEN) {
