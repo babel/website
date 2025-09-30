@@ -2,6 +2,7 @@
 // Downloads sponsors data from the Open Collective API.
 
 const fs = require("fs").promises;
+const playwright = require("playwright");
 
 const graphqlEndpoint = "https://api.opencollective.com/graphql/v2";
 
@@ -76,23 +77,39 @@ const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
       ).toISOString(),
     },
   };
+  let resolveResult;
+
+  const browser = await playwright.chromium.launch();
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  page.route(graphqlEndpoint, (route) => {
+    route.continue({
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      postData: JSON.stringify(body),
+    });
+  });
+  page.on("response", async (response) => {
+    if (
+      response.url() === graphqlEndpoint &&
+      (await response.headerValue("content-type")).includes("application/json")
+    ) {
+      const result = await response.text();
+      console.log(result);
+      resolveResult(JSON.parse(result));
+    }
+  });
 
   const allNodes = [];
 
   // Handling pagination if necessary
   while (true) {
-    const headers = {
-      "Content-Type": "application/json",
-    };
-    if (process.env.OC_API_TOKEN) {
-      headers["Personal-Token"] = process.env.OC_API_TOKEN;
-    }
-
-    const result = await fetch(graphqlEndpoint, {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers,
-    }).then((response) => response.json());
+    page.goto(graphqlEndpoint);
+    const result = await new Promise((resolve) => {
+      resolveResult = resolve;
+    });
     if (result.errors) {
       const {
         extensions: { code },
@@ -105,6 +122,7 @@ const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
     allNodes.push(...nodes);
     body.variables.offset += graphqlPageSize;
     if (nodes.length < graphqlPageSize) {
+      await browser.close();
       return allNodes;
     } else {
       // sleep for a while
