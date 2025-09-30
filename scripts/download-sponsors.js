@@ -3,7 +3,7 @@
 
 const fs = require("fs").promises;
 
-const graphqlEndpoint = "https://api.opencollective.com/graphql/v2";
+const graphqlEndpoint = "https://api.opencollective.com/graphql/v2/foobar";
 
 // all from webpack: https://github.com/webpack/webpack.js.org/blob/master/src/utilities/fetch-supporters.js
 const REQUIRED_KEYS = ["totalDonations", "slug", "name"];
