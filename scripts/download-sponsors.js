@@ -10,7 +10,7 @@ const REQUIRED_KEYS = ["totalDonations", "slug", "name"];
 const sponsorsFile = `${__dirname}/../website/data/sponsors.json`;
 
 // https://github.com/opencollective/opencollective-api/blob/master/server/graphql/v2/query/TransactionsQuery.ts#L81
-const graphqlPageSize = 100;
+const defaultGraphqlPageSize = 1000;
 
 const membersGraphqlQuery = `query account($limit: Int, $offset: Int) {
   account(slug: "babel") {
@@ -63,7 +63,12 @@ const nodeToSupporter = (node) => ({
   monthlyDonations: 0,
 });
 
-const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
+const getAllNodes = async (
+  graphqlQuery,
+  getNodes,
+  time = "year",
+  graphqlPageSize = defaultGraphqlPageSize
+) => {
   const body = {
     query: graphqlQuery,
     variables: {
@@ -133,7 +138,9 @@ const uniqBy = (arr, predicate) => {
 (async () => {
   const members = await getAllNodes(
     membersGraphqlQuery,
-    (data) => data.account.members.nodes
+    (data) => data.account.members.nodes,
+    "year",
+    500
   );
   let supporters = members
     .map(nodeToSupporter)
