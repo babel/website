@@ -10,7 +10,7 @@ const REQUIRED_KEYS = ["totalDonations", "slug", "name"];
 const sponsorsFile = `${__dirname}/../website/data/sponsors.json`;
 
 // https://github.com/opencollective/opencollective-api/blob/master/server/graphql/v2/query/TransactionsQuery.ts#L81
-const graphqlPageSize = 1000;
+const graphqlPageSize = 100;
 
 const membersGraphqlQuery = `query account($limit: Int, $offset: Int) {
   account(slug: "babel") {
