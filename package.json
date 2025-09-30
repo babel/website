@@ -6,7 +6,7 @@
   "main": "",
   "scripts": {
     "bootstrap": "yarn bootstrap:sponsors && yarn build",
-    "bootstrap:sponsors": "npx playwright install --with-deps chromium-headless-shell && node ./scripts/download-sponsors.js",
+    "bootstrap:sponsors": "npx playwright install chromium-headless-shell && node ./scripts/download-sponsors.js",
     "build": "yarn build:docusaurus && yarn build:redirects",
     "build:docusaurus": "cd website && yarn && yarn build --out-dir build/babel",
     "build:redirects": "node -e \"fs.cpSync('./_redirects', './website/build/babel/_redirects', { force: true })\"",
