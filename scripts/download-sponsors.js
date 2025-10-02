@@ -10,7 +10,7 @@ const REQUIRED_KEYS = ["totalDonations", "slug", "name"];
 const sponsorsFile = `${__dirname}/../website/data/sponsors.json`;
 
 // https://github.com/opencollective/opencollective-api/blob/master/server/graphql/v2/query/TransactionsQuery.ts#L81
-const graphqlPageSize = 1000;
+const defaultGraphqlPageSize = 1000;
 
 const membersGraphqlQuery = `query account($limit: Int, $offset: Int) {
   account(slug: "babel") {
@@ -63,7 +63,12 @@ const nodeToSupporter = (node) => ({
   monthlyDonations: 0,
 });
 
-const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
+const getAllNodes = async (
+  graphqlQuery,
+  getNodes,
+  time = "year",
+  graphqlPageSize = defaultGraphqlPageSize
+) => {
   const body = {
     query: graphqlQuery,
     variables: {
@@ -82,6 +87,7 @@ const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
   // Handling pagination if necessary
   while (true) {
     const headers = {
+      "User-Agent": "babel.github.io download-sponsors",
       "Content-Type": "application/json",
     };
     if (process.env.OC_API_TOKEN) {
@@ -92,7 +98,19 @@ const getAllNodes = async (graphqlQuery, getNodes, time = "year") => {
       method: "POST",
       body: JSON.stringify(body),
       headers,
-    }).then((response) => response.json());
+    })
+      .then((response) => {
+        if (process.env.OC_DEBUG) {
+          console.log("Variables", body.variables);
+          console.log(
+            "Rate-limit Remaining",
+            response.headers.get("x-ratelimit-remaining")
+          );
+          console.log("Execution Time", response.headers.get("execution-time"));
+        }
+        return response;
+      })
+      .then((response) => response.json());
     if (result.errors) {
       const {
         extensions: { code },
@@ -132,7 +150,9 @@ const uniqBy = (arr, predicate) => {
 (async () => {
   const members = await getAllNodes(
     membersGraphqlQuery,
-    (data) => data.account.members.nodes
+    (data) => data.account.members.nodes,
+    "year",
+    500
   );
   let supporters = members
     .map(nodeToSupporter)
