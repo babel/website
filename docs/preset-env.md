@@ -82,31 +82,27 @@ For usage, refer to the [`targets` option](options.md#targets) documentation.
 
 ### `bugfixes`
 
-:::babel8
-
-`boolean`, defaults to `true`.
-
-:::
-
-:::babel7
+::::babel7
 
 `boolean`, defaults to `false`.
 
-:::
-
 Added in: `v7.9.0`
 
-::::babel7
-
 :::note
-This option will be enabled by default in Babel 8.
+This option will be always enabled and thus removed in Babel 8.
 :::
-
-::::
 
 By default, `@babel/preset-env` (and Babel plugins in general) grouped ECMAScript syntax features into collections of closely related smaller features. These groups can be large and include a lot of edge cases, for example "function arguments" includes destructured, default and rest parameters. From this grouping information, Babel enables or disables each group based on the browser support target you specify to `@babel/preset-env`’s `targets` option.
 
 When this option is enabled, `@babel/preset-env` tries to compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers. Depending on your `targets` and on how many modern syntax you are using, this can lead to a significant size reduction in the compiled app. This option merges the features of [`@babel/preset-modules`](https://github.com/babel/preset-modules) without having to use another preset.
+
+::::
+
+:::babel8
+
+This option has been removed in Babel 8. `@babel/preset-env` will always compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers.
+
+:::
 
 ::::babel8
 
