@@ -8,6 +8,7 @@ import type { CompileConfig, Transition } from "./types";
 
 type Return = {
   compiled: string | undefined | null;
+  ast: any;
   compileErrorMessage: string | undefined | null;
   meta: {
     compiledSize: number;
@@ -31,6 +32,7 @@ const DEFAULT_PRETTIER_CONFIG = {
 
 export default function compile(code: string, config: CompileConfig): Return {
   let compiled = null;
+  let ast = null;
   let compileErrorMessage = null;
   let sourceMap = null;
   const transitions = new Transitions();
@@ -45,8 +47,11 @@ export default function compile(code: string, config: CompileConfig): Return {
         transitions.wrapPluginVisitorMethod;
     }
 
+    config.babelConfig.ast = true;
+
     const transformed = Babel.transform(code, config.babelConfig);
     compiled = transformed.code;
+    ast = transformed.ast;
 
     if (config.getTransitions) {
       transitions.addExitTransition(compiled);
@@ -79,6 +84,7 @@ export default function compile(code: string, config: CompileConfig): Return {
 
   return {
     compiled,
+    ast,
     compileErrorMessage,
     meta,
     sourceMap,
