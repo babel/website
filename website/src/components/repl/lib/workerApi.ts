@@ -10,7 +10,7 @@ type PromiseWorkerApi = {
 
 type CompileResult = {
   compiled: string | undefined | null;
-  ast: File;
+  inputAst: File;
   compileErrorMessage: string | undefined | null;
   evalErrorMessage: string | undefined | null;
   meta: any;
@@ -39,7 +39,7 @@ export default class WorkerApi {
       .then(
         ({
           compiled,
-          ast,
+          inputAst,
           compileErrorMessage,
           meta,
           sourceMap,
@@ -59,7 +59,7 @@ export default class WorkerApi {
 
           return {
             compiled,
-            ast,
+            inputAst,
             compileErrorMessage,
             evalErrorMessage,
             meta,

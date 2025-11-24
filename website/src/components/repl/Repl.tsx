@@ -65,7 +65,7 @@ type State = {
   code: string;
   codePosition: number | null;
   compiled: string | undefined | null;
-  ast: File;
+  inputAst: File;
   astSelectedRange: [number, number] | null;
   compileErrorMessage: string | undefined | null;
   envConfig: EnvConfig;
@@ -131,7 +131,7 @@ class Repl extends React.Component<Props, State> {
       code: persistedState.code,
       codePosition: null,
       compiled: null,
-      ast: null,
+      inputAst: null,
       astSelectedRange: null,
       pluginSearch: "",
       compileErrorMessage: null,
@@ -281,7 +281,7 @@ class Repl extends React.Component<Props, State> {
             <div className={styles.codePanel}>
               <Tabs
                 current={state.rightTab}
-                labels={["code", "ast"]}
+                labels={["code", "input ast"]}
                 onClick={(rightTab) => {
                   this.setState({ rightTab });
                 }}
@@ -296,14 +296,14 @@ class Repl extends React.Component<Props, State> {
                   placeholder="Compiled output will be shown here"
                 />
               )}{" "}
-              {state.rightTab === "ast" && (
+              {state.rightTab === "input ast" && (
                 <ASTViewer
                   cursorPosition={state.codePosition}
                   onHoverNode={(range) =>
                     this.setState({ astSelectedRange: range })
                   }
                   enableScrolling={true}
-                  value={this.state.ast}
+                  value={this.state.inputAst}
                 />
               )}
             </div>
