@@ -1,4 +1,4 @@
-type Handler = (message: any) => any;
+type Handler = (message: any) => Promise<any>;
 
 type WorkerEventData = {
   error: string | undefined | null;
@@ -11,11 +11,11 @@ type WorkerEvent = {
 };
 
 export function registerPromiseWorker(handler: Handler) {
-  self.addEventListener("message", function (event) {
+  self.addEventListener("message", async function (event) {
     const { data } = event;
 
     try {
-      const message = handler(data.message);
+      const message = await handler(data.message);
 
       self.postMessage({
         message,

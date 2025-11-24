@@ -6,7 +6,7 @@ declare function importScripts(url: string): void;
 
 // This script should be executed within a web-worker.
 // Values returned below will be automatically wrapped in Promises.
-registerPromiseWorker((message) => {
+registerPromiseWorker(async (message) => {
   const { method, name } = message;
 
   switch (method) {
@@ -43,16 +43,23 @@ registerPromiseWorker((message) => {
       return Object.keys(Babel.availablePlugins);
 
     case "loadScript":
-      if (!Array.isArray(message.url)) {
-        message.url = [message.url];
+      try {
+        importScripts(message.url);
+        return true;
+      } catch (error) {
+        console.warn(error);
       }
-      for (const url of message.url) {
-        try {
-          importScripts(url);
-          return true;
-        } catch (error) {
-          console.warn(error);
+      return false;
+
+    case "loadModule":
+      try {
+        const mod = await import(/*webpackIgnore: true*/ message.url);
+        if (message.instanceName) {
+          self[message.instanceName] = mod;
         }
+        return true;
+      } catch (error) {
+        console.warn(error);
       }
       return false;
 

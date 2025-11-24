@@ -64,8 +64,8 @@ export default class WorkerApi {
     return this._worker.postMessage({ method: "getBabelVersion" });
   }
 
-  loadExternalPlugin(url: string | Array<string>): Promise<boolean> {
-    return this.loadScript(url);
+  loadExternalPlugin(url: string, instanceName?: string): Promise<boolean> {
+    return this.loadModule(url, instanceName);
   }
 
   getBundleVersion(name: string): Promise<number> {
@@ -83,20 +83,16 @@ export default class WorkerApi {
   loadPlugin(state: PluginState): Promise<boolean> {
     const { config } = state;
 
-    const base = ["https://packd.liuxingbaoyu.xyz"];
-
-    const urls = config.url
-      ? [config.url]
-      : base.map((url) => `${url}/${config.package}@${config.version || ""}`);
+    const url =
+      config.url ||
+      `${config.baseUrl}/${config.package}@${config.version || ""}`;
 
     state.isLoading = true;
 
     const loadPromise = !config.files
-      ? this.loadScript(urls)
+      ? this.loadModule(url)
       : Promise.all(
-          config.files.map((file) =>
-            this.loadScript(urls.map((url) => `${url}/${file}`))
-          )
+          config.files.map((file) => this.loadModule(`${url}/${file}`))
         );
 
     return loadPromise.then((success) => {
@@ -112,10 +108,18 @@ export default class WorkerApi {
     });
   }
 
-  loadScript(url?: string | Array<string>): Promise<boolean> {
+  loadScript(url: string): Promise<boolean> {
     return this._worker.postMessage({
       method: "loadScript",
       url,
+    });
+  }
+
+  loadModule(url: string, instanceName?: string): Promise<boolean> {
+    return this._worker.postMessage({
+      method: "loadModule",
+      url,
+      instanceName,
     });
   }
 

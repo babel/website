@@ -14,14 +14,9 @@ export default function loadPlugin(
   state.isLoading = true;
 
   const { config } = state;
-  const base = ["https://packd.liuxingbaoyu.xyz"];
-
-  const urls =
-    config.url ||
-    base.map((url) => `${url}/${config.package}@${config.version || ""}`);
 
   loadScript(
-    urls,
+    config.url,
     (success) => {
       if (success) {
         state.isLoaded = true;
