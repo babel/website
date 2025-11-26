@@ -444,6 +444,12 @@ we recommend [Terser](https://www.npmjs.com/package/terser).
 
 The starting point where the config search for browserslist will start, and ascend to the system root until found.
 
+### `forwardEnv`
+
+`boolean`, defaults to `false`
+
+Toggles whether or not the internal *Babel* environment `envName` setting will be passed to the `env` option of *Browserslist*. This allows setting the *Browserslist* environment without touching global environment settings like `BROWSERSLIST_ENV`. Enabling this flag has the benefit of selecting different environments as needed when using more complex tooling setups like a multi compiler Webpack setup.
+
 ### `ignoreBrowserslistConfig`
 
 `boolean`, defaults to `false`
