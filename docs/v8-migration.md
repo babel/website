@@ -342,17 +342,17 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- `includes` and `excludes` respect renamed package names ([#15576](https://github.com/babel/babel/pull/15576))
+- `include` and `exclude` respect renamed package names ([#15576](https://github.com/babel/babel/pull/15576))
 
-  **Migration**: If `includes` or `excludes` contain any plugins mentioned in the [Packages Renames section](./v8-migration.md#renamed-packages), change it to the new name. For example,
+  **Migration**: If `include` or `exclude` contain any plugins mentioned in the [Packages Renames section](./v8-migration.md#renamed-packages), change it to the new name. For example,
 
   ```diff title="babel.config.json"
   {
     "presets": [[
       "@babel/preset-env",
       {
-  -     "includes": ["proposal-optional-chaining"]
-  +     "includes": ["transform-optional-chaining"]
+  -     "include": ["proposal-optional-chaining"]
+  +     "include": ["transform-optional-chaining"]
       }
     ]]
   }
@@ -360,13 +360,15 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
-- Enable the [`bugfixes`](./preset-env.md#bugfixes) option by default ([#13866](https://github.com/babel/babel/pull/13866))
+- The `bugfixes` options has been removed ([#13866](https://github.com/babel/babel/pull/13866), [#17078](https://github.com/babel/babel/pull/17078))
 
-  **Migration**: You will probably be fine with the new behaviour as Babel now tries to compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers. If anyhow you want to restore the Babel 7 behaviour, you can specify `bugfixes: false`.
+  **Migration**: You will probably be fine with the new behaviour as Babel now tries to compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers.
 
-- Removed syntax plugins can not be used in `includes` and `excludes` ([#15810](https://github.com/babel/babel/pull/15810))
+  If anyhow you want to restore the Babel 7 behaviour for debug purpose, you can specify the [`exclude` option](./preset-env.md#exclude): `{ exclude: [/bugfix/] }` to explicitly exclude the bugfixes plugins. Note that doing so will bloat the output as Babel has to compile features that, if not of some specific bug, would be generally supported by your targets.
 
-  **Migration**: You can safely remove them if you are using any of [syntax plugins listed above](#syntax-plugins) in the `includes` and `excludes` options.
+- Removed syntax plugins can not be used in `include` and `exclude` ([#15810](https://github.com/babel/babel/pull/15810))
+
+  **Migration**: You can safely remove them if you are using any of [syntax plugins listed above](#syntax-plugins) in the `include` and `exclude` options.
 
 ### `@babel/preset-react` and `@babel/plugin-transform-react-jsx` {#babel-preset-react}
 
