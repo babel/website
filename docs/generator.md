@@ -69,6 +69,7 @@ import { generate } from "@babel/generator";
 
 | Version | Changes |
 | --- | --- |
+| v8.0.0  | Removed `importAttributesKeyword` |
 | v7.26.0 | Added `experimental_preserveFormat` |
 | v7.22.0 | Added `importAttributesKeyword` |
 | v7.21.0 | Added `inputSourceMap` |
@@ -85,7 +86,7 @@ Options for formatting output:
 | concise                  | boolean             | `false`         | Set to `true` to reduce whitespace (but not as much as `opts.compact`)                                                                                                                                                                                             |
 | decoratorsBeforeExport   | boolean             |                 | Set to `true` to print decorators before `export` in output.                                                                                                                                                                                                       |
 | filename                 | string              |                 | Used in warning messages                                                                                                                                                                                                                                           |
-| importAttributesKeyword  | `"with"`, `"assert"`, or `"with-legacy"` | | The import attributes/assertions syntax to use. `"with"` for `import "..." with { type: "json" }`, `"assert"` for `import "..." assert { type: "json" }`, and `"with-legacy"` for `import "..." with type: "json"`. When not specified, `@babel/generator` will try to match the style in the input code based on the AST shape. |
+| importAttributesKeyword (⚠️ removed in Babel 8)  | `"with"`, `"assert"`, or `"with-legacy"` | | The import attributes/assertions syntax to use. `"with"` for `import "..." with { type: "json" }`, `"assert"` for `import "..." assert { type: "json" }`, and `"with-legacy"` for `import "..." with type: "json"`. When not specified, `@babel/generator` will try to match the style in the input code based on the AST shape. |
 | jsescOption              | object              |                 | Use `jsesc` to process literals. `jsesc` is applied to numbers only if `jsescOption.numbers` (added in `v7.9.0`) is present. You can customize `jsesc` by [passing options](https://github.com/mathiasbynens/jsesc#api) to it.                                     |
 | jsonCompatibleStrings    | boolean             | `false`         | Set to true to run `jsesc` with "json": true to print "\u00A9" vs. "©";                                                                                                                                                                                            |
 | minified                 | boolean             | `false`         | Should the output be minified                                                                                                                                                                                                                                      |

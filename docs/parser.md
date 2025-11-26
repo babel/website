@@ -282,7 +282,7 @@ require("@babel/parser").parse("code", {
 | `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br/> `decorators-legacy`                             | `@a class A {}`                                                  |
 | `decoratorAutoAccessors` ([proposal](https://github.com/tc39/proposal-decorators))                                           | `class Example { @reactive accessor myBool = false; }`           |
 | `deferredImportEvaluation` ([proposal](https://github.com/tc39/proposal-defer-import-eval))                                  | `import defer * as ns from "dep";`                               |
-| `deprecatedImportAssert` (legacy syntax of [import attributes](https://github.com/tc39/proposal-import-attributes)) <br/> `importAssertions` (⚠️ deprecated)  | `import json from "./foo.json" assert { type: "json" };`           |
+| `deprecatedImportAssert` (⚠️ deprecated, legacy syntax of [import attributes](https://github.com/tc39/proposal-import-attributes)) <br/> `importAssertions` (⚠️ deprecated)  | `import json from "./foo.json" assert { type: "json" };`           |
 | `destructuringPrivate` ([proposal](https://github.com/tc39/proposal-destructuring-private))                                  | `class Example { #x = 1; method() { const { #x: x } = this; } }` |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                                                | `var a = do { if (true) { 'hi'; } };`                            |
 | `explicitResourceManagement` ([proposal](https://github.com/tc39/proposal-explicit-resource-management))                     | `using reader = getReader()`                                     |
