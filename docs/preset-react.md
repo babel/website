@@ -3,18 +3,11 @@ id: babel-preset-react
 title: "@babel/preset-react"
 ---
 
-This preset always includes the following plugins:
+This preset includes the following plugins:
 
 - [@babel/plugin-syntax-jsx](plugin-syntax-jsx.md)
 - [@babel/plugin-transform-react-jsx](plugin-transform-react-jsx.md)
 - [@babel/plugin-transform-react-display-name](plugin-transform-react-display-name.md)
-
-And with the `development` option:
-
-Classic runtime adds:
-
-- [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md)
-- [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md)
 
 Automatic runtime (since `v7.9.0`) adds the functionality for these plugins automatically when the `development` option is enabled. If you have automatic runtime enabled, adding [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md) or [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md) will error.
 
