@@ -2,6 +2,7 @@ import scopedEval from "./scopedEval";
 import { registerPromiseWorkerApi } from "./workerUtils";
 
 import type { CompileConfig, PluginState } from "./types";
+import type { File } from "@babel/types";
 
 type PromiseWorkerApi = {
   postMessage(message: any): Promise<any>;
@@ -9,6 +10,7 @@ type PromiseWorkerApi = {
 
 type CompileResult = {
   compiled: string | undefined | null;
+  inputAst: File;
   compileErrorMessage: string | undefined | null;
   evalErrorMessage: string | undefined | null;
   meta: any;
@@ -35,7 +37,14 @@ export default class WorkerApi {
         config,
       })
       .then(
-        ({ compiled, compileErrorMessage, meta, sourceMap, transitions }) => {
+        ({
+          compiled,
+          inputAst,
+          compileErrorMessage,
+          meta,
+          sourceMap,
+          transitions,
+        }) => {
           let evalErrorMessage = null;
 
           // Compilation is done in a web worker for performance reasons,
@@ -50,6 +59,7 @@ export default class WorkerApi {
 
           return {
             compiled,
+            inputAst,
             compileErrorMessage,
             evalErrorMessage,
             meta,

@@ -8,6 +8,7 @@ import type { CompileConfig, Transition } from "./types";
 
 type Return = {
   compiled: string | undefined | null;
+  inputAst: any;
   compileErrorMessage: string | undefined | null;
   meta: {
     compiledSize: number;
@@ -31,6 +32,7 @@ const DEFAULT_PRETTIER_CONFIG = {
 
 export default function compile(code: string, config: CompileConfig): Return {
   let compiled = null;
+  let inputAst = null;
   let compileErrorMessage = null;
   let sourceMap = null;
   const transitions = new Transitions();
@@ -45,7 +47,27 @@ export default function compile(code: string, config: CompileConfig): Return {
         transitions.wrapPluginVisitorMethod;
     }
 
-    const transformed = Babel.transform(code, config.babelConfig);
+    const configForAst = structuredClone(config.babelConfig);
+    (configForAst.plugins ??= []).unshift(() => {
+      return {
+        visitor: {
+          Program: {
+            enter(path: any) {
+              inputAst = path.parent;
+              path.stop();
+            },
+          },
+        },
+      };
+    });
+
+    Babel.transform(code, configForAst);
+
+    const transformed = Babel.transformFromAst(
+      inputAst,
+      code,
+      config.babelConfig
+    );
     compiled = transformed.code;
 
     if (config.getTransitions) {
@@ -79,6 +101,7 @@ export default function compile(code: string, config: CompileConfig): Return {
 
   return {
     compiled,
+    inputAst,
     compileErrorMessage,
     meta,
     sourceMap,

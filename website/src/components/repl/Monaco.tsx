@@ -9,6 +9,7 @@ import shikiTS from "@shikijs/langs/typescript";
 import shikiDarkPlus from "@shikijs/themes/dark-plus";
 import shikiLightPlus from "@shikijs/themes/light-plus";
 import shikiWasm from "@shikijs/engine-oniguruma/wasm-inlined";
+import debounce from "lodash.debounce";
 
 import { colors } from "./lib/styles";
 import { preferDarkColorScheme } from "./lib/utils";
@@ -18,9 +19,11 @@ type Props = {
   code: string;
   placeholder: string;
   onChange?: (value: string) => void;
+  onSelect?: (range: number | null) => void;
   fileSize?: string | boolean;
   lineWrapping?: boolean;
   errorMessage?: string;
+  selectedRange?: [number, number] | null;
 };
 
 const asyncPromise = (async function () {
@@ -79,9 +82,11 @@ export function Monaco({
   code,
   placeholder,
   onChange,
+  onSelect,
   fileSize = false,
   lineWrapping = true,
   errorMessage,
+  selectedRange,
 }: Props) {
   if (code == null) code = "";
 
@@ -89,6 +94,7 @@ export function Monaco({
   // eslint-disable-next-line prefer-const
   let [editor, setEditor] =
     React.useState<monaco.editor.IStandaloneCodeEditor | null>(null);
+  const positionChangedRef = useRef<number>(0);
 
   useEffect(() => {
     setEditor(
@@ -120,6 +126,16 @@ export function Monaco({
         onChange(value);
       });
     }
+    if (onSelect) {
+      editor.onDidChangeCursorPosition(
+        debounce((e) => {
+          if (Date.now() - positionChangedRef.current < 200) {
+            return;
+          }
+          onSelect(editor.getModel().getOffsetAt(e.position));
+        }, 150)
+      );
+    }
 
     function listener() {
       editor.updateOptions({
@@ -136,6 +152,21 @@ export function Monaco({
       editor.dispose();
     };
   }, []);
+
+  useEffect(() => {
+    const model = editor.getModel();
+    if (selectedRange) {
+      editor.setSelection(
+        monaco.Range.fromPositions(
+          model.getPositionAt(selectedRange[0]),
+          model.getPositionAt(selectedRange[1])
+        )
+      );
+      positionChangedRef.current = Date.now();
+    } else {
+      editor.setSelection(new monaco.Range(0, 0, 0, 0));
+    }
+  }, [selectedRange]);
 
   useEffect(() => {
     const server = new ResizeObserver(() => {

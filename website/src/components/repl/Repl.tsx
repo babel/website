@@ -53,6 +53,8 @@ import type {
 } from "./lib/types";
 import ReplLoading from "./ReplLoading";
 import Tabs from "./Tabs";
+import ASTViewer from "../ast/ASTViewer";
+import type { File } from "@babel/types";
 
 type Props = object;
 
@@ -60,7 +62,10 @@ type State = {
   babel: BabelState;
   config: string;
   code: string;
+  codePosition: number | null;
   compiled: string | undefined | null;
+  inputAst: File;
+  astSelectedRange: [number, number] | null;
   compileErrorMessage: string | undefined | null;
   envConfig: EnvConfig;
   envPresetState: EnvState;
@@ -122,7 +127,10 @@ class Repl extends React.Component<Props, State> {
       babel: persistedStateToBabelState(persistedState, babelConfig),
       config: JSON.stringify(JSON.parse(persistedState.config), undefined, 2),
       code: persistedState.code,
+      codePosition: null,
       compiled: null,
+      inputAst: null,
+      astSelectedRange: null,
       pluginSearch: "",
       compileErrorMessage: null,
       presetsOptions,
@@ -375,7 +383,11 @@ class Repl extends React.Component<Props, State> {
                   fileSize={options.fileSize && state.meta.rawSize}
                   lineWrapping={state.lineWrap}
                   onChange={this._updateCode}
+                  onSelect={(pos) => {
+                    this.setState({ codePosition: pos });
+                  }}
                   placeholder="Write code here"
+                  selectedRange={state.astSelectedRange}
                 />
               )}
               {state.leftTab === "config" && (
@@ -391,19 +403,31 @@ class Repl extends React.Component<Props, State> {
             <div className={styles.codePanel}>
               <Tabs
                 current={state.rightTab}
-                labels={["code"]}
+                labels={["code", "input ast"]}
                 onClick={(rightTab) => {
                   this.setState({ rightTab });
                 }}
               ></Tabs>
-              <Monaco
-                filename="output.jsx"
-                code={state.compiled}
-                errorMessage={state.evalErrorMessage}
-                fileSize={options.fileSize && state.meta.compiledSize}
-                lineWrapping={state.lineWrap}
-                placeholder="Compiled output will be shown here"
-              />
+              {state.rightTab === "code" && (
+                <Monaco
+                  filename="output.jsx"
+                  code={state.compiled}
+                  errorMessage={state.evalErrorMessage}
+                  fileSize={options.fileSize && state.meta.compiledSize}
+                  lineWrapping={state.lineWrap}
+                  placeholder="Compiled output will be shown here"
+                />
+              )}{" "}
+              {state.rightTab === "input ast" && (
+                <ASTViewer
+                  cursorPosition={state.codePosition}
+                  onHoverNode={(range) =>
+                    this.setState({ astSelectedRange: range })
+                  }
+                  enableScrolling={true}
+                  value={this.state.inputAst}
+                />
+              )}
             </div>
           </div>
           {state.timeTravel && (
