@@ -166,16 +166,9 @@ class Repl extends React.Component<Props, State> {
     this._setupBabel(defaultPresets);
   }
 
-  _configToState = (config: string) => {
+  _configToState = (configObject: any) => {
     const state = this.state;
     const newState: Pick<State, keyof State> = {} as any;
-    let configObject: any;
-    try {
-      configObject = JSON.parse(config);
-    } catch {
-      return;
-    }
-
     newState.sourceType = configObject.sourceType;
     const pluginExists = new Set<string>(
       state.externalPlugins.map((p) => p.name)
@@ -462,9 +455,12 @@ class Repl extends React.Component<Props, State> {
     }
 
     this.setState(newState, () => {
-      this.setState(this._configToState(newState.config).newState, () => {
-        this._loadInitialExternalPlugins();
-      });
+      this.setState(
+        this._configToState(JSON.parse(newState.config)).newState,
+        () => {
+          this._loadInitialExternalPlugins();
+        }
+      );
     });
 
     this._checkForUnloadedPlugins();
@@ -601,26 +597,29 @@ class Repl extends React.Component<Props, State> {
       return this._workerApi.registerPluginAlias(plugin.name, shorthandName);
     }
 
-    const bundledUrl = ["https://packd.liuxingbaoyu.xyz"].map(
-      (url) => `${url}/${plugin.name}@${plugin.version}`
-    );
+    const instanceName = toCamelCase(plugin.name);
 
-    return this._workerApi.loadExternalPlugin(bundledUrl).then((loaded) => {
-      if (loaded === false) {
-        this.setState({
-          compileErrorMessage: `Plugin ${plugin.name} could not be loaded`,
-        });
-        return Promise.reject();
-      }
-      return this._workerApi.registerPlugins([
-        {
-          instanceName: toCamelCase(plugin.name),
-          pluginName: plugin.version
-            ? `${plugin.name}@${plugin.version}`
-            : plugin.name,
-        },
-      ]);
-    });
+    return this._workerApi
+      .loadExternalPlugin(
+        `https://esm.sh/${plugin.name}@${plugin.version}`,
+        instanceName
+      )
+      .then((loaded) => {
+        if (loaded === false) {
+          this.setState({
+            compileErrorMessage: `Plugin ${plugin.name} could not be loaded`,
+          });
+          return Promise.reject();
+        }
+        return this._workerApi.registerPlugins([
+          {
+            instanceName: instanceName,
+            pluginName: plugin.version
+              ? `${plugin.name}@${plugin.version}`
+              : plugin.name,
+          },
+        ]);
+      });
   };
 
   _pluginSearch = (value) =>
@@ -857,8 +856,14 @@ class Repl extends React.Component<Props, State> {
   };
 
   _updateConfig = (config: string) => {
+    let configObject;
+    try {
+      configObject = JSON.parse(config);
+    } catch {
+      return;
+    }
     this.setState({ config });
-    const { newState, needsLoadedPlugins } = this._configToState(config);
+    const { newState, needsLoadedPlugins } = this._configToState(configObject);
     this.setState({ ...newState, loadingExternalPlugins: false });
     Promise.all(
       needsLoadedPlugins.map((v) => this._loadExternalPlugin(v))
