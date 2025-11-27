@@ -263,11 +263,9 @@ The following syntax plugins are no longer needed, you can safely remove them fr
   + decimal1.add(decimal2)
   ```
 
-- Remove the `importAssertions` parser plugin ([#16770](https://github.com/babel/babel/pull/16770))
+- Remove the `importAssertions` and `deprecatedImportAssert` parser plugins ([#16770](https://github.com/babel/babel/pull/16770), [#17603](https://github.com/babel/babel/pull/17603))
 
-  This plugin was for an old version of the import attributes proposal, using the `assert` keyword instead of `with`. The proposal moved ahead without the `assert` keyword.
-
-  **Migration**: If possible, replace `assert` with `with` in your code. If doing so is not possible, you can temporarily use the `deprecatedImportAssert` parser plugin.
+  These plugins were for an old version of the import attributes proposal, using the `assert` keyword instead of `with`. The proposal moved ahead without the `assert` keyword.
 
 - Remove the `importReflection` parser plugin ([#16808](https://github.com/babel/babel/pull/16808))
 
