@@ -806,7 +806,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
   </details>
 
-- <a name="ast-TSImportType"></a> Wrap the `argument` of `TSImportType` within a `TSLiteralType` ([#17046](https://github.com/babel/babel/pull/17046))
+- Rename the `argument` of `TSImportType` to `source` ([#17610](https://github.com/babel/babel/pull/17610))
 
   The `TSImportType` also uses `typeArguments` instead of `typeParameters` ([#17042](https://github.com/babel/babel/pull/17042)). See [here](#ast-typeArguments) for an example.
 
@@ -822,10 +822,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
     // AST in Babel 8
     {
       type: "TSImportType",
-      argument: {
-        type: "TSLiteralType",
-        literal: StringLiteral("./Array")
-      }
+      source: StringLiteral("./Array")
     }
   ```
 
@@ -1096,20 +1093,6 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
       /* default */ undefined,
   +   t.identifier(
         name
-  +   )
-    )
-  ```
-
-- Require a `TSLiteralType` node as the first argument of `t.tsImportType` ([#17046](https://github.com/babel/babel/pull/17046))
-
-  This is due to the corresponding [AST shape change](#ast-TSImportType).
-
-  __Migration__: Wrap the `argument` string literal within the `tsLiteralType` builder
-
-  ```diff title="my-babel-codemod.js"
-    t.tsImportType(
-  +   t.tsLiteralType(
-        t.stringLiteral("foo")
   +   )
     )
   ```
