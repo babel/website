@@ -67,6 +67,7 @@
     "@shikijs/monaco": "^3.9.2",
     "@shikijs/themes": "^3.9.2",
     "algoliasearch": "^5.23.3",
+    "clsx": "^2.1.1",
     "core-js": "^3.43.0",
     "lodash.camelcase": "^4.3.0",
     "lodash.debounce": "^4.0.8",
