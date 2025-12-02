@@ -281,7 +281,7 @@ class Repl extends React.Component<Props, State> {
             <div className={styles.codePanel}>
               <Tabs
                 current={state.rightTab}
-                labels={["code", "input ast"]}
+                labels={["output", "input AST"]}
                 onClick={(rightTab) => {
                   this.setState({ rightTab });
                 }}

@@ -188,7 +188,7 @@ html[data-theme='dark'] {
 
 .footer {
   color: white;
-  text-align: center;
-  padding: 10px 0;
+  text-align: end;
+  padding: 10px 20px;
   font-size: 14px;
 }
