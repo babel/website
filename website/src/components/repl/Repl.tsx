@@ -171,7 +171,7 @@ class Repl extends React.Component<Props, State> {
       transitions: [],
       currentTransition: {},
       leftTab: "code",
-      rightTab: "code",
+      rightTab: "output",
     };
     this._setupBabel(defaultPresets);
   }
@@ -286,7 +286,7 @@ class Repl extends React.Component<Props, State> {
                   this.setState({ rightTab });
                 }}
               ></Tabs>
-              {state.rightTab === "code" && (
+              {state.rightTab === "output" && (
                 <Monaco
                   filename="output.jsx"
                   code={state.compiled}
@@ -296,7 +296,7 @@ class Repl extends React.Component<Props, State> {
                   placeholder="Compiled output will be shown here"
                 />
               )}{" "}
-              {state.rightTab === "input ast" && (
+              {state.rightTab === "input AST" && (
                 <ASTViewer
                   cursorPosition={state.codePosition}
                   onHoverNode={(range) =>
