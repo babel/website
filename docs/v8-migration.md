@@ -92,12 +92,17 @@ you install the new runtime, please set the [`corejs` version](./plugin-transfor
 
 ### `@babel/plugin-syntax-import-assertions` {#babel-plugin-syntax-import-assertions}
 
-The proposal evolved into [import attributes](https://github.com/tc39/proposal-import-attributes), which now Babel supports parsing by default. You can remove `@babel/plugin-syntax-import-assertions` from your config, and  replace the following patterns in your codebase:
+The proposal evolved into [import attributes](https://github.com/tc39/proposal-import-attributes), which now Babel supports parsing by default. You can remove `@babel/plugin-syntax-import-assertions` from your config, and replace the following patterns in your codebase:
 
 ```diff title="input.js"
 - import value from "module" assert { type: "json" };
 + import value from "module" with { type: "json" };
 ```
+
+### `@babel/plugin-proposal-import-attributes-to-assertions` {#babel-plugin-proposal-import-attributes-to-assertions}
+
+This plugin transforms the standard import attributes `with { type: "json" }` to the legacy form `assert { type: "json" }`, which is supported only by obsolete Chrome (91-122) and Node.js 18.
+You can safely remove this plugin if your [compilation targets](./options.md#targets) does not include those versions.
 
 ### `@babel/plugin-proposal-record-and-tuple` {#babel-plugin-proposal-record-and-tuple}
 
