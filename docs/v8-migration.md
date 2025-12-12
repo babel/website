@@ -620,7 +620,7 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- Only support the `legacy` and `2023-11` versions of the proposal. In addition to that, the plugin now requires a [`version`](./plugin-proposal-decorators.md#version) option ([#12712](https://github.com/babel/babel/pull/12712), [#15676](https://github.com/babel/babel/pull/15676))
+- <a name="decorators-version-change"></a> Only support the `legacy` and `2023-11` versions of the proposal. In addition to that, the plugin now requires a [`version`](./plugin-proposal-decorators.md#version) option ([#12712](https://github.com/babel/babel/pull/12712), [#15676](https://github.com/babel/babel/pull/15676))
 
   **Migration**: You should migrate to the [latest version of the proposal](https://github.com/tc39/proposal-decorators/), `"2023-11"`.
 
@@ -635,10 +635,14 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
     ]
   }
   ```
+
   The syntax is the same, but you will need to rewrite your decorator functions. The spec repo provides [comparison between the latest version and the `2018-09` version](https://github.com/tc39/proposal-decorators#comparison-with-the-previous-stage-2-decorators-proposal). You can already migrate since Babel 7.22.0, using the `"version": "2023-11"` option of `@babel/plugin-proposal-decorators`.
 
   Although Babel 8 still supports the `legacy` version, it is advisable to migrate to the `2023-11` version regardless: both Babel 8 and TypeScript 5.0 support the `2023-11` version, while there are [a few behaviour differences](https://github.com/babel/babel/issues/8864#issuecomment-688535867) in the `legacy` version between Babel and `tsc`'s implementation. Browsers will only implement the latest version of the proposal.
 
+- Remove `decoratorsBeforeExport: boolean` and `legacy: boolean` option ([#17643](https://github.com/babel/babel/pull/17643))
+
+  **Migration**: This change is an optimization stemming from the [`version` candidates change](#decorators-version-change): These options were previously required by obsolete decorator versions, but you can now safely remove them from your Babel config.
 
 ### `@babel/eslint-parser` {#babel-eslint-parser}
 
