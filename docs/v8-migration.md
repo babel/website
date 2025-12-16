@@ -161,6 +161,31 @@ npx @babel/cli@7 --config-file ./babel.record-tuple-migration.config.json src --
 
 Please manually check whether `src-mod` is correct. If everything looks good, overwrite `src` with contents in `src-mod`.
 
+### `@babel/plugin-transform-object-assign` {#babel-plugin-transform-object-assign}
+
+This is a legacy polyfill plugin, and it is now outdated.
+
+If you are using this plugin to polyfill `Object.assign`, please use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3#usage) instead.
+
+### `@babel/plugin-transform-react-compat` {#babel-plugin-transform-react-compat}
+
+This is for React v0.x, which has been long deprecated and is no longer maintained.
+
+### `@babel/plugin-transform-react-{source,self}` {#babel-plugin-transform-react-source-self}
+
+You can safely remove these two plugins if using React v19 or later.
+For users of React v18 or earlier, please remove them and use `@babel/plugin-transform-react-jsx-development` instead, as they are now included in the development plugin.
+
+```diff title="babel.config.json"
+  {
+    "plugins": [
+-     "@babel/plugin-transform-react-source",
+-     "@babel/plugin-transform-react-self"
++     "@babel/plugin-transform-react-jsx-development"
+    ]
+  }
+```
+
 ### Syntax plugins {#syntax-plugins}
 
 The following syntax plugins are no longer needed, you can safely remove them from your configuration and dependencies:
