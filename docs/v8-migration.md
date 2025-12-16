@@ -160,17 +160,16 @@ Please manually check whether `src-mod` is correct. If everything looks good, ov
 
 This is a legacy polyfill plugin, and it is now outdated.
 
-If you are using this plugin to polyfill `Object.assign`, please use `babel-plugin-polyfill-corejs3` instead.
+If you are using this plugin to polyfill `Object.assign`, please use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3#usage) instead.
 
 ### `@babel/plugin-transform-react-compat` {#babel-plugin-transform-react-compat}
 
-This was for React v0.x, which is now outdated.
+This is for React v0.x, which has been long deprecated and is no longer maintained.
 
 ### `@babel/plugin-transform-react-{source,self}` {#babel-plugin-transform-react-source-self}
 
-These two plugins are now included in `@babel/plugin-transform-react-jsx-development`.
-
-You can remove them and use `@babel/plugin-transform-react-jsx-development`.
+You can safely remove these two plugins if using React v19 or later.
+For users of React v18 or earlier, please remove them and use `@babel/plugin-transform-react-jsx-development` instead, as they are now included in the development plugin.
 
 ```diff title="babel.config.json"
   {
