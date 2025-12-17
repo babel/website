@@ -1462,9 +1462,9 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
 ### `@babel/preset-env`
 
-- Remove the undocumented `isPluginRequired` API.
-
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Remove the undocumented `isPluginRequired` API.
 
   __Migration__: This is an undocumented API. Use [`isRequired`](./helper-compilation-targets.md#isrequired) from `@babel/helper-compilation-targets` instead.
 
