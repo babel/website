@@ -47,7 +47,10 @@ export default function compile(code: string, config: CompileConfig): Return {
         transitions.wrapPluginVisitorMethod;
     }
 
-    const configForAst = structuredClone(config.babelConfig);
+    const configForAst = structuredClone({
+      ...config.babelConfig,
+      wrapPluginVisitorMethod: undefined,
+    });
     (configForAst.plugins ??= []).unshift(() => {
       return {
         visitor: {
