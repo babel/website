@@ -31,11 +31,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@docusaurus/core": "^3.8.1",
-    "@docusaurus/faster": "^3.8.1",
-    "@docusaurus/module-type-aliases": "^3.8.1",
-    "@docusaurus/preset-classic": "^3.8.1",
-    "@docusaurus/remark-plugin-npm2yarn": "^3.8.1",
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/faster": "^3.9.2",
+    "@docusaurus/module-type-aliases": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
+    "@docusaurus/remark-plugin-npm2yarn": "^3.9.2",
     "@eslint/js": "^9.35.0",
     "@types/node": "^24.0.4",
     "@types/react": "^19.1.1",
@@ -47,7 +47,7 @@
     "json5": "^2.2.3",
     "lint-staged": "^13.0.3",
     "monaco-editor-webpack-plugin": "^7.1.0",
-    "prettier": "^3.0.1",
+    "prettier": "^3.7.4",
     "react-markdown": "^9.0.0",
     "rehype-raw": "^7.0.0",
     "remark-cli": "^11.0.0",
@@ -83,7 +83,7 @@
     "./website"
   ],
   "lint-staged": {
-    "*.{js,ts,tsx}": [
+    "*.{js,ts,tsx,css}": [
       "eslint --format=codeframe --fix",
       "prettier --write",
       "git add"

@@ -19,7 +19,7 @@
 
   --docusaurus-highlighted-code-line-bg: #00000018;
 }
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   --ifm-color-primary: #f5da55;
   --ifm-color-primary-dark: #f3d336;
   --ifm-color-primary-darker: #f2d026;
@@ -101,16 +101,8 @@ article[itemprop="blogPost"] h4 {
 
 .DocSearch-Button {
   /* Use dark mode DocSearch variables */
-  --docsearch-text-color: var(--ifm-navbar-link-color);
-  --docsearch-searchbox-background: rgba(0, 0, 0, 0.2);
-  --docsearch-searchbox-focus-background: rgba(0, 0, 0, 0.2);
-  --docsearch-key-gradient: linear-gradient(-26.5deg,#565872,#31355b);
-  --docsearch-key-shadow: inset 0 -2px 0 0 #282d55,inset 0 0 1px 1px #51577d,0 2px 2px 0 rgba(3,4,9,0.3);
-  --docsearch-muted-color: #7f8497;
-}
-
-.DocSearch-Hit-Container {
-  --docsearch-hit-active-color: var(--ifm-color-content-inverse);
+  --docsearch-search-button-color: var(--ifm-navbar-link-color);
+  --docsearch-search-button-background: rgba(0, 0, 0, 0.2);
 }
 
 span.DocSearch-Button-Keys {
