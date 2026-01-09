@@ -1460,6 +1460,26 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
   __Migration__: Use `ios` instead.
 
+### `@babel/preset-env`
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Remove the undocumented `isPluginRequired` API.
+
+  __Migration__: This is an undocumented API. Use [`isRequired`](./helper-compilation-targets.md#isrequired) from `@babel/helper-compilation-targets` instead.
+
+  ```diff title="my-babel-plugin.js"
+  - import { isPluginRequired } from "@babel/preset-env";
+  + import { isRequired } from "@babel/helper-compilation-targets";
+
+  - isPluginRequired({ chrome: 120 }, { chrome: 90, firefox: 90 })
+  + isRequired("feature-name", { chrome: 120 }, {
+  +   compatData: {
+  +     "feature-name": { chrome: 90, firefox: 90 }
+  +   }
+  + });
+  ```
+
 ### `@babel/helper-replace-supers`
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
