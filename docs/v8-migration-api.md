@@ -1351,7 +1351,7 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
   __Migration__: You can copy&paste them from Babel 7's source to your plugin.
 
-- Remove `hoist`, `updateSiblingKeys`, `call`, `setScope`, `resync`, `popContext`, `pushContext`, `setup`, `setKey` methods from `NodePath` ([#16655](https://github.com/babel/babel/pull/16655))
+- Remove `hoist`, `updateSiblingKeys`, `call`, `setScope`, `resync`, `popContext`, `pushContext`, `setup`, `setKey`, `visit` methods from `NodePath` ([#16655](https://github.com/babel/babel/pull/16655), [#17722](https://github.com/babel/babel/pull/17722))
 
   These methods are meant to be private so there is no real migration approach. If your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
 
