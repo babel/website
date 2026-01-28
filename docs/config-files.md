@@ -306,7 +306,7 @@ along with the original repo root.
 
 ## Config Function API
 
-JS config files may export a function that will be passed to the config API:
+JS config files may export a function that gets the config API as a parameter:
 
 :::babel7
 
