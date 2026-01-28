@@ -669,6 +669,26 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
 
   **Migration**: This change is an optimization stemming from the [`version` candidates change](#decorators-version-change): These options were previously required by obsolete decorator versions, but you can now safely remove them from your Babel config.
 
+### `@babel/plugin-proposal-pipeline-operator` {#babel-plugin-proposal-pipeline-operator}
+
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- <a name="pipeline-operator-proposal-change"></a> Only support the `fsharp` and `hack` proposals ([#17732](https://github.com/babel/babel/pull/17732))
+
+  **Migration**: If you used `smart` or `minimal` proposal, you should migrate to either the `fsharp` or the `hack` [proposal](./plugin-proposal-pipeline-operator.md#usage).
+
+  ```diff title="babel.config.json"
+  {
+    "plugins": [
+      ["@babel/plugin-proposal-pipeline-operator", {
+  -     "proposal": "smart",
+  +     "proposal": "hack",
+  +     "topicToken": "%"
+      }]
+    ]
+  }
+  ```
+
 ### `@babel/eslint-parser` {#babel-eslint-parser}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
@@ -721,6 +741,6 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
 
 - Command-line flags for Node.js and Babel must now be passed _before_ the filename, while flags for the script itself must be passed after. ([#16706](https://github.com/babel/babel/pull/16706)):
 
-  ```
+  ```sh
   babel-node --flag-for-node --flag-for-babel script.js --flag-for-script
   ```
