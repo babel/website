@@ -1464,7 +1464,7 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
-- Remove the undocumented `isPluginRequired` API.
+- Remove the undocumented `isPluginRequired` API ([#17670](https://github.com/babel/babel/pull/17670)).
 
   __Migration__: This is an undocumented API. Use [`isRequired`](./helper-compilation-targets.md#isrequired) from `@babel/helper-compilation-targets` instead.
 
@@ -1479,6 +1479,18 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
   +   }
   + });
   ```
+
+- Remove the undocumented `./data/` sub-exports ([#17701](https://github.com/babel/babel/pull/17701)).
+
+  __Migration__: The `./data/` sub exports are meant for use by `@babel/preset-env`. Refer to the following replacement table if your project relies on any of those internal files.
+
+  | Babel 7 | Babel 8 |
+  | --- | --- |
+  | `@babel/preset-env/data/builtin-modules.js` | `@babel/compat-data/native-modules` |
+  | `@babel/preset-env/data/built-ins` | `core-js-compat/data.json` |
+  | `@babel/preset-env/data/core-js-compat` | `core-js-compat/data.json` |
+  | `@babel/preset-env/data/plugins` | `@babel/compat-data/plugins` |
+  | `@babel/preset-env/data/unreleased-labels` | `@babel/helper-compilation-targets` (`.unreleasedLabels`) |
 
 ### `@babel/helper-replace-supers`
 
