@@ -152,7 +152,6 @@ const siteConfig: Config = {
   baseUrl: "/",
   favicon: "img/favicon.png",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
   customFields: {
     repoUrl: "https://github.com/babel/babel",
     v6Url: "https://v6.babeljs.io/docs/setup/",
@@ -163,6 +162,11 @@ const siteConfig: Config = {
     tools,
     toolsMD,
     setupBabelrc,
+  },
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "throw",
+    }
   },
   plugins: [docusaurusReplRoutePlugin, require("./webpack.plugin.js")],
   presets: [
