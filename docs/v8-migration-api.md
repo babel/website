@@ -977,6 +977,12 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
   __Migration__: The APIs above require a callback argument. If you are not providing a callback, please use their sync versions: `babel.transformSync`, `babel.transformFileSync`, `babel.transformFromAstSync`, `babel.parseSync`, `babel.loadOptionsSync`, `babel.loadPartialConfigSync` and `babel.createConfigItemSync`.
 
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Replace `package.json#browser` with `package.json#imports` using a `browser` condition ([#17756](https://github.com/babel/babel/pull/17756))
+
+  __Migration__: This change only affects you if you are bundling `@babel/core`. You will need to configure it to use the `browser` condition if bundling for the browser, and make sure that it supports `package.json#imports`.
+
 ### `@babel/generator`
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
@@ -1534,6 +1540,14 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 - Remove the `getChalk` function (https://github.com/babel/babel/pull/15812)
 
   If you need to use `chalk`, add it to your dependencies.
+
+### `@babel/plugin-transform-runtime`
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Replace `package.json#browser` with `package.json#imports` using a `browser` condition ([#17756](https://github.com/babel/babel/pull/17756))
+
+  __Migration__: This change only affects you if you are bundling `@babel/plugin-transform-runtime`. You will need to configure it to use the `browser` condition if bundling for the browser, and make sure that it supports `package.json#imports`.
 
 ### Plugin API changes
 
