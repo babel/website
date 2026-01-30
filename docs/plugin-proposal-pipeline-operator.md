@@ -40,7 +40,7 @@ If `"proposal"` is omitted, or if `"proposal": "hack"` is used, then a `"topicTo
 
 :::babel7
 
-The `"proposal": "minimal"` and `"smart"` options are **deprecated** and subject to removal in a future major version.
+The `"proposal": "minimal"` and `"smart"` options are **deprecated** and will be removed in Babel 8.
 
 :::
 
