@@ -695,7 +695,7 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
 
 - Remove `@babel/eslint-parser/experimental-worker` entry point ([#17755](https://github.com/babel/babel/pull/17755))
 
-  **Migration**: The `experimental-worker` has now been merged, use the main `@babel/eslint-parser` entry point instead.
+  **Migration**: The worker-based implementation is now the only available one: you can now access it from the main `@babel/eslint-parser` entrypoint.
 
   ```diff title=".eslintrc"
   {
