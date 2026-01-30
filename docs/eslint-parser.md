@@ -183,6 +183,8 @@ Additional configuration options can be set in your ESLint configuration under t
   </TabItem>
   </Tabs>
 
+:::babel7
+
 #### use `babel.config.mjs` configuration
 
   If your Babel config does not contain top-level await, you should be able to use the `.mjs` config directly on Node.js 22.12 or above. Otherwise, you can use the experimental worker implementation. Note that the implementation is still experimental, please report if you find any issue.
@@ -228,6 +230,8 @@ Additional configuration options can be set in your ESLint configuration under t
 
   </TabItem>
   </Tabs>
+
+:::babel7
 
 #### use glob-based configuration
 
