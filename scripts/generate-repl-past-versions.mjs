@@ -28,8 +28,6 @@ exec(
     // "8.0.0",
 
     const pastVersions = JSON.parse(stdout);
-    // The first filtered versions are the latest minor, ignore it since it is covered by
-    // the "latest" in REPL UI
     const filteredVersions = [];
     for (
       let i = pastVersions.length - 1, includedSet = new Set();
@@ -37,16 +35,16 @@ exec(
       i--
     ) {
       const version = pastVersions[i];
-      const majorMinor = version.substring(0, version.lastIndexOf("."));
+      const majorMinor = version.substring(0, version.indexOf(".", version.indexOf(".") + 1));
       if (!includedSet.has(majorMinor)) {
         includedSet.add(majorMinor);
         filteredVersions.push(version);
       }
     }
-    const writtenPath = resolve("./js/repl/past-versions.json");
+    const writtenPath = resolve("./website/src/components/repl/past-versions.json");
     await writeFile(
       writtenPath,
-      JSON.stringify(filteredVersions.slice(1), undefined, 2) + "\n"
+      JSON.stringify(filteredVersions, undefined, 2) + "\n"
     );
     console.log("Past versions written to " + writtenPath);
   }
