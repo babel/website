@@ -14,7 +14,7 @@
     "fix:css": "prettier --write website/static/css/*.css",
     "start": "cd website && yarn start",
     "test": "remark docs README.md --quiet",
-    "version": "node ./scripts/generate-repl-past-versions.mjs && git add ./js/repl/past-versions.json"
+    "version": "node ./scripts/generate-repl-past-versions.mjs && git add ./website/src/components/repl/past-versions.json"
   },
   "remarkConfig": {
     "plugins": {
