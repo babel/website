@@ -717,6 +717,17 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
+- Remove `@babel/eslint-parser/experimental-worker` entry point ([#17755](https://github.com/babel/babel/pull/17755))
+
+  **Migration**: The worker-based implementation is now the only available one: you can now access it from the main `@babel/eslint-parser` entrypoint.
+
+  ```diff title=".eslintrc"
+  {
+  -  "parser": "@babel/eslint-parser/experimental-worker",
+  +  "parser": "@babel/eslint-parser",
+  }
+  ```
+
 - `parserOpts.allowSuperOutsideMethod` defaults to `false` ([#13921](https://github.com/babel/babel/pull/13921))
 
   **Migration**: If you want to restore to Babel 7 behaviour, set `babelOptions.parserOpts.allowSuperOutsideMethod` to `true`.
