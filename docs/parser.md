@@ -405,6 +405,15 @@ When a plugin is specified multiple times, only the first options are considered
     See [plugin-proposal-pipeline-operator](plugin-proposal-pipeline-operator.md)
     for more information.
 
+:::babel8
+- `partialApplication`:
+
+  - `version` (required, with the only valid value being `2018-07`).
+    Specify which version of the partial application proposal you are using. `2018-07` represents the proposal as
+    it was presented at the July 2018 TC39 meeting.
+:::
+
+:::babel7
 - `recordAndTuple`:
 
   - `syntaxType` (`hash` or `bar`, defaults to `hash`)
@@ -414,6 +423,7 @@ When a plugin is specified multiple times, only the first options are considered
     | `"hash"` | `#{ a: 1 }` | `#[1, 2]` |
     | `"bar"` | <code>\{&#124; a: 1 &#124;}</code> | <code>[&#124;1, 2&#124;]</code> |
     See [Ergonomics of `#{}`/`#[]`](https://github.com/tc39/proposal-record-tuple/issues/10) for more information.
+:::
 
 - `flow`:
 

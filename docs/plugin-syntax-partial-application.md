@@ -22,20 +22,37 @@ npm install --save-dev @babel/plugin-syntax-partial-application
 
 ```json title="babel.config.json"
 {
-  "plugins": ["@babel/plugin-syntax-partial-application"]
+  "plugins": [
+    ["@babel/plugin-syntax-partial-application", { "version": "2018-07" }]
+  ]
 }
-```
-
-### Via CLI
-
-```sh title="Shell"
-babel --plugins @babel/plugin-syntax-partial-application script.js
 ```
 
 ### Via Node API
 
 ```js title="JavaScript"
 require("@babel/core").transformSync("code", {
-  plugins: ["@babel/plugin-syntax-partial-application"]
+  plugins: [
+    ["@babel/plugin-syntax-partial-application", { version: "2018-07" }]
+  ]
 });
 ```
+
+:::babel8
+
+## Options
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Added the `version` option with support for `"2018-07"` |
+</details>
+
+### `version` (required)
+
+There is only one version currently supported:
+- `"2018-07"` is the proposal version after the updates that was discussed in the July 2018 TC39 meeting.
+
+:::
