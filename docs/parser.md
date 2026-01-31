@@ -245,7 +245,6 @@ require("@babel/parser").parse("code", {
 | `optionalChainingAssign` ([proposal](https://github.com/tc39/proposal-optional-chaining-assignment))     | `x?.prop = 2`                                                    |
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                          | `f(?, a)`                                                        |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29))                            | <code>a &#124;> b</code>                                         |
-| `recordAndTuple` ([proposal](https://github.com/tc39/proposal-record-tuple))                             | `#{x: 1}`, `#[1, 2]`                                             |
 | `sourcePhaseImports` ([proposal](https://github.com/tc39/proposal-source-phase-imports))                 | `import source x from "./x"`                                     |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23))                            | `() => throw new Error("")`                                      |
 
@@ -401,9 +400,6 @@ When a plugin is specified multiple times, only the first options are considered
     The `hack` proposal uses a “topic” placeholder in its pipe.
     There are two different choices for this topic placeholder.
     This option chooses what token to use to refer to the topic.
-    `topicToken: "#"` is incompatible with `recordAndTuple` with `syntaxType: "hash"`.
-    See [plugin-proposal-pipeline-operator](plugin-proposal-pipeline-operator.md)
-    for more information.
 
 :::babel8
 - `partialApplication`:
