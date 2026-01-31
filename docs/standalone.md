@@ -79,6 +79,32 @@ See [here](https://github.com/babel/babel/blob/main/packages/babel-standalone/sr
 
 If you want to add custom plugins, refer to the [custom plugins](#custom-plugins) section.
 
+#### `data-targets`
+
+Added in: `v7.29.0`
+
+Use the `data-targets` attribute to specify the [compilation targets](./options.md#targets) of the project.
+
+:::babel7
+
+By default Babel will transpile all features down to ES3 supported by IE 8 and other legacy browsers. You can specify the [browserslist](https://github.com/browserslist/browserslist#queries) [`defaults`](https://browsersl.ist/#q=defaults) query, which covers most modern browsers. This will be the Babel 8 default target.
+
+```html
+<script type="text/babel" data-presets="env" data-targets="defaults">
+```
+
+:::
+
+:::babel8
+
+By default Babel will transpile all features to the [browserslist](https://github.com/browserslist/browserslist#queries) [`defaults`](https://browsersl.ist/#q=defaults) targets, which covers most modern browsers. If you want to support legacy browsers such as IE 8, you must specify the this attribute:
+
+```html
+<script type="text/babel" data-presets="env" data-targets="ie 8">
+```
+
+:::
+
 #### `src`
 Loading external scripts via `src` attribute is supported too:
 

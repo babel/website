@@ -759,3 +759,13 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
   ```sh
   babel-node --flag-for-node --flag-for-babel script.js --flag-for-script
   ```
+
+### `@babel/standalone` {#babel-standalone}
+
+![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
+
+- Use browserslist's `defaults` as default compilation target ([#12989](https://github.com/babel/babel/pull/12989), [#15551](https://github.com/babel/babel/pull/15551)).
+
+  If you are already using the `data-targets` attribute, this change won't affect you.
+
+  **Migration**: You'll probably be fine with the new behavior since the [browserslist's `defaults` covers most modern browsers](https://browsersl.ist/#q=defaults). If you need to support legacy browsers, specify the [`data-targets`](./standalone.md#data-targets) attribute.
