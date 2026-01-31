@@ -1047,15 +1047,23 @@ Aliases: [`Flow`](#flow), [`FlowType`](#flowtype)
 #### exportAllDeclaration
 
 ```js title="JavaScript"
-t.exportAllDeclaration(source);
+t.exportAllDeclaration(source, attributes);
 ```
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.29.0` | Supports `attributes` |
+</details>
 
 See also `t.isExportAllDeclaration(node, opts)` and `t.assertExportAllDeclaration(node, opts)`.
 
 AST Node `ExportAllDeclaration` shape:
 - `source`: `StringLiteral` (required)
+- `attributes`: `ImportAttribute[]` (default: `null`)
 - `assertions`: `ImportAttribute[]` (default: `null`, excluded from builder function)
-- `attributes`: `ImportAttribute[]` (default: `null`, excluded from builder function)
 - `exportKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 
 Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Declaration`](#declaration), [`ImportOrExportDeclaration`](#importorexportdeclaration), [`ExportDeclaration`](#exportdeclaration)
@@ -1096,8 +1104,16 @@ Aliases: [`ModuleSpecifier`](#modulespecifier)
 #### exportNamedDeclaration
 
 ```js title="JavaScript"
-t.exportNamedDeclaration(declaration, specifiers, source);
+t.exportNamedDeclaration(declaration, specifiers, source, attributes);
 ```
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.29.0` | Supports `attributes` |
+</details>
 
 See also `t.isExportNamedDeclaration(node, opts)` and `t.assertExportNamedDeclaration(node, opts)`.
 
@@ -1105,8 +1121,8 @@ AST Node `ExportNamedDeclaration` shape:
 - `declaration`: `Declaration` (default: `null`)
 - `specifiers`: `(ExportSpecifier | ExportDefaultSpecifier | ExportNamespaceSpecifier)[]` (default: `[]`)
 - `source`: `StringLiteral` (default: `null`)
+- `attributes`: `ImportAttribute[]` (default: `null`)
 - `assertions`: `ImportAttribute[]` (default: `null`, excluded from builder function)
-- `attributes`: `ImportAttribute[]` (default: `null`, excluded from builder function)
 - `exportKind`: `"type" | "value"` (default: `null`, excluded from builder function)
 
 Aliases: [`Standardized`](#standardized), [`Statement`](#statement), [`Declaration`](#declaration), [`ImportOrExportDeclaration`](#importorexportdeclaration), [`ExportDeclaration`](#exportdeclaration)
@@ -1393,7 +1409,7 @@ Aliases: [`Standardized`](#standardized)
 #### importDeclaration
 
 ```js title="JavaScript"
-t.importDeclaration(specifiers, source);
+t.importDeclaration(specifiers, source, attributes);
 ```
 
 <details>
@@ -1402,6 +1418,7 @@ t.importDeclaration(specifiers, source);
 | Version | Changes |
 | --- | --- |
 | `v7.20.0` | Supports `module` |
+| `v7.29.0` | Supports `attributes` |
 </details>
 
 See also `t.isImportDeclaration(node, opts)` and `t.assertImportDeclaration(node, opts)`.
@@ -1409,8 +1426,8 @@ See also `t.isImportDeclaration(node, opts)` and `t.assertImportDeclaration(node
 AST Node `ImportDeclaration` shape:
 - `specifiers`: `(ImportSpecifier | ImportDefaultSpecifier | ImportNamespaceSpecifier)[]` (required)
 - `source`: `StringLiteral` (required)
+- `attributes`: `ImportAttribute[]` (default: `null`)
 - `assertions`: `ImportAttribute[]` (default: `null`, excluded from builder function)
-- `attributes`: `ImportAttribute[]` (default: `null`, excluded from builder function)
 - `importKind`: `"type" | "typeof" | "value"` (default: `null`, excluded from builder function)
 - `module`: `boolean` (default: `null`, excluded from builder function)
 - `phase`: `"source" | "defer"` (default: `null`, excluded from builder function)
