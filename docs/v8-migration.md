@@ -693,6 +693,10 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
+- Drop support for ESLint 7 and ESLint 8 ([#17763](https://github.com/babel/babel/pull/17763))
+
+  **Migration**: Upgrade your ESLint to version 9 or above.
+
 - Remove `allowImportExportEverywhere` option ([#13921](https://github.com/babel/babel/pull/13921))
 
   **Migration**: Use `babelOptions.parserOpts.allowImportExportEverywhere` instead.
