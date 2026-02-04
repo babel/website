@@ -187,7 +187,7 @@ process.stdout.hasColors() ? highlight(text) : text;
 
 ## Upgrading from prior versions
 
-Prior to version 7, the only API exposed by this module was for a single line and optional column pointer. The old API will now log a deprecation warning.
+Prior to version 7, the only API exposed by this module was for a single line and optional column pointer. The old API will now log a deprecation warning. It will be removed in Babel 8.
 
 The new API takes a `location` object, similar to what is available in an AST.
 
