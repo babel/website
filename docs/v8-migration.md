@@ -392,7 +392,7 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   **Migration**: You will probably be fine with the new behaviour as Babel now tries to compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers.
 
-  If anyhow you want to restore the Babel 7 behaviour for debug purpose, you can specify the [`exclude` option](./preset-env.md#exclude): `{ exclude: [/bugfix/] }` to explicitly exclude the bugfixes plugins. Note that doing so will bloat the output as Babel has to compile features that, if not of some specific bug, would be generally supported by your targets.
+  If anyhow you want to restore the Babel 7 behaviour for debug purpose, you can specify the [`exclude` option](./preset-env.md#exclude): `{ exclude: ["bugfix/.+"] }` to explicitly exclude the bugfixes plugins. Note that doing so will bloat the output as Babel has to compile features that, if not of some specific bug, would be generally supported by your targets.
 
 - Removed syntax plugins can not be used in `include` and `exclude` ([#15810](https://github.com/babel/babel/pull/15810))
 
