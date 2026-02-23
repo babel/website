@@ -689,6 +689,14 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
   }
   ```
 
+### `@babel/eslint-plugin` {#babel-eslint-plugin}
+
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- Drop support for ESLint 7 and ESLint 8 ([#17766](https://github.com/babel/babel/pull/17766))
+
+  **Migration**: Upgrade your ESLint to version 9 or above.
+
 ### `@babel/eslint-parser` {#babel-eslint-parser}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
