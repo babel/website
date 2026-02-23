@@ -1433,7 +1433,27 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
   const { rules, rulesConfig } = require("@babel/eslint-plugin")
   ```
 
+### `@babel/code-frame`
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Remove default export ([#17772](https://github.com/babel/babel/pull/17772))
+
+  The default export was an old API which had been long deprecated since Babel 7.
+
+  __Migration__: Migrate to the [`codeFrameColumns` API](./code-frame.md#codeframecolumns).
+
+  ```diff title="my-babel-plugin.js"
+  - import codeFrame from "@babel/code-frame";
+  - codeFrame(input, 1, 0, { /* options */ });
+
+  + import { codeFrameColumns } from "@babel/code-frame";
+  + codeFrameColumns(input, { start: { line: 1, column: 0 } }, { /* options */ });
+  ```
+
 ### `@babel/compat-data`
+
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 - Rename stage 4 plugin entries from `proposal-*` to `transform-*` in `plugins.json` ([#14976](https://github.com/babel/babel/pull/14976))
 
