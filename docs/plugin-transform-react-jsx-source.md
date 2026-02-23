@@ -4,10 +4,6 @@ title: "@babel/plugin-transform-react-jsx-source"
 sidebar_label: react-jsx-source
 ---
 
-:::info
-This plugin is included in `@babel/preset-react`
-:::
-
 ## Example
 
 **In**
