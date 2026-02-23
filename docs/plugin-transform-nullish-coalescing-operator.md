@@ -101,7 +101,7 @@ var foo = (_object$foo = object.foo) != null ? _object$foo : "default";
 ```
 
 :::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::
 
 ## References

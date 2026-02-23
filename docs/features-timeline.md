@@ -242,7 +242,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 - Enable the [Class Fields](https://github.com/tc39/proposal-class-fields),
   [Private Methods](https://github.com/tc39/proposal-private-methods) and [Static Class Features](https://github.com/tc39/proposal-static-class-features) Stage 4 proposals by default
-- Add the [Private Brand Checks](https://github.com/tc39/proposal-private-fields-in-in) and [Static Class Blocks](https://github.com/tc39/proposal-class-static-block) proposals to `@babel/preset-env`'s [`shippedProposals`](https://babeljs.io/docs/en/babel-preset-env#shippedproposals)
+- Add the [Private Brand Checks](https://github.com/tc39/proposal-private-fields-in-in) and [Static Class Blocks](https://github.com/tc39/proposal-class-static-block) proposals to `@babel/preset-env`'s [`shippedProposals`](./preset-env.md#shippedproposals)
   ```js title="JavaScript"
   class A {
     static { initialize(A); } // static block
@@ -258,7 +258,7 @@ Additionally, use this timeline to track some other important efforts, such as t
     2 + await computeIt();
   };
   ```
-- Support for the [`importInterop: "node"`](https://babeljs.io/docs/en/babel-plugin-transform-modules-commonjs#importinterop) option in `@babel/plugin-transform-modules-commonjs`, to aligh Babel with the Node.js behavior
+- Support for the [`importInterop: "node"`](./plugin-transform-modules-commonjs.md#importinterop) option in `@babel/plugin-transform-modules-commonjs`, to aligh Babel with the Node.js behavior
 - [TypeScript 4.3](https://devblogs.microsoft.com/typescript/announcing-typescript-4-3/) support
 
 </li>
@@ -268,8 +268,8 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 [blog post](https://babeljs.io/blog/2021/02/22/7.13.0)
 
-- Top-level [`targets`](https://babeljs.io/docs/en/options#output-targets) option ([RFC](https://github.com/babel/rfcs/pull/2))
-- Granular compiler assumptions ([docs](https://babeljs.io/assumptions), [RFC](https://github.com/babel/rfcs/pull/5))
+- Top-level [`targets`](./options.md#output-targets) option ([RFC](https://github.com/babel/rfcs/pull/2))
+- Granular compiler assumptions ([docs](./assumptions.md), [RFC](https://github.com/babel/rfcs/pull/5))
 - Support for the [Records and Tuples](https://github.com/tc39/proposal-record-tuple) proposals
   ```js title="JavaScript"
   let rec = #{ x: 1 };
@@ -355,7 +355,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 [blog post](https://babeljs.io/blog/2020/03/16/7.9.0)
 
-- [`bugfixes`](https://babeljs.io/docs/en/babel-preset-env#bugfixes) option in `@babel/preset-env`, to workaround browsers bugs rather than compiling whole Features
+- [`bugfixes`](./preset-env.md#bugfixes) option in `@babel/preset-env`, to workaround browsers bugs rather than compiling whole Features
 - [TypeScript 3.8](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/) support
 - Support for Flow `declare` class fields
 - Support for the [automatic](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) JSX runtime

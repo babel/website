@@ -176,7 +176,7 @@ foo === null || foo === void 0 ? void 0 : foo.bar;
 ```
 
 :::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::
 
 ## References

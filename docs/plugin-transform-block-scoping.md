@@ -112,5 +112,5 @@ let i;
 If you need these errors you can tell Babel to try and find them by setting `"tdz": true` for this plugin. However, the current implementation might not get all edge cases right and its best to just avoid code like this in the first place.
 
 :::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::

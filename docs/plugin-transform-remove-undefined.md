@@ -63,5 +63,5 @@ require("@babel/core").transformSync("code", {
 - `tdz` - Detect usages before declaration/initialization in let/const(throws) and var(void 0)
 
 :::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::

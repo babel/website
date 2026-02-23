@@ -121,7 +121,7 @@ You can also set the `async` attribute for external scripts.
 
 ## API
 
-Load `babel.js` or `babel.min.js` in your environment. This will expose [Babel's API](http://babeljs.io/docs/usage/api/) in a `Babel` object:
+Load `babel.js` or `babel.min.js` in your environment. This will expose [Babel's API](./core.md) in a `Babel` object:
 
 ```js title="JavaScript"
 var input = 'const getMessage = () => "Hello World";';

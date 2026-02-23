@@ -212,7 +212,7 @@ If you are using `@babel/preset-env` and legacy decorators, you must ensure the 
 The `include` option will enable the transforms included in `@babel/preset-env` so you can safely remove them from your `package.json`.
 
 :::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::
 
 ::::

@@ -58,7 +58,7 @@ require("@babel/core").transformSync("code", {
 
 ### Assumptions
 
-This plugin is affected by the [`noDocumentAll`](https://babeljs.io/docs/assumptions#nodocumentall) assumption.
+This plugin is affected by the [`noDocumentAll`](./assumptions.md#nodocumentall) assumption.
 
 ### `version`
 

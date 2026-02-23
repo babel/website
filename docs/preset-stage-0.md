@@ -61,4 +61,4 @@ Will use the native built-in instead of trying to polyfill behavior for any plug
 
 Use the legacy (stage 1) decorators syntax and behavior.
 
-> You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
+> You can read more about configuring preset options [here](./presets.md#preset-options)
