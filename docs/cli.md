@@ -80,7 +80,7 @@ npx babel script.js --watch --out-file script-compiled.js
 ### Compile with Source Maps
 
 :::note
-Since v7.19.3, if this parameter is not specified, `@babel/cli` will follow the [configuration files](https://babeljs.io/docs/en/config-files).
+Since v7.19.3, if this parameter is not specified, `@babel/cli` will follow the [configuration files](./config-files.md).
 :::
 
 If you would then like to add a **source map file** you can use

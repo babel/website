@@ -171,5 +171,5 @@ case that is very unlikely to appear in production code however it's something
 to keep in mind.
 
 :::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::

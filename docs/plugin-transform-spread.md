@@ -100,7 +100,7 @@ Consider migrating to the top level [`iterableIsArray`](assumptions.md#iterablei
 Under the `iterableIsArray` assumption, Babel preserves "holes" when spreading an array (for example, `[ ...Array(2) ]` produces `[ (hole), (hole) ]`). Set `iterableIsArray` to `false` to avoid this behaviour.
 
 :::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::
 
 ### `allowArrayLike`

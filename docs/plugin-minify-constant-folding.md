@@ -90,5 +90,5 @@ require("@babel/core").transformSync("code", {
 + `tdz` - Account for TDZ (Temporal Dead Zone)
 
 :::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::

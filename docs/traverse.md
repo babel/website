@@ -32,7 +32,7 @@ traverse(ast, {
 });
 ```
 
-Also, we can target particular [**node types**](https://babeljs.io/docs/en/babel-types#api) in the Syntax Tree
+Also, we can target particular [**node types**](./types.md#api) in the Syntax Tree
 
 ```js title="JavaScript"
 traverse(ast, {

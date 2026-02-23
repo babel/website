@@ -90,7 +90,7 @@ Indicates that every file should be parsed as TS, TSX, or as TS without JSX ambi
 
 ### `allowNamespaces`
 
-`boolean`, uses the default set by [`@babel/plugin-transform-typescript`](https://babeljs.io/docs/en/babel-plugin-transform-typescript#allownamespaces).
+`boolean`, uses the default set by [`@babel/plugin-transform-typescript`](./plugin-transform-typescript.md#allownamespaces).
 
 Added in: `v7.6.0`
 
@@ -195,7 +195,7 @@ export var Animals = {
 };
 ```
 
-> You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options).
+> You can read more about configuring preset options [here](./presets.md#preset-options).
 
 ### `rewriteImportExtensions`
 

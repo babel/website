@@ -45,5 +45,5 @@ require("@babel/core").transformSync("code", {
 This plugin accepts the same options as [`@babel/plugin-proposal-decorators`](plugin-proposal-decorators.md).
 
 :::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::

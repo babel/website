@@ -494,7 +494,7 @@ These features were behind `shippedProposals` flag in older Babel versions. They
 - [Private field brand checks](https://github.com/tc39/proposal-private-fields-in-in)
 - [private methods](https://github.com/tc39/proposal-private-methods)
 
-> You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
+> You can read more about configuring preset options [here](./presets.md#preset-options)
 
 ## Caveats
 

@@ -132,4 +132,4 @@ The [Hermes](https://hermesengine.dev/) team is maintaining an alternative Flow 
 The Hermes parser does not currently attach comments to the AST. This can cause problems with transforms that depend on the presence of specific comments.
 :::
 
-> You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
+> You can read more about configuring preset options [here](./presets.md#preset-options)

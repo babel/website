@@ -223,7 +223,7 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   If you are already using the `targets` option or have a `.browserslistrc` config file, this change won't affect you.
 
-  **Migration**: You'll probably be fine with the new behavior since the [browserslist's `defaults` covers most modern browsers](https://browsersl.ist/#q=defaults). If you need to support legacy browsers, create a [`.browserslistrc` config](https://github.com/browserslist/browserslist#queries), or specify the [`targets`](https://babeljs.io/docs/options#targets) option.
+  **Migration**: You'll probably be fine with the new behavior since the [browserslist's `defaults` covers most modern browsers](https://browsersl.ist/#q=defaults). If you need to support legacy browsers, create a [`.browserslistrc` config](https://github.com/browserslist/browserslist#queries), or specify the [`targets`](./options.md#targets) option.
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -366,7 +366,7 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
 - The `loose` and `spec` options have been removed ([#16043](https://github.com/babel/babel/pull/16043))
 
-  **Migration**: You can use the [`assumptions`](https://babeljs.io/docs/assumptions) top-level option instead. See ["Migrating from @babel/preset-env's "loose" and "spec" modes"](https://babeljs.io/docs/assumptions#migrating-from-babelpreset-envs-loose-and-spec-modes) for the ready-to-copy equivalent configuration.
+  **Migration**: You can use the [`assumptions`](./assumptions.md) top-level option instead. See ["Migrating from @babel/preset-env's "loose" and "spec" modes"](./assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the ready-to-copy equivalent configuration.
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 

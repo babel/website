@@ -194,7 +194,7 @@ compiles and type checks. While many don't apply, some behaviors might be useful
 equivalents in Babel can be enabled by some configuration options or plugins.
 
 - `--alwaysStrict`
-  You can use the `strictMode` [parser option](https://babeljs.io/docs/en/babel-parser#options):
+  You can use the `strictMode` [parser option](./parser.md#options):
   ```js title="JavaScript"
   module.exports = {
     parserOpts: { strictMode: true },
@@ -219,17 +219,17 @@ equivalents in Babel can be enabled by some configuration options or plugins.
 - `---importsNotUsedAsValues`
   You can use the `onlyRemoveTypeImports` option to replicate this behavior. `onlyRemoveTypeImports: true` is equivalent to `importsNotUsedAsValues: preserve`, while `onlyRemoveTypeImports: false` is equivalent to `importsNotUsedAsValues: remove`. There is no equivalent for `importsNotUsedAsValues: error`.
 - `--inlineSourceMap`
-  You can set the [`sourceMaps: "inline"`](https://babeljs.io/docs/en/options#sourcemaps) option in your `babel.config.json` file.
+  You can set the [`sourceMaps: "inline"`](./options.md#sourcemaps) option in your `babel.config.json` file.
 - `--isolatedModules`
   This is the default Babel behavior, and it can't be turned off because Babel doesn't support cross-file analysis.
 - `--jsx`
   JSX support is provided using another plugin.
   If you want your output to contains JSX code (i.e. `--jsx preserve`), you need the `@babel/plugin-syntax-jsx` plugin; if you want to transpile it to standard JavaScript (i.e. `--jsx react` or `--jsx react-native`), you should use the `@babel/plugin-transform-react-jsx` plugin.
 - `--jsxFactory`
-  It can be customized using the [`pragma` option](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx#pragma) of the `@babel/plugin-transform-react-jsx` package. You also need to set the `jsxPragma` option of this plugin.
+  It can be customized using the [`pragma` option](plugin-transform-react-jsx.md#pragma) of the `@babel/plugin-transform-react-jsx` package. You also need to set the `jsxPragma` option of this plugin.
 - `--module`, `-m`
   If you are using a bundler (Webpack or Rollup), this option is set automatically.
-  If you are using `@babel/preset-env`, you can use the [`modules` option](https://babeljs.io/docs/en/babel-preset-env#modules); otherwise you can load the specific plugin.
+  If you are using `@babel/preset-env`, you can use the [`modules` option](./preset-env.md#modules); otherwise you can load the specific plugin.
 
   | **`--module` value** | **`@babel/preset-env`'s `modules`** |             **Single plugin**              |
   | :------------------: | :---------------------------------: | :----------------------------------------: |
@@ -241,19 +241,19 @@ equivalents in Babel can be enabled by some configuration options or plugins.
   |  `ES6` or `ES2015`   |               `false`               |                     /                      |
 
 - `--outDir`
-  When using `@babel/cli`, you can set the [`--out-dir` option](https://babeljs.io/docs/en/babel-cli#compile-directories).
+  When using `@babel/cli`, you can set the [`--out-dir` option](./cli.md#compile-directories).
 - `--outFile`
   Babel doesn't support concatenating output files: you should use a bundler (like Webpack, Rollup or Parcel) for that.
-  When using `@babel/cli`, you can compile a single file using the [`--out-file` option](https://babeljs.io/docs/en/babel-cli#compile-files).
+  When using `@babel/cli`, you can compile a single file using the [`--out-file` option](./cli.md#compile-files).
 - `--sourceMap`
-  You can use the top-level [`sourceMaps: true` option](https://babeljs.io/docs/en/options#sourcemaps).
+  You can use the top-level [`sourceMaps: true` option](./options.md#sourcemaps).
 - `--target`
-  Babel doesn't support targeting a specific version of the language, but you can choose which engines you want to target using [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env).
-  If you prefer, you can enable [individual plugins](https://babeljs.io/docs/en/plugins) for every ECMAScript feature.
+  Babel doesn't support targeting a specific version of the language, but you can choose which engines you want to target using [`@babel/preset-env`](./preset-env.md).
+  If you prefer, you can enable [individual plugins](./plugins-list.md) for every ECMAScript feature.
 - `--useDefineForClassFields`
-  You can use the [`setPublicClassFields`](https://babeljs.io/docs/assumptions#setpublicclassfields) assumption to replicate this behavior.
+  You can use the [`setPublicClassFields`](./assumptions.md#setpublicclassfields) assumption to replicate this behavior.
 - `--watch`, `-w`
-  When using `@babel/cli`, you can specify the [`--watch` option](https://babeljs.io/docs/en/babel-cli#compile-files).
+  When using `@babel/cli`, you can specify the [`--watch` option](./cli.md#compile-files).
 
 ## Caveats
 

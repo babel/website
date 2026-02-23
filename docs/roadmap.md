@@ -103,7 +103,7 @@ This goal can be split into two big tasks that can be done in parallel:
 
 ### Investigate new compiler `assumptions`
 
-In Babel 7.13.0 we introduced a new top-level [`assumptions`](https://babeljs.io/docs/en/options#assumptions) option, to formalize what the `loose` mode option does and offer more granular control to our users (since often they can only enable _some_ assumptions and not all of them).
+In Babel 7.13.0 we introduced a new top-level [`assumptions`](./options.md#assumptions) option, to formalize what the `loose` mode option does and offer more granular control to our users (since often they can only enable _some_ assumptions and not all of them).
 
 However, we only included options for assumptions we _already_ made when compiling in `loose` mode. We can now investigate what new assumptions our users might need.
 

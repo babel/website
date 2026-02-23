@@ -200,5 +200,5 @@ for (var _i = 0; _i < _arr.length; _i++) {
 ```
 
 :::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::

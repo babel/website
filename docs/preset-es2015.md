@@ -61,4 +61,4 @@ Setting this to `false` will not transform modules.
 
 Enable "spec" transformations for any plugins in this preset that allow them.
 
-> You can read more about configuring preset options [here](https://babeljs.io/docs/en/presets#preset-options)
+> You can read more about configuring preset options [here](./presets.md#preset-options)

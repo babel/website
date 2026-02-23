@@ -351,7 +351,7 @@ Toggles whether or not to throw an error if an XML namespaced tag name is used. 
 Though the JSX spec allows this, it is disabled by default since React's JSX does not currently have support for it.
 
 :::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::
 
 #### `runtime`

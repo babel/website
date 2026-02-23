@@ -67,5 +67,5 @@ require("@babel/core").transformSync("code", {
 - `exclude` - array of environment variables to exclude
 
 :::tip
-You can read more about configuring plugin options [here](https://babeljs.io/docs/en/plugins#plugin-options)
+You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::

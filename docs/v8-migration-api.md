@@ -1383,7 +1383,7 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
 - Allow skipped `NodePath`s to be requeued ([#13291](https://github.com/babel/babel/pull/13291))
 
-  `NodePath#requeue()` can requeue a skipped NodePath. This is actually a bugfix, but it causes an infinite loop in the [temporal dead zone](https://babeljs.io/docs/babel-plugin-transform-block-scoping#tdz) implementation of `@babel/plugin-transform-block-scoping` in Babel 7: it may break other plugins as well.
+  `NodePath#requeue()` can requeue a skipped NodePath. This is actually a bugfix, but it causes an infinite loop in the [temporal dead zone](./plugin-transform-block-scoping.md#tdz) implementation of `@babel/plugin-transform-block-scoping` in Babel 7: it may break other plugins as well.
 
   __Migration__: If you want to preserve the old behavior, you can use `NodePath#shouldSkip` to check whether a NodePath has been skipped before calling `NodePath#requeue()`.
 

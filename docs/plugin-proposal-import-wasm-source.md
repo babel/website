@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 Transforms `import source` declarations to `WebAssembly.Module` objects, assuming that `import source` is being used to import the source of a WebAssembly Module.
 
-The transformation applied by this plugin depends on your top-level [`targets`](https://babeljs.io/docs/options#targets) to detect whether the generated code should be compatible with Node.js, browsers, or both. When targeting Node.js, the generated code will also change depending on whether you are compiling modules to CommonJS or not.
+The transformation applied by this plugin depends on your top-level [`targets`](./options.md#targets) to detect whether the generated code should be compatible with Node.js, browsers, or both. When targeting Node.js, the generated code will also change depending on whether you are compiling modules to CommonJS or not.
 
 :::caution
 This plugin cannot be used when compiling modules to AMD, SystemJS, or UMD.
