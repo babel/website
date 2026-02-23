@@ -37,8 +37,9 @@
     "@docusaurus/preset-classic": "^3.9.2",
     "@docusaurus/remark-plugin-npm2yarn": "^3.9.2",
     "@eslint/js": "^9.35.0",
+    "@mdx-js/react": "^3.1.1",
     "@types/node": "^24.0.4",
-    "@types/react": "^19.1.1",
+    "@types/react": "^19.2.14",
     "eslint": "^9.35.0",
     "eslint-formatter-codeframe": "^7.32.1",
     "eslint-plugin-react": "^7.37.5",
@@ -62,22 +63,21 @@
   },
   "dependencies": {
     "@emotion/css": "^11.10.6",
-    "@shikijs/engine-oniguruma": "^3.9.2",
-    "@shikijs/langs": "^3.9.2",
-    "@shikijs/monaco": "^3.9.2",
-    "@shikijs/themes": "^3.9.2",
-    "algoliasearch": "^5.23.3",
+    "@shikijs/engine-oniguruma": "^3.22.0",
+    "@shikijs/langs": "^3.22.0",
+    "@shikijs/monaco": "^3.22.0",
+    "@shikijs/themes": "^3.22.0",
+    "algoliasearch": "^5.49.0",
     "clsx": "^2.1.1",
     "core-js": "^3.43.0",
-    "lodash.camelcase": "^4.3.0",
     "lodash.debounce": "^4.0.8",
     "lz-string": "^1.5.0",
     "monaco-editor": "^0.52.2",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-instantsearch": "^7.16.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-instantsearch": "^7.24.0",
     "regenerator-runtime": "^0.14.0",
-    "shiki": "^3.9.2"
+    "shiki": "^3.22.0"
   },
   "workspaces": [
     "./website"
@@ -89,5 +89,5 @@
       "git add"
     ]
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.12.0"
 }

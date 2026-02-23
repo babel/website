@@ -1,8 +1,8 @@
-import camelCase from "lodash.camelcase";
 import type { PluginConfig, MultiPackagesConfig, ReplState } from "./types";
+import { toCamelCase } from "./utils";
 
 const normalizePluginName = (pluginName) =>
-  `_babel_${camelCase(`plugin-${pluginName}`)}`;
+  `_babel_${toCamelCase(`plugin-${pluginName}`)}`;
 
 const babelConfig: PluginConfig = {
   label: "Babel",
