@@ -231,7 +231,7 @@ Additional configuration options can be set in your ESLint configuration under t
   </TabItem>
   </Tabs>
 
-:::babel7
+:::
 
 #### use glob-based configuration
 
