@@ -5,7 +5,13 @@ import pluginReact from "eslint-plugin-react";
 import js from "@eslint/js";
 
 export default defineConfig([
-  globalIgnores(["**/node_modules", "website/.docusaurus", "website/build", "website/static/js/build", "website/static/repl"]),
+  globalIgnores([
+    "**/node_modules",
+    "website/.docusaurus",
+    "website/build",
+    "website/static/js/build",
+    "website/static/repl",
+  ]),
   {
     languageOptions: {
       globals: {

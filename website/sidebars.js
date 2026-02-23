@@ -279,7 +279,7 @@ module.exports = {
         "babel-plugin-proposal-pipeline-operator",
         "babel-plugin-proposal-record-and-tuple",
         "babel-plugin-proposal-throw-expressions",
-        "babel-plugin-syntax-module-blocks"
+        "babel-plugin-syntax-module-blocks",
       ],
     },
     "Web Compatibility": [
