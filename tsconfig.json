@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
+    "lib": ["ESNext", "DOM"],
     "types": [
       "node",
       "@docusaurus/module-type-aliases",
@@ -17,6 +14,6 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "incremental": true,
-    "skipLibCheck": true,
-  },
+    "skipLibCheck": true
+  }
 }

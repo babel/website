@@ -35,13 +35,18 @@ exec(
       i--
     ) {
       const version = pastVersions[i];
-      const majorMinor = version.substring(0, version.indexOf(".", version.indexOf(".") + 1));
+      const majorMinor = version.substring(
+        0,
+        version.indexOf(".", version.indexOf(".") + 1)
+      );
       if (!includedSet.has(majorMinor)) {
         includedSet.add(majorMinor);
         filteredVersions.push(version);
       }
     }
-    const writtenPath = resolve("./website/src/components/repl/past-versions.json");
+    const writtenPath = resolve(
+      "./website/src/components/repl/past-versions.json"
+    );
     await writeFile(
       writtenPath,
       JSON.stringify(filteredVersions, undefined, 2) + "\n"
