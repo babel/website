@@ -67,7 +67,7 @@
     "@shikijs/langs": "^3.22.0",
     "@shikijs/monaco": "^3.22.0",
     "@shikijs/themes": "^3.22.0",
-    "algoliasearch": "^5.23.3",
+    "algoliasearch": "^5.49.0",
     "clsx": "^2.1.1",
     "core-js": "^3.43.0",
     "lodash.debounce": "^4.0.8",
@@ -75,7 +75,7 @@
     "monaco-editor": "^0.52.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-instantsearch": "^7.16.2",
+    "react-instantsearch": "^7.24.0",
     "regenerator-runtime": "^0.14.0",
     "shiki": "^3.22.0"
   },
