@@ -145,6 +145,7 @@ If you don't want to copy ignored JavaScript files:
 | --- | --- |
 | v7.8.0 | Added `--copy-ignored` |
 | v7.8.4 | Change `copyeIgnored` option default to `true`, it can be disabled by `--no-copy-ignored` |
+
 </details>
 
 ```sh title="Shell"
@@ -212,6 +213,25 @@ npx babel src-with-mjs-and-cjs --out-dir lib --keep-file-extension
 ```
 
 Note that `--keep-file-extension` and `--out-file-extension` cannot be used together.
+
+### Output levels
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| v7.7.0 | Added `--silent` |
+
+</details>
+
+```sh title="Shell"
+# Log everything to stdout
+npx babel script.js --out-file script-compiled.js --verbose
+
+# Mute the "Successfully compiled..." log
+npx babel script.js --out-file script-compiled.js --silent
+```
 
 ### Advanced Usage
 
