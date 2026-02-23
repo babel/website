@@ -5472,7 +5472,6 @@ __metadata:
     husky: "npm:^8.0.1"
     json5: "npm:^2.2.3"
     lint-staged: "npm:^13.0.3"
-    lodash.camelcase: "npm:^4.3.0"
     lodash.debounce: "npm:^4.0.8"
     lz-string: "npm:^1.5.0"
     monaco-editor: "npm:^0.52.2"
@@ -10087,13 +10086,6 @@ __metadata:
   dependencies:
     p-locate: "npm:^6.0.0"
   checksum: 10/1c6d269d4efec555937081be964e8a9b4a136319c79ca1d45ac6382212a8466113c75bd89e44521ca8ecd1c47fb08523b56eee5c0712bc7d14fec5f729deeb42
-  languageName: node
-  linkType: hard
-
-"lodash.camelcase@npm:^4.3.0":
-  version: 4.3.0
-  resolution: "lodash.camelcase@npm:4.3.0"
-  checksum: 10/c301cc379310441dc73cd6cebeb91fb254bea74e6ad3027f9346fc43b4174385153df420ffa521654e502fd34c40ef69ca4e7d40ee7129a99e06f306032bfc65
   languageName: node
   linkType: hard
 
