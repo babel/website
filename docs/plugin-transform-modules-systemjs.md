@@ -83,6 +83,14 @@ require("@babel/core").transformSync("code", {
 
 ## Options
 
+### `allowTopLevelThis`
+
+`boolean`, defaults to `false`.
+
+Added in: `v7.8.0`
+
+When this option is `true`, Babel will transform top level `this` (always `undefined` in ES Modules) to `void 0`.
+
 ### `moduleIds`
 
 `boolean` defaults to `!!moduleId`
