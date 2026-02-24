@@ -732,6 +732,10 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
 
   **Migration**: If you want to restore to Babel 7 behaviour, set `babelOptions.parserOpts.allowSuperOutsideMethod` to `true`.
 
+- `parserOpts.allowSuperOutsideMethod` only accepts top-level `super` ([#17505](https://github.com/babel/babel/pull/17505))
+
+  **Migration**: Avoid invalid `super` usage. The intention of `allowSuperOutsideMethod` is to construct `super` node in Babel templates, such as `` template.ast`super()` ``, where only top-level `super` is allowed.
+
 - `allowReturnOutsideFunction` is inferred from `ecmaFeatures.globalReturn` ([#13921](https://github.com/babel/babel/pull/13921))
 
   **Migration**: If you want to enable `allowReturnOutsideFunction`, set [`ecmaFeatures.globalReturn`](https://eslint.org/docs/latest/use/configure/language-options#specifying-parser-options) to `true`.
