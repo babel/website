@@ -428,3 +428,21 @@ module.exports = function(api) {
   };
 };
 ```
+
+### `api.addExternalDependency(name: string)` {#api_addExternalDependency}
+
+Added in: `v7.17.0`
+
+This API allows the plugin or preset to indicate an external dependency. `@babel/core` does not resolve external dependencies, instead it is up to the caller
+to handle any dependencies made available in the `.externalDependencies` property returned from the [`babel.transformSync`](./core.md#transformsync) method.
+
+```js title="my-babel-preset.js"
+module.exports = function(api) {
+  // Indicate that the preset depends on the .browserslistrc file
+  api.addExternalDependency(".browserslistrc");
+
+  return {
+    // ...
+  };
+};
+```
