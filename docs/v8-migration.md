@@ -45,7 +45,7 @@ Babel is now shipped as native ECMAScript modules ([#11701](https://github.com/b
 ### Peer dependency requirements {#peer-dependency-requirements}
 
 - All presets and plugins require `@babel/core@^8.0.0` as peer dependency. Some Babel 7 plugins and presets might work with `@babel/core@8`, and some Babel 8 plugins and presets might work with `@babel/core@7`, but we do not provide any official support for that.
-- `@babel/eslint-parser` and `@babel/eslint-plugin` require `eslint@^9.0.0` as peer dependency. ([#15563](https://github.com/babel/babel/issues/15563))
+- `@babel/eslint-parser` and `@babel/eslint-plugin` require `eslint@>=9.0.0` as peer dependency. ([#15563](https://github.com/babel/babel/issues/15563))
 
 ## Renamed Packages {#renamed-packages}
 
