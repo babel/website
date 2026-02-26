@@ -368,6 +368,26 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   **Migration**: You can use the [`assumptions`](./assumptions.md) top-level option instead. See ["Migrating from @babel/preset-env's "loose" and "spec" modes"](./assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the ready-to-copy equivalent configuration.
 
+- The `corejs` option must specify the minor version of core-js 3 ([#16095](https://github.com/babel/babel/pull/16095))
+
+  In Babel 7, the recommended `corejs` option was `corejs: 3`. However, such option implies that Babel is compiling with features available in `corejs: "3.0"`, which was published in 2019 and missing many latest ECMAScript features.
+
+  **Migration**: Specify the minor version of core-js 3 that you use to ensure latest features will be polyfilled if required. For example,
+
+  ```js title=babel.config.mjs
+  import corejsPackage from "core-js/package.json" with { type: "json" }
+  export default {
+    "presets": [[
+      "@babel/preset-env",
+      {
+        "corejs": corejsPackage.version
+      }
+    ]]
+  }
+  ```
+
+  If your are authoring a library that depends on `core-js`, the optimal `corejs` version should be the first version available in the `dependencies` of your library's `package.json`.
+
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
 - `include` and `exclude` respect renamed package names ([#15576](https://github.com/babel/babel/pull/15576))
