@@ -16,10 +16,11 @@ This plugin cannot be used when compiling modules to AMD, SystemJS, or UMD.
 :::
 
 :::caution
-This plugin only transforms import decalarations and not dynamic `import()` calls.
+This plugin only transforms import declarations and not dynamic `import()` calls.
 :::
 
 ## Example
+
 ```js title="input.js"
 import data from "./data.json" with { type: "json" };
 ```
