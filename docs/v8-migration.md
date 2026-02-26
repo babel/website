@@ -45,7 +45,7 @@ Babel is now shipped as native ECMAScript modules ([#11701](https://github.com/b
 ### Peer dependency requirements {#peer-dependency-requirements}
 
 - All presets and plugins require `@babel/core@^8.0.0` as peer dependency. Some Babel 7 plugins and presets might work with `@babel/core@8`, and some Babel 8 plugins and presets might work with `@babel/core@7`, but we do not provide any official support for that.
-- `@babel/eslint-parser` and `@babel/eslint-plugin` require `eslint@^8.9.0` as peer dependency. ([#15563](https://github.com/babel/babel/issues/15563))
+- `@babel/eslint-parser` and `@babel/eslint-plugin` require `eslint@>=9.0.0` as peer dependency. ([#15563](https://github.com/babel/babel/issues/15563))
 
 ## Renamed Packages {#renamed-packages}
 
@@ -688,6 +688,14 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
     ]
   }
   ```
+
+### `@babel/eslint-plugin` {#babel-eslint-plugin}
+
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- Drop support for ESLint 7 and ESLint 8 ([#17766](https://github.com/babel/babel/pull/17766))
+
+  **Migration**: Upgrade your ESLint to version 9 or above.
 
 ### `@babel/eslint-parser` {#babel-eslint-parser}
 
