@@ -689,6 +689,20 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
   }
   ```
 
+
+### `@babel/plugin-external-helpers` {#babel-plugin-external-helpers}
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Rename `whitelist` option to `allowlist` ([#17830](https://github.com/babel/babel/pull/17830))
+
+  **Migration**: Replace `whitelist` with `allowlist` in your configuration. To support both Babel 7 and Babel 8, you can pass both options simultaneously -- the new name will take precedence.
+
+  ```diff
+  - ["external-helpers", { "whitelist": ["createClass"] }]
+  + ["external-helpers", { "allowlist": ["createClass"] }]
+  ```
+
 ### `@babel/eslint-parser` {#babel-eslint-parser}
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)

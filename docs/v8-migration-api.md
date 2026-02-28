@@ -1313,6 +1313,19 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
   **Migration**: Use `node.shorthand` rather than `node.extra.shorthand`.
 
+### `@babel/template`
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Rename `placeholderWhitelist` option to `placeholderAllowlist` ([#17830](https://github.com/babel/babel/pull/17830))
+
+  __Migration__: Replace `placeholderWhitelist` with `placeholderAllowlist`. To support both Babel 7 and Babel 8, you can pass both options simultaneously -- the new name will take precedence.
+
+  ```diff
+  - template(code, { placeholderWhitelist: new Set(["FOO"]) })
+  + template(code, { placeholderAllowlist: new Set(["FOO"]) })
+  ```
+
 ### `@babel/traverse`
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
@@ -1418,6 +1431,16 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
   ```
 
   These methods are meant to be private so there is no real migration approach. If your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
+
+
+- Rename `blacklist` visitor option to `denylist` ([#17830](https://github.com/babel/babel/pull/17830))
+
+  __Migration__: Replace `blacklist` with `denylist` in your visitor options. To support both Babel 7 and Babel 8, you can pass both options simultaneously -- `denylist` will take precedence.
+
+  ```diff
+  - traverse(ast, { blacklist: ["MemberExpression"], enter() {} })
+  + traverse(ast, { denylist: ["MemberExpression"], enter() {} })
+  ```
 
 ### `@babel/eslint-plugin`
 
