@@ -46,7 +46,7 @@ The entire process to set this up involves:
 Or `babel.config.js` if you are using an older Babel version
 
 ```js title="babel.config.js"
-const presets = [
+const presets = [yarn add --dev @babel/core @babel/cli @babel/preset-env
   [
     "@babel/preset-env",
     {
