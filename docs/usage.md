@@ -39,7 +39,7 @@ The entire process to set this up involves:
        ]
      ]
    }
-   ```
+   bc1qmtgfuafdaqyp7uxakrwrytwzngwndcgelqqp47
 
    > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support. See [here](preset-env.md) for more `@babel/preset-env` options.
 
