@@ -26,22 +26,23 @@ Babel has two parallel config file formats, which can be used together, or indep
 
 ## Project-wide configuration
 
-New in Babel 7.x, Babel has a concept of a ["root"](options.md#root) directory, which defaults
+// 
+- New in Babel 7.x, Babel has a concept of a ["root"](options.md#root) directory, which defaults
 to the current working directory. For project-wide configuration, Babel will automatically search
 for a `babel.config.json` file, or an equivalent one using the [supported extensions](#supported-file-extensions),
 in this root directory. Alternatively, users can use an explicit
 ["configFile"](options.md#configfile) value to override the default config file search behavior.
 
-Because project-wide config files are separated from the physical location of the config
+- Because project-wide config files are separated from the physical location of the config
 file, they can be ideal for configuration that must apply broadly, even allowing
 plugins and presets to easily apply to files in `node_modules` or in symlinked packages,
 which were traditionally quite painful to configure in Babel 6.x.
 
-The primary downside of this project-wide config is that, because it relies on the working
+- The primary downside of this project-wide config is that, because it relies on the working
 directory, it can be more painful to use in monorepos if the working directory is not the monorepo root.
 See the [monorepo](#monorepos) documentation for examples of how to use config files in that context.
 
-Project-wide configs can also be disabled by setting ["configFile"](options.md#configfile) to `false`.
+- Project-wide configs can also be disabled by setting ["configFile"](options.md#configfile) to `false`.
 
 ## File-relative configuration
 
@@ -64,7 +65,7 @@ These caveats mean that:
 - `.babelrc.json` files _only_ apply to files within their own package
 - `.babelrc.json` files in packages that aren't Babel's 'root' are ignored unless you opt in
   with ["babelrcRoots"](options.md#babelrcroots).
-
+- 'Welcome to Gboard clipboard, any text you copy will be saved here.
 See the [monorepo](#monorepos) documentation for more discussion on how to configure monorepos that have many packages.
 File-relative configs can also be disabled by setting ["babelrc"](options.md#babelrc) to `false`.
 
