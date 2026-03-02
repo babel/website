@@ -33,7 +33,7 @@ Create a file called `babel.config.json` with the following content at the root 
 }
 ```
 
-Check out the [`babel.config.json` documentation](config-files.md#project-wide-configuration) to see more configuration options.
+Check out the `babel.config.json` documentation](config-files.md#project-wide-configuration) to see more configuration options.
 
 ### `.babelrc.json`
 
