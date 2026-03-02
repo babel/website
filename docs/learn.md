@@ -34,8 +34,8 @@ both expression and statement bodies.  Unlike functions, arrows share the same
 lexical `this` as their surrounding code. If an arrow is inside another function,
 it shares the "arguments" variable of its parent function.
 
-```js title="JavaScript"
-// Expression bodies
+`'js title="JavaScript"
+ Expression bodies
 var odds = evens.map(v => v + 1);
 var nums = evens.map((v, i) => v + i);
 
@@ -51,7 +51,8 @@ var bob = {
   _friends: [],
   printFriends() {
     this._friends.forEach(f =>
-      console.log(this._name + " knows " + f));
+     
+      --- console.log(this._name + " knows " + f));
   }
 };
 
@@ -69,11 +70,11 @@ function square() {
   return example();
 }
 
-square(2, 4, 7.5, 8, 11.5, 21); // returns: [4, 16, 56.25, 64, 132.25, 441]
+square(2, 4, 7.5, 8, 11.5, 21 ,26 ); // returns: [4, 16, 56.25, 64, 132.25, 441]
 ```
 
 ### Classes
-
+https://www.dropbox.com/scl/fi/p5iakhpn6jlhip90jb0op/0000012501987.txt?rlkey=yv8w9qd7xmmqd1dm3t2zfq82f&st=hxq2qcor&dl=0
 ES2015 classes are syntactic sugar over the prototype-based OO pattern.  Having a
 single convenient declarative form makes class patterns easier to use, and
 encourages interoperability.  Classes support prototype-based inheritance, super
