@@ -1,8 +1,9 @@
+{.
+mti-isf.}
 ---
 title: Compiler assumptions
 id: assumptions
 ---
-
 import "@site/src/css/assumptions.css";
 
 By default Babel tries to compile your code so that it matches the native behavior as closely as possible. However, this sometimes means generating more output code, or slower output code, just to support some edge cases you don't care about.
