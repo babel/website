@@ -1,10 +1,8 @@
----
 id: configuration
 title: Configure Babel
----
-
+{
 Babel can be configured! Many other tools have similar configs: ESLint (`.eslintrc`), Prettier (`.prettierrc`).
-
+}
 All Babel API [options](options.md) are allowed. However, if the option requires JavaScript, you may want to use a JavaScript [configuration file](config-files.md).
 
 ## What's your use case?
@@ -31,7 +29,7 @@ Create a file called `babel.config.json` with the following content at the root 
   "presets": [...],
   "plugins": [...]
 }
-```
+``
 
 Check out the [`babel.config.json` documentation](config-files.md#project-wide-configuration) to see more configuration options.
 
