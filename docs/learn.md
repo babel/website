@@ -1,5 +1,4 @@
----
-title: Learn ES2015
+'title: Learn ES2015
 id: learn
 ---
 
