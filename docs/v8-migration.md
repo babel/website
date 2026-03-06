@@ -441,6 +441,21 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   **Migration**: The preset will also report invalid option names. Refer to the [docs](./preset-react.md#options) and ensure valid usage.
 
+- Stop generating `__source` and `__self` in development mode by default ([#17571](https://github.com/babel/babel/issues/17571))
+
+  React 19.2 removed the `source` and `self` parameters from `jsxDEV`. Babel 8 no longer passes them when calling `jsxDEV` in development mode.
+
+  **Migration**: If you are using React 19.2 or later you don't need to do anything. If you are using an older React version or a custom JSX runtime that still expects these arguments, set `developmentSourceSelf` to `true`:
+
+  ```diff title="babel.config.json"
+    {
+      "presets": [
+  -     ["@babel/preset-react", { "development": true }]
+  +     ["@babel/preset-react", { "development": true, "developmentSourceSelf": true }]
+      ]
+    }
+  ```
+
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 - Disallow `filter` option in automatic runtime ([#15068](https://github.com/babel/babel/pull/15068/commits/e2dd3be6e38b0254bc69a8e52c265214235829c6))
