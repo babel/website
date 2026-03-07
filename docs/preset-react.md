@@ -139,6 +139,18 @@ This toggles behavior specific to development, such as adding `__source` and `__
 
 This is useful when combined with the [env option](options.md#env) configuration or [js config files](config-files.md#javascript).
 
+:::babel8
+
+#### `developmentSourceSelf`
+
+`boolean`, defaults to `false`.
+
+When `true`, the plugin generates `__source` and `__self` arguments in `jsxDEV` calls. These were used by older versions of React for development warnings but have been removed since React 19.2.
+
+Set this to `true` if you are using a React version older than 19.2 or a custom JSX runtime that depends on these arguments.
+
+:::
+
 #### `throwIfNamespace`
 
 `boolean`, defaults to `true`.
