@@ -60,6 +60,7 @@ The following packages has been renamed from `...-proposal-...` to `...-transfor
 | `@babel/plugin-proposal-dynamic-import` | `@babel/plugin-transform-dynamic-import` |
 | `@babel/plugin-proposal-explicit-resource-management` | `@babel/plugin-transform-explicit-resource-management` |
 | `@babel/plugin-proposal-export-namespace-from` | `@babel/plugin-transform-export-namespace-from` |
+| `@babel/plugin-proposal-json-modules` | `@babel/plugin-transform-json-modules` |
 | `@babel/plugin-proposal-json-strings` | `@babel/plugin-transform-json-strings` |
 | `@babel/plugin-proposal-logical-assignment-operators` | `@babel/plugin-transform-logical-assignment-operators` |
 | `@babel/plugin-proposal-nullish-coalescing-operator` | `@babel/plugin-transform-nullish-coalescing-operator` |
