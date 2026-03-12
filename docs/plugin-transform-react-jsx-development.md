@@ -121,7 +121,7 @@ require("@babel/core").transformSync("code", {
 
 :::babel8
 
-#### `developmentSourceSelf`
+#### `sourceSelf`
 
 `boolean`, defaults to `false`.
 

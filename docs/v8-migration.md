@@ -466,13 +466,21 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   React 19.2 removed the `source` and `self` parameters from `jsxDEV`. Babel 8 no longer passes them when calling `jsxDEV` in development mode.
 
-  **Migration**: If you are using React 19.2 or later you don't need to do anything. If you are using an older React version or a custom JSX runtime that still expects these arguments, set `developmentSourceSelf` to `true`:
+  **Migration**: If you are using React 19.2 or later you don't need to do anything. If you are using an older React version or a custom JSX runtime that still expects these arguments, set `developmentSourceSelf` to `true` in the preset, or `sourceSelf` to `true` in `@babel/plugin-transform-react-jsx-development`:
 
   ```diff title="babel.config.json"
     {
       "presets": [
   -     ["@babel/preset-react", { "development": true }]
   +     ["@babel/preset-react", { "development": true, "developmentSourceSelf": true }]
+      ]
+    }
+  ```
+    ```diff title="babel.config.json"
+    {
+      "plugins": [
+  -     "@babel/plugin-transform-react-jsx-development",
+  +     ["@babel/plugin-transform-react-jsx-development", { "sourceSelf": true }]
       ]
     }
   ```
