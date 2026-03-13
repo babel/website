@@ -34,6 +34,7 @@ mind. When in doubt, use `.parse()`.
 
 | Version   | Changes                                            |
 | --------- | -------------------------------------------------- |
+| `v8.0.0`  | Added `locations`                                  |
 | `v7.28.0` | Added `sourceType: "commonjs"`                     |
 | `v7.27.0` | Added `allowYieldOutsideFunction`                  |
 | `v7.26.0` | Added `startIndex`                                 |
@@ -93,6 +94,11 @@ mind. When in doubt, use `.parse()`.
   parsing the invalid input file.
   The resulting AST will have an `errors` property representing an array of all the parsing errors.
   Note that even when this option is enabled, `@babel/parser` could throw for unrecoverable errors.
+
+- **locations**: Can be one of `true`, `false` or `packed`.
+  `true` is the default and will add a `loc` property to each node, which is an object with `start` and `end` properties, which are objects containing `line` and `column` numbers.
+  When set to `false`, the "loc" property will not be included in the output AST.
+  When set to `packed`, the `parse` function will return an `Uint32Array` of the form (`[line1, column1, line2, column2, ...]`). You can access the line and column numbers of a node with `locData[node.start * 2]` for the starting line, `locData[node.start * 2 + 1]` for the starting column, `locData[node.end * 2]` for the ending line and `locData[node.end * 2 + 1]` for the ending column.
 
 - **plugins**: Array containing the plugins that you want to enable.
 
