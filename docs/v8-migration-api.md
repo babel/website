@@ -1201,6 +1201,12 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
+- Remove `Import` from the `Expression` alias ([#17867](https://github.com/babel/babel/pull/17867))
+
+  When the parser option `createImportExpressions` is explicitly set to `false`, `@babel/parser` will generate legacy `Import` nodes, which represent `import` in dynamic imports `import()`. As `import` can not be a standalone expression, `t.isExpression(t.import())` will return `false` in Babel 8.
+
+  __Migration__: Search usage of the `t.isExpression` and `t.assertsExpression` functions, and of the `t.Expression` type alias: if they need to also accept `Import` nodes, update them accordingly.
+
 - Remove `t.jSX*` and `t.tS*` builder aliases ([#6989](https://github.com/babel/babel/issues/6989), [#15527](https://github.com/babel/babel/pull/15527))
 
   __Migration__: Use `t.jsx*` and `t.ts*` instead. For example, replace `t.jSXIdentifier("foo")` with `t.jsxIdentifier("foo")`.
