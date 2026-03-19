@@ -186,6 +186,10 @@ For users of React v18 or earlier, please remove them and use `@babel/plugin-tra
   }
 ```
 
+### `@babel/plugin-transform-property-mutators` {#babel-plugin-transform-property-mutators}
+
+Property mutators cannot be transformed, this plugin is useless.
+
 ### Syntax plugins {#syntax-plugins}
 
 The following syntax plugins are no longer needed, you can safely remove them from your configuration and dependencies:
