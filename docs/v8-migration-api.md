@@ -965,7 +965,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
-- Disallow importing internal files ([#14013](https://github.com/babel/babel/pull/14013), [#14179](https://github.com/babel/babel/pull/14179)).
+- Disallow importing internal files ([#14013](https://github.com/babel/babel/pull/14013), [#14179](https://github.com/babel/babel/pull/14179), [#17938](https://github.com/babel/babel/pull/17938)).
 
   __Migration__: Use the exported API only. If you are relying on Babel internals, please open an issue and let us know.
 
