@@ -1367,6 +1367,10 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
   These methods are meant to be private so there is no real migration approach. If your plugin / build is broken by this change, feel free to open an issue and tell us how you use these methods and we can see what we can do after Babel 8 is released.
 
+- Remove `NodePath.prototype.toComputedKey` and `Scope.prototype.buildUndefinedNode` ([#17907](https://github.com/babel/babel/pull/17907), [#17937](https://github.com/babel/babel/pull/17937))
+
+  __Migration__: Use `t.toComputedKey` and `t.buildUndefinedNode` from `@babel/types` instead.
+
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 - Remove `block` argument from `Scope#rename` ([#15288](https://github.com/babel/babel/pull/15288))
