@@ -40,7 +40,7 @@ This just means Babel _itself_ won't run on older versions of Node. It can still
 
 ### ESM only {#esm-only}
 
-Babel is now shipped as native ECMAScript modules ([#11701](https://github.com/babel/babel/pull/11701), [#17265](https://github.com/babel/babel/pull/17265)).
+Babel is now shipped as native ECMAScript modules ([#11701](https://github.com/babel/babel/pull/11701), [#17265](https://github.com/babel/babel/pull/17265), [#17943](https://github.com/babel/babel/pull/17943)).
 
 ### Peer dependency requirements {#peer-dependency-requirements}
 
