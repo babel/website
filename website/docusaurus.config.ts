@@ -142,10 +142,10 @@ function docusaurusReplRoutePlugin() {
 
 const siteConfig: Config = {
   future: {
-    // See https://docusaurus.io/blog/releases/3.6
-    experimental_faster: true,
     v4: {
+      fasterByDefault: true,
       removeLegacyPostBuildHeadAttribute: true,
+      mdx1CompatDisabledByDefault: true,
     },
   },
   titleDelimiter: "·",
@@ -166,7 +166,7 @@ const siteConfig: Config = {
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: "throw",
-    }
+    },
   },
   plugins: [docusaurusReplRoutePlugin, require("./webpack.plugin.js")],
   presets: [
