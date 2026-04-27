@@ -141,12 +141,12 @@ function docusaurusReplRoutePlugin() {
 }
 
 const siteConfig: Config = {
+  storage: {
+    type: "localStorage",
+    namespace: "babel",
+  },
   future: {
-    v4: {
-      fasterByDefault: true,
-      removeLegacyPostBuildHeadAttribute: true,
-      mdx1CompatDisabledByDefault: true,
-    },
+    v4: true,
   },
   titleDelimiter: "·",
   baseUrl: "/",
