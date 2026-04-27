@@ -24,7 +24,7 @@ All subsequent files required by node with the extensions `.es6`, `.es`, `.jsx`,
 `.mjs`, and `.js` will be transformed by Babel.
 
 :::info Polyfill not included
-You must include the [polyfill](./polyfill.md) separately
+You must include the [polyfill](./polyfill.mdx) separately
 when using features that require it, like generators.
 :::
 
@@ -79,8 +79,8 @@ require("@babel/register")({
 });
 ```
 
-You can pass in all other [options](options.md) as well, including `plugins` and `presets`.
-Note that [config files](config-files.md) will also be loaded and the programmatic
+You can pass in all other [options](options.mdx) as well, including `plugins` and `presets`.
+Note that [config files](config-files.mdx) will also be loaded and the programmatic
 config will be merged over top of the file config options. `@babel/register` does not support
 `ignore` and `only` in config files.
 
@@ -147,7 +147,7 @@ You can also test the new experimental implementation that will be enabled by de
 require("@babel/register/experimental-worker");
 ```
 
-It internally runs Babel asynchronously, so it's compatible with [`.mjs` configuration files](config-files.md#configuration-file-types). You can already use it as a replacement of `@babel/register` with a few caveats:
+It internally runs Babel asynchronously, so it's compatible with [`.mjs` configuration files](config-files.mdx#configuration-file-types). You can already use it as a replacement of `@babel/register` with a few caveats:
 - If you programmatically specify `@babel/register` options (using `require("@babel/register")({ /* ... options */ })`), you must make sure that they are serializable. This means that you cannot pass plugin functions defined inline, but you must move them to a separate `./my-plugin.js` file or to a `babel.config.js` file.
 - The new implementation is still experimental: it _should_ have the same features as the existing one, but there may be some new bugs and regressions.
 

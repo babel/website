@@ -7,7 +7,7 @@ Refer users to this document when upgrading to Babel 7.
 
 {/* truncate */}
 
-> Also check out the [v7-migration guide](v7-migration.md) for other user-level changes.
+> Also check out the [v7-migration guide](v7-migration.mdx) for other user-level changes.
 
 ## All Babel packages
 
@@ -74,9 +74,9 @@ Included is a `root` option that defaults to the current working directory for i
 It is also not loaded relatively so it will handle symlinking correctly, whereas before you may have had
 hard-code the paths in webpack before.
 
-Check the `babel.config.js` docs for more info: [project-wide configuration](config-files.md#project-wide-configuration)
+Check the `babel.config.js` docs for more info: [project-wide configuration](config-files.mdx#project-wide-configuration)
 
-This file combined with the new [`overrides`](options.md#overrides) property and `env` lets you have a single config file
+This file combined with the new [`overrides`](options.mdx#overrides) property and `env` lets you have a single config file
 that can work for all the files in a project vs. multiple config files per folder.
 
 We also exclude `node_modules` by default and only look in the root unless you opt-in to setting
@@ -144,7 +144,7 @@ babelParser.parse(code, {
 });
 ```
 
-See Babylon's [plugin options](parser.md#plugins).
+See Babylon's [plugin options](parser.mdx#plugins).
 
 > Renamed `decorators` plugin to `decorators-legacy` ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 

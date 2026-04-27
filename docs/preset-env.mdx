@@ -35,7 +35,7 @@ For browser- or Electron-based projects, we recommend using a [`.browserslistrc`
 By default `@babel/preset-env` will use [browserslist config sources](https://github.com/ai/browserslist#queries) _unless_ either the [targets](#targets) or [ignoreBrowserslistConfig](#ignorebrowserslistconfig) options are set.
 
 :::tip
-If you are relying on browserslist's defaults query (either explicitly or by having no browserslist config), you will want to check out the [No targets](options.md#no-targets) section for information on preset-env's behavior.
+If you are relying on browserslist's defaults query (either explicitly or by having no browserslist config), you will want to check out the [No targets](options.mdx#no-targets) section for information on preset-env's behavior.
 :::
 
 For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
@@ -72,13 +72,13 @@ For example, if you want to create a snapshot of a query run `npx browserslist -
 
 ## Options
 
-For more information on setting options for a preset, refer to the [preset options](presets.md#preset-options) documentation.
+For more information on setting options for a preset, refer to the [preset options](presets.mdx#preset-options) documentation.
 
 ### `targets`
 
 `string | Array<string> | { [string]: string }`, defaults to the top-level `targets` option if no browserslist-related option is specified in `@babel/preset-env`'s docs, otherwise to `{}`.
 
-For usage, refer to the [`targets` option](options.md#targets) documentation.
+For usage, refer to the [`targets` option](options.mdx#targets) documentation.
 
 ### `bugfixes`
 
@@ -109,7 +109,7 @@ This option has been removed in Babel 8. `@babel/preset-env` will always compile
 ### `loose`, `spec`
 
 :::danger
-These options have been removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.md), available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
+These options have been removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.mdx), available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.mdx#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
 :::
 
 ::::
@@ -123,7 +123,7 @@ These options have been removed in Babel 8. Consider migrating to the top level 
 Enable more spec compliant, but potentially slower, transformations for any plugins in this preset that support them.
 
 :::caution
-This option has been deprecated and will be removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.md) available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
+This option has been deprecated and will be removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.mdx) available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.mdx#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
 :::
 
 ### `loose`
@@ -133,7 +133,7 @@ This option has been deprecated and will be removed in Babel 8. Consider migrati
 Enable ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.html) for any plugins in this preset that allow them.
 
 :::caution
-This option has been deprecated and will be removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.md) available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
+This option has been deprecated and will be removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.mdx) available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.mdx#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
 :::
 
 ::::
@@ -148,7 +148,7 @@ Setting this to `false` will preserve ES modules. Use this only if you intend to
 
 #### `modules: "auto"`
 
-By default `@babel/preset-env` uses [`caller`](options.md#caller) data to determine whether ES modules and module features (e.g. `import()`) should be transformed. Generally `caller` data will be specified in the bundler plugins (e.g. `babel-loader`, `@rollup/plugin-babel`) and thus it is not recommended to pass `caller` data yourself -- The passed `caller` may overwrite the one from bundler plugins and in the future you may get suboptimal results if bundlers supports new module features.
+By default `@babel/preset-env` uses [`caller`](options.mdx#caller) data to determine whether ES modules and module features (e.g. `import()`) should be transformed. Generally `caller` data will be specified in the bundler plugins (e.g. `babel-loader`, `@rollup/plugin-babel`) and thus it is not recommended to pass `caller` data yourself -- The passed `caller` may overwrite the one from bundler plugins and in the future you may get suboptimal results if bundlers supports new module features.
 
 ### `debug`
 
@@ -208,7 +208,7 @@ This option is useful if there is a bug in a native implementation, or a combina
 For example, Node 4 supports native classes but not spread. If `super` is used with a spread argument, then the `@babel/plugin-transform-classes` transform needs to be `include`d, as it is not possible to transpile a spread with `super` otherwise.
 
 :::note
-The `include` and `exclude` options _only_ work with the [plugins included with this preset](https://github.com/babel/babel/blob/main/packages/babel-preset-env/src/available-plugins.ts); so, for example, including `@babel/plugin-proposal-do-expressions` or excluding `@babel/plugin-proposal-function-bind` will throw errors. To use a plugin _not_ included with this preset, add them to your ["plugins"](options.md#plugins) directly.
+The `include` and `exclude` options _only_ work with the [plugins included with this preset](https://github.com/babel/babel/blob/main/packages/babel-preset-env/src/available-plugins.ts); so, for example, including `@babel/plugin-proposal-do-expressions` or excluding `@babel/plugin-proposal-function-bind` will throw errors. To use a plugin _not_ included with this preset, add them to your ["plugins"](options.mdx#plugins) directly.
 :::
 
 ### `exclude`
@@ -219,7 +219,7 @@ An array of plugins to always exclude/remove.
 
 The possible options are the same as the `include` option.
 
-This option is useful for excluding a transform like `@babel/plugin-transform-regenerator`, for example if you are using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](plugin-transform-async-generator-functions.md).
+This option is useful for excluding a transform like `@babel/plugin-transform-regenerator`, for example if you are using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](plugin-transform-async-generator-functions.mdx).
 
 ### `useBuiltIns`
 
@@ -472,7 +472,7 @@ The [Browserslist environment](https://github.com/browserslist/browserslist#conf
 | `v7.9.0` | Include numeric separator |
 </details>
 
-Toggles enabling support for builtin/feature proposals that have shipped in browsers. If your target environments have native support for a feature proposal, its matching parser syntax plugin is enabled instead of performing any transform. Note that this _does not_ enable the same transformations as [`@babel/preset-stage-3`](preset-stage-3.md), since proposals can continue to change before landing in browsers.
+Toggles enabling support for builtin/feature proposals that have shipped in browsers. If your target environments have native support for a feature proposal, its matching parser syntax plugin is enabled instead of performing any transform. Note that this _does not_ enable the same transformations as [`@babel/preset-stage-3`](preset-stage-3.mdx), since proposals can continue to change before landing in browsers.
 
 The following are currently supported:
 
@@ -494,7 +494,7 @@ These features were behind `shippedProposals` flag in older Babel versions. They
 - [Private field brand checks](https://github.com/tc39/proposal-private-fields-in-in)
 - [private methods](https://github.com/tc39/proposal-private-methods)
 
-> You can read more about configuring preset options [here](./presets.md#preset-options)
+> You can read more about configuring preset options [here](./presets.mdx#preset-options)
 
 ## Caveats
 

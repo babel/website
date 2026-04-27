@@ -5,13 +5,13 @@ title: "@babel/preset-react"
 
 This preset includes the following plugins:
 
-- [@babel/plugin-syntax-jsx](plugin-syntax-jsx.md)
-- [@babel/plugin-transform-react-jsx](plugin-transform-react-jsx.md)
-- [@babel/plugin-transform-react-display-name](plugin-transform-react-display-name.md)
+- [@babel/plugin-syntax-jsx](plugin-syntax-jsx.mdx)
+- [@babel/plugin-transform-react-jsx](plugin-transform-react-jsx.mdx)
+- [@babel/plugin-transform-react-display-name](plugin-transform-react-display-name.mdx)
 
-Automatic runtime (since `v7.9.0`) adds the functionality for these plugins automatically when the `development` option is enabled. If you have automatic runtime enabled, adding [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md) or [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md) will error.
+Automatic runtime (since `v7.9.0`) adds the functionality for these plugins automatically when the `development` option is enabled. If you have automatic runtime enabled, adding [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.mdx) or [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.mdx) will error.
 
-> Note: Flow syntax support is no longer enabled in v7. For that, you will need to add the [Flow preset](preset-flow.md).
+> Note: Flow syntax support is no longer enabled in v7. For that, you will need to add the [Flow preset](preset-flow.mdx).
 
 ## Installation
 
@@ -131,13 +131,13 @@ Decides which runtime to use.
 
 :::babel8
 
-`boolean`, defaults to `true` if Babel's [`envName`](./options.md#envname) id `"development"`, and `false` otherwise.
+`boolean`, defaults to `true` if Babel's [`envName`](./options.mdx#envname) id `"development"`, and `false` otherwise.
 
 :::
 
 This toggles behavior specific to development, such as adding `__source` and `__self`.
 
-This is useful when combined with the [env option](options.md#env) configuration or [js config files](config-files.md#javascript).
+This is useful when combined with the [env option](options.mdx#env) configuration or [js config files](config-files.mdx#javascript).
 
 :::babel8
 
@@ -247,4 +247,4 @@ module.exports = {
 }
 ```
 
-> You can read more about configuring preset options [here](./presets.md#preset-options)
+> You can read more about configuring preset options [here](./presets.mdx#preset-options)

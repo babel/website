@@ -16,7 +16,7 @@ sidebar_label: Config Options
 
 Options can be passed to Babel in a variety of ways. When passed directly to Babel,
 you can just pass the options object. When Babel is used via a wrapper, it may also be
-necessary, or at least more useful, to pass the options via [configuration files](config-files.md).
+necessary, or at least more useful, to pass the options via [configuration files](config-files.mdx).
 
 If passing options via `@babel/cli` you'll need to `kebab-case` the names. i.e.
 
@@ -29,7 +29,7 @@ npx babel --root-mode upward file.js # equivalent of passing the rootMode config
 These options are only allowed as part of Babel's programmatic options, so
 they are primarily for use by tools that wrap around Babel, or people calling
 `babel.transform` directly. Users of Babel's integrations, like `babel-loader`
-or [`@babel/register`](core.md#options) are unlikely to use these.
+or [`@babel/register`](core.mdx#options) are unlikely to use these.
 
 ### `cwd`
 
@@ -188,12 +188,12 @@ Note: `babel.config.json` is supported from Babel 7.8.0. In older Babel 7 versio
 
 - `"root"` - Passes the [`"root"`](#root) value through as unchanged.
 - `"upward"` - Walks upward from the [`"root"`](#root) directory, looking
-  for a directory containing a [`babel.config.json`](config-files.md#project-wide-configuration)
-  file, and throws an error if a [`babel.config.json`](config-files.md#project-wide-configuration)
+  for a directory containing a [`babel.config.json`](config-files.mdx#project-wide-configuration)
+  file, and throws an error if a [`babel.config.json`](config-files.mdx#project-wide-configuration)
   is not found.
 - `"upward-optional"` - Walk upward from the [`"root"`](#root) directory,
-  looking for a directory containing a [`babel.config.json`](config-files.md#project-wide-configuration)
-  file, and falls back to [`"root"`](#root) if a [`babel.config.json`](config-files.md#project-wide-configuration)
+  looking for a directory containing a [`babel.config.json`](config-files.mdx#project-wide-configuration)
+  file, and falls back to [`"root"`](#root) if a [`babel.config.json`](config-files.mdx#project-wide-configuration)
   is not found.
 
 `"root"` is the default mode because it avoids the risk that Babel will
@@ -204,9 +204,9 @@ possible that someone will have a forgotten `babel.config.json` in their home
 directory, which could cause unexpected errors in your builds.
 
 Users with monorepo project structures that run builds/tests on a per-package basis
-may well want to use `"upward"` since monorepos often have a [`babel.config.json`](config-files.md#project-wide-configuration)
+may well want to use `"upward"` since monorepos often have a [`babel.config.json`](config-files.mdx#project-wide-configuration)
 in the project root. Running Babel in a monorepo subdirectory without `"upward"`,
-will cause Babel to skip loading any [`babel.config.json`](config-files.md#project-wide-configuration)
+will cause Babel to skip loading any [`babel.config.json`](config-files.mdx#project-wide-configuration)
 files in the project root, which can lead to unexpected errors and compilation failure.
 
 ### `envName`
@@ -218,7 +218,7 @@ Placement: Only allowed in Babel's programmatic options<br />
 The current active environment used during configuration loading. This value
 is used as the key when resolving [`"env"`](#env) configs, and is also
 available inside configuration functions, plugins, and presets, via the
-[`api.env()`](config-files.md#apienv) function.
+[`api.env()`](config-files.mdx#apienv) function.
 
 ### `configFile`
 
@@ -229,9 +229,9 @@ Placement: Only allowed in Babel's programmatic options<br />
 Defaults to searching for a default `babel.config.json` file, but can be passed
 the path of any JS or JSON5 config file.
 
-NOTE: This option does _not_ affect loading of [`.babelrc.json`](config-files.md#file-relative-configuration) files, so while
+NOTE: This option does _not_ affect loading of [`.babelrc.json`](config-files.mdx#file-relative-configuration) files, so while
 it may be tempting to do `configFile: "./foo/.babelrc.json"`, it is not recommended.
-If the given [`.babelrc.json`](config-files.md#file-relative-configuration) is loaded via the standard
+If the given [`.babelrc.json`](config-files.mdx#file-relative-configuration) is loaded via the standard
 file-relative logic, you'll end up loading the same config file twice, merging it with itself.
 If you are linking a specific config file, it is recommended to stick with a
 naming scheme that is independent of the "babelrc" name.
@@ -242,7 +242,7 @@ Type: `boolean`<br />
 Default: `true` as long as the `filename` option has been specified<br />
 Placement: Allowed in Babel's programmatic options, or inside of the loaded [`"configFile"`](#configfile). A programmatic option will override a config file one.<br />
 
-`true` will enable searching for [configuration files](config-files.md#file-relative-configuration)
+`true` will enable searching for [configuration files](config-files.mdx#file-relative-configuration)
 and the legacy `.babelignore` file relative to the [`"filename"`](#filename) provided to Babel.
 
 A `babelrc` value passed in the programmatic options will override one set
@@ -291,7 +291,7 @@ individual entries interact, especially when used across multiple nested [`"env"
 
 Note: The option also allows `Plugin` instances from Babel itself, but
 using these directly is not recommended. If you need to create a persistent
-representation of a plugin or preset, you should use [`babel.createConfigItem()`](core.md#createconfigitem).
+representation of a plugin or preset, you should use [`babel.createConfigItem()`](core.mdx#createconfigitem).
 
 ### `presets`
 
@@ -340,7 +340,7 @@ Added in: `v7.13.0`<br />
 
 Describes the environments you support/target for your project.
 
-This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query (with [caveats](preset-env.md#ineffective-browserslist-queries)):
+This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query (with [caveats](preset-env.mdx#ineffective-browserslist-queries)):
 
 ```json title="babel.config.json"
 {
@@ -667,7 +667,7 @@ Default: "module"<br />
 
 - `"script"` - Parse the file using the ECMAScript Script grammar. No `import`/`export` statements allowed, and files are not in strict mode.
 - `"module"` - Parse the file using the ECMAScript Module grammar. Files are automatically strict, and `import`/`export` statements are allowed.
-- `"commonjs"` - Parse the file as it will be run in a CommonJS environment. This option is recommended when transforming `.cjs` sources. See [Parser docs](./parser.md#options) for syntax
+- `"commonjs"` - Parse the file as it will be run in a CommonJS environment. This option is recommended when transforming `.cjs` sources. See [Parser docs](./parser.mdx#options) for syntax
 differences between `"script"` and `"commonjs"`.
 - `"unambiguous"` - Consider the file a "module" if `import`/`export` statements are present, or else consider it a "script".
 
@@ -679,11 +679,11 @@ This option is important because the type of the current file affects both
 parsing of input files, and certain transforms that may wish to add
 `import`/`require` usage to the current file.
 
-For instance, [`@babel/plugin-transform-runtime`](plugin-transform-runtime.md)
+For instance, [`@babel/plugin-transform-runtime`](plugin-transform-runtime.mdx)
 relies on the type of the current document to decide whether to insert
 an `import` declaration, or a `require()` call.
-[`@babel/preset-env`](preset-env.md) also does the same for its
-[`"useBuiltIns"`](preset-env.md#usebuiltins) option. Since Babel defaults to treating files
+[`@babel/preset-env`](preset-env.mdx) also does the same for its
+[`"useBuiltIns"`](preset-env.mdx#usebuiltins) option. Since Babel defaults to treating files
 are ES modules, generally these plugins/presets will insert `import` statements. Setting
 the correct `sourceType` can be important because having the wrong type can lead to cases
 where Babel would insert `import` statements into files that are meant to be CommonJS
@@ -713,7 +713,7 @@ Set assumptions that Babel can make in order to produce smaller output:
 }
 ```
 
-For more informations, check the [assumptions](assumptions.md) documentation page.
+For more informations, check the [assumptions](assumptions.mdx) documentation page.
 
 ### `highlightCode`
 
@@ -742,7 +742,7 @@ Type: `{}`<br />
 
 An opaque object containing options to pass through to the parser being used.
 
-For available parser options, see [Parser Options](parser.md#options).
+For available parser options, see [Parser Options](parser.mdx#options).
 
 ### `generatorOpts`
 
@@ -821,7 +821,7 @@ output code from Babel.
 
 ### Advanced Usage
 
-For more code generator options, see [Generator Options](generator.md#options).
+For more code generator options, see [Generator Options](generator.mdx#options).
 
 ## AMD / UMD / SystemJS module options
 
@@ -898,7 +898,7 @@ Here are examples, where `*` does *not* have a wildcard function:
 
 ### Merging
 
-Please refer to [How Babel merges config items](configuration.md#how-babel-merges-config-items).
+Please refer to [How Babel merges config items](configuration.mdx#how-babel-merges-config-items).
 
 ### Plugin/Preset entries
 

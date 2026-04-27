@@ -41,7 +41,7 @@ The entire process to set this up involves:
    }
    ```
 
-   > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support. See [here](preset-env.md) for more `@babel/preset-env` options.
+   > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support. See [here](preset-env.mdx) for more `@babel/preset-env` options.
 
 Or `babel.config.js` if you are using an older Babel version
 
@@ -81,7 +81,7 @@ All the Babel modules you'll need are published as separate npm packages scoped 
 
 ### Core Library
 
-The core functionality of Babel resides at the [@babel/core](core.md) module. After installing it:
+The core functionality of Babel resides at the [@babel/core](core.mdx) module. After installing it:
 
 ```shell npm2yarn
 npm install --save-dev @babel/core
@@ -99,7 +99,7 @@ As an end-user though, you'll probably want to install other tools that serve as
 
 ### CLI tool
 
-[@babel/cli](cli.md) is a tool that allows you to use babel from the terminal. Here's the installation command and a basic usage example:
+[@babel/cli](cli.mdx) is a tool that allows you to use babel from the terminal. Here's the installation command and a basic usage example:
 
 ```shell npm2yarn
 npm install --save-dev @babel/core @babel/cli
@@ -147,7 +147,7 @@ Without any configuration, this preset will include all plugins to support moder
 
 ## Configuration
 
-> There are a few different ways to use configuration files depending on your needs. Be sure to read our in-depth guide on how to [configure Babel](configuration.md) for more information.
+> There are a few different ways to use configuration files depending on your needs. Be sure to read our in-depth guide on how to [configure Babel](configuration.mdx) for more information.
 
 For now, let's create a file called `babel.config.json` (requires `v7.8.0` and above) with the following content:
 
@@ -181,11 +181,11 @@ Now the `env` preset will only load transformation plugins for features that are
 >
 > If you are compiling generators or async function to ES5, and you are using a version of `@babel/core` or `@babel/plugin-transform-regenerator` older than `7.18.0`, you must also load the [`regenerator runtime`](https://github.com/facebook/regenerator/tree/main/packages/runtime) package. It is automatically loaded when using `@babel/preset-env`'s `useBuiltIns: "usage"` option or `@babel/plugin-transform-runtime`.
 
-The [@babel/polyfill](polyfill.md) module includes [core-js](https://github.com/zloirock/core-js) and a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/main/packages/runtime/runtime.js) to emulate a full ES2015+ environment.
+The [@babel/polyfill](polyfill.mdx) module includes [core-js](https://github.com/zloirock/core-js) and a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/main/packages/runtime/runtime.js) to emulate a full ES2015+ environment.
 
 This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (when used alongside the regenerator plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
 
-For library/tool authors this may be too much. If you don't need the instance methods like `Array.prototype.includes` you can do without polluting the global scope altogether by using the [transform runtime](plugin-transform-runtime.md) plugin instead of `@babel/polyfill`.
+For library/tool authors this may be too much. If you don't need the instance methods like `Array.prototype.includes` you can do without polluting the global scope altogether by using the [transform runtime](plugin-transform-runtime.mdx) plugin instead of `@babel/polyfill`.
 
 To go one step further, if you know exactly what features you need polyfills for, you can require them directly from [core-js](https://github.com/zloirock/core-js#commonjs).
 
@@ -254,7 +254,7 @@ For example:
   ]
 }
 ```
-Then import [core-js](https://github.com/zloirock/core-js) (to polyfill ECMAScript features) first, in our entry file to emulate a full ES2015+ environment since [@babel/polyfill](polyfill.md) has been <a href="#polyfill-deprecated">deprecated</a>:
+Then import [core-js](https://github.com/zloirock/core-js) (to polyfill ECMAScript features) first, in our entry file to emulate a full ES2015+ environment since [@babel/polyfill](polyfill.mdx) has been <a href="#polyfill-deprecated">deprecated</a>:
 
 ```js title="JavaScript"
  import "core-js/stable";

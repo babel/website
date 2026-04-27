@@ -34,7 +34,7 @@ The symbols like white spaces or new line characters are not preserved in the AS
 :::
 
 ### Parser plugins support
-Babel generator supports all the listed [Babel parser plugins](./parser.md#plugins) except `estree`. Note that parser plugins do not transform the code. For example,
+Babel generator supports all the listed [Babel parser plugins](./parser.mdx#plugins) except `estree`. Note that parser plugins do not transform the code. For example,
 if you pass JSX `<div></div>` to babel generator, the result will still contain the `div` JSX element.
 
 ```js title="JavaScript"
@@ -94,7 +94,7 @@ Options for formatting output:
 | retainLines              | boolean             | `false`         | Attempt to use the same line numbers in the output code as in the source code (helps preserve stack traces)                                                                                                                                                        |
 | shouldPrintComment       | function            | `opts.comments` | Function that takes a comment (as a string) and returns `true` if the comment should be included in the output. By default, comments are included if `opts.comments` is `true` or if `opts.minified` is `false` and the comment contains `@preserve` or `@license` |
 | recordAndTupleSyntaxType | `'hash'` or `'bar'` | `'hash'`        | For use with the recordAndTuple token.
-| topicToken               | `'%'` or `'#'`      |                 | The token to use with [Hack-pipe topic references](plugin-proposal-pipeline-operator.md). This is required when there are any `TopicReference` nodes.
+| topicToken               | `'%'` or `'#'`      |                 | The token to use with [Hack-pipe topic references](plugin-proposal-pipeline-operator.mdx). This is required when there are any `TopicReference` nodes.
 
 Options for source maps:
 

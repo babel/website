@@ -3,7 +3,7 @@ title: "Upgrade to Babel 7"
 id: v7-migration
 ---
 
-Refer users to this document when upgrading to Babel 7. Check [here](v7-migration-api.md) for API/integration changes.
+Refer users to this document when upgrading to Babel 7. Check [here](v7-migration-api.mdx) for API/integration changes.
 
 {/* truncate */}
 
@@ -20,9 +20,9 @@ This just means Babel _itself_ won't run on older versions of Node. It can still
 
 ## Config Lookup Changes
 
-For more info, read our [6.x vs 7.x comparison](config-files.md#6x-vs-7x-babelrc-loading).
+For more info, read our [6.x vs 7.x comparison](config-files.mdx#6x-vs-7x-babelrc-loading).
 
-Babel has had issues previously with handling `node_modules`, symlinks, and monorepos. We've made some changes to account for this: Babel will stop lookup at the `package.json` boundary instead of looking up the chain. For monorepos we have added a new `babel.config.js` file that centralizes our config across all the packages (alternatively you could make a config per package). In 7.1, we've introduced a [`rootMode`](options.md#rootmode) option for further lookup if necessary.
+Babel has had issues previously with handling `node_modules`, symlinks, and monorepos. We've made some changes to account for this: Babel will stop lookup at the `package.json` boundary instead of looking up the chain. For monorepos we have added a new `babel.config.js` file that centralizes our config across all the packages (alternatively you could make a config per package). In 7.1, we've introduced a [`rootMode`](options.mdx#rootmode) option for further lookup if necessary.
 
 ## [Yearly Preset Deprecations](https://babeljs.io/blog/2017/12/27/nearing-the-7.0-release.html#deprecated-yearly-presets-eg-babel-preset-es20xx)
 
@@ -302,7 +302,7 @@ The `babel-node` command in Babel 6 was part of the `babel-cli` package. In Babe
 
 We have separated out Babel's helpers from its "polyfilling" behavior in runtime. More details in the [PR](https://github.com/babel/babel/pull/8266).
 
-[`@babel/runtime`](runtime.md) now only contains the helpers, and if you need `core-js` you can use [`@babel/runtime-corejs2`](runtime-corejs2.md) and the option provided in the transform. For both you still need the [`@babel/plugin-transform-runtime`](plugin-transform-runtime.md)
+[`@babel/runtime`](runtime.mdx) now only contains the helpers, and if you need `core-js` you can use [`@babel/runtime-corejs2`](runtime-corejs2.mdx) and the option provided in the transform. For both you still need the [`@babel/plugin-transform-runtime`](plugin-transform-runtime.mdx)
 
 #### Only Helpers
 
@@ -628,7 +628,7 @@ This change just makes babel-generator output `,` instead of `;`.
 
 > Remove `babel-core/src/api/browser.js` [#5124](https://github.com/babel/babel/pull/5124) ![none](https://img.shields.io/badge/risk%20of%20breakage%3F-none-brightgreen.svg)
 
-`babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [@babel/standalone](standalone.md).
+`babel-browser` was already removed in 6.0. If you need to use Babel in the browser or a non-Node environment, use [@babel/standalone](standalone.mdx).
 
 Babel will return `filename` as an absolute path [#8044](https://github.com/babel/babel/pull/8044)
 

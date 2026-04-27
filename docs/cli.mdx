@@ -80,7 +80,7 @@ npx babel script.js --watch --out-file script-compiled.js
 ### Compile with Source Maps
 
 :::note
-Since v7.19.3, if this parameter is not specified, `@babel/cli` will follow the [configuration files](./config-files.md).
+Since v7.19.3, if this parameter is not specified, `@babel/cli` will follow the [configuration files](./config-files.mdx).
 :::
 
 If you would then like to add a **source map file** you can use
@@ -112,7 +112,7 @@ npx babel src --out-file script-compiled.js
 
 #### Directories with TypeScript Files
 
-Use the `--extensions` option to specify what file extensions Babel should handle when compiling the entire `src` directory. The default `--extensions` can be accessed from [`Babel.DEFAULT_EXTENSIONS`](./core.md#default_extensions).
+Use the `--extensions` option to specify what file extensions Babel should handle when compiling the entire `src` directory. The default `--extensions` can be accessed from [`Babel.DEFAULT_EXTENSIONS`](./core.mdx#default_extensions).
 
 ```sh title="Shell"
 npx babel src --out-dir lib \
@@ -192,7 +192,7 @@ npx babel --no-babelrc script.js --out-file script-compiled.js --presets=@babel/
 npx babel --config-file /path/to/my/babel.config.json --out-dir dist ./src
 ```
 
-See [here](./config-files.md) for more information about config files.
+See [here](./config-files.mdx) for more information about config files.
 
 ### Set File Extensions
 
@@ -235,4 +235,4 @@ npx babel script.js --out-file script-compiled.js --silent
 
 ### Advanced Usage
 
-There are many more options available, see [options](options.md), `babel --help` and other sections for more information.
+There are many more options available, see [options](options.mdx), `babel --help` and other sections for more information.

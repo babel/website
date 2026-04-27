@@ -84,7 +84,7 @@ require("@babel/core").transformSync("code", {
 `boolean`, defaults to `false`.
 
 :::note
-The `loose` mode configuration setting _must_ be the same as [`@babel/plugin-transform-class-properties`](plugin-transform-class-properties.md).
+The `loose` mode configuration setting _must_ be the same as [`@babel/plugin-transform-class-properties`](plugin-transform-class-properties.mdx).
 :::
 
 When true, private methods will be assigned directly on its parent
@@ -93,7 +93,7 @@ performance and debugging (normal property access vs `.get()`) at the expense
 of potentially leaking "privates" via things like `Object.getOwnPropertyNames`.
 
 :::caution
-Consider migrating to the top level [`privateFieldsAsProperties`](assumptions.md#privatefieldsasproperties) assumption.
+Consider migrating to the top level [`privateFieldsAsProperties`](assumptions.mdx#privatefieldsasproperties) assumption.
 :::
 
 ```json title="babel.config.json"
@@ -166,7 +166,7 @@ var _privateMethod2 = function _privateMethod2() {
 ```
 
 :::tip
-You can read more about configuring plugin options [here](./plugins.md#plugin-options)
+You can read more about configuring plugin options [here](./plugins.mdx#plugin-options)
 :::
 
 ## References

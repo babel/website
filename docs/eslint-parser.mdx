@@ -17,11 +17,11 @@ ESLint's default parser and core rules [only support the latest final ECMAScript
 
 ## How does it work?
 
-ESLint allows for the use of [custom parsers](https://eslint.org/docs/developer-guide/working-with-custom-parsers). When using this plugin, your code is parsed by Babel's parser (using the configuration specified in your [Babel configuration file](./configuration.md)) and the resulting AST is
+ESLint allows for the use of [custom parsers](https://eslint.org/docs/developer-guide/working-with-custom-parsers). When using this plugin, your code is parsed by Babel's parser (using the configuration specified in your [Babel configuration file](./configuration.mdx)) and the resulting AST is
 transformed into an [ESTree](https://github.com/estree/estree)-compliant structure that ESLint can understand. All location info such as line numbers,
 columns is also retained so you can track down errors with ease.
 
-**Note:** ESLint's core rules do not support experimental syntax and may therefore not work as expected when using `@babel/eslint-parser`. Please use the companion [`@babel/eslint-plugin`](./eslint-plugin.md) plugin for core rules that you have issues with.
+**Note:** ESLint's core rules do not support experimental syntax and may therefore not work as expected when using `@babel/eslint-parser`. Please use the companion [`@babel/eslint-plugin`](./eslint-plugin.mdx) plugin for core rules that you have issues with.
 
 ## Usage
 
@@ -31,7 +31,7 @@ columns is also retained so you can track down errors with ease.
 npm install eslint @babel/core @babel/eslint-parser --save-dev
 ```
 
-**Note:** @babel/eslint-parser requires `@babel/core@>=7.2.0` and a valid Babel configuration file to run. If you do not have this already set up, please see the [Babel Usage Guide](./usage.md).
+**Note:** @babel/eslint-parser requires `@babel/core@>=7.2.0` and a valid Babel configuration file to run. If you do not have this already set up, please see the [Babel Usage Guide](./usage.mdx).
 
 ### Setup
 
@@ -127,7 +127,7 @@ Additional configuration options can be set in your ESLint configuration under t
 
 - `sourceType` can be set to `"module"`(default), `"script"` or `"commonjs"`.
 - `ecmaFeatures.globalReturn` (default `false`) allow return statements in the global scope when used with `sourceType: "script"`. This option will be deprecated, please use `sourceType: "commonjs"` instead.
-- `babelOptions` is an object containing Babel configuration [options](./options.md) that are passed to Babel's parser at runtime. For cases where users might not want to use a Babel configuration file or are running Babel through another tool (such as Webpack with `babel-loader`).
+- `babelOptions` is an object containing Babel configuration [options](./options.mdx) that are passed to Babel's parser at runtime. For cases where users might not want to use a Babel configuration file or are running Babel through another tool (such as Webpack with `babel-loader`).
 
 :::babel7
 

@@ -21,7 +21,7 @@ Install it as development dependency.
 npm install --save-dev @babel/plugin-transform-runtime
 ```
 
-and [`@babel/runtime`](runtime.md) as a production dependency (since it's for the "runtime").
+and [`@babel/runtime`](runtime.mdx) as a production dependency (since it's for the "runtime").
 
 ```shell npm2yarn
 npm install --save @babel/runtime
@@ -41,7 +41,7 @@ This is where the `@babel/plugin-transform-runtime` plugin comes in: all of the 
 
 ::::babel7
 
-Another purpose of this transformer is to create a sandboxed environment for your code. If you directly import [core-js](https://github.com/zloirock/core-js) or [@babel/polyfill](polyfill.md) and the built-ins it provides such as `Promise`, `Set` and `Map`, those will pollute the global scope. While this might be ok for an app or a command line tool, it becomes a problem if your code is a library which you intend to publish for others to use or if you can't exactly control the environment in which your code will run.
+Another purpose of this transformer is to create a sandboxed environment for your code. If you directly import [core-js](https://github.com/zloirock/core-js) or [@babel/polyfill](polyfill.mdx) and the built-ins it provides such as `Promise`, `Set` and `Map`, those will pollute the global scope. While this might be ok for an app or a command line tool, it becomes a problem if your code is a library which you intend to publish for others to use or if you can't exactly control the environment in which your code will run.
 
 The transformer will alias these built-ins to `core-js` so you can use them seamlessly without having to require the polyfill.
 
@@ -108,7 +108,7 @@ This allows users to run `transform-runtime` broadly across a whole project. By 
 Using absolute paths is not desirable if files are compiled for use at a later time, but in contexts where a file is compiled and then immediately consumed, they can be quite helpful.
 
 :::tip
-You can read more about configuring plugin options [here](./plugins.md#plugin-options)
+You can read more about configuring plugin options [here](./plugins.mdx#plugin-options)
 :::
 
 ::::babel7

@@ -64,7 +64,7 @@ Use the `data-presets` attributes to enable builtin Babel presets. Multiple valu
 ```html
 <script type="text/babel" data-presets="env,react">
 ```
-Most popular presets are: [`env`](./preset-env.md), [`react`](./preset-react.md), [`typescript`](./preset-typescript.md), [`flow`](./preset-flow.md). You can also use `Babel.availablePresets` to query available presets.
+Most popular presets are: [`env`](./preset-env.mdx), [`react`](./preset-react.mdx), [`typescript`](./preset-typescript.mdx), [`flow`](./preset-flow.mdx). You can also use `Babel.availablePresets` to query available presets.
 
 If you want to pass additional options, refer to the [custom presets](#custom-presets-passing-options-to-built-in-presetsplugins) section.
 
@@ -83,7 +83,7 @@ If you want to add custom plugins, refer to the [custom plugins](#custom-plugins
 
 Added in: `v7.29.0`
 
-Use the `data-targets` attribute to specify the [compilation targets](./options.md#targets) of the project.
+Use the `data-targets` attribute to specify the [compilation targets](./options.mdx#targets) of the project.
 
 :::babel7
 
@@ -121,14 +121,14 @@ You can also set the `async` attribute for external scripts.
 
 ## API
 
-Load `babel.js` or `babel.min.js` in your environment. This will expose [Babel's API](./core.md) in a `Babel` object:
+Load `babel.js` or `babel.min.js` in your environment. This will expose [Babel's API](./core.mdx) in a `Babel` object:
 
 ```js title="JavaScript"
 var input = 'const getMessage = () => "Hello World";';
 var output = Babel.transform(input, { presets: ["env"] }).code;
 ```
 
-Note that [config files](config-files.md) don't work in `@babel/standalone`, as no file system access is available. The presets and/or plugins to use **must** be specified in the options passed to `Babel.transform`.
+Note that [config files](config-files.mdx) don't work in `@babel/standalone`, as no file system access is available. The presets and/or plugins to use **must** be specified in the options passed to `Babel.transform`.
 
 ### Internal packages
 

@@ -18,7 +18,7 @@ Babel includes a [polyfill](<https://en.wikipedia.org/wiki/Polyfill_(programming
 This will emulate a full ES2015+ environment (no < Stage 4 proposals) and is intended to be used in an application rather than a library/tool.
 (this polyfill is automatically loaded when using `babel-node`).
 
-This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (provided you use the [regenerator](plugin-transform-regenerator.md) plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
+This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (provided you use the [regenerator](plugin-transform-regenerator.mdx) plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
 
 ## Installation
 
@@ -32,7 +32,7 @@ Because this is a polyfill (which will run before your source code), we need it 
 
 ## Size
 
-The polyfill is provided as a convenience but you should use it with [`@babel/preset-env`](preset-env.md) and the [`useBuiltIns` option](preset-env.md#usebuiltins) so that it doesn't include the whole polyfill which isn't always needed. Otherwise, we would recommend you import the individual polyfills manually.
+The polyfill is provided as a convenience but you should use it with [`@babel/preset-env`](preset-env.mdx) and the [`useBuiltIns` option](preset-env.mdx#usebuiltins) so that it doesn't include the whole polyfill which isn't always needed. Otherwise, we would recommend you import the individual polyfills manually.
 
 ## TC39 Proposals
 
@@ -58,7 +58,7 @@ import "@babel/polyfill";
 
 With webpack, there are multiple ways to include the polyfills:
 
-- When used alongside [`@babel/preset-env`](preset-env.md),
+- When used alongside [`@babel/preset-env`](preset-env.mdx),
 
   - If `useBuiltIns: 'usage'` is specified in `.babelrc` then do not include `@babel/polyfill` in either `webpack.config.js` entry array nor source. Note, `@babel/polyfill` still needs to be installed.
 
@@ -72,7 +72,7 @@ module.exports = {
 };
 ```
 
-- If [`@babel/preset-env`](preset-env.md) is not used then add `@babel/polyfill` to webpack entry array as discussed above. It can still be added at the top of the entry point to application via `import` or `require`, but this is not recommended.
+- If [`@babel/preset-env`](preset-env.mdx) is not used then add `@babel/polyfill` to webpack entry array as discussed above. It can still be added at the top of the entry point to application via `import` or `require`, but this is not recommended.
 
 :::caution
 We do not recommend that you import the whole polyfill directly: either try the `useBuiltIns` options or import only the polyfills you need manually (either from this package or somewhere else).
@@ -90,7 +90,7 @@ before it.
 ## Details
 
 :::tip
-If you are looking for something that won't modify globals to be used in a tool/library, checkout the [`transform-runtime`](plugin-transform-runtime.md) plugin. This means you won't be able to use the instance methods mentioned above like `Array.prototype.includes`.
+If you are looking for something that won't modify globals to be used in a tool/library, checkout the [`transform-runtime`](plugin-transform-runtime.mdx) plugin. This means you won't be able to use the instance methods mentioned above like `Array.prototype.includes`.
 :::
 
 Note: Depending on what ES2015 methods you actually use, you may not need to use `@babel/polyfill` or the runtime plugin. You may want to only [load the specific polyfills you are using](https://github.com/zloirock/core-js#commonjs-api) (like `Object.assign`) or just document that the environment the library is being loaded in should include certain polyfills.

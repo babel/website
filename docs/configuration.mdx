@@ -5,7 +5,7 @@ title: Configure Babel
 
 Babel can be configured! Many other tools have similar configs: ESLint (`.eslintrc`), Prettier (`.prettierrc`).
 
-All Babel API [options](options.md) are allowed. However, if the option requires JavaScript, you may want to use a JavaScript [configuration file](config-files.md).
+All Babel API [options](options.mdx) are allowed. However, if the option requires JavaScript, you may want to use a JavaScript [configuration file](config-files.mdx).
 
 ## What's your use case?
 
@@ -20,7 +20,7 @@ All Babel API [options](options.md) are allowed. However, if the option requires
 
 - Guy Fieri is your hero?
 
-> We recommend using the [`babel.config.json`](config-files.md#project-wide-configuration) format.
+> We recommend using the [`babel.config.json`](config-files.mdx#project-wide-configuration) format.
 
 ### `babel.config.json`
 
@@ -33,7 +33,7 @@ Create a file called `babel.config.json` with the following content at the root 
 }
 ```
 
-Check out the [`babel.config.json` documentation](config-files.md#project-wide-configuration) to see more configuration options.
+Check out the [`babel.config.json` documentation](config-files.mdx#project-wide-configuration) to see more configuration options.
 
 ### `.babelrc.json`
 
@@ -46,7 +46,7 @@ Create a file called `.babelrc.json` with the following content in your project.
 }
 ```
 
-Check out the [.babelrc documentation](config-files.md#file-relative-configuration) to see more configuration options.
+Check out the [.babelrc documentation](config-files.mdx#file-relative-configuration) to see more configuration options.
 
 ### `package.json`
 
@@ -101,7 +101,7 @@ module.exports = function (api) {
 }
 ```
 
-You can read more about JavaScript configuration files in the [dedicated documentation](config-files.md)
+You can read more about JavaScript configuration files in the [dedicated documentation](config-files.mdx)
 
 ## Using the CLI (`@babel/cli`)
 
@@ -109,7 +109,7 @@ You can read more about JavaScript configuration files in the [dedicated documen
 babel --plugins @babel/plugin-transform-arrow-functions script.js
 ```
 
-Check out the [babel-cli documentation](cli.md) to see more configuration options.
+Check out the [babel-cli documentation](cli.mdx) to see more configuration options.
 
 ## Using the API (`@babel/core`)
 
@@ -119,7 +119,7 @@ require("@babel/core").transformSync("code", {
 });
 ```
 
-Check out the [babel-core documentation](core.md) to see more configuration options.
+Check out the [babel-core documentation](core.mdx) to see more configuration options.
 
 ## Print effective configs
 
@@ -146,7 +146,7 @@ $env:BABEL_SHOW_CONFIG_FOR = ".\src\myComponent.jsx"; npm start
 </TabItem>
 </Tabs>
 
-`BABEL_SHOW_CONFIG_FOR` accepts both absolute and relative _file_ paths. If it is a relative path, it will be resolved from [`cwd`](options.md#cwd).
+`BABEL_SHOW_CONFIG_FOR` accepts both absolute and relative _file_ paths. If it is a relative path, it will be resolved from [`cwd`](options.mdx#cwd).
 
 Once Babel processes the input file specified by `BABEL_SHOW_CONFIG_FOR`, Babel will print effective configs to the console. Here is an example output:
 
@@ -204,7 +204,7 @@ babel.config.json < .babelrc < programmatic options from @babel/cli
 
 In other words, `babel.config.json` is overwritten by `.babelrc`, and `.babelrc` is overwritten by programmatic options.
 
-For each config source, Babel prints applicable config items (e.g. [`overrides`](options.md#overrides) and [`env`](options.md#env)) in the order of ascending priority. Generally each config sources has at least one config item -- the root content of configs. If you have configured `overrides` or `env`, Babel will not print them in the root, but will instead output a separate config item titled as `.overrides[index]`, where `index` is the position of the item. This helps determine whether the item is effective on the input and which configs it will override.
+For each config source, Babel prints applicable config items (e.g. [`overrides`](options.mdx#overrides) and [`env`](options.mdx#env)) in the order of ascending priority. Generally each config sources has at least one config item -- the root content of configs. If you have configured `overrides` or `env`, Babel will not print them in the root, but will instead output a separate config item titled as `.overrides[index]`, where `index` is the position of the item. This helps determine whether the item is effective on the input and which configs it will override.
 
 If your input is ignored by `ignore` or `only`, Babel will print that this file is ignored.
 

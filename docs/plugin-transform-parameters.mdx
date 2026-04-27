@@ -58,7 +58,7 @@ npm install --save-dev @babel/plugin-transform-parameters
 
 Default parameters desugar into `let` declarations to retain proper semantics. If this is
 not supported in your environment then you'll need the
-[@babel/plugin-transform-block-scoping](plugin-transform-block-scoping.md) plugin.
+[@babel/plugin-transform-block-scoping](plugin-transform-block-scoping.mdx) plugin.
 
 ## Usage
 
@@ -93,7 +93,7 @@ require("@babel/core").transformSync("code", {
 In loose mode, parameters with default values will be counted into the arity of the function. This is not spec behavior where these parameters do not add to function arity.
 
 :::caution
-Consider migrating to the top level [`ignoreFunctionLength`](assumptions.md#ignorefunctionlength) assumption.
+Consider migrating to the top level [`ignoreFunctionLength`](assumptions.mdx#ignorefunctionlength) assumption.
 :::
 
 ```json title="babel.config.json"
@@ -117,5 +117,5 @@ bar1.length; // 1
 ```
 
 :::tip
-You can read more about configuring plugin options [here](./plugins.md#plugin-options)
+You can read more about configuring plugin options [here](./plugins.mdx#plugin-options)
 :::

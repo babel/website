@@ -73,7 +73,7 @@ require("@babel/core").transformSync("code", {
 Enabling this option will assume that what you want to destructure is an array and won't use `Array.from` on other iterables.
 
 :::caution
-Consider migrating to the top level [`iterableIsArray`](assumptions.md#iterableisarray) assumption.
+Consider migrating to the top level [`iterableIsArray`](assumptions.mdx#iterableisarray) assumption.
 :::
 
 ```json title="babel.config.json"
@@ -116,7 +116,7 @@ var _z = z,
 ```
 
 :::tip
-You can read more about configuring plugin options [here](./plugins.md#plugin-options)
+You can read more about configuring plugin options [here](./plugins.mdx#plugin-options)
 :::
 
 ### `allowArrayLike`
@@ -134,7 +134,7 @@ While it is _not_ spec-compliant to destructure array-like objects as if they we
 Please note that Babel allows destructuring `arguments` in old engines even if this option is disabled, because it's defined as _iterable_ in the ECMAScript specification.
 
 :::caution
-Consider migrating to the top level [`arrayLikeIsIterable`](assumptions.md#arraylikeisiterable) assumption.
+Consider migrating to the top level [`arrayLikeIsIterable`](assumptions.mdx#arraylikeisiterable) assumption.
 :::
 
 ```json title="babel.config.json"

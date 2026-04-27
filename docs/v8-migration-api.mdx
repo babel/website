@@ -8,7 +8,7 @@ This document lists the breaking changes introduced in Babel 8.0.0, and how to a
 {/* truncate */}
 
 :::info
-Check out the [Babel 8 migration guide](v8-migration.md) first to learn about user-facing breaking changes.
+Check out the [Babel 8 migration guide](v8-migration.mdx) first to learn about user-facing breaking changes.
 :::
 
 ## AST Changes
@@ -953,7 +953,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   TSTypeLiteral { members: [] }
   ```
 
-  **Migration**: If you need information about parentheses, specify the [`createParenthesizedExpression`](./parser.md#options) parser option.
+  **Migration**: If you need information about parentheses, specify the [`createParenthesizedExpression`](./parser.mdx#options) parser option.
   ```json title="babel.config.json"
   { "parserOpts": { "createParenthesizedExpression": true } }
   ```
@@ -1393,7 +1393,7 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
 - Allow skipped `NodePath`s to be requeued ([#13291](https://github.com/babel/babel/pull/13291))
 
-  `NodePath#requeue()` can requeue a skipped NodePath. This is actually a bugfix, but it causes an infinite loop in the [temporal dead zone](./plugin-transform-block-scoping.md#tdz) implementation of `@babel/plugin-transform-block-scoping` in Babel 7: it may break other plugins as well.
+  `NodePath#requeue()` can requeue a skipped NodePath. This is actually a bugfix, but it causes an infinite loop in the [temporal dead zone](./plugin-transform-block-scoping.mdx#tdz) implementation of `@babel/plugin-transform-block-scoping` in Babel 7: it may break other plugins as well.
 
   __Migration__: If you want to preserve the old behavior, you can use `NodePath#shouldSkip` to check whether a NodePath has been skipped before calling `NodePath#requeue()`.
 
@@ -1451,7 +1451,7 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
   The default export was an old API which had been long deprecated since Babel 7.
 
-  __Migration__: Migrate to the [`codeFrameColumns` API](./code-frame.md#codeframecolumns).
+  __Migration__: Migrate to the [`codeFrameColumns` API](./code-frame.mdx#codeframecolumns).
 
   ```diff title="my-babel-plugin.js"
   - import codeFrame from "@babel/code-frame";
@@ -1469,7 +1469,7 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
   This change also affects the `isRequired` function of `@babel/helper-compilation-targets`, which receives plugin names as its first parameter.
 
-  __Migration__: For example, use `transform-class-properties` rather than `proposal-class-properties`. For a complete list of renamed plugin, see [Packages Renames section of Babel 8 migration](./v8-migration.md#package-renames).
+  __Migration__: For example, use `transform-class-properties` rather than `proposal-class-properties`. For a complete list of renamed plugin, see [Packages Renames section of Babel 8 migration](./v8-migration.mdx#package-renames).
 
   ```diff title="my-babel-plugin.js"
   module.exports = api => {
@@ -1502,7 +1502,7 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
 - Remove the undocumented `isPluginRequired` API ([#17670](https://github.com/babel/babel/pull/17670)).
 
-  __Migration__: This is an undocumented API. Use [`isRequired`](./helper-compilation-targets.md#isrequired) from `@babel/helper-compilation-targets` instead.
+  __Migration__: This is an undocumented API. Use [`isRequired`](./helper-compilation-targets.mdx#isrequired) from `@babel/helper-compilation-targets` instead.
 
   ```diff title="my-babel-plugin.js"
   - import { isPluginRequired } from "@babel/preset-env";
@@ -1534,7 +1534,7 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
 - Remove named export `environmentVisitor` ([#15550](https://github.com/babel/babel/pull/15550))
 
-  __Migration__: Import it from [`@babel/helper-environment-visitor`](./helper-environment-visitor.md).
+  __Migration__: Import it from [`@babel/helper-environment-visitor`](./helper-environment-visitor.mdx).
 
   ```diff
   - import { environmentVisitor } from "@babel/helper-replace-supers";
@@ -1543,7 +1543,7 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
 - Remove named export `skipAllButComputedKey` ([#15550](https://github.com/babel/babel/pull/15550))
 
-  __Migration__: Use [`requeueComputedKeyAndDecorators`](./helper-environment-visitor.md#requeuecomputedkeyanddecorators) instead. Find and replace the following import and usage
+  __Migration__: Use [`requeueComputedKeyAndDecorators`](./helper-environment-visitor.mdx#requeuecomputedkeyanddecorators) instead. Find and replace the following import and usage
   ```js title="my-babel7-plugin.js"
   import { skipAllButComputedKey } from "@babel/helper-replace-supers";
   skipAllButComputedKey(path);
@@ -1605,7 +1605,7 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
   This change probably will not affect your plugin as this method is already throwing an error in Babel 7.
 
-  __Migration__: Use [`addNamed`](./helper-module-imports.md#import--named-as-_named--from-source) or [`addDefault`](./helper-module-imports.md#import-_default-from-source) from `@babel/helper-module-imports` instead.
+  __Migration__: Use [`addNamed`](./helper-module-imports.mdx#import--named-as-_named--from-source) or [`addDefault`](./helper-module-imports.mdx#import-_default-from-source) from `@babel/helper-module-imports` instead.
 
 - Stop supporting plugin fields as named exports ([#15576](https://github.com/babel/babel/pull/15576))
 
