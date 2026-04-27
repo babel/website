@@ -9,7 +9,7 @@ share_text: "Announcing Babel's New Partnership with trivago!"
 
 We are happy to announce a new partnership with [trivago](https://www.trivago.com/), the hotel search website.
 
-<!--truncate-->
+{/* truncate */}
 
 They've committed to fund our community with $2,000 per month, for a total of $24,000 per year!
 

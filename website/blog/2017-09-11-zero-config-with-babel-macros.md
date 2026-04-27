@@ -18,7 +18,7 @@ guest_description: |
 
 Babel started out as a transpiler to let you write the latest version of the ECMAScript specification but ship to environments that don't implement those features yet. But it has become much more than that. ["Compilers are the New Frameworks"](https://tomdale.net/2017/09/compilers-are-the-new-frameworks/) says [Tom Dale](https://twitter.com/tomdale) and I could not agree more. We're seeing more and more compile-time optimizations for libraries and frameworks. I'm not talking about syntax extensions to the language, but simple code transformations that enable patterns that would be difficult to accomplish otherwise.
 
-<!--truncate-->
+{/* truncate */}
 
 One of my favorite things about compiler plugins is that you can use them to optimize the user experience and developer experience at the same time. (Read more about ["How writing custom Babel & ESLint plugins can increase productivity & improve user experience"](https://kentcdodds.com/blog/how-writing-custom-babel-and-eslint-plugins-can-increase-productivity-and-improve-user-experience)).
 

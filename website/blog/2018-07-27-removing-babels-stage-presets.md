@@ -11,7 +11,7 @@ Moving forward with v7, we've decided it's best to stop publishing the Stage pre
 
 We didn't make this decision lightly and wanted to show the context behind the interplay between TC39, Babel, and the community.
 
-<!--truncate-->
+{/* truncate */}
 
 ## Some History
 

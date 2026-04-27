@@ -9,7 +9,7 @@ share_text: "The State of babel-eslint"
 
 `babel-eslint` is moved to `@babel/eslint-parser`!
 
-<!-- truncate -->
+{/* truncate */}
 
 ## The Past
 

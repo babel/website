@@ -345,7 +345,7 @@ You should enable these features only if you are using an older version.
 
 </details>
 
-<!-- TODO: Is this note still true? Don't we raise an exception? -->
+{/* TODO: Is this note still true? Don't we raise an exception? */}
 
 :::note
 When a plugin is specified multiple times, only the first options are considered.

@@ -13,7 +13,7 @@ Today we're announcing the [The Babel Podcast](https://podcast.babeljs.io)!
 
 ### Subscribe with: [Apple]( https://podcasts.apple.com/us/podcast/the-babel-podcast/id1470143101) | [Google](https://www.google.com/podcasts?feed=aHR0cHM6Ly9mZWVkcy50cmFuc2lzdG9yLmZtL3RoZS1iYWJlbC1wb2RjYXN0) | [Spotify](https://open.spotify.com/show/3TK8x8AGckeEQEtnJVZYAz) | [RSS](https://feeds.transistor.fm/the-babel-podcast)
 
-<!-- truncate -->
+{/* truncate */}
 
 To start out, our first [episode](https://podcast.babeljs.io/rome) is with our good friend [Sebastian McKenzie](https://twitter.com/sebmck), the creator of Babel ([transcript](https://podcast.babeljs.io/rome/#transcript))!
  

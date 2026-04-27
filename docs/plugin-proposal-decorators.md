@@ -30,7 +30,7 @@ function isTestable(value) {
 }
 ```
 
-### Class method decorator {#class-function-decorator}
+### Class method decorator {/* #class-function-decorator */}
 
 ```js title="JavaScript"
 class C {

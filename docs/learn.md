@@ -23,7 +23,7 @@ for full specification of the ECMAScript 2015 language.
 
 ## ECMAScript 2015 Features
 
-<!-- To not break some existing links to here, just in case. -->
+{/* To not break some existing links to here, just in case. */}
 <a id="arrows"></a>
 
 ### Arrows and Lexical This

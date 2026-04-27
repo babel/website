@@ -5,7 +5,7 @@ id: v7-migration-api
 
 Refer users to this document when upgrading to Babel 7.
 
-<!--truncate-->
+{/* truncate */}
 
 > Also check out the [v7-migration guide](v7-migration.md) for other user-level changes.
 
@@ -421,4 +421,3 @@ The two AST-Nodes `RestProperty` and `SpreadProperty` have been removed in favor
 ```
 
 See our [upgrade PR for Babel](https://github.com/babel/babel/pull/5317) and the [Babylon AST spec](https://github.com/babel/babylon/blob/7.0/ast/spec.md) for more information.
-

@@ -5,7 +5,7 @@ id: v7-migration
 
 Refer users to this document when upgrading to Babel 7. Check [here](v7-migration-api.md) for API/integration changes.
 
-<!--truncate-->
+{/* truncate */}
 
 Because not every breaking change will affect every project, we've sorted the sections by the likelihood of a change breaking tests when upgrading.
 

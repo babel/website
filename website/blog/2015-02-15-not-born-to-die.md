@@ -13,7 +13,7 @@ There has been a bit of confusion in the past as to 6to5’s role in the JavaScr
 
 6to5 was not born to die.
 
-<!--truncate-->
+{/* truncate */}
 
 Even when the next edition of JavaScript is supported across all environments, the work that has gone into 6to5 will continue to serve an important role in the community.
 

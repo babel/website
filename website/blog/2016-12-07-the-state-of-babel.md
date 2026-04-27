@@ -16,7 +16,7 @@ custom_js_with_timestamps:
 - [The Future](https://babeljs.io/blog/2016/12/07/the-state-of-babel#the-future)
 - [Community](https://babeljs.io/blog/2016/12/07/the-state-of-babel#community)
 
-<!--truncate-->
+{/* truncate */}
 
 > Previous issues: [Babel Roadmap #4130](https://github.com/babel/babel/issues/4130), [6.0 #2168](https://github.com/babel/babel/issues/2168)
 

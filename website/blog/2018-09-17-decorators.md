@@ -9,7 +9,7 @@ share_text: "TC39 Standards Track Decorators in Babel"
 
 Babel 7.1.0 finally supports the new decorators proposal: you can try it out by using the [`@babel/plugin-proposal-decorators`](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) plugin 🎉.
 
-<!--truncate-->
+{/* truncate */}
 
 ## A Bit of History
 

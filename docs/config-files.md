@@ -429,7 +429,7 @@ module.exports = function(api) {
 };
 ```
 
-### `api.addExternalDependency(name: string)` {#api_addExternalDependency}
+### `api.addExternalDependency(name: string)` {/* #api_addExternalDependency */}
 
 Added in: `v7.17.0`
 

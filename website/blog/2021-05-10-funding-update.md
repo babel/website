@@ -14,7 +14,7 @@ share_text: "Babel is used by millions, so why are we running out of money?"
 
 Since 2018, Babel has been doing a [funding experiment](https://babeljs.io/blog/2019/11/08/babels-funding-plans): can full time work on Babel be sustained? We've learned the answer might be no.
 
-<!-- truncate -->
+{/* truncate */}
 
 In November 2019, after successfully paying [Henry](https://twitter.com/left_pad) a salary for over a year, we [expanded our goal](https://babeljs.io/blog/2019/11/08/babels-funding-plans) to also support three additional maintainers: [Jùnliàng](https://twitter.com/JLHwung), [Kai](https://twitter.com/kai_cataldo), and [Nicolò](https://twitter.com/NicoloRibaudo).
 
@@ -48,7 +48,7 @@ From the beginning, we knew we wouldn't have enough to pay anyone a full time sa
 
 We were hoping to see a continued increase in donations to be able to increase what Jùnliàng and Nicolò where taking, but it didn't happen.
 
-<!-- Image source: https://observablehq.com/@nicolo-ribaudo/babel-opencollective-donations as of Apr 20, accounting -18k to spend this month (3*6k) -->
+{/* Image source: https://observablehq.com/@nicolo-ribaudo/babel-opencollective-donations as of Apr 20, accounting -18k to spend this month (3*6k) */}
 
 ![Chart showing our OpenCollective balance decreasing since mid 2020](https://i.imgur.com/bsSHoRF.png)
 

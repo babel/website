@@ -15,4 +15,4 @@ We are moving the migration guide to a docs page instead of a blog post!
 
 ## Check out [v7-migration](https://babeljs.io/docs/en/next/v7-migration)!
 
-<!-- truncate -->
+{/* truncate */}

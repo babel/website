@@ -14,7 +14,7 @@ custom_js_with_timestamps:
 For the first time, Babel is participating in *Summer of Code*!
 Although we forgot to make an announcement post earlier, here's our progress update 😊
 
-<!--truncate-->
+{/* truncate */}
 
 ## What is it?
 

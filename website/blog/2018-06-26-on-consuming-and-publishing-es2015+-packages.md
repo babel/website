@@ -11,7 +11,7 @@ For those of us that need to support older browsers, we run a compiler like Babe
 
 Can we make compiling our dependencies not just possible, but normal?
 
-<!--truncate-->
+{/* truncate */}
 
 The ability to compile dependencies is an enabling feature request for the whole ecosystem. Starting with some of the changes we made in Babel v7 to make selective dependency compilation possible, we hope to see it standardized moving forward.
 

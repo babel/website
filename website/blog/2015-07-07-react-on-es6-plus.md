@@ -15,7 +15,7 @@ guest_description: |
 
 While redesigning [Instagram Web](https://instagram.com/instagram/) from the inside out this year, we enjoyed using a number of ES6+ features to write our React components. Allow me to highlight some of the ways that these new language features can change the way you write a React app, making it easier and more fun than ever.
 
-<!--truncate-->
+{/* truncate */}
 
 ## Classes
 

@@ -11,7 +11,7 @@ Babel 6 is fresh off the press and we’re still getting a lot sorted out. In th
 
 However, the documentation is still lacking at this point, I’m currently going through and creating an entirely new “Getting Started” section of the site.
 
-<!--truncate-->
+{/* truncate */}
 
 This blog post will cover most of the basics until that’s completed.
 

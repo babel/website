@@ -146,7 +146,7 @@ Some things already in progress Henry has been working on and off on:
 
 For an interactive example of what we are thinking about: https://babel-explorer.netlify.app/ (click and hold the mouse in the bottom sector!)
 
-<!--
+{/*
 
 ## Ecosystem
 
@@ -315,4 +315,4 @@ References: https://github.com/eslint/eslint-github-bot, https://github.com/open
   - What about binary ast?
   - immutable? https://github.com/babel/babel/issues/4130#issuecomment-245411113
 
--->
+*/}

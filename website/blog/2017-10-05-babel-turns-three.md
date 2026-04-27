@@ -11,7 +11,7 @@ share_text: "Babel Turns Three"
 
 Babel has really come a long way since [Sebastian](https://github.com/kittens) started the project only 3 years ago! A while back it was renamed from [6to5 to Babel](https://babeljs.io/blog/2015/02/15/not-born-to-die); for good reason as it has significantly contributed to the use of ES2015+ by [many companies](https://babeljs.io/users), libraries, and developers alike.
 
-<!--truncate-->
+{/* truncate */}
 
 And now it's even helping move the language forward by supporting the proposals coming from TC39. We're looking forward to being able to participate more in [TC39 meetings](https://twitter.com/loganfsmyth/status/844252727186149377).
 

@@ -13,7 +13,7 @@ proposed by Kevin Smith ([@zenparsing](https://github.com/zenparsing)) and
 implemented in Babel by Ingvar Stepanyan
 ([@RReverser](https://github.com/RReverser)).
 
-<!--truncate-->
+{/* truncate */}
 
 > ***Warning: This syntax is highly experimental and you should not use
 > it for anything serious (yet).*** If you do use this syntax, please

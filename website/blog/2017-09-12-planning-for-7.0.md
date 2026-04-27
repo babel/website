@@ -9,7 +9,7 @@ share_text: "Planning for 7.0"
 
 If you didn't know already, we're planning on releasing a 7.0 version soon 🙌 ! Work on it actually started back in February, when I just wanted to make a release to drop Node 0.10/0.12 support and remove babel-runtime and various other code. And since then, we've done releases up to `alpha.20`.
 
-<!--truncate-->
+{/* truncate */}
 
 > We're going to update this post throughout the beta releases
 

@@ -10,7 +10,7 @@ share_text: "Babel <3 React"
 One of the things that surprises people quite often is that Babel supports JSX
 out of the box.
 
-<!--truncate-->
+{/* truncate */}
 
 Let me show you just how easy it is to switch:
 

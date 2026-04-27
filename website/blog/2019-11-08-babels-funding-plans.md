@@ -15,7 +15,7 @@ In March 2018, Henry [left his job](https://www.henryzoo.com/leaving-behance/) t
 
 This has been a big win for the team, but we're finding that it is not enough.
 
-<!-- truncate -->
+{/* truncate */}
 
 ## New Challenges
 

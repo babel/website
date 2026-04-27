@@ -10,7 +10,7 @@ Babel feature requirements by using a complete polyfill such as [`core-js/actual
 
 You may alternatively/selectively include what you need:
 
-<!-- TODO: This is out of date -->
+{/* TODO: This is out of date */}
 
 | Feature                     | Requirements                           |
 | --------------------------- | -------------------------------------- |
