@@ -37,7 +37,7 @@ export function preferDarkColorScheme(): boolean {
   if (!ExecutionEnvironment.canUseDOM) {
     return false;
   }
-  const theme = localStorage.getItem("theme");
+  const theme = document.documentElement.getAttribute("data-theme");
   if (theme) {
     return theme === "dark";
   }

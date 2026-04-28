@@ -141,12 +141,12 @@ function docusaurusReplRoutePlugin() {
 }
 
 const siteConfig: Config = {
+  storage: {
+    type: "localStorage",
+    namespace: "babel",
+  },
   future: {
-    // See https://docusaurus.io/blog/releases/3.6
-    experimental_faster: true,
-    v4: {
-      removeLegacyPostBuildHeadAttribute: true,
-    },
+    v4: true,
   },
   titleDelimiter: "·",
   baseUrl: "/",
@@ -166,7 +166,7 @@ const siteConfig: Config = {
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: "throw",
-    }
+    },
   },
   plugins: [docusaurusReplRoutePlugin, require("./webpack.plugin.js")],
   presets: [
