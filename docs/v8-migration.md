@@ -829,3 +829,18 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
   If you are already using the `data-targets` attribute, this change won't affect you.
 
   **Migration**: You'll probably be fine with the new behavior since the [browserslist's `defaults` covers most modern browsers](https://browsersl.ist/#q=defaults). If you need to support legacy browsers, specify the [`data-targets`](./standalone.md#data-targets) attribute.
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- Remove syntax plugins for syntax enabled by default ([#17963](https://github.com/babel/babel/pull/17963))
+
+  The following plugins, which used to enable _parsing only_ support for the respective JavaScript features, are now enabled by default and thus not exposed by `@babel/standalone`:
+    - `@babel/syntax-async-generators`
+    - `@babel/syntax-class-properties`
+    - `@babel/syntax-class-static-block`
+    - `@babel/syntax-import-meta`
+    - `@babel/syntax-object-rest-spread`
+    - `@babel/syntax-optional-catch-binding`
+    - `@babel/syntax-top-level-await`
+
+  **Migration**: Remove them from your `@babel/standalone` config.
