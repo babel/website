@@ -1445,6 +1445,19 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
 ### `@babel/code-frame`
 
+![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
+
+- Use 0-based `column` in `codeFrameColumns` ([#17849](https://github.com/babel/babel/pull/17849))
+
+  Babel 7 interpreted `column` as 1-based. Babel 8 treats it as 0-based, matching `@babel/parser` AST locations.
+
+  __Migration__: If you were adding `+ 1` to an AST `loc.column` before passing it to `codeFrameColumns`, drop that. If you were passing a 1-based column directly, subtract 1 before calling `codeFrameColumns`.
+
+  ```diff title="my-babel-plugin.js"
+  - codeFrameColumns(code, { start: { line: loc.line, column: loc.column + 1 } });
+  + codeFrameColumns(code, { start: { line: loc.line, column: loc.column } });
+  ```
+
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
 - Remove default export ([#17772](https://github.com/babel/babel/pull/17772))
