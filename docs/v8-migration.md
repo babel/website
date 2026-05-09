@@ -19,7 +19,7 @@ You should read this full document to understand what options you need to change
 
 - If you are not using a `.browserslistrc` file, define a top-level [`targets`](./options.md#targets) option. Babel 7 defaults to `targets: ">= 0%"` (all browsers), while Babel 8 defaults to [`targets: "defaults"`](https://browsersl.ist/#q=defaults). If you are using [`@babel/preset-env`'s `targets`](./preset-env.md#targets) option, copy its value to the top-level configuration (next to `presets`).
 - If you use `@babel/preset-env`, enable its [`bugfixes`](./preset-env.md#bugfixes) option.
-- If you use `@babel/preset-env`'s `loose` or `spec` options, [migrate to `assumptions`](./assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes).
+- If you use `@babel/preset-env`'s `loose` or `spec` options, [migrate to `assumptions`](./assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes). Consider migrating also if you are using `loose` or `spec` in individual plugins, althought they still work in Babel 8.
 - If you use `@babel/preset-react` or `@babel/plugin-transform-react-jsx`, explicitly set their [`runtime`](./preset-react.md#runtime) option (Babel 7 defaults to `"classic"`, Babel 8 to `"automatic"`). If you keep using the classic runtime, set the [`useSpread`](./plugin-transform-react-jsx.md#usespread) option to `true`.
 - If you use the TypeScript or Flow presets, replace the `isTSX` and `allExtensions` options with [`ignoreExtensions`](#babel-preset-typescript).
 - If you are transforming TypeScript or Flow, set the `allowDeclareFields` option to `true` (see [TypeScript](./preset-typescript.md#allowdeclarefields)).
@@ -43,6 +43,13 @@ Babel is now shipped as native ECMAScript modules ([#11701](https://github.com/b
 
 - All presets and plugins require `@babel/core@^8.0.0` as peer dependency. Some Babel 7 plugins and presets might work with `@babel/core@8`, and some Babel 8 plugins and presets might work with `@babel/core@7`, but we do not provide any official support for that.
 - `@babel/eslint-parser` and `@babel/eslint-plugin` require `eslint@>=9.0.0` as peer dependency. ([#15563](https://github.com/babel/babel/issues/15563))
+
+### `loose` and `spec` options deprecation {#loose-spec-deprecation}
+
+The `loose` and `spec` options have been removed in favor of the new [`assumptions`](./assumptions.md) top-level option, which is more flexible and can be used to configure assumptions specific to your codebase for all plugins in a single place.
+
+- They have been completely removed from `@babel/preset-env`, and you can copy the equivalent [`assumptions`](./assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) configuration to your config.
+- When used in individual plugins, they still work but will emit a warning pointing to the equivalent `assumptions` configuration. You can migrate them after upgrading to Babel 8.
 
 ## Renamed Packages {#renamed-packages}
 
