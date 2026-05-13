@@ -168,7 +168,7 @@ const siteConfig: Config = {
       onBrokenMarkdownLinks: "throw",
     }
   },
-  plugins: [docusaurusReplRoutePlugin, require("./webpack.plugin.js")],
+  plugins: [docusaurusReplRoutePlugin, require("./webpack.plugin.js"), "docusaurus-plugin-copy-page-button"],
   presets: [
     [
       "@docusaurus/preset-classic",
