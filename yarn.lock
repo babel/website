@@ -5452,6 +5452,7 @@ __metadata:
     algoliasearch: "npm:^5.49.0"
     clsx: "npm:^2.1.1"
     core-js: "npm:^3.43.0"
+    docusaurus-plugin-copy-page-button: "npm:^0.4.2"
     eslint: "npm:^9.35.0"
     eslint-formatter-codeframe: "npm:^7.32.1"
     eslint-plugin-react: "npm:^7.37.5"
@@ -6908,6 +6909,16 @@ __metadata:
   dependencies:
     esutils: "npm:^2.0.2"
   checksum: 10/555684f77e791b17173ea86e2eea45ef26c22219cb64670669c4f4bebd26dbc95cd90ec1f4159e9349a6bb9eb892ce4dde8cd0139e77bedd8bf4518238618474
+  languageName: node
+  linkType: hard
+
+"docusaurus-plugin-copy-page-button@npm:^0.4.2":
+  version: 0.4.2
+  resolution: "docusaurus-plugin-copy-page-button@npm:0.4.2"
+  peerDependencies:
+    "@docusaurus/core": ^3.0.0
+    react: ^18.0.0 || ^19.0.0
+  checksum: 10/e591ff132932e4e2ba028f8b221309a6146d618c005c3fd985e3dffe6f435468d6b88d3ac91f717e46762524451ffc8cef75e1fd6de7ea4692488a3123ebc08b
   languageName: node
   linkType: hard
 
