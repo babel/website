@@ -31,12 +31,12 @@ when using features that require it, like generators.
 ### Ignores `node_modules` by default
 
 **NOTE:** By default all requires to `node_modules` will be ignored. You can
-override this by passing an ignore regex via:
+override this by passing the [`ignore`](./options.md#ignore) option via:
 
 ```js title="JavaScript"
 require("@babel/register")({
   // This will override `node_modules` ignoring - you can alternatively pass
-  // an array of strings to be explicitly matched or a regex / glob
+  // an array of strings to be explicitly matched or a regex / function
   ignore: [],
 });
 ```
@@ -45,7 +45,7 @@ require("@babel/register")({
 
 ```js title="JavaScript"
 require("@babel/register")({
-  // Array of ignore conditions, either a regex or a function. (Optional)
+  // Array of ignore conditions, either a string, regex or a function. (Optional)
   // File paths that match any condition are not compiled.
   ignore: [
     // When a file path matches this regex then it is **not** compiled
@@ -70,9 +70,9 @@ require("@babel/register")({
     },
   ],
 
-  // Setting this will remove the currently hooked extensions of `.es6`, `.es`, `.jsx`, `.mjs`
-  // and .js so you'll have to add them back if you want them to be used again.
-  extensions: [".es6", ".es", ".jsx", ".js", ".mjs"],
+  // Setting this will remove the currently hooked extensions of `.es6`, `.es`, `.jsx`, `.mjs`,
+  // .cjs and .js so you'll have to add them back if you want them to be used again.
+  extensions: [".es6", ".es", ".jsx", ".js", ".mjs", ".cjs"],
 
   // Setting this to false will disable the cache.
   cache: true,
