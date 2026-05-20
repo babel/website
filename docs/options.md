@@ -168,10 +168,11 @@ Placement: Only allowed in Babel's programmatic options<br />
 
 The initial path that will be processed based on the [`"rootMode"`](#rootmode)
 to determine the conceptual root folder for the current Babel project.
-This is used in two primary cases:
+This is used in three primary cases:
 
 - The base directory when checking for the default [`"configFile"`](#configfile) value
 - The default value for [`"babelrcRoots"`](#babelrcroots).
+- The base directory which a relative `sourceMappingURL` in the source file can be resolved up to
 
 ### `rootMode`
 
