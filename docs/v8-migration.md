@@ -3,6 +3,8 @@ title: "Upgrade to Babel 8"
 id: v8-migration
 ---
 
+import Link from '@docusaurus/Link';
+
 This document lists the breaking changes introduced in Babel 8.0.0, and how to adapt your usage of Babel to them when upgrading from Babel 7.0.0.
 
 If you are working directly with Babel's API (because, for example, you maintain a custom Babel plugin), please also check the [migration guide for integration](./v8-migration-api.md).
@@ -697,7 +699,7 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- <a name="decorators-version-change"></a> Only support the `legacy` and `2023-11` versions of the proposal. In addition to that, the plugin now requires a [`version`](./plugin-proposal-decorators.md#version) option ([#12712](https://github.com/babel/babel/pull/12712), [#15676](https://github.com/babel/babel/pull/15676))
+- <Link id="decorators-version-change"/> Only support the `legacy` and `2023-11` versions of the proposal. In addition to that, the plugin now requires a [`version`](./plugin-proposal-decorators.md#version) option ([#12712](https://github.com/babel/babel/pull/12712), [#15676](https://github.com/babel/babel/pull/15676))
 
   **Migration**: You should migrate to the [latest version of the proposal](https://github.com/tc39/proposal-decorators/), `"2023-11"`.
 
@@ -725,7 +727,7 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- <a name="pipeline-operator-proposal-change"></a> Only support the `fsharp` and `hack` proposals ([#17732](https://github.com/babel/babel/pull/17732))
+- <Link id="pipeline-operator-proposal-change"/> Only support the `fsharp` and `hack` proposals ([#17732](https://github.com/babel/babel/pull/17732))
 
   **Migration**: If you used `smart` or `minimal` proposal, you should migrate to either the `fsharp` or the `hack` [proposal](./plugin-proposal-pipeline-operator.md#usage).
 

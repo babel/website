@@ -50,7 +50,7 @@ interop issues.
 
 We hear you! Babel 6 requires a tiny bit of configuration in order to get going.
 [We think this is for the best](/blog/2015/10/29/6.0.0) and have added
-[presets](plugins.md#presets) to ease this transition.
+[presets](presets.md) to ease this transition.
 
 ## Upgrading from Babel 5.x to Babel 6
 

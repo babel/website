@@ -105,7 +105,7 @@ Learn more about [Flow](https://flow.org/) and [TypeScript](https://www.typescri
 
 ## Pluggable
 
-Babel is built out of plugins. Compose your own transformation pipeline using existing plugins or write your own. Easily use a set of plugins by using or creating a [preset](plugins.md#presets). [Learn more →](plugins.md)
+Babel is built out of [plugins](plugins.md). Compose your own transformation pipeline using existing plugins or write your own. Easily use a set of plugins by using or creating a [preset](presets.md).
 
 Create a plugin on the fly with [astexplorer.net](https://astexplorer.net/#/KJ8AjD6maa) or use [generator-babel-plugin](https://github.com/babel/generator-babel-plugin) to generate a plugin template.
 

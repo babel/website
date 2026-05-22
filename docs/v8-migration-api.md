@@ -3,6 +3,8 @@ title: "Upgrade to Babel 8 (API)"
 id: v8-migration-api
 ---
 
+import Link from '@docusaurus/Link';
+
 This document lists the breaking changes introduced in Babel 8.0.0, and how to adapt your usage of Babel to them when upgrading from Babel 7.0.0. This document is intended for developers using Babel's API directly, such as Babel plugin authors, or authors of projects that use Babel as a library.
 
 <!--truncate-->
@@ -45,7 +47,7 @@ Check out the [Babel 8 migration guide](v8-migration.md) first to learn about us
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- <a name="ast-bigint"></a> Use `bigint` for `BigIntLiteral.value`, rather than a string([#17378](https://github.com/babel/babel/pull/17378))
+- <Link id="ast-bigint"/> Use `bigint` for `BigIntLiteral.value`, rather than a string([#17378](https://github.com/babel/babel/pull/17378))
 
   ```js
   // Example input
@@ -81,7 +83,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
-- <a name="ast-TSTypeParameter"></a> Use an identifier for `TSTypeParameter.name`, rather than a plain string ([#12829](https://github.com/babel/babel/pull/12829))
+- <Link id="ast-TSTypeParameter"/> Use an identifier for `TSTypeParameter.name`, rather than a plain string ([#12829](https://github.com/babel/babel/pull/12829))
 
   ```ts title="input.ts"
   // T is a TSTypeParameter
@@ -332,7 +334,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
   </details>
 
-- <a name="ast-typeArguments"></a> Rename `typeParameters` to `typeArguments` in `CallExpression`, `JSXOpeningElement`, `NewExpression`, `OptionalCallExpression`, `TSImportType`, `TSInstantiationExpression`, `TSTypeQuery` and  `TSTypeReference` ([#16679](https://github.com/babel/babel/issues/16679), [#17008](https://github.com/babel/babel/pull/17008), [#17012](https://github.com/babel/babel/pull/17012), [#17020](https://github.com/babel/babel/pull/17020), [#17042](https://github.com/babel/babel/pull/17042))
+- <Link id="ast-typeArguments"/> Rename `typeParameters` to `typeArguments` in `CallExpression`, `JSXOpeningElement`, `NewExpression`, `OptionalCallExpression`, `TSImportType`, `TSInstantiationExpression`, `TSTypeQuery` and  `TSTypeReference` ([#16679](https://github.com/babel/babel/issues/16679), [#17008](https://github.com/babel/babel/pull/17008), [#17012](https://github.com/babel/babel/pull/17012), [#17020](https://github.com/babel/babel/pull/17020), [#17042](https://github.com/babel/babel/pull/17042))
 
   <details>
     <summary>CallExpression</summary>
@@ -645,7 +647,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
   }
   ```
 
-- <a name="ast-TSMappedType"></a> Split `typeParameter` of `TSMappedType` ([#16733](https://github.com/babel/babel/pull/16733)).
+- <Link id="ast-TSMappedType"/> Split `typeParameter` of `TSMappedType` ([#16733](https://github.com/babel/babel/pull/16733)).
 
   In `TSMappedType` nodes, the `typeParameter` property is flattened as `key` and `constraint` properties of `TSMappedType` itself.
 
@@ -826,7 +828,7 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
     }
   ```
 
-- <a name="ast-TSEnumDeclaration"></a> Wrap the `members` of `TSEnumDeclaration` within a `TSEnumBody` node ([#16979](https://github.com/babel/babel/pull/16979))
+- <Link id="ast-TSEnumDeclaration"/> Wrap the `members` of `TSEnumDeclaration` within a `TSEnumBody` node ([#16979](https://github.com/babel/babel/pull/16979))
 
   ```ts title="input.ts"
   // Example input
@@ -1482,7 +1484,7 @@ Other than the changes listed below, `@babel/parser` is affected by all the [AST
 
   This change also affects the `isRequired` function of `@babel/helper-compilation-targets`, which receives plugin names as its first parameter.
 
-  __Migration__: For example, use `transform-class-properties` rather than `proposal-class-properties`. For a complete list of renamed plugin, see [Packages Renames section of Babel 8 migration](./v8-migration.md#package-renames).
+  __Migration__: For example, use `transform-class-properties` rather than `proposal-class-properties`. For a complete list of renamed plugin, see [Packages Renames section of Babel 8 migration](./v8-migration.md#renamed-packages).
 
   ```diff title="my-babel-plugin.js"
   module.exports = api => {
