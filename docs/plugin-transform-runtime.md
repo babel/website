@@ -80,7 +80,13 @@ With options (and their defaults):
 }
 ```
 
+:::babel8
+The plugin assumes that all polyfillable APIs will be provided by the user. See [babel-polyfills](https://github.com/babel/babel-polyfills) for more information.
+:::
+
+:::babel7
 The plugin defaults to assuming that all polyfillable APIs will be provided by the user. Otherwise the [`corejs`](#corejs) option needs to be specified.
+:::
 
 ### Via CLI
 
@@ -182,7 +188,11 @@ This option controls which package of helpers `@babel/plugin-transform-runtime` 
   - `babel-plugin-polyfill-corejs2` suggests `@babel/runtime-corejs2`
 - Fallback to `@babel/runtime`
 
+:::babel7
+
 Note that specifying the [`corejs`](#corejs) option will internally enable the corresponding `babel-plugin-polyfill-corejs*` plugin, thus it has an effect on the final module name.
+
+:::
 
 ::::babel7
 
