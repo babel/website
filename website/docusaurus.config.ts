@@ -150,6 +150,7 @@ const siteConfig: Config = {
   titleDelimiter: "·",
   baseUrl: "/",
   favicon: "img/favicon.png",
+  onBrokenAnchors: "throw",
   onBrokenLinks: "throw",
   customFields: {
     repoUrl: "https://github.com/babel/babel",
