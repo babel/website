@@ -142,8 +142,8 @@ function docusaurusReplRoutePlugin() {
 
 const siteConfig: Config = {
   future: {
-    faster: true,
     v4: {
+      fasterByDefault: true,
       removeLegacyPostBuildHeadAttribute: true,
     },
   },
