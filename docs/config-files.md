@@ -141,16 +141,7 @@ Babel can be configured using any file extension natively supported by Node.js, 
 In Node.js with [native TypeScript support](https://nodejs.org/learn/typescript/run-natively), Babel also supports TypeScript config files, using `.ts`/`.mts`/`.cts` extensions in place of `.js`/`.mjs`/`.cjs`.
 
 ::::note
-🚧 `babel.config.ts` and `babel.config.mts` files only work in Node.js versions that have native TypeScript support.
-::::
-
-JavaScript configuration files can either export an object, or a function that when called will
-return the generated configuration.
-Function-returning configs are given a few special powers because they can access an API exposed
-by Babel itself. See [Config Function API](#config-function-api) for more information.
-
-::::note
-In older Node.js versions, if `@babel/preset-typescript` is installed or if you are running through `ts-node`, Babel will still be able to load `.cts` config files. `.mts` and `.ts` files are not supported under this setup.
+🚧 In older Node.js versions, if `@babel/preset-typescript` is installed or if you are running through `ts-node`, Babel will still be able to load `.cts` config files. `.mts` and `.ts` files are not supported under this setup.
 ::::
 
 :::
@@ -160,6 +151,11 @@ In older Node.js versions, if `@babel/preset-typescript` is installed or if you 
 Babel also supports TypeScript config files, using `.ts`/`.mts`/`.cts` extensions in place of `.js`/`.mjs`/`.cjs`.
 
 :::
+
+JavaScript configuration files can either export an object, or a function that when called will
+return the generated configuration.
+Function-returning configs are given a few special powers because they can access an API exposed
+by Babel itself. See [Config Function API](#config-function-api) for more information.
 
 ## Monorepos
 
