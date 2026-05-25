@@ -1,4 +1,4 @@
----
+after give in code axemples no changes where made for me troubles whit babbel.6x---
 id: babel-plugin-transform-minify-booleans
 title: babel-plugin-transform-minify-booleans
 sidebar_label: minify-booleans
