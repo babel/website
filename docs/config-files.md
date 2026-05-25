@@ -136,19 +136,29 @@ Babel can be configured using any file extension natively supported by Node.js, 
   file contains the [`"type": "module"`](https://nodejs.org/api/esm.html#esm_code_package_json_code_code_type_code_field)
   option, otherwise they are exactly the same as the `.cjs` files.
 
-- `babel.config.cts` and `.babelrc.cts` allow you to define your configuration as Typescript + CommonJS. You must either install `@babel/preset-typescript`, or run Babel using `ts-node`.
+:::babel7
 
-  :::note
-  🚧 This functionality is experimental. It's not possible yet to use `babel.config.ts` and `babel.config.mts` files, pending stabilization of the Node.js ESM loader API.
-  :::
+In Node.js with [native TypeScript support](https://nodejs.org/learn/typescript/run-natively), Babel also supports TypeScript config files, using `.ts`/`.mts`/`.cts` extensions in place of `.js`/`.mjs`/`.cjs`.
+
+::::note
+🚧 `babel.config.ts` and `babel.config.mts` files only work in Node.js versions that have native TypeScript support.
+::::
 
 JavaScript configuration files can either export an object, or a function that when called will
 return the generated configuration.
 Function-returning configs are given a few special powers because they can access an API exposed
 by Babel itself. See [Config Function API](#config-function-api) for more information.
 
-:::note
-For compatibility reasons, `.babelrc` is an alias for `.babelrc.json`.
+::::note
+In older Node.js versions, if `@babel/preset-typescript` is installed or if you are running through `ts-node`, Babel will still be able to load `.cts` config files. `.mts` and `.ts` files are not supported under this setup.
+::::
+
+:::
+
+:::babel8
+
+Babel also supports TypeScript config files, using `.ts`/`.mts`/`.cts` extensions in place of `.js`/`.mjs`/`.cjs`.
+
 :::
 
 ## Monorepos
