@@ -136,15 +136,15 @@ Babel can be configured using any file extension natively supported by Node.js, 
   file contains the [`"type": "module"`](https://nodejs.org/api/esm.html#esm_code_package_json_code_code_type_code_field)
   option, otherwise they are exactly the same as the `.cjs` files.
 
-:::babel7
+::::babel7
 
 In Node.js with [native TypeScript support](https://nodejs.org/learn/typescript/run-natively), Babel also supports TypeScript config files, using `.ts`/`.mts`/`.cts` extensions in place of `.js`/`.mjs`/`.cjs`.
 
-::::note
+:::note
 🚧 In older Node.js versions, if `@babel/preset-typescript` is installed or if you are running through `ts-node`, Babel will still be able to load `.cts` config files. `.mts` and `.ts` files are not supported under this setup.
-::::
-
 :::
+
+::::
 
 :::babel8
 
