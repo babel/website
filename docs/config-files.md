@@ -68,6 +68,10 @@ These caveats mean that:
 See the [monorepo](#monorepos) documentation for more discussion on how to configure monorepos that have many packages.
 File-relative configs can also be disabled by setting ["babelrc"](options.md#babelrc) to `false`.
 
+:::note
+For compatibility reasons, `.babelrc` is an alias for `.babelrc.json`.
+:::
+
 ### 6.x vs 7.x `.babelrc` loading
 
 Users coming from Babel 6.x will likely trip up on these two edge cases, which are new in Babel 7.x.
