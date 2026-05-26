@@ -171,8 +171,8 @@ to determine the conceptual root folder for the current Babel project.
 This is used in three primary cases:
 
 - The base directory when checking for the default [`"configFile"`](#configfile) value
-- The default value for [`"babelrcRoots"`](#babelrcroots).
-- The base directory which a relative `sourceMappingURL` in the source file can be resolved up to
+- The default value for [`"babelrcRoots"`](#babelrcroots)
+- The base directory which a relative `sourceMappingURL` in the source file can be resolved up to. Source Maps not within `root` will be ignored.
 
 ### `rootMode`
 
