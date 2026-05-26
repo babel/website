@@ -172,7 +172,7 @@ This is used in three primary cases:
 
 - The base directory when checking for the default [`"configFile"`](#configfile) value
 - The default value for [`"babelrcRoots"`](#babelrcroots)
-- The base directory which a relative `sourceMappingURL` in the source file can be resolved up to. Source Maps not within `root` will be ignored.
+- The base directory from which a relative `sourceMappingURL` in the source file can be resolved. Any source maps not within `root` will be ignored.
 
 ### `rootMode`
 
