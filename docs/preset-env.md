@@ -398,7 +398,7 @@ By default, only polyfills for stable ECMAScript features are injected: if you w
 <details>
   <summary><b>Example</b></summary>
 
-With Babel 7's [JavaScript config file](config-files#javascript) support, you can force all transforms to be run if env is set to `production`.
+With Babel 7's [JavaScript config file](config-files.md#supported-file-extensions) support, you can force all transforms to be run if env is set to `production`.
 
 ```js title="babel.config.js"
 module.exports = function(api) {

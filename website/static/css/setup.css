@@ -13,6 +13,11 @@
   margin-right: 10px;
 }
 
+.step .step-setup {
+  margin-top: var(--ifm-heading-margin-top);
+  margin-bottom: var(--ifm-heading-margin-bottom);
+}
+
 .step .step-setup h2 {
   font-size: 22px;
   font-weight: bold;
@@ -20,10 +25,6 @@
   overflow: hidden;
   line-height: 30px;
   padding: 0;
-}
-
-.step .step-setup + .step-setup {
-  margin-top: var(--ifm-list-item-margin);
 }
 
 .step .step-setup p {

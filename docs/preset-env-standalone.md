@@ -5,7 +5,7 @@ sidebar_label: env-standalone
 ---
 
 :::danger
-🚨 As of Babel 7.8.0, this package has been deprecated. It is now included in [@babel/standalone](standalone.md#usage).
+🚨 As of Babel 7.8.0, this package has been deprecated. It is now included in [@babel/standalone](standalone.md).
 :::
 
 # Installation

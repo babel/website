@@ -137,7 +137,7 @@ Decides which runtime to use.
 
 This toggles behavior specific to development, such as adding `__source` and `__self`.
 
-This is useful when combined with the [env option](options.md#env) configuration or [js config files](config-files.md#javascript).
+This is useful when combined with the [env option](options.md#env) configuration or [js config files](config-files.md#supported-file-extensions).
 
 :::babel8
 

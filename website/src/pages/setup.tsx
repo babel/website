@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
+import useBrokenLinks from '@docusaurus/useBrokenLinks';
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Translate from "@docusaurus/Translate";
 import MarkdownBlock from "../components/v1/MarkdownBlock";
@@ -34,10 +35,13 @@ const SetupSelectButton = (props) => {
     const className =
       "button button--secondary" +
       (tool === activeTool ? " button--active" : "");
+    const href = "#" + tool;
+    // Collect the tools as anchor here because StepInstallAndUsage will only render the selected tool.
+    useBrokenLinks().collectAnchor(tool);
     return (
       <Link
         key={j}
-        href="#installation"
+        href={href}
         className={className}
         onClick={() => props.onSelectTool(tool)}
       >
@@ -108,9 +112,11 @@ const StepInstallAndUsage = (props) => {
       Usage
     </Translate>
   );
+  const id = props.name === "install" ? props.tool : `${props.tool}-usage`;
   return (
     <div className="step-setup" hidden={!props.tool}>
-      <h2 id={props.name === "install" ? "installation" : ""}>
+      <h2>
+        <Link id={id} />
         <span className="step-no">{props.number}</span>
         {props.name === "install" ? installation : usage}
       </h2>

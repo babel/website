@@ -18,7 +18,7 @@ Let me show you just how easy it is to switch:
 > here. If you'd like to see a more complete list check out our
 > [Using Babel](/setup) page.
 
-**In the Browser** ([docs](/setup#browser/))
+**In the Browser** ([docs](/setup#browser))
 
 Before:
 
@@ -46,7 +46,7 @@ After:
 $ browserify -t babelify main.js
 ```
 
-**In Node** ([docs](/setup#require/))
+**In Node** ([docs](/setup#babel_register))
 
 Before:
 
@@ -102,7 +102,7 @@ The list goes on, but you probably get how simple it is by now. If you didn't
 see the tool you are looking for don't worry we have a full list of them on our
 [Using Babel](/setup) page.
 
-If you need more help getting setup be sure to read our [JSX](/setup#jsx/)
+If you need more help getting setup be sure to read our [JSX](/docs/#jsx-and-react)
 docs or come ask other Babel users in our
 [support chat](https://gitter.im/babel/babel).
 
