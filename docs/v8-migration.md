@@ -170,8 +170,7 @@ If you are using this plugin to polyfill `Object.assign`, please use [`babel-plu
 
 ### `@babel/plugin-transform-object-set-prototype-of-to-assign` {#babel-plugin-transform-object-set-prototype-of-to-assign}
 
-This is a legacy polyfill plugin, and it is now outdated.
-
+This plugin is not maintained anymore.
 If you are using this plugin to polyfill `Object.setPrototypeOf`, please use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3#usage) instead.
 
 ### `@babel/plugin-transform-react-compat` {#babel-plugin-transform-react-compat}
