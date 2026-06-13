@@ -174,6 +174,11 @@ This is a legacy polyfill plugin, and it is now outdated.
 
 If you are using this plugin to polyfill `Object.assign`, please use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3#usage) instead.
 
+### `@babel/plugin-transform-object-set-prototype-of-to-assign` {#babel-plugin-transform-object-set-prototype-of-to-assign}
+
+This plugin is not maintained anymore.
+If you are using this plugin to polyfill `Object.setPrototypeOf`, please use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3#usage) instead.
+
 ### `@babel/plugin-transform-react-compat` {#babel-plugin-transform-react-compat}
 
 This is for React v0.x, which has been long deprecated and is no longer maintained.
