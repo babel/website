@@ -123,7 +123,7 @@ mind. When in doubt, use `.parse()`.
 
 :::babel8
 
-- **locations**: Can be one of `true`, `false` or `packed`.
+- **locations**: boolean.
   `true` is the default and will add a `loc` property to each node, which is an object with `start` and `end` properties, which are objects containing `line` and `column` numbers.
   When set to `false`, the "loc" property will not be included in the output AST.
 
