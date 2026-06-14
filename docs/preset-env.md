@@ -150,6 +150,12 @@ Setting this to `false` will preserve ES modules. Use this only if you intend to
 
 By default `@babel/preset-env` uses [`caller`](options.md#caller) data to determine whether ES modules and module features (e.g. `import()`) should be transformed. Generally `caller` data will be specified in the bundler plugins (e.g. `babel-loader`, `@rollup/plugin-babel`) and thus it is not recommended to pass `caller` data yourself -- The passed `caller` may overwrite the one from bundler plugins and in the future you may get suboptimal results if bundlers supports new module features.
 
+:::babel8
+
+Unless the caller specifies otherwise, Babel will assume that it does support ES modules.
+
+:::
+
 ### `debug`
 
 `boolean`, defaults to `false`.
