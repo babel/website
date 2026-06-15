@@ -15,7 +15,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 [blog post](https://babeljs.io/blog/2026/06/15/8.0.0), [migration guide](https://babeljs.io/docs/v8-migration)
 
-- Drop support for un-maintained Node versions: 6, 8, 10, 12, 14, 16, 18, 20, 22, 23, 25
+- Drop support for un-maintained Node versions: 6, 8, 10, 12, 14, 16, 18, 20, 23, 25
 - Publish Babel's own codebase as ESM
 - Transpile by default to ESM and modern targets
 - Deprecate the `loose` and `spec` options, in favor of [`assumptions`](https://babeljs.io/assumptions)
