@@ -406,6 +406,12 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
+- `modules: "auto"` defaults to assuming that ESM is supported rather than not ([#18069](https://github.com/babel/babel/pull/18069))
+
+  This change will not affect you if you are using Babel through other tools, such us Webpack or Rollup, as they already specify to Babel that they do support ESM.
+
+  **Migration**: If you need to transpile to CommonJS, either pass the `modules: "commonjs"` option to `@babel/preset-env`, or use the `@babel/plugin-transform-commonjs` plugin.
+
 - `include` and `exclude` respect renamed package names ([#15576](https://github.com/babel/babel/pull/15576))
 
   **Migration**: If `include` or `exclude` contain any plugins mentioned in the [Packages Renames section](./v8-migration.md#renamed-packages), change it to the new name. For example,
