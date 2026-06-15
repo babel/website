@@ -29,6 +29,31 @@ mind. When in doubt, use `.parse()`.
 
 ### Options
 
+:::babel8
+
+<details>
+  <summary>History</summary>
+
+| Version   | Changes                                            |
+| --------- | -------------------------------------------------- |
+| `v8.0.0`  | Added `locations`                                  |
+| `v7.28.0` | Added `sourceType: "commonjs"`                     |
+| `v7.27.0` | Added `allowYieldOutsideFunction`                  |
+| `v7.26.0` | Added `startIndex`                                 |
+| `v7.23.0` | Added `createImportExpressions`                    |
+| `v7.21.0` | Added `allowNewTargetOutsideFunction` and `annexB` |
+| `v7.16.0` | Added `startColumn`                                |
+| `v7.15.0` | Added `attachComment`                              |
+| `v7.7.0`  | Added `errorRecovery`                              |
+| `v7.5.0`  | Added `allowUndeclaredExports`                     |
+| `v7.2.0`  | Added `createParenthesizedExpressions`             |
+
+</details>
+
+:::
+
+:::babel7
+
 <details>
   <summary>History</summary>
 
@@ -46,6 +71,8 @@ mind. When in doubt, use `.parse()`.
 | `v7.2.0`  | Added `createParenthesizedExpressions`             |
 
 </details>
+
+:::
 
 - **allowImportExportEverywhere**: By default, `import` and `export`
   declarations can only appear at a program's top level. Setting this
@@ -93,6 +120,14 @@ mind. When in doubt, use `.parse()`.
   parsing the invalid input file.
   The resulting AST will have an `errors` property representing an array of all the parsing errors.
   Note that even when this option is enabled, `@babel/parser` could throw for unrecoverable errors.
+
+:::babel8
+
+- **locations**: boolean.
+  `true` is the default and will add a `loc` property to each node, which is an object with `start` and `end` properties, which are objects containing `line` and `column` numbers.
+  When set to `false`, the "loc" property will not be included in the output AST.
+
+:::
 
 - **plugins**: Array containing the plugins that you want to enable.
 
