@@ -9,6 +9,28 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="June 2026">
+
+## Babel 8.0.0
+
+[blog post](https://babeljs.io/blog/2026/06/16/8.0.0), [migration guide](https://babeljs.io/docs/v8-migration)
+
+- Drop support for un-maintained Node versions: 6, 8, 10, 12, 14, 16, 18, 20, 23, 25
+- Publish Babel's own codebase as ESM
+- Transpile by default to ESM and modern targets
+- Deprecate the `loose` and `spec` options, in favor of [`assumptions`](https://babeljs.io/assumptions)
+- Remove `core-js` support from `@babel/preset-env` and `@babel/plugin-transform-runtime`, in favor of [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3)
+
+</li>
+<li data-date="Jan 2026">
+
+## Babel 7.29.0
+
+[blog post](https://babeljs.io/blog/2026/01/31/7.29.0)
+
+- Support configuring `targets` in `@babel/standalone` [`<script>` tags](https://babeljs.io/docs/babel-standalone#script-tags)
+
+</li>
 <li data-date="Jun 2025">
 
 ## Babel 7.28.0
