@@ -152,7 +152,7 @@ By default `@babel/preset-env` uses [`caller`](options.md#caller) data to determ
 
 :::babel8
 
-Unless the caller specifies otherwise, Babel will assume that it does support ES modules.
+Unless the caller specifies otherwise, Babel will assume that it does support ES modules syntax including `import`, `import()` and `import * as ns`.
 
 :::
 
