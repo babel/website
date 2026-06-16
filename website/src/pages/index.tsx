@@ -154,7 +154,7 @@ const Hero = () => (
       <div className="hero__announcement">
         <span>
           <strong>Babel 8.0.0 released!</strong> Go check our{" "}
-          <Link to="/blog/2026/06/15/8.0.0">blog post</Link> for more
+          <Link to="/blog/2026/06/16/8.0.0">blog post</Link> for more
           details!
         </span>
       </div>

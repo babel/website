@@ -13,7 +13,7 @@ Additionally, use this timeline to track some other important efforts, such as t
 
 ## Babel 8.0.0
 
-[blog post](https://babeljs.io/blog/2026/06/15/8.0.0), [migration guide](https://babeljs.io/docs/v8-migration)
+[blog post](https://babeljs.io/blog/2026/06/16/8.0.0), [migration guide](https://babeljs.io/docs/v8-migration)
 
 - Drop support for un-maintained Node versions: 6, 8, 10, 12, 14, 16, 18, 20, 23, 25
 - Publish Babel's own codebase as ESM
