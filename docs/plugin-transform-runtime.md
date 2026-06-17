@@ -427,9 +427,9 @@ without worrying about where they come from.
 
 **NOTE:** Instance methods such as `"foobar".includes("foo")` will only work when using `corejs: 3`.
 
-### Helper aliasing
-
 ::::
+
+### Helper aliasing
 
 Usually Babel will place helpers at the top of your file to do common tasks to avoid
 duplicating the code around in the current file. Sometimes these helpers can get a
