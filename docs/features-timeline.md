@@ -533,7 +533,7 @@ This has a lot more changes since it was 2 years of pre-releases.
 - Remove yearly presets (`@babel/preset-es2015`) and Stage presets (`@babel/preset-stage-0`) ([blog post](https://babeljs.io/blog/2018/07/27/removing-babels-stage-presets)).
 - Added "pure" (`/*#__PURE__*/` ) annotation support in certain cases. (Implemented later as [@babel/helper-annotate-as-pure](helper-annotate-as-pure.md)
 - Add project-wide `babel.config.js` config file ([docs](config-files.md)) and [`overrides`](options.md#overrides) config option.
-- Added `"useBuiltIns: "usage"` to [`@babel/preset-env`](preset-env.md#usebuiltins)
+- Added `"useBuiltIns: "usage"` to [`@babel/preset-env`](preset-env.md#usebuiltins-corejs)
 - Support TypeScript via `@babel/preset-typescript`
 - Support JSX Fragments `<></>`
 - Support a ton of TC39 proposals:

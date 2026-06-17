@@ -684,7 +684,7 @@ For instance, [`@babel/plugin-transform-runtime`](plugin-transform-runtime.md)
 relies on the type of the current document to decide whether to insert
 an `import` declaration, or a `require()` call.
 [`@babel/preset-env`](preset-env.md) also does the same for its
-[`"useBuiltIns"`](preset-env.md#usebuiltins) option. Since Babel defaults to treating files
+[`"useBuiltIns"`](preset-env.md#usebuiltins-corejs) option. Since Babel defaults to treating files
 are ES modules, generally these plugins/presets will insert `import` statements. Setting
 the correct `sourceType` can be important because having the wrong type can lead to cases
 where Babel would insert `import` statements into files that are meant to be CommonJS
