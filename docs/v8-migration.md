@@ -25,7 +25,7 @@ You should read this full document to understand what options you need to change
 - If you use `@babel/preset-react` or `@babel/plugin-transform-react-jsx`, explicitly set their [`runtime`](./preset-react.md#runtime) option (Babel 7 defaults to `"classic"`, Babel 8 to `"automatic"`). If you keep using the classic runtime, set the `useSpread` option to `true`.
 - If you use the TypeScript or Flow presets, replace the `isTSX` and `allExtensions` options with [`ignoreExtensions`](#babel-preset-typescript).
 - If you are transforming TypeScript or Flow, set the `allowDeclareFields` option to `true` (see [TypeScript](./preset-typescript.md#allowdeclarefields)).
-- If you use `@babel/plugin-transform-runtime`'s `corejs` or [`@babel/preset-env`'s `useBuiltIns`](./preset-env.md#usebuiltins) options, remove them and use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3) instead.
+- If you use `@babel/plugin-transform-runtime`'s `corejs` or [`@babel/preset-env`'s `useBuiltIns`](./preset-env.md#usebuiltins-corejs) options, remove them and use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3) instead.
 - If you use `@babel/plugin-proposal-decorators`, set its [`version`](./plugin-proposal-decorators.md#version) option to `legacy` or `2023-11`.
 - Remove the `@babel/plugin-proposal-record-and-tuple` and `@babel/plugin-syntax-import-assertions` plugins if you are using them.
 

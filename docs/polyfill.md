@@ -32,7 +32,7 @@ Because this is a polyfill (which will run before your source code), we need it 
 
 ## Size
 
-The polyfill is provided as a convenience but you should use it with [`@babel/preset-env`](preset-env.md) and the [`useBuiltIns` option](preset-env.md#usebuiltins) so that it doesn't include the whole polyfill which isn't always needed. Otherwise, we would recommend you import the individual polyfills manually.
+The polyfill is provided as a convenience but you should use it with [`@babel/preset-env`](preset-env.md) and the [`useBuiltIns` option](preset-env.md#usebuiltins-corejs) so that it doesn't include the whole polyfill which isn't always needed. Otherwise, we would recommend you import the individual polyfills manually.
 
 ## TC39 Proposals
 
