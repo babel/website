@@ -99,7 +99,7 @@ export const number = 2;
 
 ## `ignoreFunctionLength`
 
-Functions have a `.length` property that reflect the number of parameters up to the last non-default parameter. When this option is enabled, assume that the compiled code does not rely on this `.length` property.
+Functions have a `.length` property that reflect the number of parameters up to the last non-default parameter that is not preceded by a default parameter. When this option is enabled, assume that the compiled code does not rely on this `.length` property.
 
 <div is="assumption-repl" data-assumption="ignoreFunctionLength" data-plugins="transform-parameters">
 
