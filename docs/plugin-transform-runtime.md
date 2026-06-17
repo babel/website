@@ -121,6 +121,8 @@ You can read more about configuring plugin options [here](./plugins.md#plugin-op
 
 ### `corejs`
 
+:::babel7
+
 `false`, `2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `false`.
 
 e.g. `['@babel/plugin-transform-runtime', { corejs: 3 }],`
@@ -147,11 +149,17 @@ This option requires changing the dependency used to provide the necessary runti
 | `2`             | `npm install --save @babel/runtime-corejs2` |
 | `3`             | `npm install --save @babel/runtime-corejs3` |
 
-:::caution
+:::babel7
 
-The `corejs` option will be removed in Babel 8. To inject polyfills, you can use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md) or [`babel-plugin-polyfill-corejs2`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs2/README.md) directly.
+::::babel8
+
+:::danger
+
+This option has been removed in Babel 8. To inject polyfills, you can use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md) directly.
 
 :::
+
+::::
 
 ### `helpers`
 

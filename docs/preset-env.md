@@ -227,15 +227,15 @@ The possible options are the same as the `include` option.
 
 This option is useful for excluding a transform like `@babel/plugin-transform-regenerator`, for example if you are using another plugin like [fast-async](https://github.com/MatAtBread/fast-async) instead of [Babel's async-to-gen](plugin-transform-async-generator-functions.md).
 
-### `useBuiltIns`
+### `useBuiltIns`, `corejs`
+
+:::babel7
 
 `"usage"` | `"entry"` | `false`, defaults to `false`.
 
 This option configures how `@babel/preset-env` handles polyfills.
 
 When either the `usage` or `entry` options are used, `@babel/preset-env` will add direct references to `core-js` modules as bare imports (or requires). This means `core-js` will be resolved relative to the file itself and needs to be accessible.
-
-:::babel7
 
 Since `@babel/polyfill` was deprecated in 7.4.0, we recommend directly adding `core-js` and setting the version via the [`corejs`](#corejs) option.
 
@@ -249,15 +249,15 @@ npm install core-js@2 --save
 
 :::
 
-:::babel8
+::::babel8
 
-When auto-injecting polyfills using `@babel/preset-env`, you must add `core-js` to your dependencies:
+:::danger
 
-```shell npm2yarn
-npm install core-js
-```
+This option has been removed in Babel 8. To inject polyfills, you can use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md) directly.
 
 :::
+
+::::
 
 #### `useBuiltIns: 'entry'`
 
