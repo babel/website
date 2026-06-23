@@ -248,6 +248,14 @@ Presets enable Babel to parse types provided by Flow / TypeScript (and other dia
 }
 ```
 
+If you use `@babel/standalone`, you can specify the `flow` preset via [`data-presets`](./standalone.md#data-presets):
+
+```diff title="index.html"
+- <script type="text/babel">
++ <script type="text/babel" data-presets="flow">
+</script>
+```
+
 ## Option parsing
 
 Babel's config options are stricter than in Babel 6.
