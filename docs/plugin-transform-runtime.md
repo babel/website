@@ -117,8 +117,6 @@ Using absolute paths is not desirable if files are compiled for use at a later t
 You can read more about configuring plugin options [here](./plugins.md#plugin-options)
 :::
 
-::::babel7
-
 ### `corejs`
 
 :::babel7
@@ -149,7 +147,7 @@ This option requires changing the dependency used to provide the necessary runti
 | `2`             | `npm install --save @babel/runtime-corejs2` |
 | `3`             | `npm install --save @babel/runtime-corejs3` |
 
-:::babel7
+:::
 
 ::::babel8
 
@@ -163,6 +161,8 @@ This option has been removed in Babel 8. To inject polyfills, you can use [`babe
 
 ### `helpers`
 
+::::babel7
+
 `boolean`, defaults to `true`.
 
 Toggles whether or not inlined Babel helpers (`classCallCheck`, `extends`, etc.) are replaced with calls to `@babel/runtime` (or equivalent package).
@@ -172,6 +172,16 @@ For more information, see [Helper aliasing](#helper-aliasing).
 :::caution
 
 The `helpers` option will be removed in Babel 8, as this plugin will only be used to inject helpers (including `regeneratorRuntime`, which will be handled as any other Babel helper).
+
+:::
+
+::::
+
+::::babel8
+
+:::danger
+
+The `helpers` option has been removed in Babel 8, as this plugin will only be used to inject helpers (including `regeneratorRuntime`, which will be handled as any other Babel helper).
 
 :::
 
