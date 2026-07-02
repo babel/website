@@ -10,3 +10,6 @@ root = true
 
 [Makefile]
   indent_style = tab
+
+[.ruby-version]
+  insert_final_newline = false
