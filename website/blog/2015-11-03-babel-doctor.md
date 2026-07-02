@@ -17,7 +17,7 @@ share_text: "Babel Doctor"
 
 <!--truncate-->
 
-We launched [Babel 6](https://babeljs.io/blog/2015/10/29/6.0.0/) last week. This was a
+We launched [Babel 6](https://babeljs.io/blog/2015/10/29/6.0.0) last week. This was a
 pretty big change from the previous batteries included Babel and with it came a host of
 potential environment issues.
 
