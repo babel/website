@@ -53,10 +53,11 @@ const transactionsGraphqlQuery = `query transactions($dateFrom: DateTime, $limit
 }`;
 
 const nodeToSupporter = (node) => ({
-  name: node.account.name,
-  slug: node.account.slug,
-  website: node.account.website,
-  avatar: node.account.imageUrl,
+  // node.account is null when the account is archived
+  name: node.account?.name ?? "(archived account)",
+  slug: node.account?.slug ?? "",
+  website: node.account?.website ?? "",
+  avatar: node.account?.imageUrl ?? "",
   firstDonation: node.createdAt,
   totalDonations: node.totalDonations.value,
   yearlyDonations: 0,
