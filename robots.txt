@@ -1,2 +1,5 @@
+User-Agent: Agolia Crawler
+Allow: /
+
 User-Agent: *
 Disallow: /
