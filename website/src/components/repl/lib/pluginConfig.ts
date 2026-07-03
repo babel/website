@@ -7,7 +7,7 @@ const normalizePluginName = (pluginName) =>
 const babelConfig: PluginConfig = {
   label: "Babel",
   package: "@babel/standalone",
-  version: "^7.0.0",
+  version: "^8.0.0",
   baseUrl: "https://unpkg.com",
   instanceName: "Babel",
 };
@@ -56,14 +56,14 @@ const envPresetDefaults = {
   },
   node: {
     min: 0.1,
-    default: "10.13",
+    default: "22.13",
     step: 0.1,
   },
   builtIns: {
     default: "usage",
   },
   corejs: {
-    default: "3.42",
+    default: "3.49",
   },
   modules: {
     default: false,
@@ -87,7 +87,7 @@ const pluginConfigs: Array<PluginConfig> = [
 ];
 
 const replDefaults: ReplState = {
-  browsers: "defaults, not ie 11, not ie_mob 11",
+  browsers: "defaults",
   bugfixes: true,
   build: "",
   builtIns: false,
