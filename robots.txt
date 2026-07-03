@@ -1,4 +1,4 @@
-User-Agent: Agolia Crawler
+User-Agent: Algolia Crawler
 Allow: /
 
 User-Agent: *
