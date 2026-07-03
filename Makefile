@@ -2,9 +2,9 @@
 
 bootstrap:
 	bundle install
-	npm install
+	yarn install
 	if [ ! -d ./node_modules ]; \
-	then npm install; \
+	then yarn install; \
 	fi
 
 	if [ ! -d ./_sass/bootstrap ]; \
