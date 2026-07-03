@@ -125,15 +125,32 @@ function compileCode(sourceEditor, targetEditor) {
 
   try {
     transformed = Babel.transform(sourceEditor.getValue(), {
+      assumptions: {
+        arrayLikeIsIterable: true,
+        constantReexports: true,
+        ignoreFunctionLength: true,
+        ignoreToPrimitiveHint: true,
+        mutableTemplateObject: true,
+        noClassCalls: true,
+        noDocumentAll: true,
+        objectRestNoSymbols: true,
+        privateFieldsAsProperties: true,
+        pureGetters: true,
+        setClassMethods: true,
+        setComputedProperties: true,
+        setPublicClassFields: true,
+        setSpreadProperties: true,
+        skipForOfIteratorClosing: true,
+        superIsCallableConstructor: true,
+      },
       presets: [
         "react",
         "typescript",
-        ["env", { targets: "defaults", loose: true }],
+        ["env", { targets: "defaults", exclude: ["transform-typeof-symbol"] }],
       ],
       plugins: [
-        ["external-helpers", { helperVersion: "7.100.0" }],
+        ["external-helpers", { helperVersion: "8.100.0" }],
         // TODO: remove this when preset-env supports it
-        ["transform-explicit-resource-management"],
         ["proposal-pipeline-operator", { proposal: "hack", topicToken: "%" }],
         ["proposal-throw-expressions"],
       ],
