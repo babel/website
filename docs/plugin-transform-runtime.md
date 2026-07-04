@@ -13,6 +13,8 @@ Instance methods such as `"foobar".includes("foo")` will only work with `core-js
 
 ::::
 
+> NOTE: You must choose between using `@babel/preset-env`'s `useBuiltIns` option with `usage` and this plugin. They do not work together.
+
 ## Installation
 
 Install it as development dependency.
