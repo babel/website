@@ -1,5 +1,5 @@
 ---
-title: Compiler assumptions
+title: Compiler Assumptions
 id: assumptions
 ---
 
@@ -174,7 +174,7 @@ class Test {
 
 When using operators that check for `null` or `undefined`, assume that they are never used with the special value `document.all`.
 
-<div is="assumption-repl" data-assumption="noDocumentAll" data-plugins="proposal-optional-chaining,proposal-nullish-coalescing-operator">
+<div is="assumption-repl" data-assumption="noDocumentAll" data-plugins="transform-optional-chaining,transform-nullish-coalescing-operator">
 
 ```js title="JavaScript"
 let score = points ?? 0;
@@ -250,7 +250,7 @@ class MyClass {
 
 When using rest patterns in object destructuring, assume that destructured objects don't have symbol keys or that it's not a problem if they are not copied.
 
-<div is="assumption-repl" data-assumption="objectRestNoSymbols" data-plugins="transform-destructuring,proposal-object-rest-spread">
+<div is="assumption-repl" data-assumption="objectRestNoSymbols" data-plugins="transform-destructuring,transform-object-rest-spread">
 
 ```js title="JavaScript"
 let { name, ...attrs } = obj;
@@ -262,7 +262,7 @@ let { name, ...attrs } = obj;
 
 Assume that "soft privacy" is enough for private fields, and thus they can be stored as public non-enumerable properties with an unique name (rather than using an external `WeakMap`). This makes debugging compiled private fields easier.
 
-<div is="assumption-repl" data-assumption="privateFieldsAsProperties" data-plugins="proposal-class-properties,proposal-private-methods">
+<div is="assumption-repl" data-assumption="privateFieldsAsProperties" data-plugins="transform-class-properties,transform-private-methods">
 
 ```js title="JavaScript"
 class Foo {
@@ -295,7 +295,7 @@ When using inline Babel helpers, generated string keys are unique per-file and n
 
 Assume that "soft privacy" is enough for private fields, and thus they can be stored as public properties with a symbol key (rather than using an external `WeakMap`). This makes debugging compiled private fields easier.
 
-<div is="assumption-repl" data-assumption="privateFieldsAsSymbols" data-plugins="proposal-class-properties,proposal-private-methods">
+<div is="assumption-repl" data-assumption="privateFieldsAsSymbols" data-plugins="transform-class-properties,transform-private-methods">
 
 ```text assumption-input
 class Foo {
@@ -316,7 +316,7 @@ class Foo {
 
 Assume that getters, if present, don't have side-effects and can be accessed multiple times.
 
-<div is="assumption-repl" data-assumption="pureGetters" data-plugins="proposal-optional-chaining">
+<div is="assumption-repl" data-assumption="pureGetters" data-plugins="transform-optional-chaining">
 
 ```js title="JavaScript"
 let a = obj;
@@ -361,7 +361,7 @@ let obj = {
 
 When using public class fields, assume that they don't shadow any getter in the current class, in its subclasses or in its superclass. Thus, it's safe to assign them rather than using `Object.defineProperty`.
 
-<div is="assumption-repl" data-assumption="setPublicClassFields" data-plugins="proposal-class-properties">
+<div is="assumption-repl" data-assumption="setPublicClassFields" data-plugins="transform-class-properties">
 
 ```js title="JavaScript"
 class Test {
@@ -377,7 +377,7 @@ class Test {
 
 When using object spread, assume that spreaded properties don't trigger getters on the target object and thus it's safe to assign them rather than defining them using `Object.defineProperty`.
 
-<div is="assumption-repl" data-assumption="setSpreadProperties" data-plugins="proposal-object-rest-spread">
+<div is="assumption-repl" data-assumption="setSpreadProperties" data-plugins="transform-object-rest-spread">
 
 ```js title="JavaScript"
 const result = {
