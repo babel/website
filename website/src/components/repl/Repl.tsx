@@ -860,8 +860,11 @@ class Repl extends React.Component<Props, State> {
         },
       },
       () => {
-        this._persistState();
-        location.reload();
+        // Clean up the config according to the new version
+        this.setState(this._stateToConfig(), () => {
+          this._persistState();
+          location.reload();
+        });
       }
     );
   };
