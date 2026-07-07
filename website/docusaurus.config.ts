@@ -253,7 +253,7 @@ const siteConfig: Config = {
     algolia: {
       appId: "M7KGJDK6WF",
       apiKey: "6ec7d6acbfb6ed3520846a7517533c28",
-      indexName: "babeljs",
+      indexName: "babeljs-v7",
       contextualSearch: false,
     },
     navbar: {
