@@ -300,7 +300,13 @@ class ExpandedContainer extends Component<Props, State> {
       compareVersions(babelVersion, "7.9.0") !== -1 &&
       compareVersions(babelVersion, "8.0.0") < 0;
 
-    const versionCandidates: string[] = [...new Set([...pastVersions, babelVersion!].filter(Boolean))].sort(compareVersions).reverse();
+    const versionCandidates: string[] = [...new Set(
+      [...pastVersions, babelVersion].filter(
+        (v): v is string => typeof v === "string" && v.length > 0 && v !== "latest"
+      )
+    )]
+      .sort(compareVersions)
+      .reverse();
 
     return (
       <div className={styles.expandedContainer}>
