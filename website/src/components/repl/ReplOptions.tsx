@@ -300,6 +300,14 @@ class ExpandedContainer extends Component<Props, State> {
       compareVersions(babelVersion, "7.9.0") !== -1 &&
       compareVersions(babelVersion, "8.0.0") < 0;
 
+    const versionCandidates: string[] = [...new Set(
+      [...pastVersions, babelVersion].filter(
+        (v): v is string => typeof v === "string" && v.length > 0 && v !== "latest"
+      )
+    )]
+      .sort(compareVersions)
+      .reverse();
+
     return (
       <div className={styles.expandedContainer}>
         <div className={styles.sectionsWrapper}>
@@ -790,11 +798,10 @@ class ExpandedContainer extends Component<Props, State> {
         <div className={styles.bottomSidebar}>
           <button onClick={onResetBtnClick}>Reset</button>
           <select value={babelVersion} onChange={onVersionChange}>
-            <option value="">v{babelVersion}</option>
             <option value="latest">Latest</option>
-            {pastVersions.map(
+            {versionCandidates.map(
               (version, index) =>
-                version !== babelVersion && (
+                (
                   <option value={version} key={index}>
                     v{version}
                   </option>
