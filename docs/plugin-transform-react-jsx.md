@@ -284,8 +284,6 @@ Without options:
 
 With options:
 
-:::babel8
-
 ```json title="babel.config.json"
 {
   "plugins": [
@@ -300,8 +298,6 @@ With options:
   ]
 }
 ```
-
-:::
 
 
 
@@ -339,11 +335,7 @@ You can read more about configuring plugin options [here](./plugins.md#plugin-op
 
 #### `runtime`
 
-:::babel8
-
 `classic | automatic`, defaults to `automatic`
-
-:::
 
 
 

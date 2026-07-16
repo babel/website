@@ -87,15 +87,11 @@ Use the `data-targets` attribute to specify the [compilation targets](./options.
 
 
 
-:::babel8
-
 By default Babel will transpile all features to the [browserslist](https://github.com/browserslist/browserslist#queries) [`defaults`](https://browsersl.ist/#q=defaults) targets, which covers most modern browsers. If you want to support legacy browsers such as IE 8, you must specify the this attribute:
 
 ```html
 <script type="text/babel" data-presets="env" data-targets="ie 8">
 ```
-
-:::
 
 #### `src`
 Loading external scripts via `src` attribute is supported too:

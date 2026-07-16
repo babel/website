@@ -142,11 +142,7 @@ Babel can be configured using any file extension natively supported by Node.js, 
 
 
 
-:::babel8
-
 Babel also supports TypeScript config files, using `.ts`/`.mts`/`.cts` extensions in place of `.js`/`.mjs`/`.cjs`.
-
-:::
 
 JavaScript configuration files can either export an object, or a function that when called will
 return the generated configuration.
@@ -312,8 +308,6 @@ JS config files may export a function that gets the config API as a parameter:
 
 
 
-:::babel8
-
 ```js title="babel.config.js"
 /**
  * @param {import("@babel/core").ConfigAPI} api
@@ -323,8 +317,6 @@ module.exports = function(api) {
   return {};
 };
 ```
-
-:::
 
 The ConfigAPI object `api` provides the following properties or methods:
 

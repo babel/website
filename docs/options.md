@@ -368,11 +368,7 @@ If a minor version is not specified, Babel will interpret it as `MAJOR.0`. For e
 
 
 
-:::babel8
-
 When no targets are specified: Babel will assume you are using the [browserslist](https://github.com/browserslist/browserslist#queries) [`defaults`](https://browsersl.ist/#q=defaults) query, which covers most modern browsers. If you want to support legacy browsers, specify the `targets` option.
-
-:::
 
 #### `targets.esmodules`
 
@@ -400,9 +396,7 @@ You may also target browsers supporting [ES Modules](https://www.ecma-internatio
 
 
 
-:::babel8
 `esmodules: true` is an alias of `esmodules: "intersect"`.
-:::
 
 :::tip
 If you use browserslist `defaults` as the target, or you plan to support any mainstream browsers released in or after 2019, you can safely remove `esmodules` because these browsers already support ES Modules.

@@ -97,8 +97,6 @@ class A {
 
 
 
-:::babel8
-
 `boolean`, defaults to `false`
 
 <details>
@@ -109,8 +107,6 @@ class A {
 | `v8.0.0` | Default changed to `false` |
 | `v7.24.0` | Introduced, defaulting to `true` |
 </details>
-
-:::
 
 When it is set to `true`, Babel will apply the flow transform to all extensions. When it is set to `false`, Babel will avoid the flow transform for `*.tsx` files.
 

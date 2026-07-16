@@ -38,8 +38,6 @@ require("@babel/core").transformSync("code", {
 });
 ```
 
-:::babel8
-
 ## Options
 
 <details>
@@ -54,5 +52,3 @@ require("@babel/core").transformSync("code", {
 
 There is only one version currently supported:
 - `"2018-07"` is the proposal version after the updates that was discussed in the July 2018 TC39 meeting.
-
-:::

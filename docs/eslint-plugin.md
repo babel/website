@@ -20,8 +20,6 @@ npm install @babel/eslint-plugin --save-dev
 
 Load the plugin in your ESLint config and enable all the rules you would like to use (remember to disable the original ones as well!).
 
-:::babel8
-
 ```js title=eslint.config.js
 import babelParser from "@babel/eslint-parser";
 import babelPlugin from "@babel/eslint-plugin";
@@ -49,8 +47,6 @@ export default defineConfig([
 ]);
 ```
 
-:::
-
 
 
 ## Rules
@@ -59,13 +55,9 @@ Each rule corresponds to a core `eslint` rule and has the same options.
 
 🛠: means it's autofixable with `--fix`.
 
-:::babel8
-
 - `@babel/new-cap`: handles decorators (`@Decorator`)
 - `@babel/no-undef`: handles class accessor properties (`class A { accessor x = 2 }`)
 - `@babel/no-unused-expressions`: handles `do` expressions
-
-:::
 
 
 

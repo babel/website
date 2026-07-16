@@ -91,8 +91,6 @@ require("@babel/core").transformSync("code", {
 | `v7.17.0` | Added the `version` option with support for `"2021-12"`, `"2018-09"` and `"legacy"` |
 </details>
 
-:::babel8
-
 ### `version`
 
 `"2023-11"` or `"legacy"`.
@@ -102,8 +100,6 @@ Selects the decorators proposal to use:
 - `legacy` is the legacy Stage 1 proposal, defined at [`wycats/javascript-decorators@e1bf8d41bf`](https://github.com/wycats/javascript-decorators/blob/e1bf8d41bfa2591d949dd3bbf013514c8904b913/README.md). The legacy mode will not have feature updates, and there are known [discrepancies between Babel and TypeScript](https://github.com/babel/babel/issues/8864#issuecomment-688535867). It is recommended to migrate to the `"2023-11"` proposal version.
 
 The spec repo provides a brief [summary of the differences between these versions](https://github.com/tc39/proposal-decorators#how-does-this-proposal-compare-to-other-versions-of-decorators).
-
-:::
 
 
 

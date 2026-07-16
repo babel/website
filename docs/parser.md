@@ -29,8 +29,6 @@ mind. When in doubt, use `.parse()`.
 
 ### Options
 
-:::babel8
-
 <details>
   <summary>History</summary>
 
@@ -49,8 +47,6 @@ mind. When in doubt, use `.parse()`.
 | `v7.2.0`  | Added `createParenthesizedExpressions`             |
 
 </details>
-
-:::
 
 
 
@@ -101,13 +97,9 @@ mind. When in doubt, use `.parse()`.
   The resulting AST will have an `errors` property representing an array of all the parsing errors.
   Note that even when this option is enabled, `@babel/parser` could throw for unrecoverable errors.
 
-:::babel8
-
 - **locations**: boolean.
   `true` is the default and will add a `loc` property to each node, which is an object with `start` and `end` properties, which are objects containing `line` and `column` numbers.
   When set to `false`, the "loc" property will not be included in the output AST.
-
-:::
 
 - **plugins**: Array containing the plugins that you want to enable.
 
@@ -241,8 +233,6 @@ require("@babel/parser").parse("code", {
 
 #### ECMAScript [proposals](https://github.com/babel/proposals)
 
-:::babel8
-
 | Name                                                                                                                | Code Example                                                     |
 | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `asyncDoExpressions` ([proposal](https://github.com/tc39/proposal-async-do-expressions))                            | `async do { await requestAPI().json() }`                         |
@@ -262,8 +252,6 @@ require("@babel/parser").parse("code", {
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29))                                       | <code>a &#124;> b</code>                                         |
 | `sourcePhaseImports` ([proposal](https://github.com/tc39/proposal-source-phase-imports))                            | `import source x from "./x"`                                     |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23))                                       | `() => throw new Error("")`                                      |
-
-:::
 
 
 
@@ -323,26 +311,21 @@ When a plugin is specified multiple times, only the first options are considered
 
 
 
-  :::babel8
   - `proposal` (required, accepted values: `fsharp`, `hack`)
     There are several different proposals for the pipeline operator.
     This option chooses which proposal to use.
     See [plugin-proposal-pipeline-operator](plugin-proposal-pipeline-operator.md)
     for more information, including a table comparing their behavior.
-    :::
 
   - `topicToken` (required when `proposal` is `hack`, accepted values: `%`, `#`, `^`, `@@`, `^^`)
     The `hack` proposal uses a “topic” placeholder in its pipe.
     There are two different choices for this topic placeholder.
     This option chooses what token to use to refer to the topic.
 
-:::babel8
-
 - `partialApplication`:
   - `version` (required, with the only valid value being `2018-07`).
     Specify which version of the partial application proposal you are using. `2018-07` represents the proposal as
     it was presented at the July 2018 TC39 meeting.
-    :::
 
 
 

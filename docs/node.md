@@ -77,15 +77,11 @@ babel-node [options] [ -e script | [--] script.js ] [arguments]
 
 
 
-:::babel8
-
 Options for Node.js and Babel must be placed before the file name, while arguments for the script (that will be available as `process.argv`) must be placed after.
 
 ```sh title="Shell"
 npx babel-node --arg-for-babel script.js --arg-for-script.js
 ```
-
-:::
 
 ### Options
 

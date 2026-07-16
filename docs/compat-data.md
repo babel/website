@@ -16,12 +16,9 @@ npm install --save-dev @babel/compat-data
 ### plugins
 
 
-:::babel8
-
 ```javascript title="my-babel-plugin.js"
 import pluginsCompatData from "@babel/compat-data/plugins" with { type: "json" };
 ```
-:::
 
 The `pluginsCompatData` is an object with the Babel plugin short name as the key and a compat data entry as its value. Each entry is an object with a browser name as the key and the minimum supported version as its value.
 

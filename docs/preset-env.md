@@ -84,21 +84,13 @@ For usage, refer to the [`targets` option](options.md#targets) documentation.
 
 
 
-:::babel8
-
 This option has been removed in Babel 8. `@babel/preset-env` will always compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers.
-
-:::
-
-::::babel8
 
 ### `loose`, `spec`
 
 :::danger
 These options have been removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.md), available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
 :::
-
-::::
 
 
 
@@ -114,11 +106,7 @@ Setting this to `false` will preserve ES modules. Use this only if you intend to
 
 By default `@babel/preset-env` uses [`caller`](options.md#caller) data to determine whether ES modules and module features (e.g. `import()`) should be transformed. Generally `caller` data will be specified in the bundler plugins (e.g. `babel-loader`, `@rollup/plugin-babel`) and thus it is not recommended to pass `caller` data yourself -- The passed `caller` may overwrite the one from bundler plugins and in the future you may get suboptimal results if bundlers supports new module features.
 
-:::babel8
-
 Unless the caller specifies otherwise, Babel will assume that it does support ES modules syntax including `import`, `import()` and `import * as ns`.
-
-:::
 
 ### `debug`
 
@@ -144,15 +132,11 @@ Valid options include any:
 
 
 
-:::babel8
-
 - [Babel plugins](https://github.com/babel/babel/blob/main/packages/babel-preset-env/src/available-plugins.ts) - both full and shorthand names are supported, for example the following are functionally equivalent:
   * `@babel/plugin-transform-optional-chaining`
   * `@babel/transform-optional-chaining`
   * `transform-optional-chaining`
 - [core-js@3](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs3/built-in-definitions.js) polyfills, such as `es.map`, `es.set`, or `es.object.assign`.
-
-:::
 
 Plugin names can be fully or partially specified (or using `RegExp`).
 
@@ -186,15 +170,11 @@ This option is useful for excluding a transform like `@babel/plugin-transform-re
 
 
 
-::::babel8
-
 :::danger
 
 This option has been removed in Babel 8. To inject polyfills, you can use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md) directly.
 
 :::
-
-::::
 
 #### `useBuiltIns: 'entry'`
 
@@ -304,13 +284,9 @@ Added in: `v7.4.0`
 
 
 
-:::babel8
-
 `string` or `{ version: string, proposals: boolean }`, defaults to `"3.0"`. The `version` string can be any supported `core-js` versions with a minor version. For example, `"3.33"`.
 
 This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the polyfills supported by your `core-js` version.
-
-:::
 
 By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill proposals, you have three different options:
 

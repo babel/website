@@ -68,9 +68,7 @@ With options (and their defaults):
 }
 ```
 
-:::babel8
 The plugin assumes that all polyfillable APIs will be provided by the user. See [babel-polyfills](https://github.com/babel/babel-polyfills) for more information.
-:::
 
 
 
@@ -107,29 +105,21 @@ You can read more about configuring plugin options [here](./plugins.md#plugin-op
 
 
 
-::::babel8
-
 :::danger
 
 This option has been removed in Babel 8. To inject polyfills, you can use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md) directly.
 
 :::
 
-::::
-
 ### `helpers`
 
 
-
-::::babel8
 
 :::danger
 
 The `helpers` option has been removed in Babel 8, as this plugin will only be used to inject helpers (including `regeneratorRuntime`, which will be handled as any other Babel helper).
 
 :::
-
-::::
 
 ### `moduleName`
 
@@ -158,8 +148,6 @@ This option controls which package of helpers `@babel/plugin-transform-runtime` 
 
 
 
-::::babel8
-
 By default transform-runtime assumes that `@babel/runtime@8.0.0` is installed. If you have later versions of
 `@babel/runtime` (or their corejs counterparts e.g. `@babel/runtime-corejs3`) installed or listed as a dependency, transform-runtime can use more advanced features.
 
@@ -175,8 +163,6 @@ For example if you depend on `@babel/runtime@^8.1.0` you can transpile your code
   ]
 }
 ```
-
-::::
 
 which results in a smaller bundle size.
 
@@ -233,14 +219,10 @@ var Person = function Person() {
 
 ## Removed options
 
-:::babel8
-
 The following options were removed in Babel 8.0.0:
 - `corejs`
 - `helpers`
 - `regenerator`
-
-:::
 
 The following options were removed in Babel 7.0.0:
 - `useBuiltIns`

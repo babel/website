@@ -65,8 +65,6 @@ Without options:
 
 With options:
 
-:::babel8
-
 ```json title="babel.config.json"
 {
   "plugins": [
@@ -81,8 +79,6 @@ With options:
   ]
 }
 ```
-
-:::
 
 
 
@@ -102,8 +98,6 @@ require("@babel/core").transformSync("code", {
 
 ## Options
 
-:::babel8
-
 #### `sourceSelf`
 
 `boolean`, defaults to `false`.
@@ -111,7 +105,5 @@ require("@babel/core").transformSync("code", {
 When `true`, the plugin generates `__source` and `__self` arguments in `jsxDEV` calls. These were used by older versions of React for development warnings but have been removed since React 19.2.
 
 Set this to `true` if you are using a React version older than 19.2 or a custom JSX runtime that depends on these arguments.
-
-:::
 
 It accepts the same options as [`@babel/plugin-transform-react-jsx`](./plugin-transform-react-jsx.md#options).

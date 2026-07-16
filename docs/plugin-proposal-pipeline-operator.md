@@ -18,14 +18,10 @@ Its value is `"hack"` by default.
 
 
 
-:::babel8
-
 | Value | Proposal |
 | ----- | -------- |
 | `"hack"` | [Hack-style pipes](https://github.com/tc39/proposal-pipeline-operator) |
 | `"fsharp"` | [F#-style pipes with `await`](https://github.com/valtech-nyc/proposal-fsharp-pipelines) |
-
-:::
 
 If `"proposal"` is omitted, or if `"proposal": "hack"` is used, then a `"topicToken"` option must be included. The `topicToken` must be one of `"%"`, `"^^"`, `"@@"`, `"^"`, or `"#"`.
 
