@@ -366,31 +366,7 @@ If a minor version is not specified, Babel will interpret it as `MAJOR.0`. For e
 
 #### No targets
 
-::::babel7
 
-When no targets are specified: Babel will assume you are targeting the oldest browsers possible. For example, `@babel/preset-env` will transform all ES2015-ES2020 code to be ES5 compatible.
-
-:::tip
-We recommend setting `targets` to reduce the output code size.
-:::
-
-```json title="babel.config.json"
-{
-  "presets": ["@babel/preset-env"]
-}
-```
-
-Because of this, Babel's behavior is different than [browserslist](https://github.com/browserslist/browserslist#queries): it does _not_ use the `defaults` query when there are no targets are found in your Babel _or_ browserslist config(s). If you want to use the `defaults` query, you will need to explicitly pass it as a target:
-
-```json title="babel.config.json"
-{
-  "targets": "defaults"
-}
-```
-
-We recognize this isn’t ideal and will be revisiting this in Babel v8.
-
-::::
 
 :::babel8
 
@@ -422,9 +398,7 @@ You may also target browsers supporting [ES Modules](https://www.ecma-internatio
 }
 ```
 
-:::babel7
-When `esmodules` option is `true`, it will override the `browsers` target or `browserslist`'s targets.
-:::
+
 
 :::babel8
 `esmodules: true` is an alias of `esmodules: "intersect"`.

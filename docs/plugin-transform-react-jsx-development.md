@@ -84,24 +84,7 @@ With options:
 
 :::
 
-:::babel7
 
-```json title="babel.config.json"
-{
-  "plugins": [
-    [
-      "@babel/plugin-transform-react-jsx-development",
-      {
-        "throwIfNamespace": false, // defaults to true
-        "runtime": "automatic", // defaults to classic
-        "importSource": "custom-jsx-library" // defaults to react
-      }
-    ]
-  ]
-}
-```
-
-:::
 
 ### Via CLI
 

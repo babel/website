@@ -15,14 +15,7 @@ npm install --save-dev @babel/compat-data
 
 ### plugins
 
-:::babel7
 
-```javascript title="my-babel-plugin.js"
-import _plugins from "@babel/compat-data/plugins";
-const pluginsCompatData = _plugins.default;
-```
-
-:::
 :::babel8
 
 ```javascript title="my-babel-plugin.js"

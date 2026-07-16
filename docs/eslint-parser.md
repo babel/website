@@ -129,11 +129,7 @@ Additional configuration options can be set in your ESLint configuration under t
 - `ecmaFeatures.globalReturn` (default `false`) allow return statements in the global scope when used with `sourceType: "script"`. This option will be deprecated, please use `sourceType: "commonjs"` instead.
 - `babelOptions` is an object containing Babel configuration [options](./options.md) that are passed to Babel's parser at runtime. For cases where users might not want to use a Babel configuration file or are running Babel through another tool (such as Webpack with `babel-loader`).
 
-:::babel7
 
-- `allowImportExportEverywhere` (default `false`) can be set to `true` to allow import and export declarations to appear anywhere a statement is allowed if your build environment supports that. Otherwise import and export declarations can only appear at a program's top level.
-
-:::
 
 #### customize Babel config path
 
@@ -183,55 +179,7 @@ Additional configuration options can be set in your ESLint configuration under t
   </TabItem>
   </Tabs>
 
-:::babel7
 
-#### use `babel.config.mjs` configuration
-
-  If your Babel config does not contain top-level await, you should be able to use the `.mjs` config directly on Node.js 22.12 or above. Otherwise, you can use the experimental worker implementation. Note that the implementation is still experimental, please report if you find any issue.
-  <Tabs groupId="eslint-configs">
-  <TabItem value="eslint.config.js" label="eslint.config.js" default>
-
-  ```js
-  import babelParserExperimentalWorker from "@babel/eslint-parser/experimental-worker";
-  import { defineConfig } from "eslint/config";
-
-  export default defineConfig([
-    {
-      files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
-      languageOptions: {
-        parser: babelParserExperimentalWorker,
-        parserOptions: {
-          requireConfigFile: false,
-          babelOptions: {
-            babelrc: false,
-            configFile: "path/to/babel.config.mjs",
-          },
-        },
-      },
-    },
-  ]);
-  ```
-
-  </TabItem>
-  <TabItem value=".eslintrc.js" label=".eslintrc.js">
-
-  ```js
-  module.exports = {
-    parser: "@babel/eslint-parser/experimental-worker",
-    parserOptions: {
-      requireConfigFile: false,
-      babelOptions: {
-        babelrc: false,
-        configFile: "path/to/babel.config.mjs",
-      },
-    },
-  };
-  ```
-
-  </TabItem>
-  </Tabs>
-
-:::
 
 #### use glob-based configuration
 

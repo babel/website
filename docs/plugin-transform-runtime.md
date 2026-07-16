@@ -5,13 +5,7 @@ title: "@babel/plugin-transform-runtime"
 
 A plugin that enables the re-use of Babel's injected helper code to save on codesize.
 
-::::babel7
 
-:::note
-Instance methods such as `"foobar".includes("foo")` will only work with `core-js@3`. If you need to polyfill them, you can directly import `"core-js"` or use `@babel/preset-env`'s `useBuiltIns` option.
-:::
-
-::::
 
 ## Installation
 
@@ -39,13 +33,7 @@ Babel uses very small helpers for common functions such as `_extend`. By default
 
 This is where the `@babel/plugin-transform-runtime` plugin comes in: all of the helpers will reference the module `@babel/runtime` to avoid duplication across your compiled output. The runtime will be compiled into your build.
 
-::::babel7
 
-Another purpose of this transformer is to create a sandboxed environment for your code. If you directly import [core-js](https://github.com/zloirock/core-js) or [@babel/polyfill](polyfill.md) and the built-ins it provides such as `Promise`, `Set` and `Map`, those will pollute the global scope. While this might be ok for an app or a command line tool, it becomes a problem if your code is a library which you intend to publish for others to use or if you can't exactly control the environment in which your code will run.
-
-The transformer will alias these built-ins to `core-js` so you can use them seamlessly without having to require the polyfill.
-
-::::
 
 See the [technical details](#technical-details) section for more information on how this works and the types of transformations that occur.
 
@@ -84,9 +72,7 @@ With options (and their defaults):
 The plugin assumes that all polyfillable APIs will be provided by the user. See [babel-polyfills](https://github.com/babel/babel-polyfills) for more information.
 :::
 
-:::babel7
-The plugin defaults to assuming that all polyfillable APIs will be provided by the user. Otherwise the [`corejs`](#corejs) option needs to be specified.
-:::
+
 
 ### Via CLI
 
@@ -119,35 +105,7 @@ You can read more about configuring plugin options [here](./plugins.md#plugin-op
 
 ### `corejs`
 
-:::babel7
 
-`false`, `2`, `3` or `{ version: 2 | 3, proposals: boolean }`, defaults to `false`.
-
-e.g. `['@babel/plugin-transform-runtime', { corejs: 3 }],`
-
-
-<details>
-  <summary>History</summary>
-
-| Version | Changes |
-| --- | --- |
-| `v7.4.0` | Supports `{ proposals: boolean }` |
-</details>
-
-Specifying a number will rewrite the helpers that need polyfillable APIs to reference helpers from that (major) version of `core-js` instead
-Please note that `corejs: 2` only supports global variables (e.g. `Promise`) and static properties (e.g. `Array.from`), while `corejs: 3` also supports instance properties (e.g. `[].includes`).
-
-By default, `@babel/plugin-transform-runtime` doesn't polyfill proposals. If you are using `corejs: 3`, you can opt into this by enabling using the `proposals: true` option.
-
-This option requires changing the dependency used to provide the necessary runtime helpers:
-
-| `corejs` option | Install command                             |
-| --------------- | ------------------------------------------- |
-| `false`         | `npm install --save @babel/runtime`         |
-| `2`             | `npm install --save @babel/runtime-corejs2` |
-| `3`             | `npm install --save @babel/runtime-corejs3` |
-
-:::
 
 ::::babel8
 
@@ -161,21 +119,7 @@ This option has been removed in Babel 8. To inject polyfills, you can use [`babe
 
 ### `helpers`
 
-::::babel7
 
-`boolean`, defaults to `true`.
-
-Toggles whether or not inlined Babel helpers (`classCallCheck`, `extends`, etc.) are replaced with calls to `@babel/runtime` (or equivalent package).
-
-For more information, see [Helper aliasing](#helper-aliasing).
-
-:::caution
-
-The `helpers` option will be removed in Babel 8, as this plugin will only be used to inject helpers (including `regeneratorRuntime`, which will be handled as any other Babel helper).
-
-:::
-
-::::
 
 ::::babel8
 
@@ -206,90 +150,13 @@ This option controls which package of helpers `@babel/plugin-transform-runtime` 
   - `babel-plugin-polyfill-corejs2` suggests `@babel/runtime-corejs2`
 - Fallback to `@babel/runtime`
 
-:::babel7
 
-Note that specifying the [`corejs`](#corejs) option will internally enable the corresponding `babel-plugin-polyfill-corejs*` plugin, thus it has an effect on the final module name.
 
-:::
 
-::::babel7
-
-### `regenerator`
-
-`boolean`, defaults to `true`.
-
-In older Babel version, this option used to toggles whether or not generator functions were transformed to use a regenerator runtime that does not pollute the global scope.
-
-For more information, see [Regenerator aliasing](#regenerator-aliasing).
-
-:::caution
-The `regenerator` option will be removed in Babel 8, as it will not be necessary anymore.
-:::
-
-### `useESModules`
-
-`boolean`, defaults to `false`.
-
-<details>
-  <summary>History</summary>
-
-| Version | Changes |
-| --- | --- |
-| `v7.13.0` | This option has been deprecated |
-</details>
-
-When enabled, the transform will use helpers that do not get run through
-`@babel/plugin-transform-modules-commonjs`. This allows for smaller builds in module
-systems like webpack, since it doesn't need to preserve commonjs semantics.
-
-For example, here is the `classCallCheck` helper with `useESModules` disabled:
-
-```js title="JavaScript"
-exports.__esModule = true;
-
-exports.default = function(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-};
-```
-
-And, with it enabled:
-
-```js title="JavaScript"
-export default function(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-```
-
-:::caution
-The `useESModules` option has been deprecated and will be removed in Babel 8: starting from version `7.13.0`, `@babel/runtime`'s `package.json` uses `"exports"` option to automatically choose between CJS and ESM helpers.
-:::
-
-::::
 
 ### `version`
 
-::::babel7
 
-By default transform-runtime assumes that `@babel/runtime@7.0.0` is installed. If you have later versions of
-`@babel/runtime` (or their corejs counterparts e.g. `@babel/runtime-corejs3`) installed or listed as a dependency, transform-runtime can use more advanced features.
-
-For example if you depend on `@babel/runtime@^7.24.0` you can transpile your code with
-
-```json title="babel.config.json"
-{
-  "plugins": [
-    ["@babel/plugin-transform-runtime", {
-      "version": "^7.24.0"
-    }]
-  ]
-}
-```
-
-::::
 
 ::::babel8
 
@@ -315,129 +182,7 @@ which results in a smaller bundle size.
 
 ## Technical details
 
-::::babel7
 
-The `transform-runtime` transformer plugin does three things:
-
-- Automatically requires `@babel/runtime/regenerator` when you use generators/async functions (toggleable with the `regenerator` option).
-- Can use `core-js` for helpers if necessary instead of assuming it will be polyfilled by the user (toggleable with the `corejs` option)
-- Automatically removes the inline Babel helpers and uses the module `@babel/runtime/helpers` instead (toggleable with the `helpers` option).
-
-What does this actually mean though? Basically, you can use built-ins such as `Promise`, `Set`, `Symbol`, etc., as well use all the Babel features that require a polyfill seamlessly, without global pollution, making it extremely suitable for libraries.
-
-Make sure you include `@babel/runtime` as a dependency.
-
-### Regenerator aliasing
-
-Whenever you use a generator function or async function:
-
-```js title="JavaScript"
-function* foo() {}
-```
-
-the following is generated:
-
-```js title="JavaScript"
-"use strict";
-
-var _marked = [foo].map(regeneratorRuntime.mark);
-
-function foo() {
-  return regeneratorRuntime.wrap(
-    function foo$(_context) {
-      while (1) {
-        switch ((_context.prev = _context.next)) {
-          case 0:
-          case "end":
-            return _context.stop();
-        }
-      }
-    },
-    _marked[0],
-    this
-  );
-}
-```
-
-This isn't ideal since it relies on the regenerator runtime being included, which
-pollutes the global scope.
-
-With the `runtime` transformer, however, it is compiled to:
-
-```js title="JavaScript"
-"use strict";
-
-var _regenerator = require("@babel/runtime/regenerator");
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-var _marked = [foo].map(_regenerator2.default.mark);
-
-function foo() {
-  return _regenerator2.default.wrap(
-    function foo$(_context) {
-      while (1) {
-        switch ((_context.prev = _context.next)) {
-          case 0:
-          case "end":
-            return _context.stop();
-        }
-      }
-    },
-    _marked[0],
-    this
-  );
-}
-```
-
-This means that you can use the regenerator runtime without polluting your current environment.
-
-### `core-js` aliasing
-
-Sometimes you may want to use new built-ins such as `Map`, `Set`, `Promise` etc. Your only way
-to use these is usually to include a globally polluting polyfill.
-
-This is with the `corejs` option.
-
-The plugin transforms the following:
-
-```js title="JavaScript"
-var sym = Symbol();
-
-var promise = Promise.resolve();
-
-var check = arr.includes("yeah!");
-
-console.log(arr[Symbol.iterator]());
-```
-
-into the following:
-
-```js title="JavaScript"
-import _getIterator from "@babel/runtime-corejs3/core-js/get-iterator";
-import _includesInstanceProperty from "@babel/runtime-corejs3/core-js-stable/instance/includes";
-import _Promise from "@babel/runtime-corejs3/core-js-stable/promise";
-import _Symbol from "@babel/runtime-corejs3/core-js-stable/symbol";
-
-var sym = _Symbol();
-
-var promise = _Promise.resolve();
-
-var check = _includesInstanceProperty(arr).call(arr, "yeah!");
-
-console.log(_getIterator(arr));
-```
-
-This means is that you can seamlessly use these native built-ins and methods
-without worrying about where they come from.
-
-**NOTE:** Instance methods such as `"foobar".includes("foo")` will only work when using `corejs: 3`.
-
-::::
 
 ### Helper aliasing
 

@@ -13,18 +13,7 @@ This plugin is included in `@babel/preset-env`, in [ES2025](https://github.com/t
 
 This plugin only enables Babel to parse and generate this syntax. Babel does not support transforming this syntax.
 
-::::babel7
 
-While Babel supports parsing import attributes by default since v7.25.0, this plugin is still needed to let Babel choose the correct syntax when emitting code. As an alternative to this plugin, you can use `@babel/generator`'s [`importAttributesKeyword`](./generator.md#options) option:
-```json
-{
-  "generatorOpts": {
-    "importAttributesKeyword": "with"
-  },
-}
-```
-
-::::
 
 :::
 

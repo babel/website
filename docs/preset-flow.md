@@ -95,13 +95,7 @@ class A {
 
 ### `ignoreExtensions`
 
-:::babel7
 
-`boolean`, defaults to `true`
-
-Added in: `v7.24.0`
-
-:::
 
 :::babel8
 

@@ -85,15 +85,7 @@ Added in: `v7.29.0`
 
 Use the `data-targets` attribute to specify the [compilation targets](./options.md#targets) of the project.
 
-:::babel7
 
-By default Babel will transpile all features down to ES3 supported by IE 8 and other legacy browsers. You can specify the [browserslist](https://github.com/browserslist/browserslist#queries) [`defaults`](https://browsersl.ist/#q=defaults) query, which covers most modern browsers. This will be the Babel 8 default target.
-
-```html
-<script type="text/babel" data-presets="env" data-targets="defaults">
-```
-
-:::
 
 :::babel8
 

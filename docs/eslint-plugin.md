@@ -51,68 +51,7 @@ export default defineConfig([
 
 :::
 
-:::babel7
 
-<Tabs groupId="eslint-configs">
-<TabItem value="eslint.config.js" label="eslint.config.js" default>
-
-```js
-import babelParser from "@babel/eslint-parser";
-import babelPlugin from "@babel/eslint-plugin";
-import { defineConfig } from "eslint/config";
-
-export default defineConfig([
-  {
-    files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
-    languageOptions: {
-      parser: babelParser,
-    },
-    plugins: {
-      babel: babelPlugin
-    },
-    rules: {
-      "new-cap": "off",
-      "no-undef": "off",
-      "no-unused-expressions": "off",
-      "object-curly-spacing": "off",
-
-      "babel/new-cap": "error",
-      "babel/no-undef": "error",
-      "babel/no-unused-expressions": "error",
-      "babel/object-curly-spacing": "error"
-    }
-  },
-]);
-```
-
-</TabItem>
-<TabItem value=".eslintrc.json" label=".eslintrc.json">
-
-```json
-{
-  "plugins": ["@babel"],
-  "rules": {
-    "new-cap": "off",
-    "no-invalid-this": "off",
-    "no-undef": "off",
-    "no-unused-expressions": "off",
-    "object-curly-spacing": "off",
-    "semi": "off",
-
-    "@babel/new-cap": "error",
-    "@babel/no-invalid-this": "error",
-    "@babel/no-undef": "error",
-    "@babel/no-unused-expressions": "error",
-    "@babel/object-curly-spacing": "error",
-    "@babel/semi": "error"
-  }
-}
-```
-
-</TabItem>
-</Tabs>
-
-:::
 
 ## Rules
 
@@ -128,20 +67,7 @@ Each rule corresponds to a core `eslint` rule and has the same options.
 
 :::
 
-::::babel7
 
-:::tip
-On ESLint 8 or above, you can switch to the builtin rules `no-invalid-this` and `semi`.
-:::
-
-- `@babel/new-cap`: handles decorators (`@Decorator`)
-- `@babel/no-undef`: handles class accessor properties (`class A { accessor x = 2 }`)
-- `@babel/no-unused-expressions`: handles `do` expressions
-- `@babel/object-curly-spacing`: handles export default declaration `export x from "mod";` (🛠)
-- `@babel/no-invalid-this`: handles class fields and private class methods (`class A { a = this.b; }`).
-- `@babel/semi`: Handles class properties (🛠).
-
-::::
 
 ## TypeScript
 
