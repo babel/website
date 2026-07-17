@@ -20,7 +20,7 @@ npm install @babel/eslint-plugin --save-dev
 
 `@babel/eslint-plugin` has two predefined configurations:
 
-- `recommended`: Enables all companion rules when the reimplemented built-in rules are in the [`js/recommended` predefined configurations](https://eslint.org/docs/latest/use/configure/configuration-files#use-predefined-configurations).
+- `recommended`: Enables all companion rules when the reimplemented built-in rules are in the [`js/recommended` predefined configuration](https://eslint.org/docs/latest/use/configure/configuration-files#use-predefined-configurations).
 
 - `all`: Enables all companion rules.
 
