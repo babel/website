@@ -82,29 +82,9 @@ For usage, refer to the [`targets` option](options.md#targets) documentation.
 
 ### `bugfixes`
 
-::::babel7
 
-`boolean`, defaults to `false`.
-
-Added in: `v7.9.0`
-
-:::note
-This option will be always enabled and thus removed in Babel 8.
-:::
-
-By default, `@babel/preset-env` (and Babel plugins in general) grouped ECMAScript syntax features into collections of closely related smaller features. These groups can be large and include a lot of edge cases, for example "function arguments" includes destructured, default and rest parameters. From this grouping information, Babel enables or disables each group based on the browser support target you specify to `@babel/preset-env`’s `targets` option.
-
-When this option is enabled, `@babel/preset-env` tries to compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers. Depending on your `targets` and on how many modern syntax you are using, this can lead to a significant size reduction in the compiled app. This option merges the features of [`@babel/preset-modules`](https://github.com/babel/preset-modules) without having to use another preset.
-
-::::
-
-:::babel8
 
 This option has been removed in Babel 8. `@babel/preset-env` will always compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers.
-
-:::
-
-::::babel8
 
 ### `loose`, `spec`
 
@@ -112,31 +92,7 @@ This option has been removed in Babel 8. `@babel/preset-env` will always compile
 These options have been removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.md), available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
 :::
 
-::::
 
-::::babel7
-
-### `spec`
-
-`boolean`, defaults to `false`.
-
-Enable more spec compliant, but potentially slower, transformations for any plugins in this preset that support them.
-
-:::caution
-This option has been deprecated and will be removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.md) available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
-:::
-
-### `loose`
-
-`boolean`, defaults to `false`.
-
-Enable ["loose" transformations](http://2ality.com/2015/12/babel6-loose-mode.html) for any plugins in this preset that allow them.
-
-:::caution
-This option has been deprecated and will be removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.md) available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
-:::
-
-::::
 
 ### `modules`
 
@@ -150,11 +106,7 @@ Setting this to `false` will preserve ES modules. Use this only if you intend to
 
 By default `@babel/preset-env` uses [`caller`](options.md#caller) data to determine whether ES modules and module features (e.g. `import()`) should be transformed. Generally `caller` data will be specified in the bundler plugins (e.g. `babel-loader`, `@rollup/plugin-babel`) and thus it is not recommended to pass `caller` data yourself -- The passed `caller` may overwrite the one from bundler plugins and in the future you may get suboptimal results if bundlers supports new module features.
 
-:::babel8
-
 Unless the caller specifies otherwise, Babel will assume that it does support ES modules syntax including `import`, `import()` and `import * as ns`.
-
-:::
 
 ### `debug`
 
@@ -178,26 +130,13 @@ An array of plugins to always include.
 
 Valid options include any:
 
-:::babel7
 
-- [Babel plugins](https://github.com/babel/babel/blob/main/packages/babel-preset-env/src/available-plugins.ts) - both full and shorthand names are supported, for example the following are functionally equivalent:
-  * `@babel/plugin-transform-spread`
-  * `@babel/transform-spread`
-  * `babel-transform-spread`
-  * `transform-spread`
-- Built-ins (both for [core-js@3](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs3/built-in-definitions.js) and [core-js@2](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs2/built-in-definitions.js), such as `es.map`, `es.set`, or `es.object.assign`.
-
-:::
-
-:::babel8
 
 - [Babel plugins](https://github.com/babel/babel/blob/main/packages/babel-preset-env/src/available-plugins.ts) - both full and shorthand names are supported, for example the following are functionally equivalent:
   * `@babel/plugin-transform-optional-chaining`
   * `@babel/transform-optional-chaining`
   * `transform-optional-chaining`
 - [core-js@3](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs3/built-in-definitions.js) polyfills, such as `es.map`, `es.set`, or `es.object.assign`.
-
-:::
 
 Plugin names can be fully or partially specified (or using `RegExp`).
 
@@ -229,35 +168,13 @@ This option is useful for excluding a transform like `@babel/plugin-transform-re
 
 ### `useBuiltIns`, `corejs`
 
-:::babel7
 
-`"usage"` | `"entry"` | `false`, defaults to `false`.
-
-This option configures how `@babel/preset-env` handles polyfills.
-
-When either the `usage` or `entry` options are used, `@babel/preset-env` will add direct references to `core-js` modules as bare imports (or requires). This means `core-js` will be resolved relative to the file itself and needs to be accessible.
-
-Since `@babel/polyfill` was deprecated in 7.4.0, we recommend directly adding `core-js` and setting the version via the [`corejs`](#corejs) option.
-
-```shell npm2yarn
-npm install core-js@3 --save
-
-# or
-
-npm install core-js@2 --save
-```
-
-:::
-
-::::babel8
 
 :::danger
 
 This option has been removed in Babel 8. To inject polyfills, you can use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md) directly.
 
 :::
-
-::::
 
 #### `useBuiltIns: 'entry'`
 
@@ -273,9 +190,7 @@ This option has been removed in Babel 8. To inject polyfills, you can use [`babe
 ::::tip
 Only use `import "core-js";` once in your whole app.
 
-:::babel7
-If you are using `@babel/polyfill`, it already includes `core-js`: importing it twice will throw an error.
-:::
+
 
 Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
 We recommend creating a single entry file that only contains the `import` statements.
@@ -321,14 +236,7 @@ import "core-js/modules/esnext.math.scale";
 
 You can read [core-js](https://github.com/zloirock/core-js)'s documentation for more information about the different entry points.
 
-::::babel7
 
-:::note
-When using `core-js@2` (either explicitly using the [`corejs: "2"`](#corejs) option or implicitly), `@babel/preset-env` will also transform imports and requires of `@babel/polyfill`.
-This behavior is deprecated because it isn't possible to use `@babel/polyfill` with different `core-js` versions.
-:::
-
-::::
 
 #### `useBuiltIns: 'usage'`
 
@@ -374,21 +282,11 @@ Don't add polyfills automatically per file, and don't transform `import "core-js
 
 Added in: `v7.4.0`
 
-:::babel7
 
-`string` or `{ version: string, proposals: boolean }`, defaults to `"2.0"`. The `version` string can be any supported `core-js` versions. For example, `"3.33"` or `"2.0"`.
-
-This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the polyfills supported by your `core-js` version. It is recommended to specify the minor version otherwise `"3"` will be interpreted as `"3.0"` which may not include polyfills for the latest features.
-
-:::
-
-:::babel8
 
 `string` or `{ version: string, proposals: boolean }`, defaults to `"3.0"`. The `version` string can be any supported `core-js` versions with a minor version. For example, `"3.33"`.
 
 This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the polyfills supported by your `core-js` version.
-
-:::
 
 By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill proposals, you have three different options:
 

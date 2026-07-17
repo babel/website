@@ -140,21 +140,9 @@ Babel can be configured using any file extension natively supported by Node.js, 
   file contains the [`"type": "module"`](https://nodejs.org/api/esm.html#esm_code_package_json_code_code_type_code_field)
   option, otherwise they are exactly the same as the `.cjs` files.
 
-::::babel7
 
-In Node.js with [native TypeScript support](https://nodejs.org/learn/typescript/run-natively), Babel also supports TypeScript config files, using `.ts`/`.mts`/`.cts` extensions in place of `.js`/`.mjs`/`.cjs`.
-
-:::note
-🚧 In older Node.js versions, if `@babel/preset-typescript` is installed or if you are running through `ts-node`, Babel will still be able to load `.cts` config files. `.mts` and `.ts` files are not supported under this setup.
-:::
-
-::::
-
-:::babel8
 
 Babel also supports TypeScript config files, using `.ts`/`.mts`/`.cts` extensions in place of `.js`/`.mjs`/`.cjs`.
-
-:::
 
 JavaScript configuration files can either export an object, or a function that when called will
 return the generated configuration.
@@ -318,17 +306,7 @@ along with the original repo root.
 
 JS config files may export a function that gets the config API as a parameter:
 
-:::babel7
 
-```js title="babel.config.js"
-module.exports = function(api) {
-  return {};
-};
-```
-
-:::
-
-:::babel8
 
 ```js title="babel.config.js"
 /**
@@ -339,8 +317,6 @@ module.exports = function(api) {
   return {};
 };
 ```
-
-:::
 
 The ConfigAPI object `api` provides the following properties or methods:
 

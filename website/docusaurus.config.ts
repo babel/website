@@ -92,30 +92,30 @@ toolsMD.forEach((tool) => {
 });
 
 /**
- * A remark plugin that renders markdown contents within `:::babel8` and the nearest matching `:::` based on the
- * BABEL_8_BREAKING option. When `BABEL_8_BREAKING` is `true`, contents within `:::babel7` and `:::` will be removed,
- * otherwise everything within `:::babel8` and `:::` is removed.
+ * A remark plugin that renders markdown contents within `:::babel9` and the nearest matching `:::` based on the
+ * BABEL_9_BREAKING option. When `BABEL_9_BREAKING` is `true`, contents within `:::babel8` and `:::` will be removed,
+ * otherwise everything within `:::babel9` and `:::` is removed.
  *
- * Limit: there must be an empty line before and after `:::babel[78]` and `:::`.
+ * Limit: there must be an empty line before and after `:::babel[89]` and `:::`.
  *
- * With this plugin we can maintain both Babel 7 and Babel 8 docs in the same branch.
- * @param {{BABEL_8_BREAKING: boolean}} options
+ * With this plugin we can maintain both Babel 8 and Babel 9 docs in the same branch.
+ * @param {{renderBabel9: boolean}} options
  * @returns md-ast transformer
  */
-function remarkDirectiveBabel8Plugin({ renderBabel8 }) {
+function remarkDirectiveBabel9Plugin({ renderBabel9 }) {
   return function transformer(root) {
     const children = root.children;
     for (let index = children.length - 1; index >= 0; index--) {
       const node = children[index];
       if (node.type === "containerDirective") {
         const directiveLabel = node.name;
-        if (directiveLabel === "babel8" || directiveLabel === "babel7") {
+        if (directiveLabel === "babel9" || directiveLabel === "babel8") {
           // @ts-expect-error expected
-          if ((directiveLabel === "babel8") ^ renderBabel8) {
-            // remove anything between ":::babel[78]" and ":::"
+          if ((directiveLabel === "babel9") ^ renderBabel9) {
+            // remove anything between ":::babel[89]" and ":::"
             children.splice(index, 1);
           } else {
-            // remove the :::babel[78] container only
+            // remove the :::babel[89] container only
             children.splice(index, 1, ...node.children);
           }
         } else {
@@ -192,8 +192,8 @@ const siteConfig: Config = {
 
           beforeDefaultRemarkPlugins: [
             [
-              remarkDirectiveBabel8Plugin,
-              { renderBabel8: bool(process.env.BABEL_8_BREAKING) },
+              remarkDirectiveBabel9Plugin,
+              { renderBabel9: bool(process.env.BABEL_9_BREAKING) },
             ],
           ],
           remarkPlugins: [

@@ -1,7 +1,3 @@
-function bool(value) {
-  return value && value !== "false" && value !== "0";
-}
-
 module.exports = {
   docs: [
     {
@@ -12,9 +8,8 @@ module.exports = {
         "usage",
         "configuration",
         "learn",
-        ...(bool(process.env.BABEL_8_BREAKING)
-          ? ["v8-migration", "v8-migration-api"]
-          : ["v7-migration"]),
+        "v8-migration",
+        "v8-migration-api",
       ],
     },
     {

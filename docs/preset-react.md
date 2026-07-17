@@ -35,8 +35,6 @@ Without options:
 
 With options:
 
-:::babel8
-
 ```json title="babel.config.json"
 {
   "presets": [
@@ -54,28 +52,7 @@ With options:
 }
 ```
 
-:::
 
-:::babel7
-
-```json title="babel.config.json"
-{
-  "presets": [
-    [
-      "@babel/preset-react",
-      {
-        "pragma": "dom", // default pragma is React.createElement (only in classic runtime)
-        "pragmaFrag": "DomFrag", // default is React.Fragment (only in classic runtime)
-        "throwIfNamespace": false, // defaults to true
-        "runtime": "classic" // defaults to classic
-        // "importSource": "custom-jsx-library" // defaults to react (only in automatic runtime)
-      }
-    ]
-  ]
-}
-```
-
-:::
 
 ### Via CLI
 
@@ -97,25 +74,13 @@ require("@babel/core").transformSync("code", {
 
 #### `runtime`
 
-:::babel8
-
 `classic | automatic`, defaults to `automatic`
 
-:::
 
-:::babel7
-
-`classic | automatic`, defaults to `classic`
-
-:::
 
 Added in: `v7.9.0`
 
-:::babel7
 
-> Note: The default runtime will be switched to `automatic` in Babel 8.
-
-:::
 
 Decides which runtime to use.
 
@@ -123,23 +88,13 @@ Decides which runtime to use.
 
 #### `development`
 
-:::babel7
 
-`boolean`, defaults to `false`.
-
-:::
-
-:::babel8
 
 `boolean`, defaults to `true` if Babel's [`envName`](./options.md#envname) id `"development"`, and `false` otherwise.
-
-:::
 
 This toggles behavior specific to development, such as adding `__source` and `__self`.
 
 This is useful when combined with the [env option](options.md#env) configuration or [js config files](config-files.md#supported-file-extensions).
-
-:::babel8
 
 #### `developmentSourceSelf`
 
@@ -148,8 +103,6 @@ This is useful when combined with the [env option](options.md#env) configuration
 When `true`, the plugin generates `__source` and `__self` arguments in `jsxDEV` calls. These were used by older versions of React for development warnings but have been removed since React 19.2.
 
 Set this to `true` if you are using a React version older than 19.2 or a custom JSX runtime that depends on these arguments.
-
-:::
 
 #### `throwIfNamespace`
 
@@ -191,31 +144,7 @@ Replace the function used when compiling JSX expressions. It should be a qualifi
 
 Replace the component used when compiling JSX fragments. It should be a valid JSX tag name.
 
-::::babel7
 
-#### `useBuiltIns`
-
-`boolean`, defaults to `false`.
-
-:::warning
-This option will be removed in Babel 8. Set `useBuiltIns` to `true` if you are targeting to modern browsers.
-:::
-
-Will use the native built-in instead of trying to polyfill behavior for any plugins that require one.
-
-#### `useSpread`
-
-`boolean`, defaults to `false`.
-
-Added in: `v7.7.0`
-
-:::warning
-This option will be removed in Babel 8. Set `useSpread` to `true` if you are targeting to modern browsers.
-:::
-
-When spreading props, use inline object with spread elements directly instead of Babel's extend helper or `Object.assign`.
-
-::::
 
 ### babel.config.js
 
