@@ -31,6 +31,7 @@ import js from "@eslint/js";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
+  js.configs.recommended,
   {
     files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
     languageOptions: {
@@ -39,10 +40,7 @@ export default defineConfig([
     plugins: {
       babel: babelPlugin
     },
-    extends: [
-      js.configs.recommended,
-      babelPlugin.configs.recommended
-    ]
+    ...babelPlugin.configs.recommended,
   },
 ]);
 ```
@@ -74,6 +72,7 @@ import babelPlugin from "@babel/eslint-plugin";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
+  js.configs.recommended,
   {
     files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
     languageOptions: {
@@ -83,7 +82,6 @@ export default defineConfig([
       js,
       babel: babelPlugin
     },
-    extends: ["js/recommended"],
     rules: {
       // Disable built-in rules in @eslint/js
       "new-cap": "off",
