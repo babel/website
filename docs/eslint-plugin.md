@@ -63,7 +63,6 @@ Each rule corresponds to a core `eslint` rule and has the same options.
 | no-undef | handles class accessor properties (`class A { accessor x = 2 }`) | | |
 | no-unused-expressions | handles `do` expressions | | |
 
-
 ### Configure Rules
 
 Load the plugin in your ESLint config and enable all the rules you would like to use (remember to disable the built-in ones as well!).
