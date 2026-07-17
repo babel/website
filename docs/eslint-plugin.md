@@ -16,7 +16,7 @@ for use with Babel, but it can't change the built-in rules to support experiment
 npm install @babel/eslint-plugin --save-dev
 ```
 
-### Predefined configurations
+## Predefined configurations
 
 `@babel/eslint-plugin` has two predefined configurations:
 
