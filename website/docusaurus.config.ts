@@ -166,9 +166,27 @@ const siteConfig: Config = {
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: "throw",
-    }
+    },
   },
-  plugins: [docusaurusReplRoutePlugin, require("./webpack.plugin.js")],
+  plugins: [
+    docusaurusReplRoutePlugin,
+    [
+      "@docusaurus/plugin-css-cascade-layers",
+      {
+        layers: {
+          // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-css-cascade-layers#ex-config
+          "docusaurus.infima": (filePath: string) =>
+            filePath.includes("/node_modules/infima/dist"),
+          "docusaurus.theme-classic": (filePath: string) =>
+            filePath.includes("/node_modules/@docusaurus/theme-classic/lib"),
+          // Assign a custom layer to ensure they will override the default styles
+          "babel.custom": (filePath: string) =>
+            filePath.includes("/src/css") || filePath.includes("/static/css"),
+        },
+      },
+    ],
+    require("./webpack.plugin.js"),
+  ],
   presets: [
     [
       "@docusaurus/preset-classic",
