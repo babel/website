@@ -1,64 +1,66 @@
-.step-no {
-  display: block;
-  float: left;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  color: var(--ifm-color-primary-contrast-background);
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 20px;
-  background-color: var(--ifm-color-primary);
-  margin-right: 10px;
-}
+@layer babel.custom {
+  .step-no {
+    display: block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: var(--ifm-color-primary-contrast-background);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 20px;
+    background-color: var(--ifm-color-primary);
+    margin-right: 10px;
+  }
 
-.step .step-setup {
-  margin-top: var(--ifm-heading-margin-top);
-  margin-bottom: var(--ifm-heading-margin-bottom);
-}
+  .step .step-setup {
+    margin-top: var(--ifm-heading-margin-top);
+    margin-bottom: var(--ifm-heading-margin-bottom);
+  }
 
-.step .step-setup h2 {
-  font-size: 22px;
-  font-weight: bold;
-  text-align: left;
-  overflow: hidden;
-  line-height: 30px;
-  padding: 0;
-}
+  .step .step-setup h2 {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: left;
+    overflow: hidden;
+    line-height: 30px;
+    padding: 0;
+  }
 
-.step .step-setup p {
-  font-size: 14px;
-  max-width: 100%;
-}
+  .step .step-setup p {
+    font-size: 14px;
+    max-width: 100%;
+  }
 
-.step .step-hidden {
-  display: none;
-}
+  .step .step-hidden {
+    display: none;
+  }
 
-.tools-group h5 {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
+  .tools-group h5 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
 
-.tools-group .active {
-  color: var(--ifm-color-primary);
-}
+  .tools-group .active {
+    color: var(--ifm-color-primary);
+  }
 
-.step-hidden .items {
-  display: none;
-}
+  .step-hidden .items {
+    display: none;
+  }
 
-.step-hidden .items ul li  {
-  font-size: 14px;
-}
+  .step-hidden .items ul li {
+    font-size: 14px;
+  }
 
-.step-hidden .items ol {
-  list-style: decimal;
-}
+  .step-hidden .items ol {
+    list-style: decimal;
+  }
 
-.step-hidden .items ol li {
-  font-size: 14px;
+  .step-hidden .items ol li {
+    font-size: 14px;
+  }
 }

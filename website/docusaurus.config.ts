@@ -145,6 +145,7 @@ const siteConfig: Config = {
     v4: {
       fasterByDefault: true,
       removeLegacyPostBuildHeadAttribute: true,
+      useCssCascadeLayers: true,
     },
   },
   titleDelimiter: "·",
@@ -166,7 +167,7 @@ const siteConfig: Config = {
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: "throw",
-    }
+    },
   },
   plugins: [docusaurusReplRoutePlugin, require("./webpack.plugin.js")],
   presets: [

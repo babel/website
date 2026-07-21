@@ -1,140 +1,144 @@
-:root {
-  --ifm-color-primary: #9e8400;
-  --ifm-color-primary-dark: #8e7700;
-  --ifm-color-primary-darker: #867000;
-  --ifm-color-primary-darkest: #6f5c00;
-  --ifm-color-primary-light: #ae9100;
-  --ifm-color-primary-lighter: #b69800;
-  --ifm-color-primary-lightest: #cdac00;
+@layer babel.custom {
+  :root {
+    --ifm-color-primary: #9e8400;
+    --ifm-color-primary-dark: #8e7700;
+    --ifm-color-primary-darker: #867000;
+    --ifm-color-primary-darkest: #6f5c00;
+    --ifm-color-primary-light: #ae9100;
+    --ifm-color-primary-lighter: #b69800;
+    --ifm-color-primary-lightest: #cdac00;
 
-  --ifm-navbar-background-color: #323330;
-  --ifm-navbar-height: 3.25rem;
-  --ifm-navbar-padding-horizontal: 20px;
-  --ifm-navbar-padding-vertical: 0;
+    --ifm-navbar-background-color: #323330;
+    --ifm-navbar-height: 3.25rem;
+    --ifm-navbar-padding-horizontal: 20px;
+    --ifm-navbar-padding-vertical: 0;
 
-  --ifm-navbar-link-color: #fff;
-  --ifm-navbar-link-hover-color: #f5da55;
+    --ifm-navbar-link-color: #fff;
+    --ifm-navbar-link-hover-color: #f5da55;
 
-  --ifm-blockquote-border-left-width: 4px;
+    --ifm-blockquote-border-left-width: 4px;
 
-  --docusaurus-highlighted-code-line-bg: #00000018;
-}
-html[data-theme="dark"] {
-  --ifm-color-primary: #f5da55;
-  --ifm-color-primary-dark: #f3d336;
-  --ifm-color-primary-darker: #f2d026;
-  --ifm-color-primary-darkest: #dab80d;
-  --ifm-color-primary-light: #f7e174;
-  --ifm-color-primary-lighter: #f8e484;
-  --ifm-color-primary-lightest: #fbeeb2;
+    --docusaurus-highlighted-code-line-bg: #00000018;
+  }
 
-  --docusaurus-highlighted-code-line-bg: #00000040;
-}
+  html[data-theme="dark"] {
+    --ifm-color-primary: #f5da55;
+    --ifm-color-primary-dark: #f3d336;
+    --ifm-color-primary-darker: #f2d026;
+    --ifm-color-primary-darkest: #dab80d;
+    --ifm-color-primary-light: #f7e174;
+    --ifm-color-primary-lighter: #f8e484;
+    --ifm-color-primary-lightest: #fbeeb2;
 
-.headerWrapper.wrapper {
-  max-width: 1400px;
-}
+    --docusaurus-highlighted-code-line-bg: #00000040;
+  }
 
-/* ####### HEADER & FOOTER ####### */
+  .headerWrapper.wrapper {
+    max-width: 1400px;
+  }
 
-.navigationSlider .slidingNav ul li a:hover,
-.navigationSlider .slidingNav ul li.siteNavItemActive a,
-.navigationSlider .slidingNav ul li.siteNavGroupActive a {
-  color: #f5da55;
-}
+  /* ####### HEADER & FOOTER ####### */
 
-.nav-footer .sitemap a:hover,
-.nav-footer .sitemap a:focus {
-  color: #f5da55;
-}
+  .navigationSlider .slidingNav ul li a:hover,
+  .navigationSlider .slidingNav ul li.siteNavItemActive a,
+  .navigationSlider .slidingNav ul li.siteNavGroupActive a {
+    color: #f5da55;
+  }
 
-.algolia-autocomplete {
-  line-height: 20px;
-}
+  .nav-footer .sitemap a:hover,
+  .nav-footer .sitemap a:focus {
+    color: #f5da55;
+  }
 
-/* dark mode switch button */
-.navbar .clean-btn > svg:first-child {
-  color: var(--ifm-navbar-link-color);
-}
-.navbar .clean-btn > svg:first-child:hover {
-  color: var(--ifm-navbar-background-color);
-}
+  .algolia-autocomplete {
+    line-height: 20px;
+  }
 
-/* ####### BLOG ####### */
-article[itemprop="blogPost"] {
-  padding-bottom: var(--ifm-spacing-vertical);
-  border-bottom: var(--ifm-hr-height) solid var(--ifm-hr-background-color);
-}
+  /* dark mode switch button */
+  .navbar .clean-btn > svg:first-child {
+    color: var(--ifm-navbar-link-color);
+  }
 
-article[itemprop="blogPost"] header {
-  --ifm-heading-font-weight: 600;
-  --ifm-heading-line-height: 1;
-}
+  .navbar .clean-btn > svg:first-child:hover {
+    color: var(--ifm-navbar-background-color);
+  }
 
-article[itemprop="blogPost"] header .avatar__name:before {
-  content: "by ";
-  font-weight: normal;
-}
+  /* ####### BLOG ####### */
+  article[itemprop="blogPost"] {
+    padding-bottom: var(--ifm-spacing-vertical);
+    border-bottom: var(--ifm-hr-height) solid var(--ifm-hr-background-color);
+  }
 
-article[itemprop="blogPost"] header h2 a {
-  color: var(--ifm-font-color-base);
-  font-size: 2rem;
-}
+  article[itemprop="blogPost"] header {
+    --ifm-heading-font-weight: 600;
+    --ifm-heading-line-height: 1;
+  }
 
-article[itemprop="blogPost"] h3 {
-  font-size: 1.5rem;
-}
+  article[itemprop="blogPost"] header .avatar__name:before {
+    content: "by ";
+    font-weight: normal;
+  }
 
-article[itemprop="blogPost"] h4 {
-  font-size: 1.25rem;
-}
+  article[itemprop="blogPost"] header h2 a {
+    color: var(--ifm-font-color-base);
+    font-size: 2rem;
+  }
 
-.text-center {
-  text-align: center;
-}
+  article[itemprop="blogPost"] h3 {
+    font-size: 1.5rem;
+  }
 
-/* v2 custom css */
+  article[itemprop="blogPost"] h4 {
+    font-size: 1.25rem;
+  }
 
-.navbar__item svg {
-  display: none;
-}
+  .text-center {
+    text-align: center;
+  }
 
-.DocSearch-Button {
-  /* Use dark mode DocSearch variables */
-  --docsearch-search-button-color: var(--ifm-navbar-link-color);
-  --docsearch-search-button-background: rgba(0, 0, 0, 0.2);
-}
+  /* v2 custom css */
 
-span.DocSearch-Button-Keys {
-  display: none;
-}
+  .navbar__item svg {
+    display: none;
+  }
 
-.wrapper {
-  margin: 0 auto;
-  max-width: 1100px;
-  padding: 0 20px;
-}
+  .DocSearch-Button {
+    /* Use dark mode DocSearch variables */
+    --docsearch-search-button-color: var(--ifm-navbar-link-color);
+    --docsearch-search-button-background: rgba(0, 0, 0, 0.2);
+  }
 
-.mainContainer {
-  flex: 1 1 0%;
-  max-width: 100%;
-  padding: 40px 0;
-}
+  span.DocSearch-Button-Keys {
+    display: none;
+  }
 
-.navbar__item {
-  font-weight: 300;
-}
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1100px;
+    padding: 0 20px;
+  }
 
-.container.paddingTop {
-  padding-top: 80px;
-}
+  .mainContainer {
+    flex: 1 1 0%;
+    max-width: 100%;
+    padding: 40px 0;
+  }
 
-/* code blocks */
-.code-block-error-line {
-  /* https://docusaurus.io/docs/markdown-features/code-blocks#custom-magic-comments */
-  background-color: #ff000020;
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
-  border-left: 3px solid #ff000080;
+  .navbar__item {
+    font-weight: 300;
+  }
+
+  .container.paddingTop {
+    padding-top: 80px;
+  }
+
+  /* code blocks */
+  .code-block-error-line {
+    /* https://docusaurus.io/docs/markdown-features/code-blocks#custom-magic-comments */
+    background-color: #ff000020;
+    display: block;
+    margin: 0 calc(-1 * var(--ifm-pre-padding));
+    padding: 0 var(--ifm-pre-padding);
+    border-left: 3px solid #ff000080;
+  }
 }
