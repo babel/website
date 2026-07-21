@@ -1,3 +1,5 @@
-.assumption-repl > .lanugage-js {
-  display: none;
+@layer babel.custom {
+  .assumption-repl > .lanugage-js {
+    display: none;
+  }
 }
