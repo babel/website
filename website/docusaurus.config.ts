@@ -5,6 +5,7 @@ import { createRequire } from "module";
 
 import jsYaml from "js-yaml";
 import type { Config, Plugin } from "@docusaurus/types";
+import { DEFAULT_LAYERS } from "@docusaurus/plugin-css-cascade-layers/lib/options";
 
 const require = createRequire(import.meta.url);
 
@@ -166,9 +167,23 @@ const siteConfig: Config = {
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: "throw",
-    }
+    },
   },
-  plugins: [docusaurusReplRoutePlugin, require("./webpack.plugin.js")],
+  plugins: [
+    docusaurusReplRoutePlugin,
+    [
+      "@docusaurus/plugin-css-cascade-layers",
+      {
+        layers: {
+          ...DEFAULT_LAYERS,
+          // Assign a custom layer to ensure they will override the default styles
+          "babel.custom": (filePath: string) =>
+            filePath.includes("/src/css") || filePath.includes("/static/css"),
+        },
+      },
+    ],
+    require("./webpack.plugin.js"),
+  ],
   presets: [
     [
       "@docusaurus/preset-classic",
