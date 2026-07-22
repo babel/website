@@ -5,6 +5,7 @@ import { createRequire } from "module";
 
 import jsYaml from "js-yaml";
 import type { Config, Plugin } from "@docusaurus/types";
+import { DEFAULT_LAYERS } from "@docusaurus/plugin-css-cascade-layers/lib/options";
 
 const require = createRequire(import.meta.url);
 
@@ -174,11 +175,7 @@ const siteConfig: Config = {
       "@docusaurus/plugin-css-cascade-layers",
       {
         layers: {
-          // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-css-cascade-layers#ex-config
-          "docusaurus.infima": (filePath: string) =>
-            filePath.includes("/node_modules/infima/dist"),
-          "docusaurus.theme-classic": (filePath: string) =>
-            filePath.includes("/node_modules/@docusaurus/theme-classic/lib"),
+          ...DEFAULT_LAYERS,
           // Assign a custom layer to ensure they will override the default styles
           "babel.custom": (filePath: string) =>
             filePath.includes("/src/css") || filePath.includes("/static/css"),
