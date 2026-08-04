@@ -574,6 +574,10 @@ Make sure to also check the [@babel/plugin-transform-typescript](#babel-plugin-t
 
   **Migration**: The preset will also report invalid option names. Refer to the [docs](./preset-typescript.md#options) and ensure valid usage. For example, `runtime` is not a valid `preset-typescript` option and thus should be removed.
 
+- `onlyRemoveTypeImports` defaults to `true` ([#12460](https://github.com/babel/babel/pull/12460))
+
+  **Migration**: If you use TypeScript < 3.8, specify `onlyRemoveTypeImports: false`.
+
 ### `@babel/plugin-transform-typescript` {#babel-plugin-transform-typescript}
 
 ![high](https://img.shields.io/badge/risk%20of%20breakage%3F-high-red.svg)
