@@ -131,9 +131,17 @@ When it is set to `true`, Babel will provide a general TS plugin. If you want to
 
 ### `onlyRemoveTypeImports`
 
-`boolean`, defaults to `false`
+`boolean`, defaults to `true`
 
-Added in: `v7.9.0`
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.9.0` | Added `onlyRemoveTypeImports`, defaults to `false` |
+| `v8.0.0` | defaults to `true` |
+
+</details>
 
 When set to `true`, the transform will only remove [type-only imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-exports) (introduced in TypeScript 3.8). This should only be used if you are using TypeScript >= 3.8.
 

@@ -130,6 +130,10 @@ Replace the function used when compiling JSX fragment expressions. This is so th
 
 `boolean`, defaults to `false`
 
+:::caution Pending defaults change
+The default value will be `true` in Babel 9.0.
+:::
+
 Added in: `v7.9.0`
 
 When set to `true`, the transform will only remove [type-only imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-exports) (introduced in TypeScript 3.8). This should only be used if you are using TypeScript >= 3.8.
