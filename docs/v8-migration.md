@@ -576,7 +576,7 @@ Make sure to also check the [@babel/plugin-transform-typescript](#babel-plugin-t
 
 - `onlyRemoveTypeImports` defaults to `true` ([#12460](https://github.com/babel/babel/pull/12460))
 
-  **Migration**: If you use TypeScript < 3.8, specify `onlyRemoveTypeImports: false`.
+  **Migration**: If you use TypeScript < 3.8 or don't have `verbatimModuleSyntax` set to `true` in your TSConfig, specify `onlyRemoveTypeImports: false`.
 
 ### `@babel/plugin-transform-typescript` {#babel-plugin-transform-typescript}
 
