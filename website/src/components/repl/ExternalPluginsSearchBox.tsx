@@ -1,4 +1,4 @@
-import { css } from "@emotion/css";
+import style from "./ExternalPluginsSearchBox.module.css";
 import React from "react";
 import { useSearchBox } from "react-instantsearch";
 
@@ -7,25 +7,10 @@ type Props = {
   refine: (value: string) => void;
 };
 
-const style = css`
-  background: #191a1f;
-  border: 0;
-  color: #fff;
-  font-size: 1rem;
-  outline: none;
-  padding: 1rem;
-  width: 100%;
-
-  &::placeholder {
-    color: #9ea5b3;
-    opacity: 0.5;
-  }
-`;
-
 function SearchBox({ query, refine }: Props) {
   return (
     <input
-      className={style}
+      className={style.searchBox}
       onChange={(event) => refine(event.currentTarget.value)}
       placeholder="Type in a package name (ex. babel-plugin-lodash)"
       type="text"

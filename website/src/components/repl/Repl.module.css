@@ -1,0 +1,60 @@
+@import "./lib/styles.css";
+
+@custom-media --viewport-small (max-width: 600px);
+@custom-media --viewport-medium (min-width: 601px) and (max-width: 1000px);
+@custom-media --viewport-medium-and-down (max-width: 1000px);
+@custom-media --viewport-medium-and-up (min-width: 601px);
+@custom-media --viewport-large (min-width: 1001px);
+
+.codePanel {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-right: 1px solid var(--ifm-scrollbar-track-background-color);
+}
+
+.optionsColumn {
+  flex: 0 0 auto;
+}
+
+.repl {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  overflow: auto;
+  font-size: 0.875rem;
+
+  @media (--viewport-medium-and-down) {
+    flex-direction: column;
+  }
+}
+
+.wrapperPanels {
+  height: 100%;
+  width: 100%;
+  justify-content: stretch;
+  overflow: hidden;
+}
+
+.panels {
+  height: 85%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  overflow: auto;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.panelsMax {
+  height: 100% !important;
+}
+
+.sliders {
+  height: 20%;
+  margin: 0;
+}

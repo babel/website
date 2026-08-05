@@ -1,5 +1,5 @@
-import { css } from "@emotion/css";
 import * as React from "react";
+import currentStyles from "./ExternalPlugins.module.css";
 import AccordionTab from "./AccordionTab";
 import ExternalPluginsModal from "./ExternalPluginsModal";
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
@@ -139,58 +139,3 @@ export default class ExternalPlugins extends React.Component<Props, State> {
     );
   }
 }
-
-const currentStyles = {
-  modalButton: css`
-    color: #000;
-    background: #f1da6b;
-    border: 0;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 0.5rem;
-    padding: 0.5rem 0;
-  `,
-  pluginList: css`
-    font-size: 0.75rem;
-    margin: 0.5rem 0 1rem;
-
-    > li {
-      align-items: center;
-      border-left: 2px solid transparent;
-      display: flex;
-      line-height: 1.1;
-      padding: 0.25rem 0.75rem;
-      position: relative;
-      transition: all 0.25s ease-out;
-
-      &:hover {
-        border-left-color: #eeda7b;
-      }
-
-      &:not(:first-child) {
-        margin-top: 0.5rem;
-      }
-    }
-  `,
-  empty: css`
-    color: #61656e;
-    font-size: 0.875rem;
-    margin: 0.5rem 0.5rem 1rem;
-  `,
-  pluginName: css`
-    flex: 1;
-  `,
-  pluginVersion: css`
-    color: #61656e;
-  `,
-  pluginActions: css`
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    bottom: 0;
-    flex-shrink: 0;
-    padding-left: 1rem;
-    cursor: pointer;
-    color: #fff;
-  `,
-};

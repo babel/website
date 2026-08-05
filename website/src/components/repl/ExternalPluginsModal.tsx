@@ -1,6 +1,6 @@
 import { liteClient } from "algoliasearch/lite";
-import { css } from "@emotion/css";
 import React, { type ChangeEvent } from "react";
+import styles from "./ExternalPluginsModal.module.css";
 import {
   Configure,
   Hits,
@@ -10,7 +10,6 @@ import {
 } from "react-instantsearch";
 import SearchBox from "./ExternalPluginsSearchBox";
 import Modal from "./Modal";
-import { colors, media } from "./lib/styles";
 import type { BabelPlugin } from "./lib/types";
 
 const searchClient = liteClient(
@@ -117,163 +116,3 @@ export default class ExternalPluginsModal extends React.Component<Props> {
     );
   }
 }
-
-const styles = {
-  modalContent: css`
-    background: #22252b;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 50px;
-    color: #9ea5b3;
-    margin: 0;
-    width: auto;
-
-    ${media.mediumAndUp} {
-      margin: 40px auto;
-      width: 650px;
-    }
-
-    .ais-Pagination {
-      background: ${colors.inverseBackgroundLight};
-      color: #9ea5b3;
-      display: flex;
-      padding: 0.5rem 0;
-      text-align: center;
-    }
-
-    .ais-Pagination-list {
-      display: flex;
-      margin: 0 auto;
-    }
-
-    .ais-Pagination-item--disabled {
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    .ais-Pagination-item {
-      display: inline-block;
-      border-radius: 4px;
-      font-size: 0.875rem;
-      margin-top: 0;
-      padding: 3px;
-      text-align: center;
-      transition: all 0.3s ease;
-      width: 28px;
-
-      a {
-        color: ${colors.inverseForegroundLight};
-      }
-    }
-
-    .ais-Pagination-item--selected {
-      background: #f1da6b;
-      font-weight: 400;
-
-      a {
-        color: ${colors.inverseBackgroundDark};
-      }
-    }
-
-    .ais-Hits-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-  `,
-  modalFooter: css`
-    background: ${colors.inverseBackgroundDark};
-    display: flex;
-    font-size: 0.75rem;
-    padding: 0.5rem 1rem;
-
-    .ais-PoweredBy {
-      align-items: center;
-      display: flex;
-      margin-left: auto;
-    }
-
-    .ais-PoweredBy-link {
-      align-items: center;
-      display: flex;
-      margin-left: 0.5rem;
-    }
-
-    .ais-PoweredBy-logo {
-      height: 20px;
-      width: 148px;
-
-      path:last-child {
-        fill: #fff !important;
-      }
-    }
-  `,
-  modalSearch: css`
-    align-items: center;
-    display: flex;
-
-    label {
-      align-items: center;
-      display: flex;
-      flex: 0 0 180px;
-      font-size: 0.875rem;
-      padding: 0 1rem;
-      user-select: none;
-
-      input {
-        margin: 0 0.5rem 0 0;
-      }
-    }
-  `,
-  item: css({
-    alignItems: "center",
-    borderBottom: `1px solid ${colors.inverseBackgroundDark}`,
-    cursor: "pointer",
-    display: "flex",
-    fontSize: "0.875rem",
-    padding: "0.5rem 1rem",
-    transition: "all 0.25s ease-out",
-
-    "&:hover": {
-      backgroundColor: "#455569",
-    },
-  }),
-  itemName: css`
-    flex: 1;
-
-    strong {
-      color: #fff;
-    }
-
-    p {
-      font-size: 0.75rem;
-      line-height: 1.5;
-      margin-top: 0.5rem;
-      padding-right: 2rem;
-    }
-  `,
-
-  itemMeta: css`
-    align-items: center;
-    background: #2b2d34;
-    border-radius: 0.5rem;
-    color: #9ea5b3;
-    display: inline-flex;
-    flex: 0 0 65px;
-    font-size: 0.65rem;
-    justify-content: center;
-    margin-left: 0.5rem;
-    padding: 0.25rem 0.5rem;
-    text-align: center;
-  `,
-
-  itemOwner: css`
-    align-items: center;
-    display: flex;
-    font-size: 0.7rem;
-    margin-top: 0.5rem;
-
-    img {
-      height: 30px;
-      margin-right: 0.5rem;
-    }
-  `,
-};

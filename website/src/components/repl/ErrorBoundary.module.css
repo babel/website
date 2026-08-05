@@ -1,0 +1,10 @@
+@import "./lib/styles.css";
+
+.errorBoundary {
+  align-items: center;
+  background: var(--colors-inverseBackgroundDark);
+  color: var(--colors-inverseForegroundLight);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}

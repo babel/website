@@ -1,0 +1,16 @@
+@import "./lib/styles.css";
+
+.searchBox {
+  background: var(--colors-inverseBackgroundDark);
+  border: 0;
+  color: var(--colors-inverseForeground);
+  font-size: 1rem;
+  outline: none;
+  padding: 1rem;
+  width: 100%;
+
+  &::placeholder {
+    color: var(--colors-inverseForegroundLight);
+    opacity: 0.5;
+  }
+}

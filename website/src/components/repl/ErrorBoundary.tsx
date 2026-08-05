@@ -1,6 +1,5 @@
 import * as React from "react";
-import { css } from "@emotion/css";
-import { colors } from "./lib/styles";
+import styles from "./ErrorBoundary.module.css";
 
 type Props = {
   children?: React.JSX.Element;
@@ -30,14 +29,3 @@ export default class ErrorBoundary extends React.Component<Props, State> {
     return this.props.children || null;
   }
 }
-
-const styles = {
-  errorBoundary: css({
-    alignItems: "center",
-    background: colors.inverseBackgroundDark,
-    color: colors.inverseForegroundLight,
-    display: "flex",
-    height: "100vh",
-    justifyContent: "center",
-  }),
-};

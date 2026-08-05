@@ -1,0 +1,41 @@
+:root {
+  /* Inspired by: Chrome's console.error() colors */
+  --colors-errorBackground: #fff0f0;
+  --colors-errorBorder: #ffd6d6;
+  --colors-errorForeground: #ff0000;
+
+  --colors-foregroundLight: #aaaaaa;
+
+  /* Inspired by: Nuclide's "One Dark" theme */
+  --colors-inverseBackground: #21252b;
+  --colors-inverseBackgroundDark: #181a1f;
+  --colors-inverseBackgroundLight: #292d36;
+  --colors-inverseForeground: #faffff;
+  --colors-inverseForegroundLight: #9da5b4;
+
+  /* Inspired by: Chrome's console.warn() colors */
+  --colors-infoBackground: #fffbe5;
+  --colors-infoBorder: #fff5c2;
+  --colors-infoForeground: #5c3c00;
+
+  @media (prefers-color-scheme: dark) {
+    --colors-errorBackground: #fff0f0;
+    --colors-errorBorder: #ffd6d6;
+    --colors-errorForeground: #ff0000;
+    --colors-foregroundLight: #777777;
+    --colors-inverseBackground: #2C3138;
+    --colors-inverseBackgroundDark: #1D2025;
+    --colors-inverseBackgroundLight: #363942;
+    --colors-inverseForeground: #A7ABB4;
+    --colors-inverseForegroundLight: #838C9B;
+    --colors-infoBackground: #fffbe5;
+    --colors-infoBorder: #fff5c2;
+    --colors-infoForeground: #5c3c00;
+  }
+}
+
+@custom-media --viewport-small (max-width: 600px);
+@custom-media --viewport-medium (min-width: 601px) and (max-width: 1000px);
+@custom-media --viewport-medium-and-down (max-width: 1000px);
+@custom-media --viewport-medium-and-up (min-width: 601px);
+@custom-media --viewport-large (min-width: 1001px);

@@ -1,0 +1,369 @@
+@import "./lib/styles.css";
+
+@custom-media --viewport-small (max-width: 600px);
+@custom-media --viewport-medium (min-width: 601px) and (max-width: 1000px);
+@custom-media --viewport-medium-and-down (max-width: 1000px);
+@custom-media --viewport-medium-and-up (min-width: 601px);
+@custom-media --viewport-large (min-width: 1001px);
+
+.wrapper {
+  position: relative;
+  overflow: visible;
+  z-index: 6;
+  background-color: var(--colors-inverseBackground);
+  color: var(--colors-inverseForegroundLight);
+  transition: transform 0.25s ease-in-out;
+
+  @media (--viewport-large) {
+    height: 100%;
+    /* Safari fix for scrolling/overflow */
+  }
+}
+
+.collapsedContainer {
+  @media (--viewport-large) {
+    width: 0.5rem;
+    height: 100%;
+  }
+
+  @media (--viewport-medium-and-down) {
+    height: 0.5rem;
+    width: 100%;
+  }
+
+  & .nestedCloseButton {
+    @media (--viewport-medium-and-down) {
+      transition: top 0.25s ease-in-out;
+      top: -0.5rem;
+    }
+
+    @media (--viewport-large) {
+      transition: left 0.25s ease-in-out;
+      left: -0.5rem;
+    }
+  }
+
+  &:hover {
+    & .nestedCloseButton {
+      @media (--viewport-medium-and-down) {
+        top: 0;
+      }
+
+      @media (--viewport-large) {
+        left: 0;
+      }
+    }
+  }
+}
+
+.expandedContainer {
+  overflow: auto;
+
+  @media (--viewport-large) {
+    height: calc(100% - 38px);
+    /* 38px is babel-version tab's height */
+    min-width: 18rem;
+
+    & .nestedCloseButton {
+      right: -1.5rem;
+    }
+  }
+
+  @media (--viewport-medium-and-down) {
+    & .nestedCloseButton {
+      bottom: -1.5rem;
+    }
+  }
+}
+
+.closeButton {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--colors-inverseBackground);
+  color: var(--colors-inverseForegroundLight);
+
+  @media (--viewport-large) {
+    height: 4rem;
+    width: 2.5rem;
+    top: calc(50% - 2.5rem);
+    border-top-right-radius: 4rem;
+    border-bottom-right-radius: 4rem;
+  }
+
+  @media (--viewport-medium-and-down) {
+    height: 2.5rem;
+    width: 4rem;
+    left: calc(50% - 2.5rem);
+    border-bottom-left-radius: 4rem;
+    border-bottom-right-radius: 4rem;
+  }
+}
+
+.closeButtonIcon {
+  width: 2rem;
+  height: 2rem;
+
+  @media (--viewport-medium-and-down) {
+    transform: rotate(90deg);
+  }
+}
+
+.sectionsWrapper {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 100%;
+
+  @media (--viewport-large) {}
+
+  @media (--viewport-small) {
+    max-height: 300px;
+    display: block;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.section {
+  position: relative;
+  z-index: 7;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  flex: 0 0 auto;
+  max-height: 100%;
+
+  @media (--viewport-medium-and-down) {
+    flex: 1 0 100px;
+    max-height: 100%;
+    overflow: auto;
+  }
+}
+
+.sectionEnv {
+  border-right: none;
+
+  @media (--viewport-medium-and-down) {
+    flex: 1 0 150px;
+  }
+}
+
+.pluginRow {
+  display: block;
+}
+
+.pluginContainer {
+  display: block;
+  max-height: 300px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.pluginsHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 5px;
+}
+
+.accordionLabelVersion {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 2px;
+}
+
+.inputCheckboxLeft {
+  margin: 0 0.75rem 0 0 !important;
+  /* TODO (bvaughn) Override input[type="checkbox"] style in main.css */
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.highlight {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--colors-inverse-foreground);
+}
+
+.highlightWithoutUppercase {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--colors-inverse-foreground);
+}
+
+.presetsOptionsTitle {
+  margin: 0 -0.5rem;
+  padding: 0.5rem 1rem 0.25rem;
+
+  /* Hide the title if it isn't followed by any option */
+  &:last-child {
+    display: none;
+  }
+}
+
+.presetsOptionsLabel {
+  flex: 1;
+}
+
+.presetsOptionsDisabled {
+  opacity: 0.5;
+}
+
+.settingsLabel {
+  align-items: center;
+  display: flex;
+  flex: 0 0 1.5rem;
+  flex-direction: row;
+  font-size: 0.875rem;
+  font-weight: normal;
+  margin: 0 -0.5rem;
+  padding: 0 1rem;
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+  cursor: pointer;
+}
+
+.selectLabel {
+  align-items: flex-start;
+  flex-direction: column;
+  flex-basis: 4rem;
+  margin: 1rem 0 0 0;
+  padding: 0 0.5rem;
+}
+
+.optionSelect {
+  /* fill=var(--colors-inverseForegroundLight) */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='#9da5b4'><polygon points='0,0 100,0 50,50'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 8px;
+  border: 0;
+  margin: 0.25rem 0 0 0;
+  transition: all 0.25s ease-in;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+.sourceTypeSelect {
+  background-position: calc(100% - 1rem) calc(100% - 8px);
+  padding: 0 0.5rem;
+  height: 30px;
+  width: 100%;
+}
+
+.presetOptionSelect {
+  padding: 0.2rem 1.5rem 0.2rem 0.5rem;
+  background-position: calc(100% - 0.5rem) calc(100% - 0.3rem);
+}
+
+.verticalLabeledOption {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+  flex: 0 0 auto;
+}
+
+.verticalLabeledOptionLabel {
+  margin-bottom: 0.75rem;
+}
+
+.envPresetRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 0 0 auto;
+  margin: 0.5rem;
+}
+
+.envPresetNumber {
+  flex: 0 0 4rem;
+  max-width: 4rem;
+  padding-left: 0.75rem;
+}
+
+.pluginName {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.envPresetCheckbox {
+  flex: 0 0 auto;
+  margin: 0 0 0 0.75rem !important;
+  /* TODO (bvaughn) Override input[type="checkbox"] style in main.css */
+}
+
+.envPresetLabel {
+  flex: 1;
+  color: var(--colors-inverseForegroundLight);
+
+  &:hover {
+    text-decoration: none;
+    color: var(--colors-inverseForeground);
+  }
+}
+
+.envPresetSelect {
+  max-width: 7rem;
+  font-weight: 400;
+  margin: 0 0 0 0.75rem;
+}
+
+.envPresetTextarea {
+  resize: vertical;
+}
+
+.envPresetInput {
+  appearance: none;
+  border: none;
+  font-weight: 400;
+  border-radius: 0.25rem;
+}
+
+.pluginsSearch {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--colors-inverseBackgroundDark);
+}
+
+.envPresetLoaderWrapper {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.bottomSidebar {
+  display: flex;
+  font-family: monospace;
+  font-size: 0.75rem;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+
+  @media (--viewport-large) {
+    background-color: var(--colors-inverseBackgroundDark);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 9;
+    margin: 0;
+    padding: 0.625rem 0.9375rem;
+  }
+}
+
+.checkboxOfficial {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

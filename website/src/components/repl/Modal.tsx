@@ -1,4 +1,4 @@
-import { css, keyframes } from "@emotion/css";
+import styles from "./Modal.module.css";
 import React, { Component } from "react";
 import { createPortal } from "react-dom";
 
@@ -88,41 +88,3 @@ export default class Modal extends Component<Props> {
     return createPortal(result, this._node);
   }
 }
-
-// STYLES
-
-const modalFadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-`;
-
-const styles = {
-  overlay: css`
-    animation: ${modalFadeIn} 175ms ease 1 forwards;
-    background-color: rgba(0, 0, 0, 0.75);
-    cursor: pointer;
-    height: 100%;
-    opacity: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    z-index: 10000;
-  `,
-  content: css`
-    animation: ${modalFadeIn} 175ms ease 1 forwards;
-    background: transparent;
-    height: 100%;
-    overflow-y: auto;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    z-index: 10001;
-  `,
-};

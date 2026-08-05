@@ -1,0 +1,41 @@
+@import "./lib/styles.css";
+
+.panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  min-height: 0;
+}
+.editor {
+  display: block;
+  height: 100%;
+  width: 100%;
+  min-height: 0;
+  position: relative;
+}
+.error {
+  order: 2;
+  background-color: var(--colors-errorBackground);
+  border-top: 1px solid var(--colors-errorBorder);
+  color: var(--colors-errorForeground);
+  flex: 0 0 auto;
+  max-height: 33%;
+  overflow: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  font-family: monospace;
+  white-space: pre-wrap;
+  -webkit-overflow-scrolling: touch;
+}
+.fileSize {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  z-index: 2;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(225, 225, 225, 0.75);
+  color: rgba(0, 0, 0, 0.5);
+  border: 0;
+}

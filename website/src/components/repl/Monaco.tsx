@@ -1,4 +1,3 @@
-import { css, type CSSInterpolation } from "@emotion/css";
 import * as monaco from "monaco-editor";
 import * as monacoBasicTS from "monaco-editor/esm/vs/basic-languages/typescript/typescript.js";
 import React, { useRef, useEffect } from "react";
@@ -11,7 +10,7 @@ import shikiLightPlus from "@shikijs/themes/light-plus";
 import shikiWasm from "@shikijs/engine-oniguruma/wasm-inlined";
 import debounce from "lodash.debounce";
 
-import { colors } from "./lib/styles";
+import styles from "./Monaco.module.css";
 import { preferDarkColorScheme } from "./lib/utils";
 
 type Props = {
@@ -202,49 +201,3 @@ export function Monaco({
     </div>
   );
 }
-
-const sharedBoxStyles: CSSInterpolation = {
-  flex: "0 0 auto",
-  maxHeight: "33%",
-  overflow: "auto",
-  margin: 0,
-  padding: "0.5rem 0.75rem",
-  fontFamily: "monospace",
-  whiteSpace: "pre-wrap",
-  WebkitOverflowScrolling: "touch",
-};
-
-const styles = {
-  panel: css({
-    flex: 1,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "stretch",
-    minHeight: 0,
-  }),
-  editor: css({
-    display: "block",
-    height: "100%",
-    width: "100%",
-    minHeight: 0,
-    position: "relative",
-  }),
-  error: css({
-    order: 2,
-    backgroundColor: colors.errorBackground,
-    borderTop: `1px solid ${colors.errorBorder}`,
-    color: colors.errorForeground,
-    ...sharedBoxStyles,
-  }),
-  fileSize: css({
-    position: "absolute",
-    bottom: "1rem",
-    right: "2rem",
-    zIndex: 2,
-    borderRadius: "0.5rem",
-    padding: "0.5rem",
-    backgroundColor: "rgba(225, 225, 225, 0.75)",
-    color: "rgba(0, 0, 0, 0.5)",
-    border: "0",
-  }),
-};

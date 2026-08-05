@@ -1,27 +1,7 @@
 import React from "react";
-import { css } from "@emotion/css";
-
 import PresetLoadingAnimation from "./PresetLoadingAnimation";
-import { colors } from "./lib/styles";
 
-const styles = {
-  loader: css({
-    alignItems: "center",
-    background: colors.inverseBackgroundDark,
-    color: colors.inverseForegroundLight,
-    display: "flex",
-    height: "100%",
-    justifyContent: "center",
-  }),
-  loadingAnimation: css({
-    justifyContent: "center",
-    margin: "2rem 0 0 0",
-  }),
-  loaderContent: css({
-    margin: "auto",
-    textAlign: "center",
-  }),
-};
+import styles from "./ReplLoading.module.css";
 
 export default ({
   message = "Loading Babel...",

@@ -1,4 +1,4 @@
-import { css } from "@emotion/css";
+import styles from "./Tabs.module.css";
 import React from "react";
 
 export type TabsOptions = {
@@ -9,7 +9,7 @@ export type TabsOptions = {
 
 export default function Tabs({ current, labels, onClick }: TabsOptions) {
   return (
-    <ul className={`pills padding--sm ${css({ "--ifm-list-margin": 0 })}`}>
+    <ul className={`pills padding--sm ${styles.tabs}`}>
       {labels.map((label, index) => (
         <li
           key={index}

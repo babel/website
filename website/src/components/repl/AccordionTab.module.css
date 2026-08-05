@@ -1,0 +1,58 @@
+@import "./lib/styles.css";
+
+@custom-media --viewport-small (max-width: 600px);
+@custom-media --viewport-medium (min-width: 601px) and (max-width: 1000px);
+@custom-media --viewport-medium-and-down (max-width: 1000px);
+@custom-media --viewport-medium-and-up (min-width: 601px);
+@custom-media --viewport-large (min-width: 1001px);
+
+.AccordionTab {
+  flex: 1 0 1.5rem;
+  cursor: default;
+  border-bottom: 1px solid var(--colors-inverseBackgroundDark);
+  user-select: none;
+
+  @media (--viewport-medium) {
+    border-right: 1px solid var(--colors-inverseBackgroundDark);
+  }
+}
+
+.HeaderRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.625rem 0.9375rem;
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+  color: var(--colors-inverseForegroundLight);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--colors-inverseBackgroundLight);
+    color: var(--colors-inverseForeground);
+  }
+}
+
+.Label {
+  flex: 1;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.Arrow {
+  height: 1rem;
+  margin: 0 0.33rem 0 0;
+  transform: rotateZ(180deg);
+  transition: transform 250ms ease-in-out;
+  width: 1rem;
+}
+
+.ArrowExpanded {
+  transform: rotateZ(270deg);
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 0.5rem 0.5rem;
+}
