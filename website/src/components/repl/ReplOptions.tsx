@@ -1,4 +1,3 @@
-import { cx } from "@emotion/css";
 import styles from "./ReplOptions.module.css";
 import React, { Component } from "react";
 import { envPresetDefaults, pluginConfigs } from "./lib/pluginConfig";
@@ -369,7 +368,7 @@ class ExpandedContainer extends Component<Props, State> {
                   onChange={(event: ChangeEvent<any>) =>
                     onSettingChange("sourceType", event.target.value)
                   }
-                  className={cx(styles.optionSelect, styles.sourceTypeSelect)}
+                  className={`${styles.optionSelect} ${styles.sourceTypeSelect}`}
                 >
                   <option value="module">Module</option>
                   <option value="script">Script</option>
@@ -442,7 +441,7 @@ class ExpandedContainer extends Component<Props, State> {
                   React Runtime
                 </span>
                 <select
-                  className={cx(styles.optionSelect, styles.presetOptionSelect)}
+                  className={`${styles.optionSelect} ${styles.presetOptionSelect}`}
                   onChange={this._onPresetOptionChange(
                     "reactRuntime",
                     (t) => t.value
@@ -462,7 +461,7 @@ class ExpandedContainer extends Component<Props, State> {
                   Decorators version
                 </span>
                 <select
-                  className={cx(styles.optionSelect, styles.presetOptionSelect)}
+                  className={`${styles.optionSelect} ${styles.presetOptionSelect}`}
                   onChange={this._onPresetOptionChange(
                     "decoratorsVersion",
                     (t) => t.value
@@ -509,7 +508,7 @@ class ExpandedContainer extends Component<Props, State> {
                   Pipeline proposal
                 </span>
                 <select
-                  className={cx(styles.optionSelect, styles.presetOptionSelect)}
+                  className={`${styles.optionSelect} ${styles.presetOptionSelect}`}
                   onChange={this._onPresetOptionChange(
                     "pipelineProposal",
                     (t) => t.value
@@ -811,7 +810,7 @@ class ExpandedContainer extends Component<Props, State> {
         </div>
 
         <div
-          className={cx(styles.closeButton, styles.nestedCloseButton)}
+          className={`${styles.closeButton} ${styles.nestedCloseButton}`}
           onClick={() => onIsExpandedChange(false)}
         >
           <Svg
@@ -874,7 +873,7 @@ const CollapsedContainer = ({
 }: CollapsedContainerProps) => (
   <div className={styles.collapsedContainer}>
     <div
-      className={cx(styles.closeButton, styles.nestedCloseButton)}
+      className={`${styles.closeButton} ${styles.nestedCloseButton}`}
       onClick={() => onIsExpandedChange(true)}
     >
       <Svg

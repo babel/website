@@ -2,7 +2,6 @@ import "regenerator-runtime/runtime";
 import "core-js";
 
 import styles from "./Repl.module.css";
-import { cx } from "@emotion/css";
 import debounce from "lodash.debounce";
 import React, { type ChangeEvent } from "react";
 import { prettySize, compareVersions } from "./lib/utils";
@@ -365,7 +364,7 @@ class Repl extends React.Component<Props, State> {
         />
         <div className={styles.wrapperPanels}>
           <div
-            className={cx(styles.panels, !state.timeTravel && styles.panelsMax)}
+            className={`${styles.panels} ${!state.timeTravel ? styles.panelsMax : ""}`}
           >
             <div className={styles.codePanel}>
               <Tabs
