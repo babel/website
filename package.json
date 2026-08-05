@@ -62,7 +62,6 @@
     "typescript-eslint": "^8.56.0"
   },
   "dependencies": {
-    "@emotion/css": "^11.10.6",
     "@shikijs/engine-oniguruma": "^3.22.0",
     "@shikijs/langs": "^3.22.0",
     "@shikijs/monaco": "^3.22.0",
