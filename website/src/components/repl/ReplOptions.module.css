@@ -191,13 +191,13 @@
   text-transform: uppercase;
   font-size: 0.75rem;
   font-weight: bold;
-  color: var(--colors-inverse-foreground);
+  color: var(--colors-inverseForeground);
 }
 
 .highlightWithoutUppercase {
   font-size: 0.75rem;
   font-weight: bold;
-  color: var(--colors-inverse-foreground);
+  color: var(--colors-inverseForeground);
 }
 
 .presetsOptionsTitle {
@@ -240,8 +240,10 @@
 }
 
 .optionSelect {
+  /* Avoid default select arrow */
+  appearance: none;
   /* fill=var(--colors-inverseForegroundLight) */
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='#9da5b4'><polygon points='0,0 100,0 50,50'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%239da5b4'><polygon points='0,0 100,0 50,50'/></svg>");
   background-repeat: no-repeat;
   background-size: 8px;
   border: 0;

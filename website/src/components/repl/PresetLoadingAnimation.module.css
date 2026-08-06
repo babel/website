@@ -31,24 +31,24 @@
   margin-left: calc(var(--loading-animation-size, 2) * 2px);
   width: calc(var(--loading-animation-size, 2) * 2px);
 
-  :nth-child(1) {
+  &:nth-child(1) {
     animation-delay: 0;
     margin-left: 0;
   }
 
-  :nth-child(2) {
+  &:nth-child(2) {
     animation-delay: -1.1s;
   }
 
-  :nth-child(3) {
+  &:nth-child(3) {
     animation-delay: -1.0s;
   }
 
-  :nth-child(4) {
+  &:nth-child(4) {
     animation-delay: -0.9s;
   }
 
-  :nth-child(5) {
+  &:nth-child(5) {
     animation-delay: -0.8s;
   }
 }
