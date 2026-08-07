@@ -75,12 +75,12 @@ const Versions = () => {
               <table className="versions">
                 <tbody>
                   <tr>
-                    <th>7.29.7</th>
+                    <th>7.29.8</th>
                     <td>
                       <a href={v7Url}>Documentation</a>
                     </td>
                     <td>
-                      <a href={`${repoUrl}/releases/tag/v7.29.7`}>
+                      <a href={`${repoUrl}/releases/tag/v7.29.8`}>
                         Release Notes
                       </a>
                     </td>
