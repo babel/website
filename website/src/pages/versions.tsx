@@ -7,7 +7,7 @@ const Versions = () => {
   const { siteConfig } = useDocusaurusContext();
   const { customFields } = siteConfig;
   const latestVersion = versions[0];
-  const { repoUrl, v6Url } = customFields as any;
+  const { repoUrl, v6Url, v7Url } = customFields as any;
   return (
     <Layout>
       <div className="docMainWrapper wrapper">
@@ -45,10 +45,10 @@ const Versions = () => {
               </tbody>
             </table>
             <p>This is the current stable version of the project.</p>
-            {versions && versions.length > 1 && (
-              <div>
-                <a id="archive" />
-                <h3>Past Versions</h3>
+            <div>
+              <a id="archive" />
+              <h3>Past Versions</h3>
+              {versions && versions.length > 1 && (
                 <table className="versions">
                   <tbody>
                     {versions.map(
@@ -71,26 +71,40 @@ const Versions = () => {
                     )}
                   </tbody>
                 </table>
-                <table className="versions">
-                  <tbody>
-                    <tr>
-                      <th>6.26.3</th>
-                      <td>
-                        <a href={v6Url}>Documentation</a>
-                      </td>
-                      <td>
-                        <a href={`${repoUrl}/releases/tag/v6.26.3`}>
-                          Release Notes
-                        </a>
-                      </td>
-                      <td>
-                        <a href={`${siteConfig.baseUrl}6.23.0`}>Blog Post</a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            )}
+              )}
+              <table className="versions">
+                <tbody>
+                  <tr>
+                    <th>7.29.7</th>
+                    <td>
+                      <a href={v7Url}>Documentation</a>
+                    </td>
+                    <td>
+                      <a href={`${repoUrl}/releases/tag/v7.29.7`}>
+                        Release Notes
+                      </a>
+                    </td>
+                    <td>
+                      <a href={`${siteConfig.baseUrl}7.29.0`}>Blog Post</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>6.26.3</th>
+                    <td>
+                      <a href={v6Url}>Documentation</a>
+                    </td>
+                    <td>
+                      <a href={`${repoUrl}/releases/tag/v6.26.3`}>
+                        Release Notes
+                      </a>
+                    </td>
+                    <td>
+                      <a href={`${siteConfig.baseUrl}6.23.0`}>Blog Post</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

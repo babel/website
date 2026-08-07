@@ -155,6 +155,7 @@ const siteConfig: Config = {
   customFields: {
     repoUrl: "https://github.com/babel/babel",
     v6Url: "https://v6.babeljs.io/docs/setup/",
+    v7Url: "https://v7.babeljs.io/docs/",
     users,
     sponsors,
     videos,

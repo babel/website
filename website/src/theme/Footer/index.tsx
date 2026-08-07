@@ -51,7 +51,8 @@ function Footer() {
           <Link to="https://github.com/babel">GitHub Org</Link>
           <Link to="https://github.com/babel/babel">GitHub Repo</Link>
           <Link to="https://github.com/babel/website">Website Repo</Link>
-          <Link to="https://old.babeljs.io">Old 6.x Site</Link>
+          <Link to="https://v7.babeljs.io">Old 7.x Site</Link>
+          <Link to="https://v6.babeljs.io">Old 6.x Site</Link>
           <Link to="http://henryzoo.com/babel.github.io">Old 5.x Site</Link>
         </div>
       </section>
