@@ -17,8 +17,10 @@
   --colors-infoBackground: #fffbe5;
   --colors-infoBorder: #fff5c2;
   --colors-infoForeground: #5c3c00;
+}
 
-  @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
+  :root {
     --colors-errorBackground: #fff0f0;
     --colors-errorBorder: #ffd6d6;
     --colors-errorForeground: #ff0000;

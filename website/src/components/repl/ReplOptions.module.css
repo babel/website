@@ -306,7 +306,7 @@
 
 .envPresetLabel {
   flex: 1;
-  color: var(--colors-inverseForegroundLight);
+  color: var(--colors-inverseForeground);
 
   &:hover {
     text-decoration: none;
