@@ -3,8 +3,6 @@ title: Compiler Assumptions
 id: assumptions
 ---
 
-import "@site/src/css/assumptions.css";
-
 By default Babel tries to compile your code so that it matches the native behavior as closely as possible. However, this sometimes means generating more output code, or slower output code, just to support some edge cases you don't care about.
 
 Since Babel 7.13.0, you can specify an `assumptions` option in your configuration to tell Babel which assumptions it can make about your code, to better optimize the compilation result. *Note*: this replaces the various `loose` options in plugins in favor of top-level options that can apply to multiple plugins ([RFC link](https://github.com/babel/rfcs/blob/master/rfcs/0003-top-level-assumptions.md)).
