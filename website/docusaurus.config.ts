@@ -258,6 +258,7 @@ const siteConfig: Config = {
       contextualSearch: false,
     },
     navbar: {
+      style: "dark",
       logo: {
         alt: "Babel logo",
         src: "img/babel.svg", //revisit
@@ -290,6 +291,89 @@ const siteConfig: Config = {
         },
       ],
     },
+    footer: {
+      style: "dark",
+      logo: {
+        alt: "Babel",
+        src: "img/babel.svg",
+        href: "/",
+        width: 66,
+        height: 58,
+      },
+      links: [
+        {
+          title: "Docs",
+          items: [
+            {
+              label: "Learn ES2015",
+              to: "/docs/learn",
+            },
+          ],
+        },
+        {
+          title: "Community",
+          items: [
+            {
+              label: "Videos",
+              to: "/videos",
+            },
+            {
+              label: "User Showcase",
+              to: "/users",
+            },
+            {
+              label: "Stack Overflow",
+              href: "http://stackoverflow.com/questions/tagged/babeljs",
+            },
+            {
+              label: "Slack Channel",
+              href: "https://babeljs.slack.com/",
+            },
+            {
+              label: "X (Twitter)",
+              href: "https://x.com/babeljs",
+            },
+            {
+              label: "Bluesky",
+              href: "https://bsky.app/profile/babel.dev",
+            },
+          ],
+        },
+        {
+          title: "More",
+          items: [
+            {
+              label: "Blog",
+              to: "/blog",
+            },
+            {
+              label: "GitHub Org",
+              href: "https://github.com/babel",
+            },
+            {
+              label: "GitHub Repo",
+              href: "https://github.com/babel/babel",
+            },
+            {
+              label: "Website Repo",
+              href: "https://github.com/babel/website",
+            },
+            {
+              label: "Old 7.x Site",
+              href: "https://v7.babeljs.io",
+            },
+            {
+              label: "Old 6.x Site",
+              href: "https://v6.babeljs.io",
+            },
+            {
+              label: "Old 5.x Site",
+              href: "http://henryzoo.com/babel.github.io",
+            },
+          ],
+        },
+      ]
+    }
   },
   title: "Babel",
   tagline: "The compiler for next generation JavaScript",
