@@ -42,6 +42,8 @@ function Column({column}: {column: ColumnType}) {
 
 export default function FooterLinksMultiColumn({columns}: Props): ReactNode {
   return (
+    // Modification: replace the wrapping div by a React fragment such that
+    // the columns can be placed after the logo in the flex container of FooterLayout
     <>
       {columns.map((column, i) => (
         <Column column={column} key={i} />

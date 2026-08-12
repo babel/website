@@ -14,6 +14,7 @@ export default function FooterLayout({
       className={clsx(ThemeClassNames.layout.footer.container, 'footer', {
         'footer--dark': style === 'dark',
       })}>
+      {/* Modification: wrap logo and links within a flex container */}
       <div className="container container-fluid">
         <div className="row footer__links">
           {logo && <div className="margin-bottom--sm">{logo}</div>}
