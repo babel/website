@@ -716,3 +716,6 @@
 - name: Techjobs.be
   url: https://techjobs.be/
   logo: techjobsbe.svg
+- name: Authier
+  url: https://www.authier.pm/
+  logo: authier.svg
