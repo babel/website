@@ -1939,11 +1939,10 @@ t.newExpression(callee, arguments);
 See also `t.isNewExpression(node, opts)` and `t.assertNewExpression(node, opts)`.
 
 AST Node `NewExpression` shape:
-- `callee`: `Expression | Super | V8IntrinsicIdentifier` (required)
+- `callee`: `Expression` (required)
 - `arguments`: `(Expression | SpreadElement | ArgumentPlaceholder)[]` (required)
-- `optional`: `boolean` (default: `null`, excluded from builder function)
-- `typeArguments`: `TypeParameterInstantiation` (default: `null`, excluded from builder function)
-- `typeParameters`: `TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
+- `typeArguments`: `TypeParameterInstantiation | TSTypeParameterInstantiation` (default: `null`, excluded from builder function)
+- `typeParameters` (required)
 
 Aliases: [`Standardized`](#standardized), [`Expression`](#expression)
 
