@@ -245,7 +245,7 @@ require("@babel/parser").parse("code", {
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                                       | `var a = do { if (true) { 'hi'; } };`                            |
 | `exportDefaultFrom` ([proposal](https://github.com/tc39/ecmascript-export-default-from))                            | `export v from "mod"`                                            |
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                                         | `a::b`, `::console.log`                                          |
-| `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))                                         | `function.sent`                                                  |
+| `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))                                         | `function* g() { function.sent }`                                                  |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                                      | `let m = module { export let y = 1; };`                          |
 | `optionalChainingAssign` ([proposal](https://github.com/tc39/proposal-optional-chaining-assignment))                | `x?.prop = 2`                                                    |
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                                     | `f(?, a)`                                                        |
