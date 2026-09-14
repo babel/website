@@ -239,7 +239,6 @@ require("@babel/parser").parse("code", {
 | `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br/> `decorators-legacy`                    | `@a class A {}`                                                  |
 | `decoratorAutoAccessors` ([proposal](https://github.com/tc39/proposal-decorators))                                  | `class Example { @reactive accessor myBool = false; }`           |
 | `deferredImportEvaluation` ([proposal](https://github.com/tc39/proposal-defer-import-eval))                         | `import defer * as ns from "dep";`                               |
-| `deprecatedImportAssert` (legacy syntax of [import attributes](https://github.com/tc39/proposal-import-attributes)) | `import json from "./foo.json" assert { type: "json" };`         |
 | `destructuringPrivate` ([proposal](https://github.com/tc39/proposal-destructuring-private))                         | `class Example { #x = 1; method() { const { #x: x } = this; } }` |
 | `discardBinding` ([proposal](https://github.com/tc39/proposal-discard-binding))                                     | `using void = new Lock(mutex)`                                   |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                                       | `var a = do { if (true) { 'hi'; } };`                            |
