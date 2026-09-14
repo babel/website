@@ -69,6 +69,7 @@ import { generate } from "@babel/generator";
 
 | Version | Changes |
 | --- | --- |
+| v8.1.0  | Added `sourceMapRanges` |
 | v8.0.0  | Removed `importAttributesKeyword` |
 | v7.26.0 | Added `experimental_preserveFormat` |
 | v7.22.0 | Added `importAttributesKeyword` |
@@ -104,6 +105,7 @@ Options for source maps:
 | inputSourceMap | string or object |         | The input source map                                                                                                   |
 | sourceRoot     | string           |         | A root for all relative URLs in the source map                                                                         |
 | sourceFileName | string           |         | The filename for the source code (i.e. the code in the `code` argument). This will only be used if `code` is a string. |
+| sourceMapRanges | boolean         | `false` | When set to `true`, the generator will use [range mappings](https://github.com/tc39/ecma426/blob/main/proposals/range-mappings.md) in the generated source map, reducing the source map size. This option is _currently_ ignored when the `inputSourceMap` option is used.<br/>**NOTE:** You should only use this option if all the tools you are running after Babel, including your browser's devtools, support range mappings. |
 
 Experimental options:
 
