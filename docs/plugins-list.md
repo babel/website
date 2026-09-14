@@ -11,10 +11,13 @@ sidebar_label: Plugins List
 #### Stage 3
 
 - [decorators](plugin-proposal-decorators.md)
+- [import-defer](plugin-proposal-import-defer.md)
 - [import-wasm-source](plugin-proposal-import-wasm-source.md)
+- [text-modules](plugin-proposal-text-modules.md)
 
 #### Early stages
 
+- [bytes-modules](plugin-proposal-bytes-modules.md)
 - [do-expressions](plugin-proposal-do-expressions.md)
 - [export-default-from](plugin-proposal-export-default-from.md)
 - [function-bind](plugin-proposal-function-bind.md)
