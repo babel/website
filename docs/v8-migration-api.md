@@ -1084,8 +1084,8 @@ Most of the changes to our TypeScript-specific AST nodes are to reduce the diffe
 
   ```diff title="my-babel-codemod.js"
     t.bigIntLiteral(
--    "0xff020000000000000000000000000002"
-+    0xff020000000000000000000000000002n
+  -  "0xff020000000000000000000000000002"
+  +  0xff020000000000000000000000000002n
     )
   ```
 
