@@ -1,13 +1,23 @@
-<a href="https://github.com/rails/webpacker">webpacker</a> is the new default
-javascript compiler for Rails 6. It comes with built-in support for transpiling
-with babel. To use it in earlier versions of Rails:
+Rails 7+ defaults to
+<a href="https://github.com/rails/importmap-rails">importmap-rails</a>
+(no bundler / no Babel). To transpile with Babel, use
+<a href="https://github.com/rails/jsbundling-rails">jsbundling-rails</a>
+with Webpack and <a href="https://github.com/babel/babel-loader">babel-loader</a>
+(Webpacker has been retired):
 
 ```rb
 # Gemfile
-gem 'webpacker'
+gem "jsbundling-rails"
 ```
 
 ```sh title="Shell"
 bundle install
-bundle exec rails webpacker:install
+./bin/rails javascript:install:webpack
+npm install --save-dev @babel/core @babel/preset-env babel-loader
+```
+
+Or create a new app already configured for Webpack:
+
+```sh title="Shell"
+rails new myapp -j webpack
 ```
