@@ -86,6 +86,49 @@ require("@babel/core").transformSync("code", {
 });
 ```
 
+### In a Node.js application
+
+When building a Node.js application (not just transforming files), you can integrate `@babel/plugin-transform-runtime` with [`@babel/register`](register.md) so that helpers are shared at runtime:
+
+**1. Install the required packages:**
+
+```shell npm2yarn
+npm install --save-dev @babel/core @babel/register @babel/plugin-transform-runtime
+npm install --save @babel/runtime
+```
+
+**2. Create a Babel config file:**
+
+```json title="babel.config.json"
+{
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
+```
+
+**3. Create an entry file that hooks into Node's `require`:**
+
+```js title="register.js"
+require("@babel/register")({
+  // Only transpile files in src/, not node_modules
+  ignore: [/node_modules/],
+});
+
+// Now require your app entry point — it will be transpiled on the fly
+require("./src/index");
+```
+
+**4. Run your app:**
+
+```shell title="Shell"
+node register.js
+```
+
+With this setup, all `require()`d files under `src/` will be compiled by Babel. Shared helpers from `@babel/runtime` are `require()`d once and reused across all compiled files, avoiding inline helper duplication.
+
+:::tip
+For production use, consider pre-compiling your source with the Babel CLI (`babel src --out-dir dist`) so helpers are resolved at build time rather than at Node startup.
+:::
+
 ## Options
 
 
