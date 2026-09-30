@@ -387,23 +387,6 @@ You should enable these features only if you are using an older version.
 When a plugin is specified multiple times, only the first options are considered.
 :::
 
-- `estree`:
-  - `classFeatures` (`boolean`, defaults to `false`)
-
-    When `true`, produce an [ESTree](https://github.com/estree/estree)-compliant AST for modern class features (for example class fields and private methods), using nodes such as `PropertyDefinition` and `PrivateIdentifier` instead of Babel's `ClassProperty` / `PrivateName` shapes. This is required for compatibility with ESLint 8+ and other ESTree consumers.
-
-    Example:
-
-    ```js title="JavaScript"
-    require("@babel/parser").parse(code, {
-      plugins: [["estree", { classFeatures: true }]],
-    });
-    ```
-
-    :::note
-    In Babel 8 this option is removed and the ESTree class-features AST is always produced when the `estree` plugin is enabled. See the [Babel 8 migration guide](./v8-migration.md#babel-parser).
-    :::
-
 - `decorators`:
   - `allowCallParenthesized` (`boolean`, defaults to `true`)
 
@@ -427,6 +410,23 @@ When a plugin is specified multiple times, only the first options are considered
     :::caution
 
     This option is deprecated and will be removed in a future version. Code that is valid when this option is explicitly set to `true` or `false` is also valid when this option is not set.
+    :::
+
+- `estree`:
+  - `classFeatures` (`boolean`, defaults to `false`)
+
+    When `true`, produce an [ESTree](https://github.com/estree/estree)-compliant AST for modern class features (for example class fields and private methods), using nodes such as `PropertyDefinition` and `PrivateIdentifier` instead of Babel's `ClassProperty` / `PrivateName` shapes. This is required for compatibility with ESLint 8+ and other ESTree consumers.
+
+    Example:
+
+    ```js title="JavaScript"
+    require("@babel/parser").parse(code, {
+      plugins: [["estree", { classFeatures: true }]],
+    });
+    ```
+
+    :::note
+    In Babel 8 this option is removed and the ESTree class-features AST is always produced when the `estree` plugin is enabled. See the [Babel 8 migration guide](./v8-migration.md#babel-parser).
     :::
 
 - `optionalChainingAssign`:
