@@ -10,22 +10,28 @@ Companion rules for [`@babel/eslint-parser`](./eslint-parser.md). `@babel/eslint
 for use with Babel, but it can't change the built-in rules to support experimental features.
 `@babel/eslint-plugin` re-implements problematic rules so they do not give false positives or negatives.
 
-> Requires Node.js 10.13 or greater
-
 ## Install
 
 ```shell npm2yarn
 npm install @babel/eslint-plugin --save-dev
 ```
 
-Load the plugin in your ESLint config and enable all the rules you would like to use (remember to disable the original ones as well!).
+## Predefined configurations
 
-```js title=eslint.config.js
+`@babel/eslint-plugin` has two predefined configurations:
+
+- `recommended`: Enables all companion rules when the reimplemented built-in rules are in the [`js/recommended` predefined configuration](https://eslint.org/docs/latest/use/configure/configuration-files#use-predefined-configurations).
+
+- `all`: Enables all companion rules.
+
+```js title="eslint.config.js"
 import babelParser from "@babel/eslint-parser";
 import babelPlugin from "@babel/eslint-plugin";
+import js from "@eslint/js";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
+  js.configs.recommended,
   {
     files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
     languageOptions: {
@@ -34,32 +40,64 @@ export default defineConfig([
     plugins: {
       babel: babelPlugin
     },
+    ...babelPlugin.configs.recommended,
+  },
+]);
+```
+
+## Rules
+
+Each rule corresponds to a core `eslint` rule and has the same options.
+
+✅ means the [`recommended`](#predefined-configurations) config from `@babel/eslint-plugin` enables this rule.
+
+🔧 means it's autofixable with `--fix`.
+
+
+| Name | Description | R | F |
+| --- | --- | --- | --- |
+| new-cap | handles decorators (`@Decorator`) | | |
+| no-empty | handles `do` expressions | ✅  | 🔧 |
+| no-undef | handles class accessor properties (`class A { accessor x = 2 }`) | | |
+| no-unused-expressions | handles `do` expressions | | |
+
+### Configure Rules
+
+Load the plugin in your ESLint config and enable all the rules you would like to use (remember to disable the built-in ones as well!).
+
+```js title="eslint.config.js"
+import js from "@eslint/js";
+import babelParser from "@babel/eslint-parser";
+import babelPlugin from "@babel/eslint-plugin";
+import { defineConfig } from "eslint/config";
+
+export default defineConfig([
+  js.configs.recommended,
+  {
+    files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+    languageOptions: {
+      parser: babelParser,
+    },
+    plugins: {
+      js,
+      babel: babelPlugin
+    },
     rules: {
+      // Disable built-in rules in @eslint/js
       "new-cap": "off",
+      "no-empty": "off",
       "no-undef": "off",
       "no-unused-expressions": "off",
 
+      // Enable Babel rules
       "babel/new-cap": "error",
+      "babel/no-empty": "error",
       "babel/no-undef": "error",
       "babel/no-unused-expressions": "error",
     }
   },
 ]);
 ```
-
-
-
-## Rules
-
-Each rule corresponds to a core `eslint` rule and has the same options.
-
-🛠: means it's autofixable with `--fix`.
-
-- `@babel/new-cap`: handles decorators (`@Decorator`)
-- `@babel/no-undef`: handles class accessor properties (`class A { accessor x = 2 }`)
-- `@babel/no-unused-expressions`: handles `do` expressions
-
-
 
 ## TypeScript
 
