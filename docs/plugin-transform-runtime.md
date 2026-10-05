@@ -58,10 +58,7 @@ With options (and their defaults):
       "@babel/plugin-transform-runtime",
       {
         "absoluteRuntime": false,
-        "corejs": false,
-        "helpers": true,
-        "regenerator": true,
-        "version": "7.0.0-beta.0"
+        "version": "8.0.0-beta.0"
       }
     ]
   ]
