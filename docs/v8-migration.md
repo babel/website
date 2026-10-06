@@ -487,7 +487,34 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   React 19.2 removed the `source` and `self` parameters from `jsxDEV`. Babel 8 no longer passes them when calling `jsxDEV` in development mode.
 
-  **Migration**: If you are using React 19.2 or later you don't need to do anything. If you are using an older React version or a custom JSX runtime that still expects these arguments, set `developmentSourceSelf` to `true` in the preset, or `sourceSelf` to `true` in `@babel/plugin-transform-react-jsx-development`:
+  ```jsx title="in.jsx"
+  function Example () {
+    return <span>Foo</span>
+  }
+  ```
+
+  ```js title="out.js"
+  // Babel 8
+  function Example() {
+    return /*#__PURE__*/_jsxDEV("span", {
+      children: "Foo"
+    }, void 0, false);
+  }
+
+  // Babel 7
+  var _jsxFileName = "..."
+  function Example() {
+    return /*#__PURE__*/_jsxDEV("span", {
+      children: "Foo"
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 2,
+      columnNumber: 10
+    }, this);
+  }
+  ```
+
+  **Migration**: If you are using React 19.2 or later you don't need to do anything. If you are using an older React version or a custom JSX runtime that still expects these arguments, such as `preact`, set `developmentSourceSelf` to `true` in the preset, or `sourceSelf` to `true` in `@babel/plugin-transform-react-jsx-development`:
 
   ```diff title="babel.config.json"
     {
@@ -497,7 +524,8 @@ The following syntax plugins are no longer needed, you can safely remove them fr
       ]
     }
   ```
-    ```diff title="babel.config.json"
+
+  ```diff title="babel.config.json"
     {
       "plugins": [
   -     "@babel/plugin-transform-react-jsx-development",
