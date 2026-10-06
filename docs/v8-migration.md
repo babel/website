@@ -390,7 +390,7 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   **Migration**: Specify the minor version of core-js 3 that you use to ensure latest features will be polyfilled if required. For example,
 
-  ```js title=babel.config.mjs
+  ```js title="babel.config.mjs"
   import corejsPackage from "core-js/package.json" with { type: "json" }
   export default {
     "presets": [[
