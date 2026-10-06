@@ -238,8 +238,7 @@ enabled.
 </details>
 
 Turns an AST into code. This is the same function as [`generate` from `@babel/generator`](generator.md#api),
-so you don't need to depend on `@babel/generator` if you already use `@babel/core`. Its `GeneratorOptions`
-and `GeneratorResult` TypeScript types are also exported. Plugins and presets can access it as `api.generate`.
+so you don't need to depend on `@babel/generator` if you already use `@babel/core`. Plugins and presets can access it as `api.generate`.
 
 ### Example
 
