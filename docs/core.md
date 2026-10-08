@@ -191,7 +191,7 @@ babel
 
 ## parse
 
-> babel.parse(code: string, [options?](options.md): Object, callback: Function)
+> babel.parse(code: string, [options?](parser.md#options): Object, callback: Function)
 
 Given some code, parse it using Babel's standard behavior. Referenced presets and
 plugins will be loaded such that optional syntax plugins are automatically
@@ -207,7 +207,7 @@ will be dropped in Babel 8.
 
 ## parseSync
 
-> babel.parseSync(code: string, [options?](options.md): Object)
+> babel.parseSync(code: string, [options?](parser.md#options): Object)
 
 Returns an AST.
 
@@ -217,13 +217,58 @@ enabled.
 
 ## parseAsync
 
-> babel.parseAsync(code: string, [options?](options.md): Object)
+> babel.parseAsync(code: string, [options?](parser.md#options): Object)
 
 Returns a promise for an AST.
 
 Given some code, parse it using Babel's standard behavior. Referenced presets and
 plugins will be loaded such that optional syntax plugins are automatically
 enabled.
+
+## generate
+
+> babel.generate(ast: Object, [options?](generator.md#options): Object, code?: string | Object): [GeneratorResult](generator.md#result)
+
+<details>
+  <summary>History</summary>
+
+| Version  | Changes |
+| -------- | ------- |
+| `v8.1.0` | Added   |
+</details>
+
+Turns an AST into code. This is the same function as [`generate` from `@babel/generator`](generator.md#api),
+so you don't need to depend on `@babel/generator` if you already use `@babel/core`. Plugins and presets can access it as `api.generate`.
+
+### Example
+
+```js title="JavaScript"
+import { parseSync, traverse, generate } from "@babel/core";
+
+const ast = parseSync("var foo = 42", { configFile: false, babelrc: false });
+traverse(ast, {
+  VariableDeclaration(path) {
+    path.node.kind = "let";
+  },
+});
+
+generate(ast).code; // "let foo = 42;"
+```
+
+```js title="babel-plugin-comment-foo-call.js"
+export default commentCode(api) {
+  return {
+    name: "comment-foo-call"
+    visitor: {
+      CallExpression(path) {
+        if (path.get("callee").isIdentifier({ name: "foo" })) {
+          path.addComment("leading", api.generate(path.node).code);
+        }
+      }
+    }
+  }
+}
+```
 
 ## Advanced APIs
 

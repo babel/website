@@ -62,6 +62,14 @@ const { generate } = require("@babel/generator");
 import { generate } from "@babel/generator";
 ```
 
+:::tip
+Since `v8.1.0`, [`@babel/core`](core.md#generate) also exports `generate`. If your project already depends on `@babel/core`, you can import it from there instead of adding a dependency on `@babel/generator`:
+
+```js title="JavaScript"
+import { generate } from "@babel/core";
+```
+:::
+
 ### Options
 
 <details>
