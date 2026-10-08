@@ -255,6 +255,21 @@ traverse(ast, {
 generate(ast).code; // "let foo = 42;"
 ```
 
+```js title="babel-plugin-comment-foo-call.js"
+export default commentCode(api) {
+  return {
+    name: "comment-foo-call"
+    visitor: {
+      CallExpression(path) {
+        if (path.get("callee").isIdentifier({ name: "foo" })) {
+          path.addComment("leading", api.generate(path.node).code);
+        }
+      }
+    }
+  }
+}
+```
+
 ## Advanced APIs
 
 Many systems that wrap Babel like to automatically inject plugins and presets,
