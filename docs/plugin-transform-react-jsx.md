@@ -337,9 +337,14 @@ You can read more about configuring plugin options [here](./plugins.md#plugin-op
 
 `classic | automatic`, defaults to `automatic`
 
+<details>
+  <summary>History</summary>
 
-
-Added in: `v7.9.0`
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Default changed to `automatic` |
+| `v7.9.0` | Added |
+</details>
 
 Decides which runtime to use.
 

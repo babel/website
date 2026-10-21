@@ -102,6 +102,14 @@ require("@babel/core").transformSync("code", {
 
 `boolean`, defaults to `false`.
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Deprecated in favor of the [`noNewArrows`](assumptions.md#nonewarrows) assumption |
+</details>
+
 <p><details>
   <summary><b>Example</b></summary>
 

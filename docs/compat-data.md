@@ -15,6 +15,13 @@ npm install --save-dev @babel/compat-data
 
 ### plugins
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | `@babel/compat-data/plugins` resolves to a JSON file and must be imported as a JSON module |
+</details>
 
 ```javascript title="my-babel-plugin.js"
 import pluginsCompatData from "@babel/compat-data/plugins" with { type: "json" };

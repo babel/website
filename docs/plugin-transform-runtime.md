@@ -100,7 +100,13 @@ You can read more about configuring plugin options [here](./plugins.md#plugin-op
 
 ### `corejs`
 
+<details>
+  <summary>History</summary>
 
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed |
+</details>
 
 :::danger
 
@@ -110,7 +116,13 @@ This option has been removed in Babel 8. To inject polyfills, you can use [`babe
 
 ### `helpers`
 
+<details>
+  <summary>History</summary>
 
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed |
+</details>
 
 :::danger
 
@@ -143,7 +155,13 @@ This option controls which package of helpers `@babel/plugin-transform-runtime` 
 
 ### `version`
 
+<details>
+  <summary>History</summary>
 
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Default changed to `8.0.0-beta.0` |
+</details>
 
 By default transform-runtime assumes that `@babel/runtime@8.0.0` is installed. If you have later versions of
 `@babel/runtime` (or their corejs counterparts e.g. `@babel/runtime-corejs3`) installed or listed as a dependency, transform-runtime can use more advanced features.
@@ -220,6 +238,7 @@ The following options were removed in Babel 8.0.0:
 - `corejs`
 - `helpers`
 - `regenerator`
+- `useESModules`
 
 The following options were removed in Babel 7.0.0:
 - `useBuiltIns`

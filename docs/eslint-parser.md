@@ -74,6 +74,15 @@ With the parser set, your configuration can be configured as described in the [C
 
 Additional configuration options can be set in your ESLint configuration under the `parserOptions` key. Please note that the `ecmaFeatures` config property may still be required for ESLint to work properly with features not in ECMAScript 5 by default.
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed `allowImportExportEverywhere` (use `babelOptions.parserOpts` instead). `ecmaFeatures.globalReturn` defaults to `false` |
+| `v7.28.0` | Added `sourceType: "commonjs"` |
+</details>
+
 - `requireConfigFile` (default `true`) can be set to `false` to allow @babel/eslint-parser to run on files that do not have a Babel configuration associated with them. This can be useful for linting files that are not transformed by Babel (such as tooling configuration files), though we recommend using the default parser via [glob-based configuration](https://eslint.org/docs/user-guide/configuring/configuration-files#configuration-based-on-glob-patterns).
   Note: When `requireConfigFile` is `false`, @babel/eslint-parser will still try to load the root babel config. If no configuration file is found, @babel/eslint-parser will not parse any experimental syntax. Though not recommended, if you have a babel config, but would like to prevent @babel/eslint-parser from loading Babel config, please specify
 

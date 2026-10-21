@@ -56,6 +56,14 @@ output.includes("<div>");
 
 Babel generator contains exactly one function `generate`. It can be imported in different ways.
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| v7.27.0 | Added the `generate` named export |
+</details>
+
 ```js title="JavaScript"
 const generate = require("@babel/generator");
 const { generate } = require("@babel/generator");
@@ -69,10 +77,12 @@ import { generate } from "@babel/generator";
 
 | Version | Changes |
 | --- | --- |
-| v8.0.0  | Removed `importAttributesKeyword` |
+| v8.0.0  | Removed `importAttributesKeyword`, `decoratorsBeforeExport`, `jsonCompatibleStrings` and `recordAndTupleSyntaxType`. `jsescOption.minimal` defaults to `true` |
 | v7.26.0 | Added `experimental_preserveFormat` |
 | v7.22.0 | Added `importAttributesKeyword` |
 | v7.21.0 | Added `inputSourceMap` |
+| v7.15.0 | Added `topicToken` |
+| v7.9.0  | Added `recordAndTupleSyntaxType` |
 </details>
 
 Options for formatting output:

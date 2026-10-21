@@ -16,7 +16,17 @@ The pipeline operator has several competing proposals.
 Configure which proposal to use with the required `"proposal"` option.
 Its value is `"hack"` by default.
 
+<details>
+  <summary>History</summary>
 
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed the `"minimal"` and `"smart"` proposals |
+| `v7.17.0` | Added support for `topicToken: "^^"` and `topicToken: "@@"` |
+| `v7.16.0` | Added support for `topicToken: "^"` |
+| `v7.15.0` | Added the `"hack"` proposal and the `topicToken` option, with support for `"%"` and `"#"` |
+| `v7.5.0` | Added the `"fsharp"` proposal |
+</details>
 
 | Value | Proposal |
 | ----- | -------- |

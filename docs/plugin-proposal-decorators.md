@@ -84,6 +84,7 @@ require("@babel/core").transformSync("code", {
 
 | Version | Changes |
 | --- | --- |
+| `v8.0.0` | `version` is now required; removed support for `"2023-05"`, `"2023-01"`, `"2022-03"`, `"2021-12"` and `"2018-09"`; removed the `legacy` and `decoratorsBeforeExport` options |
 | `v7.24.0` | Added support for `version: "2023-11"` |
 | `v7.22.0` | Added support for `version: "2023-05"` |
 | `v7.21.0` | Added support for `version: "2023-01"` |

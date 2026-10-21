@@ -68,6 +68,8 @@ Replace the function used when compiling JSX expressions. This is so that we kno
 
 `string`, defaults to `React.Fragment`
 
+Added in: `v7.12.0`
+
 Replace the function used when compiling JSX fragment expressions. This is so that we know that the import is not a type import, and should not be removed.
 
 
@@ -84,7 +86,14 @@ Enables compilation of TypeScript namespaces.
 
 `boolean`, defaults to `false`
 
-Added in: `v7.7.0`
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed, it's now always enabled |
+| `v7.7.0` | Added |
+</details>
 
 > NOTE: This will be enabled by default in Babel 8
 
@@ -138,8 +147,8 @@ When it is set to `true`, Babel will provide a general TS plugin. If you want to
 
 | Version | Changes |
 | --- | --- |
-| `v7.9.0` | Added `onlyRemoveTypeImports`, defaults to `false` |
 | `v8.0.0` | defaults to `true` |
+| `v7.9.0` | Added `onlyRemoveTypeImports`, defaults to `false` |
 
 </details>
 

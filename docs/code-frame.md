@@ -117,6 +117,8 @@ the code frame.
 
 ### `highlight`
 
+Added in: `v7.26.0`
+
 The `highlight` function adds syntax highlighting to a code snipped, to be displayed in a terminal.
 
 ```js title="JavaScript"

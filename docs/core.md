@@ -15,6 +15,14 @@ All transformations will use your local [configuration files](config-files.md).
 
 > babel.transform(code: string, [options?](options.md): Object, callback: Function)
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | A callback is required; use `transformSync` for synchronous usage |
+</details>
+
 Transforms the passed in `code`. Calling a callback with an object with the generated code,
 source map, and AST.
 
@@ -137,6 +145,14 @@ babel.transformFileAsync("filename.js", options).then(result => {
 
 > babel.transformFromAst(ast: Object, code?: string, [options?](options.md): Object, callback: Function): FileNode | null
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | A callback is required; use `transformFromAstSync` for synchronous usage |
+</details>
+
 Given an [AST](https://astexplorer.net/), transform it.
 
 ```js title="JavaScript"
@@ -193,6 +209,14 @@ babel
 
 > babel.parse(code: string, [options?](options.md): Object, callback: Function)
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | A callback is required; use `parseSync` for synchronous usage |
+</details>
+
 Given some code, parse it using Babel's standard behavior. Referenced presets and
 plugins will be loaded such that optional syntax plugins are automatically
 enabled.
@@ -235,6 +259,14 @@ that aid in loading the configuration part-way without transforming.
 
 > babel.loadOptions([options?](options.md): Object)
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | A callback is required; use `loadOptionsSync` for synchronous usage |
+</details>
+
 Resolve Babel's options fully, resulting in an options object where:
 
 - `opts.plugins` is a full list of `Plugin` instances.
@@ -251,6 +283,15 @@ invalidate properly, but it is the best we have at the moment.
 ### loadPartialConfig
 
 > babel.loadPartialConfig([options?](options.md): Object): PartialConfig
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | A callback is required; use `loadPartialConfigSync` for synchronous usage |
+| `v7.12.0` | Added the `showIgnoredFiles` option and the `fileHandling` and `files` properties |
+</details>
 
 To allow systems to easily manipulate and validate a user's config, this function
 resolves the plugins and presets and proceeds no further. The expectation is
@@ -286,6 +327,14 @@ function for information about `ConfigItem` fields.
 
 > babel.createConfigItem(value: string | \{} | Function | [string | \{} | Function, \{} | void], \{ dirname?: string, type?: "preset" | "plugin" }): ConfigItem
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | A callback is required; use `createConfigItemSync` for synchronous usage |
+</details>
+
 Allows build tooling to create and cache config items up front. If this function
 is called multiple times for a given plugin, Babel will call the plugin's function itself
 multiple times. If you have a clear set of expected plugins and presets to
@@ -306,6 +355,14 @@ Each `ConfigItem` exposes all of the information Babel knows. The fields are:
 ## DEFAULT_EXTENSIONS
 
 > babel.DEFAULT_EXTENSIONS: readonly string[];
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.13.0` | Added `".cjs"` |
+</details>
 
 A list of default extensions supported by babel (".js", ".jsx", ".es6", ".es", ".mjs", "cjs").
 This list is used by @babel/register and @babel/cli to determine which files need transpiling.

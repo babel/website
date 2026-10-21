@@ -59,6 +59,14 @@ require("@babel/core").transformSync("code", {
 
 `boolean`, defaults to `false`.
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed support for the `assert` keyword: this option no longer has any effect |
+</details>
+
 If enabled, support parsing import attributes using the [deprecated](https://tc39.es/proposal-import-attributes/#sec-deprecated-assert-keyword-for-import-attributes) `assert` keyword:
 
 ```js title="JavaScript"

@@ -71,6 +71,14 @@ NODE_NO_READLINE=1 rlwrap --always-readline npx babel-node
 
 ### Usage
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Options for Node.js and Babel must be placed before the file name; all the arguments after it are passed to the script |
+</details>
+
 ```sh title="Shell"
 babel-node [options] [ -e script | [--] script.js ] [arguments]
 ```

@@ -62,7 +62,14 @@ require("@babel/core").transformSync("code", {
 
 `boolean`, defaults to `false`
 
-Added in `v7.7.0`
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed, it's now always enabled |
+| `v7.7.0` | Added |
+</details>
 
 :::note
 This will be enabled by default in Babel 8
@@ -86,8 +93,8 @@ class A {
 
 | Version | Changes |
 | --- | --- |
-| `v7.5.0` | Added `allowNamespaces`, defaults to `false` |
 | `v7.13.0` | defaults to `true` |
+| `v7.5.0` | Added `allowNamespaces`, defaults to `false` |
 </details>
 
 Enables compilation of TypeScript namespaces.
@@ -112,6 +119,14 @@ This option will enable parsing within a TypeScript ambient context, where certa
 
 `boolean`, defaults to `false`
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed |
+</details>
+
 Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as TypeScript's legacy type assertion `var foo = <string>bar;`. Also, `isTSX: true` requires `allExtensions: true`.
 
 ### `jsxPragma`
@@ -123,6 +138,8 @@ Replace the function used when compiling JSX expressions. This is so that we kno
 ### `jsxPragmaFrag`
 
 `string`, defaults to `React.Fragment`
+
+Added in: `v7.12.0`
 
 Replace the function used when compiling JSX fragment expressions. This is so that we know that the import is not a type import, and should not be removed.
 

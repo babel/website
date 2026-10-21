@@ -34,7 +34,7 @@ mind. When in doubt, use `.parse()`.
 
 | Version   | Changes                                            |
 | --------- | -------------------------------------------------- |
-| `v8.0.0`  | Added `locations`                                  |
+| `v8.0.0`  | Added `locations`. `createImportExpressions` defaults to `true`. `startIndex` and `startColumn` are required when `startLine` is greater than `1` |
 | `v7.28.0` | Added `sourceType: "commonjs"`                     |
 | `v7.27.0` | Added `allowYieldOutsideFunction`                  |
 | `v7.26.0` | Added `startIndex`                                 |
@@ -233,6 +233,21 @@ require("@babel/parser").parse("code", {
 
 #### ECMAScript [proposals](https://github.com/babel/proposals)
 
+<details>
+  <summary>History</summary>
+
+| Version   | Changes                                                                                                         |
+| --------- | --------------------------------------------------------------------------------------------------------------- |
+| `v8.0.0`  | Removed `decimal`, `deprecatedImportAssert`, `importAssertions`, `importReflection`, `moduleAttributes` and `recordAndTuple` |
+| `v7.28.0` | Added `discardBinding`                                                                                          |
+| `v7.23.0` | Added `sourcePhaseImports`, `deferredImportEvaluation`, `optionalChainingAssign`                                |
+| `v7.17.0` | Added `destructuringPrivate`, `decoratorAutoAccessors`                                                          |
+| `v7.14.0` | Added `asyncDoExpressions`                                                                                      |
+| `v7.13.0` | Added `moduleBlocks`                                                                                            |
+| `v7.4.0`  | Added `partialApplication`                                                                                      |
+
+</details>
+
 | Name                                                                                                                | Code Example                                                     |
 | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `asyncDoExpressions` ([proposal](https://github.com/tc39/proposal-async-do-expressions))                            | `async do { await requestAPI().json() }`                         |
@@ -261,11 +276,14 @@ require("@babel/parser").parse("code", {
 
 | Version  | Changes                                                                                                                                       |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `7.21.0` | The default behavior of the `decorators`' `decoratorsBeforeExport` option is to allow decorators either before or after the `export` keyword. |
-| `7.19.0` | The `syntaxType` option of the `recordAndTuple` plugin defaults to `hash`; added `allowCallParenthesized` option for the `decorators` plugin. |
-| `7.17.0` | Added `@@` and `^^` to the `topicToken` option of the `hack` pipeline operator                                                                |
-| `7.16.0` | Added `disallowAmbiguousJSXLike` for `typescript` plugin. Added `^` to the `topicToken` option of the `hack` pipeline operators               |
-| `7.14.0` | Added `dts` for `typescript` plugin                                                                                                           |
+| `v8.0.0` | Removed the `decoratorsBeforeExport` and `allowCallParenthesized` options of the `decorators` plugin. Removed `minimal` and `smart` from the `proposal` option of `pipelineOperator`. The `version` option of `partialApplication` is required |
+| `v7.21.0` | The default behavior of the `decorators`' `decoratorsBeforeExport` option is to allow decorators either before or after the `export` keyword. |
+| `v7.19.0` | The `syntaxType` option of the `recordAndTuple` plugin defaults to `hash`; added `allowCallParenthesized` option for the `decorators` plugin. |
+| `v7.17.0` | Added `@@` and `^^` to the `topicToken` option of the `hack` pipeline operator                                                                |
+| `v7.16.0` | Added `disallowAmbiguousJSXLike` for `typescript` plugin. Added `^` to the `topicToken` option of the `hack` pipeline operators               |
+| `v7.15.0` | Added `hack` to the `proposal` option of `pipelineOperator`, with `%` and `#` as `topicToken` |
+| `v7.14.0` | Added `dts` for `typescript` plugin                                                                                                           |
+| `v7.5.0`  | Added `fsharp` to the `proposal` option of `pipelineOperator`                                                                                  |
 
 </details>
 

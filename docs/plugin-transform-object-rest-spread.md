@@ -64,6 +64,14 @@ By default, this plugin will produce spec compliant code by using Babel's `objec
 
 `boolean`, defaults to `false`.
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Deprecated in favor of [`assumptions`](assumptions.md) |
+</details>
+
 Enabling this option will use Babel's `extends` helper, which is basically the same as `Object.assign` (see `useBuiltIns` below to use it directly).
 
 :::caution
@@ -84,7 +92,15 @@ For detailed information please check out [Spread VS. Object.assign](http://2ali
 
 ### `useBuiltIns`
 
-`boolean`, defaults to `false`.
+`boolean`, defaults to `true` if the [targets](options.md#targets) support `Object.assign`, `false` otherwise.
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.13.8` | Default changed to `true` when the targets support `Object.assign` |
+</details>
 
 Enabling this option will use `Object.assign` directly instead of the Babel's `extends` helper.
 

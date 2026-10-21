@@ -69,6 +69,15 @@ Most popular presets are: [`env`](./preset-env.md), [`react`](./preset-react.md)
 If you want to pass additional options, refer to the [custom presets](#custom-presets-passing-options-to-built-in-presetsplugins) section.
 
 #### `data-plugins`
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | `transform-class-properties`, `transform-object-rest-spread` and `transform-flow-strip-types` are no longer enabled by default when `data-plugins` is not specified |
+</details>
+
 Use the `data-plugins` attribute to enable builtin Babel plugins. Multiple values are comma separated.
 
 ```html
@@ -81,7 +90,14 @@ If you want to add custom plugins, refer to the [custom plugins](#custom-plugins
 
 #### `data-targets`
 
-Added in: `v7.29.0`
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | When not specified, the targets default to the browserslist `defaults` query |
+| `v7.29.0` | Added |
+</details>
 
 Use the `data-targets` attribute to specify the [compilation targets](./options.md#targets) of the project.
 
@@ -119,6 +135,8 @@ var output = Babel.transform(input, { presets: ["env"] }).code;
 Note that [config files](config-files.md) don't work in `@babel/standalone`, as no file system access is available. The presets and/or plugins to use **must** be specified in the options passed to `Babel.transform`.
 
 ### Internal packages
+
+Added in: `v7.24.0`
 
 `@babel/standalone` exposes some internal Babel packages on the `Babel.packages` object:
 - `Babel.packages.generator`

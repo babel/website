@@ -56,6 +56,8 @@ module.exports = (api) => {
 
 ### `requeueComputedKeyAndDecorators`
 
+Added in: `v7.18.2`
+
 ```typescript
 requeueComputedKeyAndDecorators(path: NodePath): void
 ```
