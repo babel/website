@@ -88,7 +88,7 @@ Consider migrating to the top level [`iterableIsArray`](assumptions.md#iterablei
 
 `boolean`, defaults to `false`.
 
-Enabling this option will use `Object.assign` directly instead of the Babel's `extends` helper.
+Enabling this option will use `Object.assign` directly instead of the Babel's `extends` helper, to copy the properties of an object rest element that doesn't exclude any key.
 
 ##### Example
 
@@ -112,7 +112,7 @@ var { ...x } = z;
 
 ```js title="JavaScript"
 var _z = z,
-  x = Object.assign({}, _z);
+  x = _objectWithoutProperties(Object.assign(Object.create(null), (_objectDestructuringEmpty(_z), _z)), []);
 ```
 
 :::tip
