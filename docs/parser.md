@@ -238,6 +238,7 @@ require("@babel/parser").parse("code", {
 
 | Version   | Changes                                                                                                         |
 | --------- | --------------------------------------------------------------------------------------------------------------- |
+| `v8.1.0`  | Added `structs`                                                                                                 |
 | `v8.0.0`  | Removed `decimal`, `deprecatedImportAssert`, `importAssertions`, `importReflection`, `moduleAttributes` and `recordAndTuple` |
 | `v7.28.0` | Added `discardBinding`                                                                                          |
 | `v7.23.0` | Added `sourcePhaseImports`, `deferredImportEvaluation`, `optionalChainingAssign`                                |
@@ -265,6 +266,7 @@ require("@babel/parser").parse("code", {
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                                     | `f(?, a)`                                                        |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29))                                       | <code>a &#124;> b</code>                                         |
 | `sourcePhaseImports` ([proposal](https://github.com/tc39/proposal-source-phase-imports))                            | `import source x from "./x"`                                     |
+| `structs` ([proposal](https://github.com/tc39/proposal-structs))                                                    | `struct Point { x; y; }`                                         |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23))                                       | `() => throw new Error("")`                                      |
 
 
