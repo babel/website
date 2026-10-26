@@ -123,6 +123,8 @@ Check out the [babel-core documentation](core.md) to see more configuration opti
 
 ## Print effective configs
 
+Added in: `v7.11.0`
+
 You can tell Babel to print effective configs on a given input path
 
 import Tabs from '@theme/Tabs';

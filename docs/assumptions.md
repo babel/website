@@ -183,6 +183,14 @@ let name = user?.name;
 
 ## `noIncompleteNsImportDetection`
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.15.0` | Added `noIncompleteNsImportDetection` assumption |
+</details>
+
 Assume that no own property of a module export object is observed before initialization.
 For example, when trying to access `ns.foo`, it will return `undefined` both with this assumption turned on or off. The
 difference is that `Object.prototype.hasOwnProperty.call(ns, "foo")` would return `false` when

@@ -60,6 +60,14 @@ This option will enable parsing within a TypeScript ambient context, where certa
 
 `boolean`, defaults to `false`.
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed |
+</details>
+
 Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as typescript's legacy type assertion `var foo = <string>bar;`
 
 :::tip

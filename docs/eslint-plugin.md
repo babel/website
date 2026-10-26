@@ -55,6 +55,15 @@ Each rule corresponds to a core `eslint` rule and has the same options.
 
 🛠: means it's autofixable with `--fix`.
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed `@babel/no-invalid-this`, `@babel/object-curly-spacing` and `@babel/semi` |
+| `v7.23.5` | Added `@babel/no-undef` |
+</details>
+
 - `@babel/new-cap`: handles decorators (`@Decorator`)
 - `@babel/no-undef`: handles class accessor properties (`class A { accessor x = 2 }`)
 - `@babel/no-unused-expressions`: handles `do` expressions

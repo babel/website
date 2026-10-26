@@ -328,15 +328,17 @@ support for defining ordering between plugins.
 Type: `string | Array<string> | { [string]: string }`<br />
 Default: `{}`<br />
 Placement: Allowed in Babel's programmatic options, or in config files<br />
-Added in: `v7.13.0`<br />
 
 <details>
   <summary>History</summary>
 
 | Version | Changes |
 | --- | --- |
+| `v8.0.0` | Use browserslist's `defaults` query when no targets are specified |
+| `v7.22.6` | Support `opera_mobile` target |
 | `v7.20.0` | Support `deno` target |
 | `v7.15.0` | Support `rhino` target |
+| `v7.13.0` | Added |
 </details>
 
 Describes the environments you support/target for your project.
@@ -360,7 +362,7 @@ Or an object of minimum environment versions to support:
 }
 ```
 
-Supported environments: `android`, `chrome`, `deno`, `edge`, `electron`, `firefox`, `ie`, `ios`, `node`, `opera`, `rhino`, `safari`, `samsung`.
+Supported environments: `android`, `chrome`, `deno`, `edge`, `electron`, `firefox`, `ie`, `ios`, `node`, `opera`, `opera_mobile`, `rhino`, `safari`, `samsung`.
 
 If a minor version is not specified, Babel will interpret it as `MAJOR.0`. For example, `"node": 12` will be considered as Node.js 12.0.
 
@@ -379,6 +381,7 @@ Type: `boolean` | "intersect"
 
 | Version | Changes |
 | --- | --- |
+| `v8.0.0` | `esmodules: true` is an alias of `esmodules: "intersect"` |
 | `v7.13.0` | Support `"intersect"` |
 </details>
 
@@ -585,6 +588,14 @@ options as a less aggressive alternative.
 Type: `boolean | SourceMap`<br />
 Default: `true`<br />
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Only a `sourceMappingURL` comment at the end of the file is used to load the input source map |
+</details>
+
 `true` will attempt to load an input sourcemap from the file itself, if it
 contains a `//# sourceMappingURL=...` comment. If no map is found, or the
 map fails to load and parse, it will be silently discarded.
@@ -633,6 +644,14 @@ The `sourceRoot` fields to set in the generated source map, if one is desired.
 
 Type: `"script" | "module" | "commonjs" | "unambiguous"`<br />
 Default: "module"<br />
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.28.0` | Support `"commonjs"` |
+</details>
 
 - `"script"` - Parse the file using the ECMAScript Script grammar. No `import`/`export` statements allowed, and files are not in strict mode.
 - `"module"` - Parse the file using the ECMAScript Module grammar. Files are automatically strict, and `import`/`export` statements are allowed.
@@ -799,11 +818,27 @@ For more code generator options, see [Generator Options](generator.md#options).
 Type: `boolean`<br />
 Default: `!!opts.moduleId`<br />
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed from `@babel/core` options, use the `moduleIds` option of the AMD, UMD or SystemJS module transform plugin instead |
+</details>
+
 Enables module ID generation.
 
 ### `moduleId`
 
 Type: `string`<br />
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed from `@babel/core` options, use the `moduleId` option of the AMD, UMD or SystemJS module transform plugin instead |
+</details>
 
 A hard-coded ID to use for the module. Cannot be used alongside `getModuleId`.
 
@@ -811,12 +846,28 @@ A hard-coded ID to use for the module. Cannot be used alongside `getModuleId`.
 
 Type: `(name: string) => string`<br />
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed from `@babel/core` options, use the `getModuleId` option of the AMD, UMD or SystemJS module transform plugin instead |
+</details>
+
 Given the babel-generated module name, return the name to use. Returning
 a falsy value will use the original `name`.
 
 ### `moduleRoot`
 
 Type: `string`<br />
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed from `@babel/core` options, use the `moduleRoot` option of the AMD, UMD or SystemJS module transform plugin instead |
+</details>
 
 A root path to include on generated module names.
 

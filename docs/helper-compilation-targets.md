@@ -109,6 +109,16 @@ When a new ES feature reaches stage-4, it will be matured in `@babel/parser`, wh
 
 ## getTargets
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | When no targets are specified, the browserslist `defaults` query is used. `esmodules: true` behaves like `esmodules: "intersect"` |
+| `v7.13.0` | Added the `configFile` option and `esmodules: "intersect"` |
+| `v7.10.0` | Added the `browserslistEnv` option |
+</details>
+
 ```typescript
 type GetTargetsOption = {
   // This is not the path of the config file, but the path where start searching it from

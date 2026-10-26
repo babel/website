@@ -78,15 +78,38 @@ For more information on setting options for a preset, refer to the [preset optio
 
 `string | Array<string> | { [string]: string }`, defaults to the top-level `targets` option if no browserslist-related option is specified in `@babel/preset-env`'s docs, otherwise to `{}`.
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.13.0` | Defaults to the top-level `targets` option |
+</details>
+
 For usage, refer to the [`targets` option](options.md#targets) documentation.
 
 ### `bugfixes`
 
+<details>
+  <summary>History</summary>
 
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed, bugfix plugins are always enabled |
+| `v7.9.0` | Added |
+</details>
 
 This option has been removed in Babel 8. `@babel/preset-env` will always compile the broken syntax to the closest _non-broken modern syntax_ supported by your target browsers.
 
 ### `loose`, `spec`
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed |
+</details>
 
 :::danger
 These options have been removed in Babel 8. Consider migrating to the top level [`assumptions`](assumptions.md), available since Babel 7.13. See ["Migrating from `@babel/preset-env`'s `"loose"` and `"spec"` modes"](assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the equivalent assumptions-based configuration, ready to be copied and pasted as a starting point.
@@ -103,6 +126,14 @@ Enable transformation of ES module syntax to another module type. Note that `cjs
 Setting this to `false` will preserve ES modules. Use this only if you intend to ship native ES Modules to browsers. If you are using a bundler with Babel, the default `modules: "auto"` is always preferred.
 
 #### `modules: "auto"`
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Assumes ES modules support unless the caller specifies otherwise |
+</details>
 
 By default `@babel/preset-env` uses [`caller`](options.md#caller) data to determine whether ES modules and module features (e.g. `import()`) should be transformed. Generally `caller` data will be specified in the bundler plugins (e.g. `babel-loader`, `@rollup/plugin-babel`) and thus it is not recommended to pass `caller` data yourself -- The passed `caller` may overwrite the one from bundler plugins and in the future you may get suboptimal results if bundlers supports new module features.
 
@@ -123,6 +154,7 @@ Outputs to `console.log` the polyfills and transform plugins enabled by `preset-
 
 | Version | Changes |
 | --- | --- |
+| `v8.0.1` | Removed support for `core-js` polyfills |
 | `v7.4.0` | Support injecting `core-js@3` polyfills |
 </details>
 
@@ -168,7 +200,13 @@ This option is useful for excluding a transform like `@babel/plugin-transform-re
 
 ### `useBuiltIns`, `corejs`
 
+<details>
+  <summary>History</summary>
 
+| Version | Changes |
+| --- | --- |
+| `v8.0.1` | Removed |
+</details>
 
 :::danger
 
@@ -280,7 +318,14 @@ Don't add polyfills automatically per file, and don't transform `import "core-js
 
 ### `corejs`
 
-Added in: `v7.4.0`
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.1` | Removed |
+| `v7.4.0` | Added |
+</details>
 
 
 
@@ -370,8 +415,9 @@ The [Browserslist environment](https://github.com/browserslist/browserslist#conf
 
 | Version | Changes |
 | --- | --- |
-| `v7.14.0` | Include private field brand checks |
-| `v7.12.0` | Include class static block and import assertions |
+| `v7.22.0` | Include import attributes |
+| `v7.18.0` | Include import assertions |
+| `v7.14.0` | Include class static block and private field brand checks |
 | `v7.10.0` | Include class properties and private methods |
 | `v7.9.0` | Include numeric separator |
 </details>

@@ -78,7 +78,14 @@ f < T > e;
 
 `boolean`, defaults to `false`
 
-Added in: `v7.9.0`
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Removed, it's now always enabled |
+| `v7.9.0` | Added |
+</details>
 
 :::note
 This will be enabled by default in Babel 8

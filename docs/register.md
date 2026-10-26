@@ -95,6 +95,14 @@ environment variables exposed to allow you to do this.
 
 ### BABEL_CACHE_PATH
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | The cache is stored in a directory rather than in a single JSON file |
+</details>
+
 Specify a different cache location.
 
 ```sh title="Shell"
@@ -141,6 +149,15 @@ Because it is your own code that triggered the load, and not the logic within
 that loads synchronously.
 
 ## Experimental Babel 8 implementation
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | This is now the only implementation of `@babel/register`; the `@babel/register/experimental-worker` entry point has been removed |
+| `v7.17.0` | Added |
+</details>
 
 You can also test the new experimental implementation that will be enabled by default in Babel 8, using
 ```js title="JavaScript"

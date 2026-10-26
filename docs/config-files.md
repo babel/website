@@ -12,6 +12,9 @@ Babel has two parallel config file formats, which can be used together, or indep
 
 | Version | Changes |
 | --- | --- |
+| `v8.0.0`  | TypeScript config files are always loaded using Node.js native TypeScript support, rather than compiling `.cts` files with `@babel/preset-typescript` |
+| `v7.27.7` | Support `babel.config.ts` and `babel.config.mts` |
+| `v7.26.7` | Support `.ts` and `.mts` config files when Node.js natively supports TypeScript |
 | `v7.21.0` | Support `.babelrc.cts` and `babel.config.cts` (Experimental) |
 | `v7.8.0`  | Support `.babelrc.mjs` and `babel.config.mjs` |
 | `v7.7.0`  | Support `.babelrc.json`, `.babelrc.cjs`, `babel.config.json`, `babel.config.cjs` |

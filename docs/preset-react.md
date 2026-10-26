@@ -76,9 +76,14 @@ require("@babel/core").transformSync("code", {
 
 `classic | automatic`, defaults to `automatic`
 
+<details>
+  <summary>History</summary>
 
-
-Added in: `v7.9.0`
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Default changed to `automatic` |
+| `v7.9.0` | Added |
+</details>
 
 
 
@@ -92,6 +97,14 @@ Decides which runtime to use.
 
 `boolean`, defaults to `true` if Babel's [`envName`](./options.md#envname) id `"development"`, and `false` otherwise.
 
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v8.0.0` | Default changed to `true` when `envName` is `"development"` |
+</details>
+
 This toggles behavior specific to development, such as adding `__source` and `__self`.
 
 This is useful when combined with the [env option](options.md#env) configuration or [js config files](config-files.md#supported-file-extensions).
@@ -99,6 +112,8 @@ This is useful when combined with the [env option](options.md#env) configuration
 #### `developmentSourceSelf`
 
 `boolean`, defaults to `false`.
+
+Added in: `v8.0.0`
 
 When `true`, the plugin generates `__source` and `__self` arguments in `jsxDEV` calls. These were used by older versions of React for development warnings but have been removed since React 19.2.
 
@@ -117,6 +132,15 @@ Though the JSX spec allows this, it is disabled by default since React's JSX doe
 #### `pure`
 
 `boolean`, defaults to `true`.
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| `v7.10.0` | Also enables `@babel/plugin-transform-react-pure-annotations` |
+| `v7.9.0` | Added |
+</details>
 
 Enables `@babel/plugin-transform-react-pure-annotations`. It will mark top-level React method calls as pure for tree shaking.
 
