@@ -45,10 +45,20 @@ require("@babel/core").transformSync("code", {
 
 | Version | Changes |
 | --- | --- |
+| `v8.1.0` | Added support for `"2021-10"` |
 | `v8.0.0` | Added the `version` option with support for `"2018-07"` |
 </details>
 
 ### `version` (required)
 
-There is only one version currently supported:
 - `"2018-07"` is the proposal version after the updates that was discussed in the July 2018 TC39 meeting.
+  ```js
+  const addOne = add(1, ?);
+  ```
+- `"2021-10"` is the proposal version after the updates in October 2021. A partial application is marked with `~`, and supports ordinal placeholders (`?0`) and a rest placeholder (`...`).
+  ```js
+  const addOne = add~(1, ?);
+  const flip = f~(?1, ?0);
+  const bound = f~(a, ...);
+  const make = new Point~(?, 0);
+  ```
