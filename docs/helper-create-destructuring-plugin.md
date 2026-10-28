@@ -333,7 +333,13 @@ Object spread doesn't use the lowering engine: consecutive properties are groupe
 const o = _setPrototypeOf(_objectSpread(_objectSpread({}, a), {}, { b }), _getPrototypeOf({ __proto__: p }));
 ```
 
-The methods of the object literal are moved to the object passed to the helper, so their home object would be that object instead of the result: their `super` references are rewritten against the result, stored in a temporary. In a loop, the temporary is declared with `let` in the loop body, so that the methods of each iteration see their own object:
+The methods of the object literal are moved to the object passed to the helper, so their home object would be that object instead of the result: their `super` references are rewritten against the result, stored in a temporary. Each evaluation of the literal needs its own temporary, so that the methods of the objects it created before keep their home object:
+
+- In a loop body, the temporary is declared with `let` in the body, so that each iteration has its own binding.
+- In a parameter or an instance field initializer, which are evaluated at each call or for each instance without a scope where the temporary could be declared, the temporary is the parameter of an arrow function called in place, which preserves `this`, `super`, `new.target` and `arguments`: `function make(o = (_obj => _obj = _objectSpread({ m() { return _superPropGet(_obj, "x", this); } }, a))()) {}`.
+- In a loop header evaluated at each iteration (the condition of a `while`, the test or update of a `for`), the methods following a spread element are defined on the object being built by a closure receiving it, and the methods before the first spread element stay native, on the object that becomes the result.
+
+Otherwise, the temporary is declared with `var` in the enclosing function:
 
 ```js title="input.js"
 const o = { ...a, m() { return super.x; } };
@@ -358,7 +364,7 @@ The previous plugins often crawled the scope again after transforming a pattern,
 
 The replacement is registered by walking it directly rather than with `path.traverse`, and paths are only created for the nodes that are registered: the nodes moved from the original statement keep their paths, and the new references are added without searching the existing ones.
 
-Temporaries hoisted with `scope.push` are registered in the function scope, where a crawl registers `var` declarations. They are declared in the function scope directly when the lowered statement is the body of a loop without braces: `scope.push` would wrap it in a block, whose new scope would be crawled while the lowered nodes are still in the tree. The `for-of`/`for-in`, `catch` and conflicting function parameter transforms, and object spread with `super` in a loop, still crawl the scope they rewrite (after forgetting the information of its nodes when they move them).
+Temporaries hoisted with `scope.push` are registered in the function scope, where a crawl registers `var` declarations. They are declared in the function scope directly when the lowered statement is the body of a loop without braces: `scope.push` would wrap it in a block, whose new scope would be crawled while the lowered nodes are still in the tree. The `for-of`/`for-in`, `catch` and conflicting function parameter transforms, and object spread with `super` methods, still crawl the scope they rewrite (after forgetting the information of its nodes when they move them).
 
 ## Known limitations
 
