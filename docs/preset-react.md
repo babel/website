@@ -117,7 +117,7 @@ Added in: `v8.0.0`
 
 When `true`, the plugin generates `__source` and `__self` arguments in `jsxDEV` calls. These were used by older versions of React for development warnings but have been removed since React 19.2.
 
-Set this to `true` if you are using a React version older than 19.2 or a custom JSX runtime that depends on these arguments.
+Set this to `true` if you are using a React version older than 19.2 or a custom JSX runtime that depends on these arguments, such as `preact`.
 
 #### `throwIfNamespace`
 
