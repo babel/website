@@ -242,6 +242,7 @@ module.exports = {
       label: "Helper Packages",
       items: [
         "babel-helper-compilation-targets",
+        "babel-helper-create-destructuring-plugin",
         "babel-helper-module-imports",
         "babel-helper-validator-identifier",
         "babel-helper-environment-visitor",
