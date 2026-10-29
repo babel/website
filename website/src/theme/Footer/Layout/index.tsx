@@ -1,14 +1,16 @@
 import React, {type ReactNode} from 'react';
 import clsx from 'clsx';
 import {ThemeClassNames} from '@docusaurus/theme-common';
+import {useLocation} from '@docusaurus/router';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import type {Props} from '@theme/Footer/Layout';
 
 export default function FooterLayout({
   style,
   links,
   logo,
-  copyright,
 }: Props): ReactNode {
+  const isHomepage = useLocation().pathname === useBaseUrl('/');
   return (
     <footer
       className={clsx(ThemeClassNames.layout.footer.container, 'footer', {
@@ -20,9 +22,11 @@ export default function FooterLayout({
           {logo && <div className="margin-bottom--sm">{logo}</div>}
           {links}
         </div>
-        {copyright && (
+        {isHomepage && (
           <div className="row">
-            <div className="col footer__bottom text--center">{copyright}</div>
+            <div className="col footer__bottom text--center">
+              This website is hosted by <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer">Netlify</a>.
+            </div>
           </div>
         )}
       </div>
