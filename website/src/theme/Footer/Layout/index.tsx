@@ -25,7 +25,7 @@ export default function FooterLayout({
         {isHomepage && (
           <div className="row">
             <div className="col footer__bottom text--center">
-              This website is hosted by <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer">Netlify</a>.
+              This website is hosted by <Link to="https://www.netlify.com/">Netlify</Link>.
             </div>
           </div>
         )}
