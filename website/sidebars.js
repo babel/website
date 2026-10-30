@@ -266,6 +266,7 @@ module.exports = {
         "babel-plugin-proposal-discard-binding",
         "babel-plugin-proposal-do-expressions",
         "babel-plugin-proposal-export-default-from",
+        "babel-plugin-proposal-filtered-namespaces",
         "babel-plugin-proposal-function-bind",
         "babel-plugin-proposal-function-sent",
         "babel-plugin-proposal-import-defer",

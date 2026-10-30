@@ -254,6 +254,7 @@ require("@babel/parser").parse("code", {
 | `decorators` ([proposal](https://github.com/tc39/proposal-decorators)) <br/> `decorators-legacy`                    | `@a class A {}`                                                  |
 | `decoratorAutoAccessors` ([proposal](https://github.com/tc39/proposal-decorators))                                  | `class Example { @reactive accessor myBool = false; }`           |
 | `deferredImportEvaluation` ([proposal](https://github.com/tc39/proposal-defer-import-eval))                         | `import defer * as ns from "dep";`                               |
+| `deferredReexports` ([proposal](https://github.com/tc39/proposal-deferred-reexports))                               | `export defer { x } from "dep";`                                 |
 | `destructuringPrivate` ([proposal](https://github.com/tc39/proposal-destructuring-private))                         | `class Example { #x = 1; method() { const { #x: x } = this; } }` |
 | `discardBinding` ([proposal](https://github.com/tc39/proposal-discard-binding))                                     | `using void = new Lock(mutex)`                                   |
 | `doExpressions` ([proposal](https://github.com/tc39/proposal-do-expressions))                                       | `var a = do { if (true) { 'hi'; } };`                            |
@@ -261,11 +262,16 @@ require("@babel/parser").parse("code", {
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                                         | `a::b`, `::console.log`                                          |
 | `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))                                         | `function* g() { function.sent }`                                                  |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                                      | `let m = module { export let y = 1; };`                          |
+| `namespaceImportFilter` ([proposal](https://github.com/tc39/proposal-deferred-reexports))                           | `import { x, y } as ns from "dep";`                              |
 | `optionalChainingAssign` ([proposal](https://github.com/tc39/proposal-optional-chaining-assignment))                | `x?.prop = 2`                                                    |
 | `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                                     | `f(?, a)`                                                        |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29))                                       | <code>a &#124;> b</code>                                         |
 | `sourcePhaseImports` ([proposal](https://github.com/tc39/proposal-source-phase-imports))                            | `import source x from "./x"`                                     |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23))                                       | `() => throw new Error("")`                                      |
+
+:::note
+The `deferredReexports` plugin requires the `deferredImportEvaluation` plugin to also be enabled.
+:::
 
 
 
