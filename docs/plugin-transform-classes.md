@@ -144,6 +144,8 @@ Consider migrating to the top level [`assumptions`](assumptions.md) which offers
   "assumptions": {
     "constantSuper": true,
     "noClassCalls": true,
+    "noClassPrototypeAssign": true,
+    "noConstructorPrimitiveReturn": true,
     "setClassMethods": true,
     "superIsCallableConstructor": true
   }

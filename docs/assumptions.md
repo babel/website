@@ -168,6 +168,67 @@ class Test {
 
 </div>
 
+## `noClassPrototypeAssign`
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| v8.1.0 | Added `noClassPrototypeAssign` assumption |
+</details>
+
+When transforming classes, assume that the code never tries to reassign or redefine the `prototype` property of a class.
+
+When this assumption is enabled, Babel can skip the `createClass` helper in some cases, and the `prototype` property of compiled classes may be writable. When combined with [`setClassMethods`](#setclassmethods), the `prototype` is _guaranteed_ to be left as writable.
+
+<div is="assumption-repl" data-assumption="noClassPrototypeAssign" data-plugins="transform-classes">
+
+```js title="JavaScript"
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+```
+
+</div>
+
+## `noConstructorPrimitiveReturn`
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| v8.1.0 | Added `noConstructorPrimitiveReturn` assumption |
+</details>
+
+When transforming classes, assume that class constructors never explicitly return a primitive value other than `undefined`: they either return an object, or don't return anything.
+
+```js title="JavaScript"
+class Foo extends Bar {
+  constructor() {
+    super();
+    return 1; // This should throw a TypeError
+  }
+}
+```
+
+<div is="assumption-repl" data-assumption="noConstructorPrimitiveReturn" data-plugins="transform-classes">
+
+```js title="JavaScript"
+class Child extends Parent {
+  constructor(cached) {
+    super();
+    if (cached) return cached;
+  }
+}
+```
+
+</div>
+
 ## `noDocumentAll`
 
 When using operators that check for `null` or `undefined`, assume that they are never used with the special value `document.all`.
@@ -246,6 +307,31 @@ class MyClass {
 
   method() {
     return MyClass.#id;
+  }
+}
+```
+
+</div>
+
+## `noUninitializedThis`
+
+<details>
+  <summary>History</summary>
+
+| Version | Changes |
+| --- | --- |
+| v8.1.0 | Added `noUninitializedThis` assumption |
+</details>
+
+When transforming classes, assume that the constructors of subclasses never access `this` before it's initialized by calling `super()`.
+
+<div is="assumption-repl" data-assumption="noUninitializedThis" data-plugins="transform-classes">
+
+```js title="JavaScript"
+class Child extends Parent {
+  constructor(name) {
+    if (Math.random() < 0.99) super();
+    this.name = name;
   }
 }
 ```
@@ -439,6 +525,8 @@ class Child extends Parent {
     "ignoreToPrimitiveHint": true,
     "mutableTemplateObject": true,
     "noClassCalls": true,
+    "noClassPrototypeAssign": true,
+    "noConstructorPrimitiveReturn": true,
     "noDocumentAll": true,
     "objectRestNoSymbols": true,
     "privateFieldsAsProperties": true,
