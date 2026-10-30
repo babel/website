@@ -258,17 +258,19 @@ module.exports = {
     "TC39 Proposals": {
       "Stage 3": [
         "babel-plugin-proposal-decorators",
+        "babel-plugin-proposal-import-defer",
         "babel-plugin-proposal-import-wasm-source",
+        "babel-plugin-proposal-text-modules",
       ],
       "Early stages": [
         "babel-plugin-proposal-async-do-expressions",
+        "babel-plugin-proposal-bytes-modules",
         "babel-plugin-proposal-destructuring-private",
         "babel-plugin-proposal-discard-binding",
         "babel-plugin-proposal-do-expressions",
         "babel-plugin-proposal-export-default-from",
         "babel-plugin-proposal-function-bind",
         "babel-plugin-proposal-function-sent",
-        "babel-plugin-proposal-import-defer",
         "babel-plugin-proposal-optional-chaining-assign",
         "babel-plugin-proposal-partial-application",
         "babel-plugin-proposal-pipeline-operator",
