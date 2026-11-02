@@ -262,7 +262,7 @@ require("@babel/parser").parse("code", {
 | `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))                                         | `function* g() { function.sent }`                                                  |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                                      | `let m = module { export let y = 1; };`                          |
 | `optionalChainingAssign` ([proposal](https://github.com/tc39/proposal-optional-chaining-assignment))                | `x?.prop = 2`                                                    |
-| `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                                     | `f(?, a)`                                                        |
+| `partialApplication` ([proposal](https://github.com/babel/proposals/issues/32))                                     | `f(?, a)`, `f~(?, a)`                                            |
 | `pipelineOperator` ([proposal](https://github.com/babel/proposals/issues/29))                                       | <code>a &#124;> b</code>                                         |
 | `sourcePhaseImports` ([proposal](https://github.com/tc39/proposal-source-phase-imports))                            | `import source x from "./x"`                                     |
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23))                                       | `() => throw new Error("")`                                      |
@@ -276,6 +276,7 @@ require("@babel/parser").parse("code", {
 
 | Version  | Changes                                                                                                                                       |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `v8.1.0` | Added `2021-10` to the `version` option of `partialApplication` |
 | `v8.0.0` | Removed the `decoratorsBeforeExport` and `allowCallParenthesized` options of the `decorators` plugin. Removed `minimal` and `smart` from the `proposal` option of `pipelineOperator`. The `version` option of `partialApplication` is required |
 | `v7.21.0` | The default behavior of the `decorators`' `decoratorsBeforeExport` option is to allow decorators either before or after the `export` keyword. |
 | `v7.19.0` | The `syntaxType` option of the `recordAndTuple` plugin defaults to `hash`; added `allowCallParenthesized` option for the `decorators` plugin. |
@@ -340,9 +341,12 @@ When a plugin is specified multiple times, only the first options are considered
     This option chooses what token to use to refer to the topic.
 
 - `partialApplication`:
-  - `version` (required, with the only valid value being `2018-07`).
-    Specify which version of the partial application proposal you are using. `2018-07` represents the proposal as
-    it was presented at the July 2018 TC39 meeting.
+  - `version` (required, accepted values: `2018-07`, `2021-10`).
+    Specify which version of the partial application proposal you are using.
+    - `2018-07` represents the proposal as it was presented at the July 2018 TC39 meeting: `f(?, a)`.
+    - `2021-10` represents the proposal as it was updated in October 2021. A partial application is marked with `~`, and supports ordinal placeholders (`?0`) and a rest placeholder (`...`): `f~(?, a)`, `new C~(?, a)`, `f~(?1, ?0)`, `f~(a, ...)`.
+
+    The two versions are mutually exclusive: for example, `f(?, a)` is a syntax error when `version` is `2021-10`.
 
 
 
