@@ -260,9 +260,9 @@ export default commentCode(api) {
   return {
     name: "comment-foo-call"
     visitor: {
-      CallExpression(path) {
-        if (path.get("callee").isIdentifier({ name: "foo" })) {
-          path.addComment("leading", api.generate(path.node).code);
+      CallExpression({ node }) {
+        if (api.types.isIdentifier(node.callee, { name: "foo" })) {
+          path.addComment("leading", api.generate(node).code);
         }
       }
     }
