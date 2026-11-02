@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Base Support Test Sponsor",
+    "slug": "base-support-test-sponsor",
+    "website": "https://example.com/base-support",
+    "avatar": "/img/user.svg",
+    "tier": "base-support-sponsor",
+    "totalDonations": 30000,
+    "yearlyDonations": 30000,
+    "monthlyDonations": 2500
+  },
+  {
+    "name": "Gold Test Sponsor",
+    "slug": "gold-test-sponsor",
+    "website": "https://example.com/gold",
+    "avatar": "/img/user.svg",
+    "tier": "gold-sponsors",
+    "totalDonations": 18000,
+    "yearlyDonations": 18000,
+    "monthlyDonations": 1500
+  },
+  {
+    "name": "Silver Test Sponsor",
+    "slug": "silver-test-sponsor",
+    "website": "https://example.com/silver",
+    "avatar": "/img/user.svg",
+    "tier": "silver-sponsors",
+    "totalDonations": 9000,
+    "yearlyDonations": 9000,
+    "monthlyDonations": 750
+  }
+]
