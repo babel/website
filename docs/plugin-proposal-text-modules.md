@@ -12,11 +12,7 @@ Transforms `import ... with { type: "text" }` declarations to platform-specific 
 The transformation applied by this plugin depends on your top-level [`targets`](./options.md#targets) to detect whether the generated code should be compatible with Node.js, browsers, or both. When targeting Node.js, the generated code will also change depending on whether you are compiling modules to CommonJS or not.
 
 :::caution
-This plugin cannot be used when compiling modules to AMD, SystemJS, or UMD.
-:::
-
-:::caution
-This plugin only transforms import declarations and not dynamic `import()` calls.
+This plugin only transforms static import declarations, not dynamic `import()` calls, and when compiling modules it only supports CommonJS output.
 :::
 
 ## Example
