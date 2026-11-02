@@ -58,6 +58,7 @@ Each rule corresponds to a core `eslint` rule and has the same options.
 
 | Version | Changes |
 | --- | --- |
+| `v8.1.0` | Added `@babel/no-empty`, and the `recommended` and `all` predefined configurations |
 | `v8.0.0` | Removed `@babel/no-invalid-this`, `@babel/object-curly-spacing` and `@babel/semi` |
 | `v7.23.5` | Added `@babel/no-undef` |
 </details>
