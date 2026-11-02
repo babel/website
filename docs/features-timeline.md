@@ -9,6 +9,19 @@ Which major new features did we introduce in each Babel version? This page inclu
 Additionally, use this timeline to track some other important efforts, such as the [babel-polyfills](https://github.com/babel/babel-polyfills) project.
 
 <ol class="timeline-container">
+<li data-date="Nov 2026">
+
+## Babel 8.1.0
+
+[blog post](https://babeljs.io/blog/2026/11/02/8.1.0)
+
+- Support for the [Import Bytes](https://github.com/tc39/proposal-import-bytes) and [Import Text](https://github.com/tc39/proposal-import-text) proposals
+- Support for filtered namespaces from the [deferred re-exports](https://github.com/tc39/proposal-deferred-reexports) proposal
+- Experimental support for generating source maps with [range mappings](https://github.com/tc39/ecma426/blob/main/proposals/range-mappings.md)
+- Parser support for [deferred re-exports](https://github.com/tc39/proposal-deferred-reexports), [`import.sync`](https://github.com/tc39/proposal-import-sync), and [structs](https://github.com/tc39/proposal-structs)
+- Add `recommended` and `all` configs to [`@babel/eslint-plugin`](https://babeljs.io/docs/babel-eslint-plugin)
+
+</li>
 <li data-date="June 2026">
 
 ## Babel 8.0.0
