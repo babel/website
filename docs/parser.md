@@ -238,7 +238,7 @@ require("@babel/parser").parse("code", {
 
 | Version   | Changes                                                                                                         |
 | --------- | --------------------------------------------------------------------------------------------------------------- |
-| `v8.1.0`  | Added `structs`                                                                                                 |
+| `v8.1.0`  | Added `structs`, `importSync`                                                                                   |
 | `v8.0.0`  | Removed `decimal`, `deprecatedImportAssert`, `importAssertions`, `importReflection`, `moduleAttributes` and `recordAndTuple` |
 | `v7.28.0` | Added `discardBinding`                                                                                          |
 | `v7.23.0` | Added `sourcePhaseImports`, `deferredImportEvaluation`, `optionalChainingAssign`                                |
@@ -262,6 +262,7 @@ require("@babel/parser").parse("code", {
 | `exportDefaultFrom` ([proposal](https://github.com/tc39/ecmascript-export-default-from))                            | `export v from "mod"`                                            |
 | `functionBind` ([proposal](https://github.com/zenparsing/es-function-bind))                                         | `a::b`, `::console.log`                                          |
 | `functionSent` ([proposal](https://github.com/tc39/proposal-function.sent))                                         | `function* g() { function.sent }`                                                  |
+| `importSync` ([proposal](https://github.com/tc39/proposal-import-sync))                                            | `const mod = import.sync("./foo.js");`                           |
 | `moduleBlocks` ([proposal](https://github.com/tc39/proposal-js-module-blocks))                                      | `let m = module { export let y = 1; };`                          |
 | `namespaceImportFilter` ([proposal](https://github.com/tc39/proposal-deferred-reexports))                           | `import { x, y } as ns from "dep";`                              |
 | `optionalChainingAssign` ([proposal](https://github.com/tc39/proposal-optional-chaining-assignment))                | `x?.prop = 2`                                                    |
