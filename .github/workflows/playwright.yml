@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Install Playwright Browsers
-        run: yarn playwright install --with-deps
+        run: yarn playwright install --with-deps chromium
       - name: Run Playwright tests
         run: yarn playwright test
       - uses: actions/upload-artifact@v4
