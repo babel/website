@@ -719,3 +719,6 @@
 - name: Authier
   url: https://www.authier.pm/
   logo: authier.svg
+- name: Wordfully
+  url: https://wordfully.ai/
+  logo: wordfully.svg
