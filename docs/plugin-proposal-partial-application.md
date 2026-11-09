@@ -87,6 +87,10 @@ require("@babel/core").transformSync("code", {
 There is only one version currently supported:
 - `"2018-07"` is the proposal version after the updates that was discussed in the July 2018 TC39 meeting.
 
+:::note
+The `"2021-10"` version can be parsed with [`@babel/plugin-syntax-partial-application`](plugin-syntax-partial-application.md), but it is not transformed yet.
+:::
+
 ## References
 
 - [Proposal: Partial Application](https://github.com/tc39/proposal-partial-application)
