@@ -860,8 +860,14 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
 
-- The `babel-external-helpers.js` script in `@babel/cli/bin` has been moved to a separate package, [`@babel/build-external-helpers`](./build-external-helpers.md).
-  **Migration**: If you are running `@babel/cli/bin/babel-external-helpers.js`, install `@babel/build-external-helpers` and use it instead.
+- `babel-external-helpers` has been moved from `@babel/cli` to a new package, [`@babel/build-external-helpers`](./build-external-helpers.md) ([#17746](https://github.com/babel/babel/pull/17746)). The `--whitelist` option has been removed in favor of `-l`/`--allowlist`.
+
+  **Migration**: Install `@babel/build-external-helpers` and replace `babel-external-helpers` with `build-external-helpers` (or `npx @babel/build-external-helpers`):
+
+  ```diff
+  - babel-external-helpers --whitelist createClass -t umd > helpers.js
+  + build-external-helpers --allowlist createClass -t umd > helpers.js
+  ```
 
 ### `@babel/node` {#babel-node}
 
