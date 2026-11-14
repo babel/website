@@ -31,7 +31,7 @@ npx @babel/build-external-helpers --output-type umd > external-helpers.js
 
 ### Allowlist
 
-`-l`, `--allow-list`, comma-separated list of [allowed helpers](https://github.com/babel/babel/tree/main/packages/babel-helpers/src/helpers).
+`-l`, `--allowlist`, comma-separated list of [allowed helpers](https://github.com/babel/babel/tree/main/packages/babel-helpers/src/helpers).
 
 The following example generate the `applyDecs2305` helper:
 
