@@ -5,7 +5,7 @@ title: "@babel/cli"
 
 Babel comes with a built-in CLI which can be used to compile files from the command line.
 
-In addition, various entry point scripts live in the top-level package at `@babel/cli/bin`. There is a shell-executable utility script, `babel-external-helpers.js`, and the main Babel cli script, `babel.js`.
+The main Babel CLI script, `babel.js`, lives in the top-level package at `@babel/cli/bin`.
 
 ## Install
 
@@ -34,8 +34,8 @@ After that finishes installing, your `package.json` file should include:
 ```diff
 {
   "devDependencies": {
-+   "@babel/cli": "^7.0.0",
-+   "@babel/core": "^7.0.0"
++   "@babel/cli": "^8.0.0",
++   "@babel/core": "^8.0.0"
   }
 }
 ```
