@@ -856,6 +856,13 @@ Make sure to also check the [@babel/plugin-transform-flow-strip-types](#babel-pl
   }
   ```
 
+### `@babel/cli` {#babel-cli}
+
+![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)
+
+- The `babel-external-helpers.js` script in `@babel/cli/bin` has been moved to a separate package, [`@babel/build-external-helpers`](./build-external-helpers.md).
+  **Migration**: If you are running `@babel/cli/bin/babel-external-helpers.js`, install `@babel/build-external-helpers` and use it instead.
+
 ### `@babel/node` {#babel-node}
 
 ![low](https://img.shields.io/badge/risk%20of%20breakage%3F-low-yellowgreen.svg)

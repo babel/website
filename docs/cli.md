@@ -7,10 +7,6 @@ Babel comes with a built-in CLI which can be used to compile files from the comm
 
 The main Babel CLI script, `babel.js`, lives in the top-level package at `@babel/cli/bin`.
 
-:::note
-In Babel 7, `@babel/cli/bin` also included a `babel-external-helpers.js` utility script. Starting from Babel 8, it has moved to a separate package: see [`@babel/build-external-helpers`](./build-external-helpers.md).
-:::
-
 ## Install
 
 While you _can_ install Babel CLI globally on your machine, it's much better
