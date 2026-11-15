@@ -22,6 +22,7 @@ import {
   runtimePolyfillConfig,
 } from "./lib/pluginConfig";
 import {
+  applyTargetsToEnvConfig,
   envConfigToTargetsString,
   replState,
   pluginConfigArrayToStateMap,
@@ -243,24 +244,7 @@ class Repl extends React.Component<Props, State> {
               envConfig.shippedProposals =
                 presetOptions.shippedProposals || false;
 
-              const targets = presetOptions.targets;
-              if (targets == null) {
-                envConfig.browsers = "";
-                envConfig.isElectronEnabled = envConfig.isNodeEnabled = false;
-              } else if (typeof targets === "string") {
-                envConfig.browsers = targets;
-                envConfig.isElectronEnabled = envConfig.isNodeEnabled = false;
-              } else if (typeof targets === "object") {
-                envConfig.browsers = targets.browsers || "";
-                if (targets.electron != null) {
-                  envConfig.isElectronEnabled = true;
-                  envConfig.electron = targets.electron;
-                }
-                if (targets.node != null) {
-                  envConfig.isNodeEnabled = true;
-                  envConfig.node = targets.node;
-                }
-              }
+              applyTargetsToEnvConfig(envConfig, presetOptions.targets);
             }
             return;
           }

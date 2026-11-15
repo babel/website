@@ -165,6 +165,7 @@ export const persistedStateToEnvConfig = (
     isLooseEnabled: !!persistedState.loose,
     isBugfixesEnabled: !!persistedState.bugfixes,
     node: envPresetDefaults.node.default,
+    otherTargets: {},
     version: persistedState.version,
     builtIns: persistedState.builtIns ?? envPresetDefaults.builtIns.default,
     corejs: persistedState.corejs ?? envPresetDefaults.corejs.default,
@@ -208,6 +209,42 @@ export const persistedStateToEnvConfig = (
     });
 
   return envConfig;
+};
+
+const browserslistQueryToString = (query: unknown): string =>
+  Array.isArray(query) ? query.join(", ") : String(query ?? "");
+
+/**
+ * Syncs the env preset sidebar state with the `targets` option of a config.
+ * Targets that have no dedicated control in the sidebar are stored in
+ * `otherTargets`, so that they survive when the config is regenerated.
+ */
+export const applyTargetsToEnvConfig = (
+  envConfig: EnvConfig,
+  targets: unknown
+) => {
+  envConfig.browsers = "";
+  envConfig.isElectronEnabled = false;
+  envConfig.isNodeEnabled = false;
+  envConfig.otherTargets = {};
+
+  if (typeof targets === "string" || Array.isArray(targets)) {
+    envConfig.browsers = browserslistQueryToString(targets);
+  } else if (targets != null && typeof targets === "object") {
+    const { browsers, electron, node, ...otherTargets } = targets as {
+      [target: string]: any;
+    };
+    envConfig.browsers = browserslistQueryToString(browsers);
+    if (electron != null) {
+      envConfig.isElectronEnabled = true;
+      envConfig.electron = electron;
+    }
+    if (node != null) {
+      envConfig.isNodeEnabled = true;
+      envConfig.node = node;
+    }
+    envConfig.otherTargets = otherTargets;
+  }
 };
 
 export const persistedStateToExternalPluginsState = (
@@ -379,6 +416,7 @@ export function buildTransformOpts(
     if (envConfig.isNodeEnabled) {
       targets.node = envConfig.node;
     }
+    Object.assign(targets, envConfig.otherTargets);
     if (Object.keys(targets).length === 1 && targets.browsers) {
       targets = envConfig.browsers;
     }
