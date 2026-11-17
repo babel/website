@@ -1,0 +1,40 @@
+@import "./lib/styles.css";
+
+.console {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 13px;
+  line-height: 18px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.placeholder {
+  padding: 0.5rem 0.75rem;
+  color: var(--colors-foregroundLight);
+}
+
+.entry {
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0;
+  border-bottom: 1px solid var(--ifm-scrollbar-track-background-color);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.warn {
+  background-color: var(--colors-infoBackground);
+  border-bottom-color: var(--colors-infoBorder);
+  color: var(--colors-infoForeground);
+}
+
+.error {
+  background-color: var(--colors-errorBackground);
+  border-bottom-color: var(--colors-errorBorder);
+  color: var(--colors-errorForeground);
+}

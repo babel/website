@@ -7,6 +7,7 @@ import React, { type ChangeEvent } from "react";
 import { prettySize, compareVersions } from "./lib/utils";
 import ErrorBoundary from "./ErrorBoundary";
 import { load as loadMonaco, Monaco } from "./Monaco";
+import ConsolePanel from "./ConsolePanel";
 import ReplOptions from "./ReplOptions";
 import StorageService from "./lib/storageService";
 import UriUtils from "./lib/uriUtils";
@@ -42,6 +43,7 @@ import { toCamelCase, hasOwnProperty } from "./lib/utils";
 import type {
   BabelState,
   BabelPlugin,
+  ConsoleEntry,
   EnvState,
   ShippedProposalsState,
   EnvConfig,
@@ -66,6 +68,7 @@ type State = {
   inputAst: File;
   astSelectedRange: [number, number] | null;
   compileErrorMessage: string | undefined | null;
+  consoleEntries: ReadonlyArray<ConsoleEntry>;
   envConfig: EnvConfig;
   envPresetState: EnvState;
   shippedProposalsState: ShippedProposalsState;
@@ -132,6 +135,7 @@ class Repl extends React.Component<Props, State> {
       astSelectedRange: null,
       pluginSearch: "",
       compileErrorMessage: null,
+      consoleEntries: [],
       presetsOptions,
       envConfig,
       envPresetState: persistedStateToEnvState(
@@ -171,6 +175,14 @@ class Repl extends React.Component<Props, State> {
       rightTab: "output",
     };
     this._setupBabel(defaultPresets);
+  }
+
+  componentDidMount() {
+    scopedEval.setConsoleListener(this._onConsoleChange);
+  }
+
+  componentWillUnmount() {
+    scopedEval.setConsoleListener(null);
   }
 
   _configToState = (configObject: any) => {
@@ -402,7 +414,7 @@ class Repl extends React.Component<Props, State> {
             <div className={styles.codePanel}>
               <Tabs
                 current={state.rightTab}
-                labels={["output", "input AST"]}
+                labels={["output", "input AST", "console"]}
                 onClick={(rightTab) => {
                   this.setState({ rightTab });
                 }}
@@ -425,6 +437,12 @@ class Repl extends React.Component<Props, State> {
                   }
                   enableScrolling={true}
                   value={this.state.inputAst}
+                />
+              )}
+              {state.rightTab === "console" && (
+                <ConsolePanel
+                  entries={state.consoleEntries}
+                  isEvaluateEnabled={state.runtimePolyfillState.isEnabled}
                 />
               )}
             </div>
@@ -753,6 +771,10 @@ class Repl extends React.Component<Props, State> {
         this._pluginsUpdatedSetStateCallback
       );
     };
+
+  _onConsoleChange = (consoleEntries: ReadonlyArray<ConsoleEntry>) => {
+    this.setState({ consoleEntries });
+  };
 
   _onIsSidebarExpandedChange = (isExpanded: boolean) => {
     this.setState(

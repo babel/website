@@ -154,6 +154,13 @@ export type ReplState = {
   meta?: { compiledSize: number; rawSize: number };
 };
 
+export type ConsoleLevel = "log" | "info" | "warn" | "error" | "debug";
+
+export type ConsoleEntry = {
+  level: ConsoleLevel;
+  message: string;
+};
+
 export type SidebarTabSection =
   | "env"
   | "plugins"
