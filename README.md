@@ -1,5 +1,7 @@
 # [babel/website](https://babeljs.io)
 
+[![Covered by Argos Visual Testing](https://argos-ci.com/badge-large.svg)](https://app.argos-ci.com/babel/website/reference)
+
 This is the source for the [babeljs.io](https://babeljs.io) website; feel free to suggest changes to our docs!
 
 | Branch name | Website                 |
