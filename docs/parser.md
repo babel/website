@@ -7,7 +7,7 @@ title: "@babel/parser"
   The Babel parser (previously Babylon) is a JavaScript parser used in <a href="https://github.com/babel/babel">Babel</a>.
 </p>
 
-- The latest ECMAScript version enabled by default (ES2020).
+- The latest ECMAScript version enabled by default.
 - Comment attachment.
 - Support for JSX, Flow, TypeScript.
 - Support for experimental language proposals (accepting PRs for anything at least [stage-0](https://github.com/tc39/proposals/blob/master/stage-0-proposals.md)).
@@ -26,6 +26,10 @@ thanks to the awesome work of [@RReverser](https://github.com/RReverser) and [@m
 `parse()` parses the provided `code` as an entire ECMAScript program, while
 `parseExpression()` tries to parse a single Expression with performance in
 mind. When in doubt, use `.parse()`.
+
+```js title="JavaScript"
+import { parse, parseExpression } from "@babel/parser";
+```
 
 ### Options
 
@@ -55,10 +59,9 @@ mind. When in doubt, use `.parse()`.
   option to `true` allows them anywhere where a statement is allowed.
 
 - **allowAwaitOutsideFunction**: By default, `await` use is only allowed
-  inside of an async function or, when the `topLevelAwait` plugin is enabled,
-  in the top-level scope of modules. Set this to `true` to also accept it in the
-  top-level scope of scripts. This option is discouraged in favor of
-  `topLevelAwait` plugin.
+  inside of an async function or in the top-level scope of modules. Set this
+  to `true` to also accept it in the top-level scope of scripts. This option
+  cannot be used with `sourceType: "commonjs"`.
 
 - **allowYieldOutsideFunction**: By default, `yield` use is only allowed
   inside of a generator function. Set this to `true` to also accept it in the
@@ -85,9 +88,9 @@ mind. When in doubt, use `.parse()`.
 
 - **attachComment**: By default, Babel attaches comments to adjacent AST nodes. When this option is set to `false`, comments are not attached. It can provide up to 30% performance improvement when the input code has _many_ comments. `@babel/eslint-parser` will set it for you. It is not recommended to use `attachComment: false` with Babel transform, as doing so removes all the comments in output code, and renders annotations such as `/* istanbul ignore next */` nonfunctional.
 
-- **annexB**: By default, Babel parses JavaScript according to [ECMAScript's Annex B "_Additional ECMAScript Features for Web Browsers_"](https://tc39.es/ecma262/#sec-additional-ecmascript-features-for-web-browsers) syntax. When this option is set to `false`, Babel will parse syntax without the extensions specific to Annex B.
+- **annexB**: By default, Babel parses JavaScript according to [ECMAScript's Annex B "_Additional ECMAScript Features for Web Browsers_"](https://tc39.es/ecma262/#sec-additional-ecmascript-features-for-web-browsers) syntax. When this option is set to `false`, Babel will parse syntax without the extensions specific to Annex B. This option can only be set to `false`.
 
-- **createImportExpressions**: By default, the parser parses dynamic import `import()` as call expression nodes. When this option is set to `true`, `ImportExpression` AST nodes are created instead. This option will default to `true` in Babel 8.
+- **createImportExpressions**: By default, the parser parses dynamic import `import()` as `ImportExpression` AST nodes. When this option is set to `false`, the legacy Babel 7 AST is created instead: a `CallExpression` whose `callee` is an `Import` node. The legacy AST is deprecated and does not support newer features such as [source phase imports](https://github.com/tc39/proposal-source-phase-imports). This option will be removed in Babel 9.
 
 - **createParenthesizedExpressions**: By default, the parser sets `extra.parenthesized` on the expression nodes. When this option is set to `true`, `ParenthesizedExpression` AST nodes are created instead.
 
@@ -97,25 +100,25 @@ mind. When in doubt, use `.parse()`.
   The resulting AST will have an `errors` property representing an array of all the parsing errors.
   Note that even when this option is enabled, `@babel/parser` could throw for unrecoverable errors.
 
-- **locations**: boolean.
-  `true` is the default and will add a `loc` property to each node, which is an object with `start` and `end` properties, which are objects containing `line` and `column` numbers.
-  When set to `false`, the "loc" property will not be included in the output AST.
+- **locations**: By default, the parser adds a `loc` property to each node, which is an object with `start` and `end` properties, which are objects containing `line` and `column` numbers.
+  When this option is set to `false`, the `loc` property will not be included in the output AST.
 
 - **plugins**: Array containing the plugins that you want to enable.
 
 - **sourceType**: Indicate the mode the code should be parsed in. Can be
   one of `"script"`, `"commonjs"`, `"module"` or `"unambiguous"`. Defaults to `"script"`. `"unambiguous"` will make @babel/parser attempt to _guess_, based on the presence of ES6 `import` or `export` statements. Files with ES6 `import`s and `export`s are considered `"module"` and are otherwise `"script"`.
 
-  The `"commonjs"` mode indicates that the code should be run in a CommonJS environment such as Node.js. It is mostly compatible with the `"script"` mode except that `return`, `new.target` and `using`/`await using` declarations are allowed in the top level.
+  The `"commonjs"` mode indicates that the code should be run in a CommonJS environment such as Node.js. It is mostly compatible with the `"script"` mode except that `return`, `new.target` and `using`/`await using` declarations are allowed in the top level. Because of this, the `allowReturnOutsideFunction`, `allowNewTargetOutsideFunction` and `allowAwaitOutsideFunction` options cannot be used with `"commonjs"`.
 
 - **sourceFilename**: Correlate output AST nodes with their source filename. Useful when generating code and source maps from the ASTs of multiple input files.
 
 - **startColumn**: By default, the parsed code is treated as if it starts from line 1, column 0. You can provide a column number to alternatively start with. Useful for integration with other source tools.
 
 - **startLine**: By default, the parsed code is treated as if it starts from line 1, column 0. You can provide a line number to alternatively start with. Useful for integration with other source tools.
+  When `startLine` is greater than `1`, you must also provide `startIndex` and `startColumn`.
 
-- **startIndex**: By default, all source indexes start from 0. With this option you can provide an alternative start index.
-  To ensure accurate AST source indexes this option should always be provided when `startLine` is greater than 1. Useful for integration with other source tools.
+- **startIndex**: By default, all source indexes start from 0. With this option you can provide an alternative start index. Useful for integration with other source tools.
+  When `startLine` is `1`, `startIndex` defaults to `startColumn` and vice versa, so you only need to provide one of them.
 
 - **strictMode**: By default, ECMAScript code is parsed as strict only if a
   `"use strict";` directive is present or if the parsed file is an ECMAScript
@@ -138,7 +141,6 @@ It is based on [ESTree spec][] with the following deviations:
 - [Program][] and [BlockStatement][] contain additional `directives` field with [Directive][] and [DirectiveLiteral][]
 - [ClassMethod][], [ClassPrivateMethod][], [ObjectProperty][], and [ObjectMethod][] value property's properties in [FunctionExpression][] is coerced/brought into the main method node.
 - [ChainExpression][] is replaced with [OptionalMemberExpression][] and [OptionalCallExpression][]
-- [ImportExpression][] is replaced with a [CallExpression][] whose `callee` is an [Import] node. This change will be reversed in Babel 8.
 - [ExportAllDeclaration][] with `exported` field is replaced with an [ExportNamedDeclaration][] containing an [ExportNamespaceSpecifier][] node.
 
 :::note
@@ -154,7 +156,6 @@ AST for JSX code is based on [Facebook JSX AST][].
 [methoddefinition]: https://github.com/estree/estree/blob/master/es2015.md#methoddefinition
 [propertydefinition]: https://github.com/estree/estree/blob/master/es2022.md#propertydefinition
 [chainexpression]: https://github.com/estree/estree/blob/master/es2020.md#chainexpression
-[importexpression]: https://github.com/estree/estree/blob/master/es2020.md#importexpression
 [exportalldeclaration]: https://github.com/estree/estree/blob/master/es2020.md#exportalldeclaration
 [privateidentifier]: https://github.com/estree/estree/blob/master/es2022.md#privateidentifier
 [stringliteral]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#stringliteral
@@ -177,8 +178,6 @@ AST for JSX code is based on [Facebook JSX AST][].
 [functionexpression]: https://github.com/babel/babel/tree/main/packages/babel-parser/ast/spec.md#functionexpression
 [optionalmemberexpression]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#optionalmemberexpression
 [optionalcallexpression]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#optionalcallexpression
-[callexpression]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#callexpression
-[import]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#import
 [exportnameddeclaration]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#exportnameddeclaration
 [exportnamespacespecifier]: https://github.com/babel/babel/blob/main/packages/babel-parser/ast/spec.md#exportnamespacespecifier
 [facebook jsx ast]: https://github.com/facebook/jsx/blob/main/AST.md
@@ -192,7 +191,9 @@ For example: We push a fix to early error on something like [#107](https://githu
 ### Example
 
 ```js title="JavaScript"
-require("@babel/parser").parse("code", {
+import { parse } from "@babel/parser";
+
+parse("code", {
   // parse in strict mode and allow module declarations
   sourceType: "module",
 
@@ -273,7 +274,7 @@ require("@babel/parser").parse("code", {
 | `throwExpressions` ([proposal](https://github.com/babel/proposals/issues/23))                                       | `() => throw new Error("")`                                      |
 
 :::note
-The `deferredReexports` plugin requires the `deferredImportEvaluation` plugin to also be enabled.
+The `asyncDoExpressions` plugin requires the `doExpressions` plugin to also be enabled, and the `deferredReexports` plugin requires the `deferredImportEvaluation` plugin to also be enabled.
 :::
 
 
@@ -296,36 +297,13 @@ The `deferredReexports` plugin requires the `deferredImportEvaluation` plugin to
 
 </details>
 
-<!-- TODO: Is this note still true? Don't we raise an exception? -->
-
 :::note
 When a plugin is specified multiple times, only the first options are considered.
 :::
 
-- `decorators`:
-  - `allowCallParenthesized` (`boolean`, defaults to `true`)
-
-    When `false`, disallow decorators in the `@(...)()` form in favor of `@(...())`. The stage 3 decorators proposal uses `allowCallParenthesized: false`.
-
-  - `decoratorsBeforeExport` (`boolean`)
-
-    By default decorators on exported classes can be placed either before or after the `export` keyword. When this option is set, decorators will only be allowed in the specified position.
-
-    ```js title="JavaScript"
-    // decoratorsBeforeExport: true
-    @dec
-    export class C {}
-
-    // decoratorsBeforeExport: false
-    export
-    @dec
-    class C {}
-    ```
-
-    :::caution
-
-    This option is deprecated and will be removed in a future version. Code that is valid when this option is explicitly set to `true` or `false` is also valid when this option is not set.
-    :::
+- `discardBinding`:
+  - `syntaxType` (required, with the only valid value being `void`)
+    Specify which syntax to use for discard bindings.
 
 - `optionalChainingAssign`:
   - `version` (required, accepted values: `2023-07`)
@@ -345,7 +323,7 @@ When a plugin is specified multiple times, only the first options are considered
 
   - `topicToken` (required when `proposal` is `hack`, accepted values: `%`, `#`, `^`, `@@`, `^^`)
     The `hack` proposal uses a “topic” placeholder in its pipe.
-    There are two different choices for this topic placeholder.
+    There are several different choices for this topic placeholder.
     This option chooses what token to use to refer to the topic.
 
 - `partialApplication`:
@@ -391,7 +369,7 @@ There are two error codes, `code` and `reasonCode`.
 Example of using error codes with `errorRecovery`:
 
 ```js title="JavaScript"
-const { parse } = require("@babel/parser");
+import { parse } from "@babel/parser";
 
 const ast = parse(`a b`, { errorRecovery: true });
 
@@ -411,8 +389,8 @@ Our current recommendation for those that want to create their own custom syntax
 
 To consume your custom parser, you can add a plugin to your [options](options.md#plugins) to call the parser via its npm package name or require it if using JavaScript,
 
-```js title="JavaScript"
-const parse = require("custom-fork-of-babel-parser-on-npm-here");
+```js title="babel.config.js"
+const { parse } = require("custom-fork-of-babel-parser-on-npm-here");
 
 module.exports = {
   plugins: [
