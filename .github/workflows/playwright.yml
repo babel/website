@@ -23,6 +23,8 @@ jobs:
         run: cp tests/fixtures/sponsors.json website/data/sponsors.json
       - name: Run Playwright tests
         run: yarn playwright test
+        env:
+          ARGOS_PROJECT: babel/website
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
