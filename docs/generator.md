@@ -42,11 +42,9 @@ import { parse } from "@babel/parser";
 import { generate } from "@babel/generator";
 
 const code = "const Example = () => <div>example</div>";
-const ast = parse(code, { plugins: ["jsx" ] });
+const ast = parse(code, { plugins: ["jsx"] });
 
-const output = generate(
-  ast,
-).code;
+const output = generate(ast).code;
 
 // true
 output.includes("<div>");
@@ -54,7 +52,7 @@ output.includes("<div>");
 
 ## API
 
-Babel generator contains exactly one function `generate`. It can be imported in different ways.
+Babel generator contains exactly one function `generate`, available as both a named export and the default export.
 
 <details>
   <summary>History</summary>
@@ -65,10 +63,18 @@ Babel generator contains exactly one function `generate`. It can be imported in 
 </details>
 
 ```js title="JavaScript"
-const generate = require("@babel/generator");
-const { generate } = require("@babel/generator");
 import { generate } from "@babel/generator";
+// or
+import generate from "@babel/generator";
 ```
+
+:::note
+`@babel/generator` is an ES module. If you are using CommonJS, you can load it with `require` and use the named export:
+
+```js title="JavaScript"
+const { generate } = require("@babel/generator");
+```
+:::
 
 :::tip
 Since `v8.1.0`, [`@babel/core`](core.md#generate) also exports `generate`. If your project already depends on `@babel/core`, you can import it from there instead of adding a dependency on `@babel/generator`:
@@ -103,17 +109,13 @@ Options for formatting output:
 | comments                 | boolean             | `true`          | Should comments be included in output                                                                                                                                                                                                                              |
 | compact                  | boolean or `'auto'` | `opts.minified` | Set to `true` to avoid adding whitespace for formatting                                                                                                                                                                                                            |
 | concise                  | boolean             | `false`         | Set to `true` to reduce whitespace (but not as much as `opts.compact`)                                                                                                                                                                                             |
-| decoratorsBeforeExport   | boolean             |                 | Set to `true` to print decorators before `export` in output.                                                                                                                                                                                                       |
 | filename                 | string              |                 | Used in warning messages                                                                                                                                                                                                                                           |
-| importAttributesKeyword (⚠️ removed in Babel 8)  | `"with"`, `"assert"`, or `"with-legacy"` | | The import attributes/assertions syntax to use. `"with"` for `import "..." with { type: "json" }`, `"assert"` for `import "..." assert { type: "json" }`, and `"with-legacy"` for `import "..." with type: "json"`. When not specified, `@babel/generator` will try to match the style in the input code based on the AST shape. |
-| jsescOption              | object              |                 | Use `jsesc` to process literals. `jsesc` is applied to numbers only if `jsescOption.numbers` (added in `v7.9.0`) is present. You can customize `jsesc` by [passing options](https://github.com/mathiasbynens/jsesc#api) to it.                                     |
-| jsonCompatibleStrings    | boolean             | `false`         | Set to true to run `jsesc` with "json": true to print "\u00A9" vs. "©";                                                                                                                                                                                            |
+| jsescOption              | object              | `{ quotes: "double", wrap: true, minimal: true }` | Use `jsesc` to process literals. `jsesc` is applied to numbers only if `jsescOption.numbers` is present. You can customize `jsesc` by [passing options](https://github.com/mathiasbynens/jsesc#api) to it; the given options are merged with the defaults. For example, set `{ minimal: false }` to print `"\xA9"` instead of `"©"`, or `{ minimal: false, json: true }` to print `"\u00A9"`. |
 | minified                 | boolean             | `false`         | Should the output be minified                                                                                                                                                                                                                                      |
 | retainFunctionParens     | boolean             | `false`         | Retain parens around function expressions (could be used to change engine parsing behavior)                                                                                                                                                                        |
 | retainLines              | boolean             | `false`         | Attempt to use the same line numbers in the output code as in the source code (helps preserve stack traces)                                                                                                                                                        |
 | shouldPrintComment       | function            | `opts.comments` | Function that takes a comment (as a string) and returns `true` if the comment should be included in the output. By default, comments are included if `opts.comments` is `true` or if `opts.minified` is `false` and the comment contains `@preserve` or `@license` |
-| recordAndTupleSyntaxType | `'hash'` or `'bar'` | `'hash'`        | For use with the recordAndTuple token.
-| topicToken               | `'%'` or `'#'`      |                 | The token to use with [Hack-pipe topic references](plugin-proposal-pipeline-operator.md). This is required when there are any `TopicReference` nodes.
+| topicToken               | `'%'`, `'#'`, `'^^'`, `'@@'` or `'^'` |  | The token to use with [Hack-pipe topic references](plugin-proposal-pipeline-operator.md). This is required when there are any `TopicReference` nodes. |
 
 Options for source maps:
 
@@ -133,7 +135,7 @@ The behavior of experimental options could have breaking changes in _minor_ vers
 
 | name                        | type    | default | description | experimental reason |
 | --------------------------- | ------- | ------- | ----------- | ------------------- |
-| experimental_preserveFormat | boolean | `false` | When set to `true`, the generator will try to preserve location of all the nodes and tokens that are present both in the input and output code. To use this option, you currently need to enable the `retainLines: true` generator option, and the `tokens: true` and `createParenthesizedExpressions: true` parser options. | This option will graduate to stable once it supports a mode that does not require preserving line numbers, but just relative positions of tokens. |
+| experimental_preserveFormat | boolean | `false` | When set to `true`, the generator will try to preserve location of all the nodes and tokens that are present both in the input and output code. To use this option, you currently need to enable the `retainLines: true` generator option, and the `tokens: true` and `createParenthesizedExpressions: true` parser options. You must also pass the original source code as a string in the `code` argument. It cannot be used together with the `compact`, `minified` or `jsescOption` options. | This option will graduate to stable once it supports a mode that does not require preserving line numbers, but just relative positions of tokens. |
 
 ### Result
 
@@ -142,7 +144,7 @@ The `generate` API returns an object containing the source code and the source m
 - `code: string` - The output source code from the provided AST
 - `map: EncodedSourceMap | null` - The output source map in [encoded form](https://github.com/jridgewell/gen-mapping/blob/75eff9d01ef5da5477e316ec0f4f917ebe08dd96/src/types.ts#L13). It is lazily-evaluated
 - `decodedMap: DecodedSourceMap | undefined` - The output source map in [decoded form](https://github.com/jridgewell/gen-mapping/blob/75eff9d01ef5da5477e316ec0f4f917ebe08dd96/src/types.ts#L17). It is lazily-evaluated
-- `rawMappings: Mapping[]` - A high-level [mapping object](https://github.com/jridgewell/gen-mapping/blob/75eff9d01ef5da5477e316ec0f4f917ebe08dd96/src/types.ts#L26) for every recorded segments in order to generate the source map. It is lazily-evaluated
+- `rawMappings: Mapping[] | undefined` - A high-level [mapping object](https://github.com/jridgewell/gen-mapping/blob/75eff9d01ef5da5477e316ec0f4f917ebe08dd96/src/types.ts#L26) for every recorded segments in order to generate the source map. It is lazily-evaluated
 
 ## AST from Multiple Sources
 
