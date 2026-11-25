@@ -3,7 +3,7 @@ id: babel-preset-env
 title: "@babel/preset-env"
 ---
 
-`@babel/preset-env` is a smart preset that allows you to use the latest JavaScript without needing to micromanage which syntax transforms (and optionally, browser polyfills) are needed by your target environment(s). This both makes your life easier and JavaScript bundles smaller!
+`@babel/preset-env` is a smart preset that allows you to use the latest JavaScript without needing to micromanage which syntax transforms are needed by your target environment(s). This both makes your life easier and JavaScript bundles smaller!
 
 - [Install](#install)
 - [How Does it Work?](#how-does-it-work)
@@ -20,7 +20,7 @@ npm install --save-dev @babel/preset-env
 
 `@babel/preset-env` would not be possible if not for a number of awesome open-source projects, like [`browserslist`](https://github.com/browserslist/browserslist), [`compat-table`](https://github.com/kangax/compat-table), and [`electron-to-chromium`](https://github.com/Kilian/electron-to-chromium).
 
-We leverage these data sources to maintain [mappings of which version](https://github.com/babel/babel/blob/main/packages/babel-compat-data/data/plugins.json) of our supported target environments gained support of a JavaScript syntax or browser feature, as well as a mapping of those syntaxes and features to Babel transform plugins and core-js polyfills.
+We leverage these data sources to maintain [mappings of which version](https://github.com/babel/babel/blob/main/packages/babel-compat-data/data/plugins.json) of our supported target environments gained support of a JavaScript syntax or browser feature, as well as a mapping of those syntaxes and features to Babel transform plugins.
 
 :::note
 `@babel/preset-env` won't include any JavaScript syntax proposals less than Stage 3 because at that stage in the TC39 process, it wouldn't be implemented by any browsers anyway. Those would need to be included manually. The `shippedProposals` option will include Stage 3 proposals that some browsers have already implemented.
@@ -38,19 +38,11 @@ By default `@babel/preset-env` will use [browserslist config sources](https://gi
 If you are relying on browserslist's defaults query (either explicitly or by having no browserslist config), you will want to check out the [No targets](options.md#no-targets) section for information on preset-env's behavior.
 :::
 
-For example, to only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
+For example, to only include code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
 
 ```json title="babel.config.json"
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "useBuiltIns": "entry",
-        "corejs": "3.22"
-      }
-    ]
-  ]
+  "presets": ["@babel/preset-env"]
 }
 ```
 
@@ -143,7 +135,7 @@ Unless the caller specifies otherwise, Babel will assume that it does support ES
 
 `boolean`, defaults to `false`.
 
-Outputs to `console.log` the polyfills and transform plugins enabled by `preset-env` and, if applicable, which one of your targets that needed it.
+Outputs to `console.log` the transform plugins enabled by `preset-env` and, if applicable, which one of your targets that needed it.
 
 ### `include`
 
@@ -168,14 +160,13 @@ Valid options include any:
   * `@babel/plugin-transform-optional-chaining`
   * `@babel/transform-optional-chaining`
   * `transform-optional-chaining`
-- [core-js@3](https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/polyfills/corejs3/built-in-definitions.js) polyfills, such as `es.map`, `es.set`, or `es.object.assign`.
 
 Plugin names can be fully or partially specified (or using `RegExp`).
 
 Acceptable inputs:
 
-- Full name (`string`): `"es.math.sign"`
-- Partial name (`string`): `"es.math.*"` (resolves to all plugins with `es.math` prefix)
+- Full name (`string`): `"transform-optional-chaining"`
+- Partial name (`string`): `"transform-modules-.*"` (resolves to all plugins with `transform-modules-` prefix)
 - `RegExp` Object: `/^transform-.*$/` or `new RegExp("^transform-modules-.*")`
 
 Note that the above `.` is the `RegExp` equivalent to match any character, and not the actual `'.'` character. Also note that to match any character `.*` is used in `RegExp` as opposed to `*` in `glob` format.
@@ -206,139 +197,36 @@ This option is useful for excluding a transform like `@babel/plugin-transform-re
 | Version | Changes |
 | --- | --- |
 | `v8.0.1` | Removed |
+| `v7.4.0` | Added `corejs`. `useBuiltIns: "entry"` replaces `"core-js/stable"` and `"regenerator-runtime/runtime"` entry imports |
+| `v7.0.0` | `useBuiltIns: "entry"` replaces `"@babel/polyfill"` entry imports |
 </details>
 
 :::danger
 
-This option has been removed in Babel 8. To inject polyfills, you can use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md) directly.
+These options have been removed in Babel 8. To inject polyfills, you can use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md) directly.
 
 :::
 
-#### `useBuiltIns: 'entry'`
+The `babel-plugin-polyfill-corejs3` options map to the removed ones as follows:
 
-<details>
-  <summary>History</summary>
-
-| Version | Changes |
+| `@babel/preset-env` (Babel 7) | `babel-plugin-polyfill-corejs3` |
 | --- | --- |
-| `v7.4.0` | It replaces `"core-js/stable"` and `"regenerator-runtime/runtime"` entry imports |
-| `v7.0.0` | It replaces `"@babel/polyfill"` entry imports |
-</details>
+| `useBuiltIns: "usage"` | `method: "usage-global"` |
+| `useBuiltIns: "entry"` | `method: "entry-global"` |
+| `corejs: "3.42"` | `version: "3.42"` |
+| `corejs: { version: "3.42", proposals: true }` | `version: "3.42", proposals: true` |
 
-::::tip
-Only use `import "core-js";` once in your whole app.
-
-
-
-Multiple imports or requires of those packages might cause global collisions and other issues that are hard to trace.
-We recommend creating a single entry file that only contains the `import` statements.
-::::
-
-This option enables a new plugin that replaces the `import "core-js/stable";` and `require("core-js");` statements with individual imports to different `core-js` entry points based on environment.
-
-**In**
-
-```js title="JavaScript"
-import "core-js";
+```diff title="babel.config.json"
+  {
+    "presets": [
+-     ["@babel/preset-env", { "useBuiltIns": "usage", "corejs": "3.42" }]
++     "@babel/preset-env"
++   ],
++   "plugins": [
++     ["babel-plugin-polyfill-corejs3", { "method": "usage-global", "version": "3.42" }]
+    ]
+  }
 ```
-
-**Out (different based on environment)**
-
-```js title="JavaScript"
-import "core-js/modules/es.string.pad-start";
-import "core-js/modules/es.string.pad-end";
-```
-
-Importing `"core-js"` loads polyfills for every possible ECMAScript feature: what if you know that you only need some of them? When using `core-js@3`, `@babel/preset-env` is able to optimize every single `core-js` entrypoint and their combinations. For example, you might want to only polyfill array methods and new `Math` proposals:
-
-**In**
-
-```js title="JavaScript"
-import "core-js/es/array";
-import "core-js/proposals/math-extensions";
-```
-
-**Out (different based on environment)**
-
-```js title="JavaScript"
-import "core-js/modules/es.array.unscopables.flat";
-import "core-js/modules/es.array.unscopables.flat-map";
-import "core-js/modules/esnext.math.clamp";
-import "core-js/modules/esnext.math.deg-per-rad";
-import "core-js/modules/esnext.math.degrees";
-import "core-js/modules/esnext.math.fscale";
-import "core-js/modules/esnext.math.rad-per-deg";
-import "core-js/modules/esnext.math.radians";
-import "core-js/modules/esnext.math.scale";
-```
-
-You can read [core-js](https://github.com/zloirock/core-js)'s documentation for more information about the different entry points.
-
-
-
-#### `useBuiltIns: 'usage'`
-
-Adds specific imports for polyfills when they are used in each file. We take advantage of the fact that a bundler will load the same polyfill only once.
-
-**In**
-
-```js title="a.js"
-var a = new Promise();
-```
-
-```js title="b.js"
-var b = new Map();
-```
-
-**Out (if environment doesn't support it)**
-
-```js title="a.js"
-import "core-js/modules/es.promise";
-var a = new Promise();
-```
-
-```js title="b.js"
-import "core-js/modules/es.map";
-var b = new Map();
-```
-
-**Out (if environment supports it)**
-
-```js title="a.js"
-var a = new Promise();
-```
-
-```js title="b.js"
-var b = new Map();
-```
-
-#### `useBuiltIns: false`
-
-Don't add polyfills automatically per file, and don't transform `import "core-js"` or `import "@babel/polyfill"` to individual polyfills.
-
-### `corejs`
-
-<details>
-  <summary>History</summary>
-
-| Version | Changes |
-| --- | --- |
-| `v8.0.1` | Removed |
-| `v7.4.0` | Added |
-</details>
-
-
-
-`string` or `{ version: string, proposals: boolean }`, defaults to `"3.0"`. The `version` string can be any supported `core-js` versions with a minor version. For example, `"3.33"`.
-
-This option only has an effect when used alongside `useBuiltIns: usage` or `useBuiltIns: entry`, and ensures `@babel/preset-env` injects the polyfills supported by your `core-js` version.
-
-By default, only polyfills for stable ECMAScript features are injected: if you want to polyfill proposals, you have three different options:
-
-- when using `useBuiltIns: "entry"`, you can directly import a [proposal polyfill](https://github.com/zloirock/core-js/tree/master/packages/core-js/proposals): `import "core-js/proposals/string-replace-all"`.
-- when using `useBuiltIns: "usage"` you have two different alternatives:
-  - set the [`shippedProposals`](#shippedproposals) option to `true`. This will enable polyfills and transforms for proposal which have already been shipped in browsers for a while.
-  - use `corejs: { version: "3.8", proposals: true }`. This will enable polyfilling of every proposal supported by `core-js@3.8`.
 
 ### `forceAllTransforms`
 
@@ -424,22 +312,14 @@ The [Browserslist environment](https://github.com/browserslist/browserslist#conf
 
 Toggles enabling support for builtin/feature proposals that have shipped in browsers. If your target environments have native support for a feature proposal, its matching parser syntax plugin is enabled instead of performing any transform. Note that this _does not_ enable the same transformations as [`@babel/preset-stage-3`](preset-stage-3.md), since proposals can continue to change before landing in browsers.
 
-The following are currently supported:
-
-**Builtins** injected when using `useBuiltIns: "usage"`
-
-- [esnext.global-this](https://github.com/tc39/proposal-global) (only supported by `core-js@3`)
-- [esnext.string.match-all](https://github.com/tc39/proposal-string-matchall) (only supported by `core-js@3`)
-
-**Features**
-
-- [Import attributes](https://github.com/tc39/proposal-import-attributes) (parsing only)
+There are currently no proposals enabled by this option.
 
 **Materialized Features**
 These features were behind `shippedProposals` flag in older Babel versions. They are now generally available.
 
 - [class properties](https://github.com/tc39/proposal-class-fields)
 - [Class static block](https://github.com/tc39/proposal-class-static-block)
+- [Import attributes](https://github.com/tc39/proposal-import-attributes)
 - [numeric separator](https://github.com/tc39/proposal-numeric-separator)
 - [Private field brand checks](https://github.com/tc39/proposal-private-fields-in-in)
 - [private methods](https://github.com/tc39/proposal-private-methods)

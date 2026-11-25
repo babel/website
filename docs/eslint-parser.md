@@ -174,7 +174,6 @@ Additional configuration options can be set in your ESLint configuration under t
     parser: "@babel/eslint-parser",
     parserOptions: {
       sourceType: "module",
-      allowImportExportEverywhere: false,
       ecmaFeatures: {
         globalReturn: false,
       },

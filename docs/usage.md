@@ -16,54 +16,28 @@ The entire process to set this up involves:
 1. Running these commands to install the packages:
 
    ```bash npm2yarn
-   npm install --save-dev @babel/core @babel/cli @babel/preset-env
+   npm install --save-dev @babel/core @babel/cli @babel/preset-env babel-plugin-polyfill-corejs3
+   npm install --save core-js
    ```
 
 2. Creating a config file named `babel.config.json` (requires `v7.8.0` and above) in the root of your project with this content:
 
    ```json title="babel.config.json"
    {
-     "presets": [
-       [
-         "@babel/preset-env",
-         {
-           "targets": {
-             "edge": "17",
-             "firefox": "60",
-             "chrome": "67",
-             "safari": "11.1"
-           },
-           "useBuiltIns": "usage",
-           "corejs": "3.6.5"
-         }
-       ]
+     "targets": {
+       "edge": "17",
+       "firefox": "60",
+       "chrome": "67",
+       "safari": "11.1"
+     },
+     "presets": ["@babel/preset-env"],
+     "plugins": [
+       ["babel-plugin-polyfill-corejs3", { "method": "usage-global", "version": "3.42" }]
      ]
    }
    ```
 
-   > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support. See [here](preset-env.md) for more `@babel/preset-env` options.
-
-Or `babel.config.js` if you are using an older Babel version
-
-```js title="babel.config.js"
-const presets = [
-  [
-    "@babel/preset-env",
-    {
-      targets: {
-        edge: "17",
-        firefox: "60",
-        chrome: "67",
-        safari: "11.1",
-      },
-      useBuiltIns: "usage",
-      corejs: "3.6.4",
-    },
-  ],
-];
-
-module.exports = { presets };
-```
+   > The browsers list above is just an arbitrary example. You will have to adapt it for the browsers you want to support. See [here](options.md#targets) for more information about `targets`, and set `version` to the `core-js` version you installed.
 
 3. And running this command to compile all your code from the `src` directory to `lib`:
 
@@ -153,19 +127,13 @@ For now, let's create a file called `babel.config.json` (requires `v7.8.0` and a
 
 ```json title="babel.config.json"
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "edge": "17",
-          "firefox": "60",
-          "chrome": "67",
-          "safari": "11.1"
-        }
-      }
-    ]
-  ]
+  "targets": {
+    "edge": "17",
+    "firefox": "60",
+    "chrome": "67",
+    "safari": "11.1"
+  },
+  "presets": ["@babel/preset-env"]
 }
 ```
 
@@ -173,50 +141,54 @@ Now the `env` preset will only load transformation plugins for features that are
 
 ## Polyfill
 
-> 🚨 <span id="polyfill-deprecated">As</span> of Babel 7.4.0, this package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features):
+> 🚨 <span id="polyfill-deprecated">As</span> of Babel 7.4.0, the [@babel/polyfill](polyfill.md) package has been deprecated in favor of directly including `core-js/stable` (to polyfill ECMAScript features):
 >
 > ```js title="JavaScript"
 > import "core-js/stable";
 > ```
 >
-> If you are compiling generators or async function to ES5, and you are using a version of `@babel/core` or `@babel/plugin-transform-regenerator` older than `7.18.0`, you must also load the [`regenerator runtime`](https://github.com/facebook/regenerator/tree/main/packages/runtime) package. It is automatically loaded when using `@babel/preset-env`'s `useBuiltIns: "usage"` option or `@babel/plugin-transform-runtime`.
+> If you are compiling generators or async function to ES5, and you are using a version of `@babel/core` or `@babel/plugin-transform-regenerator` older than `7.18.0`, you must also load the [`regenerator runtime`](https://github.com/facebook/regenerator/tree/main/packages/runtime) package. In Babel 7, it was automatically loaded when using `@babel/preset-env`'s `useBuiltIns: "usage"` option or `@babel/plugin-transform-runtime`.
+>
+> As of Babel 8, `@babel/preset-env`'s `useBuiltIns` and `corejs` options have been removed in favor of [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md).
 
-The [@babel/polyfill](polyfill.md) module includes [core-js](https://github.com/zloirock/core-js) and a custom [regenerator runtime](https://github.com/facebook/regenerator/blob/main/packages/runtime/runtime.js) to emulate a full ES2015+ environment.
+Babel transforms new syntax, but new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, and instance methods like `Array.prototype.includes` must be provided by a polyfill. The [core-js](https://github.com/zloirock/core-js) library implements them, adding to the global scope as well as native prototypes like `String` in order to do this.
 
-This means you can use new built-ins like `Promise` or `WeakMap`, static methods like `Array.from` or `Object.assign`, instance methods like `Array.prototype.includes`, and generator functions (when used alongside the regenerator plugin). The polyfill adds to the global scope as well as native prototypes like `String` in order to do this.
-
-For library/tool authors this may be too much. If you don't need the instance methods like `Array.prototype.includes` you can do without polluting the global scope altogether by using the [transform runtime](plugin-transform-runtime.md) plugin instead of `@babel/polyfill`.
+For library/tool authors this may be too much. If you don't want to pollute the global scope, you can use the `usage-pure` method of `babel-plugin-polyfill-corejs3`, which imports polyfills from `core-js-pure` without modifying globals.
 
 To go one step further, if you know exactly what features you need polyfills for, you can require them directly from [core-js](https://github.com/zloirock/core-js#commonjs).
 
-Since we're building an application we can just install `@babel/polyfill`:
+Since we're building an application we can just install `core-js`:
 
 ```shell npm2yarn
-npm install --save @babel/polyfill
+npm install --save core-js
 ```
 
 > Note the `--save` option instead of `--save-dev` as this is a polyfill that needs to run before your source code.
 
-Now luckily for us, we're using the `env` preset which has a `"useBuiltIns"` option that when set to `"usage"` will practically apply the last optimization mentioned above where you only include the polyfills you need. With this new option the configuration changes like this:
+Now luckily for us, `babel-plugin-polyfill-corejs3` has a `"usage-global"` method that will practically apply the last optimization mentioned above where you only include the polyfills you need:
+
+```shell npm2yarn
+npm install --save-dev babel-plugin-polyfill-corejs3
+```
+
+With this new plugin the configuration changes like this:
 
 ```json title="babel.config.json"
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "edge": "17",
-          "firefox": "60",
-          "chrome": "67",
-          "safari": "11.1"
-        },
-        "useBuiltIns": "usage"
-      }
-    ]
+  "targets": {
+    "edge": "17",
+    "firefox": "60",
+    "chrome": "67",
+    "safari": "11.1"
+  },
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    ["babel-plugin-polyfill-corejs3", { "method": "usage-global", "version": "3.42" }]
   ]
 }
 ```
+
+The `version` option should be set to the version of `core-js` you installed, so that Babel knows which polyfills are available.
 
 Babel will now inspect all your code for features that are missing in your target environments and include only the required polyfills. For example this code:
 
@@ -224,44 +196,40 @@ Babel will now inspect all your code for features that are missing in your targe
 Promise.resolve().finally();
 ```
 
-would turn into this (because Edge 17 doesn't have `Promise.prototype.finally`):
+would turn into this (because Edge 17 doesn't have `Promise.prototype.finally`, and its `Promise` implementation is not fully spec-compliant):
 
 ```js title="JavaScript"
-require("core-js/modules/es.promise.finally");
+import "core-js/modules/es.promise.js";
+import "core-js/modules/es.promise.finally.js";
 
 Promise.resolve().finally();
 ```
 
-If we weren't using the `env` preset with the `"useBuiltIns"` option set to `"usage"` (defaults to "false") we would've had to require the full polyfill _only once_ in our entry point before any other code.
-
-For example:
+If we weren't using the `"usage-global"` method, we would've had to import the full polyfill _only once_ in our entry point before any other code. You can still use the `"entry-global"` method to only keep the polyfills needed by your targets:
 
 ```json title="babel.config.json"
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "edge": "17",
-          "firefox": "60",
-          "chrome": "67",
-          "safari": "11.1"
-        },
-        "useBuiltIns": "entry"
-      }
-    ]
+  "targets": {
+    "edge": "17",
+    "firefox": "60",
+    "chrome": "67",
+    "safari": "11.1"
+  },
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    ["babel-plugin-polyfill-corejs3", { "method": "entry-global", "version": "3.42" }]
   ]
 }
 ```
-Then import [core-js](https://github.com/zloirock/core-js) (to polyfill ECMAScript features) first, in our entry file to emulate a full ES2015+ environment since [@babel/polyfill](polyfill.md) has been <a href="#polyfill-deprecated">deprecated</a>:
+
+Then import [core-js](https://github.com/zloirock/core-js) (to polyfill ECMAScript features) first, in our entry file to emulate a full ES2015+ environment:
 
 ```js title="JavaScript"
- import "core-js/stable";
- ```
+import "core-js/stable";
+```
 
 ## Summary
 
-We used `@babel/cli` to run Babel from the terminal, `@babel/polyfill` to polyfill all the new JavaScript features, and the `env` preset to only include the transformations and polyfills for the features that we use and that are missing in our target browsers.
+We used `@babel/cli` to run Babel from the terminal, the `env` preset to only include the transformations for the features that we use and that are missing in our target browsers, and `babel-plugin-polyfill-corejs3` to only include the `core-js` polyfills for those features.
 
 For more information on setting up Babel with your build system, IDE, and more, check out our [interactive setup guide](/setup).

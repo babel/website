@@ -31,7 +31,7 @@ System.register([], function(_export, _context) {
 });
 ```
 
-For dynamic import support (`import('./lazy.js').then(m => ...)`), enable the [@babel/plugin-syntax-dynamic-import](plugin-syntax-dynamic-import.md) plugin before this one.
+For dynamic import support (`import('./lazy.js').then(m => ...)`), enable the [@babel/plugin-transform-dynamic-import](plugin-transform-dynamic-import.md) plugin. If you are using `@babel/preset-env`, it is already included.
 
 ## Installation
 

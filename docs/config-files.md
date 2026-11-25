@@ -410,7 +410,7 @@ This API exposes a simple way to do that with:
 
 ```js title="JavaScript"
 module.exports = function(api) {
-  api.assertVersion("^7.2");
+  api.assertVersion("^8.0.0");
 
   return {
     // ...

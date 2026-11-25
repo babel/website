@@ -384,25 +384,26 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   **Migration**: You can use the [`assumptions`](./assumptions.md) top-level option instead. See ["Migrating from @babel/preset-env's "loose" and "spec" modes"](./assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the ready-to-copy equivalent configuration.
 
-- The `corejs` option must specify the minor version of core-js 3 ([#16095](https://github.com/babel/babel/pull/16095))
+- The `useBuiltIns` and `corejs` options have been removed ([#18079](https://github.com/babel/babel/pull/18079))
 
-  In Babel 7, the recommended `corejs` option was `corejs: 3`. However, such option implies that Babel is compiling with features available in `corejs: "3.0"`, which was published in 2019 and missing many latest ECMAScript features.
+  **Migration**: Remove them from your config, and use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3) directly. `useBuiltIns: "usage"` becomes `method: "usage-global"`, `useBuiltIns: "entry"` becomes `method: "entry-global"`, and `corejs` becomes `version`. See the [`@babel/preset-env` docs](./preset-env.md#usebuiltins-corejs) for the full mapping.
 
-  **Migration**: Specify the minor version of core-js 3 that you use to ensure latest features will be polyfilled if required. For example,
+  In Babel 7, the recommended `corejs` option was `corejs: 3`. However, such option implies that Babel is compiling with features available in `core-js@3.0`, which was published in 2019 and missing many latest ECMAScript features. Specify the minor version of core-js 3 that you use to ensure latest features will be polyfilled if required. For example,
 
-  ```js title="babel.config.mjs"
-  import corejsPackage from "core-js/package.json" with { type: "json" }
-  export default {
-    "presets": [[
-      "@babel/preset-env",
-      {
-        "corejs": corejsPackage.version
-      }
-    ]]
-  }
+  ```diff title="babel.config.mjs"
+  + import corejsPackage from "core-js/package.json" with { type: "json" }
+    export default {
+      "presets": [
+  -     ["@babel/preset-env", { "useBuiltIns": "usage", "corejs": 3 }]
+  +     "@babel/preset-env"
+  +   ],
+  +   "plugins": [
+  +     ["babel-plugin-polyfill-corejs3", { "method": "usage-global", "version": corejsPackage.version }]
+      ]
+    }
   ```
 
-  If your are authoring a library that depends on `core-js`, the optimal `corejs` version should be the first version available in the `dependencies` of your library's `package.json`.
+  If your are authoring a library that depends on `core-js`, the optimal `version` should be the first version available in the `dependencies` of your library's `package.json`.
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 

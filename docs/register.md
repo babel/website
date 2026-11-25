@@ -148,7 +148,7 @@ Because it is your own code that triggered the load, and not the logic within
 `@babel/register` itself, this should successfully compile any plugin/preset
 that loads synchronously.
 
-## Experimental Babel 8 implementation
+## Worker-based implementation
 
 <details>
   <summary>History</summary>
@@ -156,16 +156,11 @@ that loads synchronously.
 | Version | Changes |
 | --- | --- |
 | `v8.0.0` | This is now the only implementation of `@babel/register`; the `@babel/register/experimental-worker` entry point has been removed |
-| `v7.17.0` | Added |
+| `v7.17.0` | Added as `@babel/register/experimental-worker` |
 </details>
 
-You can also test the new experimental implementation that will be enabled by default in Babel 8, using
-```js title="JavaScript"
-require("@babel/register/experimental-worker");
-```
+`@babel/register` runs Babel asynchronously in a separate worker thread, so it's compatible with [`.mjs` configuration files](config-files.md#configuration-file-types).
 
-It internally runs Babel asynchronously, so it's compatible with [`.mjs` configuration files](config-files.md#configuration-file-types). You can already use it as a replacement of `@babel/register` with a few caveats:
-- If you programmatically specify `@babel/register` options (using `require("@babel/register")({ /* ... options */ })`), you must make sure that they are serializable. This means that you cannot pass plugin functions defined inline, but you must move them to a separate `./my-plugin.js` file or to a `babel.config.js` file.
-- The new implementation is still experimental: it _should_ have the same features as the existing one, but there may be some new bugs and regressions.
+Because options are sent to the worker, if you programmatically specify `@babel/register` options (using `require("@babel/register")({ /* ... options */ })`), you must make sure that they are serializable. This means that you cannot pass plugin functions defined inline, but you must move them to a separate `./my-plugin.js` file or to a `babel.config.js` file.
 
 **Note:** `@babel/register` does _not_ support compiling native Node.js ES modules on the fly, since currently there is no stable API for intercepting ES modules loading.
