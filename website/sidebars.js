@@ -51,7 +51,6 @@ module.exports = {
                 "babel-plugin-transform-duplicate-named-capturing-groups-regex",
                 "babel-plugin-transform-json-modules",
                 "babel-plugin-transform-regexp-modifiers",
-                "babel-plugin-syntax-import-attributes",
               ],
             },
             {
@@ -67,7 +66,6 @@ module.exports = {
                 "babel-plugin-transform-class-static-block",
                 "babel-plugin-transform-private-methods",
                 "babel-plugin-transform-private-property-in-object",
-                "babel-plugin-syntax-top-level-await",
               ],
             },
             {
@@ -86,9 +84,6 @@ module.exports = {
                 "babel-plugin-transform-export-namespace-from",
                 "babel-plugin-transform-nullish-coalescing-operator",
                 "babel-plugin-transform-optional-chaining",
-                "babel-plugin-syntax-bigint",
-                "babel-plugin-syntax-dynamic-import",
-                "babel-plugin-syntax-import-meta",
               ],
             },
             {
@@ -145,11 +140,6 @@ module.exports = {
                 "babel-plugin-transform-unicode-escapes",
                 "babel-plugin-transform-unicode-regex",
               ],
-            },
-            {
-              type: "category",
-              label: "ES5",
-              items: ["babel-plugin-transform-property-mutators"],
             },
             {
               type: "category",
@@ -217,7 +207,6 @@ module.exports = {
         "babel-eslint-parser",
         "babel-eslint-plugin",
         "babel-plugin-transform-runtime",
-        "babel-polyfill",
         "babel-register",
         "babel-standalone",
       ],
@@ -244,7 +233,6 @@ module.exports = {
         "babel-helper-compilation-targets",
         "babel-helper-module-imports",
         "babel-helper-validator-identifier",
-        "babel-helper-environment-visitor",
       ],
     },
   ],
@@ -275,13 +263,9 @@ module.exports = {
         "babel-plugin-proposal-optional-chaining-assign",
         "babel-plugin-proposal-partial-application",
         "babel-plugin-proposal-pipeline-operator",
-        "babel-plugin-proposal-record-and-tuple",
         "babel-plugin-proposal-throw-expressions",
         "babel-plugin-syntax-module-blocks",
       ],
     },
-    "Web Compatibility": [
-      "babel-plugin-proposal-import-attributes-to-assertions",
-    ],
   },
 };
