@@ -58,8 +58,6 @@ This option will enable parsing within a TypeScript ambient context, where certa
 
 ### `isTSX`
 
-`boolean`, defaults to `false`.
-
 <details>
   <summary>History</summary>
 
@@ -68,7 +66,7 @@ This option will enable parsing within a TypeScript ambient context, where certa
 | `v8.0.0` | Removed |
 </details>
 
-Forcibly enables `jsx` parsing. Otherwise angle brackets will be treated as typescript's legacy type assertion `var foo = <string>bar;`
+This option has been removed in Babel 8. To parse JSX in TypeScript files, also enable the [`@babel/plugin-syntax-jsx`](plugin-syntax-jsx.md) plugin, or a JSX transform plugin such as [`@babel/plugin-transform-react-jsx`](plugin-transform-react-jsx.md).
 
 :::tip
 You can read more about configuring plugin options [here](./plugins.md#plugin-options)

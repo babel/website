@@ -813,10 +813,11 @@ For more code generator options, see [Generator Options](generator.md#options).
 
 ## AMD / UMD / SystemJS module options
 
-### `moduleIds`
+:::danger
+These options have been removed from `@babel/core` in Babel 8. Specify them in the options of the module transform plugin you are using instead: [`@babel/plugin-transform-modules-amd`](plugin-transform-modules-amd.md), [`@babel/plugin-transform-modules-umd`](plugin-transform-modules-umd.md) or [`@babel/plugin-transform-modules-systemjs`](plugin-transform-modules-systemjs.md).
+:::
 
-Type: `boolean`<br />
-Default: `!!opts.moduleId`<br />
+### `moduleIds`
 
 <details>
   <summary>History</summary>
@@ -826,11 +827,7 @@ Default: `!!opts.moduleId`<br />
 | `v8.0.0` | Removed from `@babel/core` options, use the `moduleIds` option of the AMD, UMD or SystemJS module transform plugin instead |
 </details>
 
-Enables module ID generation.
-
 ### `moduleId`
-
-Type: `string`<br />
 
 <details>
   <summary>History</summary>
@@ -840,11 +837,7 @@ Type: `string`<br />
 | `v8.0.0` | Removed from `@babel/core` options, use the `moduleId` option of the AMD, UMD or SystemJS module transform plugin instead |
 </details>
 
-A hard-coded ID to use for the module. Cannot be used alongside `getModuleId`.
-
 ### `getModuleId`
-
-Type: `(name: string) => string`<br />
 
 <details>
   <summary>History</summary>
@@ -854,12 +847,7 @@ Type: `(name: string) => string`<br />
 | `v8.0.0` | Removed from `@babel/core` options, use the `getModuleId` option of the AMD, UMD or SystemJS module transform plugin instead |
 </details>
 
-Given the babel-generated module name, return the name to use. Returning
-a falsy value will use the original `name`.
-
 ### `moduleRoot`
-
-Type: `string`<br />
 
 <details>
   <summary>History</summary>
@@ -868,8 +856,6 @@ Type: `string`<br />
 | --- | --- |
 | `v8.0.0` | Removed from `@babel/core` options, use the `moduleRoot` option of the AMD, UMD or SystemJS module transform plugin instead |
 </details>
-
-A root path to include on generated module names.
 
 ## Options Concepts
 
