@@ -25,7 +25,6 @@ sidebar_label: Plugins List
 - [partial-application](plugin-proposal-partial-application.md)
 - [pipeline-operator](plugin-proposal-pipeline-operator.md)
 - [throw-expressions](plugin-proposal-throw-expressions.md)
-- [record-and-tuple](plugin-proposal-record-and-tuple.md)
 
 ### ES2026
 
@@ -105,10 +104,6 @@ sidebar_label: Plugins List
 - [unicode-escapes](plugin-transform-unicode-escapes.md)
 - [unicode-regex](plugin-transform-unicode-regex.md)
 
-### ES5
-
-- [property-mutators](plugin-transform-property-mutators.md)
-
 ### ES3
 
 - [member-expression-literals](plugin-transform-member-expression-literals.md)
@@ -131,9 +126,7 @@ sidebar_label: Plugins List
 
 - [react-display-name](plugin-transform-react-display-name.md)
 - [react-jsx](plugin-transform-react-jsx.md)
-- [react-jsx-compat](plugin-transform-react-jsx-compat.md)
-- [react-jsx-self](plugin-transform-react-jsx-self.md)
-- [react-jsx-source](plugin-transform-react-jsx-source.md)
+- [react-jsx-development](plugin-transform-react-jsx-development.md)
 
 ### Flow
 
@@ -147,8 +140,6 @@ sidebar_label: Plugins List
 
 - [external-helpers](plugin-external-helpers.md)
 - [jscript](plugin-transform-jscript.md)
-- [object-assign](plugin-transform-object-assign.md)
-- [object-set-prototype-of-to-assign](plugin-transform-object-set-prototype-of-to-assign.md)
 - [proto-to-assign](plugin-transform-proto-to-assign.md)
 - [regenerator](plugin-transform-regenerator.md)
 - [runtime](plugin-transform-runtime.md)
@@ -156,7 +147,4 @@ sidebar_label: Plugins List
 
 #### Syntax Only
 
-- [syntax-bigint](plugin-syntax-bigint.md) (ES2020)
-- [syntax-dynamic-import](plugin-syntax-dynamic-import.md) (ES2020)
-- [syntax-import-meta](plugin-syntax-import-meta.md) (ES2020)
-- [syntax-top-level-await](plugin-syntax-top-level-await.md) (ES2022)
+- [syntax-module-blocks](plugin-syntax-module-blocks.md)

@@ -11,8 +11,6 @@ title: "@babel/runtime"
 npm install --save @babel/runtime
 ```
 
-> See also: [`@babel/runtime-corejs2`](runtime-corejs2.md).
-
 ## Usage
 
 This is meant to be used as a runtime `dependency` along with the Babel plugin [`@babel/plugin-transform-runtime`](plugin-transform-runtime.md). Please check out the documentation in that package for usage.

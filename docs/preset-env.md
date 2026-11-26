@@ -310,7 +310,7 @@ The [Browserslist environment](https://github.com/browserslist/browserslist#conf
 | `v7.9.0` | Include numeric separator |
 </details>
 
-Toggles enabling support for builtin/feature proposals that have shipped in browsers. If your target environments have native support for a feature proposal, its matching parser syntax plugin is enabled instead of performing any transform. Note that this _does not_ enable the same transformations as [`@babel/preset-stage-3`](preset-stage-3.md), since proposals can continue to change before landing in browsers.
+Toggles enabling support for builtin/feature proposals that have shipped in browsers. If your target environments have native support for a feature proposal, its matching parser syntax plugin is enabled instead of performing any transform.
 
 There are currently no proposals enabled by this option.
 
