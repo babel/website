@@ -39,6 +39,9 @@ export type EnvConfig = {
   shippedProposals: boolean;
   version?: any;
   node: string | undefined | null;
+  // Targets without a dedicated control in the sidebar (e.g. `rhino`, `deno`
+  // or `esmodules`), preserved as-is from the config.
+  otherTargets: { [target: string]: unknown };
   assumptions?: any;
 };
 
