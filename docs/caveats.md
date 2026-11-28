@@ -33,7 +33,7 @@ You can try to use [babel-plugin-transform-builtin-extend](https://github.com/lo
 
 Since Babel assumes that your code will run in an ES5 environment it uses ES5
 functions. So if you're using an environment that has limited or no support for
-ES5 such as lower versions of IE then using [@babel/polyfill](polyfill.md) will add support for these methods.
+ES5 such as lower versions of IE then using a polyfill such as [`core-js`](https://github.com/zloirock/core-js) will add support for these methods (see [Polyfill](usage.md#polyfill)).
 
 ## Internet Explorer
 

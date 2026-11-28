@@ -187,11 +187,11 @@ If you want to pass options to builtin plugins and presets, you can create a new
 ```js title="JavaScript"
 // Define a preset
 Babel.registerPreset("env-plus", {
-  presets: [[Babel.availablePresets["env"], { loose: true }]],
+  presets: [[Babel.availablePresets["env"], { targets: "chrome 100" }]],
   plugins: [
     [
       Babel.availablePlugins["proposal-decorators"],
-      { version: "2023-01" },
+      { version: "2023-11" },
     ],
   ],
 });

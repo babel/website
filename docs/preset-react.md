@@ -9,7 +9,7 @@ This preset includes the following plugins:
 - [@babel/plugin-transform-react-jsx](plugin-transform-react-jsx.md)
 - [@babel/plugin-transform-react-display-name](plugin-transform-react-display-name.md)
 
-Automatic runtime (since `v7.9.0`) adds the functionality for these plugins automatically when the `development` option is enabled. If you have automatic runtime enabled, adding [@babel/plugin-transform-react-jsx-self](plugin-transform-react-jsx-self.md) or [@babel/plugin-transform-react-jsx-source](plugin-transform-react-jsx-source.md) will error.
+When the `development` option is enabled, it uses [@babel/plugin-transform-react-jsx-development](plugin-transform-react-jsx-development.md) instead of `@babel/plugin-transform-react-jsx`. The `@babel/plugin-transform-react-jsx-self` and `@babel/plugin-transform-react-jsx-source` plugins have been removed in Babel 8: use the [`developmentSourceSelf`](#developmentsourceself) option instead.
 
 > Note: Flow syntax support is no longer enabled in v7. For that, you will need to add the [Flow preset](preset-flow.md).
 

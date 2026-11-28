@@ -21,6 +21,7 @@ All transformations will use your local [configuration files](config-files.md).
 | Version | Changes |
 | --- | --- |
 | `v8.0.0` | A callback is required; use `transformSync` for synchronous usage |
+| `v7.0.0` | Behaves synchronously if no callback is given, for backward compatibility with Babel 6 (where this method was synchronous and `transformSync` did not exist) |
 </details>
 
 Transforms the passed in `code`. Calling a callback with an object with the generated code,
@@ -41,10 +42,6 @@ babel.transform("code();", options, function(err, result) {
   result.ast;
 });
 ```
-
-:::info
-In Babel 6, this method was synchronous and `transformSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformSync` since this backward-compatibility will be dropped in Babel 8.
-:::
 
 ## transformSync
 
@@ -151,6 +148,7 @@ babel.transformFileAsync("filename.js", options).then(result => {
 | Version | Changes |
 | --- | --- |
 | `v8.0.0` | A callback is required; use `transformFromAstSync` for synchronous usage |
+| `v7.0.0` | Behaves synchronously if no callback is given, for backward compatibility with Babel 6 (where this method was synchronous and `transformFromAstSync` did not exist) |
 </details>
 
 Given an [AST](https://astexplorer.net/), transform it.
@@ -164,10 +162,6 @@ babel.transformFromAst(parsedAst, sourceCode, options, function(err, result) {
   const { code, map, ast } = result;
 });
 ```
-
-:::info
-In Babel 6, this method was synchronous and `transformFromAstSync` did not exist. For backward-compatibility, this function will behave synchronously if no callback is given. If you're starting with Babel 7 and need synchronous behavior, please use `transformFromAstSync` since this backward-compatibility will be dropped in Babel 8.
-:::
 
 ## transformFromAstSync
 
@@ -215,19 +209,12 @@ babel
 | Version | Changes |
 | --- | --- |
 | `v8.0.0` | A callback is required; use `parseSync` for synchronous usage |
+| `v7.0.0` | Behaves synchronously if no callback is given, for backward compatibility with Babel 7's early betas (where this method was synchronous and `parseSync` did not exist) |
 </details>
 
 Given some code, parse it using Babel's standard behavior. Referenced presets and
 plugins will be loaded such that optional syntax plugins are automatically
 enabled.
-
-:::info
-In Babel 7's early betas, this method was synchronous and `parseSync` did not
-exist. For backward-compatibility, this function will behave synchronously if
-no callback is given. If you're starting with Babel 7 stable and need
-synchronous behavior, please use `parseSync` since this backward-compatibility
-will be dropped in Babel 8.
-:::
 
 ## parseSync
 

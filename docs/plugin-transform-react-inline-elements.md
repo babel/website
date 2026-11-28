@@ -6,11 +6,9 @@ sidebar_label: react-inline-elements
 
 ## Note
 
-When used alongside `@babel/plugin-transform-runtime`, polyfills (by default including `Symbol`) are specifically scoped to not pollute the global scope. This breaks usage with React, as it won't have access to that polyfill and will cause your application to fail in legacy browsers.
+When used alongside a polyfill plugin that doesn't pollute the global scope, such as [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/blob/main/packages/babel-plugin-polyfill-corejs3/README.md) with `method: "usage-pure"`, polyfills (including `Symbol`) are scoped to your code. This breaks usage with React, as it won't have access to that polyfill and will cause your application to fail in legacy browsers.
 
-Even if `['@babel/plugin-transform-runtime', { helpers: true, polyfill: false }]` is specified, it might still break, since `helpers` come precompiled.
-
-In this case, we recommend importing/requiring `@babel/polyfill` in the entry point of your application and using `@babel/preset-env` with the `useBuiltIns` option to only include the polyfills your targets need. Alternatively, you can also import/require `core-js/modules/es6.symbol` by itself.
+In this case, we recommend using `babel-plugin-polyfill-corejs3` with `method: "usage-global"` to only include the polyfills your targets need. Alternatively, you can also import/require `core-js/modules/es.symbol` by itself in the entry point of your application.
 
 This transform **should be enabled only in production** (e.g., just before minifying your code) because, although it improves runtime performance, it makes warning messages more cryptic and skips important checks that happen in development mode, including propTypes.
 

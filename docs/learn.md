@@ -299,7 +299,7 @@ interface Iterable {
 ```
 
 :::info Support via polyfill
-In order to use Iterators you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+In order to use Iterators you must include a <a href="/docs/usage#polyfill">polyfill</a>.
 :::
 
 ### Generators
@@ -343,8 +343,8 @@ interface Generator extends Iterator {
 }
 ```
 
-:::info Support via polyfill
-In order to use Generators you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+:::info No polyfill needed
+Since Babel 7.18.0, the runtime needed by compiled generators is inlined in the output, so you don't need to include a polyfill.
 :::
 
 ### Comprehensions
@@ -499,7 +499,7 @@ ws.add({ data: 42 });
 ```
 
 :::info Support via polyfill
-In order to support Maps, Sets, WeakMaps, and WeakSets in all environments you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+In order to support Maps, Sets, WeakMaps, and WeakSets in all environments you must include a <a href="/docs/usage#polyfill">polyfill</a>.
 :::
 
 ### Proxies
@@ -606,7 +606,7 @@ c["key"] === undefined
 ```
 
 :::info Limited support via polyfill
-Limited support requires the Babel <a href="/docs/babel-polyfill">polyfill</a>. Due to language limitations, some features can't be transpiled or polyfilled. See core.js's <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">caveats section</a> for more details.
+Limited support requires a <a href="/docs/usage#polyfill">polyfill</a>. Due to language limitations, some features can't be transpiled or polyfilled. See core.js's <a href="https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill">caveats section</a> for more details.
 :::
 
 ### Subclassable Built-ins
@@ -657,7 +657,7 @@ Object.assign(Point, { origin: new Point(0,0) })
 ```
 
 :::caution Limited support from polyfill
-Most of these APIs are supported by the Babel <a href="/docs/babel-polyfill">polyfill</a>. However, certain features are omitted for various reasons (e.g. <code>String.prototype.normalize</code> needs a lot of additional code to support). You can find more polyfills <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
+Most of these APIs are supported by <a href="https://github.com/zloirock/core-js">core-js</a>. However, certain features are omitted for various reasons (e.g. <code>String.prototype.normalize</code> needs a lot of additional code to support). You can find more polyfills <a href="https://github.com/addyosmani/es6-tools#polyfills">here</a>.
 :::
 
 ### Binary and Octal Literals
@@ -696,7 +696,7 @@ var p = timeout(1000).then(() => {
 ```
 
 :::info Support via polyfill
-In order to support Promises you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+In order to support Promises you must include a <a href="/docs/usage#polyfill">polyfill</a>.
 :::
 
 ### Reflect API
@@ -721,7 +721,7 @@ instance.c; // 42
 ```
 
 :::info Support via polyfill
-In order to use the Reflect API you must include the Babel <a href="/docs/babel-polyfill">polyfill</a>.
+In order to use the Reflect API you must include a <a href="/docs/usage#polyfill">polyfill</a>.
 :::
 
 ### Tail Calls

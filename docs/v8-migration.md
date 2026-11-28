@@ -179,21 +179,21 @@ If you are using this plugin to polyfill `Object.assign`, please use [`babel-plu
 This plugin is not maintained anymore.
 If you are using this plugin to polyfill `Object.setPrototypeOf`, please use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3#usage) instead.
 
-### `@babel/plugin-transform-react-compat` {#babel-plugin-transform-react-compat}
+### `@babel/plugin-transform-react-jsx-compat` {#babel-plugin-transform-react-compat}
 
 This is for React v0.x, which has been long deprecated and is no longer maintained.
 
-### `@babel/plugin-transform-react-{source,self}` {#babel-plugin-transform-react-source-self}
+### `@babel/plugin-transform-react-jsx-{source,self}` {#babel-plugin-transform-react-source-self}
 
-You can safely remove these two plugins if using React v19 or later.
-For users of React v18 or earlier, please remove them and use `@babel/plugin-transform-react-jsx-development` instead, as they are now included in the development plugin.
+You can safely remove these two plugins if using React v19.2 or later.
+For users of older React versions, please remove them and use `@babel/plugin-transform-react-jsx-development` with the `sourceSelf` option instead (or the `developmentSourceSelf` option of `@babel/preset-react`).
 
 ```diff title="babel.config.json"
   {
     "plugins": [
--     "@babel/plugin-transform-react-source",
--     "@babel/plugin-transform-react-self"
-+     "@babel/plugin-transform-react-jsx-development"
+-     "@babel/plugin-transform-react-jsx-source",
+-     "@babel/plugin-transform-react-jsx-self"
++     ["@babel/plugin-transform-react-jsx-development", { "sourceSelf": true }]
     ]
   }
 ```
@@ -384,25 +384,26 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   **Migration**: You can use the [`assumptions`](./assumptions.md) top-level option instead. See ["Migrating from @babel/preset-env's "loose" and "spec" modes"](./assumptions.md#migrating-from-babelpreset-envs-loose-and-spec-modes) for the ready-to-copy equivalent configuration.
 
-- The `corejs` option must specify the minor version of core-js 3 ([#16095](https://github.com/babel/babel/pull/16095))
+- The `useBuiltIns` and `corejs` options have been removed ([#18079](https://github.com/babel/babel/pull/18079))
 
-  In Babel 7, the recommended `corejs` option was `corejs: 3`. However, such option implies that Babel is compiling with features available in `corejs: "3.0"`, which was published in 2019 and missing many latest ECMAScript features.
+  **Migration**: Remove them from your config, and use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3) directly. `useBuiltIns: "usage"` becomes `method: "usage-global"`, `useBuiltIns: "entry"` becomes `method: "entry-global"`, and `corejs` becomes `version`. See the [`@babel/preset-env` docs](./preset-env.md#usebuiltins-corejs) for the full mapping.
 
-  **Migration**: Specify the minor version of core-js 3 that you use to ensure latest features will be polyfilled if required. For example,
+  In Babel 7, the recommended `corejs` option was `corejs: 3`. However, such option implies that Babel is compiling with features available in `core-js@3.0`, which was published in 2019 and missing many latest ECMAScript features. Specify the minor version of core-js 3 that you use to ensure latest features will be polyfilled if required. For example,
 
-  ```js title="babel.config.mjs"
-  import corejsPackage from "core-js/package.json" with { type: "json" }
-  export default {
-    "presets": [[
-      "@babel/preset-env",
-      {
-        "corejs": corejsPackage.version
-      }
-    ]]
-  }
+  ```diff title="babel.config.mjs"
+  + import corejsPackage from "core-js/package.json" with { type: "json" }
+    export default {
+      "presets": [
+  -     ["@babel/preset-env", { "useBuiltIns": "usage", "corejs": 3 }]
+  +     "@babel/preset-env"
+  +   ],
+  +   "plugins": [
+  +     ["babel-plugin-polyfill-corejs3", { "method": "usage-global", "version": corejsPackage.version }]
+      ]
+    }
   ```
 
-  If your are authoring a library that depends on `core-js`, the optimal `corejs` version should be the first version available in the `dependencies` of your library's `package.json`.
+  If your are authoring a library that depends on `core-js`, the optimal `version` should be the first version available in the `dependencies` of your library's `package.json`.
 
 ![medium](https://img.shields.io/badge/risk%20of%20breakage%3F-medium-yellow.svg)
 
@@ -475,7 +476,7 @@ The following syntax plugins are no longer needed, you can safely remove them fr
 
   If your app targets to modern browsers released after 2019, you can safely remove these options as object spread has less code footprint.
 
-  If your code needs to run in an environment which doesn't support object spread, you can either use `@babel/preset-env` (recommended) or `@babel/plugin-transform-object-rest-spread`. If you want to transpile `Object.assign` down, you also need to enable `@babel/plugin-transform-object-assign`.
+  If your code needs to run in an environment which doesn't support object spread, you can either use `@babel/preset-env` (recommended) or `@babel/plugin-transform-object-rest-spread`. If you need to polyfill `Object.assign`, you can use [`babel-plugin-polyfill-corejs3`](https://github.com/babel/babel-polyfills/tree/main/packages/babel-plugin-polyfill-corejs3#usage).
 
   In Babel 7.7.0, you can opt into the Babel 8 behavior by using the `useSpread: true` option.
 

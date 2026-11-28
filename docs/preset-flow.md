@@ -76,8 +76,6 @@ f < T > e;
 
 ### `allowDeclareFields`
 
-`boolean`, defaults to `false`
-
 <details>
   <summary>History</summary>
 
@@ -87,11 +85,7 @@ f < T > e;
 | `v7.9.0` | Added |
 </details>
 
-:::note
-This will be enabled by default in Babel 8
-:::
-
-When enabled, type-only class fields are only removed if they are prefixed with the `declare` modifier:
+This option has been removed in Babel 8, where it's always enabled: type-only class fields are only removed if they are prefixed with the `declare` modifier:
 
 ```js title="JavaScript"
 class A {

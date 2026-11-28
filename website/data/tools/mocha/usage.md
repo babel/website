@@ -53,7 +53,7 @@ With polyfill:
 ```json title="JSON"
 {
   "scripts": {
-    "test": "mocha --require babel-polyfill --compilers js:@babel/register"
+    "test": "mocha --require core-js/stable --compilers js:@babel/register"
   }
 }
 ```
